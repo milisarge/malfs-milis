@@ -1,0 +1,22 @@
+# Description: Provide https support for LWP::UserAgent
+# URL: Provide https support for LWP::UserAgent
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-io-socket-ssl perl-mozilla-ca perl-net-http perl-libwww 
+run=( perl )
+name=perl-lwp-protocol-https
+version=6.04
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/LWP-Protocol-https-$version.tar.gz)
+
+build() {
+cd LWP-Protocol-https-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

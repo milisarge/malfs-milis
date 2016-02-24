@@ -1,0 +1,25 @@
+# Description: Library from vlc
+# URL:  http://www.slackware.com/~alien/slackbuilds/vlc/
+# Packager: tnut at nutyx dot org
+# Depends on: glib dbus libidn alsa-lib libmad
+
+name=libvlc
+version=2.2.1
+release=1
+
+source=( http://download.videolan.org/pub/videolan/vlc/$version/vlc-$version.tar.xz)
+	
+build() {
+
+cd vlc-$version
+
+./configure --prefix=/usr \
+--disable-swscale \
+--disable-lua \
+--disable-a52 \
+--disable-avcodec
+
+make
+make DESTDIR=$PKG install
+rm -r $PKG/usr/{lib/vlc,share,bin}
+}

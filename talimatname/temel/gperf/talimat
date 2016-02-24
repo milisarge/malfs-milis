@@ -1,0 +1,18 @@
+# Description: Gperf generates a perfect hash function from a key set.
+# URL: http://www.gnu.org/software/gperf/gperf.html
+# Maintainers: Keith Bostic,Michael Tiemann,Doug Lea,Adam de Boor and,Nels Olson,Bruno Haible
+# Packagers: geantbrun at nutyx dot org,tnut at nutyx dot org
+
+name=gperf
+version=3.0.4
+release=1
+
+source=(ftp://ftp.sunet.se/pub/gnu/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--docdir=/usr/share/doc/$name-$version
+make 
+make DESTDIR=$PKG install
+}  

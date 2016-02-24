@@ -1,0 +1,37 @@
+# Description: Userspace server and client tools necessary to use the kernel's NFS abilities.
+# URL: http://nfs.sourceforge.net
+# Packager: tnut at nutyx dot org
+# Depends on: libtirpc rpcbind
+
+name=nfs-utils
+version=1.3.3
+release=1
+
+source=(http://downloads.sourceforge.net/nfs/$name-$version.tar.bz2)
+run=(rpcbind)
+
+build() {
+source  /etc/blfs-bootscripts
+wget \
+http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2 
+	
+# build package
+
+cd $name-$version
+./configure --prefix=/usr     \
+--sysconfdir=/etc \
+--disable-nfsv4   \
+--disable-nfsv41  \
+--disable-gss \
+--without-tcp-wrappers		
+
+make
+mkdir $PKG/sbin
+make DESTDIR=$PKG install
+
+# Services
+cd ../$scripts-$scriptsversion
+make DESTDIR=$PKG install-nfs-server
+
+}

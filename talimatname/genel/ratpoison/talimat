@@ -1,0 +1,42 @@
+# Description: A simple keystroke-driven window manager. Ratpoison is a simple Window Manager with no fat library dependencies, no fancy graphics, no window decorations, and no rodent dependence. It is largely modelled after GNU Screen which has done wonders in the virtual terminal market.
+# URL: http://www.nongnu.org/ratpoison/
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: texinfo xorg-libxft xorg-libxinerama xorg-libxtst
+
+description="Window Manager: no fat library dependencies, no fancy graphics, no window decorations."
+name=ratpoison
+version=1.4.7
+release=2
+
+source=(http://savannah.nongnu.org/download/$name/$name-$version.tar.xz
+$name.desktop
+$name.README)
+
+build(){
+    cd $name-$version
+    sed -i 's|PRINT_ERROR (("XGetWMName|PRINT_DEBUG (("XGetWMName|' src/manage.c
+    ./configure --prefix=/usr
+    make CFLAGS="$CFLAGS -DHAVE_GETLINE"
+    make DESTDIR=$PKG install
+
+    # fix permissions
+    chmod +x $PKG/usr/share/ratpoison/{allwindows.sh,clickframe.pl,rpshowall.sh,rpws,split.sh}
+
+    cd contrib
+    ./genrpbindings
+    install -dm755 $PKG/usr/share/ratpoison/bindings
+    install -m644 \
+        {Ratpoison.pm,ratpoison-cmd.el,ratpoison.rb,ratpoison.lisp,ratpoison.py} \
+            $PKG/usr/share/ratpoison/bindings/
+
+    install -Dm644 $SRC/$name.desktop \
+        $PKG/usr/share/xsessions/$name.desktop
+
+    mv $PKG/usr/share/doc/$name $PKG/usr/share/doc/$name-$version
+    install -m644 $SRC/$name.README \
+        $PKG/usr/share/doc/$name-$version/$name.README
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

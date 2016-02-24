@@ -1,0 +1,112 @@
+# Description: MPlayer is a powerful audio/video player controlled via the command line or a graphical interface that is able to play almost every popular audio and video file format and mencoder is a video encoding/decoding tool.
+# URL: http://www.mplayerhq.hu
+# Packager: berlius at nutyx dot org
+# Depends on: gtk2 yasm desktop-file-utils libdvdnav libdvdcss cdparanoia libcdio-paranoia libdvdread samba libbluray live xorg-libxvmc opus alsa-utils pulseaudio sdl jack openal sgml-common aalib giflib libjpeg-turbo libmng libpng openjpeg libcaca faac faad2 lame liba52 libdv libmad libmpeg2 libtheora libvpx lzo mpg123 speex xvid libmpcdec xorg-fontconfig freetype gnutls openssl opus unrar libxslt docbook-xsl docbook-xml enca glib xorg-libxxf86dga 
+
+description="CLI and GUI audio/video Player able to play every popular audio and video file"
+name=mplayer
+version=r37561
+release=1
+
+source=(MPlayer-rectif-traduction-fr.patch $name.conf
+	 http://anduin.linuxfromscratch.org/BLFS/other/$name-SVN-r37561.tar.xz
+		ftp://ftp.mplayerhq.hu/MPlayer/skins/Clearlooks-1.7.tar.bz2
+		ftp://ftp.mplayerhq.hu/MPlayer/skins/KDE-0.3.tar.bz2
+		ftp://ftp.mplayerhq.hu/MPlayer/skins/XFce4-1.0.tar.bz2
+		ftp://ftp.mplayerhq.hu/MPlayer/skins/Orange-1.3.tar.bz2)
+		
+
+build() {
+
+cd $name-SVN-$version
+
+sed -i 's:libsmbclient.h:samba-4.0/&:' configure stream/stream_smb.c 
+
+patch -p1 -i ../MPlayer-rectif-traduction-fr.patch
+
+./configure --prefix=/usr            \
+            --confdir=/etc/mplayer   \
+            --enable-dynamic-plugins \
+            --enable-menu            \
+            --enable-gui  			\
+            --enable-radio \
+            --enable-radio-capture  \
+            --enable-rpath  \
+            --with-vidix-drivers=radeon,nvidia,cyberblade,ivtv,mach64,mga,mga_crtc2,pm2,pm3,rage128,s3,sis,unichrome\
+            --enable-dhahelper  \
+            --enable-xvmc  \
+            --enable-mga  \
+            --enable-xmga  \
+            --enable-mlib  \
+            --enable-3dfx  \
+            --enable-tdfxfb  \
+            --enable-joystick \
+            --enable-s3fb  \
+            --enable-wii  \
+            --enable-bl \
+            --enable-tdfxvid  \
+            --language-doc=all		\
+            --language-man=all	\
+            --language-msg=fr  \
+            --language=all
+make
+
+make doc
+
+make DESTDIR=$PKG install
+
+install -v -m755 -d $PKG/usr/share/doc/mplayer-SVN-r37561
+
+install -v -m644    DOCS/HTML/fr/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+                    
+install -v -m644    DOCS/HTML/de/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+                    
+install -v -m644    DOCS/HTML/it/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+                    
+install -v -m644    DOCS/HTML/es/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+           
+install -v -m644    DOCS/HTML/en/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+
+install -v -m644    DOCS/HTML/cs/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+
+install -v -m644    DOCS/HTML/hu/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+
+install -v -m644    DOCS/HTML/pl/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+
+install -v -m644    DOCS/HTML/ru/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+                    
+install -v -m644    DOCS/HTML/zh_CN/* \
+                    $PKG/usr/share/doc/mplayer-SVN-r37561
+
+                    
+install -v -m644 etc/codecs.conf $PKG/etc/mplayer
+
+install -v -m644 etc/*.conf $PKG/etc/mplayer
+
+install -v -m644 ../mplayer.conf $PKG/etc/mplayer
+
+
+mv  ../Clearlooks \
+    $PKG/usr/share/mplayer/skins 
+    
+mv  ../KDE \
+    $PKG/usr/share/mplayer/skins 
+
+mv  ../XFce4 \
+    $PKG/usr/share/mplayer/skins 
+
+mv ../Orange \
+    $PKG/usr/share/mplayer/skins 
+
+
+ln  -sfvn KDE $PKG/usr/share/mplayer/skins/default    
+}

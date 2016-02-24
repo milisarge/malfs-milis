@@ -1,0 +1,18 @@
+# Description: Libraries used by some programs to manage email submission to a mail transport layer.
+# URL: http://www.stafford.uklinux.net/libesmtp/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=libesmtp
+version=1.0.6
+release=1
+
+source=( http://www.stafford.uklinux.net/$name/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr\
+		--mandir=/usr/share/man\
+		--infodir=/usr/share/info
+	make
+	make DESTDIR=$PKG install
+}

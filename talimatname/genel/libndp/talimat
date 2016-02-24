@@ -1,0 +1,19 @@
+# Description: The libndp package provides a wrapper for IPv6 Neighbor Discovery Protocol. 
+# URL: http://libndp.org
+# Maintainer: iri Pirko jiri at resnulli dot us
+# Packager: tnut at nutyx dot org
+
+name=libndp
+version=1.5
+release=1
+
+source=(http://libndp.org/files/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

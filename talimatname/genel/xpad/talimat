@@ -1,0 +1,18 @@
+# Description: Stickies-like notes program
+# URL: http://mterry.name/xpad/
+# Packager: alienus at nutyx dot org
+# Depends on: intltool xorg-libsm gtk3
+
+name=xpad
+version=4.3.1
+release=2
+
+source=(
+http://launchpad.net/xpad/trunk/4.3/+download/xpad-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install helpdir=$PKG/usr/lib/xpad/help
+}

@@ -1,0 +1,19 @@
+# Description: XCB X protocol descriptions
+# URL: http://xcb.freedesktop.org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: python 
+PKGMK_GROUPS=()
+name=xcb-proto
+version=1.11
+release=1
+
+source=(http://xcb.freedesktop.org/dist/xcb-proto-$version.tar.bz2)
+
+build() {
+	cd xcb-proto-$version
+
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+
+	make
+	make DESTDIR=$PKG install
+}

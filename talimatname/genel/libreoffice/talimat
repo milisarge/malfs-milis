@@ -1,0 +1,112 @@
+# Description: LibreOffice is a full-featured office suite. It is largely compatible with Microsoft Office and is descended from OpenOffice.org.
+# URL: http://www.libreoffice.org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: tar apache-ant,openldap,python3,cups,curl,libatomic-ops,gperf,gtk2,gtk3,perl-archive-zip,perl-xml-parser,boost,expat,gstreamer-plugins-base,gstreamer1-plugins-base,libgsf,librsvg,libxml2,libxslt,neon,nss,poppler,postgresql,redland,icu,hunspell,gsfonts,dejavu-ttf,hunspell,p7zip,neon,graphite2,npapi-sdk,clucene,serf,unixodbc
+
+PKGMK_IGNORE_UNPACK="yes"
+
+description="Office suite. It is largely compatible with Microsoft Office (fork from OpenOffice.org)."
+name=libreoffice
+version=5.1.0.3
+release=1
+
+source=(http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-$version.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-dictionaries-$version.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-help-$version.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-translations-$version.tar.xz)
+
+build() {
+        unset ACLOCAL
+        export LO_PREFIX=/usr
+
+	cd $SRC
+	tar -xf $name-$version.tar.xz --no-overwrite-dir
+
+	cd $name-$version
+	install -dm755 external/tarballs
+	ln -sv $SRC/$name-dictionaries-$version.tar.xz  external/tarballs/
+	ln -sv $SRC/$name-help-$version.tar.xz          external/tarballs/
+        ln -sv $SRC/$name-translations-$version.tar.xz  external/tarballs/
+
+
+        sed -e "/gzip -f/d"   \
+            -e "s|.1.gz|.1|g" \
+            -i bin/distro-install-desktop-integration
+
+        sed -e "/distro-install-file-lists/d" -i Makefile.in
+
+	sed -e "/ustrbuf/a #include <algorithm>" \
+	-i svl/source/misc/gridprinter.cxx
+
+	chmod -v +x bin/unpack-sources
+
+./autogen.sh --prefix=$LO_PREFIX         \
+             --sysconfdir=/etc           \
+             --with-vendor="NuTyX"       \
+             --with-lang="es de fr it pt fi nb nl da sv"   \
+             --with-help                 \
+             --with-myspell-dicts        \
+             --with-alloc=system         \
+             --without-java              \
+             --without-system-dicts      \
+             --disable-dconf             \
+             --disable-odk               \
+             --enable-release-build=yes  \
+             --enable-python=system      \
+             --with-system-boost=yes     \
+             --with-system-clucene       \
+             --with-system-cairo         \
+             --with-system-curl          \
+             --with-system-expat         \
+             --with-system-graphite      \
+             --with-system-harfbuzz      \
+             --with-system-icu           \
+             --with-system-jpeg          \
+             --with-system-lcms2         \
+             --with-system-libatomic_ops \
+             --with-system-libpng        \
+             --with-system-libxml        \
+             --with-system-neon          \
+             --with-system-npapi-headers \
+             --with-system-nss           \
+             --with-system-odbc          \
+             --with-system-openldap      \
+             --with-system-openssl       \
+             --with-system-poppler       \
+             --with-system-postgresql    \
+             --with-system-redland       \
+             --with-system-serf          \
+             --with-system-zlib          \
+             --with-parallelism=$(getconf _NPROCESSORS_ONLN)
+
+	make build
+	make DESTDIR=$PKG distro-pack-install
+
+	install -v -m755 -d $PKG/$LO_PREFIX/share/appdata
+	install -v -m644    sysui/desktop/appstream-appdata/*.xml $PKG/$LO_PREFIX/share/appdata
+
+	# Installation des Dictionnaires 
+	chown -cR 0:0 dictionaries/ 
+	for lang in en fr_FR es de it_IT pt_PT no nl_NL sv_SE da_DK
+	do
+	  mkdir -pv $PKG/$LO_PREFIX/lib/libreoffice/share/extensions/dict-$lang
+	  cp -R dictionaries/$lang/* $PKG/$LO_PREFIX/lib/libreoffice/share/extensions/dict-$lang
+	done
+
+	# This symlink is necessary for the desktop menu entries
+	ln -sv -f $LO_PREFIX/lib/libreoffice/program/soffice \
+	$PKG/usr/bin/libreoffice
+
+	# Icones
+	for res in 16 32 48 128 256
+	do
+	  mkdir -p $PKG/$LO_PREFIX/share/icons/hicolor/${res}x${res}/{apps,mimetypes}
+	  cp sysui/desktop/icons/hicolor/${res}x${res}/apps/*.png \
+	  	$PKG/$LO_PREFIX/share/icons/hicolor/${res}x${res}/apps
+	  cp sysui/desktop/icons/hicolor/${res}x${res}/mimetypes/*.png \
+	  	$PKG/$LO_PREFIX/share/icons/hicolor/${res}x${res}/mimetypes
+	done
+ 
+	# Nettoyage
+	rm -rf $PKG/gid*
+}

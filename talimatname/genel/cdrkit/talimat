@@ -1,0 +1,35 @@
+# Description: Set of programs for CD/DVD recording, ISO image creation and audio CD extraction
+# URL: http://cdrkit.org/
+# Maintainer: Joerg Jaspert
+# Packager: pierre at nutyx dot org
+# Depends on: libcap cmake
+
+name=cdrkit
+version=1.1.11
+release=3
+
+source=(https://mirrors.kernel.org/debian/pool/main/c/cdrkit/cdrkit_${version}.orig.tar.gz)
+
+build() {
+	cd $name-$version
+	make
+	make PREFIX=$PKG/usr install
+	cd $PKG/usr/bin
+	mv wodim cdrecord
+	ln -s cdrecord wodim
+	mv genisoimage mkisofs
+	ln -s mkisofs genisoimage
+	ln -s readom readcd
+	ln -s icedax cdda2wav
+	ln -s mkisofs mkhybrid
+	ln -s cdrecord dvdrecord
+	cd ../sbin
+	ln -s netscsid rscsi
+	cd ../share/man/man1
+	ln -s icedax.1 cdda2wav.1
+	ln -s readom.1 readcd.1
+	ln -s wodim.1 cdrecord.1
+	ln -s genisoimage.1 mkisofs.1
+	cd ../man5
+	ln -s genisoimagerc.5 mkisofsrc.5
+}

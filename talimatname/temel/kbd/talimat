@@ -1,0 +1,31 @@
+# Description: The Kbd package contains key-table files, console fonts, and keyboard utilities
+# URL: ftp://devel.altlinux.org/legion/kbd/
+# Packager: Risto Kankkunen's
+# Maintainer: pierre at nutyx dot org
+name=kbd
+version=2.0.3
+release=2
+
+source=(http://ftp.altlinux.com/pub/people/legion/kbd/kbd-$version.tar.xz \
+	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-backspace-1.patch)
+
+build()
+{
+cd kbd-$version
+
+patch -Np1 -i ../$name-$version-backspace-1.patch
+
+sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
+sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in
+
+PKG_CONFIG_PATH=/tools/lib/pkgconfig ./configure --prefix=/usr  \
+--bindir=/bin --datadir=/lib/kbd
+
+make
+make check
+make DESTDIR=$PKG install
+
+mkdir -pv $PKG/usr/share/doc/$name-$version
+cp -R -v docs/doc/* \
+$PKG/usr/share/doc/$name-$version
+}

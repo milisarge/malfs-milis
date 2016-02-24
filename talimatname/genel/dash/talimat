@@ -1,0 +1,17 @@
+# Description: Dash is a POSIX compliant shell
+# URL: URL: http://gondor.apana.org.au/~herbert/dash/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+name=dash
+version=0.5.8
+release=1
+
+source=(http://gondor.apana.org.au/~herbert/dash/files/dash-$version.tar.gz)
+build(){
+cd $name-$version
+./configure --bindir=/bin \
+--mandir=/usr/share/man
+make
+make DESTDIR=$PKG install
+}

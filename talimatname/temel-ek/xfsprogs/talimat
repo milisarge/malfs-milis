@@ -1,0 +1,26 @@
+# Description: XFS filesystem utilities
+# URL: http://oss.sgi.com/projects/xfs/
+# Packager: pierre at nutyx dot org
+
+name=xfsprogs
+version=4.3.0
+release=1
+
+source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+make DEBUG=-DNDEBUG INSTALL_USER=root INSTALL_GROUP=root \
+     LOCAL_CONFIGURE_OPTIONS="--enable-readline"
+
+make DIST_ROOT=$PKG install
+make DIST_ROOT=$PKG install-dev
+if [ "`uname -m `" == "x86_64" ];then
+	LIB="lib64"
+else
+	LIB="lib"
+fi
+	rm -rfv $PKG/$LIB/libhandle.{a,la,so}
+	ln -sfv ../../$LIB/libhandle.so.1 $PKG/usr/$LIB/libhandle.so
+	sed -i "s@libdir='/$LIB@libdir='/usr/$LIB@g" $PKG/usr/$LIB/libhandle.la
+}

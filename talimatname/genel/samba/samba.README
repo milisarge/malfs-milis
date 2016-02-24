@@ -1,0 +1,87 @@
+AVERTISSEMENT
+Il est indispensable de créer un fichier de configuration /etc/samba/smb.conf pour que le service se lance correctement. 
+Veuillez lire ce README.
+
+INSTALLATION client unique:
+ Choisissez cette variante si vous ne voulez que transférer des fichiers en utilisant smbclient, monter des partages Windows et imprimer sur des imprimantes Windows et si vous ne voulez pas partager vos fichiers et vos imprimantes avec des machines Windows.
+
+Un fichier /etc/samba/smb.conf avec les trois paramètres suivants suffit : 
+[global]
+    workgroup = MONGROUPE
+    dos charset = cp850
+    unix charset = UTF-8
+ Les valeurs de cet exemple indiquent que l'ordinateur appartient à un groupe de travail Windows appelé « MONGROUPE », il utilise l'encodage « cp850 » sur la toile lorsqu'il parle à MS-DOS et à MS Windows 9x, et les noms de fichier sont stockés dans l'encodage « UTF-8 » sur le disque. Adaptez ces valeurs à votre installation. La valeur « unix charset » doit être la même que la sortie de locale charmap lorsqu'on l'exécute avec la variable LANG paramétrée sur votre locale préférée, sinon il se peut que ls n'affiche pas de bons noms de fichiers pour les fichiers téléchargés.
+
+Il n'est pas nécessaire de lancer de serveurs Samba dans ce scénario, vous n'avez donc pas besoin d'installer les scripts de démarrage fournis. 
+
+SERVEUR de fichiers/impression autonome
+ Choisissez cette variante si vous voulez partager vos fichiers et vos imprimantes avec des machines Windows sur votre groupe de travail, en plus des possibilités indiquées au scénario 1.
+
+Dans ce cas, le fichier /etc/samba/smb.conf.default peut être un bon modèle de point de départ. Ajoutez également les paramètres « dos charset » et « unix charset » à la section « [global] » comme décrit au scénario 1 pour empêcher la corruption des noms de fichiers.
+
+Le fichier de configuration suivant crée un partage séparé pour chaque répertoire home d'utilisateur et il rend disponibles toutes les imprimantes disponibles sur des machines Windows : 
+
+[global]
+    workgroup = MONGROUPE
+    dos charset = cp850
+    unix charset = ISO-8859-1
+
+[homes]
+    comment = Répertoires Home
+    browseable = no
+    writable = yes
+
+[printers]
+    comment = Toutes les imprimantes
+    path = /var/spool/samba
+    browseable = no
+    guest ok = no
+    printable = yes
+Les autres paramètres que vous pourriez vouloir personnaliser dans la section « [global] » comprennent : 
+    server string =
+    security =
+    hosts allow =
+    load printers =
+    log file =
+    max log size =
+    socket options =
+    local master =
+ Reportez-vous aux commentaires dans le fichier /etc/samba/smb.conf.default pour des informations concernant ces paramètres.
+
+Vu que les démons smbd et nmbd sont nécessaires dans ce cas, installez le script de démarrage samba. Assurez-vous de lancer smbpasswd (avec l'option -a) pour ajouter des utilisateurs) pour activer et paramétrer les mots de passe des comptes ayant besoin d'un accès Samba, ou utilisez l'interface Web SWAT (voir ci-dessous) pour faire la même chose. En utilisant la fondation passdb par défaut de Samba, tout utilisateur que vous essaierez d'ajouter devra aussi exister dans le fichier /etc/passwd
+
+EXIGENCES AVANCEES
+ Des scénarios plus complexes impliquant le contrôle de domaine ou de la qualité de membre sont envisageables si on passe les bons drapeaux au script./configure lors de la construction du paquet. De tels réglages sont des sujets avancés et ne peuvent pas être traités correctement dans BLFS. De nombreux livres complets ont été écrits exclusivement sur ces thèmes. Vous devriez remarquer cependant qu'un BDC Samba ne peut pas être utilisé comme point de chute pour un PDC Windows, et réciproquement, on ne peut pas utiliser un BDC Windows comme point de chute d'un PDC Samba. En outre, dans certains scénari de membres d'un domaine, le démon winbindd et le script de démarrage correspondant sont nécessaires.
+
+Il y a très peu de documentation disponible capable de traiter bon nombre de ces configurations avancées. Pointez votre navigateur Internet vers les liens ci-dessous pour trouver une partie de la documentation incluse avec le paquet Samba : 
+Using Samba, 2nd Edition; a popular book published by O'Reilly (Utiliser Samba, 2ème édition, livre populaire publié par O'Reilly):
+ file:///usr/share/samba/swat/using_samba/toc.html
+The Official Samba HOWTO et Reference Guide (Le Guide de référence et le guide pratique de SAMBA officiels)
+ file:///usr/share/samba/swat/help/Samba-HOWTO-Collection/index.html
+Samba-3 by Example (Samba-3 par l'exemple)
+ file:///usr/share/samba/swat/help/Samba-Guide/index.html
+The Samba-3 man Pages (Les pages de man de Samba-3)
+ file:///usr/share/samba/swat/help/samba.7.html
+
+SCRIPT de démarrage:
+ Pour vous être commode, on a écrit des scripts de démarrage pour Samba. Deux sont inclus dans le paquet blfs-bootscripts-<latested>. Le premier, samba, lancera les démons smbd et nmbd nécessaires pour fournir les services SMB/CIFS. Le deuxième script, winbind, lance le démon winbindd, utilisé pour fournir les services de domaine Windows aux clients Linux.
+
+L'installation Samba par défaut utilise l'utilisateur nobody pour l'accès invité au serveur. On peut éviter cela en réglant le paramètre guest account = dans le fichier /etc/samba/smb.conf. Si vous utilisez le paramètre guest account =, assurez-vous que cet utilisateur existe dans le fichier /etc/passwd. Pour utiliser l'utilisateur par défaut, lancez les commandes suivantes en tant qu'utilisateur root : 
+
+Si necessaire:
+
+groupadd -g 99 nogroup &&
+useradd -c "Unprivileged Nobody" -d /dev/null -g nogroup     -s /bin/false -u 99 nobody
+
+Installez le script samba avec la commande suivante effectuée en tant qu'utilisateur root : 
+
+make install-samba
+
+Si vous avez aussi besoin du script winbind pour résoudre les noms depusi les clients Windows, lancez: 
+
+make install-winbindd
+
+Plus d'info sur SWAT:
+
+http://www.fr.linuxfromscratch.org/view/blfs-svn/basicnet/samba3.html
+http://www.linuxfromscratch.org/blfs/view/svn/basicnet/samba3.html

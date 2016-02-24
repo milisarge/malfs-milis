@@ -1,0 +1,17 @@
+# Description: A cross-platform networking library for SDL.
+# URL: http://www.libsdl.org/projects/SDL_net
+# Packager: fanch at nutyx dot org
+# Depends on: sdl
+
+name=sdl-net
+version=1.2.8
+release=1
+source=(http://www.libsdl.org/projects/SDL_net/release/SDL_net-$version.tar.gz)
+
+build() {
+	cd SDL_net-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
+

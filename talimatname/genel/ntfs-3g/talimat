@@ -1,0 +1,20 @@
+# Description: The Ntfs-3g package contains a stable, read-write open source driver for NTFS partitions.
+# URL: http://www.ntfs-3g.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=ntfs-3g
+version=2015.3.14
+release=1
+
+source=(http://tuxera.com/opensource/${name}_ntfsprogs-$version.tgz)
+build() {
+cd ${name}_ntfsprogs-$version
+./configure --prefix=/usr \
+--disable-static 
+make
+mkdir $PKG/lib
+make DESTDIR=$PKG install
+ln -s ../bin/ntfs-3g $PKG/sbin/mount.ntfs
+ln -s ntfs-3g.8 $PKG/usr/share/man/man8/mount.ntfs.8
+chmod -v 4755 $PKG/bin/ntfs-3g
+}

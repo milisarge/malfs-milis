@@ -1,0 +1,59 @@
+# Description: The ISC DHCP package contains both the client and server programs for DHCP.
+# URL: ftp://ftp.isc.org/isc/dhcp
+# Packager: berlius at nutyx dot com
+# Depends on:
+
+name=dhcp
+version=4.3.3	
+release=1
+source=(ftp://ftp.isc.org/isc/dhcp/4.3.3/dhcp-4.3.3.tar.gz
+		http://www.linuxfromscratch.org/patches/downloads/dhcp/dhcp-4.3.3-client_script-1.patch
+		http://www.linuxfromscratch.org/patches/downloads/dhcp/dhcp-4.3.3-missing_ipv6-1.patch
+		dhclient.conf ifconfig.eth0 dhcpd.conf )
+ 
+build() {
+
+	cd $name-$version
+	
+	   
+    source  /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2 
+
+
+	patch -Np1 -i $SRC/dhcp-4.3.3-missing_ipv6-1.patch
+
+	patch -Np1 -i $SRC/dhcp-4.3.3-client_script-1.patch 
+	CFLAGS="-D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'         \
+	        -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'               \
+	        -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'"        \
+	./configure --prefix=/usr                                           \
+	            --sysconfdir=/etc/dhcp                                  \
+	            --localstatedir=/var                                    \
+	            --with-srv-lease-file=/var/lib/dhcpd/dhcpd.leases       \
+	            --with-srv6-lease-file=/var/lib/dhcpd/dhcpd6.leases     \
+	            --with-cli-lease-file=/var/lib/dhclient/dhclient.leases \
+	            --with-cli6-lease-file=/var/lib/dhclient/dhclient6.leases 
+	make -j1
+
+	make DESTDIR=$PKG install     
+	
+	install -v -dm 755 $PKG/sbin
+              
+	mv -v $PKG/usr/sbin/dhclient $PKG/sbin 
+	install -v -m755 client/scripts/linux $PKG/sbin/dhclient-script
+
+	cp -v $SRC/dhclient.conf $PKG/etc/dhcp/dhclient.conf
+	
+	install -v -dm 755 $PKG/var/lib/dhclient
+	install -v -dm 755 $PKG/etc/sysconfig	
+	
+	cd $scripts-$scriptsversion
+	make DESTDIR=$PKG install-service-dhclient
+	
+	cp -v $SRC/ifconfig.eth0 $PKG/etc/sysconfig/ifconfig.eth0 
+	install -v -dm 755 $PKG/var/lib/dhcpd
+
+	cp -v $SRC/dhcpd.conf $PKG/etc/dhcp/dhcpd.conf 
+	make DESTDIR=$PKG install-dhcpd
+}

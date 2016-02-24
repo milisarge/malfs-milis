@@ -1,0 +1,20 @@
+# Description: Gives more easily access to internet services which says be "RESTful".
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libsoup gobject-introspection 
+
+name=librest
+version=0.7.93
+release=2
+
+source=(http://ftp.gnome.org/pub/gnome/sources/rest/${version%.*}/rest-$version.tar.xz)
+
+build() {
+cd rest-$version
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-ca-certificates=/etc/ssl/certs
+make
+make DESTDIR=$PKG install
+}

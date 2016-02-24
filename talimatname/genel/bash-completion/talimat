@@ -1,0 +1,33 @@
+# Description: Bash completion functions
+# URL: http://bash-completion.alioth.debian.org/
+# Packager: berlius at nutyx dot com
+# Depends on: 
+
+name=bash-completion
+version=2.1
+release=2
+source=(https://launchpad.net/$name/master/$version/+download/$name-$version.tar.gz)
+
+build() {
+
+    cd $name-$version
+
+    sed -i Makefile.* \
+	-e 's|pkgconfigdir = .*|pkgconfigdir = /usr/lib/pkgconfig|g' \
+	-e 's|profiledir = .*|profiledir = /etc|g'
+
+    ./configure --prefix=/usr --sysconfdir=/etc
+
+    make
+    make DESTDIR=$PKG install
+
+    mv $PKG/etc/bash_completion{.sh,}
+    chmod 0755 $PKG/usr/share/$name/bash_completion
+
+    # files allready installed
+    for FILE in cal dmesg eject hexdump hwclock ionice look renice rtcwake
+    do
+      rm $PKG/usr/share/bash-completion/completions/$FILE
+    done
+
+}

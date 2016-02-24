@@ -1,0 +1,30 @@
+# Description: Monospace bitmap font (for X11 and console)
+# URL: URL: http://sourceforge.net/projects/terminus-font/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: xorg-app xorg-fontconfig xorg-font-util 
+name=terminus-font
+version=4.39
+release=1
+
+source=(
+http://downloads.sourceforge.net/project/$name/$name-$version/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --psfdir=/usr/share/kbd/consolefonts \
+                --x11dir=/usr/share/fonts/misc
+    make
+    make DESTDIR=$PKG install
+
+    install -Dm644 75-yes-terminus.conf \
+        $PKG/etc/fonts/conf.avail/75-yes-terminus.conf
+    install -d $PKG/etc/fonts/conf.d
+    cd $PKG/etc/fonts/conf.d
+    ln -s ../conf.avail/75-yes-terminus.conf .
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

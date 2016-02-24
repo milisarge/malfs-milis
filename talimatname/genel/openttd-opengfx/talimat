@@ -1,0 +1,19 @@
+# Description: A free graphics set for openttd
+# URL: http://dev.openttdcoop.org/projects/opengfx
+# Packager: tsgeek at mailoo dot org
+# Depends on:  
+
+
+name=openttd-opengfx
+version=0.5.3
+release=1
+source=(http://bundles.openttdcoop.org/opengfx/releases/${version}/opengfx-${version}.zip)
+
+build() {
+    cd ${SRC}
+    tar xvf opengfx-${version}.tar
+    cd opengfx-${version}
+    install -d ${PKG}/usr/share/openttd/data   
+    install -m644 *.grf ${PKG}/usr/share/openttd/data
+    install -m644 *.obg ${PKG}/usr/share/openttd/data
+}

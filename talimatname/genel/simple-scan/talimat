@@ -1,0 +1,18 @@
+# Description: Simple scanning interface utility
+# URL: https://launchpad.net/simple-scan/
+# Packagers: pierre at nutyx dot org
+# Depends on: gtk3 colord itstool sane dconf intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
+
+name=simple-scan
+version=3.12.2
+release=1
+
+source=(https://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--disable-schemas-compile
+	make
+	make DESTDIR=$PKG install
+}

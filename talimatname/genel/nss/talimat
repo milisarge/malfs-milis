@@ -1,0 +1,35 @@
+# Description: Support cross-platform development of security-enabled client and server applications.
+# URL: http://www.mozilla.org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: nspr sqlite 
+
+name=nss
+version=3.22
+release=1
+
+source=( http://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_${version//./_}_RTM/src/nss-$version.tar.gz \
+	 http://www.linuxfromscratch.org/patches/blfs/svn/nss-$version-standalone-1.patch )
+
+build () {
+	cd $name-$version
+	patch -Np1 -i ../nss-$version-standalone-1.patch
+	cd nss
+# Compilation
+	make -j1 nss_build_all BUILD_OPT=1     		     \
+  		NSPR_INCLUDE_DIR=/usr/include/nspr           \
+  		USE_SYSTEM_ZLIB=1                            \
+  		ZLIB_LIBS=-lz                                \
+  		$([ $(uname -m) = x86_64 ] && echo USE_64=1) \
+  		$([ -f /usr/include/sqlite3.h ] && echo NSS_USE_SYSTEM_SQLITE=1)
+
+# Installation
+	mkdir -p $PKG/usr/{bin,lib{,/pkgconfig},include}
+	cd ../dist
+	install -v -m755 Linux*/lib/*.so $PKG/usr/lib
+	install -v -m644 Linux*/lib/{*.chk,libcrmf.a} $PKG/usr/lib
+	install -v -m755 -d $PKG/usr/include/nss
+	cp -v -RL {public,private}/nss/* $PKG/usr/include/nss
+	chmod 644 $PKG/usr/include/nss/*
+	install -v -m755 Linux*/bin/{certutil,nss-config,pk12util} $PKG/usr/bin
+	install -v -m644 Linux*/lib/pkgconfig/nss.pc $PKG/usr/lib/pkgconfig
+}

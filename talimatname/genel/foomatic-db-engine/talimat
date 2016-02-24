@@ -1,0 +1,18 @@
+# Description: Foomatic - Foomatic's database engine generates PPD files from the data in Foomatic's XML database. It also contains scripts to directly generate print queues and handle jobs.
+# URL: http://www.linuxprinting.org/foomatic.html
+# Packager: pierre at nutyx dot org
+# Depends on: libxml2 cups 
+description="Foomatic's database engine generates PPD files from the data in Foomatic's XML database."
+name=foomatic-db-engine
+version=4.0.20150819
+release=1
+_version=4.0-20150819
+
+source=(http://www.openprinting.org/download/foomatic/$name-${_version}.tar.gz)
+
+build() {
+	cd $name-*
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

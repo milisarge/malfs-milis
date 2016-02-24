@@ -1,0 +1,34 @@
+# Description: A featureful, general-purpose sound server
+# URL: http://www.pulseaudio.org
+# Packager: pierre at nutyx dot org
+# Depends on: fftw intltool json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate 
+
+
+name=pulseaudio
+version=7.1
+release=1
+
+source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz)
+
+
+build() {
+unset MAKEFLAGS
+cd pulseaudio-$version
+
+sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
+
+./configure --prefix=/usr         \
+            --sysconfdir=/etc     \
+            --localstatedir=/var  \
+            --disable-bluez4      \
+            --disable-rpath       \
+            --with-module-dir=/usr/lib/pulse/modules
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/usr/share/icons/hicolor/scalable/devices
+for size in 16 22 32 48 64 128; do
+    mkdir -p $PKG/usr/share/icons/hicolor/${size}x${size}/{apps,devices}
+    ln -s ../apps/pulseaudio.png $PKG/usr/share/icons/hicolor/${size}x${size}/devices/audio-backend-pulseaudio.png
+done
+rm -f $PKG/etc/dbus-1/system.d/pulseaudio-system.conf
+}

@@ -1,0 +1,25 @@
+# Begin /etc/xinetd.d/echo
+
+service echo
+{
+   disable     = yes
+   type        = INTERNAL
+   id          = echo-stream
+   socket_type = stream
+   protocol    = tcp
+   user        = root
+   wait        = no
+}
+
+service echo
+{
+   disable     = yes
+   type        = INTERNAL
+   id          = echo-dgram
+   socket_type = dgram
+   protocol    = udp
+   user        = root
+   wait        = yes
+}
+
+# End /etc/xinetd.d/echo

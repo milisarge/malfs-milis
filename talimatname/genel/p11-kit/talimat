@@ -1,0 +1,22 @@
+# Description: Provides a way to load and enumerate PKCS 11 modules.
+# URL: http://p11-glue.freedesktop.org/p11-kit.html
+# Packager: pierre at nutyx dot org
+# Depends on: libffi libtasn1
+
+name=p11-kit
+version=0.23.2
+release=1
+
+source=(http://p11-glue.freedesktop.org/releases/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+rm -r $PKG/usr/share
+if [ -f $PKG/etc/pkcs11/pkcs11.conf.example ]; then
+	mv $PKG/etc/pkcs11/pkcs11.conf{.example,}
+fi
+}

@@ -1,0 +1,22 @@
+# Description: Choose a variant to serve
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-http-message 
+run=( perl )
+name=perl-http-negotiate
+version=6.01
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Negotiate-$version.tar.gz)
+
+build() {
+cd HTTP-Negotiate-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

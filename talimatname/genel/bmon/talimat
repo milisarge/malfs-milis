@@ -1,0 +1,23 @@
+# Description: Network bandwidth monitor.
+# URL:         http://freshmeat.net/projects/bmon
+# Packager:    berlius at nutyx dot com
+# Depends on:  ncurses
+
+name=bmon
+version=2.1.0
+release=1
+source=(http://crux.ster.zone/downloads/$name/$name-$version.tar.gz
+	$name-$version-gcc4.diff)
+
+build() {
+
+	cd $name-$version
+	
+	patch -p1 -i $SRC/$name-$version-gcc4.diff
+	./configure --prefix=/usr
+	
+	make
+	make DESTDIR=$PKG install
+}
+
+

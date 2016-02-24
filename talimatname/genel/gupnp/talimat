@@ -1,0 +1,19 @@
+# Description:  	An object-oriented UPNP framework
+# URL: http://gupnp.org/
+# Maintainer: NuTyX core team
+# Packager: fanchyannmaria at orange dot fr
+# Depends on: gssdp, util-linux
+
+name=gupnp
+version=0.20.14
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/${name}/${version%.*}/${name}-${version}.tar.xz)
+
+build() {
+cd $name-$version
+sed -i '1s|^#!.*python$|&2|' tools/gupnp-binding-tool
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+              --disable-static --with-context-manager=linux
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,19 @@
+# Description: The Qpdf package contains command-line programs and library that do structural, content-preserving transformations on PDF files.
+# URL: http://qpdf.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: pcre libxslt
+
+description="Prog. and Lib. that do structural, content-preserving transformations on PDF files."
+name=qpdf
+version=6.0.0
+release=1
+source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/$name-$version
+make 
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,23 @@
+# Description: A powerful HTML editor for experienced web designers and programmers
+# URL: http://bluefish.openoffice.nl/
+# Maintainer: Olivier Sessink
+# Packager: tnut at nutyx dor org
+# Depends on: pcre enchant gtk2 desktop-file-utils
+
+name=bluefish
+version=2.2.8
+release=1
+
+source=(http://www.bennewitz.com/bluefish/stable/source/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--with-freedesktop_org-menu=/usr/share/applications \
+--with-freedesktop_org-mime=/usr/share/mime \
+--with-icon-path=/usr/share/pixmaps \
+--disable-update-databases \
+--without-libgnomeui \
+--docdir=/usr/share/doc/$name-$version
+make
+make DESTDIR=$PKG install
+}

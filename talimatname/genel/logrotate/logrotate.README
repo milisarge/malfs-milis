@@ -1,0 +1,56 @@
+# from http://www.linuxfromscratch.org/hints/downloads/files/logrorate.txt
+
+When installing sysklogd, the LFS book defines some predefined log files in
+"/etc/syslog.conf". We can rotate those files by adding their definitions to
+logrotate.conf. So, to add them, run this command:
+        for logfile in $(find /var/log/* -type f); do
+                echo "$logfile {" >> /etc/logrotate.conf
+                echo "# If the log file is larger" \
+                  "than 100kb, rotate it" >> /etc/logrotate.conf"
+                echo "  size=100k" >> /etc/logrotate.conf
+                echo "}" >> /etc/logrotate.conf
+                echo "" >> /etc/logrotate.conf
+        done
+
+For details on editing this file, see logrotate(8).
+
+
+Logrotate as a Cron job
+=======================
+
+You can run logrotate just issuing "/usr/sbin/logrotate /etc/logrotate.conf"
+but in this case, you should run that command by yourself, every day (or
+week, or month...), if you want the program to work properly. This can be
+very annoying :-).
+
+Instead, you can run it as a cron job. For the further configuration,
+I will assume that you have installed Fcron from the BLFS book.
+
+Create a /etc/fcrontab file by issuing this command:
+        cat >> /etc/fcrontab << EOF
+        0 12 * * * 0    /usr/sbin/logrotate /etc/logrotate.conf
+        EOF
+This will make fcron execute logrotate once a week, on Sunday, at noon.
+For details on editing fcrontab, refer to fcrontab(1).
+
+You will need the "check_system_crontabs" script from the fcron sources. If
+you haven't installed it, do it by issuing:
+        tar xzf fcron-3.0.1.tar.gz
+        cp -v fcron-3.0.1/scripts/check_system_crontabs /usr/sbin
+
+Then run the script:
+        check_system_crontabs -v
+For help, type this:
+        check_system_crontabs -h
+
+
+ACKNOWLEDGEMENTS:
+        * Alexander E. Patrakov, for pointing me for the BLFS
+version of
+          popt (Before I used the popt included in Slackware 10.1)
+
+
+VERSION:        1.1
+
+CHANGELOG:      1.00 First release
+                1.1 Corrected popt section, fixed typos.

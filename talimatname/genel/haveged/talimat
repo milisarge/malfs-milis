@@ -1,0 +1,30 @@
+# Description: Daemon that generates an unpredictable stream of random numbers and feeds the /dev/random 
+# URL:         	http://www.issihosts.com/haveged/
+# Packager:		berlius at nutyx dot com
+# Depends on:  	
+
+name=haveged
+version=1.9.1
+release=1
+
+source=(http://downloads.sourceforge.net/project/haveged/$name-$version.tar.gz)
+
+build () {
+
+    cd $name-$version
+    
+    source  /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2 
+    
+    ./configure --prefix=/usr 
+    make
+	make DESTDIR=$PKG install
+
+	cd $scripts-$scriptsversion
+	make DESTDIR=$PKG install-haveged
+	
+	mkdir -pv    $PKG/usr/share/doc/haveged-1.9.1 
+	cp -v README $PKG/usr/share/doc/haveged-1.9.1
+
+}

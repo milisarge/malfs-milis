@@ -1,0 +1,17 @@
+# Description: Framework focused on making media discovery and browsing easy for application developers.
+# URL: http://www.gnome.org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: gtk3 libxml2 libsoup gobject-introspection vala
+
+name=grilo
+version=0.2.4
+release=2
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc --disable-static --disable-debug \
+--libdir=/usr/lib
+make
+make DESTDIR=$PKG install
+}

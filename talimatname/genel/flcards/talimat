@@ -1,0 +1,18 @@
+# Description: Graphical version of the NuTyX cards package manager
+# Url: https://github.com/NuTyX/cards
+# Maintainer: tnut at nutyx dot org
+# Packager: tnut at nutyx dot org
+# Depends on : libcards ssh-askpass xorg-proto fltk1 xorg-libx11 xorg-libxext xorg-libxfixes xorg-libxft xorg-libxinerama xorg-mesa
+
+run=(ssh-askpass)
+name=flcards
+version=1.99.7
+release=1
+
+source=(http://downloads.nutyx.org/files/cards-$version.tar.gz)
+build() {
+cd cards-$version
+make flcards
+cd fltk
+make DESTDIR=$PKG install
+}

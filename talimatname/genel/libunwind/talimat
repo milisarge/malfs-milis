@@ -1,0 +1,19 @@
+# Description: 	Define a portable and efficient C API to determine the call-chain of a program.
+# URL:         	http://www.nongnu.org/libunwind/
+# Packager: 	berlius at nutyx dot com
+# Depends on:
+
+name=libunwind
+version=1.1
+release=1
+
+source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+
+	cd $name-$version/
+	./configure --prefix=/usr --mandir=/usr/man/
+	make
+	make -j1 DESTDIR=$PKG PREFIX=/usr install
+	
+}

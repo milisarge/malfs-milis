@@ -1,0 +1,29 @@
+Here are the optionnal deps which you can choose to install or not:
+
+- file: for determining file types
+- The python module chardet, in case of encoding detection problems
+- "sudo" to use the "run as root"-feature
+- w3m for previewing images in "true color".
+
+And, for enhanced file previews (with "scope.sh"):
+
+- img2txt (from caca-utils) for previewing images in ASCII-art
+- highlight for syntax highlighting of code
+- atool for previews of archives
+- lynx, w3m or elinks for previews of html pages
+- pdftotext for pdf previews
+- transmission-show for viewing bit-torrent information
+- mediainfo or exiftool for viewing information about media files
+
+Note: previewing images in "true color" is disabled by default. To enable it,
+first make sure you have w3m installed, then check that your terminal supports it.
+It was successfully tested with urxvt and xterm, while it did not work with
+gnome-terminal and st. Currently it does not work with tmux but with screen.
+Finally, add this line to your ~/.config/ranger/rc.conf and restart ranger:
+
+set preview_images true
+
+Note: to use custom file previews, you need ranger 1.3.1 or later, and a script
+that creates previews. Use the default script by typing:
+
+ranger --copy-config=scope

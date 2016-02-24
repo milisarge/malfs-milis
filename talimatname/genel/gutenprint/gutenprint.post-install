@@ -1,0 +1,3 @@
+if [ -f /etc/rc.d/init.d/cups ]; then
+	/etc/rc.d/init.d/cups restart
+fi

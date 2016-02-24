@@ -1,0 +1,2 @@
+usr/bin/gtk-query-immodules-3.0 --update-cache
+usr/bin/glib-compile-schemas usr/share/glib-2.0/schemas  > /dev/null 2>&1

@@ -1,0 +1,27 @@
+Pour lancer le service rsync, 2 choix:
+
+- 1. installer soit le port: rsync.service
+- 2. http://www.linuxfromscratch.org/blfs/view/svn/basicnet/rsync.html
+     En bas de la page, télécharger et lancer
+	  make install-rsyncd dans le dossier où sont les fichiers extraits.
+
+Voici un fichier de configuration basique:
+
+cat > /etc/rsyncd.conf << "EOF"
+# This is a basic rsync configuration file
+# It exports a single module without user authentication.
+
+motd file = /home/rsync/welcome.msg
+use chroot = yes
+
+[localhost]
+    path = /home/rsync
+    comment = Default rsync module
+    read only = yes
+    list = yes
+    uid = rsyncd
+    gid = rsyncd
+
+EOF
+
+Vous trouverez plus d'information sur http://rsync.samba.org/documentation.html

@@ -1,0 +1,15 @@
+# URL: http://www.abisource.com/
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: boost cairo aspell fribidi enchant wv librsvg gtk2 redland rasqal desktop-file-utils gtk3
+description="Word processing similar to MS® Word, suitable for a wide variety of word processing tasks"
+name=abiword
+version=3.0.1
+release=3
+
+source=(http://www.abisource.com/downloads/$name/$version/source/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

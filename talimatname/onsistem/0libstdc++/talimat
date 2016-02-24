@@ -1,0 +1,21 @@
+version=5.3.0
+source=(\
+http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.bz2 )
+
+build()
+{
+cd  gcc-$version
+mkdir -pv build
+cd build
+
+../libstdc++-v3/configure           \
+    --host=$LFS_TGT                 \
+    --prefix=/tools                 \
+    --disable-multilib              \
+    --disable-nls                   \
+    --disable-libstdcxx-threads     \
+    --disable-libstdcxx-pch         \
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/$version
+make
+make install
+}

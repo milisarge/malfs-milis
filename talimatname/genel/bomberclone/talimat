@@ -1,0 +1,28 @@
+# Description: A clone of Atomic Bomberman (SDL/MultiPlayer/Network).
+# URL: http://www.bomberclone.de/
+# Packager: berlius at nutyx dot com
+# Depends on: sdl-mixer sdl-image
+
+name=bomberclone
+version=0.11.9
+release=1
+source=(http://downloads.sourceforge.net/project/$name/$name/$name-$version.tar.gz)
+
+build() {
+
+	cd $name-$version
+
+	sed -i -e '/^packagedatadir=/s|share/games/${PACKAGE}|share/${PACKAGE}|' configure
+
+	./configure \
+		--prefix=/usr \
+		--disable-debug \
+		--disable-werror \
+		--disable-dependency-tracking
+
+	make LDFLAGS+="-lm"
+	make DESTDIR=$PKG install
+
+}
+
+

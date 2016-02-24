@@ -1,0 +1,15 @@
+# Description: Text-mode interface for Git.
+# Packager: tnut at nutyx dot org
+# Url: http://jonas.nitro.dk/tig/
+# Depends on: asciidoc xmlto
+
+name=tig
+version=2.1.1
+release=1
+source=(http://jonas.nitro.dk/${name}/releases/${name}-${version}.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc
+make
+make DESTDIR=$PKG install install-doc-man
+}

@@ -1,0 +1,36 @@
+# Description: A mail filter to identify spam
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl openssl zlib re2c perl-net-dns perl-io-socket-ssl perl-libwww perl-mail-spf perl-http-message perl-net-http perl-io-socket-inet6 perl-mail-dkim perl-crypt-ssleay razor perl-dbi 
+run=( re2c perl-net-dns perl-io-socket-ssl perl-libwww perl-mail-spf perl-http-message perl-net-http perl-io-socket-inet6 perl-mail-dkim perl-crypt-ssleay razor perl-dbi )
+
+name=spamassassin
+version=3.4.1
+release=1
+
+source=("http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-$version.tar.gz"{,.asc}
+        spamassassin.service 
+	spamassassin-net-dns-01.patch)
+
+build() {
+cd Mail-SpamAssassin-$version
+
+sed -i t/sa_compile.t \
+-e 's#^my $temp_binpath = $Config{sitebinexp};#my $temp_binpath = "/bin/site_perl/";#'
+
+patch -p3 -i $SRC/spamassassin-net-dns-01.patch
+
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor \
+      CONTACT_ADDRESS=root@localhost ENABLE_SSL=yes PERL_TAINT=no
+ 
+make
+make DESTDIR=$PKG install
+
+install -D -m644 $SRC/spamassassin.service $PKG/usr/lib/systemd/system/spamassassin.service
+install -d -o 182 -g 182 -m 755 $PKG/var/lib/spamassassin
+
+find $PKG \
+        -name '*.bs' -or \
+        -name .packlist -or \
+        -name perllocal.pod | xargs rm
+}

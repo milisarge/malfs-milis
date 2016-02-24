@@ -1,0 +1,21 @@
+# Description: C++ based class library for building Graphical User Interfaces
+# URL: http://www.fox-toolkit.org/
+# Maintainers Jeroen van de Zijp <jeroen at fox-toolkit dot com>
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: xorg-libxcursor xorg-libxft xorg-libxrandr xorg-libxxf86vm xorg-mesa cups xorg-glu
+
+name=fox
+version=1.6.50
+release=1
+
+source=(ftp://ftp.fox-toolkit.org/pub/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+	--mandir=/usr/share/man \
+	--with-xft=yes \
+	--with-opengl=yes
+	make
+	make DESTDIR=$PKG install
+}

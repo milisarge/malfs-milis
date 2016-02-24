@@ -1,0 +1,29 @@
+# Description: Tools for maintaining centralized SGML catalogs.
+# URL: URL: http://www.docbook.org/xml/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+name=sgml-common
+version=0.6.3
+release=1
+
+source=(
+ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/sgml-common-$version.tgz
+http://www.linuxfromscratch.org/patches/blfs/7.5/sgml-common-$version-manpage-1.patch)
+
+build(){
+    cd $name-$version
+    patch -Np1 -i ../sgml-common-$version-manpage-1.patch &&
+    autoreconf -f -i
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc
+    make
+    make DESTDIR=$PKG install
+
+    # fix doc dir
+    mv $PKG/usr/doc $PKG/usr/share/doc
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

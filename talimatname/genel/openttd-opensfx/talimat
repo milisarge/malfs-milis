@@ -1,0 +1,21 @@
+# Description: Free sound set for openttd
+# URL: http://www.openttd.org
+# Packager:  tsgeek at mailoo dot org
+# Depends on:  
+
+
+name=openttd-opensfx
+version=0.2.3
+release=1
+source=(http://bundles.openttdcoop.org/opensfx/releases/opensfx-${version}.zip)
+
+build() {
+	cd ${SRC}/opensfx-${version}
+
+	chmod 0644 *
+
+	mkdir -pm0755 ${PKG}/usr/share/openttd/data   
+	cp opensfx.* ${PKG}/usr/share/openttd/data/
+	install -Dm644 license.txt ${PKG}/usr/share/licenses/${name}/license
+	install -Dm644 readme.txt ${PKG}/usr/share/licenses/${name}/readme
+}

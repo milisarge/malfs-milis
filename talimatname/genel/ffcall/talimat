@@ -1,0 +1,16 @@
+# Description: C library for implementing foreign function calls in embedded interpreters
+# URL: http://www.gnu.org/software/libffcall/
+# Packager: tnut at nutyx dot org
+
+name=ffcall
+version=1.10
+release=1
+source=(http://www.haible.de/bruno/gnu/${name}-${version}.tar.gz)
+build() {
+cd $name-$version
+[ "`uname -m`" = "x86_64" ] && CONFIGFLAG="--with-pic"
+./configure --prefix=/usr --mandir=/usr/share/man $CONFIGFLAG
+make || make -j1
+install -d $PKG/usr/share/{man,doc/ffcall-$version}
+make DESTDIR=$PKG htmldir=/usr/share/doc/ffcall-$version install
+}

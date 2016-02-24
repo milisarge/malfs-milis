@@ -1,0 +1,36 @@
+# Description: Programs for basic and advanced network routing.
+# URL: http://linux-net.osdl.org/index.php/Iproute2
+# Packager: pierre at nutyx dot org
+PKGMK_GROUPS=(devel man doc)
+
+name=iproute2
+version=4.4.0
+release=1
+
+source=(http://www.kernel.org/pub/linux/utils/net/$name/iproute2-$version.tar.xz)
+
+build()
+{
+cd iproute2-$version
+sed -i '/^TARGETS/s@arpd@@g' misc/Makefile
+sed -i /ARPD/d Makefile
+sed -i 's/arpd.8//' man/man8/Makefile
+
+sed -i 's/tipc //' Makefile
+
+make SBINDIR=/sbin MANDIR=/usr/share/man INFODIR=/usr/share/info \
+	DESTDIR=$PKG 
+make SBINDIR=/sbin MANDIR=/usr/share/man \
+	INFODIR=/usr/share/info DESTDIR=$PKG \
+     DOCDIR=/usr/share/doc/iproute2-$version install
+rm -rf $PKG/usr/share/info/dir
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
+usr/lib
+
+rm -r usr/lib
+}

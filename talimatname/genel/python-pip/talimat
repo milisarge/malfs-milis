@@ -1,0 +1,22 @@
+# Description: python-pip (easy_install replacement to install pypi python packages)
+# URL: URL: http://www.pip-installer.org
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python python-setuptools 
+name=python-pip
+version=1.5.6
+release=1
+
+source=(http://pypi.python.org/packages/source/p/pip/pip-$version.tar.gz)
+
+build() {
+    cd pip-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+
+    mkdir -p $PKG/usr/share/doc/$name-$version
+    cp -Rf docs/* $PKG/usr/share/doc/$name-$version 
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

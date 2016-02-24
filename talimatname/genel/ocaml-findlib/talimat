@@ -1,0 +1,24 @@
+# Description: O'Caml library manager
+# URL: http://projects.camlcity.org/projects/findlib.html
+# Packager: berlius at nutyx dot com
+# Depends on: ocaml
+
+name=ocaml-findlib
+_name=findlib
+version=1.5.6
+release=1
+source=(http://download.camlcity.org/download/${_name}-$version.tar.gz)
+
+build() {
+
+    cd ${_name}-$version
+    
+    ./configure -bindir /usr/bin \
+                -config /etc/findlib.conf
+                
+    export prefix=$PKG
+    make -j1
+    make opt
+    make install
+    
+}

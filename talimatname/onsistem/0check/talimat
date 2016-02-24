@@ -1,0 +1,14 @@
+name=check
+version=0.10.0
+source=(http://sourceforge.net/projects/check/files/check/$version/$name-$version.tar.gz )
+build()
+{
+cd $name-$version
+
+PKG_CONFIG= ./configure --prefix=/tools
+
+make
+
+make install
+
+}

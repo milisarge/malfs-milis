@@ -1,0 +1,22 @@
+# Description: Libraries used by other programs for reading and writing PNG files.
+# URL: http://www.libpng.org/pub/png/libpng.html
+# Packager: tnut at nutyx dot org
+# Depends on: 
+
+name=libpng
+version=1.6.21
+release=1
+
+source=( http://downloads.sourceforge.net/$name/$name-$version.tar.xz \
+	 http://downloads.sourceforge.net/project/apng/libpng/libpng16/$name-$version-apng.patch.gz)
+
+build() {
+cd $name-$version
+gzip -cd ../$name-$version-apng.patch.gz | patch -p0
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,25 @@
+# Description: A documentation system for C++, C, Java, IDL and PHP
+# URL:  http://www.doxygen.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python cmake
+
+name=doxygen
+version=1.8.11
+release=1
+
+source=(http://ftp.stack.nl/pub/$name/$name-$version.src.tar.gz)
+build() {
+cd $name-$version
+mkdir -v build
+cd build
+cmake -G "Unix Makefiles" \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_INSTALL_PREFIX=/usr \
+..
+make
+
+make DESTDIR=$PKG install
+
+mkdir -p $PKG/usr/share/man/man1
+install -vm644 ../doc/*.1 $PKG/usr/share/man/man1
+}

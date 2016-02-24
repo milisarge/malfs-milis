@@ -1,0 +1,16 @@
+version=6.1
+source=(\
+http://ftp.gnu.org/gnu/texinfo/texinfo-$version.tar.xz)
+
+build()
+{
+cd texinfo-*
+
+./configure --prefix=/tools
+
+make
+
+make install
+	
+
+}

@@ -1,0 +1,22 @@
+# Description: GTK+ implementation of wxWidgets API for GUI
+# URL: http://wxwidgets.org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: gtk2 gstreamer-plugins-base xorg-mesa xorg-libsm xorg-libxxf86vm sdl
+
+name=wxgtk
+version=3.0.2
+release=2
+
+source=(http://downloads.sourceforge.net/wxwindows/wxWidgets-$version.tar.bz2
+	make-abicheck-non-fatal.patch)
+build() {
+cd wxWidgets-$version
+patch -Np1 -i ../make-abicheck-non-fatal.patch
+./configure --prefix=/usr --libdir=/usr/lib --with-gtk=2 --with-opengl --enable-unicode \
+--enable-graphics_ctx  --enable-mediactrl --enable-webview --with-regex=builtin \
+--with-libpng=sys --with-libxpm=sys --with-libjpeg=sys --with-libtiff=sys \
+--disable-precomp-headers
+make
+make -C locale allmo
+make DESTDIR=$PKG install
+}

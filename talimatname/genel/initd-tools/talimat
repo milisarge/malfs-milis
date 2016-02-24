@@ -1,0 +1,23 @@
+# Description: The initd-tools package contains programs to install and remove LSB based bootscripts. 
+# URL: http://people.freedesktop.org/~dbn/initd-tools/releases/initd-tools-0.1.3.tar.gz
+# Packager: berlius at nutyx dot com
+# Depends on:
+
+
+name=initd-tools
+version=0.1.3	
+release=1
+source=(http://people.freedesktop.org/~dbn/initd-tools/releases/$name-$version.tar.gz)
+ 
+build() {
+
+	cd $name-$version
+	
+	./configure --prefix=/ --mandir=/usr/share/man 
+	
+	make
+
+	make DESTDIR=$PKG install
+	
+	
+}

@@ -1,0 +1,22 @@
+# Description: Nearly transparent SSL encapsulation for IO::Socket::INET
+# URL: http://search.cpan.org/dist/IO-Socket-SSL/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-net-ssleay perl-uri 
+run=( perl )
+name=perl-io-socket-ssl
+version=1.988
+release=1
+
+source=(http://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-$version.tar.gz)
+
+build() {
+cd IO-Socket-SSL-$version
+yes | perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+find $PKG \
+        -name '*.bs' -or \
+        -name .packlist -or \
+        -name perllocal.pod | xargs rm
+}

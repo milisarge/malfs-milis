@@ -1,0 +1,21 @@
+# Description: Perl connector for glib
+# URL: http://www.gtkperl.org
+# Packager: pierre at nutyx dot org
+# Depends on: perl-extutils-depends gobject-introspection perl-extutils-pkgconfig 
+run=( perl )
+name=perl-glib
+version=1.304
+release=1
+
+source=(http://www.cpan.org/authors/id/X/XA/XAOC/Glib-$version.tar.gz)
+
+build() {
+	cd Glib-$version
+	perl Makefile.PL
+	make
+	make DESTDIR=$PKG install
+	find $PKG \
+	-name perllocal.pod \
+	-o -name .packlist | xargs rm 
+	rm $PKG -empty | xargs rmdir -p ||:
+}

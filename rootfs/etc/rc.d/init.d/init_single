@@ -1,0 +1,33 @@
+#!/bin/sh
+
+. /lib/lsb/init-functions
+
+case ${1} in
+  start)
+         do_mount_virtualfs || exit 1
+         do_load_modules || exit 1
+         do_start_udev || exit 1
+         do_start_checkfs || exit 1
+         do_start_mountfs || exit 1
+		 #yukleme talimat
+         do_start_clock || exit 1
+         do_start_cleanfs || exit 1
+         do_start_udev_retry || exit 1
+         do_start_swap || exit 1
+         do_start_console || exit 1
+         do_start_sysctl || exit 1
+         ;;
+   stop)
+         do_stop_clock
+         do_stop_swap
+         do_stop_network
+         do_stop_mountfs
+         do_stop_localnet
+         ;;
+   *)
+         echo "Usage: ${0} {start|stop}"
+         exit 1
+         ;;
+esac
+
+exit 0

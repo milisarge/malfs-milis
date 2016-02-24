@@ -1,0 +1,63 @@
+# Description: A small and fast file manager which can optionally manage the desktop background and panels
+# URL: http://roscidus.com/desktop/ROX-Filer
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: xorg-libsm libglade shared-mime-info
+
+description="Small and fast file manager which can optionally manage the desktop background and panels"
+name=rox-filer
+version=2.11
+release=2
+
+source=(http://downloads.sourceforge.net/rox/rox-filer-2.11.tar.bz2)
+
+build() {
+cd $name-$version/ROX-Filer
+sed -i 's:g_strdup(getenv("APP_DIR")):"/usr/share/rox":' src/main.c
+mkdir build
+pushd build 
+../src/configure LIBS="-lm -ldl"
+make
+popd
+
+mkdir -p $PKG/usr/{bin,share/{applications,pixmaps,rox,man/man1}}
+
+cp -av Help Messages Options.xml ROX images style.css .DirIcon \
+$PKG/usr/share/rox
+
+cp -av ../rox.1 \
+$PKG/usr/share/man/man1
+
+cp -v  ROX-Filer $PKG/usr/bin/rox
+
+chown -Rv root:root $PKG/
+
+cd $PKG/usr/share/rox/ROX/MIME
+
+ln -sv text-x-{diff,patch}.png
+ln -sv application-x-font-{afm,type1}.png
+ln -sv application-xml{,-dtd}.png
+ln -sv application-xml{,-external-parsed-entity}.png
+ln -sv application-{,rdf+}xml.png
+ln -sv application-x{ml,-xbel}.png
+ln -sv application-{x-shell,java}script.png
+ln -sv application-x-{bzip,xz}-compressed-tar.png
+ln -sv application-x-{bzip,lzma}-compressed-tar.png
+ln -sv application-x-{bzip-compressed-tar,lzo}.png
+ln -sv application-x-{bzip,xz}.png
+ln -sv application-x-{gzip,lzma}.png
+ln -sv application-{msword,rtf}.png
+ln -s ../rox/.DirIcon $PKG/usr/share/pixmaps/rox.png
+
+cat > $PKG/usr/share/applications/rox.desktop << "HERE_DOC"
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Rox
+Comment=The Rox File Manager
+Icon=rox
+Exec=rox
+Categories=GTK;Utility;Application;System;Core;
+StartupNotify=true
+Terminal=false
+HERE_DOC
+}

@@ -1,0 +1,11 @@
+si necessaire faire en root:
+useradd -c "Print Service User" -d /var/spool/cups -g lp -s /bin/false -u 9 lp
+
+groupadd -g 19 lpadmin
+
+usermod -a -G lpadmin <username>
+
+Une fois installé:
+Créez le fichier de configuration de base du client Cups en lançant la commande suivante:
+
+echo "ServerName /var/run/cups/cups.sock" > /etc/cups/client.conf

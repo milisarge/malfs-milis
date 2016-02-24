@@ -1,0 +1,22 @@
+# Description: perl module
+# URL: http://www.gtkperl.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
+run=( perl )
+name=perl-extutils-depends
+version=0.304
+release=1
+
+source=(http://www.cpan.org/authors/id/F/FL/FLORA/ExtUtils-Depends-$version.tar.gz)
+
+build() {
+	cd ExtUtils-Depends-$version
+	perl Makefile.PL
+	make
+	make DESTDIR=$PKG install
+	find $PKG \
+		-name perllocal.pod \
+		-o -name .packlist | xargs rm
+	find $PKG -empty | xargs rmdir -p ||:
+
+}

@@ -1,0 +1,27 @@
+# Description:	The lsof package is useful to List Open Files for a given running application or process. 
+# URL:			ftp://sunsite.ualberta.ca/pub/Mirror/lsof
+# Packager:		berlius at nutyx dot com
+# Depends on:	libtirpc
+
+name=lsof
+version=4.89
+release=1
+
+source=(ftp://sunsite.ualberta.ca/pub/Mirror/lsof/$name\_$version.tar.bz2)
+
+build () {
+
+	cd $name\_$version
+
+	tar -xf lsof_4.89_src.tar  
+	cd lsof_4.89_src           
+	./Configure -n linux       
+	make CFGL="-L./lib -ltirpc"
+	
+	install -v -m755 -d $PKG/usr/bin
+	install -v -m755 -d $PKG/usr/share/man/man8 
+	
+	install -v -m0755 -o root -g root lsof $PKG/usr/bin 
+	install -v lsof.8 $PKG/usr/share/man/man8
+	
+}

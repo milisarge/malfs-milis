@@ -1,0 +1,15 @@
+# Description: xorg lib libxshmfence
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-libx11 
+name=xorg-libxshmfence
+version=1.2
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libxshmfence-$version.tar.bz2)
+build() {
+cd libxshmfence-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

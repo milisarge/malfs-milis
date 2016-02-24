@@ -1,0 +1,6 @@
+echo "senkron DD"
+sync
+echo "islem devam ediyor ..."
+sleep 3
+echo "islem tamam"
+echo 3 > /proc/sys/vm/drop_caches

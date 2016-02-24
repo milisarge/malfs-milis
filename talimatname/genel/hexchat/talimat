@@ -1,0 +1,23 @@
+# Description: HexChat is an IRC chat program. It allows you to join multiple IRC channels (chat rooms) at the same time, talk publicly, have private one-on-one conversations, etc. File transfers are also possible. 
+# URL: https://dl.hexchat.net/hexchat	
+# Packager: berlius at nutyx dot com
+# Depends on: glib gtk2 dbus libnotify libcanberra openssl pciutils
+
+description="IRC chat program. It allows you to join multiple IRC channels at the sametime"
+name=hexchat
+version=2.10.2	
+release=1
+source=(https://dl.hexchat.net/hexchat/$name-$version.tar.xz)
+ 
+build() {
+
+	cd $name-$version
+	
+	./configure --prefix=/usr 
+	
+	make
+	
+	make DESTDIR=$PKG install
+	
+	
+}

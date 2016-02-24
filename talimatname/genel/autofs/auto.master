@@ -1,0 +1,6 @@
+# Begin /etc/auto.master
+
+/media/auto  /etc/auto.misc  --ghost
+#/home        /etc/auto.home
+
+# End /etc/auto.master

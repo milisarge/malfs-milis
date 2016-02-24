@@ -1,0 +1,15 @@
+git
+mdadm
+btrfs-progs
+reiserfsprogs
+xfsprogs
+libtirpc
+rpcbind
+nfs-utils
+jfsutils
+dhcpcd
+linux-firmware
+kernel
+dracut
+vim
+nano

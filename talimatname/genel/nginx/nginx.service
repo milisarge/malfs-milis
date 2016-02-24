@@ -1,0 +1,55 @@
+#!/bin/sh
+########################################################################
+# Begin nginx.service
+#
+# Description : nginx init script
+#
+# Author      : alienus at nutyx dot org
+#
+# Version     : LFS 7.5
+#
+# Notes       : NuTyX saravane
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            nginx init script
+# Required-Start:
+# Should-Start:
+# Required-Stop:
+# Should-Stop:
+# Default-Start:
+# Default-Stop:
+# Short-Description: Start, stop and restart the nginx server
+# Description:
+# X-LFS-Provided-By:
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+case "${1}" in
+   start)
+      log_info_msg "Starting..."
+      start_daemon /usr/sbin/nginx # fully_qualified_path
+      ;;
+
+   stop)
+      log_info_msg "Stopping..."
+      killproc /usr/sbin/nginx # fully_qualified_path
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart}"
+      exit 1
+      ;;
+esac
+
+exit 0
+
+# End scriptname

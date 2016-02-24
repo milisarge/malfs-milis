@@ -1,0 +1,4 @@
+groupadd -g 26 dovecot
+useradd  -g dovecot -u 26 -d /var/run/dovecot -s /bin/false dovecot
+useradd  -g dovecot -u 27 -d /var/run/dovecot -s /bin/false dovenull
+

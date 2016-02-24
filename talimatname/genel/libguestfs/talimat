@@ -1,0 +1,45 @@
+# Description: libguestfs is a set of tools for accessing and modifying virtual machine (VM) disk images
+# URL: http://libguestfs.org
+# Packager: berlius at nutyx dot com
+# Depends on: ocaml ocaml-findlib python ruby lua cdrkit qemu augeas libxml2 pcre db systemtap fuse gdisk bash-completion libconfig
+
+
+
+name=libguestfs
+version=1.30.4
+release=1
+source=(http://$name.org/download/1.30-stable/$name-$version.tar.gz
+        http://libguestfs.org/download/binaries/appliance/appliance-1.30.1.tar.xz)
+
+
+build() {
+
+	cd $name-$version
+
+	export LIBTINFO_CFLAGS="-D_GNU_SOURCE"
+	export LIBTINFO_LIBS="-lncursesw"
+
+	./configure --prefix=/usr \
+		--mandir=/usr/man \
+		--sysconfdir=/etc/ \
+        --disable-ocaml \
+		--disable-haskell \
+		--disable-php \
+		--disable-erlang \
+		--enable-threads=posix \
+		--disable-appliance \
+		--disable-daemon
+
+	make
+	make DESTDIR=$PKG install
+	
+	cd ..
+	cd appliance
+		
+	install -m 755 -d $PKG/usr/lib/guestfs/appliance
+	cp -v kernel $PKG/usr/lib/guestfs/appliance/
+	cp -v initrd $PKG/usr/lib/guestfs/appliance/initrd
+	cp -v root $PKG/usr/lib/guestfs/appliance/root
+	cp -v README.fixed $PKG/usr/lib/guestfs/appliance/README.fixed
+
+}

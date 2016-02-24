@@ -1,0 +1,24 @@
+# Description: allows access the terminal windows
+# URL: http://www.rdesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-libx11 
+
+name=rdesktop
+version=1.8.2
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz
+	rdesktop-send_physical_buttons.diff)
+
+build() {
+	cd $name-$version
+	 patch -i $SRC/rdesktop-send_physical_buttons.diff 
+
+        ./configure --prefix=/usr \
+		--disable-credssp \
+		--disable-smartcard
+	make
+	make DESTDIR=$PKG install
+
+}
+  

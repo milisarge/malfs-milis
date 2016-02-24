@@ -1,0 +1,21 @@
+# Description: Perl Module: Easy manipulation of IPv4 and IPv6 addresses
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
+
+name=perl-net-ip
+version=1.26
+release=1
+
+source=(http://www.cpan.org/authors/id/M/MA/MANU/Net-IP-$version.tar.gz)
+
+build() {
+cd Net-IP-$version
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG -iname '*.pod' -or \
+-name '.packlist' -or \
+-name 'perllocal.pod' | xargs rm
+}

@@ -1,0 +1,22 @@
+# Description: Low-level libraries useful for providing data structure handling
+# URL: http://www.gtk.org/
+# Packager: tnut at nutyx dot org
+# Depends on: libffi pcre python elfutils 
+PKGMK_GROUPS=(man devel doc )
+
+name=glib
+version=2.46.2
+release=1
+
+source=( http://ftp.gnome.org/pub/gnome/sources/glib/${version%.*}/$name-$version.tar.xz
+	revert-warn-glib-compile-schemas.patch)
+
+build () {
+	cd $name-$version
+	patch -Rp1 -i ../revert-warn-glib-compile-schemas.patch
+	./configure --prefix=/usr \
+	--with-pcre=system \
+	--disable-fam
+	make
+	make DESTDIR=$PKG install
+}

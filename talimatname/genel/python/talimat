@@ -1,0 +1,65 @@
+# Description: Next generation of the python high-level scripting language
+# URL: URL: http://www.python.org
+# Packager: alienus at nutyx dot org
+# Depends on: libffi sqlite 
+PKGMK_GROUPS=(devel man doc)
+
+_pybasever=2.7
+
+name=python
+version=2.7.11
+release=1
+
+source=(
+http://www.python.org/ftp/python/$version/Python-$version.tar.xz
+python.png)
+
+
+build() {
+    cd Python-$version
+    ./configure --prefix=/usr \
+                --with-system-expat \
+                --with-system-ffi \
+                --enable-shared \
+                --enable-unicode=ucs4
+    make
+    make DESTDIR=$PKG install
+    chmod -v 755 $PKG/usr/lib/libpython2.7.so.1.0
+
+    # Part of python3
+    rm -f $PKG/usr/bin/2to3
+
+    # Install all HTML Docs files with desktop menu integration
+
+    install -v -dm755 $PKG/usr/share/doc/$name-$version
+    cd $SRC
+    wget --no-check-certificate http://docs.python.org/ftp/python/doc/$version/python-$version-docs-html.tar.bz2
+    tar --strip-components=1 -C $PKG/usr/share/doc/$name-$version \
+        --no-same-owner -xvf python-$version-docs-html.tar.bz2
+
+    find $PKG/usr/share/doc/$name-$version -type d -exec chmod 0755 {} \;
+    find $PKG/usr/share/doc/$name-$version -type f -exec chmod 0644 {} \;
+
+    mkdir -p $PKG/usr/share/applications
+    echo "[Desktop Entry]
+Categories=Development;Documentation
+Exec=xdg-open file:///usr/share/doc/python-$version/index.html
+Icon=python
+StartupNotify=false
+Terminal=false
+Type=Application
+Name=Python Documentation
+Name[fr]=Documentation Python" > $PKG/usr/share/applications/python.desktop
+    install -Dm644 $SRC/$name.png \
+        $PKG/usr/share/icons/hicolor/48x48/apps/$name.png
+}
+doc () {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.doc#$version-any.mps \
+usr/share/doc/$name-$version \
+usr/share/applications/python.desktop \
+usr/share/icons/hicolor/48x48/apps/$name.png
+
+rm -r usr/share/{doc,applications/python.desktop,icons/hicolor/48x48/apps/$name.png}
+}

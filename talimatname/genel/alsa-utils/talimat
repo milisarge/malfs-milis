@@ -1,0 +1,31 @@
+# Description: Utilities for configuring and using ALSA 
+# URL: http://www.alsa-project.org
+# Packager: pierre at nutyx dot org
+# Depends on: alsa-lib xmlto libsamplerate gawk
+
+run=(gawk)
+
+PKGMK_GROUPS=(man)
+name=alsa-utils
+version=1.1.0
+release=1
+
+source=(ftp://ftp.alsa-project.org/pub/utils/$name-$version.tar.bz2)
+
+build() {
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+./configure --prefix=/usr \
+--disable-alsaconf \
+--disable-bat \
+--disable-xmlto \
+--with-curses=ncursesw
+make
+make DESTDIR=$PKG install
+
+cd ../$scripts-$scriptsversion
+make DESTDIR=$PKG install-alsa
+}

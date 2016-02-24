@@ -1,0 +1,14 @@
+Mount
+none        `nouveau.modeset=0
+check md5   `check nouveau.modeset=0
+nouveau     `drvr=nouveau
+nomodeset   `nomodeset nouveau.modeset=0
+to ram      `toram nouveau.modeset=0
+automount   `automount nouveau.modeset=0
+mount usb   `automount=usb nouveau.modeset=0
+mount all   `automount=all nouveau.modeset=0
+fstab off   `fstab=off nouveau.modeset=0
+auto off*   `automount=off nouveau.modeset=0
+fstab on*   `fstab=on nouveau.modeset=0
+
+

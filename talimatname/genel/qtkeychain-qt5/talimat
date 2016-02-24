@@ -1,0 +1,25 @@
+# Description : Provides support for secure credentials storage
+# URL: https://github.com/frankosterfeld/qtkeychain
+# Packager: pierre at nutyx dot org
+# Depends on: cmake qt5 icu
+
+
+name=qtkeychain-qt5
+release=3
+version=0.5
+_name=qtkeychain
+source=(https://github.com/frankosterfeld/qtkeychain/archive/$version.zip )
+
+build() {
+mkdir build
+cd    build
+cmake ../$_name-$version            \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib  \
+        -DCMAKE_BUILD_TYPE=Release  \
+        -DCMAKE_INSTALL_LIBEXECDIR=lib/$name \
+        
+make
+make DESTDIR=$PKG install
+}
+

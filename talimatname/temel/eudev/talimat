@@ -1,0 +1,49 @@
+# Description: The Eudev package contains programs for dynamic creation of device nodes.
+# URL: http://www.gentoo.org/proj/en/eudev/
+# Maintainers: Ian Stakenvicius,Tony Vroon,Francisco Blas Izquierdo Riera,Luca Barbato,Matt Thode,Richard Yao,Anthony G. Basile
+# Packager: tnut at nutyx dot org
+
+name=eudev
+version=3.1.2
+release=1
+
+source=(http://dev.gentoo.org/~blueness/eudev/$name-$version.tar.gz
+	http://anduin.linuxfromscratch.org/sources/other/udev-lfs-20140408.tar.bz2)
+
+build() {
+cd $name-$version
+sed -r -i 's|/usr(/bin/test)|\1|' test/udev-test.pl
+
+
+cat > config.cache << "EOF"
+HAVE_BLKID=1
+BLKID_LIBS="-lblkid"
+BLKID_CFLAGS="-I/tools/include"
+EOF
+
+./configure --prefix=/usr --bindir=/sbin \
+--sbindir=/sbin --libdir=/usr/lib \
+--sysconfdir=/etc --libexecdir=/lib \
+--with-rootprefix= \
+--with-rootlibdir=/lib \
+--enable-split-usr \
+--enable-hwdb  \
+--disable-introspection \
+--disable-gudev \
+--disable-static  \
+--config-cache   \
+--disable-gtk-doc-html \
+--with-firmware-path=/lib/firmware
+LIBRARY_PATH=/tools/lib make
+mkdir -pv $PKG/lib/{firmware,udev/devices/pts}
+mkdir -pv $PKG/lib/udev/rules.d
+mkdir -pv $PKG/etc/udev/rules.d
+make LD_LIBRARY_PATH=/tools/lib DESTDIR=$PKG install
+
+# man pages
+pushd man
+make DESTDIR=$PKG install-man7 install-man8
+
+cd $SRC
+make -j1 -f udev-lfs-20140408/Makefile.lfs DESTDIR=$PKG install
+}

@@ -1,0 +1,5 @@
+# Default settings for chromium. This file is sourced by /usr/bin/chromium
+
+# Options to pass to chromium
+# flash-version updated dynamically with .install file
+CHROMIUM_FLAGS="--ppapi-flash-path=/opt/chromium/lib/PepperFlash/libpepflashplayer.so --ppapi-flash-version=1.2.3.4"

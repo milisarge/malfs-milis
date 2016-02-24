@@ -1,0 +1,17 @@
+# Description: library for retrieving information on running processes and system utilization
+# URL: https://github.com/giampaolo/psutil
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: python python-setuptools
+# Nice to have: PySensors hddtemp
+
+
+name=psutil
+version=3.1.1
+release=1
+source=(https://pypi.python.org/packages/source/p/$name/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  python setup.py install -O1 --prefix='/usr' --root=$PKG --optimize=1
+}

@@ -1,0 +1,81 @@
+# Description : The SDDM package contains a lightweight display manager written in Qt and QML. 
+# URL: https://www.kde.org/
+# Packager: pierre at nutyx dot org, fanch at nutyx dot org, tnut at nutyx dot org
+# Depends on: cmake qt5 upower consolekit2
+PKGMK_GROUPS=()
+run=(consolekit2)
+name=sddm
+release=1
+version=0.12.0
+
+source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$version.tar.xz)
+
+build() {
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd ${name}-$version
+mkdir build
+cd    build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DENABLE_JOURNALD=OFF       \
+      -Wno-dev ..
+make
+make DESTDIR=$PKG install
+
+cat > $PKG/etc/pam.d/sddm << "EOF"
+# Begin /etc/pam.d/sddm
+
+auth     requisite      pam_nologin.so
+auth     required       pam_env.so
+
+auth     required       pam_succeed_if.so uid >= 1000 quiet
+auth     include        system-auth
+
+account  include        system-account
+password include        system-password
+
+session  required       pam_limits.so
+session  include        system-session
+
+# End /etc/pam.d/sddm
+EOF
+
+cat > $PKG/etc/pam.d/sddm-autologin << "EOF"
+# Begin /etc/pam.d/sddm-autologin
+
+auth     requisite      pam_nologin.so
+auth     required       pam_env.so
+
+auth     required       pam_succeed_if.so uid >= 1000 quiet
+auth     required       pam_permit.so
+
+account  include        system-account
+
+password required       pam_deny.so
+
+session  required       pam_limits.so
+session  include        system-session
+
+# End /etc/pam.d/sddm-autologin
+EOF
+
+cat > $PKG/etc/pam.d/sddm-greeter << "EOF"
+# Begin /etc/pam.d/sddm-greeter
+
+auth     required       pam_env.so
+auth     required       pam_permit.so
+
+account  required       pam_permit.so
+password required       pam_deny.so
+session  required       pam_unix.so
+-session optional       pam_systemd.so
+
+# End /etc/pam.d/sddm-greeter
+EOF
+# service
+cd $SRC/$scripts-$scriptsversion
+make DESTDIR=$PKG install-sddm
+}

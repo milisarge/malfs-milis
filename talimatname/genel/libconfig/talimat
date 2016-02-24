@@ -1,0 +1,20 @@
+# Description: C/C++ configuration file library
+# URL: http://www.hyperrealm.com/libconfig/
+# Packager: berlius at nutyx dot com
+
+name=libconfig
+version=1.5
+release=2
+source=(http://www.hyperrealm.com/libconfig/libconfig-$version.tar.gz)
+
+build() {
+
+	cd $name-$version
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+
+	rm $PKG/usr/share/info/dir
+}

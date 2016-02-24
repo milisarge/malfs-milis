@@ -1,0 +1,24 @@
+# Description : Library that provides a Glib implementation of the DBusMenu protocol
+# URL: https: https://launchpad.net/dbusmenu
+# Packager: pierre at nutyx dot org, fanch at nutyx dot org, tnut at nutyx dot org
+# Depends on: python gobject-introspection gtk2 gtk3 glib vala gnome-doc-utils atk libepoxy json-glib
+
+name=libdbusmenu-glib
+_name=libdbusmenu
+release=1
+version=0.5.90
+
+source=(http://launchpad.net/dbusmenu/0.6/${version}/+download/${_name}-$version.tar.gz )
+
+build() {
+  cd libdbusmenu-$version
+
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
+               --disable-static --disable-scrollkeeper --disable-tests
+
+  make
+  
+  make -C libdbusmenu-glib DESTDIR=$PKG install
+  make -C tools DESTDIR=$PKG install
+  make -C docs DESTDIR=$PKG install
+}

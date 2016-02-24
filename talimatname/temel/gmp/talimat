@@ -1,0 +1,34 @@
+# Description: A free library for arbitrary precision arithmetic.
+# URL: http://gmplib.org/
+# Maintainers: Torb,Granlund and many more
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+name=gmp
+version=6.1.0
+release=1
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build()
+{
+cd gmp-$version
+case `uname -m` in
+ i?86)
+	ABI=32 ./configure --build=i686-pc-linux-gnu \
+	--prefix=/usr --enable-cxx --libdir=/lib ;;
+ *)
+	./configure --build=x86_64-unknown-linux-gnu \
+	--prefix=/usr --enable-cxx --libdir=/lib ;;
+esac
+make
+# make check 2>&1 | tee gmp-check-log
+# awk '/tests passed/{total+=$2} ; END{print total}' gmp-check-log
+make DESTDIR=$PKG install
+
+rm -rf $PKG/usr/share/info/dir
+
+# Documentation
+mkdir -p $PKG/usr/share/doc/gmp-${version}
+
+cp doc/{isa_abi_headache,configuration} doc/*.html \
+$PKG/usr/share/doc/gmp-${version}
+}

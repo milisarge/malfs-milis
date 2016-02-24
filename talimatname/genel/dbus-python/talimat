@@ -1,0 +1,31 @@
+# Description: Python bindings for DBUS
+# URL: http://dbus.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python python3 dbus-glib 
+run=( python python3 )
+
+name=dbus-python
+version=1.2.0
+release=1
+
+source=( http://dbus.freedesktop.org/releases/$name/$name-$version.tar.gz\
+	)
+
+build() {
+	cd $name-$version
+	mkdir python2
+	pushd python2
+	PYTHON=/usr/bin/python \
+	../configure --prefix=/usr \
+		--docdir=/usr/share/doc/dbus-python-$version
+	make
+	popd
+	mkdir python3
+	pushd python3
+	PYTHON=/usr/bin/python3 \
+	../configure --prefix=/usr \
+		--docdir=/usr/share/doc/dbus-python-$version
+	popd
+	make DESTDIR=$PKG -C python2 install
+	make DESTDIR=$PKG -C python3 install
+}

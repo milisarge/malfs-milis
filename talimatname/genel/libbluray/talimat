@@ -1,0 +1,21 @@
+# Description: Blu-Ray access library.
+# URL: http://www.videolan.org/developers/libbluray.html
+# Maintainer: Danny Rawlins, crux at romster dot me
+# Packager: Danny Rawlins, crux at romster dot me
+# Depends on: libxml2 freetype
+
+name=libbluray
+version=0.6.2
+release=1
+source=(ftp://ftp.videolan.org/pub/videolan/$name/$version/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man
+
+	make
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,115 @@
+# Description: The Glibc package contains the main C library.
+# URL: https://www.gnu.org/software/libc/
+# Packagers: tnut at nutyx dot org
+kernelversion=4.4
+PKGMK_GROUPS=(devel man doc)
+name=glibc
+version=2.22
+release=3
+
+source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$kernelversion.tar.xz
+	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-largefile-1.patch
+	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-fhs-1.patch
+	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-upstream_i386_fix-1.patch
+	http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz glibc.locales.supported )
+build() {
+
+# Headers
+cd linux-$kernelversion
+make mrproper
+make headers_check
+make INSTALL_HDR_PATH=dest headers_install
+find dest/include \( -name .install -o -name ..install.cmd \) -delete
+mkdir -p $PKG/usr/include
+cp -rv dest/include/* $PKG/usr/include
+
+cd ../glibc-$version
+
+patch -Np1 -i ../glibc-$version-fhs-1.patch
+patch -Np1 -i ../glibc-$version-upstream_i386_fix-1.patch
+patch -Np1 -i ../glibc-$version-largefile-1.patch
+
+mkdir -v ../glibc-build
+cd ../glibc-build
+
+../glibc-$version/configure --prefix=/usr \
+--disable-profile \
+--enable-kernel=2.6.32 \
+--enable-obsolete-rpc
+
+make || make -j1
+
+# make -k check 2>&1 | tee glibc-check-log
+# grep Error glibc-check-log
+
+make install_root=$PKG install
+rm -rf $PKG/usr/share/info/dir
+
+mkdir -p $PKG/etc
+cp -v ../glibc-$version/nscd/nscd.conf $PKG/etc/nscd.conf
+mkdir -pv $PKG/var/cache/nscd
+
+touch $PKG/etc/ld.so.conf
+
+mkdir -pv $PKG/usr/lib/locale
+
+cp $SRC/glibc.locales.supported \
+../glibc-$version/localedata/SUPPORTED
+
+make install_root=$PKG localedata/install-locales
+
+cat > $PKG/etc/nsswitch.conf << "EOF"
+# Begin /etc/nsswitch.conf
+
+passwd: files
+group: files
+shadow: files
+
+hosts: files dns
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+# End /etc/nsswitch.conf
+EOF
+
+
+cat > $PKG/etc/ld.so.conf << "EOF"
+# Begin /etc/ld.so.conf
+/lib
+/lib64
+/usr/lib
+/usr/lib64
+/usr/local/lib
+/usr/local/lib64
+
+# Add an include directory
+include /etc/ld.so.conf.d/*.conf
+# End of  /etc/ld.so.conf
+EOF
+
+if [ "`uname -m`" == "i686" ];then
+	cat > $PKG/etc/ld.so.conf << "EOF"
+# Begin /etc/ld.so.conf
+/lib
+/usr/lib
+/usr/local/lib
+
+# Add an include directory
+include /etc/ld.so.conf.d/*.conf
+# End of  /etc/ld.so.conf
+EOF
+fi
+
+mkdir $PKG/etc/ld.so.conf.d
+}
+devel() {
+cd $PKG
+bsdtar -r -f \
+$PKGMK_PACKAGE_DIR/${name}.${group}#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/include
+rm -r usr/include
+}

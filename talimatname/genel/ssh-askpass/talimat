@@ -1,0 +1,20 @@
+# Description: Dialog box to grab password for packages requiring administrative privileges to be run
+# URL:  http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/
+# Packager: tnut at nutyx dot org
+# Depend on: gdk-pixbuf gtk2 xorg-libx11
+
+name=ssh-askpass
+version=7.1p2
+release=2
+source=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p2.tar.gz)
+
+build() {
+
+cd openssh-$version/contrib
+make gnome-ssh-askpass2
+install -v -d -m755 $PKG/usr/libexec/openssh/contrib
+install -v -m755    gnome-ssh-askpass2 \
+$PKG/usr/libexec/openssh/contrib
+ln -sv -f contrib/gnome-ssh-askpass2 \
+$PKG/usr/libexec/openssh/ssh-askpass
+}

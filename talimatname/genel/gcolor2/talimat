@@ -1,0 +1,21 @@
+# Description: A simple GTK+2 color selector
+# URL: http://gcolor2.sourceforge.net/
+# Packager: tyrry at nutyx dot org
+# Depends on: gtk2
+
+name=gcolor2
+version=0.4
+release=1
+
+source=(http://downloads.sourceforge.net/project/gcolor2/gcolor2/0.4/gcolor2-0.4.tar.gz 
+	http://downloads.nutyx.org/files/patchs/$name/gcolor2.desktop
+	http://downloads.nutyx.org/files/patchs/$name/gcolor2-amd64-1.patch)
+build() {
+cd $name-$version
+[ "`uname -m`" == "x86_64" ] && (patch -p1 < ../gcolor2-amd64-1.patch)
+sed -i 's/\[:space:\]/[&]/g' configure
+./configure --prefix=/usr
+make 
+make DESTDIR=$PKG install
+install -D $SRC/gcolor2.desktop -m644 $PKG/usr/share/applications/gcolor2.desktop
+}

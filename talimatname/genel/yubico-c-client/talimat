@@ -1,0 +1,18 @@
+# Description: C library customer Yubico
+# URL: http://www.yubico.com/
+# Packager: - https://github.com/Yubico/yubico-c-client.git
+# Depends on: libyubikey curl 
+
+name=yubico-c-client
+version=2.9
+release=1
+
+source=(http://yubico-c-client.googlecode.com/files/ykclient-$version.tar.gz)
+build ()
+{
+cd ykclient-$version
+./configure --prefix=/usr
+make
+make DESTDIR="${PKG}/" install
+}
+

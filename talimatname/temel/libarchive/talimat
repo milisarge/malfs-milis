@@ -1,0 +1,55 @@
+# Description: Library that can create and read several streaming archive formats.
+# URL: http://people.freebsd.org/~kientzle/libarchive
+# Maintainer: kientzle at acm dot org
+# Packager: tnuttens at gmail dot com
+PKGMK_GROUPS=(devel doc man)
+
+name=libarchive
+version=3.1.2
+release=1
+
+source=(http://www.libarchive.org/downloads/libarchive-$version.tar.gz
+	http://downloads.nutyx.org/files/patchs/$name/$name-$version-mtree-fix-line-filename-length-calculation-01.patch
+	http://downloads.nutyx.org/files/patchs/$name/$name-$version-limit-write-requests-to-at-most-INT_MAX-01.patch
+	http://downloads.nutyx.org/files/patchs/$name/$name-$version-acl-01.patch
+	http://downloads.nutyx.org/files/patchs/$name/$name-$version-sparce-mtree-01.patch	
+	)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../$name-$version-mtree-fix-line-filename-length-calculation-01.patch
+patch -Np1 -i ../$name-$version-limit-write-requests-to-at-most-INT_MAX-01.patch
+patch -Np1 -i ../$name-$version-acl-01.patch
+patch -Np1 -i ../$name-$version-sparce-mtree-01.patch
+
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--bindir=/bin \
+--without-xml2 \
+--infodir=/usr/share/info 
+make
+make DESTDIR=$PKG install
+
+mkdir $PKG/lib
+
+mv $PKG/usr/lib/libarchive.so.13.1.2 \
+$PKG/lib/
+for LIB in libarchive.so{,.13}
+        do
+                ln -sv libarchive.so.13.1.2 $PKG/lib/$LIB
+                rm $PKG/usr/lib/$LIB
+                ln -sv ../../lib/libarchive.so.13.1.2 \
+                $PKG/usr/lib/$LIB
+done
+
+ln -sv ../../lib/libarchive.so.13.1.2 \
+$PKG/usr/lib/libarchive.so.13.1.2
+
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/lib/libarchive.a usr/lib/libarchive.la usr/include usr/lib/pkgconfig
+rm -r usr/lib/libarchive.a usr/lib/libarchive.la usr/include usr/lib/pkgconfig
+}

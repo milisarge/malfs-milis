@@ -1,0 +1,73 @@
+# Description: 	The sendmail package contains a Mail Transport Agent (MTA).
+# URL: 			ftp://ftp.sendmail.org/pub/sendmail/
+# Packager: 	berlius at nutyx dot com
+# Depends on: 	ghostscript cyrus-sasl openssl procmail openldap 
+
+name=sendmail
+version=8.15.2
+release=1
+
+source=(ftp://ftp.sendmail.org/pub/$name/$name.$version.tar.gz site.config.m4)
+
+build() {
+
+    cd $name-$version
+    
+    source  /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2 
+
+	cp -v $SRC/site.config.m4 devtools/Site
+
+	sed -i 's|/usr/man/man|/usr/share/man/man|' \
+		devtools/OS/Linux           
+	cd sendmail                     
+	sh Build                        
+	cd ../cf/cf                     
+	cp generic-linux.mc sendmail.mc 
+	sh Build sendmail.cf
+     
+    install -v -d -m755 $PKG/etc/mail 
+	install -c -o root -g bin -m 0444 sendmail.cf $PKG/etc/mail/sendmail.cf
+	install -c -o root -g bin -m 0444 submit.cf $PKG/etc/mail/submit.cf
+
+
+	cd ../..            
+	sh Build install    
+
+	install -v -m644 cf/cf/{submit,sendmail}.mc $PKG/etc/mail 
+	cp -v -R cf/* $PKG/etc/mail                               
+
+	install -v -m755 -d $PKG/usr/share/doc/sendmail-8.15.2/{cf,sendmail} 
+
+	install -v -m644 CACerts FAQ KNOWNBUGS LICENSE PGPKEYS README RELEASE_NOTES \
+        $PKG/usr/share/doc/sendmail-8.15.2 
+
+	install -v -m644 sendmail/{README,SECURITY,TRACEFLAGS,TUNING} \
+        $PKG/usr/share/doc/sendmail-8.15.2/sendmail 
+
+	install -v -m644 cf/README $PKG/usr/share/doc/sendmail-8.15.2/cf 
+	
+	install -v -d -m755 $PKG/usr/share/man/man8
+	for manpage in sendmail editmap mailstats makemap praliases smrsh
+		do
+		install -v -m644 $manpage/$manpage.8 $PKG/usr/share/man/man8
+		done &&
+
+	install -v -m644 sendmail/aliases.5    $PKG/usr/share/man/man5 
+	install -v -m644 sendmail/mailq.1      $PKG/usr/share/man/man1 
+	install -v -m644 sendmail/newaliases.1 $PKG/usr/share/man/man1 
+	install -v -m644 vacation/vacation.1   $PKG/usr/share/man/man1
+	
+	cd doc/op                                       
+	sed -i 's/groff/GROFF_NO_SGR=1 groff/' Makefile 
+	make op.txt op.pdf
+	
+	install -v -d -m755 $PKG/usr/share/doc/sendmail-8.15.2 
+	install -v -m644 op.ps op.txt op.pdf $PKG/usr/share/doc/sendmail-8.15.2 
+	cd ../..
+
+	cd $scripts-$scriptsversion
+	make DESTDIR=$PKG install-sendmail
+ 
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Development;Documentation
+Exec=xdg-open file:///usr/share/doc/perldoc-5.20.0/index.html
+Icon=perldoc
+StartupNotify=false
+Terminal=false
+Type=Application
+Name=Perl Documentation
+Name[fr]=Documentation Perl

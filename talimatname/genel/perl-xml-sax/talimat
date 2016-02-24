@@ -1,0 +1,31 @@
+# Description: Simple API for XML
+# URL: URL: http://search.cpan.org/dist/XML-SAX
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: perl-xml-namespacesupport perl-xml-sax-base 
+run=( perl )
+name=perl-xml-sax
+version=0.99
+release=1
+
+source=(
+http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-$version.tar.gz
+perl-xml-sax.patch)
+
+build() {
+    cd XML-SAX-$version
+    patch -Np1 -i ../perl-xml-sax.patch || exit 1
+    perl Makefile.PL
+    make OPTIMIZE="$CFLAGS" || exit 1
+    make test
+    make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1
+
+    # Remove perllocal.pod and .packlist if present in the package
+    for i in perllocal.pod .packlist; do
+        find $PKG -name "$i" -exec rm -rf {} \;
+    done
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

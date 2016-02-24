@@ -1,0 +1,30 @@
+# Description: GDB, the GNU Project debugger, allows you to see what is going on “inside” another program while it executes.
+# URL: http://www.sourceware.org/gdb/
+# Packager: tnuttens at gmail dot com
+
+name=gdb
+version=7.10.1
+release=1
+
+source=(http://ftp.gnu.org/gnu/gdb/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --with-system-readline
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/include/plugin-api.h
+rm $PKG/usr/share/info/bfd.info
+rm $PKG/usr/include/ansidecl.h
+rm $PKG/usr/include/bfd.h
+rm $PKG/usr/include/bfdlink.h
+rm $PKG/usr/include/dis-asm.h
+rm $PKG/usr/include/symcat.h
+rm $PKG/usr/lib/libbfd.a
+rm $PKG/usr/lib/libbfd.la
+rm $PKG/usr/lib/libopcodes.a
+rm $PKG/usr/lib/libopcodes.la
+
+# Most of the locale are allready present from binnutils, beter get rid of all of them
+rm -r $PKG/usr/share/locale
+rm -f $PKG/usr/share/info/dir
+}

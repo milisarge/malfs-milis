@@ -1,0 +1,43 @@
+# Description: A DLNA/UPnP-AV Media server (aka ReadyDLNA)
+# URL: URL: http://minidlna.sourceforge.net/
+# Packager: tnut at nutyx dot org
+# Depends on: libexif libjpeg-turbo libid3tag flac libvorbis ffmpeg sqlite 
+name=minidlna
+version=1.1.4
+release=1
+
+source=(http://downloads.sourceforge.net/project/$name/$name/$version/minidlna-$version.tar.gz
+	minidlna)
+        
+build() {
+  cd $name-$version
+  sed -i 's|#user=.*|user=nobody|g' minidlna.conf
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+  install -Dm644 minidlna.conf $PKG/etc/minidlna.conf
+
+  # Man
+  install -Dm644 minidlna.conf.5 \
+  $PKG/usr/share/man/man5/minidlna.conf.5
+
+  install -Dm644 minidlnad.8 \
+  $PKG/usr/share/man/man8/minidlnad.8
+
+  # Service
+  mkdir -p $PKG/etc/rc.d/init.d
+  install -Dm754 $SRC/minidlna $PKG/etc/rc.d/init.d/minidlna
+  for i in 0 1 6
+  do
+    mkdir -p $PKG/etc/rc.d/rc${i}.d
+    cd $PKG/etc/rc.d/rc${i}.d
+    ln -s ../init.d/minidlna K10minidlna
+  done
+  for i in 2 3 4 5
+  do
+    mkdir -p $PKG/etc/rc.d/rc${i}.d
+    cd $PKG/etc/rc.d/rc${i}.d
+    ln -s ../init.d/minidlna S90minidlna
+ done
+
+}

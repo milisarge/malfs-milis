@@ -1,0 +1,20 @@
+# Description: Version control System (Remplacement de cvs)
+# URL: http://subversion.tigris.org
+# Packager: pierre at nutyx dot org
+# Depends on: apr apr-util neon expat sqlite db cyrus-sasl serf
+
+name=subversion
+version=1.9.3
+release=2
+
+source=(http://archive.apache.org/dist/$name/$name-$version.tar.bz2)
+
+build() {
+
+cd $name-$version
+./configure --prefix=/usr \
+	--with-serf \
+	--disable-static
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,23 @@
+# Description: Allows spanning of file systems across multiple physical disks and partitions.
+# URL: http://sourceware.org/lvm2/
+# Packager: pierre at nutyx dot org 
+
+name=lvm2
+version=2.02.141
+release=1
+
+source=(ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz)
+build() {
+cd LVM2.$version
+./configure \
+--prefix=/usr \
+--exec-prefix= \
+--with-confdir=/etc \
+--mandir=/usr/share/man \
+--enable-applib \
+--enable-cmdlib \
+--enable-pkgconfig \
+--enable-udev_sync
+make
+make DESTDIR=$PKG install
+}

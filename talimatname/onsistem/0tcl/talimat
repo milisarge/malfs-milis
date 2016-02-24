@@ -1,0 +1,21 @@
+version=8.6.4
+source=( http://sourceforge.net/projects/tcl/files/Tcl/$version/tcl-core${version}-src.tar.gz)
+
+build()
+{
+cd tcl$version
+
+
+cd unix
+./configure --prefix=/tools
+
+make
+
+make install
+
+chmod -v u+w /tools/lib/libtcl8.6.so
+
+make install-private-headers
+
+ln -sv tclsh8.6 /tools/bin/tclsh
+}

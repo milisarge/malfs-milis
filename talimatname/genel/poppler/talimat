@@ -1,0 +1,46 @@
+# Description: PDF rendering library based on xpdf 3.0
+# URL: URL: http://poppler.freedesktop.org/
+# Packager: alienus at nutyx dot org
+# Depends on: xorg-libxxf86vm libpng xorg-fontconfig libjpeg-turbo cairo libxml2 openjpeg lcms2 
+
+dataversion=0.4.7
+name=poppler
+version=0.39.0
+release=1
+
+source=(
+http://poppler.freedesktop.org/$name-$version.tar.xz
+http://poppler.freedesktop.org/poppler-data-$dataversion.tar.gz)
+
+build() {
+cd poppler-$version
+ 
+./configure --prefix=/usr      \
+	--sysconfdir=/etc      \
+	--disable-static       \
+	--enable-build-type=release \
+	--enable-cmyk               \
+	--disable-poppler-qt4  \
+	--disable-poppler-qt5  \
+	--disable-poppler-glib \
+	--enable-xpdf-headers
+
+make
+make DESTDIR=$PKG install
+
+cd ../poppler-data-$dataversion
+make prefix=/usr DESTDIR=$PKG install
+
+rm -f $PKG/usr/lib/pkgconfig/poppler-{glib,qt4,qt5}.pc
+rm -f $PKG/usr/lib/poppler-{glib*,qt4*,qt5*}
+
+rm -f $PKG/usr/bin/poppler-glib-demo
+rm -rf $PKG/usr/include/poppler/glib/
+
+rm -f $PKG/usr/bin/poppler-qt4-demo
+rm -rf $PKG/usr/include/poppler/qt4/
+
+rm -f $PKG/usr/bin/poppler-qt5-demo
+rm -rf $PKG/usr/include/poppler/qt5/
+
+}

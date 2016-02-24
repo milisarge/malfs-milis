@@ -1,0 +1,26 @@
+# Description: A string template engine based on the Django template system and written in Qt
+# URL: http://www.gitorious.org/grantlee/pages/Home
+# Packager: pierre at nutyx dot org
+# Depends on: qt4
+
+name=grantlee
+version=0.5.1
+release=2
+
+source=(http://downloads.grantlee.org/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+
+  sed -e 's|INCLUDE_INSTALL_DIR include|INCLUDE_INSTALL_DIR include/grantlee-qt4|' -i CMakeLists.txt
+  
+  mkdir build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release  \
+        -DBUILD_TESTS=OFF           \
+        -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4 \
+        ..
+  make
+  make DESTDIR=$PKG install
+}

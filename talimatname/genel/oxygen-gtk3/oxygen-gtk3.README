@@ -1,0 +1,3 @@
+A la fin de l'install ET en user :
+
+ln -s /usr/share/themes/oxygen-gtk/gtk-3.0 ~/.config/gtk-3.0

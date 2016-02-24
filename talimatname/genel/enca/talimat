@@ -1,0 +1,20 @@
+# Description : Charset analyser and converter.
+# URL: http://cihar.com/software/enca/
+# Packager: pierre at nutyx dot org, fanch at nutyx dot org, tnut at nutyx dot org
+
+name=enca
+release=1
+version=1.16
+source=(http://dl.cihar.com/${name}/${name}-${version}.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+              --libexecdir=/usr/lib \
+              --mandir=/usr/share/man \
+              --with-librecode=/usr \
+              --enable-external      
+make
+make DESTDIR=$PKG install
+}
+

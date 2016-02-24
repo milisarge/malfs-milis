@@ -1,0 +1,18 @@
+# Description: Fast and flexible source code highlighter (CLI version)
+# URL: URL: http://www.andre-simon.de/doku/highlight/highlight.html
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: qt4 boost lua
+run=( lua )
+name=highlight
+version=3.23
+release=1
+
+source=(
+http://www.andre-simon.de/zip/$name-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    make QMAKE=qmake-qt4
+    make DESTDIR=$PKG QMAKE=qmake-qt4 install
+}

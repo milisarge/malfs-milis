@@ -1,0 +1,18 @@
+# Description: Client-side application which queries directory service
+# URL: http://ftp.debian.org/debian/pool/main/w/whois
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+
+name=whois
+version=5.2.11
+release=1
+
+source=(ftp://ftp.debian.org/debian/pool/main/w/$name/${name}_$version.tar.xz)
+
+
+build() {
+cd $name-$version
+make prefix=/usr 
+make prefix=/usr BASEDIR=$PKG install-whois
+make prefix=/usr BASEDIR=$PKG install-mkpasswd
+make prefix=/usr BASEDIR=$PKG install-pos
+}

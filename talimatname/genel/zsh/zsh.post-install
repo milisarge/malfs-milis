@@ -1,0 +1,3 @@
+cat >> /etc/shells << EOF
+/bin/zsh
+EOF

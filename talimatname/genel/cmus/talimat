@@ -1,0 +1,18 @@
+# Description: Small and fast music player using the ncurses library
+# URL: http://cmus.sf.net/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: alsa-lib alsa-plugins flac libid3tag libmad libogg libmpcdec libvorbis
+
+name=cmus
+version=2.7.1
+release=1
+source=(https://github.com/cmus/cmus/archive/v${version}.tar.gz)
+
+build() {
+    cd $name-$version
+
+    ./configure prefix=/usr mandir=/usr/man CONFIG_ARTS=n
+    make
+    make DESTDIR=$PKG install install-man
+}

@@ -1,0 +1,42 @@
+# URL: http://savannah.nongnu.org/projects/acl
+# Packager: pierre at nutyx dot org
+
+description="Commands for Manipulating POSIX Access Control Lists."
+name=acl
+version=2.2.52
+release=1
+
+source=( http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
+PKGMK_GROUPS=(devel man doc)
+build() {
+cd acl-*
+
+sed -i -e 's|/@pkg_name@|&-@pkg_version@|' \
+include/builddefs.in
+
+sed -i -e "/TABS-1;/a if (x > (TABS-1)) x = (TABS-1);" \
+libacl/__acl_to_any_text.c
+
+INSTALL_USER=root  \
+INSTALL_GROUP=root \
+./configure --prefix=/usr --libexecdir=/usr/lib \
+--bindir=/bin
+make
+make DIST_ROOT=$PKG install install-lib install-dev
+chmod -v 755 $PKG/usr/lib/libacl.so
+mkdir $PKG/lib
+mv -v $PKG/usr/lib/libacl.so.* $PKG/lib
+ln -sfv ../../lib/libacl.so.1 \
+$PKG/usr/lib/libacl.so
+
+mkdir -p $PKG/usr/share/doc
+install -v -m644 doc/*.txt \
+$PKG/usr/share/doc/acl-$version
+}
+devel () {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/lib usr/include
+rm -rvf usr/lib usr/include
+}

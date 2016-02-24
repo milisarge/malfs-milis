@@ -1,0 +1,58 @@
+# Description: Utilities for handling the ext2,3 and 4 files system.
+# URL: http://e2fsprogs.sourceforge.net/
+# Maintainers: Ted Ts'o tytso at mit dot edu,tytso at alum dot mit dot edu
+# Packagers: tnut at nutyx dot org
+
+name=e2fsprogs
+version=1.42.13
+release=1
+
+source=(http://prdownloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+PKGMK_GROUPS=(devel man doc)
+
+build()
+{
+cd $name-$version
+
+sed -e '/int.*old_desc_blocks/s/int/blk64_t/' \
+    -e '/if (old_desc_blocks/s/super->s_first_meta_bg/desc_blocks/' \
+    -i lib/ext2fs/closefs.c
+
+mkdir -v build
+cd build
+LIBS=-L/tools/lib \
+CFLAGS=-I/tools/include \
+PKG_CONFIG_PATH=/tools/lib/pkgconfig \
+../configure --prefix=/usr --with-root-prefix="" --libdir=/lib \
+--bindir=/bin --sbindir=/sbin \
+--enable-elf-shlibs --disable-libblkid --disable-libuuid --disable-uuidd \
+--disable-fsck
+make
+# somes tests may fails
+# make check||true
+make DESTDIR=$PKG install install-libs || make -j1 DESTDIR=$PKG install install-libs
+
+chmod -v u+w $PKG/lib/{libcom_err,libe2p,libext2fs,libss}.a
+
+gunzip -v $PKG/usr/share/info/libext2fs.info.gz
+
+makeinfo -o doc/com_err.info ../lib/et/com_err.texinfo
+
+install -v -m644 doc/com_err.info $PKG/usr/share/info
+
+rm -rf $PKG/usr/share/info/dir
+
+mkdir $PKG/usr/lib
+mv $PKG/lib/pkgconfig \
+$PKG/usr/lib
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
+usr/include usr/lib/pkgconfig usr/share/et usr/share/ss
+
+rm -r usr/{include,lib/pkgconfig,share/et,share/ss}
+}

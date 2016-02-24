@@ -1,0 +1,18 @@
+# URL: http://syslinux.org
+# Packager: pierre at nutyx dot org
+# Depends on: mtools nasm 
+
+description="boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE"
+name=syslinux
+version=6.03
+release=1
+
+source=(http://www.kernel.org/pub/linux/utils/boot/syslinux/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	sed -i "s|win32/syslinux.exe||g" Makefile
+	make || true
+	make SBINDIR=$PKG/usr/sbin BINDIR=$PKG/usr/bin INCDIR=$PKG/usr/include MANDIR=$PKG/usr/share/man AUXDIR=$PKG/usr/lib/syslinux install
+}
+  

@@ -1,0 +1,22 @@
+# Description: Text document format for short documents, articles, books and UNIX man pages
+# URL: http://www.methods.co.nz/asciidoc/
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: docbook-xsl libxslt python 
+name=asciidoc
+version=8.6.9
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc
+    make
+    make DESTDIR=$PKG install
+
+    install -Dm644 asciidocapi.py \
+        $PKG/usr/lib/python2.7/site-packages/asciidocapi.py
+    install -Dm644 vim/syntax/asciidoc.vim \
+        $PKG/usr/share/vim/vimfiles/syntax/asciidoc.vim
+}

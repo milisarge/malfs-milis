@@ -1,0 +1,39 @@
+# Description: 	IMAP and POP3 server with ssl/ipv6 support, written with security primarily in mind
+# URL:         	http://dovecot.org
+# Packager: 	berlius at nutyx dot com
+# Depends on:  	clucene icu libcap pam mariadb kerberos openldap openssl postgresql sqlite valgrind 
+
+name=dovecot
+version=2.2.21
+release=1
+
+source=(http://dovecot.org/releases/2.2/$name-$version.tar.gz local.conf)
+
+build () {
+
+    cd $name-$version
+    
+    source  /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2 
+	
+
+    ./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --localstatedir=/var \
+            --docdir=/usr/share/doc/dovecot-$version \
+            --disable-static \
+            --with-ssl=openssl
+ 
+
+    make
+    make DESTDIR=$PKG install
+
+    cp -r $SRC/$name-$version/doc/example-config/* $PKG/etc/dovecot
+	sed -i '/^\!include / s/^/#/' $PKG/etc/dovecot/dovecot.conf 
+    cp -r $SRC/local.conf $PKG/etc/dovecot
+    
+    cd $scripts-$scriptsversion
+	make DESTDIR=$PKG install-dovecot
+ 
+}

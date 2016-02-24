@@ -1,0 +1,43 @@
+# Description:	QEMU is a processor emulator using dynamic translation to achieve good emulation speed (PC, PowerPC, PowerMac, sun, Mips, ARM etc...)
+# URL:    		http://www.qemu.org
+# Packager:		berlius at nutyx dot com
+# Depends on: 	gtk2 gtk3 sdl glib python vte vte3 xorg-mesa nss lzo cyrus-sasl alsa-lib alsa-plugins alsa-utils curl check bluez ncurses nfs-utils libgcrypt libcap-ng gnutls libusb bzip2 usbutils bridge-utils
+
+description="Processor emulator using dynamic translation to achieve good emulation speed" 
+name=qemu
+version=2.4.1
+release=2
+source=(http://wiki.qemu.org/download/qemu-$version.tar.bz2
+		65-kvm.rules qemu.mo messages.mo)
+
+build() {
+
+	cd qemu-$version
+
+# pas nécessaire car compilation volontaire pour toutes les emulations
+#	if [ $(uname -m) = i686 ]; then
+#		QEMU_ARCH=i386-softmmu
+#	else
+#		QEMU_ARCH=x86_64-softmmu
+#	fi
+
+	./configure --prefix=/usr            \
+            --sysconfdir=/etc        \
+            --audio-drv-list=alsa,sdl \
+            --docdir=/usr/share/doc/qemu-2.4.1 
+            
+#	unset QEMU_ARCH
+	make
+	make DESTDIR=$PKG install
+	
+	[ -e  $PKG/usr/lib/libcacard.so ] 
+	chmod -v 755 $PKG/usr/lib/libcacard.so
+	
+	install -v -m755 -d $PKG/lib/udev/rules.d
+	install -v -m755 -d $PKG/usr/share/locale/fr/LC_MESSAGES
+
+	cp -v $SRC/65-kvm.rules $PKG/lib/udev/rules.d/65-kvm.rules 
+	cp -v $SRC/qemu.mo $PKG/usr/share/locale/fr/LC_MESSAGES/qemu.mo 
+	cp -v $SRC/messages.mo $PKG/usr/share/locale/fr/LC_MESSAGES/messages.mo
+	 
+}

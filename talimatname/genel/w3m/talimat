@@ -1,0 +1,31 @@
+# Description: w3m is primarily a pager but it can also be used as a text-mode WWW browser. 
+# URL: http://w3m.sourceforge.net/
+# Packager: berlius at nutyx dot com
+# Depends on: gc gpm openssl imlib2 gtk2 gdk-pixbuf 
+
+name=w3m
+version=0.5.3	
+release=1
+source=(http://downloads.sourceforge.net/w3m/w3m-0.5.3.tar.gz
+		http://www.linuxfromscratch.org/patches/downloads/w3m/w3m-0.5.3-bdwgc72-1.patch )
+ 
+build() {
+
+cd $name-$version
+	
+patch -Np1 -i $SRC/w3m-0.5.3-bdwgc72-1.patch 
+sed -i 's/file_handle/file_foo/' istream.{c,h} 
+sed -i 's#gdk-pixbuf-xlib-2.0#& x11#' configure 
+	
+./configure --prefix=/usr --sysconfdir=/etc 
+	
+make
+
+make DESTDIR=$PKG install 
+install -v -m644 -D doc/keymap.default $PKG/etc/w3m/keymap 
+install -v -m644    doc/menu.default $PKG/etc/w3m/menu 
+install -v -m755 -d $PKG/usr/share/doc/w3m-0.5.3 
+install -v -m644    doc/{HISTORY,READ*,keymap.*,menu.*,*.html} \
+                    $PKG/usr/share/doc/w3m-0.5.3
+
+}

@@ -1,0 +1,38 @@
+# Description: CLI tool which shows weather forecasts from METAR data
+# URL: http://fungi.yuggoth.org/weather/
+# Maintainer: Chris Farrell timcowchip at gmail dot com
+# Depends on: python
+
+name=weather
+version=2.0
+release=1
+
+source=(http://fungi.yuggoth.org/weather/src/$name-$version.tar.gz)
+
+build() {
+  cd "$name-$version"
+  sed -i 's|env python|env python2|' *
+
+  # set up correlation sets
+  sed -i 's| else: default_setpath = ".:~/.weather|&:/usr/share/weather-util|' weather.py
+
+  install -Dm644 airports "$PKG/usr/share/weather-util/airports"
+  install -Dm644 places   "$PKG/usr/share/weather-util/places"
+  install -Dm644 stations "$PKG/usr/share/weather-util/stations"
+  install -Dm644 zctas    "$PKG/usr/share/weather-util/zctas"
+  install -Dm644 zones    "$PKG/usr/share/weather-util/zones"
+
+  _python_path=$(python2 -c "import sys ; print [p for p in sys.path if p.startswith('/usr/lib/python2.')][0]")
+  install -Dm755 weather    "$PKG/usr/bin/weather-report"
+  install -Dm644 weather.py "$PKG/$_python_path/weather.py"
+
+  install -Dm644 weatherrc "$PKG/etc/weatherrc"
+
+  install -Dm644 weather.1   "$PKG/usr/share/man/man1/weather.1"
+  install -Dm644 weatherrc.5 "$PKG/usr/share/man/man5/weatherrc.5"
+
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/BSD2"
+}
+
+	
+	

@@ -1,0 +1,17 @@
+# Description: Set of utilities and libraries for handling elf files.
+# URL: http://xiph.org/ao/
+# Packager: tnut at nutyx dot org
+
+name=elfutils
+version=0.164
+release=1
+
+source=( https://fedorahosted.org/releases/e/l/$name/$version/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--program-prefix="eu-"
+make
+make prefix=$PKG/usr install
+}

@@ -1,0 +1,55 @@
+# Description: VICE Commodore emulator
+# URL: http://www.viceteam.org/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: gtk2 giflib lame libpng libjpeg-turbo xorg-libxdamage xorg-libsm vte xorg-libxxf86vm xorg-fontconfig xorg-font-util libpcap libnet sdl dialog xmlto texi2html zlib
+
+name=vice
+version=2.4
+release=2
+source=(http://downloads.sourceforge.net/project/vice-emu/releases/vice-$version.tar.gz
+	vice-2.4-no-fc-cache.patch
+	vice-2.4-64bit.patch
+	vice-2.4-giflib.patch
+	vice-2.4-x11video.patch
+	vice-2.4-zlib-1.2.7.patch
+	vice-2.4-texi2html.patch
+	vice-2.4-vice.texi.patch
+	vice.desktop 
+	icons.tar.gz
+	vice)
+
+build() {
+	cd vice-$version
+	patch -p1 < $SRC/vice-2.4-no-fc-cache.patch || return
+	patch -p1 < $SRC/vice-2.4-64bit.patch || return
+	patch -p1 < $SRC/vice-2.4-giflib.patch || return
+	patch -p1 < $SRC/vice-2.4-x11video.patch || return
+	patch -p1 < $SRC/vice-2.4-zlib-1.2.7.patch || return
+	patch -p1 < $SRC/vice-2.4-vice.texi.patch || return
+	patch -p1 < $SRC/vice-2.4-texi2html.patch || exit
+	
+		./configure \
+		--prefix=/usr \
+		--enable-ethernet \
+		--enable-fullscreen  \
+		--disable-ffmpeg \
+		--with-sdlsound
+
+	make
+
+	mkdir -p $PKG/usr/bin
+	cp $SRC/vice $PKG/usr/bin
+	chmod a+x $PKG/usr/bin/vice
+  	mkdir -p $PKG/usr/share/applications
+	cp $SRC/vice.desktop $PKG/usr/share/applications/
+  	ICONSIZES="48 32 24 22 16"
+	for i in $ICONSIZES; do
+	mkdir -p $PKG/usr/share/icons/hicolor/$i\x$i/apps;
+	cp $SRC/$name-$i.png $PKG/usr/share/icons/hicolor/$i\x$i/apps;
+   	done;
+    	cp $SRC/$name.png $PKG/usr/share/applications/
+  
+
+	make DESTDIR=$PKG install
+	}

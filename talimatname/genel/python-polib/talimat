@@ -1,0 +1,14 @@
+# Description : A library to manipulate gettext files
+# URL: http://polib.readthedocs.org/en/latest/index.html
+# Packager: tnut at nutyx dot org
+# Depends on: python
+
+name=python-polib
+version=1.0.4
+release=1
+source=(https://bitbucket.org/izi/polib/downloads/polib-${version}.tar.gz)
+build() {
+cd polib-$version
+python2 setup.py build
+python2 setup.py install --root=$PKG --optimize=1
+}

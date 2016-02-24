@@ -1,0 +1,26 @@
+# Description: A free library for decoding ATSC A/52 streams
+# URL: http://liba52.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=liba52
+version=0.7.4
+release=1
+
+source=(http://liba52.sourceforge.net/files/a52dec-$version.tar.gz)
+
+build() {
+	cd a52dec-$version
+	./configure --prefix=/usr \
+            --mandir=/usr/share/man \
+            --enable-shared \
+            --disable-static \
+           CFLAGS="-g -O2 $([ $(uname -m) = x86_64 ] && echo -fPIC)"
+
+	make
+	make DESTDIR=$PKG install
+        # required for xine-lib
+        install -m644 liba52/a52_internal.h $PKG/usr/include/a52dec/
+	install -v -m644 -D doc/liba52.txt \
+    	$PKG/usr/share/doc/liba52-$version/liba52.txt
+}

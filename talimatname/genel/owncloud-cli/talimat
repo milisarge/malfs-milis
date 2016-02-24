@@ -1,0 +1,27 @@
+# Description : ownCloud client based on mirall
+# URL: http://owncloud.org/
+# Packager: pierre at nutyx dot org
+# Depends on: cmake qt5 qtkeychain-qt5
+
+name=owncloud-cli
+release=2
+version=2.0.2
+_name=owncloudclient
+
+source=(https://download.owncloud.com/desktop/stable/${_name}-$version.tar.xz)
+
+build() {
+
+mkdir build
+cd    build
+
+cmake ../$_name-$version            \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib  \
+        -DCMAKE_BUILD_TYPE=Release  \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc/$name \
+        
+make
+make DESTDIR=$PKG install
+}
+

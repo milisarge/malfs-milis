@@ -1,0 +1,16 @@
+# Description: Hierarchical, reference counted memory pool system with destructors.
+# URL: https://talloc.samba.org
+# Packager: tnut at nutyx dot org
+# Depends on: python libxslt
+
+name=talloc
+version=2.1.5
+release=1
+source=(https://www.samba.org/ftp/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

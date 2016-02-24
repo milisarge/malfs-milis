@@ -1,0 +1,20 @@
+# Description : Google Chrome's Pepper Flash plugin for Chromium 
+# URL : http://www.google.com/chrome
+# Packager : pierre at nutyx dot com
+
+name=chromium-pepper-flash
+version=20.0.0.228
+release=2
+
+[ "`uname -m`" == "i686"   ] && _ARCH=i386
+[ "`uname -m`" == "x86_64"   ] && _ARCH=x86_64
+
+source=(http://docs.volcanis.me/.pepper-flash/`uname -m`/libpepflashplayer.so \
+	http://docs.volcanis.me/.pepper-flash/`uname -m`/manifest.json)
+
+build() {
+ install -d $PKG/{usr/lib/PepperFlash,opt/chromium/lib}
+ install -m644 $SRC/{libpepflashplayer.so,manifest.json} $PKG/usr/lib/PepperFlash
+ ln -sv ../../usr/lib/PepperFlash $PKG/opt/chromium/lib/PepperFlash
+}
+

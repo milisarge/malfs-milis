@@ -1,0 +1,5 @@
+ldconfig -f etc/ld.so.conf.d/thunderbird.conf
+# desktop database
+update-desktop-database -q
+# update icons cache
+gtk-update-icon-cache -q -t -f usr/share/icons/hicolor

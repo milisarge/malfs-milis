@@ -1,0 +1,17 @@
+# Description: Client library used to access and manage the Zeitgeist event log from C and Vala.
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: glib 
+name=libzeitgeist
+version=0.3.18
+release=1
+
+source=(http://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static	
+make
+make DESTDIR=$PKG install
+}

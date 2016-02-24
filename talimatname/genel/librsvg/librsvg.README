@@ -1,0 +1,1 @@
+Pour gnome, il faut compiler avec gobjetc-introspection, gtk, gtk3 en dépendance

@@ -1,0 +1,21 @@
+# Description: Date conversion routines
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
+name=perl-http-date
+version=6.02
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Date-$version.tar.gz)
+
+build() {
+cd HTTP-Date-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

@@ -1,0 +1,27 @@
+# Description: An engine for running Transport Tycoon Deluxe.
+# URL: http://www.openttd.org
+# Packager: tsgeek at mailoo dot org
+# Depends on: libpng sdl icu xorg-fontconfig lzo hicolor-icon-theme desktop-file-utils xz openttd-opengfx openttd-opensfx
+
+
+name=openttd
+version=1.5.2
+release=1
+source=(http://binaries.openttd.org/releases/${version}/${name}-${version}-source.tar.xz)
+
+build() {
+  cd ${name}-${version} 
+
+ ./configure \
+    --prefix-dir=/usr \
+    --binary-name=${name} \
+    --binary-dir=bin \
+    --data-dir=share/${name} \
+    --install-dir=${PKG} \
+    --doc-dir=share/doc/${name} \
+    --menu-name="OpenTTD" \
+    --personal-dir=.${name}    
+
+  make
+  make install
+}

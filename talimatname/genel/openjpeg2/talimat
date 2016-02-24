@@ -1,0 +1,26 @@
+# Description: OpenJPEG is an open-source implementation of the JPEG-2000 standard.
+# URL: http://www.ijg.org/
+# Packager: tnut at nutyx dot org
+# Depends on: cmake lcms2 libpng libtiff 
+
+_name=openjpeg
+name=openjpeg2
+version=2.1.0
+release=1
+
+source=( http://downloads.sourceforge.net/openjpeg.mirror/${_name}-$version.tar.gz )
+
+
+build() {
+	cd openjpeg-$version
+	mkdir -v build
+	cd build
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+	make
+	make DESTDIR=$PKG install
+	pushd ../doc
+	for man in man/man?/* ; do
+		install -v -D -m 644 $man $PKG/usr/share/$man
+	done
+	popd
+}

@@ -1,0 +1,166 @@
+#
+# Configuring BIND
+# 
+
+Config files
+------------
+named.conf, root.hints, 127.0.0, rndc.conf and resolv.conf
+Configuration Information
+
+
+
+BIND will be configured to run in a chroot jail as an unprivileged user (named). This configuration is more secure in that a DNS compromise can only affect a few files in the named user's HOME directory.
+
+The unprivileged user and group named are alredy setup
+
+Set up some files, directories and devices needed by BIND:
+
+cd /srv/named &&
+mkdir -p dev etc/namedb/{slave,pz} usr/lib/engines var/run/named &&
+mknod /srv/named/dev/null c 1 3 &&
+mknod /srv/named/dev/random c 1 8 &&
+chmod 666 /srv/named/dev/{null,random} &&
+cp /etc/localtime etc &&
+touch /srv/named/managed-keys.bind &&
+cp /usr/lib/engines/libgost.so usr/lib/engines &&
+[ $(uname -m) = x86_64 ] && ln -sv lib usr/lib64
+
+The rndc.conf file contains information for controlling named operations with the rndc utility. Generate a key for use in the named.conf and rdnc.conf with the rndc-confgen command:
+
+rndc-confgen -r /dev/urandom -b 512 > /etc/rndc.conf &&
+sed '/conf/d;/^#/!d;s:^# ::' /etc/rndc.conf > /srv/named/etc/named.conf
+
+Complete the named.conf file from which named will read the location of zone files, root name servers and secure DNS keys:
+
+cat >> /srv/named/etc/named.conf << "EOF"
+options {
+        directory "/etc/namedb";
+        pid-file "/var/run/named.pid";
+        statistics-file "/var/run/named.stats";
+};
+zone "." {
+        type hint;
+        file "root.hints";
+};
+zone "0.0.127.in-addr.arpa" {
+        type master;
+        file "pz/127.0.0";
+};
+
+// Bind 9 now logs by default through syslog (except debug).
+// These are the default logging rules.
+
+logging {
+        category default { default_syslog; default_debug; };
+        category unmatched { null; };
+
+        channel default_syslog {
+                        syslog daemon;                      // send to syslog's daemon
+                                                            // facility
+                        severity info;                      // only send priority info
+                                                            // and higher
+ };
+
+        channel default_debug {
+                        file "named.run";                   // write to named.run in
+                                                            // the working directory
+                                                            // Note: stderr is used instead
+                                                            // of "named.run"
+                                                            // if the server is started
+                                                            // with the '-f' option.
+                        severity dynamic;                   // log at the server's
+                                                            // current debug level
+};
+
+       channel default_stderr {
+                        stderr;                             // writes to stderr
+                        severity info;                      // only send priority info
+                                                            // and higher
+};
+
+       channel null {
+                        null;                               // toss anything sent to
+                                                            // this channel
+};
+};
+EOF
+
+Create a zone file with the following contents:
+
+cat > /srv/named/etc/namedb/pz/127.0.0 << "EOF"
+$TTL 3D
+@      IN      SOA     ns.local.domain. hostmaster.local.domain. (
+                                1       ; Serial
+                                                        8H      ; Refresh
+                                                                                2H      ; Retry
+                                                                                                        4W      ; Expire
+                                                                                                                                1D)     ; Minimum TTL
+                NS      ns.local.domain.
+                1               PTR     localhost.
+                EOF
+
+                Create the root.hints file with the following commands:
+                [Note]
+                Note
+
+                Caution must be used to ensure there are no leading spaces in this file.
+
+cat > /srv/named/etc/namedb/root.hints << "EOF"
+.                       6D  IN      NS      A.ROOT-SERVERS.NET.
+.                       6D  IN      NS      B.ROOT-SERVERS.NET.
+.                       6D  IN      NS      C.ROOT-SERVERS.NET.
+.                       6D  IN      NS      D.ROOT-SERVERS.NET.
+.                       6D  IN      NS      E.ROOT-SERVERS.NET.
+.                       6D  IN      NS      F.ROOT-SERVERS.NET.
+.                       6D  IN      NS      G.ROOT-SERVERS.NET.
+.                       6D  IN      NS      H.ROOT-SERVERS.NET.
+.                       6D  IN      NS      I.ROOT-SERVERS.NET.
+.                       6D  IN      NS      J.ROOT-SERVERS.NET.
+.                       6D  IN      NS      K.ROOT-SERVERS.NET.
+.                       6D  IN      NS      L.ROOT-SERVERS.NET.
+.                       6D  IN      NS      M.ROOT-SERVERS.NET.
+A.ROOT-SERVERS.NET.     6D  IN      A       198.41.0.4
+B.ROOT-SERVERS.NET.     6D  IN      A       192.228.79.201
+C.ROOT-SERVERS.NET.     6D  IN      A       192.33.4.12
+D.ROOT-SERVERS.NET.     6D  IN      A       199.7.91.13
+E.ROOT-SERVERS.NET.     6D  IN      A       192.203.230.10
+F.ROOT-SERVERS.NET.     6D  IN      A       192.5.5.241
+G.ROOT-SERVERS.NET.     6D  IN      A       192.112.36.4
+H.ROOT-SERVERS.NET.     6D  IN      A       128.63.2.53
+I.ROOT-SERVERS.NET.     6D  IN      A       192.36.148.17
+J.ROOT-SERVERS.NET.     6D  IN      A       192.58.128.30
+K.ROOT-SERVERS.NET.     6D  IN      A       193.0.14.129
+L.ROOT-SERVERS.NET.     6D  IN      A       199.7.83.42
+M.ROOT-SERVERS.NET.     6D  IN      A       202.12.27.33
+EOF
+
+The root.hints file is a list of root name servers. This file must be updated periodically with the dig utility. A current copy of root.hints can be obtained from ftp://rs.internic.net/domain/named.root. Consult the BIND 9 Administrator Reference Manual for details.
+
+Create or modify resolv.conf to use the new name server with the following commands:
+[Note]   Replace <yourdomain.com> with your own valid domain name.
+
+cp /etc/resolv.conf /etc/resolv.conf.bak &&
+cat > /etc/resolv.conf << "EOF"
+search <yourdomain.com>
+nameserver 127.0.0.1
+EOF
+
+Set permissions on the chroot jail with the following command:
+chown -R named:named /srv/named
+
+Boot Script
+Now start BIND with the new boot script:
+/etc/rc.d/init.d/bind start
+
+Testing BIND
+Test out the new BIND 9 installation. First query the local host address with dig:
+
+dig -x 127.0.0.1
+
+Now try an external name lookup, taking note of the speed difference in repeated lookups due to the caching. Run the dig command twice on the same address:
+
+dig www.linuxfromscratch.org &&
+dig www.linuxfromscratch.org
+
+You can see almost instantaneous results with the named caching lookups. Consult the BIND Administrator Reference Manual located at doc/arm/Bv9ARM.html in the package source tree, for further configuration options.
+

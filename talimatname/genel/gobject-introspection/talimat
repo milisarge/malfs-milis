@@ -1,0 +1,16 @@
+# Description: Used to describe the program APIs and collect them in a uniform, machine readable format.
+# URL: http://live.gnome.org/GObjectIntrospection
+# Packager: tnut at nutyx dot org
+# Depends on: glib 
+name=gobject-introspection
+version=1.46.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

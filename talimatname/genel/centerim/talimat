@@ -1,0 +1,19 @@
+# Description: CenterIM is a powerful communication tool that can be used through SSH.
+# URL: http://www.centerim.org/
+# Packager: pierre at nutyx dot org
+# Depends on: curl 
+
+name=centerim
+version=4.22.10
+release=1
+
+source=(http://www.centerim.org/download/releases/$name-$version.tar.gz
+	   http://downloads.nutyx.org/files/patchs/centerim/$name-$version-gcc-1.patch)
+
+build() {
+	cd $name-$version
+	patch -Np1 -i ../$name-$version-gcc-1.patch
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

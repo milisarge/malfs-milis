@@ -1,0 +1,18 @@
+# Description: A highly programmable web browser based on Mozilla XULRunner
+# URL: http://conkeror.mozdev.org/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: xulrunner desktop-file-utils
+
+name=conkeror
+version=git
+release=1
+
+build() {
+  git clone git://repo.or.cz/conkeror.git
+  cd $name
+  make PREFIX=/usr
+
+  make DESTDIR="$PKG" PREFIX=/usr install
+  rm -f "$PKG"/usr/share/doc/conkeror/COPYING
+}

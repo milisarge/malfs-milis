@@ -1,0 +1,26 @@
+# Description:	Graphviz is open source graph visualization software
+# URL:			http://www.graphviz.org
+# Packager:		berlius at nutyx dot com
+# Depends on:	gtk2 freetype xorg-fontconfig freeglut gdk-pixbuf libjpeg-turbo libpng pango xorg libglade ghostscript qt4 swig guile openjdk lua php python ruby tcl tk
+
+name=graphviz
+version=2.38.0
+release=1
+source=(http://www.graphviz.org/pub/graphviz/stable/SOURCES/$name-$version.tar.gz)
+
+build () {
+
+	cd $name-$version
+
+	sed -e "s:ruby-1.9:ruby-2.2:g" \
+		-i configure                  
+
+	./configure --prefix=/usr  
+	make	
+	make DESTDIR=$PKG install
+	
+	install -v -m755 -d $PKG/usr/share/doc/graphviz-2.38.0 
+	ln -v -s $PKG/usr/share/graphviz/doc \
+         $PKG/usr/share/doc/graphviz-2.38.0
+
+}

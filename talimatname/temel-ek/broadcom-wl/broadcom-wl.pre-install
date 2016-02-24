@@ -1,0 +1,5 @@
+. lib/lsb/init-functions
+if [ -z "`cards list|grep kernel-lts\ `" ]; then
+	log_failure_msg "${WARNING}kernel-lts${NORMAL} is not installed"
+	exit 1
+fi

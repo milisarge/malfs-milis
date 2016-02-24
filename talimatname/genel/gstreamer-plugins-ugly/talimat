@@ -1,0 +1,20 @@
+# Description: GStreamer Multimedia Framework ugly Plugins
+# URL: http://gstreamer.freedesktop.org/modules/gst-plugins-ugly.html
+# Packager: pierre at nutyx dot org
+# Depends on: gstreamer-plugins-base lame libdvdnav libdvdread libdvdcss liba52 libmad libmpeg2 
+
+name=gstreamer-plugins-ugly
+version=0.10.19
+release=2
+
+source=( http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-$version.tar.xz
+	 http://www.linuxfromscratch.org/patches/downloads/gst-plugins-ugly/gst-plugins-ugly-$version-libcdio_fixes-1.patch)
+
+build() {
+cd gst-plugins-ugly-$version
+patch -Np1 -i ../gst-plugins-ugly-$version-libcdio_fixes-1.patch
+
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,26 @@
+# Description: Text-based web browser.
+# URL: http://lynx.isc.org/
+# Maintainer: Danny Rawlins, crux at romster dot me
+# Packager: Mark Rosenstand, mark at borkware dot net
+# Depends on: ncurses openssl zlib
+
+name=lynx
+version=2.8.9
+release=1
+source=(http://invisible-island.net/datafiles/release/lynx-cur.tar.bz2)
+
+build() {
+	cd lynx${version//./-}
+
+	./configure \
+		--prefix=/usr \
+		--disable-nls \
+		--enable-color-style \
+		--enable-ipv6 \
+		--with-ssl=/usr/lib \
+		--with-zlib \
+		--with-screen=ncursesw
+
+	make
+	make -j 1 DESTDIR=$PKG install
+}

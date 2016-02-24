@@ -1,0 +1,21 @@
+# Description: Providing application developers a predictable API with which to access Data Sources
+# URL: http://www.unixodbc.org/
+# Packager: pierre at nutyx dot org
+
+name=unixodbc
+version=2.3.4
+release=1
+
+source=(ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-$version.tar.gz)
+build() { 
+cd unixODBC-$version
+./configure --prefix=/usr --sysconfdir=/etc/unixODBC \
+--enable-gui=no
+make
+make DESTDIR=$PKG install
+find doc -name "Makefile*" -delete
+chmod 644 doc/{lst,ProgrammerManual/Tutorial}/*
+
+install -m755 -d /usr/share/doc/unixODBC-$version
+cp -R doc/* /usr/share/doc/unixODBC-$version
+}

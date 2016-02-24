@@ -1,0 +1,20 @@
+# Description: The xinit package contains a usable script to start the xserver.
+# Packager: tnut at nutyx dot org
+# Depends on: xorg-server desktop-file-utils shared-mime-info
+
+_name=xinit
+run=(desktop-file-utils shared-mime-info)
+
+name=xorg-xinit
+version=1.3.4
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/app/${_name}-$version.tar.bz2)
+
+build() {
+	cd ${_name}-$version
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	--with-xorg-xinitdir=/etc/X11/app-defaults
+	make
+	make DESTDIR=$PKG install
+}

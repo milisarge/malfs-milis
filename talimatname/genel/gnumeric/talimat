@@ -1,0 +1,23 @@
+# Description: The Gnumeric package is a spreadsheet program used to manipulate and analyze numeric data.
+# URL: http://www.gnumeric.org/
+# Maintainer: Morten Welinder <terra at gnome dot org> https://git.gnome.org/browse/gnumeric/
+# Packager: tnut at nutyx dot org
+# Depends on : shared-mime-info goffice libglade gconf desktop-file-utils
+
+name=gnumeric
+version=1.12.27
+release=1
+
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+sed -e "s@zz-application/zz-winassoc-xls;@@" -i gnumeric.desktop.in
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var/lib \
+--disable-schemas-install --enable-ssindex
+make
+make DESTDIR=$PKG install
+}

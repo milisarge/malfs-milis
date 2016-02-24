@@ -1,0 +1,25 @@
+# Description: The Groff package contains programs for processing and formatting text.
+# URL: http://www.gnu.org/software/groff/
+# Maintainer: Werner Lemberg  wl at gnu dot org
+# Packager: pierre at nutyx dot org
+name=groff
+version=1.22.3
+release=1
+
+source=(http://ftp.gnu.org/gnu/groff/groff-$version.tar.gz)
+
+build()
+{
+cd groff-$version
+
+PAGE="A4" ./configure --prefix=/usr
+
+make || make -j1
+
+make prefix=$PKG/usr \
+infodir=$PKG/usr/share/info  install
+
+ln -sv eqn $PKG/usr/bin/geqn
+ln -sv tbl $PKG/usr/bin/gtbl
+rm -rf $PKG/usr/share/info/dir
+}

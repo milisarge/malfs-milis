@@ -1,0 +1,17 @@
+# Description: CLI curses-based monitoring tool
+# URL: https://github.com/nicolargo/glances
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: python psutil python-setuptools
+# Nice to have: PySensors hddtemp
+
+
+name=glances
+version=2.4.2
+release=1
+source=(https://pypi.python.org/packages/source/G/Glances/Glances-$version.tar.gz)
+
+build() {
+  cd Glances-$version
+  python setup.py install -O1 --prefix='/usr' --root=$PKG --optimize=1
+}

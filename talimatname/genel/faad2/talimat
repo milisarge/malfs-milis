@@ -1,0 +1,22 @@
+# Description: ISO AAC audio decoder
+# URL: http://www.audiocoding.com
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=faad2
+version=2.7
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/faac/$name-$version.tar.gz
+	 http://www.linuxfromscratch.org/patches/blfs/svn/faad2-$version-mp4ff-1.patch)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../faad2-$version-mp4ff-1.patch
+sed -i "s:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:g" configure.in 
+sed -i "s:man_MANS:man1_MANS:g" frontend/Makefile.am
+autoreconf -fi
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

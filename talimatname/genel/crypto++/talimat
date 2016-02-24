@@ -1,0 +1,31 @@
+# Description : A free C++ class library of cryptographic schemes
+# URL : http://www.cryptopp.com/
+# Packager : pierre at nutyx dot org
+# Depends on : unzip
+
+name=crypto++
+version=5.6.2
+_version=562
+release=1
+
+source=(http://www.cryptopp.com/cryptopp${_version}.zip
+        crypto++-CVE-2015-2141.patch
+        crypto++-libcrypto++.pc)
+
+build() {
+
+  patch -p1 -i $SRC/crypto++-CVE-2015-2141.patch
+  
+  sed -i -e 's/^CXXFLAGS/#CXXFLAGS/' GNUmakefile
+
+  export CXXFLAGS="${CXXFLAGS} -DNDEBUG -fPIC"
+
+  make -f GNUmakefile  
+  make libcryptopp.so
+
+  install -d $PKG/usr/{lib/pkgconfig,include/cryptopp}
+  install -m644 *.h $PKG/usr/include/cryptopp/
+  install -m644 libcryptopp.so $PKG/usr/lib/libcryptopp.so
+  install -m644 $SRC/crypto++-libcrypto++.pc $PKG/usr/lib/pkgconfig/libcrypto++.pc
+  install -D -m644 License.txt $PKG/usr/share/licenses/$name/LICENSE
+}

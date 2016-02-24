@@ -1,0 +1,34 @@
+# Description: Platform independent library for real-time MIDI input/output
+# URL: http://portmedia.sourceforge.net
+# Packager: pierre at nutyx dot org
+# Depends on: cmake glib alsa-lib openjdk
+
+name=portmidi
+version=217
+release=1
+
+source=(http://downloads.sourceforge.net/project/portmedia/$name/$version/$name-src-$version.zip \
+        portmidi-217-build-fix.patch)
+
+build() {
+
+unset MAKEFLAGS
+
+cd $name
+sed -i "s#/usr/local#/usr#" */CMakeLists.txt pm_python/setup.py
+
+mkdir -p pm_java/Release
+patch -p1 -i $SRC/portmidi-217-build-fix.patch
+
+cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=Release \
+    -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=Release \
+    -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=Release
+
+make
+make DESTDIR=$PKG install
+
+# Fix missing symlink for libporttime.so (FS#21528)
+ln -s libportmidi.so $PKG/usr/lib/libporttime.so
+}
+

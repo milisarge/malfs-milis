@@ -1,0 +1,19 @@
+# Description: Lightweight, advanced audio player focused simplicity and audio quality"
+# URL: http://audacious-media-player.org
+# Maintainers: https://github.com/audacious-media-player
+# Packagers: tnut at nutyx dot org
+# Depends: glib gtk2 python xorg-libsm gnome-icon-theme hicolor-icon-theme desktop-file-utils
+
+name=audacious
+version=3.6.2
+release=1
+
+source=(http://distfiles.audacious-media-player.org/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--with-buildstamp="NuTyX"
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,20 @@
+# Description: A Python HTML/XML parser designed for quick turnaround projects like screen-scraping
+# URL: URL: http://www.crummy.com/software/BeautifulSoup/index.html
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
+name=python-beautifulsoup3
+version=3.2.1
+release=1
+
+source=(
+http://www.crummy.com/software/BeautifulSoup/download/3.x/BeautifulSoup-$version.tar.gz)
+
+build() {
+    cd BeautifulSoup-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

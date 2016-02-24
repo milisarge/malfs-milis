@@ -1,0 +1,51 @@
+# Description: Free version of the SSH connectivity tools
+# URL: http://www.openssh.org/
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+name=openssh
+version=7.1p2
+release=1
+
+source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
+	http://downloads.nutyx.org/files/patchs/openssh-server/service-saravane-01.patch)
+build() {
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+
+unset MAKEFLAGS
+cd $name-$version
+
+install -v -m700 -d $PKG/var/lib/sshd
+
+chown -v root:sys $PKG/var/lib/sshd
+
+./configure --prefix=/usr \
+--sysconfdir=/etc/ssh \
+--datadir=/usr/share/sshd \
+--with-md5-passwords \
+--with-privsep-path=/var/lib/sshd \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info
+
+make DESTDIR=$PKG install
+
+if [ -f /etc/pam.d/login ]; then
+	mkdir -p $PKG/etc/pam.d
+	sed 's@d/login@d/sshd@g' /etc/pam.d/login > $PKG/etc/pam.d/sshd
+	chmod 644 $PKG/etc/pam.d/sshd
+fi
+
+install -v -m755 contrib/ssh-copy-id $PKG/usr/bin
+install -v -m644 contrib/ssh-copy-id.1 \
+$PKG/usr/share/man/man1
+
+install -v -m755 -d $PKG/usr/share/doc/$name-$version
+install -v -m644 INSTALL LICENCE OVERVIEW README* \
+$PKG/usr/share/doc/$name-$version
+
+cd $SRC
+
+tar xf $scripts-$scriptsversion.tar.bz2
+cd $SRC/$scripts-$scriptsversion
+patch -Np1 -i ../service-saravane-01.patch
+make DESTDIR=$PKG install-sshd
+}

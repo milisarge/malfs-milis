@@ -1,0 +1,24 @@
+# Description: The logrotate utility is designed to simplify the administration of log 
+# URL: https://fedorahosted.org/logrotate/
+# Packager: alienus at nutyx dot org
+# Depends on: popt 
+name=logrotate
+version=3.8.8
+release=1
+
+source=(
+https://fedorahosted.org/releases/l/o/logrotate/logrotate-$version.tar.gz
+logrotate.conf
+logrotate.README)
+
+build() {
+    cd $name-$version
+    make WITH_ACL=yes RPM_OPT_FLAGS="$CFLAGS" EXTRA_LDFLAGS="$LDFLAGS"
+    make test
+    make PREFIX=$PKG MANDIR="/usr/share/man" install
+
+    # add missing dir
+    install -dm755 $PKG/etc/logrotate.d
+    # install the logrotate.conf file
+    install -Dm644 $SRC/logrotate.conf $PKG/etc/logrotate.conf
+}

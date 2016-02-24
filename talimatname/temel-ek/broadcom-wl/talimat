@@ -1,0 +1,40 @@
+# Description: Broadcom 802.11abgn hybrid Linux networking device driver
+# URL: http://www.broadcom.com/support/802.11/linux_sta.php
+# Maintainer: Armin K. <krejzi at email dot com>
+# Packager: tnut at nutyx dot org
+
+name=broadcom-wl
+version=6.30.223.248
+release=6
+[[ "`uname -m`" == "x86_64" ]] && _arch=_64 || _arch=
+source=("http://www.broadcom.com/docs/linux_sta/hybrid-v35${_arch}-nodebug-pcoem-${version//./_}.tar.gz"
+        broadcom-wl.modprobe.d broadcom-wl.license.patch broadcom-wl.linux-recent.patch broadcom-wl.gcc.patch)
+build() {
+
+KERNELRELEASE=`uname -r`
+
+  patch -p1 -i broadcom-wl.linux-recent.patch
+  patch -p1 -i broadcom-wl.license.patch
+  patch -p1 -i broadcom-wl.gcc.patch
+
+  sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" \
+      -i src/wl/sys/wl_linux.c
+
+  make
+
+  install -Dm644 wl.ko $PKG/lib/modules/$KERNELRELEASE/kernel/drivers/net/wireless/wl.ko
+  gzip $PKG/lib/modules/$KERNELRELEASE/kernel/drivers/net/wireless/wl.ko
+
+  install -Dm644 lib/LICENSE.txt $PKG/usr/share/licenses/$name/LICENSE
+  install -Dm644 broadcom-wl.modprobe.d $PKG/etc/modprobe.d/broadcom-wl.conf
+  # post-install autogen
+  cat > $PKGMK_ROOT/$name.post-install << "EOF"
+. lib/lsb/init-functions
+log_success_msg "update modules population"
+EOF
+  echo "depmod $KERNELRELEASE" >> $PKGMK_ROOT/$name.post-install
+  cat >> $PKGMK_ROOT/$name.post-install << "EOF"
+log_warning_msg "${WARNING}Check the file /etc/modprobe.d/broadcom-wl.conf ${NORMAL}"
+log_warning_msg "${WARNING}Reboot if you want the modules being automatically loaded${NORMAL}"
+EOF
+}

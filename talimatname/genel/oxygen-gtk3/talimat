@@ -1,0 +1,22 @@
+# Description: oxygen-gtk3, theme Oxygen for applications in gtk3
+# URL: https://projects.kde.org/projects/playground/artwork/oxygen-gtk/
+# Packager: pierre at nutyx dot org
+# Depends on: cmake gtk3 dbus-glib cairo 
+
+
+name=oxygen-gtk3
+version=1.4.1
+release=1
+
+source=(http://download.kde.org/stable/$name/$version/src/$name-$version.tar.bz2)
+
+build() {
+  	cd $name-$version
+        mkdir build
+        cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      		.. 
+	make
+	make DESTDIR=$PKG install
+}
+

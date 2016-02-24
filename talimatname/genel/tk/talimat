@@ -1,0 +1,31 @@
+# Description: A windowing toolkit for use with tcl
+# URL: http://tcl.sourceforge.net/
+# Packager: alienus at nutyx dot org
+# Depends on: tcl xorg-fontconfig xorg-libxft xorg-libxscrnsaver 
+
+name=tk
+version=8.6.4
+release=1
+
+source=(
+http://downloads.sourceforge.net/sourceforge/tcl/tk${version}-src.tar.gz)
+
+build(){
+    
+    [ "`uname -m`" == "x86_64" ] && X64="--enable-64bit"
+    
+    cd $name$version/unix
+    ./configure --prefix=/usr \
+                --mandir=/usr/share/man \
+                --enable-threads \
+                --disable-rpath $X64
+    make
+    make INSTALL_ROOT=$PKG install install-private-headers
+    ln -sf wish${version%.*} $PKG/usr/bin/wish
+    ln -sf libtk${version%.*}.so $PKG/usr/lib/libtk.so
+
+    # remove buildroot traces
+    sed -e "s#${SRC}/tk${version}/unix#/usr/lib#" \
+        -e "s#${SRC}/tk${version}#/usr/include#" \
+        -i $PKG/usr/lib/tkConfig.sh
+}

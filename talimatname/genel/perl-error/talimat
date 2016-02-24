@@ -1,0 +1,21 @@
+# Description: Perl/CPAN Error module - Error/exception handling in an OO-ish way
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
+name=perl-error
+version=0.17022
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Error-$version.tar.gz)
+
+build() {
+cd Error-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

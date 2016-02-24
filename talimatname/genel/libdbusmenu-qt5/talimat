@@ -1,0 +1,23 @@
+# Description : Library that provides a Qt5 implementation of the DBusMenu protocol
+# URL: https://www.kde.org/
+# Packager: pierre at nutyx dot org, fanch at nutyx dot org, tnut at nutyx dot org
+# Depends on: cmake qt5 qjson  
+name=libdbusmenu-qt5
+release=1
+version=0.9.3+15.10.20150604
+source=(http://www.linuxfromscratch.org/~krejzi/libdbusmenu-qt-$version.tar.xz )
+
+build() {
+cd libdbusmenu-qt-$version
+mkdir build
+cd    build
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_LIBDIR=lib  \
+      -DWITH_DOC=OFF              \
+      -Wno-dev -DKDE_INSTALL_USE_QT_SYS_PATHS=ON .. 
+
+make
+make DESTDIR=$PKG install
+}

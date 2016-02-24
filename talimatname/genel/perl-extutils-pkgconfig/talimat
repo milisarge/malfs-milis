@@ -1,0 +1,22 @@
+# Description: Perl connector for pkgconfig
+# URL: http://www.gtkperl.org
+# Packager: pierre at nutyx dot org
+# Depends on: perl-extutils-depends 
+run=( perl )
+name=perl-extutils-pkgconfig
+version=1.15
+release=1
+
+source=(http://www.cpan.org/modules/by-module/ExtUtils/ExtUtils-PkgConfig-$version.tar.gz)
+
+build() {
+	cd ExtUtils-PkgConfig-$version
+	perl Makefile.PL
+	make
+	make DESTDIR=$PKG install
+	find $PKG \
+		-name perllocal.pod \
+		-o -name .packlist | xargs rm
+	find $PKG -empty | xargs rmdir -p ||:
+}
+  

@@ -1,0 +1,20 @@
+# Description: Library for accessing ssh client services through C libraries
+# URL: http://www.libssh.org/
+# Packager: pierre at nutyx dot org
+# Depends on: doxygen cmake
+
+name=libssh
+version=0.7.2
+release=1
+
+source=( https://red.libssh.org/attachments/download/177/$name-$version.tar.xz)
+	
+build() {
+	mkdir build
+  	cd build
+	cmake ../$name-$version \
+    		-DCMAKE_INSTALL_PREFIX=/usr \
+    		-DCMAKE_BUILD_TYPE=Release
+	make
+	make DESTDIR=$PKG install
+}

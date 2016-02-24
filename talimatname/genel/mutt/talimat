@@ -1,0 +1,32 @@
+# Description: The Mutt package contains a Mail User Agent. This is useful for reading, writing, replying to, saving, and deleting your email. 
+# URL: http://www.mutt.org/
+# Packager: berlius at nutyx dot com
+# Depends on: aspell aspell-fr cyrus-sasl gdb gnupg gpgme libidn kerberos sendmail slang openssl gnutls db libxslt lynx 
+
+description="MailUserAgent, useful for reading, writing, replying to, saving, and deleting your email."
+name=mutt
+version=1.5.24	
+release=1
+source=(ftp://ftp.mutt.org/pub/mutt/$name-$version.tar.gz)
+ 
+build() {
+
+cd $name-$version
+
+cp -v doc/manual.txt{,.shipped} 
+./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --with-docdir=/usr/share/doc/mutt-1.5.24 \
+            --enable-pop      \
+            --enable-imap     \
+            --enable-hcache   \
+            --without-qdbm    \
+            --with-gdbm       \
+            --without-bdb     \
+            --without-tokyocabinet 
+make 
+test -s doc/manual.txt || mv -v doc/manual.txt{.shipped,}
+
+make DESTDIR=$PKG install
+
+}

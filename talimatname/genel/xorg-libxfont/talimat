@@ -1,0 +1,17 @@
+# Description: libXfont, library Xorg
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: freetype xorg-proto xorg-xtrans xorg-libfontenc 
+
+name=xorg-libxfont
+version=1.5.1
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfont-$version.tar.bz2)
+
+build() {
+cd libXfont-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

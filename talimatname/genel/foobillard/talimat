@@ -1,0 +1,25 @@
+# Description: OpenGL billard game.
+# URL:         http://foobillard.sourceforge.net/
+# Packager:    berlius at nutyx dot com
+# Depends on:  libpng sdl freetype xorg-glu freeglut xorg-libxaw xorg-libxi xorg-mesa
+
+name=foobillard
+version=3.0a
+release=1
+source=(http://downloads.sourceforge.net/project/$name/FooBillard-Sources/$name-$version.tar.gz
+	foobillard-ttf-$version.patch
+	undef.nvidia.patch)
+
+build() {
+
+    cd $name-$version
+    patch -p 1 -i $SRC/foobillard-ttf-$version.patch
+    patch -p 1 -i $SRC/undef.nvidia.patch
+    ./configure --prefix=/usr \
+	            --enable-nvidia=no 
+    make
+    make DESTDIR=$PKG install
+	
+}
+
+

@@ -1,0 +1,57 @@
+# Description: The Perl package contains the Practical Extraction and Report Language.
+# URL: http://www.perl.org/
+# Packager: pierre at nutyx dot org
+
+name=perl
+version=5.22.1
+release=1
+
+source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2)
+
+build()
+{
+cd $name-$version
+
+if [ "`uname -m`" == "x86_64" ]; then
+	_ARCH="-Dcccdlflags='-fPIC'"
+else
+	_ARCH=""
+fi
+
+echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
+export BUILD_ZLIB=False
+export BUILD_BZIP2=0
+
+
+sh Configure -des  -Dusethreads \
+	-Dprefix=/usr -Duseshrplib -Dscriptdir=/usr/bin \
+	-Dvendorbin=/usr/bin -Dsitebin=/usr/bin \
+	-Dvendorprefix=/usr -Dinc_version_list=none \
+	-Darchlib=/usr/lib/share/perl5/base \
+	-Dprivlib=/usr/lib/share/perl5/base \
+	-Dvendorlib=/usr/lib/share/perl5/vendor \
+	-Dvendorarch=/usr/lib/perl5/vendor \
+	-Dsitelib=/usr/lib/perl5/site \
+	-Dsitearch=/usr/lib/perl5/site \
+	-Dman1dir=/usr/share/man/man1 \
+	-Dman3dir=/usr/share/man/man3 \
+	-Dpager="/usr/bin/less isR" ${_ARCH}
+
+make
+# Only when we are building a new base
+
+if [ -L /tools ]; then
+	make -k test || true
+fi
+
+make DESTDIR=$PKG install
+find $PKG -iname 'TODO*' -or \
+	-iname 'Change*' -or \
+	-iname 'README*' -or \
+	-name '*.bs' -or \
+	-name .packlist -or \
+	-name perllocal.pod | xargs rm
+find $PKG -depth -empty -exec rmdir {} \;
+chmod -R +w $PKG
+unset BUILD_ZLIB BUILD_BZIP2
+}

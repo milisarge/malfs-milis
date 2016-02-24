@@ -1,0 +1,38 @@
+# Description: DVD and Blu-ray to MKV converter and network streamer
+# URL: http://www.makemkv.com
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: qt5 libxkbcommon hicolor-icon-theme icu ffmpeg desktop-file-utils
+
+run=(desktop-file-utils)
+
+name=makemkv
+version=1.9.9
+release=3
+
+source=(http://www.makemkv.com/download/${name}-bin-${version}.tar.gz
+        http://www.makemkv.com/download/${name}-oss-${version}.tar.gz
+        makemkv.1
+        makemkvcon.1
+        mmdtsdec.1)
+
+
+build() {
+  cd "${SRC}/${name}-oss-${version}"
+  ./configure --prefix=/usr
+  make
+
+  make DESTDIR="${PKG}" install
+
+  cd "${SRC}/${name}-bin-${version}"
+  install -d "${PKG}/usr/bin/"
+  install -t "${pkgdir}/usr/bin/" bin/amd64/makemkvcon
+  install -d "${PKG}/usr/share/MakeMKV"
+  install -m 644 -t "${PKG}/usr/share/MakeMKV" src/share/makemkv_*.mo.gz src/share/*.mmcp.xml
+  
+  install -Dm 644 src/eula_en_linux.txt "${PKG}/usr/share/licenses/${name}/eula_en_linux.txt"
+
+  cd "${SRC}/"
+  install -d "${PKG}/usr/share/man/man1/"
+  install -m 644 -t "${PKG}/usr/share/man/man1/" makemkv.1 makemkvcon.1 mmdtsdec.1
+}

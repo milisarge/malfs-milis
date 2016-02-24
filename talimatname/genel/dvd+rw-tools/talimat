@@ -1,0 +1,28 @@
+# Description: DVD+-RW/R tools
+# URL: http://fy.chalmers.se/~appro/linux/DVD+RW/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=dvd+rw-tools
+version=7.1
+release=1
+
+source=( http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-$version.tar.gz \
+	 http://downloads.nutyx.org/files/patchs/$name/transport.patch)
+
+build() {
+	cd $name-$version
+	patch -Np1 -i ../transport.patch
+	make
+	mkdir -p $PKG/usr/bin $PKG/usr/share/man/man1
+        for exec in \
+	dvd+rw-booktype \
+	dvd+rw-format \
+	dvd+rw-mediainfo \
+	dvd-ram-control \
+	growisofs
+	do
+		install -m 755 $exec $PKG/usr/bin/
+	done
+	install -m 644 growisofs.1 $PKG/usr/share/man/man1/
+}

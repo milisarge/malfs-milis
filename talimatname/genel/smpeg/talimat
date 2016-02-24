@@ -1,0 +1,25 @@
+# Description: A SDL MPEG player library.
+# URL: http://www.lokigames.com/development/smpeg.php3
+# Packager: fanch at nutyx dot org
+# Depends on: sdl
+
+name=smpeg
+version=0.4.5
+release=2
+source=(http://downloads.nutyx.org/archives/smpeg-$version.tar.xz
+	smpeg-mpegaudiosdl.patch
+	smpeg-0.4.4_m4.patch)
+
+build() {
+	cd smpeg-$version
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/share/man \
+		--disable-static \
+		--enable-gtk-player=no
+#	sed -i -e 's|\(libsmpeg_la_LDFLAGS = .*\)|\1 -lstdc++|' Makefile
+	make
+	make install DESTDIR=$PKG
+#	rm $PKG/usr/man/man1/gtv.1
+}
+

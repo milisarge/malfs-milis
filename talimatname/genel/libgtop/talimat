@@ -1,0 +1,21 @@
+# Description: A library that read information about processes and the running system
+# URL: http://www.gnu.org/directory/libs/LibGTop.html
+# Packager: b at juglas dot name
+# Depends on: gtk-doc intltool gobject-introspection 
+
+name=libgtop
+version=2.32.0
+release=1
+
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+install -v -m755 -d $PKG/usr/lib/libgtop/examples
+install -v -m755 examples/.libs/* $PKG/usr/lib/libgtop/examples
+rm -rf $PKG/usr/share/info/dir
+}

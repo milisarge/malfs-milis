@@ -1,0 +1,30 @@
+# Description: Perl Compatible Regular Expression libraries.
+# URL: http://www.pcre.org/
+# Packager: pierre at nutyx dot org
+
+name=pcre
+version=8.38
+release=1
+
+source=( ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/$name-$version.tar.bz2 )
+PKGMK_GROUPS=(devel man doc)
+build() {
+cd $name-$version
+
+[ "${CARCH}" = "x86_64" ] && export CFLAGS="${CFLAGS} -fPIC"
+
+./configure --prefix=/usr \
+--docdir=/usr/share/doc/pcre-$version \
+--enable-unicode-properties \
+--enable-pcre16 \
+--enable-pcre32 \
+--enable-pcregrep-libz \
+--enable-pcregrep-libbz2 \
+--enable-pcretest-libreadline \
+--disable-static
+make
+make DESTDIR=$PKG install
+mkdir  $PKG/lib
+mv -v $PKG/usr/lib/libpcre.so.* $PKG/lib
+ln -sfv ../../lib/$(readlink $PKG/usr/lib/libpcre.so) $PKG/usr/lib/libpcre.so
+}

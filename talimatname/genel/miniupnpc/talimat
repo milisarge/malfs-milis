@@ -1,0 +1,17 @@
+# Description: A small UPnP client library/tool to access Internet Gateway Devices
+# URL: http://miniupnp.free.fr
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=miniupnpc
+version=1.9
+release=1
+
+source=(http://miniupnp.free.fr/files/$name-$version.tar.gz)
+
+build() {
+  cd $SRC/$name-$version
+  make
+  make DESTDIR=$PKG install
+  install -Dm644 man3/miniupnpc.3 $PKG/usr/share/man/man3/miniupnpc.3
+  install -Dm644 LICENSE $PKG/usr/share/licenses/${pkgname}/LICENSE
+}

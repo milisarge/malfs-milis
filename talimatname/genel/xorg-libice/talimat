@@ -1,0 +1,18 @@
+# Description: libICE, library Xorg
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-xtrans 
+name=xorg-libice
+version=1.0.9
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libICE-$version.tar.bz2)
+
+build() {
+	cd libICE-$version
+
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+
+	make
+	make DESTDIR=$PKG install
+}

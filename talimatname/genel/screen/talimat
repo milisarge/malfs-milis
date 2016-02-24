@@ -1,0 +1,27 @@
+# URL: http://www.gnu.org/software/screen/screen.html
+# Packager: pierre at nutyx dot org
+
+description="Runs several separate processes on a single physical character-based terminal."
+name=screen
+version=4.3.1
+release=1
+
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr                     \
+            --infodir=/usr/share/info         \
+            --mandir=/usr/share/man           \
+            --with-socket-dir=/run/screen     \
+            --with-pty-group=5                \
+            --with-sys-screenrc=/etc/screenrc &&
+
+sed -i -e "s%/usr/local/etc/screenrc%/etc/screenrc%" {etc,doc}/* &&
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+mkdir $PKG/etc
+install -m 644 etc/etcscreenrc \
+$PKG/etc/screenrc
+}

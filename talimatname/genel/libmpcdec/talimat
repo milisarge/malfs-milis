@@ -1,0 +1,22 @@
+# Description: Musepack decoding library
+# URL: http://www.musepack.net/index.php?pg=home
+# Packager: pierre at nutyx dot org
+# Depends on: nasm 
+
+name=libmpcdec
+version=1.2.6
+release=1
+
+source=( http://files.musepack.net/source/$name-$version.tar.bz2)
+
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info
+	make
+	make DESTDIR=$PKG install
+}
+  
+

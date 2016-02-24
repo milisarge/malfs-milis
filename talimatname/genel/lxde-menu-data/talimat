@@ -1,0 +1,16 @@
+# Description: Files required to build freedesktop.org menu spec-compliant desktop menus for LXDE.
+# Url: http://lxde.org/
+# Packager: tnut at nutyx dot org
+# Depends on: intltool
+
+name=lxde-menu-data
+version=0.1.4
+release=2
+_name=lxmenu-data
+source=(http://downloads.sourceforge.net/lxde/${_name}-$version.tar.xz)
+build() {
+cd $_name-$version
+./configure --prefix=/usr --sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,22 @@
+# Description : A string template engine based on the Django template system and written in Qt5
+# URL : https://www.gitorious.org/grantlee/pages/Home
+# Packager : pierre at nutyx dot org
+# Depends on : qt5 cmake doxygen
+
+name=grantlee-qt5
+version=5.0.0
+release=1
+
+source=(http://downloads.grantlee.org/grantlee-$version.tar.gz)
+
+build() {
+  mkdir build
+  cd build
+
+  cmake ../grantlee-$version \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTS=OFF
+  make
+  make DESTDIR=$PKG install
+}

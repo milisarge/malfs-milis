@@ -1,0 +1,123 @@
+# URL: http://www.chromium.org/Home
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: atk nss ninja pciutils gperf yasm xorg-mesa libgnome-keyring elfutils subversion gtk2 dbus-glib nss alsa-lib xdg-utils bzip2 libevent libgcrypt dejavu-ttf opus snappy dbus desktop-file-utils hicolor-icon-theme flac libxml2 pulseaudio xorg-libxscrnsaver xorg-libxtst libexif
+
+description="The Open-source project behind Google Chrome, a safer, faster, and more stable browser"
+name=chromium
+version=48.0.2564.103
+release=1
+
+source=(http://commondatastorage.googleapis.com/chromium-browser-official/$name-$version.tar.xz
+        chromium-widevine.patch
+        chromium.desktop 
+        chromium.default 
+        chromium.sh
+	chromium-use-non-versioned-icu-namespace.patch
+        chromium-fix-print-preview-on-en_GB-locale.patch)
+
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+_google_default_client_id=413772536636.apps.googleusercontent.com
+_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
+
+build() {
+	export GYP_GENERATORS='ninja'
+	cd $name-$version
+        touch chrome/test/data/webui/i18n_process_css_test.html
+	sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
+
+	patch -Np1 -i ../chromium-use-non-versioned-icu-namespace.patch
+	patch -Np1 -i ../chromium-fix-print-preview-on-en_GB-locale.patch
+  
+        sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch | patch -Np1
+	find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+	find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
+	mkdir $SRC/python2-path
+	ln -s /usr/bin/python2 "$SRC/python2-path/python"
+	if (( $_build_nacl )); then
+		python2 build/download_nacl_toolchains.py \
+		--packages nacl_x86_newlib,pnacl_newlib,pnacl_translator \
+		sync --extract
+	fi
+
+	local _chromium_conf=(
+    -Dgoogle_api_key=$_google_api_key
+    -Dgoogle_default_client_id=$_google_default_client_id
+    -Dgoogle_default_client_secret=$_google_default_client_secret
+    -Dwerror=
+    -Dclang=0
+    -Dclang_use_chrome_plugins=0
+    -Dpython_ver=2.7
+    -Dlinux_link_gsettings=1
+    -Dlinux_link_libpci=1
+    -Dlinux_link_pulseaudio=1
+    -Dlinux_strip_binary=1
+    -Dlinux_use_bundled_binutils=0
+    -Dlinux_use_bundled_gold=0
+    -Dlinux_use_gold_flags=0
+    -Dicu_use_data_file_flag=0
+    -Dlogging_like_official_build=1
+    -Drelease_extra_cflags="$CFLAGS"
+    -Dlibspeechd_h_prefix=speech-dispatcher/
+    -Dffmpeg_branding=Chrome
+    -Dproprietary_codecs=1
+    -Duse_system_bzip2=1
+    -Duse_system_flac=1
+    -Duse_system_ffmpeg=0
+    -Duse_system_harfbuzz=1
+    -Duse_system_icu=1
+    -Duse_system_libevent=1
+    -Duse_system_libjpeg=1
+    -Duse_system_libpng=1
+    -Duse_system_libvpx=0
+    -Duse_system_libxml=0
+    -Duse_system_snappy=1
+    -Duse_system_xdg_utils=1
+    -Duse_system_yasm=1
+    -Duse_system_zlib=0
+    -Duse_mojo=0
+    -Duse_gconf=0
+    -Ddisable_fatal_linker_warnings=1
+    -Ddisable_glibc=1
+    -Ddisable_nacl=1
+    -Ddisable_pnacl=1)
+
+	build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
+	build/gyp_chromium --depth=. "${_chromium_conf[@]}"
+
+	ninja -C out/Release chrome 
+        ninja -C out/Release chrome_sandbox 
+        ninja -C out/Release chromedriver
+
+	mkdir -pv $PKG/opt/chromium
+	install -D out/Release/chrome $PKG/opt/chromium/chromium
+	install -Dm4755 -o root -g root out/Release/chrome_sandbox $PKG/opt/chromium/chrome-sandbox
+	install -D out/Release/chromedriver $PKGr/opt/chromium/chromedriver
+
+	cp out/Release/{*.pak,*.bin} $PKG/opt/chromium/
+	cp -a out/Release/locales $PKG/opt/chromium/
+	
+	install -Dm644 $SRC/chromium.default $PKG/etc/chromium/default
+
+	find "$PKG/opt/chromium/" -name '*.d' -type f -delete
+
+	[ -f out/Release/chrome.1 ] && install -Dm644 out/Release/chrome.1 \
+	$PKG/opt/chromium/share/man/man1/chromium.1
+	install -Dm644 $SRC/chromium.desktop \
+	$PKG/usr/share/applications/chromium.desktop
+
+	for size in 22 24 48 64 128 256; do
+		install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
+		        $PKG/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
+        done
+  
+        for size in 16 32; do
+                install -Dm644 chrome/app/theme/default_100_percent/chromium/product_logo_$size.png \
+                        $PKG/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
+        done
+
+        install -D $SRC/chromium.sh $PKG/usr/bin/chromium
+        chmod +x $PKG/usr/bin/chromium
+
+        install -Dm644 LICENSE $PKG/opt/chromium/share/licenses/chromium/LICENSE
+  
+}

@@ -1,0 +1,21 @@
+# Description: GStreamer Multimedia Framework good Plugins
+# URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
+# Packager: pierre at nutyx dot org
+# Depends on: gstreamer-plugins-base cairo flac libjpeg-turbo libpng xorg-libx11 libsoup speex aalib taglib libcdio 
+
+name=gstreamer-plugins-good
+version=0.10.31
+release=1
+
+source=(http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-$version.tar.xz)
+
+build() {
+cd gst-plugins-good-$version
+sed -i -e '/input:/d' sys/v4l2/gstv4l2bufferpool.c
+sed -i -e "/case V4L2_CID_HCENTER/d" -e "/case V4L2_CID_VCENTER/d" sys/v4l2/v4l2_calls.c
+./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --with-gtk=3.0 
+make
+make DESTDIR=$PKG install
+}

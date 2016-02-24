@@ -1,0 +1,38 @@
+Assurez-vous des options du kernel:
+[*] Networking support  --->
+  [*]   Wireless  --->
+    [*]   cfg80211 - wireless configuration API
+    [*]     cfg80211 wireless extensions compatibility
+    [*]   Generic IEEE 802.11 Networking Stack (mac80211)
+
+Device Drivers  --->
+  [*] Network device support  --->
+    [*]   Wireless LAN  --->
+
+**********************************
+Exemple de configuration manuelle:
+**********************************
+Dans cette exemple:
+
+la carte reseau wifi s'appelle: wlan0 
+Le nom du reseau wifi (ESSID) s'appelle: reseau_maison
+La passphrase est "ceci est un exemple de passphrase"
+
+1. On configure le fichier /etc/wpa_supplicant.conf avec la commande wpa_passphrase
+
+wpa_passphrase reseau_maison "ceci est un exemple de passphrase"
+
+2. On établie wifi avec la commande wpa_supplicant en spécifiant le mode démon (-B), 
+le fichier de configuration /etc/wpa_supplicant.conf (-c/etc/wpa_supplicant.conf), 
+la carte wlan0 (-iwlan0)
+
+wpa_supplicant -B -c/etc/wpa_supplicant.conf -iwlan0
+
+3. eventuellement on attend 2 secondes
+
+sleep 2
+
+4. on lance le service dhcpcd
+
+dhcpcd
+

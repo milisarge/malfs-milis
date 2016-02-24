@@ -1,0 +1,40 @@
+# Description: Library to enforce passwords by comparing user selected passwords to words lists
+# URL: http://sourceforge.net/projects/cracklib/
+# Packager: pierre at nutyx dot org
+
+name=cracklib
+version=2.9.6
+release=1
+
+source=(https://github.com/cracklib/cracklib/releases/download/$name-$version/$name-$version.tar.gz
+	https://github.com/cracklib/cracklib/releases/download/$name-$version/$name-words-2.9.6.gz)
+
+build()
+{
+if [ "`uname -m`" == "x86_64" ]; then
+        LIB=lib64
+else
+        LIB=lib
+fi
+
+cd $name-$version
+sed -i '/skipping/d' util/packer.c
+./configure --prefix=/usr \
+--with-default-dict=/$LIB/cracklib/pw_dict
+make
+make DESTDIR=$PKG  install
+
+mkdir $PKG/$LIB
+mv -v $PKG/usr/lib/libcrack.so.2* $PKG/$LIB
+ln -v -sf ../../$LIB/libcrack.so.2.9.0 $PKG/usr/lib/libcrack.so
+
+install -v -m644 -D ../cracklib-words-2.9.6.gz \
+$PKG/usr/share/dict/cracklib-words.gz
+
+gunzip -v $PKG/usr/share/dict/cracklib-words.gz
+ln -v -sf cracklib-words $PKG/usr/share/dict/words
+echo $(hostname) >> $PKG/usr/share/dict/cracklib-extra-words
+install -v -m755 -d  $PKG/lib/cracklib
+echo "create-cracklib-dict usr/share/dict/cracklib-words \
+usr/share/dict/cracklib-extra-words" > $PKGMK_ROOT/$name.post-install
+}

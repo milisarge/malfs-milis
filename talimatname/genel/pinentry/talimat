@@ -1,0 +1,22 @@
+# Description: a collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
+# URL: 	http://www.gnupg.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libcap libsecret libassuan
+
+name=pinentry
+version=0.9.7
+release=1
+
+source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+	--libexecdir=/usr/lib \
+	--disable-pinentry-qt \
+	--disable-pinentry-qt5 \
+	--disable-pinentry-gtk
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+}

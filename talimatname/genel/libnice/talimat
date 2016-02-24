@@ -1,0 +1,19 @@
+# Description: An implementation of the IETF's draft ICE (for p2p UDP data streams)
+# URL: http://people.suug.ch/~tgr/libnl
+# Packager: pierre at nutyx dot org
+# Depends on: glib gstreamer1-plugins-base 
+
+name=libnice
+version=0.1.13
+release=1
+
+source=(http://nice.freedesktop.org/releases/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--without-gstreamer-0.10 \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

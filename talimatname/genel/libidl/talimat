@@ -1,0 +1,18 @@
+# Description: A front-end for CORBA 2.2 IDL and Netscape's XPIDL
+# URL: http://www.gnome.org
+# Packager: pierre at nutyx dot org
+# Depends on: glib 
+name=libidl
+version=0.8.14
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/libIDL/0.8/libIDL-$version.tar.bz2)
+build() {
+cd libIDL-$version
+./configure --prefix=/usr \
+	--mandir=/usr/share/man \
+	--infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+}

@@ -1,0 +1,17 @@
+# Description: The collected knowledge about printers, drivers, and driver options in XML files
+# URL: http://www.linuxprinting.org/foomatic.html
+# Packager: pierre at nutyx dot org
+# Depends on: libxml2 
+
+name=foomatic-db
+version=4.0.20150819
+release=1
+_version=4.0-20150819
+source=(http://www.openprinting.org/download/foomatic/foomatic-db-${_version}.tar.gz)
+
+build() {
+	cd $name-*
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

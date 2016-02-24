@@ -1,0 +1,18 @@
+# Description: A help browser for viewing help files.
+# URL: http://www.gnome.org/
+# Maintainer: git.gnome.org/brownse/yelp/
+# Packager: tnut at nutyx dot org
+# Depends on: itstool intltool gtk-doc libxslt hicolor-icon-theme webkitgtk3, yelp-xsl, desktop-file-utils
+
+
+name=yelp
+version=3.16.1
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

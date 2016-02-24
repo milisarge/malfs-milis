@@ -1,0 +1,28 @@
+# Description: GNU CLisp is an ANSI Common Lisp Implementation.
+# URL:         http://clisp.cons.org/
+# Packager:    berlius at nutyx dot com
+# Depends on:  ffcall libsigsegv
+
+name=clisp
+version=2.49
+release=2
+source=(http://ftp.gnu.org/pub/gnu/clisp/latest/$name-$version.tar.bz2 \
+	clisp-gcc5.patch)
+
+build() {
+
+  cd $name-$version
+  patch -Np1 -i ../clisp-gcc5.patch
+  
+  sed -i '/socket/d' tests/tests.lisp
+
+  ./configure --prefix=/usr --with-readline --with-ffcall src
+  cd src
+  ./makemake --prefix=/usr --with-readline --with-ffcall --with-dynamic-ffi > Makefile
+  make || make -j1
+  sed -i 's,http://www.lisp.org/HyperSpec/,http://www.lispworks.com/reference/HyperSpec/,g' config.lisp
+  make || make -j1
+
+  make -j1 DESTDIR=$PKG install
+
+}

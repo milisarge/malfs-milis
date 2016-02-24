@@ -1,0 +1,15 @@
+# Description: MSWord library can load and parse Word 2000, 97, 95 and 6 file formats
+# URL: http://wvware.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: libgsf libpng 
+name=wv
+version=1.2.9
+release=1
+
+source=(http://www.abiword.com/downloads/$name/$version/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --mandir=/usr/share/man
+make
+make DESTDIR=$PKG install
+}

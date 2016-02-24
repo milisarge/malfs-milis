@@ -1,0 +1,312 @@
+#!/bin/sh
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+export PATH
+
+problem()
+{
+   printf "Encountered a problem!\n\nDropping you to a shell.\n\n"
+   sh
+}
+
+no_device()
+{
+   printf "The device %s, which is supposed to contain the\n" $1
+   printf "root file system, does not exist.\n"
+   printf "Please fix this problem and exit this shell.\n\n"
+}
+
+no_mount()
+{
+   printf "Could not mount device %s\n" $1
+   printf "Sleeping forever. Please reboot and fix the kernel command line.\n\n"
+   printf "Maybe the device is formatted with an unsupported file system?\n\n"
+   printf "Or maybe filesystem type autodetection went wrong, in which case\n"
+   printf "you should add the rootfstype=... parameter to the kernel command line.\n\n"
+   printf "Available partitions:\n"
+}
+
+do_mount_root()
+{
+   [ -n "$rootflags" ] && rootflags="$rootflags,"
+   rootflags="$rootflags$ro"
+
+   case "$root" in
+      /dev/* ) device=$root ;;
+      UUID=* ) eval $root; device="/dev/disk/by-uuid/$UUID"  ;;
+      LABEL=*) eval $root; device="/dev/disk/by-label/$LABEL" ;;
+      ""     ) echo "No root device specified." ; problem    ;;
+   esac
+
+   while [ ! -b "$device" ] ; do
+       no_device $device
+       problem
+   done
+   if  [ "$rootfstype" != "auto" ]; then
+	rootfstype=`print_file_system $device`
+   fi
+   if [ "$rootfstype" == "no" ]; then
+       no_mount $device
+       cat /proc/partitions
+       while true ; do sleep 10000 ; done
+   fi
+   [ -z "$overlayroot" ] && mountpoint=/.root  || mountpoint=/.roRoot
+   mkdir -p $mountpoint
+   if ! mount -n -t "$rootfstype" -o "$rootflags" "$device" $mountpoint ; then
+       no_mount $device
+       cat /proc/partitions
+       while true ; do sleep 10000 ; done
+   else
+       log_info_msg "Mounting root file system ${root} in read-only mode..."
+       evaluate_retval
+   fi
+   if [ -n "$overlayroot" ]; then
+     overlaydevice=$overlayroot;         # /dev/mapper/<vg>/<lv>
+     mkdir -p /mnt/OVL
+     if ! mount -n "$overlaydevice" /mnt/OVL; then
+       no_mount $overlaydevice
+       cat /proc/partitions
+       while true ; do sleep 10000 ; done
+     else
+       log_info_msg "Mounting overlay upper file system ${overlayroot}..."
+       evaluate_retval
+     fi
+     mkdir -p /mnt/OVL/{upper,work}
+     if ! mount -n -t overlay -o lowerdir=$mountpoint,upperdir=/mnt/OVL/upper,workdir=/mnt/OVL/work overlayrootfs /.root; then
+       no_mount "overlayrootfs"
+       cat /proc/partitions
+       while true ; do sleep 10000 ; done
+     else
+       log_info_msg "Mounting overlay root filesystem..."
+       evaluate_retval
+     fi
+   fi
+}
+
+do_install()
+{
+   echo "Start installation on $root "
+
+   umount /.root
+
+   ro="rw"
+
+   mkdir /etc
+   ln -s /proc/self/mounts /etc/mtab
+
+   do_mount_root
+
+   for DIR in home proc sys dev srv mnt
+   do
+     echo -n "."
+     if [ ! -d /.root/$DIR ]; then
+       mkdir /.root/$DIR
+     fi
+   done
+
+   echo -n "."
+   ln -s lib /.root/lib64
+
+   if [ ! -d /.root/tmp ]; then
+      echo -n "."
+      mkdir  /.root/tmp
+      chmod 1777 /.root/tmp
+   fi
+   for DIR in var run usr etc root lib sbin bin opt
+   do
+      echo -n "."
+      if [ -f /.root/boot/$DIR.squashfs ]; then
+         mkdir /DIR
+         mount -o loop -t squashfs /.root/boot/$DIR.squashfs /DIR
+         cp -a /DIR /.root/$DIR
+         umount /DIR
+         rm -r /DIR
+         if [ "$DIR" == "root" ]; then
+            chmod 750 /.root/root
+         fi
+      fi
+   done
+   # We need to check if entry exist in /etc/fstab
+   if [ "`cat /.root/etc/fstab |sed "s/ \+/ /g"|sed "s/\t\+/ /g"|sed "s/ /:/g"|cut -d ":" -f1-2|grep $root|cut -d ":" -f2`" != "/" ]; then
+      # blkid will tell us the file system
+      TYPE=`print_file_system $root`
+      echo -n "."
+      echo "$root   /   $TYPE   defaults     0      1" >> /.root/etc/fstab
+      do_stop_udev
+   fi
+
+   umount /.root
+
+   ro="ro"
+
+   do_mount_root
+   echo "Successfully Installed on device $root" 
+}
+
+do_mount_in_ram()
+{
+	# squasfs files are in ${1} on the initrd
+	# RW folders
+	modprobe squashfs
+	modprobe loop
+	for DIR in var run etc root
+	do
+		if [ -f ${1}/$DIR.squashfs ];then
+			mkdir /DIR
+			[ "$verbose" == "no" ] || echo "mount -o loop -t squashfs ${1}/$DIR.squashfs /DIR"
+			mount -o loop -t squashfs ${1}/$DIR.squashfs /DIR || problem
+			mkdir -p /$DIR > /dev/null 2>&1
+			cp -a /DIR/* /$DIR/ > /dev/null 2>&1
+			umount /DIR
+			rm -r /DIR
+			if [ "$DIR" == "root" ]; then
+				chmod 750 /root
+			fi
+		fi
+	done
+	# RO folders
+	for DIR in usr lib sbin bin opt
+	do
+		if [ -f ${1}/$DIR.squashfs ];then
+			mkdir /$DIR > /dev/null 2>&1
+			[ "$verbose" == "no" ] || echo "mount -o loop -t squashfs ${1}/$DIR.squashfs /$DIR"
+			mount -o loop -t squashfs ${1}/$DIR.squashfs /$DIR || problem
+		fi
+	done		
+}
+
+find_media() {
+   EXPECT_LABEL="nutyxcd"
+   for SYS in /sys/block/sd* /sys/block/sr* ; do
+	   [ "$verbose" == "no" ] || echo "Looking in $SYS for media"
+      if [ ! -d "$SYS" ]; then  continue; fi
+      DEV=/dev/${SYS##*/}
+      LABEL=`dd if=$DEV bs=1 skip=32808 count=32 2>/dev/null`
+      if [ ${LABEL} == ${EXPECT_LABEL} ]  2>/dev/null ; then
+	ln -s $DEV /dev/nutyx-cd
+	mkdir  -p /media/cdrom 2>/dev/null
+	[ "$verbose" == "no" ] || echo "mount -n /dev/nutyx-cd /media/cdrom"
+	mount -n /dev/nutyx-cd /media/cdrom
+	[ -d /media/cdrom/depot ] && echo $DEV > /tmp/depot
+	break
+      fi
+   done
+}
+
+MainLoop(){
+   while [ ! -f /root/boot ];
+   do
+	[ "$verbose" == "no" ] || echo "Launch /etc/rc.d/init.d/setup-nutyx ..."
+	/etc/rc.d/init.d/setup-nutyx || problem
+   done
+}
+
+# **********
+# Begin here
+# **********
+
+init=/sbin/init
+overlayroot=
+root=
+rootdelay=
+rootfstype=auto
+ro="ro"
+rootflags=
+device=
+verbose="no"
+
+. /lib/lsb/init-functions
+
+do_mount_virtualfs
+
+read -r cmdline < /proc/cmdline
+
+for param in $cmdline ; do
+  case $param in
+    init=*       ) init=${param#init=}               ;;
+    root=*       ) root=${param#root=}               ;;
+    rootdelay=*  ) rootdelay=${param#rootdelay=}     ;;
+    overlayroot=*) overlayroot=${param#overlayroot=} ;;
+    rootfstype=* ) rootfstype=${param#rootfstype=}   ;;
+    rootflags=*  ) rootflags=${param#rootflags=}     ;;
+    ro           ) ro="ro"                           ;;
+    rw           ) ro="rw"                           ;;
+    quiet        ) export verbose="no"               ;;
+    testiso      ) export verbose="yes"              ;;
+  esac
+done
+
+if [ -n "$rootdelay" ] && [ -f /sbin/mdadm ]; then 
+  /sbin/mdadm --auto-detect
+  ### First we activate lvm if possible
+  if [ -f /sbin/lvm ]; then
+    /sbin/lvm vgchange --ignorelockingfailure -ay
+    if [ $? = 0 ]; then
+       /sbin/lvm vgscan --ignorelockingfailure --mknodes
+    fi
+  fi
+fi
+if [ -d /lib/modules ]; then
+	do_start_localnet
+	do_start_udev
+fi
+if [ -n "$rootdelay" ] ; then
+	[ "$verbose" == "no" ] || echo "... wait $rootdelay seconds"
+	sleep "$rootdelay"
+fi
+if [ "$root" == "" ]; then
+	if [ ! -f /etc/rc.d/init.d/setup-nutyx ]; then
+		find_media
+		if [ ! -L /dev/nutyx-cd ]; then
+			[ "$verbose" == "no" ] || echo "Media not found yet, trying again in 5 sec"
+			sleep 5
+			find_media
+		fi
+		if [ -d /media/cdrom/isolinux/boot ]; then
+			do_mount_in_ram /media/cdrom/isolinux/boot
+		else
+			do_mount_in_ram /boot
+		fi
+	else
+		do_mount_in_ram /boot
+	fi
+	if [ ! -f /etc/rc.d/init.d/setup-nutyx ]; then
+		no_mount
+		sh
+	else
+		if [ "$verbose" == "yes" ]; then
+			echo "/etc/rc.d/init.d/setup-nutyx exit ..."
+			ls -lt /etc/rc.d/init.d/setup-nutyx
+		fi
+	fi
+#	TODO This doesn't works FIXME
+	[ "$verbose" == "no" ] || echo "Stop udev ..."
+	do_stop_udev
+	 [ "$verbose" == "no" ] || echo "Start udev ..."
+        do_start_udev
+	[ "$verbose" == "no" ] || echo "Wait 5 second ..."
+	[ "$verbose" == "no" ] || sleep 5
+	[ "$verbose" == "no" ]  && clear
+	MainLoop
+	root=`cat /root/boot`
+	[ "$verbose" == "no" ] || echo "Stop udev ..."
+	do_stop_udev
+	killall -w /sbin/udevd
+	for DIR in usr lib sbin bin opt
+	do
+		[ "$verbose" == "no" ] || echo "umount /$DIR ..."
+		umount /$DIR > /dev/null 2>&1
+	done
+fi
+
+mkdir /.root
+do_mount_root
+
+if ! [ -d /.root/bin -a -d /.root/dev -a -d /.root/etc -a -d /.root/lib \
+      -a -d /.root/sbin -a -d /.root/tmp -a -d /.root/root  -a -d /.root/proc \
+      -a -d /.root/usr -a -d /.root/var  -a -d /.root/run -a -d /.root/sys ]; then
+  do_install
+fi
+do_stop_udev
+cd /.root
+exec switch_root /.root "$init" "$@" > /dev/null 2>&1

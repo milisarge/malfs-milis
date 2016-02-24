@@ -1,0 +1,16 @@
+# Description: Many plugins for geany
+# URL: http://plugins.geany.org/
+# Packager: tnut at nutyx dot org
+# Depends on: geany
+
+name=geany-plugins
+version=1.26
+release=1
+
+source=(http://plugins.geany.org/geany-plugins/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

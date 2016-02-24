@@ -1,0 +1,20 @@
+# Description: The internationalization tool collection
+# URL: http://freedesktop.org/wiki/Software/intltool
+# Packager: tnut at nutyx dot org
+# Depends on: perl-xml-parser,expat
+
+name=intltool
+version=0.51.0
+release=1
+
+source=(http://edge.launchpad.net/intltool/trunk/$version/+download/intltool-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/usr/share/doc/intltool-$version
+install -v -Dm644 doc/I18N-HOWTO \
+$PKG/usr/share/doc/intltool-$version/I18N-HOWTO
+}

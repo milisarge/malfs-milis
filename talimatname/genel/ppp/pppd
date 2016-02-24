@@ -1,0 +1,50 @@
+#!/bin/sh
+# Begin $rc_base/init.d/sshd
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+# Add create user and Groups - thierryn1@hispeed.ch
+
+# $Id: pppd,v 1.2 2008/02/03 10:08:07 root Exp $
+
+. /etc/rc.d/init.d/functions
+
+newgroup=pppusers
+newid=52
+getent group $newgroup > /dev/null || /usr/sbin/groupadd -g $newid $newgroup
+
+case "$1" in
+    start)
+	mknod /dev/ppp c 108 0
+        boot_mesg "Starting PPP Daemon..."
+        loadproc /usr/sbin/pppd  > /dev/null
+        ;;
+
+    stop)
+        boot_mesg "Stopping PPP Daemon..."
+        killproc /usr/sbin/pppd
+        ;;
+
+    reload)
+        boot_mesg "Reloading PPP Daemon..."
+        reloadproc /usr/sbin/pppd > /dev/null
+        ;;
+
+    restart)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+
+    status)
+        statusproc /usr/sbin/pppd
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop|reload|restart|status}"
+        exit 1
+        ;;
+esac
+
+# End $rc_base/init.d/sshd
+

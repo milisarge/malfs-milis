@@ -1,0 +1,25 @@
+# Description: Tools for accessing and converting various ebook file formats
+# URL : http://sourceforge.net/projects/ebook-tools/
+# Packager: pierre at nutyx dot org
+# Depends on : cmake libxml2 libzip
+
+name=ebook-tools
+version=0.2.2
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build() {
+cd $SRC
+mkdir build
+cd build
+cmake ../$name-$version        \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+make
+make DESTDIR=$PKG install
+
+install -Dm644 $SRC/$name-$version/LICENSE \
+     $PKG/usr/share/licenses/$name/LICENSE
+}
+

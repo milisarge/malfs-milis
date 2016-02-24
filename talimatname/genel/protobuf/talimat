@@ -1,0 +1,17 @@
+# Description: Google's data interchange format utility (python API).
+# URL: http://code.google.com/p/protobuf/
+# Packager: pierre at nutyx dot org
+# Depends on: python-setuptools 
+
+name=protobuf
+version=2.6.1
+release=2
+
+source=(https://github.com/google/protobuf/releases/download/v$version/protobuf-$version.tar.bz2)
+build () 
+{ 
+cd ${name}-$version
+./autogen.sh
+./configure --prefix=/usr --disable-static
+make DESTDIR=$PKG install
+}

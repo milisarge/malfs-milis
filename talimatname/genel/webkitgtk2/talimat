@@ -1,0 +1,22 @@
+# Description: engine of made Web free for the browsers web version 1
+# URL: http://webkitgtk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libwebp libsecret geoclue gperf gtk2 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby gtk-doc
+name=webkitgtk2
+version=2.4.9
+release=1
+
+source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
+build() {
+cd webkitgtk-$version
+sed -i '/generate-gtkdoc --rebase/s:^:# :' GNUmakefile.in
+
+mkdir -vp build-1
+
+cp -a Documentation build-1
+
+cd build-1
+../configure --prefix=/usr --with-gtk=2.0 --disable-webkit2
+make || make -j1
+make DESTDIR=$PKG install || make -j1 DESTDIR=$PKG install
+}

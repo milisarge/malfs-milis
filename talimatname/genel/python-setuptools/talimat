@@ -1,0 +1,16 @@
+# Description: Easily download, build, install, upgrade, and uninstall Python packages
+# URL: https://bitbucket.org/pypa/setuptools
+# Packager: alienus at nutyx dot org
+# Depends on: python
+
+name=python-setuptools
+version=6.0.2
+release=2
+
+source=(http://pypi.python.org/packages/source/s/setuptools/setuptools-$version.tar.gz)
+
+build() {
+    cd setuptools-$version
+    python2 setup.py build install --root=$PKG
+    rm $PKG/usr/bin/easy_install
+}

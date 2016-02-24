@@ -1,0 +1,17 @@
+# Description: Police of character thai
+# URL: http://linux.thai.net/projects/thaifonts-scalable/
+# Packager: pierre at nutyx dot org
+# Depends on: fontforge xorg-app 
+
+name=thaifonts-scalable
+version=0.4.17
+release=1
+
+source=(http://linux.thai.net/pub/thailinux/software/$name/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}
+

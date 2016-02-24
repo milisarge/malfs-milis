@@ -1,0 +1,19 @@
+# Description: an instrumentation framework for building dynamic analysis tools. 
+# URL: http://valgrind.org
+# Maintainer: http://valgrind.org/info/developers.html
+# Packager: fanch at nutyx dot org, tnut at nutyx dot org
+# Depends on: boost llvm gdb libxslt
+
+name=valgrind
+version=3.11.0
+release=1
+source=(http://valgrind.org/downloads/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	sed -i 's|/doc/valgrind||' docs/Makefile.in 
+	./configure --prefix=/usr \
+            --datadir=/usr/share/doc/$name-$version
+	make
+	make DESTDIR=$PKG install
+}

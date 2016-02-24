@@ -1,0 +1,23 @@
+# Description: S-Lang is a powerful interpreted language
+# URL:  http://gd.tuwien.ac.at/editors/davis/slang
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=slang
+version=2.2.4
+release=2
+
+source=( ftp://space.mit.edu/pub/davis/$name/v2.2/$name-$version.tar.bz2)
+
+build() {
+	unset MAKEFLAGS
+	cd $name-$version
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info
+	make
+	make DESTDIR=$PKG install
+	chmod -v 755 $PKG/usr/lib/libslang.so.$version \
+             $PKG/usr/lib/slang/v2/modules/*.so
+}

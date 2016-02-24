@@ -1,0 +1,11 @@
+--- asterisk-13.2.0/menuselect-tree	2015-04-01 13:33:21.374042590 +0900
++++ asterisk-13.2.0/menuselect-tree.aelparse-enable	2015-04-01 13:49:46.451358551 +0900
+@@ -1751,7 +1751,7 @@
+ </category>
+ <category name="MENUSELECT_UTILS" displayname="Utilities" positive_output="yes">
+   <member name="aelparse">
+-	<defaultenabled>no</defaultenabled>
++	<defaultenabled>yes</defaultenabled>
+ 	<support_level>extended</support_level>
+   </member>
+   <member name="astcanary">

@@ -1,0 +1,19 @@
+# Description: C library implementing OAuth Core RFC 5849
+# URL: http://sourceforge.net/projects/liboauth
+# Packager: pierre at nutyx dot org
+# Depends on: curl nss 
+
+name=liboauth
+version=1.0.3
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+ 
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

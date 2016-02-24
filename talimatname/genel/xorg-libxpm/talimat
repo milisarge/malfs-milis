@@ -1,0 +1,17 @@
+# Description: libXpm, library Xorg
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-libx11 xorg-libxt xorg-libxext 
+
+name=xorg-libxpm
+version=3.5.11
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXpm-$version.tar.bz2)
+
+build() {
+cd libXpm-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

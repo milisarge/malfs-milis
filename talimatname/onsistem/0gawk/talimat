@@ -1,0 +1,11 @@
+version=4.1.3
+source=(http://ftp.gnu.org/gnu/gawk/gawk-$version.tar.xz)
+build()
+{
+cd gawk-$version
+
+ ./configure --prefix=/tools
+make
+
+make install
+}

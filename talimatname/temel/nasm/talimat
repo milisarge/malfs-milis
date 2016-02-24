@@ -1,0 +1,27 @@
+# Description: 80x86 assembler designed for portability and modularity.
+# URL: http://nasm.sourceforge.net/
+# Maintainers: H. Peter Anvin,Frank B. Kotler,Jin Kyu Song,Cyrill Gorcunov
+# Packager: pierre at nutyx dot org
+name=nasm
+version=2.11.06
+release=1
+# http://www.nasm.us/pub/nasm/releasebuilds/$version/$name-$version.tar.xz
+source=( ftp://ftp.debian.org/debian/pool/main/n/nasm/nasm_2.11.06-1really2.11.05.orig.tar.xz
+ 	http://www.nasm.us/pub/nasm/releasebuilds/$version/nasm-$version-xdoc.tar.xz)
+
+build() {
+	cd $name-2.11.05
+	./configure --prefix=/usr\
+		    --mandir=/usr/share/man
+	make
+	mkdir -p $PKG/usr/bin 
+	mkdir -p $PKG/usr/share/man/man1
+	make INSTALLROOT=$PKG  install
+
+mkdir -pv $PKG/usr/share/doc/nasm-$version/html
+cd ../$name-2.11.06
+cp -v doc/html/*.html    $PKG/usr/share/doc/nasm-$version/html
+cp -v doc/*.{txt,ps,pdf} $PKG/usr/share/doc/nasm-$version
+mkdir -pv $PKG/usr/share/info
+cp -v doc/info/*         $PKG/usr/share/info
+}

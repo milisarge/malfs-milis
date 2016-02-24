@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=gVim
+Comment=GTK2 enhanced vim text editor
+GenericName=Text Editor
+Type=Application
+TryExec=gvim
+Exec=gvim %F
+Icon=vim48x48.png
+Terminal=false
+Categories=GTK;Application;Utility;TextEditor;

@@ -1,0 +1,2 @@
+mkdir -p /paket_depo
+find /root -iname "*.mps.xz" -type f | xargs -I '{}' mv {} /paket_depo/

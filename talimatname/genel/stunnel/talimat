@@ -1,0 +1,37 @@
+# URL:         	http://www.stunnel.org
+# Packager:		berlius at nutyx dot com
+# Depends on:  	
+
+description="Encrypt arbitrary TCP connections inside SSL so you can communicate over secure channels"
+name=stunnel
+version=5.26
+release=2
+
+source=(ftp://ftp.stunnel.org/stunnel/archive/5.x/$name-$version.tar.gz cert-openssl.patch stunnel.conf)
+
+build () {
+
+    cd $name-$version
+    
+    patch -p1 -i $SRC/cert-openssl.patch
+    
+	source  /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2 
+	./configure --prefix=/usr        \
+            --sysconfdir=/etc    \
+            --localstatedir=/var \
+            --disable-systemd 
+    make
+
+	make DESTDIR=$PKG install
+	
+	make DESTDIR=$PKG cert
+	
+	cd $scripts-$scriptsversion
+	make DESTDIR=$PKG install-stunnel
+	
+	install -v -m750 -d $PKG/etc/stunnel
+	cp -v $SRC/stunnel.conf $PKG/etc/stunnel/stunnel.conf
+
+}

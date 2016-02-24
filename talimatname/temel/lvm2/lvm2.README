@@ -1,0 +1,8 @@
+Check the following option in the kernel configuration: 
+Vérifiez que le kernel est correctement configuré:
+Device Drivers --->
+  Multiple devices driver support (RAID and LVM): Y
+    Device mapper support: Y or M
+    Crypt target support: (optional)
+    Snapshot target: (optional)
+    Mirror target: (optional) 

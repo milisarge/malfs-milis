@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Name=Ratpoison
+Comment=The ratpoison window manager
+Exec=ratpoison
+Type=Application

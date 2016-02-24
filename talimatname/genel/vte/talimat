@@ -1,0 +1,21 @@
+# Description: Vte is a library (libvte) implementing a terminal emulator widget for GTK+ 2
+# URL: http://developer.gnome.org/arch/gnome/widgets/vte.html
+# Packager: pierre at nutyx dot org
+# Depends on: gtk2 intltool gobject-introspection 
+
+name=vte
+version=0.28.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+# build package		
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/libexec/vte \
+--disable-static
+make
+make DESTDIR=$PKG install
+}
+  

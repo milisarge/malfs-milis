@@ -1,0 +1,17 @@
+# Description: tool like grep, aimed at programmers with large trees of heterogeneous source code
+# URL:         http://beyondgrep.com/
+# Packager:    berlius at nutyx dot com
+# Depends on:  
+
+name=ack
+version=2.14
+release=1
+source=(http://beyondgrep.com/$name-$version-single-file)
+
+build() {
+    install -D -m 0755 $name-$version-single-file $PKG/usr/bin/$name
+    mkdir -p $PKG/usr/man/man1
+    pod2man $PKG/usr/bin/$name > $PKG/usr/man/man1/$name.1
+}
+
+

@@ -1,0 +1,41 @@
+# Description: C++ library for using SGML/XML files.
+# URL: URL: http://openjade.sourceforge.net/doc/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: sgml-common 
+name=opensp
+version=1.5.2
+release=1
+
+source=(http://downloads.sourceforge.net/openjade/OpenSP-$version.tar.gz)
+
+build(){
+    cd OpenSP-$version
+    sed -i 's/32,/253,/' lib/Syntax.cxx &&
+    sed -i 's/LITLEN          240 /LITLEN          8092/' \
+        unicode/{gensyntax.pl,unicode.syn} &&
+        
+    ./configure --prefix=/usr \
+                --disable-static \
+                --disable-doc-build \
+                --enable-default-catalog=/etc/sgml/catalog \
+                --enable-http \
+                --enable-default-search-path=/usr/share/sgml
+    make DESTDIR=$PKG install
+    
+    # create the SP equivalents of OpenSP executables and libraries
+    cd $PKG/usr/bin
+    ln -v -sf onsgmls nsgmls
+    ln -v -sf osgmlnorm sgmlnorm
+    ln -v -sf ospam spam
+    ln -v -sf ospcat spcat
+    ln -v -sf ospent spent
+    ln -v -sf osx sx
+    ln -v -sf osx sgml2xml
+    cd $PKG/usr/lib
+    ln -v -sf libosp.so libsp.so
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

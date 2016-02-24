@@ -1,0 +1,23 @@
+# Description: Dynamic, any to any, pixel format conversion library
+# URL: http://gegl.org/babl
+# Maintainer: - http://gegl.org/babl/#Authors
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=babl
+version=0.1.14
+release=1
+
+source=(http://download.gimp.org/pub/$name/0.1/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-docs
+make
+make DESTDIR=$PKG install
+install -v -m755 -d \
+$PKG/usr/share/gtk-doc/html/babl/graphics
+install -v -m644 docs/*.{css,html} \
+$PKG/usr/share/gtk-doc/html/babl
+install -v -m644 docs/graphics/*.{html,png,svg} \
+$PKG/usr/share/gtk-doc/html/babl/graphics
+}

@@ -1,0 +1,21 @@
+name=pkgutils
+version=5.35.6
+source=(http://crux.nu/files/$name-$version.tar.gz)
+build()
+{
+cd $name-$version
+
+PKG_CONFIG_PATH=/tools/lib/pkgconfig \
+make
+
+install -m755 pkgadd /tools/bin/pkgadd
+
+ln -sv pkgadd /tools/bin/pkginfo
+ln -sv pkgadd /tools/bin/pkgrm
+
+sed -e "s/#VERSION#/$VERSION/" pkgmk.in > /tools/bin/pkgmk
+chmod 755 /tools/bin/pkgmk
+install -m666 pkgmk.conf /tools/etc/pkgmk.conf
+mkdir -pv $LFS/var/lib/pkg
+touch $LFS/var/lib/pkg/db
+}

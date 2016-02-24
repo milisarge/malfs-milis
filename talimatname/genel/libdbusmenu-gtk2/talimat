@@ -1,0 +1,24 @@
+# Description : Library that provides a GTK2 implementation of the DBusMenu protocol
+# URL: https: https://launchpad.net/dbusmenu
+# Packager: pierre at nutyx dot org, fanch at nutyx dot org, tnut at nutyx dot org
+# Depends on: python gobject-introspection gtk2 gtk3 libdbusmenu-glib vala gnome-doc-utils atk libepoxy json-glib
+
+name=libdbusmenu-gtk2
+_name=libdbusmenu
+release=2
+version=0.5.90
+
+source=(http://launchpad.net/dbusmenu/0.6/${version}/+download/${_name}-$version.tar.gz )
+
+build() {
+  cd libdbusmenu-$version
+  mkdir build-gtk2
+  cd build-gtk2
+  ../configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$name \
+               --disable-static --disable-scrollkeeper --disable-tests --with-gtk=2
+
+  make
+  make -C libdbusmenu-glib DESTDIR=$PKG install
+  make -C libdbusmenu-gtk DESTDIR=$PKG install
+  make -C libdbusmenu-glib DESTDIR=$PKG uninstall
+}

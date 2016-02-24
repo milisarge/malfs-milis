@@ -1,0 +1,5 @@
+. lib/lsb/init-functions
+if [ ! -z "`cards list|grep cards.lib\ `" ]; then
+	cards remove -a cards.lib
+        log_info_msg "${INFO}cards.lib${NORMAL} is removed\n"
+fi

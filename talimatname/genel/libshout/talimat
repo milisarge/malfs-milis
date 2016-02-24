@@ -1,0 +1,17 @@
+# Description: Library for accessing a shoutcast/icecast server
+# URL: http://www.icecast.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libvorbis libtheora speex 
+
+name=libshout
+version=2.3.1
+release=1
+
+source=(http://downloads.xiph.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

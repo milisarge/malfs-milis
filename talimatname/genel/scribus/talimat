@@ -1,0 +1,31 @@
+# Description: Desktop publishing software
+# URL: http://www.scribus.net
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: cmake boost aspell cups qt4 gnutls kerberos boost ghostscript lcms libxml2 cairo desktop-file-utils shared-mime-info
+
+name=scribus
+version=1.4.5
+release=2
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+
+build() {
+	unset MAKEFLAGS
+	cd $SRC*
+
+	sed -i -e 's|#!/usr/bin/python|#!/usr/bin/python2|' \
+	       -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' \
+               scribus-$version/scribus/plugins/scriptplugin/{samples,scripts}/*
+
+	cd $name-$version
+	mkdir build
+	cd build
+	cmake ../ -DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_SKIP_RPATH=ON \
+	  	-DWANT_CAIRO=1 \
+                -DLIB_SUFFIX=""
+	make
+	make DESTDIR=$PKG install
+	install -Dm644 $SRC/$name-$version/scribus.desktop \
+	$PKG/usr/share/applications/scribus.desktop
+}

@@ -1,0 +1,29 @@
+# Description: Provide a portable, high level programming interface to various calling conventions.
+# URL: http://sourceware.org/libffi/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+PKGMK_GROUPS=(devel man)
+
+name=libffi
+version=3.2.1
+release=1
+
+source=( ftp://sourceware.org/pub/$name/$name-$version.tar.gz )
+
+
+build() {
+cd $name-$version
+sed -e '/^includesdir/ s:$(libdir)/@PACKAGE_NAME@-@PACKAGE_VERSION@/include:$(includedir):' \
+-i include/Makefile.in
+sed -e '/^includedir/ s:${libdir}/@PACKAGE_NAME@-@PACKAGE_VERSION@/include:@includedir@:' \
+-e 's/^Cflags: -I${includedir}/Cflags:/' \
+-i libffi.pc.in
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+rm  -f $PKG/usr/share/info/dir
+if [ "`uname -m`" == "x86_64" ];then 
+	mv $PKG/usr/lib64/lib* $PKG/usr/lib
+	rm -r $PKG/usr/lib64
+fi
+}

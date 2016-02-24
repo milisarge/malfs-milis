@@ -1,0 +1,18 @@
+version=4.3.30
+source=(http://ftp.gnu.org/gnu/bash/bash-$version.tar.gz)
+build()
+{
+cd bash-$version
+
+./configure --prefix=/tools \
+ --without-bash-malloc
+
+make
+
+make install
+
+ln -vsf bash /tools/bin/sh
+mkdir -p $LFS/bin
+ln -vsf /tools/bin/bash $LFS/bin/bash
+ln -vsf  bash $LFS/bin/sh
+}

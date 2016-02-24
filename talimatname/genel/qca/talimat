@@ -1,0 +1,23 @@
+# Description: Qt Cryptographic Architecture (Qt4).
+# URL: http://delta.affinix.com/qca/
+# Packager: pierre at nutyx dot org
+# Depends on: qt4
+
+name=qca
+version=2.1.0
+release=1
+
+source=(http://delta.affinix.com/download/$name/2.0/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	mkdir build
+	cd    build
+	cmake -DCMAKE_INSTALL_PREFIX=$PKG/$QT4DIR \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DQT4_BUILD=ON \
+	..
+	make
+	make INSTALL_ROOT=$PKG install
+	find $PKG -name "*.pc" -exec sed -i "s,$PKG,,g" {} \;	
+}

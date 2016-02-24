@@ -1,0 +1,20 @@
+# Description: Boost provides a set of free peer-reviewed portable C++ source libraries.
+# URL: http://boost.sourceforge.net/
+# Packager: tnut at nutyx dot org
+# Depends on: icu python
+
+name=boost
+version=1.60.0
+release=1
+
+source=(http://downloads.sourceforge.net/$name/${name}_${version//./_}.tar.bz2)
+build() {
+cd ${name}_${version//./_}
+sed -e '1 i#ifndef Q_MOC_RUN' \
+    -e '$ a#endif'            \
+    -i boost/type_traits/detail/has_binary_operator.hpp
+
+./bootstrap.sh --prefix=/usr &&
+./b2 stage --stagedir=$PKG/usr threading=multi link=shared
+./b2 install --prefix=$PKG/usr threading=multi link=shared
+}

@@ -1,0 +1,7 @@
+if [ -z "`grep '^stunnel:' etc/group`" ]; then
+	groupadd -g 51 stunnel 
+fi
+if [ -z "`grep '^stunnel:' etc/passwd`" ]; then
+	useradd -c "stunnel Daemon" -d /var/lib/stunnel \
+        -g stunnel -s /bin/false -u 51 stunnel
+fi

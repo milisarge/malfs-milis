@@ -1,0 +1,17 @@
+# Description: For talking to WWAN modems and devices which speak the Qualcomm MSM Interface protocol.
+# URL: http://www.freedesktop.org/software/libqmi/
+# Packager: pierre at nutyx dot org
+# Depends on: glib 
+
+name=libqmi
+version=1.12.6
+release=1
+
+source=( http://www.freedesktop.org/software/libqmi/libqmi-$version.tar.xz)
+
+build() {
+cd libqmi-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

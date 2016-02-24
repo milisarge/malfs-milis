@@ -1,0 +1,17 @@
+# Description: Plugins for the audacious media player.
+# URL: http://audacious-media-player.org
+# Maintainers: https://github.com/audacious-media-player
+# Packagers: tnut at nutyx dot org
+# Depends: gtk3 audacious alsa-utils flac lame libcdio libsamplerate libsndfile libvorbis mpg123 neon pulseaudio faad2 ffmpeg
+
+name=audacious-plugins
+release=1
+
+source=(http://distfiles.audacious-media-player.org/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

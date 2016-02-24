@@ -1,0 +1,24 @@
+groupadd -g 61 kvm
+
+qemuser=$(whoami)
+
+echo "L'ajout de votre nom d'utilisateur $qemuser au groupe kvm est nécessaire pour la virtualisation par le noyau linux. Etes vous d'accord ? (oui/non)"
+read rep
+
+if [ "$rep" != "oui" ]; then
+
+	if [ "$rep" != "non" ]; then
+		echo "Réponse incorrecte L'administrateur du système peut vous ajouter au groupe si vous le désirez"
+	fi
+fi
+
+
+if [ "$rep" = "oui" ]; then
+		usermod -a -G kvm $qemuser
+		echo "votre nom d'utilisateur $qemuser a été ajouté au groupe kvm"
+fi
+
+ln -sv qemu-system-x86_64 /usr/bin/qemu
+
+echo "Qemu est configuré pour lancer une machine virtuelle x86_64. Pour utiliser un autre système (PowerMac, PowerPC, Sparc, mips etc..) il faut lancer les machines correstondantes directement depuis le repertoire /usr/bin." 
+

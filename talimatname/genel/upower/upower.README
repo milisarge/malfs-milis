@@ -1,0 +1,1 @@
+Pour utiliser la commande upower -w pour avoir des informations sur les réveils du processeur (c'est la commande utilisée par gnome-power-manager-3.4.0), vous devez activer CONFIG_TIMER_STATS. Cela se fait dans make menuconfig en vous rendant sur 'kernel-hacking' menu and selecting 'Collect kernel timers statistics'. 

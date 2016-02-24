@@ -1,0 +1,18 @@
+# Description: Protocol definitions and daemon for D-Bus at-spi
+# URL: http://www.gtk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: intltool glib dbus gobject-introspection xorg-libx11 xorg-libxtst 
+
+name=at-spi2-core
+version=2.18.3
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

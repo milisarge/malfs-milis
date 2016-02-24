@@ -1,0 +1,28 @@
+# Description: Dungeon Crawl Stone Soup is a singleplayer roguelike game - Tiles version
+# URL:         http://crawl.develz.org/
+# Packager:    berlius at nutyx dot com
+# Depends on:  sdl-image sdl dejavu-ttf xorg-glu xorg-mesa glew dejavu-ttf
+
+name=crawl-tiles
+version=0.15.2
+release=1
+source=(http://sourceforge.net/projects/crawl-ref/files/Stone%20Soup/$version/stone_soup-${version}.tar.xz)
+
+build () {
+
+    cd stone_soup-$version/source
+    
+    sed -i Makefile \
+        -e 's|bin_prefix    := bin|bin_prefix    := usr/bin|' \
+	-e 's/INSTALL_UGRP := games:games/INSTALL_UGRP := root:root/' \
+	-e 's|MCHMOD := 2755|MCHMOD := 755|'
+
+    make DESTDIR=$PKG \
+	 DATADIR=/usr/share/$name \
+	 SAVEDIR='~/.crawl/' \
+	 USE_UNICODE=y \
+	 TILES=y \
+	install
+    mv $PKG/usr/bin/crawl $PKG/usr/bin/crawl-tiles
+    
+}

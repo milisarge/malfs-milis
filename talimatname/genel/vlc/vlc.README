@@ -1,0 +1,20 @@
+NOTE: this Build (originaly made for Slackware) is a monster 
+it tries to wrap all dependencies to
+vlc into the resulting package by building these deps as static libraries
+and then in the final stage linking vlc against all the static libraries.
+The resulting package has all the vlc functionality and does not depend on
+any software that is not present in a standard full install of Slackware.
+This makes my package quite different from all the other vlc builds that are
+floating around on the Internet.
+/Eric Hameleers/
+
+Ce paquet (à l'origine fait pour la distribution Slackware) est un gros morceau
+Il dépends de toute une série de recettes de librairies compilés statiquement et 
+ces librairies sont toutes liées dans ce paquet. De cette façon, cette variante de
+vlc contient un maximum de fonctionnalitées et ne dépends sur un nombre beaucoup plus
+restreint de librairies. Ce qui rend ce paquet un peu différent de ce que l'on peut
+trouver partout sur internet
+/Eric Hameleers/
+
+Notez également que cette variante de vlc dispose de sa propre copie de qt 
+afin d'éviter de devoir installer l'ensemble complet de qt.

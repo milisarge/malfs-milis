@@ -1,0 +1,66 @@
+# Description: The CUPS Printing System
+# URL: http://www.cups.org
+# Packager: pierre at nutyx dot org
+# Depends on: avahi python gnutls xdg-utils gtk-update-icon-cache
+
+run=(xdg-utils gtk-update-icon-cache)
+ 
+PKGMK_GROUPS=(man devel)
+name=cups
+version=2.1.3
+release=1
+run=(xdg-utils)
+source=( http://cups.org/software/$version/cups-$version-source.tar.gz)
+
+build() {
+	source /etc/blfs-bootscripts
+	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
+        tar xvf $scripts-$scriptsversion.tar.bz2
+	cd $name-$version
+	sed -i 's:555:755:g;s:444:644:g' Makedefs.in
+	sed -i '/MAN.*.EXT/s:.gz::g' \
+	configure config-scripts/cups-manpages.m4
+	sed -i '/LIBGCRYPTCONFIG/d' config-scripts/cups-ssl.m4
+	aclocal -I config-scripts
+	autoconf -I config-scripts
+	./configure --libdir=/usr/lib \
+		--disable-systemd \
+		--with-rcdir=/tmp/cupsinit \
+		--with-system-groups=lpadmin \
+		--with-docdir=/usr/share/cups/doc-$version
+	make
+	make BUILDROOT=$PKG install
+
+	rm -rf $PKG/tmp/cupsinit
+	mkdir -p $PKG/usr/share/doc
+	ln -svnf ../cups/doc-$version $PKG/usr/share/doc/cups-$version
+	
+	# Lanceur
+	if [ ! -f $PKG/usr/share/applications/cups.desktop ]; then
+		mkdir -p $PKG/usr/share/applications
+		install -m644 desktop/cups.desktop \
+		$PKG/usr/share/applications/cups.desktop
+	fi
+	# Startup Script 
+	cd ../$scripts-$scriptsversion
+	make DESTDIR=$PKG install-$name
+
+	# Supprimer les filtres faisant parti de cups-filters
+	rm -rf $PKG/usr/share/cups/banners
+	rm -rf $PKG/usr/share/cups/data/testprint
+	# Mechant bug
+	rm -r $PKG/tmp
+	
+	chmod 755 $PKG/etc
+
+	# PAM
+	cat > $PKG/etc/pam.d/cups << "EOF"
+# Begin /etc/pam.d/cups
+
+auth    include system-auth
+account include system-account
+session include system-session
+
+# End /etc/pam.d/cups
+EOF
+}

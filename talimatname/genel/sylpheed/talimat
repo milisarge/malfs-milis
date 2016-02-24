@@ -1,0 +1,27 @@
+# Description: Lightweight and user-friendly e-mail client
+# URL: http://sylpheed.sraoss.jp/en/
+# Packager: pierre at nutyx dot org
+# Depends on: atk,expat,freetype,glib,libpng,pcre,cairo,cyrus-sasl,xorg-fontconfig,libassuan,libgpg-error,openldap,pango,gtk2,gnupg,gpgme,desktop-file-utils
+
+run=(gnupg)
+
+name=sylpheed
+version=3.5.0
+release=2
+
+source=(http://sylpheed.sraoss.jp/sylpheed/v${version%.*}/$name-$version.tar.bz2)
+
+build() {
+        cd $name-$version
+        ./configure --prefix=/usr \
+        --enable-static=no \
+        --disable-gtkspell \
+        --disable-gtktest \
+        --disable-compface \
+        --enable-gpgme \
+        --enable-ssl \
+        --enable-ldap
+
+        make
+        make DESTDIR=$PKG install
+}

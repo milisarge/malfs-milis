@@ -1,0 +1,25 @@
+# Begin /etc/xinetd.d/daytime
+
+service daytime
+{
+   disable        = yes
+   type           = INTERNAL
+   id             = daytime-stream
+   socket_type    = stream
+   protocol       = tcp
+   user           = root
+   wait           = no
+}
+
+service daytime
+{
+   disable        = yes
+   type           = INTERNAL
+   id             = daytime-dgram
+   socket_type    = dgram
+   protocol       = udp
+   user           = root
+   wait           = yes
+}
+
+# End /etc/xinetd.d/daytime

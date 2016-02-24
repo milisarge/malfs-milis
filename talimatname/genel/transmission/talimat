@@ -1,0 +1,21 @@
+# Description: Light and fast Bittorent client (GTK Interface)
+# URL: http://www.transmissionbt.com/
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: intltool curl libevent gtk3 desktop-file-utils gtk-update-icon-cache
+
+name=transmission
+version=2.84
+release=1
+
+source=(http://download-origin.transmissionbt.com/files/transmission-$version.tar.xz)
+
+build() {
+	cd transmission-$version
+	./configure --prefix=/usr \
+                --disable-cli \
+                --disable-daemon \
+                --without-qt \
+                --with-gtk
+	make
+	make DESTDIR=$PKG install
+}

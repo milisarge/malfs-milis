@@ -1,0 +1,14 @@
+if grep "\[Settings\]" /etc/gtk-3.0/settings.ini>/dev/null; then
+	if grep "gtk-theme-name" /etc/gtk-3.0/settings.ini>/dev/null; then 
+		exit 0
+	else
+		echo "gtk-theme-name = oxygen-gtk" >> /etc/gtk-3.0/settings.ini
+	fi
+else
+
+	cat > /etc/gtk-3.0/settings.ini  << "EOF"
+[Settings]
+gtk-theme-name = oxygen-gtk
+EOF
+
+fi

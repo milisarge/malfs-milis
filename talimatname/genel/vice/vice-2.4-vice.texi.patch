@@ -1,0 +1,10 @@
+--- a/doc/vice.texi	2015-11-12 10:36:35.670036048 -0800
++++ b/doc/vice.texi	2015-11-12 10:36:17.240035913 -0800
+@@ -8243,6 +8243,7 @@
+ @item -Crtcextpal
+ Use an external palette (file)
+ @cindex -Crtcpalette
++@item -Crtcpalette
+ @itemx -Crtcpalette NAME
+ Specify @code{NAME} as the palette file (@code{CrtcPaletteFile}).
+ @cindex -Crtcfulldevice

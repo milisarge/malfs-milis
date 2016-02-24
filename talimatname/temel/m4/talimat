@@ -1,0 +1,19 @@
+# Description: The M4 package contains a macro processor
+# URL: http://www.seindal.dk/rene/gnu/
+# Maintainer: Tim Rice, tim at multitalents dot net
+# Packager: pierre at nutyx dot org
+name=m4
+version=1.4.17
+release=1
+
+source=(http://ftp.gnu.org/gnu/m4/m4-$version.tar.xz)
+
+build()
+{
+cd m4-$version
+./configure --prefix=/usr
+make
+make check || true
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

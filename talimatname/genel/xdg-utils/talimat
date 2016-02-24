@@ -1,0 +1,20 @@
+# Description: Command line tools that assist applications with a variety of desktop integration tasks.
+# URL: http://portland.freedesktop.org/wiki/
+# Packager: pierre at nutyx dot org
+# Depends on: links,xmlto,xorg-app
+
+run=(xorg-app)
+
+name=xdg-utils
+version=1.1.0.rc3
+release=2
+_version=1.1.0-rc3
+source=(http://people.freedesktop.org/~rdieter/$name/$name-${_version}.tar.gz)
+
+build() {
+cd $name-${_version}
+./configure --prefix=/usr \
+--mandir=/usr/share/man
+make
+make DESTDIR=$PKG install
+}

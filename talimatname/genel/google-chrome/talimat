@@ -1,0 +1,32 @@
+# Description: Google Chrome Browser, developer preview channel for Linux
+# URL:        http://dev.chromium.org/getting-involved/dev-channel
+# Maintainer:  Chris Farrell, timcowchip at gmail dot com 
+# Depends on: nss gconf libjpeg-turbo freetype cairo libxslt libpng alsa-lib hicolor-icon-theme xdg-utils
+         
+name=google-chrome
+version=48.0.2564.103
+release=1
+
+[ "`uname -m`" == "i686" ] && _arch="i386"
+[ "`uname -m`" == "x86_64" ] && _arch="amd64"
+
+
+source=("https://dl.google.com/linux/direct/google-chrome-stable_current_${_arch}.deb"
+         "https://www.google.com/chrome/intl/en/eula_text.html")
+
+build() {
+
+	bsdtar -xf google-chrome-stable_current_${_arch}.deb
+	bsdtar -xf data.tar.xz -C "$PKG/" 
+    
+    
+    for i in 16 22 24 32 48 64 128 256; do
+	install -Dm644 "$PKG"/opt/google/chrome/product_logo_${i}.png \
+	"$PKG"/usr/share/icons/hicolor/${i}x${i}/apps/google-chrome.png
+	rm $PKG/opt/google/chrome/product_logo_${i}.png
+    done
+
+    install -Dm644 "$SRC"/eula_text.html "$PKG"/usr/share/licenses/google-chrome/eula_text.html
+    
+    rm -r "$PKG"/etc/cron.daily/ "$PKG"/opt/google/chrome/cron/
+}

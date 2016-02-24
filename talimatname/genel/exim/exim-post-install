@@ -1,0 +1,2 @@
+ln -sfv /usr/sbin/exim usr/sbin/sendmail
+

@@ -1,0 +1,35 @@
+# Description: The principal firewall tool for Linux.
+# URL: http://www.iptables.org/
+# Packager: pierre at nutyx dot org
+
+name=iptables
+version=1.6.0
+release=1
+
+source=( http://www.netfilter.org/projects/iptables/files/$name-$version.tar.bz2)
+build() {
+source /etc/blfs-bootscripts
+wget  http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+
+./configure --prefix=/usr \
+--sbindir=/sbin \
+--with-xtlibdir=/lib/xtables \
+--with-pkgconfigdir=/usr/lib/pkgconfig \
+--enable-libipq \
+--disable-nftables \
+--enable-devel
+make
+make DESTDIR=$PKG install
+
+ln -sfv ../../sbin/xtables-multi $PKG/usr/bin/iptables-xml
+for file in ip4tc ip6tc ipq iptc xtables
+do
+   mv -v $PKG/usr/lib/lib${file}.so.* $PKG/lib
+   ln -sfv ../../lib/$(readlink $PKG/usr/lib/lib${file}.so) $PKG/usr/lib/${file}.so
+done
+cd ../$scripts-$scriptsversion
+make DESTDIR=$PKG install-$name
+}

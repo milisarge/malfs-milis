@@ -1,0 +1,24 @@
+# Description: perldoc (Official Perl documentation)
+# URL: URL: http://perldoc.perl.org 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+name=perldoc
+version=5.20.1
+release=1
+
+source=(
+http://perldoc.perl.org/perldoc-html.tar.gz
+perldoc.desktop
+perldoc.png
+)
+
+build(){
+mkdir -p $PKG/usr/share/doc/$name-$version
+cp -rf $SRC/perldoc-html/* \
+$PKG/usr/share/doc/$name-$version/
+install -Dm 644 $SRC/$name.desktop \
+$PKG/usr/share/applications/$name.desktop
+install -Dm 644 $SRC/$name.png \
+$PKG/usr/share/icons/hicolor/48x48/apps/$name.png
+}

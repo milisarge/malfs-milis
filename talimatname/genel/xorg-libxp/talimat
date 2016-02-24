@@ -1,0 +1,17 @@
+# Description: Library libXp, X print client library
+# URL: http://xorg.freedesktop.org
+# Packager: tnut at nutyx dot org
+# Depends on: xorg-proto xorg-libx11 xorg-libxext
+
+name=xorg-libxp
+version=1.0.3
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXp-$version.tar.bz2)
+
+build() {
+cd libXp-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

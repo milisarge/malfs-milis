@@ -1,0 +1,22 @@
+# Description: Implementation of the iCalendar protocols and data formats.
+# URL: http://sourceforge.net/projects/freeassociation/
+# Packager: pierre at nutyx dot org
+# Depends on: cmake
+
+name=libical
+version=2.0.0
+release=1
+
+source=( https://github.com/libical/libical/releases/download/v2.0.0/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+-DCMAKE_BUILD_TYPE=Release  \
+-DSHARED_ONLY=yes \
+..
+make
+make DESTDIR=$PKG install
+}

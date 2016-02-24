@@ -1,0 +1,21 @@
+# Description: Linux-exclusive browser that carries the best features from Opera
+# URL: http://fifth-browser.sourceforge.net/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: webkitfltk urlmatch physfs desktop-file-utils
+
+name=fifth
+version=0.4
+release=1
+
+source=()
+
+build() {
+	git clone https://github.com/clbr/fifth.git
+	cd "${SRC}/${name}"
+	./autogen.sh
+	./configure
+	make
+
+	make install DESTDIR="${PKG}"
+}

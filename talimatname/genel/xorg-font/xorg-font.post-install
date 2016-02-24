@@ -1,0 +1,6 @@
+fc-cache -f -s > /dev/null
+for i in 100dpi  75dpi  cyrillic  misc  OTF  TTF  Type1
+do
+        mkfontscale /usr/share/fonts/$i
+        mkfontdir /usr/share/fonts/$i
+done

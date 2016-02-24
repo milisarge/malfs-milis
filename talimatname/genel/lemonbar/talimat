@@ -1,0 +1,30 @@
+# Description: A featherweight, lemon-scented, bar based on xcb.
+# URL: https://github.com/LemonBoy/bar
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: libxcb git xorg-libxinerama
+
+name=lemonbar
+version=v1.1.r12.gb331ee3
+release=1
+
+source=()
+
+version() {
+    cd bar
+
+	if git_version=$( git describe --long --tags 2>/dev/null ); then
+		IFS='-' read last_tag tag_rev commit <<< "$git_version"
+		printf '%s.r%s.%s' "$last_tag" "$tag_rev" "$commit"
+	else
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	fi
+}
+
+build() {
+	git clone "https://github.com/LemonBoy/bar.git"
+	cd bar
+	make
+
+	make PREFIX=/usr DESTDIR="$PKG" install
+}

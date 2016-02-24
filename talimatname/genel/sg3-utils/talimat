@@ -1,0 +1,16 @@
+# Description: Generic SCSI utilities
+# URL: http://sg.danny.cz/sg/sg3_utils.html
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=sg3-utils
+version=1.41
+release=1
+
+source=(http://sg.danny.cz/sg/p/sg3_utils-$version.tar.xz)
+build() {
+cd sg3_utils-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

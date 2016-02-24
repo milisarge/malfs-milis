@@ -1,0 +1,17 @@
+# Description: Apache Portable Runtime (APR)
+# URL: http://apr.apache.org/
+# Packager: jmilot at nutyx dot org
+# Depends on: 
+name=apr
+version=1.5.2
+release=1
+
+source=(http://archive.apache.org/dist/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static \
+--with-installbuilddir=/usr/share/apr-1/build
+make
+make DESTDIR=$PKG install
+}

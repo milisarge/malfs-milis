@@ -1,0 +1,24 @@
+# Description: Simple (yet powerful) feed reader, able to fetch the most known feed formats, including RSS/RDF and ATOM.
+# URL: https://bitbucket.org/skunkos/rssguard/wiki/Home
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: cmake qt5
+
+description="Feed reader, able to fetch the most known feed formats including RSS/RDF and ATOM"
+name=rssguard
+version=3.0.1
+release=1
+
+source=("https://bitbucket.org/skunkos/rssguard/get/$version.tar.bz2")
+
+build() {
+  mkdir -p build
+  cd build
+
+  cmake ../skunkos* \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=release \
+    -DUSE_QT_5=ON
+  make
+
+  make DESTDIR=$PKG/ install
+}

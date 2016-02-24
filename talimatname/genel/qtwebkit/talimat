@@ -1,0 +1,25 @@
+# Description: QtWebkit module for Qt4 lib
+# Url: http://trac.webkit.org/wiki/QtWebKit
+# Packager: tnut at nutyx dot org
+# Depends on: ruby python qt4
+
+PKGMK_IGNORE_UNPACK="yes"
+
+
+name=qtwebkit
+version=2.3.4
+release=1
+_name=qt-everywhere-opensource-src-${_qtversion}
+source=(http://download.kde.org/stable/qtwebkit-2.3/$version/src/qtwebkit-$version.tar.gz
+	http://www.linuxfromscratch.org/patches/blfs/svn/qtwebkit-2.3.4-gcc5-1.patch)
+build() {
+mkdir qtwebkit-$version
+cd qtwebkit-$version
+tar xf ../qtwebkit-$version.tar.gz
+source setqt4
+patch -Np1 -i ../qtwebkit-2.3.4-gcc5-1.patch
+[ -z $QTDIR ] && QTDIR="/usr"
+
+Tools/Scripts/build-webkit --qt --no-webkit2 --prefix=$QT4PREFIX
+make INSTALL_ROOT=$PKG -C WebKitBuild/Release install
+}

@@ -1,0 +1,85 @@
+# Description: PBX Software implementation
+# URL:         http://www.asterisk.org
+# Packager:    berlius at nutyx dot com
+# Depends on:  openssl ncurses jansson opus libxml2 doxygen
+
+name=asterisk
+version=13.6.0
+release=1
+source=(http://downloads.digium.com/pub/asterisk/releases/asterisk-$version.tar.gz
+        https://github.com/seanbright/asterisk-opus/archive/bb2925fc4eaad5b30b93eece851297de5c12e06c.tar.gz
+        asterisk.rc
+        build-enable-aelparse.patch
+        build-disable-astcanary.patch
+        build-enable-cdr-mysql.patch
+        build-enable-ilbc.patch
+        build-disable-moh-wav.patch
+        build-enable-opus-vp8.patch
+        build-disable-sounds-en-gsm.patch
+)
+
+build () {
+
+    cd asterisk-$version
+
+    # patch to add Opus transcoding and VP8 passthrough
+    # https://github.com/seanbright/asterisk-opus
+    if [ -f /usr/include/opus/opus.h ]; then
+	   cp $SRC/asterisk-opus-*/codecs/* codecs/
+	   cp $SRC/asterisk-opus-*/formats/* formats/
+	   ./bootstrap.sh
+    fi
+
+    ./configure \
+	   --prefix=/usr \
+	   --mandir=/usr/man \
+	   --with-ncurses \
+	   --with-ssl \
+	   --disable-xmldoc \
+	   --with-sounds-cache=/tmp
+
+    # Generate a menuselect-tree file
+    make menuselect-tree
+
+    # Enable Opus and VP8
+    if [ -f /usr/include/opus/opus.h ]; then
+	  patch -p1 -i $SRC/asterisk-opus-*/asterisk.patch
+	  patch -p1 -i $SRC/build-enable-opus-vp8.patch
+    fi
+
+    # Add aelparse utility
+    patch -p1 -i $SRC/build-enable-aelparse.patch
+
+    # Remove astcanary
+    patch -p1 -i $SRC/build-disable-astcanary.patch
+
+    # Add cdr_mysql
+    patch -p1 -i $SRC/build-enable-cdr-mysql.patch
+
+    # Add iLBC
+    patch -p1 -i $SRC/build-enable-ilbc.patch
+
+    # Remove music on hold files
+    patch -p1 -i $SRC/build-disable-moh-wav.patch
+
+    # Remove english gsm core sounds (sounds are available in separate port)
+    patch -p1 -i $SRC/build-disable-sounds-en-gsm.patch
+
+    make # NOISY_BUILD=yes
+    make DESTDIR=$PKG install
+
+    # Init script
+    install -m 755 -D $SRC/asterisk.rc $PKG/etc/rc.d/asterisk
+
+    # This man page is missing
+    install -m 644 -D doc/aelparse.8 $PKG/usr/man/man8/aelparse.8
+
+    # Install default config files
+    install -d -m 750 $PKG/etc/asterisk $PKG/etc/asterisk/default
+    for i in configs/samples/*.sample; do
+       install -m 640 $i $PKG/etc/asterisk/default/$(basename $i .sample)
+    done
+
+}
+
+

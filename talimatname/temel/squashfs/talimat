@@ -1,0 +1,18 @@
+# Description: Squashfs is a compressed read-only filesystem for Linux.
+# URL: http://squashfs.sourceforge.net/
+# Maintainer: phillip at lougher.demon.co.uk
+# Packager: guy at nutyx dot org
+# Depends on: zlib lzo xz lz4
+
+name=squashfs
+version=4.3
+release=2
+
+source=(http://downloads.sourceforge.net/sourceforge/$name/$name$version.tar.gz)
+
+build() {
+cd $name$version/squashfs-tools
+make XZ_SUPPORT=1 LZO_SUPPORT=1 LZMA_XZ_SUPPORT=1 LZA_SUPPORT=1
+mkdir -p $PKG/bin
+make INSTALL_DIR=$PKG/bin install
+}

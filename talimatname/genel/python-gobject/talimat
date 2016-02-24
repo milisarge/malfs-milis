@@ -1,0 +1,21 @@
+# Description: provides the links of Python 2 for the class GObject of GLib.
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python-cairo gobject-introspection xorg-libxxf86vm libffi 
+
+name=python-gobject
+version=3.18.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/pygobject/${version%.*}/pygobject-$version.tar.xz)
+
+build() {
+cd pygobject-$version
+mkdir python2
+pushd python2
+../configure --prefix=/usr \
+--with-python=/usr/bin/python2
+make
+popd
+make DESTDIR=$PKG -C python2 install
+}

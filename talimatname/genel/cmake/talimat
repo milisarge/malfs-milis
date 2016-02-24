@@ -1,0 +1,20 @@
+# Description: Used for generating Makefiles and aims to be platform- and compiler-independent.
+# URL: http://www.cmake.org
+# Packager: pierre at nutyx dot org
+
+name=cmake
+version=3.4.3
+release=1
+
+source=(http://www.cmake.org/files/v${version%.*}/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./bootstrap --prefix=/usr \
+--mandir=/share/man \
+--system-libs \
+--no-system-jsoncpp \
+--docdir=/share/doc/cmake-$version
+make
+make DESTDIR=$PKG install
+}

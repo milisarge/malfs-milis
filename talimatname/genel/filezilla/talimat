@@ -1,0 +1,22 @@
+# Description: Fast and reliable FTP, FTPS and SFTP client
+# URL:         http://filezilla-project.org
+# Maintainer:  Thomas Penteker, tek at serverop dot de
+# Packager:    fanch at nutyx dot org, tnut at nutyx dot org
+# Depends on:  wxgtk libidn gnutls xdg-utils tinyxml dbus
+
+name=filezilla
+version=3.12.0.2
+release=1
+source=(http://downloads.sourceforge.net/project/$name/FileZilla_Client/$version/FileZilla_${version}_src.tar.bz2)
+
+build() {
+    cd $name-$version
+    ./configure \
+        --prefix=/usr \
+        --disable-manualupdatecheck \
+        --disable-autoupdatecheck \
+        --disable-static \
+        --disable-dependency-tracking
+    make
+    make DESTDIR=$PKG install
+}

@@ -1,0 +1,24 @@
+# Description: Library for file management
+# URL: http://pcmanfm.sourceforge.net/
+# Packager: geantbrun at gmail dot com
+# Depends on: udisks shared-mime-info xorg-libxinerama xorg-libxrandr xorg-libxdamage gtk2 menu-cache dbus-glib desktop-file-utils vala 
+
+name=libfm
+version=1.2.3
+release=5
+
+source=(http://downloads.sourceforge.net/pcmanfm/${name}-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --disable-static
+make 
+make DESTDIR=$PKG install
+# already in libfm-extra
+rm $PKG/usr/lib/libfm-extra.*
+rm $PKG/usr/lib/pkgconfig/libfm-extra.pc
+rm $PKG/usr/include/libfm
+rm $PKG/usr/include/libfm-1.0/{fm-xml-file.h,fm-extra.h,fm-version.h}
+}

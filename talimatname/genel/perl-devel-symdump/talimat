@@ -1,0 +1,27 @@
+# Description: Perl symbol table access and dumping
+# URL: URL: http://search.cpan.org/dist/Devel-Symdump
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( perl )
+name=perl-devel-symdump
+version=2.11
+release=1
+
+source=(http://www.cpan.org/authors/id/A/AN/ANDK/Devel-Symdump-$version.tar.gz)
+
+build() {
+    cd Devel-Symdump-$version
+    perl Makefile.PL
+    make OPTIMIZE="$CFLAGS" || exit 1
+    make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1
+
+    # Remove perllocal.pod and .packlist if present in the package
+    for i in perllocal.pod .packlist; do
+        find $PKG -name "$i" -exec rm -rf {} \;
+    done
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

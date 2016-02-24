@@ -1,0 +1,42 @@
+# Description: A library for computing the discrete Fourier transform (DFT)
+# URL: http://www.fftw.org/
+# Packager: pierre at nutyx dot org
+
+name=fftw
+version=3.3.4
+release=3
+
+source=(http://www.fftw.org/$name-$version.tar.gz)
+
+build() {
+cd $SRC
+  cp -a $name-$version $name-$version-double
+  cp -a $name-$version $name-$version-long-double
+  mv $name-$version $name-$version-single
+
+# use upstream default CFLAGS while keeping our -march/-mtune
+  CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
+
+  CONFIGURE="./configure F77=gfortran --prefix=/usr \
+                 --enable-shared --enable-threads \
+		 --enable-openmp"
+
+# build double precision
+  cd $SRC/$name-$version-double
+  $CONFIGURE --enable-sse2 --enable-avx
+  make
+  make DESTDIR=$PKG install
+
+  # build & install long double precission
+  cd $SRC/$name-$version-long-double
+  $CONFIGURE --enable-long-double
+  make
+  make DESTDIR=$PKG install
+
+  # build & install single precision
+  cd $SRC/$name-$version-single
+  $CONFIGURE --enable-float --enable-sse --enable-avx
+  make
+  make DESTDIR=$PKG install
+  rm -rf $PKG/usr/share/info/dir
+}

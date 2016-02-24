@@ -1,0 +1,6 @@
+if ( ! grep ICE etc/sysconfig/createfiles > /dev/null );then
+	echo "/tmp/.ICE-unix dir 1777 root root" >> etc/sysconfig/createfiles
+fi
+if ( ! grep X11 etc/sysconfig/createfiles > /dev/null );then
+	echo "/tmp/.X11-unix dir 1777 root root" >> etc/sysconfig/createfiles
+fi

@@ -1,0 +1,43 @@
+# Description: Complete and free implementation of the OpenPGP standard
+# URL: http://www.gnupg.org/
+# Packager: pierre at nutyx dot org
+# Depends on: npth libgpg-error libgcrypt libassuan libksba pinentry openldap libusb-compat curl 
+name=gnupg
+version=2.1.11
+release=1
+
+source=(ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-$version.tar.bz2)
+
+build() {
+cd gnupg-$version
+
+sed -e 's|\(GNUPGHOME\)=\$(abs_builddir)|\1=`/bin/pwd`|' \
+    -i tests/openpgp/Makefile.in
+
+./configure --prefix=/usr \
+--enable-symcryptrun \
+--docdir=/usr/share/doc/gnupg-$version
+make
+
+makeinfo --html --no-split -o doc/gnupg_nochunks.html doc/gnupg.texi
+makeinfo --plaintext -o doc/gnupg.txt doc/gnupg.texi
+
+make DESTDIR=$PKG install
+
+# Links to makes gpg2 compatible with gpg1
+for f in gpg gpgv
+do
+	ln -svf ${f}2.1 $PKG/usr/share/man/man1/$f.1
+	ln -svf ${f}2 $PKG/usr/bin/${f}
+done
+
+install -v -m755 -d \
+$PKG/usr/share/doc/gnupg-$version/html
+if [ -f doc/gnupg_nochunks.html ];then
+	install -v -m644 doc/gnupg_nochunks.html \
+	$PKG/usr/share/doc/gnupg-$version/gnupg.html
+fi
+install -v -m644 doc/*.texi doc/gnupg.txt \
+$PKG/usr/share/doc/gnupg-$version
+rm $PKG/usr/share/info/dir
+}

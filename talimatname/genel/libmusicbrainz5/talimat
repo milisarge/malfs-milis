@@ -1,0 +1,26 @@
+# Description: Library That Provides Access to the MusicBrainz Server
+# URL: http://musicbrainz.org/doc/libmusicbrainz
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: cmake expat neon doxygen
+
+name=libmusicbrainz5
+version=5.1.0
+release=1
+
+source=( https://github.com/metabrainz/libmusicbrainz/releases/download/release-$version/libmusicbrainz-$version.tar.gz)
+
+build() {
+cd libmusicbrainz-$version
+mkdir build
+cd build
+cmake .. \
+-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+-DBUILD_SHARED_LIBS:BOOL=ON \
+-DBUILD_STATIC_LIBS:BOOL=OFF
+make
+doxygen ../Doxyfile
+make DESTDIR=$PKG install
+# Documentation
+mkdir -p $PKG/usr/share/doc/$name-$version
+cp -vr docs/ $PKG/usr/share/doc/$name-$version
+}

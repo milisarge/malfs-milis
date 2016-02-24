@@ -1,0 +1,17 @@
+# Description: Netfilter library providing interface to the nf_tables subsystem
+# URL: URL: http://netfilter.org/projects/libnftnl/
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: libmnl 
+name=libnftnl
+version=1.0.3
+release=1
+
+source=(http://netfilter.org/projects/libnftnl/files/libnftnl-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make check
+    make DESTDIR=$PKG install    
+}

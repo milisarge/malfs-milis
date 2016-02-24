@@ -1,0 +1,21 @@
+# Description: A C++ binding for the OpenGL API, generated using the gl.xml specification. 
+# URL: http://www.glbinding.org
+# Packager:	berlius at nutyx dot com
+# Depends on: cmake doxygen xorg-mesa
+
+name=glbinding
+version=1.1.0
+release=1
+source=(https://github.com/cginternals/$name/archive/master.zip)
+ 
+build() {
+
+cd $name-master
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    
+make
+	
+make DESTDIR=$PKG install
+
+}

@@ -1,0 +1,29 @@
+# Description: Suite to create, manipulate and view DjVu ('déjà vu') documents
+# URL: URL: http://djvu.sourceforge.net
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: librsvg libtiff libjpeg-turbo hicolor-icon-theme 
+run=( librsvg hicolor-icon-theme )
+name=djvulibre
+version=3.5.25.3
+release=1
+
+source=(
+http://downloads.sourceforge.net/djvu/$name-$version.tar.gz)
+
+build(){
+    cd $name-3.5.25
+    ./configure --prefix=/usr \
+                --disable-desktopfiles
+    make
+    make DESTDIR=$PKG install
+
+    for i in 22 32 48 64; do
+        install -Dm644 desktopfiles/prebuilt-hi${i}-djvu.png \
+            $PKG/usr/share/icons/hicolor/${i}x${i}/mimetypes/image-vnd.djvu.mime.png
+    done
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

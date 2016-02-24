@@ -1,0 +1,16 @@
+# Description: MP3 encoder, an MP3 frame analyzer useful for creating, analyzing compressed audio files.
+# URL: http://lame.sourceforge.net/index.php
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: libsndfile nasm 
+name=lame
+version=3.99.5
+release=2
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+build() {
+cd $name-$version
+sed -i -e '/xmmintrin\.h/d' configure
+./configure --prefix=/usr --enable-mp3rtp --disable-static
+make
+make DESTDIR=$PKG pkghtmldir=/usr/share/doc/$name-$version install
+}

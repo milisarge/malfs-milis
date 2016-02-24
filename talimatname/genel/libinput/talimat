@@ -1,0 +1,20 @@
+# Description: Library for display servers and other applications that need to deal with input devices
+# URL:http://www.freedesktop.org/wiki/Software/libinput/
+# Packager: pierre at nutyx dot org
+# Depends on: libevdev mtdev
+
+name=libinput
+version=1.1.6
+release=1
+
+source=(http://freedesktop.org/software/$name/$name-$version.tar.xz )
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static \
+--with-udev-dir=/lib/udev
+make
+make DESTDIR=$PKG install
+install -v -dm755 $PKG/usr/share/doc/libinput-$version
+cp -rv doc/html/* $PKG/usr/share/doc/libinput-$version
+}

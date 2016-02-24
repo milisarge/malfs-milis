@@ -1,0 +1,30 @@
+# Description: A program for creating, destroying, resizing, checking and copying partitions
+# URL: http://www.gnu.org/software/parted/index.shtml
+# Packager: pierre at nutyx dot org
+# Depends on: lvm2 
+
+name=parted
+version=3.2
+release=1
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
+ http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-devmapper-1.patch)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../parted-3.2-devmapper-1.patch
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+make -C doc html
+makeinfo --html -o doc/html doc/parted.texi
+makeinfo --plaintext -o doc/parted.txt doc/parted.texi
+
+install -v -m755 -d $PKG/usr/share/doc/parted-$version/html
+install -v -m644    doc/html/* \
+$PKG/usr/share/doc/parted-$version/html
+install -v -m644 doc/{FAT,API,parted.{txt,html}} \
+$PKG/usr/share/doc/parted-$version
+}

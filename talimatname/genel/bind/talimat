@@ -1,0 +1,45 @@
+# Description: The BIND package includes the client side programs nslookup, dig and host. 
+# URL: http://www.isc.org/downloads/bind/ 
+# Packager: tnut at nutyx dot org
+# Depends on: kerberos libxml2 
+
+name=bind
+version=9.10.3.p2
+release=1
+
+source=(ftp://ftp.isc.org/isc/bind9/9.10.3-P3/bind-9.10.3-P2.tar.gz)
+
+build(){
+    # blfs-bootscript
+    source /etc/blfs-bootscripts
+    wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+    tar xvf $scripts-$scriptsversion.tar.bz2
+
+    # pkg
+    cd $name-9.10.3-P2
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --localstatedir=/var \
+                --mandir=/usr/share/man \
+                --enable-threads \
+                --with-randomdev=/dev/urandom &&
+	make -C lib/dns &&
+	make -C lib/isc &&
+	make -C lib/bind9 &&
+	make -C lib/isccfg &&
+	make -C lib/lwres &&
+	make -C bin/dig
+	make DESTDIR=$PKG -C bin/dig install
+
+    # doc
+    install -v -m755 -d $PKG/usr/share/doc/bind-$version/{arm,misc} &&
+    install -v -m644 doc/arm/*.html \
+        $PKG/usr/share/doc/bind-$version/arm &&
+    install -v -m644 \
+        doc/misc/{dnssec,ipv6,migrat*,options,rfc-compliance,roadmap,sdb} \
+            $PKG/usr/share/doc/bind-$version/misc
+
+    # init script
+    cd $SRC/$scripts-$scriptsversion
+    make DESTDIR=$PKG install-bind
+}

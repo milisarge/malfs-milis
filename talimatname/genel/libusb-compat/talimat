@@ -1,0 +1,19 @@
+# Description: Aims to look, feel and behave exactly like libusb-0.1.
+# URL: http://libusb.wiki.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: libusb 
+
+name=libusb-compat
+version=0.1.5
+release=1
+
+source=( http://sourceforge.net/projects/libusb/files/libusb-compat-0.1/libusb-compat-$version/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+}

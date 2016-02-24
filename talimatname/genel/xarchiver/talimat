@@ -1,0 +1,22 @@
+# Description: GTK+ frontend to various command line archivers
+# URL: http://xarchiver.xfce.org
+# Packager: tnut at nutyx dot org
+# Depends on: gtk2 intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
+
+name=xarchiver
+version=0.5.2
+release=3
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib/xfce4 \
+	--localstatedir=/var \
+	--disable-static
+	make
+	make DESTDIR=$PKG install
+}
+

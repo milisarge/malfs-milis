@@ -1,0 +1,21 @@
+# Description: A quick launch bar developed with speed in mind
+# URL: http://code.google.com/p/wbar
+# Packager: tnut at nutyx dot org
+# Depends on: libglade imlib2
+
+name=wbar
+version=2.3.4
+release=1
+
+source=(https://wbar.googlecode.com/files/wbar-$version.tgz )
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr \
+                --exec_prefix=/usr \
+                --sysconfdir=/etc
+        make
+        make DESTDIR=$PKG install
+}
+

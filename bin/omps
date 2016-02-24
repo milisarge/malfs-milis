@@ -1,0 +1,2 @@
+mpsd -d -cf /etc/mpsd.conf
+for PACK in *.xz; do /tools/bin/pkgadd -r / $PACK;done

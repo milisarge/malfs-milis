@@ -1,0 +1,22 @@
+# Description: Composite Window-effects manager for X.org
+# URL: http://xorg.freedesktop.org/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: xorg-libxcomposite xorg-libxdamage xorg-libxrender xorg-libxext
+
+name=xcompmgr
+version=1.1.7
+release=1
+
+source=(http://xorg.freedesktop.org/releases/individual/app/${name}-${version}.tar.bz2 fix_broken_shadows.diff)
+
+build() {
+  cd ${name}-${version}
+  patch -Np0 -i ${SRC}/fix_broken_shadows.diff
+  ./configure --prefix=/usr
+  make
+
+  make DESTDIR="${PKG}" install
+  install -m755 -d "${PKG}/usr/share/licenses/${name}"
+  install -m644 COPYING "${PKG}/usr/share/licenses/${name}/"
+}

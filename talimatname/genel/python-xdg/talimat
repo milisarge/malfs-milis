@@ -1,0 +1,15 @@
+# Description: Python library for accessing FreeDesktop standards
+# URL: http://freedesktop.org/wiki/Software/pyxdg
+# Packager: geantbrun at gmail dot com
+# Depends on: python 
+
+name=python-xdg
+version=0.25
+release=1
+
+source=(http://people.freedesktop.org/~takluyver/pyxdg-$version.tar.gz)
+
+build() {
+	cd pyxdg-$version
+	python2 setup.py install --prefix=/usr --root=$PKG
+}

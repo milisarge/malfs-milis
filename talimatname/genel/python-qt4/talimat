@@ -1,0 +1,25 @@
+# Description: connector python for qt4
+# URL: http://www.riverbankcomputing.co.uk/software/pyqt/intro
+# Packager: pierre at nutyx dot org
+# Depends on: dbus-python sip qt4 phonon 
+
+name=python-qt4
+version=4.11.2
+release=1
+
+source=(http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-$version/PyQt-x11-gpl-$version.tar.gz)
+build() {
+cd PyQt-x11-gpl-$version
+
+python2 configure-ng.py   \
+     -v /usr/share/sip \
+     -q /usr/lib/qt4/bin/qmake \
+     --confirm-license \
+     --qsci-api
+
+find -name 'Makefile' | xargs sed -i 's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
+make
+make DESTDIR=$PKG INSTALL_ROOT=$PKG install
+
+install -Dm644 PyQt4.api $PKG/usr/share/qt4/qsci/api/python/PyQt4.api
+}

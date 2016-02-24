@@ -1,0 +1,25 @@
+# Description: GPT fdisk
+# URL: http://rodsbooks.com/gdisk/
+# Packager: berlius at nutyx dot com
+# Depends on: popt
+
+name=gdisk
+version=1.0.0
+release=1
+source=(http://downloads.sourceforge.net/project/gptfdisk/gptfdisk/$version/gptfdisk-$version.tar.gz)
+
+build() {
+
+	cd gptfdisk-$version
+
+	make
+
+	install -D -m0755 gdisk $PKG/usr/sbin/gdisk
+	install -D -m0755 sgdisk $PKG/usr/sbin/sgdisk
+	install -D -m0755 cgdisk $PKG/usr/sbin/cgdisk
+	install -D -m0755 fixparts $PKG/usr/sbin/fixparts
+	install -D -m0644 gdisk.8 $PKG/usr/man/man8/gdisk.8
+	install -D -m0644 sgdisk.8 $PKG/usr/man/man8/sgdisk.8
+	install -D -m0644 cgdisk.8 $PKG/usr/man/man8/cgdisk.8
+	install -D -m0644 fixparts.8 $PKG/usr/man/man8/fixparts.8
+}

@@ -1,0 +1,20 @@
+# Description: Python module that implements the SSH2 protocol
+# URL: URL: https://github.com/paramiko/paramiko/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python python-crypto python-ecdsa 
+name=python-paramiko
+version=1.15.1
+release=1
+
+source=(
+http://pypi.python.org/packages/source/p/paramiko/paramiko-$version.tar.gz)
+
+build() {
+    cd paramiko-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

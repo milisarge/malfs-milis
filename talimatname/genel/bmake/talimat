@@ -1,0 +1,28 @@
+# Description: Portable version of the NetBSD 'make' build tool
+# URL: http://www.crufty.net/help/sjg/bmake.html
+# Packager: tnut at nutyx dot org
+# Depends on: 
+name=bmake
+version=20150910
+release=1
+
+source=(http://www.crufty.net/ftp/pub/sjg/bmake-$version.tar.gz)
+
+build(){
+    cd $name
+    # Add missing bsd.*.mk symlinks (thanks to Arch)
+    _links_orig="dep doc init lib links man nls obj own prog subdir"
+    _links_new="dep doc inc init lib links man nls obj own prog subdir"
+    sed -i -e "s/$_links_orig/$_links_new/" mk/install-mk
+
+    cd $SRC
+    mkdir -p bmake-build
+    cd bmake-build
+    sh ../bmake/boot-strap --prefix=/usr
+
+    cd $SRC/bmake-build
+    # Fix directory permissions on install
+    install -dm0755 $PKG/usr/bin
+    install -dm0755 $PKG/usr/share/man/cat1
+    sh ../bmake/boot-strap --prefix=/usr --install-destdir=$PKG op=install
+}

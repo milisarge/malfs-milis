@@ -1,0 +1,14 @@
+version=2.27.1
+
+source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version:0:4}/util-linux-$version.tar.xz)
+
+build() {
+cd util-linux-$version
+./configure --prefix=/tools \
+--without-python \
+--disable-makeinstall-chown \
+--without-systemdsystemunitdir \
+PKG_CONFIG=""
+make
+make install
+}

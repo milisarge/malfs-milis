@@ -1,0 +1,22 @@
+Si vous souhaitez faire une mise à jour manuelle des certificats, voici la procédure:
+
+certhost='http://mxr.mozilla.org'
+certdir='/mozilla/source/security/nss/lib/ckfw/builtins'
+url="$certhost$certdir/certdata.txt?raw=1"
+
+wget --output-document certdata.txt $url
+unset certhost certdir url
+make-ca.sh
+remove-expired-certs.sh certs
+
+SSLDIR=/etc/ssl
+if [ ! -d ${SSLDIR}/certs ]; then
+	install -d ${SSLDIR}/certs
+fi
+cp -v certs/*.pem ${SSLDIR}/certs
+c_rehash
+install BLFS-ca-bundle*.crt ${SSLDIR}/ca-bundle.crt
+unset SSLDIR
+
+rm -rf certs
+rm -r certdata.txt  BLFS-ca-bundle*

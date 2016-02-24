@@ -1,0 +1,17 @@
+# Description: Bibliothéque pour accélérer la manipulation de menu cache pour lxde
+# URL: http://lxde.org/
+# Maintainer: git.lxde.org/gitweb/?p=debian/menu-cache.git;a=summary
+# Packager: geantbrun at gmail dot com
+# Depends on: libfm-extra
+
+
+name=menu-cache
+version=1.0.1
+release=1
+source=(http://downloads.sourceforge.net/lxde/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr  --disable-static
+make
+make DESTDIR=$PKG install
+}

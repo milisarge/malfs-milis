@@ -1,0 +1,35 @@
+# Description: Port of the portable web rendering engine WebKit to the GTK+ 2 and 3 platforms.
+# URL: http://webkitgtk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: enchant cmake gstreamer1-plugins-base xorg-libxt  gtk2 gtk3 hunspell hyphen icu libgudev libsecret libsoup libwebp xorg-mesa ruby sqlite enchant geoclue gobject-introspection hicolor-icon-theme llvm harfbuzz gtk-doc libnotify
+
+name=webkit2gtk3
+version=2.10.7
+release=1
+
+source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
+build() {
+cd webkitgtk-$version
+sed -e 's/“/\"/' -e 's/”/\"/' \
+    -i Source/WebCore/xml/XMLViewer.{css,js}
+
+mkdir -vp build
+cd        build
+
+cmake -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_SKIP_RPATH=ON       \
+      -DPORT=GTK                  \
+      -DLIB_INSTALL_DIR=/usr/lib  \
+      -DENABLE_MINIBROWSER=ON     \
+      -Wno-dev ..
+
+make || make -j1
+make DESTDIR=$PKG install || make -j1 DESTDIR=$PKG install
+
+install -vdm755 $PKG/usr/share/gtk-doc/html/webkit{2,dom}gtk-4.0
+install -vm644  ../Documentation/webkit2gtk-4.0/html/* \
+$PKG/usr/share/gtk-doc/html/webkit2gtk-4.0
+install -vm644  ../Documentation/webkitdomgtk-4.0/html/* \
+$PKG/usr/share/gtk-doc/html/webkit2gtk-4.0
+}

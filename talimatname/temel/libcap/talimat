@@ -1,0 +1,29 @@
+# Description: POSIX 1003.1e capabilities library
+# URL: http://www.kernel.org/pub/linux/libs/security/linux-privs/
+# Packager: pierre at nutyx dot org
+
+name=libcap
+version=2.25
+release=1
+
+source=(  https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$version.tar.xz)
+
+build() {
+cd libcap-$version
+sed -i 's:LIBDIR:PAM_&:g' pam_cap/Makefile
+sed -i '/install.*STALIBNAME/d' libcap/Makefile
+make
+make RAISE_SETFCAP=no \
+prefix=/usr \
+LIBDIR=/usr/lib \
+SBINDIR=/sbin \
+PAM_LIBDIR=/lib \
+DESTDIR=$PKG install
+
+mkdir -p $PKG/lib
+_lib=""
+mv -v $PKG/usr/lib${_lib}/libcap.so.* \
+$PKG/lib
+ln -sfv ../../lib/libcap.so.2 $PKG/usr/lib${_lib}/libcap.so
+}
+  

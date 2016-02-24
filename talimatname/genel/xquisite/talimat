@@ -1,0 +1,14 @@
+# Description: Theme d'icones xquisite for xfce
+# URL: http://xfce-look.org/content/show.php/Xquisite?content=69735
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=xquisite
+version=0.4.6
+release=1
+
+source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
+
+build() {
+mkdir -p $PKG//usr/share/icons/
+cp -a * $PKG//usr/share/icons/
+}

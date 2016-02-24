@@ -1,0 +1,312 @@
+#!/bin/bash
+versiyon="0.1"
+paketdepo="/depo/paketler/"
+sunucu="192.168.3.193:8000/paketdepo/"
+ikaynak=""
+betikad=${0##*/}
+kurulum_onay="evet"
+dokunulmaz="/etc/dokunulmaz"
+talimatname_dizin="/root/talimatname"
+
+icerik_ekle(){
+	paketad=`echo "$1" | cut -d'#' -f1`	
+	paketad=`basename $paketad`
+	echo $paketad" paketi kuruluyor."
+	mkdir -p /var/lib/pkg/DB/"$paketad" &&
+	tar xf $1 -C /  && 
+	mv /.MTREE /var/lib/pkg/DB/"$paketad"/files &&
+	mv /.META /var/lib/pkg/DB/"$paketad"/META &&
+	if [ -f /tools/sbin/ldconfig ];then
+		/tools/sbin/ldconfig
+	else
+		/sbin/ldconfig
+	fi
+	echo $paketad" paketi kuruldu."
+}
+
+paket_sil(){
+	local paket kkont
+	if [ -f $dokunulmaz ];then
+		kkont=`kurulu_kontrol "$1"`
+		if [ "$kkont" = "kurulu" ];then
+			paket="$1"
+			echo $paket" paketi siliniyor."
+			#while IFS='' read -r line || [[ -n "$line" ]]; do
+			while read -r dosya
+			do
+				if [[ $(grep -c $dosya $dokunulmaz) -eq 0 ]]; then
+					#echo /$dosya
+					rm -r -f /$dosya
+				fi
+			done < /var/lib/pkg/DB/"$paket"/files
+			rm -r -f /var/lib/pkg/DB/"$paket" &&
+			echo $paket" paketi silindi."
+		else
+			echo "paket zaten kurulu değil!"
+		fi
+	else
+		echo "kritik mesaj:$dokunulmaz dosyası yok."
+		#tamirat
+		cp /root/ayarlar/dokunulmaz /etc/
+		echo "dokunulmazlık tamiri yapıldı.,komutu yineleyiniz."
+	fi
+
+}
+
+paket_bilgi(){
+	local paket kkont
+	kkont=`kurulu_kontrol "$1"`
+	if [ "$kkont" = "kurulu" ];then
+		paket="$1"
+		cat /var/lib/pkg/DB/"$paket"/META
+	else
+		echo "paket kurulu değil!"
+	fi
+
+}
+
+derleme_listyap(){
+	bagimlist=`bagimli_bilgi "$1"`
+	for bagim in $bagimlist;do
+		if [ "`cat derleme.liste | grep $bagim`" != "$bagim" ];then
+			derleme_listyap "$bagim"
+		fi
+	done
+	#if [ "`cat derleme.liste | grep $1`" != "$1" ];then
+	#	echo "derleme.liste yazılıyor:" "$1"
+	#	echo "$1" >> derleme.liste 
+	#fi
+	if  ! grep -Fxq "$1" derleme.liste
+	then
+	#	echo "pas"
+	#else
+		echo "derleme.liste yazılıyor:" "$1"
+		echo "$1" >> derleme.liste 
+	fi
+} 
+
+paket_derle_oto(){
+	rm derleme.liste
+	touch derleme.liste 
+	derleme_listyap "$1"
+	for dpkt in `cat derleme.liste`;do
+		echo $dpkt "derleniyor...."
+		paket_derle $dpkt
+	done
+}
+      
+paket_derle(){
+	local konum derleme_onay eh bagimd
+	derleme_onay="h"
+	konum="`find "$talimatname_dizin" -name $1`"
+	if [ -d "$konum" ];then
+		mkdir -p tmp."$1" 
+		cp -a $konum/* tmp."$1"/
+		cd tmp."$1"
+		
+		if [ `kurulu_kontrol "$1"` = "kurulu" ];then
+			while true; do
+				read -p "$1 paketi zaten kurulu yine de derlensin mi?" eh
+				case $eh in
+					[Ee]* ) derleme_onay="e"; break;;
+					[Hh]* ) break;;
+					* ) echo "e veya h";;
+				esac
+			done
+		else
+			derleme_onay="e"
+		fi 
+		if [ "$derleme_onay" = "e" ];then
+			echo "$1" "derleniyor...."
+			#mpsd -d > /dev/null
+			mpsd -d
+			if [ "$kurulum_onay" = "evet" ];then
+				for kpkt in `ls $1* | cut -d'#' -f1`;do
+					mps -k "$kpkt#"*
+				done	
+			fi
+			mv *.mps.lz ../
+		fi 
+		cd ..
+		rm -r tmp."$1"
+	else
+		echo "talimat dosyası bulunamadı."
+	fi
+
+}
+
+bagimli_bilgi(){
+	local bagimd konum
+	konum="`find "$talimatname_dizin" -name $1`"
+	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
+	#echo $bagimd	
+	echo `echo "$bagimd" | sed 's/,/ /g'`
+}
+
+kurulu_kontrol(){
+	if [ -d "/var/lib/pkg/DB/$1" ];then
+		echo "kurulu"
+		exit 1
+	fi
+	echo "degil"
+}
+
+paketvt_guncelle(){
+	wget -q --spider "$sunucu""paket.vt"
+	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
+	if [ $? -eq 0 ]; then	
+		echo "paket veritabanı guncellenıyor." "$paketdepo""paket.vt"
+		if [ -f "$paketdepo""paket.vt" ];then
+			mv "$paketdepo""paket.vt" "$paketdepo""paket.vt.eski"
+		fi
+		wget -P "$paketdepo" "$sunucu""paket.vt"
+		#rm /tmp/paket.vt*
+		exit 1
+	fi
+	echo "paket veritabanı guncelleme olumsuz."
+}
+
+sistem_kontrol(){
+	paketvt_kontrol
+	sunucu_kontrol
+}
+
+sunucu_kontrol(){
+	wget -q --spider $sunucu
+	if [ $? -eq 0 ]; then
+		echo "paket sunucu aktif"
+	else
+		echo "sunucu erişim dışı"
+		exit 1
+	fi
+}	
+
+paketvt_kontrol(){
+	mkdir -p /depo/paketler
+	if [ ! -f /depo/paketler/paket.vt ];then
+		touch /depo/paketler/paket.vt
+	fi
+}
+
+yardim(){
+ echo "yardim"
+}
+
+
+ayarlar() {
+	
+	while [ "$1" ]; do
+		case $1 in
+			-i|--indir)
+				ikaynak="ag" 
+				kurulum_onay="olumsuz";;
+			-ik|--inku)
+				ikaynak="ag" ;;
+			-k|--yrku)
+				ikaynak="yerel" ;;
+			-s|--pksl)
+				paket_sil "$2" ;;
+			-d|--pkde)
+				kurulum_onay="olumsuz"
+				paket_derle "$2" ;;
+			-dk|--pkdk)
+				paket_derle "$2" ;;	
+			-odk|--pkodk)
+				paket_derle_oto "$2" ;;	
+			-dly|--drly)
+				rm derleme.liste
+				touch derleme.liste 
+				derleme_listyap "$2" ;;	
+			-b|--pkbl)
+				paket_bilgi "$2" ;;
+			-bb|--pkbb)
+				bagimli_bilgi "$2" ;;
+			-G|--pvtg)
+				paketvt_guncelle ;;
+			-g|--pkgu)
+				if [ ! "$2" ]; then
+					echo "paket ismi eksik"
+					exit 1
+				fi
+				paket_guncelle "$2";;
+			-kuko|--kurulu-kontrol)
+				if [ ! "$2" ]; then
+					echo "paket ismi eksik"
+					exit 1
+				fi
+				kurulu_kontrol "$2";;
+			-suko)
+				sunucu_kontrol ;;
+			-cf|--config-file)
+				if [ ! "$2" ]; then
+					echo "ayardosyası gerek $1"
+					exit 1
+				fi
+				ayar_dosyasi="$2"
+				shift ;;
+			-v)
+				echo "$betikad $versiyon"
+				exit 0 ;;
+			-h|--help)
+				yardim
+				exit 0 ;;
+			
+		esac
+		shift
+	done
+}
+ana(){
+ayarlar "$@"
+
+if [ "$ikaynak" = "ag" ]; then
+	
+	echo "agdan cekiliyor:" "$2"
+	#pkt=`cat "$paketdepo""paket.vt" | grep -w "$2" | cut -d' ' -f2` 
+	pkt=`cat "$paketdepo""paket.vt" | grep "$2"# | cut -d' ' -f2`
+	if [ ! -z "$pkt" -a "$pkt" != "" ]; then
+		cpaket="${pkt/'#'/'%23'}"
+		#paket sunucuda varsa
+		wget -q --spider "$sunucu$cpaket"
+		#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
+		if [ $? -eq 0 ]; then
+			wget -nc -P "$paketdepo" "$sunucu$cpaket"
+			#mv /tmp/$pkt "$paketdepo"
+			if [ "$kurulum_onay" = "evet" ];then
+				kkont=`kurulu_kontrol "$2"`
+				if [ "$kkont" = "degil" ];then
+					icerik_ekle "$paketdepo$pkt"
+					exit 1
+				else
+					echo "paket zaten kurulu!"
+				fi
+			fi
+		fi
+	fi
+	exit 1
+	
+fi
+
+if [ "$ikaynak" = "yerel" ]; then
+	pkontrol=`basename $2 | grep -w "mps.lz"`
+	if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
+		paketad=`echo "$2" | cut -d'#' -f1`	
+		kkont=`kurulu_kontrol "$paketad"`
+		if [ "$kkont" = "degil" ];then
+			icerik_ekle "$2"
+		else
+			echo "$2 paketi zaten kurulu"
+		fi
+	else
+		echo "yerelde mps paketi bulunamadı."
+	fi
+fi
+
+}
+ana "$@"
+
+#kurulum oncesi işler yapılır.
+#paket içeriği hedefe çıkarılır.
+#kurulum sonrası işler yapılır.
+#paket veritabanı guncellenir.
+#ldconfig tetiklenir.
+#ek olarak çakışma ve güncelleme-geriçekme kontrolleri yapılır.

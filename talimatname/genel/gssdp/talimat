@@ -1,0 +1,18 @@
+# Description: A GObject-based API for handling resource discovery and announcement over SSDP
+# URL: http://gupnp.org/
+# Maintainer: NuTyX core team
+# Packager: fanchyannmaria at orange dot fr
+# Depends on: libsoup
+
+name=gssdp
+version=0.14.11
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/${name}/${version:0:4}/${name}-${version}.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+              --disable-static
+make
+make DESTDIR=$PKG install
+}

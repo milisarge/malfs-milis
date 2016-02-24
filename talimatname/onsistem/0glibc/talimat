@@ -1,0 +1,38 @@
+version=2.22
+source=(\
+http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
+  http://www.linuxfromscratch.org/patches/lfs/development/glibc-$version-upstream_i386_fix-1.patch
+)
+
+build()
+{
+cd glibc-$version
+patch -Np1 -i ../glibc-$version-upstream_i386_fix-1.patch
+
+mkdir -v build
+cd build
+
+
+../configure  \
+      --prefix=/tools                    \
+      --host=$LFS_TGT                    \
+      --build=$(../scripts/config.guess) \
+      --disable-profile                  \
+      --enable-kernel=2.6.32             \
+      --enable-obsolete-rpc              \
+      --with-headers=/tools/include      \
+      libc_cv_forced_unwind=yes          \
+      libc_cv_ctors_header=yes           \
+      libc_cv_c_cleanup=yes
+
+make
+# Evite le fail de make install
+rm -rf /tools/share/info/dir
+
+make install
+
+echo 'main(){}' > dummy.c
+$LFS_TGT-gcc dummy.c
+echo $(readelf -l a.out | grep ': /tools')
+rm -v dummy.c a.out
+}

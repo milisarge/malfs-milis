@@ -1,0 +1,17 @@
+# Description: Tools allowing to manipulate the Wireless Extensions
+# URL: http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=wireless-tools
+version=29
+release=1
+
+source=(  http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.$version.tar.gz)
+
+build() {
+cd wireless_tools.$version
+make
+mkdir -p $PKG/usr/{sbin,lib,include,share/man}
+make PREFIX=$PKG/usr INSTALL_MAN=$PKG/usr/share/man install
+}

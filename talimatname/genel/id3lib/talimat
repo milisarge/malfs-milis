@@ -1,0 +1,23 @@
+# Description: Library for reading, writing, and manipulating ID3v1 and ID3v2 tags
+# URL: http://id3lib.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=id3lib
+version=3.8.3
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz
+	http://downloads.nutyx.org/files/patchs/$name/patch_id3lib_3.8.3_UTF16_writing_bug.diff
+	http://downloads.nutyx.org/files/patchs/$name/id3lib-3.8.3-CVE-2007-4460.patch
+	http://downloads.nutyx.org/files/patchs/$name/id3lib-3.8.3-gcc-4.3.patch)
+build() {
+cd $name-$version
+patch -p1 -i ../patch_id3lib_3.8.3_UTF16_writing_bug.diff
+patch -p0 -i ../id3lib-3.8.3-CVE-2007-4460.patch
+patch -p1 -i ../id3lib-3.8.3-gcc-4.3.patch
+./configure --prefix=/usr 
+sed -i -e 's/^LIBS =/LIBS = -lz -lstdc++/' src/Makefile
+make
+make DESTDIR=$PKG install
+}

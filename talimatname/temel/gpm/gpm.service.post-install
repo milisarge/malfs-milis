@@ -1,0 +1,4 @@
+if [ ! -f etc/sysconfig/mouse ]; then
+	echo "MDEVICE=\"/dev/input/mice\"
+PROTOCOL=\"imps2\"" > etc/sysconfig/mouse
+fi

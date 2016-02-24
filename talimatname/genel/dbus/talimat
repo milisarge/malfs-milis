@@ -1,0 +1,52 @@
+# Description: Freedesktop.org message bus system
+# URL: http://www.freedesktop.org/wiki/Software/dbus/
+# Packager: pierre at nutyx dot org
+# Depends on: expat xorg-libx11 xorg-libsm xorg-libice 
+PKGMK_GROUPS=(doc devel)
+
+name=dbus
+version=1.10.6
+release=1
+
+source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
+       dbus.system-local.conf)
+
+build() {
+	source /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2
+
+	cd $name-$version
+	./configure --prefix=/usr --with-x \
+		--localstatedir=/var \
+		--disable-doxygen-docs \
+		--disable-xml-docs \
+		--docdir=/usr/share/doc/$name-$version \
+		--sysconfdir=/etc \
+		--with-console-auth-dir=/run/console \
+		--without-systemdsystemunitdir \
+		--disable-systemd --disable-static
+
+	make
+	make DESTDIR=$PKG install
+	# Adjust some files
+	chown -v root:messagebus $PKG/usr/libexec/dbus-daemon-launch-helper
+	chmod -v      4750       $PKG/usr/libexec/dbus-daemon-launch-helper
+        mkdir -p $PKG/etc/dbus-1
+        mv ../dbus.system-local.conf $PKG/etc/dbus-1/system-local.conf
+	# service
+        cd ../$scripts-$scriptsversion
+        make DESTDIR=$PKG install-dbus
+	mkdir -p $PKG/usr/lib/dbus-1.0/services
+	mkdir -p $PKG/usr/share/dbus-1/services
+	mkdir -p $PKG/etc/dbus-1/system.d/
+	mkdir -p $PKG/etc/dbus-1/session.d/
+	for i in 2 3 4 5
+	do 
+		mv $PKG/etc/rc.d/rc$i.d/S{29,15}dbus
+	done
+	for i in 0 1 6
+	do
+		mv $PKG/etc/rc.d/rc$i.d/K{30,85}dbus
+	done
+}

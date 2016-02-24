@@ -1,0 +1,21 @@
+# Description: Lightweight color management development library/engine
+# URL: http://www.littlecms.com/
+# Packager: pierre at nutyx dot org
+# Depends on: libjpeg-turbo libtiff 
+
+
+name=lcms2
+version=2.7
+release=1
+
+source=(http://downloads.sourceforge.net/lcms/$name-$version.tar.gz)
+
+build() {
+cd $name*
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

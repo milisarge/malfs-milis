@@ -1,0 +1,24 @@
+# Description: Joe's window manager which uses only Xlib at a minimum.
+# URL: http://joewing.net/programs/jwm/
+# Packager: Chris Farrell, <timcowchip at gmail dot com>
+# Maintainer: Joe Wingbermuehle  <joewing at joewing at net>
+# Depends on: xorg,xorg-libxt,xorg-libxft,xorg-libxmu,xorg-mesa,libpng,libjpeg-turbo
+
+name=jwm
+version=2.3.2
+release=3
+source=(http://joewing.net/projects/jwm/releases/$name-$version.tar.xz $name.desktop $name.readme)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-confirm \
+--disable-fribidi \
+--with-x \
+--sysconf=/etc
+make || return 1
+mkdir -p $PKG/usr/share/xsessions
+cp $SRC/$name.desktop $PKG/usr/share/xsessions/
+sed -i "s|/usr/bin|$PKG/usr/bin|g" src/Makefile
+make SYSCONF=$PKG/etc MANDIR=$PKG/usr/share/man install
+}

@@ -1,0 +1,42 @@
+# Description: 	Guile is an interpreter and compiler for the Scheme programming language.
+# URL: 			http://www.gnu.org/software/guile/guile.html
+# Packager:		berlius at nutyx dot com
+# Depends on: 	gc libunistring libffi emacs gdb
+
+name=guile
+version=2.0.11
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+
+    cd $name-$version
+    
+    ./configure \
+        --prefix=/usr \
+        --disable-static \
+        --docdir=/usr/share/doc/guile-2.0.11
+        
+    make
+    make html
+    
+    makeinfo --plaintext -o doc/r5rs/r5rs.txt doc/r5rs/r5rs.texi 
+    makeinfo --plaintext -o doc/ref/guile.txt doc/ref/guile.texi
+    
+    make DESTDIR=$PKG install
+	make install-html 
+	
+	install -v -m755 -d  $PKG/usr/share/gdb/auto-load/usr/lib
+	mv $PKG/usr/lib/libguile-*-gdb.scm $PKG/usr/share/gdb/auto-load/usr/lib
+	install -v -m755 -d  $PKG/usr/share/doc/guile-2.0.11
+
+	find examples -name "Makefile*" -delete   
+	cp -vR examples $PKG/usr/share/doc/guile-2.0.11
+	for DIRNAME in r5rs ref; do
+		install -v -m755 -d  $PKG/usr/share/doc/guile-2.0.11/${DIRNAME}
+		install -v -m644  doc/${DIRNAME}/*.txt \
+                    $PKG/usr/share/doc/guile-2.0.11/${DIRNAME}
+		done
+	unset DIRNAME	
+	
+}

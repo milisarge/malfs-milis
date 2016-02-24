@@ -1,0 +1,27 @@
+# Description: Provide an interface to TTYs and PTYs
+# URL: URL: http://search.cpan.org/dist/IO-Tty/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( perl )
+name=perl-io-tty
+version=1.11
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IO-Tty-$version.tar.gz)
+
+build() {
+    cd IO-Tty-$version
+    perl Makefile.PL
+    make OPTIMIZE="$CFLAGS" || exit 1
+    make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1
+
+    # Remove perllocal.pod and .packlist if present in the package
+    for i in perllocal.pod .packlist; do
+        find $PKG -name "$i" -exec rm -rf {} \;
+    done
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

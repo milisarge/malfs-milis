@@ -1,0 +1,22 @@
+# Description: Allows you to load glade interface files in a program at runtime
+# URL: http://www.jamesh.id.au/software/libglade/
+# Packager: pierre at nutyx dot org
+# Depends on: gtk2 libxml2
+
+name=libglade
+version=2.6.4
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	sed -i '/DG_DISABLE_DEPRECATED/d' glade/Makefile.in
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info
+	make
+	make DESTDIR=$PKG install
+        rm -rf $PKG/usr/share/gtk-doc
+}
+  

@@ -1,0 +1,22 @@
+# Description: The Bison package contains a parser generator
+# URL: http://www.gnu.org/software/bison/
+# Maintainers: Robert Corbett,Richard Stallman,Wilfred Hansen
+# Packager: tnut at nutyx dot org
+name=bison
+version=3.0.4
+release=2
+
+source=(http://ftp.gnu.org/gnu/bison/bison-$version.tar.xz)
+
+PKGMK_GROUPS=(man locale)
+
+build()
+{
+cd bison-$version
+./configure --prefix=/usr \
+--docdir=/usr/share/doc/$name-$version
+make
+make check||true
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

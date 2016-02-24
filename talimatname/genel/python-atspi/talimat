@@ -1,0 +1,17 @@
+# Description: contains the bindings Python2 for the components of heart GNOME Accessibility
+# URL: http://www.cairographics.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python-gobject at-spi2-core 
+
+name=python-atspi
+version=2.16.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/pyatspi/${version%.*}/pyatspi-$version.tar.xz)
+
+build() {
+cd pyatspi-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}  

@@ -1,0 +1,17 @@
+# Description: util-macros, contains the macros m4 used by the packages xorg
+# URL: http://www.x.org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+
+PKGMK_GROUPS=()
+_name=util-macros
+name=xorg-util-macros
+version=1.19.0
+release=2
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/util/${_name}-$version.tar.bz2)
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

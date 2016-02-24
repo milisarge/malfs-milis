@@ -1,0 +1,20 @@
+# Description: A Twitter client for the console.
+# URL: URL: http://pypi.python.org/pypi/turses/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-oauth2 python-setuptools python-tweepy python-urwid 
+name=turses
+version=0.2.23
+release=1
+
+source=(
+http://pypi.python.org/packages/source/t/turses/turses-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

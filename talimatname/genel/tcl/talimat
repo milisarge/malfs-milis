@@ -1,0 +1,40 @@
+# Description: The Tcl scripting language
+# URL: http://www.tcl.tk/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=tcl
+version=8.6.4
+release=1
+
+source=( http://downloads.sourceforge.net/$name/$name$version-src.tar.gz)
+
+build() {
+# build package
+cd $name$version/unix
+
+if [ "$CARCH" = "x86_64" ]; then
+	./configure --prefix=/usr --mandir=/usr/share/man --enable-threads --enable-64bit
+else
+	./configure --prefix=/usr --mandir=/usr/share/man --enable-threads --disable-64bit
+fi
+	
+make
+sed -e "s#$SRCDIR/unix#/usr/lib#" \
+    -e "s#$SRCDIR#/usr/include#"  \
+    -i tclConfig.sh               
+sed -e "s#$SRCDIR/unix/pkgs/tdbc1.0.3#/usr/lib/tdbc1.0.3#" \
+    -e "s#$SRCDIR/pkgs/tdbc1.0.3/generic#/usr/include#"    \
+    -e "s#$SRCDIR/pkgs/tdbc1.0.3/library#/usr/lib/tcl8.6#" \
+    -e "s#$SRCDIR/pkgs/tdbc1.0.3#/usr/include#"            \
+    -i pkgs/tdbc1.0.3/tdbcConfig.sh                        
+sed -e "s#$SRCDIR/unix/pkgs/itcl4.0.3#/usr/lib/itcl4.0.3#" \
+    -e "s#$SRCDIR/pkgs/itcl4.0.3/generic#/usr/include#"    \
+    -e "s#$SRCDIR/pkgs/itcl4.0.3#/usr/include#"            \
+    -i pkgs/itcl4.0.3/itclConfig.sh                        
+unset SRCDIR
+make DESTDIR=$PKG install
+make DESTDIR=$PKG install-private-headers
+ln -svf tclsh8.6 $PKG/usr/bin/tclsh
+chmod -v 755 $PKG/usr/lib/libtcl8.6.so
+}

@@ -1,0 +1,20 @@
+# Description: The libcroco package contains a standalone CSS2 parsing and manipulation library.
+# URL: https://launchpad.net/libcroco
+# Packager: pierre at nutyx dot org
+# Depends on: libxml2 glib 
+
+name=libcroco
+version=0.6.11
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/libcroco/0.6/$name-$version.tar.xz)
+
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+	--disable-static
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share
+}

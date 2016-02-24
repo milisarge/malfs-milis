@@ -1,0 +1,25 @@
+# Description: Node (Evented I/O for V8 JavaScript)
+# URL: http://nodejs.org/
+# Packager: alienus at nutyx dot org
+# Depends on: python 
+name=node
+version=4.0.0
+release=1
+
+source=(http://nodejs.org/dist/v$version/node-v$version.tar.gz
+node.npm.sh)
+build() {
+        cd $name-v$version
+        ./configure --prefix=/usr \
+                    --shared-openssl \
+                    --shared-zlib
+
+        make
+        make DESTDIR=$PKG install
+
+	# add missing symlink
+	ln -s ../lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js $PKG/usr/bin/node-gyp
+        # Add bash completion file for npm.
+        install -D -m 644 $SRC/node.npm.sh \
+                $PKG/usr/share/bash-completion/completions/npm
+}

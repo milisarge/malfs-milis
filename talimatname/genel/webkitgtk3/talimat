@@ -1,0 +1,22 @@
+# Description: engine of made Web free for the browsers web version 3
+# URL: http://webkitgtk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libwebp libsecret geoclue gperf gtk2 gtk3 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby gtk-doc 
+name=webkitgtk3
+version=2.4.9
+release=1
+
+source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
+build() {
+cd webkitgtk-$version
+sed -i '/generate-gtkdoc --rebase/s:^:# :' GNUmakefile.in
+
+mkdir -vp build-3 
+cp -a Documentation build-3
+cd build-3
+
+../configure --prefix=/usr \
+--enable-introspection
+make || make -j1
+make DESTDIR=$PKG install || make -j1 DESTDIR=$PKG install
+}

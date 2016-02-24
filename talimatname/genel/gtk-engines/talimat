@@ -1,0 +1,21 @@
+# Description: The GTK Engines package contains eight themes/engines and two additional engines for GTK2. 
+# URL: http://ftp.gnome.org/pub/gnome/sources/gtk-engines
+# Packager: berlius at nutyx dot com
+# Depends on: gtk2 lua 
+
+name=gtk-engines
+version=2.20.2	
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/gtk-engines/2.20/$name-$version.tar.bz2)
+ 
+build() {
+
+	cd $name-$version
+	
+	./configure --prefix=/usr 
+	
+	make
+
+	make DESTDIR=$PKG install
+
+}

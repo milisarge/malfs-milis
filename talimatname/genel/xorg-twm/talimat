@@ -1,0 +1,19 @@
+# Description: The twm package contains a very minimal window manager.
+# URL: http://xorg.freedesktop.org 
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: xorg-server 
+_name=twm
+
+name=xorg-twm
+version=1.0.9
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/app/${_name}-$version.tar.bz2)
+
+build() {
+	cd ${_name}-$version
+	sed -i -e '/^rcdir =/s,^\(rcdir = \).*,\1/etc/X11/app-defaults,' src/Makefile.in
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	make
+	make DESTDIR=$PKG install
+}

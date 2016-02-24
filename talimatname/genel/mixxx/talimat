@@ -1,0 +1,19 @@
+# Description: Free, open source software for digital DJ'ing.
+# URL: http://www.mixxx.org/
+# Maintainer: http://www.mixxx.org/contact/
+# Packager: pierre at nutyx dot org
+# Depends on: fftw libid3tag libmad libogg libshout libsndfile libusb libmp4v2 portaudio portmidi ffmpeg taglib protobuf qt4 taglib vamp-plugin-sdk xorg-glu xorg-mesa scons
+
+name=mixxx
+version=1.11.0
+release=2
+
+source=(http://downloads.mixxx.org/$name-$version/$name-$version-src.tar.gz)
+
+build() {
+cd $SRC/$name-$version
+scons qtdir=/usr prefix=/usr faad=1
+scons qtdir=/usr prefix=/usr install_root=$PKG/usr install
+}
+
+

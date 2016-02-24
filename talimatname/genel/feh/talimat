@@ -1,0 +1,17 @@
+# Url: http://linuxbrit.co.uk/feh/
+# Packagers: geantbrun at gmail dot com, tnut at nutyx dot org
+# Depends on: libpng giblib libexif xorg-libxt xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama curl
+
+description="X11 image viewer aimed mostly at console users. It is controlled via commandline arguments"
+name=feh
+version=2.14
+release=1
+
+source=(http://feh.finalrewind.org/$name-$version.tar.bz2)
+
+build() {
+        cd $name-$version
+	sed -i "s:doc/feh:&-2.14:" config.mk
+        make PREFIX=/usr
+        make DESTDIR=$PKG PREFIX=/usr install
+}

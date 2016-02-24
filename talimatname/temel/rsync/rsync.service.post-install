@@ -1,0 +1,12 @@
+if [ ! -f etc/rsyncd.conf ]; then
+	cat > etc/rsyncd.conf << "EOF"
+# use chroot = yes
+# [site]
+#   path = /home/saravane/nutyx.org
+#   comment = Site web
+#   auth users = tnut
+#   read only = yes
+#   exclude from = /etc/saravane_rsync_exclude_files.txt
+#   secrets file = /etc/rsyncd.secrets
+EOF
+fi

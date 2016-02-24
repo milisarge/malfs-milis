@@ -1,0 +1,21 @@
+# Description: Simple browser based on gtk and using the webkit engine
+# URL: URL: https://opensource.conformal.com/wiki/xombrero
+# Packager: - tnut at nutyx dot org
+# Depends on: libbsd libsoup gnutls gtk3 webkitgtk3 
+name=xombrero
+name=xombrero
+version=1.6.3
+release=1
+
+source=(https://opensource.conformal.com/snapshots/xombrero/xombrero-$version.tgz)
+build() {
+cd $name-$version
+sed -i 's|/usr/local/share/|/usr/share/|' {unix.c,xombrero.conf,xombrero.h}
+
+make PREFIX="/usr" -C linux
+mkdir -p $PKG/usr/share/applications
+
+make DESTDIR=$PKG  PREFIX="/usr" -C linux install
+install -Dm644 xombrero.conf $PKG/etc/skel/.xombrero.conf
+install -Dm755 config-checker.pl $PKG/usr/bin/config-checker.pl
+}

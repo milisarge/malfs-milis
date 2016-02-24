@@ -1,0 +1,25 @@
+version=2.26
+source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2
+	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-2.patch)
+
+build()
+{
+cd binutils-$version
+
+patch -Np1 -i ../binutils-$version-upstream_fix-2.patch
+
+mkdir -v build
+cd build
+../configure \
+    --prefix=/tools            \
+    --with-sysroot=$LFS        \
+    --with-lib-path=/tools/lib \
+    --target=$LFS_TGT          \
+    --disable-nls              \
+    --disable-werror
+make
+case $(uname -m) in
+ x86_64) mkdir -v /tools/lib && ln -sv lib /tools/lib64 ;;
+esac
+make install
+}

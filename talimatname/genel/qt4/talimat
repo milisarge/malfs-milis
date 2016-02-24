@@ -1,0 +1,168 @@
+# Description: Qt is a cross-platform framework that is widely used for developing GUI applications
+# URL: http://www.qt.io/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: glib atk pango cairo gdk-pixbuf xorg-fontconfig xorg-libsm xorg-libxrandr xorg-libxv xorg-libxi xorg-libxinerama xorg-libxcursor xorg-libxfixes xorg-mesa xorg-glu alsa-lib dbus icu libjpeg-turbo libmng libtiff openssl sqlite cups gtk2 gstreamer-plugins-base postgresql pulseaudio unixodbc
+
+name=qt4
+version=4.8.7
+release=6
+
+_name=qt-everywhere-opensource-src-${version}
+
+source=(http://download.qt-project.org/official_releases/qt/${version%.*}/$version/${_name}.tar.gz)
+
+build() {
+
+QT4PREFIX=/usr
+QT4DIR=$QT4PREFIX
+QT4BINDIR=$QT4PREFIX/lib/qt4/bin
+
+cd ${_name}
+
+     ./configure -prefix    $QT4PREFIX           \
+            -bindir         $QT4BINDIR           \
+            -plugindir      /usr/lib/qt4/plugins \
+            -importdir      /usr/lib/qt4/imports \
+            -headerdir      /usr/include/qt4     \
+            -datadir        /usr/share/qt4       \
+            -sysconfdir     /etc/xdg             \
+            -docdir         /usr/share/doc/qt4   \
+            -demosdir       /usr/share/doc/qt4/demos    \
+            -examplesdir    /usr/share/doc/qt4/examples \
+            -translationdir /usr/share/qt4/translations \
+            -confirm-license   \
+            -opensource        \
+            -release           \
+            -dbus-linked       \
+            -openssl-linked    \
+            -system-sqlite     \
+            -no-phonon         \
+            -no-phonon-backend \
+            -no-webkit         \
+            -no-openvg         \
+            -nomake demos      \
+            -nomake examples   \
+            -nomake docs       \
+            -optimized-qmake   
+
+make
+
+find . -name "*.pc" -exec perl -pi -e "s, -L$PWD/?\S+,,g" {} \;
+
+make INSTALL_ROOT=$PKG install
+
+rm -rf $PKG/usr/tests
+
+for file in $PKG/usr/lib/libQt*.prl; do
+	sed -r -e '/^QMAKE_PRL_BUILD_DIR/d'    \
+	       -e 's/(QMAKE_PRL_LIBS =).*/\1/' \
+	       -i $file
+
+done
+unset file
+
+install -v -Dm644 src/gui/dialogs/images/qtlogo-64.png \
+                  $PKG/usr/share/pixmaps/qt4logo.png
+
+install -v -Dm644 tools/assistant/tools/assistant/images/assistant-128.png \
+                  $PKG//usr/share/pixmaps/assistant-qt4.png
+
+install -v -Dm644 tools/designer/src/designer/images/designer.png \
+                  /usr/share/pixmaps/designer-qt4.png
+
+install -v -Dm644 tools/linguist/linguist/images/icons/linguist-128-32.png \
+                  $PKG/usr/share/pixmaps/linguist-qt4.png
+
+install -v -Dm644 tools/qdbus/qdbusviewer/images/qdbusviewer-128.png \
+                  $PKG/usr/share/pixmaps/qdbusviewer-qt4.png
+
+install -dm755 $PKG/usr/share/applications
+
+install -d $PKG/usr/bin
+
+for i in $PKG/usr/lib/qt4/bin/*; do
+	ln -s /usr/lib/qt4/bin/$(basename $i) $PKG/usr/bin/$(basename $i)-qt4	
+done
+
+cat > $PKG/usr/share/applications/assistant-qt4.desktop << EOF
+[Desktop Entry]
+Name=Qt4 Assistant 
+Comment=Shows Qt4 documentation and examples
+Exec=$QT4BINDIR/assistant
+Icon=assistant-qt4.png
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;Documentation;
+EOF
+
+cat > $PKG/usr/share/applications/designer-qt4.desktop << EOF
+[Desktop Entry]
+Name=Qt4 Designer
+Comment=Design GUIs for Qt4 applications
+Exec=$QT4BINDIR/designer
+Icon=designer-qt4.png
+MimeType=application/x-designer;
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;
+EOF
+
+cat > $PKG/usr/share/applications/linguist-qt4.desktop << EOF
+[Desktop Entry]
+Name=Qt4 Linguist 
+Comment=Add translations to Qt4 applications
+Exec=$QT4BINDIR/linguist
+Icon=linguist-qt4.png
+MimeType=text/vnd.trolltech.linguist;application/x-linguist;
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;
+EOF
+
+cat > $PKG/usr/share/applications/qdbusviewer-qt4.desktop << EOF
+[Desktop Entry]
+Name=Qt4 QDbusViewer 
+GenericName=D-Bus Debugger
+Comment=Debug D-Bus applications
+Exec=$QT4BINDIR/qdbusviewer
+Icon=qdbusviewer-qt4.png
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;Debugger;
+EOF
+
+cat > $PKG/usr/share/applications/qtconfig-qt4.desktop << EOF
+[Desktop Entry]
+Name=Qt4 Config 
+Comment=Configure Qt4 behavior, styles, fonts
+Exec=$QT4BINDIR/qtconfig
+Icon=qt4logo.png
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Settings;
+EOF
+
+mkdir -p $PKG/etc/profile.d
+cat > $PKG/etc/profile.d/qt4.sh << EOF
+# Begin /etc/profile.d/qt4.sh
+
+QT4PREFIX=$QT4PREFIX
+QT4DIR=$QT4PREFIX
+QT4BINDIR=$QT4BINDIR
+QTDIR=$QT4DIR
+export QT4PREFIX QT4DIR QTDIR QT4BINDIR
+
+# End /etc/profile.d/qt4.sh
+EOF
+
+cat > $PKG/usr/bin/setqt4 << EOF
+if [ "x\$QT5BINDIR" != "x/usr/bin" ] && [ "x\$QT5BINDIR" != "x" ]; then pathremove $QT5BINDIR; fi
+if [ "x\$QT4BINDIR" != "x/usr/bin" ]; then pathprepend $QT4BINDIR; fi
+echo \$PATH
+EOF
+}

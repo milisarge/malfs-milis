@@ -1,0 +1,17 @@
+# Description: Library for dealing with Microsoft ITSS/CHM format files
+# URL: http://morte.jedrea.com/~jedwin/projects/chmlib/
+# Packager: tnut at nutyx dot org
+# Depends on: 
+name=chmlib
+version=0.40
+release=1
+
+source=(http://morte.jedrea.com/~jedwin/projects/$name/$name-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --enable-examples=yes
+    make
+    make DESTDIR=$PKG install
+}

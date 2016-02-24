@@ -1,0 +1,26 @@
+# Description: Tiling window manager based on binary space partitioning
+# URL: https://github.com/baskerville/bspwm
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: libxcb xcb-util xcb-util-wm git
+
+name=bspwm
+version=0.9
+release=1
+
+source=()
+
+build() {
+
+  git clone https://github.com/baskerville/bspwm.git
+  
+  cd $name
+  
+  make PREFIX=/usr
+
+  make PREFIX=/usr DESTDIR="$PKG" install
+
+}
+
+	
+	

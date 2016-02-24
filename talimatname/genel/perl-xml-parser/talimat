@@ -1,0 +1,19 @@
+# Description: Perl module for processing xml document
+# URL: http://search.cpan.org/dist/XML-Parser/
+# Packagers: pierre at nutyx dot org
+# Depends on: perl
+
+name=perl-xml-parser
+version=2.43
+release=2
+
+source=(http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$version.tar.gz)
+run=(perl)
+
+build() {
+cd XML-Parser-$version
+perl Makefile.PL
+make OPTIMIZE="$CFLAGS"
+make DESTDIR=$PKG install
+find $PKG -name .packlist -o -name perllocal.pod -exec rm '{}' \; 
+}

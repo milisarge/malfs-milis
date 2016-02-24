@@ -1,0 +1,23 @@
+# Description: Tool to integrate C/C++ code with Lua
+# URL: http://www.codenix.com/~tolua
+# Packager: tnut at nutyx dot org
+# Depends on: scons lua51
+
+name=tolua++
+version=1.0.93
+release=1
+
+source=(ftp://ftp.debian.org/debian/pool/main/t/$name/${name}_$version.orig.tar.bz2)
+       
+build() {
+cd $name-$version
+
+cat > config_linux.py << "EOF"
+CCFLAGS = ['-I/usr/include/lua5.1', '-O2', '-ansi', '-Wall', '-fPIC']
+prefix = '/usr'
+LIBS = ['lua5.1', 'dl', 'm']
+EOF
+
+scons all
+scons prefix=$PKG/usr install
+}

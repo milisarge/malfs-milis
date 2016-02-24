@@ -1,0 +1,19 @@
+# Description: contains of services D-Bus bidder a function of client and of server OBEX.
+# URL: http://www.bluez.org/
+# Packager: pierre at nutyx dot org
+# Depends on: bluez libical 
+
+name=obexd
+version=0.48
+release=1
+
+source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)
+build() {
+cd $name-$version
+sed -i 's/#include <string.h>/&\n#include <stdio.h>/' plugins/mas.c
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--libexecdir=/usr/lib/obexd
+make
+make DESTDIR=$PKG install
+}

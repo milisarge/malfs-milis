@@ -1,0 +1,22 @@
+# Description: RAR extraction utility used for extracting files from RAR archives.
+# URL: http://www.rarlab.com/
+# Packager: tnut at nutyx dot org
+
+name=unrar
+version=5.3.9
+release=1
+
+source=(
+http://www.rarlab.com/rar/unrarsrc-$version.tar.gz
+)
+
+build() {
+cd $name
+make -f makefile
+install -Dm755 unrar $PKG/usr/bin/unrar
+
+# doc & license
+mkdir -p $PKG/usr/share/doc/$name-$version
+install -m644 {license.txt,readme.txt} \
+$PKG/usr/share/doc/$name-$version
+}

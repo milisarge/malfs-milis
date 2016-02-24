@@ -1,0 +1,17 @@
+# Description: A fast and easy painting application for digital painters, with brush dynamics
+# URL: http://mypaint.intilinux.com/
+# Packagers: pierre at nutyx dot org
+# Depends on: lcms2 json-c python-gtk python-numpy python-protobuf scons swig
+
+name=mypaint
+version=1.1.0
+release=2
+source=(http://download.gna.org/$name/$name-$version.tar.xz)
+
+build ()
+{ 
+cd $name-$version
+sed -i "s|'json|'json-c|" brushlib/SConscript
+scons
+scons prefix=$PKG/usr mandir=$PKG/usr/share/man install
+}

@@ -1,0 +1,19 @@
+# Description: High speed arctic racing game based on Tux Racer.
+# URL: http://sourceforge.net/projects/extremetuxracer/
+# Packager: berlius at nutyx dot com
+# Depends on: sdl sdl-image sdl-mixer xorg-mesa xorg-glu freetype
+
+name=extremetuxracer
+version=0.6.0
+release=1
+source=(http://sourceforge.net/projects/extremetuxracer/files/releases/0.6.0/etr-$version.tar.xz)
+ 
+build() {
+
+cd etr-$version
+
+./configure --prefix=/usr
+
+make DESTDIR=$PKG install
+
+}

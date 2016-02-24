@@ -1,0 +1,18 @@
+# Description: A fast compressor/decompressor library
+# URL: http://code.google.com/p/snappy/
+# Maintainers: https://code.google.com/p/snappy/people/list
+# Packager: pierre at nutyx dot org
+
+name=snappy
+version=1.1.1
+release=1
+
+source=(http://snappy.googlecode.com/files/$name-$version.tar.gz)
+
+build () {
+cd $name-$version
+CXXFLAGS+=\ -DNDEBUG
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

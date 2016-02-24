@@ -1,0 +1,37 @@
+# Description: A completely flexible, totally extensible daemon for delivering ACPI events.
+# URL: 			http://sourceforge.net/projects/acpid2/
+# Packager: 	berlius at nutyx dot com
+# Depends on:
+
+name=acpid
+version=2.0.25
+release=1
+
+source=(http://downloads.sourceforge.net/acpid2/$name-$version.tar.xz lid lid.sh)
+
+
+build() {
+
+	cd $name-$version
+	
+	source  /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2 
+	
+	
+	./configure --prefix=/usr \
+		--docdir=/usr/share/doc/$name-$version 
+	make 
+	make DESTDIR=$PKG install 
+	install -m755 -d $PKG/etc/acpi/events
+	 
+	cp -r samples $PKG/usr/share/doc/$name-$version
+	cp -r $SRC/lid $PKG/etc/acpi/events
+	cp -r $SRC/lid.sh $PKG/etc/acpi
+
+	chmod +x $PKG/etc/acpi/lid.sh
+	
+	cd $scripts-$scriptsversion
+	make DESTDIR=$PKG install-acpid
+
+}

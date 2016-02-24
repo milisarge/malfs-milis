@@ -1,0 +1,24 @@
+# Description: Mobile shell, surviving disconnects with local echo and line editing.
+# URL: URL: http://mosh.mit.edu/ 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: libutempter perl-io-tty protobuf 
+name=mosh
+version=1.2.4
+release=1
+
+source=(http://mosh.mit.edu/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+    install -Dm644 conf/bash_completion.d/$name \
+        $PKG/usr/share/bash-completion/completions/$name
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

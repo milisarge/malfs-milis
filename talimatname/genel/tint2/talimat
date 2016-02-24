@@ -1,0 +1,27 @@
+# Description: task bar for wm light
+# URL: http://code.google.com/p/tint2/
+# Maintainer: Chris Farrell timcowchip at gmail dot com
+# Packager: geantbrun at gmail dot com, tnut at nutyx dot com, timcowchip at gmail dot com
+# Depends on: cmake gtk2 librsvg startup-notification xorg-libxrandr xorg-libxinerama xorg-libxdamage xorg-libxcomposite pango imlib2 cairo
+
+
+name=tint2
+version=0.12.2
+release=1
+ 
+source=(clock.patch)
+ 
+build() {
+git clone https://gitlab.com/o9000/tint2.git
+cd $name
+
+git checkout 0.12.2
+
+patch -Np1 -i $SRC/clock.patch
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr ../ \
+-DENABLE_TINT2CONF=1
+make
+make DESTDIR=$PKG install
+}

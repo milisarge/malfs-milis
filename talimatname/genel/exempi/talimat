@@ -1,0 +1,20 @@
+# Description: Implementation of xmp (Adobe's Extensible Metadata Platform)
+# URL: http://libopenraw.freedesktop.org/wiki/Exempi/
+# Packager: tnut at nutyx dot org
+# Depends on: expat boost 
+name=exempi
+version=2.2.2
+release=1
+
+source=( http://libopenraw.freedesktop.org/download/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+
+./configure \
+--prefix=/usr \
+--mandir=/usr/share/man \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

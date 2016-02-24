@@ -1,0 +1,20 @@
+# Description: GLib bindings for the Telepathy D-Bus protocol
+# URL: http://telepathy.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: dbus-glib libxslt gobject-introspection vala 
+
+name=telepathy-glib
+version=0.24.1
+release=1
+
+source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/${name%-*} \
+--enable-vala-bindings \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

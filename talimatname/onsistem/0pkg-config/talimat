@@ -1,0 +1,12 @@
+version=0.29
+source=(http://pkgconfig.freedesktop.org/releases/pkg-config-$version.tar.gz)
+build()
+{
+cd  pkg-config-$version
+
+./configure --prefix=/tools \
+	--with-internal-glib
+make
+
+make install
+}

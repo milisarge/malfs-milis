@@ -1,0 +1,21 @@
+# Description: Command line utilities for working with desktop entries
+# URL:  http://freedesktop.org/software/desktop-file-utils
+# Packager: pierre at nutyx dot org
+# Depends on: glib 
+
+name=desktop-file-utils
+version=0.22
+release=1
+
+source=(  http://freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-$version.tar.xz)
+
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info
+	make
+	make DESTDIR=$PKG install
+}
+  

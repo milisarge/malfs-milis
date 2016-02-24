@@ -1,0 +1,58 @@
+# Description: VirtualBox is a powerfull 32 and 64 bits virtualization product
+# URL: http://virtualbox.org
+# Packager: tnut at nutyx dot org
+# Depends on: virtualbox-cli sdl
+
+name=virtualbox
+version=5.0.12
+release=1
+_name=Oracle_VM_VirtualBox_Extension_Pack
+_release=104815
+
+PKGMK_IGNORE_FOOTPRINT="yes"
+PKGMK_IGNORE_MD5SUM="yes"
+
+
+[ "`uname -m`" == "i686"   ] && _ARCH=x86
+[ "`uname -m`" == "x86_64"   ] && _ARCH=amd64
+
+source=(http://download.virtualbox.org/virtualbox/$version/VirtualBox-${version}-${_release}-Linux_${_ARCH}.run
+	http://download.virtualbox.org/virtualbox/$version/${_name}-${version}-${_release}.vbox-extpack
+	virtualbox.60-vboxdrv.rules)
+
+build() {
+	sh VirtualBox-${version}-${_release}-Linux_${_ARCH}.run --keep --noexec --target $SRC/
+	mkdir -p $PKG/opt/VirtualBox $PKG/etc/vbox $PKG/usr/bin $PKG/etc/udev/rules.d/ \
+	$PKG/usr/share/applications/ $PKG/usr/share/pixmaps/
+	cd $PKG/opt/VirtualBox
+	tar xfj $SRC/VirtualBox.tar.bz2
+	rm -Rf $PKG/opt/VirtualBox/sdk
+	for i in VirtualBox VBoxManage VBoxSDL VBoxHeadless 
+		do ln -s /opt/VirtualBox/VBox.sh $PKG/usr/bin/$i
+	done
+	cd components
+	for i in VBoxDDU.so VBoxREM.so VBoxRT.so VBoxVMM.so VBoxXPCOM.so
+		do ln -s ../$i .
+	done
+	ln -s /opt/VirtualBox/rdesktop-vrdp $PKG/usr/bin/rdesktop-vrdp
+	mv $PKG/opt/VirtualBox/VBox.png $PKG/usr/share/pixmaps/VBox.png
+	mv $PKG/opt/VirtualBox/virtualbox.desktop $PKG/usr/share/applications/virtualbox.desktop
+	chmod +s $PKG/opt/VirtualBox/{VirtualBox,VBoxSDL,VBoxHeadless}
+
+	mkdir -p $PKG/etc/udev/rules.d
+	cp $SRC/virtualbox.60-vboxdrv.rules $PKG/etc/udev/rules.d/60-vboxdrv.rules
+
+	echo "# VirtualBox installation directory" > \
+	$PKG/etc/vbox/vbox.cfg
+	echo "INSTALL_DIR="\"/opt/VirtualBox\" >> \
+		$PKG/etc/vbox/vbox.cfg
+
+	install -D -m 644 $SRC/${_name}-$version-${_release}.vbox-extpack \
+		$PKG/opt/VirtualBox/ExtensionPacks/${_name}-$version-${_release}.vbox-extpack
+	mkdir -p $PKG/etc/ld.so.conf.d
+	echo /opt/VirtualBox > $PKG/etc/ld.so.conf.d/virtualbox.conf
+	# Icon
+	ln -s VBox.png $PKG/usr/share/pixmaps/virtualbox.png
+	# Source code files obsolet
+	rm -r $PKG/opt/VirtualBox/src
+}

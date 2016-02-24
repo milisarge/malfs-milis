@@ -1,0 +1,113 @@
+#!/bin/bash
+if [ -z "$LOG" ]; then
+   PASS=`pwd`
+   PASS=`basename $PASS`
+   LOG=$HOME/logs/$PASS
+fi
+if [ ! -d $LOG ]; then
+	mkdir -p $LOG
+fi
+
+error() {
+echo "$i hata luştu"
+exit 1
+}
+
+LIST="$HOME/base/base.list"
+
+
+for DIR in `cat $LIST`
+do
+   NAME=`basename $DIR`
+   BUILD="yes"
+   PKGMK="pkgmk.passes"
+   if [ -f ${LOG}/$NAME.log ]; then
+      if ( grep "^=======>" ${LOG}/$NAME.log|grep "succeeded"  > /dev/null);then
+         BUILD="no"
+      else
+         BUILD="yes"
+      fi
+
+   fi
+   if [ "$BUILD" == "yes" ]; then
+      cd $DIR
+      case $PASS in
+       chroot)
+        PKGMK="pkgmk.passes"
+        $PKGMK -cf ../../../bin/paketci.conf -kw 2>&1|tee ${LOG}/$NAME.log || exit 1;;
+       base)
+        PKGMK="mpsd"
+        case $NAME in
+	  gcc)
+		$PKGMK -cf /etc/mpsd.conf -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
+		rm -fv /usr/lib{,64}/libgcc_s.so{,.1}
+		rm -fv /usr/lib{,64}/libstdc++.so{,.6}
+		rm -fv /usr/lib{,64}/libstdc++.la
+		$PKGMK -d -cf /etc/mpsd.conf -i || exit 1
+		for i in *mps*
+		do
+		 echo "=======> Installing '$i' succeeded." >> ${LOG}/$NAME.log
+		done
+		;;
+
+	   bash)
+		$PKGMK -cf /etc/mpsd.conf -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
+		rm /bin/bash
+		rm /bin/sh
+		echo "bash chroot dışına çıkıp elle kurulmalıdır."
+		echo "=======> Installing '$NAME' succeeded." >> ${LOG}/$NAME.log
+		exit 1
+		$PKGMK -d -cf /etc/mpsd.conf -i
+		;;
+
+	  coreutils)
+		$PKGMK -cf /etc/mpsd.conf -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
+		rm -f /usr/bin/env
+		for i in cat echo pwd stty
+		do
+			rm -f /bin/$i
+		done
+		$PKGMK -d -cf /etc/mpsd.conf -i || exit 1
+		for i in *mps*
+		do
+		  echo "=======> Installing '$i' succeeded." >> ${LOG}/$NAME.log
+		done
+		;;
+
+	  perl)
+		$PKGMK -cf /etc/mpsd.conf -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
+		rm -f /usr/bin/perl
+		$PKGMK -d -cf /etc/mpsd.conf -i || exit 1
+		for i in *mps*
+		do
+			echo "=======> Installing '$i' succeeded." >> ${LOG}/$NAME.log
+		done
+		;;
+	  cards)
+		$PKGMK -cf /etc/mpsd.conf -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
+		rm -f /etc/pkgadd.conf
+		$PKGMK -d -cf /etc/mpsd.conf -i || exit 1
+		for i in *mps*
+		do
+			echo "=======> Installing '$i' succeeded." >> ${LOG}/$NAME.log
+		done
+		;;
+	  kernel)
+		$PKGMK -d -cf /etc/mpsd.conf -i -kw || exit 1
+		echo "=======> Installing '$NAME' succeeded." >> ${LOG}/$NAME.log
+		;;
+
+	  *)
+		$PKGMK -cf /etc/mpsd.conf -i -kw 2>&1|tee ${LOG}/$NAME.log || exit 1
+		;;
+        esac;;
+       *)
+        PKGMK="mpsd -d -i"
+        $PKGMK  2>&1|tee ${LOG}/$NAME.log || exit 1;;
+      esac
+      if ( grep "^=======>" ${LOG}/$NAME.log| tail -1 |grep "ERROR"  > /dev/null);then
+         exit 1
+      fi
+      cd -
+   fi
+done

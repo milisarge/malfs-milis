@@ -1,0 +1,55 @@
+#!/bin/sh
+########################################################################
+# Begin minidlna
+#
+# Description : ReadyMedia is a simple media server software
+#
+# Authors     : tnut
+#
+# Version     : LFS x.x saravane
+#
+# Notes       :
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides: minidlna
+# Required-Start:
+# Should-Start:
+# Required-Stop: 
+# Should-Stop:
+# Default-Start:
+# Default-Stop:
+# Short-Description:
+# Description:
+# X-LFS-Provided-By:
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+case "${1}" in
+   start)
+      log_info_msg "Starting ReadyMedia..."
+      start_daemon /usr/sbin/minidlnad
+      ;;
+
+   stop)
+      log_info_msg "Stopping ReadyMedia..."
+      killproc /usr/sbin/minidlnad
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart}"
+      exit 1
+      ;;
+esac
+
+exit 0
+
+# End minidlna

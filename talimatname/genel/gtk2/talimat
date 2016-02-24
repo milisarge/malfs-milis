@@ -1,0 +1,66 @@
+# Description: GTK+ is a multi-platform toolkit (version 2)
+# URL: http://www.gtk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: gtk-doc shared-mime-info,xorg-libxinerama,xorg-libxrandr,cairo,pango,pangox-compat,atk,libtiff,cups,gdk-pixbuf,xorg-libxi,xorg-libxcursor,hicolor-icon-theme,gtk-update-icon-cache
+
+# The run variable define the runtime dependencies
+run=(gtk-update-icon-cache)
+
+
+
+# Seul les paquets devel, doc et man sont splité, gtk étant une lib incontournable et le nombre
+# de fichiers binaires n'est pas très important. La variable PKGMK_GROUP redéfini les groupes
+# Ici, le groupe lib ne sera pas construit
+
+PKGMK_GROUPS=(devel man doc)
+
+name=gtk2
+version=2.24.29
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
+
+build() {
+cd gtk+-$version
+sed -i 's#l \(gtk-.*\).sgml#& -o \1#' docs/{faq,tutorial}/Makefile.in
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/etc/gtk-2.0
+echo 'gtk-fallback-icon-theme = "Tango"' > $PKG/etc/gtk-2.0/gtkrc
+
+# Construit dans gtk-update-icon-cache
+rm -f $PKG/usr/bin/gtk-update-icon-cache
+rm -f $PKG/usr/share/man/man1/gtk-update-icon-cache.1
+}
+doc () {
+# Chaque fonction produisant un groupe doit suivre les règles suivantes
+# 1. Archiver les fichiers souhaités en utilisant la syntaxe correcte (avec les bonnes variables)
+# 2. Effacer ces même fichiers pour qu'ils ne se retrouvent pas dans le paquet principal (ou de base)
+
+# Normalement pkgmk EST dans $PKG juste pour la lisibilitée et la compréhension
+
+cd $PKG
+
+# 1. Création de l'archive des fichiers souhaités
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.doc#$version-any.mps \
+usr/share/gtk-doc usr/share/gtk-2.0/demo
+# 2. On efface CES MÊMES fichiers
+rm -r usr/share/{gtk-doc,gtk-2.0/demo}
+}
+devel () {
+
+cd $PKG
+
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel#$version-any.mps \
+usr/lib/pkgconfig \
+usr/include \
+usr/share/gir-1.0
+
+rm -r usr/{share/gir-1.0,lib/pkgconfig,include}
+}

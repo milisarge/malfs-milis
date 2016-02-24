@@ -1,0 +1,18 @@
+# Description: C++ class library for normalising the numerous telephony protocols
+# URL: http://ftp.gnu.org/opal
+# Packager: pierre at nutyx dot org
+# Depends on: ptlib 
+name=opal
+version=3.10.10
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz
+	 http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-ffmpeg2-1.patch)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../$name-$version-ffmpeg2-1.patch
+./configure --prefix=/usr
+make 
+make DESTDIR=$PKG install
+}

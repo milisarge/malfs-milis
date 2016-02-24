@@ -1,0 +1,23 @@
+# Description: Fast and small window manager
+# URL:         http://blackboxwm.sourceforge.net
+# Packager:    berlius at nutyx dot com
+# Depends on:  xorg
+
+name=blackbox
+version=0.70.1
+release=1
+source=(http://download.sourceforge.net/blackboxwm/$name-$version.tar.bz2
+        $name-$version-include-fix.diff)
+ 
+
+build () {
+
+    cd $name-$version
+    patch -p1 -i $SRC/$name-$version-include-fix.diff
+    ./configure --prefix=/usr
+    
+    make
+    make DESTDIR=$PKG install
+}
+
+

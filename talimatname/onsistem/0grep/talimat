@@ -1,0 +1,14 @@
+version=2.23
+source=(http://ftp.gnu.org/gnu/grep/grep-$version.tar.xz\
+	)
+build()
+{
+cd grep-$version
+
+./configure --prefix=/tools
+
+make
+
+make install
+
+}

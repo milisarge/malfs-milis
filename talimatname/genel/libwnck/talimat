@@ -1,0 +1,16 @@
+# Description: contains a kit of contruction of navigator of windows
+# URL: http://www.gnome.org/
+# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: xorg-libxres gtk2 intltool gobject-introspection startup-notification gtk-doc
+
+name=libwnck
+version=2.31.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --program-suffix=-1
+	make GETTEXT_PACKAGE=libwnck-1
+	make DESTDIR=$PKG GETTEXT_PACKAGE=libwnck-1 install
+}

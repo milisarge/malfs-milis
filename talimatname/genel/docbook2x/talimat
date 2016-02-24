@@ -1,0 +1,34 @@
+# Description: Converts DocBook documents into the Unix man page format and the GNU Texinfo format.
+# URL: URL: http://docbook2x.sourceforge.net/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: openjade libxslt perl-xml-sax
+
+name=docbook2x
+version=0.8.8
+release=2
+
+source=(
+http://downloads.sourceforge.net/$name/docbook2X-$version.tar.gz
+docbook2x.datadir.patch)
+
+build(){
+    cd docbook2X-$version
+    patch < ../$name.datadir.patch || exit 1
+    sed -e 's/AM_CONFIG_HEADER(/AC_CONFIG_HEADERS(/' -i configure.ac || exit 1
+    
+    autoreconf -i -f
+    ./configure --prefix=/usr \
+                --mandir=/usr/share/man \
+                --program-transform-name 's,2x-,2,'
+    make
+    make DESTDIR=$PKG install
+    
+    mv $PKG/usr/share/info/dir $PKG/usr/share/info/dir_docbook2x
+    sed -i 's|http://docbook2x.sf.net/latest|/usr/share/docbook2X|g' \
+        $PKG/usr/bin/db2x_xsltproc
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

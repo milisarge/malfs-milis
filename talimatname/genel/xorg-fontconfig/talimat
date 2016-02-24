@@ -1,0 +1,32 @@
+# Description: fontconfig, library for access and the configuration of polices
+# URL: http://xorg-fontconfig.org/wiki/
+# Packager: pierre at nutyx dot org
+# Depends on: freetype expat libpng 
+_name=fontconfig
+
+name=xorg-fontconfig
+version=2.11.1
+release=1
+
+source=( http://fontconfig.org/release/${_name}-$version.tar.gz)
+
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--docdir=/usr/share/doc/$name-$version \
+--disable-docs --disable-static
+make
+make DESTDIR=$PKG install
+install -v -dm755 \
+ $PKG/usr/share/{man/man{1,3,5},doc/fontconfig-$version/fontconfig-devel}
+install -v -m644 fc-*/*.1 $PKG/usr/share/man/man1
+install -v -m644 doc/*.3 $PKG/usr/share/man/man3
+install -v -m644 doc/*.5 $PKG/usr/share/man/man5
+install -v -m644 doc/fontconfig-devel/* \
+ $PKG/usr/share/doc/${_name}-$version/fontconfig-devel
+install -v -m644 doc/*.{pdf,sgml,txt,html} \
+ $PKG/usr/share/doc/${_name}-$version
+}

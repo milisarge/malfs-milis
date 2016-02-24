@@ -1,0 +1,26 @@
+# Description: Cyrus saslauthd SASL authentication daemon
+# URL: http://cyrusimap.org/
+# Packager: pierre at nutyx dot org
+# Depends on: db 
+
+name=cyrus-sasl
+version=2.1.26
+release=1
+
+source=(ftp://ftp.cyrusimap.org/cyrus-sasl/$name-$version.tar.gz
+	http://www.linuxfromscratch.org/patches/blfs/svn/cyrus-sasl-$version-fixes-3.patch)
+
+build() {
+	cd $name-$version
+	patch -Np1 -i ../cyrus-sasl-$version-fixes-3.patch
+	autoreconf -fi 
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--enable-auth-sasldb \
+		--with-dbpath=/var/lib/sasl/sasldb2 \
+		--with-saslauthd=/var/run/saslauthd
+	make
+	make DESTDIR=$PKG install
+	install -v -m700 -d $PKG/var/lib/sasl $PKG/var/run/saslauthd
+}

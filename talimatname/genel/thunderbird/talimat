@@ -1,0 +1,136 @@
+# Description: Thunderbird is a stand-alone mail/news client based on the Mozilla codebase. It uses the Gecko rendering engine to enable it to display and compose HTML emails. 
+# URL: http://www.mozilla.org/thunderbird
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: alsa-lib gtk2 zip unzip libevent libvpx nspr nss yasm dbus-glib doxygen gstreamer-plugins-good gstreamer-plugins-ffmpeg libnotify openjdk startup-notification hunspell sqlite wireless-tools xorg-libx11 xorg-libxt xorg-libxrandr desktop-file-utils hicolor-icon-theme shared-mime-info pulseaudio
+
+run=(startup-notification hunspell)
+description="Stand-alone mail/news client based on the Mozilla codebase."
+name=thunderbird
+version=38.6.0
+release=1
+
+source=(http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$version/source/$name-$version.source.tar.bz2
+	$name.desktop)
+
+build() {
+export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/thunderbird"
+export PYTHON="/usr/bin/python2"
+
+cd $SRC
+ARCH=`uname -m`
+
+for lang in da de en-US es-ES fi fr it nb-NO nl pt-PT sv-SE
+do 
+wget  http://download.cdn.mozilla.net/pub/mozilla.org/$name/releases/$version/linux-$ARCH/xpi/$lang.xpi
+done
+
+cd $SRC/comm-*
+
+cat > mozconfig << "EOF"
+# If you have a multicore machine, the build may be faster if using parallel
+# jobs. The build system automatically adds -jN to the "make" flags, where N
+# is the number of CPU cores. The option below is therefore useless, unless
+# you want to use a smaller number of jobs:
+#mk_add_options MOZ_MAKE_FLAGS="-j1"
+
+# If you have installed DBus-Glib comment out this line:
+# ac_add_options --disable-dbus
+
+# If you have installed wireless-tools comment out this line:
+# ac_add_options --disable-necko-wifi
+
+# If you have installed libnotify comment out this line:
+####  ac_add_options --disable-libnotify
+
+# GStreamer is necessary for H.264 video playback in HTML5 Video Player;
+# to be enabled, also remember to set "media.gstreamer.enabled" to "true"
+# in about:config. If you have installed GStreamer 0.x.y, comment out this line:
+# ac_add_options --disable-gstreamer
+# or uncomment this line, if you have installed GStreamer 1.x.y
+#ac_add_options --enable-gstreamer=1.0
+
+# Uncomment these lines if you have installed optional dependencies:
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-startup-notification
+
+# Comment out following option if you have PulseAudio installed
+# ac_add_options --disable-pulseaudio
+
+# If you want to compile the Mozilla Calendar, uncomment this line:
+#ac_add_options --enable-calendar
+
+# Comment out following options if you have not installed
+# recommended dependencies:
+ac_add_options --enable-system-sqlite
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-icu
+
+# The BLFS editors recommend not changing anything below this line:
+ac_add_options --prefix=/usr
+ac_add_options --enable-application=mail
+
+ac_add_options --disable-crashreporter
+ac_add_options --disable-installer
+ac_add_options --disable-updater
+ac_add_options --disable-debug
+ac_add_options --disable-tests
+
+ac_add_options --enable-optimize
+ac_add_options --enable-strip
+ac_add_options --enable-install-strip
+
+ac_add_options --enable-gio
+ac_add_options --enable-official-branding
+ac_add_options --enable-safe-browsing
+ac_add_options --enable-url-classifier
+
+ac_add_options --enable-system-cairo
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+
+ac_add_options --with-pthreads
+
+ac_add_options --with-system-bz2
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-png
+ac_add_options --with-system-zlib
+
+EOF
+
+sed -e '/^ftglyph.h/i ftfntfmt.h'                     \
+    -e '/^freetype\/ftcache.h/a freetype\/ftfntfmt.h' \
+    -i mozilla/config/system-headers
+
+SHELL=/bin/sh make -f client.mk
+SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
+	
+mkdir -pv $PKG/usr/bin
+ln -sfv ../lib/$name-$version/thunderbird $PKG/usr/bin
+
+mkdir -pv $PKG/usr/share/applications 
+install -Dm644 $SRC/thunderbird.desktop \
+$PKG/usr/share/applications/thunderbird.desktop
+
+for i in 16 22 24 32 48 256; do
+   install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
+      $PKG/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird.png
+done
+
+
+mkdir -p $PKG/etc/ld.so.conf.d
+echo "/usr/lib/$name-$version" > $PKG/etc/ld.so.conf.d/$name.conf
+cat > $PKG/usr/lib/thunderbird-$version/defaults/pref/vendor.js << "EOF"
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+EOF
+
+for lang in da de en-US es-ES fi fr it nb-NO nl pt-PT sv-SE
+do  
+    install -Dm644 $SRC/$lang.xpi \
+    $PKG/usr/lib/thunderbird-$version/extensions/langpack-$lang@thunderbird.mozilla.org.xpi
+done
+chown -R 0:0 $PKG/usr/lib/$name-$version
+}

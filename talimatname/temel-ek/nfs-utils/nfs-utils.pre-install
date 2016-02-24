@@ -1,0 +1,6 @@
+newuser=nobody
+newgroup=nogroup
+newid=99
+getent group $newgroup || /usr/bin/groupadd -g $newid $newgroup
+getent passwd $newuser || /usr/bin/useradd -c "Unprivileged Nobody" \
+-g $newgroup -u $newid -d /dev/null -s /bin/false $newuser

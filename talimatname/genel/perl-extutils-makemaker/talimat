@@ -1,0 +1,32 @@
+# Description: ExtUtils::MakeMaker - Create a module Makefile
+# URL: URL: http://search.cpan.org/~bingos/ExtUtils-MakeMaker/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( perl )
+name=perl-extutils-makemaker
+version=6.98
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-$version.tar.gz)
+
+build() {
+    cd ExtUtils-MakeMaker-$version
+    perl Makefile.PL
+    make OPTIMIZE="$CFLAGS" || exit 1
+    make test
+    make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1
+
+    # Remove duplicated man pages
+    rm -r $PKG/usr/share/man
+
+    # Remove perllocal.pod and .packlist if present in the package
+    for i in perllocal.pod .packlist; do
+        find $PKG -name "$i" -exec rm -rf {} \;
+    done
+    rm $PKG/usr/bin/instmodsh
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

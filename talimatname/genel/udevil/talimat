@@ -1,0 +1,24 @@
+# Description: Mount and unmount removable devices, ISO files, nfs://, smb://, ftp://, ssh:// and WebDAV URLs, and tmpfs/ramfs filesystems.
+# URL: http://ignorantguru.github.com/udevil
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: eudev, glib, intltool
+
+description="Mount and unmount removable devices, ISO files, nfs://, smb://, ftp://, ..."
+name=udevil
+version=0.4.3
+release=3
+source=(https://github.com/IgnorantGuru/udevil/tarball/master)
+build() {
+	bsdtar -p -o -xf master
+	cd IgnorantGuru-udevil-ce9f1c5
+	./configure --prefix=/usr \
+		--disable-nls \
+		--disable-systemd \
+		--with-setfacl-prog=/bin/setfacl
+
+	make
+	make DESTDIR=$PKG install
+	
+	rm -rf $PKG/usr/share
+}

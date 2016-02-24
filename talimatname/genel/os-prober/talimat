@@ -1,0 +1,55 @@
+# Description: os-prober
+# URL:        https://packages.debian.org/source/sid/os-prober
+# Maintainer:  Chris Farrell, timcowchip at gmail dot com 
+# Depends on:	grub
+
+name=os-prober
+version=1.71
+release=1
+source=(http://ftp.de.debian.org/debian/pool/main/o/os-prober/os-prober_1.71.tar.xz grub)
+
+build() {
+	cd $name-$version
+
+	# Compile newns
+	make
+
+# Create a hierharchy for os-prober package, and copy files into it.
+mkdir -p $PKG/var/lib/$name
+
+mkdir -p $PKG/usr/bin
+cp linux-boot-prober $PKG/usr/bin
+cp os-prober $PKG/usr/bin
+
+mkdir -p $PKG/usr/lib/$name
+cp newns $PKG/usr/lib/$name
+
+mkdir -p $PKG/usr/lib/os-probes
+cp os-probes/common/* $PKG/usr/lib/os-probes
+mkdir -p $PKG/usr/lib/os-probes/mounted
+mkdir -p $PKG/usr/lib/os-probes/mounted/efi
+cp os-probes/mounted/common/* $PKG/usr/lib/os-probes/mounted
+cp os-probes/mounted/x86/efi/* $PKG/usr/lib/os-probes/mounted/efi
+rm -r os-probes/mounted/x86/efi
+cp os-probes/mounted/x86/* $PKG/usr/lib/os-probes/mounted
+
+mkdir -p $PKG/usr/lib/os-probes/init
+cp os-probes/init/common/* $PKG/usr/lib/os-probes/init
+
+mkdir -p $PKG/usr/lib/linux-boot-probes
+cp linux-boot-probes/common/* $PKG/usr/lib/linux-boot-probes/
+mkdir $PKG/usr/lib/linux-boot-probes/mounted
+cp linux-boot-probes/mounted/common/* $PKG/usr/lib/linux-boot-probes/mounted
+cp linux-boot-probes/mounted/x86/* $PKG/usr/lib/linux-boot-probes/mounted
+
+mkdir -p $PKG/etc/default/
+cp $SRC/grub $PKG/etc/default/
+
+mkdir -p $PKG/usr/share/$name
+cp common.sh $PKG/usr/share/$name
+chmod +x $PKG/usr/share/$name/common.sh
+# End of making os-prober directory hierarchy.
+
+tar  -cvjf os-prober#1.70.pkg.tar.bz2 $PKG/*
+
+}

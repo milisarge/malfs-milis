@@ -1,0 +1,42 @@
+# Description: Advanced object-relational database management system (ORDBMS). 
+# URL: http://www.postgresql.org/docs
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: python libxml2 libxslt openldap
+
+# variable groupe
+PKGMK_GROUPS=(lib doc man devel service)
+
+name=postgresql
+version=9.5.0
+release=1
+
+source=( http://ftp.postgresql.org/pub/source/v$version/$name-$version.tar.bz2)
+build() {
+# service
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+
+cd $name-$version
+# prepare
+sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h
+
+# configure
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--with-docdir=/usr/share/doc/$name-$version \
+--enable-thread-safety
+
+# build
+make
+
+# install
+make DESTDIR=$PKG install
+make DESTDIR=$PKG install-docs
+
+# install service
+
+cd $SRC/$scripts-$scriptsversion
+make DESTDIR=$PKG install-$name
+}

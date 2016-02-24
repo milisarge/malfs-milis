@@ -1,0 +1,19 @@
+# Description: Midnight Commander is a text based filemanager/shell that emulates Norton Commander
+# URL: https://www.midnight-commander.org/
+# Packager: pierre at nutyx dot org
+# Depends on: pcre glib gpm 
+name=mc
+version=4.8.15
+release=1
+
+source=(https://www.midnight-commander.org/downloads/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--enable-charset  \
+--disable-static  \
+--sysconfdir=/etc \
+--with-screen=ncurses
+make
+make DESTDIR=$PKG install
+}

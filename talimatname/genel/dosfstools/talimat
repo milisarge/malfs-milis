@@ -1,0 +1,25 @@
+# Description: DOS filesystem utilities
+# URL: 
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=dosfstools
+version=3.0.13
+release=1
+
+source=( ftp://ftp.debian.org/debian/pool/main/d/$name/$name\_$version.orig.tar.xz)
+
+build() {
+cd $name-$version
+make
+mkdir -p $PKG/sbin
+mkdir -p $PKG/usr/share/man/man8 
+cp dosfsck $PKG/sbin
+cp man/* $PKG/usr/share/man/man8
+cp mkdosfs $PKG/sbin
+cd $PKG/sbin && ln -s dosfsck fsck.msdos && ln -s dosfsck fsck.vfat \
+&& ln -s mkdosfs mkfs.msdos && ln -s mkdosfs mkfs.vfat
+cd $PKG/usr/share/man/man8 && ln -s dosfsck.8 fsck.msdos.8 \
+&& ln -s dosfsck.8 fsck.vfat.8 && ln -s mkdosfs.8 mkfs.msdos.8 \
+&& ln -s mkdosfs.8 mkfs.vfat.8
+}

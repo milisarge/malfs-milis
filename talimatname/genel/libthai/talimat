@@ -1,0 +1,23 @@
+# Description: Thai language support routines
+# URL: http://linux.thai.net/projects/libthai
+# Packager: pierre at nutyx dot org
+# Depends on: libdatrie 
+
+name=libthai
+version=0.1.22
+release=1
+
+source=(https://mirrors.kernel.org/debian/pool/main/libt/${name}/${name}_${version}.orig.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--disable-static \
+		--disable-doxygen-doc
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
+}
+  

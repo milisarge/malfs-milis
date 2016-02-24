@@ -1,0 +1,36 @@
+# Description: Utilities and scripts for suspend and hibernate power management
+# URL: http://pm-utils.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: pm-quirks 
+
+
+name=pm-utils
+version=1.4.1
+release=1
+
+source=(http://pm-utils.freedesktop.org/releases/pm-utils-${version}.tar.gz
+        http://downloads.nutyx.org/files/patchs/$name/02-logging-append.patch
+        http://downloads.nutyx.org/files/patchs/$name/12-fix-intel-audio-powersave-hook.patch
+        http://downloads.nutyx.org/files/patchs/$name/13-49bluetooth-sync.patch
+        http://downloads.nutyx.org/files/patchs/$name/14-disable-sata-alpm.patch)
+
+build() {
+  	cd $name-$version
+	patch -Np1 -i "${SRC}/02-logging-append.patch"
+	patch -Np1 -i "${SRC}/12-fix-intel-audio-powersave-hook.patch"
+	patch -Np1 -i "${SRC}/13-49bluetooth-sync.patch"
+	patch -Np1 -i "${SRC}/14-disable-sata-alpm.patch"
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var
+	make
+	make DESTDIR="$PKG" install
+
+  rm -f "${PKG}/usr/lib/pm-utils/sleep.d/55NetworkManager"
+  
+  rm -f "${PKG}/usr/lib/pm-utils/power.d/"{harddrive,disable_wol}
+
+  rm -fr "${PKG}/usr/share/doc"
+}
+
+

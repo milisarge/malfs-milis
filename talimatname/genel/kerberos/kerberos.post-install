@@ -1,0 +1,7 @@
+for INFOFILE in admin install user
+do
+	if [ -f /usr/share/info/krb5-$INFOFILE.info ]; then
+		install-info --info-dir=/usr/share/info \
+		/usr/share/info/krb5-$INFOFILE.info
+	fi
+done

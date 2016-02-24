@@ -1,0 +1,140 @@
+# Description: 	The latest stable kernel version with pf patch
+# URL: 			https://pf.natalenko.name/
+# Packagers: 	pierre at nutyx dot org, tnut at nutyx dot org, berlius at nutyx dot com
+
+PKGMK_IGNORE_UNPACK="yes"
+PKGMK_NO_STRIP="yes"
+PKGMK_GROUPS=(devel doc)
+
+name=kernel-pf
+version=4.3
+release=1
+_version=${version%.*}
+
+source=(https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz
+		https://pf.natalenko.name/sources/$version/patch-$version-pf1.xz
+		$name.config $name.config_64 )
+
+build(){
+
+bsdtar -p -o -C $SRC -xf linux-$version.tar.xz
+
+cd linux-$version
+
+if [ -f $SRC/patch-$version-pf1.xz ]; then
+	xz -d -c  $SRC/patch-$version-pf1.xz | patch -Np1
+fi
+
+make mrproper
+case `uname -m` in
+	x86_64)
+		cp -v $SRC/$name.config_64 ./.config;;
+	i?86)
+		cp -v $SRC/$name.config ./.config;
+esac
+
+#make xconfig
+#make nconfig
+make menuconfig
+
+make || make -j1
+
+case `uname -m` in
+        x86_64)
+		cp .config $SRC/$name.config_64;;
+        i?86)
+		cp .config $SRC/$name.config;;
+esac
+
+# Install modules
+cd $SRC/linux-$version
+sed -i "/rm\ -rf\ \$(MODLIB)\/kernel/d" Makefile
+make INSTALL_MOD_PATH=$PKG modules_install || make -j1 INSTALL_MOD_PATH=$PKG modules_install
+mkdir -p $PKG/boot
+case `uname -m` in
+        x86_64)
+                cp  System.map \
+                $PKG/boot/System_64.map-$version
+                cp  .config    \
+                $PKG/boot/config_64-$version
+                cp  arch/x86_64/boot/bzImage \
+                $PKG/boot/$name-$version ;;
+        i?86)
+                cp  System.map \
+                $PKG/boot/System.map-$version
+                cp  .config \
+                $PKG/boot/config-$version
+                cp  arch/i386/boot/bzImage \
+                $PKG/boot/$name-$version ;;
+esac
+
+cd $PKG/lib/modules/${version}*/
+
+mkdir -p $PKG/usr/src
+
+mv $SRC/linux-$version $PKG/usr/src/
+rm {build,source}
+
+ln -sv /usr/src/linux-$version build
+ln -sv /usr/src/linux-$version source
+
+mkdir $SRC/linux-$version
+mv $PKG/usr/src/linux-$version/Documentation \
+$SRC/linux-$version
+
+# Firmware are in linux-firmware
+rm -rf $PKG/lib/firmware
+
+# post-install autogen
+INITRD_VERSION="`basename $PKG/lib/modules/*`"
+echo "mkinitramfs $INITRD_VERSION" > $PKGMK_ROOT/$name.post-install
+echo "[ -f boot/initrd ] && rm boot/initrd" >> $PKGMK_ROOT/$name.post-install
+echo "ln -sf initrd-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/$name.post-install
+echo "ln -sf $name-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
+
+#pre-install autogen
+cd $SRC
+if [ -f aaabasicfs-${AAABASICFS}.tar.xz ]; then
+ bsdtar -p -o -C $SRC -xf aaabasicfs-${AAABASICFS}.tar.xz
+ echo ". lib/lsb/init-functions" >  $PKGMK_ROOT/$name.pre-install
+ for FILE in `tar --list --file aaabasicfs-${AAABASICFS}.tar.xz|grep -v /$`
+ do
+   echo "log_info_msg \"update $FILE\"" >> $PKGMK_ROOT/$name.pre-install
+   echo "cat  > $FILE << \"END_OF_FILE\"" >> $PKGMK_ROOT/$name.pre-install
+   cat $SRC/$FILE >> $PKGMK_ROOT/$name.pre-install
+   echo "END_OF_FILE" >> $PKGMK_ROOT/$name.pre-install
+   echo "evaluate_retval" >> $PKGMK_ROOT/$name.pre-install
+ done
+fi
+}
+devel() {
+
+cd $PKG
+rm -r usr/src/linux-$version/{tools,ipc,init,drivers,firmware,fs,mm,samples,security,sound,virt}
+for i in alpha arc arm arm26 arm64 avr32 blackfin c6x \
+cris frv h8300 hexagon ia64 m32r m68k m68knommu metag \
+mips microblaze mn10300 openrisc parisc powerpc ppc s390 \
+score sh sh64 sparc sparc64 tile unicore32 um v850 xtensa
+do rm -rf usr/src/linux-$version/arch/$i
+done
+
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel#$version-any.mps \
+usr/src/linux-$version
+
+rm -r usr
+}
+
+doc() {
+
+cd $PKG
+mkdir -p usr/share/doc/linux-$version
+mv $SRC/linux-$version/Documentation \
+usr/share/doc/linux-$version
+
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.doc#$version-any.mps \
+usr/share/doc/linux-$version
+
+rm -r usr
+}

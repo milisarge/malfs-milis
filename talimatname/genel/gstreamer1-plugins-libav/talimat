@@ -1,0 +1,18 @@
+# Description: GStreamer Multimedia Framework libav Plugins (fork of ffmpeg)
+# URL: http://gstreamer.freedesktop.org/modules/gst-libav.html
+# Packager: pierre at nutyx dot org
+# Depends on: gstreamer1-plugins-base yasm 
+name=gstreamer1-plugins-libav
+release=1
+
+source=(http://gstreamer.freedesktop.org/src/gst-libav/gst-libav-$version.tar.xz )
+
+build() {
+cd gst-*
+
+./configure --prefix=/usr \
+--with-package-name="GStreamer Libav Plugins $version BLFS" \
+--with-package-origin="http://www.linuxfromscratch.org/blfs/view/svn/"
+make
+make DESTDIR=$PKG install
+}

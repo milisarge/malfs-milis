@@ -1,0 +1,92 @@
+#!/bin/sh
+########################################################################
+# Begin scriptname
+#
+# Description : Varnish init script
+#
+# Authors     : alienus at nutyx dot org
+#
+# Version     : LFS 7.5
+#
+# Notes       : NuTyX Saravane
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides: varnish init script
+# Required-Start:
+# Should-Start:
+# Required-Stop:
+# Should-Stop:
+# Default-Start:
+# Default-Stop:
+# Short-Description:
+# Description:
+# X-LFS-Provided-By:
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+BIN='/usr/sbin/varnishd'
+CONF='/etc/varnish/default.vcl'
+PID='/var/run/varnish.pid'
+
+#
+# Change thoses vars to fit your need
+#
+BACKING_FILE='/var/lib/varnish'
+ADMIN_IP='127.0.0.1'
+ADMIN_PORT=8001
+HTTP_IP='0.0.0.0'
+HTTP_PORT=80
+CACHE_SIZE='1g'
+# ttl assigned to objects without ttl values (default 120s)
+DEFAULT_TTL=604800 # 7 days
+FILE_DESCRIPTORS=131072
+MIN_THREADS=5
+MAX_THREADS=500
+THREAD_TIMEOUT=300
+# maximum number of http headers (default is 64)
+HTTP_HEADERS=384
+# connection timout for backend (default is 0.4s)
+CONNECT_TIMEOUT='4.0'
+
+VARNISH_OPTS="-f $CONF \
+              -s file,${BACKING_FILE},$CACHE_SIZE \
+              -T $ADMIN_IP:${ADMIN_PORT} \
+              -a $HTTP_IP:${HTTP_PORT} \
+              -t $DEFAULT_TTL \
+              -w${MIN_THREADS},${MAX_THREADS},${THREAD_TIMEOUT} \
+              -P $PID"
+
+VARNISH_PARAMS="-p http_headers=$HTTP_HEADERS \
+                -p connect_timeout=$CONNECT_TIMEOUT"
+
+
+case "${1}" in
+   start)
+      log_info_msg "Starting..."
+      ulimit -n $FILE_DESCRIPTORS
+      start_daemon $BIN $VARNISH_OPTS $VARNISH_PARAMS
+      ;;
+
+   stop)
+      log_info_msg "Stopping..."
+      killproc $BIN
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart}"
+      exit 1
+      ;;
+esac
+
+exit 0
+
+# End scriptname

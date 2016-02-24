@@ -1,0 +1,1553 @@
+#!/bin/sh
+########################################################################
+# 
+# Begin /lib/services/init-funtions
+#
+# Description : Run Level Control Functions
+#
+# Authors     : Gerard Beekmans - gerard@linuxfromscratch.org
+#             : DJ Lucas - dj@linuxfromscratch.org
+# Update      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#             : Thierry Nuttens - tnut@nutyx.org
+#
+# Version     : LFS 7.0
+#             : milis
+#
+# Notes       : With code based on Matthias Benkmann's simpleinit-msb
+#               http://winterdrache.de/linux/newboot/index.html
+#
+#               The file should be located in /lib/lsb, means
+#   a symbolic link to service folder is done
+#
+########################################################################
+
+## Environmental setup
+# Setup default values for environment
+umask 022
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+
+## Screen Dimensions
+# Find current screen size
+if [ -z "${COLUMNS}" ]; then
+   COLUMNS=$(stty size)
+   COLUMNS=${COLUMNS##* }
+fi
+
+# When using remote connections, such as a serial port, stty size returns 0
+if [ "${COLUMNS}" = "0" ]; then
+   COLUMNS=80
+fi
+
+## Measurements for positioning result messages
+COL=$((${COLUMNS} - 8))
+WCOL=$((${COL} - 2))
+
+## Set Cursor Position Commands, used via echo
+SET_COL="\\033[${COL}G"      # at the $COL char
+SET_WCOL="\\033[${WCOL}G"    # at the $WCOL char
+CURS_UP="\\033[1A\\033[0G"   # Up one line, at the 0'th char
+CURS_ZERO="\\033[0G"
+
+## Set color commands, used via echo
+# Please consult `man console_codes for more information
+# under the "ECMA-48 Set Graphics Rendition" section
+#
+# Warning: when switching from a 8bit to a 9bit font,
+# the linux console will reinterpret the bold (1;) to
+# the top 256 glyphs of the 9bit font.  This does
+# not affect framebuffer consoles
+
+NORMAL="\\033[0;39m"         # Standard console grey
+SUCCESS="\\033[1;32m"        # Success is green
+WARNING="\\033[1;33m"        # Warnings are yellow
+FAILURE="\\033[1;31m"        # Failures are red
+INFO="\\033[1;36m"           # Information is light cyan
+BRACKET="\\033[1;34m"        # Brackets are blue
+
+# Use a colored prefix
+BMPREFIX="     "
+SUCCESS_PREFIX="${SUCCESS}  *  ${NORMAL}"
+FAILURE_PREFIX="${FAILURE}*****${NORMAL}"
+WARNING_PREFIX="${WARNING} *** ${NORMAL}"
+
+SUCCESS_SUFFIX="${BRACKET}[${SUCCESS}  OK  ${BRACKET}]${NORMAL}"
+FAILURE_SUFFIX="${BRACKET}[${FAILURE} FAIL ${BRACKET}]${NORMAL}"
+WARNING_SUFFIX="${BRACKET}[${WARNING} WARN ${BRACKET}]${NORMAL}"
+
+BOOTLOG=/run/bootlog
+KILLDELAY=0
+
+[ "$verbose" == "no" ] && echo "" > $BOOTLOG
+
+# Set any user specified environment variables e.g. HEADLESS
+[ -r /etc/sysconfig/rc.site ]  && . /etc/sysconfig/rc.site
+
+################################################################################
+# start_daemon()                                                               #
+# Usage: start_daemon [-f] [-n nicelevel] [-p pidfile] pathname [args...]      #
+#                                                                              #
+# Purpose: This runs the specified program as a daemon                         #
+#                                                                              #
+# Inputs: -f: (force) run the program even if it is already running.           #
+#         -n nicelevel: specify a nice level. See 'man nice(1)'.               #
+#         -p pidfile: use the specified file to determine PIDs.                #
+#         pathname: the complete path to the specified program                 #
+#         args: additional arguments passed to the program (pathname)          #
+#                                                                              #
+# Return values (as defined by LSB exit codes):                                #
+#       0 - program is running or service is OK                                #
+#       1 - generic or unspecified error                                       #
+#       2 - invalid or excessive argument(s)                                   #
+#       5 - program is not installed                                           #
+################################################################################
+start_daemon()
+{
+    local force=""
+    local nice="0"
+    local pidfile=""
+    local pidlist=""
+    local retval=""
+
+    # Process arguments
+    while true
+    do
+        case "${1}" in
+
+            -f)
+                force="1"
+                shift 1
+                ;;
+
+            -n)
+                nice="${2}"
+                shift 2
+                ;;
+
+            -p)
+                pidfile="${2}"
+                shift 2
+                ;;
+
+            -*)
+                return 2
+                ;;
+
+            *)
+                program="${1}"
+                break
+                ;;
+        esac
+    done
+
+    # Check for a valid program
+    if [ ! -e "${program}" ]; then return 5; fi
+
+    # Execute
+    if [ -z "${force}" ]; then
+        if [ -z "${pidfile}" ]; then
+            # Determine the pid by discovery
+            pidlist=`pidofproc "${1}"`
+            retval="${?}"
+        else
+            # The PID file contains the needed PIDs
+            # Note that by LSB requirement, the path must be given to pidofproc,
+            # however, it is not used by the current implementation or standard.
+            pidlist=`pidofproc -p "${pidfile}" "${1}"`
+            retval="${?}"
+        fi
+
+        # Return a value ONLY 
+        # It is the init script's (or distribution's functions) responsibilty
+        # to log messages!
+        case "${retval}" in
+
+            0)
+                # Program is already running correctly, this is a 
+                # successful start.
+                return 0
+                ;;
+
+            1)
+                # Program is not running, but an invalid pid file exists
+                # remove the pid file and continue
+                rm -f "${pidfile}"
+                ;;
+
+            3)
+                # Program is not running and no pidfile exists
+                # do nothing here, let start_deamon continue.
+                ;;
+
+            *)
+                # Others as returned by status values shall not be interpreted
+                # and returned as an unspecified error.
+                return 1
+                ;;
+        esac
+    fi
+
+    # Do the start!
+    nice -n "${nice}" "${@}"
+}
+
+################################################################################
+# killproc()                                                                   #
+# Usage: killproc [-p pidfile] pathname [signal]                               #
+#                                                                              #
+# Purpose: Send control signals to running processes                           #
+#                                                                              #
+# Inputs: -p pidfile, uses the specified pidfile                               #
+#         pathname, pathname to the specified program                          #
+#         signal, send this signal to pathname                                 #
+#                                                                              #
+# Return values (as defined by LSB exit codes):                                #
+#       0 - program (pathname) has stopped/is already stopped or a             #
+#           running program has been sent specified signal and stopped         #
+#           successfully                                                       #
+#       1 - generic or unspecified error                                       #
+#       2 - invalid or excessive argument(s)                                   #
+#       5 - program is not installed                                           #
+#       7 - program is not running and a signal was supplied                   #
+################################################################################
+killproc()
+{
+    local pidfile
+    local program
+    local prefix
+    local progname
+    local signal="-TERM"
+    local fallback="-KILL"
+    local nosig
+    local pidlist
+    local retval
+    local pid
+    local delay="30"
+    local piddead
+    local dtime
+
+    # Process arguments
+    while true; do
+        case "${1}" in
+            -p)
+                pidfile="${2}"
+                shift 2
+                ;;
+ 
+             *)
+                 program="${1}"
+                 if [ -n "${2}" ]; then
+                     signal="${2}"
+                     fallback=""
+                 else
+                     nosig=1
+                 fi
+
+                 # Error on additional arguments
+                 if [ -n "${3}" ]; then
+                     return 2
+                 else 
+                     break
+                 fi                 
+                 ;;
+        esac
+    done
+
+    # Check for a valid program
+    if [ ! -e "${program}" ]; then return 5; fi
+
+    # Check for a valid signal
+    check_signal "${signal}"
+    if [ "${?}" -ne "0" ]; then return 2; fi
+
+    # Get a list of pids
+    if [ -z "${pidfile}" ]; then
+        # determine the pid by discovery
+        pidlist=`pidofproc "${1}"`
+        retval="${?}"
+    else
+        # The PID file contains the needed PIDs
+        # Note that by LSB requirement, the path must be given to pidofproc,
+        # however, it is not used by the current implementation or standard.
+        pidlist=`pidofproc -p "${pidfile}" "${1}"`
+        retval="${?}"
+    fi
+
+    # Return a value ONLY
+    # It is the init script's (or distribution's functions) responsibilty
+    # to log messages!
+    case "${retval}" in
+
+        0)
+            # Program is running correctly
+            # Do nothing here, let killproc continue.
+            ;;
+
+        1)
+            # Program is not running, but an invalid pid file exists
+            # Remove the pid file.
+            rm -f "${pidfile}"
+
+            # This is only a success if no signal was passed.
+            if [ -n "${nosig}" ]; then
+                return 0
+            else
+                return 7
+            fi
+            ;;
+
+        3)
+            # Program is not running and no pidfile exists
+            # This is only a success if no signal was passed.
+            if [ -n "${nosig}" ]; then
+                return 0
+            else
+                return 7
+            fi
+            ;;
+
+        *)
+            # Others as returned by status values shall not be interpreted
+            # and returned as an unspecified error.
+            return 1
+            ;;
+    esac
+
+    # Perform different actions for exit signals and control signals
+    check_sig_type "${signal}"
+
+    if [ "${?}" -eq "0" ]; then # Signal is used to terminate the program
+
+        # Account for empty pidlist (pid file still exists and no 
+        # signal was given)
+        if [ "${pidlist}" != "" ]; then
+
+            # Kill the list of pids
+            for pid in ${pidlist}; do
+
+                kill -0 "${pid}" 2> /dev/null
+
+                if [ "${?}" -ne "0" ]; then
+                    # Process is dead, continue to next and assume all is well
+                    continue
+                else
+                    kill "${signal}" "${pid}" 2> /dev/null
+
+                    # Wait up to ${delay}/10 seconds to for "${pid}" to 
+                    # terminate in 10ths of a second
+
+                    while [ "${delay}" -ne "0" ]; do
+                        kill -0 "${pid}" 2> /dev/null || piddead="1"
+                        if [ "${piddead}" = "1" ]; then break; fi
+                        sleep 0.1
+                        delay="$(( ${delay} - 1 ))"
+                    done
+
+                    # If a fallback is set, and program is still running, then
+                    # use the fallback
+                    if [ -n "${fallback}" -a "${piddead}" != "1" ]; then
+                        kill "${fallback}" "${pid}" 2> /dev/null
+                        sleep 1
+                        # Check again, and fail if still running
+                        kill -0 "${pid}" 2> /dev/null && return 1
+                    fi
+                fi
+            done
+        fi
+
+        # Check for and remove stale PID files.
+        if [ -z "${pidfile}" ]; then
+            # Find the basename of $program
+            prefix=`echo "${program}" | sed 's/[^/]*$//'`
+            progname=`echo "${program}" | sed "s@${prefix}@@"`
+
+            if [ -e "/var/run/${progname}.pid" ]; then
+                rm -f "/var/run/${progname}.pid" 2> /dev/null
+            fi
+        else
+            if [ -e "${pidfile}" ]; then rm -f "${pidfile}" 2> /dev/null; fi
+        fi
+
+    # For signals that do not expect a program to exit, simply
+    # let kill do its job, and evaluate kill's return for value
+
+    else # check_sig_type - signal is not used to terminate program
+        for pid in ${pidlist}; do
+            kill "${signal}" "${pid}"
+            if [ "${?}" -ne "0" ]; then return 1; fi
+        done
+    fi
+}
+
+################################################################################
+# pidofproc()                                                                  #
+# Usage: pidofproc [-p pidfile] pathname                                       #
+#                                                                              #
+# Purpose: This function returns one or more pid(s) for a particular daemon    #
+#                                                                              #
+# Inputs: -p pidfile, use the specified pidfile instead of pidof               #
+#         pathname, path to the specified program                              #
+#                                                                              #
+# Return values (as defined by LSB status codes):                              #
+#       0 - Success (PIDs to stdout)                                           #
+#       1 - Program is dead, PID file still exists (remaining PIDs output)     #
+#       3 - Program is not running (no output)                                 #
+################################################################################
+pidofproc()
+{
+    local pidfile
+    local program
+    local prefix
+    local progname
+    local pidlist
+    local lpids
+    local exitstatus="0"
+
+    # Process arguments
+    while true; do
+        case "${1}" in
+
+            -p)
+                pidfile="${2}"
+                shift 2
+                ;;
+
+            *)
+                program="${1}"
+                if [ -n "${2}" ]; then
+                    # Too many arguments
+                    # Since this is status, return unknown
+                    return 4
+                else
+                    break
+                fi
+                ;;
+        esac
+    done
+
+    # If a PID file is not specified, try and find one.
+    if [ -z "${pidfile}" ]; then
+        # Get the program's basename
+        prefix=`echo "${program}" | sed 's/[^/]*$//'`
+
+        if [ -z "${prefix}" ]; then 
+           progname="${program}"
+        else
+           progname=`echo "${program}" | sed "s@${prefix}@@"`
+        fi
+
+        # If a PID file exists with that name, assume that is it.
+        if [ -e "/var/run/${progname}.pid" ]; then
+            pidfile="/var/run/${progname}.pid"
+        fi
+    fi
+
+    # If a PID file is set and exists, use it.
+    if [ -n "${pidfile}" -a -e "${pidfile}" ]; then
+
+        # Use the value in the first line of the pidfile
+        pidlist=`/bin/head -n1 "${pidfile}"`
+        # This can optionally be written as 'sed 1q' to repalce 'head -n1'
+        # should LFS move /bin/head to /usr/bin/head
+    else
+        # Use pidof
+        pidlist=`pidof "${program}"`
+    fi
+
+    # Figure out if all listed PIDs are running.
+    for pid in ${pidlist}; do
+        kill -0 ${pid} 2> /dev/null
+
+        if [ "${?}" -eq "0" ]; then
+            lpids="${lpids}${pid} "
+        else
+            exitstatus="1"
+        fi
+    done
+
+    if [ -z "${lpids}" -a ! -f "${pidfile}" ]; then
+        return 3
+    else
+        echo "${lpids}"
+        return "${exitstatus}"
+    fi
+}
+
+################################################################################
+# statusproc()                                                                 #
+# Usage: statusproc [-p pidfile] pathname                                      #
+#                                                                              #
+# Purpose: This function prints the status of a particular daemon to stdout    #
+#                                                                              #
+# Inputs: -p pidfile, use the specified pidfile instead of pidof               #
+#         pathname, path to the specified program                              #
+#                                                                              #
+# Return values:                                                               #
+#       0 - Status printed                                                     #
+#       1 - Input error. The daemon to check was not specified.                #
+################################################################################
+statusproc()
+{
+   local pidfile
+   local pidlist
+
+   if [ "${#}" = "0" ]; then
+      echo "Usage: statusproc [-p pidfle] {program}"
+      exit 1
+   fi
+
+   # Process arguments
+   while true; do
+       case "${1}" in
+
+           -p)
+               pidfile="${2}"
+               shift 2
+               ;;
+
+           *)
+               if [ -n "${2}" ]; then
+                   echo "Too many arguments"
+                   return 1
+               else
+                   break
+               fi
+               ;;
+       esac
+   done
+
+   if [ -n "${pidfile}" ]; then
+      pidlist=`pidofproc -p "${pidfile}" $@`
+   else
+      pidlist=`pidofproc $@`
+   fi
+
+   # Trim trailing blanks
+   pidlist=`echo "${pidlist}" | sed -r 's/ +$//'`
+
+   base="${1##*/}"
+
+   if [ -n "${pidlist}" ]; then
+      /bin/echo -e "${INFO}${base} is running with Process" \
+         "ID(s) ${pidlist}.${NORMAL}"
+   else
+      if [ -n "${base}" -a -e "/var/run/${base}.pid" ]; then
+         /bin/echo -e "${WARNING}${1} is not running but" \
+            "/var/run/${base}.pid exists.${NORMAL}"
+      else
+         if [ -n "${pidfile}" -a -e "${pidfile}" ]; then
+            /bin/echo -e "${WARNING}${1} is not running" \
+               "but ${pidfile} exists.${NORMAL}"
+         else
+            /bin/echo -e "${INFO}${1} is not running.${NORMAL}"
+         fi
+      fi
+   fi
+}
+
+################################################################################
+# timespec()                                                                   #
+#                                                                              #
+# Purpose: An internal utility function to format a timestamp                  #
+#          a boot log file.  Sets the STAMP variable.                          #
+#                                                                              #
+# Return value: Not used                                                       #
+################################################################################
+timespec()
+{
+   STAMP="$(echo `date +"%b %d %T %:z"` `hostname`) "
+   return 0
+}
+
+################################################################################
+# log_success_msg()                                                            #
+# Usage: log_success_msg ["message"]                                           #
+#                                                                              #
+# Purpose: Print a successful status message to the screen and                 #
+#          a boot log file.                                                    #
+#                                                                              #
+# Inputs: $@ - Message                                                         #
+#                                                                              #
+# Return values: Not used                                                      #
+################################################################################
+log_success_msg()
+{
+    if [ "$verbose"  == "no" ]; then 
+      return 0
+    fi
+    /bin/echo -n -e "${BMPREFIX}${@}"
+    /bin/echo -e "${CURS_ZERO}${SUCCESS_PREFIX}${SET_COL}${SUCCESS_SUFFIX}"
+
+    # Strip non-printable characters from log file
+    logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
+
+    timespec
+    /bin/echo -e "${STAMP} ${logmessage} OK" >> ${BOOTLOG}
+    
+    return 0
+}
+
+log_success_msg2()
+{
+    if [ "$verbose"  == "no" ]; then 
+      return 0
+    fi
+    /bin/echo -n -e "${BMPREFIX}${@}"
+    /bin/echo -e "${CURS_ZERO}${SUCCESS_PREFIX}${SET_COL}${SUCCESS_SUFFIX}"
+
+    echo " OK" >> ${BOOTLOG}
+    
+    return 0
+}
+
+################################################################################
+# log_failure_msg()                                                            #
+# Usage: log_failure_msg ["message"]                                           #
+#                                                                              #
+# Purpose: Print a failure status message to the screen and                    #
+#          a boot log file.                                                    #
+#                                                                              #
+# Inputs: $@ - Message                                                         #
+#                                                                              #
+# Return values: Not used                                                      #
+################################################################################
+log_failure_msg()
+{
+    /bin/echo -n -e "${BMPREFIX}${@}"
+    /bin/echo -e "${CURS_ZERO}${FAILURE_PREFIX}${SET_COL}${FAILURE_SUFFIX}"
+
+    # Strip non-printable characters from log file
+
+    timespec
+    logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
+    /bin/echo -e "${STAMP} ${logmessage} FAIL" >> ${BOOTLOG}
+    
+    return 0
+}
+
+log_failure_msg2()
+{
+    /bin/echo -n -e "${BMPREFIX}${@}"
+    /bin/echo -e "${CURS_ZERO}${FAILURE_PREFIX}${SET_COL}${FAILURE_SUFFIX}"
+
+    echo "FAIL" >> ${BOOTLOG}
+    
+    return 0
+}
+
+################################################################################
+# log_warning_msg()                                                            #
+# Usage: log_warning_msg ["message"]                                           #
+#                                                                              #
+# Purpose: Print a warning status message to the screen and                    #
+#          a boot log file.                                                    #
+#                                                                              #
+# Return values: Not used                                                      #
+################################################################################
+log_warning_msg()
+{
+    /bin/echo -n -e "${BMPREFIX}${@}"
+    /bin/echo -e "${CURS_ZERO}${WARNING_PREFIX}${SET_COL}${WARNING_SUFFIX}"
+
+    # Strip non-printable characters from log file
+    logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
+    timespec
+    /bin/echo -e "${STAMP} ${logmessage} WARN" >> ${BOOTLOG}
+    
+    return 0
+}
+
+################################################################################
+# log_info_msg()                                                               #
+# Usage: log_info_msg message                                                  #
+#                                                                              #
+# Purpose: Print an information message to the screen and                      #
+#          a boot log file.  Does not print a trailing newline character.      #
+#                                                                              #
+# Return values: Not used                                                      #
+################################################################################
+log_info_msg()
+{
+    if [ "$verbose"  == "no" ]; then 
+       return 0
+    fi
+    /bin/echo -n -e "${BMPREFIX}${@}"
+
+    # Strip non-printable characters from log file
+    logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
+    timespec
+    /bin/echo -n -e "${STAMP} ${logmessage}" >> ${BOOTLOG}
+    
+    return 0
+}
+
+log_info_msg2()
+{
+    if [ "$verbose"  == "no" ] ; then 
+       return 0
+    fi
+    /bin/echo -n -e "${@}"
+
+    # Strip non-printable characters from log file
+    logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
+    /bin/echo -n -e "${logmessage}" >> ${BOOTLOG}
+    
+    return 0
+}
+
+################################################################################
+# evaluate_retval()                                                            #
+# Usage: Evaluate a return value and print success or failyure as appropriate  #
+#                                                                              #
+# Purpose: Convenience function to terminate an info message                   #
+#                                                                              #
+# Return values: Not used                                                      #
+################################################################################
+evaluate_retval()
+{
+   
+   local error_value="${?}"
+
+   if [ ${error_value} = 0 ]; then
+      if [ "$verbose" != "no" ]; then
+        log_success_msg2
+      fi
+   else
+      log_failure_msg2
+   fi
+}
+
+################################################################################
+# check_signal()                                                               #
+# Usage: check_signal [ -{signal} | {signal} ]                                 #
+#                                                                              #
+# Purpose: Check for a valid signal.  This is not defined by any LSB draft,    #
+#          however, it is required to check the signals to determine if the    #
+#          signals chosen are invalid arguments to the other functions.        #
+#                                                                              #
+# Inputs: Accepts a single string value in the form or -{signal} or {signal}   #
+#                                                                              #
+# Return values:                                                               #
+#       0 - Success (signal is valid                                           #
+#       1 - Signal is not valid                                                #
+################################################################################
+check_signal()
+{
+    local valsig
+
+    # Add error handling for invalid signals
+    valsig="-ALRM -HUP -INT -KILL -PIPE -POLL -PROF -TERM -USR1 -USR2"
+    valsig="${valsig} -VTALRM -STKFLT -PWR -WINCH -CHLD -URG -TSTP -TTIN"
+    valsig="${valsig} -TTOU -STOP -CONT -ABRT -FPE -ILL -QUIT -SEGV -TRAP"
+    valsig="${valsig} -SYS -EMT -BUS -XCPU -XFSZ -0 -1 -2 -3 -4 -5 -6 -8 -9"
+    valsig="${valsig} -11 -13 -14 -15"
+
+    echo "${valsig}" | grep -- " ${1} " > /dev/null
+
+    if [ "${?}" -eq "0" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+################################################################################
+# check_sig_type()                                                             #
+# Usage: check_signal [ -{signal} | {signal} ]                                 #
+#                                                                              #
+# Purpose: Check if signal is a program termination signal or a control signal #
+#          This is not defined by any LSB draft, however, it is required to    #
+#          check the signals to determine if they are intended to end a        #
+#          program or simply to control it.                                    #
+#                                                                              #
+# Inputs: Accepts a single string value in the form or -{signal} or {signal}   #
+#                                                                              #
+# Return values:                                                               #
+#       0 - Signal is used for program termination                             #
+#       1 - Signal is used for program control                                 #
+################################################################################
+check_sig_type()
+{
+    local valsig
+
+    # The list of termination signals (limited to generally used items)
+    valsig="-ALRM -INT -KILL -TERM -PWR -STOP -ABRT -QUIT -2 -3 -6 -9 -14 -15"
+
+    echo "${valsig}" | grep -- " ${1} " > /dev/null
+
+    if [ "${?}" -eq "0" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+################################################################################
+# wait_for_user()                                                              #
+#                                                                              #
+# Purpose: Wait for the user to respond if not a headless system               #
+#                                                                              #
+################################################################################
+wait_for_user()
+{
+   # Wait for the user by default
+   [ "${HEADLESS=0}" = "0" ] && read ENTER
+   return 0
+}
+
+################################################################################
+# is_true()                                                                    #
+#                                                                              #
+# Purpose: Utility to test if a variable is true | yes | 1                     #
+#                                                                              #
+################################################################################
+is_true()
+{
+   [ "$1" = "1" ] || [ "$1" = "yes" ] || [ "$1" = "true" ] ||  [ "$1" = "y" ] ||
+   [ "$1" = "t" ]
+}
+################################################################################
+# create_files()                                                               #
+#                                                                              #
+#  Purpose: create files from ${name}, ${maj}, ${min}, ${usr}, ${grp}, ${perm} #
+#                             ${type} ${dtype}                                 #
+################################################################################
+create_files()
+{
+   # Input to file descriptor 9 and output to stdin (redirection)
+   exec 9>&0 < /etc/sysconfig/createfiles
+
+   while read name type perm usr grp dtype maj min junk
+   do
+      # Ignore comments and blank lines.
+      case "${name}" in
+         ""|\#*) continue ;;
+      esac
+
+      # Ignore existing files.
+      if [ ! -e "${name}" ]; then
+         # Create stuff based on its type.
+         case "${type}" in
+            dir)
+               mkdir "${name}"
+               ;;
+            file)
+               :> "${name}"
+               ;;
+            dev)
+               case "${dtype}" in
+                  char)
+                     mknod "${name}" c ${maj} ${min}
+                     ;;
+                  block)
+                     mknod "${name}" b ${maj} ${min}
+                     ;;
+                  pipe)
+                     mknod "${name}" p
+                     ;;
+                  *)
+                     log_warning_msg "\nUnknown device type: ${dtype}"
+                     ;;
+               esac
+               ;;
+            *)
+               log_warning_msg "\nUnknown type: ${type}"
+               continue
+               ;;
+         esac
+      fi
+      # Set up the permissions, too even if it exist allready
+      chown ${usr}:${grp} "${name}"
+      chmod ${perm} "${name}"
+   done
+
+   # Close file descriptor 9 (end redirection)
+   exec 0>&9 9>&-
+   return 0
+}
+################################################################################
+# do_mount_virtualfs()                                                         #
+#                                                                              #
+# Purpose: first mounting process, all the virtual system must be mounted      #
+# prior anything                                                               #
+#                                                                              #
+################################################################################
+do_mount_virtualfs()
+{
+        if ! mountpoint /run >/dev/null; then
+                mount /run || failed=1
+        fi
+        mkdir -p /run/lock /run/shm
+        chmod 1777 /run/shm
+        log_info_msg "Mounting virtual file systems: ${INFO}/run"
+        if ! mountpoint /proc >/dev/null; then
+                log_info_msg2 " ${INFO}/proc"
+                mount -o nosuid,noexec,nodev /proc || failed=1
+        fi
+        if ! mountpoint /sys >/dev/null; then
+                log_info_msg2 " ${INFO}/sys"
+                mount -o nosuid,noexec,nodev /sys || failed=1
+        fi
+        if ! mountpoint /dev >/dev/null; then
+                log_info_msg2 " ${INFO}/dev"
+                mount -o mode=0755,nosuid /dev  || failed=1
+        fi
+        ln -sfn /run/shm /dev/shm
+	(exit ${failed})
+	evaluate_retval
+}
+################################################################################
+# do_start_localnet() do_stop_localnet()                                       #
+#                                                                              #
+# Purpose: Sets the hostname of the machine and starts the                     #
+#          loopback interface.                                                 #
+################################################################################
+do_start_localnet()
+{
+  [ -r /etc/sysconfig/network ] && . /etc/sysconfig/network
+  [ -r /etc/hostname ] && HOSTNAME=`cat /etc/hostname`
+  log_info_msg "Bringing up the loopback interface..."
+  ip addr add 127.0.0.1/8 label lo dev lo
+  ip link set lo up
+  evaluate_retval
+
+  log_info_msg "Setting hostname to ${HOSTNAME}..."
+  hostname ${HOSTNAME}
+  evaluate_retval
+}
+do_stop_localnet()
+{
+  log_info_msg "Bringing down the loopback interface..."
+  ip link set lo down
+  evaluate_retval
+}
+################################################################################
+# do_load_modules()                                                            #
+#                                                                              #
+# Purpose: Module auto-loading function                                        #
+#                                                                              #
+################################################################################
+do_load_modules()
+{
+  # Assure that the kernel has module support.
+  [ -e /proc/modules ] || return 0
+  for FILE in /etc/sysconfig/modules /etc/sysconfig/modules.d/*.conf
+  do
+   [ ! -f $FILE ] && continue
+   # Continue with next if there's no modules file or there are no
+   # valid entries
+   [ -r $FILE ] || continue
+   egrep -qv '^($|#)' $FILE || continue
+   log_info_msg "Loading modules:"
+   break
+  done
+  for FILE in /etc/sysconfig/modules /etc/sysconfig/modules.d/*.conf
+    do
+     [ ! -f $FILE ] && continue
+     [ -r $FILE ] || continue
+     egrep -qv '^($|#)' $FILE || continue
+
+
+     while read module args; do
+         # Ignore comments and blank lines.
+         case "$module" in
+          ""|"#"*) continue ;;
+         esac
+
+         # Attempt to load the module, passing any arguments provided.
+         modprobe ${module} ${args} >/dev/null
+
+         # Print the module name if successful, otherwise take note.
+         if [ $? -eq 0 ]; then
+           log_info_msg2 " ${module}"
+         else
+          failedmod="${failedmod} ${module}"
+         fi
+     done < $FILE
+  done
+ # fi
+  # Print a message about successfully loaded modules on the correct line.
+  log_success_msg2
+
+  # Print a failure message with a list of any modules that
+  # may have failed to load.
+  if [ -n "${failedmod}" ]; then
+     log_failure_msg "Failed to load modules:${failedmod}"
+  fi
+  return 0
+}
+################################################################################
+# do_start_udev do_stop_udev                                                   #
+#                                                                              #
+# Purpose: Udev cold-plugging start and shutdown functions                     #
+#                                                                              #
+################################################################################
+
+do_start_udev()
+{
+  log_info_msg "Populating /dev with device nodes... "
+  if ! grep -q '[[:space:]]sysfs' /proc/mounts; then
+     log_failure_msg2
+     msg="FAILURE:\n\nUnable to create "
+     msg="${msg}devices without a SysFS filesystem\n\n"
+     msg="${msg}After you press Enter, this system "
+     msg="${msg}will be halted and powered off.\n\n"
+     log_info_msg "$msg"
+     log_info_msg "Press Enter to continue..."
+     wait_for_user
+     /etc/rc.d/init.d/halt stop
+  fi
+
+  # Udev handles uevents itself, so we don't need to have
+  # the kernel call out to any binary in response to them
+  [ -f /proc/sys/kernel/hotplug ] && echo > /proc/sys/kernel/hotplug
+
+  # Start the udev daemon to continually watch for, and act on,
+  # uevents
+  /sbin/udevd --daemon --resolve-names=never
+
+  # Now traverse /sys in order to "coldplug" devices that have
+  # already been discovered
+  /sbin/udevadm trigger --action=add    --type=subsystems
+  /sbin/udevadm trigger --action=add    --type=devices
+  /sbin/udevadm trigger --action=change --type=devices
+
+  # Now wait for udevd to process the uevents we triggered
+  if ! is_true "$OMIT_UDEV_SETTLE"; then
+     /sbin/udevadm settle
+  fi
+
+  # If any LVM based partitions are on the system, ensure they
+  # are activated so they can be used.
+  if [ -x /sbin/vgchange ]; then /sbin/vgchange -a y >/dev/null; fi
+
+  log_success_msg2
+}
+do_stop_udev()
+{
+  udevadm control --exit
+  udevadm info --cleanup-db
+
+}
+################################################################################
+# do_start_clock() do_stop_clock()                                             #
+#                                                                              #
+# Purpose: On boot, system time is obtained from hwclock.  The                 #
+#          hardware clock can also be set on shutdown.                         #
+################################################################################
+do_start_clock()
+{
+   [ -r /etc/sysconfig/clock ] && . /etc/sysconfig/clock
+   case "${UTC}" in
+    yes|true|1)
+      CLOCKPARAMS="${CLOCKPARAMS} --utc"
+      CLOCKMODE="utc"
+      ;;
+
+    no|false|0)
+      CLOCKPARAMS="${CLOCKPARAMS} --localtime"
+      CLOCKMODE="localtime"
+      ;;
+
+   esac
+   hwclock --hctosys ${CLOCKPARAMS} >/dev/null
+   log_info_msg "Setting hardware clock to ${CLOCKMODE}..."
+   evaluate_retval
+}
+do_stop_clock()
+{
+   log_info_msg "Setting hardware clock..."
+   hwclock --systohc ${CLOCKPARAMS} >/dev/null
+   evaluate_retval
+}
+################################################################################
+# do_start_checkfs()                                                           #
+#                                                                              #
+# Purpose:         Checks local filesystmes before mounting.                   #
+#                                                                              #
+################################################################################
+do_start_checkfs()
+{
+   if [ -f /fastboot ]; then
+     msg="/fastboot found, will omit "
+     msg="${msg} file system checks as requested.\n"
+     log_info_msg "${msg}"
+     return 0
+   fi
+
+   log_info_msg "Mounting root file system in read-only mode... "
+   mount -n -o remount,ro / >/dev/null
+
+   if [ ${?} != 0 ]; then
+     log_failure_msg2
+     msg="\n\nCannot check root "
+     msg="${msg}filesystem because it could not be mounted "
+     msg="${msg}in read-only mode.\n\n"
+     msg="${msg}After you press Enter, this system will be "
+     msg="${msg}halted and powered off.\n\n"
+     log_failure_msg "${msg}"
+
+     log_info_msg "Press Enter to continue..."
+     wait_for_user
+     /etc/rc.d/init.d/halt stop
+   else
+     log_success_msg2
+   fi
+
+   if [ -f /forcefsck ]; then
+     msg="\n/forcefsck found, forcing file"
+     msg="${msg} system checks as requested."
+     log_success_msg "$msg"
+     options="-f"
+   else
+     options=""
+   fi
+
+   log_info_msg "Checking file systems..."
+   # Note: -a option used to be -p; but this fails e.g. on fsck.minix
+   if is_true "$VERBOSE_FSCK"; then
+     fsck ${options} -a -A -C -T
+   else
+     fsck ${options} -a -A -C -T >/dev/null
+   fi
+
+   error_value=${?}
+
+   if [ "${error_value}" = 0 ]; then
+     log_success_msg2
+   fi
+
+   if [ "${error_value}" = 1 ]; then
+     msg="\nWARNING:\n\nFile system errors "
+     msg="${msg}were found and have been corrected.\n"
+     msg="${msg}You may want to double-check that "
+     msg="${msg}everything was fixed properly."
+     log_warning_msg "$msg"
+   fi
+
+   if [ "${error_value}" = 2 -o "${error_value}" = 3 ]; then
+     msg="\nWARNING:\n\nFile system errors "
+     msg="${msg}were found and have been been "
+     msg="${msg}corrected, but the nature of the "
+     msg="${msg}errors require this system to be rebooted.\n\n"
+     msg="${msg}After you press enter, "
+     msg="${msg}this system will be rebooted\n\n"
+     log_failure_msg "$msg"
+
+     log_info_msg "Press Enter to continue..."
+     wait_for_user
+     reboot -f
+   fi
+   if [ "${error_value}" -gt 3 -a "${error_value}" -lt 16 ]; then
+     msg="\nFAILURE:\n\nFile system errors "
+     msg="${msg}were encountered that could not be "
+     msg="${msg}fixed automatically.  This system "
+     msg="${msg}cannot continue to boot and will "
+     msg="${msg}therefore be halted until those "
+     msg="${msg}errors are fixed manually by a "
+     msg="${msg}System Administrator.\n\n"
+     msg="${msg}After you press Enter, this system will be "
+     msg="${msg}halted and powered off.\n\n"
+     log_failure_msg "$msg"
+
+     log_info_msg "Press Enter to continue..."
+     wait_for_user
+     /etc/rc.d/init.d/halt stop
+   fi
+
+   if [ "${error_value}" -ge 16 ]; then
+     msg="\nFAILURE:\n\nUnexpected Failure "
+     msg="${msg}running fsck.  Exited with error "
+     msg="${msg} code: ${error_value}."
+     log_failure_msg $msg
+     return ${error_value}
+   fi
+
+   return 0
+}
+do_start_mountfs()
+{
+  log_info_msg "Remounting root file system in read-write mode..."
+  mount -o remount,rw / >/dev/null
+  evaluate_retval
+
+  # Remove fsck-related file system watermarks.
+  rm -f /fastboot /forcefsck
+
+  # Make sure /dev/pts exists
+  mkdir -p /dev/pts
+
+  # This will mount all filesystems that do not have _netdev in
+  # their option list.  _netdev denotes a network filesystem.
+
+  log_info_msg "Mounting remaining file systems..."
+  mount -a -O no_netdev >/dev/null
+  evaluate_retval
+  return $failed
+
+}
+do_stop_mountfs()
+{
+  # Don't unmount virtual file systems like /run
+  log_info_msg "Unmounting all other currently mounted file systems..."
+  umount -a -d -r -t notmpfs,nosysfs,nodevtmpfs,noproc,nodevpts >/dev/null
+  evaluate_retval
+
+  # Make sure / is mounted read only (umount bug)
+  log_info_msg "Remonting root file system in read-only mode..."
+  mount -o remount,ro /
+  evaluate_retval
+
+  # Make all LVM volume groups unavailable, if appropriate
+  # This fails if swap or / are on an LVM partition
+  #if [ -x /sbin/vgchange ]; then /sbin/vgchange -an > /dev/null; fi
+ 
+}
+do_start_cleanfs()
+{
+  log_info_msg "Cleaning file systems:"
+
+  if [ "${SKIPTMPCLEAN}" = "" ]; then
+    log_info_msg2 " /tmp"
+    chmod 1777 /tmp
+    cd /tmp &&
+    find . -xdev -mindepth 1 ! -name lost+found -delete || failed=1
+  fi
+
+   > /var/run/utmp
+
+  if grep -q '^utmp:' /etc/group ; then
+    chmod 664 /var/run/utmp
+    chgrp utmp /var/run/utmp
+  fi
+
+  (return ${failed})
+  evaluate_retval
+
+  if egrep -qv '^(#|$)' /etc/sysconfig/createfiles 2>/dev/null; then
+    log_info_msg "Creating files and directories... "
+    create_files      # Always returns 0
+    evaluate_retval
+  fi
+
+  return $failed
+}
+###############################################################################
+# do_start_udev_retry()                                                       #
+# Description: Replays any failed uevents that were skipped due to            #
+#              slow hardware initialization, and creates those needed         #
+#              device nodes                                                   #
+###############################################################################
+do_start_udev_retry()
+{
+  log_info_msg "Retrying failed uevents, if any..."
+
+  # As of udev-186, the --run option is no longer valid
+  #rundir=$(/sbin/udevadm info --run)
+  rundir=/run/udev
+  # From Debian: "copy the rules generated before / was mounted
+  # read-write":
+
+  for file in ${rundir}/tmp-rules--*; do
+    dest=${file##*tmp-rules--}
+    [ "$dest" = '*' ] && break
+    cat $file >> /etc/udev/rules.d/$dest
+    rm -f $file
+  done
+
+  # Re-trigger the uevents that may have failed,
+  # in hope they will succeed now
+  /bin/sed -e 's/#.*$//' /etc/sysconfig/udev_retry | /bin/grep -v '^$' | \
+  while read line ; do
+    for subsystem in $line ; do
+      /sbin/udevadm trigger --subsystem-match=$subsystem --action=add
+    done
+  done
+
+  # Now wait for udevd to process the uevents we triggered
+  if ! is_true "$OMIT_UDEV_RETRY_SETTLE"; then
+    /sbin/udevadm settle
+  fi
+
+  evaluate_retval
+}
+################################################################################
+# do_start_swap() do_stop_swap()                                               #
+#                                                                              #
+# Description: Mounts and unmounts swap partitions defined in                  #
+#              /etc/fstab.                                                     #
+################################################################################
+do_start_swap()
+{
+  log_info_msg "Activating all swap files/partitions..."
+  swapon -a
+  evaluate_retval
+}
+do_stop_swap()
+{
+  log_info_msg "Deactivating all swap files/partitions..."
+  swapoff -a
+  evaluate_retval
+}
+do_start_console()
+{
+  failed=0
+  [ -r /etc/sysconfig/console ] && . /etc/sysconfig/console
+
+  # See if we need to do anything
+  if [ -z "${KEYMAP}"         ] && [ -z "${KEYMAP_CORRECTIONS}" ] &&
+     [ -z "${FONT}"           ] && [ -z "${LEGACY_CHARSET}"     ] &&
+     ! is_true "${UNICODE}"; then
+    return 0
+  fi
+
+  # There should be no bogus failures below this line!
+  log_info_msg "Setting up Linux console..."
+
+  # Figure out if a framebuffer console is used
+  [ -d /sys/class/graphics/fb0 ] && use_fb=1 || use_fb=0
+
+  # Figure out the command to set the console into the
+  # desired mode
+  is_true "${UNICODE}" &&
+  MODE_COMMAND="echo -en '\033%G' && kbd_mode -u" ||
+  MODE_COMMAND="echo -en '\033%@\033(K' && kbd_mode -a"
+
+  # On framebuffer consoles, font has to be set for each vt in
+  # UTF-8 mode. This doesn't hurt in non-UTF-8 mode also.
+
+  ! is_true "${use_fb}" || [ -z "${FONT}" ] ||
+    MODE_COMMAND="${MODE_COMMAND} && setfont ${FONT}"
+
+  # Apply that command to all consoles mentioned in
+  # /etc/inittab. Important: in the UTF-8 mode this should
+  # happen before setfont, otherwise a kernel bug will
+  # show up and the unicode map of the font will not be
+  # used.
+
+  for TTY in `grep '^[^#].*respawn:/sbin/agetty' /etc/inittab |
+     grep -o '\btty[[:digit:]]*\b'`
+   do
+     openvt -f -w -c ${TTY#tty} -- \
+       /bin/sh -c "${MODE_COMMAND}" || failed=1
+   done
+
+  # Set the font (if not already set above) and the keymap
+  [ "${use_fb}" == "1" ] || [ -z "${FONT}" ] || setfont $FONT || failed=1
+
+  [ -z "${KEYMAP}" ] ||
+    loadkeys ${KEYMAP} >/dev/null 2>&1 ||
+    failed=1
+
+  [ -z "${KEYMAP_CORRECTIONS}" ] ||
+    loadkeys ${KEYMAP_CORRECTIONS} >/dev/null 2>&1 ||
+    failed=1
+
+  # Convert the keymap from $LEGACY_CHARSET to UTF-8
+  [ -z "$LEGACY_CHARSET" ] ||
+     dumpkeys -c "$LEGACY_CHARSET" | loadkeys -u >/dev/null 2>&1 ||
+     failed=1
+
+  # If any of the commands above failed, the trap at the
+  # top would set $failed to 1
+  ( return $failed )
+  evaluate_retval
+
+  return $failed
+}
+################################################################################
+# do_start_sysctl()                                                            #
+#                                                                              #
+# Description : File uses /etc/sysctl.conf to set kernel runtime               #
+#                                                                              #
+################################################################################
+do_start_sysctl()
+{
+  if [ -f "/etc/sysctl.conf" ]; then
+    log_info_msg "Setting kernel runtime parameters..."
+    sysctl -q -p
+    evaluate_retval
+  fi
+}
+################################################################################
+# do_start_network()                                                           #
+#                                                                              #
+# Description: Start the network depending on what's available nothing, wicd   #
+# or networkmanager                                                            #
+#                                                                              #
+################################################################################
+do_config_network()
+{
+NETWORKCONFIG_FILE="/etc/sysconfig/network"
+  if [ ! -f /etc/sysconfig/network ]; then
+    cat > ${NETWORKCONFIG_FILE} << "EOF"
+HOSTNAME='milis'
+MANAGER='cli'
+EOF
+fi
+
+# Network configuration
+. ${NETWORKCONFIG_FILE}
+
+NM_PIDFILE="/var/run/NetworkManager.pid"
+WICD_PIDFILE="/var/run/wicd/wicd.pid"
+
+if [ "${MANAGER}" == "" ]; then
+  MANAGER="cli"
+  if [ -f /usr/sbin/NetworkManager ]; then
+     MANAGER="networkmanager"
+  fi
+  if [ -f /usr/bin/wicd ]; then
+     MANAGER="wicd"
+  fi
+fi
+
+}
+do_start_network()
+{
+   do_config_network
+   case "${MANAGER}" in
+      networkmanager)
+         if [ -f /usr/sbin/NetworkManager ]; then
+            if [ ! -d /var/run/NetworkManager ]; then
+               install -d -o root -g root -m 755 /var/run/NetworkManager
+            fi
+            log_info_msg "Starting NetworkManager daemon..."
+            start_daemon /usr/sbin/NetworkManager
+            if [ "${NETWORKWAIT}" == "yes" ]; then
+               [ -z "${LINKDELAY}" ] && LINKDELAY=10
+               log_info_msg "Waiting for network..."
+               nm-online -q --timeout=$LINKDELAY || nm-online -q -x --timeout=30
+               [ "$?" = "0" ] && log_success_msg "Network startup" || log_failure_msg "Network startup"
+               [ -n "${NETWORKDELAY}" ] && /bin/sleep ${NETWORKDELAY}
+            fi
+         else
+            echo "the package networkmanager seems not to be install"
+            echo "check the ${NETWORKCONFIG_FILE} file"
+         fi
+      ;;
+      wicd)
+         if [ -f /usr/bin/wicd ]; then
+            if [ -e $WICD_PIDFILE ]; then
+               echo "Wicd appears to already be running"
+               echo "If this is NOT the case, then remove"
+               echo "$WICD_PIDFILE, check the ${NETWORKCONFIG_FILE} file"
+               echo "and try again"
+            else
+               log_info_msg "Starting the wicd Daemon..."
+               start_daemon /usr/bin/wicd 1>/dev/null
+               evaluate_retval
+               if grep -v ^# /etc/fstab | grep _netdev > /dev/null; then
+                    while ! grep "nameserver" /etc/resolv.conf ;
+                        do
+                            if [ $NETWORKDELAY -gt 0 ]; then
+                               sleep 1
+                               echo -n .
+                               let NETWORKDELAY=$NETWORKDELAY-1
+                               if [ $NETWORKDELAY -lt 1 ]; then
+                                   log_failure_msg2 "Time out"
+                                   exit 1
+                               fi
+                            fi
+                        done
+                        log_success_msg2 "Network successfully configured..."
+               fi
+            fi
+         else
+            echo "the package wicd seems not to be install"
+            echo "check the ${NETWORKCONFIG_FILE} file"
+         fi
+      ;;
+      cli)
+         # Start all network interfaces
+         for file in /etc/sysconfig/ifconfig.*
+         do
+            interface=${file##*/ifconfig.}
+            # Skip if $file is * (because nothing was found)
+            if [ "${interface}" = "*" ]; then
+               continue
+            fi
+            if [ -f /etc/wpa_supplicant.conf.${interface} ] && [ -x /sbin/wpa_supplicant ]; then
+               wpa_supplicant -B -c/etc/wpa_supplicant.conf.${interface} -i${interface} \
+               -P /var/run/wpa_supplicant.${interface}
+               sleep 2
+            fi
+            /sbin/ifup ${interface}
+         done
+      ;;
+   esac
+}
+
+do_stop_network()
+{
+   do_config_network
+   case "${MANAGER}" in
+      networkmanager)
+         if [ -f /usr/sbin/NetworkManager ]; then
+            log_info_msg "Stopping NetworkManager daemon..."
+            killproc /usr/sbin/NetworkManager
+         else
+            echo "the package networkmanager seems not to be install"
+            echo "check the ${NETWORKCONFIG_FILE} file"
+         fi
+      ;;
+      wicd)
+         if [ -e $WICD_PIDFILE ]; then
+            log_info_msg "Stopping the wicd Daemon..."
+            wicd-cli -xyz 1>/dev/null
+            kill $(cat $WICD_PIDFILE)
+            evaluate_retval
+         else
+            echo "wicd appears not to be running..."
+            echo "check the ${NETWORKCONFIG_FILE} file"
+         fi
+      ;;
+      cli)
+         # Reverse list
+         net_files=""
+         for file in  /etc/sysconfig/ifconfig.*
+         do
+             net_files="${file} ${net_files}"
+         done
+
+         # Stop all network interfaces
+         for file in ${net_files}
+         do
+             interface=${file##*/ifconfig.}
+
+             # Skip if $file is * (because nothing was found)
+             if [ "${interface}" = "*" ]; then
+                 continue
+             fi
+             /sbin/ifdown ${interface}
+             if [ -f /var/run/wpa_supplicant.${interface} ]; then
+                 kill `cat /var/run/wpa_supplicant.${interface}`
+             fi
+         done
+      ;;
+   esac
+}
+################################################################################
+# print_file_system()                                                          #
+#                                                                              #
+# Purpose: printout the file system of the partition passed as argument        #
+#                                                                              #
+# Return value:                                                                #
+#           - the file system name                                             #
+#           - "no" if not found                                                #
+################################################################################
+print_file_system() {
+
+  local PI FS
+  PI=`/sbin/blkid ${1}`
+  for param in $PI; do
+    case $param in TYPE=*)
+      FS=`echo ${param#TYPE=}|sed s/\"//g`;;
+    esac
+  done
+  if [ "$FS" == "" ]; then
+    echo "no"
+  else
+    echo $FS
+  fi
+}
+# End /lib/services/init-functions

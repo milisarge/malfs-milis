@@ -1,0 +1,32 @@
+# Description: A very advanced and programmable command interpreter (shell) for UNIX
+# URL: URL: http://www.zsh.org 
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: pcre 
+
+name=zsh
+version=5.1.1
+release=1
+
+source=(http://www.zsh.org/pub/$name-$version.tar.xz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --bindir=/bin \
+                --sysconfdir=/etc/zsh \
+                --enable-etcdir=/etc/zsh
+    make
+    makeinfo Doc/zsh.texi --html -o Doc/html
+    makeinfo Doc/zsh.texi --html --no-split --no-headers -o Doc/zsh.html
+    makeinfo Doc/zsh.texi --plaintext -o Doc/zsh.txt
+    make DESTDIR=$PKG install
+
+    make infodir=$PKG/usr/share/info install.info
+    install -v -dm755 $PKG/usr/share/doc/zsh-$version/html
+    install -v -m644 Doc/html/* $PKG/usr/share/doc/zsh-$version/html
+    install -v -m644 Doc/zsh.{html,txt} $PKG/usr/share/doc/zsh-$version
+}
+
+
+

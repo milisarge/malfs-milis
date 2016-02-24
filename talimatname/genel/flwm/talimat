@@ -1,0 +1,22 @@
+# Description: Fast Light Window Manager
+# URL: http://flwm.sourceforge.net/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: fltk1
+name=flwm
+version=git
+release=1
+
+source=(flwm.desktop)
+
+build() {
+  git clone https://github.com/bbidulock/flwm.git $PKGMK_SOURCE_DIR/flwm
+  cp -r $PKGMK_SOURCE_DIR/flwm $SRC/ && cd $SRC/flwm	
+  
+  make || return 1
+  mkdir -p $PKG/usr/share/xsessions
+  cp $SRC/$name.desktop $PKG/usr/share/xsessions/
+
+  install -Dm755 flwm "$PKG/usr/bin/flwm"
+  install -Dm644 flwm.1 "$PKG/usr/share/man/man1/flwm.1"
+}

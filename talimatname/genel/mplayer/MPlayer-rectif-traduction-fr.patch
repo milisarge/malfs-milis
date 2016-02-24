@@ -1,0 +1,40 @@
+diff -rupN b/help/help_mp-fr.h a/help/help_mp-fr.h
+--- b/help/help_mp-fr.h	2014-09-08 22:17:01.000000000 +0200
++++ a/help/help_mp-fr.h	2015-11-11 18:36:36.266524567 +0100
+@@ -724,6 +724,7 @@ static const char help_text[] = MSGTR_He
+ #define MSGTR_GUI_EnableAssSubtitle "Restitution sous-titre SSA/ASS"
+ #define MSGTR_GUI_EnableAutomaticAVSync "AutoSynchro on/off"
+ #define MSGTR_GUI_EnableCache "Cache activé/désactivé"
++#define MSGTR_GUI_EnableDigitalTV "Permettre la réception de la télévision numérique"
+ #define MSGTR_GUI_EnableDirectRendering "Activer le rendu direct"
+ #define MSGTR_GUI_EnableDoubleBuffering "Activer tampon double"
+ #define MSGTR_GUI_EnableEqualizer "Egaliseur (Equalizer) activé"
+@@ -760,7 +761,7 @@ static const char help_text[] = MSGTR_He
+ #define MSGTR_GUI_MSG_MemoryErrorImage "Désolé, mémoire insuffisante pour tampon de dessin.\n"
+ #define MSGTR_GUI_MSG_MemoryErrorWindow "Désolé, pas assez de mémoire pour le tampon de dessin."
+ #define MSGTR_GUI_MSG_NoFileLoaded "Aucun fichier chargé"
+# l'accent ne passe pas sur certains "skins"
+-#define MSGTR_GUI_MSG_NoMediaOpened "Aucun média ouvert"
++#define MSGTR_GUI_MSG_NoMediaOpened "Aucun media ouvert" 
+ #define MSGTR_GUI_MSG_NotAFile0 "Ceci ne semble pas être un fichier...\n"
+ #define MSGTR_GUI_MSG_NotAFile1 "Ceci ne semble pas être un fichier : %s !\n"
+ #define MSGTR_GUI_MSG_PlaybackNeedsRestart "ATTENTION : certaines options requièrent un redémarrage de la lecture !"
+@@ -799,6 +800,10 @@ static const char help_text[] = MSGTR_He
+ #define MSGTR_GUI_Open "Ouvrir..."
+ #define MSGTR_GUI_Original "Original"
+ #define MSGTR_GUI_OsdLevel "Niveau OSD"
++#define MSGTR_GUI_OsdLevel0 "Sous-titres seulement"
++#define MSGTR_GUI_OsdLevel1 "Volume et chercher"
++#define MSGTR_GUI_OsdLevel2 "Volume, chercher, minuterie et pourcentage"
++#define MSGTR_GUI_OsdLevel3 "Volume, chercher, minuterie, pourcentage et temps total"
+ #define MSGTR_GUI_OSD_Subtitles "Sous-titres & OSD"
+ #define MSGTR_GUI_Outline "Contour "
+ #define MSGTR_GUI_PanAndScan "Recadrage "
+@@ -811,6 +816,7 @@ static const char help_text[] = MSGTR_He
+ #define MSGTR_GUI_Preferences "Préférences"
+ #define MSGTR_GUI_Previous "Flux précédent"
+ #define MSGTR_GUI_Quit "Quitter"
++#define MSGTR_GUI_QuitAfterPlaying "Quitter après la lecture"
+ #define MSGTR_GUI_RearLeft "Arrière Gauche"
+ #define MSGTR_GUI_RearRight "Arrière Droit"
+ #define MSGTR_GUI_Remove "Supprimer"

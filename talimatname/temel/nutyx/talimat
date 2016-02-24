@@ -1,0 +1,22 @@
+# Description: Base system of NuTyX, contains all folders and startup scripts.
+# URL: https://github.com/nutyx
+# Maintainer: tnut at nutyx dot org
+# Packager: tnut at nutyx dot org
+
+PKGMK_GROUPS=(man)
+PKGMK_IGNORE_RUNTIMEDEPS=yes
+
+name=nutyx
+version=8.0
+release=1
+source=(http://downloads.nutyx.org/files/nutyx-basicfs-$version.tar.bz2)
+build () {
+cd nutyx-basicfs/nutyx-houaphan-basicfs/rootfs
+mv * $PKG/
+mkdir -p $PKG/usr/local
+case $(uname -m) in
+x86_64) ln -sv lib $PKG/lib64
+        ln -sv lib $PKG/usr/lib64
+        ln -sv lib $PKG/usr/local/lib64;;
+esac
+}

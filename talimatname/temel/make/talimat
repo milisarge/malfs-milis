@@ -1,0 +1,18 @@
+# Description: The Make package contains a program for compiling packages.
+# URL: http://www.gnu.org/software/make/
+# Maintainers: Paul D. Smith psmith at gnu dot org,Boris Kolpackov boris at kolpackov dot net
+# Packager: tnuttens at gmail dot com
+PKGMK_GROUPS=(man locale)
+name=make
+version=4.1
+release=1
+
+source=(http://ftp.gnu.org/gnu/make/make-$version.tar.bz2)
+build()
+{
+cd  make-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

@@ -1,0 +1,21 @@
+# Description: A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop.
+# URL: http://zim-wiki.org/
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: python-gtk dejavu-ttf desktop-file-utils
+
+run=(dejavu-ttf desktop-file-utils shared-mime-info)
+
+name=zim
+version=0.60
+release=2
+
+source=(
+http://www.zim-wiki.org/downloads/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    # zim's setup.py subclasses distutil's install class, adding a flag to
+    # disable running update-desktop-database and update-mime-database
+    # during the install: --skip-xdg-cmd
+    python2 setup.py install --prefix=/usr --root=$PKG --skip-xdg-cmd
+}

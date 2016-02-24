@@ -1,0 +1,32 @@
+# Description: Autofs controls the operation of the automount daemons.
+# URL: http://www.kernel.org/pub/linux/daemons/autofs
+# Packager: berlius at nutyx dot com
+# Depends on: libtirpc nfs-utils libxml2 kerberos openldap cyrus-sasl
+
+name=autofs
+version=5.1.1	
+release=1
+source=(http://www.kernel.org/pub/linux/daemons/autofs/v5/$name-$version.tar.xz auto.master)
+ 
+build() {
+
+	cd $name-$version
+	   
+    source  /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2 
+
+	
+	./configure --prefix=/         \
+	            --mandir=/usr/share/man 
+	make
+	make DESTDIR=$PKG install
+	
+	
+	mv $PKG/etc/auto.master $PKG/etc/auto.master.bak 
+	cp -v $SRC/auto.master $PKG/etc/auto.master
+
+	cd $scripts-$scriptsversion
+	make DESTDIR=$PKG install-autofs
+	
+}

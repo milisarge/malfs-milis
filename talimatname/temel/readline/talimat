@@ -1,0 +1,58 @@
+# Description: Set of libraries that offers command-line editing and history capabilities.
+# URL: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
+# Maintainer: Chet Ramey, chet dot ramey at case dot edu
+# Packager: pierre at nutyx dot org
+name=readline
+version=6.3
+release=1
+
+source=(http://ftp.gnu.org/gnu/readline/readline-$version.tar.gz
+	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-upstream_fixes-3.patch)
+
+PKGMK_GROUPS=(devel man doc)
+
+build()
+{
+cd readline-$version
+patch -Np1 -i ../$name-$version-upstream_fixes-3.patch
+
+sed -i '/MV.*old/d' Makefile.in
+sed -i '/{OLDSUFF}/c:' support/shlib-install
+
+./configure --prefix=/usr \
+--docdir=/usr/share/doc/readline-$version
+
+make SHLIB_LIBS=-lncurses
+
+make DESTDIR=$PKG install
+
+mkdir -p $PKG/lib
+
+mv -v $PKG/usr/lib/lib{readline,history}.so.* \
+$PKG/lib
+
+rm -rf $PKG/usr/share/info/dir
+
+mkdir -p $PKG/usr/share/doc/readline-$version
+install -v -m644 doc/*.{ps,pdf,html,dvi} \
+$PKG/usr/share/doc/readline-$version
+
+rm -rv $PKG/usr/bin
+
+ln -sfv ../../lib/libreadline.so.6 \
+$PKG/usr/lib/libreadline.so
+
+ln -sfv ../../lib/libhistory.so.6 \
+$PKG/usr/lib/libhistory.so
+
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
+usr/lib/libhistory.a usr/lib/libreadline.a usr/include usr/share/readline \
+usr/lib/libhistory.so usr/lib/libreadline.so
+rm -r usr/lib/libhistory.a usr/lib/libreadline.a usr/include usr/share/readline \
+usr/lib/libhistory.so usr/lib/libreadline.so
+}

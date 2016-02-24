@@ -1,0 +1,19 @@
+# Description: Library implementation of the Media Transfer Protocol.
+# URL: http://libmtp.sourceforge.net
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: libusb libgcrypt
+
+name=libmtp
+version=1.1.9
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --disable-static
+    make
+    make -k check
+    make DESTDIR=$PKG install
+}

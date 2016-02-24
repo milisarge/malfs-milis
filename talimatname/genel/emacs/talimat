@@ -1,0 +1,28 @@
+# URL:         	https://www.gnu.org/software/emacs/
+# Packager:		berlius at nutyx dot com
+# Depends on:  	gtk2 desktop-file-utils libjpeg-turbo giflib
+description="An extensible, customizable, self-documenting real-time display editor."
+name=emacs
+version=24.5
+release=1
+
+source=(https://ftp.gnu.org/pub/gnu/emacs/$name-$version.tar.xz
+		site-start.el)
+
+build () {
+
+    cd $name-$version
+    
+	./configure --prefix=/usr        \
+            --without-gnutls     \
+            --localstatedir=/var
+    make
+	make DESTDIR=$PKG install
+	chown -v -R root:root $PKG/usr/share/emacs/24.5
+	
+	install -v -m755 -d $PKG/usr/share/emacs/site-lisp
+	cp -v  $SRC/site-start.el $PKG/usr/share/emacs/site-lisp/site-start.el
+
+
+
+}

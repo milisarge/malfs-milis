@@ -1,0 +1,25 @@
+# Description : C++ library for interfacing with Echo Nest (builds the qt5 version)
+# URL : https://projects.kde.org/projects/playground/libs/libechonest
+# Packager : pierre at nutyx dot prg
+# Depends on : qt5
+
+name=libechonest
+version=2.3.1
+release=1
+
+source=(https://github.com/lfranchi/libechonest/archive/$version.tar.gz)
+
+build() {
+  mkdir build
+  cd build
+  
+  cmake ../$name-$version       \
+    -DCMAKE_BUILD_TYPE=Release  \
+    -DECHONEST_BUILD_TESTS=OFF  \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_WITH_QT4=off
+  
+  make
+  make DESTDIR=$PKG install
+}
+

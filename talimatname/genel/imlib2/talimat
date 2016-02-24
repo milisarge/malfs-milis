@@ -1,0 +1,23 @@
+# Description: library for the management d'images of way more effective that imlib
+# URL: http://sourceforge.net/projects/enlightenment
+# Packager: pierre at nutyx dot org
+# Depends on: aalib giflib xorg-libxext libtiff freetype xorg-libsm libpng libjpeg-turbo libid3tag 
+name=imlib2
+version=1.4.7
+release=1
+
+source=(http://downloads.sourceforge.net/enlightenment/$name-$version.tar.gz)
+build() {
+cd $name-$version
+case $(uname -m) in 
+	i686)
+		EXTRAOPTS="--disable-mmx";;
+	x86_64)
+		EXTRAOPTS="--disable-amd64";;
+esac
+./configure --prefix=/usr \
+--disable-static \
+$EXTRAOPTS
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,21 @@
+# Description: Documentation utilities for Gnome
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: intltool libxslt libxml2 rarian 
+
+name=gnome-doc-utils
+version=0.20.10
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+
+cd $name-$version
+
+PYTHON=/usr/bin/python2 ./configure --prefix=/usr \
+                                    --mandir=/usr/share/man \
+                                    --disable-scrollkeeper
+make
+make DESTDIR=$PKG install
+}

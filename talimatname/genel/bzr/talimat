@@ -1,0 +1,20 @@
+# Description: A decentralized revision control system (bazaar)
+# URL: http://bazaar.canonical.com/en/ 
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: python python-paramiko 
+name=bzr
+version=2.6.0
+release=1
+
+source=(
+http://launchpad.net/bzr/${version%.*}/$version/+download/bzr-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    sed -i -e 's|man/man1|share/&|' setup.py
+    python2 setup.py install --prefix=/usr --root=$PKG
+
+    # bash-completion
+    install -Dm644 contrib/bash/bzr \
+        $PKG/usr/share/bash-completion/completions/bzr
+}

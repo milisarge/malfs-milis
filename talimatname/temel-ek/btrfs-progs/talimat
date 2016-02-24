@@ -1,0 +1,18 @@
+# Description: Btrfs filesystem utilities
+# URL: http://btrfs.wiki.kernel.org/
+# Packagers: alienus at nutyx dot org, tnut at nutyx dot org
+
+name=btrfs-progs
+version=4.1
+release=1
+
+source=(https://www.kernel.org/pub/linux/kernel/people/kdave/$name/$name-v$version.tar.xz
+	http://downloads.nutyx.org/files/$name-man-v$version.tar.xz)
+
+build(){
+cd $name-v$version
+./configure --prefix=/usr libdir=/lib \
+bindir=/sbin
+make
+make DESTDIR=$PKG install
+}

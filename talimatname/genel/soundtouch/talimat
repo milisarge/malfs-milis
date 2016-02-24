@@ -1,0 +1,17 @@
+# Description: Audio processing library that allows changing the sound tempo, pitch and playback rate.
+# Url: http://www.surina.net/soundtouch/
+# Maintainer: Olli Parviainen <oparviai 'at' iki' dot' fi>
+# Packager: tnut at nutyx dot org
+
+name=soundtouch
+version=1.9.2
+release=1
+source=(http://www.surina.net/soundtouch/$name-$version.tar.gz)
+build() {
+cd $name
+./bootstrap
+./configure --prefix=/usr \
+--docdir=/usr/share/doc/$name-$version
+make
+make DESTDIR=$PKG install
+}

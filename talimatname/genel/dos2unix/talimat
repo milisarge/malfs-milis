@@ -1,0 +1,16 @@
+# Description : Text file format converter
+# URL : http://waterlan.home.xs4all.nl/dos2unix.html
+# Packager : pierre at nutyx dot org
+# Depends on : perl 
+
+name=dos2unix
+version=7.3.2
+release=1
+
+source=(http://waterlan.home.xs4all.nl/$name/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  make
+  make DESTDIR=$PKG install
+}

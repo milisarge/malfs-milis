@@ -1,0 +1,25 @@
+# Description: The Tar package contains an archiving program.
+# URL: http://www.gnu.org/software/tar/tar.html
+# Maintainers: John Gilmore,Henry Spencer,Fred Fish,Ian Darwin,Geoff Collyer,Stan Barber,Guy Harris,Dave Brower,Richard Todd,Michael Rendell,Stu Heiss and,Rich Salz.
+# Packager: pierre at nutyx dot org
+name=tar
+version=1.28
+release=2
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build()
+{
+cd $name-$version
+
+FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr --bindir=/bin --libexecdir=/sbin
+
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+
+mkdir $PKG/usr/share/doc
+make -C doc install-html docdir=$PKG/usr/share/doc/tar-$version
+
+mkdir -p $PKG/usr/share/man/man1
+}

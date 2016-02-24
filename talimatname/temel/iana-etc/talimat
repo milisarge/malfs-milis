@@ -1,0 +1,20 @@
+# Description: The Iana-Etc package provides data for network services and protocols.
+# URL: http://www.sethwklein.net/projects/iana-etc/
+# Maintainer: Seth W. Klein sk at sethwklein dot net
+# Packager: tnut at nutyx dot org
+name=iana-etc
+version=2.30
+release=1
+
+source=(http://sethwklein.net/iana-etc-2.30.tar.bz2)
+
+build()
+{
+cd iana-etc-$version
+
+make
+
+make DESTDIR=$PKG install
+
+}
+

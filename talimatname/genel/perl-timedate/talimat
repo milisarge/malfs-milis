@@ -1,0 +1,28 @@
+# Description: Date formating subroutines
+# URL: URL: http://search.cpan.org/dist/TimeDate/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+run=( perl )
+name=perl-timedate
+version=2.30
+release=1
+
+source=(
+http://www.cpan.org/authors/id/G/GB/GBARR/TimeDate-$version.tar.gz)
+
+build() {
+    cd TimeDate-$version
+    perl Makefile.PL
+    make OPTIMIZE="$CFLAGS" || exit 1
+    make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1
+
+    # Remove perllocal.pod and .packlist if present in the package
+    for i in perllocal.pod .packlist; do
+        find $PKG -name "$i" -exec rm -rf {} \;
+    done
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

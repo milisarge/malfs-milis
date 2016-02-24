@@ -1,0 +1,18 @@
+# Description: Audio codec, free, open and unpatented, it is roughly comparable to other formats.
+# URL: http://www.vorbis.com/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: libogg doxygen 
+name=libvorbis
+version=1.3.5
+release=1
+
+source=( http://downloads.xiph.org/releases/vorbis/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+install -v -m644 doc/Vorbis* $PKG/usr/share/doc/libvorbis-$version
+}

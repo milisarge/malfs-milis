@@ -1,0 +1,17 @@
+# Description: A proven industry-strength PDF generating solution
+# URL: http://www.reportlab.org/rl_toolkit.html
+# Packager: alienus at nutyx dot org
+# Depends on: python python-pillow
+
+name=python-reportlab
+version=3.1.8
+release=1
+
+source=(
+https://pypi.python.org/packages/source/r/reportlab/reportlab-$version.tar.gz)
+
+build() {
+    cd reportlab-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+    python2 setup.py tests
+}

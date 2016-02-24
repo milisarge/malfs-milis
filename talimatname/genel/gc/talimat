@@ -1,0 +1,24 @@
+# Description: A garbage collector for C and C++
+# URL: http://www.hpl.hp.com/personal/Hans_Boehm/gc/
+# Packager: pierre at nutyx dot org
+# Depends on: libatomic-ops 
+
+name=gc
+version=7.4.2
+release=2
+
+source=(http://www.hboehm.info/gc/gc_source/gc-$version.tar.gz)
+
+build() {
+cd gc-*
+sed -i 's#pkgdata#doc#' doc/doc.am && autoreconf &&
+./configure --prefix=/usr \
+--enable-threads=pthreads \
+--disable-static \
+--enable-shared \
+--enable-cplusplus
+install -D -m 644 doc/gc.man $PKG/usr/share/man/man3/gc.3 
+make
+make DESTDIR=$PKG install
+rm -r $PKG/usr/share/doc
+}

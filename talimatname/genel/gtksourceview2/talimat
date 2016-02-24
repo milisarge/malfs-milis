@@ -1,0 +1,19 @@
+# Description: Libraries used for extending the GTK+ 2 text functions to include syntax highlighting.
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: gtk2 libxml2
+
+name=gtksourceview2
+version=2.10.5
+release=2
+
+source=(http://ftp.gnome.org/pub/gnome/sources/gtksourceview/2.10/gtksourceview-${version}.tar.bz2)
+
+build() {
+cd gtksourceview-$version
+sed -i 's#python#python2#' gtksourceview/language-specs/convert.py
+  ./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var --disable-static
+make
+make DESTDIR=$PKG install
+}

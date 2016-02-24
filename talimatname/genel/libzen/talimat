@@ -1,0 +1,33 @@
+# Description: Shared library for libmediainfo and mediainfo
+# URL: http://mediainfo.sourceforge.net/
+# Packager: tnut at nutyx dot org
+# Depends on: 
+name=libzen
+version=0.4.31
+release=1
+
+source=(
+http://downloads.sourceforge.net/zenlib/${name}_${version}.tar.bz2)
+
+build(){
+    cd $SRC/ZenLib/Project/GNU/Library
+    sh ./autogen
+    ./configure --prefix=/usr \
+                --enable-shared
+    make clean
+    make
+    make DESTDIR=$PKG install
+
+    install -dm755 $PKG/usr/include/ZenLib
+    install -m644 $SRC/ZenLib/Source/ZenLib/*.h $PKG/usr/include/ZenLib
+    for i in HTTP_Client Format/Html Format/Http; do
+        install -dm0755 $PKG/usr/include/ZenLib/$i
+        install -m0644 $SRC/ZenLib/Source/ZenLib/$i/*.h \
+            $PKG/usr/include/ZenLib/$i
+    done
+    install -dm755 $PKG/usr/lib/pkgconfig
+    install -m644 $SRC/ZenLib/Project/GNU/Library/libzen.pc \
+        $PKG/usr/lib/pkgconfig
+    sed -i -e 's|Version: |Version: '$version'|g' \
+        $PKG/usr/lib/pkgconfig/libzen.pc
+}

@@ -1,0 +1,17 @@
+# Description: Library and tools used to manipulate, convert and view Scalable Vector Graphic images.
+# URL: http://librsvg.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: gdk-pixbuf libcroco pango vala 
+name=librsvg
+version=2.40.13
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static \
+--enable-vala
+make
+make DESTDIR=$PKG install
+}

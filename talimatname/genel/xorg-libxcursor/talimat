@@ -1,0 +1,17 @@
+# Description: libXcursor, library Xorg
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-libxrender xorg-libxfixes xorg-libx11 
+
+name=xorg-libxcursor
+version=1.1.14
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXcursor-$version.tar.bz2)
+
+build() {
+cd libXcursor-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make	
+make DESTDIR=$PKG install
+}

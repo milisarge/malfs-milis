@@ -1,0 +1,16 @@
+. lib/lsb/init-functions
+if [ ! -z "`cards list|grep lxdm\ `" ]; then
+        log_failure_msg "${WARNING}lxdm${NORMAL} should be removed"
+        exit 1
+fi
+
+if ! getent group sddm > /dev/null; then
+   groupadd -g 64 --system sddm
+fi
+if ! getent passwd sddm > /dev/null; then
+   useradd -c "Simple Desktop Display Manager" --system -d /var/lib/sddm -s /usr/bin/nologin -u 64 -g sddm sddm
+   passwd -l sddm > /dev/null
+fi
+
+mkdir -p var/lib/sddm
+chown -R sddm:sddm var/lib/sddm > /dev/null

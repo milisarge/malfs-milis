@@ -1,0 +1,31 @@
+# Description: Copies files into or out of a cpio or tar archive.
+# URL: http://www.gnu.org/software/cpio/
+# Maintainer: Sergey Poznyakoff
+# Packager: pierre at nutyx dot org
+
+
+name=cpio
+version=2.11
+release=1
+
+source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2\
+)
+
+
+build() {
+	cd $name-$version
+	sed -i -e '/gets is a/d' gnu/stdio.in.h
+	./configure \
+		--prefix=/usr \
+		--bindir=/bin \
+		--libexecdir=/tmp \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--enable-mt --with-rmt=/usr/sbin/rmt
+	make
+	make DESTDIR=$PKG install
+	if [ -f $PKG/usr/share/info/dir ]; then
+		rm $PKG/usr/share/info/dir
+	fi
+	rm -r $PKG/tmp
+}

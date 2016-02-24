@@ -1,0 +1,22 @@
+# Description: Implementations for atomic memory update operations on a number of architectures.
+# URL: http://www.hpl.hp.com/research/linux/atomic_ops/
+# Packager: pierre at nutyx dot org
+
+name=libatomic-ops
+version=7.4.2
+release=1
+
+source=(http://www.ivmaisoft.com/_bin/atomic_ops//libatomic_ops-$version.tar.gz)
+
+build() {
+cd libatomic_ops-$version
+sed -i 's#pkgdata#doc#' doc/Makefile.am 
+autoreconf -fi
+./configure --prefix=/usr    \
+            --enable-shared  \
+            --disable-static \
+            --docdir=/usr/share/doc/libatomic_ops-$version
+make
+make DESTDIR=$PKG install
+rm -vrf $PKG/usr/share/libatomic_ops
+}

@@ -1,0 +1,17 @@
+# Description: connector Python2 for the library cairo
+# URL: http://www.cairographics.org/
+# Packager: pierre at nutyx dot org
+# Depends on: cairo 
+
+name=python-cairo
+version=1.10.0
+release=1
+
+source=(http://cairographics.org/releases/py2cairo-$version.tar.bz2)
+
+build() {
+	cd py2cairo-$version
+	python2 ./waf configure --prefix=/usr
+	./waf build
+	./waf install --destdir=$PKG
+}  

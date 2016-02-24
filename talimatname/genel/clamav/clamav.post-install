@@ -1,0 +1,11 @@
+if [ -z `getent group clamav` ]; then
+	groupadd -r clamav
+fi
+
+if [ -z `getent passwd clamav` ]; then
+	useradd -r -g clamav -d /etc/clamav -s /bin/false -c "ClamAV" clamav
+fi
+
+name=clamav
+chown -R $name:$name $PKG/var/run/$name $PKG/var/log/$name
+install -o clamav -g clamav -m 0775 -d /usr/share/clamav

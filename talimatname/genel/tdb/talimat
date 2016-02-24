@@ -1,0 +1,20 @@
+# Description: A Trivial Database similar to GDBM but allows simultaneous commits
+# URL: http://tdb.samba.org/
+# Packager: tnut at nutyx dot org
+# Depends on: python,libxslt,docbook-xsl
+
+
+name=tdb
+version=1.3.7
+release=1
+source=(http://samba.org/ftp/${name}/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+ sed -i -e 's#python#python2#g' buildtools/bin/waf
+	./configure --prefix=/usr \
+               --localstatedir=/var \
+               --sysconfdir=/etc/samba
+	make
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,21 @@
+# Description: Designed for internationalized string handling based on the Stringprep, 
+# URL: http://www.gnu.org/software/libidn/
+# Packager: tnut at nutyx dot org
+name=libidn
+version=1.32
+release=1
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static \
+--mandir=/usr/share/man --infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/{dir,libidn-components.png}
+# Doc
+find doc -name "Makefile*" -delete
+rm -rf -v doc/{gdoc,idn.1,stamp-vti,man,texi}
+mkdir -p /usr/share/doc/$name-$version
+cp -r -v doc/* /usr/share/doc/$name-$version
+}

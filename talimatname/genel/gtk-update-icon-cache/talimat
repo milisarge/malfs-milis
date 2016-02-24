@@ -1,0 +1,24 @@
+# Description: The GTK+ update icon cache tool
+# URL: http://www.gtk.org/
+# Packager: pierre at nutyx dot org
+# Depends on: gdk-pixbuf glib atk pango cairo libffi libpng pcre
+
+name=gtk-update-icon-cache
+version=2.24.29
+release=2
+
+source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
+
+build() {
+cd gtk+-$version
+sed -i 's#.*@man_#man_#' docs/reference/gtk/Makefile.in
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--sysconfdir=/etc \
+--with-xinput=yes 
+cd gtk
+make gtk-update-icon-cache
+mkdir -p $PKG/usr/{bin,share/man/man1}
+install -c gtk-update-icon-cache $PKG/usr/bin/gtk-update-icon-cache
+}

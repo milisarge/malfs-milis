@@ -1,0 +1,21 @@
+# Description: libxklavier, library for the keyboard under X
+# URL:  http://www.freedesktop.org/wiki/Software/LibXklavier
+# Packager: pierre at nutyx dot org
+# Depends on: iso-codes libxml2 xorg-libx11 glib gobject-introspection xorg-libxkbfile 
+_name=libxklavier
+
+name=xorg-libxklavier
+version=5.4
+release=1
+
+source=(http://pkgs.fedoraproject.org/repo/pkgs/libxklavier/${_name}-$version.tar.bz2/13af74dcb6011ecedf1e3ed122bd31fa/${_name}-$version.tar.bz2)
+
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
+} 

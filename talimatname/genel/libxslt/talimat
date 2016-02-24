@@ -1,0 +1,16 @@
+# Description: XSLT libraries used for extending libxml2 libraries to support XSLT files.
+# URL: http://xmlsoft.org/XSLT/
+# Packager: pierre at pierre dot org
+# Depends on: libxml2 libgcrypt 
+name=libxslt
+version=1.1.28
+release=1
+
+source=( ftp://xmlsoft.org/libxml2/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

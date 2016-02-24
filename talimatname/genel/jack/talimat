@@ -1,0 +1,27 @@
+# Description: A low-latency audio server
+# URL: http://jackaudio.org
+# Packager: pierre at nutyx dot org
+# Depends on: db libsamplerate readline doxygen celt 
+
+_longname=jack-audio-connection-kit
+
+name=jack
+version=0.124.1
+release=1
+
+source=(http://jackaudio.org/downloads/${_longname}-$version.tar.gz
+        jack-99-audio.conf
+        jack-40-hpet-permissions.rules)
+
+build() {
+cd ${_longname}-$version
+./configure --prefix=/usr --libdir=/usr/lib
+make
+make DESTDIR=$PKG install
+
+install -Dm644 $SRC/jack-99-audio.conf \
+      $PKG/etc/security/limits.d/99-audio.conf
+
+install -Dm644 $SRC/jack-40-hpet-permissions.rules \
+    $PKG/etc/udev/rules.d/40-hpet-permissions.rules
+}

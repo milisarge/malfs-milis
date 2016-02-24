@@ -1,0 +1,18 @@
+# Description: Google's data interchange format utility (python API).
+# URL: http://code.google.com/p/protobuf/
+# Packager: - pierre at nutyx dot org
+# Depends on: protobuf python-setuptools 
+
+_name=protobuf
+
+name=python-protobuf
+version=2.6.1
+release=1
+
+source=(https://github.com/google/protobuf/releases/download/$version/protobuf-$version.tar.bz2)
+
+build () 
+{ 
+cd ${_name}-$version/python
+python2 setup.py install --prefix=/usr --root $PKG
+}

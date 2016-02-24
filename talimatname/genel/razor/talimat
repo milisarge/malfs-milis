@@ -1,0 +1,23 @@
+# Description: A distributed, collaborative, spam detection and filtering network
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-net-dns perl-digest-sha1 perl-uri perl-digest-nilsimsa 
+
+name=razor
+version=2.85
+release=1
+
+source=(http://sourceforge.net/projects/razor/files/razor-agents/$version/razor-agents-$version.tar.bz2
+	razor-2.85-cosmetic-pv-fix.patch)
+
+build() {
+cd razor-agents-$version
+patch -p1 -i $SRC/razor-2.85-cosmetic-pv-fix.patch
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

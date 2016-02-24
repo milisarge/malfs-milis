@@ -1,0 +1,38 @@
+# URL:         	http://www.exim.org
+# Packager: 	berlius at nutyx dot com
+# Depends on:  	db openssl pcre cyrus-sasl libidn pam mariadb openldap openssl gnutls postgresql sqlite xorg
+description="MTA written by the University of Cambridge, released under the GNU Public License."
+name=exim
+version=4.86
+release=1
+
+source=(ftp://ftp.exim.org/pub/exim/exim4/$name-$version.tar.bz2) 
+
+build() {
+
+    cd $name-$version
+    
+    source  /etc/blfs-bootscripts
+	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2 
+
+
+    sed -e 's,^BIN_DIR.*$,BIN_DIRECTORY=/usr/sbin,' \
+    -e 's,^CONF.*$,CONFIGURE_FILE=/etc/exim.conf,' \
+    -e 's,^EXIM_USER.*$,EXIM_USER=exim,' \
+    -e 's,^EXIM_MONITOR,#EXIM_MONITOR,' src/EDITME > Local/Makefile 
+	printf "USE_GDBM = yes\nDBMLIB = -lgdbm\n" >> Local/Makefile
+
+    make 
+    make DESTDIR=$PKG install
+
+	install -v -d -m755 $PKG/usr/share/man/man8 
+    install -v -m644 doc/exim.8 $PKG/usr/share/man/man8 
+	install -v -d -m755 $PKG/usr/share/doc/exim-4.86 
+	install -v -m644 doc/* $PKG/usr/share/doc/exim-4.86 
+	
+	cd $scripts-$scriptsversion
+	make DESTDIR=$PKG install-exim
+ 
+    
+}

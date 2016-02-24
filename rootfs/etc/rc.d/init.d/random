@@ -1,0 +1,55 @@
+#!/bin/sh
+########################################################################
+# Begin random
+#
+# Description : Seed /dev/urandom
+#
+# Author      : Larry Lawrence
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:          random
+# Required-Start:    $local_fs
+# Should-Start:
+# Required-Stop:     $local_fs
+# Should-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Initialises /dev/urandom
+# Description:       Initialises /dev/urandom from a seed stored in /var/tmp.
+# X-LFS-Provided-By: BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2011-12-06 05:56:33 +0000 (Tue, 06 Dec 2011) $
+
+case "$1" in
+   start)
+      log_info_msg "Initializing kernel random number generator..."
+      
+      if [ -f /var/tmp/random-seed ]; then
+         /bin/cat /var/tmp/random-seed >/dev/urandom
+      fi
+      
+      /bin/dd if=/dev/urandom of=/var/tmp/random-seed count=1 &>/dev/null
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Saving random seed..."
+      /bin/dd if=/dev/urandom of=/var/tmp/random-seed count=1 &>/dev/null
+      evaluate_retval
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/random

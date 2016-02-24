@@ -1,0 +1,25 @@
+# Description: JavaScript interpreter and libraries
+# URL: https://developer.mozilla.org/En/SpiderMonkey/1.8.5
+# Packager: pierre at nutyx dot org
+# Depends on: libffi nspr zip python
+name=js1
+version=17.0.0
+release=1
+
+source=( http://ftp.mozilla.org/pub/mozilla.org/js/mozjs$version.tar.gz )
+
+build () {
+cd mozjs$version/js/src
+sed -i 's/(defined\((@TEMPLATE_FILE)\))/\1/' config/milestone.pl
+./configure --prefix=/usr       \
+            --enable-readline   \
+            --enable-threadsafe \
+            --with-system-ffi   \
+            --with-system-nspr
+make
+make DESTDIR=$PKG install
+find $PKG/usr/include/js-17.0/            \
+     $PKG/usr/lib/libmozjs-17.0.a         \
+     $PKG/usr/lib/pkgconfig/mozjs-17.0.pc \
+     -type f -exec chmod -v 644 {} \;
+}

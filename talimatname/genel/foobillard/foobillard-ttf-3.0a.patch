@@ -1,0 +1,16 @@
+diff -Nru foobillard-3.0a-orig/src/options.h foobillard-3.0a/src/options.h
+--- foobillard-3.0a-orig/src/options.h	2003-11-27 05:32:54.000000000 +0200
++++ foobillard-3.0a/src/options.h	2007-05-07 23:37:43.000000000 +0300
+@@ -97,9 +97,9 @@
+ #define options_shared_data_path   "/usr/local/shared/foobillard"
+ 
+ #define options_player_fontname    "iomanoid.ttf"
+-#define options_help_fontname      "youregon.ttf"
+-#define options_menu_fontname      "youregon.ttf"
+-#define options_winner_fontname    "youregon.ttf"
++#define options_help_fontname      "bluebold.ttf"
++#define options_menu_fontname      "bluebold.ttf"
++#define options_winner_fontname    "bluebold.ttf"
+ #define options_ball_fontname      "bluebold.ttf"
+ #define options_score_fontname     "bluebold.ttf"
+ #define options_roster_fontname    "bluebold.ttf"

@@ -1,0 +1,26 @@
+# Description: OBEX Data Server package contains D-Bus service providing high-level OBEX client and server side functionality. 
+# URL: http://tadas.dailyda.com
+# Packager: berlius at nutyx dot com
+# Depends on: bluez dbus-glib imagemagick gdk-pixbuf libusb-compat openobex
+
+description="D-Bus service providing high-level OBEX client and server side functionality."
+name=obex-data-server
+version=0.4.6 	
+release=1
+source=(http://tadas.dailyda.com/software/$name-$version.tar.gz
+		http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-build-fixes-1.patch)
+ 
+build() {
+
+cd $name-$version
+	
+patch -Np1 -i $SRC/obex-data-server-0.4.6-build-fixes-1.patch 
+	
+./configure --prefix=/usr --sysconfdir=/etc 
+	
+make
+		
+make DESTDIR=$PKG install
+	
+	
+}

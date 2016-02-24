@@ -1,0 +1,16 @@
+version=5.22.1
+source=(http://ftp.funet.fi/pub/CPAN/src/perl-$version.tar.bz2
+	)
+build()
+{
+cd perl-$version
+
+sh Configure -des -Dprefix=/tools -Dlibs=-lm
+
+make
+
+cp -v perl cpan/podlators/pod2man /tools/bin
+mkdir -pv /tools/lib/perl5/$version
+cp -Rv lib/* /tools/lib/perl5/$version
+ln -s /tools/bin/perl $LFS/usr/bin
+}

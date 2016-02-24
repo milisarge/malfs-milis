@@ -1,0 +1,21 @@
+# Description: Provide a secure layer over a reliable transport layer proposed by the IETF's TLS group.
+# URL: http://www.gnu.org/software/gnutls/
+# Packager: pierre at nutyx dot org
+# Depends on: libtasn1 nettle libidn p11-kit
+
+name=gnutls
+version=3.4.9
+release=1
+
+source=(ftp://ftp.gnutls.org/gcrypt/$name/v${version:0:3}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--with-zlib \
+--with-default-trust-store-file=/etc/ssl/ca-bundle.crt \
+--disable-guile
+make
+make DESTDIR=$PKG install
+rm -f $PKG/usr/share/info/dir
+}

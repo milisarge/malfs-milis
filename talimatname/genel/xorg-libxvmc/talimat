@@ -1,0 +1,17 @@
+# Description: libXvMc, library X Video Motion Compensation extension client
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: xorg-libx11 xorg-libxext xorg-libxv
+
+name=xorg-libxvmc
+version=1.0.9
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXvMC-$version.tar.bz2)
+
+build() {
+cd libXvMC-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

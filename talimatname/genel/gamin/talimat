@@ -1,0 +1,27 @@
+# Description: File and directory monitoring system defined to be a subset of the File Alteration Monitor
+# URL:  http://www.gnome.org/~veillard/gamin
+# Packager: pierre at nutyx dot org
+# Depends on: glib python
+
+name=gamin
+version=0.1.10
+release=1
+
+source=(http://www.gnome.org/~veillard/gamin/sources/$name-$version.tar.gz
+	http://downloads.nutyx.org/files/patchs/$name/remove_deprecated_G_CONST_RETURN.patch)
+
+build() {
+cd $name-$version
+patch -p0 < ../remove_deprecated_G_CONST_RETURN.patch
+sed -i 's/G_CONST_RETURN/const/' server/gam_{node,subscription}.{c,h}
+
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--libexecdir=/usr/bin \
+--disable-static
+
+make
+make DESTDIR=$PKG install
+}
+  

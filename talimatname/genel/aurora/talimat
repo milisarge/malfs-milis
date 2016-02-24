@@ -1,0 +1,27 @@
+# URL: http://www.xfce-look.org/content/show.php/Aurora+Gtk+Engine?content=56438
+# Maintainer: Eric Matthews
+# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: gtk2
+
+description="Gtk Engine themes with all common Gtk widgets"
+name=aurora
+version=1.5.1
+release=2
+
+source=(http://gnome-look.org/CONTENT/content-files/56438-aurora-$version.tar.bz2 \
+    http://www.gnome-look.org/CONTENT/content-files/80431-aurorasmooth.tar.bz2)
+
+build() {
+unset MAKEFLAGS
+tar zxf aurora-gtk-engine-1.5.tar.gz
+cd aurora-1.5
+sed -i "s|glib/gtimer.h|glib.h|" src/animation.c
+./configure --prefix=/usr --enable-animation
+make
+make DESTDIR=$PKG install
+install -d $PKG/usr/share/themes
+cd $PKG/usr/share/themes
+tar jxf $SRC/Aurora.tar.bz2
+cp -r $SRC/AuroraSmooth ./
+chmod 644 Aurora*/*/gtkrc
+}

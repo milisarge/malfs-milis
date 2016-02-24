@@ -1,0 +1,27 @@
+# Description: A command-line Mail User Agent derived from Berkeley Mail.
+# URL: http://heirloom.sourceforge.net/mailx.html
+# Packager: berlius at nutyx dot com
+# Depends on: openssl kerberos sendmail
+
+name=mailx
+version=12.5	
+release=1
+source=(http://ftp.debian.org/debian/pool/main/h/heirloom-$name/heirloom-mailx_12.5.orig.tar.gz
+		http://www.linuxfromscratch.org/patches/blfs/svn/heirloom-$name-12.5-fixes-1.patch )
+ 
+build() {
+
+cd heirloom-$name-$version
+
+patch -Np1 -i $SRC/heirloom-mailx-12.5-fixes-1.patch 
+	
+make SENDMAIL=/usr/sbin/sendmail -j1
+
+make PREFIX=$PKG/usr UCBINSTALL=/usr/bin/install install 
+	
+ln -v -sf mailx $PKG/usr/bin/mail 
+ln -v -sf mailx $PKG/usr/bin/nail 
+install -v -m755 -d $PKG/usr/share/doc/heirloom-mailx-12.5 
+install -v -m644 README $PKG/usr/share/doc/heirloom-mailx-12.5
+
+}

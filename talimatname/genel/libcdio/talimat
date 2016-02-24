@@ -1,0 +1,18 @@
+# Description: GNU Compact Disc Input and Control Library
+# URL: http://www.gnu.org/software/libcdio/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: libcddb
+
+name=libcdio
+version=0.93
+release=2
+
+source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --disable-static 
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/info/dir
+}

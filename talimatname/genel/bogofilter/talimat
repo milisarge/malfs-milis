@@ -1,0 +1,16 @@
+# Description: A fast Bayesian spam filtering tool
+# URL: http://bogofilter.sourceforge.net/
+# Packager: - David Relson, Matthias Andree, Greg Louis
+# Depends on: db 
+
+name=bogofilter
+version=1.2.4
+release=1
+
+source=(http://sourceforge.net/projects/$name/files/$name-$version/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

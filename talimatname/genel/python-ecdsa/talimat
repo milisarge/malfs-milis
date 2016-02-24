@@ -1,0 +1,19 @@
+# Description: Implementation of ECDSA in Python
+# URL: URL: https://github.com/warner/python-ecdsa
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
+name=python-ecdsa
+version=0.11
+release=1
+
+source=(http://pypi.python.org/packages/source/e/ecdsa/ecdsa-$version.tar.gz)
+
+build() {
+    cd ecdsa-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

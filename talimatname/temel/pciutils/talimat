@@ -1,0 +1,29 @@
+# Description: PCI bus configuration space access library and tools
+# URL: http://atrey.karlin.mff.cuni.cz/~mj/pciutils.html
+# Packager: pierre at nutyx dot org
+
+name=pciutils
+version=3.4.1
+release=1
+
+source=( ftp://ftp.kernel.org/pub/software/utils/$name/$name-$version.tar.xz )
+
+PKGMK_GROUPS=(devel man)
+build() {
+cd $name-$version
+make OPT="$CFLAGS -fPIC -DPIC" \
+ZLIB=no \
+PREFIX=/usr \
+SHAREDIR=/usr/share/misc \
+MANDIR=/usr/share/man \
+SHARED=yes all
+
+mkdir -p $PKG/usr/share/man
+mkdir -p $PKG/usr/lib
+make PREFIX=$PKG/usr \
+SHAREDIR=$PKG/usr/share/misc \
+MANDIR=$PKG/usr/share/man \
+SHARED=yes ZLIB=no \
+install install-lib
+chmod -v 755 $PKG/usr/lib/libpci.so.$version
+}

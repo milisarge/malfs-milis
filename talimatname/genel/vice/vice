@@ -1,0 +1,28 @@
+#!/bin/sh
+
+dialog --title "VICE" \
+        --menu "VICE is an emulator for Commodore\n\
+computers. It emulates the C64, the C128,\n\
+the VIC20, almost all PET models, the PLUS4\n\
+and the CBM-II.\n\\n\
+Choose the emulator you like to run:" 24 60 6 \
+        "x64"  "- C64 emulator" \
+	"x64dtv" "- C64 Direct-to-TV (DTV) emulator" \
+        "x128" "- C128 emulator" \
+        "xvic" "- VIC20 emulator" \
+        "xpet" "- PET emulator" \
+        "xplus4" "- PLUS4 emulator" \
+        "xcbm2"  "- CBM-II emulator" 2> /tmp/menu.tmp.$$
+
+retval=$?
+choice=`cat /tmp/menu.tmp.$$`
+rm -f /tmp/menu.tmp.$$
+
+case $retval in
+  0)
+    $choice;;
+  1)
+    ;;
+  255)
+    ;;
+esac

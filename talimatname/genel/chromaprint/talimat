@@ -1,0 +1,20 @@
+# Description: Implements a custom algorithm for extracting fingerprints from any audio source.
+# URL: http://acoustid.org/chromaprint/
+# Packager: pierre at nutyx dot org
+# Depends on: ffmpeg cmake
+
+name=chromaprint
+version=1.2
+release=1
+
+source=(https://bitbucket.org/acoustid/${name}/downloads/${name}-${version}.tar.gz)
+build() {
+cd $name-$version
+cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_EXAMPLES=ON \
+		.
+make
+make DESTDIR=$PKG install
+}

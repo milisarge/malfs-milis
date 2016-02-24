@@ -1,0 +1,11 @@
+--- asterisk-13.2.0/menuselect-tree	2015-04-01 13:33:21.374042590 +0900
++++ asterisk-13.2.0/menuselect-tree.cdr-mysql-enable	2015-04-01 13:49:31.412842692 +0900
+@@ -10,7 +10,7 @@
+ </member>
+ <member name="cdr_mysql" displayname="MySQL CDR Backend" remove_on_change="addons/cdr_mysql.o addons/cdr_mysql.so">
+ 	<depend>mysqlclient</depend>
+-	<defaultenabled>no</defaultenabled>
++	<defaultenabled>yes</defaultenabled>
+ 	<support_level>deprecated</support_level>
+ 	<replacement>cdr_adaptive_odbc</replacement>
+ </member>

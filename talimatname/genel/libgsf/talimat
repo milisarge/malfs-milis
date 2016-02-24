@@ -1,0 +1,17 @@
+# Description: Provide an extensible input/output abstraction layer for structured file formats.
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: glib intltool libxml2 gobject-introspection 
+name=libgsf
+version=1.14.35
+release=1
+
+source=( http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

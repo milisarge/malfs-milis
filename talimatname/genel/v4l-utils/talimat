@@ -1,0 +1,19 @@
+# Description: Userspace tools and conversion library for Video 4 Linux
+# URL: http://freshmeat.net/projects/libv4l
+# Packager: pierre at nutyx dot org
+# Depends on: libjpeg-turbo 
+
+name=v4l-utils
+version=1.10.0
+release=1
+
+source=(http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --sysconfdir=/etc
+	MAKEFLAGS="-j1" make install DESTDIR=$PKG
+	rm -f $PKG/usr/bin/ivtv-ctl
+  	mv $PKG/lib/udev $PKG/usr/lib/
+  	rm -rf $PKG/lib
+}

@@ -1,0 +1,19 @@
+# Description: A GTK+ based IRC client
+# URL: http://www.xchat.org/
+# Packager: tnut at nutyx dot org
+# Depends on: shared-mime-info gtk2 enchant dbus-glib
+
+name=xchat
+version=2.8.8
+release=2
+
+source=(http://www.xchat.org/files/source/${version%.*}/$name-$version.tar.xz
+	http://www.linuxfromscratch.org/patches/blfs/svn/xchat-2.8.8-glib-2.31-1.patch)        
+build() {
+cd $name-$version
+patch -Np1 -i ../xchat-2.8.8-glib-2.31-1.patch
+LIBS+="-lgmodule-2.0" ./configure --prefix=/usr \
+--sysconfdir=/etc --enable-shm 
+make
+make DESTDIR=$PKG install
+} 

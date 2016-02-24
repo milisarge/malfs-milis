@@ -1,0 +1,18 @@
+# Description: Le paquet keybinder2 contient une bibliothèque d'utilitaires pour la gestion globale des raccourcis clavier de X. 
+# URL: http://pcmanfm.sourceforge.net/
+# Maintainer: git.lxde.org/gitweb/?p=debian/libfm.git;a=summary
+# Packager: geantbrun at gmail dot com
+# Depends on: gtk2,gobject-introspection,python-gtk
+
+name=keybinder2
+version=0.3.0
+release=2
+
+source=(http://ftp.osuosl.org/pub/blfs/conglomeration/keybinder/keybinder-$version.tar.gz)
+
+build() {
+cd keybinder-$version
+./configure --prefix=/usr --disable-lua
+make 
+make DESTDIR=$PKG install
+}

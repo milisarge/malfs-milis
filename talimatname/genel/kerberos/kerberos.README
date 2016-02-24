@@ -1,0 +1,37 @@
+Configuration:
+ /etc/krb5.conf
+ /var/lib/krb5kdc/kdc.conf
+
+Création d'un fichier de configuration:
+
+cat > /etc/krb5.conf << "EOF"
+# Begin /etc/krb5.conf
+
+[libdefaults]
+    default_realm = <NUTYX.ORG>
+    encrypt = true
+
+[realms]
+    <NUTYX.ORG> = {
+        kdc = <belgarath.nutyx.org>
+        admin_server = <belgarath.nutyx.org>
+        dict_file = /usr/share/dict/words
+    }
+
+[domain_realm]
+    .<nutyx.org> = <NUTYX.ORG>
+
+[logging]
+    kdc = SYSLOG[:INFO[:AUTH]]
+    admin_server = SYSLOG[INFO[:AUTH]]
+    default = SYSLOG[[:SYS]]
+
+# End /etc/krb5.conf
+EOF
+
+Remplacez <belgarath.nutyx.org>, <nutyx.org> et <NUTYX.ORG> avec votre domaine
+
+Pour plus d'information, consultez la page de BLFS
+
+http://www.fr.linuxfromscratch.org/view/blfs-svn/postlfs/mitkrb.html
+

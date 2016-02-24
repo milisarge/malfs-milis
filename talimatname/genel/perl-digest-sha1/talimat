@@ -1,0 +1,20 @@
+# Description: Perl interface to the SHA-1 Algorithm
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
+name=perl-digest-sha1
+version=2.13
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-SHA1-$version.tar.gz)
+
+build() {
+cd Digest-SHA1-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG -iname '*.pod' -or \
+-name '.packlist' -or \
+-name 'perllocal.pod' | xargs rm
+}

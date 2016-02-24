@@ -1,0 +1,16 @@
+# Description: clex (light file manager)
+# URL: http://www.clex.sk/
+# Packager: tnut at nutyx dot org
+# Depends on:
+name=clex
+version=4.6.patch6
+release=1
+
+source=(http://www.clex.sk/download/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install    
+}

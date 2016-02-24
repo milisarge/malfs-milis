@@ -1,0 +1,16 @@
+# Description: librairy bsd 
+# URL: http://libbsd.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=libbsd
+version=0.7.0
+release=1
+
+source=(http://libbsd.freedesktop.org/releases/$name-$version.tar.xz)
+build () {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

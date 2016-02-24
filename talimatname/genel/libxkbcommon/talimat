@@ -1,0 +1,18 @@
+# Description: Library which processes a reduced subset of keymaps as defined by the XKB specification
+# URL: http://xkbcommon.org/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-xkeyboard-config libxcb doxygen xorg-util-macros 
+
+name=libxkbcommon
+version=0.5.0
+release=1
+
+source=(http://xkbcommon.org/download/libxkbcommon-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+            --disable-static
+make
+make DESTDIR=$PKG install
+}

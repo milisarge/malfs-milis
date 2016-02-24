@@ -1,0 +1,12 @@
+version=3.3
+source=(http://ftp.gnu.org/gnu/diffutils/diffutils-$version.tar.xz)
+
+build()
+{
+cd diffutils-$version
+./configure --prefix=/tools
+
+make
+
+make install
+}

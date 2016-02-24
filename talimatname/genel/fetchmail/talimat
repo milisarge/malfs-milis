@@ -1,0 +1,27 @@
+# Description: The Fetchmail package contains a mail retrieval program. It retrieves mail from remote mail servers and forwards it to the local (client) machine's delivery system, so it can then be read by normal mail user agents. 
+# URL: http://www.fetchmail.info
+# Packager: berlius at nutyx dot com
+# Depends on: openssl procmail python tk
+description="Retrieves mail from remote mail servers and forwards it to the local machine's"
+name=fetchmail
+version=6.3.26	
+release=1
+source=(http://downloads.sourceforge.net/fetchmail/$name-$version.tar.xz
+		.fetchmailrc)
+ 
+build() {
+
+	cd $name-$version
+	
+	./configure --prefix=/usr --with-ssl --enable-fallback=procmail 
+	
+	make
+	
+	make DESTDIR=$PKG install
+	
+	install -v -m755 -d $PKG/root
+
+	cp -v $SRC/.fetchmailrc $PKG/root/.fetchmailrc
+	chmod -v 0600 $PKG/root/.fetchmailrc
+	
+}

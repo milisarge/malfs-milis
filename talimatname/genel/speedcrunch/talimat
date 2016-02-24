@@ -1,0 +1,19 @@
+# Description: calculator based on QT
+# URL: http://speedcrunch.org/
+# Packager: - speedcrunch.googlecode.com
+# Depends on: qt4 
+
+name=speedcrunch
+version=0.10.1
+release=1
+
+source=(http://speedcrunch.googlecode.com/files/speedcrunch-$version.tar.gz)
+build ()
+{
+cd speedcrunch-$version/src
+cmake . -DCMAKE_INSTALL_PREFIX=/usr || return 1
+make
+lrelease-qt4 speedcrunch.pro
+make DESTDIR=$PKG install
+
+}

@@ -1,0 +1,23 @@
+# Description: Connect your computer to a network which uses DHCP to assign network addresses.
+# URL: http://roy.marples.name/projects/dhcpcd
+# Maintainer: Roy Marples
+# Packager: tnut at nutyx dot org
+
+name=dhcpcd
+version=6.10.1
+release=1
+
+source=(http://roy.marples.name/downloads/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix= \
+--libexecdir=/lib/dhcpcd \
+--dbdir=/var/tmp
+make
+make DESTDIR=$PKG install
+sed -i "s;/var/lib;/run;g" dhcpcd-hooks/50-dhcpcd-compat
+install -v -m 644 dhcpcd-hooks/50-dhcpcd-compat $PKG/lib/dhcpcd/dhcpcd-hooks/
+# Encore un mechand bug
+rm -r $PKG/var/tmp
+}

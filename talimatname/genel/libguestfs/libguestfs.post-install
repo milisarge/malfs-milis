@@ -1,0 +1,15 @@
+if [ -f .bash_profile ]; then
+	if [ -z LIBGUESTFS_PATH ]; then
+		echo "export LIBGUESTFS_PATH=/usr/lib/guestfs/appliance/" >> .bash_profile
+	fi
+else
+	echo "export LIBGUESTFS_PATH=/usr/lib/guestfs/appliance/" >> /etc/bashrc
+fi
+
+echo "Avant d'utiliser l'application il faut relancer BASH"
+echo "afin de prendre en compte LIBGUESTFS_PATH" 
+echo "ensuite il est possible de tester les fonctions "
+echo "avec la commande \"libguestfs-test-tool\" "
+echo "un système virtuel est créé et les fonctions internes sont testées "
+echo "si tout va bien le message de fin est \"===== TEST FINISHED OK =====\""
+

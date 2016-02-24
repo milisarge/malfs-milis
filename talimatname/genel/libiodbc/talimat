@@ -1,0 +1,20 @@
+# Description: Independent Open DataBase Connectivity for Linux
+# URL: http://www.iodbc.org
+# Packager: pierre at nutyx dot org
+
+name=libiodbc
+version=3.52.10
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/iodbc/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static \
+--includedir=/usr/include/libiodbc \
+--disable-gui \
+--disable-libodbc 
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/libiodbc/
+}

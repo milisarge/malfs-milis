@@ -1,0 +1,15 @@
+si la souris reste bloquée ou revient toujours au centre de l'écran, installez le
+fichier 15-quirks.conf ds le dossier /etc/X11/xorg.conf.d
+le contenu de ce fichier ressemble à:
+
+Section "InputClass"
+        Identifier "no need Accelerometer in X"
+        MatchProduct "Accelerometer"
+        Option "Ignore" "on"
+EndSection
+Section "InputClass"
+        Identifier "no need accelerometer in X"
+        MatchProduct "accelerometer"
+        Option "Ignore" "on"
+EndSection
+

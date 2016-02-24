@@ -1,0 +1,16 @@
+# Description: lftp is a sophisticated ftp/http client.
+# URL: lftp is a sophisticated ftp/http client.
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+name=lftp
+version=4.6.4
+release=1
+
+source=(http://lftp.yar.ru/ftp/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--with-openssl \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,23 @@
+# Description: Midori is a lightweight web browser that uses WebKitGTK+.
+# URL: http://www.twotoasts.de
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: cmake,gcr,gtk2,webkitgtk2,vala,libnotify,librsvg,libunique1,desktop-file-utils,libzeitgeist,hicolor-icon-theme
+
+run=(desktop-file-utils gtk-update-icon-cache hicolor-icon-theme)
+
+name=midori
+version=0.5.11
+release=1
+
+source=(http://www.midori-browser.org/downloads/${name}_${version}_all_.tar.bz2)
+build () {
+cd $name-$version
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+ -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$name-$version \
+ -DUSE_ZEITGEIST=OFF \
+ ..
+make
+make DESTDIR=$PKG install
+}

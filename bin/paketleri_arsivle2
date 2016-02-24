@@ -1,0 +1,2 @@
+mkdir -p /paket_depo
+find /var/lib/pkg/depotrepo/ -iname "*.cards.tar.xz" -type f | xargs -I '{}' mv {} /paket_depo/

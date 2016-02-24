@@ -1,0 +1,20 @@
+# Description: Library that provides a high-level interface to RDF data
+# URL: http://download.librdf.org/source/
+# Packager: pierre at nutyx dot org
+# Depends on: rasqal db sqlite libiodbc
+
+name=redland
+version=1.0.17
+release=3
+
+source=(http://download.librdf.org/source/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+	
+./configure --prefix=/usr \
+	--disable-static
+ 
+make
+make DESTDIR=$PKG install
+}

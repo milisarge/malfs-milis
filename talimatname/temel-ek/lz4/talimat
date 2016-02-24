@@ -1,0 +1,17 @@
+# Description: Very fast lossless compression algorithm
+# Url: https://github.com/Cyan4973/lz4
+# Maintainer: Yann Collet
+# Packager: tnut at nutyx dot org
+
+name=lz4
+version=r131
+release=1
+
+source=(https://github.com/Cyan4973/lz4/archive/r131.tar.gz)
+
+build() {
+cd $name-$version
+make PREFIX=/usr
+
+make install PREFIX=/usr DESTDIR=$PKG
+}

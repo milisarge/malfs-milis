@@ -1,0 +1,17 @@
+# Description: GNU Compact Disc Input and Control Library
+# URL: http://www.gnu.org/software/libcdio/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: libcdio
+
+name=libcdio-paranoia
+version=10.2
+release=1
+
+source=( http://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-${version}+0.93+1.tar.bz2)
+
+build() {
+	cd $SRC/libcdio-paranoia-${version}+0.93+1
+	./configure --prefix=/usr --disable-static 
+	make	
+	make DESTDIR=$PKG install
+}

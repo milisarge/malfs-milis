@@ -1,0 +1,17 @@
+# Description: A C library that parses RDF/XML/N-Triples into RDF triples
+# URL: http://download.librdf.org/source/
+# Packager: pierre at nutyx dot org
+# Depends on: expat libxml2 curl icu 
+name=raptor
+version=2.0.15
+release=1
+
+source=(http://librdf.org/dist/source/raptor2-$version.tar.gz)
+build() {
+cd raptor2-$version
+./configure --prefix=/usr \
+--disable-static \
+--with-icu-config=/usr/bin/icu-config
+make
+make DESTDIR=$PKG install
+}

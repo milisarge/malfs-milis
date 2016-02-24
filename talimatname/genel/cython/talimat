@@ -1,0 +1,15 @@
+# Description: C extensions for Python.
+# URL: http://www.cython.org/
+# Packager: berlius at nutyx dot com
+# Depends on: python python3 python-setuptools
+
+name=cython
+version=0.23.4
+release=2
+source=(http://www.cython.org/release/Cython-$version.tar.gz)
+
+build() {
+	cd Cython-$version
+	/usr/bin/python setup.py install --root $PKG
+	/usr/bin/python3 setup.py install --root $PKG
+}

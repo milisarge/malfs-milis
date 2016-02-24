@@ -1,0 +1,25 @@
+# Description: The MPFR package contains functions for multiple precision math
+# URL: http://www.mpfr.org/
+# Maintainer: Guillaume Hanrot,Vincent Lefèvre,Patrick Pélissier,Philippe Théveny and Paul Zimmermann
+# Packager: pierre at nutyx dot org
+name=mpfr
+version=3.1.3
+release=2
+
+source=(http://www.mpfr.org/mpfr-current/mpfr-$version.tar.xz
+	 http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-upstream_fixes-1.patch)
+
+build()
+{
+cd mpfr-$version
+patch -Np1 -i ../$name-$version-upstream_fixes-1.patch
+./configure --prefix=/usr --enable-thread-safe \
+	--libdir=/lib \
+	--docdir=/usr/share/doc/mpfr-$version
+make
+make check
+make DESTDIR=$PKG install
+make html
+make DESTDIR=$PKG install-html
+rm -rf $PKG/usr/share/info/dir
+}

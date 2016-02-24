@@ -1,0 +1,22 @@
+CLAMDIR=/usr/share/clamav
+
+case $1 in
+start)
+	if [ ! -f ${CLAMDIR}/main.cvf -o ! -f ${CLAMDIR}/daily.cvd -o ! -f ${CLAMDIR}/bytecode.cvd ]
+	then
+		/usr/bin/freshclam
+	fi
+	/usr/sbin/clamd
+	;;
+stop)
+	killall -q /usr/sbin/clamd
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "Usage: $0 [start|stop|restart]"
+	;;
+esac

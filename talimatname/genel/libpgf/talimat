@@ -1,0 +1,19 @@
+# Description : An implementation of the Progressive Graphics File (PGF)
+# URL : http://www.libpgf.org
+# Packager : pierre at nutyx dont org
+# Depends on : dos2unix
+
+name=libpgf
+version=7.15.32
+release=1
+
+source=(http://sourceforge.net/projects/$name/files/$name/$version-latest/libPGF-codec-and-console-src.zip)
+
+build() {
+ cd $SRC/PGF/Codec
+ dos2unix configure.ac
+ sh ./autogen.sh
+ ./configure --prefix=/usr
+ make
+ make DESTDIR=$PKG install
+}

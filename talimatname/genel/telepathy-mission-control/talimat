@@ -1,0 +1,23 @@
+# Description: A Telepathy component providing abstraction of some of the details of connection managers.
+# URL: http://telepathy.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: telepathy-glib libgnome-keyring dconf networkmanager  
+
+name=telepathy-mission-control
+version=5.16.3
+release=1
+
+source=(http://${name%-*-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/${name%-*} \
+--with-connectivity=nm \
+--enable-gtk-doc \
+--disable-upower \
+--disable-static \
+--disable-schemas-compile
+make
+make DESTDIR=$PKG install
+}

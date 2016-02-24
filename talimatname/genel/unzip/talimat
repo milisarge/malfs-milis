@@ -1,0 +1,29 @@
+# Description: Unpacks .zip archives such as those made by PKZIP
+# URL: http://www.info-zip.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
+# Depends on:
+
+name=unzip
+version=6.0
+release=1
+
+source=(http://downloads.sourceforge.net/infozip/unzip60.tar.gz)
+
+
+build() {
+	cd $name${version/./}
+	export CFLAGS="$CFLAGS -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NFS \
+  -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT \
+  -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DNO_LCHMOD -DDATE_FORMAT=DF_YMD \
+  -DUSE_BZIP2 -DNATIVE"
+	case `uname -m` in
+		x86_64)
+			make -f unix/Makefile LOCAL_UNZIP="$CFLAGS" prefix=/usr \
+			LF2="" D_USE_BZ2=-DUSE_BZIP2 L_BZ2=-lbz2 unzips;;
+		i?86)
+			make -f unix/Makefile \
+			LOCAL_UNZIP=-D_FILE_OFFSET_BITS=64 linux;;
+	esac
+	make -f unix/Makefile prefix=$PKG/usr MANDIR=$PKG/usr/share/man/man1 install
+}

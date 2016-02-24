@@ -1,0 +1,18 @@
+# Description: Library for handling OpenGL function pointer management
+# URL: https://github.com/anholt/libepoxy
+# Packager:    pierre at nutyx dot fr
+# Depends on: glibc xorg-mesa python xorg-util-macros 
+
+name=libepoxy
+version=1.3.1
+release=1
+
+source=( https://github.com/anholt/libepoxy/releases/download/v$version/libepoxy-$version.tar.bz2)
+
+build() {
+cd libepoxy-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}
+

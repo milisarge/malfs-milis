@@ -1,0 +1,17 @@
+1. Fichier de configuration:
+
+~/.AbiSuite/templates/normal.awt
+
+2. Choix du bon modèle:
+
+Choisissez le bon modèle adapté à votre langue et votre locale dans la liste qu'affiche la commande suivante:
+
+ls /usr/share/abiword-2.9/templates
+
+Créez le dossier ~/.AbiSuite/templates et copiez-y le normal.awt que vous souhaitez:
+
+install -v -m750 -d ~/.AbiSuite/templates &&
+install -v -m640    /usr/share/abiword-2.9/templates/normal.awt-<votrelangue>  ~/.AbiSuite/templates/normal.awt
+
+Il est recommandé d'utiliser une police de caractères qui couvre une plus grande couverture comme dejavu-fonts.
+

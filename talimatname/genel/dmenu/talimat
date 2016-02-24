@@ -1,0 +1,25 @@
+# Description: dmenu is a dynamic menu for X.
+# URL: URL: http://tools.suckless.org/dmenu/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: xorg-libxinerama 
+name=dmenu
+version=4.5
+release=1
+
+source=(http://dl.suckless.org/tools/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+
+    make install PREFIX=/usr \
+                 LIBDIR=/usr/lib \
+                 MANPREFIX=/usr/share/man \
+                 X11INC=/usr/include \
+                 X11LIB=/usr/lib \
+                 DESTDIR=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

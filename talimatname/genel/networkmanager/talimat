@@ -1,0 +1,38 @@
+# Description: Tools which simplify and make the network more directly manageable. 
+# URL: http://projects.gnome.org/NetworkManager/
+# Packager: pierre at nutyx dot org
+# Depends on: libndp libsoup libgudev dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt
+
+_name=NetworkManager
+
+name=networkmanager
+version=1.0.10
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$_name/${version%.*}/$_name-$version.tar.xz)
+
+build() {
+
+cd ${_name}-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--with-nmtui \
+--docdir=/usr/share/doc/networkmanager-$version \
+--without-systemdsystemunitdir \
+--disable-ppp
+make
+make DESTDIR=$PKG install
+
+cat > $PKG/etc/NetworkManager/NetworkManager.conf << EOF
+[main]
+plugins=keyfile
+EOF
+
+# create a VPN directory
+install -d $PKG/etc/$_name/VPN
+install -m755 clients/.libs/nm-online -D $PKG/usr/bin/nm-online
+# create keyfile plugin system-settings directory
+install -d $PKG/etc/$_name/system-connections
+
+}

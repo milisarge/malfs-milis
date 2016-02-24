@@ -1,0 +1,51 @@
+# Description: Lightweight X11 Display Manager based on Gtk
+# Url: http://wiki.lxde.org/en/LXDM
+# Maintainer: dgod dot osa at gmail dot com
+# Packager: tnut at nutyx dot org
+# Depends on: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2
+
+PKGMK_GROUPS=()
+run=(consolekit2 librsvg)
+
+name=lxdm
+version=0.5.1
+release=2
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.xz)
+
+build() {
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+
+sed -i 's:sysconfig/i18n:profile.d/i18n.sh:g' data/lxdm.in
+sed -i 's:/etc/xprofile:/etc/profile:g' data/Xsession
+sed -e 's/^bg/#&/'        \
+    -e '/reset=1/ s/# //' \
+    -e 's/logou$/logout/' \
+    -e "/arg=/a arg=/usr/bin/X" \
+    -i data/lxdm.conf.in
+
+./configure --sysconfdir=/etc \
+	--prefix=/usr \
+	--with-pam \
+	--with-systemdsystemunitdir=no
+
+make
+  
+make DESTDIR=$PKG install
+
+cat > $PKG/etc/pam.d/lxdm << "EOF"
+#%PAM-1.0
+auth        required    pam_unix.so
+auth        requisite   pam_nologin.so
+account     required    pam_unix.so
+password    required    pam_unix.so
+session     required    pam_unix.so
+EOF
+
+# Service
+cd $SRC/$scripts-$scriptsversion
+make DESTDIR=$PKG install-lxdm
+}

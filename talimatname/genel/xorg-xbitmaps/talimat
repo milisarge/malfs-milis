@@ -1,0 +1,17 @@
+# Description: Bitmaps for X
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: 
+PKGMK_GROUPS=()
+_name=xbitmaps
+name=xorg-xbitmaps
+version=1.1.1
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/data/${_name}-$version.tar.bz2)
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

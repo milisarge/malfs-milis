@@ -1,0 +1,46 @@
+# Description: A programming language designed for extending applications (version 5.1)
+# URL: URL: http://www.lua.org
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+name=lua51
+version=5.1.5
+release=1
+
+source=(
+http://www.lua.org/ftp/lua-$version.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/7.4/lua-5.1.5-shared_library-2.patch)
+
+build(){
+    cd lua-$version
+    patch -Np1 -i ../lua-5.1.5-shared_library-2.patch
+    sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h
+
+    [ `uname -i` == "x86_64" ] && export CFLAGS="$CFLAGS -fPIC"
+    sed -e 's:llua:llua5.1:' -e 's:/include:/include/lua5.1:' -i etc/lua.pc
+    sed -r -e '/^LUA_(SO|A|T)=/ s/lua/lua5.1/' -e '/^LUAC_T=/ s/luac/luac5.1/' \
+        -i src/Makefile
+    make linux
+    make \
+        INSTALL_TOP=$PKG/usr \
+        TO_BIN='lua5.1 luac5.1' \
+        TO_LIB="liblua5.1.a liblua5.1.so liblua5.1.so.5.1 liblua5.1.so.$version" \
+        INSTALL_INC=$PKG/usr/include/lua5.1 \
+        INSTALL_DATA="cp -d" \
+        INSTALL_MAN=$PKG/usr/share/man/man1 \
+        install
+    rm -r $PKG/usr/share/lua
+    # pkg-config, change name so that others lua version can be installed
+    install -Dm644 etc/lua.pc $PKG/usr/lib/pkgconfig/lua5.1.pc
+    # symlinks
+    ln -s liblua5.1.so $PKG/usr/lib/liblua.so.5.1
+    ln -s liblua5.1.so $PKG/usr/lib/liblua.so.$version
+    # rename man pages
+    cd $PKG/usr/share/man/man1
+    mv lua.1 lua5.1.1
+    mv luac.1 luac5.1.1
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

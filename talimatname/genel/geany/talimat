@@ -1,0 +1,16 @@
+# Description: Fast and lightweight IDE
+# URL: http://www.geany.org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: atk xorg-fontconfig gtk2 libpng pango xorg-pixman xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama desktop-file-utils
+
+name=geany
+version=1.26
+release=1
+
+source=(http://download.$name.org/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

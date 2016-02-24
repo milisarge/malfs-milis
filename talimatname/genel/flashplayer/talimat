@@ -1,0 +1,40 @@
+# Description: Adobe Flash Player
+# URL: http://www.macromedia.com
+# Packager: pierre at nutyx dot org
+
+name=flashplayer
+version=11.2.202.569
+release=1
+
+
+case `uname -m` in
+        x86_64)
+                source=(http://fpdownload.macromedia.com/get/flashplayer/pdc/$version/install_flash_player_11_linux.x86_64.tar.gz
+                flashplayer.mms.cfg) ;;
+        i?86)
+                source=(http://fpdownload.macromedia.com/get/flashplayer/pdc/$version/install_flash_player_11_linux.i386.tar.gz
+                flashplayer.mms.cfg) ;;
+esac
+
+build() {
+        cd $SRC
+        install -Dm755 libflashplayer.so $PKG/usr/lib/mozilla/plugins/libflashplayer.so
+
+	case `uname -m` in
+        x86_64)
+		install -Dm755 usr/lib64/kde4/kcm_adobe_flash_player.so $PKG//usr/lib/kde4/kcm_adobe_flash_player.so ;;
+	i?86)
+        	install -Dm755 usr/lib/kde4/kcm_adobe_flash_player.so $PKG//usr/lib/kde4/kcm_adobe_flash_player.so ;;
+	esac
+
+        for res in 16 22 24 32 48; do
+                install -D -m644 $SRC/usr/share/icons/hicolor/${res}x$res/apps/flash-player-properties.png $PKG/usr/share/icons/hicolor/${res}x$res/apps/flash-player-properties.png
+        done
+        install -D -m644 $SRC/usr/share/icons/hicolor/48x48/apps/flash-player-properties.png $PKG/usr/share/pixmaps/flash-player-properties.png
+        install -D -m644 $SRC/usr/share/applications/flash-player-properties.desktop $PKG/usr/share/applications/flash-player-properties.desktop
+        install -D -m644 $SRC/usr/share/kde4/services/kcm_adobe_flash_player.desktop $PKG//usr/share/kde4/services/kcm_adobe_flash_player.desktop
+        install -D -m755 $SRC/usr/bin/flash-player-properties $PKG/usr/bin/flash-player-properties
+        install -D -m755 libflashplayer.so $PKG/usr/lib/mozilla/plugins/libflashplayer.so
+        install -D -m644 flashplayer.mms.cfg $PKG/etc/adobe/mms.cfg
+}
+

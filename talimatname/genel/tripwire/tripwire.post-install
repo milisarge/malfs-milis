@@ -1,0 +1,5 @@
+twadmin --create-polfile --site-keyfile /etc/tripwire/site.key \
+    /etc/tripwire/twpol.txt 
+tripwire --init
+
+

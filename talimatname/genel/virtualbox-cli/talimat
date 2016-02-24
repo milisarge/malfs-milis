@@ -1,0 +1,48 @@
+# Description: VirtualBox is a powerfull 32 and 64 bits virtualization product 
+# URL: http://virtualbox.org
+# Packager: tnut at nutyx dot org
+
+buildrelease=104815
+name=virtualbox-cli
+version=5.0.12
+release=1
+
+[ "`uname -m`" == "i686"   ] && _ARCH=x86
+[ "`uname -m`" == "x86_64"   ] && _ARCH=amd64
+
+source=(http://download.virtualbox.org/virtualbox/${version}/VirtualBox-${version}-${buildrelease}-Linux_${_ARCH}.run)
+
+build() {
+sh VirtualBox-${version}-${buildrelease}-Linux_${_ARCH}.run --target vb --keep --noexec
+cd vb
+tar xfj VirtualBox.tar.bz2
+cd src/vboxhost/
+
+KERNELRELEASE=`uname -r`
+
+KERN_DIR=/usr/src/linux-${KERNELRELEASE%.*} make
+
+mkdir -p $PKG/lib/modules/${KERNELRELEASE}/kernel/drivers/zzzz
+for i in *.ko
+do
+        install -D -m0644 $i \
+        $PKG/lib/modules/${KERNELRELEASE}/kernel/drivers/zzzz/$i
+done
+mkdir -p $PKG/etc/sysconfig/modules.d
+cat > $PKG/etc/sysconfig/modules.d/virtualbox.conf << "EOF"
+vboxdrv
+vboxnetadp
+vboxnetflt
+vboxpci
+EOF
+# post-install autogen
+cat > $PKGMK_ROOT/$name.post-install << "EOF"
+. lib/lsb/init-functions
+log_success_msg "update modules population"
+EOF
+echo "depmod $KERNELRELEASE" >> $PKGMK_ROOT/$name.post-install
+cat >> $PKGMK_ROOT/$name.post-install << "EOF"
+log_warning_msg "${WARNING}Check the file /etc/sysconfig/modules.d/virtualbox.conf ${NORMAL}"
+log_warning_msg "${WARNING}Reboot if you want the modules being automatically loaded${NORMAL}"
+EOF
+}

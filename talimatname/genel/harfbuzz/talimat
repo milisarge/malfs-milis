@@ -1,0 +1,18 @@
+# Description: OpenType text shaping engine
+# URL: http://www.freedesktop.org/software/harfbuzz
+# Packager: pierre at nutyx dot org
+# Depends on: cairo glib icu freetype 
+
+name=harfbuzz
+version=1.1.2
+release=1
+
+source=(http://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--with-gobject
+make
+make DESTDIR=$PKG install
+}

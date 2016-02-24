@@ -1,0 +1,24 @@
+# Description: Lightweight Directory Access Protocol (LDAP) client and server
+# URL: http://www.openldap.org
+# Packager: pierre at nutyx dot org
+
+name=openldap
+version=2.4.43
+release=1
+
+source=(ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/$name-$version.tgz
+	 http://www.linuxfromscratch.org/patches/downloads/openldap/openldap-$version-consolidated-1.patch)
+build() {
+cd $name-$version
+patch -Np1 -i ../openldap-$version-consolidated-1.patch
+autoconf
+./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --disable-static \
+            --enable-dynamic \
+            --disable-debug \
+            --disable-slapd
+make depend
+make
+make DESTDIR=$PKG install   
+}

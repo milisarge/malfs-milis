@@ -1,0 +1,1 @@
+pisi-cli --ignore-sandbox bi $1

@@ -1,0 +1,50 @@
+# Description: xinetd is the eXtended InterNET services daemon, a secure replacement for *inetd*. 
+# URL: ftp://anduin.linuxfromscratch.org/BLFS/xinetd/xinetd-2.3.15.tar.gz
+# Packager: berlius at nutyx dot com
+# Depends on:
+
+name=xinetd
+version=2.3.15	
+release=1
+source=(ftp://anduin.linuxfromscratch.org/BLFS/xinetd/$name-$version.tar.gz
+		xinetd.conf chargen daytime echo systat time )
+ 
+build() {
+
+cd $name-$version
+
+source  /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2 
+
+	
+sed -i -e "s/exec_server/child_process/" xinetd/builtins.c       
+sed -i -e "/register unsigned count/s/register//" xinetd/itox.c  
+./configure --prefix=/usr --mandir=/usr/share/man --with-loadavg 
+	
+make
+
+make DESTDIR=$PKG install
+
+install -v -m755 -d $PKG/etc 
+cp -v $SRC/xinetd.conf $PKG/etc
+
+install -v -m755 -d $PKG/etc/xinetd.d
+cp -v $SRC/chargen $PKG/etc/xinetd.d
+
+install -v -m755 -d $PKG/etc/xinetd.d
+cp -v $SRC/daytime $PKG/etc/xinetd.d
+
+install -v -m755 -d $PKG/etc/xinetd.d
+cp -v $SRC/echo $PKG/etc/xinetd.d
+
+install -v -m755 -d $PKG/etc/xinetd.d
+cp -v $SRC/systat $PKG/etc/xinetd.d
+
+install -v -m755 -d $PKG/etc/xinetd.d
+cp -v $SRC/time $PKG/etc/xinetd.d
+
+cd $scripts-$scriptsversion
+make DESTDIR=$PKG install-xinetd
+	
+}

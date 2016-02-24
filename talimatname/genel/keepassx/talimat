@@ -1,0 +1,20 @@
+# Description: Password manager
+# URL: http://www.keepassx.org/
+# Packager: pierre at nutyx dot org
+# Maintainer: http://sourceforge.net/projects/keepassx/
+# Depends on: qt4 xorg-libxtst
+
+name=keepassx
+version=0.4.3
+release=3
+
+source=(https://www.keepassx.org/releases/$version/keepassx-$version.tar.gz)
+build ()
+{
+source setqt4
+cd keepassx-$version
+sed -i '1,1i#include <unistd.h>' src/lib/random.cpp
+qmake PREFIX=/usr
+make
+make INSTALL_ROOT="$PKG" install
+}

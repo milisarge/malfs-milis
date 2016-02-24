@@ -1,0 +1,18 @@
+# Description: The Tango Desktop Project defines an icon style guideline to which artists and designers can adhere.
+# URL: URL: http://tango.freedesktop.org/
+# Packager: - tnut at nutyx dot org
+# Depends on: icon-naming-utils imagemagick 
+description="Defines an icon style guideline to which artists and designers can adhere."
+name=tango-icon-theme-extras
+version=0.1.0
+release=1
+
+source=(http://tango.freedesktop.org/releases/$name-$version.tar.gz)
+
+build()
+{
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

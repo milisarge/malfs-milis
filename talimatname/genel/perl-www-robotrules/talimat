@@ -1,0 +1,20 @@
+# Description: Database of robots.txt-derived permissions
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-uri 
+run=( perl )
+name=perl-www-robotrules
+version=6.02
+release=2
+
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-$version.tar.gz)
+
+build() {
+cd WWW-RobotRules-$version
+perl Makefile.PL
+make
+make DESTDIR=$PKG install
+find $PKG \
+-name perllocal.pod \
+-o -name .packlist | xargs rm
+}

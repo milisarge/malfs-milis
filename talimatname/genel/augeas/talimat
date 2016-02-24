@@ -1,0 +1,21 @@
+# Description: A configuration editing tool that parses config files and transforms them into a tree
+# URL: http://augeas.net
+# Packager: berlius at nutyx dot com
+# Depends on: libxml2
+
+name=augeas
+version=1.4.0
+release=1
+source=(http://download.augeas.net/$name-$version.tar.gz)
+
+
+build() {
+
+    cd $name-$version
+
+    ./configure --prefix=/usr 
+
+    make
+    make DESTDIR=$PKG install
+
+}

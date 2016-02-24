@@ -1,0 +1,8 @@
+if [ -f etc/ssl/ca-bundle.crt ]; then
+ 	rm etc/ssl/ca-bundle.crt
+	rm etc/ssl/certs/*.0
+	rm etc/ssl/certs/*.pem
+fi
+if ! ( grep ssl etc/pkgadd.conf > /dev/null);then
+	echo "UPGRADE         ^etc/ssl                YES" >> etc/pkgadd.conf
+fi

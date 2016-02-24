@@ -1,0 +1,16 @@
+# Description: The libsigc++ package implements a typesafe callback system for standard C++.
+# URL: http://libsigc.sourceforge.net/
+# Packager: pierre at nutyx dot org
+
+name=libsigc++
+version=2.6.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+}

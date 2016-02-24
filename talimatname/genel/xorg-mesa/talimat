@@ -1,0 +1,34 @@
+# Description: Mesa is an OpenGL compatible 3D graphics library.
+# URL: http://www.xorg-mesa3d.org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: pkg-config libtool wayland xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage expat llvm elfutils xorg-libxshmfence 
+
+name=xorg-mesa
+version=11.1.2
+release=1
+
+source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/mesa-$version.tar.xz
+	http://www.linuxfromscratch.org/patches/downloads/mesa/mesa-$version-add_xdemos-1.patch)
+build() {
+cd mesa-$version
+patch -Np1 -i ../mesa-$version-add_xdemos-1.patch
+
+./autogen.sh CFLAGS='-O2' CXXFLAGS='-O2'    \
+--prefix=/usr                  \
+--sysconfdir=/etc              \
+--enable-texture-float         \
+--enable-gles1                 \
+--enable-gles2                 \
+--enable-osmesa                \
+--enable-xa                    \
+--enable-gbm                   \
+--enable-glx-tls               \
+--with-egl-platforms="drm,x11,wayland" \
+--with-gallium-drivers="nouveau,r300,r600,radeonsi,svga,swrast"
+make
+make -C xdemos DEMOS_PREFIX=/usr
+make DESTDIR=$PKG install
+make -C xdemos DEMOS_PREFIX=/usr DESTDIR=$PKG install
+install -v -dm755 $PKG/usr/share/doc/mesa-$version
+cp -rfv docs/* $PKG/usr/share/doc/mesa-$version
+}

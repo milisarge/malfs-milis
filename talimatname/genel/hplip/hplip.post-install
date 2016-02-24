@@ -1,0 +1,3 @@
+# Pour que les scanners en reseau soient reconnus
+#
+echo "hpaio" >> /etc/sane.d/dll.conf

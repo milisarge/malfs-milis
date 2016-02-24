@@ -1,0 +1,30 @@
+# Description: Fast DNS library with the goal to simplify DNS programming.
+# URL: http://www.nlnetlabs.nl
+# Packager:	berlius at nutyx dot com
+# Depends on: openssl ca-certificates libcap python swig doxygen 
+
+name=ldns
+version=1.6.17	
+release=1
+source=(http://www.nlnetlabs.nl/downloads/ldns/$name-$version.tar.gz)
+ 
+build() {
+
+	cd $name-$version
+	
+	sed -i 's/defined(@$also)/@$also/' doc/doxyparse.pl 
+	
+	./configure --prefix=/usr     \
+	            --sysconfdir=/etc \
+	            --disable-static  \
+	            --with-drill      
+	make
+
+	make doc
+	
+	make DESTDIR=$PKG install
+	
+	install -v -m755 -d $PKG/usr/share/doc/ldns-1.6.17 
+	install -v -m644 doc/html/* $PKG/usr/share/doc/ldns-1.6.17
+
+}

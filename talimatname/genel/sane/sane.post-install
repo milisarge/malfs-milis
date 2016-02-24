@@ -1,0 +1,4 @@
+if ( ! grep sane /etc/sysconfig/createfiles > /dev/null );then
+        echo "/var/lock/sane dir 775 root scanner" >> /etc/sysconfig/createfiles
+fi
+

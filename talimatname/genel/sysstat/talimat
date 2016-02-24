@@ -1,0 +1,31 @@
+# URL: http://perso.wanadoo.fr/sebastien.godard
+# Packager: berlius at nutyx dot com
+
+description="Utilities to monitor system performance and usage activity."
+name=sysstat
+version=11.1.8	
+release=1
+source=(http://perso.wanadoo.fr/sebastien.godard/sysstat-11.1.8.tar.xz)
+ 
+build() {
+
+cd $name-$version
+	   
+source  /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2 
+
+sa_lib_dir=/usr/lib/sa    \
+sa_dir=/var/log/sa        \
+conf_dir=/etc/sysconfig   \
+./configure --prefix=/usr \
+            --disable-file-attr 
+make
+
+make DESTDIR=$PKG install
+
+	
+cd $scripts-$scriptsversion
+make DESTDIR=$PKG install-sysstat
+	
+}

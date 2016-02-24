@@ -1,0 +1,17 @@
+# Description: libx11, library for client X
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: libxcb xorg-proto xorg-xtrans 
+
+name=xorg-libx11
+version=1.6.3
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libX11-$version.tar.bz2)
+
+build() {
+cd libX11-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,26 @@
+# Description: 	A simple way for applications to take actions based on a system/user-specified paper size
+# URL:         	http://ftp.debian.org/debian/pool/main/libp/libpaper
+# Packager:		berlius at nutyx dot com
+# Depends on:  	
+
+name=libpaper
+version=1.1.24
+release=1
+
+source=(http://ftp.debian.org/debian/pool/main/libp/libpaper/$name\_$version+nmu4.tar.gz
+		run-parts)
+
+build () {
+
+    cd $name-$version+nmu4
+    
+ 	./configure --prefix=/usr  \
+ 	        --sysconfdir=/etc \
+            --disable-static                 
+    make
+	make DESTDIR=$PKG install
+	
+	cp -v $SRC/run-parts $PKG/usr/bin/
+	chmod -v 755 $PKG/usr/bin/run-parts
+
+}

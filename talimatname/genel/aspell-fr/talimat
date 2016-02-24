@@ -1,0 +1,19 @@
+# Description: French dictionaries for Aspell
+# URL: http://aspell.net
+# Packager: tnut at nutyx dot org
+# Depends on: aspell 
+_version=0.50-3
+
+name=aspell-fr
+version=0.50.3
+release=1
+
+source=(ftp://ftp.gnu.org/gnu/aspell/dict/fr/$name-$_version.tar.bz2)
+
+build() {
+  cd aspell-fr*
+  ./configure
+  make
+  make DESTDIR=$PKG install
+}
+  

@@ -1,0 +1,21 @@
+# Description: A terminal multiplexer
+# URL: https://tmux.github.io
+# Packager: tnut at nutyx.org
+# Depends on: libevent 
+name=tmux
+version=2.0
+release=1
+
+source=(https://github.com/tmux/tmux/releases/download/$version/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make DESTDIR=$PKG install
+
+install -dm755  $PKG/usr/share/tmux/
+install -m644 examples/* $PKG/usr/share/tmux/
+install -Dm644 examples/tmux.vim $PKG/usr/share/vim/vimfiles/syntax/tmux.vim
+install -d $PKG/usr/share/bash-completion/completions/
+mv $PKG/usr/share/tmux/bash_completion_tmux.sh \
+$PKG/usr/share/bash-completion/completions/tmux
+}

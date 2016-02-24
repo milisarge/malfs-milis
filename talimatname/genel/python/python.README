@@ -1,0 +1,1 @@
+configure uses pkgconfig to find libffi. There is a circular dependency here: Pkgconfig requires Glib which requires Python 2. there is a circular dependency with the Tk package as it requires Xorg to be installed but parts of Xorg depend on Python

@@ -1,0 +1,73 @@
+mainHelpWELCOME to MX Linux
+The demo user password is "demo" (no quotes)
+ The root password is "root" (no quotes)
+
+  • helpF1: the Help System  • languageF2: Select Language  • timezoneF3: Select Timezone  • options1F4: Miscellaneous Options  • video_modeF5: Video Mode  • consoleF6: Console  • saveF7: Save Bootloader Settings  • persistencePersistence Options  • bo_instructBoot Option Instructions  • bo_antixMX Boot Options  • aboutAbout MX Linux
+Press the [Esc] key to leave the help systemhelpUsing the Help System The help system consists of a set of linked pages that you can navigate through with the follow keys. 
+  • [Up Arrow] -- highlight previous link  • [Down Arrow] -- highlight next link  • [Left Arrow], [Backspace] -- return to previous page  • [Right Arrow], [Enter], [Space] -- follow link  • [Page Up], [Home] -- go to first link on page  • [Page Down], [End] -- go to last link on page  • [Esc] -- leave help
+Using [Left Arrow] or [Backspace] will take you to your place (same highlighted link) on the previous page.
+Go to general-helpGeneral Help
+Return to the mainMain Menu | prev | general-helpnextgeneral-helpGeneral HelpThis bootloader lets you select which program to launch (MX Linux or memtest) and in the case of MX Linux select which boot parameters (cheat codes) get set when the program launches. There are 3 ways to do this:
+  • Main Menu
+ [Up Arrow] and [Down Arrow] select which program to run and some boot options. [Enter] launches the program.  • Boot Options
+ [Left Arrow], [Right Arrow], and [Backspace] edit some main menu options directly. You can also type in new options.  • Function Key Pop-up Menus
+ [F2] through [f6] open menus. Navigate them with the arrow keys. [Enter] selects highlighted option. [Esc] leaves the pop-up menu without selecting an entry.
+Go to helpUsing the Help System
+ Return to the mainMain Menu | helpprev | languagenextlanguageF2: Select LanguagePress F2 to get a list of supported languages. Select your language. This will automatically set the keyboard layout and the timezone. If your country has more than one timezone then use F3 to explicitly set the timezone for your area.
+The menu is an easy shortcut for entering lang=language-code directly on the boot line.
+Return to the mainMain Menu | general-helpprev | timezonenexttimezoneF3: Select TimezonePress F3 to get at list of cities in various time zones. The cities are listed time zone order so they circle the globe eastward. If your area uses Daylight Savings Time then make sure you select a city that does also. Your system will be started using the timezone selected. Locations that observe Daylight Savings Time are marked with a trailing * (asterisk).
+NOTE: You do not have to use this option if you have set a language and your country has only one time-zone.
+ The menu is an easy shortcut for entering tz=timezone directly on the boot line. 
+Return to the mainMain Menu | languageprev | options1nextoptions1F4: Miscellaneous Options  • check md5
+ check integrity of the install media.  • check fs
+ check integrity of the LivUSB and persistent file systems (if any).  • to ram
+ copy the compressed file system to RAM. This takes extra time when you boot but results in a very fast system (if you have enough RAM).  • no usb-2
+ Disable all usb-2 devices. This helps a few older systems boot LiveUSB.  • no acpi
+ Disable the whole ACPI system. May be useful if your computer does not support ACPI or its implementation causes random reboots or system lockups.  • HP laptop
+ Some HP laptops need a cheat to get brightness working correctly.video_modeF5: Video ModeThere are 3 options. Default should work for most users.
+  • default
+ Detect the correct video driver and screen resolution.  • vesa
+ Use the Vesa driver. Disable modeset  • safe
+ Use X11 defaults. Disable modeset.
+You can also set the resolution by directly typing in xres=resolution. This is useful if you want to force a resolution.
+Return to the mainMain Menu | mountingprev | consolenextconsoleF6: ConsoleSets the size of the boot console.
+Return to the mainMain Menu | video_modeprev | savenextsaveF7: Save Bootloader SettingsOn LiveUSBs and Frugal installs, the F7 Save menu should appear.
+LiveCDs have a dpiDPI menu instead.
+  • menus
+ Save the current menus settings as the defaults.  • custom
+ Create/replace a Custom main menu entry with all the options that were typed in that don't exist in the menus.  • both
+ Save the current menu settings and create/replace the custom main entry.  • reset
+ Restore the original menu defaults. Does not affect the main menu.
+Return to the mainMain Menu | consoleprev | dpinextdpiSet X-Windows Dots per InchThe DPI (dots per inch) scales most font sizes inside of X-windows. The larger the DPI, the larger the fonts will be. The default value is 96.
+Return to the saveF7 Save menu.
+Return to the mainMain Menu | saveprev | persistencenextpersistencePersistence OptionsPersistence allows you to save files and settings between reboots. There are three types of persistence in the main menu.
+  • Root Persistence
+ Save all the changes to the file-system in RAM and then transfer these changes to disk right before you shutdown or reboot. Fast, but space is limited by how much RAM you have.  • Static Root Persistence
+ Saves all your file-system changes directly to a file. This can be slow but it requires no extra RAM and no changes need to be transfered when you shutdown.  • Home Persistence
+ Only save changes to files and directories under /home. This will include all of your bookmarks and personal settings. Like static root persistence, changes are stored immediately to a file but in this case speed is almost never an issue.
+Return to the mainMain Menu | dpiprev | bo_instructnextbo_instructBoot Option InstructionsThere are many boot options available. They are usually only necessary if your system will not boot properly. To use the boot options just place the appropriate code in the Boot Options box at the bottom of the main screen. You may also need to edit or delete options that are already in the Boot Options box.
+You can't make changes permanent on a LiveCD or a LiveDVD. You have to enter them each time you boot. You can make permanent changes on some LiveUSBs.
+Go to bo_antixMX Boot Options
+ Go to mm_bootKernel Boot Options
+Return to mainMain Menu | persistenceprev | bo_antixnextbo_antixMX Boot OptionsThese are options that are only available in MX
+  • lean -- disable some services including wicd for a fast boot  • mean -- disable dhclient (Internet connection)  • Xtralean -- disable more services for a faster boot  • nodbus -- disable dbus service  • dpi=XX -- set dpi. Default is 96
+NOTE: Four of these options are combined into the single antiX= option. For example antiX=LMX.
+  • L stands for lean  • M stands for mean  • X stands for Xtralean  • D stands for nodbus
+Back to bo_instructBoot Option Instructions
+ Return to mainMain Menu | bo_instructprev | mm_bootnextmm_bootKernel Boot OptionsSelect a Boot Option to learn more about it.
+  • bo_acpiACPI -- Advanced Configuration and Power Interface  • bo_ideIDE DMA -- enable/disable DMA for IDE-Drives  • bo_nonoXXXX -- skip detection of specific hardware  • bo_pciPCI -- options for non-working PS2 mice and bad PCI controllers
+Back to bo_instructBoot Option Instructions
+ Return to the mainMain Menu | bo_antixprev | bo_acpinextbo_acpiACPIACPI (Advanced Configuration and Power Interface) is a standard that defines power and configuration management interfaces between an operating system and the BIOS. By default, acpi is switched on when boot detects a BIOS newer than the year 2000. There are several commonly used parameters to control the behavior of ACPI:
+  • pci=noacpi -- do not use ACPI to route PCI interrupts  • acpi=off -- turn off ACPI completely  • acpi=force -- turn on ACPI, for pre-2000 BIOS
+Return to mm_bootBoot Options | mainMain Menu | mm_bootprev | bo_nonextbo_nonoXXXX Skips detection of or enables support for specific hardware. 
+  • noauto -- turn off hardware autodetection  • noparallel -- turn off parallel printer support  • nopcmcia -- turn off PCMCIA support  • nousb -- turn off usb device probing  • nousebios -- enable NoUseBios mode needed for some Savage cards  • smouse -- enable only a serial mouse  • swcursor -- enable sw_cursor mode needed for some ATI and Trident cards
+Return to mm_bootBoot Options | mainMain Menu | bo_acpiprev | bo_pcinextbo_pciPCISome PCI options:
+  • pci=irqmask=0x0e98 -- try this if your PS/2 mouse doesn't work  • pci=bios -- workaround for bad PCI controllers
+Return to mm_bootBoot Options | mainMain Menu | bo_noprev | bo_idenextbo_idenodmaTo mitigate some hardware problems that occur with IDE hard drives, try this kernel parameter:
+ide=nodma -- switch off dma for IDE drives
+Return to mm_bootBoot Options | mainMain Menu | bo_pciprev | aboutnextaboutInformation about MXWeb site: http://www.mepiscommunity.org/mx14
+ Forums: http://antix.freeforums.org
+ Forums: http://forum.mepiscommunity.org/viewforum.php?f=91
+MX-14 is a midweight OS designed to combine an elegant and efficient desktop with simple configuration, solid performance and medium-sized footprint. It is a collaborative product from the Mepis and antiX developers and communities, relying on the excellent upstream work by Linux, Debian, and Xfce. It also incorporates the independent and innovative development products Whisker Menu, simsu and gottet, Midori Browser, smxi and inxi.
+MX is compiled to work with Pentium-class Intel and AMD processors or better. antiX will not work with 386 and 486 class processors. To install MX on a hard drive, at least 2.5 GB of free space is required and a minimum of 3.5 GB is recommended.
+Return to the mainMain Menu | bo_ideprev | next 

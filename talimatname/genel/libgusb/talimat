@@ -1,0 +1,18 @@
+# Description: The libgusb package contains the GObject wrappers for libusb-1.0
+# URL: https://gitorious.org/gusb/
+# Packager: pierre at nutyx dot org
+# Depends on: libusb gperf glib gobject-introspection libgudev
+
+name=libgusb
+version=0.2.8
+release=1
+
+source=(http://people.freedesktop.org/~hughsient/releases/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

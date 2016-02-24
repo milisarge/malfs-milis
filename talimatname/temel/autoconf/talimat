@@ -1,0 +1,18 @@
+# Description: For producing shell scripts that can automatically configure source code.
+# URL: http://www.gnu.org/software/autoconf/
+# Maintainers: David MacKenzie,François Pinard,Karl Berry,Richard Pixley,Ian Lance Taylor,Roland McGrath,Noah Friedman,David d zuhn, and many others.
+# Packager: tnut at nutyx dot org
+
+name=autoconf
+version=2.69
+release=1
+
+source=(http://ftp.gnu.org/gnu/autoconf/autoconf-$version.tar.xz)
+build()
+{
+cd autoconf-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

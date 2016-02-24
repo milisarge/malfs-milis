@@ -1,0 +1,16 @@
+# Description: The ISO Codes package contains a list of country, language and currency names
+# URL: http://pkg-isocodes.alioth.debian.org/
+# Packager: pierre at nutyx dot org
+
+name=iso-codes
+version=3.65
+release=1
+
+source=(http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+} 

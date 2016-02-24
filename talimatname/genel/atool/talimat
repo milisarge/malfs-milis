@@ -1,0 +1,22 @@
+# Description: A script for managing file archives of various types
+# URL: URL: http://www.nongnu.org/atool/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+name=atool
+version=0.39.0
+release=1
+
+source=(
+http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

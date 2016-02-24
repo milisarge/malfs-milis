@@ -1,0 +1,7 @@
+Pour lancer le servie apache, 2 choix:
+
+- 1. installer soit le port: service-httpd
+- 2. http://www.linuxfromscratch.org/blfs/view/svn/server/apache.html
+     En bas de la page, télécharger et lancer
+	  make install-httpd dans le dossier où sont les fichiers extraits.
+Le dossier racine du serveur est désormais /srv/www et non /srv/www/htdocs

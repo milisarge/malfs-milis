@@ -1,0 +1,15 @@
+# Description: Atkmm is the official C++ interface for the ATK accessibility toolkit library.
+# URL: http://gtkmm.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: atk glibmm libsigc++ 
+name=atkmm
+version=2.24.1
+release=1
+
+source=( http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+build (){
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

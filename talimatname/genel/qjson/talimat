@@ -1,0 +1,22 @@
+# Description: A qt-based library that maps JSON data to QVariant objects
+# URL: http://qjson.sourceforge.net
+# Packager: pierre at nutyx dot org
+# Depends on: qt4
+
+
+name=qjson
+version=0.8.1
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 )
+
+build() {
+cd $name-$version
+mkdir build
+cd build
+cmake .. \
+-DCMAKE_INSTALL_PREFIX=/usr \
+-DCMAKE_BUILD_TYPE=Release
+make
+make DESTDIR=$PKG install
+}

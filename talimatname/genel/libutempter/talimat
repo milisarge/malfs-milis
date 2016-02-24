@@ -1,0 +1,19 @@
+# Description: Interface for terminal emulators to record user sessions to utmp and wtmp files.
+# URL: ftp://ftp.altlinux.org/pub/people/ldv/utempter
+# Packager: tnut at nutyx dot org
+# Depends on:
+
+name=libutempter
+version=1.1.6
+release=1
+
+source=(http://ftp.altlinux.org/pub/people/ldv/utempter/$name-$version.tar.bz2)
+
+build(){
+    cd $name-$version
+    RPM_OPT_FLAGS="$CFLAGS" make
+    make
+    make DESTDIR=$PKG install
+    chown root:utmp $PKG/usr/lib/utempter/utempter
+    chmod 2755 $PKG/usr/lib/utempter/utempter
+}

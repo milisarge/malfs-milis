@@ -1,0 +1,29 @@
+# Description: A free library for arbitrary precision arithmetic.
+# URL: http://unix.schottelius.org/gpm
+# Packager: pierre at nutyx dot org
+name=gpm
+version=1.20.7
+release=2
+
+source=(http://www.nico.schottelius.org/software/$name/archives/$name-$version.tar.bz2)
+
+build() {
+	source /etc/blfs-bootscripts
+	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	tar xvf $scripts-$scriptsversion.tar.bz2
+
+	cd $name-$version
+	./autogen.sh
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info
+	LDFLAGS="-lm" make
+	make ROOT=$PKG install
+	ln -sv libgpm.so.2.1.0 $PKG/usr/lib/libgpm.so.1
+	ln -sv libgpm.so.2.1.0 $PKG/usr/lib/libgpm.so
+	install -v -m644 conf/gpm-root.conf $PKG/etc
+
+	cd ../$scripts-$scriptsversion
+	make DESTDIR=$PKG install-gpm
+}

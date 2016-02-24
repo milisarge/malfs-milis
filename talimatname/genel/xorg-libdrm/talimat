@@ -1,0 +1,23 @@
+# Description: libdrm, Interface space user for the services DRM of kernel
+# URL: http://dri.freedesktop.org/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: docbook-xsl libxslt xorg-util-macros xorg-libpciaccess 
+_name=libdrm
+
+name=xorg-libdrm
+version=2.4.66
+release=1
+
+source=( http://dri.freedesktop.org/${_name}/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+sed -e "/pthread-stubs/d" -i configure.ac
+autoreconf -fiv
+./configure --prefix=/usr \
+--enable-udev \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+}

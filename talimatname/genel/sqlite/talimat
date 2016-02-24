@@ -1,0 +1,30 @@
+# Description: A self-contained, serverless, zero-configuration, transactional SQL database engine
+# URL: http://www.sqlite.org/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+
+
+_amalgamationver=3100100
+
+name=sqlite
+version=3.10.1
+release=1
+
+source=(http://www.sqlite.org/2016/sqlite-autoconf-$_amalgamationver.tar.gz
+	http://www.sqlite.org/2016/sqlite-doc-$_amalgamationver.zip )
+
+build() {
+cd $name-autoconf-$_amalgamationver
+./configure --prefix=/usr \
+--disable-static \
+CFLAGS="-g -O2 -DSQLITE_ENABLE_FTS3=1 \
+-DSQLITE_ENABLE_COLUMN_METADATA=1 \
+-DSQLITE_SECURE_DELETE=1 \
+-DSQLITE_ENABLE_DBSTAT_VTAB=1 \
+-DSQLITE_ENABLE_RTREE=1 \
+-DSQLITE_ENABLE_UNLOCK_NOTIFY=1"
+make -j1
+make DESTDIR=$PKG install
+install -v -m755 -d $PKG/usr/share/doc/$name-$version
+cd $SRC
+cp -v -R sqlite-doc-$_amalgamationver/* $PKG/usr/share/doc/$name-$version
+}

@@ -1,0 +1,31 @@
+# Description: Free implementation of the .NET 
+# URL: http://www.mono-project.com/
+# Maintainer: NuTyX core team
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: ca-certificates libgdiplus python zlib
+ 
+name=mono
+version=4.2.1.102
+release=1
+source=(http://download.mono-project.com/sources/$name/$name-$version.tar.bz2
+	mono.binfmt.d)
+
+build() {
+	cd $name-${version%.*}
+	./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --disable-quiet-build \
+    --disable-system-aot \
+    --with-mcs-docs=no
+  	make
+  	make DESTDIR=$PKG install
+	cd $SRC/${name}-${version%.*}/mcs/jay
+	make DESTDIR=$PKG prefix=/usr INSTALL=../../install-sh install
+	
+	# install binfmt conf file and pathes
+	install -D -m644 $SRC/mono.binfmt.d $PKG/usr/lib/binfmt.d/mono.conf
+	#fix .pc file to be able to request mono on what it depends, fixes #go-oo build
+	sed -i -e "s:#Requires:Requires:" ${PKG}/usr/lib/pkgconfig/mono.pc
+}

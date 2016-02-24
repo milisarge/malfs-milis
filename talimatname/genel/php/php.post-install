@@ -1,0 +1,4 @@
+ln -v -sfn      /usr/lib/php/doc/Archive_Tar/docs/Archive_Tar.txt \
+                    /usr/share/doc/php-5.6.16
+ln -v -sfn      /usr/lib/php/doc/Structures_Graph/docs \
+                    /usr/share/doc/php-5.6.16

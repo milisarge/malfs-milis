@@ -1,0 +1,60 @@
+# Description: Programs for compressing and decompressing files.
+# URL: http://www.bzip.org/
+# Maintainer: Julian Seward ( jseward at bzip dot org )
+# Packager: tnut at nutyx dot org
+
+name=bzip2
+version=1.0.6
+release=1
+
+source=(http://www.bzip.org/$version/bzip2-$version.tar.gz \
+http://www.linuxfromscratch.org/patches/lfs/development/bzip2-$version-install_docs-1.patch)
+
+PKGMK_GROUPS=(devel doc man)
+
+build() {
+
+cd bzip2-$version
+
+patch -Np1 -i ../bzip2-$version-install_docs-1.patch
+sed -i 's@\(ln -s -f \)/bin/@\1@' Makefile
+sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
+
+make -f Makefile-libbz2_so
+make clean
+
+make
+
+make PREFIX=$PKG/usr install
+
+mkdir -pv $PKG/{bin,lib}
+cp -v bzip2-shared $PKG/bin/bzip2
+cp -av libbz2.so* $PKG/lib
+ln -sv ../../lib/libbz2.so.1.0 $PKG/usr/lib/libbz2.so
+rm -v $PKG/usr/bin/{bunzip2,bzcat,bzip2}
+mv -v $PKG/usr/bin/* \
+$PKG/bin
+for i in bzegrep bzfgrep 
+do
+  ln -svf bzgrep $PKG/bin/$i
+done
+for i in bunzip2 bzcat
+do
+ ln -svf bzip2 $PKG/bin/$i
+done
+for i in  bzless 
+do
+ ln -svf bzmore $PKG/bin/$i
+done
+for i in bzcmp
+do
+ ln -svf bzdiff $PKG/bin/$i
+done
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/lib usr/include
+rm -r usr/lib usr/include
+}

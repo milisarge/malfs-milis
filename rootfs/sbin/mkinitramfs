@@ -1,0 +1,264 @@
+#!/bin/bash
+# This file based in part on the mkinitrafms script for the LFS LiveCD
+# written by Alexander E. Patrakov and Jeremy Huntwork.
+# adapted by sham
+
+copy()
+{
+  local file
+
+  if [ "$2" == "lib" ]; then
+    file=$(PATH=/lib:/usr/lib type -p $1)
+  else
+    file=$(type -p $1)
+  fi
+
+  if [ -n $file ] ; then
+    cp $file $WDIR/$2
+  else
+    echo "Missing required file: $1 for directory $2"
+    rm -rf $WDIR
+    exit 1
+  fi
+}
+
+if [ -z $1 ] ; then
+  INITRAMFS_FILE=initrd
+else
+  KERNEL_VERSION=$1
+  INITRAMFS_FILE=initrd-$KERNEL_VERSION
+  sbinfiles="udevd udevadm ip"
+fi
+
+if [ -n "$KERNEL_VERSION" ] && [ ! -d "/lib/modules/$1" ] ; then
+  echo "No modules directory named $1"
+  exit 1
+fi
+
+printf "Creating $INITRAMFS_FILE... "
+
+binfiles="sh cat clear cut date grep cp dd hostname killall ls mkdir mknod more mount mountpoint chmod"
+binfiles="$binfiles umount stty sed sleep ln rm uname"
+
+sbinfiles="$sbinfiles blkid switch_root"
+
+#Optional files and locations
+if [ -x /sbin/mdadm ] ; then sbinfiles="$sbinfiles mdadm"; fi
+
+unsorted=$(mktemp /tmp/unsorted.XXXXXXXXXX)
+
+DATADIR=/lib/services
+INITIN=init.in
+
+# Create a temporrary working directory
+WDIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
+
+# Create base directory structure
+# mkdir -p $WDIR/{bin,dev,lib/firmware,run,sbin,sys,proc}
+mkdir -p $WDIR/{bin,dev,lib/{lsb,firmware},run,sbin,sys,proc,tmp,etc,usr/share}
+mkdir -p $WDIR/etc/{sysconfig,modprobe.d,udev/{rules.d,hwdb.d}}
+touch $WDIR/etc/modprobe.d/modprobe.conf
+ln -s lib $WDIR/lib64
+
+# Create necessary device nodes
+# mknod -m 640 $WDIR/dev/console c 5 1
+# mknod -m 664 $WDIR/dev/null    c 1 3
+
+# Install the init-functions
+if [ -f /lib/lsb/init-functions ]; then
+  cp /lib/lsb/init-functions $WDIR/lib/lsb/init-functions
+fi
+if [ -n "$KERNEL_VERSION" ] ; then
+   cp /etc/group $WDIR/etc
+fi
+cat > $WDIR/etc/fstab << "EOF"
+proc           /proc        proc     nosuid,noexec,nodev 0     0
+sysfs          /sys         sysfs    nosuid,noexec,nodev 0     0
+devpts         /dev/pts     devpts   gid=5,mode=620      0     0
+tmpfs          /run         tmpfs    defaults            0     0
+devtmpfs       /dev         devtmpfs mode=0755,nosuid    0     0
+EOF
+
+# echo and false are a bit wird
+cp /bin/echo $WDIR/bin/echo
+cp /bin/false $WDIR/bin/false
+
+# terminal stuff
+mkdir -p $WDIR/lib/ncurses/terminfo/l
+cp /lib/ncurses/terminfo/l/linux \
+ $WDIR/lib/ncurses/terminfo/l
+ln -s ../../lib/ncurses/terminfo $WDIR/usr/share/terminfo
+# Install the udev configuration files
+if [ -f /etc/udev/udev.conf ]; then
+  cp /etc/udev/udev.conf $WDIR/etc/udev/udev.conf
+fi
+
+for file in $(find /etc/udev/rules.d/ -type f) ; do
+ cp $file $WDIR/etc/udev/rules.d
+done
+
+for file in $(find /etc/udev/hwdb.d/ -type f) ; do
+  cp $file $WDIR/etc/udev/hwdb.d
+done
+cat > $WDIR/etc/udev/rules.d/55-lfs.rules << "EOF"
+# /etc/udev/rules.d/55-lfs.rules: Rule definitions for LFS.
+
+# Core kernel devices
+
+# This causes the system clock to be set as soon as /dev/rtc becomes available.
+SUBSYSTEM=="rtc", ACTION=="add", MODE="0644", RUN="do_start_clock"
+KERNEL=="rtc", ACTION=="add", MODE="0644", RUN="do_start_clock"
+
+# Comms devices
+
+KERNEL=="ippp[0-9]*",       GROUP="dialout"
+KERNEL=="isdn[0-9]*",       GROUP="dialout"
+KERNEL=="isdnctrl[0-9]*",   GROUP="dialout"
+KERNEL=="dcbri[0-9]*",      GROUP="dialout"
+EOF
+
+# Hostname
+if [ -f /etc/hostname ] ; then
+   cp /etc/hostname $WDIR/etc/hostname
+else
+   echo "milis" > $WDIR/etc/hostname
+fi
+# Clock setting
+if [ -f /etc/sysconfig/clock ] ; then
+  cp /etc/sysconfig/clock $WDIR/etc/sysconfig
+fi
+
+# Install any firmware present
+# cp -a /lib/firmware $WDIR/lib
+
+# Copy the RAID configureation file if present
+# if [ -f /etc/mdadm.conf ] ; then
+#  cp /etc/mdadm.conf $WDIR/etc
+# fi
+
+# Install the init file
+install -m0755 $DATADIR/$INITIN $WDIR/init
+
+  binfiles="$binfiles groups"
+  if [ -x /bin/kmod ] ; then
+    binfiles="$binfiles kmod"
+  else
+    binfiles="$binfiles lsmod"
+    sbinfiles="$sbinfiles insmod"
+  fi
+
+# Install basic binaries
+for f in $binfiles ; do
+  ldd /bin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+  copy $f bin
+done
+
+# Add lvm if present
+if [ -x /sbin/lvm ] ; then sbinfiles="$sbinfiles lvm dmsetup"; fi
+
+for f in $sbinfiles ; do
+  ldd /sbin/$f | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+  copy $f sbin
+done
+
+# Add udevd libraries if not in /sbin
+if [ -x /lib/udev/udevd ] ; then
+  ldd /lib/udev/udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
+fi
+
+if [ -x /bin/kmod ] ; then
+  ln -s kmod $WDIR/bin/lsmod
+  ln -s ../bin/kmod $WDIR/sbin/insmod
+  ln -s ../bin/kmod $WDIR/sbin/modprobe
+  ln -s ../bin/kmod $WDIR/sbin/depmod
+fi
+
+# Add lvm symlinks if appropriate
+# Also copy the lvm.conf file
+if  [ -x /sbin/lvm ] ; then
+ ln -s lvm $WDIR/sbin/lvchange
+ ln -s lvm $WDIR/sbin/lvrename
+ ln -s lvm $WDIR/sbin/lvextend
+ ln -s lvm $WDIR/sbin/lvcreate
+ ln -s lvm $WDIR/sbin/lvdisplay
+ ln -s lvm $WDIR/sbin/lvscan
+
+ ln -s lvm $WDIR/sbin/pvchange
+ ln -s lvm $WDIR/sbin/pvck
+ ln -s lvm $WDIR/sbin/pvcreate
+ ln -s lvm $WDIR/sbin/pvdisplay
+ ln -s lvm $WDIR/sbin/pvscan
+
+ ln -s lvm $WDIR/sbin/vgchange
+ ln -s lvm $WDIR/sbin/vgcreate
+ ln -s lvm $WDIR/sbin/vgscan
+ ln -s lvm $WDIR/sbin/vgrename
+ ln -s lvm $WDIR/sbin/vgck
+ # Conf file(s)
+ cp -a /etc/lvm $WDIR/etc
+fi
+
+# Install libraries
+sort $unsorted | uniq | while read library ; do
+  if [ "$library" == "linux-vdso.so.1" ] ||
+     [ "$library" == "linux-gate.so.1" ]; then
+    continue
+  fi
+
+  copy $library lib
+done
+
+cp -a /lib/udev $WDIR/lib
+
+# The Hardware clock setting maybe could be faster done
+cat > $WDIR/lib/udev/do_start_clock << "EOF"
+#!/bin/sh -e
+. /lib/lsb/init-functions
+do_start_clock
+EOF
+chmod 755 $WDIR/lib/udev/do_start_clock
+
+# Install the kernel modules if requested
+if [ -n "$KERNEL_VERSION" ]; then
+  find                                                                              \
+     /lib/modules/$KERNEL_VERSION/kernel/{arch,crypto,fs,kernel,lib,mm,security}    \
+     /lib/modules/$KERNEL_VERSION/kernel/drivers/{ata,base,block,cdrom,hid,md,firewire} \
+     /lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio,net}   \
+     /lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{core,common,host,storage}     \
+     -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
+
+  cp /lib/modules/$KERNEL_VERSION/modules.{builtin,order}                     \
+            $WDIR/lib/modules/$KERNEL_VERSION
+
+  depmod -b $WDIR $KERNEL_VERSION
+
+  cp -a /lib/firmware/rtlwifi \
+  $WDIR/lib/firmware > /dev/null 2>&1
+  cp -a /lib/firmware/ath6k \
+  $WDIR/lib/firmware > /dev/null 2>&1
+  cp -a /lib/firmware/RTL8192E \
+  $WDIR/lib/firmware > /dev/null 2>&1
+  cp -a /lib/firmware/bnx2x-* \
+  $WDIR/lib/firmware > /dev/null 2>&1
+  cp -a /lib/firmware/brcm \
+  $WDIR/lib/firmware > /dev/null 2>&1
+  cp -a /lib/firmware/iwlwifi-* \
+  $WDIR/lib/firmware > /dev/null 2>&1
+  cp -a /lib/firmware/radeon \
+  $WDIR/lib/firmware > /dev/null 2>&1
+  cp -a /lib/firmware/ar3k \
+  $WDIR/lib/firmware > /dev/null 2>&1
+fi
+rm -f /boot/$INITRAMFS_FILE
+# cp -a /boot $WDIR
+# rm -v $WDIR/boot/kernel*
+
+( cd $WDIR ; find . | cpio -o -H newc --quiet | gzip -9 ) > $INITRAMFS_FILE
+
+# Remove the temporary direc
+rm -rf $WDIR $unsorted
+mv $INITRAMFS_FILE /boot/$INITRAMFS_FILE
+# in case of iso 
+# mv $INITRAMFS_FILE /ISO/isolinux/$INITRAMFS_FILE
+printf "done.\n"
+

@@ -1,0 +1,8 @@
+JWM is configured via an XML configuration file.
+By default, this file is located in "/etc/system.jwmrc".
+To customize JWM, copy this file to "$HOME/.jwmrc" and then modify it using your favorite text editor.
+Although somewhat verbose, XML (which looks much like HTML) provides a convenient way
+to represent hierarchical configuration, such as menus.
+In addition, XML fairly easy to edit either by hand or programmatically.
+
+Be aware if no "$HOME/.jwmrc" file exist it will parse the "/etc/system.jwmrc" file.

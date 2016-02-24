@@ -1,0 +1,12 @@
+Rox-IceWM      `desktop=rox-icewm
+Space-IceWM    `desktop=space-icewm
+IceWM          `desktop=icewm
+Rox-Fluxbox    `desktop=rox-fluxbox
+Space-Fluxbox  `desktop=space-fluxbox
+Fluxbox        `desktop=fluxbox
+Rox-Jwm        `desktop=rox-jwm
+Space-Jwm      `desktop=space-jwm
+Jwm            `desktop=jwm
+Dwm            `desktop=dwm
+Wmii           `desktop=wmii
+

@@ -1,0 +1,19 @@
+# Description: connector python for the library librsvg
+# URL: http://www.gnome.org
+# Packager: pierre at nutyx dot org
+# Depends on: python-gtk librsvg 
+
+_name=gnome-python-desktop
+
+name=python-rsvg
+version=2.32.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr
+make -C rsvg install DESTDIR=$PKG
+install -m755 -d $PKG/usr/share/pygtk/2.0/defs
+install -m644 rsvg/rsvg.defs $PKG/usr/share/pygtk/2.0/defs/
+}

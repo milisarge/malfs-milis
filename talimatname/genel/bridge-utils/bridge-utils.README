@@ -1,0 +1,25 @@
+Veuillez consulter la documentation de BLFS
+
+http://www.fr.linuxfromscratch.org/view/blfs-svn/basicnet/bridge-utils.html
+
+Un exemple de configuration 
+
+cat > /etc/sysconfig/ifconfig.br0 << "EOF"
+ONBOOT=yes
+IFACE=br0
+SERVICE="bridge ipv4-static"  # Séparation par un espace
+IP=192.168.1.32
+GATEWAY=192.168.1.1
+PREFIX=24
+BROADCAST=192.168.1.255
+CHECK_LINK=no                 # Ne vérifie pas avant qu'ibridge soit créé
+STP=no                        # Spanning l'arborescence du protocole, par défaut non
+INTERFACES="eth0"             # Ajout à IFACE, périphériques séparés par des espaces
+IP_FORWARD=true
+EOF
+
+Vous devriez changer toutes les adresses pour correspondre à votre contexte. 
+
+Pour automatiser la création et la configuration d'un pont, installez script de service /lib/services/etc/bridge inclu dans le paquet service-bridge
+
+

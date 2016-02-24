@@ -1,0 +1,19 @@
+# Description: A free, cross-platform, open source, audio I/O library
+# URL: http://www.portaudio.com
+# Packager: pierre at nutyx dot org
+# Depends on: jack 
+
+name=portaudio
+version=19_20140130
+release=1
+
+source=(http://www.portaudio.com/archives/pa_stable_v${version}.tgz)
+
+build() {
+cd portaudio
+./configure --prefix=/usr --enable-cxx
+make||make -j1
+make DESTDIR=$PKG install
+
+install -Dm0644 LICENSE.txt $SRC/usr/share/licenses/portaudio/LICENSE.txt
+}

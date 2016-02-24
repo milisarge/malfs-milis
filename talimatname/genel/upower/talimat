@@ -1,0 +1,22 @@
+# Description: To enumerating power devices, listening to device events, querying history and statistics
+# URL: http://upower.freedesktop.org
+# Maintainer: Richard Hughes, richard at hughsie dot com
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: dbus-glib libusb intltool polkit gobject-introspection libgudev pm-utils
+
+name=upower
+version=0.99.3
+release=1
+
+source=(http://upower.freedesktop.org/releases/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--enable-deprecated \
+--localstatedir=/var \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

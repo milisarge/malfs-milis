@@ -1,0 +1,20 @@
+# Description: A fully tested, abstract interface to creating OAuth 1.0 clients and servers.
+# URL: URL: https://github.com/simplegeo/python-oauth2
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-httplib2 python-setuptools 
+name=python-oauth2
+version=1.5.211
+release=1
+
+source=(
+https://pypi.python.org/packages/source/o/oauth2/oauth2-$version.tar.gz)
+
+build() {
+    cd oauth2-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

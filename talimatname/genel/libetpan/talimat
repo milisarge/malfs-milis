@@ -1,0 +1,16 @@
+# Description: A portable middleware for email access
+# URL: http://www.etpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: curl expat 
+
+name=libetpan
+version=1.1
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

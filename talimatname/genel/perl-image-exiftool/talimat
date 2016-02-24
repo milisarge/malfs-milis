@@ -1,0 +1,21 @@
+# Description: Generates and rewritten exif info in the raw files
+# URL: http://search.cpan.org/~exiftool/Image-ExifTool/
+# Packager: piernov  piernov at piernov dot org
+# Depends on: 
+run=( perl )
+name=perl-image-exiftool
+version=9.90
+release=1
+
+source=(http://www.cpan.org/authors/id/E/EX/EXIFTOOL/Image-ExifTool-$version.tar.gz)
+
+build() {
+cd Image-ExifTool-$version
+perl Makefile.PL
+make
+make DESTDIR=$PKG install
+find $PKG \
+-name '*.pod' \
+-o -name '.packlist' | xargs rm
+find $PKG -empty | xargs rmdir -p ||:
+}

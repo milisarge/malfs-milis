@@ -1,0 +1,9 @@
+Pour lancer lxdm de façon automatique, il faut ajouter cette ligne dans le fichier /etc/inittab:
+
+20:4:respawn:/usr/sbin/lxdm >& /dev/null
+
+ainsi que changer l'init défaut dans le même fichier:
+
+id:4:initdefault:
+
+

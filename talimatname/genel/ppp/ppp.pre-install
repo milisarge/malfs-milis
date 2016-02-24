@@ -1,0 +1,4 @@
+if [ -z "`grep '^pppusers:' etc/group`" ]
+then
+  sbin/groupadd -g 52 pppusers
+fi

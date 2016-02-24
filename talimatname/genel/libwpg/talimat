@@ -1,0 +1,17 @@
+# Description: Library for importing and converting Corel WordPerfect(tm) Graphics images.
+# URL: http://libwpg.sourceforge.net/libwpg.htm
+# Packager: pierre at nutyx dot org
+# Depends on: libwpd
+
+name=libwpg
+version=0.3.0
+release=1
+
+source=(http://sourceforge.net/projects/libwpg/files/libwpg/libwpg-$version/$name-$version.tar.gz)
+
+build() {
+		cd $name-$version
+                ./configure --prefix=/usr --without-docs
+		make
+		make DESTDIR=$PKG install
+}

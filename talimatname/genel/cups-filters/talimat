@@ -1,0 +1,22 @@
+# Description: OpenPrinting CUPS Filters
+# URL: http://www.cups.org
+# Packager: pierre at nutyx dot org
+# Depends on: bc cups lcms2 poppler qpdf libjpeg-turbo libpng libtiff ghostscript avahi ijs harfbuzz 
+name=cups-filters
+version=1.8.1
+release=1
+
+source=( http://www.openprinting.org/download/$name/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr                   \
+            --sysconfdir=/etc               \
+            --localstatedir=/var            \
+            --without-rcdir                 \
+            --disable-static                \
+            --with-gs-path=/usr/bin/gs      \
+            --with-pdftops-path=/usr/bin/gs \
+            --docdir=/usr/share/doc/$name-$version
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,25 @@
+# URL: http://sourceforge.net/projects/re-alpine/files/re-alpine-2.03.tar.bz2
+# Packager: berlius at nutyx dot com
+# Depends on: openssl aspell tcl pam 
+
+description="Continuation of Alpine, text-based email client developed by the University of Washington."
+name=re-alpine
+version=2.03	
+release=1
+source=(http://sourceforge.net/projects/re-alpine/files/$name-$version.tar.bz2)
+ 
+build() {
+
+cd $name-$version
+	
+./configure --prefix=/usr       \
+            --sysconfdir=/etc   \
+            --without-ldap      \
+            --without-krb5      \
+            --with-ssl-dir=/usr \
+            --with-passfile=.pine-passfile 
+make
+
+make DESTDIR=$PKG install
+
+}

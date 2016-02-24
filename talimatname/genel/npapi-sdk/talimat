@@ -1,0 +1,16 @@
+# Description: Bundle of Netscape Plugin Application Programming Interface headers by Mozilla
+# URL: https://bitbucket.org/mgorny/npapi-sdk/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=npapi-sdk
+version=0.27.2
+release=1
+
+source=(https://bitbucket.org/mgorny/npapi-sdk/downloads/npapi-sdk-$version.tar.bz2)
+
+build() {
+cd npapi-sdk-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

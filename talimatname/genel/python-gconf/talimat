@@ -1,0 +1,24 @@
+# Description: Bindings Python2 for GConf.
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python-gtk gconf 
+
+_name=gnome-python
+
+name=python-gconf
+version=2.28.1
+release=1
+
+source=(http://download.gnome.org/sources/$_name/${version%.*}/$_name-$version.tar.bz2)
+
+build() {
+	cd $_name-$version
+	PYTHON=python2 ./configure --prefix=/usr \
+		--disable-gtk-doc \
+		--disable-allbindings \
+		--enable-gconf
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
+	rm -rf $PKG/usr/lib/pkgconfig
+}

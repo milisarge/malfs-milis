@@ -1,0 +1,35 @@
+# Description: Utilities to administer the extended attributes on filesystem objects
+# URL: http://savannah.nongnu.org/projects/attr
+# Maintainers: Andreas Gruenbacher <agruen>, Brandon Philips <philips>
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+
+name=attr
+version=2.4.47
+release=1
+
+source=(http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
+PKGMK_GROUPS=(devel man doc)
+build() {
+cd attr-$version
+
+sed -i -e 's|/@pkg_name@|&-@pkg_version@|' include/builddefs.in
+
+INSTALL_USER=root  \
+INSTALL_GROUP=root \
+./configure --prefix=/usr \
+--bindir=/bin
+make
+make  DIST_ROOT=$PKG install install-lib install-dev
+chmod -v 755 $PKG/usr/lib/libattr.so
+mkdir $PKG/lib
+mv -v $PKG/usr/lib/libattr.so.* $PKG/lib
+ln -sfv ../../lib/libattr.so.1 $PKG/usr/lib/libattr.so
+}
+
+devel () {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/lib usr/include
+rm -rvf usr/lib usr/include
+}

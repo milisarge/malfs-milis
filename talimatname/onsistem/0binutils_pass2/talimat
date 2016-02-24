@@ -1,0 +1,28 @@
+version=2.26
+source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2
+	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-2.patch)
+
+build()
+{
+cd binutils-$version
+
+patch -Np1 -i ../binutils-$version-upstream_fix-2.patch
+
+mkdir -v build
+cd build
+
+CC=$LFS_TGT-gcc            \
+AR=$LFS_TGT-ar             \
+RANLIB=$LFS_TGT-ranlib     \
+../configure               \
+    --prefix=/tools        \
+    --disable-nls          \
+    --disable-werror       \
+    --with-lib-path=/tools/lib \
+    --with-sysroot
+make
+make install
+make -C ld clean
+make -C ld LIB_PATH=/usr/lib:/lib
+cp -v ld/ld-new /tools/bin
+}

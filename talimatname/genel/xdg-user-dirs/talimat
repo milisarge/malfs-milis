@@ -1,0 +1,19 @@
+# Description: Manage user directories like ~/Desktop and ~/Music
+# Url: http://www.freedesktop.org/wiki/Software/xdg-user-dirs
+# Packager: tnut at nutyx dot org
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Depends on: libxslt docbook-xsl
+
+name=xdg-user-dirs
+version=0.15
+release=2
+source=(http://user-dirs.freedesktop.org/releases/$name-$version.tar.gz
+        xdg-user-dirs)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+  make DESTDIR=$PKG install
+  install -D ../$name $PKG/etc/X11/xinit/xinitrc.d/xdg-user-dirs
+}

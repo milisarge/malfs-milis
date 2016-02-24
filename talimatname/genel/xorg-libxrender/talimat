@@ -1,0 +1,17 @@
+# Description: libXrender, library X Render extension client
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-libx11 xorg-proto 
+
+name=xorg-libxrender
+version=0.9.9
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXrender-$version.tar.bz2)
+
+build() {
+cd libXrender-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

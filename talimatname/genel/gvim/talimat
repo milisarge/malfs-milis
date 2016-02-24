@@ -1,0 +1,31 @@
+# Description: GTK version of the vim editor
+# URL:         http://www.vim.org/
+# Maintainer:  Juergen Daubert, jue at crux dot nu
+# Packager: fanch at nutyx dot org
+# Depends on:  vim, gtk2, xorg-libxt
+
+name=gvim
+version=7.4.629
+release=2
+
+source=(http://crux.nu/files/distfiles/vim-$version.tar.xz
+        gvim.desktop)
+
+build () {
+    cd vim-$version/src
+    
+    ./configure --prefix=/usr \
+                --with-vim-name=gvim \
+                --with-x=yes \
+                --enable-gui=gtk2 \
+                --enable-multibyte \
+                --disable-gpm \
+                --disable-nls
+
+    make VIMRTDIR=
+    make VIMRTDIR= DESTDIR=$PKG installvimbin
+
+    install -d $PKG/usr/share/{applications,pixmaps}
+    install -m 644 $SRC/gvim.desktop $PKG/usr/share/applications
+    install -m 644 ../runtime/vim*.png $PKG/usr/share/pixmaps
+}

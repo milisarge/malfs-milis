@@ -1,0 +1,18 @@
+# Description: Contains a very portable POSIX/ANSI-C based library for Unix platforms
+# URL: http://www.gnu.org/software/pth/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=npth
+version=1.2
+release=1
+
+source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--disable-static 
+make 
+make -j1 DESTDIR=$PKG install
+}

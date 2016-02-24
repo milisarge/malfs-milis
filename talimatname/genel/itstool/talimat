@@ -1,0 +1,17 @@
+# Description: XML to PO and back again
+# URL: http://itstool.org/
+# Packager: pierre at nutyx dot org
+# Depends on: docbook-xml docbook-xsl python 
+
+name=itstool
+version=2.0.2
+release=1
+
+source=(http://files.itstool.org/itstool/$name-$version.tar.bz2 )
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

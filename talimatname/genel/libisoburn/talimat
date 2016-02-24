@@ -1,0 +1,18 @@
+# Description: libisoburn is a frontend for libraries libburn and libisofs
+# URL: http://libburnia-project.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libburn libisofs acl attr 
+
+name=libisoburn
+version=1.4.2
+release=1
+
+source=(http://files.libburnia-project.org/releases/libisoburn-$version.tar.gz)
+build () {
+cd $name-$version
+./configure --prefix=/usr --disable-static \
+--enable-pkg-check-modules
+make
+make DESTDIR=$PKG install
+rm -f $PKG/usr/share/info/dir
+} 

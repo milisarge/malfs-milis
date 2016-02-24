@@ -1,0 +1,20 @@
+# Description: A free codec for free speech
+# URL: http://www.speex.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libogg 
+
+name=speex
+version=1.2rc2
+release=1
+
+source=(  http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)
+
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static \
+--docdir=/usr/share/doc/speex-$version
+make
+make DESTDIR=$PKG install
+}  

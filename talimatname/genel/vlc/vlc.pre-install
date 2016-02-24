@@ -1,0 +1,5 @@
+. lib/lsb/init-functions
+if [ -z "`cards list|grep libvlc\ `" ]; then
+  cards install libvlc
+  log_warning_msg "${WARNING}libvlc${NORMAL} is now installed"
+fi

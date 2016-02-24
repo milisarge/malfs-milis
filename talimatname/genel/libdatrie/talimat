@@ -1,0 +1,19 @@
+# Description: Implementation of double-array structure for representing trie, as proposed by Junichi Aoe
+# URL: http://linux.thai.net/~thep/datrie/datrie.html
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=libdatrie
+version=0.2.9
+release=1
+
+source=(
+http://linux.thai.net/pub/thailinux/software/libthai/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

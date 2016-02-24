@@ -1,0 +1,23 @@
+# Description: A CSS Cascading Style Sheets library for Python.
+# URL: URL: http://cthedot.de/cssutils/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-setuptools 
+name=python-cssutils
+version=1.0
+release=1
+
+source=(
+http://pypi.python.org/packages/source/c/cssutils/cssutils-$version.zip)
+
+build() {
+    cd cssutils-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+
+    # rm tests (FS#27567)
+    rm -rf $PKG/usr/lib/python2.7/site-packages/tests
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

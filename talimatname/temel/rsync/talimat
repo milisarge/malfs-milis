@@ -1,0 +1,33 @@
+# Description: Synchronizing files over a network by sending just the differences in the files.
+# URL: http://samba.anu.edu.au/rsync/
+# Packager: tnut at nutyx dot org
+name=rsync
+version=3.1.2
+release=1
+
+source=( http://rsync.samba.org/ftp/$name/$name-$version.tar.gz
+	rsync.driver )
+
+build() {
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+./configure --prefix=/usr \
+-mandir=/usr/share/man \
+--infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+
+# drivers
+mkdir -p $PKG/var/lib/pkg/drivers
+install -m 755 $SRC/rsync.driver \
+$PKG/var/lib/pkg/drivers/rsync
+
+# service
+cd $SRC
+
+tar xf $scripts-$scriptsversion.tar.bz2
+cd $SRC/$scripts-$scriptsversion
+make DESTDIR=$PKG install-rsyncd
+}

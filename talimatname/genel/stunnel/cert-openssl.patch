@@ -1,0 +1,12 @@
+diff -rupN a/tools/makecert.sh b/tools/makecert.sh
+--- a/tools/makecert.sh	2015-10-24 18:53:23.000000000 +0200
++++ b/tools/makecert.sh	2015-11-25 05:05:53.936591000 +0100
+@@ -7,7 +7,7 @@ else
+ fi
+ 
+ if test -n "$2"; then
+-    OPENSSL="$2/bin/openssl"
++    OPENSSL="/bin/openssl"
+ else
+     OPENSSL=openssl
+ fi

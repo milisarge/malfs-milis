@@ -1,0 +1,17 @@
+# Description: Portable abstraction library for DVD decryption
+# URL: http://www.videolan.org
+# Packager: pierre at nutyx dot org
+# Depends on: doxygen 
+
+name=libdvdcss
+version=1.4.0
+release=1
+
+source=(http://download.videolan.org/libdvdcss/$version/libdvdcss-$version.tar.bz2)
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static \
+--docdir=/usr/share/doc/libdvdcss-$version
+make
+make DESTDIR=$PKG install
+}

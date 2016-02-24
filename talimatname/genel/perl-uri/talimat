@@ -1,0 +1,21 @@
+# Description: Library for Uniform Resource Identifiers Perl
+# URL: http://search.cpan.org/~gaas/URI-1.35/URI.pm
+# Packager: pierre at nutyx dot org
+# Depends on: 
+run=( perl )
+name=perl-uri
+version=1.67
+release=1
+
+source=(http://www.cpan.org/authors/id/E/ET/ETHER/URI-$version.tar.gz)
+
+build() {
+cd URI-$version
+	perl Makefile.PL
+	make
+	make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

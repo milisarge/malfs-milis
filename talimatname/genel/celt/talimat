@@ -1,0 +1,19 @@
+# Description: Low-latency audio communication codec
+# URL: http://www.celt-codec.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libogg 
+
+name=celt
+version=0.11.3
+release=1
+
+source=(http://downloads.us.xiph.org/releases/celt/celt-$version.tar.gz)
+
+build() {
+cd celt-$version
+./configure --prefix=/usr --enable-custom-modes --disable-static
+make
+make DESTDIR=$PKG install
+
+install -Dm644 COPYING $PKG/usr/share/licenses/celt/LICENSE
+}

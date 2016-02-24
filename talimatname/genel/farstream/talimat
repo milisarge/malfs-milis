@@ -1,0 +1,17 @@
+# Description: Farstream (formerly Farsight) - Audio/Video Communications Framework
+# URL:   http://freedesktop.org/software/farstream
+# Packager: pierre at nutyx dot org
+# Depends on: gstreamer1-plugins-base libnice gobject-introspection 
+
+name=farstream
+version=0.2.7
+release=1
+
+source=( http://freedesktop.org/software/farstream/releases/farstream/farstream-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+}

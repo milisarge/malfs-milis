@@ -1,0 +1,55 @@
+# Description: The Zlib package contains compression and decompression routines used by some programs.
+# URL: http://www.zlib.net/
+# Maintainer: Jean-loup Gailly (compression), Mark Adler (decompression)
+# Packager: pierre at nutyx dot org
+name=zlib
+version=1.2.8
+release=2
+
+source=(http://www.zlib.net/zlib-$version.tar.xz)
+
+PKGMK_GROUPS=(devel man)
+
+build() {
+# Vérifier si necessaire de faire les verifs du bon fonctionnement de
+# glibc et du linker
+if [ -L /bin/pwd ];then
+	mv -v /tools/bin/{ld,ld-old}
+	mv -v /tools/$(uname -m)-pc-linux-gnu/bin/{ld,ld-old}
+	mv -v /tools/bin/{ld-new,ld}
+	ln -sv /tools/bin/ld /tools/$(uname -m)-pc-linux-gnu/bin/ld
+
+	gcc -dumpspecs | sed -e 's@/tools@@g'                   \
+	-e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}' \
+	-e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' >      \
+	`dirname $(gcc --print-libgcc-file-name)`/specs
+
+	echo 'int main(){}' > dummy.c
+	cc dummy.c -v -Wl,--verbose &> dummy.log
+	readelf -l a.out | grep ': /lib'
+
+	grep -o '/lib.*/crt[1in].*succeeded' dummy.log
+	grep -B1 '^ /usr/include' dummy.log
+	grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g'
+	grep "/lib.*/libc.so.6 " dummy.log
+	grep found dummy.log
+	rm -v dummy.c a.out dummy.log
+fi
+
+cd zlib-$version
+./configure --prefix=/usr
+make
+make check
+make prefix=$PKG/usr install
+
+mkdir -p $PKG/lib
+mv -v $PKG/usr/lib/libz.so.* $PKG/lib
+ln -sfv ../../lib/libz.so.$version  $PKG/usr/lib/libz.so
+}
+devel () {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/lib usr/include
+rm -rvf usr/lib usr/include
+}

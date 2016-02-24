@@ -1,0 +1,19 @@
+# URL:                 http://www.ring.gr.jp/archives/net/mail/procmail/
+# Packager:		berlius at nutyx dot com
+# Depends on:	
+description="An autonomous mail processor for filtering and sorting incoming mail"
+name=procmail
+version=3.22
+release=1
+
+source=(http://www.ring.gr.jp/archives/net/mail/$name/$name-$version.tar.gz)
+
+build () {
+
+	cd $name-$version
+
+	sed -i 's/getline/get_line/' src/*.[ch]
+	make BASENAME=$PKG LOCKINGTEST=$PKG/tmp MANDIR=$PKG/usr/share/man install 
+	make BASENAME=$PKG install-suid
+	
+}

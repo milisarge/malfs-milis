@@ -1,0 +1,6 @@
+. lib/lsb/init-functions
+if [ ! -f etc/httpd/httpd.conf ]; then
+	cp etc/httpd/httpd.conf{.example,}
+      log_success_msg "${WARNING} /etc//httpd/httpd.conf created ${NORMAL}"
+      log_warning_msg "${WARNING} Double check /etc//httpd/httpd.conf and adapted to your needs ${NORMAL}"
+fi

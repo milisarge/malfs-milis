@@ -1,0 +1,25 @@
+# Description: Generic Graphics Library
+# URL: http://gegl.org/
+# Packager: pierre at nutyx dot org
+# Depends on: babl gtk2 librsvg libpng ruby lua ffmpeg librsvg openexr exiv2
+
+name=gegl
+version=0.2.0
+release=1
+
+source=(http://ftp.gimp.org/pub/$name/0.2/$name-$version.tar.bz2
+	 http://www.linuxfromscratch.org/patches/blfs/svn/gegl-0.2.0-ffmpeg2-1.patch
+	)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../gegl-0.2.0-ffmpeg2-1.patch
+./configure --prefix=/usr --disable-docs
+LC_ALL=en_US make
+make DESTDIR=$PKG install
+install -d -v -m755 $PKG/usr/share/gtk-doc/html/gegl/images
+install -v -m644 docs/*.{css,html} \
+$PKG/usr/share/gtk-doc/html/gegl
+install -v -m644 docs/images/* \
+$PKG/usr/share/gtk-doc/html/gegl/images
+}

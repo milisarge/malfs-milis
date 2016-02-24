@@ -1,0 +1,25 @@
+# Description: 	Joe's own editor, is a small text editor capable of emulating WordStar, Pico, and Emacs. 
+# URL:         	http://downloads.sourceforge.net/joe-editor
+# Packager:		berlius at nutyx dot com
+# Depends on:  	
+
+name=joe
+version=4.1
+release=1
+
+source=(http://downloads.sourceforge.net/joe-editor/$name-$version.tar.gz)
+
+build () {
+
+    cd $name-$version
+    
+	./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --docdir=/usr/share/doc/joe-4.1 
+    make
+	make DESTDIR=$PKG install
+	install -vm 755 joe/util/{stringify,termidx,uniproc} $PKG/usr/bin 
+	install -vdm755 $PKG/usr/share/joe/util 
+	install -vm 644 joe/util/{*.txt,README} $PKG/usr/share/joe/util
+
+}

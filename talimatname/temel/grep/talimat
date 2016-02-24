@@ -1,0 +1,21 @@
+# Description: Searches input(s) file(s) for lines containing a match to a specified pattern.
+# URL: http://www.gnu.org/software/grep/
+# Maintainers: Jim Meyering jim at meyering dot net,Paolo Bonzini bonzini at gnu dot org
+# Packager: pierre at nutyx dot org
+
+name=grep
+version=2.23
+release=1
+
+source=(http://ftp.gnu.org/gnu/grep/grep-$version.tar.xz)
+
+build()
+{
+cd grep-$version
+
+./configure --prefix=/usr --bindir=/bin
+make
+make check || true
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

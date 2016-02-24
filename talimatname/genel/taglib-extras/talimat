@@ -1,0 +1,19 @@
+# Description: Additional taglib plugins for KDE
+# URL: http://developer.kde.org/~wheeler/taglib.html
+# Packager: pierre at nutyx dot org
+# Depends on: taglib 
+name=taglib-extras
+version=1.0.1
+release=1
+
+source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  make 
+  make DESTDIR=$PKG install
+
+}
+
+  

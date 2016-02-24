@@ -1,0 +1,25 @@
+# Begin /etc/xinetd.d/time
+
+service time
+{
+   disable        = yes
+   type           = INTERNAL
+   id             = time-stream
+   socket_type    = stream
+   protocol       = tcp
+   user           = root
+   wait           = no
+}
+
+service time
+{
+   disable        = yes
+   type           = INTERNAL
+   id             = time-dgram
+   socket_type    = dgram
+   protocol       = udp
+   user           = root
+   wait           = yes
+}
+
+# End /etc/xinetd.d/time

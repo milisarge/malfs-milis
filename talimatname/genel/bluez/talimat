@@ -1,0 +1,77 @@
+# Description: The BlueZ package contains the Bluetooth protocol stack for Linux.
+# URL: http://www.bluez.org/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
+
+name=bluez
+version=5.37
+release=1
+
+source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
+	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-obexd_without_systemd-1.patch)
+build() {
+source /etc/blfs-bootscripts
+wget   http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+patch -Np1 -i ../$name-$version-obexd_without_systemd-1.patch
+
+./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/lib \
+    --disable-systemd \
+    --enable-gstreamer \
+    --enable-alsa \
+    --enable-usb \
+    --enable-tools \
+    --enable-bccmd \
+    --enable-dfutool \
+    --enable-hid2hci \
+    --enable-hidd \
+    --enable-pand \
+    --enable-dund \
+    --enable-cups \
+    --disable-test \
+    --enable-library \
+    --without-systemdunitdir
+make
+make DESTDIR=$PKG install
+
+install -v -dm755 $PKG/{etc/bluetooth,usr/sbin}
+
+ln -svf ../libexec/bluetooth/bluetoothd $PKG/usr/sbin
+
+
+cat > $PKG/etc/bluetooth/rfcomm.conf << "EOF"
+# rfcomm.conf
+# Set up the RFCOMM configuration of the Bluetooth subsystem in the Linux kernel.
+# Use one line per command
+# See the rfcomm man page for options
+
+
+# End of rfcomm.conf
+EOF
+
+cat > $PKG/etc/bluetooth/uart.conf << "EOF"
+#uart.conf
+# Attach serial devices via UART HCI to BlueZ stack
+# Use one line per device
+# See the hciattach man page for options
+
+# End of uart.conf
+EOF
+
+
+install -m644 profiles/network/network.conf \
+	profiles/input/input.conf \
+	$PKG/etc/bluetooth
+
+install -v -dm755 $PKG/usr/share/doc/$name-$version
+install -v -m644 doc/*.txt $PKG/usr/share/doc/$name-$version
+
+# Startup Script 
+cd ../$scripts-$scriptsversion
+make DESTDIR=$PKG install-bluetooth
+}

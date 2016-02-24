@@ -1,0 +1,24 @@
+# Description: High speed download utility with resuming and segmented features.
+# URL:         http://aria2.sourceforge.net/
+# Packager:    berlius at nutyx dot com
+# Depends on:  gnutls gmp libxml2
+
+name=aria2
+version=1.19.2
+release=1
+source=(https://github.com/tatsuhiro-t/$name/releases/download/release-$version/$name-$version.tar.bz2)
+
+build() {
+
+    cd $name-$version
+
+    ./configure \
+	   --prefix=/usr \
+	   --mandir=$PKG/usr/man 
+
+    make
+    make prefix=$PKG/usr install
+
+}
+
+

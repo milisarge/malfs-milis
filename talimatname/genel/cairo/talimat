@@ -1,0 +1,20 @@
+# Description: Cairo is a 2D graphics library with support for multiple output devices.
+# URL: http://www.cairographics.org/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: libpng,glib,xorg-pixman,xorg-fontconfig,xcb-util,xorg-libxrender,xorg-mesa,xorg-glu,xorg-libxxf86vm
+
+
+name=cairo
+version=1.14.6
+release=1
+
+source=( http://cairographics.org/releases/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+            --disable-static \
+	    --enable-tee
+make
+make DESTDIR=$PKG install
+} 

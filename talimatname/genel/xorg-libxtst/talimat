@@ -1,0 +1,17 @@
+# Description: libXtst, library Xorg
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-libx11 xorg-libxext xorg-libxi 
+
+name=xorg-libxtst
+version=1.2.2
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXtst-$version.tar.bz2)
+
+build() {
+cd libXtst-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

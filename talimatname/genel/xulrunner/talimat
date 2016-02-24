@@ -1,0 +1,23 @@
+# Description: Mozilla Runtime Environment
+# URL: http://wiki.mozilla.org/XUL:Xul_Runner
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: 
+
+name=xulrunner
+version=41.0.2
+release=1
+
+source=(http://ftp.mozilla.org/pub/mozilla.org/$name/releases/latest/runtimes/$name-$version.en-US.linux-`uname -m`.tar.bz2)
+
+build() {
+  mkdir ${PKG}/opt/
+  
+  mkdir ${PKG}/usr/ 
+
+  mkdir ${PKG}/usr/bin/	
+
+  cp -R "${SRC}/${name}" "${PKG}/opt/${name}"
+ 
+  ln -s "/opt/${name}/${name}" "${PKG}/usr/bin/${name}"
+}

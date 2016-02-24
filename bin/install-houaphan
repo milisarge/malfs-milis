@@ -1,0 +1,1653 @@
+#*******************************************************************************
+# Written by Thierry Nuttens
+# Copyright Thierry Nuttens 2010-2011-2012-2013-2014-2015-2016
+# Installation script for the NuTyX system
+# Based on LFS scripts
+#*******************************************************************************
+# Function - boot_mesg()
+#
+# Purpose:      Sending information from bootup scripts to the console
+#
+# Inputs:       $1 is the message
+#               $2 is the colorcode for the console
+#
+# Outputs:      Standard Output
+#
+# Dependencies: - sed for parsing strings.
+#               - grep for counting string length.
+#
+# Todo:
+#*******************************************************************************
+boot_mesg() {
+        local ECHOPARM=""
+
+        while true
+        do
+                case "${1}" in
+                        -n)
+                                ECHOPARM=" -n "
+                                shift 1
+                                ;;
+                        -*)
+                                echo "Unknown Option: ${1}"
+                                return 1
+                                ;;
+                        *)
+                                break
+                                ;;
+                esac
+        done
+
+        ## Figure out the length of what is to be printed to be used
+        ## for warning messages.
+        STRING_LENGTH=$((${#1} + 1))
+
+        # Print the message to the screen
+        ${ECHO} ${ECHOPARM} -e "${2}${1}"
+
+}
+boot_mesg_flush() {
+        # Reset STRING_LENGTH for next message
+        STRING_LENGTH="0"
+}
+boot_log() {
+        # Left in for backwards compatibility
+        :
+}
+echo_ok() {
+        ${ECHO} -n -e "${CURS_UP}${SET_COL}${BRACKET}[${SUCCESS}  OK  ${BRACKET}]"
+        ${ECHO} -e "${NORMAL}"
+        boot_mesg_flush
+}
+echo_info() {
+        ${ECHO} -n -e "${CURS_UP}${SET_COL}${BRACKET}[${INFO} INFO ${BRACKET}]"
+        ${ECHO} -e "${NORMAL}"
+        boot_mesg_flush
+}
+echo_failure() {
+        ${ECHO} -n -e "${CURS_UP}${SET_COL}${BRACKET}[${FAILURE} FAIL ${BRACKET}]"
+        ${ECHO} -e "${NORMAL}"
+        boot_mesg_flush
+}
+echo_warning() {
+        ${ECHO} -n -e "${CURS_UP}${SET_COL}${BRACKET}[${WARNING} WARN ${BRACKET}]"
+        ${ECHO} -e "${NORMAL}"
+        boot_mesg_flush
+}
+print_error_msg() {
+        echo_failure
+	ERREUR="yes"
+        # $i is inherited by the rc script
+        boot_mesg -n " FAILURE:\n\n You should not read this error.\n\n" ${FAILURE}
+        boot_mesg -n " It means something went wrong with the installation"
+        boot_mesg -n " of ${i} "
+        boot_mesg_flush
+        boot_mesg -n " Thanks to inform us"
+        boot_mesg -n " via the website http://www.nutyx.org."
+        boot_mesg " Thanks again for your collaboration.\n"
+        boot_mesg_flush
+        boot_mesg -n "Press Enter to continue..." ${INFO}
+        boot_mesg "" ${NORMAL}
+        read ENTER
+        end
+	exit 1
+}
+#*******************************************************************************
+# Function - log_success_msg "message"
+#
+# Purpose: Print a success message
+#
+# Inputs: $@ - Message
+#
+# Outputs: Text output to screen
+#
+# Dependencies: echo
+#
+# Todo: logging
+#
+#*******************************************************************************
+log_success_msg() {
+        ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
+        ${ECHO} -e "${SET_COL}""${BRACKET}""[""${SUCCESS}""  OK
+""${BRACKET}""]""${NORMAL}"
+        return 0
+}
+#*******************************************************************************
+# Function - log_failure_msg "message"
+#
+# Purpose: Print a failure message
+#
+# Inputs: $@ - Message
+#
+# Outputs: Text output to screen
+#
+# Dependencies: echo
+#
+# Todo: logging
+#
+#*******************************************************************************
+log_failure_msg() {
+        ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
+        ${ECHO} -e "${SET_COL}""${BRACKET}""[""${FAILURE}"" FAIL
+""${BRACKET}""]""${NORMAL}"
+        return 0
+}
+#*******************************************************************************
+# Function - log_warning_msg "message"
+#
+# Purpose: print a warning message
+#
+# Inputs: $@ - Message
+#
+# Outputs: Text output to screen
+#
+# Dependencies: echo
+#
+# Todo: logging
+#
+#*******************************************************************************
+log_warning_msg() {
+        ${ECHO} -n -e "${BOOTMESG_PREFIX}${@}"
+        ${ECHO} -e "${SET_COL}""${BRACKET}""[""${WARNING}"" WARN
+""${BRACKET}""]""${NORMAL}"
+        return 0
+}
+#*******************************************************************************
+# Function - unmountall
+#
+# Purpose:	unmount all the mounted disks and partitions
+#
+# Inputs:	$1 the full path of the Distro
+#
+# Outputs:	Standard Output
+#
+# Dependencies: chroot
+#
+#*******************************************************************************
+unmountall() {
+if [ -d "$DEPOT_CD/depot" ]; then
+	umount ${{FOLDER}/${DEPOT}
+	umount  `cat /tmp/depot`
+fi
+umount ${FOLDER}/run
+umount ${FOLDER}/dev/pts
+umount ${FOLDER}/dev
+umount ${FOLDER}/proc
+umount ${FOLDER}/sys
+}
+#*******************************************************************************
+# Function - setup_chroot
+#
+# Purpose:	Enter the NuTyX Distribution
+#
+# Inputs:	$1 the full path of the Distro
+#
+# Outputs:	Standard Output
+#
+# Dependencies: chroot
+#
+#*******************************************************************************
+setup_chroot() {
+cp /etc/resolv.conf ${FOLDER}/etc/resolv.conf
+mount --bind /dev ${FOLDER}/dev
+mount -t devpts devpts ${FOLDER}/dev/pts
+mount -t proc proc ${FOLDER}/proc
+mount -t sysfs sysfs ${FOLDER}/sys
+mount -t tmpfs tmpfs ${FOLDER}/run
+if [ -h ${FOLDER}/dev/shm ]; then
+   mkdir -p ${FOLDER}/$(readlink ${FOLDER}/dev/shm)
+fi
+}
+enter_chroot() {
+echo "
+******************************
+Chroot path: $DEVICE
+******************************"
+chroot ${FOLDER} /usr/bin/env -i \
+HOME=/root \
+TERM="$TERM" \
+PS1='\u:\w\$ ' \
+/bin/bash --login
+}
+#*******************************************************************************
+# Function - install_pkg()
+#
+# Purpose:      Install the selected package
+#
+# Inputs:       $1 is the package
+#               $2 is the group
+#		$3 Option to install, normally nothing except for grub
+# Outputs:      Standard Output
+#
+# Dependencies: - wget
+#               - boot_mesg
+#               - pkgadd
+# Todo:
+#*******************************************************************************
+install_pkg() {
+	if $TMP/usr/bin/pkginfo -r $FOLDER -i| grep "^$1 " > /dev/null; then
+		boot_mesg "$1 is already install on $DEVICE..."
+		echo_info
+	else
+		packagefileToDownload=`getPackageName ${1}`
+		boot_mesg "Downloading $1..."
+		wget ${DEPOT_BASE}/${1}/$packagefileToDownload  -O $TMP/$packagefileToDownload > /dev/null 2>&1
+		echo_info
+		# Installing the package
+		$TMP/usr/bin/pkgadd -r $FOLDER -i $packagefileToDownload || print_error_msg
+		echo_ok	
+	fi
+}
+#*******************************************************************************
+# Function Check_DiskSpace
+#
+# Purpose:      Check the Available space after the using amont
+
+# Inputs:       $1: Mount point
+#	        $2: Amount in Kbytes going to be used
+#
+# Return:       status: 0 when ok
+#	                1 not ok
+# Todo:
+#*******************************************************************************
+check_diskspace() {
+	# df|grep "$1"|awk '{print $4}'
+	let MinSize=$2+100
+	let Amoung=`df|grep $FOLDER |awk '{print $(NF-2)}'`/1024 || exit 1
+	let Amoung=$Amoung-$MinSize
+
+	status="0"
+	if [ $Amoung -lt 0 ]; then
+		echo "Not enough space for the installation"
+		echo_failure
+		status="1"
+	else
+		echo "Space remind after install: $Amoung Mbytes"
+		echo_info
+	fi
+	if [ $status == "1" ]; then
+		check_availablespace $1
+		echo "The installation needs $BaseInstall Mbytes minimum"
+		end
+		exit 1
+	fi
+}
+#*******************************************************************************
+# Function check_availablespace
+#
+# Purpose:      Printout the Available space on the Mount point
+#
+# Inputs:       $1: Mount point
+#
+# Output:       Standard Output
+#
+# Todo:
+#*******************************************************************************
+check_availablespace() {
+	let TotAmoung=`df|grep "$1"|awk '{print $4}'`/1024 || exit 1
+	echo "You have at the moment: ${TotAmoung} Mbytes on the destination disk"
+}
+error() {
+	echo ""
+	echo " $1"
+	echo ""
+	rm -rf $TMP
+	exit 1
+}
+end() {
+	if [ "$ERREUR" == "yes" ]; then
+		if [ ! -f $TMP/depot ]; then
+			rm -r ${FOLDER}/${DEPOT}
+			boot_mesg "Cleaning up temporary files.."
+			boot_mesg "Please correct and start again"
+		fi
+	fi
+	cd ~
+	unmountall $FOLDER > /dev/null 2>&1
+
+	rm -rf $TMP
+}
+#****************************************************************************
+# Function expect
+# 
+# Purpose:	Check that the answer is nothing else then the supply
+#		arguments
+# Inputs:	$1: answer 1
+#		$2: answer 2
+#		$3: The question to ask
+#
+# Output:	Standard Output
+#
+#****************************************************************************
+expect(){
+# echo -n "$3"
+# read answer
+while [ "$answer" != "o" ] && [ "$answer" != "n" ]; do
+	echo -n "$3"
+	read answer
+done
+}
+#****************************************************************************
+# Function getPackageName
+# 
+# Purpose:	Get the fullname of the package
+#		directory
+# Inputs:	$1 is the package name
+#
+# Output:       fullname of the archive without url
+#               something like: cpio1414074943i686.cards.tar.xz
+#****************************************************************************
+getPackageName() {
+	local BUILD_DATE EXT HEAD
+	wget ${DEPOT_BASE}/${1}/.PKGREPO  -O $TMP/.PKGREPO > /dev/null  2>&1
+	HEAD=`head -1 $TMP/.PKGREPO`
+	if [ "${HEAD:10:1}" == "#" ]; then
+		BUILD_DATE="`echo $HEAD|cut -d "#" -f1`"
+		EXT="`echo $HEAD|cut -d "#" -f2`"
+		echo "${1}${BUILD_DATE}${ARCH}${EXT}"
+	fi
+}
+
+install_base() {
+for i in \
+nutyx acl attr bash bc binutils bzip2 coreutils curl \
+diffutils expat file findutils flex gcc gdbm \
+gettext glibc gmp gperf grep gzip inetutils kbd lzo \
+libarchive libcap libpipeline mpc mpfr ncurses openssl pam \
+procps-ng psmisc readline sed shadow util-linux xz zlib \
+cards
+do 
+	install_pkg "$i"
+done
+}
+generate_blfs_bootscripts() {
+[ -f ${FOLDER}/etc/${FOLDER}/etc/blfs-bootscripts ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+echo "scripts=blfs-bootscripts
+scriptsversion=20150924" > ${FOLDER}/etc/blfs-bootscripts
+}
+generate_etc_bashrc() {
+local FILE
+FILE="bashrc"
+[ -f ${FOLDER}/etc/$FILE ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${FOLDER}/etc/$FILE
+  return
+fi
+cat > ${FOLDER}/etc/$FILE << "EOF"
+# Begin /etc/bashrc
+# Written for Beyond Linux From Scratch
+# by James Robertson <jameswrobertson@earthlink.net>
+# updated by Bruce Dubbs <bdubbs@linuxfromscratch.org>
+
+# System wide aliases and functions.
+
+# System wide environment variables and startup programs should go into
+# /etc/profile.  Personal environment variables and startup programs
+# should go into ~/.bash_profile.  Personal aliases and functions should
+# go into ~/.bashrc
+
+# Provides a colored /bin/ls command.  Used in conjunction with code in
+# /etc/profile.
+
+alias ls='ls --color=auto'
+
+# Provides prompt for non-login shells, specifically shells started
+# in the X environment. [Review the LFS archive thread titled
+# PS1 Environment Variable for a great case study behind this script
+# addendum.]
+
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+WHITE="\[\e[1;37m\]"
+INFOMACHINE="`date +%H:%M` `uname -m` `uname -r` `whoami`@`uname -n`"
+prompt_command() {
+# Sauvegarde de la pos courante
+tput sc
+# Calcul de la largeur
+let backwash=$(tput cols)-$(echo $INFOMACHINE | wc -m)-2
+# Pos des curseurs à la position Y=0, X=longueur calculée
+tput cup 0 ${backwash}
+# Spécifie la couleur et la casse de la police
+tput setaf 4; tput bold
+# Affiche le chemin entre crochets
+echo -n "["
+# Specifie la couleur du chemin
+tput setaf 6
+# Affiche le chemin complet
+echo -n "$INFOMACHINE"
+tput setaf 4; tput bold
+# Affiche le crochet fermé
+echo -n "]"
+# Remet le curseur à sa place
+tput rc
+}
+
+PROMPT_COMMAND=prompt_command
+
+case $TERM in
+        xterm|rxvt*)
+                TITLEBAR='\[\033]0;\u@\h \007\]'
+                ;;
+        *)
+                TITLEBAR=''
+                ;;
+esac
+
+if [[ $EUID == 0 ]] ; then
+  PS1="$TITLEBAR$RED\u [ $NORMAL\w$RED ]# $NORMAL"
+else
+  PS1="$TITLEBAR$GREEN\u [ $NORMAL\w$GREEN ]\$ $NORMAL"
+fi
+# End /etc/bashrc
+EOF
+}
+generate_rc_site() {
+local FILE
+FILE="rc.site"
+[ -f ${FOLDER}/etc/sysconfig/$FILE ] && return
+[ ! -d ${FOLDER}/etc/sysconfig ] && mkdir -pv ${FOLDER}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${FOLDER}/etc/sysconfig/$FILE
+  return
+fi
+cat > ${FOLDER}/etc/sysconfig/$FILE << "EOF"
+# rc.site                                                                            [20:15 i686 3.18.11-NuTyX-iso thierry@nutyx]
+# Optional parameters for boot scripts.
+
+# Distro Information
+# These values, if specified here, override the defaults
+#DISTRO="Linux From Scratch" # The distro name
+#DISTRO_CONTACT="lfs-dev@linuxfromscratch.org" # Bug report address
+#DISTRO_MINI="LFS" # Short name used in filenames for distro config
+
+# Define custom colors used in messages printed to the screen
+
+# Please consult `man console_codes` for more information
+# under the "ECMA-48 Set Graphics Rendition" section
+#
+# Warning: when switching from a 8bit to a 9bit font,
+# the linux console will reinterpret the bold (1;) to
+# the top 256 glyphs of the 9bit font.  This does
+# not affect framebuffer consoles
+
+# These values, if specified here, override the defaults
+#BRACKET="\\033[1;34m" # Blue
+#FAILURE="\\033[1;31m" # Red
+#INFO="\\033[1;36m"    # Cyan
+#NORMAL="\\033[0;39m"  # Grey
+#SUCCESS="\\033[1;32m" # Green
+#WARNING="\\033[1;33m" # Yellow
+
+# Use a colored prefix
+# These values, if specified here, override the defaults
+#BMPREFIX="     "
+#SUCCESS_PREFIX="${SUCCESS}  *  ${NORMAL}"
+#FAILURE_PREFIX="${FAILURE}*****${NORMAL}"
+#WARNING_PREFIX="${WARNING} *** ${NORMAL}"
+
+# Interactive startup
+#IPROMPT="yes" # Whether to display the interactive boot prompt
+#itime="3"    # The amount of time (in seconds) to display the prompt
+
+# The total length of the distro welcome string, without escape codes
+#wlen=$(echo "Welcome to ${DISTRO}" | wc -c )
+#welcome_message="Welcome to ${INFO}${DISTRO}${NORMAL}"
+
+# The total length of the interactive string, without escape codes
+#ilen=$(echo "Press 'I' to enter interactive startup" | wc -c )
+#i_message="Press '${FAILURE}I${NORMAL}' to enter interactive startup"
+
+# Set scripts to skip the file system check on reboot
+#FASTBOOT=yes
+
+# Skip reading from the console
+#HEADLESS=yes
+
+# Write out fsck progress if yes
+#VERBOSE_FSCK=no
+
+# Speed up boot without waiting for settle in udev
+#OMIT_UDEV_SETTLE=y
+
+# Speed up boot without waiting for settle in udev_retry
+#OMIT_UDEV_RETRY_SETTLE=yes
+
+# Skip cleaning /tmp if yes
+#SKIPTMPCLEAN=no
+
+# For setclock
+#UTC=1
+#CLOCKPARAMS=
+
+# For consolelog
+#LOGLEVEL=5
+
+# For network
+#HOSTNAME=mylfs
+
+# Delay between TERM and KILL signals at shutdown
+#KILLDELAY=3
+
+# Optional sysklogd parameters
+#SYSKLOGD_PARMS="-m 0"
+
+# Console parameters
+#UNICODE=1
+#KEYMAP="de-latin1"
+#KEYMAP_CORRECTIONS="euro2"
+#FONT="lat0-16 -m 8859-15"
+#LEGACY_CHARSET=
+EOF
+}
+generate_udev_retry() {
+local FILE
+FILE="udev_retry"
+[ -f ${FOLDER}/etc/sysconfig/$FILE ] && return
+[ ! -d ${FOLDER}/etc/sysconfig ] && mkdir -pv ${FOLDER}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/sysconfig/$FILE \
+   ${FOLDER}/etc/sysconfig/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/sysconfig/$FILE << "EOF"
+########################################################################
+# Begin /etc/sysconfig/udev_retry
+#
+# Description : udev_retry script configuration
+#
+# Authors     :
+#
+# Version     : 00.00
+#
+# Notes       : Each subsystem that may need to be re-triggered after mountfs
+#               runs should be listed in this file.  Probable subsystems to be
+#               listed here are rtc (due to /var/lib/hwclock/adjtime) and sound
+#               (due to both /var/lib/alsa/asound.state and /usr/sbin/alsactl).
+#               Entries are whitespace-separated.
+########################################################################
+
+rtc
+
+# End /etc/sysconfig/udev_retry
+EOF
+}
+generate_createfiles() {
+local FILE
+FILE="createfiles"
+[ -f ${FOLDER}/etc/sysconfig/$FILE ] && return
+[ ! -d ${FOLDER}/etc/sysconfig ] && mkdir -pv ${FOLDER}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/sysconfig/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/sysconfig/$FILE << "EOF"
+########################################################################
+# Begin /etc/sysconfig/createfiles
+#
+# Description : Createfiles script config file
+#
+# Authors     :
+#
+# Version     : 00.00
+#
+# Notes       : The syntax of this file is as follows:
+# 		if type is equal to "file" or "dir"
+#  		<filename> <type> <permissions> <user> <group>
+# 		if type is equal to "dev"
+#  		<filename> <type> <permissions> <user> <group> <devtype> 
+#             <major> <minor>
+#
+# 		<filename> is the name of the file which is to be created
+# 		<type> is either file, dir, or dev.
+#   			file creates a new file
+#   			dir creates a new directory
+#   			dev creates a new device
+# 		<devtype> is either block, char or pipe
+#   			block creates a block device
+#   			char creates a character deivce
+#   			pipe creates a pipe, this will ignore the <major> and 
+#           <minor> fields
+# 		<major> and <minor> are the major and minor numbers used for 
+#     the device.
+########################################################################
+
+# End /etc/sysconfig/createfiles
+EOF
+}
+generate_modules() {
+local FILE
+FILE="modules"
+[ -f ${FOLDER}/etc/sysconfig/$FILE ] && return
+[ ! -d ${FOLDER}/etc/sysconfig ] && mkdir -pv ${FOLDER}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/sysconfig/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/sysconfig/$FILE << "EOF"
+########################################################################
+# Begin /etc/sysconfig/modules
+#
+# Description : Module auto-loading configuration
+#
+# Authors     :
+#
+# Version     : 00.00
+#
+# Notes       : The syntax of this file is as follows:
+#  		<module> [<arg1> <arg2> ...]
+#
+# Each module should be on its own line, and any options that you want
+# passed to the module should follow it.  The line deliminator is either
+# a space or a tab.
+########################################################################
+
+# End /etc/sysconfig/modules
+EOF
+}
+generate_mouse() {
+local FILE
+FILE="mouse"
+[ -f ${FOLDER}/etc/$FILE ] && return
+[ ! -d ${FOLDER}/etc/sysconfig ] && mkdir -pv ${FOLDER}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/sysconfig/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/sysconfig/$FILE << "EOF"
+MDEVICE="/dev/input/mice"
+PROTOCOL="imps2"
+EOF
+}
+generate_inputrc() {
+local FILE
+FILE="inputrc"
+[ -f ${FOLDER}/etc/$FILE ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/$FILE << "EOF"
+# Begin /etc/inputrc
+# Modified by Chris Lynn <roryo@roryo.dynup.net>
+
+# Allow the command prompt to wrap to the next line
+set horizontal-scroll-mode Off
+
+# Enable 8bit input
+set meta-flag On
+set input-meta On
+
+# Turns off 8th bit stripping
+set convert-meta Off
+
+# Keep the 8th bit for display
+set output-meta On
+
+# none, visible or audible
+set bell-style none
+
+# All of the following map the escape sequence of the value
+# contained in the 1st argument to the readline specific functions
+"\eOd": backward-word
+"\eOc": forward-word
+
+# for linux console
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+
+# for xorg-term
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+
+# for Konsole
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+
+# End /etc/inputrc 
+EOF
+}
+generate_hosts() {
+local FILE
+FILE="hosts"
+[ -f ${FOLDER}/etc/$FILE ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+  cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${FOLDER}/etc/$FILE
+  return
+fi
+cat > ${FOLDER}/etc/$FILE << "EOF"
+# Begin /etc/hosts
+
+127.0.0.1 localhost.localdomain localhost
+127.0.0.1 nutyx
+
+# End /etc/hosts
+EOF
+}
+generate_shells() {
+local FILE
+FILE="shells"
+[ -f ${FOLDER}/etc/$FILE ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+  cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${FOLDER}/etc/$FILE
+  return
+fi
+cat > ${FOLDER}/etc/$FILE << "EOF"
+# Begin /etc/shells
+
+/bin/sh
+/bin/bash
+
+# End /etc/shells
+EOF
+}
+generate_umask_sh() {
+local FILE
+FILE="umask.sh"
+[ -f ${FOLDER}/etc/profile.d/$FILE ] && return
+[ ! -d ${FOLDER}/etc/profile.d ] && mkdir -pv ${FOLDER}/etc/profile.d
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/profile.d/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/profile.d/$FILE << "EOF"
+# By default we want the umask to get set.
+if [ "$(id -gn)" = "$(id -un)" -a $EUID -gt 99 ] ; then
+  umask 002
+else
+  umask 022
+fi
+EOF
+}
+generate_readline_sh() {
+local FILE
+FILE="readline.sh"
+[ -f ${FOLDER}/etc/profile.d/$FILE ] && return
+[ ! -d ${FOLDER}/etc/profile.d ] && mkdir -pv ${FOLDER}/etc/profile.d
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/profile.d/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/profile.d/$FILE << "EOF"
+# Setup the INPUTRC environment variable.
+if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ] ; then
+        INPUTRC=/etc/inputrc
+fi
+export INPUTRC
+EOF
+}
+generate_extrapaths_sh() {
+local FILE
+FILE="extrapaths.sh"
+[ -f ${FOLDER}/etc/profile.d/$FILE ] && return
+[ ! -d ${FOLDER}/etc/profile.d ] && mkdir -pv ${FOLDER}/etc/profile.d
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/profile.d/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/profile.d/$FILE << "EOF"
+if [ -d /usr/local/lib/pkgconfig ] ; then
+        pathappend /usr/local/lib/pkgconfig PKG_CONFIG_PATH
+fi
+if [ -d /usr/local/bin ]; then
+        pathprepend /usr/local/bin
+fi
+if [ -d /usr/local/sbin -a $EUID -eq 0 ]; then
+        pathprepend /usr/local/sbin
+fi
+
+if [ -d ~/bin ]; then
+        pathprepend ~/bin
+fi
+#if [ $EUID -gt 99 ]; then
+#        pathappend .
+#fi
+EOF
+}
+generate_dircolors_sh() {
+local FILE
+FILE="dircolors.sh"
+[ -f ${FOLDER}/etc/profile.d/$FILE ] && return
+[ ! -d ${FOLDER}/etc/profile.d ] && mkdir -pv ${FOLDER}/etc/profile.d
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/profile.d/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/profile.d/$FILE << "EOF"
+# Setup for /bin/ls to support color, the alias is in /etc/bashrc.
+if [ -f "/etc/dircolors" ] ; then
+        eval $(dircolors -b /etc/dircolors)
+
+        if [ -f "$HOME/.dircolors" ] ; then
+                eval $(dircolors -b $HOME/.dircolors)
+        fi
+fi
+alias ls='ls --color=auto'
+EOF
+}
+generate_profile() {
+local FILE
+FILE="profile"
+[ -f ${FOLDER}/etc/$FILE ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/$FILE << "EOF"
+# Begin /etc/profile
+# Written for Beyond Linux From Scratch
+# by James Robertson <jameswrobertson@earthlink.net>
+# modifications by Dagmar d'Surreal <rivyqntzne@pbzpnfg.arg>
+
+# System wide environment variables and startup programs.
+
+# System wide aliases and functions should go in /etc/bashrc.  Personal
+# environment variables and startup programs should go into
+# ~/.bash_profile.  Personal aliases and functions should go into
+# ~/.bashrc.
+
+# Functions to help us manage paths.  Second argument is the name of the
+# path variable to be modified (default: PATH)
+pathremove () {
+        local IFS=':'
+        local NEWPATH
+        local DIR
+        local PATHVARIABLE=${2:-PATH}
+        for DIR in ${!PATHVARIABLE} ; do
+                if [ "$DIR" != "$1" ] ; then
+                  NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+                fi
+        done
+        export $PATHVARIABLE="$NEWPATH"
+}
+
+pathprepend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+}
+
+pathappend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+}
+
+export -f pathremove pathprepend pathappend
+
+# Set the initial path
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+if [ $EUID -eq 0 ] ; then
+        unset HISTFILE
+fi
+
+# Setup some environment variables.
+export HISTSIZE=1000
+export HISTIGNORE="&:[bf]g:exit"
+
+# Set some defaults for graphical systems
+export XDG_DATA_DIRS=/usr/share/
+export XDG_CONFIG_DIRS=/etc/xdg/
+
+# Setup a red prompt for root and a green one for users.
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+if [[ $EUID == 0 ]] ; then
+  PS1="$RED\u [ $NORMAL\w$RED ]# $NORMAL"
+else
+  PS1="$GREEN\u [ $NORMAL\w$GREEN ]\$ $NORMAL"
+fi
+
+for script in /etc/profile.d/*.sh ; do
+        if [ -r $script ] ; then
+                . $script
+        fi
+done
+
+unset script RED GREEN NORMAL
+
+# End /etc/profile
+EOF
+}
+generate_group() {
+[ -f ${FOLDER}/etc/group ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+cat > ${FOLDER}/etc/group << "EOF"
+root:x:0:
+bin:x:1:
+sys:x:2:
+kmem:x:3:
+tape:x:4:
+tty:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:gdm
+video:x:12:gdm
+utmp:x:13:
+usb:x:14:
+cdrom:x:15:
+adm:x:16:
+atd:x:17:
+messagebus:x:18:
+lpadmin:x:19:
+named:x:20:
+gdm:x:21:
+fcron:x:22:
+www:x:24:
+apache:x:25:
+smmsp:x:26:
+polkitd:x:27:
+wheel:x:30:root
+exim:x:31:
+postfix:x:32:
+postdrop:x:33:
+mail:x:34:
+vmailman:x:35:
+news:x:36:
+kdm:x:37:
+mysql:x:40:
+postgres:x:41:
+dovecot:x:42:
+dovenull:x:43:
+ftp:x:45:
+proftpd:x:46:
+vsftpd:x:47:
+rsyncd:x:48:
+sshd:x:50:
+stunnel:x:51:
+svn:x:56:
+svntest:x:57:
+pulse:x:58:
+pulse-access:x:59:
+games:x:60:
+kvm:x:61:
+wireshark:x:62:
+lightdm:x:63:
+sddm:x:64:
+scanner:x:70:
+colord:x:71:
+vboxusers:x:80:
+ldap:x:83:
+avahi:x:84:
+avahi-autoipd:x:85:
+netdev:x:86:
+ntp:x:87:
+unbound:x:88:
+nogroup:x:99:
+users:x:999:
+EOF
+}
+generate_passwd() {
+[ -f ${FOLDER}/etc/passwd ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+cat > ${FOLDER}/etc/passwd << "EOF"
+root::0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/dev/null:/bin/false
+lp:x:9:9:Print Service User:/dev/null:/bin/false
+atd:x:17:17:add daemon:/dev/null:/bin/false
+messagebus:x:18:18:D-Bus Message Daemon User:/dev/null:/bin/false
+named:x:20:20:BIND Owner:/home/named:/bin/false
+gdm:x:21:21:GDM Daemon User:/var/lib/gdm:/bin/false
+fcron:x:22:22:Fcron User:/dev/null:/bin/false
+www:x:24:24:Nginx Server:/dev/null:bin/false
+apache:x:25:25:Apache Server:/dev/null:/bin/false
+smmsp:x:26:26:Sendmail Daemon:/dev/null:/bin/false
+polkitd:x:27:27:Policy Kit Daemon User:/etc/polkit-1:/bin/false
+exim:x:31:31:Exim Daemon:/dev/null:/bin/false
+postfix:x:32:32:Postfix Daemon User:/var/spool/postfix:/bin/false
+sendmail:x:34:34:Sendmail Daemon:/dev/null:/bin/false
+vmailman:x:35:35:Vmail Daemon:/dev/null:/bin/false
+news:x:36:36:News Daemon:/dev/null:/bin/false
+kdm:x:37:37:KDM Daemon Owner:/var/lib/kdm:/bin/false
+mysql:x:40:40:MySQL Server:/dev/null:/bin/false
+postgres:x:41:41:PostgreSQL Server:/srv/pgsql/data:/bin/bash
+dovecot:x:42:42:Dovecot unprivileged user:/dev/null:/bin/false
+dovenull:x:43:43:Dovecot login user:/dev/null:/bin/false
+ftp:x:45:45:anonymous_user:/home/ftp:/bin/false
+proftpd:x:46:46:proftpd:/srv/ftp:/usr/bin/proftpdshell
+vsftpd:x:47:47:vsftpd User:/dev/null:/bin/false
+rsyncd:x:48:48:rsyncd Daemon:/home/rsync:/bin/false
+sshd:x:50:50:sshd PrivSep:/var/lib/sshd:/bin/false
+stunnel:x:51:51:stunnel Daemon:/var/lib/stunnel:/bin/false
+svn:x:56:56:SVN Owner:/home/svn:/bin/false
+games:x:60:60:Games High Score Owner:/var/games:/bin/false
+lightdm:x:63:63:Light Display Manager:/var/lib/lightdm:/sbin/nologin
+sddm:x:64:64:Simple Desktop Display Manager:/var/lib/sddm:/bin/false
+colord:x:71:71:Color Daemon Owner:/var/lib/colord:/bin/false
+ldap:x:83:83:OpenLDAP Daemon Owner:/var/lib/openldap:/bin/false
+avahi:x:84:84:Avahi Daemon Owner:/var/run/avahi-daemon:/bin/false
+avahi-autoipd:x:85:85:Avahi autoip Daemon:/:/var/run/avahi-autoipd:/bin/false
+ntp:x:87:87:Network Time Protocol:/var/lib/ntp:/bin/false
+unbound:x:88:88:Unbound DNS resolver:/var/lib/unbound:/bin/false
+anonymous:x:98:99:Unprivileged User:/dev/null:/bin/false
+nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
+EOF
+}
+generate_fstab() {
+local FILE
+FILE="fstab"
+[ -f ${FOLDER}/etc/$FILE ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/$FILE << "EOF"
+# Begin /etc/fstab
+
+# file system  mount-point  type     options             dump  fsck
+#                                                              order
+# Exemple de montage nfs
+# 192.168.254.254:/home/thierry /home/thierry nfs rw,vers=3,_netdev,rsize=8192,wsize=8192 0 0
+
+proc           /proc        proc     nosuid,noexec,nodev 0     0
+sysfs          /sys         sysfs    nosuid,noexec,nodev 0     0
+devpts         /dev/pts     devpts   gid=5,mode=620      0     0
+tmpfs          /run         tmpfs    defaults            0     0
+devtmpfs       /dev         devtmpfs mode=0755,nosuid    0     0
+EOF
+}
+generate_dmrc() {
+local FILE
+FILE=".dmrc"
+[ -f ${FOLDER}/etc/skel/$FILE ] && return
+[ ! -d ${FOLDER}/etc/skel ] && mkdir -pv ${FOLDER}/etc/skel
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/skel/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/skel/$FILE << "EOF"
+[Desktop]
+Session=default
+EOF
+}
+generate_bashrc() {
+local FILE
+FILE=".bashrc"
+[ -f ${FOLDER}/etc/skel/$FILE ] && return
+[ ! -d ${FOLDER}/etc/skel ] && mkdir -pv ${FOLDER}/etc/skel
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/skel/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/skel/$FILE << "EOF"
+# Personal aliases and functions.
+
+# Personal environment variables and startup programs should go in
+# ~/.bash_profile.  System wide environment variables and startup
+# programs are in /etc/profile.  System wide aliases and functions are
+# in /etc/bashrc.
+
+if [ -f "/etc/bashrc" ] ; then
+  source /etc/bashrc
+fi
+if [ $EUID -eq 0 ] ; then
+        alias del='cards remove'
+        alias get='cards install'
+        alias up='cards install -u'
+        alias check='cards sync;cards diff'
+else
+        alias del='sudo cards remove'
+        alias get='sudo cards install'
+        alias up='sudo cards install -u'
+        alias check='sudo cards sync;sudo cards diff'
+fi
+alias search='cards search'
+alias ll='ls -l'
+alias l='ls -alh'
+alias duh='du -h --max-depth=1'
+alias dfh='df -h'
+alias pkgfind='cards list | grep -i'
+
+# End ~/.bashrc
+EOF
+[ -f ${FOLDER}/root/$FILE ] && return
+[ ! -d ${FOLDER}/root ] && install -dv -m0750 ${FOLDER}/root
+cp -v ${FOLDER}/etc/skel/$FILE \
+${FOLDER}/root
+}
+generate_bash_profile() {
+local FILE
+FILE=".bash_profile"
+[ -f ${FOLDER}/etc/skel/$FILE ] && return
+[ ! -d ${FOLDER}/etc/skel ] && mkdir -pv ${FOLDER}/etc/skel
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/skel/$FILE
+   return
+fi
+cat > ${FOLDER}/etc/skel/$FILE << "EOF"
+# Personal environment variables and startup programs.
+
+# Personal aliases and functions should go in ~/.bashrc.  System wide
+# environment variables and startup programs are in /etc/profile.
+# System wide aliases and functions are in /etc/bashrc.
+
+append () {
+  # First remove the directory
+  local IFS=':'
+  local NEWPATH
+  for DIR in $PATH; do
+     if [ "$DIR" != "$1" ]; then
+       NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+     fi
+  done
+  # Then append the directory
+  export PATH=$NEWPATH:$1
+}
+
+if [ -f "$HOME/.bashrc" ] ; then
+  source $HOME/.bashrc
+fi
+
+# unset append
+
+# End ~/.bash_profile
+EOF
+[ ! -d ${FOLDER}/root ] && install -dv -m0750 ${FOLDER}/root
+[ -f ${FOLDER}/root/$FILE ] && return
+cp -v ${FOLDER}/etc/skel/$FILE \
+${FOLDER}/root
+}
+generate_pkgmk_conf() {
+local FILE
+FILE="pkgmk.conf"
+[ -f ${FOLDER}/etc/$FILE ] && return
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+  [ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+  cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${FOLDER}/etc/$FILE
+fi
+}
+generate_cards_conf() {
+local FILE
+FILE="cards.conf"
+[ -f ${FOLDER}/etc/$FILE ] && return
+[ ! -d ${FOLDER}/etc ] && mkdir -pv ${FOLDER}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${FOLDER}/etc/$FILE
+   return
+fi
+echo "## For kde5
+# Comment following 2 lines
+# if you don't want to install kde5
+#
+dir ${DEPOT}/kde5-extra|${URL}
+dir ${DEPOT}/kde5|${URL}
+##
+## For kde (4)
+# Comment following 2 lines
+# if you don't want to install kde (version4)
+#
+
+dir ${DEPOT}/kde-extra|${URL}
+dir ${DEPOT}/kde|${URL}
+#
+## For cinnamon
+# Cinnamon is not yet ready to ude
+# Decomment following 2 lines
+# if you want to try cinnamon anyway
+#
+# dir ${DEPOT}/cinnamon-extra|${URL}
+# dir ${DEPOT}/cinnamon|${URL}
+#
+## For Gnome
+# Comment following 2 lines
+# if you don't want to install gnome
+#
+dir ${DEPOT}/gnome-extra|${URL}
+dir ${DEPOT}/gnome|${URL}
+#
+## For mate
+# Comment following 2 lines
+# if you don't want to install mate
+#
+dir ${DEPOT}/mate-extra|${URL}
+dir ${DEPOT}/mate|${URL}
+#
+## For xfce4
+# Comment following 2 lines
+# if you don't want to install xfce4
+#
+dir ${DEPOT}/xfce4-extra|${URL}
+dir ${DEPOT}/xfce4|${URL}
+#
+## For lxqt
+# Comment following 2 lines
+# if you don't want to install lxqt
+#
+dir ${DEPOT}/lxqt-extra|${URL}
+dir ${DEPOT}/lxqt|${URL}
+#
+## For lxde
+# Comment following 2 lines
+# if you don't want to install lxde
+#
+dir ${DEPOT}/lxde-extra|${URL}
+dir ${DEPOT}/lxde|${URL}
+#
+## Normally everything under this line
+# are needed stuffs
+#
+## For all the graphical applications
+dir ${DEPOT}/gui-extra|${URL}
+#
+## For a minimal graphical interface
+dir ${DEPOT}/gui|${URL}
+#
+## For all the console applications
+dir ${DEPOT}/cli-extra|${URL}
+#
+## For a minimal console interface
+dir ${DEPOT}/cli|${URL}
+#
+## Strict minimum Base system to be able to boot on it
+dir ${DEPOT}/base-extra|${URL}
+#
+# Chroot system without reboot possibilities for a chroot
+dir ${DEPOT}/base|${URL}
+#
+## Normaly you want to keep base and
+base ${DEPOT}/base
+#
+## and base-extra
+base ${DEPOT}/base-extra
+#
+## If you want to keep more collections remove comments below
+# Adjust to your needs
+#
+# base ${DEPOT}/cli
+# base ${DEPOT}/cli-extra
+# base ${DEPOT}/gui
+# base ${DEPOT}/gui-extra
+# base ${DEPOT}/..." > ${FOLDER}/etc/cards.conf
+}
+generate_nutyx_version() {
+local FILE
+FILE="nutyx-version"
+[ -f ${FOLDER}/var/lib/pkg/$FILE ] && return
+[ ! -d ${FOLDER}/var/lib/pkg ] && mkdir -pv ${FOLDER}/var/lib/pkg
+echo "name ${CODE_NAME}
+version $VERSION" > ${FOLDER}/var/lib/pkg/$FILE
+}
+install_resolv_conf() {
+[ -f /etc/resolv.conf ] && cp /etc/resolv.conf ${FOLDER}/etc
+}
+successfull_installation () {
+echo "
+****************************************************
+*      Installation of NuTyX $VERSION finished.         *
+*                                                  *
+* Thanks for installing NuTyX                      *
+*                                                  *
+* Check http://www.nutyx.org/en/documentation.html *
+* or http://www.nutyx.org/fr/documentation.html    *
+*                                                  *
+* Make sure to review /etc/cards.conf              *
+* to meet your requirements in packages selection  *
+*                                                  *
+****************************************************
+"
+}
+check_root() {
+[ "$UID" != "0" ] && error " You are not root, cannot continue"
+}
+check_bash() {
+	BASH_VERSION=`bash --version|head -n1 | cut -d " " -f4|cut -d "(" -f1|sed "s/\.//g"`
+	if [ -z ${BASH_VERSION} ]; then
+		error " Wrong interpreter, please use 'bash' as interpreter"
+	fi
+	# Checking bash version
+	if [ ${BASH_VERSION} -lt 4333 ]; then
+		boot_mesg " You not use 'bash' version 4.3.33 or newer..."
+		echo_warning
+	fi
+}
+check_tools() {
+	if ! (`which wget > /dev/null`); then
+		error " Command 'wget' not found, please install wget"
+	fi
+	if ! (`which tar > /dev/null`); then
+		error " Command 'tar' not found, please install tar"
+	fi
+	if ! (`which gawk > /dev/null`); then
+		error " Command 'gawk' not found, please install gawk"
+	fi
+}
+check_variables() {
+
+[ -z $URL ] && URL="http://downloads.nutyx.org"
+[ -z $VERSION ] && VERSION="8.0"
+[ -z $DEPOT ] && DEPOT="/var/lib/pkg/depotrepo"
+[ -z $FOLDER ] && FOLDER="/mnt/hd"
+
+HOMEPAGE="${URL}"                       ## http://downloads.nutyx.org
+INSTALL_BASE="$VERSION/$ARCH"           ## 8.0/x86_64
+DEPOT_ROOT="$HOMEPAGE/${INSTALL_BASE}"  ## http://downloads.nutyx.org/8.0/x86_64
+DEPOT_BASE="$DEPOT_ROOT/$BASE"          ## http://downloads.nutyx.org/8.0/x86_64/base
+
+LOCAL_DEPOT_PACKAGES="$DEPOT/$BASE"
+DEPOT_CD="/media/cdrom"
+
+SETUP_FILE=/tmp/setup
+# Size of the FullInstall in Mbytes
+let BASE_SIZE=450
+}
+config() {
+ARCH=`uname -m`
+# Number of seconds between STOPSIG and FALLBACK when stopping processes
+KILLDELAY="3"
+
+## Screen Dimensions
+# Find current screen size
+
+if [ -z "${COLUMNS}" ]; then
+        COLUMNS=$(stty size)
+        COLUMNS=${COLUMNS##* }
+fi
+
+# When using remote connections, such as a serial port, stty size returns 0
+if [ "${COLUMNS}" = "0" ]; then
+        COLUMNS=80
+fi
+
+## Measurements for positioning result messages
+COL=$((${COLUMNS} - 8))
+WCOL=$((${COL} - 2))
+
+## Provide an echo that supports -e and -n
+# If formatting is needed, $ECHO should be used
+case "`echo -e -n test`" in
+        -[en]*)
+                ECHO=/bin/echo
+                ;;
+        *)
+                ECHO=echo
+                ;;
+esac
+
+## Set Cursor Position Commands, used via $ECHO
+SET_COL="\\033[${COL}G"      # at the $COL char
+SET_WCOL="\\033[${WCOL}G"    # at the $WCOL char
+CURS_UP="\\033[1A\\033[0G"   # Up one line, at the 0'th char
+
+## Set color commands, used via $ECHO
+# Please consult `man console_codes for more information
+# under the "ECMA-48 Set Graphics Rendition" section
+#
+# Warning: when switching from a 8bit to a 9bit font,
+# the linux console will reinterpret the bold (1;) to
+# the top 256 glyphs of the 9bit font.  This does
+# not affect framebuffer consoles
+NORMAL="\\033[0;39m"         # Standard console grey
+SUCCESS="\\033[1;32m"        # Success is green
+WARNING="\\033[1;33m"        # Warnings are yellow
+FAILURE="\\033[1;31m"        # Failures are red
+INFO="\\033[1;36m"           # Information is light cyan
+BRACKET="\\033[1;34m"        # Brackets are blue
+
+STRING_LENGTH="0"   # the length of the current message
+}
+check_lfs() {
+# LFS is set ?
+if [ ! -z "${LFS}" ]; then
+        DEVICE=${LFS}
+	FOLDER=${LFS}
+else
+
+        DEVICE=${FOLDER}
+fi
+echo "
+******************************
+Installation path: $DEVICE
+******************************"
+}
+check_mountpoint() {
+[ -z $FOLDER ] && error "Variable FOLDER not define"
+}
+check_arch() {
+if [ "$ARCH" != "x86_64" ] && [ "$ARCH" != "i686" ]; then
+	boot_mesg "
+ >>> This arch ($ARCH) is not supported"
+	echo_failure
+	exit 1
+fi
+}
+create_database() {
+[ ! -d ${FOLDER}/var/lib/pkg/DB ] && mkdir -p ${FOLDER}/var/lib/pkg/DB
+}
+create_locale_link() {
+[ ! -d ${FOLDER}/etc/locale ] && mkdir -p ${FOLDER}/etc/locale
+if [ -d ${FOLDER}/usr/lib/locale ]; then
+   rm -r ${FOLDER}/usr/lib/locale
+   ln -sv /etc/locale/ ${FOLDER}/usr/lib/locale
+fi
+}
+make_directories() {
+mkdir ${FOLDER}/{dev,sys,proc,run,tmp,home,srv,mnt}
+mkdir -p ${FOLDER}/var/tmp
+mkdir -p ${FOLDER}/usr/{,local/}lib
+
+chmod 1777 ${FOLDER}/{,var/}tmp
+
+mkdir -v ${FOLDER}/var/{mail,spool}
+mkdir -pv ${FOLDER}/var/run/lock
+
+mknod -m 600 ${FOLDER}/dev/console c 5 1
+mknod -m 666 ${FOLDER}/dev/null c 1 3
+}
+download_pkgadd() {
+	if [ ! -f $TMP/usr/bin/pkgadd ]; then
+        	cd $TMP
+        	basepackagefile=`getPackageName cards`
+        	if [ "$basepackagefile" == "" ]; then
+                	error "variable 'basepackagefile' is not set"
+        	fi
+        	packagefile=`echo ${basepackagefile}|sed "s|^cards|cards.devel|"`
+        	if  [ ! -f ${packagefile} ]; then
+                	wget ${DEPOT_BASE}/cards/$packagefile || print_error_msg
+                	echo_ok
+        	fi
+        	echo "Extraction of cards.devel ..."
+        	tar -xf ${packagefile} || print_error_msg
+        	echo_ok
+
+	fi
+}
+check_mountfolder() {
+	[ ! -d $FOLDER ] && mkdir -p $FOLDER
+}
+generate_setupfile() {
+echo "#!/bin/bash
+source /etc/profile
+cards sync
+cards install e2fsprogs \
+reiserfsprogs \
+xfsprogs jfsutils \
+btrfs-progs sudo \
+sysklogd sysvinit \
+dhcpcd grub \
+tzdata iproute2 iana-etc \
+e3 eudev kmod less \
+groff man-db cards.man \
+nutyx.man \
+lvm2 mdadm dialog cpio squashfs \
+linux-firmware \
+kernel-lts \
+ca-certificates
+exit" > $FOLDER/$SETUP_FILE
+chmod 177 $FOLDER/$SETUP_FILE
+setup_chroot
+chroot ${FOLDER} /bin/bash -c "$SETUP_FILE"
+unmountall
+}
+install_configuration_files() {
+	generate_cards_conf
+	generate_pkgmk_conf
+	generate_fstab
+	generate_passwd
+	generate_group
+	generate_bash_profile
+	generate_bashrc
+	generate_dmrc
+	generate_hosts
+	generate_inputrc
+	generate_shells
+	generate_dircolors_sh
+	generate_extrapaths_sh
+	generate_readline_sh
+	generate_umask_sh
+	generate_profile
+	generate_hosts
+	generate_inputrc
+	generate_modules
+	generate_createfiles
+	generate_mouse
+	generate_udev_retry
+	generate_rc_site
+	generate_etc_bashrc
+	generate_blfs_bootscripts
+	generate_nutyx_version
+}
+print_help() {
+	echo "
+usage: `basename ${INSTALL_COMMAND}` [options] options
+  -p,   --path  <installation-path> will install NuTyX in <installation-path>
+  -ec,  --enter-chroot              will enter in the chroot if exist
+  -ic,  --install-config            will install all the configuration files only
+  -h,   --help                      print help and exit
+  -v,   --version                   print the version and exit
+"
+
+}
+
+parse_options() {
+	while [ "$1" ]; do
+		case $1 in
+			-h|--help)
+				print_help
+				exit 0;;
+			-ec|--enter-chroot)
+				check_lfs "$@"
+				check_root
+				setup_chroot
+				enter_chroot
+				unmountall
+				exit 0;;
+			-ic|--install-config)
+				check_variables
+				check_lfs "$@"
+				check_root
+				check_mountfolder
+				check_mountpoint
+				make_directories
+				create_locale_link
+				install_configuration_files
+				exit 0;;
+			-p|--path)
+				if [ ! "$2" ]; then
+					echo "`basename $INSTALL_COMMAND`: option $1 requires an argument"
+					exit 1
+				fi
+				FOLDER="$2"
+				shift;;
+			-v|--version)
+				echo "`basename $INSTALL_COMMAND` $VERSION-$RELEASE"
+				exit 0;;
+			/*)
+				boot_mesg "
+ >>> This methode is depreciate <<<: use '-p $1' instead or adjust the 'LFS' variable"
+				echo_warning
+				echo "
+   press any key to continue ...
+"
+				read a
+				FOLDER="$1";;
+			*)
+				echo "`basename $0`: invalid option $1"
+				exit 1 ;;
+		esac
+		shift
+	done
+}
+main() {
+	config
+	[ -f /etc/`basename $INSTALL_COMMAND`.conf ] && source /etc/`basename $INSTALL_COMMAND`.conf
+	check_variables  "$@"
+	parse_options "$@"
+	check_arch
+	check_lfs "$@"
+	if [ $# -lt 1 ] && [ -z "$LFS" ] ; then
+		echo "
+*******************************************
+* You didn't specify enough arguments     *
+* Argument 1: Folder destionation         *
+*                                         *
+* Please re-enter the command with the    *
+* corrects arguments                      *
+*******************************************
+
+example: ${INSTALL_COMMAND} -p /chroot
+"
+
+		return
+	fi
+	check_root
+	check_bash
+	check_tools
+	TMP=`mktemp -d`
+	check_mountfolder
+	check_mountpoint
+
+	download_pkgadd
+	create_database
+
+	install_base
+
+	create_locale_link
+
+	make_directories
+	install_configuration_files
+	install_resolv_conf
+	generate_setupfile
+	end
+	successfull_installation
+}
+
+readonly CODE_NAME="houaphan"
+readonly BASE="base"
+readonly RELEASE=2
+INSTALL_COMMAND="`basename $0`"
+main "$@"

@@ -1,0 +1,31 @@
+# Description: A set of symbols and convience functions for Ayatana indicators. 
+# URL: https://launchpad.net/libindicator
+# Packager: pierre at nutyx dot org
+# Depends on: gtk2
+
+name=libindicator-gtk2
+version=0.4.93
+release=1
+
+source=(http://launchpad.net/libindicator/0.5/$version/+download/libindicator-$version.tar.gz)
+
+build() {
+
+  sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i libindicator-$version/libindicator/Makefile.{am,in}
+  sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i libindicator-$version/configure
+  sed 's/LIBM="-lmw"/LIBM=" -lmw"/g' -i libindicator-$version/configure
+  sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i libindicator-$version/configure
+  sed 's/LIBS="-lm  $LIBS"/LIBS=" -lm  $LIBS"/g' -i libindicator-$version/configure
+  sed 's/LIBS="-lmw  $LIBS"/LIBS=" -lmw  $LIBS"/g' -i libindicator-$version/configure
+
+  cd libindicator-$version
+
+  ./configure --prefix=/usr                \
+              --sysconfdir=/etc            \
+              --localstatedir=/var         \
+              --libexecdir=/usr/lib/$name  \
+              --disable-static             \
+              --with-gtk=2
+make -j1
+make -j1 DESTDIR=$PKG install
+}

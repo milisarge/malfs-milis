@@ -1,0 +1,17 @@
+# Description: Xapian is an open source search engine library.
+# URL:  http://oligarchy.co.uk/xapian.html
+# Packager: tnut at nutyx dot org
+
+name=xapian
+version=1.2.22
+release=1
+
+source=( http://oligarchy.co.uk/xapian/$version/xapian-core-$version.tar.xz)
+build() {
+cd $name-core-$version
+./configure --prefix=/usr \
+--disable-static \
+--docdir=/usr/share/doc/xapian-core-$version
+make
+make DESTDIR=$PKG install
+}

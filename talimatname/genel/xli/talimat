@@ -1,0 +1,22 @@
+# Description: allows display d'images for X
+# URL: 
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-libxext libpng libjpeg-turbo 
+
+name=xli
+version=1
+release=1
+
+source=(ftp://ftp.x.org/contrib/applications/xli.1.16.tar.gz
+	http://downloads.nutyx.org/files/patchs/$name/xli-1.16-makefile-1.patch)
+build() {
+sed -i "s/varargs/stdarg/" rlelib.c
+mv Makefile{.std,}
+patch -Np0 -i xli-1.16-makefile-1.patch
+make
+mkdir -p $PKG/usr{/bin,/lib/X11,/share/man/man3}
+make DESTDIR=$PKG/usr install
+for MANUAL in xli xliguide xlito
+	do install -m644 $MANUAL.man  $PKG/usr/share/man/man3/$MANUAL.3
+done
+}

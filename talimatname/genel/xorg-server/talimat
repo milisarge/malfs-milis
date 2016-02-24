@@ -1,0 +1,33 @@
+# Description: The Xorg Server is the core of the X Window system.
+# URL: http://xorg.freedesktop.org
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: xcb-util-keysyms libepoxy xcb-util-image xcb-util-renderutil xcb-util-wm xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
+
+name=xorg-server
+version=1.18.1
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/xserver/$name-$version.tar.bz2
+	http://www.linuxfromscratch.org/patches/downloads/xorg-server/$name-$version-add_prime_support-1.patch
+	http://www.linuxfromscratch.org/patches/downloads/xorg-server/$name-$version-wayland_190-1.patch)
+
+build() {
+cd $name-$version
+
+patch -Np1 -i ../$name-$version-add_prime_support-1.patch
+patch -Np1 -i ../$name-$version-wayland_190-1.patch
+
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+--with-xkb-output=/var/lib/xkb \
+--enable-glamor \
+--with-fontrootdir=/usr/share/fonts \
+--enable-install-setuid \
+--disable-systemd-logind \
+--enable-suid-wrapper
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/var
+
+# glamor module part of xorg-glamor-egl
+rm $PKG/usr/lib/xorg/modules/libglamoregl.{la,so}
+}

@@ -1,0 +1,24 @@
+# Description: A JSON implementation in C
+# URL: URL: https://github.com/json-c/json-c/wiki
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+name=json-c
+version=0.12
+release=1
+
+source=(
+https://s3.amazonaws.com/${name}_releases/releases/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    CFLAGS="$CFLAGS -Wno-error"
+    ./configure --prefix=/usr \
+                --disable-static
+    make check
+    make DESTDIR=$PKG install    
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

@@ -1,0 +1,16 @@
+# Description: Creates PKZIP-compatible .zip files
+# URL: http://infozip.sourceforge.net/Zip.html
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=zip
+version=3.0
+release=1
+
+source=( http://downloads.sourceforge.net/infozip/zip30.tar.gz)
+
+build() {
+	cd ${name}30
+	make -f unix/Makefile prefix=/usr generic_gcc 
+	make prefix=$PKG/usr MANDIR=$PKG/usr/share/man/man1 -f unix/Makefile install 
+        
+}

@@ -1,0 +1,17 @@
+# Description: An audio metadata tag reader and writer
+# URL: https://bitbucket.org/lazka/mutagen
+# Packager: pierre at nutyx dot org
+# Depends on: python 
+
+name=mutagen
+version=1.31
+release=1
+
+source=(https://bitbucket.org/lazka/mutagen/downloads/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+python2 setup.py install --root=$PKG
+mkdir -p $PKG/usr/bin
+install -m755 tools/* $PKG/usr/bin
+}

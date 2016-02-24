@@ -1,0 +1,23 @@
+# Description: Utility for network discovery and security auditing
+# URL: http://insecure.org/nmap/
+# Packager: pierre at nutyx dot org
+# Depends on: pcre libpcap lua liblinear 
+
+name=nmap
+version=7.01
+release=1
+
+source=(http://nmap.org/dist/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--localedir=/usr/share/locale \
+--docdir=/usr/share/doc/$name-$version \
+--with-liblua=included \
+--infodir=/usr/share/info
+make || make -j1
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+}

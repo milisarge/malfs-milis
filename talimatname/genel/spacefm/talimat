@@ -1,0 +1,22 @@
+# Description: Multi-panel tabbed file manager
+# URL:         http://ignorantguru.github.com/spacefm/
+# Maintainer:  Maximilian Dietrich, dxm at openmailbox dot org
+# Depends on:  gtk2 eudev shared-mime-info desktop-file-utils xorg-libxdamage
+
+name=spacefm
+version=0.9.4
+release=3
+source=(https://github.com/IgnorantGuru/$name/archive/$version.tar.gz https://github.com/BwackNinja/spacefm/commit/f167b2831bc2556fc383cf30ae6ce4d117b67c04.patch)
+
+build () {
+    cd $name-$version
+    patch -p1 < $SRC/f167b2831bc2556fc383cf30ae6ce4d117b67c04.patch
+    ./configure --prefix=/usr \
+	    --mandir=/usr/man \
+	    --disable-nls \
+	    --disable-startup-notifications \
+	    --with-gtk2
+    make
+    make DESTDIR=$PKG \
+        install
+}

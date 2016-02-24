@@ -1,0 +1,17 @@
+# Description: Python bindings to libsensors (via ctypes)
+# URL: https://bitbucket.org/blackjack/pysensors/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: python python-setuptools lm-sensors
+# Nice to have: hddtemp
+
+
+name=pysensors
+version=0.0.3
+release=2
+source=(https://pypi.python.org/packages/source/P/PySensors/PySensors-$version.tar.gz)
+
+build() {
+  cd PySensors-$version
+  python setup.py install -O1 --prefix='/usr' --root=$PKG --optimize=1
+}

@@ -1,0 +1,147 @@
+# Description: A cross-platform application and UI framework
+# URL: http://qt-project.org/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org, fanch at nutyx dot org
+# Depends on:xorg-proto xorg-libxkbfile xorg-xtrans xorg-libx11 xorg-libxext xorg-libfs xorg-libice xorg-libsm xorg-libxscrnsaver xorg-libxt xorg-libxmu xorg-libxpm xorg-libxaw xorg-libxfixes xorg-libxcomposite xorg-libxrender xorg-libxcursor xorg-libxdamage xorg-libfontenc xorg-libxfont xorg-libxft xorg-libxi xorg-libxinerama xorg-libxrandr xorg-libxres xorg-libxtst xorg-libxv xorg-libxvmc xorg-libxxf86dga xorg-libxxf86vm xorg-libdmx xorg-libpciaccess xorg-libxkbfile xorg-libxshmfence  xcb-proto xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm alsa-lib ca-certificates cups dbus glib gstreamer-plugins-base icu jasper libjpeg-turbo libmng libpng libtiff libwebp xorg-mesa mtdev openssl pcre sqlite ruby gstreamer1-plugins-base geoclue gtk2 harfbuzz postgresql pulseaudio unixodbc libxkbcommon mariadb
+
+name=qt5
+version=5.5.1
+release=2
+
+_name=qt-everywhere-opensource-src-${version}
+
+source=(http://download.qt-project.org/official_releases/qt/${version%.*}/$version/single/${_name}.tar.xz)
+
+build() {
+
+QT5PREFIX=/usr
+QT5BINDIR=$QT5PREFIX/lib/qt5/bin
+
+
+cd ${_name}*
+
+./configure -prefix         $QT5PREFIX                  \
+            -sysconfdir     /etc/xdg                    \
+            -bindir         $QT5BINDIR                  \
+            -plugindir      /usr/lib/qt5/plugins        \
+            -importdir      /usr/lib/qt5/imports        \
+            -headerdir      /usr/include/qt5            \
+            -datadir        /usr/share/qt5              \
+            -docdir         /usr/share/doc/qt5          \
+            -translationdir /usr/share/qt5/translations \
+            -examplesdir    /usr/share/doc/qt5/examples \
+            -plugin-sql-{psql,mysql,sqlite,odbc}        \
+            -confirm-license  \
+            -opensource       \
+            -dbus-linked      \
+            -openssl-linked   \
+            -system-harfbuzz  \
+            -system-sqlite    \
+	    -optimized-qmake  \
+            -nomake examples  \
+	    -no-rpath         \
+            -skip qtwebengine 
+
+make
+make INSTALL_ROOT=$PKG install
+
+find $PKG/usr/ -name qt_lib_bootstrap_private.pri \
+   -exec sed -i -e "s:$PWD/qtbase:/$QT5PREfiX/lib/:g" {} \; &&
+
+find $PKG/usr -name \*.prl \
+   -exec sed -i -e '/^QmAKE_PRL_BUiLD_DiR/d' {} \;
+
+install -v -dm755 $PKG/usr/share/pixmaps/
+
+install -v -Dm644 qttools/src/assistant/assistant/images/assistant-128.png \
+                  $PKG/usr/share/pixmaps/assistant-qt5.png
+
+install -v -Dm644 qttools/src/designer/src/designer/images/designer.png \
+                  $PKG/usr/share/pixmaps/designer-qt5.png
+
+install -v -Dm644 qttools/src/linguist/linguist/images/icons/linguist-128-32.png \
+                  $PKG/usr/share/pixmaps/linguist-qt5.png
+
+install -v -Dm644 qttools/src/qdbus/qdbusviewer/images/qdbusviewer-128.png \
+                  $PKG/usr/share/pixmaps/qdbusviewer-qt5.png
+
+install -dm755 $PKG/usr/share/applications
+
+
+cat > $PKG/usr/share/applications/assistant-qt5.desktop << "EOf"
+[Desktop Entry]
+Name=Qt5 Assistant
+comment=Shows Qt5 documentation and examples
+Exec=$QT5BINDIR/assistant-qt5
+icon=assistant-qt5
+Terminal=false
+Encoding=UTf-8
+Type=Application
+categories=Qt;Development;Documentation;
+EOf
+
+cat > $PKG/usr/share/applications/designer-qt5.desktop << "EOf"
+[Desktop Entry]
+Name=Qt5 Designer
+GenericName=interface Designer
+comment=Design GUis for Qt5 applications
+Exec=$QT5BINDIR/designer-qt5
+icon=designer-qt5
+mimeType=application/x-designer;
+Terminal=false
+Encoding=UTf-8
+Type=Application
+categories=Qt;Development;
+EOf
+
+cat > $PKG/usr/share/applications/linguist-qt5.desktop << "EOf"
+[Desktop Entry]
+Name=Qt5 Linguist
+comment=Add translations to Qt5 applications
+Exec=$QT5BINDIR/linguist-qt5
+icon=linguist-qt5
+mimeType=text/vnd.trolltech.linguist;application/x-linguist;
+Terminal=false
+Encoding=UTf-8
+Type=Application
+categories=Qt;Development;
+EOf
+
+cat > $PKG/usr/share/applications/qdbusviewer-qt5.desktop << "EOf"
+[Desktop Entry]
+Name=Qt5 QDbusviewer
+GenericName=D-Bus Debugger
+comment=Debug D-Bus applications
+Exec=$QT5BINDIR/qdbusviewer-qt5
+icon=qdbusviewer-qt5
+Terminal=false
+Encoding=UTf-8
+Type=Application
+categories=Qt;Development;Debugger;
+EOf
+
+mkdir -p $PKG/etc/profile.d
+cat > $PKG/etc/profile.d/qt5.sh << EOf
+# Begin /etc/profile.d/qt5.sh
+
+QT5PREFIX=$QT5PREFIX
+QT5DIR=$QT5PREFIX
+QT5BINDIR=$QT5PREFIX/lib/qt5/bin
+export QT5PREFIX QT5BINDIR QT5DIR
+
+# End /etc/profile.d/qt5.sh
+EOf
+
+### Creation des liens /usr/bin vers les binaires se trouvant
+### dans le dossier /usr/lib/qt5/bin en ajoutant qt5 à la fin du lien
+mkdir -p $PKG/usr/bin
+
+for i in $PKG/usr/lib/qt5/bin/*; do 
+	ln -sv /usr/lib/qt5/bin/$(basename $i) $PKG/usr/bin/$(basename $i)-qt5
+done
+
+cat > $PKG/usr/bin/setqt5 << EOF
+if [ "x\$QT4BINDIR" != "x/usr/bin" ] && [ "x\$QT4BINDIR" != "x" ]; then pathremove $QT4BINDIR; fi
+if [ "x\$QT5BINDIR" != "x/usr/bin" ]; then pathprepend $QT5BINDIR; fi
+echo \$PATH
+EOF
+}

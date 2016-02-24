@@ -1,0 +1,16 @@
+# Description: The International Components for Unicode is a mature, widely used set of C/C++ libraries
+# URL: http://www.icu-project.org/
+# Packager: pierre at nutyx dot org
+
+name=icu
+version=56.1
+release=1
+
+source=(http://download.$name-project.org/files/icu4c/$version/icu4c-${version//./_}-src.tgz)
+
+build () {
+cd $name/source
+CC=gcc CXX=g++ ./configure --prefix=/usr
+make
+make prefix=$PKG/usr install
+}

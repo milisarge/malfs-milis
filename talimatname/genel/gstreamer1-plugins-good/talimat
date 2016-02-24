@@ -1,0 +1,19 @@
+# Description: GStreamer Multimedia Framework good Plugins
+# URL: http://gstreamer.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: gstreamer1-plugins-base flac gdk-pixbuf libjpeg-turbo libpng libsoup libvpx 
+_name=gst-plugins-good
+
+name=gstreamer1-plugins-good
+release=1
+
+source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+ --with-package-name="GStreamer Good Plugins $version BLFS" \
+--with-package-origin="http://www.linuxfromscratch.org/blfs/view/svn/"
+make
+make DESTDIR=$PKG install
+}

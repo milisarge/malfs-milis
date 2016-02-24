@@ -1,0 +1,17 @@
+# Description: Tools for creating Yelp documentation.
+# URL: http://www.gnome.org/
+# Maintainer: NuTyX GNOME team
+# Packager: piernov <piernov@piernov.org>
+# Depends on: libxslt libxml2 yelp-xsl, itstool
+
+name=yelp-tools
+version=3.16.1
+release=1
+source=(http://download.gnome.org/sources/$name/${version:0:4}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

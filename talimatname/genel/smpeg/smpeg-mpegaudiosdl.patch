@@ -1,0 +1,14 @@
+--- smpeg-0.4.4/MPEGaudio.h.orig	2006-01-15 16:17:56.356444000 +0100
++++ smpeg-0.4.4/MPEGaudio.h	2006-01-15 16:18:36.686965250 +0100
+@@ -148,6 +148,11 @@
+   char buffer[2*WINDOWSIZE];
+ };
+ 
++void Play_MPEGaudioSDL(void *udata, Uint8 *stream, int len);
++#ifdef THREADED_AUDIO
++int Decode_MPEGaudio(void *udata);
++#endif
++
+ /* The actual MPEG audio class */
+ class MPEGaudio : public MPEGerror, public MPEGaudioaction {
+ 

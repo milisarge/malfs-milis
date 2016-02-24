@@ -1,0 +1,19 @@
+# Description: xorg lib xorg - libxkbfile
+# URL: http://xorg.freedesktop.org
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-proto xorg-libx11 
+
+name=xorg-libxkbfile
+version=1.0.9
+release=1
+
+source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libxkbfile-$version.tar.bz2)
+
+build() {
+	cd libxkbfile-$version
+
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+
+	make
+	make DESTDIR=$PKG install
+}

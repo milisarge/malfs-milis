@@ -1,0 +1,13 @@
+version=5.25
+source=(ftp://ftp.astron.com/pub/file/file-$version.tar.gz)
+
+build()
+{
+cd file-$version
+
+./configure --prefix=/tools
+
+make
+
+make install
+}

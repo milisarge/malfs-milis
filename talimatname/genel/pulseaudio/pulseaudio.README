@@ -1,0 +1,4 @@
+You may have to configure the audio system.
+You can start pulseaudio in command line mode using pulseaudio -C
+and then list various information and change settings.
+See man pulse-cli-syntax. 

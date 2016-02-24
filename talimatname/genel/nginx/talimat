@@ -1,0 +1,107 @@
+# Description: nginx [engine x] is a high-performance HTTP server and reverse proxy,
+# URL: http://nginx.net/
+# Packager: alienus at nutyx dot org
+# Depends on: libxml2 libxslt pcre 
+name=nginx
+version=1.6.2
+release=2
+
+source=(http://nginx.org//download/$name-$version.tar.gz
+nginx.service
+nginx.logrotate)
+
+# change those if you prefer another setup
+NGINXUSER=www
+NGINXGROUP=www
+HTMLDIR=/srv/http # be aware that apache use /srv/www
+
+# change those if you need those experimental modules
+# (idea from slackbuilds.org)
+if [ "${USE_SPDY:-no}" == "yes" ]; then
+    SPDY_MOD="--with-http_spdy_module"
+else
+    SPDY_MOD=""
+fi
+
+if [ "${USE_GEOIP:-no}" == "yes" ]; then
+  GEOIP_MOD="--with-http_geoip_module"
+else
+  GEOIP_MOD=""
+fi
+
+#
+#
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --sbin-path=/usr/sbin/nginx \
+                --conf-path=/etc/nginx/nginx.conf \
+                --pid-path=/var/run/nginx.pid \
+                --lock-path=/var/lock/subsys \
+                --user=${NGINXUSER} \
+                --group=${NGINXGROUP} \
+                --error-log-path=/var/log/nginx/error.log \
+                --http-log-path=/var/log/nginx/access.log \
+                --http-client-body-temp-path=/var/lib/nginx/client_body \
+                --http-proxy-temp-path=/var/lib/nginx/proxy \
+                --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
+                --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+                --http-scgi-temp-path=/var/lib/nginx/scgi \
+                --with-file-aio \
+                --with-ipv6 \
+                --with-select_module \
+                --with-poll_module \
+                --with-http_ssl_module \
+                --with-http_realip_module \
+                --with-http_addition_module \
+                --with-http_xslt_module \
+                --with-http_sub_module \
+                --with-http_dav_module \
+                --with-http_flv_module \
+                --with-http_mp4_module \
+                --with-http_gunzip_module \
+                --with-http_gzip_static_module \
+                --with-http_random_index_module \
+                --with-http_secure_link_module \
+                --with-http_degradation_module \
+                --with-http_stub_status_module \
+                --with-http_perl_module \
+                --with-http_auth_request_module \
+                --with-mail \
+                --with-mail_ssl_module \
+                $SPDY_MOD \
+                $GEOIP_MOD
+
+    make
+    make DESTDIR=$PKG install
+
+    # Make the temp path.
+    install -dm700 $PKG/var/lib/$name
+    # Move html directory and do not use /srv/www as it is used by apache
+    mkdir -p $PKG/$HTMLDIR
+    mv $PKG/usr/html $PKG/$HTMLDIR
+    chown -v -R $NGINXUSER:$NGINXGROUP $PKG/$HTMLDIR
+    # Fix the nginx.conf file for html and virtual server directory.
+    sed -i \
+          -e '/root[ ]*html/s|html;|/srv/http/&|' \
+            -e '$s|.*|    include /etc/nginx/conf.d/\*.conf;\n&|' \
+                $PKG/etc/nginx/$name.conf
+    # install the nginx init script
+    install -Dm755 $SRC/nginx.service $PKG/etc/rc.d/init.d/nginx
+    # install the logrotate file
+    install -Dm644 $SRC/nginx.logrotate $PKG/etc/logrotate.d/nginx
+    # fill the right user & group in the logrotate file
+    sed -e "s,@USER@,$NGINXUSER," -e "s,@GROUP@,$NGINXGROUP," \
+        $PKG/etc/logrotate.d/nginx
+    # Set the permissions for the log directory.
+    chown $NGINXUSER $PKG/var/log/$name
+    chmod 750 $PKG/var/log/$name
+    # Create sub-directory for virtual servers.
+    mkdir -p $PKG/etc/$name/conf.d
+    # Remove perllocal.pod and .packlist if present in the package
+    for i in perllocal.pod .packlist; do
+        find $PKG -name "$i" -exec rm -rf {} \;
+    done
+
+}
+

@@ -1,0 +1,18 @@
+# Description: Library for writing single instance applications for GTK3
+# URL: http://live.gnome.org/LibUnique
+# Packager: pierre at nutyx dot org
+# Depends on: gtk3 gobject-introspection 
+
+name=libunique
+version=3.0.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+rm -r $PKG/usr/share/gtk-doc
+}

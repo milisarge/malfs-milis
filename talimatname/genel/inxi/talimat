@@ -1,0 +1,19 @@
+# Description: inxi (a full featured system information script)
+# URL: http://inxi.org
+# Packager: alienus at nutyx dot org
+# Depends on: 
+name=inxi
+version=2.1.28
+release=1
+
+source=(
+http://inxi.googlecode.com/svn/trunk/inxi
+http://inxi.googlecode.com/svn/trunk/inxi.1)
+
+build(){
+    cd $SRC
+    install -Dm755 inxi \
+        $PKG/usr/bin/inxi
+    install -Dm644 inxi.1 \
+        $PKG/usr/share/man/man1/inxi.1
+}

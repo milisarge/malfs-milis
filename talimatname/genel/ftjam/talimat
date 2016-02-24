@@ -1,0 +1,21 @@
+# Description: FT Jam - an enhanced version of the Jam build tool
+# URL: http://freetype.org/jam/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on:
+
+name=ftjam
+version=2.5.3rc2
+release=1
+
+#source=(http://downloads.sourceforge.net/freetype/$name-$version.tar.bz2 \
+source=(http://david.freetype.org/jam/${name}-${version}.tar.bz2)
+
+
+build() {
+  cd "${SRC}/${name}-${version}"
+  ./configure --prefix=/usr
+  make
+
+  make DESTDIR="${PKG}" install
+}

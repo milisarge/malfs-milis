@@ -1,0 +1,27 @@
+Si vous installez ce paquet fcron, il semble logique que le service soit lancé par défaut, c'est pourquoi les scripts de lancement sont intégrés dans le paquet.
+
+Assurez-vous que la ligne ci-dessous se trouve dans le fichier de config /etc/syslog.conf :
+
+cron.* -/var/log/cron.log
+
+Exemple de configuration:
+
+La ligne ci-dessous lancera le script "/etc/fcron/daily" tous les soir à 23H59
+
+59 23 * * * /etc/fcron/daily
+
+La ligne ci-dessous lancera le script "/etc/fcron/monthly/flushlogs" tous les premiers du mois à 0h 0 minute
+
+0 0 1 * * /etc/fcron/monthly/flushlogs
+
+La ligne ci-dessous lancera le script "/etc/fcron/weekly/cleanup" tous les dimanche à 12h00
+
+0 12 * * 0 /etc/fcron/weekly/cleanup
+
+Le /etc/fcron/always/tic  sera exécutée toutes les minutes
+
+* * * * * /etc/fcron/always/tic
+
+Il faut s'assurer que les scripts à lancer soit executables par exemple
+
+chmod 755 /etc/fcron/weekly/cleanup 

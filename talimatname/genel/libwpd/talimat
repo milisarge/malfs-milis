@@ -1,0 +1,17 @@
+# Description: Library for importing WordPerfect (tm) documents
+# URL: http://libwpd.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: libgsf librevenge
+
+name=libwpd
+version=0.10.0
+release=1
+
+source=(http://prdownloads.sourceforge.net/libwpd/libwpd-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,18 @@
+# Description: library based on GObject for analyze host of formats of playlist and the save.
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: gmime intltool libsoup gobject-introspection 
+
+name=totem-pl-parser
+version=3.10.6
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
+}

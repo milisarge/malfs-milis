@@ -1,0 +1,15 @@
+# Begin /etc/xinetd.d/systat
+
+service systat
+{
+   disable           = yes
+   socket_type       = stream
+   wait              = no
+   user              = nobody
+   server            = /bin/ps
+   server_args       = -auwwx
+   only_from         = 128.138.209.0
+   log_on_success    = HOST
+}
+
+# End /etc/xinetd.d/systat

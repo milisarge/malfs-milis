@@ -1,0 +1,25 @@
+# URL: http://ftp.gnome.org/pub/gnome/sources/ekiga
+# Packager:	berlius at nutyx dot com
+# Depends on: gtk2 opal boost gnome-icon-theme dbus gconf libnotify avahi gnome-doc-utils openldap
+
+description="VoIP, IP Telephony & Video Conferencing application, allows you to make audio/video calls"
+name=ekiga
+version=4.0.1	
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/ekiga/4.0/$name-$version.tar.xz)
+ 
+build() {
+
+	cd $name-$version
+	
+	./configure --prefix=/usr     \
+	            --sysconfdir=/etc \
+	            --disable-eds     \
+	            --disable-gdu     \
+	            --disable-ldap    \
+	            --disable-scrollkeeper 
+	make
+	
+	make DESTDIR=$PKG install
+	
+}

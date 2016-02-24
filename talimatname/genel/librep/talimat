@@ -1,0 +1,20 @@
+# Description: The librep package contains a Lisp system.
+# URL: http://librep.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: libffi 
+
+name=librep
+version=0.92.5
+release=2
+
+source=(http://download.tuxfamily.org/$name/${name}_$version.tar.xz)
+
+build() {
+export CFLAGS="$CFLAGS -std=gnu90"
+cd ${name}_$version
+./configure --prefix=/usr \
+--disable-static
+make || make -j1
+make prefix=$PKG/usr install
+rm -rf $PKG/usr/share
+}

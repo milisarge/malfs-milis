@@ -1,0 +1,30 @@
+# Description: TrueType font rendering library
+# URL: http://www.freetype.org
+# Packager: pierre at nutyx dot org
+# Depends on: libpng 
+
+name=freetype
+version=2.6.3
+release=1
+
+source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+
+
+build() {
+cd $name-$version
+sed -e "/AUX.*.gxvalid/s@^# @@" \
+-e "/AUX.*.otvalid/s@^# @@" \
+-i modules.cfg
+sed -e 's:.*\(#.*SUBPIXEL.*\) .*:\1:' \
+-i include/freetype/config/ftoption.h
+
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+cd ..
+mkdir docs
+wget http://downloads.sourceforge.net/freetype/freetype-doc-$version.tar.bz2
+tar -xf freetype-doc-$version.tar.bz2 --strip-components=2 -C docs
+install -v -m755 -d $PKG/usr/share/doc/$name-$version
+cp -v -R docs/*     $PKG/usr/share/doc/$name-$version
+}

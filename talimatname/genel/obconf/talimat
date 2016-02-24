@@ -1,0 +1,17 @@
+# Description: Tools for openbox configuration
+# URL: http://openbox.org/wiki/ObConf:About
+# Packager: tnut at nutyx dot org 
+# Depends on: openbox startup-notification gtk2 cairo xorg-pixman xorg-libxext gdk-pixbuf atk libglade avahi dbus-python dbus-glib libdaemon xorg-mesa
+
+name=obconf
+version=2.0.4
+release=2
+
+source=(http://icculus.org/openbox/obconf/$name-$version.tar.gz)
+
+build() {
+   cd $name-$version
+   ./configure --prefix=/usr
+   make
+   make DESTDIR=$PKG install
+}

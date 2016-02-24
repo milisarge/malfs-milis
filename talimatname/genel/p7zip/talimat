@@ -1,0 +1,20 @@
+# Description: Command-line version of the 7zip compressed file archiver
+# URL: http://p7zip.sourceforge.net
+# Packager: pierre at nutyx dot org
+# Depends on: nasm yasm 
+
+name=p7zip
+version=9.38.1
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/$name/${name}_${version}_src_all.tar.bz2)
+
+build() {
+	cd ${name}_$version
+	[[ `uname -m` = x86_64 ]] \
+	&& cp makefile.linux_amd64_asm makefile.machine \
+	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+	make -j1 all3 OPTFLAGS="${CXXFLAGS}"
+	make install DEST_DIR=$PKG DEST_HOME=/usr DEST_MAN=/usr/share/man
+
+}

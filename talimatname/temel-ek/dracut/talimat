@@ -1,0 +1,15 @@
+# Description: Can generate a customized initrams image which contains only whatever is necessary to boot
+# URL: https://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html
+# Packager: tnut at nutyx dot org
+# Maintainer: Harald Hoyer harald at redhat dot com
+
+name=dracut
+version=044
+release=1
+source=(http://kernel.org/pub/linux/utils/boot/dracut/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

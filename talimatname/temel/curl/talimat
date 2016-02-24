@@ -1,0 +1,55 @@
+# Description: Utility for transferring files with URL syntax to many protocols
+# URL: http://curl.haxx.se/
+# Maintainer: Daniel Stenberg
+# Packager: tnut at nutyx dot org
+
+
+name=curl
+version=7.47.1
+release=1
+
+source=(http://curl.haxx.se/download/$name-$version.tar.lzma)
+
+PKGMK_GROUPS=(devel doc man)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--bindir=/bin  \
+--with-ca-path=/etc/ssl/certs \
+--enable-threaded-resolver
+make
+make DESTDIR=$PKG install
+
+find docs \( -name Makefile\* \
+          -o -name \*.1       \
+          -o -name \*.3 \)    \
+          -exec rm {} \;
+
+install -v -d -m755 $PKG/usr/share/doc/curl-$version
+cp -v -R docs/* \
+$PKG/usr/share/doc/curl-$version
+
+# reorganise the libs
+mkdir $PKG/lib
+mv $PKG/usr/lib/libcurl.so.4.4.0 \
+$PKG/lib/
+for LIB in libcurl.so{,.4}
+	do 
+		ln -sv libcurl.so.4.4.0 $PKG/lib/$LIB
+		rm $PKG/usr/lib/$LIB
+		ln -sv ../../lib/libcurl.so.4.4.0 \
+		$PKG/usr/lib/$LIB
+done
+
+ln -sv ../../lib/libcurl.so.4.4.0 \
+$PKG/usr/lib/libcurl.so.4.4.0
+
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
+usr/include usr/lib/pkgconfig usr/share/aclocal
+rm -r  usr/include usr/lib/pkgconfig usr/share/aclocal
+}

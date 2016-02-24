@@ -1,0 +1,22 @@
+# Description: FUSE client based on the SSH File Transfer Protocol
+# URL: URL: http://fuse.sourceforge.net/sshfs.html
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: fuse glib openssh 
+name=sshfs-fuse
+version=2.5
+release=1
+
+source=(
+http://downloads.sourceforge.net/sourceforge/fuse/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install    
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

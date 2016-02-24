@@ -1,0 +1,11 @@
+--- asterisk-13.2.0/menuselect-tree	2015-04-01 13:33:21.374042590 +0900
++++ asterisk-13.2.0/menuselect-tree.astcanary-disable	2015-04-01 13:54:31.376756837 +0900
+@@ -1755,7 +1755,7 @@
+ 	<support_level>extended</support_level>
+   </member>
+   <member name="astcanary">
+-	<defaultenabled>yes</defaultenabled>
++	<defaultenabled>no</defaultenabled>
+ 	<support_level>core</support_level>
+   </member>
+   <member name="astdb2sqlite3">

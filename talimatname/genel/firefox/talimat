@@ -1,0 +1,103 @@
+# Description: Standalone web browser from mozilla.org
+# URL: http://www.mozilla.com/firefox/
+# Packager: pierre at nutyx dot org,tnut at nutyx dot org
+# Depends on: pulseaudio,gconf,yasm,sqlite,libvpx,libevent,nss,alsa-lib,gtk2,xorg-app,zip,unzip,gstreamer1,gstreamer1-plugins-base,gstreamer1-plugins-good,gstreamer1-plugins-libav
+
+run=(gstreamer1-plugins-good gstreamer1-plugins-libav)
+
+name=firefox
+version=44.0.2
+release=1
+
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
+
+build() {
+
+cd $SRC
+ARCH=`uname -m`
+
+for lang in da de en-US es-ES fi fr it nb-NO nl pt-PT sv-SE
+do 
+wget  http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$version/linux-$ARCH/xpi/$lang.xpi
+done
+
+cd $name-$version
+cat > mozconfig << "EOF"
+ac_add_options --enable-system-sqlite
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-icu
+ac_add_options --enable-official-branding
+ac_add_options --disable-optimize
+ac_add_options --enable-gstreamer=1.0
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+ac_add_options --with-pthreads
+ac_add_options --with-system-bz2
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-png
+ac_add_options --with-system-zlib
+ac_add_options --prefix=/usr
+ac_add_options --enable-application=browser
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests
+
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
+EOF
+
+test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozconfig || true
+
+
+SHELL=/bin/sh make -f client.mk
+
+mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
+
+SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
+
+chown -R 0:0 $PKG/usr/lib/firefox-$version
+ln -sf ../lib/firefox-$version/firefox $PKG/usr/bin
+ln -sf ../mozilla/plugins $PKG/usr/lib/firefox-$version
+
+# Need for gnash
+mkdir -p $PKG/usr/include/npapi
+cp -v dom/plugins/base/*.h $PKG/usr/include/npapi
+
+# Launcher 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/firefox.desktop << "EOF" &&
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Firefox
+Comment=Browse The Web
+Icon=firefox
+Exec=firefox
+Categories=Network;GTK;Application;Browser;WebBrowser;
+StartupNotify=true
+Terminal=false
+EOF
+mkdir -pv $PKG/usr/share/pixmaps
+ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
+
+
+for lang in da de en-US es-ES fi fr it nb-NO nl pt-PT sv-SE
+do 
+install -Dm644 $SRC/$lang.xpi \
+    $PKG/usr/lib/firefox-$version/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
+done
+
+cat > $PKG/usr/lib/firefox-$version/defaults/pref/vendor.js << "EOF"
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Disable default browser checking.
+pref("browser.shell.checkDefaultBrowser", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+EOF
+}

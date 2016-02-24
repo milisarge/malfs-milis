@@ -1,0 +1,20 @@
+# Description: contains the library xine
+# URL: http://xinehq.de/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-mesa xorg-libxvmc libxcb faad2 speex libmng libvorbis flac libtheora sdl ffmpeg samba librsvg imagemagick 
+
+name=xine-lib
+version=1.2.6
+release=1
+
+source=(http://downloads.sourceforge.net/xine/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure  --prefix=/usr \
+--disable-vcd \
+--disable-modplug \
+--docdir=/usr/share/doc/$name-$version
+make
+make DESTDIR=$PKG install
+}

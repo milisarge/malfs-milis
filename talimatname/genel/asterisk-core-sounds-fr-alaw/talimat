@@ -1,0 +1,18 @@
+# Description:	Asterisk core sounds
+# URL:		    http://www.asterisk.org
+# Packager:     berlius at nutyx dot com
+# Depends on:   asterisk
+
+name=asterisk-core-sounds-fr-alaw
+version=1.4.27
+release=1
+source=(http://downloads.digium.com/pub/telephony/sounds/releases/$name-$version.tar.gz)
+
+build () {
+
+    install -d -m 750 $PKG/var/lib/asterisk/sounds
+    mv $SRC/* $PKG/var/lib/asterisk/sounds
+
+}
+
+

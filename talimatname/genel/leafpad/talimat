@@ -1,0 +1,18 @@
+# Description: A notepad clone for GTK+ 2.0
+# URL: http://tarot.freeshell.org/leafpad/
+# Packager: fanch at nutyx dot org
+# Depends on: gtk2 desktop-file-utils
+
+name=leafpad
+version=0.8.18.1
+release=2
+
+source=(http://download.savannah.gnu.org/releases/${name}/${name}-${version}.tar.gz)
+
+build(){
+cd $name-$version
+./configure --prefix=/usr --enable-chooser
+make
+make DESTDIR=$PKG install
+echo 'StartupNotify=true' >> ${PKG}/usr/share/applications/leafpad.desktop
+} 

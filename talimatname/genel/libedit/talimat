@@ -1,0 +1,18 @@
+# Description: Command line editor providing generic line editing, history, and tokenization functions.
+# URL: http://thrysoee.dk/editline/
+# Packager: tnut at nutyx dot org
+# Depends on:
+name=libedit
+version=20140620.3.1
+release=2
+_version=20140620-3.1
+
+source=(http://www.thrysoee.dk/editline/libedit-${_version}.tar.gz)
+
+build(){
+    cd $name-${_version}
+    ./configure --prefix=/usr \
+                --enable-widec
+    make
+    make DESTDIR=$PKG install    
+}

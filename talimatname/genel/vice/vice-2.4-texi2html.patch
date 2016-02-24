@@ -1,0 +1,22 @@
+--- a/doc/html/texi2html	2015-11-10 12:22:49.310067806 -0800
++++ b/doc/html/texi2html	2015-11-10 12:22:18.750067582 -0800
+@@ -1557,17 +1557,13 @@
+     $level--; # here we start at 0
+     if ($name =~ /^appendix/) {
+ 	# appendix style
+-	if (defined(@appendix_sec_num)) {
+-	    &incr_sec_num($level, @appendix_sec_num);
+-	} else {
++	{
+ 	    @appendix_sec_num = ('A', 0, 0, 0);
+ 	}
+ 	return(join('.', @appendix_sec_num[0..$level]));
+     } else {
+ 	# normal style
+-	if (defined(@normal_sec_num)) {
+-	    &incr_sec_num($level, @normal_sec_num);
+-	} else {
++	{
+ 	    @normal_sec_num = (1, 0, 0, 0);
+ 	}
+ 	return(join('.', @normal_sec_num[0..$level]));

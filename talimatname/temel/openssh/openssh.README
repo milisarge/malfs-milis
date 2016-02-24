@@ -1,0 +1,439 @@
+Pour lancer le service ssh
+
+- 1. installer soit le port: openssh.service
+- 2. La page 
+  http://www.linuxfromscratch.org/blfs/view/svn/postlfs/openssh.html
+
+Pour plus d'infos
+
+Astuces diverses:
+
+- Créer une nouvelle paire de clé (privée/publique)
+$ ssh-keygen -t dsa
+Enter file in which to save the key (/home/thierry/.ssh/id_dsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/thierry/.ssh/id_dsa.
+Your public key has been saved in /home/thierry/.ssh/id_dsa.pub.
+The key fingerprint is:
+87:66:b7:a0:f6:0e:6a:71:2c:5d:ee:5f:17:2a:b7:2f thierry@nutyx
+
+Pour l'envoyer directement sur le serveur ssh:
+
+$ cat ~/.ssh/id_dsa.pub | ssh user@remotehost "cat - >> ~/.ssh/authorized_keys"
+
+- Une autre façon de l'envoyer:
+
+$ ssh-copy-id -i ~/.ssh/id_dsa.pub user@remotehost
+
+- Eviter le message lastlog:
+
+$ ssh -T user@hostname.com
+
+- Piping 
+
+Exemple de serialisation d'un process de sauvegarde au travers ssh:
+
+$ ufsdump 0uf - /dev/md/rdsk/d33 | ssh r280n "dd obs=32k ibs=32k of=/dev/rmt/0n"
+
+- rsync à travers ssh:
+
+$ rsync -avz -e "ssh -i /home/thisuser/cron/thishost-rsync-key" \
+remoteuser@remotehost:/remote/dir /this/dir/
+
+- X-forwarding ou lancer le serveur X à distance à travers ssh
+
+$ ssh -X thierry@remotehost
+Warning: untrusted X11 forwarding setup failed: xauth key data not generated
+Warning: No xauth data; using fake authentication data for X11 forwarding.
+
+- Port forwarding / Redirection de ports entre 2 hosts:
+
+Set up a localforward from the remote machine port 25 to a local port 9025:
+Rediriger un locaforward depuis la machine à distance port 25 sur la machine locale port 9025:
+
+$ ssh -L 9025:localhost:25 thierry@remotehost
+
+- No command:
+
+Parfois on souhaite un config avec un forward utilisant un shell
+
+$ ssh -N -L 9025:localhost:25 patrick@remotehost
+
+- KeepAlive:
+
+Getting tired of those timeouts by the firewall? Have ssh send a keepalive
+Raz le bol des timeouts des routeurs / parefeu ? ssh peut envoyer un signal "keepalive"
+
+Ajoutez ds votre $HOME/.ssh/ssh_config
+
+KeepAlive yes
+ServerAliveInterval 60
+
+- Définir un nouveau socket pour proxy
+
+Sometimes it's interesting to start a socks daemon. You can configure this in your browser to surf as it seems to come from the remote machine.
+Il est parfois intéressant de démarrer un démon socket. Vous pouvez configurer cela dans votre navigateur et faire transiter TOUTES les requêtes comme si elles venaient de la
+machine à distance.
+
+$ ssh -D 9999 patrick@remotehost
+
+- Passer à travers les proxy http:
+
+Les pares feu des entreprises ne permettent très souvent que l'accès à l'extérieur via le port http. Plus d'info sur http://www.agroman.net/corkscrew/
+
+ProxyCommand /usr/bin/corkscrew proxy-ip 8080 %h %p ~/.ssh/myauth
+
+- Chaining ssh hopping:
+
+Host pc1.example.org pc2.example.org
+ForwardAgent yes
+ProxyCommand ssh -qax bastion.example.org /usr/bin/nc -w 120 %h %p
+
+- Netcat mode:
+
+Starting from openssh 5.4: we can have ssh act as netcat. (-W) This connects stdio on the client to a single port forward on the server. This allows, for example, using ssh as a
+ProxyCommand to route connections via intermediate servers.”
+
+sh -p 443 -W remotehost2:23 patrick@remotehost
+Trying remotehost2...
+Connected to remotehost2.
+Escape character is '^]'.
+
+User Name : ^]
+telnet> close
+$
+
+- Mounting over ssh:
+
+Sometimes it's nice to mount a remote directory over ssh. Fuse and sshfs are your friend
+Parfois il est très agrèable de pouvoir monter un dossier à distance à travers ssh, les ports fuse et sshfs sont vos amis.
+
+$ sshfs remote-user@remote.server:/remote/directory /mnt/remote-fs/
+
+- VPN Tunneling
+
+Did you know that ssh can do layer 2 and 3 VPN tunneling?
+Check out ssh -w. Example from manpage:
+
+$ ssh -f -w 0:1 192.168.1.15 true
+$ ifconfig tun0 10.0.50.1 10.0.99.1 netmask 255.255.255.252
+
+- SSH http multiplexer:
+
+sslh lets one accept both HTTPS and SSH connections on the same port. It makes it possible to connect to an SSH server on port 443 (e.g. from inside a corporate firewall) while
+still serving HTTPS on that port. http://www.rutschle.net/tech/sslh.shtml
+
+- Speed
+
+Compression
+
+If you are working on a slow link, compression (-C) and using a simple cipher (-c blowfish) saves you speed
+
+$ ssh -C -c blowfish patrick@remotehost
+
+- Multiplexing - ControlMaster:
+
+Another great way to speed up ssh is to re-use the same connection when you connect multiple times to the same host
+
+$ mkdir –p ~/.ssh/connections
+$ chmod 700 ~/.ssh/connections
+
+Add this to your ~/.ssh/config file:
+Host *
+ControlMaster auto
+ControlPath ~/.ssh/connections/%r_%h_%p
+
+-- Managing keys
+
+- Ignorer les Hostkeys:
+
+Quand vous installez et ré-installez sans arrêt, vous souhaitez certainement vous débarassez de ce message "hostfile key verification":
+
+$ ssh user@host -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+
+- Vérifier si une clé (hostkey)  existe:
+
+$ ssh-keygen -F 192.168.2.152
+# Host 192.168.2.152 found: line 31 type RSA
+192.168.2.152 ssh-rsa
+AAAAB3NzaC1yc2EAAAABIwAAAQEAwHH15HpeJo21wyqpe2iFM8/0CtoYnE9DDXfCewws7iMhM+vgp7pjnaC83IgAt7G/x/VDHcbnyuI4odrGSEAE5wm7LNuT6uSfQMbXCayE+uoOIrAVhf41ZnAFQrs/+Mutk5LFEjPPNhuriq5ltBT4UwMlYQMa5z/SzmxV0ZAGXks5GMDz0o89yUwRarRfsGudASEtzUxgnxnOo5STBMZOdQ0GNEVdfJDgfJDAOi34T1FidpCqAtm8akYuB+Qsj3/hDQmIT+GsKYaGNZvz8ZNnPBAc9kWlS6VqXXNreyEeu7AmHDWXjMP3NW1tsibmZ8zeOSZdmEVEiuaYCIvERDq3MQ==
+
+- Supprimer une hostkey:
+
+$ ssh-keygen -R 192.168.2.152
+/home/thierry/.ssh/known_hosts updated.
+Original contents retained as /home/thierry/.ssh/known_hosts.old
+
+- Récupérer la clé publique à distance
+
+$ ssh-keyscan remotehost
+# remotehost SSH-2.0-OpenSSH_5.2
+remotehost ssh-rsa
+AAAAB3NzaC1yc2EAAAABIwAAAQEAyREFGMBB6Qi1uoEYIk4GlqLXdS26moAxmV69UX0icQjp0Rw53xZ/2L0ZQwhsUiFV1vq4QfZNeUO142IzBgSspgsJZ7wJq213tsE7WIJGIBqvWnhU3vJuL9wgYT8f6BAvLoEfapFhLy24TDmn2DXldJAYgo8MnUbRrJlvnhQZPpd5cDWCXkzPGQE8r7REZsAWbWNlVOFRvZioPoGCGYMtsDWSBelBISGkedoNpTSpRkMmBAnsHBfvIzDPoTDYL4PZR0jJ8MaJrDhRtD4caRw4HVyhzSa3/FCpcm09PyBRabH/CyxNSOZjLc2+N9Ph9AKeTNgvmxP70wx668XaGYwCrQ==
+
+- ssh DNS keys
+
+
+Bridging the gap
+Image courtesy by Wouter Horré
+
+
+Patrick Debois
+Independent IT-consultant
+Bridging the gap between projects and operations
+by using Agile techniques both in development,project management and system administration.
+
+availability: January 2013
+Just Enough Developed Infrastructure
+ssh tricks - the usual and beyond
+	SSH is an amazing beast. I nearly use it everyday and I'm amazed every time I learn something new. The following is a list of my tricks in the bag. It starts with the usual
+tricks that you find all over the place, but I hope there will be some new tricks for you too.
+
+What's your best trick? Share it in the comments with the world. Nobody can know enough of ssh!
+The basics:
+Password-less login:
+
+This is usually the first thing start doing when want automation with ssh
+
+#Create a new keypair
+$ ssh-keygen -t dsa
+Generating public/private dsa key pair.
+Enter file in which to save the key (/Users/patrick/.ssh/id_dsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/patrick/.ssh/id_dsa.
+Your public key has been saved in /Users/patrick/.ssh/id_dsa.pub.
+The key fingerprint is:
+87:66:b7:a0:f6:0e:6a:71:2c:5d:ee:5f:17:2a:b7:2f patrick@localhost
+The key's randomart image is:
++--[ DSA 1024]----+
+|                 |
+|                 |
+|                 |
+|        ..       |
+|     o oS o   .  |
+|    o ++.+ . . . |
+|     ++.  o + .  |
+|    .o o.  +Eo   |
+|   ..  .o.. .o.  |
++-----------------+
+$ cat ~/.ssh/id_dsa.pub | ssh user@remotehost "cat - >> ~/.ssh/authorized_keys"
+$ ssh user@remotehost
+
+Install your keys on a remote server:
+
+$ ssh-copy-id -i ~/.ssh/id_dsa.pub user@remotehost
+#Alternative 
+$ cat ~/.ssh/id_dsa.pub | ssh user@remotehost "cat - >> ~/.ssh/authorized_keys"
+
+Passphrase automation:
+
+If you have protected your keys with a passphrase (which you should), then it is annoying to re-enter that all the time. You can avoid that by running your environment inside an
+ssh-agent and using ssh-add to enter the passphrase once.
+
+$ ssh-add ~/.ssh/id_dsa
+Need passphrase for /home/mah/.ssh/id_dsa (you@example.com).
+Enter passphrase:
+$
+
+Pseudo Terminal :
+
+some commands like sudo require a pseudo terminal to be activated
+
+$ ssh -t patrick@remotehost sudo cat /etc/passwd
+
+Avoid lastlog:
+
+Log in without appearing in lastlog/w and who output.
+
+$ ssh -T user@hostname.com
+
+Piping
+
+Example of using piping to backup over the network
+
+$ ufsdump 0uf - /dev/md/rdsk/d33 | ssh r280n "dd obs=32k ibs=32k of=/dev/rmt/0n"
+
+Rsync over ssh
+
+$ rsync -avz -e "ssh -i /home/thisuser/cron/thishost-rsync-key" remoteuser@remotehost:/remote/dir /this/dir/ 
+
+Tunnels and firewall-piercings:
+X-forwarding:
+
+$ ssh -X patrick@remotehost
+Warning: untrusted X11 forwarding setup failed: xauth key data not generated
+Warning: No xauth data; using fake authentication data for X11 forwarding.
+Last login: Fri Aug 27 20:27:40 2010
+
+Port forwarding:
+
+Set up a localforward from the remote machine port 25 to a local port 9025
+
+$ ssh -L 9025:localhost:25 patrick@remotehost
+
+No command:
+
+Sometimes you just want to setup a forward with having a shell
+
+$ ssh -N -L 9025:localhost:25 patrick@remotehost
+
+KeepAlive:
+
+Getting tired of those timeouts by the firewall? Have ssh send a keepalive/
+
+Put the following options in your $HOME/.ssh/ssh_config
+
+    KeepAlive yes
+    ServerAliveInterval 60
+
+Socks Daemon for proxying: (-D)
+
+Sometimes it's interesting to start a socks daemon. You can configure this in your browser to surf as it seems to come from the remote machine.
+
+$ ssh -D 9999 patrick@remotehost
+
+Tunneling over an http proxy:
+
+Corporate firewalls often only allow http to go outside. See corkscrew
+
+ProxyCommand /usr/bin/corkscrew proxy-ip 8080 %h %p ~/.ssh/myauth
+
+Chaining ssh hopping:
+
+Host pc1.example.org pc2.example.org
+ForwardAgent yes
+ProxyCommand ssh -qax bastion.example.org /usr/bin/nc -w 120 %h %p
+
+Netcat mode:
+
+Starting from openssh 5.4: we can have ssh act as netcat. (-W) This connects stdio on the client to a single port forward on the server. This allows, for example, using ssh as a
+ProxyCommand to route connections via intermediate servers.”
+
+$ ssh -p 443 -W remotehost2:23 patrick@remotehost
+Trying remotehost2...
+Connected to remotehost2.
+Escape character is '^]'.
+
+User Name : ^]
+telnet> close
+$
+
+Mounting over ssh:
+
+Sometimes it's nice to mount a remote directory over ssh. Fuse and sshfs are your friend
+
+$ sshfs remote-user@remote.server:/remote/directory /mnt/remote-fs/
+
+http://fuse.sourceforge.net/sshfs.html
+VPN Tunneling:
+
+Did you know that ssh can do layer 2 and 3 VPN tunneling?
+
+Check out ssh -w. Example from manpage:
+
+$ ssh -f -w 0:1 192.168.1.15 true
+$ ifconfig tun0 10.0.50.1 10.0.99.1 netmask 255.255.255.252
+
+SSH http multiplexer:
+
+sslh lets one accept both HTTPS and SSH connections on the same port. It makes it possible to connect to an SSH server on port 443 (e.g. from inside a corporate firewall) while
+still serving HTTPS on that port. http://www.rutschle.net/tech/sslh.shtml
+Speed
+Compression
+
+If you are working on a slow link, compression (-C) and using a simple cipher (-c blowfish) saves you speed
+
+$ ssh -C -c blowfish patrick@remotehost
+
+Multiplexing - ControlMaster:
+
+Another great way to speed up ssh is to re-use the same connection when you connect multiple times to the same host
+
+$ mkdir –p ~/.ssh/connections
+$ chmod 700 ~/.ssh/connections
+
+Add this to your ~/.ssh/config file:
+Host *
+ControlMaster auto
+ControlPath ~/.ssh/connections/%r_%h_%p
+
+Managing keys
+Ignore Hostkeys:
+
+When you're re-installing a machine over and over again, you often want to get rid of the hostfile key verification. This is what you need:
+
+$ ssh user@host -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+
+Check if hostkey exists:
+
+k$ ssh-keygen -F 192.168.2.152
+# Host 192.168.2.152 found: line 31 type RSA
+192.168.2.152 ssh-rsa
+AAAAB3NzaC1yc2EAAAABIwAAAQEAwHH15HpeJo21wyqpe2iFM8/0CtoYnE9DDXfCewws7iMhM+vgp7pjnaC83IgAt7G/x/VDHcbnyuI4odrGSEAE5wm7LNuT6uSfQMbXCayE+uoOIrAVhf41ZnAFQrs/+Mutk5LFEjPPNhuriq5ltBT4UwMlYQMa5z/SzmxV0ZAGXks5GMDz0o89yUwRarRfsGudASEtzUxgnxnOo5STBMZOdQ0GNEVdfJDgfJDAOi34T1FidpCqAtm8akYuB+Qsj3/hDQmIT+GsKYaGNZvz8ZNnPBAc9kWlS6VqXXNreyEeu7AmHDWXjMP3NW1tsibmZ8zeOSZdmEVEiuaYCIvERDq3MQ==
+
+Remove a hostkey:
+
+$ ssh-keygen -R 192.168.2.152
+/Users/patrick/.ssh/known_hosts updated.
+Original contents retained as /Users/patrick/.ssh/known_hosts.old
+
+Get hostkey of remote server:
+
+$ ssh-keyscan remotehost
+# remotehost SSH-2.0-OpenSSH_5.2
+remotehost ssh-rsa
+AAAAB3NzaC1yc2EAAAABIwAAAQEAyREFGMBB6Qi1uoEYIk4GlqLXdS26moAxmV69UX0icQjp0Rw53xZ/2L0ZQwhsUiFV1vq4QfZNeUO142IzBgSspgsJZ7wJq213tsE7WIJGIBqvWnhU3vJuL9wgYT8f6BAvLoEfapFhLy24TDmn2DXldJAYgo8MnUbRrJlvnhQZPpd5cDWCXkzPGQE8r7REZsAWbWNlVOFRvZioPoGCGYMtsDWSBelBISGkedoNpTSpRkMmBAnsHBfvIzDPoTDYL4PZR0jJ8MaJrDhRtD4caRw4HVyhzSa3/FCpcm09PyBRabH/CyxNSOZjLc2+N9Ph9AKeTNgvmxP70wx668XaGYwCrQ==
+
+- SSH DNS Keys
+
+Instead of using your local hostfile, you can store your keys in DNS. Have a look at http://freshmeat.net/projects/sshfp/ to do the job.
+Then you can specify ssh needs to:
+
+$ ssh localhost -o "VerifyHostKeyDNS=yes"
+yes authenticity of host 'localhost (127.0.0.1)' can't be established.
+RSA key fingerprint is 2d:d3:29:bd:4d:e2:7d:a3:b0:15:96:26:d4:60:13:34.
+Matching host key fingerprint found in DNS.
+Are you sure you want to continue connecting (yes/no)?
+
+- SSH Escape Sequences:
+
+It often happens to me that I'm working into an ssh shell that used forwarding. I always thought there was no way to change the forwarding rules and that I had to logout. It
+seems not! SSh has an internal shell activated by a tilde. Seeing is believing!
+
+Escape sequences are only recognized after a newline and are initiated with a tilde (~) unless you modify it with the -e flag.
+
+Hit ENTER ~? on a running ssh session to see a list of escapes:
+
+~. – terminate connection
+~B – send a BREAK to the remote system
+~C – open a command line
+~R – Request rekey (SSH protocol 2 only)
+~^Z – suspend ssh
+~# – list forwarded connections
+~& – background ssh (when waiting for connections to terminate)
+~? – this message
+~~ – send the escape character by typing it twice
+(Note that escapes are only recognized immediately after newline.)
+~. and ~# are particularly useful.
+
+- Visualiser la clé:
+
+Every host key has it's own visual fingerprint
+
+$ ssh -o VisualHostKey=yes thierry@localhost
+Host key fingerprint is 9f:a0:03:c1:63:8b:b8:c6:d6:83:cb:22:33:cb:83:cc
++--[ RSA 2048]----+
+|                 |
+|   .             |
+|    =            |
+| . o +           |
+|. . o   S        |
+|..o  . . o .     |
+|== o  o   o      |
+|@E. .  .         |
+|+B.              |
++-----------------+
+
+

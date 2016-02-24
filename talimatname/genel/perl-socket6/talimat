@@ -1,0 +1,21 @@
+# Description: A getaddrinfo/getnameinfo support module
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
+name=perl-socket6
+version=0.25
+release=2
+
+source=(http://search.cpan.org/CPAN/authors/id/U/UM/UMEMOTO/Socket6-$version.tar.gz)
+
+build() {
+cd Socket6-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

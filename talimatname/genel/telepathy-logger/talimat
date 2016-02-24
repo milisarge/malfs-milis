@@ -1,0 +1,20 @@
+# Description: Telepathy framework logging daemon
+# URL: http://telepathy.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: intltool sqlite telepathy-glib gobject-introspection 
+
+name=telepathy-logger
+version=0.8.0
+release=1
+
+source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/${name%-*} \
+--enable-vala-bindings \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

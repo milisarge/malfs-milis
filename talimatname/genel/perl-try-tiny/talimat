@@ -1,0 +1,21 @@
+# Description: Minimal try/catch with proper localization of 
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl 
+run=( perl )
+name=perl-try-tiny
+version=0.22
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Try-Tiny-$version.tar.gz)
+
+build() {
+cd Try-Tiny-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+        -name '*.bs' -or \
+        -name .packlist -or \
+        -name perllocal.pod | xargs rm
+}

@@ -1,0 +1,17 @@
+# Description: Library for learning linear classifiers for large scale applications.
+# URL: http://www.csie.ntu.edu.tw/~cjlin/liblinear/
+# Packager: tnut at nutyx dot org
+
+name=liblinear
+version=2.1
+release=1
+
+source=(http://www.csie.ntu.edu.tw/~cjlin/liblinear/oldfiles/$name-$version.tar.gz)
+build() {
+cd $name-$version
+make lib
+mkdir -p $PKG/usr/{lib,include}
+install -vm644 linear.h $PKG/usr/include
+install -vm755 liblinear.so.3 $PKG/usr/lib
+ln -sfv liblinear.so.3 $PKG/usr/lib/liblinear.so
+}

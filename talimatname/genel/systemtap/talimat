@@ -1,0 +1,24 @@
+# Description: Infrastructure to simplify the gathering of information about the running Linux system.
+# URL: http://sourceware.org/systemtap/
+# Packager: berlius at nutyx dot com
+# Depends on: elfutils 
+
+name=systemtap
+version=2.9
+release=1
+source=(http://sourceware.org/$name/ftp/releases/$name-$version.tar.gz)
+
+build() {
+
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man \
+		--libexecdir=/usr/lib \
+		--disable-rpath \
+
+	make
+	make DESTDIR=$PKG install
+
+}

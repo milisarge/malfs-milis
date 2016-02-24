@@ -1,0 +1,26 @@
+--- asterisk-13.4.0/menuselect-tree.orig	2015-07-17 10:13:35.573458228 +0900
++++ asterisk-13.4.0/menuselect-tree	2015-07-17 10:15:02.369786388 +0900
+@@ -498,6 +498,7 @@
+ </member>
+ <member name="codec_opus" displayname="Opus Coder/Decoder" remove_on_change="codecs/codec_opus.o codecs/codec_opus.so">
+ 	 <depend>opus</depend>
++	 <defaultenabled>yes</defaultenabled>
+ 	 <support_level>core</support_level>
+ </member>
+ <member name="codec_resample" displayname="SLIN Resampling Codec" remove_on_change="codecs/codec_resample.o codecs/codec_resample.so">
+@@ -563,6 +564,7 @@
+ </member>
+ <member name="format_vp8" displayname="Raw VP8 data" remove_on_change="formats/format_vp8.o formats/format_vp8.so">
+ 	 <support_level>core</support_level>
++	 <defaultenabled>yes</defaultenabled>
+ </member>
+ <member name="format_wav" displayname="Microsoft WAV/WAV16 format (8kHz/16kHz Signed Linear)" remove_on_change="formats/format_wav.o formats/format_wav.so">
+ 	<support_level>core</support_level>
+@@ -961,6 +963,7 @@
+ </member>
+ <member name="res_format_attr_opus" displayname="Opus Format Attribute Module" remove_on_change="res/res_format_attr_opus.o res/res_format_attr_opus.so">
+ 	<support_level>core</support_level>
++	<defaultenabled>yes</defaultenabled>
+ </member>
+ <member name="res_format_attr_silk" displayname="SILK Format Attribute Module" remove_on_change="res/res_format_attr_silk.o res/res_format_attr_silk.so">
+ 	<support_level>core</support_level>

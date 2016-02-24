@@ -1,0 +1,52 @@
+# Description: A set of programs called a Java Development Kit (JDK).
+# URL: http://openjdk.java.net/
+# Packager: pierre at nutyx dot org
+
+
+name=openjdk
+version=8u60
+release=1
+_version=1.8.0.60
+source=(http://anduin.linuxfromscratch.org/files/BLFS/OpenJDK-${_version}/OpenJDK-${_version}-`uname -m`-bin.tar.xz )
+	
+build() {
+cd OpenJDK*
+install -vdm755 $PKG/opt/OpenJDK-$version-bin
+mv -v * $PKG/opt/OpenJDK-$version-bin 
+chown -R root:root $PKG/opt/OpenJDK-$version-bin
+mkdir -p $PKG/etc/profile.d
+cat > $PKG/etc/profile.d/openjdk.sh << "EOF"
+# Begin /etc/profile.d/openjdk.sh
+
+# Set JAVA_HOME directory
+JAVA_HOME=/opt/jdk
+
+# Adjust PATH
+pathappend $JAVA_HOME/bin
+
+# Add to MANPATH
+pathappend $JAVA_HOME/man MANPATH
+
+# Auto Java CLASSPATH
+# Copy jar files to, or create symlinks in this directory
+
+AUTO_CLASSPATH_DIR=/usr/share/java
+
+pathprepend . CLASSPATH
+
+for dir in `find ${AUTO_CLASSPATH_DIR} -type d 2>/dev/null`; do
+    pathappend $dir CLASSPATH
+done
+
+for jar in `find ${AUTO_CLASSPATH_DIR} -name "*.jar" 2>/dev/null`; do
+    pathappend $jar CLASSPATH
+done
+
+export JAVA_HOME
+unset AUTO_CLASSPATH_DIR dir jar
+
+# End /etc/profile.d/openjdk.sh
+EOF
+
+ln -sv OpenJDK-$version-bin $PKG/opt/jdk
+}

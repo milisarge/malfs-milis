@@ -1,0 +1,18 @@
+# Description: Client for the proprietary Microsoft Point-to-Point Tunneling Protocol, PPTP.
+# URL: http://pptpclient.sourceforge.net/
+# Packager: guy_
+# Depends on: ppp 
+
+name=pptp
+version=1.7.2
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/pptpclient/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	sed -i 's|BINDIR=$(DESTDIR)/usr|BINDIR=$(DESTDIR)|' Makefile
+	sed -i 's|/bin/ip|/sbin/ip|g' routing.c
+	make
+	make DESTDIR=$PKG install
+}

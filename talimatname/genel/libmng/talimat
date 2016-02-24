@@ -1,0 +1,23 @@
+# Description: Used by programs wanting to read and write of files Multiple-image Network Graphics (MNG)
+# URL: http://sourceforge.net/projects/libmng/
+# Packager: tnut at nutyx dot org
+# Depends on: libjpeg-turbo lcms 
+name=libmng
+version=2.0.3
+release=1
+
+source=( http://downloads.sourceforge.net/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+mkdir -p $PKG/usr/{lib,include,share/man/man{3,5}}
+make prefix=$PKG/usr install
+mkdir -p $PKG/usr/share/man/man{3,5}
+install -v -m644 doc/man/*.3 $PKG/usr/share/man/man3
+install -v -m644 doc/man/*.5 $PKG/usr/share/man/man5
+install -v -m755 -d $PKG/usr/share/doc/libmng-$version
+install -v -m644 doc/*.txt \
+$PKG/usr/share/doc/libmng-$version
+}  

@@ -1,0 +1,22 @@
+# Description: Openbox is a highly configurable window manager.
+# URL: http://openbox.org/wiki/Main_Page
+# Packager: tnut at nutyx dot org
+# Depends on: xorg pcre pango freetype libpng xorg-fontconfig harfbuzz dbus imlib2 librsvg startup-notification xcb-util libxcb libxml2
+run=( xorg startup-notification dbus )
+name=openbox
+version=3.6.1
+release=1
+
+source=(http://openbox.org/dist/openbox/$name-$version.tar.gz \
+        openbox.xinitrc)
+
+build()
+{
+   cd $name-$version
+   ./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--docdir=/usr/share/doc/$name-$version
+   make
+   make DESTDIR=$PKG install
+   install -D -m644 ../openbox.xinitrc $PKG/etc/X11/dm/openbox.xinitrc
+} 

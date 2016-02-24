@@ -1,0 +1,32 @@
+# Description: copies files to and from archives in several formats.
+# URL: http://downloads.sourceforge.net/heirloom
+# Packager: berlius at nutyx dot com
+# Depends on:
+
+name=pax
+version=070715	
+release=1
+source=(http://downloads.sourceforge.net/heirloom/heirloom-070715.tar.bz2)
+ 
+build() {
+
+cd heirloom-$version
+
+sed -i build/mk.config                   \
+    -e '/LIBZ/s@ -Wl[^ ]*@@g'            \
+    -e '/LIBBZ2/{s@^#@@;s@ -Wl[^ ]*@@g}' \
+    -e '/BZLIB/s@0@1@'                   
+	
+make makefiles                           
+make -C libcommon                        
+make -C libuxre                          
+make -C cpio
+
+install -v -dm 755 $PKG/usr/bin	
+install -v -dm 755 $PKG/usr/share/man/man1	
+
+install -v -m755 cpio/pax_su3 $PKG/usr/bin/pax 
+install -v -m644 cpio/pax.1 $PKG/usr/share/man/man1
+
+	
+}

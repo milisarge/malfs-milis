@@ -1,0 +1,25 @@
+# Description:	  The Fluxbox package contains a window manager. 
+# URL:		    http://downloads.sourceforge.net/fluxbox/fluxbox-1.3.7.tar.xz
+# Packager:		berlius at nutyx dot com
+# Depends on:	xorg dbus fribidi
+
+name=fluxbox
+version=1.3.7	
+release=1
+source=(http://downloads.sourceforge.net/fluxbox/$name-$version.tar.xz
+		fluxbox.desktop)
+ 
+build() {
+
+cd $name-$version
+	
+./configure --prefix=/usr 
+	
+make
+
+make DESTDIR=$PKG install
+	
+install -v -m755 -d $PKG/usr/share/xsessions
+cp -v $SRC/fluxbox.desktop $PKG/usr/share/xsessions
+
+}

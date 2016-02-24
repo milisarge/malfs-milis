@@ -1,0 +1,38 @@
+# URL: http://ftp.de.debian.org/debian/pool/main/a/at
+# Packager: berlius at nutyx dot com
+# Depends on: sendmail pam
+description="Delayed job execution and batch processing, required for Linux Standards Base conformance"
+name=at
+version=3.1.16	
+release=1
+source=(http://ftp.de.debian.org/debian/pool/main/a/at/at_$version.orig.tar.gz)
+ 
+build() {
+
+cd $name-$version
+	
+source  /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2 
+
+install -v -m755 -d $PKG/root/at/atspool
+install -v -m755 -d $PKG/root/at/atjobs
+
+sed -i '/docdir/s/=.*/= @docdir@/' Makefile.in
+	
+./configure --with-daemon_username=atd        \
+            --with-daemon_groupname=atd       \
+            --with-jobdir=/root/at/atjobs \
+            --with-atspool=/root/at/atspool \
+            SENDMAIL=/usr/sbin/sendmail       
+make -j1
+
+make DESTDIR=$PKG install \
+        docdir=$PKG/usr/share/doc/at-3.1.16 \
+      atdocdir=$PKG/usr/share/doc/at-3.1.16 
+	
+
+cd $scripts-$scriptsversion
+make DESTDIR=$PKG install-atd
+ 	
+}

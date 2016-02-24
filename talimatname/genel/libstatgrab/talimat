@@ -1,0 +1,22 @@
+# Description: 	Cross platform access to statistics about the system on which it's run.
+# URL:         	http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab
+# Packager:		berlius at nutyx dot com
+# Depends on:  	
+
+name=libstatgrab
+version=0.91
+release=1
+
+source=(http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/$name-$version.tar.gz)
+
+build () {
+
+    cd $name-$version
+    
+ 	./configure --prefix=/usr  \
+ 	        --disable-static \
+            --docdir=/usr/share/doc/libstatgrab-0.91                
+    make
+	make DESTDIR=$PKG install
+
+}

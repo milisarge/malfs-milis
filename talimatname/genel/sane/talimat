@@ -1,0 +1,34 @@
+# Description: Scanner Access Now Easy
+# URL: http://www.sane-project.org/
+# Packager: pierre at nutyx dot org
+# Depends on: libusb-compat libjpeg-turbo libtiff gtk2 libexif cups
+
+name=sane
+version=1.0.24
+release=1
+
+source=(http://fossies.org/linux/misc//sane-backends-$version.tar.gz)
+
+build() {
+	cd $name-backends-$version
+
+	./configure --prefix=/usr \
+		--localstatedir=/var \
+		--sysconfdir=/etc \
+		--with-docdir=/usr/share/doc/sane-backend-$version \
+		--enable-libusb_1_0 \
+		--with-group=scanner
+	make
+	make DESTDIR=$PKG install
+
+	install -d $PKG/etc/udev/rules.d
+	install -m 644 -v tools/udev/libsane.rules \
+		$PKG/etc/udev/rules.d/65-scanner.rules
+
+	install -v -m644 doc/sane.png doc/sane-logo.png \
+		$PKG/usr/share/sane
+
+	mkdir -p $PKG/var/lock/sane
+	chmod 775 $PKG/var/lock/sane
+	chgrp scanner $PKG/var/lock/sane
+}

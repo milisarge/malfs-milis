@@ -1,0 +1,25 @@
+name=libarchive
+version=3.1.2
+source=(http://www.libarchive.org/downloads/$name-$version.tar.gz
+	http://downloads.nutyx.org/files/patchs/$name/$name-$version-mtree-fix-line-filename-length-calculation-01.patch
+	http://downloads.nutyx.org/files/patchs/$name/$name-$version-limit-write-requests-to-at-most-INT_MAX-01.patch
+	http://downloads.nutyx.org/files/patchs/$name/$name-$version-acl-01.patch
+	http://downloads.nutyx.org/files/patchs/$name/$name-$version-sparce-mtree-01.patch
+	)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../$name-$version-mtree-fix-line-filename-length-calculation-01.patch
+patch -Np1 -i ../$name-$version-limit-write-requests-to-at-most-INT_MAX-01.patch
+patch -Np1 -i ../$name-$version-acl-01.patch
+patch -Np1 -i ../$name-$version-sparce-mtree-01.patch
+
+./configure --prefix=/tools \
+	--without-xml2 --without-expat \
+	--without-openssl --disable-acl \
+	-disable-bsdcpio --without-zlib \
+	--disable-xattr \
+	--without-iconv --without-bz2lib
+make
+make install
+}

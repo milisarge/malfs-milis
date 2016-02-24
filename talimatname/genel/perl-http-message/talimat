@@ -1,0 +1,27 @@
+# Description: HTTP style messages
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-encode-locale perl-html-parser perl-http-date perl-lwp-mediatypes perl-uri 
+run=( perl )
+name=perl-http-message
+version=6.06
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Message-$version.tar.gz)
+
+build() {
+( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""  \
+      PERL_AUTOINSTALL=--skipdeps           \
+      PERL_MM_OPT="INSTALLDIRS=vendor"      \
+      PERL_MB_OPT="--installdirs vendor"    \
+      MODULEBUILDRC=/dev/null)
+
+cd HTTP-Message-$version
+perl Makefile.PL
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

@@ -1,0 +1,30 @@
+# Description: Graphite2 is a rendering engine for graphite fonts
+# URL: http://projects.palaso.org/projects/graphitedev
+# Packager: pierre at nutyx dot org
+# Depends on: cmake freetype python harfbuzz 
+
+name=graphite2
+version=1.3.3
+release=1
+
+source=( http://downloads.sourceforge.net/silgraphite/graphite2-$version.tgz)
+
+build() {
+cd graphite2-$version
+mkdir build
+cd build
+
+cmake -G "Unix Makefiles" \
+-DCMAKE_INSTALL_PREFIX=/usr \
+-DCMAKE_BUILD_TYPE=Release  \
+-Wno-dev ..
+make
+make docs
+make DESTDIR=$PKG install
+
+install -d -m755 $PKG/usr/share/doc/$name-$version
+# cp -r -f doc/doxygen/{html,latex/refman.pdf} \
+# $PKG/usr/share/doc/$name-$version
+cp -r -f ../doc/* \
+$PKG/usr/share/doc/$name-$version
+}

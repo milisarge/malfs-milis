@@ -1,0 +1,31 @@
+# Description : Library to allow applications to export a menu into the Unity Menu bar (GTK+ 2 library)
+# URL : https://launchpad.net/libappindicator
+# Packager : pierre at nutyx dot org
+# Depends on : gtk2 glib gnome-doc-utils libindicator-gtk2 libdbusmenu-gtk2 libdbusmenu-glib gobject-introspection vala python-gtk python-gobject2 dbus-glib
+
+run=(libindicator-gtk2 libdbusmenu-gtk2 libdbusmenu-glib)
+
+name=libappindicator-gtk2
+version=12.10.0
+release=1
+
+source=(http://launchpad.net/libappindicator/${version%.*}/$version/+download/libappindicator-$version.tar.gz)
+
+build() {
+
+  export CFLAGS+=" -Wno-error=deprecated-declarations"
+  cd libappindicator-$version
+  sed -i 's|/cli/|/mono/|' bindings/mono/{appindicator-sharp-0.1.pc.in,Makefile.in}
+
+  autoreconf -vfi
+
+  ./configure --prefix=/usr        \
+              --sysconfdir=/etc    \
+              --localstatedir=/var \
+              --disable-static     \
+              --disable-{gtk-doc-html,mono-test,static,tests} \
+              --with-gtk=2
+  make -j1
+  make -j1 DESTDIR=$PKG install
+}
+

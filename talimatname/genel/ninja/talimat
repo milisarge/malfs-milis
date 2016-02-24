@@ -1,0 +1,28 @@
+# Description: Cross-platform IDE focused on Python application development
+# URL: http://martine.github.io/ninja/
+# Packager: pierre at nutyx dot org
+# Depends on: git re2c python 
+
+name=ninja
+version=1.4.0
+release=1
+
+source=()
+	
+build() {
+	git clone git://github.com/martine/ninja.git
+	cd $name
+	git checkout release
+	python bootstrap.py
+	if [ -x /usr/bin/emacs ] ; then
+           emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
+    	fi
+
+	install -m755 -D ninja $PKG/usr/bin/ninja
+	install -m644 -D misc/bash-completion $PKG/usr/share/bash-completion/completions/ninja
+	install -m644 -D misc/ninja-mode.el $PKG/usr/share/emacs/site-lisp/ninja-mode.el
+    	if [ -x /usr/bin/emacs ] ; then
+        	install -m644 -D misc/ninja-mode.elc $PKG/usr/share/emacs/site-lisp/ninja-mode.elc
+    	fi
+}
+

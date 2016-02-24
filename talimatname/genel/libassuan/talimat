@@ -1,0 +1,19 @@
+# Description: Contains an IPC library used by some of the other GnuPG related packages
+# URL: http://www.gnupg.org/related_software/libassuan/
+# Packager: pierre at nutyx dot org
+# Depends on: libgpg-error 
+
+name=libassuan
+version=2.4.2
+release=1
+
+source=( ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+}

@@ -1,0 +1,26 @@
+# Description: IceWM is a window manager with the goals of speed, simplicity, and not getting in the user's way. 
+# URL: http://downloads.sourceforge.net/icewm/icewm-1.3.8.tar.gz
+# Packager: berlius at nutyx dot com
+# Depends on: xorg gdk-pixbuf
+
+description="IceWM is a window manager with the goals of speed, simplicity"
+name=icewm
+version=1.3.8	
+release=1
+source=(http://downloads.sourceforge.net/icewm/$name-$version.tar.gz)
+ 
+build() {
+
+cd $name-$version
+
+sed -i '/^LIBS/s/\(.*\)/\1 -lfontconfig/' src/Makefile.in &&
+./configure --prefix=/usr 
+	
+make
+
+make DESTDIR=$PKG install         
+make DESTDIR=$PKG install-docs    
+make DESTDIR=$PKG install-man     
+make DESTDIR=$PKG install-desktop
+	
+}

@@ -1,0 +1,17 @@
+case $1 in
+start)
+	/usr/bin/freshclam --quiet --daemon --checks=1 --daemon-notify \
+		--log=/var/log/clamav/freshclam.log
+	;;
+stop)
+	killall -q /usr/bin/freshclam
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "Usage: $0 [start|stop|restart]"
+	;;
+esac

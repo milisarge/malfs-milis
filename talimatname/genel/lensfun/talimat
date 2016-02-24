@@ -1,0 +1,17 @@
+# Description: Database of photographic lenses and a library that allows advanced access to the database
+# URL: http://lensfun.berlios.de
+# Packager: pierre at nutyx dot org
+# Depends on: cmake glib libpng doxygen 
+name=lensfun
+version=0.3.1
+release=1
+
+source=(http://sourceforge.net/projects/$name/files/$version/$name-$version.tar.gz
+	)
+build(){
+cd $name-$version
+cd build
+cmake .. -DLENSFUN_INSTALL_PREFIX=/usr
+make all
+make DESTDIR=$PKG install
+} 

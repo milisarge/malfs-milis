@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=jwm
+Comment=Launch a jwm session
+Exec=jwm
+Type=XSession

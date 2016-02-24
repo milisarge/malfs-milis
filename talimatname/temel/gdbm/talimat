@@ -1,0 +1,25 @@
+# Description: The GDBM package contains the GNU Database Manager.
+# URL: http://www.gnu.org/software/gdbm/gdbm.html
+# Maintainers: Philip A. Nelson  phil at cs dot wwu dot edu,Jason Downs downsj at downsj dot com,Sergey Poznyakoff gray at gnu dot org dot ua
+# Packagers: pierre at nutyx dot org,tnut at nutyx dot org
+name=gdbm
+version=1.11
+release=1
+
+source=(http://ftp.gnu.org/gnu/gdbm/gdbm-$version.tar.gz)
+
+build() {
+cd gdbm-$version
+./configure --prefix=/usr --libdir=/lib \
+--bindir=/bin --enable-libgdbm-compat
+
+make
+
+make check
+
+make BINOWN=root BINGRP=root prefix=$PKG/usr \
+libdir=$PKG/lib bindir=$PKG/bin install
+
+rm -rf $PKG/usr/share/info/dir
+
+}

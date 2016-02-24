@@ -1,0 +1,11 @@
+Il y a deux methodes pour synchroniser l'heure. La première est de lancer ntpd de façon continue, et laisser le démon se synchroniser de façon graduelle. 
+Installez alors le service ntpd
+
+ntpd.service
+
+La deuxième methode consiste à lancer ntpd périodiquement à l'aide de (f)cron. 
+
+La commande à insérer ds le crontab de root est:
+
+ntpd -q
+

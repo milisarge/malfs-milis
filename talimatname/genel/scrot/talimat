@@ -1,0 +1,20 @@
+# Description: A simple command-line screenshot utility for X
+# URL: http://scrot.sourcearchive.com/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: giblib
+
+name=scrot
+version=0.8.17
+release=1
+
+source=("http://scrot.sourcearchive.com/downloads/0.8-17/scrot_0.8.orig.tar.gz")
+        
+build() {
+  cd $SRC/$name-0.8
+  ./configure --prefix=/usr \
+              --mandir=/usr/share/man
+  make
+
+  make DESTDIR=$PKG docsdir=/usr/share/doc/scrot install
+}

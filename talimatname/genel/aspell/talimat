@@ -1,0 +1,22 @@
+# Description: An interactive spell checking program and the Aspell libraries.
+# URL: http://aspell.net
+# Packager: tnut at nutyx dot org
+# Depends on: 
+name=aspell
+version=0.60.6.1
+release=1
+
+source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+	--mandir=/usr/share/man \
+	--infodir=/usr/share/info
+make
+make DESTDIR=$PKG install
+install -v -m 755 scripts/ispell $PKG/usr/bin/
+install -v -m 755 scripts/spell $PKG/usr/bin/
+rm $PKG/usr/share/info/dir
+}
+  

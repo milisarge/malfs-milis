@@ -1,0 +1,45 @@
+il est très important de procéder comme ci-dessous
+pour avoir un serveur mysql sécurisé.
+Installer le serveur mysql en procédant comme ceci
+
+*****************************************************************
+*       LES COMMANDES CI-DESSOUS DOIVENT ETRE RETAPEES TEL QUEL *
+*       NE PAS UTILISER LE COPIER / COLLER                      *
+*****************************************************************
+
+1. Si le service mysql est en service, on l'arrête
+
+/etc/rc.d/init.d/mysql stop
+
+2. On lance le service en mode safe pour spécifier
+   le nouveau mot de passe de l'administrateur mysql
+   Noter que le & est très important pour avoir la main en console:
+
+mysqld_safe --user=mysql 2>&1 >/dev/null &
+
+3. On peut maintenant spécifier un nouveau mot de passe
+   pour le compte administrateur de mysql (root):
+
+mysqladmin -u root password <nouveau-mot-de-passe>
+
+4. La configuration du serveur est terminée.
+   Il faut arrêter le service mysql en mode safe,
+   le mot de passe entré en point 3 sera demandé:
+
+mysqladmin -p shutdown
+
+
+5. Votre serveur mysql est maintenant sécurisé, vous pouvez démarrer le service
+ de façon définitive, si tout s'est déroulé correctement, il ne doit y avoir
+ AUCUNE erreur. Au prochain lancement de la machine, mysql se lancera correctement,
+ ne perdez pas le mot de passe administrateur:
+
+/etc/rc.d/init.d/mysql start
+
+Veuillez également consulter les pages concernant mysql
+
+version anglaise:
+http://www.linuxfromscratch.org/blfs/view/svn/server/mysql.html
+
+version française:
+http://lfs.traduc.org/view/blfs-svn/server/mysql.html

@@ -1,0 +1,1224 @@
+#!/bin/bash
+VERSION="1.0"
+ANADIZIN="`pwd`"
+TALIMATNAMELER="talimatname"
+DERLEME_SIRASI="derleme.sira"
+PAKETCI="mpsd"
+TALIMATNAME=""
+LOG_DIZIN="log"
+AYARLAR="ayarlar"
+PAKETCI_AYAR="mpsd.conf"
+INSTALL_COMMAND="`basename $0`"
+readonly CODE_NAME="malfs"
+
+birinci_ayarlar(){
+		root_kontrol
+		lfs_kontrol
+		#lfs dizinin olusturulması
+		mkdir -p /mnt/lfs
+		#lfs kullanici-grup silme sıfırlama
+		userdel lfs
+		rm -r /home/lfs
+		groupdel lfs
+		#lfs kullanici-grup olusturma
+		groupadd lfs
+		useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+		passwd lfs
+		#lfs icin gerekli dizin ve izinlerinin olusturulması
+		mkdir -p /home/lfs
+		mkdir -vp $LFS/{sources,tools}
+		ln -svf $LFS/tools /
+		ln -svf $LFS/sources /
+		chown -v lfs $LFS/{tools,sources}
+		chmod -v a+wt $LFS/sources
+		chown -v lfs $LFS
+		cp -a $ANADIZIN/ayarlar /home/lfs/
+		cp -a $ANADIZIN/bin /home/lfs/
+		cp -a $ANADIZIN/talimatname /home/lfs/
+		cp -a $ANADIZIN/lfs-mekanizma /home/lfs/
+		chown -R lfs:lfs /home/lfs/
+		cp ayarlar/.bashrc /home/lfs/
+		cp ayarlar/.bash_profile /home/lfs/
+			
+		su - lfs
+}
+
+paket_kur(){
+	$PAKETCI -d -cf $ANADIZIN/$AYARLAR/$PAKETCI_AYAR -i || exit 1
+	for i in *mps*
+	do
+	 echo "=======> '$i' basarili sekilde kuruldu." >> $ANADIZIN/$LOG_DIZIN/$talimat.log
+	done
+}
+
+talimatname_derle(){
+	#dongu icerisinde talimatların derlenmesi
+	if [ "$TALIMATNAME" == "onsistem" ]; then
+		PAKETCI_AYAR="onmpsd.conf"
+	fi
+	if [ ! -d $ANADIZIN/$LOG_DIZIN ]; then
+		mkdir -p $ANADIZIN/$LOG_DIZIN
+	fi
+	for dizin in `cat $ANADIZIN/$TALIMATNAMELER/$TALIMATNAME/$DERLEME_SIRASI`
+	do
+		talimat=`basename $dizin`
+		derleme="evet"
+		if [ -f $ANADIZIN/$LOG_DIZIN/$talimat.log ]; then
+		  derleme=`grep -q "basarili" $ANADIZIN/$LOG_DIZIN/$talimat.log; [ $? -eq 0 ] && echo "hayir" || echo "evet"`
+		fi
+		if [ "$derleme" == "evet" ]; then
+			cd $ANADIZIN/$TALIMATNAMELER/$TALIMATNAME/$dizin
+			touch $ANADIZIN/$LOG_DIZIN/$talimat.log
+			$PAKETCI -d -cf $ANADIZIN/$AYARLAR/$PAKETCI_AYAR -kw 2>&1|tee $ANADIZIN/$LOG_DIZIN/$talimat.log || exit 1
+			
+			case $talimat in
+			  gcc)
+				rm -fv /usr/lib{,64}/libgcc_s.so{,.1}
+				rm -fv /usr/lib{,64}/libstdc++.so{,.6}
+				rm -fv /usr/lib{,64}/libstdc++.la
+				;;
+			   bash)
+				rm /bin/bash
+				rm /bin/sh
+				echo "bash chroot dısına cıkılıp elle kurulmalıdır."
+				echo "=======> '$i' basarili sekilde kuruldu." >> $ANADIZIN/$LOG_DIZIN/$talimat.log
+				exit 1
+				;;
+			  coreutils)
+				rm -f /usr/bin/env
+				for i in cat echo pwd stty
+				do
+					rm -f /bin/$i
+				done
+				;;
+			  perl)
+				rm -f /usr/bin/perl
+				;;
+			esac
+			if [ "$TALIMATNAME" != "onsistem" ] && [ "$talimat" != "bash" ]; then
+			paket_kur
+			fi
+		fi
+		if ( grep "^=======>" $ANADIZIN/$LOG_DIZIN/$talimat.log| tail -1 |grep "ERROR"  > /dev/null);then
+			exit 1
+		fi
+		cd -
+	done
+}
+
+ikinci_ayarlar(){
+	root_kontrol
+	lfs_kontrol
+	unmount_islemi
+	mv /mnt/sources_depo /mnt/lfs/sources 
+	chown -R root:root $LFS
+	install -dv -m0750  $LFS/root
+	rm -r $LFS/root/bin
+	rm -r $LFS/root/$TALIMATNAMELER
+	rm -r $LFS/root/$LOG_DIZIN
+	cp -a $ANADIZIN/bin $LFS/root/
+	cp -a $TALIMATNAMELER $LFS/root/
+	cp -a $AYARLAR $LFS/root/
+	cp -a $ANADIZIN/lfs-mekanizma $LFS/root/
+	cp -a $ANADIZIN/rootfs/* $LFS/
+	gerekli_dizinler
+	lokalizasyon
+	fstab_olustur
+	passwd_olustur
+	grup_olustur
+	bash_profil_olustur
+	bashrc_olustur
+	dmrc_olustur
+	generate_hosts
+	generate_inputrc
+	generate_shells
+	generate_dircolors_sh
+	generate_extrapaths_sh
+	generate_readline_sh
+	generate_umask_sh
+	generate_profile
+	generate_hosts
+	generate_inputrc
+	generate_modules
+	generate_createfiles
+	generate_mouse
+	generate_udev_retry
+	generate_rc_site
+	generate_etc_bashrc
+	generate_blfs_bootscripts
+	generate_milis_version
+	cp $ANADIZIN/ayarlar/mpsd.conf $LFS/etc/
+	cp $ANADIZIN/ayarlar/onmpsd.conf $LFS/etc/
+	cp $ANADIZIN/ayarlar/dokunulmaz $LFS/etc/
+	cp $ANADIZIN/ayarlar/ld.so.conf $LFS/tools/etc/
+}
+
+generate_milis_version() {
+local FILE
+FILE="milis-version"
+[ -f ${LFS}/var/lib/pkg/$FILE ] && return
+[ ! -d ${LFS}/var/lib/pkg ] && mkdir -pv ${LFS}/var/lib/pkg
+echo "name ${CODE_NAME}
+version $VERSION" > ${LFS}/var/lib/pkg/$FILE
+}
+
+generate_blfs_bootscripts() {
+[ -f ${LFS}/etc/${LFS}/etc/blfs-bootscripts ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+echo "scripts=blfs-bootscripts
+scriptsversion=20150924" > ${LFS}/etc/blfs-bootscripts
+}
+generate_etc_bashrc() {
+local FILE
+FILE="bashrc"
+[ -f ${LFS}/etc/$FILE ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${LFS}/etc/$FILE
+  return
+fi
+cat > ${LFS}/etc/$FILE << "EOF"
+# Begin /etc/bashrc
+# Written for Beyond Linux From Scratch
+# by James Robertson <jameswrobertson@earthlink.net>
+# updated by Bruce Dubbs <bdubbs@linuxfromscratch.org>
+
+# System wide aliases and functions.
+
+# System wide environment variables and startup programs should go into
+# /etc/profile.  Personal environment variables and startup programs
+# should go into ~/.bash_profile.  Personal aliases and functions should
+# go into ~/.bashrc
+
+# Provides a colored /bin/ls command.  Used in conjunction with code in
+# /etc/profile.
+
+alias ls='ls --color=auto'
+
+# Provides prompt for non-login shells, specifically shells started
+# in the X environment. [Review the LFS archive thread titled
+# PS1 Environment Variable for a great case study behind this script
+# addendum.]
+
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+WHITE="\[\e[1;37m\]"
+INFOMACHINE="`date +%H:%M` `uname -m` `uname -r` `whoami`@`uname -n`"
+prompt_command() {
+# Sauvegarde de la pos courante
+tput sc
+# Calcul de la largeur
+let backwash=$(tput cols)-$(echo $INFOMACHINE | wc -m)-2
+# Pos des curseurs à la position Y=0, X=longueur calculée
+tput cup 0 ${backwash}
+# Spécifie la couleur et la casse de la police
+tput setaf 4; tput bold
+# Affiche le chemin entre crochets
+echo -n "["
+# Specifie la couleur du chemin
+tput setaf 6
+# Affiche le chemin complet
+echo -n "$INFOMACHINE"
+tput setaf 4; tput bold
+# Affiche le crochet fermé
+echo -n "]"
+# Remet le curseur à sa place
+tput rc
+}
+
+PROMPT_COMMAND=prompt_command
+
+case $TERM in
+        xterm|rxvt*)
+                TITLEBAR='\[\033]0;\u@\h \007\]'
+                ;;
+        *)
+                TITLEBAR=''
+                ;;
+esac
+
+if [[ $EUID == 0 ]] ; then
+  PS1="$TITLEBAR$RED\u [ $NORMAL\w$RED ]# $NORMAL"
+else
+  PS1="$TITLEBAR$GREEN\u [ $NORMAL\w$GREEN ]\$ $NORMAL"
+fi
+# End /etc/bashrc
+EOF
+}
+generate_rc_site() {
+local FILE
+FILE="rc.site"
+[ -f ${LFS}/etc/sysconfig/$FILE ] && return
+[ ! -d ${LFS}/etc/sysconfig ] && mkdir -pv ${LFS}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${LFS}/etc/sysconfig/$FILE
+  return
+fi
+cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
+# rc.site                                   
+# Optional parameters for boot scripts.
+
+# Distro Information
+# These values, if specified here, override the defaults
+#DISTRO="Linux From Scratch" # The distro name
+#DISTRO_CONTACT="lfs-dev@linuxfromscratch.org" # Bug report address
+#DISTRO_MINI="LFS" # Short name used in filenames for distro config
+
+# Define custom colors used in messages printed to the screen
+
+# Please consult `man console_codes` for more information
+# under the "ECMA-48 Set Graphics Rendition" section
+#
+# Warning: when switching from a 8bit to a 9bit font,
+# the linux console will reinterpret the bold (1;) to
+# the top 256 glyphs of the 9bit font.  This does
+# not affect framebuffer consoles
+
+# These values, if specified here, override the defaults
+#BRACKET="\\033[1;34m" # Blue
+#FAILURE="\\033[1;31m" # Red
+#INFO="\\033[1;36m"    # Cyan
+#NORMAL="\\033[0;39m"  # Grey
+#SUCCESS="\\033[1;32m" # Green
+#WARNING="\\033[1;33m" # Yellow
+
+# Use a colored prefix
+# These values, if specified here, override the defaults
+#BMPREFIX="     "
+#SUCCESS_PREFIX="${SUCCESS}  *  ${NORMAL}"
+#FAILURE_PREFIX="${FAILURE}*****${NORMAL}"
+#WARNING_PREFIX="${WARNING} *** ${NORMAL}"
+
+# Interactive startup
+#IPROMPT="yes" # Whether to display the interactive boot prompt
+#itime="3"    # The amount of time (in seconds) to display the prompt
+
+# The total length of the distro welcome string, without escape codes
+#wlen=$(echo "Welcome to ${DISTRO}" | wc -c )
+#welcome_message="Welcome to ${INFO}${DISTRO}${NORMAL}"
+
+# The total length of the interactive string, without escape codes
+#ilen=$(echo "Press 'I' to enter interactive startup" | wc -c )
+#i_message="Press '${FAILURE}I${NORMAL}' to enter interactive startup"
+
+# Set scripts to skip the file system check on reboot
+#FASTBOOT=yes
+
+# Skip reading from the console
+#HEADLESS=yes
+
+# Write out fsck progress if yes
+#VERBOSE_FSCK=no
+
+# Speed up boot without waiting for settle in udev
+#OMIT_UDEV_SETTLE=y
+
+# Speed up boot without waiting for settle in udev_retry
+#OMIT_UDEV_RETRY_SETTLE=yes
+
+# Skip cleaning /tmp if yes
+#SKIPTMPCLEAN=no
+
+# For setclock
+#UTC=1
+#CLOCKPARAMS=
+
+# For consolelog
+#LOGLEVEL=5
+
+# For network
+#HOSTNAME=mylfs
+
+# Delay between TERM and KILL signals at shutdown
+#KILLDELAY=3
+
+# Optional sysklogd parameters
+#SYSKLOGD_PARMS="-m 0"
+
+# Console parameters
+#UNICODE=1
+#KEYMAP="de-latin1"
+#KEYMAP_CORRECTIONS="euro2"
+#FONT="lat0-16 -m 8859-15"
+#LEGACY_CHARSET=
+EOF
+}
+generate_udev_retry() {
+local FILE
+FILE="udev_retry"
+[ -f ${LFS}/etc/sysconfig/$FILE ] && return
+[ ! -d ${LFS}/etc/sysconfig ] && mkdir -pv ${LFS}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/sysconfig/$FILE \
+   ${LFS}/etc/sysconfig/$FILE
+   return
+fi
+cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
+########################################################################
+# Begin /etc/sysconfig/udev_retry
+#
+# Description : udev_retry script configuration
+#
+# Authors     :
+#
+# Version     : 00.00
+#
+# Notes       : Each subsystem that may need to be re-triggered after mountfs
+#               runs should be listed in this file.  Probable subsystems to be
+#               listed here are rtc (due to /var/lib/hwclock/adjtime) and sound
+#               (due to both /var/lib/alsa/asound.state and /usr/sbin/alsactl).
+#               Entries are whitespace-separated.
+########################################################################
+
+rtc
+
+# End /etc/sysconfig/udev_retry
+EOF
+}
+generate_createfiles() {
+local FILE
+FILE="createfiles"
+[ -f ${LFS}/etc/sysconfig/$FILE ] && return
+[ ! -d ${LFS}/etc/sysconfig ] && mkdir -pv ${LFS}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/sysconfig/$FILE
+   return
+fi
+cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
+########################################################################
+# Begin /etc/sysconfig/createfiles
+#
+# Description : Createfiles script config file
+#
+# Authors     :
+#
+# Version     : 00.00
+#
+# Notes       : The syntax of this file is as follows:
+# 		if type is equal to "file" or "dir"
+#  		<filename> <type> <permissions> <user> <group>
+# 		if type is equal to "dev"
+#  		<filename> <type> <permissions> <user> <group> <devtype> 
+#             <major> <minor>
+#
+# 		<filename> is the name of the file which is to be created
+# 		<type> is either file, dir, or dev.
+#   			file creates a new file
+#   			dir creates a new directory
+#   			dev creates a new device
+# 		<devtype> is either block, char or pipe
+#   			block creates a block device
+#   			char creates a character deivce
+#   			pipe creates a pipe, this will ignore the <major> and 
+#           <minor> fields
+# 		<major> and <minor> are the major and minor numbers used for 
+#     the device.
+########################################################################
+
+# End /etc/sysconfig/createfiles
+EOF
+}
+generate_modules() {
+local FILE
+FILE="modules"
+[ -f ${LFS}/etc/sysconfig/$FILE ] && return
+[ ! -d ${LFS}/etc/sysconfig ] && mkdir -pv ${LFS}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/sysconfig/$FILE
+   return
+fi
+cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
+########################################################################
+# Begin /etc/sysconfig/modules
+#
+# Description : Module auto-loading configuration
+#
+# Authors     :
+#
+# Version     : 00.00
+#
+# Notes       : The syntax of this file is as follows:
+#  		<module> [<arg1> <arg2> ...]
+#
+# Each module should be on its own line, and any options that you want
+# passed to the module should follow it.  The line deliminator is either
+# a space or a tab.
+########################################################################
+
+# End /etc/sysconfig/modules
+EOF
+}
+generate_mouse() {
+local FILE
+FILE="mouse"
+[ -f ${LFS}/etc/$FILE ] && return
+[ ! -d ${LFS}/etc/sysconfig ] && mkdir -pv ${LFS}/etc/sysconfig
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/sysconfig/$FILE
+   return
+fi
+cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
+MDEVICE="/dev/input/mice"
+PROTOCOL="imps2"
+EOF
+}
+generate_inputrc() {
+local FILE
+FILE="inputrc"
+[ -f ${LFS}/etc/$FILE ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/$FILE
+   return
+fi
+cat > ${LFS}/etc/$FILE << "EOF"
+# Begin /etc/inputrc
+# Modified by Chris Lynn <roryo@roryo.dynup.net>
+
+# Allow the command prompt to wrap to the next line
+set horizontal-scroll-mode Off
+
+# Enable 8bit input
+set meta-flag On
+set input-meta On
+
+# Turns off 8th bit stripping
+set convert-meta Off
+
+# Keep the 8th bit for display
+set output-meta On
+
+# none, visible or audible
+set bell-style none
+
+# All of the following map the escape sequence of the value
+# contained in the 1st argument to the readline specific functions
+"\eOd": backward-word
+"\eOc": forward-word
+
+# for linux console
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+
+# for xorg-term
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+
+# for Konsole
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+
+# End /etc/inputrc 
+EOF
+}
+generate_hosts() {
+local FILE
+FILE="hosts"
+[ -f ${LFS}/etc/$FILE ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+  cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${LFS}/etc/$FILE
+  return
+fi
+cat > ${LFS}/etc/$FILE << "EOF"
+# Begin /etc/hosts
+
+127.0.0.1 localhost.localdomain localhost
+127.0.0.1 milis
+
+# End /etc/hosts
+EOF
+}
+generate_shells() {
+local FILE
+FILE="shells"
+[ -f ${LFS}/etc/$FILE ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+  cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+  ${LFS}/etc/$FILE
+  return
+fi
+cat > ${LFS}/etc/$FILE << "EOF"
+# Begin /etc/shells
+
+/bin/sh
+/bin/bash
+
+# End /etc/shells
+EOF
+}
+generate_umask_sh() {
+local FILE
+FILE="umask.sh"
+[ -f ${LFS}/etc/profile.d/$FILE ] && return
+[ ! -d ${LFS}/etc/profile.d ] && mkdir -pv ${LFS}/etc/profile.d
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/profile.d/$FILE
+   return
+fi
+cat > ${LFS}/etc/profile.d/$FILE << "EOF"
+# By default we want the umask to get set.
+if [ "$(id -gn)" = "$(id -un)" -a $EUID -gt 99 ] ; then
+  umask 002
+else
+  umask 022
+fi
+EOF
+}
+generate_readline_sh() {
+local FILE
+FILE="readline.sh"
+[ -f ${LFS}/etc/profile.d/$FILE ] && return
+[ ! -d ${LFS}/etc/profile.d ] && mkdir -pv ${LFS}/etc/profile.d
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/profile.d/$FILE
+   return
+fi
+cat > ${LFS}/etc/profile.d/$FILE << "EOF"
+# Setup the INPUTRC environment variable.
+if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ] ; then
+        INPUTRC=/etc/inputrc
+fi
+export INPUTRC
+EOF
+}
+generate_extrapaths_sh() {
+local FILE
+FILE="extrapaths.sh"
+[ -f ${LFS}/etc/profile.d/$FILE ] && return
+[ ! -d ${LFS}/etc/profile.d ] && mkdir -pv ${LFS}/etc/profile.d
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/profile.d/$FILE
+   return
+fi
+cat > ${LFS}/etc/profile.d/$FILE << "EOF"
+if [ -d /usr/local/lib/pkgconfig ] ; then
+        pathappend /usr/local/lib/pkgconfig PKG_CONFIG_PATH
+fi
+if [ -d /usr/local/bin ]; then
+        pathprepend /usr/local/bin
+fi
+if [ -d /usr/local/sbin -a $EUID -eq 0 ]; then
+        pathprepend /usr/local/sbin
+fi
+
+if [ -d ~/bin ]; then
+        pathprepend ~/bin
+fi
+#if [ $EUID -gt 99 ]; then
+#        pathappend .
+#fi
+EOF
+}
+generate_dircolors_sh() {
+local FILE
+FILE="dircolors.sh"
+[ -f ${LFS}/etc/profile.d/$FILE ] && return
+[ ! -d ${LFS}/etc/profile.d ] && mkdir -pv ${LFS}/etc/profile.d
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/profile.d/$FILE
+   return
+fi
+cat > ${LFS}/etc/profile.d/$FILE << "EOF"
+# Setup for /bin/ls to support color, the alias is in /etc/bashrc.
+if [ -f "/etc/dircolors" ] ; then
+        eval $(dircolors -b /etc/dircolors)
+
+        if [ -f "$HOME/.dircolors" ] ; then
+                eval $(dircolors -b $HOME/.dircolors)
+        fi
+fi
+alias ls='ls --color=auto'
+EOF
+}
+generate_profile() {
+local FILE
+FILE="profile"
+[ -f ${LFS}/etc/$FILE ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/$FILE
+   return
+fi
+cat > ${LFS}/etc/$FILE << "EOF"
+# Begin /etc/profile
+# Written for Beyond Linux From Scratch
+# by James Robertson <jameswrobertson@earthlink.net>
+# modifications by Dagmar d'Surreal <rivyqntzne@pbzpnfg.arg>
+
+# System wide environment variables and startup programs.
+
+# System wide aliases and functions should go in /etc/bashrc.  Personal
+# environment variables and startup programs should go into
+# ~/.bash_profile.  Personal aliases and functions should go into
+# ~/.bashrc.
+
+# Functions to help us manage paths.  Second argument is the name of the
+# path variable to be modified (default: PATH)
+pathremove () {
+        local IFS=':'
+        local NEWPATH
+        local DIR
+        local PATHVARIABLE=${2:-PATH}
+        for DIR in ${!PATHVARIABLE} ; do
+                if [ "$DIR" != "$1" ] ; then
+                  NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+                fi
+        done
+        export $PATHVARIABLE="$NEWPATH"
+}
+
+pathprepend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+}
+
+pathappend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+}
+
+export -f pathremove pathprepend pathappend
+
+# Set the initial path
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+if [ $EUID -eq 0 ] ; then
+        unset HISTFILE
+fi
+
+# Setup some environment variables.
+export HISTSIZE=1000
+export HISTIGNORE="&:[bf]g:exit"
+
+# Set some defaults for graphical systems
+export XDG_DATA_DIRS=/usr/share/
+export XDG_CONFIG_DIRS=/etc/xdg/
+
+# Setup a red prompt for root and a green one for users.
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+if [[ $EUID == 0 ]] ; then
+  PS1="$RED\u [ $NORMAL\w$RED ]# $NORMAL"
+else
+  PS1="$GREEN\u [ $NORMAL\w$GREEN ]\$ $NORMAL"
+fi
+
+for script in /etc/profile.d/*.sh ; do
+        if [ -r $script ] ; then
+                . $script
+        fi
+done
+
+unset script RED GREEN NORMAL
+
+# End /etc/profile
+EOF
+}
+
+dmrc_olustur() {
+local FILE
+FILE=".dmrc"
+[ -f ${LFS}/etc/skel/$FILE ] && return
+[ ! -d ${LFS}/etc/skel ] && mkdir -pv ${LFS}/etc/skel
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/skel/$FILE
+   return
+fi
+cat > ${LFS}/etc/skel/$FILE << "EOF"
+[Desktop]
+Session=default
+EOF
+}
+
+bashrc_olustur() {
+local FILE
+FILE=".bashrc"
+[ -f ${LFS}/etc/skel/$FILE ] && return
+[ ! -d ${LFS}/etc/skel ] && mkdir -pv ${LFS}/etc/skel
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/skel/$FILE
+   return
+fi
+cat > ${LFS}/etc/skel/$FILE << "EOF"
+# Personal aliases and functions.
+
+# Personal environment variables and startup programs should go in
+# ~/.bash_profile.  System wide environment variables and startup
+# programs are in /etc/profile.  System wide aliases and functions are
+# in /etc/bashrc.
+
+if [ -f "/etc/bashrc" ] ; then
+  source /etc/bashrc
+fi
+
+alias ll='ls -l'
+alias l='ls -alh'
+alias duh='du -h --max-depth=1'
+alias dfh='df -h'
+
+# End ~/.bashrc
+EOF
+[ -f ${LFS}/root/$FILE ] && return
+[ ! -d ${LFS}/root ] && install -dv -m0750 ${LFS}/root
+cp -v ${LFS}/etc/skel/$FILE \
+${LFS}/root
+}
+
+bash_profil_olustur() {
+local FILE
+FILE=".bash_profile"
+[ -f ${LFS}/etc/skel/$FILE ] && return
+[ ! -d ${LFS}/etc/skel ] && mkdir -pv ${LFS}/etc/skel
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/skel/$FILE
+   return
+fi
+cat > ${LFS}/etc/skel/$FILE << "EOF"
+# Personal environment variables and startup programs.
+
+# Personal aliases and functions should go in ~/.bashrc.  System wide
+# environment variables and startup programs are in /etc/profile.
+# System wide aliases and functions are in /etc/bashrc.
+
+append () {
+  # First remove the directory
+  local IFS=':'
+  local NEWPATH
+  for DIR in $PATH; do
+     if [ "$DIR" != "$1" ]; then
+       NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+     fi
+  done
+  # Then append the directory
+  export PATH=$NEWPATH:$1
+}
+
+if [ -f "$HOME/.bashrc" ] ; then
+  source $HOME/.bashrc
+fi
+
+# unset append
+
+# End ~/.bash_profile
+EOF
+[ ! -d ${LFS}/root ] && install -dv -m0750 ${LFS}/root
+[ -f ${LFS}/root/$FILE ] && return
+cp -v ${LFS}/etc/skel/$FILE \
+${LFS}/root
+}
+
+gerekli_dizinler() {
+mkdir ${LFS}/{dev,sys,proc,run,tmp,home,srv,mnt}
+mkdir -p ${LFS}/var/tmp
+mkdir -p ${LFS}/usr/{,local/}lib
+
+chmod 1777 ${LFS}/{,var/}tmp
+
+mkdir -v ${LFS}/var/{mail,spool}
+mkdir -pv ${LFS}/var/run/lock
+
+mknod -m 600 ${LFS}/dev/console c 5 1
+mknod -m 666 ${LFS}/dev/null c 1 3
+}
+
+lokalizasyon() {
+[ ! -d ${LFS}/etc/locale ] && mkdir -p ${LFS}/etc/locale
+if [ -d ${LFS}/usr/lib/locale ]; then
+   rm -r ${LFS}/usr/lib/locale
+   ln -sv /etc/locale/ ${LFS}/usr/lib/locale
+fi
+}
+
+fstab_olustur() {
+local FILE
+FILE="fstab"
+[ -f ${LFS}/etc/$FILE ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+if [ -f /etc/${INSTALL_COMMAND}.conf.d/$FILE ]; then
+   cp /etc/${INSTALL_COMMAND}.conf.d/$FILE \
+   ${LFS}/etc/$FILE
+   return
+fi
+cat > ${LFS}/etc/$FILE << "EOF"
+# Begin /etc/fstab
+
+# file system  mount-point  type     options             dump  fsck
+#                                                              order
+
+proc           /proc        proc     nosuid,noexec,nodev 0     0
+sysfs          /sys         sysfs    nosuid,noexec,nodev 0     0
+devpts         /dev/pts     devpts   gid=5,mode=620      0     0
+tmpfs          /run         tmpfs    defaults            0     0
+devtmpfs       /dev         devtmpfs mode=0755,nosuid    0     0
+EOF
+}
+
+grup_olustur() {
+[ -f ${LFS}/etc/group ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+cat > ${LFS}/etc/group << "EOF"
+root:x:0:
+bin:x:1:
+sys:x:2:
+kmem:x:3:
+tape:x:4:
+tty:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:gdm
+video:x:12:gdm
+utmp:x:13:
+usb:x:14:
+cdrom:x:15:
+adm:x:16:
+atd:x:17:
+messagebus:x:18:
+lpadmin:x:19:
+named:x:20:
+gdm:x:21:
+fcron:x:22:
+www:x:24:
+apache:x:25:
+smmsp:x:26:
+polkitd:x:27:
+wheel:x:30:root
+exim:x:31:
+postfix:x:32:
+postdrop:x:33:
+mail:x:34:
+vmailman:x:35:
+news:x:36:
+kdm:x:37:
+mysql:x:40:
+postgres:x:41:
+dovecot:x:42:
+dovenull:x:43:
+ftp:x:45:
+proftpd:x:46:
+vsftpd:x:47:
+rsyncd:x:48:
+sshd:x:50:
+stunnel:x:51:
+svn:x:56:
+svntest:x:57:
+pulse:x:58:
+pulse-access:x:59:
+games:x:60:
+kvm:x:61:
+wireshark:x:62:
+lightdm:x:63:
+sddm:x:64:
+scanner:x:70:
+colord:x:71:
+vboxusers:x:80:
+ldap:x:83:
+avahi:x:84:
+avahi-autoipd:x:85:
+netdev:x:86:
+ntp:x:87:
+unbound:x:88:
+nogroup:x:99:
+users:x:999:
+EOF
+}
+passwd_olustur() {
+[ -f ${LFS}/etc/passwd ] && return
+[ ! -d ${LFS}/etc ] && mkdir -pv ${LFS}/etc
+cat > ${LFS}/etc/passwd << "EOF"
+root::0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/dev/null:/bin/false
+lp:x:9:9:Print Service User:/dev/null:/bin/false
+atd:x:17:17:add daemon:/dev/null:/bin/false
+messagebus:x:18:18:D-Bus Message Daemon User:/dev/null:/bin/false
+named:x:20:20:BIND Owner:/home/named:/bin/false
+gdm:x:21:21:GDM Daemon User:/var/lib/gdm:/bin/false
+fcron:x:22:22:Fcron User:/dev/null:/bin/false
+www:x:24:24:Nginx Server:/dev/null:bin/false
+apache:x:25:25:Apache Server:/dev/null:/bin/false
+smmsp:x:26:26:Sendmail Daemon:/dev/null:/bin/false
+polkitd:x:27:27:Policy Kit Daemon User:/etc/polkit-1:/bin/false
+exim:x:31:31:Exim Daemon:/dev/null:/bin/false
+postfix:x:32:32:Postfix Daemon User:/var/spool/postfix:/bin/false
+sendmail:x:34:34:Sendmail Daemon:/dev/null:/bin/false
+vmailman:x:35:35:Vmail Daemon:/dev/null:/bin/false
+news:x:36:36:News Daemon:/dev/null:/bin/false
+kdm:x:37:37:KDM Daemon Owner:/var/lib/kdm:/bin/false
+mysql:x:40:40:MySQL Server:/dev/null:/bin/false
+postgres:x:41:41:PostgreSQL Server:/srv/pgsql/data:/bin/bash
+dovecot:x:42:42:Dovecot unprivileged user:/dev/null:/bin/false
+dovenull:x:43:43:Dovecot login user:/dev/null:/bin/false
+ftp:x:45:45:anonymous_user:/home/ftp:/bin/false
+proftpd:x:46:46:proftpd:/srv/ftp:/usr/bin/proftpdshell
+vsftpd:x:47:47:vsftpd User:/dev/null:/bin/false
+rsyncd:x:48:48:rsyncd Daemon:/home/rsync:/bin/false
+sshd:x:50:50:sshd PrivSep:/var/lib/sshd:/bin/false
+stunnel:x:51:51:stunnel Daemon:/var/lib/stunnel:/bin/false
+svn:x:56:56:SVN Owner:/home/svn:/bin/false
+games:x:60:60:Games High Score Owner:/var/games:/bin/false
+lightdm:x:63:63:Light Display Manager:/var/lib/lightdm:/sbin/nologin
+sddm:x:64:64:Simple Desktop Display Manager:/var/lib/sddm:/bin/false
+colord:x:71:71:Color Daemon Owner:/var/lib/colord:/bin/false
+ldap:x:83:83:OpenLDAP Daemon Owner:/var/lib/openldap:/bin/false
+avahi:x:84:84:Avahi Daemon Owner:/var/run/avahi-daemon:/bin/false
+avahi-autoipd:x:85:85:Avahi autoip Daemon:/:/var/run/avahi-autoipd:/bin/false
+ntp:x:87:87:Network Time Protocol:/var/lib/ntp:/bin/false
+unbound:x:88:88:Unbound DNS resolver:/var/lib/unbound:/bin/false
+anonymous:x:98:99:Unprivileged User:/dev/null:/bin/false
+nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
+EOF
+}
+
+mount_islemi(){
+	cp -v /etc/resolv.conf $LFS/etc
+	mount -v -B /dev $LFS/dev
+	mount -vt devpts devpts $LFS/dev/pts
+	mount -vt proc proc $LFS/proc
+	mount -vt sysfs sysfs $LFS/sys
+	if [ -h /dev/shm ]; then rm -f $LFS/dev/shm;mkdir $LFS/dev/shm;fi
+	mount -vt tmpfs shm $LFS/dev/shm
+	chmod 1777 /dev/shm
+}
+
+chroot_gir(){
+	root_kontrol
+	lfs_kontrol
+	unmount_islemi
+	mount_islemi
+	chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' /bin/bash --login +h 
+}
+
+
+unmount_islemi() {
+	umount $LFS/dev/shm
+	umount $LFS/run
+	umount $LFS/dev/pts
+	umount $LFS/dev
+	umount $LFS/proc
+	umount $LFS/sys
+}
+
+bash_kur(){
+	cd $LFS/root/talimatname/temel/bash
+	for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done
+	#kuruldugunu gormek icin
+	/tools/bin/pkginfo -r $LFS -i|grep bash
+}
+
+onsistem_sfs(){
+	tarih=`date +%Y-%m-%d`
+	mv /mnt/lfs/sources /mnt/sources_depo
+	mksquashfs /mnt/lfs malfs-asama1-onsistem_$tarih.sfs -comp xz
+}	
+
+temel_sfs(){
+	unmount_islemi
+	tarih=`date +%Y-%m-%d`
+	mv /mnt/lfs/sources /mnt/sources_depo
+	mv /mnt/lfs/tools /mnt/tools_ydk
+	mv /mnt/lfs/paket_depo /mnt/base_paket_depo
+	mksquashfs /mnt/lfs malfs-asama2-temel_$tarih.sfs -comp xz
+	mv /mnt/sources_depo /mnt/lfs/sources
+}
+
+son_sfs(){
+	unmount_islemi
+	tarih=`date +%Y-%m-%d`
+	mv /mnt/lfs/sources /mnt/sources_depo
+	mv /mnt/lfs/paket_depo /mnt/paket_depo
+	mksquashfs /mnt/lfs malfs-asama3-sonsistem_$tarih.sfs -comp xz
+}
+
+baslatici_olustur(){
+	rm /boot/initramfs
+	#kernelv=`ls /boot/kernel-* | cut -d'-' -f2`
+	kernelv=`ls /lib/modules`
+	#mkdir -p /usr/lib/dracut/modules.d/01milis
+	#cp /root/bin/dracut/* /usr/lib/dracut/modules.d/01milis/
+	#dracut -N --xz --force-add milis --omit systemd /boot/initramfs $kernelv
+	dracut -N --force --xz --add 'dmsquash-live pollcdrom' --omit systemd  /boot/initramfs $kernelv
+}
+
+squashfs_olustur(){
+    unmount_islemi
+    lfs_kontrol
+    iso_etiket="malfsLive"
+    rm iso_icerik/boot/kernel
+    rm iso_icerik/boot/initramfs
+    rm -r iso_icerik/LiveOS
+    cp $LFS/boot/kernel-* iso_icerik/boot/kernel
+    cp $LFS/boot/initramfs* iso_icerik/boot/initramfs
+    anayer=$(du -sm "$LFS"|awk '{print $1}')
+    fazladan="$((anayer))"
+    mkdir -p tmp
+    mkdir -p tmp/LiveOS
+    #fallocate -l 32G tmp/LiveOS/rootfs.img
+    #if [ -f $bos_imaj ];
+	#then
+	   #cp $bos_imaj tmp/LiveOS/ext3fs.img
+	#else
+	   #dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count="$((anayer+fazladan))"
+	dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=8096
+	#dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16192
+    mke2fs -t ext4 -L $iso_etiket -F tmp/LiveOS/ext3fs.img
+    mkdir -p temp-root
+    mount -o loop tmp/LiveOS/ext3fs.img temp-root
+    cp -dpR $LFS/* temp-root/
+    #rsync -a kur/ temp-root
+    umount -l temp-root
+    rm -rf temp-root 
+    mkdir -p iso_icerik/LiveOS
+    mksquashfs tmp iso_icerik/LiveOS/squashfs.img -comp xz -b 256K -Xbcj x86
+    chmod 444 iso_icerik/LiveOS/squashfs.img
+    rm -rf tmp
+}
+
+iso_olustur(){
+	rm malfs.iso
+	genisoimage -l -V malfsLive -R -J -pad -no-emul-boot -boot-load-size 4 -boot-info-table  \
+	-b boot/isolinux/isolinux.bin -c boot/isolinux/isolinux.cat -o malfs.iso iso_icerik && isohybrid malfs.iso
+}
+
+temizlik(){
+	rm -r /tools/*
+	rm -r chroot/.log/*
+	rm -r /tmp/work
+}
+
+lfs_kontrol(){
+	if [ -z "${LFS}" ]; then
+		echo "export LFS=/mnt/lfs"
+		echo "komutu verilmeli"
+		exit 1
+	fi
+}
+
+root_kontrol(){
+	if [ ! $(whoami) == "root" ]; then
+		echo "mekanizma işlemleri için root olmalısınız."
+		exit 1
+	fi
+}
+
+#calisma ortaminin klonlanmasi
+
+git_clone(){
+	git clone git://github.com/milisarge/malfs malfs
+
+}
+
+kaynak_kodlar_indir(){
+	lfs_kontrol
+	mkdir -p $LFS/sources
+	for link in `cat kaynaklar.liste`
+	do
+		#MD5SUM=`echo $i|cut -d "|" -f1`
+		MD5SUM="iptal"
+		wget -nc --no-check-certificate $link -P $LFS/sources
+		if [ "$MD5SUM" != "iptal" ]; then
+			echo "$MD5SUM  $FILE" >> $LFS/sources/.md5sums
+		fi
+	done
+}
+
+
+parametre_analiz() {
+	while [ "$1" ]; do
+		case $1 in
+			-h|--help)
+				print_help
+				exit 0;;
+			-gk|--gerek-kontrol)
+				./bin/version-check.sh
+				exit 0;;
+			-ki|--kaynak-indir)
+				kaynak_kodlar_indir
+				exit 0;;
+			-cg|--chroot-gir)
+				chroot_gir
+				exit 0;;
+			-os|--onsistem-sfs)
+				onsistem_sfs
+				exit 0;;
+			-ts|--temel-sfs)
+				temel_sfs
+				exit 0;;
+			-ss|--son-sfs)
+				son_sfs
+				exit 0;;
+			-bo|--initrd-yap)
+				baslatici_olustur
+				exit 0;;
+			-so|--squashfs-yap)
+				squashfs_olustur
+				exit 0;;
+			-io|--iso-yap)
+				iso_olustur
+				exit 0;;
+			-ba|--birinci-ayarlar)
+				birinci_ayarlar
+				exit 0;;
+			-ia|--ikinci-ayarlar)
+				ikinci_ayarlar
+				exit 0;;
+			-mi|--mount-islemi)
+				mount_islemi
+				exit 0;;
+			-bk|--bash-kur)
+				bash_kur
+				exit 0;;
+			-ui|--unmount-islemi)
+				unmount_islemi
+				exit 0;;
+			-te|--temizlik)
+				temizlik
+				exit 0;;
+			-td|--tlm-derle)
+				if [ ! "$2" ]; then
+					echo "talimatname dizini giriniz."
+					echo "ornek: lfs-mekanizma -td temel"
+					exit 1
+				fi
+				TALIMATNAME="$2"
+				talimatname_derle
+				shift;;
+			-v|--version)
+				echo "`basename $0` $VERSION"
+				exit 0;;
+			*)
+				echo "`basename $0`: gecersiz parametre $1"
+				exit 1 ;;
+		esac
+		shift
+	done
+}
+
+parametre_analiz "$@"
+

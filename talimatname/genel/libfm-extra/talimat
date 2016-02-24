@@ -1,0 +1,22 @@
+# Description: Le paquet libfm-extra contient une bibliothèque et d'autres fichiers requis par menu-cache-gen libexec de menu-cache-1.0.0. 
+# URL: http://pcmanfm.sourceforge.net/
+# Maintainer: git.lxde.org/gitweb/?p=debian/libfm.git;a=summary
+# Packager: geantbrun at gmail dot com
+# Depends on: glib,intltool,perl-xml-parser
+
+name=libfm-extra
+_name=libfm
+version=1.2.3
+release=1
+source=(http://downloads.sourceforge.net/pcmanfm/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --with-extra-only \
+            --with-gtk=no     \
+            --disable-static
+make 
+make DESTDIR=$PKG install
+}

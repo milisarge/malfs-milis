@@ -1,0 +1,18 @@
+# Description: Allows central updates of MIME information for all supporting applications. 
+# URL:  http://freedesktop.org/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: libxml2 intltool glib 
+
+name=shared-mime-info
+version=1.5
+release=1
+
+source=( http://freedesktop.org/~hadess/$name-$version.tar.xz)
+
+build() {
+unset MAKEFLAGS
+cd $name-$version
+./configure --prefix=/usr --disable-update-mimedb
+make -j1
+make DESTDIR=$PKG install
+} 

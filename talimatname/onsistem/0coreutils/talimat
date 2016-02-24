@@ -1,0 +1,16 @@
+version=8.25
+source=(http://ftp.gnu.org/gnu/coreutils/coreutils-$version.tar.xz)
+build()
+{
+cd coreutils-$version
+./configure --prefix=/tools --enable-install-program=hostname
+make
+make install
+for i in cat echo pwd stty
+do
+	ln -s /tools/bin/$i $LFS/bin/$i
+done
+
+mkdir -p $LFS/usr/bin
+ln -s /tools/bin/env $LFS/usr/bin/env
+}

@@ -1,0 +1,31 @@
+# Description: The Inetutils package contains programs for basic networking.
+# URL: http://www.gnu.org/software/inetutils/
+# Maintainers: Alain Malgoire,Alfred M. Szmidt,Arash Yadegarnia,Bernhard Rosenkraenzer,Dan Stromberg,David O'Shea and many more
+# Packager: pierre at nutyx dot org
+
+name=inetutils
+version=1.9.4
+release=1
+
+source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.xz)
+
+build()
+{
+cd  inetutils-$version
+
+./configure --prefix=/usr \
+-libexecdir=/sbin \
+--bindir=/bin \
+--sbindir=/sbin \
+--localstatedir=/var \
+--disable-logger \
+--disable-whois \
+--disable-servers
+make
+make check || true
+make DESTDIR=$PKG install
+
+mv -v $PKG/bin/traceroute $PKG/sbin
+mv -v $PKG/bin/ifconfig $PKG/sbin
+rm -rf $PKG/usr/share/info/dir
+}

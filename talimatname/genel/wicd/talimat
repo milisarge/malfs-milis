@@ -1,0 +1,35 @@
+# Description: Wired and wireless network manager for Linux
+# URL: http://wicd.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd 
+run=( python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd )
+
+name=wicd
+version=1.7.2.4
+release=1
+
+source=( http://launchpad.net/wicd/1.7/$version/+download/$name-$version.tar.gz \
+	 http://downloads.nutyx.org/files/patchs/$name/dbus_string_fix.patch)
+build() {
+unset MAKEFLAGS
+cd $name-$version
+patch -Np0 -i ../dbus_string_fix.patch
+sed -i '/wpath.logrotate\|wpath.systemd/d' setup.py
+python setup.py configure --no-install-kde \
+                          --no-install-acpi \
+                          --no-install-pmutils \
+                          --no-install-init
+
+# Hack sinon les locales s'installent pas
+mkdir -p translations/ast/LC_MESSAGES
+for i in zh_CN zh_HK zh_TW bg ca da de cs \
+el fa en eo es fi et eu fr gl he id hr hu \
+ja it ka kk ko lt lv ml nb nl nn pl pt ro \
+ru sk sl te sr sv tr uk vi ast ar_EG pt_BR
+do msgfmt po/$i.po -o translations/$i/LC_MESSAGES/wicd.mo
+done
+
+python setup.py install --optimize=1  --root=$PKG
+cp scripts/wicd $PKG/usr/bin/wicd
+echo "NotShowIn=KDE" >> $PKG/etc/xdg/autostart/wicd-tray.desktop
+}

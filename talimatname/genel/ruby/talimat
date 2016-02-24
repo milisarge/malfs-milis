@@ -1,0 +1,18 @@
+# Description: An object-oriented language for quick and easy programming
+# URL: http://ruby-lang.org
+# Packager: pierre at nutyx dot org
+# Depends on: doxygen 
+
+name=ruby
+version=2.3.0
+release=1
+
+source=(http://cache.ruby-lang.org/pub/ruby/2.2/ruby-$version.tar.xz)
+
+build() {
+cd ruby-$version
+./configure --prefix=/usr --enable-shared \
+--docdir=/usr/share/doc/ruby-$version
+make
+make DESTDIR=$PKG install
+}

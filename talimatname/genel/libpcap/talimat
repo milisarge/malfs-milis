@@ -1,0 +1,19 @@
+# Description: A system-independent interface for user-level packet capture
+# URL: http://www.tcpdump.org
+# Packager: pierre at nutyx dot org
+# Depends on: libnl libusb 
+
+name=libpcap
+version=1.7.4
+release=1
+
+source=(http://www.tcpdump.org/release/$name-$version.tar.gz  
+http://www.linuxfromscratch.org/patches/downloads/libpcap/$name-$version-enable_bluetooth-1.patch)
+build() {
+cd $name-$version
+patch -Np1 -i ../libpcap-$version-enable_bluetooth-1.patch
+./configure --prefix=/usr --enable-ipv6
+make
+sed -i '/INSTALL_DATA.*libpcap.a\|RANLIB.*libpcap.a/ s/^/#/' Makefile
+make DESTDIR=$PKG install
+}

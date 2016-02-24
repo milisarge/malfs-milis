@@ -1,0 +1,29 @@
+# Description: JavaScript interpreter and libraries
+# URL: https://developer.mozilla.org/En/SpiderMonkey/1.8.5
+# Packager: pierre at nutyx dot org
+# Depends on: libffi nspr zip python
+name=js2
+version=24.2.0
+release=1
+
+source=( http://ftp.mozilla.org/pub/mozilla.org/js/mozjs-$version.tar.bz2 )
+
+build () {
+cd mozjs-$version/js/src
+
+sed -i 's/(defined\((@TEMPLATE_FILE)\))/\1/' config/milestone.pl
+
+SHELL=/bin/bash \
+./configure --prefix=/usr       \
+            --enable-readline   \
+            --enable-threadsafe \
+            --with-system-ffi   \
+            --with-system-nspr
+make
+make DESTDIR=$PKG install
+
+find $PKG/usr/include/mozjs-24/ \
+     $PKG/usr/lib/libmozjs-24.a \
+     $PKG/usr/lib/pkgconfig/mozjs-24.pc \
+     -type f -exec chmod -v 644 {} \;
+}

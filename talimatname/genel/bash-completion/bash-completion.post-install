@@ -1,0 +1,12 @@
+if [ -f .bashrc ]; 
+then
+	if ! grep "/etc/bash_completion" .bashrc  ;
+	then
+		echo ". /etc/bash_completion" >> .bashrc
+	fi
+else
+	if ! grep "/etc/bash_completion" /etc/bashrc  ;
+	then
+	echo ". /etc/bash_completion" >> /etc/bashrc
+	fi
+fi

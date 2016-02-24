@@ -1,0 +1,19 @@
+# Description: A C library for reading, creating, and modifying zip archives
+# URL: http://www.nih.at/libzip/index.html
+# Packager: pierre at nutyx dot org
+
+name=libzip
+version=1.0.1
+release=1
+
+source=(http://www.nih.at/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+
+ln -s /usr/lib/libzip/include/zipconf.h $PKG/usr/include/zipconf.h
+install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

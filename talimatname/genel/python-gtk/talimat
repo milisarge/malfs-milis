@@ -1,0 +1,19 @@
+# Description: provides the links of Python 2 for the class GObject of GLib.
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python-gobject2 python-cairo libglade 
+run=( python-gobject2 python-cairo )
+
+name=python-gtk
+version=2.24.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/pygtk/${version%.*}/pygtk-$version.tar.bz2)
+	
+build() {
+cd pygtk-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+
+}  

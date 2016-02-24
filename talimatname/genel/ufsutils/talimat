@@ -1,0 +1,32 @@
+# Description: Utilities to manage the UFS filesystem, mostly used in BSD or derived operating systems.
+# URL: https://packages.debian.org/sid/ufsutils
+# Packager: fanch at nutyx dot org
+# Depends on: libbsd libedit
+
+name=ufsutils
+version=8.2
+release=1
+source=(https://mirrors.kernel.org/debian/pool/main/u/ufsutils/ufsutils_8.2.orig.tar.gz
+	https://mirrors.kernel.org/debian/pool/main/u/ufsutils/ufsutils_8.2-3.debian.tar.gz)
+
+build() {
+unset MAKEFLAGS
+cd ${name}-${version}
+	for i in ../debian/patches/*.patch;do patch -p1 -i ${i};done
+
+	sed -e "s:sbin/growfs::" -i Makefile
+	sed -e "s:^\(prefix = \)\(.*\):\1${EPREFIX}usr:" \
+	    -e "s:^\(libdir = \$(exec_prefix)\/\)\(.*\):\1$(get_libdir):" \
+	    -i "Makefile.common"
+	make -C  ../${name}-${version}
+
+	install -d ${PKG}/usr/bin
+	install -d ${PKG}/usr/lib
+	install -d ${PKG}/usr/share/man/man8
+	install -d ${PKG}/usr/share/licenses/${name}
+	install -d ${PKG}/usr/share/doc/${name}
+	make DESTDIR=${PKG} prefix=/usr sbindir=/usr/bin install
+	install -Dm644 ../debian/copyright ${PKG}/usr/share/licenses/${name}/COPYRIGHT
+	install -m644 ../debian/TODO ${PKG}/usr/share/doc/${name}
+	install -Dm644 ../debian/changelog ${PKG}/usr/share/doc/${name}/ChangeLog
+}

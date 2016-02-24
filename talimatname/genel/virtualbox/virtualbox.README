@@ -1,0 +1,13 @@
+For USB 2.0 facility, on the console:
+
+# VBoxManage extpack install  /opt/VirtualBox/ExtensionPacks/Oracle_VM_VirtualBox_Extension_Pack-*
+
+To remove USB 2.0 Oracle extensions before an update:
+
+# VBoxManage list extpacks
+# VBoxManage extpack uninstall "Oracle VM VirtualBox Extension Pack"
+# VBoxManage extpack cleanup
+
+Then you can install the new version as above. No need to reboot.
+
+Enjoy it :)

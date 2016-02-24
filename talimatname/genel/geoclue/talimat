@@ -1,0 +1,25 @@
+# Description: Modular geoinformation service built on the D-Bus messaging system.
+# URL: https://launchpad.net/geoclue/
+# Packager: pierre at nutyx dot org
+# Depends on: libsoup dbus-glib gconf libxslt 
+
+name=geoclue
+version=0.12.0
+release=1
+
+source=(https://launchpad.net/geoclue/trunk/0.12/+download/geoclue-0.12.0.tar.gz)
+
+
+build() {
+cd $name-$version
+sed -i "s@ -Werror@@" configure &&
+sed -i "s@libnm_glib@libnm-glib@g" configure &&
+sed -i "s@geoclue/libgeoclue.la@& -lgthread-2.0@g" \
+providers/skyhook/Makefile.in &&
+./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+                --libexecdir=/usr/lib/geoclue
+make
+make DESTDIR=$PKG install
+} 

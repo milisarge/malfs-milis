@@ -1,0 +1,23 @@
+# Description: Top quality printer drivers for POSIX systems
+# URL: http://gimp-print.sourceforge.net
+# Packager: pierre at nutyx dot org
+# Depends on: ijs gimp gtk2 cups foomatic-db-engine ghostscript 
+
+name=gutenprint
+version=5.2.9
+release=2
+
+source=(http://downloads.sourceforge.net/gimp-print/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+sed -i 's|$(PACKAGE)/doc|doc/$(PACKAGE)-$(VERSION)|' \
+       {,doc/,doc/developer/}Makefile.in
+
+./configure --prefix=/usr \
+--disable-static \
+--infodir=/usr/share/info --mandir=/usr/share/man
+make
+make DESTDIR=$PKG install
+}
+  

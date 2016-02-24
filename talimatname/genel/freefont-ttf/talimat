@@ -1,0 +1,18 @@
+# Description: Set of free outline fonts covering the Unicode character set
+# URL: http://www.nongnu.org/freefont/
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-server 
+
+name=freefont-ttf
+version=20120503
+release=1
+
+source=(http://ftp.gnu.org/gnu/freefont/$name-$version.zip)
+
+build() {
+        cd freefont-$version
+        install -v -d -m755 $PKG/usr/share/fonts/freefont
+        install -v -m644 *.ttf $PKG/usr/share/fonts/freefont/
+
+}
+

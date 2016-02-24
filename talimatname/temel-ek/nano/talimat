@@ -1,0 +1,26 @@
+# Description: A simple text editor which aims to replace Pico, the default editor in the Pine package.
+# URL: http://www.nano-editor.org/
+# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+
+name=nano
+version=2.5.2
+release=1
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--enable-utf8     \
+--enable-color \
+--enable-multibuffer \
+--enable-nanorc \
+--docdir=/usr/share/doc/nano-$version \
+--disable-x
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/etc/nano
+install -v -m644 -D doc/nanorc.sample $PKG/etc/nano/nanorc.sample
+rm $PKG/usr/share/info/dir
+}

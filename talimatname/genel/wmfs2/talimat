@@ -1,0 +1,27 @@
+# Description:  Lightweight and highly configurable tiling window manager for X
+# URL: http://wmfs.info/
+# Packager: Chris Farrell, timcowchip at gmail dot com
+# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Depends on: xorg-libxft, xorg-libx11, imlib2, 
+
+name=wmfs2
+version=git
+release=1
+source=()
+
+build() {
+  if cd $PKGMK_SOURCE_DIR/wmfs ; then
+    git pull
+  else
+    git clone git://github.com/xorg62/wmfs.git $PKGMK_SOURCE_DIR/wmfs
+  fi
+
+  cp -r $PKGMK_SOURCE_DIR/wmfs $SRC/ && cd $SRC/wmfs
+
+  ./configure --prefix /usr \
+              --xdg-config-dir /etc/xdg \
+	          --man-prefix /usr/share/man \
+	          --without-xinerama 
+  make 
+  make DESTDIR=$PKG install 
+}

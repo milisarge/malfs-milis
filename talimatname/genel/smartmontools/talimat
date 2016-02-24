@@ -1,0 +1,17 @@
+# Description: Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
+# URL: http://smartmontools.sourceforge.net
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=smartmontools
+version=6.4
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz )
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

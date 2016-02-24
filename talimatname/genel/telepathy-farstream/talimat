@@ -1,0 +1,18 @@
+# Description: A telepathy-backend to use stream engine.
+# URL: http://telepathy.freedesktop.org/
+# Packager: pierre at nutyx dot org
+# Depends on: farstream telepathy-glib 
+
+name=telepathy-farstream
+version=0.6.0
+release=1
+
+source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

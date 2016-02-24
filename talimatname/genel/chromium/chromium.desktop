@@ -1,0 +1,67 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Chromium
+# Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
+# From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
+GenericName=Web Browser
+GenericName[ar]=Ù…ØªØµÙØ­ Ø§Ù„Ø´Ø¨ÙƒØ©
+GenericName[bg]=Ð£ÐµÐ± Ð±Ñ€Ð°ÑƒÐ·ÑŠÑ€
+GenericName[ca]=Navegador web
+GenericName[cs]=WWW prohlÃ­Å¾eÄ
+GenericName[da]=Browser
+GenericName[de]=Web-Browser
+GenericName[el]=Î ÎµÏÎ¹Î·Î³Î·Ï„Î®Ï‚ Î¹ÏƒÏ„Î¿Ï
+GenericName[en_GB]=Web Browser
+GenericName[es]=Navegador web
+GenericName[et]=Veebibrauser
+GenericName[fi]=WWW-selain
+GenericName[fr]=Navigateur Web
+GenericName[gu]=àªµà«‡àª¬ àª¬à«àª°àª¾àª‰àªàª°
+GenericName[he]=×“×¤×“×¤×Ÿ ××™× ×˜×¨× ×˜
+GenericName[hi]=à¤µà¥‡à¤¬ à¤¬à¥à¤°à¤¾à¤‰à¤œà¤¼à¤°
+GenericName[hu]=WebbÃ¶ngÃ©szÅ‘
+GenericName[it]=Browser Web
+GenericName[ja]=ã‚¦ã‚§ãƒ–ãƒ–ãƒ©ã‚¦ã‚¶
+GenericName[kn]=à²œà²¾à²² à²µà³€à²•à³à²·à²•
+GenericName[ko]=ì›¹ ë¸Œë¼ìš°ì €
+GenericName[lt]=Å½iniatinklio narÅ¡yklÄ—
+GenericName[lv]=TÄ«mekÄ¼a pÄrlÅ«ks
+GenericName[ml]=à´µàµ†à´¬àµ à´¬àµà´°àµŒà´¸à´°àµâ€
+GenericName[mr]=à¤µà¥‡à¤¬ à¤¬à¥à¤°à¤¾à¤Šà¤œà¤°
+GenericName[nb]=Nettleser
+GenericName[nl]=Webbrowser
+GenericName[pl]=PrzeglÄ…darka WWW
+GenericName[pt]=Navegador Web
+GenericName[pt_BR]=Navegador da Internet
+GenericName[ro]=Navigator de Internet
+GenericName[ru]=Ð’ÐµÐ±-Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€
+GenericName[sl]=Spletni brskalnik
+GenericName[sv]=WebblÃ¤sare
+GenericName[ta]=à®‡à®£à¯ˆà®¯ à®‰à®²à®¾à®µà®¿
+GenericName[th]=à¹€à¸§à¹‡à¸šà¹€à¸šà¸£à¸²à¸§à¹Œà¹€à¸‹à¸­à¸£à¹Œ
+GenericName[tr]=Web TarayÄ±cÄ±
+GenericName[uk]=ÐÐ°Ð²Ñ–Ð³Ð°Ñ‚Ð¾Ñ€ Ð¢ÐµÐ½ÐµÑ‚
+GenericName[zh_CN]=ç½‘é¡µæµè§ˆå™¨
+GenericName[zh_HK]=ç¶²é ç€è¦½å™¨
+GenericName[zh_TW]=ç¶²é ç€è¦½å™¨
+# Not translated in KDE, from Epiphany 2.26.1-0ubuntu1.
+GenericName[bn]=à¦“à§Ÿà§‡à¦¬ à¦¬à§à¦°à¦¾à¦‰à¦œà¦¾à¦°
+GenericName[fil]=Web Browser
+GenericName[hr]=Web preglednik
+GenericName[id]=Browser Web
+GenericName[or]=à¬“à­à¬¬à­‡à¬¬ à¬¬à­à¬°à¬¾à¬‰à¬œà¬°
+GenericName[sk]=WWW prehliadaÄ
+GenericName[sr]=Ð˜Ð½Ñ‚ÐµÑ€Ð½ÐµÑ‚ Ð¿Ñ€ÐµÐ³Ð»ÐµÐ´Ð½Ð¸Ðº
+GenericName[te]=à°®à°¹à°¾à°¤à°² à°…à°¨à±à°µà±‡à°·à°¿
+GenericName[vi]=Bá»™ duyá»‡t Web
+# Gnome and KDE 3 uses Comment.
+Comment=Chromium web-browser bundle, including pdf, flash and gtalk plugin
+Comment[de]=Chromium web-browser bundel, mit pdf, flash und gtalk plugin
+Comment[en_GB]=Chromium web-browser bundle, including pdf, pepper-flash and gtalk plugin
+Exec=chromium %U
+Terminal=false
+Icon=chromium.png
+Type=Application
+Categories=Application;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;

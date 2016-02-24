@@ -1,0 +1,30 @@
+# Description: Utilities for internationalization and localization.
+# URL: http://www.gnu.org/software/gettext/
+# Maintainer: Ulrich Drepper
+# Packager: pierre at nutyx dot org
+
+name=gettext
+version=0.19.7
+release=1
+
+source=(http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz)
+build()
+{
+cd gettext-$version
+./configure --prefix=/usr \
+--docdir=/usr/share/doc/gettext-$version
+make
+make check||true
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/info/dir
+chmod 0755 $PKG/usr/lib/preloadable_libintl.so
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
+usr/include usr/share/aclocal usr/share/gettext
+
+rm -r usr/include usr/share/aclocal usr/share/gettext
+}

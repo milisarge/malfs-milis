@@ -1,0 +1,21 @@
+# Description: Implements DomainKeys Identified Mail (DKIM)
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-crypt-openssl-rsa perl-digest-sha1 perl-mailtools perl-net-dns 
+run=( perl )
+name=perl-mail-dkim
+version=0.40
+release=1
+
+source=(http://www.cpan.org/authors/id/J/JA/JASLONG/Mail-DKIM-$version.tar.gz)
+
+build() {
+cd Mail-DKIM-$version
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

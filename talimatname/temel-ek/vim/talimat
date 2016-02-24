@@ -1,0 +1,45 @@
+# Description: The Vim package contains a powerful text editor.
+# URL: http://www.vim.org/
+# Packager: pierre^
+# Depends on: 
+name=vim
+version=7.4
+release=1
+
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2
+        http://downloads.nutyx.org/files/patchs/vim/vim-7.4-locale-1.patch)
+build()
+{
+vimv="vim${version/./}"
+cd $vimv
+patch -Np1 -i $SRC/vim-7.4-locale-1.patch
+echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+
+./configure --prefix=/usr --enable-multibyte \
+        --enable-gui=no --with-x=no \
+        --disable-gpm
+
+make
+mkdir -p $PKG/usr/share/locale
+
+make DESTDIR=$PKG DEST_HELP=$PKG/usr/share/doc/vim-$version \
+LANGSUBLOC=/usr/share/locale install
+
+ln -sv vim $PKG/usr/bin/vi
+for L in $PKG/usr/share/man/{,*/}man1/vim.1; do
+        ln -sv vim.1 $(dirname $L)/vi.1
+done
+
+mkdir $PKG/etc
+
+cat > $PKG/etc/vimrc << "EOF"
+" Begin /etc/vimrc
+set background=dark
+set ruler
+set nocompatible
+set backspace=2
+syntax on
+
+" End /etc/vimrc
+EOF
+}

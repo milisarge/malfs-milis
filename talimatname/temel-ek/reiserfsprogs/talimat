@@ -1,0 +1,20 @@
+# Description: Utilities for use with the Reiser file system.
+# URL: http://www.kernel.org/pub/linux/utils/fs/reiserfs/
+# Packager: tnut at nutyx dot org
+name=reiserfsprogs
+version=3.6.24
+release=1
+
+source=(http://ftp.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v${version}/$name-$version.tar.xz)
+
+
+build() {
+	export CFLAGS="$CFLAGS -std=gnu90"
+        cd $name-$version
+        ./configure --prefix=/usr \
+                --sbindir=/sbin
+        make
+        make DESTDIR=$PKG install
+        ln -sf reiserfsck $PKG/sbin/fsck.reiserfs
+        ln -sf mkreiserfs $PKG/sbin/mkfs.reiserfs
+}

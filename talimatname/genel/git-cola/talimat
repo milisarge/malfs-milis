@@ -1,0 +1,15 @@
+# Description: A powerful GUI for Git
+# URL:  http://git-cola.github.com/
+# Packager: fanch at nutyx dot org
+# Depends on: git python-qt4 icu gvim
+
+name=git-cola
+version=2.1.1
+release=2
+
+source=(https://github.com/git-cola/git-cola/archive/v$version.zip)
+build() {
+	cd $SRC/${name}-$version
+	/usr/bin/python setup.py install --root=$PKG
+find $PKG -name '*.egg-info' | xargs rm -rf
+}

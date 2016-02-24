@@ -1,0 +1,1 @@
+mpsd -d -cf ../../bin/paketci.conf 

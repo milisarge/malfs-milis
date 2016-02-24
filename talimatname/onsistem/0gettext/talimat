@@ -1,0 +1,16 @@
+version=0.19.7
+source=(http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz)
+build()
+{
+cd gettext-$version/gettext-tools
+
+EMACS="no" ./configure --prefix=/tools --disable-shared
+
+make -C gnulib-lib
+make -C intl pluralx.c
+make -C src msgfmt
+make -C src msgmerge
+make -C src xgettext
+
+cp -v src/{msgfmt,msgmerge,xgettext} /tools/bin
+}

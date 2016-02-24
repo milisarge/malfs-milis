@@ -1,0 +1,21 @@
+# Description: A simple http server class
+# URL: A simple http server class
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-http-date perl-http-message perl-lwp-mediatypes 
+run=( perl )
+name=perl-http-daemon
+version=6.01
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Daemon-$version.tar.gz)
+
+build() {
+cd HTTP-Daemon-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

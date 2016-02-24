@@ -1,0 +1,20 @@
+# Description: A Python2 library that parses CSS3 Selectors and translates them to XPath 1.0.
+# URL: URL: http://pypi.python.org/pypi/cssselect
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python 
+name=python-cssselect
+version=0.9.1
+release=1
+
+source=(
+http://pypi.python.org/packages/source/c/cssselect/cssselect-$version.tar.gz)
+
+build() {
+    cd cssselect-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

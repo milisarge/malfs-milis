@@ -1,0 +1,19 @@
+# Description: Desktop notification library
+# URL: http://www.galago-project.org/news/index.php
+# Packager: pierre at nutyx dot org
+# Depends on: gobject-introspection gdk-pixbuf gtk3
+
+name=libnotify
+version=0.7.6
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share
+}
+  

@@ -1,0 +1,18 @@
+# Description: Standard Ghostscript Type1 fonts from URW
+# URL: http://sourceforge.net/projects/ghostscript
+# Packager: pierre at nutyx dot org
+# Depends on: xorg-app 
+
+name=gsfonts
+version=8.11
+release=1
+
+source=(http://downloads.sourceforge.net/ghostscript/ghostscript-fonts-std-$version.tar.gz)
+
+build() {
+	mkdir -p $PKG/usr/lib/X11/fonts/Type1
+	install -v -m644 fonts/*.{pfb,pfm,afm} \
+                $PKG/usr/lib/X11/fonts/Type1/
+
+}
+  

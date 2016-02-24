@@ -1,0 +1,18 @@
+# Description: An high dynamic-range image file format library
+# URL: http://www.openexr.org
+# Packager: pierre at nutyx dot org
+# Depends on: ilmbase 
+name=openexr
+version=2.2.0
+release=1
+
+source=( http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--localstatedir=/var \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,36 @@
+# Description: A set of C++ libraries for multimedia streaming
+# URL: http://www.live555.com/liveMedia/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=live
+version=2014.07.04
+release=1
+
+source=(http://downloads.nutyx.org/files/$name.$version.tar.gz)
+
+build() {
+cd $SRC/live
+
+  sed \
+      -e 's/$(INCLUDES) -I. -O2 -DSOCKLEN_T/$(INCLUDES) -I. -O2 -I. -fPIC -DRTSPCLIENT_SYNCHRONOUS_INTERFACE=1 -DSOCKLEN_T/g' \
+      -e 's/\(LIBRARY_LINK =\).*/\1 $(LD) -o/g' \
+      -e 's/\(LIBRARY_LINK_OPTS =\).*/\1 $(LINK_OPTS) -r -Bstatic/g' \
+      -i config.linux
+  ./genMakefiles linux
+  make
+
+
+  for dir in BasicUsageEnvironment groupsock liveMedia UsageEnvironment; do
+    install -dm755 $PKG/usr/{bin,lib,include/${dir}}
+    install -m644 ${dir}/*.a $PKG/usr/lib
+    install -m644 ${dir}/include/*.h* $PKG/usr/include/${dir}
+  done
+
+  for testprog in `find testProgs -type f -perm 755`; do
+    install ${testprog} $PKG/usr/bin
+  done
+
+}
+  
+

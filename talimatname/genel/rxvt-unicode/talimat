@@ -1,0 +1,56 @@
+# Description: An unicode capable rxvt clone (urxvt). rxvt-unicode is an enhanced version of the rxvt terminal emulator.
+# URL: http://software.schmorp.de/pkg/rxvt-unicode.html
+# Packager: alienus at nutyx dot org
+# Depends on: gdk-pixbuf xorg-libxft startup-notification
+
+description="An enhanced unicode capable version of the rxvt terminal emulator."
+name=rxvt-unicode
+version=9.20
+release=2
+
+source=(
+http://dist.schmorp.de/rxvt-unicode/Attic/$name-$version.tar.bz2
+$name.desktop
+$name.svg)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --localstatedir=/var \
+                --enable-everything \
+                --enable-unicode3 \
+                --enable-combining \
+                --enable-xft \
+                --enable-font-styles \
+                --enable-transparency \
+                --enable-fading \
+                --enable-frills \
+                --enable-pixbuf \
+                --enable-rxvt-scroll \
+                --enable-next-scroll \
+                --enable-xterm-scroll \
+                --enable-perl \
+                --enable-xim \
+                --enable-iso14755 \
+                --enable-keepscrolling \
+                --enable-selectionscrolling \
+                --enable-mousewheel \
+                --enable-slipwheeling \
+                --enable-smart-resize \
+                --enable-text-blink \
+                --enable-pointer-blank \
+                --enable-utmp \
+                --enable-wtmp \
+                --enable-lastlog \
+                --enable-256-color
+
+    mkdir -p $PKG/usr/share/terminfo
+    TERMINFO=$PKG/usr/share/terminfo make install DESTDIR=$PKG
+
+    # desktop intergration with icon from openclipart
+    install -Dm 644 $SRC/$name.desktop \
+        $PKG/usr/share/applications/$name.desktop
+    install -Dm 644 $SRC/$name.svg \
+        $PKG/usr/share/icons/hicolor/scalable/apps/$name.svg
+}

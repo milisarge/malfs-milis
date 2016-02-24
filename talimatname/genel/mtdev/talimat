@@ -1,0 +1,18 @@
+# Description: The mtdev package contains Multitouch Protocol Translation Library
+# URL: http://bitmath.org/code/mtdev/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+name=mtdev
+version=1.1.5
+release=1
+
+source=(http://bitmath.org/code/mtdev/mtdev-$version.tar.bz2)
+
+build()
+{
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

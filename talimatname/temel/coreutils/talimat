@@ -1,0 +1,49 @@
+# Description: Utilities for showing and setting the basic system characteristics
+# URL: http://www.gnu.org/software/coreutils/
+# Maintainer: Jim Meyering meyering at redhat dot com
+# Packager: tnut at nutyx dot org
+
+name=coreutils
+version=8.25
+release=2
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
+	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-i18n-2.patch
+	)
+build()
+{
+cd $name-$version
+
+patch -Np1 -i ../$name-$version-i18n-2.patch
+
+FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr \
+--libexecdir=/lib --bindir=/bin --sbindir=/sbin \
+--enable-no-install-program=kill,uptime
+
+FORCE_UNSAFE_CONFIGURE=1 make || FORCE_UNSAFE_CONFIGURE=1 make -j1
+if [ -f /tools/bin/su ];then
+	make NON_ROOT_USERNAME=nobody check-root
+
+	echo "dummy:x:1000:nobody" >> /etc/group
+	chown -Rv nobody .
+
+	su-tools nobody -s /bin/bash -c "make -k RUN_EXPENSIVE_TESTS=yes check"||true
+
+	sed -i '/dummy/d' /etc/group
+fi
+make DESTDIR=$PKG install
+
+mkdir $PKG/sbin
+mkdir -p $PKG/usr/share/man/man8
+
+mv -v $PKG/bin/chroot $PKG/sbin
+
+mv -v $PKG/usr/share/man/man1/chroot.1 $PKG/usr/share/man/man8/chroot.8
+sed -i s/\"1\"/\"8\"/1 $PKG/usr/share/man/man8/chroot.8
+
+rm -rf $PKG/usr/share/info/dir
+
+mkdir -p $PKG/usr/bin
+mv $PKG/bin/env $PKG/usr/bin
+mv $PKG/bin/install $PKG/usr/bin 
+}	

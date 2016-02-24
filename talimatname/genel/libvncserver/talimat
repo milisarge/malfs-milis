@@ -1,0 +1,19 @@
+# Description: A cross-platform C libraries that allow you to easily implement VNC server
+# URL: https://libvnc.github.io/
+# Packager: tnut at nutyx dot org
+# Depends on: libjpeg-turbo libpng gnutls libgcrypt sdl
+
+name=libvncserver
+version=0.9.10
+release=1
+
+source=(https://github.com/LibVNC/libvncserver/archive/LibVNCServer-${version}.tar.gz
+	initialize-libgcrypt.patch)
+build () {
+cd $name-LibVNCServer-$version
+patch -p1 -i ../initialize-libgcrypt.patch
+./autogen.sh
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

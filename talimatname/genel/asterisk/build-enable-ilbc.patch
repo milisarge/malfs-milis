@@ -1,0 +1,10 @@
+--- asterisk-13.2.0/menuselect-tree	2015-04-01 13:33:21.374042590 +0900
++++ asterisk-13.2.0/menuselect-tree.ilbc-enable	2015-04-01 13:43:40.749590341 +0900
+@@ -491,6 +491,7 @@
+ </member>
+ <member name="codec_ilbc" displayname="iLBC Coder/Decoder" remove_on_change="codecs/codec_ilbc.o codecs/codec_ilbc.so">
+ 	<use>ilbc</use>
++	<defaultenabled>yes</defaultenabled>
+ 	<support_level>core</support_level>
+ </member>
+ <member name="codec_lpc10" displayname="LPC10 2.4kbps Coder/Decoder" remove_on_change="codecs/codec_lpc10.o codecs/codec_lpc10.so">

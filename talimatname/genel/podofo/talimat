@@ -1,0 +1,25 @@
+# Description: C++ library to work with the PDF file format
+# URL: http://podofo.sourceforge.net
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: cmake xorg-fontconfig freetype libidn libpng libtiff lua51 
+name=podofo
+version=0.9.3
+release=1
+
+source=(
+http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .. \
+          -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 ..\
+          -DLUA_INCLUDE_DIR=/usr/include/lua5.1 .. \
+          -DPODOFO_BUILD_SHARED=1 \
+          -DPODOFO_HAVE_JPEG_LIB=1 \
+          -DPODOFO_HAVE_PNG_LIB=1 \
+          -DPODOFO_HAVE_TIFF_LIB=1
+    make
+    make DESTDIR=$PKG install
+}

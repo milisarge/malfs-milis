@@ -1,0 +1,51 @@
+# Description: 	PHP is the PHP Hypertext Preprocessor. Primarily used in dynamic web sites, it allows for programming code to be directly embedded into the HTML markup. It is also useful as a general purpose scripting language. 
+# URL:         	http://www.php.net
+# Packager:		berlius at nutyx dot com
+# Depends on:  	apache libxml2 aspell aspell-fr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff xorg curl db mariadb openldap postgresql sqlite unixodbc openssl cyrus-sasl kerberos
+
+description="Used in dynamic web sites, it allows programming code to be directly embedded into HTML"
+name=php7
+_name=php
+version=7.0.2
+release=1
+
+source=(http://php.net/distributions/${_name}-$version.tar.xz
+		http://mirror.internode.on.net/pub/php/manual/php_manual_fr.tar.gz)
+
+build () {
+
+    cd ${_name}-$version
+
+    ./configure --prefix=/usr                \
+            --sysconfdir=/etc            \
+            --localstatedir=/var         \
+            --datadir=/usr/share/php     \
+            --mandir=/usr/share/man      \
+            --enable-fpm                 \
+            --with-fpm-user=apache       \
+            --with-fpm-group=apache      \
+            --with-config-file-path=/etc \
+            --with-zlib                  \
+            --enable-bcmath              \
+            --with-bz2                   \
+            --enable-calendar            \
+            --enable-dba=shared          \
+            --with-gdbm                  \
+            --with-gmp                   \
+            --enable-ftp                 \
+            --with-gettext               \
+            --enable-mbstring            \
+            --with-readline      
+    make
+    make -j1 INSTALL_ROOT=$PKG install
+    
+    install -v -m644 php.ini-production $PKG/etc/php.ini 
+    mv -v $PKG/etc/php-fpm.conf{.default,}  
+    install -v -m755 -d $PKG/usr/share/doc/php-$version 
+    install -v -m644    CODING_STANDARDS EXTENSIONS INSTALL NEWS README* UPGRADING* php.gif \
+                    $PKG/usr/share/doc/php-$version
+
+    sed -i 's@php/includes"@&\ninclude_path = ".:/usr/lib/php"@' \
+		$PKG/etc/php.ini
+		
+}

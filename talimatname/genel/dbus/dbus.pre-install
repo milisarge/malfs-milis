@@ -1,0 +1,1 @@
+passwd -l messagebus &>/dev/null

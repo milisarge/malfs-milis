@@ -1,0 +1,25 @@
+# Description: Object interface for AF_INET|AF_INET6 domain sockets
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-socket6 
+run=( perl )
+name=perl-io-socket-inet6
+version=2.72
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/IO-Socket-INET6-$version.tar.gz)
+
+build() {
+ ( export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+      PERL_AUTOINSTALL=--skipdeps           \
+      PERL_MM_OPT="INSTALLDIRS=vendor"      \
+      PERL_MB_OPT="--installdirs vendor"    \
+      MODULEBUILDRC=/dev/null)
+
+cd IO-Socket-INET6-$version
+perl Makefile.PL
+make
+make DESTDIR=$PKG install
+
+find $PKG -name .packlist -o -name perllocal.pod -delete
+}
