@@ -126,7 +126,7 @@ Milis Automated Linux From Scratch
  
  en son bu mesaj ile derleme bitmelidir.
  
- =======>  'nano.tr#2.5.2-any.mps.xz' basarili sekilde kuruldu.
+ =======>  'nano.tr#2.5.2-any.mps.lz' basarili sekilde kuruldu.
  
  başlatıcı(initram-initrd) oluşturulması
  
