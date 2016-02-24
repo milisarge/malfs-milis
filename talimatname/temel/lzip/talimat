@@ -1,0 +1,17 @@
+# Description: Lzip is a lossless data compressor with a user interface similar to the one of gzip or bzip2
+# URL: download.savannah.gnu.org
+# Maintainer: Antonio Diaz Diaz
+# Packager: shamil
+
+name=lzip
+version=1.18-rc1
+release=1
+
+source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
+build()
+{
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

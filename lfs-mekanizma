@@ -150,7 +150,6 @@ ikinci_ayarlar(){
 	cp $ANADIZIN/ayarlar/mpsd.conf $LFS/etc/
 	cp $ANADIZIN/ayarlar/onmpsd.conf $LFS/etc/
 	cp $ANADIZIN/ayarlar/dokunulmaz $LFS/etc/
-	cp $ANADIZIN/ayarlar/ld.so.conf $LFS/tools/etc/
 }
 
 generate_milis_version() {
@@ -1027,9 +1026,8 @@ unmount_islemi() {
 
 bash_kur(){
 	cd $LFS/root/talimatname/temel/bash
-	for PACK in *.xz; do /tools/bin/pkgadd -r $LFS $PACK;done
+	for PACK in *.lz; do tar xf $PACK -C $LFS;done
 	#kuruldugunu gormek icin
-	/tools/bin/pkginfo -r $LFS -i|grep bash
 }
 
 onsistem_sfs(){

@@ -59,6 +59,7 @@ man-db
 nasm
 openssl
 libarchive
+lzip
 kbd
 curl
 cpio
@@ -71,6 +72,5 @@ gpm
 openssh
 dialog
 squashfs
-cards
 sudo
 ca-certificates

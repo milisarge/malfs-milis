@@ -5,7 +5,7 @@ Milis Automated Linux From Scratch
  
  apt-get remove mawk
  
- apt-get install bsdtar binutils gcc g++ m4 make bison texinfo pkg-config squashfs-tools
+ apt-get install bsdtar binutils gcc g++ m4 make bison texinfo pkg-config squashfs-tools lzip
  
  rm /bin/sh
  
@@ -86,11 +86,7 @@ Milis Automated Linux From Scratch
 
  root@makine:/opt/malfs# ./lfs-mekanizma -bk
 
- komutu verilip bash kurulumu sağlanır.işlem aşağıdaki şekilde sonlanmalıdır.
- 
- bash 4.3.30-3
- 
- bash.tr 4.3.30-3
+ komutu verilip bash kurulumu sağlanır.
 
  tekrar chroot içine girilir.ortam değişkenleri ayarlandıktan sonra,temel sistem derlenmeye devam edilir.
 
@@ -106,7 +102,7 @@ Milis Automated Linux From Scratch
  
  en son aşağıdaki mesaj ile derleme bitmelidir.
  
- =======>  'ca-certificates#20160110-x86_64.mps.xz' basarili sekilde kuruldu.
+ =======>  'ca-certificates#20160110-x86_64.mps.lz' basarili sekilde kuruldu.
 
  temel sistem paketlerin paket_depo altında toplanması-paketlerin arsivlenmesi
 
