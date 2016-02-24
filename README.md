@@ -18,7 +18,7 @@ Milis Automated Linux From Scratch
  
  -Mekanizmanın Kurulması
  
- git clone https://github.com/milisarge/malfs.git malfs 
+ git clone https://github.com/milisarge/malfs-milis.git malfs
  
  cd malfs
  

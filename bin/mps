@@ -19,7 +19,7 @@ icerik_ekle(){
 	if [ -f /tools/sbin/ldconfig ];then
 		/tools/sbin/ldconfig
 	else
-		/sbin/ldconfig
+		ldconfig
 	fi
 	echo $paketad" paketi kuruldu."
 }
