@@ -7,18 +7,17 @@ betikad=${0##*/}
 kurulum_onay="evet"
 dokunulmaz="/etc/dokunulmaz"
 talimatname_dizin="/root/talimatname"
+kokdizin="/"
 
 icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
 	paketad=`basename $paketad`
 	echo $paketad" paketi kuruluyor."
 	mkdir -p /var/lib/pkg/DB/"$paketad" &&
-	tar xf $1 -C /  && 
+	tar xf $1 -C $kokdizin  && 
 	mv /.MTREE /var/lib/pkg/DB/"$paketad"/files &&
 	mv /.META /var/lib/pkg/DB/"$paketad"/META &&
-	if [ -f /tools/sbin/ldconfig ];then
-		/tools/sbin/ldconfig
-	else
+	if [ -f /etc/ld.so.conf ];then
 		ldconfig
 	fi
 	echo $paketad" paketi kuruldu."
