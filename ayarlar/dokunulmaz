@@ -67,6 +67,7 @@ sys/
 tmp/
 usr/bin/
 usr/lib/
+usr/lib/pkgconfig/
 usr/lib64/
 usr/sbin/
 usr/man/
@@ -79,6 +80,7 @@ usr/local/lib64/
 usr/local/etc/
 usr/local/share/
 usr/share/
+usr/share/misc/
 usr/share/doc/
 usr/share/locale/
 usr/share/locale/tr/
@@ -89,6 +91,8 @@ usr/share/man/man1/
 usr/share/man/man5/
 usr/share/man/tr/man1/
 usr/share/man/tr/man5/
+usr/share/man/man8/
+usr/share/man/man7/
 var/
 var/lib/
 var/lib/pkg/

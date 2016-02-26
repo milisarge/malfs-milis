@@ -1,1 +1,1 @@
-chmod 1777 var/tmp
+chmod 1777 /var/tmp

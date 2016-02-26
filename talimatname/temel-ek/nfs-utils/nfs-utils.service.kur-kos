@@ -1,5 +1,5 @@
-if [ ! -f etc/sysconfig/nfs-server ]; then
-	cat > etc/sysconfig/nfs-server << "EOF"
+if [ ! -f /etc/sysconfig/nfs-server ]; then
+	cat > /etc/sysconfig/nfs-server << "EOF"
 PORT="2049"
 PROCESSES="8"
 QUOTAS="no"
