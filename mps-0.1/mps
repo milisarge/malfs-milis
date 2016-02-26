@@ -13,7 +13,7 @@ icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
 	paketad=`basename $paketad`
 	echo $paketad" paketi kuruluyor."
-	tar -C /tmp --extract --file=$1 .PRE > /tmp/$paketad_pre.log
+	tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 	#kos-kur kontrolu
 	if [ -f /tmp/.PRE ];then
 		bash  /tmp/.PRE
@@ -71,9 +71,9 @@ paket_sil(){
 			if [ "$sil_onay" = "e" ];then
 				xargs rm -r -f < /tmp/$paket.sil &&
 				rm -r -f /var/lib/pkg/DB/"$paket" &&
-				rm -f /tmp/$paket.sil
 				echo $paket" paketi silindi."
 			fi
+			rm -f /tmp/$paket.sil
 		else
 			echo "paket zaten kurulu değil!"
 		fi

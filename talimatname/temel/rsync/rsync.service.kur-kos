@@ -1,5 +1,5 @@
-if [ ! -f etc/rsyncd.conf ]; then
-	cat > etc/rsyncd.conf << "EOF"
+if [ ! -f /etc/rsyncd.conf ]; then
+	cat > /etc/rsyncd.conf << "EOF"
 # use chroot = yes
 # [site]
 #   path = /home/saravane/nutyx.org

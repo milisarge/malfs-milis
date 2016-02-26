@@ -5,4 +5,5 @@ if [ -f etc/ssl/ca-bundle.crt ]; then
 fi
 if ! ( grep ssl /etc/dokunulmaz > /dev/null);then
 	echo "etc/ssl" >> /etc/dokunulmaz
+        echo "etc/ssl/certs" >> /etc/dokunulmaz
 fi
