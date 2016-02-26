@@ -1,0 +1,5 @@
+. /lib/lsb/init-functions
+if [ -z "`ls /var/lib/pkg/DB/ |grep kernel-lts\ `" ]; then
+	log_failure_msg "${WARNING}kernel-lts${NORMAL} kurulu değil"
+	exit 1
+fi

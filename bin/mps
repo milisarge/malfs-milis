@@ -13,10 +13,30 @@ icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
 	paketad=`basename $paketad`
 	echo $paketad" paketi kuruluyor."
+	tar -C /tmp --extract --file=$1 .PRE > /tmp/$paketad_pre.log
+	#kos-kur kontrolu
+	if [ -f /tmp/.PRE ];then
+		bash  /tmp/.PRE
+		rm  /tmp/.PRE
+	fi
+	tar xf $1 -C $kokdizin  &&
 	mkdir -p /var/lib/pkg/DB/"$paketad" &&
-	tar xf $1 -C $kokdizin  && 
-	mv /.MTREE /var/lib/pkg/DB/"$paketad"/files &&
-	mv /.META /var/lib/pkg/DB/"$paketad"/META &&
+	mv  $kokdizin/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
+	mv  $kokdizin/.META /var/lib/pkg/DB/"$paketad"/META &&
+	#kur-kos calistirilmasi
+	if [ -f $kokdizin.POST ];then
+		bash  $kokdizin.POST
+		rm  $kokdizin.POST
+	fi
+	if [ -f $kokdizin.PRE ];then
+		rm  $kokdizin.PRE
+	fi
+	if [ -f $kokdizin/.okubeni ];then
+		rm  $kokdizin/.okubeni
+	fi
+	if [ -f $kokdizin/.README ];then
+		rm  $kokdizin/.README
+	fi
 	if [ -f /etc/ld.so.conf ];then
 		ldconfig
 	fi
@@ -24,7 +44,7 @@ icerik_ekle(){
 }
 
 paket_sil(){
-	local paket kkont
+	local paket kkont sil_onay
 	if [ -f $dokunulmaz ];then
 		kkont=`kurulu_kontrol "$1"`
 		if [ "$kkont" = "kurulu" ];then
@@ -33,13 +53,27 @@ paket_sil(){
 			#while IFS='' read -r line || [[ -n "$line" ]]; do
 			while read -r dosya
 			do
+				touch /tmp/$paket.sil
 				if [[ $(grep -c $dosya $dokunulmaz) -eq 0 ]]; then
-					#echo /$dosya
-					rm -r -f /$dosya
+					echo "/$dosya" >> /tmp/$paket.sil 
+					#guvenlik amacli simdilik kapali
+					#rm -r -f /$dosya
 				fi
 			done < /var/lib/pkg/DB/"$paket"/files
-			rm -r -f /var/lib/pkg/DB/"$paket" &&
-			echo $paket" paketi silindi."
+			while true; do
+				read -p "$1 paketi kaldırılsın mı?" eh
+				case $eh in
+					[Ee]* ) sil_onay="e"; break;;
+					[Hh]* ) break;;
+					* ) echo "e veya h";;
+				esac
+			done
+			if [ "$sil_onay" = "e" ];then
+				xargs rm -r -f < /tmp/$paket.sil &&
+				rm -r -f /var/lib/pkg/DB/"$paket" &&
+				rm -f /tmp/$paket.sil
+				echo $paket" paketi silindi."
+			fi
 		else
 			echo "paket zaten kurulu değil!"
 		fi
@@ -303,9 +337,3 @@ fi
 }
 ana "$@"
 
-#kurulum oncesi işler yapılır.
-#paket içeriği hedefe çıkarılır.
-#kurulum sonrası işler yapılır.
-#paket veritabanı guncellenir.
-#ldconfig tetiklenir.
-#ek olarak çakışma ve güncelleme-geriçekme kontrolleri yapılır.

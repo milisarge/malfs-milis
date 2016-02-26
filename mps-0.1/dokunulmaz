@@ -1,6 +1,11 @@
 bin/
+boot/
+sbin/
+dev/
+srv/
 lib/
 lib64/
+lib32/
 etc/
 etc/shells
 etc/profile
@@ -49,6 +54,7 @@ mnt/
 opt/
 root/
 run/
+sys/
 tmp/
 usr/bin/
 usr/lib/
@@ -74,3 +80,12 @@ usr/share/man/man1/
 usr/share/man/man5/
 usr/share/man/tr/man1/
 usr/share/man/tr/man5/
+var/
+var/lib/
+var/lib/pkg/
+var/lib/pkg/DB
+var/log/
+var/lib/
+var/run/
+var/spool/
+var/cache/

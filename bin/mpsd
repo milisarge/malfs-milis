@@ -588,14 +588,14 @@ add_meta_files() {
 	local NAME
 	NAME="`get_package_name $1`"
 	cd $PKG
-	if [ -f $PKGMK_ROOT/${NAME}.README ]; then
-		cp $PKGMK_ROOT/${NAME}.README .README
+	if [ -f $PKGMK_ROOT/${NAME}.okubeni ]; then
+		cp $PKGMK_ROOT/${NAME}.okubeni .README
 	fi
-	if [ -f $PKGMK_ROOT/${NAME}.pre-install ]; then
-		cp $PKGMK_ROOT/${NAME}.pre-install .PRE
+	if [ -f $PKGMK_ROOT/${NAME}.kos-kur ]; then
+		cp $PKGMK_ROOT/${NAME}.kos-kur .PRE
 	fi
-	if [ -f $PKGMK_ROOT/${NAME}.post-install ]; then
-		cp $PKGMK_ROOT/${NAME}.post-install .POST
+	if [ -f $PKGMK_ROOT/${NAME}.kur-kos ]; then
+		cp $PKGMK_ROOT/${NAME}.kur-kos .POST
 	fi
 	for file in .README .PRE .POST; do
 		if [ -f $file ]; then

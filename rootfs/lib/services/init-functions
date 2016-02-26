@@ -39,7 +39,7 @@ if [ "${COLUMNS}" = "0" ]; then
 fi
 
 ## Measurements for positioning result messages
-COL=$((${COLUMNS} - 8))
+COL=$((${COLUMNS} - 12))
 WCOL=$((${COL} - 2))
 
 ## Set Cursor Position Commands, used via echo
@@ -70,9 +70,9 @@ SUCCESS_PREFIX="${SUCCESS}  *  ${NORMAL}"
 FAILURE_PREFIX="${FAILURE}*****${NORMAL}"
 WARNING_PREFIX="${WARNING} *** ${NORMAL}"
 
-SUCCESS_SUFFIX="${BRACKET}[${SUCCESS}  OK  ${BRACKET}]${NORMAL}"
-FAILURE_SUFFIX="${BRACKET}[${FAILURE} FAIL ${BRACKET}]${NORMAL}"
-WARNING_SUFFIX="${BRACKET}[${WARNING} WARN ${BRACKET}]${NORMAL}"
+SUCCESS_SUFFIX="${BRACKET}[${SUCCESS}  TAMAM  ${BRACKET}]${NORMAL}"
+FAILURE_SUFFIX="${BRACKET}[${FAILURE} BAŞARISIZ ${BRACKET}]${NORMAL}"
+WARNING_SUFFIX="${BRACKET}[${WARNING} UYARI ${BRACKET}]${NORMAL}"
 
 BOOTLOG=/run/bootlog
 KILLDELAY=0
@@ -619,7 +619,7 @@ log_failure_msg()
 
     timespec
     logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
-    /bin/echo -e "${STAMP} ${logmessage} FAIL" >> ${BOOTLOG}
+    /bin/echo -e "${STAMP} ${logmessage} BAŞARISIZ" >> ${BOOTLOG}
     
     return 0
 }
@@ -629,7 +629,7 @@ log_failure_msg2()
     /bin/echo -n -e "${BMPREFIX}${@}"
     /bin/echo -e "${CURS_ZERO}${FAILURE_PREFIX}${SET_COL}${FAILURE_SUFFIX}"
 
-    echo "FAIL" >> ${BOOTLOG}
+    echo "BAŞARISIZ" >> ${BOOTLOG}
     
     return 0
 }
@@ -651,7 +651,7 @@ log_warning_msg()
     # Strip non-printable characters from log file
     logmessage=`echo "${@}" | sed 's/\\\033[^a-zA-Z]*.//g'`
     timespec
-    /bin/echo -e "${STAMP} ${logmessage} WARN" >> ${BOOTLOG}
+    /bin/echo -e "${STAMP} ${logmessage} UYARI" >> ${BOOTLOG}
     
     return 0
 }
