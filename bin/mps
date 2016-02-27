@@ -13,7 +13,7 @@ icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
 	paketad=`basename $paketad`
 	echo $paketad" paketi kuruluyor."
-	tar -C /tmp --extract --file=$1 .PRE > /tmp/$paketad_pre.log
+	tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 	#kos-kur kontrolu
 	if [ -f /tmp/.PRE ];then
 		bash  /tmp/.PRE
@@ -71,9 +71,9 @@ paket_sil(){
 			if [ "$sil_onay" = "e" ];then
 				xargs rm -r -f < /tmp/$paket.sil &&
 				rm -r -f /var/lib/pkg/DB/"$paket" &&
-				rm -f /tmp/$paket.sil
 				echo $paket" paketi silindi."
 			fi
+			rm -f /tmp/$paket.sil
 		else
 			echo "paket zaten kurulu değil!"
 		fi
@@ -113,16 +113,18 @@ derleme_listyap(){
 	then
 	#	echo "pas"
 	#else
-		echo "derleme.liste yazılıyor:" "$1"
+		ana="`find $talimatname_dizin -name $1`"
+		echo ${ana#"$talimatname_dizin"}
+		#sadece genel bagimliliklar derlenecek
 		echo "$1" >> derleme.liste 
+		if [ -d "$talimatname_dizin/genel/$1" ];then
+			echo "$1" >> genel.derleme.liste 
+		fi
 	fi
 } 
 
 paket_derle_oto(){
-	rm derleme.liste
-	touch derleme.liste 
-	derleme_listyap "$1"
-	for dpkt in `cat derleme.liste`;do
+	for dpkt in `cat $1`;do
 		echo $dpkt "derleniyor...."
 		paket_derle $dpkt
 	done
@@ -152,7 +154,13 @@ paket_derle(){
 		if [ "$derleme_onay" = "e" ];then
 			echo "$1" "derleniyor...."
 			#mpsd -d > /dev/null
-			mpsd -d
+			#mpsd -d
+			echo "------------------------"
+			mpsd -d 2>&1|tee /tmp/"$1".log
+			if ( grep "^=======>" /tmp/"$1".log| tail -1 |grep "ERROR"  > /dev/null);then
+				echo "derleme sisteminde hata oluştu -----> " /tmp/"$1".log
+				exit 1
+			fi
 			if [ "$kurulum_onay" = "evet" ];then
 				for kpkt in `ls $1* | cut -d'#' -f1`;do
 					mps -k "$kpkt#"*
@@ -247,8 +255,14 @@ ayarlar() {
 			-odk|--pkodk)
 				paket_derle_oto "$2" ;;	
 			-dly|--drly)
-				rm derleme.liste
+				if [ -f derleme.liste ];then
+					mv derleme.liste derleme.liste.eski
+				fi
+				if [ -f genel.derleme.liste ];then
+					mv genel.derleme.liste genel.derleme.liste.eski
+				fi
 				touch derleme.liste 
+				touch genel.derleme.liste 
 				derleme_listyap "$2" ;;	
 			-b|--pkbl)
 				paket_bilgi "$2" ;;
@@ -320,6 +334,7 @@ if [ "$ikaynak" = "ag" ]; then
 fi
 
 if [ "$ikaynak" = "yerel" ]; then
+	local silme
 	pkontrol=`basename $2 | grep -w "mps.lz"`
 	if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
 		paketad=`echo "$2" | cut -d'#' -f1`	
@@ -327,7 +342,18 @@ if [ "$ikaynak" = "yerel" ]; then
 		if [ "$kkont" = "degil" ];then
 			icerik_ekle "$2"
 		else
-			echo "$2 paketi zaten kurulu"
+			while true; do
+				read -p "$2 paketi zaten kurulu silinip kurulsun mu?" eh
+				case $eh in
+					[Ee]* ) silme="e"; break;;
+					[Hh]* ) break;;
+					* ) echo "e veya h";;
+				esac
+			done
+			if [ "$silme" = "e" ];then
+				paket_sil "$paketad"
+				icerik_ekle "$2"
+			fi
 		fi
 	else
 		echo "yerelde mps paketi bulunamadı."

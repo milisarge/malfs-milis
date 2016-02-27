@@ -1,0 +1,1 @@
+cp /lib/ncurses/terminfo/x/xterm /usr/share/terminfo/x/
