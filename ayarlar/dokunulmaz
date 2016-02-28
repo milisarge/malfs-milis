@@ -80,6 +80,11 @@ usr/local/lib64/
 usr/local/etc/
 usr/local/share/
 usr/share/
+usr/share/applications/
+usr/share/icons/
+usr/share/icons/hicolor/
+usr/share/icons/hicolor/48x48/
+usr/share/icons/hicolor/48x48/apps/
 usr/share/misc/
 usr/share/doc/
 usr/share/locale/
