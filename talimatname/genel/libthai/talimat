@@ -4,7 +4,7 @@
 # Depends on: libdatrie 
 
 name=libthai
-version=0.1.22
+version=0.1.21
 release=1
 
 source=(https://mirrors.kernel.org/debian/pool/main/libt/${name}/${name}_${version}.orig.tar.xz)
