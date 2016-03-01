@@ -30,10 +30,7 @@ cd $name-$version
 make
 mkdir $PKG/sbin
 make DESTDIR=$PKG install
-mkdir $PKG/etc
-install -m 644 $SRC/exports $PKG/etc/
 # Services
 cd ../$scripts-$scriptsversion
 make DESTDIR=$PKG install-nfs-server
-
 }
