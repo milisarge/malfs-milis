@@ -1051,6 +1051,7 @@ son_sfs(){
 	tarih=`date +%Y-%m-%d`
 	mv /mnt/lfs/sources /mnt/sources_depo
 	mv /mnt/lfs/paket_depo /mnt/paket_depo
+	rm -r -f /mnt/lfs/usr/src
 	mksquashfs /mnt/lfs malfs-asama3-sonsistem_$tarih.sfs -comp xz
 }
 
