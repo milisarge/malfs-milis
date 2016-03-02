@@ -1,0 +1,29 @@
+# Description: Lightweight panel/taskbar
+# URL: http://tint2.googlecode.com
+# Packager: Jose V Beneyto, sepen at crux dot nu
+# Maintainer: Jose V Beneyto, sepen at crux dot nu
+# Depends on: tint2 python-gtk
+
+name=tint2-extras
+version=0.11
+release=1
+source=(http://tint2.googlecode.com/files/tint2-$version.tar.bz2)
+
+build() {
+  cd tint2-$version
+
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_BATTERY=OFF \
+    -DENABLE_EXAMPLES=ON \
+    -DENABLE_TINT2CONF=ON \
+    -DMANDIR=/usr/man \
+    -DSYSCONFDIR=/usr/etc
+
+  make
+  make DESTDIR=$PKG install
+
+  install -d $PKG/usr/share/tint2
+  mv $PKG/usr/share/doc/tint2/examples $PKG/usr/share/tint2
+  rm -rf $PKG/usr/{bin/tint2,etc,man,share/doc}
+}
