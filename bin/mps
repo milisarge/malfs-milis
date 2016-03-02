@@ -152,15 +152,18 @@ paket_derle(){
 		cp -a $konum/* tmp."$1"/
 		cd tmp."$1"
 		
+		
 		if [ `kurulu_kontrol "$1"` = "kurulu" ];then
-			while true; do
-				read -p "$1 paketi zaten kurulu yine de derlensin mi?" eh
-				case $eh in
-					[Ee]* ) derleme_onay="e"; break;;
-					[Hh]* ) break;;
-					* ) echo "e veya h";;
-				esac
-			done
+			#versiyon kontrolunde acılacak
+			#while true; do
+			#	read -p "$1 paketi zaten kurulu yine de derlensin mi?" eh
+			#	case $eh in
+			#		[Ee]* ) derleme_onay="e"; break;;
+			#		[Hh]* ) break;;
+			#		* ) echo "e veya h";;
+			#	esac
+			#done
+			derleme_onay="h"
 		else
 			derleme_onay="e"
 		fi 
