@@ -6,7 +6,7 @@ name=hicolor-icon-theme
 version=0.15
 release=1
 
-source=(  http://icon-theme.freedesktop.org/releases/$name-$version.tar.xz)
+source=(  http://ftp.osuosl.org/pub/blfs/conglomeration/hicolor-icon-theme/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
