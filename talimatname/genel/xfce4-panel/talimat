@@ -1,0 +1,23 @@
+# Description: The Xfce4 Panel package contains the Xfce4 Panel.
+# URL: http://www.xfce.org/projects/xfce4-panel/
+# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: exo xfce4-garcon libwnck xfce4-libui gtk-doc gtk3
+
+name=xfce4-panel
+version=4.12.0
+release=2
+
+source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-gio-unix \
+    --enable-gtk-doc \
+    --enable-gtk3 \
+    --disable-debug
+make
+make DESTDIR=$PKG install
+}

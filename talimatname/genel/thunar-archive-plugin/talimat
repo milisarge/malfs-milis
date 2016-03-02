@@ -1,0 +1,60 @@
+# Description: Thunar filemanager plugin to deal with archives
+# URL: http://foo-projects.org/~benny/projects/thunar-archive-plugin
+# Maintainer: CRUX Xfce Team, xfce-ports at crux dot nu
+# Packager: Antonio SJ Musumeci, bile at landofbile dot com
+# Depends on: thunar xarchiver
+# Group: xfce4
+
+name=thunar-archive-plugin
+version=0.3.1
+release=1
+source=(http://archive.xfce.org/src/thunar-plugins/$name/${version%.*}/$name-$version.tar.bz2)
+
+##
+build() {
+cd $name-$version
+
+./configure	--prefix=/usr \
+		--libexecdir=/usr/lib/thunar \
+		--disable-static \
+		--disable-nls
+
+make
+make DESTDIR=$PKG install
+
+##
+mkdir -p $PKG/usr/lib/thunar/thunar-archive-plugin/
+cat > $PKG/usr/lib/thunar/thunar-archive-plugin/xarchiver.tap << "EOF"
+#!/bin/sh
+#
+# xarchiver.tap - Wrapper script to create and extract archive files
+#                 in Thunar, via the thunar-archive-plugin, using xarchiver.
+#
+# determine the action and the folder, "$@" then contains only the files
+action=$1; shift;
+folder=$1; shift;
+
+# check the action
+case $action in
+create)
+	exec xarchiver "--add-to=$@"
+	;;
+
+extract-here)
+	exec xarchiver "--extract-to=$folder" "$@"
+	;;
+
+extract-to)
+	exec xarchiver --extract "$@"
+	;;
+
+*)
+	echo "Unsupported action '$action'" >&2
+	exit 1
+esac
+EOF
+
+##
+chmod 755 $PKG/usr/lib/thunar/thunar-archive-plugin/xarchiver.tap
+}
+

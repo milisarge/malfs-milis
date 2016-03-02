@@ -7,10 +7,10 @@ name=perl-glib
 version=1.304
 release=1
 
-source=(http://www.cpan.org/authors/id/X/XA/XAOC/Glib-$version.tar.gz)
+source=(https://github.com/gitpan/Glib/archive/cpan_path/XAOC/Glib-$version.tar.gz.tar.gz)
 
 build() {
-	cd Glib-$version
+	cd Glib-cpan_path-XAOC-Glib-$version.tar.gz
 	perl Makefile.PL
 	make
 	make DESTDIR=$PKG install

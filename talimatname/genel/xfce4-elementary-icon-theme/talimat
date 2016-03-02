@@ -1,0 +1,13 @@
+# Description: Elementary lefty icons theme
+# URL: https://github.com/shimmerproject/elementary-xfce
+# Packager: ~
+# Depends on: 
+name=xfce4-elementary-icon-theme
+version=0.3
+release=1
+
+source=(https://github.com/shimmerproject/elementary-xfce/archive/v$version.tar.gz)
+build() {
+install -d -m 0755 $PKG//usr/share/icons
+mv elementary-xfce-$version/elementary-xfce{,-dark,-darker} $PKG//usr/share/icons
+}

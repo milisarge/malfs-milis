@@ -1,0 +1,33 @@
+# Description: Thunar is the Xfce file manager, a GTK+ 2 GUI to organise the files on your computer.
+# URL: http://thunar.xfce.org
+# Packagers: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: libnotify libexif exo xfce4-libui xfce4-panel desktop-file-utils gvfs
+
+run=(desktop-file-utils gtk-update-icon-cache)
+name=thunar
+version=1.6.10
+release=1
+
+source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2)
+build() {
+cd Thunar-$version
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-gio-unix \
+    --enable-dbus \
+    --enable-startup-notification \
+    --enable-gudev \
+    --enable-notifications \
+    --enable-exif \
+    --enable-pcre \
+    --enable-gtk-doc \
+    --disable-debug
+make
+make DESTDIR=$PKG install
+sed -i 's:x-directory/gnome-default-handler;::' \
+    $PKG/usr/share/applications/Thunar-folder-handler.desktop
+}

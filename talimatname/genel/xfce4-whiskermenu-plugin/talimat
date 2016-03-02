@@ -1,0 +1,19 @@
+# Description: Alternate menu for Xfce4
+# URL: http://gottcode.org/xfce4-whiskermenu-plugin/
+# Maintainer: Graeme Gott <graeme at gottcode dot org>
+# Packager: tnut at nutyx dot org
+# Depends on: cmake xfce4-panel
+
+name=xfce4-whiskermenu-plugin
+version=1.5.2
+release=1
+source=(http://gottcode.org/$name/$name-$version.tar.bz2)
+build() {
+
+cd $name-$version
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+make
+make DESTDIR=$PKG install
+}

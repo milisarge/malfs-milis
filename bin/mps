@@ -192,7 +192,7 @@ paket_derle(){
 bagimlilar(){
 	local bagimd konum
 	konum="`find "$talimatname_dizin" -name $1`"
-	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
+	bagimd=`cat $konum/talimat | grep "Depends on" | cut -d':' -f2`
 	if [ -n "$bagimd" ]; then
 		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
 		#sıralı gösterme

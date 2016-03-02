@@ -1,7 +1,7 @@
 # Description: perl module
 # URL: http://www.gtkperl.org
 # Packager: pierre at nutyx dot org
-# Depends on: 
+
 run=( perl )
 name=perl-extutils-depends
 version=0.304

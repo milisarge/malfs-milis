@@ -1,0 +1,23 @@
+# Description: Xfce4 Mixer is a volume control application for the Xfce desktop based on GStreamer.
+# URL: http://www.xfce.org/projects/xfce4-mixer/
+# Packager: pierre at nutyx dot org
+# Depends on: gstreamer-plugins-base libunique1 xfce4-libutil xfce4-panel 
+
+name=xfce4-mixer
+version=4.11.0
+release=1
+
+source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure \
+    	--prefix=/usr \
+   	 --sysconfdir=/etc \
+    	--libexecdir=/usr/lib \
+    	--localstatedir=/var \
+    	--disable-static \
+    	--disable-debug
+	make
+	make DESTDIR=$PKG install
+}

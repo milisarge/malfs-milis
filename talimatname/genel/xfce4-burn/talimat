@@ -1,0 +1,19 @@
+# Description: Burn CDs and DVDs from files on your computer or ISO images downloaded from elsewhere.
+# URL: http://www.xfce.org/projects/xfburn/
+# Packager: tnut at nutyx dot org
+# Depends on: gstreamer-plugins-base exo libisoburn xorg-pixman startup-notification gstreamer-plugins-good 
+_name=xfburn
+
+name=xfce4-burn
+version=0.5.4
+release=3
+
+source=(http://archive.xfce.org/src/apps/xfburn/${version%.*}/xfburn-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version	
+./configure --prefix=/usr \
+--enable-gstreamer
+make
+make DESTDIR=$PKG install
+}

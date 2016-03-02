@@ -1,0 +1,27 @@
+# Description: An application finder for Xfce
+# URL: http://http://www.xfce.org/projects/xfce4-appfinder/
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-libui xfce4-garcon 
+
+name=xfce4-appfinder
+version=4.12.0
+release=2
+
+source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
+make
+make DESTDIR=$PKG install
+	
+for i in /usr/bin/xfrun4
+do rm $PKG/$i
+done
+}

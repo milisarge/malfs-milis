@@ -1,0 +1,27 @@
+# Description: Xfconf is the configuration storage system for Xfce.
+# URL: http://wiki.xfce.org/releng/4.6/general-info
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-libutil dbus-glib perl-glib 
+
+_name=xfconf
+
+name=xfce4-conf
+version=4.12.0
+release=1
+
+source=(http://archive.xfce.org/xfce/${version%.*}/src/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure \
+	--prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib/xfce4 \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-gtk-doc \
+    --disable-debug
+	make
+	make DESTDIR=$PKG install
+find $PKG  -name perllocal.pod -exec rm {} \;
+}

@@ -1,0 +1,24 @@
+# Description: allows of do of captures d'ecrans or of fenetres
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-screenshooter-plugin
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-panel libsoup p11-kit 
+
+name=xfce4-screenshooter
+version=1.8.2
+release=1
+
+source=(http://archive.xfce.org/src/apps/$name/1.8/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure \
+    	--prefix=/usr \
+    	--sysconfdir=/etc \
+    	--libexecdir=/usr/lib \
+    	--localstatedir=/var \
+    	--disable-static \
+    	--disable-debug
+	make
+	make DESTDIR=$PKG install
+}
+

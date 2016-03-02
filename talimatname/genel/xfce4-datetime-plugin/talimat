@@ -1,0 +1,24 @@
+# Description: A date and time display plugin for the Xfce panel
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin
+# Packager: pierre at nutyx dot org
+# Depends on: xfce4-panel
+
+name=xfce4-datetime-plugin
+version=0.6.2
+release=2
+
+source=(http://archive.xfce.org/src/panel-plugins/$name/0.6/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
+	make
+	make DESTDIR=$PKG install
+}
+

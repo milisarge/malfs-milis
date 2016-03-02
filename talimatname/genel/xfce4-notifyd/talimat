@@ -1,0 +1,22 @@
+# Description: The "server-side" portion of the Freedesktop desktop notifications specification.
+# URL: http://git.xfce.org/kelnos/xfce4-notifyd/
+# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: xfce4-libui libnotify 
+
+name=xfce4-notifyd
+version=0.2.4
+release=3
+
+source=(http://archive.xfce.org/src/apps/$name/0.2/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+ ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
+make
+make DESTDIR=$PKG install
+}

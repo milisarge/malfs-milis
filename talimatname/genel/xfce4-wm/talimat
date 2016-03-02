@@ -1,0 +1,29 @@
+# Description: Xfwm4 is the window manager for Xfce.
+# URL: http://www.xfce.org/projects/xfwm4/
+# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: xorg-libxres libwnck xfce4-libui xfce4-libutil startup-notification 
+
+_name=xfwm4
+
+name=xfce4-wm
+version=4.12.3
+release=1
+
+source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-startup-notification \
+    --enable-randr \
+    --enable-compositor \
+    --enable-xsync \
+    --disable-debugr
+make
+make DESTDIR=$PKG install
+}

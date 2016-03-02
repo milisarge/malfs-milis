@@ -1,0 +1,18 @@
+# Description: Power manager for the Xfce desktop.
+# URL: http://goodies.xfce.org/projects/applications/xfce4-power-manager
+# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: dbus-glib xorg-app libnotify xfce4-panel upower udisks 
+
+name=xfce4-power-manager
+version=1.4.4
+release=2
+
+source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

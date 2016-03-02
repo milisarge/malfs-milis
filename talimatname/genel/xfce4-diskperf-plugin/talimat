@@ -1,0 +1,23 @@
+# Description: monitor DD for the panel
+# URL: http://goodies.xfce.org/
+# Packager: tyrry at nutyx dot org
+# Depends on: xfce4-panel
+
+name=xfce4-diskperf-plugin
+version=2.5.5
+release=2
+
+source=(http://archive.xfce.org/src/panel-plugins/$name/2.5/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
+	make
+	make DESTDIR=$PKG install
+}

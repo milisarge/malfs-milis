@@ -1,0 +1,18 @@
+# Description: Exo is a support library used in the Xfce desktop.
+# URL: http://www.os-cillation.de/
+# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: perl-uri xfce4-libui xfce4-libutil gtk-doc
+
+name=exo
+version=0.10.7
+release=1
+
+source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+	./configure --prefix=/usr \
+	--sysconfdir=/etc
+	make
+	make DESTDIR=$PKG install
+}

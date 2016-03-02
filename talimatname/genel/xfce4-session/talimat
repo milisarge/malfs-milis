@@ -1,0 +1,31 @@
+# Description: Xfce4 Session is a session manager for Xfce.
+# URL: http://www.xfce.org
+# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Depends on: gnupg polkit consolekit2 udisks upower xorg-libxres libwnck xfce4-libui xorg-app
+
+run=(udisks upower)
+
+name=xfce4-session
+version=4.12.1
+release=3
+
+source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2
+0001-Pass-VT-number-to-xinit-if-XDG_VTNR-is-set.patch
+        xfce-polkit-gnome-authentication-agent-1.desktop)
+build() {
+cd $name-$version
+patch -Np1 -i ../0001-Pass-VT-number-to-xinit-if-XDG_VTNR-is-set.patch
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug \
+    --disable-legacy-sm
+make
+make DESTDIR=$PKG install
+install -d $PKG/etc/xdg/autostart
+  cp $SRC/xfce-polkit-gnome-authentication-agent-1.desktop \
+    $PKG/etc/xdg/autostart/
+}

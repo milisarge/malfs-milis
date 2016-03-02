@@ -1,0 +1,26 @@
+# Description: Calendar for Xfce
+# URL: http://www.xfce.org/projects/orage/
+# Packager: tyrry33 at gmail dot com
+# Depends on: exo intltool xfce4-panel libnotify 
+
+_name=orage
+
+name=orage
+version=4.12.1
+release=1
+
+source=(http://archive.xfce.org/src/apps/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+	 ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --enable-libical \
+    --disable-debug
+	make
+	make DESTDIR=$PKG install
+}
+
