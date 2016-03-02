@@ -6,7 +6,7 @@ name=dbus-glib
 version=0.104
 release=1
 
-source=(http://dbus.freedesktop.org/releases/$name/$name-$version.tar.gz)
+source=(http://pkgs.fedoraproject.org/repo/pkgs/dbus-glib/dbus-glib-0.104.tar.gz/5497d2070709cf796f1878c75a72a039/dbus-glib-0.104.tar.gz)
 
 build() {
 cd $name-$version
