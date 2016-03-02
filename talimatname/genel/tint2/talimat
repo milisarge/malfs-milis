@@ -1,27 +1,29 @@
-# Description: task bar for wm light
-# URL: http://code.google.com/p/tint2/
-# Maintainer: Chris Farrell timcowchip at gmail dot com
-# Packager: geantbrun at gmail dot com, tnut at nutyx dot com, timcowchip at gmail dot com
-# Depends on: cmake gtk2 librsvg startup-notification xorg-libxrandr xorg-libxinerama xorg-libxdamage xorg-libxcomposite pango imlib2 cairo
-
+# Description: Lightweight panel/taskbar
+# URL: http://tint2.googlecode.com
+# Packager: Vitaly Sinilin, vs at kp4 dot ru
+# Maintainer: Jose V Beneyto, sepen at crux dot nu
+# Depends on: cmake imlib2 pango
 
 name=tint2
-version=0.12.2
-release=1
- 
-source=(clock.patch)
- 
+version=0.11
+release=2
+source=(http://$name.googlecode.com/files/$name-$version.tar.bz2 \
+        add-power-now-support.patch)
+
 build() {
-git clone https://gitlab.com/o9000/tint2.git
-cd $name
+  cd $name-$version
 
-git checkout 0.12.2
+  patch -p0 -i $SRC/add-power-now-support.patch
 
-patch -Np1 -i $SRC/clock.patch
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr ../ \
--DENABLE_TINT2CONF=1
-make
-make DESTDIR=$PKG install
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_BATTERY=ON \
+    -DENABLE_EXAMPLES=OFF \
+    -DENABLE_TINT2CONF=OFF \
+    -DMANDIR=/usr/man \
+    -DSYSCONFDIR=/usr/etc
+
+  make
+  make DESTDIR=$PKG install
+  rm -rf $PKG/usr/share
 }

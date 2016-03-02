@@ -18,5 +18,7 @@ build()
 	--docdir=/usr/share/doc/$name-$version
    make
    make DESTDIR=$PKG install
+   cp /lib/ncurses/terminfo/x/xterm /usr/share/terminfo/x/
    install -D -m644 ../openbox.xinitrc $PKG/etc/X11/dm/openbox.xinitrc
+
 } 

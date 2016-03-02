@@ -99,7 +99,7 @@ paket_bilgi(){
 }
 
 derleme_listyap(){
-	bagimlist=`bagimli_bilgi "$1"`
+	bagimlist=`bagimlilar "$1"`
 	for bagim in $bagimlist;do
 		if [ "`cat derleme.liste | grep $bagim`" != "$bagim" ];then
 			derleme_listyap "$bagim"
@@ -123,10 +123,23 @@ derleme_listyap(){
 	fi
 } 
 
+derleme_listbilgi(){
+	echo "yapim asamasında"
+}
+
 paket_derle_oto(){
 	for dpkt in `cat $1`;do
 		echo $dpkt "derleniyor...."
 		paket_derle $dpkt
+	done
+}
+
+paket_kur_oto(){
+	local kpkt pkt
+	for kpkt in `cat $1`;do
+		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
+			mps -k "$pkt#"*
+		done
 	done
 }
       
@@ -176,12 +189,31 @@ paket_derle(){
 
 }
 
-bagimli_bilgi(){
+bagimlilar(){
 	local bagimd konum
 	konum="`find "$talimatname_dizin" -name $1`"
 	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
-	#echo $bagimd	
-	echo `echo "$bagimd" | sed 's/,/ /g'`
+	if [ -n "$bagimd" ]; then
+		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+		#sıralı gösterme
+		echo `echo "$bagimd" | sed 's/,/ /g'`
+	fi
+}
+
+bagimli_bilgi(){
+	local bagimd konum bag
+	konum="`find "$talimatname_dizin" -name $1`"
+	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
+	if [ -n "$bagimd" ]; then
+		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+		#sıralı gösterme
+		#echo `echo "$bagimd" | sed 's/,/ /g'`
+		#kurulu kontrollu gosterim
+		for bag in $bagimd;do
+			echo $bag "`kurulu_kontrol $bag`"
+		done
+	fi
+	echo "$1" "`kurulu_kontrol $1`"
 }
 
 kurulu_kontrol(){
@@ -254,6 +286,8 @@ ayarlar() {
 				paket_derle "$2" ;;	
 			-odk|--pkodk)
 				paket_derle_oto "$2" ;;	
+			-ok|--pkok)
+				paket_kur_oto "$2" ;;	
 			-dly|--drly)
 				if [ -f derleme.liste ];then
 					mv derleme.liste derleme.liste.eski
@@ -264,10 +298,12 @@ ayarlar() {
 				touch derleme.liste 
 				touch genel.derleme.liste 
 				derleme_listyap "$2" ;;	
+			-dlb|--drlb)
+				derleme_listbilgi "$2" | column -t;;	
 			-b|--pkbl)
 				paket_bilgi "$2" ;;
 			-bb|--pkbb)
-				bagimli_bilgi "$2" ;;
+				bagimli_bilgi "$2" | column -t;;
 			-G|--pvtg)
 				paketvt_guncelle ;;
 			-g|--pkgu)
