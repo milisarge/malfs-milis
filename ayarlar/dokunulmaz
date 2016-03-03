@@ -81,6 +81,7 @@ usr/local/etc/
 usr/local/share/
 usr/share/
 usr/share/applications/
+usr/share/gtk-doc/
 usr/share/icons/
 usr/share/icons/hicolor/
 usr/share/icons/hicolor/48x48/
@@ -109,3 +110,5 @@ var/run/
 var/spool/
 var/cache/
 var/lib/pkg/drivers/
+etc/ssl
+etc/ssl/certs

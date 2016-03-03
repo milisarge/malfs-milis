@@ -5,6 +5,7 @@
 _name=gst-plugins-base 
 
 name=gstreamer1-plugins-base
+version="1.6.3"
 release=1
 
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz)

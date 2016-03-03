@@ -133,6 +133,10 @@ paket_derle_oto(){
 		paket_derle $dpkt
 	done
 }
+#otomatik derle kontrollu kur
+paket_derle_oto2(){
+	mps -dly "$1" > /dev/null && mps -odk genel.derleme.liste
+}
 
 paket_kur_oto(){
 	local kpkt pkt
@@ -191,6 +195,7 @@ paket_derle(){
 	fi
 
 }
+
 
 bagimlilar(){
 	local bagimd konum
@@ -289,6 +294,8 @@ ayarlar() {
 				paket_derle "$2" ;;	
 			-odk|--pkodk)
 				paket_derle_oto "$2" ;;	
+			-odkk|--pkodk2)
+				paket_derle_oto2 "$2" ;;	
 			-ok|--pkok)
 				paket_kur_oto "$2" ;;	
 			-dly|--drly)

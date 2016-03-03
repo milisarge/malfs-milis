@@ -6,6 +6,7 @@ _name=gst-plugins-good
 
 name=gstreamer1-plugins-good
 release=1
+version=1.6.3
 
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz)
 
