@@ -1,20 +1,27 @@
-# Description: A small and lightweight implementation of the XDG Sound Theme Specification
-# URL: http://0pointer.de/lennart/projects/libcanberra
-# Packager: pierre at nutyx dot org
-# Depends on: gtk2 libvorbis alsa-lib gconf gstreamer1 gtk3 pulseaudio
+# Description: implementation of the XDG sound theme and name specifications.
+# URL: http://0pointer.de/lennart/projects/libcanberra/
+# Maintainer: Danny Rawlins, crux at romster dot me
+# Packager: Alan Mizrahi, alan at mizrahi dot com dot ve
+# Depends on: libvorbis
+# Optional: pulseaudio gstreamer alsa-lib
 
 name=libcanberra
 version=0.30
 release=1
-
-source=(http://pkgs.fedoraproject.org/repo/pkgs/libcanberra/libcanberra-0.30.tar.xz/34cb7e4430afaf6f447c4ebdb9b42072/libcanberra-$version.tar.xz )
+source=(http://0pointer.de/lennart/projects/$name/$name-$version.tar.xz)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc \
---disable-oss
-make
-make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version \
-install
-}  
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--disable-gtk-doc \
+		--disable-gtk-doc-html \
+		--disable-gtk3 \
+		--disable-oss
+	
+	make
+	make -j1 DESTDIR=$PKG install
+	#make DESTDIR=$PKG install
+	rm -r $PKG/usr/share/doc $PKG/usr/share/gtk-doc
+}

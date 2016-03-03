@@ -7,7 +7,7 @@
 name=xfce4-whiskermenu-plugin
 version=1.5.2
 release=1
-source=(http://gottcode.org/$name/$name-$version.tar.bz2)
+source=(http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/xfce4/$name-$version.tar.bz2)
 build() {
 
 cd $name-$version
