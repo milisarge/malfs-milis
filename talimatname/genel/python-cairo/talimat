@@ -7,7 +7,7 @@ name=python-cairo
 version=1.10.0
 release=1
 
-source=(http://pkgs.fedoraproject.org/repo/pkgs/pycairo/py2cairo-1.10.0.tar.bz2/20337132c4ab06c1146ad384d55372c5/py2cairo-$version.tar.bz2)
+source=(http://cairographics.org/releases/py2cairo-$version.tar.bz2)
 
 build() {
 	cd py2cairo-$version

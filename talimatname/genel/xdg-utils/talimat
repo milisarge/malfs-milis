@@ -1,3 +1,4 @@
+
 # Description: Command line tools that assist applications with a variety of desktop integration tasks.
 # URL: http://portland.freedesktop.org/wiki/
 # Packager: pierre at nutyx dot org
@@ -6,13 +7,13 @@
 run=(xorg-app)
 
 name=xdg-utils
-version=1.1.1
-release=1
-
-source=(http://pkgs.fedoraproject.org/repo/pkgs/xdg-utils/xdg-utils-1.1.1.tar.gz/2d0aec6037769a5f138ff404b1bb4b15/xdg-utils-1.1.1.tar.gz)
+version=1.1.0.rc3
+release=2
+_version=1.1.0-rc3
+source=(http://people.freedesktop.org/~rdieter/$name/$name-${_version}.tar.gz)
 
 build() {
-cd $name-${version}
+cd $name-${_version}
 ./configure --prefix=/usr \
 --mandir=/usr/share/man
 make
