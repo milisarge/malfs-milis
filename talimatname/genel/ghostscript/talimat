@@ -7,7 +7,7 @@ name=ghostscript
 version=9.18
 release=1
 
-source=( http://downloads.ghostscript.com/public/$name-$version.tar.gz
+source=( http://repository.timesys.com/buildsources/g/ghostscript/ghostscript-9.18/ghostscript-9.18.tar.gz
          http://ghostscript.googlecode.com/files/ghostscript-fonts-std-8.11.tar.gz
          http://ftp.gnu.org/pub/gnu/ghostscript/gnu-gs-fonts-other-6.0.tar.gz )
 

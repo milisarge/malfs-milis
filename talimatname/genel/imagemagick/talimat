@@ -5,10 +5,10 @@
 # Depends on: freetype ghostscript lcms libgsf giflib libxml2 openexr libwmf libpng librsvg libwebp djvulibre 
 
 name=imagemagick
-version=6.9.3.0
+version=6.9.3-6
 release=1
-_version=6.9.3-0
-source=(ftp://ftp.imagemagick.org/pub/ImageMagick/releases/ImageMagick-${_version}.tar.xz)
+_version=6.9.3-6
+source=(https://launchpad.net/imagemagick/main/6.9.3-6/+download/ImageMagick-$version.tar.gz)
 
 build () {
     cd ImageMagick-*
