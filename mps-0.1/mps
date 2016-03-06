@@ -1,7 +1,10 @@
 #!/bin/bash
+. /etc/mpsd.conf
+. /root/bin/fonks.sh
 versiyon="0.1"
 paketdepo="/depo/paketler/"
 sunucu="192.168.3.193:8000/paketdepo/"
+git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
 kurulum_onay="evet"
@@ -40,7 +43,7 @@ icerik_ekle(){
 	if [ -f /etc/ld.so.conf ];then
 		ldconfig
 	fi
-	echo $paketad" paketi kuruldu."
+	ryaz 34 $paketad" paketi kuruldu."
 }
 
 paket_sil(){
@@ -75,7 +78,7 @@ paket_sil(){
 			fi
 			rm -f /tmp/$paket.sil
 		else
-			echo "paket zaten kurulu değil!"
+			ryaz 31 "paket zaten kurulu değil!"
 		fi
 	else
 		echo "kritik mesaj:$dokunulmaz dosyası yok."
@@ -124,7 +127,7 @@ derleme_listyap(){
 } 
 
 derleme_listbilgi(){
-	echo "yapim asamasında"
+	ryaz 34 "yapim asamasında"
 }
 
 paket_derle_oto(){
@@ -148,6 +151,7 @@ paket_kur_oto(){
 }
       
 paket_derle(){
+	kaynakdizin_kontrol
 	local konum derleme_onay eh bagimd
 	derleme_onay="h"
 	konum="`find "$talimatname_dizin" -name $1`"
@@ -232,6 +236,27 @@ kurulu_kontrol(){
 	echo "degil"
 }
 
+kaynakdizin_kontrol(){
+	if [ ! -d $DERLEME_KAYNAKDIZIN ];then
+		mkdir $DERLEME_KAYNAKDIZIN
+	fi
+}
+
+git_guncelle() {
+	kaynakdizin_kontrol
+	cd $DERLEME_KAYNAKDIZIN
+	#git sunucudan guncelleme
+	ryaz 33 "git sunucudan güncelleme çekiliyor."
+	if [ ! -d milis.git ];then
+		git clone $git_sunucu milis.git
+	else
+		cd milis.git
+		git pull
+	fi
+	ryaz 33 "yerele eşitleniyor."
+	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/talimatname/ $talimatname_dizin
+}
+
 paketvt_guncelle(){
 	wget -q --spider "$sunucu""paket.vt"
 	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
@@ -245,6 +270,13 @@ paketvt_guncelle(){
 		exit 1
 	fi
 	echo "paket veritabanı guncelleme olumsuz."
+}
+
+talimat_bilgi(){
+	local konum HEAD
+	konum="`find "$talimatname_dizin" -name $1`"
+	HEAD=`grep -B 12 "build()" $konum/talimat`
+	echo $HEAD
 }
 
 sistem_kontrol(){
@@ -309,11 +341,15 @@ ayarlar() {
 				touch genel.derleme.liste 
 				derleme_listyap "$2" ;;	
 			-dlb|--drlb)
-				derleme_listbilgi "$2" | column -t;;	
+				derleme_listbilgi "$2";;	
 			-b|--pkbl)
 				paket_bilgi "$2" ;;
 			-bb|--pkbb)
 				bagimli_bilgi "$2" | column -t;;
+			-tb|--talb)
+				talimat_bilgi "$2" | column -t;;
+			-Ggit|--gitgun)
+				git_guncelle ;;
 			-G|--pvtg)
 				paketvt_guncelle ;;
 			-g|--pkgu)
