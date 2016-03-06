@@ -48,7 +48,7 @@ Milis Automated Linux From Scratch
  
  lfs@makine:~$ ./lfs-mekanizma -td onsistem
 
- =======>  '/home/lfs/talimatname/onsistem/0mps/0mps#0.1-x86_64.mps.lz' derleme basarili
+ =======>  '/home/lfs/talimatname/onsistem/0libarchive/0libarchive#3.1.2-x86_64.mps.lz' derleme basarili
  
  yukarıdaki ifade goruldukten sonra exit komutu ile lfs kullanıcısından çıkılır.
 
