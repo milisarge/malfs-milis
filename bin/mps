@@ -1,4 +1,5 @@
 #!/bin/bash
+. /etc/mpsd.conf
 versiyon="0.1"
 paketdepo="/depo/paketler/"
 sunucu="192.168.3.193:8000/paketdepo/"
@@ -148,6 +149,9 @@ paket_kur_oto(){
 }
       
 paket_derle(){
+	if [ ! -d $PKGMK_SOURCE_DIR ];then
+		mkdir $PKGMK_SOURCE_DIR
+	fi
 	local konum derleme_onay eh bagimd
 	derleme_onay="h"
 	konum="`find "$talimatname_dizin" -name $1`"
