@@ -15,31 +15,35 @@ kokdizin="/"
 icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
 	paketad=`basename $paketad`
-	echo $paketad" paketi kuruluyor."
+	ryaz 34 $paketad" paketi kuruluyor."
 	tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 	#kos-kur kontrolu
 	if [ -f /tmp/.PRE ];then
 		bash  /tmp/.PRE
 		rm  /tmp/.PRE
 	fi
-	tar xf $1 -C $kokdizin  &&
+	mkdir -p tmpk.$paketad
+	tar xf $1 -C tmpk.$paketad  &&
 	mkdir -p /var/lib/pkg/DB/"$paketad" &&
-	mv  $kokdizin/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
-	mv  $kokdizin/.META /var/lib/pkg/DB/"$paketad"/META &&
+	cp -avf tmpk.$paketad/* $kokdizin > /var/lib/pkg/DB/"$paketad"/kurulan &&
+	mv  tmpk.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
+	mv  tmpk.$paketad/.META /var/lib/pkg/DB/"$paketad"/META &&
+	
 	#kur-kos calistirilmasi
-	if [ -f $kokdizin.POST ];then
-		bash  $kokdizin.POST
-		rm  $kokdizin.POST
+	if [ -f tmpk.$paketad/.POST ];then
+		bash  tmpk.$paketad/.POST
+		rm  tmpk.$paketad/.POST
 	fi
-	if [ -f $kokdizin.PRE ];then
-		rm  $kokdizin.PRE
-	fi
-	if [ -f $kokdizin/.okubeni ];then
-		rm  $kokdizin/.okubeni
-	fi
-	if [ -f $kokdizin/.README ];then
-		rm  $kokdizin/.README
-	fi
+	#if [ -f $kokdizin.PRE ];then
+	#	rm  $kokdizin.PRE
+	#fi
+	#if [ -f $kokdizin/.okubeni ];then
+	#	rm  $kokdizin/.okubeni
+	#fi
+	#if [ -f $kokdizin/.README ];then
+	#	rm  $kokdizin/.README
+	#fi
+	rm -r tmpk.$paketad
 	if [ -f /etc/ld.so.conf ];then
 		ldconfig
 	fi
@@ -52,7 +56,7 @@ paket_sil(){
 		kkont=`kurulu_kontrol "$1"`
 		if [ "$kkont" = "kurulu" ];then
 			paket="$1"
-			echo $paket" paketi siliniyor."
+			ryaz 34 $paket" paketi siliniyor."
 			#while IFS='' read -r line || [[ -n "$line" ]]; do
 			while read -r dosya
 			do
@@ -74,7 +78,7 @@ paket_sil(){
 			if [ "$sil_onay" = "e" ];then
 				xargs rm -r -f < /tmp/$paket.sil &&
 				rm -r -f /var/lib/pkg/DB/"$paket" &&
-				echo $paket" paketi silindi."
+				ryaz 34 $paket" paketi silindi."
 			fi
 			rm -f /tmp/$paket.sil
 		else
@@ -85,6 +89,40 @@ paket_sil(){
 		#tamirat
 		cp /root/ayarlar/dokunulmaz /etc/
 		echo "dokunulmazlık tamiri yapıldı.,komutu yineleyiniz."
+	fi
+
+}
+
+paket_silyeni(){
+	local paket kkont sil_onay
+	paket="$1"
+	if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
+		kkont=`kurulu_kontrol "$1"`
+		if [ "$kkont" = "kurulu" ];then
+			#
+			#while IFS='' read -r line || [[ -n "$line" ]]; do
+			
+			cat /var/lib/pkg/DB/htop/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
+			
+			while true; do
+				ryaz 34 $paket" $1 paketi kaldırılsın mı?";read -p "e veya h-> " eh
+				case $eh in
+					[Ee]* ) sil_onay="e"; break;;
+					[Hh]* ) break;;
+					* ) echo "e veya h";;
+				esac
+			done
+			if [ "$sil_onay" = "e" ];then
+				xargs rm -r -f < /tmp/$paket.sil &&
+				rm -r -f /var/lib/pkg/DB/"$paket" &&
+				ryaz 34 $paket" paketi silindi."
+			fi
+			rm -f /tmp/$paket.sil
+		else
+			ryaz 31 "paket zaten kurulu değil!"
+		fi
+	else
+		echo "kritik mesaj:kurulanlar dosyası yok."
 	fi
 
 }
@@ -319,6 +357,8 @@ ayarlar() {
 				ikaynak="yerel" ;;
 			-s|--pksl)
 				paket_sil "$2" ;;
+			-si|--pksil)
+				paket_silyeni "$2" ;;
 			-d|--pkde)
 				kurulum_onay="olumsuz"
 				paket_derle "$2" ;;
