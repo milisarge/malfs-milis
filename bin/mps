@@ -200,7 +200,7 @@ paket_derle(){
 		cd tmp."$1"
 		
 		
-		if [ `kurulu_kontrol "$1"` = "kurulu" ];then
+		if [ `kurulu_kontrol "$1"` = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
 			#versiyon kontrolunde acılacak
 			#while true; do
 			#	read -p "$1 paketi zaten kurulu yine de derlensin mi?" eh
@@ -363,6 +363,10 @@ ayarlar() {
 			-d|--pkde)
 				kurulum_onay="olumsuz"
 				paket_derle "$2" ;;
+			-zd|--pkzde)
+				zorla_derle="evet"
+				kurulum_onay="olumsuz"
+				paket_derle "$2" ;;
 			-dk|--pkdk)
 				paket_derle "$2" ;;	
 			-odk|--pkodk)
@@ -474,7 +478,7 @@ if [ "$ikaynak" = "yerel" ]; then
 				esac
 			done
 			if [ "$silme" = "e" ];then
-				paket_sil "$paketad"
+				paket_silyeni "$paketad"
 				icerik_ekle "$2"
 			fi
 		fi
