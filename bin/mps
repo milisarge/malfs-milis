@@ -106,7 +106,7 @@ paket_silyeni(){
 			cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 			
 			while true; do
-				ryaz 34 $paket" $1 paketi kaldırılsın mı?";read -p "e veya h-> " eh
+				ryaz 34 $paket" paketi kaldırılsın mı?";read -p "e veya h-> " eh
 				case $eh in
 					[Ee]* ) sil_onay="e"; break;;
 					[Hh]* ) break;;

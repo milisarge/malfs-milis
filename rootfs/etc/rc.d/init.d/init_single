@@ -16,6 +16,7 @@ case ${1} in
          do_start_swap || exit 1
          do_start_console || exit 1
          do_start_sysctl || exit 1
+         klavye_ayar || exit 1
          ;;
    stop)
          do_stop_clock

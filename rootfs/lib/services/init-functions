@@ -1369,6 +1369,17 @@ do_start_sysctl()
   fi
 }
 ################################################################################
+# klavye_ayar()                                                 	           #
+#                                                                              #
+# Description : klavye ayarlama									               #
+#                                                                              #
+################################################################################
+klavye_ayar()
+{
+  #turkce klavye
+  loadkeys trq
+}
+################################################################################
 # do_start_network()                                                           #
 #                                                                              #
 # Description: Start the network depending on what's available nothing, wicd   #
