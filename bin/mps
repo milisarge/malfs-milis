@@ -51,7 +51,7 @@ icerik_ekle(){
 	ryaz 34 $paketad" paketi kuruldu."
 }
 
-paket_sil(){
+paket_siles(){
 	local paket kkont sil_onay
 	if [ -f $dokunulmaz ];then
 		kkont=`kurulu_kontrol "$1"`
@@ -94,7 +94,7 @@ paket_sil(){
 
 }
 
-paket_silyeni(){
+paket_sil(){
 	local paket kkont sil_onay
 	paket="$1"
 	if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
@@ -294,6 +294,7 @@ git_guncelle() {
 	fi
 	ryaz 33 "yerele eşitleniyor."
 	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/talimatname/ $talimatname_dizin
+	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/bin/ `dirname $talimatname_dizin`/bin
 }
 
 paketvt_guncelle(){
@@ -356,10 +357,10 @@ ayarlar() {
 				ikaynak="ag" ;;
 			-k|--yrku)
 				ikaynak="yerel" ;;
-			-s|--pksl)
+			-sil|--pksl)
+				paket_siles "$2" ;;
+			-s|--pksil)
 				paket_sil "$2" ;;
-			-si|--pksil)
-				paket_silyeni "$2" ;;
 			-d|--pkde)
 				kurulum_onay="olumsuz"
 				paket_derle "$2" ;;
