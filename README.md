@@ -149,7 +149,7 @@ Milis Automated Linux From Scratch
  
  komutları verilir.çalışma dizini altında malfs.iso oluşacaktır.
  
- root@makine:/opt/malfs# qemu-system-x86_64 -m 512 malfs.iso
+ root@makine:/opt/malfs# ./qemu.sh
  
  komutuyla iso test edilebilir. 
  

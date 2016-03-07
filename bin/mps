@@ -262,6 +262,7 @@ bagimli_bilgi(){
 		done
 	fi
 	echo "$1" "`kurulu_kontrol $1`"
+	
 }
 
 kurulu_kontrol(){
