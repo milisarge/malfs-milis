@@ -25,8 +25,9 @@ icerik_ekle(){
 	mkdir -p tmpk.$paketad
 	tar xf $1 -C tmpk.$paketad  &&
 	mkdir -p /var/lib/pkg/DB/"$paketad" &&
-	cp -avf tmpk.$paketad/* $kokdizin > /var/lib/pkg/DB/"$paketad"/kurulan &&
-	mv  tmpk.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
+	cp -avf tmpk.$paketad/* $kokdizin > tmpk.$paketad/kurulan &&
+	cat tmpk.$paketad/kurulan | cut -d '>' -f2 > /var/lib/pkg/DB/"$paketad"/kurulan
+	#mv  tmpk.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
 	mv  tmpk.$paketad/.META /var/lib/pkg/DB/"$paketad"/META &&
 	
 	#kur-kos calistirilmasi
@@ -102,7 +103,7 @@ paket_silyeni(){
 			#
 			#while IFS='' read -r line || [[ -n "$line" ]]; do
 			
-			cat /var/lib/pkg/DB/htop/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
+			cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 			
 			while true; do
 				ryaz 34 $paket" $1 paketi kaldırılsın mı?";read -p "e veya h-> " eh
