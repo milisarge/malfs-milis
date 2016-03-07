@@ -17,6 +17,5 @@ make
 make html
 make check
 make DESTDIR=$PKG install
-make -C doc DESTDIR=$PKG install-html
-rm -rf $PKG/usr/share/info/dir
+rm -r $PKG/usr/share/info
 }

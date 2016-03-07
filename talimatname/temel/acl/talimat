@@ -7,7 +7,7 @@ version=2.2.52
 release=1
 
 source=( http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
-PKGMK_GROUPS=(devel man doc)
+#PKGMK_GROUPS=(devel man doc)
 build() {
 cd acl-*
 
@@ -28,15 +28,4 @@ mkdir $PKG/lib
 mv -v $PKG/usr/lib/libacl.so.* $PKG/lib
 ln -sfv ../../lib/libacl.so.1 \
 $PKG/usr/lib/libacl.so
-
-mkdir -p $PKG/usr/share/doc
-install -v -m644 doc/*.txt \
-$PKG/usr/share/doc/acl-$version
-}
-devel () {
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
-usr/lib usr/include
-rm -rvf usr/lib usr/include
 }

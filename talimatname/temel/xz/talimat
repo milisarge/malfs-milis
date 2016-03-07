@@ -26,14 +26,5 @@ mkdir -pv $PKG/{,usr/}lib
 mv -v $PKG/usr/lib/liblzma.so.* \
 $PKG/lib
 ln -svf ../../lib/liblzma.so.$version $PKG/usr/lib/liblzma.so
-}
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.devel#$version-any.$PKGMK_PACKAGE_EXT \
-usr/lib \
-usr/include
-rm -r usr/lib \
-usr/include
+rm -r $PKG/usr/share/doc/
 }

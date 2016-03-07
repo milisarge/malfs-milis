@@ -2,6 +2,7 @@
 # URL: http://www.kernel.org
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 
+
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"
 PKGMK_GROUPS=(devel doc)
@@ -17,7 +18,6 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_version}.tar.xz
 
 build(){
 
-bsdtar -p -o -C $SRC -xf linux-${_version}.tar.xz
 
 cd linux-${_version}
 
@@ -33,7 +33,7 @@ case `uname -m` in
 		cp $SRC/$name.config ./.config;
 esac
 
-make menuconfig
+# make menuconfig
 
 make || make -j1
 
@@ -117,7 +117,7 @@ do rm -rf usr/src/linux-${_version}/arch/$i
 done
 
 bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.devel#$version-any.mps \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_BUILDVER}any.${PKGMK_PACKAGE_EXT} \
 usr/src/linux-${_version}
 
 rm -r usr
@@ -131,7 +131,7 @@ mv $SRC/linux-${_version}/Documentation \
 usr/share/doc/linux-$version
 
 bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.doc#$version-any.mps \
+$PKGMK_PACKAGE_DIR/$name.doc${PKGMK_BUILDVER}any.${PKGMK_PACKAGE_EXT} \
 usr/share/doc/linux-$version
 
 rm -r usr

@@ -33,6 +33,5 @@ EOF
 
 chmod -v 755 $PKG/bin/lex
 
-rm -rf $PKG/usr/share/info/dir
-
+rm -r $PKG/usr/share/{info,doc}
 }

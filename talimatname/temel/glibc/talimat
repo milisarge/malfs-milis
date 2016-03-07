@@ -1,11 +1,11 @@
 # Description: The Glibc package contains the main C library.
 # URL: https://www.gnu.org/software/libc/
-# Packagers: tnut at nutyx dot org
+# Packagers: milis
 kernelversion=4.4
-PKGMK_GROUPS=(devel man doc)
+#PKGMK_GROUPS=(devel man doc)
 name=glibc
 version=2.22
-release=3
+release=1
 
 source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$kernelversion.tar.xz
 	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-largefile-1.patch
@@ -105,11 +105,4 @@ EOF
 fi
 
 mkdir $PKG/etc/ld.so.conf.d
-}
-devel() {
-cd $PKG
-bsdtar -r -f \
-$PKGMK_PACKAGE_DIR/${name}.${group}#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
-usr/include
-rm -r usr/include
 }

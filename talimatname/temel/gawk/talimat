@@ -23,13 +23,5 @@ mkdir -vp $PKG/usr/share/doc/gawk-$version
 cp    -v doc/{awkforai.txt,*.{eps,pdf,jpg}} \
 $PKG/usr/share/doc/gawk-$version
 }
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.devel#$version-any.$PKGMK_PACKAGE_EXT \
-usr/share/awk usr/include
 
-rm -r usr/share/awk usr/include
-}
 

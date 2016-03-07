@@ -8,7 +8,6 @@ release=1
 
 source=( ftp://ftp.kernel.org/pub/software/utils/$name/$name-$version.tar.xz )
 
-PKGMK_GROUPS=(devel man)
 build() {
 cd $name-$version
 make OPT="$CFLAGS -fPIC -DPIC" \

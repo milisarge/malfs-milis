@@ -11,8 +11,6 @@ release=1
 source=( https://www.kernel.org/pub/software/scm/$name/$name{,-manpages,-htmldocs}-$version.tar.xz)
 run=(openssh)
 
-PKGMK_GROUPS=(doc man)
-
 build() {
 cd $name-$version
 
@@ -23,23 +21,6 @@ cd $name-$version
 
 make
 make DESTDIR=$PKG install
-
-mkdir -p $PKG/usr/share/{man,doc/git-$version}
-
-cd $SRC
-for i in *.txt *.html howto RelNotes technical
-do
-	cp -a $i \
-	$PKG/usr/share/doc/git-$version
-done
-
-mv man* \
-$PKG/usr/share/man
-
-chown -R root:root $PKG/usr/share/{man,doc}
-
-find $PKG/usr/share/doc/git-$version -type d -exec chmod 755 {} \;
-find $PKG/usr/share/doc/git-$version -type f -exec chmod 644 {} \;
 
 find $PKG -type f -name perllocal.pod -exec rm {} \;
 }

@@ -19,7 +19,7 @@ patch -Np1 -i ../$name-$version-upstream_fixes-1.patch
 make
 make check
 make DESTDIR=$PKG install
-make html
-make DESTDIR=$PKG install-html
-rm -rf $PKG/usr/share/info/dir
+#make html
+#make DESTDIR=$PKG install-html
+#rm -rf $PKG/usr/share/info/dir
 }

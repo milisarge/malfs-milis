@@ -19,12 +19,3 @@ make DESTDIR=$PKG install
 rm -rf $PKG/usr/share/info/dir
 chmod 0755 $PKG/usr/lib/preloadable_libintl.so
 }
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
-usr/include usr/share/aclocal usr/share/gettext
-
-rm -r usr/include usr/share/aclocal usr/share/gettext
-}

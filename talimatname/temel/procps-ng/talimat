@@ -7,7 +7,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/project/$name/Production/$name-$version.tar.xz )
 
-PKGMK_GROUPS=(devel man doc)
+#PKGMK_GROUPS=(devel man doc)
 
 build()
 {
@@ -27,5 +27,6 @@ mkdir -p $PKG/usr/lib
 
 mv $PKG/lib/pkgconfig \
 $PKG/usr/lib/
+rm -r $PKG/usr/share/doc
 
 }

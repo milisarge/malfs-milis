@@ -29,16 +29,3 @@ for target in depmod insmod modinfo modprobe rmmod; do
 done
 ln -sv kmod $PKG/bin/lsmod
 }
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.devel#$version-any.$PKGMK_PACKAGE_EXT \
-usr/lib \
-usr/include \
-usr/share/bash-completion
-rm -r usr/lib \
-usr/include \
-usr/share/bash-completion
-}
-

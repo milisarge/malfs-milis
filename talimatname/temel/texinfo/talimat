@@ -16,11 +16,3 @@ make
 make install DESTDIR=$PKG
 rm -rf $PKG/usr/share/info/dir
 }
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
-usr/share/texinfo
-rm -r usr/share/texinfo
-}

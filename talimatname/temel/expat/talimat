@@ -7,13 +7,11 @@ version=2.1.0
 release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
-PKGMK_GROUPS=(devel doc man)
+
 build() {
 cd $name-$version
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 
-install -v -m755 -d $PKG/usr/share/doc/$name-$version
-install -v -m644 doc/*.{html,png,css} $PKG/usr/share/doc/$name-$version
 }

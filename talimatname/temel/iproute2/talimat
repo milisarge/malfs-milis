@@ -20,17 +20,8 @@ sed -i 's/tipc //' Makefile
 
 make SBINDIR=/sbin MANDIR=/usr/share/man INFODIR=/usr/share/info \
 	DESTDIR=$PKG 
-make SBINDIR=/sbin MANDIR=/usr/share/man \
+make SBINDIR=/sbin  \
 	INFODIR=/usr/share/info DESTDIR=$PKG \
-     DOCDIR=/usr/share/doc/iproute2-$version install
+        install
 rm -rf $PKG/usr/share/info/dir
-}
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
-usr/lib
-
-rm -r usr/lib
 }

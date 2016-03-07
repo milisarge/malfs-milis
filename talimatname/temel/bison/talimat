@@ -8,7 +8,7 @@ release=2
 
 source=(http://ftp.gnu.org/gnu/bison/bison-$version.tar.xz)
 
-PKGMK_GROUPS=(man locale)
+#PKGMK_GROUPS=(man locale)
 
 build()
 {
@@ -18,5 +18,6 @@ cd bison-$version
 make
 make check||true
 make DESTDIR=$PKG install
-rm -rf $PKG/usr/share/info/dir
+rm -r $PKG/usr/share/info $PKG/usr/share/doc/
+rm $PKG/usr/share/bison/README
 }

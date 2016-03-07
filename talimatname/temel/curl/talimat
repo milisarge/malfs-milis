@@ -10,8 +10,6 @@ release=1
 
 source=(http://curl.haxx.se/download/$name-$version.tar.lzma)
 
-PKGMK_GROUPS=(devel doc man)
-
 build() {
 cd $name-$version
 ./configure --prefix=/usr \
@@ -45,11 +43,4 @@ done
 ln -sv ../../lib/libcurl.so.4.4.0 \
 $PKG/usr/lib/libcurl.so.4.4.0
 
-}
-devel() {
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
-usr/include usr/lib/pkgconfig usr/share/aclocal
-rm -r  usr/include usr/lib/pkgconfig usr/share/aclocal
 }

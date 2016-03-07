@@ -1,14 +1,12 @@
 # Description: The Zlib package contains compression and decompression routines used by some programs.
 # URL: http://www.zlib.net/
 # Maintainer: Jean-loup Gailly (compression), Mark Adler (decompression)
-# Packager: pierre at nutyx dot org
+# Packager: mahmutov
 name=zlib
 version=1.2.8
 release=2
 
 source=(http://www.zlib.net/zlib-$version.tar.xz)
-
-PKGMK_GROUPS=(devel man)
 
 build() {
 # Vérifier si necessaire de faire les verifs du bon fonctionnement de
@@ -46,10 +44,4 @@ mkdir -p $PKG/lib
 mv -v $PKG/usr/lib/libz.so.* $PKG/lib
 ln -sfv ../../lib/libz.so.$version  $PKG/usr/lib/libz.so
 }
-devel () {
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
-usr/lib usr/include
-rm -rvf usr/lib usr/include
-}
+

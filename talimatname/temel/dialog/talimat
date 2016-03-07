@@ -3,8 +3,6 @@
 # Maintainer: Thomas E. Dickey dickey at invisible-island dot net
 # Packager: tnut at nutyx dot org
 
-PKGMK_GROUPS=(devel man)
-
 name=dialog
 version=1.2.20140911
 release=1
@@ -19,12 +17,4 @@ cd $name-1.2-20140911
 --mandir=/usr/share/man
 make
 make DESTDIR=$PKG install
-}
-devel() {
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
-usr/lib
-
-rm -r usr/lib
 }

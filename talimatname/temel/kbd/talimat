@@ -24,8 +24,4 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig ./configure --prefix=/usr  \
 make
 make check
 make DESTDIR=$PKG install
-
-mkdir -pv $PKG/usr/share/doc/$name-$version
-cp -R -v docs/doc/* \
-$PKG/usr/share/doc/$name-$version
 }

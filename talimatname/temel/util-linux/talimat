@@ -8,8 +8,6 @@ release=1
 source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version:0:4}/util-linux-$version.tar.xz
 	)
 
-PKGMK_GROUPS=(devel doc man)
-
 build()
 {
 cd util-linux-$version
@@ -37,12 +35,7 @@ rm -r $PKG/usr/bin
 
 mv $PKG/usr/sbin/* $PKG/sbin/
 rm -r $PKG/usr/sbin
+rm -r $PKG/usr/share/{doc,bash-completion}
+rm $PKG/sbin/{mkfs.bfs,mkfs.minix,fsck.minix}
+rm $PKG/usr/share/man/man8/{fsck.minix,mkfs.bfs,mkfs.minix}.8
 }
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
-usr/include usr/lib usr/share/bash-completion
-rm -r usr/{include,lib,share/bash-completion}
-}	

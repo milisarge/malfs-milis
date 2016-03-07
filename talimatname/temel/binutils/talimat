@@ -33,6 +33,7 @@ make tooldir=/
 make tooldir=/usr DESTDIR=$PKG install
 
 rm -rf $PKG/usr/share/info/dir
+rm $PKG/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}.1
 mkdir $PKG/lib
 for lib in libopcodes libbfd
 do
@@ -44,13 +45,4 @@ do
 	ln -s ../../lib/$lib-$version.so \
 	$PKG/usr/lib/$lib
 done
-}
-devel()
-{
-cd $PKG
-bsdtar -r -f \
-$PKGMK_PACKAGE_DIR/${name}.${group}#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
-usr/include usr/lib/ldscripts
-rm -r usr/include \
-usr/lib/ldscripts
 }

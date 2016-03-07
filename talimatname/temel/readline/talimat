@@ -9,7 +9,7 @@ release=1
 source=(http://ftp.gnu.org/gnu/readline/readline-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-upstream_fixes-3.patch)
 
-PKGMK_GROUPS=(devel man doc)
+#PKGMK_GROUPS=(devel man doc)
 
 build()
 {
@@ -44,15 +44,5 @@ $PKG/usr/lib/libreadline.so
 
 ln -sfv ../../lib/libhistory.so.6 \
 $PKG/usr/lib/libhistory.so
-
-}
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
-usr/lib/libhistory.a usr/lib/libreadline.a usr/include usr/share/readline \
-usr/lib/libhistory.so usr/lib/libreadline.so
-rm -r usr/lib/libhistory.a usr/lib/libreadline.a usr/include usr/share/readline \
-usr/lib/libhistory.so usr/lib/libreadline.so
+rm -r $PKG/usr/share/{doc,info}
 }

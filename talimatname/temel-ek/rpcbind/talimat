@@ -3,7 +3,6 @@
 # Packager: alienus at nutyx dot org, tnut at nutyx dot org
 # Depends on: libtirpc
 
-PKGMK_GROUPS=(man)
 name=rpcbind
 version=0.2.3
 release=1

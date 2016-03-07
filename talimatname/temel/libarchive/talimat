@@ -2,7 +2,6 @@
 # URL: http://people.freebsd.org/~kientzle/libarchive
 # Maintainer: kientzle at acm dot org
 # Packager: tnuttens at gmail dot com
-PKGMK_GROUPS=(devel doc man)
 
 name=libarchive
 version=3.1.2
@@ -45,11 +44,4 @@ done
 ln -sv ../../lib/libarchive.so.13.1.2 \
 $PKG/usr/lib/libarchive.so.13.1.2
 
-}
-devel() {
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-`uname -m`.$PKGMK_PACKAGE_EXT \
-usr/lib/libarchive.a usr/lib/libarchive.la usr/include usr/lib/pkgconfig
-rm -r usr/lib/libarchive.a usr/lib/libarchive.la usr/include usr/lib/pkgconfig
 }

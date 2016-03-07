@@ -9,7 +9,7 @@ release=1
 
 source=(http://prdownloads.sourceforge.net/$name/$name-$version.tar.gz)
 
-PKGMK_GROUPS=(devel man doc)
+#PKGMK_GROUPS=(devel man doc)
 
 build()
 {
@@ -46,13 +46,4 @@ rm -rf $PKG/usr/share/info/dir
 mkdir $PKG/usr/lib
 mv $PKG/lib/pkgconfig \
 $PKG/usr/lib
-}
-devel()
-{
-cd $PKG
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.devel#$version-any.$PKGMK_PACKAGE_EXT \
-usr/include usr/lib/pkgconfig usr/share/et usr/share/ss
-
-rm -r usr/{include,lib/pkgconfig,share/et,share/ss}
 }
