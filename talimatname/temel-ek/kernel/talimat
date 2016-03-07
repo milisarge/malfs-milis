@@ -3,10 +3,6 @@
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 
 
-PKGMK_IGNORE_UNPACK="yes"
-PKGMK_NO_STRIP="yes"
-PKGMK_GROUPS=(devel doc)
-
 name=kernel
 version=4.4.1
 release=1
@@ -104,35 +100,4 @@ if [ -f aaabasicfs-${AAABASICFS}.tar.xz ]; then
    echo "evaluate_retval" >> $PKGMK_ROOT/$name.pre-install
  done
 fi
-}
-devel() {
-
-cd $PKG
-rm -r usr/src/linux-${_version}/{tools,ipc,init,drivers,firmware,fs,mm,samples,security,sound,virt}
-for i in alpha arc arm arm26 arm64 avr32 blackfin c6x \
-cris frv h8300 hexagon ia64 m32r m68k m68knommu metag \
-mips microblaze mn10300 openrisc parisc powerpc ppc s390 \
-score sh sh64 sparc sparc64 tile unicore32 um v850 xtensa
-do rm -rf usr/src/linux-${_version}/arch/$i
-done
-
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_BUILDVER}any.${PKGMK_PACKAGE_EXT} \
-usr/src/linux-${_version}
-
-rm -r usr
-}
-
-doc() {
-
-cd $PKG
-mkdir -p usr/share/doc
-mv $SRC/linux-${_version}/Documentation \
-usr/share/doc/linux-$version
-
-bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.doc${PKGMK_BUILDVER}any.${PKGMK_PACKAGE_EXT} \
-usr/share/doc/linux-$version
-
-rm -r usr
 }
