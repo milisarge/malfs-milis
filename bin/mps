@@ -11,6 +11,8 @@ kurulum_onay="evet"
 dokunulmaz="/etc/dokunulmaz"
 talimatname_dizin="/root/talimatname"
 kokdizin="/"
+VT="/var/lib/pkg/DB"
+
 
 icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
@@ -190,6 +192,8 @@ paket_kur_oto(){
 }
       
 paket_derle(){
+	#eski derleme kalıntılarını temizle
+	rm -r tmp.*
 	kaynakdizin_kontrol
 	local konum derleme_onay eh bagimd
 	derleme_onay="h"
@@ -198,24 +202,14 @@ paket_derle(){
 		mkdir -p tmp."$1" 
 		cp -a $konum/* tmp."$1"/
 		cd tmp."$1"
-		
-		
-		if [ `kurulu_kontrol "$1"` = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
-			#versiyon kontrolunde acılacak
-			#while true; do
-			#	read -p "$1 paketi zaten kurulu yine de derlensin mi?" eh
-			#	case $eh in
-			#		[Ee]* ) derleme_onay="e"; break;;
-			#		[Hh]* ) break;;
-			#		* ) echo "e veya h";;
-			#	esac
-			#done
+		if [ "`kurulu_kontrol "$1"`" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
 			derleme_onay="h"
 		else
+			echo "-----"
 			derleme_onay="e"
 		fi 
 		if [ "$derleme_onay" = "e" ];then
-			echo "$1" "derleniyor...."
+			ryaz 33 "$1" "derleniyor...."
 			#mpsd -d > /dev/null
 			#mpsd -d
 			echo "------------------------"
@@ -230,11 +224,14 @@ paket_derle(){
 				done	
 			fi
 			mv *.mps.lz ../
+		else
+			ryaz 32 "paket zaten kurulu,yine de derlemek için:
+			mps -zd $1"
 		fi 
 		cd ..
 		rm -r tmp."$1"
 	else
-		echo "talimat dosyası bulunamadı."
+		ryaz 31 "talimat dosyası bulunamadı."
 	fi
 
 }
@@ -301,7 +298,7 @@ paketvt_guncelle(){
 	wget -q --spider "$sunucu""paket.vt"
 	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
 	if [ $? -eq 0 ]; then	
-		echo "paket veritabanı guncellenıyor." "$paketdepo""paket.vt"
+		ryaz 32 "paket veritabanı guncellenıyor." "$paketdepo""paket.vt"
 		if [ -f "$paketdepo""paket.vt" ];then
 			mv "$paketdepo""paket.vt" "$paketdepo""paket.vt.eski"
 		fi
@@ -309,7 +306,7 @@ paketvt_guncelle(){
 		#rm /tmp/paket.vt*
 		exit 1
 	fi
-	echo "paket veritabanı guncelleme olumsuz."
+	ryaz 31 "paket veritabanı guncelleme olumsuz."
 }
 
 talimat_bilgi(){
@@ -327,9 +324,9 @@ sistem_kontrol(){
 sunucu_kontrol(){
 	wget -q --spider $sunucu
 	if [ $? -eq 0 ]; then
-		echo "paket sunucu aktif"
+		ryaz 32 "paket sunucu aktif"
 	else
-		echo "sunucu erişim dışı"
+		ryaz 31 "sunucu erişim dışı"
 		exit 1
 	fi
 }	
@@ -362,6 +359,7 @@ ayarlar() {
 			-s|--pksil)
 				paket_sil "$2" ;;
 			-d|--pkde)
+				zorla_derle="yok"
 				kurulum_onay="olumsuz"
 				paket_derle "$2" ;;
 			-zd|--pkzde)
@@ -376,6 +374,8 @@ ayarlar() {
 				paket_derle_oto2 "$2" ;;	
 			-ok|--pkok)
 				paket_kur_oto "$2" ;;	
+			-kl|--kurulu-liste)
+				ls $VT ;;	
 			-dly|--drly)
 				if [ -f derleme.liste ];then
 					mv derleme.liste derleme.liste.eski
@@ -400,16 +400,16 @@ ayarlar() {
 				paketvt_guncelle ;;
 			-g|--pkgu)
 				if [ ! "$2" ]; then
-					echo "paket ismi eksik"
+					ryaz 31 "paket ismi eksik"
 					exit 1
 				fi
 				paket_guncelle "$2";;
-			-kuko|--kurulu-kontrol)
+			-kk|--kurulu-kontrol)
 				if [ ! "$2" ]; then
-					echo "paket ismi eksik"
+					ryaz 31 "paket ismi eksik"
 					exit 1
 				fi
-				kurulu_kontrol "$2";;
+				ryaz 31 `kurulu_kontrol "$2"`;;
 			-suko)
 				sunucu_kontrol ;;
 			-cf|--config-file)
@@ -420,7 +420,7 @@ ayarlar() {
 				ayar_dosyasi="$2"
 				shift ;;
 			-v)
-				echo "$betikad $versiyon"
+				ryaz 33 "$betikad $versiyon"
 				exit 0 ;;
 			-h|--help)
 				yardim
@@ -452,7 +452,7 @@ if [ "$ikaynak" = "ag" ]; then
 					icerik_ekle "$paketdepo$pkt"
 					exit 1
 				else
-					echo "paket zaten kurulu!"
+					rya 31 "paket zaten kurulu!"
 				fi
 			fi
 		fi
@@ -471,7 +471,8 @@ if [ "$ikaynak" = "yerel" ]; then
 			icerik_ekle "$2"
 		else
 			while true; do
-				read -p "$2 paketi zaten kurulu silinip kurulsun mu?" eh
+				ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
+				read -p "e veya h -> " eh
 				case $eh in
 					[Ee]* ) silme="e"; break;;
 					[Hh]* ) break;;
@@ -479,15 +480,23 @@ if [ "$ikaynak" = "yerel" ]; then
 				esac
 			done
 			if [ "$silme" = "e" ];then
-				paket_silyeni "$paketad"
+				ryaz 33 "silinecekelerin kontrolu için"
+				paket_sil "$paketad"
 				icerik_ekle "$2"
 			fi
 		fi
 	else
-		echo "yerelde mps paketi bulunamadı."
+		ryaz 31 "yerelde mps paketi bulunamadı."
 	fi
 fi
 
 }
 ana "$@"
+
+
+#31 kirmizi
+#32 yesil
+#33 sari
+#34 mavi
+#34 mor
 
