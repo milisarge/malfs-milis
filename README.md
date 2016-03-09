@@ -1,5 +1,5 @@
-# malfs
-Milis Automated Linux From Scratch
+# Milis İşletim Sistemi (LFS kitabına dayalı)
+Milis Operating System based on Linux From Scratch book
 
  Konak Sistem için Yapılması Gerekenler (ubuntu)
  
@@ -11,7 +11,7 @@ Milis Automated Linux From Scratch
  
  ln -s /bin/bash /bin/sh
  
- KURULUM YÖNERGELERİ
+ MİLİS SİSTEMİNİN KURULUM YÖNERGELERİ
 
  Dikkat:
  1-Bu işlemleri root kullanıcısıyla yapınız.

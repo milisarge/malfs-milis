@@ -496,8 +496,9 @@ ayarlar "$@"
 
 if [ "$ikaynak" = "ag" ]; then
 	
-	echo "agdan cekiliyor:" "$2"
+	ryaz 33 "agdan cekiliyor:" "$2"
 	#pkt=`cat "$paketdepo""paket.vt" | grep -w "$2" | cut -d' ' -f2` 
+	paketvt_kontrol
 	pkt=`cat "$paketdepo""paket.vt" | grep "$2"# | cut -d' ' -f2`
 	if [ ! -z "$pkt" -a "$pkt" != "" ]; then
 		cpaket="${pkt/'#'/'%23'}"
@@ -516,7 +517,10 @@ if [ "$ikaynak" = "ag" ]; then
 					rya 31 "paket zaten kurulu!"
 				fi
 			fi
+		
 		fi
+	else
+		ryaz 31 "paket agda bulunamadı!"
 	fi
 	exit 1
 	
