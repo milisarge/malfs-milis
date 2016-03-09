@@ -7,8 +7,8 @@ http://www.linuxfromscratch.org/patches/lfs/development/bash-4.3.30-upstream_fix
 http://alpha.gnu.org/gnu/bc/bc-1.06.95.tar.bz2
 http://www.linuxfromscratch.org/patches/lfs/development/bc-1.06.95-memory_leak-1.patch
 http://ftp.gnu.org/gnu/binutils/binutils-2.26.tar.bz2
-http://www.linuxfromscratch.org/patches/lfs/development/binutils-2.26-upstream_fix-1.patch
-http://www.linuxfromscratch.org/patches/lfs/development/binutils-2.26-upstream_fix-2.patch
+http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.26-upstream_fix-1.patch
+http://www.linuxfromscratch.org/patches/downloads/binutils/binutils-2.26-upstream_fix-2.patch
 http://downloads.nutyx.org/current/sources/binutils-2.26-upstream_fix-2.patch
 http://www.linuxfromscratch.org/patches/lfs/7.7/bzip2-1.0.6-install_docs-1.patch
 http://ftp.gnu.org/gnu/bison/bison-3.0.4.tar.xz

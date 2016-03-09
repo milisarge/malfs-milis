@@ -12,6 +12,7 @@ dokunulmaz="/etc/dokunulmaz"
 talimatname_dizin="/root/talimatname"
 kokdizin="/"
 VT="/var/lib/pkg/DB"
+TARIHCE_DIZIN="/var/lib/pkg/tarihce"
 
 
 icerik_ekle(){
@@ -279,6 +280,47 @@ kaynakdizin_kontrol(){
 	fi
 }
 
+tarihce_dkontrol(){
+	if [ ! -d $TARIHCE_DIZIN ];then
+		mkdir $TARIHCE_DIZIN
+	fi
+}
+
+tarihce_liste(){
+	tarihce_dkontrol
+	ls $TARIHCE_DIZIN/
+
+}
+
+tarihce_yap(){
+	tarihce_dkontrol
+	zaman=`date +%m-%d-%y.%H%M%S`
+	bsdtar -P -r -f $TARIHCE_DIZIN/"$zaman"-pkvt.tar $VT
+	lzip -9 $TARIHCE_DIZIN/"$zaman"-pkvt.tar
+}
+
+tarihce_yukle(){
+	tarihce_dkontrol
+	if [ -f $TARIHCE_DIZIN/"$1" ];then
+		rm -f $TARIHCE_DIZIN/"$1"
+	else
+		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
+	fi
+}
+
+tarihce_sil(){
+	tarihce_dkontrol
+	if [ -f $TARIHCE_DIZIN/"$1" ];then
+		rm -f $TARIHCE_DIZIN/"$1"
+	else
+		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
+	fi
+}
+
+log_tutma(){
+	echo "$(date +'%F %T') - $1 - paket" >> test.log
+}
+
 git_guncelle() {
 	kaynakdizin_kontrol
 	cd $DERLEME_KAYNAKDIZIN
@@ -420,6 +462,24 @@ ayarlar() {
 				fi
 				ayar_dosyasi="$2"
 				shift ;;
+			-tro)
+				tarihce_yap ;;
+			-try)
+				if [ ! "$2" ]; then
+					ryaz 31 "tarihce dosyasi eksik $1"
+					exit 1
+				fi
+					tarihce_yukle "$2"
+					shift ;;
+			-trl)
+				tarihce_liste ;;
+			-trs)
+				if [ ! "$2" ]; then
+					ryaz 31 "parametre eksik $1"
+					exit 1
+				fi
+					tarihce_sil "$2"
+					shift ;;
 			-v)
 				ryaz 33 "$betikad $versiyon"
 				exit 0 ;;

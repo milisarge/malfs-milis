@@ -55,12 +55,12 @@ check_pkgfile() {
 		exit $E_TALIMAT
 	fi
 	if [ "${version}" == "" ]; then
-		error "Variable 'version' not initiated or not found in $PKGMK_PKGFILE."
+		error "'versiyon' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
 		exit $E_TALIMAT
 	fi
 	if [ "$SURUM_YOKSAY" = "yok" ]; then
 		if [ "${release}" == "" ]; then
-			error "Variable 'release' not initiated or not found in $PKGMK_PKGFILE."
+			error " 'release' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
 			exit $E_TALIMAT
 		fi
 	fi
