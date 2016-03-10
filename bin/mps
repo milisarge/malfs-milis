@@ -183,6 +183,7 @@ derleme_listbilgi(){
 paket_derle_oto(){
 	for dpkt in `cat $1`;do
 		echo $dpkt "derleniyor...."
+		zorla_derle="yok"
 		paket_derle $dpkt
 	done
 }
