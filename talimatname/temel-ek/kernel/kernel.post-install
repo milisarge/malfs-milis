@@ -1,4 +1,0 @@
-mkinitramfs 4.4.1-milis
-[ -f boot/initrd ] && rm boot/initrd
-ln -sf initrd-4.4.1-milis boot/initrd
-ln -sf kernel-4.4.1 boot/kernel
