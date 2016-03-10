@@ -4,7 +4,6 @@
 # Packager: tnut at nutyx dot org
 # Depends on: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2
 
-PKGMK_GROUPS=()
 run=(consolekit2 librsvg)
 
 name=lxdm

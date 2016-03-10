@@ -2,7 +2,6 @@
 # URL: http://www.freedesktop.org/wiki/Software/dbus/
 # Packager: pierre at nutyx dot org
 # Depends on: expat xorg-libx11 xorg-libsm xorg-libice 
-PKGMK_GROUPS=(doc devel)
 
 name=dbus
 version=1.10.6

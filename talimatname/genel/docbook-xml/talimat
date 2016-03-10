@@ -1,45 +1,43 @@
-# Description: A widely used XML scheme for writing documentation and help
-# URL:  http://www.docbook.org
-# Packager: pierre at nutyx dot org
-# Depends on: libxml2 unzip 
-
+# Description: An document type definitions for verification of XML data files against the DocBook rule set.
+# URL: http://www.docbook.org/
+# Maintainer: Matt Housh, jaeger at crux dot ninja
+# Depends on: libxml2 unzip
 
 name=docbook-xml
 version=4.5
 release=1
-
-source=(http://www.docbook.org/xml/4.5/docbook-xml-4.5.zip \
-	http://www.docbook.org/xml/4.4/docbook-xml-4.4.zip \
-	http://www.docbook.org/xml/4.3/docbook-xml-4.3.zip \
-	http://www.docbook.org/xml/4.2/docbook-xml-4.2.zip \
+source=(http://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
+	http://www.docbook.org/xml/4.4/docbook-xml-4.4.zip
+	http://www.docbook.org/xml/4.3/docbook-xml-4.3.zip
+	http://www.docbook.org/xml/4.2/docbook-xml-4.2.zip
 	http://www.docbook.org/xml/4.1.2/docbkx412.zip)
-
-# override pkgmk's unpack_source() function so that source files
-# don't get munged together in the same directory and lost
 
 unpack_source() {
 	# similarly-named versions first
-	for DB_VER in 4.5 4.4 4.3 4.2
-	do
-		mkdir $SRC/$name-$DB_VER
-		unzip -q -d $SRC/$name-$DB_VER $PKGMK_SOURCE_DIR/$name-$DB_VER.zip
+	local DTDVERSION
+	for DTDVERSION in 4.5 4.4 4.3 4.2; do
+		install -d $SRC/$name-$DTDVERSION
+		unzip -q -d $SRC/$name-$DTDVERSION $DERLEME_KAYNAKDIZIN/$name-$DTDVERSION.zip
 	done
+
 	# now 4.1.2, named differently
-	mkdir $SRC/$name-4.1.2
-	unzip -q -d $SRC/$name-4.1.2 $PKGMK_SOURCE_DIR/docbkx412.zip
+	install -d $SRC/$name-4.1.2
+	unzip -q -d $SRC/$name-4.1.2 $DERLEME_KAYNAKDIZIN/docbkx412.zip
 }
 
 build() {
 	# copy to proper locations
-	for DB_VER in 4.5 4.4 4.3 4.2 4.1.2
+	for DTDVERSION in 4.5 4.4 4.3 4.2 4.1.2
 	do
-		mkdir -p $PKG/usr/share/xml/docbook/xml-dtd-$DB_VER
-		cp -a $SRC/$name-$DB_VER/{ent,docbook.cat,*.dtd,*.mod} \
-			$PKG/usr/share/xml/docbook/xml-dtd-$DB_VER/
+		install -d $PKG/usr/share/xml/docbook/xml-dtd-$DTDVERSION
+		cp -a $SRC/$name-$DTDVERSION/{ent,docbook.cat,*.dtd,*.mod} \
+			$PKG/usr/share/xml/docbook/xml-dtd-$DTDVERSION/
 	done
 
+	find $PKG -type f  \( -perm -g=r -o -perm -g=w \) -exec chmod -g=rw {} \+
+
 	# create initial docbook-xml catalog
-	mkdir -p $PKG/etc/xml
+	install -d $PKG/etc/xml
 	xmlcatalog --noout --create $PKG/etc/xml/$name
 
 	# add each version to the initial catalog
@@ -257,5 +255,6 @@ build() {
 		"http://www.oasis-open.org/docbook/xml/4.1.2" \
 		"file:///usr/share/xml/docbook/xml-dtd-4.1.2" \
 		$PKG/etc/xml/$name
-}	
-  
+
+	rm $PKG/usr/share/xml/docbook/xml-dtd-4.{4,5}/ent/README
+}

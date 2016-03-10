@@ -9,8 +9,8 @@ release=1
 _name=Oracle_VM_VirtualBox_Extension_Pack
 _release=104815
 
-PKGMK_IGNORE_FOOTPRINT="yes"
-PKGMK_IGNORE_MD5SUM="yes"
+DOSYAIZLEME_YOKSAY="evet"
+MD5SUM_YOKSAY="evet"
 
 
 [ "`uname -m`" == "i686"   ] && _ARCH=x86

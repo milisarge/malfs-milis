@@ -2,7 +2,6 @@
 # URL: http://www.gtk.org/
 # Packager: tnut at nutyx dot org
 # Depends on: libffi pcre python elfutils 
-PKGMK_GROUPS=(man devel doc )
 
 name=glib
 version=2.46.2

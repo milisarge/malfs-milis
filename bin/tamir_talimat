@@ -1,2 +1,7 @@
+sed --in-place '/PKGMK_GROUPS/d' */talimat 
+grep -rli 'PKGMK_SOURCE_DIR' * | xargs -i@ sed -i 's/PKGMK_SOURCE_DIR/DERLEME_KAYNAKDIZIN/g' @
+grep -rli 'PKGMK_IGNORE_FOOTPRINT="yes"' * | xargs -i@ sed -i 's/PKGMK_IGNORE_FOOTPRINT="yes"/DOSYAIZLEME_YOKSAY="evet"/g' @
+grep -rli 'PKGMK_IGNORE_MD5SUM="yes"' * | xargs -i@ sed -i 's/PKGMK_IGNORE_MD5SUM="yes"/MD5SUM_YOKSAY="evet"/g' @
+grep -rli 'PKGMK_GROUPS' * | xargs -i@ sed -i 's/PKGMK_SOURCE_DIR/DERLEME_KAYNAKDIZIN/g' @
 grep -rli '${PKGMK_BUILDVER}' * | xargs -i@ sed -i 's/${PKGMK_BUILDVER}/#$version-/g' @
 grep -rli 'cards.tar' * | xargs -i@ sed -i 's/cards.tar/mps/g' @

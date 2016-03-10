@@ -4,7 +4,6 @@
 # Depends on: python libxml2 libxslt openldap
 
 # variable groupe
-PKGMK_GROUPS=(lib doc man devel service)
 
 name=postgresql
 version=9.5.0

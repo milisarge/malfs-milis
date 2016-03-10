@@ -3,7 +3,6 @@
 # Maintainer: - n3npq <http://freecode.com/users/n3npq>
 # Packager: pierre at nutyx dot org
 # Depends on: 
-PKGMK_GROUPS=(devel man doc)
 
 name=popt
 version=1.16

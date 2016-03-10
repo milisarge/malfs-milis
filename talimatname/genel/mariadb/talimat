@@ -9,7 +9,6 @@ release=1
 
 source=(https://downloads.mariadb.org/interstitial/mariadb-$version/source/mariadb-$version.tar.gz )
 
-PKGMK_GROUPS=(devel lib man doc service)
 
 build() {
 source /etc/blfs-bootscripts

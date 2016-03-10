@@ -12,7 +12,6 @@ run=(gtk-update-icon-cache)
 # de fichiers binaires n'est pas très important. La variable PKGMK_GROUP redéfini les groupes
 # Ici, le groupe lib ne sera pas construit
 
-PKGMK_GROUPS=(devel man doc)
 
 name=gtk2
 version=2.24.29

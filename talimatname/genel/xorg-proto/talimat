@@ -2,7 +2,6 @@
 # URL: http://xorg.freedesktop.org
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
 
-PKGMK_GROUPS=(doc man)
 section="proto"
 name=xorg-proto
 version=7.7

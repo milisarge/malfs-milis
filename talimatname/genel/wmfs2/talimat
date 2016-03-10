@@ -10,13 +10,13 @@ release=1
 source=()
 
 build() {
-  if cd $PKGMK_SOURCE_DIR/wmfs ; then
+  if cd $DERLEME_KAYNAKDIZIN/wmfs ; then
     git pull
   else
-    git clone git://github.com/xorg62/wmfs.git $PKGMK_SOURCE_DIR/wmfs
+    git clone git://github.com/xorg62/wmfs.git $DERLEME_KAYNAKDIZIN/wmfs
   fi
 
-  cp -r $PKGMK_SOURCE_DIR/wmfs $SRC/ && cd $SRC/wmfs
+  cp -r $DERLEME_KAYNAKDIZIN/wmfs $SRC/ && cd $SRC/wmfs
 
   ./configure --prefix /usr \
               --xdg-config-dir /etc/xdg \
