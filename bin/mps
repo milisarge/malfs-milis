@@ -103,13 +103,9 @@ paket_sil(){
 	if [ "$2" ]; then
 		oto_silme="$2"
 	fi
-	
-	if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
-		kkont=`kurulu_kontrol "$1"`
-		if [ "$kkont" = "kurulu" ];then
-			#
-			#while IFS='' read -r line || [[ -n "$line" ]]; do
-			
+	kkont=`kurulu_kontrol "$1"`
+	if [ "$kkont" = "kurulu" ];then
+		if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
 			cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 			
 			if [ "$oto_silme" = "evet" ];then
@@ -131,10 +127,10 @@ paket_sil(){
 			fi
 			rm -f /tmp/$paket.sil
 		else
-			ryaz 31 "paket zaten kurulu değil!"
+			ryaz 31 "kritik mesaj:kurulanlar dosyası yok." 
 		fi
 	else
-		echo "kritik mesaj:kurulanlar dosyası yok."
+		ryaz 32 "paket zaten kurulu değil!"
 	fi
 
 }
