@@ -98,8 +98,12 @@ paket_siles(){
 }
 
 paket_sil(){
-	local paket kkont sil_onay
+	local paket kkont sil_onay oto_silme
 	paket="$1"
+	if [ "$2" ]; then
+		oto_silme="$2"
+	fi
+	
 	if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
 		kkont=`kurulu_kontrol "$1"`
 		if [ "$kkont" = "kurulu" ];then
@@ -108,14 +112,18 @@ paket_sil(){
 			
 			cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 			
-			while true; do
-				ryaz 34 $paket" paketi kaldırılsın mı?";read -p "e veya h-> " eh
-				case $eh in
-					[Ee]* ) sil_onay="e"; break;;
-					[Hh]* ) break;;
-					* ) echo "e veya h";;
-				esac
-			done
+			if [ "$oto_silme" = "evet" ];then
+				sil_onay="e"
+			else
+				while true; do
+					ryaz 34 $paket" paketi kaldırılsın mı?";read -p "e veya h-> " eh
+					case $eh in
+						[Ee]* ) sil_onay="e"; break;;
+						[Hh]* ) break;;
+						* ) echo "e veya h";;
+					esac
+				done
+			fi
 			if [ "$sil_onay" = "e" ];then
 				xargs rm -r -f < /tmp/$paket.sil &&
 				rm -r -f /var/lib/pkg/DB/"$paket" &&
@@ -189,6 +197,14 @@ paket_kur_oto(){
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			mps -k "$pkt#"*
 		done
+	done
+}
+
+paket_sil_oto(){
+	local spkt
+	for spkt in `cat $1`;do
+		oto_silme="evet"
+		paket_sil "$spkt" "$oto_silme"
 	done
 }
       
@@ -294,15 +310,49 @@ tarihce_liste(){
 
 tarihce_yap(){
 	tarihce_dkontrol
-	zaman=`date +%m-%d-%y.%H%M%S`
-	bsdtar -P -r -f $TARIHCE_DIZIN/"$zaman"-pkvt.tar $VT
-	lzip -9 $TARIHCE_DIZIN/"$zaman"-pkvt.tar
+	local t_isim
+	if [ "$temel_tarihce" = "evet" ];then
+		t_isim="temel"
+	else
+		t_isim=`date +%m-%d-%y.%H%M%S`
+	fi
+	bsdtar -P -r -f $TARIHCE_DIZIN/"$t_isim"-pkvt.tar $VT
+	lzip -9 $TARIHCE_DIZIN/"$t_isim"-pkvt.tar
 }
 
 tarihce_yukle(){
 	tarihce_dkontrol
-	if [ -f $TARIHCE_DIZIN/"$1" ];then
-		rm -f $TARIHCE_DIZIN/"$1"
+	local sil_onay
+	sil_onay="h"
+	if [ -f $TARIHCE_DIZIN/"$1-pkvt.tar.lz" ];then
+		bsdtar -p -o -C /tmp -xf $TARIHCE_DIZIN/"$1-pkvt.tar.lz" 2>/dev/null
+		ls /tmp/var/lib/pkg/DB/ > temel.pkvt
+		ls /var/lib/pkg/DB/ > simdiki.pkvt
+		grep -vf temel.pkvt simdiki.pkvt > sil.liste
+		rm temel.pkvt simdiki.pkvt
+		rm -r /tmp/var
+		if [ -s sil.liste ];then
+			ryaz 32 "silinecekler"
+			ryaz 32 "------------"
+			cat sil.liste
+		else
+			ryaz 33 "sistem zaten temel durumda"
+			exit 1
+		fi
+		while true; do
+			ryaz 34 "otomatik geri dönüşüm başlasın mı?";read -p "e veya h-> " eh
+			case $eh in
+				[Ee]* ) sil_onay="e"; break;;
+				[Hh]* ) break;;
+				* ) echo "e veya h";;
+			esac
+		done
+		if [ "$sil_onay" = "e" ];then
+			mps -os sil.liste
+			mv sil.liste silinenler.liste
+			exit 1
+		fi
+		mv sil.liste sil_iptal.liste	
 	else
 		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
 	fi
@@ -310,8 +360,8 @@ tarihce_yukle(){
 
 tarihce_sil(){
 	tarihce_dkontrol
-	if [ -f $TARIHCE_DIZIN/"$1" ];then
-		rm -f $TARIHCE_DIZIN/"$1"
+	if [ -f $TARIHCE_DIZIN/"$1-pkvt.tar.lz" ];then
+		rm -f $TARIHCE_DIZIN/"$1-pkvt.tar.lz"
 	else
 		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
 	fi
@@ -417,6 +467,12 @@ ayarlar() {
 				paket_derle_oto2 "$2" ;;	
 			-ok|--pkok)
 				paket_kur_oto "$2" ;;	
+			-os|--pkos)
+				if [ ! "$2" ]; then
+					ryaz 31 "silme listesi yok"
+					exit 1
+				fi
+				paket_sil_oto "$2" ;;	
 			-kl|--kurulu-liste)
 				ls $VT ;;	
 			-dly|--drly)
@@ -463,6 +519,9 @@ ayarlar() {
 				ayar_dosyasi="$2"
 				shift ;;
 			-tro)
+				tarihce_yap ;;
+			-trot)
+				temel_tarihce="evet"
 				tarihce_yap ;;
 			-try)
 				if [ ! "$2" ]; then
