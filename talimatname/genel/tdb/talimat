@@ -1,7 +1,7 @@
 # Description: A Trivial Database similar to GDBM but allows simultaneous commits
 # URL: http://tdb.samba.org/
 # Packager: tnut at nutyx dot org
-# Depends on: python,libxslt,docbook-xsl
+# Depends on: python libxslt docbook-xsl
 
 
 name=tdb

@@ -190,12 +190,18 @@ paket_derle_oto2(){
 }
 
 paket_kur_oto(){
-	local kpkt pkt
+	local kpkt pkt pak
 	for kpkt in `cat $1`;do
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
-			mps -k "$pkt#"*
+			pak=`ls "$pkt#"*`
+			mps -k "$pak"
 		done
 	done
+}
+
+#otomatik derle kontrollu kur
+paket_kur_oto2(){
+	mps -dly "$1" > /dev/null && mps -ok genel.derleme.liste
 }
 
 paket_sil_oto(){
@@ -280,6 +286,13 @@ bagimli_bilgi(){
 	
 }
 
+ters_bagimli(){
+	local ara
+	ara=" $1 "
+	sy=`grep -o "/" <<<"$talimatname_dizin" | wc -l`
+	grep -rli $ara "$talimatname_dizin" | cut -d'/' -f`expr $sy + 3`
+}
+
 kurulu_kontrol(){
 	if [ -d "/var/lib/pkg/DB/$1" ];then
 		echo "kurulu"
@@ -320,37 +333,49 @@ tarihce_yap(){
 
 tarihce_yukle(){
 	tarihce_dkontrol
-	local sil_onay
+	local islem_onay cikis
 	sil_onay="h"
 	if [ -f $TARIHCE_DIZIN/"$1-pkvt.tar.lz" ];then
 		bsdtar -p -o -C /tmp -xf $TARIHCE_DIZIN/"$1-pkvt.tar.lz" 2>/dev/null
-		ls /tmp/var/lib/pkg/DB/ > temel.pkvt
+		ls /tmp/var/lib/pkg/DB/ > hedef.pkvt
 		ls /var/lib/pkg/DB/ > simdiki.pkvt
-		grep -vf temel.pkvt simdiki.pkvt > sil.liste
-		rm temel.pkvt simdiki.pkvt
+		grep -vf hedef.pkvt simdiki.pkvt > sil.liste
+		grep -vf simdiki.pkvt hedef.pkvt > kur.liste
+		rm hedef.pkvt simdiki.pkvt
 		rm -r /tmp/var
+		cikis=""
 		if [ -s sil.liste ];then
 			ryaz 32 "silinecekler"
 			ryaz 32 "------------"
 			cat sil.liste
-		else
-			ryaz 33 "sistem zaten temel durumda"
+		fi
+		
+		if [ -s kur.liste ];then
+			ryaz 32 "kurulacaklar"
+			ryaz 32 "------------"
+			cat kur.liste
+		fi
+		if [ ! -s sil.liste ] && [ ! -s kur.liste ];then
+			ryaz 32 "sistem zaten hedef durumda!"
 			exit 1
 		fi
 		while true; do
 			ryaz 34 "otomatik geri dönüşüm başlasın mı?";read -p "e veya h-> " eh
 			case $eh in
-				[Ee]* ) sil_onay="e"; break;;
+				[Ee]* ) islem_onay="e"; break;;
 				[Hh]* ) break;;
 				* ) echo "e veya h";;
 			esac
 		done
-		if [ "$sil_onay" = "e" ];then
+		if [ "$islem_onay" = "e" ];then
 			mps -os sil.liste
+			mps -ok kur.liste
 			mv sil.liste silinenler.liste
+			mv kur.liste kurulanlar.liste
 			exit 1
 		fi
 		mv sil.liste sil_iptal.liste	
+		mv kur.liste kur_iptal.liste	
 	else
 		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
 	fi
@@ -466,7 +491,9 @@ ayarlar() {
 			-odkk|--pkodk2)
 				paket_derle_oto2 "$2" ;;	
 			-ok|--pkok)
-				paket_kur_oto "$2" ;;	
+				paket_kur_oto "$2" ;;
+			-ko|--pkko)
+				paket_kur_oto2 "$2" ;;		
 			-os|--pkos)
 				if [ ! "$2" ]; then
 					ryaz 31 "silme listesi yok"
@@ -491,7 +518,9 @@ ayarlar() {
 				paket_bilgi "$2" ;;
 			-bb|--pkbb)
 				bagimli_bilgi "$2" | column -t;;
-			-tb|--talb)
+			-tb|--pktb)
+				ters_bagimli "$2" ;;
+			-talb|--talb)
 				talimat_bilgi "$2" | column -t;;
 			-Ggit|--gitgun)
 				git_guncelle ;;

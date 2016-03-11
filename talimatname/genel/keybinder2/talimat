@@ -2,7 +2,7 @@
 # URL: http://pcmanfm.sourceforge.net/
 # Maintainer: git.lxde.org/gitweb/?p=debian/libfm.git;a=summary
 # Packager: geantbrun at gmail dot com
-# Depends on: gtk2,gobject-introspection,python-gtk
+# Depends on: gtk2 gobject-introspection python-gtk
 
 name=keybinder2
 version=0.3.0
