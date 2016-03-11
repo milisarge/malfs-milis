@@ -2,6 +2,7 @@
 . /etc/mpsd.conf
 . /root/bin/fonks.sh
 versiyon="0.1"
+iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 sunucu="192.168.3.193:8000/paketdepo/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
@@ -380,7 +381,9 @@ git_guncelle() {
 		git pull
 	fi
 	ryaz 33 "yerele eşitleniyor."
+	rm -r $talimatname_dizin/*
 	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/talimatname/ $talimatname_dizin
+	rm -r $`dirname $talimatname_dizin`/bin/*
 	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/bin/ `dirname $talimatname_dizin`/bin
 }
 
@@ -537,7 +540,7 @@ ayarlar() {
 					tarihce_sil "$2"
 					shift ;;
 			-v)
-				ryaz 33 "$betikad $versiyon"
+				ryaz 33 "$betikad $versiyon  $iletisim" 
 				exit 0 ;;
 			-h|--help)
 				yardim
