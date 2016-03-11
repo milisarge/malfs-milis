@@ -383,7 +383,7 @@ git_guncelle() {
 	ryaz 33 "yerele eşitleniyor."
 	rm -r $talimatname_dizin/*
 	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/talimatname/ $talimatname_dizin
-	rm -r $`dirname $talimatname_dizin`/bin/*
+	rm -r `dirname $talimatname_dizin`/bin/*
 	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/bin/ `dirname $talimatname_dizin`/bin
 }
 
