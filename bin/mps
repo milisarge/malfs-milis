@@ -217,7 +217,9 @@ paket_sil_oto(){
       
 paket_derle(){
 	#eski derleme kalıntılarını temizle
-	rm -r tmp.*
+	if [ -d tmp.* ];then
+		rm -r tmp.*
+	fi
 	kaynakdizin_kontrol
 	local konum derleme_onay eh bagimd
 	derleme_onay="h"

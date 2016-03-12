@@ -45,48 +45,11 @@ patch -p1 -i ../MPlayer-rectif-traduction-fr.patch
             --enable-wii  \
             --enable-bl \
             --enable-tdfxvid  \
-            --language-doc=all		\
-            --language-man=all	\
-            --language-msg=fr  \
+            --language-msg=en  \
             --language=all
 make
 
-make doc
-
 make DESTDIR=$PKG install
-
-install -v -m755 -d $PKG/usr/share/doc/mplayer-SVN-r37561
-
-install -v -m644    DOCS/HTML/fr/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-                    
-install -v -m644    DOCS/HTML/de/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-                    
-install -v -m644    DOCS/HTML/it/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-                    
-install -v -m644    DOCS/HTML/es/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-           
-install -v -m644    DOCS/HTML/en/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-
-install -v -m644    DOCS/HTML/cs/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-
-install -v -m644    DOCS/HTML/hu/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-
-install -v -m644    DOCS/HTML/pl/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-
-install -v -m644    DOCS/HTML/ru/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-                    
-install -v -m644    DOCS/HTML/zh_CN/* \
-                    $PKG/usr/share/doc/mplayer-SVN-r37561
-
                     
 install -v -m644 etc/codecs.conf $PKG/etc/mplayer
 
