@@ -1,0 +1,35 @@
+# Description: a graphical login utility
+# URL:         http://sourceforge.net/projects/slim.berlios
+# Packager:    Simone Rota, sip at crux dot nu
+# Maintainer:  Thomas Penteker, tek at serverop dot de
+# Depends on:  xorg-xauth libjpeg-turbo libpng cmake
+
+name=slim
+version=1.3.6
+release=1
+source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.gz \
+        http://crux.nu/~tek/slim-crux-smooth.tar.gz libpng.patch $name.rc)
+
+build () {
+   cd $name-$version
+
+   #patch -i ../libpng.patch -p1
+
+   # do NOT build slimlock (because of pam)
+   sed -i -e 's:${MANDIR}:/usr/man:g' -e '224d' CMakeLists.txt
+
+   cmake -DCMAKE_INSTALL_PREFIX=/usr
+
+   make
+   make DESTDIR=$PKG install
+   mkdir $PKG/etc/rc.d
+   install -m 755 ../$name.rc $PKG/etc/rc.d/$name
+   cd ../
+
+   rm -f slim-crux-smooth/README
+   cp -r slim-crux-smooth $PKG/usr/share/slim/themes/crux-smooth
+   chmod 0644 $PKG/usr/share/slim/themes/crux-smooth/*
+
+   # no systemd support
+   rm -r $PKG/lib $PKG/usr/man/man1/slimlock.1
+}
