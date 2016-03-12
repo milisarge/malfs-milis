@@ -108,7 +108,10 @@ paket_sil(){
 	if [ "$kkont" = "kurulu" ];then
 		if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
 			cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
-			
+			ryaz 31 "ters bagimliliklar"
+			ryaz 31 "------------------"
+			ters_bagimli_kontrol "$paket"
+			ryaz 31 "------------------"
 			if [ "$oto_silme" = "evet" ];then
 				sil_onay="e"
 			else
@@ -290,14 +293,12 @@ ters_bagimli(){
 	local ara
 	ara=" $1 "
 	sy=`grep -o "/" <<<"$talimatname_dizin" | wc -l`
-	grep -wrli $ara "$talimatname_dizin" | cut -d'/' -f`expr $sy + 3`
+	grep -rli "$ara" "$talimatname_dizin" | cut -d'/' -f`expr $sy + 3`
 }
 
 ters_bagimli_kontrol(){
-	ters_bagimli "$1" > tersb.liste
-	sort -o tersb.liste tersb.liste
-	ls /var/lib/pkg/DB/ > simdiki.liste
-	sort -o simdiki.liste simdiki.liste
+	ters_bagimli "$1" | sort > tersb.liste
+	ls /var/lib/pkg/DB/ | sed  "/$1/d" | sort  > simdiki.liste
 	comm -12 tersb.liste simdiki.liste
 	rm tersb.liste simdiki.liste
 }
