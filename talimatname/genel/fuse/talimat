@@ -4,10 +4,10 @@
 # Depends on: doxygen
 
 name=fuse
-version=2.9.5
+version=2.9.4
 release=1
 
-source=( https://github.com/libfuse/libfuse/releases/download/fuse_2_9_5/fuse-$version.tar.gz)
+source=( https://github.com/libfuse/libfuse/releases/download/fuse_2_9_4/fuse-$version.tar.gz)
 
 build() {
 cd $name-$version

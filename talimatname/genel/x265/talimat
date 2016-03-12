@@ -8,7 +8,7 @@ name=x265
 version=1.8
 release=1
 source=(https://bitbucket.org/multicoreware/x265/get/$version.tar.bz2
- http://www.linuxfromscratch.org/patches/blfs/svn/x265_1.8-enable_static-1.patch)
+ http://www.linuxfromscratch.org/patches/downloads/x265/x265_1.8-enable_static-1.patch)
 
 build() {
 	cd multicoreware-$name-*

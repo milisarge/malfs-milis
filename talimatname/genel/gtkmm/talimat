@@ -5,12 +5,19 @@
 
 name=gtkmm
 version=2.24.4
-release=2
+release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 build() {
 cd $name-$version
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+
+CXXFLAGS+=' -std=c++11'
+
+	./configure \
+		--prefix=/usr \
+		--disable-dependency-tracking \
+		--disable-documentation
+
+	make
+	make DESTDIR=$PKG install
 }
