@@ -290,7 +290,16 @@ ters_bagimli(){
 	local ara
 	ara=" $1 "
 	sy=`grep -o "/" <<<"$talimatname_dizin" | wc -l`
-	grep -rli $ara "$talimatname_dizin" | cut -d'/' -f`expr $sy + 3`
+	grep -wrli $ara "$talimatname_dizin" | cut -d'/' -f`expr $sy + 3`
+}
+
+ters_bagimli_kontrol(){
+	ters_bagimli "$1" > tersb.liste
+	sort -o tersb.liste tersb.liste
+	ls /var/lib/pkg/DB/ > simdiki.liste
+	sort -o simdiki.liste simdiki.liste
+	comm -12 tersb.liste simdiki.liste
+	rm tersb.liste simdiki.liste
 }
 
 kurulu_kontrol(){
@@ -520,6 +529,8 @@ ayarlar() {
 				bagimli_bilgi "$2" | column -t;;
 			-tb|--pktb)
 				ters_bagimli "$2" ;;
+			-tbk|--pktbk)
+				ters_bagimli_kontrol "$2" ;;
 			-talb|--talb)
 				talimat_bilgi "$2" | column -t;;
 			-Ggit|--gitgun)
