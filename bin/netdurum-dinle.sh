@@ -1,0 +1,1 @@
+ss -tnpl | column -t
