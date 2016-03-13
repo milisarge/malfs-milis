@@ -338,10 +338,10 @@ cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
 #SYSKLOGD_PARMS="-m 0"
 
 # Console parameters
-#UNICODE=1
+UNICODE=1
 KEYMAP="trq"
 #KEYMAP_CORRECTIONS="euro2"
-#FONT="lat0-16 -m 8859-15"
+#FONT="lat0-16 -m 8859-9"
 #LEGACY_CHARSET=
 EOF
 }

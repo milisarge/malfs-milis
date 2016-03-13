@@ -18,7 +18,8 @@ sed -i '/wpath.logrotate\|wpath.systemd/d' setup.py
 python setup.py configure --no-install-kde \
                           --no-install-acpi \
                           --no-install-pmutils \
-                          --no-install-init
+                          --no-install-init \
+			  --no-install-docs
 
 # Hack sinon les locales s'installent pas
 mkdir -p translations/ast/LC_MESSAGES
