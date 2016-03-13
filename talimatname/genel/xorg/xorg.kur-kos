@@ -1,0 +1,8 @@
+cat > /usr/share/X11/xorg.conf.d/10-keyboard.conf << "EOF"
+Section "InputClass"
+    Identifier         "Keyboard Defaults"
+    MatchIsKeyboard    "yes"
+    Option             "XkbLayout" "tr"
+EndSection
+EOF
+ln -s /usr/share/X11/xorg.conf.d/10-keyboard.conf /etc/X11/xorg.conf.d/

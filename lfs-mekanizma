@@ -329,7 +329,7 @@ cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
 #LOGLEVEL=5
 
 # For network
-#HOSTNAME=mylfs
+#HOSTNAME=milis
 
 # Delay between TERM and KILL signals at shutdown
 #KILLDELAY=3
@@ -339,7 +339,7 @@ cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
 
 # Console parameters
 #UNICODE=1
-#KEYMAP="de-latin1"
+KEYMAP="trq"
 #KEYMAP_CORRECTIONS="euro2"
 #FONT="lat0-16 -m 8859-15"
 #LEGACY_CHARSET=
@@ -1084,7 +1084,7 @@ squashfs_olustur(){
 	   #cp $bos_imaj tmp/LiveOS/ext3fs.img
 	#else
 	   #dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count="$((anayer+fazladan))"
-	dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=8096
+	dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16192
 	#dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16192
     mke2fs -t ext4 -L $iso_etiket -F tmp/LiveOS/ext3fs.img
     mkdir -p temp-root
