@@ -1,1 +1,14 @@
-gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+
+touch /root/.gtkrc-2.0
+cat > /root/.gtkrc-2.0 << "EOF"
+style "xfdesktop-icon-view" {
+XfdesktopIconView::label-alpha = 10
+base[NORMAL] = "#000000"
+base[SELECTED] = "#71B9FF"
+base[ACTIVE] = "#71FFAD"
+fg[NORMAL] = "#ffffff"
+fg[SELECTED] = "#71B9FF"
+fg[ACTIVE] = "#71FFAD" }
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
+EOF

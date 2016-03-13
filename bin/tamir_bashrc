@@ -1,0 +1,24 @@
+cat > /etc/bashrc << "EOF"
+alias ls='ls --color=auto'
+
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+WHITE="\[\e[1;37m\]"
+
+case $TERM in
+        xterm|rxvt*)
+                TITLEBAR='\[\033]0;\u@\h \007\]'
+                ;;
+        *)
+                TITLEBAR=''
+                ;;
+esac
+
+if [[ $EUID == 0 ]] ; then
+  PS1="$TITLEBAR$RED\u [ $NORMAL\w$RED ]# $NORMAL"
+else
+  PS1="$TITLEBAR$GREEN\u [ $NORMAL\w$GREEN ]\$ $NORMAL"
+fi
+EOF
+

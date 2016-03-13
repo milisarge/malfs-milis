@@ -199,35 +199,12 @@ alias ls='ls --color=auto'
 # in the X environment. [Review the LFS archive thread titled
 # PS1 Environment Variable for a great case study behind this script
 # addendum.]
+export LC_ALL="tr_TR.UTF-8"
 
 NORMAL="\[\e[0m\]"
 RED="\[\e[1;31m\]"
 GREEN="\[\e[1;32m\]"
 WHITE="\[\e[1;37m\]"
-INFOMACHINE="`date +%H:%M` `uname -m` `uname -r` `whoami`@`uname -n`"
-prompt_command() {
-# Sauvegarde de la pos courante
-tput sc
-# Calcul de la largeur
-let backwash=$(tput cols)-$(echo $INFOMACHINE | wc -m)-2
-# Pos des curseurs à la position Y=0, X=longueur calculée
-tput cup 0 ${backwash}
-# Spécifie la couleur et la casse de la police
-tput setaf 4; tput bold
-# Affiche le chemin entre crochets
-echo -n "["
-# Specifie la couleur du chemin
-tput setaf 6
-# Affiche le chemin complet
-echo -n "$INFOMACHINE"
-tput setaf 4; tput bold
-# Affiche le crochet fermé
-echo -n "]"
-# Remet le curseur à sa place
-tput rc
-}
-
-PROMPT_COMMAND=prompt_command
 
 case $TERM in
         xterm|rxvt*)
@@ -338,7 +315,7 @@ cat > ${LFS}/etc/sysconfig/$FILE << "EOF"
 #SYSKLOGD_PARMS="-m 0"
 
 # Console parameters
-UNICODE=1
+#UNICODE=1
 KEYMAP="trq"
 #KEYMAP_CORRECTIONS="euro2"
 #FONT="lat0-16 -m 8859-9"
