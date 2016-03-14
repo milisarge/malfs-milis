@@ -9,5 +9,6 @@ MANDB_MAP             /opt/jdk/man     /var/cache/man/jdk
 EOF
 log_warning_msg "${WARNING}Check the /etc/man_db.conf file ${NORMAL}"
 fi
-mkdir -p var/cache/man
-mandb -c opt/jdk/man
+mkdir -p /var/cache/man
+mandb -c /opt/jdk/man
+export JAVA_HOME=/opt/jdk
