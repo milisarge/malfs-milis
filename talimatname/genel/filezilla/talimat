@@ -16,7 +16,8 @@ build() {
         --disable-manualupdatecheck \
         --disable-autoupdatecheck \
         --disable-static \
-        --disable-dependency-tracking
+        --disable-dependency-tracking \
+	 --without-dbus
     make
     make DESTDIR=$PKG install
 }

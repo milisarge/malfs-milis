@@ -1,1 +1,1 @@
-grep -rnw '$1' -e "derlenmesi"
+grep -rnw "$1" -e "derlenmesi"

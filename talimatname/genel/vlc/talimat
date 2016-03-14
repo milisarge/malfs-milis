@@ -18,7 +18,7 @@ cd $name-$version
 sed -i 's:libsmbclient.h:samba-4.0/&:' modules/access/smb.c
 
 sh bootstrap
-./configure --prefix=/usr 
+./configure --prefix=/usr
 
 sed -i 's/luaL_optint/(int)&eger/' modules/lua/libs/{net,osd,volume}.c
 sed -i 's/luaL_checkint(/(int)luaL_checkinteger(/' \
@@ -29,4 +29,5 @@ make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version install
 
 rm -r $PKG/usr/{include,lib/pkgconfig}
 rm $PKG/usr/lib/libvlc*
+rm -rf $PKG/usr/share/doc
 }
