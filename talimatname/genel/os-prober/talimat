@@ -6,7 +6,7 @@
 name=os-prober
 version=1.71
 release=1
-source=(http://ftp.de.debian.org/debian/pool/main/o/os-prober/os-prober_1.71.tar.xz grub)
+source=(http://ftp.de.debian.org/debian/pool/main/o/os-prober/os-prober_1.71.tar.xz grub.ornek)
 
 build() {
 	cd $name-$version
@@ -43,7 +43,7 @@ cp linux-boot-probes/mounted/common/* $PKG/usr/lib/linux-boot-probes/mounted
 cp linux-boot-probes/mounted/x86/* $PKG/usr/lib/linux-boot-probes/mounted
 
 mkdir -p $PKG/etc/default/
-cp $SRC/grub $PKG/etc/default/
+cp $SRC/grub.ornek $PKG/etc/default/grub
 
 mkdir -p $PKG/usr/share/$name
 cp common.sh $PKG/usr/share/$name
