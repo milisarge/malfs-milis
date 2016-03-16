@@ -1,0 +1,14 @@
+#!/bin/bash
+pvt_olustur(){
+	if [ ! -f paket.vt ];then
+		touch paket.vt
+	fi
+	for paket in `ls`
+	do
+		paketad="`echo $paket|cut -d "#" -f1`"
+		shaek=`sha1sum $paket`
+		echo $shaek $paketad >> paket.vt  
+	done
+}
+
+pvt_olustur

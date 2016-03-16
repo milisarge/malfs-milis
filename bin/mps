@@ -615,7 +615,7 @@ if [ "$ikaynak" = "ag" ]; then
 					icerik_ekle "$paketdepo$pkt"
 					exit 1
 				else
-					rya 31 "paket zaten kurulu!"
+					ryaz 31 "paket zaten kurulu!"
 				fi
 			fi
 		fi
