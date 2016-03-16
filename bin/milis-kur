@@ -846,7 +846,7 @@ install_packages() {
 }
 
 enable_dhcpd() {
-    #dhcp hedef kurulum noktasında ayarlanacak
+    echo "dhcp hedef kurulum noktasında ayarlanacak"
 }
 
 menu_install() {
