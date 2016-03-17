@@ -4,7 +4,7 @@
 versiyon="0.1"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
-sunucu="192.168.3.193:8000/paketdepo/"
+sunucu="192.168.3.193:8000/MPS/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
@@ -33,6 +33,46 @@ icerik_ekle(){
 	cat tmpk.$paketad/kurulan | cut -d '>' -f2 > /var/lib/pkg/DB/"$paketad"/kurulan
 	#mv  tmpk.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
 	mv  tmpk.$paketad/.META /var/lib/pkg/DB/"$paketad"/META &&
+	
+	#kur-kos calistirilmasi
+	if [ -f tmpk.$paketad/.POST ];then
+		bash  tmpk.$paketad/.POST
+		rm  tmpk.$paketad/.POST
+	fi
+	#if [ -f $kokdizin.PRE ];then
+	#	rm  $kokdizin.PRE
+	#fi
+	#if [ -f $kokdizin/.okubeni ];then
+	#	rm  $kokdizin/.okubeni
+	#fi
+	#if [ -f $kokdizin/.README ];then
+	#	rm  $kokdizin/.README
+	#fi
+	rm -r tmpk.$paketad
+	if [ -f /etc/ld.so.conf ];then
+		ldconfig
+	fi
+	ryaz 34 $paketad" paketi kuruldu."
+}
+
+icerik_ekle2(){
+	kokdizin=/mnt/lfs
+	paketad=`echo "$1" | cut -d'#' -f1`	
+	paketad=`basename $paketad`
+	ryaz 34 $paketad" paketi kuruluyor."
+	tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
+	#kos-kur kontrolu
+	if [ -f /tmp/.PRE ];then
+		bash  /tmp/.PRE
+		rm  /tmp/.PRE
+	fi
+	mkdir -p tmpk.$paketad
+	tar xf $1 -C tmpk.$paketad  &&
+	mkdir -p $kokdizin/var/lib/pkg/DB/"$paketad" &&
+	cp -avf tmpk.$paketad/* $kokdizin > tmpk.$paketad/kurulan &&
+	cat tmpk.$paketad/kurulan | cut -d '>' -f2 > $kokdizin/var/lib/pkg/DB/"$paketad"/kurulan
+	#mv  tmpk.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
+	mv  tmpk.$paketad/.META $kokdizin/var/lib/pkg/DB/"$paketad"/META &&
 	
 	#kur-kos calistirilmasi
 	if [ -f tmpk.$paketad/.POST ];then
@@ -198,6 +238,16 @@ paket_kur_oto(){
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
 			mps -k "$pak"
+		done
+	done
+}
+
+paket_kur_liste(){
+	local kpkt pkt pak
+	for kpkt in `cat $1`;do
+		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
+			pak=`ls "$pkt#"*`
+			mps -k2 "$pak"
 		done
 	done
 }
@@ -484,6 +534,8 @@ ayarlar() {
 				ikaynak="ag" ;;
 			-k|--yrku)
 				ikaynak="yerel" ;;
+			-k2|--yrku2)
+				ikaynak="yerel2" ;;
 			-sil|--pksl)
 				paket_siles "$2" ;;
 			-s|--pksil)
@@ -504,6 +556,8 @@ ayarlar() {
 				paket_derle_oto2 "$2" ;;	
 			-ok|--pkok)
 				paket_kur_oto "$2" ;;
+			-okl|--pkokl)
+				paket_kur_liste "$2" ;;
 			-ko|--pkko)
 				paket_kur_oto2 "$2" ;;		
 			-os|--pkos)
@@ -648,6 +702,18 @@ if [ "$ikaynak" = "yerel" ]; then
 				icerik_ekle "$2"
 			fi
 		fi
+	else
+		ryaz 31 "yerelde mps paketi bulunamadı."
+	fi
+fi
+
+if [ "$ikaynak" = "yerel2" ]; then
+	local silme
+	pkontrol=`basename $2 | grep -w "mps.lz"`
+	if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
+		paketad=`echo "$2" | cut -d'#' -f1`	
+		kkont=`kurulu_kontrol "$paketad"`
+		icerik_ekle2 "$2"
 	else
 		ryaz 31 "yerelde mps paketi bulunamadı."
 	fi

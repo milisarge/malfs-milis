@@ -1,0 +1,5 @@
+ikili paketleri kullanarak rootfs(temel sistem) yapmak için:
+
+mps -okl temel.paket.liste
+ldconfig -r /mnt/lfs
+chroot /mnt/lfs
