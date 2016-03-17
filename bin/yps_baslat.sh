@@ -1,2 +1,3 @@
 #yerel paket sunucu
-pyhon -m simpleHTTPServer
+python -m SimpleHTTPServer
+
