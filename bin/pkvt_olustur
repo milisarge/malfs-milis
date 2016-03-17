@@ -7,7 +7,7 @@ pvt_olustur(){
 	do
 		paketad="`echo $paket|cut -d "#" -f1`"
 		shaek=`sha1sum $paket`
-		echo $shaek $paketad >> paket.vt  
+		echo $paketad $shaek  >> paket.vt  
 	done
 }
 

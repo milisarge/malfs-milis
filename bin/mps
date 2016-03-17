@@ -4,7 +4,7 @@
 versiyon="0.1"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
-sunucu="192.168.3.192:8000/MPS/"
+sunucu="192.168.1.23:8000/mps/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
@@ -669,8 +669,9 @@ ayarlar "$@"
 if [ "$ikaynak" = "ag" ]; then
 	
 	echo "agdan cekiliyor:" "$2"
-	#pkt=`cat "$paketdepo""paket.vt" | grep -w "$2" | cut -d' ' -f2` 
-	pkt=`cat "$paketdepo""paket.vt" | grep "$2"# | cut -d' ' -f2`
+	
+	pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3`
+	echo $pkt
 	if [ ! -z "$pkt" -a "$pkt" != "" ]; then
 		cpaket="${pkt/'#'/'%23'}"
 		#paket sunucuda varsa
