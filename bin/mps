@@ -4,7 +4,7 @@
 versiyon="0.1"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
-sunucu="192.168.3.193:8000/MPS/"
+sunucu="192.168.3.192:8000/MPS/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
@@ -252,9 +252,21 @@ paket_kur_liste(){
 	done
 }
 
-#otomatik derle kontrollu kur
+#otomatik kontrollu kur
 paket_kur_oto2(){
 	mps -dly "$1" > /dev/null && mps -ok genel.derleme.liste
+}
+
+paket_diskur_oto(){
+	local kpkt pkt pak
+	for kpkt in `cat $1`;do
+		mps -ik "$kpkt"
+	done
+}
+
+#otomatik kontrollu kur
+paket_diskur_oto2(){
+	mps -dly "$1" > /dev/null && mps -oik genel.derleme.liste
 }
 
 paket_sil_oto(){
@@ -559,7 +571,11 @@ ayarlar() {
 			-okl|--pkokl)
 				paket_kur_liste "$2" ;;
 			-ko|--pkko)
-				paket_kur_oto2 "$2" ;;		
+				paket_kur_oto2 "$2" ;;	
+			-oik|--pkok2)
+				paket_diskur_oto "$2" ;;
+			-iko|--pkko2)
+				paket_diskur_oto2 "$2" ;;	
 			-os|--pkos)
 				if [ ! "$2" ]; then
 					ryaz 31 "silme listesi yok"
