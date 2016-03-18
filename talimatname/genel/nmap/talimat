@@ -1,6 +1,6 @@
-# Description: Utility for network discovery and security auditing
+# Description: Ağ tarama ve güvenlik denetimi programı
 # URL: http://insecure.org/nmap/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
 # Depends on: pcre libpcap lua liblinear 
 
 name=nmap
