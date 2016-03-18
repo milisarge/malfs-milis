@@ -9,7 +9,8 @@ case ${1} in
          do_start_udev || exit 1
          do_start_checkfs || exit 1
          do_start_mountfs || exit 1
-		 #yukleme talimat
+	 do_start_localnet
+	 #milis-kur
          do_start_clock || exit 1
          do_start_cleanfs || exit 1
          do_start_udev_retry || exit 1
