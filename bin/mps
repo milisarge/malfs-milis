@@ -191,6 +191,14 @@ paket_bilgi(){
 
 }
 
+yeniden_paketle(){
+	cd $1
+	bsdtar -r -f  ../"$1".mps.tar .META
+	bsdtar -r -f  ../"$1".mps.tar *
+	cd ..
+	lzip -9 "$1".mps.tar
+}
+
 derleme_listyap(){
 	bagimlist=`bagimlilar "$1"`
 	for bagim in $bagimlist;do
@@ -576,6 +584,8 @@ ayarlar() {
 				paket_diskur_oto "$2" ;;
 			-iko|--pkko2)
 				paket_diskur_oto2 "$2" ;;	
+			-pak|--paketle)
+				yeniden_paketle "$2" ;;
 			-os|--pkos)
 				if [ ! "$2" ]; then
 					ryaz 31 "silme listesi yok"
