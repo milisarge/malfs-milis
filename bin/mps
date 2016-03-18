@@ -4,7 +4,7 @@
 versiyon="0.1"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
-sunucu="192.168.1.23:8000/mps/"
+sunucu="192.168.3.193:8000/MPS/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
