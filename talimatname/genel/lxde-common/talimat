@@ -1,0 +1,38 @@
+# URL: http://lxde.org/about.html
+# Maintainer: Copyright (C) 2001 Owen Taylor, Matthias Clasen, Red Hat, Inc.
+# Packager: milisarge@gmail.com
+# Depends on: consolekit2 desktop-file-utils gtk2 hicolor-icon-theme lxde-icon-theme lxde-panel lxde-session openbox pcmanfm shared-mime-info
+
+description="provides a set of default configuration for LXDE"
+run=(consolekit2 lxde-icon-theme menu-cache lxde-menu-data lxde-panel lxde-session openbox pcmanfm )
+name=lxde-common
+version=0.99.1
+release=1
+
+source=(http://downloads.sourceforge.net/lxde/$name-$version.tar.xz
+	http://nutyx.meticul.eu/files/patchs/oxygen-icons/icon-sekong.png
+	http://nutyx.meticul.eu/files/patchs/lxde-common/chrystal_red_root.png
+	http://downloads.nutyx.org/files/patchs/xfce/wall-sekong.jpg 
+	lxde.desktop)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+	--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+# install -D -m644 ../config \
+#	$PKG/usr/share/lxde/config
+install -D -m644 ../chrystal_red_root.png \
+	$PKG/usr/share/lxpanel/images/chrystal_red_root.png
+install -D -m644 ../wall-sekong.jpg \
+	$PKG/usr/share/lxde/wallpapers/wall-sekong.jpg
+cp ../icon-sekong.png \
+$PKG/usr/share/lxde/images/lxde-icon.png
+cp ../icon-sekong.png \
+$PKG/usr/share/lxde/images/logout-banner.png
+sed -i "s/lxde_blue.jpg/wall-sekong.jpg/" \
+$PKG/etc/xdg/pcmanfm/LXDE/pcmanfm.conf
+install -D -m644 ../lxde.desktop \
+$PKG/usr/share/xsessions/lxde.desktop
+}

@@ -1,0 +1,18 @@
+# URL: http://pcmanfm.sourceforge.net/
+# Maintainer: git.lxde.org/gitweb/?p=debian/pcmanfm.git;a=summary
+# Packager: milisarge@gmail.com
+# Depends on: libfm, lxde-menu-data
+
+description="contains an extremely fast, lightweight, yet feature-rich file manager with tabbed browsing"
+name=pcmanfm
+version=1.2.4
+release=1
+
+source=(http://downloads.sourceforge.net/${name}/${name}-$version.tar.xz)
+build () {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+sed -i 's/System;//' $PKG/usr/share/applications/pcmanfm.desktop
+}

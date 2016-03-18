@@ -1,0 +1,4 @@
+cat > ~/.xinitrc << "EOF"
+ck-launch-session startlxde
+EOF
+startx

@@ -1,0 +1,20 @@
+# URL: http://lxde.org/
+# Maintainer: milisarge
+# Packager: milisarge@gmail.com
+# Depends on: gtk2 menu-cache alsa-lib libwnck wireless-tools keybinder2 libfm
+
+description="Ccontains a lightweight X11 desktop panel"
+name=lxde-panel
+_name=lxpanel
+version=0.8.2
+release=1
+
+source=(http://downloads.sourceforge.net/lxde/files/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+sed -i "s/gnome-terminal/lxterminal/" $PKG/etc/xdg/lxpanel/default/panels/panel
+}

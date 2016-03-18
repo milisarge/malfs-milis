@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+# The names/descriptions should really be better
+Name=lxde
+Name[tr]=lxde
+Comment=Select this session to use lxde as user graphical interface
+Comment[tr]=lxde genel masaüstü kullanımı
+
+Exec=startlxde
+Icon=
+Type=Application

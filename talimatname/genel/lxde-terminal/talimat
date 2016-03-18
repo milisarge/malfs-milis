@@ -1,0 +1,20 @@
+# Description: lxde terminal uygulaması
+# URL: http://lxde.org/
+# Maintainer: NuTyX core team
+# Packager: milisarge@gmail.com
+# Depends on: intltool vte
+
+name=lxde-terminal
+_name=lxterminal
+version=0.2.0
+release=1
+
+source=(http://downloads.sourceforge.net/lxde/lxterminal-$version.tar.gz)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+make
+make DESTDIR=$PKG install
+}
+  
