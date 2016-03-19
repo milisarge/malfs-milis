@@ -830,33 +830,24 @@ build_package() {
 			fi
 			j=0
 		done
-		if [ ! -z PAKET_LOKAL ]; then
-			local DIR PKGMK_LOCALE LOC
-			for DIR in usr/share/locale opt/*/share/locale; do
-				if [ -d $DIR ]; then
-					for LOC in `cd $DIR && ls`; do
-						# Need to double check because glibc for exemple create a file in this directory
-						if [ -d $DIR/$LOC ];then
-							for PKGMK_LOCALE in ${PAKET_LOKAL[@]}; do
-								if [ "$PKGMK_LOCALE" == "$LOC" ]; then
-									if [ "$1" != "$TARGET" ]; then
-										bsdtar -r -f $PKGMK_PACKAGE_DIR/${name}.${LOC}#$version-any.${PKT_UZANTISI} \
-										$DIR/$LOC || abort_on_build "${name}.${LOC}#$version-any.${PKT_UZANTISI}"
-									fi
-									rm -rf $DIR/$LOC
-									break
-								fi
-							done
-						fi
-					done
+		#dil desteginin eklenmesi-geri kalanın temizlenmesi
+		if [ ! "$PAKET_LOKAL" == "hepsi" ];then
+			local lokaldizin
+			if [ -d usr/share/locale ];then
+				lokaldizin="usr/share/locale"
+			fi
+			if [ -d opt/*/usr/share/locale ];then
+				lokaldizin="opt/*/usr/share/locale"
+			fi
+			for DIR in `ls $lokaldizin` ; do
+				if [[ "$PAKET_LOKAL" == *"$DIR"* ]]; then
+					echo $DIR "dil paketi ekleniyor"
+				else	
+					rm -rf $lokaldizin/$DIR
 				fi
 			done
 		fi
-		for DIR in usr/share/locale opt/*/share/locale; do
-			if [ -d $DIR ]; then
-				rm -rf $DIR
-			fi
-		done
+		
 		if [ "`ls|wc -l`" != "0" ]; then
 			bsdtar -r -f $PKGMK_PACKAGE_DIR/${name}#$version-${PKGMK_ARCH}.${PKT_UZANTISI} *
 		else
@@ -1510,7 +1501,7 @@ PKGMK_CLEAN="evet"
 PAKET_KURMA="evet"
 
 PAKET_GRUPLAR=()
-PAKET_LOKAL=(tr)
+PAKET_LOKAL="tr"
 
 PKGMK_SOURCE_MIRRORS=()
 DERLEME_KAYNAKDIZIN="$PWD"

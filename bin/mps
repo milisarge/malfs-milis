@@ -9,7 +9,6 @@ git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
 kurulum_onay="evet"
-dokunulmaz="/etc/dokunulmaz"
 talimatname_dizin="/root/talimatname"
 kokdizin="/"
 VT="/var/lib/pkg/DB"
@@ -95,49 +94,6 @@ icerik_ekle2(){
 	ryaz 34 $paketad" paketi kuruldu."
 }
 
-paket_siles(){
-	local paket kkont sil_onay
-	if [ -f $dokunulmaz ];then
-		kkont=`kurulu_kontrol "$1"`
-		if [ "$kkont" = "kurulu" ];then
-			paket="$1"
-			ryaz 34 $paket" paketi siliniyor."
-			#while IFS='' read -r line || [[ -n "$line" ]]; do
-			while read -r dosya
-			do
-				touch /tmp/$paket.sil
-				if [[ $(grep -c $dosya $dokunulmaz) -eq 0 ]]; then
-					echo "/$dosya" >> /tmp/$paket.sil 
-					#guvenlik amacli simdilik kapali
-					#rm -r -f /$dosya
-				fi
-			done < /var/lib/pkg/DB/"$paket"/files
-			while true; do
-				read -p "$1 paketi kaldırılsın mı?" eh
-				case $eh in
-					[Ee]* ) sil_onay="e"; break;;
-					[Hh]* ) break;;
-					* ) echo "e veya h";;
-				esac
-			done
-			if [ "$sil_onay" = "e" ];then
-				xargs rm -r -f < /tmp/$paket.sil &&
-				rm -r -f /var/lib/pkg/DB/"$paket" &&
-				ryaz 34 $paket" paketi silindi."
-			fi
-			rm -f /tmp/$paket.sil
-		else
-			ryaz 31 "paket zaten kurulu değil!"
-		fi
-	else
-		echo "kritik mesaj:$dokunulmaz dosyası yok."
-		#tamirat
-		cp /root/ayarlar/dokunulmaz /etc/
-		echo "dokunulmazlık tamiri yapıldı.,komutu yineleyiniz."
-	fi
-
-}
-
 paket_sil(){
 	local paket kkont sil_onay oto_silme
 	paket="$1"
@@ -193,10 +149,10 @@ paket_bilgi(){
 
 yeniden_paketle(){
 	cd $1
-	bsdtar -r -f  ../"$1".mps.tar .META
-	bsdtar -r -f  ../"$1".mps.tar *
+	bsdtar -r -f  ../"$1".mps .META
+	bsdtar -r -f  ../"$1".mps *
 	cd ..
-	lzip -9 "$1".mps.tar
+	lzip -9 "$1".mps
 }
 
 derleme_listyap(){
@@ -556,8 +512,6 @@ ayarlar() {
 				ikaynak="yerel" ;;
 			-k2|--yrku2)
 				ikaynak="yerel2" ;;
-			-sil|--pksl)
-				paket_siles "$2" ;;
 			-s|--pksil)
 				paket_sil "$2" ;;
 			-d|--pkde)
