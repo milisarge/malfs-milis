@@ -148,11 +148,11 @@ paket_bilgi(){
 }
 
 yeniden_paketle(){
-	cd $1
-	bsdtar -r -f  ../"$1".mps .META
-	bsdtar -r -f  ../"$1".mps *
-	cd ..
-	lzip -9 "$1".mps
+		cd $1
+		bsdtar -r -f  ../"$1".mps .META
+		bsdtar -r -f  ../"$1".mps *
+		cd ..
+		lzip -9 "$1".mps
 }
 
 derleme_listyap(){
@@ -539,6 +539,10 @@ ayarlar() {
 			-iko|--pkko2)
 				paket_diskur_oto2 "$2" ;;	
 			-pak|--paketle)
+				if [ ! "$2" ]; then
+					ryaz 31 "paketlenecek dizin ismi eksik"
+					exit 1
+				fi
 				yeniden_paketle "$2" ;;
 			-os|--pkos)
 				if [ ! "$2" ]; then
