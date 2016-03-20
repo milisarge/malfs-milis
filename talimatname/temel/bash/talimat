@@ -1,6 +1,6 @@
 # Description: The Bash package contains the Bourne-Again SHell.
 # Maintainers: Brian Fox,Chet Ramey and many more
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=bash
 version=4.3.30

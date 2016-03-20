@@ -1,7 +1,7 @@
 # Description: Very fast lossless compression algorithm
 # Url: https://github.com/Cyan4973/lz4
 # Maintainer: Yann Collet
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=lz4
 version=r131

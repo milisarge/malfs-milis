@@ -1,7 +1,7 @@
 # Description: To create nice user interfaces to shell scripts or other scripting languages.
 # URL: http://hightek.org/dialog/
 # Maintainer: Thomas E. Dickey dickey at invisible-island dot net
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=dialog
 version=1.2.20140911

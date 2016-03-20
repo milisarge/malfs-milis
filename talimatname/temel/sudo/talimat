@@ -1,6 +1,6 @@
 # Description: Give certain users (or groups) the ability to run some commands as root.
 # URL: http://www.sudo.ws
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge@gmail.com
 # Depends on: pam
 
 name=sudo

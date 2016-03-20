@@ -1,8 +1,7 @@
 # Description: Copies files into or out of a cpio or tar archive.
 # URL: http://www.gnu.org/software/cpio/
 # Maintainer: Sergey Poznyakoff
-# Packager: pierre at nutyx dot org
-
+# Packager: milisarge@gmail.com
 
 name=cpio
 version=2.11

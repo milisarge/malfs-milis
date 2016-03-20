@@ -1,10 +1,10 @@
 # Description: The Zlib package contains compression and decompression routines used by some programs.
 # URL: http://www.zlib.net/
 # Maintainer: Jean-loup Gailly (compression), Mark Adler (decompression)
-# Packager: mahmutov
+# Packager: milisarge@gmail.com
 name=zlib
 version=1.2.8
-release=2
+release=1
 
 source=(http://www.zlib.net/zlib-$version.tar.xz)
 
@@ -12,9 +12,9 @@ build() {
 # Vérifier si necessaire de faire les verifs du bon fonctionnement de
 # glibc et du linker
 if [ -L /bin/pwd ];then
-	mv -v /tools/bin/{ld,ld-old}
-	mv -v /tools/$(uname -m)-pc-linux-gnu/bin/{ld,ld-old}
-	mv -v /tools/bin/{ld-new,ld}
+	mv -v /tools/bin/ld /tools/bin/ld-old
+	mv -v /tools/$(uname -m)-pc-linux-gnu/bin/ld /tools/$(uname -m)-pc-linux-gnu/bin/ld-old
+	mv -v /tools/bin/ld-new /tools/bin/ld
 	ln -sv /tools/bin/ld /tools/$(uname -m)-pc-linux-gnu/bin/ld
 
 	gcc -dumpspecs | sed -e 's@/tools@@g'                   \

@@ -1,7 +1,7 @@
 # Description: Programs for controlling the startup, running, and shutdown of the system.
 # URL: ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/
 # Maintainer: sysvinit-devel@nongnu.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
 name=sysvinit
 version=2.88dsf
 release=2
@@ -27,8 +27,8 @@ mkdir $PKG/etc
 
 cat > $PKG/etc/inittab << "EOF"
 # Begin /etc/inittab
-# Pour le lancement de la console: id:3 (defaut si installation de base)
-# Pour le lancement de lxdm, sddm ou kdm:  id:5
+#  id:3 (defaut si installation de base)
+# lxdm, sddm ou kdm:  id:5
 
 id:3:initdefault:
 

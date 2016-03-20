@@ -1,7 +1,7 @@
 # Description: Utility for non-interactive download of files using HTTP, HTTPS and FTP.
 # URL: http://www.gnu.org/software/wget/
 # Maintainer: gscrivano at gnu dot org
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 name=wget
 version=1.17.1
 release=2

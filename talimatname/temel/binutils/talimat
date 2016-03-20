@@ -1,7 +1,7 @@
 # Description: Linker, assembler, and other tools for handling object files.
 # URL: http://sources.redhat.com/binutils/
 # Maintainers: Tristan Gingold ( gingold at adacore dot com ),Alan Modra ( amodra at bigpond dot net dot au )
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 name=binutils
 version=2.26
 release=3

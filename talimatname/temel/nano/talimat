@@ -1,6 +1,6 @@
 # Description: A simple text editor which aims to replace Pico, the default editor in the Pine package.
 # URL: http://www.nano-editor.org/
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=nano
 version=2.5.2

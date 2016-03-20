@@ -1,6 +1,6 @@
 # Description: The zoneinfo database or IANA Time Zone
 # URL: http://www.gnu.org/software/libc/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 name=tzdata
 version=2016a
 release=1
@@ -14,6 +14,6 @@ timezones=('africa' 'antarctica' 'asia' 'australasia'
 zic -y ./yearistype -d $PKG/usr/share/zoneinfo ${timezones[@]}
 zic -y ./yearistype -d $PKG/usr/share/zoneinfo/posix ${timezones[@]}
 zic -y ./yearistype -d $PKG/usr/share/zoneinfo/right -L leapseconds ${timezones[@]}
-zic -y ./yearistype -d $PKG/usr/share/zoneinfo -p America/New_York
+zic -y ./yearistype -d $PKG/usr/share/zoneinfo -p Europe/Istanbul
 install -m444 -t $PKG/usr/share/zoneinfo iso3166.tab zone.tab
 }

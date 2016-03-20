@@ -5,8 +5,7 @@ name=rsync
 version=3.1.2
 release=1
 
-source=( http://rsync.samba.org/ftp/$name/$name-$version.tar.gz
-	rsync.driver )
+source=( http://rsync.samba.org/ftp/$name/$name-$version.tar.gz )
 
 build() {
 source /etc/blfs-bootscripts
@@ -18,11 +17,6 @@ cd $name-$version
 --infodir=/usr/share/info
 make
 make DESTDIR=$PKG install
-
-# drivers
-mkdir -p $PKG/var/lib/pkg/drivers
-install -m 755 $SRC/rsync.driver \
-$PKG/var/lib/pkg/drivers/rsync
 
 # service
 cd $SRC

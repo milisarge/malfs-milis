@@ -7,9 +7,8 @@ libtirpc
 rpcbind
 nfs-utils
 jfsutils
-dhcpcd
 linux-firmware
 kernel
 dracut
+grub
 vim
-nano

@@ -1,7 +1,7 @@
 # Description: Programs that show the differences between files or directories.
 # URL: http://www.gnu.org/software/diffutils/
 # Maintainers: Paul Eggert,Mike Haertel,David Hayes,Len Tower and many more.
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=diffutils
 version=3.3

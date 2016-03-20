@@ -26,5 +26,5 @@ build() {
         install -d $PKG/boot/grub
         rm -rf $PKG/usr/share/info/dir
 	install -Dm644 ../grub.cfg \
-	$PKG/boot/grub/grub.cfg.exemple
+	$PKG/boot/grub/grub.cfg.ornek
 }

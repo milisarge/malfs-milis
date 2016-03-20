@@ -1,7 +1,7 @@
 # Description: The Tar package contains an archiving program.
 # URL: http://www.gnu.org/software/tar/tar.html
 # Maintainers: John Gilmore,Henry Spencer,Fred Fish,Ian Darwin,Geoff Collyer,Stan Barber,Guy Harris,Dave Brower,Richard Todd,Michael Rendell,Stu Heiss and,Rich Salz.
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
 name=tar
 version=1.28
 release=2

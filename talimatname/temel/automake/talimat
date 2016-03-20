@@ -1,6 +1,6 @@
 # Description: Contains programs for generating Makefiles for use with Autoconf.
 # URL: http://www.gnu.org/software/automake/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=automake
 version=1.15

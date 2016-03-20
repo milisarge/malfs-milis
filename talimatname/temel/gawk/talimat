@@ -1,7 +1,8 @@
 # Description: The Gawk package contains programs for manipulating text files.
 # URL: http://www.gnu.org/software/gawk/
 # Maintainers: Paul Rubin,Paul Finlason,Richard Stallman,David Trueman and,Arnold Robbins
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
+
 name=gawk
 version=4.1.3
 release=1
@@ -18,10 +19,6 @@ make check || true
 make DESTDIR=$PKG install
 rm -rf $PKG/usr/share/info/dir
 
-# Documentation
-mkdir -vp $PKG/usr/share/doc/gawk-$version
-cp    -v doc/{awkforai.txt,*.{eps,pdf,jpg}} \
-$PKG/usr/share/doc/gawk-$version
 }
 
 

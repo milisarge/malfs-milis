@@ -1,6 +1,6 @@
 # Description: Allows spanning of file systems across multiple physical disks and partitions.
 # URL: http://sourceware.org/lvm2/
-# Packager: pierre at nutyx dot org 
+# Packager: milisarge@gmail.com
 
 name=lvm2
 version=2.02.141

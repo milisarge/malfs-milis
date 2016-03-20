@@ -1,7 +1,7 @@
 # Description: Utilities for showing and setting the basic system characteristics
 # URL: http://www.gnu.org/software/coreutils/
 # Maintainer: Jim Meyering meyering at redhat dot com
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=coreutils
 version=8.25

@@ -1,6 +1,6 @@
 # Description: Certificate Authority certificates, the Public Key Infrastructure.
 # URL: http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=ca-certificates
 version=20160110

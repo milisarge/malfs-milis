@@ -1,7 +1,8 @@
 # Description: The Groff package contains programs for processing and formatting text.
 # URL: http://www.gnu.org/software/groff/
 # Maintainer: Werner Lemberg  wl at gnu dot org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
+
 name=groff
 version=1.22.3
 release=1

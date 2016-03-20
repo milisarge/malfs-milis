@@ -60,6 +60,7 @@ nasm
 openssl
 libarchive
 lzip
+lz4
 kbd
 curl
 cpio
@@ -72,5 +73,7 @@ gpm
 openssh
 dialog
 squashfs
+dhcpcd
 sudo
+nano
 ca-certificates

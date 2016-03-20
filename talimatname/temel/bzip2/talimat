@@ -1,7 +1,7 @@
 # Description: Programs for compressing and decompressing files.
 # URL: http://www.bzip.org/
 # Maintainer: Julian Seward ( jseward at bzip dot org )
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 
 name=bzip2
 version=1.0.6
@@ -9,8 +9,6 @@ release=1
 
 source=(http://www.bzip.org/$version/bzip2-$version.tar.gz \
 http://www.linuxfromscratch.org/patches/lfs/development/bzip2-$version-install_docs-1.patch)
-
-#PKGMK_GROUPS=(devel doc man)
 
 build() {
 

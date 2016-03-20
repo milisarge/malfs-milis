@@ -1,5 +1,5 @@
 # URL: http://savannah.nongnu.org/projects/acl
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
 
 description="Commands for Manipulating POSIX Access Control Lists."
 name=acl
@@ -7,7 +7,7 @@ version=2.2.52
 release=1
 
 source=( http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
-#PKGMK_GROUPS=(devel man doc)
+
 build() {
 cd acl-*
 

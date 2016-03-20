@@ -1,6 +1,6 @@
 # Description: The Bc package contains an arbitrary precision numeric processing language.
 # URL: http://ftp.gnu.org/gnu/bc/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 name=bc
 version=1.06.95
 release=1

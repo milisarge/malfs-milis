@@ -1,14 +1,14 @@
 # Description: Utilities to administer the extended attributes on filesystem objects
 # URL: http://savannah.nongnu.org/projects/attr
 # Maintainers: Andreas Gruenbacher <agruen>, Brandon Philips <philips>
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge@gmail.com
 
 name=attr
 version=2.4.47
 release=1
 
 source=(http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
-#PKGMK_GROUPS=(devel man doc)
+
 build() {
 cd attr-$version
 
