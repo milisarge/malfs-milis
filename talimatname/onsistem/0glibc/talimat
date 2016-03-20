@@ -1,13 +1,11 @@
-version=2.22
+version=2.23
 source=(\
 http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
-  http://www.linuxfromscratch.org/patches/lfs/development/glibc-$version-upstream_i386_fix-1.patch
 )
 
 build()
 {
 cd glibc-$version
-patch -Np1 -i ../glibc-$version-upstream_i386_fix-1.patch
 
 mkdir -v build
 cd build
@@ -15,7 +13,7 @@ cd build
 
 ../configure  \
       --prefix=/tools                    \
-      --host=$LFS_TGT                    \
+      --host=$LFS_TARGET                 \
       --build=$(../scripts/config.guess) \
       --disable-profile                  \
       --enable-kernel=2.6.32             \
@@ -32,7 +30,7 @@ rm -rf /tools/share/info/dir
 make install
 
 echo 'main(){}' > dummy.c
-$LFS_TGT-gcc dummy.c
+$LFS_TARGET-gcc dummy.c
 echo $(readelf -l a.out | grep ': /tools')
 rm -v dummy.c a.out
 }

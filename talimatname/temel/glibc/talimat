@@ -1,16 +1,13 @@
 # Description: The Glibc package contains the main C library.
 # URL: https://www.gnu.org/software/libc/
-# Packagers: milis
+# Packagers: tnut at nutyx dot org
 kernelversion=4.4
-
 name=glibc
-version=2.22
+version=2.23
 release=1
 
 source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$kernelversion.tar.xz
-	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-largefile-1.patch
 	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-fhs-1.patch
-	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-upstream_i386_fix-1.patch
 	http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz glibc.locales.supported )
 build() {
 
@@ -26,8 +23,6 @@ cp -rv dest/include/* $PKG/usr/include
 cd ../glibc-$version
 
 patch -Np1 -i ../glibc-$version-fhs-1.patch
-patch -Np1 -i ../glibc-$version-upstream_i386_fix-1.patch
-patch -Np1 -i ../glibc-$version-largefile-1.patch
 
 mkdir -v ../glibc-build
 cd ../glibc-build
