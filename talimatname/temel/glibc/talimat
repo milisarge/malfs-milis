@@ -14,13 +14,6 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$kernelversion.tar.xz
 	http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz glibc.locales.supported )
 build() {
 
-case $(uname -m) in
- x86_64) ln -sv /lib /lib64
-         ln -sv /lib /usr/lib64
-         ln -sv /lib /usr/local/lib64 ;;
-esac
-
-
 # Headers
 cd linux-$kernelversion
 make mrproper
