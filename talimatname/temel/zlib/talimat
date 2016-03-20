@@ -12,6 +12,8 @@ build() {
 # Vérifier si necessaire de faire les verifs du bon fonctionnement de
 # glibc et du linker
 if [ -L /bin/pwd ];then
+	ln -s /tools/lib/* /tools/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/
+
 	mv -v /tools/bin/ld /tools/bin/ld-old
 	mv -v /tools/$(uname -m)-pc-linux-gnu/bin/ld /tools/$(uname -m)-pc-linux-gnu/bin/ld-old
 	mv -v /tools/bin/ld-new /tools/bin/ld

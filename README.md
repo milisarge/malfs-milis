@@ -3,7 +3,7 @@ Milis Operating System based on Linux From Scratch book
 
  Konak Sistem için Yapılması Gerekenler (ubuntu)
  
- apt-get install bsdtar binutils gcc g++ m4 make bison texinfo pkg-config squashfs-tools lzip
+ apt-get install bsdtar binutils gcc g++ m4 make bison gawk texinfo pkg-config squashfs-tools lzip
  
  mv /usr/bin/mawk /usr/bin/mawk-eski
  

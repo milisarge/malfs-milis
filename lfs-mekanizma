@@ -198,7 +198,7 @@ alias ls='ls --color=auto'
 # in the X environment. [Review the LFS archive thread titled
 # PS1 Environment Variable for a great case study behind this script
 # addendum.]
-export LC_ALL="tr_TR.UTF-8"
+#export LC_ALL="tr_TR.UTF-8"
 
 NORMAL="\[\e[0m\]"
 RED="\[\e[1;31m\]"
