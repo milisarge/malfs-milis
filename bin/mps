@@ -28,10 +28,10 @@ icerik_ekle(){
 	mkdir -p tmpk.$paketad
 	tar xf $1 -C tmpk.$paketad  &&
 	mkdir -p /var/lib/pkg/DB/"$paketad" &&
-	cp -avf tmpk.$paketad/* $kokdizin > tmpk.$paketad/kurulan &&
+	cp -axvnu tmpk.$paketad/* $kokdizin > tmpk.$paketad/kurulan
 	cat tmpk.$paketad/kurulan | cut -d '>' -f2 > /var/lib/pkg/DB/"$paketad"/kurulan
 	#mv  tmpk.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
-	mv  tmpk.$paketad/.META /var/lib/pkg/DB/"$paketad"/META &&
+	mv  tmpk.$paketad/.META /var/lib/pkg/DB/"$paketad"/META 
 	
 	#kur-kos calistirilmasi
 	if [ -f tmpk.$paketad/.POST ];then
@@ -48,8 +48,10 @@ icerik_ekle(){
 	#	rm  $kokdizin/.README
 	#fi
 	rm -r tmpk.$paketad
-	if [ -f /etc/ld.so.conf ];then
-		ldconfig
+	if [ -f /tools/sbin/ldconfig ];then
+		/tools/sbin/ldconfig
+	else
+		/sbin/ldconfig
 	fi
 	ryaz 34 $paketad" paketi kuruldu."
 }
@@ -88,8 +90,10 @@ icerik_ekle2(){
 	#	rm  $kokdizin/.README
 	#fi
 	rm -r tmpk.$paketad
-	if [ -f /etc/ld.so.conf ];then
-		ldconfig
+	if [ -f /tools/sbin/ldconfig ];then
+		/tools/sbin/ldconfig
+	else
+		/sbin/ldconfig
 	fi
 	ryaz 34 $paketad" paketi kuruldu."
 }

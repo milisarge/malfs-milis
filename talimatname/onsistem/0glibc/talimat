@@ -13,7 +13,7 @@ cd build
 
 ../configure  \
       --prefix=/tools                    \
-      --host=$LFS_TARGET                 \
+      --host=$LFS_TGT                 \
       --build=$(../scripts/config.guess) \
       --disable-profile                  \
       --enable-kernel=2.6.32             \
@@ -30,7 +30,7 @@ rm -rf /tools/share/info/dir
 make install
 
 echo 'main(){}' > dummy.c
-$LFS_TARGET-gcc dummy.c
+$LFS_TGT-gcc dummy.c
 echo $(readelf -l a.out | grep ': /tools')
 rm -v dummy.c a.out
 }
