@@ -831,22 +831,22 @@ build_package() {
 			j=0
 		done
 		#dil desteginin eklenmesi-geri kalanın temizlenmesi
-		if [ ! "$PAKET_LOKAL" == "hepsi" ];then
-			local lokaldizin
-			if [ -d usr/share/locale ];then
-				lokaldizin="usr/share/locale"
-			fi
-			if [ -d opt/*/usr/share/locale ];then
-				lokaldizin="opt/*/usr/share/locale"
-			fi
-			for DIR in `ls $lokaldizin` ; do
-				if [[ "$PAKET_LOKAL" == *"$DIR"* ]]; then
-					echo $DIR "dil paketi ekleniyor"
-				else	
-					rm -rf $lokaldizin/$DIR
-				fi
-			done
-		fi
+		#if [ ! "$PAKET_LOKAL" == "hepsi" ];then
+		#	local lokaldizin
+		#	if [ -d usr/share/locale ];then
+		#		lokaldizin="usr/share/locale"
+		#	fi
+		#	if [ -d opt/*/usr/share/locale ];then
+		#		lokaldizin="opt/*/usr/share/locale"
+		#	fi
+		#	for DIR in `ls $lokaldizin` ; do
+		#		if [[ "$PAKET_LOKAL" == *"$DIR"* ]]; then
+		#			echo $DIR "dil paketi ekleniyor"
+		#		else	
+		#			rm -rf $lokaldizin/$DIR
+		#		fi
+		#	done
+		#fi
 		
 		if [ "`ls|wc -l`" != "0" ]; then
 			bsdtar -r -f $PKGMK_PACKAGE_DIR/${name}#$version-${PKGMK_ARCH}.${PKT_UZANTISI} *

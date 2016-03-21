@@ -48,10 +48,8 @@ icerik_ekle(){
 	#	rm  $kokdizin/.README
 	#fi
 	rm -r tmpk.$paketad
-	if [ -f /tools/sbin/ldconfig ];then
-		/tools/sbin/ldconfig
-	else
-		/sbin/ldconfig
+	if [ -f /etc/ld.so.conf ];then
+		ldconfig
 	fi
 	ryaz 34 $paketad" paketi kuruldu."
 }
