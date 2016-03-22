@@ -126,7 +126,7 @@ Milis Operating System based on Linux From Scratch book
  
  en son bu mesaj ile derleme bitmelidir.
  
- =======>  'nano.tr#2.5.2-any.mps.lz' basarili sekilde kuruldu.
+ =======>  'vim#7.4-x86_64.mps.lz' basarili sekilde kuruldu.
  
  başlatıcı(initram-initrd) oluşturulması
  
