@@ -13,6 +13,7 @@ talimatname_dizin="/root/talimatname"
 kokdizin="/"
 VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
+tekrarkur="evet"
 
 
 icerik_ekle(){
@@ -195,6 +196,7 @@ paket_derle_oto(){
 }
 #otomatik derle kontrollu kur
 paket_derle_oto2(){
+	tekrarkur="hayir"
 	mps -dly "$1" > /dev/null && mps -odk genel.derleme.liste
 }
 
@@ -674,15 +676,17 @@ if [ "$ikaynak" = "yerel" ]; then
 		if [ "$kkont" = "degil" ];then
 			icerik_ekle "$2"
 		else
-			while true; do
-				ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
-				read -p "e veya h -> " eh
-				case $eh in
-					[Ee]* ) silme="e"; break;;
-					[Hh]* ) break;;
-					* ) echo "e veya h";;
-				esac
-			done
+			if [ "$tekrarkur" = "hayir" ];then
+				while true; do
+					ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
+					read -p "e veya h -> " eh
+					case $eh in
+						[Ee]* ) silme="e"; break;;
+						[Hh]* ) break;;
+						* ) echo "e veya h";;
+					esac
+				done
+			fi
 			if [ "$silme" = "e" ];then
 				ryaz 33 "silinecekelerin kontrolu için"
 				paket_sil "$paketad"
