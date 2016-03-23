@@ -5,143 +5,96 @@
 
 name=qt5
 version=5.5.1
-release=2
-
-_name=qt-everywhere-opensource-src-${version}
-
-source=(http://download.qt-project.org/official_releases/qt/${version%.*}/$version/single/${_name}.tar.xz)
+release=1
+source=(http://download.qt.io/official_releases/qt/${version%.*}/$version/single/qt-everywhere-opensource-src-$version.tar.xz)
 
 build() {
+	cd qt-everywhere-opensource-src-$version
 
-QT5PREFIX=/usr
-QT5BINDIR=$QT5PREFIX/lib/qt5/bin
+	# Respect system CXX
+	[ "$CXX" ] || CXX=g++
+	sed -i "/^QMAKE_CXX\s/s|=.*|= $CXX|"  qtbase/mkspecs/common/g++-base.conf
 
+	# Remove obsolete xorg path
+	sed -i 's|X11R6/||g' qtbase/mkspecs/*/*.conf
 
-cd ${_name}*
+	# Respect system CXXFLAGS
+	sed -i "s|^\(QMAKE_CFLAGS_RELEASE.*\)|\1 ${CXXFLAGS}|" qtbase/mkspecs/common/gcc-base.conf
+	#sed -i "s|-O2|$CXXFLAGS|" qtbase/mkspecs/common/g++-unix.conf
+	#sed -i "s|-O2|${CXXFLAGS}|" qtbase/mkspecs/common/{g++,gcc}-base.conf
 
-./configure -prefix         $QT5PREFIX                  \
-            -sysconfdir     /etc/xdg                    \
-            -bindir         $QT5BINDIR                  \
-            -plugindir      /usr/lib/qt5/plugins        \
-            -importdir      /usr/lib/qt5/imports        \
-            -headerdir      /usr/include/qt5            \
-            -datadir        /usr/share/qt5              \
-            -docdir         /usr/share/doc/qt5          \
-            -translationdir /usr/share/qt5/translations \
-            -examplesdir    /usr/share/doc/qt5/examples \
-            -plugin-sql-{psql,mysql,sqlite,odbc}        \
-            -confirm-license  \
-            -opensource       \
-            -dbus-linked      \
-            -openssl-linked   \
-            -system-harfbuzz  \
-            -system-sqlite    \
-	    -optimized-qmake  \
-            -nomake examples  \
-	    -no-rpath         \
-            -skip qtwebengine 
+	# Respect system LDFLAGS
+	sed -i "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" qtbase/mkspecs/common/g++-unix.conf
+	#sed -i "/^QMAKE_LFLAGS\s/s|+=|+= ${LDFLAGS}|g" qtbase/mkspecs/common/gcc-base.conf
 
-make
-make INSTALL_ROOT=$PKG install
+	# Fix quoting bug
+	sed -i 's|"$COMPILER" -c|$COMPILER -c|' qtbase/config.tests/unix/fvisibility.test
 
-find $PKG/usr/ -name qt_lib_bootstrap_private.pri \
-   -exec sed -i -e "s:$PWD/qtbase:/$QT5PREfiX/lib/:g" {} \; &&
+	export QTDIR="$PWD"
+	export LD_LIBRARY_PATH="$QTDIR/qtbase/lib:$QTDIR/qttools/lib:$LD_LIBRARY_PATH"
+	export QT_PLUGIN_PATH="$QTDIR/qtbase/plugins"
 
-find $PKG/usr -name \*.prl \
-   -exec sed -i -e '/^QmAKE_PRL_BUiLD_DiR/d' {} \;
+	./configure  -prefix /usr/share/qt5 \
+                -bindir /usr/share/qt5/bin \
+                -headerdir /usr/share/qt5/include \
+                -libdir /usr/share/qt5/lib \
+                -libexecdir /usr/share/qt5/lib \
+                -plugindir /usr/share/qt5/plugins \
+                -sysconfdir /usr/etc/xdg \
+                -openssl-linked -dbus-linked \
+                -system-lib{png,jpeg} -system-{zlib,sqlite} \
+                -no-cups -optimized-qmake \
+                -x{cursor,inerama,kb,randr,render} \
+                -nomake examples \
+                -no-separate-debug-info -no-strip -shared -no-rpath \
+                -opensource -confirm-license -release -reduce-relocations
 
-install -v -dm755 $PKG/usr/share/pixmaps/
+	make
+	make INSTALL_ROOT=$PKG install
+    
+	# Fix paths
+	find $PKG/usr/share/qt5/lib  -type f -name '*.prl' \
+		-exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/' {} \;
+        
+	sed -e "s|$PWD/qtbase|/usr/share/qt5/lib|g" \
+		-i $PKG/usr/share/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri
 
-install -v -Dm644 qttools/src/assistant/assistant/images/assistant-128.png \
-                  $PKG/usr/share/pixmaps/assistant-qt5.png
+	# Remove unnecessary files
+	rm -rf $(find $PKG/usr/share/qt5/mkspecs/* | \
+		egrep -v '(linux-g++|common|modules|pri|features)')
 
-install -v -Dm644 qttools/src/designer/src/designer/images/designer.png \
-                  $PKG/usr/share/pixmaps/designer-qt5.png
+	rm -f $PKG/usr/share/qt5/mkspecs/linux-g++/linux-g++
+	rm -rf $PKG/usr/share/qt5/mkspecs/features/{mac,win32}
+	rm -rf $PKG/usr/share/qt5/mkspecs/common/mac*
+	rm -rf $PKG/usr/share/qt5/{phrasebooks,translations}
 
-install -v -Dm644 qttools/src/linguist/linguist/images/icons/linguist-128-32.png \
-                  $PKG/usr/share/pixmaps/linguist-qt5.png
+	# Install linker config
+	install -d $PKG/{etc/ld.so.conf.d,usr/{bin,lib,include}}
+	echo "/usr/share/qt5/lib" > $PKG/etc/ld.so.conf.d/qt5.conf
 
-install -v -Dm644 qttools/src/qdbus/qdbusviewer/images/qdbusviewer-128.png \
-                  $PKG/usr/share/pixmaps/qdbusviewer-qt5.png
+	ln -s ../share/qt5/include     $PKG/usr/include/qt5
+	ln -s ../share/qt5/lib         $PKG/usr/lib/qt5
+	ln -s linux-g++                $PKG/usr/share/qt5/mkspecs/default
 
-install -dm755 $PKG/usr/share/applications
+	# Install pkg config
+	mv $PKG/usr/share/qt5/lib/pkgconfig $PKG/usr/lib
 
+	# Fix paths
+	sed \
+		-e "s|-L$SRC/qt-everywhere-opensource-src-$version/lib ||g" \
+		-e "s|$SRC/qt-everywhere-opensource-src-$version/bin|/usr/share/qt5/bin|g" \
+		-i $PKG/usr/lib/pkgconfig/*.pc
 
-cat > $PKG/usr/share/applications/assistant-qt5.desktop << "EOf"
-[Desktop Entry]
-Name=Qt5 Assistant
-comment=Shows Qt5 documentation and examples
-Exec=$QT5BINDIR/assistant-qt5
-icon=assistant-qt5
-Terminal=false
-Encoding=UTf-8
-Type=Application
-categories=Qt;Development;Documentation;
-EOf
+	# Install useful symlinks
+	install -d $PKG/usr/bin
+	for b in $PKG/usr/share/qt5/bin/*; do
+		ln -s /usr/share/qt5/bin/$(basename $b) $PKG/usr/bin/$(basename $b)-qt5
+	done
 
-cat > $PKG/usr/share/applications/designer-qt5.desktop << "EOf"
-[Desktop Entry]
-Name=Qt5 Designer
-GenericName=interface Designer
-comment=Design GUis for Qt5 applications
-Exec=$QT5BINDIR/designer-qt5
-icon=designer-qt5
-mimeType=application/x-designer;
-Terminal=false
-Encoding=UTf-8
-Type=Application
-categories=Qt;Development;
-EOf
+	# cmake
+	install -d $PKG/usr/lib/cmake
+        for b in $PKG/usr/share/qt5/lib/cmake/*; do
+                ln -s /usr/share/qt5/lib/cmake/$(basename $b) $PKG/usr/lib/cmake/$(basename $b)
+        done
 
-cat > $PKG/usr/share/applications/linguist-qt5.desktop << "EOf"
-[Desktop Entry]
-Name=Qt5 Linguist
-comment=Add translations to Qt5 applications
-Exec=$QT5BINDIR/linguist-qt5
-icon=linguist-qt5
-mimeType=text/vnd.trolltech.linguist;application/x-linguist;
-Terminal=false
-Encoding=UTf-8
-Type=Application
-categories=Qt;Development;
-EOf
-
-cat > $PKG/usr/share/applications/qdbusviewer-qt5.desktop << "EOf"
-[Desktop Entry]
-Name=Qt5 QDbusviewer
-GenericName=D-Bus Debugger
-comment=Debug D-Bus applications
-Exec=$QT5BINDIR/qdbusviewer-qt5
-icon=qdbusviewer-qt5
-Terminal=false
-Encoding=UTf-8
-Type=Application
-categories=Qt;Development;Debugger;
-EOf
-
-mkdir -p $PKG/etc/profile.d
-cat > $PKG/etc/profile.d/qt5.sh << EOf
-# Begin /etc/profile.d/qt5.sh
-
-QT5PREFIX=$QT5PREFIX
-QT5DIR=$QT5PREFIX
-QT5BINDIR=$QT5PREFIX/lib/qt5/bin
-export QT5PREFIX QT5BINDIR QT5DIR
-
-# End /etc/profile.d/qt5.sh
-EOf
-
-### Creation des liens /usr/bin vers les binaires se trouvant
-### dans le dossier /usr/lib/qt5/bin en ajoutant qt5 à la fin du lien
-mkdir -p $PKG/usr/bin
-
-for i in $PKG/usr/lib/qt5/bin/*; do 
-	ln -sv /usr/lib/qt5/bin/$(basename $i) $PKG/usr/bin/$(basename $i)-qt5
-done
-
-cat > $PKG/usr/bin/setqt5 << EOF
-if [ "x\$QT4BINDIR" != "x/usr/bin" ] && [ "x\$QT4BINDIR" != "x" ]; then pathremove $QT4BINDIR; fi
-if [ "x\$QT5BINDIR" != "x/usr/bin" ]; then pathprepend $QT5BINDIR; fi
-echo \$PATH
-EOF
 }

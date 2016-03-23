@@ -1,4 +1,6 @@
-ack="malfs mekanizma guncelleme"
+#!/bin/bash
+#ack="guncelleme"
+ack=$1
 git add . 
 git commit -a -m "$ack"
 git push origin master
