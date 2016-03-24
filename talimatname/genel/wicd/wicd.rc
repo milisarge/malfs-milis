@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# /etc/rc.d/wicd: start/stop wicd daemon
+#
+
+case $1 in
+start)
+	/usr/bin/wicd
+	;;
+stop)
+	kill $(cat /var/run/wicd/wicd.pid)
+	;;
+restart)
+	$0 stop
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart]"
+	exit 1
+	;;
+esac
+
+# End of file

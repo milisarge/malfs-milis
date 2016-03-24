@@ -32,5 +32,6 @@ done
 
 python setup.py install --optimize=1  --root=$PKG
 cp scripts/wicd $PKG/usr/bin/wicd
+install -m 0744 -D $SRC/wicd.rc $PKG/etc/rc.d/wicd
 echo "NotShowIn=KDE" >> $PKG/etc/xdg/autostart/wicd-tray.desktop
 }
