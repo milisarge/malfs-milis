@@ -13,7 +13,8 @@ talimatname_dizin="/root/talimatname"
 kokdizin="/"
 VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
-tekrarkur="evet"
+tekrarkur="hayir"
+lokal="tr"
 
 
 icerik_ekle(){
@@ -26,29 +27,27 @@ icerik_ekle(){
 		bash  /tmp/.PRE
 		rm  /tmp/.PRE
 	fi
-	mkdir -p tmpk.$paketad
-	tar xf $1 -C tmpk.$paketad  &&
-	mkdir -p /var/lib/pkg/DB/"$paketad" &&
-	cp -axvnu tmpk.$paketad/* $kokdizin > tmpk.$paketad/kurulan
-	cat tmpk.$paketad/kurulan | cut -d '>' -f2 > /var/lib/pkg/DB/"$paketad"/kurulan
-	#mv  tmpk.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
-	mv  tmpk.$paketad/.META /var/lib/pkg/DB/"$paketad"/META 
+	mkdir -p kur.$paketad &&
+	tar xf $1 -C kur.$paketad && 
+	#istenmeyen yerellerin silinmesi
+	if [ -d kur.$paketad/usr/share/locale ];then
+		for lkl in `ls kur.$paketad/usr/share/locale/`;do
+			if [ "$lkl" != "$lokal" ];then rm -r kur.$paketad/usr/share/locale/$lkl; fi
+		done
+	fi
+	mkdir -p /var/lib/pkg/DB/"$paketad" && 
+	cp -v -afr kur.$paketad/* $kokdizin > kur.$paketad/kurulan &&
+	cp kur.$paketad/kurulan /tmp/ &&cat kur.$paketad/kurulan | cut -d '>' -f2 > /var/lib/pkg/DB/"$paketad"/kurulan &&
+	#mv  kur.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
+	mv  kur.$paketad/.META /var/lib/pkg/DB/"$paketad"/META &&
 	
 	#kur-kos calistirilmasi
-	if [ -f tmpk.$paketad/.POST ];then
-		bash  tmpk.$paketad/.POST
-		rm  tmpk.$paketad/.POST
+	if [ -f kur.$paketad/.POST ];then
+		bash  kur.$paketad/.POST
+		rm  kur.$paketad/.POST
 	fi
-	#if [ -f $kokdizin.PRE ];then
-	#	rm  $kokdizin.PRE
-	#fi
-	#if [ -f $kokdizin/.okubeni ];then
-	#	rm  $kokdizin/.okubeni
-	#fi
-	#if [ -f $kokdizin/.README ];then
-	#	rm  $kokdizin/.README
-	#fi
-	rm -r tmpk.$paketad
+	
+	rm -r kur.$paketad
 	if [ -f /etc/ld.so.conf ];then
 		ldconfig
 	fi
@@ -66,18 +65,18 @@ icerik_ekle2(){
 		bash  /tmp/.PRE
 		rm  /tmp/.PRE
 	fi
-	mkdir -p tmpk.$paketad
-	tar xf $1 -C tmpk.$paketad  &&
+	mkdir -p kur.$paketad
+	tar xf $1 -C kur.$paketad  &&
 	mkdir -p $kokdizin/var/lib/pkg/DB/"$paketad" &&
-	cp -avf tmpk.$paketad/* $kokdizin > tmpk.$paketad/kurulan &&
-	cat tmpk.$paketad/kurulan | cut -d '>' -f2 > $kokdizin/var/lib/pkg/DB/"$paketad"/kurulan
-	#mv  tmpk.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
-	mv  tmpk.$paketad/.META $kokdizin/var/lib/pkg/DB/"$paketad"/META &&
+	cp -avf kur.$paketad/* $kokdizin > kur.$paketad/kurulan &&
+	cat kur.$paketad/kurulan | cut -d '>' -f2 > $kokdizin/var/lib/pkg/DB/"$paketad"/kurulan
+	#mv  kur.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
+	mv  kur.$paketad/.META $kokdizin/var/lib/pkg/DB/"$paketad"/META &&
 	
 	#kur-kos calistirilmasi
-	if [ -f tmpk.$paketad/.POST ];then
-		bash  tmpk.$paketad/.POST
-		rm  tmpk.$paketad/.POST
+	if [ -f kur.$paketad/.POST ];then
+		bash  kur.$paketad/.POST
+		rm  kur.$paketad/.POST
 	fi
 	#if [ -f $kokdizin.PRE ];then
 	#	rm  $kokdizin.PRE
@@ -88,7 +87,7 @@ icerik_ekle2(){
 	#if [ -f $kokdizin/.README ];then
 	#	rm  $kokdizin/.README
 	#fi
-	rm -r tmpk.$paketad
+	rm -r kur.$paketad
 	if [ -f /tools/sbin/ldconfig ];then
 		/tools/sbin/ldconfig
 	else
