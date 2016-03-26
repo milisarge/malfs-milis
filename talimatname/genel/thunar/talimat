@@ -8,9 +8,11 @@ name=thunar
 version=1.6.10
 release=1
 
-source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2)
+source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2
+		no-root-warning.patch)
 build() {
 cd Thunar-$version
+patch $SRC/Thunar-1.6.10/thunar/thunar-window.c $SRC/no-root-warning.patch
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

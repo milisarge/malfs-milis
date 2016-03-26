@@ -18,8 +18,7 @@ cd $name-$version
     --localstatedir=/var \
     --datadir=/usr/share \
     --datarootdir=/usr/share \
-    --disable-static \
-    --disable-debug
+    --disable-static 
   
 	make
 	make DESTDIR=$PKG install

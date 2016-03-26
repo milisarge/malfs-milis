@@ -1,0 +1,4 @@
+835c835
+<   if (G_UNLIKELY (geteuid () == 0))
+---
+>   if (G_UNLIKELY (1 == 0))

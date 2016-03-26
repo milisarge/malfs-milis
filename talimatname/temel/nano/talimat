@@ -5,6 +5,7 @@
 name=nano
 version=2.5.2
 release=1
+#PAKET_LOKAL="hepsi"
 
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
