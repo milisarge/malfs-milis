@@ -15,6 +15,8 @@ VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
 tekrarkur="hayir"
 lokal="tr"
+docsil="evet"
+yerelsil="evet"
 
 
 icerik_ekle(){
@@ -30,10 +32,14 @@ icerik_ekle(){
 	mkdir -p kur.$paketad &&
 	tar xf $1 -C kur.$paketad && 
 	#istenmeyen yerellerin silinmesi
-	if [ -d kur.$paketad/usr/share/locale ];then
+	if [ -d kur.$paketad/usr/share/locale ] && [ "$yerelsil" == "evet" ];then
 		for lkl in `ls kur.$paketad/usr/share/locale/`;do
 			if [ "$lkl" != "$lokal" ];then rm -r kur.$paketad/usr/share/locale/$lkl; fi
 		done
+	fi
+	#doc dizini silinmesi
+	if [ -d kur.$paketad/usr/share/doc ] && [ "$docsil" == "evet" ];then
+		rm -r kur.$paketad/usr/share/doc
 	fi
 	mkdir -p /var/lib/pkg/DB/"$paketad" && 
 	cp -v -afr kur.$paketad/* $kokdizin > kur.$paketad/kurulan &&

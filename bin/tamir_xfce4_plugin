@@ -1,0 +1,1 @@
+ln -s /usr/lib64/xfce4/panel-plugins/* /usr/lib/xfce4/panel-plugins/
