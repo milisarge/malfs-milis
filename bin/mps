@@ -1,7 +1,7 @@
 #!/bin/bash
 . /etc/mpsd.conf
 . /root/bin/fonks.sh
-versiyon="0.1"
+versiyon="0.2"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 sunucu="192.168.3.193:8000/MPS/"
@@ -13,6 +13,7 @@ talimatname_dizin="/root/talimatname"
 kokdizin="/"
 VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
+LOGDIZIN="/var/log/mps"
 tekrarkur="hayir"
 lokal="tr"
 docsil="evet"
@@ -58,6 +59,8 @@ icerik_ekle(){
 		ldconfig
 	fi
 	ryaz 34 $paketad" paketi kuruldu."
+	loglama "$paketad paketi kuruldu."
+	
 }
 
 icerik_ekle2(){
@@ -132,6 +135,7 @@ paket_sil(){
 				xargs rm -r -f < /tmp/$paket.sil &&
 				rm -r -f /var/lib/pkg/DB/"$paket" &&
 				ryaz 34 $paket" paketi silindi."
+				loglama "$paket paketi silindi."
 			fi
 			rm -f /tmp/$paket.sil
 		else
@@ -354,6 +358,18 @@ kaynakdizin_kontrol(){
 	fi
 }
 
+logdizin_kontrol(){
+	if [ ! -d $LOGDIZIN ];then
+		mkdir $LOGDIZIN	
+	fi
+	if [ ! -d $LOGDIZIN/derleme ];then
+		mkdir $LOGDIZIN/derleme
+	fi
+	if [ ! -f $LOGDIZIN/mps.log ];then
+		touch $LOGDIZIN/mps.log
+	fi
+}
+
 tarihce_dkontrol(){
 	if [ ! -d $TARIHCE_DIZIN ];then
 		mkdir $TARIHCE_DIZIN
@@ -437,8 +453,9 @@ tarihce_sil(){
 	fi
 }
 
-log_tutma(){
-	echo "$(date +'%F %T') - $1 - paket" >> test.log
+loglama(){
+	logdizin_kontrol
+	echo "$(date +'%F %T') $1" >> "$LOGDIZIN/mps.log"
 }
 
 git_guncelle() {
