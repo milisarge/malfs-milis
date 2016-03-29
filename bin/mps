@@ -520,6 +520,24 @@ paketvt_kontrol(){
 	fi
 }
 
+pvt_olustur(){
+	if [ ! -f paket.vt ];then
+		touch paket.vt
+	fi
+	if [ -f "paket.vt" ];then
+			mv "paket.vt" "paket.vt.eski"
+	fi
+	for paket in `ls *.mps.lz`
+	ryaz 32 "paket.vt oluşturuluyor...."
+	do
+		paketad="`echo $paket|cut -d "#" -f1`"
+		shaek=`sha1sum $paket`
+		
+		echo $paketad $shaek  >> paket.vt  
+	done
+	ryaz 32 "paket.vt oluşturuldu."
+}
+
 yardim(){
  echo "yardim"
 }
@@ -570,6 +588,8 @@ ayarlar() {
 					exit 1
 				fi
 				yeniden_paketle "$2" ;;
+			-po)
+				pvt_olustur ;;
 			-os|--pkos)
 				if [ ! "$2" ]; then
 					ryaz 31 "silme listesi yok"
