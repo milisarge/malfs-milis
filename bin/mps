@@ -527,8 +527,8 @@ pvt_olustur(){
 	if [ -f "paket.vt" ];then
 			mv "paket.vt" "paket.vt.eski"
 	fi
-	for paket in `ls *.mps.lz`
 	ryaz 32 "paket.vt oluşturuluyor...."
+	for paket in `ls *.mps.lz`
 	do
 		paketad="`echo $paket|cut -d "#" -f1`"
 		shaek=`sha1sum $paket`
