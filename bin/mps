@@ -23,7 +23,7 @@ yerelsil="evet"
 icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
 	paketad=`basename $paketad`
-	ryaz 34 $paketad" paketi kuruluyor."
+	ryaz 34 $paketad" paketi kuruluyor-> $kokdizin" 
 	tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 	#kos-kur kontrolu
 	if [ -f /tmp/.PRE ];then
@@ -42,11 +42,11 @@ icerik_ekle(){
 	if [ -d kur.$paketad/usr/share/doc ] && [ "$docsil" == "evet" ];then
 		rm -r kur.$paketad/usr/share/doc
 	fi
-	mkdir -p /var/lib/pkg/DB/"$paketad" && 
+	mkdir -p $kokdizin/var/lib/pkg/DB/"$paketad" && 
 	cp -v -afr kur.$paketad/* $kokdizin > kur.$paketad/kurulan &&
-	cp kur.$paketad/kurulan /tmp/ &&cat kur.$paketad/kurulan | cut -d '>' -f2 > /var/lib/pkg/DB/"$paketad"/kurulan &&
+	cp kur.$paketad/kurulan /tmp/ &&cat kur.$paketad/kurulan | cut -d '>' -f2 > $kokdizin/var/lib/pkg/DB/"$paketad"/kurulan &&
 	#mv  kur.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
-	mv  kur.$paketad/.META /var/lib/pkg/DB/"$paketad"/META &&
+	mv  kur.$paketad/.META $kokdizin/var/lib/pkg/DB/"$paketad"/META &&
 	
 	#kur-kos calistirilmasi
 	if [ -f kur.$paketad/.POST ];then
@@ -55,8 +55,8 @@ icerik_ekle(){
 	fi
 	
 	rm -r kur.$paketad
-	if [ -f /etc/ld.so.conf ];then
-		ldconfig
+	if [ -f $kokdizin/etc/ld.so.conf ];then
+		ldconfig -r $kokdizin
 	fi
 	ryaz 34 $paketad" paketi kuruldu."
 	loglama "$paketad paketi kuruldu."
@@ -345,7 +345,7 @@ ters_bagimli_kontrol(){
 }
 
 kurulu_kontrol(){
-	if [ -d "/var/lib/pkg/DB/$1" ];then
+	if [ -d "$kokdizin/var/lib/pkg/DB/$1" ];then
 		echo "kurulu"
 		exit 1
 	fi
@@ -553,6 +553,10 @@ ayarlar() {
 			-ik|--inku)
 				ikaynak="ag" ;;
 			-k|--yrku)
+				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
+					kokdizin="$4"
+					tekrarkur="evet"
+				fi
 				ikaynak="yerel" ;;
 			-k2|--yrku2)
 				ikaynak="yerel2" ;;

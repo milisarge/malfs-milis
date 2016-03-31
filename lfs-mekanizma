@@ -149,6 +149,7 @@ ikinci_ayarlar(){
 	generate_milis_version
 	cp $ANADIZIN/ayarlar/mpsd.conf $LFS/etc/
 	cp $ANADIZIN/ayarlar/onmpsd.conf $LFS/etc/
+	mkdir -p $LFS/var/lib/pkg/DB
 }
 
 generate_milis_version() {

@@ -1,0 +1,8 @@
+cd /root
+mkdir -p /mnt/lfs
+export LFS=/mnt/lfs
+./lfs-mekanizma -ia
+cd /paketler/temel/
+sirali_kur /root/talimatname/temel/derleme.sira /mnt/lfs/
+cd -
+./lfs-mekanizma -cg
