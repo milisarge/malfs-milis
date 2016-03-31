@@ -27,7 +27,11 @@ icerik_ekle(){
 	tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 	#kos-kur kontrolu
 	if [ -f /tmp/.PRE ];then
-		bash  /tmp/.PRE
+		if [ "$kokdizin" == "/" ];then
+			bash  /tmp/.PRE
+		else
+			cp /tmp/.PRE $kokdizin/tmp/$paketad.PRE
+		fi
 		rm  /tmp/.PRE
 	fi
 	mkdir -p kur.$paketad &&
@@ -50,7 +54,11 @@ icerik_ekle(){
 	
 	#kur-kos calistirilmasi
 	if [ -f kur.$paketad/.POST ];then
-		bash  kur.$paketad/.POST
+		if [ "$kokdizin" == "/" ];then
+			bash  kur.$paketad/.POST
+		else
+			cp kur.$paketad/.POST $kokdizin/tmp/$paketad.POST
+		fi
 		rm  kur.$paketad/.POST
 	fi
 	
@@ -359,14 +367,14 @@ kaynakdizin_kontrol(){
 }
 
 logdizin_kontrol(){
-	if [ ! -d $LOGDIZIN ];then
-		mkdir $LOGDIZIN	
+	if [ ! -d $kokdizin$LOGDIZIN ];then
+		mkdir $kokdizin$LOGDIZIN	
 	fi
-	if [ ! -d $LOGDIZIN/derleme ];then
-		mkdir $LOGDIZIN/derleme
+	if [ ! -d $kokdizin$LOGDIZIN/derleme ];then
+		mkdir $kokdizin$LOGDIZIN/derleme
 	fi
-	if [ ! -f $LOGDIZIN/mps.log ];then
-		touch $LOGDIZIN/mps.log
+	if [ ! -f $kokdizin$LOGDIZIN/mps.log ];then
+		touch $kokdizin$LOGDIZIN/mps.log
 	fi
 }
 
@@ -455,11 +463,12 @@ tarihce_sil(){
 
 loglama(){
 	logdizin_kontrol
-	echo "$(date +'%F %T') $1" >> "$LOGDIZIN/mps.log"
+	echo "$(date +'%F %T') $1" >> "$kokdizin/$LOGDIZIN/mps.log"
 }
 
 git_guncelle() {
 	kaynakdizin_kontrol
+	gitayar_kontrol
 	cd $DERLEME_KAYNAKDIZIN
 	#git sunucudan guncelleme
 	ryaz 33 "git sunucudan güncelleme çekiliyor."
@@ -512,6 +521,13 @@ sunucu_kontrol(){
 		exit 1
 	fi
 }	
+
+gitayar_kontrol(){
+	if [ ! -f /root/.gitconfig ];then
+		git_ssl_iptal
+		git_otokimlik
+	fi
+}
 
 paketvt_kontrol(){
 	mkdir -p /depo/paketler
