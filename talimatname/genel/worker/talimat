@@ -1,0 +1,16 @@
+# Description: Hızlı,fonksiyonel X dosya yöneticisi
+# URL: http://www.boomerangsworld.de/cms/worker/
+# Packager: milisarge@gmail.com
+# Depends on: xorg-libx11 xorg-libxft
+name=worker
+version=3.8.2
+release=1
+
+source=(http://www.boomerangsworld.de/cms/$name/downloads/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--enable-xft
+make
+make DESTDIR=$PKG install
+}
