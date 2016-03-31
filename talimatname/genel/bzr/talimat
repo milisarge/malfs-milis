@@ -1,6 +1,6 @@
 # Description: A decentralized revision control system (bazaar)
 # URL: http://bazaar.canonical.com/en/ 
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 # Depends on: python python-paramiko 
 name=bzr
 version=2.6.0

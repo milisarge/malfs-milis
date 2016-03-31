@@ -1,0 +1,10 @@
+--- ./transport.hxx.orig        2008-03-01 04:34:43.000000000 -0600
++++ ./transport.hxx     2008-04-06 23:05:58.000000000 -0500
+@@ -9,6 +9,7 @@
+ #if defined(__unix) || defined(__unix__)
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <limits.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <sys/types.h>

@@ -1,6 +1,6 @@
 # Description: GNU Image Manipulation Program
 # URL: http://www.gimp.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
 # Depends on: shared-mime-info gtk2 python-gtk curl libexif xorg-libxmu xorg-libxpm openexr gegl poppler libmng alsa-lib babl 
 
 name=gimp

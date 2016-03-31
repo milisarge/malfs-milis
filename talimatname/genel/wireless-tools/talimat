@@ -1,6 +1,6 @@
 # Description: Tools allowing to manipulate the Wireless Extensions
 # URL: http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
 # Depends on: 
 
 name=wireless-tools

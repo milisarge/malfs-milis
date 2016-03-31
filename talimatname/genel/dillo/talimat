@@ -21,10 +21,10 @@ cat > $PKG/usr/share/applications/dillo.desktop << EOF
 Encoding=UTF-8
 Type=Application
 Name=Dillo
-Name[fr]=Dillo
+Name[tr]=Dillo
 Comment=Browse The Web
-Comment[fr]=Navigateur Web
-GenericName[fr]=Navigateur Web
+Comment[tr]=İnternet Gezgini
+GenericName[tr]=İnternet Gezgini
 Icon=dillo
 Exec=dillo
 Categories=Network;Application;Browser;WebBrowser;
