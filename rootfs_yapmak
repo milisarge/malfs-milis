@@ -11,3 +11,11 @@ cd /sources/milis.git
 cd /tmp
 rm *.PRE
 for i in *.POST; do bash "$i"; done
+#sorunsuz calisirsa kur-kos betikleri
+rm *.POST
+#initrd yapmak için
+cd /root
+./lfs-mekanizma -bo
+#exit ile dışarı çıkıp iso yapmak icin.
+./lfs-mekanizma -so
+./lfs-mekanizma -io
