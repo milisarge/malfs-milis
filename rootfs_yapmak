@@ -8,4 +8,6 @@ cd /paketler/temelek/
 sirali_kur /root/talimatname/temel-ek/derleme.sira /mnt/lfs/
 cd /sources/milis.git
 ./lfs-mekanizma -cg
-bash /mnt/lfs/tmp/*.POST
+cd /tmp
+rm *.PRE
+for i in *.POST; do bash "$i"; done
