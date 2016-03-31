@@ -1,8 +1,11 @@
-cd /root
+cd /sources/milis.git
 mkdir -p /mnt/lfs
 export LFS=/mnt/lfs
 ./lfs-mekanizma -ia
 cd /paketler/temel/
 sirali_kur /root/talimatname/temel/derleme.sira /mnt/lfs/
-cd -
+cd /paketler/temelek/
+sirali_kur /root/talimatname/temel-ek/derleme.sira /mnt/lfs/
+cd /sources/milis.git
 ./lfs-mekanizma -cg
+bash /mnt/lfs/tmp/*.POST
