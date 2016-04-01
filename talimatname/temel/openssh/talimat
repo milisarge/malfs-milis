@@ -1,6 +1,6 @@
 # Description: Free version of the SSH connectivity tools
 # URL: http://www.openssh.org/
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge@gmail.com
 name=openssh
 version=7.1p2
 release=1
