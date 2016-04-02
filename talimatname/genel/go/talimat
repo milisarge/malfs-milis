@@ -18,6 +18,7 @@ build() {
     # build
     export GOROOT_FINAL=/usr/lib/go
     export GOROOT=/tmp/go/
+    export CGO_ENABLED="0"
 
     # compile all
     unset CC   # The build fails with a customer C compiler (e.g: ccache)
