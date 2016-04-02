@@ -1,0 +1,16 @@
+Notes
+=====
+
+You must have ``CONFIG_IP_MULTICAST`` enabled in your kernel
+for several of the go tests to pass and the buidl to
+succeed.
+
+You probably want to ensure you have
+the following setup either temporarily
+in your ``$HOME/.bashrc`` or ``$HOME/.profile``
+or ``/etc/profile`` or similar.
+
+.. code-block:: sh
+    
+    export GOROOT=/usr/lib/go
+    
