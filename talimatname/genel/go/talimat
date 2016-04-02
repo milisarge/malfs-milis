@@ -40,6 +40,7 @@ build() {
 
     export GOROOT=$PKG/usr/lib/go
     export GOPATH=/tmp/go
+    export CGO_ENABLED="0"
 
     $PKG/usr/bin/go get -u golang.org/x/tools/cmd/godoc
     $PKG/usr/bin/go install golang.org/x/tools/cmd/godoc
