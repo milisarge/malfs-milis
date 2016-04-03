@@ -1,6 +1,6 @@
 # Description: A set of programs called a Java Development Kit (JDK).
 # URL: http://openjdk.java.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge@gmail.com
 
 
 name=openjdk
