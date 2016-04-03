@@ -4,7 +4,7 @@
 versiyon="0.2"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
-sunucu="192.168.3.193:8000/MPS/"
+sunucu="192.168.1.111:8000/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
@@ -567,7 +567,13 @@ ayarlar() {
 				ikaynak="ag" 
 				kurulum_onay="olumsuz";;
 			-ik|--inku)
+				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
+					kokdizin="$4"
+				fi
 				ikaynak="ag" ;;
+			-ikz|--inkuzo)
+				ikaynak="ag" 
+				tekrarkur="evet" ;;
 			-k|--yrku)
 				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 					kokdizin="$4"
@@ -701,32 +707,34 @@ ana(){
 ayarlar "$@"
 
 if [ "$ikaynak" = "ag" ]; then
-	
-	echo "agdan cekiliyor:" "$2"
-	
-	pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3`
-	echo $pkt
-	if [ ! -z "$pkt" -a "$pkt" != "" ]; then
-		cpaket="${pkt/'#'/'%23'}"
-		#paket sunucuda varsa
-		wget -q --spider "$sunucu$cpaket"
-		#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
-		if [ $? -eq 0 ]; then
-			wget -nc -P "$paketdepo" "$sunucu$cpaket"
-			#mv /tmp/$pkt "$paketdepo"
-			if [ "$kurulum_onay" = "evet" ];then
-				kkont=`kurulu_kontrol "$2"`
-				if [ "$kkont" = "degil" ];then
+	kkont=`kurulu_kontrol "$2"`
+	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
+		echo "agdan cekiliyor:" "$2"
+		pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3`
+		echo $pkt
+		if [ ! -z "$pkt" -a "$pkt" != "" ]; then
+			cpaket="${pkt/'#'/'%23'}"
+			#paket sunucuda varsa
+			wget -q --spider "$sunucu$cpaket"
+			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
+			if [ $? -eq 0 ]; then
+				wget -nc -P "$paketdepo" "$sunucu$cpaket"
+				#mv /tmp/$pkt "$paketdepo"
+				if [ "$kurulum_onay" = "evet" ];then
+					if [ "$tekrarkur" = "evet" ];then
+						paket_sil "$2" "evet"
+					fi
 					icerik_ekle "$paketdepo$pkt"
 					exit 1
-				else
-					ryaz 31 "paket zaten kurulu!"
 				fi
 			fi
+		else
+			ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 		fi
+	else
+		ryaz 31 "paket zaten kurulu!"
 	fi
 	exit 1
-	
 fi
 
 if [ "$ikaynak" = "yerel" ]; then

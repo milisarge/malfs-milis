@@ -1,0 +1,3 @@
+for paket in `cat $1`;do 
+	mps -ik "$paket" -kok $2;
+done
