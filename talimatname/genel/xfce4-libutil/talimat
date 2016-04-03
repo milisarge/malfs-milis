@@ -1,7 +1,7 @@
 # Description: The libxfce4util package is a basic utility library for the Xfce desktop environment.
 # URL: http://ww.xfce.org/projects/libraries/
 # Packager: tyrry at nutyx dot org, tnut at nutyx dot org
-# Depends on: glib intltool gtk-doc
+# Depends on: glib intltool
 
 _name=libxfce4util
 
@@ -19,8 +19,8 @@ cd ${_name}-$version
     --libexecdir=/usr/lib \
     --localstatedir=/var \
     --disable-static \
-    --enable-gtk-doc \
     --disable-debug
 make
 make DESTDIR=$PKG install
+rm -r $PKG/usr/share/gtk-doc
 }

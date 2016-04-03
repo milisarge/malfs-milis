@@ -1,13 +1,13 @@
 # Description: Contains several GTK+ 2 and GTK+ 3 themes and libraries needed to display them.
 # URL: http://www.xfce.org
-# Packager: tyrry at nutyx dot org tnut at nutyx dot org
+# Packager: milisarge@gmail.com
 # Depends on: gtk2 gtk3
 
 _name=gtk-xfce-engine
 
 name=xfce4-gtk-engine
 version=3.2.0
-release=3
+release=1
 
 source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
 

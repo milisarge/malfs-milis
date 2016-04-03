@@ -1,0 +1,16 @@
+# Description: xfce4 geliştirme araçları
+# URL: http://thunar.xfce.org
+# Packagers: milisarge
+# Depends on: 
+
+name=xfce4-dev-tools
+version=4.12.0
+release=1
+source=(http://archive.xfce.org/xfce/4.12/src/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

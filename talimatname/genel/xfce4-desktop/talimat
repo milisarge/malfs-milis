@@ -1,6 +1,6 @@
-# Description: Xfdesktop is a desktop manager for the Xfce Desktop Environment.
+# Description: Xfdesktop masa yoneticisi xfce4 için.
 # URL: http://www.xfce.org
-# Packagers: tyrry at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge@gmail.com
 # Depends on: exo libwnck xfce4-libui thunar xfce4-garcon
 
 _name=xfdesktop
@@ -10,12 +10,12 @@ name=xfce4-desktop
 version=4.12.3
 release=1
 
-source=(http://archive.xfce.org/src/xfce/${_name}/4.12/${_name}-$version.tar.bz2
-        http://downloads.nutyx.org/FondsEcrans/150213091432829037.jpg)
+source=(http://archive.xfce.org/src/xfce/${_name}/4.12/${_name}-$version.tar.bz2)
 
 build() {
 cd ${_name}-$version
-sed -i "s/xfce-blue.jpg/wall-houaphan.jpg/" common/xfdesktop-common.h
+#duvar kagidi yuklemek icin
+#sed -i "s/xfce-blue.jpg/milis.jpg/" common/xfdesktop-common.h
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -28,6 +28,7 @@ sed -i "s/xfce-blue.jpg/wall-houaphan.jpg/" common/xfdesktop-common.h
     --disable-debug
 make
 make DESTDIR=$PKG install
-install -D -m644 ../150213091432829037.jpg \
-$PKG/usr/share/backgrounds/xfce/wall-houaphan.jpg
+#duvar kagidi yuklemek icin
+#install -D -m644 ../milis.jpg \
+#$PKG/usr/share/backgrounds/xfce/milis.jpg
 }

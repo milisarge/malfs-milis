@@ -1,0 +1,17 @@
+# Description: thunar dosya yöneticisi disk yönetimi
+# URL: http://thunar.xfce.org
+# Packagers: milisarge
+# Depends on: libgudev libnotify startup-notification exo xfce4-libui desktop-file-utils gvfs
+
+name=thunar-volman
+version=0.8.1
+release=1
+
+source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2 )
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

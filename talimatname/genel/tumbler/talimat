@@ -1,6 +1,6 @@
 # Description: A D-Bus thumbnailing service based on the thumbnail management D-Bus specification.
 # URL: http://www.ohloh.net/p/tumbler-xfce
-# Packager: tyrry at nutyx dot org
+# Packager: milisarge
 # Depends on: libjpeg-turbo libpng freetype gdk-pixbuf dbus-glib intltool gstreamer 
 
 name=tumbler
@@ -15,4 +15,5 @@ cd $name-$version
 --sysconfdir=/etc
 make
 make DESTDIR=$PKG install
+rm -r $PKG/usr/share/gtk-doc
 }

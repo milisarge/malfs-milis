@@ -1,0 +1,11 @@
+# Depends on: exo garcon gtk-xfce-engine libxfce4ui libxfce4util thunar thunar-volman tumbler xfce4-appfinder xfce4-panel xfce4-power-manager xfce4-session xfce4-settings xfconf xfdesktop xfwm4
+
+name=xfce4
+version=4.12
+release=1
+source=()
+
+build() {
+	install -d $PKG/etc
+	echo "${version}" > $PKG/etc/xfce4-version
+}
