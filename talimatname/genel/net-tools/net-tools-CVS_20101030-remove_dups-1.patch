@@ -1,0 +1,520 @@
+Submitted By: Bruce Dubbs (bdubbs at liinuxfromscratch dot com)
+Date: 2014-03-01
+Initial Package Version: CVS_20101030
+Origin: Self
+Description: Removes ifconfig and hostname from the build
+             due to duplication in inetutils
+
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2009-12-31 14:38:02.000000000 -0600
++++ b/Makefile	2014-02-28 23:19:11.000000000 -0600
+@@ -228,8 +228,8 @@
+ 	install -m 0755 -d ${BASEDIR}/sbin
+ 	install -m 0755 -d ${BASEDIR}/bin
+ 	install -m 0755 arp        ${BASEDIR}/sbin
+-	install -m 0755 hostname   ${BASEDIR}/bin
+-	install -m 0755 ifconfig   ${BASEDIR}/sbin
++#	install -m 0755 hostname   ${BASEDIR}/bin
++#	install -m 0755 ifconfig   ${BASEDIR}/sbin
+ 	install -m 0755 nameif     ${BASEDIR}/sbin
+ 	install -m 0755 netstat    ${BASEDIR}/bin
+ 	install -m 0755 plipconfig $(BASEDIR)/sbin
+@@ -243,14 +243,6 @@
+ ifeq ($(HAVE_MII),1)
+ 	install -m 0755 mii-tool   $(BASEDIR)/sbin
+ endif
+-	ln -fs hostname $(BASEDIR)/bin/dnsdomainname
+-	ln -fs hostname $(BASEDIR)/bin/ypdomainname
+-	ln -fs hostname $(BASEDIR)/bin/nisdomainname
+-	ln -fs hostname $(BASEDIR)/bin/domainname
+-ifeq ($(HAVE_AFDECnet),1)
+-	ln -fs hostname $(BASEDIR)/bin/nodename
+-endif
+-
+ savebin:
+ 	@for i in ${BASEDIR}/sbin/arp ${BASEDIR}/sbin/ifconfig \
+                  ${BASEDIR}/bin/netstat \
+diff -Naur a/config.in b/config.in
+--- a/config.in	2008-10-02 21:09:57.000000000 -0500
++++ b/config.in	2014-02-28 23:18:31.000000000 -0600
+@@ -68,8 +68,8 @@
+ bool 'SLIP (serial line) support' HAVE_HWSLIP y
+ bool 'PPP (serial line) support' HAVE_HWPPP y
+ bool 'IPIP Tunnel support' HAVE_HWTUNNEL y
+-bool 'STRIP (Metricom radio) support' HAVE_HWSTRIP y
+-bool 'Token ring (generic) support' HAVE_HWTR y
++bool 'STRIP (Metricom radio) support' HAVE_HWSTRIP n
++bool 'Token ring (generic) support' HAVE_HWTR n
+ bool 'AX25 (packet radio) support' HAVE_HWAX25 y
+ bool 'Rose (packet radio) support' HAVE_HWROSE y
+ bool 'NET/ROM (packet radio) support' HAVE_HWNETROM y
+diff -Naur a/man/en_US/dnsdomainname.1 b/man/en_US/dnsdomainname.1
+--- a/man/en_US/dnsdomainname.1	1998-08-10 15:51:04.000000000 -0500
++++ b/man/en_US/dnsdomainname.1	1969-12-31 18:00:00.000000000 -0600
+@@ -1 +0,0 @@
+-.so man1/hostname.1
+diff -Naur a/man/en_US/domainname.1 b/man/en_US/domainname.1
+--- a/man/en_US/domainname.1	1998-08-10 15:51:05.000000000 -0500
++++ b/man/en_US/domainname.1	1969-12-31 18:00:00.000000000 -0600
+@@ -1 +0,0 @@
+-.so man1/hostname.1
+diff -Naur a/man/en_US/hostname.1 b/man/en_US/hostname.1
+--- a/man/en_US/hostname.1	2008-10-02 18:16:59.000000000 -0500
++++ b/man/en_US/hostname.1	1969-12-31 18:00:00.000000000 -0600
+@@ -1,213 +0,0 @@
+-.TH HOSTNAME 1 "2008\-10\-03" "net\-tools" "Linux System Administrator's Manual"
+-
+-.SH NAME
+-hostname \- show or set the system's host name
+-.br
+-domainname \- show or set the system's NIS/YP domain name
+-.br
+-dnsdomainname \- show the system's DNS domain name
+-.br
+-nisdomainname \- show or set system's NIS/YP domain name
+-.br
+-ypdomainname \- show or set the system's NIS/YP domain name
+-.br
+-nodename \- show or set the system's DECnet node name
+-
+-.SH SYNOPSIS
+-.B hostname
+-.RB [ \-v ]
+-.RB [ \-a ]
+-.RB [ \-\-alias ]
+-.RB [ \-d ]
+-.RB [ \-\-domain ]
+-.RB [ \-f ]
+-.RB [ \-\-fqdn ]
+-.RB [ \-i ]
+-.RB [ \-\-ip\-address ]
+-.RB [ \-\-long ]
+-.RB [ \-s ]
+-.RB [ \-\-short ]
+-.RB [ \-y ]
+-.RB [ \-\-yp ]
+-.RB [ \-\-nis ]
+-.RB [ \-n ]
+-.RB [ \-\-node ]
+-
+-.PP
+-.B hostname 
+-.RB [ \-v ]
+-.RB [ \-F\ filename ]
+-.RB [ \-\-file\ filename ]
+-.RB [ hostname ]
+-
+-.PP
+-.B domainname
+-.RB [ \-v ]
+-.RB [ \-F\ filename ]
+-.RB [ \-\-file\ filename ]
+-.RB [ name ]
+-
+-.PP 
+-.B nodename
+-.RB [ \-v ]
+-.RB [ \-F\ filename ]
+-.RB [ \-\-file\ filename ]
+-.RB [ name ]
+-
+-.PP
+-.B hostname
+-.RB [ \-v ]
+-.RB [ \-h ]
+-.RB [ \-\-help ]
+-.RB [ \-V ]
+-.RB [ \-\-version ]
+-
+-.PP
+-.B dnsdomainname
+-.RB [ \-v ]
+-.br
+-.B nisdomainname
+-.RB [ \-v ]
+-.br
+-.B ypdomainname
+-.RB [ \-v ]
+-
+-.SH DESCRIPTION
+-.B Hostname
+-is the program that is used to either set or display
+-the current host, domain or node name of the system.  These names are used
+-by many of the networking programs to identify the machine. The domain 
+-name is also used by NIS/YP.
+-
+-.SS "GET NAME"
+-When called without any arguments, the program displays the current
+-names:
+-
+-.LP
+-.B hostname
+-will print the name of the system as returned by the
+-.BR gethostname (2)
+-function.
+-
+-.LP
+-.B "domainname, nisdomainname, ypdomainname"
+-will print the name of the system as returned by the
+-.BR getdomainname (2)
+-function. This is also known as the YP/NIS domain name of the system.
+-
+-.LP
+-.B nodename
+-will print the DECnet node name of the system as returned by the
+-.BR getnodename (2)
+-function.
+-
+-.LP
+-.B dnsdomainname
+-will print the domain part of the FQDN (Fully Qualified Domain Name). The
+-complete FQDN of the system is returned with
+-.BR "hostname \-\-fqdn" .
+-
+-.SS "SET NAME"
+-When called with one argument or with the 
+-.B \-\-file
+-option, the commands set the host name, the NIS/YP domain name or
+-the node name. 
+-
+-.LP
+-Note, that only the super-user can change the names. 
+-
+-.LP
+-It is not possible to set the FQDN or the DNS domain name with the 
+-.B dnsdomainname 
+-command (see 
+-.B "THE FQDN"
+-below).
+-
+-.LP
+-The host name is usually set once at system startup in
+-.I /etc/rc.d/rc.inet1
+-or
+-.I /etc/init.d/boot
+-(normally by reading the contents of a file which contains
+-the host name, e.g. 
+-.IR /etc/hostname ).
+-
+-.SS THE FQDN
+-You can't change the FQDN (as returned by 
+-.BR "hostname \-\-fqdn" ) 
+-or the DNS domain name (as returned by
+-.BR "dnsdomainname" ) 
+-with this command. The FQDN of the system is the name that the
+-.BR resolver (3)
+-returns for the host name. 
+-
+-.LP
+-Technically: The FQDN is the name
+-.BR gethostbyname (2)
+-returns for the host name returned by
+-.BR gethostname (2).
+-The DNS domain name is the part after the first dot.
+-.LP
+-Therefore it depends on the configuration (usually in 
+-.IR /etc/host.conf )
+-how you can change it. Usually (if the hosts file is parsed before DNS or 
+-NIS) you can change it in 
+-.IR /etc/hosts .
+-
+-
+-.SH OPTIONS
+-.TP
+-.I "\-a, \-\-alias"
+-Display the alias name of the host (if used).
+-.TP
+-.I "\-d, \-\-domain"
+-Display the name of the DNS domain. Don't use the command
+-.B domainname
+-to get the DNS domain name because it will show the NIS domain name and
+-not the DNS domain name. Use
+-.B dnsdomainname 
+-instead.
+-.TP
+-.I "\-F, \-\-file filename"
+-Read the host name from the specified file. Comments (lines starting with
+-a `#') are ignored.
+-.TP
+-.I "\-f, \-\-fqdn, \-\-long"
+-Display the FQDN (Fully Qualified Domain Name). A FQDN consists of a
+-short host name and the DNS domain name. Unless you are using bind or NIS
+-for host lookups you can change the FQDN and the DNS domain name (which is
+-part of the FQDN) in the \fI/etc/hosts\fR file.
+-.TP
+-.I "\-h, \-\-help"
+-Print a usage message and exit.
+-.TP
+-.I "\-i, \-\-ip\-address"
+-Display the IP address(es) of the host.
+-.TP
+-.I "\-n, \-\-node"
+-Display the DECnet node name. If a parameter is given (or
+-.B \-\-file name
+-) the root can also set a new node name.
+-.TP
+-.I "\-s, \-\-short"
+-Display the short host name. This is the host name cut at the first dot.
+-.TP
+-.I "\-V, \-\-version"
+-Print version information on standard output and exit successfully.
+-.TP
+-.I "\-v, \-\-verbose"
+-Be verbose and tell what's going on.
+-.TP
+-.I "\-y, \-\-yp, \-\-nis"
+-Display the NIS domain name. If a parameter is given (or 
+-.B \-\-file name
+-) then root can also set a new NIS domain.
+-.SH FILES
+-.B /etc/hosts
+-.SH AUTHOR
+-Peter Tobias, <tobias@et\-inf.fho\-emden.de>
+-.br
+-Bernd Eckenfels, <net\-tools@lina.inka.de> (NIS and manpage).
+-.br
+-Steve Whitehouse, <SteveW@ACM.org> (DECnet support and manpage).
+-
+diff -Naur a/man/en_US/ifconfig.8 b/man/en_US/ifconfig.8
+--- a/man/en_US/ifconfig.8	2008-10-02 18:16:59.000000000 -0500
++++ b/man/en_US/ifconfig.8	1969-12-31 18:00:00.000000000 -0600
+@@ -1,229 +0,0 @@
+-.TH IFCONFIG 8 "2008\-10\-03" "net\-tools" "Linux System Administrator's Manual"
+-.SH NAME
+-ifconfig \- configure a network interface
+-.SH SYNOPSIS
+-.B "ifconfig [-v] [-a] [-s] [interface]"
+-.br
+-.B "ifconfig [-v] interface [aftype] options | address ..."
+-.SH DESCRIPTION
+-.B Ifconfig
+-is used to configure the kernel-resident network interfaces.  It is
+-used at boot time to set up interfaces as necessary.  After that, it
+-is usually only needed when debugging or when system tuning is needed.
+-.LP
+-If no arguments are given,
+-.B ifconfig
+-displays the status of the currently active interfaces.  If
+-a single
+-.B interface
+-argument is given, it displays the status of the given interface
+-only; if a single
+-.B \-a
+-argument is given, it displays the status of all interfaces, even
+-those that are down.  Otherwise, it configures an interface.
+-
+-.SH Address Families
+-If the first argument after the interface name is recognized as
+-the name of a supported address family, that address family is
+-used for decoding and displaying all protocol addresses.  Currently
+-supported address families include
+-.B inet
+-(TCP/IP, default), 
+-.B inet6
+-(IPv6),
+-.B ax25
+-(AMPR Packet Radio),
+-.B ddp
+-(Appletalk Phase 2),
+-.B ipx
+-(Novell IPX) and
+-.B netrom
+-(AMPR Packet radio).
+-.SH OPTIONS
+-.TP
+-.B -a
+-display all interfaces which are currently available, even if down
+-.TP
+-.B -s
+-display a short list (like netstat -i)
+-.TP
+-.B -v
+-be more verbose for some error conditions
+-.TP
+-.B interface
+-The name of the interface.  This is usually a driver name followed by
+-a unit number, for example
+-.B eth0
+-for the first Ethernet interface. If your kernel supports alias interfaces,
+-you can specify them with 
+-.B eth0:0
+-for the first alias of eth0. You can use them to assign a second address. To
+-delete an alias interface use
+-.BR "ifconfig eth0:0 down" .
+-Note: for every scope (i.e. same net with address/netmask combination) all
+-aliases are deleted, if you delete the first (primary).
+-.TP
+-.B up
+-This flag causes the interface to be activated.  It is implicitly
+-specified if an address is assigned to the interface.
+-.TP
+-.B down
+-This flag causes the driver for this interface to be shut down.
+-.TP
+-.B "[\-]arp"
+-Enable or disable the use of the ARP protocol on this interface.
+-.TP
+-.B "[\-]promisc"
+-Enable or disable the
+-.B promiscuous
+-mode of the interface.  If selected, all packets on the network will
+-be received by the interface.
+-.TP
+-.B "[\-]allmulti"
+-Enable or disable 
+-.B all-multicast
+-mode.  If selected, all multicast packets on the network will be
+-received by the interface.
+-.TP
+-.B "metric N"
+-This parameter sets the interface metric.
+-.TP
+-.B "mtu N"
+-This parameter sets the Maximum Transfer Unit (MTU) of an interface.
+-.TP
+-.B "dstaddr addr"
+-Set the remote IP address for a point-to-point link (such as
+-PPP).  This keyword is now obsolete; use the
+-.B pointopoint
+-keyword instead.
+-.TP
+-.B "netmask addr"
+-Set the IP network mask for this interface.  This value defaults to the
+-usual class A, B or C network mask (as derived from the interface IP
+-address), but it can be set to any value.
+-.TP
+-.B "add addr/prefixlen"
+-Add an IPv6 address to an interface. 
+-.TP
+-.B "del addr/prefixlen"
+-Remove an IPv6 address from an interface.
+-.TP
+-.B "tunnel aa.bb.cc.dd"
+-Create a new SIT (IPv6-in-IPv4) device, tunnelling to the given destination.
+-.TP
+-.B "irq addr"
+-Set the interrupt line used by this device.  Not all devices can
+-dynamically change their IRQ setting.
+-.TP
+-.B "io_addr addr"
+-Set the start address in I/O space for this device. 
+-.TP
+-.B "mem_start addr"
+-Set the start address for shared memory used by this device.  Only a
+-few devices need this.
+-.TP
+-.B "media type"
+-Set the physical port or medium type to be used by the device.  Not
+-all devices can change this setting, and those that can vary in what
+-values they support.  Typical values for
+-.B type
+-are 
+-.B 10base2
+-(thin Ethernet),
+-.B 10baseT
+-(twisted-pair 10Mbps Ethernet),
+-.B AUI 
+-(external transceiver) and so on.  The special medium type of
+-.B auto
+-can be used to tell the driver to auto-sense the media.  Again, not
+-all drivers can do this.
+-.TP
+-.B "[\-]broadcast [addr]"
+-If the address argument is given, set the protocol broadcast
+-address for this interface.  Otherwise, set (or clear) the
+-.B IFF_BROADCAST
+-flag for the interface.
+-.TP
+-.B "[\-]pointopoint [addr]"
+-This keyword enables the
+-.B point-to-point
+-mode of an interface, meaning that it is a direct link between two
+-machines with nobody else listening on it.
+-.br
+-If the address argument is also given, set the protocol address of
+-the other side of the link, just like the obsolete
+-.B dstaddr
+-keyword does.  Otherwise, set or clear the
+-.B IFF_POINTOPOINT
+-flag for the interface. 
+-.TP
+-.B hw class address
+-Set the hardware address of this interface, if the device driver
+-supports this operation.  The keyword must be followed by the
+-name of the hardware class and the printable ASCII equivalent of
+-the hardware address.  Hardware classes currently supported include
+-.B ether
+-(Ethernet),
+-.B ax25
+-(AMPR AX.25),
+-.B ARCnet
+-and
+-.B netrom
+-(AMPR NET/ROM).
+-.TP
+-.B multicast
+-Set the multicast flag on the interface. This should not normally be needed
+-as the drivers set the flag correctly themselves.
+-.TP
+-.B address
+-The IP address to be assigned to this interface.
+-.TP
+-.B txqueuelen length
+-Set the length of the transmit queue of the device. It is useful to set this
+-to small values for slower devices with a high latency (modem links, ISDN)
+-to prevent fast bulk transfers from disturbing interactive traffic like
+-telnet too much. 
+-.SH NOTES
+-Since kernel release 2.2 there are no explicit interface statistics for
+-alias interfaces anymore. The statistics printed for the original address
+-are shared with all alias addresses on the same device. If you want per-address
+-statistics you should add explicit accounting
+-rules for the address using the 
+-.BR ipchains (8)
+-or
+-.BR iptables (8)
+-command.
+-.LP
+-Since net\-tools 1.60\-4 ifconfig is printing byte counters and human readable
+-counters with IEC 60027-2 units. So 1 KiB are 2^10 byte. Note, the numbers 
+-are truncated to one decimal (which can by quite a large error if you 
+-consider 0.1 PiB is 112.589.990.684.262 bytes :)
+-.LP
+-Interrupt problems with Ethernet device drivers fail with EAGAIN
+-.I (SIOCSIIFLAGS: Resource temporarily unavailable)
+-it is most likely a interrupt conflict. See
+-.I http://www.scyld.com/expert/irq\-conflict.html
+-for more information.
+-.SH FILES
+-.I /proc/net/socket 
+-.br
+-.I /proc/net/dev
+-.br
+-.I /proc/net/if_inet6
+-.SH BUGS
+-While appletalk DDP and IPX addresses will be displayed they cannot be
+-altered by this command.
+-.SH SEE ALSO
+-route(8), netstat(8), arp(8), rarp(8), ipchains(8), iptables(8), ifup(8), interfaces(5).
+-.br
+-http://physics.nist.gov/cuu/Units/binary.html - Prefixes for binary multiples
+-.SH AUTHORS
+-Fred N. van Kempen, <waltje@uwalt.nl.mugnet.org>
+-.br
+-Alan Cox, <Alan.Cox@linux.org>
+-.br
+-Phil Blundell, <Philip.Blundell@pobox.com>
+-.br
+-Andi Kleen
+-.br
+-Bernd Eckenfels, <net\-tools@lina.inka.de>
+diff -Naur a/man/en_US/nisdomainname.1 b/man/en_US/nisdomainname.1
+--- a/man/en_US/nisdomainname.1	1998-08-10 15:51:12.000000000 -0500
++++ b/man/en_US/nisdomainname.1	1969-12-31 18:00:00.000000000 -0600
+@@ -1 +0,0 @@
+-.so man1/hostname.1
+diff -Naur a/man/en_US/ypdomainname.1 b/man/en_US/ypdomainname.1
+--- a/man/en_US/ypdomainname.1	1998-08-10 15:51:16.000000000 -0500
++++ b/man/en_US/ypdomainname.1	1969-12-31 18:00:00.000000000 -0600
+@@ -1 +0,0 @@
+-.so man1/hostname.1
