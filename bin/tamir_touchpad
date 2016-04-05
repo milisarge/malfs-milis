@@ -1,5 +1,4 @@
-cat > /usr/share/X11/xorg.conf.d/50-synaptics.conf << "EOF"
-
+cat <<EOT >> /usr/share/X11/xorg.conf.d/50-synaptics.conf
 Section "InputClass"
     Identifier "touchpad"
     Driver "synaptics"
@@ -21,5 +20,4 @@ Section "InputClass"
         Option "MaxTapTime" "125"
         
 EndSection
-EOF
-
+EOT
