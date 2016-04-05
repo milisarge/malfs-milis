@@ -178,24 +178,24 @@ yeniden_paketle(){
 derleme_listyap(){
 	bagimlist=`bagimlilar "$1"`
 	for bagim in $bagimlist;do
-		if [ "`cat derleme.liste | grep $bagim`" != "$bagim" ];then
+		if [ "`cat tumbag.liste | grep $bagim`" != "$bagim" ];then
 			derleme_listyap "$bagim"
 		fi
 	done
-	#if [ "`cat derleme.liste | grep $1`" != "$1" ];then
-	#	echo "derleme.liste yazılıyor:" "$1"
-	#	echo "$1" >> derleme.liste 
+	#if [ "`cat tumbag.liste | grep $1`" != "$1" ];then
+	#	echo "tumbag.liste yazılıyor:" "$1"
+	#	echo "$1" >> tumbag.liste 
 	#fi
-	if  ! grep -Fxq "$1" derleme.liste
+	if  ! grep -Fxq "$1" tumbag.liste
 	then
 	#	echo "pas"
 	#else
 		ana="`find $talimatname_dizin -name $1`"
 		echo ${ana#"$talimatname_dizin"}
 		#sadece genel bagimliliklar derlenecek
-		echo "$1" >> derleme.liste 
+		echo "$1" >> tumbag.liste 
 		if [ -d "$talimatname_dizin/genel/$1" ];then
-			echo "$1" >> genel.derleme.liste 
+			echo "$1" >> bag.liste 
 		fi
 	fi
 } 
@@ -214,7 +214,7 @@ paket_derle_oto(){
 #otomatik derle kontrollu kur
 paket_derle_oto2(){
 	tekrarkur="hayir"
-	mps -dly "$1" > /dev/null && mps -odk genel.derleme.liste
+	mps -dly "$1" > /dev/null && mps -odk bag.liste
 }
 
 paket_kur_oto(){
@@ -239,10 +239,10 @@ paket_kur_liste(){
 
 #otomatik kontrollu kur
 paket_kur_oto2(){
-	mps -dly "$1" > /dev/null && mps -ok genel.derleme.liste
+	mps -dly "$1" > /dev/null && mps -ok bag.liste
 }
 
-paket_diskur_oto(){
+paket_inkur_liste(){
 	local kpkt pkt pak
 	for kpkt in `cat $1`;do
 		mps -ik "$kpkt"
@@ -250,8 +250,9 @@ paket_diskur_oto(){
 }
 
 #otomatik kontrollu kur
-paket_diskur_oto2(){
-	mps -dly "$1" > /dev/null && mps -oik genel.derleme.liste
+paket_inkur_oto(){
+	mps -dly "$1" > /dev/null && paket_inkur_liste bag.liste
+	rm bag.liste tumbag.liste
 }
 
 paket_sil_oto(){
@@ -604,10 +605,10 @@ ayarlar() {
 				paket_kur_liste "$2" ;;
 			-ko|--pkko)
 				paket_kur_oto2 "$2" ;;	
-			-oik|--pkok2)
-				paket_diskur_oto "$2" ;;
-			-iko|--pkko2)
-				paket_diskur_oto2 "$2" ;;	
+			-kurul)
+				paket_inkur_liste "$2" ;;
+			-kur)
+				paket_inkur_oto "$2" ;;	
 			-pak|--paketle)
 				if [ ! "$2" ]; then
 					ryaz 31 "paketlenecek dizin ismi eksik"
@@ -625,14 +626,14 @@ ayarlar() {
 			-kl|--kurulu-liste)
 				ls $VT ;;	
 			-dly|--drly)
-				if [ -f derleme.liste ];then
-					mv derleme.liste derleme.liste.eski
+				if [ -f tumbag.liste ];then
+					mv tumbag.liste tumbag.liste.eski
 				fi
-				if [ -f genel.derleme.liste ];then
-					mv genel.derleme.liste genel.derleme.liste.eski
+				if [ -f bag.liste ];then
+					mv bag.liste bag.liste.eski
 				fi
-				touch derleme.liste 
-				touch genel.derleme.liste 
+				touch tumbag.liste 
+				touch bag.liste 
 				derleme_listyap "$2" ;;	
 			-dlb|--drlb)
 				derleme_listbilgi "$2";;	
@@ -732,7 +733,7 @@ if [ "$ikaynak" = "ag" ]; then
 			ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 		fi
 	else
-		ryaz 31 "paket zaten kurulu!"
+		ryaz 31 "$2 paketi zaten kurulu!"
 	fi
 	exit 1
 fi
