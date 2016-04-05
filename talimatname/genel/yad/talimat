@@ -1,0 +1,18 @@
+https://sourceforge.net/projects/yad-dialog/files/yad-0.35.0.tar.xz/download
+# Description: yad diyalog geliştirme
+# URL:  https://sourceforge.net/projects/yad-dialog/
+# Packager: milisarge
+# Depends on: gtk2
+
+name=yad
+version=0.35.0
+release=1
+
+source=(https://sourceforge.net/projects/yad-dialog/files/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}
