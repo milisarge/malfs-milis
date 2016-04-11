@@ -1,15 +1,15 @@
 #!/bin/bash
-. /etc/mpsd.conf
-. /root/bin/fonks.sh
+#. ./mpsd.conf
+. ./bin/fonks.sh
 versiyon="0.3"
 iletisim="milisarge@gmail.com"
-paketdepo="/depo/paketler/"
-sunucu="192.168.1.66:8000/"
+paketdepo="/tmp/paketler/"
+sunucu="192.168.1.112:8000/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
 kurulum_onay="evet"
-talimatname_dizin="/root/talimatname"
+talimatname_dizin="/opt/malfs-milis/talimatname"
 kokdizin="/"
 VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
