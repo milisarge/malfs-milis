@@ -1,0 +1,3 @@
+cd /usr/share/mime
+update-mime-database $PWD
+cd -
