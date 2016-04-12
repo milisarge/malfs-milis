@@ -1,6 +1,6 @@
-. lib/lsb/init-functions
+. /lib/lsb/init-functions
 if (grep jdk /etc/man_db.conf > /dev/null); then
-	cat >> etc/man_db.conf << "EOF"
+	cat >> /etc/man_db.conf << "EOF"
 # Begin Java addition
 MANDATORY_MANPATH     /opt/jdk/man
 MANPATH_MAP           /opt/jdk/bin     /opt/jdk/man
