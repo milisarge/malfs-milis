@@ -1,19 +1,23 @@
-# Description: The latest stable kernel version
+# Description: The long term stable kernel version
 # URL: http://www.kernel.org
-# Packagers: milisarge
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 
+PKGMK_IGNORE_UNPACK="yes"
+PKGMK_NO_STRIP="yes"
+PKGMK_GROUPS=(devel doc)
 
 name=kernel-lts
-version=4.4.6
+version=3.18.25
 release=1
-_version=${version%.*}
+_version=${version:0:4}
 
-source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_version}.tar.xz
-	https://www.kernel.org/pub/linux/kernel/v4.x/patch-$version.xz
+source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_version}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/v3.x/patch-$version.xz
 	$name.config $name.config_64 )
 
 build(){
 
+bsdtar -p -o -C $SRC -xf linux-${_version}.tar.xz
 
 cd linux-${_version}
 
@@ -52,14 +56,14 @@ case `uname -m` in
                 cp  .config    \
                 $PKG/boot/config_64-$version
                 cp  arch/x86_64/boot/bzImage \
-                $PKG/boot/$name-$version ;;
+                $PKG/boot/kernel-$version ;;
         i?86)
                 cp  System.map \
                 $PKG/boot/System.map-$version
                 cp  .config \
                 $PKG/boot/config-$version
                 cp  arch/i386/boot/bzImage \
-                $PKG/boot/$name-$version ;;
+                $PKG/boot/kernel-$version ;;
 esac
 
 cd $PKG/lib/modules/${version}*/
@@ -84,7 +88,7 @@ INITRD_VERSION="`basename $PKG/lib/modules/*`"
 echo "mkinitramfs $INITRD_VERSION" > $PKGMK_ROOT/$name.post-install
 echo "[ -f boot/initrd ] && rm boot/initrd" >> $PKGMK_ROOT/$name.post-install
 echo "ln -sf initrd-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/$name.post-install
-echo "ln -sf $name-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
+echo "ln -sf kernel-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
 
 #pre-install autogen
 cd $SRC
@@ -101,5 +105,34 @@ if [ -f aaabasicfs-${AAABASICFS}.tar.xz ]; then
  done
 fi
 }
+devel() {
 
-rm -r $PKG/usr/src/
+cd $PKG
+rm -r usr/src/linux-${_version}/{tools,ipc,init,drivers,firmware,fs,mm,samples,security,sound,virt}
+for i in alpha arc arm arm26 arm64 avr32 blackfin c6x \
+cris frv h8300 hexagon ia64 m32r m68k m68knommu metag \
+mips microblaze mn10300 openrisc parisc powerpc ppc s390 \
+score sh sh64 sparc sparc64 tile unicore32 um v850 xtensa
+do rm -rf usr/src/linux-${_version}/arch/$i
+done
+
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel#$version-any.mps \
+usr/src/linux-${_version}
+
+rm -r usr
+}
+
+doc() {
+
+cd $PKG
+mkdir -p usr/share/doc
+mv $SRC/linux-${_version}/Documentation \
+usr/share/doc/linux-$version
+
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.doc#$version-any.mps \
+usr/share/doc/linux-$version
+
+rm -r usr
+}
