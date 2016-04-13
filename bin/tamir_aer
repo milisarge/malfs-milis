@@ -1,0 +1,2 @@
+echo "pci=noaer parametresi ekleyin grub'a"
+
