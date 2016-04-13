@@ -8,7 +8,7 @@ rpcbind
 nfs-utils
 jfsutils
 linux-firmware
-kernel
+kernel-lts
 dracut
 grub
 vim
