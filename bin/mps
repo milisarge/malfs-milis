@@ -5,6 +5,7 @@ versiyon="0.3"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 sunucu="192.168.1.66:8000/"
+#sunucu="http://gungre.ch/milis/packages/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
 betikad=${0##*/}
