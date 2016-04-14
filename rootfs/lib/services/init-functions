@@ -9,7 +9,7 @@
 #             : DJ Lucas - dj@linuxfromscratch.org
 # Update      : Bruce Dubbs - bdubbs@linuxfromscratch.org
 #             : Thierry Nuttens - tnut@nutyx.org
-#
+#			  : milisarge@gmail.com
 # Version     : LFS 7.0
 #             : milis
 #
@@ -71,7 +71,7 @@ FAILURE_PREFIX="${FAILURE}*****${NORMAL}"
 WARNING_PREFIX="${WARNING} *** ${NORMAL}"
 
 SUCCESS_SUFFIX="${BRACKET}[${SUCCESS}  TAMAM  ${BRACKET}]${NORMAL}"
-FAILURE_SUFFIX="${BRACKET}[${FAILURE} BAŞARISIZ ${BRACKET}]${NORMAL}"
+FAILURE_SUFFIX="${BRACKET}[${FAILURE} BASARISIZ ${BRACKET}]${NORMAL}"
 WARNING_SUFFIX="${BRACKET}[${WARNING} UYARI ${BRACKET}]${NORMAL}"
 
 BOOTLOG=/run/bootlog

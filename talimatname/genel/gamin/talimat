@@ -1,6 +1,6 @@
 # Description: File and directory monitoring system defined to be a subset of the File Alteration Monitor
 # URL:  http://www.gnome.org/~veillard/gamin
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: glib python
 
 name=gamin
@@ -8,7 +8,7 @@ version=0.1.10
 release=1
 
 source=(http://www.gnome.org/~veillard/gamin/sources/$name-$version.tar.gz
-	http://downloads.nutyx.org/files/patchs/$name/remove_deprecated_G_CONST_RETURN.patch)
+	remove_deprecated_G_CONST_RETURN.patch)
 
 build() {
 cd $name-$version
