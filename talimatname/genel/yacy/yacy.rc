@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# /etc/rc.d/yacy: start/stop yacy daemon
+#
+
+# User settings here
+DAEMON=yacy
+RUN_AS_USER=yacy
+# end of user settings
+
+RETVAL=0
+
+case $1 in
+	start)
+		echo -n "Starting $DAEMON..."
+		su $RUN_AS_USER -c /usr/sbin/$DAEMON-start &> /dev/null & RETVAL=$?
+		echo " done."
+		;;
+	stop)
+		echo -n "Shutting down $DAEMON..."
+		su $RUN_AS_USER -c /usr/sbin/$DAEMON-stop &> /dev/null & RETVAL=$?
+		echo " done."
+		;;
+	restart)
+		$0 stop
+		sleep 20
+		$0 start
+		RETVAL=$?
+		;;
+	*)
+		echo "usage: $0 [start|stop|restart]"
+		;;
+esac
+
+exit $RETVAL
+
+# End of file
