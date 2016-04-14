@@ -9,10 +9,10 @@ _pkgextraver=20150121_9000
 release=1
 
 source=("http://www.yacy.net/release/yacy_v${version}_${_pkgextraver}.tar.gz"
-        yacy.rc yacy-start.sh yacy-stop.sh)
+        yacy.rc)
 
 build() {
-	. /etc/profile.d/apache-ant.sh
+	. /etc/profile.d/ant.sh
 
 	cd "$SRC/$name"
 	ant all
@@ -23,15 +23,13 @@ build() {
 
 	install -Dm644 "${SRC}/yacy.rc" "${PKG}/etc/rc.d/init.d/yacy"
 	
-	# symlink generated configuration file
+	# ayar kısayol
 	ln -s /var/cache/yacy/DATA/SETTINGS/yacy.conf $PKG/etc/yacy/yacy.conf
 
-	# install service
-	chown root:yacy $PKG/usr/lib/yacy/startYACY.sh $PKG/usr/lib/yacy/stopYACY.sh
-	chmod 0750 $PKG/usr/lib/yacy/startYACY.sh $PKG/usr/lib/yacy/stopYACY.sh
-	install -d $PKG/usr/sbin
-	install -m 0750 -g yacy $SRC/yacy-start.sh $PKG/usr/sbin/yacy-start
-	install -m 0750 -g yacy $SRC/yacy-stop.sh $PKG/usr/sbin/yacy-stop
+	# servis dosya
+	install -d $PKG/usr/bin
+	install -m 0750  $SRC/$name/startYACY.sh $PKG/usr/bin/yacy-start
+	install -m 0750  $SRC/$name/stopYACY.sh $PKG/usr/bin/yacy-stop
 
-	rm -f "$PKG"/etc/yacy "$PKG"/usr/share/yacy/DATA "$PKG"/var/log/yacy
+	rm -f "$PKG"/usr/share/yacy/DATA "$PKG"/var/log/yacy
 }
