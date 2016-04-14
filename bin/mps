@@ -682,11 +682,12 @@ ana(){
 ayarlar "$@"
 
 if [ "$ikaynak" = "ag" ]; then
+	local kontroldeg
 	kkont=`kurulu_kontrol "$2"`
 	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
 		echo "agdan cekiliyor:" "$2"
 		pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3`
-		echo $pkt
+		echo $pkt 
 		if [ ! -z "$pkt" -a "$pkt" != "" ]; then
 			cpaket="${pkt/'#'/'%23'}"
 			#paket sunucuda varsa
@@ -694,7 +695,12 @@ if [ "$ikaynak" = "ag" ]; then
 			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
 			if [ $? -eq 0 ]; then
 				wget -nc -P "$paketdepo" "$sunucu$cpaket"
-				#mv /tmp/$pkt "$paketdepo"
+				ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f2`
+				mkontdeg=`md5sum $pkt | cut -d' ' -f1`
+				if [ "$ekontdeg" != "$mkontdeg" ];then
+					rm -f $pkt
+					wget -nc -P "$paketdepo" "$sunucu$cpaket"
+				fi
 				if [ "$kurulum_onay" = "evet" ];then
 					if [ "$tekrarkur" = "evet" ];then
 						paket_sil "$2" "evet"
@@ -702,6 +708,7 @@ if [ "$ikaynak" = "ag" ]; then
 					icerik_ekle "$paketdepo$pkt"
 					exit 1
 				fi
+				
 			fi
 		else
 			ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
