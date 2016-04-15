@@ -1,0 +1,19 @@
+# Description: A perl module for simple terminal control
+# URL: http://search.cpan.org/~jstowe/TermReadKey-2.33/
+# Packagers: milisarge
+# Depends on: perl
+
+_name=TermReadKey
+name=perl-term-readkey
+version=2.33
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/J/JS/JSTOWE/$_name-$version.tar.gz)
+
+build() {
+cd $_name-$version
+perl Makefile.PL
+make OPTIMIZE="$CFLAGS"
+make DESTDIR=$PKG install
+find $PKG -name .packlist -o -name perllocal.pod -exec rm '{}' \; 
+}
