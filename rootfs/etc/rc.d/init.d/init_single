@@ -9,14 +9,15 @@ case ${1} in
          do_start_udev || exit 1
          do_start_checkfs || exit 1
          do_start_mountfs || exit 1
-	 do_start_localnet
-	 #milis-kur
+	     do_start_localnet
+	     #milis-kur
          do_start_clock || exit 1
          do_start_cleanfs || exit 1
          do_start_udev_retry || exit 1
          do_start_swap || exit 1
          do_start_console || exit 1
          do_start_sysctl || exit 1
+         bolumleri_bagla || exit 1
          klavye_ayar || exit 1
          ;;
    stop)

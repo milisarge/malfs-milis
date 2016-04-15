@@ -1369,6 +1369,18 @@ do_start_sysctl()
   fi
 }
 ################################################################################
+# bolumleri_bagla()                                                            #
+#                                                                              #
+# Description : disk bolumlerinin otomatik baglanması                          #
+#                                                                              #
+################################################################################
+bolumleri_bagla()
+{
+    if [ -f /usr/bin/devmon ]; then 
+		devmon --internal 2>&1 > /tmp/devmon.log &
+    fi
+}
+################################################################################
 # klavye_ayar()                                                 	           #
 #                                                                              #
 # Description : klavye ayarlama									               #
@@ -1444,7 +1456,7 @@ do_start_network()
                echo "$WICD_PIDFILE, check the ${NETWORKCONFIG_FILE} file"
                echo "and try again"
             else
-               log_info_msg "Starting the wicd Daemon..."
+               log_info_msg "Baslatiliyor the wicd Daemon..."
                start_daemon /usr/bin/wicd 1>/dev/null
                evaluate_retval
                if grep -v ^# /etc/fstab | grep _netdev > /dev/null; then
@@ -1460,7 +1472,7 @@ do_start_network()
                                fi
                             fi
                         done
-                        log_success_msg2 "Network successfully configured..."
+                        log_success_msg2 "Ag duzgun ayarlandi..."
                fi
             fi
          else
