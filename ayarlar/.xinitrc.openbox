@@ -1,1 +1,2 @@
+tint2 -c /root/ayarlar/tint2rc &
 exec openbox-session

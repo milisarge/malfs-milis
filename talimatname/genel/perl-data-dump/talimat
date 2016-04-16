@@ -1,0 +1,19 @@
+# Description: A perl module for Pretty printing of data structures
+# URL: http://search.cpan.org/~gaas/Data-Dump-1.23/
+# Packagers: milisarge
+# Depends on: perl
+
+_name=Data-Dump
+name=perl-data-dump
+version=1.23
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/$_name-$version.tar.gz)
+
+build() {
+cd $_name-$version
+perl Makefile.PL
+make OPTIMIZE="$CFLAGS"
+make DESTDIR=$PKG install
+find $PKG -name .packlist -o -name perllocal.pod -exec rm '{}' \; 
+}

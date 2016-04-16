@@ -1,0 +1,19 @@
+# Description: perl module building
+# URL:http://search.cpan.org/~leont/Module-Build-0.4216
+# Packagers: milisarge
+# Depends on: perl
+
+_name=Module-Build
+name=perl-module-build
+version=0.4216
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/$_name-$version.tar.gz)
+
+build() {
+cd $_name-$version
+perl Makefile.PL
+make OPTIMIZE="$CFLAGS"
+make DESTDIR=$PKG install
+find $PKG -name .packlist -o -name perllocal.pod -exec rm '{}' \; 
+}
