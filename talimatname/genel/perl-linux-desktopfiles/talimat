@@ -5,7 +5,7 @@
 
 _name=Linux-DesktopFiles
 name=perl-linux-desktopfiles
-version=0.07
+version=0.09
 release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/T/TR/TRIZEN/$_name-$version.tar.gz)
