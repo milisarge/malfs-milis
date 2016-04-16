@@ -167,7 +167,7 @@ derleme_listbilgi(){
 	ryaz 34 "yapim asamasında"
 }
 
-paket_derle_oto(){
+paket_derle_liste(){
 	for dpkt in `cat $1`;do
 		echo $dpkt "derleniyor...."
 		zorla_derle="yok"
@@ -175,9 +175,9 @@ paket_derle_oto(){
 	done
 }
 #otomatik derle kontrollu kur
-paket_derle_oto2(){
+paket_derle_kur(){
 	tekrarkur="hayir"
-	mps -dly "$1" > /dev/null && mps -odk bag.liste
+	mps -dly "$1" > /dev/null && mps -derlist bag.liste
 }
 
 paket_kur_oto(){
@@ -579,10 +579,10 @@ ayarlar() {
 				paket_derle "$2" ;;
 			-dk|--pkdk)
 				paket_derle "$2" ;;	
-			-odk|--pkodk)
-				paket_derle_oto "$2" ;;	
-			-odkk|--pkodk2)
-				paket_derle_oto2 "$2" ;;	
+			-derlist)
+				paket_derle_liste "$2" ;;	
+			-derle)
+				paket_derle_kur "$2" ;;	
 			-ok|--pkok)
 				paket_kur_oto "$2" ;;
 			-okl|--pkokl)
@@ -698,6 +698,21 @@ ayarlar() {
 		shift
 	done
 }
+
+yardim() {
+    cat <<_EOF
+    
+$betikad $versiyon Milis Paket Sistemi
+
+Secenekler:
+ -G    			 ikili paket veri tabanini gunceller
+ -Ggit 		     git sunucusundan talimatname ve sistem gunceller
+ -kur paket_ismi ilgili paketi bagimliliklariyla agdan cekip kurar
+
+_EOF
+    exit 1
+}
+
 ana(){
 ayarlar "$@"
 

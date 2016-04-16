@@ -1,7 +1,7 @@
 #!/bin/bash
 #. ./mpsd.conf
 . ./bin/fonks.sh
-versiyon="0.3"
+versiyon="0.4"
 iletisim="milisarge@gmail.com"
 paketdepo="/tmp/paketler/"
 sunucu="192.168.1.99:8000/"
@@ -85,6 +85,10 @@ paket_sil(){
 			ryaz 31 "ters bagimliliklar"
 			ryaz 31 "------------------"
 			ters_bagimli_kontrol "$paket"
+			ryaz 31 "------------------"
+			ryaz 31 "kurban dosyalar"
+			ryaz 31 "------------------"
+			silme_kurban_kontrol /tmp/$paket.sil
 			ryaz 31 "------------------"
 			if [ "$oto_silme" = "evet" ];then
 				sil_onay="e"
@@ -303,6 +307,22 @@ ters_bagimli(){
 	ara=" $1 "
 	sy=`grep -o "/" <<<"$talimatname_dizin" | wc -l`
 	grep -rli "$ara" "$talimatname_dizin" | cut -d'/' -f`expr $sy + 3`
+}
+
+silme_kurban_kontrol(){
+	local dizin
+	for f in $(cat $1) ; do 
+		dizin="${f%\'}"
+		dizin="${dizin#\'}"
+		if [ -d "$dizin" ];then
+			for g in `ls "$dizin"` ; do 
+				if ! grep -Fxq " '$dizin/$g'" "$1"
+				then
+					echo "$dizin/$g"
+				fi
+			done
+		fi
+	done
 }
 
 ters_bagimli_kontrol(){
@@ -682,11 +702,12 @@ ana(){
 ayarlar "$@"
 
 if [ "$ikaynak" = "ag" ]; then
+	local kontroldeg
 	kkont=`kurulu_kontrol "$2"`
 	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
 		echo "agdan cekiliyor:" "$2"
 		pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3`
-		echo $pkt
+		echo $pkt 
 		if [ ! -z "$pkt" -a "$pkt" != "" ]; then
 			cpaket="${pkt/'#'/'%23'}"
 			#paket sunucuda varsa
@@ -694,7 +715,12 @@ if [ "$ikaynak" = "ag" ]; then
 			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
 			if [ $? -eq 0 ]; then
 				wget -nc -P "$paketdepo" "$sunucu$cpaket"
-				#mv /tmp/$pkt "$paketdepo"
+				ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f2`
+				mkontdeg=`md5sum $pkt | cut -d' ' -f1`
+				if [ "$ekontdeg" != "$mkontdeg" ];then
+					rm -f $pkt
+					wget -nc -P "$paketdepo" "$sunucu$cpaket"
+				fi
 				if [ "$kurulum_onay" = "evet" ];then
 					if [ "$tekrarkur" = "evet" ];then
 						paket_sil "$2" "evet"
@@ -702,6 +728,7 @@ if [ "$ikaynak" = "ag" ]; then
 					icerik_ekle "$paketdepo$pkt"
 					exit 1
 				fi
+				
 			fi
 		else
 			ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
