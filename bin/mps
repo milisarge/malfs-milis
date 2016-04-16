@@ -705,9 +705,17 @@ yardim() {
 $betikad $versiyon Milis Paket Sistemi
 
 Secenekler:
- -G    			 ikili paket veri tabanini gunceller
- -Ggit 		     git sunucusundan talimatname ve sistem gunceller
- -kur paket_ismi ilgili paketi bagimliliklariyla agdan cekip kurar
+ -G			ikili paket veritabanini gunceller
+ -Ggit			git sunucusundan talimatname ve sistem gunceller
+ -kur paket_ismi	ilgili paketi bagimliliklariyla agdan cekip kurar
+ -s paket_ismi		ilgili paketi kaldirir
+ -k paket_ismi		yereldeki paketi bagimliliksiz kurar
+ -kl			kurulu paket listesini verir
+ -kk paket_ismi		ilgili paketin kurulu olma durumunu verir
+ -d paket_ismi		ilgili paketin talimat dosyasına göre 
+			sadece derler,paketler
+ -derle paket_ismi	ilgili paketin talimat dosyasına göre bagimliliklariyla 
+			beraber derler,paketler ve kurar.
 
 _EOF
     exit 1
