@@ -6,5 +6,9 @@ Milis işletim sistemi,lfs esaslarını temel alarak yerli bağımsız bir dağ�
 
 dökümanlar: https://github.com/milisarge/malfs-milis/wiki
 
+iso kalıpları: http://gungre.ch/milis/iso/
+
+paketler: http://gungre.ch/milis/packages/
+
 iletişim: milisarge@gmail.com irc.freenode.net #milisarge
 
