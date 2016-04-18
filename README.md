@@ -8,10 +8,10 @@ milis anasayfa : http://milis.gungre.ch
 
 dökümanlar: https://github.com/milisarge/malfs-milis/wiki
 
-iso kalıpları: http://milis.gungre.ch/iso/
+iso kalıpları: http://milis.gungre.ch/iso/  (kullanıcı: root   şifre: milis ) 
 
 paketler: http://milis.gungre.ch/packages/
 
 iletişim: milisarge@gmail.com irc.freenode.net #milisarge
 
-Sunucu hizmeti için Lucas Sköldqvist(frusen) dostumuza teşekkür ederiz. 
+Sunucu desteği için Lucas Sköldqvist(frusen) dostumuza teşekkür ederiz. 
