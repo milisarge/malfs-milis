@@ -1,3 +1,6 @@
+#malf-milis in klonladığınız dizine giriniz.
+#mps-bootstrap da gerekli ikili paket sunucu ayarını yapınız.
+#./chroot-yapici çalıştırın.
 export LFS=/mnt/lfs
 if [ -d /mnt/lfs ];then
 	rm -r /mnt/lfs
