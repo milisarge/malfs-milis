@@ -1,5 +1,3 @@
-klon_yol="/sources/milis.git"
-cd $klon_yol
 export LFS=/mnt/lfs
 if [ -d /mnt/lfs ];then
 	rm -r /mnt/lfs
