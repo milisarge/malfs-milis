@@ -121,6 +121,7 @@ ikinci_ayarlar(){
 	cp -a $AYARLAR $LFS/root/
 	cp -a $ANADIZIN/lfs-mekanizma $LFS/root/
 	cp -a $ANADIZIN/rootfs/* $LFS/
+	cp /etc/resolv.conf $LFS/etc/
 	gerekli_dizinler
 	lokalizasyon
 	fstab_olustur
