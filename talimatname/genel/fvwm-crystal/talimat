@@ -1,0 +1,15 @@
+# Description: fvwm-crystal masası
+# URL: http://home.gna.org/fvwm-crystal/
+# Maintainer: milisarge@gmail.com
+# Packager: milisarge@gmail.com
+# Depends on: fvwm imagemagick python feh xdg-user-dirs trayer
+
+name=fvwm-crystal
+version=3.3.2
+release=1
+source=(http://downloads.sourceforge.net/sourceforge/${name}/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+	make DESTDIR="$PKG" prefix=/usr install
+}

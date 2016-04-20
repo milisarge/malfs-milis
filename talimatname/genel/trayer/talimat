@@ -1,0 +1,23 @@
+# Description: A lightweight GTK2-based systray
+# URL: http://home.gna.org/fvwm-crystal/
+# Maintainer: milisarge@gmail.com
+# Packager: milisarge@gmail.com
+# Depends on: xorg-libxmu gtk2
+
+name=trayer
+version=1.0
+release=1
+source=(http://download.gna.org/fvwm-crystal/trayer/${version}/${name}-${version}.tar.gz
+		trayer.diff manpage.diff )
+
+build() {
+	cd $name-$version
+	patch -p0 -i ../trayer.diff
+	patch -p1 -i ../manpage.diff
+	sed -i 's/$(LIBS) $(OBJ) $(SYSTRAYOBJ)/$(OBJ) $(SYSTRAYOBJ) $(LIBS) -lX11/' Makefile
+	make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	make PREFIX="$PKG/usr" install
+	install -D -m644 trayer.1 "$PKG/usr/share/man/man1/trayer.1"
+	install -D -m644 COPYING "$PKG/usr/share/licenses/$PKG/LICENSE"
+}
+
