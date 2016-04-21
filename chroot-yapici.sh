@@ -9,5 +9,5 @@ fi
 ./mps-bootstrap -G
 ./mps-bootstrap -psk talimatname/temel/derleme.sira /mnt/lfs/
 ./mps-bootstrap -ik git -kok /mnt/lfs
-chroot "/mnt/lfs" sh -c "otopostpre.sh"
+chroot "/mnt/lfs" sh -c "/root/bin/otopostpre.sh"
 mksquashfs /mnt/lfs /mnt/milis_bootstrap.sfs -comp xz
