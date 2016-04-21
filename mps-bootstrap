@@ -206,15 +206,19 @@ paket_kur_oto2(){
 }
 
 paket_inkur_liste(){
-	local kpkt pkt pak
+	local kpkt
 	for kpkt in `cat $1`;do
-		mps -ik "$kpkt"
+		mps -kur "$kpkt"
 	done
 }
 
 #otomatik kontrollu kur
 paket_inkur_oto(){
-	mps -dly "$1" > /dev/null && paket_inkur_liste bag.liste
+	mps -dly "$1" > /dev/null &&
+	local kpkt
+	for kpkt in `cat bag.liste`;do
+		mps -ik "$kpkt"
+	done
 	rm bag.liste tumbag.liste
 }
 
