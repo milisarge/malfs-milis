@@ -12,4 +12,4 @@ fi
 ./mps-bootstrap -ik git -kok /mnt/lfs
 chroot "/mnt/lfs" sh -c "/root/bin/otopostpre.sh"
 chroot "/mnt/lfs" sh -c "/root/bin/mps -trot"
-mksquashfs /mnt/lfs /mnt/milis-bootstrap$tarih.sfs -comp xz
+mksquashfs /mnt/lfs /mnt/milis-bootstrap-$tarih.sfs -comp xz
