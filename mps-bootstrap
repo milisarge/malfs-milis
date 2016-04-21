@@ -205,6 +205,13 @@ paket_kur_oto2(){
 	mps -dly "$1" > /dev/null && mps -ok bag.liste
 }
 
+paket_inkur_liste_direk(){
+	local kpkt
+	for kpkt in `cat $1`;do
+		mps -ik "$kpkt"
+	done
+}
+
 paket_inkur_liste(){
 	local kpkt
 	for kpkt in `cat $1`;do
@@ -593,6 +600,8 @@ ayarlar() {
 				paket_kur_liste "$2" ;;
 			-ko|--pkko)
 				paket_kur_oto2 "$2" ;;	
+			-kuruld)
+				paket_inkur_liste_direk "$2" ;;
 			-kurul)
 				paket_inkur_liste "$2" ;;
 			-kur)
