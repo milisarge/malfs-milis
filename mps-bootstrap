@@ -4,7 +4,7 @@
 versiyon="0.4"
 iletisim="milisarge@gmail.com"
 paketdepo="/tmp/paketler/"
-sunucu="192.168.1.111:8000/"
+sunucu="192.168.1.23:8000/"
 #sunucu="http://milis.gungre.ch/packages/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
@@ -715,8 +715,10 @@ if [ "$ikaynak" = "ag" ]; then
 			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
 			if [ $? -eq 0 ]; then
 				wget -nc -P "$paketdepo" "$sunucu$cpaket"
-				ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f2`
-				mkontdeg=`md5sum $pkt | cut -d' ' -f1`
+				if [ -f "$paketde""popaket.vt" ];then
+					ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f2`
+					mkontdeg=`md5sum $pkt | cut -d' ' -f1`
+				fi
 				if [ "$ekontdeg" != "$mkontdeg" ];then
 					rm -f $pkt
 					wget -nc -P "$paketdepo" "$sunucu$cpaket"
