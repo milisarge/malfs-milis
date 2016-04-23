@@ -1,8 +1,8 @@
 # Description: Cross-platform 3D audio.
 # URL: http://connect.creativelabs.com/openal
 # Maintainer: Danny Rawlins, monster dot romster at gmail dot com
-# Packager: pierre at nutyx dot org
-# Depends on: alsa-lib, cmake
+# Packager: milisarge
+# Depends on: alsa-lib cmake
 
 name=openal
 version=1.16.0
