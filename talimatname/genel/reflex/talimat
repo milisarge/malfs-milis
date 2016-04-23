@@ -1,0 +1,17 @@
+# Description:This is a variant of the flex fast lexical scanner
+# URL:        http://invisible-island.net/reflex/reflex.html
+# Maintainer: Vincenzo Colosimo, vico at bicisport dot de
+# packager: milisarge
+# Depends on:
+
+name=reflex
+version=20100627
+release=1
+source=(ftp://invisible-island.net/${name}/${name}-${version}.tgz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+}

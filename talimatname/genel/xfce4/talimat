@@ -1,7 +1,7 @@
 # Description: sistem
 # URL:  sistem
 # Packager: milisarge
-# Depends on: xfce4-desktop xfce4-session xfce4-settings xfce4-notifyd xfce4-panel xfce4-wm xfce4-power-manager xfce4-xkb-plugin xfce4-terminal xfce4-libui xfce4-libutil xfce4-garcon xfce4-mixer xfce4-gtk-engine xfce4-appfinder xfce4-battery-plugin xfce4-conf xfce4-datetime-plugin xfce4-elementary-icon-theme dejavu-ttf tumbler xorg-xinit
+# Depends on: xfce4-desktop xfce4-session xfce4-settings xfce4-notifyd xfce4-panel xfce4-wm xfce4-power-manager xfce4-xkb-plugin xfce4-terminal xfce4-libui xfce4-libutil xfce4-garcon xfce4-mixer xfce4-gtk-engine xfce4-appfinder xfce4-battery-plugin xfce4-conf xfce4-datetime-plugin xfce4-elementary-icon-theme dejavu-ttf tumbler
 
 name=xfce4-sistem
 version=1

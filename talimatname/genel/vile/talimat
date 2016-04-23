@@ -1,0 +1,16 @@
+# Description: Vi Like Emacs
+# URL: http://invisible-island.net/vile/
+# Packager: milisarge
+# Depends on: reflex
+
+name=vile
+version=9.8
+release=1
+source=(ftp://invisible-island.net/vile/$name.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --with-perl
+    make
+    make DESTDIR=$PKG install
+}
