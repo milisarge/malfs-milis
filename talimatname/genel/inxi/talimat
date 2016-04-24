@@ -1,19 +1,18 @@
-# Description: inxi (a full featured system information script)
+# Description: inxi sistem bilgi betigi
 # URL: http://inxi.org
-# Packager: alienus at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 name=inxi
-version=2.1.28
+version=master
 release=1
 
-source=(
-http://inxi.googlecode.com/svn/trunk/inxi
-http://inxi.googlecode.com/svn/trunk/inxi.1)
+source=(https://github.com/smxi/inxi/archive/master.tar.gz)
 
 build(){
-    cd $SRC
-    install -Dm755 inxi \
-        $PKG/usr/bin/inxi
-    install -Dm644 inxi.1 \
-        $PKG/usr/share/man/man1/inxi.1
+	mv $DERLEME_KAYNAKDIZIN/$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
+	cd $name-$version
+	install -Dm755 inxi \
+	$PKG/usr/bin/inxi
+	install -Dm644 inxi.1 \
+	$PKG/usr/share/man/man1/inxi.1
 }
