@@ -1,0 +1,18 @@
+# Description: The future of online communications core
+# URL: https://github.com/irungentoo/toxcore
+# packager: milisarge
+# Depends on: libconfig libsodium libvpx opus
+
+name=toxcore
+version=master
+release=1
+source=(https://github.com/irungentoo/$name/archive/$version.tar.gz)
+
+build() {
+    mv $DERLEME_KAYNAKDIZIN/$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
+    cd $name-$version
+	./autogen.sh
+    ./configure --prefix=/usr --disable-daemon --disable-ntox
+    make
+    make DESTDIR=$PKG install
+}

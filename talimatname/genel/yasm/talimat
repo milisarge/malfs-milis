@@ -1,6 +1,6 @@
 # Description: A rewrite of NASM to allow for multiple syntax supported (NASM, TASM, GAS, etc.)
 # URL: http://www.tortall.net/projects/yasm/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=yasm

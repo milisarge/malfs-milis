@@ -1,0 +1,16 @@
+# Description: Lightweight Tox client
+# URL: https://github.com/GrayHatter/uTox
+# packager: milisarge
+# Depends on: toxcore openal v4l-utils xorg-libxrender hicolor-icon-theme xorg-fontconfig desktop-file-utils xorg-libxext
+
+name=utox
+version=develop
+release=1
+source=(https://github.com/GrayHatter/$name/archive/$version.tar.gz)
+
+build() {
+    mv $DERLEME_KAYNAKDIZIN/$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
+    cd uTox-$version
+    make
+    make DESTDIR=$PKG install
+}
