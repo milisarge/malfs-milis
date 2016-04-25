@@ -1,7 +1,7 @@
 # Description: The CUPS Printing System
 # URL: http://www.cups.org
 # Packager: pierre at nutyx dot org
-# Depends on: avahi python gnutls xdg-utils gtk-update-icon-cache gutenprint
+# Depends on: avahi python gnutls xdg-utils gtk-update-icon-cache
 
 run=(xdg-utils gtk-update-icon-cache)
  
