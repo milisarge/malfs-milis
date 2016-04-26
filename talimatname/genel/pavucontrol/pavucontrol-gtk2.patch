@@ -1,0 +1,32 @@
+diff -u -r pavucontrol-2.0.orig/src/devicewidget.cc pavucontrol-2.0/src/devicewidget.cc
+--- pavucontrol-2.0.orig/src/devicewidget.cc	2014-11-10 10:30:36.273878918 +0900
++++ pavucontrol-2.0/src/devicewidget.cc	2014-11-10 10:39:18.554891364 +0900
+@@ -63,8 +63,13 @@
+     for (unsigned i = 0; i < PA_CHANNELS_MAX; i++)
+         channelWidgets[i] = NULL;
+ 
++#ifdef HAVE_GTK3
+     offsetAdjustment = Gtk::Adjustment::create(0.0, -2000.0, 2000.0, 10.0, 50.0, 0.0);
+     offsetButton->configure(offsetAdjustment, 0, 2);
++#else
++    offsetAdjustment = new Gtk::Adjustment(0.0, -2000.0, 2000.0, 10.0, 50.0, 0.0);
++    offsetButton->configure(*offsetAdjustment, 0, 2);
++#endif
+ }
+ 
+ void DeviceWidget::init(MainWindow* mainWindow, Glib::ustring deviceType) {
+diff -u -r pavucontrol-2.0.orig/src/devicewidget.h pavucontrol-2.0/src/devicewidget.h
+--- pavucontrol-2.0.orig/src/devicewidget.h	2014-11-10 10:30:36.273878918 +0900
++++ pavucontrol-2.0/src/devicewidget.h	2014-11-10 10:39:12.869891228 +0900
+@@ -98,7 +98,11 @@
+     Gtk::HBox *portSelect, *offsetSelect;
+     Gtk::ComboBox *portList;
+     Glib::RefPtr<Gtk::ListStore> treeModel;
++#ifdef HAVE_GTK3
+     Glib::RefPtr<Gtk::Adjustment> offsetAdjustment;
++#else
++    Gtk::Adjustment *offsetAdjustment;
++#endif
+ 
+ private:
+     Glib::ustring mDeviceType;

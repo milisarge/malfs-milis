@@ -1,0 +1,28 @@
+# Description:	Pulseaudio graphical mixer
+# URL:		http://www.freedesktop.org/software/pulseaudio/pavucontrol/
+# Maintainer:	Alan Mizrahi, alan at mizrahi dot com dot ve
+# packager:	    milisarge
+# Depends on:	pulseaudio gtk2 libcanberra gtkmm libsigc++
+
+name=pavucontrol
+version=2.0
+release=1
+source=(http://freedesktop.org/software/pulseaudio/pavucontrol/$name-$version.tar.xz pavucontrol-gtk2.patch)
+
+build() {
+	cd $name-$version
+
+	# Fix gtk2 compilation
+	patch -p1 -i $SRC/pavucontrol-gtk2.patch
+
+	export CXXFLAGS="$CXXFLAGS -std=c++11"
+	./configure \
+		--prefix=/usr \
+		--disable-gtk3 \
+		--disable-lynx \
+		--disable-dependency-tracking
+	make
+	make DESTDIR=$PKG install
+
+	rm -rf $PKG/usr/share/doc
+}
