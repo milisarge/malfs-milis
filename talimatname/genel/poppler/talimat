@@ -1,6 +1,6 @@
 # Description: PDF rendering library based on xpdf 3.0
 # URL: URL: http://poppler.freedesktop.org/
-# Packager: alienus at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libxxf86vm libpng xorg-fontconfig libjpeg-turbo cairo libxml2 openjpeg lcms2 
 
 dataversion=0.4.7
