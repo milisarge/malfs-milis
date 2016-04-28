@@ -1,7 +1,6 @@
 # Description: A program that lets you manipulate digital audio waveforms
 # URL: http://web.audacityteam.org/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: libvorbis libmad libid3tag wxgtk28 lame hicolor-icon-theme ffmpeg shared-mime-info desktop-file-utils redland jack soundtouch cmake zip python
 
 name=audacity
