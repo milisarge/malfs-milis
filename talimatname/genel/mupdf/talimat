@@ -1,0 +1,20 @@
+# Description: Lightweight PDF and XPS viewer
+# URL:         http://www.mupdf.com/
+# packager:  milisarge
+# Depends on:  curl freetype libjpeg-turbo xorg-libxext
+
+name=mupdf
+version=1.9a
+release=1
+source=(http://mupdf.com/downloads/$name-$version-source.tar.gz)
+
+build() {
+    cd $name-$version-source
+    
+    rm -r thirdparty/{freetype*,jpeg*,zlib,curl}
+    make build=release 
+    make prefix=$PKG/usr mandir=$PKG/usr/share/man install
+   
+    ln -s mupdf-x11-curl $PKG/usr/bin/mupdf
+    rm -r $PKG/usr/share/doc
+} 
