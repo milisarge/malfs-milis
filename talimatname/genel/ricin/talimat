@@ -1,0 +1,21 @@
+# Description: Lightweight vala based Tox client
+# URL: https://github.com/RicinApp/Ricin
+# packager: milisarge
+# Depends on: toxcore meson gtk3 vala json-glib libsoup libnotify
+
+name=ricin
+_name=Ricin
+version=0.0.7
+release=1
+source=(https://github.com/RicinApp/${_name}/archive/v${version}.tar.gz)
+
+build() {
+    cd ${_name}-${version}
+    make autogen
+    make release
+    cd build
+    mesonconf.py -Dprefix=/usr
+    cd ..
+    make DESTDIR=$PKG install
+    install -Dm755 "build/${_name}" "$PKG/usr/bin/ricin"
+}

@@ -1,0 +1,15 @@
+# Description: SCons-like build system that use python as a front-end language and Ninja as a building backend
+# URL: http://mesonbuild.com/
+# Packager: milisarge
+# Depends on: python git ninja
+
+name=meson
+version=0.31.0
+release=1
+
+source=(https://github.com/mesonbuild/meson/releases/download/$version/$name-$version.tar.gz)
+ 
+build () {
+  cd $name-$version
+  python3 setup.py install --root="$PKG" --optimize=1
+}
