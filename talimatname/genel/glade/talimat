@@ -1,7 +1,7 @@
 # Description : User interface builder for GTK+ and GNOME.
 # URL : http://glade.gnome.org/
-# Packager : pierre at nutyx dot org
-# Depends on : gtk3 libxml2 desktop-file-utils intltool gtk-doc gobject-introspection python-gobject itstool docbook-xsl
+# Packager : milisarge
+# Depends on : gtk3 libxml2 desktop-file-utils intltool gobject-introspection python-gobject itstool docbook-xsl
 
 name=glade
 version=3.19.0
@@ -12,11 +12,13 @@ source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${_version}/$name-$version.
 
 build() {
   cd $name-$version
+  tamir_docbookxml
   ./configure --prefix=/usr        \
               --sysconfdir=/etc    \
               --localstatedir=/var \
+              --disable-gtk-doc-html \
               --disable-static
   make
   make DESTDIR=$PKG install
+  rm -r $PKG/usr/share/gtk-doc
 }
-
