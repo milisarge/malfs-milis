@@ -1,2 +1,2 @@
-bus="002/006"
+bus="$1"
 chmod 0666 /dev/bus/usb/$bus
