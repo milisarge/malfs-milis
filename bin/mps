@@ -1,10 +1,13 @@
 #!/bin/bash
 . /etc/mpsd.conf
+. /etc/mps.conf
 . /root/bin/fonks.sh
 versiyon="0.4"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
-sunucu="192.168.1.66:8000/"
+if [ -z ${sunucu+:} ]; then
+	sunucu="192.168.1.66:8000/"
+fi
 #sunucu="http://milis.gungre.ch/packages/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
 ikaynak=""
@@ -16,9 +19,15 @@ VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
 LOGDIZIN="/var/log/mps"
 tekrarkur="hayir"
-lokal="tr"
-docsil="evet"
-yerelsil="evet"
+if [ -z ${lokal+:} ]; then
+	lokal="tr"
+fi
+if [ -z ${docsil+:} ]; then
+	docsil="evet"
+fi
+if [ -z ${yerelsil+:} ]; then
+	yerelsil="evet"
+fi
 
 
 icerik_ekle(){
@@ -648,6 +657,9 @@ ayarlar() {
 				derleme_listbilgi "$2";;	
 			-b|--pkbl)
 				paket_bilgi "$2" ;;
+			#sunucu bilgisi alma
+			-sun|--sunucu)
+				ryaz 32 $sunucu ;;
 			-bb|--pkbb)
 				bagimli_bilgi "$2" | column -t;;
 			-tb|--pktb)
