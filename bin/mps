@@ -493,6 +493,7 @@ git_guncelle() {
 	ryaz 33 "git sunucudan güncelleme çekiliyor."
 	if [ ! -d milis.git ];then
 		git clone $git_sunucu milis.git
+		rsync -av /sources/milis.git/rootfs/* /
 	else
 		cd milis.git
 		git pull
