@@ -1,6 +1,8 @@
 #!/bin/bash
 . /etc/mpsd.conf
+if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
+fi
 . /root/bin/fonks.sh
 versiyon="0.4"
 iletisim="milisarge@gmail.com"
@@ -57,7 +59,7 @@ icerik_ekle(){
 		rm -r kur.$paketad/usr/share/doc
 	fi
 	mkdir -p $kokdizin/var/lib/pkg/DB/"$paketad" && 
-	cp -v -afr kur.$paketad/* $kokdizin > kur.$paketad/kurulan &&
+	cp -v -afr kur.$paketad/* $kokdizin > kur.$paketad/kurulan 
 	cp kur.$paketad/kurulan /tmp/ &&cat kur.$paketad/kurulan | cut -d '>' -f2 > $kokdizin/var/lib/pkg/DB/"$paketad"/kurulan &&
 	#mv  kur.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
 	mv  kur.$paketad/.META $kokdizin/var/lib/pkg/DB/"$paketad"/META &&
