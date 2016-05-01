@@ -989,6 +989,7 @@ chroot_gir(){
 	lfs_kontrol
 	unmount_islemi
 	mount_islemi
+	cp ayarlar/bashrc_chroot "$LFS"/etc/bashrc
 	chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='\u:\w\$ ' /bin/bash --login 
 	#chroot "$LFS" /usr/bin/env -i HOME=/root PS1='\u:\w\$ ' /bin/bash --login +h
 }
