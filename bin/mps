@@ -4,11 +4,11 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.4"
+versiyon="0.5"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
-	sunucu="192.168.1.66:8000/"
+	sunucu="127.0.0.1:8000/"
 fi
 #sunucu="http://milis.gungre.ch/packages/"
 git_sunucu="https://github.com/milisarge/malfs-milis"
@@ -393,6 +393,12 @@ tarihce_dkontrol(){
 	fi
 }
 
+temel_tarihce_kontrol(){
+	if [ ! -f $TARIHCE_DIZIN/temel-pkvt.tar.lz ];then
+		tarihce_olustur "temel"
+	fi
+}
+
 tarihce_liste(){
 	tarihce_dkontrol
 	ls $TARIHCE_DIZIN/
@@ -407,8 +413,12 @@ tarihce_yap(){
 	else
 		t_isim=`date +%m-%d-%y.%H%M%S`
 	fi
-	bsdtar -P -r -f $TARIHCE_DIZIN/"$t_isim"-pkvt.tar $VT
-	lzip -9 $TARIHCE_DIZIN/"$t_isim"-pkvt.tar
+	tarihce_olustur "$t_isim"
+}
+
+tarihce_olustur(){
+	bsdtar -P -r -f $TARIHCE_DIZIN/"$1"-pkvt.tar $VT
+	lzip -9 $TARIHCE_DIZIN/"$1"-pkvt.tar
 }
 
 tarihce_yukle(){
@@ -497,6 +507,7 @@ git_guncelle() {
 }
 
 paketvt_guncelle(){
+	temel_tarihce_kontrol
 	wget -q --spider "$sunucu""paket.vt"
 	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
 	if [ $? -eq 0 ]; then	
