@@ -118,8 +118,12 @@ paket_sil(){
 				rm -r -f /var/lib/pkg/DB/"$paket" &&
 				ryaz 34 $paket" paketi silindi."
 				loglama "$paket paketi silindi."
+				rm -f /tmp/$paket.sil
+			else
+				rm -f /tmp/$paket.sil
+				exit 1
 			fi
-			rm -f /tmp/$paket.sil
+			
 		else
 			ryaz 31 "kritik mesaj:kurulanlar dosyası yok." 
 		fi
@@ -129,12 +133,39 @@ paket_sil(){
 
 }
 
-paket_bilgi(){
+paket_bilgi2(){
 	local paket kkont
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" = "kurulu" ];then
 		paket="$1"
 		cat /var/lib/pkg/DB/"$paket"/META
+	else
+		echo "paket kurulu değil!"
+	fi
+
+}
+
+paket_bilgi(){
+	local paket kkont
+	kkont=`kurulu_kontrol "$1"`
+	if [ "$kkont" = "kurulu" ];then
+		paket="$1"
+		satir=`sed -n '1p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "AD:" ${satir:1:${#satir}-1} 
+		satir=`sed -n '2p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "TN:" ${satir:1:${#satir}-1} 
+		satir=`sed -n '3p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "UR:" ${satir:1:${#satir}-1} 
+		satir=`sed -n '4p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "YP:" ${satir:1:${#satir}-1} 
+		satir=`sed -n '5p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "PK:" ${satir:1:${#satir}-1} 
+		satir=`sed -n '6p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "--:" ${satir:1:${#satir}-1} 
+		satir=`sed -n '7p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "VS:" ${satir:1:${#satir}-1}
+		satir=`sed -n '8p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "RL:" ${satir:1:${#satir}-1}
 	else
 		echo "paket kurulu değil!"
 	fi
@@ -247,7 +278,73 @@ paket_sil_oto(){
 		paket_sil "$spkt" "$oto_silme"
 	done
 }
-      
+
+paket_guncelle(){
+	surum_kontrol $1
+	devir_kontrol $1
+}
+
+paket_guncelle_oto(){
+	mps -dly "$1" > /dev/null &&
+	local kpkt
+	for kpkt in `cat bag.liste`;do
+		mps -g "$kpkt"
+	done
+	rm bag.liste tumbag.liste
+}
+
+surum_kontrol(){
+	local ksurum version pkt dusuk yuksek durum
+	durum="belirsiz"
+	satir=`sed -n '7p' <  /var/lib/pkg/DB/"$1"/META`
+	ksurum=${satir:1:${#satir}-1} 
+	pkt="`find $talimatname_dizin -name $1`"
+	source $pkt/talimat
+	dusuk=`echo -e "$ksurum\n$version" | sort -V | head -n1`
+	
+	if [ "$ksurum" = "$version" ];then
+		durum="guncel"
+	else
+		if [ "$ksurum" = "$dusuk" ];then
+			durum="yukselt"
+		else
+			durum="dusur"
+		fi
+
+		if [ "$durum" <> "guncel" ];then
+			mps -s $1
+			mps -ik $1
+		fi
+	fi
+	ryaz 33 "$1 surum kontrolu $ksurum & $version $durum" 
+}
+
+devir_kontrol(){
+	local kdevir release pkt dusuk yuksek durum
+	durum="belirsiz"
+	satir=`sed -n '8p' <  /var/lib/pkg/DB/"$1"/META`
+	kdevir=${satir:1:${#satir}-1} 
+	pkt="`find $talimatname_dizin -name $1`"
+	source $pkt/talimat
+	dusuk=`echo -e "$kdevir\n$release" | sort -V | head -n1`
+	
+	if [ "$kdevir" = "$release" ];then
+		durum="guncel"
+	else
+		if [ "$kdevir" = "$dusuk" ];then
+			durum="yukselt"
+		else
+			durum="dusur"
+		fi
+		
+		if [ "$durum" <> "guncel" ];then
+			mps -s $1
+			mps -ik $1
+		fi
+	fi
+	ryaz 33 "$1 devir kontrolu $kdevir & $release $durum" 
+}
+   
 paket_derle(){
 	#eski derleme kalıntılarını temizle
 	if [ -d tmp.* ];then
@@ -686,12 +783,20 @@ ayarlar() {
 				git_guncelle ;;
 			-G|--pvtg)
 				paketvt_guncelle ;;
+			#tekil paket guncelleme-single package updating
 			-g|--pkgu)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
 					exit 1
 				fi
 				paket_guncelle "$2";;
+			#bagimliliklariyla beraber paket guncelleme-package updating with depencies
+			-go|--pkgo)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					exit 1
+				fi
+				paket_guncelle_oto "$2";;
 			-kk|--kurulu-kontrol)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
