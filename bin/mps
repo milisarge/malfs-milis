@@ -293,6 +293,13 @@ paket_guncelle_oto(){
 	rm bag.liste tumbag.liste
 }
 
+sistem_guncelle(){
+	local kpkt
+	for kpkt in `mps -kl`;do
+		mps -g "$kpkt"
+	done
+}
+
 surum_kontrol(){
 	local ksurum version pkt dusuk yuksek durum
 	durum="belirsiz"
@@ -783,6 +790,9 @@ ayarlar() {
 				git_guncelle ;;
 			-G|--pvtg)
 				paketvt_guncelle ;;
+			#komple kurulu sistemin guncellenmesi
+			-GS)
+				sistem_guncelle ;;
 			#tekil paket guncelleme-single package updating
 			-g|--pkgu)
 				if [ ! "$2" ]; then
