@@ -1,0 +1,4 @@
+echo "GNOME desktop database güncellemesi simge ve derlenmiş şemaların"
+update-desktop-database
+gtk-update-icon-cache
+glib-compile-schemas /usr/share/glib-2.0/schemas/
