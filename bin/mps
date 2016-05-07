@@ -166,6 +166,8 @@ paket_bilgi(){
 		ryaz 32 "VS:" ${satir:1:${#satir}-1}
 		satir=`sed -n '8p' <  /var/lib/pkg/DB/"$paket"/META`
 		ryaz 32 "RL:" ${satir:1:${#satir}-1}
+		satir=`sed -n '9p' <  /var/lib/pkg/DB/"$paket"/META`
+		ryaz 32 "DZ:" `date -d @${satir:1:${#satir}-1}`
 	else
 		echo "paket kurulu değil!"
 	fi
