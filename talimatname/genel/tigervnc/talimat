@@ -1,0 +1,23 @@
+# Description: vnc client
+# URL: http://tigervnc.org
+# Packager: milisarge
+# Depends on: cmake fltk1 gegl libjpeg-turbo xorg-libxtst xorg-libxfont xorg-xauth xorg-xkbcomp xorg-libpixman libgcrypt xorg-libxdamage gnutls
+
+name=tigervnc
+version=1.6.0
+release=2
+source=(https://github.com/TigerVNC/$name/archive/v$version.tar.gz)
+
+build() {
+	mv $DERLEME_KAYNAKDIZIN/v$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
+	mkdir build
+	cd build
+
+	cmake -G "Unix Makefiles" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		../$name-$version
+	make
+	make DESTDIR=$PKG install
+
+	rm -rf $PKG/usr/share/doc
+}
