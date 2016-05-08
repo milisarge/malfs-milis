@@ -1,0 +1,3 @@
+HOSTNAME='milis'
+MANAGER='wicd'
+GATEWAY=192.168.1.1
