@@ -1,58 +1,21 @@
 # Description:  The GO programming language
 # URL:          http://golang.org/
-# Maintainer:   James Mills, prologic at shortcircuit dot net dot au
 # packager: milisarge@gmail.com
-# Depends on:   git mercurial
+# Depends on: git mercurial
 
 name=go
-version=1.4.2
+version=1.4.3
 release=1
-source=(
-    https://storage.googleapis.com/golang/${name}${version}.linux-amd64.tar.gz
-    golang.sh
-)
+
+case "`uname -m`" in
+    x86_64) GOARCH=amd64 ;;
+    i686) GOARCH=386 ;;
+esac
+  
+source=(https://storage.googleapis.com/golang/${name}${version}.linux-$GOARCH.tar.gz)
 
 build() {
-    cd $SRC/$name/src
-
-    # build
-    export GOROOT_FINAL=/usr/lib/go
-    export GOROOT=/tmp/go/
-    export CGO_ENABLED="0"
-
-    # compile all
-    unset CC   # The build fails with a customer C compiler (e.g: ccache)
-    unset CXX  # The build fails with a customer C++ compiler (e.g: ccache)
-    ./make.bash
-
-    # install
-    install -d -m 755 $PKG/usr/lib
-    install -d -m 755 $PKG/usr
-
-    # package
-    mv $SRC/go $PKG/usr/lib/
-    mv $PKG/usr/lib/go/bin $PKG/usr/
-    install -D -m 644 $SRC/golang.sh $PKG/etc/profile.d/golang.sh
- 
-    # 
-    # package godoc and vet (XXX: Temporary)
-    #
-
-    export GOROOT=$PKG/usr/lib/go
-    export GOPATH=/tmp/go
-    export CGO_ENABLED="0"
-
-    $PKG/usr/bin/go get -u golang.org/x/tools/cmd/godoc
-    $PKG/usr/bin/go install golang.org/x/tools/cmd/godoc
-
-    $PKG/usr/bin/go get -u golang.org/x/tools/cmd/vet
-    $PKG/usr/bin/go install golang.org/x/tools/cmd/godoc
-
-    # cleanup
-    rm -rf $PKG/usr/lib/go/bin
-    rm -rf $PKG/usr/lib/go/test
-    find "$PKG/usr/lib/go/" -type f -name "*.o" -delete
-    find "$PKG/usr/lib/go/" -type f -name "Makefile" -delete
-    rm $PKG/usr/lib/go/{AUTHORS,README,LICENSE,CONTRIBUTORS,PATENTS,robots.txt}
-    rm $PKG/usr/lib/go/src/{make.*,all.*,run.*,race.*,clean.*,Make.*,sudo.*}
+	mkdir $PKG/opt
+	cp -rf $name $PKG/opt/
+	
 }
