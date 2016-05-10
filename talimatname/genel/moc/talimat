@@ -1,0 +1,25 @@
+# Description: Console audio player.
+# URL: http://moc.daper.net/
+# Packager: milisarge
+# Depends on: curl libsndfile jack libid3tag libmad
+ 
+
+name=moc
+version=2.5.1
+release=1
+source=(ftp://ftp.daper.net/pub/soft/$name/stable/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	autoreconf -f -i -Wall,no-obsolete
+    ./configure --prefix=/usr --without-rcc \
+    --with-alsa --with-jack --with-aac --with-mp3 \
+    --with-musepack --with-vorbis --with-flac --with-wavpack \
+    --with-sndfile --with-modplug --with-ffmpeg --with-speex \
+    --with-samplerate --with-curl --with-sidplay2 --disable-debug
+
+	make
+	make DESTDIR=$PKG install
+	install -D -m 0644 -t $PKG/usr/share/moc/ config.example keymap.example 
+	rm -rf $PKG/usr/share/doc
+}
