@@ -788,7 +788,7 @@ ayarlar() {
 				ters_bagimli_kontrol "$2" ;;
 			-talb|--talb)
 				talimat_bilgi "$2" | column -t;;
-			-Ggit|--gitgun)
+			-Ggit|-GG)
 				git_guncelle ;;
 			-G|--pvtg)
 				paketvt_guncelle ;;
