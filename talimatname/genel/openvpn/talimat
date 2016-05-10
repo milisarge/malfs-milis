@@ -1,0 +1,26 @@
+# Description: VPN Client
+# URL:         http://www.openvpn.net
+# Packager:    milisarge
+# Depends on:  lzo
+
+name=openvpn
+version=2.3.10
+release=1
+source=(http://swupdate.openvpn.net/community/releases/$name-$version.tar.gz \
+        openvpnd)
+
+build() {
+  install -D -m 755 openvpnd $PKG/etc/rc.d/init.d/openvpn
+  cd $name-$version
+
+  ./configure --prefix=/usr \
+              --mandir=/usr/man \
+              --enable-iproute2 \
+              --disable-plugin-auth-pam
+  make
+  make DESTDIR=$PKG install
+  if [ -d $PKG/usr/share/doc ];then
+	rm -r $PKG/usr/share/doc
+  fi
+
+}

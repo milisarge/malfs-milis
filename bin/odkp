@@ -1,0 +1,2 @@
+mps -G
+mps -kur $1 && mps -derle $1

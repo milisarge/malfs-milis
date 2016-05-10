@@ -1,0 +1,34 @@
+# Description: Wireless LAN network daemon. (git checkout)
+# URL:         https://01.org/connman
+# Packager:    milisarge
+# Depends on:  dbus gnutls glib xtables-addons openconnect openvpn wpa-supplicant
+# Optional:    pptp bluez
+
+name=connman
+version=git
+release=1
+source=(rc.connmand)
+
+build() {
+	cd $DERLEME_KAYNAKDIZIN
+
+	if cd $name; then
+		git fetch -q; git reset --hard origin/master
+	else
+		git clone git://git.kernel.org/pub/scm/network/connman/connman.git -b master $name
+		cd $name
+	fi
+
+
+	./bootstrap-configure
+	./configure --prefix=/usr \
+				--bindir=/usr/bin \
+				--mandir=/usr/share/man \
+				--enable-openvpn \
+				--enable-client \
+				--enable-polkit
+
+	make
+	make DESTDIR=$PKG install
+	install -D -m 0755 $SRC/rc.connmand $PKG/etc/rc.d/init.d/connmand
+}

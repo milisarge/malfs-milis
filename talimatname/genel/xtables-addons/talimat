@@ -1,0 +1,22 @@
+# Description: Xtables-addons is the proclaimed successor to patch-o-matic(-ng). It contains extensions that were not accepted in the main Xtables package.
+# URL: http://xtables-addons.sourceforge.net/
+# Packager: milisarge
+# Depends on: iptables libmnl
+
+name=xtables-addons
+version=2.10
+release=1
+source=(http://downloads.sourceforge.net/project/$name/Xtables-addons/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--libexecdir=/usr/lib \
+		--mandir=/usr/man \
+		--disable-dependency-tracking
+
+	make
+	make DESTDIR=$PKG install
+}
