@@ -677,6 +677,8 @@ pathappend () {
 
 export -f pathremove pathprepend pathappend
 
+export LC_ALL="tr_TR.UTF-8"
+
 # Set the initial path
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
