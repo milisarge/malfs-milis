@@ -14,6 +14,7 @@ qpdf
 qemu-all
 worker
 yad
+scrot
 wicd
 file-roller
 xarchiver
@@ -26,3 +27,4 @@ samba
 gnumeric
 abiword
 dosfstools
+openjdk
