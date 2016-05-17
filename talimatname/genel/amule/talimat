@@ -1,0 +1,21 @@
+# Description: An all-platform Edonkey client.
+# URL: http://www.amule.org/
+# Packager: milisarge
+# Depends on: crypto++ libupnp wxgtk libnotify
+
+name=amule
+version=f77eef219cdb0caf31b094a9db4668e936abda8c
+release=1
+source=(http://repo.or.cz/amule.git/snapshot/$version.tar.gz)
+
+build() {
+	cd $name-f77eef2
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man
+
+	make
+	make install DESTDIR=$PKG
+	rm -r $PKG/usr/share/doc
+}
