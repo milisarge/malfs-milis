@@ -1,0 +1,15 @@
+# Description: Stopwatch does what its name implies - enables hand timing much like a physical stopwatch. It can also be used as a countdown timer. 
+# URL:         http://expect.sourceforge.net/stopwatch/
+# Packager:    milisarge
+# Depends on:  tcl tk
+
+name=stopwatch
+version=3.4
+release=1
+source=(http://expect.sourceforge.net/$name/$name.tar.gz)
+
+build () {
+   cd $name-$version
+   install -D -m0755 $name $PKG/usr/sbin/$name
+  
+}
