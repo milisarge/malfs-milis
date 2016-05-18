@@ -1,0 +1,21 @@
+# Description: Grsync is a rsync GUI (Graphical User Interface). 
+# URL:         http://www.opbyte.it/grsync/
+# Packager:    milisarge
+# Depends on:  gtk2
+
+name=grsync
+version=1.2.6
+release=1
+source=(https://sourceforge.net/projects/$name/files/$name-$version.tar.gz)
+
+build () {
+   cd $name-$version
+   ./configure \
+		--prefix=/usr  \
+		--disable-unity
+	make
+	make install DESTDIR=$PKG
+	mkdir -p $PKG/etc/
+	install -m 660 $name.conf $PKG/etc/
+  
+}
