@@ -1,0 +1,24 @@
+# Description:	Mplayer frontend
+# URL:		http://smplayer.sf.net/
+# packager:	milisarge
+# Depends on:	mplayer qt4
+
+name=smplayer
+version=16.4.0
+release=1
+source=(http://prdownloads.sf.net/$name/$name-$version.tar.bz2)
+
+build() {
+	tamir_qt4path
+	cd $name-$version
+	sed -i -e 's|kde-config|kde4-config|g' Makefile
+
+	# Remove most debug messages
+	find src -type f -name '*.cpp' -print0 | xargs -0 sed -i -e 's|qDebug(.*);|{}|g'
+
+	# Check if kdelibs is installed, since its not detected automatically
+	[ -x /usr/bin/kde4-config ] && kde=KDE_SUPPORT=1
+
+	make DESTDIR=$PKG PREFIX=/usr $kde install
+	rm -rf $PKG/usr/share/doc
+}
