@@ -1,6 +1,6 @@
 # Description: calculator based on QT
 # URL: http://speedcrunch.org/
-# Packager: - speedcrunch.googlecode.com
+# Packager: milisarge
 # Depends on: qt4 
 
 name=speedcrunch
