@@ -1,0 +1,16 @@
+# Description: 	Telegram, the secure IM platform
+# URL: 		http://www.telegram.org
+# Packager: 	milisarge
+# Depends on:
+
+name=telegram-bin
+version=0.9.49
+release=1
+source=(https://updates.tdesktop.com/tlinux/tsetup.$version.tar.xz)
+
+build() {
+	cd Telegram
+
+	install -Dm755 Telegram $PKG/usr/bin/telegram
+	install -Dm755 Updater $PKG/usr/bin/updater
+}
