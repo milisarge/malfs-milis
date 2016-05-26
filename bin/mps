@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.5"
+versiyon="0.6"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -683,6 +683,29 @@ pvt_olustur(){
 	ryaz 32 "paket.vt oluşturuldu."
 }
 
+paket_indir(){
+	local pkt
+	if [ -f "$paketdepo""paket.vt" ];then
+		pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3`
+		ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f2`
+		cpaket="${pkt/'#'/'%23'}"
+		wget  -nc -P "$paketdepo" "$sunucu$cpaket" &> /dev/null
+		if [[ "$?" != 0 ]]; then
+			ryaz 31 "indirme hatalı"
+		else
+			ryaz 34 "$1 indirildi"
+		fi
+		mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
+		if [ "$ekontdeg" != "$mkontdeg" ];then
+			ryaz 31 "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
+			rm -f "$paketdepo$pkt" 
+			paket_indir "$1" 
+		fi
+	fi
+	
+	
+}
+
 yardim(){
  echo "yardim"
 }
@@ -886,24 +909,17 @@ if [ "$ikaynak" = "ag" ]; then
 	local kontroldeg
 	kkont=`kurulu_kontrol "$2"`
 	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
-		echo "agdan cekiliyor:" "$2"
-		pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3`
-		echo $pkt 
+		pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3` 
 		if [ ! -z "$pkt" -a "$pkt" != "" ]; then
 			cpaket="${pkt/'#'/'%23'}"
+			ryaz 33 "agdan cekiliyor:" "$cpaket"
 			#paket sunucuda varsa
 			wget -q --spider "$sunucu$cpaket"
 			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
 			if [ $? -eq 0 ]; then
-				wget -nc -P "$paketdepo" "$sunucu$cpaket"
-				if [ -f "$paketdepo""paket.vt" ];then
-					ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f2`
-					mkontdeg=`md5sum $pkt | cut -d' ' -f1`
-				fi
-				if [ "$ekontdeg" != "$mkontdeg" ];then
-					rm -f $pkt
-					wget -nc -P "$paketdepo" "$sunucu$cpaket"
-				fi
+				#wget  -P "$paketdepo" "$sunucu$cpaket"
+				paket_indir "$2"
+				
 				if [ "$kurulum_onay" = "evet" ];then
 					if [ "$tekrarkur" = "evet" ];then
 						paket_sil "$2" "evet"
@@ -911,7 +927,8 @@ if [ "$ikaynak" = "ag" ]; then
 					icerik_ekle "$paketdepo$pkt"
 					exit 1
 				fi
-				
+			else
+				ryaz 31 "paket sunucuda yok!"
 			fi
 		else
 			ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
