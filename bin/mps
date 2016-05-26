@@ -896,7 +896,7 @@ if [ "$ikaynak" = "ag" ]; then
 			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
 			if [ $? -eq 0 ]; then
 				wget -nc -P "$paketdepo" "$sunucu$cpaket"
-				if [ -f "$paketde""popaket.vt" ];then
+				if [ -f "$paketdepo""paket.vt" ];then
 					ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f2`
 					mkontdeg=`md5sum $pkt | cut -d' ' -f1`
 				fi
