@@ -1,6 +1,11 @@
+packager="milisarge"
 account="$1"
 name="$2"
 file="$name.html"
-curl -k https://github.com/"$account/$name" > "$file" 
+url=https://github.com/"$account/$name"
+curl -k $url > "$file" 
 desc=`sed -n 's|[^<]*<span itemprop="about">\([^<]*\)</span>[^<]*|\1\n|gp' $file`
-echo "# Description:$desc"
+echo "# description:$desc"
+echo "# url:$url"
+echo "# packager:$packager"
+echo "# depends on: "
