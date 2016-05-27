@@ -8,10 +8,10 @@ name=spiderfoot
 version=v2.6.1-final
 release=1
 
-source=(https://github.com/smicallef/spiderfoot/archive/v2.6.1-final.tar.gz deps)
+source=(https://github.com/smicallef/spiderfoot/archive/v2.6.1-final.tar.gz)
 
 #python modulleri yukleme
-pip2 install -r deps
+pip2 install -r /tmp/py2deps
 
 build () {
 	#mv /sources/v2.6.1-final.tar.gz /sources/spiderfoot-v2.6.1-final.tar.gz
