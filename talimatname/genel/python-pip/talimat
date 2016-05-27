@@ -17,6 +17,3 @@ build() {
     cp -Rf docs/* $PKG/usr/share/doc/$name-$version 
 }
 
-
-
-# NuTyX Pkgfile (http://nutyx.org)
