@@ -1,3 +1,5 @@
+. /etc/mpsd.conf
+
 packager="milisarge"
 account="$1"
 name="$2"
