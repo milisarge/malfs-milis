@@ -1,0 +1,18 @@
+# Description: @desc@
+# URL: @url@
+# packager: @packager@
+# Depends on : @depends@
+
+name=@name@
+version=@version@
+release=1
+source=(https://github.com/@hesap@/$name/archive/$version.tar.gz)
+ 
+build () {
+  mv $DERLEME_KAYNAKDIZIN/$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
+  cd $name-$version
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+}
