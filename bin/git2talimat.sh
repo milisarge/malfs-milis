@@ -15,7 +15,7 @@ tee "$name/talimat" > /dev/null <<EOF
 # description:$desc
 # url:$url
 # packager:$packager
-# depends on: 
+# Depends on: 
 
 name=$name
 version=$version

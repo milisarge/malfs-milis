@@ -1,0 +1,23 @@
+# description: SpiderFoot, the open source footprinting and intelligence-gathering tool.
+# url:https://github.com/smicallef/spiderfoot
+# packager:milisarge
+# Depends on: python swig libxslt
+
+
+name=spiderfoot
+version=v2.6.1-final
+release=1
+
+source=(https://github.com/smicallef/spiderfoot/archive/v2.6.1-final.tar.gz deps)
+
+#python modulleri yukleme
+pip2 install -r deps
+
+build () {
+	#mv /sources/v2.6.1-final.tar.gz /sources/spiderfoot-v2.6.1-final.tar.gz
+	mkdir -p $PKG/usr/lib/python2.7/site-packages/
+	mkdir -p $PKG/usr/share/
+	cp -r spiderfoot-* $PKG/usr/share/$name
+	
+}
+
