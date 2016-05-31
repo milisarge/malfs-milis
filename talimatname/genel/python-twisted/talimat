@@ -1,0 +1,14 @@
+# Description: Python event-driven networking framework.
+# URL: http://www.twistedmatrix.com/
+# Packager: milisarge
+# Depends on: python python-setuptools
+
+name=python-twisted
+version=15.5.0
+release=1
+source=(http://pypi.python.org/packages/source/T/Twisted/Twisted-$version.tar.bz2)
+
+build() {
+	cd Twisted-$version
+	/usr/bin/python2 setup.py install --root=$PKG
+}
