@@ -1,21 +1,22 @@
-# Description: Light and fast Bittorent client (GTK Interface)
-# URL: http://www.transmissionbt.com/
-# Packager: milisarge
-# Depends on: intltool curl libevent gtk3 desktop-file-utils gtk-update-icon-cache
+# Description: BitTorrent client/daemon with command-line and web user interface
+# URL:         http://transmission.m0k.org/
+# Packager:    milisarge
+# Depends on:  curl libevent gtk3 intltool
 
 name=transmission
-version=2.90
+version=2.92
 release=1
-
-source=(http://download-origin.transmissionbt.com/files/transmission-$version.tar.xz)
+source=(https://download.transmissionbt.com/files/$name-$version.tar.xz)
 
 build() {
-	cd transmission-$version
-	./configure --prefix=/usr \
-                --disable-cli \
-                --disable-daemon \
-                --without-qt \
+    cd $name-$version
+
+    ./configure --prefix=/usr \
+                --enable-cli \
+                --enable-daemon \
                 --with-gtk
-	make
-	make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
+
+    rm $PKG/usr/share/transmission/web/LICENSE
 }
