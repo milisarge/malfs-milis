@@ -1,0 +1,16 @@
+# Description: Easily download, build, install, upgrade, and uninstall Python packages
+# URL: https://bitbucket.org/pypa/setuptools
+# Packager: milisarge
+# Depends on: python3
+
+name=python3-setuptools
+version=6.0.2
+release=1
+
+source=(http://pypi.python.org/packages/source/s/setuptools/setuptools-$version.tar.gz)
+
+build() {
+    cd setuptools-$version
+    python3 setup.py build install --root=$PKG
+    rm $PKG/usr/bin/easy_install
+}
