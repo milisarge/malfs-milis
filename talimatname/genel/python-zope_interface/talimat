@@ -1,0 +1,14 @@
+# Description: Zope3 interface library.
+# URL: http://pypi.python.org/pypi/zope.interface/
+# Packager: milisarge
+# Depends on: python python-setuptools
+	
+name=python-zope_interface
+version=4.1.3
+release=1
+source=(http://pypi.python.org/packages/source/z/zope.interface/zope.interface-$version.tar.gz)
+	
+build() {
+	cd zope.interface-$version
+	/usr/bin/python2 setup.py install --root=$PKG --prefix=/usr
+}

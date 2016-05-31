@@ -1,7 +1,7 @@
 # Description: Python event-driven networking framework.
 # URL: http://www.twistedmatrix.com/
 # Packager: milisarge
-# Depends on: python python-setuptools
+# Depends on: python python-setuptools python-zope_interface
 
 name=python-twisted
 version=15.5.0
