@@ -1,0 +1,16 @@
+# Description: Tool to create isolated Python environments.
+# URL: URL: https://virtualenv.pypa.io/ 
+# Packager: milisarge
+# Depends on: python3 
+name=python3-virtualenv
+version=14.0.5
+release=1
+
+source=(
+http://pypi.python.org/packages/source/v/virtualenv/virtualenv-$version.tar.gz)
+
+build() {
+    cd virtualenv-$version
+    python3 setup.py install --prefix=/usr --root=$PKG
+}
+
