@@ -565,7 +565,7 @@ tarihce_yukle(){
 		done
 		if [ "$islem_onay" = "e" ];then
 			mps -os sil.liste
-			mps -ok kur.liste
+			mps -kurul kur.liste
 			mv sil.liste silinenler.liste
 			mv kur.liste kurulanlar.liste
 			exit 1
