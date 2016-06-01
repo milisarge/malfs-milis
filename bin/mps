@@ -184,28 +184,31 @@ yeniden_paketle(){
 
 derleme_listyap(){
 	bagimlist=`bagimlilar "$1"`
-	for bagim in $bagimlist;do
-		if [ "`cat tumbag.liste | grep $bagim`" != "$bagim" ];then
-			derleme_listyap "$bagim"
+
+	if [ "$bagimlist" != "talimatyok" ];then
+		for bagim in $bagimlist;do
+			
+			if [ "`cat tumbag.liste | grep $bagim`" != "$bagim" ];then
+				derleme_listyap "$bagim"
+			fi
+			
+		done
+		
+		if  ! grep -Fxq "$1" tumbag.liste
+		then
+			ana="`find $talimatname_dizin -name $1`"
+			echo ${ana#"$talimatname_dizin"}
+			#sadece genel bagimliliklar derlenecek
+			echo "$1" >> tumbag.liste 
+			if [ -d "$talimatname_dizin/genel/$1" ];then
+				echo "$1" >> bag.liste 
+			fi
 		fi
-	done
-	#if [ "`cat tumbag.liste | grep $1`" != "$1" ];then
-	#	echo "tumbag.liste yazılıyor:" "$1"
-	#	echo "$1" >> tumbag.liste 
-	#fi
-	if  ! grep -Fxq "$1" tumbag.liste
-	then
-	#	echo "pas"
-	#else
-		ana="`find $talimatname_dizin -name $1`"
-		echo ${ana#"$talimatname_dizin"}
-		#sadece genel bagimliliklar derlenecek
-		echo "$1" >> tumbag.liste 
-		if [ -d "$talimatname_dizin/genel/$1" ];then
-			echo "$1" >> bag.liste 
-		fi
+	else
+		ryaz 31 "$1 talimatı bulunamadı."
+		exit 1 
 	fi
-} 
+}
 
 derleme_listbilgi(){
 	ryaz 34 "yapim asamasında"
@@ -405,11 +408,17 @@ paket_derle(){
 bagimlilar(){
 	local bagimd konum
 	konum="`find "$talimatname_dizin" -name $1`"
-	bagimd=`cat $konum/talimat | grep "Depends on" | cut -d':' -f2`
-	if [ -n "$bagimd" ]; then
-		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-		#sıralı gösterme
-		echo `echo "$bagimd" | sed 's/,/ /g'`
+	if [ -f "$konum/talimat" ];then
+		bagimd=`cat $konum/talimat | grep "Depends on" | cut -d':' -f2`
+											   
+		if [ -n "$bagimd" ]; then
+			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+			#sıralı gösterme
+			echo `echo "$bagimd" | sed 's/,/ /g'`
+		fi
+	else
+		echo "talimatyok"
+		exit 1
 	fi
 }
 
