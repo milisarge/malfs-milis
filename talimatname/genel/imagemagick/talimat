@@ -1,7 +1,6 @@
 # Description: An image viewing/manipulation program
 # URL: URL: http://www.imagemagick.org/
-# NuTyX Pkgfile (http://nutyx.org)
-# Packager: # NuTyX Pkgfile (http://nutyx.org)
+# Packager: milisarge
 # Depends on: freetype ghostscript lcms libgsf giflib libxml2 openexr libwmf libpng librsvg libwebp djvulibre 
 
 name=imagemagick

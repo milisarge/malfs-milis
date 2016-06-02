@@ -1,6 +1,6 @@
 # Description: Standard Ghostscript Type1 fonts from URW
 # URL: http://sourceforge.net/projects/ghostscript
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-app 
 
 name=gsfonts
