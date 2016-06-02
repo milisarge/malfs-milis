@@ -1,0 +1,21 @@
+# Description: A C++ bittorrent library.
+# URL: http://www.rasterbar.com/products/libtorrent/
+# Packager: milisarge
+# Depends on: boost
+
+name=libtorrent-rasterbar
+version=1.1.0
+release=1
+source=(https://github.com/arvidn/libtorrent/releases/download/libtorrent-1_1/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	CONFIG_SHELL=/bin/bash \
+	./configure \
+		--prefix=/usr \
+		--enable-python-binding
+
+	make
+	make DESTDIR=$PKG install
+}

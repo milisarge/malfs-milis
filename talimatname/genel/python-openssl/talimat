@@ -1,0 +1,15 @@
+# Description: Python interface to the OpenSSL library.
+# URL: http://pypi.python.org/pypi/pyOpenSSL
+# Packager: milisarge
+# Depends on: python-cryptography
+
+name=python-openssl
+version=0.15.1
+release=1
+source=(http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-$version.tar.gz)
+
+build() {
+	cd pyOpenSSL-$version
+	/usr/bin/python2 setup.py build
+	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
+}

@@ -1,0 +1,16 @@
+# Description: Python module for character encoding auto-detection.
+# URL: https://github.com/erikrose/chardet
+# Packager: milisarge
+# Depends on: python-setuptools
+
+name=python-chardet
+_name=chardet
+version=2.3.0
+release=1
+source=(https://pypi.python.org/packages/source/c/$_name/$_name-$version.tar.gz)
+
+build() {
+	cd $_name-$version
+	/usr/bin/python2 setup.py build
+	/usr/bin/python2 setup.py install --root=$PKG
+}

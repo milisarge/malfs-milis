@@ -1,6 +1,6 @@
 # Description: Python library for accessing FreeDesktop standards
 # URL: http://freedesktop.org/wiki/Software/pyxdg
-# Packager: milisarge
+# Packager: geantbrun at gmail dot com
 # Depends on: python 
 
 name=python-xdg

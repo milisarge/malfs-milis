@@ -1,0 +1,15 @@
+# Description: ASN.1 types and codecs.
+# URL: http://pypi.python.org/pypi/pyasn1
+# Packager: milisarge
+# Depends on: python-setuptools
+
+name=python-pyasn1
+_name=pyasn1
+version=0.1.9
+release=1
+source=(http://pypi.python.org/packages/source/p/$_name/$_name-$version.tar.gz)
+
+build() {
+	cd $_name-$version
+	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
+}

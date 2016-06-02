@@ -1,0 +1,19 @@
+# Description: A bittorrent client based on Python and GTK.
+# URL: http://deluge-torrent.org/
+# Packager: milisarge
+# Depends on: librsvg libtorrent-rasterbar python-gtk python-openssl python-chardet python-xdg python-twisted intltool python-mako
+
+name=deluge
+version=1.3.12
+release=1
+source=(http://download.deluge-torrent.org/source/$name-$version.tar.lzma)
+
+build() {
+	cd $name-$version
+
+	OS='linux' /usr/bin/python setup.py build
+	/usr/bin/python2 setup.py install --root=$PKG install
+
+	install -d $PKG/usr/man
+	mv $PKG/usr/share/man $PKG/usr/
+}

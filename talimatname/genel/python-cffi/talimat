@@ -1,0 +1,15 @@
+# Description: Foreign Function Interface for Python calling C code.
+# URL: http://cffi.readthedocs.org/
+# Packager: milisarge
+# Depends on: libffi python-cparser
+
+name=python-cffi
+_name=cffi
+version=1.5.2
+release=1
+source=(http://pypi.python.org/packages/source/c/$_name/$_name-$version.tar.gz)
+
+build() {
+	cd $_name-$version
+	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
+}

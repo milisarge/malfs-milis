@@ -1,0 +1,21 @@
+# Description: C parser and AST generator written in Python.
+# URL: https://github.com/eliben/pycparser
+# Packager: milisarge
+# Depends on: python-setuptools
+
+name=python-cparser
+_name=pycparser
+version=2.14
+release=1
+source=(https://github.com/eliben/$_name/archive/release_v$version.zip)
+
+build() {
+	cd $_name-release_v$version
+	/usr/bin/python2 setup.py build
+
+	cd pycparser
+	/usr/bin/python2 _build_tables.py
+	cd -
+
+	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
+}

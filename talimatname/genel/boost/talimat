@@ -1,6 +1,6 @@
 # Description: Boost provides a set of free peer-reviewed portable C++ source libraries.
 # URL: http://boost.sourceforge.net/
-# Packager: milisarge
+# Packager: tnut at nutyx dot org
 # Depends on: icu python
 
 name=boost
