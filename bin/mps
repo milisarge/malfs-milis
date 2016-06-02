@@ -943,7 +943,7 @@ if [ "$ikaynak" = "ag" ]; then
 			ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 		fi
 	else
-		ryaz 31 "$2 paketi zaten kurulu!"
+		ryaz 32 "$2 paketi zaten kurulu!"
 	fi
 	exit 1
 fi
