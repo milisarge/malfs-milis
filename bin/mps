@@ -544,9 +544,9 @@ tarihce_yukle(){
 		bsdtar -p -o -C /tmp -xf $TARIHCE_DIZIN/"$1-pkvt.tar.lz" 2>/dev/null
 		ls /tmp/var/lib/pkg/DB/ > hedef.pkvt
 		ls /var/lib/pkg/DB/ > simdiki.pkvt
-		grep -vf hedef.pkvt simdiki.pkvt > sil.liste
-		grep -vf simdiki.pkvt hedef.pkvt > kur.liste
-		rm hedef.pkvt simdiki.pkvt
+		grep -v -F -x -f hedef.pkvt simdiki.pkvt > sil.liste
+		grep -v -F -x -f simdiki.pkvt hedef.pkvt > kur.liste
+		#rm hedef.pkvt simdiki.pkvt
 		rm -r /tmp/var
 		cikis=""
 		if [ -s sil.liste ];then
