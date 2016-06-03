@@ -1,0 +1,24 @@
+# Description: A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce)
+# URL: http://numixproject.org/
+# Packager: milisarge
+# Depends on : gdk-pixbuf glib libxml2
+
+name=numix-gtk-theme
+version=2.2.3
+release=1
+source=(https://github.com/numixproject/numix-gtk-theme/archive/v$version.tar.gz)
+ 
+build () {
+	mv $DERLEME_KAYNAKDIZIN/v$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
+	cd $name-$version
+	#if [ ! -d /tmp/numix-icon-theme-circle ];then
+	git clone https://github.com/numixproject/numix-icon-theme-circle /tmp/numix-icon-theme-circle
+	git clone https://github.com/numixproject/numix-icon-theme /tmp/numix-icon-theme
+	#fi
+	mkdir -p $PKG/usr/share/icons/
+	cp -r /tmp/numix-icon-theme-circle/Numix-Circle-Light $PKG/usr/share/icons/
+	cp -r /tmp/numix-icon-theme/Numix-Light $PKG/usr/share/icons/
+	cp -r /tmp/numix-icon-theme-circle/Numix-Circle $PKG/usr/share/icons/
+	cp -r /tmp/numix-icon-theme/Numix $PKG/usr/share/icons/
+	install -d -m755 $PKG/usr/share/themes/Numix
+}
