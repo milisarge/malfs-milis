@@ -35,5 +35,8 @@ build () {
 	cp -r $DERLEME_KAYNAKDIZIN/numix-icon-theme-circle/Numix-Circle $PKG/usr/share/icons/
 	cp -r $DERLEME_KAYNAKDIZIN/numix-icon-theme/Numix $PKG/usr/share/icons/
 	#temanın paketlenmesi
-	install -d -m755 .* $PKG/usr/share/themes/Numix
+	cd ..
+	rm numix*/.gitignore
+	mkdir -p $PKG/usr/share/themes
+	mv numix* $PKG/usr/share/themes/Numix
 }
