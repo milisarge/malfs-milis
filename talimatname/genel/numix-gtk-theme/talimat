@@ -11,14 +11,29 @@ source=(https://github.com/numixproject/numix-gtk-theme/archive/v$version.tar.gz
 build () {
 	mv $DERLEME_KAYNAKDIZIN/v$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
 	cd $name-$version
-	#if [ ! -d /tmp/numix-icon-theme-circle ];then
-	git clone https://github.com/numixproject/numix-icon-theme-circle /tmp/numix-icon-theme-circle
-	git clone https://github.com/numixproject/numix-icon-theme /tmp/numix-icon-theme
-	#fi
+	
+	if [ ! -d $DERLEME_KAYNAKDIZIN/numix-icon-theme-circle ];then
+		git clone https://github.com/numixproject/numix-icon-theme-circle $DERLEME_KAYNAKDIZIN/numix-icon-theme-circle
+	else
+		cd $DERLEME_KAYNAKDIZIN/numix-icon-theme-circle
+		git pull
+		cd -
+	fi
+	
+	if [ ! -d $DERLEME_KAYNAKDIZIN/numix-icon-theme ];then
+		git clone https://github.com/numixproject/numix-icon-theme $DERLEME_KAYNAKDIZIN/numix-icon-theme
+	else
+		cd $DERLEME_KAYNAKDIZIN/numix-icon-theme
+		git pull
+		cd -
+	fi
+	
+	#simgelerin eklenmesi
 	mkdir -p $PKG/usr/share/icons/
-	cp -r /tmp/numix-icon-theme-circle/Numix-Circle-Light $PKG/usr/share/icons/
-	cp -r /tmp/numix-icon-theme/Numix-Light $PKG/usr/share/icons/
-	cp -r /tmp/numix-icon-theme-circle/Numix-Circle $PKG/usr/share/icons/
-	cp -r /tmp/numix-icon-theme/Numix $PKG/usr/share/icons/
+	cp -r $DERLEME_KAYNAKDIZIN/numix-icon-theme-circle/Numix-Circle-Light $PKG/usr/share/icons/
+	cp -r $DERLEME_KAYNAKDIZIN/numix-icon-theme/Numix-Light $PKG/usr/share/icons/
+	cp -r $DERLEME_KAYNAKDIZIN/numix-icon-theme-circle/Numix-Circle $PKG/usr/share/icons/
+	cp -r $DERLEME_KAYNAKDIZIN/numix-icon-theme/Numix $PKG/usr/share/icons/
+	#temanın paketlenmesi
 	install -d -m755 $PKG/usr/share/themes/Numix
 }
