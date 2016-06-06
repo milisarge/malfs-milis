@@ -1,3 +1,4 @@
+update-desktop-database -q
 gtk-update-icon-cache -q -t -f /usr/share/icons/Numix/
 gtk-update-icon-cache -q -t -f /usr/share/icons/Numix-Light/
 gtk-update-icon-cache -q -t -f /usr/share/icons/Numix-Circle/

@@ -1,12 +1,12 @@
 # Description: LibreOffice is a full-featured office suite. It is largely compatible with Microsoft Office and is descended from OpenOffice.org.
 # URL: http://www.libreoffice.org
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: cups xorg-libxaw xorg-libxcursor xorg-libxft xorg-libxinerama xorg-libxi xorg-libxrandr dbus-glib krb5
 
 name=libreoffice
-version=5.1.1
+version=5.1.3
 release=1
-source=(http://tdf.c3sl.ufpr.br/libreoffice/stable/5.1.1/rpm/x86/LibreOffice_5.1.1_Linux_x86_rpm.tar.gz)
+source=(http://tdf.c3sl.ufpr.br/libreoffice/stable/5.1.3/rpm/x86_64/LibreOffice_5.1.3_Linux_x86-64_rpm.tar.gz)
 
 
 build() {
