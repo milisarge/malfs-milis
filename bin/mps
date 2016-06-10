@@ -224,7 +224,7 @@ paket_derle_liste(){
 #otomatik derle kontrollu kur
 paket_derle_kur(){
 	tekrarkur="hayir"
-	mps -dly "$1" > /dev/null && mps -derlist bag.liste
+	mps -dly "$1"  && mps -derlist bag.liste
 }
 
 paket_kur_oto(){

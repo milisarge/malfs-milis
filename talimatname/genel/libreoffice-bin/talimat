@@ -1,0 +1,57 @@
+# Description: full featured cross platform office suite (binary)
+# URL: http://www.libreoffice.org
+# Packager: milisarge
+# Depends on: cups xorg-libxaw xorg-libxcursor xorg-libxft xorg-libxinerama xorg-libxi xorg-libxrandr dbus-glib krb5
+
+name=libreoffice-bin
+namep=libreoffice
+version=5.1.3
+release=1
+source=(http://tdf.c3sl.ufpr.br/libreoffice/stable/5.1.3/rpm/x86_64/LibreOffice_5.1.3_Linux_x86-64_rpm.tar.gz)
+
+
+build() {
+    local workd="$SRC/tmp_work"
+    mkdir $workd
+
+    cd LibreOffice_${version}*/RPMS
+    for rpm in *.rpm; do
+        bsdtar -p -o -C $workd -xf $rpm
+    done
+
+    bsdtar -p -o -C $workd -xf \
+        $namep${version%.*}-freedesktop-menus-${version%.*}*.noarch.rpm
+
+    cd $workd
+    mkdir -p $PKG/usr/lib/$namep
+    mv opt/$namep*/* $PKG/usr/lib/$namep
+
+    cd $PKG/usr/lib/$namep
+    ln -sf basis${version%.*} basis-link
+
+    mkdir -p $PKG/usr/bin
+    local programs=(sbase scalc sdraw simpress smath soffice spadmin swriter)
+    for program in ${programs[@]}; do
+        ln -sf /usr/lib/$namep/program/$program $PKG/usr/bin/$program
+    done
+
+    mkdir -p $PKG/usr/share/applications
+    cd $PKG/usr/lib/$namep/share/xdg/
+
+    for desktop in *.desktop; do
+       sed -i '/^Exec=/s/libreoffice[^ ]*/soffice/' $desktop
+       ln -sf /usr/lib/$namep/share/xdg/$desktop $PKG/usr/share/applications/$desktop 
+    done
+
+    mv $workd/usr/share/{mime,icons} $PKG/usr/share
+
+    find $PKG \(\
+        -inamep '*readme*' -o \
+        -inamep '*changelog*' -o \
+        -namep '*TODO*' -o \
+        -inamep '*news*' -o \
+        -inamep '*license*' -o \
+        -inamep '*credits*' \
+     \) -exec rm -rf '{}' \; || true
+}
+
