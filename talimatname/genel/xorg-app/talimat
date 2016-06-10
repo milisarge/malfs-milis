@@ -1,9 +1,8 @@
 # Description: The Xorg applications provide the applications available in X Window implementations.
 # URL: http://xorg.freedesktop.org
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: harfbuzz libpng xorg-mesa xorg-glu xcb-util xorg-libx11 xorg-libxinerama xorg-libxt xorg-libxfont xorg-libxkbfile xorg-libxmu xorg-libxrender xorg-libxrandr xorg-libxcursor xorg-libxtst xorg-libxxf86vm xorg-libxaw xorg-xbitmaps xorg-libxv xorg-libdmx xorg-libxt 
 
-section="app"
 name=xorg-app
 version=7.7
 release=4
