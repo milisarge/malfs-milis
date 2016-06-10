@@ -41,6 +41,10 @@ mps -s     paket_ismi	ilgili paketi kaldirir
 
 mps -k     paket_ismi	yereldeki paketi bagimliliksiz kurar
 
+mps -g     paket_ismi	paketi günceller
+
+mps -go    paket_ismi	paketi bağımlılıklarıyla günceller
+
 mps -kl					kurulu paket listesini verir
 
 mps -kk    paket_ismi	ilgili paketin kurulu olma durumunu verir
