@@ -1,50 +1,27 @@
-# Description: Lightweight X11 Display Manager based on Gtk
-# Url: http://wiki.lxde.org/en/LXDM
-# Maintainer: dgod dot osa at gmail dot com
+# Description: A light weight session manager for linux  
+# URL:         http://sourceforge.net/projects/lxdm/
 # Packager: milisarge
 # Depends on: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2
-
-run=(consolekit2 librsvg)
 
 name=lxdm
 version=0.5.3
 release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.xz)
+source=(http://sourceforge.net/projects/lxde/files/${name}/${name}%20${version}/${name}-${version}.tar.xz
+http://downloads.sourceforge.net/project/lxdm-init-script/lxdm-init-script-0.0.1.tar.gz)
 
 build() {
-source /etc/blfs-bootscripts
-wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-tar xvf $scripts-$scriptsversion.tar.bz2
-
-cd $name-$version
-
-sed -i 's:sysconfig/i18n:profile.d/i18n.sh:g' data/lxdm.in
-sed -i 's:/etc/xprofile:/etc/profile:g' data/Xsession
-sed -e 's/^bg/#&/'        \
-    -e '/reset=1/ s/# //' \
-    -e 's/logou$/logout/' \
-    -e "/arg=/a arg=/usr/bin/X" \
-    -i data/lxdm.conf.in
-
-./configure --sysconfdir=/etc \
-	--prefix=/usr \
-	--with-pam \
-	--with-systemdsystemunitdir=no
-
-make
-  
-make DESTDIR=$PKG install
-
-cat > $PKG/etc/pam.d/lxdm << "EOF"
-#%PAM-1.0
-auth        required    pam_unix.so
-auth        requisite   pam_nologin.so
-account     required    pam_unix.so
-password    required    pam_unix.so
-session     required    pam_unix.so
-EOF
-
-# Service
-cd $SRC/$scripts-$scriptsversion
-make DESTDIR=$PKG install-lxdm
+    
+    cd $name-$version
+    ./configure --prefix=/usr  \
+    --with-pam \
+    --disable-gtk3 \
+    --with-systemdsystemunitdir=no \
+    --sysconfdir=/etc
+ 
+    make
+    make DESTDIR=$PKG install
+    mkdir $PKG/etc/rc.d
+    install -m 755 $SRC/lxdm-init-script/lxdm  $PKG/etc/rc.d/$name
+    rm -r $PKG/usr/share/lxdm/themes
+            
 }
