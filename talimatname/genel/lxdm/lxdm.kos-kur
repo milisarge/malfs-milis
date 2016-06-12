@@ -1,5 +1,0 @@
-. lib/lsb/init-functions
-if [ ! -z "`cards list|grep sddm\ `" ]; then
-	log_failure_msg "${WARNING}sddm${NORMAL} should be removed"
-	exit 1
-fi

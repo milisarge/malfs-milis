@@ -1,14 +1,14 @@
 # Description: Lightweight X11 Display Manager based on Gtk
 # Url: http://wiki.lxde.org/en/LXDM
 # Maintainer: dgod dot osa at gmail dot com
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2
 
 run=(consolekit2 librsvg)
 
 name=lxdm
-version=0.5.1
-release=2
+version=0.5.3
+release=1
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.xz)
 
 build() {
