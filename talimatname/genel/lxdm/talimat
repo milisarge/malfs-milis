@@ -11,7 +11,8 @@ http://downloads.sourceforge.net/project/lxdm-init-script/lxdm-init-script-0.0.1
 http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz
 lxdm.in.patch
 lxdm.conf.in.patch
-lxdm.pam)
+lxdm.pam
+Xsession)
 
 build() {
     
@@ -28,6 +29,7 @@ build() {
     make
     make DESTDIR=$PKG install
     cp ../lxdm.pam $PKG/etc/pam.d/lxdm
+    cp ../Xsession $PKG/etc/lxdm/
     mkdir $PKG/etc/rc.d
     mkdir $PKG/etc/rc.d/init.d
     install -m 755 $SRC/lxdm-init-script/lxdm  $PKG/etc/rc.d/init.d/$name
