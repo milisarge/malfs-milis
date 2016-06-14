@@ -27,23 +27,17 @@ check_args()
 
     name_test=`echo -n "$name" | sed 's@^[a-z][a-z0-9]*$@@g'`
     if [ "$name_test" != "" ]; then
-	echo 1>&2 "CRITICAL - Le nom contient des caractères interdits:
- Il doit commencer par une lettre uniquement
- et ne peut contenir que des minuscules et des chiffres
-"
+	echo 1>&2 "HATA=kullanıcı sorunlu kareketerler içerrmektedir."
 	return 1
     fi
     if grep "$name" /etc/passwd > /dev/null; then
-	echo 1>&2 "Le nom $name existe deja!"
+	echo 1>&2 "$name kullanıcısı zaten var!"
 	return 2
     fi
 
     desc_test=`echo "$description" | sed 's@^[[:alnum:]! -.,~_@;%<>?]*$@@ig'`
     if [ "$desc_test" != "" ]; then
-	echo 1>&2 "CRITICAL - La description contient des caractères interdits:
- Elle ne peut contenir que des lettres/chiffres et les caractères
- suivants ! -.,~_\\\@;%<>?
-"
+	echo 1>&2 "HATA=Uzun ismi ! -.,~_\\\@;%<>? karekerleri içeremez.Harf-sayı olmalıdır! "
 	return 3
     fi
     return 0
@@ -51,15 +45,8 @@ check_args()
 
 usage()
 {
-  echo 1>&2 'USAGE:
- nu [<description> <nomutilisateur>]
-  Si <nomutilisateur> existe déjà, un message sera envoye sur le terminal,
- dans ce cas, aucun changement ne sera fait, et aucun nouveau compte ne
- sera créé.
-
- <description> doit être valide pour le champ du fichier /etc/passwd description
-  Ce qui veut dire que ce champ ne doit pas contenir de ":".
-'
+  echo 1>&2 'KULLANIM:
+ ko kullanıcı kullanıcı_ismi'
   exit 1
 }
 
@@ -72,14 +59,14 @@ if [ $# -eq 1 -o $# -gt 2 ]; then
 fi
 
 if [ $UID -ne 0 ]; then
-    echo 1>&2 "Veuillez exécuter cette commande en root"
+    echo 1>&2 "Bu betik root yetkileriyle çalışmaktadır."
     exit 1;
 fi
 
 if [ $# -lt 2 ]; then
-    echo -n "Nom du compte de l'utilisateur: "
+    echo -n "Kullancı: "
     read name
-    echo -n "Nom ou Description de l'utilisateur: "
+    echo -n "Uzun ismi: "
     read description
 else
     description="$1"
@@ -90,11 +77,11 @@ check_args "$description" "$name"
 ret=$?
 while [ $ret -ne 0 ]; do
     if [ $ret -lt 3 ]; then
-	echo -n "Nom du compte de l'utilisateur: "
+	echo -n "Kullancı: "
 	read name
     fi
     if [ $ret -eq 3 ]; then
-	echo -n "Nom ou Description de l'utilisateur: "
+	echo -n "Uzun ismi: "
 	read description
     fi
     if [ "$name" == "!stop!" -o "$description" == "!stop!" ]; then
@@ -124,7 +111,7 @@ while [ -n "${default_groups[i]}" ]; do
 done
 
 echo 1>&2 "
-Création de $name.
+$name kullanıcısının oluşturulması.
 "
 if [ -d /home/${name} ]; then
 	chown -R ${name}:${name} /home/${name}
