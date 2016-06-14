@@ -1,0 +1,140 @@
+#!/bin/bash
+
+
+######################################
+#### Default Vars ####################
+######################################
+
+user_groups=""
+default_groups=(users disk network floppy fuse video lp tty audio cdrom scanner adm vboxusers wheel)
+
+# Avoid spaces troubles :)
+OLD_IFS=$IFS
+IFS="|
+"
+KDM_CONFFILE="/etc/kde/kdmrc"
+GDM_CONFFILE="/etc/gdm/custom.conf"
+LXDM_CONFFILE="/etc/lxdm/lxdm.conf"
+
+######################################
+#### Functions #######################
+######################################
+
+check_args()
+{
+    description="$1"
+    name="$2"
+
+    name_test=`echo -n "$name" | sed 's@^[a-z][a-z0-9]*$@@g'`
+    if [ "$name_test" != "" ]; then
+	echo 1>&2 "CRITICAL - Le nom contient des caractères interdits:
+ Il doit commencer par une lettre uniquement
+ et ne peut contenir que des minuscules et des chiffres
+"
+	return 1
+    fi
+    if grep "$name" /etc/passwd > /dev/null; then
+	echo 1>&2 "Le nom $name existe deja!"
+	return 2
+    fi
+
+    desc_test=`echo "$description" | sed 's@^[[:alnum:]! -.,~_@;%<>?]*$@@ig'`
+    if [ "$desc_test" != "" ]; then
+	echo 1>&2 "CRITICAL - La description contient des caractères interdits:
+ Elle ne peut contenir que des lettres/chiffres et les caractères
+ suivants ! -.,~_\\\@;%<>?
+"
+	return 3
+    fi
+    return 0
+}
+
+usage()
+{
+  echo 1>&2 'USAGE:
+ nu [<description> <nomutilisateur>]
+  Si <nomutilisateur> existe déjà, un message sera envoye sur le terminal,
+ dans ce cas, aucun changement ne sera fait, et aucun nouveau compte ne
+ sera créé.
+
+ <description> doit être valide pour le champ du fichier /etc/passwd description
+  Ce qui veut dire que ce champ ne doit pas contenir de ":".
+'
+  exit 1
+}
+
+######################################
+#### Scripting time ##################
+######################################
+
+if [ $# -eq 1 -o $# -gt 2 ]; then
+    usage
+fi
+
+if [ $UID -ne 0 ]; then
+    echo 1>&2 "Veuillez exécuter cette commande en root"
+    exit 1;
+fi
+
+if [ $# -lt 2 ]; then
+    echo -n "Nom du compte de l'utilisateur: "
+    read name
+    echo -n "Nom ou Description de l'utilisateur: "
+    read description
+else
+    description="$1"
+    name="$2"
+fi
+
+check_args "$description" "$name"
+ret=$?
+while [ $ret -ne 0 ]; do
+    if [ $ret -lt 3 ]; then
+	echo -n "Nom du compte de l'utilisateur: "
+	read name
+    fi
+    if [ $ret -eq 3 ]; then
+	echo -n "Nom ou Description de l'utilisateur: "
+	read description
+    fi
+    if [ "$name" == "!stop!" -o "$description" == "!stop!" ]; then
+	exit 1
+    fi
+    check_args "$description" "$name"
+	ret=$?
+done
+
+i=0
+while [ -n "${default_groups[i]}" ]; do
+    if grep "${default_groups[i]}" /etc/group > /dev/null ; then
+	if [ -z "$user_groups" ]; then
+	    user_groups="${default_groups[i]}"
+	else
+	    user_groups="$user_groups,${default_groups[i]}"
+	fi
+#	echo "groupes : $user_groups"
+#    else
+#	echo 1>&2 '  Veuillez installez un gestionnaire de fenetre,
+# redemarrer la machine dans ce gestionnaire,
+# et relancer cette commande.
+#'
+#	exit 1
+    fi
+    i=$((i+1))
+done
+
+echo 1>&2 "
+Création de $name.
+"
+if [ -d /home/${name} ]; then
+	chown -R ${name}:${name} /home/${name}
+fi
+if [ -z "$user_groups" ]; then
+    /sbin/useradd -c "${description}" -m "${name}" || exit 1
+else
+    /sbin/useradd -c "${description}" -G "$user_groups" -m "${name}" || exit 1
+fi
+
+passwd "$name"
+
+exit 0
