@@ -4,12 +4,12 @@
 # Depends on:  desktop-file-utils gtk2
 
 name=gtk-gnutella
-version=1.1.9
+version=devel
 release=1
-source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
+source=(https://github.com/gtk-gnutella/gtk-gnutella/archive/$version.tar.gz)
 
 build() {
-  cd $name-$version
-  ./build.sh --prefix=/usr
+    cd gtk-gnutella-devel
+  ./build.sh --prefix=/usr --enable-halloc --gtk2
   make install INSTALL_PREFIX=$PKG/
 }
