@@ -21,6 +21,8 @@ VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
 LOGDIZIN="/var/log/mps"
 tekrarkur="hayir"
+#temel paket koruma
+tpk="evet"
 if [ -z ${lokal+:} ]; then
 	lokal="tr"
 fi
@@ -89,46 +91,50 @@ paket_sil(){
 	if [ "$2" ]; then
 		oto_silme="$2"
 	fi
-	kkont=`kurulu_kontrol "$1"`
-	if [ "$kkont" = "kurulu" ];then
-		if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
-			cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
-			ryaz 31 "ters bagimliliklar"
-			ryaz 31 "------------------"
-			ters_bagimli_kontrol "$paket"
-			ryaz 31 "------------------"
-			ryaz 31 "kurban dosyalar"
-			ryaz 31 "------------------"
-			silme_kurban_kontrol /tmp/$paket.sil
-			ryaz 31 "------------------"
-			if [ "$oto_silme" = "evet" ];then
-				sil_onay="e"
-			else
-				while true; do
-					ryaz 34 $paket" paketi kaldırılsın mı?";read -p "e veya h-> " eh
-					case $eh in
-						[Ee]* ) sil_onay="e"; break;;
-						[Hh]* ) break;;
-						* ) echo "e veya h";;
-					esac
-				done
-			fi
-			if [ "$sil_onay" = "e" ];then
-				xargs rm -r -f < /tmp/$paket.sil &&
-				rm -r -f /var/lib/pkg/DB/"$paket" &&
-				ryaz 34 $paket" paketi silindi."
-				loglama "$paket paketi silindi."
-				rm -f /tmp/$paket.sil
-			else
-				rm -f /tmp/$paket.sil
-				exit 1
-			fi
-			
-		else
-			ryaz 31 "kritik mesaj:kurulanlar dosyası yok." 
-		fi
+	if [ "$tpk" = "evet" ] && [ -d "$talimatname_dizin/temel/$1" ];then
+		ryaz 31 "$1 temel sistem paketidir.Silinemez!!!"
 	else
-		ryaz 32 "paket zaten kurulu değil!"
+		kkont=`kurulu_kontrol "$1"`
+		if [ "$kkont" = "kurulu" ];then
+			if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
+				cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
+				ryaz 31 "ters bagimliliklar"
+				ryaz 31 "------------------"
+				ters_bagimli_kontrol "$paket"
+				ryaz 31 "------------------"
+				ryaz 31 "kurban dosyalar"
+				ryaz 31 "------------------"
+				silme_kurban_kontrol /tmp/$paket.sil
+				ryaz 31 "------------------"
+				if [ "$oto_silme" = "evet" ];then
+					sil_onay="e"
+				else
+					while true; do
+						ryaz 34 $paket" paketi kaldırılsın mı?";read -p "e veya h-> " eh
+						case $eh in
+							[Ee]* ) sil_onay="e"; break;;
+							[Hh]* ) break;;
+							* ) echo "e veya h";;
+						esac
+					done
+				fi
+				if [ "$sil_onay" = "e" ];then
+					xargs rm -r -f < /tmp/$paket.sil &&
+					rm -r -f /var/lib/pkg/DB/"$paket" &&
+					ryaz 34 $paket" paketi silindi."
+					loglama "$paket paketi silindi."
+					rm -f /tmp/$paket.sil
+				else
+					rm -f /tmp/$paket.sil
+					exit 1
+				fi
+				
+			else
+				ryaz 31 "kritik mesaj:kurulanlar dosyası yok." 
+			fi
+		else
+			ryaz 32 "paket zaten kurulu değil!"
+		fi
 	fi
 
 }
