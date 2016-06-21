@@ -606,6 +606,37 @@ loglama(){
 	echo "$(date +'%F %T') $1" >> "$kokdizin/$LOGDIZIN/mps.log"
 }
 
+talimat_olustur(){
+if [ "$1" = '?' ];then
+	ryaz 34 "kullanım : mps -to paket_ismi"
+else
+	local name
+	name=$1
+	mkdir -p $name
+	tee "$name/talimat" > /dev/null <<EOF
+# description:x
+# url:x
+# packager:milisarge
+# Depends on: 
+
+name=$name
+version=1
+release=1
+source=()
+
+build () {
+	cd name-version
+	./autogen.sh
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
+
+EOF
+	ryaz 34 $name "talimatı oluşturuldu."
+fi
+}
+
 git_guncelle() {
 	kaynakdizin_kontrol
 	gitayar_kontrol
@@ -826,6 +857,12 @@ ayarlar() {
 				ters_bagimli_kontrol "$2" ;;
 			-talb|--talb)
 				talimat_bilgi "$2" | column -t;;
+			-to)
+				if [ ! "$2" ]; then
+					ryaz 31 "talimat ismi eksik"
+					exit 1
+				fi
+				talimat_olustur "$2" ;;
 			-Ggit|-GG)
 				git_guncelle ;;
 			-G|--pvtg)
