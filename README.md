@@ -53,3 +53,7 @@ mps -d     paket_ismi	ilgili paketin talimat dosyasına göre sadece derler,pake
 
 mps -derle paket_ismi	ilgili paketin talimat dosyasına göre bagimliliklariyla beraber derler,paketler ve kurar.
 ```
+
+ayarlar/shadow
+iso şifresi root  / toor
+            milis / milis 
