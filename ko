@@ -1,5 +1,0 @@
-[master ceeaec5] nu-
- 2 files changed, 11 insertions(+), 24 deletions(-)
- rename bin/{nu => ko} (69%)
- mode change 100644 => 100755
- create mode 100644 ko
