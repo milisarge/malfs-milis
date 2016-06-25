@@ -41,12 +41,14 @@ case "${1}" in
       log_info_msg "Starting kernel log daemon..."
       start_daemon /sbin/klogd
       evaluate_retval
+       #sifre degistirme iptal
       if [ "`cat /etc/passwd | grep ^root|cut -d ":" -f2`" != "x" ]; then
          /sbin/pwconv
          /sbin/grpconv
+	
 	 echo -e "milis\nmilis"|passwd
-	 chage -d 0 root
-      fi
+	 #chage -d 0 root
+     fi
       ;;
 
    stop)
