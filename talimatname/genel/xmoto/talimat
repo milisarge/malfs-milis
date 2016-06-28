@@ -1,0 +1,23 @@
+# Description: a challenging 2D motocross platform game, where physics play an all important role in the gameplay
+# URL: http://xmoto.tuxfamily.org
+# Packager: milisarge
+# Depends on: libxdg-basedir xorg-glu libmikmod libjpeg-turbo lua51 lua52 ode sdl-mixer sdl-net sdl-ttf
+
+name=xmoto
+version=0.5.11
+release=1
+source=(http://download.tuxfamily.org/$name/$name/$version/$name-$version-src.tar.gz 
+		lua52_compat.patch)
+
+build() {
+  cd $name-$version
+  patch -Np1 -i "${SRC}/lua52_compat.patch"
+  ./bootstrap
+  rm -r src/ode
+  CPPFLAGS+=' -D_GLIBCXX_USE_CXX11_ABI=0'
+
+  ./configure --prefix=/usr --disable-sdltest
+  make
+  make DESTDIR=$PKG install
+  rm -rf $PKG/usr/share/doc
+}

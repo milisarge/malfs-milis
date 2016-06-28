@@ -1,0 +1,18 @@
+# Description: The Open Dynamics Engine physics SDK.
+# URL: http://www.ode.org/
+# Packager: milisarge
+# Depends on: xorg-mesa
+
+name=ode
+version=0.11.1
+release=1
+source=(http://download.sourceforge.net/opende/$name-$version.tar.bz2)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr \
+              --disable-static \
+              --disable-debug
+  make
+  make DESTDIR=$PKG install
+}

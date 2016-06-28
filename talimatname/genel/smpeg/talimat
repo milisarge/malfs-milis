@@ -1,12 +1,12 @@
 # Description: A SDL MPEG player library.
 # URL: http://www.lokigames.com/development/smpeg.php3
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: sdl
 
 name=smpeg
 version=0.4.5
 release=2
-source=(http://downloads.nutyx.org/archives/smpeg-$version.tar.xz
+source=(http://ftp.slackware.com/pub/vectorlinux/VL64-7.0/source/sourceVL/smpeg/0.4.5/src/smpeg-0.4.5.tar.gz
 	smpeg-mpegaudiosdl.patch
 	smpeg-0.4.4_m4.patch)
 

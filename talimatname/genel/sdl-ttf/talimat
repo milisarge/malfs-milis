@@ -1,0 +1,20 @@
+# Description: TrueType library for libsdl.
+# URL: http://www.libsdl.org/projects/SDL_ttf/
+# Packager: milisarge
+# Depends on: freetype sdl
+
+name=sdl-ttf
+version=2.0.11
+release=1
+source=(http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-$version.tar.gz)
+
+build() {
+	cd SDL_ttf-$version
+
+	./configure \
+		--prefix=/usr \
+		--disable-dependency-tracking
+
+	make 
+	make DESTDIR=$PKG install
+}

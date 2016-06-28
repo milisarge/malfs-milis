@@ -1,0 +1,46 @@
+# Description: A programming language designed for extending applications.
+# URL: http://www.lua.org/
+# Depends on: readline
+
+name=lua52
+version=5.2.4
+release=1
+source=(http://www.lua.org/ftp/lua-$version.tar.gz
+	lua.diff lua-5.2-cflags.diff lua.pc)
+
+build() {
+	cd lua-$version
+
+	patch -p1 -i $SRC/lua.diff
+	patch -p1 -i $SRC/lua-5.2-cflags.diff
+
+	sed -e "s/%VER%/${version%.*}/g;s/%REL%/$version/g" $SRC/lua.pc > lua.pc
+	sed -e 's:llua:llua5.2:' -e 's:/include:/include/lua5.2:' -i lua.pc
+
+	sed -r \
+		-e '/^LUA_(SO|A|T)=/ s/lua/lua5.2/' \
+		-e '/^LUAC_T=/ s/luac/luac5.2/' \
+		-i src/Makefile
+
+	make MYCFLAGS="$CFLAGS" MYLDFLAGS="$LDFLAGS" linux
+
+	install -d $PKG/usr/include/lua5.2 $PKG/usr/share/man/man1 $PKG/usr/lib
+
+	make \
+		TO_BIN="lua5.2 luac5.2" \
+		TO_LIB="liblua5.2.a liblua5.2.so liblua5.2.so.5.2 liblua5.2.so.$version" \
+		INSTALL_DATA='cp -d' \
+		INSTALL_TOP="$PKG/usr" \
+		INSTALL_INC="$PKG/usr/include/lua5.2" \
+		INSTALL_MAN="$PKG/usr/share/man/man1" \
+		install
+
+	install -m 0644 -D lua.pc $PKG/usr/lib/pkgconfig/lua5.2.pc
+
+	# fixups
+	ln -s liblua5.2.so $PKG/usr/lib/liblua.so.5.2
+	ln -s liblua5.2.so $PKG/usr/lib/liblua.so.$version
+	cd $PKG/usr/share/man/man1
+	mv lua.1 lua5.2.1
+	mv luac.1 luac5.2.1
+}

@@ -1,7 +1,7 @@
 # Description: A portable sound library
 # URL: http://mikmod.raphnet.net/
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on: xorg-libxtst
 
 name=libmikmod
 version=3.3.7

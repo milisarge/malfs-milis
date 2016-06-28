@@ -1,0 +1,18 @@
+# Description: An implementation of the XDG Base Directory specifications.
+# URL:         https://github.com/devnev/libxdg-basedir
+# Packager: milisarge
+# Depends on:  
+
+name=libxdg-basedir
+version=1.2.0
+release=1
+source=(https://github.com/devnev/libxdg-basedir/archive/$name-$version.tar.gz)
+
+build() {
+	cd $name-$name-$version
+
+	./autogen.sh --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install  
+}
