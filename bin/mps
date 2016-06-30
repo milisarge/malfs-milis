@@ -671,6 +671,7 @@ paketvt_guncelle(){
 		fi
 		wget -P "$paketdepo" "$sunucu""paket.vt"
 		#rm /tmp/paket.vt*
+		mps -kudo
 		exit 1
 	fi
 	ryaz 31 "paket veritabanı guncelleme olumsuz."
