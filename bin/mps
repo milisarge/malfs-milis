@@ -880,8 +880,8 @@ ayarlar() {
 			-Ggit|-GG)
 				git_guncelle ;;
 			-G|--pvtg)
-				mps -kudo
-				paketvt_guncelle ;;
+				paketvt_guncelle
+				mps -kudo ;;
 			#komple kurulu sistemin guncellenmesi
 			-GS)
 				sistem_guncelle ;;
