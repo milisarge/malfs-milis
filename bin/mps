@@ -705,6 +705,19 @@ gitayar_kontrol(){
 	fi
 }
 
+kurulum_dogrulama(){
+	for kuruland in `ls $VT`
+	do
+		if [ ! -f "$VT/$kuruland/kurulan" ]; then
+			ryaz 32 "$kuruland hasarlı kurulum tesbiti!"
+			rm -r $VT/$kuruland
+			mps -i $kuruland
+			mps -k "$paketdepo/$kuruland"*.mps.lz
+			ryaz 32  "$kuruland hasarlı kurulum onarıldı."
+		fi
+	done
+}
+
 paketvt_kontrol(){
 	mkdir -p /depo/paketler
 	if [ ! -f /depo/paketler/paket.vt ];then
@@ -867,6 +880,7 @@ ayarlar() {
 			-Ggit|-GG)
 				git_guncelle ;;
 			-G|--pvtg)
+				mps -kudo
 				paketvt_guncelle ;;
 			#komple kurulu sistemin guncellenmesi
 			-GS)
@@ -891,6 +905,8 @@ ayarlar() {
 					exit 1
 				fi
 				ryaz 31 `kurulu_kontrol "$2"`;;
+			-kudo)
+				kurulum_dogrulama ;;
 			-suko)
 				sunucu_kontrol ;;
 			-cf|--config-file)
