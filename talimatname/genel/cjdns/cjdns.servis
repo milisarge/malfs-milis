@@ -1,0 +1,14 @@
+# /etc/default/cjdns
+# This is the config file for cjdns.sh and the system v init script
+
+# Path to the cjdroute binary. Defaults to the current directory: "$(dirname $0)"
+CJDPATH="/usr/bin"
+
+# Full path to the cjdroute binary. Defaults to: "${CJDPATH}/cjdns/cjdroute"
+CJDROUTE="${CJDPATH}/cjdroute"
+
+# Full path to the configuration file. Defaults to: "${CJDPATH}/cjdroute.conf"
+CONF="/etc/cjdroute.conf"
+
+# Path to the log file. Defaults to disabled logging: "/dev/null"
+LOGTO="/dev/null"

@@ -1,0 +1,33 @@
+# Description: A routing engine designed for security, scalability, speed and ease of use
+# URL: https://github.com/cjdelisle/cjdns
+# Packager: milisarge
+# Depends on : node python
+
+name=cjdns
+hesap=cjdelisle
+version=master
+release=1
+source=(cjdns.servis cjdns.rc.d cjdns.sh)
+ 
+build () {
+	
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	
+	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	cd $SRC/$name
+	
+	bash 'do'
+	install -Dm755 cjdroute "$PKG/usr/bin/cjdroute"
+	install -Dm755 contrib/sh/run-cjdroute.sh "$PKG/usr/bin/run-cjdroute"
+	
+	install -Dm644 $SRC/cjdns.servis $PKG/etc/default/cjdns
+    install -Dm755 $SRC/cjdns.sh $PKG/usr/bin/cjdns.sh
+    install -Dm755 $SRC/cjdns.rc.d $PKG/etc/rc.d/init.d/cjdns
+	
+}
