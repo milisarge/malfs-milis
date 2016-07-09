@@ -719,6 +719,10 @@ kurulum_dogrulama(){
 	done
 }
 
+kurulum_dosya_listele(){
+	cat "$VT/$1/kurulan"
+}
+
 paketvt_kontrol(){
 	mkdir -p /depo/paketler
 	if [ ! -f /depo/paketler/paket.vt ];then
@@ -821,6 +825,12 @@ ayarlar() {
 				paket_inkur_liste "$2" ;;
 			-kur)
 				paket_inkur_oto "$2" ;;	
+			-kdl)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					exit 1
+				fi
+				kurulum_dosya_listele "$2" ;;	
 			-pak|--paketle)
 				if [ ! "$2" ]; then
 					ryaz 31 "paketlenecek dizin ismi eksik"
