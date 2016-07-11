@@ -1,6 +1,6 @@
 # Description: os-prober
 # URL:        https://packages.debian.org/source/sid/os-prober
-# Maintainer:  Chris Farrell, timcowchip at gmail dot com 
+# Maintainer:  milisarge
 # Depends on:	grub
 
 name=os-prober
