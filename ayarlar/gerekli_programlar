@@ -23,6 +23,7 @@ gparted
 sshfs-fuse
 vlc
 sysv-rc-conf
+rfkill
 samba
 gnumeric
 abiword
