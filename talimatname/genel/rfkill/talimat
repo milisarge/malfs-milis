@@ -1,0 +1,15 @@
+# Description:	Userspace tool to query and toggle rfkill switches
+# URL:		http://wireless.kernel.org/en/users/Documentation/rfkill
+# Packager: milisarge
+# Depends on:
+
+name=rfkill
+version=0.5
+release=2
+source=(http://www.kernel.org/pub/software/network/$name/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	make
+	make DESTDIR=$PKG install 
+}
