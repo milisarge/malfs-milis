@@ -28,5 +28,6 @@ samba
 gnumeric
 abiword
 dosfstools
+os-prober
 openjdk
 lxdm
