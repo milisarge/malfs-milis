@@ -1,11 +1,11 @@
 # Description: Bash completion functions
 # URL: http://bash-completion.alioth.debian.org/
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: 
 
 name=bash-completion
 version=2.1
-release=2
+release=1
 source=(https://launchpad.net/$name/master/$version/+download/$name-$version.tar.gz)
 
 build() {
