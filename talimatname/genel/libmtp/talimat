@@ -1,6 +1,6 @@
 # Description: Library implementation of the Media Transfer Protocol.
 # URL: http://libmtp.sourceforge.net
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libusb libgcrypt
 
 name=libmtp
