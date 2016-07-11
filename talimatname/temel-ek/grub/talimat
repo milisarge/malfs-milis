@@ -1,30 +1,30 @@
-# Description: The GRUB package contains the GRand Unified Bootloader.
+# Description: A Multiboot boot loader
 # URL: http://www.gnu.org/software/grub/
-# Packager: pierre at nutyx dot org
+# Pcakager: milisarge
+# Depends on: 
+
 name=grub
-version=2.00
+version=2.02-beta3
 release=1
-
-source=(ftp://ftp.gnu.org/gnu/grub/grub-2.00.tar.xz\
-	grub.cfg)
-
-PKGMK_GROUPS=(man locale)
+source=(http://alpha.gnu.org/gnu/grub/grub-2.02~beta3.tar.xz \
+	grub2-00_header.diff grub2-10_linux.diff grub.cfg.sample)
 
 build() {
-	cd grub-2.00
+	export CFLAGS="${CFLAGS} -Wno-error"
+	cd grub-2.02~beta3
+
+	# fix for glibc 'gets' removal
 	sed -i -e '/gets is a/d' grub-core/gnulib/stdio.in.h
-	unset CXXFLAGS
+
+	patch -i $SRC/grub2-00_header.diff util/grub.d/00_header.in
+	patch -i $SRC/grub2-10_linux.diff util/grub.d/10_linux.in
+
 	./configure --prefix=/usr \
-		--sysconfdir=/etc       \
-		--sbindir=/sbin        \
-		--disable-grub-emu-usb  \
+		--sysconfdir=/etc \
+		--enable-device-mapper \
 		--disable-efiemu \
-		--infodir=/usr/share/info \
-		--disable-werror
+		--disable-grub-mount
 	make
 	make DESTDIR=$PKG install
-        install -d $PKG/boot/grub
-        rm -rf $PKG/usr/share/info/dir
-	install -Dm644 ../grub.cfg \
-	$PKG/boot/grub/grub.cfg.ornek
+	rm -rf $PKG/usr/share/{info,grub/themes}
 }
