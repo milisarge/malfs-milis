@@ -1,1 +1,2 @@
+ln -s  /usr/lib64/xfce4/panel/plugins/libwhiskermenu.so /usr/lib/xfce4/panel/plugins/
 gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
