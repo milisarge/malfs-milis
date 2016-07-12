@@ -1,0 +1,17 @@
+# Description: System call tracing utility (like trace, truss, etc)
+# URL:         http://sourceforge.net/projects/strace/
+# Packager:    milisarge
+# Depends on: libunwind
+
+name=strace
+version=4.12
+release=1
+source=(http://download.sourceforge.net/$name/$name-$version.tar.xz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+    --with-libunwind
+    make
+    make DESTDIR=$PKG install
+}

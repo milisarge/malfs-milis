@@ -1,6 +1,6 @@
 # Description: 	Define a portable and efficient C API to determine the call-chain of a program.
 # URL:         	http://www.nongnu.org/libunwind/
-# Packager: 	berlius at nutyx dot com
+# Packager: 	milisarge
 # Depends on:
 
 name=libunwind
