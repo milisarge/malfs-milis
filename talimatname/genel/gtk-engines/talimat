@@ -1,6 +1,6 @@
 # Description: The GTK Engines package contains eight themes/engines and two additional engines for GTK2. 
 # URL: http://ftp.gnome.org/pub/gnome/sources/gtk-engines
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: gtk2 lua 
 
 name=gtk-engines
