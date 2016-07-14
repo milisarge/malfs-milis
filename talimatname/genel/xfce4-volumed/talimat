@@ -1,0 +1,17 @@
+# Description: A volume daemon for Xfce 4
+# URL: http://xfce.org/
+# Packager: milisarge
+# Depends on: gstreamer-plugins-base keybinder xfce4-conf glib
+
+name=xfce4-volumed
+version=0.1.13
+release=1
+source=(http://archive.xfce.org/src/apps/$name/${version::3}/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr --libexecdir=/usr/lib/$name
+	make
+	make DESTDIR=$PKG install
+}

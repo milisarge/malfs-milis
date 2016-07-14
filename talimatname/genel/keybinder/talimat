@@ -1,0 +1,18 @@
+# Description: A library for registering global keybindings
+# URL: https://github.com/engla/keybinder
+# Packager: milisarge
+# Depends on: gtk2 python-gtk gobject-introspection
+
+name=keybinder
+version=0.3.1
+release=1
+
+source=(https://github.com/engla/$name/releases/download/v$version/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --libexecdir=/usr/lib/$name --sysconfdir=/etc
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
+}
