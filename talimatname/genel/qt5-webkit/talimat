@@ -1,0 +1,28 @@
+# Description: Classes for a WebKit2 based implementation and a new QML API
+# URL: http://qt-project.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: gstreamer1-plugins-base libwebp xorg-libxcomposite libxslt gstreamer1-plugins-good python ruby qt5
+
+name=qt5-webkit
+version=5.6.0
+release=1
+_version=${version/-/}
+_name=qtwebkit-opensource-src-${_version}
+_namefqn="${name/5-/}-opensource-src-${_version}"
+
+source=(http://download.qt-project.org/community_releases/${_version%.*}/${_version}/${_name}.tar.xz)
+
+build() {
+        cd ${_namefqn}
+        syncqt.pl-qt5 -version $version Source/sync.profile
+        qmake-qt5
+        
+        make
+        make INSTALL_ROOT="$PKG" install
+
+		rm -rf /usr/share/doc
+
+		# Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+		find "$PKG/usr/lib" -type f -name '*.prl' \
+			-exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+}
