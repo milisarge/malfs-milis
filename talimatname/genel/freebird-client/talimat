@@ -1,0 +1,40 @@
+# Description: Client library for Firebird.
+# URL: http://www.firebirdsql.org/
+# Packager: alihan-ozturk28@hotmail.com milisarge
+# Depends on: icu
+
+name=freebird-client
+version=2.5.5.26952
+release=1
+
+source=( http://downloads.sourceforge.net/firebird/Firebird-$version-0.tar.bz2 )
+
+
+build() {
+
+cd $SRC/Firebird-$version-0
+  ./autogen.sh
+  find ./ -name \*.sh -print0 | xargs -0 chmod +x
+  ./configure --prefix=/usr --with-system-icu --without-fbudf \
+    --without-fbsbin --without-fbconf --without-fbdoc --without-fbsample \
+    --without-fbsample-db --without-fbintl --without-fbmisc --without-fbhelp \
+    --without-fbsecure-db --with-fbmsg=/usr/share/firebird --without-fblog \
+    --without-fbglock --without-fbplugins
+  
+  make -j1
+  
+   mkdir -p $PKG/usr/{bin,share/{firebird,licenses/$name}}
+
+  cp -R gen/firebird/{lib,include} $PKG/usr
+  rm -f $PKG/usr/lib/libedit.a
+
+  install -m644 gen/firebird/*.msg $PKG/usr/share/firebird
+  install -m755 gen/firebird/bin/fb_config $PKG/usr/bin
+
+  # Add libgds support FS#30062 FS#30282
+  cd $PKG/usr/lib
+  ln -s libfbclient.so libgds.so.0
+  ln -s libfbclient.so libgds.so
+  
+  
+}
