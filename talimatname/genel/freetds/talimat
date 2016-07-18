@@ -1,0 +1,27 @@
+# Description: Library for accessing Sybase and MS SQL Server databases.
+# URL: http: http://www.freetds.org
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: unixodbc
+
+name=freetds
+version=1.00
+release=1
+
+source=( ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.tar.bz2)
+
+
+build() {
+         cd $name-$version
+         ./configure --prefix=/usr \
+                     --sysconfdir=/etc/freetds \
+                     --enable-msdblib \
+                     --mandir=/usr/man \
+                     --with-tdsver=7.0 \
+                     --with-unixodbc=/usr \
+                     --with-openssl \
+                     --disable-debug
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/doc
+
+}
