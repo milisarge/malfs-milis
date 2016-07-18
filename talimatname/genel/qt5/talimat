@@ -96,7 +96,7 @@ build() {
 	rm -rf $PKG/usr/share/qt5/mkspecs/features/{mac,win32}
 	rm -rf $PKG/usr/share/qt5/mkspecs/common/mac*
 	rm -rf $PKG/usr/share/qt5/{phrasebooks,translations}
-
+    rm -r $PKG/usr/share/doc
 	# Install linker config
 	install -d $PKG/{etc/ld.so.conf.d,usr/{bin,lib,include}}
 	echo "/usr/share/qt5/lib" > $PKG/etc/ld.so.conf.d/qt5.conf
