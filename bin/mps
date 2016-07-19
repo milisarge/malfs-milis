@@ -279,7 +279,7 @@ paket_inkur_oto(){
 	for kpkt in `cat bag.liste`;do
 		mps -ik "$kpkt"
 	done
-	rm *.liste *.eski
+	rm -rf *.liste *.eski
 }
 
 paket_sil_oto(){
