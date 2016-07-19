@@ -1,23 +1,21 @@
 # Description:  Cross-platform QtWebKit browser
 # URL: http://www.qupzilla.com/
-# Packager: pierre at nutyx dot org
-# Depends on: qt4 desktop-file-utils hunspell qtwebkit
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: qt5 desktop-file-utils hunspell qt5-webkit
 
 name=qupzilla
-version=1.6.1
-release=3
+version=1.8.9
+release=1
 
-source=(http://qupzilla.com/uploads/QupZilla-$version.tar.gz)
+source=( https://github.com/QupZilla/qupzilla/releases/download/v$version/QupZilla-$version.tar.xz)
 build ()
 {
 
 cd QupZilla-$version
 
-export USE_WEBGL=true
+export USE_WEBGL=true \
 
-source setqt4
-
-qmake QUPZILLA_PREFIX=/usr/
+qmake-qt5 QUPZILLA_PREFIX=/usr/
 
 make
 
