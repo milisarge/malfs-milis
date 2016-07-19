@@ -115,7 +115,7 @@ cat > $PKG/usr/share/applications/assistant-qt5.desktop << "EOf"
 [Desktop Entry]
 Name=Qt5 Assistant
 comment=Shows Qt5 documentation and examples
-Exec=$QT5BINDIR/assistant-qt5
+Exec=$QT5BINDIR/assistant
 icon=assistant-qt5
 Terminal=false
 Encoding=UTf-8
@@ -128,7 +128,7 @@ cat > $PKG/usr/share/applications/designer-qt5.desktop << "EOf"
 Name=Qt5 Designer
 GenericName=interface Designer
 comment=Design GUis for Qt5 applications
-Exec=$QT5BINDIR/designer-qt5
+Exec=$QT5BINDIR/designer
 icon=designer-qt5
 mimeType=application/x-designer;
 Terminal=false
@@ -141,7 +141,7 @@ cat > $PKG/usr/share/applications/linguist-qt5.desktop << "EOf"
 [Desktop Entry]
 Name=Qt5 Linguist
 comment=Add translations to Qt5 applications
-Exec=$QT5BINDIR/linguist-qt5
+Exec=$QT5BINDIR/linguist
 icon=linguist-qt5
 mimeType=text/vnd.trolltech.linguist;application/x-linguist;
 Terminal=false
@@ -155,7 +155,7 @@ cat > $PKG/usr/share/applications/qdbusviewer-qt5.desktop << "EOf"
 Name=Qt5 QDbusviewer
 GenericName=D-Bus Debugger
 comment=Debug D-Bus applications
-Exec=$QT5BINDIR/qdbusviewer-qt5
+Exec=$QT5BINDIR/qdbusviewer
 icon=qdbusviewer-qt5
 Terminal=false
 Encoding=UTf-8
