@@ -1,7 +1,8 @@
 # Description: An high dynamic-range image file format library
 # URL: http://www.openexr.org
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: ilmbase 
+
 name=openexr
 version=2.2.0
 release=1
@@ -13,6 +14,7 @@ cd $name-$version
 ./configure --prefix=/usr \
 --localstatedir=/var \
 --sysconfdir=/etc
+
 make
 make DESTDIR=$PKG install
 }
