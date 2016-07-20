@@ -11,7 +11,7 @@ source=(http://launchpad.net/libdbusmenu-qt/trunk/$version/+download/$name-$vers
 build() {
 cd $name-$version
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DWITH_DOC=OFF ..
+      -DWITH_DOC=OFF
       
 make
 make DESTDIR=$PKG install
