@@ -1,6 +1,6 @@
 # Description: Data files describing media player capabilities, for post-HAL systems 
 # URL: http://cgit.freedesktop.org/media-player-info/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: python3
 
 name=media-player-info

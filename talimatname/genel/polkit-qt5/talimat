@@ -1,0 +1,21 @@
+# Description : A library that allows developers to access PolicyKit API with a nice Qt-style API
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: polkit qt5  
+
+name=polkit-qt5
+release=3
+version=0.112.0
+_name=polkit-qt-1
+
+source=(http://download.kde.org/stable/apps/KDE4.x/admin/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_LIBDIR=lib  \
+
+make
+make DESTDIR=$PKG install
+}
