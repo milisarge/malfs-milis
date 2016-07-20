@@ -1,17 +1,7 @@
 # Description: GTK+ is a multi-platform toolkit (version 2)
 # URL: http://www.gtk.org/
-# Packager: pierre at nutyx dot org
-# Depends on: gtk-doc shared-mime-info,xorg-libxinerama,xorg-libxrandr,cairo,pango,pangox-compat,atk,libtiff,cups,gdk-pixbuf,xorg-libxi,xorg-libxcursor,hicolor-icon-theme,gtk-update-icon-cache
-
-# The run variable define the runtime dependencies
-run=(gtk-update-icon-cache)
-
-
-
-# Seul les paquets devel, doc et man sont splité, gtk étant une lib incontournable et le nombre
-# de fichiers binaires n'est pas très important. La variable PKGMK_GROUP redéfini les groupes
-# Ici, le groupe lib ne sera pas construit
-
+# Packager: milisarge
+# Depends on: gtk-doc shared-mime-info xorg-libxinerama xorg-libxrandr cairo pango pangox-compat atk libtiff cups gdk-pixbuf xorg-libxi xorg-libxcursor hicolor-icon-theme gtk-update-icon-cache
 
 name=gtk2
 version=2.24.29

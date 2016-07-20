@@ -1,6 +1,6 @@
 # Description: The Gdk Pixbuf is a toolkit for image loading and pixel buffer manipulation.
 # URL: http://www.gtk.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gobject-introspection jasper xorg-libxcomposite libtiff libpng libjpeg-turbo 
 
 name=gdk-pixbuf
