@@ -1,0 +1,22 @@
+# Description:	Image and pdf viewer for framebuffer
+# URL:		http://linux.bytesex.org/fbida/
+# Packager: milisarge
+# Depends on: lesstif libpng libexif xorg-fontconfig giflib imagemagick xorg-libxpm desktop-file-utils
+
+name=fbida
+version=2.10
+release=1
+source=(http://dl.bytesex.org/releases/fbida/$name-$version.tar.gz
+		ida-desktop.patch)
+
+build() {
+	cd $name-$version
+	sed -i 's/ungif/gif/' GNUmakefile
+	patch -p0 -i $SRC/ida-desktop.patch
+	echo 2.10 > VERSION
+	make verbose=yes
+	convert -resize 25% logo.jpg ida.png
+	make STRIP="" DESTDIR=$PKG prefix=/usr install
+	install -D -m644 desktop/ida.desktop $PKG/usr/share/applications/ida.desktop"
+	install -D -m644 ida.png $PKG/usr/share/pixmaps/ida.png"
+}
