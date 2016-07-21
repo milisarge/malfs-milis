@@ -19,9 +19,9 @@ patch -Np1 -i ../h264_qpel_mmx.patch
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --localstatedir=/var \
---with-ffmpeg-extra-configure="--enable-runtime-cpudetect"
+--with-ffmpeg-extra-configure="--enable-runtime-cpudetect" \
 --with-package-name='PisiLinux gstreamer-ffmpeg package' \
---with-package-origin='https://milis.gungre.ch/' \
+--with-package-origin='https://milis.gungre.ch/' 
 
 make || make -j1
 make DESTDIR=$PKG install
