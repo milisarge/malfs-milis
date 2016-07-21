@@ -1,0 +1,24 @@
+# Description : phonon-backend-vlc plugin audio for KDE
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules phonon-qt5 libvlc pulseaudio
+
+name=phonon-backend-vlc-qt5
+release=1
+version=0.9.0
+_name=phonon-backend-vlc
+
+source=( http://download.kde.org/stable/phonon/${_name}/$version/${_name}-$version.tar.xz)
+
+build() {
+cd phonon-vlc-$version
+cmake -DCMAKE_BUILD_TYPE=Release     \
+      -DCMAKE_SKIP_RPATH=ON          \
+      -DCMAKE_INSTALL_PREFIX=/usr    \
+      -DPHONON_BUILD_PHONON4QT5=ON   \
+      -DCMAKE_INSTALL_LIBDIR=lib     \
+      -Wno-dev
+
+make
+make DESTDIR=$PKG install
+}
