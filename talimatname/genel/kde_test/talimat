@@ -3,7 +3,7 @@
 # Packager: milisarge
 # Depends on: lmdb phonon-qt4 phonon-qt5 libdbusmenu-qt5 libmbim libqmi modemmanager noto-fonts media-player-info openexr
 
-name=xfce4-sistem
+name=kde-sistem
 version=1
 release=1
 
