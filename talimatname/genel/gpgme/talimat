@@ -1,6 +1,6 @@
 # Description: A C wrapper library for GnuPG 
 # URL: http://www.gnupg.org/related_software/gpgme/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: libassuan 
 
 name=gpgme
@@ -8,11 +8,13 @@ version=1.6.0
 release=1
 
 source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+
 build() {
 cd $name-$version
 ./configure --prefix=/usr \
 --disable-fd-passing \
 --disable-gpgsm-test
+
 make
 make DESTDIR=$PKG install
 rm $PKG/usr/share/info/dir
