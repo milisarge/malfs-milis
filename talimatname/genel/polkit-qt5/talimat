@@ -1,10 +1,10 @@
 # Description : A library that allows developers to access PolicyKit API with a nice Qt-style API
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: polkit qt5  
+# Depends on: polkit qt5
 
 name=polkit-qt5
-release=3
+release=1
 version=0.112.0
 _name=polkit-qt-1
 
