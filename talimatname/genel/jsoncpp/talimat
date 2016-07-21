@@ -1,7 +1,7 @@
 # Description:	JSON library
 # URL:		http://jsoncpp.sourceforge.net/
 # Packager: milisarge
-# Depends on: cmake
+# Depends on:	scons
 
 name=jsoncpp
 version=1.7.4
@@ -10,12 +10,8 @@ source=(https://github.com/open-source-parsers/$name/archive/$version.zip)
 
 build () {
 	cd $name-$version
-	mkdir -p build/debug
-	cd build/debug
-	cmake -DCMAKE_BUILD_TYPE=debug -DBUILD_STATIC_LIBS=ON -DBUILD_SHARED_LIBS=OFF -DARCHIVE_INSTALL_DIR=. -G "Unix Makefiles" ../..
-	make
-	make DESTDIR=$PKG  install    
-	cp -r $PKG/usr/local/* $PKG/usr/
-	rm -r $PKG/usr/local
-	rm -r $PKG/tmp/work
+	scons platform=linux-gcc
+	mkdir -p $PKG/usr/{include/jsoncpp,lib}
+	cp -r include/json $PKG/usr/include/jsoncpp/
+	cp libs/linux-gcc-*/libjson_linux-gcc-*_libmt.so $PKG/usr/lib/libjsoncpp.so
 }
