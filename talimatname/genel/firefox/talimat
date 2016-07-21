@@ -1,12 +1,10 @@
 # Description: Standalone web browser from mozilla.org
 # URL: http://www.mozilla.com/firefox/
 # Packager: pierre at nutyx dot org,tnut at nutyx dot org
-# Depends on: pulseaudio,gconf,yasm,sqlite,libvpx,libevent,nss,alsa-lib,gtk2,xorg-app,zip,unzip,gstreamer1,gstreamer1-plugins-base,gstreamer1-plugins-good,gstreamer1-plugins-libav
-
-run=(gstreamer1-plugins-good gstreamer1-plugins-libav)
+# Depends on: pulseaudio,gconf,yasm,sqlite,libvpx,libevent,nss,alsa-lib,gtk2,gtk3,xorg-app,zip,unzip,gstreamer1,gstreamer1-plugins-base,gstreamer1-plugins-good,gstreamer1-plugins-libav
 
 name=firefox
-version=44.0.2
+version=46.0.1
 release=1
 
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
@@ -16,13 +14,14 @@ build() {
 cd $SRC
 ARCH=`uname -m`
 
-for lang in da de en-US es-ES fi fr it nb-NO nl pt-PT sv-SE
+for lang in da de es-ES fi fr it nb-NO nl pt-PT sv-SE tr
 do 
 wget  http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$version/linux-$ARCH/xpi/$lang.xpi
 done
 
 cd $name-$version
 cat > mozconfig << "EOF"
+ac_add_options --enable-default-toolkit=cairo-gtk3
 ac_add_options --enable-system-sqlite
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
@@ -83,7 +82,7 @@ mkdir -pv $PKG/usr/share/pixmaps
 ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
 
 
-for lang in da de en-US es-ES fi fr it nb-NO nl pt-PT sv-SE
+for lang in da de tr es-ES fi fr it nb-NO nl pt-PT sv-SE
 do 
 install -Dm644 $SRC/$lang.xpi \
     $PKG/usr/lib/firefox-$version/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
