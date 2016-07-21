@@ -1,10 +1,10 @@
 # Description: Standalone web browser from mozilla.org
 # URL: http://www.mozilla.com/firefox/
-# Packager: pierre at nutyx dot org,tnut at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: pulseaudio,gconf,yasm,sqlite,libvpx,libevent,nss,alsa-lib,gtk2,gtk3,xorg-app,zip,unzip,gstreamer1,gstreamer1-plugins-base,gstreamer1-plugins-good,gstreamer1-plugins-libav
 
 name=firefox
-version=46.0.1
+version=47.0.1
 release=1
 
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
