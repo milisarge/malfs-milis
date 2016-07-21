@@ -16,9 +16,9 @@ sed -i -e '/input:/d' sys/v4l2/gstv4l2bufferpool.c
 sed -i -e "/case V4L2_CID_HCENTER/d" -e "/case V4L2_CID_VCENTER/d" sys/v4l2/v4l2_calls.c
 ./configure --prefix=/usr \
             --sysconfdir=/etc \
-            --with-gtk=3.0 
+            --with-gtk=3.0 \
             --with-package-name='Milis gstreamer-plugins-good package' \
-            --with-package-origin='https://milis.gungre.ch/' \
+            --with-package-origin='https://milis.gungre.ch/' 
 make
 make DESTDIR=$PKG install
 }
