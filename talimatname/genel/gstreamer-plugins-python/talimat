@@ -1,6 +1,6 @@
 # Description: GStreamer Multimedia Framework python Plugins
 # URL: http://gstreamer.freedesktop.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gstreamer gstreamer-plugins-base python-gobject2 
 
 name=gstreamer-plugins-python
