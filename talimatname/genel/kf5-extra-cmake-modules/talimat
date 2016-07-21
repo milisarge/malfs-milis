@@ -1,0 +1,20 @@
+# Description : Extra CMake modules used by all KDE Frameworks 5 packages
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: cmake
+
+name=kf5-extra-cmake-modules
+version=5.24.0
+release=1
+_name=extra-cmake-modules
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr
+
+make
+make DESTDIR=$PKG install
+}
