@@ -1,20 +1,23 @@
 # Description: GStreamer Multimedia Framework Base Plugins
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer alsa-lib pango cdparanoia libogg libtheora libvorbis xorg-libxv xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama 
 
 name=gstreamer-plugins-base
 version=0.10.36
 release=1
+_name=gst-plugins-base
 
-source=(http://ftp.gnome.org/pub/gnome/sources/gst-plugins-base/${version%.*}/gst-plugins-base-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/downloads/gst-plugins-base/gst-plugins-base-0.10.36-gcc_4_9_0_i686-1.patch)
+source=(https://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz
+	    http://www.linuxfromscratch.org/patches/downloads/gst-plugins-base/gst-plugins-base-0.10.36-gcc_4_9_0_i686-1.patch)
 
 build() {
-cd gst-plugins-base-$version
-
+cd ${_name}-$version
 [ "`uname -m`" == "i686" ] && patch -Np1 -i ../gst-plugins-base-0.10.36-gcc_4_9_0_i686-1.patch
 ./configure --prefix=/usr
+--with-package-name='Milis gstreamer-plugins-base package' \
+--with-package-origin='https://milis.gungre.ch/' \
+
 make
 make DESTDIR=$PKG install
 }

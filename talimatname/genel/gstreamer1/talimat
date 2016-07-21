@@ -1,19 +1,21 @@
 # Description: GStreamer Multimedia Framework
 # URL: http://gstreamer.freedesktop.org/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk8@hotmail.com
 # Depends on: glib libxml2 gsl gobject-introspection 
 
 name=gstreamer1
 version=1.6.3
 release=1
+_name=gstreamer
 
-source=(http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-$version.tar.xz)
+source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz)
 
 build() {
-cd gstreamer-$version
+cd ${_name}-$version
 ./configure --prefix=/usr \
---with-package-name="GStreamer $version BLFS" \
---with-package-origin="http://www.linuxfromscratch.org/blfs/view/svn/"
+--with-package-name="GStreamer for Milis" \
+--with-package-origin="https://milis.gungre.ch/"
+
 make
 make DESTDIR=$PKG install
 }
