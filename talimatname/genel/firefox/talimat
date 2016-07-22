@@ -1,7 +1,7 @@
 # Description: Standalone web browser from mozilla.org
 # URL: http://www.mozilla.com/firefox/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: pulseaudio,gconf,yasm,sqlite,libvpx,libevent,nss,alsa-lib,gtk2,gtk3,xorg-app,zip,unzip,gstreamer1,gstreamer1-plugins-base,gstreamer1-plugins-good,gstreamer1-plugins-libav
+# Depends on: pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
 
 name=firefox
 version=47.0.1
@@ -14,7 +14,7 @@ build() {
 cd $SRC
 ARCH=`uname -m`
 
-for lang in da de es-ES fi fr it nb-NO nl pt-PT sv-SE tr
+for lang in de es-ES fr it sv-SE tr
 do 
 wget  http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$version/linux-$ARCH/xpi/$lang.xpi
 done
@@ -82,7 +82,7 @@ mkdir -pv $PKG/usr/share/pixmaps
 ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
 
 
-for lang in da de tr es-ES fi fr it nb-NO nl pt-PT sv-SE
+for lang in de es-ES fr it sv-SE tr
 do 
 install -Dm644 $SRC/$lang.xpi \
     $PKG/usr/lib/firefox-$version/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
