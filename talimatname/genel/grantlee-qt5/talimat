@@ -1,4 +1,4 @@
-# Description : A string template engine based on the Django template system and written in Qt5
+# Description : A string template engine based on the Django template system and written in Qt5.
 # URL : https://www.gitorious.org/grantlee/pages/Home
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : qt5 cmake doxygen
