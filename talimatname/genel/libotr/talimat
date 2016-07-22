@@ -1,0 +1,18 @@
+# Description: OTR messaging allows you to have private conversations over instant messaging.
+# URL: http://www.cypherpunks.ca/otr/
+# Packager: milisarge
+# Depends on: libusb libgcrypt
+
+name=libotr
+version=4.1.1
+release=1
+
+source=( https://otr.cypherpunks.ca/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --disable-static
+    make
+    make DESTDIR=$PKG install
+}

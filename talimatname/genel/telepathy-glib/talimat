@@ -7,12 +7,12 @@ name=telepathy-glib
 version=0.24.1
 release=1
 
-source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
+source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
 
 build() {
 cd $name-$version
 ./configure --prefix=/usr \
---libexecdir=/usr/lib/${name%-*} \
+--libexecdir=/usr/lib/telepathy \
 --enable-vala-bindings \
 --disable-static
 make
