@@ -1,16 +1,16 @@
 # Description: Standalone web browser from mozilla.org
 # URL: http://www.mozilla.com/firefox/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
+# Depends on: autoconf2 pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
 
 name=firefox
 version=47.0.1
 release=1
 
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz
+        firefox-install-dir.patch)
 
 build() {
-
 cd $SRC
 ARCH=`uname -m`
 
@@ -20,6 +20,13 @@ wget  http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$version/
 done
 
 cd $name-$version
+patch -Np1 -i ../firefox-install-dir.patch
+
+CPPFLAGS+=" -O2"
+LDFLAGS+=" -Wl,-z,now"
+CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+
 cat > mozconfig << "EOF"
 ac_add_options --enable-default-toolkit=cairo-gtk3
 ac_add_options --enable-system-sqlite
@@ -54,7 +61,7 @@ SHELL=/bin/sh make -f client.mk
 
 mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
 
-SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
+SHELL=/bin/sh make -f client.mk DESTDIR=$PKG INSTALL_SDK= install
 
 chown -R 0:0 $PKG/usr/lib/firefox-$version
 ln -sf ../lib/firefox-$version/firefox $PKG/usr/bin
