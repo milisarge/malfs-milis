@@ -1,6 +1,6 @@
 # Description: Set of free outline fonts covering the Unicode character set
 # URL: http://www.nongnu.org/freefont/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: xorg-server 
 
 name=freefont-ttf

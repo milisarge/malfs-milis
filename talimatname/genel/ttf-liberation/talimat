@@ -1,8 +1,8 @@
 # Description: Red Hats Liberation fonts.
 # URL: https://www.redhat.com/promo/fonts/
-# Packager: alienus at nutyx dot org, tnut at nutyx
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: xorg-fontconfig xorg-font-util xorg-encodings fontforge
-run=( xorg-fontconfig xorg-font-util xorg-encodings fontforge )
+
 name=ttf-liberation
 version=2.00.1
 release=1
