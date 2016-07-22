@@ -1,6 +1,6 @@
 # Description: Open Source Computer Vision Library
 # URL: http://opencv.willowgarage.com/wiki/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: libjpeg-turbo libtiff jasper libpng ffmpeg gstreamer xine-lib 
 
 _pybin=python2

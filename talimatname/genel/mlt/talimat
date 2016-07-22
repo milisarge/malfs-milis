@@ -1,0 +1,28 @@
+# Description: An open source multimedia framework
+# URL: http://www.mltframework.org
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: ladspa frei0r-plugins libdv sdl-image libsamplerate sox ffmpeg vid-stab qt5 jack libexif swig movit eigen3 
+
+name=mlt
+version=6.2.0
+release=1
+
+source=(https://github.com/mltframework/mlt/archive/v$version.tar.gz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr        \
+	--avformat-swscale         \
+	--enable-gpl --enable-gpl3 \
+	--qt-libdir=/usr/lib --qt-includedir=/usr/include/qt
+  make
+  make DESTDIR=$PKG install
+
+  # mlt python bindings
+  cd src/swig/python
+  ./build
+  mkdir -p $PKG/usr/lib/python2.7/
+  install -m755 mlt.py $PKG/usr/lib/python2.7/
+  install -m755 _mlt.so $PKG/usr/lib/python2.7/
+  install -m755 mlt_wrap.o $PKG/usr/lib/python2.7/
+}

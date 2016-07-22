@@ -1,0 +1,19 @@
+# Description: A Jabber/XMPP connection manager for Telepathy
+# URL: http://telepathy.freedesktop.org
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: telepathy-glib libsoup libnice sqlite libxslt
+
+name=telepathy-gabble
+version=0.18.3
+release=2
+
+source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr             \
+              --without-ca-certificates \
+              --libexecdir=/usr/lib/telepathy
+  make
+  make DESTDIR=$PKG install
+}

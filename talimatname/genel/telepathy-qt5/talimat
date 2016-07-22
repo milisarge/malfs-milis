@@ -1,0 +1,23 @@
+# Description: A library for Qt5-based Telepathy clients
+# URL: http://telepathy.freedesktop.org/wiki/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: telepathy-farstream libxslt cmake doxygen qt5
+
+name=telepathy-qt5
+version=0.9.7
+release=1
+
+source=(http://telepathy.freedesktop.org/releases/telepathy-qt/telepathy-qt-$version.tar.gz)
+
+build() {
+  cd telepathy-qt-$version
+  cmake -DCMAKE_BUILD_TYPE=Release   \
+        -DCMAKE_INSTALL_PREFIX=/usr  \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DDESIRED_QT_VERSION=5  \
+        -DENABLE_EXAMPLES=OFF   \
+        -DENABLE_TESTS=OFF
+        
+  make
+  make DESTDIR=$PKG install
+}

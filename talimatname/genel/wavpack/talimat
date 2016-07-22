@@ -1,6 +1,6 @@
 # Description: Audio compression format with lossless, lossy and hybrid compression modes
 # URL: http://www.wavpack.com/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: 
 
 name=wavpack

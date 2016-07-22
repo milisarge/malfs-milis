@@ -1,0 +1,22 @@
+# Description: GLib-based client library for applications handling account authentication
+# URL: https://gitlab.com/accounts-sso/libsignon-glib 
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: signond python-gobject gobject-introspection
+
+name=libsignon-glib
+version=1.14
+release=1
+
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.gz)
+
+build() {
+cd libsignon-glib*
+  ./autogen.sh
+  ./configure --prefix=/usr        \
+              --localstatedir=/var \
+              --sysconfdir=/etc
+  make -j1
+  make DESTDIR=$PKG install
+}

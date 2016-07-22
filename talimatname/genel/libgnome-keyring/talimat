@@ -1,6 +1,6 @@
 # Description: GNOME keyring client library
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: python dbus glib intltool libgcrypt gobject-introspection vala 
 
 name=libgnome-keyring

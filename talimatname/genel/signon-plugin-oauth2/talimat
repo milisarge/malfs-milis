@@ -1,0 +1,23 @@
+# Description: OAuth 2 plugin for signon
+# URL: https://gitlab.com/accounts-sso/signon-plugin-oauth2
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: signond qt5
+
+name=signon-plugin-oauth2
+version=0.23
+release=1
+
+source=(https://gitlab.com/accounts-sso/signon-plugin-oauth2/repository/archive.tar.gz)
+
+build() {
+cd signon-plugin-oauth2*
+sed -i '/-Werror/d' common-project-config.pri
+
+# Do not install tests and example
+echo 'INSTALLS =' >>tests/tests.pro
+echo 'INSTALLS =' >>example/example.pro
+
+qmake-qt5 PREFIX=/usr LIBDIR=/usr/lib
+make
+make INSTALL_ROOT=$PKG install
+}

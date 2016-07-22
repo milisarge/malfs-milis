@@ -1,0 +1,29 @@
+# Description: Google Test - C++ testing utility based on the xUnit framework (like JUnit)
+# URL: http://code.google.com/p/googletest
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: cmake
+
+name=gtest
+version=1.7.0
+release=1
+
+source=(http://googletest.googlecode.com/files/$name-$version.zip)
+
+build() {
+  cd $name-$version
+  mkdir build
+  cd build
+
+  cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_SKIP_RPATH=ON ..
+  make
+
+  cd $SRC/$name-$version
+  mkdir -pm 0755 $PKG/usr/{lib,include/gtest/internal,share/licenses/$name,src/gtest/src,src/gtest/cmake}
+  install -m 0644 build/libgtest{,_main}.so $PKG/usr/lib
+  install -m 0644 include/gtest/*.h $PKG/usr/include/gtest
+  install -m 0644 include/gtest/internal/*.h $PKG/usr/include/gtest/internal/
+  install -m 0644 LICENSE $PKG/usr/share/licenses/$name/
+  install -m 0644 fused-src/gtest/* $PKG/usr/src/gtest/src/
+  install -m 0644 CMakeLists.txt $PKG/usr/src/gtest/
+  install -m 0644 cmake/* $PKG/usr/src/gtest/cmake/
+}

@@ -1,0 +1,27 @@
+# Description:The Swiss Army knife of sound processing tools 
+# URL: http://sox.sourceforge.net/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: file libsndfile libpng lame opencore-amr gsm libao libmad libid3tag wavpack pulseaudio opusfile time
+
+name=sox
+version=14.4.2
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2
+       sox-dynamic.patch) 
+
+build() {
+  cd $name-$version
+  sed -i 's|man1/sox.1 soxeffect.7|man1/sox.1.gz soxeffect.7.gz|' Makefile.in
+
+  patch -p1 -i $SRC/sox-dynamic.patch
+
+  aclocal
+  automake
+
+  ./configure --prefix=/usr --sysconfdir=/etc \
+         --with-dyn-default --with-distro="NuTyX"
+  make
+  make bindir=. installcheck
+  make DESTDIR=$PKG install
+}
