@@ -8,6 +8,7 @@ version=2.1.1
 release=1
 
 source=(http://download.kde.org/stable/qca/$version/src/qca-$version.tar.xz)
+
 build() {
 cd qca-$version
 cmake -DCMAKE_INSTALL_PREFIX=/usr   \
