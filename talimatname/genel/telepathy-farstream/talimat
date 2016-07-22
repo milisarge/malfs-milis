@@ -1,6 +1,6 @@
 # Description: A telepathy-backend to use stream engine.
 # URL: http://telepathy.freedesktop.org/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: farstream telepathy-glib 
 
 name=telepathy-farstream

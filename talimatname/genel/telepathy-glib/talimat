@@ -1,6 +1,6 @@
 # Description: GLib bindings for the Telepathy D-Bus protocol
 # URL: http://telepathy.freedesktop.org/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: dbus-glib libxslt gobject-introspection vala 
 
 name=telepathy-glib
