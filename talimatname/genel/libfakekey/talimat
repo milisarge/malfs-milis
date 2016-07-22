@@ -1,6 +1,6 @@
 # Description: X virtual keyboard library.
 # URL: URL: https://www.yoctoproject.org/tools-resources/projects/matchbox
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: xorg-libxtst 
 
 name=libfakekey
