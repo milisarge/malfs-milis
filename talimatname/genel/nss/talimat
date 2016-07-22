@@ -1,11 +1,11 @@
 # Description: Support cross-platform development of security-enabled client and server applications.
 # URL: http://www.mozilla.org
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: nspr sqlite 
 
 name=nss
 version=3.25
-release=2
+release=1
 
 source=( http://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_${version//./_}_RTM/src/nss-$version.tar.gz \
 	 http://www.linuxfromscratch.org/patches/downloads/nss/nss-$version-standalone-1.patch )
