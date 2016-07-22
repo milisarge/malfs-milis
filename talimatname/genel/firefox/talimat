@@ -24,8 +24,6 @@ patch -Np1 -i ../firefox-install-dir.patch
 
 CPPFLAGS+=" -O2"
 LDFLAGS+=" -Wl,-z,now"
-CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
-CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
 cat > mozconfig << "EOF"
 ac_add_options --enable-default-toolkit=cairo-gtk3
