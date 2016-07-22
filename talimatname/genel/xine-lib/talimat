@@ -1,6 +1,6 @@
 # Description: contains the library xine
 # URL: http://xinehq.de/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: xorg-mesa xorg-libxvmc libxcb faad2 speex libmng libvorbis flac libtheora sdl ffmpeg samba librsvg imagemagick 
 
 name=xine-lib

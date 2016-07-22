@@ -1,0 +1,17 @@
+# Description: A  minimalistic plugin API for video sources and filters
+# URL: http://www.piksel.org/frei0r
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: gavl opencv doxygen
+
+name=frei0r-plugins
+version=1.4
+release=1
+
+source=(https://files.dyne.org/frei0r/releases/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

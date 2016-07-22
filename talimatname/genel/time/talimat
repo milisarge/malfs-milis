@@ -1,7 +1,8 @@
+# Description = Measures many of the CPU resources, such as time and memory, that other programs use.
 # URL: 			http://ftp.gnu.org/gnu/time
-# Packager:		berlius at nutyx dot com
+# Packager:		alihan-ozturk28@hotmail.com
+# Depends on :
 
-description="Measures many of the CPU resources, such as time and memory, that other programs use."
 name=time
 version=1.7
 release=1

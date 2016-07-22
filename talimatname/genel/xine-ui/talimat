@@ -1,0 +1,22 @@
+# Description: A free video player for Unix
+# URL: http://www.xine-project.org
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: xine-lib curl xorg-libxft xorg-libxxf86vm xdg-utils shared-mime-info hicolor-icon-theme desktop-file-utils
+
+name=xine-ui
+version=0.99.9
+release=1
+
+source=(http://downloads.sourceforge.net/xine/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr           \
+             --mandir=/usr/share/man \
+             --with-x                \
+             --disable-lirc          \
+             --without-aalib         \
+             --enable-debug
+  make
+  make DESTDIR=$PKG desktopdir=/usr/share/applications install
+}
