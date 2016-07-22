@@ -1,6 +1,6 @@
 # Description: Tools for accessing and converting various ebook file formats
 # URL : http://sourceforge.net/projects/ebook-tools/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on : cmake libxml2 libzip
 
 name=ebook-tools
