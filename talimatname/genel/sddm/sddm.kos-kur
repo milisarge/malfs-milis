@@ -1,8 +1,6 @@
-. lib/lsb/init-functions
-if [ ! -z "`cards list|grep lxdm\ `" ]; then
-        log_failure_msg "${WARNING}lxdm${NORMAL} should be removed"
-        exit 1
-fi
+echo "Lxdm sistemden kaldırılıyor."
+
+mps -s sddm
 
 if ! getent group sddm > /dev/null; then
    groupadd -g 64 --system sddm
@@ -12,5 +10,5 @@ if ! getent passwd sddm > /dev/null; then
    passwd -l sddm > /dev/null
 fi
 
-mkdir -p var/lib/sddm
-chown -R sddm:sddm var/lib/sddm > /dev/null
+mkdir -p /var/lib/sddm
+chown -R sddm:sddm /var/lib/sddm > /dev/null
