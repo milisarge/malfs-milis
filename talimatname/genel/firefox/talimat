@@ -7,8 +7,7 @@ name=firefox
 version=47.0.1
 release=1
 
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz
-        firefox-install-dir.patch)
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
 
 build() {
 cd $SRC
@@ -20,10 +19,6 @@ wget  http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$version/
 done
 
 cd $name-$version
-patch -Np1 -i ../firefox-install-dir.patch
-
-CPPFLAGS+=" -O2"
-LDFLAGS+=" -Wl,-z,now"
 
 cat > mozconfig << "EOF"
 ac_add_options --enable-default-toolkit=cairo-gtk3
