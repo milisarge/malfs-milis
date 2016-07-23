@@ -1,6 +1,7 @@
 # Description: A C library for reading, creating, and modifying zip archives
 # URL: http://www.nih.at/libzip/index.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on: 
 
 name=libzip
 version=1.0.1
