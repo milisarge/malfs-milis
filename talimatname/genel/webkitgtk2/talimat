@@ -3,7 +3,7 @@
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libwebp libsecret geoclue gperf gtk2 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
 
-name=webkit-gtk2
+name=webkitgtk2
 version=2.4.11
 release=1
 source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
