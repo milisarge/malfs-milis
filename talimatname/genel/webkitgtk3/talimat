@@ -1,15 +1,17 @@
 # Description: Small, efficient and fast rendering engine for Web Browsers.
 # URL: http://www.webkitgtk.org/
 # Packager: milisarge
-# Depends on: enchant xorg-glu gperf gstreamer-plugins-base gtk2 gtk3 harfbuzz icu libsecret libsoup libwebp ruby shared-mime-info xorg-libxt
+# Depends on: libwebp libsecret geoclue gperf gtk2 gtk3 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
 
 name=webkitgtk3
 version=2.4.11
 release=1
-source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
+source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz
+        webkitgtk-2.4.9-abs.patch)
 
 build() {
 	cd webkitgtk-$version
+	patch -Np1 -i ../webkitgtk-2.4.9-abs.patch
 
 	install -d build
 	cd build
@@ -21,8 +23,9 @@ build() {
 		--disable-silent-rules \
 		--enable-video \
 		--enable-jit \
-		--libexecdir=/usr/lib/webkitgtk3
-
-	make
-	make DESTDIR=$PKG install
+		--libexecdir=/usr/lib/webkitgtk3 \
+        --enable-introspection
+        
+    make || make -j1
+    make DESTDIR=$PKG install || make -j1 DESTDIR=$PKG install
 }
