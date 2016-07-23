@@ -1,9 +1,10 @@
 # Description: Implementations for atomic memory update operations on a number of architectures.
 # URL: http://www.hpl.hp.com/research/linux/atomic_ops/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on :
 
 name=libatomic-ops
-version=7.4.2
+version=7.4.4
 release=1
 
 source=(http://www.ivmaisoft.com/_bin/atomic_ops//libatomic_ops-$version.tar.gz)
