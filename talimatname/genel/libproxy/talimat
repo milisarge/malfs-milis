@@ -1,0 +1,25 @@
+# Description: A library that provides automatic proxy configuration management
+# URL: http://libproxy.github.io/libproxy/
+# Packager: milisarge
+# Depends on: cmake networkmanager python perl glib webkitgtk3
+
+name=libproxy
+version=0.4.12
+release=1
+
+source=(https://github.com/libproxy/libproxy/archive/$version.tar.gz)
+
+build() {
+mkdir build
+cd build
+cmake ../${name}-${version}                 \
+    -DCMAKE_INSTALL_PREFIX=/usr             \
+    -DLIBEXEC_INSTALL_DIR=/usr/lib/libproxy \
+    -DCMAKE_SKIP_RPATH=ON                   \
+    -DPERL_VENDORINSTALL=yes                \
+    -DCMAKE_BUILD_TYPE=Release              \
+    -DWITH_WEBKIT3=ON                       \
+    -DWITH_MOZJS=ON
+make
+make DESTDIR=$PKG install
+}
