@@ -2,37 +2,36 @@
 # URL: http://www.videolan.org/vlc/
 # Maintainer:  Thomas Penteker, tek at serverop dot de
 # Packager: milisarge@gmail.com
-# Depends on: libmad, ffmpeg, qt4, libdvdnav, liba52, libgcrypt
+# Depends on: libvlc qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=vlc
-version=2.2.1
+version=2.2.4
 release=1
-source=(http://download.videolan.org/pub/videolan/$name/$version/$name-$version.tar.xz)
+source=(http://download.videolan.org/pub/videolan/$name/$version/$name-$version.tar.xz
+        lua53_compat.patch
+        update-vlc-plugin-cache.hook)
 
 build() {
-  cd $name-$version
+cd $name-$version
+patch -Np1 -i ../lua53_compat.patch
 
-  # allow building with new avcodec
-  sed -i 's/ 56/ 57/g' configure.ac
-  autoreconf -fi
+sed -i 's:libsmbclient.h:samba-4.0/&:' modules/access/smb.c
 
-  # initialize avformat structure
-  sed -i 's/AVProbeData *pd;/AVProbeData pd={};/g' modules/demux/avformat/demux.c
+sh bootstrap
+./configure --prefix=/usr \
+            RCC=/usr/bin/rcc-qt5
 
+sed -i 's/luaL_optint/(int)&eger/' modules/lua/libs/{net,osd,volume}.c
+sed -i 's/luaL_checkint(/(int)luaL_checkinteger(/' \
+modules/lua/{demux,libs/{configuration,net,osd,playlist,stream,variables,volume}}.c
 
-  ./configure --prefix=/usr \
-    --mandir=/usr/man \
-    --disable-nls \
-    --disable-fribidi \
-    --disable-httpd \
-    --disable-dbus \
-    --enable-alsa \
-    --disable-remoteosd \
-    --disable-lua
-  make
-  make DESTDIR=$PKG install
-  rm -rf $PKG/usr/share/doc
+make
+make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version install
 
-  # fix desktop file
-  sed -i 's/--started-from-file//g' $PKG/usr/share/applications/vlc.desktop
+install -Dm644 ../update-vlc-plugin-cache.hook $PKG/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
+
+rm -rf $PKG/usr/share/doc
+
+# fix desktop file
+sed -i 's/--started-from-file//g' $PKG/usr/share/applications/vlc.desktop
 }
