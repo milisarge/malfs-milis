@@ -7,7 +7,7 @@ name=xinetd
 version=2.3.15	
 release=1
 source=(ftp://anduin.linuxfromscratch.org/BLFS/xinetd/$name-$version.tar.gz
-		xinetd.conf chargen daytime echo systat time )
+		xinetd.conf chargen daytime echo systat xined_time )
  
 build() {
 
@@ -42,7 +42,7 @@ install -v -m755 -d $PKG/etc/xinetd.d
 cp -v $SRC/systat $PKG/etc/xinetd.d
 
 install -v -m755 -d $PKG/etc/xinetd.d
-cp -v $SRC/time $PKG/etc/xinetd.d
+cp -v $SRC/xined_time $PKG/etc/xinetd.d/time
 
 cd $scripts-$scriptsversion
 make DESTDIR=$PKG install-xinetd
