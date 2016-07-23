@@ -1,0 +1,19 @@
+# Description: t5-based client library for accessing the online accounts database
+# URL: https://gitlab.com/accounts-sso/libaccounts-qt
+# Packager : alihan-ozturk28@hotmail.com
+# Depends on : qt5 libaccounts-glib
+
+name=libaccounts-qt5
+version=1.14
+release=1
+
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://gitlab.com/accounts-sso/libaccounts-qt/repository/archive.zip)                                                                                                                       
+build() {
+cd libaccounts*
+sed -i 's|SUBDIRS  += Accounts tests|SUBDIRS += Accounts|' accounts-qt.pro
+qmake-qt5 PREFIX=/usr LIBDIR=/usr/lib
+make
+make INSTALL_ROOT=$PKG install
+}

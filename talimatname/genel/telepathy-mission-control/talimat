@@ -7,12 +7,12 @@ name=telepathy-mission-control
 version=5.16.3
 release=1
 
-source=(http://${name%-*-*}.freedesktop.org/releases/$name/$name-$version.tar.gz)
+source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
 
 build() {
 cd $name-$version
 ./configure --prefix=/usr \
---libexecdir=/usr/lib/${name%-*} \
+--libexecdir=/usr/lib/telepathy \
 --with-connectivity=nm \
 --enable-gtk-doc \
 --disable-upower \

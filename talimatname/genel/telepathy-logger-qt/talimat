@@ -1,0 +1,21 @@
+# Description: Qt Wrapper around TpLogger client library.
+# URL: http://telepathy.freedesktop.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules qt5 doxygen telepathy-qt5 glib dbus-glib telepathy-logger
+
+name=telepathy-logger-qt
+version=15.04.0
+_version=15.04
+release=1
+
+source=(http://download.kde.org/stable/$name/${_version}/src/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--libexecdir=/usr/lib/telepathy \
+--disable-static
+
+make
+make DESTDIR=$PKG install
+}
