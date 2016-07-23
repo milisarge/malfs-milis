@@ -1,6 +1,6 @@
 echo "Lxdm sistemden kaldırılıyor."
 
-mps -s lxdm
+mps -s sddm
 
 if ! getent group sddm > /dev/null; then
    groupadd -g 64 --system sddm
