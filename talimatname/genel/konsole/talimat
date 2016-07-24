@@ -1,0 +1,23 @@
+# Description : Terminal
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-kdelibs4support kf5-knotifyconfig kf5-kpty kf5-extra-cmake-modules kf5-kdoctools kf5-knotifyconfig kf5-kpty 
+
+name=konsole
+release=1
+version=16.04.3
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

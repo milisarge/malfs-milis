@@ -1,0 +1,25 @@
+# Description : Support for emoticons and emoticons themes 
+# URL: https://www.kde.org/
+# Packager: pierre at nutyx dot org
+# Depends on: kf5-karchive kf5-kconfig kf5-kcoreaddons kf5-kservice
+
+name=kf5-kemoticons
+version=5.24.0
+release=1
+_name=kemoticons
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

@@ -1,0 +1,26 @@
+# Description : KDE volume control program
+# URL: http://kde.org/applications/multimedia/kmix/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-kcmutils kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdelibs4support kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-knotifications kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui alsa-lib  pulseaudio libcanberra kf5-plasma-framework
+
+name=kmix
+version=16.04.3
+release=1
+
+source=(http://download.kde.org/stable/applications/$version/src/kmix-$version.tar.xz)
+
+build() {
+cd kmix-$version
+
+sed -e 's|${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR}|${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_SOURCE_DIR}/cmake/modules|' -i CMakeLists.txt
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DKMIX_KF5_BUILD=ON         \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}

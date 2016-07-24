@@ -1,0 +1,23 @@
+# Description : Qt Platform Theme integration plugins for the Plasma workspaces
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules kf5-kconfig kf5-kconfigwidgets kf5-ki18n kf5-kiconthemes kf5-kio kf5-knotifications kf5-kwidgetsaddons kf5-kwayland plasma-breeze
+
+
+name=plasma-integration
+version=5.7.2
+release=1
+
+source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,21 @@
+# Description : A KDE-based library for accessing various Google services via their public API 
+# URL : https://projects.kde.org/projects/extragear/libs/libkgapi
+# Packager : alihan-ozturk28@hotmail.com
+# Depends on : kcalcore kcontacts kf5-extra-cmake-modules kf5-kdoctools qt5
+
+name=libkgapi
+version=5.1.0
+release=1
+
+source=(http://download.kde.org/stable/$name/$version/src/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+  cmake -DCMAKE_BUILD_TYPE=Release        \
+        -DCMAKE_INSTALL_PREFIX=/usr       \
+        -DCMAKE_INSTALL_LIBDIR=lib        \
+        -DBUILD_TESTING=OFF
+        
+  make
+  make DESTDIR=$PKG install
+}

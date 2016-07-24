@@ -1,0 +1,25 @@
+# Description : Additional wallpapers for the Plasma Workspace 
+# URL: https://www.kde.org/
+# Packager: alihan-oztruk@hotmail.com
+# Depends on: qt5 kf5-extra-cmake-modules
+
+name=plasma-workspace-wallpapers
+version=5.7.2
+release=1
+
+source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+
+_name=plasma-workspace-wallpapers
+release=1
+
+build() {
+cd $name-$version
+cmake -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

@@ -1,0 +1,23 @@
+# Description : Scientific Calculator
+# URL: http://gmplib.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules kf5-kconfig kf5-kconfigwidgets kf5-kdoctools kf5-kguiaddons kf5-ki18n kf5-kinit kf5-knotifications kf5-kxmlgui gmp
+
+name=kcalc
+release=1
+version=16.04.3
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

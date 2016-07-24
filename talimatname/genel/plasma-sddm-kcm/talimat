@@ -1,0 +1,23 @@
+# Description : A simple system settings module to manage the users of your system 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk@hotmail.com
+# Depends on: libpwquality kf5-kconfigwidgets kf5-kcoreaddons kf5-kdelibs4support kf5-ki18n kf5-kiconthemes kf5-kio kf5-kwidgetsaddons 
+
+name=plasma-user-manager
+version=5.7.2
+release=1
+_name=user-manager
+
+source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}

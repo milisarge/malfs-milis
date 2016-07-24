@@ -1,0 +1,23 @@
+# Description : The Breeze Icon Theme for kf5
+# URL: https://www.kde.org/
+# Packager: pierre at nutyx dot org
+# Depends on: cmake, qt5, kf5-extra-cmake-modules
+
+name=kf5-breeze-icons
+version=5.24.0
+release=1
+_name=breeze-icons
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -Wno-dev
+
+make
+make DESTDIR=$PKG install
+}
+

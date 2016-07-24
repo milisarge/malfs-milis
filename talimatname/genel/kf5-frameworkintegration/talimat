@@ -1,0 +1,24 @@
+# Description : Framework providing components to allow applications to integrate with a KDE Workspace
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kjobwidgets kf5-knotifications kf5-kwidgetsaddons kf5-kxmlgui qt5 libxcb xorg-libxcursor noto-fonts 
+
+name=kf5-frameworkintegration
+version=5.24.0
+release=1
+_name=frameworkintegration
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+make
+make DESTDIR=$PKG install
+}
+

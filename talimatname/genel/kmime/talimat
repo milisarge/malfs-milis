@@ -1,0 +1,21 @@
+# Description : Library for handling mail messages and newsgroup articles
+# URL : https://projects.kde.org/kmime
+# Packager : alihan-ozturk28@hotmail.com
+# Depends on : kf5-extra-cmake-modules python boost kf5-ki18n kf5-kcodecs
+
+name=kmime
+version=16.04.3
+release=1
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+  cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DBUILD_TESTING=OFF
+        
+  make
+  make DESTDIR=$PKG install
+}

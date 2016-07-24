@@ -1,0 +1,22 @@
+# Description : Libraries for KDE PIM applications
+# URL : https://community.kde.org/KDE_PIM
+# Packager : alihan-ozturk28@hotmail.com
+# Depends on : qt5 kf5-extra-cmake-modules akonadi akonadi-search kdepimlibs kcontacts kontactinterface  kldap kf5-kdoctools boost kf5-kdelibs4support kmime kf5-kcmutils
+
+name=libkdepim
+version=16.04.3
+release=1
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+  cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DBUILD_TESTING=OFF
+        
+  make 
+  make DESTDIR=$PKG install
+}
+

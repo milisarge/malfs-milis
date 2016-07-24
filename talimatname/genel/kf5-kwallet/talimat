@@ -1,0 +1,25 @@
+# Description : Secure and unified container for user passwords 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: gpgmepp kf5-kconfig kf5-kcoreaddons kf5-kdbusaddons kf5-ki18n kf5-kiconthemes kf5-knotifications kf5-kservice kf5-kwidgetsaddons kf5-kwindowsystem libgcrypt gnupg
+
+name=kf5-kwallet
+version=5.24.0
+release=1
+_name=kwallet
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+build() {
+cd {_name}-$version
+cmake -DCMAKE_BUILD_TYPE=Release        \
+      -DCMAKE_INSTALL_PREFIX=/usr       \
+      -DLIB_INSTALL_DIR=lib \
+      -DBUILD_TESTING=OFF   \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

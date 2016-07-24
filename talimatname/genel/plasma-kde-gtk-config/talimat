@@ -1,0 +1,26 @@
+# Description : GTK2 and GTK3 Configurator for KDE 5
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-karchive kf5-kcmutils kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-kwidgetsaddons plasma-kde-cli-tools 
+
+name=plasma-kde-gtk-config
+version=5.7.2
+release=1
+_name=kde-gtk-config
+
+source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_BUILD_TYPE=Release        \
+      -DCMAKE_INSTALL_PREFIX=/usr       \
+      -DLIB_INSTALL_DIR=lib             \
+      -DLIBEXEC_INSTALL_DIR=lib         \
+      -DSYSCONF_INSTALL_DIR=/etc        \
+      -DBUILD_TESTING=OFF               \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

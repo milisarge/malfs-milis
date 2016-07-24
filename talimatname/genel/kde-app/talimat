@@ -1,0 +1,14 @@
+# Description : This package going install KDE5 Applications
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: akonadi akonadi-calendar akonadi-search ark baloo-widgets calendarsupport dolphin dolphin-plugins eventviews ffmpegthumbs grantleetheme gwenview incidenceeditor kaccounts-integration kaccounts-providers kalarmcal kate kblog kcalc kcalcore kcalutils kcontacts kde5-l10n kdeconnect kdegraphics-thumbnailers kdenlive kdepim kdepim-addons kdepim-apps-libs kdepimlibs kdepim-runtime kdgantt2 kdiamond khelpcenter kholidays kidentitymanagement kimap kio-extras kldap kmahjongg kmailtransport kmbox kmime kmix konsole kontactinterface konversation kpat kpimtextedit ktnef libgravatar libkdcraw libkdegames libkdepim libkexiv2 libkgapi libkipi libkleo libkmahjongg libksieve mailcommon mailimporter messagelib okular pimcommon print-manager signon-kwallet-extension spectacle syndication telepathy-kde-accounts-kcm telepathy-kde-approver telepathy-kde-auth-handler telepathy-kde-call-ui telepathy-kde-common-internals telepathy-kde-contact-list telepathy-kde-contact-runner telepathy-kde-desktop-applets telepathy-kde-filetransfer-handler telepathy-kde-integration-module telepathy-kde-send-file telepathy-kde-text-ui
+
+name=kde-app
+release=1
+version=20160722
+
+source=(talimat)
+
+build() {
+echo "KDE Applications 5"
+}

@@ -1,0 +1,25 @@
+# Description : Multi-language application scripting 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-kcompletion kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kparts kf5-kwidgetsaddons kf5-kxmlgui kf5-kdoctools
+
+name=kf5-kross
+version=5.24.0
+release=1
+_name=kross
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/portingAids/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

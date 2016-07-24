@@ -1,0 +1,1 @@
+xdg-icon-resource forceupdate --theme hicolor &> /dev/null
