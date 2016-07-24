@@ -1,6 +1,6 @@
 # Description: Support cross-platform development of security-enabled client and server applications.
 # URL: http://www.mozilla.org
-# Packager: milisarge
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: nspr sqlite 
 
 name=nss
