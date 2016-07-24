@@ -1,6 +1,7 @@
 # Description: GDB, the GNU Project debugger, allows you to see what is going on “inside” another program while it executes.
 # URL: http://www.sourceware.org/gdb/
-# Packager: tnuttens at gmail dot com
+# Packager: milisarge
+# Depends on: 
 
 name=gdb
 version=7.10.1
