@@ -1,4 +1,3 @@
 [ -f /usr/bin/xdg-desktop-menu ] && /usr/bin/xdg-desktop-menu forceupdate
 [ -f /usr/bin/update-desktop-database ] && /usr/bin/update-desktop-database /usr/share/applications
 
-xfce4-panel -r
