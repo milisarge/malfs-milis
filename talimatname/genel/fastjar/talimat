@@ -1,0 +1,21 @@
+# Description: Fastjar is an implementation of Sun's jar utility.
+# URL: https://savannah.nongnu.org/projects/fastjar
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: zlib
+
+name=fastjar
+version=0.98
+release=1
+source=(http://download.savannah.nongnu.org/releases/fastjar/$name-$version.tar.gz
+	    fastjar-jartool.c_rev1.62.patch)
+
+build() {
+	cd $name-$version
+	patch -i $SRC/fastjar-jartool.c_rev1.62.patch
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+	rm -r $PKG/usr/share/info
+}

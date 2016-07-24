@@ -1,7 +1,7 @@
 # Description: LibreOffice is a full-featured office suite. It is largely compatible with Microsoft Office and is descended from OpenOffice.org.
 # URL: http://www.libreoffice.org
 # Packagers: alihan-ozturk28@hotmail.com
-# Depends on: tar openjdk apache-ant openldap python3 cups curl libatomic-ops gtk2 gtk3 perl-archive-zip perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt neon nss poppler postgresql redland icu hunspell gsfonts dejavu-ttf p7zip graphite2 npapi-sdk clucene serf unixodbc
+# Depends on: tar apache-ant openldap python3 cups curl libatomic-ops gtk2 gtk3 perl-archive-zip perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt neon nss poppler postgresql redland icu hunspell gsfonts dejavu-ttf p7zip graphite2 npapi-sdk clucene serf unixodbc
 
 name=libreoffice
 version=5.2.0.3
@@ -16,14 +16,14 @@ build() {
         unset ACLOCAL
         export LO_PREFIX=/usr
 
-	cd $SRC
-	tar -xf $name-$version.tar.xz --no-overwrite-dir
+	#cd $SRC
+	#tar -xf $name-$version.tar.xz --no-overwrite-dir
 
 	cd $name-$version
 	install -dm755 external/tarballs
 	ln -sv $SRC/$name-dictionaries-$version.tar.xz  external/tarballs/
 	ln -sv $SRC/$name-help-$version.tar.xz          external/tarballs/
-        ln -sv $SRC/$name-translations-$version.tar.xz  external/tarballs/
+    ln -sv $SRC/$name-translations-$version.tar.xz  external/tarballs/
 
 
         sed -e "/gzip -f/d"   \
@@ -73,7 +73,6 @@ build() {
              --with-system-libpng        \
              --with-system-libxml        \
              --with-system-neon          \
-             --with-system-npapi-headers \
              --with-system-nss           \
              --with-system-odbc          \
              --with-system-openldap      \
@@ -83,6 +82,8 @@ build() {
              --with-system-redland       \
              --with-system-serf          \
              --with-system-zlib          \
+             --with-jdk-home=/opt/jdk    \
+             --with-ant-home=/opt/ant    \
              --with-parallelism=$(getconf _NPROCESSORS_ONLN)
 
 	make build
