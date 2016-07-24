@@ -1,0 +1,20 @@
+# Description: A library to manipulate pictures metadata
+# URL: http://www.kde.org
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: exiv2 qt5 kf5-extra-cmake-modules
+
+name=libkexiv2
+version=16.04.3
+release=1
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+cmake -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}

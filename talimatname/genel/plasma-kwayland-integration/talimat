@@ -1,0 +1,24 @@
+# Description : Provides integration plugins for various KDE frameworks for the wayland windowing system 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: cmake kf5-extra-cmake-modules wayland kf5-kwayland kf5-kwindowsystem kf5-kidletime
+
+name=plasma-kwayland-integration
+version=5.7.2
+release=1
+_name=kwayland-integration
+
+source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_BUILD_TYPE=Release        \
+      -DCMAKE_INSTALL_PREFIX=/usr       \
+      -DLIB_INSTALL_DIR=lib \
+      -DSYSCONF_INSTALL_DIR=/etc        \
+      -DBUILD_TESTING=OFF   \
+      -Wno-dev
+
+make
+make DESTDIR=$PKG install
+}

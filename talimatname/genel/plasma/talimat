@@ -1,0 +1,15 @@
+# Description : This package installs KDE Plasma 5
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: plasma-bluedevil plasma-breeze plasma-breeze-gtk plasma-desktop plasma-integration plasma-kactivitymanagerd plasma-kde-cli-tools plasma-kdecoration plasma-kde-gtk-config plasma-kdeplasma-addons plasma-kgamma5 plasma-khotkeys plasma-kinfocenter plasma-kmenuedit plasma-kscreen plasma-kscreenlocker  plasma-ksshaskpass plasma-ksysguard plasma-kwallet-pam plasma-kwayland-integration plasma-kwin plasma-kwrited plasma-libkscreen plasma-libksysguard plasma-mediacenter plasma-milou plasma-nm plasma-oxygen plasma-pa plasma-polkit-kde-agent plasma-powerdevil plasma-sddm-kcm plasma-sdk plasma-systemsettings plasma-user-manager plasma-workspace plasma-workspace-wallpapers
+
+name=plasma
+version=5.7.2
+release=1
+
+source=(talimat)
+
+build() {
+echo "KDE Plasma 5"
+}
+

@@ -1,0 +1,25 @@
+# Description : Core components for the KDE Activity concept
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: qt5 kf5-extra-cmake-modules kf5-kconfig kf5-kdbusaddons kf5-ki18n kf5-kcoreaddons kf5-kwindowsystem kf5-kglobalaccel kf5-kxmlgui kf5-kio
+
+name=plasma-kactivitymanagerd
+version=5.7.2
+release=1
+_name=kactivitymanagerd
+
+source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr         \
+      -DCMAKE_BUILD_TYPE=Release          \
+      -DLIB_INSTALL_DIR=lib   \
+      -DBUILD_TESTING=OFF     \
+      -KACTIVITIES_ENABLE_EXCEPTIONS=OFF  \
+      -KACTIVITIES_LIBRARY_ONLY=OFF       \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}

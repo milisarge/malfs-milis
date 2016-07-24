@@ -1,0 +1,26 @@
+# Description : KDE Integration for QtWebKit 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: qt5-webkit kf5-kconfig kf5-kcoreaddons kf5-kio kf5-kjobwidgets kf5-kparts kf5-kservice kf5-kwallet 
+
+name=kf5-kdewebkit
+version=5.24.0
+release=1
+_name=kdewebkit
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

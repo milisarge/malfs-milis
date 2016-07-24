@@ -1,0 +1,12 @@
+diff -Naur libksysguard-5.5.5-orig/signalplotter/ksignalplotter.cpp libksysguard-5.5.5/signalplotter/ksignalplotter.cpp
+--- libksysguard-5.5.5-orig/signalplotter/ksignalplotter.cpp	2016-03-01 14:37:26.000000000 +0100
++++ libksysguard-5.5.5/signalplotter/ksignalplotter.cpp	2016-03-17 20:26:35.069995580 +0100
+@@ -18,7 +18,7 @@
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ */
+-
++using namespace std;
+ #ifdef GRAPHICS_SIGNAL_PLOTTER
+ #define KSignalPlotter KGraphicsSignalPlotter
+ #define KSignalPlotterPrivate KGraphicsSignalPlotterPrivate

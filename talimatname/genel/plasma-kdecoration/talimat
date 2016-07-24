@@ -1,0 +1,23 @@
+# Description : Plugin based library to create window decorations 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: cmake kf5-extra-cmake-modules qt5
+
+name=plasma-kdecoration
+version=5.7.2
+release=1
+_name=kdecoration
+
+source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF
+      
+make
+make DESTDIR=$PKG install
+}
+

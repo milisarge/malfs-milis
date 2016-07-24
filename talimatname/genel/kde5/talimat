@@ -1,0 +1,29 @@
+# Description : This package going install KDE5 and its dependencies
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5 plasma kde-app xorg phonon-backend-gstreamer-qt5 oxygen-gtk2 oxygen-gtk3 gnupg alsa-plugins noto-fonts sddm
+
+name=kde5
+release=1
+version=20160722
+
+source=(talimat)
+
+build() {
+
+unset makeflags
+
+mkdir -pv $PKG/etc/profile.d/
+
+cat > $PKG/etc/profile.d/kde5.sh << "EOF"
+### Begin /etc/profile.d/kf5.sh
+#
+source /etc/profile.d/qt5.sh
+#
+export KF5_PREFIX=/usr
+#
+pathappend /usr/lib/qt5/plugins    QT_PLUGIN_PATH
+#
+### End /etc/profile.d/kde5.sh
+EOF
+}

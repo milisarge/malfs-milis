@@ -1,0 +1,25 @@
+# Description : Resource and network access abstraction 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: desktop-file-utils kf5-attica kf5-kbookmarks kf5-kjobwidgets kf5-kwallet kf5-solid kerberos
+
+name=kf5-kio
+version=5.24.0
+release=1
+_name=kio
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

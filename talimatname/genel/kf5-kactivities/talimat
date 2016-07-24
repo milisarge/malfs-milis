@@ -1,0 +1,24 @@
+# Description : Runtime and library to organize the user work in separate activities
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: qt5 boost kf5-kcmutils kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdeclarative kf5-kglobalaccel kf5-ki18n kf5-kio kf5-kservice kf5-kwindowsystem kf5-kxmlgui
+
+name=kf5-kactivities
+version=5.24.0
+release=1
+_name=kactivities
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+make
+make DESTDIR=$PKG install
+}
+

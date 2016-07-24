@@ -1,0 +1,28 @@
+# Description :  Many Localization for KDE5
+# URL : http:/$langwww.kde.org
+# Packager : alihan-ozturk28@hotmail.com
+# Depends on : kf5-extra-cmake-modules kf5-ki18n kf5-kdoctools
+
+name=kde5-l10n
+version=16.04.3
+release=1
+
+source=()
+
+build() {
+
+for lang in de es fr it sv tr
+do
+  cd $SRC
+  wget http://download.kde.org/stable/applications/$version/src/kde-l10n/kde-l10n-$lang-$version.tar.xz
+  tar xf kde-l10n-$lang-$version.tar.xz
+
+  cd kde-l10n-$lang-$version/5/$lang
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release
+  make
+  make DESTDIR=$PKG install
+
+  rm $PKG/usr/share/locale/$lang/LC_MESSAGES/khelpcenter.mo
+done
+}

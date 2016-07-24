@@ -1,0 +1,21 @@
+# Description: A File manager plugin to launch a file transfer job with a specified contact 
+# URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals kf5-kio
+
+name=telepathy-kde-send-file
+version=16.04.3
+release=1
+_name=ktp-send-file
+
+source=(http://download.kde.org/stable/applications/$version/src/${_name}-$version.tar.xz)
+
+build() {
+  cd ktp-send-file-$version
+  cmake -DCMAKE_INSTALL_PREFIX=/usr  \
+        -DCMAKE_BUILD_TYPE=Release   \
+        -DBUILD_TESTING=OFF
+        
+  make
+  make DESTDIR=$PKG install
+}

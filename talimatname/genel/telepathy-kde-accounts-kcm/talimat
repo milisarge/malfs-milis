@@ -1,0 +1,21 @@
+# Description: KCM Module for configuring Telepathy Instant Messaging Accounts 
+# URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules telepathy-qt5 kaccounts-providers intltool telepathy-gabble 
+
+name=telepathy-kde-accounts-kcm
+version=16.04.3
+release=1
+_name=ktp-accounts-kcm
+
+source=(http://download.kde.org/stable/applications/$version/src/${_name}-$version.tar.xz)
+
+build() {
+  cd ${_name}-$version
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release  \
+        -DBUILD_TESTING=OFF
+        
+  make
+  make DESTDIR=$PKG install
+}

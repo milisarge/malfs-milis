@@ -1,0 +1,22 @@
+# Description: System to administer web accounts for the sites and services Google, Facebook, Owncloud, IMAP, Jabber ...
+# URL: https://www.kde.org/applications/internet
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules kf5-kdoctools kf5-kcmutils kf5-kio kf5-ki18n kf5-kwidgetsaddons kf5-kcoreaddons kf5-kcoreaddons kf5-kconfig kf5-kwallet kf5-kdbusaddons akonadi signon-kwallet-extension signon-plugin-oauth2 signon-ui kde5-l10n
+
+
+name=kaccounts-integration
+version=16.04.3
+release=1
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+cmake -DCMAKE_BUILD_TYPE=Release   \
+      -DCMAKE_INSTALL_PREFIX=/usr  \
+      -DLIB_INSTALL_DIR=lib        \
+      -DBUILD_TESTING=OFF
+      
+make
+make DESTDIR=$PKG install
+}

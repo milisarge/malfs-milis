@@ -1,0 +1,25 @@
+# Description : Configuration system for KNotify 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-kcompletion kf5-kconfig kf5-ki18n kf5-kio phonon-qt5
+
+name=kf5-knotifyconfig
+version=5.24.0
+release=1
+_name=knotifyconfig
+_version=5.24
+
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
+

@@ -1,0 +1,21 @@
+# Description : KDE PIM libraries
+# URL : https://projects.kde.org/projects/kde/pim/
+# Packager : alihan-ozturk28@hotmail.com
+# Depends on : kf5-extra-cmake-modules python kf5-kdoctools kf5-kdelibs4support kf5-kcoreaddons kpimtextedit
+
+name=kidentitymanagement
+version=16.04.3
+release=1
+
+source=( http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+  cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DBUILD_TESTING=OFF
+        
+  make
+  make DESTDIR=$PKG install
+}

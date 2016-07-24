@@ -1,0 +1,25 @@
+# Description : FFmpeg-based thumbnail creator for video files
+# URL : https://projects.kde.org/projects/kde/applications/FFmpeg-based thumbnail creator for video files
+# Packager : alihan-ozturk28@hotmail.com
+# Depends on : kf5-extra-cmake-modules kf5-kdoctools kf5-kio ffmpeg
+
+name=ffmpegthumbs
+version=16.04.3
+release=1
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz
+        ffmpegthumbs-ffmpeg3.patch)
+
+build() {
+cd $name-$version
+patch -p1 -i ../ffmpegthumbs-ffmpeg3.patch
+
+cmake -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DSYSCONF_INSTALL_DIR=/etc  \
+      -DPLUGIN_INSTALL_DIR=/usr/lib/qt5/plugins \
+      -DLIB_INSTALL_DIR=lib
+
+make
+make DESTDIR=$PKG install
+}
