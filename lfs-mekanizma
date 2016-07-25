@@ -1049,6 +1049,9 @@ baslatici_olustur(){
 squashfs_olustur(){
     unmount_islemi
     lfs_kontrol
+    #son ayar yuklemeleri
+    cp /etc/bashrc /mnt/lfs/etc/bashrc
+    cp ./ayarlar/mps.conf /mnt/lfs/etc/mps.conf
     iso_etiket="malfsLive"
     rm iso_icerik/boot/kernel
     rm iso_icerik/boot/initramfs
