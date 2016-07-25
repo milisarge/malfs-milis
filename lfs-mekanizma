@@ -15,7 +15,7 @@ birinci_ayarlar(){
 		root_kontrol
 		lfs_kontrol
 		#lfs dizinin olusturulması
-		mkdir -p /mnt/lfs
+		mkdir -p $LFS
 		#lfs kullanici-grup silme sıfırlama
 		userdel lfs
 		rm -r /home/lfs
@@ -110,7 +110,7 @@ ikinci_ayarlar(){
 	root_kontrol
 	lfs_kontrol
 	unmount_islemi
-	mv /mnt/sources_depo /mnt/lfs/sources 
+	mv /mnt/sources_depo $LFS/sources 
 	chown -R root:root $LFS
 	install -dv -m0750  $LFS/root
 	rm -r $LFS/root/bin
@@ -1013,27 +1013,27 @@ bash_kur(){
 
 onsistem_sfs(){
 	tarih=`date +%Y-%m-%d`
-	mv /mnt/lfs/sources /mnt/sources_depo
-	mksquashfs /mnt/lfs malfs-asama1-onsistem_$tarih.sfs -comp xz
+	mv $LFS/sources /mnt/sources_depo
+	mksquashfs $LFS malfs-asama1-onsistem_$tarih.sfs -comp xz
 }	
 
 temel_sfs(){
 	unmount_islemi
 	tarih=`date +%Y-%m-%d`
-	mv /mnt/lfs/sources /mnt/sources_depo
-	mv /mnt/lfs/tools /mnt/tools_ydk
-	mv /mnt/lfs/paket_depo /mnt/base_paket_depo
-	mksquashfs /mnt/lfs malfs-asama2-temel_$tarih.sfs -comp xz
-	mv /mnt/sources_depo /mnt/lfs/sources
+	mv $LFS/sources /mnt/sources_depo
+	mv $LFS/tools /mnt/tools_ydk
+	mv $LFS/paket_depo /mnt/base_paket_depo
+	mksquashfs $LFS malfs-asama2-temel_$tarih.sfs -comp xz
+	mv /mnt/sources_depo $LFS/sources
 }
 
 son_sfs(){
 	unmount_islemi
 	tarih=`date +%Y-%m-%d`
-	mv /mnt/lfs/sources /mnt/sources_depo
-	mv /mnt/lfs/paket_depo /mnt/paket_depo
-	rm -r -f /mnt/lfs/usr/src
-	mksquashfs /mnt/lfs malfs-asama3-sonsistem_$tarih.sfs -comp xz
+	mv $LFS/sources /mnt/sources_depo
+	mv $LFS/paket_depo /mnt/paket_depo
+	rm -r -f $LFS/usr/src
+	mksquashfs $LFS malfs-asama3-sonsistem_$tarih.sfs -comp xz
 }
 
 baslatici_olustur(){
@@ -1050,8 +1050,8 @@ squashfs_olustur(){
     unmount_islemi
     lfs_kontrol
     #son ayar yuklemeleri
-    cp /etc/bashrc /mnt/lfs/etc/bashrc
-    cp ./ayarlar/mps.conf /mnt/lfs/etc/mps.conf
+    cp /etc/bashrc $LFS/etc/bashrc
+    cp ./ayarlar/mps.conf $LFS/etc/mps.conf
     iso_etiket="malfsLive"
     rm iso_icerik/boot/kernel
     rm iso_icerik/boot/initramfs
