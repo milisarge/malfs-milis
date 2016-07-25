@@ -5,3 +5,4 @@ iso_icerik/boot/initrd
 iso_icerik/boot/initramfs
 iso_icerik/LiveOS/*.*
 tmp/*
+temp-root/*
