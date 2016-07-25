@@ -119,3 +119,4 @@ index cb9581a..bfa967e 100644
 +        stdTime = parsePosixTransitionTime(stdParts.at(1));
      else
          stdTime = QTime(2, 0, 0);
+ 
