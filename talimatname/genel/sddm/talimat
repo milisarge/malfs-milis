@@ -11,7 +11,7 @@ source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$versi
 
 build() {
 source /etc/blfs-bootscripts
-wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+wget http://www.linuxfromscratch.org/blfs/downloads/stable/$scripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd ${name}-$version
