@@ -12,13 +12,12 @@ source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz
 
 build() {
 cd ${_name}-$version
-cmake -DCMAKE_INSTALL_PREFIX=/usr         \
-      -DCMAKE_BUILD_TYPE=Release          \
-      -DLIB_INSTALL_DIR=lib   \
-      -DBUILD_TESTING=OFF     \
-      -KACTIVITIES_ENABLE_EXCEPTIONS=OFF  \
-      -KACTIVITIES_LIBRARY_ONLY=OFF       \
-      -Wno-dev
+mkdir build
+cd    build
+cmake -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DKDE_INSTALL_LIBDIR=lib \
+      -DBUILD_TESTING=OFF ..
       
 make
 make DESTDIR=$PKG install

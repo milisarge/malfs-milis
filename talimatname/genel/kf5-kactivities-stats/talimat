@@ -13,11 +13,13 @@ source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version
 
 build() {
 cd ${_name}-$version
+mkdir build
+cd    build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \
       -DBUILD_TESTING=OFF         \
-      -Wno-dev
+      -Wno-dev ..
 make
 make DESTDIR=$PKG install
 }

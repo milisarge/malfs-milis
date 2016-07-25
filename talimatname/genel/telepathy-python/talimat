@@ -1,0 +1,19 @@
+# Description: Python libraries for use in Telepathy clients and connection managers
+# URL: http://telepathy.freedesktop.org
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: dbus-python libxslt
+
+name=telepathy-python
+version=0.15.19
+release=1
+
+source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+
+  python -m compileall $PKG/usr/lib/python2.7/site-packages/telepathy/
+}

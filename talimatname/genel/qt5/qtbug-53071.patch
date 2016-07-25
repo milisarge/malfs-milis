@@ -269,3 +269,4 @@ index ea83510..ce72e7c 100644
 +    }
  #endif // Q_OS_UNIX
  }
+ 
