@@ -12,10 +12,9 @@ source=(http://download.kde.org/stable/$name/${_version}/src/$name-$version.tar.
 
 build() {
 cd $name-$version
-./configure --prefix=/usr \
---libexecdir=/usr/lib/telepathy \
---disable-static
-
+cmake -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DLIB_INSTALL_DIR=lib 
 make
 make DESTDIR=$PKG install
 }
