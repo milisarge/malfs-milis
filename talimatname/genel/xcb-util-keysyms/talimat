@@ -1,7 +1,7 @@
 # Description: Library for handling standard X key constants and conversion to/from keycodes.
 # URL: http://xcb.freedesktop.org
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
-# Depends on: libxcb 
+# Packagers: alihan-ozturk28@hotmail.com
+# Depends on: libxcb xorg-util-macros
 
 name=xcb-util-keysyms
 version=0.4.0
