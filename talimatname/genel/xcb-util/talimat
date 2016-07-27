@@ -1,7 +1,7 @@
 # Description: XCB utilities library
 # URL: http://xcb.freedesktop.org
 # Packager: pierre at nutyx dot org
-# Depends on: libxcb 
+# Depends on: libxcb xorg-util-macros 
 
 name=xcb-util
 version=0.4.0

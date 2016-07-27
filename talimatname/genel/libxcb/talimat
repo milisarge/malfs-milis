@@ -1,24 +1,28 @@
 # Description: Interface to the X Window System protocol, which replaces the current Xlib interface.
 # URL: http://xcb.freedesktop.org
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
-# Depends on: xcb-proto xorg-libxdmcp xorg-libxau libxslt
+# Depends on: xcb-proto xorg-libxdmcp xorg-libxau libxslt xorg-util-macros
 
 name=libxcb
-version=1.11.1
+version=1.12
 release=2
 
-source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
+source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2
+        libxcb-1.1-no-pthread-stubs.patch
+        python-35x-fixes.patch)
 
 build() {
 cd $name-$version
+patch -Np1 -i ../libxcb-1.1-no-pthread-stubs.patch
+patch -Np1 -i ../python-35x-fixes.patch
 
-sed -e "s/pthread-stubs//" -i configure
+autoreconf -vfi
 
 ./configure --prefix=/usr \
-	    --sysconfdir=/etc \
-	    --localstatedir=/var \
-	    --docdir='${datadir}'/doc/libxcb-$version \
-	    --enable-xinput \
+	        --sysconfdir=/etc \
+	        --localstatedir=/var \
+	        --docdir='${datadir}'/doc/libxcb-$version \
+	        --enable-xinput \
             --enable-xkb \
             --disable-static
 make
