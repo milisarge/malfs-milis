@@ -1,7 +1,6 @@
 # Description: Library for constructing and injecting network packets
 # URL:         http://libnet-dev.sf.net
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on:
 
 name=libnet
