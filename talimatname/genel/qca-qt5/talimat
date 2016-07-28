@@ -19,7 +19,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr   \
 make
 make DESTDIR=$PKG install
 
-rm $PKG/usr/certs/rootcerts.pem
-rm $PKG/usr/mkspecs/features/crypto.prf
+
+rm $PKG/usr/lib/qt5/mkspecs/features/crypto.prf
 }
 
