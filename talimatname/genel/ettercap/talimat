@@ -1,0 +1,19 @@
+# Description: A network sniffer/interceptor/logger for ethernet LANs
+# URL: http://ettercap.github.com/ettercap/
+# packager: milisarge
+# Depends on : libpcap pcre libnet ethtool ghostscript cmake gtk2
+
+name=ettercap
+version=0.8.2
+release=1
+source=(https://github.com/Ettercap/ettercap/archive/v$version.tar.gz)
+ 
+build () {
+  cp $DERLEME_KAYNAKDIZIN/v$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
+  cd $SRC/$name-$version
+  mkdir build
+  cd build
+  cmake -D ENABLE_GTK=ON -D CMAKE_INSTALL_PREFIX=/usr -D INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release ../
+  make
+  make DESTDIR=$PKG install
+}
