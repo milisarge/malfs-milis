@@ -1,4 +1,4 @@
-# Description: Qt5 bindings for GStreamer
+# Description: Qt5 bindings for GStreamer.
 # URL: http://gstreamer.freedesktop.org/modules/qt-gstreamer.htm
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: cmake boost xorg-mesa doxygen gstreamer1-plugins-good qt5

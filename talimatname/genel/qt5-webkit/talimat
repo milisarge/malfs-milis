@@ -1,4 +1,4 @@
-# Description: Classes for a WebKit2 based implementation and a new QML API
+# Description: Classes for a WebKit2 based implementation and a new QML API.
 # URL: http://qt-project.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer1-plugins-base libwebp xorg-libxcomposite libxslt gstreamer1-plugins-good python ruby qt5

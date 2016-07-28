@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Qt5 Assistant
+Comment=Shows Qt documentation and examples
+Exec=/usr/bin/assistant-qt5
+Icon=assistant
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;Documentation;

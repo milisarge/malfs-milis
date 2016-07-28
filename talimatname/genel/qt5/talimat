@@ -1,161 +1,80 @@
 # Description: Qt Free Edition, version 5.x
 # URL: http://qt-project.org/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: xorg-proto xorg-libxkbfile xorg-xtrans xorg-libx11 xorg-libxext xorg-libfs xorg-libice xorg-libsm xorg-libxscrnsaver xorg-libxt xorg-libxmu xorg-libxpm xorg-libxaw xorg-libxfixes xorg-libxcomposite xorg-libxrender xorg-libxcursor xorg-libxdamage xorg-libfontenc xorg-libxfont xorg-libxft xorg-libxi xorg-libxinerama xorg-libxrandr xorg-libxres xorg-libxtst xorg-libxv xorg-libxvmc xorg-libxxf86dga xorg-libxxf86vm xorg-libdmx xorg-libpciaccess xorg-libxkbfile xorg-libxshmfence  xcb-proto xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm alsa-lib cups dbus glib gstreamer-plugins-base icu jasper libjpeg-turbo libmng libpng libtiff libwebp xorg-mesa mtdev pcre sqlite ruby gstreamer1-plugins-base geoclue gtk2 harfbuzz postgresql pulseaudio unixodbc libxkbcommon mariadb
+# Depends on:xorg-proto xorg-libxkbfile xorg-xtrans xorg-libx11 xorg-libxext xorg-libfs xorg-libice xorg-libsm xorg-libxscrnsaver xorg-libxt xorg-libxmu xorg-libxpm xorg-libxaw xorg-libxfixes xorg-libxcomposite xorg-libxrender xorg-libxcursor xorg-libxdamage xorg-libfontenc xorg-libxfont xorg-libxft xorg-libxi xorg-libxinerama xorg-libxrandr xorg-libxres xorg-libxtst xorg-libxv xorg-libxvmc xorg-libxxf86dga xorg-libxxf86vm xorg-libdmx xorg-libpciaccess xorg-libxkbfile xorg-libxshmfence  xcb-proto xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm alsa-lib ca-certificates cups dbus glib gstreamer-plugins-base icu jasper libproxy libinput libjpeg-turbo libmng libpng libtiff libwebp xorg-mesa mtdev openssl pcre sqlite ruby gstreamer1-plugins-base geoclue gtk2 harfbuzz postgresql pulseaudio unixodbc libxkbcommon mariadb
 
 name=qt5
 version=5.7.0
 release=1
 
+_name=qt-everywhere-opensource-src-${version}
+
 source=(http://download.qt.io/official_releases/qt/${version%.*}/$version/single/qt-everywhere-opensource-src-$version.tar.xz
-        qtbug-53237.patch
-	    qtbug-53071.patch
-	    qtbug-53071b.patch)
+	    assistant.desktop
+	    designer.desktop
+	    qdbusviewer.desktop
+	    linguist.desktop)
 
 build() {
 
 QT5PREFIX=/usr
+QT5DIR=$QT5PREFIX/lib/qt5
 QT5BINDIR=$QT5PREFIX/lib/qt5/bin
 
-cd qt-everywhere-opensource-src-$version
+cd ${_name}*
 
-# Fix parsing of tzfile(5) POSIX rule zone names with bracket quotes
-patch -p1 -d qtbase -i $SRC/qtbug-53071.patch
-patch -p1 -d qtbase -i $SRC/qtbug-53071b.patch
-
-# Fix UNSIGNED values in QMYSQL
-patch -p1 -d qtbase -i $SRC/qtbug-53237.patch
-
-# Respect system CXX
-[ "$CXX" ] || CXX=g++
-sed -i "/^QMAKE_CXX\s/s|=.*|= $CXX|"  qtbase/mkspecs/common/g++-base.conf
-
-# Remove obsolete xorg path
-sed -i 's|X11R6/||g' qtbase/mkspecs/*/*.conf
-
-# Respect system CXXFLAGS
-sed -i "s|^\(QMAKE_CFLAGS_RELEASE.*\)|\1 ${CXXFLAGS}|" qtbase/mkspecs/common/gcc-base.conf
-
-# Respect system LDFLAGS
-sed -i "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" qtbase/mkspecs/common/g++-unix.conf
-
-# Fix quoting bug
-sed -i 's|"$COMPILER" -c|$COMPILER -c|' qtbase/config.tests/unix/fvisibility.test
-
-./configure  -opensource -confirm-license \
-			 -prefix         $QT5PREFIX                  \
-			 -sysconfdir     /etc/xdg                    \
-			 -bindir         $QT5BINDIR                  \
-			 -plugindir      /usr/lib/qt5/plugins        \
-			 -importdir      /usr/lib/qt5/imports        \
-			 -headerdir      /usr/include/qt5            \
-			 -datadir        /usr/share/qt5              \
-			 -translationdir /usr/share/qt5/translations \
-			 -plugin-sql-{psql,mysql,sqlite,odbc}  \
-			 -openssl-linked \
-			 -dbus-linked \
-			 -system-sqlite \
-			 -system-zlib \
-			 -system-harfbuzz \
-			 -optimized-qmake \
-			 -nomake examples \
-			 -no-separate-debug-info \
-			 -no-strip \
-			 -shared \
-			 -no-rpath \
-			 -release -reduce-relocations
+./configure  -prefix $QT5PREFIX                          \
+             -bindir $QT5BINDIR                          \
+             -headerdir /usr/include/qt5                 \
+             -archdatadir $QT5DIR                        \
+             -libdir /usr/lib                            \
+             -docdir /usr/share/doc/qt5                  \
+             -plugindir /usr/lib/qt5/plugins             \
+             -importdir /usr/lib/qt5/imports             \
+             -qmldir /usr/lib/qt5/qml                    \
+             -datadir /usr/share/qt5                     \
+             -translationdir /usr/share/qt5/translations \
+             -sysconfdir /etc/xdg                        \
+             -plugin-sql-{psql,mysql,sqlite,odbc}        \
+             -confirm-license  \
+             -opensource       \
+             -dbus-linked      \
+             -openssl-linked   \
+             -system-harfbuzz  \
+             -system-sqlite    \
+	         -optimized-qmake  \
+             -nomake examples  \
+	         -no-rpath
 
 make
 make INSTALL_ROOT=$PKG install
 
-find $PKG/usr/ -name qt_lib_bootstrap_private.pri \
-   -exec sed -i -e "s:$PWD/qtbase:/$QT5PREfiX/lib/:g" {} \; &&
+# Fix paths
+find $PKG/usr/lib  -type f -name '*.prl' \
+	-exec sed -i -e '/^QmAKE_PRL_BUiLD_DiR/d' {} \;
+		
+sed -e "s|$PWD/qtbase|/usr/lib|g" \
+	-i $PKG/usr/lib/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri
 
-find $PKG/usr -name \*.prl \
-   -exec sed -i -e '/^QmAKE_PRL_BUiLD_DiR/d' {} \;
-
-install -v -dm755 $PKG/usr/share/pixmaps/
-
-install -v -Dm644 qttools/src/assistant/assistant/images/assistant-128.png \
-			  $PKG/usr/share/pixmaps/assistant-qt5.png
-
-install -v -Dm644 qttools/src/designer/src/designer/images/designer.png \
-			  $PKG/usr/share/pixmaps/designer-qt5.png
-
-install -v -Dm644 qttools/src/linguist/linguist/images/icons/linguist-128-32.png \
-			  $PKG/usr/share/pixmaps/linguist-qt5.png
-
-install -v -Dm644 qttools/src/qdbus/qdbusviewer/images/qdbusviewer-128.png \
-			  $PKG/usr/share/pixmaps/qdbusviewer-qt5.png
-
-install -dm755 $PKG/usr/share/applications
-
-
-cat > $PKG/usr/share/applications/assistant-qt5.desktop << "EOf"
-[Desktop Entry]
-Name=Qt5 Assistant
-Comment=Shows Qt5 documentation and examples
-Exec=assistant-qt5
-Icon=/usr/share/pixmaps/assistant-qt5
-Terminal=false
-Encoding=UTf-8
-Type=Application
-Categories=Qt;Development;Documentation;
-EOf
-
-cat > $PKG/usr/share/applications/designer-qt5.desktop << "EOf"
-[Desktop Entry]
-Name=Qt5 Designer
-GenericName=interface Designer
-Comment=Design GUis for Qt5 applications
-Exec=designer-qt5
-Icon=/usr/share/pixmaps/designer-qt5
-MimeType=application/x-designer;
-Terminal=false
-Encoding=UTf-8
-Type=Application
-Categories=Qt;Development;
-EOf
-
-cat > $PKG/usr/share/applications/linguist-qt5.desktop << "EOf"
-[Desktop Entry]
-Name=Qt5 Linguist
-Comment=Add translations to Qt5 applications
-Exec=linguist-qt5
-Icon=/usr/share/pixmaps/linguist-qt5
-MimeType=text/vnd.trolltech.linguist;application/x-linguist;
-Terminal=false
-Encoding=UTf-8
-Type=Application
-Categories=Qt;Development;
-EOf
-
-cat > $PKG/usr/share/applications/qdbusviewer-qt5.desktop << "EOf"
-[Desktop Entry]
-Name=Qt5 QDbusviewer
-GenericName=D-Bus Debugger
-Comment=Debug D-Bus applications
-Exec=qdbusviewer-qt5
-Icon=/usr/share/pixmaps/qdbusviewer-qt5
-Terminal=false
-Encoding=UTf-8
-Type=Application
-Categories=Qt;Development;Debugger;
-EOf
+install -d $PKG/usr/share/applications
+install -m644 $SRC/assistant.desktop $PKG/usr/share/applications/
+install -m644 $SRC/designer.desktop $PKG/usr/share/applications/
+install -m644 $SRC/linguist.desktop $PKG/usr/share/applications/
+install -m644 $SRC/qdbusviewer.desktop $PKG/usr/share/applications/
 
 mkdir -p $PKG/etc/profile.d
 cat > $PKG/etc/profile.d/qt5.sh << EOf
 # Begin /etc/profile.d/qt5.sh
 
 QT5PREFIX=$QT5PREFIX
-QT5DIR=$QT5PREFIX
+QT5DIR=$QT5PREFIX/lib/qt5
 QT5BINDIR=$QT5PREFIX/lib/qt5/bin
 export QT5PREFIX QT5BINDIR QT5DIR
 
 # End /etc/profile.d/qt5.sh
 EOf
 
-
+### symlink /usr/lib/qt5/bin
 mkdir -p $PKG/usr/bin
 
 for i in $PKG/usr/lib/qt5/bin/*; do 
@@ -167,4 +86,7 @@ if [ "x\$QT4BINDIR" != "x/usr/bin" ] && [ "x\$QT4BINDIR" != "x" ]; then pathremo
 if [ "x\$QT5BINDIR" != "x/usr/bin" ]; then pathprepend $QT5BINDIR; fi
 echo \$PATH
 EOF
+
+rm -rf $PKG/usr/share/doc
+
 }
