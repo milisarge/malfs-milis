@@ -2,28 +2,30 @@
 # URL: http://www.videolan.org/vlc/
 # Maintainer:  Thomas Penteker, tek at serverop dot de
 # Packager: milisarge@gmail.com
-# Depends on: libvlc qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+# Depends on: libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=vlc
-version=2.2.4
+version=3.0.0
+_version=20160606
 release=1
-source=(http://download.videolan.org/pub/videolan/$name/$version/$name-$version.tar.xz
-        lua53_compat.patch
-        update-vlc-plugin-cache.hook)
 
+source=( http://anduin.linuxfromscratch.org/BLFS/$name/$name-$version-${_version}.tar.xz
+         lua53_compat.patch
+         update-vlc-plugin-cache.hook)
+	
 build() {
-cd $name-$version
+
+cd $name-$version-${_version}
 patch -Np1 -i ../lua53_compat.patch
 
-sed -i 's:libsmbclient.h:samba-4.0/&:' modules/access/smb.c
+sed -i '/seems to be moved/s/^/#/' autotools/ltmain.sh
 
-sh bootstrap
+BUILDCC=gcc \
 ./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --enable-bluray \
+            --enable-opus \
             RCC=/usr/bin/rcc-qt5
-
-sed -i 's/luaL_optint/(int)&eger/' modules/lua/libs/{net,osd,volume}.c
-sed -i 's/luaL_checkint(/(int)luaL_checkinteger(/' \
-modules/lua/{demux,libs/{configuration,net,osd,playlist,stream,variables,volume}}.c
 
 make
 make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version install
@@ -31,7 +33,4 @@ make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version install
 install -Dm644 ../update-vlc-plugin-cache.hook $PKG/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 
 rm -rf $PKG/usr/share/doc
-
-# fix desktop file
-sed -i 's/--started-from-file//g' $PKG/usr/share/applications/vlc.desktop
 }
