@@ -1,0 +1,23 @@
+# Description: DVD authoring tools.
+# URL: http://dvdauthor.sourceforge.net/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: libxml2 libdvdnav libpng fribidi freetype
+
+name=dvdauthor
+version=0.7.1
+release=2
+source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz
+     	dvdauthor-0.7.1-glibc220.patch)
+
+build() {
+	cd $name
+
+	patch -p1 -i $SRC/dvdauthor-0.7.1-glibc220.patch
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man
+
+	make
+	make DESTDIR=$PKG install
+}

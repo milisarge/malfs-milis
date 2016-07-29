@@ -1,23 +1,27 @@
 # Description: Library from vlc
 # URL:  http://www.slackware.com/~alien/slackbuilds/vlc/
 # Packager: tnut at nutyx dot org
-# Depends on: glib dbus libidn alsa-lib libmad
+# Depends on: libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=libvlc
-version=2.2.1
-release=1
+version=3.0.0
+release=20160606
 
-source=( http://download.videolan.org/pub/videolan/vlc/$version/vlc-$version.tar.xz)
+source=( http://anduin.linuxfromscratch.org/BLFS/vlc/vlc-$version-$release.tar.xz
+         lua53_compat.patch)
 	
 build() {
 
-cd vlc-$version
+cd vlc-$version-$release
 
+sed -i '/seems to be moved/s/^/#/' autotools/ltmain.sh
+
+BUILDCC=gcc \
 ./configure --prefix=/usr \
---disable-swscale \
---disable-lua \
---disable-a52 \
---disable-avcodec
+            --sysconfdir=/etc \
+            --enable-bluray \
+            --enable-opus \
+            RCC=/usr/bin/rcc-qt5
 
 make
 make DESTDIR=$PKG install

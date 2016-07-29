@@ -5,7 +5,7 @@
 
 dataversion=0.4.7
 name=poppler
-version=0.41.0
+version=0.46.0
 release=1
 
 source=(
@@ -15,11 +15,13 @@ http://poppler.freedesktop.org/poppler-data-$dataversion.tar.gz)
 build() {
 cd poppler-$version
  
+CXXFLAGS="-std=c++11"
+ 
 ./configure --prefix=/usr      \
 	--sysconfdir=/etc      \
 	--disable-static       \
 	--enable-build-type=release \
-	--enable-cmyk               \
+	--enable-cmyk                \
 	--enable-xpdf-headers
 
 make
