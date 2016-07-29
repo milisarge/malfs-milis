@@ -1,21 +1,22 @@
-# Description : A simple system settings module to manage the users of your system 
+# Description : KDE Config Module for SDDM.
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk@hotmail.com
-# Depends on: libpwquality kf5-kconfigwidgets kf5-kcoreaddons kf5-kdelibs4support kf5-ki18n kf5-kiconthemes kf5-kio kf5-kwidgetsaddons 
+# Depends on: kf5-extra-cmake-modules sddm qt5 kf5-kio kf5-kauth kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kxmlgui xorg-libx11 xcb-util-image libxcb xorg-libxcursor
 
-name=plasma-user-manager
+name=plasma-sddm-kcm
 version=5.7.2
 release=1
-_name=user-manager
+_name=sddm-kcm
 
 source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
 
 build() {
 cd ${_name}-$version
-cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release  \
-      -DLIB_INSTALL_DIR=lib       \
-      -DBUILD_TESTING=OFF         \
+cmake -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DKDE_INSTALL_LIBDIR=lib \
+      -DKDE_INSTALL_SYSCONFDIR=/etc \
+      -DBUILD_TESTING=OFF \
       -Wno-dev
       
 make
