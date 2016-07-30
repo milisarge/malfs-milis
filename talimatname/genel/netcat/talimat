@@ -1,0 +1,20 @@
+# Description: Read and write data across network connections
+# URL: http://netcat.sourceforge.net
+# Packager: milisarge
+# Depends on:
+
+name=netcat
+version=0.7.1
+release=1
+
+source=(http://download.sourceforge.net/netcat/netcat-0.7.1.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr \
+    --mandir=/usr/share/man
+
+	make
+	make DESTDIR=$PKG install
+}
