@@ -1,7 +1,7 @@
 # Description: Complete and free Internet live audio and video broadcasting solution
 # URL: http://ffmpeg.org/
 # Packager: pierre at nutyx dot org
-# Depends on: yasm opus fdk-aac x264 x265 liba52 libass freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes 
+# Depends on: yasm opus fdk-aac x264 x265 liba52 libass freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
 
 name=ffmpeg
 version=2.8.4
