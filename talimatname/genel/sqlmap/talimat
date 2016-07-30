@@ -1,0 +1,41 @@
+# Description: automate the process of exploiting SQL injection flaws
+# URL: http://sqlmap.org
+# Packager: milisarge
+# Depends on: python
+
+name=sqlmap
+version=git
+release=1
+source=()
+
+build() {
+  git clone https://github.com/sqlmapproject/sqlmap.git
+  cd $name
+  python2 -m compileall .
+  python2 -O -m compileall .
+
+  install -d "$PKG/etc"
+  install -d "$PKG/usr/bin"
+  install -d "$PKG/opt/$name"
+  install -d "$PKG/usr/share/doc"
+
+  mv doc "$PKG/usr/share/doc/$name"
+  mv sqlmap.conf "$PKG/etc/sqlmap.conf"
+  ln -sf /etc/sqlmap.conf "$PKG/opt/$name/sqlmap.conf"
+  cp -R --no-preserve=ownership * "$PKG/opt/$name"
+
+  cat > "$PKG/usr/bin/sqlmap" << EOF
+#!/bin/sh
+cd /opt/$name
+python2 sqlmap.py "\$@"
+EOF
+  cat > "$PKG/usr/bin/sqlmapapi" << EOF
+#!/bin/sh
+cd /opt/$name
+python2 sqlmapapi.py "\$@"
+EOF
+
+  chmod 755 "$PKG/usr/bin/sqlmap"
+  chmod 755 "$PKG/usr/bin/sqlmapapi"
+  
+}
