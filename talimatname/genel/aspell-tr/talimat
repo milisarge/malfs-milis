@@ -2,10 +2,10 @@
 # URL: http://aspell.net
 # Packager: milisarge@gmail.com
 # Depends on: aspell 
-_version=0.50-3
+_version=0.50-0
 
 name=aspell-tr
-version=0.50.3
+version=0.50.0
 release=1
 
 source=(ftp://ftp.gnu.org/gnu/aspell/dict/tr/$name-$_version.tar.bz2)
