@@ -2,7 +2,7 @@
 # URL: http://subversion.apache.org
 # Maintainer: Jose V Beneyto, sepen at crux dot nu
 # Packager: milisarge@gmail.com
-# Depends on: apr serf
+# Depends on: apr serf cyrus-sasl
 
 name=subversion
 version=1.9.3
