@@ -1,0 +1,21 @@
+# Description: Ping for TCP/IP
+# URL: https://github.com/antirez/hping
+# Packager: milisarge
+# Depends on: libpcap
+
+name=hping
+version=git
+release=1
+source=(tshzset.patch Makefile.patch)
+
+build() {
+	git clone https://github.com/antirez/hping
+	
+	cd $name
+	patch -Np1 -i $SRC/tshzset.patch
+	MANPATH=/usr/share/man 
+	./configure --prefix=/usr  --no-tcl
+	make
+	patch -p1 < $SRC/Makefile.patch
+	make DESTDIR=$PKG install
+}
