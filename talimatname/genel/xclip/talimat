@@ -1,0 +1,18 @@
+# Description: A command line interface to the X11 clipboard
+# URL:         https://github.com/astrand/xclip
+# Packager:    milisarge
+# Depends on:  xorg-libxmu
+
+name=xclip
+version=0.12
+release=1
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+
+    ./configure --prefix=/usr \
+                --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+}

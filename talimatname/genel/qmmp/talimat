@@ -1,0 +1,28 @@
+# Description: A Qt based audio-player. 
+# URL: http://qmmp.ylsoftware.com
+# Packager: milisarge@gmail.com
+# Depends on: subversion libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+
+name=qmmp
+version=svn
+release=1
+
+source=()
+	
+build() {
+	
+	#bagımlılıklar kontrol edilecek.
+	
+	svn co http://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-1.2 qmmp
+	cd qmmp
+	echo "$(cat qmmp.pri | grep QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion)"
+	
+	mkdir -p build
+	cd build
+	cmake ../ \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DLIB_DIR=lib
+	make
+	make -C ../build DESTDIR=$PKG install
+}

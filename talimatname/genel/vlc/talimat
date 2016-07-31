@@ -1,33 +1,45 @@
 # Description: The cross-platform media player and streaming server
 # URL: http://www.videolan.org/vlc/
-# Maintainer:  Thomas Penteker, tek at serverop dot de
 # Packager: milisarge@gmail.com
 # Depends on: libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=vlc
 version=3.0.0
-_version=20160606
+_version=20160704
 release=1
 
-source=( http://anduin.linuxfromscratch.org/BLFS/$name/$name-$version-${_version}.tar.xz
+source=( http://altair.videolan.org/build/source/$name-$version-${_version}-0536.tar.xz
          lua53_compat.patch
          update-vlc-plugin-cache.hook)
 	
 build() {
 
-cd $name-$version-${_version}
-patch -Np1 -i ../lua53_compat.patch
+cd vlc-3.0.0-git
 
-sed -i '/seems to be moved/s/^/#/' autotools/ltmain.sh
+RCC=/usr/bin/rcc-qt5
+./bootstrap
+sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
+
+CXXFLAGS="$CXXFLAGS -fPIC"
 
 BUILDCC=gcc \
 ./configure --prefix=/usr \
             --sysconfdir=/etc \
-            --enable-bluray \
-            --enable-opus \
-            RCC=/usr/bin/rcc-qt5
+        --enable-qt \
+				--disable-rpath \
+				--enable-faad \
+				--enable-nls \
+				--enable-lirc \
+				--enable-pvr \
+				--enable-ncurses \
+				--enable-realrtsp \
+				--enable-xosd \
+				--enable-aa \
+				--enable-vcdx \
+				--enable-opus 
 
-make
+make -i
 make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version install
 
 install -Dm644 ../update-vlc-plugin-cache.hook $PKG/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook

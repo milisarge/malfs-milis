@@ -1,0 +1,18 @@
+# Description: Aircrack next generation
+# URL: http://www.aircrack-ng.org/
+# Packager: milisarge
+# Depends on: libnl
+
+name=aircrack-ng
+version=1.2
+release=1
+source=(http://download.aircrack-ng.org/$name-$version-rc4.tar.gz)
+
+build() {
+  cd $name-$version-rc4
+  make \
+      prefix=/usr \
+      SQLITE=false \
+      REVISION=0 \
+      DESTDIR=$PKG install
+}
