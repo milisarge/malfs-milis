@@ -1,13 +1,15 @@
 # Description : The SDDM package contains a lightweight display manager written in Qt and QML. 
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake qt5 upower consolekit2
+# Depends on: cmake qt5 upower consolekit2 
 
 name=sddm
 release=1
 version=0.13.0
 
-source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$version.tar.xz)
+source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$version.tar.xz
+         sddm.conf
+         10-backlight.rules)
 
 build() {
 source /etc/blfs-bootscripts
@@ -23,6 +25,9 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -Wno-dev ..
 make
 make DESTDIR=$PKG install
+
+install -m 644 -p $SRC/sddm.conf $PKG/etc/
+install -m 644 -p $SRC/10-backlight.rules $PKG/etc/polkit-1/rules.d/
 
 cat > $PKG/etc/pam.d/sddm << "EOF"
 # Begin /etc/pam.d/sddm
