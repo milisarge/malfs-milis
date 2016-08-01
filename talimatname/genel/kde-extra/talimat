@@ -3,7 +3,7 @@
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: akonadi akonadi-calendar akonadi-search calendarsupport eventviews ffmpegthumbs grantleetheme incidenceeditor kaccounts-integration kaccounts-providers kalarmcal kblog kcalcore kcalutils kcontacts kdegraphics-thumbnailers kdenlive kdepim kdepim-addons kdepim-apps-libs kdepimlibs kdepim-runtime kdgantt2 kdiamond khelpcenter kholidays kidentitymanagement kimap kldap kmahjongg kmailtransport kmbox kmime kmix kontactinterface kpat kpimtextedit ktnef libgravatar libkdcraw libkdegames libkdepim libkexiv2 libkgapi libkipi libkleo libkmahjongg libksieve mailcommon mailimporter messagelib pimcommon signon-kwallet-extension syndication telepathy
 
-name=kde-app
+name=kde-extra
 release=1
 version=20160722
 
