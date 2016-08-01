@@ -1,4 +1,3 @@
-. lib/lsb/init-functions
 sed -i "s/^id:[3-5]/id:5/" /etc/inittab
 echo  "Init default set to 5 in the /etc/inittab file"
 ln -s /etc/init.d/sddm /etc/rc.d/rc5.d/S90sddm
