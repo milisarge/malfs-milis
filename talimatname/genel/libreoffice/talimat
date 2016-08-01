@@ -47,7 +47,7 @@ build() {
 ./autogen.sh --prefix=$LO_PREFIX         \
              --sysconfdir=/etc           \
              --with-vendor="Milis"       \
-             --with-lang="es de fr it pt fi nb nl da sv tr"   \
+             --with-lang="es tr ar ru"   \
              --with-help                 \
              --with-myspell-dicts        \
              --with-alloc=system         \
