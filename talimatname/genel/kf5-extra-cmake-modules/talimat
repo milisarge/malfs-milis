@@ -9,11 +9,14 @@ release=1
 _name=extra-cmake-modules
 _version=5.24
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz
+         pri-install-dir.patch)
 
 build() {
 cd ${_name}-$version
-cmake -DCMAKE_INSTALL_PREFIX=/usr
+patch -p1 -i ../pri-install-dir.patch
+cmake -DCMAKE_INSTALL_PREFIX=/usr  \
+      -DECM_MKSPECS_INSTALL_DIR=/usr/lib/qt5/mkspecs
 
 make
 make DESTDIR=$PKG install
