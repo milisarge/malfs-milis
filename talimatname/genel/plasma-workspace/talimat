@@ -7,7 +7,8 @@ name=plasma-workspace
 version=5.7.2
 release=1
 
-source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz
+         kscreensaver.pam)
 
 build() {
 cd $name-$version
@@ -20,8 +21,8 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr \
 make
 make DESTDIR=$PKG install
 
-mkdir -p $PKG/usr/bin/
-sed -i "s:qtpaths:&-qt5:g" $PKG/usr/bin/startkde
+sed 's|qtpaths|qtpaths-qt5|' -i $PKG/usr/bin/startkde
+sed 's|qtpaths|qtpaths-qt5|' -i $PKG/usr/bin/startplasmacompositor
 
 mkdir -p $PKG/etc/pam.d
 
@@ -38,4 +39,6 @@ EOF
 
 install -v -dm755 $PKG/usr/share/xsessions
 ln -sfv /usr/share/xsessions/plasma.desktop $PKG/usr/share/xsessions/kf5-plasma.desktop
+
+install -D -m644 $SRC/kscreensaver.pam $PKG/etc/pam.d/kscreensaver
 }

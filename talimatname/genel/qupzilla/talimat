@@ -4,7 +4,7 @@
 # Depends on: qt5 desktop-file-utils hunspell qt5-webkit
 
 name=qupzilla
-version=1.8.9
+version=2.0.1
 release=1
 
 source=( https://github.com/QupZilla/qupzilla/releases/download/v$version/QupZilla-$version.tar.xz)

@@ -1,20 +1,22 @@
 # Description: library for the made of documents postscript
 # URL: http://libspectre.freedesktop.org/wiki/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: ghostscript 
 
 name=libspectre
 version=0.2.7
 release=1
 
-source=(http://libspectre.freedesktop.org/releases/$name-$version.tar.gz)
-
+source=(http://libspectre.freedesktop.org/releases/$name-$version.tar.gz
+	    libspectre-$version-ghostscript-9.18-1.patch)
+	    
 build() {
 cd $name-$version
+	patch -Np1 -i ../libspectre-$version-ghostscript-9.18-1.patch
 	./configure --prefix=/usr \
-	--disable-static
+	            --disable-static
+	            
 	make
-	make DESTDIR=$PKG install
+    make DESTDIR=$PKG install
 }
-
   
