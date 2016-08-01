@@ -16,6 +16,7 @@ lxde-task
 qemu-all
 worker
 yad
+cdrkit
 scrot
 syslinux
 wicd
