@@ -1,7 +1,7 @@
 # Description : This package going install KDE5 Applications
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: ark baloo-widgets dolphin dolphin-plugins gwenview kate kcalc kde5-l10n kdeconnect kio-extras konsole konversation kpmcore okular partitionmanager print-manager spectacle yakuake
+# Depends on: ark baloo-widgets dolphin dolphin-plugins gwenview kate kcalc kde5-l10n kdeconnect kio-extras konsole konversation okular partitionmanager print-manager spectacle yakuake
 
 name=kde-app
 release=1
