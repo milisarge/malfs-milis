@@ -1,18 +1,24 @@
 # Description: Userspace virtual filesystem implemented as a pluggable module for gio
 # URL: http://www.gnome.org/
-# Packager: tyrry at nutyx dot org
-# Depends on: avahi dbus-glib intltool libsecret gtk3 libsoup udisks2 obexd fuse libarchive samba bluez 
+# Packager: milisarge
+# Depends on: avahi dbus-glib intltool libsecret gtk3 libsoup udisks2 obexd fuse libarchive samba bluez gcr libgphoto2
 
 name=gvfs
-version=1.24.2
+version=1.28.2
 release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 build() {
 cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc \
---disable-gphoto2
+./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var --disable-static \
+      --libexecdir=/usr/lib/gvfs \
+      --with-bash-completion-dir=/usr/share/bash-completion/completions \
+      --disable-systemd
 make
 make DESTDIR=$PKG install
+rm -rf $PKG/usr/lib/gvfs/gvfsd-{smb,smb-browse,afc,gphoto2,mtp,google}
+rm -rf $PKG/usr/share/gvfs/mounts/{smb,smb-browse,afc,gphoto2,mtp,google}.mount
+rm -rf $PKG/usr/share/glib-2.0/schemas/org.gnome.system.smb.gschema.xml
+rm -rf $PKG/usr/share/GConf/gsettings/gvfs-smb.convert
 }
