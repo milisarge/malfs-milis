@@ -1,11 +1,10 @@
 # Description: Permits access from Perl to the gettext() family of functions
 # URL: URL: http://search.cpan.org/dist/gettext/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: gettext 
-run=( perl )
+
 name=perl-locale-gettext
-version=1.05
+version=1.07
 release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/gettext-$version.tar.gz
@@ -24,7 +23,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
