@@ -1052,6 +1052,7 @@ squashfs_olustur(){
     #son ayar yuklemeleri
     cp /etc/bashrc $LFS/etc/bashrc
     cp ./ayarlar/mps.conf $LFS/etc/mps.conf
+    cp ./rootfs/etc/rc.d/init.d/sysklogd $LFS/etc/rc.d/init.d/sysklogd
     iso_etiket="malfsLive"
     rm iso_icerik/boot/kernel
     rm iso_icerik/boot/initramfs
