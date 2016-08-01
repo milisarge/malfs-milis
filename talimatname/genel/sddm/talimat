@@ -28,6 +28,7 @@ make DESTDIR=$PKG install
 
 install -m 644 -p $SRC/sddm.conf $PKG/etc/
 install -m 644 -p $SRC/10-backlight.rules $PKG/etc/polkit-1/rules.d/
+install -v -dm755 -o sddm -g sddm /var/lib/sddm
 
 cat > $PKG/etc/pam.d/sddm << "EOF"
 # Begin /etc/pam.d/sddm
