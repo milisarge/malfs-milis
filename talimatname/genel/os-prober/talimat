@@ -1,7 +1,7 @@
 # Description: os-prober
 # URL:        https://packages.debian.org/source/sid/os-prober
 # Maintainer:  milisarge
-# Depends on:	grub
+# Depends on:
 
 name=os-prober
 version=1.71
@@ -41,9 +41,6 @@ cp linux-boot-probes/common/* $PKG/usr/lib/linux-boot-probes/
 mkdir $PKG/usr/lib/linux-boot-probes/mounted
 cp linux-boot-probes/mounted/common/* $PKG/usr/lib/linux-boot-probes/mounted
 cp linux-boot-probes/mounted/x86/* $PKG/usr/lib/linux-boot-probes/mounted
-
-mkdir -p $PKG/etc/default/
-cp $SRC/grub.ornek $PKG/etc/default/grub
 
 mkdir -p $PKG/usr/share/$name
 cp common.sh $PKG/usr/share/$name
