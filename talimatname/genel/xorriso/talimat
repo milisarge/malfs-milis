@@ -1,0 +1,17 @@
+# Description:	ISO 9660 Rock Ridge Filesystem Manipulator
+# URL:	https://www.gnu.org/software/xorriso/
+# Pacakager: milisarge
+
+name=xorriso
+version=1.4.4
+release=1
+source=(https://www.gnu.org/software/$name/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+
+  ./configure --prefix=/usr
+
+  make all
+  make DESTDIR=$PKG install
+}
