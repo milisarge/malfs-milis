@@ -4,7 +4,7 @@
 # Depends on: tar apache-ant junit openldap python3 cups curl libatomic-ops gtk2 gtk3 perl-archive-zip perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt neon nss poppler postgresql redland icu hunspell gsfonts dejavu-ttf p7zip graphite2 npapi-sdk clucene serf unixodbc
 
 name=libreoffice
-version=5.2.0.3
+version=5.2.0.4
 release=1
 
 source=(http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-$version.tar.xz
