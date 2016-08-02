@@ -1,0 +1,18 @@
+# Description: Midna Grub-theme.
+# URL: http://kaosx.us
+# Pcakager: alihan-ozturk8@hotmail.com
+# Depends on: grub
+
+name=grub-theme-midna
+version=1.4
+release=1
+
+source=( http://sourceforge.net/projects/kaosx/files/sources/grub-themes/$name-$version.zip)
+
+build() {
+cd $SRC
+
+mkdir -p $PKG/usr/share/grub/themes
+install -dm755 "$PKG/usr/share/grub/themes"
+  cp -dpr --no-preserve=ownership "midna" "$PKG/usr/share/grub/themes"
+}
