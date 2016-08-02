@@ -1,0 +1,110 @@
+# Description: A Multiboot boot loader
+# URL: http://www.gnu.org/software/grub/
+# Pcakager: alihan-ozturk8@hotmail.com
+# Depends on: freetype help2man efivar efibootmgr os-prober dosfstools fuse mtools libisoburn
+
+name=grub
+version=2.02-beta3
+release=1
+
+source=( ftp://alpha.gnu.org/gnu/grub/grub-2.02~beta3.tar.xz \
+         http://source.pisilinux.org/1.0/grub2_extras_915resolution_r10.tar.xz \
+         unifont-6.3.20131217.bdf \
+         milis_name.patch \
+         initramfs.patch \
+         grub_mkconfig.patch \
+         grub.default)
+
+build() {
+cd $name-2.02~beta3
+
+patch -Np1 -i ../milis_name.patch
+patch -i $SRC/initramfs.patch util/grub.d/10_linux.in
+patch -Np1 -i ../grub_mkconfig.patch
+
+cp $SRC/unifont-6.3.20131217.bdf $SRC/$name-2.02~beta3/unifont.bdf
+
+mkdir -p SRC/$name-2.02~beta3/grub-extras/915resolution
+install -d "$SRC/$name-2.02~beta3/grub-extras"
+cp -r "$SRC/915resolution" "SRC/$name-2.02~beta3/grub-extras/915resolution"
+export GRUB_CONTRIB="$SRC/$name-2.02~beta3/grub-extras/"
+
+unset CFLAGS
+unset CPPFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+unset MAKEFLAGS
+
+./autogen.sh
+./configure --disable-werror \
+            --with-platform=pc \
+	     	--target=i386 \
+		    --enable-mm-debug \
+		    --enable-nls \
+		    --enable-device-mapper \
+		    --enable-cache-stats \
+		    --enable-boot-time \
+		    --enable-grub-mkfont \
+	    	--enable-grub-mount \
+	    	--prefix="/usr" \
+			--bindir="/usr/bin" \
+			--sbindir="/usr/bin" \
+			--mandir="/usr/share/man" \
+			--infodir="/usr/share/info" \
+			--datarootdir="/usr/share" \
+			--sysconfdir="/etc" \
+			--program-prefix="" \
+	    	--with-bootdir=/boot \
+		    --with-grubdir=grub
+
+cp -r "$SRC/$name-2.02~beta3" "$SRC/$name-2.02~beta3-efi"
+cd $SRC/$name-2.02~beta3-efi
+
+unset CFLAGS
+unset CPPFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+unset MAKEFLAGS
+
+./autogen.sh
+./configure --with-platform=efi \
+			--target=x86_64  \
+			--enable-mm-debug \
+			--enable-nls \
+			--enable-device-mapper \
+			--enable-cache-stats \
+			--enable-boot-time \
+			--enable-grub-mkfont \
+			--enable-grub-mount \
+			--prefix="/usr" \
+			--bindir="/usr/bin" \
+			--sbindir="/usr/bin" \
+			--mandir="/usr/share/man" \
+			--infodir="/usr/share/info" \
+			--datarootdir="/usr/share" \
+			--sysconfdir="/etc" \
+			--program-prefix="" \
+			--with-bootdir=/boot \
+			--with-grubdir=grub \
+			--disable-silent-rules \
+			--disable-werror
+		
+cd $SRC/$name-2.02~beta3
+make dist
+make
+cd $SRC/$name-2.02~beta3-efi
+make
+
+cd $SRC/$name-2.02~beta3
+./grub-mkfont -o unicode.pf2 unifont.bdf
+mkdir -p $PKG/boot/grub
+cp $SRC/$name-2.02~beta3/unicode.pf2 $PKG/boot/grub
+make DESTDIR=$PKG install
+
+cd $SRC/$name-2.02~beta3-efi
+make DESTDIR=$PKG install
+
+mkdir -p $PKG/etc/default/grub
+install -D -m0644 "$SRC/grub.default" "$PKG/etc/default/grub"
+
+}
