@@ -1230,6 +1230,9 @@ parametre_analiz() {
 			-bo|--initrd-yap)
 				baslatici_olustur
 				exit 0;;
+			-geb)
+				grub_efi_boot
+				exit 0;;
 			-so|--squashfs-yap)
 				squashfs_olustur
 				exit 0;;
