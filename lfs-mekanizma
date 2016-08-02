@@ -1159,6 +1159,20 @@ iso_olustur(){
 	-b boot/isolinux/isolinux.bin -c boot/isolinux/isolinux.cat -o malfs-milis.iso iso_icerik && isohybrid malfs-milis.iso
 }
 
+iso_olustur_efili() {
+    xorriso -as mkisofs \
+        -iso-level 3 -rock -joliet \
+        -max-iso9660-filenames -omit-period \
+        -omit-version-number -relaxed-filenames -allow-lowercase \
+        -volid "MILIS_LIVE" \
+        -eltorito-boot boot/isolinux/isolinux.bin \
+        -eltorito-catalog boot/isolinux/boot.cat \
+        -no-emul-boot -boot-load-size 4 -boot-info-table \
+        -eltorito-alt-boot -e boot/grub/efiboot.img -isohybrid-gpt-basdat -no-emul-boot \
+        -isohybrid-mbr $SYSLINUX_DATADIR/isohdpfx.bin \
+        -output "milislinux-live.iso" iso_icerik || echo "ISO imaj olusturalamadı";exit 1
+}
+
 temizlik(){
 	rm -r /tools/*
 	rm -r chroot/.log/*
@@ -1238,6 +1252,9 @@ parametre_analiz() {
 			-io|--iso-yap)
 				iso_olustur
 				exit 0;;
+			-iof|--iso-yap-efili)
+				iso_olustur_efili
+				exit 0;;	
 			-ba|--birinci-ayarlar)
 				birinci_ayarlar
 				exit 0;;
