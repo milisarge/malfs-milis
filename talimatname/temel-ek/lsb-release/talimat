@@ -16,4 +16,6 @@ make DESTDIR=$PKG prefix="/usr" install
 
 mkdir -p $PKG/etc/
 cp $SRC/lsbrelease $PKG/etc/lsb-release
+cp $SRC/lsbrelease $PKG/etc/milis-release
+cp $SRC/lsbrelease $PKG/etc/system-release
 }
