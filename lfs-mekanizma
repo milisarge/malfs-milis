@@ -1101,7 +1101,7 @@ grub_efi_boot(){
 	if [ $? -ne 0 ]; then
 			umount "$GRUB_EFI_TMPDIR"
 			losetup --detach "${LOOP_DEVICE}"
-			echo "Failed to generate EFI loader"
+			echo "EFI yukleyici olusturulması basarısız!"
 			exit 1
 	fi
 	mkdir -p ${GRUB_EFI_TMPDIR}/EFI/BOOT
@@ -1112,8 +1112,6 @@ grub_efi_boot(){
 
 
 }
-
-
 
 squashfs_olustur(){
     unmount_islemi

@@ -7,6 +7,7 @@ libtirpc
 rpcbind
 nfs-utils
 jfsutils
+lsb-release
 linux-firmware
 kernel-lts
 dracut

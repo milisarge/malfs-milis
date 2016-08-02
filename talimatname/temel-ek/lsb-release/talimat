@@ -2,7 +2,7 @@
 # URL: http://www.linuxbase.org/
 # Maintainer: Sven-Hendrik Haase
 # Packager: geantbrun at gmail dot com
-# Depends on: bash
+# Depends on: 
 
 name=lsb-release
 version=1.4
