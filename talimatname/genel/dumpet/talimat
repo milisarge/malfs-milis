@@ -1,0 +1,15 @@
+# Description:	is a tool to dump information about bootable CDs and other similar formats. 
+# URL:	https://fedorahosted.org/dumpet/
+# Pacakager: milisarge
+# Depends on: libxml2 popt
+
+name=dumpet
+version=2.1
+release=1
+source=(https://fedorahosted.org/releases/d/u/dumpet/$name-$version.tar.bz2)
+
+build() {
+  cd $name-$version
+  make
+  make DESTDIR=$PKG install
+}
