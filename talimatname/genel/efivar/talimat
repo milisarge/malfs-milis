@@ -1,0 +1,19 @@
+# Description: Tools and library to manipulate EFI variables.
+# URL: https://github.com/rhinstaller/efivar
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: popt
+
+name=efivar
+version=0.24
+release=1
+
+source=( https://github.com/rhinstaller/$name/releases/download/$version/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
+cd src/test
+make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
+cd ..
+make -j1 V=1  DESTDIR=$PKG libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" install
+}
