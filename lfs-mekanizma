@@ -1106,7 +1106,6 @@ grub_efi_boot(){
 	fi
 	mkdir -p ${GRUB_EFI_TMPDIR}/EFI/BOOT
 	cp -f $LFS/tmp/bootx64.efi ${GRUB_EFI_TMPDIR}/EFI/BOOT/BOOTX64.EFI
-	fi
 	umount "$GRUB_EFI_TMPDIR"
 	losetup --detach "${LOOP_DEVICE}"
 	rm -rf $GRUB_EFI_TMPDIR
