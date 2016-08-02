@@ -999,9 +999,9 @@ chroot_gir(){
 
 unmount_islemi() {
 	umount $LFS/dev/shm
-	umount $LFS/run
 	umount $LFS/dev/pts
 	umount $LFS/dev
+	umount $LFS/run
 	umount $LFS/proc
 	umount $LFS/sys
 }
@@ -1046,6 +1046,76 @@ baslatici_olustur(){
 	dracut -N --force --xz --add 'dmsquash-live pollcdrom' --omit systemd  /boot/initramfs $kernelv
 }
 
+grub_efi_boot(){
+
+	: ${BASE_ARCH:=$(uname -m)}
+	: ${KEYMAP:=tr}
+	: ${LOCALE:=tr_TR.UTF-8}
+	: ${INITRAMFS_COMPRESSION:=xz}
+	: ${SQUASHFS_COMPRESSION:=xz}
+	: ${BOOT_TITLE:="Milis_Linux"}
+
+	ISO_VOLUME="MILIS_LIVE"
+
+	IMAGEDIR="iso_icerik"
+	IMAGEDIR=$(readlink -f $IMAGEDIR)
+	BOOT_DIR="$IMAGEDIR/boot"
+	ISOLINUX_DIR="$BOOT_DIR/isolinux"
+	GRUB_DIR="$BOOT_DIR/grub"
+	ISOLINUX_CFG="$ISOLINUX_DIR/isolinux.cfg"
+	SPLASH_IMAGE="$ISOLINUX_DIR/back.jpg"
+	#noaer vs yazabiliriz.
+	BOOT_CMDLINE=""
+	KERNELVERSION=`uname -r`
+	mkdir -p $GRUB_DIR
+	cp -f ayarlar/grub/grub.cfg $GRUB_DIR/
+	cp -f ayarlar/grub/grub_milis.cfg.in $GRUB_DIR/grub_milis.cfg
+	sed -i  -e "s|@@SPLASHIMAGE@@|$(basename ${SPLASH_IMAGE})|" \
+		-e "s|@@KERNVER@@|${KERNELVERSION}|" \
+		-e "s|@@KEYMAP@@|${KEYMAP}|" \
+		-e "s|@@ARCH@@|$BASE_ARCH|" \
+		-e "s|@@BOOT_TITLE@@|${BOOT_TITLE}|" \
+		-e "s|@@BOOT_CMDLINE@@|${BOOT_CMDLINE}|" \
+		-e "s|@@LOCALE@@|${LOCALE}|" $GRUB_DIR/grub_milis.cfg
+
+	mkdir -p $GRUB_DIR/fonts
+	cp -f ayarlar/grub/fonts/unicode.pf2 $GRUB_DIR/fonts/
+
+	modprobe -q loop || :
+
+	# EFI vfat imajı olusturuyoruz.
+	truncate -s 16M $GRUB_DIR/efiboot.img >/dev/null 2>&1
+	mkfs.vfat -F12 -S 512 -n "grub_uefi" "$GRUB_DIR/efiboot.img" >/dev/null 2>&1
+
+	GRUB_EFI_TMPDIR="$(mktemp --tmpdir=/tmp -d)"
+	LOOP_DEVICE="$(losetup --show --find ${GRUB_DIR}/efiboot.img)"
+	mount -o rw,flush -t vfat "${LOOP_DEVICE}" "${GRUB_EFI_TMPDIR}" >/dev/null 2>&1
+
+	cp -a $IMAGEDIR/boot $LFS
+
+	chroot $LFS grub-mkstandalone -- \
+			 --directory="/usr/lib/grub/x86_64-efi" \
+			 --format="x86_64-efi" \
+			 --output="/tmp/bootx64.efi" \
+			 "boot/grub/grub.cfg"
+	if [ $? -ne 0 ]; then
+			umount "$GRUB_EFI_TMPDIR"
+			losetup --detach "${LOOP_DEVICE}"
+			echo "Failed to generate EFI loader"
+			exit 1
+	fi
+	mkdir -p ${GRUB_EFI_TMPDIR}/EFI/BOOT
+	cp -f $LFS/tmp/bootx64.efi ${GRUB_EFI_TMPDIR}/EFI/BOOT/BOOTX64.EFI
+	fi
+	umount "$GRUB_EFI_TMPDIR"
+	losetup --detach "${LOOP_DEVICE}"
+	rm -rf $GRUB_EFI_TMPDIR
+
+
+}
+
+
+
 squashfs_olustur(){
     unmount_islemi
     lfs_kontrol
@@ -1053,7 +1123,7 @@ squashfs_olustur(){
     cp /etc/bashrc $LFS/etc/bashrc
     cp ./ayarlar/mps.conf $LFS/etc/mps.conf
     cp ./rootfs/etc/rc.d/init.d/sysklogd $LFS/etc/rc.d/init.d/sysklogd
-    iso_etiket="malfsLive"
+    iso_etiket="MILIS_LIVE"
     rm iso_icerik/boot/kernel
     rm iso_icerik/boot/initramfs
     rm -r iso_icerik/LiveOS
@@ -1086,7 +1156,7 @@ squashfs_olustur(){
 
 iso_olustur(){
 	rm malfs-milis.iso
-	genisoimage -l -V malfsLive -R -J -pad -no-emul-boot -boot-load-size 4 -boot-info-table  \
+	genisoimage -l -V MILIS_LIVE -R -J -pad -no-emul-boot -boot-load-size 4 -boot-info-table  \
 	-b boot/isolinux/isolinux.bin -c boot/isolinux/isolinux.cat -o malfs-milis.iso iso_icerik && isohybrid malfs-milis.iso
 }
 

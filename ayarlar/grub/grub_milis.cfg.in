@@ -1,0 +1,45 @@
+set pager="1"
+set locale_dir="/boot/grub/locale"
+
+if [ -e "${prefix}/${grub_cpu}-${grub_platform}/all_video.mod" ]; then
+    insmod all_video
+else
+    insmod efi_gop
+    insmod efi_uga
+    insmod video_bochs
+    insmod video_cirrus
+fi
+
+insmod font
+
+if loadfont "/boot/grub/fonts/unicode.pf2" ; then
+    insmod gfxterm
+    set gfxmode="auto"
+    
+    terminal_input console
+    terminal_output gfxterm
+    
+    insmod png
+    background_image "/boot/isolinux/@@SPLASHIMAGE@@"
+fi
+
+if [ cpuid -l ]; then
+    menuentry "@@BOOT_TITLE@@ @@KERNVER@@ (@@ARCH@@)" {
+        set gfxpayload="keep"
+        linux /boot/kernel \
+		root=live:CDLABEL=MILIS_LIVE ro  \
+		rd.luks=0 rd.md=0 rd.dm=0 loglevel=4 gpt add_efi_memmap \
+		vconsole.unicode=1 vconsole.keymap=@@KEYMAP@@ \
+		locale.LANG=@@LOCALE@@ @@BOOT_CMDLINE@@
+        initrd /boot/initramfs
+    }
+    menuentry "@@BOOT_TITLE@@ @@KERNVER@@ (@@ARCH@@) (RAM)" {
+        set gfxpayload="keep"
+        linux /boot/kernel \
+		root=live:CDLABEL=MILIS_LIVE ro init=/sbin/init \
+		rd.luks=0 rd.md=0 rd.dm=0 loglevel=4 gpt add_efi_memmap \
+		vconsole.unicode=1 vconsole.keymap=@@KEYMAP@@ \
+		locale.LANG=@@LOCALE@@ @@BOOT_CMDLINE@@ rd.live.ram
+        initrd /boot/initramfs
+    }
+fi
