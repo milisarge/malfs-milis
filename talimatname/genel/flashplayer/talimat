@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 
 name=flashplayer
-version=11.2.202.569
+version=11.2.202.632
 release=1
 
 
@@ -37,4 +37,3 @@ build() {
         install -D -m755 libflashplayer.so $PKG/usr/lib/mozilla/plugins/libflashplayer.so
         install -D -m644 flashplayer.mms.cfg $PKG/etc/adobe/mms.cfg
 }
-
