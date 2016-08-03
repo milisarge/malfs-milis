@@ -1168,7 +1168,7 @@ iso_olustur_efili() {
         -omit-version-number -relaxed-filenames -allow-lowercase \
         -volid "MILIS_LIVE" \
         -eltorito-boot boot/isolinux/isolinux.bin \
-        -eltorito-catalog boot/isolinux/boot.cat \
+        -eltorito-catalog boot/isolinux/isolinux.cat \
         -no-emul-boot -boot-load-size 4 -boot-info-table \
         -eltorito-alt-boot -e boot/grub/efiboot.img -isohybrid-gpt-basdat -no-emul-boot \
         -isohybrid-mbr iso_icerik/boot/isolinux/isohdpfx.bin \
