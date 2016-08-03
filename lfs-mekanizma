@@ -1126,6 +1126,7 @@ squashfs_olustur(){
     rm -r iso_icerik/LiveOS
     cp $LFS/boot/kernel-* iso_icerik/boot/kernel
     cp $LFS/boot/initramfs* iso_icerik/boot/initramfs
+    cp $LFS/usr/lib/syslinux/isohdpfx.bin iso_icerik/boot/isolinux/isohdpfx.bin
     anayer=$(du -sm "$LFS"|awk '{print $1}')
     fazladan="$((anayer))"
     mkdir -p tmp
@@ -1167,7 +1168,7 @@ iso_olustur_efili() {
         -eltorito-catalog boot/isolinux/boot.cat \
         -no-emul-boot -boot-load-size 4 -boot-info-table \
         -eltorito-alt-boot -e boot/grub/efiboot.img -isohybrid-gpt-basdat -no-emul-boot \
-        -isohybrid-mbr $SYSLINUX_DATADIR/isohdpfx.bin \
+        -isohybrid-mbr boot/isolinux/isohdpfx.bin \
         -output "milislinux-live.iso" iso_icerik || echo "ISO imaj olusturalamadı";exit 1
 }
 
