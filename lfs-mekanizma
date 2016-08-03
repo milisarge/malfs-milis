@@ -1126,7 +1126,6 @@ squashfs_olustur(){
     rm -r iso_icerik/LiveOS
     cp $LFS/boot/kernel-* iso_icerik/boot/kernel
     cp $LFS/boot/initramfs* iso_icerik/boot/initramfs
-    cp $LFS/usr/lib/syslinux/isohdpfx.bin iso_icerik/boot/isolinux/isohdpfx.bin
     anayer=$(du -sm "$LFS"|awk '{print $1}')
     fazladan="$((anayer))"
     mkdir -p tmp
@@ -1159,6 +1158,7 @@ iso_olustur(){
 }
 
 iso_olustur_efili() {
+    cp $LFS/usr/lib/syslinux/isohdpfx.bin iso_icerik/boot/isolinux/isohdpfx.bin
     xorriso -as mkisofs \
         -iso-level 3 -rock -joliet \
         -max-iso9660-filenames -omit-period \
