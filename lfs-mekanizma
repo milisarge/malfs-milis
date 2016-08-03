@@ -1092,21 +1092,24 @@ grub_efi_boot(){
 	mount -o rw,flush -t vfat "${LOOP_DEVICE}" "${GRUB_EFI_TMPDIR}" >/dev/null 2>&1
 
 	cp -a $IMAGEDIR/boot $LFS
-
-	chroot $LFS grub-mkstandalone -- \
-			 --directory="/usr/lib/grub/x86_64-efi" \
-			 --format="x86_64-efi" \
-			 --output="/tmp/bootx64.efi" \
-			 "boot/grub/grub.cfg"
+	
+	echo "chroot gir"
+	
+	chroot "$LFS" /usr/bin/env -i grub-mkstandalone --directory="/usr/lib/grub/x86_64-efi" --format="x86_64-efi" --output="/tmp/bootx64.efi" "ayarlar/grub/grub.cfg"
+	
+	echo "chroot cik"
+	
 	if [ $? -ne 0 ]; then
 			umount "$GRUB_EFI_TMPDIR"
 			losetup --detach "${LOOP_DEVICE}"
 			echo "EFI yukleyici olusturulması basarısız!"
 			exit 1
 	fi
+	echo "${GRUB_EFI_TMPDIR} silinecek"
 	mkdir -p ${GRUB_EFI_TMPDIR}/EFI/BOOT
 	cp -f $LFS/tmp/bootx64.efi ${GRUB_EFI_TMPDIR}/EFI/BOOT/BOOTX64.EFI
 	umount "$GRUB_EFI_TMPDIR"
+	echo " ${LOOP_DEVICE} silinecek"
 	losetup --detach "${LOOP_DEVICE}"
 	rm -rf $GRUB_EFI_TMPDIR
 

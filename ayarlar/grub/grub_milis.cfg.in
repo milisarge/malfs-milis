@@ -27,20 +27,20 @@ fi
 if [ cpuid -l ]; then
     menuentry "@@BOOT_TITLE@@ @@KERNVER@@ (@@ARCH@@)" {
         set gfxpayload="keep"
-        linux (${milislive})/boot/vmlinuz \
+        linux (${milislive})/boot/kernel \
 		root=live:CDLABEL=MILIS_LIVE ro  \
 		rd.luks=0 rd.md=0 rd.dm=0 loglevel=4 gpt add_efi_memmap \
 		vconsole.unicode=1 vconsole.keymap=@@KEYMAP@@ \
 		locale.LANG=@@LOCALE@@ @@BOOT_CMDLINE@@
-        initrd (${milislive})/boot/initrd
+        initrd (${milislive})/boot/initramfs
     }
     menuentry "@@BOOT_TITLE@@ @@KERNVER@@ (@@ARCH@@) (RAM)" {
         set gfxpayload="keep"
-        linux (${milislive})/boot/vmlinuz \
+        linux (${milislive})/boot/kernel \
 		root=live:CDLABEL=MILIS_LIVE ro  \
 		rd.luks=0 rd.md=0 rd.dm=0 loglevel=4 gpt add_efi_memmap \
 		vconsole.unicode=1 vconsole.keymap=@@KEYMAP@@ \
 		locale.LANG=@@LOCALE@@ @@BOOT_CMDLINE@@ rd.live.ram
-        initrd (${milislive})/boot/initrd
+        initrd (${milislive})/boot/initramfs
     }
 fi
