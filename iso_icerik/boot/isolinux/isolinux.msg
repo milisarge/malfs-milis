@@ -1,1 +1,0 @@
-hosgeldiniz turkistan isletim dizimi
