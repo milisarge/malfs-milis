@@ -244,14 +244,21 @@ paket_kur_oto(){
 }
 
 paket_kur_oto_zorla(){
-	local kpkt pkt pak
-	for kpkt in `cat $1`;do
+	local kpkt pkt pak kliste
+	if [ "$1" = "-H" ];then
+		ls *.mps.lz > "otokur.list"
+		kliste="otokur.list"
+	else
+		kliste="$1"
+	fi
+	for kpkt in `cat $kliste`;do
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
 			paket_sil "$pkt" "evet"
 			mps -k "$pak"
 		done
 	done
+	rm -rf otokur.list
 }
 
 paket_kur_liste(){
