@@ -243,6 +243,17 @@ paket_kur_oto(){
 	done
 }
 
+paket_kur_oto_zorla(){
+	local kpkt pkt pak
+	for kpkt in `cat $1`;do
+		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
+			pak=`ls "$pkt#"*`
+			paket_sil "$pkt" "evet"
+			mps -k "$pak"
+		done
+	done
+}
+
 paket_kur_liste(){
 	local kpkt pkt pak
 	for kpkt in `cat $1`;do
@@ -815,6 +826,8 @@ ayarlar() {
 				paket_derle_kur "$2" ;;	
 			-ok|--pkok)
 				paket_kur_oto "$2" ;;
+			-okz)
+				paket_kur_oto_zorla "$2" ;;	
 			-okl|--pkokl)
 				paket_kur_liste "$2" ;;
 			-ko|--pkko)
