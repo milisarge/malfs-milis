@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.6"
+versiyon="0.8"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -273,7 +273,18 @@ paket_kur_liste(){
 	for kpkt in `cat $1`;do
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
-			mps -k2 "$pak"
+			mps -k "$pak"
+		done
+	done
+}
+
+paket_kur_liste_zorla(){
+	local kpkt pkt pak
+	for kpkt in `cat $1`;do
+		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
+			pak=`ls "$pkt#"*`
+			paket_sil "$kpkt" "evet"
+			mps -k "$pak"
 		done
 	done
 }
@@ -844,6 +855,8 @@ ayarlar() {
 				paket_kur_oto_zorla "$2" ;;	
 			-okl|--pkokl)
 				paket_kur_liste "$2" ;;
+			-oklz)
+				paket_kur_liste_zorla "$2" ;;	
 			-ko|--pkko)
 				paket_kur_oto2 "$2" ;;	
 			-kuruld)
