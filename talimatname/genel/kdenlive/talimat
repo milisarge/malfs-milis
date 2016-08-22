@@ -1,6 +1,6 @@
 # Description: A non-linear video editor for Linux using the MLT video framework
 # URL: http://www.kdenlive.org/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-knewstuff kf5-kplotting kf5-knotifyconfig kf5-kded kf5-kfilemetadata qt5-webkit mlt xorg-glu sdl_image hicolor-icon-theme qt5 kf5-extra-cmake-modules kf5-kdoctools v4l-utils ffmpeg cdrkit libdv recordmydesktop xine-ui plasma-desktop
 
 name=kdenlive
@@ -10,12 +10,13 @@ release=1
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version       \
-  cmake  -DCMAKE_BUILD_TYPE=Release  \
+  mkdir -p build
+  cd build
+  cmake ../$name-$version       \
+    -DCMAKE_BUILD_TYPE=Release  \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib    \
     -DBUILD_TESTING=OFF
-    
   make
   make DESTDIR=$PKG install
 }
