@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules qt5 kf5-baloo plasma-workspace
 
 name=plasma-mediacenter
-version=5.7.2
+version=5.7.3
 release=1
 
 source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)

@@ -4,10 +4,10 @@
 # Depends on: desktop-file-utils kf5-attica kf5-kbookmarks kf5-kjobwidgets kf5-kwallet kf5-solid kerberos
 
 name=kf5-kio
-version=5.24.0
+version=5.25.0
 release=1
 _name=kio
-_version=5.24
+_version=5.25
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 

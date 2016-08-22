@@ -5,7 +5,7 @@
 
 
 name=libkdcraw
-version=16.04.3
+version=16.08.0
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

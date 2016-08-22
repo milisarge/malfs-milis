@@ -1,0 +1,24 @@
+# Description : An image scanning library 
+# URL: https://www.kde.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: sane kf5-extra-cmake-modules qt5 kf5-ki18n kf5-kwallet kf5-ktextwidgets
+
+name=libksane
+release=1
+version=16.08.0
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+mkdir build
+cd    build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev ..
+make
+make DESTDIR=$PKG install
+}
+

@@ -1,10 +1,10 @@
 # Description :  Many Localization for KDE5
 # URL : http:/$langwww.kde.org
 # Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules kf5-ki18n kf5-kdoctools
+# Depends on : kf5-extra-cmake-modules kf5-ki18n kf5-kdoctools phonon-qt5
 
 name=kde5-l10n
-version=16.04.3
+version=16.08.0
 release=1
 
 source=()

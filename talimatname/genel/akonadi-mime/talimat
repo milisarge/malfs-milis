@@ -1,0 +1,22 @@
+# Description : Akonadi mime 
+# URL : https://projects.kde.org/kdepimlibs
+# Packager : alihan-ozturk8@hotmail.com
+# Depends on : kf5-extra-cmake-modules boost kf5-kcodecs akonadi kf5-kdelibs4support kf5-kio kf5-kcompletion kf5-kcodecs phonon-qt5 kcontacts kcalcore kmime kf5-ki18n kf5-kitemviews kf5-kconfig kf5-solid qt5 kldap kmbox grantlee-qt5
+
+name=akonadi-mime
+version=16.08.0
+release=1
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+  mkdir -p build
+  cd build
+  cmake ../$name-$version \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+  make DESTDIR=$PKG install
+}

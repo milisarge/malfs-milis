@@ -1,10 +1,10 @@
 # Description : Calendar support library
 # URL : https://community.kde.org/KDE_PIM
 # Packager : alihan-ozturk28@hotmail.com
-# Depends on : kdepim-apps-libs pimcommon kdepimlibs kholidays akonadi-calendar kf5-extra-cmake-modules kf5-kdoctools qt5
+# Depends on : kdepim-apps-libs pimcommon kholidays akonadi-calendar kf5-extra-cmake-modules kf5-kdoctools qt5
 
 name=calendarsupport
-version=16.04.3
+version=16.08.0
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
