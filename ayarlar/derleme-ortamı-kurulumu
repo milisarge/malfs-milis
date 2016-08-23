@@ -1,0 +1,45 @@
+mps -kur openssh
+mps -kur git
+
+konsol açıp " ssh-keygen " komutunu verip enterlayın
+
+daha sonra ev dizinine girip Görünüm-->Gizli Klasörleri Göster seçeneğini açıp .ssh klasörüne girip id_rsa.pub dosyasının içeriğini github adresinizdeki Settings--Ssh bölümüne kaydedin.
+
+https://github.com/milisarge/malfs-milis adresini kendi github sayfanıza Fork tuşunu kullanarak kopyalayın. Daha sonra aşağıdaki komutları kullanın.
+
+git config --global user.name "user_name"
+git config --global user.email "user_mail"
+
+git clone git@github.com:giresun28/malfs-milis.git
+
+git remote add upstream git@github.com:milisarge/malfs-milis.git
+
+buraya kadar eksiksiz yaptıysanız artık Pull request kullanarak ana depoya paket gönderebilirsiniz.
+
+
+
+Derleme Ortamı Kurulumu
+
+https://milis.gungre.ch/iso/milis-bootstrap-enson.sfs  
+
+bu linkten ortamı indir.
+
+indirilen dosyayı /mnt altına kopyala.
+
+unsquashfs milis-bootstrap-enson.sfs
+
+mv squashfs-root lfs
+
+cd   /sources/milis.git
+
+export LFS=/mnt/lfs
+
+./lfs-mekanizma  -cg
+
+mps -sun
+
+mps -GG
+
+cp  /root/ayarlar/mps.conf  /etc
+
+mps -G
