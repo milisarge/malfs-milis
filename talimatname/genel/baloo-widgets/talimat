@@ -5,7 +5,7 @@
  
 name=baloo-widgets
 release=1
-version=16.04.3
+version=16.08.0
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
 

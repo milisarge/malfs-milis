@@ -5,7 +5,7 @@
 
 name=kde5
 release=1
-version=20160722
+version=20160822
 
 source=(talimat)
 

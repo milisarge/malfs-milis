@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules kf5-kdoctools kf5-plasma-framework telepathy-kde-common-internals telepathy-kde-accounts-kcm 
 
 name=telepathy-kde-desktop-applets
-version=16.04.3
+version=16.08.0
 release=1
 _name=ktp-desktop-applets
 

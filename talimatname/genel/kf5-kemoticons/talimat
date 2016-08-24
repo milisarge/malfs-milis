@@ -4,10 +4,10 @@
 # Depends on: kf5-karchive kf5-kconfig kf5-kcoreaddons kf5-kservice
 
 name=kf5-kemoticons
-version=5.24.0
+version=5.25.0
 release=1
 _name=kemoticons
-_version=5.24
+_version=5.25
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 

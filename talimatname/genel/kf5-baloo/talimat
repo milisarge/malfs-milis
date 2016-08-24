@@ -4,10 +4,10 @@
 # Depends on: lmdb attr kf5-kauth kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kfilemetadata kf5-ki18n kf5-kidletime kf5-kio kf5-solid hicolor-icon-theme xdg-utils
 
 name=kf5-baloo
-version=5.24.0
+version=5.25.0
 release=1
 _name=baloo
-_version=5.24
+_version=5.25
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 

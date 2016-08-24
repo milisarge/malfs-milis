@@ -1,10 +1,10 @@
 # Description : LDAP access API for KDE 
 # URL : https://projects.kde.org/kldap
 # Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules python kf5-ki18n kf5-kcompletion cyrus-sasl
+# Depends on : kf5-extra-cmake-modules python kf5-ki18n kf5-kcompletion cyrus-sasl kf5-kio kmbox
 
 name=kldap
-version=16.04.3
+version=16.08.0
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

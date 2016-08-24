@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals kf5-kio
 
 name=telepathy-kde-send-file
-version=16.04.3
+version=16.08.0
 release=1
 _name=ktp-send-file
 
