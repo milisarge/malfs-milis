@@ -4,7 +4,7 @@
 # Depends on: plasma-libkscreen kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kglobalaccel kf5-ki18n kf5-kwidgetsaddons kf5-kxmlgui plasma-kde-cli-tools xdg-utils
 
 name=plasma-kscreen
-version=5.7.3
+version=5.7.4
 release=1
 _name=kscreen
 

@@ -4,7 +4,7 @@
 # Depends on: kf5-kcoreaddons kf5-ki18n kf5-kwallet kf5-kwidgetsaddons
 
 name=plasma-ksshaskpass
-version=5.7.3
+version=5.7.4
 release=1
 _name=ksshaskpass
 
