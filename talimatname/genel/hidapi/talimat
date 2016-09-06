@@ -1,0 +1,18 @@
+# Description: A Simple library for communicating with USB and Bluetooth HID devices.
+# URL: http://www.signal11.us/oss/hidapi/
+# Packager: milisarge
+# Depends on: libusb fox
+ 
+
+name=hidapi
+version=0.8.0-rc1
+release=1
+source=(https://github.com/signal11/hidapi/archive/$name-$version.tar.gz)
+
+build() {
+	cd "$name-$name-$version"
+    ./bootstrap
+    ./configure --enable-testgui --prefix=/usr
+    make
+    make DESTDIR="$PKG/" install
+}
