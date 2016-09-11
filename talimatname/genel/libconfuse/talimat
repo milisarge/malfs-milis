@@ -1,0 +1,16 @@
+# Description: C-library for parsing configuration files
+# URL: https://github.com/martinh/libconfuse
+# Packager: milisarge
+# Depends on :
+
+name=libconfuse
+_name=confuse
+version=3.0
+release=1
+source=(https://github.com/martinh/libconfuse/releases/download/v3.0/confuse-3.0.tar.gz)
+build() {
+cd $_name-$version
+./configure --prefix=/usr --enable-shared
+make
+make DESTDIR=$PKG install
+}
