@@ -1,0 +1,19 @@
+# Description: AVRDUDE is an utility to download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers using the in-system programming technique (ISP)
+# URL: http://www.nongnu.org/avrdude/
+# Packager: milisarge
+# Depends on : libftdi libusb-compat hidapi
+
+name=avrdude
+version=6.3
+release=1
+source=(http://download.savannah.gnu.org/releases/avrdude/${name}-$version.tar.gz)
+build() {
+cd ${name}-$version
+./bootstrap
+  ./configure --mandir=/usr/share/man \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-linuxgpio
+make
+make DESTDIR="$PKG" install
+}
