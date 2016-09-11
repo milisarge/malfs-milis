@@ -1,0 +1,23 @@
+# Description: A library to talk to FTDI chips, optional python bindings.
+# URL: http://www.intra2net.com/en/developer/libftdi/download.php
+# Packager: milisarge
+# Depends on : libusb libconfuse boost cmake python swig
+
+name=libftdi
+version=1.3
+release=1
+source=(http://www.intra2net.com/en/developer/libftdi/download/${name}1-$version.tar.bz2)
+build() {
+cd ${name}1-$version
+sed -i 's|LIB_SUFFIX 64|LIB_SUFFIX ""|' CMakeLists.txt
+sed -i "s|MODE=\"0664\", GROUP=\"plugdev\"|TAG+=\"uaccess\"|g" packages/99-libftdi.rules
+mkdir -p build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SKIP_BUILD_RPATH=ON \
+-DCMAKE_BUILD_TYPE=Release -DEXAMPLES=OFF -DFTDI_EEPROM=ON
+make
+make DESTDIR="$PKG" install
+install -Dm644 "../packages/99-libftdi.rules" "$pkgdir/usr/lib/udev/rules.d/69-libftdi.rules"
+# FS#45053
+cp -r ../examples/* "$PKG/usr/share/libftdi/examples"
+}
