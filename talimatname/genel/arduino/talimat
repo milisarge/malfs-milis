@@ -1,0 +1,44 @@
+# Description: Arduino prototyping platform SDK
+# URL: https://github.com/arduino/Arduino
+# Packager: milisarge
+# Depends on : gtk2 desktop-file-utils shared-mime-info openjdk avrdude apache-ant unzip
+
+name=arduino
+version=1.6.11
+release=1
+source=(https://github.com/arduino/Arduino/archive/$version.tar.gz
+		arduino.sh)
+build() {
+cd "Arduino-${version}/build"
+    export PATH=/opt/OpenJDK-8u60-bin/jre/bin/:$PATH
+    ant clean build
+
+    cd ${SRC}/"Arduino-${version}/build/linux/work"
+
+    # Create directories
+    install -dm755 "${PKG}/usr/share/"{doc,icons/hicolor,applications,mime/packages}
+
+    # Copy the whole SDK
+    cp -a . "${PKG}/usr/share/arduino"
+
+    # Create wrapper for java8 + buider and documentation symlink
+    install -Dm755 "${SRC}/arduino.sh" "${PKG}/usr/bin/arduino"
+    ln -s /usr/share/arduino/arduino-builder "${PKG}/usr/bin/arduino-builder"
+    ln -s /usr/share/arduino/reference "${PKG}/usr/share/doc/arduino"
+
+    # Fix avrdude (see https://github.com/arduino/Arduino/issues/5094)
+    rm -f "${PKG}/usr/share/arduino/hardware/tools/avr/bin/avrdude"{,_bin}
+    ln -s /usr/bin/avrdude "${PKG}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
+
+    # Install desktop icons (keep a symlink for the arduino binary)
+    cp -a lib/icons/* "${PKG}/usr/share/icons/hicolor"
+    rm -rf "${PKG}/usr/share/arduino/lib/icons"
+    ln -s /usr/share/icons/hicolor "${PKG}/usr/share/arduino/lib/icons"
+
+    # Create desktop file using existing template
+    sed "s,<BINARY_LOCATION>,arduino %U,g;s,<ICON_NAME>,arduino,g" "lib/desktop.template" \
+    > "${PKG}/usr/share/applications/arduino.desktop"
+
+    # Install Arduino mime type
+    ln -s /usr/share/arduino/lib/arduino-arduinoide.xml "${PKG}/usr/share/mime/packages/arduino.xml"
+}
