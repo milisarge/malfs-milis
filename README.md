@@ -23,7 +23,7 @@ milis anasayfa : http://milis.gungre.ch
 
 iletişim: milisarge@gmail.com irc.freenode.net #milisarge
 
-telegram kanalımız telegram.me/milislinux
+Telegram kanalımız: http://telegram.me/milislinux
 
 Sunucu desteği için Lucas Sköldqvist dostumuza teşekkür ederiz. 
 
