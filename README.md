@@ -19,9 +19,9 @@ Kısaca Milis,sanal dünyanın getirisi olarak hakkımız olan kaybettiğimiz bi
 Ayrıca her türlü katkıda bulunmak isteyenler için bulunmaz bir türkçe açık kaynak projesidir.
 
 
-milis anasayfa : http://milis.gungre.ch
+Milis Anasayfa : http://milis.gungre.ch
 
-iletişim: milisarge@gmail.com irc.freenode.net #milisarge
+İletişim: milisarge@gmail.com irc.freenode.net #milisarge
 
 Telegram duyuru kanalımız: http://telegram.me/milislinux
 
