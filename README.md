@@ -22,8 +22,6 @@ Ayrıca her türlü katkıda bulunmak isteyenler için bulunmaz bir türkçe aç
 milis anasayfa : http://milis.gungre.ch
 
 iletişim: milisarge@gmail.com irc.freenode.net #milisarge
-Telegram kanalımız:
-https://telegram.me/milislinux
 
 Sunucu desteği için Lucas Sköldqvist dostumuza teşekkür ederiz. 
 
