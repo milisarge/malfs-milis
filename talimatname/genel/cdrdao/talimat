@@ -1,25 +1,26 @@
 # Description: Records audio/data CD-Rs in disk-at-once (DAO) mode
 # URL: http://cdrdao.sourceforge.net
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: lame libao libvorbis libmad
 
 name=cdrdao
 version=1.2.3
 release=1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 \
-	http://downloads.nutyx.org/files/patchs/$name/cdrdao-1.2.3-stat.patch)
+	     http://downloads.nutyx.org/files/patchs/$name/cdrdao-1.2.3-stat.patch)
 
 build() {
 	cd $name-$version
 
 	patch -Np1 -i $SRC/cdrdao-1.2.3-stat.patch
-
+    CXXFLAGS+=' -std=c++11 -Wno-narrowing'
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
-		--without-lame
+		--with-lame --with-xdao \
+		--with-ogg-support --with-mp3-support
 	make
-	make DESTDIR=$PKG install
+    make DESTDIR=$PKG install
 }
 
