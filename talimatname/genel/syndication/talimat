@@ -4,7 +4,7 @@
 # Depends on : kf5-extra-cmake-modules python kf5-kio
 
 name=syndication
-version=16.08.0
+version=16.08.1
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

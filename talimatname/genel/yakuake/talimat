@@ -1,7 +1,7 @@
 # Description : A drop-down terminal emulator based on KDE konsole technology
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: qt5 kf5-extra-cmake-modules konsole kf5-karchive kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-knotifications kf5-knotifyconfig kf5-kparts kf5-kwidgetsaddons kf5-kwindowsystem
+# Depends on: kf5-extra-cmake-modules konsole kf5-karchive kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-knotifications kf5-knotifyconfig kf5-kparts kf5-kwidgetsaddons kf5-windowsystem
 
 name=yakuake
 version=3.0.2

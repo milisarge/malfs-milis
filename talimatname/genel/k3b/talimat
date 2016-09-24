@@ -1,0 +1,21 @@
+# Description="Feature-rich and easy to handle CD burning applicatio"
+# Url="http://sourceforge.net/projects/k3b/"
+# Packager=alihan-ozturk28@hotmail.com
+# Depends on: git qt5 kf5-extra-cmake-modules qt5-webkit kf5-karchive kf5-kconfig kf5-kcoreaddons kf5-kdoctools kf5-kfilemetadata kf5-ki18n kf5-kiconthemes kf5-kjobwidgets kf5-kcmutils kf5-kio kf5-knotifications kf5-knewstuff kf5-knotifyconfig kf5-kservice kf5-solid kf5-kwidgetsaddons kf5-kxmlgui libkcddb libsamplerate libmad ffmpeg taglib libmpcdec libdvdread cdrkit xorg-libxft cdparanoia cdrdao
+
+name=k3b
+version=20160902
+release=1
+
+build() {
+   git clone git://anongit.kde.org/k3b.git
+   mkdir build
+   cd build
+   cmake ../$name                \
+     -DCMAKE_BUILD_TYPE=Release  \
+     -DCMAKE_INSTALL_PREFIX=/usr \
+     -DCMAKE_INSTALL_LIBDIR=lib  \
+     -DBUILD_TESTING=OFF
+   make
+   make DESTDIR=$PKG install
+}

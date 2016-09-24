@@ -1,0 +1,21 @@
+# Description="A QT IMAP email client"
+# Url="http://trojita.flaska.net"
+# Packager=alihan-ozturk28@hotmail.com
+# Depends on: git desktop-file-utils hicolor-icon-theme qt5-webkit qtkeychain-qt5 qt5 gpgmepp
+
+name=trojita
+version=0.7
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.xz)
+
+build() {
+  mkdir build
+  cd build
+  cmake ../$name-$version           \
+    -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
+    -DCMAKE_BUILD_TYPE=Release      \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
+  make DESTDIR=$PKG install
+}
