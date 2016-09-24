@@ -1,0 +1,23 @@
+# Description="A QtQuick based components set"
+# Url="https://community.kde.org/Frameworks"
+# Packager=alihan-ozturk28@hotmail.com
+# Depends on: qt5 kf5-extra-cmake-modules kf5-plasma-framework
+
+name=kirigami
+version=1.0.2
+release=1
+
+source=(http://download.kde.org/stable/$name/$name-$version.tar.xz)
+
+build() {
+  mkdir build
+  cd build
+  cmake ../$name-$version       \
+    -DCMAKE_BUILD_TYPE=Release  \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_LIBDIR=lib    \
+    -DBUILD_TESTING=OFF
+  make
+  make DESTDIR=$PKG install
+}
+
