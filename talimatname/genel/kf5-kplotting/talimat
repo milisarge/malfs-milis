@@ -4,10 +4,10 @@
 # Depends on: kf5-extra-cmake-modules qt5
 
 name=kf5-kplotting
-version=5.25.0
+version=5.26.0
 release=1
 _name=kplotting
-_version=5.25
+_version=5.26
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 

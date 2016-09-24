@@ -4,10 +4,10 @@
 # Depends on: qt5 kf5-extra-cmake-modules eudev udisks udisks2 upower media-player-info gvfs
 
 name=kf5-solid
-version=5.25.0
+version=5.26.0
 release=1
 _name=solid
-_version=5.25
+_version=5.26
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 

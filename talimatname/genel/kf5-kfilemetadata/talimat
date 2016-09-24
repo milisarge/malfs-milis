@@ -4,10 +4,10 @@
 # Depends on: kf5-karchive kf5-ki18n ebook-tools exiv2 ffmpeg poppler-qt5 taglib 
 
 name=kf5-kfilemetadata
-version=5.25.0
+version=5.26.0
 release=1
 _name=kfilemetadata
-_version=5.25
+_version=5.26
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 
