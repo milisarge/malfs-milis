@@ -1,11 +1,11 @@
 # Description : This package going install KDE5 Applications
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: akonadi akonadi-calendar akonadi-search akonadi-contacts akonadi-mime akonadi-notes calendarsupport eventviews ffmpegthumbs grantleetheme incidenceeditor kaccounts-integration kaccounts-providers kalarmcal kblog kcalcore kcalutils kcontacts kdegraphics-thumbnailers kdenlive kdepim kdepim-addons kdepim-apps-libs kdepim-runtime kdgantt2 kdiamond khelpcenter kholidays kidentitymanagement kimap kldap kmahjongg kmailtransport kmbox kmime kmix kontactinterface kpat kpimtextedit ktnef libgravatar libkdcraw libkdegames libkdepim libkexiv2 libkgapi libkipi libkleo libkmahjongg libksane libksieve mailcommon mailimporter messagelib pimcommon signon-kwallet-extension syndication telepathy
+# Depends on: akonadi akonadi-calendar akonadi-search akonadi-contacts akonadi-mime akonadi-notes calendarsupport eventviews ffmpegthumbs grantleetheme incidenceeditor kaccounts-integration kaccounts-providers kalarmcal kblog kcalcore kcalutils kcontacts kdegraphics-thumbnailers kdenlive kdepim kdepim-addons kdepim-apps-libs kdepim-runtime kdgantt2 kdiamond khelpcenter kholidays kidentitymanagement kimap kldap kmahjongg kmailtransport kmbox kmime kmix kontactinterface kpat kpimtextedit ktnef libgravatar libkdcraw libkdegames libkdepim libkexiv2 libkgapi libkipi libkleo libkmahjongg libksane libksieve mailcommon mailimporter messagelib pimcommon signon-kwallet-extension syndication telepathy trojita
 
 name=kde-extra
 release=1
-version=20160822
+version=20160924
 
 source=(talimat)
 

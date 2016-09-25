@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules kf5-kconfig  kf5-ki18n kf5-plasma-framework kf5-kcmutils kf5-kdeclarative kf5-kidletime kf5-kdelibs4support kf5-kcrash kf5-kglobalaccel kf5-kwayland 
 
 name=plasma-kscreenlocker
-version=5.7.3
+version=5.7.4
 release=1
 _name=kscreenlocker
 

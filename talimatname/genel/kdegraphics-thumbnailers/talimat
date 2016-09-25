@@ -4,8 +4,8 @@
 # Depends on : kf5-extra-cmake-modules kf5-kio libkdcraw libkexiv2
 
 name=kdegraphics-thumbnailers
+version=16.08.1
 release=1
-version=16.08.0
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
 

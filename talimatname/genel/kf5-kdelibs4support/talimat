@@ -4,10 +4,10 @@
 # Depends on: kf5-kded kf5-kauth kf5-kcodecs kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kdesignerplugin kf5-kglobalaccel kf5-kguiaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kitemviews kf5-kjobwidgets kf5-knotifications kf5-kparts kf5-kservice kf5-ktextwidgets kf5-kunitconversion kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui kf5-solid kf5-kdoctools kf5-kemoticons kf5-kinit kf5-kitemmodels kf5-kdoctools openssl perl-uri
 
 name=kf5-kdelibs4support
-version=5.25.0
+version=5.26.0
 release=1
 _name=kdelibs4support
-_version=5.25
+_version=5.26
 
 source=( http://download.kde.org/stable/frameworks/${_version}/portingAids/${_name}-$version.tar.xz)
 

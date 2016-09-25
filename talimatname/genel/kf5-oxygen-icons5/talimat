@@ -4,10 +4,10 @@
 # Depends on: cmake, qt5, kf5-extra-cmake-modules
 
 name=kf5-oxygen-icons5
-version=5.25.0
+version=5.26.0
 release=1
 _name=oxygen-icons5
-_version=5.25
+_version=5.26
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 

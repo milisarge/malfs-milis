@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules qca-qt5 telepathy-kde-common-internals kf5-kdewebkit
 
 name=telepathy-kde-auth-handler
-version=16.08.0
+version=16.08.1
 release=1
 _name=ktp-auth-handler
 

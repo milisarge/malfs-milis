@@ -4,7 +4,7 @@
 # Depends on: kf5-karchive kf5-kconfig kf5-kconfigwidgets kf5-kcmutils kf5-kcompletion kf5-kcoreaddons kf5-kdelibs4support kf5-ki18n kf5-kio kf5-knewstuff kf5-knotifications kf5-kpackage kf5-kross kf5-krunner kf5-kservice kf5-kunitconversion kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui kf5-plasma-framework kf5-sonnet libxcb xcb-util-keysyms xdg-utils plasma-kactivitymanagerd plasma-workspace
 
 name=plasma-kdeplasma-addons
-version=5.7.3
+version=5.7.4
 release=1
 _name=kdeplasma-addons
 

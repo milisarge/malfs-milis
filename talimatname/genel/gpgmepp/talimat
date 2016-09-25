@@ -4,7 +4,7 @@
 # Depends on : boost kf5-extra-cmake-modules gpgme qt5
 
 name=gpgmepp
-version=16.04.3
+version=16.08.1
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

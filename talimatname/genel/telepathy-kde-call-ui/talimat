@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules boost telepathy-kde-common-internals qt5-gstreamer
 
 name=telepathy-kde-call-ui
-version=16.08.0
+version=16.08.1
 release=1
 _name=ktp-call-ui
 

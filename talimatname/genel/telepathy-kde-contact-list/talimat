@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals 
 
 name=telepathy-kde-contact-list
-version=16.08.0
+version=16.08.1
 release=1
 _name=ktp-contact-list
 
