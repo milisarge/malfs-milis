@@ -23,12 +23,11 @@ def greetingDialog():
 		sys.exit()
 
 def checkUsername():
-	#NAME_REGEX bkz. man 5 adduser.conf
-	pattern = re.compile("/^([A-Z][0-9]+)*$/")
 	
 	#status ok ya da cancel gibi durumları çekiyor. 
 	status,username = d.inputbox(text="Lütfen kullanıcı adı giriniz")
-
+	
+	#NAME_REGEX bkz. man 5 adduser.conf
 	if bool(re.compile(r'^[a-z][-a-z0-9]*$').match(username)):
 		checkUserPassword(username)
 	else:
@@ -59,16 +58,19 @@ def checkUserPassword(username):
 
 def chooseDisk():
 	choice = []
-	#Burayı parted kütüphanesi ile yapmayı düşünüyorum. (Partition title, boyut ve dosya türünü de gösterecek)
-	diskParts = runShellCommand("cat /proc/partitions | awk '{print $NF}'|\
-	 sed s'/name//g;'/^\s*$/d''| sed '/[0-9]/!d'")
-	diskParts = diskParts.split('\n')
-	for partition in diskParts:
-		choice.append((partition,partition))
+	#Şimdilik Parted kütüphanesine gerek kalmadı, lsblk istediğimiz bütün değerleri alıyor.
+	diskParts  = runShellCommand("lsblk -ln -o  NAME    | awk '{print $1}'").split('\n')
+	diskSizes  = runShellCommand("lsblk -ln -o  SIZE    | awk '{print $1}'").split('\n')
+	diskFs     = runShellCommand("lsblk -ln -o  FSTYPE  | awk '{print $1}'").split('\n')
+	diskMajmin = runShellCommand("lsblk -ln -o  MAJ:MIN | awk '{print $1}'").split('\n')
+	diskLabel  = runShellCommand("lsblk -ln -o  LABEL").split('\n') #Bunda awk yok çünkü arada boşluk olabilir. 
+	for i in range(len(diskParts)-1):
+		if diskMajmin[i].split(":")[1] != "0": # partition olmayanları ele (sda/sdb seçince grub bozuluyor.)
+			choice.append((diskParts[i],diskLabel[i]+ "\t" +diskSizes[i]+"\t"+diskFs[i]))
 	status,selectedPart = d.menu(text="Sistemin kurulacağı diski seçiniz",choices=choice)
 	if status == "ok":
 		f.write("{} seçildi !".format(selectedPart)) #burası da düzeltilcek şimdilik böyle commitliyorum :D
 		print("{} seçildi !".format(selectedPart))
 		 
-	
-greetingDialog()
+if __name__ == "__main__":
+	greetingDialog()
