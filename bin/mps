@@ -871,6 +871,16 @@ ayarlar() {
 				paket_inkur_liste "$2" ;;
 			-kur)
 				paket_inkur_oto "$2" ;;	
+			 kur)
+				if [[ "$2" == *"mps.lz"* ]]; then
+					if [ "$3" == "-kok" ] && [ -d "$4" ]; then
+						kokdizin="$4"
+						tekrarkur="evet"
+					fi
+					ikaynak="yerel" 
+				else
+					paket_inkur_oto "$2" 
+				fi ;;
 			-kdl)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
