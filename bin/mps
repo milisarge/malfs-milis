@@ -711,7 +711,7 @@ paketvt_guncelle(){
 		if [ -f "$paketdepo""paket.vt" ];then
 			mv "$paketdepo""paket.vt" "$paketdepo""paket.vt.eski"
 		fi
-		wget -P "$paketdepo" "$sunucu""paket.vt"
+		wget -q --show-progress -P "$paketdepo" "$sunucu""paket.vt"
 		#rm /tmp/paket.vt*
 		mps -kudo
 		exit 1
@@ -796,7 +796,7 @@ paket_indir(){
 		pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3`
 		ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f2`
 		cpaket="${pkt/'#'/'%23'}"
-		wget  -nc -P "$paketdepo" "$sunucu$cpaket" &> /dev/null
+		wget  -nc -q --show-progress -P "$paketdepo" "$sunucu$cpaket"
 		if [[ "$?" != 0 ]]; then
 			ryaz 31 "indirme hatalı"
 		else
@@ -839,7 +839,7 @@ ayarlar() {
 					tekrarkur="evet"
 				fi
 				ikaynak="yerel" ;;
-			-s|--pksil)
+			-s|sil)
 				paket_sil "$2" ;;
 			-d|--pkde)
 				zorla_derle="yok"
