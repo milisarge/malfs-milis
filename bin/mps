@@ -1048,7 +1048,7 @@ if [ "$ikaynak" = "ag" ]; then
 		pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3` 
 		if [ ! -z "$pkt" -a "$pkt" != "" ]; then
 			cpaket="${pkt/'#'/'%23'}"
-			ryaz 33 "agdan cekiliyor:" "$cpaket"
+			ryaz 33 "agdan cekiliyor:" "$2"
 			#paket sunucuda varsa
 			wget -q --spider "$sunucu$cpaket"
 			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
