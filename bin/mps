@@ -840,7 +840,20 @@ ayarlar() {
 				fi
 				ikaynak="yerel" ;;
 			-s|sil)
+				if [[ "$2" == "py-"* ]]; then
+					pypaket=`echo "$2" | cut -d'-' -f 2`
+					echo $pypaket "pip2 ile silinecek"
+					pip uninstall $pypaket
+					exit 1
+				fi
+				if [[ "$2" == "py3-"* ]]; then
+					pypaket=`echo "$2" | cut -d'-' -f 2`
+					echo $pypaket "pip3 ile silinecek"
+					pip3 uninstall $pypaket
+					exit 1
+				fi
 				paket_sil "$2" ;;
+				
 			-d|--pkde)
 				zorla_derle="yok"
 				kurulum_onay="olumsuz"
@@ -872,6 +885,18 @@ ayarlar() {
 			-kur)
 				paket_inkur_oto "$2" ;;	
 			 kur)
+				if [[ "$2" == "py-"* ]]; then
+					pypaket=`echo "$2" | cut -d'-' -f 2`
+					echo $pypaket "pip2 ile kurulacak"
+					pip install $pypaket
+					exit 1
+				fi
+				if [[ "$2" == "py3-"* ]]; then
+					pypaket=`echo "$2" | cut -d'-' -f 2`
+					echo $pypaket "pip3 ile kurulacak"
+					pip3 install $pypaket
+					exit 1
+				fi
 				if [[ "$2" == *"mps.lz"* ]]; then
 					if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 						kokdizin="$4"
