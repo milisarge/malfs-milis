@@ -1,13 +1,13 @@
 # Description: Provides informations about LSB status (Linux Standards Base) of the distribution. 
 # URL: http://www.linuxbase.org/
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: 
 
 name=lsb-release
 version=1.4
 release=1
 source=(http://sourceforge.net/projects/lsb/files/lsb_release/${version}/${name}-${version}.tar.gz \
-         lsbrelease)
+         lsbrelease milis-release system-release)
 
 build() {
 cd ${name}-${version}
@@ -16,6 +16,6 @@ make DESTDIR=$PKG prefix="/usr" install
 
 mkdir -p $PKG/etc/
 cp $SRC/lsbrelease $PKG/etc/lsb-release
-cp $SRC/lsbrelease $PKG/etc/milis-release
-cp $SRC/lsbrelease $PKG/etc/system-release
+cp $SRC/milis-release $PKG/etc/milis-release
+cp $SRC/system-release $PKG/etc/system-release
 }
