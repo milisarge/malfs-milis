@@ -1,0 +1,70 @@
+# Description: Secure and advanced webserver
+# URL: https://www.hiawatha-webserver.org/
+# Packager: milisarge
+# Depends on : cmake libxslt mbedtls
+
+name=hiawatha
+version=10.3
+release=1
+
+source=(https://www.hiawatha-webserver.org/files/$name-$version.tar.gz
+        hiawatha.conf.sample)
+
+build() {
+
+  cd "$name-$version"
+  sed -i 's/www-data/http/g' extra/logrotate.in
+  mkdir -p build
+  cd build
+
+  cmake ../ -DCMAKE_INSTALL_PREFIX="/" \
+            -DCMAKE_INSTALL_BINDIR="/usr/bin" \
+            -DCMAKE_INSTALL_SBINDIR="/usr/bin" \
+            -DCMAKE_INSTALL_SYSCONFDIR="/etc/hiawatha" \
+            -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
+            -DCMAKE_INSTALL_MANDIR="/usr/share/man" \
+            -DCONFIG_DIR="/etc/hiawatha" \
+            -DLOG_DIR="/var/log/hiawatha" \
+            -DPID_DIR="/run" \
+            -DENABLE_TLS=ON \
+            -DUSE_SYSTEM_MBEDTLS=ON \
+            -DENABLE_MONITOR=ON \
+            -DWEBROOT_DIR="/srv/http/hiawatha" \
+            -DWORK_DIR="/var/lib/hiawatha"
+
+  make
+
+  # Features enabled by default
+  # -DENABLE_CACHE
+  # -DENABLE_IPV6
+  # -DENABLE_RPROXY
+  # -DENABLE_TOOLKIT
+  # -DENABLE_XSLT
+
+  # Features disabled by default
+  # -DENABLE_DEBUG
+  # -DENABLE_TOMAHAWK	
+
+  make DESTDIR="$PKG/" install
+ 
+  rmdir "$PKG/run"
+  rm "$PKG/srv/http/hiawatha/index.html"
+  rmdir -p --ignore-fail-on-non-empty "$PKG/srv/http/hiawatha"
+ 
+  # Update stock hiawatha.conf
+  sed -e 's|#ServerId = www-data|ServerId = http|' \
+      -e 's|/var/www/|/srv/http/|g' \
+      -e 's|//|/|g' \
+      -e 's|#CGIextension = cgi|&\n#TriggerOnCGIstatus = no|g' \
+      -e 's|ConnectTo = 127.0.0.1:2005|ConnectTo = 127.0.0.1:9000|g' \
+      -e 's|#	Extension = php|&\n#       SessionTimeout = 30|g' \
+      -e 's|#ErrorHandler = 404:/error.cgi|&\n#UseGZfile = yes|g' \
+      -i "$PKG/etc/hiawatha/hiawatha.conf"
+  
+  install -Dm644 logrotate.d/hiawatha "$PKG/etc/logrotate.d/hiawatha"
+  install -Dm644 $SRC/"hiawatha.conf.sample" "$PKG/etc/hiawatha/"
+}
+
+
+
+}
