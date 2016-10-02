@@ -969,6 +969,8 @@ ayarlar() {
 					exit 1
 				fi
 				talimat_olustur "$2" ;;
+			guncelle)
+				mps -GG && mps -G ;;
 			-Ggit|-GG)
 				git_guncelle ;;
 			-G|--pvtg)
