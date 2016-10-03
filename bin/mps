@@ -432,7 +432,7 @@ paket_derle(){
 			echo "------------------------"
 			mpsd -d 2>&1|tee /tmp/"$1".log
 			if ( grep "^=======>" /tmp/"$1".log| tail -1 |grep "ERROR"  > /dev/null);then
-				echo "derleme sisteminde hata oluÅŸtu -----> " /tmp/"$1".log
+				echo "derleme sisteminde hata oluştu -----> " /tmp/"$1".log
 				exit 1
 			fi
 			if [ "$kurulum_onay" = "evet" ];then
@@ -614,7 +614,7 @@ tarihce_yukle(){
 			exit 1
 		fi
 		while true; do
-			ryaz 34 "otomatik geri dönüÅŸüm baÅŸlasın mı?";read -p "e veya h-> " eh
+			ryaz 34 "otomatik geri dönüşüm başlasın mı?";read -p "e veya h-> " eh
 			case $eh in
 				[Ee]* ) islem_onay="e"; break;;
 				[Hh]* ) break;;
@@ -676,7 +676,7 @@ build () {
 }
 
 EOF
-	ryaz 34 $name "talimatı oluÅŸturuldu."
+	ryaz 34 $name "talimatı oluşturuldu."
 fi
 }
 
@@ -693,7 +693,7 @@ git_guncelle() {
 		cd milis.git
 		git pull
 	fi
-	ryaz 33 "yerele eÅŸitleniyor."
+	ryaz 33 "yerele eşitleniyor."
 	rm -r $talimatname_dizin/*
 	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/talimatname/ $talimatname_dizin
 	rm -r `dirname $talimatname_dizin`/bin/*
@@ -743,7 +743,7 @@ sunucu_kontrol(){
 	if [ $? -eq 0 ]; then
 		ryaz 32 "paket sunucu aktif"
 	else
-		ryaz 31 "sunucu eriÅŸim dıÅŸı"
+		ryaz 31 "sunucu erişim dışı"
 		exit 1
 	fi
 }	
@@ -786,7 +786,7 @@ pvt_olustur(){
 	if [ -f "paket.vt" ];then
 			mv "paket.vt" "paket.vt.eski"
 	fi
-	ryaz 32 "paket.vt oluÅŸturuluyor...."
+	ryaz 32 "paket.vt oluşturuluyor...."
 	for paket in `ls *.mps.lz`
 	do
 		paketad="`echo $paket|cut -d "#" -f1`"
@@ -794,7 +794,7 @@ pvt_olustur(){
 		
 		echo $paketad $shaek  >> paket.vt  
 	done
-	ryaz 32 "paket.vt oluÅŸturuldu."
+	ryaz 32 "paket.vt oluşturuldu."
 }
 
 paket_indir(){
