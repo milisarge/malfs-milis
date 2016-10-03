@@ -111,7 +111,7 @@ paket_sil(){
 					sil_onay="e"
 				else
 					while true; do
-						ryaz 34 $paket" paketi kaldÄ±rÄ±lsÄ±n mÄ±?";read -p "e veya h-> " eh
+						ryaz 34 $paket" paketi kaldırılsın mı?";read -p "e veya h-> " eh
 						case $eh in
 							[Ee]* ) sil_onay="e"; break;;
 							[Hh]* ) break;;
@@ -131,10 +131,10 @@ paket_sil(){
 				fi
 				
 			else
-				ryaz 31 "kritik mesaj:kurulanlar dosyasÄ± yok." 
+				ryaz 31 "kritik mesaj:kurulanlar dosyası yok." 
 			fi
 		else
-			ryaz 32 "paket zaten kurulu deÄŸil!"
+			ryaz 32 "paket zaten kurulu değil!"
 		fi
 	fi
 
@@ -153,7 +153,7 @@ paket_bilgi2(){
 		paket="$1"
 		cat /var/lib/pkg/DB/"$paket"/META
 	else
-		echo "paket kurulu deÄŸil!"
+		echo "paket kurulu değil!"
 	fi
 
 }
@@ -182,7 +182,7 @@ paket_bilgi(){
 		satir=`sed -n '9p' <  /var/lib/pkg/DB/"$paket"/META`
 		ryaz 32 "DZ:" `date -d @${satir:1:${#satir}-1}`
 	else
-		echo "paket kurulu deÄŸil!"
+		echo "paket kurulu değil!"
 	fi
 
 }
@@ -218,13 +218,13 @@ derleme_listyap(){
 			fi
 		fi
 	else
-		ryaz 31 "$1 talimatÄ± bulunamadÄ±."
+		ryaz 31 "$1 talimatı bulunamadı."
 		exit 1 
 	fi
 }
 
 derleme_listbilgi(){
-	ryaz 34 "yapim asamasÄ±nda"
+	ryaz 34 "yapim asamasında"
 }
 
 paket_derle_liste(){
@@ -407,7 +407,7 @@ devir_kontrol(){
 }
    
 paket_derle(){
-	#eski derleme kalÄ±ntÄ±larÄ±nÄ± temizle
+	#eski derleme kalıntılarını temizle
 	if [ -d tmp.* ];then
 		rm -r tmp.*
 	fi
@@ -442,13 +442,13 @@ paket_derle(){
 			fi
 			mv *.mps.lz ../
 		else
-			ryaz 32 "paket zaten kurulu,yine de derlemek iÃ§in:
+			ryaz 32 "paket zaten kurulu,yine de derlemek için:
 			mps -zd $1"
 		fi 
 		cd ..
 		rm -r tmp."$1"
 	else
-		ryaz 31 "talimat dosyasÄ± bulunamadÄ±."
+		ryaz 31 "talimat dosyası bulunamadı."
 	fi
 
 }
@@ -462,7 +462,7 @@ bagimlilar(){
 											   
 		if [ -n "$bagimd" ]; then
 			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-			#sÄ±ralÄ± gÃ¶sterme
+			#sıralı gösterme
 			echo `echo "$bagimd" | sed 's/,/ /g'`
 		fi
 	else
@@ -477,7 +477,7 @@ bagimli_bilgi(){
 	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
 	if [ -n "$bagimd" ]; then
 		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-		#sÄ±ralÄ± gÃ¶sterme
+		#sıralı gösterme
 		#echo `echo "$bagimd" | sed 's/,/ /g'`
 		#kurulu kontrollu gosterim
 		for bag in $bagimd;do
@@ -614,7 +614,7 @@ tarihce_yukle(){
 			exit 1
 		fi
 		while true; do
-			ryaz 34 "otomatik geri dÃ¶nÃ¼ÅŸÃ¼m baÅŸlasÄ±n mÄ±?";read -p "e veya h-> " eh
+			ryaz 34 "otomatik geri dönüÅŸüm baÅŸlasın mı?";read -p "e veya h-> " eh
 			case $eh in
 				[Ee]* ) islem_onay="e"; break;;
 				[Hh]* ) break;;
@@ -631,7 +631,7 @@ tarihce_yukle(){
 		mv sil.liste sil_iptal.liste	
 		mv kur.liste kur_iptal.liste	
 	else
-		ryaz 31 "ilgili tarihce dosyasÄ± bulunamadÄ±!"
+		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
 	fi
 }
 
@@ -640,7 +640,7 @@ tarihce_sil(){
 	if [ -f $TARIHCE_DIZIN/"$1-pkvt.tar.lz" ];then
 		rm -f $TARIHCE_DIZIN/"$1-pkvt.tar.lz"
 	else
-		ryaz 31 "ilgili tarihce dosyasÄ± bulunamadÄ±!"
+		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
 	fi
 }
 
@@ -651,7 +651,7 @@ loglama(){
 
 talimat_olustur(){
 if [ "$1" = '?' ];then
-	ryaz 34 "kullanÄ±m : mps -to paket_ismi"
+	ryaz 34 "kullanım : mps -to paket_ismi"
 else
 	local name
 	name=$1
@@ -676,7 +676,7 @@ build () {
 }
 
 EOF
-	ryaz 34 $name "talimatÄ± oluÅŸturuldu."
+	ryaz 34 $name "talimatı oluÅŸturuldu."
 fi
 }
 
@@ -685,7 +685,7 @@ git_guncelle() {
 	gitayar_kontrol
 	cd $DERLEME_KAYNAKDIZIN
 	#git sunucudan guncelleme
-	ryaz 33 "git sunucudan gÃ¼ncelleme Ã§ekiliyor."
+	ryaz 33 "git sunucudan güncelleme çekiliyor."
 	if [ ! -d milis.git ];then
 		git clone $git_sunucu milis.git
 		rsync -av /sources/milis.git/rootfs/* /
@@ -700,7 +700,7 @@ git_guncelle() {
 	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/bin/ `dirname $talimatname_dizin`/bin
 	rm -r `dirname $talimatname_dizin`/ayarlar/*
 	rsync -a $DERLEME_KAYNAKDIZIN/milis.git/ayarlar/ `dirname $talimatname_dizin`/ayarlar
-	#ikili dosyalarÄ±n /usr/bin altÄ±na kÄ±sayol atÄ±lmasÄ±
+	#ikili dosyaların /usr/bin altına kısayol atılması
 	for i in /root/bin/*; do
 		j=`basename $i`
 		if [ ! -f /usr/bin/$j ];then
@@ -714,7 +714,7 @@ paketvt_guncelle(){
 	wget -q --spider "$sunucu""paket.vt"
 	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
 	if [ $? -eq 0 ]; then	
-		ryaz 32 "paket veritabanÄ± guncellenÄ±yor." "$paketdepo""paket.vt"
+		ryaz 32 "paket veritabanı guncellenıyor." "$paketdepo""paket.vt"
 		if [ -f "$paketdepo""paket.vt" ];then
 			mv "$paketdepo""paket.vt" "$paketdepo""paket.vt.eski"
 		fi
@@ -723,7 +723,7 @@ paketvt_guncelle(){
 		mps -kudo
 		exit 1
 	fi
-	ryaz 31 "paket veritabanÄ± guncelleme olumsuz."
+	ryaz 31 "paket veritabanı guncelleme olumsuz."
 }
 
 talimat_bilgi(){
@@ -743,7 +743,7 @@ sunucu_kontrol(){
 	if [ $? -eq 0 ]; then
 		ryaz 32 "paket sunucu aktif"
 	else
-		ryaz 31 "sunucu eriÅŸim dÄ±ÅŸÄ±"
+		ryaz 31 "sunucu eriÅŸim dıÅŸı"
 		exit 1
 	fi
 }	
@@ -759,11 +759,11 @@ kurulum_dogrulama(){
 	for kuruland in `ls $VT`
 	do
 		if [ ! -f "$VT/$kuruland/kurulan" ]; then
-			ryaz 32 "$kuruland hasarlÄ± kurulum tesbiti!"
+			ryaz 32 "$kuruland hasarlı kurulum tesbiti!"
 			rm -r $VT/$kuruland
 			mps -i $kuruland
 			mps -k "$paketdepo/$kuruland"*.mps.lz
-			ryaz 32  "$kuruland hasarlÄ± kurulum onarÄ±ldÄ±."
+			ryaz 32  "$kuruland hasarlı kurulum onarıldı."
 		fi
 	done
 }
@@ -805,7 +805,7 @@ paket_indir(){
 		cpaket="${pkt/'#'/'%23'}"
 		wget  -nc -q --show-progress -P "$paketdepo" "$sunucu$cpaket"
 		if [[ "$?" != 0 ]]; then
-			ryaz 31 "indirme hatalÄ±"
+			ryaz 31 "indirme hatalı"
 		else
 			ryaz 34 "$1 indirildi"
 		fi
@@ -1015,7 +1015,7 @@ ayarlar() {
 				sunucu_kontrol ;;
 			-cf|--config-file)
 				if [ ! "$2" ]; then
-					echo "ayardosyasÄ± gerek $1"
+					echo "ayardosyası gerek $1"
 					exit 1
 				fi
 				ayar_dosyasi="$2"
@@ -1059,16 +1059,16 @@ yardim() {
 $betikad $versiyon Milis Paket Sistemi
 
 Secenekler:
- -G			ikili paket veritabanini gunceller
+ -G			ikili paket veritabanını günceller
  -Ggit			git sunucusundan talimatname ve sistem gunceller
  -kur paket_ismi	ilgili paketi bagimliliklariyla agdan cekip kurar
  -s paket_ismi		ilgili paketi kaldirir
  -k paket_ismi		yereldeki paketi bagimliliksiz kurar
  -kl			kurulu paket listesini verir
  -kk paket_ismi		ilgili paketin kurulu olma durumunu verir
- -d paket_ismi		ilgili paketin talimat dosyasÄ±na gÃ¶re 
+ -d paket_ismi		ilgili paketin talimat dosyasına göre 
 			sadece derler,paketler
- -derle paket_ismi	ilgili paketin talimat dosyasÄ±na gÃ¶re bagimliliklariyla 
+ -derle paket_ismi	ilgili paketin talimat dosyasına göre bagimliliklariyla 
 			beraber derler,paketler ve kurar.
 
 _EOF
@@ -1104,7 +1104,7 @@ if [ "$ikaynak" = "ag" ]; then
 				ryaz 31 "paket sunucuda yok!"
 			fi
 		else
-			ryaz 31 "paket sunucuda yok!( mps -G komutuyla gÃ¼ncelleme yapÄ±nÄ±z. )"
+			ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 		fi
 	else
 		ryaz 32 "$2 paketi zaten kurulu!"
@@ -1133,13 +1133,13 @@ if [ "$ikaynak" = "yerel" ]; then
 				done
 			fi
 			if [ "$silme" = "e" ];then
-				ryaz 33 "silinecekelerin kontrolu iÃ§in"
+				ryaz 33 "silinecekelerin kontrolu için"
 				paket_sil "$paketad"
 				icerik_ekle "$2"
 			fi
 		fi
 	else
-		ryaz 31 "yerelde mps paketi bulunamadÄ±."
+		ryaz 31 "yerelde mps paketi bulunamadı."
 	fi
 fi
 
