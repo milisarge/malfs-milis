@@ -4,7 +4,7 @@
 # Depends on: cmake kf5-extra-cmake-modules qt5
 
 name=plasma-kdecoration
-version=5.7.4
+version=5.8.0
 release=1
 _name=kdecoration
 

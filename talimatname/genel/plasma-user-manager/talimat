@@ -4,7 +4,7 @@
 # Depends on: libpwquality kf5-kconfigwidgets kf5-kcoreaddons kf5-kdelibs4support kf5-ki18n kf5-kiconthemes kf5-kio kf5-kwidgetsaddons 
 
 name=plasma-user-manager
-version=5.7.4
+version=5.8.0
 release=1
 _name=user-manager
 

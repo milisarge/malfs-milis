@@ -4,7 +4,7 @@
 # Depends on: cmake kf5-extra-cmake-modules wayland kf5-kwayland kf5-kwindowsystem kf5-kidletime
 
 name=plasma-kwayland-integration
-version=5.7.4
+version=5.8.0
 release=1
 _name=kwayland-integration
 
