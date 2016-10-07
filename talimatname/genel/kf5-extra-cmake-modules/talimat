@@ -9,12 +9,10 @@ release=1
 _name=extra-cmake-modules
 _version=5.26
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz
-         pri-install-dir.patch)
+source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 
 build() {
 cd ${_name}-$version
-patch -p1 -i ../pri-install-dir.patch
 cmake -DCMAKE_INSTALL_PREFIX=/usr  \
       -DECM_MKSPECS_INSTALL_DIR=/usr/lib/qt5/mkspecs
 
