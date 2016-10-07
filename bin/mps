@@ -5,7 +5,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8"
+versiyon="0.8.1"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -145,6 +145,9 @@ paket_ara(){
 		pakdesc=$(find /root/talimatname -name "$pkt" | xargs -I %  sed -n '1{p;q}' %/talimat | sed s'/# Description: //g');
 		ryaz 34 "$pkt - $pakdesc";
 	done
+}
+kelime_bul(){
+	grep --color -H -ri "$1" /root/talimatname/
 }
 paket_bilgi2(){
 	local paket kkont
@@ -863,7 +866,8 @@ ayarlar() {
 				
 			-pa|ara)
 				paket_ara "$2" ;;
-				
+			bul)
+				kelime_bul "$2" ;;
 			-d|--pkde)
 				zorla_derle="yok"
 				kurulum_onay="olumsuz"
