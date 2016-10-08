@@ -1,0 +1,21 @@
+# Description="Used to retrieve audio CD meta data from the interne"
+# Url="http://sourceforge.net/projects/libkcddb/"
+# Packager=alihan-ozturk28@hotmail.com
+# Depends on: git qt5 kf5-extra-cmake-modules kf5-kconfig kf5-kdoctools kf5-kcodecs kf5-ki18n kf5-kio kf5-kwidgetsaddons kf5-kxmlgui 
+
+name=libkcddb
+version=26160902
+release=1
+
+build() {
+   git clone git://anongit.kde.org/libkcddb.git
+   mkdir build
+   cd build
+   cmake ../$name                \
+     -DCMAKE_BUILD_TYPE=Release  \
+     -DCMAKE_INSTALL_PREFIX=/usr \
+     -DCMAKE_INSTALL_LIBDIR=lib  \
+     -DBUILD_TESTING=OFF
+   make
+   make DESTDIR=$PKG install
+}
