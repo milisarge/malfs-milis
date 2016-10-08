@@ -1,4 +1,3 @@
-
 #!/bin/bash
 . /etc/mpsd.conf
 if [ -f /etc/mps.conf ];then
