@@ -94,11 +94,16 @@ def formatDialog(part):
 	text="/dev/{} bölümü ext4 türünde formatlanacak. Emin misiniz ?".format(part))	
 	if status == "ok":
 		d.infobox(text="Formatlanıyor... Lütfen bekleyiniz...")
+		formatPart(part)
 		time.sleep(5)
-		chooseSwap()
-		#formatPart(part)
 	else:
 		choosePart() 
+		
+def formatPart(part):
+	os.system("mkfs.ext4 "+"/dev/"+part)
+	d.infobox(text="/dev/"+part+" Disk Formatlandı")
+	chooseSwap()
+	
 def chooseSwap():
 	swapChoice = []
 	#Şimdilik Parted kütüphanesine gerek kalmadı, lsblk istediğimiz bütün değerleri alıyor.
@@ -114,7 +119,11 @@ def chooseSwap():
 	if status == "ok":
 		f.write("{} seçildi !".format(selectedPart)) #burası da düzeltilcek şimdilik böyle commitliyorum :D
 		print("{} seçildi !".format(selectedPart))		
-		#setSwap(selectedPart)
+		setSwap(selectedPart)
+		
+def setSwap(part):
+	os.system("swapon "+"/dev/"+part)
+	
 		 
 if __name__ == "__main__":
 	greetingDialog()
