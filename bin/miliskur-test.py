@@ -55,6 +55,7 @@ def checkUserPassword(username):
 	if len(password) > 0:
 		createUser(username,username,password)
 		f.write("[+] Kullanıcı eklendi")
+		d.infobox(text=username+" kullanıcısı başarıyla eklendi.")
 		if d.yesno(text="Yeni kullanıcı eklemek istiyor musunuz ?") == "ok":
 			checkUsername()
 		else:
@@ -100,10 +101,35 @@ def formatDialog(part):
 		choosePart() 
 		
 def formatPart(part):
-	os.system("mkfs.ext4 "+"/dev/"+part)
+	runShellCommand("mkfs.ext4 "+"/dev/"+part)
 	d.infobox(text="/dev/"+part+" Disk Formatlandı")
 	chooseSwap()
+	hedef="/dev/"+part
+	hedefBagla(hedef)
+
+def hedefBagla(hedef):
+	runShellCommand("umount /mnt && mount "+hedef+" /mnt")
+	sistemKopyala()
+
+def sistemKopyala():
+	runShellCommand("cp -axvnu /  /mnt")
+	initrdOlustur()
 	
+def initrdOlustur():
+	runShellCommand("chroot /mnt dracut --no-hostonly --add-drivers "'ahci'" -f /boot/initramfs")
+	if d.yesno(text="Grub kurmak istiyor musunuz ?") == "ok":
+		grubKur()
+	else:
+		kurulumBitir()
+
+def grubKur():
+	runShellCommand("chroot /mnt grub-install --boot-directory=/mnt/boot /dev/sda")
+	runShellCommand("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
+	kurulumBitir()
+	
+def kurulumBitir():
+	d.infobox(text="milis işletim sistemi kuruldu.")
+		
 def chooseSwap():
 	swapChoice = []
 	#Şimdilik Parted kütüphanesine gerek kalmadı, lsblk istediğimiz bütün değerleri alıyor.
