@@ -12,6 +12,10 @@ source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$versi
          10-backlight.rules)
 
 build() {
+source /etc/blfs-bootscripts
+wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
 cd ${name}-$version
 mkdir build
 cd    build
