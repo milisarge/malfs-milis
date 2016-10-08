@@ -8,6 +8,7 @@
 
 from dialog import Dialog
 import os,sys,re,subprocess,time
+import crypt
 
 d = Dialog(dialog="dialog")
 f = open("/tmp/log.txt","w")
@@ -40,13 +41,19 @@ def checkUsername():
 		if status == "ok":
 			checkUsername()
 
+
+def createUser(name,username,password):
+    encPass = crypt.crypt(password,"22")   
+    return  os.system("useradd -p "+encPass+ " -s "+ "/bin/bash "+ "-d "+ "/home/" + username+ " -m "+ " -c \""+ name+"\" " + username)
+
+
 def checkUserPassword(username):
 	#insecure=True parolanın yıldız şeklinde gözükmesini sağlar, 
 	#root şifresi sorarken belki bunu silebiliriz normal sudo şifresi 
 	#girer gibi gözükmez. 
 	status,password = d.passwordbox(text="Lütfen {} kullanıcısı için şifrenizi giriniz".format(username),insecure=True)
 	if len(password) > 0:
-		#buraya kullanıcı ekleme kodu eklenecek. Şuan kendi sistemimde yazıyorum sıkıntı çıkmasın diye implemente etmedim. 
+		createUser(username,username,password)
 		f.write("[+] Kullanıcı eklendi")
 		if d.yesno(text="Yeni kullanıcı eklemek istiyor musunuz ?") == "ok":
 			checkUsername()
