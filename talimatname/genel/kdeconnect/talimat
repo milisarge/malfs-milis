@@ -1,15 +1,18 @@
 # Description : Adds communication between KDE and your smartphone
 # URL : https://projects.kde.org/projects/playground/base/kdeconnect-kde
 # Packdeconnectkager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules kf5-kio kf5-kcmutils qca-qt5 libfakekey qjson sshfs-fuse hicolor-icon-theme kf5-kwayland
+# Depends on : git kf5-extra-cmake-modules kf5-kio kf5-kcmutils qca-qt5 libfakekey qjson sshfs-fuse hicolor-icon-theme kf5-kwayland
 
 name=kdeconnect
-version=1.0.1
+version=0.9g
 release=1
 
-source=( http://download.kde.org/stable/$name/$version/src/$name-kde-$version.tar.xz)
+source=()
 
 build() {
+
+git clone git://anongit.kde.org/kdeconnect-kde.git
+
 mkdir -p build
 cd build
 cmake ../kdeconnect-kde  \
@@ -21,4 +24,3 @@ cmake ../kdeconnect-kde  \
 make
 make DESTDIR=$PKG install
 }
-
