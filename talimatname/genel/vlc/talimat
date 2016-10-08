@@ -1,48 +1,30 @@
 # Description: The cross-platform media player and streaming server
 # URL: http://www.videolan.org/vlc/
 # Packager: milisarge@gmail.com
-# Depends on: libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+# Depends on: libvlc qt5 x264 flac libmad glib dbus libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=vlc
 version=3.0.0
-_version=20160704
-release=1
+release=20160606
 
-source=( http://altair.videolan.org/build/source/$name-$version-${_version}-0536.tar.xz
-         lua53_compat.patch
-         update-vlc-plugin-cache.hook)
+source=( http://anduin.linuxfromscratch.org/BLFS/$name/$name-$version-$release.tar.xz)
 	
 build() {
 
-cd vlc-3.0.0-git
+cd $name-$version-$release
 
-RCC=/usr/bin/rcc-qt5
-./bootstrap
-sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
-sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
-
-CXXFLAGS="$CXXFLAGS -fPIC"
+sed -i '/seems to be moved/s/^/#/' autotools/ltmain.sh
 
 BUILDCC=gcc \
 ./configure --prefix=/usr \
-            --sysconfdir=/etc \
-        --enable-qt \
-				--disable-rpath \
-				--enable-faad \
-				--enable-nls \
-				--enable-lirc \
-				--enable-pvr \
-				--enable-ncurses \
-				--enable-realrtsp \
-				--enable-xosd \
-				--enable-aa \
-				--enable-vcdx \
-				--enable-opus 
+            --disable-swscale \
+            --disable-lua \
+            --disable-a52 \
+            --disable-avcodec \
+            RCC=/usr/bin/rcc-qt5
 
-make -i
-make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version install
 
-install -Dm644 ../update-vlc-plugin-cache.hook $PKG/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
+make
+make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version-release install
 
-rm -rf $PKG/usr/share/doc
 }
