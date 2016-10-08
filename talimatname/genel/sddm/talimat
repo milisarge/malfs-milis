@@ -5,7 +5,7 @@
 
 name=sddm
 release=1
-version=0.13.0
+version=0.14.0
 
 source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$version.tar.xz
          sddm.conf
@@ -13,7 +13,7 @@ source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$versi
 
 build() {
 source /etc/blfs-bootscripts
-wget http://www.linuxfromscratch.org/blfs/downloads/stable/$scripts-$scriptsversion.tar.bz2
+wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/$scripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd ${name}-$version
