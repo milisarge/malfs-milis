@@ -254,7 +254,7 @@ paket_kur_oto(){
 	for kpkt in `cat $kliste`;do
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
-			mps -k "$pak"
+			mps -k "$pak" && mps -kur "$pkt"
 		done
 	done
 	rm -rf otokur.list
@@ -272,7 +272,7 @@ paket_kur_oto_zorla(){
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
 			paket_sil "$pkt" "evet"
-			mps -k "$pak"
+			mps -k "$pak" && mps -kur "$pkt"
 		done
 	done
 	rm -rf otokur.list
@@ -284,16 +284,6 @@ paket_kur_liste(){
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
 			mps -k "$pak"
-		done
-	done
-}
-
-paket_kur_bagimli(){
-	local kpkt pkt pak
-	for kpkt in `cat $1`;do
-		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
-			pak=`ls "$pkt#"*`
-			mps -kur "$pkt" && mps -k "$pak"
 		done
 	done
 }
@@ -900,8 +890,11 @@ ayarlar() {
 				paket_kur_liste "$2" ;;
 			-oklz)
 				paket_kur_liste_zorla "$2" ;;	
-			-pyok)
-				paket_kur_bagimli "$2" ;;
+			-kh)
+				local templist
+				templist=`mktemp`
+				ls *.mps.lz > $templist
+				mps -okz -H $templist ;;
 			-ko|--pkko)
 				paket_kur_oto2 "$2" ;;	
 			-kuruld)
@@ -1137,6 +1130,7 @@ if [ "$ikaynak" = "yerel" ]; then
 		if [ "$kkont" = "degil" ];then
 			icerik_ekle "$2"
 		else
+			echo $tekrarkur
 			if [ "$tekrarkur" = "hayir" ];then
 				while true; do
 					ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
