@@ -112,21 +112,21 @@ def hedefBagla(hedef):
 	sistemKopyala()
 
 def sistemKopyala():
-	os.system("cp -axvnu /  /mnt")
+	os.system("acp -g -axvnu /  /mnt")
 	initrdOlustur()
 	
 def initrdOlustur():
-	os.system("mount —bind /dev /mnt/dev")
-	os.system("mount —bind /sys /mnt/sys")
-	os.system("mount —bind /proc /mnt/proc")
-	os.system("chroot /mnt dracut --no-hostonly --add-drivers "'ahci'" -f /boot/initramfs")
+	os.system("mount --bind /dev /mnt/dev")
+	os.system("mount --bind /sys /mnt/sys")
+	os.system("mount --bind /proc /mnt/proc")
+	os.system('chroot /mnt dracut --no-hostonly --add-drivers "ahci" -f /boot/initramfs')
 	if d.yesno(text="Grub kurmak istiyor musunuz ?") == "ok":
 		grubKur()
 	else:
 		kurulumBitir()
 
 def grubKur():
-	os.system("grub-install --boot-directory=/mnt/boot /dev/sda")
+	os.system("grub-install --boot-directory=/mnt/boot /dev/sdb")
 	os.system("grub-mkconfig -o /boot/grub/grub.cfg")
 	kurulumBitir()
 	
