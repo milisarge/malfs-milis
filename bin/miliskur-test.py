@@ -10,7 +10,9 @@ import crypt
 
 os.system("mps -GG")
 os.system("pip_kur && pip3 install pythondialog")
-os.system("mps -G && mps kur advcp")
+os.system("mps -G")
+time.sleep(3)
+os.system("mps kur advcp")
 
 from dialog import Dialog
 
