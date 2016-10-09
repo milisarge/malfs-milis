@@ -8,8 +8,9 @@
 import os,sys,re,subprocess,time
 import crypt
 
+os.system("mps -GG")
 os.system("pip_kur && pip3 install pythondialog")
-os.system("mps -G && mps -kur advcp")
+os.system("mps -G && mps kur advcp")
 
 from dialog import Dialog
 
@@ -111,7 +112,8 @@ def formatPart(part):
 	hedefBagla(hedef)
 
 def hedefBagla(hedef):
-	os.system("umount /mnt && mount "+hedef+" /mnt")
+	os.system("umount /mnt && umount "+hedef+" && mount "+hedef+" /mnt")
+	d.infobox(text="hedef disk bağlandı.")
 	sistemKopyala()
 
 def sistemKopyala():
