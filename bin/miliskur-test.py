@@ -17,6 +17,10 @@ def runShellCommand(c):
 	out = subprocess.check_output(c,stderr=subprocess.STDOUT,shell=True,universal_newlines=True)
 	return out.replace("\b","")  #encode byte format to string, ugly hack 
 
+def gerekliKur():
+	os.system("pip_kur && pip3 install pythondialog")
+	os.system("mps -kur advcp")
+
 def greetingDialog():
 	status = d.yesno(title="Milis Linux'a hoş geldiniz !", 
 	text="Tanıtım yazısı buraya gelecek...\n\n\n\nKuruluma devam etmek istiyor musunuz ?",width=70,height=10)
@@ -155,4 +159,5 @@ def setSwap(part):
 	
 		 
 if __name__ == "__main__":
+	gerekliKur()
 	greetingDialog()
