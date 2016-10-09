@@ -5,6 +5,7 @@
 # Commit tarihi: 25.09.2016 
 # Dialog manuali için: http://pythondialog.sourceforge.net/doc/
 
+gerekliKur()
 
 from dialog import Dialog
 import os,sys,re,subprocess,time
@@ -159,5 +160,5 @@ def setSwap(part):
 	
 		 
 if __name__ == "__main__":
-	gerekliKur()
+	
 	greetingDialog()
