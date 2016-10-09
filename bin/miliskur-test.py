@@ -117,7 +117,8 @@ def hedefBagla(hedef):
 	sistemKopyala()
 
 def sistemKopyala():
-	os.system("acp -g -axnu /  /mnt")
+	#os.system("acp -g -axnu /  /mnt")
+	os.system("cp -axvnu /  /mnt")
 	initrdOlustur()
 	
 def initrdOlustur():
