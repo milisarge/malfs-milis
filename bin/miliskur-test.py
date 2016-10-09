@@ -5,11 +5,13 @@
 # Commit tarihi: 25.09.2016 
 # Dialog manuali için: http://pythondialog.sourceforge.net/doc/
 
-gerekliKur()
-
-from dialog import Dialog
 import os,sys,re,subprocess,time
 import crypt
+
+os.system("pip_kur && pip3 install pythondialog")
+os.system("mps -kur advcp")
+
+from dialog import Dialog
 
 d = Dialog(dialog="dialog")
 f = open("/tmp/log.txt","w")
@@ -17,10 +19,6 @@ f = open("/tmp/log.txt","w")
 def runShellCommand(c):
 	out = subprocess.check_output(c,stderr=subprocess.STDOUT,shell=True,universal_newlines=True)
 	return out.replace("\b","")  #encode byte format to string, ugly hack 
-
-def gerekliKur():
-	os.system("pip_kur && pip3 install pythondialog")
-	os.system("mps -kur advcp")
 
 def greetingDialog():
 	status = d.yesno(title="Milis Linux'a hoş geldiniz !", 
@@ -160,5 +158,5 @@ def setSwap(part):
 	
 		 
 if __name__ == "__main__":
-	
+
 	greetingDialog()
