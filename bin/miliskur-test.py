@@ -9,7 +9,7 @@ import os,sys,re,subprocess,time
 import crypt
 
 os.system("pip_kur && pip3 install pythondialog")
-os.system("mps -kur advcp")
+os.system("mps -G && mps -kur advcp")
 
 from dialog import Dialog
 
@@ -115,7 +115,7 @@ def hedefBagla(hedef):
 	sistemKopyala()
 
 def sistemKopyala():
-	os.system("acp -g -axvnu /  /mnt")
+	os.system("acp -g -axnu /  /mnt")
 	initrdOlustur()
 	
 def initrdOlustur():
