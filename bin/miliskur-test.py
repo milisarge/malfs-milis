@@ -15,6 +15,10 @@ if os.path.exists("/usr/bin/acp") is False:
 	os.system("mps -G")
 	time.sleep(3)
 	os.system("mps kur advcp")
+if os.path.exists("/usr/bin/expect") is False:
+	os.system("mps -G")
+	time.sleep(3)
+	os.system("mps kur expect")
 #lsb-release tamiri
 time.sleep(3)
 os.system("mps -sz lsb-release && mps -ik lsb-release")
