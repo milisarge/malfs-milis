@@ -107,14 +107,15 @@ def formatDialog(part):
 		choosePart() 
 		
 def formatPart(part):
-	os.system("mkfs.ext4 "+"/dev/"+part)
+	hedef="/dev/"+part
+	os.system("umount "+hedef)
+	os.system("mkfs.ext4 "+hedef)
 	d.infobox(text="/dev/"+part+" Disk Formatlandı")
 	chooseSwap()
-	hedef="/dev/"+part
 	hedefBagla(hedef)
 
 def hedefBagla(hedef):
-	os.system("umount /mnt && umount "+hedef+" && mount "+hedef+" /mnt")
+	os.system("mount "+hedef+" /mnt")
 	d.infobox(text="hedef disk bağlandı.")
 	sistemKopyala()
 
