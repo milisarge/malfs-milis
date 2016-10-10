@@ -136,7 +136,7 @@ def initrdOlustur():
 
 def grubKur():
 	os.system("grub-install --boot-directory=/mnt/boot /dev/sdb")
-	os.system("grub-mkconfig -o /boot/grub/grub.cfg")
+	os.system("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
 	kurulumBitir()
 	
 def kurulumBitir():
