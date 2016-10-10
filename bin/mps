@@ -862,7 +862,8 @@ ayarlar() {
 					exit 1
 				fi
 				paket_sil "$2" ;;
-				
+			-sz|zorsil)
+				paket_sil "$2" "evet";;	
 			-pa|ara)
 				paket_ara "$2" ;;
 			bul)
