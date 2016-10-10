@@ -15,6 +15,9 @@ if os.path.exists("/usr/bin/acp") is False:
 	os.system("mps -G")
 	time.sleep(3)
 	os.system("mps kur advcp")
+#lsb-release tamiri
+time.sleep(3)
+os.system("mps -sz lsb-release && mps -ik lsb-release")
 
 from dialog import Dialog
 
