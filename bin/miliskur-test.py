@@ -9,10 +9,12 @@ import os,sys,re,subprocess,time
 import crypt
 
 os.system("mps -GG")
-os.system("pip_kur && pip3 install pythondialog")
-os.system("mps -G")
-time.sleep(3)
-os.system("mps kur advcp")
+if os.path.exists("/usr/bin/pip3") is False:
+	os.system("pip_kur && pip3 install pythondialog")
+if os.path.exists("/usr/bin/acp") is False:
+	os.system("mps -G")
+	time.sleep(3)
+	os.system("mps kur advcp")
 
 from dialog import Dialog
 
@@ -120,8 +122,10 @@ def hedefBagla(hedef):
 	sistemKopyala()
 
 def sistemKopyala():
-	#os.system("acp -g -axnu /  /mnt")
-	os.system("cp -axvnu /  /mnt")
+	os.system("clear")
+	#print("\033c")
+	os.system("acp -g -axnu /  /mnt")
+	#os.system("cp -axvnu /  /mnt")
 	initrdOlustur()
 	
 def initrdOlustur():
