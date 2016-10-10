@@ -160,6 +160,7 @@ def chooseSwap():
 		setSwap(selectedPart)
 		
 def setSwap(part):
+	os.system("mkswap "+"/dev/"+part)
 	os.system("swapon "+"/dev/"+part)
 	
 		 
