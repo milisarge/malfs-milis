@@ -1,0 +1,119 @@
+#!/bin/bash
+
+
+######################################
+#### Default Vars ####################
+######################################
+
+user_groups=""
+default_groups=(users disk network floppy fuse video lp tty audio cdrom scanner adm vboxusers wheel)
+
+# Avoid spaces troubles :)
+OLD_IFS=$IFS
+IFS="|
+"
+KDM_CONFFILE="/etc/kde/kdmrc"
+GDM_CONFFILE="/etc/gdm/custom.conf"
+LXDM_CONFFILE="/etc/lxdm/lxdm.conf"
+
+######################################
+#### Functions #######################
+######################################
+
+check_args()
+{
+    description="$1"
+    name="$2"
+
+    name_test=`echo -n "$name" | sed 's@^[a-z][a-z0-9]*$@@g'`
+    if [ "$name_test" != "" ]; then
+	echo 1>&2 "HATA=kullanıcı sorunlu kareketerler içerrmektedir."
+	return 1
+    fi
+    if grep "$name" /etc/passwd > /dev/null; then
+	echo 1>&2 "$name kullanıcısı zaten var!"
+	return 2
+    fi
+
+    desc_test=`echo "$description" | sed 's@^[[:alnum:]! -.,~_@;%<>?]*$@@ig'`
+    if [ "$desc_test" != "" ]; then
+	echo 1>&2 "HATA=Uzun ismi ! -.,~_\\\@;%<>? karekerleri içeremez.Harf-sayı olmalıdır! "
+	return 3
+    fi
+    return 0
+}
+
+usage()
+{
+  echo 1>&2 'KULLANIM:
+ ko kullanıcı kullanıcı_ismi'
+  exit 1
+}
+
+######################################
+#### Scripting time ##################
+######################################
+
+if [ $# -eq 1 -o $# -gt 2 ]; then
+    usage
+fi
+
+if [ $UID -ne 0 ]; then
+    echo 1>&2 "Bu betik root yetkileriyle çalışmaktadır."
+    exit 1;
+fi
+
+if [ $# -lt 2 ]; then
+    echo -n "Kullancı: "
+    read name
+    echo -n "Uzun ismi: "
+    read description
+else
+    description="$1"
+    name="$2"
+fi
+
+check_args "$description" "$name"
+ret=$?
+while [ $ret -ne 0 ]; do
+    if [ $ret -lt 3 ]; then
+	echo -n "Kullancı: "
+	read name
+    fi
+    if [ $ret -eq 3 ]; then
+	echo -n "Uzun ismi: "
+	read description
+    fi
+    if [ "$name" == "!stop!" -o "$description" == "!stop!" ]; then
+	exit 1
+    fi
+    check_args "$description" "$name"
+	ret=$?
+done
+
+i=0
+while [ -n "${default_groups[i]}" ]; do
+    if grep "${default_groups[i]}" /etc/group > /dev/null ; then
+	if [ -z "$user_groups" ]; then
+	    user_groups="${default_groups[i]}"
+	else
+	    user_groups="$user_groups,${default_groups[i]}"
+	fi
+
+    fi
+    i=$((i+1))
+done
+
+echo 1>&2 "
+$name kullanıcısının oluşturulması.
+"
+if [ -d /home/${name} ]; then
+	chown -R ${name}:${name} /home/${name}
+fi
+if [ -z "$user_groups" ]; then
+    /sbin/useradd -c "${description}" -m "${name}" || exit 1
+else
+    /sbin/useradd -c "${description}" -G "$user_groups" -m "${name}" || exit 1
+fi
+
+exit 0
