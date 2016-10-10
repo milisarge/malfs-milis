@@ -1,0 +1,7 @@
+#!/usr/bin/expect
+spawn passwd $1
+expect "password:"
+send "$2\r"
+expect "Retype new password:"
+send "$2\r"
+interact
