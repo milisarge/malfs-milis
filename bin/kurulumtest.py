@@ -151,7 +151,10 @@ def initrdOlustur(hedef):
 
 def grubKur(hedef):
 	hedef = hedef[:-1]
-	os.system("grub-install --boot-directory=/mnt/boot " + hedef)
+	if hedef = "/dev/mmcblk0": #SD kart'a kurulum fix
+		os.system("grub-install --boot-directory=/mnt/boot /dev/mmcblk0")
+	else:
+		os.system("grub-install --boot-directory=/mnt/boot " + hedef)
 	os.system("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
 	kurulumBitir()
 	
@@ -169,7 +172,9 @@ def chooseSwap(part):
 	for i in range(len(diskParts)-1):
 		if partMajmin[i].split(":")[1] != "0": # partition olmayanları ele (sda/sdb swap için uygun değil)
 			if diskParts[i] != part:
-				swapChoice.append((diskParts[i],partLabel[i]+ "\t" +partSizes[i]+"\t"+partFs[i]))
+				for validPart in validParts: 
+					if validPart in diskParts[i]: #loop partlar gibi swap kurulamayacak alanları ele
+						swapChoice.append((diskParts[i],partLabel[i]+ "\t" +partSizes[i]+"\t"+partFs[i]))
 	status,selectedPart = d.menu(text="Takas alanının yer alacağı disk bölümünü seçiniz",choices=swapChoice)
 	if status == "ok":
 		f.write("{} seçildi !".format(selectedPart)) #burası da düzeltilcek şimdilik böyle commitliyorum :D
