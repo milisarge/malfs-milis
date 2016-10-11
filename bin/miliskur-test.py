@@ -127,27 +127,28 @@ def formatPart(part):
 def hedefBagla(hedef):
 	os.system("mount "+hedef+" /mnt")
 	d.infobox(text="hedef disk bağlandı.")
-	sistemKopyala()
+	sistemKopyala(hedef)
 
-def sistemKopyala():
+def sistemKopyala(hedef):
 	os.system("clear")
 	#print("\033c")
 	os.system("acp -g -axnu /  /mnt")
 	#os.system("cp -axvnu /  /mnt")
-	initrdOlustur()
+	initrdOlustur(hedef)
 	
-def initrdOlustur():
+def initrdOlustur(hedef):
 	os.system("mount --bind /dev /mnt/dev")
 	os.system("mount --bind /sys /mnt/sys")
 	os.system("mount --bind /proc /mnt/proc")
 	os.system('chroot /mnt dracut --no-hostonly --add-drivers "ahci" -f /boot/initramfs')
 	if d.yesno(text="Grub kurmak istiyor musunuz ?") == "ok":
-		grubKur()
+		grubKur(hedef)
 	else:
 		kurulumBitir()
 
-def grubKur():
-	os.system("grub-install --boot-directory=/mnt/boot /dev/sdb")
+def grubKur(hedef):
+	hedef = hedef[:-1]
+	os.system("grub-install --boot-directory=/mnt/boot " + hedef)
 	os.system("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
 	kurulumBitir()
 	
