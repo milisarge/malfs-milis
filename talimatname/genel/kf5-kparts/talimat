@@ -4,10 +4,10 @@
 # Depends on: kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kjobwidgets kf5-knotifications kf5-kservice kf5-kwidgetsaddons kf5-kxmlgui kf5-ktextwidgets
 
 name=kf5-kparts
-version=5.26.0
+version=5.27.0
 release=1
 _name=kparts
-_version=5.26
+_version=5.27
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 
