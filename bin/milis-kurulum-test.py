@@ -15,10 +15,6 @@ if os.path.exists("/usr/bin/acp") is False:
 	os.system("mps -G")
 	time.sleep(3)
 	os.system("mps kur advcp")
-if os.path.exists("/usr/bin/expect") is False:
-	os.system("mps -G")
-	time.sleep(3)
-	os.system("mps kur expect")
 #lsb-release tamiri
 time.sleep(3)
 os.system("mps -sz lsb-release && mps -ik lsb-release")
@@ -61,7 +57,7 @@ def createUser(name,username,password):
     #encPass = crypt.crypt(password,"22")   
     #os.system("useradd -p "+encPass+ " -s "+ "/bin/bash "+ "-d "+ "/home/" + username+ " -m "+ " -c \""+ name+"\" " + username)
 	os.system("kopar milis-"+name+" "+username)
-	os.system("echo "+password+" | passwd "+username+" --stdin")
+	os.system('echo -e "'password+'\n'+password'" | passwd '+username)
 
 def checkUserPassword(username):
 	#insecure=True parolanın yıldız şeklinde gözükmesini sağlar, 
