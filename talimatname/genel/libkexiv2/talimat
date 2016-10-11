@@ -4,7 +4,7 @@
 # Depends on: exiv2 qt5 kf5-extra-cmake-modules
 
 name=libkexiv2
-version=16.08.1
+version=16.08.2
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

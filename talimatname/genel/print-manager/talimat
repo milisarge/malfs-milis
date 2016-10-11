@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules qt5 cups kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kiconthemes kf5-ki18n kf5-kcmutils kf5-kio kf5-knotifications kf5-plasma-framework kf5-kwidgetsaddons kf5-kwindowsystem
 
 name=print-manager
-version=16.08.1
+version=16.08.2
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

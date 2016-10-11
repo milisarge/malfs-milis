@@ -4,7 +4,7 @@
 # Depends on: kf5-kwallet pam 
 
 name=plasma-kwallet-pam
-version=5.8.0
+version=5.8.1
 release=1
 _name=kwallet-pam
 

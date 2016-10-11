@@ -4,7 +4,7 @@
 # Depends on: cmake kf5-extra-cmake-modules qt5 kf5-kwayland 
 
 name=plasma-libkscreen
-version=5.8.0
+version=5.8.1
 release=1
 _name=libkscreen
 

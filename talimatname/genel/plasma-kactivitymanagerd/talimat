@@ -4,7 +4,7 @@
 # Depends on: qt5 kf5-extra-cmake-modules kf5-kconfig kf5-kdbusaddons kf5-ki18n kf5-kcoreaddons kf5-kwindowsystem kf5-kglobalaccel kf5-kxmlgui kf5-kio
 
 name=plasma-kactivitymanagerd
-version=5.8.0
+version=5.8.1
 release=1
 _name=kactivitymanagerd
 

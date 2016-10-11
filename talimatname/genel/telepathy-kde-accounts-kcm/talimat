@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules telepathy-qt5 kaccounts-providers intltool telepathy-gabble 
 
 name=telepathy-kde-accounts-kcm
-version=16.08.1
+version=16.08.2
 release=1
 _name=ktp-accounts-kcm
 

@@ -4,7 +4,7 @@
 # Depends on : grantlee-qt5 gpgme kf5-kcmutils kf5-extra-cmake-modules boost kf5-kdoctools kf5-kcodecs akonadi kf5-kdelibs4support kf5-kio kf5-kcompletion kf5-kcodecs phonon-qt5 kcontacts kcalcore kmime kf5-ki18n kf5-kitemviews kf5-kconfig kf5-solid qt5 kldap kmbox kf5-kwallet kf5-knewstuff kf5-kcmutils kf5-kdewebkit kf5-karchive kf5-knotifyconfig kf5-kconfig kf5-khtml kf5-kservice kf5-kdbusaddons kf5-kauth kf5-ktexteditor kf5-kdnssd kf5-kglobalaccel kf5-sonnet kf5-kross kpimtextedit kidentitymanagement kmailtransport kcalutils kholidays ktnef kimap akonadi-calendar akonadi-search syndication gpgmepp kontactinterface kalarmcal kf5-kxmlrpcclient kblog zip unzip libgravatar calendarsupport libkgapi mailimporter mailcommon incidenceeditor libksieve
 
 name=kdepim
-version=16.08.1
+version=16.08.2
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

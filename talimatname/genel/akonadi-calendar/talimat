@@ -4,7 +4,7 @@
 # Depends on : kf5-extra-cmake-modules boost kf5-kdoctools kf5-kdelibs4support kf5-kcodecs kf5-kio kf5-kwallet kmailtransport kcontacts kcalcore kidentitymanagement kcalutils akonadi-contacts
 
 name=akonadi-calendar
-version=16.08.1
+version=16.08.2
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

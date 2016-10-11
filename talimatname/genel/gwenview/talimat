@@ -4,7 +4,7 @@
 # Depends on: qt5 kf5-extra-cmake-modules phonon-qt5 kf5-kio kf5-kactivities kf5-kdelibs4support libjpeg-turbo libpng exiv2 lcms2 kf5-baloo hicolor-icon-theme libkdcraw libkipi
 
 name=gwenview
-version=16.08.1
+version=16.08.2
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)

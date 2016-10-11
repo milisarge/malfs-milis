@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules sddm qt5 kf5-kio kf5-kauth kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kxmlgui xorg-libx11 xcb-util-image libxcb xorg-libxcursor
 
 name=plasma-sddm-kcm
-version=5.8.0
+version=5.8.1
 release=1
 _name=sddm-kcm
 
