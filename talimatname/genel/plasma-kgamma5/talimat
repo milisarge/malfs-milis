@@ -4,7 +4,7 @@
 # Depends on: kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdelibs4support kf5-ki18n
 
 name=plasma-kgamma5
-version=5.8.0
+version=5.8.1
 release=1
 _name=kgamma5
 

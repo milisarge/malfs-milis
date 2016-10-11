@@ -4,7 +4,7 @@
 # Depends on: plasma-bluedevil plasma-breeze plasma-breeze-gtk plasma-desktop plasma-integration plasma-kactivitymanagerd plasma-kde-cli-tools plasma-kdecoration plasma-kde-gtk-config plasma-kdeplasma-addons plasma-kgamma5 plasma-khotkeys plasma-kinfocenter plasma-kmenuedit plasma-kscreen plasma-kscreenlocker  plasma-ksshaskpass plasma-ksysguard plasma-kwallet-pam plasma-kwayland-integration plasma-kwin plasma-kwrited plasma-libkscreen plasma-libksysguard plasma-mediacenter plasma-milou plasma-nm plasma-oxygen plasma-pa plasma-polkit-kde-agent plasma-powerdevil plasma-sddm-kcm plasma-sdk plasma-systemsettings plasma-user-manager plasma-workspace plasma-workspace-wallpapers
 
 name=plasma
-version=5.8.0
+version=5.8.1
 release=1
 
 source=(talimat)
