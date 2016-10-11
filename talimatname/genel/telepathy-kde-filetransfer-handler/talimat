@@ -4,7 +4,7 @@
 # Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals 
 
 name=telepathy-kde-filetransfer-handler
-version=16.08.1
+version=16.08.2
 release=1
 _name=ktp-filetransfer-handler
 
