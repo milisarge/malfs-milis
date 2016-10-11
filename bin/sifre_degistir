@@ -1,7 +1,7 @@
 #!/usr/bin/expect
-spawn passwd $1
+spawn passwd mahk
 expect "password:"
-send "$2\r"
+send "mahk1\r"
 expect "Retype new password:"
-send "$2\r"
+send "mahk1\r"
 interact
