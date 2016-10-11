@@ -59,7 +59,7 @@ def createUser(name,username,password):
     #encPass = crypt.crypt(password,"22")   
     #os.system("useradd -p "+encPass+ " -s "+ "/bin/bash "+ "-d "+ "/home/" + username+ " -m "+ " -c \""+ name+"\" " + username)
 	os.system("kopar milis-"+name+" "+username)
-	os.system('echo -e "'password+'\n'+password'" | passwd '+username)
+	os.system('echo -e "'+password+'\n'+password+'" | passwd '+username)
 
 def checkUserPassword(username):
 	#insecure=True parolanın yıldız şeklinde gözükmesini sağlar, 
