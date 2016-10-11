@@ -163,6 +163,7 @@ def kurulumBitir():
 		
 def chooseSwap(part):
 	swapChoice = []
+	validParts = ['sd','hd','mmcblk0p']
 	#Şimdilik Parted kütüphanesine gerek kalmadı, lsblk istediğimiz bütün değerleri alıyor.
 	diskParts  = runShellCommand("lsblk -ln -o  NAME    | awk '{print $1}'").split('\n')
 	partSizes  = runShellCommand("lsblk -ln -o  SIZE    | awk '{print $1}'").split('\n')
