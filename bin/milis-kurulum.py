@@ -182,7 +182,7 @@ def chooseSwap(part):
 		
 def setSwap(part):
 	os.system("mkswap "+"/dev/"+part)
-	os.system('echo "`lsblk -ln -o UUID ' + part + '` none swap sw 0 0 | tee -a /etc/fstab')
+	os.system('echo "`lsblk -ln -o UUID ' + part + '` none swap sw 0 0" | tee -a /etc/fstab')
 	
 		 
 if __name__ == "__main__":
