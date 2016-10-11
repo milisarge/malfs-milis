@@ -168,7 +168,7 @@ def chooseSwap(part):
 	partLabel  = runShellCommand("lsblk -ln -o  LABEL").split('\n') #Bunda awk yok çünkü arada boşluk olabilir. 
 	for i in range(len(diskParts)-1):
 		if partMajmin[i].split(":")[1] != "0": # partition olmayanları ele (sda/sdb swap için uygun değil)
-			if diskParts[i] == part:
+			if diskParts[i] != part:
 				swapChoice.append((diskParts[i],partLabel[i]+ "\t" +partSizes[i]+"\t"+partFs[i]))
 	status,selectedPart = d.menu(text="Takas alanının yer alacağı disk bölümünü seçiniz",choices=swapChoice)
 	if status == "ok":
