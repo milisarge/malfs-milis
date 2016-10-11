@@ -151,7 +151,7 @@ def initrdOlustur(hedef):
 
 def grubKur(hedef):
 	hedef = hedef[:-1]
-	if hedef = "/dev/mmcblk0": #SD kart'a kurulum fix
+	if hedef == "/dev/mmcblk0": #SD kart'a kurulum fix
 		os.system("grub-install --boot-directory=/mnt/boot /dev/mmcblk0")
 	else:
 		os.system("grub-install --boot-directory=/mnt/boot " + hedef)
