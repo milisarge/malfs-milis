@@ -1,7 +1,6 @@
 
 
-####Milis İşletim Sistemine hoş geldiniz.
-
+##Milis İşletim Sistemi
 Milis işletim sistemi,lfs esaslarını temel alarak yerli bağımsız bir dağıtım olmak üzere yola çıkmıştır.
 Milis işletim sistemi kendine özgü mps paket yöneticisi kullanmaktadır.
 Mps paket yöneticisi performansı ve sorunsuz paket derleme-kurup-kaldırma-güncellemeyi hedeflemektedir.
@@ -21,7 +20,7 @@ Ayrıca her türlü katkıda bulunmak isteyenler için bulunmaz bir türkçe aç
 
 Milis Anasayfa : http://milis.gungre.ch
 
-##İletişim: 
+####İletişim: 
 milisarge@gmail.com 
 irc.freenode.net #milisarge
 
@@ -37,26 +36,35 @@ Mps Milis işletim sisteminin kendine özgü sıfırdan bash betik dilinde yazı
 Mps ile talimatnamedeki talimatları kullanarak paket üretebilir,paket kurabilir kaldırabilir ve güncelleyebilirsiniz.
 
 ```
-mps -G					ikili paket veritabanini gunceller
+mps guncelle                İkili paket veritabanını ve sistemi günceller.
 
-mps -Ggit				git sunucusundan talimatname ve sistem gunceller
+mps kur paket_adi           Depodan yazılım paketi kurar.
 
-mps -kur   paket_ismi	ilgili paketi bagimliliklariyla agdan cekip kurar
+mps kur paket_adi.mps.lz    Dosyadan yazılım paketi kurar.
 
-mps -s     paket_ismi	ilgili paketi kaldirir
+mps sil paket_adi           Paket siler.
 
-mps -k     paket_ismi	yereldeki paketi bagimliliksiz kurar
+mps ara paket_adi           Paket arar.
 
-mps -g     paket_ismi	paketi günceller
 
-mps -go    paket_ismi	paketi bağımlılıklarıyla günceller
+API Parametreler
 
-mps -kl					kurulu paket listesini verir
+mps -G                      İkili paket veritabanini gunceller.
 
-mps -kk    paket_ismi	ilgili paketin kurulu olma durumunu verir
+mps -GG                     Git sunucusundan talimatname ve sistem günceller.
 
-mps -d     paket_ismi	ilgili paketin talimat dosyasına göre sadece derler,paketler
+mps -kur paket_ismi         İlgili paketi bağimlılıklarıyla ağdan çekip kurar.
 
-mps -derle paket_ismi	ilgili paketin talimat dosyasına göre bagimliliklariyla beraber derler,paketler ve kurar.
+mps -s paket_ismi           İlgili paketi kaldırır.
+
+mps -k paket_ismi           Yereldeki paketi bagimliliksiz kurar.
+
+mps -kl                     Kurulu paket listesini verir.
+
+mps -kk paket_ismi          İlgili paketin kurulu olma durumunu verir.
+
+mps -d paket_ismi           İlgili paketin talimat dosyasına göre bağımlıksız derler,paketler.
+
+mps -derle paket_ismi       İlgili paketin talimat dosyasına göre bağımlıklarıyla derler,paketler.
 ```
 
