@@ -1,6 +1,6 @@
 # Description: C library for encoding, decoding and manipulating JSON data.
 # URL:         http://www.digip.org/jansson/
-# Maintainer:  Alan Mizrahi, alan at mizrahi dot com dot ve
+# Packager:    milisarge
 # Depends on:
 
 name=jansson
