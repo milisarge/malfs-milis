@@ -4,10 +4,10 @@
 # Depends on: qt5-webkit kf5-kconfig kf5-kcoreaddons kf5-kio kf5-kjobwidgets kf5-kparts kf5-kservice kf5-kwallet 
 
 name=kf5-kdewebkit
-version=5.26.0
+version=5.27.0
 release=1
 _name=kdewebkit
-_version=5.26
+_version=5.27
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 
