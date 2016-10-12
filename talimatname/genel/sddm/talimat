@@ -1,7 +1,7 @@
 # Description : The SDDM package contains a lightweight display manager written in Qt and QML. 
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake qt5 upower consolekit2 
+# Depends on: cmake kf5-extra-cmake-modules qt5 upower consolekit2 
 
 name=sddm
 release=1
@@ -40,6 +40,7 @@ auth     requisite      pam_nologin.so
 auth     required       pam_env.so
 
 auth     required       pam_succeed_if.so uid >= 1000 quiet
+auth    sufficient      pam_succeed_if.so user ingroup nopasswdlogin
 auth     include        system-auth
 
 account  include        system-account
