@@ -22,6 +22,7 @@ cd    build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DENABLE_JOURNALD=OFF       \
+      -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
       -Wno-dev ..
 make
 make DESTDIR=$PKG install
