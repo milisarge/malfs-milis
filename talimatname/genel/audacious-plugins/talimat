@@ -2,7 +2,7 @@
 # URL: http://audacious-media-player.org
 # Maintainers: https://github.com/audacious-media-player
 # Packagers: tnut at nutyx dot org
-# Depends: gtk3 audacious alsa-utils flac lame libcdio libsamplerate libsndfile libvorbis mpg123 neon pulseaudio faad2 ffmpeg
+# Depends on: gtk3 audacious alsa-utils flac lame libcdio libsamplerate libsndfile libvorbis mpg123 neon pulseaudio faad2 ffmpeg
 
 name=audacious-plugins
 version=3.7.2

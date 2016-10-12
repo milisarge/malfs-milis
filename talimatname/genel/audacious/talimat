@@ -2,7 +2,7 @@
 # URL: http://audacious-media-player.org
 # Maintainers: https://github.com/audacious-media-player
 # Packagers: tnut at nutyx dot org
-# Depends: glib gtk2 python xorg-libsm gnome-icon-theme hicolor-icon-theme desktop-file-utils
+# Depends on: glib gtk2 python xorg-libsm gnome-icon-theme hicolor-icon-theme desktop-file-utils
 
 name=audacious
 version=3.7.2
