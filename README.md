@@ -25,6 +25,7 @@ milisarge@gmail.com
 irc.freenode.net #milisarge
 
 Telegram duyuru kanalımız: http://telegram.me/milislinux
+
 Telegram kanalımız: telegram.me/milislinux
 
 
