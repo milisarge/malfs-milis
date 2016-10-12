@@ -5,7 +5,7 @@
 # Depends: glib gtk2 python xorg-libsm gnome-icon-theme hicolor-icon-theme desktop-file-utils
 
 name=audacious
-version=3.6.2
+version=3.7.2
 release=1
 
 source=(http://distfiles.audacious-media-player.org/$name-$version.tar.bz2)

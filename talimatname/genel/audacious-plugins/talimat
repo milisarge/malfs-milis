@@ -5,6 +5,7 @@
 # Depends: gtk3 audacious alsa-utils flac lame libcdio libsamplerate libsndfile libvorbis mpg123 neon pulseaudio faad2 ffmpeg
 
 name=audacious-plugins
+version=3.7.2
 release=1
 
 source=(http://distfiles.audacious-media-player.org/$name-$version.tar.bz2)
