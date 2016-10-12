@@ -21,14 +21,13 @@ Ayrıca her türlü katkıda bulunmak isteyenler için bulunmaz bir türkçe aç
 
 Milis Anasayfa : http://milis.gungre.ch
 
-İletişim: milisarge@gmail.com irc.freenode.net #milisarge
+##İletişim: 
+milisarge@gmail.com 
+irc.freenode.net #milisarge
 
 Telegram duyuru kanalımız: http://telegram.me/milislinux
+Telegram kanalımız: telegram.me/milislinux
 
-<<<<<<< HEAD
-telegram kanalımız: telegram.me/milislinux
-=======
->>>>>>> 2e12c116cf412d456c851e84f392c039690d1cc6
 
 Sunucu desteği için Lucas Sköldqvist dostumuza teşekkür ederiz. 
 
