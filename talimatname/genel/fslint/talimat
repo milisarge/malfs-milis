@@ -23,6 +23,7 @@ build() {
   install -D -m644 fslint_icon.png "${PKG}"/usr/share/$name/fslint_icon.png
   mkdir -p "${PKG}"/usr/share/pixmaps
   ln -s /usr/share/$name/fslint_icon.png "${PKG}"/usr/share/pixmaps/fslint_icon.png
-
   make -C po DESTDIR="${PKG}" install
+  mkdir -p "${PKG}"/usr/share/fslint/po
+  cp -r po/locale "${PKG}"/usr/share/fslint/po/
 }
