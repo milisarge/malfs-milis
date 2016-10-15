@@ -1,0 +1,25 @@
+# Description: 	Drop-down terminal for GNOME
+# URL: 			http://guake-project.org/
+# Packager:		milisarge aydinyakar
+# Depends on: 	intltool gnome-common python-notify vte python-vte python-gconf dbus-python python-keybinder python-xdg libutempter 
+
+name=guake
+version=0.8.7
+release=1
+source=(https://github.com/Guake/$name/archive/$version.tar.gz)
+
+build() {
+	# Python2 fix
+	cd $name-$version
+	sed -i 's|/usr/bin/env python|/usr/bin/python2|' src/guake/prefs.py
+
+	NOCONFIGURE=1 ./autogen.sh
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	--disable-schemas-install \
+	--with-gconf-schema-file-dir=/usr/share/gconf/schemas \
+	PYTHON=python2
+	make
+	make DESTDIR="$PKG" install
+	python2 -m compileall "$PKG"/usr/lib/python2.7/site-packages/guake/
+	
+}

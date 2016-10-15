@@ -1,6 +1,6 @@
 # Description: Bindings Python2 for GConf.
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python-gtk gconf 
 
 _name=gnome-python

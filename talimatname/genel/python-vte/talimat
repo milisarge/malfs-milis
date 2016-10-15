@@ -1,0 +1,37 @@
+# Description: Python modules Virtual Terminal Emulator
+# URL: http://developer.gnome.org/arch/gnome/widgets/vte.html
+# Packager: milisarge
+# Depends on: vte vala
+
+name=python-vte
+version=0.28.2
+release=1
+source=(ftp://ftp.gnome.org/pub/gnome/sources/vte/${version%.*}/vte-$version.tar.xz )
+
+build() {
+  cd vte-$version
+
+  ./configure --prefix=/usr \
+              --libexecdir=/usr/lib/$name \
+              --disable-static \
+              --disable-debugging \
+              --enable-python \
+              --disable-gtk-doc \
+              --with-xft2 \
+              --with-pangox
+
+  make
+  make DESTDIR=$PKG install
+
+
+  rm -rf $PKG/usr/lib/libvte.la
+  rm -rf $PKG/usr/lib/libvte.so*
+  rm -rf $PKG/usr/lib/libvte.so.9.2800.2
+  rm -rf $PKG/usr/lib/pkgconfig/
+  rm -rf $PKG/usr/lib/vte/
+  rm -rf $PKG/usr/include
+  rm -rf $PKG/usr/share
+  rm -rf $PKG/usr/bin
+  rm -rf $PKG/usr/{share}/{gtk-doc,locale}
+  rm -rf $PKG/usr/lib/vte/gnome-pty-helper
+}

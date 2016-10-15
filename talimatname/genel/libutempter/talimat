@@ -1,6 +1,6 @@
 # Description: Interface for terminal emulators to record user sessions to utmp and wtmp files.
 # URL: ftp://ftp.altlinux.org/pub/people/ldv/utempter
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on:
 
 name=libutempter
