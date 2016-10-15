@@ -1,6 +1,6 @@
 # Description: connector python for libnotify
 # URL: http://www.galago-project.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libnotify python-gtk dbus-glib 
 
 
