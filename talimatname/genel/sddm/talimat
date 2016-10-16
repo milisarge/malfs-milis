@@ -12,9 +12,8 @@ source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$versi
          10-backlight.rules)
 
 build() {
-source /etc/blfs-bootscripts
-wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/$scripts-$scriptsversion.tar.bz2
-tar xvf $scripts-$scriptsversion.tar.bz2
+wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20160902.tar.xz
+tar xvf blfs-bootscripts-20160902.tar.xz
 
 cd ${name}-$version
 mkdir build
@@ -99,6 +98,6 @@ session     required pam_unix.so
 # End /etc/pam.d/sddm-greeter
 EOF
 # service
-cd $SRC/$scripts-$scriptsversion
+cd $SRC/blfs-bootscripts-20160902
 make DESTDIR=$PKG install-sddm
 }
