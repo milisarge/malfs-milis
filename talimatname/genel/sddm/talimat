@@ -12,8 +12,9 @@ source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$versi
          10-backlight.rules)
 
 build() {
-wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20160902.tar.xz
-tar xvf blfs-bootscripts-20160902.tar.xz
+source /etc/blfs-bootscripts
+wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd ${name}-$version
 mkdir build
@@ -35,15 +36,16 @@ install -v -dm755 -o sddm -g sddm /var/lib/sddm
 cat > $PKG/etc/pam.d/sddm << "EOF"
 # Begin /etc/pam.d/sddm
 
-auth     requisite      pam_nologin.so
 auth     required       pam_env.so
-
-auth     required       pam_succeed_if.so uid >= 1000 quiet
-auth    sufficient      pam_succeed_if.so user ingroup nopasswdlogin
+auth     sufficient     pam_unix.so likeauth nullok nodelay
+auth     required       pam_deny.so
 auth     include        system-auth
 
 account  include        system-account
-password include        system-password
+
+password   sufficient   pam_unix.so nullok md5 shadow use_authtok
+password   required     pam_deny.so
+password   include      system-password
 
 session  required       pam_limits.so
 session  include        system-session
@@ -54,18 +56,23 @@ EOF
 cat > $PKG/etc/pam.d/sddm-autologin << "EOF"
 # Begin /etc/pam.d/sddm-autologin
 
-auth     requisite      pam_nologin.so
-auth     required       pam_env.so
+auth            requisite       pam_nologin.so
+auth            required        pam_env.so
 
-auth     required       pam_succeed_if.so uid >= 1000 quiet
-auth     required       pam_permit.so
+auth            required        pam_permit.so
 
-account  include        system-account
+auth            sufficient      pam_succeed_if.so uid >= 1000 quiet
+auth            required        pam_deny.so
 
-password required       pam_deny.so
+account         required        pam_access.so
+account         required        pam_time.so
 
-session  required       pam_limits.so
-session  include        system-session
+password        required        pam_deny.so
+
+session         required        pam_limits.so
+session         required        pam_loginuid.so
+session         optional        pam_keyinit.so revoke
+session         required        pam_limits.so
 
 # End /etc/pam.d/sddm-autologin
 EOF
@@ -73,17 +80,25 @@ EOF
 cat > $PKG/etc/pam.d/sddm-greeter << "EOF"
 # Begin /etc/pam.d/sddm-greeter
 
-auth     required       pam_env.so
-auth     required       pam_permit.so
+# Load environment from /etc/environment and ~/.pam_environment
+auth        required pam_env.so
 
-account  required       pam_permit.so
-password required       pam_deny.so
-session  required       pam_unix.so
--session optional       pam_systemd.so
+# Always let the greeter start without authentication
+auth        required pam_permit.so
+
+# No action required for account management
+account     required pam_permit.so
+
+# Can't change password
+password    required pam_deny.so
+
+# Setup session
+session     required pam_unix.so
+-session     optional pam_systemd.so
 
 # End /etc/pam.d/sddm-greeter
 EOF
 # service
-cd $SRC/blfs-bootscripts-20160902
+cd $SRC/$scripts-$scriptsversion
 make DESTDIR=$PKG install-sddm
 }
