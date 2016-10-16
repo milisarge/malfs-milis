@@ -1,0 +1,3 @@
+pip2 install flask
+pip2 install psutil
+pip2 install /opt/komutan/gerekliler/python-stdnum-1.1.tar.gz

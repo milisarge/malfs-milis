@@ -1,0 +1,24 @@
+# Description: milis işletim sistemi web tabanlı yönetim programı
+# URL: https://github.com/milisarge/komutan
+# Packager: milisarge
+# Depends on: sqlite python python-pip
+name=komutan
+version=git
+release=1
+
+source=()
+build() {
+if [ ! -d $DERLEME_KAYNAKDIZIN/$name ];then
+	git clone https://github.com/milisarge/$name.git $DERLEME_KAYNAKDIZIN/$name
+else
+	cd $DERLEME_KAYNAKDIZIN/$name
+	git pull
+	cd -
+fi
+mkdir $PKG/opt
+cp -r $DERLEME_KAYNAKDIZIN/$name $PKG/opt/ 
+#cp $name/komutan.desktop $PKG/usr/share/applications/komutan.desktop
+#cp $name/komutan.png /usr/share/pixmaps/komutan.png
+install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name.desktop "${PKG}"/usr/share/applications/$name.desktop
+install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name.png "${PKG}"/usr/share/pixmaps/komutan.png
+}
