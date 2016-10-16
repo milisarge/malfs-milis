@@ -711,6 +711,34 @@ git_guncelle() {
 	done
 }
 
+git_proje_kur(){
+	local proje proj_dizin git_link
+	git_link="https://github.com/milisarge"
+	proje="$1"
+	proj_dizin="/opt"
+	mkdir -p $proj_dizin
+	if [ -d "$proj_dizin/$proje" ];then
+		cd $proj_dizin/$proje
+		git pull
+		
+		if [ -f mops ];then
+			. mops
+			mops_gun
+		fi	
+	else
+		git clone "$git_link/$proje" "$proj_dizin/$proje"
+		cd $proj_dizin/$proje
+		
+		if [ -f mops ];then
+			. mops
+			mops_kur
+			mops_sil
+			mops_gun
+		fi
+	fi
+	
+}	
+
 paketvt_guncelle(){
 	temel_tarihce_kontrol
 	wget -q --spider "$sunucu""paket.vt"
@@ -925,6 +953,8 @@ ayarlar() {
 				else
 					paket_inkur_oto "$2" 
 				fi ;;
+			gitkur)
+				git_proje_kur "$2" ;;
 			-kdl)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
