@@ -1,4 +1,4 @@
-# Description: tool like grep, aimed at programmers with large trees of heterogeneous source code
+# Description: "Kaynak kod içerisinde arama yapmayı sağlayan grep benzeri bir araç." 
 # URL:         http://beyondgrep.com/
 # Packager:    berlius at nutyx dot com
 # Depends on:  

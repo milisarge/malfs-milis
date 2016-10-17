@@ -1,4 +1,4 @@
-# Description: AAlib is an portable ascii art GFX library.
+# Description: AAlib taşınabilir bir ascii art kütüphanesidir.
 # URL: http://aa-project.sourceforge.net/aalib
 # Packager: pierre at nutyx dot org
 # Depends on: xorg-libx11 

@@ -1,4 +1,4 @@
-# Description:  An open-source HTTP server for modern operating systems.
+# Description:  Açık kaynak web sunucusu.
 # URL: http://httpd.apache.org/ABOUT_APACHE.html
 # Packager: milisarge@gmail.com
 # Depends on: pcre apr-util sqlite expat 

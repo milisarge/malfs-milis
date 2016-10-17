@@ -1,7 +1,7 @@
 # URL: http://ftp.de.debian.org/debian/pool/main/a/at
 # Packager: berlius at nutyx dot com
 # Depends on: sendmail pam
-description="Delayed job execution and batch processing, required for Linux Standards Base conformance"
+description="Gecikmeli iş yürütme ve toplu işlem."
 name=at
 version=3.1.16	
 release=1

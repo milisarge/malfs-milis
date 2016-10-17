@@ -1,4 +1,4 @@
-# Description: PBX Software implementation
+# Description: PBX yazılım implementasyonu. 
 # URL:         http://www.asterisk.org
 # Packager:    berlius at nutyx dot com
 # Depends on:  openssl ncurses jansson opus libxml2 doxygen

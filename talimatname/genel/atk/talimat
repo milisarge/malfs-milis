@@ -1,4 +1,4 @@
-# Description: A library providing a set of interfaces for accessibility
+# Description: Çeşitli erişilebilirlik arabirimleri sağlayan bir kütüphane.
 # URL: http://www.gtk.org/
 # Packager: pierre at nutyx dot org
 # Depends on: glib pcre gobject-introspection 

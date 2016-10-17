@@ -1,4 +1,4 @@
-# Description: Utilities for configuring and using ALSA 
+# Description: Alsa ses desteğini ayarlamak ve kullanmak için çeşitli araçlar.
 # URL: http://www.alsa-project.org
 # Packager: pierre at nutyx dot org
 # Depends on: alsa-lib xmlto libsamplerate gawk

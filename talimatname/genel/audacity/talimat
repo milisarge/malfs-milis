@@ -1,4 +1,4 @@
-# Description: A program that lets you manipulate digital audio waveforms
+# Description: Ses dosyalarını düzenlemek için gelişmiş bir araç.
 # URL: http://web.audacityteam.org/
 # Packager: milisarge
 # Depends on: libvorbis libmad libid3tag wxgtk28 lame hicolor-icon-theme ffmpeg shared-mime-info desktop-file-utils redland jack soundtouch cmake zip python

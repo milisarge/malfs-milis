@@ -1,4 +1,4 @@
-# Description: Extra alsa plugins
+# Description: Ek Alsa eklentileri.
 # URL: http://www.alsa-project.org
 # Packager: pierre at nutyx dot org
 # Depends on: alsa-lib ffmpeg pulseaudio libsamplerate speex 

@@ -1,4 +1,4 @@
-# Description: High speed download utility with resuming and segmented features.
+# Description: Komut satırı tabanlı durdurma ve dilimli indirme özellikleri olan hızlı bir indirme yöneticisi. 
 # URL:         http://aria2.sourceforge.net/
 # Packager:    berlius at nutyx dot com
 # Depends on:  gnutls gmp libxml2

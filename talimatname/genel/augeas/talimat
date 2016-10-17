@@ -1,4 +1,4 @@
-# Description: A configuration editing tool that parses config files and transforms them into a tree
+# Description: Konfigürasyon dosyalarını okuyup ağaç şeklinde görüntülemeyi sağlayan bir araç.
 # URL: http://augeas.net
 # Packager: berlius at nutyx dot com
 # Depends on: libxml2

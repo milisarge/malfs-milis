@@ -1,4 +1,4 @@
-# Description: A multi-platform game programming library for C/C++.
+# Description: C/C++ için çoklu platform oyun geliştirme kütüphanesi.
 # URL:         http://alleg.sourceforge.net/
 # Packager:    berlius at nutyx dot com
 # Depends on:  flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga

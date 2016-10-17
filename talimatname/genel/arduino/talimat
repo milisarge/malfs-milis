@@ -1,4 +1,4 @@
-# Description: Arduino prototyping platform SDK
+# Description: Arduino prototiplendirme kartı için geliştirici kiti (SDK).
 # URL: https://github.com/arduino/Arduino
 # Packager: milisarge
 # Depends on : gtk2 desktop-file-utils shared-mime-info openjdk avrdude apache-ant unzip

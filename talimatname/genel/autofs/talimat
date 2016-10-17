@@ -1,4 +1,4 @@
-# Description: Autofs controls the operation of the automount daemons.
+# Description: Otomatik bağlama arthizmetleri operasyonları için autofs kontrolleri. 
 # URL: http://www.kernel.org/pub/linux/daemons/autofs
 # Packager: berlius at nutyx dot com
 # Depends on: libtirpc nfs-utils libxml2 kerberos openldap cyrus-sasl
