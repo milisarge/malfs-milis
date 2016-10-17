@@ -1,0 +1,17 @@
+# Description="Python API for GeoIP lookups"
+# Url="https://pypi.python.org/pypi/pygeoip/"
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: python
+
+name=python-geoip
+version=0.2.7
+release=1
+_name=pygeoip
+
+source=( https://pypi.python.org/packages/source/p/${_name}/${_name}-$version.tar.gz)
+
+build() {
+cd ${_name}-$version
+python setup.py build
+python setup.py install --optimize=1 --root=$PKG
+}

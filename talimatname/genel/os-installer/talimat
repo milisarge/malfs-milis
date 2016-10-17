@@ -1,0 +1,24 @@
+# Description="Install OS to disk"
+# Url="https://www.solus-project.com"
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: python-setuptools gsettings-desktop-schemas gnome-desktop libtimezonemap gparted python-cairo python-geoip python-gobject python-parted xorg-app
+
+name=os-installer
+version=12.5
+release=1
+_version=v12.5
+
+source=( https://github.com/solus-project/$name/archive/${_version}.tar.gz
+         10-livecd.rules)
+
+build() {
+cd $name-$version
+python setup.py build
+python setup.py install --optimize=1 --root=$PKG
+
+install -D -m 00644 dist/org.freedesktop.policykit.pkexec.policy $PKG/usr/share/polkit-1/actions/org.freedesktop.policykit.pkexec.policy
+install -D -m 00755 dist/os-installer-wrapper $PKG/usr/bin/os-installer-wrapper
+install -D -m 00644 $SRC/10-livecd.rules $PKG/usr/share/polkit-1/rules.d/10-livecd.rules
+install -D -m 00644 dist/install-symbolic.svg $PKG/usr/share/icons/gnome/scalable/actions/install-symbolic.svg
+install -D -m 00644 dist/com.solus_project.Installer.desktop $PKG/usr/share/applications/os-installer-gtk.desktop
+}
