@@ -4,7 +4,7 @@
 # Depends on : qt5 cmake doxygen
 
 name=grantlee-qt5
-version=5.0.0
+version=5.1.0
 release=1
 
 source=(http://downloads.grantlee.org/grantlee-$version.tar.gz)
