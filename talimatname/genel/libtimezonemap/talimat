@@ -1,0 +1,20 @@
+# Description: GTK+3 timezone map widget
+# URL: https://launchpad.net/timezonemap
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: gtk3 json-glib vala gobject-introspection libsoup
+
+name=libtimezonemap
+version=0.4.5
+release=1
+
+
+source=( https://launchpad.net/ubuntu/+archive/primary/+files/libtimezonemap_0.4.5.tar.gz)
+
+build() {
+cd $name-$version
+  autoreconf -vfi
+  ./configure --prefix=/usr --enable-introspection --with-gtk=3
+  
+  make
+  make DESTDIR=$PKG install
+}
