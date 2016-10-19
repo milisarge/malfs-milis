@@ -4,7 +4,7 @@
 # Depends on: kf5-knewstuff kf5-kplotting kf5-knotifyconfig kf5-kded kf5-kfilemetadata qt5-webkit mlt xorg-glu sdl-image hicolor-icon-theme qt5 kf5-extra-cmake-modules kf5-kdoctools v4l-utils ffmpeg cdrkit libdv recordmydesktop xine-ui plasma-desktop
 
 name=kdenlive
-version=16.08.2
+version=16.08.1
 release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
