@@ -1,0 +1,20 @@
+# Description: Tools which simplify and make the network more directly manageable. 
+# URL: http://projects.gnome.org/NetworkManager/
+# Packager: pierre at nutyx dot org
+# Depends on: gtk3 gconf iso-codes gobject-introspection libgnome-keyring libsecret libnotify networkmanager polkit-gnome modemmanager gtk-update-icon-cache
+
+name=network-manager-applet
+version=1.0.10
+release=1
+
+source=( http://ftp.gnome.org/pub/gnome/sources/$name/1.0/$name-$version.tar.xz)
+ 
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --disable-static \
+            --without-team 
+make
+make DESTDIR=$PKG install
+}
