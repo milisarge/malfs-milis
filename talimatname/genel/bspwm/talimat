@@ -1,4 +1,4 @@
-# Description: Tiling window manager based on binary space partitioning
+# Description: İkili alan bölümlemesi bazlı döşeme pencere yöneticisi.
 # URL: https://github.com/baskerville/bspwm
 # Packager: Chris Farrell, timcowchip at gmail dot com
 # Maintainer: Chris Farrell, timcowchip at gmail dot com

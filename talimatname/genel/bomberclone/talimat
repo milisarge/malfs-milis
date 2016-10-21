@@ -1,4 +1,4 @@
-# Description: A clone of Atomic Bomberman (SDL/MultiPlayer/Network).
+# Description: Bir Atomic Bomberman klonu (SDL/MultiPlayer/Network).
 # URL: http://www.bomberclone.de/
 # Packager: berlius at nutyx dot com
 # Depends on: sdl-mixer sdl-image

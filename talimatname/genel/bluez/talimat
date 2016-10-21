@@ -1,4 +1,4 @@
-# Description: The BlueZ package contains the Bluetooth protocol stack for Linux.
+# Description: Linux için bluetooth istemci ve kütüphaneleri.
 # URL: http://www.bluez.org/
 # Packager: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 

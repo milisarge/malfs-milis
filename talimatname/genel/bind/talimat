@@ -1,4 +1,4 @@
-# Description: The BIND package includes the client side programs nslookup, dig and host. 
+# Description: The BIND DNS sunucu, nslookup, dig and host yazılımlarını içeren paket. 
 # URL: http://www.isc.org/downloads/bind/ 
 # Packager: tnut at nutyx dot org
 # Depends on: kerberos libxml2 

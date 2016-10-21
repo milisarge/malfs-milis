@@ -1,4 +1,4 @@
-# Description: A fast Bayesian spam filtering tool
+# Description: Bayes algoritmasına göre çalışan hızlı bir spam filtresi.
 # URL: http://bogofilter.sourceforge.net/
 # Packager: - David Relson, Matthias Andree, Greg Louis
 # Depends on: db 

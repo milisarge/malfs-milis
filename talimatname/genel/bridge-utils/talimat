@@ -1,4 +1,4 @@
-# Description: Utilities for configuring the Linux Ethernet bridge
+# Description: Linux ethernet köprüleme konfigürasyonları için çeşitli araçlar. 
 # URL: http://sourceforge.net/projects/bridge/
 # Packager: pierre at nutyx dot org
 # Depends on: 

@@ -1,4 +1,4 @@
-# Description: bti (twitter/identi.ca console client)
+# Description: bti (twitter/identi.ca konsol istemcisi)
 # URL: http://gregkh.github.com/bti/
 # Packager: alienus at nutyx dot org, tnut at nutyx dot org
 # Depends on: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre 

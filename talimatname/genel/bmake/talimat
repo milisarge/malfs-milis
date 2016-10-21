@@ -1,4 +1,4 @@
-# Description: Portable version of the NetBSD 'make' build tool
+# Description: NetBSD 'make' inşa aracının taşınabilir bir sürümü.
 # URL: http://www.crufty.net/help/sjg/bmake.html
 # Packager: tnut at nutyx dot org
 # Depends on: 

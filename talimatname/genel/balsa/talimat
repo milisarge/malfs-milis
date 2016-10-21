@@ -1,4 +1,4 @@
-# Description: The Balsa package contains a GNOME-2 based mail client. 
+# Description: Gnome 2 tabanlı e-posta istemcisi. 
 # URL: https://pawsa.fedorapeople.org/balsa/
 # Packager: berlius at nutyx dot com
 # Depends on: aspell enchant gmime libesmtp rarian pcre gtksourceview2 gtksourceview3 libnotify kerberos sendmail openldap openssl sqlite webkitgtk2 gtkhtml procmail 
