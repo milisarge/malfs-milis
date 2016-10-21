@@ -1,4 +1,4 @@
-# Description: "Kaynak kod içerisinde arama yapmayı sağlayan grep benzeri bir araç." 
+# Description: Kaynak kod içerisinde arama yapmayı sağlayan grep benzeri bir araç. 
 # URL:         http://beyondgrep.com/
 # Packager:    berlius at nutyx dot com
 # Depends on:  

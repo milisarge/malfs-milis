@@ -1,7 +1,7 @@
+# Description: Microsoft® Word benzeri basit bir kelime işlemci yazılımı.
 # URL: http://www.abisource.com/
 # Packagers: pierre at nutyx dot org, tnut at nutyx dot org
 # Depends on: boost cairo aspell fribidi enchant wv librsvg gtk2 redland rasqal desktop-file-utils gtk3
-description="Microsoft® Word benzeri basit bir kelime işlemci yazılımı."
 name=abiword
 version=3.0.1
 release=3
