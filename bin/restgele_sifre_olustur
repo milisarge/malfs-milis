@@ -1,0 +1,14 @@
+#!/usr/bin/python
+import sys
+import random
+if (len(sys.argv) < 2):
+   i = 8
+else:
+   i = int(sys.argv[1])
+k = 0
+sifre = ""
+while k != i:
+   sayi = random.choice(range(33,127))
+   sifre = sifre + chr(sayi)
+   k=k+1
+print sifre
