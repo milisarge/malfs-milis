@@ -1,0 +1,19 @@
+# Description: A collection of programs that operate on patch files.
+# URL: http://cyberelk.net/tim/software/patchutils/
+# Packager: milisarge
+
+name=patchutils
+version=0.3.2
+release=1
+source=(http://cyberelk.net/tim/data/patchutils/stable/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man
+
+	make CFLAGS="$CFLAGS"
+	make DESTDIR=$PKG install
+}
