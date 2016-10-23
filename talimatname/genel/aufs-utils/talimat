@@ -1,0 +1,19 @@
+# Description: aufs-utils
+# URL: git.code.sf.net/p/aufs/aufs-util
+# Packager: milisarge
+# Depends on:
+
+name=aufs-utils
+version=20160301
+release=1
+source=()
+
+build() {
+	git clone git://git.code.sf.net/p/aufs/aufs-util aufs-aufs-util
+	cd aufs-aufs-util
+	date -d @$(git log -n1 --pretty=format:%ct) '+%Y%m%d'
+	git checkout "$(git for-each-ref --format='%(refname:short)' --sort=-refname:short "*/*/*/aufs[0-9].[0-9]*" --count=1)"
+
+	make
+	make install DESTDIR=$PKG/
+}
