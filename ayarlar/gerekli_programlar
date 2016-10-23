@@ -21,7 +21,8 @@ yad
 cdrkit
 scrot
 syslinux
-wicd
+networkmanager
+network-manager-applet
 file-roller
 xarchiver
 rdesktop
