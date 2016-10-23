@@ -1,0 +1,43 @@
+#!/bin/bash
+if [ "$USER" == "root" ]
+then
+echo "Temizlemek istediğiniz bölümün numarasını giriniz:"
+echo "1-$(du -sh /var/log/)" 
+echo "2-$(du -sh /var/tmp/)"
+echo "3-$(du -sh /tmp/)"
+echo "4-$(du -sh /home/*/.cache/)"
+echo "5-Hepsi"
+read numara
+if [ "$numara" == "1" ]
+then
+rm -rf /var/log
+fi
+
+if [ "$numara" == "2" ]
+then
+rm -rf /var/tmp/
+fi
+
+if [ "$numara" == "3" ]
+then
+rm -rf /tmp/
+fi
+
+if [ "$numara" == "4" ]
+then
+rm -rf /home/*/.cache/
+fi
+if [ "$numara" == "5" ]
+then
+rm -rf /home/*/.cache/
+rm -rf /tmp/
+rm -rf /var/tmp/
+rm -rf /var/log/
+fi
+
+mkdir /tmp/
+mkdir /var/tmp/
+mkdir /var/log/
+else
+echo "bu uygulama yalnız root yetkisi ile çalıştırılabilir."
+fi
