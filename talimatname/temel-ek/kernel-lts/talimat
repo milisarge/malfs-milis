@@ -166,14 +166,13 @@ case `uname -m` in
                 $PKG/boot/kernel-$version ;;
 esac
 
+
+
+
 # Reorgenise the sources
 cd $PKG/lib/modules/${KERNEL_VERSION}/
 
 rm {build,source}
-
-mkdir $SRC/linux-${_version}
-mv $PKG/usr/src/linux-${_version}/Documentation \
-$SRC/linux-${_version}
 
 # Firmware are in linux-firmware
 rm -rf $PKG/lib/firmware
