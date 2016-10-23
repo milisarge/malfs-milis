@@ -1,37 +1,87 @@
-# Description: The latest stable kernel version
+# Description: uzun donem kararli kernel surumu
 # URL: http://www.kernel.org
 # Packagers: milisarge
 
-
 name=kernel-lts
-version=4.4.6
-release=1
-_version=${version%.*}
+alias=(linux-lts)
 
-source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_version}.tar.xz
-	https://www.kernel.org/pub/linux/kernel/v4.x/patch-$version.xz
-	$name.config $name.config_64 )
+version=4.4.27
+_version=${version:0:3}
+
+release=1
+
+# Virtualbox
+vb_version=5.1.6
+buildrelease=110634
+[ "`uname -m`" == "i686"   ] && _VBARCH=x86
+[ "`uname -m`" == "x86_64"   ] && _VBARCH=amd64
+
+# nvidia
+nv_version=361.42
+[ "$PKGMK_ARCH" == "i686"   ] && _NVARCH=x86
+[ "$PKGMK_ARCH" == "x86_64"   ] && _NVARCH=x86_64
+
+
+# Broadcom
+wl_version=6.30.223.271
+[ "`uname -m`" == "x86_64" ] && _wlarch=_64
+
+## Download all the sources
+#
+
+source=(\
+http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_version}.tar.xz
+https://www.kernel.org/pub/linux/kernel/v4.x/patch-$version.xz
+http://download.virtualbox.org/virtualbox/${vb_version}/VirtualBox-${vb_version}-${buildrelease}-Linux_${_VBARCH}.run
+http://download.nvidia.com/XFree86/Linux-${_NVARCH}/${nv_version}/NVIDIA-Linux-${_NVARCH}-${nv_version}.run
+http://www.broadcom.com/docs/linux_sta/hybrid-v35${_wlarch}-nodebug-pcoem-${wl_version//./_}.tar.gz
+broadcom-wl.modprobe.d broadcom-wl.license.patch wl_linux.c.patch
+aufs4-loopback.patch
+aufs4-base.patch
+aufs4-mmap.patch
+aufs4-standalone.patch
+aufs4-kbuild.patch
+aufs4.4-20160912.patch
+lockdep-debug.patch
+tmpfs-idr.patch
+vfs-ino.patch
+$name.config $name.config_64)
+
+## Time to build everything
+#
 
 build(){
 
+#bsdtar -p -o -C $SRC -xf linux-${_version}.tar.xz
 
 cd linux-${_version}
+
+cp -r $DERLEME_KAYNAKDIZIN/aufs $SRC/fs/
 
 if [ -f $SRC/patch-$version.xz ]; then
 	xz -d -c  $SRC/patch-$version.xz | patch -Np1
 fi
 
+#aufs patches for Live:
+patch -p1 -i "${SRC}/aufs4.4-20160912.patch"
+patch -p1 -i "${SRC}/aufs4-base.patch"
+patch -p1 -i "${SRC}/aufs4-kbuild.patch"
+patch -p1 -i "${SRC}/aufs4-loopback.patch"
+patch -p1 -i "${SRC}/aufs4-mmap.patch"
+patch -p1 -i "${SRC}/aufs4-standalone.patch"
+patch -p1 -i "${SRC}/lockdep-debug.patch"
+patch -p1 -i "${SRC}/tmpfs-idr.patch"
+patch -p1 -i "${SRC}/vfs-ino.patch"
+
 make mrproper
 case `uname -m` in
 	x86_64)
-		cp $SRC/$name.config_64 ./.config;;
+		cp $SRC/kernel-lts.config_64 ./.config;;
 	i?86)
-		cp $SRC/$name.config ./.config;
+		cp $SRC/kernel-lts.config ./.config;
 esac
 
-# make menuconfig
-
-make || make -j1
+make
 
 case `uname -m` in
         x86_64)
@@ -40,10 +90,64 @@ case `uname -m` in
 		cp .config $SRC/$name.config;;
 esac
 
-# Install modules
+## Modules
+#
+# Kernel modules
 cd $SRC/linux-${_version}
-sed -i "/rm\ -rf\ \$(MODLIB)\/kernel/d" Makefile
-make INSTALL_MOD_PATH=$PKG modules_install || make -j1 INSTALL_MOD_PATH=$PKG modules_install
+make INSTALL_MOD_PATH=$PKG modules_install
+
+KERNEL_VERSION="${version}-milis-lts"
+
+# Module broadcom is broken on 32 bits machine
+if [ "$PKGMK_ARCH" == "x86_64" ]; then
+  cd $SRC
+  bsdtar xf $DERLEME_KAYNAKDIZIN/hybrid-v35${_wlarch}-nodebug-pcoem-${wl_version//./_}.tar.gz
+  patch -p1 -i broadcom-wl.license.patch
+  patch -p1 -i wl_linux.c.patch
+
+  sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" \
+	-i src/wl/sys/wl_linux.c
+  BUILD_NOPEDANTIC=1 make -C $SRC/linux-${_version} M=`pwd`
+  install -m 0644 -D wl.ko $PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/wl.ko
+  install -Dm644 broadcom-wl.modprobe.d $PKG/etc/modprobe.d/broadcom-wl.conf
+fi
+
+# Module nvidia
+cd $SRC
+sh NVIDIA-Linux-${_NVARCH}-${nv_version}.run --extract-only
+cd NVIDIA-Linux-${_NVARCH}-${nv_version}/kernel
+SYSSRC=$SRC/linux-${_version} make module
+for MODULE in nvidia.ko nvidia-modeset.ko
+do
+	install -m 0644 -D $MODULE \
+	$PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/$MODULE
+done
+if [ "${_ARCH}" == "x86_64" ]; then
+	install -m 0644 -D nvidia-uvm.ko \
+	$PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/nvidia-uvm.ko
+fi
+
+# Module virtualbox
+cd $SRC
+sh VirtualBox-${vb_version}-${buildrelease}-Linux_${_VBARCH}.run --target vb --keep --noexec
+cd vb
+tar xfj VirtualBox.tar.bz2
+cd src/vboxhost/
+KERNELRELEASE=${version}
+KERN_DIR=$SRC/linux-${_version} make
+
+for i in *.ko
+do
+	install -D -m0644 $i \
+	$PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/$i
+done
+
+# depmod needed
+depmod -b $PKG -a ${KERNEL_VERSION}
+
+# Install config and kernel files
+cd $SRC/linux-${_version}
+
 mkdir -p $PKG/boot
 case `uname -m` in
         x86_64)
@@ -52,25 +156,20 @@ case `uname -m` in
                 cp  .config    \
                 $PKG/boot/config_64-$version
                 cp  arch/x86_64/boot/bzImage \
-                $PKG/boot/$name-$version ;;
+                $PKG/boot/kernel-$version ;;
         i?86)
                 cp  System.map \
                 $PKG/boot/System.map-$version
                 cp  .config \
                 $PKG/boot/config-$version
                 cp  arch/i386/boot/bzImage \
-                $PKG/boot/$name-$version ;;
+                $PKG/boot/kernel-$version ;;
 esac
 
-cd $PKG/lib/modules/${version}*/
+# Reorgenise the sources
+cd $PKG/lib/modules/${KERNEL_VERSION}/
 
-mkdir -p $PKG/usr/src
-
-mv $SRC/linux-${_version} $PKG/usr/src/
 rm {build,source}
-
-ln -sv /usr/src/linux-${_version} build
-ln -sv /usr/src/linux-${_version} source
 
 mkdir $SRC/linux-${_version}
 mv $PKG/usr/src/linux-${_version}/Documentation \
@@ -79,27 +178,4 @@ $SRC/linux-${_version}
 # Firmware are in linux-firmware
 rm -rf $PKG/lib/firmware
 
-# post-install autogen
-INITRD_VERSION="`basename $PKG/lib/modules/*`"
-echo "mkinitramfs $INITRD_VERSION" > $PKGMK_ROOT/$name.post-install
-echo "[ -f boot/initrd ] && rm boot/initrd" >> $PKGMK_ROOT/$name.post-install
-echo "ln -sf initrd-$INITRD_VERSION boot/initrd" >> $PKGMK_ROOT/$name.post-install
-echo "ln -sf $name-$version boot/kernel" >> $PKGMK_ROOT/$name.post-install
-
-#pre-install autogen
-cd $SRC
-if [ -f aaabasicfs-${AAABASICFS}.tar.xz ]; then
- bsdtar -p -o -C $SRC -xf aaabasicfs-${AAABASICFS}.tar.xz
- echo ". lib/lsb/init-functions" >  $PKGMK_ROOT/$name.pre-install
- for FILE in `tar --list --file aaabasicfs-${AAABASICFS}.tar.xz|grep -v /$`
- do
-   echo "log_info_msg \"update $FILE\"" >> $PKGMK_ROOT/$name.pre-install
-   echo "cat  > $FILE << \"END_OF_FILE\"" >> $PKGMK_ROOT/$name.pre-install
-   cat $SRC/$FILE >> $PKGMK_ROOT/$name.pre-install
-   echo "END_OF_FILE" >> $PKGMK_ROOT/$name.pre-install
-   echo "evaluate_retval" >> $PKGMK_ROOT/$name.pre-install
- done
-fi
 }
-
-rm -r $PKG/usr/src/
