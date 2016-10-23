@@ -45,6 +45,7 @@ aufs4.4-20160912.patch
 lockdep-debug.patch
 tmpfs-idr.patch
 vfs-ino.patch
+aufs_type.h
 $name.config $name.config_64)
 
 ## Time to build everything
@@ -144,6 +145,8 @@ done
 
 # depmod needed
 depmod -b $PKG -a ${KERNEL_VERSION}
+
+install -D -m 644 $SRC/aufs_type.h "${PKG}/usr/include/linux/aufs_type.h
 
 # Install config and kernel files
 cd $SRC/linux-${_version}
