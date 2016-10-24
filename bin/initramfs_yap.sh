@@ -1,3 +1,4 @@
-cd /boot
-ln -s kernel-4.4.27 kernel
-dracut -N --force --xz --omit systemd  /boot/initramfs 4.4.27-milis-lts
+#!/bin/bash
+yenimodul=`ls -Art /lib/modules/ | tail -n 1`
+modulno=`basename $yenimodul`
+dracut -N --force --xz --omit systemd  /boot/initramfs $modulno
