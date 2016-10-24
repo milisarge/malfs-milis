@@ -1,0 +1,11 @@
+#!/bin/bash
+cd /boot
+if [ -f kernel ];then
+	rm kernel
+fi
+yenimodul=`ls -Art /lib/modules/ | tail -n 1`
+yenikernel=`ls -Art /boot/kernel* | tail -n 1`
+modulno=`basename $yenimodul`
+kernelno=`basename $yenikernel`
+ln -s $kernelno kernel
+dracut -N --force --xz --omit systemd  /boot/initramfs $modulno

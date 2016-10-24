@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8.1"
+versiyon="0.8.3"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -955,6 +955,38 @@ ayarlar() {
 				fi ;;
 			gitkur)
 				git_proje_kur "$2" ;;
+			kurkos)
+				local pkt
+				pkt="`find $talimatname_dizin -name $2`"
+				if [ -f  $pkt/$2.kur-kos ];then
+					bash $pkt/$2.kur-kos
+				else
+					ryaz 31 "$2 kur-kos yok!"
+				fi ;;
+			koskur)
+				local pkt
+				pkt="`find $talimatname_dizin -name $2`"
+				if [ -f  $pkt/$2.kos-kur ];then
+					bash $pkt/$2.kos-kur
+				else
+					ryaz 31 "$2 kos-kur yok!"
+				fi ;;
+			silkos)
+				local pkt
+				pkt="`find $talimatname_dizin -name $2`"
+				if [ -f  $pkt/$2.sil-kos ];then
+					bash $pkt/$2.sil-kos
+				else
+					ryaz 31 "$2 kur-kos yok!"
+				fi ;;
+			kossil)
+				local pkt
+				pkt="`find $talimatname_dizin -name $2`"
+				if [ -f  $pkt/$2.kos-sil ];then
+					bash $pkt/$2.kos-sil
+				else
+					ryaz 31 "$2 kur-kos yok!"
+				fi ;;
 			-kdl)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
