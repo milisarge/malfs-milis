@@ -8,4 +8,7 @@ yenikernel=`ls -Art /boot/kernel* | tail -n 1`
 modulno=`basename $yenimodul`
 kernelno=`basename $yenikernel`
 ln -s $kernelno kernel
+if [ -f initramfs ];then
+	mv initramfs initramfs_eski
+fi
 dracut -N --force --xz --omit systemd  /boot/initramfs $modulno
