@@ -699,11 +699,11 @@ git_guncelle() {
 	ryaz 33 "yerele eşitleniyor."
 	rm -r $talimatname_dizin
 	mkdir -p $talimatname_dizin
-	rsync -aiz --delete $DERLEME_KAYNAKDIZIN/milis.git/talimatname/ $talimatname_dizin
+	rsync -aviz --delete $DERLEME_KAYNAKDIZIN/milis.git/talimatname/ $talimatname_dizin
 	rm -r `dirname $talimatname_dizin`/bin/*
-	rsync -aiz --delete $DERLEME_KAYNAKDIZIN/milis.git/bin/ `dirname $talimatname_dizin`/bin
+	rsync -aviz --delete $DERLEME_KAYNAKDIZIN/milis.git/bin/ `dirname $talimatname_dizin`/bin
 	rm -r `dirname $talimatname_dizin`/ayarlar/*
-	rsync -aiz --delete $DERLEME_KAYNAKDIZIN/milis.git/ayarlar/ `dirname $talimatname_dizin`/ayarlar
+	rsync -aviz --delete $DERLEME_KAYNAKDIZIN/milis.git/ayarlar/ `dirname $talimatname_dizin`/ayarlar
 	#ikili dosyaların /usr/bin altına kısayol atılması
 	for i in /root/bin/*; do
 		j=`basename $i`
