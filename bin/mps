@@ -97,6 +97,7 @@ paket_sil(){
 		kkont=`kurulu_kontrol "$1"`
 		if [ "$kkont" = "kurulu" ];then
 			if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
+                                sed '/\'/boot'/d'  /var/lib/pkg/DB/$paket/kurulan > /var/lib/pkg/DB/$paket/kurulan
 				cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 				ryaz 31 "ters bagimliliklar"
 				ryaz 31 "------------------"
