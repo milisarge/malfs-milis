@@ -20,8 +20,10 @@ Ayrıca her türlü katkıda bulunmak isteyenler için bulunmaz bir türkçe aç
 
 Milis Anasayfa : http://milis.gungre.ch
 
-####İletişim: 
+####İletişim:
+
 milisarge@gmail.com 
+
 irc.freenode.net #milisarge
 
 
