@@ -24,10 +24,6 @@ Milis Anasayfa : http://milis.gungre.ch
 milisarge@gmail.com 
 irc.freenode.net #milisarge
 
-Telegram duyuru kanalımız: http://telegram.me/milislinux
-
-Telegram kanalımız: telegram.me/milislinux
-
 
 Sunucu desteği için Lucas Sköldqvist dostumuza teşekkür ederiz. 
 
