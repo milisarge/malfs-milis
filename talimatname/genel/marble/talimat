@@ -1,0 +1,32 @@
+# Description: Desktop Globe
+# URL: https://www.kde.org/applications/system/marble
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules qt5 qt5-webkit libwlocate kf5-kdoctools kf5-kio kf5-kparts kf5-knewstuff kf5-kcrash kf5-kcoreaddons kf5-ki18n kf5-kwallet kf5-krunner
+
+name=marble
+version=16.08.1
+release=1
+
+source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+mkdir -p build
+sed -e '/mobile/d' \
+      -e '/qt/d'  \
+      -e '/Quick/d' \
+      -e '/touch/d' \
+      -i $name-$version/src/apps/CMakeLists.txt
+cd build
+cmake ../$name-$version       \
+      -DWITH_libshp=OFF \
+      -DWITH_libgps=OFF \
+      -DWITH_QextSerialPort=OFF \
+      -DWITH_liblocation=OFF \
+      -DBUILD_MARBLE_TOOLS=YES \
+      -DBUILD_TESTING=OFF \
+      -DBUILD_MARBLE_EXAMPLES=OFF \
+      -DBUILD_MARBLE_TESTS=OFF \
+      -DMOBILE=OFF
+make
+make DESTDIR=$PKG install
+}
