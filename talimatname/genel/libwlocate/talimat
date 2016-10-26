@@ -1,0 +1,19 @@
+# Description: A shared library that can be used for location-based services.
+# URL: http://sourceforge.net/projects/libwlocate
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: wireless-tools
+
+name=libwlocate
+version=0.1
+release=1
+
+source=( https://github.com/openwifi-su/lwlocate/archive/v$version.tar.gz)
+
+build() {
+  cd lwlocate-$version/master
+  make -f Makelib
+  make
+  install -Dm644 libwlocate.so $PKG/usr/lib/libwlocate.so
+  install -Dm644 libwlocate.h $PKG/usr/include/libwlocate.h
+  install -Dm755 lwtrace $PKG/usr/bin/lwtrace
+}
