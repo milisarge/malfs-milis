@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8.3"
+versiyon="0.8.4"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -512,6 +512,35 @@ silme_kurban_kontrol(){
 			done
 		fi
 	done
+}
+
+kurban_kurtar(){
+	local dizin paket
+	paket=$1
+	if [ -f /var/lib/pkg/DB/$paket/kurulan ];then
+		cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
+		for f in $(cat /tmp/$paket.sil) ; do 
+			dizin="${f%\'}"
+			dizin="${dizin#\'}"
+			if [ -d "$dizin" ];then
+				for g in `ls "$dizin"` ; do 
+					if ! grep -Fxq " '$dizin/$g'" "/tmp/$paket.sil"
+					then
+						if [ -f /tmp/$paket.kurtar ];then
+							rm /tmp/$paket.kurtar
+						fi
+						echo " '$dizin'" >> "/tmp/$paket.kurtar"
+					fi
+				done
+			fi
+		done
+		mv /var/lib/pkg/DB/$paket/kurulan /var/lib/pkg/DB/$paket/ilk.kurulan
+		grep -v -F -x -f "/tmp/$paket.kurtar" "/tmp/$paket.sil" > /var/lib/pkg/DB/$paket/kurulan
+		rm -f /tmp/$paket.sil
+		ryaz 32 "$paket kurban dosyaları kurtarıldı."
+	else
+		ryaz 31 "kurulan paket yok!"
+	fi
 }
 
 ters_bagimli_kontrol(){
@@ -1085,6 +1114,8 @@ ayarlar() {
 				ryaz 31 `kurulu_kontrol "$2"`;;
 			-kudo)
 				kurulum_dogrulama ;;
+			-kdk)
+				kurban_kurtar $2 ;;
 			-suko)
 				sunucu_kontrol ;;
 			-cf|--config-file)
