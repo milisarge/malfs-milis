@@ -3,6 +3,7 @@
 # Packager: milisarge
 # Depends on: sqlite python python-pip
 name=komutan
+name2=mps
 version=git
 release=1
 
@@ -17,8 +18,8 @@ else
 fi
 mkdir $PKG/opt
 cp -r $DERLEME_KAYNAKDIZIN/$name $PKG/opt/ 
-#cp $name/komutan.desktop $PKG/usr/share/applications/komutan.desktop
-#cp $name/komutan.png /usr/share/pixmaps/komutan.png
 install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name.desktop "${PKG}"/usr/share/applications/$name.desktop
-install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name.png "${PKG}"/usr/share/pixmaps/komutan.png
+install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name.svg "${PKG}"/usr/share/pixmaps/$name.svg
+install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name2.desktop "${PKG}"/usr/share/applications/$name2.desktop
+install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name2.svg "${PKG}"/usr/share/pixmaps/$name2.svg
 }
