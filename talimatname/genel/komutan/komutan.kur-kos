@@ -1,5 +1,12 @@
 pip2 install flask
 pip2 install psutil
 pip2 install /opt/komutan/gerekliler/python-stdnum-1.1.tar.gz
-cp /opt/komutan/mps.desktop /$USER/Desktop/
-cp /opt/komutan/komutan.desktop /$USER/Desktop/
+local evdizin
+if [ -d /home/$USER ];then
+	evdizin=/home/$USER
+else
+	evdizin=/$USER
+fi
+cp /opt/komutan/mps.desktop $evdizin/Desktop/
+cp /opt/komutan/komutan.desktop $evdizin/Desktop/
+
