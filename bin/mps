@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8.4"
+versiyon="0.8.5"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -97,7 +97,8 @@ paket_sil(){
 		kkont=`kurulu_kontrol "$1"`
 		if [ "$kkont" = "kurulu" ];then
 			if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
-                                #dizin koruma gelecek
+                #dizin koruma
+                kurban_kurtar $1
 				cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 				ryaz 31 "ters bagimliliklar"
 				ryaz 31 "------------------"
@@ -534,10 +535,14 @@ kurban_kurtar(){
 				done
 			fi
 		done
-		mv /var/lib/pkg/DB/$paket/kurulan /var/lib/pkg/DB/$paket/ilk.kurulan
-		grep -v -F -x -f "/tmp/$paket.kurtar" "/tmp/$paket.sil" > /var/lib/pkg/DB/$paket/kurulan
+		if [ -f /tmp/$paket.kurtar ];then
+			mv /var/lib/pkg/DB/$paket/kurulan /var/lib/pkg/DB/$paket/ilk.kurulan
+			grep -v -F -x -f "/tmp/$paket.kurtar" "/tmp/$paket.sil" > /var/lib/pkg/DB/$paket/kurulan
+			ryaz 32 "$paket kurban dosyaları kurtarıldı."
+		else
+			ryaz 32 "$paket kurban dosyası yok."
+		fi
 		rm -f /tmp/$paket.sil
-		ryaz 32 "$paket kurban dosyaları kurtarıldı."
 	else
 		ryaz 31 "kurulan paket yok!"
 	fi
