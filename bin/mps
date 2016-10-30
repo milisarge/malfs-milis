@@ -1186,74 +1186,77 @@ _EOF
 }
 
 ana(){
-ayarlar "$@"
+if [ `id -u` = 0 ] ; then	
+	ayarlar "$@"
 
-if [ "$ikaynak" = "ag" ]; then
-	local kontroldeg
-	kkont=`kurulu_kontrol "$2"`
-	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
-		pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3` 
-		if [ ! -z "$pkt" -a "$pkt" != "" ]; then
-			cpaket="${pkt/'#'/'%23'}"
-			ryaz 33 "agdan cekiliyor:" "$2"
-			#paket sunucuda varsa
-			wget -q --spider "$sunucu$cpaket"
-			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
-			if [ $? -eq 0 ]; then
-				#wget  -P "$paketdepo" "$sunucu$cpaket"
-				paket_indir "$2"
-				
-				if [ "$kurulum_onay" = "evet" ];then
-					if [ "$tekrarkur" = "evet" ];then
-						paket_sil "$2" "evet"
+	if [ "$ikaynak" = "ag" ]; then
+		local kontroldeg
+		kkont=`kurulu_kontrol "$2"`
+		if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
+			pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3` 
+			if [ ! -z "$pkt" -a "$pkt" != "" ]; then
+				cpaket="${pkt/'#'/'%23'}"
+				ryaz 33 "agdan cekiliyor:" "$2"
+				#paket sunucuda varsa
+				wget -q --spider "$sunucu$cpaket"
+				#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
+				if [ $? -eq 0 ]; then
+					#wget  -P "$paketdepo" "$sunucu$cpaket"
+					paket_indir "$2"
+					
+					if [ "$kurulum_onay" = "evet" ];then
+						if [ "$tekrarkur" = "evet" ];then
+							paket_sil "$2" "evet"
+						fi
+						icerik_ekle "$paketdepo$pkt"
+						exit 1
 					fi
-					icerik_ekle "$paketdepo$pkt"
-					exit 1
+				else
+					ryaz 31 "paket sunucuda yok!"
 				fi
 			else
-				ryaz 31 "paket sunucuda yok!"
+				ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 			fi
 		else
-			ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
+			ryaz 32 "$2 paketi zaten kurulu!"
 		fi
-	else
-		ryaz 32 "$2 paketi zaten kurulu!"
+		exit 1
 	fi
-	exit 1
-fi
 
-if [ "$ikaynak" = "yerel" ]; then
-	local silme
-	pkontrol=`basename $2 | grep -w "mps.lz"`
-	if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
-		paketad=`echo "$2" | cut -d'#' -f1`	
-		kkont=`kurulu_kontrol "$paketad"`
-		if [ "$kkont" = "degil" ];then
-			icerik_ekle "$2"
-		else
-			echo $tekrarkur
-			if [ "$tekrarkur" = "hayir" ];then
-				while true; do
-					ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
-					read -p "e veya h -> " eh
-					case $eh in
-						[Ee]* ) silme="e"; break;;
-						[Hh]* ) break;;
-						* ) echo "e veya h";;
-					esac
-				done
-			fi
-			if [ "$silme" = "e" ];then
-				ryaz 33 "silinecekelerin kontrolu için"
-				paket_sil "$paketad"
+	if [ "$ikaynak" = "yerel" ]; then
+		local silme
+		pkontrol=`basename $2 | grep -w "mps.lz"`
+		if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
+			paketad=`echo "$2" | cut -d'#' -f1`	
+			kkont=`kurulu_kontrol "$paketad"`
+			if [ "$kkont" = "degil" ];then
 				icerik_ekle "$2"
+			else
+				echo $tekrarkur
+				if [ "$tekrarkur" = "hayir" ];then
+					while true; do
+						ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
+						read -p "e veya h -> " eh
+						case $eh in
+							[Ee]* ) silme="e"; break;;
+							[Hh]* ) break;;
+							* ) echo "e veya h";;
+						esac
+					done
+				fi
+				if [ "$silme" = "e" ];then
+					ryaz 33 "silinecekelerin kontrolu için"
+					paket_sil "$paketad"
+					icerik_ekle "$2"
+				fi
 			fi
+		else
+			ryaz 31 "yerelde mps paketi bulunamadı."
 		fi
-	else
-		ryaz 31 "yerelde mps paketi bulunamadı."
 	fi
+else
+	sudo mps "$@"
 fi
-
 }
 ana "$@"
 
