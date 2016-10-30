@@ -1,6 +1,7 @@
 # Description: Adobe Flash Player
 # URL: http://www.macromedia.com
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on: 
 
 name=flashplayer
 version=11.2.202.643
