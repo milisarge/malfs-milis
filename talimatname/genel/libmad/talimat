@@ -1,14 +1,15 @@
 # Description: A high-quality MPEG audio decoder
 # URL: http://www.underbit.com/products/mad/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libmad
 version=0.15.1b
-release=1
+release=2
 
 source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz\
-	http://www.linuxfromscratch.org/patches/blfs/svn/libmad-$version-fixes-1.patch)
+	http://www.linuxfromscratch.org/patches/blfs/svn/libmad-$version-fixes-1.patch
+	mad.pc)
 
 
 build() {
@@ -22,18 +23,7 @@ build() {
         make DESTDIR=$PKG install
         mkdir -p $PKG/usr/lib/pkgconfig
 
-cat > $PKG/usr/lib/pkgconfig/mad.pc << "EOF"
-prefix=/usr
-exec_prefix=${prefix}
-libdir=${exec_prefix}/lib
-includedir=${prefix}/include
+install -Dm644 $SRC/mad.pc $PKG/usr/lib/pkgconfig/mad.pc
 
-Name: mad
-Description: MPEG audio decoder
-Requires:
-Version: #version#
-Libs: -L${libdir} -lmad
-Cflags: -I${includedir}
-EOF
 sed -i "s/#version#/$version/" $PKG/usr/lib/pkgconfig/mad.pc
 }
