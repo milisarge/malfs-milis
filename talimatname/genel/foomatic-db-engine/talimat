@@ -2,7 +2,7 @@
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: pierre at nutyx dot org
 # Depends on: libxml2 cups 
-description="Foomatic's database engine generates PPD files from the data in Foomatic's XML database."
+
 name=foomatic-db-engine
 version=4.0.20150819
 release=1
