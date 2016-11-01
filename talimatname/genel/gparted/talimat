@@ -1,11 +1,10 @@
 # Description: Gparted is the Gnome Partition Editor, a Gtk 2 GUI that can create, reorganise or delete disk partitions.
 # URL: http://gparted.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: ssh-askpass gnome-doc-utils gtk2 parted gtkmm libsigc++ ntfs-3g lvm2
 
-description="Partition Editor, a Gtk 2 GUI that can create, reorganise or delete disk partitions."
 name=gparted
-version=0.25.0
+version=0.27.0
 release=1
 
 run=(ssh-askpass)
