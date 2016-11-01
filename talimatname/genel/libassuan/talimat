@@ -1,6 +1,6 @@
 # Description: Contains an IPC library used by some of the other GnuPG related packages
 # URL: http://www.gnupg.org/related_software/libassuan/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libgpg-error 
 
 name=libassuan
