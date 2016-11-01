@@ -1,11 +1,10 @@
 #Description:	QEMU is a processor emulator using dynamic translation to achieve good emulation speed (PC, PowerPC, PowerMac, sun, Mips, ARM etc...)
 #URL:    		http://www.qemu.org
-#Packager:		milisarge@gmail.com
+#Packager:		milisarge
 #Depends on: 	gtk2 gtk3 sdl glib python vte vte3 xorg-mesa nss lzo cyrus-sasl alsa-lib alsa-plugins alsa-utils curl check bluez ncurses nfs-utils libgcrypt libcap-ng gnutls libusb bzip2 usbutils bridge-utils
 
-description="Processor emulator using dynamic translation to achieve good emulation speed" 
 name=qemu-all
-version=2.5.0
+version=2.6.0
 release=1
 source=(http://wiki.qemu.org/download/qemu-$version.tar.bz2)
 
@@ -39,5 +38,4 @@ build() {
   echo 'KERNEL=="kvm", NAME="kvm", OWNER="root", GROUP="kvm", MODE="0660"' > \
   $PKG/etc/udev/rules.d/60-kvm.rules
 
-  rm -rf $PKG/usr/share/locale
 }
