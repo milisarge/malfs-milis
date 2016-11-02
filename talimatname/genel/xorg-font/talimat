@@ -1,14 +1,12 @@
 # Description: The Xorg font packages provide needed fonts to the Xorg applications.
 # URL: http://xorg.freedesktop.org
-# Packager: tnut at nutyx dot org
-# Depends on: xorg-font-util,xorg-encodings,xorg-xcursor-themes,xorg-fontconfig
+# Packager: milisarge
+# Depends on: xorg-font-util xorg-encodings xorg-xcursor-themes xorg-fontconfig
 
-
-run=(xorg-fontconfig xorg-app)
-section="font"
 name=xorg-font
 version=7.7
-release=2
+release=3
+section="font"
 
 source=()
 

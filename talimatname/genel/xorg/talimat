@@ -1,14 +1,12 @@
 # Description: With xf86-input-evdev,synaptics,vmmouse,wacom, xf86-video-ati,fbdev,intel,nouveau,vmware.
-# Packager: tnut at nutyx dot org
+# URL: nn
+# Packager: milisarge
 # Depends on: mtdev xorg-libxvmc xorg-server xcb-util xorg-xkeyboard-config xorg-twm xorg-term xorg-xclock xorg-xinit libevdev
-
-run=(xorg-font xorg-xkeyboard-config xorg-server xorg-twm xorg-term xorg-xclock xorg-xinit)
-section="driver"
 
 name=xorg
 version=7.7
-release=8
-
+release=9
+section="driver"
 source=()
 
 build() {
