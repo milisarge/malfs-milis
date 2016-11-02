@@ -1,12 +1,11 @@
 # Description: A small and fast file manager which can optionally manage the desktop background and panels
 # URL: http://roscidus.com/desktop/ROX-Filer
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libsm libglade shared-mime-info
 
-description="Small and fast file manager which can optionally manage the desktop background and panels"
 name=rox-filer
 version=2.11
-release=2
+release=3
 
 source=(http://downloads.sourceforge.net/rox/rox-filer-2.11.tar.bz2)
 
