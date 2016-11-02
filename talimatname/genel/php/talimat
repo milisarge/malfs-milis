@@ -1,12 +1,11 @@
 # Description: Used in dynamic web sites, it allows programming code to be directly embedded into the HTML markup.
 # URL:         	http://www.php.net
-# Packager:		berlius at nutyx dot com
+# Packager:		milisarge
 # Depends on:  	apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff xorg curl db mariadb openldap postgresql sqlite unixodbc openssl cyrus-sasl kerberos
 
-description="Used in dynamic web sites, it allows programming code to be directly embedded into HTML"
 name=php
 version=5.6.16
-release=1
+release=2
 
 source=(http://php.net/distributions/$name-$version.tar.xz
 		http://mirror.internode.on.net/pub/php/manual/php_manual_tr.tar.gz)
