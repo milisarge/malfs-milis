@@ -1,6 +1,6 @@
 # Description: Mesa is an OpenGL compatible 3D graphics library.
 # URL: http://www.xorg-mesa3d.org
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge
 # Depends on: pkg-config libtool wayland xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage expat llvm elfutils xorg-libxshmfence 
 
 name=xorg-mesa
@@ -36,5 +36,5 @@ make -C xdemos DEMOS_PREFIX=/usr
 make DESTDIR=$PKG install
 make -C xdemos DEMOS_PREFIX=/usr DESTDIR=$PKG install
 install -v -dm755 $PKG/usr/share/doc/mesa-$version
-cp -rfv docs/* $PKG/usr/share/doc/mesa-$version
+
 }
