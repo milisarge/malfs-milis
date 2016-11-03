@@ -1,12 +1,12 @@
 # Description: Tools which simplify and make the network more directly manageable. 
 # URL: http://projects.gnome.org/NetworkManager/
 # Packager: pierre at nutyx dot org
-# Depends on: libndp libsoup libgudev dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt
+# Depends on: libndp libsoup libgudev modemmanager dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt
 
 _name=NetworkManager
 
 name=networkmanager
-version=1.0.10
+version=1.4.2
 release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$_name/${version%.*}/$_name-$version.tar.xz)
@@ -18,9 +18,15 @@ cd ${_name}-$version
 --sysconfdir=/etc \
 --localstatedir=/var \
 --with-nmtui \
+--with-modem-manager-1 \
+--with-session-tracking=consolekit \
+--with-suspend-resume=upower \
+--with-dbus-sys-dir=/etc/dbus-1/system.d \
 --docdir=/usr/share/doc/networkmanager-$version \
---without-systemdsystemunitdir \
+--with-systemdsystemunitdir=no \
 --disable-ppp
+
+sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
 make
 make DESTDIR=$PKG install
 
