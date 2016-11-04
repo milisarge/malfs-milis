@@ -143,8 +143,7 @@ def formatPart(part):
 	Düşük belleğe sahip bilgisayarlar için önerilir. Eğer diskinizde bu amaç için hali hazırda 1GB kadar yer ayırdıysanız Evet'i aksi takdirde Hayır'ı seçiniz.".format(part),width=70,height=15)	
 	if status == "ok":
 		chooseSwap(part)
-	else:
-		hedefBagla(hedef)
+	hedefBagla(hedef)
 
 def hedefBagla(hedef):
 	os.system("mount "+hedef+" /mnt")
@@ -207,9 +206,9 @@ def chooseSwap(part):
 	status,selectedPart = d.menu(title="Adım 2: Disk İşlemleri",text="Takas alanının yer alacağı disk bölümünü seçiniz:",choices=swapChoice,width=70)
 	if status == "ok":
 		log.write("[+] Takas alanı seçildi:  {}\n".format(selectedPart))
-		setSwap(selectedPart,part)
+		setSwap(selectedPart)
 		
-def setSwap(part,target):
+def setSwap(part):
 	os.system("mkswap "+"/dev/"+part)
 	os.system('echo "`lsblk -ln -o UUID /dev/' + part + '` none swap sw 0 0" | tee -a /etc/fstab')
 	hedefBagla(target)
