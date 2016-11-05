@@ -154,13 +154,13 @@ def formatPart(part):
 def mountTarget(target):
 	os.system("mount "+target+" /mnt")
 	log.write('[+] Hedef mount edildi.')
-	d.infobox(title="Adım 3: Dosya kopyalama",text="Hedef disk sorunsuzca bağlandı. Şimdi dosyalar kopyalanacak !!",width=70)
-	time.sleep(5)
 	applySettings()
+	d.infobox(title="Adım 4: Dosya kopyalama",text="Hedef disk sorunsuzca bağlandı. Şimdi dosyalar kopyalanacak !!",width=70)
+	time.sleep(3)	
 	copySystemFiles(target)
 
 def applySettings():
-	status,hostname = d.inputbox(title="Adım 1: Kullanıcı İşlemleri",text="Hostname'i bilgisayar adı olarak düşünebilirsiniz. Bu ismi ağ cihazlarında ya da konsolda çalışırken görebilirsiniz. Lütfen hostname giriniz: ",width=70)
+	status,hostname = d.inputbox(title="Adım 3: Konfigürasyonlar",text="Hostname'i bilgisayar adı olarak düşünebilirsiniz. Bu ismi ağ cihazlarında ya da konsolda çalışırken görebilirsiniz. Lütfen hostname giriniz: ",width=70)
 	os.system("echo '{}' > /etc/hostname".format(hostname))
 
 
