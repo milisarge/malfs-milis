@@ -18,6 +18,8 @@ wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-2
 tar xvf blfs-bootscripts-20160902.tar.xz
 
 cd ${name}-$version
+sed -e '/UPOWER_SERVICE)/ s:^://:' \
+    -i src/daemon/PowerManager.cpp
 mkdir build
 patch -p1 -i ../sddm-0.14.0-consolekit.patch
 patch -p1 -i ../ecb903e4.patch
@@ -42,7 +44,8 @@ cat > $PKG/etc/pam.d/sddm << "EOF"
 auth     requisite      pam_nologin.so
 auth     required       pam_env.so
 
-auth     required       pam_succeed_if.so uid >= 1000 quiet
+auth     required       pam_succeed_if.so uid >= 0 quiet
+#auth    sufficient     pam_succeed_if.so user ingroup nopasswdlogin
 auth     include        system-auth
 
 account  include        system-account
@@ -60,7 +63,8 @@ cat > $PKG/etc/pam.d/sddm-autologin << "EOF"
 auth     requisite      pam_nologin.so
 auth     required       pam_env.so
 
-auth     required       pam_succeed_if.so uid >= 1000 quiet
+auth     required       pam_succeed_if.so uid >= 0 quiet
+#auth    sufficient     pam_succeed_if.so user ingroup nopasswdlogin
 auth     required       pam_permit.so
 
 account  include        system-account
