@@ -54,7 +54,7 @@ def checkUsername():
 	Lütfen kullanıcı adı giriniz:",width=70,height=22)
 	
 	#NAME_REGEX bkz. man 5 adduser.conf
-	if bool(re.compile(r'^[a-z][-a-z0-9]*$').match(username)):
+	if re.compile(r'^[a-z][-a-z0-9]*$').match(username):
 		checkUserPassword(username)
 	else:
 		status=d.msgbox(title="Hata !",text="\nHatalı kullanıcı adı girdiniz.\n\n\
@@ -65,11 +65,11 @@ def checkUsername():
 
 
 def createUser(name,username,password):
-	pass
-	os.system("kopar milis-"+name+" "+username)
+	status,name = d.inputbox(title="Adım 1: Kullanıcı İşlemleri",text="Kullanıcı'nın adını giriniz. Eğer kullanıcının adını girmek istemiyorsanız, basitçe boş bırakın.",width=70)
+	os.system("kopar '"+name+"' "+username)
 	os.system('echo -e "'+password+'\n'+password+'" | passwd '+username)
 	os.system('cp -r /root/.config /home/{}'.format(username))
-	os.system('cp /root/ayarlar/.xinitrc /home/{}'.format(username))
+	os.system('cp /root/.xinitrc /home/{}'.format(username))
 
 def checkUserPassword(username):
 	#insecure=True parolanın yıldız şeklinde gözükmesini sağlar, 
@@ -82,11 +82,17 @@ def checkUserPassword(username):
 		if d.yesno(title="Adım 1: Kullanıcı İşlemleri",text="{} kullanıcısı başarıyla eklendi.\n\nYeni kullanıcı eklemek istiyor musunuz ?".format(username),width=70,height=10) == "ok":
 			checkUsername()
 		else:
-			chooseDisk()
+			chRootPass()
 	else:
-		status=d.msgbox(text="Şifreniz boş olamaz")
+		status=d.msgbox(title="Hata !",text="Şifreniz boş olamaz")
 		checkUserPassword(username)
-
+def chRootPass():
+	status,password = d.passwordbox(title="Adım 1: Kullanıcı İşlemleri",text="Lütfen root kullanıcısı için şifrenizi giriniz. Şifre ekranda görünmeyecektir. \n\n",insecure=False,width=70,height=10)
+	if len(password) > 0:
+		os.system('echo -e "'+password+'\n'+password+'" | passwd root')
+		chooseDisk()
+	else:
+		status=d.msgbox(title="Hata !",text="Şifreniz boş olamaz")
 def chooseDisk():
 	diskChoice = []
 	diskNames  = runShellCommand("lsblk -nS -o NAME").split('\n')
@@ -132,9 +138,9 @@ def formatDialog(part):
 		choosePart() 
 		
 def formatPart(part):
-	hedef="/dev/{}".format(part)
-	os.system("umount {}".format(hedef))
-	os.system("mkfs.ext4 {}".format(hedef))
+	target="/dev/{}".format(part)
+	os.system("umount {}".format(target))
+	os.system("mkfs.ext4 {}".format(target))
 	log.write("Disk bölümü formatlandı: {}\n".format(part))
 	d.infobox(text="/dev/{} Disk Formatlandı".format(part))
 	status = d.yesno(title="Adım 2: Disk İşlemleri",text="Takas alanı (Swap) bellekteki (RAM) sabit disk üzerinde işletim sistemi tarafından ayrılmış bir bölümdür. \
@@ -143,44 +149,50 @@ def formatPart(part):
 	Düşük belleğe sahip bilgisayarlar için önerilir. Eğer diskinizde bu amaç için hali hazırda 1GB kadar yer ayırdıysanız Evet'i aksi takdirde Hayır'ı seçiniz.".format(part),width=70,height=15)	
 	if status == "ok":
 		chooseSwap(part)
-	hedefBagla(hedef)
+	mountTarget(target)
 
-def hedefBagla(hedef):
-	os.system("mount "+hedef+" /mnt")
+def mountTarget(target):
+	os.system("mount "+target+" /mnt")
 	log.write('[+] Hedef mount edildi.')
 	d.infobox(title="Adım 3: Dosya kopyalama",text="Hedef disk sorunsuzca bağlandı. Şimdi dosyalar kopyalanacak !!",width=70)
 	time.sleep(5)
-	sistemKopyala(hedef)
+	applySettings()
+	copySystemFiles(target)
 
-def sistemKopyala(hedef):
+def applySettings():
+	status,hostname = d.inputbox(title="Adım 1: Kullanıcı İşlemleri",text="Hostname'i bilgisayar adı olarak düşünebilirsiniz. Bu ismi ağ cihazlarında ya da konsolda çalışırken görebilirsiniz. Lütfen hostname giriniz: ",width=70)
+	os.system("echo '{}' > /etc/hostname".format(hostname))
+
+
+def copySystemFiles(target):
 	os.system("clear")
 	os.system("acp -gaxnu /  /mnt")
 	log.write('[+] Dosyalar kopyalandı.\n')
-	initrdOlustur(hedef)
+	initramfsCreate(target)
 	
-def initrdOlustur(hedef):
+def initramfsCreate(target):
 	os.system('chroot /mnt dracut --no-hostonly --add-drivers "ahci" -f /boot/initramfs')
 	log.write('[+] Initramfs oluşturuldu.')
 	if d.yesno(title="Adım 4: Önyükleyici kurulumu",text=" GNU/GRUB, Linux ve Windows gibi diğer işletim sistemlerini yüklemek için kullanılan bir önyükleyicidir. Bu Milis'i açabilmek için gerekli bir adımdır\
 		fakat ne yaptığınızı biliyorsanız bir nedenden ötürü grub kurmak istemeyebilirsiniz.\n\n  Grub önyükleyiciyi kurmak istiyor musunuz ?",width=70) == "ok":
-		grubKur(hedef)
+		installGrub(target)
 	else:
-		kurulumBitir()
+		finishInstall()
 
-def grubKur(hedef):
+def installGrub(target):
 	os.system("mount --bind /dev /mnt/dev")
 	os.system("mount --bind /sys /mnt/sys")
 	os.system("mount --bind /proc /mnt/proc")
-	hedef = hedef[:-1]
-	if hedef == "/dev/mmcblk0": #SD kart'a kurulum fix
+	target = target[:-1]
+	if target == "/dev/mmcblk0": #SD kart'a kurulum fix
 		os.system("grub-install --boot-directory=/mnt/boot /dev/mmcblk0")
 	else:
-		os.system("grub-install --boot-directory=/mnt/boot " + hedef)
+		os.system("grub-install --boot-directory=/mnt/boot " + target)
 	os.system("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
-	log.write('[+] Grub kuruldu: {}\n'.format(hedef))
-	kurulumBitir()
+	log.write('[+] Grub kuruldu: {}\n'.format(target))
+	finishInstall()
 	
-def kurulumBitir():
+def finishInstall():
 	d.infobox(text="Milis GNU/Linux sisteminize kuruldu. Eğer herşeyin yolunda gittiğini düşünüyorsanız /tmp/kurulum.log dosyasının yedeğini alıp sistemi yeniden başlatabilirsin :)",width=70)
 		
 def chooseSwap(part):
