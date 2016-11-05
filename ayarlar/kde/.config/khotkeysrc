@@ -5,7 +5,6 @@ DataCount=4
 Comment=KMenuEdit Global Shortcuts
 DataCount=1
 Enabled=true
-ImportId=defaults
 Name=KMenuEdit
 SystemGroup=1
 Type=ACTION_DATA_GROUP
@@ -990,6 +989,10 @@ Uuid={6a0d53d4-cc44-4d53-8b3e-0b4ddfad6b08}
 Disabled=true
 MouseButton=2
 Timeout=300
+
+[GesturesExclude]
+Comment=
+WindowsCount=0
 
 [Main]
 AlreadyImported=defaults,kde32b1,konqueror_gestures_kde321,spectacle

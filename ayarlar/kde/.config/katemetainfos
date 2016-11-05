@@ -41,3 +41,14 @@ Indentation Mode=normal
 Mode=Bash
 Time=2016,10,16,21,46,9
 URL=file:///home/alihan/.config/startupconfig
+
+[file:///root/.config/gtkrc-2.0]
+Bookmarks=
+Checksum=ded87bf95649ba2c1999d29827507447298b1d37
+Encoding=UTF-8
+Highlighting=None
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Normal
+Time=2016,11,5,16,16,48
+URL=file:///root/.config/gtkrc-2.0

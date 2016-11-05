@@ -1,3 +1,24 @@
+[Devices][/org/freedesktop/UDisks2/block_devices/dm_2d0]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=MILIS_LIVE
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks2/block_devices/dm_2d1]
+Icon=drive-harddisk
+LastNameSeen=MILIS_LIVE
+LastSeenMounted=false
+
+[Devices][/org/freedesktop/UDisks2/block_devices/loop0]
+Icon=drive-harddisk
+LastNameSeen=Döngü Aygıtı
+LastSeenMounted=false
+
+[Devices][/org/freedesktop/UDisks2/block_devices/loop1]
+Icon=drive-harddisk
+LastNameSeen=Döngü Aygıtı
+LastSeenMounted=false
+
 [Devices][/org/freedesktop/UDisks2/block_devices/sda4]
 Icon=drive-harddisk
 LastNameSeen=Basic data partition
@@ -25,4 +46,10 @@ LastSeenMounted=true
 EverMounted=true
 Icon=drive-harddisk
 LastNameSeen=45,9 GiB Disk Sürücü
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks2/block_devices/sdb1]
+EverMounted=true
+Icon=drive-removable-media-usb-pendrive
+LastNameSeen=MILIS_LIVE
 LastSeenMounted=true

@@ -54,10 +54,6 @@ plugin=org.kde.plasma.icon
 [Containments][2][Applets][17][Configuration][General]
 url=/usr/share/applications/org.kde.dolphin.desktop
 
-[Containments][2][Applets][18]
-immutability=1
-plugin=org.kde.plasma.icon
-
 [Containments][2][Applets][18][Configuration][General]
 url=/home/alihan/.local/share/applications/chromium.desktop
 
@@ -72,12 +68,19 @@ url=/usr/share/applications/vlc.desktop
 immutability=1
 plugin=org.kde.plasma.showdesktop
 
+[Containments][2][Applets][25]
+immutability=1
+plugin=org.kde.plasma.icon
+
+[Containments][2][Applets][25][Configuration][General]
+url=/usr/share/applications/firefox.desktop
+
 [Containments][2][Applets][3]
 immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration][General]
-favorites=chromium.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop
+favorites=firefox.desktop,org.kde.dolphin.desktop,systemsettings.desktop,vlc.desktop,libreoffice-writer.desktop,libreoffice-calc.desktop,libreoffice-impress.desktop
 
 [Containments][2][Applets][3][Configuration][Shortcuts]
 global=Alt+F1
@@ -88,6 +91,15 @@ global=Alt+F1
 [Containments][2][Applets][5]
 immutability=1
 plugin=org.kde.plasma.taskmanager
+
+[Containments][2][Applets][5][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][2][Applets][5][Configuration][General]
+groupingStrategy=0
+maxStripes=1
+sortingStrategy=0
 
 [Containments][2][Applets][6]
 immutability=1
@@ -105,7 +117,34 @@ DialogHeight=84
 DialogWidth=1366
 
 [Containments][2][General]
-AppletOrder=3;17;19;18;5;6;8;20
+AppletOrder=3;17;19;25;5;6;8;20
+
+[Containments][24]
+activityId=1ce5a7a6-0fd6-47a5-937d-c68ae33d259a
+formfactor=0
+immutability=1
+lastScreen=0
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][24][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][24][General]
+ToolBoxButtonState=bottomright
+ToolBoxButtonX=1347
+ToolBoxButtonY=752
+iconSize=2
+positions=2,13,desktop:/Home.desktop,0,0,desktop:/trash.desktop,1,0
+sortMode=-1
+textLines=1
+
+[Containments][24][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/Autumn/contents/images/1440x900.jpg
+height=768
+width=1366
 
 [Containments][7]
 activityId=
@@ -140,10 +179,21 @@ plugin=org.kde.plasma.printmanager
 immutability=1
 plugin=org.kde.plasma.battery
 
+[Containments][7][Applets][22]
+immutability=1
+plugin=org.kde.ktp-contactlist
+
+[Containments][7][Applets][23]
+immutability=1
+plugin=org.kde.plasma.networkmanagement
+
 [Containments][7][Applets][9]
 immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][7][General]
-extraItems=org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.volume,org.kde.kdeconnect,org.kde.plasma.printmanager,org.kde.plasma.notifications,org.kde.plasma.devicenotifier
-knownItems=org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.volume,org.kde.kdeconnect,org.kde.plasma.printmanager,org.kde.plasma.notifications,org.kde.plasma.devicenotifier
+extraItems=org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.volume,org.kde.kdeconnect,org.kde.plasma.printmanager,org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.ktp-contactlist
+knownItems=org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.volume,org.kde.kdeconnect,org.kde.plasma.printmanager,org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.ktp-contactlist
+
+[General]
+immutability=2

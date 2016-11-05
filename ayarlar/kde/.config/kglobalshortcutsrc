@@ -10,7 +10,7 @@ _k_friendly_name=kaccess
 Disable Touchpad=Touchpad Off,Touchpad Off,Dokunmatik Yüzeyi Devre Dışı Bırak
 Enable Touchpad=Touchpad On,Touchpad On,Dokunmatik Yüzeyi Etkinleştir
 Toggle Touchpad=Touchpad Toggle,Touchpad Toggle,Dokunmatik Yüzeyi Aç/Kapat
-_k_friendly_name=Sistem Ayarları
+_k_friendly_name=KDE Daemon
 
 [kded5]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Klavye Parlaklığını Azalt
@@ -22,7 +22,7 @@ PowerOff=Power Off,Power Off,Kapat
 Show System Activity=Ctrl+Esc,Ctrl+Esc,Show System Activity
 Sleep=Sleep,Sleep,Beklet
 Toggle Keyboard Backlight=Keyboard Light On/Off,Keyboard Light On/Off,Klavye Arka Işığını Aç/Kapa
-_k_friendly_name=KDE Daemon
+_k_friendly_name=Power Management
 display=Display\tMeta+P,Display\tMeta+P,Ekranı Değiştir
 
 [khotkeys]
