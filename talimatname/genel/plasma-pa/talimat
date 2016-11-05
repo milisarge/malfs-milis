@@ -1,7 +1,7 @@
 # Description : Plasma applet for audio volume management using PulseAudio 
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk@hotmail.com
-# Depends on: kf5-plasma-framework kf5-kcoreaddons kf5-kdeclarative kf5-kglobalaccel kf5-ki18n pulseaudio 
+# Depends on: kf5-plasma-framework kf5-kcoreaddons kf5-kdeclarative kf5-kglobalaccel kf5-ki18n libcanberra pulseaudio qt5
 
 name=plasma-pa
 version=5.8.1
