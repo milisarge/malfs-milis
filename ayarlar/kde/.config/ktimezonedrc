@@ -1,0 +1,4 @@
+[TimeZones]
+LocalZone=Europe/Istanbul
+ZoneinfoDir=/usr/share/zoneinfo
+Zonetab=/usr/share/zoneinfo/zone.tab

@@ -1,0 +1,12 @@
+[KPropertiesDialog]
+Height 768=450
+Width 1366=545
+
+[PlasmaViews][Panel 2][Horizontal1366]
+thickness=32
+
+[ScreenConnectors]
+0=LVDS-1
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js

@@ -1,0 +1,11 @@
+[Keyboard]
+KeyboardRepeating=0
+NumLock=0
+RepeatDelay=600
+RepeatRate=25
+
+[Mouse]
+Acceleration=2
+MouseButtonMapping=RightHanded
+ReverseScrollPolarity=false
+Threshold=4
