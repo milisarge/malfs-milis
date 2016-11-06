@@ -1,0 +1,10 @@
+[Basic Settings]
+Indexing-Enabled=false
+
+[General]
+dbVersion=2
+exclude filters=*.csproj,*~,cmake_install.cmake,.pch,*.moc,moc_*.cpp,*.po,autom4te,qrc_*.cpp,.uic,core-dumps,*.m4,confstat,*.rej,*.omf,CTestTestfile.cmake,po,.hg,ui_*.h,.git,*.swap,*.pc,lzo,*.la,CMakeCache.txt,*.vm*,*.orig,_darcs,CMakeTmpQmake,*.part,.svn,Makefile.am,*.pyc,confdefs.h,*.tmp,.moc,libtool,.bzr,*.o,.obj,__pycache__,*.nvram,.xsession-errors*,.histfile.*,CMakeTmp,*.lo,*.loT,*.elc,*.gmo,*.aux,*.class,config.status,CVS,CMakeFiles,lost+found,*.rcore,conftest,litmain.sh
+exclude filters version=2
+exclude folders[$e]=/media/sda8-ata-Hitachi_HTS54755/,/media/sda7-ata-Hitachi_HTS54755/,/media/sda6-ata-Hitachi_HTS54755/,/media/sda2-ata-Hitachi_HTS54755/
+first run=true
+folders[$e]=$HOME/

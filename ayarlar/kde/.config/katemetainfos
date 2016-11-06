@@ -1,0 +1,43 @@
+[file:///etc/pam.d/sddm]
+Bookmarks=
+Checksum=313f70450d2505a5f7c95fc64329c5af06a829d6
+Encoding=UTF-8
+Highlighting=None
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Normal
+Time=2016,10,16,21,44,48
+URL=file:///etc/pam.d/sddm
+
+[file:///etc/sddm.conf]
+Bookmarks=
+Checksum=7f0386d5b7a9599acde3b0200d36ed7170f15f71
+Encoding=UTF-8
+Highlighting=Bitbake
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Bitbake
+Time=2016,10,16,21,42,55
+URL=file:///etc/sddm.conf
+
+[file:///home/alihan/.config/baloofilerc]
+Bookmarks=
+Checksum=dfa6585ec522aa23ca825b270c37150fb29c6cd7
+Encoding=UTF-8
+Highlighting=None
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Normal
+Time=2016,10,16,21,46,43
+URL=file:///home/alihan/.config/baloofilerc
+
+[file:///home/alihan/.config/startupconfig]
+Bookmarks=
+Checksum=64e4f48b2f98361f3d82a6712b58eb345d1432a0
+Encoding=UTF-8
+Highlighting=Bash
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Bash
+Time=2016,10,16,21,46,9
+URL=file:///home/alihan/.config/startupconfig

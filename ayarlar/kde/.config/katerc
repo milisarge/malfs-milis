@@ -1,0 +1,17 @@
+[General]
+Config Revision=10
+Days Meta Infos=30
+Last Session=
+Save Meta Infos=true
+Show Full Path in Title=false
+Show Menu Bar=true
+Show Status Bar=true
+Show Tab Bar=true
+
+[filetree]
+editShade=179,218,246
+listMode=false
+shadingEnabled=true
+showFullPathOnRoots=false
+sortRole=0
+viewShade=193,208,209

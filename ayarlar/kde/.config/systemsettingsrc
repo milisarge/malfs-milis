@@ -1,0 +1,15 @@
+[Basic Settings]
+Indexing-Enabled=false
+
+[General]
+exclude folders[$e]=/media/sda8-ata-Hitachi_HTS54755/,/media/sda7-ata-Hitachi_HTS54755/,/media/sda6-ata-Hitachi_HTS54755/,/media/sda2-ata-Hitachi_HTS54755/
+first run=true
+folders[$e]=$HOME/
+
+[MainWindow]
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAAoAAAAG6AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+
+[PlasmaRunnerManager]
+LaunchCounts=
