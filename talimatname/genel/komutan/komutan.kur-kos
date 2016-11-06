@@ -1,5 +1,8 @@
 pip2 install flask
 pip2 install psutil
+pip3 install tornado
+pip3 install pyopenssl
+tamir_daemon_kull
 pip2 install /opt/komutan/gerekliler/python-stdnum-1.1.tar.gz
 local evdizin
 if [ -d /home/$USER ];then
