@@ -1,10 +1,10 @@
 # Description: Xfce4 Terminal is a GTK+ 2 terminal emulator. This is useful for running commands or programs in the comfort of an Xorg window; you can drag and drop files into the Xfce4 Terminal or copy and paste text with your mouse.
 # URL: http://www.os-cillation.com/index.php?id=42&L=5
 # Packager: milisarge
-# Depends on: exo vte3
+# Depends on: exo vte
 
 name=xfce4-terminal
-version=0.8.1
+version=0.6.3
 release=1
 
 source=(http://archive.xfce.org/src/apps/${name}/${version%.*}/$name-$version.tar.bz2 )
