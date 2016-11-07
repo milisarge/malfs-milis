@@ -1,1 +1,2 @@
-useradd -g daemon daemon
+useradd daemon --system --shell=/bin/false
+
