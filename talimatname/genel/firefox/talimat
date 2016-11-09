@@ -4,57 +4,111 @@
 # Depends on: autoconf2 libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
 
 name=firefox
-version=47.0.1
+version=49.0.2
 release=1
 
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
+source=( https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
 
 build() {
+
 cd $SRC
 ARCH=`uname -m`
 
-for lang in de es-ES fr it sv-SE tr
+for lang in tr
 do 
 wget  http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$version/linux-$ARCH/xpi/$lang.xpi
 done
 
 cd $name-$version
-
 cat > mozconfig << "EOF"
-ac_add_options --enable-default-toolkit=cairo-gtk3
+# If you have a multicore machine, all cores will be used by default.
+# If desired, you can reduce the number of cores used, e.g. to 1, by
+# uncommenting the next line and setting a valid number of CPU cores.
+#mk_add_options MOZ_MAKE_FLAGS="-j1"
+
+# If you have installed DBus-Glib comment out this line:
+ac_add_options --disable-dbus
+
+# If you have installed dbus-glib, and you have installed (or will install)
+# wireless-tools, and you wish to use geolocation web services, comment out
+# this line
+ac_add_options --disable-necko-wifi
+
+# Uncomment this option if you wish to build with gtk+-2
+#ac_add_options --enable-default-toolkit=cairo-gtk2
+
+# Uncomment these lines if you have installed optional dependencies:
+#ac_add_options --enable-system-hunspell
+#ac_add_options --enable-startup-notification
+
+# Comment out following option if you have PulseAudio installed
+#ac_add_options --disable-pulseaudio
+
+# If you have installed GConf, comment out this line
+ac_add_options --disable-gconf
+
+# Comment out following options if you have not installed
+# recommended dependencies:
 ac_add_options --enable-system-sqlite
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-icu
+
+# If you are going to apply the patch for system graphite
+# and system harfbuzz, uncomment these lines:
+#ac_add_options --with-system-graphite2
+#ac_add_options --with-system-harfbuzz
+
+# Stripping is now enabled by default.
+# Uncomment these lines if you need to run a debugger:
+#ac_add_options --disable-strip
+#ac_add_options --disable-install-strip
+
+# The BLFS editors recommend not changing anything below this line:
+ac_add_options --prefix=/usr
+ac_add_options --enable-application=browser
+
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests
+
+ac_add_options --enable-optimize
+
+ac_add_options --enable-gio
 ac_add_options --enable-official-branding
-ac_add_options --disable-optimize
-ac_add_options --enable-gstreamer=1.0
+ac_add_options --enable-safe-browsing
+ac_add_options --enable-url-classifier
+
+# From firefox-40, using system cairo causes firefox to crash
+# frequently when it is doing background rendering in a tab.
+#ac_add_options --enable-system-cairo
 ac_add_options --enable-system-ffi
 ac_add_options --enable-system-pixman
+
 ac_add_options --with-pthreads
+
 ac_add_options --with-system-bz2
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-png
 ac_add_options --with-system-zlib
-ac_add_options --prefix=/usr
-ac_add_options --enable-application=browser
-ac_add_options --disable-crashreporter
-ac_add_options --disable-updater
-ac_add_options --disable-tests
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
 EOF
 
 test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozconfig || true
 
+export CFLAGS=$CFLAGS_HOLD
+export CXXFLAGS_HOLD=$CXXFLAGS
+export CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+export CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
 SHELL=/bin/sh make -f client.mk
 
 mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
 
-SHELL=/bin/sh make -f client.mk DESTDIR=$PKG INSTALL_SDK= install
+SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
 
 chown -R 0:0 $PKG/usr/lib/firefox-$version
 ln -sf ../lib/firefox-$version/firefox $PKG/usr/bin
@@ -71,7 +125,7 @@ cat > $PKG/usr/share/applications/firefox.desktop << "EOF" &&
 Encoding=UTF-8
 Type=Application
 Name=Firefox
-Comment=Browse The Web
+Comment=Mozilla Firefox
 Icon=firefox
 Exec=firefox
 Categories=Network;GTK;Application;Browser;WebBrowser;
@@ -82,7 +136,7 @@ mkdir -pv $PKG/usr/share/pixmaps
 ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
 
 
-for lang in de es-ES fr it sv-SE tr
+for lang in tr
 do 
 install -Dm644 $SRC/$lang.xpi \
     $PKG/usr/lib/firefox-$version/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
