@@ -114,7 +114,7 @@ def chooseDisk():
 		Eğer sisteminizde hali hazırda EFI kullanan başka bir işletim sistemi varsa muhtemelen  \
 		diski GPT olarak bölümlemenize ve EFI bölümünü elle oluşturmanıza gerek kalmayacaktır. \
 		Eğer sanal makinaya ya da boş bir diske kuruyorsanız ve ne yapacağınızı bilmiyorsanız \
-		https://milis.gungre.ch/efikurulum.html adresindeki makaleye göz atınız.")
+		https://milis.gungre.ch/efikurulum.html adresindeki makaleye göz atınız.",width=70,height=22)
 	os.system("cfdisk /dev/" + selectedDisk)
 	choosePart()
 
@@ -215,7 +215,7 @@ def installGrub(target):
 			pass
 		
 		mountEFIPart()
-		os.system("chroot /mnt grub-install --efi-directory=/mnt/boot/efi --target=x86_64-efi --bootloader-id=Milis {}".format(target[:-1]))
+		os.system("chroot /mnt grub-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=Milis {}".format(target[:-1]))
 		log.write('[+] Grub kuruldu: {}\n'.format(target[:-1]))
 		os.system("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
 	else:
