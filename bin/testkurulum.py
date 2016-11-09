@@ -185,8 +185,7 @@ def copySystemFiles(target):
 def initramfsCreate(target):
 	os.system('chroot /mnt dracut --no-hostonly --add-drivers "ahci" -f /boot/initramfs')
 	log.write('[+] Initramfs oluşturuldu.')
-	if isEFI():
-		d.messagebox("Uyarı !", text="")
+
 	if d.yesno(title="Adım 4: Önyükleyici kurulumu",text=" GNU/GRUB, Linux ve Windows gibi diğer işletim sistemlerini yüklemek için kullanılan bir önyükleyicidir. Bu Milis'i açabilmek için gerekli bir adımdır\
 		fakat ne yaptığınızı biliyorsanız bir nedenden ötürü grub kurmak istemeyebilirsiniz.\n\n  Grub önyükleyiciyi kurmak istiyor musunuz ?",width=70) == "ok":
 		installGrub(target)
