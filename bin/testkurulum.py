@@ -27,6 +27,9 @@ def runShellCommand(c):
 	out = subprocess.check_output(c,stderr=subprocess.STDOUT,shell=True,universal_newlines=True)
 	return out.replace("\b","")  #encode byte format to string, ugly hack 
 
+def isEFI():
+	return os.path.isdir("/sys/firmware/efi")
+
 def greetingDialog():
 	greeting = """
 	Milis GNU/Linux kurulum aracı Milis'i bilgisayarınıza güvenli bir şekilde kurmanızı sağlamak amacıyla geliştirilmiş basit bir kurulum aracıdır.
@@ -104,8 +107,17 @@ def chooseDisk():
 		log.write("{} \t {}\n".format(disq[0],disq[1]))
 	status,selectedDisk = d.menu(title="Adım 2: Disk İşlemleri",text="Lütfen bölümleme yapmak istediğiniz diski seçiniz:",choices=diskChoice,width=70)
 	log.write("\n[+] Seçilmiş Disk: {}\n\n".format(selectedDisk))
+	if isEFI():
+		d.messagebox(title="Uyarı !",text="(U)EFI kullanan bir sistem kullanıyorsunuz.\n\n \
+		Kurulum aracımız (U)EFI desteklemekle birlikte henüz deneysel bir özelliktir ve kurulum \
+		sonrası yaşanacak veri kayıplarından kullanıcı sorumludur.\
+		Eğer sisteminizde hali hazırda EFI kullanan başka bir işletim sistemi varsa muhtemelen  \
+		diski GPT olarak bölümlemenize ve EFI bölümünü elle oluşturmanıza gerek kalmayacaktır. \
+		Eğer sanal makinaya ya da boş bir diske kuruyorsanız ve ne yapacağınızı bilmiyorsanız \
+		https://milis.gungre.ch/efikurulum.html adresindeki makaleye göz atınız.")
 	os.system("cfdisk /dev/" + selectedDisk)
 	choosePart()
+
 
 def choosePart():
 	partChoice = []
@@ -173,23 +185,48 @@ def copySystemFiles(target):
 def initramfsCreate(target):
 	os.system('chroot /mnt dracut --no-hostonly --add-drivers "ahci" -f /boot/initramfs')
 	log.write('[+] Initramfs oluşturuldu.')
+	if isEFI():
+		d.messagebox("Uyarı !", text="")
 	if d.yesno(title="Adım 4: Önyükleyici kurulumu",text=" GNU/GRUB, Linux ve Windows gibi diğer işletim sistemlerini yüklemek için kullanılan bir önyükleyicidir. Bu Milis'i açabilmek için gerekli bir adımdır\
 		fakat ne yaptığınızı biliyorsanız bir nedenden ötürü grub kurmak istemeyebilirsiniz.\n\n  Grub önyükleyiciyi kurmak istiyor musunuz ?",width=70) == "ok":
 		installGrub(target)
 	else:
 		finishInstall()
 
+def mountEFIPart():
+	partTypes  = runShellCommand("fdisk -lo device,type | awk '!/^($|I|D|U|S|A|T)/ {print $2}'").split('\n')
+	partNames  = runShellCommand("fdisk -lo device,type | awk '!/^($|I|D|U|S|A|T)/ {print $1}'").split('\n')
+	try:
+		efipart = partNames[partTypes.index('EFI')]
+		os.system("mount {} /mnt/boot/efi".format(efipart))
+	except ValueError:
+		d.messagebox(title="Hata !",text="Sisteminizde EFI Sistem bölümünü bulunamadı. Bu bölümün olup olmadığını kontrol ediniz.\
+		Eğer bölümün olduğuna eminseniz https://github.com/milisarge/malfs-milis/issues adresinden bug bildiriminde bulunabilirsiniz.")
+		sys.exit()
+
 def installGrub(target):
 	os.system("mount --bind /dev /mnt/dev")
 	os.system("mount --bind /sys /mnt/sys")
 	os.system("mount --bind /proc /mnt/proc")
-	target = target[:-1]
-	if target == "/dev/mmcblk0": #SD kart'a kurulum fix
-		os.system("grub-install --boot-directory=/mnt/boot /dev/mmcblk0")
+	
+	if isEFI():
+		try:
+			os.mkdir("/mnt/boot/efi")
+		except:
+			pass
+		
+		mountEFIPart()
+		os.system("chroot /mnt grub-install --efi-directory=/mnt/boot/efi --target=x86_64-efi --bootloader-id=Milis {}".format(target[:-1]))
+		log.write('[+] Grub kuruldu: {}\n'.format(target[:-1]))
+		os.system("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
 	else:
-		os.system("grub-install --boot-directory=/mnt/boot " + target)
-	os.system("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
-	log.write('[+] Grub kuruldu: {}\n'.format(target))
+		target = target[:-1]
+		if target == "/dev/mmcblk0": #SD kart'a kurulum fix (deneysel)
+			os.system("grub-install --boot-directory=/mnt/boot /dev/mmcblk0")
+		else:
+			os.system("grub-install --boot-directory=/mnt/boot " + target)
+		os.system("chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg")
+		log.write('[+] Grub kuruldu: {}\n'.format(target))
 	finishInstall()
 	
 def finishInstall():
