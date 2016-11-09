@@ -108,7 +108,7 @@ def chooseDisk():
 	status,selectedDisk = d.menu(title="Adım 2: Disk İşlemleri",text="Lütfen bölümleme yapmak istediğiniz diski seçiniz:",choices=diskChoice,width=70)
 	log.write("\n[+] Seçilmiş Disk: {}\n\n".format(selectedDisk))
 	if isEFI():
-		d.messagebox(title="Uyarı !",text="(U)EFI kullanan bir sistem kullanıyorsunuz.\n\n \
+		d.msgbox(title="Uyarı !",text="(U)EFI kullanan bir sistem kullanıyorsunuz.\n\n \
 		Kurulum aracımız (U)EFI desteklemekle birlikte henüz deneysel bir özelliktir ve kurulum \
 		sonrası yaşanacak veri kayıplarından kullanıcı sorumludur.\
 		Eğer sisteminizde hali hazırda EFI kullanan başka bir işletim sistemi varsa muhtemelen  \
@@ -200,7 +200,7 @@ def mountEFIPart():
 		efipart = partNames[partTypes.index('EFI')]
 		os.system("mount {} /mnt/boot/efi".format(efipart))
 	except ValueError:
-		d.messagebox(title="Hata !",text="Sisteminizde EFI Sistem bölümünü bulunamadı. Bu bölümün olup olmadığını kontrol ediniz.\
+		d.infobox(title="Hata !",text="Sisteminizde EFI Sistem bölümünü bulunamadı. Bu bölümün olup olmadığını kontrol ediniz.\
 		Eğer bölümün olduğuna eminseniz https://github.com/milisarge/malfs-milis/issues adresinden bug bildiriminde bulunabilirsiniz.")
 		sys.exit()
 
