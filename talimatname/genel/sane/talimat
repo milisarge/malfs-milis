@@ -17,6 +17,9 @@ build() {
 		--sysconfdir=/etc \
 		--with-docdir=/usr/share/doc/sane-backend-$version \
 		--enable-libusb_1_0 \
+		--enable-pthread \
+        --disable-rpath \
+        --disable-locking \
 		--with-group=scanner
 	make
 	make DESTDIR=$PKG install

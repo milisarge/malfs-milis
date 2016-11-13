@@ -1,10 +1,11 @@
-# Description: Widely used protocol for monitoring the health and welfare of network equipment.
-# URL: 
-# Packager:   pierre at nutyx dot org
-# Depends on: python python-setuptools libnl openssl pciutils 
+# Description: A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6.
+# URL: http://www.net-snmp.org/
+# Packager:   alihan-ozturk28@hotmail.com
+# Depends on: python python-setuptools libnl openssl pciutils perl-term-readkey perl-tk perl
+
 name=net-snmp
-version=5.7.2.1
-release=2
+version=5.7.3
+release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz{,.asc})
 

@@ -2,7 +2,6 @@
 # URL: http://www.gnome.org/
 # Packager: pierre at nutyx dot org
 # Depends on: python-gobject2 python-cairo libglade 
-run=( python-gobject2 python-cairo )
 
 name=python-gtk
 version=2.24.0

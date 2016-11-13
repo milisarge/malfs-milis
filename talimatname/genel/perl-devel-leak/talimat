@@ -1,0 +1,31 @@
+# Description: Utility for looking for perl objects that are not reclaimed.
+# URL: URL: http://search.cpan.org/dist/Devel-Symdump
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: perl
+
+name=perl-devel-leak
+version=0.03
+release=1
+
+source=( https://cpan.metacpan.org/authors/id/N/NI/NI-S/Devel-Leak-$version.tar.gz)
+
+build() {
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB=""  \
+    PERL_AUTOINSTALL=--skipdeps                            \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+    cd Devel-Leak-$version
+    perl Makefile.PL
+    make OPTIMIZE="$CFLAGS" || exit 1
+    make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1
+
+    # Remove perllocal.pod and .packlist if present in the package
+    for i in perllocal.pod .packlist; do
+        find $PKG -name "$i" -exec rm -rf {} \;
+    done
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

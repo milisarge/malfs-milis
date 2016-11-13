@@ -1,14 +1,13 @@
 # Description: Check for POD errors in files
 # URL: URL: http://search.cpan.org/dist/Test-Pod/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
-run=( perl )
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: perl
+
 name=perl-test-pod
-version=1.48
+version=1.51
 release=1
 
-source=(http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/Test-Pod-$version.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-Pod-$version.tar.gz)
 
 build() {
     cd Test-Pod-$version
@@ -21,7 +20,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)

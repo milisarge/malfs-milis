@@ -1,9 +1,9 @@
 # Description: library Python XML
 # URL: http://www.gnome.org/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: python
+# Depends on: python3
 
-name=python-xml
+name=python3-xml
 version=0.8.4
 release=1
 
@@ -11,8 +11,8 @@ source=(http://downloads.sourceforge.net/pyxml/PyXML-0.8.4.tar.gz)
 
 build() {
 	cd PyXML-$version
-	python2 setup.py build
-	python2 setup.py install --prefix=/usr --root=$PKG
+	python3 setup.py build
+	python3 setup.py install --prefix=/usr --root=$PKG
 
 }
 

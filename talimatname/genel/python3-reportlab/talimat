@@ -1,9 +1,9 @@
 # Description: A proven industry-strength PDF generating solution
 # URL: http://www.reportlab.org/rl_toolkit.html
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: python python-pillow freetype python-pip
+# Depends on: python3 python3-pillow freetype python3-pip
 
-name=python-reportlab
+name=python3-reportlab
 version=3.3.0
 release=1
 
@@ -12,6 +12,6 @@ https://pypi.python.org/packages/source/r/reportlab/reportlab-$version.tar.gz)
 
 build() {
     cd reportlab-$version
-    python2 setup.py install --prefix=/usr --root=$PKG --optimize=1
-    python2 setup.py tests
+    python3 setup.py install --prefix=/usr --root=$PKG
+    python3 setup.py tests
 }

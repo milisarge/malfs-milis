@@ -1,0 +1,17 @@
+# Description: A graphical user interface toolkit for Perl.
+# URL: http://search.cpan.org/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: perl perl-devel-leak perl-test-pod xorg-server libpng libjpeg-turbo tk
+
+name=perl-tk
+version=804.033
+release=1
+
+source=( http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-$version.tar.gz)
+
+build() {
+cd Tk-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+}
