@@ -1,0 +1,25 @@
+# Description: connector python for qt5
+# URL: http://www.riverbankcomputing.co.uk/software/pyqt/intro
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: dbus-python python-sip qt5 qt5-webkit python-opengl python
+
+name=python-qt5
+version=5.7
+release=1
+
+source=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$version/PyQt5_gpl-$version.tar.gz)
+build() {
+cd PyQt5_gpl-$version
+
+python2 configure.py   \
+     -q /usr/bin/qmake-qt5 \
+     --confirm-license \
+     --no-sip-files \
+     --qsci-api
+
+find -name 'Makefile' | xargs sed -i 's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
+make
+make DESTDIR=$PKG INSTALL_ROOT=$PKG install
+
+install -Dm644 PyQt5.api $PKG/usr/share/qt/qsci/api/python/PyQt5.api
+}

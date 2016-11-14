@@ -3,7 +3,6 @@
 # Packager: milisarge
 # Depends on: libnotify python-gtk dbus-glib 
 
-
 name=python-notify
 version=0.1.1
 release=1

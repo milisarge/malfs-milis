@@ -1,7 +1,8 @@
 # Description: connector Python3 for the library cairo
 # URL: http://www.cairographics.org/
-# Packager: pierre at nutyx dot org
-# Depends on: python3 cairo 
+# Packager:alihan-ozturk28@hotmail.com
+# Depends on: python3 cairo
+
 name=python3-cairo
 version=1.10.0
 release=1
