@@ -9,6 +9,11 @@ release=1
 _version=${version:0:3}
 alias=(linux-lts)
 
+# Virtualbox
+vb_version=5.1.8
+[ "`uname -m`" == "i686"   ] && _VBARCH=x86
+[ "`uname -m`" == "x86_64"   ] && _VBARCH=amd64
+
 # Broadcom
 wl_version=6.30.223.271
 _wlarch=_64
@@ -16,6 +21,7 @@ _wlarch=_64
 source=(\
 http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_version}.tar.xz
 https://www.kernel.org/pub/linux/kernel/v4.x/patch-$version.xz
+https://sourceforge.net/projects/kaosx/files/sources/virtualbox-modules/vbox-kernel-module-src-${vb_version}.tar.xz
 http://www.broadcom.com/docs/linux_sta/hybrid-v35${_wlarch}-nodebug-pcoem-${wl_version//./_}.tar.gz
 broadcom-wl.modprobe.d broadcom-wl.license.patch wl_linux.c.patch
 aufs4-loopback.patch
@@ -28,7 +34,9 @@ lockdep-debug.patch
 tmpfs-idr.patch
 vfs-ino.patch
 aufs_type.h
-$name.config_64)
+$name.config_64
+virtualbox.conf
+virtualbox-modules-depmod.patch)
 
 build(){
 
@@ -81,6 +89,21 @@ fi
 for i in *.ko
 do
 	install -D -m0644 $i $PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/$i
+done
+
+# Module virtualbox
+cd vbox-kernel-module-src-5.1.8
+patch -p0 -i $SRC/virtualbox-modules-depmod.patch
+KERNELRELEASE=${version}
+KERN_DIR=$SRC/linux-${_version} make
+
+mkdir -p $PKG/etc/sysconfig/modules.d
+install -D -m644 $SRC/virtualbox.conf $PKG/etc/sysconfig/modules.d/virtualbox.conf
+
+for i in *.ko
+do
+      install -D -m0644 $i $PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/$i
+      
 done
 
 # depmod needed
