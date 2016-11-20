@@ -4,11 +4,10 @@
 # Depends on: libxml2 cups 
 
 name=foomatic-db-engine
-version=4.0.20161031
+version=4.1
 release=1
-_version=4.0-20161031
 
-source=(http://www.openprinting.org/download/foomatic/$name-${_version}.tar.gz)
+source=(http://www.openprinting.org/download/foomatic/${name}-devel-${version}-current.tar.gz)
 
 build() {
 	cd $name-*
