@@ -9,7 +9,7 @@ release=1
 source=(https://dl.hexchat.net/hexchat/$name-$version.tar.xz)
  
 build() {
-
+	gdk-pixbuf-query-loaders --update-cache
 	cd $name-$version
 	
 	./configure \
