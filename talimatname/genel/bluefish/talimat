@@ -1,23 +1,22 @@
 # Description: Deneyimli web geliştiricileri ve programcılar için güçlü bir editör.
 # URL: http://bluefish.openoffice.nl/
-# Maintainer: Olivier Sessink
-# Packager: tnut at nutyx dor org
-# Depends on: pcre enchant gtk2 desktop-file-utils
+# Packager: milisarge
+# Depends on: pcre enchant gtk3 desktop-file-utils
 
 name=bluefish
-version=2.2.8
+version=2.2.9
 release=1
 
 source=(http://www.bennewitz.com/bluefish/stable/source/$name-$version.tar.bz2)
 build() {
+gdk-pixbuf-query-loaders --update-cache
 cd $name-$version
-./configure --prefix=/usr \
---with-freedesktop_org-menu=/usr/share/applications \
---with-freedesktop_org-mime=/usr/share/mime \
---with-icon-path=/usr/share/pixmaps \
---disable-update-databases \
---without-libgnomeui \
---docdir=/usr/share/doc/$name-$version
+ sed -i 's|/usr/bin/env python|/usr/bin/env python2|' \
+    src/plugin_zencoding/zencoding/{,filters/,actions/}*.py \
+    data/{jsbeautify,jsmin.py,lorem-ipsum-generator}
+PYTHON=/usr/bin/python2 
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --enable-spell-check --disable-update-databases --disable-xml-catalog-update
 make
 make DESTDIR=$PKG install
 }
