@@ -44,7 +44,7 @@ build(){
 
 cd linux-${_version}
 
-cp -r $SRC/aufs $SRC/fs/
+cp -r $SRC/aufs-master $SRC/fs/
 
 if [ -f $SRC/patch-$version.xz ]; then
 	xz -d -c  $SRC/patch-$version.xz | patch -Np1
