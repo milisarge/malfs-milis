@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8.5"
+versiyon="0.8.6"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -686,6 +686,37 @@ loglama(){
 	echo "$(date +'%F %T') $1" >> "$kokdizin/$LOGDIZIN/mps.log"
 }
 
+dosyadan_talimat_islem(){
+	local dosya
+	dosya=$1
+	urlkont='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
+	if [[ $dosya =~ $urlkont ]]
+	then 
+		ryaz 32 "talimat linkten cekilecek"
+		gdosya=`mktemp`
+		wget $dosya -O $gdosya
+		dosya=$gdosya
+	fi
+	if [ ! -f $dosya ];then
+		ryaz 31 "$dosya talimat dosyasi yok!"
+		exit 1
+	fi
+	
+	local paketisim
+	paketisim=`grep -ri 'name=' $dosya | cut -d'=' -f 2`
+	if [ ! -n "$paketisim" ]; then
+		ryaz 31 "paket ismi degiskeni bulunamadı!"
+		exit 1
+	fi
+	if [ ! -f /root/talimatname/genel/$paketisim ];then
+		mkdir /root/talimatname/genel/$paketisim
+		cp -f $dosya /root/talimatname/genel/$paketisim/talimat
+		ryaz 32 "$paketisim talimatı hazırlandı."
+	else
+		ryaz 31 "$paketisim talimatı zaten talimatnamede var!"
+	fi
+}
+
 talimat_olustur(){
 if [ "$1" = '?' ];then
 	ryaz 34 "kullanım : mps -to paket_ismi"
@@ -1123,6 +1154,8 @@ ayarlar() {
 				kurban_kurtar $2 ;;
 			-suko)
 				sunucu_kontrol ;;
+			-dota)
+				dosyadan_talimat_islem $2 ;;
 			-cf|--config-file)
 				if [ ! "$2" ]; then
 					echo "ayardosyası gerek $1"
