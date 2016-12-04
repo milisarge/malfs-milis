@@ -1,0 +1,2 @@
+echo "kullanim: gitrepo_boyut hesap repo"
+echo https://github.com/$1/$2 | perl -ne 'print $1 if m!([^/]+/[^/]+?)(?:\.git)?$!' | xargs -i curl -s -k https://api.github.com/repos/'{}' | grep size
