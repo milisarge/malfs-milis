@@ -1,0 +1,21 @@
+# Description: torrent library
+# URL:         https://rakshasa.github.io/rtorrent
+# Packager:    milisarge
+# Depends on:  libsigc++
+
+name=libtorrent
+version=0.13.6
+release=1
+source=(http://rtorrent.net/downloads/libtorrent-$version.tar.gz)
+
+build() {
+  cd $name-$version
+
+  # remove cppunit dependency
+  sed -i '/AM_PATH_CPPUNIT(.*)/d' configure.ac
+  ./autogen.sh
+
+  ./configure --prefix=/usr --enable-debug=no
+  make
+  make install DESTDIR=$PKG
+}
