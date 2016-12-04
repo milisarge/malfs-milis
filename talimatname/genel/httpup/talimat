@@ -1,0 +1,15 @@
+# Description: One way sync over http
+# URL:         http://jw.tks6.net/files/crux/httpup_manual.html 
+# Packager: milisarge
+# Depends on: 
+
+name=httpup
+version=0.4.0l
+release=1
+source=(http://crux.nu/files/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    make
+    make DESTDIR=$PKG prefix=/usr mandir=/usr/share/man install
+}
