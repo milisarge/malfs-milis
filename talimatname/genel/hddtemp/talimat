@@ -1,0 +1,37 @@
+# Description: Reads your hdd temperature using S.M.A.R.T values.
+# URL: http://www.guzu.net/linux/hddtemp.php
+# Packager: milisarge
+# Depends on: 
+
+name=hddtemp
+version=0.3-beta15
+release=1
+source=(http://nongnu.askapache.com/hddtemp/$name-$version.tar.bz2
+	http://nongnu.askapache.com/hddtemp/hddtemp.db
+	hddtemp-0.3-beta15-satacmds.patch
+	hddtemp-0.3-beta15-byteswap.patch
+	hddtemp-0.3-beta15-execinfo.patch
+	hddtemp-0.3-beta15-nls.patch
+	hddtemp-0.3-beta15-iconv.patch
+	hddtemp.rc)
+
+build() {
+	cd $name-$version
+
+	patch -p 1 -i $SRC/hddtemp-0.3-beta15-satacmds.patch
+	patch -p 1 -i $SRC/hddtemp-0.3-beta15-byteswap.patch
+	patch -p 1 -i $SRC/hddtemp-0.3-beta15-execinfo.patch
+	patch -p 1 -i $SRC/hddtemp-0.3-beta15-nls.patch
+	patch -p 1 -i $SRC/hddtemp-0.3-beta15-iconv.patch
+	autoreconf
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man \
+		--with-db-path=/etc/hddtemp.db
+
+	make
+	make DESTDIR=$PKG install
+	install -m 0644 -D $SRC/hddtemp.db $PKG/etc/hddtemp.db
+	install -m 0744 -D $SRC/hddtemp.rc $PKG/etc/rc.d/hddtemp
+}
