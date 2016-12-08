@@ -1,2 +1,2 @@
 HOSTNAME='milis'
-MANAGER='wicd'
+MANAGER="networkmanager"
