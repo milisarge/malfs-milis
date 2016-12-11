@@ -1,7 +1,7 @@
 # Description: Xfce4 Session is a session manager for Xfce.
 # URL: http://www.xfce.org
 # Packager: tyrry at nutyx dot org, tnut at nutyx dot org
-# Depends on: gnupg polkit consolekit2 udisks upower xorg-libxres libwnck xfce4-libui xorg-app
+# Depends on: gnupg polkit consolekit2 udisks upower xorg-libxres libwnck xfce4-libui xorg-app xlockmore
 
 run=(udisks upower)
 
