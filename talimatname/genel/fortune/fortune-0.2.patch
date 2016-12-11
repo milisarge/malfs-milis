@@ -1,0 +1,39 @@
+diff -Nru fortune-0.2/fortune.c fortune-0.2-new/fortune.c
+--- fortune-0.2/fortune.c	1998-10-25 01:05:19.000000000 +0200
++++ fortune-0.2-new/fortune.c	2002-09-15 18:46:36.000000000 +0200
+@@ -30,7 +30,7 @@
+ #warn Your system headers say that mmap is not supported!
+ #endif
+ 
+-#define VERSION "0.1"
++#define VERSION "0.2"
+ #define FORTUNEDIR "/usr/share/games/fortunes"
+ 
+ struct option const long_options[] =
+@@ -38,6 +38,8 @@
+   {"help",     no_argument,       0, 'h'},
+   {"help",     no_argument,       0, '?'},
+   {"match",    required_argument, 0, 'm'},
++  {"set",      no_argument,       0, 's'},
++  {"out",      no_argument,       0, 'o'},
+   {"version",  no_argument,       0, 'V'},
+   {(char *)0,  0,                 0, (char)0}
+ };
+@@ -140,7 +142,7 @@
+   char *re;
+ 
+   progname=argv[0]; re=NULL;
+-  while ((c = getopt_long(argc, argv, "h?m:V",
++  while ((c = getopt_long(argc, argv, "h?som:V",
+ 			  long_options, (int *) 0)) != EOF) {
+     switch (c) {
+       case 0  : break;
+@@ -150,6 +152,8 @@
+                 return 0;
+       case 'V': fprintf(stderr,"%s version %s\n", progname, VERSION);
+ 		return 0;
++      case 'o': break;
++      case 's': break;
+       case 'm': re=optarg;
+       default : break;
+     }

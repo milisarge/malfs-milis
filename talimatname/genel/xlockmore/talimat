@@ -1,0 +1,22 @@
+# Description: X Window System Lock Screen
+# URL: http://www.tux.org/~bagleyd/xlockmore.html 
+# Packager: milisarge
+# Depends on: gtk2 fortune
+
+name=xlockmore
+version=5.49
+release=1
+source=(http://sillycycle.com/xlock/xlockmore-$version.tar.xz)
+
+build(){
+  cd $name-$version
+  ./configure --prefix=/usr --enable-vtlock --enable-syslog \
+        --enable-multiple-user --enable-multiple-root \
+        --without-motif --with-opengl --without-esound
+  make
+  make prefix=$PKG/usr xapploaddir=$PKG/etc/X11/app-defaults install
+  if [ -d $PKG/usr/lib ]; then
+    rm -rf $PKG/usr/lib
+  fi
+  mv $PKG/usr/share/man $PKG/usr
+}
