@@ -1102,7 +1102,7 @@ ayarlar() {
 			-b|--pkbl)
 				paket_bilgi "$2" ;;
 			#sunucu bilgisi alma
-			-sun|--sunucu)
+			-sun|sunucu)
 				ryaz 32 $sunucu ;;
 			-bb|--pkbb)
 				bagimli_bilgi "$2" | column -t;;
