@@ -1,0 +1,23 @@
+# Description: SOcket CAT - netcat-like utility with many enhancements.
+# URL:         http://www.dest-unreach.org/socat
+# Packager:    milisarge
+# Depends:
+
+name=socat
+version=1.7.3.1
+release=1
+source=(
+	http://www.dest-unreach.org/$name/download/$name-$version.tar.bz2
+	libressl.patch
+)
+
+build () {
+	cd $name-$version
+
+	patch -p1 < $SRC/libressl.patch
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+}
