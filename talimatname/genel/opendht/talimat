@@ -1,7 +1,7 @@
 # Description: A C++11 implementation of the Kademlia DHT (Distributed Hash Table)
 # URL: https://github.com/savoirfairelinux/opendht
 # packager: milisarge
-# Depends on: cmake gnutls nettle msgpack-c python3 cython
+# Depends on: cmake gnutls nettle msgpack-c python3-setuptools cython
 
 name=opendht
 version=master
