@@ -1,0 +1,30 @@
+# Description: A C++11 implementation of the Kademlia DHT (Distributed Hash Table)
+# URL: https://github.com/savoirfairelinux/opendht
+# packager: milisarge
+# Depends on: cmake gnutls nettle msgpack-c python3 cython
+
+name=opendht
+version=master
+release=1
+source=()
+_source=https://github.com/savoirfairelinux/opendht
+
+build() {
+    if [ ! -d  $DERLEME_KAYNAKDIZIN/$name ];then
+		git clone $_source $DERLEME_KAYNAKDIZIN/$name
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name
+		git pull
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	cd $SRC/$name
+	mkdir -p build
+	cd build
+	cmake .. \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DOPENDHT_PYTHON=ON \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=lib
+	make
+	make DESTDIR=$PKG install
+}
