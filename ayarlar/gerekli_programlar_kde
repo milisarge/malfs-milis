@@ -13,6 +13,7 @@ qemu-all
 yad
 cdrkit
 scrot
+lsof
 syslinux
 network-manager-applet
 rdesktop
