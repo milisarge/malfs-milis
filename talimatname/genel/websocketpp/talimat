@@ -1,0 +1,27 @@
+# Description: C++/Boost Asio based websocket client/server library
+# URL: http://www.zaphoyd.com/websocketpp/
+# Packager: milisarge
+# Depends on: cmake boost scons
+
+name=websocketpp
+version=0.7.0
+release=1
+source=(https://github.com/zaphoyd/${name}/archive/${version}.tar.gz)
+
+build() {
+	cd ${name}-${version}
+	WSPP_ENABLE_CPP11=1 \
+	BOOST_LIBS=/usr/lib \
+	BOOST_INCLUDES=/usr/include/boost \
+	scons "${MAKEFLAGS}"
+	(cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	)
+	cd ${name}-${version}
+	WSPP_ENABLE_CPP11=1 \
+	BOOST_LIBS=/usr/lib \
+	BOOST_INCLUDES=/usr/include/boost \
+	scons test
+	cd ${name}-${version}
+	make -C build DESTDIR="${PKG}" install
+}
