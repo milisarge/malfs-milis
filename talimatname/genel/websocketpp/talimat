@@ -21,6 +21,5 @@ build() {
 	BOOST_LIBS=/usr/lib \
 	BOOST_INCLUDES=/usr/include/boost \
 	scons test
-	cd ${name}-${version}
 	make -C build DESTDIR="${PKG}" install
 }
