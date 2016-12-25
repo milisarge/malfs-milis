@@ -1,20 +1,83 @@
 # Description: Boost paketi C++ için özgür ve taşınabilir kaynak kütüphanelerinden oluşan bir settir.
 # URL: http://boost.sourceforge.net/
-# Packager: tnut at nutyx dot org
-# Depends on: icu python
+# Packager: milisarge
+# Depends on: icu python python3
 
 name=boost
 version=1.60.0
-release=1
+release=2
 
-source=(http://downloads.sourceforge.net/$name/${name}_${version//./_}.tar.bz2)
+_boostver=${version//./_}
+
+source=(https://downloads.sourceforge.net/project/${name}/${name}/${version}/${name}_${_boostver}.tar.bz2)
+
 build() {
-cd ${name}_${version//./_}
-sed -e '1 i#ifndef Q_MOC_RUN' \
-    -e '$ a#endif'            \
-    -i boost/type_traits/detail/has_binary_operator.hpp
+   export _stagedir="${SRC}/stagedir"
+   local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
-./bootstrap.sh --prefix=/usr &&
-./b2 stage --stagedir=$PKG/usr threading=multi link=shared
-./b2 install --prefix=$PKG/usr threading=multi link=shared
+   cd ${name}_${_boostver}
+
+   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
+   
+   install -Dm755 ./b2 "${_stagedir}"/bin/b2
+
+   # default "minimal" install: "release link=shared,static
+   # runtime-link=shared threading=single,multi"
+   # --layout=tagged will add the "-mt" suffix for multithreaded libraries
+   # and installs includes in /usr/include/boost.
+   # --layout=system no longer adds the -mt suffix for multi-threaded libs.
+   # install to ${_stagedir} in preparation for split packaging
+   "${_stagedir}"/bin/b2 \
+      variant=release \
+      debug-symbols=off \
+      threading=multi \
+      runtime-link=shared \
+      link=shared,static \
+      toolset=gcc \
+      python=2.7 \
+      cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
+      cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
+      --layout=system \
+      ${JOBS} \
+      \
+      --prefix="${_stagedir}" \
+      install
+
+   # because b2 in boost 1.62.0 doesn't seem to respect python parameter, we
+   # need another run for liboost_python3.so
+   sed -e '/using python/ s@;@: /usr/include/python${PYTHON_VERSION/3*/${PYTHON_VERSION}m} ;@' \
+      -i bootstrap.sh
+
+   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3 \
+      --with-libraries=python
+
+   "${_stagedir}"/bin/b2 \
+      variant=release \
+      debug-symbols=off \
+      threading=multi \
+      runtime-link=shared \
+      link=shared,static \
+      toolset=gcc \
+      python=3.5 \
+      cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
+      cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
+      --layout=system \
+      ${JOBS} \
+      --prefix="${_stagedir}/python3" \
+      --with-python \
+      install
+
+   install -dm755 "${PKG}"/usr
+   cp -a "${_stagedir}"/{bin,include} "${PKG}"/usr
+
+   install -d "${PKG}"/usr/lib
+   cp -a "${_stagedir}"/lib/*.a "${PKG}"/usr/lib/
+
+   install -Dm644 "${_stagedir}"/python3/lib/libboost_python3.a \
+      "${PKG}"/usr/lib/libboost_python3.a
+
+   install -dm755 "${PKG}"/usr
+   cp -a "${_stagedir}"/lib "${PKG}"/usr
+   cp -a "${_stagedir}"/python3/lib/libboost_python3* "${PKG}"/usr/lib
+
 }
