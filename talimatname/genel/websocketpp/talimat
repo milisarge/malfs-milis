@@ -17,7 +17,6 @@ build() {
 	(cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	)
-	cd ${name}-${version}
 	WSPP_ENABLE_CPP11=1 \
 	BOOST_LIBS=/usr/lib \
 	BOOST_INCLUDES=/usr/include/boost \
