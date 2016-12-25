@@ -17,9 +17,5 @@ build() {
 	(cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	)
-	WSPP_ENABLE_CPP11=1 \
-	BOOST_LIBS=/usr/lib \
-	BOOST_INCLUDES=/usr/include/boost \
-	scons test
 	make -C build DESTDIR="${PKG}" install
 }
