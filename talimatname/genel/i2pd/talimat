@@ -1,7 +1,7 @@
 # Description: Simplified C++ implementation of I2P client
 # URL: https://github.com/PurpleI2P/i2pd
 # Packager: milisarge
-# Depends on: cmake boost miniupnpc
+# Depends on: cmake boost miniupnpc websocketpp
 
 name=i2pd
 version=2.11.0
