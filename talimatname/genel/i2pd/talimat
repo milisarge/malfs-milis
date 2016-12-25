@@ -1,0 +1,58 @@
+# Description: Simplified C++ implementation of I2P client
+# URL: https://github.com/PurpleI2P/i2pd
+# Packager: milisarge
+# Depends on: cmake boost miniupnpc
+
+name=i2pd
+version=2.11.0
+release=1
+source=(https://github.com/PurpleI2P/${name}/archive/${version}.tar.gz)
+
+build() {
+	cd $SRC/$name-$version
+	cd build
+	cmake . -Wno-dev \
+	  -DCMAKE_INSTALL_PREFIX=/usr \
+	  -DWITH_UPNP=1 -DWITH_PCH=1 \
+	  -DCMAKE_BUILD_TYPE=Release
+	make
+	_conf_dest=etc/${name}
+	_home_dest=var/lib/${name}
+	_share_dest=usr/share
+
+	cd $SRC/$name-$version
+
+	cd build
+	make DESTDIR=$PKG install
+	install -Dm0644 $SRC/$name-$version/docs/i2pd.conf $PKG/${_conf_dest}/i2pd.conf
+	install -Dm0644 $SRC/$name-$version/docs/tunnels.conf $PKG/${_conf_dest}/tunnels.conf
+	install -Dm0644 $SRC/$name-$version/docs/subscriptions.txt $PKG/${_conf_dest}/subscriptions.txt
+	install -d -m0750 $PKG/${_home_dest}
+	ln -s /${_conf_dest}/i2pd.conf $PKG/${_home_dest}/i2pd.conf
+	ln -s /${_conf_dest}/tunnels.conf $PKG/${_home_dest}/tunnels.conf
+	ln -s /${_conf_dest}/subscriptions.txt $PKG/${_home_dest}/subscriptions.txt
+
+	cd $SRC/$name-$version/contrib
+	_dest="$PKG/${_share_dest}/${name}"
+	find ./certificates -type d -exec install -d {} ${_dest}/{} \;
+	find ./certificates -type f -exec install -Dm644 {} ${_dest}/{} \;
+	ln -s /${_share_dest}/${name}/certificates $PKG/${_home_dest}/certificates
+
+	# license
+	install -Dm644 $SRC/$name-$version/LICENSE "$PKG/${_share_dest}/licenses/${name}/LICENSE"
+
+	# docs
+	_dest="$PKG/${_share_dest}/doc/${name}"
+	install -Dm644 $SRC/$name-$version/README.md "${_dest}/README.md"
+	install -Dm644 $SRC/$name-$version/docs/configuration.md "${_dest}/configuration.md"
+	install -Dm644 $SRC/$name-$version/docs/family.md "${_dest}/family.md"
+	install -Dm644 $SRC/$name-$version/docs/config_opts_after_2.3.0.md "${_dest}/config_opts_after_2.3.0.md"
+
+	# remove src folder
+	rm -r "$PKG/usr/src"
+
+	#man
+	install -Dm644 $SRC/$name-$version/debian/i2pd.1 "$PKG/${_share_dest}/man/man1/i2pd.1"
+
+	chmod -R o= $PKG/${_home_dest}
+}
