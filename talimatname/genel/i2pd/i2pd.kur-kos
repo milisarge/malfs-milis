@@ -1,0 +1,2 @@
+mkdir -p ~/.i2pd
+cp -r  /usr/share/i2pd/certificates ~/.i2pd/certificates

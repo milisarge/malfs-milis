@@ -1,4 +1,4 @@
-# Description: Simplified C++ implementation of I2P client
+# Description: I2P sistemi c++
 # URL: https://github.com/PurpleI2P/i2pd
 # Packager: milisarge
 # Depends on: cmake boost miniupnpc websocketpp
@@ -6,7 +6,9 @@
 name=i2pd
 version=2.11.0
 release=1
-source=(https://github.com/PurpleI2P/${name}/archive/${version}.tar.gz)
+source=(https://github.com/PurpleI2P/${name}/archive/${version}.tar.gz
+		i2pd.conf
+		tunnels.conf)
 
 build() {
 	cd $SRC/$name-$version
@@ -24,8 +26,8 @@ build() {
 
 	cd build
 	make DESTDIR=$PKG install
-	install -Dm0644 $SRC/$name-$version/docs/i2pd.conf $PKG/${_conf_dest}/i2pd.conf
-	install -Dm0644 $SRC/$name-$version/docs/tunnels.conf $PKG/${_conf_dest}/tunnels.conf
+	install -Dm0644 $SRC/i2pd.conf $PKG/${_conf_dest}/i2pd.conf
+	install -Dm0644 $SRC/tunnels.conf $PKG/${_conf_dest}/tunnels.conf
 	install -Dm0644 $SRC/$name-$version/docs/subscriptions.txt $PKG/${_conf_dest}/subscriptions.txt
 	install -d -m0750 $PKG/${_home_dest}
 	ln -s /${_conf_dest}/i2pd.conf $PKG/${_home_dest}/i2pd.conf
