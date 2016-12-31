@@ -1,2 +1,5 @@
+rm -r ~/.i2pd
 mkdir -p ~/.i2pd
 cp -r  /usr/share/i2pd/certificates ~/.i2pd/certificates
+cp  /etc/i2pd/i2pd.conf ~/.i2pd/
+cp  /etc/i2pd/tunnels.conf ~/.i2pd/
