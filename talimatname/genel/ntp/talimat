@@ -1,20 +1,16 @@
 # Description: Client and server to keep the time synchronized between various computers over a network.
 # URL: http://www.ntp.org/ 
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
-# Depends on: wget
-run=(wget)
+# Packagers: milisarge
+# Depends on:
+
 name=ntp
 version=4.2.8p5
 release=1
 
-source=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz
-	)
+source=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz)
 
 
 build() {
-source /etc/blfs-bootscripts
-wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd $name-$version
 ./configure --prefix=/usr \
@@ -35,10 +31,10 @@ mkdir -p $PKG/etc
 cat > $PKG/etc/ntp.conf << "EOF"
 
 # Europe
-server 0.fr.pool.ntp.org
-server 1.fr.pool.ntp.org
-server 2.fr.pool.ntp.org
-server 3.fr.pool.ntp.org
+server 0.tr.pool.ntp.org
+server 1.tr.pool.ntp.org
+server 2.tr.pool.ntp.org
+server 3.tr.pool.ntp.org
 server 0.europe.pool.ntp.org
 
 
@@ -68,6 +64,6 @@ restrict 127.0.0.1
 restrict ::1
 EOF
 # service
-cd ../$scripts-$scriptsversion
-make DESTDIR=$PKG install-ntpd
+
+make DESTDIR=$PKG install
 }
