@@ -1,13 +1,13 @@
 # Description: Birden fazla iso dosyasini usb bellege yazdirma progu
 # URL: https://multibootusb.org
 # Packager: yasarciv67@gmail.com
-# Depends on: mtools parted python3-qt5 dbus-python
+# Depends on: mtools parted python3-qt5 dbus-python python3-pip
 
 name=multibootusb
 version=8.4.0
 release=1
 
-source=(https://github.com/mbusb/$name/archive/$name-$version.tar.gz)
+source=(https://github.com/mbusb/$name/archive/v$version.tar.gz)
 
 build() {
 	cd $name-$version
