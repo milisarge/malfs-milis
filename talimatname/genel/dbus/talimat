@@ -1,6 +1,6 @@
 # Description: Freedesktop.org message bus system
 # URL: http://www.freedesktop.org/wiki/Software/dbus/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: expat xorg-libx11 xorg-libsm xorg-libice 
 
 name=dbus
@@ -12,7 +12,7 @@ source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
 
 build() {
 	source /etc/blfs-bootscripts
-	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+	wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/$scripts-$scriptsversion.tar.bz2
 	tar xvf $scripts-$scriptsversion.tar.bz2
 
 	cd $name-$version
