@@ -6,7 +6,7 @@
 name=xlockmore
 version=5.49
 release=1
-source=(http://sillycycle.com/xlock/xlockmore-$version.tar.xz)
+source=(http://sillycycle.com/xlock/recent-releases/xlockmore-$version.tar.xz)
 
 build(){
   cd $name-$version
