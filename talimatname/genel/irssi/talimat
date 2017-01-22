@@ -1,13 +1,13 @@
 # Description: Irssi is a terminal based IRC client for UNIX systems.
 # URL: http://irssi.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: glib 
-run=( perl )
+
 name=irssi
-version=0.8.16
+version=0.8.20
 release=1
 
-source=(http://irssi.org/files/$name-$version.tar.bz2)
+source=(https://github.com/irssi-import/irssi/releases/download/$version/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
