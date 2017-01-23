@@ -1,0 +1,18 @@
+# Description:  MATE için xscreensaver'dan ekran koruyucularını etkinleştir.
+# URL: http://www.jwz.org/xscreensaver/
+# Packager: yasarciv
+# Depends on: xscreensaver
+
+name=mate-screensaver-hacks
+version=5.26
+release=1
+source=(migrate-xscreensaver-config.sh
+        xscreensaver-config.xsl LICENSE)
+
+build() {
+mkdir -p ${PKG}/usr/share/applications/screensavers/
+    cd ${PKG}/usr/share/applications/screensavers/
+    sh $SRC/migrate-xscreensaver-config.sh /usr/share/xscreensaver/config/*.xml
+    rm ${PKG}/usr/share/applications/screensavers/popsquares.desktop
+    install -D -m644 ${SRC}/LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

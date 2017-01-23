@@ -1,0 +1,23 @@
+# Description: MATE medya araçları (GStreamer)
+# URL:  http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: gobject-introspection gtk2 libcanberra libunique1 libxml2 mate-desktop mate-libmixer marco
+
+name=mate-media
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --libexecdir=/usr/lib/${name} \
+        --localstatedir=/var \
+        --with-gtk=2.0 \
+        --disable-static
+    make
+make 	
+make DESTDIR=$PKG install 
+}

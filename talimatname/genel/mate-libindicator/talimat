@@ -1,0 +1,29 @@
+# Description: Tüm göstergelerin kullanmak istediği bir dizi sembol ve kolaylık fonksiyonu. 
+# URL: http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: gtk2
+
+name=mate-libindicator
+version=12.10.1
+release=1
+source=(http://launchpad.net/libindicator/${version%.*}/$version/+download/libindicator-$version.tar.gz)
+
+build() {
+sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i libindicator-${version}/libindicator/Makefile.{am,in}
+sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i libindicator-${version}/configure
+sed 's/LIBM="-lmw"/LIBM=" -lmw"/g' -i libindicator-${version}/configure
+sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i libindicator-${version}/configure
+sed 's/LIBS="-lm  $LIBS"/LIBS=" -lm  $LIBS"/g' -i libindicator-${version}/configure
+sed 's/LIBS="-lmw  $LIBS"/LIBS=" -lmw  $LIBS"/g' -i libindicator-${version}/configure
+mkdir -p build-gtk2
+cd build-gtk2
+			 ../libindicator-${version}/configure \
+			   --prefix=/usr \
+              --sysconfdir=/etc \
+			  --localstatedir=/var \
+			  --libexecdir=/usr/lib/$name \
+              --disable-static \
+              --with-gtk=2
+make
+make DESTDIR=$PKG install
+}

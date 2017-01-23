@@ -1,0 +1,29 @@
+# Description: Basit bir pdf belge görüntüleyici
+# URL: http://matsusoft.com.ar/projects/mate
+# Packager: milisarge yasarciv
+# Depends on: caja dconf djvulibre gtk2 libsecret libspectre mate-desktop mate-icon-theme poppler-glib poppler
+
+name=atril
+version=1.16.1
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure \
+        --prefix=/usr \
+        --libexecdir=/usr/lib/${name} \
+        --with-gtk=2.0 \
+        --enable-gtk-doc \
+        --enable-djvu \
+        --enable-dvi \
+        --enable-epub \
+        --enable-t1lib \
+        --enable-pixbuf \
+        --enable-comics \
+        --enable-xps \
+        --enable-introspection \
+        --disable-static
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,18 @@
+# Description: C++ interfaces for GTK+ and GNOME
+# URL: http://www.gtkmm.org/
+# Packager: yasarciv milisarge
+# Depends on: gtk3 glibmm pangomm atkmm
+
+name=gtkmm3
+version=3.18.1
+release=1
+source=(http://download.gnome.org/sources/gtkmm/${version:0:4}/gtkmm-$version.tar.xz)
+
+build() {
+	cd gtkmm-$version
+	./configure --prefix=/usr
+	make -j1
+	make -j1 DESTDIR=$PKG install
+
+	rm -r $PKG/usr/share/doc
+}

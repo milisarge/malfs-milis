@@ -1,0 +1,23 @@
+# Description: Çeşitli MATE modülleri için ortak API'li kitaplık
+# URL:  http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: dconf gtk2 startup-notification
+
+name=mate-desktop
+version=1.16.1
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/${name}-${version}.tar.xz)
+
+build() {
+cd $name-$version
+./configure \
+        --prefix=/usr \
+        --with-gtk=2.0 \
+        --enable-mpaste \
+        --disable-static \
+        --disable-schemas-compile \
+        --disable-desktop-docs \
+        --enable-gtk-doc
+make
+make DESTDIR=$PKG install
+}

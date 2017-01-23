@@ -1,0 +1,22 @@
+# Description: MATE paneli
+# URL:  http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: caja gobject-introspection gtk2 libcanberra xorg-libice librsvg libsoup xorg-libsm xorg-libxau libwnck marco mate-desktop mate-libweather mate-menus mate-session-manager
+
+name=mate-panel
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+        --libexecdir=/usr/lib/${name} \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --with-gtk=2.0 \
+        --enable-introspection \
+        --disable-static
+make
+make DESTDIR=$PKG install
+}

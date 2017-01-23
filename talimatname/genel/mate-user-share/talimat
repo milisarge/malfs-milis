@@ -1,0 +1,23 @@
+# Description: MATE için WebDAV üzerinden kullanıcı düzeyinde ortak dosya paylaşımı
+# URL: http://www.jwz.org/xscreensaver/
+# Packager: yasarciv
+# Depends on: apache bluez caja dconf gdk-pixbuf gtk2 libnotify libcanberra libunique1 mod-dnssd 
+
+name=mate-user-share
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure   \
+        --prefix=/usr \
+        --libexec=/usr/lib/${name} \
+        --sysconfdir=/etc \
+        --disable-static \
+        --disable-scrollkeeper \
+        --disable-bluetooth
+make
+make DESTDIR=$PKG install
+rm -f ${PKG}/usr/share/mate-user-share/dav_user_2.0.conf
+}

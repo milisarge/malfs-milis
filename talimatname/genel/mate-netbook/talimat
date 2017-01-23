@@ -1,0 +1,21 @@
+# Description: Basit bir pencere yönetim aracı (GTK2 sürümü)
+# URL: http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: gtk2 libwnck libfakekey libunique1 mate-panel
+
+name=mate-netbook
+version=1.16.1
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure \
+        --prefix=/usr \
+        --libexec=/usr/lib/${name} \
+        --sysconfdir=/etc \
+        --with-gtk=2.0 \
+        --disable-static
+make
+make DESTDIR=$PKG install
+}

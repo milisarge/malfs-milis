@@ -1,0 +1,17 @@
+# Description: Applet MATE
+# URL: http://matsusoft.com.ar/projects/mate
+# Packager: milisarge yasarciv
+# Depends on: gtk2 mate-libindicator mate-panel
+
+name=mate-indicator-applet
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+        --libexec=/usr/lib/${name} \
+        --disable-static
+make
+make DESTDIR=$PKG install
+}

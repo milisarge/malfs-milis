@@ -1,0 +1,21 @@
+# Description: MATE için bir resim görüntüleme ve kataloglama programı (GTK2 sürümü)
+# URL: http://matsusoft.com.ar/projects/mate
+# Packager: milisarge yasarciv
+# Depends on: exempi gtk2 gtk-update-icon-cache libexif mate-desktop mate-icon-theme python-gobject2 python-gtk
+
+name=eom
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+ ./configure \
+        --prefix=/usr \
+        --localstatedir=/var \
+        --with-gtk=2.0 \
+        --with-librsvg \
+        --enable-python
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,16 @@
+# Description: MATE için arkaplan resim ve veri dosyaları
+# URL:  http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: intltool
+
+name=mate-backgrounds
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+}

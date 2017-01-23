@@ -1,0 +1,17 @@
+# Description: MATE için Faenza ikon teması
+# URL: http://matsusoft.com.ar/projects/mate
+# Packager: milisarge yasarciv
+# Depends on: mate-common gtk-update-icon-cache
+
+name=mate-icon-theme-faenza
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./autogen.sh --prefix=/usr 
+make
+make DESTDIR=$PKG install
+rm -f  $PKG/usr/share/icons/matefaenza/icon-theme.cache
+}

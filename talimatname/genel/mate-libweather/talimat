@@ -1,0 +1,24 @@
+# Description: Internet'ten hava durumuna erişim sağlar.
+# URL:  http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: dconf gtk2 libsoup
+
+name=mate-libweather
+version=1.16.1
+release=1
+_name=libmateweather
+source=(http://pub.mate-desktop.org/releases/${version%.*}/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+	./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --with-gtk=2.0 \
+        --disable-static \
+        --disable-python \
+        --enable-locations-compression
+make
+make DESTDIR=$PKG install
+}

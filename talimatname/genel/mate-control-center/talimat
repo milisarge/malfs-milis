@@ -1,0 +1,23 @@
+# Description: MATE için Kontrol Merkezi
+# URL:  http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: murrine caja dconf desktop-file-utils gsettings-desktop-schemas gtk2 libgtop librsvg libunique1 xorg-libxscrnsaver xorg-libxt mate-desktop mate-icon-theme mate-libkbd mate-menus marco mate-settings-daemon
+
+name=mate-control-center
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure  --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--disable-static \
+--disable-scrollkeeper \
+--enable-aboutme \
+--disable-update-mimedb
+make
+make DESTDIR=$PKG install
+rm -f  $PKG/usr/share/applications/mimeinfo.cache
+}

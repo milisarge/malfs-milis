@@ -1,0 +1,22 @@
+# Description: MATE için pencere yöneticisi (GTK2 version)
+# URL: http://matsusoft.com.ar/projects/mate
+# Packager: yasarciv
+# Depends on: mate-desktop gtk2 libcanberra libgtop startup-notification zenity
+
+name=marco
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --with-gtk=2.0 \
+        --enable-startup-notification \
+        --disable-static
+make
+make DESTDIR=$PKG install
+}

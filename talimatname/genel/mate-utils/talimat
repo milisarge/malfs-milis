@@ -1,0 +1,21 @@
+# Description: Disk kullanımını görüntülemek için ortak MATE yardımcı programları.
+# URL: http://www.jwz.org/xscreensaver/
+# Packager: yasarciv
+# Depends on: gtk2 mate-panel libgtop
+
+name=mate-utils
+version=1.16.0
+release=1
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure \
+        --prefix=/usr \
+        --libexecdir=/usr/lib/${name} \
+        --with-gtk=2.0 \
+        --sysconfdir=/etc \
+        --disable-static
+make
+make DESTDIR=$PKG install
+}
