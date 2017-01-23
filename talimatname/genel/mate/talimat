@@ -1,7 +1,7 @@
 # Description: sistem
 # URL:  sistem
 # Packager: yasarciv
-# Depends on: xorg gtkmm3 caja marco mate-backgrounds mate-common mate-control-center mate-desktop mate-icon-theme mate-libkbd mate-libmixer mate-libweather mate-media mate-menus mate-notification-daemon mate-panel mate-polkit mate-power-manager mate-screensaver mate-session-manager mate-settings-daemon mate-system-monitor mate-themes atril caja-extensions engrampa eom mate-applets mate-icon-theme-faenza mate-indicator-applet mate-libindicator mate-netbook mate-screensaver-hacks mate-sensor-applets mate-terminal mate-user-guide mate-user-share mate-utils mozo pluma python-caja
+# Depends on: xorg gtkmm3 caja marco mate-backgrounds mate-common mate-control-center mate-desktop mate-icon-theme mate-libkbd mate-libmixer mate-libweather mate-media mate-menus mate-notification-daemon mate-panel mate-polkit mate-power-manager mate-screensaver mate-session-manager mate-settings-daemon mate-system-monitor mate-themes atril caja-extensions engrampa eom mate-applets mate-icon-theme-faenza mate-indicator-applet mate-libindicator mate-netbook mate-screensaver-hacks mate-sensors-applet mate-terminal mate-user-guide mate-user-share mate-utils mozo pluma python-caja
 
 name=mate-sistem
 version=1
