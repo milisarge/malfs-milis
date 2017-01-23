@@ -1248,7 +1248,7 @@ if [ `id -u` = 0 ] ; then
 					ryaz 31 "paket sunucuda yok!"
 				fi
 			else
-				ryaz 31 "paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
+				ryaz 31 "$2 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 			fi
 		else
 			ryaz 32 "$2 paketi zaten kurulu!"
