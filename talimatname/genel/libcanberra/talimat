@@ -1,13 +1,12 @@
 # Description: implementation of the XDG sound theme and name specifications.
 # URL: http://0pointer.de/lennart/projects/libcanberra/
-# Maintainer: Danny Rawlins, crux at romster dot me
-# Packager: Alan Mizrahi, alan at mizrahi dot com dot ve
+# Packager: milisarge
 # Depends on: libvorbis
-# Optional: pulseaudio gstreamer alsa-lib
+# Optional: pulseaudio gstreamer alsa-lib gtk3
 
 name=libcanberra
 version=0.30
-release=1
+release=2
 source=(http://0pointer.de/lennart/projects/$name/$name-$version.tar.xz)
 
 build() {
@@ -17,7 +16,6 @@ build() {
 		--prefix=/usr \
 		--disable-gtk-doc \
 		--disable-gtk-doc-html \
-		--disable-gtk3 \
 		--disable-oss
 	
 	make
