@@ -1,0 +1,1 @@
+xdg-user-dirs-update
