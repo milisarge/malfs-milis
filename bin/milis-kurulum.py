@@ -12,7 +12,8 @@ os.system("mps -GG")
 if os.path.exists("/usr/bin/pip3") is False:
 	os.system("mps -G")
 	time.sleep(3)
-	os.system("mps kur python3-pip")
+	os.system("mps kur python3-pip && pip3 install 
+pythondialog")
 else:
 	os.system("pip3 install pythondialog")
 if os.path.exists("/usr/bin/acp") is False:
