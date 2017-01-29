@@ -1,7 +1,7 @@
-# Description: Midori is a lightweight web browser that uses WebKitGTK+.
+# Description: WebKitGTK+ kullanan hafif tarayıcı
 # URL: http://www.twotoasts.de
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
-# Depends on: cmake gcr gtk3 webkitgtk3 vala libnotify librsvg libunique1 desktop-file-utils libzeitgeist hicolor-icon-theme gstreamer1-plugins-libav gstreamer1-plugins-base gstreamer1-plugins-good
+# Packager: milisarge
+# Depends on: cmake gcr gtk3 webkitgtk2 webkitgtk3 vala libnotify librsvg libunique1 desktop-file-utils libzeitgeist hicolor-icon-theme gstreamer1-plugins-libav gstreamer1-plugins-base gstreamer1-plugins-good
 
 run=(desktop-file-utils gtk-update-icon-cache hicolor-icon-theme)
 
