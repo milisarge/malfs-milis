@@ -1,7 +1,8 @@
+# Description:  özellikle genişletilebilir,ilişkili gerçek zamanlı metin editörü
 # URL:         	https://www.gnu.org/software/emacs/
-# Packager:		berlius at nutyx dot com
+# Packager:		milisarge
 # Depends on:  	gtk2 desktop-file-utils libjpeg-turbo giflib
-description="An extensible, customizable, self-documenting real-time display editor."
+
 name=emacs
 version=24.5
 release=1
