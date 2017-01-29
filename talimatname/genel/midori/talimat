@@ -3,8 +3,6 @@
 # Packager: milisarge
 # Depends on: cmake gcr gtk3 webkitgtk2 webkitgtk3 vala libnotify librsvg libunique1 desktop-file-utils libzeitgeist hicolor-icon-theme gstreamer1-plugins-libav gstreamer1-plugins-base gstreamer1-plugins-good
 
-run=(desktop-file-utils gtk-update-icon-cache hicolor-icon-theme)
-
 name=midori
 version=0.5.11
 release=1
