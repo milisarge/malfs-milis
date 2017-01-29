@@ -5,13 +5,14 @@
 
 name=bluez
 version=5.37
-release=1
+release=2
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-obexd_without_systemd-1.patch)
+	$name-$version-obexd_without_systemd-1.patch)
 build() {
+
 source /etc/blfs-bootscripts
-wget   http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
+wget    http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd $name-$version
@@ -41,7 +42,7 @@ make DESTDIR=$PKG install
 
 install -v -dm755 $PKG/{etc/bluetooth,usr/sbin}
 
-ln -svf ../libexec/bluetooth/bluetoothd $PKG/usr/sbin
+ln -svf /lib/bluetooth/bluetoothd $PKG/usr/sbin/
 
 
 cat > $PKG/etc/bluetooth/rfcomm.conf << "EOF"
