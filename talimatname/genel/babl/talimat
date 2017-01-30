@@ -1,12 +1,11 @@
 # Description: Dinamik resim format dönüşüm kütüphanesi
 # URL: http://gegl.org/babl
-# Maintainer: - http://gegl.org/babl/#Authors
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=babl
 version=0.1.14
 release=1
-
 source=(http://download.gimp.org/pub/$name/0.1/$name-$version.tar.bz2)
 
 build() {

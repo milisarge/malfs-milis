@@ -1,7 +1,7 @@
 # Description: GNU CLisp is an ANSI Common Lisp Implementation.
-# URL:         http://clisp.cons.org/
-# Packager:    berlius at nutyx dot com
-# Depends on:  ffcall libsigsegv
+# URL: http://clisp.cons.org/
+# Packager: milisarge
+# Depends on: ffcall libsigsegv
 
 name=clisp
 version=2.49
@@ -13,7 +13,7 @@ build() {
 
   cd $name-$version
   patch -Np1 -i ../clisp-gcc5.patch
-  
+
   sed -i '/socket/d' tests/tests.lisp
 
   ./configure --prefix=/usr --with-readline --with-ffcall src

@@ -1,12 +1,11 @@
-# Description: Lightweight system monitor for X
+# Description: X Pencere Sistemi icin hafif bir sistem monitoru
 # URL: http://conky.sourceforge.net
-# Packager: geantbrun at nutyx dot org, tnut at nutyx dot org
+# Packager: dei
 # Depends on: wireless-tools glib lua tolua++ cairo curl imlib2 xorg-libxdamage xorg-libxft
 
 name=conky
 version=1.9.0
 release=2
-
 source=(http://freefr.dl.sourceforge.net/sourceforge/conky/$name-$version.tar.gz)
 
 build() {
@@ -24,4 +23,3 @@ CPPFLAGS="${CXXFLAGS}" LIBS="${LDFLAGS}" LUA_LIBS="-llua5.1" LUA_CFLAGS="-I/usr/
 make
 make DESTDIR=$PKG install
 }
-  

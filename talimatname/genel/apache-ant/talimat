@@ -1,17 +1,15 @@
 # Description: Ant paketi Java tabanlı bir inşa aracıdır.
 # URL: http://ant.apache.org/
-# Maintainer: - http://ant.apache.org/contributors.html
-# Packager: pierre at nutyx dot org
-# Depends on: glib openjdk 
+# Packager: milisarge
+# Depends on: glib openjdk
 
 name=apache-ant
 version=1.9.6
 release=1
-
-source=(http://archive.apache.org/dist/ant/source/$name-$version-src.tar.bz2 
+source=(http://archive.apache.org/dist/ant/source/$name-$version-src.tar.bz2
 	http://hamcrest.googlecode.com/files/hamcrest-1.3.tgz
 	http://anduin.linuxfromscratch.org/sources/other/junit-4.11.jar)
-	
+
 build() {
 cd $name-$version
 

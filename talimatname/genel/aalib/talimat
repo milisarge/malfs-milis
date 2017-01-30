@@ -1,12 +1,11 @@
 # Description: AAlib taşınabilir bir ascii art kütüphanesidir.
 # URL: http://aa-project.sourceforge.net/aalib
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libx11 
 
 name=aalib
 version=1.4rc5
 release=2
-
 source=(http://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz)
 
 build() {

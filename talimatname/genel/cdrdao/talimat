@@ -6,7 +6,6 @@
 name=cdrdao
 version=1.2.3
 release=1
-
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 \
 	     http://downloads.nutyx.org/files/patchs/$name/cdrdao-1.2.3-stat.patch)
 
@@ -23,4 +22,3 @@ build() {
 	make
     make DESTDIR=$PKG install
 }
-

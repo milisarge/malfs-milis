@@ -1,11 +1,11 @@
 # Description: Apache Portable Runtime Utility Library
 # URL: http://apr.apache.org/
-# Packager: jmilot at nutyx dot org
-# Depends on: apr expat 
+# Packager: milisarge
+# Depends on: apr expat
+
 name=apr-util
 version=1.5.4
 release=1
-
 source=(http://archive.apache.org/dist/apr/$name-$version.tar.bz2)
 
 build() {

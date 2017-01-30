@@ -1,7 +1,7 @@
 # Description: unit testing framework for C
 # URL:	http://check.sourceforge.net/
-# Maintainer: Branden Archer <b dot m dot archer4 at gmail dot com>
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=check
 version=0.10.0

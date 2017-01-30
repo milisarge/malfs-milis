@@ -1,7 +1,7 @@
 # Description: C ve C++ için garbage collection ve bellek taşması (memory leak) dedektörü.
-# URL:         http://www.hboehm.info/
-# Packager:    berlius at nutyx dot com
-# Depends on:  
+# URL: http://www.hboehm.info/
+# Packager: milisarge
+# Depends on:
 
 name=boehm-gc
 version=7.4.2
@@ -12,7 +12,7 @@ source=(http://www.hboehm.info/gc/gc_source/gc-${version}.tar.gz
 build () {
 
     cd gc-$version
-    
+
     ln -s $SRC/libatomic_ops-libatomic_ops-${version//\./_} libatomic_ops
 
     ./configure \
@@ -20,12 +20,10 @@ build () {
         --enable-threads=pthreads \
         --enable-static \
         --enable-shared
-        
+
     make
     make DESTDIR=$PKG install
 
     install -D -m 644 doc/gc.man $PKG/usr/man/man3/gc.3
 
 }
-
-

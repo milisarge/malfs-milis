@@ -1,13 +1,12 @@
 # Description: GTK integration for libcolord
 # URL: http://www.freedesktop.org/software/colord/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: colord,gtk3,gobject-introspection,vala
 
 
 name=colord-gtk
 version=0.1.26
 release=1
-
 source=(http://www.freedesktop.org/software/${name%-*}/releases/$name-$version.tar.xz)
 
 build() {

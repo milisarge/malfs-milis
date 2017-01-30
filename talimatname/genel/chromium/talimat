@@ -1,16 +1,15 @@
+# Description: The Open-source project behind Google Chrome, a safer, faster, and more stable browser
 # URL: http://www.chromium.org/Home
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge
 # Depends on: atk nss ninja pciutils gperf yasm xorg-mesa libgnome-keyring elfutils subversion gtk2 dbus-glib nss alsa-lib xdg-utils bzip2 libevent libgcrypt dejavu-ttf opus snappy dbus desktop-file-utils hicolor-icon-theme flac libxml2 pulseaudio xorg-libxscrnsaver xorg-libxtst libexif
 
-description="The Open-source project behind Google Chrome, a safer, faster, and more stable browser"
 name=chromium
 version=48.0.2564.103
 release=1
-
 source=(http://commondatastorage.googleapis.com/chromium-browser-official/$name-$version.tar.xz
         chromium-widevine.patch
-        chromium.desktop 
-        chromium.default 
+        chromium.desktop
+        chromium.default
         chromium.sh
 	chromium-use-non-versioned-icu-namespace.patch
         chromium-fix-print-preview-on-en_GB-locale.patch)
@@ -27,7 +26,7 @@ build() {
 
 	patch -Np1 -i ../chromium-use-non-versioned-icu-namespace.patch
 	patch -Np1 -i ../chromium-fix-print-preview-on-en_GB-locale.patch
-  
+
         sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch | patch -Np1
 	find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
 	find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -84,8 +83,8 @@ build() {
 	build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
 	build/gyp_chromium --depth=. "${_chromium_conf[@]}"
 
-	ninja -C out/Release chrome 
-        ninja -C out/Release chrome_sandbox 
+	ninja -C out/Release chrome
+        ninja -C out/Release chrome_sandbox
         ninja -C out/Release chromedriver
 
 	mkdir -pv $PKG/opt/chromium
@@ -95,7 +94,7 @@ build() {
 
 	cp out/Release/{*.pak,*.bin} $PKG/opt/chromium/
 	cp -a out/Release/locales $PKG/opt/chromium/
-	
+
 	install -Dm644 $SRC/chromium.default $PKG/etc/chromium/default
 
 	find "$PKG/opt/chromium/" -name '*.d' -type f -delete
@@ -109,7 +108,7 @@ build() {
 		install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
 		        $PKG/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
         done
-  
+
         for size in 16 32; do
                 install -Dm644 chrome/app/theme/default_100_percent/chromium/product_logo_$size.png \
                         $PKG/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
@@ -119,5 +118,5 @@ build() {
         chmod +x $PKG/usr/bin/chromium
 
         install -Dm644 LICENSE $PKG/opt/chromium/share/licenses/chromium/LICENSE
-  
+
 }

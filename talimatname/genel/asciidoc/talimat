@@ -1,11 +1,11 @@
 # Description: Kısa metinler, dokümanlar ve  UNIX man sayfaları için belge formatı. 
 # URL: http://www.methods.co.nz/asciidoc/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
-# Depends on: docbook-xsl libxslt python 
+# Packager: milisarge
+# Depends on: docbook-xsl libxslt python
+
 name=asciidoc
 version=8.6.9
 release=1
-
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 build(){

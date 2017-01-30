@@ -1,6 +1,7 @@
-# Description : Google Chrome's Pepper Flash plugin for Chromium 
+# Description : Google Chrome's Pepper Flash plugin for Chromium
 # URL : http://www.google.com/chrome
-# Packager : pierre at nutyx dot com
+# Packager : milisarge
+# Depends on:
 
 name=chromium-pepper-flash
 version=20.0.0.228
@@ -17,4 +18,3 @@ build() {
  install -m644 $SRC/{libpepflashplayer.so,manifest.json} $PKG/usr/lib/PepperFlash
  ln -sv ../../usr/lib/PepperFlash $PKG/opt/chromium/lib/PepperFlash
 }
-

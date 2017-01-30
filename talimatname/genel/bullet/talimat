@@ -1,6 +1,6 @@
 # Description: Continuous Collision Detection and Physics Library.
 # URL: http://www.bulletphysics.com/
-# Maintainer: NuTyX core team
+# Packager: milisarge
 # Depends on: cmake freeglut
 
 name=bullet

@@ -1,13 +1,13 @@
-# Description: A GTK+ based e-mail client.
+# Description: A GTK+ temelli e-mail client
 # URL: http://www.claws-mail.org
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge
 # Depends on: bogofilter,enchant,aspell,libetpan,gnupg,gpgme,gnutls,dbus,gtk2,libtasn1,enchant
 
 name=claws-mail
 version=3.11.1
 release=3
-
 source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
+
 build() {
 cd $name-$version
 ./configure --prefix=/usr --mandir=/usr/share/man \

@@ -1,12 +1,11 @@
-# Description: The BIND DNS sunucu, nslookup, dig and host yazılımlarını içeren paket. 
-# URL: http://www.isc.org/downloads/bind/ 
-# Packager: tnut at nutyx dot org
-# Depends on: kerberos libxml2 
+# Description: The BIND DNS sunucu, nslookup, dig and host yazılımlarını içeren paket.
+# URL: http://www.isc.org/downloads/bind/
+# Packager: milisarge
+# Depends on: kerberos libxml2
 
 name=bind
 version=9.10.3.p2
 release=1
-
 source=(ftp://ftp.isc.org/isc/bind9/9.10.3-P3/bind-9.10.3-P2.tar.gz)
 
 build(){

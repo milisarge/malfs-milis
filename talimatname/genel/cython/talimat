@@ -8,7 +8,6 @@ version=0.24
 release=2
 source=(https://github.com/cython/cython/archive/$version.tar.gz)
 
-
 build() {
 	cd $name-$version
 	/usr/bin/python setup.py install --root $PKG

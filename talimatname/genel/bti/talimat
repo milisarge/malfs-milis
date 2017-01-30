@@ -1,11 +1,11 @@
 # Description: bti (twitter/identi.ca konsol istemcisi)
 # URL: http://gregkh.github.com/bti/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
-# Depends on: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre 
+# Packager: milisarge
+# Depends on: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre
+
 name=bti
 version=034
 release=1
-
 source=(https://www.kernel.org/pub/software/web/bti/bti-$version.tar.xz)
 
 build(){

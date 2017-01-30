@@ -1,9 +1,7 @@
-# Description: Adwaita ikon teması. 
+# Description: Adwaita ikon teması.
 # URL: http://www.gnome.org/
-# Maintainer: http://linuxfromscratch.org/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: intltool gtk-update-icon-cache hicolor-icon-theme icon-naming-utils librsvg
-run=(gtk-update-icon-cache librsvg hicolor-icon-theme)
 
 name=adwaita-icon-theme
 version=3.18.0

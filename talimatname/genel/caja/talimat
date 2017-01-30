@@ -1,14 +1,7 @@
 # Description: MATE için dosya yöneticisi (GTK2 versiyon)
 # URL: http://matsusoft.com.ar/projects/mate
-# Packagers: yasarciv
+# Packager: yasarciv
 # Depends on: exempi mate-desktop pango gtk2 libexif libxml2 libunique1 desktop-file-utils
-
-
-# Depends on: 
-
-description=""
-url="http://matsusoft.com.ar/projects/mate"
-packager="yasarciv"
 
 name=caja
 version=1.16.1

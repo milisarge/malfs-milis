@@ -6,7 +6,6 @@
 name=clucene
 version=2.3.3.4
 release=1
-
 source=(http://downloads.sourceforge.net/clucene/$name/$name-core-$version.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-contribs_lib-1.patch)
 
@@ -20,4 +19,3 @@ build() {
         make
         make DESTDIR=$PKG install
 }
-

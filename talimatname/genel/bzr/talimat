@@ -1,11 +1,11 @@
 # Description: Bağımsız (decentralized) revizyon kontrol sistemi. (Bazaar)
-# URL: http://bazaar.canonical.com/en/ 
+# URL: http://bazaar.canonical.com/en/
 # Packager: milisarge@gmail.com
-# Depends on: python python-paramiko 
+# Depends on: python python-paramiko
+
 name=bzr
 version=2.6.0
 release=1
-
 source=(
 http://launchpad.net/bzr/${version%.*}/$version/+download/bzr-$version.tar.gz)
 
