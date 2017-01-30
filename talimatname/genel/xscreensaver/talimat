@@ -1,12 +1,11 @@
-# Description: Screen saver and locker for the X Window System
+# Description: X Pencere Yoneticisi icin ekran koruyucu
 # URL: http://www.jwz.org/xscreensaver/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: bc libglade xorg-libxmu xorg-libxt xorg-libxpm 
 
 name=xscreensaver
 version=5.34
 release=1
-
 source=(http://www.jwz.org/xscreensaver/$name-$version.tar.gz)
 
 build() {

@@ -1,14 +1,14 @@
 # Description: library graphic 3D table OpenGL
 # URL: http://www.xorg-mesa3d.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-mesa 
-_name=glu
 
+_name=glu
 name=xorg-glu
 version=9.0.0
 release=1
-
 source=(ftp://ftp.freedesktop.org/pub/mesa/${_name}/${_name}-$version.tar.bz2)
+
 build() {
 cd ${_name}-$version
 ./configure --prefix=/usr --disable-static

@@ -1,13 +1,12 @@
 # Description: clock analog for X mainly pout tester all X
 # URL: http://xorg.freedesktop.org 
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libxft xorg-server 
-_name=xclock
 
+_name=xclock
 name=xorg-xclock
 version=1.0.7
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/app/${_name}-$version.tar.bz2)
 
 build() {

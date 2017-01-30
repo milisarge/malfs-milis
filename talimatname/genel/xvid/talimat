@@ -1,12 +1,13 @@
-# Description: XviD is an open source MPEG-4 video codec
+# Description: Acik kaynak kodlu MPEG-4 kodlayici
 # URL: http://xvid.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: yasm 
+
 name=xvid
 version=1.3.3
 release=1
-
 source=( http://downloads.xvid.org/downloads/xvidcore-$version.tar.gz )
+
 build() {
 cd xvidcore/build/generic
 ./configure --prefix=/usr

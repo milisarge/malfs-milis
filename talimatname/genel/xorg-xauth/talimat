@@ -1,6 +1,6 @@
-# Description: X authority file utility
+# Description: X sahiplik dosyasi
 # URL: http://xorg.freedesktop.org
-# Maintainer: CRUX Xorg Team, xorg-ports at crux dot nu
+# Packager: milisarge
 # Depends on: xorg-server
 
 name=xorg-xauth

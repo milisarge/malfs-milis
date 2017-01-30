@@ -1,15 +1,13 @@
 # Description: fontconfig, library for access and the configuration of polices
 # URL: http://xorg-fontconfig.org/wiki/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: freetype expat libpng 
-_name=fontconfig
 
+_name=fontconfig
 name=xorg-fontconfig
 version=2.11.1
 release=1
-
 source=( http://fontconfig.org/release/${_name}-$version.tar.gz)
-
 
 build() {
 cd ${_name}-$version

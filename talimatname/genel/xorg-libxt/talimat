@@ -1,12 +1,11 @@
-# Description: library libXt for Xorg
+# Description: X.Org icin Xt kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libsm xorg-libx11 xorg-proto 
 
 name=xorg-libxt
 version=1.1.5
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXt-$version.tar.bz2)
 
 build() {

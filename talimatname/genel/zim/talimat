@@ -1,16 +1,13 @@
-# Description: A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop.
+# Description: Wiki konsepti icin tasarlanmis WYSIWYG metin editoru
 # URL: http://zim-wiki.org/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: python-gtk dejavu-ttf desktop-file-utils
 
 run=(dejavu-ttf desktop-file-utils shared-mime-info)
-
 name=zim
 version=0.60
 release=2
-
-source=(
-http://www.zim-wiki.org/downloads/$name-$version.tar.gz)
+source=(http://www.zim-wiki.org/downloads/$name-$version.tar.gz)
 
 build() {
     cd $name-$version

@@ -1,4 +1,4 @@
-# Description: Xorg Header files which allow to build against the installed X Window system.
+# Description: X11 gelistiricileri icin protokol dosyalari (headers)
 # URL: http://xorg.freedesktop.org
 # Packager: milisarge
 

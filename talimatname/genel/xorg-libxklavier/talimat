@@ -1,13 +1,12 @@
-# Description: libxklavier, library for the keyboard under X
+# Description: X ortami icin klavye kutuphanesi
 # URL:  http://www.freedesktop.org/wiki/Software/LibXklavier
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: iso-codes libxml2 xorg-libx11 glib gobject-introspection xorg-libxkbfile 
-_name=libxklavier
 
+_name=libxklavier
 name=xorg-libxklavier
 version=5.4
 release=1
-
 source=(http://pkgs.fedoraproject.org/repo/pkgs/libxklavier/${_name}-$version.tar.bz2/13af74dcb6011ecedf1e3ed122bd31fa/${_name}-$version.tar.bz2)
 
 
