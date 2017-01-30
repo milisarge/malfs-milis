@@ -1,12 +1,11 @@
-# Description: The Xorg Server is the core of the X Window system.
+# Description: X Pencere Sistemi cekirdegi
 # URL: http://xorg.freedesktop.org
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge
 # Depends on: xcb-util-keysyms libepoxy xcb-util-image xcb-util-renderutil xcb-util-wm xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
 
 name=xorg-server
 version=1.18.1
 release=1
-
 source=(http://www.x.org/releases/individual/xserver/$name-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/downloads/xorg-server/$name-$version-add_prime_support-1.patch
 	http://www.linuxfromscratch.org/patches/downloads/xorg-server/$name-$version-wayland_190-1.patch)

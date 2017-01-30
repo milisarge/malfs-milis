@@ -1,12 +1,11 @@
-# Description: libx11, library for client X
+# Description: X Pencere Sistemi icin X11 kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libxcb xorg-proto xorg-xtrans 
 
 name=xorg-libx11
 version=1.6.3
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libX11-$version.tar.bz2)
 
 build() {

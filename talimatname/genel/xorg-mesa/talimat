@@ -1,4 +1,4 @@
-# Description: Mesa is an OpenGL compatible 3D graphics library.
+# Description: Acik kaynak kodlu OpenGL uyumlu grafik kutuphanesi
 # URL: http://www.xorg-mesa3d.org
 # Packagers: milisarge
 # Depends on: pkg-config libtool wayland xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage expat llvm elfutils xorg-libxshmfence 
@@ -6,7 +6,6 @@
 name=xorg-mesa
 version=12.0.3
 release=1
-
 source=(ftp://ftp.freedesktop.org/pub/mesa/${version}/mesa-$version.tar.xz
 	    http://www.linuxfromscratch.org/patches/downloads/mesa/mesa-$version-add_xdemos-1.patch
 	    https://github.com/imirkin/mesa/commit/2e6b0e24cfb0f467e8b6d6f394730442a72dcdaf.diff

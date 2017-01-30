@@ -1,7 +1,6 @@
-# Description: Stylesheets for Yelp.
+# Description: Yelp icin stil dosyalari
 # URL: http://www.gnome.org/
-# Maintainer: git.gnome.org/brownse/yelp-xsl/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: itstool libxslt intltool
 
 name=yelp-xsl

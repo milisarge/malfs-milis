@@ -1,13 +1,12 @@
-# Description: xterm is a terminal emulator for the X Window System.
+# Description: X Pencere Sistemi icin terminal emulatoru
 # URL: http://invisible-island.net/xorg-term/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-app xorg-fontconfig xorg-libxft 
-_name=xterm
 
+_name=xterm
 name=xorg-term
 version=322
 release=1
-
 source=(ftp://invisible-island.net/${_name}/${_name}-$version.tgz
 	$name.list)
 

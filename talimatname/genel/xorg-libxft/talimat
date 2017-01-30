@@ -1,11 +1,11 @@
-# Description: libXft, library X are rendering client
+# Description: X.Org icin Xft kutuphanesi
 # URL: http://xorg.freedesktop.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libxrender freetype xorg-fontconfig 
+
 name=xorg-libxft
 version=2.3.2
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXft-$version.tar.bz2)
 
 build() {

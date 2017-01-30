@@ -1,12 +1,11 @@
-# Description: xorg lib xorg - libxkbfile
+# Description: X.Org xkbfile kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-proto xorg-libx11 
 
 name=xorg-libxkbfile
 version=1.0.9
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libxkbfile-$version.tar.bz2)
 
 build() {

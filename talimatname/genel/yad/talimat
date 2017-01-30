@@ -1,4 +1,4 @@
-# Description: yad diyalog geliştirme
+# Description: shell skriptleri icin dialog penceresi araci
 # URL:  https://sourceforge.net/projects/yad-dialog/
 # Packager: milisarge
 # Depends on: gtk2
@@ -6,7 +6,6 @@
 name=yad
 version=0.35.0
 release=1
-
 source=(https://sourceforge.net/projects/yad-dialog/files/$name-$version.tar.xz)
 
 build() {

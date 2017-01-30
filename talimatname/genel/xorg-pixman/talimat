@@ -1,13 +1,12 @@
-# Description: library for the manipulation of pixels
+# Description: X.org piksel manupulasyonu icin kutuphane
 # URL: http://xorg.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libpng 
-_name=pixman
 
+_name=pixman
 name=xorg-pixman
 version=0.32.6
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$version.tar.bz2)
 
 build() {

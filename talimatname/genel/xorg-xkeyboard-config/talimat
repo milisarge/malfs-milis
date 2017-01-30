@@ -1,13 +1,12 @@
-# Description: X keyboard configuration database
+# Description: X.org icin klavye konfigurasyonu
 # URL: http://www.freedesktop.org/wiki/Software_2fXKeyboardConfig
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-app intltool 
-_name=xkeyboard-config
 
+_name=xkeyboard-config
 name=xorg-xkeyboard-config
 version=2.17
 release=1
-
 source=( http://xorg.freedesktop.org/archive/individual/data/${_name}/${_name}-$version.tar.bz2)
 
 build() {

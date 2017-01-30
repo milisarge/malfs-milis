@@ -1,12 +1,11 @@
-# Description: Library libXp, X print client library
+# Description: X.Org icin Xp kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-proto xorg-libx11 xorg-libxext
 
 name=xorg-libxp
 version=1.0.3
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXp-$version.tar.bz2)
 
 build() {

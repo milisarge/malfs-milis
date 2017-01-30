@@ -1,14 +1,12 @@
-# Description: Stickies-like notes program
+# Description: Yapiskan notlar benzeri not alma uygulamasi
 # URL: http://mterry.name/xpad/
-# Packager: alienus at nutyx dot org
+# Packager: dei
 # Depends on: intltool xorg-libsm gtk3
 
 name=xpad
 version=4.3.1
 release=2
-
-source=(
-http://launchpad.net/xpad/trunk/4.3/+download/xpad-$version.tar.bz2)
+source=(http://launchpad.net/xpad/trunk/4.3/+download/xpad-$version.tar.bz2)
 
 build(){
     cd $name-$version

@@ -1,4 +1,4 @@
-# Description: C library customer Yubico
+# Description: Yubico icin C dili kutuphaneleri
 # URL: http://www.yubico.com/
 # Packager: - https://github.com/Yubico/yubico-c-client.git
 # Depends on: libyubikey curl 

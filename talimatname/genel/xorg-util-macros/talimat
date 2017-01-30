@@ -1,6 +1,7 @@
-# Description: util-macros, contains the macros m4 used by the packages xorg
+# Description: X.Org X11 Autotools makrolari
 # URL: http://www.x.org
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
+# Depends on: 
 
 _name=util-macros
 name=xorg-util-macros

@@ -1,11 +1,11 @@
-# Description: libXext, library Common X extensions client
+# Description: X.Org icin Xext kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-proto xorg-libx11
+
 name=xorg-libxext
 version=1.3.3
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXext-$version.tar.bz2)
 
 build() {

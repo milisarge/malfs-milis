@@ -1,7 +1,6 @@
-# Description: Tools for creating Yelp documentation.
+# Description: Yelp dokumantasyonu hazirlamak icin araclar 
 # URL: http://www.gnome.org/
-# Maintainer: NuTyX GNOME team
-# Packager: piernov <piernov@piernov.org>
+# Packager: milisarge
 # Depends on: libxslt libxml2 yelp-xsl, itstool
 
 name=yelp-tools

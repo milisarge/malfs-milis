@@ -1,11 +1,11 @@
-# Description: Creates PKZIP-compatible .zip files
+# Description: PKZIP uyumlu .zip dosyalari yaratir
 # URL: http://infozip.sourceforge.net/Zip.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
+
 name=zip
 version=3.0
 release=1
-
 source=( http://downloads.sourceforge.net/infozip/zip30.tar.gz)
 
 build() {

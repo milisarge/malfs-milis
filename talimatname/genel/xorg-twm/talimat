@@ -1,13 +1,12 @@
-# Description: The twm package contains a very minimal window manager.
+# Description: Minimal boyutta pencere yoneticisi
 # URL: http://xorg.freedesktop.org 
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-server 
-_name=twm
 
+_name=twm
 name=xorg-twm
 version=1.0.9
 release=1
-
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/app/${_name}-$version.tar.bz2)
 
 build() {
