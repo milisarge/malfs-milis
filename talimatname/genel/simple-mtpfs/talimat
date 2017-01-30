@@ -1,0 +1,22 @@
+# Description: MTP cihazları için yazma/okuma yapabilen fuse dosya sistemi
+# URL: https://github.com/phatina/simple-mtpfs/
+# Packager: milisarge
+# Depends on: libmtp fuse
+
+name=simple-mtpfs
+version=0.3.0
+release=1
+
+source=(https://github.com/phatina/simple-mtpfs/archive/$name-$version.tar.gz)
+
+build(){
+    cd $name-$name-$version
+	if [[ ! -e "./configure" ]]; then 
+	./autogen.sh 
+	./configure --prefix=/usr
+	else
+	./config.status
+	fi
+	make
+    make DESTDIR=$PKG install
+}
