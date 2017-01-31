@@ -1,6 +1,6 @@
-# Description: Programming language designed at the Ericsson Computer Science Laboratory
-# URL:         http://erlang.org
-# Packager:  milisarge
+# Description: Ericsson Computer Science Laboratory tarafindan gelistirilen bir proglamlama dili
+# URL: http://erlang.org
+# Packager: milisarge
 # Depends on:
 
 name=erlang

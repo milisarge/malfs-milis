@@ -1,11 +1,11 @@
-# Description: Fraunhofer FDK AAC Advanced Audio Codec library. 
+# Description: Fraunhofer FDK AAC Advanced Audio Codec library.
 # URL: http://www.iis.fraunhofer.de/en/ff/amm/impl/fdkaaccodec.html
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=fdk-aac
 version=0.1.4
 release=1
-
 source=( http://downloads.sourceforge.net/opencore-amr/$name-$version.tar.gz )
 
 build() {

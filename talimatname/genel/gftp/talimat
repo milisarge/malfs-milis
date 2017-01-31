@@ -1,17 +1,16 @@
 # Description: A multithreaded ftp client for X Windows
 # URL: http://gftp.seul.org/
-# Packager: pierre at nutyx dot org
-# Depends on: gtk2 xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama 
+# Packager: milisarge
+# Depends on: gtk2 xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
 
 name=gftp
 version=2.0.19
 release=2
-
 source=(http://www.gftp.org/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
-./configure --prefix=/usr 
+./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 }

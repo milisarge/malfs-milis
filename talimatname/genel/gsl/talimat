@@ -1,11 +1,11 @@
 # Description: Scientific Library (GSL) is a numerical library for C and C++ programmers.
 # URL: http://www.gnu.org/software/gsl/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=gsl
 version=2.1
 release=1
-
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz)
 
 build() {

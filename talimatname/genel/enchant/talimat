@@ -1,11 +1,11 @@
 # Description: Generic Spell Checking Library.
 # URL: http://www.abisource.com/enchant/
-# Packager: tnut at nutyx dot org
-# Depends on: aspell dbus-glib 
+# Packager: milisarge
+# Depends on: aspell dbus-glib
+
 name=enchant
 version=1.6.0
 release=1
-
 source=(http://www.abisource.com/downloads/$name/$version/$name-$version.tar.gz)
 
 build() {

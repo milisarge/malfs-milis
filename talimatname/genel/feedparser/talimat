@@ -1,7 +1,6 @@
 # Description: Parse RSS and Atom feeds in Python
 # URL: https://code.google.com/p/feedparser/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: python-setuptools
 
 name=feedparser

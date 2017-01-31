@@ -1,12 +1,11 @@
 # Description: A low-level configuration system.
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
-# Depends on: dbus gtk3 libxml2 vala 
+# Packager: milisarge
+# Depends on: dbus gtk3 libxml2 vala
 
 name=dconf
 version=0.24.0
 release=2
-
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 
 build() {

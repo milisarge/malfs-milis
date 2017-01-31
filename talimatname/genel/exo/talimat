@@ -1,12 +1,11 @@
-# Description: Exo destek kutuphnanesi xfce4 masası için
+# Description: XFCE4 masasustu için Exo destek kutuphanesi
 # URL: http://www.os-cillation.de/
-# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: perl-uri xfce4-libui xfce4-libutil
 
 name=exo
 version=0.10.7
 release=1
-
 source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
 
 build() {

@@ -6,7 +6,6 @@
 name=gegl
 version=0.2.0
 release=1
-
 source=(http://ftp.gimp.org/pub/$name/0.2/$name-$version.tar.bz2
 	 http://www.linuxfromscratch.org/patches/blfs/svn/gegl-0.2.0-ffmpeg2-1.patch
 	)

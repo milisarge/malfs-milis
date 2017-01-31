@@ -6,7 +6,6 @@
 name=grantlee-qt5
 version=5.1.0
 release=1
-
 source=(http://downloads.grantlee.org/grantlee-$version.tar.gz)
 
 build() {
@@ -14,7 +13,7 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTS=OFF
-        
+
   make
   make DESTDIR=$PKG install
 }

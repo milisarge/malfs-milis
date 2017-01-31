@@ -1,6 +1,6 @@
-# Description: A small, fast graphical web browser built on FLTK
+# Description: FLTK temelli hizli, kucuk grafiksel arayuzlu bir web tarayici
 # URL: http://www.dillo.org/
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge
 # Depends on: fltk1
 
 name=dillo
@@ -8,6 +8,7 @@ version=3.0.5
 release=1
 source=(http://www.dillo.org/download/dillo-$version.tar.bz2
         http://www.dillo.org/Icons/d2_icon3_122x122.png)
+
 build() {
 cd $name-$version
 ./configure --prefix=/usr \
@@ -33,4 +34,3 @@ Terminal=false
 EOF
 install -m644 ../d2_icon3_122x122.png $PKG/usr/share/pixmaps/dillo.png
 }
-

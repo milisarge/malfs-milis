@@ -1,12 +1,11 @@
 # Description: A low level library, upon which multimedia APIs can be built
 # URL: http://gmerlin.sourceforge.net/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on :
+# Depends on : 
 
 name=gavl
 version=1.4.0
 release=1
-
 source=(http://downloads.sourceforge.net/sourceforge/gmerlin/$name-$version.tar.gz)
 
 build() {

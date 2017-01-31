@@ -6,7 +6,6 @@
 name=firefox
 version=49.0.2
 release=1
-
 source=( https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
 
 build() {
@@ -15,7 +14,7 @@ cd $SRC
 ARCH=`uname -m`
 
 for lang in tr
-do 
+do
 wget  http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$version/linux-$ARCH/xpi/$lang.xpi
 done
 
@@ -118,7 +117,7 @@ ln -sf ../mozilla/plugins $PKG/usr/lib/firefox-$version
 mkdir -p $PKG/usr/include/npapi
 cp -v dom/plugins/base/*.h $PKG/usr/include/npapi
 
-# Launcher 
+# Launcher
 mkdir -pv $PKG/usr/share/applications &&
 cat > $PKG/usr/share/applications/firefox.desktop << "EOF" &&
 [Desktop Entry]
@@ -137,7 +136,7 @@ ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pix
 
 
 for lang in tr
-do 
+do
 install -Dm644 $SRC/$lang.xpi \
     $PKG/usr/lib/firefox-$version/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
 done

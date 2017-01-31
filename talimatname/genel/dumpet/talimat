@@ -1,4 +1,4 @@
-# Description:	is a tool to dump information about bootable CDs and other similar formats. 
+# Description:	is a tool to dump information about bootable CDs and other similar formats.
 # URL:	https://fedorahosted.org/dumpet/
 # Pacakager: milisarge
 # Depends on: libxml2 popt

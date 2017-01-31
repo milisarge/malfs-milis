@@ -1,13 +1,13 @@
 # Description: C++ bindings for gtk2
 # URL: http://gtkmm.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk2 pangomm cairomm atkmm
 
 name=gtkmm
 version=2.24.4
 release=1
-
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
 build() {
 cd $name-$version
 

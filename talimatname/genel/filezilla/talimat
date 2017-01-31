@@ -1,8 +1,7 @@
 # Description: Fast and reliable FTP, FTPS and SFTP client
-# URL:         http://filezilla-project.org
-# Maintainer:  Thomas Penteker, tek at serverop dot de
-# Packager:    fanch at nutyx dot org, tnut at nutyx dot org
-# Depends on:  wxgtk libidn gnutls xdg-utils tinyxml dbus
+# URL: http://filezilla-project.org
+# Packager: milisarge
+# Depends on: wxgtk libidn gnutls xdg-utils tinyxml dbus
 
 name=filezilla
 version=3.12.0.2

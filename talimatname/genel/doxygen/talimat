@@ -1,13 +1,13 @@
-# Description: A documentation system for C++, C, Java, IDL and PHP
+# Description: C++, C, Java, IDL ve PHP icin dokumantasyon sistemi
 # URL:  http://www.doxygen.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python cmake
 
 name=doxygen
 version=1.8.11
 release=1
-
 source=(http://ftp.stack.nl/pub/$name/$name-$version.src.tar.gz)
+
 build() {
 cd $name-$version
 mkdir -v build

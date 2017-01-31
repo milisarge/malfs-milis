@@ -6,9 +6,7 @@
 name=freetds
 version=1.00
 release=1
-
 source=( ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.tar.bz2)
-
 
 build() {
          cd $name-$version

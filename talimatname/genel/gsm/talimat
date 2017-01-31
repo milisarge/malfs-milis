@@ -6,7 +6,6 @@
 name=gsm
 version=1.0.14
 release=1
-
 source=(http://www.quut.com/$name/$name-$version.tar.gz
         gsm.patch)
 

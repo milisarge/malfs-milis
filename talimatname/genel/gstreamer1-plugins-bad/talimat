@@ -1,13 +1,12 @@
 # Description: GStreamer Multimedia Framework Bad Plugins
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
-# Packager: pierre at nutyx dot org
-# Depends on: gstreamer1-plugins-base libdvdread libdvdnav faac faad2 libexif libmpeg2 mpg123 
+# Packager: milisarge
+# Depends on: gstreamer1-plugins-base libdvdread libdvdnav faac faad2 libexif libmpeg2 mpg123
 
 name=gstreamer1-plugins-bad
 version=1.6.3
 release=1
 _name=gst-plugins-bad
-
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz )
 
 build() {

@@ -1,13 +1,12 @@
 # Description: GStreamer Multimedia Framework ugly Plugins
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-ugly.html
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: gstreamer-plugins-base lame libdvdnav libdvdread libdvdcss liba52 libmad libmpeg2 
+# Depends on: gstreamer-plugins-base lame libdvdnav libdvdread libdvdcss liba52 libmad libmpeg2
 
 name=gstreamer-plugins-ugly
 version=0.10.19
 release=1
 _name=gst-plugins-ugly
-
 source=( http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz
 	     http://www.linuxfromscratch.org/patches/downloads/gst-plugins-ugly/gst-plugins-ugly-$version-libcdio_fixes-1.patch )
 

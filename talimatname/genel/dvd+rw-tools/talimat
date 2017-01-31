@@ -1,12 +1,11 @@
 # Description: DVD+-RW/R tools
 # URL: http://fy.chalmers.se/~appro/linux/DVD+RW/
 # Packager: milisarge@gmail.com
-# Depends on: 
+# Depends on:
 
 name=dvd+rw-tools
 version=7.1
 release=1
-
 source=( http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-$version.tar.gz \
 	transport.patch)
 

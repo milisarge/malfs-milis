@@ -6,7 +6,6 @@
 name=gtest
 version=1.7.0
 release=1
-
 source=(http://googletest.googlecode.com/files/$name-$version.zip)
 
 build() {

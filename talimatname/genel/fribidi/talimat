@@ -1,12 +1,13 @@
 # Description: A Free Implementation of the Unicode Bidirectional Algorithm
 # URL: http://fribidi.freedesktop.org/wiki/
-# Packager: pierre at nutyx dot org
-# Depends on: glib 
+# Packager: milisarge
+# Depends on: glib
+
 name=fribidi
 version=0.19.7
 release=1
-
 source=( http://fribidi.org/download/$name-$version.tar.bz2)
+
 build() {
 cd $name-$version
 sed -i "s|glib/gstrfuncs\.h|glib.h|" charset/fribidi-char-sets.c

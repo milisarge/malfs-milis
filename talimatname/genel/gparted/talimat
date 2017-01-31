@@ -6,9 +6,6 @@
 name=gparted
 version=0.27.0
 release=1
-
-run=(ssh-askpass)
-
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 build() {

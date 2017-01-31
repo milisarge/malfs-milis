@@ -1,19 +1,18 @@
 # Description: An interpreter for the PostScript language
 # URL: http://www.ghostscript.com/awki
-# Packager: pierre at nutyx dot org
-# Depends on: glib atk libpng libjpeg-turbo libtiff jasper lcms2 gnutls cups 
+# Packager: milisarge
+# Depends on: glib atk libpng libjpeg-turbo libtiff jasper lcms2 gnutls cups
 
 name=ghostscript
 version=9.18
 release=1
-
 source=( http://repository.timesys.com/buildsources/g/ghostscript/ghostscript-9.18/ghostscript-9.18.tar.gz
          http://ghostscript.googlecode.com/files/ghostscript-fonts-std-8.11.tar.gz
          http://ftp.gnu.org/pub/gnu/ghostscript/gnu-gs-fonts-other-6.0.tar.gz )
 
 build() {
 cd $name-$version
-sed -i 's/ZLIBDIR=src/ZLIBDIR=$includedir/' configure.ac configure 
+sed -i 's/ZLIBDIR=src/ZLIBDIR=$includedir/' configure.ac configure
 rm -rf freetype lcms2 jpeg libpng zlib
 ./configure --prefix=/usr \
 	--enable-dynamic \

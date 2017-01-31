@@ -1,13 +1,12 @@
-# Description: Foomatic - Filter scripts used by the printer spoolers to convert the incoming PostScript data into the printer's native format.
+# Description: Foomatic - Filter scripts used by the printer spoolers to convert the incoming PostScript data
 # URL: http://www.linuxprinting.org/foomatic.html
-# Packager: pierre at nutyx dot org
-# Depends on: libxml2 cups cups-filters 
-description="Filter scripts used by the printer spoolers to convert the incoming PostScript data"
+# Packager: milisarge
+# Depends on: libxml2 cups cups-filters
+
 name=foomatic-filters
 version=4.0.20150819
 release=1
 _version=4.0-20150819
-
 source=(http://www.openprinting.org/download/foomatic/$name-${_version}.tar.gz)
 
 build() {

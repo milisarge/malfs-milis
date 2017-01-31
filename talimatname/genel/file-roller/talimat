@@ -1,13 +1,11 @@
-# Description: Create and modify archives
+# Description: Arsiv dosyalari olusturmak ve duzenlemek icin bir arac
 # URL: http://www.gnome.org
-# Maintainer: http://linuxfromscratch.org/
 # Packager: milisarge@gmail.com
 # Depends on: desktop-file-utils gtk3 hicolor-icon-theme dconf itstool libarchive file json-glib libnotify unrar p7zip
 
 name=file-roller
 version=3.16.4
 release=1
-
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
 
 build() {

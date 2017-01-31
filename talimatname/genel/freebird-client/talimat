@@ -6,9 +6,7 @@
 name=freebird-client
 version=2.5.5.26952
 release=1
-
 source=( http://downloads.sourceforge.net/firebird/Firebird-$version-0.tar.bz2 )
-
 
 build() {
 
@@ -20,9 +18,9 @@ cd $SRC/Firebird-$version-0
     --without-fbsample-db --without-fbintl --without-fbmisc --without-fbhelp \
     --without-fbsecure-db --with-fbmsg=/usr/share/firebird --without-fblog \
     --without-fbglock --without-fbplugins
-  
+
   make -j1
-  
+
    mkdir -p $PKG/usr/{bin,share/{firebird,licenses/$name}}
 
   cp -R gen/firebird/{lib,include} $PKG/usr
@@ -35,6 +33,6 @@ cd $SRC/Firebird-$version-0
   cd $PKG/usr/lib
   ln -s libfbclient.so libgds.so.0
   ln -s libfbclient.so libgds.so
-  
-  
+
+
 }

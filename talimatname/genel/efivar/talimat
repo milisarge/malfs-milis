@@ -6,7 +6,6 @@
 name=efivar
 version=0.24
 release=1
-
 source=( https://github.com/rhinstaller/$name/releases/download/$version/$name-$version.tar.bz2)
 
 build() {

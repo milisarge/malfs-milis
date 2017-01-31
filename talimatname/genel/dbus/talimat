@@ -1,12 +1,11 @@
 # Description: Freedesktop.org message bus system
 # URL: http://www.freedesktop.org/wiki/Software/dbus/
 # Packager: milisarge
-# Depends on: expat xorg-libx11 xorg-libsm xorg-libice 
+# Depends on: expat xorg-libx11 xorg-libsm xorg-libice
 
 name=dbus
 version=1.10.6
 release=1
-
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
        dbus.system-local.conf)
 
@@ -41,7 +40,7 @@ build() {
 	mkdir -p $PKG/etc/dbus-1/system.d/
 	mkdir -p $PKG/etc/dbus-1/session.d/
 	for i in 2 3 4 5
-	do 
+	do
 		mv $PKG/etc/rc.d/rc$i.d/S{29,15}dbus
 	done
 	for i in 0 1 6
