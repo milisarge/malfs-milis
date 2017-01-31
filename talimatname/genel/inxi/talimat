@@ -1,11 +1,11 @@
 # Description: inxi sistem bilgi betigi
 # URL: http://inxi.org
 # Packager: milisarge
-# Depends on: 
+# Depends on:
+
 name=inxi
 version=master
 release=1
-
 source=(https://github.com/smxi/inxi/archive/master.tar.gz)
 
 build(){

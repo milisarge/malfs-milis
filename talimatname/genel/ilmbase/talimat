@@ -1,12 +1,13 @@
 # Description: Base libraries from ILM for OpenEXR
 # URL: http://openexr.com/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=ilmbase
 version=2.2.0
 release=1
-
 source=( http://download.savannah.nongnu.org/releases/openexr/$name-$version.tar.gz)
+
 build() {
 # build package
 cd $name-$version

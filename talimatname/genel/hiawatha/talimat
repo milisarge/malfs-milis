@@ -1,4 +1,4 @@
-# Description: Secure and advanced webserver
+# Description: Guvenli ve gelişmiş bir webserver
 # URL: https://www.hiawatha-webserver.org/
 # Packager: milisarge
 # Depends on : cmake libxslt mbedtls
@@ -6,7 +6,6 @@
 name=hiawatha
 version=10.3
 release=1
-
 source=(https://www.hiawatha-webserver.org/files/$name-$version.tar.gz
         hiawatha.conf.sample)
 
@@ -43,14 +42,14 @@ build() {
 
   # Features disabled by default
   # -DENABLE_DEBUG
-  # -DENABLE_TOMAHAWK	
+  # -DENABLE_TOMAHAWK
 
   make DESTDIR="$PKG/" install
- 
+
   rmdir "$PKG/run"
   rm "$PKG/srv/http/hiawatha/index.html"
   rmdir -p --ignore-fail-on-non-empty "$PKG/srv/http/hiawatha"
- 
+
   # Update stock hiawatha.conf
   sed -e 's|#ServerId = www-data|ServerId = http|' \
       -e 's|/var/www/|/srv/http/|g' \
@@ -60,7 +59,7 @@ build() {
       -e 's|#	Extension = php|&\n#       SessionTimeout = 30|g' \
       -e 's|#ErrorHandler = 404:/error.cgi|&\n#UseGZfile = yes|g' \
       -i "$PKG/etc/hiawatha/hiawatha.conf"
-  
+
   install -Dm644 logrotate.d/hiawatha "$PKG/etc/logrotate.d/hiawatha"
   install -Dm644 $SRC/"hiawatha.conf.sample" "$PKG/etc/hiawatha/"
 }

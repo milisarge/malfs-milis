@@ -1,4 +1,4 @@
-# Description: Drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet
+# Description: HP DeskJet, OfficeJet, Photosmart, Business Inkjet ve bazı LaserJet serileri için sürücüler
 # URL: http://hplipopensource.com/hplip-web/index.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: v4l-utils libgphoto2 python3-sip python3-qt5 avahi python3 wget ghostscript foomatic-db foomatic-db-engine usbutils sane xsane cups cups-filters rpcbind libusb libusb-compat net-snmp dbus-python python3-gobject python-notify python3-pillow python3-reportlab
@@ -6,7 +6,6 @@
 name=hplip
 version=3.16.10
 release=1
-
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz
         0022-Add-include-cups-ppd.h-in-various-places-as-CUPS-2.2.patch
         fix_tabs.patch)
@@ -47,7 +46,7 @@ build() {
                 --enable-scan-build \
                 --enable-fax-build \
                 --enable-network-build
-        make    
+        make
         make -j1 rulesdir=/usr/lib/udev/rules.d DESTDIR=$PKG install
 
         # hplip ne connait que lfs 6 ...

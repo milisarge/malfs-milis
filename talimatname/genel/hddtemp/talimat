@@ -1,7 +1,7 @@
-# Description: Reads your hdd temperature using S.M.A.R.T values.
+# Description: S.M.A.R.T degerlerini okuyarak hdd ısısını verir
 # URL: http://www.guzu.net/linux/hddtemp.php
 # Packager: milisarge
-# Depends on: 
+# Depends on:
 
 name=hddtemp
 version=0.3-beta15

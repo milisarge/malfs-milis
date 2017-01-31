@@ -1,12 +1,11 @@
-# Description: Irssi is a terminal based IRC client for UNIX systems.
+# Description: UNIX sistemler için terminal temelli IRC uygulaması
 # URL: http://irssi.org/
 # Packager: milisarge
-# Depends on: glib 
+# Depends on: glib
 
 name=irssi
 version=0.8.20
 release=1
-
 source=(https://github.com/irssi-import/irssi/releases/download/$version/$name-$version.tar.xz)
 
 build() {

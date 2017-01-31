@@ -1,8 +1,8 @@
-# Description: A Simple library for communicating with USB and Bluetooth HID devices.
+# Description: USB and Bluetooth aygıtları ile iletişim için basit bir kütüphane
 # URL: http://www.signal11.us/oss/hidapi/
 # Packager: milisarge
 # Depends on: libusb fox
- 
+
 
 name=hidapi
 version=0.8.0-rc1

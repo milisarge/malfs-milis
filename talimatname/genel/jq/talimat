@@ -1,7 +1,7 @@
 # Description: komut satirinda json parcalayici
 # URL: https://stedolan.github.io/jq/
 # Packager: milisarge
-# Depends on: 
+# Depends on:
 
 name=jq
 version=1.5
@@ -15,4 +15,3 @@ build() {
 	make
 	make DESTDIR=$PKG install
 }
-

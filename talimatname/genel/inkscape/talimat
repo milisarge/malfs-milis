@@ -1,7 +1,6 @@
-# Description: An open source SVG editor.
+# Description: Açık kaynaklı bir SVG editörü
 # URL: http://www.inkscape.org
-# Maintainer: Danny Rawlins, crux at romster dot me
-# Packager: Huynh Ngoc Chau Tran, tran dot huynh at laposte dot net
+# Packager: milisarge
 # Depends on: gc boost gsl gtkmm intltool libxslt popt poppler lcms lcms2
 
 name=inkscape
@@ -12,7 +11,7 @@ source=( https://launchpad.net/inkscape/0.91.x/0.91/+download/inkscape-0.91.tar.
 
 build() {
 cd $name-$version
-patch -Np1 -i ../inkscape-0.91-testfiles-1.patch	
+patch -Np1 -i ../inkscape-0.91-testfiles-1.patch
 CXXFLAGS="-g -O2 -std=c++11" ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

@@ -1,7 +1,6 @@
 # Description: Joe's window manager which uses only Xlib at a minimum.
 # URL: http://joewing.net/programs/jwm/
 # Packager: milisarge
-# Maintainer: Joe Wingbermuehle  <joewing at joewing at net>
 # Depends on: xorg xorg-libxt xorg-libxft xorg-libxmu xorg-mesa libpng libjpeg-turbo
 
 name=jwm

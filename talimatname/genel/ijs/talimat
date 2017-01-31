@@ -1,12 +1,11 @@
 # Description: A library which implements a protocol for transmission of raster page images.
 # URL: http://www.linuxfoundation.org/collaborate/workgroups/openprinting
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
 
 name=ijs
 version=0.35
 release=1
-
 source=(http://www.openprinting.org/download/$name/download/$name-$version.tar.bz2)
 
 build() {
@@ -17,4 +16,3 @@ cd $name-$version
 make
 make DESTDIR=$PKG install
 }
-  

@@ -1,7 +1,7 @@
-# Description:	The hd2u package contains an any to any text format converter. 
-# URL:			http://terminus.sk/~hany
-# Packager:		berlius at nutyx dot com
-# Depends on:	popt
+# Description: Metin formatlari icin donusturucu
+# URL: http://terminus.sk/~hany
+# Packager: milisarge
+# Depends on: popt
 
 name=hd2u
 version=1.0.3
@@ -12,8 +12,8 @@ build () {
 
 	cd $name-$version
 
-	./configure --prefix=/usr  
-	make	
+	./configure --prefix=/usr
+	make
 	install -d -m 755 $PKG/usr/bin
 	install -m 755 -s dos2unix $PKG/usr/bin
 
