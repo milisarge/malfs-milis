@@ -1,0 +1,22 @@
+# Description: Matt's traceroute - ağ test aracı
+# URL: http://www.bitwizard.nl/mtr/
+# Packager: milisarge
+# Depends on: 
+
+name=mtr
+version=0.87
+release=1
+source=(ftp://ftp.bitwizard.nl/mtr/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man \
+		--sbindir=/usr/bin \
+		--without-gtk
+
+	make
+	make DESTDIR=$PKG install
+}
