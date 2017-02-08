@@ -1,0 +1,16 @@
+# Description: Arc teması için gerekli ikon teması (deneme aşamasındadır). 
+# URL: https://github.com/horst3180/arc-icon-theme
+# Packager: yasarciv
+# Depends on: gtk-update-icon-cache hicolor-icon-theme moka-icon-theme faba-icon-theme
+
+
+name=arc-icon-theme
+version=20161122
+release=1
+source=(https://github.com/horst3180/$name/archive/$version.tar.gz)
+
+build() {
+cd $name-$version
+        ./autogen.sh --prefix=/usr
+make DESTDIR=$PKG install
+}
