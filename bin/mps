@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8.7"
+versiyon="0.8.8"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -719,7 +719,13 @@ dosyadan_talimat_islem(){
 	then 
 		ryaz 32 "talimat linkten cekilecek"
 		gdosya=`mktemp`
-		wget $dosya -O $gdosya
+		wget $2 $dosya -O $gdosya
+		dosya=$gdosya
+	fi
+	if [[ $2 =~ "-6" ]]; then 
+		ryaz 32 "talimat linkten cekilecek"
+		gdosya=`mktemp`
+		wget $2 $dosya -O $gdosya
 		dosya=$gdosya
 	fi
 	if [ ! -f $dosya ];then
@@ -1185,7 +1191,7 @@ ayarlar() {
 			-suko)
 				sunucu_kontrol ;;
 			-dota)
-				dosyadan_talimat_islem $2 ;;
+				dosyadan_talimat_islem $2 $3 ;;
 			-cf|--config-file)
 				if [ ! "$2" ]; then
 					echo "ayardosyası gerek $1"
