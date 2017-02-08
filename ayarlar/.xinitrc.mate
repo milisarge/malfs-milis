@@ -1,0 +1,1 @@
+exec mate-session
