@@ -1,0 +1,1540 @@
+#!/bin/bash
+
+# error codes
+E_GENERAL=1
+E_TALIMAT=2    # hatalı talimat
+E_DIR_PERM=3   # (source/build) directory missing or missing read/write permission
+E_DOWNLOAD=4   # error during download
+E_UNPACK=5     # error during unpacking of source file(s)
+E_MD5=6        # md5sum verification failed
+E_FOOTPRINT=7  # footprint check failure
+E_BUILD=8      # error while running 'build()'
+E_INSTALL=9    # error while installing the package via 'pkgadd'
+E_DEPS=10      # error while searching runtime deps via 'pkginfo -b'
+
+info() {
+	echo "=======> $1"
+}
+warning() {
+	info "UYARI: $1" >&2
+}
+error() {
+	info "HATA: $1" >&2
+}
+abort_on_build() {
+        error $1
+        exit $E_BUILD
+}
+get_filename() {
+	if [[ $1 =~ ^(http|https|ftp|file)://.*/(.+) ]]; then
+		echo "$DERLEME_KAYNAKDIZIN/${BASH_REMATCH[2]}"
+	else
+		echo $1
+	fi
+}
+get_basename() {
+	local FILE="`echo $1 | sed 's|^.*://.*/||g'`"
+	echo $FILE
+}
+check_pkgfile() {
+	local NAME_TEST
+	if [ "${name}" == "" ]; then
+		error "Variable 'name' not initiated or not found in $PKGMK_PKGFILE."
+		exit $E_TALIMAT
+	elif [ "`type -t build`" != "function" ]; then
+		error "Function 'build' not specified in $PKGMK_PKGFILE."
+		exit $E_TALIMAT
+	fi
+	NAME_TEST=`echo "${name}" | sed 's@[[a-z0-9]*[-_+]*]*@@g'`
+	if [ "$NAME_TEST" != "" ]; then
+		error "Variable 'name' contains illegal characters: $NAME_TEST"
+		exit $E_TALIMAT
+	fi
+	if [ ${#name} -gt 50 ];then
+		error "Variable 'name' length higher then 50 characters."
+		exit $E_TALIMAT
+	fi
+	if [ "${version}" == "" ]; then
+		error "'versiyon' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
+		exit $E_TALIMAT
+	fi
+	if [ "$SURUM_YOKSAY" = "yok" ]; then
+		if [ "${release}" == "" ]; then
+			error " 'release' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
+			exit $E_TALIMAT
+		fi
+	fi
+	
+	
+}
+get_package_name() {
+	local NAME EXT
+	if [  "${1:$((${#1} - ${#PKT_UZANTISI} ))}" == "$PKT_UZANTISI" ]; then
+		EXT=$PKT_UZANTISI
+	else
+		EXT=$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
+	fi
+	#eski
+	#NAME=`echo $1|sed "s/i686.$EXT//"|sed "s/x86_64.$EXT//"|sed "s/any.$EXT//"`
+	#echo "${NAME:0:$((${#NAME} - 10 ))}"
+	NAME=`echo "$1" | cut -d'#' -f1`	
+	echo "$NAME"
+}
+get_package_builddate() {
+	local NAME BUILD_DATE EXT
+	if [  "${1:$((${#1} - ${#PKT_UZANTISI} ))}" == "$PKT_UZANTISI" ]; then
+		EXT=$PKT_UZANTISI
+	else
+		EXT=$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
+	fi
+	NAME="`get_package_name $1`"
+	BUILD_DATE=`echo $1|sed "s/i686.$EXT//"|sed "s/x86_64.$EXT//"|sed "s/any.$EXT//"`
+	echo "${BUILD_DATE:$((${#NAME}))}"
+}
+get_package_extension() {
+	local EXTENSION
+	if [  "${1:$((${#1} - ${#PKT_UZANTISI} ))}" == "$PKT_UZANTISI" ]; then
+		EXTENSION=".$PKT_UZANTISI"
+	else
+		EXTENSION=".$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU"
+	fi
+	echo $EXTENSION
+}
+get_package_arch() {
+	local NAME BUILD_DATE EXTENSION
+	NAME=`get_package_name $1`
+	BUILD_DATE=`get_package_builddate $1`
+	EXTENSION=`get_package_extension $1`
+	echo $1|sed "s/$NAME$BUILD_DATE//"|sed "s/$EXTENSION//"
+}
+check_directory() {
+	if [ ! -d $1 ]; then
+		error "Directory '$1' does not exist."
+		exit $E_DIR_PERM
+	elif [ ! -w $1 ]; then
+		error "Directory '$1' not writable."
+		exit $E_DIR_PERM
+	elif [ ! -x $1 ] || [ ! -r $1 ]; then
+		error "Directory '$1' not readable."
+		exit $E_DIR_PERM
+	fi
+}
+check_file() {
+	if [ -e $1 ] && [ ! -w $1 ]; then
+		error "File '$1' is not writable."
+		exit $E_GENERAL
+	fi
+}
+downloads_file_with_curl() {
+	if [ ! "`type -p curl`" ]; then
+		error "Command 'curl' not found."
+		exit $E_GENERAL
+	fi
+	DOWNLOAD_OPTS="--ftp-pasv --retry 3 --retry-delay 3 \
+	-R -o $1 --fail -#"
+
+	error=1
+
+	curl $DOWNLOAD_OPTS $2
+	error=$?
+	if [ $error != 0 ]; then
+		error "İndiriliyor '$2' başarısız."
+		exit $E_DOWNLOAD
+	fi
+}
+download_file() {
+	info "İndiriliyor '$1'."
+
+	LOCAL_FILENAME=`get_filename $1`
+
+	if [ ! "`type -p wget`" ]; then
+		warning "Command 'wget' not found."
+		info "You should install 'wget' as soon as possible, trying with curl ..."
+		downloads_file_with_curl $LOCAL_FILENAME $1
+	else
+		LOCAL_FILENAME_PARTIAL="$LOCAL_FILENAME.partial"
+		DOWNLOAD_OPTS="--passive-ftp --no-directories --tries=3 --waitretry=3 \
+		--directory-prefix=$DERLEME_KAYNAKDIZIN \
+		--output-document=$LOCAL_FILENAME_PARTIAL --no-check-certificate"
+
+		if [ -f "$LOCAL_FILENAME_PARTIAL" ]; then
+			info "Kısmi indirme var,tamamlanmaya çalışılacak"
+			RESUME_CMD="-c"
+		fi
+
+		error=1
+
+		BASENAME=`get_basename $1`
+		for REPO in ${PKGMK_SOURCE_MIRRORS[@]}; do
+			REPO="`echo $REPO | sed 's|/$||'`"
+			wget $RESUME_CMD $DOWNLOAD_OPTS $PKGMK_WGET_OPTS $REPO/$BASENAME
+			error=$?
+			if [ $error == 0 ]; then
+				break
+			fi
+		done
+
+		if [ $error != 0 ]; then
+			while true; do
+				wget $RESUME_CMD $DOWNLOAD_OPTS $PKGMK_WGET_OPTS $1
+				error=$?
+				if [ $error != 0 ] && [ "$RESUME_CMD" ]; then
+					info "Partial download failed, restarting"
+					rm -f "$LOCAL_FILENAME_PARTIAL"
+					RESUME_CMD=""
+				else
+					break
+				fi
+			done
+		fi
+	
+		if [ $error != 0 ]; then
+			error "İndiriliyor '$1' başarısız."
+			exit $E_DOWNLOAD
+		fi
+	
+		mv -f "$LOCAL_FILENAME_PARTIAL" "$LOCAL_FILENAME"
+	fi
+}
+download_source() {
+	local FILE LOCAL_FILENAME
+
+	for FILE in ${source[@]}; do
+		LOCAL_FILENAME=`get_filename $FILE`
+		if [ ! -e $LOCAL_FILENAME ]; then
+			if [ "$LOCAL_FILENAME" = "$FILE" ]; then
+				error "Source file '$LOCAL_FILENAME' not found (can not be downloaded, URL not specified)."
+				exit $E_DOWNLOAD
+			else
+				if [ "$PKGMK_DOWNLOAD" = "evet" ]; then
+					download_file $FILE
+				else
+					error "Source file '$LOCAL_FILENAME' not found (use option -d to download)."
+					exit $E_DOWNLOAD
+				fi
+			fi
+		fi
+	done
+}
+remove_source() {
+	local FILE LOCAL_FILENAME
+	for FILE in ${source[@]}; do
+		LOCAL_FILENAME=`get_filename $FILE`
+		if [ -e $LOCAL_FILENAME ] && [ "$LOCAL_FILENAME" != "$FILE" ]; then
+			info "Removing $LOCAL_FILENAME"
+			rm -f $LOCAL_FILENAME
+		fi
+	done
+}
+unpack_source() {
+	local FILE LOCAL_FILENAME COMMAND
+	
+	for FILE in ${source[@]}; do
+		LOCAL_FILENAME=`get_filename $FILE`
+		case $LOCAL_FILENAME in
+			*.tar|*.tar.gz|*.tar.Z|*.tgz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.zip|*.rpm)
+				if [ "$PKGMK_IGNORE_UNPACK" != "evet" ];then
+					COMMAND="bsdtar -p -o -C $SRC -xf $LOCAL_FILENAME"
+				else
+					COMMAND="cp $LOCAL_FILENAME $SRC"
+				fi ;;
+			*)
+				COMMAND="cp $LOCAL_FILENAME $SRC" ;;
+		esac
+
+		echo "$COMMAND"
+
+		$COMMAND
+
+		if [ $? != 0 ]; then
+			if [ "$PKGMK_KEEP_WORK" = "yok" ]; then
+				rm -rf $DERLEME_SANTIYE
+			fi
+			error "'$TARGET' derlenmesi basarisiz."
+			exit $E_UNPACK
+		fi
+	done
+}
+get_package_list() {
+	local ARCHFILE i
+	i=0
+	for ARCH in x86_64 i686 any; do
+		for FILE in `find $PKGMK_PACKAGE_DIR -name "${name}*$ARCH.$PKT_UZANTISI*"`; do
+			TARGETS[i]=`basename $FILE`
+			i=$((i+1))
+		done
+	done
+}
+make_md5sum() {
+	local FILE LOCAL_FILENAMES
+	
+	if [ "$source" ]; then
+		for FILE in ${source[@]}; do
+			LOCAL_FILENAMES="$LOCAL_FILENAMES `get_filename $FILE`"
+		done
+		
+		md5sum $LOCAL_FILENAMES | sed -e 's|  .*/|  |' | sort -k 2
+	fi
+}
+
+make_footprint() {
+if ! (echo $TARGET| grep "kernel" >/dev/null); then
+	pkginfo --footprint $TARGET | \
+		sed "s|\tlib/modules/`uname -r`/|\tlib/modules/<kernel-version>/|g" | \
+		sort -k 3
+else
+	pkginfo --footprint $TARGET | sort -k 3
+fi
+}
+
+check_md5sum() {
+	local FILE="$DERLEME_SANTIYE/.tmp"
+
+	cd $PKGMK_ROOT
+	
+	if [ -f $PKGMK_MD5SUM ]; then
+		make_md5sum > $FILE.md5sum
+		sort -k 2 $PKGMK_MD5SUM > $FILE.md5sum.orig
+		diff -w -t -U 0 $FILE.md5sum.orig $FILE.md5sum | \
+			sed '/^@@/d' | \
+			sed '/^+++/d' | \
+			sed '/^---/d' | \
+			sed 's/^+/NEW       /g' | \
+			sed 's/^-/MISSING   /g' > $FILE.md5sum.diff
+		if [ -s $FILE.md5sum.diff ]; then
+			error "Md5sum mismatch found:"
+			cat $FILE.md5sum.diff >&2
+
+			if [ "$PKGMK_KEEP_WORK" = "yok" ]; then
+				rm -rf $DERLEME_SANTIYE
+			fi
+
+			if [ "$PKGMK_CHECK_MD5SUM" = "evet" ]; then
+				error "Md5sum not ok."
+				exit $E_MD5
+			fi
+
+			error "'$TARGET' derleme basarisiz."
+			exit $E_MD5
+		fi
+	else
+		if [ "$PKGMK_CHECK_MD5SUM" = "evet" ]; then
+			if [ "$PKGMK_KEEP_WORK" = "yok" ]; then
+				rm -rf $DERLEME_SANTIYE
+			fi
+			info "Md5sum not found."
+			exit $E_MD5
+		fi
+		
+		warning "Md5sum not found, creating new."
+		make_md5sum > $PKGMK_MD5SUM
+	fi
+
+	if [ "$PKGMK_CHECK_MD5SUM" = "evet" ]; then
+		if [ "$PKGMK_KEEP_WORK" = "yok" ]; then
+			rm -rf $DERLEME_SANTIYE
+		fi
+		info "Md5sum ok."
+		exit 0
+	fi
+}
+
+strip_files() {
+	local FILE FILTER
+	
+	cd $PKG
+	
+	if [ -f $PKGMK_ROOT/$PKGMK_NOSTRIP ]; then
+		FILTER="grep -v -f $PKGMK_ROOT/$PKGMK_NOSTRIP"
+	else
+		FILTER="cat"
+	fi
+
+	find . -type f -printf "%P\n" | $FILTER | while read FILE; do
+		case $(file -b "$FILE") in
+		*ELF*executable*not\ stripped)
+			strip --strip-all "$FILE"
+			;;
+		*ELF*shared\ object*not\ stripped)
+			strip --strip-unneeded "$FILE"
+			;;
+		current\ ar\ archive)
+			strip --strip-debug "$FILE"
+		esac
+	done
+}
+
+compress_manpages() {
+	local FILE DIR TARGET
+
+	cd $PKG
+	
+	find . -type f -path "*/share/man*/*" | while read FILE; do
+		if [ "$FILE" = "${FILE%%.gz}" ]; then
+			gzip -9 "$FILE"
+		fi
+	done
+	
+	find . -type l -path "*/share/man*/*" | while read FILE; do
+		TARGET=`readlink -n "$FILE"`
+		TARGET="${TARGET##*/}"
+		TARGET="${TARGET%%.gz}.gz"
+		rm -f "$FILE"
+		FILE="${FILE%%.gz}.gz"
+		DIR=`dirname "$FILE"`
+
+		if [ -e "$DIR/$TARGET" ]; then
+			ln -sf "$TARGET" "$FILE"
+		fi
+	done
+	find . -type f -path "*/share/info/*" | while read FILE; do
+		if [ "$FILE" = "${FILE%%.gz}" ]; then
+			gzip -9 "$FILE"
+		fi
+	done
+	find . -type l -path "*/share/info/*" | while read FILE; do
+		TARGET=`readlink -n "$FILE"`
+		TARGET="${TARGET##*/}"
+		TARGET="${TARGET%%.gz}.gz"
+		rm -f "$FILE"
+		FILE="${FILE%%.gz}.gz"
+		DIR=`dirname "$FILE"`
+
+		if [ -e "$DIR/$TARGET" ]; then
+			ln -sf "$TARGET" "$FILE"
+		fi
+	done
+}
+
+check_footprint() {
+	local TARGET FILE="$DERLEME_SANTIYE/.tmp"
+	
+	cd $PKGMK_PACKAGE_DIR
+	if [ -z $TARGETS ]; then
+		get_package_list
+		if [ -z $TARGETS ]; then
+			error "Unable to update footprint"
+		fi
+	fi
+	for TARGET in ${TARGETS[@]}; do
+		if [ -f $TARGET ]; then
+			PKGMK_FOOTPRINT="`get_package_name $TARGET`".footprint
+			make_footprint > $FILE.footprint
+			if [ -f $PKGMK_FOOTPRINT ]; then
+				sort -k 3 $PKGMK_FOOTPRINT > $FILE.footprint.orig
+				diff -w -t -U 0 $FILE.footprint.orig $FILE.footprint | \
+					sed '/^@@/d' | \
+					sed '/^+++/d' | \
+					sed '/^---/d' | \
+					sed 's/^+/NEW       /g' | \
+					sed 's/^-/MISSING   /g' > $FILE.footprint.diff
+			if [ -s $FILE.footprint.diff ]; then
+				if [ "$PKGMK_IGNORE_NEW" = "evet" ]; then
+					mv $FILE.footprint $PKGMK_FOOTPRINT
+					warning "Footprint mismatch found:"
+				else
+					error "Footprint mismatch found:"
+					BUILD_SUCCESSFUL="yok"
+				fi
+				cat $FILE.footprint.diff >&2
+			fi
+		else
+			warning "Footprint not found, creating new."
+			mv $FILE.footprint $PKGMK_FOOTPRINT
+		fi
+		else
+			error "Package '$TARGET' was not found."
+			BUILD_SUCCESSFUL="yok"
+		fi
+	done
+}
+
+make_work_dir() {
+	export PKG="$DERLEME_SANTIYE/pkg"
+	export SRC="$DERLEME_SANTIYE/src"
+
+	umask 022
+	
+	cd $PKGMK_ROOT
+	remove_work_dir
+	mkdir -p $SRC $PKG
+
+	if [ "$MD5SUM_YOKSAY" = "yok" ]; then
+		check_md5sum
+	fi
+}
+
+remove_work_dir() {
+	rm -rf $DERLEME_SANTIYE
+}
+pack_lib() {
+	local DIR SUBDIR
+	for DIR in usr opt/*; do
+		for SUBDIR in lib lib64; do
+			if [ -d $DIR/$SUBDIR/pkgconfig ]; then
+				mv $DIR/$SUBDIR/pkgconfig $PKG
+			fi
+			if [ -d $DIR/$SUBDIR ]; then
+				bsdtar -r -f \
+				$PKGMK_PACKAGE_DIR/${name}.${group}#$version-${PKGMK_ARCH}.${PKT_UZANTISI} \
+				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
+				rm -r $DIR/$SUBDIR
+				j=1
+			fi
+			if [ -d $PKG/pkgconfig ]; then
+				mkdir $DIR/$SUBDIR
+				mv $PKG/pkgconfig $DIR/$SUBDIR/pkgconfig
+			fi
+		done
+	done
+}
+remove_lib() {
+	local DIR SUBDIR
+	for DIR in usr opt/*; do
+		for SUBDIR in lib lib64;do
+			if [ -d $DIR/$SUBDIR ]; then
+				rm -r $DIR/$SUBDIR
+			fi
+		done
+	done
+}
+pack_devel() {
+	local DIR SUBDIR
+	for DIR in usr opt/*; do
+		for SUBDIR in include lib/pkgconfig; do
+			if [ -d $DIR/$SUBDIR ]; then
+				bsdtar -r -f \
+				$PKGMK_PACKAGE_DIR/${name}.${group}#$version-any.${PKT_UZANTISI} \
+				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
+				rm -r $DIR/$SUBDIR
+				j=1
+				
+			fi
+		done
+	done
+}
+remove_devel() {
+	local DIR SUBDIR
+	for DIR in usr opt/*; do
+		for SUBDIR in include lib/pkgconfig; do
+			if [ -d $DIR/$SUBDIR ]; then
+				rm -r $DIR/$SUBDIR
+			fi
+		done
+	done
+}
+pack_doc() {
+	local DIR SUBDIR
+	for DIR in usr/share opt/*/share; do
+		for SUBDIR in doc gtk-doc; do
+			if [ -d $DIR/$SUBDIR ]; then
+				bsdtar -r -f \
+				$PKGMK_PACKAGE_DIR/${name}.${group}#$version-any.${PKT_UZANTISI} \
+				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
+				j=1
+			fi
+		done
+	done
+}
+remove_doc() {
+	local DIR SUBDIR
+	for DIR in usr/share opt/*/share; do
+		for SUBDIR in doc gtk-doc; do
+			if [ -d $DIR/$SUBDIR ]; then
+				rm -r $DIR/$SUBDIR
+			fi
+		done
+	done
+}
+pack_man() {
+	local DIR SUBDIR
+	for DIR in usr/share opt/*/share; do
+		for SUBDIR in info man; do
+			if [ -d $DIR/$SUBDIR  ]; then
+				bsdtar -r -f \
+				$PKGMK_PACKAGE_DIR/${name}.${group}#$version-any.${PKT_UZANTISI} \
+				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
+				j=1
+			fi
+		done
+	done
+}
+remove_man() {
+	local DIR SUBDIR
+	for DIR in usr/share opt/*/share; do
+		for SUBDIR in info man; do
+			if [ -d $DIR/$SUBDIR  ]; then
+				rm -r $DIR/$SUBDIR
+			fi
+		done
+	done
+}
+pack_service() {
+	local DIR="etc/rc.d"
+	if [ -d $DIR ]; then
+		bsdtar -r -f \
+		$PKGMK_PACKAGE_DIR/${name}.${group}#$version-any.${PKT_UZANTISI} \
+		$DIR || BUILD_SUCCESSFUL="yok"
+		j=1
+	fi
+}
+remove_service() {
+	local DIR="etc/rc.d"
+	if [ -d $DIR ]; then
+		rm -r $DIR
+	fi
+}
+add_meta_files() {
+	local NAME
+	NAME="`get_package_name $1`"
+	cd $PKG
+	if [ -f $PKGMK_ROOT/${NAME}.okubeni ]; then
+		cp $PKGMK_ROOT/${NAME}.okubeni .README
+	fi
+	if [ -f $PKGMK_ROOT/${NAME}.kos-kur ]; then
+		cp $PKGMK_ROOT/${NAME}.kos-kur .PRE
+	fi
+	if [ -f $PKGMK_ROOT/${NAME}.kur-kos ]; then
+		cp $PKGMK_ROOT/${NAME}.kur-kos .POST
+	fi
+	for file in .README .PRE .POST; do
+		if [ -f $file ]; then
+			bsdtar -r -f $PKGMK_PACKAGE_DIR/$1 \
+			$file
+			rm $file
+		fi
+	done
+}
+
+add_meta_to_archive() {
+	local NAME TAR SIZE_I DESC URL PACK MAINT ARCH
+	NAME="`get_package_name $1`"
+	ARCH="`get_package_arch $1`"
+
+	info  "$NAME arşivine üstbilgiler ekleniyor."
+
+	TAR="$DERLEME_SANTIYE/tar"
+	mkdir -p $TAR
+	cd $TAR
+
+	bsdtar xf $PKGMK_PACKAGE_DIR/$1
+
+	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
+		DESC="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
+	else
+		DESC="n.a"
+	fi
+	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^pack|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
+		PACK="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^pack|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
+	else
+		PACK="n.a"
+	fi
+	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^maint|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
+		MAINT="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^maint|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
+	else
+		MAINT="n.a"
+	fi
+	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^url|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
+		URL="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^url|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
+	else
+		URL="n.a"
+	fi
+	SIZE_I="`du -b $PKGMK_PACKAGE_DIR/$1|sed "s/\t/ /"|cut -d " " -f1`"
+	echo "N$NAME" > .META
+	echo "D$DESC" >> .META
+	echo "U$URL" >> .META
+	echo "M$MAINT" >> .META
+	echo "P$PACK" >> .META
+	echo "S$SIZE_I" >> .META
+	echo "V$version" >> .META
+	echo "r$release" >> .META
+	echo "B$PKGMK_BUILDVER" >> .META
+	echo "a$ARCH" >> .META
+	# TODO improve the pkginfo --runtimedepfiles functionnality
+	if [ "$PKGMK_IGNORE_RUNTIMEDEPS" == "yok" ];then
+		for dep in `pkginfo --runtimedepfiles $TAR|grep -v ^[A-Z]`; do
+			echo "R$dep" >> .META
+		done
+		# We don't want any .devel dependencies here
+		sed -i '/^R[[a-z0-9]*[-_+]*]*\.devel/d' .META
+		if [ ! -z $run ] && [ "$NAME" == "$name" ]; then
+			info "Adding runtime deps to Archive $NAME"
+			for rd in ${run[@]}; do
+				if [ "`pkginfo -b $rd`" == "0" ] || [ "`pkginfo -b $rd`" == "" ]; then
+					error "Runtime dependencie $rd not found, cannot continue"
+					clean
+					exit $E_DEPS;
+				fi
+				echo "R$rd`pkginfo -b $rd`" >> .META
+			done
+		fi
+		if [ -f $PKGMK_ROOT/${NAME}.run ]; then
+			info "Adding runtime deps to Archive $NAME"
+			for rd in `cat $PKGMK_ROOT/${NAME}.run`; do
+				if [ "`pkginfo -b $rd`" == "0" ] || [ "`pkginfo -b $rd`" == "" ]; then
+					error "Runtime dependencie $rd not found, cannot continue"
+					clean
+					exit $E_DEPS;
+				fi
+				echo "R$rd`pkginfo -b $rd`" >> .META
+			done
+		fi
+	fi
+	bsdtar -tf $PKGMK_PACKAGE_DIR/$1 > .MTREE
+
+	rm $PKGMK_PACKAGE_DIR/$1
+
+	for file in .META .MTREE .README .PRE .POST .INFO; do
+		if [ -f $file ]; then
+			bsdtar -r -f $PKGMK_PACKAGE_DIR/$1 \
+			$file
+		fi
+	done
+
+	bsdtar -r -f $PKGMK_PACKAGE_DIR/$1 *
+
+	cd ..
+	rm -rf $TAR
+}
+
+compress_archive() {
+	info "$1 sıkıştırılıyor."
+	case $PKT_SIKISTIRMA_MODU in
+		lz) lzip -9 $1;;
+		gz) gzip -9 $1;;
+		bz2) bzip2 -9  $1;;
+		xz)  xz -z -9 $1;;
+	esac
+}
+
+derle() {
+	if [ "$PAKETSIZ_DERLEME" = "evet" ]; then
+		paketsiz_derle
+	else
+		build_package
+	fi
+
+}
+
+paketsiz_derle() {
+	local BUILD_SUCCESSFUL="yok"
+	
+	export PKG="/"
+	export SRC="$DERLEME_SANTIYE/src"
+	umask 022
+	
+	cd $PKGMK_ROOT
+	rm -rf $DERLEME_SANTIYE
+	mkdir -p $SRC
+	
+	info "derleniyor... '$TARGET'"
+	
+	if [ "$PKGMK_DOWNLOAD" = "evet" ]; then
+		download_source
+	fi
+	unpack_source
+	
+	cd $SRC
+	(set -e -x ; build)
+	
+	
+#	cd $PKG
+	
+	if [ $? = 0 ]; then
+		BUILD_SUCCESSFUL="evet"
+
+	fi
+        if [ "$PKGMK_KEEP_WORK" = "yok" ]; then
+                rm -rf $DERLEME_SANTIYE
+        fi
+	
+	if [ "$BUILD_SUCCESSFUL" = "evet" ]; then
+		info " '$TARGET' derleme basarili"
+	else
+		if [ -f $TARGET ]; then
+			touch -r $PKGMK_ROOT/$PKGMK_PKGFILE $TARGET &> /dev/null
+		fi
+		error " '$TARGET' derleme basarisiz"
+		exit 1
+	fi
+}
+
+build_package() {
+	# TODO find a better solution for the hardcoded folders
+	local BUILD_SUCCESSFUL="yok"
+	if [ "$1" != "$TARGET" ]; then
+		if [ ! -z $TARGETS ]; then
+			for TARGET in ${TARGETS[@]}; do
+				error "$TARGET should be remove"
+			done
+			error "Remove the binaries first..."
+			exit $E_BUILD
+		fi
+	fi
+
+	check_file "$TARGET"
+	make_work_dir
+	
+	if [ "$UID" != "0" ]; then
+		warning "Packages should be built as root."
+	fi
+	
+	info "Building '$TARGET'."
+	
+	unpack_source
+		
+	cd $SRC
+	(set -e -x ; build)
+	
+	if [ $? = 0 ]; then
+		if [ "$PKGMK_NO_STRIP" = "yok" ]; then
+			strip_files
+		fi
+		
+		compress_manpages
+
+		cd $PKG
+		i=0
+		j=0
+		for group in ${PAKET_GRUPLAR[@]}; do
+			BUILD_SUCCESSFUL="evet"
+			if [ "`type -t ${group}`" == "function" ]; then
+				(set -e -x ;${group})
+				j=1
+				if [ $? = 0 ]; then
+					BUILD_SUCCESSFUL="evet"
+				else
+					error "Building '$TARGET' failed."
+					exit $E_BUILD
+				fi
+			else
+				if [ "$1" != "$TARGET" ]; then
+					if [ -f $PKGMK_PACKAGE_DIR/${name}.${group}#$version-* ]; then
+						rm $PKGMK_PACKAGE_DIR/${name}.${group}#$version-}*
+					fi
+					pack_${group}
+				fi
+				remove_${group}
+				if [ "$BUILD_SUCCESSFUL"  == "yok" ]; then
+					error "Building '$TARGET' failed."
+                			exit $E_BUILD
+				fi
+			fi
+			# Add the meta in each package
+			if [ $j == 1 ]; then
+				if [ "$BUILD_SUCCESSFUL"  == "yok" ]; then
+					error "Building '$TARGET' failed."
+					exit $E_BUILD
+				fi
+				j=0
+			fi
+			j=0
+		done
+		#dil desteginin eklenmesi-geri kalanın temizlenmesi
+		#if [ ! "$PAKET_LOKAL" == "hepsi" ];then
+		#	local lokaldizin
+		#	if [ -d usr/share/locale ];then
+		#		lokaldizin="usr/share/locale"
+		#	fi
+		#	if [ -d opt/*/usr/share/locale ];then
+		#		lokaldizin="opt/*/usr/share/locale"
+		#	fi
+		#	for DIR in `ls $lokaldizin` ; do
+		#		if [[ "$PAKET_LOKAL" == *"$DIR"* ]]; then
+		#			echo $DIR "dil paketi ekleniyor"
+		#		else	
+		#			rm -rf $lokaldizin/$DIR
+		#		fi
+		#	done
+		#fi
+		
+		if [ "`ls|wc -l`" != "0" ]; then
+			bsdtar -r -f $PKGMK_PACKAGE_DIR/${name}#$version-${PKGMK_ARCH}.${PKT_UZANTISI} *
+		else
+			error "No files found in $PKG..."
+			exit $E_BUILD
+		fi
+		if [ $? = 0 ]; then
+			BUILD_SUCCESSFUL="evet"
+			if [ "$DOSYAIZLEME_YOKSAY" == "evet" ]; then
+				warning "dosyaizleme pas gecildi."
+			else
+				check_footprint
+			fi
+		fi
+	fi
+	
+	if [ "$BUILD_SUCCESSFUL" = "evet" ]; then
+	
+		if [ "$1" != "$TARGET" ]; then
+			get_package_list		
+        		if [ -z $TARGETS ]; then
+                		error "Paket(ler) bulunamadı..."
+				exit $E_BUILD
+        		fi
+			for TARGET in ${TARGETS[@]}; do
+				
+				add_meta_files $TARGET
+				add_meta_to_archive $TARGET
+			done
+		else
+			add_meta_files `basename $TARGET`
+			add_meta_to_archive `basename $TARGET`
+		fi
+		if [ "$PKGMK_KEEP_WORK" = "yok" ]; then
+			remove_work_dir
+		fi
+	else
+		if [ -f $TARGET ]; then
+			touch -r $PKGMK_ROOT/$PKGMK_PKGFILE $TARGET &> /dev/null
+		fi
+		error "'$TARGET' derlenmesi başarısız."
+		exit $E_BUILD
+	fi
+	
+	
+	
+	
+	
+}
+
+install_package() {
+	local COMMAND
+	get_package_list
+	if [ -z $TARGETS ]; then
+		error "kurulacak paket bulunamadı..."
+		exit $E_INSTALL
+	fi
+	for TARGET in ${TARGETS[@]}; do
+		if [ "`get_package_arch $TARGET`" = "$PKGMK_ARCH" ] || [ "`get_package_arch $TARGET`" = "any" ]; then
+			info "kuruluyor '$TARGET'."
+				
+			if [ "$DERLE_KUR" = "install" ]; then
+				COMMAND="mps -k $PKGMK_PACKAGE_DIR/$TARGET"
+			else
+				COMMAND="mps -k $PKGMK_PACKAGE_DIR/$TARGET"
+			fi
+			
+			cd $PKGMK_ROOT
+			echo "$COMMAND"
+			$COMMAND
+			
+
+			if [ $? = 0 ]; then
+				info " '$TARGET' basarili sekilde kuruldu."
+			else
+				error " '$TARGET' kurulum basarisiz."
+				exit $E_INSTALL
+			fi
+		fi
+	done
+}
+
+paket_kur() {
+	local COMMAND
+	get_package_list
+	if [ -z $TARGETS ]; then
+		error "kurulacak paket bulunamadı..."
+		exit $E_INSTALL
+	fi
+	for TARGET in ${TARGETS[@]}; do
+		if [ "`get_package_arch $TARGET`" = "$PKGMK_ARCH" ] || [ "`get_package_arch $TARGET`" = "any" ]; then
+			info "kuruluyor '$TARGET'."
+				
+			#paket_kurulum
+	
+			if [ "$PAKET_KURMA" = "evet" ]; then
+				COMMAND2="echo :::::::::::::::::::::::: $PKGMK_PACKAGE_DIR/$TARGET"
+			fi
+
+			echo "$COMMAND2"
+			$COMMAND2
+			
+			if [ "$DERLE_KUR" = "install" ]; then
+				COMMAND="pkgadd $PKGMK_PACKAGE_DIR/$TARGET"
+			else
+				COMMAND="pkgadd -u $PKGMK_PACKAGE_DIR/$TARGET"
+			fi
+			
+			cd $PKGMK_ROOT
+			echo "$COMMAND"
+			$COMMAND
+			
+
+			if [ $? = 0 ]; then
+				info " '$TARGET' basarili sekilde kuruldu."
+			else
+				error " '$TARGET' kurulum basarisiz."
+				exit $E_INSTALL
+			fi
+		fi
+	done
+}
+
+recursive() {
+	local ARGS FILE DIR
+	[ -f $REPO_DOSYASI ] && rm -v $REPO_DOSYASI
+	
+	ARGS=`echo "$@" | sed -e "s/--recursive//g" -e "s/-r//g"`
+
+	for FILE in `find $PKGMK_ROOT -name $PKGMK_PKGFILE | sort`; do
+		DIR="`dirname $FILE`/"
+		if [ -d $DIR ]; then
+			info "Entering directory '$DIR'."
+			(cd $DIR && $PKGMK_COMMAND $ARGS)
+			info "Leaving directory '$DIR'."
+		fi
+	done
+}
+clean() {
+	unset TARGETS
+	get_package_list
+	if [ ! -z $TARGETS ]; then
+		for TARGET in ${TARGETS[@]}; do
+			if [ -f $PKGMK_PACKAGE_DIR/$TARGET ]; then
+				info "Removing $TARGET"
+				rm -f $PKGMK_PACKAGE_DIR/$TARGET
+			fi
+		done
+	else
+		warning "$TARGETS bulunamadı"
+	fi	
+	find $PKGMK_ROOT -name "*.md5sum" -exec rm -v {} \; 2> /dev/null
+	find $PKGMK_ROOT -name "*.footprint" -exec rm -v {} \; 2> /dev/null
+	unset TARGETS
+}
+update_footprint() {
+	cd $PKGMK_PACKAGE_DIR
+	if [ -z $TARGETS ]; then
+		get_package_list
+		if [ -z $TARGETS ]; then		
+			error "Package(s) not found(s), unable to update footprint."
+			exit $E_FOOTPRINT
+		fi
+	fi
+	for TARGET in ${TARGETS[@]}; do
+		if [ ! -f $TARGET ]; then
+			error "Unable to update footprint. File '$TARGET' not found."
+			exit $E_FOOTPRINT
+		fi
+		PKGMK_FOOTPRINT="`get_package_name $TARGET`".footprint
+		check_file "$PKGMK_FOOTPRINT"
+		make_footprint > $PKGMK_FOOTPRINT
+		touch $TARGET
+
+		info "Footprint updated for $TARGET"
+	done
+}
+
+build_needed() {
+	local FILE RESULT
+	RESULT="evet"
+	if [ -f $TARGET ]; then 
+		RESULT="yok"
+		FILE=`get_filename $PKGMK_PKGFILE`
+		if [ ! -e $FILE ] || [ ! $TARGET -nt $FILE ]; then
+			RESULT="evet"
+			break
+		fi
+	fi
+	echo $RESULT
+}
+
+update_collection_repo()
+{
+	local HEAD BUILD_DATE RELEASE DESCRIPTION URL MAINTAINER PACKAGER EXTENSION
+	if [ -f $REPO_DOSYASI ]; then
+		HEAD=`head -1 $REPO_DOSYASI`
+		if [ "${HEAD:10:1}" = "#" ]; then 
+			BUILD_DATE="`echo $HEAD|cut -d "#" -f1`"
+			EXTENSION="`echo $HEAD|cut -d "#" -f2`"
+			VERSION="`echo $HEAD|cut -d "#" -f3`"
+			RELEASE="`echo $HEAD|cut -d "#" -f4`"
+			DESCRIPTION="`echo $HEAD|cut -d "#" -f5`"
+			URL="`echo $HEAD|cut -d "#" -f6`"
+			MAINTAINER="`echo $HEAD|cut -d "#" -f7`"
+			PACKAGER="`echo $HEAD|cut -d "#" -f8`"
+			[ -f ../$REPO_DOSYASI ] && sed -i "/#$name#/d" ../$REPO_DOSYASI
+			echo "`md5sum $REPO_DOSYASI|cut -d " " -f1`#$BUILD_DATE#$name##$version-#$RELEASE#$DESCRIPTION#$URL#$MAINTAINER#$PACKAGER#$EXTENSION" \
+			>> ../$REPO_DOSYASI
+		fi
+	fi
+}
+update_repo()
+{
+	local FILE MD5SUM EXT
+	cd $PKGMK_ROOT
+	get_package_list
+	if [ ! -z $TARGETS ]; then
+		EXT="`get_package_extension $TARGETS`"
+		echo -n "`get_package_builddate $TARGETS`#$EXT##$version-#$release" > $REPO_DOSYASI
+		for string in desc url maint pack; do 
+			if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^$string|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then 
+				echo -n "#"`cat $PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^$string|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"" \
+				>> .PKGREPO
+			else
+				echo -n "#n.a" >> .PKGREPO
+			fi
+		done
+		printf "\n" >> .PKGREPO
+		for TARGET in ${TARGETS[@]}; do
+			FILE=`basename $TARGET`
+			MD5SUM=`md5sum $TARGET|cut -d " " -f1`
+			echo "$MD5SUM#`get_package_name $TARGET`#`get_package_arch $TARGET|sed "s/-//"`" >> $REPO_DOSYASI
+		done
+		for FILE in  ${name}*
+		do
+			[ ! -f "$FILE" ] && break
+			if [ "${FILE:$((${#FILE} - ${#EXT} ))}" != "$EXT" ]; then
+				echo "`md5sum $FILE|cut -d " " -f1`#$FILE" >> $REPO_DOSYASI
+			fi
+		done
+	else
+		rm -f $REPO_DOSYASI
+	fi
+	echo "`md5sum $PKGMK_PKGFILE|cut -d " " -f1`#$PKGMK_PKGFILE" >> $REPO_DOSYASI
+}
+clean_repo_files()
+{
+	cd $PKGMK_ROOT
+	if [ -f $REPO_DOSYASI ]; then
+		rm $REPO_DOSYASI
+		info "siliniyor $REPO_DOSYASI"
+	fi
+	if [ -f MD5SUM ]; then
+		rm MD5SUM
+		info "siliniyor MD5SUM"
+	fi
+}
+interrupted() {
+	echo ""
+	error "Interrupted."
+
+	if [ "$PKGMK_KEEP_WORK" = "yok" ]; then
+		rm -rf $DERLEME_SANTIYE
+	fi
+
+	exit $E_GENERAL
+}
+
+print_help() {
+	echo "usage: `basename $PKGMK_COMMAND` [options]"
+	echo "options:"
+	echo "  -i,   --install             build and install packages"
+	echo "  -u,   --upgrade             build and install packages (as upgrade)"
+	echo "  -r,   --recursive           search for and build packages recursively"
+	echo "  -d,   --download            download missing source file(s)"
+	echo "  -cv,  --show-version-only   do not build, only show the version of the port and exit"
+	echo "  -do,  --download-only       do not build, only download missing source file(s)"
+	echo "  -eo,  --extract-only        do not build, only extract source file(s)"
+	echo "  -utd, --up-to-date          do not build, only check if package is up to date"
+	echo "  -ur,  --update-repo         do not build, only update the $REPO_DOSYASI file"
+	echo "  -uc,  --update-collection   do not build, only update the $REPO_DOSYASI file of the collection means from the parent directory"
+	echo "  -uf,  --update-footprint    update footprint using result from last build"
+	echo "  -ic,  --ignore-collection     build packages without update the $REPO_DOSYASI file of the collection means from the parent directory"
+	echo "  -if,  --ignore-footprint    build packages without checking footprint"
+	echo "  -in,  --ignore-new          build packages, ignore new files in a footprint missmatch"
+	echo "  -um,  --update-md5sum       update md5sum"
+	echo "  -im,  --ignore-md5sum       build packages without checking md5sum"
+	echo "  -cm,  --check-md5sum        do not build, only check md5sum"
+	echo "  -ns,  --no-strip            do not strip executable binaries or libraries"
+	echo "  -f,   --force               build packages even if it appears to be up to date"
+	echo "  -co,  --clean-only          do not build, only remove packages and downloaded files, update $REPO_DOSYASI file"
+	echo "  -kw,  --keep-work           keep temporary working directory"
+	echo "  -cf,  --config-file <file>  use alternative configuration file"
+	echo "  -v,   --version             print version and exit "
+	echo "  -h,   --help                print help and exit"
+}
+parse_options() {
+	while [ "$1" ]; do
+		case $1 in
+			-i|--install)
+				DERLE_KUR="install" ;;
+			-pk|--pkur)
+				PAKET_KURMA="evet" ;;
+			-u|--upgrade)
+				DERLE_KUR="upgrade" ;;
+			-r|--recursive)
+				PKGMK_RECURSIVE="evet" ;;
+			-d|--download)
+				PKGMK_DOWNLOAD="evet" ;;
+			-do|--download-only)
+				PKGMK_DOWNLOAD="evet"
+				PKGMK_DOWNLOAD_ONLY="evet" ;;
+			-eo|--extract-only)
+				PKGMK_EXTRACT_ONLY="evet" ;;
+			-cv|--show-version-only)
+				PKGMK_SHOW_VERSION="evet";;
+			-utd|--up-to-date)
+				PKGMK_UP_TO_DATE="evet" ;;
+			-sk|--sd-kontrol)
+				SOZDIZIM_KONTROL="evet" ;;
+			-uc|--update-collection)
+				PKGMK_UPDATE_COLLECTION="evet";;
+			-ur|--update-repo)
+				PKGMK_UPDATE_REPO="evet" ;;
+			-uf|--update-footprint)
+				PKGMK_UPDATE_FOOTPRINT="evet" ;;
+			-if|--ignore-footprint)
+				DOSYAIZLEME_YOKSAY="evet" ;;
+			-in|--ignore-new)
+				PKGMK_IGNORE_NEW="evet" ;;
+			-um|--update-md5sum)
+				PKGMK_UPDATE_MD5SUM="evet" ;;
+			-im|--ignore-md5sum)
+				MD5SUM_YOKSAY="evet" ;;
+			-ic|--ignore-collection)
+				KOLEKSIYON_YOKSAY="evet" ;;
+			-ir|--ignore-repo)
+				REPO_YOKSAY="evet" ;;
+			-cm|--check-md5sum)
+				PKGMK_CHECK_MD5SUM="evet" ;;
+			-ns|--no-strip)
+				PKGMK_NO_STRIP="evet" ;;
+			-f|--force)
+				PKGMK_FORCE="evet" ;;
+			-co|--clean-only)
+				PKGMK_CLEAN_ONLY="evet" ;;
+			-kw|--keep-work)
+				PKGMK_KEEP_WORK="evet" ;;
+			-cf|--config-file)
+				if [ ! "$2" ]; then
+					echo "`basename $PKGMK_COMMAND`: option $1 requires an argument"
+					exit 1
+				fi
+				DERLEME_AYARDOSYASI="$2"
+				shift ;;
+			-v|--version)
+				echo "`basename $PKGMK_COMMAND` (cards) $PKGMK_VERSION"
+				exit 0 ;;
+			-h|--help)
+				print_help
+				exit 0 ;;
+			*)
+				echo "`basename $PKGMK_COMMAND`: invalid option $1"
+				exit 1 ;;
+		esac
+		shift
+	done
+}
+
+main() {
+	if [ -f /etc/noprofile ]; then
+		source /etc/noprofile
+	fi
+
+	parse_options "$@"
+
+        if [ ! -f $DERLEME_AYARDOSYASI ]; then
+                error "File '$DERLEME_AYARDOSYASI' not found."
+                exit $E_GENERAL
+        fi
+        . $DERLEME_AYARDOSYASI
+	PKGMK_ARCH=`uname -m`
+	
+	
+	
+	#if ! (`which pkginfo > /dev/null`); then
+		#warning "pkginfo NOT FOUND, footprint ignored."
+	DOSYAIZLEME_YOKSAY="evet"
+	#fi
+	local FILE TARGET 
+
+	name=`basename $PKGMK_ROOT`
+
+	if [ "$PKGMK_RECURSIVE" = "evet" ]; then
+		recursive "$@"
+		exit 0
+	fi
+	if [ ! -f $PKGMK_PKGFILE  ]; then
+		error "File '$PKGMK_PKGFILE' not found."
+		exit $E_TALIMAT
+	fi
+	. $PKGMK_PKGFILE
+	
+	if [ -z $group ]; then
+		group="`echo $name | cut -d "-" -f1`"
+	fi
+	if [ "$group" == "$name" ]; then
+		unset group
+	fi
+	if [ -z "$version" ]; then
+		if [ ! -z "$group" ];then
+			if [ -f ../$group/$PKGMK_PKGFILE ];then
+				. ../$group/$PKGMK_PKGFILE
+				unset run
+				. $PKGMK_PKGFILE
+			else
+				warning "Variable 'version' not initiated or not found in $PKGMK_PKGFILE."
+			fi
+		else
+			warning "Variable 'version' not initiated or not found in $PKGMK_PKGFILE."
+		fi
+	fi
+	if [ "$PKGMK_SHOW_VERSION" == "evet" ]; then
+		echo "$version"
+		exit 0
+	fi
+	info "DERLE_KUR: $DERLE_KUR"
+	info "PAKET_KURMA: $PAKET_KURMA"
+	info "DERLEME_SANTIYE: $DERLEME_SANTIYE"
+	info "DERLEME_KAYNAKDIZIN: $DERLEME_KAYNAKDIZIN"
+
+	if [ "$DERLE_KUR" = "yok" ]; then
+		PKGMK_CLEAN="yok"
+		warning "TEMIZLIK PAS GECILDI."
+	else
+		info "PKGMK_KEEP_SOURCES: $PKGMK_KEEP_SOURCES"
+		info "PKGMK_CLEAN: $PKGMK_CLEAN"
+	fi
+	if [ "$PKGMK_CLEAN" != "yok" ]; then
+		DOSYAIZLEME_YOKSAY="evet"
+		MD5SUM_YOKSAY="evet"
+		warning "FOOTPRINT AND MD5SUM IGNORED"
+	else
+		if [ "$PKGMK_UPDATE_REPO" != "evet" ]; then
+			info "REPO_YOKSAY: $REPO_YOKSAY"
+		else
+			info "PKGMK_UPDATE_REPO: $PKGMK_UPDATE_REPO"
+		fi
+		info "DOSYAIZLEME_YOKSAY: $DOSYAIZLEME_YOKSAY"
+		info "MD5SUM_YOKSAY: $MD5SUM_YOKSAY"	
+	fi
+	if [ "$REPO_YOKSAY"  == "evet" ]; then
+		info "$REPO_DOSYASI dosyası silenecek"
+	fi
+
+	info "PKT_SIKISTIRMA: $PKT_SIKISTIRMA"
+	if [ "$PKT_SIKISTIRMA" != "yok" ]; then
+		info "PKT_SIKISTIRMA_MODU: $PKT_SIKISTIRMA_MODU"
+	fi
+
+	info "isim: ${name}"
+	if [ ! -z "$version" ]; then
+		info "versiyon: $version"
+	fi
+	if [ ! -z "$release" ]; then
+		info "surum: $release"
+	fi
+	if [ ! -z "$group" ]; then
+		info "grup: $group"
+	fi
+	PKGMK_MD5SUM="$name.`uname -m`.md5sum"
+	check_directory "$DERLEME_KAYNAKDIZIN"
+	check_directory "$PKGMK_PACKAGE_DIR"
+	check_directory "`dirname $DERLEME_SANTIYE`"
+
+	check_pkgfile
+
+	get_package_list
+
+	case $PKT_SIKISTIRMA_MODU in
+		lz|gz|bz2|xz)
+			if [ -z $TARGETS ]; then
+				TARGET="$PKGMK_PACKAGE_DIR/${name}#$version-PKGMK_ARCH.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU"
+			fi;;
+		*)
+			error "Sıkıstırma modu '$PKT_SIKISTIRMA_MODU' desteklenmiyor"
+			exit $E_GENERAL
+			;;
+	esac
+	case $PKT_SIKISTIRMA_MODU in
+		gz)  COMPRESSION="-z" ;;
+		bz2) export COMPRESSION="-j" ;;
+		xz)  export COMPRESSION="-J" ;;
+	esac
+
+	if [ "$PKGMK_CLEAN_ONLY" = "evet" ]; then
+		clean
+		remove_source
+		update_repo
+		exit 0
+	fi
+	if [ "$PKGMK_UPDATE_COLLECTION" = "evet" ]; then
+		update_collection_repo
+		exit 0
+	fi
+	if [ "$PKGMK_UPDATE_REPO" = "evet" ]; then
+		update_repo
+		exit 0
+	fi
+	if [ "$PKGMK_UPDATE_FOOTPRINT" = "evet" ]; then
+		update_footprint
+		exit 0
+	fi
+	
+	if [ "$SOZDIZIM_KONTROL" = "evet" ]; then
+		update_collection_repo
+		info "description: $description"
+		info "url: $url"
+		info "packager: $packager"
+		info "maintainer: $maintainer"
+		exit 0
+	fi
+	
+	if [ "$PKGMK_UPDATE_MD5SUM" = "evet" ]; then
+		download_source
+		check_file "$PKGMK_MD5SUM"
+		make_md5sum > $PKGMK_MD5SUM
+		info "Md5sum updated."
+		exit 0
+	fi
+
+	if [ "$PKGMK_DOWNLOAD_ONLY" = "evet" ]; then
+		download_source
+		exit 0
+	fi
+
+	if [ "$PKGMK_EXTRACT_ONLY" = "evet" ]; then
+		download_source
+		make_work_dir
+		info "Extracting sources of package '${name}-$version'."
+		unpack_source
+		exit 0
+	fi
+
+	if [ "$PKGMK_UP_TO_DATE" = "evet" ]; then
+		if [ ! -z $TARGETS ]; then
+			for TARGET in ${TARGETS[@]}; do
+				if [ "`build_needed`" = "evet" ]; then
+					info "Package '$TARGET' is not up to date."
+				else
+					info "Package '$TARGET' is up to date."
+				fi
+			done
+		else
+			if [ "`build_needed`" = "evet" ]; then
+				info "Package '$TARGET' is not up to date."
+			else
+				info "Package '$TARGET' is up to date."
+			fi
+		fi
+		exit 0
+
+	fi
+	# From here on it's need to check the base package not any group which means
+	if [ -z $TARGETS ]; then
+		TARGET=$PKGMK_PACKAGE_DIR/${name}#$version-$PKGMK_ARCH.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
+		if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ] && [ "$PKGMK_CHECK_MD5SUM" = "yok" ]; then
+			info "Package '$TARGET' is up to date."
+		else
+			download_source
+			derle
+		fi
+	else
+		FOUND=false
+		for TARGET in ${TARGETS[@]}; do
+			if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ] && [ "$PKGMK_CHECK_MD5SUM" = "yok" ]; then
+				if [ "`get_package_arch $TARGET`" = "$PKGMK_ARCH" ]; then
+					FOUND=true
+				fi
+				info "Package '$TARGET' is up to date."
+			else
+				download_source
+				derle
+				break
+			fi
+		done
+	fi
+	if [ ! -z $FOUND ] ; then
+		if [ $FOUND != true ];  then
+			download_source
+			PKGMK_BUILDVER="`get_package_builddate $TARGET`"
+			TARGET=$PKGMK_PACKAGE_DIR/${name}#$version-$PKGMK_ARCH.$PKT_UZANTISI
+			derle $TARGET
+		fi
+	fi
+	if [ "$DERLE_KUR" != "yok" ]; then
+		install_package
+	fi
+	if [ "$PKT_SIKISTIRMA" = "evet" ]; then
+		cd $PKGMK_PACKAGE_DIR
+		get_package_list
+		for TARGET in ${TARGETS[@]}; do
+			if [  "${TARGET:$((${#TARGET} - ${#PKT_UZANTISI} ))}" == "$PKT_UZANTISI" ]; then
+				compress_archive $TARGET
+			fi
+		done
+	fi
+	if [ "$PKGMK_KEEP_SOURCES" != "evet" ]; then
+		remove_source
+	fi
+	if [ "$PKGMK_CLEAN" != "yok" ]; then
+		clean
+		unset TARGETS
+		if [ "$REPO_YOKSAY" == "evet" ];then
+			clean_repo_files
+		fi
+	fi
+	if [ "$REPO_YOKSAY" != "evet" ] && [ "$PKGMK_CLEAN" != "evet" ]; then
+		update_repo
+	fi
+	if [ "$KOLEKSIYON_YOKSAY" != "evet" ]; then
+		update_collection_repo
+	fi
+	exit 0
+}
+
+trap "interrupted" SIGHUP SIGINT SIGQUIT SIGTERM
+
+export LC_ALL=POSIX
+DERLEME_AYARDOSYASI="/etc/mpsd.conf"
+readonly PKGMK_VERSION="1.0"
+readonly PKGMK_COMMAND="$0"
+readonly PKGMK_ROOT="$PWD"
+PKGMK_PACKAGE_DIR="$PWD"
+
+PKGMK_BUILDVER=`date +%s`
+#PKGMK_BUILDVER="#"
+
+PKT_UZANTISI="mps"
+
+REPO_DOSYASI=".PKGREPO"
+
+
+PKGMK_PKGFILE="talimat"
+PKGMK_MD5SUM="$name.`uname -m`.md5sum"
+PKGMK_NOSTRIP=".nostrip"
+
+PKGMK_KEEP_SOURCES="yok"
+PKGMK_CLEAN="evet"
+PAKET_KURMA="evet"
+
+PAKET_GRUPLAR=()
+PAKET_LOKAL="tr"
+
+PKGMK_SOURCE_MIRRORS=()
+DERLEME_KAYNAKDIZIN="$PWD"
+DERLEME_SANTIYE="$PWD/work"
+PKGMK_DOWNLOAD="yok"
+DOSYAIZLEME_YOKSAY="evet"
+PKGMK_IGNORE_NEW="evet"
+MD5SUM_YOKSAY="evet"
+SURUM_YOKSAY="yok"
+REPO_YOKSAY="evet"
+KOLEKSIYON_YOKSAY="evet"
+PKGMK_IGNORE_RUNTIMEDEPS="evet"
+
+PKGMK_NO_STRIP="yok"
+
+PKT_SIKISTIRMA_MODU="lz"
+
+PKT_SIKISTIRMA="yok"
+
+DERLE_KUR="yok"
+PKGMK_RECURSIVE="yok"
+
+PKGMK_DOWNLOAD_ONLY="yok"
+PKGMK_EXTRACT_ONLY="yok"
+PKGMK_IGNORE_UNPACK="yok"
+PKGMK_UP_TO_DATE="yok"
+PKGMK_UPDATE_FOOTPRINT="yok"
+PKGMK_FORCE="yok"
+PKGMK_KEEP_WORK="yok"
+
+PKGMK_UPDATE_MD5SUM="yok"
+PKGMK_CHECK_MD5SUM="yok"
+
+main "$@"
+
+# End of file

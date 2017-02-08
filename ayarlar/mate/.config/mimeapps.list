@@ -1,0 +1,5 @@
+[Default Applications]
+application/octet-stream=geany.desktop
+
+[Added Associations]
+application/octet-stream=geany.desktop;
