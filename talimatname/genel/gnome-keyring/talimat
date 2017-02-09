@@ -1,0 +1,27 @@
+# Description: Gnome keyring functions
+# URL: http://www.gnome.org/
+# Packager: milisarge
+# Depends on: libgcrypt libtasn1 gcr
+
+name=gnome-keyring
+version=3.20
+release=1
+source=(http://ftp.acc.umu.se/pub/GNOME/sources/$name/$version/$name-$version.0.tar.xz)
+
+build(){
+	cd $name-$version.0
+
+	sed -i -e "s/USE_NLS=yes/USE_NLS=no/" \
+				 -e "s/ENABLE_NLS 1/ENABLE_NLS 0/" configure
+	export CFLAGS="$CFLAGS -D_GNU_SOURCE"
+	./configure --prefix=/usr \
+					--mandir=/usr/man \
+					--sysconfdir=/etc \
+					--disable-gtk-doc \
+					--disable-nls
+	make 
+	make DESTDIR=$PKG install
+
+	rm -rf $PKG/usr/share/gtk-doc
+
+}

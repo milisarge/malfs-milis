@@ -1,7 +1,9 @@
+
 # Description: Genişletilebilir, özelleştirilebilir, gerçek-zamanlı bir editör.
 # URL: https://www.gnu.org/software/emacs/
 # Packager: dei
 # Depends on: gtk2 desktop-file-utils libjpeg-turbo giflib
+
 
 name=emacs
 version=24.5

@@ -1,0 +1,17 @@
+# Description: Network sniffer with command line interface
+# URL:         http://www.tcpdump.org
+# Packager  :  milisarge
+# Depends on:  libpcap
+
+name=tcpdump
+version=4.9.0
+release=1
+source=(http://www.tcpdump.org/release/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --enable-ipv6 
+    make
+    make DESTDIR=$PKG install
+    rm $PKG/usr/sbin/tcpdump.$version
+}

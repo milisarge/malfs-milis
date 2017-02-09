@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8.6"
+versiyon="0.8.8"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -128,7 +128,6 @@ paket_sil(){
 					rm -f /tmp/$paket.sil
 				else
 					rm -f /tmp/$paket.sil
-					exit 1
 				fi
 				
 			else
@@ -337,6 +336,14 @@ paket_sil_oto(){
 	done
 }
 
+paket_sil_oto_onayli(){
+	local spkt
+	cat $1
+	for spkt in `cat $1`;do
+		paket_sil "$spkt"
+	done
+}
+
 paket_guncelle(){
 	surum_kontrol $1
 	devir_kontrol $1
@@ -489,6 +496,24 @@ bagimli_bilgi(){
 		done
 	fi
 	echo "$1" "`kurulu_kontrol $1`"
+	
+}
+
+bagimli_bilgi_dosyala(){
+	rm -f "$1.gerekler.liste"
+	local bagimd konum bag
+	konum="`find "$talimatname_dizin" -name $1`"
+	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
+	if [ -n "$bagimd" ]; then
+		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+		#sıralı gösterme
+		#echo `echo "$bagimd" | sed 's/,/ /g'`
+		#kurulu kontrollu gosterim
+		for bag in $bagimd;do
+			echo $bag >> "$1.gerekler.liste"
+		done
+	fi
+	echo "$1" >> "$1.gerekler.liste"
 	
 }
 
@@ -694,7 +719,13 @@ dosyadan_talimat_islem(){
 	then 
 		ryaz 32 "talimat linkten cekilecek"
 		gdosya=`mktemp`
-		wget $dosya -O $gdosya
+		wget $2 $dosya -O $gdosya
+		dosya=$gdosya
+	fi
+	if [[ $2 =~ "-6" ]]; then 
+		ryaz 32 "talimat linkten cekilecek"
+		gdosya=`mktemp`
+		wget $2 $dosya -O $gdosya
 		dosya=$gdosya
 	fi
 	if [ ! -f $dosya ];then
@@ -960,6 +991,9 @@ ayarlar() {
 				paket_sil "$2" ;;
 			-sz|zorsil)
 				paket_sil "$2" "evet";;	
+			-S|silgrub)
+				mps -bbd "$2"
+				paket_sil_oto_onayli "$2.gerekler.liste" ;;
 			-pa|ara)
 				paket_ara "$2" ;;
 			bul)
@@ -1106,6 +1140,8 @@ ayarlar() {
 				ryaz 32 $sunucu ;;
 			-bb|--pkbb)
 				bagimli_bilgi "$2" | column -t;;
+			-bbd)
+				bagimli_bilgi_dosyala "$2" ;;
 			-tb|--pktb)
 				ters_bagimli "$2" ;;
 			-tbk|--pktbk)
@@ -1155,7 +1191,7 @@ ayarlar() {
 			-suko)
 				sunucu_kontrol ;;
 			-dota)
-				dosyadan_talimat_islem $2 ;;
+				dosyadan_talimat_islem $2 $3 ;;
 			-cf|--config-file)
 				if [ ! "$2" ]; then
 					echo "ayardosyası gerek $1"

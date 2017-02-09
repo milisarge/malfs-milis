@@ -1,0 +1,19 @@
+# Description: PDF ve Postscript gibi dosyalar için belge görüntüleyici. X-Apps Projesi.
+# URL: https://github.com/linuxmint/xreader
+# Packager: milisarge yasarciv
+# Depends on: ghostscript poppler-glib djvulibre desktop-file-utils gsettings-desktop-schemas gtk3 gtk2 libsecret mate-common yelp-tools
+
+name=xreader
+version=1.2.2
+release=1
+source=(https://github.com/linuxmint/$name/archive/$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./autogen.sh --prefix="/usr" \
+         --localstatedir="/var" \
+         --libexecdir="/usr/lib/$name" \
+        --disable-caja --disable-nemo
+    make
+make DESTDIR=$PKG install
+}

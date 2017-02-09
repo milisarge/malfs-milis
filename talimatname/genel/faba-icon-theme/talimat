@@ -1,0 +1,17 @@
+# Description: Faba, Tango etkileri ile seksi ve modern bir simge teması. Faba için tüm varyasyonlar ve ek temalar, bu temel temayı gerektirir. Faba Icon Teması, GNU LGPL-3.0 + veya CC-BY-SA-4.0 şartları kapsamında dağıtılır
+# URL: https://github.com/snwh/faba-icon-theme
+# Packager: yasarciv
+# Depends on: gtk-update-icon-cache
+
+
+name=faba-icon-theme
+version=4.1.2
+release=1
+source=(https://github.com/snwh/$name/archive/v$version.tar.gz)
+
+build() {
+cd $name-$version
+        bash autogen.sh --prefix=/usr
+		make
+		make DESTDIR=$PKG install
+}

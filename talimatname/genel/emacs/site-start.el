@@ -1,4 +1,4 @@
 (set-language-environment "latin-1")
-(set-locale-environment "fr_FR")
+(set-locale-environment "tr_TR")
 (set-foreground-color "GreenYellow")
 (set-background-color "black")
