@@ -1,27 +1,26 @@
-
-# Description: Genişletilebilir, özelleştirilebilir, gerçek-zamanlı bir editör.
-# URL: https://www.gnu.org/software/emacs/
-# Packager: dei
-# Depends on: gtk2 desktop-file-utils libjpeg-turbo giflib
-
+# Description:  özellikle genişletilebilir,ilişkili gerçek zamanlı metin editörü
+# URL:         	https://www.gnu.org/software/emacs/
+# Packager:		milisarge
+# Depends on:  	gtk2 desktop-file-utils libjpeg-turbo giflib
 
 name=emacs
 version=24.5
 release=1
+
 source=(https://ftp.gnu.org/pub/gnu/emacs/$name-$version.tar.xz
 		site-start.el)
 
 build () {
 
     cd $name-$version
-
+    
 	./configure --prefix=/usr        \
             --without-gnutls     \
             --localstatedir=/var
     make
 	make DESTDIR=$PKG install
 	chown -v -R root:root $PKG/usr/share/emacs/24.5
-
+	
 	install -v -m755 -d $PKG/usr/share/emacs/site-lisp
 	cp -v  $SRC/site-start.el $PKG/usr/share/emacs/site-lisp/site-start.el
 
