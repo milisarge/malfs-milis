@@ -11,7 +11,7 @@
 
 newgroup=pppusers
 newid=52
-getent group $newgroup > /dev/null || /usr/sbin/groupadd -g $newid $newgroup
+getent group $newgroup > /dev/null || /sbin/groupadd -g $newid $newgroup
 
 case "$1" in
     start)

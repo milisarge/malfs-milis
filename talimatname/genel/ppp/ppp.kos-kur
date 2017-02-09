@@ -1,4 +1,4 @@
-if [ -z "`grep '^pppusers:' etc/group`" ]
+if [ -z "`grep '^pppusers:' /etc/group`" ]
 then
-  sbin/groupadd -g 52 pppusers
+  /sbin/groupadd -g 52 pppusers
 fi
