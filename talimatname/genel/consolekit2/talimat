@@ -1,12 +1,11 @@
 # Description: framework for defining and tracking users, login sessions, and seats
 # URL: https://github.com/ConsoleKit2/ConsoleKit2
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: acl dbus glib xorg-libx11 polkit eudev pam zlib xmlto
 
 name=consolekit2
 version=1.0.0
 release=2
-
 source=(https://github.com/Consolekit2/ConsoleKit2/releases/download/$version/ConsoleKit2-$version.tar.bz2
         consolekit2.tmpfiles.conf
 	75-consolekit2.rules

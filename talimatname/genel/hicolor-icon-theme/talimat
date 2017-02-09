@@ -1,11 +1,11 @@
-# Description: Freedesktop.org Hicolor icon theme
+# Description: Freedesktop.org Hicolor icon temasi
 # URL: http://icon-theme.freedesktop.org/wiki/HicolorTheme
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=hicolor-icon-theme
 version=0.15
 release=1
-
 source=(  http://ftp.osuosl.org/pub/blfs/conglomeration/hicolor-icon-theme/$name-$version.tar.xz)
 
 build() {

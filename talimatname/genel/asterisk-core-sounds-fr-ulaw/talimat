@@ -1,7 +1,7 @@
-# Description:	Asterisk temel sesleri.
-# URL:		    http://www.asterisk.org
-# Packager:     berlius at nutyx dot com
-# Depends on:   asterisk
+# Description: Asterisk temel sesleri.
+# URL: http://www.asterisk.org
+# Packager: milisarge
+# Depends on: asterisk
 
 name=asterisk-core-sounds-fr-ulaw
 version=1.4.27
@@ -12,7 +12,5 @@ build () {
 
     install -d -m 750 $PKG/var/lib/asterisk/sounds
     mv $SRC/* $PKG/var/lib/asterisk/sounds
-	
+
 }
-
-

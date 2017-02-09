@@ -1,6 +1,6 @@
-# Description: C library for encoding, decoding and manipulating JSON data.
-# URL:         http://www.digip.org/jansson/
-# Packager:    milisarge
+# Description: JSON verisini encode, decode etmek ve düzenlemek için C kütüphanesi
+# URL: http://www.digip.org/jansson/
+# Packager: milisarge
 # Depends on:
 
 name=jansson
@@ -18,5 +18,5 @@ build() {
 
     make
     make DESTDIR=$PKG install
-	
+
 }

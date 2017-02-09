@@ -6,7 +6,6 @@
 name=ebook-tools
 version=0.2.2
 release=1
-
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 build() {
@@ -22,4 +21,3 @@ make DESTDIR=$PKG install
 install -Dm644 $SRC/$name-$version/LICENSE \
      $PKG/usr/share/licenses/$name/LICENSE
 }
-

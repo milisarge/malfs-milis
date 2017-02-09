@@ -1,7 +1,7 @@
-# Description: 	Drop-down terminal for GNOME
-# URL: 			http://guake-project.org/
-# Packager:		milisarge aydinyakar
-# Depends on: 	intltool gnome-common python-notify vte python-vte python-gconf dbus-python python-keybinder python-xdg libutempter 
+# Description: Drop-down terminal for GNOME
+# URL: http://guake-project.org/
+# Packager: milisarge aydinyakar
+# Depends on: intltool gnome-common python-notify vte python-vte python-gconf dbus-python python-keybinder python-xdg libutempter
 
 name=guake
 version=0.8.7
@@ -21,5 +21,5 @@ build() {
 	make
 	make DESTDIR="$PKG" install
 	python2 -m compileall "$PKG"/usr/lib/python2.7/site-packages/guake/
-	
+
 }

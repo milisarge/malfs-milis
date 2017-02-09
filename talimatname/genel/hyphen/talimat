@@ -1,19 +1,17 @@
 # Description: High quality hyphenation and justification library based on the TeX hyphenation algorithm.
 # URL: http://hunspell.sourceforge.net/
-# Packager: fanch at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
 
 name=hyphen
 version=2.8.8
 release=1
-
 source=( http://downloads.sourceforge.net/hunspell/$name-$version.tar.gz)
 
 build() {
 	cd $name-$version
         ./configure --prefix=/usr \
-		    --disable-static 
+		    --disable-static
         make
         make DESTDIR=$PKG install
 }
-

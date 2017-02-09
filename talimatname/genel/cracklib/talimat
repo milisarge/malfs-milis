@@ -1,11 +1,11 @@
 # Description: Library to enforce passwords by comparing user selected passwords to words lists
 # URL: http://sourceforge.net/projects/cracklib/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=cracklib
 version=2.9.6
 release=1
-
 source=(https://github.com/cracklib/cracklib/releases/download/$name-$version/$name-$version.tar.gz
 	https://github.com/cracklib/cracklib/releases/download/$name-$version/$name-words-2.9.6.gz)
 

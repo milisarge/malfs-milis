@@ -1,12 +1,13 @@
 # Description: OpenPrinting CUPS Filters
 # URL: http://www.cups.org
 # Packager: milisarge
-# Depends on: bc cups lcms2 poppler qpdf libjpeg-turbo libpng libtiff ghostscript avahi ijs harfbuzz 
+# Depends on: bc cups lcms2 poppler qpdf libjpeg-turbo libpng libtiff ghostscript avahi ijs harfbuzz
+
 name=cups-filters
 version=1.8.3
 release=1
-
 source=( http://www.openprinting.org/download/$name/$name-$version.tar.xz)
+
 build() {
 cd $name-$version
 ./configure --prefix=/usr                   \
@@ -15,7 +16,7 @@ cd $name-$version
             --without-rcdir                 \
             --disable-static                \
             --with-gs-path=/usr/bin/gs      \
-            --with-pdftops-path=/usr/bin/gs 
+            --with-pdftops-path=/usr/bin/gs
 make
 make DESTDIR=$PKG install
 }

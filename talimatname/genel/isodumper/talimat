@@ -1,4 +1,4 @@
-# Description: A tool for writing ISO images on a USB stick. It's a fork of usb-imagewriter.
+# Description: ISO imajlarini USB belleğe yazdırmak için usb-imagewriter temelli bir program
 # URL: https://github.com/papoteur-mga/isodumper
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: intltool imagemagick coreutils pango polkit procps-ng python-gtk python-cairo python-gobject2 libglade python dbus-python python-parted udisks2 xorg-term
@@ -6,7 +6,6 @@
 name=isodumper
 version=0.48
 release=1
-
 source=( http://gitweb.mageia.org/software/isodumper/snapshot/$name-$version.tar.gz
          header.png
          header.svg)

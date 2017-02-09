@@ -1,7 +1,7 @@
 # Description: A Gnutella server/client
-# URL:         http://gtk-gnutella.sourceforge.net/
-# Packager:    milisarge
-# Depends on:  desktop-file-utils gtk2
+# URL: http://gtk-gnutella.sourceforge.net/
+# Packager: milisarge
+# Depends on: desktop-file-utils gtk2
 
 name=gtk-gnutella
 version=devel

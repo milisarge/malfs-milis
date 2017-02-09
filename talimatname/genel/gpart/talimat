@@ -1,12 +1,11 @@
 # Description: Partition table rescue/guessing tool.
 # URL: https://github.com/baruch/gpart
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
 
 name=gpart
 version=0.2.2
 release=1
-
 source=(https://github.com/baruch/${name}/archive/v${version}.tar.gz)
 
 build() {

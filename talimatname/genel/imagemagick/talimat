@@ -1,7 +1,7 @@
-# Description: An image viewing/manipulation program
+# Description: İmaj dosyaları için görüntüleme/düzenleme programı
 # URL: URL: http://www.imagemagick.org/
 # Packager: milisarge
-# Depends on: freetype ghostscript lcms libgsf giflib libxml2 openexr libwmf libpng librsvg libwebp djvulibre 
+# Depends on: freetype ghostscript lcms libgsf giflib libxml2 openexr libwmf libpng librsvg libwebp djvulibre
 
 name=imagemagick
 version=6.9.3-6
@@ -14,7 +14,7 @@ build () {
 
     [ "`uname -m`" == "i686"   ] && EXTRAOPTS="--with-gcc-arch=i686"
     [ "`uname -m`" == "x86_64"   ] && EXTRAOPTS="--with-gcc-arch=x86-64"
-    
+
     sed '/AC_PATH_XTRA/d' -i configure.ac
 
     ./configure --prefix=/usr \

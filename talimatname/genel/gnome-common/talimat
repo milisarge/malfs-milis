@@ -1,9 +1,7 @@
 # Description: Common macros pour GNOME 3 (GIT Version)
 # URL: http://www.gnome.org
-# Maintainer: http://linuxfromscratch.org/
 # Packager: milisarge
-# Depends on: 
- 
+# Depends on:
 
 name=gnome-common
 version=3.18.0

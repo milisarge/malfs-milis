@@ -1,18 +1,18 @@
 # Description: Feature-rich cron implementation
 # URL: http://fcron.free.fr
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
 
 name=fcron
 version=3.2.0
 release=1
-
 source=(http://fcron.free.fr/archives/$name-$version.src.tar.gz )
+
 build() {
 unset MAKEFLAGS
-source /etc/blfs-bootscripts                                                                                                            
-wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2                                                
-tar xf $scripts-$scriptsversion.tar.bz2                                                                                                 
+source /etc/blfs-bootscripts
+wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xf $scripts-$scriptsversion.tar.bz2
 # build package
 cd $name-$version
 ./configure --prefix=/usr --sysconfdir=/etc \

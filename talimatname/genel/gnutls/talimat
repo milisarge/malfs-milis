@@ -1,12 +1,11 @@
 # Description: Provide a secure layer over a reliable transport layer proposed by the IETF's TLS group.
 # URL: http://www.gnu.org/software/gnutls/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libtasn1 nettle libidn p11-kit
 
 name=gnutls
 version=3.4.9
 release=1
-
 source=(ftp://ftp.gnutls.org/gcrypt/$name/v${version:0:3}/$name-$version.tar.xz)
 
 build() {

@@ -1,6 +1,6 @@
 # Description: Bir Atomic Bomberman klonu (SDL/MultiPlayer/Network).
 # URL: http://www.bomberclone.de/
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: sdl-mixer sdl-image
 
 name=bomberclone
@@ -24,5 +24,3 @@ build() {
 	make DESTDIR=$PKG install
 
 }
-
-

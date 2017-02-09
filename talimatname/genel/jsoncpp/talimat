@@ -1,5 +1,5 @@
-# Description:	JSON library
-# URL:		http://jsoncpp.sourceforge.net/
+# Description: JSON C++ kütüphanesi
+# URL: http://jsoncpp.sourceforge.net/
 # Packager: milisarge
 # Depends on:	scons
 

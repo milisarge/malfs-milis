@@ -1,19 +1,18 @@
 # Description: DOS filesystem utilities
-# URL: 
+# URL:
 # Packager: milisarge
-# Depends on: 
+# Depends on:
 
 name=dosfstools
 version=3.0.13
 release=1
-
 source=( ftp://ftp.debian.org/debian/pool/main/d/$name/$name\_$version.orig.tar.xz)
 
 build() {
 cd $name-$version
 make
 mkdir -p $PKG/sbin
-mkdir -p $PKG/usr/share/man/man8 
+mkdir -p $PKG/usr/share/man/man8
 cp dosfsck $PKG/sbin
 cp man/* $PKG/usr/share/man/man8
 cp mkdosfs $PKG/sbin

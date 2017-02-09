@@ -1,13 +1,12 @@
-# Description: 	Kaynak kodu otomatik konfigüre etmek için bir GNU aracı. (Legacy 2.1x version)
-# URL:         http://www.gnu.org/software/autoconf/
-# Packager:    alihan-ozturk28@hotmail.com
-# Depends on:  
+# Description: Kaynak kodu otomatik konfigüre etmek için bir GNU aracı. (Legacy 2.1x version)
+# URL: http://www.gnu.org/software/autoconf/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on:
 
 name=autoconf2
+_name=autoconf
 version=2.13
 release=1
-_name=autoconf
-
 source=( http://mirror.rackdc.com/gnu/${_name}/${_name}-$version.tar.gz)
 
 build() {
@@ -22,5 +21,3 @@ make prefix="$PKG/usr" infodir="$PKG/usr/share/info" install
 rm -rf $PKG/usr/share/info/dir
 
 }
-
-

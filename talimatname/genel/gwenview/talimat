@@ -1,4 +1,4 @@
-# Description :  fast and easy to use image viewer for KDE 5
+# Description :  KDE icin 5 hizli ve basit bir imaj goruntuleme araci
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: qt5 kf5-extra-cmake-modules phonon-qt5 kf5-kio kf5-kactivities kf5-kdelibs4support libjpeg-turbo libpng exiv2 lcms2 kf5-baloo hicolor-icon-theme libkdcraw libkipi
@@ -6,7 +6,6 @@
 name=gwenview
 version=16.08.2
 release=1
-
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
 
 build() {
@@ -17,8 +16,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DGWENVIEW_SEMANTICINFO_BACKEND="Baloo" \
       -DBUILD_TESTING=OFF         \
       -Wno-dev
-      
+
 make
 make DESTDIR=$PKG install
 }
-

@@ -8,6 +8,7 @@ version=1.6.11
 release=1
 source=(https://github.com/arduino/Arduino/archive/$version.tar.gz
 		arduino.sh)
+
 build() {
 cd "Arduino-${version}/build"
     export PATH=/opt/OpenJDK-8u60-bin/jre/bin/:$PATH

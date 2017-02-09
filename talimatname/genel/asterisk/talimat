@@ -1,6 +1,6 @@
-# Description: PBX yazılım implementasyonu. 
+# Description: PBX yazılım implementasyonu.
 # URL:         http://www.asterisk.org
-# Packager:    berlius at nutyx dot com
+# Packager:    milisarge
 # Depends on:  openssl ncurses jansson opus libxml2 doxygen
 
 name=asterisk
@@ -81,5 +81,3 @@ build () {
     done
 
 }
-
-

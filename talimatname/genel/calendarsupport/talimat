@@ -1,12 +1,11 @@
-# Description : Calendar support library
-# URL : https://community.kde.org/KDE_PIM
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : kdepim-apps-libs pimcommon kholidays akonadi-calendar kf5-extra-cmake-modules kf5-kdoctools qt5
+# Description: KDE icin takvim destegi
+# URL: https://community.kde.org/KDE_PIM
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kdepim-apps-libs pimcommon kholidays akonadi-calendar kf5-extra-cmake-modules kf5-kdoctools qt5
 
 name=calendarsupport
 version=16.08.2
 release=1
-
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
 
 build() {
@@ -15,7 +14,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr       \
         -DCMAKE_INSTALL_LIBDIR=lib        \
         -DBUILD_TESTING=OFF
-        
+
   make
   make DESTDIR=$PKG install
 }

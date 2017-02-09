@@ -1,13 +1,11 @@
 # Description: Python bindings for DBUS
 # URL: http://dbus.freedesktop.org/
-# Packager: pierre at nutyx dot org
-# Depends on: python python3 dbus-glib 
-run=( python python3 )
+# Packager: milisarge
+# Depends on: python python3 dbus-glib
 
 name=dbus-python
 version=1.2.2
 release=1
-
 source=(http://pkgs.fedoraproject.org/repo/pkgs/dbus-python/dbus-python-1.2.2.tar.gz/d1f2c7ba976d457206caf57d20b5cb5d/dbus-python-1.2.2.tar.gz)
 
 build() {

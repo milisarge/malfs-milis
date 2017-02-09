@@ -1,6 +1,6 @@
 # Description:	Asterisk temel sesleri.
 # URL:		    http://www.asterisk.org
-# Packager:     berlius at nutyx dot com
+# Packager:     milisarge
 # Depends on:   asterisk
 
 name=asterisk-core-sounds-fr-alaw
@@ -14,5 +14,3 @@ build () {
     mv $SRC/* $PKG/var/lib/asterisk/sounds
 
 }
-
-

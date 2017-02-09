@@ -1,6 +1,6 @@
-# Description: Komut satırı tabanlı durdurma ve dilimli indirme özellikleri olan hızlı bir indirme yöneticisi. 
+# Description: Komut satırı tabanlı durdurma ve dilimli indirme özellikleri olan hızlı bir indirme yöneticisi.
 # URL:         http://aria2.sourceforge.net/
-# Packager:    berlius at nutyx dot com
+# Packager:    milisarge
 # Depends on:  gnutls gmp libxml2
 
 name=aria2
@@ -14,11 +14,9 @@ build() {
 
     ./configure \
 	   --prefix=/usr \
-	   --mandir=$PKG/usr/man 
+	   --mandir=$PKG/usr/man
 
     make
     make prefix=$PKG/usr install
 
 }
-
-

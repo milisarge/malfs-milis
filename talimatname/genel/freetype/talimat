@@ -1,14 +1,12 @@
 # Description: TrueType font rendering library
 # URL: http://www.freetype.org
-# Packager: pierre at nutyx dot org
-# Depends on: libpng 
+# Packager: milisarge
+# Depends on: libpng
 
 name=freetype
 version=2.6.3
 release=1
-
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
-
 
 build() {
 cd $name-$version

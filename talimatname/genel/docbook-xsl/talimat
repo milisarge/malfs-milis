@@ -1,12 +1,11 @@
 # Description: XML stylesheets for Docbook-xml transformations
 # URL:  http://scrollkeeper.sourceforge.net/docbook.shtml
-# Packager: pierre at nutyx dot org
-# Depends on: libxml2 docbook-xml 
+# Packager: milisarge
+# Depends on: libxml2 docbook-xml
 
 name=docbook-xsl
 version=1.79.1
 release=2
-
 source=(http://downloads.sourceforge.net/docbook/$name-$version.tar.bz2
 	 http://downloads.sourceforge.net/docbook/docbook-xsl-doc-$version.tar.bz2)
 
@@ -29,5 +28,5 @@ install -v -m755    RELEASE-NOTES* NEWS* \
 $PKG/usr/share/doc/docbook-xsl-$version
 cp -v -R doc/* \
 $PKG/usr/share/doc/docbook-xsl-$version
-chown 0:0 -R $PKG 
+chown 0:0 -R $PKG
 }

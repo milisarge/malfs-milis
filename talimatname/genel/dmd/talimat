@@ -1,11 +1,11 @@
 # Description: The D programming language reference compiler
 # URL: http://www.dlang.org
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: unzip
+
 name=dmd
 version=2.068.1
 release=1
-
 source=(http://downloads.dlang.org/releases/2015/dmd.$version.zip
 dmd.desktop dmd.logo_48.png)
 
@@ -31,7 +31,7 @@ build(){
     cd $SRC/dmd2/src/phobos
     make -f posix.mak MODEL=$archstr DMD=../dmd/dmd
     install -Dm644 generated/linux/release/$archstr/libphobos2.a \
-        $PKG/usr/lib/libphobos2.a 
+        $PKG/usr/lib/libphobos2.a
 
     # Elf file dumper
     install -Dm755 $SRC/dmd2/linux/bin$archstr/dumpobj \
@@ -52,7 +52,7 @@ build(){
     mkdir -p $PKG/etc
     echo -e "[Environment]\nDFLAGS=-I/usr/include/d -L-L/usr/lib -L--no-warn-search-mismatch -L--export-dynamic" \ > $PKG/etc/dmd.conf
 
-    # D samples 
+    # D samples
     mkdir -p $PKG/usr/share/d/samples/
     cp -r $SRC/dmd2/samples/d/* $PKG/usr/share/d/samples/
 
@@ -72,7 +72,7 @@ build(){
     # doc
     mkdir -p $PKG/usr/share/doc/$pkgname-$pkgver/
     cp -Rf html/d/* $PKG/usr/share/doc/$pkgname-$pkgver/
-                
+
     # desktop integration
     install -Dm644 $SRC/$name.desktop \
         $PKG/usr/share/applications/$name.desktop

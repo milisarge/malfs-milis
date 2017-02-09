@@ -1,12 +1,11 @@
-# Description: Firmwares for wifi IPW2100 Intel Centrino
+# Description: IPW2100 Intel Centrino wifi için sürücüler
 # URL: http://ipw2100.sourceforge.net/
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
 
 name=ipw2100-fw
 version=1.3
 release=1
-
 source=(http://downloads.nutyx.org/files/$name-$version.tgz)
 
 build() {

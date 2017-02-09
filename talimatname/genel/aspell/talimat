@@ -1,11 +1,11 @@
 # Description: İnteraktif yazım denetimi programı ve kütüphaneleri.
 # URL: http://aspell.net
-# Packager: tnut at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=aspell
 version=0.60.6.1
 release=1
-
 source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
@@ -19,4 +19,3 @@ install -v -m 755 scripts/ispell $PKG/usr/bin/
 install -v -m 755 scripts/spell $PKG/usr/bin/
 rm $PKG/usr/share/info/dir
 }
-  

@@ -7,6 +7,7 @@ name=cppunit
 version=1.13.2
 release=1
 source=(http://dev-www.libreoffice.org/src/$name-$version.tar.gz)
+
 build() {
 cd $name-$version
 ./configure --prefix=/usr --disable-static

@@ -1,4 +1,4 @@
-# Description:  The GO programming language
+# Description:  GO Programlama dili
 # URL:          http://golang.org/
 # packager: milisarge@gmail.com
 # Depends on: git mercurial
@@ -11,7 +11,7 @@ case "`uname -m`" in
     x86_64) GOARCH=amd64 ;;
     i686) GOARCH=386 ;;
 esac
-  
+
 source=(https://storage.googleapis.com/golang/${name}${version}.linux-$GOARCH.tar.gz)
 
 build() {

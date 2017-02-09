@@ -1,13 +1,13 @@
-# Description: A powerful GUI for Git
+# Description: Git icin guclu bir grafik kullanici arayuzu
 # URL:  http://git-cola.github.com/
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: git python-qt4 icu gvim
 
 name=git-cola
 version=2.1.1
 release=2
-
 source=(https://github.com/git-cola/git-cola/archive/v$version.zip)
+
 build() {
 	cd $SRC/${name}-$version
 	/usr/bin/python setup.py install --root=$PKG

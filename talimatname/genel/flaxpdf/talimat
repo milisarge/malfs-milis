@@ -1,12 +1,12 @@
 # Description: A simple FLTK PDF viewer
 # URL: https://github.com/clbr/flaxpdf
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: fltk1 poppler lzo
 
 name=flaxpdf
 version=20152609
 release=1
+source()
 
 build() {
 	git clone https://github.com/clbr/flaxpdf.git
@@ -16,10 +16,9 @@ build() {
 	touch config/config.rpath
 	./autogen.sh
 
-   ./configure --prefix=/usr 
+   ./configure --prefix=/usr
 
 	make
 
 	make DESTDIR="$PKG" install
 }
-

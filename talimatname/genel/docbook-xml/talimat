@@ -1,6 +1,6 @@
 # Description: An document type definitions for verification of XML data files against the DocBook rule set.
 # URL: http://www.docbook.org/
-# Maintainer: Matt Housh, jaeger at crux dot ninja
+# Packager: milisarge
 # Depends on: libxml2 unzip
 
 name=docbook-xml

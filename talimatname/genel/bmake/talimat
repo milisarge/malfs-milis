@@ -1,11 +1,11 @@
 # Description: NetBSD 'make' inşa aracının taşınabilir bir sürümü.
 # URL: http://www.crufty.net/help/sjg/bmake.html
-# Packager: tnut at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=bmake
 version=20150910
 release=1
-
 source=(http://www.crufty.net/ftp/pub/sjg/bmake-$version.tar.gz)
 
 build(){

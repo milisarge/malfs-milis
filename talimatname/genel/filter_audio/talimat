@@ -1,8 +1,7 @@
 # Description: An easy to use audio filtering library made from webrtc code.
 # URL: https://github.com/irungentoo/filter_audio
-# Maintainer: milisarge
 # packager: milisarge
-# Depends on: 
+# Depends on:
 
 name=filter_audio
 version=master

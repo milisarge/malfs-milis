@@ -1,12 +1,11 @@
-# Description: Spell checker and morphological analyzer library and program 
+# Description: Yazım denetimi ve morfolojik analizler için kütüphane ve uygulama
 # URL: http://hunspell.sourceforge.net/
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
 
 name=hunspell
 version=1.3.3
 release=1
-
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 build() {
@@ -19,4 +18,3 @@ build() {
         make
         make DESTDIR=$PKG install
 }
-

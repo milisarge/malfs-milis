@@ -1,13 +1,11 @@
 # Description: Libraries used for creating graphical user interfaces for applications.
 # URL: http://www.gtk.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: adwaita-icon-theme libepoxy xorg-libxinerama,xorg-libxrandr,xorg-libxcursor,at-spi2-atk,cups,colord,xorg-libxi,atk,cairo,pango,pangox-compat,gdk-pixbuf,gtk-update-icon-cache
-run=(adwaita-icon-theme)
 
 name=gtk3
 version=3.18.7
 release=1
-
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
 
 build() {

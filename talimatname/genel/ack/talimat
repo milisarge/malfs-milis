@@ -1,7 +1,7 @@
-# Description: Kaynak kod içerisinde arama yapmayı sağlayan grep benzeri bir araç. 
+# Description: Kaynak kod içerisinde arama yapmayı sağlayan grep benzeri bir araç.
 # URL:         http://beyondgrep.com/
-# Packager:    berlius at nutyx dot com
-# Depends on:  
+# Packager:    milisarge
+# Depends on:
 
 name=ack
 version=2.14
@@ -13,5 +13,3 @@ build() {
     mkdir -p $PKG/usr/man/man1
     pod2man $PKG/usr/bin/$name > $PKG/usr/man/man1/$name.1
 }
-
-

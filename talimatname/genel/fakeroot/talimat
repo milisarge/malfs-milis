@@ -1,11 +1,11 @@
 # Description: Gives a fake root environment.
 # URL: http://packages.debian.org/fakeroot
-# Packager: alienus at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=fakeroot
 version=1.20.2
 release=1
-
 source=(http://ftp.debian.org/debian/pool/main/f/$name/${name}_${version}.orig.tar.bz2)
 
 build() {

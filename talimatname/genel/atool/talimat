@@ -1,14 +1,12 @@
 # Description: çeşitli dosya arşivleri yönetmek için bir betik.
 # URL: URL: http://www.nongnu.org/atool/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=atool
 version=0.39.0
 release=1
-
-source=(
-http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
+source=(http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
 
 build(){
     cd $name-$version
@@ -16,7 +14,3 @@ build(){
     make
     make prefix=$PKG/usr install
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)

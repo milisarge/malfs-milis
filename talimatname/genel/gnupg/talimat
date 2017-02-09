@@ -1,11 +1,11 @@
 # Description: Complete and free implementation of the OpenPGP standard
 # URL: http://www.gnupg.org/
-# Packager: pierre at nutyx dot org
-# Depends on: npth libgpg-error libgcrypt libassuan libksba pinentry openldap libusb-compat curl 
+# Packager: milisarge
+# Depends on: npth libgpg-error libgcrypt libassuan libksba pinentry openldap libusb-compat curl
+
 name=gnupg
 version=2.1.11
 release=1
-
 source=(ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-$version.tar.bz2)
 
 build() {

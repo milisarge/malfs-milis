@@ -7,15 +7,13 @@ name=advcp
 _name=coreutils
 version=8.24
 release=1
-
 source=(ftp://ftp.gnu.org/gnu/$_name/$_name-$version.tar.xz
 		advcpmv-${version}.patch)
-
 
 build() {
   export FORCE_UNSAFE_CONFIGURE=1
   cd ${SRC}/${_name}-${version}
-    
+
   patch -p1 -i ${SRC}/advcpmv-${version}.patch
 
   ./configure --prefix=/usr \

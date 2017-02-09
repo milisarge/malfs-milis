@@ -1,14 +1,11 @@
 # Description: Alsa ses desteğini ayarlamak ve kullanmak için çeşitli araçlar.
 # URL: http://www.alsa-project.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: alsa-lib xmlto libsamplerate gawk
-
-run=(gawk)
 
 name=alsa-utils
 version=1.1.0
 release=1
-
 source=(ftp://ftp.alsa-project.org/pub/utils/$name-$version.tar.bz2)
 
 build() {

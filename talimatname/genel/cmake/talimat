@@ -1,11 +1,11 @@
 # Description: Used for generating Makefiles and aims to be platform- and compiler-independent.
 # URL: http://www.cmake.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=cmake
 version=3.4.3
 release=1
-
 source=(http://www.cmake.org/files/v${version%.*}/$name-$version.tar.gz)
 
 build() {

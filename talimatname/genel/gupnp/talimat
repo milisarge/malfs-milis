@@ -1,7 +1,6 @@
-# Description:  	An object-oriented UPNP framework
+# Description: An object-oriented UPNP framework
 # URL: http://gupnp.org/
-# Maintainer: NuTyX core team
-# Packager: fanchyannmaria at orange dot fr
+# Packager: milisarge
 # Depends on: gssdp, util-linux
 
 name=gupnp

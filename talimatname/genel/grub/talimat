@@ -6,7 +6,6 @@
 name=grub
 version=2.02-beta3
 release=1
-
 source=( ftp://alpha.gnu.org/gnu/grub/grub-2.02~beta3.tar.xz \
          http://source.pisilinux.org/1.0/grub2_extras_915resolution_r10.tar.xz \
          unifont-6.3.20131217.bdf \
@@ -88,7 +87,7 @@ unset MAKEFLAGS
 			--with-grubdir=grub \
 			--disable-silent-rules \
 			--disable-werror
-		
+
 cd $SRC/$name-2.02~beta3
 make dist
 make

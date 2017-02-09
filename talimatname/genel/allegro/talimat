@@ -1,6 +1,6 @@
 # Description: C/C++ için çoklu platform oyun geliştirme kütüphanesi.
 # URL:         http://alleg.sourceforge.net/
-# Packager:    berlius at nutyx dot com
+# Packager:    milisarge
 # Depends on:  flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga
 
 name=allegro
@@ -18,7 +18,5 @@ build() {
 
     make
     make DESTDIR=$PKG install
-	
+
 }
-
-

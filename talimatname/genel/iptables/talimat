@@ -1,12 +1,12 @@
-# Description: A Linux kernel packet filter control tool
-# URL:         http://www.iptables.org/
-# Packager:    milisarge
-# Depends on: 
+# Description: Linux çekirdeği paket filtreleme ve kontrol aracı
+# URL: http://www.iptables.org/
+# Packager: milisarge
+# Depends on:
 
 name=iptables
 version=1.6.0
 release=1
-source=(ftp://ftp.netfilter.org/pub/iptables/$name-$version.tar.bz2) 
+source=(ftp://ftp.netfilter.org/pub/iptables/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version

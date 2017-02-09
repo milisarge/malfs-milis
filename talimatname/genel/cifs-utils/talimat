@@ -1,14 +1,12 @@
 # Description: CIFS filesystem user-space tools
 # URL: http://www.samba.org
 # Packager: milisarge
-# Depends on: samba 
+# Depends on: samba
 
 name=cifs-utils
 version=6.5
 release=1
-
 source=( http://ftp.samba.org/pub/linux-cifs/$name/$name-$version.tar.bz2)
-
 
 build() {
 cd $name-$version

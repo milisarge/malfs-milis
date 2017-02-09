@@ -6,9 +6,7 @@
 name=boost
 version=1.60.0
 release=2
-
 _boostver=${version//./_}
-
 source=(https://downloads.sourceforge.net/project/${name}/${name}/${version}/${name}_${_boostver}.tar.bz2)
 
 build() {
@@ -18,7 +16,7 @@ build() {
    cd ${name}_${_boostver}
 
    ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
-   
+
    install -Dm755 ./b2 "${_stagedir}"/bin/b2
 
    # default "minimal" install: "release link=shared,static

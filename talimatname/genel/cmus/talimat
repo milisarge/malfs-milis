@@ -1,7 +1,6 @@
-# Description: Small and fast music player using the ncurses library
+# Description: ncurses kutuphanesini kullanan kucuk ve hizli bir muzik oynatici
 # URL: http://cmus.sf.net/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: alsa-lib alsa-plugins flac libid3tag libmad libogg libmpcdec libvorbis
 
 name=cmus

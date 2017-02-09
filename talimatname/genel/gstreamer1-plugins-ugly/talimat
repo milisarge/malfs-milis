@@ -1,13 +1,12 @@
 # Description: GStreamer Multimedia Framework ugly Plugins
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-ugly.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gstreamer1-plugins-base lame libdvdread liba52 libmad libmpeg2
 
 name=gstreamer1-plugins-ugly
 version=1.6.3
 release=1
 _name=gst-plugins-ugly
-
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz )
 
 build() {

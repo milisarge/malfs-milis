@@ -7,6 +7,7 @@ name=avrdude
 version=6.3
 release=1
 source=(http://download.savannah.gnu.org/releases/avrdude/${name}-$version.tar.gz)
+
 build() {
 cd ${name}-$version
 ./bootstrap

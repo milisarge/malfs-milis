@@ -1,18 +1,17 @@
 # Description: Provides functionality for small OpenGL programs
 # URL: http://freeglut.sourceforge.net/
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake xorg-mesa xorg-glu xorg-libxi
 
 name=freeglut
 version=3.0.0
 release=1
-
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 build() {
 cd $name-$version
-mkdir build 
-cd    build 
+mkdir build
+cd    build
 
 cmake -DCMAKE_INSTALL_PREFIX=/usr      \
       -DCMAKE_BUILD_TYPE=Release       \
@@ -22,4 +21,3 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr      \
 make
 make DESTDIR=$PKG install
 }
-

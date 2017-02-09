@@ -1,12 +1,13 @@
 # Description: Jam is a software build tool.
 # URL: http://www.perforce.com/documentation/jam
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=jam
 version=2.5
 release=1
-
 source=(http://downloads.sourceforge.net/project/ede/jam/2.5-haiku-20080327/jam-2.5-haiku-20080327.tar.gz)
+
 build() {
 cd $name
 make

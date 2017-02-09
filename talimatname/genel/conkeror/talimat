@@ -1,12 +1,12 @@
-# Description: A highly programmable web browser based on Mozilla XULRunner
+# Description: Mozilla XULRunner temelli programlanabilir bir web tarayici
 # URL: http://conkeror.mozdev.org/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: xulrunner desktop-file-utils
 
 name=conkeror
 version=git
 release=1
+source=()
 
 build() {
   git clone git://repo.or.cz/conkeror.git

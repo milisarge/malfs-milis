@@ -1,6 +1,6 @@
-# Description: A GPL virus scanner
+# Description: GPL virus tarayicisi
 # URL: http://www.clamav.net/
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: zlib bzip2 gmp curl
 
 name=clamav
@@ -27,5 +27,3 @@ build() {
 		$PKG/etc/rc.d/
 
 }
-
-

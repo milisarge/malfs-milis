@@ -1,7 +1,6 @@
 # Description: A GObject-based API for handling resource discovery and announcement over SSDP
 # URL: http://gupnp.org/
-# Maintainer: NuTyX core team
-# Packager: fanchyannmaria at orange dot fr
+# Packager: milisarge
 # Depends on: libsoup
 
 name=gssdp

@@ -1,4 +1,4 @@
-# Description: A lightweight image browser and viewer
+# Description: image dosyalari icin hafif bir goruntuleyici
 # URL: http://www.geeqie.org/
 # Packager: milisarge
 # Depends on: exiv2 gtk2 lcms desktop-file-utils intltool librsvg fbida
@@ -6,9 +6,7 @@
 name=geeqie
 version=1.3
 release=1
-
 source=(http://www.geeqie.org/${name}-${version}.tar.xz )
-
 
 build() {
 	cd $name-$version
@@ -24,4 +22,3 @@ build() {
 	make
 	make DESTDIR=$PKG install
 }
-

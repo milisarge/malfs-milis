@@ -1,18 +1,17 @@
 # Description: Fast Light Window Manager
 # URL: http://flwm.sourceforge.net/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: fltk1
+
 name=flwm
 version=git
 release=1
-
 source=(flwm.desktop)
 
 build() {
   git clone https://github.com/bbidulock/flwm.git $DERLEME_KAYNAKDIZIN/flwm
-  cp -r $DERLEME_KAYNAKDIZIN/flwm $SRC/ && cd $SRC/flwm	
-  
+  cp -r $DERLEME_KAYNAKDIZIN/flwm $SRC/ && cd $SRC/flwm
+
   make || return 1
   mkdir -p $PKG/usr/share/xsessions
   cp $SRC/$name.desktop $PKG/usr/share/xsessions/

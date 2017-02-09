@@ -1,7 +1,7 @@
-# Description:  an interactive process viewer
-# URL:          http://htop.sourceforge.net/
-# Packager:    fanch at nutyx dot org
-# Depends on:   ncurses
+# Description: interaktif bir süreç görüntüleyici/düzenleyici
+# URL: http://htop.sourceforge.net/
+# Packager: milisarge
+# Depends on: ncurses
 
 name=htop
 version=1.0.3
@@ -10,7 +10,7 @@ source=(http://hisham.hm/$name/releases/$version/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr --disable-nls 
+    ./configure --prefix=/usr --disable-nls
     make
     make DESTDIR=$PKG install
 }

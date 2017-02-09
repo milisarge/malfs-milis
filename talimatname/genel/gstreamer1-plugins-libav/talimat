@@ -1,13 +1,12 @@
 # Description: GStreamer Multimedia Framework libav Plugins (fork of ffmpeg)
 # URL: http://gstreamer.freedesktop.org/modules/gst-libav.html
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: gstreamer1-plugins-base yasm 
+# Depends on: gstreamer1-plugins-base yasm
 
 name=gstreamer1-plugins-libav
 version=1.6.3
 release=1
 _name=gst-libav
-
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz )
 
 build() {

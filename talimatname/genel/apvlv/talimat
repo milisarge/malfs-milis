@@ -1,16 +1,14 @@
 # Description: apvlv, vim benzeri bir PDF/DJVU/UMD/TXT görüntüleyicidir.
 # URL: http://github.com/naihe2010/apvlv
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake webkitgtk2 djvulibre poppler-glib gtk2
 
 name=apvlv
 version=0.1.f7f7b9c
 release=2
-
 source=(
 https://github.com/downloads/naihe2010/apvlv/$name-$version-Source.tar.gz
 $name.desktop)
-
 
 build(){
     cd $name-$version-Source
