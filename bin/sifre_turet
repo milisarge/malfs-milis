@@ -1,1 +1,4 @@
+#!/bin/bash
 base64 /dev/urandom | head -c 30
+#openssl rand -base64 30
+#date | md5sum
