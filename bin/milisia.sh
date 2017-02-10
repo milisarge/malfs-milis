@@ -1,3 +1,4 @@
+#!/bin/bash
 load_pid()
 {
     PID=$(pgrep -d " " -f "cjdroute")
