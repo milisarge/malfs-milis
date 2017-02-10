@@ -1,0 +1,1 @@
+base64 /dev/urandom | head -c 30
