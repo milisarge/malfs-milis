@@ -1,0 +1,28 @@
+# Description= locate/updatedb birleştirilmiş uygulaması
+# Url= https://fedorahosted.org/mlocate/
+# Packager: milisarge
+# Depends on:
+
+name=mlocate
+version=0.26
+release=1
+
+source=(https://fedorahosted.org/releases/m/l/mlocate/mlocate-${version}.tar.xz 
+		updatedb.conf)
+
+build() {
+	cd ${name}-$version
+	sed -i '/^groupname /s/mlocate/locate/' Makefile.in
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/lib
+	make
+	make DESTDIR="${PKG}" install
+
+	chgrp 21 "${PKG}/usr/bin/locate"
+	chmod 2755 "${PKG}/usr/bin/locate"
+	ln -s locate "${PKG}/usr/bin/slocate"
+
+	install -dm755 "${PKG}/var/lib"
+	install -dm750 -g21 "${PKG}/var/lib/locate"
+	
+	install -Dm644 ../updatedb.conf "${PKG}/etc/updatedb.conf"
+}
