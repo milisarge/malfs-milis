@@ -1,0 +1,18 @@
+# Description=Çok yönlü dosyaarama aracı
+# Url=https://launchpad.net/catfish-search
+# Packager: milisarge yasarciv
+# Depends on: intltool python-distutils-extra python-gobject python-xdg python-pexpect python-cairo python-ptyprocess gtk3 xdg-utils
+
+name=catfish
+version=1.4.2
+release=1
+
+source=( https://launchpad.net/catfish-search/${version%.*}/$version/+download/$name-$version.tar.bz2)
+
+build() {
+	cd ${name}-$version
+	python setup.py build
+	python setup.py install --root="$PKG" --optimize=1	
+	install -d "$PKG/usr/share/pixmaps"
+	ln -s "/usr/share/icons/hicolor/scalable/apps/$name.svg" "$PKG/usr/share/pixmaps/$name.svg"
+}

@@ -1,0 +1,14 @@
+# Description: Sahte terminal altında altsüreç çalıştırma 
+# URL: https://github.com/pexpect/ptyprocess
+# Packager: milisarge
+# Depends on: python python-setuptools
+
+name=python-ptyprocess
+version=0.5.1
+release=1
+source=(https://pypi.python.org/packages/source/p/ptyprocess/ptyprocess-$version.tar.gz)
+
+build() {
+	cd ptyprocess-$version
+	python setup.py install --root="$PKG/" --prefix=/usr --optimize=0
+}
