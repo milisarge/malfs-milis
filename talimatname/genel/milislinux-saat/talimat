@@ -1,0 +1,20 @@
+# Description: milislinux saat ayarlama uygulaması
+# URL: http://milis.gungre.ch/
+# Packager: milisarge
+# Depends on: xdialog
+
+name=milislinux-saat
+version=1.0
+release=1
+source=(kk_milislinux-saat
+		milislinux-saat.xpm
+		milislinux-saat.desktop)
+
+build () {
+  install -d "$PKG/usr/share/pixmaps"
+  install -d "$PKG/usr/share/applications"
+  install -d "$PKG/usr/bin"
+  cp $SRC/kk_milislinux-saat "$PKG/usr/bin/milislinux-saat"
+  cp $SRC/milislinux-saat.desktop "$PKG/usr/share/applications"
+  cp $SRC/milislinux-saat.xpm "$PKG/usr/share/pixmaps"
+}

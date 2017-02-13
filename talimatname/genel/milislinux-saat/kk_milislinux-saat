@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# Milislinux uyarlı zaman ayarlama betiği
+
+if [ ! -d "/var/lib/pkg/DB/xdialog" ];then
+  echo "xdialog paketini kurunuz-> mps kur xdialog"
+  exit 1
+fi
+
+HWCLOCK=/sbin/hwclock
+if [ -f "/usr/sbin/hwclock" ];then
+  HWCLOCK=/usr/sbin/hwclock
+fi 
+
+if [ "`whoami`" != "root" ];then
+  Xdialog --title "$TITLE" --msgbox "root çalıştır!..." 0 0
+  exit 1
+fi
+
+
+# Title to be used for all Xdialog boxes.
+TITLE="Saat Ayarlama Aracı"
+
+# Now check for hwclock existence...
+if ! [ -f $HWCLOCK ] ; then
+	Xdialog --title "$TITLE" --msgbox "$HWCLOCK bulunamadı..." 0 0
+	exit 0
+fi
+
+# Get the date (returned in DD/MM/YYYY format by Xdialog.
+ENTEREDDATE=`Xdialog --stdout --title "$TITLE" --calendar "Tarihi ayarlayın..." 0 0 0 0 0`
+#xmessage $?
+
+if [ "$?" != "0" ] ; then
+	Xdialog --title "$TITLE" --msgbox "İptal edildi." 0 0
+	exit 0
+fi
+
+# Convert the date to the MM/DD/YYYY format needed by hwclock.
+NEWDATE=`echo "$ENTEREDDATE" | awk --source 'BEGIN { FS="/" }' --source '{ print $2 "/" $1 "/" $3 }'`
+
+# Get the time in HH:MM:SS format.
+NEWTIME=`Xdialog --stdout --title "$TITLE" --timebox "Zamanı ayarlayın..." 0 0`
+if  [ "$?" != "0" ]  ; then
+	Xdialog --title "$TITLE" --msgbox "Aborted." 0 0
+	exit 0
+fi
+
+
+# Set the hardware clock (RTC) and then the system clock
+
+Xdialog --title "bilgi" --msgbox "Gerekli ayarlamalar yapılıyor..." 0 0
+
+$HWCLOCK --set --date="$NEWDATE $NEWTIME"&&$HWCLOCK --hctosys
+
+THEDATE=`date`
+Xdialog --title "bilgi" --msgbox "Zaman ayarlama yapıldı. $THEDATE" 0 0
+

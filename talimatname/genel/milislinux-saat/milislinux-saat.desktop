@@ -1,0 +1,9 @@
+[Desktop Entry]
+Path=/usr/bin/milis-saat
+Name=Milis Saat Ayarlama Uygulaması
+Comment=Milis Saat Ayarlama Uygulaması
+Exec=/usr/bin/milislinux-saat
+Terminal=false
+Type=Application
+Icon=milislinux-saat
+Categories=System;
