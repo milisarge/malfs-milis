@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8.8"
+versiyon="0.8.9"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -21,6 +21,7 @@ VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
 LOGDIZIN="/var/log/mps"
 tekrarkur="hayir"
+logdosya=/var/log/mps/mps.log
 #temel paket koruma
 tpk="evet"
 if [ -z ${lokal+:} ]; then
@@ -538,6 +539,17 @@ silme_kurban_kontrol(){
 			done
 		fi
 	done
+}
+
+log_analiz(){
+	local zaman durum
+	zaman=$1
+	durum=$2
+	if [ -f "/var/log/mps/mps.log" ];then
+		cat $logdosya | grep "$zaman" | grep "$durum" | cut -d' ' -f3
+	else
+		ryaz 31 "mps.log bulunamadı!"
+	fi
 }
 
 kurban_kurtar(){
@@ -1154,6 +1166,20 @@ ayarlar() {
 					exit 1
 				fi
 				talimat_olustur "$2" ;;
+			log)
+				local logyardim
+				logyardim="mps log zaman durum (ör: mps log 2017-01-01 silindi)"
+				if [ ! "$2" ]; then
+					ryaz 31 "zaman parametresi eksik"
+					ryaz 32 $logyardim
+					exit 1
+				fi
+				if [ ! "$3" ]; then
+					ryaz 31 "durum parametresi eksik"
+					ryaz 32 $logyardim
+					exit 1
+				fi
+				log_analiz "$2" "$3" ;;
 			guncelle)
 				mps -GG && mps -G ;;
 			-Ggit|-GG)
