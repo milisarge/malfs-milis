@@ -1,0 +1,19 @@
+# Description: dialog ve cdialog un geliştirilmiş sürümü  
+# URL: http://xdialog.dyns.net/
+# Packager: milisarge
+# Depends on: gtk2
+
+name=xdialog
+version=2.3.1
+release=1
+source=(http://xdialog.free.fr/Xdialog-$version.tar.bz2)
+
+build () {
+  cd Xdialog-$version
+  ./configure --prefix=/usr \
+              --disable-gtktest \
+              --with-gtk2 
+  make
+  make DESTDIR=$PKG install
+  rm -rf $PKG/usr/share
+}
