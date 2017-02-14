@@ -1,0 +1,18 @@
+# Description: F2FS dosya sistemi araçları
+# URL: http://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/about/
+# Packager: milisarge
+# Depends on:
+
+name=f2fs-tools
+version=1.8.0
+release=1
+
+source=(https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	autoreconf -fi
+	./configure --prefix=/usr --sbindir=/usr/bin
+	make
+	make DESTDIR="$PKG/" sbindir=/usr/bin install
+}
