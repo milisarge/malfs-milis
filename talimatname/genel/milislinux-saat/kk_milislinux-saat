@@ -12,12 +12,6 @@ if [ -f "/usr/sbin/hwclock" ];then
   HWCLOCK=/usr/sbin/hwclock
 fi 
 
-if [ "`whoami`" != "root" ];then
-  Xdialog --title "$TITLE" --msgbox "root çalıştır!..." 0 0
-  exit 1
-fi
-
-
 # Title to be used for all Xdialog boxes.
 TITLE="Saat Ayarlama Aracı"
 
