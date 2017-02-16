@@ -1,0 +1,5 @@
+gerekli ayar dosyaları yerine konulur.
+izinler sağlandıktan sonra
+çalıştırılacaklar:
+php-fpm -c /etc/php-fpm.conf
+hiawatha
