@@ -1,2 +1,1 @@
-pip3 install six
 sed -i 's/Exec=multibootusb-pkexec/Exec=sudo multibootusb-pkexec/g' /usr/share/applications/multibootusb.desktop
