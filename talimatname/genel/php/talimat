@@ -28,6 +28,7 @@ build () {
             --with-bz2                   \
             --enable-calendar            \
             --enable-dba=shared          \
+            --enable-mysqlnd			 \
             --with-gdbm                  \
             --with-gmp                   \
             --enable-ftp                 \
