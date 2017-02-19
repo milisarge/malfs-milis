@@ -5,7 +5,7 @@
 
 name=php
 version=5.6.16
-release=2
+release=3
 
 source=(http://php.net/distributions/$name-$version.tar.xz
 		http://mirror.internode.on.net/pub/php/manual/php_manual_tr.tar.gz)
