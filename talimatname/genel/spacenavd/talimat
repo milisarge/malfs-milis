@@ -1,0 +1,19 @@
+# Description: Alternative to the proprietary 3Dconnexion device driver and SDK for their 3D input devices
+# URL: http://spacenav.sourceforge.net/
+# Packager: milisarge
+# Depends on: xorg
+
+name=spacenavd
+version=0.6
+release=1
+
+source=(https://freefr.dl.sourceforge.net/project/spacenav/spacenav%20daemon/spacenavd%20$version/$name-$version.tar.gz
+		Makefile.patch)
+
+build() {
+	cd ${name}-${version}
+	./configure --prefix=/usr \
+	--disable-debug
+	make
+	make DESTDIR=$PKG install
+}
