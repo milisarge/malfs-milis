@@ -1,0 +1,21 @@
+# Description: GNUPlot, a graph plotting software
+# URL:         http://www.gnuplot.info/
+# Packager:    milisarge
+# Depends on:  libgd pango
+
+name=gnuplot
+version=5.0.5
+release=1
+source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --libexecdir=/usr/lib \
+                --with-x \
+                --with-qt=no
+    make
+    make DESTDIR=$PKG install
+    rm $PKG/usr/share/man/man1/gnuplot-ja.1
+    rm -rf $PKG/usr/share/info
+}

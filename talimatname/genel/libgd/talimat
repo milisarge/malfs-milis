@@ -1,0 +1,21 @@
+# Description: Library for the dynamic creation of images by programmers
+# URL: http://www.libgd.org/
+# Packager: milisarge
+# Depends on: xorg-fontconfig xorg-libxpm libwebp
+
+name=libgd
+version=2.2.3
+release=1
+
+source=("https://github.com/$name/$name/releases/download/gd-${version}/$name-${version}.tar.xz")
+
+
+build() {
+  cd $name-${version}
+  ./configure \
+    --prefix=/usr \
+    --disable-rpath
+  make
+  make DESTDIR="${PKG}" install
+  install -D -m644 COPYING "${PKG}/usr/share/licenses/${name}/LICENSE"
+}
