@@ -7,8 +7,7 @@ name=spacenavd
 version=0.6
 release=1
 
-source=(https://freefr.dl.sourceforge.net/project/spacenav/spacenav%20daemon/spacenavd%20$version/$name-$version.tar.gz
-		Makefile.patch)
+source=(https://freefr.dl.sourceforge.net/project/spacenav/spacenav%20daemon/spacenavd%20$version/$name-$version.tar.gz)
 
 build() {
 	cd ${name}-${version}
