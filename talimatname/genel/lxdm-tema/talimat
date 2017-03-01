@@ -1,0 +1,17 @@
+# Description: milislinux lxdm teması
+# URL: http://milis.gungre.ch/
+# Packager: milisarge yasarciv
+# Depends on: lxdm mate-themes
+
+name=lxdm-tema
+version=1.0
+release=1
+source=(https://github.com/yasarciv/$name/archive/$version.tar.gz)
+
+build () {
+  cd $name-$version
+  install -d "$PKG/usr/share/lxdm/themes"
+  install -d "$PKG/etc/lxdm"
+  cp -r lxdm-themes/Milis-Lxdm-Tema "$PKG/usr/share/lxdm/themes"
+  cp lxdm/lxdm.conf "$PKG/etc/lxdm/"
+}
