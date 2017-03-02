@@ -1,0 +1,17 @@
+# Description: lzip arşiv kontrol ve tamir programı
+# URL: URL: http://www.nongnu.org/lzip
+# Packager: milisarge
+# Depends on:
+
+name=lziprecover
+version=1.18
+release=1
+
+source=(http://download.savannah.gnu.org/releases/lzip/$name/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+}
