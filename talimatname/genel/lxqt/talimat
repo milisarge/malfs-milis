@@ -11,6 +11,5 @@ release=1
 source=()
 
 build() {
-mkdir -p $PKG/usr
-
+echo "lxqt sistem"
 }
