@@ -4,5 +4,6 @@ gtk-update-icon-cache
 gio-querymodules /usr/lib/gio/modules
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 xdg-icon-resource forceupdate --theme hicolor
+gdk-pixbuf-query-loaders --update-cache
 update-desktop-database -q
 xfce4-panel -r
