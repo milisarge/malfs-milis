@@ -1,0 +1,21 @@
+# Description: Lxqt-about paketi bağımsız LXQt "Hakkında" iletişim kutusunu sağlar.
+# URL: http://lxqt.org
+# Packager: yasarciv67@gmail.com
+# Depends on: liblxqt
+
+name=lxqt-about
+version=0.11.1
+release=1
+source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz)
+
+
+build() {
+	mkdir -v build
+	cd build
+	cmake $SRC/$name-$version \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		
+	make
+	make DESTDIR=$PKG install
+}

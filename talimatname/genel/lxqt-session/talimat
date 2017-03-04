@@ -1,0 +1,21 @@
+# Description: Lxqt-session paketi, LXQt için varsayılan oturum yöneticisini içerir.
+# URL: http://lxqt.org
+# Packager: yasarciv67@gmail.com
+# Depends on: liblxqt xdg-user-dirs kf5-kwindowsystem kf5-breeze-icons kf5-oxygen-icons5 lxdm lxqt-build-tools
+
+name=lxqt-session
+version=0.11.1
+release=1
+source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz)
+
+
+build() {
+	mkdir -v build
+	cd build
+	cmake $SRC/$name-$version \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		
+	make
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,21 @@
+# Description: Qt tabanlı hafif bir terminal emülatörü.
+# URL: http://lxqt.org
+# Packager: yasarciv67@gmail.com
+# Depends on: liblxqt lxqt-qtermwidget lxqt-l10n
+
+name=qterminal
+version=0.7.1
+release=1
+source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz)
+
+
+build() {
+	mkdir -v build
+	cd build
+	cmake $SRC/$name-$version \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_LIBDIR=lib
+	make
+	make DESTDIR=$PKG install
+}

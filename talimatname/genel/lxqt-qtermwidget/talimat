@@ -1,0 +1,22 @@
+# Description: Adından da anlaşılacağı üzere qtermwidget Qt için bir terminal widgettır.
+# URL: http://lxqt.org
+# Packager: yasarciv67@gmail.com
+# Depends on: cmake qt5
+
+name=lxqt-qtermwidget
+_name=qtermwidget
+version=0.7.1
+release=1
+source=(https://github.com/lxde/$_name/releases/download/$version/$_name-$version.tar.xz)
+
+
+build() {
+	mkdir -v build
+	cd build
+	cmake $SRC/$_name-$version \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+	make
+	make DESTDIR=$PKG install
+}

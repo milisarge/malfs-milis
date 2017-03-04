@@ -1,0 +1,21 @@
+# Description: Liblxqt tüm LXQt bileşenleri için temel yardımcı program kitaplığıdır.
+# URL: http://lxqt.org
+# Packager: yasarciv67@gmail.com
+# Depends on: kf5-kwindowsystem libqtxdg
+
+name=liblxqt
+version=0.11.1
+release=1
+source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz)
+
+
+build() {
+	mkdir -v build
+	cd build
+	cmake $SRC/$name-$version \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release  \
+		-DCMAKE_INSTALL_LIBDIR=lib
+	make
+	make DESTDIR=$PKG install
+}

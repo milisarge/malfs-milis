@@ -1,0 +1,22 @@
+# Description: Qt için süreç yöneticisi
+# URL: https://github.com/QtDesktop/qps/
+# Packager: yasarciv67@gmail.com
+# Depends on: qt5
+
+name=qps
+version=1.10.16
+release=1
+source=(https://github.com/QtDesktop/$name/archive/v$version.tar.gz \
+qps.desktop)
+
+build() {
+	
+	cd $SRC/$name-$version
+    cmake .
+    make
+  install -D -m 755 src/qps $PKG/usr/bin/qps
+  install -D -m 644 qps.1 $PKG/usr/share/man/man1/qps.1
+  install -D -m 644 $SRC/qps.desktop $PKG/usr/share/applications/qps.desktop
+  install -D -m 644 icon/icon.xpm $PKG/usr/share/pixmaps/qps.xpm
+	
+}
