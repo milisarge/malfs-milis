@@ -1,6 +1,6 @@
-# Description: 	Cross platform access to statistics about the system on which it's run.
+# Description: 	Çalışan süreçlerin istatislik gösterir.
 # URL:         	http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab
-# Packager:		berlius at nutyx dot com
+# Packager:		milisarge
 # Depends on:  	
 
 name=libstatgrab
