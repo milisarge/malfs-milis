@@ -1,0 +1,34 @@
+# 03.2017 milislinux talimatının makefile format çalışması
+# milisarge
+# paketleme yapmak için "make -f talimat-makefile paketle" komutu verilecek
+
+ACIKLAMA=	çeşitli dosya arşivleri yönetmek için bir betik.
+URL=		http://www.nongnu.org/atool/
+PAKETÇİ= 	milisarge
+GEREKLER=
+MIMARI=		x86_64
+ISIM=		atool
+SURUM=		0.39.0
+DEVIR=  	1
+KAYNAK=		http://savannah.nongnu.org/download/$(ISIM)/$(ISIM)-$(SURUM).tar.gz
+
+hazirlik:
+	mkdir -p $(ISIM)#$(SURUM)-$(MIMARI)
+
+indir:
+	wget $(KAYNAK)
+	
+cikar:
+	tar xf $(ISIM)-$(SURUM).tar.gz
+	
+derle: hazirlik indir cikar
+	cd $(PWD)/$(ISIM)-$(SURUM) ; \
+	./configure --prefix=/usr  ; \
+	make ;\
+	make prefix=$(PWD)/$(ISIM)#$(SURUM)-$(MIMARI)/usr install
+
+paketle: derle
+	cd $(PWD)/$(ISIM)#$(SURUM)-$(MIMARI) ; \
+	bsdtar -r -f $(PWD)/$(ISIM)#$(SURUM)-$(MIMARI).mps * ; \
+	lzip -9 $(PWD)/$(ISIM)#$(SURUM)-$(MIMARI).mps
+
