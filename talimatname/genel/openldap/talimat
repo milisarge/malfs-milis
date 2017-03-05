@@ -1,24 +1,51 @@
-# Description: Lightweight Directory Access Protocol (LDAP) client and server
-# URL: http://www.openldap.org
-# Packager: pierre at nutyx dot org
+# Description: Lightweight Directory Access Protocol (LDAP) Toolkit
+# URL: https://www.openldap.org/
+# Packager: milisarge
+# Depends on: cyrus-sasl
 
 name=openldap
-version=2.4.43
+version=2.4.44
 release=1
+source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/$name-$version.tgz
+	$name-config.patch slapd bdb.yama)
 
-source=(ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/$name-$version.tgz
-	 http://www.linuxfromscratch.org/patches/downloads/openldap/openldap-$version-consolidated-1.patch)
 build() {
-cd $name-$version
-patch -Np1 -i ../openldap-$version-consolidated-1.patch
-autoconf
-./configure --prefix=/usr \
-            --sysconfdir=/etc \
-            --disable-static \
-            --enable-dynamic \
-            --disable-debug \
-            --disable-slapd
-make depend
-make
-make DESTDIR=$PKG install   
+	cd $name-$version
+	patch -p0 -i $SRC/$name-config.patch
+	patch -p0 -i $SRC/bdb.yama
+
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/sbin \
+		--localstatedir=/var/openldap \
+		--enable-syslog \
+		--with-threads \
+		--with-tls \
+		--with-cyrus-sasl \
+		--enable-spasswd \
+		--enable-dynamic \
+		--enable-ipv6 \
+		--enable-modules \
+		--enable-crypt \
+		--enable-rewrite \
+		--enable-bdb \
+		--enable-hdb \
+		--enable-ldap \
+		--enable-meta \
+		--enable-monitor \
+		--enable-dnssrv \
+		--enable-null \
+		--enable-perl \
+		--enable-aci \
+		--enable-shared
+
+	make depend
+	make
+	make DESTDIR=$PKG install   
+
+	ln -sf liblber.so $PKG/usr/lib/liblber.so.2
+	ln -sf libldap.so $PKG/usr/lib/libldap.so.2
+	ln -sf libldap_r.so $PKG/usr/lib/libldap_r.so.2
+
+	install -D -m 0755 $SRC/slapd $PKG/etc/rc.d/init.d/slapd
 }

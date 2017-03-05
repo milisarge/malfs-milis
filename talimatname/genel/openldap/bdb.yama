@@ -1,0 +1,29 @@
+--- configure.o	2016-02-06 01:57:45.000000000 +0200
++++ configure	2017-03-06 00:55:55.306825000 +0200
+@@ -20385,10 +20385,10 @@
+ #define DB_VERSION_FULL        ((DB_VERSION_MAJOR<<16)|(DB_VERSION_MINOR<<8)|DB_VERSION_PATCH)
+ 
+ /* require 4.4 or later, but less than 6.0.20 */
+-#if DB_VERSION_FULL >= 0x040400 && DB_VERSION_FULL < 0x060014
++#if DB_VERSION_FULL >= 0x010400 && DB_VERSION_FULL < 0x010014
+ 	__db_version_compat
+ #endif
+-#if DB_VERSION_FULL >= 0x060014
++#if DB_VERSION_FULL >= 0x010014
+ #error "BerkeleyDB 6.0.20+ license is incompatible with LDAP"
+ #endif
+ 
+@@ -20402,13 +20402,6 @@
+ rm -f conftest*
+ 
+ fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ol_cv_bdb_compat" >&5
+-$as_echo "$ol_cv_bdb_compat" >&6; }
+-
+-
+-	if test $ol_cv_bdb_compat != yes ; then
+-		as_fn_error "BerkeleyDB version incompatible with BDB/HDB backends" "$LINENO" 5
+-	fi
+ 
+ 	ol_cv_lib_db=no
+ 
