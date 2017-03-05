@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -rf /usr/bin/dracut
+rm -rf /var/lib/pkg/DB/dracut
+mps -ik dracut
