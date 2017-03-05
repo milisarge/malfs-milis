@@ -1004,6 +1004,8 @@ unmount_islemi() {
 	umount $LFS/run
 	umount $LFS/proc
 	umount $LFS/sys
+	#ortam ici calisan surecleri tespit edip sonlandirmak için
+	kill -9 `lsof  | grep $LFS/dev | awk '{print $2}' `
 }
 
 bash_kur(){
