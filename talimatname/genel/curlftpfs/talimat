@@ -1,0 +1,18 @@
+# Description: A FTP dosya sistemi.curl ve fuse tabanlı.
+# URL: http://curlftpfs.sourceforge.net/
+# Packager: milisarge
+# Depends on: fuse glib
+
+name=curlftpfs
+version=0.9.2
+release=1
+source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man
+	make
+	make DESTDIR=$PKG install
+}
