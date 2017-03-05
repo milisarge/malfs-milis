@@ -1,0 +1,6 @@
+#!/bin/bash
+rm -rf /tmp/$1
+mkdir -p /tmp/$1
+for dosya in `cat $1`;do 
+	mv $dosya "/tmp/$1/"
+done
