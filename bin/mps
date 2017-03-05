@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.8.9"
+versiyon="0.9.0"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -321,7 +321,8 @@ paket_inkur_liste(){
 
 #otomatik kontrollu kur
 paket_inkur_oto(){
-	mps -dly "$1" > /dev/null &&
+	mps -dly "$1" | grep "bulunamadı"
+	#derleme_listyap "$1" > mps.log &&
 	local kpkt
 	for kpkt in `cat bag.liste`;do
 		mps -ik "$kpkt"
