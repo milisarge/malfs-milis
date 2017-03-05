@@ -1,0 +1,5 @@
+#!/bin/sh
+/sbin/groupadd -g 90 squid
+/sbin/useradd -g squid -u 90 -d /var/squid -s /bin/false squid
+/bin/passwd -l squid
+install -d -m 0700 -o squid -g squid /var/{log/squid,squid}

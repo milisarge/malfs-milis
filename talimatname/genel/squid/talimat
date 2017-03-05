@@ -1,0 +1,38 @@
+# Description: Fonksiyonel vwkil sunucu yazılımı
+# URL:         http://www.squid-cache.org
+# Packager:    milisarge
+# Depends on:  
+
+name=squid
+version=3.5.24
+release=1
+source=(http://www.squid-cache.org/Versions/v3/3.5/$name-$version.tar.xz
+        squid_servisi)
+
+build () {
+    cd $name-$version
+
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc/squid \
+                --libexecdir=/usr/lib/squid \
+                --localstatedir=/var \
+                --datadir=/usr/share/squid \
+                --with-logdir=/var/log/squid \
+                --with-pidfile=/var/run/squid.pid \
+                --with-swapdir=/var/squid \
+                --with-default-user=squid \
+                --enable-linux-netfilter \
+                --enable-storeio=ufs,aufs,diskd,rock \
+                --enable-removal-policies=lru,heap \
+                --with-large-files \
+                --with-pthreads \
+                --with-aufs-threads=16 \
+                --disable-auto-locale
+
+    make all
+    make DESTDIR=$PKG install
+
+    rm -r $PKG/var/run
+    find $PKG/usr/share/squid/errors/* -prune ! -name templates | xargs rm -r
+    install -D -m 755 $SRC/squid_servisi $PKG/etc/rc.d/init.d/squid
+}
