@@ -248,6 +248,7 @@ oto_derle_kur_paketle(){
 	mps -G
 	mps -kur $1 &&
 	if [ -f  "$talimatname_dizin/genel/$1/$1.sira" ];then
+		ryaz 32 "sıralı derleme yapılacak."
 		mps -derlist "$talimatname_dizin/genel/$1/$1.sira"
 	else
 		mps -derle $1
