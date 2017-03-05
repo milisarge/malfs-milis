@@ -244,6 +244,16 @@ paket_derle_kur(){
 	mps -dly "$1"  && mps -derlist bag.liste
 }
 
+oto_derle_kur_paketle(){
+	mps -G
+	mps -kur $1 &&
+	if [ -f  "$talimatname_dizin/genel/$1/$1.sira" ];then
+		mps -derlist "$talimatname_dizin/genel/$1/$1.sira"
+	else
+		mps -derle $1
+	fi 
+}
+
 paket_kur_oto(){
 	local kpkt pkt pak kliste
 	if [ "$1" = "-H" ];then
@@ -1019,6 +1029,8 @@ ayarlar() {
 				zorla_derle="evet"
 				kurulum_onay="olumsuz"
 				paket_derle "$2" ;;
+			odkp)
+				oto_derle_kur_paketle "$2" ;;	
 			-dk|--pkdk)
 				paket_derle "$2" ;;	
 			-derlist)
