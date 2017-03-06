@@ -15,7 +15,7 @@ cd $name-$version
         --sysconfdir=/etc \
         --localstatedir=/var \
         --with-gtk=2.0 \
-        --disable-upower
+        --enable-upower
 make
 make DESTDIR=$PKG install
 }

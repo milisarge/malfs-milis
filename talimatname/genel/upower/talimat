@@ -5,7 +5,7 @@
 # Depends on: dbus-glib libusb intltool polkit gobject-introspection libgudev pm-utils
 
 name=upower
-version=0.99.3
+version=0.9.23
 release=1
 
 source=(http://upower.freedesktop.org/releases/$name-$version.tar.xz)
