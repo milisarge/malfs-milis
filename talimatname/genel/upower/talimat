@@ -4,18 +4,23 @@
 # Depends on: dbus-glib libusb intltool polkit gobject-introspection libgudev pm-utils
 
 name=upower
-version=0.9.23
+version=0.99.4
 release=1
-
-source=(http://upower.freedesktop.org/releases/$name-$version.tar.xz)
+source=(http://$name.freedesktop.org/releases/$name-$version.tar.xz
+	fix-critical-action.patch)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc \
---enable-deprecated \
---localstatedir=/var \
---disable-static
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+
+	patch -p 1 -i $SRC/fix-critical-action.patch
+
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/usr/etc \
+		--localstatedir=/var \
+		--libexecdir=/usr/lib/$name \
+		--disable-man-pages
+
+	make
+	make DESTDIR=$PKG install
 }
