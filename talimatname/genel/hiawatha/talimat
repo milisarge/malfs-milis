@@ -63,7 +63,3 @@ build() {
   install -Dm644 logrotate.d/hiawatha "$PKG/etc/logrotate.d/hiawatha"
   install -Dm644 $SRC/"hiawatha.conf.sample" "$PKG/etc/hiawatha/"
 }
-
-
-
-}
