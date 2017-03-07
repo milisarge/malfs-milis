@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.0"
+versiyon="0.9.1"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -373,8 +373,10 @@ paket_guncelle_oto(){
 
 sistem_guncelle(){
 	local kpkt
+	mps -GG 
+	mps -G
 	for kpkt in `mps -kl`;do
-		mps -g "$kpkt"
+		paket_guncelle "$kpkt"
 	done
 }
 
@@ -389,23 +391,37 @@ surum_kontrol(){
 	
 	if [ "$ksurum" = "$version" ];then
 		durum="guncel"
+		ryaz 33 "$1 sürümü güncel"
 	else
 		if [ "$ksurum" = "$dusuk" ];then
 			durum="yukselt"
 		else
 			durum="dusur"
 		fi
-
+		gun_onay="h"
 		if [ "$durum" <> "guncel" ];then
-			mps -s $1
-			mps -ik $1
+			while true; do
+				ryaz 34 "$1 sürüm $durum""me işlemi uygulanacak. $ksurum <> $version ";read -p "e veya h-> " eh
+				case $eh in
+					[Ee]* ) gun_onay="e"; break;;
+					[Hh]* ) break;;
+					* ) echo "e veya h";;
+				esac
+			done	
+			if [ "$gun_onay" = "e" ];then
+				paket_sil "$1" "evet"
+				mps -ik $1
+				ryaz 33 "$1 sürüm güncellemesi yapıldı"
+			else
+				ryaz 31 "$1 sürüm güncellemesi yapılmadı"
+			fi
 		fi
 	fi
-	ryaz 33 "$1 surum kontrolu $ksurum & $version $durum" 
+	
 }
 
 devir_kontrol(){
-	local kdevir release pkt dusuk yuksek durum
+	local kdevir release pkt dusuk yuksek durum gun_onay
 	durum="belirsiz"
 	satir=`sed -n '8p' <  /var/lib/pkg/DB/"$1"/META`
 	kdevir=${satir:1:${#satir}-1} 
@@ -415,19 +431,32 @@ devir_kontrol(){
 	
 	if [ "$kdevir" = "$release" ];then
 		durum="guncel"
+		ryaz 33 "$1 deviri güncel"
 	else
 		if [ "$kdevir" = "$dusuk" ];then
 			durum="yukselt"
 		else
 			durum="dusur"
 		fi
-		
+		gun_onay="h"
 		if [ "$durum" <> "guncel" ];then
-			mps -s $1
-			mps -ik $1
+			while true; do
+				ryaz 34 "$1 devir $durum""me işlemi uygulanacak. $kdevir <> $release ";read -p "e veya h-> " eh
+				case $eh in
+					[Ee]* ) gun_onay="e"; break;;
+					[Hh]* ) break;;
+					* ) echo "e veya h";;
+				esac
+			done	
+			if [ "$gun_onay" = "e" ];then
+				paket_sil "$1" "evet"
+				mps -ik $1
+				ryaz 33 "$1 devir güncellemesi yapıldı"
+			else
+				ryaz 31 "$1 devir güncellemesi yapılmadı"
+			fi
 		fi
-	fi
-	ryaz 33 "$1 devir kontrolu $kdevir & $release $durum" 
+	fi 
 }
    
 paket_derle(){

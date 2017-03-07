@@ -21,6 +21,4 @@ build() {
 
 	install -D -m 644 $SRC/$name-$version.jar $PKG/usr/share/java/$name-$version.jar
     ln -s $name-$version.jar $PKG/usr/share/java/$name.jar
-
-
 }
