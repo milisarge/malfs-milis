@@ -1,31 +1,43 @@
-# Description: A windowing toolkit for use with tcl
-# URL: http://tcl.sourceforge.net/
-# Packager: alienus at nutyx dot org
+# Description: A GUI toolkit for TCL.
+# URL: http://www.tcl.tk/
+# Packager: milisarge
 # Depends on: tcl xorg-fontconfig xorg-libxft xorg-libxscrnsaver 
 
 name=tk
-version=8.6.4
+version=8.6.6
 release=1
+source=(http://downloads.sourceforge.net/project/tcl/Tcl/$version/$name$version-src.tar.gz)
 
-source=(
-http://downloads.sourceforge.net/sourceforge/tcl/tk${version}-src.tar.gz)
+build() {
+	cd $name$version/unix
 
-build(){
-    
-    [ "`uname -m`" == "x86_64" ] && X64="--enable-64bit"
-    
-    cd $name$version/unix
-    ./configure --prefix=/usr \
-                --mandir=/usr/share/man \
-                --enable-threads \
-                --disable-rpath $X64
-    make
-    make INSTALL_ROOT=$PKG install install-private-headers
-    ln -sf wish${version%.*} $PKG/usr/bin/wish
-    ln -sf libtk${version%.*}.so $PKG/usr/lib/libtk.so
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/share/man \
+		--enable-gcc \
+		--enable-shared \
+		--enable-xft
 
-    # remove buildroot traces
-    sed -e "s#${SRC}/tk${version}/unix#/usr/lib#" \
-        -e "s#${SRC}/tk${version}#/usr/include#" \
-        -i $PKG/usr/lib/tkConfig.sh
+	make
+	make MKLINKS_FLAGS="-s" INSTALL_ROOT=$PKG install install-private-headers
+
+	cp ../generic/*.h $PKG/usr/include/
+	cp tkUnixPort.h $PKG/usr/include/tkPort.h
+	cp tkUnixDefault.h $PKG/usr/include/tkDefault.h
+	cp tkUnixInt.h $PKG/usr/include/tkInt.h
+
+	# remove $SRC traces
+	sed \
+		-e "s|$SRC/tk$version/unix|/usr/lib|g" \
+		-e "s|$SRC/tk$version|/usr/include|g" \
+		-i $PKG/usr/lib/tkConfig.sh
+
+	rm -r $PKG/usr/lib/tk${version%.*}/demos
+	rm $PKG/usr/lib/tk${version%.*}/images/README
+
+	ln -s wish${version%.*} $PKG/usr/bin/wish
+	ln -s libtk${version%.*}.so $PKG/usr/lib/libtk.so
+	ln -s libtkstub${version%.*}.a $PKG/usr/lib/libtkstub.a
+
+	chmod -R u+w $PKG/usr/share/man
 }
