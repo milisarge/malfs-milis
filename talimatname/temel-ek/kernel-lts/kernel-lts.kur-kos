@@ -12,3 +12,4 @@ if [ -f initramfs ];then
 	mv initramfs initramfs_eski
 fi
 dracut -N --force --xz --omit systemd  /boot/initramfs $modulno
+grub-mkconfig -o /boot/grub/grub.cfg
