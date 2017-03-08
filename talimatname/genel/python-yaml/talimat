@@ -1,0 +1,14 @@
+# Description: python için yaml ayrıştırıcı
+# URL: http://pyyaml.org/wiki/PyYAML
+# Packager: milisarge
+# Depends on: python
+
+name=python-yaml
+version=3.12
+release=1
+source=(http://pyyaml.org/download/pyyaml/PyYAML-$version.tar.gz)
+
+build() {
+	cd PyYAML-$version
+	python2 setup.py install --root=$PKG
+}
