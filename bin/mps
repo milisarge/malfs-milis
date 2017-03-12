@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.1"
+versiyon="0.9.2"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -759,6 +759,18 @@ tarihce_sil(){
 	fi
 }
 
+sunucu_ayarla(){
+	wget -q --spider "$1/paket.vt"
+	yenisun="$1"
+	if [ $? -eq 0 ]; then
+		sed -i.bak 's/^\(sunucu=\).*/\1"xverix\/"/' /etc/mps.conf
+		sed -i "s|xverix|$1|" /etc/mps.conf
+		mps -sun
+	else
+		ryaz 31 "Tanımsız paket sunucusu!"
+	fi
+}
+
 loglama(){
 	logdizin_kontrol
 	echo "$(date +'%F %T') $1" >> "$kokdizin/$LOGDIZIN/mps.log"
@@ -1193,6 +1205,12 @@ ayarlar() {
 			#sunucu bilgisi alma
 			-sun|sunucu)
 				ryaz 32 $sunucu ;;
+			sun)
+				if [ ! "$2" ]; then
+					ryaz 31 "sunucu bilgi eksik"
+					exit 1
+				fi
+				sunucu_ayarla  "$2" ;;
 			-bb|--pkbb)
 				bagimli_bilgi "$2" | column -t;;
 			-bbd)
