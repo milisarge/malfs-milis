@@ -1,10 +1,10 @@
 # Description: Hierarchical, reference counted memory pool system with destructors.
 # URL: https://talloc.samba.org
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: python libxslt
 
 name=talloc
-version=2.1.5
+version=2.1.8
 release=1
 source=(https://www.samba.org/ftp/$name/$name-$version.tar.gz)
 

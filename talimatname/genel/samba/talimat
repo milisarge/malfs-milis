@@ -1,17 +1,17 @@
 # Description: SMB Fileserver and AD Domain server
 # URL: http://www.samba.org
-# Packager: pierre at nutyx dot org
-# Depends on: talloc avahi gnutls libgpg-error popt python cups kerberos libcap tdb openldap libxslt
+# Packager: milisarge
+# Depends on: talloc tevent avahi gnutls libgpg-error popt python cups kerberos libcap tdb openldap libxslt
 
 name=samba
-version=4.3.3
+version=4.4.5
 release=1
 
-source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz tls-use-gnutls_priority_set_direct.patch)
+source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz
+http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20170225.tar.xz)
 
 build() {
-source /etc/blfs-bootscripts
-wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+
 if [ "`uname -m`" == "x86_64" ]; then
         LIB=lib64
 else
@@ -19,12 +19,6 @@ else
 fi
 cd $name-$version
 
-sed -e "/deps='LIBASYNC_REQ'/              \
-       {
-         s/$/,/
-         a\                 install=False
-       }"                                  \
-    -i lib/async_req/wscript_build
 
 ./configure                             \
     --prefix=/usr                       \
@@ -32,8 +26,10 @@ sed -e "/deps='LIBASYNC_REQ'/              \
     --localstatedir=/var                \
     --with-piddir=/run/samba            \
     --with-pammodulesdir=/lib/security  \
+    --without-ad-dc                     \
     --enable-fhs                        \
-    --without-systemd
+    --without-systemd                   \
+    --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb
 
 make
 
@@ -64,11 +60,11 @@ cd $PKG/usr/lib/
 install -d cups/backend
 ln -v -sf $PKG/usr/bin/smbspool $PKG/usr/lib/cups/backend/smb
 
-# service
-cd $SRC
-
-tar xf $scripts-$scriptsversion.tar.bz2
-cd $SRC/$scripts-$scriptsversion
+# servis
+cd $SRC/blfs-bootscripts-20170225
 make DESTDIR=$PKG install-samba
 make DESTDIR=$PKG install-winbindd
+
+# Doublon
+rm -f $PKG/usr/lib/python2.7/site-packages/talloc.so
 }
