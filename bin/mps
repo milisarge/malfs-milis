@@ -908,6 +908,7 @@ paketvt_guncelle(){
 	wget -q --spider "$sunucu""paket.vt"
 	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
 	if [ $? -eq 0 ]; then	
+		ryaz 32 $sunucu
 		ryaz 32 "paket veritabanı guncellenıyor." "$paketdepo""paket.vt"
 		if [ -f "$paketdepo""paket.vt" ];then
 			mv "$paketdepo""paket.vt" "$paketdepo""paket.vt.eski"
