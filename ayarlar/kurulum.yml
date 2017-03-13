@@ -1,0 +1,18 @@
+bolgesel:
+  dil: turkce
+  zaman: istanbul
+disk:
+  baglam: /mnt
+  bolum: /dev/sda6
+  format: evet
+  takasbolum: /dev/sda7
+gorunum:
+  arkaplan: milislinux.jpg
+grub:
+  kur: evet
+kullanici:
+  isim: qwerty
+  sifre: '12345'
+program:
+  surum: '1.0'
+  tanim: Milis Linux Kurucusu
