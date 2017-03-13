@@ -1,0 +1,15 @@
+#!/bin/bash
+masa=lxqt
+if [ "`cat ~/.xinitrc | grep $masa`" ]; then
+	if [ -d /opt/lxqt-turkce ]; then
+		cd /opt/lxqt-turkce && git pull
+	else
+		git clone https://github.com/yasarciv/LXQt-Turkce /opt/lxqt-turkce
+	fi
+	cp -rf /opt/lxqt-turkce/applications/* /usr/share/applications/
+	cp -rf /opt/lxqt-turkce/desktop-directories/* /usr/share/desktop-directories/
+	echo "türkçe güncellemeler yapıldı."
+else
+	echo "masaüstü lxqt değil!"
+fi
+
