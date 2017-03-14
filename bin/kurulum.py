@@ -131,6 +131,8 @@ def kullaniciOlustur(isim,kullisim,kullsifre):
     #os.system("useradd -p "+encPass+ " -s "+ "/bin/bash "+ "-d "+ "/home/" + kullisim+ " -m "+ " -c \""+ name+"\" " + kullisim)
 	os.system("kopar milis-"+isim+" "+kullisim)
 	os.system('echo -e "'+kullsifre+'\n'+kullsifre+'" | passwd '+kullisim)
+	ayar_komut="cp -r /root/.config /home/"+kullisim+"/"
+	os.system(ayar_komut)
 	d.infobox(text=kullisim+" kullanıcısı başarıyla eklendi.")
 	time.sleep(1)
 
