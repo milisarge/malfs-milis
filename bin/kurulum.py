@@ -145,7 +145,7 @@ def sifreKontrol(kullisim):
 		kullaniciTanimla(kullisim,kullisim,kullsifre)
 		d.infobox(text=kullisim+" kullanıcısı başarıyla tanımlandı.")
 		time.sleep(1)
-		diskSecim()
+		bolumSec()
 	else:
 		status=d.msgbox(text="Şifreniz boş olamaz")
 		sifreKontrol(kullisim)
@@ -173,7 +173,8 @@ def bolumSec():
 		if bolumMajmin[i].split(":")[1] != "0": # partition olmayanları ele (sda/sdb seçince grub bozuluyor.)
 			for uygunBolum in uygunBolumler:
 				if uygunBolum in diskBolumler[i]: 
-					bolumSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
+					if bolumDs[i] == "ext4":
+						bolumSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
 	status,seciliBolum = d.menu(text="Sistemin kurulacağı diski seçiniz",choices=bolumSecimler)
 	if status == "ok":
 		f.write("{} seçildi !".format(seciliBolum))
@@ -350,7 +351,8 @@ def takasSec(kbolum):
 				if diskBolumler[i] != kbolum:
 					for uygunBolum in uygunBolumler: 
 						if uygunBolum in diskBolumler[i]: #loop partlar gibi swap kurulamayacak alanları ele
-							takasSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
+							if bolumDs[i] == "swap":
+								takasSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
 		status,seciliBolum = d.menu(text="Takas alanının yer alacağı disk bölümünü seçiniz",choices=takasSecimler)
 		if status == "ok":
 			f.write("{} seçildi !".format(seciliBolum))
