@@ -1,6 +1,6 @@
 bolgesel:
   dil: turkce
-  zaman: istanbul
+  zaman: Europe/Istanbul
 disk:
   baglam: /mnt
   bolum: /dev/sda6

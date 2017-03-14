@@ -133,11 +133,14 @@ def kullaniciTanimla(isim,kullisim,kullsifre):
 def kullaniciOlustur(isim,kullisim,kullsifre):
     #encPass = crypt.crypt(kullsifre,"22")   
     #os.system("useradd -p "+encPass+ " -s "+ "/bin/bash "+ "-d "+ "/home/" + kullisim+ " -m "+ " -c \""+ name+"\" " + kullisim)
-	os.system("kopar milis-"+isim+" "+kullisim)
+	os.system("kopar milislinux-"+isim+" "+kullisim)
 	os.system('echo -e "'+kullsifre+'\n'+kullsifre+'" | passwd '+kullisim)
+	#masaustu ve diğer ayarların aktarılması
 	ayar_komut="cp -r /root/.config /home/"+kullisim+"/"
 	os.system(ayar_komut)
-	d.infobox(text=kullisim+" kullanıcısı başarıyla eklendi.")
+	saat_komut="saat_ayarla_tr"
+	os.system(saat_komut)
+	d.infobox(text=kullisim+" kullanıcısı başarıyla oluşturuldu.")
 	time.sleep(1)
 
 def sifreKontrol(kullisim):
