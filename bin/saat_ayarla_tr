@@ -1,0 +1,5 @@
+#!/bin/bash
+cp /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
+export TZ=/etc/localtime
+hwclock --set --date "`date +"%D %T"`"
+hwclock -s
