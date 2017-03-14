@@ -31,8 +31,8 @@ if kontrol:
 	mps_gerekler="/tmp/komutan.gerekler"
 	kur="pip3 install "
 	mpskur="mps kur "
-	kontrol=["pythondialog"]
-	mpskontrol=["python3-pip","python-yaml","python3-yaml","advcp"]
+	kontrol=[""]
+	mpskontrol=["python3-pip","python-yaml","python3-yaml","python3-pythondialog"]
 
 	for mpsk in mpskontrol:
 		if os.path.exists("/var/lib/pkg/DB/"+mpsk) is False:
@@ -55,11 +55,15 @@ import yaml
 d = Dialog(dialog="dialog")
 f = open("/tmp/kurulum.log","w")
 
-kurulum_dosya="/root/ayarlar/kurulum.yml"
+_kurulum_dosya="/root/ayarlar/kurulum.yml"
+kurulum_dosya=""
 
-if not os.path.exists(kurulum_dosya):
-	d.infobox(text=kurulum_dosya+" bulunamadı!")
+if not os.path.exists(_kurulum_dosya):
+	d.infobox(text=_kurulum_dosya+" bulunamadı!")
 	sys.exit()
+else:
+	os.system("cp "+_kurulum_dosya+" /opt/kurulum.yml")
+	kurulum_dosya="/opt/kurulum.yml"
 
 def komutCalistir(c):
 	out = subprocess.check_output(c,stderr=subprocess.STDOUT,shell=True,universal_newlines=True)
