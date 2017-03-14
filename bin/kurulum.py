@@ -177,18 +177,16 @@ def bolumSec():
 		f.write("{} seçildi !".format(seciliBolum))
 		print("{} seçildi !".format(seciliBolum))
 		kurparam["disk"]["bolum"]="/dev/"+seciliBolum
-		###formatDialog(seciliBolum)
-		takasSec(seciliBolum)
+		formatDialog(seciliBolum)
 		
 def formatDialog(part):
 	status = d.yesno(title="Uyarı !", 
 	text="/dev/{} bölümü ext4 türünde formatlanacak. Emin misiniz ?".format(part))	
 	if status == "ok":
-		d.infobox(text="Formatlanıyor... Lütfen bekleyiniz...")
-		formatPart(part)
-		time.sleep(5)
+		kurparam["disk"]["format"]="evet"
 	else:
-		bolumSec() 
+		kurparam["disk"]["format"]="hayir"
+	takasSec(part)
 		
 def bolumFormatla(hedef):
 	komut="umount -l "+hedef
@@ -365,9 +363,7 @@ def swapAyarla(bolum):
 	os.system("mkswap "+"/dev/"+bolum)
 	os.system('echo "`lsblk -ln -o UUID /dev/' + bolum + '` none swap sw 0 0" | tee -a /etc/fstab')
 
-		 
-if __name__ == "__main__":
-
+def main():
 	if len(sys.argv) == 1:
 		karsilamaEkrani()
 	else:
@@ -377,3 +373,10 @@ if __name__ == "__main__":
 		else:
 			d.infobox(text=dosya+" bulunamadı!")
 			time.sleep(1)
+
+		 
+if __name__ == "__main__":
+	
+	main()
+
+	
