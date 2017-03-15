@@ -998,14 +998,12 @@ chroot_gir(){
 
 
 unmount_islemi() {
-	umount $LFS/dev/shm
-	umount $LFS/dev/pts
-	umount $LFS/dev
-	umount $LFS/run
-	umount $LFS/proc
-	umount $LFS/sys
-	#ortam ici calisan surecleri tespit edip sonlandirmak için
-	kill -9 `lsof  | grep $LFS/dev | awk '{print $2}' `
+	umount -l $LFS/dev/shm
+	umount -l $LFS/dev/pts
+	umount -l $LFS/dev
+	umount -l $LFS/run
+	umount -l $LFS/proc
+	umount -l $LFS/sys
 }
 
 bash_kur(){
