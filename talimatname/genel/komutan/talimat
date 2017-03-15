@@ -5,7 +5,7 @@
 name=komutan
 name2=mps
 version=git
-release=2
+release=3
 
 source=()
 build() {

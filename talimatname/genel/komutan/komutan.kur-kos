@@ -1,16 +1,20 @@
 pip2 install flask
 pip2 install psutil
-pip3 install tornado
-pip3 install pyopenssl
 pip2 install paho-mqtt
-tamir_daemon_kull
 pip2 install /opt/komutan/gerekliler/python-stdnum-1.1.tar.gz
-local evdizin
+
 if [ -d /home/$USER ];then
 	evdizin=/home/$USER
 else
 	evdizin=/$USER
 fi
-cp /opt/komutan/mps.desktop $evdizin/Desktop/
-cp /opt/komutan/komutan.desktop $evdizin/Desktop/
+
+if [ -d $evdizin/Desktop/ ]; then
+	masa="Desktop"
+else
+	masa="Masaüstü"
+fi
+
+cp /opt/komutan/mps.desktop $evdizin/$masa/
+cp /opt/komutan/komutan.desktop $evdizin/$masa/
 
