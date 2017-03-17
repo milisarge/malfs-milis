@@ -1,6 +1,6 @@
 
 
-##Milis İşletim Sistemi
+##Milis İşletim Sistemi (Milis Linux)
 Milis işletim sistemi,lfs esaslarını temel alarak yerli bağımsız bir dağıtım olmak üzere yola çıkmıştır.
 Milis işletim sistemi kendine özgü mps paket yöneticisi kullanmaktadır.
 Mps paket yöneticisi performansı ve sorunsuz paket derleme-kurup-kaldırma-güncellemeyi hedeflemektedir.
@@ -18,7 +18,7 @@ Kısaca Milis,sanal dünyanın getirisi olarak hakkımız olan kaybettiğimiz bi
 Ayrıca her türlü katkıda bulunmak isteyenler için bulunmaz bir türkçe açık kaynak projesidir.
 
 
-Milis Anasayfa : http://milis.gungre.ch
+Milis Anasayfa : http://milislinux.org
 
 ####İletişim:
 
@@ -27,7 +27,7 @@ milisarge@gmail.com
 irc.freenode.net #milisarge
 
 
-Sunucu desteği için Lucas Sköldqvist dostumuza teşekkür ederiz. 
+Sunucu desteği için Oyakder'e ve Lucas Sköldqvist'e teşekkür ederiz. 
 
 ###MPS (Milis Paket Sistemi)
 
@@ -44,6 +44,10 @@ mps kur paket_adi.mps.lz    Dosyadan yazılım paketi kurar.
 mps sil paket_adi           Paket siler.
 
 mps ara paket_adi           Paket arar.
+
+mps bul anahtar_kelime      Paket tanımları içinde kelime arar.
+
+mps odkp paket_adi          Paketi gerekleriyle derler paket üretir.
 
 
 API Parametreler
