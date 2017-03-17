@@ -23,6 +23,8 @@ Milis Anasayfa : http://milislinux.org
 
 İletişim:
 
+iletisim@milislinux.org
+
 milisarge@gmail.com 
 
 irc.freenode.net #milisarge
