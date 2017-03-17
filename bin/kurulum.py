@@ -184,7 +184,6 @@ def bolumSec():
 						bolumSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
 	status,seciliBolum = d.menu(text="Sistemin kurulacağı diski seçiniz",choices=bolumSecimler)
 	if status == "ok":
-		f.write("{} seçildi !".format(seciliBolum))
 		print("{} seçildi !".format(seciliBolum))
 		kurparam["disk"]["bolum"]="/dev/"+seciliBolum
 		formatDialog(seciliBolum)
@@ -217,8 +216,6 @@ def bolumFormatla(hedef):
 		time.sleep(1)
 		sys.exit()
 		
-	
-
 def bolumBagla(hedef,baglam):
 	komut="mount "+hedef+" "+baglam
 	try:
@@ -322,6 +319,8 @@ def kurulumUygula(dosya):
 		#formatlama
 		if kformat == "evet":
 			bolumFormatla(kbolum)
+		if ktakas !="":
+			takasAyarla(ktakas)
 		#kurulacak bölümün bağlanması
 		bolumBagla(kbolum,kbaglam)
 		#kullanıcı oluşturma
@@ -330,6 +329,7 @@ def kurulumUygula(dosya):
 		sistemKopyala(kbaglam)
 		#initrd oluşturulması
 		initrdOlustur(kbaglam)
+		#grub kurulması
 		if kgrubkur == "evet":
 			grubKur(kbolum,kbaglam)
 		bolumCoz(kbolum)
@@ -339,9 +339,6 @@ def kurulumUygula(dosya):
 			sys.exit() 
 		else:
 			karsilamaEkrani()	
-	
-def kurulumBitir():
-	d.infobox(text="Milis İşletim Sistemi başarıyla kuruldu.")
 		
 def takasSec(kbolum):
 	if d.yesno(text="Takas alanı kullanmak istiyor musunuz ?") == "ok":
@@ -362,15 +359,13 @@ def takasSec(kbolum):
 								takasSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
 		status,seciliBolum = d.menu(text="Takas alanının yer alacağı disk bölümünü seçiniz",choices=takasSecimler)
 		if status == "ok":
-			f.write("{} seçildi !".format(seciliBolum))
 			print("{} seçildi !".format(seciliBolum))		
-			###swapAyarla(seciliBolum)
 			kurparam["disk"]["takasbolum"]="/dev/"+seciliBolum
 	else:
 		kurparam["disk"]["takasbolum"]=""
 	grubKurTespit()
 		
-def swapAyarla(bolum):
+def takasAyarla(bolum):
 	os.system("mkswap "+"/dev/"+bolum)
 	os.system('echo "`lsblk -ln -o UUID /dev/' + bolum + '` none swap sw 0 0" | tee -a /etc/fstab')
 
