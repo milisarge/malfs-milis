@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.2"
+versiyon="0.9.3"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -354,6 +354,14 @@ paket_sil_oto_onayli(){
 	cat $1
 	for spkt in `cat $1`;do
 		paket_sil "$spkt"
+	done
+}
+
+paketsiz_talimatlar(){
+	for talimat in `ls $talimatname_dizin/genel`;do
+		if [[ ! $(cat $paketdepo/paket.vt | grep  $talimat#) ]] ;then 
+			echo $talimat 
+		fi
 	done
 }
 
@@ -1278,6 +1286,8 @@ ayarlar() {
 				kurban_kurtar $2 ;;
 			-suko)
 				sunucu_kontrol ;;
+			-pot)
+				paketsiz_talimatlar ;;
 			-dota)
 				dosyadan_talimat_islem $2 $3 ;;
 			-cf|--config-file)
