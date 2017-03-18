@@ -16,4 +16,7 @@ fi
 
 cp /opt/komutan/mps.desktop $evdizin/$masa/
 cp /opt/komutan/komutan.desktop $evdizin/$masa/
-
+ 
+cd /opt/komutan
+git pull
+cd -
