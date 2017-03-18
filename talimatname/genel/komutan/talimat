@@ -1,11 +1,11 @@
 # Description: milis işletim sistemi web tabanlı yönetim programı
 # URL: https://github.com/milisarge/komutan
 # Packager: milisarge
-# Depends on: sqlite python python-pip python-yaml
+# Depends on: python python-pip python-yaml
 name=komutan
 name2=mps
 version=git
-release=3
+release=4
 
 source=()
 build() {

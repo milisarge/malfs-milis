@@ -1,6 +1,5 @@
 pip2 install flask
 pip2 install psutil
-pip2 install paho-mqtt
 pip2 install /opt/komutan/gerekliler/python-stdnum-1.1.tar.gz
 
 if [ -d /home/$USER ];then
