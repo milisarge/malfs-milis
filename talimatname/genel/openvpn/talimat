@@ -1,10 +1,10 @@
 # Description: VPN Client
 # URL:         http://www.openvpn.net
 # Packager:    milisarge
-# Depends on:  lzo
+# Depends on:  
 
 name=openvpn
-version=2.3.10
+version=2.4.0
 release=1
 source=(http://swupdate.openvpn.net/community/releases/$name-$version.tar.gz \
         openvpnd)
