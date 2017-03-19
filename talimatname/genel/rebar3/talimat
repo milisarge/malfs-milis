@@ -1,0 +1,17 @@
+# Description: otp esaslarına göre erlang derleme aracı
+# URL: https://github.com/rebar/rebar3
+# Packager: milisarge
+# Depends on: erlang
+
+name=rebar3
+version=3.3.4
+release=1
+source=(https://github.com/rebar/rebar3/archive/${version}.tar.gz)
+
+build(){
+	cd "$SRC/$name-$version"
+	./bootstrap
+	install -Dm0755 "${name}" "$PKG/usr/bin/${name}"
+	install -Dm0644 "priv/shell-completion/bash/rebar3" "$PKG/usr/share/bash-completion/completions/rebar3"
+}
+
