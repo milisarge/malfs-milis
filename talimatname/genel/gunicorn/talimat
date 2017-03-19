@@ -1,0 +1,18 @@
+# Description: Python'da yazılmış (green unicorn) WSGI HTTP sunucu
+# URL: http://pypi.python.org/pypi/six/
+# Packager: milisarge
+# Depends on: python python3 python-pip python3-pip
+
+name=gunicorn
+version=19.7.0
+release=1
+
+source=(https://github.com/benoitc/${name}/archive/${version}.tar.gz)
+
+build() {
+	cd "${name}-${version}"
+	python setup.py install --root="${PKG}" --prefix=/usr --optimize=1
+	python3 setup.py install --root="${PKG}" --prefix=/usr --optimize=1
+	rm -r "${PKG}/usr/bin/gunicorn_paster"
+}
+
