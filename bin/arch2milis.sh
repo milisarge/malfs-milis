@@ -9,6 +9,8 @@ else
 	sed -i 's/pkgrel/release/g' $1
 	sed -i 's/pkgdesc/# Description/g' $1
 	sed -i 's/{pkgdir}/{PKG}/g' $1
+	sed -i 's/pkgdir/PKG/g' $1
 	sed -i 's/{srcdir}/{SRC}/g' $1
+	sed -i 's/srcdir/SRC/g' $1
 	echo "gerekli değişiklikler yapıldı."
 fi
