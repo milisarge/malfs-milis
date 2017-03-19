@@ -11,8 +11,9 @@ source=(https://github.com/benoitc/${name}/archive/${version}.tar.gz)
 
 build() {
 	cd "${name}-${version}"
-	python setup.py install --root="${PKG}" --prefix=/usr --optimize=1
 	python3 setup.py install --root="${PKG}" --prefix=/usr --optimize=1
+	mv "${PKG}/usr/bin/gunicorn" "${PKG}/usr/bin/gunicorn3"
+	python setup.py install --root="${PKG}" --prefix=/usr --optimize=1
 	rm -r "${PKG}/usr/bin/gunicorn_paster"
 }
 
