@@ -1,4 +1,4 @@
-# Description : A blogging library for KDE 
+# Description : KDE için bir blog yazısı kütüphanesi 
 # URL : https://projects.kde.org/kblog
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : kf5-extra-cmake-modules boost kf5-kdoctools kf5-kxmlrpcclient syndication kcalcore
