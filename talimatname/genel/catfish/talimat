@@ -1,4 +1,4 @@
-# Description=Çok yönlü dosyaarama aracı
+# Description=Çok yönlü dosya arama aracı
 # Url=https://launchpad.net/catfish-search
 # Packager: milisarge yasarciv
 # Depends on: intltool python-distutils-extra python-gobject python-xdg python-pexpect python-cairo python-ptyprocess gtk3 xdg-utils mlocate
