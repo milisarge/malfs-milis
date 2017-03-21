@@ -1,6 +1,6 @@
-# Description="Feature-rich and easy to handle CD burning applicatio"
-# Url="http://sourceforge.net/projects/k3b/"
-# Packager=alihan-ozturk28@hotmail.com
+# Description: Özellik açısından zengin ve kullanımı kolay CD yazma uygulaması
+# Url: http://sourceforge.net/projects/k3b/
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: git qt5 kf5-extra-cmake-modules qt5-webkit kf5-karchive kf5-kconfig kf5-kcoreaddons kf5-kdoctools kf5-kfilemetadata kf5-ki18n kf5-kiconthemes kf5-kjobwidgets kf5-kcmutils kf5-kio kf5-knotifications kf5-knewstuff kf5-knotifyconfig kf5-kservice kf5-solid kf5-kwidgetsaddons kf5-kxmlgui libkcddb libsamplerate libmad ffmpeg taglib libmpcdec libdvdread cdrkit xorg-libxft cdparanoia cdrdao dvd+rw-tools
 
 name=k3b

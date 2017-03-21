@@ -1,4 +1,4 @@
-# Description: A routing engine designed for security, scalability, speed and ease of use
+# Description: Güvenlik, ölçeklenebilirlik, hız ve kullanım kolaylığı için tasarlanmış bir yönlendirme motoru
 # URL: https://github.com/cjdelisle/cjdns
 # Packager: milisarge
 # Depends on : node python
