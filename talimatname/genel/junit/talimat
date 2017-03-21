@@ -1,4 +1,4 @@
-# Description: The JUnit package contains a simple, open source framework to write and run repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks. JUnit features include assertions for testing expected results, test fixtures for sharing common test data, and test runners for running tests.
+# Description: JUnit paketi, tekrarlanabilir testler yazmak ve çalıştırmak için basit, açık kaynaklı bir çerçeve içerir. Birim sınama çerçeveleri için xUnit mimarisinin bir örneğidir. JUnit özellikleri beklenen sonuçları test etmek için iddialar, ortak test verilerini paylaşmak için test fikstürleri ve testler çalıştırmak için test koşucuları içerir.
 # URL: http://junit.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: apache-ant unzip
