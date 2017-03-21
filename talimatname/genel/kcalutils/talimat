@@ -1,4 +1,4 @@
-# Description : The KDE calendar utility library 
+# Description : KDE takvim yardımcı program kütüphanesi
 # URL : https://projects.kde.org/projects/kde/
 # Packager : alihan-oztuk28@hotmail.com
 # Depends on : kf5-extra-cmake-modules python kf5-kdoctools kcalcore kidentitymanagement
