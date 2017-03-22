@@ -1,4 +1,4 @@
-# Description: A GTK+ module that bridges ATK to D-Bus at-spi
+# Description: ATK'yı at-spi D-Bus'a köprüleyen GTK + modülü
 # URL: http://www.gtk.org/
 # Packager: milisarge
 # Depends on: intltool at-spi2-core atk
