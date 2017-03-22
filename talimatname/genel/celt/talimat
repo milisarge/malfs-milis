@@ -1,4 +1,4 @@
-# Description: Low-latency audio communication codec
+# Description: Düşük gecikmeli sesli iletişim codec bileşeni
 # URL: http://www.celt-codec.org/
 # Packager: milisarge
 # Depends on: libogg
