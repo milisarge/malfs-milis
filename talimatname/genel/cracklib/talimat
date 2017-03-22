@@ -1,4 +1,4 @@
-# Description: Library to enforce passwords by comparing user selected passwords to words lists
+# Description: Kullanıcı tarafından seçilen parolaları kelimeler listeleri ile karşılaştırarak parolaları zorlamak için Kütüphane
 # URL: http://sourceforge.net/projects/cracklib/
 # Packager: milisarge
 # Depends on:
