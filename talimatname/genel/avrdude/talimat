@@ -1,4 +1,4 @@
-# Description: AVRDUDE is an utility to download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers using the in-system programming technique (ISP)
+# Description: AVRDUDE, sistem içi programlama tekniğini (ISP) kullanarak AVR mikro denetleyicilerinin ROM ve EEPROM içeriğini indirmek / yüklemek / değiştirmek için kullanılan bir yardımcı programdır.
 # URL: http://www.nongnu.org/avrdude/
 # Packager: milisarge
 # Depends on : libftdi libusb-compat hidapi
