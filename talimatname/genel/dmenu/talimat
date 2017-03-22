@@ -1,5 +1,5 @@
-# Description: dmenu is a dynamic menu for X.
-# URL: URL: http://tools.suckless.org/dmenu/
+# Description: Dmenu, X için dinamik bir menüdür.
+# URL: http://tools.suckless.org/dmenu/
 # Packager: milisarge
 # Depends on: xorg-libxinerama
 
