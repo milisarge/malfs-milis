@@ -1,4 +1,4 @@
-# Description: System daemon for managing color devices
+# Description: Renkli aygıtları yönetmek için sistem arka plan programı
 # URL: http://www.freedesktop.org/software/colord/
 # Packager: milisarge
 # Depends on: libgudev sqlite polkit lcms2 gobject-introspection libusb dbus vala libgusb

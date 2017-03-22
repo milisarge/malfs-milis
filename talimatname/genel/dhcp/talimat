@@ -1,4 +1,4 @@
-# Description: The ISC DHCP package contains both the client and server programs for DHCP.
+# Description: ISC DHCP paketi, DHCP için istemci ve sunucu programlarını içerir.
 # URL: ftp://ftp.isc.org/isc/dhcp
 # Packager: milisarge
 # Depends on:

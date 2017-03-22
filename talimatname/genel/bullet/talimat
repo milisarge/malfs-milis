@@ -1,4 +1,4 @@
-# Description: Continuous Collision Detection and Physics Library.
+# Description: Sürekli çarpışma algılama ve fizik kütüphanesi.
 # URL: http://www.bulletphysics.com/
 # Packager: milisarge
 # Depends on: cmake freeglut

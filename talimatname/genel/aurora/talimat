@@ -1,5 +1,5 @@
-# Description: Gtk Engine themes with all common Gtk widgets.
-# URL: http://www.xfce-look.org/content/show.php/Aurora+Gtk+Engine?content=56438
+# Description: Aurora Gtk Motoru, Gtk uygulamaları için cazip, eksiksiz ve tutarlı bir görünüm sağlamak için tüm yaygın Gtk widget'larını içerir.
+# URL: https://www.gnome-look.org/content/show.php/Aurora+Gtk+Engine?content=56438
 # Packager: milisarge
 # Depends on: gtk2
 
@@ -7,8 +7,8 @@
 name=aurora
 version=1.5.1
 release=2
-source=(http://gnome-look.org/CONTENT/content-files/56438-aurora-$version.tar.bz2 \
-    http://www.gnome-look.org/CONTENT/content-files/80431-aurorasmooth.tar.bz2)
+source=(https://dl.opendesktop.org/api/files/download/id/1460970469/56438-$name-$version.tar.bz2 \
+    https://dl.opendesktop.org/api/files/download/id/1460970232/80431-aurorasmooth.tar.bz2)
 
 build() {
 unset MAKEFLAGS

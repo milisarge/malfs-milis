@@ -1,4 +1,4 @@
-# Description: A bittorrent client based on Python and GTK.
+# Description: Python ve GTK tabanlı bittorrent istemcisi.
 # URL: http://deluge-torrent.org/
 # Packager: milisarge
 # Depends on: librsvg libtorrent-rasterbar python-gtk python-openssl python-chardet python-xdg python-twisted intltool python-mako

@@ -1,4 +1,4 @@
-# Description: Apache Portable Runtime Utility Library
+# Description: Apache taşınabilir çalışma zamanı yardımcı program kütüphanesi
 # URL: http://apr.apache.org/
 # Packager: milisarge
 # Depends on: apr expat

@@ -1,4 +1,4 @@
-# Description: Suite to create, manipulate and view DjVu ('déjà vu') documents
+# Description: DjVu ('déjà vu') dokümanlarını oluşturmak, değiştirmek ve görüntülemek için takım
 # URL: URL: http://djvu.sourceforge.net
 # Packager: milisarge
 # Depends on: librsvg libtiff libjpeg-turbo hicolor-icon-theme

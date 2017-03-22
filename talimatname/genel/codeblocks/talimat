@@ -1,4 +1,4 @@
-# Description: a cross-platform Integrated Development Environment (IDE).
+# Description: Bir çapraz platform Bütünleşik Geliştirme Ortamı (IDE).
 # URL: http://www.codeblocks.org/
 # Packager: milisarge
 # Depends on: zip boost desktop-file-utils gamin gtk-update-icon-cache hicolor-icon-theme hunspell shared-mime-info wxgtk28

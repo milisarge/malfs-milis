@@ -1,4 +1,4 @@
-# Description: The BIND DNS sunucu, nslookup, dig and host yazılımlarını içeren paket.
+# Description: BIND, Etki Alanı Ad Sistemi (DNS) bilgilerini İnternet'te yayınlamanızı ve kullanıcılarınız için DNS sorgularını çözmeyi sağlayan açık kaynaklı bir yazılımdır.
 # URL: http://www.isc.org/downloads/bind/
 # Packager: milisarge
 # Depends on: kerberos libxml2

@@ -1,4 +1,4 @@
-# Description: An object oriented GL/GLES Abstraction/Utility Layer
+# Description: Nesneye yönelik bir GL / GLES Soyutlama / Yardımcı Katman
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: xorg-libxrandr gdk-pixbuf xorg-mesa xorg-glu pango gobject-introspection
