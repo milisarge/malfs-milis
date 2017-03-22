@@ -1,4 +1,4 @@
-# Description: Implements a custom algorithm for extracting fingerprints from any audio source.
+# Description: Herhangi bir ses kaynağından parmak izi ayıklamak için özel bir algoritma uygular.
 # URL: http://acoustid.org/chromaprint/
 # Packager: milisarge
 # Depends on: ffmpeg cmake
