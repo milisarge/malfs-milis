@@ -1,4 +1,4 @@
-# Description: Set of programs for CD/DVD recording, ISO image creation and audio CD extraction
+# Description: CD / DVD kaydı, ISO imaj oluşturma ve ses CD'si çıkarımı için programlar seti
 # URL: http://cdrkit.org/
 # Packager: milisarge
 # Depends on: libcap cmake
