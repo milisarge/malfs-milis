@@ -1,4 +1,4 @@
-# Description: Converts DocBook documents into the Unix man page format and the GNU Texinfo format.
+# Description: DocBook belgelerini Unix yardım sayfası formatına ve GNU Texinfo formatına dönüştürür.
 # URL: URL: http://docbook2x.sourceforge.net/
 # NuTyX package info file (http://nutyx.org)
 # Packager: milisarge
