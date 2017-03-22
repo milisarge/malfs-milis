@@ -1,4 +1,4 @@
-# Description: A low-level configuration system.
+# Description: Düşük seviyeli bir yapılandırma sistemi.
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: dbus gtk3 libxml2 vala

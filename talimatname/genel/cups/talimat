@@ -1,4 +1,4 @@
-# Description: The CUPS Printing System
+# Description: CUPS yazdırma sistemi
 # URL: http://www.cups.org
 # Packager: milisarge
 # Depends on: avahi python gnutls xdg-utils gtk-update-icon-cache

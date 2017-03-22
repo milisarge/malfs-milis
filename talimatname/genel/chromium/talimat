@@ -1,4 +1,4 @@
-# Description: The Open-source project behind Google Chrome, a safer, faster, and more stable browser
+# Description: Google Chrome'un arkasındaki açık kaynaklı proje, daha güvenli, daha hızlı ve daha kararlı bir tarayıcı
 # URL: http://www.chromium.org/Home
 # Packagers: milisarge
 # Depends on: atk nss ninja pciutils gperf yasm xorg-mesa libgnome-keyring elfutils subversion gtk2 dbus-glib nss alsa-lib xdg-utils bzip2 libevent libgcrypt dejavu-ttf opus snappy dbus desktop-file-utils hicolor-icon-theme flac libxml2 pulseaudio xorg-libxscrnsaver xorg-libxtst libexif

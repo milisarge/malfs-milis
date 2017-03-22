@@ -1,4 +1,4 @@
-# Description: Freedesktop.org message bus system
+# Description: Freedesktop.org ileti taşıma sistemi
 # URL: http://www.freedesktop.org/wiki/Software/dbus/
 # Packager: milisarge
 # Depends on: expat xorg-libx11 xorg-libsm xorg-libice

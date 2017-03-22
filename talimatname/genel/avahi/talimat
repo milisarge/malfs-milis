@@ -1,4 +1,4 @@
-# Description: Multicast/unicast DNS-SD framework
+# Description: Çok noktaya yayın / tek noktaya yayın DNS-SD çerçevesi
 # URL: http://www.avahi.org/
 # Packager: milisarge
 # Depends on: intltool glib dbus-python gobject-introspection libdaemon

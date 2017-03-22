@@ -1,4 +1,4 @@
-# Description: Records audio/data CD-Rs in disk-at-once (DAO) mode
+# Description: Ses / veri CD-R'lerini disk at once (DAO) modda kaydeder
 # URL: http://cdrdao.sourceforge.net
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: lame libao libvorbis libmad
