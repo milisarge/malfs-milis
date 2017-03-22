@@ -1,4 +1,4 @@
-# Description: Silicon Graphics Audio File Library
+# Description: Silicon Graphics ses dosyası kitaplığı
 # URL: http://www.68k.org/~michael/audiofile/
 # Packager: milisarge
 # Depends on: alsa-lib
