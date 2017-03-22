@@ -6,7 +6,7 @@
 name=dash
 version=0.5.8
 release=1
-source=(http://gondor.apana.org.au/~herbert/dash/files/dash-$version.tar.gz)
+source=(http://gondor.apana.org.au/~herbert/$name/files/$name-$version.tar.gz)
 
 build(){
 cd $name-$version
