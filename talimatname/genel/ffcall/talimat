@@ -1,4 +1,4 @@
-# Description: C library for implementing foreign function calls in embedded interpreters
+# Description: Gömülü yorumlayıcılarda yabancı işlev çağrıları uygulamak için C kütüphanesi
 # URL: http://www.gnu.org/software/libffcall/
 # Packager: milisarge
 # Depends on:
