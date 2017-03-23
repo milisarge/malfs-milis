@@ -1,4 +1,4 @@
-# Description: Linux-exclusive browser that carries the best features from Opera
+# Description: Opera'nın en iyi özelliklerini taşıyan Linux'a özel tarayıcı
 # URL: http://fifth-browser.sourceforge.net/
 # Packager: milisarge
 # Depends on: webkitfltk urlmatch physfs desktop-file-utils
