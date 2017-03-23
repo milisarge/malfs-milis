@@ -1,4 +1,4 @@
-# Description: Generic Spell Checking Library.
+# Description: Genel yazım denetimi kitaplığı.
 # URL: http://www.abisource.com/enchant/
 # Packager: milisarge
 # Depends on: aspell dbus-glib
