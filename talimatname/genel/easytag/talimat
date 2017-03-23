@@ -1,4 +1,4 @@
-# Description: Utility for viewing and editing tags for most audio formats
+# Description: Çoğu ses biçimi için etiketleri görüntüleme ve düzenleme programı
 # URL: http://projects.gnome.org/easytag/
 # Packager: milisarge
 # Depends on: id3lib libid3tag flac libvorbis speex gtk2 itstool
