@@ -1,4 +1,4 @@
-# Description: Graphical user interface toolkit for X
+# Description: X için grafiksel kullanıcı arabirimi araç seti
 # URL: http://www.fltk.org/
 # Packager: milisarge@gmail.com
 # Depends on: libjpeg-turbo libpng xorg-libxft xorg-libxi xorg-libxinerama xorg-mesa doxygen
