@@ -1,4 +1,4 @@
-# Description: VoIP, IP Telephony & Video Conferencing application, allows you to make audio/video calls
+# Description: VoIP, IP Telefon ve Video Konferans uygulaması, sesli / görüntülü görüşme yapmanızı sağlar
 # URL: http://ftp.gnome.org/pub/gnome/sources/ekiga
 # Packager: milisarge
 # Depends on: gtk2 opal boost gnome-icon-theme dbus gconf libnotify avahi gnome-doc-utils openldap
