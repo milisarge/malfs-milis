@@ -1,4 +1,4 @@
-# Description: Foomatic - Filter scripts used by the printer spoolers to convert the incoming PostScript data
+# Description: Foomatic - gelen PostScript verilerini dönüştürmek için yazıcı biriktiricileri tarafından kullanılan süzgeç komut dosyaları.
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: milisarge
 # Depends on: libxml2 cups cups-filters
