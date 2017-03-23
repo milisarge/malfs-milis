@@ -1,4 +1,4 @@
-# Description: Fast and reliable FTP, FTPS and SFTP client
+# Description: Hızlı ve güvenilir FTP, FTPS ve SFTP istemcisi
 # URL: http://filezilla-project.org
 # Packager: milisarge
 # Depends on: wxgtk libidn gnutls xdg-utils tinyxml dbus
