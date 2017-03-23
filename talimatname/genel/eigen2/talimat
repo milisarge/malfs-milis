@@ -1,4 +1,4 @@
-# Description: A lightweight C++ template library for vector and matrix math.
+# Description: Vektör ve matris matematik için hafif bir C ++ şablon kütüphanesi.
 # URL: http://eigen.tuxfamily.org/
 # Packager: milisarge
 # Depends on: cmake
