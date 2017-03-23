@@ -1,4 +1,4 @@
-# Description: Retrieves mail from remote mail servers and forwards it to the local machine's
+# Description: Uzak posta sunucularından posta alır ve yerel makinelere iletir
 # URL: http://www.fetchmail.info
 # Packager: milisarge
 # Depends on: openssl procmail python tk
