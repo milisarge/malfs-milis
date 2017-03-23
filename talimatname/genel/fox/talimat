@@ -1,4 +1,4 @@
-# Description: C++ based class library for building Graphical User Interfaces
+# Description: Grafik kullanıcı arayüzlerini oluşturmak için C ++ tabanlı sınıf kütüphanesi
 # URL: http://www.fox-toolkit.org/
 # Packagers: milisarge
 # Depends on: xorg-libxcursor xorg-libxft xorg-libxrandr xorg-libxxf86vm xorg-mesa cups xorg-glu
