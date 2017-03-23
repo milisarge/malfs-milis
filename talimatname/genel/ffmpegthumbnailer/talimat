@@ -1,0 +1,24 @@
+# Description : Dosya yöneticileri tarafından kullanılabilen hafif video küçük resim görüntüleyici.
+# URL : https://github.com/dirkvdb/ffmpegthumbnailer
+# Packager : yasarciv67@gmail.com
+# Depends on : cmake libjpeg libpng ffmpeg gvfs
+
+name=ffmpegthumbnailer
+version=2.2.0
+release=1
+source=(https://github.com/dirkvdb/$name/archive/$version.tar.gz)
+
+build() {
+cd $name-$version
+mkdir -p build
+cd build
+cmake .. \
+	  -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib  \
+      -DENABLE_GIO=ON \
+      -DENABLE_THUMBNAILER=ON
+
+make
+make DESTDIR=$PKG install
+}
