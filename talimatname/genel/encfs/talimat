@@ -1,4 +1,4 @@
-# Description: Encrypted filesystem in user-space
+# Description: Kullanıcı alanındaki şifreli dosya sistemi
 # URL: http://www.arg0.net/encfs
 # Packager: milisarge
 # Depends on: boost fuse rlog
