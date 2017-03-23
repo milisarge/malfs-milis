@@ -1,7 +1,7 @@
-# Description : Epson Inkjet Yazici Driver (ESC/P-R) for Linux
-# URL : http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-# Packager : milisarge
-# Depends on : cups ghostscript
+# Description: Linux için Epson Inkjet yazici sürücüsü (ESC/P-R)
+# URL: http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+# Packager: milisarge
+# Depends on: cups ghostscript
 
 name=epson-inkjet-printer-escpr
 version=1.6.1
