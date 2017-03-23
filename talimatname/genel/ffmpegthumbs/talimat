@@ -1,5 +1,5 @@
-# Description : FFmpeg-based thumbnail creator for video files
-# URL : https://projects.kde.org/projects/kde/applications/FFmpeg-based thumbnail creator for video files
+# Description : Video dosyaları için FFmpeg tabanlı küçük resim yaratıcısı
+# URL : https://cgit.kde.org/ffmpegthumbs.git/
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : kf5-extra-cmake-modules kf5-kdoctools kf5-kio ffmpeg
 
