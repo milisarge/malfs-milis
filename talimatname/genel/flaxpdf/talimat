@@ -1,4 +1,4 @@
-# Description: A simple FLTK PDF viewer
+# Description: Basit bir FLTK PDF görüntüleyicisi
 # URL: https://github.com/clbr/flaxpdf
 # Packager: milisarge
 # Depends on: fltk1 poppler lzo

@@ -1,4 +1,4 @@
-# Description: Entangled is a distributed hash table (DHT) and peer-to-peer tuple space, based on Kademlia.
+# Description: Entangled, Kademlia'ya dayanan, dağıtılmış bir karma tablo (DHT) ve peer-to-peer tuple alanıdır.
 # URL: URL: http://entangled.sourceforge.net/
 # Packager: milisarge
 # Depends on: python python-twisted python-zope_interface python-cairo python-gtk

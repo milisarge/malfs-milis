@@ -1,4 +1,4 @@
-# Description: A library that makes it possible to implement a filesystem in a userspace program.
+# Description: Bir kullanıcı alanı programında bir dosya sistemini uygulamayı mümkün kılan bir kütüphane.
 # URL: http://fuse.sourceforge.net/
 # Packager: milisarge
 # Depends on: doxygen

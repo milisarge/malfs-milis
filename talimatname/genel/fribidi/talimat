@@ -1,4 +1,4 @@
-# Description: A Free Implementation of the Unicode Bidirectional Algorithm
+# Description: Unicode çift yönlü algoritmanın ücretsiz uygulanması
 # URL: http://fribidi.freedesktop.org/wiki/
 # Packager: milisarge
 # Depends on: glib

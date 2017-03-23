@@ -1,4 +1,4 @@
-# Description: A network sniffer/interceptor/logger for ethernet LANs
+# Description: Ethernet LAN'lar için bir ağ algılayıcı/durdurucu/günlükleyici
 # URL: http://ettercap.github.com/ettercap/
 # packager: milisarge
 # Depends on : libpcap pcre libnet ethtool ghostscript cmake gtk2

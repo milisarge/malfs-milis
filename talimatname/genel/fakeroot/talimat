@@ -1,4 +1,4 @@
-# Description: Gives a fake root environment.
+# Description: Sahte bir kök ortamı sağlar.
 # URL: http://packages.debian.org/fakeroot
 # Packager: milisarge
 # Depends on:

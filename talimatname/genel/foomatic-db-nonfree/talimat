@@ -1,4 +1,4 @@
-# Description: Non-free licenses database extension from manufacturer-supplied PPD files released
+# Description: Foomatic veritabanı uzantısı, özgür olmayan lisanslarla üreticinin sağladığı PPD dosyalarından oluşur ve bunların yeniden dağıtılabilmelerini sağlar.
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: milisarge
 # Depends on: cups perl libxml2

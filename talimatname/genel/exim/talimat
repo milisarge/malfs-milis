@@ -1,4 +1,4 @@
-# Description: MTA written by the University of Cambridge, released under the GNU Public License.
+# Description: Exim, Internet'e bağlı Unix sistemlerinde kullanılmak üzere Cambridge Üniversitesi'nde geliştirilen bir mesaj aktarma aracısıdır (MTA).
 # URL: http://www.exim.org
 # Packager: berlius at nutyx dot com
 # Depends on: db openssl pcre cyrus-sasl libidn pam mariadb openldap openssl gnutls postgresql sqlite xorg

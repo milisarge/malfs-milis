@@ -1,4 +1,4 @@
-# Description: expect
+# Description: Expect, telnet, ftp, passwd, fsck, rlogin, uç vb. etkileşimli uygulamaların otomatikleştirilmesi için bir araçtır.
 # URL: http://expect.sourceforge.net
 # Packager: milisarge
 # Depends on: tcl

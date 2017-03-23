@@ -1,4 +1,4 @@
-# Description: FSlint is a toolkit to find redundant/questionable disk usage.
+# Description: FSlint gereksiz / şüpheli disk kullanımını bulmak için bir araçtır.
 # URL: http://www.pixelbeat.org/fslint/
 # Packager: yasarciv milisarge
 # Depends on: python python-gtk

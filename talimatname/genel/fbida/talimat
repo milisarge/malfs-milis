@@ -1,5 +1,5 @@
-# Description:	Image and pdf viewer for framebuffer
-# URL:		http://linux.bytesex.org/fbida/
+# Description: Framebuffer için görüntü ve pdf görüntüleyici
+# URL: http://linux.bytesex.org/fbida/
 # Packager: milisarge
 # Depends on: lesstif libpng libexif xorg-fontconfig giflib imagemagick xorg-libxpm desktop-file-utils
 

@@ -1,4 +1,4 @@
-# Description: An easy to use audio filtering library made from webrtc code.
+# Description: Webrtc kodundan yapılan hafif ses filtreleme kitaplığı.
 # URL: https://github.com/irungentoo/filter_audio
 # packager: milisarge
 # Depends on:

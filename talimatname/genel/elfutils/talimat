@@ -1,4 +1,4 @@
-# Description: Set of utilities and libraries for handling elf files.
+# Description: Elf dosyalarını işlemek için araçlar ve kütüphaneler seti.
 # URL: http://xiph.org/ao/
 # Packager: tnut at nutyx dot org
 # Depends on:

@@ -1,4 +1,4 @@
-# Description: The collected knowledge about printers, drivers, and driver options in XML files
+# Description: Yazıcılar, sürücüler ve XML dosyalarındaki sürücü seçenekleri hakkında toplanan bilgiler, foomatic-db-engine tarafından PPD dosyaları oluşturmak için kullanılır.
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libxml2

@@ -1,4 +1,4 @@
-# Description: Outline and bitmap font editor
+# Description: Anahat ve bitmap yazı tipi düzenleyicisi
 # URL: http://fontforge.sourceforge.net
 # Packager: milisarge
 # Depends on: xorg-libxi libxml2 pango giflib libtiff

@@ -1,4 +1,4 @@
-# Description: Tool to modify UEFI Firmware Boot Manager Variables.
+# Description: UEFI üretici yazılımı önyükleme yöneticisi değişkenlerini değiştirmek için kullanılan araç
 # URL: https://github.com/rhinstaller/efibootmgr
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: efivar

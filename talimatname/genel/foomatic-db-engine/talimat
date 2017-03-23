@@ -1,4 +1,4 @@
-# Description: Foomatic - Foomatic's database engine generates PPD files from the data in Foomatic's XML database. It also contains scripts to directly generate print queues and handle jobs.
+# Description: Foomatic - Foomatic'in veritabanı motoru, Foomatic'in XML veritabanındaki verilerden PPD dosyaları oluşturur. Ayrıca, doğrudan baskı kuyrukları oluşturmak ve işleri işlemek için komut dosyaları içerir.
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: milisarge
 # Depends on: libxml2 cups

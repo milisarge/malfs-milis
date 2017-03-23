@@ -1,4 +1,4 @@
-# Description: A  minimalistic plugin API for video sources and filters
+# Description: Video kaynakları ve filtreler için minimalist bir eklenti API'si
 # URL: http://www.piksel.org/frei0r
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gavl opencv doxygen

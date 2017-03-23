@@ -1,4 +1,4 @@
-# Description: Implementation of xmp (Adobe's Extensible Metadata Platform)
+# Description: Xmp (Adobe'nin Genişletilebilir Meta Veri Platformu) uygulanması.
 # URL: http://libopenraw.freedesktop.org/wiki/Exempi/
 # Packager: milisarge
 # Depends on: expat boost

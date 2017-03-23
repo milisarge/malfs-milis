@@ -1,4 +1,4 @@
-# Description: Library for accessing Sybase and MS SQL Server databases.
+# Description: Sybase ve MS SQL Server veritabanlarına erişmek için kullanılan kütüphane.
 # URL: http: http://www.freetds.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: unixodbc

@@ -1,4 +1,4 @@
-# Description: Linux net driver diagnostic and tuning tool
+# Description: Linux net sürücüsü tanılama ve ayarlama aracı
 # URL: https://www.kernel.org/pub/software/network/ethtool/
 # Packager: milisarge
 # Depends on:
