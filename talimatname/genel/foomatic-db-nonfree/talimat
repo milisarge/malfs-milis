@@ -1,4 +1,4 @@
-# Description: Foomatic, özgür yazılım yazıcı sürücülerini Unix altındaki biriktiricilere entegre etmek için veritabanı tabanlı bir sistemdir.
+# Description: Foomatic veritabanı uzantısı, özgür olmayan lisanslarla üreticinin sağladığı PPD dosyalarından oluşur ve bunların yeniden dağıtılabilmelerini sağlar.
 # URL: http://www.linuxprinting.org/foomatic.html
 # Packager: milisarge
 # Depends on: cups perl libxml2
