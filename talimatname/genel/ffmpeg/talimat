@@ -1,4 +1,4 @@
-# Description: Complete and free Internet live audio and video broadcasting solution
+# Description: Ses ve videoyu kaydetmek, dönüştürmek ve akışlamak için eksiksiz, çapraz platformlu bir çözüm.
 # URL: http://ffmpeg.org/
 # Packager: milisarge
 # Depends on: yasm opus fdk-aac x264 x265 liba52 libass freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
