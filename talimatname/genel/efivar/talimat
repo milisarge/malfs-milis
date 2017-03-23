@@ -1,4 +1,4 @@
-# Description: Tools and library to manipulate EFI variables.
+# Description: EFI değişkenlerini işlemek için araçlar ve kütüphane.
 # URL: https://github.com/rhinstaller/efivar
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: popt
