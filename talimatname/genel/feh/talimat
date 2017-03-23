@@ -1,4 +1,4 @@
-# Description: X11 image viewer aimed mostly at console users. It is controlled via commandline arguments
+# Description: X11 resim görüntüleyici çoğunlukla konsol kullanıcılarına yöneliktir. Komut satırı argümanları üzerinden kontrol edilir
 # Url: http://linuxbrit.co.uk/feh/
 # Packagers: milisarge
 # Depends on: libpng giblib libexif xorg-libxt xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama curl
