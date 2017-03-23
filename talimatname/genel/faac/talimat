@@ -1,4 +1,5 @@
-# Description: Encoder MPEG-4 de AudioCoding.com
+# Description: FAAC bir MPEG-4 ve MPEG-2 AAC kodlayıcıdır.
+FAAC kalitesinin şu anda mevcut olan en iyi AAC enkoderlerle eşit olmadığını unutmayın.
 # URL: http://www.audiocoding.com
 # Packager: milisarge
 # Depends on:
