@@ -1,7 +1,7 @@
-# Description: OpenGL billard game.
-# URL:         http://foobillard.sourceforge.net/
-# Packager:    milisarge
-# Depends on:  libpng sdl freetype xorg-glu freeglut xorg-libxaw xorg-libxi xorg-mesa
+# Description: OpenGL bilardo oyunu.
+# URL: http://foobillard.sourceforge.net/
+# Packager: milisarge
+# Depends on: libpng sdl freetype xorg-glu freeglut xorg-libxaw xorg-libxi xorg-mesa
 
 name=foobillard
 version=3.0a
