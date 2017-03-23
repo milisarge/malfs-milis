@@ -1,4 +1,4 @@
-# Description: Tools for accessing and converting various ebook file formats
+# Description: Çeşitli e-kitap dosya formatlarına erişme ve dönüştürme araçları
 # URL : http://sourceforge.net/projects/ebook-tools/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on : cmake libxml2 libzip
