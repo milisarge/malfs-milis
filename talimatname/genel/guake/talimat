@@ -1,4 +1,4 @@
-# Description: Drop-down terminal for GNOME
+# Description: Guake, Gnome için tepeden inişli bir terminaldir (KDE Yakuake, Tilda veya Quake'de kullanılan terminal tarzında)
 # URL: http://guake-project.org/
 # Packager: milisarge aydinyakar
 # Depends on: intltool gnome-common python-notify vte python-vte python-gconf dbus-python python-keybinder python-xdg libutempter
