@@ -1,5 +1,5 @@
-# Description="Library with common API for various GNOME modules."
-# Url="http://www.gnome.org/"
+# Description: Çeşitli GNOME modülleri için ortak API'li kitaplık.
+# URL: http://www.gnome.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: iso-codes itstool xorg-app gtk3 docbook-xml gnome-doc-utils gsettings-desktop-schemas gobject-introspection startup-notification xorg-xkeyboard-config
 
