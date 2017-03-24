@@ -1,4 +1,4 @@
-# Description: CLI curses-based monitoring tool
+# Description: Glances, curses veya Web tabanlı arabirim yoluyla minimum alana maksimum miktarda bilgi sunmayı amaçlayan çapraz platform izleme aracıdır.
 # URL: https://github.com/nicolargo/glances
 # Packager: milisarge
 # Depends on: python psutil python-setuptools
