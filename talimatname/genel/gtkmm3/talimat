@@ -1,4 +1,4 @@
-# Description: C++ interfaces for GTK+ and GNOME
+# Description: GTK+ ve GNOME için C ++ arabirimleri
 # URL: http://www.gtkmm.org/
 # Packager: yasarciv milisarge
 # Depends on: gtk3 glibmm pangomm atkmm
