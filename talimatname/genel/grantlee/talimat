@@ -1,4 +1,4 @@
-# Description: A string template engine based on the Django template system and written in Qt
+# Description: Django şablon sistemine dayanan ve Qt ile yazılmış bir dize şablonu altyapısı
 # URL: http://www.gitorious.org/grantlee/pages/Home
 # Packager: milisarge
 # Depends on: qt4
