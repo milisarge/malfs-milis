@@ -1,7 +1,7 @@
 # Description: Nesneye yönelik bir UPNP çerçevesi
 # URL: http://gupnp.org/
 # Packager: milisarge
-# Depends on: gssdp, util-linux
+# Depends on: gssdp util-linux
 
 name=gupnp
 version=0.20.14
