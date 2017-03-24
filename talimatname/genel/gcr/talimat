@@ -1,4 +1,4 @@
-# Description: A library for bits of crypto UI and parsing
+# Description: Kripto kullanıcı arayüzü ve ayrıştırma bitleri için bir kütüphane
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: icu gtk3 intltool libgcrypt libtasn1 p11-kit gobject-introspection desktop-file-utils gnupg libxslt vala
