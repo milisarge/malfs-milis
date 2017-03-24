@@ -1,4 +1,4 @@
-# Description: Low-level libraries useful for providing data structure handling
+# Description: Veri yapısı işleme için yararlı olan düşük seviye kütüphaneler
 # URL: http://www.gtk.org/
 # Packager: milisarge
 # Depends on: libffi pcre python elfutils
