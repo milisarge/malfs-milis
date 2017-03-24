@@ -1,4 +1,4 @@
-# Description: GStreamer Multimedia Framework ffmpeg Plugins
+# Description: GStreamer multimedya çerçevesi ffmpeg eklentileri
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer gstreamer-plugins-base yasm sdl
