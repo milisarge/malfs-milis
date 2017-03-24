@@ -1,4 +1,4 @@
-# Description: Generic Graphics Library
+# Description: Genel Grafik Kitaplığı
 # URL: http://gegl.org/
 # Packager: milisarge
 # Depends on: babl gtk2 librsvg libpng ruby lua ffmpeg librsvg openexr exiv2
