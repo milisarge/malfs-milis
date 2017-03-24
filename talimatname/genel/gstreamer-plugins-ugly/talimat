@@ -1,4 +1,4 @@
-# Description: GStreamer multimedya çerçevesi çirkin eklentileri
+# Description: GStreamer Çirkin Eklentileri, kaliteli ve doğru işlevsellikleri olan bir takım eklentilerdir ancak bunları dağıtmak sorun yaratabilir.
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-ugly.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer-plugins-base lame libdvdnav libdvdread libdvdcss liba52 libmad libmpeg2
