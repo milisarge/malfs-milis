@@ -1,4 +1,4 @@
-# Description: A library that feh uses as a wrapper to imlib2
+# Description: Feh'nin imlib2 için bir sarmalayıcı olarak kullandığı bir kütüphane
 # URL: http://www.linuxbrit.co.uk/giblib
 # Packager: milisarge
 # Depends on: imlib2 freetype
