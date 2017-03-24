@@ -1,4 +1,4 @@
-# Description: GTK+ based scientific calculator
+# Description: GTK + tabanlı bilimsel hesap makinesi
 # URL: http://galculator.sourceforge.net/
 # Packager: milisarge
 # Depends on: gtk3 hicolor-icon-theme gtk-update-icon-cache desktop-file-utils
