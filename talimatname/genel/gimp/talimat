@@ -1,4 +1,4 @@
-# Description: GNU Imaj Manipulasyon Programi
+# Description: GIMP, GNU Görüntü İşleme Programı'nın kısaltmasıdır. Fotoğraf rötuşlama, görüntü kompozisyonu ve görüntü yazarlığı gibi görevler için serbestçe dağıtılan bir programdır.
 # URL: http://www.gimp.org/
 # Packager: milisarge@gmail.com
 # Depends on: shared-mime-info gtk2 python-gtk curl libexif xorg-libxmu xorg-libxpm openexr gegl poppler libmng alsa-lib babl
