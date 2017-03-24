@@ -1,4 +1,4 @@
-# Description: Tools for parsing and creating messages using the Multipurpose Internet Mail Extension
+# Description: Çok Amaçlı Internet Posta Uzantısı'nı kullanarak ileti ayrıştırma ve oluşturma araçları
 # URL: http://spruce.sourceforge.net/gmime
 # Packager: milisarge
 # Depends on: glib libgpg-error
