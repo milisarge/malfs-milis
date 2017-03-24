@@ -1,0 +1,23 @@
+# Description: Transparan SOCKS vekil kütüphanesi (ipv6 destekli)
+# URL: https://github.com/Elysion-tcfa/tsocks
+# Packager: milisarge
+# Depends on:
+
+name=tsocks
+version=1.8beta6
+release=1
+GIT_COMMIT=be36c83a7326c75123fa019a4cb53792ecd8f689
+
+source=(https://github.com/Elysion-tcfa/tsocks/archive/${GIT_COMMIT}.tar.gz
+		fix-mkinstalldirs.patch)
+
+build(){
+	cd "${SRC}/tsocks-${GIT_COMMIT}"
+	export CPPFLAGS=
+	patch -p1 < ../fix-mkinstalldirs.patch
+	./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --libdir=/usr/lib
+	make
+	make DESTDIR="${PKG}" install
+	install -d "${PKG}/usr/share/${name}"
+	install -m644 tsocks.conf.{simple,complex}.example "${PKG}/usr/share/${name}"
+}
