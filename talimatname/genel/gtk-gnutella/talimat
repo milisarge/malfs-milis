@@ -1,4 +1,4 @@
-# Description: A Gnutella server/client
+# Description: Bir Gnutella sunucu / istemci
 # URL: http://gtk-gnutella.sourceforge.net/
 # Packager: milisarge
 # Depends on: desktop-file-utils gtk2
