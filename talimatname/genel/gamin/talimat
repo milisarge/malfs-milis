@@ -1,4 +1,4 @@
-# Description: File and directory monitoring system defined to be a subset of the File Alteration Monitor
+# Description: Dosya Değiştirme Monitörünün bir alt kümesi olarak tanımlanan dosya ve dizin izleme sistemi
 # URL:  http://www.gnome.org/~veillard/gamin
 # Packager: milisarge
 # Depends on: glib python
