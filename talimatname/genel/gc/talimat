@@ -1,4 +1,4 @@
-# Description: A garbage collector for C and C++
+# Description: C ve C ++ için gereksiz veri toplayıcı
 # URL: http://www.hpl.hp.com/personal/Hans_Boehm/gc/
 # Packager: milisarge
 # Depends on: libatomic-ops

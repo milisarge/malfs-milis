@@ -1,4 +1,4 @@
-# Description: A garbage collector for C and C++
+# Description: GIFLIB, GIF görüntüleriyle çalışmak için taşınabilir araçlar ve kitaplık rutinleri paketidir.
 # URL:  http://downloads.sourceforge.net/giflib/
 # Packager: milisarge
 # Depends on: xmlto

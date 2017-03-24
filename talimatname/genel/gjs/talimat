@@ -1,4 +1,4 @@
-# Description: Javascript Bindings for GNOME
+# Description: GNOME için Javascript Bağları
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: cairo dbus-glib gobject-introspection js2 xorg-libxxf86vm

@@ -1,4 +1,4 @@
-# Description: An interpreter for the PostScript language
+# Description: PostScript dili için bir yorumlayıcı
 # URL: http://www.ghostscript.com/awki
 # Packager: milisarge
 # Depends on: glib atk libpng libjpeg-turbo libtiff jasper lcms2 gnutls cups

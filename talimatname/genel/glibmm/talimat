@@ -1,4 +1,4 @@
-# Description: gtkmm is the official C++ interface for the popular GUI library GTK+.
+# Description: Gtkmm, popüler GTK kitaplığı GTK + için resmi C ++ arayüzüdür.
 # URL: http://www.gtkmm.org
 # Packager: milisarge
 # Depends on: libsigc++ glib 

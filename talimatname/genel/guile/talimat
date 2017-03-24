@@ -1,4 +1,4 @@
-# Description: Guile is an interpreter and compiler for the Scheme programming language.
+# Description: Guile, Scheme programlama dili için bir yorumlayıcı ve derleyicidir.
 # URL: http://www.gnu.org/software/guile/guile.html
 # Packager: milisarge
 # Depends on: gc libunistring libffi emacs gdb

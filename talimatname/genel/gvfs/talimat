@@ -1,4 +1,4 @@
-# Description: Userspace virtual filesystem implemented as a pluggable module for gio
+# Description: GVfs, GIO'nun G/Ç soyutlamasıyla çalışmak üzere tasarlanmış bir kullanıcı alanı sanal dosya sistemidir.
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: avahi dbus-glib intltool libsecret gtk3 libsoup udisks2 obexd fuse libarchive samba bluez gcr libgphoto2

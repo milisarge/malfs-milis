@@ -1,4 +1,4 @@
-# Description: Ensemble d'icônes non évolutifs de différentes tailles et des thèmes.
+# Description: Bu pakette GNOME masaüstü tarafından kullanılan varsayılan simge teması bulunur.
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: hicolor-icon-theme, gtk-update-icon-cache, icon-naming-utils, intltool

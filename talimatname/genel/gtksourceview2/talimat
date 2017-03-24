@@ -1,4 +1,4 @@
-# Description: Libraries used for extending the GTK+ 2 text functions to include syntax highlighting.
+# Description: GTK+ 2 metin işlevlerini sözdizimini vurgulamaya genişletmek için kullanılan kitaplıklar.
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: gtk2 libxml2

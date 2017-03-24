@@ -1,5 +1,5 @@
-# Description: GStreamer Multimedia Framework Bad Plugins
-# URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
+# Description: GStreamer Bad Plug-ins, diğerlerine kıyasla eşit olmayan bir dizi eklentidir.
+# URL: https://gstreamer.freedesktop.org/modules/gst-plugins-bad.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer-plugins-base faac faad2 libmms libpng libvpx xvid jasper
 

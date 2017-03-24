@@ -1,4 +1,4 @@
-# Description: GStreamer Multimedia Framework
+# Description: GStreamer ana kütüphanedir. Başlıkları, temel kitaplık dosyalarını ve temel öğeleri içerir.
 # URL: http://gstreamer.freedesktop.org/
 # Packager: alihan-ozturk8@hotmail.com
 # Depends on: glib libxml2 gsl gobject-introspection

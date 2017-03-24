@@ -1,4 +1,4 @@
-# Description: A GObject-based API for handling resource discovery and announcement over SSDP
+# Description: SSDP üzerinden kaynak keşif ve duyurunun taşınması için bir GObject tabanlı API
 # URL: http://gupnp.org/
 # Packager: milisarge
 # Depends on: libsoup

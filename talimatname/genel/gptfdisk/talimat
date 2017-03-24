@@ -1,4 +1,4 @@
-# Description: Partitioning tool that works on Globally Unique Identifier Partition Table disks
+# Description: Küresel Benzersiz Tanıtıcı bölüm tablosu disklerinde çalışan bölümleme aracı
 # URL: http://www.rodsbooks.com/gdisk/index.html
 # Packager: milisarge
 # Depends on: popt icu

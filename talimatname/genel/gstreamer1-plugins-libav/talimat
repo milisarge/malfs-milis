@@ -1,4 +1,4 @@
-# Description: GStreamer Multimedia Framework libav Plugins (fork of ffmpeg)
+# Description: Birçok kod çözücü ve kodlayıcı içeren Libav tabanlı eklenti
 # URL: http://gstreamer.freedesktop.org/modules/gst-libav.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer1-plugins-base yasm

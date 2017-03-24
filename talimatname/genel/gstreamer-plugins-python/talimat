@@ -1,4 +1,4 @@
-# Description: GStreamer Multimedia Framework python Plugins
+# Description: GStreamer multimedya çerçevesi python eklentileri
 # URL: http://gstreamer.freedesktop.org/
 # Packager: milisarge
 # Depends on: gstreamer gstreamer-plugins-base python-gobject2

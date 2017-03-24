@@ -1,4 +1,4 @@
-# Description: GDB, the GNU Project debugger, allows you to see what is going on “inside” another program while it executes.
+# Description: GNU Projesi hata ayıklayıcı olan GDB, başka bir programın yürütülürken "içinde" olan biteni görmenizi sağlar.
 # URL: http://www.sourceware.org/gdb/
 # Packager: milisarge
 # Depends on:

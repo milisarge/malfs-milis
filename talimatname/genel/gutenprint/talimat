@@ -1,4 +1,4 @@
-# Description: Top quality printer drivers for POSIX systems
+# Description: POSIX sistemleri için en kaliteli yazıcı sürücüleri
 # URL: http://gimp-print.sourceforge.net
 # Packager: milisarge
 # Depends on: ijs gimp gtk2 cups foomatic-db-engine ghostscript

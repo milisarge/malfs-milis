@@ -1,4 +1,4 @@
-# Description : User interface builder for GTK+ and GNOME.
+# Description : GTK + ve GNOME için kullanıcı arabirimi oluşturucu.
 # URL : http://glade.gnome.org/
 # Packager : milisarge
 # Depends on : gtk3 libxml2 desktop-file-utils intltool gobject-introspection python-gobject itstool docbook-xsl

@@ -1,4 +1,4 @@
-# Description: The GtkHTML package contains a lightweight HTML rendering/printing/editing engine.
+# Description: GtkHTML paketi hafif bir HTML oluşturma / yazdırma / düzenleme motoru içerir.
 # URL: https://github.com/GNOME/gtkhtml
 # Packager: milisarge
 # Depends on: enchant gsettings-desktop-schemas gtk3 iso-codes libsoup

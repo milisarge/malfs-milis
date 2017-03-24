@@ -1,4 +1,4 @@
-# Description: Provide a secure layer over a reliable transport layer proposed by the IETF's TLS group.
+# Description: GnuTLS, SSL, TLS ve DTLS protokollerini ve teknolojilerini uygulayan güvenli bir iletişim kitaplığıdır.
 # URL: http://www.gnu.org/software/gnutls/
 # Packager: milisarge
 # Depends on: libtasn1 nettle libidn p11-kit

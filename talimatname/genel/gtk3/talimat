@@ -1,4 +1,4 @@
-# Description: Libraries used for creating graphical user interfaces for applications.
+# Description: GTK + Araç Seti, grafik kullanıcı arayüzleri oluşturmak için kullanılan çoklu platform araç kitidir. 
 # URL: http://www.gtk.org/
 # Packager: milisarge
 # Depends on: adwaita-icon-theme libepoxy xorg-libxinerama,xorg-libxrandr,xorg-libxcursor,at-spi2-atk,cups,colord,xorg-libxi,atk,cairo,pango,pangox-compat,gdk-pixbuf,gtk-update-icon-cache

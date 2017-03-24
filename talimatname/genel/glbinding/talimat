@@ -1,4 +1,4 @@
-# Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+# Description: OpenGL API'si için bir C ++ bağlaması, gl.xml belirtimi kullanılarak üretilmiştir.
 # URL: http://www.glbinding.org
 # Packager:	milisarge
 # Depends on: cmake doxygen xorg-mesa

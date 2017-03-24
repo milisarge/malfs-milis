@@ -1,4 +1,4 @@
-# Description: Complete and free implementation of the OpenPGP standard
+# Description: OpenPGP standardının tamamlanmış ve ücretsiz uygulanması
 # URL: http://www.gnupg.org/
 # Packager: milisarge
 # Depends on: npth libgpg-error libgcrypt libassuan libksba pinentry openldap libusb-compat curl
