@@ -1,5 +1,5 @@
-# Description: GStreamer multimedya çerçevesi iyi eklentileri
-# URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
+# Description: GStreamer İyi Eklentileri, kaliteli kod, doğru işlevsellik ve tercih edilen lisansımız (eklenti kodu için LGPL, destekleyici kitaplık için LGPL veya LGPL uyumlu) olması düşünülen eklentiler dizisidir.
+# URL: http://gstreamer.freedesktop.org/modules/gst-plugins-good.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer-plugins-base cairo flac libjpeg-turbo libpng xorg-libx11 libsoup speex aalib taglib libcdio
 
