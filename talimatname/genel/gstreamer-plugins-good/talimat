@@ -1,4 +1,4 @@
-# Description: GStreamer Multimedia Framework good Plugins
+# Description: GStreamer multimedya çerçevesi iyi eklentileri
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer-plugins-base cairo flac libjpeg-turbo libpng xorg-libx11 libsoup speex aalib taglib libcdio
