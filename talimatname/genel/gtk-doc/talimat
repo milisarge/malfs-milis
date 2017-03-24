@@ -1,4 +1,4 @@
-# Description: Useful for extracting specially formatted comments from the code to create API docs.
+# Description: GTK-Doc, C koduna eklenen yorumlardan API dokümantasyonu üretmeye başlayan bir projedir.
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: docbook-xml docbook-xsl itstool libxslt
