@@ -1,4 +1,4 @@
-# Description: Podcatcher
+# Description: GPodder, Python'da GTK + kullanarak yazılmış basit, açık kaynaklı bir podcast istemcisidir.
 # URL: http://gpodder.org/
 # Packager: milisarge
 # Depends on: intltool python dbus-python python-gtk feedparser mygpoclient
