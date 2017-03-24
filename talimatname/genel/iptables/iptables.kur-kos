@@ -1,0 +1,1 @@
+cp iptables.rc /etc/rc.d/init.d/iptables
