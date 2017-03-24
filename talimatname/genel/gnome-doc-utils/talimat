@@ -1,4 +1,4 @@
-# Description: Documentation utilities for Gnome
+# Description: GNOME belgeleme yardımcı programları.
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: intltool libxslt libxml2 rarian
