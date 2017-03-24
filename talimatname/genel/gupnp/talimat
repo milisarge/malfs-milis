@@ -1,4 +1,4 @@
-# Description: An object-oriented UPNP framework
+# Description: Nesneye yönelik bir UPNP çerçevesi
 # URL: http://gupnp.org/
 # Packager: milisarge
 # Depends on: gssdp, util-linux
