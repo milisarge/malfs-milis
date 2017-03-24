@@ -1,4 +1,4 @@
-# Description: Modular geoinformation service built on the D-Bus messaging system.
+# Description: D-Bus mesajlaşma sisteminde inşa edilen modüler coğrafi bilgi hizmetleri.
 # URL: https://launchpad.net/geoclue/
 # Packager: milisarge
 # Depends on: libsoup dbus-glib gconf libxslt
