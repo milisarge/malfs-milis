@@ -1,4 +1,4 @@
-# Description: Syntax highlighting for the GtkTextView widget
+# Description: GtkSourceView, standart GTK+ metin widget'ını genişleten bir metin widgettır
 # URL: http://mail.gnome.org/mailman/listinfo/gnome-devtools
 # Packager: milisarge
 # Depends on: gtk3,libxml2
