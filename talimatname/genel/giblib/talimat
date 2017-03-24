@@ -1,4 +1,4 @@
-# Description: Feh'nin imlib2 için bir sarmalayıcı olarak kullandığı bir kütüphane
+# Description: Giblib, imlib2'yi sarmalayan basit bir kütüphanedir.
 # URL: http://www.linuxbrit.co.uk/giblib
 # Packager: milisarge
 # Depends on: imlib2 freetype
