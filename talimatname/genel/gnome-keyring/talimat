@@ -1,4 +1,4 @@
-# Description: Gnome keyring functions
+# Description: GNOME anahtarlık işlevleri
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: libgcrypt libtasn1 gcr
