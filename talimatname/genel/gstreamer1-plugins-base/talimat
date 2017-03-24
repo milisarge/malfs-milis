@@ -1,4 +1,4 @@
-# Description: GStreamer Multimedia Framework Base Plugins
+# Description: GStreamer multimedya çerçevesi taban eklentileri
 # URL: http://gstreamer.freedesktop.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer1 alsa-lib gobject-introspection iso-codes libtheora libvorbis pango
