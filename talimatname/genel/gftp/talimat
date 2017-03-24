@@ -1,4 +1,4 @@
-# Description: A multithreaded ftp client for X Windows
+# Description: X pencereleri için çok iş parçacıklı bir ftp istemcisi
 # URL: http://gftp.seul.org/
 # Packager: milisarge
 # Depends on: gtk2 xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
