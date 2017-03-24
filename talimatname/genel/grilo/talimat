@@ -1,4 +1,4 @@
-# Description: Framework focused on making media discovery and browsing easy for application developers.
+# Description: Grilo, medya keşfi yapma ve uygulama geliştiricileri için gezinmeyi kolaylaştırmaya odaklı bir çerçevedir.
 # URL: http://www.gnome.org
 # Packagers: milisarge
 # Depends on: gtk3 libxml2 libsoup gobject-introspection vala
