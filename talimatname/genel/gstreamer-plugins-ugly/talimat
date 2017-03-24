@@ -1,4 +1,4 @@
-# Description: GStreamer Multimedia Framework ugly Plugins
+# Description: GStreamer multimedya çerçevesi çirkin eklentileri
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-ugly.html
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gstreamer-plugins-base lame libdvdnav libdvdread libdvdcss liba52 libmad libmpeg2
