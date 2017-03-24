@@ -1,4 +1,4 @@
-# Description: Used to describe the program APIs and collect them in a uniform, machine readable format.
+# Description: Program API'larını tanımlamak ve onları üniform, makine tarafından okunabilir bir biçimde toplamak için kullanılır.
 # URL: http://live.gnome.org/GObjectIntrospection
 # Packager: milisarge
 # Depends on: glib
