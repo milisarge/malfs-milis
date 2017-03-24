@@ -1,4 +1,4 @@
-# Description: Google Test - C++ testing utility based on the xUnit framework (like JUnit)
+# Description: Google Test - xUnit çerçevesine dayalı (JUnit gibi) C ++ test yardımcı programı
 # URL: http://code.google.com/p/googletest
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: cmake
