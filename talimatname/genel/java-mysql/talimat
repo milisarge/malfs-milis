@@ -1,0 +1,17 @@
+# Description: java-jdbc mysql bağlayıcısı
+# URL: https://dev.mysql.com/downloads/connector/j/
+# Packager: milisarge
+# Depends on: openjdk mariadb
+
+name=java-mysql
+version=5.1.41
+uzunisim=mysql-connector-java-${version}
+release=1
+source=(https://cdn.mysql.com/Downloads/Connector-J/${uzunisim}.tar.gz)
+
+build() {
+	cd $uzunisim
+	jdkyol=`readlink -f /opt/jdk`
+	install -d "$PKG$jdkyol/jre/lib/ext/"
+	cp ${uzunisim}-bin.jar $PKG$jdkyol/jre/lib/ext/mysql.jar
+}
