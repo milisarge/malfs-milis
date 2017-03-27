@@ -1,4 +1,4 @@
-# Description: Hunspell, LibreOffice, OpenOffice.org, Mozilla Firefox 3 ve Thunderbird, Google Chrome'un yazım denetleyicisidir ve ayrıca macOS, InDesign, memoQ, Opera ve SDL Trados gibi tescilli yazılım paketleri tarafından da kullanılır.
+# Description: Dönüştürülmüş TeX tireleme kalıplarını kullanmak için tire, tireleme kitaplığı
 # URL: http://hunspell.sourceforge.net/
 # Packager: milisarge
 # Depends on:
