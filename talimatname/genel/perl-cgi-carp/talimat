@@ -1,0 +1,26 @@
+# Description:  Perl CGI Carp modülü
+# URL:          http://search.cpan.org/~leejo/CGI-4.35/lib/CGI/Carp.pm
+# Packager :	milisarge
+# Depends on:   
+
+name=perl-cgi-carp
+version=4.35
+release=1
+source=(http://search.cpan.org/CPAN/authors/id/L/LE/LEEJO/CGI-4.35.tar.gz)
+
+build() {
+	_distdir="CGI-4.35"
+	
+	export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$PKG'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$PKG'" \
+      MODULEBUILDRC=/dev/null
+	
+	cd "$SRC/$_distdir"
+	/usr/bin/perl Makefile.PL
+	make
+	export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+	make DESTDIR=${PKG} install
+	find "$PKG" -name .packlist -o -name perllocal.pod -delete
+}
