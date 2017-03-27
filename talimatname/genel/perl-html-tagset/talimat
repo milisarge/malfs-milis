@@ -1,8 +1,8 @@
-# Description: Data tables useful in parsing HTML
+# Description: HTML ayrıştırması için faydalı veri tabloları
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
-# Depends on: perl 
-run=( perl )
+# Packager: milisarge
+# Depends on: 
+
 name=perl-html-tagset
 version=3.20
 release=1
