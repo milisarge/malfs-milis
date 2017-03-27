@@ -1,4 +1,4 @@
-# Description: A library which implements a protocol for transmission of raster page images.
+# Description: Raster sayfa görüntülerinin iletimi için bir protokol uygulayan bir kütüphane.
 # URL: http://www.linuxfoundation.org/collaborate/workgroups/openprinting
 # Packager: milisarge
 # Depends on:
