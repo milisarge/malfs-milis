@@ -1,0 +1,18 @@
+# Description: yüksek performans loop/event modeli
+# URL: http://software.schmorp.de/pkg/libev.html
+# Packager: milisarge
+# Depends on:
+
+name=libev
+version=4.22
+release=1
+source=(http://dist.schmorp.de/$name/Attic/$name-$version.tar.gz)
+
+build () {
+    cd $name-$version
+    ./configure --prefix=/usr \
+        --disable-static
+    make
+    make prefix=$PKG/usr install
+    rm $PKG/usr/include/event.h
+}
