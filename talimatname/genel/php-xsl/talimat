@@ -1,0 +1,23 @@
+# Description: libxslt kütüphanesi kullanılarak xslt php uyarlaması
+# URL: http://www.php.net
+# Packager: milisarge
+# Depends on: libxslt
+
+name=php-xsl
+version=7.1.3
+release=1
+source=(http://www.php.net/distributions/php-$version.tar.bz2)
+
+build() {
+	cd php-$version
+
+	./configure --disable-all \
+				--enable-libxml \
+				--enable-dom \
+				--with-xsl=shared,/usr
+	make build-modules
+
+	install -d $PKG/{etc/php/conf.d,usr/lib/php/extensions}
+	install -m 755 modules/xsl.so $PKG/usr/lib/php/extensions
+	echo "extension=xsl.so" > $PKG/etc/php/conf.d/xsl.ini
+}
