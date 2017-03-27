@@ -1,4 +1,4 @@
-# Description: General-purpose scalable concurrent malloc implementation
+# Description: Genel amaçlı ölçeklenebilir eşzamanlı malloc uygulaması.
 # URL: http://www.canonware.com/jemalloc/
 # Packager: milisarge
 # Depends on: 

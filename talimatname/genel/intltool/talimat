@@ -1,4 +1,4 @@
-# Description: The internationalization tool collection
+# Description: Uluslararasılaştırma aracı koleksiyonu
 # URL: http://freedesktop.org/wiki/Software/intltool
 # Packager: milisarge
 # Depends on: perl-xml-parser,expat

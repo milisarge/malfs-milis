@@ -1,4 +1,4 @@
-# Description: Fast and flexible source code highlighter (CLI version)
+# Description: Hızlı ve esnek kaynak kodu vurgulayıcı (CLI sürümü)
 # URL: http://www.andre-simon.de/doku/highlight/highlight.html
 # Packager: milisarge
 # Depends on: qt4 boost lua

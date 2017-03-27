@@ -1,4 +1,4 @@
-# Description: A software-based implementation of the codec specified in the emerging JPEG-2000 Part1 std
+# Description: Ortaya çıkan JPEG-2000 Bölüm 1'de belirtilen codec bileşeninin yazılım tabanlı bir uygulaması
 # URL: http://www.ece.uvic.ca/~mdadams/jasper/
 # Packager: milisarge
 # Depends on: libjpeg-turbo

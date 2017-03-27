@@ -1,4 +1,4 @@
-# Description: Daemon that generates an unpredictable stream of random numbers and feeds the /dev/random 
+# Description: Rasgele sayıların öngörülemeyen bir akışı üreten ve /dev/random'ı besleyen program
 # URL: http://www.issihosts.com/haveged/
 # Packager: milisarge
 # Depends on:

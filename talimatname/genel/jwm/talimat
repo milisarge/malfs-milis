@@ -1,4 +1,4 @@
-# Description: Joe's window manager which uses only Xlib at a minimum.
+# Description: Joe'nun pencere yöneticisi yalnızca Xlib'yi en az kullanır.
 # URL: http://joewing.net/programs/jwm/
 # Packager: milisarge
 # Depends on: xorg xorg-libxt xorg-libxft xorg-libxmu xorg-mesa libpng libjpeg-turbo

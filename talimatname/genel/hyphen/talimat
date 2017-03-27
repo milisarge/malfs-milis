@@ -1,4 +1,4 @@
-# Description: High quality hyphenation and justification library based on the TeX hyphenation algorithm.
+# Description: Dönüştürülmüş TeX tireleme kalıplarını kullanmak için tire, tireleme kitaplığı
 # URL: http://hunspell.sourceforge.net/
 # Packager: milisarge
 # Depends on:

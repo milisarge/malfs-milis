@@ -1,4 +1,4 @@
-# Description: USB and Bluetooth aygıtları ile iletişim için basit bir kütüphane
+# Description: USB ve Bluetooth aygıtları ile iletişim için basit bir kütüphane
 # URL: http://www.signal11.us/oss/hidapi/
 # Packager: milisarge
 # Depends on: libusb fox

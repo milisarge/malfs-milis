@@ -1,4 +1,4 @@
-# Description: Real-time bandwidth usage information on a network interface
+# Description: Bir ağ arayüzünde gerçek zamanlı bant genişliği kullanımı bilgisi
 # URL: http://www.ex-parrot.com/~pdw/iftop/
 # Packager: milisarge
 # Depends on: libpcap, ncurses
