@@ -1,4 +1,4 @@
-# Description: JavaScript interpreter and libraries
+# Description: JavaScript yorumlayıcı ve kitaplıkları
 # URL: https://developer.mozilla.org/En/SpiderMonkey/1.8.5
 # Packager: milisarge
 # Depends on: libffi nspr zip python
