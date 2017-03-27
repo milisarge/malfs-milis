@@ -1,4 +1,4 @@
-# Description: The Hdparm package contains an utility that is useful for controlling ATA/IDE
+# Description: Hdparm paketi, ATA/IDE'yi denetlemek için kullanışlı bir yardımcı program içerir
 # URL: http://hdparm.sourceforge.net/
 # Packager: milisarge
 # Depends on:
