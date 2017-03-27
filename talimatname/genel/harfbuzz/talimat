@@ -1,4 +1,4 @@
-# Description: OpenType text shaping engine
+# Description: OpenType metin şekillendirme motoru
 # URL: http://www.freedesktop.org/software/harfbuzz
 # Packager: milisarge
 # Depends on: cairo glib icu freetype
