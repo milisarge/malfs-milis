@@ -1,0 +1,17 @@
+# Description: cgi uygulamalarını çalıştrmak için FastCGI uygulaması
+# URL: http://cgit.stbuehler.de/gitosis/fcgi-cgi/
+# Packager: milisarge
+# Depends on: glib libev
+
+name=fcgi-cgi
+version=0.2.2
+release=1
+source=(http://git.lighttpd.net/fcgi-cgi.git/snapshot/$name-$version.tar.gz)
+
+build(){
+	cd $name-$version
+	./autogen.sh
+	./configure --prefix=/usr
+	make
+	make prefix=$PKG/usr install
+}
