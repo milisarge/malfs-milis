@@ -1,4 +1,4 @@
-# Description: Provide serialization and deserialization support for the JavaScript Object Notation
+# Description: JavaScript Object Notation (JSON) için serileştirme ve serileştirmeden çıkarma desteği sağlayan bir kütüphanedir.
 # URL: http://live.gnome.org/JsonGlib
 # Packager: milisarge
 # Depends on: gobject-introspection
