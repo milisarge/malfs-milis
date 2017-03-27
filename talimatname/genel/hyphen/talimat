@@ -1,4 +1,4 @@
-# Description: High quality hyphenation and justification library based on the TeX hyphenation algorithm.
+# Description: Hunspell, LibreOffice, OpenOffice.org, Mozilla Firefox 3 ve Thunderbird, Google Chrome'un yazım denetleyicisidir ve ayrıca macOS, InDesign, memoQ, Opera ve SDL Trados gibi tescilli yazılım paketleri tarafından da kullanılır.
 # URL: http://hunspell.sourceforge.net/
 # Packager: milisarge
 # Depends on:
