@@ -1,0 +1,84 @@
+#!/bin/sh
+########################################################################
+# Begin iptables
+#
+# Description : Start iptables
+#
+# Authors     : Ken Moffat - ken@linuxfromscratch.org
+#               Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:          iptables
+# Required-Start:    
+# Should-Start:
+# Required-Stop:     $local_fs
+# Should-Stop:
+# Default-Start:     3 4 5
+# Default-Stop:     
+# Short-Description: Loads iptables rules.
+# Description:       Iptables provides firewall for Linux systems.
+# X-LFS-Provided-By: BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: krejzi $
+#$Date: 2013-06-11 11:01:46 -0500 (Tue, 11 Jun 2013) $
+
+case "$1" in
+    start)
+        if [ -x /etc/rc.d/rc.iptables ]; then
+          log_info_msg "Starting iptables..."
+          /etc/rc.d/rc.iptables
+          evaluate_retval
+        fi
+        ;;
+
+    lock)
+        log_info_msg "Locking system iptables firewall..."
+        /sbin/iptables --policy INPUT   DROP
+        /sbin/iptables --policy OUTPUT  DROP
+        /sbin/iptables --policy FORWARD DROP
+        /sbin/iptables           --flush
+        /sbin/iptables -t nat    --flush
+        /sbin/iptables -t mangle --flush
+        /sbin/iptables           --delete-chain
+        /sbin/iptables -t nat    --delete-chain
+        /sbin/iptables -t mangle --delete-chain
+        /sbin/iptables -A INPUT  -i lo -j ACCEPT
+        /sbin/iptables -A OUTPUT -o lo -j ACCEPT
+        evaluate_retval
+        ;;
+
+    clear)
+        log_info_msg "Clearing system iptables iptables..."
+        /sbin/iptables --policy INPUT   ACCEPT
+        /sbin/iptables --policy OUTPUT  ACCEPT
+        /sbin/iptables --policy FORWARD ACCEPT
+        /sbin/iptables           --flush
+        /sbin/iptables -t nat    --flush
+        /sbin/iptables -t mangle --flush
+        /sbin/iptables           --delete-chain
+        /sbin/iptables -t nat    --delete-chain
+        /sbin/iptables -t mangle --delete-chain
+        evaluate_retval
+        ;;
+
+    status)
+        /sbin/iptables           --numeric --list
+        /sbin/iptables -t nat    --numeric --list
+        /sbin/iptables -t mangle --numeric --list
+        ;;
+
+    *)
+        echo "Usage: $0 {start|clear|lock|status}"
+        exit 1
+        ;;
+esac
+
+# End /etc/init.d/iptables
+

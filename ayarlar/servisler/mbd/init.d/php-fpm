@@ -1,0 +1,132 @@
+#! /bin/sh
+#######################################################################
+# Begin /etc/init.d/php-fpm
+#
+# Description : Start the PHP fastCGI Proces Manager
+#
+# Author      : P Labastie - pierre.labastie@neuf.fr
+#               from a file shipped with the PHP pacakge
+#
+# Version     : LFS 7.5
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:          php-fpm
+# Required-Start:    $syslog $local_fs $network
+# Should-Start:      $remote_fs
+# Required-Stop:     $network
+# Should-Stop:       $remote_fs
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
+# Short-Description: starts php-fpm
+# Description:       starts the PHP FastCGI Process Manager daemon
+# X-LFS-Provided-By: BLFS / LFS 7.5
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: pierre $
+#$Date: 2014-03-29 04:48:53 -0500 (Sat, 29 Mar 2014) $
+
+prefix=/usr
+exec_prefix=${prefix}
+
+php_fpm_BIN=${exec_prefix}/sbin/php-fpm
+php_fpm_CONF=/etc/php-fpm.conf
+php_fpm_PID=/var/run/php-fpm.pid
+
+
+php_opts="--fpm-config $php_fpm_CONF --pid $php_fpm_PID"
+
+
+wait_for_pid () {
+	try=0
+
+	while test $try -lt 35 ; do
+
+		case "$1" in
+			'created')
+			if [ -f "$2" ] ; then
+				try=''
+				break
+			fi
+			;;
+
+			'removed')
+			if [ ! -f "$2" ] ; then
+				try=''
+				break
+			fi
+			;;
+		esac
+
+		echo -n .
+		try=`expr $try + 1`
+		sleep 1
+
+	done
+
+}
+
+case "$1" in
+	start)
+		log_info_msg "Starting PHP fastCGI Process Manager..."
+
+		start_daemon $php_fpm_BIN --daemonize $php_opts
+
+		if [ "$?" != 0 ] ; then
+			log_failure_msg2
+			exit
+		fi
+
+		wait_for_pid created $php_fpm_PID
+
+		if [ -n "$try" ] ; then
+			log_failure_msg2
+		else
+			log_success_msg2
+		fi
+	;;
+
+	stop)
+		log_info_msg "Stopping PHP fastCGI Process Manager..."
+
+		if [ ! -r $php_fpm_PID ] ; then
+			log_warning_msg "php-fpm not running?"
+			exit
+		fi
+
+		killproc -p $php_fpm_PID $php_fpm_BIN -QUIT
+
+		wait_for_pid removed $php_fpm_PID
+
+		if [ -n "$try" ] ; then
+			log_failure_msg2
+		else
+			log_success_msg2
+		fi
+	;;
+
+	status)
+		statusproc $php_fpm_BIN
+	;;
+
+	restart)
+		$0 stop
+		$0 start
+	;;
+
+	reload)
+
+		log_info_msg "Reload service php-fpm..."
+		killproc -p $php_fpm_PID $php_fpm_BIN -USR2
+		log_success_msg2
+	;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|reload|status}"
+		exit 1
+	;;
+
+esac

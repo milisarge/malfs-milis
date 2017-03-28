@@ -1,0 +1,119 @@
+#!/bin/sh
+########################################################################
+# Begin nfs-server
+#
+# Description : Start nfs server
+#
+# Authors     : Ken Moffat - ken@linuxfromscratch.org
+#               Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            nfs-server
+# Required-Start:      rpcbind
+# Should-Start:
+# Required-Stop:       rpcbind
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts the nfs server
+# Description:         Starts the nfs server and exports directories.
+# X-LFS-Provided-By:   BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+ #$LastChangedBy: bdubbs $
+ #$Date: 2017-01-27 11:55:21 -0600 (Fri, 27 Jan 2017) $
+
+ . /etc/sysconfig/nfs-server
+
+ case "$1" in
+   start)
+      log_info_msg "Starting NFS statd..."
+      start_daemon /usr/sbin/rpc.statd --no-notify
+      evaluate_retval
+
+      log_info_msg "Starting NFS nfsd..."
+      start_daemon /usr/sbin/rpc.nfsd -p $PORT $PROCESSES
+      evaluate_retval
+
+      if [ "$QUOTAS" = "yes" ]; then
+         log_info_msg "Starting NFS rquotad..."
+         start_daemon /usr/sbin/rpc.rquotad
+         evaluate_retval
+      fi
+
+      log_info_msg "Starting NFS mountd..."
+      start_daemon /usr/sbin/rpc.mountd
+      evaluate_retval
+
+      # Make certain that the list is refreshed on a restart.
+      log_info_msg "Exporting NFS Filesystems..."
+      /usr/sbin/exportfs -ra 2>&1 > /dev/null
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Removing NFS Exported Filesystems..."
+      /usr/sbin/exportfs -au 2>&1 > /dev/null
+      evaluate_retval
+
+      if [ "$QUOTAS" = "yes" ]; then
+         log_info_msg "Stopping NFS rquotad..."
+         killproc /usr/sbin/rpc.rquotad
+         evaluate_retval
+      fi
+
+      log_info_msg "Stopping NFS statd..."
+      killproc /usr/sbin/rpc.statd
+      evaluate_retval
+
+      log_info_msg "Stopping NFS nfsd..."
+      # nfsd needs HUP.  Can't use killproc for kernel process.
+      killall -HUP nfsd 
+      evaluate_retval
+
+      log_info_msg "Stopping NFS mountd..."
+      killproc /usr/sbin/rpc.mountd
+      evaluate_retval
+
+      # Remove a pid file that isn't done automatically
+      if [ -f /var/run/rpc.statd.pid ]; then
+          log_success_msg "Removing the rpc.statd pid file if it exists"
+          rm -f /var/run/rpc.statd.pid
+      fi
+      ;;
+
+   reload)
+      log_info_msg "Reloading NFS Server..."
+      /usr/sbin/exportfs -ra
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/rpc.mountd
+      ## Special case for nfsd with no full path
+      statusproc nfsd
+      statusproc /usr/sbin/rpc.statd
+      if [ "$QUOTAS" = "yes" ]; then
+         statusproc rpc.rquotad
+      fi
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/nfs-server

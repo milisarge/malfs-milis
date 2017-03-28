@@ -1,0 +1,62 @@
+#!/bin/sh
+# Begin /etc/init.d/swat
+
+### BEGIN INIT INFO
+# Provides:            swat
+# Required-Start:      $network
+# Should-Start:        $remote_fs 
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs 
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Provides Samba configuration tool
+# Description:         Starts Samba configuration tool over a secure 
+#                      tunnel;
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2012-04-20 21:17:24 -0500 (Fri, 20 Apr 2012) $
+
+config=/etc/stunnel/swat.conf
+
+if [ ! -r /etc/stunnel/swat.conf ]; then
+   log_failure_msg "swat configuration file missing: $config"
+   exit 1
+fi
+
+# Pid coordinates with /etc/stunnel/swat.conf
+pidfile=/run/stunnel-swat.pid 
+
+case "$1" in
+   start)
+      log_info_msg "Starting swat..."
+      start_daemon /usr/bin/stunnel $config
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping swat..."
+      killproc -p $pidfile /usr/bin/stunnel
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc -p $pidfile /usr/bin/stunnel
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/samba

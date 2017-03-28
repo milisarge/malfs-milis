@@ -1,0 +1,79 @@
+#! /bin/sh
+
+# smartmontools init file for smartd
+
+### BEGIN INIT INFO
+# Provides:                   smartd
+# Required-Start:             $syslog $remote_fs
+# Should-Start:               sendmail
+# Required-Stop:              $syslog $remote_fs
+# Should-Stop:                sendmail
+# Default-Start:              2 3 5
+# Default-Stop:
+# Short-Description:          Monitors disk and tape health via S.M.A.R.T.
+# Description:                Start S.M.A.R.T. disk and tape monitor.
+### END INIT INFO
+
+source /lib/lsb/init-functions
+
+# Source configuration file.  This should define the shell variable smartd_opts
+[ -r /etc/sysconfig/smartmontools ] && . /etc/sysconfig/smartmontools
+
+SMARTD_BIN=/usr/sbin/smartd
+pidfile=/run/lock/smartd
+config=/etc/smartd.conf
+
+case "$1" in
+   start)
+      log_info_msg "Starting smartd...  "
+
+      if [ ! -f $config ]; then
+         log_info_msg2 "configuration file $config missing"
+         failed=1
+
+      elif start_daemon $SMARTD_BIN $smartd_opts; then
+        touch $pidfile
+
+      else
+        failed=1
+      fi
+
+      (exit $failed)
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping smartd... "
+      killproc $SMARTD_BIN
+      evaluate_retval
+      rm -f $pidfile
+      ;;
+
+   report)
+      log_info_msg "Checking SMART devices now... "
+      killproc $SMARTD_BIN -USR1
+      evaluate_retval
+      ;;
+
+   reload)
+      log_info_msg "Reloading smartd daemon configuration... "
+      killproc $SMARTD_BIN -HUP
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc $SMARTD_BIN
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|report|reload|restart|status}"
+      exit 1
+      ;;
+esac
+

@@ -1,0 +1,73 @@
+#!/bin/sh
+# Begin /etc/init.d/samba
+
+### BEGIN INIT INFO
+# Provides:            samba
+# Required-Start:      $network
+# Should-Start:        $remote_fs cups slapd ntpd
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs cups slapd ntpd
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Provides SMB (Windows) networking.
+# Description:         Starts Samba smbd and nmbd processess which provide
+#                      connectivity to SMB (Windows) networks.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: krejzi $
+#$Date: 2013-03-10 16:07:50 -0500 (Sun, 10 Mar 2013) $
+
+case "$1" in
+   start)
+      mkdir -p /run/samba
+
+      log_info_msg "Starting nmbd..."
+      start_daemon /usr/sbin/nmbd -D
+      evaluate_retval
+
+      log_info_msg "Starting smbd..."
+      start_daemon /usr/sbin/smbd -D
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping smbd..."
+      killproc /usr/sbin/smbd
+      evaluate_retval
+
+      log_info_msg "Stopping nmbd..."
+      killproc /usr/sbin/nmbd
+      evaluate_retval
+      ;;
+
+   reload)
+      log_info_msg "Reloading smbd..."
+      killproc /usr/sbin/smbd -HUP
+      evaluate_retval
+
+      log_info_msg "Reloading nmbd..."
+      killproc /usr/sbin/nmbd -HUP
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/nmbd
+      statusproc /usr/sbin/smbd
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/samba

@@ -1,0 +1,64 @@
+#!/bin/sh
+# Begin /etc/init.d/winbindd
+
+### BEGIN INIT INFO
+# Provides:            winbindd
+# Required-Start:      samba
+# Should-Start:        
+# Required-Stop:       samba
+# Should-Stop:         
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Provides Name Server Switch (NSS) capabilities to Samba.
+# Description:         Starts the winbindd daemon to provide 
+#                      Name Server Swithch (NSS) capabilities to Samba.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2012-08-26 15:15:30 -0500 (Sun, 26 Aug 2012) $
+
+PIDFILE=/var/run/winbindd.pid
+
+case "$1" in
+   start)
+      log_info_msg "Starting winbindd..."
+      start_daemon /usr/sbin/winbindd
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping winbindd..."
+      killproc -p ${PIDFILE} /usr/sbin/winbindd
+      evaluate_retval
+
+      log_info_msg "Stopping nmbd..."
+      killproc /usr/sbin/nmbd
+      evaluate_retval
+      ;;
+
+   reload)
+      log_info_msg "Reloading smbd..."
+      killproc /usr/sbin/winbindd -HUP
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/winbindd
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/winbindd

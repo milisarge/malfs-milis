@@ -1,0 +1,11 @@
+# Begin /etc/sysconfig/dhcpd
+
+# On which interfaces should the DHCP Server (dhcpd) serve DHCP requests?
+# Separate multiple interfaces with spaces, e.g. "eth0 eth1".
+INTERFACES=""
+
+# Additional options that you want to pass to the DHCP Server Daemon?
+OPTIONS=""
+
+# End /etc/sysconfig/dhcpd
+

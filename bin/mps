@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.3"
+versiyon="0.9.4"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -911,6 +911,28 @@ git_proje_kur(){
 	
 }	
 
+servis_kur(){
+	cd /sources/milis.git/ayarlar/servisler
+	if make kur-$1
+	then
+		 ryaz 32 "$1 servisi kuruldu"
+	else
+		 ryaz 31 "$1 servisi kurulum olumsuz!!!"
+	fi
+	cd -
+}
+
+servis_sil(){
+	cd /sources/milis.git/ayarlar/servisler
+	if make sil-$1
+	then
+		 ryaz 32 "$1 servisi silindi"
+	else
+		 ryaz 31 "$1 servisi silme olumsuz!!!"
+	fi
+	cd -
+}
+
 paketvt_guncelle(){
 	temel_tarihce_kontrol
 	wget -q --spider "$sunucu""paket.vt"
@@ -1131,8 +1153,15 @@ ayarlar() {
 				else
 					paket_inkur_oto "$2" 
 				fi ;;
+			#özel git projesi kurmak için
 			gitkur)
 				git_proje_kur "$2" ;;
+			#ilgili paketin servisini kurar
+			serkur)
+				servis_kur "$2" ;;
+			#ilgili paketin servisini siler
+			sersil)
+				servis_sil "$2" ;;
 			kurkos)
 				local pkt
 				pkt="`find $talimatname_dizin -name $2`"

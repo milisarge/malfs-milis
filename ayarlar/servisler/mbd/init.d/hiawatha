@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# /etc/rc.d/hiawatha: başlatma/durdurma hiawatha web sunucu
+#
+
+. /lib/lsb/init-functions
+_PID=/var/run/hiawatha.pid
+
+case $1 in
+start)
+	log_info_msg "Hiawatha başlatılıyor..."
+	/usr/bin/hiawatha
+	evaluate_retval
+	;;
+stop)
+	log_info_msg "Hiawatha durduruluyor..."
+	if [ -f $_PID ]; then
+		kill `cat $_PID`
+	else
+		killall -9 /usr/bin/hiawatha
+	fi
+	evaluate_retval
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "Kullanım: $0 [start|stop|restart]"
+	exit 1
+	;;
+esac

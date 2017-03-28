@@ -1,0 +1,59 @@
+#!/bin/sh
+########################################################################
+# Begin unbound
+#
+# Description : Unbound DNS resolver boot script
+#
+# Author      : Igor Živković <contact@igor-zivkovic.from.hr>
+#
+# Version     : BLFS SVN
+#
+########################################################################
+
+
+### BEGIN INIT INFO
+# Provides:          unbound
+# Required-Start:    $network $remote_fs $syslog
+# Required-Stop:     $network $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts Unbound DNS resolver
+# X-LFS-Provided-By: BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: igor $
+#$Date: 2013-07-21 18:16:47 -0500 (Sun, 21 Jul 2013) $
+
+case "$1" in
+   start)
+      log_info_msg "Starting Unbound DNS resolver..."
+      unbound-anchor
+      start_daemon /usr/sbin/unbound
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping Unbound DNS resolver..."
+      killproc -p "/run/unbound.pid" /usr/sbin/unbound
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/unbound
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End unbound
