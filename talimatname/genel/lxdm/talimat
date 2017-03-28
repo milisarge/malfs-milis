@@ -6,9 +6,9 @@
 name=lxdm
 version=0.5.3
 release=2
-uzun=lxdm-a548c73
+uisim=lxdm-a548c73
 
-source=(http://kaynaklar.milislinux.org/$uzun.tar.xz
+source=(http://kaynaklar.milislinux.org/$uisim.tar.xz
 https://github.com/yasarciv/lxdm-tema/archive/1.0.tar.gz
 lxdm.in.patch
 lxdm.conf.in.patch
@@ -17,17 +17,14 @@ Xsession)
 
 build() {
     
-    cd $uzun
-    
+    cd $uisim
     patch -Np1 < ../lxdm.in.patch
     patch -Np1 < ../lxdm.conf.in.patch
-   
 	cp ../lxdm.pam pam/lxdm
 	cp ../Xsession data/Xsession
-   
-    ./autogen.sh        
-    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --sysconfdir=/etc \
-    	    --libexecdir=/usr/lib/lxdm --localstatedir=/var
+    ./autogen.sh   
+    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --sysconfdir=/etc \
+    	    --libexecdir=/usr/lib/lxdm --localstatedir=/var 
     make
     make DESTDIR=$PKG install
     
