@@ -1,7 +1,8 @@
-# Description: Keyutils is a set of utilities for managing the key retention facility in the kernel.
+# Description: Keyutils, çekirdekte anahtar tutma yerini yönetmek için kullanılan bir dizi araçtır.
 # URL: https://rhn.redhat.com/errata/RHEA-2006-0090.html
-# Packager: pierre  at nutyx dot org
+# Packager: milisarge
 # Depends on: 
+
 name=keyutils
 version=1.5.9
 release=1
