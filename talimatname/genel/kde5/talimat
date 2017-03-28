@@ -1,4 +1,4 @@
-# Description : This package going install KDE5 and its dependencies
+# Description : Bu paket KDE5'i ve bağımlılıklarını yükleyecek
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5 plasma kde-app telepathy xorg phonon-backend-gstreamer-qt5 phonon-backend-vlc-qt5 oxygen-gtk2 oxygen-gtk3 gnupg alsa-plugins noto-fonts sddm
