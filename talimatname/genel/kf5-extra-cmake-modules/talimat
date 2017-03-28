@@ -1,4 +1,4 @@
-# Description : Extra CMake modules used by all KDE Frameworks 5 packages
+# Description: Tüm KDE Framework'ler tarafından kullanılan ekstra CMake modülleri 5 paketi
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: cmake

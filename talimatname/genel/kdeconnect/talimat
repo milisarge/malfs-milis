@@ -1,4 +1,4 @@
-# Description : Adds communication between KDE and your smartphone
+# Description : KDE ve akıllı telefonunuz arasında iletişim kurar
 # URL : https://projects.kde.org/projects/playground/base/kdeconnect-kde
 # Packdeconnectkager : alihan-ozturk28@hotmail.com
 # Depends on : git kf5-extra-cmake-modules kf5-kio kf5-kcmutils qca-qt5 libfakekey qjson sshfs-fuse hicolor-icon-theme kf5-kwayland

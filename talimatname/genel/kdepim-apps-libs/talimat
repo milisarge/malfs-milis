@@ -1,4 +1,4 @@
-# Description : KDE PIM mail related libraries 
+# Description : KDE PIM posta ile ilgili kütüphaneler
 # URL : https://community.kde.org/KDE_PIM
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : libkleo pimcommon grantleetheme kf5-extra-cmake-modules kf5-kdoctools boost qt5
