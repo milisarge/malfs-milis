@@ -1,4 +1,4 @@
-#!/bin/bash
+git#!/bin/bash
 . /etc/mpsd.conf
 if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
@@ -864,6 +864,8 @@ git_guncelle() {
 	else
 		cd milis.git
 		git pull
+		#baslangic betiklerinin guncellenmesi
+		rsync -av /sources/milis.git/rootfs/lib/services/* /lib/services/
 	fi
 	cd `dirname $talimatname_dizin`
 	ryaz 33 "yerele eşitleniyor."
