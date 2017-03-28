@@ -1,6 +1,7 @@
-# Description: The Kerberos network authentication system
+# Description: Kerberos ağ kimlik doğrulama sistemi
 # URL: http://web.mit.edu/kerberos/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=kerberos
 version=1.14
