@@ -1,6 +1,6 @@
-# Description: Password manager
+# Description: Şifre yöneticisi
 # URL: http://www.keepassx.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Maintainer: http://sourceforge.net/projects/keepassx/
 # Depends on: qt4 xorg-libxtst
 
