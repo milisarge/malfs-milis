@@ -20,12 +20,9 @@ build() {
     
     patch -Np1 < ../lxdm.in.patch
     patch -Np1 < ../lxdm.conf.in.patch
-    
-      
+   
     ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --sysconfdir=/etc \
     --libexecdir=/usr/lib/lxdm --localstatedir=/var  --with-systemdsystemunitdir=no &&
-    make
- 
     make
     make DESTDIR=$PKG install
     cp ../lxdm.pam $PKG/etc/pam.d/lxdm
