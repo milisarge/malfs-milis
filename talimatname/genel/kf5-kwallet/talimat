@@ -1,4 +1,4 @@
-# Description : Secure and unified container for user passwords 
+# Description: Kullanıcı şifreleri için güvenli ve birleşik konteyner
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gpgmepp kf5-kconfig kf5-kcoreaddons kf5-kdbusaddons kf5-ki18n kf5-kiconthemes kf5-knotifications kf5-kservice kf5-kwidgetsaddons kf5-kwindowsystem libgcrypt gnupg
