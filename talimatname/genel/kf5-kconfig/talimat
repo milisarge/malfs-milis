@@ -1,6 +1,6 @@
-# Description : Configuration system 
+# Description: Konfigürasyon sistemi
 # URL: https://www.kde.org/
-# Packager: pierre at nutyx dot org
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules qt5
 
 name=kf5-kconfig
