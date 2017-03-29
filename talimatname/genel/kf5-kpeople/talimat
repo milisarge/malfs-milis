@@ -1,4 +1,4 @@
-# Description : A library that provides access to all contacts and the people who hold them 
+# Description: Tüm kişilere ve onları tutan insanlara erişimi sağlayan bir kütüphane
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kitemviews kf5-kservice kf5-kwidgetsaddons
