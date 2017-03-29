@@ -1,4 +1,4 @@
-# Description : Framework that lets applications manage user installable packages of non-binary asset 
+# Description: Uygulamaların, ikili olmayan öğelerin kullanıcı tarafından kurulabilir paketlerini yönetmesine olanak sağlayan çerçeve
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-kdoctools kf5-karchive kf5-ki18n kf5-kcoreaddons kf5-kconfig

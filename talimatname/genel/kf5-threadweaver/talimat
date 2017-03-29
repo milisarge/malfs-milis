@@ -1,4 +1,4 @@
-# Description : High-level multithreading framework 
+# Description: Üst düzey çok iş parçacıklı çerçeve
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules qt5

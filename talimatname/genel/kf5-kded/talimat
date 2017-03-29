@@ -1,4 +1,4 @@
-# Description : Extensible deamon for providing system level services 
+# Description: Sistem düzeyinde hizmetler sağlamak için genişletilebilir arka plan programı
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kinit kf5-kservice kf5-kdoctools

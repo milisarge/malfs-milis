@@ -1,4 +1,4 @@
-# Description : Qt wrapper for ModemManager DBus API 
+# Description: ModemManager DBus API için Qt sarıcı. 
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules modemmanager qt5

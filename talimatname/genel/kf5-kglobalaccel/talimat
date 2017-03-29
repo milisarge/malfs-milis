@@ -1,4 +1,4 @@
-# Description : Add support for global workspace shortcuts 
+# Description: Genel çalışma alanı kısayolları için destek ekleyin
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kwindowsystem libxcb xcb-util-keysyms

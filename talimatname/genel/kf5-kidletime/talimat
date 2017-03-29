@@ -1,4 +1,4 @@
-# Description : Monitoring user activity 
+# Description: Kullanıcı etkinliğini izleme
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules qt5

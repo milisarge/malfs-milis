@@ -1,4 +1,4 @@
-# Description : Abstraction to system DNSSD features 
+# Description: Sistem DNSSD özelliklerinin soyutlanması
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules qt5 avahi

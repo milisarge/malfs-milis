@@ -1,4 +1,4 @@
-# Description : Plugin interface for media player features 
+# Description: Medya oynatıcı özellikleri için eklenti arayüzü
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-kparts kf5-kxmlgui

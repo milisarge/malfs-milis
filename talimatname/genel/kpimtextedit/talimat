@@ -1,7 +1,7 @@
-# Description : A textedit with PIM-specific features
-# URL : https://projects.kde.org/projects/kde/pim/
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules python kf5-kdoctools kf5-kdelibs4support kf5-kcoreaddons grantlee-qt5
+# Description: PIM'e özgü özelliklere sahip bir metin düzenlemesi.
+# URL: https://projects.kde.org/projects/kde/pim/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules python kf5-kdoctools kf5-kdelibs4support kf5-kcoreaddons grantlee-qt5
 
 name=kpimtextedit
 version=16.08.2
