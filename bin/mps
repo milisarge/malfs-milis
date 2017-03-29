@@ -865,7 +865,7 @@ git_guncelle() {
 		cd milis.git
 		git pull
 		#baslangic betiklerinin guncellenmesi
-		rsync -av /sources/milis.git/rootfs/lib/services/* /lib/services/
+		rsync -aviz -q --delete /sources/milis.git/rootfs/lib/services/* /lib/services/
 	fi
 	cd `dirname $talimatname_dizin`
 	ryaz 33 "yerele eşitleniyor."
