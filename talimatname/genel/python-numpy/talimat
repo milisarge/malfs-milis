@@ -1,6 +1,6 @@
-# Description: Scientific tools for Python
+# Description: python bilimsel araç kütüphanesi
 # URL: http://numpy.scipy.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python lapack 
 
 name=python-numpy

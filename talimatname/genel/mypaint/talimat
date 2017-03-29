@@ -1,11 +1,11 @@
-# Description: A fast and easy painting application for digital painters, with brush dynamics
+# Description: hızlı ve kolay boyama uygulaması
 # URL: http://mypaint.intilinux.com/
-# Packagers: pierre at nutyx dot org
+# Packagers: milisarge
 # Depends on: lcms2 json-c python-gtk python-numpy python-protobuf scons swig
 
 name=mypaint
 version=1.1.0
-release=2
+release=1
 source=(http://download.gna.org/$name/$name-$version.tar.xz)
 
 build ()
