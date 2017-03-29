@@ -1,4 +1,4 @@
-# Description : image format plugins for Qt5 
+# Description: Qt5 için görüntü formatı eklentileri
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules qt5 jasper openexr kf5-karchive
