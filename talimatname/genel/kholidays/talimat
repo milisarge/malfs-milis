@@ -1,4 +1,4 @@
-# Description : C++ API that determines holiday and other special events for a geographical region.."
+# Description: Coğrafi bölge için tatil ve diğer özel olayları belirleyen C ++ API'si
 # URL : https://projects.kde.org/projects/kde/pim
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : kf5-extra-cmake-modules python kf5-kdoctools kf5-kdelibs4support kf5-kitemviews qt5
