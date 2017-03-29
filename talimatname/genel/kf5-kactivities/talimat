@@ -1,4 +1,4 @@
-# Description : Runtime and library to organize the user work in separate activities
+# Description : Çalışma zamanını ve kütüphaneyi kullanıcı faaliyetlerini ayrı etkinlikler halinde organize etmek için
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: qt5 boost kf5-kcmutils kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdeclarative kf5-kglobalaccel kf5-ki18n kf5-kio kf5-kservice kf5-kwindowsystem kf5-kxmlgui
