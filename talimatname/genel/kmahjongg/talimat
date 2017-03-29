@@ -1,7 +1,7 @@
-# Description : kmahjongg game
-# URL : http://kde.org/applications/games/kpatience/
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules kf5-kdoctools libkdegames libkmahjongg kf5-knotifyconfig xdg-utils
+# Description: kmahjongg oyunu
+# URL: http://kde.org/applications/games/kpatience/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules kf5-kdoctools libkdegames libkmahjongg kf5-knotifyconfig xdg-utils
 
 name=kmahjongg
 version=16.08.2
