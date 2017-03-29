@@ -1,4 +1,4 @@
-# Description : KDE Integration for QtWebKit 
+# Description: QtWebKit için KDE Entegrasyonu
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: qt5-webkit kf5-kconfig kf5-kcoreaddons kf5-kio kf5-kjobwidgets kf5-kparts kf5-kservice kf5-kwallet 
