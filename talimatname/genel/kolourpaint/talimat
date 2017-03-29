@@ -1,4 +1,4 @@
-# Description : Paint Program
+# Description: Boyama programı
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules hicolor-icon-theme kf5-kdelibs4support libksane
