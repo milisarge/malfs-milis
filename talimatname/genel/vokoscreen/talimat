@@ -1,0 +1,32 @@
+# Description: Kolay ekran çekim uygulaması
+# URL: http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
+# Packager: milisarge@gmail.com
+# Depends on: xorg-libxrandr v4l-utils qt5 ffmpeg lame lsof pulseaudio xdg-utils
+
+name=vokoscreen
+_version=2.5.4-beta
+version=${_version/-/.}
+release=1
+
+source=(https://github.com/vkohaupt/${name}/archive/${_version}.tar.gz
+		desktop_file.patch
+		fix_lrelease.patch)
+	
+build() {
+
+	cd "${SRC}"/${name}-${_version}
+	# sürüm yama
+	patch -Np1 < ../fix_lrelease.patch
+	# masaustu yama
+	patch -Np1 < ../desktop_file.patch
+	mkdir -p "${SRC}"/build
+	cd "${SRC}"/build
+	qmake-qt5 ../${name}-${_version} \
+		QMAKE_CFLAGS="${CFLAGS}" \
+		QMAKE_CXXFLAGS="${CXXFLAGS}" \
+		CONFIG+=release \
+		CONFIG+=c++14
+	make
+	make INSTALL_ROOT="${PKG}" install
+
+}
