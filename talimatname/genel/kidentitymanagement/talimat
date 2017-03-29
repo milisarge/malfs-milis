@@ -1,7 +1,7 @@
-# Description : KDE PIM libraries
-# URL : https://projects.kde.org/projects/kde/pim/
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules python kf5-kdoctools kf5-kdelibs4support kf5-kcoreaddons kpimtextedit
+# Description: KDE PIM kitaplıkları
+# URL: https://projects.kde.org/projects/kde/pim/
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules python kf5-kdoctools kf5-kdelibs4support kf5-kcoreaddons kpimtextedit
 
 name=kidentitymanagement
 version=16.08.2
