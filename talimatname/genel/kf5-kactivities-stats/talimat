@@ -1,4 +1,4 @@
-# Description: A library for accessing the usage data collected by the activities system
+# Description: Aktivite sistemi tarafından toplanan kullanım verilerine erişmek için bir kütüphane
 # URL: https://community.kde.org/Frameworks
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules boost kf5-kactivities
