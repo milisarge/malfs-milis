@@ -1,6 +1,6 @@
-# Description="A QtQuick based components set"
-# Url="https://community.kde.org/Frameworks"
-# Packager=alihan-ozturk28@hotmail.com
+# Description: QtQuick tabanlı bileşenler seti
+# URL: https://community.kde.org/Frameworks
+# Packager: alihan-ozturk28@hotmail.com
 # Depends on: qt5 kf5-extra-cmake-modules kf5-plasma-framework
 
 name=kirigami
