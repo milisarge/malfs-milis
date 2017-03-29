@@ -1,4 +1,4 @@
-# Description : Support for bookmarks and the XBEL format 
+# Description: Yer imleri ve XBEL formatı desteği
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: qt5 kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-kiconthemes kf5-kwidgetsaddons kf5-kconfigwidgets  kf5-kxmlgui
