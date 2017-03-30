@@ -1,7 +1,7 @@
-# Description: Glib-based client library for accessing the online accounts database 
+# Description: Çevrimiçi hesap veritabanına erişmek için Glib tabanlı istemci kitaplığı 
 # URL: https://gitlab.com/accounts-sso/libaccounts-glib
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : dbus-glib libxml2 sqlite python-gobject docbook-xsl
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on: dbus-glib libxml2 sqlite python-gobject docbook-xsl
 
 name=libaccounts-glib
 version=1.21
