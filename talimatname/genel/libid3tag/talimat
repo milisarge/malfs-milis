@@ -1,6 +1,6 @@
-# Description: Library for id3 tagging
+# Description: Id3 etiketleme için kütüphane
 # URL: http://www.mars.org/home/rob/proj/mpeg/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libid3tag

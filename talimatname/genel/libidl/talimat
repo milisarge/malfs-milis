@@ -1,7 +1,8 @@
-# Description: A front-end for CORBA 2.2 IDL and Netscape's XPIDL
+# Description: CORBA 2.2 IDL ve Netscape'in XPIDL'leri için bir ön uç
 # URL: http://www.gnome.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: glib 
+
 name=libidl
 version=0.8.14
 release=1

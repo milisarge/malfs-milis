@@ -1,7 +1,8 @@
-# Description: Provide an extensible input/output abstraction layer for structured file formats.
+# Description: Yapısal dosya biçimleri için genişletilebilir bir giriş/çıkış özetleme katmanı sağlayın.
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: glib intltool libxml2 gobject-introspection 
+
 name=libgsf
 version=1.14.35
 release=1

@@ -1,4 +1,4 @@
-# Description: Implementations for atomic memory update operations on a number of architectures.
+# Description: Bir dizi mimaride atom hafızası güncelleme işlemleri için uygulamalar.
 # URL: http://www.hpl.hp.com/research/linux/atomic_ops/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on :

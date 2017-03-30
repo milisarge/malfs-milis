@@ -1,6 +1,7 @@
-# Description: Contains a library that defines common error values for all GnuPG components
+# Description: Tüm GnuPG bileşenleri için ortak hata değerlerini tanımlayan bir kitaplık içerir
 # URL: http://www.gnupg.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=libgpg-error
 version=1.21

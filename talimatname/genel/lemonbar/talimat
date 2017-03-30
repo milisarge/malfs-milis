@@ -1,7 +1,6 @@
-# Description: A featherweight, lemon-scented, bar based on xcb.
+# Description: Tamamen XCB'ye dayanan hafif bir çubuktur.
 # URL: https://github.com/LemonBoy/bar
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: libxcb git xorg-libxinerama
 
 name=lemonbar

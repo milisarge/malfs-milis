@@ -1,6 +1,6 @@
-# Description: A notepad clone for GTK+ 2.0
+# Description: GTK + 2.0 için bir not defteri klonu
 # URL: http://tarot.freeshell.org/leafpad/
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk2 desktop-file-utils
 
 name=leafpad

@@ -1,4 +1,4 @@
-# Description: C-library for parsing configuration files
+# Description: Yapılandırma dosyalarını ayrıştırmak için C kütüphanesi
 # URL: https://github.com/martinh/libconfuse
 # Packager: milisarge
 # Depends on :

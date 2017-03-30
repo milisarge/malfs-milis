@@ -1,7 +1,7 @@
-# Description: GnuPG kod tabanlı kriptoloji kütüphanesi
-# URL:         http://www.gnupg.org
-# Packager:    milisarge
-# Depends on:  libgpg-error
+# Description: GnuPG'de kullanılan kodu temel alan genel amaçlı bir kripto kütüphanesi.
+# URL:  http://ftp.gnupg.org/gcrypt/libgcrypt/
+# Packager: milisarge
+# Depends on: libgpg-error
 
 name=libgcrypt
 version=1.7.6

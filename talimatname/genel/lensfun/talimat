@@ -1,7 +1,8 @@
-# Description: Database of photographic lenses and a library that allows advanced access to the database
+# Description: Fotoğrafik merceklerin veri tabanı ve veritabanına gelişmiş erişim sağlayan bir kütüphane
 # URL: http://lensfun.berlios.de
 # Packager: milisarge
 # Depends on: cmake glib libpng doxygen 
+
 name=lensfun
 version=0.3.1
 release=1

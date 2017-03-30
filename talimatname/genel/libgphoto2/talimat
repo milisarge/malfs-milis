@@ -1,4 +1,4 @@
-# Description: Core library of gphoto2, designed to allow access to digital camera by external programs.
+# Description: Harici programlar tarafından dijital kameraya erişime izin vermek için tasarlanmış gphoto2 çekirdek kütüphanesi.
 # URL: http://www.gphoto.org/proj/libgphoto2/
 # Packager: milisarge
 # Depends on: libjpeg-turbo libexif libusb-compat 

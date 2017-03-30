@@ -1,6 +1,6 @@
-# Description: libisoburn is a frontend for libraries libburn and libisofs
+# Description: Libisoburn libburn ve libisofs kütüphaneleri için bir ön uçtur
 # URL: http://libburnia-project.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libburn libisofs acl attr 
 
 name=libisoburn

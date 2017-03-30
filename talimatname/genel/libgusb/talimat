@@ -1,6 +1,6 @@
-# Description: The libgusb package contains the GObject wrappers for libusb-1.0
+# Description: Libgusb paketi libusb-1.0 için GObject sarmalayıcılarını içerir
 # URL: https://gitorious.org/gusb/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libusb gperf glib gobject-introspection libgudev
 
 name=libgusb

@@ -1,6 +1,6 @@
-# Description: The Libevdev package contains common functions for Xorg input drivers.
-# URL: URL:  http://www.freedesktop.org/wiki/Software/libevdev/
-# Packager: tnut at nutyx dot org
+# Description: Libevdev paketi Xorg giriş sürücüleri için ortak işlevler içerir.
+# URL: http://www.freedesktop.org/wiki/Software/libevdev/
+# Packager: milisarge
 # Depends on: python 
 
 name=libevdev

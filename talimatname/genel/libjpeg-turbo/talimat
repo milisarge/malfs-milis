@@ -1,6 +1,6 @@
-# Description: Fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG
+# Description: Temel JPEG hızlandırmak için SIMD kullanan orijinal IJG libjpeg çatalı
 # URL: http://libjpeg-turbo.virtualgl.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: nasm 
 
 name=libjpeg-turbo

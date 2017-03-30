@@ -1,6 +1,6 @@
-# Description: An event notification library
+# Description: Bir etkinlik bildirim kitaplığı
 # URL: http://www.monkey.org/~provos/libevent/ 
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libevent

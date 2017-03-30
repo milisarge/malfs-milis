@@ -1,12 +1,14 @@
-# Description: A library to talk to FTDI chips, optional python bindings.
+# Description: FTDI yongaları ile konuşmak için bir kütüphane, isteğe bağlı python bağları.
 # URL: http://www.intra2net.com/en/developer/libftdi/download.php
 # Packager: milisarge
-# Depends on : libusb libconfuse boost cmake python swig
+# Depends on: libusb libconfuse boost cmake python swig
 
 name=libftdi
 version=1.3
 release=1
+
 source=(http://www.intra2net.com/en/developer/libftdi/download/${name}1-$version.tar.bz2)
+
 build() {
 cd ${name}1-$version
 sed -i 's|LIB_SUFFIX 64|LIB_SUFFIX ""|' CMakeLists.txt

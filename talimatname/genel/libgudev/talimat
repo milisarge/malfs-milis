@@ -1,6 +1,6 @@
-# Description: The libgudev package contains GObject bindings for libudev.
+# Description: Libgudev paketi, libudev için GObject bağlamlarını içerir.
 # URL: http://www.codeforge.com/s/0/libgudev
-# Packager: tnut at nutyx dot org, fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: glib gobject-introspection gtk-doc
 
 name=libgudev

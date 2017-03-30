@@ -1,6 +1,6 @@
-# Description: A portable middleware for email access
+# Description: E-posta erişimi için portatif bir katman
 # URL: http://www.etpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: curl expat 
 
 name=libetpan

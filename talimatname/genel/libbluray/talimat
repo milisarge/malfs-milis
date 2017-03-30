@@ -1,7 +1,6 @@
-# Description: Blu-Ray access library.
+# Description: Blu-Ray erişim kitaplığı.
 # URL: http://www.videolan.org/developers/libbluray.html
-# Maintainer: Danny Rawlins, crux at romster dot me
-# Packager: Danny Rawlins, crux at romster dot me
+# Packager: milisarge
 # Depends on: libxml2 freetype
 
 name=libbluray

@@ -1,6 +1,6 @@
-# Description: A free library for decoding ATSC A/52 streams
+# Description: ATSC A/52 akışlarını çözmek için ücretsiz bir kütüphane
 # URL: http://liba52.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=liba52

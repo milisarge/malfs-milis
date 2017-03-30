@@ -1,7 +1,8 @@
-# Description: lftp is a sophisticated ftp/http client.
-# URL: lftp is a sophisticated ftp/http client.
+# Description: LFTP, ağ protokollerini (ftp, http, ftp, ftp, torrent) destekleyen komut satırı arayüzü ile sofistike bir dosya aktarım programıdır.
+# URL: http://lftp.tech/
 # Packager: milisarge
 # Depends on: gnutls libidn
+
 name=lftp
 version=4.7.7
 release=1

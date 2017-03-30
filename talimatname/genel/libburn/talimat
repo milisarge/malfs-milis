@@ -1,6 +1,7 @@
-# Description: libburn is a library for writing preformatted data onto optical media
+# Description: Libburn, optik medyada önceden formatlanmış verileri yazmak için kullanılan bir kütüphanedir
 # URL: http://icculus.org/burn/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=libburn
 version=1.4.2

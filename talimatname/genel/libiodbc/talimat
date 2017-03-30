@@ -1,6 +1,7 @@
-# Description: Independent Open DataBase Connectivity for Linux
+# Description: Linux için bağımsız açık veri tabanı bağlantısı
 # URL: http://www.iodbc.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=libiodbc
 version=3.52.10

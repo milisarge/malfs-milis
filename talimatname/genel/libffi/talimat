@@ -1,6 +1,6 @@
-# Description: Provide a portable, high level programming interface to various calling conventions.
+# Description: Çeşitli arama kurallarına taşınabilir, yüksek seviyeli bir programlama arabirimi sağlayın.
 # URL: http://sourceware.org/libffi/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libffi

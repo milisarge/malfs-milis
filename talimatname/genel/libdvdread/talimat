@@ -1,6 +1,7 @@
-# Description: Provides a simple foundation for reading DVD video disks
+# Description: DVD video disklerini okumak için basit bir temel sağlar
 # URL: http://mplayerhq.hu
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=libdvdread
 version=5.0.3

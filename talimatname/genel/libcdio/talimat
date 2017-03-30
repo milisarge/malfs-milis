@@ -1,6 +1,6 @@
-# Description: GNU Compact Disc Input and Control Library
+# Description: GNU Kompakt Disk Giriş ve Kontrol Kütüphanesi
 # URL: http://www.gnu.org/software/libcdio/
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libcddb
 
 name=libcdio
