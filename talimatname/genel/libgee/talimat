@@ -1,6 +1,6 @@
-# Description: GObject collection library (legacy)
+# Description: GObject koleksiyon kütüphanesi (eski)
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: glib gobject-introspection vala 
 
 name=libgee
