@@ -1,6 +1,6 @@
-# Description: A set of symbols and convience functions for Ayatana indicators. 
+# Description: Ayatana göstergeleri için bir dizi sembol ve kolaylık fonksiyonu. 
 # URL: https://launchpad.net/libindicator
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk2
 
 name=libindicator-gtk2
