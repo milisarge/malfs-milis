@@ -1,0 +1,16 @@
+# Description: NTRUEncrypt C de yazılmışı
+# URL:         https://github.com/tbuktu/libntru
+# Packager:    milisarge
+# Depends on:  
+
+name=libntru
+version=0.4.1
+release=1
+source=(https://github.com/tbuktu/libntru/archive/${version}.tar.gz)
+
+build() {
+	cd "${SRC}/libntru-${version}"
+	make -f Makefile.linux
+	make -f Makefile.linux install DESTDIR="${PKG}"
+	rm -r "${PKG}/usr/share"
+}

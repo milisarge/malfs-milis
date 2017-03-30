@@ -1,0 +1,19 @@
+# Description: Spot-On bağlam kütüphanesi
+# URL:         http://spot-on.sourceforge.net/
+# Packager:    milisarge
+# Depends on:  sqlite unzip libgcrypt libntru
+
+name=libspoton
+version=2017.01.20
+release=1
+source=(http://downloads.sourceforge.net/project/spot-on/Version%20${version}/Spot-On-Src.d.zip?r=)
+
+build() {
+	unzip $SRC/Spot*
+	cd "$SRC/spot-on.d/libSpotOn"
+    make
+    install -dm755 -- "$PKG/usr/lib"
+    install -m755 -- libspoton.so "$PKG/usr/lib/libspoton.so"
+    install -dm755 -- "$PKG/usr/include"
+    install -m755 -- libspoton.h "$PKG/usr/include/libspoton.h"
+}

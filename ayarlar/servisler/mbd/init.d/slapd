@@ -1,0 +1,74 @@
+#!/bin/sh
+########################################################################
+# Begin slapd
+#
+# Description : OpenLDAP Boot Script
+#
+# Authors     : Armin K. <krejzi@email.com>
+#
+# Version     : BLFS SVN
+#
+# Notes       : Can be configured through /etc/sysconfig/slapd.
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:          slapd
+# Required-Start:    $network $syslog
+# Required-Stop:     $network $syslog
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: OpenLDAP standalone server
+# X-LFS-Provided-By: BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+SLAPD_OPTIONS=""
+
+if [ -f "/etc/sysconfig/slapd" ]; then
+   . /etc/sysconfig/slapd
+fi
+
+case "${1}" in
+   start)
+
+      if [ ! -d /var/run/openldap ]; then
+         install -d -o ldap -g ldap -m 755 /var/run/openldap
+      fi
+
+      log_info_msg "Starting OpenLDAP"
+
+      if [ -z "$SLAPD_SERVICES" ]; then
+         start_daemon /usr/sbin/slapd -u ldap -g ldap $SLAPD_OPTIONS
+      else
+         start_daemon /usr/sbin/slapd -u ldap -g ldap -h "$SLAPD_SERVICES" $SLAPD_OPTIONS
+      fi
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping OpenLDAP"
+      killproc /usr/sbin/slapd
+      evaluate_retval
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   status)
+      statusproc /usr/sbin/slapd
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+exit 0
+
+# End slapd

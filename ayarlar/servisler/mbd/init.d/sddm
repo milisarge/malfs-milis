@@ -1,0 +1,53 @@
+#!/bin/sh
+# Begin /etc/rc.d/init.d/sddm
+
+### BEGIN INIT INFO
+# Provides:            sddm
+# Required-Start:      $local_fs
+# Should-Start:        $remote_fs $syslog
+# Required-Stop:       $local_fs
+# Should-Stop:         $remote_fs $syslog
+# Default-Start:       5
+# Default-Stop:        0 1 2 3 4 6
+# Short-Description:   Starts sddm.
+# Description:         Starts sddm daemon.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+BIN_FILE="/usr/bin/sddm"
+
+#$LastChangedBy: fernando $
+#$Date: 2015-09-24 20:29:34 -0500 (Thu, 24 Sep 2015) $
+
+case $1 in
+   start)
+        log_info_msg "Starting SDDM..."
+        start_daemon $BIN_FILE &
+        evaluate_retval
+        ;;
+
+   stop)
+        log_info_msg "Stopping SDDM..."
+        killproc $BIN_FILE
+        evaluate_retval
+        ;;
+
+   restart)
+        $0 stop
+        sleep 2
+        $0 start
+        ;;
+
+   status)
+        statusproc ${BIN_FILE}
+        ;;
+
+   *)
+        echo "usage: $0 [start|stop|restart|status]"
+        exit 1
+        ;;
+esac
+
+# End /etc/rc.d/init.d/sddm

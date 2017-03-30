@@ -1,0 +1,69 @@
+#!/bin/sh
+########################################################################
+# Begin exim
+#
+# Description : Starts Virtuoso Universal
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.2
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            virtuoso
+# Required-Start:      $syslog $local_fs $network
+# Should-Start:        $remote_fs 
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs 
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Controls virtuoso data server
+# Description:         Controls virtuoso data server
+# X-LFS-Provided-By:   BLFS / LFS 7.2
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2012-05-10 17:27:43 -0500 (Thu, 10 May 2012) $
+
+virtuoso_db="/var/lib/virtuoso/db"
+
+case "$1" in
+    start)
+        log_info_msg "Starting Virtuoso Universal Server..."
+        cd $virtuoso_db
+        start_daemon /usr/bin/virtuoso-t
+        evaluate_retval
+        ;;
+
+    stop)
+        log_info_msg "Stopping Virtuoso Universal Server..."
+        killproc /usr/bin/virtuoso-t
+        evaluate_retval
+        ;;
+
+    reload)
+        log_info_msg "Reloading Virtuoso Universal Server..."
+        killproc /usr/bin/virtuoso-t -HUP
+        evaluate_retval
+        ;;
+
+    restart)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+
+    status)
+        statusproc /usr/bin/virtuoso-t
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop|reload|restart|status}"
+        exit 1
+        ;;
+esac
+
+# End /etc/init.d/virtuoso

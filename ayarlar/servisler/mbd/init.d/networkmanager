@@ -1,0 +1,65 @@
+#!/bin/sh
+########################################################################
+# Begin networkmanager
+#
+# Description : NetworkManager Boot Script
+#
+# Authors     : Armin K. <krejzi@email.com>
+#
+# Version     : BLFS SVN
+#
+# Notes       :
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:          networkmanager
+# Required-Start:    $remote_fs dbus udev
+# Required-Stop:     $remote_fs dbus udev
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Network connection manager.
+# Description:       Daemon for automatically switching network
+#                    connections to the best available connection.
+# X-LFS-Provided-By: BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+case "${1}" in
+   start)
+
+      if [ ! -d /var/run/NetworkManager ]; then
+         install -d -o root -g root -m 755 /var/run/NetworkManager
+      fi
+
+      log_info_msg "Starting network connection manager NetworkManager"
+      start_daemon /usr/sbin/NetworkManager
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping network connection manager NetworkManager"
+      killproc /usr/sbin/NetworkManager
+      evaluate_retval
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   status)
+      statusproc /usr/sbin/NetworkManager
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+exit 0
+
+# End networkmanager

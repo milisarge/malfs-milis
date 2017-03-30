@@ -1,0 +1,1 @@
+cp /sources/milis.git/talimatname/genel/iptables/iptables.rc /etc/rc.d/init.d/iptables

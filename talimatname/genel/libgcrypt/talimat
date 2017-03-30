@@ -4,20 +4,20 @@
 # Depends on: libgpg-error
 
 name=libgcrypt
-version=1.6.5
+version=1.7.6
 release=1
-
-source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2 )
+source=(ftp://ftp.gnupg.org/gcrypt/libgcrypt/$name-$version.tar.bz2)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr --disable-static
-make
-make DESTDIR=$PKG install
+  cd $name-$version
 
-rm -f $PKG/usr/share/info/dir
+  ./configure \
+      --prefix=/usr \
+      --disable-padlock-support \
+      --enable-static=yes
+  make
+  make DESTDIR=$PKG install
 
-install -v -dm755 $PKG/usr/share/doc/libgcrypt-$version
-install -v -m644 README doc/{README.apichanges,fips*,libgcrypt*} \
-$PKG/usr/share/doc/libgcrypt-$version
+  rm -rf $PKG/usr/sbin
+  rm -rf $PKG/usr/share/info
 }

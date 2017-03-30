@@ -1,0 +1,67 @@
+#!/bin/sh
+########################################################################
+# Begin xinetd
+#
+# Description : Start xinetd super server daemon
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.2
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            xinetd
+# Required-Start:      $network
+# Should-Start:
+# Required-Stop:       $network
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts the xinetd daemon.
+# Description:         Starts the xinetd super server daemon to llisten to
+#                      specified incoming tcp and udp ports and execute
+#                      the configured service.
+# X-LFS-Provided-By:   BLFS / LFS 7.2
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: dj $
+#$Date: 2011-12-05 01:38:40 -0600 (Mon, 05 Dec 2011) $
+
+case "$1" in
+   start)
+      log_info_msg "Starting xinetd..."
+      start_daemon /usr/sbin/xinetd
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping xinetd..."
+      killproc /usr/sbin/xinetd
+      evaluate_retval
+      ;;
+
+   reload)
+      log_info_msg "Reloading xinetd..."
+      killproc /usr/sbin/xinetd -HUP
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/xinetd
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/xinetd

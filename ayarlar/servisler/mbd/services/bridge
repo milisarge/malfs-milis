@@ -1,0 +1,76 @@
+#!/bin/sh
+########################################################################
+# Begin /lib/services/bridge
+#
+# Description : Bridge Boot Script
+#
+# Authors     : Nathan Coulson - nathan@linuxfromscratch.org
+#               Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS-7.2
+#
+########################################################################
+
+. /lib/lsb/init-functions
+. ${IFCONFIG}
+
+# Make compatible with older versions of init-functions
+unset is_true
+
+is_true()
+{
+   [ "$1" = "1" ] || [ "$1" = "yes" ] || [ "$1" = "true" ] ||  
+   [ "$1" = "y" ] || [ "$1" = "t"   ]
+}
+
+if [ -z "${INTERFACE_COMPONENTS}" ]; then
+   log_failure_msg "INTERFACE_COMPONENTS variable missing from ${IFCONFIG}"
+   exit 1
+fi
+
+case "${2}" in
+   up)
+      log_info_msg2 "\n"
+      log_info_msg "Creating the ${1} interface..."
+      brctl addbr ${1}
+      evaluate_retval
+
+      for I in ${INTERFACE_COMPONENTS}; do
+         log_info_msg "Adding ${I} to ${1}..."
+         brctl addif ${1} ${I}
+         evaluate_retval
+      done
+
+      if is_true ${STP}; then
+        brctl stp ${1} on
+        log_success_msg "Setting spanning tree protocol"
+      fi
+
+      if is_true ${IP_FORWARD}; then
+        sysctl -w net.ipv4.ip_forward=1 > /dev/null
+        log_success_msg "Setting net.ipv4.ip_forward = 1"
+      fi
+   ;;
+   
+   down)
+      for I in ${INTERFACE_COMPONENTS}; do
+         log_info_msg "Removing ${I} from ${1}..."
+         ip link set ${I} down &&
+         brctl delif ${1} ${I}
+         evaluate_retval
+      done
+
+      log_info_msg "Bringing down the ${1} interface..."
+      ip link set ${1} down
+      brctl delbr ${1}
+      evaluate_retval
+   ;;
+   
+   *)
+      echo "Usage: ${0} [interface] {up|down}"
+      exit 1
+   ;;
+esac
+
+# End /lib/services/bridge
+

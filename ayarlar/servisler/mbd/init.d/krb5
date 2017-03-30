@@ -1,0 +1,70 @@
+#!/bin/sh
+########################################################################
+# Begin krb5
+#
+# Description : MIT Kerberos Boot Script.
+#
+# Authors     : Armin K. <krejzi@email.com>
+#
+# Version     : BLFS SVN
+#
+# Notes       :
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:          krb5
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: MIT Kerberos KDC and Admin Server
+# Description:       Starts, stops or restarts the MIT Kerberos KDC,
+#                    Admin Server and Database Propagation Server.
+# X-LFS-Provided-By: BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+case "${1}" in
+   start)
+      log_info_msg "Starting Kerberos KDC krb5kdc"
+      start_daemon /usr/sbin/krb5kdc
+      log_info_msg "Starting Kerberos administrative server kadmind"
+      start_daemon /usr/sbin/kadmind
+      log_info_msg "Starting Kerberos database propagation server kpropd"
+      start_daemon /usr/sbin/kpropd -S
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping Kerberos database propagation server kpropd"
+      killproc /usr/sbin/kpropd
+      log_info_msg "Stopping Kerberos administrative server kadmind"
+      killproc /usr/sbin/kadmind
+      log_info_msg "Stopping Kerberos KDC krb5kdc"
+      killproc /usr/sbin/krb5kdc
+      evaluate_retval
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   status)
+      statusproc /usr/sbin/krb5kdc
+      statusproc /usr/sbin/kadmind
+      statusproc /usr/sbin/kpropd
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+exit 0
+
+# End krb5

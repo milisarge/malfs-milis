@@ -1,8 +1,8 @@
-# Description: Perl HTML parser class
+# Description: Perl HTML ayrıştırıcı modülü
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
-# Depends on: perl perl-html-tagset 
-run=( perl )
+# Packager: milisarge
+# Depends on: perl-html-tagset 
+
 name=perl-html-parser
 version=3.71
 release=1

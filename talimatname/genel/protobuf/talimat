@@ -1,11 +1,11 @@
-# Description: Google's data interchange format utility (python API).
+# Description: Google veri değişim biçim aracı
 # URL: http://code.google.com/p/protobuf/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python-setuptools 
 
 name=protobuf
 version=2.6.1
-release=2
+release=1
 
 source=(https://github.com/google/protobuf/releases/download/v$version/protobuf-$version.tar.bz2)
 build () 

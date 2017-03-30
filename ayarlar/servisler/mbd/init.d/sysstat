@@ -1,0 +1,45 @@
+#!/bin/sh
+# Begin /etc/init.d/sysstat
+########################################################################
+# Begin ntpd
+#
+# Description : Clear kernel counters for sysstat
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            Reset of system activity data collector file
+# Required-Start:      
+# Should-Start:
+# Required-Stop:       
+# Should-Stop:         
+# Default-Start:       S
+# Default-Stop:        
+# Short-Description:   Reset system activity data collector file
+# Description:         Reset system activity data collector file
+# X-LFS-Provided-By:   BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2012-05-10 17:27:43 -0500 (Thu, 10 May 2012) $
+
+case "$1" in
+   start)
+      log_info_msg "Calling the system activity data collector (sadc)..."
+      /usr/lib/sa/sadc -F -L -
+      evaluate_retval
+      ;;
+
+   *)
+      echo "Usage: $0 start"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/sysstat

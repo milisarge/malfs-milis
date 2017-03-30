@@ -1,0 +1,71 @@
+#!/bin/sh
+########################################################################
+# Begin postfix
+#
+# Description : Starts Postfix Mail Trasfer Agent
+#
+# Author      : DJ Lucas - dj@linuxfromscratch.org
+#               Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            postfix
+# Required-Start:      $syslog $local_fs $network
+# Should-Start:        $remote_fs openldap mysql postgresql saslauthd
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs openldap mysql postgresql saslauthd
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Postfix MTA
+# Description:         Controls the Postfix Mail Transfer Agent
+# X-LFS-Provided-By:   BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: krejzi $
+#$Date: 2013-01-25 12:12:00 -0600 (Fri, 25 Jan 2013) $
+
+BINFILE=/usr/lib/postfix/master
+PIDFILE=/var/spool/postfix/pid/master.pid
+
+case "$1" in
+   start)
+      log_info_msg "Starting Postfix..."
+      start_daemon -p "${PIDFILE}" /usr/sbin/postfix start 2> /dev/null
+      evaluate_retval 
+      ;;
+
+   stop)
+      log_info_msg "Stopping Postfix..."
+      killproc -p "${PIDFILE}" ${BINFILE}
+      evaluate_retval
+      ;;
+
+   reload)
+      log_info_msg "Reloading Postfix..."
+      killproc -p "${PIDFILE}" ${BINFILE} -HUP
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      echo -n "postfix: "
+      statusproc  -p "${PIDFILE}" ${BINFILE}
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/postfix

@@ -1,0 +1,106 @@
+#!/bin/sh
+########################################################################
+# Begin netfs
+#
+# Description : Mount network filesystems
+#
+# Author      : Nathan Coulson - conathan@conet.dyndns.org
+#               DJ Lucas - dj@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:          $remote_fs
+# Required-Start:    $network
+# Should-Start:      nfs-client nfs-server
+# Required-Stop:     $network
+# Should-Stop:       nfs-server nfs-client
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
+# Short-Description: Mounts network volumes.
+# Description:       Mounts anything marked as _netdev, and umounts and mounted
+#                    _netfs, smbfs, ncpfd, coda, or nfs volumes
+# X-LFS-Provided-By: BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2012-04-18 16:56:10 -0500 (Wed, 18 Apr 2012) $
+
+case "$1" in
+   start)
+      # The following line mounts all entries in fstab that
+      # have the _netdev option.  This is required for network
+      # filesystems to be mounted at boot time.
+      log_info_msg "Mounting network volumes..."
+      /bin/mount -a -O _netdev
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Unmounting network volumes..."
+
+      # The following line obtains a list from the output of
+      # mount for all netfs types and anything that was
+      # mounted with the _netdev option.
+      NETMOUNTS=`/bin/mount \
+         | /bin/grep '_netdev\|smbfs\|ncpfs\|coda\|nfs\|cifs' \
+         | /usr/bin/cut -d " " -f 3 | /bin/sed ':a;$!N;s/\n/ /;ta'`
+
+      # Check to see if anything was listed from above
+      # (see if anything is actually needs to be unmounted)
+      if [ x"$NETMOUNTS" != x ]; then
+         # There is something mounted
+
+         # Try and stop processes the nice way
+         # (probably won't work in most cases)
+         /bin/fuser -SIGTERM -km $NETMOUNTS > /dev/null
+
+         # Check and see if it found anything.  If it
+         # did, then give 3 seconds for things to exit
+         # the nice way before killing them off.
+         # This one will work all of the time!
+         if [ $? = 0 ]; then
+            /bin/sleep ${KILLDELAY:-3}  # Default is 3, not minus 3
+            /bin/fuser -km $NETMOUNTS > /dev/null
+         fi
+
+         # We now need to unmount all network filesystems.
+         # We will do this with two umount commands to allow
+         # for broken behavior of smbmount, and also to make
+         # certain that netmounts without the _netdev option
+         # will still get unmounted.
+         /bin/umount -af -O _netdev
+
+         # Save the return value
+         NERRVAL=$?
+
+         # Now catch the rest of the network filesystems
+         # by fstype.  This list can be extended later as
+         # more network filesystems are supported by mount.
+         /bin/umount -af -t coda,ncpfs,nfs,smbfs,nfsd,cifs
+
+         if [ $? = 0  -a  $NERRVAL = 0 ]; then
+           (exit 0)
+         else
+           (exit 1)
+         fi
+
+         evaluate_retval
+
+      else
+         # There is nothing mounted
+         log_success_msg2 "No network volumes mounted!"
+      fi
+      ;;
+
+*)
+      echo "Usage: $0 {start|stop}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/netfs

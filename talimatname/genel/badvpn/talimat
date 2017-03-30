@@ -1,0 +1,18 @@
+# Description: P2P vpn sistemi,ağ arayüz ayarları için ncd programlama dili
+# URL: https://github.com/ambrop72/badvpn
+# packager: milisarge
+# Depends on: nss cmake
+
+name=badvpn
+version=1.999.130
+release=1
+source=(https://github.com/ambrop72/badvpn/archive/$version.tar.gz
+		badvpn-ncd.conf.d)
+
+build() {
+	cd $name-$version
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
+	make
+	make DESTDIR="$PKG" install
+	install -D -m0644 "$SRC/badvpn-ncd.conf.d" "$PKG/etc/conf.d/badvpn-ncd"
+}

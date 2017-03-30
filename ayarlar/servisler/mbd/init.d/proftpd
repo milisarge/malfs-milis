@@ -1,0 +1,66 @@
+#!/bin/sh
+########################################################################
+# Begin /etc/init.d/vsftpd
+#
+# Description : Start Pro FTP Daemon
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.2
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            ftpd
+# Required-Start:      $remote_fs
+# Should-Start:
+# Required-Stop:       $remote_fs
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts proftpd server.
+# Description:         Starts Professional FTP Daemon (proftpd).
+# X-LFS-Provided-By:   LFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2012-04-21 17:07:20 -0500 (Sat, 21 Apr 2012) $
+
+case "$1" in
+	start)
+		log_info_msg "Starting FTP Server..."
+		start_daemon /usr/sbin/proftpd
+      evaluate_retval
+		;;
+
+	stop)
+		log_info_msg "Stopping FTP Server..."
+		killproc /usr/sbin/proftpd
+      evaluate_retval
+		;;
+
+	reload)
+		log_info_msg "Reloading FTP Server..."
+		killproc /usr/sbin/proftpd -HUP
+      evaluate_retval
+		;;
+
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+
+	status)
+		statusproc /usr/sbin/proftpd
+		;;
+
+	*)
+		echo "Usage: $0 {start|stop|reload|restart|status}"
+		exit 1
+		;;
+esac
+
+# End /etc/init.d/proftpd

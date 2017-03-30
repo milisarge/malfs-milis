@@ -1,0 +1,74 @@
+#!/bin/sh
+########################################################################
+# Begin dhcpd
+#
+# Description : ISC DHCP Server Boot Script.
+#
+# Author      : 
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            dhcpd
+# Required-Start:      network
+# Required-Stop:       sendsignals
+# Default-Start:       2 3 4 5
+# Default-Stop:        0 2 6
+# Short-Description:   Starts the ISC DHCP Server.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: krejzi $
+#$Date: 2013-06-11 10:49:17 -0500 (Tue, 11 Jun 2013) $
+
+INTERFACES=""
+OPTIONS=""
+
+if [ -f "/etc/sysconfig/dhcpd" ]; then
+   . /etc/sysconfig/dhcpd
+fi
+
+case "$1" in
+   start)
+
+      if [ -z "$INTERFACES" ]; then
+         MSG="You need to configure dhcp server in"
+         log_warning_msg "$MSG /etc/sysconfig/dhcpd"
+         exit 0
+      fi
+
+      log_info_msg "Starting ISC DHCP Server dhcpd"
+      start_daemon /usr/sbin/dhcpd -q $INTERFACES $OPTIONS
+      evaluate_retval
+
+      ;;
+
+   stop)
+
+      log_info_msg "Stopping ISC DHCP Server dhcpd"
+      killproc /usr/sbin/dhcpd
+      evaluate_retval
+
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/dhcpd
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/dhcpd

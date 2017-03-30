@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "kullanım: servis <servicename> start|stop|restart"
+  exit 1
+fi
+
+if [ ! -f /etc/init.d/$1 ]; then
+  echo "$1 servisi bulunamadı."
+  exit 1
+fi
+
+/etc/init.d/$1 $2

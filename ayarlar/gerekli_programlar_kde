@@ -1,4 +1,5 @@
 grub
+start-stop-daemon
 dejavu-ttf
 xorriso
 gtk-engines

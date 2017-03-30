@@ -1,0 +1,61 @@
+#!/bin/sh
+#######################################################################
+# Begin /etc/init.d/rsyncd
+#
+# Description : Start rsync server
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            rsyncd
+# Required-Start:      $syslog $local_fs $network
+# Should-Start:        $remote_fs
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts rsync daemon.
+# Description:         Starts rsync daemon which is used to copy
+#                      files from and to remote machines.
+# X-LFS-Provided-By:   BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: krejzi $
+#$Date: 2012-08-28 10:06:39 -0500 (Tue, 28 Aug 2012) $
+
+case "$1" in
+   start)
+      log_info_msg "Starting RSYNC Server..."
+      start_daemon /usr/bin/rsync --daemon
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping RSYNC Server..."
+      killproc /usr/bin/rsync
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/bin/rsync
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/rsyncd

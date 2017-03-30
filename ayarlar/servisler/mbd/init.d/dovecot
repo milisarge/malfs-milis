@@ -1,0 +1,64 @@
+#!/bin/sh
+########################################################################
+# Begin dovecot
+#
+# Description : Dovecot server init script
+#
+# Author      : Igor Živković <contact@igor-zivkovic.from.hr>
+#
+# Version     : BLFS SVN
+#
+########################################################################
+
+
+### BEGIN INIT INFO
+# Provides:          dovecot
+# Required-Start:    $network $remote_fs $syslog
+# Required-Stop:     $network $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Dovecot init script
+# X-LFS-Provided-By: BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy$
+#$Date$
+
+case "$1" in
+   start)
+      log_info_msg "Starting Dovecot server..."
+      start_daemon /usr/sbin/dovecot
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping Dovecot server..."
+      killproc -p "/run/dovecot/master.pid" /usr/sbin/dovecot
+      evaluate_retval
+      ;;
+
+   reload)
+      log_info_msg "Reloading Dovecot server..."
+      killproc -p "/run/dovecot/master.pid" /usr/sbin/dovecot -HUP
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/dovecot
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End dovecot

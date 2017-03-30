@@ -1,0 +1,66 @@
+#!/bin/sh
+########################################################################
+# Begin cups
+#
+# Description : Start cups daemon
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            cups
+# Required-Start:      $network
+# Should-Start:        $remote_fs haldaemon
+# Required-Stop:       $network
+# Should-Stop:         haldaemon $remote_fs
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts cups print daemon.
+# Description:         Starts cups print daemon.
+# X-LFS-Provided-By:   BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: dj $
+#$Date: 2011-12-05 01:38:40 -0600 (Mon, 05 Dec 2011) $
+
+case $1 in
+   start)
+      log_info_msg "Starting CUPS Printserver..."
+      start_daemon /usr/sbin/cupsd
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping CUPS Printserver..."
+      killproc /usr/sbin/cupsd
+      evaluate_retval
+      ;;
+
+   reload)
+      log_info_msg "Reloading CUPS Printserver..."
+      killproc /usr/sbin/cupsd -HUP
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/cupsd
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/cups

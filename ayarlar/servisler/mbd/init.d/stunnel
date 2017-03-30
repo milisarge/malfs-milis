@@ -1,0 +1,55 @@
+#!/bin/sh
+# Begin /etc/init.d/stunnel
+
+### BEGIN INIT INFO
+# Provides:            samba
+# Required-Start:      $network
+# Should-Start:        $remote_fs 
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs 
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Provides an SSL encryption wrapper.
+# Description:         Provides an SSL encryption wrapper between remote clients and
+#                      local (inetd-startable) or remote servers. The concept is that 
+#                      having non-SSL aware daemons running on your system you can 
+#                      easily set them up to communicate with clients over secure SSL
+#                      channels.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2011-11-11 22:33:41 -0600 (Fri, 11 Nov 2011) $
+
+case "$1" in
+   start)
+      log_info_msg "Starting the Stunnel Daemon..."
+      start_daemon /usr/bin/stunnel
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping the Stunnel Daemon..."
+      killproc /usr/bin/stunnel
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/bin/stunnel
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/stunnel

@@ -1,0 +1,51 @@
+#!/bin/sh
+########################################################################
+# Begin alsa
+#
+# Description : Restore and store ALSA settings
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : BLFS SVN
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            alsa
+# Required-Start:      
+# Should-Start:
+# Required-Stop:       sendsignals
+# Should-Stop:
+# Default-Start:       S
+# Default-Stop:        0 1 6
+# Short-Description:   Restore and store ALSA mixer settings.
+# Description:         Restores and stores ALSA mixer settings in the default
+#                      location: /var/lib/alsa/asound.state.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: igor $
+#$Date: 2013-07-25 04:50:36 -0500 (Thu, 25 Jul 2013) $
+
+case "$1" in
+   start)
+      log_info_msg "Starting ALSA...    Restoring volumes..."
+      /usr/sbin/alsactl restore
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping ALSA...    Saving volumes..."
+      /usr/sbin/alsactl store
+      evaluate_retval
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop}"
+      exit 1
+      ;;
+esac
+
+# End alsa

@@ -1,0 +1,84 @@
+#!/bin/sh
+########################################################################
+# Begin saslauthd
+#
+# Description : Cyrus SASL Boot Script
+#
+# Authors     : Armin K. <krejzi@email.com>
+#
+# Version     : BLFS SVN
+#
+# Notes       : Not enabled by default.
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            saslauthd
+# Required-Start:      $local_fs
+# Required-Stop:       $local_fs
+# Default-Start:       2 3 4 5
+# Default-Stop:        0 1 6
+# Short-Description:   saslauthd startup script
+# Description:         This script starts the saslauthd daemon. It is
+#                      configured using the file /etc/sysconfig/saslauthd.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+START="no"
+AUTHMECH=""
+OPTIONS=""
+
+if [ -f "/etc/sysconfig/saslauthd" ]; then
+   . /etc/sysconfig/saslauthd
+fi
+
+case "${1}" in
+   start)
+
+      if [ "$START" != "yes" ]; then
+         MSG="Configure saslauthd in /etc/sysconfig/saslauthd"
+         log_warning_msg "$MSG and set START to yes"
+         exit 0
+      fi
+
+      if [ -z "$AUTHMECH" ]; then
+         MSG="You need to select auth mechanism in"
+         log_warning_msg "$MSG /etc/sysconfig/saslauthd"
+         exit 0
+      fi
+
+      if [ ! -d /var/run/saslauthd ]; then
+         install -d -o root -g root -m 711 /var/run/saslauthd
+      fi
+
+      log_info_msg "Starting SASL Authentication Daemon saslauthd"
+      start_daemon /usr/sbin/saslauthd -a $AUTHMECH $OPTIONS
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping SASL Authentication Daemon saslauthd"
+      killproc /usr/sbin/saslauthd
+      evaluate_retval
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   status)
+      statusproc /usr/sbin/saslauthd
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart|status}"
+      exit 1
+      ;;
+ esac
+exit 0
+
+# End saslauthd

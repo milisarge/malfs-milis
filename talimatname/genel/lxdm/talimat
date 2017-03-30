@@ -1,14 +1,15 @@
-# Description: A light weight session manager for linux  
-# URL:         http://sourceforge.net/projects/lxdm/
+# Description: hafif linux giriş yöneticisi
+# URL: http://sourceforge.net/projects/lxdm/
 # Packager: milisarge
-# Depends on: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2
+# Depends on: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2 mate-themes
 
 name=lxdm
 version=0.5.3
-release=1
-source=(http://sourceforge.net/projects/lxde/files/${name}/${name}%20${version}/${name}-${version}.tar.xz
-http://downloads.sourceforge.net/project/lxdm-init-script/lxdm-init-script-0.0.1.tar.gz
-http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz
+release=2
+uisim=lxdm-a548c73
+
+source=(http://kaynaklar.milislinux.org/$uisim.tar.xz
+https://github.com/yasarciv/lxdm-tema/archive/1.0.tar.gz
 lxdm.in.patch
 lxdm.conf.in.patch
 lxdm.pam
@@ -16,27 +17,22 @@ Xsession)
 
 build() {
     
-    cd $name-$version
-    
+    cd $uisim
     patch -Np1 < ../lxdm.in.patch
     patch -Np1 < ../lxdm.conf.in.patch
-    
-      
+	cp ../lxdm.pam pam/lxdm
+	cp ../Xsession data/Xsession
+    ./autogen.sh   
     ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --sysconfdir=/etc \
-    --libexecdir=/usr/lib/lxdm --localstatedir=/var  --with-systemdsystemunitdir=no &&
-    make
- 
+    	    --libexecdir=/usr/lib/lxdm --localstatedir=/var 
     make
     make DESTDIR=$PKG install
-    cp ../lxdm.pam $PKG/etc/pam.d/lxdm
-    cp ../Xsession $PKG/etc/lxdm/
-    mkdir $PKG/etc/rc.d
-    mkdir $PKG/etc/rc.d/init.d
-    install -m 755 $SRC/lxdm-init-script/lxdm  $PKG/etc/rc.d/init.d/$name
     
     install -dm 755 ${PKG}/var/lib/lxdm    
     echo 'GDK_CORE_DEVICE_EVENTS=true' > "$PKG"/var/lib/lxdm/.pam_environment
     
-    cp -r ${SRC}/lxdm-themes/* ${PKG}/usr/share/lxdm/themes
-            
+	cp -r ${SRC}/lxdm-tema-1.0/lxdm-themes/Milis-Lxdm-Tema "$PKG/usr/share/lxdm/themes"
+	cp ${SRC}/lxdm-tema-1.0/lxdm/lxdm.conf "$PKG/etc/lxdm/" 
+	cd /sources/milis.git/ayarlar/servisler
+	make DESTDIR=$PKG kur-lxdm       
 }

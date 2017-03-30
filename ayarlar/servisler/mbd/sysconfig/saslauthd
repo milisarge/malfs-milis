@@ -1,0 +1,32 @@
+# Begin /etc/sysconfig/saslauthd
+
+# Change this to "yes" and select authentification mechanism below
+# to enable saslauthd
+
+START="no"
+
+# Which authentification mechanism should saslauthd use?
+#
+# These are some of the available options:
+# kerberos5 -- use Kerberos 5 (available if you compiled saslauthd with 
+#              MIT Kerberos5 support).
+# pam       -- use PAM (available if you compiled saslauthd with 
+#              Linux PAM support).
+# shadow    -- use the local shadow password file
+# sasldb    -- use the local sasldb database file
+# ldap      -- use LDAP (configuration is in /etc/saslauthd.conf) 
+#              (Available only if you compiled saslauthd with
+#              OpenLDAP support and with --enable-ldapdb configure switch).
+#
+# Alternatively, you can run /usr/sbin/pluginviewer to see which plugins 
+# are available.
+
+AUTHMECH=""
+
+# Add any aditional options you want to pass to saslauthd command line.
+# See man 8 saslauthd for more information
+
+OPTIONS=""
+
+# End /etc/sysconfig/saslauthd
+

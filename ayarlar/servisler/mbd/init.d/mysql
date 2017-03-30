@@ -1,0 +1,86 @@
+#!/bin/sh
+########################################################################
+# Begin /etc/init.d/mysql
+#
+# Description : Start MysSQL Server
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            mysql
+# Required-Start:      $network
+# Should-Start:        $remote_fs
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts MySQL server.
+# Description:         Starts MySQL server.
+# X-LFS-Provided-By:   BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: igor $
+#$Date: 2014-10-11 03:51:32 -0500 (Sat, 11 Oct 2014) $
+
+PIDFILE=/srv/mysql/`/bin/hostname`.pid
+
+case "$1" in
+   start)
+      log_info_msg "Starting MySQL daemon..."
+
+      # Make sure the mysql user can create a socket
+      mkdir -p /run/mysqld
+      chown mysql.mysql /run/mysqld
+
+      if [ -f "$PIDFILE" ]; then
+         if /bin/ps -e | grep `cat $PIDFILE` | grep mysqld >/dev/null ; then
+            log_warning_msg "\n   mysqld already running!" 
+            exit 0
+         else
+            rm -f "$PIDFILE"
+            if [ -f "$PIDFILE" ]; then
+               log_failure_msg2
+               exit 1
+            fi
+         fi
+      fi
+
+      /usr/bin/mysqld_safe --user=mysql 2>&1 >/dev/null &
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping MySQL daemon..."
+      killproc -p ${PIDFILE} /usr/sbin/mysqld
+      evaluate_retval
+      ;;
+
+   reload)
+      log_info_msg "Reloading MySQL ..."
+      killproc -p ${PIDFILE} /usr/sbin/mysqld -HUP
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      statusproc /usr/sbin/mysqld
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/mysql

@@ -1,0 +1,16 @@
+# Description: sistem servislerinin kontrol programı
+# URL: http://man7.org/linux/man-pages/man8/start-stop-daemon.8.html
+# Packager: milisarge
+# Depends on:
+
+name=start-stop-daemon
+version=1.0
+release=1
+source=(start-stop-daemon.c start-stop-daemon.8 ornek_servis makefile)
+
+build () {
+    make
+    install -d $PKG/{sbin,usr/share/man/man8}
+    install -m 755 $name $PKG/sbin/
+    install -m 644 $name.8 $PKG/usr/share/man/man8/
+}

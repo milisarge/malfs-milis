@@ -1,0 +1,67 @@
+#!/bin/sh
+########################################################################
+# Begin /etc/init.d/qpopper
+#
+# Description : Provide Post Office Protocol (POP3) services
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.2
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            qpopper
+# Required-Start:      $syslog $local_fs $network
+# Should-Start:        
+# Required-Stop:       $network
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts qpopper (POP3) process.
+# Description:         Starts qpopper (POP3) process.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: bdubbs $
+#$Date: 2012-04-18 21:23:42 -0500 (Wed, 18 Apr 2012) $
+
+CONFIG=/etc/mail/qpopper.conf
+QPOPPER=/usr/sbin/popper
+#PORT=110
+
+[ -x $QPOPPER ] || exit 0
+
+case "$1" in
+  start)
+     log_info_msg "Starting Qpopper daemon..."
+     
+     if [ ! -f $CONFIG ]; then
+        log_failure_msg2 "$CONFIG missing!"
+        exit 1
+     fi
+     
+     start_daemon $QPOPPER $PORT -f $CONFIG
+     evaluate_retval
+     ;;
+
+  stop)
+     log_info_msg "Stopping Qpopper..."
+     killproc $QPOPPER 
+     evaluate_retval
+     ;;
+
+  restart)
+    $0 stop
+    $0 start
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;    
+esac
+
+# End /etc/init.d/qpopper

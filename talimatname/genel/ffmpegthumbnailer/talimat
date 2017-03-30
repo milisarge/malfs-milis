@@ -9,16 +9,16 @@ release=1
 source=(https://github.com/dirkvdb/$name/archive/$version.tar.gz)
 
 build() {
-cd $name-$version
-mkdir -p build
-cd build
-cmake .. \
-      -DCMAKE_BUILD_TYPE=Release  \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_INSTALL_LIBDIR=lib  \
-      -DENABLE_GIO=ON \
-      -DENABLE_THUMBNAILER=ON
+	cd $name-$version
+	mkdir -p build
+	cd build
+	cmake .. \
+		-DCMAKE_BUILD_TYPE=Release  \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib  \
+		-DENABLE_GIO=ON \
+		-DENABLE_THUMBNAILER=ON
 
-make
-make DESTDIR=$PKG install
+	make
+	make DESTDIR=$PKG install
 }

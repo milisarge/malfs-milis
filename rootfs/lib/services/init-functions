@@ -1392,6 +1392,17 @@ klavye_ayar()
   loadkeys trq
 }
 ################################################################################
+# yerel_ayar()                                                 	           #
+#                                                                              #
+# Description : yerel ayarlama									               #
+#                                                                              #
+################################################################################
+yerel_ayar()
+{
+  export LC_ALL="tr_TR.UTF-8"
+  export LANG="tr_TR.UTF-8"
+}
+################################################################################
 # do_start_network()                                                           #
 #                                                                              #
 # Description: Start the network depending on what's available nothing, wicd   #

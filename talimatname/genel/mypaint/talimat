@@ -1,17 +1,22 @@
-# Description: A fast and easy painting application for digital painters, with brush dynamics
+# Description: hızlı ve kolay boyama uygulaması
 # URL: http://mypaint.intilinux.com/
-# Packagers: pierre at nutyx dot org
-# Depends on: lcms2 json-c python-gtk python-numpy python-protobuf scons swig
+# Packagers: milisarge
+# Depends on: desktop-file-utils gtk3 gegl babl lcms2 json-c python-cairo python-gobject python-gtk python-numpy python-protobuf scons swig libmypaint
 
 name=mypaint
-version=1.1.0
-release=2
-source=(http://download.gna.org/$name/$name-$version.tar.xz)
+version=1.3.0
+release=1
+source=()
 
 build ()
 { 
-cd $name-$version
-sed -i "s|'json|'json-c|" brushlib/SConscript
-scons
-scons prefix=$PKG/usr mandir=$PKG/usr/share/man install
+	if [ -d $DERLEME_KAYNAKDIZIN/$name ];then
+		cd $DERLEME_KAYNAKDIZIN/$name
+		git pull
+	else	
+		git clone https://github.com/mypaint/mypaint.git $DERLEME_KAYNAKDIZIN/$name
+	fi
+	cd $DERLEME_KAYNAKDIZIN/$name
+	scons prefix="/usr" enable_gegl=true use_sharedlib=yes
+	scons prefix="/usr" enable_gegl=true use_sharedlib=yes --install-sandbox="$PKG" "$PKG"
 }

@@ -1,0 +1,157 @@
+#!/bin/bash
+########################################################################
+# Begin autofs
+#
+# Description : Start daemon for automounting file systems
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.2
+#
+# Notes       : Updates to autofs distributed start script to make
+#               compatible with BLFS
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides: autofs
+# Required-Start: $network ypbind
+# Required-Stop: $network ypbind
+# Default-Start: 3 4 5
+# Default-Stop: 0 1 2 6
+# Short-Description: Automounts filesystems on demand
+# Description: Automounts filesystems on demand
+### END INIT INFO
+
+#
+# Location of the automount daemon and the init directory
+#
+DAEMON=/sbin/automount
+prog=`basename $DAEMON`
+MODULE="autofs4"
+DEVICE="autofs"
+confdir=/etc/sysconfig
+
+test -e $DAEMON || exit 0
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+export PATH
+
+#
+# load customized configuation settings
+#
+if [ -r $confdir/autofs ]; then
+   . $confdir/autofs
+fi
+
+. /lib/lsb/init-functions
+
+function start() {
+   log_info_msg "Starting $prog: "
+
+   # Make sure autofs4 module is loaded
+   if ! grep -q autofs /proc/filesystems
+   then
+      # Try load the autofs4 module fail if we can't
+      modprobe $MODULE >/dev/null 2>&1
+      if [ $? -eq 1 ]
+      then
+         log_failure_msg "Error: failed to load autofs4 module."
+         return 1
+      fi
+   elif ([ -f /proc/modules ] && lsmod) | grep -q autofs[^4]
+   then
+      # wrong autofs filesystem module loaded
+      log_failure_msg "Error: autofs kernel module is loaded, autofs4 required"
+      return 1
+   fi
+
+   # Check misc device
+   if [ -n "$USE_MISC_DEVICE" -a "x$USE_MISC_DEVICE" = "xyes" ]; then
+      sleep 1
+      if [ -e "/proc/misc" ]; then
+         MINOR=`awk "/$DEVICE/ {print \\$1}" /proc/misc`
+         if [ -n "$MINOR" -a ! -c "/dev/$DEVICE" ]; then
+            mknod -m 0600 /dev/$DEVICE c 10 $MINOR
+         fi
+      fi
+      if [ -x /sbin/restorecon -a -c /dev/$DEVICE ]; then
+         /sbin/restorecon /dev/$DEVICE
+      fi
+   else
+      if [ -c /dev/$DEVICE ]; then
+         rm /dev/$DEVICE
+      fi
+   fi
+
+   $prog $OPTIONS 
+   evaluate_retval
+}
+
+function stop() {
+   log_info_msg $"Stopping $prog: "
+   count=0
+   while [ -n "`pidof $prog`" -a $count -lt 15 ] ; do
+      killall -TERM $prog >& /dev/null
+      RETVAL=$?
+      [ $RETVAL = 0 -a -z "`pidof $prog`" ] || sleep 3
+      count=`expr $count + 1`
+   done
+   if [ -z "`pidof $prog`" ] ; then
+      log_success_msg2
+   else
+      log_failure_msg2
+   fi
+   return $RETVAL
+}
+
+function restart() {
+   stop
+   start
+}
+
+function reload() {
+   pid=`pidof $prog`
+   if [ -z $pid ]; then
+      log_failure_msg2 $"$prog not running"
+      RETVAL=1
+   else
+      kill -HUP $pid 2> /dev/null
+      log_success_msg2 $"Reloading maps"
+      RETVAL=0
+   fi
+   return $RETVAL
+}
+
+RETVAL=0
+
+case "$1" in
+   start)
+      start
+      ;;
+   forcestart)
+      OPTIONS="$OPTIONS --force"
+      start
+      ;;
+   stop)
+      stop
+      ;;
+   restart)
+      restart
+      ;;
+   forcerestart)
+      OPTIONS="$OPTIONS --force"
+      restart
+      ;;
+   reload)
+      reload
+      ;;
+   *)
+      echo $"Usage: $0 {start|forcestart|stop|restart|forcerestart|reload}"
+      exit 1;
+      ;;
+esac
+
+exit $?
+
+

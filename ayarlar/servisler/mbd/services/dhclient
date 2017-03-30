@@ -1,0 +1,119 @@
+#!/bin/sh
+# Begin services/dhclient
+
+# Origianlly based upon lfs-bootscripts-1.12 $NETWORK_DEVICES/if{down,up}
+# Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
+# Adapted for dhclient by DJ Lucas <dj@linuxfromscratch.org>
+# Update for LFS 7.0 by Ken Moffat <ken@linuxfromscratch.org>
+
+# Call with: IFCONFIG=<filename> /lib/services/dhclient <IFACE> <up | down>
+
+#$LastChangedBy: bdubbs $
+#$Date: 2014-08-27 13:01:33 -0500 (Wed, 27 Aug 2014) $
+
+. /lib/lsb/init-functions
+. $IFCONFIG
+
+PIDFILE=/run/dhclient-$1.pid
+LFILE=/var/lib/dhclient/dhclient-$1.leases
+
+getipstats()
+{
+   # Print the last 16 lines of dhclient.leases
+   sed -e :a -e '$q;N;17,$D;ba' ${LFILE}
+}
+
+# Make compatible with older versions of init-functions
+unset is_true
+
+is_true()
+{
+   [ "$1" = "1" ] || [ "$1" = "yes" ] || [ "$1" = "true" ] ||
+   [ "$1" = "y" ] || [ "$1" = "t" ]
+}
+
+case "$2" in
+   up)
+
+     if [ -e ${PIDFILE} ]; then
+        ps $(cat ${PIDFILE}) | grep dhclient >/dev/null
+        if [ "$?" = "0" ]; then
+           log_warning_msg "\n      dhclient appears to be running on $1"
+           exit 0
+        else
+           rm ${PIDFILE}
+        fi
+     fi
+
+      log_info_msg "\n     Starting dhclient on the $1 interface..."
+
+      /sbin/dhclient -lf ${LFILE} -pf ${PIDFILE} $DHCP_START $1
+
+      if [ "$?" != "0" ]; then
+        log_failure_msg2
+        exit 1
+      fi
+
+      # Print the assigned settings if requested
+      if  is_true "$PRINTIP"  -o  is_true "$PRINTALL"; then
+        # Get info from dhclient.leases file
+
+        IPADDR=`getipstats | grep "fixed-address" | \
+          sed 's/ fixed-address //' | \
+          sed 's/\;//'`
+
+        NETMASK=`getipstats | grep "subnet-mask" | \
+          sed 's/ option subnet-mask //' | \
+          sed 's/\;//'`
+
+        GATEWAY=`getipstats | grep "routers" | \
+          sed 's/ option routers //' | \
+          sed 's/\;//'`
+
+        DNS=`getipstats | grep "domain-name-servers" | \
+          sed 's/ option domain-name-servers //' | \
+          sed 's/\;//' | sed 's/,/ and /'`
+
+        if [ "$PRINTALL" = "yes" ]; then
+           # This is messy, the messages are on one very long
+           # line on the screen and in the log
+           log_info_msg "           DHCP Assigned Settings for $1:"
+           log_info_msg "           IP Address:      $IPADDR"
+           log_info_msg "           Subnet Mask:     $NETMASK"
+           log_info_msg "           Default Gateway: $GATEWAY"
+           log_info_msg "           DNS Server:      $DNS"
+        else
+           log_info_msg " IP Addresss:""$IPADDR"
+        fi
+      fi
+
+      log_success_msg2
+   ;;
+
+   down)
+      if [ ! -e ${PIDFILE} ]; then
+         log_warning_msg "\n     dhclient doesn't appear to be running on $1"
+         exit 0
+      fi
+
+      log_info_msg "\n     Stopping dhclient on the $1 interface..."
+
+      /sbin/dhclient -r -lf ${LFILE} -pf ${PIDFILE} $DHCP_STOP $1
+
+      if [ -e ${PIDFILE} ]; then 
+         ps $(cat ${PIDFILE}) | grep dhclient >/dev/null
+         if [ "$?" != "0" ]; then
+            rm -f ${PIDFILE}
+         fi
+      fi
+
+      evaluate_retval
+   ;;
+
+   *)
+      echo "Usage: $0 [interface] {up|down}"
+      exit 1
+   ;;
+esac
+
+# End services/dhclient

@@ -1,0 +1,66 @@
+#!/bin/sh
+########################################################################
+# Begin /etc/init.d/postgresql
+#
+# Description : Start PostgreSQL Server
+#
+# Author      : Ken Moffat - ken@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+# Notes       : Based on the earlier version by Gerard Beekmans
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            PostgreSQL
+# Required-Start:      $network
+# Should-Start:        $remote_fs
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts PostgreSQL server.
+# Description:         Starts PostgreSQL server.
+# X-LFS-Provided-By:   BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+#$LastChangedBy: krejzi $
+#$Date: 2013-05-12 11:47:06 -0500 (Sun, 12 May 2013) $
+
+case "$1" in
+   start)
+      log_info_msg "Starting PostgreSQL daemon..."
+
+      install -dm755 -o postgres -g postgres /run/postgresql
+
+      su - postgres -c '/usr/bin/pg_ctl start -W -D /srv/pgsql/data \
+                         -l /srv/pgsql/data/logfile -o "-i" '
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping PostgreSQL daemon..."
+      su - postgres -c "/usr/bin/pg_ctl stop -m smart -D /srv/pgsql/data"
+      evaluate_retval
+      ;;
+
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
+
+   status)
+      su - postgres -c "/usr/bin/pg_ctl status -D /srv/pgsql/data"
+      ;;
+
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
+esac
+
+# End /etc/init.d/postgresql
