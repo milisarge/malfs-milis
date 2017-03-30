@@ -1,6 +1,7 @@
 # Description: GNU Libidn, Stringprep, Punycode ve IDNA 2003 teknik özelliklerinin tam olarak belgelendirilmiş bir uygulamasıdır.
 # URL: http://www.gnu.org/software/libidn/
 # Packager: milisarge
+# Depends on:
 
 name=libidn
 version=1.32
@@ -10,10 +11,13 @@ source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
 cd $name-$version
+
 ./configure --prefix=/usr --disable-static \
 --mandir=/usr/share/man --infodir=/usr/share/info
+
 make
 make DESTDIR=$PKG install
+
 rm $PKG/usr/share/info/{dir,libidn-components.png}
 # Doc
 find doc -name "Makefile*" -delete
