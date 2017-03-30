@@ -1,6 +1,6 @@
-# Description: Portable abstraction library for DVD decryption
+# Description: DVD şifre çözme için portatif soyutlama kütüphanesi
 # URL: http://www.videolan.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: doxygen 
 
 name=libdvdcss
