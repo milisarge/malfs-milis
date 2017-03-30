@@ -1,5 +1,5 @@
-# Description: X virtual keyboard library.
-# URL: URL: https://www.yoctoproject.org/tools-resources/projects/matchbox
+# Description: X sanal klavye kitaplığı.
+# URL: https://www.yoctoproject.org/tools-resources/projects/matchbox
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: xorg-libxtst 
 
