@@ -1,7 +1,7 @@
-# Description : Uygulamaların bir menüyü Unity Menü çubuğuna vermesine izin veren bir kütüphane (Gtk2 kitaplığı).
-# URL : https://launchpad.net/libappindicator
-# Packager : pierre at nutyx dot org
-# Depends on : gtk2 glib gnome-doc-utils libindicator-gtk2 libdbusmenu-gtk2 libdbusmenu-glib gobject-introspection vala python-gtk python-gobject2 dbus-glib
+# Description: Uygulamaların bir menüyü Unity Menü çubuğuna vermesine izin veren bir kütüphane (Gtk2 kitaplığı).
+# URL: https://launchpad.net/libappindicator
+# Packager: milisarge
+# Depends on: gtk2 glib gnome-doc-utils libindicator-gtk2 libdbusmenu-gtk2 libdbusmenu-glib gobject-introspection vala python-gtk python-gobject2 dbus-glib
 
 run=(libindicator-gtk2 libdbusmenu-gtk2 libdbusmenu-glib)
 
