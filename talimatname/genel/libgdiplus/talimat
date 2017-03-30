@@ -1,7 +1,6 @@
-# Description: An Open Source Implementation of the GDI+ API
+# Description: GDI + API'nin Açık Kaynak Uygulaması
 # URL: http://www.mono-project.com/
-# Maintainer: NuTyX core team
-# Packager: thierryn1 at hispeed dot ch
+# Packager: milisarge
 # Depends on: libtiff cairo giflib glib libexif
  
 name=libgdiplus
