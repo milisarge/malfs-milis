@@ -1,6 +1,6 @@
-# Description: A library to parse an EXIF file and read the data from those tags
+# Description: Bir EXIF dosyasını ayrıştırmak ve bu etiketlerdeki verileri okumak için bir kitaplık
 # URL: http://libexif.sourceforge.net
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libexif
