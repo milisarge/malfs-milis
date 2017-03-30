@@ -1,6 +1,6 @@
-# Description: The libcroco package contains a standalone CSS2 parsing and manipulation library.
+# Description: Libcroco paketi, tek başına bir CSS2 ayrıştırma ve değiştirme kütüphanesi içerir.
 # URL: https://launchpad.net/libcroco
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libxml2 glib 
 
 name=libcroco
