@@ -1,6 +1,6 @@
-# Description: Implementation of double-array structure for representing trie, as proposed by Junichi Aoe
+# Description: Junichi Aoe tarafından önerilen, bir tür dijital arama ağacı olan trie'yi temsil etmek için çift dizili yapının uygulanması
 # URL: http://linux.thai.net/~thep/datrie/datrie.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 name=libdatrie
 version=0.2.9
