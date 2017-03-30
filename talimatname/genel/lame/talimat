@@ -1,6 +1,6 @@
-# Description: MP3 encoder, an MP3 frame analyzer useful for creating, analyzing compressed audio files.
+# Description: MP3 kodlayıcı, sıkıştırılmış ses dosyalarını analiz etmek için kullanışlı bir MP3 çerçeve analizörü.
 # URL: http://lame.sourceforge.net/index.php
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libsndfile nasm 
 name=lame
 version=3.99.5
