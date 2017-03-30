@@ -1,4 +1,4 @@
-# Description: A library to manipulate pictures metadata
+# Description: Resim metaverilerini değiştirmek için bir kütüphane
 # URL: http://www.kde.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: exiv2 qt5 kf5-extra-cmake-modules
