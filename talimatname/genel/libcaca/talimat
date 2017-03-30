@@ -1,6 +1,6 @@
-# Description: Color ASCII Art Library
+# Description: Renkli ASCII Sanat Kütüphanesi
 # URL: http://libcaca.zoy.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: imlib2 
 
 name=libcaca
