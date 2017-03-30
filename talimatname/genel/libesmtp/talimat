@@ -1,7 +1,8 @@
-# Description: Libraries used by some programs to manage email submission to a mail transport layer.
+# Description: Bazı programlar tarafından posta aktarım katmanına e-posta göndermeyi yönetmek için kullanılan kitaplıklar.
 # URL: http://www.stafford.uklinux.net/libesmtp/
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=libesmtp
 version=1.0.6
 release=1
