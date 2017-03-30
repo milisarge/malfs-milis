@@ -1,4 +1,4 @@
-# Description: Library for the dynamic creation of images by programmers
+# Description: Programcılar tarafından resimlerin dinamik oluşturulması için kütüphane
 # URL: http://www.libgd.org/
 # Packager: milisarge
 # Depends on: xorg-fontconfig xorg-libxpm libwebp
