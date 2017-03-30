@@ -1,6 +1,6 @@
-# Description: A library that read information about processes and the running system
+# Description: İşlemler ve çalışan sistem hakkında bilgi içeren bir kütüphane
 # URL: http://www.gnu.org/directory/libs/LibGTop.html
-# Packager: b at juglas dot name
+# Packager: milisarge
 # Depends on: gtk-doc intltool gobject-introspection 
 
 name=libgtop
