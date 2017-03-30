@@ -1,6 +1,6 @@
-# Description: libguestfs is a set of tools for accessing and modifying virtual machine (VM) disk images
+# Description: Libguestfs, sanal makine (VM) disk görüntülerine erişmek ve değiştirmek için kullanılan bir takım araçtır
 # URL: http://libguestfs.org
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: ocaml ocaml-findlib python ruby lua cdrkit qemu augeas libxml2 pcre db systemtap fuse gdisk bash-completion libconfig
 
 
