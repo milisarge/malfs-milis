@@ -1,4 +1,4 @@
-# Description: Cross-platform audio output library and plugins.
+# Description: Çapraz platform ses çıkışı kitaplığı ve eklentileri.
 # URL: http://www.xiph.org/ao/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: alsa-lib
