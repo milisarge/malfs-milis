@@ -1,4 +1,4 @@
-# Description: implementation of the XDG sound theme and name specifications.
+# Description: XDG ses temasının ve isim özelliklerinin uygulanması.
 # URL: http://0pointer.de/lennart/projects/libcanberra/
 # Packager: milisarge
 # Depends on: libvorbis
