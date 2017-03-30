@@ -1,4 +1,4 @@
-# Description : Common code and data for many KDE games
+# Description : Birçok KDE oyununda ortak kod ve veriler
 # URL : https://projects.kde.org/projects/kde/kdegames/libkdegames
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : kf5-extra-cmake-modules kf5-kdoctools kf5-kdelibs4support kf5-kdeclarative kf5-kdnssd kf5-knewstuff openal
