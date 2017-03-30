@@ -1,4 +1,4 @@
-# Description: Library for display servers and other applications that need to deal with input devices
+# Description: Görüntüleme sunucuları ve giriş aygıtlarıyla uğraşmak zorunda kalan diğer uygulamalar için kitaplık
 # URL:http://www.freedesktop.org/wiki/Software/libinput/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libevdev mtdev libwacom
