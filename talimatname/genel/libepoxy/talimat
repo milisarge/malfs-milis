@@ -1,6 +1,6 @@
-# Description: Library for handling OpenGL function pointer management
+# Description: OpenGL işlev göstergesi yönetimi ile ilgili kitaplık
 # URL: https://github.com/anholt/libepoxy
-# Packager:    pierre at nutyx dot fr
+# Packager: milisarge
 # Depends on: glibc xorg-mesa python xorg-util-macros 
 
 name=libepoxy
