@@ -1,11 +1,13 @@
-# Description: Designed for internationalized string handling based on the Stringprep, 
+# Description: GNU Libidn, Stringprep, Punycode ve IDNA 2003 teknik özelliklerinin tam olarak belgelendirilmiş bir uygulamasıdır.
 # URL: http://www.gnu.org/software/libidn/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+
 name=libidn
 version=1.32
 release=1
 
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
 build() {
 cd $name-$version
 ./configure --prefix=/usr --disable-static \
