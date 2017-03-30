@@ -1,6 +1,6 @@
-# Description: Lightweight C library that eases the writing of UNIX daemons
+# Description: UNIX programlarını yazmayı kolaylaştıran hafif C kütüphanesi
 # URL: http://0pointer.de/lennart/projects/libdaemon/ 
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libdaemon
