@@ -1,6 +1,6 @@
-# Description : Library that provides a GTK2 implementation of the DBusMenu protocol
-# URL: https: https://launchpad.net/dbusmenu
-# Packager: pierre at nutyx dot org, fanch at nutyx dot org, tnut at nutyx dot org
+# Description: DBusMenu protokolünün GTK2 uygulaması olan kitaplık
+# URL: https://launchpad.net/dbusmenu
+# Packager: milisarge
 # Depends on: python gobject-introspection gtk2 gtk3 libdbusmenu-glib vala gnome-doc-utils atk libepoxy json-glib
 
 name=libdbusmenu-gtk2
