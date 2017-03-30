@@ -1,6 +1,6 @@
-# Description: A general purpose crypto library based on the code used in GnuPG.
+# Description: GnuPG'de kullanılan kodu temel alan genel amaçlı bir kripto kütüphanesi.
 # URL:  http://ftp.gnupg.org/gcrypt/libgcrypt/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libgpg-error
 
 name=libgcrypt
