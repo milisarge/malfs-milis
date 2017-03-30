@@ -1,7 +1,7 @@
 # Description: Libfm-ekstra paket kütüphane ve önbelleği 1.0.0-menü libexec menü-cache-gen tarafından gerekli diğer dosyaları içerir.
 # URL: http://pcmanfm.sourceforge.net/
 # Packager: milisarge
-# Depends on: glib,intltool,perl-xml-parser
+# Depends on: glib intltool perl-xml-parser
 
 name=libfm-extra
 _name=libfm
