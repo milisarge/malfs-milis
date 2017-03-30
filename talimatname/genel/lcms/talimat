@@ -1,6 +1,6 @@
-# Description: provides the management of colors for other programs
+# Description: Diğer programlar için renklerin yönetimini sağlar
 # URL: http://www.littlecms.com/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libtiff libjpeg-turbo 
 
 name=lcms
