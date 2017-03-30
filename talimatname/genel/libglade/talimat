@@ -1,6 +1,6 @@
-# Description: Allows you to load glade interface files in a program at runtime
+# Description: Glade arayüz dosyalarını bir programda çalışma zamanında yüklemenize izin verir.
 # URL: http://www.jamesh.id.au/software/libglade/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk2 libxml2
 
 name=libglade
