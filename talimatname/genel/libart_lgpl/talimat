@@ -1,6 +1,7 @@
-# Description: A library for high-performance 2D graphics.
+# Description: Yüksek performanslı 2D grafikler için bir kütüphane.
 # URL: http://www.levien.com/libart/
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=libart_lgpl
 version=2.3.21
