@@ -1,6 +1,6 @@
-# Description: Implementation of the iCalendar protocols and data formats.
+# Description: ICalendar protokollerinin ve veri formatlarının uygulanması.
 # URL: http://sourceforge.net/projects/freeassociation/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake
 
 name=libical
