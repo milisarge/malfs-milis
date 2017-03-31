@@ -1,4 +1,4 @@
-# Description: Library for password quality checking and generating random passwords
+# Description: Şifre kalite kontrolü ve rastgele şifreler üreten kütüphane.
 # URL: https://fedorahosted.org/libpwquality/
 # Packager: alihan-ozturk@hotmail.com
 # Depends on: python cracklib
