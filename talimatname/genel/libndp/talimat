@@ -1,7 +1,7 @@
-# Description: The libndp package provides a wrapper for IPv6 Neighbor Discovery Protocol. 
+# Description: Libndp paketi, IPv6 Komşu Bulma Protokolü için bir sarıcı sağlar.
 # URL: http://libndp.org
-# Maintainer: iri Pirko jiri at resnulli dot us
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=libndp
 version=1.5
