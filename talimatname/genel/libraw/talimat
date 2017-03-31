@@ -1,4 +1,4 @@
-# Description: For reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, etc)
+# Description: Dijital fotoğraf kameralarından elde edilen RAW dosyaları okumak için (CRW / CR2, NEF, RAF, DNG, vb.)
 # URL: http://www.libraw.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libjpeg-turbo jasper lcms2 
