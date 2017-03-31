@@ -32,6 +32,3 @@ build(){
         $PKG/usr/lib/pkgconfig/libmediainfo.pc
 }
 
-
-
-# NuTyX Pkgfile (http://nutyx.org)
