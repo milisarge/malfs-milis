@@ -1,6 +1,6 @@
-# Description: Library for decoding MPEG-1 and MPEG-2 video streams
+# Description: MPEG-1 ve MPEG-2 video akışlarını çözmek için kullanılan kitaplık
 # URL: http://mpg123.de/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libmpeg2
