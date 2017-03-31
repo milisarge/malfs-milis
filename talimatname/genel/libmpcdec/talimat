@@ -1,6 +1,6 @@
-# Description: Musepack decoding library
+# Description: Musepack kod çözme kütüphanesi
 # URL: http://www.musepack.net/index.php?pg=home
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: nasm 
 
 name=libmpcdec
