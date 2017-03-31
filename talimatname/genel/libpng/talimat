@@ -1,6 +1,6 @@
-# Description: Libraries used by other programs for reading and writing PNG files.
+# Description: Diğer programlar tarafından PNG dosyalarını okuma ve yazma için kullanılan kütüphaneler.
 # URL: http://www.libpng.org/pub/png/libpng.html
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libpng
