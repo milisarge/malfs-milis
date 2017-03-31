@@ -1,0 +1,16 @@
+# Description: temel ağ uygulamaları
+# URL: http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils
+# Packager: milisarge
+# Depends on: libcap openssl libidn
+
+name=iputils
+version=s20161105
+release=1
+source=(https://github.com/$name/$name/archive/$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make USE_NETTLE=no USE_GNUTLS=no CCOPTOPT="$CFLAGS"
+	install -dm755 "${PKG}"/usr/bin
+	install -m755 arping clockdiff ping rarpd rdisc tftpd tracepath "${PKG}"/usr/bin/
+}
