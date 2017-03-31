@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.4"
+versiyon="0.9.5"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -94,6 +94,7 @@ paket_sil(){
 	fi
 	if [ "$tpk" = "evet" ] && [ -d "$talimatname_dizin/temel/$1" ];then
 		ryaz 31 "$1 temel sistem paketidir.Silinemez!!!"
+		hataloglama "$1 temel sistem paketidir.Silinemez!!!"
 	else
 		kkont=`kurulu_kontrol "$1"`
 		if [ "$kkont" = "kurulu" ];then
@@ -133,9 +134,11 @@ paket_sil(){
 				
 			else
 				ryaz 31 "kritik mesaj:kurulanlar dosyası yok." 
+				hataloglama "kritik mesaj:kurulanlar dosyası yok." 
 			fi
 		else
 			ryaz 32 "paket zaten kurulu değil!"
+			hataloglama "paket zaten kurulu değil!"
 		fi
 	fi
 
@@ -223,6 +226,7 @@ derleme_listyap(){
 		fi
 	else
 		ryaz 31 "$1 talimatı bulunamadı."
+		hataloglama "$1 talimatı bulunamadı."
 		exit 1 
 	fi
 }
@@ -422,6 +426,7 @@ surum_kontrol(){
 				ryaz 33 "$1 sürüm güncellemesi yapıldı"
 			else
 				ryaz 31 "$1 sürüm güncellemesi yapılmadı"
+				hataloglama "$1 sürüm güncellemesi yapılmadı"
 			fi
 		fi
 	fi
@@ -462,6 +467,7 @@ devir_kontrol(){
 				ryaz 33 "$1 devir güncellemesi yapıldı"
 			else
 				ryaz 31 "$1 devir güncellemesi yapılmadı"
+				hataloglama "$1 devir güncellemesi yapılmadı"
 			fi
 		fi
 	fi 
@@ -510,6 +516,7 @@ paket_derle(){
 		rm -r tmp."$1"
 	else
 		ryaz 31 "talimat dosyası bulunamadı."
+		hataloglama "talimat dosyası bulunamadı."
 	fi
 
 }
@@ -598,6 +605,7 @@ log_analiz(){
 		cat $logdosya | grep "$zaman" | grep "$durum" | cut -d' ' -f3
 	else
 		ryaz 31 "mps.log bulunamadı!"
+		hataloglama "mps.log bulunamadı!"
 	fi
 }
 
@@ -631,6 +639,7 @@ kurban_kurtar(){
 		rm -f /tmp/$paket.sil
 	else
 		ryaz 31 "kurulan paket yok!"
+		hataloglama "kurulan paket yok!"
 	fi
 }
 
@@ -671,6 +680,9 @@ logdizin_kontrol(){
 	fi
 	if [ ! -f $kokdizin$LOGDIZIN/mps.log ];then
 		touch $kokdizin$LOGDIZIN/mps.log
+	fi
+	if [ ! -f $kokdizin$LOGDIZIN/mps-hata.log ];then
+		touch $kokdizin$LOGDIZIN/mps-hata.log
 	fi
 }
 
@@ -755,6 +767,7 @@ tarihce_yukle(){
 		mv kur.liste kur_iptal.liste	
 	else
 		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
+		hataloglama "ilgili tarihce dosyası bulunamadı!"
 	fi
 }
 
@@ -764,6 +777,7 @@ tarihce_sil(){
 		rm -f $TARIHCE_DIZIN/"$1-pkvt.tar.lz"
 	else
 		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
+		hataloglama "ilgili tarihce dosyası bulunamadı!"
 	fi
 }
 
@@ -776,12 +790,18 @@ sunucu_ayarla(){
 		mps -sun
 	else
 		ryaz 31 "Tanımsız paket sunucusu!"
+		hataloglama "Tanımsız paket sunucusu!"
 	fi
 }
 
 loglama(){
 	logdizin_kontrol
 	echo "$(date +'%F %T') $1" >> "$kokdizin/$LOGDIZIN/mps.log"
+}
+
+hataloglama(){
+	logdizin_kontrol
+	echo "$(date +'%F %T') $1" >> "$kokdizin/$LOGDIZIN/mps-hata.log"
 }
 
 dosyadan_talimat_islem(){
@@ -803,6 +823,7 @@ dosyadan_talimat_islem(){
 	fi
 	if [ ! -f $dosya ];then
 		ryaz 31 "$dosya talimat dosyasi yok!"
+		hataloglama "$dosya talimat dosyasi yok!"
 		exit 1
 	fi
 	
@@ -810,6 +831,7 @@ dosyadan_talimat_islem(){
 	paketisim=`grep -ri 'name=' $dosya | cut -d'=' -f 2`
 	if [ ! -n "$paketisim" ]; then
 		ryaz 31 "paket ismi degiskeni bulunamadı!"
+		hataloglama "paket ismi degiskeni bulunamadı!"
 		exit 1
 	fi
 	if [ ! -f /root/talimatname/genel/$paketisim ];then
@@ -818,6 +840,7 @@ dosyadan_talimat_islem(){
 		ryaz 32 "$paketisim talimatı hazırlandı."
 	else
 		ryaz 31 "$paketisim talimatı zaten talimatnamede var!"
+		hataloglama "$paketisim talimatı zaten talimatnamede var!"
 	fi
 }
 
@@ -920,6 +943,7 @@ servis_kur(){
 		 ryaz 32 "$1 servisi kuruldu"
 	else
 		 ryaz 31 "$1 servisi kurulum olumsuz!!!"
+		 hataloglama "$1 servisi kurulum olumsuz!!!"
 	fi
 	cd -
 }
@@ -931,6 +955,7 @@ servis_sil(){
 		 ryaz 32 "$1 servisi silindi"
 	else
 		 ryaz 31 "$1 servisi silme olumsuz!!!"
+		 hataloglama "$1 servisi silme olumsuz!!!"
 	fi
 	cd -
 }
@@ -951,6 +976,7 @@ paketvt_guncelle(){
 		exit 1
 	fi
 	ryaz 31 "paket veritabanı guncelleme olumsuz."
+	hataloglama "paket veritabanı guncelleme olumsuz."
 }
 
 talimat_bilgi(){
@@ -971,6 +997,7 @@ sunucu_kontrol(){
 		ryaz 32 "paket sunucu aktif"
 	else
 		ryaz 31 "sunucu erişim dışı"
+		hataloglama "sunucu erişim dışı"
 		exit 1
 	fi
 }	
@@ -1033,12 +1060,14 @@ paket_indir(){
 		wget  -nc -q --show-progress -P "$paketdepo" "$sunucu$cpaket"
 		if [[ "$?" != 0 ]]; then
 			ryaz 31 "indirme hatalı"
+			hataloglama "indirme hatalı"
 		else
 			ryaz 34 "$1 indirildi"
 		fi
 		mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
 		if [ "$ekontdeg" != "$mkontdeg" ];then
 			ryaz 31 "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
+			hataloglama "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
 			rm -f "$paketdepo$pkt" 
 			paket_indir "$1" 
 		fi
@@ -1171,6 +1200,7 @@ ayarlar() {
 					bash $pkt/$2.kur-kos
 				else
 					ryaz 31 "$2 kur-kos yok!"
+					hataloglama "$2 kur-kos yok!"
 				fi ;;
 			koskur)
 				local pkt
@@ -1179,6 +1209,7 @@ ayarlar() {
 					bash $pkt/$2.kos-kur
 				else
 					ryaz 31 "$2 kos-kur yok!"
+					hataloglama "$2 kos-kur yok!"
 				fi ;;
 			silkos)
 				local pkt
@@ -1186,7 +1217,8 @@ ayarlar() {
 				if [ -f  $pkt/$2.sil-kos ];then
 					bash $pkt/$2.sil-kos
 				else
-					ryaz 31 "$2 kur-kos yok!"
+					ryaz 31 "$2 sil-kos yok!"
+					hataloglama "$2 sil-kos yok!"
 				fi ;;
 			kossil)
 				local pkt
@@ -1194,27 +1226,32 @@ ayarlar() {
 				if [ -f  $pkt/$2.kos-sil ];then
 					bash $pkt/$2.kos-sil
 				else
-					ryaz 31 "$2 kur-kos yok!"
+					ryaz 31 "$2 kos-sil yok!"
+					hataloglama "$2 kos-sil yok!"
 				fi ;;
 			-kdl)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
+					hataloglama "paket ismi eksik"
 					exit 1
 				fi
 				kurulum_dosya_listele "$2" ;;	
 			-pak|--paketle)
 				if [ ! "$2" ]; then
 					ryaz 31 "paketlenecek dizin ismi eksik"
+					hataloglama "paketlenecek dizin ismi eksik"
 					exit 1
 				fi
 				yeniden_paketle "$2" ;;
 			-psk|--paksiskur)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket liste yok"
+					hataloglama "paket liste yok"
 					exit 1
 				fi
 				if [ ! "$3" ]; then
 					ryaz 31 "hedef dizin yok"
+					hataloglama "hedef dizin yok"
 					exit 1
 				fi
 				sistem_kur "$2" "$3" ;;
@@ -1223,6 +1260,7 @@ ayarlar() {
 			-os|--pkos)
 				if [ ! "$2" ]; then
 					ryaz 31 "silme listesi yok"
+					hataloglama "silme listesi yok"
 					exit 1
 				fi
 				paket_sil_oto "$2" ;;	
@@ -1248,6 +1286,7 @@ ayarlar() {
 			sun)
 				if [ ! "$2" ]; then
 					ryaz 31 "sunucu bilgi eksik"
+					hataloglama "sunucu bilgi eksik"
 					exit 1
 				fi
 				sunucu_ayarla  "$2" ;;
@@ -1264,6 +1303,7 @@ ayarlar() {
 			-to)
 				if [ ! "$2" ]; then
 					ryaz 31 "talimat ismi eksik"
+					hataloglama "talimat ismi eksik"
 					exit 1
 				fi
 				talimat_olustur "$2" ;;
@@ -1272,11 +1312,13 @@ ayarlar() {
 				logyardim="mps log zaman durum (ör: mps log 2017-01-01 silindi)"
 				if [ ! "$2" ]; then
 					ryaz 31 "zaman parametresi eksik"
+					hataloglama "zaman parametresi eksik"
 					ryaz 32 $logyardim
 					exit 1
 				fi
 				if [ ! "$3" ]; then
 					ryaz 31 "durum parametresi eksik"
+					hataloglama "durum parametresi eksik"
 					ryaz 32 $logyardim
 					exit 1
 				fi
@@ -1295,6 +1337,7 @@ ayarlar() {
 			-g|--pkgu)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
+					hataloglama "paket ismi eksik"
 					exit 1
 				fi
 				paket_guncelle "$2";;
@@ -1302,12 +1345,14 @@ ayarlar() {
 			-go|--pkgo)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
+					hataloglama "paket ismi eksik"
 					exit 1
 				fi
 				paket_guncelle_oto "$2";;
 			-kk|--kurulu-kontrol)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
+					hataloglama "paket ismi eksik"
 					exit 1
 				fi
 				ryaz 31 `kurulu_kontrol "$2"`;;
@@ -1336,6 +1381,7 @@ ayarlar() {
 			-try)
 				if [ ! "$2" ]; then
 					ryaz 31 "tarihce dosyasi eksik $1"
+					hataloglama "tarihce dosyasi eksik $1"
 					exit 1
 				fi
 					tarihce_yukle "$2"
@@ -1345,6 +1391,7 @@ ayarlar() {
 			-trs)
 				if [ ! "$2" ]; then
 					ryaz 31 "parametre eksik $1"
+					hataloglama "parametre eksik $1"
 					exit 1
 				fi
 					tarihce_sil "$2"
@@ -1411,12 +1458,15 @@ if [ `id -u` = 0 ] ; then
 					fi
 				else
 					ryaz 31 "paket sunucuda yok!"
+					hataloglama "paket sunucuda yok!"
 				fi
 			else
 				ryaz 31 "$2 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
+				hataloglama "$2 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 			fi
 		else
 			ryaz 32 "$2 paketi zaten kurulu!"
+			hataloglama "$2 paketi zaten kurulu!"
 		fi
 		exit 1
 	fi
