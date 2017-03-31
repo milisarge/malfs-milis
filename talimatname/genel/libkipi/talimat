@@ -1,7 +1,7 @@
-# Description : An interface to use kipi-plugins from a KDE application
-# URL : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
-# Pakager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules kf5-kxmlgui hicolor-icon-theme
+# Description: Bir KDE uygulamasından kipi eklentileri kullanmak için bir arayüz
+# URL: https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
+# Pakager: alihan-ozturk28@hotmail.com
+# Depends on: kf5-extra-cmake-modules kf5-kxmlgui hicolor-icon-theme
 
 name=libkipi
 version=16.08.2
