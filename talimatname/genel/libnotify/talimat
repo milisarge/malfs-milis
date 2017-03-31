@@ -1,6 +1,6 @@
-# Description: Desktop notification library
+# Description: Masaüstü bildirim kitaplığı
 # URL: http://www.galago-project.org/news/index.php
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gobject-introspection gdk-pixbuf gtk3
 
 name=libnotify
