@@ -1,6 +1,6 @@
-# Description: A system-independent interface for user-level packet capture
+# Description: Kullanıcı düzeyinde paket yakalamak için sistemden bağımsız bir arayüz
 # URL: http://www.tcpdump.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libnl libusb 
 
 name=libpcap

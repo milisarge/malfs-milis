@@ -1,4 +1,4 @@
-# Description: OTR messaging allows you to have private conversations over instant messaging.
+# Description: OTR mesajlaşma, sohbet mesajı üzerinden özel konuşmalar yapmanıza olanak tanır.
 # URL: http://www.cypherpunks.ca/otr/
 # Packager: milisarge
 # Depends on: libusb libgcrypt

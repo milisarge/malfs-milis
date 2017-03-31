@@ -1,6 +1,6 @@
-# Description: 	A simple way for applications to take actions based on a system/user-specified paper size
-# URL:         	http://ftp.debian.org/debian/pool/main/libp/libpaper
-# Packager:		berlius at nutyx dot com
+# Description: 	Uygulamalar için bir sistem / kullanıcı tarafından belirtilen kağıt boyutuna dayalı işlemleri basit bir şekilde yapabilirsiniz.
+# URL: http://ftp.debian.org/debian/pool/main/libp/libpaper
+# Packager: milisarge
 # Depends on:  	
 
 name=libpaper

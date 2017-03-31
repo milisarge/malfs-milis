@@ -1,8 +1,8 @@
-# Description: Small library for C application development
-# URL: URL: https://launchpad.net/libnih
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: dbus 
+# Description: C uygulaması geliştirme için küçük kütüphane
+# URL: https://launchpad.net/libnih
+# Packager: milisarge
+# Depends on: dbus
+
 name=libnih
 version=1.0.3
 release=1

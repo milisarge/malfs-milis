@@ -1,7 +1,8 @@
-# Description: Used to make X.509 certificates as well as making the CMS (Cryptographic Message Syntax)
+# Description: Libksba, X.509 sertifikaları, CMS verileri ve ilgili nesnelerle çalışmanın görevlerini daha kolay hale getiren bir kütüphanedir (Şifreleme Mesaj Sözdizimi).
 # URL: http://www.gnupg.org/related_software/libksba/
-# Packager: pierre at nutyx dot org
-# Depends on: libgpg-error 
+# Packager: milisarge
+# Depends on: libgpg-error
+
 name=libksba
 version=1.3.3
 release=1

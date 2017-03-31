@@ -1,7 +1,9 @@
-# Description: Used by programs wanting to read and write of files Multiple-image Network Graphics (MNG)
+# Description: Çoklu-Görüntü Ağ Grafikleri okumak, görüntülemek, yazmak ve incelemek için referans kitaplığı.
+MNG popüler PNG resim formatının animasyon uzantısıdır.
 # URL: http://sourceforge.net/projects/libmng/
-# Packager: tnut at nutyx dot org
-# Depends on: libjpeg-turbo lcms 
+# Packager: milisarge
+# Depends on: libjpeg-turbo lcms
+
 name=libmng
 version=2.0.3
 release=1

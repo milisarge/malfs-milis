@@ -1,4 +1,4 @@
-# Description: An implementation of the IETF's draft ICE (for p2p UDP data streams)
+# Description: IETF'nin ICE taslağının bir uygulaması (p2p UDP veri akışları için)
 # URL: http://people.suug.ch/~tgr/libnl
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: glib gstreamer1-plugins-base 

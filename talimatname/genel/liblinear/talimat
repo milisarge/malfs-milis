@@ -1,6 +1,7 @@
-# Description: Library for learning linear classifiers for large scale applications.
+# Description: Büyük ölçekli uygulamalar için doğrusal sınıflayıcı öğrenmek için kütüphane.
 # URL: http://www.csie.ntu.edu.tw/~cjlin/liblinear/
-# Packager: tnut at nutyx dot org
+# Packager:milisarge
+# Depends on:
 
 name=liblinear
 version=2.1

@@ -1,6 +1,7 @@
-# Description: Library for applications dealing with netlink sockets
+# Description: Netlink soketleri ile ilgili uygulamalar için kitaplık
 # URL: http://people.suug.ch/~tgr/libnl
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=libnl
 version=3.2.27

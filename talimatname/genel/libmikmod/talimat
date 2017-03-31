@@ -1,4 +1,4 @@
-# Description: A portable sound library
+# Description: Taşınabilir bir ses kütüphanesi
 # URL: http://mikmod.raphnet.net/
 # Packager: milisarge
 # Depends on: xorg-libxtst

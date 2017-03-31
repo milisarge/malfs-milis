@@ -1,6 +1,6 @@
-# Description: C library implementing OAuth Core RFC 5849
+# Description: Http://oauth.net/ protokolünün bir POSIX-C uygulaması. LibOauth, URL'leri kodlamak ve HTTP istek verisini oAuth standardına göre imzalamak için işlevsellik sağlar.
 # URL: http://sourceforge.net/projects/liboauth
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: curl nss 
 
 name=liboauth

@@ -1,4 +1,4 @@
-# Description: A library that provides automatic proxy configuration management
+# Description: Otomatik proxy konfigürasyon yönetimi sağlayan bir kütüphane
 # URL: http://libproxy.github.io/libproxy/
 # Packager: milisarge
 # Depends on: cmake networkmanager python perl glib webkitgtk3
