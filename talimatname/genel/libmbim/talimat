@@ -1,4 +1,4 @@
-# Description: MBIM modem protocol helper library.
+# Description: MBIM modem protokol yardımcı kitaplığı.
 # URL: http://www.freedesktop.org/wiki/Software/libmbim/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: glib gobject-introspection libgudev
