@@ -1,4 +1,4 @@
-# Description: Library implementation of the Media Transfer Protocol.
+# Description: Medya Aktarma Protokolünün kütüphane uygulaması.
 # URL: http://libmtp.sourceforge.net
 # Packager: milisarge
 # Depends on: libusb libgcrypt
