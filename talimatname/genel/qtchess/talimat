@@ -1,0 +1,22 @@
+# Description: qt tabanlı P2P satranç oyunu
+# URL: http://qtchess.sourceforge.net/
+# Packager: milisarge
+# Depends on: qt5
+
+name=qtchess
+version=20160904
+_version=2016.09.04
+release=1
+
+source=(https://github.com/textbrowser/qtchess/archive/v${_version}.tar.gz
+		qtchess.desktop)
+
+build () {
+	cd "$name-$_version"
+    qmake-qt5 -o Makefile qtchess.pro
+    sed -i s_'-Werror'__g Makefile # stack protector is not proctecting small arrays
+    make
+    install -Dm755  QtChess -- "${PKG}/usr/bin/qtchess"
+    install -Dm644  $SRC/qtchess.desktop -- "${PKG}/usr/share/applications/${name}.desktop"
+	install -Dm644  Images/chess.png -- "${PKG}/usr/share/icons/hicolor/48x48/$name.png"
+}

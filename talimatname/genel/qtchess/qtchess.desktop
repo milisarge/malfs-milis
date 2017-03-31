@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Satranç Oyunu
+Comment=P2P Satranç Oyunu
+Exec=/usr/bin/qtchess
+Icon=/usr/share/icons/hicolor/48x48/qtchess.png
+Terminal=false
+Type=Application
+Categories=Game;
+MimeType=text/html;/text/xml;application/xhtml_xml;
+StartupNotify=true
