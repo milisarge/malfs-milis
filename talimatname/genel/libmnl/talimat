@@ -1,6 +1,6 @@
-# Description: Minimalistic user-space library oriented to Netlink developers
+# Description: Netlink geliştiricilerine yönelik minimalist kullanıcı-alanı kütüphanesi
 # URL: http://www.netfilter.org/projects/libmnl/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on:
 
 name=libmnl
