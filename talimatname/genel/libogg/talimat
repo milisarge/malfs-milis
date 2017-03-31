@@ -1,7 +1,8 @@
-# Description: Ogg bitstream and framing library
+# Description: Ogg bit akışı ve çerçeveleme kitaplığı
 # URL: http://xiph.org/ogg/
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=libogg
 version=1.3.2
 release=1
