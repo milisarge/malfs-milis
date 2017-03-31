@@ -1,5 +1,5 @@
-# Description: Library for constructing and injecting network packets
-# URL:         http://libnet-dev.sf.net
+# Description: Ağ paketleri inşa etmek ve enjekte etmek için kütüphane.
+# URL: http://libnet-dev.sf.net
 # Packager: milisarge
 # Depends on:
 
