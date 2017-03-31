@@ -1,0 +1,41 @@
+# Description: Dooble,güvenli webkit tarayıcısı
+# URL: http://dooble.sourceforge.net/
+# Packager: milisarge
+# Depends on: libpng qt5 openssl libspoton qt5-webkit
+
+name=dooble
+version=1.56c
+release=1
+source=(https://github.com/textbrowser/$name/archive/v$version.tar.gz)
+
+build () {
+	cd "$SRC/dooble.d/Version 1.x/"
+	
+	sed -i 's_-Werror__g' dooble.qt5.pro
+    sed -i 's_-lspoton_-lspoton -lQt5PrintSupport_g' dooble.qt5.pro
+    qmake-qt5 -o Makefile dooble.qt5.pro
+    make distclean
+    qmake-qt5 -o Makefile dooble.qt5.pro
+    sed -i '/^INCPATH/s:=:= -I/usr/include/qt/QtWidgets:' Makefile
+    sed -i '/^INCPATH/s:=:= -I/usr/include/qt/QtWebKitWidgets:' Makefile
+    sed -i '/^INCPATH/s:=:= -I/usr/include/qt/QtPrintSupport:' Makefile
+    sed -i '/#include/s:QtGui/\([^>]*\)QAction:\1:' Include/*.h
+    make
+	
+	install -Dm755  Dooble         -- "${PKG}/usr/lib/${name}/Dooble"
+	install -Dm755  dooble.sh      -- "${PKG}/usr/bin/${name}"
+	install -d "${PKG}/usr/share/$name" 
+	install -Dm644  dooble.desktop -- "${PKG}/usr/share/applications/${name}.desktop"
+	install -Dm644  Icons/48x48/dooble.png -- "${PKG}/usr/share/icons/hicolor/48x48/$name.png"
+	
+	sed -i s_"/usr/local/dooble/"_"/usr/lib/${name}/"_g -- "${PKG}/usr/bin/${name}"
+	sed -i s_"/usr/local/dooble"_"/usr/share/dooble"_g     -- "${PKG}/usr/bin/${name}"
+	sed -i s_"\./Dooble"_"../../lib/${name}/Dooble"_g   -- "${PKG}/usr/bin/${name}"
+	sed -i /LD_LIBRARY_PATH/d                              -- "${PKG}/usr/bin/${name}"
+
+	sed -i s_'/usr/local/dooble/Lib\x00'_'/usr/lib\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'_g  \
+	-- "${PKG}/usr/lib/${name}/Dooble" # The replacements's length must match the pattern's length
+
+	sed -i s_'/usr/local/dooble/dooble.sh'_"/usr/bin/${name}"_g  \
+	-- "${PKG}/usr/share/applications/${name}.desktop"
+}
