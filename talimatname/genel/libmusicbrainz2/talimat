@@ -1,6 +1,6 @@
-# Description: Library That Provides Access to the MusicBrainz Server
+# Description: MusicBrainz Sunucusuna Erişimi Sağlayan Kitaplık
 # URL: http://musicbrainz.org/doc/libmusicbrainz
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python
 
 name=libmusicbrainz2
