@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/textbrowser/$name/archive/v$version.tar.gz)
 
 build () {
-	cd "$SRC/dooble.d/Version 1.x/"
+	cd "$name-$version/Version 1.x/"
 	
 	sed -i 's_-Werror__g' dooble.qt5.pro
     sed -i 's_-lspoton_-lspoton -lQt5PrintSupport_g' dooble.qt5.pro
