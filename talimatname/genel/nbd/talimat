@@ -1,0 +1,24 @@
+# Description: Blok cihazlarının NBD protokolüyle paylaşma ve kullanma
+# URL: http://nbd.sourceforge.net/
+# Maintainer: milisarge
+# Depends on: gnutls glib
+
+name=nbd
+version=3.15.2
+release=1
+source=(http://downloads.sourceforge.net/project/nbd/nbd/$version/$name-$version.tar.xz
+		nbd-server 
+		allow)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr \
+              --mandir=/usr/man \
+              --sysconfdir=/etc
+  make
+  make DESTDIR=$PKG install
+  install -d $PKG/etc/nbd-server
+  install -D -m 600 $SRC/allow $PKG/etc/nbd-server/allow
+  install -D -m 755 $SRC/nbd-server $PKG/etc/rc.d/init.d/nbd-server
+
+}
