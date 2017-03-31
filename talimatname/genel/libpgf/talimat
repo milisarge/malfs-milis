@@ -1,7 +1,7 @@
-# Description : An implementation of the Progressive Graphics File (PGF)
-# URL : http://www.libpgf.org
-# Packager : pierre at nutyx dont org
-# Depends on : dos2unix
+# Description: Aşamalı Grafik Dosyasının (PGF) bir uygulaması
+# URL: http://www.libpgf.org
+# Packager: milisarge
+# Depends on: dos2unix
 
 name=libpgf
 version=7.15.32
