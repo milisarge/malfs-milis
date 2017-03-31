@@ -1,6 +1,6 @@
-# Description: GObject based interface to system-tools-backends - shared library
+# Description: Sistem-araçları backend'lerine GObject tabanlı arayüz - paylaşılan kütüphane
 # URL: http://libopenraw.freedesktop.org/wiki/Exempi
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: system-tools-backends 
 
 name=liboobs
