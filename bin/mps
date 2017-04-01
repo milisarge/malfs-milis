@@ -655,7 +655,12 @@ kurulu_kontrol(){
 		echo "kurulu"
 		exit 1
 	fi
-	echo "degil"
+	if [[ $(find $talimatname_dizin -name $1) ]];then
+		echo "degil"
+	else
+		echo "tanimsiz"
+	fi
+	exit 1
 }
 
 sistem_kur(){
