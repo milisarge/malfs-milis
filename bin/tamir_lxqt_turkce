@@ -8,6 +8,9 @@ if [ "`cat ~/.xinitrc | grep $masa`" ]; then
 	fi
 	cp -rf /opt/lxqt-turkce/applications/* /usr/share/applications/
 	cp -rf /opt/lxqt-turkce/desktop-directories/* /usr/share/desktop-directories/
+	cp -rf /opt/lxqt-turkce/Computer.desktop $HOME/Masaüstü/
+	cp -rf /opt/lxqt-turkce/Home.desktop $HOME/Masaüstü/
+    cp -rf /opt/lxqt-turkce/Trash.desktop $HOME/Masaüstü/
 	echo "türkçe güncellemeler yapıldı."
 else
 	echo "masaüstü lxqt değil!"
