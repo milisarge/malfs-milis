@@ -1,7 +1,8 @@
-# Description: A C library for reading and writing files containing sampled sound
+# Description: Örneklenmiş ses içeren dosyaları okumak ve yazmak için bir C kütüphanesi
 # URL: http://www.mega-nerd.com/libsndfile/
-# Packager: pierre at nutyx dot org
-# Depends on: flac alsa-lib libogg libvorbis 
+# Packager: milisarge
+# Depends on: flac alsa-lib libogg libvorbis
+
 name=libsndfile
 version=1.0.25
 release=1
