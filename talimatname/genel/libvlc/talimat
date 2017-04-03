@@ -1,6 +1,6 @@
-# Description: Library from vlc
-# URL:  http://www.slackware.com/~alien/slackbuilds/vlc/
-# Packager: tnut at nutyx dot org
+# Description: Vlc'den kütüphane
+# URL: http://www.slackware.com/~alien/slackbuilds/vlc/
+# Packager: milisarge
 # Depends on: libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=libvlc
