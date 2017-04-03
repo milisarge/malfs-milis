@@ -1,6 +1,5 @@
-# Description: sodium is a modern, easy-to-use software library for encryption, decryption, signatures, password hashing and more.
+# Description: Sodium, şifreleme, şifre çözme, imzalar, şifre karması ve daha fazlası için modern, kullanımı kolay bir yazılım kütüphanesi.
 # URL: http://doc.libsodium.org/
-# Maintainer: #teatime (irc.kyber.io), teatime at kyber dot io
 # packager: milisarge
 # Depends on :
 
