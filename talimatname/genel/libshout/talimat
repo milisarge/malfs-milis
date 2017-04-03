@@ -1,6 +1,6 @@
-# Description: Library for accessing a shoutcast/icecast server
+# Description: Shoutcast / icecast sunucusuna erişmek için kullanılan kitaplık
 # URL: http://www.icecast.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libvorbis libtheora speex 
 
 name=libshout
