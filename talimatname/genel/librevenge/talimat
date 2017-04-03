@@ -1,6 +1,6 @@
-# Description: library for REVerses ENGineered formats filters
+# Description: Librevenge, belge içe aktarma filtreleri yazmak için kullanılan bir temel kitaplıktır.
 # URL: http://sf.net/p/libwpd/librevenge/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: boost cppunit doxygen
 
 name=librevenge
