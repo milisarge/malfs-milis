@@ -1,6 +1,6 @@
-# Description: Thai language support routines
+# Description: Tay dili destek rutinleri
 # URL: http://linux.thai.net/projects/libthai
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libdatrie 
 
 name=libthai
