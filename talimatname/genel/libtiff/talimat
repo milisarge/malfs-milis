@@ -1,6 +1,6 @@
-# Description: Library for manipulation of TIFF images
+# Description: TIFF görüntüleri manipüle etmek için kütüphane
 # URL: http://www.remotesensing.org/libtiff/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libjpeg-turbo 
 
 name=libtiff
