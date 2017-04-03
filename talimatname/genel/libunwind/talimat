@@ -1,4 +1,4 @@
-# Description: 	Define a portable and efficient C API to determine the call-chain of a program.
+# Description: 	Bir programın çağrı zincirini belirlemek için taşınabilir ve verimli bir C API'yi tanımlayın.
 # URL:         	http://www.nongnu.org/libunwind/
 # Packager: 	milisarge
 # Depends on:
