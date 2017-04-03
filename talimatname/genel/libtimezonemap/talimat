@@ -1,4 +1,4 @@
-# Description: GTK+3 timezone map widget
+# Description: GTK+3 saat dilimi haritası aracı
 # URL: https://launchpad.net/timezonemap
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gtk3 json-glib vala gobject-introspection libsoup
