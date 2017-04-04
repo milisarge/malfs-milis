@@ -1,7 +1,8 @@
-# Description: XSLT libraries used for extending libxml2 libraries to support XSLT files.
+# Description: XSLT kitaplıkları, XSLT dosyalarını desteklemek için libxml2 kitaplıklarını genişletmek için kullanılır.
 # URL: http://xmlsoft.org/XSLT/
-# Packager: pierre at pierre dot org
-# Depends on: libxml2 libgcrypt 
+# Packager: milisarge
+# Depends on: libxml2 libgcrypt
+
 name=libxslt
 version=1.1.28
 release=1
