@@ -1,4 +1,4 @@
-# Description: A shared library that can be used for location-based services.
+# Description: Konum tabanlı hizmetler için kullanılabilen paylaşılan bir kütüphane.
 # URL: http://sourceforge.net/projects/libwlocate
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: wireless-tools
