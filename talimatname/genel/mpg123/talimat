@@ -1,6 +1,6 @@
-# Description: A console-based MP3 player. It claims to be the fastest MP3 decoder for Unix.
+# Description: Konsol tabanlı bir MP3 çalar. Unix için en hızlı MP3 kod çözücüsü olduğunu iddia ediyor.
 # URL: http://mpg123.de/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: alsa-lib 
 
 name=mpg123
