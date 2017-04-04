@@ -1,7 +1,8 @@
-# Description: Enhanced seccomp library
+# Description: Geliştirilmiş seccomp kitaplığı
 # URL: http://sourceforge.net/projects/libseccomp/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: 
+
 name=libseccomp
 version=2.1.1
 release=1

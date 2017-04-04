@@ -1,4 +1,4 @@
-# Description: full featured cross platform office suite (binary)
+# Description: Tam özellikli çapraz platform ofis paketi (ikili)
 # URL: http://www.libreoffice.org
 # Packager: milisarge
 # Depends on: cups xorg-libxaw xorg-libxcursor xorg-libxft xorg-libxinerama xorg-libxi xorg-libxrandr dbus-glib krb5

@@ -1,6 +1,6 @@
-# Description: bibliotheque C Yubico
+# Description: Yubico C düşük seviye Kütüphane: Yubico YubiKey Tek İşlemli Parolaları (OTP'ler) işlemek için kullanılan C kütüphanesi
 # URL: http://www.yubico.com/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libusb asciidoc
 
 name=libyubikey

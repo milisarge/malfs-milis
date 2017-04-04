@@ -1,11 +1,8 @@
+# Description: LXDE için varsayılan oturum yöneticisini içerir
 # URL: http://lxde.org/
-# Maintainer: Hong Jen Yee (aka PCMan) pcman dot tw at gmail dot com
 # Packager: milisarge@gmail.com
 # Depends on: dbus-glib gtk2 libunique1 lsb-release polkit vala upower pm-utils
 
-run=(lsb-release upower pm-utils)
-
-description="Contains the default session manager for LXDE"
 name=lxde-session
 _name=lxsession
 version=0.5.2

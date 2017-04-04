@@ -1,9 +1,7 @@
-# Description: Mousepad is a simple GTK+ 2 text editor for the Xfce desktop environment.
+# Description: Mousepad, Xfce masaüstü ortamı için basit bir GTK+2 metin editörüdür.
 # URL: http://www.xfce.org/projects/mousepad/
-# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
-# Depends on: dbus-glib startup-notification xorg-libxrandr xorg-libxinerama xorg-libsm desktop-file-utils gtksourceview3
- 
-run=( gtk-update-icon-cache desktop-file-utils )
+# Packager: milisarge
+# Depends on: dbus-glib startup-notification xorg-libxrandr xorg-libxinerama xorg-libsm desktop-file-utils gtksourceview3 gtk-update-icon-cache
 
 name=mousepad
 version=0.4.0

@@ -1,4 +1,4 @@
-# Description : KDE PIM messaging library
+# Description : KDE PIM mesajlaşma kütüphanesi
 # URL : https://community.kde.org/KDE_PIM
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : kdepim-apps-libs kmailtransport kmbox libgravatar akonadi-notes kidentitymanagement kf5-extra-cmake-modules kf5-kdoctools boost qt5

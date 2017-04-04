@@ -1,7 +1,7 @@
-# Description: a Just-In-Time Compiler for Lua
+# Description: Lua için Just-In-Time Derleyici
 # URL: http://luajit.org/
-# Maintainer: NuTyX core team
-# Depends:
+# Packager: milisarge
+# Depends on:
 
 
 name=luajit

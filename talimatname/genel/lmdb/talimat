@@ -1,4 +1,4 @@
-# Description: Symas Lightning Memory-Mapped Database
+# Description: Symas LMDB, Symas OpenLDAP Projesi için geliştirdiğimiz olağanüstü derecede hızlı, bellek açısından verimli bir veritabanıdır.
 # URL: http://symas.com/mdb
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: 

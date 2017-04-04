@@ -1,7 +1,8 @@
-# Description: A library for reading vector images in Microsoft's native Windows Metafile Format (WMF)
-# URL: URL: http://wvware.sourceforge.net/libwmf.html
+# Description: Microsoft'un yerli Windows Meta Dosyası Biçimi (WMF) içindeki vektör görüntülerini okumak için bir kütüphane
+# URL: http://wvware.sourceforge.net/libwmf.html
 # Packager: milisarge
 # Depends on: gsfonts libjpeg-turbo xorg-libx11 gdk-pixbuf gtk2 xorg-libxt
+
 name=libwmf
 version=0.2.8.4
 release=1

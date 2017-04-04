@@ -1,9 +1,8 @@
+# Description: GTK + 2 için masaüstünden bağımsız bir tema değiştirici içeriyor
 # URL: http://lxde.org/
-# Maintainer: brother@bsnet.se
 # Packager: milisarge@gmail.com
 # Depends on: gtk2 intltool
 
-description="contains a desktop-independent theme switcher for GTK+2"
 name=lxde-appearance
 _name=lxappearance
 version=0.6.2

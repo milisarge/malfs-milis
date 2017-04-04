@@ -1,10 +1,8 @@
+# Description: LXDE için bir varsayılan yapılandırma kümesi sağlar
 # URL: http://lxde.org/about.html
-# Maintainer: Copyright (C) 2001 Owen Taylor, Matthias Clasen, Red Hat, Inc.
 # Packager: milisarge@gmail.com
-# Depends on: consolekit2 desktop-file-utils gtk2 hicolor-icon-theme lxde-icon-theme lxde-panel lxde-session openbox pcmanfm shared-mime-info
+# Depends on: consolekit2 desktop-file-utils gtk2 hicolor-icon-theme lxde-icon-theme lxde-panel lxde-session openbox pcmanfm shared-mime-info menu-cache lxde-menu-data
 
-description="provides a set of default configuration for LXDE"
-run=(consolekit2 lxde-icon-theme menu-cache lxde-menu-data lxde-panel lxde-session openbox pcmanfm )
 name=lxde-common
 version=0.99.1
 release=1

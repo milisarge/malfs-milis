@@ -1,7 +1,8 @@
-# Description: The logrotate utility is designed to simplify the administration of log 
+# Description: Logrotate yardımcı programı, günlük yönetimini basitleştirmek için tasarlanmıştır
 # URL: https://fedorahosted.org/logrotate/
-# Packager: alienus at nutyx dot org
-# Depends on: popt 
+# Packager: milisarge
+# Depends on: popt
+
 name=logrotate
 version=3.8.8
 release=1

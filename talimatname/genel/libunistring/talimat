@@ -1,6 +1,6 @@
-# Description: libunistring is a library that provides functions for manipulating Unicode strings
+# Description: Libunistring, Unicode dizelerinin değiştirilmesi için işlevler sağlayan bir kitaplıktır
 # URL: http://www.gnu.org/software/bison/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=libunistring

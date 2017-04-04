@@ -1,6 +1,6 @@
-# Description: Collection of tools for accessing the file system MS-DOS
+# Description: Dosya sistemine erişmek için kullanılan araçların toplanması MS-DOS
 # URL: http://mtools.linux.lu/
-# Packager:  pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=mtools

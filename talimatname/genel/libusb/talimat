@@ -1,6 +1,7 @@
-# Description: The libusb package contains a library used by some applications for USB device access.
+# Description: Libusb paketi, bazı uygulamalar tarafından USB aygıt erişimi için kullanılan bir kitaplık içerir.
 # URL: http://libusb.wiki.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=libusb
 version=1.0.20

@@ -1,4 +1,4 @@
-# Description: Console audio player.
+# Description: Konsol müzik çalar.
 # URL: http://moc.daper.net/
 # Packager: milisarge
 # Depends on: curl libsndfile jack libid3tag libmad

@@ -1,7 +1,6 @@
-# Description: Platform-independent file locking module
+# Description: Platformdan bağımsız dosya kilitleme modülü
 # URL: http://launchpad.net/pylockfile
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: python-setuptools
 
 name=lockfile

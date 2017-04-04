@@ -1,5 +1,5 @@
-# Description: An implementation of the XDG Base Directory specifications.
-# URL:         https://github.com/devnev/libxdg-basedir
+# Description: XDG Temel Dizini teknik özelliklerinin bir uygulaması.
+# URL: https://github.com/devnev/libxdg-basedir
 # Packager: milisarge
 # Depends on:  
 

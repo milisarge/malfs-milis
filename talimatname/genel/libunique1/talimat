@@ -1,6 +1,6 @@
-# Description: The libunique package contains a library for writing single instance applications.
+# Description: Libunique paketi, tekli örnek uygulamaları yazmak için bir kütüphane içerir.
 # URL: http://live.gnome.org/LibUnique
-# Packager: pierre at nutyx dot org , tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk2
 
 _name=libunique

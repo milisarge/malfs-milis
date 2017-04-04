@@ -1,7 +1,7 @@
-# Description: Lightweight PDF and XPS viewer
-# URL:         http://www.mupdf.com/
-# packager:  milisarge
-# Depends on:  curl freetype libjpeg-turbo xorg-libxext
+# Description: Hafif bir PDF ve XPS görüntüleyici
+# URL: http://www.mupdf.com/
+# packager: milisarge
+# Depends on: curl freetype libjpeg-turbo xorg-libxext
 
 name=mupdf
 version=1.9a

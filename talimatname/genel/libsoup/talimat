@@ -1,9 +1,8 @@
-# Description: library http that was implemented in C
-# URL: library http that was implemented in C
-# Packager: pierre at nutyx dot org
+# Description: Libsoup, GNOME için bir HTTP istemci / sunucu kitaplığıdır.
+# URL: https://wiki.gnome.org/Projects/libsoup
+# Packager: milisarge
 # Depends on: glib-networking libxml2 gobject-introspection vala sqlite 
 
-run=( glib-networking )
 name=libsoup
 version=2.52.2
 release=1

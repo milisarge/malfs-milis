@@ -1,6 +1,6 @@
-# Description: 	Çalışan süreçlerin istatislik gösterir.
-# URL:         	http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab
-# Packager:		milisarge
+# Description: Libstatgrab, çalıştırıldığı sistemle ilgili istatistiklere çapraz platform erişimi sağlayan bir kitaplıktır.
+# URL: http://www.i-scream.org/libstatgrab/
+# Packager: milisarge
 # Depends on:  	
 
 name=libstatgrab

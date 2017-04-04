@@ -1,4 +1,4 @@
-# Description: torrent library
+# Description: Torrent kitaplığı
 # URL:         https://rakshasa.github.io/rtorrent
 # Packager:    milisarge
 # Depends on:  libsigc++

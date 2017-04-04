@@ -1,6 +1,6 @@
-# Description: Interface to the X Window System protocol, which replaces the current Xlib interface.
+# Description: Geçerli Xlib arabirimini değiştiren X Pencere Sistem protokolüne arabirim.
 # URL: http://xcb.freedesktop.org
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: xcb-proto xorg-libxdmcp xorg-libxau libxslt xorg-util-macros
 
 name=libxcb

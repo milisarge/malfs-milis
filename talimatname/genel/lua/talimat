@@ -1,6 +1,7 @@
-# Description: A programming language designed for extending applications
+# Description: Uygulamaları genişletmek için tasarlanmış bir programlama dili
 # URL: http://www.lua.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=lua
 version=5.3.2

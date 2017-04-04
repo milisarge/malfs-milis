@@ -1,8 +1,8 @@
-# Description: A programming language designed for extending applications (version 5.1)
+# Description: Uygulamaları genişletmek için tasarlanmış bir programlama dili (sürüm 5.1)
 # URL: URL: http://www.lua.org
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=lua51
 version=5.1.5
 release=1

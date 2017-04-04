@@ -1,10 +1,7 @@
-# Description: DVD and Blu-ray to MKV converter and network streamer
+# Description: MakeMKV, kendi videonuzu ücretsiz ve patentlere dönüştürmek için tek tıklamayla çözümünüzdür, her yere oynatılabilecek kayıtsız format.
 # URL: http://www.makemkv.com
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: qt5 libxkbcommon hicolor-icon-theme icu ffmpeg desktop-file-utils
-
-run=(desktop-file-utils)
 
 name=makemkv
 version=1.9.9

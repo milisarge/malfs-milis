@@ -1,6 +1,5 @@
-# Description: Le paquet GPicView contient un visualisateur d'images léger. 
+# Description: GPicView paketi hafif resim görüntüleyici içerir
 # URL: http://lxde.org/
-# Maintainer: Martin Bagge
 # Packager: milisarge@gmail.com
 # Depends on: gtk2
 

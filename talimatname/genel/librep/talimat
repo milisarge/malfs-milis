@@ -1,6 +1,6 @@
-# Description: The librep package contains a Lisp system.
+# Description: Librep paketi bir Lisp sistemi içeriyor.
 # URL: http://librep.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libffi 
 
 name=librep

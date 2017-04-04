@@ -1,4 +1,4 @@
-# Description: MPlayer is a powerful audio/video player controlled via the command line or a graphical interface that is able to play almost every popular audio and video file format and mencoder is a video encoding/decoding tool.
+# Description: MPlayer, komut satırı üzerinden kontrol edilen güçlü bir ses/video oynatıcı veya hemen hemen her popüler ses ve video dosyası formatını oynatabilen bir grafik arayüz ve mencoder bir video kodlama/kod çözme aracıdır.
 # URL: http://www.mplayerhq.hu
 # Packager: milisarge
 # Depends on: gtk2 yasm desktop-file-utils libdvdnav libdvdcss cdparanoia libcdio-paranoia libdvdread samba libbluray live xorg-libxvmc opus alsa-utils pulseaudio sdl jack openal sgml-common aalib giflib libjpeg-turbo libmng libpng openjpeg libcaca faac faad2 lame liba52 libdv libmad libmpeg2 libtheora libvpx lzo mpg123 speex xvid libmpcdec xorg-fontconfig freetype gnutls openssl opus unrar libxslt docbook-xsl docbook-xml enca glib xorg-libxxf86dga 

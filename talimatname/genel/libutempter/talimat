@@ -1,4 +1,4 @@
-# Description: Interface for terminal emulators to record user sessions to utmp and wtmp files.
+# Description: Kullanıcı oturumlarını utmp ve wtmp dosyalarına kaydetmek için terminal öykünücüsü için arabirim.
 # URL: ftp://ftp.altlinux.org/pub/people/ldv/utempter
 # Packager: milisarge
 # Depends on:

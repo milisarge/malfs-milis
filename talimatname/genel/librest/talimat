@@ -1,6 +1,6 @@
-# Description: Gives more easily access to internet services which says be "RESTful".
+# Description: "RESTful" olduğunu söyleyen internet servislerine daha kolay erişmenizi sağlar.
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libsoup gobject-introspection 
 
 name=librest

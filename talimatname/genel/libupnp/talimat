@@ -1,6 +1,7 @@
-# Description: An Portable Open Source UPnP Development Kit.
+# Description: Portatif bir Açık Kaynak UPnP Geliştirme Seti.
 # URL: http://pupnp.sourceforge.net/
 # Packager: milisarge
+# Depends on:
 
 name=libupnp
 version=1.6.19

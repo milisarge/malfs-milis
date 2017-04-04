@@ -1,7 +1,8 @@
-# Description: Shared library for libmediainfo and mediainfo
+# Description: Libmediainfo ve mediainfo için paylaşılan kütüphane
 # URL: http://mediainfo.sourceforge.net/
-# Packager: tnut at nutyx dot org
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=libzen
 version=0.4.31
 release=1

@@ -1,6 +1,6 @@
-# Description: Library for writing single instance applications for GTK3
+# Description: GTK3 için tekli örnek uygulamaları yazan kütüphane
 # URL: http://live.gnome.org/LibUnique
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk3 gobject-introspection 
 
 name=libunique

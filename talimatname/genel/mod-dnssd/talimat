@@ -1,7 +1,8 @@
-# Description: Zeroconf module for Apache
+# Description: Apache için Zeroconf modülü
 # URL: http://0pointer.de/lennart/projects/mod_dnssd
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: avahi apache
+
 _name=mod_dnssd
 name=mod-dnssd
 version=0.6

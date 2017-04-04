@@ -1,7 +1,8 @@
-# Description: A small UPnP client library/tool to access Internet Gateway Devices
+# Description: Internet Ağ Geçidi Aygıtlarına erişmek için küçük bir UPnP istemci kitaplığı/aracı
 # URL: http://miniupnp.free.fr
 # Packager: milisarge
-# Depends on: 
+# Depends on:
+
 name=miniupnpc
 version=1.9
 release=1
