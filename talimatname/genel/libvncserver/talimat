@@ -1,6 +1,6 @@
-# Description: A cross-platform C libraries that allow you to easily implement VNC server
+# Description: VNC sunucusunu kolayca uygulamanıza olanak tanıyan çapraz platform C kütüphaneleri
 # URL: https://libvnc.github.io/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libjpeg-turbo libpng gnutls libgcrypt sdl
 
 name=libvncserver
