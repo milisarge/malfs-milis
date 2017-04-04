@@ -1,7 +1,6 @@
-# Description: LLVM compiler backend
+# Description: LLVM derleyici arka uç
 # URL:         http://llvm.org/
-# Maintainer:  Thomas Penteker, tek at serverop dot de
-# Packager:    Tilman Sauerbeck, tilman at crux dot nu
+# Packager:    milisarge
 # Depends on:  python
 
 name=llvm
