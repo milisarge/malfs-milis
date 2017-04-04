@@ -1,4 +1,4 @@
-# Description: An open source multimedia framework
+# Description: Açık kaynak multimedya çerçevesi
 # URL: http://www.mltframework.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: ladspa frei0r-plugins libdv sdl-image libsamplerate sox ffmpeg vid-stab qt5 jack libexif swig movit eigen3 
