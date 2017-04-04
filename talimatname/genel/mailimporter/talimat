@@ -1,4 +1,4 @@
-# Description : Mail importer library
+# Description : Çeşitli kaynaklardan posta almayı sağlayan Kitaplık
 # URL : https://community.kde.org/KDE_PIM
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : libkdepim kf5-extra-cmake-modules kf5-kdoctools boost qt5
