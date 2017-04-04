@@ -1,4 +1,4 @@
-# Description: A C library for reading, creating, and modifying zip archives
+# Description: Zip arşivlerini okumak, oluşturmak ve değiştirmek için bir C kütüphanesi
 # URL: http://www.nih.at/libzip/index.html
 # Packager: milisarge
 # Depends on: 
