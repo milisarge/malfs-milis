@@ -1,4 +1,4 @@
-# Description: SCons-like build system that use python as a front-end language and Ninja as a building backend
+# Description: Meson hem son derece hızlı, hem de daha da önemlisi, mümkün olduğunca kullanıcı dostu olmak için tasarlanmış bir açık kaynak kodlu yapı sistemidir.
 # URL: http://mesonbuild.com/
 # Packager: milisarge
 # Depends on: python git ninja
