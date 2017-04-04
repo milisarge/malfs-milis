@@ -1,6 +1,6 @@
-# Description: MariaDB is a fork and a replacement for the MySQL relational database management system.
+# Description: MariaDB bir çatal ve MySQL ilişkisel veritabanı yönetim sisteminin yerini alıyor.
 # URL: http://www.mariadb.org/en/about/
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge
 # Depends on: cmake libevent
 
 name=mariadb
