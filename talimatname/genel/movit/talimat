@@ -1,4 +1,4 @@
-# Description: The modern video toolkit
+# Description: Modern video araç seti
 # URL: http://movit.sesse.net/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: eigen3 gtest sdl2 fftw libepoxy
