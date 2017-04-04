@@ -1,7 +1,6 @@
-# Description: Text-based web browser.
+# Description: Metin tabanlı web tarayıcısı.
 # URL: http://lynx.isc.org/
-# Maintainer: Danny Rawlins, crux at romster dot me
-# Packager: Mark Rosenstand, mark at borkware dot net
+# Packager: milisarge
 # Depends on: ncurses openssl zlib
 
 name=lynx
