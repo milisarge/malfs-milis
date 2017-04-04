@@ -1,13 +1,13 @@
-# Description: Bibliothéque pour accélérer la manipulation de menu cache pour lxde
+# Description: Freedesktop.org uyumlu menüler için önbellekleme mekanizması
 # URL: http://lxde.org/
-# Maintainer: git.lxde.org/gitweb/?p=debian/menu-cache.git;a=summary
-# Packager: geantbrun at gmail dot com
+# Packager: milisarge
 # Depends on: libfm-extra
 
 
 name=menu-cache
 version=1.0.1
 release=1
+
 source=(http://downloads.sourceforge.net/lxde/$name-$version.tar.xz)
 build() {
 cd $name-$version
