@@ -1,7 +1,6 @@
-# Description: Free, open source software for digital DJ'ing.
+# Description: Dijital DJ'ler için ücretsiz açık kaynaklı yazılım.
 # URL: http://www.mixxx.org/
-# Maintainer: http://www.mixxx.org/contact/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: fftw libid3tag libmad libogg libshout libsndfile libusb libmp4v2 portaudio portmidi ffmpeg taglib protobuf qt4 taglib vamp-plugin-sdk xorg-glu xorg-mesa scons
 
 name=mixxx
