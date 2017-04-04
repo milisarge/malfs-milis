@@ -1,7 +1,8 @@
-# Description: Lua module for processing options similar to getopt_long
+# Description: Getopt_long benzeri işlem seçenekleri için Lua modülü
 # URL: http://luaforge.net/projects/alt-getopt/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: lua bmake
+
 name=lua-alt-getopt
 version=0.7.0
 release=1
