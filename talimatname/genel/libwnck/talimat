@@ -1,6 +1,6 @@
-# Description: contains a kit of contruction of navigator of windows
+# Description: Windows navigator inşaat kiti içerir
 # URL: http://www.gnome.org/
-# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libxres gtk2 intltool gobject-introspection startup-notification gtk-doc
 
 name=libwnck
