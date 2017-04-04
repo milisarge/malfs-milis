@@ -1,6 +1,6 @@
-# Description: WebP library and conversion tools
+# Description: WebP kütüphanesi ve dönüştürme araçları
 # URL: https://developers.google.com/speed/webp/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libpng libjpeg-turbo libtiff
 
 name=libwebp
