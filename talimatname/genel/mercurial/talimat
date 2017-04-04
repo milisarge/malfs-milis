@@ -1,4 +1,4 @@
-# Description: Mercurial is a distributed source control management tool similar to Git and Bazaar. Mercurial is written in Python and is used by projects such as Mozilla and Vim. 
+# Description: Python'da yazılmış, Git ve Bazaar'a benzer, dağıtılmış bir kaynak denetim yönetimi aracıdır. Mozilla ve Vim gibi projeler tarafından kullanılmaktadır.
 # URL: http://mercurial.selenic.com
 # Packager: milisarge
 # Depends on: python git gnupg subversion bzr python-docutils ca-certificates
