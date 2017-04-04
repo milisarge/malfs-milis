@@ -1,7 +1,8 @@
-# Description: File System Library for the Lua Programming Language
+# Description: Lua Programlama Dili için Dosya Sistemi Kütüphanesi
 # URL: http://www.keplerproject.org/luafilesystem/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: lua
+
 name=lua-filesystem
 version=1.6.3
 release=1
