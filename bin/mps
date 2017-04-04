@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.5"
+versiyon="0.9.6"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -689,6 +689,9 @@ logdizin_kontrol(){
 	if [ ! -f $kokdizin$LOGDIZIN/mps-hata.log ];then
 		touch $kokdizin$LOGDIZIN/mps-hata.log
 	fi
+	if [ ! -f $kokdizin$LOGDIZIN/mps-git.log ];then
+		touch $kokdizin$LOGDIZIN/mps-git.log
+	fi
 }
 
 tarihce_dkontrol(){
@@ -891,7 +894,13 @@ git_guncelle() {
 		rsync -av /sources/milis.git/rootfs/* /
 	else
 		cd milis.git
-		git pull
+		git pull  >& $LOGDIZIN/mps-git.log
+		if grep -q "Already\ up-to-date" $LOGDIZIN/mps-git.log; then
+			ryaz 32 "git deposu güncel."
+		else
+			ryaz 32 `cat $LOGDIZIN/mps-git.log`
+			ryaz 32 "git deposu güncellendi."
+		fi
 		#baslangic betiklerinin guncellenmesi
 		rsync -aviz -q --delete /sources/milis.git/rootfs/lib/services/* /lib/services/
 	fi
@@ -911,6 +920,7 @@ git_guncelle() {
 			ln -s /root/bin/$j /usr/bin/$j
 		fi
 	done
+	ryaz 32 "yerele eşitleme tamam."
 }
 
 git_proje_kur(){
