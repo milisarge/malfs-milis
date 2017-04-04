@@ -1,6 +1,6 @@
-# Description: Library which processes a reduced subset of keymaps as defined by the XKB specification
+# Description: XKB belirtimiyle tanımlanan anahtar dizinlerinin daha düşük bir alt kümesini işleyen bir kitaplık
 # URL: http://xkbcommon.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-xkeyboard-config libxcb doxygen xorg-util-macros 
 
 name=libxkbcommon
