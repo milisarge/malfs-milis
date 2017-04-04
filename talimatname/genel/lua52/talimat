@@ -1,5 +1,6 @@
-# Description: A programming language designed for extending applications.
+# Description: Uygulamaları genişletmek için tasarlanmış bir programlama dili (5.2 sürümü).
 # URL: http://www.lua.org/
+# Packager: milisarge
 # Depends on: readline
 
 name=lua52
