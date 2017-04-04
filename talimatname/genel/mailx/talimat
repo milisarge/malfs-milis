@@ -1,6 +1,6 @@
-# Description: A command-line Mail User Agent derived from Berkeley Mail.
+# Description: Berkeley Mail'den türetilen bir komut satırı posta kullanıcı aracısı.
 # URL: http://heirloom.sourceforge.net/mailx.html
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: openssl kerberos sendmail
 
 name=mailx
