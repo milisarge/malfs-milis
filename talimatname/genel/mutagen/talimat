@@ -1,6 +1,6 @@
-# Description: An audio metadata tag reader and writer
+# Description: Bir ses meta veri etiketi okuyucu ve yazıcı
 # URL: https://bitbucket.org/lazka/mutagen
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python 
 
 name=mutagen
