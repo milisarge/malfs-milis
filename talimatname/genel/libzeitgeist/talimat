@@ -1,7 +1,8 @@
-# Description: Client library used to access and manage the Zeitgeist event log from C and Vala.
+# Description: C ve Vala'dan Zeitgeist olay günlüğüne erişmek ve yönetmek için kullanılan istemci kitaplığı.
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
-# Depends on: glib 
+# Packager: milisarge
+# Depends on: glib
+
 name=libzeitgeist
 version=0.3.18
 release=1
