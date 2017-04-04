@@ -1,4 +1,4 @@
-# Description: Portable cryptographic and SSL/TLS library, aka polarssl
+# Description: Gömülü sistemler için şifreleme kütüphanesi (eskiden PolarSSL olarak bilinir).
 # URL: https://tls.mbed.org
 # Packager: milisarge
 # Depends on: 
