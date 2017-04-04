@@ -1,6 +1,6 @@
-# Description: Collection of user space tools for general SMBus access and hardware monitoring
+# Description: Genel SMBus erişimi ve donanım izleme için kullanıcı alanı araçlarının toplanması
 # URL: http://dl.lm-sensors.org/lm-sensors/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=lm-sensors
