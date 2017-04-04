@@ -2,7 +2,7 @@
 masa=lxqt
 if [ "`cat ~/.xinitrc | grep $masa`" ]; then
 	if [ -d /opt/lxqt-turkce ]; then
-		cd /opt/lxqt-turkce && git pull
+		cd /opt/lxqt-turkce && git pull -q && echo "git guncellemesi yapıldı."
 	else
 		git clone https://github.com/yasarciv/LXQt-Turkce /opt/lxqt-turkce
 	fi
