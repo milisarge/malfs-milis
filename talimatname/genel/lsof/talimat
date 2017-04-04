@@ -1,6 +1,6 @@
-# Description:	The lsof package is useful to List Open Files for a given running application or process. 
-# URL:			ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/
-# Packager:		milisarge
+# Description: Lsof paketi, belirli bir çalışan uygulama veya işlem için Açık Dosyaları Listelemek için kullanışlıdır.
+# URL: ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/
+# Packager: milisarge
 # Depends on:	
 
 name=lsof
