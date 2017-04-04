@@ -1,6 +1,6 @@
-# Description: A set of C++ libraries for multimedia streaming
+# Description: Multimedya akışı için bir dizi C ++ kütüphanesi
 # URL: http://www.live555.com/liveMedia/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=live
