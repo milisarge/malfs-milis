@@ -1360,9 +1360,8 @@ ayarlar() {
 				if [ "$durum" = "kurulu" ]; then
 					paket_guncelle "$2"
 				else
-					ryaz 31 "$2 paket kurulu degil!"
-					hataloglama "paket kurulu degil!"
-					exit 1
+					ryaz 31 "$2 paketi kurulu degil!"
+					hataloglama "paketi kurulu degil!"
 				fi;;
 			#bagimliliklariyla beraber paket guncelleme-package updating with depencies
 			-go|--pkgo)
