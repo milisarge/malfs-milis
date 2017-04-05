@@ -981,7 +981,7 @@ paketvt_guncelle(){
 	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
 	if [ $? -eq 0 ]; then	
 		ryaz 32 $sunucu
-		ryaz 32 "paket veritabanı guncellenıyor." "$paketdepo""paket.vt"
+		ryaz 32 "paket veritabanı güncelleniyor." "$paketdepo""paket.vt"
 		if [ -f "$paketdepo""paket.vt" ];then
 			mv "$paketdepo""paket.vt" "$paketdepo""paket.vt.eski"
 		fi
@@ -990,8 +990,8 @@ paketvt_guncelle(){
 		mps -kudo
 		exit 1
 	fi
-	ryaz 31 "paket veritabanı guncelleme olumsuz."
-	hataloglama "paket veritabanı guncelleme olumsuz."
+	ryaz 31 "paket veritabanı güncelleme olumsuz."
+	hataloglama "paket veritabanı güncelleme olumsuz."
 }
 
 talimat_bilgi(){
