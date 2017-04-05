@@ -1,7 +1,8 @@
-# Description: Netscape Portable Runtime library (NSPR) 
+# Description: Netscape Taşınabilir Çalışma Zamanı Kitaplığı (NSPR)
 # URL: http://www.mozilla.org/projects/nspr/
 # Packager: milisarge
 # Depends on:
+
 name=nspr
 version=4.12
 release=1
