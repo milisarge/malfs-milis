@@ -1,6 +1,6 @@
-# Description: contains of services D-Bus bidder a function of client and of server OBEX.
+# Description: Obexd paketi OBEX istemci ve sunucu işlevselliğini sağlayan D-Bus hizmetlerini içerir.
 # URL: http://www.bluez.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: bluez libical 
 
 name=obexd
