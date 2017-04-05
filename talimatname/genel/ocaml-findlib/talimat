@@ -1,6 +1,6 @@
-# Description: O'Caml library manager
+# Description: O'Caml kütüphane yöneticisi
 # URL: http://projects.camlcity.org/projects/findlib.html
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: ocaml
 
 name=ocaml-findlib
