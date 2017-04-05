@@ -1,6 +1,6 @@
-# Description: Notification daemon for the desktop notifications framework
+# Description: Pasif pop-up bildirimlerini görüntülemek için arka plan programı
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: intltool gtk3 libcanberra 
 
 name=notification-daemon
