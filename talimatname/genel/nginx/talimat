@@ -1,7 +1,8 @@
-# Description: nginx [engine x] is a high-performance HTTP server and reverse proxy,
+# Description: NGINX, ücretsiz, açık kaynaklı, yüksek performanslı bir HTTP sunucusu ve ters proxy yanı sıra bir IMAP / POP3 proxy sunucusudur.
 # URL: http://nginx.net/
-# Packager: alienus at nutyx dot org
-# Depends on: libxml2 libxslt pcre 
+# Packager: milisarge
+# Depends on: libxml2 libxslt pcre
+
 name=nginx
 version=1.6.2
 release=2
