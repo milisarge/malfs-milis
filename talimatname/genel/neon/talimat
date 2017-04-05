@@ -1,6 +1,6 @@
-# Description: Wrapper for common HTTP and WebDAV
+# Description: Genel HTTP ve WebDAV için sarmalayıcı
 # URL: http://www.webdav.org/neon/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: kerberos libxml2 
 
 name=neon

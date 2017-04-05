@@ -1,6 +1,6 @@
-# Description: Library for color text mode, widget based user interfaces.
-# URL: 
-# Packager: tnut at nutyx dot org
+# Description: Newt, renkli metin modu, widget tabanlı kullanıcı arabirimleri için bir programlama kütüphanesi.
+# URL: https://admin.fedoraproject.org/pkgdb/package/rpms/newt/
+# Packager: milisarge
 # Depends on: popt slang
 
 name=newt

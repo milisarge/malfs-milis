@@ -1,4 +1,4 @@
-# Description: Client and server to keep the time synchronized between various computers over a network.
+# Description: NTP, bilgisayar saatlerini bir ağ üzerinden senkronize etmek için tasarlanmış bir protokoldür.
 # URL: http://www.ntp.org/ 
 # Packagers: milisarge
 # Depends on:
@@ -8,7 +8,6 @@ version=4.2.8p5
 release=1
 
 source=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz)
-
 
 build() {
 

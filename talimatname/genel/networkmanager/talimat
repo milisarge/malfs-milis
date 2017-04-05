@@ -1,6 +1,6 @@
-# Description: Tools which simplify and make the network more directly manageable. 
+# Description: Ağın daha doğrudan yönetilebilir olmasını sağlayan basitleştiren ve geliştiren araçlar
 # URL: http://projects.gnome.org/NetworkManager/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libndp libsoup libgudev modemmanager dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt
 
 _name=NetworkManager

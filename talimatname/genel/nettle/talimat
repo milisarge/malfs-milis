@@ -1,7 +1,6 @@
-# Description: Low-level cryptographic library
+# Description: Düşük düzey kriptografi kütüphanesi
 # URL: http://www.lysator.liu.se/~nisse/nettle/
-# Maintainer: Jose V Beneyto, sepen at crux dot nu
-# Packager: Jose V Beneyto, sepen at crux dot nu
+# Packager: milisarge
 # Depends on:
 
 name=nettle

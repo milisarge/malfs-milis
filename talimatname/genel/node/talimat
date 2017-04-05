@@ -1,7 +1,8 @@
-# Description: Node (Evented I/O for V8 JavaScript)
+# Description: Node.js®, Chrome'un V8 JavaScript motorunda inşa edilmiş bir JavaScript çalışma zamanıdır.
 # URL: http://nodejs.org/
-# Packager: alienus at nutyx dot org
-# Depends on: python 
+# Packager: milisarge
+# Depends on: python
+
 name=node
 version=4.0.0
 release=1

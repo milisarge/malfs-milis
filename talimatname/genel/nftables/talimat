@@ -1,8 +1,8 @@
-# Description: Netfilter nftables userspace tools
-# URL: URL: http://netfilter.org/projects/nftables/ 
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: docbook2x libmnl libnftnl 
+# Description: Netfilter kullanıcı alanı araçları
+# URL: http://netfilter.org/projects/nftables/ 
+# Packager: milisarge
+# Depends on: docbook2x libmnl libnftnl
+
 name=nftables
 version=0.2
 release=1
