@@ -1,4 +1,4 @@
-# Description: Read and write data across network connections
+# Description: Ağ bağlantıları üzerinden veri okuma ve yazma
 # URL: http://netcat.sourceforge.net
 # Packager: milisarge
 # Depends on:
