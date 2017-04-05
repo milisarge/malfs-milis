@@ -1,4 +1,4 @@
-# Description: Tools which simplify and make the network more directly manageable. 
+# Description: Ağın daha doğrudan yönetilebilir olmasını sağlayan basitleştiren ve geliştiren araçlar
 # URL: http://projects.gnome.org/NetworkManager/
 # Packager: milisarge
 # Depends on: gtk3 gconf iso-codes gobject-introspection libgnome-keyring gnome-keyring libsecret libnotify networkmanager polkit-gnome modemmanager gtk-update-icon-cache
