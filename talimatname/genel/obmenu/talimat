@@ -1,6 +1,6 @@
-# Description: tool of configuration for openbox
+# Description: Openbox için yapılandırma aracı
 # URL: http://obmenu.sourceforge.net
-# Packager: geantbrun at gmail dot com
+# Packager: milisarge
 # Depends on: python-gtk 
  
  
