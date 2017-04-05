@@ -1355,7 +1355,15 @@ ayarlar() {
 					hataloglama "paket ismi eksik"
 					exit 1
 				fi
-				paket_guncelle "$2";;
+				local durum
+				durum=`kurulu_kontrol "$2"`
+				if [ "$durum" = "kurulu" ]; then
+					paket_guncelle "$2"
+				else
+					ryaz 31 "$2 paket kurulu degil!"
+					hataloglama "paket kurulu degil!"
+					exit 1
+				fi;;
 			#bagimliliklariyla beraber paket guncelleme-package updating with depencies
 			-go|--pkgo)
 				if [ ! "$2" ]; then
