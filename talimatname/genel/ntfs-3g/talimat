@@ -1,7 +1,8 @@
-# Description: The Ntfs-3g package contains a stable, read-write open source driver for NTFS partitions.
-# URL: http://www.ntfs-3g.org
-# Packager: pierre at nutyx dot org
-# Depends on: 
+# Description: NTFS-3G, Linux sistemleri için istikrarlı, tam özellikli, okuma-yazma NTFS sürücüsüdür.
+# URL: http://www.tuxera.com/community/open-source-ntfs-3g/
+# Packager: milisarge
+# Depends on:
+
 name=ntfs-3g
 version=2015.3.14
 release=1
