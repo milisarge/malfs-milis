@@ -1,9 +1,8 @@
-# Description: OBEX Data Server package contains D-Bus service providing high-level OBEX client and server side functionality. 
+# Description: OBEX Veri Sunucusu paketi, üst düzey OBEX istemci ve sunucu tarafında işlevsellik sağlayan D-Bus servisini içerir.
 # URL: http://tadas.dailyda.com
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: bluez dbus-glib imagemagick gdk-pixbuf libusb-compat openobex
 
-description="D-Bus service providing high-level OBEX client and server side functionality."
 name=obex-data-server
 version=0.4.6 	
 release=1
