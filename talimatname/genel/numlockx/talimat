@@ -1,7 +1,6 @@
-# Description: Turns on the numlock key in X11
-# URL: http://home.kde.org/~seli/numlockx/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Description: X11'de numlock tuşunu açar
+# URL: https://admin.fedoraproject.org/pkgdb/package/rpms/numlockx/
+# Packager: milisarge
 # Depends on: xorg-libxtst
 
 name=numlockx
