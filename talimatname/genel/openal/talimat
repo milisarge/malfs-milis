@@ -1,6 +1,5 @@
-# Description: Cross-platform 3D audio.
-# URL: http://connect.creativelabs.com/openal
-# Maintainer: Danny Rawlins, monster dot romster at gmail dot com
+# Description: OpenAL Soft, OpenAL 3D ses API'sinin LGPL lisanslı, çapraz platformlu bir yazılım uygulamasıdır.
+# URL: http://kcat.strangesoft.net/openal.html
 # Packager: milisarge
 # Depends on: alsa-lib cmake
 

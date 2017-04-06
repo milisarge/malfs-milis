@@ -1,4 +1,4 @@
-# Description: The Open Dynamics Engine physics SDK.
+# Description: ODE, katı cisim dinamikleri simüle etmek için açık kaynak kodlu, yüksek performanslı bir kütüphanedir.
 # URL: http://www.ode.org/
 # Packager: milisarge
 # Depends on: xorg-mesa

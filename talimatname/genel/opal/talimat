@@ -1,7 +1,8 @@
-# Description: C++ class library for normalising the numerous telephony protocols
+# Description: Çok sayıda telefon protokolünü normalleştirmek için C ++ sınıf kütüphanesi
 # URL: http://ftp.gnu.org/opal
-# Packager: pierre at nutyx dot org
-# Depends on: ptlib 
+# Packager: milisarge
+# Depends on: ptlib
+
 name=opal
 version=3.10.10
 release=1

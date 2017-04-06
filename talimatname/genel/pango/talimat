@@ -1,6 +1,6 @@
-# Description: A library for layout and rendering of text
+# Description: Metin düzeni ve sunumu için bir kütüphane
 # URL: http://gnome.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python cairo libthai freetype xorg-libxft gobject-introspection harfbuzz xorg-libxxf86vm 
 
 name=pango

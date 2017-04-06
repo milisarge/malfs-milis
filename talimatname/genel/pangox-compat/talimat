@@ -1,6 +1,6 @@
-# Description: X Window System font support for Pango
+# Description: Pango için X Pencere Sistemi yazı tipi desteği
 # URL: http://gnome.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: pango 
 
 name=pangox-compat

@@ -1,6 +1,6 @@
-# Description: James Clark's implementation of Document Style Semantics and Specification Language
+# Description: James Clark'ın Belge Stili Semantiği ve Şartname Dilinin uygulanması
 # URL: http://openjade.sourceforge.net/ 
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: opensp
 
 name=openjade

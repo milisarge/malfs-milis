@@ -1,7 +1,8 @@
-# Description: C++ bindings for pango
+# Description: Pango için C ++ bağları
 # URL: http://cairographics.org/cairomm/
-# Packager: pierre at nutyx dot org
-# Depends on: pango glibmm cairomm 
+# Packager: milisarge
+# Depends on: pango glibmm cairomm
+
 name=pangomm
 version=2.38.1
 release=1
