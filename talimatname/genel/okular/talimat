@@ -1,4 +1,4 @@
-# Description: Document Viewer
+# Description: Belge görüntüleyici
 # URL: http://www.kde.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on : git  kf5-extra-cmake-modules kf5-khtml kf5-threadweaver kf5-kactivities kf5-kdelibs4support kf5-kpty plasma-libkscreen freetype poppler-qt5 libspectre djvulibre qca-qt5 libkexiv2 chmlib zlib ebook-tools kf5-kdoctools phonon-qt5
