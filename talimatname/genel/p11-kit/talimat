@@ -1,6 +1,6 @@
-# Description: Provides a way to load and enumerate PKCS 11 modules.
+# Description: PKCS 11 modüllerini yüklemek ve numaralandırmak için bir yol sağlar.
 # URL: http://p11-glue.freedesktop.org/p11-kit.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libffi libtasn1
 
 name=p11-kit
