@@ -1,6 +1,6 @@
-# Description: VPN Client
-# URL:         http://www.openvpn.net
-# Packager:    milisarge
+# Description: VPN istemcisi
+# URL: http://www.openvpn.net
+# Packager: milisarge
 # Depends on:  
 
 name=openvpn
