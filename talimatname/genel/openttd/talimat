@@ -1,6 +1,6 @@
-# Description: An engine for running Transport Tycoon Deluxe.
+# Description:Transport Tycoon Deluxe çalıştırmak için bir motor.
 # URL: http://www.openttd.org
-# Packager: tsgeek at mailoo dot org
+# Packager: milisarge
 # Depends on: libpng sdl icu xorg-fontconfig lzo hicolor-icon-theme desktop-file-utils xz openttd-opengfx openttd-opensfx
 
 
