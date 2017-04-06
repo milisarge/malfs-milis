@@ -1,6 +1,6 @@
-# Description: OpenJPEG is an open-source implementation of the JPEG-2000 standard.
+# Description: OpenJPEG, JPEG-2000 standardının açık kaynaklı bir uygulamasıdır.
 # URL: http://www.ijg.org/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake lcms2 libpng libtiff 
 
 _name=openjpeg
