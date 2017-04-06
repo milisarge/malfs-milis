@@ -1,4 +1,4 @@
-# Description: oxygen-gtk2, theme Oxygen for applications in gtk2
+# Description: Oxygen-gtk2, gtk2 uygulamaları için Oksijen teması.
 # URL: https://projects.kde.org/projects/playground/artwork/oxygen-gtk/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: cmake gtk2 dbus-glib cairo
