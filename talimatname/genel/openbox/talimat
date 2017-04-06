@@ -1,8 +1,8 @@
-# Description: Openbox is a highly configurable window manager.
+# Description: Openbox oldukça yapılandırılabilir bir pencere yöneticisi.
 # URL: http://openbox.org/wiki/Main_Page
-# Packager: tnut at nutyx dot org
-# Depends on: xorg pcre pango freetype libpng xorg-fontconfig harfbuzz dbus imlib2 librsvg startup-notification xcb-util libxcb libxml2
-run=( xorg startup-notification dbus )
+# Packager: milisarge
+# Depends on: xorg pcre pango freetype libpng xorg-fontconfig harfbuzz dbus imlib2 librsvg startup-notification xcb-util libxcb libxml2 dbus
+
 name=openbox
 version=3.6.1
 release=1
