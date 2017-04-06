@@ -1,6 +1,5 @@
-# Description: Cross-platform 3D audio.
-# URL: http://connect.creativelabs.com/openal
-# Maintainer: Danny Rawlins, monster dot romster at gmail dot com
+# Description: OpenAL, oyun uygulamaları ve diğer birçok sesli uygulama türleri ile kullanılmak için uygun olan çapraz platform 3D ses API'sıdır.
+# URL: https://openal.org/
 # Packager: milisarge
 # Depends on: alsa-lib cmake
 
