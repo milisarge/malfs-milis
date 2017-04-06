@@ -1,10 +1,9 @@
-# Description: Calendar for Xfce
-# URL: http://www.xfce.org/projects/orage/
-# Packager: tyrry33 at gmail dot com
+# Description: Xfce için, hatırlatıcılar ile basit bir takvim uygulaması. 
+# URL: https://www.xfce.org/projects
+# Packager: milisarge
 # Depends on: exo intltool xfce4-panel libnotify 
 
 _name=orage
-
 name=orage
 version=4.12.1
 release=1
