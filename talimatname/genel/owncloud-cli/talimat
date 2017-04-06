@@ -1,6 +1,6 @@
-# Description : ownCloud client based on mirall
+# Description : OwnCloud Masaüstü İstemcisi, ownCloud Sunucusu'ndan bilgisayarınızla dosyaları senkronize etmek için kullanılan bir araçtır.
 # URL: http://owncloud.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake qt5 qtkeychain-qt5
 
 name=owncloud-cli
