@@ -1,5 +1,5 @@
-# Description: OpenAL, oyun uygulamaları ve diğer birçok sesli uygulama türleri ile kullanılmak için uygun olan çapraz platform 3D ses API'sıdır.
-# URL: https://openal.org/
+# Description: OpenAL Soft, OpenAL 3D ses API'sinin LGPL lisanslı, çapraz platformlu bir yazılım uygulamasıdır.
+# URL: http://kcat.strangesoft.net/openal.html
 # Packager: milisarge
 # Depends on: alsa-lib cmake
 
