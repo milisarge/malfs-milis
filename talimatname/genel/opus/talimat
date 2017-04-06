@@ -1,6 +1,7 @@
-# Description: Codec designed for interactive speech and audio transmission over the Internet
+# Description: Internet üzerinden etkileşimli konuşma ve ses iletimi için tasarlanmış Codec
 # URL: http://www.opus-codec.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=opus
 version=1.1.2
