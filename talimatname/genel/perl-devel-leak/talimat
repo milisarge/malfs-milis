@@ -1,5 +1,5 @@
 # Description: Geri kazanılmayan perl nesneleri aramak için yardımcı program.
-# URL: URL: http://search.cpan.org/dist/Devel-Symdump
+# URL: https://metacpan.org/pod/Devel::Leak
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: perl
 
