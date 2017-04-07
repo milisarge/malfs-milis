@@ -1,5 +1,5 @@
-# Description: A perl module for Pretty printing of data structures
-# URL: http://search.cpan.org/~gaas/Data-Dump-1.23/
+# Description: Bu modül, argümanlarından geçip sonuç olarak bir dizge üreten birkaç işlev sunar.
+# URL: http://search.cpan.org/~gaas/Data-Dump-1.23/lib/Data/Dump.pm
 # Packagers: milisarge
 # Depends on: perl
 
