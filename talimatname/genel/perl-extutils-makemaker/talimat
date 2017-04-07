@@ -1,9 +1,8 @@
-# Description: ExtUtils::MakeMaker - Create a module Makefile
-# URL: URL: http://search.cpan.org/~bingos/ExtUtils-MakeMaker/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
-run=( perl )
+# Description: Bu yardımcı program, bir Makefile'den bir uzantı modülü için bir Makefile yazmak üzere tasarlanmıştır.
+# URL: http://search.cpan.org/~bingos/ExtUtils-MakeMaker-6.98/lib/ExtUtils/MakeMaker.pm
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-extutils-makemaker
 version=6.98
 release=1
