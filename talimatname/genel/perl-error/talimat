@@ -1,8 +1,8 @@
-# Description: Perl/CPAN Error module - Error/exception handling in an OO-ish way
+# Description: Perl / CPAN Hata modülü - OO-ish yolunda hata / istisna işleme
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl 
-run=( perl )
+
 name=perl-error
 version=0.17022
 release=1
