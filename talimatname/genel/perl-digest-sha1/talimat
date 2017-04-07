@@ -1,8 +1,8 @@
-# Description: Perl interface to the SHA-1 Algorithm
+# Description: SHA-1 Algoritmasına Perl Arayüzü
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl 
-run=( perl )
+
 name=perl-digest-sha1
 version=2.13
 release=1
