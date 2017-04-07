@@ -998,12 +998,17 @@ chroot_gir(){
 
 
 unmount_islemi() {
-	umount $LFS/dev/shm
-	umount $LFS/dev/pts
-	umount $LFS/dev
-	umount $LFS/run
-	umount $LFS/proc
-	umount $LFS/sys
+	lfs_kontrol
+	if [ "$LFS" != "" ];then
+		umount -lf $LFS/dev/shm
+		umount -lf $LFS/dev/pts
+		umount -lf $LFS/dev
+		umount -lf $LFS/run
+		umount -lf $LFS/proc
+		umount -lf $LFS/sys
+	else
+		echo "LFS boş tanımlı"
+	fi
 }
 
 bash_kur(){
