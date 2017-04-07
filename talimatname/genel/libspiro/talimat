@@ -1,0 +1,19 @@
+# Description: Eğrilerin çizimini basitleştiren kütüphane
+# URL: https://github.com/fontforge/libspiro
+# Packager: milisarge
+# Depends on: 
+
+name=libspiro
+version=0.5.20150702
+release=1
+source=(https://github.com/fontforge/libspiro/archive/${version}.tar.gz)
+
+build() {
+	cd $name-${version}
+	autoreconf -i
+	automake --foreign -Wall
+	./configure --prefix=/usr
+	make
+	make DESTDIR="${PKG}" install
+	install -Dm644 libspiro.pc "${PKG}"/usr/lib/pkgconfig/libspiro.pc
+}
