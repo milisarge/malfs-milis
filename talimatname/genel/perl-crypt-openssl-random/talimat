@@ -1,8 +1,8 @@
-# Description: Interface to OpenSSL PRNG methods
+# Description: OpenSSL PRNG yöntemlerine Arayüz
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl openssl 
-run=( perl )
+
 name=perl-crypt-openssl-random
 version=0.06
 release=1
