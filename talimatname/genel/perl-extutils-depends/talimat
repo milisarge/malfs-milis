@@ -1,8 +1,8 @@
-# Description: perl module
+# Description: Perl modülü
 # URL: http://www.gtkperl.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
-run=( perl )
 name=perl-extutils-depends
 version=0.304
 release=1
