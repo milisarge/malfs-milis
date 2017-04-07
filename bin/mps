@@ -422,7 +422,7 @@ surum_kontrol(){
 			done	
 			if [ "$gun_onay" = "e" ];then
 				paket_sil "$1" "evet"
-				mps -ik $1
+				paket_inkur_oto $1
 				ryaz 33 "$1 sürüm güncellemesi yapıldı"
 			else
 				ryaz 31 "$1 sürüm güncellemesi yapılmadı"
@@ -463,7 +463,7 @@ devir_kontrol(){
 			done	
 			if [ "$gun_onay" = "e" ];then
 				paket_sil "$1" "evet"
-				mps -ik $1
+				paket_inkur_oto $1
 				ryaz 33 "$1 devir güncellemesi yapıldı"
 			else
 				ryaz 31 "$1 devir güncellemesi yapılmadı"
