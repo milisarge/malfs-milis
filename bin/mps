@@ -898,7 +898,7 @@ git_guncelle() {
 		if grep -q "Already\ up-to-date" $LOGDIZIN/mps-git.log; then
 			ryaz 32 "git deposu güncel."
 		else
-			ryaz 32 `cat $LOGDIZIN/mps-git.log`
+			#ryaz 32 `cat $LOGDIZIN/mps-git.log`
 			ryaz 32 "git deposu güncellendi."
 		fi
 		#baslangic betiklerinin guncellenmesi
