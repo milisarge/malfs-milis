@@ -1,9 +1,8 @@
-# Description: Perl symbol table access and dumping
-# URL: URL: http://search.cpan.org/dist/Devel-Symdump
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
-run=( perl )
+# Description: Perl sembol tablosuna erişim ve boşaltma
+# URL: http://search.cpan.org/dist/Devel-Symdump
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-devel-symdump
 version=2.11
 release=1
@@ -21,7 +20,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
