@@ -1,6 +1,7 @@
-# Description: A collection of programs that operate on patch files.
+# Description: Düzeltme eki dosyaları üzerinde çalışan bir program koleksiyonu.
 # URL: http://cyberelk.net/tim/software/patchutils/
 # Packager: milisarge
+# Depends on:
 
 name=patchutils
 version=0.3.2

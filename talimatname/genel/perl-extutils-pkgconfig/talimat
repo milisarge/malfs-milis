@@ -1,8 +1,8 @@
-# Description: Perl connector for pkgconfig
-# URL: http://www.gtkperl.org
-# Packager: pierre at nutyx dot org
+# Description: Pkgconfig için Perl bağlayıcısı
+# URL: http://search.cpan.org/~xaoc/ExtUtils-PkgConfig-1.15/lib/ExtUtils/PkgConfig.pm
+# Packager: milisarge
 # Depends on: perl-extutils-depends 
-run=( perl )
+
 name=perl-extutils-pkgconfig
 version=1.15
 release=1

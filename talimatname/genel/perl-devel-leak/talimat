@@ -1,5 +1,5 @@
-# Description: Utility for looking for perl objects that are not reclaimed.
-# URL: URL: http://search.cpan.org/dist/Devel-Symdump
+# Description: Geri kazanılmayan perl nesneleri aramak için yardımcı program.
+# URL: https://metacpan.org/pod/Devel::Leak
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: perl
 
@@ -25,7 +25,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)

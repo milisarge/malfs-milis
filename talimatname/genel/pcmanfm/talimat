@@ -1,9 +1,8 @@
+# Description: Son derece hızlı, hafif, sekmeli tarama özellikli zengin dosya yöneticisi içerir.
 # URL: http://pcmanfm.sourceforge.net/
-# Maintainer: git.lxde.org/gitweb/?p=debian/pcmanfm.git;a=summary
 # Packager: milisarge@gmail.com
-# Depends on: libfm, lxde-menu-data
+# Depends on: libfm lxde-menu-data
 
-description="contains an extremely fast, lightweight, yet feature-rich file manager with tabbed browsing"
 name=pcmanfm
 version=1.2.4
 release=1
