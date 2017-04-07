@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.6"
+versiyon="0.9.7"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -1024,6 +1024,35 @@ gitayar_kontrol(){
 	fi
 }
 
+kirik_kontrol_sistem(){
+	local onek sonek
+	onek="'"
+	sonek="'"
+	for paket in `ls /var/lib/pkg/DB/`
+	do	
+		ryaz 33 $paket "kontrol ediliyor."
+		kirik_kontrol_paket $paket
+		ryaz 33 $paket "kontrol edildi."
+	done
+}
+
+kirik_kontrol_paket(){
+	local onek sonek
+	onek="'"
+	sonek="'"
+	for kdosya in `kurulum_dosya_listele $1`
+	do	
+		dosya=${kdosya#$onek}
+		dosya=${dosya%$sonek}
+		#echo "${dosya}"
+		if [ -f $dosya ];then
+			if [[ $(milis-ldd -d $dosya | grep not\ found) ]] ;then 
+				echo $kdosya 
+			fi
+		fi
+	done
+}
+
 kurulum_dogrulama(){
 	for kuruland in `ls $VT`
 	do
@@ -1247,10 +1276,21 @@ ayarlar() {
 			-kdl)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
-					hataloglama "paket ismi eksik"
+					hataloglama "(-kdl) paket ismi eksik"
 					exit 1
 				fi
 				kurulum_dosya_listele "$2" ;;	
+			#kırık kontrol paket: bir paketin sistemde kırık kontrolü
+			-kkp)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					hataloglama "(-kkp) paket ismi eksik"
+					exit 1
+				fi
+				kirik_kontrol_paket "$2" ;;
+			#kırık kontrol sistemi: sistemin bütün paketlerinin kırık kontrolü
+			-kks)
+				kirik_kontrol_sistem ;;
 			-pak|--paketle)
 				if [ ! "$2" ]; then
 					ryaz 31 "paketlenecek dizin ismi eksik"
