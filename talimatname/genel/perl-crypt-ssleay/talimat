@@ -1,8 +1,8 @@
-# Description: OpenSSL glue that provides LWP https support
-# URL: OpenSSL glue that provides LWP https support
-# Packager: pierre at nutyx dot org
+# Description: Bu Perl modülü, LWP::UserAgent nesnesinin şifreli soket bağlantıları üzerinden GET, HEAD ve POST isteklerini gerçekleştirmesine izin vermek için LWP altında HTTPS protokolünü desteklemektedir.
+# URL: http://search.cpan.org/dist/Crypt-SSLeay/SSLeay.pm
+# Packager: milisarge
 # Depends on: perl perl-lwp-protocol-https perl-try-tiny perl-path-class 
-run=( perl )
+
 name=perl-crypt-ssleay
 version=0.72
 release=1
