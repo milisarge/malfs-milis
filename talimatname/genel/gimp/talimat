@@ -1,7 +1,7 @@
 # Description: GIMP, GNU Görüntü İşleme Programı'nın kısaltmasıdır. Fotoğraf rötuşlama, görüntü kompozisyonu ve görüntü yazarlığı gibi görevler için serbestçe dağıtılan bir programdır.
 # URL: http://www.gimp.org/
 # Packager: milisarge
-# Depends on: shared-mime-info gtk2 python-gtk curl libexif xorg-libxmu xorg-libxpm openexr gegl poppler libmng alsa-lib babl libgudev libwmf
+# Depends on: shared-mime-info gtk2 python-gtk curl libexif xorg-libxmu xorg-libxpm openexr gegl2 poppler libmng alsa-lib babl libgudev libwmf
 
 name=gimp
 version=2.8.20
