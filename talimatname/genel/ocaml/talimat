@@ -1,6 +1,6 @@
-# Description: Objective CAML Compiler
-# URL:         http://caml.inria.fr/
-# Packager: berlius at nutyx dot com
+# Description: Caml, program güvenliği ve güvenilirliği göz önünde bulundurularak tasarlanmış genel amaçlı bir programlama dilidir.
+# URL: http://caml.inria.fr/
+# Packager: milisarge
 # Depends on:  binutils gdbm
 
 name=ocaml

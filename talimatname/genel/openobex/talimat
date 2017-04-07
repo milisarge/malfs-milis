@@ -1,8 +1,8 @@
-# Description: Implements Object Exchange Protocol used for binary file transfers between devices. 
+# Description: Aygıtlar arasında ikili dosya aktarımları için kullanılan Nesne Değişimi Protokolünü uygular.
 # URL: http://dev.zuckschwerdt.org/openobex/
-# Maintainer: http://dev.zuckschwerdt.org/openobex/wiki/ContactUs
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: bluez libusb docbook-xsl
+
 name=openobex
 version=1.7.1
 release=1

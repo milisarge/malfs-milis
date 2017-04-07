@@ -1,6 +1,6 @@
-# Description: A program for creating, destroying, resizing, checking and copying partitions
+# Description: Bölüm oluşturma, yok etme, yeniden boyutlandırma, kontrol etme ve kopyalama için bir program
 # URL: http://www.gnu.org/software/parted/index.shtml
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: lvm2 
 
 name=parted

@@ -1,6 +1,6 @@
-# Description: os-prober
-# URL:        https://packages.debian.org/source/sid/os-prober
-# Maintainer:  milisarge
+# Description: Bir sürücü grubundaki diğer işletim sistemlerini bulmak için yardımcı program.
+# URL: https://packages.debian.org/source/sid/os-prober
+# Packager: milisarge
 # Depends on:
 
 name=os-prober

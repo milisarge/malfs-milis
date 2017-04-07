@@ -1,6 +1,6 @@
-# Description: Command-line version of the 7zip compressed file archiver
+# Description: 7zip sıkıştırılmış dosya arşivinin komut satırı sürümü
 # URL: http://p7zip.sourceforge.net
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: nasm yasm 
 
 name=p7zip

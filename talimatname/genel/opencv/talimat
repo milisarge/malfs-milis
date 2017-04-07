@@ -1,5 +1,5 @@
-# Description: Open Source Computer Vision Library
-# URL: http://opencv.willowgarage.com/wiki/
+# Description: OpenCV (Açık Kaynaklı Bilgisayar Vizyon Kütüphanesi) açık kaynaklı bir bilgisayar görme ve makine öğrenme yazılımı kütüphanesi.
+# URL: http://opencv.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libjpeg-turbo libtiff jasper libpng ffmpeg gstreamer xine-lib 
 
@@ -11,7 +11,7 @@ version=2.4.9
 release=1
 
 source=(http://downloads.sourceforge.net/opencvlibrary/$name-$version.zip )
-
+   
 build() {
         cd $name-*
         cmake . -DCMAKE_BUILD_TYPE=Release \

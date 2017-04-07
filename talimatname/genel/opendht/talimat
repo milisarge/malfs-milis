@@ -1,4 +1,4 @@
-# Description: A C++11 implementation of the Kademlia DHT (Distributed Hash Table)
+# Description: Kademlia DHT'nin (Distributed Hash Table) bir C ++ 11 uygulaması,
 # URL: https://github.com/savoirfairelinux/opendht
 # packager: milisarge
 # Depends on: cmake gnutls nettle msgpack-c python3-setuptools cython

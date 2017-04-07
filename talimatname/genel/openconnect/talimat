@@ -1,7 +1,7 @@
-# Description: An SSL VPN client.
-# URL:         http://infradead.org/openconnect
-# Packager:    milisarge
-# Depends on:  libxml2 openssl pkg-config vpnc zlib
+# Description: SSL VPN istemcisi.
+# URL: http://infradead.org/openconnect
+# Packager: milisarge
+# Depends on: libxml2 openssl pkg-config vpnc zlib
 
 name=openconnect
 version=7.06

@@ -1,7 +1,7 @@
-# Description: A set of programs called a Java Development Kit (JDK).
+# Description: Java Development Kit (JDK) adı verilen bir dizi program.
 # URL: http://openjdk.java.net/
 # Packager: milisarge@gmail.com
-
+# Depends on:
 
 name=openjdk
 version=8u60
