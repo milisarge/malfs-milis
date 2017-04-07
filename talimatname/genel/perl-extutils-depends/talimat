@@ -1,5 +1,5 @@
-# Description: Perl modülü
-# URL: http://www.gtkperl.org
+# Description: XS uzantılarına bağlı XS uzantılarını kolayca oluşturun
+# URL: http://search.cpan.org/~flora/ExtUtils-Depends-0.304/lib/ExtUtils/Depends.pm
 # Packager: milisarge
 # Depends on:
 
