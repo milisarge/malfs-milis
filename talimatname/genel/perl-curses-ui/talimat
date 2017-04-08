@@ -1,7 +1,6 @@
-# Description:  Perl module Archive::Curses:ui
-# URL:          http://search.cpan.org/~giraffed/Curses-1.34/
-# Maintainer:   milisarge
-# Packager :	milisarge
+# Description: Curses :: UI, Perl için nesne yönelimli bir kullanıcı arabirimi çerçevesidir.
+# URL: https://metacpan.org/pod/Curses::UI
+# Packager : milisarge
 # Depends on:   
 
 name=perl-curses-ui

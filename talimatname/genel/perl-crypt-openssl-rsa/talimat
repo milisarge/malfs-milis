@@ -1,8 +1,8 @@
-# Description: Interface to OpenSSL RSA methods
+# Description: OpenSSL RSA yöntemlerine arabirim
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-crypt-openssl-random perl-crypt-openssl-bignum 
-run=( perl )
+
 name=perl-crypt-openssl-rsa
 version=0.28
 release=1

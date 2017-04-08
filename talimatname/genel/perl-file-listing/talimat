@@ -1,8 +1,8 @@
-# Description: parse directory listing
+# Description: Ayrıştırma dizini listesi
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-http-date 
-run=( perl )
+
 name=perl-file-listing
 version=6.04
 release=1

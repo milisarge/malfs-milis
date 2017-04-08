@@ -1,6 +1,7 @@
-# Description: Perl Compatible Regular Expression libraries.
+# Description: Perl ile Uyumlu Normal İfade kütüphaneleri.
 # URL: http://www.pcre.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=pcre
 version=8.38

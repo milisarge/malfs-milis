@@ -1,6 +1,6 @@
-# Description: copies files to and from archives in several formats.
+# Description: Dosyaları çeşitli biçimlerde arşivlere ve arşivlerden kopyalar.
 # URL: http://downloads.sourceforge.net/heirloom
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on:
 
 name=pax

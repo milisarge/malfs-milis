@@ -1,8 +1,8 @@
-# Description: Perl connector for glib
+# Description: Glib için perl bağlayıcısı
 # URL: http://www.gtkperl.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl-extutils-depends gobject-introspection perl-extutils-pkgconfig 
-run=( perl )
+
 name=perl-glib
 version=1.304
 release=1

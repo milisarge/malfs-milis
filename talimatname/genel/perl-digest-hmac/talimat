@@ -1,8 +1,8 @@
-# Description: Keyed-Hashing for Message Authentication
+# Description: İleti Kimlik Doğrulaması için Anahtarlı-Hashing
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-digest-sha1 
-run=( perl )
+
 name=perl-digest-hmac
 version=1.03
 release=1
