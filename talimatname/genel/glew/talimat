@@ -1,19 +1,24 @@
 # Description: OpenGL Extension Wrangler Library (GLEW), çapraz platform açık kaynak C / C ++ uzantısı yükleme kitaplığıdır.
 # URL: http://glew.sourceforge.net/
 # Packager: milisarge
-# Depends on: xorg-mesa xorg-libxmu xorg-libxi
+# Depends on: xorg-mesa xorg-libxi xorg-libxmu
 
 name=glew
-version=1.13.0
+version=2.0.0
 release=1
-source=(http://downloads.sourceforge.net/project/glew/glew/$version/$name-$version.tgz)
+source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tgz)
 
 build() {
 	cd $name-$version
-	sed -i 's|lib64|lib|' config/Makefile.linux
-	sed -i '/^.PHONY: .*\.pc$/d' Makefile
-	install -dm755 $PKG/usr/lib/pkgconfig
 
-	make
-	make GLEW_DEST=$PKG/usr LIBDIR=$PKG/usr/lib BINDIR=$PKG/usr/bin install install.bin install.lib.mx
+	sed -i -e "s|lib64|lib|" config/Makefile.linux
+	sed -i -e '/^.PHONY: .*\.pc$/d' -i Makefile
+
+	make \
+		CC="${CC:-gcc}" \
+		LD="${CC:-gcc}" \
+		CFLAGS.EXTRA="$CFLAGS -fPIC" \
+		LDFLAGS.EXTRA="$LDFLAGS"
+
+	make GLEW_DEST="$PKG/usr" install
 }
