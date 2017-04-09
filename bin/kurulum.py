@@ -152,7 +152,7 @@ def sifreKontrol(kullisim):
 		kullaniciTanimla(kullisim,kullisim,kullsifre)
 		d.infobox(text=kullisim+" kullanıcısı başarıyla tanımlandı.")
 		time.sleep(1)
-		bolumSec()
+		diskSecim()
 	else:
 		status=d.msgbox(text="Şifreniz boş olamaz")
 		sifreKontrol(kullisim)
@@ -164,7 +164,7 @@ def diskSecim():
 	for i in range(len(diskIsımler)):
 		diskSecimler.append((diskIsımler[i],diskModeller[i]))
 	status,seciliDisk = d.menu(text="Lütfen bölümleme yapmak istediğiniz diski seçiniz:",choices=diskSecimler)
-	###os.system("cfdisk /dev/" + seciliDisk)
+	os.system("cfdisk /dev/" + seciliDisk)
 	bolumSec()
 
 def bolumSec():
