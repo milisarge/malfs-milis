@@ -1,0 +1,17 @@
+# Description: Taşınabilir oyun kütüphaneler takımı
+# URL: http://plib.sourceforge.net/
+# Packager: milisarge
+# Depends on: freeglut xorg-libxmu
+
+name=plib
+version=1.8.5
+release=1
+source=(http://plib.sourceforge.net/dist/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr \
+              --with-x
+  make  
+  make DESTDIR=$PKG install
+}
