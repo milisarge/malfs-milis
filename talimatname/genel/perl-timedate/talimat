@@ -1,9 +1,8 @@
-# Description: Date formating subroutines
-# URL: URL: http://search.cpan.org/dist/TimeDate/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
-run=( perl )
+# Description: Tarih biçimlendirme altprogramları
+# URL: http://search.cpan.org/dist/TimeDate/
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-timedate
 version=2.30
 release=1
@@ -22,7 +21,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
