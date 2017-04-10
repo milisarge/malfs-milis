@@ -1,8 +1,8 @@
-# Description: Nearly transparent SSL encapsulation for IO::Socket::INET
+# Description: "IO::Socket::INET" için neredeyse şeffaf SSL kapsülleme
 # URL: http://search.cpan.org/dist/IO-Socket-SSL/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-net-ssleay perl-uri 
-run=( perl )
+
 name=perl-io-socket-ssl
 version=1.988
 release=1
