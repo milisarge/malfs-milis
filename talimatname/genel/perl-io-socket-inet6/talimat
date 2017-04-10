@@ -1,8 +1,8 @@
-# Description: Object interface for AF_INET|AF_INET6 domain sockets
+# Description: IO::Socket::INET6, AF_INET veya AF_INET6 etki alanlarında yuvalar oluşturmak ve kullanmak için bir nesne arabirimi sağlar.
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-socket6 
-run=( perl )
+
 name=perl-io-socket-inet6
 version=2.72
 release=1
