@@ -1,4 +1,4 @@
-# Description: IPC::Run - system() and background procs w/ piping, redirs, ptys
+# Description: IPC::Run, dosyaları, boruları ve sözde tty'leri kullanarak alt süreçleri çalıştırmanıza ve etkileşime girmenizi sağlar.
 # URL: http://search.cpan.org/dist/IPC-Run
 # Packager: milisarge
 # Depends on: perl perl-io-tty 
