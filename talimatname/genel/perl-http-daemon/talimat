@@ -1,8 +1,8 @@
-# Description: A simple http server class
-# URL: A simple http server class
-# Packager: pierre at nutyx dot org
+# Description: Basit bir http sunucusu sınıfı
+# URL: https://metacpan.org/pod/HTTP::Daemon
+# Packager: milisarge
 # Depends on: perl perl-http-date perl-http-message perl-lwp-mediatypes 
-run=( perl )
+
 name=perl-http-daemon
 version=6.01
 release=1
