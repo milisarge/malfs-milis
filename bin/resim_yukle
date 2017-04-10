@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -s -F "img=@$1" https://milis-linux.appspot.com/upload
