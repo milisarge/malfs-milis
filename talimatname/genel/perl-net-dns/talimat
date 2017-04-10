@@ -1,8 +1,8 @@
-# Description: Perl Module: Interface to the DNS resolver
+# Description: Perl Modülü: DNS çözümleyicisine arayüz
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-digest-hmac perl-net-ip perl-io-socket-inet6 perl-socket6 
-run=( perl )
+
 name=perl-net-dns
 version=0.81
 release=1

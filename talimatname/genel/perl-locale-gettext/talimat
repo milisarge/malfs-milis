@@ -1,5 +1,5 @@
-# Description: Permits access from Perl to the gettext() family of functions
-# URL: URL: http://search.cpan.org/dist/gettext/
+# Description: Perl'den gettext () fonksiyon ailesine erişime izin verir.
+# URL: http://search.cpan.org/dist/gettext/
 # Packager: alihan-ozturk28@hotmail.com milisarge
 # Depends on: 
 

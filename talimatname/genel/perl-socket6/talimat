@@ -1,8 +1,8 @@
-# Description: A getaddrinfo/getnameinfo support module
+# Description: Bir getaddrinfo/getnameinfo destek modülü
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl 
-run=( perl )
+
 name=perl-socket6
 version=0.25
 release=2

@@ -1,8 +1,8 @@
-# Description: Various e-mail related modules
+# Description: Çeşitli e-posta ile ilgili modüller
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-timedate 
-run=( perl )
+
 name=perl-mailtools
 version=2.13
 release=1

@@ -1,8 +1,7 @@
-# Description: Perl Module: Easy manipulation of IPv4 and IPv6 addresses
+# Description: Perl Modülü: IPv4 ve IPv6 adreslerinin kolay manipüle edilmesi
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl 
-run=( perl )
 
 name=perl-net-ip
 version=1.26

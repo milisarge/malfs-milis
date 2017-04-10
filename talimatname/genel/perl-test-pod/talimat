@@ -1,5 +1,5 @@
-# Description: Check for POD errors in files
-# URL: URL: http://search.cpan.org/dist/Test-Pod/
+# Description: Dosyalardaki POD hatalarını kontrol etme
+# URL: http://search.cpan.org/dist/Test-Pod/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: perl
 

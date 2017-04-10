@@ -1,8 +1,8 @@
-# Description: Low-level HTTP connection (client)
+# Description: Düşük düzey HTTP bağlantısı (istemci)
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl 
-run=( perl )
+
 name=perl-net-http
 version=6.06
 release=1

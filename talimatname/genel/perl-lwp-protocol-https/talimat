@@ -1,8 +1,8 @@
-# Description: Provide https support for LWP::UserAgent
-# URL: Provide https support for LWP::UserAgent
-# Packager: pierre at nutyx dot org
+# Description: LWP :: UserAgent için https desteği sağlar
+# URL: http://search.cpan.org/~gaas/LWP-Protocol-https-6.04/lib/LWP/Protocol/https.pm
+# Packager: milisarge
 # Depends on: perl perl-io-socket-ssl perl-mozilla-ca perl-net-http perl-libwww 
-run=( perl )
+
 name=perl-lwp-protocol-https
 version=6.04
 release=1
