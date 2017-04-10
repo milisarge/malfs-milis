@@ -1,9 +1,8 @@
-# Description: Rounded or exact English expression of durations
-# URL: URL: http://search.cpan.org/dist/Time-Duration 
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: perl-test-pod perl-test-pod-coverage 
-run=( perl )
+# Description: Yuvarlak veya kesin İngilizce sürelerin ifadesi
+# URL: http://search.cpan.org/dist/Time-Duration 
+# Packager: milisarge
+# Depends on: perl perl-test-pod perl-test-pod-coverage 
+
 name=perl-time-duration
 version=1.1
 release=1
@@ -22,7 +21,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
