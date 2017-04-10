@@ -1,9 +1,8 @@
-# Description: CPAN Test::Pod::Coverage module
+# Description: CPAN Test::Pod::Kapsama modülü
 # URL: URL: http://search.cpan.org/dist/Test-Pod-Coverage/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: perl-pod-coverage 
-run=( perl )
+# Packager: milisarge
+# Depends on: perl perl-pod-coverage 
+
 name=perl-test-pod-coverage
 version=1.08
 release=1
