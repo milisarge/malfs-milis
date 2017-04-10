@@ -1,8 +1,8 @@
-# Description: Mozilla's CA cert bundle in PEM format
+# Description: PEM formatında Mozilla CA sertifika paketi
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl 
-run=( perl )
+
 name=perl-mozilla-ca
 version=20130114
 release=1
