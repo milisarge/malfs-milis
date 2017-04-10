@@ -1,9 +1,8 @@
-# Description: Provide an interface to TTYs and PTYs
-# URL: URL: http://search.cpan.org/dist/IO-Tty/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
-run=( perl )
+# Description: TTY'lere ve PTY'lere bir arayüz sağlama
+# URL: http://search.cpan.org/dist/IO-Tty/
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-io-tty
 version=1.11
 release=1
