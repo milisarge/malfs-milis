@@ -1,8 +1,8 @@
-# Description: Perl module to manage IP addresses and subnets
+# Description: IP adreslerini ve alt ağları yönetmek için Perl modülü
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl 
-run=( perl )
+
 name=perl-netaddr-ip
 version=4.075
 release=1
