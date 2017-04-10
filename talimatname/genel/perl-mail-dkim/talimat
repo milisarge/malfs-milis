@@ -1,8 +1,8 @@
-# Description: Implements DomainKeys Identified Mail (DKIM)
+# Description: İnternet postasını DKIM/DomainKey imzaları ile imzalar/doğrular
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-crypt-openssl-rsa perl-digest-sha1 perl-mailtools perl-net-dns 
-run=( perl )
+
 name=perl-mail-dkim
 version=0.40
 release=1
