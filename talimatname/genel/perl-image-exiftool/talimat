@@ -1,8 +1,8 @@
-# Description: Generates and rewritten exif info in the raw files
+# Description: Ham dosyalardaki exif bilgilerini oluşturur ve yeniden yazar
 # URL: http://search.cpan.org/~exiftool/Image-ExifTool/
-# Packager: piernov  piernov at piernov dot org
-# Depends on: 
-run=( perl )
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-image-exiftool
 version=9.90
 release=1
