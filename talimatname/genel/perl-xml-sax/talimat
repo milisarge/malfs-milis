@@ -1,9 +1,8 @@
-# Description: Simple API for XML
-# URL: URL: http://search.cpan.org/dist/XML-SAX
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: perl-xml-namespacesupport perl-xml-sax-base 
-run=( perl )
+# Description: XML için basit API
+# URL: http://search.cpan.org/dist/XML-SAX
+# Packager: milisarge
+# Depends on: perl perl-xml-namespacesupport perl-xml-sax-base 
+
 name=perl-xml-sax
 version=0.99
 release=1
@@ -25,7 +24,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
