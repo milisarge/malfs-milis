@@ -1,4 +1,4 @@
-# Description : KDE Plasma Desktop 
+# Description : KDE Plasma Masaüstü
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: xorg plasma-kwin plasma-workspace kf5-attica kf5-baloo kf5-karchive kf5-kauth kf5-kbookmarks kf5-kcmutils kf5-kcodecs kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdeclarative kf5-kded kf5-kdelibs4support kf5-kemoticons kf5-kglobalaccel kf5-kguiaddons kf5-ki18n kf5-kiconthemes kf5-kio kio-extras kf5-kitemviews kf5-kjobwidgets kf5-knewstuff kf5-knotifications kf5-knotifyconfig kf5-kparts kf5-kpeople kf5-krunner kf5-kservice kf5-kwallet kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui kf5-solid kf5-sonnet phonon-qt5 libxcb xcb-util-image libcanberra pulseaudio plasma-breeze plasma-kde-cli-tools plasma-oxygen desktop-file-utils xdg-utils kf5-kactivities-stats kf5-kpackage 
