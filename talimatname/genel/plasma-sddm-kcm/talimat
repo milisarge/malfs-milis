@@ -1,4 +1,4 @@
-# Description : KDE Config Module for SDDM.
+# Description : SDDM için KDE Yapılandırma Modülü
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk@hotmail.com
 # Depends on: kf5-extra-cmake-modules sddm qt5 kf5-kio kf5-kauth kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kxmlgui xorg-libx11 xcb-util-image libxcb xorg-libxcursor
