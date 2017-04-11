@@ -1,8 +1,8 @@
-# Description: perldoc (Official Perl documentation)
-# URL: URL: http://perldoc.perl.org 
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
+# Description: Perldoc (Resmi Perl belgeleri)
+# URL: http://perldoc.perl.org 
+# Packager: milisarge
+# Depends on:
+
 name=perldoc
 version=5.20.1
 release=1
