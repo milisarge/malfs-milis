@@ -1,8 +1,8 @@
-# Description: Library for Uniform Resource Identifiers Perl
-# URL: http://search.cpan.org/~gaas/URI-1.35/URI.pm
-# Packager: pierre at nutyx dot org
-# Depends on: 
-run=( perl )
+# Description: Tekdüzen Kaynak Tanımlayıcıları (mutlak ve göreceli)
+# URL: http://search.cpan.org/~gaas/URI-1.60/
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-uri
 version=1.67
 release=1
