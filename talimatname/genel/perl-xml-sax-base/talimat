@@ -1,9 +1,8 @@
-# Description: Base class SAX Drivers and Filters
-# URL: URL: http://search.cpan.org/dist/XML-SAX-Base
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
-run=( perl )
+# Description: Temel sınıf SAX Sürücüleri ve Filtreleri
+# URL: http://search.cpan.org/dist/XML-SAX-Base
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-xml-sax-base
 version=1.08
 release=1
@@ -23,7 +22,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
