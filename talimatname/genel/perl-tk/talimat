@@ -1,4 +1,4 @@
-# Description: A graphical user interface toolkit for Perl.
+# Description: Perl için bir grafik kullanıcı arabirimi araç takımı.
 # URL: http://search.cpan.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: perl perl-devel-leak perl-test-pod xorg-server libpng libjpeg-turbo tk
