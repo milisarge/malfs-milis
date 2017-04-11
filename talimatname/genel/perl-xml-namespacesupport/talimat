@@ -1,15 +1,13 @@
-# Description: Generic namespace helpers (ported from SAX2)
-# URL: URL: http://search.cpan.org/dist/XML-NamespaceSupport
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
-run=( perl )
+# Description: Genel ad alanı yardımcıları (SAX2'den aktarılan)
+# URL: http://search.cpan.org/dist/XML-NamespaceSupport
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-xml-namespacesupport
 version=1.11
 release=1
 
-source=(
-http://www.cpan.org/authors/id/P/PE/PERIGRIN/XML-NamespaceSupport-$version.tar.gz)
+source=( http://www.cpan.org/authors/id/P/PE/PERIGRIN/XML-NamespaceSupport-$version.tar.gz)
 
 build() {
     cd XML-NamespaceSupport-$version
