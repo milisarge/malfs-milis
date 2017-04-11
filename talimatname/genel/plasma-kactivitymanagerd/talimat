@@ -1,4 +1,4 @@
-# Description : Core components for the KDE Activity concept
+# Description : KDE Etkinlik kavramı için çekirdek bileşenler
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: qt5 kf5-extra-cmake-modules kf5-kconfig kf5-kdbusaddons kf5-ki18n kf5-kcoreaddons kf5-kwindowsystem kf5-kglobalaccel kf5-kxmlgui kf5-kio

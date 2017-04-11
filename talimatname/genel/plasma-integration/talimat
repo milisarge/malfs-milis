@@ -1,8 +1,7 @@
-# Description : Qt Platform Theme integration plugins for the Plasma workspaces
+# Description : Plazma çalışma alanları için Qt Platform Tema entegrasyonu eklentileri.
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules kf5-kconfig kf5-kconfigwidgets kf5-ki18n kf5-kiconthemes kf5-kio kf5-knotifications kf5-kwidgetsaddons kf5-kwayland plasma-breeze
-
 
 name=plasma-integration
 version=5.8.1

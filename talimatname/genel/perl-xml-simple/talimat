@@ -1,8 +1,8 @@
-# Description: Easy API to maintain XML
+# Description: XML'i korumak için kolay API
 # URL: http://search.cpan.org/~grantm/
-# Packager: pierre at nutyx dot org
-# Depends on: 
-run=( perl )
+# Packager: milisarge
+# Depends on: perl
+
 name=perl-xml-simple
 version=2.20
 release=1

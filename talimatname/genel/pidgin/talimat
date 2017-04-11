@@ -1,11 +1,8 @@
-# Description: Pidgin is a Gtk+ 2 instant messaging client that can connect with a wide range of networks including AIM, ICQ, GroupWise, MSN, Jabber, IRC, Napster, Gadu-Gadu, SILC, Zephyr and Yahoo!
+# Description: Pidgin, AIM, ICQ, GroupWise, MSN, Jabber, IRC, Napster, Gadu-Gadu, SILC, Zephyr ve Yahoo gibi geniş bir ağ yelpazesiyle bağlanabilen bir Gtk+ 2 anında mesajlaşma istemcisidir.
 # URL:  http://www.pidgin.im
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: desktop-file-utils gtk2 gstreamer1 libxml2 perl-xml-parser gnutls nss nspr xorg-libxscrnsaver xorg-libxrandr xorg-libxinerama xorg-libsm xscreensaver startup-notification hicolor-icon-theme libidn dbus networkmanager
 
-run=(desktop-file-utils)
-
-description="Instant messaging client that can connect with a wide range of networks"
 name=pidgin
 version=2.10.12
 release=1

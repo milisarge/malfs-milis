@@ -1,8 +1,8 @@
-# Description: Minimal try/catch with proper localization of 
+# Description: $@ Öğesinin uygun yerelleştirilmesiyle minimum deneme/yakalama
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl 
-run=( perl )
+
 name=perl-try-tiny
 version=0.22
 release=1

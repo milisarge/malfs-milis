@@ -1,6 +1,6 @@
-# Description: Perl module for processing xml document
+# Description: Xml belgesini işlemek için Perl modülü
 # URL: http://search.cpan.org/dist/XML-Parser/
-# Packagers: pierre at nutyx dot org
+# Packagers: milisarge
 # Depends on: perl
 
 name=perl-xml-parser

@@ -1,7 +1,7 @@
-# Description: MySQL module for PHP
-# URL:         http://www.php.net
-# Packager:  milisarge
-# Depends on:  mariadb php
+# Description: PHP için MySQL modulü
+# URL: http://www.php.net
+# Packager: milisarge
+# Depends on: mariadb php
 
 name=php-mysql
 version=5.6.16

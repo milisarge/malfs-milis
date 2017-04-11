@@ -1,4 +1,4 @@
-# Description : phonon-backend-gstreamer plugin audio for KDE
+# Description : Bu pakette, GStreamer medya çerçevesini kullanan bir Phonon arka planı bulunur.
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: phonon-qt5 gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad gstreamer1-plugins-ugly libxml2 pulseaudio

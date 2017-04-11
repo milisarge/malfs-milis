@@ -1,6 +1,6 @@
-# Description: Gettext module for PHP
-# URL:         http://www.php.net
-# Packager:    milisarge
+# Description: Php için Gettext modülü
+# URL: http://www.php.net
+# Packager: milisarge
 # Depends on:
 
 name=php-gettext
