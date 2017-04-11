@@ -1,4 +1,4 @@
-# Description : Breeze widget theme for GTK 2 and 3 
+# Description : GTK 2 ve 3 için Breeze (esinti) widget teması
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-frameworkintegration kf5-kcmutils kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kguiaddons kf5-ki18n kf5-kwidgetsaddons kf5-kwindowsystem plasma-kdecoration libxcb plasma-kde-cli-tools
