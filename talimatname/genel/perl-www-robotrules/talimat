@@ -1,8 +1,8 @@
-# Description: Database of robots.txt-derived permissions
+# Description: Robots.txt türevli izinlerin veritabanı
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: perl perl-uri 
-run=( perl )
+
 name=perl-www-robotrules
 version=6.02
 release=2
