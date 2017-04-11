@@ -1,4 +1,4 @@
-# Description : Integrate the Bluetooth technology within KDE workspace and applications 
+# Description : Bluetooth teknolojisini KDE çalışma alanı ve uygulamaları içine entegre edin
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-bluez-qt kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kded kf5-kdbusaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-knotifications kf5-kwidgetsaddons kf5-kwindowsystem kf5-plasma-framework shared-mime-info plasma-kde-cli-tools 
