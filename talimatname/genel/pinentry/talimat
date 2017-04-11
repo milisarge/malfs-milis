@@ -1,6 +1,6 @@
-# Description: a collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
-# URL: 	http://www.gnupg.org/
-# Packager: pierre at nutyx dot org
+# Description: Assuan protokolünü kullanan basit bir PIN veya parolalı giriş diyaloglarının bir koleksiyonu
+# URL: http://www.gnupg.org/
+# Packager: milisarge
 # Depends on: libcap libsecret libassuan
 
 name=pinentry
