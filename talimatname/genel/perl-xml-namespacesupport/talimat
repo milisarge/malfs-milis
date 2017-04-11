@@ -20,7 +20,3 @@ build() {
         find $PKG -name "$i" -exec rm -rf {} \;
     done
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
