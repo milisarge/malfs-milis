@@ -1,4 +1,4 @@
-# Description : API multimedia of KDE. the replaces the old aRts, which is more supported by KDE.
+# Description : KDE'nin API multimedya programı. KDE tarafından daha fazla desteklenen eski aRts'in yerini alıyor.
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: cmake kf5-extra-cmake-modules glib qt5 pulseaudio
