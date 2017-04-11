@@ -1,4 +1,4 @@
-# Description : Plasma applet for audio volume management using PulseAudio 
+# Description : PulseAudio'yu kullanarak ses hacmi yönetimi için plazma uygulaması
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk@hotmail.com
 # Depends on: kf5-plasma-framework kf5-kcoreaddons kf5-kdeclarative kf5-kglobalaccel kf5-ki18n libcanberra pulseaudio qt5
