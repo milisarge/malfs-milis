@@ -1,4 +1,4 @@
-# Description : Plugin based library to create window decorations 
+# Description : Plugin tabanlı kitaplık pencere süslemeleri oluşturmak için
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: cmake kf5-extra-cmake-modules qt5
