@@ -1,5 +1,5 @@
-# Description="Python bindings to libparted"
-# Url="https://fedorahosted.org/pyparted/"
+# Description: Libparted'e Python bağları
+# URL: https://fedorahosted.org/pyparted/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: parted python3
 
