@@ -9,30 +9,25 @@ release=1
 
 source=( http://ftp.postgresql.org/pub/source/v$version/$name-$version.tar.bz2)
 build() {
-# service
-source /etc/blfs-bootscripts
-wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-tar xvf $scripts-$scriptsversion.tar.bz2
-
 
 cd $name-$version
-# prepare
+# Hazırlama
 sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h
 
-# configure
+# Yapılandırma
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --with-docdir=/usr/share/doc/$name-$version \
 --enable-thread-safety
 
-# build
+# inşa etme
 make
 
-# install
+# kurulum
 make DESTDIR=$PKG install
 make DESTDIR=$PKG install-docs
 
-# install service
+# servis kur
 
 cd $SRC/$scripts-$scriptsversion
 make DESTDIR=$PKG install-$name
