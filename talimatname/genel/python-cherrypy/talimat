@@ -1,8 +1,8 @@
-# Description: A pythonic, object-oriented web development framework.
-# URL: URL: http://www.cherrypy.org/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: python 
+# Description: Pythonic, nesne yönelimli bir web geliştirme çerçevesi.
+# URL: http://www.cherrypy.org/
+# Packager: milisarge
+# Depends on: python
+
 name=python-cherrypy
 version=3.6.0
 release=1
@@ -14,7 +14,3 @@ build() {
     cd CherryPy-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
