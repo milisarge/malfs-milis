@@ -1,6 +1,6 @@
-# Description: Platform independent library for real-time MIDI input/output
+# Description: Gerçek zamanlı MIDI giriş/çıkış için platform bağımsız kütüphane
 # URL: http://portmedia.sourceforge.net
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake glib alsa-lib openjdk
 
 name=portmidi
