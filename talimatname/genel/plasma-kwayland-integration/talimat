@@ -1,4 +1,4 @@
-# Description : Provides integration plugins for various KDE frameworks for the wayland windowing system 
+# Description : Wayland pencere sistemine çeşitli KDE çerçeveleri için entegrasyon eklentileri sağlar.
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: cmake kf5-extra-cmake-modules wayland kf5-kwayland kf5-kwindowsystem kf5-kidletime
