@@ -1,9 +1,7 @@
-# Description: Advanced object-relational database management system (ORDBMS). 
+# Description: Gelişmiş nesne-ilişkisel veritabanı yönetim sistemi (ORDBMS). 
 # URL: http://www.postgresql.org/docs
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge
 # Depends on: python libxml2 libxslt openldap
-
-# variable groupe
 
 name=postgresql
 version=9.5.0
