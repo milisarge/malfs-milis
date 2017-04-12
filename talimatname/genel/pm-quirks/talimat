@@ -1,6 +1,7 @@
-# Description: pm-utils is a small collection of scripts that handle suspend and resume on behalf of HAL
+# Description: Pm-utils, askıya alma ve HAL adına devam etmeyi içeren küçük bir komut koleksiyonudur.
 # URL: http://pm-utils.freedesktop.org/wiki/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=pm-quirks
 version=20100619
