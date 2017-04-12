@@ -1,7 +1,8 @@
-# Description: Python CUPS Bindings
+# Description: Python CUPS Bağlantıları
 # URL: http://cyberelk.net/tim/software/pycups/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
-# Depends on: cups python 
+# Packager: milisarge
+# Depends on: cups python
+
 name=python-cups
 version=1.9.73
 release=1
