@@ -1,4 +1,4 @@
-# Description : A library that allows developers to access PolicyKit API with a nice Qt-style API
+# Description : Geliştiricilerin güzel bir Qt tarzı API ile PolicyKit API'sine erişmelerini sağlayan bir kütüphane
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: polkit qt5
