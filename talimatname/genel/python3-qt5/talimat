@@ -1,4 +1,4 @@
-# Description: connector python for qt5
+# Description: Qt5 için bağlayıcı python
 # URL: http://www.riverbankcomputing.co.uk/software/pyqt/intro
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: dbus-python python3-sip qt5 qt5-webkit python3-opengl python3
