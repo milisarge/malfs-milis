@@ -1,4 +1,4 @@
-# Description : Manages the power consumption settings of a Plasma Shell 
+# Description : Bir Plazma Kabuğunun güç tüketimi ayarlarını yönetir
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk@hotmail.com
 # Depends on: plasma-workspace kf5-kauth polkit-qt5 kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdelibs4support kf5-kglobalaccel kf5-ki18n kf5-kidletime kf5-kio kf5-knotifications kf5-knotifyconfig kf5-kservice kf5-kwidgetsaddons kf5-kxmlgui kf5-solid plasma-libkscreen plasma-workspace kf5-bluez-qt 
