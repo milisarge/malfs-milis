@@ -1,6 +1,6 @@
-# Description: connector Python2 for the library cairo
+# Description: Cairo kütüphanesi için Python2 konektörü
 # URL: http://www.cairographics.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: cairo 
 
 name=python-cairo
