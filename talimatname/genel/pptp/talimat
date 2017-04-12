@@ -1,6 +1,6 @@
-# Description: Client for the proprietary Microsoft Point-to-Point Tunneling Protocol, PPTP.
+# Description: Tescilli Microsoft Noktadan Noktaya Tünel Protokolü, PPTP için istemci.
 # URL: http://pptpclient.sourceforge.net/
-# Packager: guy_
+# Packager: milisarge
 # Depends on: ppp 
 
 name=pptp
