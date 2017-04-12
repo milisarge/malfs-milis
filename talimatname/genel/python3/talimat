@@ -1,6 +1,6 @@
-# Description: Next generation of the python high-level scripting language
+# Description: Sonraki nesil python üst düzey betik dili
 # URL: http://www.python.org
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: sqlite expat 
 
 name=python3

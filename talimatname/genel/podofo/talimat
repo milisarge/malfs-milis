@@ -1,7 +1,8 @@
-# Description: C++ library to work with the PDF file format
+# Description: C ++ kütüphanesinin PDF dosya formatıyla çalışması için.
 # URL: http://podofo.sourceforge.net
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake xorg-fontconfig freetype libidn libpng libtiff lua51 
+
 name=podofo
 version=0.9.3
 release=1

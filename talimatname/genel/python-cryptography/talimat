@@ -1,4 +1,4 @@
-# Description: A package designed to expose cryptographic recipes and primitives to Python developers.
+# Description: Şifreleme tariflerini ve ilkelleri Python geliştiricilerine sunacak şekilde tasarlanmış bir paket
 # URL: http://pypi.python.org/pypi/cryptography
 # Packager: milisarge
 # Depends on: python-six python-cffi python-enum34 python-pyasn1

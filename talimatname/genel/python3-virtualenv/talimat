@@ -1,7 +1,8 @@
-# Description: Tool to create isolated Python environments.
-# URL: URL: https://virtualenv.pypa.io/ 
+# Description: İzole edilmiş Python ortamları yaratmak için kullanılan araç.
+# URL: https://virtualenv.pypa.io/ 
 # Packager: milisarge
-# Depends on: python3 
+# Depends on: python3
+
 name=python3-virtualenv
 version=14.0.5
 release=1

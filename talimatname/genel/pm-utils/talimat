@@ -1,8 +1,7 @@
-# Description: Utilities and scripts for suspend and hibernate power management
+# Description: Askıya alma ve hazırda bekletme güç yönetimi için yardımcı programlar ve komut dosyaları
 # URL: http://pm-utils.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: pm-quirks 
-
 
 name=pm-utils
 version=1.4.1

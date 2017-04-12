@@ -1,6 +1,6 @@
-# Description: contains the bindings Python2 for the components of heart GNOME Accessibility
+# Description: Bu pakette, GNOME Erişilebilirlik'in temel bileşenleri için Python bağları bulunmaktadır.
 # URL: http://www.cairographics.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python-gobject at-spi2-core 
 
 name=python-atspi

@@ -1,7 +1,6 @@
-# Description: The popt libraries which are used by some programs to parse command-line options.
+# Description: Bazı programlar tarafından komut satırı seçeneklerini ayrıştırmak için kullanılan popt kitaplıkları.
 # URL: http://freshmeat.net/projects/popt/
-# Maintainer: - n3npq <http://freecode.com/users/n3npq>
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=popt

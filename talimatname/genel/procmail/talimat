@@ -1,7 +1,8 @@
-# URL:                 http://www.ring.gr.jp/archives/net/mail/procmail/
-# Packager:		berlius at nutyx dot com
+# Description: Gelen postaları filtrelemek ve sıralamak için özerk bir posta işlemcisi
+# URL: http://www.ring.gr.jp/archives/net/mail/procmail/
+# Packager: milisarge
 # Depends on:	
-description="An autonomous mail processor for filtering and sorting incoming mail"
+
 name=procmail
 version=3.22
 release=1

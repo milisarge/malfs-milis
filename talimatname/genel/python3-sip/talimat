@@ -1,4 +1,4 @@
-# Description: A tool that makes it easy to create Python bindings for C and C++ libraries
+# Description: C ve C ++ kitaplıkları için Python bağlamaları oluşturmayı kolaylaştıran bir araç
 # URL: http://www.riverbankcomputing.co.uk/software/sip/intro
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: python3 

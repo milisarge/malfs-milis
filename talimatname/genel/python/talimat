@@ -1,6 +1,6 @@
-# Description: Next generation of the python high-level scripting language
+# Description: Sonraki nesil python üst düzey betik dili
 # URL: URL: http://www.python.org
-# Packager: milis
+# Packager: milisarge
 # Depends on: libffi sqlite 
 
 _pybasever=2.7

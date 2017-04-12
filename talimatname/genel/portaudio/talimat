@@ -1,6 +1,6 @@
-# Description: A free, cross-platform, open source, audio I/O library
+# Description: Ücretsiz, çapraz platform, açık kaynak, ses G/Ç kitaplığı
 # URL: http://www.portaudio.com
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: jack 
 
 name=portaudio

@@ -1,6 +1,6 @@
-# Description: Application development toolkit for controlling system-wide privileges
+# Description: Sistem genelinde ayrıcalıkları kontrol etmek için uygulama geliştirme araç seti
 # URL: http://hal.freedesktop.org/docs/polkit
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: glib js1 gobject-introspection intltool libxslt docbook-xsl
 
 name=polkit

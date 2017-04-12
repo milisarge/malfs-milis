@@ -1,15 +1,13 @@
-# Description: A featureful, general-purpose sound server
+# Description: Özellikli, genel amaçlı bir ses sunucusu
 # URL: http://www.pulseaudio.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: fftw intltool json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate 
-
 
 name=pulseaudio
 version=7.1
 release=1
 
 source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz)
-
 
 build() {
 unset MAKEFLAGS

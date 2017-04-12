@@ -1,5 +1,5 @@
-# Description: PDF rendering library based on xpdf 3.0
-# URL: URL: http://poppler.freedesktop.org/
+# Description: Xpdf 3.0'a dayalı PDF işleme kütüphanesi
+# URL: http://poppler.freedesktop.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: poppler xorg-libxxf86vm libpng xorg-fontconfig libjpeg-turbo cairo libxml2 openjpeg lcms lcms2 qt4
 

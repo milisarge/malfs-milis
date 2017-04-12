@@ -1,4 +1,4 @@
-# Description: Easily download, build, install, upgrade, and uninstall Python packages
+# Description: Python paketlerini kolayca indirin, oluşturun, yükleyin, yükseltin ve kaldırın
 # URL: https://bitbucket.org/pypa/setuptools
 # Packager: milisarge
 # Depends on: python3

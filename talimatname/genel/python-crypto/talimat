@@ -1,8 +1,8 @@
-# Description: Collection of cryptographic algorithms and protocols implemented for use from Python
-# URL: URL: http://www.dlitz.net/software/pycrypto/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: python 
+# Description: Python için şifreleme modülleri.
+# URL: http://www.dlitz.net/software/pycrypto/
+# Packager: milisarge
+# Depends on: python
+
 name=python-crypto
 version=2.6.1
 release=1
@@ -15,7 +15,3 @@ build() {
     python2 setup.py build
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
