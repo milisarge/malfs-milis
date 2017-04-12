@@ -1,4 +1,4 @@
-# Description: C parser and AST generator written in Python.
+# Description: C ayrıştırıcı ve AST jeneratörü Python ile yazılmış.
 # URL: https://github.com/eliben/pycparser
 # Packager: milisarge
 # Depends on: python-setuptools
