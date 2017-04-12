@@ -1,10 +1,7 @@
-# Description: library for retrieving information on running processes and system utilization
+# Description: Çalışan süreçler ve sistem kullanımı hakkında bilgi almak için kütüphane
 # URL: https://github.com/giampaolo/psutil
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: python python-setuptools
-# Nice to have: PySensors hddtemp
-
 
 name=psutil
 version=3.1.1
