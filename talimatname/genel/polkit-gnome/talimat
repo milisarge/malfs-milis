@@ -1,6 +1,6 @@
-# Description: Legacy polkit authentication agent for GNOME
+# Description: GNOME için eski polkit kimlik doğrulama aracı
 # URL: http://hal.freedesktop.org/docs/polkit-gnome
-# Packager: b at juglas dot name
+# Packager: milisarge
 # Depends on: polkit gtk3 
 
 name=polkit-gnome
