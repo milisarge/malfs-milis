@@ -1,4 +1,4 @@
-# Description: connector Python3 for the library cairo
+# Description: Cairo kütüphanesi için Python3 konnektörü.
 # URL: http://www.cairographics.org/
 # Packager:alihan-ozturk28@hotmail.com
 # Depends on: python3 cairo
