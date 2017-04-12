@@ -1,8 +1,8 @@
-# URL: 			http://www.postfix.org
-# Packager: 	berlius at nutyx dot com
-# Depends on: 	db cyrus-sasl openssl icu mariadb openldap pcre postgresql sqlite
+# Description: Ana makinenizin diğer kullanıcılarına e-posta göndermek için Posta Aktarma Aracısı (MTA)
+# URL: http://www.postfix.org
+# Packager: milisarge
+# Depends on: db cyrus-sasl openssl icu mariadb openldap pcre postgresql sqlite
 
-description="Mail Transport Agent (MTA) for sending email to other users of your host machine"
 name=postfix
 version=3.0.3
 release=1
