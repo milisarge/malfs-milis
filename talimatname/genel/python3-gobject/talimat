@@ -1,4 +1,4 @@
-# Description: provides the links of Python 2 for the class GObject of GLib.
+# Description: GLib'in GObject sınıfı için Python 2'nin bağlantılarını sağlar.
 # URL: http://www.gnome.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: python3 python3-cairo gobject-introspection xorg-libxxf86vm libffi 
