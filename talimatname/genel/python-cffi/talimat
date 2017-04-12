@@ -1,4 +1,4 @@
-# Description: Foreign Function Interface for Python calling C code.
+# Description: Python çağıran C kodu için Yabancı Fonksiyon Arayüzü.
 # URL: http://cffi.readthedocs.org/
 # Packager: milisarge
 # Depends on: libffi python-cparser
