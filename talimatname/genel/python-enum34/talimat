@@ -1,4 +1,4 @@
-# Description: Python 3.4 Enum backported
+# Description: Python 3.4'ün enum paketinin arka portu. Bu modül, eski Python sürümleri için bu veri türünün bir arka portu sağlar.
 # URL: https://pypi.python.org/pypi/enum34
 # Packager: milisarge
 # Depends on: python-setuptools
