@@ -1,6 +1,6 @@
-# Description: connector python for the library librsvg
+# Description: Librsvg kütüphanesi için bağlayıcı python.
 # URL: http://www.gnome.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python-gtk librsvg 
 
 _name=gnome-python-desktop
