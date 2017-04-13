@@ -5,7 +5,7 @@
 
 name=ocaml-findlib
 _name=findlib
-version=1.5.6
+version=1.7.1
 release=1
 source=(http://download.camlcity.org/download/${_name}-$version.tar.gz)
 
@@ -16,9 +16,8 @@ build() {
     ./configure -bindir /usr/bin \
                 -config /etc/findlib.conf
                 
-    export prefix=$PKG
-    make -j1
-    make opt
-    make install
+    make -j1 all opt
+    make prefix="$PKG" install
+    install -m755 src/findlib/ocamlfind_opt "$pkgdir/usr/bin/"
     
 }
