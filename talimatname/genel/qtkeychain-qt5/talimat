@@ -1,6 +1,6 @@
-# Description : Provides support for secure credentials storage
+# Description : Güvenli kimlik bilgisi deposu için destek sağlar
 # URL: https://github.com/frankosterfeld/qtkeychain
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake qt5 icu
 
 
