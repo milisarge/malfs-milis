@@ -1,8 +1,8 @@
-# Description: Comprehensive HTTP client library, supporting many features.
-# URL: URL: http://code.google.com/p/httplib2/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: python 
+# Description: Birçok özelliği destekleyen kapsamlı HTTP istemci kütüphanesi.
+# URL: http://code.google.com/p/httplib2/
+# Packager: milisarge
+# Depends on: python
+
 name=python-httplib2
 version=0.9
 release=1
@@ -21,7 +21,3 @@ build() {
     #
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
