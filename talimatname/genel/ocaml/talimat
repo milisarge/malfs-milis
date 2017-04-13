@@ -1,12 +1,12 @@
 # Description: Caml, program güvenliği ve güvenilirliği göz önünde bulundurularak tasarlanmış genel amaçlı bir programlama dilidir.
 # URL: http://caml.inria.fr/
 # Packager: milisarge
-# Depends on:  binutils gdbm
+# Depends on:
 
 name=ocaml
-version=4.02.3
+version=4.04.0
 release=1
-source=(http://caml.inria.fr/pub/distrib/$name-4.02/$name-$version.tar.xz)
+source=(http://caml.inria.fr/pub/distrib/$name-${version%.*}/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
