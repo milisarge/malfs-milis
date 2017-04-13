@@ -1,8 +1,8 @@
-# Description: Urwid is a curses-based user interface library for Python.
-# URL: URL: http://excess.org/urwid/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
+# Description: Urwid, Curses tabanlı bir Python kullanıcı arabirimi kütüphanesi.
+# URL: http://excess.org/urwid/
+# Packager: milisarge
 # Depends on: python-setuptools 
+
 name=python-urwid
 version=1.2.1
 release=1
@@ -14,7 +14,3 @@ build() {
     cd urwid-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
