@@ -1,6 +1,6 @@
-# Description : A library to manipulate gettext files
+# Description : Gettext dosyalarını işlemek için bir kütüphane
 # URL: http://polib.readthedocs.org/en/latest/index.html
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: python
 
 name=python-polib
