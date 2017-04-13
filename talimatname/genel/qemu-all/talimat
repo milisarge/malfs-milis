@@ -1,7 +1,7 @@
-#Description:	QEMU is a processor emulator using dynamic translation to achieve good emulation speed (PC, PowerPC, PowerMac, sun, Mips, ARM etc...)
-#URL:    		http://www.qemu.org
-#Packager:		milisarge
-#Depends on: 	gtk2 gtk3 sdl glib python vte vte3 xorg-mesa nss lzo cyrus-sasl alsa-lib alsa-plugins alsa-utils curl check bluez ncurses nfs-utils libgcrypt libcap-ng gnutls libusb bzip2 usbutils bridge-utils
+#Description:	QEMU, iyi öykünme hızı elde etmek için dinamik çeviri kullanan bir işlemci öykünücüsüdür (PC, PowerPC, PowerMac, güneş, Mips, ARM vb.)
+#URL: http://www.qemu.org
+#Packager: milisarge
+#Depends on: gtk2 gtk3 sdl glib python vte vte3 xorg-mesa nss lzo cyrus-sasl alsa-lib alsa-plugins alsa-utils curl check bluez ncurses nfs-utils libgcrypt libcap-ng gnutls libusb bzip2 usbutils bridge-utils
 
 name=qemu-all
 version=2.6.0
@@ -21,7 +21,7 @@ build() {
       --disable-gtk \
       --localstatedir=/var
 
-  # fix include issues with libcap
+  # Düzeltme, libcap ile ilgili sorunları içerir
   sed -i -e '/#include "qemu\/xattr.h"/d' \
          -e 's|#include <sys/resource.h>|#include <sys/resource.h>\r\n#include "qemu\/xattr.h"|g' \
   fsdev/virtfs-proxy-helper.c
