@@ -1,6 +1,6 @@
-# Description: For expand the functions text of GTK for include the highlighting of the syntax.
+# Description: GtkSourceView widget'ı için Python bağları
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gtksourceview2 python-gtk 
 
 name=python-gtksourceview2
