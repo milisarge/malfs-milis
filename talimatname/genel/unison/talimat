@@ -1,0 +1,28 @@
+# Description: Dosya Yedekleme-Eşitleme Uygulaması
+# URL: http://www.cis.upenn.edu/~bcpierce/unison/
+# Packager:  milisarge
+# Depends on: ocaml
+
+name=unison
+version=git
+release=1
+source=()
+
+build() {
+	cd $DERLEME_KAYNAKDIZIN
+
+	if cd $name; then
+		git pull
+		make clean
+	else
+		git clone git://github.com/bcpierce00/$name $name
+		cd $name
+	fi
+
+	cd src
+
+	CFLAGS=""
+	make -j1 THREADS=true
+	install -Dm755 unison $PKG/usr/bin/unison
+	install -Dm755 unison-fsmonitor $PKG/usr/bin/unison-fsmonitor
+}
