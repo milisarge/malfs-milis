@@ -1,0 +1,16 @@
+# Description: ocaml derleme kurallarına göre derleme uygulaması
+# URL: https://github.com/ocaml/ocamlbuild/
+# Packager: milisarge
+# Depends on: ocaml
+
+name=ocamlbuild
+version=0.9.3
+release=1
+source=(https://github.com/ocaml/${name}/archive/$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make configure OCAML_NATIVE_TOOLS=false
+	make -j1
+	make DESTDIR="$PKG/" install
+}

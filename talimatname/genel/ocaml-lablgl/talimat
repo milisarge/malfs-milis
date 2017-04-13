@@ -1,0 +1,31 @@
+# Description: O'Caml kütüphane yöneticisi
+# URL: http://projects.camlcity.org/projects/findlib.html
+# Packager: milisarge
+# Depends on: ocaml camlp4 xorg-glu xorg-libxi xorg-libxmu
+
+name=ocaml-lablgl
+_name=lablgl
+version=1.05
+release=1
+source=(https://forge.ocamlcore.org/frs/download.php/1254/lablgl-$version.tar.gz)
+
+build() {
+	cd ${_name}-$version
+	
+	sed 17d Makefile.config.linux.mdk > Makefile.config	
+	make lib
+	make libopt
+	
+	make install BINDIR="$PKG/usr/bin/" \
+	LIBDIR="$PKG/usr/lib/ocaml/" \
+	DDLDIR="$PKG/usr/lib/ocaml/stublibs/" \
+	INSTALLDIR="$PKG/usr/lib/ocaml/lablGL/"
+	
+	install -Dm644 src/lablgl.cmxa "$PKG"/usr/lib/ocaml/lablgl.cmxa
+	
+	# stublibs kütüphanelerini doğru konumlamak için
+	mv "$PKG/usr/lib/ocaml/stublibs" /tmp/temp.so
+	mkdir -p "$PKG/usr/lib/ocaml/stublibs"
+	mv /tmp/temp.so "$PKG/usr/lib/ocaml/stublibs/dlllablgl.so"
+    
+}
