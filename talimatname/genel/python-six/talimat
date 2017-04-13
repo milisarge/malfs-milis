@@ -1,8 +1,8 @@
-# Description: Python 2 and 3 compatibility utilities.
-# URL: URL: http://pypi.python.org/pypi/six/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
+# Description: Python 2 ve 3 uyumluluk programları.
+# URL: http://pypi.python.org/pypi/six/
+# Packager: milisarge
 # Depends on: python 
+
 name=python-six
 version=1.7.3
 release=1
@@ -15,7 +15,3 @@ build() {
     python2 setup.py check
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
