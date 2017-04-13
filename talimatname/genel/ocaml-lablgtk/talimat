@@ -1,0 +1,33 @@
+# Description: O'Caml kütüphane yöneticisi
+# URL: http://projects.camlcity.org/projects/findlib.html
+# Packager: milisarge
+# Depends on: ocaml ocaml-findlib ocaml-lablgl gtk2 librsvg libglade gtksourceview2 xorg-mesa
+
+name=ocaml-lablgtk
+_name=lablgtk
+version=2.18.5
+release=1
+source=(https://forge.ocamlcore.org/frs/download.php/1627/$name-$version.tar.gz)
+
+build() {
+	cd ${_name}-$version
+	export LD_LIBRARY_PATH=/usr/lib/ocaml/stublibs/:${LD_LIBRARY_PATH}
+	
+	./configure \
+	--prefix=/usr \
+	--libdir=/usr/lib \
+	--build=$ARCH-milis-linux \
+	--with-glade \
+	--with-rsvg \
+	--with-gtksourceview2 
+	
+	sed -i -e "s/\\(CFLAGS = .*\\)/\\1 ${SLKCFLAGS}/" src/Makefile
+	sed -i -e "s/\\(CFLAGS += -O\\)/CFLAGS +=/" src/Makefile
+
+	make -j1 world
+	make DESTDIR=$PKG install	
+	# remove file conflicting with ocaml's ones
+	rm -f $PKG/usr/lib/ocaml/ld.conf
+	
+    
+}
