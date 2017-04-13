@@ -1,4 +1,4 @@
-# Description: Zope3 interface library.
+# Description: Zope3 arayüz kütüphanesi.
 # URL: http://pypi.python.org/pypi/zope.interface/
 # Packager: milisarge
 # Depends on: python python-setuptools
