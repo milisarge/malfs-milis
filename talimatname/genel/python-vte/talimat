@@ -1,4 +1,4 @@
-# Description: Python modules Virtual Terminal Emulator
+# Description: VTE widget seti için Python bağları
 # URL: http://developer.gnome.org/arch/gnome/widgets/vte.html
 # Packager: milisarge
 # Depends on: vte vala
