@@ -1,4 +1,4 @@
-# Description: Python interface to the OpenSSL library.
+# Description: OpenSSL kütüphanesine Python arabirimi.
 # URL: http://pypi.python.org/pypi/pyOpenSSL
 # Packager: milisarge
 # Depends on: python-cryptography
