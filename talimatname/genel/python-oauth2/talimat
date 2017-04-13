@@ -1,8 +1,8 @@
-# Description: A fully tested, abstract interface to creating OAuth 1.0 clients and servers.
-# URL: URL: https://github.com/simplegeo/python-oauth2
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
+# Description: OAuth 1.0 istemcileri ve sunucuları oluşturmak için tamamen test edilmiş, soyut bir arayüz.
+# URL: https://github.com/simplegeo/python-oauth2
+# Packager: milisarge
 # Depends on: python-httplib2 python-setuptools 
+
 name=python-oauth2
 version=1.5.211
 release=1
@@ -15,6 +15,3 @@ build() {
     python2 setup.py install --prefix=/usr --root=$PKG
 }
 
-
-
-# NuTyX Pkgfile (http://nutyx.org)
