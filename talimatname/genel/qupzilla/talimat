@@ -1,4 +1,4 @@
-# Description:  Cross-platform QtWebKit browser
+# Description:  Çapraz platform QtWebKit tarayıcı.
 # URL: http://www.qupzilla.com/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: qt5 desktop-file-utils hunspell qt5-webkit
