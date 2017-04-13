@@ -1,8 +1,8 @@
-# Description: A Python library for accessing the entire Twitter API.
-# URL: URL: http://pypi.python.org/pypi/tweepy/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
+# Description: Tüm Twitter API'sına erişmek için bir Python kitaplığı.
+# URL: http://pypi.python.org/pypi/tweepy/
+# Packager: milisarge
 # Depends on: python-simplejson 
+
 name=python-tweepy
 version=2.2
 release=1
@@ -14,7 +14,3 @@ build() {
     cd tweepy-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
