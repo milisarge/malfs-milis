@@ -1,0 +1,20 @@
+# Description: xorg proto compositeproto
+# URL: http://xorg.freedesktop.org
+# Packager: milisarge
+# Depends on:
+
+name=xorg-compositeproto
+version=0.4.2
+release=1
+source=(http://xorg.freedesktop.org/releases/individual/proto/compositeproto-$version.tar.bz2)
+
+build() {
+	cd compositeproto-$version
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+
+	rm -rf $PKG/usr/share
+}

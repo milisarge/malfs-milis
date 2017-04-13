@@ -1,0 +1,23 @@
+# Description: X pencere sistemi için dizgici(compositor)
+# URL: https://github.com/chjj/compton
+# Packager:  milisarge
+# Depends on: libconfig pcre xorg-mesa xorg-libxcomposite xorg-libxinerama xorg-libxrandr xorg-libxdamage
+
+name=compton
+version=git
+release=1
+source=()
+
+build() {
+	cd $PKGMK_SOURCE_DIR
+	
+	if cd $name; then
+		git fetch -q; git reset --hard origin/master
+	else
+		git clone git://github.com/chjj/$name $name
+		cd $name
+	fi
+
+	make NO_DBUS=1 compton
+	install -Dm755 compton $PKG/usr/bin/compton
+}
