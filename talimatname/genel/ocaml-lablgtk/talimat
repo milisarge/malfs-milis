@@ -14,6 +14,7 @@ build() {
 	export LD_LIBRARY_PATH=/usr/lib/ocaml/stublibs/:${LD_LIBRARY_PATH}
 	
 	./configure \
+	--with-libdir=/usr/lib/ocaml/stublibs/ \
 	--prefix=/usr \
 	--libdir=/usr/lib \
 	--build=$ARCH-milis-linux \
@@ -25,7 +26,17 @@ build() {
 	sed -i -e "s/\\(CFLAGS += -O\\)/CFLAGS +=/" src/Makefile
 
 	make -j1 world
-	make DESTDIR=$PKG install	
+	#make DESTDIR=$PKG install	
+	make install BINDIR="$PKG/usr/bin/" \
+	LIBDIR="$PKG/usr/lib/ocaml/" \
+	DDLDIR="$PKG/usr/lib/ocaml/stublibs/" \
+	INSTALLDIR="$PKG/usr/lib/ocaml/lablgtk2/"
+
+	mkdir -p "$PKG/usr/lib/ocaml/stublibs"
+	cp src/dlllablglade2.so  "$PKG/usr/lib/ocaml/stublibs/"
+	cp src/dlllablgtk2.so  "$PKG/usr/lib/ocaml/stublibs/"
+	cp src/dlllablgtksourceview2.so  "$PKG/usr/lib/ocaml/stublibs/"
+	cp src/dlllablrsvg.so "$PKG/usr/lib/ocaml/stublibs/"
 	# remove file conflicting with ocaml's ones
 	rm -f $PKG/usr/lib/ocaml/ld.conf
 	
