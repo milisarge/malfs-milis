@@ -1,4 +1,4 @@
-# Description: connector python for libnotify
+# Description: Libnotify için bağlayıcı python
 # URL: http://www.galago-project.org/
 # Packager: milisarge
 # Depends on: libnotify python-gtk dbus-glib 
