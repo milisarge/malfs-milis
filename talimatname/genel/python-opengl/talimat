@@ -1,5 +1,5 @@
-# Description: The cross platform Python binding to OpenGL and related APIs.
-# URL: URL: http://pyopengl.sourceforge.net/
+# Description: Çapraz platform Python, OpenGL ve ilgili API'lere bağlanır.
+# URL: http://pyopengl.sourceforge.net/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: python freeglut python-setuptools
 
