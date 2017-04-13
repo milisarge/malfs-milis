@@ -1,6 +1,6 @@
-# Description: Python module that implements the next generation YAML parser and emitter
+# Description: Yeni nesil YAML ayrıştırıcı ve vericiyi uygulayan Python modülü
 # URL: http://pyyaml.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python python3 yaml 
 
 name=python-pyyaml

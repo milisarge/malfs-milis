@@ -1,6 +1,6 @@
-# Description: connector python for qt4
+# Description: Qt4 için bağlayıcı python
 # URL: http://www.riverbankcomputing.co.uk/software/pyqt/intro
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: dbus-python sip qt4 phonon 
 
 name=python-qt4

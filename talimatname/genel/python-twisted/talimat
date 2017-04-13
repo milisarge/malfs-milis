@@ -1,4 +1,4 @@
-# Description: Python event-driven networking framework.
+# Description: Python olay odaklı ağ oluşturma çerçevesi.
 # URL: http://www.twistedmatrix.com/
 # Packager: milisarge
 # Depends on: python python-setuptools python-zope_interface

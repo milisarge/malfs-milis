@@ -1,4 +1,4 @@
-# Description : Qt5 Cryptographic Architecture
+# Description : Qt5 Şifreleme Mimarisi
 # URL : http://delta.affinix.com/qca/
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : qt5 nss cmake doxygen

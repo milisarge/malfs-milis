@@ -1,5 +1,5 @@
-# Description="Python API for GeoIP lookups"
-# Url="https://pypi.python.org/pypi/pygeoip/"
+# Description: GeoIP aramaları için Python API'sı
+# URL: https://pypi.python.org/pypi/pygeoip/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: python
 

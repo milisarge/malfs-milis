@@ -1,4 +1,4 @@
-# Description: Bindings Python2 for GConf.
+# Description: GConf yapılandırma veritabanı sistemi için Python bağları
 # URL: http://www.gnome.org/
 # Packager: milisarge
 # Depends on: python-gtk gconf 

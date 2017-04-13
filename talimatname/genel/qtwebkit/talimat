@@ -1,6 +1,6 @@
-# Description: QtWebkit module for Qt4 lib
+# Description: Qt4 lib için QtWebkit modülü
 # Url: http://trac.webkit.org/wiki/QtWebKit
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: ruby python qt4
 
 PKGMK_IGNORE_UNPACK="yes"

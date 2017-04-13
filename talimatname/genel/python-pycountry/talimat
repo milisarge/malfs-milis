@@ -1,8 +1,8 @@
-# Description: ISO country, subdivision, language, currency and script definitions and their translations
-# URL: URL: http://pypi.python.org/pypi/pycountry
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
+# Description: ISO ülkesi, alt bölüm, dil, para birimi ve senaryo tanımları ve çevirileri
+# URL: http://pypi.python.org/pypi/pycountry
+# Packager: milisarge
 # Depends on: python-setuptools python-lxml 
+
 name=python-pycountry
 version=1.5
 release=1
@@ -14,7 +14,3 @@ build() {
     cd pycountry-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)

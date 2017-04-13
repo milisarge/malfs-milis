@@ -1,6 +1,6 @@
-# Description: Qt is a cross-platform framework that is widely used for developing GUI applications
+# Description: Qt, GUI uygulamaları geliştirmek için yaygın olarak kullanılan çapraz platform bir çerçevedir
 # URL: http://www.qt.io/
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: glib atk pango cairo gdk-pixbuf xorg-fontconfig xorg-libsm xorg-libxrandr xorg-libxv xorg-libxi xorg-libxinerama xorg-libxcursor xorg-libxfixes xorg-mesa xorg-glu alsa-lib dbus icu libjpeg-turbo libmng libtiff openssl sqlite cups gtk2 gstreamer-plugins-base postgresql pulseaudio unixodbc
 
 name=qt4

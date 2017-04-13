@@ -1,7 +1,8 @@
-# Description: C library for encoding data in a QR Code symbol.
-# URL: URL : http://megaui.net/fukuchi/works/qrencode/index.en.html
-# Packager: Packager: pierre^ at nutyx dot org
+# Description: C kütüphanesi, bir QR Code sembolündeki verileri şifrelemek için kullanılır.
+# URL: http://megaui.net/fukuchi/works/qrencode/index.en.html
+# Packager: milisarge
 # Depends on: libpng sdl 
+
 name=qrencode
 version=3.4.4
 release=1

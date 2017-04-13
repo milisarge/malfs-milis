@@ -1,6 +1,6 @@
-# Description: Tools to manipulate font files
-# URL: URL: http://sourceforge.net/projects/fonttools/
-# Packager: tnut at nutyx dot org
+# Description: Font dosyalarını değiştirmek için araçlar
+# URL: http://sourceforge.net/projects/fonttools/
+# Packager: milisarge
 # Depends on: python python-numpy python-setuptools 
 
 name=python-fonttools
@@ -13,6 +13,3 @@ build() {
     cd FontTools-$version
     python2 setup.py build install --root=$PKG       
 }
-
-
-# NuTyX Pkgfile (http://nuryx.org)

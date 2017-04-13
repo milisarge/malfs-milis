@@ -1,4 +1,4 @@
-# Description: Python Imaging Library (PIL) fork
+# Description: Python Görüntüleme Kitaplığı (PIL) çatalı
 # URL: http://python-imaging.github.io/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: python python-setuptools lcms libwebp tk sane openjpeg

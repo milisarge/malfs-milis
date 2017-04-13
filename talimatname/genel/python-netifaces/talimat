@@ -1,8 +1,8 @@
-# Description: Portable module to access network interface information in Python.
-# URL: URL: http://alastairs-place.net/netifaces/
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
+# Description: Python'daki ağ arabirimi bilgilerine erişmek için taşınabilir modül.
+# URL: http://alastairs-place.net/netifaces/
+# Packager: milisarge
 # Depends on: python-setuptools 
+
 name=python-netifaces
 version=0.10.4
 release=1
@@ -14,7 +14,3 @@ build() {
     cd netifaces-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)

@@ -1,6 +1,6 @@
-# Description: provides the links of Python 2 for the class GObject of GLib.
+# Description: GLib'in GObject sınıfı için Python 2'nin bağlantılarını sağlar.
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python-gobject2 python-cairo libglade 
 
 name=python-gtk

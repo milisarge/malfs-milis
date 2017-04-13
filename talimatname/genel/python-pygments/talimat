@@ -1,7 +1,8 @@
-# Description: Python syntax highlighter
-# URL: # NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
+# Description: Python sözdizimi vurgulayıcı
+# URL: https://pypi.python.org/pypi/Pygments
+# Packager: milisarge
 # Depends on: python-setuptools 
+
 name=python-pygments
 version=1.6
 release=1
@@ -13,7 +14,3 @@ build() {
     cd Pygments-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)

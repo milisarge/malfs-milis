@@ -1,4 +1,4 @@
-# Description: A template library written in Python.
+# Description: Python ile yazılmış bir şablon kütüphanesi.
 # URL: http://www.makotemplates.org/
 # Packager: milisarge
 # Depends on: python-setuptools
