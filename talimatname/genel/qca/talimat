@@ -1,6 +1,6 @@
-# Description: Qt Cryptographic Architecture (Qt4).
+# Description: Qt Şifreleme Mimarisi (Qt4).
 # URL: http://delta.affinix.com/qca/
-# Packager: pierre at nutyx dot org
+# Packager: milisage
 # Depends on: qt4
 
 name=qca
