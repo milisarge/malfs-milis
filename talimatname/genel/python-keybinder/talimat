@@ -1,4 +1,4 @@
-# Description: Library for registering global keyboard shortcuts - Python 2 bindings
+# Description: Genel klavye kısayollarını kaydetmek için kullanılan kitaplık - Python 2 bağları.
 # URL: https://github.com/engla/keybinder
 # Packager: milisarge
 # Depends on: keybinder python-gtk gnome-common
