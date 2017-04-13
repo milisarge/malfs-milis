@@ -1,7 +1,7 @@
 # Description: CPAN Test::Pod::Kapsama modülü
 # URL: URL: http://search.cpan.org/dist/Test-Pod-Coverage/
 # Packager: milisarge
-# Depends on: perl perl-pod-coverage 
+# Depends on: perl-pod-coverage 
 
 name=perl-test-pod-coverage
 version=1.08

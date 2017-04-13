@@ -1,7 +1,7 @@
 # Description: Perl sembol tablosuna erişim ve boşaltma
 # URL: http://search.cpan.org/dist/Devel-Symdump
 # Packager: milisarge
-# Depends on: perl
+# Depends on:
 
 name=perl-devel-symdump
 version=2.11

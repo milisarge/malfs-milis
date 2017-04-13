@@ -1,7 +1,7 @@
 # Description: OpenSSL'yi kullanmak için Perl uzantısı
 # URL: http://search.cpan.org/dist/Net-SSLeay
 # Packager: milisarge
-# Depends on: openssl 
+# Depends on:
 
 _cpanname=Net-SSLeay
 name=perl-net-ssleay

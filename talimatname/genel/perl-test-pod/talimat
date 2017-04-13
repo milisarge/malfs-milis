@@ -1,7 +1,7 @@
 # Description: Dosyalardaki POD hatalarını kontrol etme
 # URL: http://search.cpan.org/dist/Test-Pod/
 # Packager: alihan-ozturk28@hotmail.com
-# Depends on: perl
+# Depends on:
 
 name=perl-test-pod
 version=1.51

@@ -1,7 +1,7 @@
 # Description: İleti Kimlik Doğrulaması için Anahtarlı-Hashing
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl perl-digest-sha1 
+# Depends on: perl-digest-sha1 
 
 name=perl-digest-hmac
 version=1.03

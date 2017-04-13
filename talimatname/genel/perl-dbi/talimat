@@ -1,7 +1,7 @@
 # Description: Perl için veritabanı bağımsız arabirimi
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl 
+# Depends on: 
 
 name=perl-dbi
 version=1.631

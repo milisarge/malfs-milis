@@ -1,7 +1,7 @@
 # Description: XML için basit API
 # URL: http://search.cpan.org/dist/XML-SAX
 # Packager: milisarge
-# Depends on: perl perl-xml-namespacesupport perl-xml-sax-base 
+# Depends on: perl-xml-namespacesupport perl-xml-sax-base 
 
 name=perl-xml-sax
 version=0.99

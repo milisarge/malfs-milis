@@ -1,7 +1,7 @@
 # Description: Bir modülün belgelerinin kapsamlı olup olmadığını kontrol eder
 # URL: http://search.cpan.org/dist/Pod-Coverage
 # Packager: milisarge
-# Depends on: perl perl-devel-symdump 
+# Depends on: perl-devel-symdump 
 
 name=perl-pod-coverage
 version=0.23

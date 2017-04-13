@@ -1,7 +1,7 @@
 # Description: Bu Perl modülü, LWP::UserAgent nesnesinin şifreli soket bağlantıları üzerinden GET, HEAD ve POST isteklerini gerçekleştirmesine izin vermek için LWP altında HTTPS protokolünü desteklemektedir.
 # URL: http://search.cpan.org/dist/Crypt-SSLeay/SSLeay.pm
 # Packager: milisarge
-# Depends on: perl perl-lwp-protocol-https perl-try-tiny perl-path-class 
+# Depends on: perl-lwp-protocol-https perl-try-tiny perl-path-class 
 
 name=perl-crypt-ssleay
 version=0.72

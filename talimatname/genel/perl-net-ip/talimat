@@ -1,7 +1,7 @@
 # Description: Perl Modülü: IPv4 ve IPv6 adreslerinin kolay manipüle edilmesi
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl 
+# Depends on:
 
 name=perl-net-ip
 version=1.26

@@ -1,7 +1,7 @@
 # Description: IO::Socket::INET6, AF_INET veya AF_INET6 etki alanlarında yuvalar oluşturmak ve kullanmak için bir nesne arabirimi sağlar.
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl perl-socket6 
+# Depends on: perl-socket6 
 
 name=perl-io-socket-inet6
 version=2.72

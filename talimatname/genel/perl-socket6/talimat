@@ -1,7 +1,7 @@
 # Description: Bir getaddrinfo/getnameinfo destek modülü
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl 
+# Depends on: 
 
 name=perl-socket6
 version=0.25

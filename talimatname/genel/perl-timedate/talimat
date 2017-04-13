@@ -1,7 +1,7 @@
 # Description: Tarih biçimlendirme altprogramları
 # URL: http://search.cpan.org/dist/TimeDate/
 # Packager: milisarge
-# Depends on: perl
+# Depends on:
 
 name=perl-timedate
 version=2.30

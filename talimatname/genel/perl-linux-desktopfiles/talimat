@@ -1,7 +1,7 @@
 # Description: linux masa dosyalarını parçalamak için perl modulu
 # URL:http://search.cpan.org/~trizen/Linux-DesktopFiles-0.07/lib/Linux/DesktopFiles.pm
 # Packagers: milisarge
-# Depends on: perl
+# Depends on:
 
 _name=Linux-DesktopFiles
 name=perl-linux-desktopfiles

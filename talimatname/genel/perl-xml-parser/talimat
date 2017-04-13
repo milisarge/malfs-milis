@@ -1,7 +1,7 @@
 # Description: Xml belgesini işlemek için Perl modülü
 # URL: http://search.cpan.org/dist/XML-Parser/
 # Packagers: milisarge
-# Depends on: perl
+# Depends on:
 
 name=perl-xml-parser
 version=2.43

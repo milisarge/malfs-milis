@@ -1,7 +1,7 @@
 # Description: HTTP stili mesajlar.
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl perl-encode-locale perl-html-parser perl-http-date perl-lwp-mediatypes perl-uri 
+# Depends on: perl-encode-locale perl-html-parser perl-http-date perl-lwp-mediatypes perl-uri 
 
 name=perl-http-message
 version=6.06

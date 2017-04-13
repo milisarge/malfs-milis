@@ -1,7 +1,7 @@
 # Description: OpenSSL'nin çok düzeltmeli tam sayı aritmetiği
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl openssl 
+# Depends on: 
 
 name=perl-crypt-openssl-bignum
 version=0.04

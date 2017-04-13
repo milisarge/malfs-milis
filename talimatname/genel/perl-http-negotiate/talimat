@@ -1,7 +1,7 @@
 # Description: Sunulacak bir varyant seçin
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl perl-http-message 
+# Depends on: perl-http-message 
 
 name=perl-http-negotiate
 version=6.01

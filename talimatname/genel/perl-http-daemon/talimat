@@ -1,7 +1,7 @@
 # Description: Basit bir http sunucusu sınıfı
 # URL: https://metacpan.org/pod/HTTP::Daemon
 # Packager: milisarge
-# Depends on: perl perl-http-date perl-http-message perl-lwp-mediatypes 
+# Depends on: perl-http-date perl-http-message perl-lwp-mediatypes 
 
 name=perl-http-daemon
 version=6.01

@@ -5,7 +5,7 @@
 
 name=conky
 version=1.9.0
-release=2
+release=1
 source=(http://freefr.dl.sourceforge.net/sourceforge/conky/$name-$version.tar.gz)
 
 build() {

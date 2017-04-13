@@ -1,7 +1,7 @@
 # Description: Bu modül, argümanlarından geçip sonuç olarak bir dizge üreten birkaç işlev sunar.
 # URL: http://search.cpan.org/~gaas/Data-Dump-1.23/lib/Data/Dump.pm
 # Packagers: milisarge
-# Depends on: perl
+# Depends on:
 
 _name=Data-Dump
 name=perl-data-dump

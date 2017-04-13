@@ -1,7 +1,7 @@
 # Description: DNS'nin çevrimdışı öykünmesi için bir Net::DNS::Resolver alt sınıfı
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl perl-net-dns 
+# Depends on: perl-net-dns 
 
 name=perl-net-dns-resolver-programmable
 version=0.003

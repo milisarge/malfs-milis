@@ -1,7 +1,7 @@
 # Description: Çeşitli e-posta ile ilgili modüller
 # URL: http://search.cpan.org/
 # Packager: milisarge
-# Depends on: perl perl-timedate 
+# Depends on: perl-timedate 
 
 name=perl-mailtools
 version=2.13

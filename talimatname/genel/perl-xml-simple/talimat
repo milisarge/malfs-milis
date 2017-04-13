@@ -1,7 +1,7 @@
 # Description: XML'i korumak için kolay API
 # URL: http://search.cpan.org/~grantm/
 # Packager: milisarge
-# Depends on: perl
+# Depends on:
 
 name=perl-xml-simple
 version=2.20

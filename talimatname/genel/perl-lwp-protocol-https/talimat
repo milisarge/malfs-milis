@@ -1,7 +1,7 @@
 # Description: LWP :: UserAgent için https desteği sağlar
 # URL: http://search.cpan.org/~gaas/LWP-Protocol-https-6.04/lib/LWP/Protocol/https.pm
 # Packager: milisarge
-# Depends on: perl perl-io-socket-ssl perl-mozilla-ca perl-net-http perl-libwww 
+# Depends on: perl-io-socket-ssl perl-mozilla-ca perl-net-http perl-libwww 
 
 name=perl-lwp-protocol-https
 version=6.04

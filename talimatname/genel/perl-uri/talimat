@@ -1,7 +1,7 @@
 # Description: Tekdüzen Kaynak Tanımlayıcıları (mutlak ve göreceli)
 # URL: http://search.cpan.org/~gaas/URI-1.60/
 # Packager: milisarge
-# Depends on: perl
+# Depends on:
 
 name=perl-uri
 version=1.67
