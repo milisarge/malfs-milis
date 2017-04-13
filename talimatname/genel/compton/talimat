@@ -9,7 +9,7 @@ release=1
 source=()
 
 build() {
-	cd $PKGMK_SOURCE_DIR
+	cd $DERLEME_KAYNAKDIZIN
 	
 	if cd $name; then
 		git fetch -q; git reset --hard origin/master
