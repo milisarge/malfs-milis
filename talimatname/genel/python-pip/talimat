@@ -1,7 +1,8 @@
-# Description: python-pip (easy_install replacement to install pypi python packages)
+# Description: Python-pip (pypi python paketlerini yüklemek için kolay kurulum değiştirme)
 # URL: http://www.pip-installer.org
 # Packager: milisarge
-# Depends on: python python-setuptools 
+# Depends on: python python-setuptools
+
 name=python-pip
 version=8.0.2
 release=1
