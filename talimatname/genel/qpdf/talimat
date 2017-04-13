@@ -1,4 +1,4 @@
-# Description: The Qpdf package contains command-line programs and library that do structural, content-preserving transformations on PDF files.
+# Description: Qpdf paketi, PDF dosyaları üzerinde yapısal, içerik koruma dönüştürmeleri yapan komut satırı programları ve kitaplığı içerir.
 # URL: http://qpdf.sourceforge.net/
 # Packager: milisarge
 # Depends on: pcre libxslt
