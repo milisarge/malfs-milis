@@ -1,0 +1,9 @@
+silme:
+mps -s libreoffice
+mps -s chromium
+mps -s yelp
+ve benzeri.
+kurma:mps -kur yelp 
+mps -kur libreoffice
+mps -kur abiword
+ve benzeri
