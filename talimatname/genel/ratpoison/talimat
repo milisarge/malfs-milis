@@ -1,9 +1,8 @@
-# Description: A simple keystroke-driven window manager. Ratpoison is a simple Window Manager with no fat library dependencies, no fancy graphics, no window decorations, and no rodent dependence. It is largely modelled after GNU Screen which has done wonders in the virtual terminal market.
+# Description: Ratpoison, kullanıcının fareyle uygulamayı yönetmesine izin veren C ile yazılmış bir döşeme penceresi yöneticisidir. Kullanıcı arabirimi, Screen'den esinlenmiştir.
 # URL: http://www.nongnu.org/ratpoison/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: texinfo xorg-libxft xorg-libxinerama xorg-libxtst
 
-description="Window Manager: no fat library dependencies, no fancy graphics, no window decorations."
 name=ratpoison
 version=1.4.7
 release=2
@@ -19,7 +18,7 @@ build(){
     make CFLAGS="$CFLAGS -DHAVE_GETLINE"
     make DESTDIR=$PKG install
 
-    # fix permissions
+    # düzeltme izinleri
     chmod +x $PKG/usr/share/ratpoison/{allwindows.sh,clickframe.pl,rpshowall.sh,rpws,split.sh}
 
     cd contrib
@@ -38,5 +37,3 @@ build(){
 }
 
 
-
-# NuTyX Pkgfile (http://nutyx.org)
