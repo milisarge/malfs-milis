@@ -1,7 +1,8 @@
-# Description: ranger is a file manager with VI key bindings.
+# Description: Ranger, VI anahtar bağları olan bir dosya yöneticisidir.
 # URL: http://ranger.nongnu.org/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: python
+
 name=ranger
 version=1.7.1
 release=1
