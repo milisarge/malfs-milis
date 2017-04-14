@@ -180,8 +180,7 @@ def bolumSec():
 		if bolumMajmin[i].split(":")[1] != "0": # partition olmayanları ele (sda/sdb seçince grub bozuluyor.)
 			for uygunBolum in uygunBolumler:
 				if uygunBolum in diskBolumler[i]: 
-					if bolumDs[i] == "ext4":
-						bolumSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
+					bolumSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
 	status,seciliBolum = d.menu(text="Sistemin kurulacağı diski seçiniz",choices=bolumSecimler)
 	if status == "ok":
 		print("{} seçildi !".format(seciliBolum))
