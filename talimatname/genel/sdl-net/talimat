@@ -1,6 +1,6 @@
-# Description: A cross-platform networking library for SDL.
+# Description: SDL için çapraz platform bir ağ kitaplığı.
 # URL: http://www.libsdl.org/projects/SDL_net
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: sdl
 
 name=sdl-net
