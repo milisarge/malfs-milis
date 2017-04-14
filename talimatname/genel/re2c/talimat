@@ -1,6 +1,6 @@
-# Description: A tool for generating C-based recognizers from regular expressions 
+# Description: Normal ifadelerden C tabanlı tanıyıcılar üretmek için kullanılan bir araç
 # URL: http://re2c.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=re2c
