@@ -1,4 +1,4 @@
-# Description: Lightweight vala based Tox client
+# Description: Hafif vala tabanlı Tox istemcisi
 # URL: https://github.com/RicinApp/Ricin
 # packager: milisarge
 # Depends on: toxcore meson gtk3 vala json-glib libsoup libnotify
