@@ -1,6 +1,6 @@
-# Description: allows access the terminal windows
+# Description: Terminal pencerelerine erişime izin verir
 # URL: http://www.rdesktop.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libx11 
 
 name=rdesktop

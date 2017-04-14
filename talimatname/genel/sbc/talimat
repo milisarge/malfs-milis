@@ -1,7 +1,8 @@
+# Description: Verileri Bluetooth ses çıkış cihazlarına aktarmak için kullanılan dijital ses kodlayıcı ve kod çözücü.
 # URL: https://fr.wikipedia.org/wiki/SBC_%28codec%29
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libsndfile 
-description="Digital audio encoder and decoder used to transfer data to Bluetooth audio output devices."
+
 name=sbc
 version=1.2
 release=1

@@ -1,6 +1,6 @@
-# Description: SCons is a free tool construction allows replacement of make.
+# Description: SCons, Açık Kaynaklı bir yazılım geliştirme aracı, yani yeni nesil bir yapı aracıdır.
 # URL: http://scons.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python 
 
 name=scons

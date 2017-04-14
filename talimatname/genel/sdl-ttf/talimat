@@ -1,4 +1,4 @@
-# Description: TrueType library for libsdl.
+# Description: Libsdl için TrueType kitaplığı.
 # URL: http://www.libsdl.org/projects/SDL_ttf/
 # Packager: milisarge
 # Depends on: freetype sdl

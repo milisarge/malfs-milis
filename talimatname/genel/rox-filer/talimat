@@ -1,4 +1,4 @@
-# Description: A small and fast file manager which can optionally manage the desktop background and panels
+# Description: İsteğe bağlı olarak masaüstü arka planını ve panellerini yönetebilen küçük ve hızlı dosya yöneticisi
 # URL: http://roscidus.com/desktop/ROX-Filer
 # Packager: milisarge
 # Depends on: xorg-libsm libglade shared-mime-info

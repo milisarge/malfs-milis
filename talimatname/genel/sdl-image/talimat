@@ -1,4 +1,4 @@
-# Description: SDL_image is a simple library to load images of various formats as SDL surfaces.
+# Description: SDL_image, çeşitli biçimlerin SDL yüzeyleri gibi resimlerini yüklemek için kullanılan basit bir kütüphanedir.
 # URL: http://www.libsdl.org/projects/SDL_image
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: sdl libjpeg-turbo libpng libtiff libwebp

@@ -1,9 +1,7 @@
-# Description: A flexible message logging facility for C++ programs and libraries
+# Description: C ++ programları ve kitaplıkları için esnek bir mesaj günlüğü tesisi
 # URL: http://www.arg0.net/rlog
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
-# Depends on:
-
 
 name=rlog
 version=1.4

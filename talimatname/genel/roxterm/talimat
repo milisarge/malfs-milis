@@ -1,7 +1,6 @@
-# Description: Tabbed, VTE-based terminal emulator
+# Description: ROXTerm, VTE kütüphanesine dayanan bir terminal emülatörüdür.
 # URL: http://roxterm.sourceforge.net/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: dbus-glib vte3 hicolor-icon-theme xorg-libsm lockfile
 
 name=roxterm

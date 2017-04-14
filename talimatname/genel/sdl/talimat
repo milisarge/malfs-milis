@@ -1,6 +1,6 @@
-# Description: Simple Directmedia Layer, a library multiplatforme
+# Description: Basit Directmedia Layer, bir kitaplık çoklu biçimi
 # URL: http://www.libsdl.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: alsa-lib nasm libusb pulseaudio xorg-libx11 xorg-libxext 
 
 name=sdl

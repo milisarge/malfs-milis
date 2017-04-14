@@ -1,9 +1,8 @@
-# Description: An unicode capable rxvt clone (urxvt). rxvt-unicode is an enhanced version of the rxvt terminal emulator.
+# Description: Rxvt terminal emülatörünün geliştirilmiş bir unicode özellikli sürümü.
 # URL: http://software.schmorp.de/pkg/rxvt-unicode.html
-# Packager: alienus at nutyx dot org
+# Packager: milisarge
 # Depends on: gdk-pixbuf xorg-libxft startup-notification
 
-description="An enhanced unicode capable version of the rxvt terminal emulator."
 name=rxvt-unicode
 version=9.20
 release=2
@@ -48,7 +47,7 @@ build(){
     mkdir -p $PKG/usr/share/terminfo
     TERMINFO=$PKG/usr/share/terminfo make install DESTDIR=$PKG
 
-    # desktop intergration with icon from openclipart
+    # Openclipart simgesiyle masaüstü bütünleşmesi
     install -Dm 644 $SRC/$name.desktop \
         $PKG/usr/share/applications/$name.desktop
     install -Dm 644 $SRC/$name.svg \

@@ -1,4 +1,4 @@
-# Description: Scanner Access Now Easy
+# Description: SANE, "Tarayıcı Erişimi Şimdi Kolay" anlamına gelir ve herhangi bir raster görüntü tarayıcı donanımına standartlaştırılmış erişim sağlayan bir uygulama programlama arabirimi (API).
 # URL: http://www.sane-project.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libusb-compat libjpeg-turbo libtiff gtk2 libexif cups

@@ -1,8 +1,8 @@
+# Desciription: Washington Üniversitesi tarafından geliştirilen Alpine, metin tabanlı e-posta istemcisinin devamı.
 # URL: http://sourceforge.net/projects/re-alpine/files/re-alpine-2.03.tar.bz2
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: openssl aspell tcl pam 
 
-description="Continuation of Alpine, text-based email client developed by the University of Washington."
 name=re-alpine
 version=2.03	
 release=1
@@ -19,7 +19,6 @@ cd $name-$version
             --with-ssl-dir=/usr \
             --with-passfile=.pine-passfile 
 make
-
 make DESTDIR=$PKG install
 
 }

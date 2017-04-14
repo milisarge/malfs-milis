@@ -1,6 +1,5 @@
-# Description:This is a variant of the flex fast lexical scanner
-# URL:        http://invisible-island.net/reflex/reflex.html
-# Maintainer: Vincenzo Colosimo, vico at bicisport dot de
+# Description: Bu, esnek, hızlı sözcüksel tarayıcının bir varyantı
+# URL: http://invisible-island.net/reflex/reflex.html
 # packager: milisarge
 # Depends on:
 

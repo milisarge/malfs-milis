@@ -1,4 +1,4 @@
-# Description: A safe, concurrent, practical language by Mozilla.
+# Description: Mozilla tarafından güvenli, eşzamanlı, pratik bir dil.
 # URL: http://www.rust-lang.org/
 # Packager: milisarge
 # Depends on: libffi python jemalloc cmake

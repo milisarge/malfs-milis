@@ -1,7 +1,8 @@
-# Description: A C library that parses RDF/XML/N-Triples into RDF triples
+# Description: RDF / XML / N-Üçlülerini RDF üçlülerine ayrıştıran bir C kitaplığı
 # URL: http://download.librdf.org/source/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: expat libxml2 curl icu 
+
 name=raptor
 version=2.0.15
 release=1

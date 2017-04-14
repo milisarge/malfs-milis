@@ -1,7 +1,8 @@
+# Description: Screen, fiziksel bir terminali birkaç işlem arasında, genellikle etkileşimli kabuklarla çoğaltılan tam ekran bir pencere yöneticisidir
 # URL: http://www.gnu.org/software/screen/screen.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
-description="Runs several separate processes on a single physical character-based terminal."
 name=screen
 version=4.3.1
 release=1
