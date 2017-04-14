@@ -1,6 +1,6 @@
 # Description: C ++ programları ve kitaplıkları için esnek bir mesaj günlüğü tesisi
 # URL: http://www.arg0.net/rlog
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=rlog
