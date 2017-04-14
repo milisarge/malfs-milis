@@ -1,0 +1,18 @@
+# Description: OpenGL Gölgeleme Dili (GLSL) spesifikasyonuna dayalı 3D yazılım için C ++ matematik kütüphanesi.
+# URL: http://glm.g-truc.net
+# Packager: milisarge
+# Depends on: cmake
+
+name=glm
+version=0.9.8.4
+release=1
+source=(https://github.com/g-truc/glm/archive/$version.tar.gz)
+
+build() {
+	cd $name-$version
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER_ID=GNU -DCMAKE_CXX_FLAGS=" -std=c++11"
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/lib64/cmake/glm/glmConfig.cmake
+	find $PKG -type f -exec chmod 644 {} \;
+	find $PKG -type d -exec chmod 755 {} \;
+}
