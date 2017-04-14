@@ -1,0 +1,8 @@
+silme kodları: mps -s qupzilla
+mps -s firefox
+mps -s libreoffice
+Kurma(indirme,yükleme)kodları:
+mps -kur libreoffice
+mps -kur firefox
+mps -kur qupzilla
+mps -kur abiword
