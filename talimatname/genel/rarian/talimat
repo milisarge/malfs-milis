@@ -1,7 +1,8 @@
-# Description: Documentation meta-data library, designed as a replacement for Scrollkeeper.
+# Description: Scrollkeeper'ın yerini alacak şekilde tasarlanmış dokümantasyon meta veri kütüphanesi.
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libxslt 
+
 name=rarian
 version=0.8.1
 release=1
