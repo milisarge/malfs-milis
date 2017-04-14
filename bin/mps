@@ -1070,6 +1070,11 @@ kurulum_dosya_listele(){
 	cat "$VT/$1/kurulan"
 }
 
+# bir dosyanın kurulmuş hangi pakette olduğunu bulur.
+kurulan_dosya_bul(){
+	grep -rli "$1" "$VT/" | cut -d "/" -f6
+}
+
 paketvt_kontrol(){
 	mkdir -p /depo/paketler
 	if [ ! -f /depo/paketler/paket.vt ];then
@@ -1435,6 +1440,13 @@ ayarlar() {
 				fi
 				ayar_dosyasi="$2"
 				shift ;;
+			# bir dosyanın kurulmuş hangi pakette olduğunu bulur
+			-hp)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					exit 1
+				fi
+				kurulan_dosya_bul "$2";;
 			-tro)
 				tarihce_yap ;;
 			-trot)
