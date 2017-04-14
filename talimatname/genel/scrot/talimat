@@ -1,7 +1,6 @@
-# Description: A simple command-line screenshot utility for X
+# Description: X için basit bir komut satırı ekran görüntüsü programı
 # URL: http://scrot.sourcearchive.com/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: giblib
 
 name=scrot
