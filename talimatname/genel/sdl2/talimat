@@ -1,4 +1,4 @@
-# Description: A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard
+# Description: Bir video çerçeve arabelleği, ses çıkışı, fare ve klavyeye taşınabilir düşük seviye erişimi için bir kütüphane
 # URL: http://www.libsdl.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: xorg-libxext xorg-libxrender xorg-libx11 xorg-libxcursor alsa-lib xorg-mesa pulseaudio xorg-libxrandr xorg-libxinerama libxkbcommon wayland 
