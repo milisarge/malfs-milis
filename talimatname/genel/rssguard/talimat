@@ -1,9 +1,8 @@
-# Description: Simple (yet powerful) feed reader, able to fetch the most known feed formats, including RSS/RDF and ATOM.
+# Description: RSS / RDF ve ATOM da dahil olmak üzere en bilinen besleme formatlarını elde edebilen besleme okuyucu
 # URL: https://bitbucket.org/skunkos/rssguard/wiki/Home
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: cmake qt5
 
-description="Feed reader, able to fetch the most known feed formats including RSS/RDF and ATOM"
 name=rssguard
 version=3.0.1
 release=1
