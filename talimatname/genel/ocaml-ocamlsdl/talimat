@@ -1,0 +1,25 @@
+# Description: O'Caml sdl kütüphanesi
+# URL: https://sourceforge.net/projects/ocamlsdl/
+# Packager: milisarge
+# Depends on: ocaml ocaml-findlib ocaml-lablgl sdl sdl-ttf sdl-image sdl-mixer
+
+name=ocaml-ocamlsdl
+version=0.9.1
+release=1
+source=(http://downloads.sourceforge.net/project/ocamlsdl/OCamlSDL/${name#ocaml-}-${version}/${name#ocaml-}-${version}.tar.gz)
+
+build() {
+	cd "${SRC}/${name#ocaml-}-${version}"
+    ./configure
+    make
+    export OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)"
+    mkdir -p "$PKG/usr/lib/ocaml/stublibs"
+    mkdir -p "$PKG/usr/lib/ocaml/site-lib/sdl"
+    make install
+    mv  "$PKG/usr/lib/ocaml/site-lib/sdl" "$PKG/usr/lib/ocaml/"
+          
+	cp src/dllsdlloaderstub.so  "$PKG/usr/lib/ocaml/stublibs/"
+	cp src/dllsdlmixerstub.so   "$PKG/usr/lib/ocaml/stublibs/"
+	cp src/dllsdlstub.so        "$PKG/usr/lib/ocaml/stublibs/"
+	cp src/dllsdlttfstub.so     "$PKG/usr/lib/ocaml/stublibs/"
+}
