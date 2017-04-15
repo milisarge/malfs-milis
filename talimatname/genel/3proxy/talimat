@@ -1,0 +1,23 @@
+# Description: her ortam için hafif vekil sunucu
+# URL: http://www.3proxy.ru/
+# Packager: milisarge
+# Depends on:
+
+name=3proxy
+version=0.8.6
+release=1
+source=(https://github.com/z3APA3A/3proxy/archive/3proxy-$version.tar.gz)
+_prefix=/usr
+_etcdir=/etc/3proxy
+
+build(){
+    cd "$SRC/3proxy-3proxy-0.8.6"
+	cp Makefile.Linux Makefile.Linux~ && sed 's/^\(CFLAGS =\)/\1 -Werror-implicit-function-declaration /' Makefile.Linux~ > Makefile.Linux || return 1
+	make='make -f Makefile.Linux INSTALL=/usr/bin/install'
+	$make prefix="$_prefix" ETCDIR="$_etcdir"
+	$make prefix="$_prefix" install DESTDIR="$PKG" ETCDIR="${PKG}${_etcdir}"
+	( cd ${PKG}${_prefix}/bin && mv proxy 3proxy-proxy ) || return 1
+	rm -f ${PKG}${_etcdir}/counters ${PKG}${_etcdir}/passwd ${PKG}${_etcdir}/bandlimiters
+	install -D -m644 cfg/3proxy.cfg.sample ${PKG}${_etcdir}/3proxy.cfg.sample
+	install -D -m644 cfg/counters.sample ${PKG}${_etcdir}/counters.sample
+}
