@@ -1,0 +1,16 @@
+# Description: komut satırından kullanılan şifreli tünelleme uygulaması
+# URL: http://nardcore.org/ctunnel
+# Packager: milisarge
+# Depends on: libgcrypt
+
+name=ctunnel
+version=0.7
+release=1
+source=(https://nardcore.org/ctunnel/$version/$name-$version.tar.gz)
+
+build(){
+    cd $SRC/$name-$version
+    sed -i 's/-lgcrypt/-lgcrypt -lgpg-error/' src/Makefile
+    make
+    install -m755 -D src/$name $PKG/usr/bin/$name
+}
