@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Slack
+Comment=Slack Desktop
+Comment[tr]=Slack Masaüstü
+GenericName=Slack Client for Linux
+GenericName[tr]=Linux için Slack istemcisi
+Exec=slack --disable-gpu %U
+Icon=slack
+Type=Application
+StartupNotify=true
+Categories=Network;InstantMessaging;
+MimeType=x-scheme-handler/slack;
