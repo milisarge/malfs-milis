@@ -1,10 +1,10 @@
-# Description: st is a simple terminal implementation for X
+# Description: X için basit terminal uygulaması
 # URL: http://st.suckless.org/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libxext xorg-libxft
 
 name=st
-version=0.6
+version=0.7
 release=1
 
 source=(http://dl.suckless.org/st/$name-$version.tar.gz)
