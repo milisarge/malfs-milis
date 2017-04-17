@@ -1,6 +1,6 @@
-# Description: Allows central updates of MIME information for all supporting applications. 
+# Description: Destekleyen tüm uygulamalar için MIME bilgilerini merkezi olarak güncellemenizi sağlar.
 # URL:  http://freedesktop.org/
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libxml2 intltool glib 
 
 name=shared-mime-info
