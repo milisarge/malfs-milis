@@ -1,4 +1,4 @@
-# Description: OAuth 2 plugin for signon
+# Description: Oturum açma için OAuth 2 eklentisi
 # URL: https://gitlab.com/accounts-sso/signon-plugin-oauth2
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: signond qt5
