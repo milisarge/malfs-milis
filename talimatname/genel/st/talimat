@@ -10,8 +10,20 @@ release=1
 source=(http://dl.suckless.org/st/$name-$version.tar.gz)
 
 build(){
-cd $name-$version
-make X11INC=/usr/include/ X11LIB=/usr/lib/
-make PREFIX=/usr DESTDIR=$PKG TERMINFO=$PKG/usr/share/terminfo install
-rm $PKG/usr/share/terminfo/s/st{,-256color}
+	cd $name-$version
+	local file
+	sed \
+		-e '/char font/s/= .*/= "Fixed:pixelsize=17:style=Condensed";/' \
+		-e '/char worddelimiters/s/= .*/= " '"'"'`\\\"()[]{}<>|";/' \
+		-e '/int defaultcs/s/= .*/= 1;/' \
+		-i config.def.h
+	sed \
+		-e 's/CPPFLAGS =/CPPFLAGS +=/g' \
+		-e 's/CFLAGS =/CFLAGS +=/g' \
+		-e 's/LDFLAGS =/LDFLAGS +=/g' \
+		-e 's/_BSD_SOURCE/_DEFAULT_SOURCE/' \
+		-i config.mk
+	sed '/@tic/d' -i Makefile
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+	make PREFIX=/usr DESTDIR="${PKG}" install
 }
