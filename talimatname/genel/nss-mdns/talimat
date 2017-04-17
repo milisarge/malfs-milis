@@ -1,0 +1,21 @@
+# Description: mDNS için nss modülü
+# URL: http://0pointer.de/lennart/projects/nss-mdns/
+# Packager: milisarge
+# Depends on:	
+
+name=nss-mdns
+version=0.10
+release=1
+source=(http://0pointer.de/lennart/projects/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--disable-lynx
+	make
+	make DESTDIR=$PKG install
+}

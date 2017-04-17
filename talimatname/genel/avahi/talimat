@@ -1,30 +1,31 @@
 # Description: Çok noktaya yayın / tek noktaya yayın DNS-SD çerçevesi
 # URL: http://www.avahi.org/
 # Packager: milisarge
-# Depends on: intltool glib dbus-python gobject-introspection libdaemon
+# Depends on: intltool glib dbus-python gobject-introspection libdaemon nss-mdns
 
 name=avahi
-version=0.6.31
+version=0.6.32
 release=1
-source=(http://www.avahi.org/download/avahi-$version.tar.gz)
+source=(https://github.com/lathiat/avahi/releases/download/v$version/$name-$version.tar.gz)
 
 build() {
-cd $name-$version
-./configure \
---prefix=/usr \
---sysconfdir=/etc \
---localstatedir=/var \
---disable-python \
---disable-qt3 \
---disable-qt4 \
---disable-monodoc \
---disable-gtk \
---disable-gtk3 \
---disable-doxygen-doc \
---disable-mono \
---with-distro=none
-make
-make DESTDIR=$PKG install
-
-rm -r $PKG/{etc/avahi,var,usr/share/man/man8,usr/sbin}
+	cd $name-$version
+	./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--disable-python \
+	--disable-qt3 \
+	--disable-qt4 \
+	--disable-monodoc \
+	--enable-compat-libdns_sd \
+	--disable-gtk \
+	--disable-gtk3 \
+	--disable-doxygen-doc \
+	--disable-mono \
+	--with-distro=none
+	make
+	make DESTDIR=$PKG install
+	ln -s avahi-compat-libdns_sd/dns_sd.h $PKG/usr/include/dns_sd.h
+	rm -r $PKG/{etc/avahi,var,usr/share/man/man8,usr/sbin}
 }
