@@ -1,4 +1,4 @@
-# Description: Alternative to the proprietary 3Dconnexion device driver and SDK for their 3D input devices
+# Description: 3D giriş cihazları için tescilli 3Dconnexion cihaz sürücüsü ve SDK'nın alternatifi
 # URL: http://spacenav.sourceforge.net/
 # Packager: milisarge
 # Depends on: xorg
