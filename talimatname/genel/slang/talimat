@@ -1,6 +1,6 @@
-# Description: S-Lang is a powerful interpreted language
-# URL:  http://gd.tuwien.ac.at/editors/davis/slang
-# Packager: pierre at nutyx dot org
+# Description: S-Lang güçlü bir yorumlanmış dil
+# URL: http://gd.tuwien.ac.at/editors/davis/slang
+# Packager: milisarge
 # Depends on: 
 
 name=slang

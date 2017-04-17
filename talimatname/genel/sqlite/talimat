@@ -1,5 +1,5 @@
-# Description: SQL database engine
-# URL:         http://www.sqlite.org/
+# Description: SQL veritabanı motoru
+# URL: http://www.sqlite.org/
 # Packager: milisarge
 # Depends on:  ncurses readline
 

@@ -1,6 +1,6 @@
-# Description: Dialog box to grab password for packages requiring administrative privileges to be run
+# Description: Yönetici ayrıcalıkları gerektiren paketlerin şifresini almak için iletişim kutusu
 # URL:  http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depend on: gdk-pixbuf gtk2 xorg-libx11
 
 name=ssh-askpass

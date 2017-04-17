@@ -1,7 +1,7 @@
-# Description: Qt4 plugin which turns all QSystemTrayIcon into StatusNotifierItems (appindicators)
-# URL : https://launchpad.net/sni-qt
-# Packager : pierre at nutyx dot com
-# Depends on : cmake libdbusmenu-qt  
+# Description: QT4 eklentisi, tüm QSystemTrayIcon'u StatusNotifierItems'e dönüştürür (appindicators)
+# URL: https://launchpad.net/sni-qt
+# Packager: milisarge
+# Depends on: cmake libdbusmenu-qt  
 
 name=sni-qt
 version=0.2.6

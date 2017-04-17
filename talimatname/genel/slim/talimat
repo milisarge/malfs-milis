@@ -1,7 +1,7 @@
-# Description: a graphical login utility
-# URL:         http://sourceforge.net/projects/slim.berlios
-# Packager:    milisarge
-# Depends on:  xorg-xauth libjpeg-turbo libpng cmake
+# Description: Grafiksel oturum açma yardımcı programı
+# URL: http://sourceforge.net/projects/slim.berlios
+# Packager: milisarge
+# Depends on: xorg-xauth libjpeg-turbo libpng cmake
 
 name=slim
 version=1.3.6
@@ -12,7 +12,7 @@ source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.
 build () {
    cd $name-$version
 
-   # do NOT build slimlock (because of pam)
+   # Slimlock inşa etmeyin (pam nedeniyle)
    sed -i -e 's:${MANDIR}:/usr/man:g' -e '224d' CMakeLists.txt
 
    cmake -DCMAKE_INSTALL_PREFIX=/usr
@@ -28,6 +28,6 @@ build () {
    cp -r slim-crux-smooth $PKG/usr/share/slim/themes/crux-smooth
    chmod 0644 $PKG/usr/share/slim/themes/crux-smooth/*
 
-   # no systemd support
+   # Systemd desteği yok
    rm -r $PKG/lib $PKG/usr/man/man1/slimlock.1
 }

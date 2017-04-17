@@ -1,7 +1,6 @@
-# Description: Text mode RSS newsreader for Linux and Unix.
+# Description: Linux ve Unix için metin modu RSS haber okuyucu.
 # URL: http://kiza.kcore.de/software/snownews/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: libxml2 gettext perl
 
 name=snownews

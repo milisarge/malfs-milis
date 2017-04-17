@@ -1,6 +1,7 @@
-# Description: Contains several hash-map implementations, including for optimize space and speed
+# Description: Alan ve hızın optimize edilmesi de dahil olmak üzere çeşitli karma harita uygulamaları içerir.
 # URL: http://code.google.com/p/sparsehash
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=sparsehash
 version=2.0.2

@@ -1,7 +1,7 @@
-# Description:	Mplayer frontend
-# URL:		http://smplayer.sf.net/
-# packager:	milisarge
-# Depends on:	mplayer qt4
+# Description: SMPlayer kurulu kodekleriyle tüm ses ve video türlerini oynatabilen Linux için ücretsiz bir medya oynatıcısıdır.
+# URL: http://smplayer.sf.net/
+# packager: milisarge
+# Depends on: mplayer qt4
 
 name=smplayer
 version=16.4.0
@@ -13,10 +13,10 @@ build() {
 	cd $name-$version
 	sed -i -e 's|kde-config|kde4-config|g' Makefile
 
-	# Remove most debug messages
+	# Çoğu hata ayıklama mesajını kaldır
 	find src -type f -name '*.cpp' -print0 | xargs -0 sed -i -e 's|qDebug(.*);|{}|g'
 
-	# Check if kdelibs is installed, since its not detected automatically
+	# Kdelibs'in yüklü olup olmadığını kontrol edin, çünkü otomatik olarak algılanmadı.
 	[ -x /usr/bin/kde4-config ] && kde=KDE_SUPPORT=1
 
 	make DESTDIR=$PKG PREFIX=/usr $kde install

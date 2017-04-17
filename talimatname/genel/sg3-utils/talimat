@@ -1,6 +1,6 @@
-# Description: Generic SCSI utilities
+# Description: Genel SCSI yardımcı programları
 # URL: http://sg.danny.cz/sg/sg3_utils.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=sg3-utils

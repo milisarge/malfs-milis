@@ -1,8 +1,8 @@
-# Description: Tools for maintaining centralized SGML catalogs.
-# URL: URL: http://www.docbook.org/xml/ 
-# NuTyX package info file (http://nutyx.org)
-# Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: 
+# Description: Merkezi SGML kataloglarını koruma araçları.
+# URL: http://www.docbook.org/xml/ 
+# Packager: milisarge
+# Depends on:
+
 name=sgml-common
 version=0.6.3
 release=1
@@ -20,10 +20,6 @@ build(){
     make
     make DESTDIR=$PKG install
 
-    # fix doc dir
+    # Doc dizinini düzelt
     mv $PKG/usr/doc $PKG/usr/share/doc
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)

@@ -1,6 +1,6 @@
-# Description: Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
+# Description: S.M.A.R.T.'yi kontrol edin ve izleyin. Etkin ATA ve SCSI Sabit Diskler
 # URL: http://smartmontools.sourceforge.net
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=smartmontools

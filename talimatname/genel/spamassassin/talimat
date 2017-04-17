@@ -1,8 +1,7 @@
-# Description: A mail filter to identify spam
+# Description: Spam belirlemek için bir posta filtresi
 # URL: http://search.cpan.org/
-# Packager: pierre at nutyx dot org
-# Depends on: perl openssl zlib re2c perl-net-dns perl-io-socket-ssl perl-libwww perl-mail-spf perl-http-message perl-net-http perl-io-socket-inet6 perl-mail-dkim perl-crypt-ssleay razor perl-dbi 
-run=( re2c perl-net-dns perl-io-socket-ssl perl-libwww perl-mail-spf perl-http-message perl-net-http perl-io-socket-inet6 perl-mail-dkim perl-crypt-ssleay razor perl-dbi )
+# Packager: milisarge
+# Depends on: openssl zlib re2c perl-net-dns perl-io-socket-ssl perl-libwww perl-mail-spf perl-http-message perl-net-http perl-io-socket-inet6 perl-mail-dkim perl-crypt-ssleay razor perl-dbi
 
 name=spamassassin
 version=3.4.1
