@@ -1,0 +1,30 @@
+# Description:  Güvenli lan chat uygulaması
+# URL: https://sourceforge.net/projects/beebeep/
+# Packager: milisarge
+# Depends on: qt4 phonon-qt4 libxcb avahi libxcb
+
+name=beebeep
+_version=721
+version=3.0.6
+release=1
+source=(http://netcologne.dl.sourceforge.net/project/${name}/Sources/${name}-code-${version}.zip
+		phonon.patch
+        ${name}.xpm
+        ${name}.desktop
+        ${name}_script)
+
+build() {
+	cd beebeep-code-${_version}
+	patch -p1 -i $SRC/phonon.patch
+	cd src && qmake-qt4
+	cd ../plugins && qmake-qt4
+	cd .. && qmake-qt4
+	make
+	install -Dm755 "${SRC}/beebeep-code-${_version}/test/${name}" "${PKG}/usr/lib/${name}/${name}"
+	mkdir -p "${PKG}/usr/lib/${name}"
+	cp -a ${SRC}/beebeep-code-${_version}/test/lib*.so.* ${PKG}/usr/lib/${name}/
+
+	install -Dm755 "${SRC}/${name}_script" "${PKG}/usr/bin/${name}"
+	install -Dm644 "${SRC}/${name}.xpm" "${PKG}/usr/share/pixmaps/${name}.xpm"
+	install -Dm755 "${SRC}/${name}.desktop" "${PKG}/usr/share/applications/${name}.desktop"
+}
