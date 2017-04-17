@@ -1,6 +1,6 @@
-# Description: Simple scanning interface utility
+# Description: Basit tarama arayüzü programı
 # URL: https://launchpad.net/simple-scan/
-# Packagers: pierre at nutyx dot org
+# Packagers: milisarge
 # Depends on: gtk3 colord itstool sane dconf intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
 
 name=simple-scan
