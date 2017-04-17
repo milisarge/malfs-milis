@@ -1,4 +1,4 @@
-# Description:The Swiss Army knife of sound processing tools 
+# Description:Çok panelli sekmeli dosya yöneticisi
 # URL: http://sox.sourceforge.net/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: file libsndfile libpng lame opencore-amr gsm libao libmad libid3tag wavpack pulseaudio opusfile time
