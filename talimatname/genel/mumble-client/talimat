@@ -1,0 +1,37 @@
+# Description:  Voice chat application (client only!)
+# URL: http://mumble.sourceforge.net
+# Packager: milisarge
+# Depends on: boost qt4 speex speexdsp libsndfile protobuf
+
+name=mumble-client
+version=1.2.19
+release=1
+source=(https://github.com/mumble-voip/mumble/releases/download/$version/mumble-$version.tar.gz)
+
+build() {
+	cd mumble-$version
+
+	qmake-qt4 main.pro \
+	    CONFIG+=no-bundled-speex \
+	    CONFIG+=no-dbus \
+	    CONFIG+=no-embed-qt-translations \
+	    CONFIG+=no-speechd \
+	    CONFIG+=no-bonjour \
+	    CONFIG+=no-g15 \
+	    CONFIG+=no-11x \
+	    CONFIG+=no-server \
+            DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
+
+	make release
+
+	install -d $PKG/usr/{bin,lib}
+	install -o root -g root release/mumble $PKG/usr/bin/mumble
+
+	install -m755 -o root -g root -D release/plugins/liblink.so $PKG/usr/lib/mumble/liblink.so
+	install -m755 -o root -g root -D release/plugins/libmanual.so $PKG/usr/lib/mumble/libmanual.so
+	install -o root -g root release/libcelt0.so.0.7.0 $PKG/usr/lib/mumble
+	cd $PKG/usr/lib/mumble
+	ln -s libcelt0.so.0.7.0 libcelt0.so.0.7
+	ln -s libcelt0.so.0.7.0 libcelt0.so.0
+	ln -s libcelt0.so.0.7.0 libcelt0.so
+}

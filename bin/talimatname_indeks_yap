@@ -1,0 +1,313 @@
+#!/usr/bin/perl -w
+
+our $version = "1.0.4";
+
+########################################################################
+#
+# portspage (http://www.karsikkopuu.net/crux/scripts/)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# 2017 milis linux talimatnamesine uyarlama - milisarge
+########################################################################
+
+use strict;
+
+our %options =
+(
+	title => "Milis Linux Talimatnamesi",
+	timestamp_accuracy => 1,
+	date_from_file => 0,
+);
+
+sub print_usage
+{
+	print <<EOT;
+Usage: talimatname_indeks_yap [paremetre]... [dizin]
+
+  --title=TITLE               set the page title
+  --header=FILE               name of file to insert before port listing
+  --footer=FILE               name of file to insert after port listing
+  --timestamp-accuracy=LEVEL  0 = no timestamp, 1 = date only, 2 = date and time
+                              default is 1
+  --date-from-file            take date from newest file instead of directory
+  --date-from-pkgfile         take date from Pkgfile instead of directory
+  --version                   output version information and exit
+
+EOT
+}
+
+sub parse_args
+{
+	foreach my $arg (@ARGV)
+	{
+		if ($arg =~ /^--header=(.*)$/)
+		{
+			$options{header} = $1;
+		}
+		elsif ($arg =~ /^--footer=(.*)$/)
+		{
+			$options{footer} = $1;
+		}
+		elsif ($arg =~ /^--title=(.*)$/)
+		{
+			$options{title} = $1;
+		}
+		elsif ($arg =~ /^--timestamp-accuracy=(0|1|2)$/)
+		{
+			$options{timestamp_accuracy} = $1;
+		}
+		elsif ($arg =~ /^--date-from-file$/)
+		{
+			$options{date_from_file} = 1;
+		}
+		elsif ($arg =~ /^--date-from-pkgfile$/)
+		{
+			$options{date_from_pkgfile} = 1;
+		}
+		elsif ($arg =~ /^--version$/)
+		{
+			print "$version\n";
+			exit 0;
+		}
+		elsif ($arg =~ /^--help$/)
+		{
+			print_usage();
+			exit 0;
+		}
+		else
+		{
+			$options{directory} = $arg;
+		}
+	}
+}
+
+sub recurse_tree
+{
+	my $path = shift;
+	my @list;
+
+	while ($path =~ s/\/\//\//g) {}
+	$path =~ s/\/$//;
+
+	opendir(DIR, $path) or return;
+	ENTRY:
+	foreach my $entry(sort(readdir(DIR)))
+	{
+		next ENTRY if $entry eq ".";
+		next ENTRY if $entry eq "..";
+		push (@list, "$path/$entry") if -f "$path/$entry";
+		push (@list, recurse_tree("$path/$entry")) if -d "$path/$entry";
+	}
+
+	return @list;
+}
+
+sub parse_pkgfile
+{
+	my %parsed;
+	my $pkgfile = shift;
+
+	if (open (FILE, $pkgfile))
+	{
+		while (<FILE>)
+		{
+			if ($_ =~ /^#\s*(.*?):\s*(.*)$/)
+			{
+				my $key = $1;
+				my $value = $2;
+				$value =~ s/</&lt;/g;
+				$value =~ s/>/&gt;/g;
+				$value =~ s/&/&amp;/g;
+				$parsed{$key} = $value;
+			}
+			elsif ($_ =~ /^version=(.*)$/)
+			{
+				$parsed{version} = $1;
+			}
+			elsif ($_ =~ /^release=(.*)$/)
+			{
+				$parsed{release} = $1;
+			}
+		}
+		close (FILE);
+	}
+
+	return { %parsed };
+}
+
+sub main
+{
+	my %db;
+
+	parse_args();
+
+	if (!$options{directory})
+	{
+		print_usage();
+		return 0;
+	}
+
+	foreach my $file (recurse_tree($options{directory}))
+	{
+		if ($file =~ q:.*/(.*)/talimat$:)
+		{
+			$db{$1} = parse_pkgfile("$file");
+		}
+	}
+
+	print <<EOH;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xml:lang="tr" lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<meta http-equiv="content-type" contentType="text/html;">
+
+EOH
+
+	print "  <title>$options{title}</title>\n";
+
+	print <<EOH;
+  <style type="text/css">
+   body
+   {
+    font-family: Verdana, sans-serif;
+    font-size: 85%;
+    padding: 2em;
+   }
+   a
+   {
+    color: black;
+   }
+   table
+   {
+    border: solid #CAD4E9 1px;
+    font-size: 85%;
+   }
+   td
+   {
+    padding: 6px;
+   }
+   tr.header
+   {
+    background-color: #CAD4E9;
+   }
+   tr.odd
+   {
+    background-color: #ECF0F7;
+   }
+   tr.even
+   {
+    background-color: #F7F9FC;
+   }
+  </style>
+  
+ </head>
+ <body>
+EOH
+
+	print "  <h2>$options{title}</h2>\n";
+
+	if ($options{header})
+	{
+		open(FILE, $options{header}) or die "Couldn't open header file";
+		while (<FILE>)
+		{
+			print "  " . $_;
+		}
+		close(FILE);
+	}
+
+	print "  <table width=\"100%\" cellspacing=\"0\">\n";
+	print "   <tr class=\"header\"><td><b>Talimat</b></td><td><b>Sürüm</b></td><td><b>Açıklama</b></td>";
+	if ($options{timestamp_accuracy} > 0)
+	{
+		print "<td><b>Son değişiklik</b></td>";
+	}
+	print "</tr>\n";
+	our $odd = "odd";
+	my $count = 0;
+	foreach my $port (sort keys %db)
+	{
+		$count++;
+		print "   <tr class=\"$odd\"><td>";
+		$db{$port}{URL} ? print "<a href=\"$db{$port}{URL}\">$port</a>" : print "$port";
+		print "</td><td><a href=\"$options{directory}/$port/\">$db{$port}{version}-$db{$port}{release}</a></td><td>";
+		print $db{$port}{Description} if $db{$port}{Description};
+		print "</td>";
+
+		if ($options{timestamp_accuracy} > 0)
+		{
+			my $date;
+
+			if ($options{date_from_file})
+			{
+				my @files = recurse_tree("$options{directory}/$port");
+				my @dates;
+				foreach my $file (@files)
+				{
+					push (@dates, (stat($file))[9]);
+				}
+				@dates = sort @dates;
+				$date = $dates[$#dates];
+
+			}
+			elsif ($options{date_from_pkgfile})
+			{
+				$date = (stat("$options{directory}/$port/talimat"))[9];
+			}
+			else
+			{
+				$date = (stat("$options{directory}/$port"))[9];
+			}
+
+			print "<td>" . isotime($date, $options{timestamp_accuracy}) . "</td>";
+		}
+
+		print "</tr>\n";
+
+		if ($odd eq "odd") { $odd = "even"; }
+		else { $odd = "odd"; }
+	}
+	print "  </table>\n";
+	print "  <p><b>$count ports</b></p>\n";
+
+	if ($options{footer})
+	{
+		open(FILE, $options{footer}) or die "Couldn't open footer file";
+		while (<FILE>)
+		{
+			print "  " . $_;
+		}
+		close(FILE);
+	}
+
+	print <<EOH;
+ </body>
+</html>
+EOH
+
+	return 0;
+}
+
+sub isotime
+{
+	my $time = (shift or time);
+	my $accuracy = (shift or 2);
+	my @t = gmtime ($time);
+	my $year = $t[5] + 1900;
+	my $month = sprintf("%02d", $t[4] + 1);
+	my $day = sprintf("%02d", $t[3]);
+
+	if ($accuracy == 1)
+	{
+		return "$year-$month-$day";
+	}
+
+	return "$year-$month-$day " . sprintf("%02d:%02d:%02d UTC", $t[2], $t[1], $t[0]);
+}
+
+exit(main());
+
+# End of file
