@@ -1,19 +1,18 @@
-# Description: QT temelli hesap makinesi
+# Description: calculator based on QT
 # URL: http://speedcrunch.org/
 # Packager: milisarge
-# Depends on: qt4 
+# Depends on: qt5 
 
 name=speedcrunch
-version=0.10.1
+version=0.12.0
 release=1
 
-source=(http://speedcrunch.googlecode.com/files/speedcrunch-$version.tar.gz)
+source=(https://bitbucket.org/heldercorreia/speedcrunch/get/release-$version.tar.bz2)
 build ()
 {
-cd speedcrunch-$version/src
-cmake . -DCMAKE_INSTALL_PREFIX=/usr || return 1
-make
-lrelease-qt4 speedcrunch.pro
-make DESTDIR=$PKG install
+	cd */src
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr
+	make
+	make DESTDIR="$PKG" install
 
 }
