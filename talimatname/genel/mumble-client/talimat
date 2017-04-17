@@ -1,4 +1,4 @@
-# Description:  Voice chat application (client only!)
+# Description:  Sesli chat uygulaması- bağlanıcı uygulama
 # URL: http://mumble.sourceforge.net
 # Packager: milisarge
 # Depends on: boost qt4 speex speexdsp libsndfile protobuf
