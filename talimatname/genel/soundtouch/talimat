@@ -1,7 +1,7 @@
-# Description: Audio processing library that allows changing the sound tempo, pitch and playback rate.
+# Description: Ses tempo, basamak ve oynatma oranını değiştirmeye izin veren ses işleme kitaplığı.
 # Url: http://www.surina.net/soundtouch/
-# Maintainer: Olli Parviainen <oparviai 'at' iki' dot' fi>
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on: 
 
 name=soundtouch
 version=1.9.2
