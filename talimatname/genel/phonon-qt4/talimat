@@ -1,0 +1,30 @@
+# Description : KDE'nin API multimedya programı. KDE tarafından daha fazla desteklenen eski aRts'in yerini alıyor.
+# URL: https://www.kde.org/
+# Packager: milisarge
+# Depends on: cmake kf5-extra-cmake-modules glib qt4 pulseaudio
+
+name=phonon-qt4
+release=1
+version=4.9.0
+_name=phonon
+source=(http://download.kde.org/stable/${_name}/$version/${_name}-$version.tar.xz)
+
+build() {
+	cd phonon-$version
+	cmake ../phonon-$version           \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_SKIP_RPATH=ON \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
+		-DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4 \
+		-D__KDE_HAVE_GCC_VISIBILITY=NO \
+		-DCMAKE_INSTALL_LIBDIR=lib
+		
+	make
+	make DESTDIR=$PKG install
+
+	 # Install headers into the Qt4 dir
+	install -d "${PKG}"/usr/include/qt4
+	mv "${PKG}"/usr/include/{phonon,KDE} "${PKG}"/usr/include/qt4/
+	sed -i 's#includedir=/usr/include#includedir=/usr/include/qt4#' "${PKG}/usr/lib/pkgconfig/phonon.pc"
+}
