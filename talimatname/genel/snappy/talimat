@@ -1,7 +1,7 @@
-# Description: A fast compressor/decompressor library
+# Description: Snappy bir sıkıştırma / açma kütüphanesi.
 # URL: http://code.google.com/p/snappy/
-# Maintainers: https://code.google.com/p/snappy/people/list
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on: 
 
 name=snappy
 version=1.1.1
