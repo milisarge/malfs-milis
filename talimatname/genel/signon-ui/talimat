@@ -1,4 +1,4 @@
-# Description : UI component responsible for handling the user interactions during the login process of an online account
+# Description : Bir çevrimiçi hesabın oturum açma işlemi sırasında kullanıcı etkileşimlerini işleme tabi tutmaktan sorumlu UI bileşeni
 # URL : https://launchpad.net/online-accounts-signon-ui
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : qt5 libaccounts-qt5 qt5-webkit signond libnotify
