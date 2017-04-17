@@ -1,6 +1,6 @@
-# Description: A free codec for free speech
+# Description: Ücretsiz konuşma için ücretsiz bir codec bileşeni
 # URL: http://www.speex.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libogg 
 
 name=speex
