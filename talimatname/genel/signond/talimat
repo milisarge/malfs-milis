@@ -1,4 +1,4 @@
-# Description : A D-Bus service which performs user authentication on behalf of its clients
+# Description : İstemci adına kullanıcı kimlik doğrulamasını yapan bir D-Bus servisi
 # URL : https://gitlab.com/accounts-sso/signond/
 # Packager : alihan-ozturk28@hotmail.com
 # Depends on : qt5 libproxy doxygen dejavu-ttf freefont-ttf ttf-liberation noto-fonts
