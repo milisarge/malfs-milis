@@ -7,10 +7,7 @@ name=vuurmuur
 _name=Vuurmuur
 version=0.8rc2
 release=1
-source=(ftp://ftp.vuurmuur.org/releases/$version/$_name-$version.tar.gz
-		modules.conf
-		vuurmuur_servis.rc
-)
+source=(ftp://ftp.vuurmuur.org/releases/$version/$_name-$version.tar.gz)
 
 build() {
 
