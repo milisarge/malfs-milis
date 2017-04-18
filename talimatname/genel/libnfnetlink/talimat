@@ -1,0 +1,18 @@
+# Description: Netfilter kernel/userspace iletişim kütüphnesi
+# URL: http://www.netfilter.org/projects/libnfnetlink/index.html
+# Packager: milisarge
+# Depends on: 
+
+name=libnfnetlink
+version=1.0.1
+release=1
+source=(http://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2
+	sync_with_kernel_headers.patch)
+
+build() {
+	cd $name-$version
+	patch -p1 -i $SRC/sync_with_kernel_headers.patch
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

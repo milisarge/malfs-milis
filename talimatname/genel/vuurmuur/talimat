@@ -1,0 +1,110 @@
+# Description: iptables ayarlamaları için güçlü bir arayüz uygulaması
+# URL: http://www.vuurmuur.org
+# Packager: milisarge
+# Depends on: libnetfilter_log iptables libjpeg-turbo 
+
+name=vuurmuur
+_name=Vuurmuur
+version=0.7
+release=1
+source=(ftp://ftp.vuurmuur.org/releases/$version/$_name-$version.tar.gz
+		modules.conf
+		vuurmuur_servis.rc
+)
+
+build() {
+cd ${SRC}/${_name}-${version}
+
+    for archive in libvuurmuur vuurmuur vuurmuur_conf; do
+        [[ ! -d "$archive" ]] &&
+            tar xzf ${archive}-${version}.tar.gz
+    done
+
+    echo "vuurmuur kütüphaneleri derleniyor..."
+    pushd libvuurmuur-${version}
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
+    popd
+
+    echo "vuurmuur derleniyor..."
+    pushd vuurmuur-${version}
+    sed -i 's|-rpath|-rpath-link|' configure
+    LDFLAGS+="-L${SRC}/${_name}-${version}/lib${name}-${version}/src \
+              -L${SRC}/${_name}-${version}/lib${name}-${version}/src/.libs \
+              -Wl,-rpath=/usr/lib/${name}/plugins" \
+    ./configure --prefix=/usr --sysconfdir=/etc \
+                --with-libvuurmuur-includes="${SRC}/${_name}-${version}/lib${name}-${version}/src" \
+                --with-libvuurmuur-libraries="${SRC}/${_name}-${version}/lib${name}-${version}/src"
+    make
+    popd
+
+    echo "vuurmuur_conf derleniyor..."
+    pushd vuurmuur_conf-${version}
+    sed -i 's|-rpath|-rpath-link|' configure
+    LDFLAGS+="-L${SRC}/${_name}-${version}/lib${name}-${version}/src \
+               -L${SRC}/${_name}-${version}/lib${name}-${version}/src/.libs \
+               -Wl,-rpath=/usr/lib/${name}/plugins" \
+    ./configure --prefix=/usr --sysconfdir=/etc \
+                --with-libvuurmuur-includes="${SRC}/${_name}-${version}/lib${name}-${version}/src" \
+                --with-libvuurmuur-libraries="${SRC}/${_name}-${version}/lib${name}-${version}/src"
+    make
+    popd
+    pushd libvuurmuur-${version}
+    make DESTDIR=${PKG} install
+    popd
+
+    pushd vuurmuur-${version}
+    make DESTDIR=${PKG} install
+    popd
+
+    pushd vuurmuur_conf-${version}
+    make DESTDIR=${PKG} install
+    popd
+
+    # dizin yapısı
+    install -dm700 ${PKG}/etc/${name}
+    install -dm700 ${PKG}/etc/${name}/plugins
+    install -dm700 ${PKG}/etc/logrotate.d/
+    install -dm755 ${PKG}/usr/share/${name}/textdir/{interfaces,services,zones,rules}
+    install -dm700 ${PKG}/var/log/${name}
+
+    # daemon ve log
+    install -Dm755 ${SRC}/vuurmuur_servis.rc ${PKG}/etc/rc.d/init.d/${name}
+    install -Dm644 ${PKG}/usr/share/${name}/scripts/vuurmuur-logrotate ${PKG}/etc/logrotate.d/${name}
+
+    # ayarlar /etc
+    install -Dm600 ${PKG}/usr/share/vuurmuur/config/config.conf.sample \
+                    ${PKG}/etc/${name}/config.conf
+    install -Dm600 ${SRC}/modules.conf ${PKG}/etc/${name}/modules.conf
+    install -Dm600 ${PKG}/usr/share/vuurmuur/config/vuurmuur_conf.conf.sample \
+                    ${PKG}/etc/${name}/${name}_conf.conf
+
+    sed -i ${PKG}/etc/${name}/config.conf \
+        -e 's|"/sbin/tc|"/usr/sbin/tc|' \
+        -e 's|"/sbin/ip6tables|"/usr/sbin/ip6tables|' \
+        -e 's|"/sbin/iptables|"/usr/sbin/iptables|' \
+        -e 's|"/sbin/ip6tables-restore|"/usr/sbin/ip6tables-restore|' \
+        -e 's|"/sbin/iptables-restore|"/usr/sbin/iptables-restore|' \
+        -e 's|"/var/log/messages|"/var/log/iptables.log|'
+
+    sed -i ${PKG}/etc/${name}/${name}_conf.conf \
+        -e 's|"/usr/bin/iptrafvol.pl|"/usr/sbin/iptrafvol.pl|'
+
+
+    echo "LOCATION=\"/etc/${name}/textdir\"" > ${PKG}/etc/${name}/plugins/textdir.conf
+
+    # default firewall setup in /usr/share
+    touch ${PKG}/usr/share/${name}/textdir/rules/rules.conf
+    touch ${PKG}/usr/share/${name}/textdir/rules/blocklist.conf
+
+    cp -R ${SRC}/${_name}-${version}/zones/*   ${PKG}/usr/share/${name}/textdir/zones/
+    mv    ${PKG}/usr/share/${name}/services/* ${PKG}/usr/share/${name}/textdir/services/
+
+    # install licenses
+    install -Dm644 ${SRC}/${_name}-${version}/lib${name}-${version}/COPYING \
+                    ${PKG}/usr/share/licenses/lib${name}/COPYING
+    install -Dm644 ${SRC}/${_name}-${version}/${name}-${version}/COPYING \
+                    ${PKG}/usr/share/licenses/${name}/COPYING
+    install -Dm644 ${SRC}/${_name}-${version}/${name}_conf-${version}/COPYING \
+                    ${PKG}/usr/share/licenses/${name}_conf/COPYING
+}
