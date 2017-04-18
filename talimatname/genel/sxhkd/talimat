@@ -1,6 +1,6 @@
-# Description: Simple X hotkey daemon
+# Description: Sxhkd, komutları çalıştırarak girdi olaylarına tepki veren bir X arka plan programıdır.
 # URL: https://github.com/baskerville/sxhkd
-# Maintainer: Chris Farrell timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: libxcb xcb-util xcb-util-wm xcb-util-keysyms git
 
 name=sxhkd
