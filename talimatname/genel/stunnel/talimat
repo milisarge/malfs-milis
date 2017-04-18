@@ -1,8 +1,8 @@
-# URL:         	http://www.stunnel.org
-# Packager:		berlius at nutyx dot com
+# Description: Güvenli kanallar üzerinden iletişim kurabilmeniz için SSL içindeki keyfi TCP bağlantılarını şifreleyin
+# URL: http://www.stunnel.org
+# Packager: milisarge
 # Depends on:  	
 
-description="Encrypt arbitrary TCP connections inside SSL so you can communicate over secure channels"
 name=stunnel
 version=5.26
 release=2

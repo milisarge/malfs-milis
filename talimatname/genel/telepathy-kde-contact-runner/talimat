@@ -1,4 +1,4 @@
-# Description: KRunner plugin for KDE Telepathy
+# Description: KDE Telepati için KRunner eklentisi
 # URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals kf5-krunner 

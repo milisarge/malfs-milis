@@ -1,6 +1,6 @@
-# Description: Infrastructure to simplify the gathering of information about the running Linux system.
+# Description: Çalışan Linux sistemi hakkında bilgi toplamanın basitleştirilmesi için altyapı.
 # URL: http://sourceware.org/systemtap/
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: elfutils 
 
 name=systemtap

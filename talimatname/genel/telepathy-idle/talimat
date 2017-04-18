@@ -1,4 +1,4 @@
-# Description: An IRC connection manager for Telepathy
+# Description: Telepati için bir IRC bağlantı yöneticisi
 # URL: http://telepathy.freedesktop.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: telepathy-glib 

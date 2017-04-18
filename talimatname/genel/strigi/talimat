@@ -1,6 +1,6 @@
-# Description: Fast crawling desktop search engine with Qt GUI
+# Description: Qt GUI ile hızlı tarama masaüstü arama motoru
 # URL: http://strigi.sourceforge.net
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: curl qt4 exiv2 ffmpeg libxml2
 
 name=strigi

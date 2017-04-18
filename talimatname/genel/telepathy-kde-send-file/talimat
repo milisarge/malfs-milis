@@ -1,4 +1,4 @@
-# Description: A File manager plugin to launch a file transfer job with a specified contact 
+# Description: Belirtilen bir kişiyle bir dosya aktarım işi başlatmak için Dosya yöneticisi eklentisi
 # URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals kf5-kio

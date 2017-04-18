@@ -1,4 +1,4 @@
-# Description: Telepathy framework logging daemon
+# Description: Telepati-logger, Telepati çerçevesindeki tüm iletişimlerin günlüğünü merkezileştiren bir arka plan programıdır.
 # URL: http://telepathy.freedesktop.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: intltool sqlite telepathy-glib gobject-introspection 

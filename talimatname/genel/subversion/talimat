@@ -1,6 +1,5 @@
-# Description: A version control system (CVS replacement)
+# Description: Bir sürüm kontrol sistemi (CVS değiştirme)
 # URL: http://subversion.apache.org
-# Maintainer: Jose V Beneyto, sepen at crux dot nu
 # Packager: milisarge@gmail.com
 # Depends on: apr serf cyrus-sasl
 
@@ -23,6 +22,6 @@ build() {
     make
     make -j1 DESTDIR=$PKG install
 
-    # info pages seem to get generated when makeinfo is available
+    # Makeinfo mevcut olduğunda bilgi sayfaları oluşturuluyor gibi görünüyor
     rm -rf $PKG/usr/info
 }

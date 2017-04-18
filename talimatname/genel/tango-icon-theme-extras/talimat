@@ -1,8 +1,8 @@
-# Description: The Tango Desktop Project defines an icon style guideline to which artists and designers can adhere.
-# URL: URL: http://tango.freedesktop.org/
-# Packager: - tnut at nutyx dot org
+# Description: Tango Masaüstü Projesi, sanatçıların ve tasarımcıların uyabileceği bir simge stili kılavuzunu tanımlar.
+# URL: http://tango.freedesktop.org/
+# Packager: milisarge
 # Depends on: icon-naming-utils imagemagick 
-description="Defines an icon style guideline to which artists and designers can adhere."
+
 name=tango-icon-theme-extras
 version=0.1.0
 release=1

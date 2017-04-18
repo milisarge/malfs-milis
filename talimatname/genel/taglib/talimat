@@ -1,6 +1,6 @@
-# Description: A Library for reading and editing the meta-data of several popular audio formats
+# Description: Çeşitli popüler ses biçimlerinin meta verilerini okumak ve düzenlemek için bir kütüphane
 # URL: http://developer.kde.org/~wheeler/taglib.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: cmake
 
 name=taglib

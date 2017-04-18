@@ -1,6 +1,6 @@
-# Description: SWIG Simplified Wrapper and Interface Generator
+# Description: SWIG Basitleştirilmiş Sarmalayıcı ve Arayüz Jeneratörü
 # URL: http://www.swig.org/
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: pcre 
 
 name=swig

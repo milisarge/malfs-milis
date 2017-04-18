@@ -1,4 +1,4 @@
-# Description: Telepathy handler for Text Chats
+# Description: Metin Sohbetleri için telepati işleyicisi
 # URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals kf5-kdewebkit kf5-kemoticons 
