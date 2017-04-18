@@ -77,6 +77,8 @@ class Talimat():
 		
 	def _ice_aktar_bloklar(self,dosya,tip):
 		if tip=="arch":
+			#bu sekilde de satirlar cekilebilir.
+			#lines = [line.rstrip('\n') for line in open(dosya)]
 			with open(dosya) as f:
 				satirlar = f.readlines()
 			blok=False
