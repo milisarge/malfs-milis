@@ -33,6 +33,8 @@ import shlex
 # Milis linux talimat sınıfı
 class Talimat():
 	
+	talimatname="/sources/milis.git/talimatname/"
+	
 	def __init__(self):
 		self.tanim=""
 		self.url=""
@@ -66,7 +68,10 @@ class Talimat():
 	def _gerekler(self):
 		gerekstr=""
 		for gerek in self.gerekler:
-			gerekstr+=gerek+" "
+			if os.path.exists(self.talimatname+"temel-ek/"+gerek) is False and os.path.exists(self.talimatname+"temel/"+gerek) is False:
+				gerekstr+=gerek+" "
+				if os.path.exists(self.talimatname+"genel/"+gerek) is False:
+					print renk.uyari+gerek+" talimatı yapılmalı!"+renk.son
 		return gerekstr
 		
 	def _kaynaklar(self):
@@ -102,8 +107,8 @@ class Talimat():
 	
 	def olustur(self):
 		if self.isim:
-			print self.isim
-			os.system("mkdir "+self.isim)
+			print renk.tamamb+self.isim+" talimatı hazırlanıyor..."+renk.son
+			os.system("mkdir -p "+self.isim)
 			open(self.isim+"/talimat","w").write(self.icerik())
 	
 	def icerik(self):
