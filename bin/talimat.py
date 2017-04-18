@@ -29,6 +29,7 @@ import sys
 import re
 import os
 import shlex
+import urllib2
 
 # Milis linux talimat sınıfı
 class Talimat():
@@ -41,6 +42,7 @@ class Talimat():
 		self.paketci=""
 		self.gerekler=[]
 		self.isim=""
+		self._isim=""
 		self.surum=""
 		self.devir=""
 		self.kaynaklar=[]
@@ -52,13 +54,17 @@ class Talimat():
 			self.tanim=pkgbuild.description
 			self.url=pkgbuild.url
 			self.paketci="milisarge"
-			for mgerek in pkgbuild.makedepends:
-				if mgerek not in self.gerekler:
-					self.gerekler.append(mgerek)
-			for gerek in pkgbuild.depends:
-				if gerek not in self.gerekler:
-					self.gerekler.append(gerek)
+			if hasattr(pkgbuild, 'makedepends'):
+				for mgerek in pkgbuild.makedepends:
+					if mgerek not in self.gerekler:
+						self.gerekler.append(mgerek)
+			if hasattr(pkgbuild, 'depends'):
+				for gerek in pkgbuild.depends:
+					if gerek not in self.gerekler:
+						self.gerekler.append(gerek)
 			self.isim=pkgbuild.name
+			if hasattr(pkgbuild, '_name'):
+				self._isim=pkgbuild._name
 			self.surum=pkgbuild.version
 			self.devir=pkgbuild.release
 			self.kaynaklar=pkgbuild.sources
@@ -119,6 +125,8 @@ class Talimat():
 		icerikstr+="# Depends on: "+self._gerekler()
 		icerikstr+="\n"+"\n"
 		icerikstr+="name="+self.isim+"\n"
+		if self._isim !="":
+			icerikstr+="_name="+self._isim+"\n"
 		icerikstr+="version="+str(self.surum)+"\n"
 		icerikstr+="release="+str(self.devir)+"\n"
 		icerikstr+="source=("+self._kaynaklar()+")"
@@ -130,6 +138,7 @@ class Talimat():
 	def cevir(self,dosya,tip="arch"):
 		self.ice_aktar(dosya,tip)
 		self.olustur()
+		print renk.tamamy+talimat.isim+" talimatı hazır."+renk.son
 		
 
 # archlinux pkgbuild sınıfı
@@ -154,6 +163,7 @@ class PKGBUILD():
         # Symbol lookup table
         self._var_map = {
             'pkgname': 'name',
+            '_pkgname': '_name',
             'pkgver': 'version',
             'pkgdesc': 'description',
             'pkgrel': 'release',
@@ -287,13 +297,37 @@ class renk:
     kalin = '\033[1m'
     altcizgili = '\033[4m'
 
+
+class Arge:
+	
+	def indir(self,link):
+		paket=link.split("?h=")[1]
+		print renk.tamamb+paket+" indiriliyor..."+renk.son
+		veri = urllib2.urlopen(link)
+		open(paket+"_pkgbuild","w").write(veri.read())
+		return paket+"_pkgbuild"
+		
+	def aur_link(self,paket):
+		link="https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h="+paket
+		return link
+		
 if __name__ == '__main__':
 	
 	if len(sys.argv) > 1:
 		dosya=sys.argv[1]
+		talimat=Talimat()
+		arge=Arge()
 		if os.path.exists(dosya):
-			talimat=Talimat()
 			talimat.cevir(dosya)
-			print renk.tamamy+talimat.isim+" talimatı hazır."+renk.son
+		elif "https" in dosya or "http" in dosya:
+			Pdosya=arge.indir(dosya)
+			talimat.cevir(Pdosya)
+		elif dosya == "-a":
+			if len(sys.argv) > 2:
+				paket=sys.argv[2]
+				paket=str(paket)
+				link=arge.aur_link(paket)
+				dosya=arge.indir(link)
+				talimat.cevir(dosya)
 		else:
-			print renk.hata+dosya+" dosyası bulunamadı!"+renk.son
+			print renk.hata+dosya+" paremetre bulunamadı!"+renk.son
