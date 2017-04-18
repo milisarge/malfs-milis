@@ -1,4 +1,4 @@
-# Description: Hierarchical, reference counted memory pool system with destructors.
+# Description: Talloc, yıkıcılarla hiyerarşik, referans sayılmış bir bellek havuzu sistemidir. Samba'da kullanılan çekirdek bellek ayırıcısıdır.
 # URL: https://talloc.samba.org
 # Packager: milisarge
 # Depends on: python libxslt
