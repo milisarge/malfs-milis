@@ -1,7 +1,8 @@
+# Description: Sistem performansını ve kullanım etkinliğini izlemek için kullanılan yardımcı programlar.
 # URL: http://perso.wanadoo.fr/sebastien.godard
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
+# Depends on:
 
-description="Utilities to monitor system performance and usage activity."
 name=sysstat
 version=11.1.8	
 release=1
