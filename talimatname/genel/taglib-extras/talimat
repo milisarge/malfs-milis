@@ -1,7 +1,8 @@
-# Description: Additional taglib plugins for KDE
+# Description: KDE için ek taglib eklentileri
 # URL: http://developer.kde.org/~wheeler/taglib.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: taglib 
+
 name=taglib-extras
 version=1.0.1
 release=1
