@@ -1,7 +1,7 @@
-# Description: Library which implements a curses-based widget set for text terminals
-# URL:         http://www.clifford.at/stfl
-# Maintainer:  Juergen Daubert, jue at crux dot nu
-# Depends on:  ncurses
+# Description: Metin terminalleri için curses tabanlı bir widget seti uygulayan kütüphane
+# URL: http://www.clifford.at/stfl
+# Packager: milisarge
+# Depends on: ncurses
 
 name=stfl
 version=0.24
