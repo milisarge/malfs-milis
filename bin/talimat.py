@@ -103,13 +103,11 @@ class Talimat():
 					continue
 				if blok and satir.rstrip()!="" and satir.rstrip()!="}":
 					if (satir not in self.derleme) and ("pkgver()" not in satir) and ("prepare()" not in satir) and ("build()" not in satir) and ("package()" not in satir):
-						'''
 						satir=satir.replace("pkgdir","PKG")
 						satir=satir.replace("srcdir","SRC")
 						satir=satir.replace("pkgname","name")
 						satir=satir.replace("pkgver","version")
 						satir=satir.replace("pkgrel","release")
-						'''
 						self.derleme+=satir+"\n"
 		else:
 			return "blok için gecersiz tip!"
@@ -317,9 +315,14 @@ class Arge:
 			if e.code == 404:
 				print renk.hata+link+" bulunamadı!"+renk.son
 				return None
+				
 	def aur_link(self,paket):
 		link="https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h="+paket
 		return link
+		
+	def arch_link(self,paket):
+		link="https://git.archlinux.org/svntogit/community.git/plain/trunk/PKGBUILD?h=packages/"+paket
+		return link	
 		
 if __name__ == '__main__':
 	
@@ -338,7 +341,10 @@ if __name__ == '__main__':
 				paket=str(paket)
 				link=arge.aur_link(paket)
 				dosya=arge.indir(link)
+				if dosya is None:
+					link=arge.arch_link(paket)
+					dosya=arge.indir(link)
 				if link and dosya:
-					talimat.cevir(dosya)
+					talimat.cevir(dosya)	
 		else:
 			print renk.hata+dosya+" paremetre bulunamadı!"+renk.son
