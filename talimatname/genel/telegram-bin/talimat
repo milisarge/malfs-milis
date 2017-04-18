@@ -1,6 +1,6 @@
-# Description: 	Telegram, the secure IM platform
-# URL: 		http://www.telegram.org
-# Packager: 	milisarge
+# Description: 	Güvenli IM platformu olan Telegram uygulaması
+# URL: http://www.telegram.org
+# Packager: milisarge
 # Depends on:
 
 name=telegram-bin
