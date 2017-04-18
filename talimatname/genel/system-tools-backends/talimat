@@ -1,6 +1,6 @@
-# Description: Games of scripts multiplatforme for Linux and other systems unix
+# Description: Sistem Araçları Arka Uçları, Linux ve diğer Unix sistemleri için bir dizi çapraz platform komut dosyasıdır.
 # URL: http://www.gnome.org
-# Packager: b at juglas dot name
+# Packager: milisarge
 # Depends on: perl-xml-parser dbus-glib polkit 
 
 name=system-tools-backends
