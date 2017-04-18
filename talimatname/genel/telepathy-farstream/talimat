@@ -1,4 +1,4 @@
-# Description: A telepathy-backend to use stream engine.
+# Description: Akış motorunu kullanmak için bir telepatik arka plan.
 # URL: http://telepathy.freedesktop.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: farstream telepathy-glib 
