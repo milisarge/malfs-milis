@@ -1,9 +1,7 @@
-# Description: Lightweight and user-friendly e-mail client
+# Description: Hafif ve kullanıcı dostu e-posta istemcisi
 # URL: http://sylpheed.sraoss.jp/en/
-# Packager: pierre at nutyx dot org
-# Depends on: atk,expat,freetype,glib,libpng,pcre,cairo,cyrus-sasl,xorg-fontconfig,libassuan,libgpg-error,openldap,pango,gtk2,gnupg,gpgme,desktop-file-utils
-
-run=(gnupg)
+# Packager: milisarge
+# Depends on: atk expat freetype glib libpng pcre cairo cyrus-sasl xorg-fontconfig libassuan libgpg-error openldap pango gtk2 gnupg gpgme desktop-file-utils
 
 name=sylpheed
 version=3.5.0
