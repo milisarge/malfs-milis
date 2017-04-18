@@ -1,4 +1,4 @@
-# Description: Python libraries for use in Telepathy clients and connection managers
+# Description: Telepathy istemcilerinde ve bağlantı yöneticilerinde kullanmak için Python kütüphaneleri
 # URL: http://telepathy.freedesktop.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: dbus-python libxslt
