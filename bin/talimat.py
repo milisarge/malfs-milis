@@ -30,6 +30,7 @@ import re
 import os
 import shlex
 import urllib2
+from requests.exceptions import HTTPError
 
 # Milis linux talimat sınıfı
 class Talimat():
@@ -95,7 +96,7 @@ class Talimat():
 			blok=False
 			onblok=False
 			for satir in satirlar:
-				if "md5sums=(" in satir:
+				if "md5sums=(" in satir or "sha256sums=('":
 					onblok=True
 				if onblok is True and "')" in satir:
 					blok=True
@@ -303,10 +304,14 @@ class Arge:
 	def indir(self,link):
 		paket=link.split("?h=")[1]
 		print renk.tamamb+paket+" indiriliyor..."+renk.son
-		veri = urllib2.urlopen(link)
-		open(paket+"_pkgbuild","w").write(veri.read())
-		return paket+"_pkgbuild"
-		
+		try:
+			veri = urllib2.urlopen(link)
+			open(paket+"_pkgbuild","w").write(veri.read())
+			return paket+"_pkgbuild"
+		except urllib2.HTTPError, e:
+			if e.code == 404:
+				print renk.hata+link+" bulunamadı!"+renk.son
+				return None
 	def aur_link(self,paket):
 		link="https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h="+paket
 		return link
@@ -328,6 +333,7 @@ if __name__ == '__main__':
 				paket=str(paket)
 				link=arge.aur_link(paket)
 				dosya=arge.indir(link)
-				talimat.cevir(dosya)
+				if link and dosya:
+					talimat.cevir(dosya)
 		else:
 			print renk.hata+dosya+" paremetre bulunamadı!"+renk.son
