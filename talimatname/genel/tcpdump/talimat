@@ -1,7 +1,7 @@
-# Description: Network sniffer with command line interface
-# URL:         http://www.tcpdump.org
-# Packager  :  milisarge
-# Depends on:  libpcap
+# Description: Komut satırı arayüzü ile ağ algılayıcısı
+# URL: http://www.tcpdump.org
+# Packager: milisarge
+# Depends on: libpcap
 
 name=tcpdump
 version=4.9.0
