@@ -1,4 +1,4 @@
-# Description : This package installs Telepathy packages
+# Description : Bu paket Telepati paketlerini yükler
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: telepathy-kde-accounts-kcm telepathy-kde-approver telepathy-kde-auth-handler telepathy-kde-call-ui telepathy-kde-contact-runner telepathy-kde-contact-list telepathy-kde-desktop-applets telepathy-kde-filetransfer-handler telepathy-kde-integration-module telepathy-kde-send-file telepathy-kde-text-ui telepathy-mission-control telepathy-idle telepathy-logger telepathy-gabble telepathy-python
