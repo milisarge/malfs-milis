@@ -96,18 +96,20 @@ class Talimat():
 			blok=False
 			onblok=False
 			for satir in satirlar:
-				if "md5sums=(" in satir or "sha256sums=('":
+				if "md5sums=(" in satir  or "sha256sums=('" in satir:
 					onblok=True
 				if onblok is True and "')" in satir:
 					blok=True
 					continue
 				if blok and satir.rstrip()!="" and satir.rstrip()!="}":
 					if (satir not in self.derleme) and ("pkgver()" not in satir) and ("prepare()" not in satir) and ("build()" not in satir) and ("package()" not in satir):
+						'''
 						satir=satir.replace("pkgdir","PKG")
 						satir=satir.replace("srcdir","SRC")
 						satir=satir.replace("pkgname","name")
 						satir=satir.replace("pkgver","version")
 						satir=satir.replace("pkgrel","release")
+						'''
 						self.derleme+=satir+"\n"
 		else:
 			return "blok için gecersiz tip!"
@@ -302,7 +304,10 @@ class renk:
 class Arge:
 	
 	def indir(self,link):
-		paket=link.split("?h=")[1]
+		if "packages/" in link:
+			paket=link.split("?h=packages/")[1]
+		else:
+			paket=link.split("?h=")[1]
 		print renk.tamamb+paket+" indiriliyor..."+renk.son
 		try:
 			veri = urllib2.urlopen(link)
