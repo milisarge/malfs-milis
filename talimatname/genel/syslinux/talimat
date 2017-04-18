@@ -1,8 +1,8 @@
+# Description: FAT, ext2 /3/4 ve btrfs dosya sistemlerinden, CD'lerden ve PXE'den önyükleme yapan önyükleyici yükleyicileri
 # URL: http://syslinux.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: mtools nasm 
 
-description="boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE"
 name=syslinux
 version=6.03
 release=1
