@@ -5,7 +5,7 @@
 
 name=vuurmuur
 _name=Vuurmuur
-version=0.7
+version=0.8rc2
 release=1
 source=(ftp://ftp.vuurmuur.org/releases/$version/$_name-$version.tar.gz
 		modules.conf
@@ -13,98 +13,169 @@ source=(ftp://ftp.vuurmuur.org/releases/$version/$_name-$version.tar.gz
 )
 
 build() {
-cd ${SRC}/${_name}-${version}
-
-    for archive in libvuurmuur vuurmuur vuurmuur_conf; do
-        [[ ! -d "$archive" ]] &&
-            tar xzf ${archive}-${version}.tar.gz
-    done
-
-    echo "vuurmuur kütüphaneleri derleniyor..."
-    pushd libvuurmuur-${version}
-    ./configure --prefix=/usr --sysconfdir=/etc
-    make
-    popd
-
-    echo "vuurmuur derleniyor..."
-    pushd vuurmuur-${version}
-    sed -i 's|-rpath|-rpath-link|' configure
-    LDFLAGS+="-L${SRC}/${_name}-${version}/lib${name}-${version}/src \
-              -L${SRC}/${_name}-${version}/lib${name}-${version}/src/.libs \
-              -Wl,-rpath=/usr/lib/${name}/plugins" \
-    ./configure --prefix=/usr --sysconfdir=/etc \
-                --with-libvuurmuur-includes="${SRC}/${_name}-${version}/lib${name}-${version}/src" \
-                --with-libvuurmuur-libraries="${SRC}/${_name}-${version}/lib${name}-${version}/src"
-    make
-    popd
-
-    echo "vuurmuur_conf derleniyor..."
-    pushd vuurmuur_conf-${version}
-    sed -i 's|-rpath|-rpath-link|' configure
-    LDFLAGS+="-L${SRC}/${_name}-${version}/lib${name}-${version}/src \
-               -L${SRC}/${_name}-${version}/lib${name}-${version}/src/.libs \
-               -Wl,-rpath=/usr/lib/${name}/plugins" \
-    ./configure --prefix=/usr --sysconfdir=/etc \
-                --with-libvuurmuur-includes="${SRC}/${_name}-${version}/lib${name}-${version}/src" \
-                --with-libvuurmuur-libraries="${SRC}/${_name}-${version}/lib${name}-${version}/src"
-    make
-    popd
-    pushd libvuurmuur-${version}
-    make DESTDIR=${PKG} install
-    popd
-
-    pushd vuurmuur-${version}
-    make DESTDIR=${PKG} install
-    popd
-
-    pushd vuurmuur_conf-${version}
-    make DESTDIR=${PKG} install
-    popd
-
-    # dizin yapısı
-    install -dm700 ${PKG}/etc/${name}
-    install -dm700 ${PKG}/etc/${name}/plugins
-    install -dm700 ${PKG}/etc/logrotate.d/
-    install -dm755 ${PKG}/usr/share/${name}/textdir/{interfaces,services,zones,rules}
-    install -dm700 ${PKG}/var/log/${name}
-
-    # daemon ve log
-    install -Dm755 ${SRC}/vuurmuur_servis.rc ${PKG}/etc/rc.d/init.d/${name}
-    install -Dm644 ${PKG}/usr/share/${name}/scripts/vuurmuur-logrotate ${PKG}/etc/logrotate.d/${name}
-
-    # ayarlar /etc
-    install -Dm600 ${PKG}/usr/share/vuurmuur/config/config.conf.sample \
-                    ${PKG}/etc/${name}/config.conf
-    install -Dm600 ${SRC}/modules.conf ${PKG}/etc/${name}/modules.conf
-    install -Dm600 ${PKG}/usr/share/vuurmuur/config/vuurmuur_conf.conf.sample \
-                    ${PKG}/etc/${name}/${name}_conf.conf
-
-    sed -i ${PKG}/etc/${name}/config.conf \
-        -e 's|"/sbin/tc|"/usr/sbin/tc|' \
-        -e 's|"/sbin/ip6tables|"/usr/sbin/ip6tables|' \
-        -e 's|"/sbin/iptables|"/usr/sbin/iptables|' \
-        -e 's|"/sbin/ip6tables-restore|"/usr/sbin/ip6tables-restore|' \
-        -e 's|"/sbin/iptables-restore|"/usr/sbin/iptables-restore|' \
-        -e 's|"/var/log/messages|"/var/log/iptables.log|'
-
-    sed -i ${PKG}/etc/${name}/${name}_conf.conf \
-        -e 's|"/usr/bin/iptrafvol.pl|"/usr/sbin/iptrafvol.pl|'
 
 
-    echo "LOCATION=\"/etc/${name}/textdir\"" > ${PKG}/etc/${name}/plugins/textdir.conf
+	cd Vuurmuur-$version
+	chown -R root:root .
+	for file in libvuurmuur vuurmuur vuurmuur_conf ; do
+	  tar xfvz $file-$version.tar.gz
+	done
+	chown -R root:root .
+	CFLAGS="$SLKCFLAGS" \
+	cd libvuurmuur-$version
+	./configure \
+	  --prefix=/usr \
+	  --sysconfdir=/etc
+	make
+	mkdir -p $PKG/usr/lib
+	( cd src/.libs/
+	  for file in libvuurmuur.a libvuurmuur.so.0.6.0 ; do
+		cat $file > $PKG/usr/lib/$file
+	  done
+	)
+	#replace "installed=no" "installed=yes" -- $PKG/usr/lib/libvuurmuur.la
+	mkdir -p $PKG/usr/include
+	( cd src
+	#strip --strip-unneeded vuurmuur.h
+	cat vuurmuur.h > $PKG/usr/include/vuurmuur.h
+	)
+	
+	cd $PKG/usr/lib
+	ln -s libvuurmuur.so.0.6.0 libvuurmuur.so.0
+	ln -s libvuurmuur.so.0.6.0 libvuurmuur.so
 
-    # default firewall setup in /usr/share
-    touch ${PKG}/usr/share/${name}/textdir/rules/rules.conf
-    touch ${PKG}/usr/share/${name}/textdir/rules/blocklist.conf
 
-    cp -R ${SRC}/${_name}-${version}/zones/*   ${PKG}/usr/share/${name}/textdir/zones/
-    mv    ${PKG}/usr/share/${name}/services/* ${PKG}/usr/share/${name}/textdir/services/
 
-    # install licenses
-    install -Dm644 ${SRC}/${_name}-${version}/lib${name}-${version}/COPYING \
-                    ${PKG}/usr/share/licenses/lib${name}/COPYING
-    install -Dm644 ${SRC}/${_name}-${version}/${name}-${version}/COPYING \
-                    ${PKG}/usr/share/licenses/${name}/COPYING
-    install -Dm644 ${SRC}/${_name}-${version}/${name}_conf-${version}/COPYING \
-                    ${PKG}/usr/share/licenses/${name}_conf/COPYING
+	cd $SRC/Vuurmuur-$version/vuurmuur-$version
+	./configure \
+	  --prefix=/usr \
+	  --sysconfdir=/etc \
+	  --with-libvuurmuur-includes=$PKG/usr/include \
+	  --with-libvuurmuur-libraries=$PKG/usr/lib
+	make
+	mkdir -p $PKG/usr/bin
+	for file in vuurmuur vuurmuur_log vuurmuur_script ; do
+	  ( cd $file
+		  strip --strip-unneeded $file
+		  cat $file > $PKG/usr/bin/$file
+		  chmod 755 $PKG/usr/bin/$file
+	  )
+	done
+	mkdir -p $PKG/etc/rc.d/init.d
+	mkdir -p $PKG/etc/logrotate.d
+	( cd scripts
+	cat rc.vuurmuur > $PKG/etc/rc.d/init.d/vuurmuur
+	cat  vuurmuur-logrotate > $PKG/etc/logrotate.d/vuurmuur
+	)
+	#replace "VUURMUUR_LOCATION=/usr/local/bin" "VUURMUUR_LOCATION=/usr/bin" -- $PKG/etc/rc.d/init.d/vuurmuur
+	chmod +x $PKG/etc/rc.d/init.d/vuurmuur
+
+	mkdir -p $PKG/usr/man/ru/man8
+	mkdir -p $PKG/usr/man/man8
+	( cd man/en
+	  for file in vuurmuur.8  vuurmuur_log.8  vuurmuur_script.8 ; do
+		cat $file > $PKG/usr/man/man8/$file
+	  done
+	)
+	( cd man/ru
+	  for file in vuurmuur.8  vuurmuur_log.8  vuurmuur_script.8 ; do
+		cat $file > $PKG/usr/man/ru/man8/$file
+	  done
+	)
+	mkdir -p $PKG/usr/share/vuurmuur/scripts
+	( cd scripts
+	 cat vuurmuur-config-setup.sh > $PKG/usr/share/vuurmuur/scripts/vuurmuur-config-setup.sh
+	 chmod 755 $PKG/usr/share/vuurmuur/scripts/vuurmuur-config-setup.sh
+	)
+	mkdir -p $PKG/usr/share/vuurmuur/config
+	mkdir -p -m 700 $PKG/etc/vuurmuur
+	( cd config
+	 cat config.conf.sample > $PKG/usr/share/vuurmuur/config/config.conf.sample
+	 cat config.conf.sample > $PKG/etc/vuurmuur/config.conf
+	 chmod 600 $PKG/etc/vuurmuur/config.conf
+	)
+	
+	mkdir -p $PKG/usr/share/vuurmuur/services
+	mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/services
+	( cd services ;
+	LIST=" cvs    imaps                     pop3   smtp         upnp 
+		   dns    irc          msn          pop3s  socks        usermin 
+		   ftp    jabber       mysql        pptp   squid-proxy  vnc 
+		   http   ldap         news         razor  ssh          webmin 
+		   https  lisa         ntp          rdp    syslog       whois 
+		   ident               pcanywhere   rsync  telnet       windowsmedia 
+		   imap                ping         samba  traceroute"
+	 for file in $LIST ; do
+		cat $file > $PKG/usr/share/vuurmuur/services/$file 
+		cat $file > $PKG/etc/vuurmuur/textdir/services/$file 
+		chmod 600 $PKG/etc/vuurmuur/textdir/services/$file
+	  done
+	)
+
+
+
+	cd $SRC/Vuurmuur-$version/vuurmuur_conf-$version
+	./configure \
+	  --prefix=/usr \
+	  --sysconfdir=/etc \
+	  --with-libvuurmuur-includes=$PKG/usr/include \
+	  --with-libvuurmuur-libraries=$PKG/usr/lib
+	make
+	mkdir -p $PKG/usr/bin
+	( cd src
+	cat vuurmuur_conf > $PKG/usr/bin/vuurmuur_conf
+	chmod 755 $PKG/usr/bin/vuurmuur_conf
+	)
+	( cd po
+	  for lang in de fr nb nl no ru en@boldquot pt_BR en@quot ; do
+		mkdir -p $PKG/usr/share/locale/$lang/LC_MESSAGES
+		cat $lang.gmo > $PKG/usr/share/locale/$lang/LC_MESSAGES/vuurmuur_conf.mo
+	  done
+	)
+	mkdir -p $PKG/usr/share/vuurmuur/help
+	( cd help
+	  for file in vuurmuur-fr.hlp vuurmuur-ru.UTF-8.hlp vuurmuur-ru.hlp vuurmuur.hlp ; do
+		cat $file > $PKG/usr/share/vuurmuur/help/$file
+	  done
+	)
+	( cd man/en
+	  for file in vuurmuur_conf.8 ; do
+		cat $file > $PKG/usr/man/man8/$file
+	  done
+	)
+	( cd man/ru
+	  for file in vuurmuur_conf.8  ; do
+		cat $file > $PKG/usr/man/ru/man8/$file
+	  done
+	)
+	mkdir -p $PKG/usr/share/vuurmuur/scripts
+	( cd scripts
+	  cat vuurmuur-searchlog.sh > $PKG/usr/share/vuurmuur/scripts/vuurmuur-searchlog.sh
+	  chmod 755 $PKG/usr/share/vuurmuur/scripts/vuurmuur-searchlog.sh
+	)
+	mkdir -p $PKG/usr/share/vuurmuur/config
+	mkdir -p -m 700 $PKG/etc/vuurmuur
+	( cd config
+	  cat vuurmuur_conf.conf.sample > $PKG/usr/share/vuurmuur/config/vuurmuur_conf.conf.sample
+	  cat vuurmuur_conf.conf.sample > $PKG/etc/vuurmuur/vuurmuur_conf.conf
+	)
+
+
+	cd $SRC/Vuurmuur-$version/installer/zones
+	( for zone in dmz inet lan vpn ; do
+		mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/zones/$zone/networks
+		cat $SRC/Vuurmuur-$version/installer/zones/$zone/zone.config > $PKG/etc/vuurmuur/textdir/zones/$zone/zone.config
+	  done
+	)
+	mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/zones/inet/networks/internet/groups
+	mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/zones/inet/networks/internet/hosts
+	cat $SRC/Vuurmuur-$version/installer/zones/inet/networks/internet/network.config > $PKG/etc/vuurmuur/textdir/zones/inet/networks/internet/network.config
+	mkdir -p -m 700 $PKG/etc/vuurmuur/plugins
+	touch $PKG/etc/vuurmuur/plugins/textdir.conf
+	chmod 600 $PKG/etc/vuurmuur/plugins/textdir.conf
+	echo "LOCATION=\"/etc/vuurmuur/textdir\"" > $PKG/etc/vuurmuur/plugins/textdir.conf
+	mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/zones
+	mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/interfaces
+	mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/rules
+
 }
