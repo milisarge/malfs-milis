@@ -25,6 +25,7 @@ vlc
 libreoffice
 sysv-rc-conf
 rfkill
+bindutils
 samba
 dosfstools
 os-prober
