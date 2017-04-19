@@ -1,4 +1,4 @@
-# Description: Event system based on the talloc memory management library
+# Description: Talloc bellek yönetimi kitaplığına dayanan olay sistemi
 # URL: https://tevent.samba.org
 # Packager: milisarge
 # Depends on: talloc python
