@@ -102,7 +102,7 @@ class Talimat():
 					blok=True
 					continue
 				if blok and satir.rstrip()!="" and satir.rstrip()!="}":
-					if (satir not in self.derleme) and ("pkgver()" not in satir) and ("prepare()" not in satir) and ("build()" not in satir) and ("package()" not in satir):
+					if (satir not in self.derleme) and ("pkgver()" not in satir) and ("prepare()" not in satir) and ("build()" not in satir) and ("package()" not in satir) and ("check()" not in satir):
 						satir=satir.replace("pkgdir","PKG")
 						satir=satir.replace("srcdir","SRC")
 						satir=satir.replace("pkgname","name")
@@ -320,9 +320,14 @@ class Arge:
 		link="https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h="+paket
 		return link
 		
-	def arch_link(self,paket):
+	def arch2_link(self,paket):
 		link="https://git.archlinux.org/svntogit/community.git/plain/trunk/PKGBUILD?h=packages/"+paket
 		return link	
+		
+	def arch_link(self,paket):
+		link="https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/"+paket
+		return link	
+	
 		
 if __name__ == '__main__':
 	
@@ -344,6 +349,9 @@ if __name__ == '__main__':
 				if dosya is None:
 					link=arge.arch_link(paket)
 					dosya=arge.indir(link)
+					if dosya is None:
+						link=arge.arch2_link(paket)
+						dosya=arge.indir(link)
 				if link and dosya:
 					talimat.cevir(dosya)	
 		else:
