@@ -1,3 +1,2 @@
 #!/bin/bash
-ntpdate -s 0.pool.ntp.org
-ntpdate -s 1.pool.ntp.org
+ntpdate -s tr.pool.ntp.org
