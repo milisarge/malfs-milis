@@ -1,4 +1,4 @@
-# Description: A GUI toolkit for TCL.
+# Description: TCL için bir GUI araç seti.
 # URL: http://www.tcl.tk/
 # Packager: milisarge
 # Depends on: tcl xorg-fontconfig xorg-libxft xorg-libxscrnsaver 
