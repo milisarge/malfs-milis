@@ -1,6 +1,6 @@
-# Description: library based on GObject for analyze host of formats of playlist and the save.
+# Description: GObject tabanlı kitaplık, çalma listesi formatlarını analiz eder ve kaydeder.
 # URL: http://www.gnome.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: gmime intltool libsoup gobject-introspection 
 
 name=totem-pl-parser
