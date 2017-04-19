@@ -1,8 +1,8 @@
-# Description: Converts texinfo documents to HTML
+# Description: Texinfo belgelerini HTML'ye dönüştürür
 # URL: http://www.nongnu.org/texi2html/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: perl
+
 name=texi2html
 version=5.0
 release=1
