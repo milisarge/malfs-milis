@@ -1,7 +1,6 @@
-# Description: Lightweight panel/taskbar
+# Description: Hafif panel/görev çubuğu
 # URL: http://tint2.googlecode.com
 # Packager: Vitaly Sinilin, vs at kp4 dot ru
-# Maintainer: Jose V Beneyto, sepen at crux dot nu
 # Depends on: cmake imlib2 pango
 
 name=tint2
