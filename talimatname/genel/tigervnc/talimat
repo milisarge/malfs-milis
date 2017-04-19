@@ -1,4 +1,4 @@
-# Description: vnc client
+# Description: VNC istemcisi
 # URL: http://tigervnc.org
 # Packager: milisarge
 # Depends on: cmake fltk1 gegl libjpeg-turbo xorg-libxtst xorg-libxfont xorg-xauth xorg-xkbcomp xorg-libpixman libgcrypt xorg-libxdamage gnutls
