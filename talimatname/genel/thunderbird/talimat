@@ -1,6 +1,6 @@
-# Description: Thunderbird is a stand-alone mail/news client based on the Mozilla codebase. It uses the Gecko rendering engine to enable it to display and compose HTML emails. 
+# Description: Thunderbird, Mozilla kod tabanına dayanan tek başına bir posta/haber istemcisidir. HTML e-postalarını görüntülemek ve oluşturmak için Gecko rendering motorunu kullanır.
 # URL: http://www.mozilla.org/thunderbird
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: alsa-lib gtk2 zip unzip libevent libvpx nspr nss yasm dbus-glib doxygen gstreamer-plugins-good gstreamer-plugins-ffmpeg libnotify openjdk startup-notification hunspell sqlite wireless-tools xorg-libx11 xorg-libxt xorg-libxrandr desktop-file-utils hicolor-icon-theme shared-mime-info pulseaudio
 
 run=(startup-notification hunspell)

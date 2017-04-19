@@ -1,7 +1,8 @@
-# Description: Tunnel TCP connections over the Tox protocol
+# Description: Tox protokolü üzerinden tünel TCP bağlantıları
 # URL: http://tuntox.pl/
 # Packager: milisarge
 # Depends on: cscope toxcore
+
 name=tuntox
 version=git
 release=1

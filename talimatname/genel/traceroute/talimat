@@ -1,7 +1,6 @@
-# Description: Display the network route that packets take to reach a specified host.
+# Description: Belirli bir ana makineye ulaşmak için paketlerin aldığı ağ yolunu görüntüleyin.
 # URL: http://traceroute.sourceforge.net/ 
-# NuTyX package info file (http://nutyx.org)
-# Packager: alienus at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=traceroute
@@ -15,6 +14,3 @@ build(){
     make
     make prefix=/usr DESTDIR=$PKG install 
 }
-
-
-

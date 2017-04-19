@@ -1,6 +1,6 @@
-# Description: Generator documents in multiple output formats
+# Description: Txt2tags bir belge üretecidir
 # URL: http://txt2tags.sourceforge.net
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
 
 name=txt2tags

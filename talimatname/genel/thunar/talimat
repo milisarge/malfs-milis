@@ -1,6 +1,6 @@
-# Description: thunar dosya yöneticisi
+# Description: Thunar dosya yöneticisi
 # URL: http://thunar.xfce.org
-# Packagers: tyrry at nutyx dot org, tnut at nutyx dot org
+# Packagers: milisarge
 # Depends on: libnotify libexif exo xfce4-libui xfce4-panel desktop-file-utils
 
 name=thunar

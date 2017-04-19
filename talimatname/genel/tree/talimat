@@ -1,6 +1,6 @@
-# Description: 	Display directory tree
-# URL: 			http://mama.indstate.edu/users/ice/tree/
-# Packager:		berlius at nutyx dot com
+# Description: Dizin ağacını göster
+# URL: http://mama.indstate.edu/users/ice/tree/
+# Packager: milisarge
 # Depends on: 
 
 name=tree

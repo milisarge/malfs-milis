@@ -1,6 +1,6 @@
-# Description: 	The Tripwire package contains programs used to verify the integrity of the files on a given system. 
-# URL:         	http://downloads.sourceforge.net/tripwire
-# Packager:		berlius at nutyx dot com
+# Description: Tripwire paketi, belirli bir sistemdeki dosyaların bütünlüğünü doğrulamak için kullanılan programları içerir.
+# URL: http://downloads.sourceforge.net/tripwire
+# Packager: milisarge
 # Depends on:  	
 
 name=tripwire

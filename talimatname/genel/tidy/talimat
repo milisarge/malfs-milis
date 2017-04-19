@@ -1,7 +1,8 @@
-# URL: 			http://tidy.sourceforge.net/ 
-# Packager:		berlius at nutyx dot com
+# Description: HTML, XHTML ve XML dosyalarını okumak ve işaretleme biçimini temizlemek için kullanılan araçlar ve kitaplıklar
+# URL: http://tidy.sourceforge.net/ 
+# Packager: milisarge
+# Depends on:
 
-description="Tools and libraries used to read HTML, XHTML and XML files and write cleaned up markup"
 name=tidy
 version=20101110
 release=1

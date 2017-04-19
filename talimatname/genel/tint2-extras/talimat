@@ -1,7 +1,6 @@
-# Description: Lightweight panel/taskbar
+# Description: Hafif panel/görev çubuğu
 # URL: http://tint2.googlecode.com
-# Packager: Jose V Beneyto, sepen at crux dot nu
-# Maintainer: Jose V Beneyto, sepen at crux dot nu
+# Packager: milisarge
 # Depends on: tint2 python-gtk
 
 name=tint2-extras

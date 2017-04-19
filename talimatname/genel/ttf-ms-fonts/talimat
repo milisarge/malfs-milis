@@ -1,6 +1,6 @@
-# Description: Core TTF Fonts from Microsoft
-# URL: URL: http://corefonts.sourceforge.net
-# Packager: 	pierre^ at nutyx dot org
+# Description: Microsoft'un Çekirdek TTF Fontları
+# URL: http://corefonts.sourceforge.net
+# Packager: milisarge
 # Depends on: xorg-libx11 xorg-fontconfig libarchive p7zip 
 _sfpath="http://downloads.sourceforge.net/corefonts"
 

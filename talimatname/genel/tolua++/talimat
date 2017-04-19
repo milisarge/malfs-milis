@@ -1,6 +1,6 @@
-# Description: Tool to integrate C/C++ code with Lua
+# Description: C / C ++ kodunu Lua ile bütünleştiren bir araç
 # URL: http://www.codenix.com/~tolua
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: scons lua51
 
 name=tolua++

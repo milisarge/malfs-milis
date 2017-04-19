@@ -1,6 +1,6 @@
-# Description: Text-mode interface for Git.
-# Packager: tnut at nutyx dot org
-# Url: http://jonas.nitro.dk/tig/
+# Description: Git için metin modu arabirimi.
+# URL: http://jonas.nitro.dk/tig/
+# Packager: milisarge
 # Depends on: asciidoc xmlto
 
 name=tig

@@ -1,9 +1,7 @@
-# Description: Thunar filemanager plugin to deal with archives
+# Description: Arşivlerle uğraşmak için Thunar filemanager eklentisi
 # URL: http://foo-projects.org/~benny/projects/thunar-archive-plugin
-# Maintainer: CRUX Xfce Team, xfce-ports at crux dot nu
-# Packager: Antonio SJ Musumeci, bile at landofbile dot com
+# Packager: milisarge
 # Depends on: thunar xarchiver
-# Group: xfce4
 
 name=thunar-archive-plugin
 version=0.3.1
