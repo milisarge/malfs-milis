@@ -1,6 +1,6 @@
-# Description: Police of character thai
+# Description: Tayland için ücretsiz fontların bir koleksiyonu.
 # URL: http://linux.thai.net/projects/thaifonts-scalable/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: fontforge xorg-app 
 
 name=thaifonts-scalable
