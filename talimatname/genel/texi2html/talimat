@@ -1,7 +1,7 @@
 # Description: Texinfo belgelerini HTML'ye dönüştürür
 # URL: http://www.nongnu.org/texi2html/
 # Packager: milisarge
-# Depends on: perl
+# Depends on:
 
 name=texi2html
 version=5.0
