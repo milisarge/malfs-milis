@@ -1,6 +1,6 @@
-# Description: Serif (Libertine) and Sans Serif (Biolinum) OpenType fonts with large Unicode coverage
+# Description: Büyük Unicode kapsamı olan Serif (Libertine) ve Sans Serif (Biolinum) OpenType fontlar
 # URL: http://linuxlibertine.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libx11 xorg-fontconfig 
 
 _reldate=2012_07_02
