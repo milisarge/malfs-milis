@@ -5,7 +5,7 @@
 
 name=squid
 version=3.5.24
-release=1
+release=2
 source=(http://www.squid-cache.org/Versions/v3/3.5/$name-$version.tar.xz
         squid_servisi)
 
@@ -27,7 +27,9 @@ build () {
                 --with-large-files \
                 --with-pthreads \
                 --with-aufs-threads=16 \
-                --disable-auto-locale
+                --disable-auto-locale \
+                --with-openssl \
+				--enable-ssl-crtd
 
     make all
     make DESTDIR=$PKG install
