@@ -1,6 +1,5 @@
-# Description: A lightweight GTK2-based systray
+# Description: Hafif bir GTK2 tabanlı systray
 # URL: http://home.gna.org/fvwm-crystal/
-# Maintainer: milisarge@gmail.com
 # Packager: milisarge@gmail.com
 # Depends on: xorg-libxmu gtk2
 
