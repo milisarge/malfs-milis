@@ -1,7 +1,7 @@
-# Description = Measures many of the CPU resources, such as time and memory, that other programs use.
-# URL: 			http://ftp.gnu.org/gnu/time
-# Packager:		alihan-ozturk28@hotmail.com
-# Depends on :
+# Description: Diğer programların kullandığı CPU kaynaklarının (örneğin zaman ve bellek gibi) birçoğunu ölçer.
+# URL: http://ftp.gnu.org/gnu/time
+# Packager: alihan-ozturk28@hotmail.com
+# Depends on:
 
 name=time
 version=1.7
