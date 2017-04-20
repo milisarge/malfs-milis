@@ -1,8 +1,7 @@
-# Description: USB Device Utilities
+# Description: USB Aygıt Yardımcı Programları
 # URL: http://downloads.sourceforge.net/linux-usb/
-# Packager: pierre at nutyx dot org
-# Depends on: libusb-compat 
-run=( wget )
+# Packager: milisarge
+# Depends on: libusb-compat wget
 
 name=usbutils
 version=008
