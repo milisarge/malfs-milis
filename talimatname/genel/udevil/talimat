@@ -1,4 +1,4 @@
-# Description: Mount and unmount removable devices, ISO files, nfs://, smb://, ftp://, ssh:// and WebDAV URLs, and tmpfs/ramfs filesystems.
+# Description: Çıkarılabilir aygıtları, ISO dosyalarını, nfs://, smb://, ftp://, ssh:// ve WebDAV URL'lerini ve tmpfs/ramfs dosya sistemlerini bağlayın ve çıkarın.
 # URL: http://ignorantguru.github.com/udevil
 # Packager: milisarge
 # Depends on: eudev glib intltool
