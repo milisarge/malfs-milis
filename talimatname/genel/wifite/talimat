@@ -1,4 +1,4 @@
-# Description: A tool to attack multiple WEP and WPA encrypted networks at the same time
+# Description: Aynı anda birden fazla WEP ve WPA şifreli ağa saldırmak için kullanılan bir araç
 # URL: https://github.com/derv82/wifite
 # Packager: milisarge
 # Depends on: python aircrack-ng
