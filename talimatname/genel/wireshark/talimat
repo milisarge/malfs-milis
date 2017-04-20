@@ -1,4 +1,4 @@
-# Description: Network Sniffer with nice GTK+ UI
+# Description: Wireshark dünyanın önde gelen ve yaygın olarak kullanılan ağ protokol analizörüdür.
 # URL: http://www.wireshark.org
 # Packager: milisarge
 # Depends on: gtk3 libpcap pcre
