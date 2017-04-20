@@ -1,6 +1,6 @@
-# Description: Utilities to manage the UFS filesystem, mostly used in BSD or derived operating systems.
+# Description: UFS dosya sistemini yönetmek için kullanılan yardımcı programlar, çoğunlukla BSD'de veya türemiş işletim sistemlerinde kullanılır.
 # URL: https://packages.debian.org/sid/ufsutils
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: libbsd libedit
 
 name=ufsutils
