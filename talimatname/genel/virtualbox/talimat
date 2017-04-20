@@ -1,6 +1,6 @@
-# Description: VirtualBox is a powerfull 32 and 64 bits virtualization product
+# Description: VirtualBox, güçlü bir 32 ve 64 bit sanallaştırma ürünüdür
 # URL: http://virtualbox.org
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: virtualbox-cli sdl
 
 name=virtualbox
