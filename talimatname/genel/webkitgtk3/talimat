@@ -1,4 +1,4 @@
-# Description: Small, efficient and fast rendering engine for Web Browsers.
+# Description: Web Tarayıcıları için küçük, verimli ve hızlı render motoru.
 # URL: http://www.webkitgtk.org/
 # Packager: milisarge
 # Depends on: libwebp libsecret geoclue gperf gtk2 gtk3 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
