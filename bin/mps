@@ -1462,6 +1462,8 @@ ayarlar() {
 					shift ;;
 			-trl)
 				tarihce_liste ;;
+			dos)
+				tarihce_yukle "temel" ;;
 			-trs)
 				if [ ! "$2" ]; then
 					ryaz 31 "parametre eksik $1"
