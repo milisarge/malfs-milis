@@ -1,0 +1,62 @@
+# Description: A web proxy with advanced filtering capabilities.
+# URL: https://www.privoxy.org
+# Packager: milisarge
+# Depends on: pcre 
+
+name=privoxy
+version=3.0.26
+release=1
+source=(https://downloads.sourceforge.net/ijbswa/privoxy-$version-stable-src.tar.gz
+		privoxy.logrotate.d
+		privoxy.sysusers)
+
+build() {
+  cd "${SRC}/${name}-${version}-stable"
+
+  autoheader
+
+  autoconf
+
+  ./configure --prefix=/usr --sysconfdir=/etc/privoxy --enable-compression
+
+  make
+
+  sed -i '
+
+    s+^confdir \.+confdir /etc/privoxy+
+
+    s+^logdir \.+logdir /var/log/privoxy+
+
+    s+^#\?user-manual .*+user-manual /usr/share/doc/privoxy/user-manual/+' config
+
+  cd "${SRC}/${name}-${version}-stable"
+
+  install -Dm644 "$SRC/privoxy.sysusers" "$PKG/usr/lib/sysusers.d/privoxy.conf"
+
+  install -Dm644 "$SRC/privoxy.logrotate.d" "$PKG/etc/logrotate.d/privoxy"
+
+  install -Dm755 {,"$PKG"/usr/bin/}privoxy
+
+  install -Dm644 {,"$PKG"/usr/share/man/man1/}privoxy.1
+
+  install -d -o42 -g42 "$PKG"/var/log/privoxy
+
+  install -d "$PKG"/etc/privoxy/
+
+  install -m644 config trust *.{action,filter} "$PKG"/etc/privoxy/ # -m0660 upstream
+
+  find templates -type f -exec install -Dm644 '{}' "$PKG"/etc/privoxy/'{}' \;
+
+  (d=$PKG/usr/share/doc/privoxy
+
+  cd doc/webserver
+
+  install -Dm644 {privoxy-,"$d"/}index.html
+
+  install -m644 p_doc.css ../../{AUTHORS,README,ChangeLog} "$d"/
+  
+  install -Dm644 {,"$d"/user-manual/}p_doc.css
+
+  find user-manual developer-manual faq man-page \( -name '*.html' -o -name '*.jpg' \) -exec install -Dm644 '{}' "$d"/'{}' \;)
+
+}

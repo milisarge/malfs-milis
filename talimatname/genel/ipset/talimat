@@ -1,0 +1,19 @@
+# Description: IP veya port ayarlamaları için yetkili uygulaması
+# URL: http://ipset.netfilter.org/
+# Packager: milisarge
+# Depends on: iptables libmnl
+
+name=ipset
+version=6.32
+release=1
+source=(http://$name.netfilter.org/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --sbindir=/usr/bin --with-kmod=no
+	make
+	make DESTDIR="$PKG" install
+	install -Dm644 lib/libipset.pc "$PKG/usr/lib/pkgconfig/libipset.pc"
+	# default config file
+	install -Dm 644 /dev/null "$PKG/etc/$name.conf"
+}

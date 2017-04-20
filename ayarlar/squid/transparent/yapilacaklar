@@ -1,0 +1,52 @@
+# kendinden imzalı sertifika ayarlama
+
+cd /etc/squid
+
+mkdir ssl_cert
+
+chown squid:squid ssl_cert
+
+chmod 700 ssl_cert
+
+cd ssl_cert
+
+# sertifika oluştumak için alternatif
+
+#certtool --generate-privkey --outfile ca-key.pem
+
+#certtool --generate-self-signed --load-privkey ca-key.pem --outfile myca.pem
+
+
+
+# sertifikanın oluşturulması
+
+openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -extensions v3_ca -keyout ca-key.pem  -out myca.pem
+
+
+
+# firefox a yüklenecek der dosyasının oluşturulması
+
+openssl x509 -in myca.pem -outform DER -out myca.der
+
+
+# squid sertifika veritabanı ayarlanması
+
+/usr/lib/squid/ssl_crtd -c -s /var/lib/ssl_db
+
+chown -R squid.squid /var/lib/ssl_db
+
+
+# yeni squid ayarlarının kopyalanması.(eskisi varsa yedekleyin.)
+
+cp -f /sources/milis.git/ayarlar/squid/transparent/squid.conf /etc/squid/ 
+
+
+# iptables kurallarının yüklenmesi-Not: squid_iptables_yapilandir.sh içinde ağ arayüzünü kendi arayüzünüze ayarlayın.
+
+./sources/milis.git/ayarlar/squid/transparent/squid_iptables_yapilandir.sh
+
+# squid başlatılması 
+
+servis squid start
+
+

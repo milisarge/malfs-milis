@@ -21,6 +21,7 @@ qemu-all
 worker
 yad
 cdrkit
+bindutils
 scrot
 syslinux
 networkmanager

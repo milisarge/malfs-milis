@@ -1,0 +1,11 @@
+#!/bin/bash
+# /etc altındaki hosts dosyasını yeniler ve istenmeyen reklam ve sitelerden korunulur.
+cd /tmp
+#wget http://sbc.io/hosts/hosts
+wget https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+mv /etc/hosts /tmp/hosts-eski
+mv hosts /etc/hosts
+# eğer home dizini altında .hosts dosyanız varsa onu /etc/hosts dosyasına ekler.
+if [ -f ~/.hosts ]; then
+	cat ~/.hosts >> /etc/hosts
+fi

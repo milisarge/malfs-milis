@@ -1,0 +1,18 @@
+# Description: kernel paket filtresi tarafından günlüğe kaydedilen paketlere arabirim sağlayan bir kullanıcı alanı kütüphanesi.
+# URL: http://netfilter.org/projects/libnetfilter_log/
+# Packager: milisarge
+# Depends on: libnfnetlink
+
+name=libnetfilter_log
+version=1.0.1
+release=1
+source=(http://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	./configure \
+		--prefix=/usr \
+		--disable-static
+	make
+	make DESTDIR=$PKG install
+}
