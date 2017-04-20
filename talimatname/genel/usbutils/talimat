@@ -1,7 +1,7 @@
 # Description: USB Aygıt Yardımcı Programları
 # URL: http://downloads.sourceforge.net/linux-usb/
 # Packager: milisarge
-# Depends on: libusb-compat wget
+# Depends on: libusb-compat
 
 name=usbutils
 version=008
