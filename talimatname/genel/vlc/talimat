@@ -1,4 +1,4 @@
-# Description: The cross-platform media player and streaming server
+# Description: VLC, özgür ve açık kaynak kodlu, platformlar arası, bir ortam oynatıcı ve çatıdır.
 # URL: http://www.videolan.org/vlc/
 # Packager: milisarge@gmail.com
 # Depends on: libvlc qt5 x264 flac libmad glib dbus libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex

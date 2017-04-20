@@ -1,7 +1,6 @@
-# Description: A fast URL matcher library
+# Description: Hızlı URL eşleştirici kitaplığı
 # URL: https://github.com/clbr/${_name}
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: git
 
 name=urlmatch

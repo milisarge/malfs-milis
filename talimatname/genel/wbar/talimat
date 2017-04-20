@@ -1,6 +1,6 @@
-# Description: A quick launch bar developed with speed in mind
+# Description: Basit ve son derece özelleştirilebilir hızlı başlatma aracı.
 # URL: http://code.google.com/p/wbar
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libglade imlib2
 
 name=wbar

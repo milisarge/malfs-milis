@@ -1,4 +1,4 @@
-# Description: GTK+ implementation of wxWidgets API for GUI
+# Description: GUI için GTK+ wxWidgets API'sının uygulanması
 # URL: http://wxwidgets.org
 # Packager: milisarge
 # Depends on: gtk2 gstreamer-plugins-base xorg-mesa xorg-libsm xorg-libxxf86vm sdl

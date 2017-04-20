@@ -1,8 +1,7 @@
-# Description: Unpacks .zip archives such as those made by PKZIP
+# Description: PKZIP tarafından yapılanlar gibi .zip arşivlerini açar.
 # URL: http://www.info-zip.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: 
-# Depends on:
 
 name=unzip
 version=6.0

@@ -1,6 +1,6 @@
-# Description: Compiler for the GObject type system
+# Description: GObject türü sistem için derleyici
 # URL: http://live.gnome.org/Vala
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: glib 
 
 name=vala

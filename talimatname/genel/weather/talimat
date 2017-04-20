@@ -1,6 +1,6 @@
-# Description: CLI tool which shows weather forecasts from METAR data
+# Description: METAR verilerinden hava durumu tahminlerini gösteren CLI aracı
 # URL: http://fungi.yuggoth.org/weather/
-# Maintainer: Chris Farrell timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: python
 
 name=weather

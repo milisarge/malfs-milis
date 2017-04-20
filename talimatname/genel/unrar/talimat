@@ -1,6 +1,7 @@
-# Description: RAR extraction utility used for extracting files from RAR archives.
+# Description: RAR arşivlerinden dosyaları ayıklamak için kullanılan RAR çıkarma yardımcı programı.
 # URL: http://www.rarlab.com/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on
 
 name=unrar
 version=5.3.9

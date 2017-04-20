@@ -1,4 +1,4 @@
-# Description: A utility providing key negotiation for WPA wireless networks
+# Description: WPA kablosuz ağlar için anahtar müzakeresi sağlayan bir yardımcı program
 # URL: http://hostap.epitest.fi/wpa_supplicant
 # Packager: milisarge
 # Depends on: libnl dbus libxml2 

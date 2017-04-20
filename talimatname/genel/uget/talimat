@@ -1,6 +1,6 @@
-# Description: administrator of downloading with importation HTML
+# Description: UGet, Linux için En İyi İndirme Yöneticisi.
 # URL: http://urlget.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libnotify gtk3 gstreamer curl hicolor-icon-theme xdg-utils 
 
 name=uget

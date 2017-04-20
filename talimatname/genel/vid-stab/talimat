@@ -1,4 +1,4 @@
-# Description: Video stabilization library
+# Description: Video dengeleme kitaplığı
 # URL: http://public.hronopik.de/vid.stab
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: cmake git

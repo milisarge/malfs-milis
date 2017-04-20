@@ -1,4 +1,4 @@
-# Description: engine of made Web free for the browsers web version 1
+# Description: WebKitGTK+, WebKit rendering motorunun tam özellikli bir portudur
 # URL: http://webkitgtk.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libwebp libsecret geoclue gperf gtk2 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby

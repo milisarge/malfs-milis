@@ -1,6 +1,6 @@
-# Description: w3m öncelikli olarak bir sayfalıyıcıdır.Ayrıca konsol tabanlı tarayıcı altyapılarında kullanılabilir.
+# Description: w3m öncelikli olarak bir sayfalıyıcıdır. Ayrıca konsol tabanlı tarayıcı altyapılarında kullanılabilir.
 # URL: http://w3m.sourceforge.net/
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on: gc imlib2 gtk2 gdk-pixbuf 
 
 name=w3m

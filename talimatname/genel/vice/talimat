@@ -1,7 +1,6 @@
-# Description: VICE Commodore emulator
+# Description: VICE Commodore emülatörü
 # URL: http://www.viceteam.org/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: gtk2 giflib lame libpng libjpeg-turbo xorg-libxdamage xorg-libsm vte xorg-libxxf86vm xorg-fontconfig xorg-font-util libpcap libnet sdl dialog xmlto texi2html zlib
 
 name=vice

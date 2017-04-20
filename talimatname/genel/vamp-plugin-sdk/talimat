@@ -1,6 +1,6 @@
-# Description: The Vamp audio analysis plug-in system
+# Description: Vamp ses analizi eklentisi sistemi
 # URL: http://www.vamp-plugins.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libsndfile 
 
 name=vamp-plugin-sdk

@@ -1,6 +1,7 @@
-# Description: Client-side application which queries directory service
+# Description: Dizin hizmetini sorgulayan istemci tarafı uygulaması
 # URL: http://ftp.debian.org/debian/pool/main/w/whois
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=whois
 version=5.2.11

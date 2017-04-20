@@ -1,4 +1,4 @@
-# Description: Port of the portable web rendering engine WebKit to the GTK+ 2 and 3 platforms.
+# Description: Taşınabilir web oluşturma motoru WebKit'in GTK+ 2 ve 3 platformlarına bağlantı noktası.
 # URL: http://webkitgtk.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: enchant cmake gstreamer1-plugins-base xorg-libxt  gtk2 gtk3 hunspell icu libgudev libsecret libsoup libwebp xorg-mesa ruby sqlite geoclue gobject-introspection hicolor-icon-theme llvm harfbuzz libnotify

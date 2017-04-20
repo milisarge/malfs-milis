@@ -1,6 +1,6 @@
-# Description: Userspace tools and conversion library for Video 4 Linux
+# Description: Video 4 Linux için kullanıcı alanı araçları ve dönüştürme kütüphanesi
 # URL: http://freshmeat.net/projects/libv4l
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libjpeg-turbo 
 
 name=v4l-utils

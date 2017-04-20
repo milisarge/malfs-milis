@@ -1,8 +1,7 @@
-# Description:  Fast and simple GTK+ image viewer
-# URL:          http://xsisqox.github.io/Viewnior/
-# Maintainer:   Filip Rex Dimovski, bjorn at krstarica dot com
-# packager:     milisarge
-# Depends on:   glib gtk2 gnome-common shared-mime-info exiv2
+# Description: Hızlı ve basit GTK+ resim görüntüleyici
+# URL: http://xsisqox.github.io/Viewnior/
+# packager: milisarge
+# Depends on: glib gtk2 gnome-common shared-mime-info exiv2
 
 name=viewnior
 version=1.6
