@@ -1,7 +1,7 @@
-# Description: Client for cisco vpn concentrator.
-# URL:         https://www.unix-ag.uni-kl.de/~massar/vpnc/
-# Packager:    milisarge
-# Depends on:  libgcrypt
+# Description: Cisco vpn konsantratörü için istemci
+# URL: https://www.unix-ag.uni-kl.de/~massar/vpnc/
+# Packager: milisarge
+# Depends on: libgcrypt
 
 name=vpnc
 version=0.5.3
