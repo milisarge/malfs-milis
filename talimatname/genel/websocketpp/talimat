@@ -1,4 +1,4 @@
-# Description: C++/Boost Asio based websocket client/server library
+# Description: C ++/Boost Asio tabanlı websocket istemcisi/sunucu kitaplığı
 # URL: http://www.zaphoyd.com/websocketpp/
 # Packager: milisarge
 # Depends on: cmake boost scons
