@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /tmp
+#wget http://sbc.io/hosts/hosts
+wget https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+mv /etc/hosts /tmp/hosts-eski
+mv hosts /etc/hosts
+if [ -f ~/.hosts ]; then
+	cat ~/.hosts >> /etc/hosts
+fi
