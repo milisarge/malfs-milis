@@ -5,7 +5,7 @@
 
 name=privoxy
 version=3.0.26
-release=2.0
+release=1
 source=(https://downloads.sourceforge.net/ijbswa/privoxy-$version-stable-src.tar.gz
 		privoxy.logrotate.d
 		privoxy.sysusers)
