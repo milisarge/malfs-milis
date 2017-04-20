@@ -1,7 +1,8 @@
-# Description: Varnish is a web application accelerator.
+# Description: Varnish bir web uygulaması hızlandırıcısıdır.
 # URL: http://www.varnish-cache.org/
-# Packager: alieanus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libedit pcre python-docutils 
+
 name=varnish
 version=4.0.3
 release=1
