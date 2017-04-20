@@ -1,7 +1,8 @@
-# Description: MSWord library can load and parse Word 2000, 97, 95 and 6 file formats
+# Description: MSWord kitaplığı, Word 2000, 97, 95 ve 6 dosya formatlarını yükleyebilir ve ayrıştırabilir
 # URL: http://wvware.sourceforge.net/
-# Packager: pierre at nutyx dot org
-# Depends on: libgsf libpng 
+# Packager: milisarge
+# Depends on: libgsf libpng
+
 name=wv
 version=1.2.9
 release=1
