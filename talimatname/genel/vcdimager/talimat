@@ -1,6 +1,6 @@
-# Description: A full-featured mastering suite for authoring disassembling and analyzing Video CDs
+# Description: Video CD'leri ve Süper Video CD'leri geliştirme, ayrıştırma ve analiz etme için tam özellikli bir mastering paketidir
 # URL: http://www.vcdimager.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libcdio libxml2 
 
 name=vcdimager
