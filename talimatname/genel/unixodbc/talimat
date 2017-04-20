@@ -1,6 +1,7 @@
-# Description: Providing application developers a predictable API with which to access Data Sources
+# Description: Uygulama geliştiricilerine Veri Kaynaklarına erişmek için öngörülebilir bir API sağlama
 # URL: http://www.unixodbc.org/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on:
 
 name=unixodbc
 version=2.3.4
