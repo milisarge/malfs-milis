@@ -2,11 +2,12 @@
 
 # use bash for "exec -l", howto run login shell by /bin/sh ?
 
-if [ $# -eq 1 -a -n "$1" ]; then
+if [ `which "$1"` ]; then
 	LXSESSION=$1
 else
 # default session
-	LXSESSION=/usr/bin/startlxde
+	ontanimli=grep -ri "exec" ~/.xinitrc | cut -d' ' -f2
+	LXSESSION=/usr/bin/$ontanimli
 fi
 
 [ -f /etc/profile ] && . /etc/profile
