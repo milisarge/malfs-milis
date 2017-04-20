@@ -1,8 +1,7 @@
-# Description: Wired and wireless network manager for Linux
+# Description: Linux için kablolu ve kablosuz ağ yöneticisi
 # URL: http://wicd.sourceforge.net/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd 
-run=( python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd )
 
 name=wicd
 version=1.7.2.4
