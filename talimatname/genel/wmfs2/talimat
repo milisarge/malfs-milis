@@ -1,7 +1,6 @@
-# Description:  Lightweight and highly configurable tiling window manager for X
+# Description: X için hafif ve son derece yapılandırılabilir döşeme penceresi yöneticisi
 # URL: http://wmfs.info/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: xorg-libxft, xorg-libx11, imlib2, 
 
 name=wmfs2
