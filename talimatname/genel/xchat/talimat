@@ -1,6 +1,6 @@
-# Description: A GTK+ based IRC client
+# Description: Bir GTK+ tabanlı IRC istemcisi
 # URL: http://www.xchat.org/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: shared-mime-info gtk2 enchant dbus-glib
 
 name=xchat
