@@ -1,6 +1,6 @@
-# Description: A date and time display plugin for the Xfce panel
+# Description: Xfce paneli için tarih ve saat görüntüleme eklentisi
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xfce4-panel
 
 name=xfce4-datetime-plugin
