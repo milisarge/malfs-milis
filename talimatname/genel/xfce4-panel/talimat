@@ -1,4 +1,4 @@
-# Description: The Xfce4 Panel package contains the Xfce4 Panel.
+# Description: Bu paket Xfce4 Paneli'ni içerir.
 # URL: http://www.xfce.org/projects/xfce4-panel/
 # Packager: milisarge
 # Depends on: exo xfce4-garcon libwnck xfce4-libui gtk3
