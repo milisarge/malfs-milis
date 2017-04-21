@@ -27,6 +27,7 @@ sysv-rc-conf
 rfkill
 bindutils
 samba
+ntpdate
 dosfstools
 os-prober
 openjdk
