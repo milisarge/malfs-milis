@@ -1,6 +1,6 @@
-# Description: The libxfce4ui package contains GTK+ 2 widgets that are used by other Xfce applications.
+# Description: Libxfce4ui paketi, diğer Xfce uygulamaları tarafından kullanılan GTK+ 2 widget'larını içerir.
 # URL: http://www.xfce.org/projects/libraries/
-# Packager: tyrry at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk2 gtk3 startup-notification xfce4-conf
 
 _name=libxfce4ui
