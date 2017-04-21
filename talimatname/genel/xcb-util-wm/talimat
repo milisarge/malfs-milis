@@ -1,4 +1,4 @@
-# Description: XCB utilities library
+# Description: XCB yardımcı programları kitaplığı
 # URL: http://xcb.freedesktop.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libxcb xcb-util xorg-util-macros
