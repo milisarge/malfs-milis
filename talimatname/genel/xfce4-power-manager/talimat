@@ -1,6 +1,6 @@
-# Description: Power manager for the Xfce desktop.
+# Description: Xfce masaüstü için güç yöneticisi.
 # URL: http://goodies.xfce.org/projects/applications/xfce4-power-manager
-# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: dbus-glib xorg-app libnotify xfce4-panel upower udisks 
 
 name=xfce4-power-manager

@@ -1,6 +1,6 @@
-# Description: Library for encoding H264/AVC video streams
+# Description: H264/AVC video akışlarını kodlayan kütüphane
 # URL: http://www.videolan.org/developers/x264.html
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: yasm 
 
 name=x264

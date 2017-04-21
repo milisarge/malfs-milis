@@ -1,6 +1,6 @@
-# Description: monitor network for the panel
-# URL: http://goodies.xfce.org/
-# Packager: tyrry at nutyx dot org
+# Description: Bu eklenti, panelde seçtiğiniz ağ arabirimlerinin güncel yükünü görüntüler.
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-netload-plugin
+# Packager: milisarge
 # Depends on: xfce4-panel
 
 name=xfce4-netload-plugin

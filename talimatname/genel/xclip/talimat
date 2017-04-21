@@ -1,7 +1,7 @@
-# Description: A command line interface to the X11 clipboard
-# URL:         https://github.com/astrand/xclip
-# Packager:    milisarge
-# Depends on:  xorg-libxmu
+# Description: X11 panosuna komut satırı arayüzü
+# URL: https://github.com/astrand/xclip
+# Packager: milisarge
+# Depends on: xorg-libxmu
 
 name=xclip
 version=0.12

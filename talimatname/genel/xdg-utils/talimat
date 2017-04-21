@@ -1,10 +1,7 @@
-
-# Description: Command line tools that assist applications with a variety of desktop integration tasks.
+# Description: Çeşitli masaüstü entegrasyon görevleriyle uygulamalara yardımcı olan komut satırı araçları.
 # URL: http://portland.freedesktop.org/wiki/
-# Packager: pierre at nutyx dot org
-# Depends on: links,xmlto,xorg-app
-
-run=(xorg-app)
+# Packager: milisarge
+# Depends on: links xmlto xorg-app
 
 name=xdg-utils
 version=1.1.0.rc3

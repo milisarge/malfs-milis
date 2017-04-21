@@ -1,4 +1,4 @@
-# Description: XCB cursor library
+# Description: XCB imleç kitaplığı
 # URL: http://cgit.freedesktop.org/xcb/util-cursor:
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: libxcb  xcb-util-renderutil xcb-util-image

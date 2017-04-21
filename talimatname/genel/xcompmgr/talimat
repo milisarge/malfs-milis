@@ -1,7 +1,6 @@
-# Description: Composite Window-effects manager for X.org
+# Description: X.org için Bileşik Pencere efektleri yöneticisi
 # URL: http://xorg.freedesktop.org/
-# Packager: Chris Farrell, timcowchip at gmail dot com
-# Maintainer: Chris Farrell, timcowchip at gmail dot com
+# Packager: milisarge
 # Depends on: xorg-libxcomposite xorg-libxdamage xorg-libxrender xorg-libxext
 
 name=xcompmgr

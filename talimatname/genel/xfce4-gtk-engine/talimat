@@ -1,4 +1,4 @@
-# Description: Contains several GTK+ 2 and GTK+ 3 themes and libraries needed to display them.
+# Description: GTK Xfce Engine paketi, onları görüntülemek için gereken birkaç GTK+ 2 ve GTK+ 3 temasını ve kütüphanelerini içerir.
 # URL: http://www.xfce.org
 # Packager: milisarge@gmail.com
 # Depends on: gtk2 gtk3

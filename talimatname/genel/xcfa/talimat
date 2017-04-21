@@ -1,6 +1,6 @@
-# Description: Audio files converter
+# Description: Ses dosyaları dönüştürücü
 # URL: http://download.tuxfamily.org/xcfaudio
-# Packager: fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk2 vte taglib curl dvd+rw-tools alsa-lib xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
 
 name=xcfa

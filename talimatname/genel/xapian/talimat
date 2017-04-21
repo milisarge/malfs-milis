@@ -1,6 +1,7 @@
-# Description: Xapian is an open source search engine library.
-# URL:  http://oligarchy.co.uk/xapian.html
-# Packager: tnut at nutyx dot org
+# Description: Xapian, açık kaynak kodlu bir arama motoru kütüphanesi.
+# URL: http://oligarchy.co.uk/xapian.html
+# Packager: milisarge
+# Depends on:
 
 name=xapian
 version=1.2.22

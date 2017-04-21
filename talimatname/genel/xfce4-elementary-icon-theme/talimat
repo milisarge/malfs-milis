@@ -1,7 +1,8 @@
-# Description: Elementary lefty icons theme
+# Description: Elementary simge teması
 # URL: https://github.com/shimmerproject/elementary-xfce
-# Packager: ~
-# Depends on: 
+# Packager: milisarge
+# Depends on:
+
 name=xfce4-elementary-icon-theme
 version=0.3
 release=1

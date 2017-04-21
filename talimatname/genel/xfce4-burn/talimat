@@ -1,9 +1,9 @@
-# Description: Burn CDs and DVDs from files on your computer or ISO images downloaded from elsewhere.
+# Description: Bilgisayarınızdaki dosyalardan CD veya DVD'leri veya başka yerlerden indirilen ISO görüntülerini yakın.
 # URL: http://www.xfce.org/projects/xfburn/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: gstreamer-plugins-base exo libisoburn xorg-pixman startup-notification gstreamer-plugins-good 
-_name=xfburn
 
+_name=xfburn
 name=xfce4-burn
 version=0.5.4
 release=3

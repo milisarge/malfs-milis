@@ -1,6 +1,6 @@
-# Description: A battery monitor plugin for the Xfce panel
-# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
-# Packager: tyrry at nutyx dot org
+# Description: Xfce paneli için pil durumunu görüntüleme eklentisi
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-battery-plugin
+# Packager: milisarge
 # Depends on: xfce4-panel
 
 name=xfce4-battery-plugin

@@ -1,6 +1,6 @@
-# Description: garcon is a freedesktop.org compliant menu implementation based on GLib and GIO.
+# Description: Garcon, GLib ve GIO'ya dayalı bir freedesktop.org uyumlu menü uygulamasıdır.
 # URL: http://wiki.xfce.org/releng/4.6/general-info
-# Packager: tyrry at nutyx dot org, fanch at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk3 xfce4-libui xfce4-libutil 
 
 _name=garcon

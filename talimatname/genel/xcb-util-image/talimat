@@ -1,6 +1,6 @@
-# Description: XCB utilities library
+# Description: XCB yardımcı programları kitaplığı
 # URL: http://xcb.freedesktop.org
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libxcb xcb-util xorg-util-macros
 
 name=xcb-util-image

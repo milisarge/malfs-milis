@@ -1,4 +1,4 @@
-# Description: Library for handling standard X key constants and conversion to/from keycodes.
+# Description: Standart X anahtar sabitleri ve tuş kodlarına / anahtar kodlarına dönüşüm
 # URL: http://xcb.freedesktop.org
 # Packagers: alihan-ozturk28@hotmail.com
 # Depends on: libxcb xorg-util-macros

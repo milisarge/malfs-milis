@@ -1,6 +1,6 @@
-# Description: administrator of tasks for Xfce
+# Description: Xfce için görev yöneticisi
 # URL: http://goodies.xfce.org/projects/applications/xfce4-taskmanager
-# Packager: tyrry at nutyx dot org
+# Packager: milisarge
 # Depends on: gtk2 libwnck
 
 name=xfce4-taskmanager
