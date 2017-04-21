@@ -1,6 +1,6 @@
-# Description: CPU frequency plugin for the Xfce4 panel
+# Description: Xfce4 paneli için CPU frekansı eklentisi
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-cpufreq-plugin
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xfce4-panel 
 
 name=xfce4-cpufreq-plugin
