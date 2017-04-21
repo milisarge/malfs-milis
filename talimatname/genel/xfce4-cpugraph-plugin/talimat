@@ -1,6 +1,6 @@
-# Description: monitor of charge CPU for Xfce
+# Description: Bu panel eklentisi, sistemin geçerli CPU yükünü göstermek için birden fazla ekran modu (LED, gradyan, yangın vb.) sunar.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xfce4-panel
 
 name=xfce4-cpugraph-plugin
