@@ -6,7 +6,7 @@ if [ `which "$1"` ]; then
 	LXSESSION=$1
 else
 # default session
-	LXSESSION=grep -ri "exec" ~/.xinitrc | cut -d' ' -f2
+	LXSESSION=`grep -ri "exec" ~/.xinitrc | cut -d' ' -f2`
 fi
 
 [ -f /etc/profile ] && . /etc/profile
