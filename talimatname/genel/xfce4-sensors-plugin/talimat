@@ -1,6 +1,6 @@
-# Description: A lm_sensors plugin for the Xfce panel.
-# URL: http://goodies.xfce.org/
-# Packager: tyrry at nutyx dot org
+# Description: Xfce paneli için bir lm_sensors eklentisi.
+# URL: http://goodies.xfce.org/projects/panel-plugins/start
+# Packager: milisarge
 # Depends on: xfce4-panel lm-sensors libnotify hicolor-icon-theme
 
 name=xfce4-sensors-plugin
