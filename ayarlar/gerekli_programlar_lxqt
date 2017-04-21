@@ -28,6 +28,7 @@ rfkill
 bindutils
 samba
 ntpdate
+geany
 dosfstools
 os-prober
 openjdk
