@@ -1,6 +1,6 @@
-# Description: The "server-side" portion of the Freedesktop desktop notifications specification.
+# Description: Freedesktop masaüstü bildirimleri belirtiminin "sunucu tarafı" kısmı.
 # URL: http://git.xfce.org/kelnos/xfce4-notifyd/
-# Packager: tyrry at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: xfce4-libui libnotify 
 
 name=xfce4-notifyd
