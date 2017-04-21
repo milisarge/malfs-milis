@@ -1,6 +1,6 @@
-# Description: plugin Weather for Xfce
+# Description: Bu panel eklentisi, xoap.weather.com tarafından sağlanan hava verileri kullanılarak, mevcut sıcaklık ve hava durumunu gösterir.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-weather-plugin
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: libsoup xfce4-panel
 
 name=xfce4-weather-plugin
