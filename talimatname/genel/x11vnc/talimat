@@ -1,6 +1,6 @@
 # Description: Gerçek X ekranları için VNC sunucusu
 # URL: http://www.karlrunge.com/x11vnc/
-# PAckager: milisarge
+# Packager: milisarge
 # Depends on: libjpeg-turbo xorg-libxdamage xorg-libxinerama xorg-libxrandr xorg-libxtst
 
 name=x11vnc
