@@ -1,6 +1,6 @@
-# Description: GTK+ frontend to various command line archivers
-# URL: http://xarchiver.xfce.org
-# Packager: tnut at nutyx dot org
+# Description: Xarchiver, GTK + 2 araç seti ile inşa edilmiş hafif, masaüstü bağımsız bir arşiv yöneticisidir.
+# URL: http://xarchiver.sourceforge.net/
+# Packager: milisarge
 # Depends on: gtk2 intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
 
 name=xarchiver
