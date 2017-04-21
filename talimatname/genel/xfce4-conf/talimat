@@ -1,4 +1,4 @@
-# Description: Xfconf is the configuration storage system for Xfce.
+# Description: Xfconf, Xfce için yapılandırma depolama sistemidir.
 # URL: http://wiki.xfce.org/releng/4.6/general-info
 # Packager: milisarge@gmail.com
 # Depends on: xfce4-libutil dbus-glib perl-glib 
