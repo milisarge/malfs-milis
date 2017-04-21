@@ -1,7 +1,6 @@
-# Description: Manage user directories like ~/Desktop and ~/Music
+# Description: ~ / Masaüstü ve ~ / Müzik gibi kullanıcı dizinlerini yönetme
 # Url: http://www.freedesktop.org/wiki/Software/xdg-user-dirs
 # Packager: milisarge
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Depends on: libxslt docbook-xsl
 
 name=xdg-user-dirs
