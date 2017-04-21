@@ -1,7 +1,8 @@
-# Description: X.Org Openchrome drivers
+# Description: X.Org Openchrome sürücüsü
 # URL: http://xorg.freedesktop.org
 # Packager: milisarge
 # Depends on: xorg xorg-libdrm xorg-libxvmc
+
 name=xf86-video-openchrome
 version=0.5.0
 release=1
