@@ -5,7 +5,7 @@
 
 name=lxdm
 version=0.5.3
-release=4
+release=5
 uisim=lxdm-a548c73
 tema=lxdm-tema
 tsurum=1.1

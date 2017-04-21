@@ -1,0 +1,1 @@
+cp -f /sources/milis.git/talimatname/genel/lxdm/Xsession  /etc/lxdm/
