@@ -23,7 +23,7 @@ yad
 cdrkit
 bindutils
 scrot
-ntpdate
+ntp
 syslinux
 networkmanager
 network-manager-applet

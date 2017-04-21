@@ -27,7 +27,7 @@ sysv-rc-conf
 rfkill
 bindutils
 samba
-ntpdate
+ntp
 geany
 dosfstools
 os-prober
