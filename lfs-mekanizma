@@ -1160,9 +1160,9 @@ squashfs_olustur(){
 }
 
 iso_olustur(){
-	rm malfs-milis.iso
+	rm milis_live.iso
 	genisoimage -l -V MILIS_LIVE -R -J -pad -no-emul-boot -boot-load-size 4 -boot-info-table  \
-	-b boot/isolinux/isolinux.bin -c boot/isolinux/boot.cat -o malfs-milis.iso iso_icerik && isohybrid milis_live.iso
+	-b boot/isolinux/isolinux.bin -c boot/isolinux/boot.cat -o milis_live.iso iso_icerik && isohybrid milis_live.iso
 }
 
 iso_olustur_efili() {
