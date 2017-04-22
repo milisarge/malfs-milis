@@ -122,6 +122,10 @@ else
     /sbin/useradd -c "${description}" -G "$user_groups" -m "${name}" || exit 1
 fi
 
+if [ -f /root/.xinitrc ]; then
+	cp /root/.xinitrc /home/${name}/
+fi
+
 passwd "$name"
 
 exit 0
