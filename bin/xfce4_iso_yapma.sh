@@ -20,4 +20,3 @@ mv /var/lib/pkg/tarihce/temel-pkvt.tar.lz /var/lib/pkg/tarihce/temel2-pkvt.tar.l
 rm -r /tmp/*
 mps -tro
 tamir_masaustu
-exit
