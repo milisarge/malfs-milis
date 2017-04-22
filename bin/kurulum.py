@@ -138,6 +138,8 @@ def kullaniciOlustur(isim,kullisim,kullsifre):
 	#masaustu ve diğer ayarların aktarılması
 	ayar_komut="cp -r /root/.config /home/"+kullisim+"/"
 	os.system(ayar_komut)
+	ayar_komut2="cp -r /root/.xinitrc /home/"+kullisim+"/"
+	os.system(ayar_komut2)
 	saat_komut="saat_ayarla_tr"
 	os.system(saat_komut)
 	d.infobox(text=kullisim+" kullanıcısı başarıyla oluşturuldu.")
