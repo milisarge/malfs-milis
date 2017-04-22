@@ -289,13 +289,7 @@ kur-lprng: dizinleri-olustur
 
 kur-lxdm: dizinleri-olustur
 	install -m ${MODE} mbd/init.d/lxdm        ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc0.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc1.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc2.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc3.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc4.d/K05lxdm
 	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc5.d/S95lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc6.d/K05lxdm
 
 kur-mysql: dizinleri-olustur
 	install -m ${MODE} mbd/init.d/mysql      ${EXTDIR}/rc.d/init.d/
