@@ -1125,9 +1125,10 @@ squashfs_olustur(){
     unmount_islemi
     lfs_kontrol
     #son ayar yuklemeleri
-    cp /etc/bashrc $LFS/etc/bashrc
+    cp rootfs/etc/bashrc $LFS/etc/bashrc
+    cp rootfs/etc/profile $LFS/etc/profile
     cp ./ayarlar/mps.conf $LFS/etc/mps.conf
-    cp ./rootfs/etc/rc.d/init.d/sysklogd $LFS/etc/rc.d/init.d/sysklogd
+    cp -f ./rootfs/etc/rc.d/init.d/* $LFS/etc/rc.d/init.d/
     iso_etiket="MILIS_LIVE"
     rm iso_icerik/boot/kernel
     rm iso_icerik/boot/initramfs
