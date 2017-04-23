@@ -23,8 +23,6 @@ BIN_FILE="/usr/sbin/lxdm"
 
 case $1 in
    start)
-	log_info_msg "Yerel ayarlar eklendi..."
-	yerel_ayar
 	log_info_msg "Starting LXDM..."
 	start_daemon $BIN_FILE -d
 	evaluate_retval

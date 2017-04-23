@@ -196,7 +196,7 @@ find_media() {
 MainLoop(){
    while [ ! -f /root/boot ];
    do
-	[ "$verbose" == "no" ] || echo "Launch /etc/rc.d/init.d/setup-nutyx ..."
+	[ "$verbose" == "no" ] || echo "Launch /etc/rc.d/init.d/milis-kur ..."
 	/etc/rc.d/init.d/setup-nutyx || problem
    done
 }
@@ -275,7 +275,7 @@ if [ "$root" == "" ]; then
 		sh
 	else
 		if [ "$verbose" == "yes" ]; then
-			echo "/etc/rc.d/init.d/setup-nutyx exit ..."
+			echo "/etc/rc.d/init.d/milis-kur exit ..."
 			ls -lt /etc/rc.d/init.d/setup-nutyx
 		fi
 	fi

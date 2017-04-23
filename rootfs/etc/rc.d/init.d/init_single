@@ -18,7 +18,10 @@ case ${1} in
          do_start_console || exit 1
          do_start_sysctl || exit 1
          bolumleri_bagla || exit 1
+         log_info_msg "klavye ayarlari eklendi..."
          klavye_ayar || exit 1
+         log_info_msg "Yerel ayarlar eklendi..."
+         yerel_ayar || exit 1
          ;;
    stop)
          do_stop_clock
