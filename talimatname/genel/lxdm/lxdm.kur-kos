@@ -1,1 +1,2 @@
+sed -i "s/^id:[3-5]/id:5/" /etc/inittab
 cp -f /sources/milis.git/talimatname/genel/lxdm/Xsession  /etc/lxdm/
