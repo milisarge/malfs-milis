@@ -1,5 +1,5 @@
-# Description:  GO Programlama dili
-# URL:          http://golang.org/
+# Description: GO Programlama dili
+# URL: http://golang.org/
 # Packager: milisarge@gmail.com
 # Depends on:
 
@@ -13,15 +13,15 @@ source=(https://storage.googleapis.com/golang/go1.4.3.linux-amd64.tar.gz
 build() {
     
     install -d $SRC/go1.4
-    bsdtar -xf $PKGMK_SOURCE_DIR/${name}1.4.3.linux-amd64.tar.gz -C $SRC/go1.4 --strip-components 1
-    bsdtar -xf $PKGMK_SOURCE_DIR/${name}${version}.src.tar.gz  -C $SRC
+    bsdtar -xf $DERLEME_KAYNAKDIZIN/${name}1.4.3.linux-amd64.tar.gz -C $SRC/go1.4 --strip-components 1
+    bsdtar -xf $DERLEME_KAYNAKDIZIN/${name}${version}.src.tar.gz  -C $SRC
     
     export GOROOT_BOOTSTRAP=${SRC}/go1.4
     export GOROOT_FINAL=/usr/lib/go
     export GOOS=linux
     export GOARCH=amd64
 
-    patch -p0 -i $SRC/$name-certpath.diff
+    #patch -p0 -i $SRC/$name-certpath.diff
 
     cd go/src
     bash make.bash --no-clean
