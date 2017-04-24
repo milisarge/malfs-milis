@@ -1,0 +1,12 @@
+. /root/bin/mps
+if [ "$durum" = "`kurulu_kontrol php`" ]; then
+	echo "eski php sürümü siliniyor."
+	mps sil php
+	nokta=`date +%m-%d-%y.%H%M%S`
+	mkdir -p /var/lib/pkg/koruma
+	cp /etc/php.ini /var/lib/pkg/koruma/php.ini.$nokta
+	cp /etc/php-fpm.conf /var/lib/pkg/koruma/php-fpm.conf.$nokta
+	cp /etc/pear.conf /var/lib/pkg/koruma/pear.conf.$nokta
+else
+	echo "eski php sürümü mevcut degil."
+fi

@@ -1,28 +1,27 @@
 # Description: Dinamik web sitelerinde kullanılan programlama kodunun doğrudan HTML içine gömülmesini sağlar. Ayrıca, genel amaçlı bir betik dili olarak da yararlıdır.
 # URL: http://www.php.net
 # Packager: milisarge
-# Depends on: apache libxml2 aspell aspell-fr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff xorg curl db mariadb openldap postgresql sqlite unixodbc openssl cyrus-sasl kerberos
+# Depends on: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff db mariadb openldap postgresql sqlite unixodbc cyrus-sasl kerberos
 
 name=php7
 _name=php
-version=7.0.2
+version=7.1.4
 release=1
 
-source=(http://php.net/distributions/${_name}-$version.tar.xz
-		http://mirror.internode.on.net/pub/php/manual/php_manual_fr.tar.gz)
+source=(http://php.net/distributions/${_name}-$version.tar.xz)
 
 build () {
 
     cd ${_name}-$version
 
-    ./configure --prefix=/usr                \
+    ./configure --prefix=/usr            \
             --sysconfdir=/etc            \
             --localstatedir=/var         \
             --datadir=/usr/share/php     \
             --mandir=/usr/share/man      \
             --enable-fpm                 \
-            --with-fpm-user=apache       \
-            --with-fpm-group=apache      \
+            --with-fpm-user=www-data     \
+            --with-fpm-group=www-data    \
             --with-config-file-path=/etc \
             --with-zlib                  \
             --enable-bcmath              \
@@ -34,17 +33,18 @@ build () {
             --enable-ftp                 \
             --with-gettext               \
             --enable-mbstring            \
+            --with-mysqli=shared		 \
+            --with-mysql-sock=/run/mysqld/mysqld.sock \
+            --with-pdo-mysql=shared \
             --with-readline      
     make
     make -j1 INSTALL_ROOT=$PKG install
     
     install -v -m644 php.ini-production $PKG/etc/php.ini 
-    mv -v $PKG/etc/php-fpm.conf{.default,}  
-    install -v -m755 -d $PKG/usr/share/doc/php-$version 
-    install -v -m644    CODING_STANDARDS EXTENSIONS INSTALL NEWS README* UPGRADING* php.gif \
-                    $PKG/usr/share/doc/php-$version
-
-    sed -i 's@php/includes"@&\ninclude_path = ".:/usr/lib/php"@' \
-		$PKG/etc/php.ini
+    if [ -f /etc/php-fpm.conf.default ]; then
+	  mv -v /etc/php-fpm.conf{.default,} &&
+	  mv -v /etc/php-fpm.d/www.conf{.default,}
+	fi
+    sed -i 's@php/includes"@&\ninclude_path = ".:/usr/lib/php"@' $PKG/etc/php.ini
 		
 }
