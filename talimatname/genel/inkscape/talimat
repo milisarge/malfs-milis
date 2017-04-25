@@ -5,14 +5,14 @@
 
 name=inkscape
 version=0.91
-release=2
-source=( https://launchpad.net/inkscape/0.91.x/0.91/+download/inkscape-0.91.tar.bz2
-	 http://www.linuxfromscratch.org/patches/blfs/svn/inkscape-0.91-testfiles-1.patch)
+release=1
+source=(https://launchpad.net/inkscape/0.91.x/0.91/+download/inkscape-0.91.tar.bz2
+		inkscape-0.91-testfiles-1.patch)
 
 build() {
-cd $name-$version
-patch -Np1 -i ../inkscape-0.91-testfiles-1.patch
-CXXFLAGS="-g -O2 -std=c++11" ./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	patch -Np1 -i ../inkscape-0.91-testfiles-1.patch
+	CXXFLAGS="-g -O2 -std=c++11" ./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }
