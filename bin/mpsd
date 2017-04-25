@@ -256,10 +256,10 @@ unpack_source() {
 	done
 }
 get_package_list() {
-	local ARCHFILE i
+	local ARCH FILE i
 	i=0
 	for ARCH in x86_64 i686 any; do
-		for FILE in `find $PKGMK_PACKAGE_DIR -name "${name}*$ARCH.$PKT_UZANTISI*"`; do
+		for FILE in `find $PAKETLEME_DIZIN -name "${name}*$ARCH.$PKT_UZANTISI*"`; do
 			TARGETS[i]=`basename $FILE`
 			i=$((i+1))
 		done
@@ -409,7 +409,7 @@ compress_manpages() {
 check_footprint() {
 	local TARGET FILE="$DERLEME_SANTIYE/.tmp"
 	
-	cd $PKGMK_PACKAGE_DIR
+	cd $PAKETLEME_DIZIN
 	if [ -z $TARGETS ]; then
 		get_package_list
 		if [ -z $TARGETS ]; then
@@ -476,7 +476,7 @@ pack_lib() {
 			fi
 			if [ -d $DIR/$SUBDIR ]; then
 				bsdtar -r -f \
-				$PKGMK_PACKAGE_DIR/${name}.${group}#$version-${PKGMK_ARCH}.${PKT_UZANTISI} \
+				$PAKETLEME_DIZIN/${name}.${group}#$version-${MIMARI}.${PKT_UZANTISI} \
 				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
 				rm -r $DIR/$SUBDIR
 				j=1
@@ -504,7 +504,7 @@ pack_devel() {
 		for SUBDIR in include lib/pkgconfig; do
 			if [ -d $DIR/$SUBDIR ]; then
 				bsdtar -r -f \
-				$PKGMK_PACKAGE_DIR/${name}.${group}#$version-any.${PKT_UZANTISI} \
+				$PAKETLEME_DIZIN/${name}.${group}#$version-any.${PKT_UZANTISI} \
 				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
 				rm -r $DIR/$SUBDIR
 				j=1
@@ -529,7 +529,7 @@ pack_doc() {
 		for SUBDIR in doc gtk-doc; do
 			if [ -d $DIR/$SUBDIR ]; then
 				bsdtar -r -f \
-				$PKGMK_PACKAGE_DIR/${name}.${group}#$version-any.${PKT_UZANTISI} \
+				$PAKETLEME_DIZIN/${name}.${group}#$version-any.${PKT_UZANTISI} \
 				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
 				j=1
 			fi
@@ -552,7 +552,7 @@ pack_man() {
 		for SUBDIR in info man; do
 			if [ -d $DIR/$SUBDIR  ]; then
 				bsdtar -r -f \
-				$PKGMK_PACKAGE_DIR/${name}.${group}#$version-any.${PKT_UZANTISI} \
+				$PAKETLEME_DIZIN/${name}.${group}#$version-any.${PKT_UZANTISI} \
 				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
 				j=1
 			fi
@@ -573,7 +573,7 @@ pack_service() {
 	local DIR="etc/rc.d"
 	if [ -d $DIR ]; then
 		bsdtar -r -f \
-		$PKGMK_PACKAGE_DIR/${name}.${group}#$version-any.${PKT_UZANTISI} \
+		$PAKETLEME_DIZIN/${name}.${group}#$version-any.${PKT_UZANTISI} \
 		$DIR || BUILD_SUCCESSFUL="yok"
 		j=1
 	fi
@@ -599,7 +599,7 @@ add_meta_files() {
 	fi
 	for file in .README .PRE .POST; do
 		if [ -f $file ]; then
-			bsdtar -r -f $PKGMK_PACKAGE_DIR/$1 \
+			bsdtar -r -f $PAKETLEME_DIZIN/$1 \
 			$file
 			rm $file
 		fi
@@ -617,7 +617,7 @@ add_meta_to_archive() {
 	mkdir -p $TAR
 	cd $TAR
 
-	bsdtar xf $PKGMK_PACKAGE_DIR/$1
+	bsdtar xf $PAKETLEME_DIZIN/$1
 
 	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
 		DESC="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
@@ -639,7 +639,7 @@ add_meta_to_archive() {
 	else
 		URL="n.a"
 	fi
-	SIZE_I="`du -b $PKGMK_PACKAGE_DIR/$1|sed "s/\t/ /"|cut -d " " -f1`"
+	SIZE_I="`du -b $PAKETLEME_DIZIN/$1|sed "s/\t/ /"|cut -d " " -f1`"
 	echo "N$NAME" > .META
 	echo "D$DESC" >> .META
 	echo "U$URL" >> .META
@@ -680,18 +680,18 @@ add_meta_to_archive() {
 			done
 		fi
 	fi
-	bsdtar -tf $PKGMK_PACKAGE_DIR/$1 > .MTREE
+	bsdtar -tf $PAKETLEME_DIZIN/$1 > .MTREE
 
-	rm $PKGMK_PACKAGE_DIR/$1
+	rm $PAKETLEME_DIZIN/$1
 
 	for file in .META .MTREE .README .PRE .POST .INFO; do
 		if [ -f $file ]; then
-			bsdtar -r -f $PKGMK_PACKAGE_DIR/$1 \
+			bsdtar -r -f $PAKETLEME_DIZIN/$1 \
 			$file
 		fi
 	done
 
-	bsdtar -r -f $PKGMK_PACKAGE_DIR/$1 *
+	bsdtar -r -f $PAKETLEME_DIZIN/$1 *
 
 	cd ..
 	rm -rf $TAR
@@ -809,8 +809,8 @@ build_package() {
 				fi
 			else
 				if [ "$1" != "$TARGET" ]; then
-					if [ -f $PKGMK_PACKAGE_DIR/${name}.${group}#$version-* ]; then
-						rm $PKGMK_PACKAGE_DIR/${name}.${group}#$version-}*
+					if [ -f $PAKETLEME_DIZIN/${name}.${group}#$version-* ]; then
+						rm $PAKETLEME_DIZIN/${name}.${group}#$version-}*
 					fi
 					pack_${group}
 				fi
@@ -849,7 +849,7 @@ build_package() {
 		#fi
 		
 		if [ "`ls|wc -l`" != "0" ]; then
-			bsdtar -r -f $PKGMK_PACKAGE_DIR/${name}#$version-${PKGMK_ARCH}.${PKT_UZANTISI} *
+			bsdtar -r -f $PAKETLEME_DIZIN/${name}#$version-${MIMARI}.${PKT_UZANTISI} *
 		else
 			error "No files found in $PKG..."
 			exit $E_BUILD
@@ -906,13 +906,13 @@ install_package() {
 		exit $E_INSTALL
 	fi
 	for TARGET in ${TARGETS[@]}; do
-		if [ "`get_package_arch $TARGET`" = "$PKGMK_ARCH" ] || [ "`get_package_arch $TARGET`" = "any" ]; then
+		if [ "`get_package_arch $TARGET`" = "$MIMARI" ] || [ "`get_package_arch $TARGET`" = "any" ]; then
 			info "kuruluyor '$TARGET'."
 				
 			if [ "$DERLE_KUR" = "install" ]; then
-				COMMAND="mps -k $PKGMK_PACKAGE_DIR/$TARGET"
+				COMMAND="mps -k $PAKETLEME_DIZIN/$TARGET"
 			else
-				COMMAND="mps -k $PKGMK_PACKAGE_DIR/$TARGET"
+				COMMAND="mps -k $PAKETLEME_DIZIN/$TARGET"
 			fi
 			
 			cd $PKGMK_ROOT
@@ -938,22 +938,22 @@ paket_kur() {
 		exit $E_INSTALL
 	fi
 	for TARGET in ${TARGETS[@]}; do
-		if [ "`get_package_arch $TARGET`" = "$PKGMK_ARCH" ] || [ "`get_package_arch $TARGET`" = "any" ]; then
+		if [ "`get_package_arch $TARGET`" = "$MIMARI" ] || [ "`get_package_arch $TARGET`" = "any" ]; then
 			info "kuruluyor '$TARGET'."
 				
 			#paket_kurulum
 	
 			if [ "$PAKET_KURMA" = "evet" ]; then
-				COMMAND2="echo :::::::::::::::::::::::: $PKGMK_PACKAGE_DIR/$TARGET"
+				COMMAND2="echo :::::::::::::::::::::::: $PAKETLEME_DIZIN/$TARGET"
 			fi
 
 			echo "$COMMAND2"
 			$COMMAND2
 			
 			if [ "$DERLE_KUR" = "install" ]; then
-				COMMAND="pkgadd $PKGMK_PACKAGE_DIR/$TARGET"
+				COMMAND="pkgadd $PAKETLEME_DIZIN/$TARGET"
 			else
-				COMMAND="pkgadd -u $PKGMK_PACKAGE_DIR/$TARGET"
+				COMMAND="pkgadd -u $PAKETLEME_DIZIN/$TARGET"
 			fi
 			
 			cd $PKGMK_ROOT
@@ -991,9 +991,9 @@ clean() {
 	get_package_list
 	if [ ! -z $TARGETS ]; then
 		for TARGET in ${TARGETS[@]}; do
-			if [ -f $PKGMK_PACKAGE_DIR/$TARGET ]; then
+			if [ -f $PAKETLEME_DIZIN/$TARGET ]; then
 				info "Removing $TARGET"
-				rm -f $PKGMK_PACKAGE_DIR/$TARGET
+				rm -f $PAKETLEME_DIZIN/$TARGET
 			fi
 		done
 	else
@@ -1004,7 +1004,7 @@ clean() {
 	unset TARGETS
 }
 update_footprint() {
-	cd $PKGMK_PACKAGE_DIR
+	cd $PAKETLEME_DIZIN
 	if [ -z $TARGETS ]; then
 		get_package_list
 		if [ -z $TARGETS ]; then		
@@ -1230,7 +1230,7 @@ main() {
                 exit $E_GENERAL
         fi
         . $DERLEME_AYARDOSYASI
-	PKGMK_ARCH=`uname -m`
+	MIMARI=`uname -m`
 	
 	
 	
@@ -1321,7 +1321,7 @@ main() {
 	fi
 	PKGMK_MD5SUM="$name.`uname -m`.md5sum"
 	check_directory "$DERLEME_KAYNAKDIZIN"
-	check_directory "$PKGMK_PACKAGE_DIR"
+	check_directory "$PAKETLEME_DIZIN"
 	check_directory "`dirname $DERLEME_SANTIYE`"
 
 	check_pkgfile
@@ -1331,7 +1331,7 @@ main() {
 	case $PKT_SIKISTIRMA_MODU in
 		lz|gz|bz2|xz)
 			if [ -z $TARGETS ]; then
-				TARGET="$PKGMK_PACKAGE_DIR/${name}#$version-PKGMK_ARCH.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU"
+				TARGET="$PAKETLEME_DIZIN/${name}#$version-MIMARI.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU"
 			fi;;
 		*)
 			error "Sıkıstırma modu '$PKT_SIKISTIRMA_MODU' desteklenmiyor"
@@ -1414,7 +1414,7 @@ main() {
 	fi
 	# From here on it's need to check the base package not any group which means
 	if [ -z $TARGETS ]; then
-		TARGET=$PKGMK_PACKAGE_DIR/${name}#$version-$PKGMK_ARCH.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
+		TARGET=$PAKETLEME_DIZIN/${name}#$version-$MIMARI.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
 		if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ] && [ "$PKGMK_CHECK_MD5SUM" = "yok" ]; then
 			info "Package '$TARGET' is up to date."
 		else
@@ -1425,7 +1425,7 @@ main() {
 		FOUND=false
 		for TARGET in ${TARGETS[@]}; do
 			if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ] && [ "$PKGMK_CHECK_MD5SUM" = "yok" ]; then
-				if [ "`get_package_arch $TARGET`" = "$PKGMK_ARCH" ]; then
+				if [ "`get_package_arch $TARGET`" = "$MIMARI" ]; then
 					FOUND=true
 				fi
 				info "Package '$TARGET' is up to date."
@@ -1440,7 +1440,7 @@ main() {
 		if [ $FOUND != true ];  then
 			download_source
 			PKGMK_BUILDVER="`get_package_builddate $TARGET`"
-			TARGET=$PKGMK_PACKAGE_DIR/${name}#$version-$PKGMK_ARCH.$PKT_UZANTISI
+			TARGET=$PAKETLEME_DIZIN/${name}#$version-$MIMARI.$PKT_UZANTISI
 			derle $TARGET
 		fi
 	fi
@@ -1448,7 +1448,7 @@ main() {
 		install_package
 	fi
 	if [ "$PKT_SIKISTIRMA" = "evet" ]; then
-		cd $PKGMK_PACKAGE_DIR
+		cd $PAKETLEME_DIZIN
 		get_package_list
 		for TARGET in ${TARGETS[@]}; do
 			if [  "${TARGET:$((${#TARGET} - ${#PKT_UZANTISI} ))}" == "$PKT_UZANTISI" ]; then
@@ -1482,7 +1482,7 @@ DERLEME_AYARDOSYASI="/etc/mpsd.conf"
 readonly PKGMK_VERSION="1.0"
 readonly PKGMK_COMMAND="$0"
 readonly PKGMK_ROOT="$PWD"
-PKGMK_PACKAGE_DIR="$PWD"
+PAKETLEME_DIZIN="$PWD"
 
 PKGMK_BUILDVER=`date +%s`
 #PKGMK_BUILDVER="#"
