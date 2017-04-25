@@ -1,2 +1,4 @@
+#go bootstrap üretirken.
 export PATH=/usr/local/gccgo/bin:$PATH
 echo /usr/local/gccgo/lib64 > /etc/ld.so.conf.d/gccgo.conf
+ldconfig
