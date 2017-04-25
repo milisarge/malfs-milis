@@ -1,18 +1,25 @@
 # Description: GO Programlama dili
 # URL: http://golang.org/
 # Packager: milisarge@gmail.com
-# Depends on: 
+# Depends on: gcc-go
 
-name=go
-version=1.4.3
+name=go18
+_name=go
+version=1.8.1
 release=1
-source=(https://storage.googleapis.com/golang/${name}${version}.src.tar.gz)
+source=(https://storage.googleapis.com/golang/${_name}${version}.src.tar.gz)
 
 
 build() {
- 
+    export GOROOT_BOOTSTRAP=/usr/local/gccgo
+    export GOROOT_FINAL=/usr/lib/go
+    export GOOS=linux
+    export GOARCH=amd64
+    export CGO_ENABLED=1
+	
+    #patch -p0 -i $SRC/$_name-certpath.diff
+
     cd $SRC/go/src
-    export CGO_ENABLED=0
     bash make.bash --no-clean
 
     install -d $PKG/usr/lib
