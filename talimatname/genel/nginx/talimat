@@ -4,17 +4,17 @@
 # Depends on: libxml2 libxslt pcre
 
 name=nginx
-version=1.6.2
-release=2
+version=1.11.13
+release=1
 
 source=(http://nginx.org//download/$name-$version.tar.gz
-nginx.service
+nginx.servis
 nginx.logrotate)
 
 # change those if you prefer another setup
 NGINXUSER=www
 NGINXGROUP=www
-HTMLDIR=/srv/http # be aware that apache use /srv/www
+HTMLDIR=/srv/http/nginx
 
 # change those if you need those experimental modules
 # (idea from slackbuilds.org)
@@ -88,7 +88,7 @@ build() {
             -e '$s|.*|    include /etc/nginx/conf.d/\*.conf;\n&|' \
                 $PKG/etc/nginx/$name.conf
     # install the nginx init script
-    install -Dm755 $SRC/nginx.service $PKG/etc/rc.d/init.d/nginx
+    install -Dm755 $SRC/nginx.servis $PKG/etc/rc.d/init.d/nginx
     # install the logrotate file
     install -Dm644 $SRC/nginx.logrotate $PKG/etc/logrotate.d/nginx
     # fill the right user & group in the logrotate file

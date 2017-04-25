@@ -1,0 +1,93 @@
+#!/bin/sh
+#
+# Nginx daemon control script.
+# Written for Slackware Linux by Cherife Li <cherife-#-dotimes.com>.
+
+BIN=/usr/sbin/nginx
+CONF=/etc/nginx/nginx.conf
+PID=/var/run/nginx.pid
+
+nginx_start() {
+  # Sanity checks.
+  if [ ! -r $CONF ]; then # no config file, exit:
+    echo "$CONF dosyasi yok.iptal edildi."
+    exit 1
+  fi
+
+  if [ -s $PID ]; then
+    echo "Nginx zaten calisiyor?"
+    exit 1
+  fi
+
+  echo "Nginx baslatiliyor..."
+  if [ -x $BIN ]; then
+    $BIN -c $CONF
+  fi
+}
+
+nginx_test_conf() {
+  echo "Nginx ayarlari kontrol ediliyor..."
+  $BIN -t -c $CONF
+}
+
+nginx_term() {
+  echo "Nginx hizlica kapatiliyor..."
+  kill -TERM $(cat $PID)
+}
+
+nginx_stop() {
+  echo "Nginx kapatiliyor..."
+  kill -QUIT $(cat $PID)
+}
+
+nginx_reload() {
+  echo "Nginx ayarları yeniden yukleniyor..."
+  kill -HUP $(cat $PID)
+}
+
+nginx_upgrade() {
+  echo "Nginx ikili dosyası üst sürüme geciriliyor."
+  kill -USR2 $(cat $PID)
+  sleep 3
+  kill -QUIT $(cat $PID.oldbin)
+}
+
+nginx_rotate() {
+  echo "Nginx kayitlari ayarlaniyor..."
+  kill -USR1 $(cat $PID)
+}
+
+nginx_restart() {
+  nginx_stop
+  sleep 3
+  nginx_start
+}
+
+case "$1" in
+  check)
+    nginx_test_conf
+    ;;
+  start)
+    nginx_start
+    ;;
+  term)
+    nginx_term
+    ;;
+  stop)
+    nginx_stop
+    ;;
+  reload)
+    nginx_reload
+    ;;
+  restart)
+    nginx_restart
+    ;;
+  upgrade)
+    nginx_upgrade
+    ;;
+  rotate)
+    nginx_rotate
+    ;;
+  *)
+  echo "usage: `basename $0` {check|start|term|stop|reload|restart|upgrade|rotate}"
+esac
