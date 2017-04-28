@@ -1,0 +1,19 @@
+# Description: lzo tabanlı sıkıştırıcı uygulama
+# URL: http://www.lzop.org/
+# Packager: milisarge
+# Depends on: lzo
+
+name=lzop
+version=1.03
+release=1
+source="http://www.lzop.org/download/$name-$version.tar.gz"
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--enable-shared
+	make
+	make DESTDIR=$PKG install
+}
