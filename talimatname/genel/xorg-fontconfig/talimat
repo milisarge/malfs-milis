@@ -1,4 +1,4 @@
-# Description: fontconfig, library for access and the configuration of polices
+# Description: Fontconfig, erişim kitaplığı ve ilkelerin yapılandırması
 # URL: http://xorg-fontconfig.org/wiki/
 # Packager: milisarge
 # Depends on: freetype expat libpng 

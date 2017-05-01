@@ -1,7 +1,8 @@
-# Description: Convert xml to many other formats
+# Description: Xml'yi diğer birçok biçime dönüştürün
 # URL: http://cyberelk.net/tim/software/xmlto/
-# Packager: pierre at nutyx dot org
-# Depends on: libxslt docbook-xsl docbook-xml 
+# Packager: milisarge
+# Depends on: libxslt docbook-xsl docbook-xml
+
 name=xmlto
 version=0.0.26
 release=1

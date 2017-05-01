@@ -1,4 +1,4 @@
-# Description: With xf86-input-evdev,synaptics,vmmouse,wacom, xf86-video-ati,fbdev,intel,nouveau,vmware.
+# Description: With xf86-input-evdev, synaptics, vmmouse, wacom,  xf86-video-ati, fbdev, intel, nouveau, vmware.
 # URL: nn
 # Packager: milisarge
 # Depends on: mtdev xorg-libxvmc xorg-server xcb-util xorg-xkeyboard-config xorg-twm xorg-term xorg-xclock xorg-xinit libevdev

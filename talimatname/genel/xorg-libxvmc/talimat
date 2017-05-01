@@ -1,4 +1,4 @@
-# Description: libXvMc, library X Video Motion Compensation extension client
+# Description: X11 Video Motion Compensation uzatma kitaplığı
 # URL: http://xorg.freedesktop.org
 # Packager: milisarge
 # Depends on: xorg-libx11 xorg-libxext xorg-libxv

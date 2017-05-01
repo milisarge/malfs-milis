@@ -1,4 +1,4 @@
-# Description: Xtables-addons is the proclaimed successor to patch-o-matic(-ng). It contains extensions that were not accepted in the main Xtables package.
+# Description: Xtables-addons patch-o-matic'in (-ng) devamı niteliğindedir. Ana Xtables paketinde kabul edilmeyen uzantılar içeriyor.
 # URL: http://xtables-addons.sourceforge.net/
 # Packager: milisarge
 # Depends on: iptables libmnl

@@ -1,8 +1,8 @@
-# Description: Simple browser based on gtk and using the webkit engine
-# URL: URL: https://opensource.conformal.com/wiki/xombrero
-# Packager: - tnut at nutyx dot org
-# Depends on: libbsd libsoup gnutls gtk3 webkitgtk3 
-name=xombrero
+# Description: Gtk temelli ve webkit motorunu kullanan basit tarayıcı
+# URL: https://opensource.conformal.com/wiki/xombrero
+# Packager: milisarge
+# Depends on: libbsd libsoup gnutls gtk3 webkitgtk3
+
 name=xombrero
 version=1.6.3
 release=1

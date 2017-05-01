@@ -1,6 +1,6 @@
-# Description: allows display d'images for X
+# Description: X için ekran görüntüleri sağlar
 # URL: 
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
 # Depends on: xorg-libxext libpng libjpeg-turbo 
 
 name=xli

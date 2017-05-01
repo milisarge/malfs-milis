@@ -1,4 +1,4 @@
-# Description: C library for parsing and emitting YAML (YAML Ain't Markup Language)
+# Description: Ayrıştırma ve YAML yaymak için C kitaplığı (YAML Markup Language değil)
 # URL:  http://pyyaml.org/
 # Packager:  milisarge
 # Depends on: doxygen 

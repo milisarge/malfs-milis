@@ -1,4 +1,4 @@
-# Description: libdrm, Interface space user for the services DRM of kernel
+# Description: Çekirdek DRM servislerine kullanıcı alanı arayüzü.
 # URL: http://dri.freedesktop.org/
 # Packager: milisarge
 # Depends on: docbook-xsl libxslt xorg-util-macros xorg-libpciaccess 
