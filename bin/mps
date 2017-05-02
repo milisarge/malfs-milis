@@ -136,9 +136,12 @@ paket_sil(){
 				ryaz 31 "kritik mesaj:kurulanlar dosyası yok." 
 				hataloglama "kritik mesaj:kurulanlar dosyası yok." 
 			fi
-		else
+		elif [ "$kkont" = "degil" ];then
 			ryaz 32 "paket zaten kurulu değil!"
 			hataloglama "paket zaten kurulu değil!"
+		else
+			ryaz 32 "paket tanımsız!"
+			hataloglama "paket tanımsız!"
 		fi
 	fi
 
@@ -159,8 +162,10 @@ paket_bilgi2(){
 	if [ "$kkont" = "kurulu" ];then
 		paket="$1"
 		cat /var/lib/pkg/DB/"$paket"/META
-	else
+	elif [ "$kkont" = "degil" ];then
 		echo "paket kurulu değil!"
+	else
+		echo "paket tanımsız!"
 	fi
 
 }
@@ -188,8 +193,10 @@ paket_bilgi(){
 		ryaz 32 "RL:" ${satir:1:${#satir}-1}
 		satir=`sed -n '9p' <  /var/lib/pkg/DB/"$paket"/META`
 		ryaz 32 "DZ:" `date -d @${satir:1:${#satir}-1}`
-	else
+	elif [ "$kkont" = "degil" ];then
 		echo "paket kurulu değil!"
+	else
+		echo "paket tanımsız!"
 	fi
 
 }
@@ -1404,9 +1411,12 @@ ayarlar() {
 				durum=`kurulu_kontrol "$2"`
 				if [ "$durum" = "kurulu" ]; then
 					paket_guncelle "$2"
-				else
+				elif [ "$durum" = "degil" ]; then
 					ryaz 31 "$2 paketi kurulu degil!"
 					hataloglama "paketi kurulu degil!"
+				else
+					ryaz 31 "$2 paketi tanımsız!"
+					hataloglama "paketi tanımsız!"
 				fi;;
 			#bagimliliklariyla beraber paket guncelleme-package updating with depencies
 			-go|--pkgo)
@@ -1555,7 +1565,7 @@ if [ `id -u` = 0 ] ; then
 			kkont=`kurulu_kontrol "$paketad"`
 			if [ "$kkont" = "degil" ];then
 				icerik_ekle "$2"
-			elif [ "$kkont" = "evet" ];then
+			elif [ "$kkont" = "kurulu" ];then
 				if [ "$tekrarkur" = "hayir" ];then
 					while true; do
 						ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
