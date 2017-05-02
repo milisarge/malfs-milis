@@ -1,4 +1,4 @@
-# Description: Front end for SANE-1.0.24. It has additional features to improve the image quality and ease of use
+# Description: SANE-1.0.24 için ön uç. Görüntü kalitesini ve kullanımı kolaylaştırmak için ek özelliklere sahiptir
 # URL: http://www.xsane.org/
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: gtk2 sane lcms gimp libjpeg-turbo

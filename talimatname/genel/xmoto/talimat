@@ -1,4 +1,4 @@
-# Description: a challenging 2D motocross platform game, where physics play an all important role in the gameplay
+# Description: Zorlu bir 2D motocross platform oyunu, burada fizik oyunda önemli bir rol oynamaktadır
 # URL: http://xmoto.tuxfamily.org
 # Packager: milisarge
 # Depends on: desktop-file-utils libxdg-basedir xorg-glu libmikmod libjpeg-turbo lua51 lua52 ode sdl-mixer sdl-net sdl-ttf
@@ -19,11 +19,12 @@ build() {
   ./configure --prefix=/usr --disable-sdltest
   make
   make DESTDIR=$PKG install
-  # install desktop file
+  
+  # Masaüstü dosyasını yükle
   install -Dm0644 "${SRC}/xmoto-0.5.11/extra/xmoto.desktop" \
         "${PKG}/usr/share/applications/xmoto.desktop"
 
-  # install icon for desktop file
+  # Masaüstü dosyası için simge yükle.
   install -Dm0644 "${SRC}/xmoto-0.5.11/extra/xmoto.xpm" \
         "${PKG}/usr/share/pixmaps/xmoto.xpm"
   #rm -rf $PKG/usr/share/doc

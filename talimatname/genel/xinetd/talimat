@@ -1,6 +1,6 @@
-# Description: xinetd is the eXtended InterNET services daemon, a secure replacement for *inetd*. 
+# Description: Xinetd, * inetd * için güvenli bir değiştirme olan, genişletilmiş InterNET hizmetleri arka plan programıdır.
 # URL: ftp://anduin.linuxfromscratch.org/BLFS/xinetd/xinetd-2.3.15.tar.gz
-# Packager: berlius at nutyx dot com
+# Packager: milisarge
 # Depends on:
 
 name=xinetd

@@ -1,4 +1,4 @@
-# Description: A free video player for Unix
+# Description: Unix için ücretsiz video oynatıcı
 # URL: http://www.xine-project.org
 # Packager: alihan-ozturk28@hotmail.com
 # Depends on: xine-lib curl xorg-libxft xorg-libxxf86vm xdg-utils shared-mime-info hicolor-icon-theme desktop-file-utils
