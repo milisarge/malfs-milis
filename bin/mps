@@ -1555,8 +1555,7 @@ if [ `id -u` = 0 ] ; then
 			kkont=`kurulu_kontrol "$paketad"`
 			if [ "$kkont" = "degil" ];then
 				icerik_ekle "$2"
-			else
-				echo $tekrarkur
+			elif [ "$kkont" = "evet" ];then
 				if [ "$tekrarkur" = "hayir" ];then
 					while true; do
 						ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
@@ -1572,6 +1571,18 @@ if [ `id -u` = 0 ] ; then
 					ryaz 33 "silinecekelerin kontrolu için"
 					paket_sil "$paketad"
 					icerik_ekle "$2"
+				fi
+			else
+				if [ "$tekrarkur" = "evet" ];then
+					while true; do
+						ryaz 31 "$2 paketi talimatname dışı.Yine de kurulsun mu? (kokdizin=$kokdizin) "
+						read -p "e veya h -> " eh
+						case $eh in
+							[Ee]* ) icerik_ekle "$2"; break;;
+							[Hh]* ) break;;
+							* ) echo "e veya h";;
+						esac
+					done
 				fi
 			fi
 		else
