@@ -1,0 +1,27 @@
+# Description: Sınıflar, yardımcı programlar ve uygulamalar da dahil olmak üzere resim okumak ve yazmak için
+# URL: http://www.openimageio.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: cmake qt4 python boost xorg-mesa openexr jasper glew libtiff opencolorio
+
+
+name=openimageio
+version=1.6.14
+release=1
+
+PKGMK_KEEP_SOURCES="no"
+source=(https://github.com/OpenImageIO/oiio/archive/release.zip)
+
+build() {
+
+cd oiio-release
+mkdir build
+cd build
+cmake .. \
+-DUSE_OPENSSL=ON \
+-DCMAKE_INSTALL_PREFIX=/usr \
+-DPYLIB_INSTALL_DIR=lib/python2.7/site-packages \
+-DOIIO_BUILD_TESTS=ON \
+-DOIIO_BUILD_TOOLS=ON
+
+make DESTDIR=$PKG install
+}

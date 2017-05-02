@@ -1,0 +1,22 @@
+# Description: Görsel efektler ve animasyon için bir renk yönetimi çerçevesi
+# URL: http://opencolorio.org
+# Packager: yasarciv67@gmail.com
+# Depends on: python cmake
+
+
+name=opencolorio
+version=1.0.9
+release=1
+
+PKGMK_KEEP_SOURCES="no"
+source=(https://github.com/imageworks/OpenColorIO/archive/v$version.tar.gz)
+
+build() {
+cd OpenColorIO-$version
+mkdir build
+cd build
+
+cmake  -DCMAKE_INSTALL_PREFIX=/usr ..
+make
+make DESTDIR="$PKG" install
+}

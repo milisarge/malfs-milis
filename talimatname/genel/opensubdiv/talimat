@@ -1,0 +1,24 @@
+# Description: Açık Kaynaklı bir alt bölüm yüzey kütüphanesi
+# URL: http://graphics.pixar.com/opensubdiv
+# Packager: yasarciv67@gmail.com
+# Depends on: python python-docutils python-pygments cmake glew xorg-libxcursor xorg-app xorg-libxinerama
+
+PKGMK_KEEP_SOURCES="no"
+
+name=opensubdiv
+version=3.0.2
+release=1
+
+source=(https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${version//./_}.tar.gz)
+
+build() {
+cd OpenSubdiv-${version//./_}
+rm -rf build
+mkdir build
+cd build
+cmake .. \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_INSTALL_PREFIX=/usr
+make DESTDIR=$PKG/ install
+rm -rf $PKG/usr/bin
+}
