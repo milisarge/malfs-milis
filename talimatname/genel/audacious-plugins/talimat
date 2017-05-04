@@ -9,8 +9,8 @@ release=1
 source=(http://distfiles.audacious-media-player.org/$name-$version.tar.bz2)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }

@@ -9,9 +9,9 @@ release=1
 source=(http://distfiles.audacious-media-player.org/$name-$version.tar.bz2)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
---with-buildstamp="NuTyX"
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	./configure --prefix=/usr \
+	--with-buildstamp="Milis"
+	make
+	make DESTDIR=$PKG install
 }
