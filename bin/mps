@@ -371,7 +371,8 @@ paket_sil_oto_onayli(){
 paketsiz_talimatlar(){
 	for talimat in `ls $talimatname_dizin/genel`;do
 		if [[ ! $(cat $paketdepo/paket.vt | grep  $talimat#) ]] ;then 
-			echo $talimat 
+			echo $talimat "=" `grep -i "# Description:" $talimatname_dizin/genel/$talimat/talimat | cut -d':' -f2`
+			 
 		fi
 	done
 }
