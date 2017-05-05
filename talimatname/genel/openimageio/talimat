@@ -8,7 +8,6 @@ name=openimageio
 version=1.6.14
 release=1
 
-PKGMK_KEEP_SOURCES="no"
 source=(https://github.com/OpenImageIO/oiio/archive/release.zip)
 
 build() {

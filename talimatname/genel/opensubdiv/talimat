@@ -3,7 +3,6 @@
 # Packager: yasarciv67@gmail.com
 # Depends on: python python-docutils python-pygments cmake glew xorg-libxcursor xorg-app xorg-libxinerama
 
-PKGMK_KEEP_SOURCES="no"
 
 name=opensubdiv
 version=3.0.2

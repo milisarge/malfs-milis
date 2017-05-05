@@ -8,7 +8,6 @@ name=opencolorio
 version=1.0.9
 release=1
 
-PKGMK_KEEP_SOURCES="no"
 source=(https://github.com/imageworks/OpenColorIO/archive/v$version.tar.gz)
 
 build() {
