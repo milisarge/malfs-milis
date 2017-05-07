@@ -1,7 +1,7 @@
 # Description: Basit tarama arayüzü programı
 # URL: https://launchpad.net/simple-scan/
 # Packagers: milisarge
-# Depends on: gtk3 colord itstool sane dconf intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama v4l-utils
+# Depends on: gtk3 colord itstool sane dconf intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama v4l-utils libgphoto2
 
 name=simple-scan
 version=3.12.2
