@@ -1,17 +1,16 @@
 # Description: UGet, Linux için En İyi İndirme Yöneticisi.
-# URL: http://urlget.sourceforge.net/
+# URL: http://ugetdm.com/
 # Packager: milisarge
-# Depends on: libnotify gtk3 gstreamer curl hicolor-icon-theme xdg-utils 
+# Depends on: libnotify gtk3 gstreamer1 curl hicolor-icon-theme xdg-utils 
 
 name=uget
-version=1.10.3
+version=2.0.9
 release=1
 
 source=(http://downloads.sourceforge.net/urlget/$name-$version.tar.gz)
 build() {
 	cd $name-$version
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-              --disable-appindicator 
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 	make DESTDIR=$PKG install
 }
