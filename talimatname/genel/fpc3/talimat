@@ -1,31 +1,20 @@
 # Description: Özgür pascal derleyicisi
 # URL: http://www.freepascal.org/
 # Packager: milisarge
-# Depends on: fpc
+# Depends on: fpc gdb
 
 name=fpc3
 version=3.0.2
 release=1
-source=(ftp://ftp.freepascal.org/pub/fpc/dist/$version/source/fpcbuild-$version.tar.gz
-	https://ftp.gnu.org/gnu/gdb/gdb-7.10.tar.xz
-	fpc-gdb.patch)
+source=(ftp://ftp.freepascal.org/pub/fpc/dist/$version/source/fpcbuild-$version.tar.gz)
 build() {
-	cd "$SRC"/gdb-7.10
-	./configure --prefix=/usr --disable-nls --without-python --disable-werror --disable-tui
-	make
-	make -C gdb libgdb.a
-	cp libdecnumber/libdecnumber.a gdb/
-
 	cd "$SRC"/fpcbuild-$version
-	#patch -p1 <"$SRC"/fpc-gdb.patch
-	export GDBLIBDIR="$SRC"/gdb-7.10/gdb
-	export LIBGDBFILE=$GDBLIBDIR/libgdb.a
 	pushd fpcsrc/compiler
 	fpcmake -Tall
 	popd
 	make build NOGDB=1
 	
-	 export HOME="$SRC"
+	export HOME="$SRC"
 
 	make -j1 PREFIX="$PKG"/usr install
 

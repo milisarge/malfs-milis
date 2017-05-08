@@ -1,0 +1,25 @@
+# Description: fpc kaynak kodları
+# URL: http://www.lazarus-ide.org/
+# Packager: milisarge
+# Depends on: fpc
+
+name=fpc-src
+version=2.6.4
+release=1
+source=(ftp://ftp.freepascal.org/pub/fpc/dist/$version/source/fpcbuild-$version.tar.gz)
+
+build() {
+    cd fpcbuild-$version/fpcsrc
+    mkdir -p $PKG/usr/lib/fpc/src
+    cp -R . $PKG/usr/lib/fpc/src
+    find $PKG/usr/lib/fpc/src \
+      \( \
+        -name '*README*' -o \
+        -name '*INSTALL*' -o \
+        -name '*COPYING*' -o \
+        -name '*ChangeLog*' -o \
+        -name '*TODO*' -o \
+        -name '*AUTHORS*' \
+      \) -delete
+}
+

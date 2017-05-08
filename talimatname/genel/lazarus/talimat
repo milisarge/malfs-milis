@@ -1,0 +1,24 @@
+# Description: fpc için arayüz
+# URL: http://www.lazarus-ide.org/
+# Packager: milisarge
+# Depends on: fpc fpc-src gdb gtk2
+
+name=lazarus
+version=1.6.4
+release=1
+source=(http://sourceforge.net/projects/$name/files/Lazarus%20Zip%20_%20GZip/Lazarus%20$version/$name-$version-0.tar.gz)
+
+build() {
+	cd $name
+	MAKEFLAGS="$(echo "$MAKEFLAGS" | sed "s/-j[[:digit:]]\+\s\?//")" make bigide
+	make install PREFIX=$PKG/usr
+	find $PKG \
+	  \( \
+		-name "*README*" -o \
+		-name "*BUGS*" -o \
+		-name "*TODOS*" -o \
+		-name "*COPYING*" -o \
+		-name "*INSTALL*" -o \
+		-name "*ChangeLog*" \
+	  \) -delete
+}
