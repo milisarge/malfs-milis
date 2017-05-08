@@ -1,0 +1,47 @@
+# Description: Özgür pascal derleyicisi
+# URL: http://www.freepascal.org/
+# Packager: milisarge
+# Depends on: fpc
+
+name=fpc3
+version=3.0.2
+release=1
+source=(ftp://ftp.freepascal.org/pub/fpc/dist/$version/source/fpcbuild-$version.tar.gz
+	https://ftp.gnu.org/gnu/gdb/gdb-7.10.tar.xz
+	fpc-gdb.patch)
+build() {
+	cd "$SRC"/gdb-7.10
+	./configure --prefix=/usr --disable-nls --without-python --disable-werror --disable-tui
+	make
+	make -C gdb libgdb.a
+	cp libdecnumber/libdecnumber.a gdb/
+
+	cd "$SRC"/fpcbuild-$version
+	#patch -p1 <"$SRC"/fpc-gdb.patch
+	export GDBLIBDIR="$SRC"/gdb-7.10/gdb
+	export LIBGDBFILE=$GDBLIBDIR/libgdb.a
+	pushd fpcsrc/compiler
+	fpcmake -Tall
+	popd
+	make build NOGDB=1
+	
+	 export HOME="$SRC"
+
+	make -j1 PREFIX="$PKG"/usr install
+
+	export PATH="$PKG"/usr/bin:$PATH
+
+	install -Dm0644 fpcsrc/rtl/COPYING.FPC "$PKG"/usr/share/licenses/${name}/COPYING.FPC
+
+	ln -s /usr/lib/fpc/${version}/ppcx64 "$PKG"/usr/bin/
+
+	mkdir -p "$PKG"/etc
+	"$PKG"/usr/lib/fpc/${version}/samplecfg "$PKG"/usr/lib/fpc/${version} "$PKG"/etc
+
+	# use -fPIC by default
+	echo -e "#ifdef cpux86_64\n# for x86_64 use -fPIC by default\n-Cg\n#endif" >> "$PKG/etc/fpc.cfg"
+
+	mv "$PKG"/usr/man "$PKG"/usr/share/
+
+	find "$PKG"/etc/ -type f -exec sed -i "s|"$PKG"||g" {} \;
+}
