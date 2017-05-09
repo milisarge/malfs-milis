@@ -259,6 +259,11 @@ def sistemKopyala(baglam):
 		komut="mkdir -p "+baglam+"/"+ydizin
 		os.system(komut)
 		print (ydizin,"oluşturuldu.")
+	# kurulum.desktop silinmesi
+	komut="rm /root/Masaüstü/kurulum.desktop"
+	komut2="rm /root/Desktop/kurulum.desktop"
+	os.system(komut)
+	os.system(komut2)
 	#yükleme akışı için acp
 	#os.system("acp -g -axnu / "+baglam)
 	#normal cp
