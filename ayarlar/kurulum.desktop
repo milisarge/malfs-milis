@@ -1,0 +1,9 @@
+[Desktop Entry]
+Path=/usr/bin
+Name=Milis Linux Kurulumu
+Comment=Milis Linux Kurulumu
+Exec=milis-kur
+Terminal=true
+Type=Application
+Icon=/usr/share/milis/milislogo.png
+Categories=System;

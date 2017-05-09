@@ -19,4 +19,8 @@ rm -r /depo/paketler/*
 mv /var/lib/pkg/tarihce/temel-pkvt.tar.lz /var/lib/pkg/tarihce/temel2-pkvt.tar.lz
 rm -r /tmp/*
 mps -tro
+install -d /usr/share/milis
+cp ayarlar/milislogo.png /usr/share/milis/
+cp kurulum.desktop /root/Desktop/
+cp kurulum.desktop /root/Masaüstü/
 tamir_masaustu
