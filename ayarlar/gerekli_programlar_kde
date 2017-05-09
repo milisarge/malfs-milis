@@ -31,4 +31,7 @@ os-prober
 openjdk
 flashplayer
 xdg-user-dirs
+python3-yaml
+python-yaml
+python3-pythondialog
 komutan

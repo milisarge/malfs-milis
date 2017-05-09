@@ -45,4 +45,7 @@ xdg-user-dirs
 lxdm
 milislinux-saat
 python-pip
+python3-yaml
+python-yaml
+python3-pythondialog
 komutan

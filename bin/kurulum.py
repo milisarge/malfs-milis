@@ -28,7 +28,6 @@ if kontrol:
 	#gereklerin kontrolü-kurulumu
 	paketd=site.getsitepackages()
 	yukluler=os.listdir(paketd[0])
-	mps_gerekler="/tmp/komutan.gerekler"
 	kur="pip3 install "
 	mpskur="mps kur "
 	kontrol=[""]
