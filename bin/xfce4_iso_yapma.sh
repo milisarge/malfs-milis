@@ -21,6 +21,6 @@ rm -r /tmp/*
 mps -tro
 install -d /usr/share/milis
 cp ayarlar/milislogo.png /usr/share/milis/
-cp kurulum.desktop /root/Desktop/
-cp kurulum.desktop /root/Masaüstü/
+cp ayarlar/kurulum.desktop /root/Desktop/
+cp ayarlar/kurulum.desktop /root/Masaüstü/
 tamir_masaustu
