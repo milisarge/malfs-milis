@@ -4,9 +4,9 @@
 # Depends on: unzip
 
 name=dmd
-version=2.068.1
+version=2.074.1
 release=1
-source=(http://downloads.dlang.org/releases/2015/dmd.$version.zip
+source=(http://downloads.dlang.org/releases/2017/$name.$version.linux.tar.xz
 dmd.desktop dmd.logo_48.png)
 
 build(){
