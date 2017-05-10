@@ -4,7 +4,7 @@
 # Depends on: cmake freeglut
 
 name=bullet
-version=2.83.4
+version=2.86
 release=1
 source=(https://github.com/bulletphysics/bullet3/archive/${version}.tar.gz)
 
