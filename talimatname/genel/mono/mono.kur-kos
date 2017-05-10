@@ -1,1 +1,1 @@
-ln -sf bin/mono-sgen bin/mono
+ln -sf /usr/bin/mono-sgen /usr/bin/mono
