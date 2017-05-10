@@ -4,11 +4,10 @@
 # Depends on: cmake xorg-fontconfig freetype libidn libpng libtiff lua51 
 
 name=podofo
-version=0.9.3
+version=0.9.5
 release=1
 
-source=(
-http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
