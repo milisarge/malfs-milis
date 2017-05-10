@@ -1,0 +1,17 @@
+# Description: SDL grafik çizim ilkelleri ve diğer destek fonksiyonları.
+# URL: http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx
+# Packager: milisarge
+# Depends on: sdl
+
+name=sdl_gfx
+version=2.0.23
+release=1
+source=(http://downloads.sourceforge.net/project/sdlgfx/SDL_gfx-$version.tar.gz)
+
+build() {
+	cd SDL_gfx-$version
+	./configure	--prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
+
