@@ -4,7 +4,7 @@
 # Depends on:  	
 
 name=libsigsegv
-version=2.10
+version=2.11
 release=1
 
 source=(http://ftp.gnu.org/gnu/libsigsegv/$name-$version.tar.gz)
