@@ -1,0 +1,11 @@
+--- ./src/Makefile	2017-05-11 11:17:03.846297791 +0300
++++ ./src/Makefile2	2017-05-11 11:17:33.419629701 +0300
+@@ -69,7 +69,7 @@
+ CFLAGS = -O2 -pipe -W -Wswitch -Wcomment -Wpointer-arith -Wimplicit -Wreturn-type -Wmissing-declarations -O -DENABLE_UNICODE -DDYNAMIC_FFI -DDYNAMIC_MODULES -I.
+ CPP = gcc -E
+ CLFLAGS =  
+-LIBS =  /usr/lib/libreadline.so -Wl,-rpath -Wl,/usr/lib -lncurses -ldl /usr/lib/libavcall.a /usr/lib/libcallback.a  -L/usr/lib -lsigsegv -lc -R/usr/lib libgnu_cl.a
++LIBS =  /usr/lib/libreadline.so -Wl,-rpath -Wl,/usr/lib -lncurses -ldl /usr/lib/libavcall.a /usr/lib/libcallback.a  -L/usr/lib -lsigsegv -lc libgnu_cl.a
+ X_LIBS = 
+ MODULE_CPPFLAGS = $(CPPFLAGS)
+ MODULE_CFLAGS = $(CFLAGS) -fPIC

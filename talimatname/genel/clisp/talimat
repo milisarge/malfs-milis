@@ -1,28 +1,35 @@
 # Description: GNU CLisp, ANSI Common Lisp uygulamasıdır.
 # URL: http://clisp.cons.org/
 # Packager: milisarge
-# Depends on: ffcall libsigsegv
+# Depends on: libsigsegv
 
 name=clisp
 version=2.49
 release=1
-source=(http://ftp.gnu.org/pub/gnu/clisp/latest/$name-$version.tar.bz2 \
-	clisp-gcc5.patch)
+source=(http://ftp.gnu.org/pub/gnu/clisp/latest/$name-$version.tar.bz2
+		Makefile-R.yama)
 
 build() {
 
-  cd $name-$version
-  patch -Np1 -i ../clisp-gcc5.patch
+   cd $name-$version
 
-  sed -i '/socket/d' tests/tests.lisp
+  ./configure \
+    --prefix=/usr \
+    --mandir=/usr/man
 
-  ./configure --prefix=/usr --with-readline --with-ffcall src
   cd src
-  ./makemake --prefix=/usr --with-readline --with-ffcall --with-dynamic-ffi > Makefile
-  make || make -j1
-  sed -i 's,http://www.lisp.org/HyperSpec/,http://www.lispworks.com/reference/HyperSpec/,g' config.lisp
-  make || make -j1
 
+  ./makemake \
+    --with-dynamic-ffi \
+    --without-dynamic-modules \
+    --prefix=/usr \
+    --mandir=/usr/man
+  cd ..
+  patch -Np1 -i $SRC/Makefile-R.yama
+  cd src
+  make -j1
   make -j1 DESTDIR=$PKG install
+
+  rm -r $PKG/usr/share/doc
 
 }
