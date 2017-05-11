@@ -6,7 +6,7 @@
 name=xulrunner
 version=41.0.2
 release=1
-source=(http://ftp.mozilla.org/pub/mozilla.org/$name/releases/latest/runtimes/$name-$version.en-US.linux-`uname -m`.tar.bz2)
+source=(http://ftp.mozilla.org/pub/xulrunner/releases/$version/source/$name-$version.source.tar.xz)
 
 build() {
   mkdir ${PKG}/opt/
