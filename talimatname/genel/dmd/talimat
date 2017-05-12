@@ -6,77 +6,58 @@
 name=dmd
 version=2.074.0
 release=1
-source=(http://downloads.dlang.org/releases/2015/dmd.$version.zip
+source=(http://downloads.dlang.org/releases/2017/dmd.$version.linux.tar.xz
+		dmd.conf
 		dmd.desktop 
-		dmd.logo_48.png)
+		dmd.logo_48.png
+		default_ddoc_theme.ddoc)
 
 build(){
+	if [ ! -f $DERLEME_KAYNAKDIZIN/phobos-$version.tar.gz ];then
+		wget https://github.com/dlang/phobos/archive/v$version.tar.gz -O $DERLEME_KAYNAKDIZIN/phobos-$version.tar.gz
+    else
+		bsdtar -xf $DERLEME_KAYNAKDIZIN/phobos-$version.tar.gz -C $SRC/
+    fi
+    if [ ! -f $DERLEME_KAYNAKDIZIN/druntime-$version.tar.gz ];then
+		wget https://github.com/dlang/druntime/archive/v$version.tar.gz -O $DERLEME_KAYNAKDIZIN/druntime-$version.tar.gz
+    else
+		bsdtar -xf $DERLEME_KAYNAKDIZIN/druntime-$version.tar.gz -C $SRC/
+    fi
+    
+    cd dmd2/src/dmd
+    mkdir -p res
+    cp $SRC/default_ddoc_theme.ddoc res/
+	echo $version > ../VERSION
+	make -j1 -f posix.mak MODEL=64 RELEASE=1 AUTO_BOOTSTRAP=1
+	
+	cd $SRC/druntime-$version
+	
+	make -j1 -f posix.mak MODEL=64 DMD=$SRC/dmd2/src/dmd RELEASE=1
 
-    [ "`uname -m`" == "i686" ] && archstr=32
-    [ "`uname -m`" == "x86_64" ] && archstr=64
+	cd $SRC/phobos-$version
+	make -j1 -f posix.mak MODEL=64 DMD=$SRC/dmd2/src/dmd RELEASE=1
 
-    # dmd
-    cd $SRC/dmd2/src/dmd
-    make AUTO_BOOTSTRAP=1 -f posix.mak MODEL=$archstr
-    PATH=.:$PATH
-    make -f posix.mak MODEL=$archstr
-    install -Dm755 dmd $PKG/usr/bin/dmd
+	install -m 0755 -D $SRC/dmd2/src/dmd $PKG/usr/bin/dmd
 
-    # druntime
-    cd $SRC/dmd2/src/druntime
-    make -f posix.mak MODEL=$archstr DMD=../dmd/dmd
-    mkdir -p $PKG/usr/include/d
-    cp -r import/* $PKG/usr/include/d
+	install -d $PKG/etc
+	echo -e "[Environment]\nDFLAGS=-I/usr/include/dlang/dmd -L-L/usr/lib -L-L/usr/lib32 -L--export-dynamic" > $PKG/etc/dmd.conf
 
-    # libphobos
-    cd $SRC/dmd2/src/phobos
-    make -f posix.mak MODEL=$archstr DMD=../dmd/dmd
-    install -Dm644 generated/linux/release/$archstr/libphobos2.a \
-        $PKG/usr/lib/libphobos2.a
+	install -d %PKG/usr/share/man/man{1,5}
+	cp -r $SRC/dmd2/docs/man/man1/* $pkgdir/usr/share/man/man1/
+	cp -r $SRC/dmd2/docs/man/man5/* $pkgdir/usr/share/man/man5/
 
-    # Elf file dumper
-    install -Dm755 $SRC/dmd2/linux/bin$archstr/dumpobj \
-        $PKG/usr/bin/dumpobj
-    # Elf file disassembler
-    install -Dm755 $SRC/dmd2/linux/bin$archstr/obj2asm \
-        $PKG/usr/bin/obj2asm
-    # Run D program as a script
-    install -Dm755 $SRC/dmd2/linux/bin$archstr/rdmd \
-        $PKG/usr/bin/rdmd
+	install -d $PKG/usr/share/d/samples/
+	cp -r $SRC/dmd2/samples/* $PKG/usr/share/d/samples/
 
-    install -Dm755 $SRC/dmd2/linux/bin$archstr/dman \
-        $PKG/usr/bin/dman
-    install -Dm755 $SRC/dmd2/linux/bin$archstr/ddemangle \
-        $PKG/usr/bin/ddemangle
+	# Phobos standard library
+	install -m 0644 -D $SRC/phobos-$version/generated/linux/release/64/libphobos2.a \
+		$PKG/usr/lib/libphobos2.a
 
-    # D compiler configuration file
-    mkdir -p $PKG/etc
-    echo -e "[Environment]\nDFLAGS=-I/usr/include/d -L-L/usr/lib -L--no-warn-search-mismatch -L--export-dynamic" \ > $PKG/etc/dmd.conf
+	install -d $PKG/usr/include/dlang/dmd
+	cp -r $SRC/phobos-$version/{*.d,etc,std} $PKG/usr/include/dlang/dmd
+	cp -r $SRC/druntime-$version/import/* $PKG/usr/include/dlang/dmd/
 
-    # D samples
-    mkdir -p $PKG/usr/share/d/samples/
-    cp -r $SRC/dmd2/samples/d/* $PKG/usr/share/d/samples/
-
-    # standard d modules
-    cd $SRC/dmd2/src/phobos
-    mkdir -p $PKG/usr/include/d
-    cp -Rf std $PKG/usr/include/d
-    cp -Rf etc $PKG/usr/include/d
-    cp -f {index,unittest}.d $PKG/usr/include/d
-
-    # man pages
-    cd $SRC/dmd2
-    mkdir -p $PKG/usr/share/man/{man1,man5}
-    cp -Rf man/man1/*.1 $PKG/usr/share/man/man1/
-    cp -Rf man/man5/*.5 $PKG/usr/share/man/man5/
-
-    # doc
-    mkdir -p $PKG/usr/share/doc/$pkgname-$pkgver/
-    cp -Rf html/d/* $PKG/usr/share/doc/$pkgname-$pkgver/
-
-    # desktop integration
-    install -Dm644 $SRC/$name.desktop \
-        $PKG/usr/share/applications/$name.desktop
-    install -Dm 644 $SRC/$name.logo_48.png \
-        $PKG/usr/share/icons/hicolor/48x48/apps/dlogo_48.png
+	install -m 0644 -D $SRC/phobos-$version/generated/linux/release/64/libphobos2.so \
+		$PKG/usr/lib/libphobos2.so
+	
 }
