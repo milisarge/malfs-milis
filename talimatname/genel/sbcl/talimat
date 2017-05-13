@@ -1,0 +1,52 @@
+# Description: Steel Bank Common Lisp
+# URL: http://www.sbcl.org/
+# Packager: milisarge
+# Depends on: clisp
+
+name=sbcl
+version=1.3.17
+release=1
+source=(https://downloads.sourceforge.net/project/sbcl/sbcl/1.3.17/sbcl-$version-source.tar.bz2
+		arch-fixes.lisp
+		customize-target-features.lisp)
+
+build() {
+  cd "$SRC/$name-$version"
+  export CFLAGS+=" -D_GNU_SOURCE -fno-omit-frame-pointer -DSBCL_HOME=/usr/lib/sbcl"
+  export GNUMAKE="make"
+  # build system uses LINKFLAGS and OS_LIBS to build LDFLAGS
+  export LINKFLAGS="$LDFLAGS"
+  unset LDFLAGS
+  unset MAKEFLAGS
+  enable_disable_largefile=enable
+  # Make a multi-threaded SBCL, disable LARGEFILE
+  #cp $SRC/customize-target-features.lisp .
+  bash make.sh clisp --prefix=/usr --fancy
+
+  # cannot have both SBCL_HOME and INSTALL_ROOT
+
+  SBCL_HOME="" INSTALL_ROOT="$PKG/usr" sh install.sh
+
+  src/runtime/sbcl --core output/sbcl.core --script "${SRC}/arch-fixes.lisp"
+
+  mv sbcl-new.core "${PKG}/usr/lib/sbcl/sbcl.core"
+
+  # sources
+
+  mkdir -p "$PKG/usr/share/sbcl-source"
+
+  cp -R -t "$PKG/usr/share/sbcl-source" "$SRC/$name-$version/"{src,contrib}
+
+  # license
+
+  install -D -m644 "$SRC/$name-$version/COPYING"  "$PKG/usr/share/licenses/$name/license.txt"
+
+  # drop unwanted files
+
+  find "$PKG" \( -name Makefile -o -name .cvsignore \) -delete
+
+  find "$PKG/usr/share/sbcl-source" -type f \( -name \*.fasl -o -name \*.o -o -name \*.log -o -name \*.so -o -name a.out \) -delete
+
+  rm "$PKG/usr/share/sbcl-source/src/runtime/sbcl"{,.nm}
+
+}

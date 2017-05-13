@@ -1,0 +1,6 @@
+(lambda (features)
+  (flet ((enable (x) (pushnew x features))
+         (disable (x) (setf features (remove x features))))
+  (enable :sb-thread)
+  (enable :sb-core-compression)
+  (${enable_disable_largefile} :largefile)))
