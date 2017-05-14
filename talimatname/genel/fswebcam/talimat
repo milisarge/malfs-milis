@@ -1,0 +1,19 @@
+# Description: hafif çapta programcılar için webcam uygulaması
+# URL: http://www.firestorm.cx/fswebcam
+# Packager: milisarge
+# Depends on: libgd 
+
+name=fswebcam
+version=20140113
+release=1
+source=(http://www.firestorm.cx/fswebcam/files/$name-$version.tar.xz)
+
+build() {
+  cd "$SRC/$name-$version"
+  ./configure --prefix=/usr
+  make
+  cd "$SRC/$name-$version"
+  make DESTDIR="$PKG/" install
+  sed "s_^_#_g" -i example.conf
+  install -Dm644 example.conf "$PKG"/etc/fswebcam.conf
+}
