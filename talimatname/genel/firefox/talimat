@@ -1,31 +1,32 @@
 # Description: Mozilla.org'dan bağımsız web tarayıcısı
 # URL: http://www.mozilla.com/firefox/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: autoconf2 libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
+# Packager: milisarge
+# Depends on: rust autoconf2 libbluray pulseaudio gconf gstreamer yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
 
 name=firefox
-version=49.0.2
+version=53.0
 release=1
-source=( https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz)
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$version/source/firefox-$version.source.tar.xz
+		http://download-origin.cdn.mozilla.net/pub/firefox/releases/53.0/linux-x86_64/xpi/tr.xpi)
 
 build() {
 
 cd $SRC
 ARCH=`uname -m`
 
-for lang in tr
-do
-wget  http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$version/linux-$ARCH/xpi/$lang.xpi
-done
+#for lang in tr
+#do
+#wget http://download-origin.cdn.mozilla.net/pub/firefox/releases/$version/linux-$ARCH/xpi/$lang.xpitr.xpi
+#done
 
 cd $name-$version
 cat > mozconfig << "EOF"
 # If you have a multicore machine, all cores will be used by default.
 # If desired, you can reduce the number of cores used, e.g. to 1, by
 # uncommenting the next line and setting a valid number of CPU cores.
-#mk_add_options MOZ_MAKE_FLAGS="-j1"
+mk_add_options MOZ_MAKE_FLAGS="-j1"
 
-# If you have installed DBus-Glib comment out this line:
+# If you have installed dbus-glib, comment out this line:
 ac_add_options --disable-dbus
 
 # If you have installed dbus-glib, and you have installed (or will install)
@@ -33,15 +34,14 @@ ac_add_options --disable-dbus
 # this line
 ac_add_options --disable-necko-wifi
 
-# Uncomment this option if you wish to build with gtk+-2
-#ac_add_options --enable-default-toolkit=cairo-gtk2
-
 # Uncomment these lines if you have installed optional dependencies:
 #ac_add_options --enable-system-hunspell
 #ac_add_options --enable-startup-notification
 
-# Comment out following option if you have PulseAudio installed
+# Uncomment the following option if you have not installed PulseAudio
 #ac_add_options --disable-pulseaudio
+# and uncomment this if you installed alsa-lib instead of PulseAudio
+#ac_add_options --enable-alsa
 
 # If you have installed GConf, comment out this line
 ac_add_options --disable-gconf
@@ -73,8 +73,6 @@ ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 
-ac_add_options --enable-optimize
-
 ac_add_options --enable-gio
 ac_add_options --enable-official-branding
 ac_add_options --enable-safe-browsing
@@ -96,22 +94,21 @@ ac_add_options --with-system-zlib
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
 EOF
 
-test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozconfig || true
-
 export CFLAGS=$CFLAGS_HOLD
 export CXXFLAGS_HOLD=$CXXFLAGS
 export CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 export CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
-SHELL=/bin/sh make -f client.mk
+SHELL=/bin/sh make -f client.mk  INSTALL_SDK= &&
 
 mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
 
-SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
+SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK= &&
 
-chown -R 0:0 $PKG/usr/lib/firefox-$version
-ln -sf ../lib/firefox-$version/firefox $PKG/usr/bin
-ln -sf ../mozilla/plugins $PKG/usr/lib/firefox-$version
+chown -R 0:0 $PKG/usr/lib/firefox-53.0  &&
+
+mkdir -pv    $PKG/usr/lib/mozilla/plugins  &&
+ln    -sfv   ../../mozilla/plugins $PKG/usr/lib/firefox-53.0/browser
 
 # Need for gnash
 mkdir -p $PKG/usr/include/npapi
@@ -140,6 +137,8 @@ do
 install -Dm644 $SRC/$lang.xpi \
     $PKG/usr/lib/firefox-$version/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
 done
+
+install -d $PKG/usr/lib/firefox-$version/defaults/pref/
 
 cat > $PKG/usr/lib/firefox-$version/defaults/pref/vendor.js << "EOF"
 // Use LANG environment variable to choose locale
