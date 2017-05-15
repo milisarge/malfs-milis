@@ -4,7 +4,7 @@
 # Depends on: python git ninja
 
 name=meson
-version=0.31.0
+version=0.40.0
 release=1
 
 source=(https://github.com/mesonbuild/meson/releases/download/$version/$name-$version.tar.gz)

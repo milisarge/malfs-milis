@@ -1,0 +1,18 @@
+# Description: grafiksel veri tipleri için ince katman
+# URL: https://github.com/ebassi/graphene/
+# Packager: milisarge
+# Depends on: gtk-doc gobject-introspection meson glib
+
+name=graphene
+version=1.6.0
+release=1
+source=(https://github.com/ebassi/graphene/archive/$version.tar.gz)
+
+build() {
+	cd $name-$version
+	export LANG=en_US.UTF-8
+	meson --prefix=/usr --buildtype=release ../$name --libexecdir=/usr/lib 
+	cd $SRC/$name
+	ninja
+	DESTDIR="$PKG" ninja install
+}
