@@ -4,13 +4,13 @@
 # Depends on: intltool glib gobject-introspection
 
 name=gsettings-desktop-schemas
-version=3.18.1
+version=3.24.0
 release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }
