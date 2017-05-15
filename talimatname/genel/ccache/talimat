@@ -1,0 +1,30 @@
+# Description: bir önbellek derleyicisi
+# URL: http://ccache.samba.org/
+# Packager: milisarge
+# Depends on: 
+
+name=ccache
+version=3.3.4
+release=1
+source=(http://samba.org/ftp/ccache/ccache-$version.tar.xz)
+
+build() {
+  cd ${SRC}/${name}-${version}
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc
+  make
+  cd ${SRC}/${name}-${version}
+  install -Dm 755 ccache ${PKG}/usr/bin/ccache
+  install -Dm 644 ccache.1 ${PKG}/usr/share/man/man1/ccache.1
+  install -d ${PKG}/usr/lib/ccache/bin
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/cc 
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/gcc
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/g++
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/cpp
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/c++
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/${CHOST}-cc
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/${CHOST}-gcc
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/${CHOST}-g++
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/${CHOST}-cpp
+  ln -sf /usr/bin/ccache ${PKG}/usr/lib/ccache/bin/${CHOST}-c++
+}
