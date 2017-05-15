@@ -1,14 +1,14 @@
 # Description: Güvenlik özellikli istemci ve sunucu uygulamalarının çapraz platform geliştirmesi desteği
 # URL: http://www.mozilla.org
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: nspr sqlite 
 
 name=nss
-version=3.25
+version=3.30.2
 release=1
 
 source=( http://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_${version//./_}_RTM/src/nss-$version.tar.gz \
-	 http://www.linuxfromscratch.org/patches/downloads/nss/nss-$version-standalone-1.patch )
+	 http://www.linuxfromscratch.org/patches/blfs/svn/nss-$version-standalone-1.patch)
 
 build () {
 	cd $name-$version
