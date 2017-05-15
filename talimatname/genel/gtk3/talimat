@@ -27,6 +27,4 @@ gtk-theme-name = Adwaita
 gtk-icon-theme-name = gnome
 gtk-cursor-theme-name = Adwaita
 EOF
-# Empaqueté ds gtk-update-icon-cache
-rm $PKG/{usr/bin/gtk-update-icon-cache,usr/share/man/man1/gtk-update-icon-cache.1}
 }

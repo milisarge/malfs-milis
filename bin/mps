@@ -402,10 +402,9 @@ sistem_guncelle(){
 		pk_guncelle="e"
 		case "${esgec[@]}" in  *"$kpkt"*) pk_guncelle="h" ;; esac
 		if [ "$pk_guncelle" = "e" ];then
-			ryaz 32 $kpkt "guncellendi"
 			paket_guncelle "$kpkt"
 		else
-			ryaz 31 $kpkt "guncellemesi atlandı"
+			ryaz 31 $kpkt "güncellemesi atlandı"
 		fi
 		
 	done
