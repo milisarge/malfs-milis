@@ -4,7 +4,7 @@
 # Depends on: adwaita-icon-theme libepoxy xorg-libxinerama,xorg-libxrandr xorg-libxcursor at-spi2-atk cups colord xorg-libxi atk cairo pango pangox-compat gdk-pixbuf gtk-update-icon-cache graphene
 
 name=gtk3
-version=3.90.0
+version=3.22.15
 release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
 
@@ -21,7 +21,7 @@ cd gtk+-$version
 make || make -j1
 make DESTDIR=$PKG install
 rm -r $PKG/usr/share/gtk-doc
-cat > $PKG/etc/gtk-4.0/settings.ini << "EOF"
+cat > $PKG/etc/gtk-3.0/settings.ini << "EOF"
 [Settings]
 gtk-theme-name = Adwaita
 gtk-icon-theme-name = gnome
