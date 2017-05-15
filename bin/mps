@@ -392,11 +392,22 @@ paket_guncelle_oto(){
 }
 
 sistem_guncelle(){
+	# güncellemede atlanacak paketler.
+	esgec=(xorg xorg-font xorg-proto kernel-lts vlc)
 	local kpkt
+	local pk_guncelle
 	mps -GG 
 	mps -G
 	for kpkt in `mps -kl`;do
-		paket_guncelle "$kpkt"
+		pk_guncelle="e"
+		case "${esgec[@]}" in  *"$kpkt"*) pk_guncelle="h" ;; esac
+		if [ "$pk_guncelle" = "e" ];then
+			ryaz 32 $kpkt "guncellendi"
+			paket_guncelle "$kpkt"
+		else
+			ryaz 31 $kpkt "guncellemesi atlandı"
+		fi
+		
 	done
 }
 
