@@ -1,24 +1,18 @@
 # Description:  Çapraz platform QtWebKit tarayıcı.
 # URL: http://www.qupzilla.com/
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: qt5 desktop-file-utils hunspell qt5-webkit
 
 name=qupzilla
-version=2.0.1
+version=2.1.2
 release=1
 
 source=( https://github.com/QupZilla/qupzilla/releases/download/v$version/QupZilla-$version.tar.xz)
-build ()
-{
-
-cd QupZilla-$version
-
-export USE_WEBGL=true \
-
-qmake-qt5 QUPZILLA_PREFIX=/usr/
-
-make
-
-make INSTALL_ROOT="$PKG/" install
-
+build () {
+	cd QupZilla-$version
+	export USE_WEBGL=true \
+	export DISABLE_UPDATES_CHECK=true \
+	qmake-qt5 QUPZILLA_PREFIX=/usr/
+	make
+	make INSTALL_ROOT="$PKG/" install
 }
