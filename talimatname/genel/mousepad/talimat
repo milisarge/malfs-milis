@@ -5,13 +5,20 @@
 
 name=mousepad
 version=0.4.0
-release=3
+release=4
 
 source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib/xfce4 \
+		--localstatedir=/var \
+		--disable-static \
+		--disable-debug \
+		--enable-gtk3
+	make
+	make DESTDIR=$PKG install
 }
