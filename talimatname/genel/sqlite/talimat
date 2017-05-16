@@ -8,7 +8,7 @@ version=3.18.0
 release=1
 _version=$(printf "%i%.2i%.2i%.2i" ${version//./ })
 
-source=(http://www.sqlite.org/2016/sqlite-autoconf-${_version}.tar.gz)
+source=(http://www.sqlite.org/2017/sqlite-autoconf-${_version}.tar.gz)
 
 build () {
     cd sqlite-autoconf-${_version}
