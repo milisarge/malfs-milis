@@ -1,22 +1,25 @@
 # Description: WebKitGTK+ kullanan hafif tarayıcı
 # URL: http://www.twotoasts.de
 # Packager: milisarge
-# Depends on: cmake gcr gtk3 webkitgtk2 webkitgtk3 vala libnotify librsvg libunique1 desktop-file-utils libzeitgeist hicolor-icon-theme gstreamer1-plugins-libav gstreamer1-plugins-base gstreamer1-plugins-good
+# Depends on: meson cmake gcr webkitgtk2 gtk3 webkit2gtk3 webkitgtk3 vala libnotify librsvg libunique1 desktop-file-utils hicolor-icon-theme gstreamer1-plugins-libav gstreamer1-plugins-base gstreamer1-plugins-good
 
 name=midori
 version=0.5.11
-release=1
+release=2
 
 source=(http://www.midori-browser.org/downloads/${name}_${version}_all_.tar.bz2)
 build () {
-cd $name-$version
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr \
- -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$name-$version \
- -DUSE_GTK3=1 \
- -DUSE_ZEITGEIST=OFF \
- ..
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	mkdir -p build
+	cd build
+	cmake .. \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=lib \
+	-DHALF_BRO_INCOM_WEBKIT2=ON \
+	-DCMAKE_C_FLAGS="$CFLAGS -w" \
+	-DUSE_ZEITGEIST=OFF \
+	-DUSE_GTK3=1 \
+	-G Ninja
+	ninja
+	DESTDIR="$PKG" ninja -C "$SRC/$name-$version/build" install
 }
