@@ -1,19 +1,19 @@
 # Description: Arsiv dosyalari olusturmak ve duzenlemek icin bir arac
 # URL: http://www.gnome.org
-# Packager: milisarge@gmail.com
+# Packager: milisarge
 # Depends on: desktop-file-utils gtk3 hicolor-icon-theme dconf itstool libarchive file json-glib libnotify unrar p7zip
 
 name=file-roller
-version=3.16.4
+version=3.24.1
 release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
-	./configure --prefix=/usr         \
-            --disable-packagekit  \
-            --disable-static
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	--libexecdir=/usr/lib/$pkgname --disable-static --disable-schemas-compile
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
 	make DESTDIR=$PKG install
-chmod -v 0755 $PKG/usr/libexec/file-roller/isoinfo.sh
+	chmod -v 0755 $PKG/usr/lib/file-roller/isoinfo.sh
 }
