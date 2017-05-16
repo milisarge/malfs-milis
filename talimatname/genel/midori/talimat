@@ -1,7 +1,7 @@
 # Description: WebKitGTK+ kullanan hafif tarayıcı
 # URL: http://www.twotoasts.de
 # Packager: milisarge
-# Depends on: meson cmake gcr webkitgtk2 gtk3 webkit2gtk3 webkitgtk3 vala libnotify librsvg libunique1 desktop-file-utils hicolor-icon-theme gstreamer1-plugins-libav gstreamer1-plugins-base gstreamer1-plugins-good
+# Depends on: meson cmake gcr webkitgtk2 gtk3 webkit2gtk3 webkitgtk3 vala glib-networking libnotify librsvg libunique1 desktop-file-utils hicolor-icon-theme gstreamer1-plugins-libav gstreamer1-plugins-base gstreamer1-plugins-good
 
 name=midori
 version=0.5.11
