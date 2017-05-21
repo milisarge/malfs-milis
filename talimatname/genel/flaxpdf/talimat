@@ -4,21 +4,16 @@
 # Depends on: fltk1 poppler lzo
 
 name=flaxpdf
-version=20152609
+version=0.7.3
 release=1
-source()
+source(https://github.com/clbr/flaxpdf/archive/v0.7.3.tar.gz)
 
 build() {
-	git clone https://github.com/clbr/flaxpdf.git
-	cd flaxpdf
-
+	cd "${name}-$version"
 	mkdir -p config
 	touch config/config.rpath
 	./autogen.sh
-
    ./configure --prefix=/usr
-
 	make
-
 	make DESTDIR="$PKG" install
 }
