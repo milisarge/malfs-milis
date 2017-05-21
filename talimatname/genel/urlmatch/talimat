@@ -1,18 +1,16 @@
 # Description: Hızlı URL eşleştirici kitaplığı
-# URL: https://github.com/clbr/${_name}
+# URL: https://github.com/clbr/urlmatch
 # Packager: milisarge
-# Depends on: git
+# Depends on:
 
 name=urlmatch
-version=222
+version=1.0
 release=1
 
-source=()
+source=(https://github.com/clbr/urlmatch/archive/v$version.tar.gz)
 	
 build() {
-	git clone https://github.com/clbr/urlmatch.git
-	cd "${SRC}/${name}"
+	cd "${name}-$version"
 	make
-
 	make install DESTDIR="${PKG}"
 }

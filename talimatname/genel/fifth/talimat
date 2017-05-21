@@ -4,16 +4,22 @@
 # Depends on: webkitfltk urlmatch physfs desktop-file-utils
 
 name=fifth
-version=0.4
+version=git
 release=1
 source=()
 
 build() {
-	git clone https://github.com/clbr/fifth.git
+	if [ ! -d $DERLEME_KAYNAKDIZIN/fifth ];then
+		git clone https://github.com/clbr/fifth.git $DERLEME_KAYNAKDIZIN/fifth
+	else
+		cd $DERLEME_KAYNAKDIZIN/fifth
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/fifth ${SRC}/fifth
 	cd "${SRC}/${name}"
 	./autogen.sh
 	./configure
 	make
-
 	make install DESTDIR="${PKG}"
 }

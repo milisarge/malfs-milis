@@ -1,22 +1,21 @@
 # Description: Webkit Portu, Fltk 1.3'e
-# URL: https://github.com/clbr/${name}/
+# URL: https://github.com/clbr/webkitfltk
 # Packager: milisarge
 # Depends on: zlib libpng libjpeg-turbo libxml2 sqlite freetype xorg-fontconfig cairo openssl curl icu harfbuzz fltk1 git ruby
 
 name=webkitfltk
-version=0.1.1
+version=0.5.1
 release=1
 
-source=()
+source=(https://github.com/clbr/webkitfltk/archive/v0.5.1.tar.gz)
 
 build() {
-	git clone https://github.com/clbr/webkitfltk.git
-	cd "${SRC}/${name}"
-	make -C Source/WTF/wtf
-	make -C Source/JavaScriptCore gen
-	make -C Source/JavaScriptCore
-	make -C Source/WebCore
-	make -C Source/WebKit/fltk
-
+	#git clone https://github.com/clbr/webkitfltk.git
+	cd "${name}-${version}"
+	make -j1 -C Source/WTF/wtf
+	make -j1 -C Source/JavaScriptCore gen
+	make -j1 -C Source/JavaScriptCore
+	make -j1 -C Source/WebCore
+	make -j1 -C Source/WebKit/fltk
 	make -C Source/WebKit/fltk install DESTDIR="${PKG}"
 }
