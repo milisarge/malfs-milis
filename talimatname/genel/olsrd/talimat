@@ -1,0 +1,15 @@
+# Description: Optimized Link State Routing Protocol gerçeklemesi
+# URL: http://www.olsr.org/mediawiki/index.php/Olsrd
+# Packager: milisarge
+# Depends on: 
+
+name=olsrd
+version=0.9.6
+release=1
+source=(http://www.olsr.org/releases/0.9/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make prefix=/usr 
+	make libdir=/usr/lib/olsrd sbindir=/usr/bin DESTDIR=${PKG} install
+}
