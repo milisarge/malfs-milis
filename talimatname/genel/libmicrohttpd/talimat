@@ -1,0 +1,21 @@
+# Description: gömülü HTTP sunucular oluşturmaya yarar
+# URL: http://www.gnu.org/software/libmicrohttpd/
+# Packager: milisarge
+# Depends on: libgcrypt gnutls
+
+name=libmicrohttpd
+version=0.9.54
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	CONFIG_SHELL=/bin/bash \
+	./configure \
+		--prefix=/usr \
+		--disable-static
+	make
+	make DESTDIR=$PKG install
+
+	rm -rf $PKG/usr/share/info
+}
