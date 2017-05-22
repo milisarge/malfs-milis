@@ -1,0 +1,17 @@
+# Description: sqlite veritabanları için 256bit şifreleme eklentisi
+# URL: https://www.zetetic.net/sqlcipher/
+# Packager: milisarge
+# Depends on: sqlite tcl 
+
+name=sqlcipher
+version=3.4.1
+release=1
+source=(https://github.com/sqlcipher/$name/archive/v$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --enable-tempstore=yes \
+	CFLAGS="$CFLAGS -DSQLITE_HAS_CODEC" LDFLAGS="-lcrypto"
+	make
+	make DESTDIR="${PKG}" install
+}
