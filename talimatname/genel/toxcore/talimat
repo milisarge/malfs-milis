@@ -1,18 +1,21 @@
-# Description: Çevrimiçi iletişim çekirdeğinin geleceği
-# URL: https://github.com/irungentoo/toxcore
+# Description: p2p şifreli iletişim protokol çekirdeği
+# URL: https://github.com/TokTok/c-toxcore/
 # packager: milisarge
-# Depends on: libconfig libsodium libvpx opus
+# Depends on: libconfig libsodium libvpx opus cmake
 
 name=toxcore
-version=master
+version=0.1.8
 release=1
-source=(https://github.com/irungentoo/$name/archive/$version.tar.gz)
+source=(https://github.com/TokTok/c-toxcore/archive/v$version.tar.gz)
 
 build() {
-    mv $DERLEME_KAYNAKDIZIN/$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
-    cd $name-$version
-	./autogen.sh
-    ./configure --prefix=/usr --disable-daemon --disable-ntox
-    make
-    make DESTDIR=$PKG install
+	cd c-toxcore-$version
+	sed -i "/Rpath/d;/RPATH/d" CMakeLists.txt
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+		-DDHT_BOOTSTRAP=on \
+		-DBOOTSTRAP_DAEMON=on \
+		-DBUILD_NTOX=off
+	make
+	make DESTDIR="$PKG" install
+	install -Dm644 ./other/bootstrap_daemon/tox-bootstrapd.conf "$PKG/etc/tox-bootstrapd.conf"
 }
