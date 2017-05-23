@@ -1,0 +1,20 @@
+# Description: C++/Qt tabanlı tox bağlanıcısı
+# URL: https://github.com/qTox/qTox
+# Packager: milisarge
+# Depends on: cmake qt5 desktop-file-utils openal qrencode gtk2 ffmpeg sqlcipher toxcore
+
+name=qtox
+name2=qTox
+version=1.10.1
+release=1
+source=(https://github.com/$name2/$name2/archive/v$version.tar.gz)
+
+build() {
+	cd $name2-$version
+	install -d build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
+	make test
+	make
+	make DESTDIR="$PKG" install
+}
