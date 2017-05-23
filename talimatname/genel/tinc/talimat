@@ -1,0 +1,23 @@
+# Description: bir vpn uygulaması
+# URL:  http://www.tinc-vpn.org
+# Packager: milisarge
+# Depends on:
+
+name=tinc
+version=1.0.31
+release=1
+source=(https://github.com/gsliepen/tinc/archive/release-$version.tar.gz)
+
+build() {
+	cd $name-release-$version
+	autoreconf -fsi
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+	make
+	make DESTDIR=$PKG install
+	install -d "$PKG"/etc/tinc/
+	install -dm755 "$PKG"/usr/share/tinc/examples
+	cp -r doc/sample-config $PKG/usr/share/tinc/examples
+	cp doc/sample-config/tinc.conf "$PKG"/etc/tinc/
+	find "$PKG"/usr/share/tinc/examples -type f -exec chmod 644 {} +
+	find "$PKG"/usr/share/tinc/examples -type d -exec chmod 755 {} +
+}
