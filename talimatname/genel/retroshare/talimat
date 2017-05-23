@@ -1,0 +1,28 @@
+# Description: retroshare,osya paylaşımı,mesajlaşma vb. uygulamalar içeren f2f çatısı
+# URL: http://retroshare.sourceforge.net/
+# Packager: milisarge
+# Depends on: libupnp sqlcipher qt5 libgnome-keyring libxslt ffmpeg opencv libmicrohttpd speexdsp
+
+name=retroshare
+version=0.6.2
+release=1
+source=(https://github.com/RetroShare/RetroShare/archive/v$version.tar.gz)
+
+build() {
+	cd RetroShare-$version
+	cd libretroshare/src
+	LANG=C ./version_detail.sh
+	cd ../..
+	cd retroshare-gui/src
+	LANG=C ./version_detail.sh
+	cd ../..
+	 _optAutol='CONFIG+=rs_autologin'
+	qmake-qt5 CONFIG-=debug CONFIG+=release \
+		CONFIG+=rs_nodeprecatedwarning \
+		${_optAutol} \
+		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
+		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
+		RetroShare.pro
+	make
+	make INSTALL_ROOT="${PKG}" install
+}
