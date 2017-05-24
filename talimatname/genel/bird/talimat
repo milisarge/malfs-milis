@@ -1,0 +1,42 @@
+# Description: RIP, OSPFv2 and BGP uygulaması
+# URL: http://bird.network.cz/
+# Packager: milisarge
+# Depends on:
+
+name=bird
+version=1.6.3
+release=1
+source=(ftp://bird.network.cz/pub/bird/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --docdir=/usr/share/doc/$name \
+    --enable-ipv6
+	make
+	make \
+    prefix="$PKG/usr" \
+    sysconfdir="$PKG/etc" \
+    sbindir="$PKG/usr/bin" \
+    localstatedir="$PKG/var" \
+    docdir="$PKG/usr/share/doc/$name" \
+    install
+    ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --docdir=/usr/share/doc/$name 
+    make
+	make \
+    prefix="$PKG/usr" \
+    sysconfdir="$PKG/etc" \
+    sbindir="$PKG/usr/bin" \
+    localstatedir="$PKG/var" \
+    docdir="$PKG/usr/share/doc/$name" \
+    install
+}
