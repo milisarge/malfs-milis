@@ -1,0 +1,19 @@
+# Description: hızlı ve güvenli tünelleme uygulaması
+# URL: https://projects.universe-factory.net/projects/fastd
+# Packager: milisarge
+# Depends on: pkg-config cmake libcap libuecc libsodium json-c
+
+name=fastd
+version=18
+release=1
+source=(https://projects.universe-factory.net/attachments/download/86/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	mkdir -p build
+	cd build
+	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr -D ENABLE_SYSTEMD=ON -D ENABLE_LTO=ON -D ENABLE_OPENSSL=ON ../
+	make
+	make install DESTDIR="${PKG}"
+	install -dm755 "${PKG}/etc/fastd/"
+}
