@@ -20,6 +20,9 @@ mv /var/lib/pkg/tarihce/temel-pkvt.tar.lz /var/lib/pkg/tarihce/temel2-pkvt.tar.l
 rm -r /tmp/*
 mps -tro
 install -d /usr/share/milis
+export LC_ALL="tr_TR.UTF-8"
+export LANG="tr_TR.UTF-8"
+xdg-user-dirs-update 
 cp ayarlar/milislogo.png /usr/share/milis/
 cp ayarlar/kurulum.desktop /root/Desktop/
 cp ayarlar/kurulum.desktop /root/Masaüstü/
