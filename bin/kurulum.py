@@ -362,9 +362,8 @@ def takasSec(kbolum):
 						if uygunBolum in diskBolumler[i]: #loop partlar gibi swap kurulamayacak alanları ele
 							if bolumDs[i] == "swap":
 								takasSecimler.append((diskBolumler[i],bolumEtiket[i]+ "\t" +bolumBoyutlar[i]+"\t"+bolumDs[i]))
-		
-		status,seciliBolum = d.menu(text="Takas alanının yer alacağı disk bölümünü seçiniz",choices=takasSecimler)
 		if takasSecimler:
+			status,seciliBolum = d.menu(text="Takas alanının yer alacağı disk bölümünü seçiniz",choices=takasSecimler)
 			if status == "ok":
 				print("{} seçildi !".format(seciliBolum))		
 				kurparam["disk"]["takasbolum"]="/dev/"+seciliBolum
