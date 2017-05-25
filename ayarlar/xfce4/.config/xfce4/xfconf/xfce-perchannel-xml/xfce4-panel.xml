@@ -25,7 +25,7 @@
   </property>
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="applicationsmenu">
-      <property name="button-icon" type="string" value="/root/Desktop/video-resim/Milis-logo2.png"/>
+      <property name="button-icon" type="string" value="/sources/milis.git/ayarlar/milislogo.png"/>
       <property name="button-title" type="string" value="Uygulamalar"/>
     </property>
     <property name="plugin-3" type="string" value="tasklist"/>
