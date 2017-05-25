@@ -478,6 +478,16 @@ kur-smartd: dizinleri-olustur
 	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc5.d/S21smartd
 	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc6.d/K70smartd
 
+kur-slim: dizinleri-olustur
+	install -m ${MODE} mbd/init.d/slim  ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/slim ${EXTDIR}/rc.d/rc0.d/K05slim
+	ln -sf  ../init.d/slim ${EXTDIR}/rc.d/rc1.d/K05slim
+	ln -sf  ../init.d/slim ${EXTDIR}/rc.d/rc2.d/K05slim
+	ln -sf  ../init.d/slim ${EXTDIR}/rc.d/rc3.d/K05slim
+	ln -sf  ../init.d/slim ${EXTDIR}/rc.d/rc4.d/K05slim
+	ln -sf  ../init.d/slim ${EXTDIR}/rc.d/rc5.d/S95slim
+	ln -sf  ../init.d/slim ${EXTDIR}/rc.d/rc6.d/K05slim
+
 kur-soprano: dizinleri-olustur
 	install -m ${MODE} mbd/init.d/soprano    ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc0.d/K35soprano
@@ -901,6 +911,16 @@ sil-slapd:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S25slapd
 	rm -f ${EXTDIR}/rc.d/rc5.d/S25slapd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K46slapd
+
+sil-slim:
+	rm -f ${EXTDIR}/rc.d/init.d/slim
+	rm -f ${EXTDIR}/rc.d/rc0.d/K05slim
+	rm -f ${EXTDIR}/rc.d/rc1.d/K05slim
+	rm -f ${EXTDIR}/rc.d/rc2.d/K05slim
+	rm -f ${EXTDIR}/rc.d/rc3.d/K05slim
+	rm -f ${EXTDIR}/rc.d/rc4.d/K05slim
+	rm -f ${EXTDIR}/rc.d/rc5.d/S95slim
+	rm -f ${EXTDIR}/rc.d/rc6.d/K05slim
 
 ukur-smartd: c
 	rm -f ${EXTDIR}/rc.d/init.d/smartd
