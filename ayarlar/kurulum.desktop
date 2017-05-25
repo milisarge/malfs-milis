@@ -5,5 +5,5 @@ Comment=Milis Linux Kurulumu
 Exec=milis-kur
 Terminal=true
 Type=Application
-Icon=/usr/share/milis/milislogo.png
+Icon=/sources/milis.git/ayarlar/milislogo.png
 Categories=System;
