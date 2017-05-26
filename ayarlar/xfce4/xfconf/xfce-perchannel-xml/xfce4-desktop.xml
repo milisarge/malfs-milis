@@ -6,12 +6,12 @@
       <property name="monitoreDP1" type="empty">
         <property name="workspace0" type="empty">
           <property name="color-style" type="int" value="0"/>
-          <property name="image-style" type="int" value="4"/>
+          <property name="image-style" type="int" value="3"/>
           <property name="last-image" type="string" value="/sources/milis.git/ayarlar/milis-linux-arkaplan.png"/>
         </property>
         <property name="workspace1" type="empty">
           <property name="color-style" type="int" value="0"/>
-          <property name="image-style" type="int" value="1"/>
+          <property name="image-style" type="int" value="3"/>
           <property name="last-image" type="string" value="/sources/milis.git/ayarlar/milis-linux-arkaplan.png"/>
           <property name="color1" type="array">
             <value type="uint" value="0"/>
@@ -21,25 +21,25 @@
           </property>
         </property>
         <property name="workspace2" type="empty">
-          <property name="color-style" type="int" value="0"/>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-teal.jpg"/>
+           <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/sources/milis.git/ayarlar/milis-linux-arkaplan.png"/>
         </property>
         <property name="workspace3" type="empty">
-          <property name="color-style" type="int" value="0"/>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-teal.jpg"/>
+           <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/sources/milis.git/ayarlar/milis-linux-arkaplan.png"/>
         </property>
       </property>
       <property name="monitorVirtual-1" type="empty">
         <property name="workspace0" type="empty">
           <property name="color-style" type="int" value="0"/>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-teal.jpg"/>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/sources/milis.git/ayarlar/milis-linux-arkaplan.png"/>
         </property>
         <property name="workspace1" type="empty">
-          <property name="color-style" type="int" value="0"/>
-          <property name="image-style" type="int" value="0"/>
+           <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="3"/>
           <property name="last-image" type="string" value="/sources/milis.git/ayarlar/milis-linux-arkaplan.png"/>
         </property>
       </property>
