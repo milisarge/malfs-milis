@@ -1,0 +1,188 @@
+#!/bin/bash
+#
+# gl-select: select active gl/glx libraries/extensions
+#
+
+infoUsage() {
+  echo "Usage: $(basename $0) [ status | use [xorg|nvidia|ati] ]"
+  exit 0
+}
+
+infoMissing() {
+  echo "One or more of the non-xorg gl/glx backup files are missing."
+  echo "This means either you're not using a non-xorg gl/glx setup, in which"
+  echo "case nothing needs to be changed, OR your xorg backups are missing,"
+  echo "which can be solved by reinstalling xorg-server and mesa3d packages."
+  echo
+  echo "Files:"
+  getMissBackups
+  exit 1
+}
+
+infoRevert() {
+  echo "You appear to already be using a non-xorg gl/glx setup. Check that by"
+  echo "using 'gl-select status', OR if the one selected isn't the correct one,"
+  echo "revert to xorg and then select the correct new setup using:"
+  echo "'gl-select use xorg; gl-select use <new gl/glx>'."
+  echo
+  echo "Files:"
+  getExistBackups
+  exit 1
+}
+
+infoOldStuff() {
+  echo "You appear to be using a non-xorg gl/glx setup. You should revert your"
+  echo "selection to xorg and then select the correct new setup, but seems you"
+  echo "are using the old stuff setup due to gl-select 1.3, so you need to use"
+  echo "something like:"
+  echo "'gl-select use xorg --old-stuff; gl-select use <new gl/glx>'."
+  exit 1
+}
+
+checkInstalled() {
+  # checks either a single port or list of ports
+  local notInstalled=1
+  for arg in $@; do
+    if [ ! -z "`pkginfo -i | awk '{ print $1 }' | grep -e ^$arg$`" ]; then
+      notInstalled=0
+    fi
+  done
+  if [ $notInstalled -eq 1 ]; then
+    if [ $# -eq 1 ]; then
+      echo "$arg isn't installed!"
+    else
+      echo "None of the following ports are installed! (one is required)"
+      for i in $@; do echo "  $i"; done
+    fi
+    exit 1
+  fi
+}
+
+getMissBackups() {
+  # get missing xorg backup'ed files
+  for b in $BACKUPS; do if [ ! -f $b ]; then echo $b; fi; done
+}
+
+getExistBackups() {
+  # get existing xorg backup'ed files
+  for b in $BACKUPS; do if [ -f $b ]; then echo $b; fi; done
+}
+
+doGLsymlinks() {
+  [ ! -L /usr/lib/libGL.so.1 ] && ln -sf libGL.so.1.2 /usr/lib/libGL.so.1
+  [ ! -L /usr/lib/libGL.so ] && ln -sf libGL.so.1 /usr/lib/libGL.so
+  return 0
+}
+
+doStatus() {
+  # check which selection its being used
+  local file=$(file -h /usr/lib/libGL.so.1.2.0 | awk '{ if (/symbolic link/) print $5; else print $1; }' | sed 's|:||')
+  case $file in
+    *libGL.so.1.2.0) echo "* xorg gl/glx is selected" ;;
+    *libGL_so_1_2_nvidia) echo "* nvidia gl/glx is selected" ;;
+    *libGL_so_1_2_ati) echo "* ati gl/glx is selected" ;;
+    *) echo "unsupported: $file"; infoOldStuff ;;
+  esac
+}
+
+doUse() {
+  # perform the selection for the following supported gl/glx setups
+  local selection=$1
+  local options=$2
+  [ -z "$selection" ] && infoUsage
+  case $selection in
+    "xorg")
+      [ "$options" == "--old-stuff" ] && oldStuff
+      # check for missing xorg backup'ed files
+      local mbackups="$(getMissBackups)"
+      [ ! -z "$mbackups" ] && infoMissing $mbackups
+      # switch to xorg stuff
+      (
+      # libglx
+      rm -f /usr/lib/xorg/modules/extensions/libglx.so
+      mv /usr/lib/xorg/modules/extensions/libglx{_so,.so}
+      # libGL
+      rm -f usr/lib/libGL.so.1.2.0
+      mv /usr/lib/libGL{_so_1_2,.so.1.2.0}
+      doGLsymlinks
+      ) && echo "* xorg gl/glx selected"
+      ;;
+    "nvidia")
+      # is an nvidia port installed?
+      checkInstalled nvidia nvidia-sl nvidia-legacy-96xx nvidia-legacy-71xx
+      # check for the existence of xorg backups
+      local ebackups="$(getExistBackups)"
+      [ ! -z "$ebackups" ] && infoRevert $ebackups
+      # switch to nvidia stuff
+      # conflicting files which ati provides:
+      # libglx_so_nvidia, libGL_so_1_2_nvidia
+      (
+      # libglx
+      mv /usr/lib/xorg/modules/extensions/libglx{.so,_so}
+      ln -s libglx_so_nvidia /usr/lib/xorg/modules/extensions/libglx.so
+      # libGL
+      mv /usr/lib/libGL{.so.1.2.0,_so_1_2}
+      ln -sf libGL_so_1_2_nvidia /usr/lib/libGL.so.1.2.0
+      doGLsymlinks
+      ) && echo "* nvidia gl/glx selected"
+      ;;
+    "ati")
+      # is the ati port installed?
+      checkInstalled ati
+      # check for the existence of xorg backups
+      local ebackups="$(getExistBackups)"
+      [ ! -z "$ebackups" ] && infoRevert $ebackups
+      # switch to ati stuff
+      # conflicting files which ati provides:
+      # libglx_so_ati, libGL_so_1_2_ati
+      (
+      # libglx
+      mv /usr/lib/xorg/modules/extensions/libglx{.so,_so}
+      ln -s libglx_so_ati /usr/lib/xorg/modules/extensions/libglx.so
+      # libGL
+      mv /usr/lib/libGL{.so.1.2.0,_so_1_2}
+      ln -sf libGL_so_1_2_ati /usr/lib/libGL.so.1.2.0
+      doGLsymlinks
+      ) && echo "* ati gl/glx selected"
+      ;;
+    *)
+      infoUsage
+      ;;
+  esac
+  /sbin/ldconfig > /dev/null 2>&1
+}
+
+oldStuff() {
+  for f in /usr/lib/xorg/modules/extensions/libglx_so \
+           /usr/lib/libGL_so_1_2; do
+    [ ! -e $f ] && infoMissing $f
+  done
+  # move the old xorg backups back into place
+  (
+  # libglx
+  rm -f /usr/lib/xorg/modules/extensions/libglx.so
+  mv /usr/lib/xorg/modules/extensions/libglx{_so,.so}
+  # libGL
+  mv /usr/lib/libGL{_so_1_2,.so.1.2.0}
+  rm -f /usr/lib/libGL.so /usr/lib/libGL.so.1
+  doGLsymlinks || echo "done"
+  ) && echo "* xorg gl/glx selected"
+  exit 0
+}
+
+# backup files which are also provided by nvidia and ati ports
+BACKUPS="
+/usr/lib/xorg/modules/extensions/libglx_so
+/usr/lib/libGL_so_1_2
+"
+
+# check for xorg ports; if they are not installed, why is this script even run?
+checkInstalled xorg-server mesa3d
+
+case $1 in
+  status) doStatus ;;
+  use) shift 1; doUse $@ ;;
+  *) infoUsage ;;
+esac
+
+# End of file
