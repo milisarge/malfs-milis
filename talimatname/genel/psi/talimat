@@ -1,0 +1,22 @@
+# Description: Psi qt tabanlı xmpp mesajlaşma aracı
+# URL: http://psi-im.org/
+# Packagers: milisarge
+# Depends on: qca-qt5 qt5
+
+name=psi
+version=1.0
+release=1
+source=(https://sourceforge.net/projects/psi/files/Psi/1.0/$name-$version.tar.xz)
+
+build() {
+  cd psi-$version
+   ./configure --prefix=/usr  \
+   --libdir=/usr/lib \
+   --enable-whiteboarding \
+   --qtselect=5
+  sed -e 's|/usr/X11R6/include|/usr/include/X11|g' -i Makefile
+  make
+  make INSTALL_ROOT=$PKG install
+  install -D -m 0644 $PKG/usr/share/icons/hicolor/48x48/apps/psi.png $PKG/usr/share/pixmaps/psi.png
+  rm -rf $(find $PKG -type f -name 'COPYING') $(find $PKG -type f -name 'README')
+}
