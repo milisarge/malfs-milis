@@ -28,4 +28,5 @@ if [ -f /usr/bin/slim ];then
 fi
 cp ayarlar/kurulum.desktop /root/Desktop/
 cp ayarlar/kurulum.desktop /root/Masaüstü/
+tamir_touchpad
 tamir_masaustu
