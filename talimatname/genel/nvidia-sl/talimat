@@ -1,4 +1,4 @@
-# Description: nVIDIA Linux Display Driver (short lived branch version)
+# Description: nVIDIA Linux Display Driver (kısa dönemli)
 # URL: http://www.nvidia.com/
 # Packager: milisarge
 # Depends on: gtk2 gl-select
@@ -80,12 +80,10 @@ build() {
         $PKG/usr/share/nvidia/nvidia-application-profiles-$version-key-documentation
 
     # kernel modules
-    mkdir -p $PKG/lib/modules/`uname -r`/extra/
-    mkdir -p $PKG/lib/modules/`uname -r`/build/
-    cd kernel
-    IGNORE_CC_MISMATCH=1 make module 
-    install -D -m 0644 nvidia.ko $PKG/lib/modules/`uname -r`/extra/nvidia.ko
-    install -D -m 0644 nvidia-uvm.ko $PKG/lib/modules/`uname -r`/extra/nvidia-uvm.ko
-    install -D -m 0644 nvidia-modeset.ko $PKG/lib/modules/`uname -r`/extra/nvidia-modeset.ko
-    install -D -m 0644 nvidia-drm.ko $PKG/lib/modules/`uname -r`/extra/nvidia-drm.ko
+    #cd kernel
+    #IGNORE_CC_MISMATCH=1 make module 
+    #install -D -m 0644 nvidia.ko $PKG/lib/modules/`uname -r`/extra/nvidia.ko
+    #install -D -m 0644 nvidia-uvm.ko $PKG/lib/modules/`uname -r`/extra/nvidia-uvm.ko
+    #install -D -m 0644 nvidia-modeset.ko $PKG/lib/modules/`uname -r`/extra/nvidia-modeset.ko
+    #install -D -m 0644 nvidia-drm.ko $PKG/lib/modules/`uname -r`/extra/nvidia-drm.ko
 }
