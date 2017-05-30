@@ -1,0 +1,21 @@
+# Description: A simple & beautiful desktop client for WhatsApp Web.
+# URL: https://github.com/gsantner/whatsie
+# Packager: kadanaur
+# Depends on: desktop-file-utils gconf gtk2 gvfs hicolor-icon-theme libgcrypt libgudev libnotify xorg-libxtst nss python xdg-utils 
+
+name=whatsie
+version=2.1.0
+release=1
+source=(https://github.com/gsantner/whatsie/releases/download/v2.1.0/$name-$version-linux-amd64.deb)
+
+build() {
+  ar x $name-$version-linux-amd64.deb
+  bsdtar -xf data.tar.gz -C "$PKG/"
+  mkdir -p "$PKG/usr/bin/"
+  ln -s /opt/$name/$name "$PKG/usr/bin/$name"
+  cd $PKG
+  for d in $(find . -type d); do
+    chmod 755 $d
+  done
+
+}
