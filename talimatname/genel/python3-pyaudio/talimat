@@ -1,0 +1,15 @@
+# Description: PortAudio için python3 kütüphanesi
+# URL: http://people.csail.mit.edu/hubert/pyaudio
+# Packager: milisarge
+# Depends on: portaudio python3-setuptools 
+
+name=python3-pyaudio
+version=0.2.11
+release=1
+source=(https://files.pythonhosted.org/packages/source/P/PyAudio/PyAudio-$version.tar.gz)
+
+build() {
+  cd $SRC/PyAudio-$version
+  python3 setup.py build
+  python3 setup.py install --root=$PKG
+}
