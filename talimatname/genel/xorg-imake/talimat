@@ -1,0 +1,16 @@
+# Description: imake derleme sistemi
+# URL: http://xorg.freedesktop.org
+# Packager: milisarge
+# Depends on: xorg-proto xorg-cf-files
+
+name=xorg-imake
+version=1.0.7
+release=1
+source=(http://xorg.freedesktop.org/releases/individual/util/imake-$version.tar.bz2)
+
+build() {
+	cd imake-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

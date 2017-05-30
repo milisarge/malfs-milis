@@ -1,0 +1,16 @@
+# Description: xorg ayar dosyaları
+# URL: http://xorg.freedesktop.org
+# Packager: milisarge
+# Depends on: xorg-util-macros
+
+name=xorg-cf-files
+version=1.0.6
+release=1
+source=(http://xorg.freedesktop.org/releases/individual/util/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
