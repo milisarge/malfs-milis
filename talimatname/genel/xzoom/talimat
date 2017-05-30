@@ -1,0 +1,20 @@
+# Description: Ekran Büyüteci
+# URL: ftp://sunsite.unc.edu/pub/linux/libs/X/
+# Packager: milisarge
+# Depends on: xorg-imake xorg-libxt xorg-libxext 
+
+name=xzoom
+version=0.3
+release=1
+source=(http://webdiis.unizar.es/pub/unix/X11/$name-$version.tgz
+ftp://ftp.acc.umu.se/mirror/cdimage/snapshot/Debian/pool/main/x/xzoom/xzoom_0.3-23.diff.gz)
+
+build() {
+	cd "$name-$version"
+	gzip -d $SRC/xzoom_0.3-23.diff.gz
+	patch -Np1 < "$SRC/xzoom_0.3-23.diff"
+	xmkmf -a
+	sed -i "s@-O2@$CFLAGS@" ./Makefile
+	make
+	make DESTDIR="$PKG" install
+}

@@ -1,9 +1,9 @@
-# Description: python bilimsel araç kütüphanesi
+# Description: python3 bilimsel araç kütüphanesi
 # URL: http://numpy.scipy.org/
 # Packager: milisarge
-# Depends on: python-setuptools lapack
+# Depends on: python3-setuptools lapack
 
-name=python-numpy
+name=python3-numpy
 version=1.11.2
 release=1
 
@@ -13,6 +13,6 @@ build() {
 	cd numpy-$version
 	export Atlas=None
 	export LDFLAGS="$LDFLAGS -shared"
-	python2 setup.py config_fc --fcompiler=gnu95 build
-	python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root=$PKG --optimize=1
+	python3 setup.py config_fc --fcompiler=gnu95 build
+	python3 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root=$PKG --optimize=1
 }
