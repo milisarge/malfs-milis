@@ -1,0 +1,17 @@
+# Description: HTTP girdilerinde kod hata araştırmaları yapmak için web güvenliği aracı.
+# URL: https://github.com/CoolerVoid/0d1n
+# Packager: kadanur
+# Depends on: 
+
+name=0d1n
+version=2.3
+release=1
+source=(https://github.com/CoolerVoid/0d1n/archive/$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make
+	mkdir -p "$PKG/usr/share/0d1n"
+	install -Dm755 0d1n "$PKG/usr/bin/0d1n"
+	cp -a payloads response2find response_sources tables "$PKG/usr/share/0d1n"
+}
