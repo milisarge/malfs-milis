@@ -1,0 +1,16 @@
+# Description: SSL sunucu analiz uygulaması
+# URL: https://github.com/nabla-c0d3/sslyze/
+# Packager: milisarge
+# Depends on: python-setuptools python python-nassl python-lxml python-typing 
+
+name=sslyze
+version=1.0.0
+release=1
+source=(https://github.com/nabla-c0d3/sslyze/archive/$version.tar.gz)
+
+build() {
+    cd sslyze-$version
+	python2 setup.py build
+	python2 setup.py install --root="$PKG" --optimize=1
+	install -Dm644 README.md "$PKG/usr/share/doc/sslyze/README.md"
+}
