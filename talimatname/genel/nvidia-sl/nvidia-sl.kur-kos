@@ -1,0 +1,2 @@
+mv /lib/modules/`uname -r`/kernel/drivers/zzzz/nvidia.ko  /opt/
+mv /lib/modules/`uname -r`/kernel/drivers/zzzz/nvidia-modeset.ko /opt/

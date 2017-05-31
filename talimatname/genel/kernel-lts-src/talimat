@@ -4,7 +4,7 @@
 
 name=kernel-lts-src
 version=4.4.27
-release=1
+release=2
 
 _version=${version:0:3}
 
