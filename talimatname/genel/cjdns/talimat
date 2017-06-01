@@ -5,22 +5,25 @@
 
 name=cjdns
 hesap=cjdelisle
-version=master
+version=19.1
 release=1
-source=(cjdns.servis cjdns.rc.d cjdns.sh)
+source=(https://github.com/$hesap/$name/archive/$name-v$version.tar.gz
+		cjdns.servis cjdns.rc.d cjdns.sh)
  
 build () {
 	
-	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
-	else
-		cd $DERLEME_KAYNAKDIZIN/$name 
-		git pull
-		cd -
-	fi
+	#if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+	#	git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+	#else
+	#	cd $DERLEME_KAYNAKDIZIN/$name 
+	#	git pull
+	#	cd -
+	#fi
 	
-	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
-	cd $SRC/$name
+	#cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	#cd $SRC/$name
+	
+	cd $name-$name-v$version
 	
 	bash 'do'
 	install -Dm755 cjdroute "$PKG/usr/bin/cjdroute"
