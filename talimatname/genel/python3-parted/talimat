@@ -1,17 +1,17 @@
 # Description: Libparted'e Python bağları
 # URL: https://fedorahosted.org/pyparted/
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: parted python3
 
 name=python3-parted
-version=3.10.0
+version=3.10.7
 release=1
 _name=pyparted
 
-source=( https://fedorahosted.org/releases/p/y/${_name}/${_name}-$version.tar.gz)
+source=(https://github.com/rhinstaller/${_name}/archive/v${version}.tar.gz)
 
 build() {
-cd ${_name}-$version
-python3 setup.py build
-python3 setup.py install --optimize=1 --root=$PKG
+	cd ${_name}-$version
+	python3 setup.py build
+	python3 setup.py install --optimize=1 --root=$PKG
 }
