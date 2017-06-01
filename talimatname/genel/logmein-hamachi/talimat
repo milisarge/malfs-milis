@@ -11,10 +11,7 @@ source=(https://www.vpn.net/installers/$name-$version-x64.tgz
 
 build() {
 
- 
-
-cd "${SRC}"/logmein-hamachi-2.1.0.174-x64
-
+	cd "${SRC}"/logmein-hamachi-2.1.0.174-x64
 	# Directories
 	install -d "${PKG}"/usr/bin
 	install -d "${PKG}"/opt/${name}/bin
