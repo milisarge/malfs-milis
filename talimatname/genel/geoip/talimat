@@ -1,0 +1,22 @@
+# Description: cografi ip çözücü veritabanı uygulaması
+# URL: http://www.maxmind.com/app/c
+# Packager:	milisarge
+# Depends on: geoip-database
+
+name=geoip
+version=1.6.10
+release=1
+source=(https://github.com/maxmind/${name}-api-c/archive/v${version}.tar.gz)
+
+build() {
+	cd geoip-api-c-$version
+
+	autoreconf -vi
+
+	./configure \
+		--sysconfdir=/etc/geoip \
+		--prefix=/usr \
+		--mandir=/usr/man
+	make
+	make DESTDIR=$PKG install
+}
