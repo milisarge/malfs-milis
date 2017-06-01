@@ -4,19 +4,15 @@
 # Depends on:  gnutls gmp libxml2
 
 name=aria2
-version=1.19.2
+version=1.32.0
 release=1
-source=(https://github.com/tatsuhiro-t/$name/releases/download/release-$version/$name-$version.tar.bz2)
+source=(https://github.com/aria2/aria2/releases/download/release-$version/$name-$version.tar.xz)
 
 build() {
-
     cd $name-$version
-
     ./configure \
 	   --prefix=/usr \
 	   --mandir=$PKG/usr/man
-
     make
     make prefix=$PKG/usr install
-
 }
