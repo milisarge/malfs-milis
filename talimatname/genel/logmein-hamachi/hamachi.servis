@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# /etc/rc.d/hamachi: start/stop hamachi daemon
+#
+
+case $1 in
+start)
+	/usr/bin/hamachi
+	;;
+stop)
+	killall -q hamachi
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+echo "usage: $0 [start|stop|restart]"
+	;;
+esac
+
+# End of file

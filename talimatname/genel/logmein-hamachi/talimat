@@ -1,0 +1,34 @@
+# Description: Bir vpn hizmeti.
+# URL: https://www.vpn.net/linux
+# Packager: kadanur
+# Depends on: 
+
+name=logmein-hamachi
+version=2.1.0.174
+release=1.0
+source=(https://www.vpn.net/installers/$name-$version-x64.tgz 
+		hamachi.servis)
+
+build() {
+
+ 
+
+cd "${SRC}"/logmein-hamachi-2.1.0.174-x64
+
+	# Directories
+	install -d "${PKG}"/usr/bin
+	install -d "${PKG}"/opt/${name}/bin
+	install -d "${PKG}"/usr/share/licenses/${name}
+	# Files
+	install -m 755 hamachid "${PKG}"/opt/${name}/bin
+	install -m 755 dnsup "${PKG}"/opt/${name}/bin
+	install -m 755 dnsdown "${PKG}"/opt/${name}/bin
+	install -m 755 uninstall.sh "${PKG}"/opt/${name}
+	install -m 444 README "${PKG}"/opt/${name}
+	install -m 444 LICENSE "${PKG}"/opt/${name}
+	install -m 444 CHANGES "${PKG}"/opt/${name}
+	ln -sf "/opt/$name/bin/hamachid" "${PKG}"/usr/bin/hamachi
+	install -d $PKG/etc/rc.d/init.d
+	cp $SRC/hamachi.servis  $PKG/etc/rc.d/init.d/hamachid
+
+}
