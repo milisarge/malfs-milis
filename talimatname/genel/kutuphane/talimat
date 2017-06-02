@@ -7,12 +7,14 @@ name=kutuphane
 version=1.0
 release=1
 
-source=(https://github.com/milisarge/KutuphaneOtomasyonu/archive/$version.tar.gz)
+source=(https://github.com/milisarge/KutuphaneOtomasyonu/archive/$version.tar.gz
+		baglanti.java)
 
 build() {
 	cd KutuphaneOtomasyonu-$version
 	export JAVA_HOME=/opt/jdk
 	export ANT_HOME="/opt/ant"
+	cp -f $SRC/baglanti.java src/kutuphane/otomasyonu/
 	/opt/ant/bin/ant
 	install -d $PKG/opt
 	install -d $PKG/usr/bin
