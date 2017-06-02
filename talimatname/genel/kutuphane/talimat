@@ -1,0 +1,23 @@
+# Description: Javada yazılmış bir kütüphane uygulaması - Ebubekir Bastama
+# URL: https://github.com/ebubekirbastama/KutuphaneOtomasyonu
+# Packager: milisarge
+# Depends on: apache-ant openjdk java-mysql mariadb xorg-server
+
+name=kutuphane
+version=1.0
+release=1
+
+source=(https://github.com/milisarge/KutuphaneOtomasyonu/archive/$version.tar.gz)
+
+build() {
+	cd KutuphaneOtomasyonu-$version
+	export JAVA_HOME=/opt/jdk
+	export ANT_HOME="/opt/ant"
+	/opt/ant/bin/ant
+	install -d $PKG/opt
+	install -d $PKG/usr/bin
+	cp  dist/Kutuphane_Otomasyonu.jar $PKG/opt/
+	cp kutuphane $PKG/usr/bin/
+	cp kutuphane_vt_yukle $PKG/opt/
+	cp -r Sqldizini $PKG/opt/
+}

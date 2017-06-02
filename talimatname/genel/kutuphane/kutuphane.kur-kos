@@ -1,0 +1,3 @@
+cd /opt
+./kutuphane_vt_yukle
+cd -
