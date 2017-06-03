@@ -75,7 +75,7 @@ build() {
   _kernver="${version}-milis-lts"
   mkdir -p "${PKG}"/{lib/modules,lib/firmware,boot}
   make INSTALL_MOD_PATH="${PKG}" modules_install
-  cp arch/$KARCH/boot/bzImage "${PKG}/boot/vmlinuz-${name}"
+  cp arch/$KARCH/boot/bzImage "${PKG}/boot/kernel-${version}"
 
   # add vmlinux
   install -D -m644 vmlinux "${PKG}/usr/src/linux-${_kernver}/vmlinux"
