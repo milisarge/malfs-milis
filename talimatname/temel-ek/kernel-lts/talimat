@@ -3,248 +3,222 @@
 # Packagers: milisarge
 
 name=kernel-lts
-version=4.4.27
-_srcname=linux-4.4
-release=3
+_kernelname=${name#linux}
+_basekernel=4.10
+version=4.10.9
+release=1
 
-_version=${version:0:3}
-alias=(linux-lts)
-
-# Virtualbox
-vb_version=5.1.8
-[ "`uname -m`" == "i686"   ] && _VBARCH=x86
-[ "`uname -m`" == "x86_64"   ] && _VBARCH=amd64
-
-# Broadcom
-wl_version=6.30.223.271
-_wlarch=_64
-
-source=(\
-http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_version}.tar.xz
-https://www.kernel.org/pub/linux/kernel/v4.x/patch-$version.xz
-https://sourceforge.net/projects/kaosx/files/sources/virtualbox-modules/vbox-kernel-module-src-${vb_version}.tar.xz
-http://www.broadcom.com/docs/linux_sta/hybrid-v35${_wlarch}-nodebug-pcoem-${wl_version//./_}.tar.gz
-broadcom-wl.modprobe.d broadcom-wl.license.patch wl_linux.c.patch
-aufs4-loopback.patch
-aufs4-base.patch
-aufs4-mmap.patch
-aufs4-standalone.patch
-aufs4-kbuild.patch
-aufs4.4-20160912.patch
-lockdep-debug.patch
-tmpfs-idr.patch
-vfs-ino.patch
-aufs_type.h
-$name.config_64
-virtualbox.conf
-virtualbox-modules-depmod.patch
-https://github.com/milisarge/aufs/archive/master.tar.gz)
-
-build(){
-
-cd linux-${_version}
-
-cp -r $SRC/aufs-master $SRC/fs/
-
-if [ -f $SRC/patch-$version.xz ]; then
-	xz -d -c  $SRC/patch-$version.xz | patch -Np1
-fi
-
-#aufs patches for Live:
-patch -p1 -i "${SRC}/aufs4.4-20160912.patch"
-patch -p1 -i "${SRC}/aufs4-base.patch"
-patch -p1 -i "${SRC}/aufs4-kbuild.patch"
-patch -p1 -i "${SRC}/aufs4-loopback.patch"
-patch -p1 -i "${SRC}/aufs4-mmap.patch"
-patch -p1 -i "${SRC}/aufs4-standalone.patch"
-patch -p1 -i "${SRC}/lockdep-debug.patch"
-patch -p1 -i "${SRC}/tmpfs-idr.patch"
-patch -p1 -i "${SRC}/vfs-ino.patch"
-
-make mrproper
-cp $SRC/kernel-lts.config_64 ./.config
-make
-cp .config $SRC/$name.config_64
-
-## Modules
-#
-# Kernel modules
-cd $SRC/linux-${_version}
-make INSTALL_MOD_PATH=$PKG modules_install
-
-KERNEL_VERSION="${version}-milis-lts"
-
-# Module broadcom is broken on 32 bits machine
-if [ "$PKGMK_ARCH" == "x86_64" ]; then
-  cd $SRC
-  bsdtar xf $DERLEME_KAYNAKDIZIN/hybrid-v35${_wlarch}-nodebug-pcoem-${wl_version//./_}.tar.gz
-  patch -p1 -i broadcom-wl.license.patch
-  patch -p1 -i wl_linux.c.patch
-
-  sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" \
-	-i src/wl/sys/wl_linux.c
-  BUILD_NOPEDANTIC=1 make -C $SRC/linux-${_version} M=`pwd`
-  install -m 0644 -D wl.ko $PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/wl.ko
-  install -Dm644 broadcom-wl.modprobe.d $PKG/etc/modprobe.d/broadcom-wl.conf
-fi
-
-for i in *.ko
-do
-	install -D -m0644 $i $PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/$i
-done
-
-# Module virtualbox
-cd vbox-kernel-module-src-5.1.8
-patch -p0 -i $SRC/virtualbox-modules-depmod.patch
-KERNELRELEASE=${version}
-KERN_DIR=$SRC/linux-${_version} make
-
-mkdir -p $PKG/etc/sysconfig/modules.d
-install -D -m644 $SRC/virtualbox.conf $PKG/etc/sysconfig/modules.d/virtualbox.conf
-
-for i in *.ko
-do
-      install -D -m0644 $i $PKG/lib/modules/${KERNEL_VERSION}/kernel/drivers/zzzz/$i
-      
-done
-
-# depmod needed
-depmod -b $PKG -a ${KERNEL_VERSION}
-
-install -D -m 644 $SRC/aufs_type.h "${PKG}/usr/include/linux/aufs_type.h"
-
-# Install config and kernel files
-cd $SRC/linux-${_version}
-
-mkdir -p $PKG/boot
-
-cp  System.map $PKG/boot/System_64.map-$version
-cp  .config  $PKG/boot/config_64-$version
-cp  arch/x86_64/boot/bzImage $PKG/boot/kernel-$version 
-      
-#kaynak basliklarin ayarlanmasi
-KARCH=x86
-cd "${SRC}/${_srcname}"
-install -D -m644 Makefile \
-"${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/Makefile"
-install -D -m644 kernel/Makefile \
-"${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/kernel/Makefile"
-install -D -m644 .config \
-"${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/.config"
-
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/include"
-
-for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-media net pcmcia scsi soc sound trace uapi video xen; do
-cp -a include/${i} "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/include/"
-done
-
-# copy arch includes for external modules
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/arch/x86"
-cp -a arch/x86/include "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/arch/x86/"
-
-# copy files necessary for later builds, like nvidia and vmware
-cp Module.symvers "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build"
-cp -a scripts "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build"
-
-# fix permissions on scripts dir
-chmod og-w -R "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/scripts"
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/.tmp_versions"
-
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/arch/${KARCH}/kernel"
-
-cp arch/${KARCH}/Makefile "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/arch/${KARCH}/"
-
-cp arch/${KARCH}/kernel/asm-offsets.s "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/arch/${KARCH}/kernel/"
-
-# add docbook makefile
-install -D -m644 Documentation/DocBook/Makefile \
-"${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/Documentation/DocBook/Makefile"
-
-# add dm headers
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/md"
-cp drivers/md/*.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/md"
-
-# add inotify.h
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/include/linux"
-cp include/linux/inotify.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/include/linux/"
-
-# add wireless headers
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/net/mac80211/"
-cp net/mac80211/*.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/net/mac80211/"
-
-# add dvb headers for external modules
-# in reference to:
-# http://bugs.archlinux.org/task/9912
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/dvb-core"
-cp drivers/media/dvb-core/*.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/dvb-core/"
-# and...
-# http://bugs.archlinux.org/task/11194
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/include/config/dvb/"
-cp include/config/dvb/*.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/include/config/dvb/"
-
-# add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
-# in reference to:
-# http://bugs.archlinux.org/task/13146
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/dvb-frontends/"
-cp drivers/media/dvb-frontends/lgdt330x.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/dvb-frontends/"
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/i2c/"
-cp drivers/media/i2c/msp3400-driver.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/i2c/"
-
-# add dvb headers
-# in reference to:
-# http://bugs.archlinux.org/task/20402
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/usb/dvb-usb"
-cp drivers/media/usb/dvb-usb/*.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/usb/dvb-usb/"
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/dvb-frontends"
-cp drivers/media/dvb-frontends/*.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/dvb-frontends/"
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/tuners"
-cp drivers/media/tuners/*.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/drivers/media/tuners/"
-
-# add xfs and shmem for aufs building
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/fs/xfs"
-mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/mm"
-# removed in 3.17 series
-# cp fs/xfs/xfs_sb.h "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/fs/xfs/xfs_sb.h"
-
-# copy in Kconfig files
-for i in $(find . -name "Kconfig*"); do
-mkdir -p "${PKG}"/usr/lib/modules/${KERNEL_VERSION}/build/`echo ${i} | sed 's|/Kconfig.*||'`
-cp ${i} "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/${i}"
-done
-
-# add objtool for external module building and enabled VALIDATION_STACK option
-if [ -f tools/objtool/objtool ];  then
-  mkdir -p "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/tools/objtool"
-  cp -a tools/objtool/objtool ${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/tools/objtool/ 
-fi
-
-chown -R root.root "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build"
-find "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build" -type d -exec chmod 755 {} \;
-
-# strip scripts directory
-find "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-case "$(file -bi "${binary}")" in
-  *application/x-sharedlib*) # Libraries (.so)
-	/usr/bin/strip ${STRIP_SHARED} "${binary}";;
-  *application/x-archive*) # Libraries (.a)
-	/usr/bin/strip ${STRIP_STATIC} "${binary}";;
-  *application/x-executable*) # Binaries
-	/usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-esac
-done
-
-# remove unneeded architectures
-rm -rf "${PKG}"/usr/lib/modules/${KERNEL_VERSION}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
-
-# remove a files already in linux-docs package
-rm -f "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
-rm -f "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
-rm -f "${PKG}/usr/lib/modules/${KERNEL_VERSION}/build/Documentation/kbuild/Kconfig.select-break"
+source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
+        http://www.kernel.org/pub/linux/kernel/v4.x/patch-${version}.xz
+        config
+        aufs patches
+        aufs4-loopback.patch
+        aufs4-base.patch
+        aufs4-mmap.patch
+        aufs4-standalone.patch
+        aufs4-kbuild.patch
+        aufs4.patch
+        config.aufs
+        lockdep-debug.patch
+        tmpfs-idr.patch
+        vfs-ino.patch
+        change-default-console-loglevel.patch
+        i8042-fix-aliases.patch)
 
 
+build() {
+  cd "${SRC}/linux-${_basekernel}"
 
-# Firmware are in linux-firmware
-rm -rf $PKG/lib/firmware
+  # güncel kernel yama
+  patch -p1 -i "${SRC}/patch-${version}"
+  
+  patch -p1 -i "${SRC}/i8042-fix-aliases.patch"
+  
+  #çalışan sistem aufs yamaları
+  patch -p1 -i "${SRC}/aufs4.patch"
+  patch -p1 -i "${SRC}/aufs4-base.patch"
+  patch -p1 -i "${SRC}/aufs4-kbuild.patch"
+  patch -p1 -i "${SRC}/aufs4-loopback.patch"
+  patch -p1 -i "${SRC}/aufs4-mmap.patch"
+  patch -p1 -i "${SRC}/aufs4-standalone.patch"
+  patch -p1 -i "${SRC}/lockdep-debug.patch"
+  patch -p1 -i "${SRC}/tmpfs-idr.patch"
+  patch -p1 -i "${SRC}/vfs-ino.patch"
+  
+  cat "${SRC}/config" > ./.config
+
+  cat "${SRC}/config.aufs" >> ./.config
+
+  if [ "${_kernelname}" != "" ]; then
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
+  fi
+
+  # set extraversion to release
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -${release}|" Makefile
+
+  cd "${SRC}/linux-${_basekernel}"
+  
+  export KBUILD_BUILD_USER="milisarge"
+  export KBUILD_BUILD_HOST="`uname -m`.milislinux.org"
+  
+  # get kernel version
+  make prepare
+  
+  # rewrite configuration
+  yes "" | make config >/dev/null
+
+  # build!
+  make ${MAKEFLAGS} bzImage modules
+
+  KARCH=x86
+
+  # get kernel version
+  _kernver="$(make kernelrelease)"
+
+  mkdir -p "${PKG}"/{lib/modules,lib/firmware,boot}
+  make INSTALL_MOD_PATH="${PKG}" modules_install
+  cp arch/$KARCH/boot/bzImage "${PKG}/boot/vmlinuz-${name}"
+
+  # add vmlinux
+  install -D -m644 vmlinux "${PKG}/usr/src/linux-${_kernver}/vmlinux"
+
+  # remove build and source links
+  rm -f "${PKG}"/lib/modules/${_kernver}/{source,build}
+  # remove the firmware
+  rm -rf "${PKG}/lib/firmware"
+  # gzip -9 all modules to save 100MB of space
+  find "${PKG}" -name '*.ko' -exec gzip -9 {} \;
+  # make room for external modules
+  ln -s "../extramodules-${_basekernel}${_kernelname:-}" "${PKG}/lib/modules/${_kernver}/extramodules"
+  # add real version for building modules and running depmod from post_install/upgrade
+  mkdir -p "${PKG}/lib/modules/extramodules-${_basekernel}${_kernelname:-}"
+  echo "${_kernver}" > "${PKG}/lib/modules/extramodules-${_basekernel}${_kernelname:-}/version"
+  
+  #linux-headers
+
+  install -dm755 "${PKG}/lib/modules/${_kernver}"
+
+  cd "${PKG}/lib/modules/${_kernver}"
+  ln -sf ../../../usr/src/linux-${_kernver} build
+
+  cd "${SRC}/linux-${_basekernel}"
+  install -D -m644 Makefile \
+    "${PKG}/usr/src/linux-${_kernver}/Makefile"
+  install -D -m644 kernel/Makefile \
+    "${PKG}/usr/src/linux-${_kernver}/kernel/Makefile"
+  install -D -m644 .config \
+    "${PKG}/usr/src/linux-${_kernver}/.config"
+
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/include"
+
+  for i in acpi asm-generic config crypto drm generated linux math-emu \
+    media net pcmcia scsi sound trace uapi video xen; do
+    cp -a include/${i} "${PKG}/usr/src/linux-${_kernver}/include/"
+  done
+
+  # copy arch includes for external modules
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/arch/x86"
+  cp -a arch/x86/include "${PKG}/usr/src/linux-${_kernver}/arch/x86/"
+
+  # copy files necessary for later builds, like nvidia and vmware
+  cp Module.symvers "${PKG}/usr/src/linux-${_kernver}"
+  cp -a scripts "${PKG}/usr/src/linux-${_kernver}"
+
+  # fix permissions on scripts dir
+  chmod og-w -R "${PKG}/usr/src/linux-${_kernver}/scripts"
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/.tmp_versions"
+
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/arch/${KARCH}/kernel"
+
+  cp arch/${KARCH}/Makefile "${PKG}/usr/src/linux-${_kernver}/arch/${KARCH}/"
+
+  cp arch/${KARCH}/kernel/asm-offsets.s "${PKG}/usr/src/linux-${_kernver}/arch/${KARCH}/kernel/"
+
+  # add headers for lirc package
+  # pci
+  for i in bt8xx cx88 saa7134; do
+    mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/pci/${i}"
+    cp -a drivers/media/pci/${i}/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/pci/${i}"
+  done
+  # usb
+  for i in cpia2 em28xx pwc; do
+    mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/usb/${i}"
+    cp -a drivers/media/usb/${i}/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/usb/${i}"
+  done
+  # i2c
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c"
+  cp drivers/media/i2c/*.h  "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c/"
+  for i in cx25840; do
+    mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c/${i}"
+    cp -a drivers/media/i2c/${i}/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c/${i}"
+  done
+
+  # add docbook makefile
+  install -D -m644 Documentation/DocBook/Makefile \
+    "${PKG}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
+
+  # add dm headers
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/md"
+  cp drivers/md/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/md"
+
+  # add inotify.h
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/include/linux"
+  cp include/linux/inotify.h "${PKG}/usr/src/linux-${_kernver}/include/linux/"
+
+  # add wireless headers
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/net/mac80211/"
+  cp net/mac80211/*.h "${PKG}/usr/src/linux-${_kernver}/net/mac80211/"
+
+  # add dvb headers for external modules
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/dvb-core"
+  cp drivers/media/dvb-core/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/dvb-core/"
+  # and...
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/include/config/dvb/"
+  cp include/config/dvb/*.h "${PKG}/usr/src/linux-${_kernver}/include/config/dvb/"
+
+  # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
+  cp drivers/media/dvb-frontends/lgdt330x.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
+  cp drivers/media/i2c/msp3400-driver.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c/"
+
+  # add dvb headers
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/usb/dvb-usb"
+  cp drivers/media/usb/dvb-usb/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/usb/dvb-usb/"
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends"
+  cp drivers/media/dvb-frontends/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/tuners"
+  cp drivers/media/tuners/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/tuners/"
+
+  # add xfs and shmem for aufs building
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/fs/xfs/libxfs"
+  mkdir -p "${PKG}/usr/src/linux-${_kernver}/mm"
+  cp fs/xfs/libxfs/xfs_sb.h "${PKG}/usr/src/linux-${_kernver}/fs/xfs/libxfs/xfs_sb.h"
+
+  #aufs4-util need
+  sed -i "s:__user::g" "${PKG}/usr/src/linux-${_kernver}/include/uapi/linux/aufs_type.h"
+
+  # copy in Kconfig files
+  for i in `find . -name "Kconfig*"`; do
+    mkdir -p "${PKG}"/usr/src/linux-${_kernver}/`echo ${i} | sed 's|/Kconfig.*||'`
+    cp ${i} "${PKG}/usr/src/linux-${_kernver}/${i}"
+  done
+
+  chown -R root.root "${PKG}/usr/src/linux-${_kernver}"
+  find "${PKG}/usr/src/linux-${_kernver}" -type d -exec chmod 755 {} \;
+
+  # strip scripts directory
+  find "${PKG}/usr/src/linux-${_kernver}/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
+    case "$(file -bi "${binary}")" in
+      *application/x-sharedlib*) # Libraries (.so)
+        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
+      *application/x-archive*) # Libraries (.a)
+        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
+      *application/x-executable*) # Binaries
+        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
+    esac
+  done
+
+  # remove unneeded architectures
+  rm -rf "${PKG}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 
 }
