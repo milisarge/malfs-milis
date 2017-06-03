@@ -31,7 +31,7 @@ build() {
   cp "${SRC}/patch-$version.xz" .
   unxz patch-$version.xz
   # güncel kernel yama
-  patch -p1 -i "${SRC}/patch-${version}"
+  patch -p1 -i "patch-${version}"
   
   patch -p1 -i "${SRC}/i8042-fix-aliases.patch"
   
