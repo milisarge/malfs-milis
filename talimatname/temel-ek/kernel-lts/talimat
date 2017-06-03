@@ -26,8 +26,9 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
 
 
 build() {
+  unxz patch-$version.xz
   cd "${SRC}/linux-${_basekernel}"
-
+  
   # güncel kernel yama
   patch -p1 -i "${SRC}/patch-${version}"
   
