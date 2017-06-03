@@ -1,29 +1,19 @@
-# Description: The linux kernel firmware set of files. More and more hardware requires this package
-# Depends on: git
+# Description: Kernel için firmware ikilileri
+# URL:         https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
+# Packager:    milisarge
+# Depends on:
+
 name=linux-firmware
-version=20150207
+version=20161122
 release=1
+source=(http://distfiles.serverop.de/$name-$version.tar.xz)
 
 build() {
-git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git \
-firmware
-find firmware -name '*.c' \
--or -name '*.h' \
--or -name '*.asm' \
--or -name 'Makefile' \
--or -name 'configure' \
--or -name '*.S' \
--or -name "README" \
--or -name '*.pl' \
--or -name '*.pst' \
--or -name '*.txt' | xargs rm -rv
-find firmware \( -type d -and -empty \) | xargs rm -rv
-rm -rf firmware/cis/src
-rm -rf firmware/usbdux
-rm -rf firmware/carl9170fw
-rm -rf firmware/.git
-mkdir $PKG/lib
-cp -a firmware \
-$PKG/lib
+    cd $name-$version
 
+    # Build/Package
+    make DESTDIR=$PKG FIRMWAREDIR=/lib/firmware install
+
+    # Cleanup
+    rm $PKG/lib/firmware/{Makefile,README,configure,GPL-{2,3}}
 }

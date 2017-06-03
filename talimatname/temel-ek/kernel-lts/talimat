@@ -4,7 +4,6 @@
 # Depends on: linux-firmware intel-ucode
 
 name=kernel-lts
-_kernelname=${name#linux}
 _basekernel=4.10
 version=4.10.9
 release=1
@@ -51,10 +50,6 @@ build() {
 
   cat "${SRC}/config.aufs" >> ./.config
 
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-  fi
-
   # set extraversion to release
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${release}|" Makefile
 
@@ -75,8 +70,9 @@ build() {
   KARCH=x86
 
   # get kernel version
-  _kernver="$(make kernelrelease)"
-
+  #_kernver="$(make kernelrelease)"
+  #KERNEL_VERSION="${version}-milis-lts"
+  _kernver="${version}-milis-lts"
   mkdir -p "${PKG}"/{lib/modules,lib/firmware,boot}
   make INSTALL_MOD_PATH="${PKG}" modules_install
   cp arch/$KARCH/boot/bzImage "${PKG}/boot/vmlinuz-${name}"
@@ -90,11 +86,6 @@ build() {
   rm -rf "${PKG}/lib/firmware"
   # gzip -9 all modules to save 100MB of space
   find "${PKG}" -name '*.ko' -exec gzip -9 {} \;
-  # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:-}" "${PKG}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${PKG}/lib/modules/extramodules-${_basekernel}${_kernelname:-}"
-  echo "${_kernver}" > "${PKG}/lib/modules/extramodules-${_basekernel}${_kernelname:-}/version"
   
   #linux-headers
 
