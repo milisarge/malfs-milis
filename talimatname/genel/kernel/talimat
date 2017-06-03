@@ -50,8 +50,9 @@ build() {
 
   cat "${SRC}/config.aufs" >> ./.config
 
+  # kernel sürümüne devir sayısı eklemek için
   # set extraversion to release
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${release}|" Makefile
+  #sed -ri "s|^(EXTRAVERSION =).*|\1 -${release}|" Makefile
 
   cd "${SRC}/linux-${_basekernel}"
   
