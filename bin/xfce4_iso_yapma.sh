@@ -2,6 +2,7 @@
 # lfs dizini oluşturup ortama girdikten sonra bu betiği çalıştırabilirsiniz,bütün ortam içi işlemler yapılacaktır.
 masaustu="xfce4"
 mps -GG && mps -G
+mps kur kernel-lts
 mps -kuruld /root/talimatname/temel-ek/derleme.sira
 mps kur $masaustu
 mps -kurul /root/ayarlar/gerekli_programlar
