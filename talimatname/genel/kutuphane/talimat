@@ -18,6 +18,7 @@ build() {
 	/opt/ant/bin/ant
 	install -d $PKG/opt
 	install -d $PKG/usr/bin
+	install -d $PKG/etc
 	cp  dist/Kutuphane_Otomasyonu.jar $PKG/opt/
 	install -m 755 kutuphane $PKG/usr/bin/
 	install -m 644 kutup.conf $PKG/etc/
