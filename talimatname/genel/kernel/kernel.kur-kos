@@ -10,4 +10,5 @@ if [ -f initramfs ];then
 	mv initramfs initramfs_eski
 fi
 dracut -N --force --xz --omit systemd --add-drivers "ahci" -f /boot/initramfs $surum-$sonek
+os-prober
 grub-mkconfig -o /boot/grub/grub.cfg
