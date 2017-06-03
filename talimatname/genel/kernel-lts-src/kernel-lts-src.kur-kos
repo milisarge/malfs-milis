@@ -1,2 +1,0 @@
-rm -rf /lib/modules/`uname -r`/build
-ln -s /usr/src/linux-4.4 /lib/modules/`uname -r`/build
