@@ -5,7 +5,7 @@
 
 name=kutuphane
 version=1.0
-release=1
+release=2
 
 source=(https://github.com/milisarge/KutuphaneOtomasyonu/archive/$version.tar.gz
 		baglanti.java)
