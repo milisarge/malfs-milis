@@ -1,6 +1,7 @@
 # Description: uzun donem kararli kernel surumu
 # URL: http://www.kernel.org
 # Packagers: milisarge
+# Depends on: linux-firmware
 
 name=kernel-lts
 _kernelname=${name#linux}

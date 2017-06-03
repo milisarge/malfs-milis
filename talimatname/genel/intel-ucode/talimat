@@ -1,0 +1,20 @@
+# Description:	Microcode update for Intel CPUs
+# URL:		http://downloadcenter.intel.com/SearchResult.aspx?lang=eng&keyword=%22microcode%22
+# Packager:	milisarge
+# Depends on: 
+
+name=intel-ucode
+version=2.1.12
+release=1
+dlVersion=${version%.*}-${version##*.}
+source=(
+http://pkgs.fedoraproject.org/repo/pkgs/microcode_ctl/microcode_ctl-${dlVersion}.tar.xz/sha512/3c19e8c6297e7f5930c7836e60669662877ec86c93d3b6487d7d7da568391cb8e0d523484beeb8ef9498aa1bbace81acce42c2877794cec34224f27b179081de/microcode_ctl-${dlVersion}.tar.xz
+)
+
+build() {
+pwd
+ls -la
+	cd microcode_ctl-${dlVersion}
+	make all
+	install -Dt $PKG/lib/firmware/intel-ucode/ intel-ucode/*
+}
