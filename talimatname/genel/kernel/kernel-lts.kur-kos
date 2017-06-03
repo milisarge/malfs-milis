@@ -1,6 +1,6 @@
 #!/bin/bash
-surum=4.10.9
-sonek=milis-lts
+surum=4.10.17
+sonek=milis
 cd /boot
 if [ -f kernel ];then
 	rm kernel
@@ -9,5 +9,5 @@ ln -s kernel-$surum kernel
 if [ -f initramfs ];then
 	mv initramfs initramfs_eski
 fi
-dracut -N --force --xz --omit systemd  /boot/initramfs $surum-$sonek
+dracut -N --force --xz --omit systemd --add-drivers "ahci" -f /boot/initramfs $surum-$sonek
 grub-mkconfig -o /boot/grub/grub.cfg
