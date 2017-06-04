@@ -1,1 +1,1 @@
-getent group "bumblebee" &>/dev/null || groupadd -g 56 bumblebee
+getent group "bumblebee" &>/dev/null || groupadd -g 59 bumblebee
