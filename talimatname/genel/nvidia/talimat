@@ -1,9 +1,9 @@
-# Description: nVIDIA Linux Display Driver (kısa dönemli)
+# Description: nVIDIA Linux Display Driver
 # URL: http://www.nvidia.com/
 # Packager: milisarge
-# Depends on: gtk2 gl-select kernel-lts-src
+# Depends on: gtk2 gl-select kernel
 
-name=nvidia-sl
+name=nvidia
 version=381.22
 release=1
 source=(http://us.download.nvidia.com/XFree86/Linux-x86_64/$version/NVIDIA-Linux-x86_64-$version-no-compat32.run \
@@ -80,17 +80,25 @@ build() {
         $PKG/usr/share/nvidia/nvidia-application-profiles-$version-key-documentation
 
     # kernel modules
-    cd /lib/modules/`uname -r`/build
-	gunzip < /proc/config.gz > .config
-	make oldconfig
-	make prepare
-	make scripts
-	cp /lib/modules/`uname -r`/build/include/generated/autoconf.h /lib/modules/`uname -r`/build/include/linux/autoconf.h
-	cd -
+    #cd /lib/modules/`uname -r`/build
+	#gunzip < /proc/config.gz > .config
+	#make oldconfig
+	#make prepare
+	#make scripts
+	#cp /lib/modules/`uname -r`/build/include/generated/autoconf.h /lib/modules/`uname -r`/build/include/linux/autoconf.h
+	#cd -
     cd kernel
+    
+    #make SYSSRC=/lib/modules/"`uname -r`/build" module
+    rm -rf /lib/modules/`uname -r`/build/vmlinux
     IGNORE_CC_MISMATCH=1 make module 
     install -D -m 0644 nvidia.ko $PKG/lib/modules/`uname -r`/extra/nvidia.ko
     install -D -m 0644 nvidia-uvm.ko $PKG/lib/modules/`uname -r`/extra/nvidia-uvm.ko
     install -D -m 0644 nvidia-modeset.ko $PKG/lib/modules/`uname -r`/extra/nvidia-modeset.ko
     install -D -m 0644 nvidia-drm.ko $PKG/lib/modules/`uname -r`/extra/nvidia-drm.ko
+    
+    gzip "${PKG}/lib/modules/`uname -r`/extra/"*.ko
+    install -d -m755 "${PKG}/etc/modprobe.d"
+    echo "blacklist nouveau" >> "${PKG}/etc/modprobe.d/nouveau_blacklist.conf"
+
 }
