@@ -1,0 +1,28 @@
+# Description: opengl kullanan bir uygulamadan opengl ekran kartına 3d komut iletir
+# URL:         http://virtualgl.org
+# Packager:    milisarge
+# Depends on:  xorg-libxv xorg-glu libjpeg-turbo xorg-xcb-util-keysyms
+
+name=virtualgl
+version=2.5.2
+release=1
+source=(https://github.com/VirtualGL/$name/archive/$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	 cmake . \
+		-DCMAKE_BINARY_DIR=/usr \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_DEFAULT_LIBDIR=lib \
+		-DCMAKE_SYSTEM_PROCESSOR=x86_64
+
+	make
+	make DESTDIR=$PKG install
+
+	rm -rf $PKG/usr/share
+
+	rm -rf $PKG/usr/bin/.vglrun.vars64
+
+	mv $PKG/usr/bin/glxinfo $PKG/usr/bin/vglxinfo
+}

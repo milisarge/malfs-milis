@@ -1,0 +1,18 @@
+# Description: XCB araç kütüphanesi
+# URL: http://xcb.freedesktop.org
+# Packager:    milisarge
+# Depends on: libxcb
+
+name=xorg-xcb-util-keysyms
+version=0.4.0
+release=1
+source=(http://xcb.freedesktop.org/dist/xcb-util-keysyms-$version.tar.bz2)
+
+build() {
+	cd xcb-util-keysyms-$version
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+}
