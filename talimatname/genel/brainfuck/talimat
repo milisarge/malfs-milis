@@ -1,0 +1,15 @@
+# Description: brainfuck dili derleyicisi
+# URL: https://github.com/benjamin-james/brainfuck
+# Packager: milisarge
+# Depends on: 
+
+name=brainfuck
+version=0.1
+release=1
+source=(https://github.com/benjamin-james/brainfuck/archive/0.1.tar.gz)
+
+build() {
+	cd "${name}-${version}"
+	make
+	make DESTDIR="${PKG}/" PREFIX="/usr" install
+}
