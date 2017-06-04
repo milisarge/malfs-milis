@@ -1,0 +1,15 @@
+# Description: açık kaynak assembler çözücü platformu
+# URL: http://www.capstone-engine.org/
+# Packager: milisarge
+# Depends on: 
+
+name=capstone
+version=4.0-alpha5
+release=1
+source=(https://github.com/aquynh/capstone/archive/${version}.tar.gz)
+
+build() {
+  cd ${name}-${version}
+  make
+  make DESTDIR="${PKG}" install
+}

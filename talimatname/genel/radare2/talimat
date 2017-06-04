@@ -1,0 +1,22 @@
+# Description: açık kaynak assembler çözücü,hata ayıklayıcı ve ikili okuyucu çatı uygulaması
+# URL: https://radare.org
+# Packager: milisarge
+# Depends on: capstone libzip 
+
+name=radare2
+version=1.5.0
+release=1
+source=(https://github.com/radare/radare2/archive/$version.tar.gz)
+
+build() {
+  cd ${name}-${version}
+
+  ./configure --prefix=/usr \
+    --with-syscapstone \
+    --with-syszip \
+    --with-openssl
+  make
+  make DESTDIR="${PKG}" install
+  rm "${PKG}"/usr/bin/r2-{indent,docker} "${PKG}/usr/share/man/man1/r2-docker.1"
+
+}
