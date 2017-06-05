@@ -27,6 +27,7 @@ xdg-user-dirs-update
 if [ -f /usr/bin/slim ];then
 	cp -r ayarlar/slim-milis /usr/share/slim/themes/milis
 	cp /sources/milis.git/ayarlar/slim-milis/slim.conf /etc/
+	cp -f /root/ayarlar/.xinitrc.slim /root/.xinitrc
 fi
 cp ayarlar/kurulum.desktop /root/Desktop/
 cp ayarlar/kurulum.desktop /root/Masaüstü/

@@ -41,7 +41,6 @@ dosfstools
 os-prober
 openjdk
 xdg-user-dirs
-slim
 vokoscreen
 milislinux-saat
 python-pip
@@ -50,3 +49,4 @@ python-yaml
 python3-pythondialog
 komutan
 numix-gtk-theme
+slim
