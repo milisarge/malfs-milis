@@ -1,2 +1,0 @@
-cp /lib/ncurses/terminfo/x/xterm /usr/share/terminfo/x/
-echo "export TERM='xterm' " >> /root/.bashrc
