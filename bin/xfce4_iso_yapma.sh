@@ -23,6 +23,7 @@ rm -r /tmp/*
 mps -tro
 export LC_ALL="tr_TR.UTF-8"
 export LANG="tr_TR.UTF-8"
+sed -i "s/^id:[3-5]/id:5/" /etc/inittab
 xdg-user-dirs-update
 if [ -f /usr/bin/slim ];then
 	cp -r ayarlar/slim-milis /usr/share/slim/themes/milis
