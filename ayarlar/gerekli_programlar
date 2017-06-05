@@ -17,7 +17,6 @@ udevil
 lsof
 net-tools
 lxde-task
-qemu-all
 yad
 cdrkit
 bindutils
@@ -42,7 +41,8 @@ dosfstools
 os-prober
 openjdk
 xdg-user-dirs
-lxdm
+slim
+vokoscreen
 milislinux-saat
 python-pip
 python3-yaml
