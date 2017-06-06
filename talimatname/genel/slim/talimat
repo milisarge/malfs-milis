@@ -1,33 +1,44 @@
 # Description: Grafiksel oturum açma yardımcı programı
 # URL: http://sourceforge.net/projects/slim.berlios
 # Packager: milisarge
-# Depends on: xorg-xauth libjpeg-turbo libpng cmake
+# Depends on: xorg-xauth libjpeg-turbo libpng cmake xorg-libxft
 
 name=slim
 version=1.3.6
-release=1
-source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.gz \
-        http://crux.nu/~tek/slim-crux-smooth.tar.gz $name.rc)
+release=2
+source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.gz
+        $name.rc
+        background.jpg
+		panel.png
+		slim.conf
+		slim.rc
+		slim.theme)
 
 build () {
-   cd $name-$version
+	cd $name-$version
 
-   # Slimlock inşa etmeyin (pam nedeniyle)
-   sed -i -e 's:${MANDIR}:/usr/man:g' -e '224d' CMakeLists.txt
+	# Slimlock inşa etmeyin (pam nedeniyle)
+	sed -i -e 's:${MANDIR}:/usr/man:g' -e '224d' CMakeLists.txt
 
-   cmake -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -DCMAKE_INSTALL_PREFIX=/usr
 
-   make
-   make DESTDIR=$PKG install
-   mkdir $PKG/etc/rc.d/
-   mkdir $PKG/etc/rc.d/init.d
-   install -m 755 ../$name.rc $PKG/etc/rc.d/init.d/$name
-   cd ../
+	make
+	make DESTDIR=$PKG install
+	mkdir $PKG/etc/rc.d/
+	mkdir $PKG/etc/rc.d/init.d
+	cp $SRC/slim.conf $PKG/etc/
+	install -m 755 ../$name.rc $PKG/etc/rc.d/init.d/$name
+	cd ../
 
-   rm -f slim-crux-smooth/README
-   cp -r slim-crux-smooth $PKG/usr/share/slim/themes/crux-smooth
-   chmod 0644 $PKG/usr/share/slim/themes/crux-smooth/*
+	install -d $PKG/usr/share/slim/themes/milis
+	cp $SRC/background.jpg $PKG/usr/share/slim/themes/milis/
+	cp $SRC/panel.png $PKG/usr/share/slim/themes/milis/
+	cp $SRC/slim.theme $PKG/usr/share/slim/themes/milis/
+	chmod 0644 $PKG/usr/share/slim/themes/milis/*
 
-   # Systemd desteği yok
-   rm -r $PKG/lib $PKG/usr/man/man1/slimlock.1
+	# Systemd desteği yok
+	rm -r $PKG/lib $PKG/usr/man/man1/slimlock.1
+
+	cd /sources/milis.git/ayarlar/servisler
+	make DESTDIR=$PKG kur-slim
 }

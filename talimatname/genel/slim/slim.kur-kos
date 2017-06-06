@@ -1,0 +1,1 @@
+sed -i "s/^id:[3-5]/id:5/" /etc/inittab
