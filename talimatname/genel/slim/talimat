@@ -5,7 +5,7 @@
 
 name=slim
 version=1.3.6
-release=2
+release=3
 source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.gz
         $name.rc
         background.jpg
