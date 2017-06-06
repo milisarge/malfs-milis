@@ -2,15 +2,21 @@
 #
 # /etc/rc.d/slim: start/stop slim
 #
+. /lib/lsb/init-functions
 
 case $1 in
 start)
+	log_info_msg "Yerel ayarlar eklendi..."
+    yerel_ayar
+    log_info_msg "SLIM başlatılıyor..."
 	/usr/bin/slim -d
 	;;
 stop)
+	log_info_msg "SLIM durduruluyor..."
 	killall /usr/bin/slim
 	;;
 restart)
+	log_info_msg "SLIM yebaşlatılıyor..."
 	$0 stop
 	sleep 2
 	$0 start
