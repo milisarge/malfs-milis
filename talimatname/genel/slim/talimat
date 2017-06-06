@@ -9,7 +9,7 @@ release=2
 source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.gz
         $name.rc
         background.jpg
-		panel.png
+		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
 		slim.conf
 		slim.rc
 		slim.theme)
@@ -32,7 +32,7 @@ build () {
 
 	install -d $PKG/usr/share/slim/themes/milis
 	cp $SRC/background.jpg $PKG/usr/share/slim/themes/milis/
-	cp $SRC/panel.png $PKG/usr/share/slim/themes/milis/
+	cp $SRC/milis-linux-tree.png $PKG/usr/share/slim/themes/milis/panel.png
 	cp $SRC/slim.theme $PKG/usr/share/slim/themes/milis/
 	chmod 0644 $PKG/usr/share/slim/themes/milis/*
 
