@@ -24,10 +24,6 @@
     </property>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-1" type="string" value="applicationsmenu">
-      <property name="button-icon" type="string" value="/sources/milis.git/ayarlar/milislogo.png"/>
-      <property name="button-title" type="string" value="Uygulamalar"/>
-    </property>
     <property name="plugin-3" type="string" value="tasklist"/>
     <property name="plugin-15" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
@@ -51,6 +47,7 @@
         <value type="string" value="vokoscreen"/>
         <value type="string" value="guake"/>
         <value type="string" value="deluge"/>
+        <value type="string" value="clipman"/>
         <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="ı2p-messenger"/>
         <value type="string" value="networkmanager programcığı"/>
@@ -73,5 +70,6 @@
       <property name="track" type="string" value=""/>
       <property name="command" type="string" value="xfce4-mixer"/>
     </property>
+    <property name="plugin-1" type="string" value="whiskermenu"/>
   </property>
 </channel>
