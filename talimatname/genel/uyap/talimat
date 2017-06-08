@@ -1,0 +1,14 @@
+# Description: UYAP UDF Düzenleyici
+# URL: uyap.gov.tr
+# Packager: milisarge
+# Depends on: openjdk akiskart
+
+name=uyap
+version=1.0
+release=1
+source=(https://kaynaklar.milislinux.org/$name-$version.tar.gz)
+
+build() {
+	cp -r $SRC/usr $PKG/ 
+	cp -r $SRC/opt $PKG/
+}
