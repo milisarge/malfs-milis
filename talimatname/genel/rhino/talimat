@@ -1,0 +1,20 @@
+# Description: JavaScript in java gerçeklemesi
+# URL: https://github.com/mozilla/rhino
+# Packager: milisarge
+# Depends on: apache-ant openjdk
+
+name=rhino
+version=1.7.7.1
+release=1
+source=(https://github.com/mozilla/$name/archive/Rhino${version//./_}_RELEASE.tar.gz
+	http://archive.apache.org/dist/xmlbeans/binaries/xmlbeans-2.6.0.tgz)
+
+build() {
+	export JAVA_HOME=/opt/OpenJDK-8u60-bin
+	export PATH=$JAVA_HOME/bin:/opt/ant/bin:$PATH
+	cd $name-Rhino${version//./_}_RELEASE
+	ant -Dxbean.jar=$SRC/xmlbeans-2.6.0/lib/xbean.jar \
+		-Djsr173.jar=$SRC/xmlbeans-2.6.0/lib/jsr173_1.0_api.jar \
+		jar javadoc
+	install -D -m 644 build/$name$version/js.jar $PKG/usr/share/java/$name.jar
+}

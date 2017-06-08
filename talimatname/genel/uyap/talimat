@@ -1,7 +1,7 @@
 # Description: UYAP UDF Düzenleyici
 # URL: uyap.gov.tr
 # Packager: milisarge
-# Depends on: openjdk akiskart
+# Depends on: openjdk akiskart icedtea-web
 
 name=uyap
 version=1.0

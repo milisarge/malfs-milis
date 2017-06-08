@@ -1,0 +1,90 @@
+# Description: java web uygulamaları için tarayıcı eklentisi
+# URL: http://icedtea.classpath.org/wiki/IcedTea-Web
+# Packager: milisarge
+# Depends on: firefox npapi-sdk junit openjdk rhino xorg-libxtst zip
+
+name=icedtea-web
+version=1.6.2
+release=1
+source=(http://icedtea.wildebeest.org/download/source/$name-$version.tar.gz)
+
+unpack_source() {
+	local FILE LOCAL_FILENAME COMMAND
+
+	for FILE in ${source[@]}; do
+		LOCAL_FILENAME=`get_filename $FILE`
+		case $LOCAL_FILENAME in
+			*.tar|*.tar.gz|*.tar.Z|*.tgz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.tar.lz|*.zip|*.rpm)
+				COMMAND="tar -p --no-same-owner -C $SRC -xf $LOCAL_FILENAME" ;;
+			*)
+				COMMAND="cp $LOCAL_FILENAME $SRC" ;;
+		esac
+
+		echo "$COMMAND"
+
+		$COMMAND
+
+		if [ $? != 0 ]; then
+			if [ "$PKGMK_KEEP_WORK" = "no" ]; then
+				rm -rf $PKGMK_WORK_DIR
+			fi
+			error "Building '$TARGET' failed."
+			exit $E_UNPACK
+		fi
+	done
+
+	export LC_ALL="$SAVED_LC_ALL"
+}
+
+build() {
+
+	cd "${SRC}"/${name}-${version}
+	LC_ALL=C \
+	CFLAGS="$CFLAGS -fno-delete-null-pointer-checks -fno-omit-frame-pointer -fno-lifetime-dse" \
+	CXXFLAGS="$CXXFLAGS -fno-delete-null-pointer-checks -fno-omit-frame-pointer -fno-lifetime-dse" \
+	JAVA_HOME=/opt/OpenJDK-8u60-bin \
+	PATH=$JAVA_HOME/bin:$PATH \
+	CONFIG_SHELL=/bin/bash \
+	./configure \
+		--prefix=/usr \
+		--datarootdir=/usr/share \
+		--libdir=/usr/lib/$name \
+		--libexecdir=/usr/lib/$name \
+		--with-jdk-home=/opt/OpenJDK-8u60-bin \
+		--with-rhino=/usr/share/java/rhino.jar \
+		--with-firefox=/usr/bin/firefox \
+		--with-versionsion=MILIS \
+		--disable-docs
+
+	LANG=tr_TR.UTF-8 \
+	LC_ALL=C \
+	CFLAGS="$CFLAGS -fno-delete-null-pointer-checks -fno-omit-frame-pointer -fno-lifetime-dse" \
+	CXXFLAGS="$CXXFLAGS -fno-delete-null-pointer-checks -fno-omit-frame-pointer -fno-lifetime-dse" \
+	JAVA_HOME=/opt/OpenJDK-8u60-bin \
+	PATH=$JAVA_HOME/bin:$PATH \
+	CONFIG_SHELL=/bin/bash \
+	make
+
+	make DESTDIR=$PKG install-exec-local install-data-local
+	
+	cd "${SRC}"/${name}-${version} 
+	
+	rm -rf $PKG/usr/share/man/*
+	rm -rf $PKG/usr/share/doc
+
+	install -m 755 -d "${PKG}"/usr/share/{applications,pixmaps}
+	install -m 644 javaws.png "${PKG}"/usr/share/pixmaps
+	mv javaws.desktop.in javaws.desktop
+	mv itweb-settings.desktop.in itweb-settings.desktop
+	install -m 644 {javaws,itweb-settings}.desktop "${PKG}"/usr/share/applications
+	install -m 755 -d "${PKG}"/usr/bin
+	install -m 755 -d "${PKG}"/usr/share/${name}/bin
+	pushd "${PKG}"/usr/share/${name}/bin
+	for file in *; do
+	ln -sf /usr/share/${name}/bin/${file} "${PKG}"/usr/bin/
+	done
+	popd
+	install -d -m 755 $PKG/usr/lib/mozilla/plugins
+	ln -s ../../$name/IcedTeaPlugin.so $PKG/usr/lib/mozilla/plugins/
+
+}
