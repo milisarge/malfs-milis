@@ -1,0 +1,20 @@
+# Description: AKIS kart sürücü ve dosyaları
+# URL: http://www.akiskart.com.tr
+# Packager: milisarge
+# Depends on: pcsc-lite ccid openjdk 
+
+name=akiskart
+version=1.6
+release=1
+source=(http://www.akiskart.com.tr/dosyalar/akis_${version}_amd64.deb
+		akia)
+
+build() {
+  ar x ${SRC}/akis_${version}_amd64.deb
+  tar -xf data.tar.gz -C "${SRC}"
+  rm -rf "${SRC}"/usr/bin
+  install -dm755 "${PKG}"/usr
+  install -dm755 "${PKG}"/usr/bin
+  mv "${SRC}"/usr/* "${PKG}"/usr
+  install -Dm755 "${SRC}"/akia "${PKG}"/usr/bin/akia
+}
