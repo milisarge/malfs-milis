@@ -1,22 +1,29 @@
 # Description: Ruby yorumlayıcı
 # URL: http://www.ruby-lang.org
 # Packager: milisarge
-# Depends on: doxygen 
+# Depends on: libffi yaml
 
 name=ruby
-version=2.3.0
+version=2.4.1
 release=1
 source=(http://cache.ruby-lang.org/pub/$name/${version%.*}/$name-$version.tar.xz)
 
 build () {
     cd $name-$version
 
-    ./configure --prefix=/usr \
-                --enable-shared \
-                --disable-install-doc \
-                --with-ruby-version=minor
-
+    PKG_CONFIG=/usr/bin/pkg-config ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --sharedstatedir=/var/lib \
+    --libexecdir=/usr/lib/ruby \
+    --enable-shared \
+    --disable-rpath \
+    --disable-install-doc \
+    --with-dbm-type=gdbm_compat
+    
     make
-    make DESTDIR=$PKG install
-}
+    make DESTDIR="${pkgdir}" install-nodoc
 
+    install -D -m644 ${srcdir}/gemrc "${pkgdir}/etc/gemrc"
+}
