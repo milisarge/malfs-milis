@@ -23,7 +23,7 @@ build () {
     --with-dbm-type=gdbm_compat
     
     make
-    make DESTDIR="${pkgdir}" install-nodoc
+    make DESTDIR="${PKG}" install-nodoc
 
-    install -D -m644 ${srcdir}/gemrc "${pkgdir}/etc/gemrc"
+    install -D -m644 ${SRC}/gemrc "${PKG}/etc/gemrc"
 }
