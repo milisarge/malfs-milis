@@ -1,0 +1,41 @@
+# Description: ileri düzey exploit kullanarak geliştirme ve test etme çatı uygulaması
+# URL: http://www.metasploit.com
+# Packager: milisarge
+# Depends on: ruby libpcap postgresql ruby-bundler sqlite libxslt clang
+
+name=metasploit
+version=4.14.24
+release=1
+source=(https://github.com/rapid7/metasploit-framework/archive/$version.tar.gz)
+
+build () {
+	cd "${name}-framework-$version"
+	bundle config build.nokogiri --use-system-libraries
+	sed 's|git ls-files|find -type f|' -i metasploit-framework.gemspec
+	export CC=clang
+	export CXX=clang++
+	bundle install -j"$(nproc)" --no-cache --deployment
+	find vendor/bundle/ruby -exec chmod o+r '{}' \;
+
+	install -d "${PKG}/opt/${name}" "${PKG}/usr/bin"
+	find . -maxdepth 1 -mindepth 1 -not -path './.git*' -exec cp -r '{}' "${PKG}/opt/${name}" \;
+
+	for f in "${PKG}"/opt/${name}/msf*; do
+	local _msffile="${PKG}/usr/bin/`basename "${f}"`"
+	echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${name}/Gemfile bundle exec ruby /opt/${name}/`basename "${f}"` \"\$@\"" > "${_msffile}"
+	chmod 755 "${_msffile}"
+	done
+
+	(cd "${PKG}/opt/${name}"
+	for f in tools/*/*.rb; do
+	  install -Dm 755 "${f}" ".${f}"
+	  echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${name}/Gemfile bundle exec ruby /opt/${name}/."${f}" \"\$@\"" > "${f}"
+	  chmod 755 "${f}"
+	done
+	)
+
+	install -Dm 644 external/zsh/_* -t "${PKG}/usr/share/zsh/site-functions"
+	install -d "${PKG}/usr/share/doc"
+	mv "${PKG}/opt/${name}/documentation" "${PKG}/usr/share/doc/${name}"
+	rm "${PKG}/usr/bin/msfupdate"
+}
