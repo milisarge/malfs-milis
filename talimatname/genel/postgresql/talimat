@@ -1,34 +1,25 @@
 # Description: Gelişmiş nesne-ilişkisel veritabanı yönetim sistemi (ORDBMS). 
 # URL: http://www.postgresql.org/docs
 # Packagers: milisarge
-# Depends on: python libxml2 libxslt openldap
+# Depends on: 
 
 name=postgresql
-version=9.5.0
+version=9.6.3
 release=1
+source=(https://ftp.postgresql.org/pub/source/v$version/postgresql-$version.tar.bz2)
 
-source=( http://ftp.postgresql.org/pub/source/v$version/$name-$version.tar.bz2)
 build() {
+	cd $name-$version
+	sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h &&
+	./configure --prefix=/usr \
+	--enable-thread-safety \
+	--with-openssl
 
-cd $name-$version
-# Hazırlama
-sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h
-
-# Yapılandırma
-./configure --prefix=/usr \
---mandir=/usr/share/man \
---with-docdir=/usr/share/doc/$name-$version \
---enable-thread-safety
-
-# inşa etme
-make
-
-# kurulum
-make DESTDIR=$PKG install
-make DESTDIR=$PKG install-docs
-
-# servis kur
-
-cd $SRC/$scripts-$scriptsversion
-make DESTDIR=$PKG install-$name
+	make
+	make DESTDIR=$PKG install
+	cd doc/src/sgml
+	make DESTDIR=$PKG install-man
+	rm -rf $PKG/usr/share/doc
+	cd /sources/milis.git/ayarlar/servisler
+	make DESTDIR=$PKG kur-$name   
 }
