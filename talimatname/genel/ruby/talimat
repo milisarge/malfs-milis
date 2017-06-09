@@ -6,7 +6,8 @@
 name=ruby
 version=2.4.1
 release=1
-source=(http://cache.ruby-lang.org/pub/$name/${version%.*}/$name-$version.tar.xz)
+source=(http://cache.ruby-lang.org/pub/$name/${version%.*}/$name-$version.tar.xz
+		gemrc)
 
 build () {
     cd $name-$version
