@@ -1,0 +1,36 @@
+# Description: JBIG1 sıkıştırma standardı uygulaması
+# URL: http://www.cl.cam.ac.uk/~mgk25/jbigkit/
+# Packager: milisarge
+# Depends on:
+
+name=jbigkit
+version=2.1
+release=1
+source=(http://www.cl.cam.ac.uk/~mgk25/$name/download/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	export CFLAGS="$CFLAGS -fPIC"
+
+	make -e
+
+	install -m 755 -d $PKG/usr/lib
+	install -m 755 -d $PKG/usr/include
+	install -m 755 -d $PKG/usr/bin
+	install -m 755 -d $PKG/usr/share/man/man1
+	install -m 755 -d $PKG/usr/share/man/man5
+
+	install -m 644 libjbig/*.a $PKG/usr/lib
+	install -m 644 libjbig/*.h $PKG/usr/include
+
+	install -m 755 pbmtools/jbgtopbm $PKG/usr/bin
+	install -m 755 pbmtools/jbgtopbm85 $PKG/usr/bin
+	install -m 755 pbmtools/pbmtojbg $PKG/usr/bin
+	install -m 755 pbmtools/pbmtojbg85 $PKG/usr/bin
+
+	install -m 644 pbmtools/jbgtopbm.1 $PKG/usr/share/man/man1
+	install -m 644 pbmtools/pbmtojbg.1 $PKG/usr/share/man/man1
+	install -m 644 pbmtools/pgm.5 $PKG/usr/share/man/man5
+	install -m 644 pbmtools/pbm.5 $PKG/usr/share/man/man5
+}
