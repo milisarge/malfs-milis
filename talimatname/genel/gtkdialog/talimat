@@ -6,7 +6,7 @@
 name=gtkdialog
 version=0.8.3
 release=1
-source=(http://gtkdialog.googlecode.com/files/gtkdialog-$version.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gtkdialog/gtkdialog-$version.tar.gz)
 
 build() {
   cd $name-$version
