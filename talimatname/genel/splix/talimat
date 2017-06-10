@@ -10,6 +10,7 @@ source=(splix-deviceID.patch)
 
 build() {
   
+	cd $DERLEME_KAYNAKDIZIN
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$name ];then
 		 svn co http://svn.code.sf.net/p/splix/code/splix/
 	else
