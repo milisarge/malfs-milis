@@ -1,0 +1,16 @@
+# Description: GIO/GVFS kullanarak uzaktan dosya yönetimi sağlayan arayüz uygulaması
+# URL: http://www.uvena.de/gigolo
+# Packager: milisarge
+# Depends on: intltool gtk2 gvfs 
+
+name=gigolo
+version=0.4.2
+release=1
+source=(http://files.uvena.de/gigolo/$name-$version.tar.bz2)
+
+build() {
+  cd "${SRC}"/$name-$version
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+}
