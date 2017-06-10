@@ -1,19 +1,19 @@
-# Description: Gtkdialog is a small utility for fast and easy GUI building. 
+# Description: Gtkdialog hızlı arayüz yapma aracı 
 # URL: http://linux.pte.hu/~pipas/gtkdialog/ 
 # Packager: milisarge
 # Depends on: gtk2
 
 name=gtkdialog
-version=0.7.20
+version=0.8.3
 release=1
-source=(ftp://linux.pte.hu/pub/gtkdialog/$name-$version.tar.gz
-        gtkdialog_0.7.20_glade.patch)
+source=(http://gtkdialog.googlecode.com/files/gtkdialog-$pkgver.tar.gz)
 
 build() {
   cd $name-$version
-  patch -p1 < $SRC/gtkdialog_0.7.20_glade.patch
   ./configure --prefix=/usr
   make
   make prefix=$PKG/usr install
   rm -r $PKG/usr/info
+  mkdir -p "$pkgdir"/usr/share/doc/$pkgname
+  cp -a examples "$pkgdir"/usr/share/doc/$pkgname/examples
 }
