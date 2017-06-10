@@ -1,0 +1,30 @@
+# Description: donanım bilgisi gösteren bir araç
+# URL:         http://ezix.org/project/wiki/HardwareLiSter
+# Packager:    milisarge
+# Depends on:  libglade gtk2
+
+name=lshw
+version=B.02.18
+release=1
+source=(http://ezix.org/software/files/$name-$version.tar.gz
+		lshw-gtk.desktop
+		lshw-gtk.xpm)
+
+build() {
+	cd $SRC/$name-$version
+	make || return 1
+	make DESTDIR=$PKG install
+
+	# requires glade-2
+	make gui || return 1
+	make DESTDIR=$PKG install-gui
+
+	# Place the desktop file and logo
+	mkdir $PKG/usr/share/applications
+	mkdir $PKG/usr/share/pixmaps
+	cp $SRC/lshw-gtk.desktop $PKG/usr/share/applications
+	cp $SRC/lshw-gtk.xpm $PKG/usr/share/pixmaps
+
+	# Default gui is gtk-lshw, change that to lshw-gtk for better naming convention
+	mv $PKG/usr/sbin/gtk-lshw $PKG/usr/sbin/lshw-gtk
+}
