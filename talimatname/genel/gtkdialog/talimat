@@ -6,7 +6,7 @@
 name=gtkdialog
 version=0.8.3
 release=1
-source=(http://gtkdialog.googlecode.com/files/gtkdialog-$pkgver.tar.gz)
+source=(http://gtkdialog.googlecode.com/files/gtkdialog-$version.tar.gz)
 
 build() {
   cd $name-$version
@@ -14,6 +14,6 @@ build() {
   make
   make prefix=$PKG/usr install
   rm -r $PKG/usr/info
-  mkdir -p "$pkgdir"/usr/share/doc/$pkgname
-  cp -a examples "$pkgdir"/usr/share/doc/$pkgname/examples
+  mkdir -p "$PKG"/usr/share/doc/$name
+  cp -a examples "$PKG"/usr/share/doc/$name/examples
 }
