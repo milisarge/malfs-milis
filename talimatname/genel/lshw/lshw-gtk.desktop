@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Hardware Lister
-Comment=Provides information on hardware
+Name=Donanım Bilgisi
+Comment=Donanım hakkında bilgi
 Icon=lshw-gtk
-Exec=gksu lshw-gtk
+Exec=lshw-gtk
 Terminal=false
 Categories=System;
