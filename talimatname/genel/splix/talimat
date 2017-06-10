@@ -11,7 +11,7 @@ source=(splix-deviceID.patch)
 build() {
   
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$name ];then
-		 svn co $DERLEME_KAYNAKDIZIN/$name
+		 svn co http://svn.code.sf.net/p/splix/code/splix/
 	else
 		cd $DERLEME_KAYNAKDIZIN/$name
 		svn up
