@@ -618,7 +618,8 @@ add_meta_to_archive() {
 	cd $TAR
 
 	bsdtar xf $PAKETLEME_DIZIN/$1
-
+	# üstbaşlık bilgilerinin türkçe harf desteği için
+	LC_ALL="tr_TR.UTF-8"
 	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
 		DESC="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
 	else
