@@ -1,0 +1,28 @@
+# Description: SPL (Samsung Printer Language) yazıcıları için cups sürücüleri
+# URL: http://splix.ap2c.org/
+# Packager: milisarge
+# Depends on: cups jbigkit krb5 subversion ghostscript 
+
+name=splix
+version=2.0.0
+release=1
+source=(splix-deviceID.patch)
+
+build() {
+  
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$name ];then
+		 svn co $DERLEME_KAYNAKDIZIN/$name
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name
+		svn up
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$name ${SRC}/$name
+	cd "${SRC}/${name}"
+	patch -Np1 -i ../splix-deviceID.patch
+	CXXFLAGS+=" -fno-strict-aliasing"
+	make drv
+	make all DRV_ONLY=1
+	make DESTDIR="$PKG" install DRV_ONLY=1
+
+}
