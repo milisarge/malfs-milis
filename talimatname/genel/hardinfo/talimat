@@ -1,0 +1,24 @@
+# Description: A system information and benchmark tool for Linux systems
+# URL:         http://hardinfo.berlios.de/
+# Packager:    milisarge
+# Depends on:  gtk2
+
+name=hardinfo
+version=0.5.1
+release=1
+source=(http://sourceforge.net/projects/hardinfo.berlios/files/${name}-${version}.tar.bz2
+		fixsensors.patch
+		hardinfo.distro)
+
+build() {
+	cd $name-$version
+	patch -p1 -i "${SRC}/fixsensors.patch"
+	sed -i 's|/usr/lib64|/usr/lib|' configure
+	sed -i 's|lib64|lib|' binreloc.c
+	sed -i 's|{ DB_PREFIX "debian_version",	"deb"  },|{ DB_PREFIX "hardinfo.distro",       "arch"  },{ DB_PREFIX "debian_version",	"deb"  },|' computer.h
+	./configure
+	make
+	make DESTDIR=$PKG install
+	rm -r $PKG/usr/local
+	install -D -m644 "${SRC}/hardinfo.distro" "${PKG}/etc/hardinfo.distro"
+}
