@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.7"
+versiyon="0.9.8"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -16,6 +16,7 @@ ikaynak=""
 betikad=${0##*/}
 kurulum_onay="evet"
 talimatname_dizin="/root/talimatname"
+ana_talimatname_dizin="/sources/milis.git/talimatname"
 kokdizin="/"
 VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
@@ -242,6 +243,7 @@ derleme_listbilgi(){
 	ryaz 34 "yapim asamasında"
 }
 
+# -derlist
 paket_derle_liste(){
 	for dpkt in `cat $1`;do
 		echo $dpkt "derleniyor...."
@@ -249,15 +251,19 @@ paket_derle_liste(){
 		paket_derle $dpkt
 	done
 }
+
 #otomatik derle kontrollu kur
+# -derle
 paket_derle_kur(){
 	tekrarkur="hayir"
 	mps -dly "$1"  && mps -derlist bag.liste
 }
 
+# odkp
 oto_derle_kur_paketle(){
 	mps -G
-	mps -kur $1 &&
+	# mps -kur
+	paket_inkur_oto $1 &&
 	if [ -f  "$talimatname_dizin/genel/$1/$1.sira" ];then
 		ryaz 32 "sıralı derleme yapılacak."
 		mps -derlist "$talimatname_dizin/genel/$1/$1.sira"
@@ -277,7 +283,7 @@ paket_kur_oto(){
 	for kpkt in `cat $kliste`;do
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
-			mps -k "$pak" && mps -kur "$pkt"
+			mps -k "$pak" && paket_inkur_oto "$pkt"
 		done
 	done
 	rm -rf otokur.list
@@ -295,7 +301,7 @@ paket_kur_oto_zorla(){
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
 			paket_sil "$pkt" "evet"
-			mps -k "$pak" && mps -kur "$pkt"
+			mps -k "$pak" && paket_inkur_oto "$pkt"
 		done
 	done
 	rm -rf otokur.list
@@ -337,17 +343,26 @@ paket_inkur_liste_direk(){
 paket_inkur_liste(){
 	local kpkt
 	for kpkt in `cat $1`;do
-		mps -kur "$kpkt"
+		paket_inkur_oto "$kpkt"
 	done
 }
 
-#otomatik kontrollu kur
+# otomatik kontrollu kur
+# -kur
 paket_inkur_oto(){
+	local konum anakonum
 	mps -dly "$1" | grep "bulunamadı"
 	#derleme_listyap "$1" > mps.log &&
 	local kpkt
-	for kpkt in `cat bag.liste`;do
-		mps -ik "$kpkt"
+	for kpkt in `cat bag.liste`;do	
+		# önce talimat-anatalimat karşılaştırması yapılır.
+		konum="`find "$talimatname_dizin" -name $kpkt`"
+		anakonum="`find "$ana_talimatname_dizin" -name $kpkt`"
+		if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "evet" ];then
+			mps -ik "$kpkt"
+		else
+			ryaz 31 "$kpkt talimat eşitsizliğinden kurulmadı." 
+		fi
 	done
 	rm -rf *.liste *.eski
 }
@@ -500,14 +515,19 @@ paket_derle(){
 	local konum derleme_onay eh bagimd
 	derleme_onay="h"
 	konum="`find "$talimatname_dizin" -name $1`"
+	anakonum="`find "$ana_talimatname_dizin" -name $1`"
 	if [ -d "$konum" ];then
 		mkdir -p tmp."$1" 
 		cp -a $konum/* tmp."$1"/
 		cd tmp."$1"
+		# önce talimat-anatalimat karşılaştırması yapılır.
+		if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "degil" ];then
+			zorla_derle="var"
+		fi
+		# kurulu ve değişiklik yoksa derlenmez.
 		if [ "`kurulu_kontrol "$1"`" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
 			derleme_onay="h"
 		else
-			echo "-----"
 			derleme_onay="e"
 		fi 
 		if [ "$derleme_onay" = "e" ];then
@@ -613,6 +633,16 @@ silme_kurban_kontrol(){
 			done
 		fi
 	done
+}
+
+# iki dosyanın içerik karşılaştırması yapar.
+dosya_karsilastir(){
+	if cmp -s "$1" "$2"
+	then
+	   echo "evet"
+	else
+	   echo "degil"
+	fi
 }
 
 log_analiz(){
