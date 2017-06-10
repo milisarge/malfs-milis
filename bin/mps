@@ -521,9 +521,9 @@ paket_derle(){
 		cp -a $konum/* tmp."$1"/
 		cd tmp."$1"
 		# önce talimat-anatalimat karşılaştırması yapılır.
-		if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "degil" ];then
-			zorla_derle="var"
-		fi
+		#if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "degil" ];then
+		#	zorla_derle="var"
+		#fi
 		# kurulu ve değişiklik yoksa derlenmez.
 		if [ "`kurulu_kontrol "$1"`" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
 			derleme_onay="h"
