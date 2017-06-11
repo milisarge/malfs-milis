@@ -1,25 +1,24 @@
 # Description: Metin tabanlı web tarayıcısı.
 # URL: http://lynx.isc.org/
 # Packager: milisarge
-# Depends on: ncurses openssl zlib
+# Depends on: 
 
 name=lynx
-version=2.8.9
+version=2.8.9dev.14
 release=1
 source=(http://invisible-island.net/datafiles/release/lynx-cur.tar.bz2)
 
 build() {
-	cd lynx${version//./-}
-
+	cd lynx$version
 	./configure \
 		--prefix=/usr \
-		--disable-nls \
+		--enable-nls \
 		--enable-color-style \
 		--enable-ipv6 \
 		--with-ssl=/usr/lib \
 		--with-zlib \
+		--enable-default-colors \
 		--with-screen=ncursesw
-
-	make
-	make -j 1 DESTDIR=$PKG install
+	make -s -j1
+	make DESTDIR=$PKG install
 }
