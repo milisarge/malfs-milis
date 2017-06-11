@@ -244,7 +244,7 @@ fi
 ;;
 Xsession )
 insert_header "XSESSION HATALARI:"
-[ -f /root/.xsession-errors] && echo "Kullanıcı: root" >> $info && cat /root/.xsession-errors >> $info
+[ -f /root/.xsession-errors ] && echo "Kullanıcı: root" >> $info && cat /root/.xsession-errors >> $info
 for a in `grep -v "\!" /etc/shadow|cut -d':' -f1|sed 'root/d'`; do
   [ -f /home/$a/.xsession-errors ] && echo "Kullanıcı: $a" >> $info && cat /home/$a/.xsession-errors >> $info
 done
@@ -534,9 +534,9 @@ if [[ `grep "Kapsamlı Rapor" $tmpsi/dump` ]]; then
 	cat /var/log/Xorg.0.log >> $info 2>/dev/null
 	echo "" >> $info
 	echo "XSESSION HATALARI:" >> $info
-	[ -f /root/.xsession-HATALARI ] && echo "Kullanıcı: root" >> $info && tail -n300 /root/.xsession-HATALARI >> $info
+	[ -f /root/.xsession-errors ] && echo "Kullanıcı: root" >> $info && tail -n300 /root/.xsession-errors >> $info
 	for a in `grep -v "\!" /etc/shadow|cut -d':' -f1|sed 'root/d'`; do
-		[ -f /home/$a/.xsession-HATALARI ] && echo "Kullanıcı: $a" >> $info && tail -n300 /home/$a/.xsession-HATALARI >> $info
+		[ -f /home/$a/.xsession-errors ] && echo "Kullanıcı: $a" >> $info && tail -n300 /home/$a/.xsession-errors >> $info
 	done
 	kill_manual_progress
 	gtk_upload_report
