@@ -42,9 +42,9 @@ echo '<action signal="cursor_changed">get_info '$1'</action>
 
 gtk_upload_report(){
 export UP_REPORT='
-'`start_window "Upload file" info 500 250`'
+'`start_window "Dosyayı Yükle" info 500 250`'
 <hbox>
-'`pixmapfile 36 36 /usr/share/pixmaps/Milis/Ağ.png`'
+'`pixmapfile 36 36 /usr/share/pixmaps/network.png`'
 '`txtcolor 440 darkred x-large normal "  Kayıt dosyasını analiz için internete yapıştırın."`'
 </hbox>
 '`hsep`'
@@ -457,7 +457,7 @@ gtkdialog -p MILIS_BILGI > $tmpsi/dump
 
 [ `egrep -o "Cancel|abort" $tmpsi/dump` ] && { rm -rf $tmpsi; exit; }
 
-[[ `grep "Açık Dosyayı Kaydet" $tmpsi/dump` ]] && gtk_upload_report
+[[ `grep "Dosyaya Yazdır" $tmpsi/dump` ]] && gtk_upload_report
 
 if [[ `grep "Kapsamlı Rapor" $tmpsi/dump` ]]; then
 	export STATE=MANUAL
@@ -534,17 +534,17 @@ if [[ `grep "Kapsamlı Rapor" $tmpsi/dump` ]]; then
 	cat /var/log/Xorg.0.log >> $info 2>/dev/null
 	echo "" >> $info
 	echo "XSESSION HATALARI:" >> $info
-	[ -f /root/.xsession-errors ] && echo "Kullanıcı: root" >> $info && tail -n300 /root/.xsession-errors >> $info
+	[ -f /root/.xsession-HATALARI ] && echo "Kullanıcı: root" >> $info && tail -n300 /root/.xsession-HATALARI >> $info
 	for a in `grep -v "\!" /etc/shadow|cut -d':' -f1|sed 'root/d'`; do
-		[ -f /home/$a/.xsession-errors ] && echo "Kullanıcı: $a" >> $info && tail -n300 /home/$a/.xsession-errors >> $info
+		[ -f /home/$a/.xsession-HATALARI ] && echo "Kullanıcı: $a" >> $info && tail -n300 /home/$a/.xsession-HATALARI >> $info
 	done
 	kill_manual_progress
 	gtk_upload_report
 fi
 
-pastebin_message(){
+yapistirnet_message(){
 echo '
-<window window_position="1" title="Milis message" icon-name="cdr" allow-shrink="false" width-request="'$2'">
+<window window_position="1" title="Milis Yapıştırma Mesajı" icon-name="cdr" allow-shrink="false" width-request="'$2'">
 <vbox>
  <hbox>
   <frame>
@@ -562,7 +562,7 @@ echo '
 </vbox>
 </window>
 ' | gtkdialog -s
-}; export -f pastebin_message
+}; export -f yapistirnet_message
 
 ## If Kullanıcı chose to upload then do it, else dump to /root/desktop
 if [ `egrep -o "Yes|yes" $tmpsi/upload.tmp` ]; then
@@ -570,18 +570,18 @@ if [ `egrep -o "Yes|yes" $tmpsi/upload.tmp` ]; then
   if [ $answ -eq 0 ]; then
   export STATE=MANUAL
   echo "Lütfen bekleyiniz,yükleniyor" > /tmp/.message
-  manual_progress "Pastebin"
-  wgetpaste -n Milis-Kullanıcı -s codepad $info > $tmpsi/link.tmp
+  manual_progress "ix.io"
+  cat $info | curl -F 'f:1=<-' ix.io > $tmpsi/link.tmp
   kill_manual_progress
   export lnk=`awk '{print$NF}' < $tmpsi/link.tmp`
-  echo $lnk > /tmp/pastebin-link.txt
-  pastebin_message "Your file was uploaded to $lnk (You may select and copy this text) and this address is now in the file /tmp/pastebin-link.txt." 500 gtk-yes
+  echo $lnk > /tmp/ixio-link.txt
+  yapistirnet_message "Dosyanız $lnk adresinde ayrıca bu link /tmp/ixio-link.txt. dosyasında." 500 gtk-yes
     else
   cp $info /root/Desktop/psinfo_report.txt
-  gtk_message "No internet connection found. Your report was placed at /root/Desktop/psinfo_report.txt" 450 gtk-dialog-error
+  gtk_message "İnternet bağlantınız yok!.Raporunuz /root/Desktop/psinfo_report.txt dosyasına kayıt edildi." 450 gtk-dialog-error
   fi
     else
   cp $info /root/Desktop/psinfo_report.txt
-  gtk_message "Your file has been placed at /root/Desktop/psinfo_report.txt" 500 gtk-yes
+  gtk_message "Raporunuz /root/Desktop/psinfo_report.txt dosyasına kayıt edildi." 500 gtk-yes
 fi
 rm -rf $tmpsi
