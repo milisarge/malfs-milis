@@ -1,0 +1,17 @@
+# Description: Sistemin SMBIOS / DMI standardına göre BIOS'unuzun donanım bilgisidir.
+# URL: 		   http://www.nongnu.org/dmidecode/
+# Packager:    milisarge
+# Depends on:
+
+name=dmidecode
+version=3.1
+release=1
+source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	sed -i "s:sbin:bin:g" Makefile
+	make prefix=/usr
+	make prefix=/usr DESTDIR="${PKG}" install
+	rm -rf $PKG/usr/share
+}
