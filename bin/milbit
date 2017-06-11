@@ -8,6 +8,7 @@
 
 [ ! -f /usr/share/applications/milbit.desktop ] && cp -rf /root/ayarlar/milbit/milbit.desktop /usr/share/applications/
 [ ! -f /usr/bin/gtkdialog ] && mps kur gtkdialog
+[ ! -f /usr/bin/dmidecode ] && mps kur dmidecode
 
 ## Variables
 export tmpsi=/tmp/psinfo$$
