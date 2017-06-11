@@ -1,0 +1,20 @@
+# Description: PostgreSQL administration gui frontend
+# URL: 		   http://www.pgadmin.org/
+# Packager:    milisarge
+# Depends on:  wxgtk postgresql libgcrypt libxslt libxml2 libnotify
+
+name=pgadmin3
+version=1.22.2
+release=1
+source=(https://github.com/postgres/pgadmin3/archive/REL-1_22_2.tar.gz
+		pgadmin3-fix-segfault.patch)
+
+build() {
+	cd $name-REL-1_22_2
+	 bash bootstrap
+	patch -p1 -i $SRC/pgadmin3-fix-segfault.patch
+	 ./configure --prefix=/usr --with-wx-version=3.0 --with-libgcrypt
+	make all
+	make DESTDIR=$PKG install
+	find $PKG/usr/share/pgadmin3/docs/* ! -wholename "*tr_TR*" | xargs rm -rf
+}
