@@ -1,0 +1,584 @@
+#!/bin/bash
+
+## Milis Sistem Bilgi Toplama 
+## milisarge <milisarge@gmail.com>
+## brokenman <brokenman@porteus.org> xpsinfo betiğinden yararlanılmıştır.
+
+. /root/ayarlar/milbit/libmilisdialog
+
+[ ! -f /usr/share/applications/milbit.desktop ] && cp -rf /root/ayarlar/milbit/milbit.desktop /usr/share/applications/
+
+## Variables
+export tmpsi=/tmp/psinfo$$
+export info=$tmpsi/info.tmp
+
+## Initial setup
+[ -d $tmpsi ] && rm -rf $tmpsi
+mkdir $tmpsi
+
+## Opening page info
+cat > $info << EOF
+
+---=== MİLİS SİSTEM BİLGİ TOPLAYICISI - MİLBİT ===---
+Kapsamlı milis işletim sistem bilgi toplayıcısı
+EOF
+
+## Functions
+
+insert_header(){
+echo "$1" > $info
+echo "" >> $info
+}; export -f insert_header
+
+craction(){
+echo '<action signal="cursor_changed">get_info '$1'</action>
+	<action signal="cursor_changed">refresh:'$2'</action>
+	<action signal="cursor_changed">enable:btnOpen</action>
+	<action signal="cursor_changed">enable:btnDump</action>'
+}; export -f craction
+
+gtk_upload_report(){
+export UP_REPORT='
+'`start_window "Upload file" info 500 250`'
+<hbox>
+'`pixmapfile 36 36 /usr/share/pixmaps/Milis/Ağ.png`'
+'`txtcolor 440 darkred x-large normal "  Kayıt dosyasını analiz için internete yapıştırın."`'
+</hbox>
+'`hsep`'
+<frame>
+'`txtmarkup 450 "Kayıt Dosyanızı analiz için yapıştırmak istermisiniz?"`'
+</frame>
+<hbox>
+  '`butno`'
+  '`butyes`'
+</hbox>
+'`end_window`'
+'
+gtkdialog -p UP_REPORT > $tmpsi/upload.tmp
+}; export -f gtk_upload_report
+
+get_info(){
+echo $1
+case $1 in
+Kernel )
+insert_header "KERNEL: `uname -r`"
+#echo "CURRENT KERNEL: `uname -r`" > $info
+#echo "" >> $info
+echo "YÜKLENEN KERNEL MODÜLLER:" >> $info
+lsmod|awk '{print$1}' >> $info
+;;
+İşlemci )
+egrep "vendor|name|cores|flags|MHz|address|cpuid" /proc/cpuinfo|sort -u > $info
+dmidecode -t 4|egrep "Family|ACPI|APIC|PGE|threading|Thermal|Speed|Clock|Thread|capable" >> $info
+sed -i 's/^[ \t]*//' $info
+;;
+Bios )
+insert_header "BIOS BİLGİSİ:"
+dmidecode -t 0|sed -e '/dmidecode/d' -e '/SMBIOS/d' -e '/Handle/d' -e '/^$/d' >> $info
+;;
+Anakart )
+insert_header "ANAKART:"
+dmidecode -t 1 | grep "Manufacturer\|Product Name\|Serial Number" | tr -d "\t" | sed "s/Manufacturer//" >> $info 
+;;
+Hafıza )
+dmidecode -t 16|egrep "Capacity|Devices|Correction|Use:"|sed 's/^[ \t]*//' > $info
+cat /proc/meminfo >> $info
+;;
+Ekran )
+insert_header "EKRAN BİLGİSİ:"
+xrandr >> $info
+;;
+Grafik )
+insert_header "EKRAN KARTI:"
+for I in `lspci |awk '/VGA/{print $1}'`;do lspci -v -s $I >> $info;done
+;;
+Ses )
+insert_header "SES KARTLARI:"
+grep ":" /proc/asound/cards|awk -F: '{print$NF}' >> $info
+lspci|grep Audio|awk -F: '{print$NF}' >> $info
+echo "" >> $info
+aplay -l >> $info
+;;
+Optik )
+insert_header "CD/DVD"
+pres=`ls -l /dev/cdrom|awk '{print$NF}'`
+if [ "$pres" ]; then
+cat /proc/sys/dev/cdrom/info|egrep "name:|speed:|slots:"|sed '/change/d' >> $info
+cdrecord -prcap dev=/dev/cdrom|egrep "Device type|Vendor_info|Identifikation|Revision" >> $info
+#cat $PSC_TMP/.cd >> $info
+echo "" >> $info
+echo "PROFILE: " >> $info
+cdrecord -prcap dev=/dev/cdrom|grep Profile >> $info
+#cat $PSC_TMP/.cd >> $info
+echo "" >> $info
+echo "CAPABILITIES:" >> $info
+cdrecord -prcap dev=/dev/cdrom|egrep "Does|Write|Feature"|sort -u >> $info
+	else
+echo "/dev/cdrom altında optik sürücü bulunumadı!" > $info
+fi
+;;
+Webcam )
+insert_header "WEBCAM BİLGİSİ:"
+if [[ `ls /dev/video0` ]]; then
+	if [ -f /usr/bin/v4l2-ctl ]; then
+		echo "" >> $info
+		echo "-----" >> $info
+		v4l2-ctl --list-devices >> $info
+		echo "-----" >> $info
+		v4l2-ctl --list-formats-ext >> $info
+	fi
+	#cat /sys/class/video4linux/video0/device/input/input*/name >> $info
+	cat /sys/class/video4linux/video0/device/interface >> $info
+	echo "product:" >> $info
+	cat /sys/class/video4linux/video0/device/input/input*/id/product >> $info
+	echo "vendor:" >> $info
+	cat /sys/class/video4linux/video0/device/input/input*/id/vendor >> $info
+		
+else
+	echo "" >> $info
+	echo "Webcam bulunamadı." >> $info
+fi
+;;
+Sürücüler )
+insert_header "Sürücü Bilgisi:"
+for abc in `df|sed -e '/aufs/d' -e '/Used/d'|awk '{print$1}'|tr -d [:digit:]|sort -u`; do
+  bcd=`echo $abc|sed 's@/dev/@@g'`
+  if [ `cat /sys/block/$bcd/removable` -eq 0 ]; then
+    hdparm -I $abc >> $info
+  fi
+done
+;;
+Usb_aygıtlar )
+insert_header "USB AYGITLARI:"
+lsusb -t >> $info
+;;
+Usb )
+insert_header "USB BİLGİSİ:"
+base=`ls -l /sys/block/|awk '{print$9}'|grep .d.`
+for abc in $base; do
+  if [ `cat /sys/block/$abc/removable` -eq 1 ]; then
+    echo "$a is removable" >> $info
+    [ ! `mount|grep $a` ] && mt=no || mt=yes
+    echo "MOUNTED: $mt" >> $info
+    echo "NAME: `cat /sys/block/$a/device/model`" >> $info
+    echo "VENDOR: `cat /sys/block/$a/device/vendor`" >> $info
+    echo "STATE: `cat /sys/block/$a/device/state`" >> $info
+    echo "SIZE: `df -h /dev/$a|tail -n1|awk '{print$2}'`" >> $info
+  fi
+done
+;;
+Bölümler )
+insert_header "BÖLÜMLEME BİLGİSİ:"
+df -Th|sed '/aufs/d' >> $info
+echo "" >> $info
+echo "LABEL/UUID INFO:" >> $info
+for a in `df|sed -e '/Used/d' -e '/aufs/d'|awk '{print$1}'`; do
+blkid|grep $a
+done >> $info
+;;
+Pil )
+insert_header "PİL BİLGİSİ:"
+#dmidecode -t 22|sed -e '/dmidecode/d' -e '/SMBIOS/d' -e '/Handle/d' -e '/^$/d' >> $info
+upower -i /org/freedesktop/UPower/devices/battery_BAT0 >> $info
+;;
+Anagövde )
+insert_header "ANAGÖVDE BİLGİSİ:"
+dmidecode -t 3|sed -e '/dmidecode/d' -e '/SMBIOS/d' -e '/Handle/d' -e '/^$/d' >> $info
+;;
+Sistem )
+insert_header "SİSTEM BİLGİSİ:"
+dmidecode -t 1|sed -e '/dmidecode/d' -e '/SMBIOS/d' -e '/Handle/d' -e '/^$/d'  >> $info
+;;
+Kablolu )
+insert_header "KABLOLU BAĞLANTI BİLGİSİ:"
+for I in `lspci |awk '/Ethernet/{print $1}'`;do lspci -v -s $I >> $info;done
+;;
+Kablosuz )
+insert_header "KABLOSUZ BAĞLANTI BİLGİSİ:"
+for I in `lspci |awk '/Wireless/{print $1}'`;do lspci -v -s $I >> $info;done
+;;
+Mac )
+insert_header "MAC ADRES BİLGİSİ:"
+for dev in wlan eth; do
+  dev=`ifconfig|grep -A3 $dev[0-9]|head -n1|awk '{print$1}'`
+  mac=`ifconfig $dev|grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`
+  echo "$dev $mac" >> $info
+done
+;;
+IP )
+insert_header "IP BİLGİSİ:"
+ifconfig >> $info
+;;
+İsimsunucusu )
+insert_header "İSİM SUNUCU BİLGİSİ:"
+ns=`cat /etc/resolv.conf|sed '/#/d'`
+if [ "$ns" ]; then
+	echo $ns >> $info
+		else
+	echo "İsim sunucu bulunamadı." >> $info
+fi
+;;
+Yönlendirme )
+insert_header "YÖNLENDİRME (ROUTING) BİLGİSİ:"
+route -ne >> $info
+;;
+Dmesg )
+insert_header "DMESG KAYIT ÇIKTISI:"
+dmesg >> $info
+;;
+Mesajlar )
+insert_header "/var/log/* BİLGİSİ:"
+ls /var/log/*.log >> $info
+;;
+Xorg )
+insert_header "XORG KAYIT ÇIKTISI:"
+xlog=`cat /var/log/Xorg.0.log`
+if [ "$xlog" ]; then
+  cat /var/log/Xorg.0.log >> $info
+else
+  echo "xorg logu bulunamadı." >> $info
+fi
+;;
+Xsession )
+insert_header "XSESSION HATALARI:"
+[ -f /root/.xsession-HATALARI ] && echo "Kullanıcı: root" >> $info && cat /root/.xsession-HATALARI >> $info
+for a in `grep -v "\!" /etc/shadow|cut -d':' -f1|sed 'root/d'`; do
+  [ -f /home/$a/.xsession-HATALARI ] && echo "Kullanıcı: $a" >> $info && cat /home/$a/.xsession-HATALARI >> $info
+done
+;;
+Syslog )
+insert_header "SYSLOG:"
+vl=/var/log
+[ -f $vl/syslog ] && cat $vl/syslog >> $info || echo "syslog kaydı bulunamadı." >> $info
+;;
+Sürüm )
+insert_header "Milis Sürüm Bilgisi:"
+cat /etc/lsb-release >> $info
+echo "Kernel: `uname -r`" >> $info
+;;
+Paketler )
+insert_header "YÜKLÜ PAKETLER:"
+ls -1 /var/lib/pkg/DB/ >> $info
+;;
+lspci )
+insert_header "lspci çıktı:"
+lspci -knn >> $info
+;;
+lsmod )
+insert_header "lsmod çıktı:"
+lsmod >> $info
+;;
+Kullanıcılar )
+insert_header "Kullanıcılar Bilgisi:"
+grep -v "\!" /etc/shadow|cut -d':' -f1 >> $info
+;;
+SonAçılma )
+insert_header "SON AÇILMA:"
+who -b|sed 's/^[ \t]*//' >> $info
+echo "Çalışma Süresi (hr:min) : `uptime|awk '{print$3}'|sed 's/,//g'`" >> $info
+esac
+}; export -f get_info
+
+export MILIS_BILGI='
+'`start_window "MilBiT" hwinfo 600 460`'
+<hbox>
+'`pixmapfile 36 36 /sources/milis.git/ayarlar/milislogo.png`'
+'`txtcolor 500 darkred x-large normal "  MİLİS SİSTEM BİLGİ TOPLAYICISI - MİLBİT"`'
+</hbox>
+'`hsep`'
+<notebook show-tabs="true" show-border="false" labels="Cihaz|Medya|Sürücüler|Ağ|Log|Milis|Çeşitli" height-request="350">
+<vbox>
+	<hbox>
+		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
+			<label>Element</label>
+			<variable>Cihaz</variable>
+			<width>130</width>
+			<height>300</height>
+			<item>Kernel</item>
+			<item>Sistem</item>
+			<item>İşlemci</item>
+			<item>Anakart</item>
+			<item>Pil</item>
+			<item>Bios</item>
+			<item>Hafıza</item>
+			<item>Ekran</item>
+			<item>Anagövde</item>
+			'`craction '\$Cihaz' machinfo`'
+		</tree>
+		<edit editable="false" wrap-mode="0" left-margin="10">
+			<variable>machinfo</variable>
+			<width>450</width>
+			<input file>'$tmpsi'/info.tmp</input>
+		</edit>
+	</hbox>
+</vbox>
+
+<vbox>
+	<hbox>
+		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
+			<label>Element</label>
+			<variable>grafikler</variable>
+			<width>130</width>
+			<height>300</height>
+			<item>Ekran Kartı</item>
+			<item>Ses Kartı</item>
+			<item>Optik sürücü</item>
+			<item>Webcam</item>
+			<item>Usb_aygıtlar</item>
+			'`craction '\$grafikler' machinfo2`'
+		</tree>
+		<edit editable="false" wrap-mode="0" left-margin="10">
+			<variable>machinfo2</variable>
+			<width>450</width>
+			<input file>'$tmpsi'/info.tmp</input>
+		</edit>
+	</hbox>
+</vbox>
+
+<vbox>
+	<hbox>
+		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
+			<label>Element</label>
+			<variable>suruculer</variable>
+			<width>130</width>
+			<height>300</height>
+			<item>Sürücüler</item>
+			<item>Usb</item>
+			<item>Bölümler</item>
+			'`craction '\$suruculer' machinfo3`'
+		</tree>
+		<edit editable="false" wrap-mode="0" left-margin="10">
+			<variable>machinfo3</variable>
+			<width>450</width>
+			<input file>'$tmpsi'/info.tmp</input>
+		</edit>
+	</hbox>
+</vbox>
+
+<vbox>
+	<hbox>
+		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
+			<label>Element</label>
+			<variable>ag</variable>
+			<width>130</width>
+			<height>300</height>
+			<item>Kablolu</item>
+			<item>Kablosuz</item>
+			<item>Mac adresi</item>
+			<item>IP adresi</item>
+			<item>İsimsunucusu</item>
+			<item>Yönlendirme</item>
+			'`craction '\$ag' machinfo4`'
+		</tree>
+		<edit editable="false" wrap-mode="0" left-margin="10">
+			<variable>machinfo4</variable>
+			<width>450</width>
+			<input file>'$tmpsi'/info.tmp</input>
+		</edit>
+	</hbox>
+</vbox>
+
+<vbox>
+	<hbox>
+		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
+			<label>Element</label>
+			<variable>logs</variable>
+			<width>130</width>
+			<height>300</height>
+			<item>Dmesg</item>
+			<item>Mesajlar</item>
+			<item>Xorg</item>
+			<item>Xsession</item>
+			<item>Syslog</item>
+			<item>SonAçılma</item>
+			'`craction '\$logs' machinfo5`'
+		</tree>
+		<edit editable="false" wrap-mode="0" left-margin="10">
+			<variable>machinfo5</variable>
+			<width>450</width>
+			<input file>'$tmpsi'/info.tmp</input>
+		</edit>
+	</hbox>
+</vbox>
+
+<vbox>
+	<hbox>
+		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
+			<label>Element</label>
+			<variable>milis</variable>
+			<width>130</width>
+			<height>300</height>
+			<item>Kullanıcılar</item>
+			<item>Sürüm</item>
+			<item>Paketler</item>
+			'`craction '\$milis' machinfo6`'
+		</tree>
+		<edit editable="false" wrap-mode="0" left-margin="10">
+			<variable>machinfo6</variable>
+			<width>450</width>
+			<input file>'$tmpsi'/info.tmp</input>
+		</edit>
+	</hbox>
+</vbox>
+
+<vbox>
+	<hbox>
+		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
+			<label>Element</label>
+			<variable>cesitli</variable>
+			<width>130</width>
+			<height>300</height>
+			<item>lspci</item>
+			<item>lsmod</item>
+			'`craction '\$cesitli' machinfo7`'
+		</tree>
+		<edit editable="false" wrap-mode="0" left-margin="10">
+			<variable>machinfo7</variable>
+			<width>450</width>
+			<input file>'$tmpsi'/info.tmp</input>
+		</edit>
+	</hbox>
+</vbox>
+</notebook>
+<hbox>
+	'`butcustom "Ekrandaki bilgiyi metin düzenleyicide açar." "Bilgiyi Dosyada Aç" btnOpen stock gtk-file false`'
+		<action>kwrite $info || leafpad $info || beaver $info || mousepad $info || kate $info</action>
+	</button>
+	'`butcustom "Mevcut Bilgi ekranını dosyaya yazdırır /root/psinfo.txt" "Dosyaya Yazdır" btnDump stock gtk-revert-to-saved false`'</button>
+	'`butcustom "Kapsamlı sistem raporunu dosyaya yazdırır /root/Desktop/psinfo.txt" "Kapsamlı Rapor Yazdır" btnReport stock gtk-go-down true`'</button>
+	'`butcancel`'
+</hbox>
+'`end_window`'
+'
+gtkdialog -p MILIS_BILGI > $tmpsi/dump
+
+[ `egrep -o "Cancel|abort" $tmpsi/dump` ] && { rm -rf $tmpsi; exit; }
+
+[[ `grep "Açık Dosyayı Kaydet" $tmpsi/dump` ]] && gtk_upload_report
+
+if [[ `grep "Kapsamlı Rapor" $tmpsi/dump` ]]; then
+	export STATE=MANUAL
+	echo "kapsamlı rapor üretiliyor ..." > /tmp/.message
+	manual_progress "İşleniyor"
+	echo "MİLİS_SÜRÜM:" > $info
+	cat /etc/Milis-sürüm >> $info
+	echo "" >> $info
+	echo "KERNEL/İŞLEMCİ:" >> $info
+	echo `uname -r` `uname -m` `uname -p`>> $info
+	echo "" >> $info
+	echo "HAFIZA/SWAP:" >> $info
+	free -m >> $info
+	echo "" >> $info
+	echo "BLOK AYGITLARI:" >> $info
+	ls -1 /sys/block | grep -v loop | sed s/@// >> $info
+	echo "" >> $info
+	echo "BÖLÜMLER:" >> $info
+	blkid | grep -v squashfs >> $info
+	echo "" >> $info
+	echo "BAĞLANMIŞ BÖLÜMLER:" >> $info
+	df -Th | grep -v devtmpfs >> $info
+	echo "" >> $info
+	echo "CHEATCODES:" >> $info
+	cat /proc/cmdline >> $info
+	echo "" >> $info
+	echo "LIVEDBG BİLGİ:" >> $info
+	cat /var/log/Milis-livedbg >> $info
+	echo "" >> $info
+	echo "SES KARTLARI:" >> $info
+	cat /proc/asound/cards >> $info
+	echo "" >> $info
+	echo "LSPCI ÇIKTI:" >> $info
+	lspci -knn >> $info
+	echo "" >> $info
+	echo "LSUSB ÇIKTI:" >> $info
+	lsusb -t >> $info
+	echo "" >> $info
+	echo "LSMOD ÇIKTI:" >> $info
+	lsmod >> $info
+	echo "" >> $info
+	echo "PİL BİLGİSİ:" >> $info
+	dmidecode -t 22|sed -e '/dmidecode/d' -e '/SMBIOS/d' -e '/Handle/d' -e '/^$/d' >> $info
+	echo "" >> $info
+	echo "ANAGÖVDE BİLGİ:" >> $info
+	dmidecode -t 3|sed -e '/dmidecode/d' -e '/SMBIOS/d' -e '/Handle/d' -e '/^$/d' >> $info
+	echo "" >> $info
+	echo "SİSTEM BİLGİ:" >> $info
+	dmidecode -t 1|sed -e '/dmidecode/d' -e '/SMBIOS/d' -e '/Handle/d' -e '/^$/d'  >> $info
+	echo "" >> $info
+	echo "KULLANICI BİLGİ:" >> $info
+	grep -v "\!" /etc/shadow|cut -d':' -f1 >> $info
+	echo "" >> $info
+	echo "SON AÇILMA:" >> $info
+	who -b|sed 's/^[ \t]*//' >> $info
+	echo "Uptime (hr:min) : `uptime|awk '{print$3}'|sed 's/,//g'`" >> $info
+	echo "" >> $info
+	echo "LOADED MODULES:" >> $info
+	ls -1 /mnt/live/memory/images >> $info
+	echo "" >> $info
+	echo "LOADED PACKAGES:" >> $info
+	ls -1 /var/log/packages >> $info
+	echo "" >> $info
+	echo "/var/log/messages:" >> $info
+	tac /var/log/messages | sed -n '1,/kmsg started./p' | tac  >> $info
+	echo "" >> $info
+	echo "EKRAN:" >> $info
+	xrandr >> $info 2>/dev/null
+	echo "" >> $info
+	echo "OpenGL sürüm:" >> $info
+	glxinfo | grep -i opengl >> $info
+	echo "" >> $info
+	echo "/var/log/Xorg.0.log:" >> $info
+	cat /var/log/Xorg.0.log >> $info 2>/dev/null
+	echo "" >> $info
+	echo "XSESSION HATALARI:" >> $info
+	[ -f /root/.xsession-HATALARI ] && echo "Kullanıcı: root" >> $info && tail -n300 /root/.xsession-HATALARI >> $info
+	for a in `grep -v "\!" /etc/shadow|cut -d':' -f1|sed 'root/d'`; do
+		[ -f /home/$a/.xsession-HATALARI ] && echo "Kullanıcı: $a" >> $info && tail -n300 /home/$a/.xsession-HATALARI >> $info
+	done
+	kill_manual_progress
+	gtk_upload_report
+fi
+
+pastebin_message(){
+echo '
+<window window_position="1" title="Milis message" icon-name="cdr" allow-shrink="false" width-request="'$2'">
+<vbox>
+ <hbox>
+  <frame>
+  <pixmap icon_size="6">
+   <input file stock="'$3'"></input>
+  </pixmap>
+  </frame>
+  <frame>
+  <text wrap="true" selectable="true" has-focus="false"><label>"'$1'"</label></text>
+  </frame>
+ </hbox>
+ <hbox>
+  <button use-stock="true" label="gtk-ok" can-focus="true" has-focus="true"></button>
+ </hbox>
+</vbox>
+</window>
+' | gtkdialog -s
+}; export -f pastebin_message
+
+## If Kullanıcı chose to upload then do it, else dump to /root/desktop
+if [ `egrep -o "Yes|yes" $tmpsi/upload.tmp` ]; then
+  has_internet
+  if [ $answ -eq 0 ]; then
+  export STATE=MANUAL
+  echo "Lütfen bekleyiniz,yükleniyor" > /tmp/.message
+  manual_progress "Pastebin"
+  wgetpaste -n Milis-Kullanıcı -s codepad $info > $tmpsi/link.tmp
+  kill_manual_progress
+  export lnk=`awk '{print$NF}' < $tmpsi/link.tmp`
+  echo $lnk > /tmp/pastebin-link.txt
+  pastebin_message "Your file was uploaded to $lnk (You may select and copy this text) and this address is now in the file /tmp/pastebin-link.txt." 500 gtk-yes
+    else
+  cp $info /root/Desktop/psinfo_report.txt
+  gtk_message "No internet connection found. Your report was placed at /root/Desktop/psinfo_report.txt" 450 gtk-dialog-error
+  fi
+    else
+  cp $info /root/Desktop/psinfo_report.txt
+  gtk_message "Your file has been placed at /root/Desktop/psinfo_report.txt" 500 gtk-yes
+fi
+rm -rf $tmpsi

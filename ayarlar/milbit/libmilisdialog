@@ -1,0 +1,635 @@
+#!/bin/bash
+# xdialog kullanımını kolaylaştıran yordamlar.
+ 
+## milisarge <milisarge@gmail.com>
+## brokenman <brokenman@porteus.org> librokenman betiğinden yararlanılmıştır.
+###################################
+## READ THE COMMENTS CAREFULLY TO 
+## KNOW THE ARGUMENTS REQUIRED !!
+###################################
+
+## In most cases script returns variable $answ
+## In this case 0=yes 1=no
+## E.g is_64bit ($answ returns 0 then yes it is a 64bit machine)
+
+script=${0##*/}  ### This is the users script name, not this one
+scriptpath="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")" ### Full script  path
+answ=/tmp/.answ
+log=/var/log/libmilisdialog.log
+
+# Generic output for errors
+error(){
+echo $1 >> $log
+}
+
+# Find which window desktop session we are in. It returns wm=
+get_desktop_session(){
+# get desktop info
+startx=`ps x | grep -c /usr/bin/startx`
+if [ $startx -eq 2 ]; then
+    lxde=`ps x | grep -v grep | grep -c /usr/bin/lxsession`
+    trinity=`ps x | grep -v grep | grep tdeinit`
+    kde4=`ps x | grep -v grep | grep -c /usr/bin/starttde`
+    xfce=`ps x | grep -v grep | grep -c xfdesktop`
+else
+    lxde=`ps aux | sed '/X '$(echo $DISPLAY|cut -d. -f1)'/,$ !d' | sed '1,/X / !d' | grep -c /usr/bin/lxsession`
+    trinity=`ps aux | sed '/ '$DISPLAY' /,$ !d' | sed '1,/X / !d' | grep tdeinit`
+    kde4=`ps aux | sed '/ '$DISPLAY' /,$ !d' | sed '1,/X / !d' | grep -c /usr/bin/startkde`
+    xfce=`ps aux | sed '/ '$(echo $DISPLAY|cut -d. -f1)' /,$ !d' | sed '1,/X / !d' | grep -c xfdesktop`
+fi
+
+if [ "$lxde" -eq 1 ]; then
+    wm=lxde
+elif [ "$trinity" ]; then
+    wm=tde
+elif [ "$kde4" -eq 1 -a -z "$trinity" ]; then
+    wm=kde4
+elif [ "$xfce" -eq 1 ]; then
+    wm=xfce
+fi
+[ -z $wm ] && error "There was a problem finding the desktop session"
+}
+
+# milis mimari tipi
+is_64bit(){
+[ `uname -m|egrep "64"` ] && answ=0 ||  answ=1
+}
+
+# Silently kill a named process (number)
+kills(){
+# Check that $1 was given
+if [ $1 ]; then
+	kill $1 2>/dev/null &
+	wait $1 2>/dev/null
+		else
+	answ=3
+	error "You must supply a process ID to kill!"
+	return
+fi
+}
+
+# Unpack a compressed file to current dir
+# $1=compressed file
+unpack_file(){
+if [ ! $1 ]; then
+	answ=3
+	error "You must supply a compressed file"
+	cyan "Supported files: .zip .tar.gz .tar.bz2 .xzm"
+	return
+fi
+
+# Make sure file has valid extension
+local chkf
+local ext
+local nam
+local nam2
+chkf=`echo $1|egrep "*.tar.gz|.tar.bz2|.zip|.xzm|.tar.xz|.txz|.tgz"`
+if [ -z $chkf ]; then
+	answ=3
+	error "ERROR:" "This type of file is not supported!"
+	return
+fi
+
+# Get extension
+ext=${chkf##*.}
+nam=${1##*/}
+case $ext in
+gz )
+tar zxvf $1 >/dev/null|| answ=3 && error "ERROR unpacking $1"
+;;
+bz2 )
+tar xvjf $1 >/dev/null|| bzip2 -d $1 || answ=3 && error "ERROR unpacking $1"
+;;
+zip )
+unzip $1 >/dev/null|| answ=3 && error "ERROR unpacking $1"
+;;
+xzm )
+unsquashfs $1 >/dev/null 2>&1 answ=3 && error "ERROR unpacking $1"
+;;
+xz )
+tar -Jxf $1 >/dev/null || answ=3 && error "ERROR unpacking $1"
+;;
+txz )
+mktemp -d ./unpacked.XXXXXX
+local targ
+targ=`ls|grep unpacked`
+installpkg -root $targ $1 >/dev/null 2>&1 || answ=3 && error "ERROR unpacking $1"
+;;
+tgz )
+mktemp -d ./unpacked.XXXXXX || answ=3 && error "ERROR unpacking $1"
+local targ
+targ=`ls|grep unpacked`
+installpkg -root $targ $1 >/dev/null 2>&1 || answ=3 && error "ERROR unpacking $1"
+;;
+esac
+}
+
+# Make a posix test
+# $1=dir
+make_posix_test(){
+f1=$1/._test1
+f2=$1/._test2
+touch $f1
+ln -s $f1 $f2 2>/dev/null && chmod +x $f1 2>/dev/null && [ -x $f1 ] && chmod -x $f1 2>/dev/null && [ ! -x $f1 ] && rm -f $f1 $f2
+if [ $? -ne 0 ]; then
+	answ=1
+	rm -f $f1 $f2 >/dev/null 2>&1
+		else
+	answ=0
+fi
+}
+
+# Remove duplicates
+# $1=file
+remove_duplicates(){
+if [ ! $1 ]; then
+  answ=3 && error "You must supply a valid list"
+  return
+    elif [ ! -f $1 ]; then
+  error "Could not find $1" $FUNCNAME $LINENO
+  cyan "Make sure the file exists and is a list"
+  exit
+  else
+  sort -u $1 > /tmp/.hold
+  rm $1
+  mv /tmp/.hold $1
+fi
+}
+
+# A simple Xdialog download gauge
+# $1=title $2=text $3=link $4=rc-file
+download() {
+if [ $# -lt 4 ]; then
+  error "You must supply 4 args to: $FUNCNAME" $FUNCNAME $LINENO
+  cyan "\$1=title, \$2=text, \$3=link \$4=rc-file"
+  cyan "If you don't have an rc-file just put anything"
+  exit
+    else
+touch /tmp/.dload
+dl=/tmp/.dload
+wget $3 -o $dl &
+(
+while [ "$i" != "98" -a "$f" == "" ]; do
+   echo $i
+   i=$(cat $dl 2>/dev/null| grep "%" |awk '{print $(NF-2)}'|sed 's/\(.*\)./\1/'|tail -n1)
+   f=$(grep "100%" $dl)
+   sleep 0.1
+done
+) | Xdialog --title "$1" --rc-file "$4" --icon "$5" --gauge "Downloading $2...." 400x150
+[ -f $dl ] && rm -f $dl
+fi
+[ -f $dl ] && rm $dl
+}
+
+# Check that a filename is slackware compatible
+# If name is bad will return badname=1
+# If field has -lt 4 will return $badflds
+# If $PKG_ARCH is -ne i486,x86_64,noarch,fw will return $badarch
+check_slackware_name(){
+if [ $# -eq 0 ]; then
+	error "You must supply a slackware file name!" $FUNCNAME $LINENO
+		else
+	local FILE=${1##*/}
+
+	# Make sure all is in lower case
+	FILE=`echo $FILE|tr "[:upper:]" "[:lower:]"`
+
+	# Make sure there are no less than 4 fields
+	local flds=`awk -F- '{print NF}' $FILE`
+	[ $flds -lt 4 ] && { answ=1; return; }
+
+	# Split package name to individual elements
+	eval $(echo $FILE | sed 's/\(.*\)-\([^-]*\)-\([^-]*\)-\([0-9]*\)\(.*\)*/\
+        PKG_NAME=\1 PKG_VER=\2 PKG_ARCH=\3 PKG_BUILD=\4 PKG_TAG=\5/')
+
+	# Check that package arch is legit
+	[ ! `echo $PKG_ARCH|egrep "i*86|x86_64|noarch|fw"` ] && { answ=1; return; }
+	answ=0
+fi
+}
+
+# makes sure that is a directory is chosen, it is not on aufs
+# unless in tmp or home folder (never in root)
+# This function returns nopermit=1 if dir is bad.
+is_on_aufs(){
+if [ $# -ne 1 ]; then
+	answ=3
+	return
+		else
+	[ ! -d $1 ] && { answ=3; return; }
+	[ "`df -T $1|tail -n1|awk '{print$1}'`" == "aufs" ] && answ=0 || answ=1
+fi
+}
+
+# Verify that this is a milis module & identify squashfs version
+# $1=module path  
+# Returns: badext=1 bad extension | sq=4 squashfs4 | sq=3 squashfs3 | sq=0 not valid
+is_squash4(){
+if [ ! $1 ]; then
+  error "You must supply the path to a valid Milis module" $FUNCNAME $LINENO
+  return
+    else
+mname=$1
+ftype=`file $mname|egrep -o "endian|data"`
+[ -z $ftype ] && answ=0 || answ=1
+fi
+}
+
+# Silently mount a module on loopback and check is module
+# Mount module to /mnt/loop
+mount_module(){
+if [ ! $1 ]; then
+	answ=3
+  	return
+		else
+	is_squash4
+	if [ $answ -eq 1 ]; then
+		answ=3
+			else
+		mloop "$1" >/dev/null 2>&1 && answ=0 || answ=3
+	fi
+fi
+}
+
+# Check if a website is online and working (silently)
+# Returns url=0 if it is avaiable
+silent_check_url(){
+if [ $# -lt 1 ]; then
+	answ=3
+	error "You must supply a URL to:" $FUNCNAME $LINENO
+  exit
+    else
+  if (wget -q --spider --force-html --inet4-only "$1" >/dev/null 2>&1); then
+    answ=0
+	else
+    answ=1
+  fi
+fi
+}
+
+# Check if a website is online and working (silently)
+# Returns url=0 if it is avaiable
+has_internet(){
+if (wget -q --spider --force-html --inet4-only http://www.google.com >/dev/null 2>&1); then
+    answ=0
+	else
+    answ=1
+fi
+}
+
+# Check that writable flag is set
+is_writable(){
+[ -w $1 ] && answ=0 || answ=1
+}
+
+# Get the last field in a given string with given delimiter
+# $1=delimiter
+get_last_field(){
+awk -F"$1" '{print$NF}'
+}
+
+# Get the field count for given string with given delimiter
+get_field_count(){
+awk -F"$1" '{print NF}'
+}
+
+# Make a free loop if one is not present
+check_free_loop_device(){
+x=`grep /dev/loop /proc/mounts | tail -n1 | cut -d " " -f1 | sed 's@/dev/loop@@'`; let y=x+1
+loop=/dev/loop$y
+if [ ! -e $loop ]; then mknod $loop b 7 $y; fi
+unset x loop y
+}
+
+
+# Green colored output
+green() {
+	echo -e "\033[01;32m$@\033[00m"
+}
+
+# Yellow colored output
+yellow() {
+	echo -e "\033[01;33m$@\033[00m"
+}
+
+# Red colored output
+function redd() {
+	echo -e "\033[01;31m$@\033[00m"
+}
+
+# Cyan colored output
+cyan() {
+	echo -e "\033[01;36m$@\033[00m"
+}
+
+# Blue colored output
+blue() {
+	echo -e "\033[01;34m$@\033[00m"
+}
+
+# Magenta colored output
+magenta() {
+	echo -e "\033[01;35m$@\033[00m"
+}
+
+### GTKDIALOG LIBRARIES
+
+## Use manual progress update like so:
+## echo "My message goes here" > /tmp/.message
+## manual_progress "My title goes here"
+## sleep 5 (or other code)
+## echo "Second update goes here" > /tmp/.message
+## sleep 3 (or other code)
+## kill_manual_progress
+manual_progress(){
+# Open a window for progress
+export MANUAL_PROGRESS='
+<window title="Milis message" icon-name="cdr" resizable="false" width-request="400" window_position="1">
+<vbox>
+  <frame>
+    <text use-markup="true" width-request="310">
+      <label>"'$1'"</label>
+      <variable>PROGRESS_TXT</variable>
+    </text>
+    <progressbar visible="true">
+      <variable>PROGRESS_BAR</variable>
+      <label>...</label>
+      <input>prog_counter</input>
+    </progressbar>
+  </frame>
+</vbox>
+</window>
+'
+gtkdialog -c -p MANUAL_PROGRESS 2>/tmp/.progress_trap &
+}; export -f manual_progress
+
+## This is called by the manual_progress function. 
+prog_counter(){
+case $STATE in
+MANUAL )
+while [ A != B ]; do
+    MSG=`cat /tmp/.message`
+    echo $MSG
+    sleep 0.3
+done
+echo "ALL DONE"
+unset STATE
+;;
+DOWNLOAD )
+while [ A != B ]; do
+    if [ -f /tmp/.cdload ]; then M=`cat /tmp/.cdload`; echo "$M"; fi
+    sleep 0.3
+    [ `grep "100%" /tmp/.message` ] && echo 1
+    i=$(grep -o "[^ ]*%[^ ]*" /tmp/.message|sed "s/%//g"|tail -n1)
+    [ "$i" == "100" ] && i=1
+    [ "$i" != "" ] && echo "$i"
+    sleep 0.3
+done
+echo "ALL DONE"
+unset STATE
+;;
+BUILDMODULE )
+while [ A != B ]; do
+    if [ ! -f /tmp/.message ]; then echo "Waiting ..."; fi
+    [ `grep "100%" /tmp/.message` ] && echo Finished
+    i=$(grep -o ...% /tmp/.message|sed -e "s/%//g" -e 's/ //g'|tail -n1)
+    [ "$i" != "" ] && echo "$i"
+    sleep 0.3
+done
+echo "ALL DONE"
+unset STATE
+;;
+* )
+while [ A != B ]; do
+    MSG=`cat /tmp/.message`
+    echo $MSG
+    sleep 0.3
+done
+echo "ALL DONE"
+unset STATE
+;;
+esac
+[ -f /tmp/.cdload ] && rm /tmp/.cdload 2>&-
+[ -f /tmp/.message ] && rm /tmp/.message 2>&-
+}; export -f prog_counter
+
+kill_manual_progress() {
+myself=`ps ax|grep MANUAL_PROGRESS|awk '{print$1}'|head -n1`
+for children in `ps -o pid --ppid $myself|sed '/PID/d'`; do
+kill $children >/dev/null 2>&-
+done
+kill $myself >/dev/null 2>&-
+[ -f /tmp/.message ] && rm /tmp/.message
+[ -f /tmp/.progress_trap ] && rm /tmp/.progress_trap
+}; export -f kill_manual_progress
+
+gtk_message(){
+echo '
+<window window_position="1" title="Milis mesaj" icon-name="cdr" allow-shrink="false" width-request="'$2'">
+<vbox>
+ <hbox>
+  <frame>
+  <pixmap icon_size="6">
+   <input file stock="'$3'"></input>
+  </pixmap>
+  </frame>
+  <frame>
+  <text wrap="true"><label>"'$1'"</label></text>
+  </frame>
+ </hbox>
+ <hbox>
+  <button ok></button>
+ </hbox>
+</vbox>
+<action signal="hide">exit:abort main window by X</action>
+</window>
+' | gtkdialog -s
+}
+
+## $1=message $2=width $3=icon(file)
+gtk_message_custom(){
+echo '
+<window window_position="1" title="Milis mesaj" icon-name="cdr" allow-shrink="false" width-request="'$2'">
+<vbox>
+ <hbox>
+  <frame>
+  <pixmap icon_size="6">
+   <input file>'$3'</input>
+  </pixmap>
+  </frame>
+  <frame>
+  <text use-markup="true" wrap="true"><label>"'$1'"</label></text>
+  </frame>
+ </hbox>
+ <hbox>
+  <button ok></button>
+ </hbox>
+</vbox>
+<action signal="hide">exit:abort main window by X</action>
+</window>
+' | gtkdialog -s
+}
+
+gtk_choose_file(){
+echo '
+<text label="'$1'"></text>
+	<entry editable="false" fs-title="'$2'" fs-action="'$3'" fs-folder="'$4'" height-request="32">
+		<variable>'$6'</variable>
+	</entry>
+	<button>
+		<variable>'$5'</variable>
+		<input file stock="gtk-find"></input>
+		<action>fileselect:'$6'</action>
+	</button>
+'
+}
+
+start_window(){
+echo '<window window_position="1" title="'$1'" icon-name="'$2'" allow-shrink="false" width-request="'$3'" height-request="'$4'">
+<vbox margin="10">'
+}
+
+end_window(){
+echo '</vbox><action signal="hide">exit:Cancel</action></window>'
+}
+
+txtmarkup(){
+echo '<text use-markup="true" width-request="'$1'" selectable="true" can-focus="no"><label>"'$2'"</label></text>'
+}
+
+txtcolor(){
+echo '<text use-markup="true" width-request="'$1'"><label>"<span fgcolor='"'$2'"' size='"'$3'"' weight='"'$4'"'>'$5'</span>"</label></text>'
+}
+
+txtfile(){
+echo '<text width-request="'$1'" selectable="true" can-focus="no"><label>NoTextFound</label><input file>'$2'</input></text>'
+}
+
+pixmapstock(){
+echo '<pixmap><input file stock="'$1'"></input></pixmap>'
+}
+
+pixmapicon(){
+echo '<pixmap><height>'$1'</height><width>'$2'</width><input file icon="'$3'"></input></pixmap>'
+}
+
+pixmapfile(){
+echo '<pixmap><height>'$1'</height><width>'$2'</width><input file>'$3'</input></pixmap>'
+}
+
+vsep(){
+echo '<vseparator></vseparator>'
+}
+
+hsep(){
+echo '<hseparator></hseparator>'
+}
+
+butstock(){
+echo '<button use-underline="true"><variable>'$1'</variable><label>'$2'</label><input file stock="'$3'"></input>'
+}
+
+buticon(){
+echo '<button><variable>'$1'</variable><label>'$2'</label><input file icon="'$3'"></input>'
+}
+
+butok(){
+echo '<button ok></button>'
+}
+
+butcancel(){
+echo '<button cancel></button>'
+}
+
+butyes(){
+echo '<button yes></button>'
+}
+
+butno(){
+echo '<button no></button>'
+}
+
+butreturn(){
+echo '<button tooltip-text="'$1'" use-underline="true"><label>_Return</label><input file stock="gtk-go-back"></input><sensitive>'$2'</sensitive>'
+}
+
+butcustom(){
+echo '<button tooltip-text="'$1'" sensitive="'$6'"><label>'$2'</label><variable>'$3'</variable><input file '$4'="'$5'"></input>'
+}
+
+rbut(){
+echo '<radiobutton active="'$1'"><variable>'$2'</variable><label>'$3'</label>'
+}
+
+chkbox(){
+echo '<checkbox active="'$1'"><label>"'$3'"</label><variable>'$2'</variable>'
+}
+
+blankline(){
+echo '<text><label>""</label></text>'
+}
+
+entry(){
+echo '<entry sensitive="'$1'" tooltip-text="'$2'"><default>"'$3'"</default><variable>'$4'</variable>'
+}
+
+table(){
+echo '<table><variable>'$1'</variable><label>"'$4'"</label><height>'$2'</height><width>'$3'</width>'
+}
+
+if [ "$1" == "-h" ]; then
+yellow start_window
+blue "WindowTitle WindowIcon width height"
+yellow "txtmarkup"
+blue "width text"
+yellow "txtcolor"
+blue "width color size weight text"
+yellow txtfile
+blue "width file"
+yellow pixmapstock
+blue "gtk-name"
+yellow pixmapicon
+blue "height width icon"
+yellow pixmapfile
+blue "height width file"
+yellow vsep
+blue "vertical seperator (nothing required)"
+yellow hsep
+blue "horizontal seperator (nothing required)"
+yellow butok
+blue "nothing required"
+yellow butcancel
+blue "nothing required"
+yellow butyes
+blue "nothing required"
+yellow butno
+blue "nothing required"
+yellow butstock
+blue "variable label gtk-icon"
+cyan "must be closed with </button>"
+yellow buticon
+blue "variable label icon"
+cyan "must be closed with </button>"
+yellow butreturn
+blue "tooltip-text sensitive (true/false)"
+cyan "must be closed with </button>"
+yellow butcustom
+blue "tooltip label variable stock/icon gtk-icon/iconname sensitive (true/false)"
+cyan "must be closed with </button>"
+yellow rbut
+blue "active (true/false) variable label"
+cyan "must be closed with </radiobutton>"
+yellow chbox
+blue "active (true/false) variable label"
+cyan "must be closed with </checkbox>"
+yellow blankline
+blue "makes a blank line"
+yellow entry
+blue "sensitive tooltip-text defaulttext variable"
+cyan "must be closed with </entry>"
+yellow table
+blue "variable height width label"
+cyan "enter <item>something</item>"
+cyan "Must be closed with </table>"
+fi
+

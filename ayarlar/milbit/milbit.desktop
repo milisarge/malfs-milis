@@ -1,0 +1,9 @@
+[Desktop Entry]
+Path=/usr/bin
+Name=MilBiT
+Comment=Milis Linux Sistem Bilgi Toplama Aracı
+Exec=milbit
+Terminal=false
+Type=Application
+Icon=hwinfo
+Categories=System;
