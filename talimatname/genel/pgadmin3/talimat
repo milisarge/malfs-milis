@@ -17,4 +17,10 @@ build() {
 	make all
 	make DESTDIR=$PKG install
 	find $PKG/usr/share/pgadmin3/docs/* ! -wholename "*tr_TR*" | xargs rm -rf
+	rm -r "$PKG/usr/share/pgadmin3/i18n/"
+	install -d "$PKG/usr/share/pgadmin3/i18n/"
+	install -Dm644 i18n/$name.lng "$PKG/usr/share/pgadmin3/i18n"
+	cp -r i18n/tr_TR "$PKG/usr/share/pgadmin3/i18n/"
+	install -Dm644 "pgadmin/include/images/pgAdmin3.png" "$PKG/usr/share/pgadmin3/pgadmin3.png"
+	install -Dm644 "pkg/pgadmin3.desktop" "$PKG/usr/share/applications/pgadmin3.desktop"
 }
