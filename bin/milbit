@@ -244,9 +244,9 @@ fi
 ;;
 Xsession )
 insert_header "XSESSION HATALARI:"
-[ -f /root/.xsession-HATALARI ] && echo "Kullanıcı: root" >> $info && cat /root/.xsession-HATALARI >> $info
+[ -f /root/.xsession-errors] && echo "Kullanıcı: root" >> $info && cat /root/.xsession-errors >> $info
 for a in `grep -v "\!" /etc/shadow|cut -d':' -f1|sed 'root/d'`; do
-  [ -f /home/$a/.xsession-HATALARI ] && echo "Kullanıcı: $a" >> $info && cat /home/$a/.xsession-HATALARI >> $info
+  [ -f /home/$a/.xsession-errors ] && echo "Kullanıcı: $a" >> $info && cat /home/$a/.xsession-errors >> $info
 done
 ;;
 Syslog )
