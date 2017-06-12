@@ -408,7 +408,7 @@ paket_guncelle_oto(){
 
 sistem_guncelle(){
 	# güncellemede atlanacak paketler.
-	esgec=(xorg xorg-font xorg-proto kernel-lts vlc)
+	esgec=(xorg xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
 	local kpkt
 	local pk_guncelle
 	mps -GG 
