@@ -1,5 +1,6 @@
 grub
 dmidecode
+hdparm
 start-stop-daemon
 dejavu-ttf
 xorriso
