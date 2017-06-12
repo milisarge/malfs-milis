@@ -17,9 +17,9 @@ build(){
     
     # several symlinks
     ln -s $name $PKG/usr/lib/java
-    #ln -s ../lib/java/bin/java $PKG/usr/bin/java
+    ln -s ../lib/java/bin/java $PKG/usr/bin/java
     ln -s ../lib/java/bin/javaws $PKG/usr/bin/javaws
-    #ln -s ../lib/java/bin/keytool $PKG/usr/bin/keytool
+    ln -s ../lib/java/bin/keytool $PKG/usr/bin/keytool
     ln -s ../lib/java/bin/jcontrol $PKG/usr/bin/jcontrol
 
     # remove broken libraries
