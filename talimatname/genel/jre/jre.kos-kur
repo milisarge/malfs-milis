@@ -1,0 +1,3 @@
+mps sil icedtea-web
+install -d /usr/lib/mozilla/plugins
+
