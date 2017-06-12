@@ -1,0 +1,16 @@
+# Description: Dracut için aufs modülünü kullanarak dizinlerin başlama esnasında bağlanmasını sağlar.
+# URL: https://abf-doc.rosalinux.ru/din/dracut-aufs.git
+# Packager: milisarge
+# Depends on: dracut
+
+name=dracut-aufs
+version=1.0
+release=1
+source=(aufs-mount.sh
+		module-setup.sh)
+
+build() {
+	install -d $PKG/usr/lib/dracut/modules.d/99aufs-mount
+	install -m 755 $SRC/aufs-mount.sh   $PKG/usr/lib/dracut/modules.d/99aufs-mount/
+	install -m 755 $SRC/module-setup.sh $PKG/usr/lib/dracut/modules.d/99aufs-mount/
+}
