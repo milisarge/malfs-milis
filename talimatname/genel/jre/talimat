@@ -1,0 +1,27 @@
+# Description: Java Runtime Environment
+# URL:         http://www.oracle.com/technetwork/java/javase/overview/index.html
+# Packager:    milisarge
+# Depends on:
+
+name=jre
+version=1.8.0_131
+release=1
+source=(file:///$name-8u${version#*_}-linux-x64.tar.gz)
+
+build(){
+    cd $name$version
+
+    install -d $PKG/usr/{bin,share/man,lib/$name}
+    mv man/man1 $PKG/usr/share/man
+    mv bin lib plugin  $PKG/usr/lib/$name
+    
+    # several symlinks
+    ln -s $name $PKG/usr/lib/java
+    #ln -s ../lib/java/bin/java $PKG/usr/bin/java
+    ln -s ../lib/java/bin/javaws $PKG/usr/bin/javaws
+    #ln -s ../lib/java/bin/keytool $PKG/usr/bin/keytool
+    ln -s ../lib/java/bin/jcontrol $PKG/usr/bin/jcontrol
+
+    # remove broken libraries
+    rm $PKG/usr/lib/jre/lib/amd64/libavplugin-*.so
+}
