@@ -1,0 +1,36 @@
+# Description: Hızlı tempolu ekip tabanlı dış alan çok oyunculu muharebe oyunu
+# URL:         http://bitfighter.org/
+# Packager:    milisarge
+# Depends on:  cmake xorg-glu sdl2 libpng libvorbis libmodplug openal speex 
+
+name=bitfighter
+version=0.19f
+release=1
+source=(http://bitfighter.org/files/bitfighter-${version/./}.tar.gz
+		https://bitfighter.org/files/classic_level_pack.zip
+		bitfighter.png
+		bitfighter.desktop)
+
+build() {
+  cd ${name}-${version/./}
+  mkdir -p build
+  cd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
+    -DUSE_SDL2:BOOL=YES \
+    -DUSE_GLES:BOOL=YES \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+
+  make VERBOSE=1
+  # install game ressources and executable
+  install -d "$PKG"/usr/share/$name "$PKG"/usr/bin
+  cd ..
+  cp "${SRC}"/classic_level_pack/* resource/
+  cp notifier/gci/bitfighter.ini resource/
+  cp -r resource/* "$PKG"/usr/share/$name
+  install -m755 exe/$name "$PKG"/usr/bin/$name
+  # install a desktop entry
+  install -Dm644 ../$name.png "$PKG"/usr/share/pixmaps/$name.png
+  install -Dm644 ../$name.desktop "$PKG"/usr/share/applications/$name.desktop
+}
