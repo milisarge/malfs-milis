@@ -1,0 +1,15 @@
+# Description: önyükleme için gereken her şeyi içeren özel bir initramfs görüntüsü oluşturma aracı
+# URL: https://dracut.wiki.kernel.org/
+# Packager: milisarge
+# Depends on:
+
+name=dracut
+version=045
+release=1
+source=(http://kernel.org/pub/linux/utils/boot/dracut/$name-$version.tar.xz)
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make -j1
+	make DESTDIR=$PKG install
+}
