@@ -1,0 +1,17 @@
+# Description: Uygulama girdi testi (fuzzing) aracı.
+# URL: http://sam.zoy.org/zzuf/
+# Packager: yakar (aydin@komutan.org)
+# Depends on:
+
+name=zzuf
+version=0.15
+release=1
+source=(https://github.com/samhocevar/$name/archive/v$version.tar.gz)
+
+build() {
+  cd "$SRC/zzuf-$version"
+  sh bootstrap
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+}
