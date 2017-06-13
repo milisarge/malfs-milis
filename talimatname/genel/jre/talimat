@@ -11,18 +11,21 @@ source=(file:///$name-8u${version#*_}-linux-x64.tar.gz)
 build(){
     cd $name$version
 
-    install -d $PKG/usr/{bin,share/man,lib/$name}
-    mv man/man1 $PKG/usr/share/man
+    install -d $PKG/usr/{bin,share,lib/$name}
     mv bin lib plugin  $PKG/usr/lib/$name
     install -d "$PKG"/usr/lib/mozilla/plugins
     # several symlinks
     ln -s $name $PKG/usr/lib/java
-    #ln -s ../lib/java/bin/java $PKG/usr/bin/java
+    ln -s ../lib/java/bin/java $PKG/usr/bin/java
     ln -s ../lib/java/bin/javaws $PKG/usr/bin/javaws
-    #ln -s ../lib/java/bin/keytool $PKG/usr/bin/keytool
+    ln -s ../lib/java/bin/keytool $PKG/usr/bin/keytool
     ln -s ../lib/java/bin/jcontrol $PKG/usr/bin/jcontrol
-    ln -s ../lib/java/lib/amd64/libnpjp2.so "$PKG"/usr/lib/mozilla/plugins/libnpjp2-jre8.so
-
+    sed -e "s|Exec=|Exec=/usr/lib/java/bin/|" \
+        -e "s|.png|-jre8.png|" \
+    -i $PKG/usr/lib/jre/lib/desktop/applications/*
+    mv $PKG/usr/lib/jre/lib/desktop/applications "$PKG"/usr/share/
+    #install -m644 "$SRC"/*.desktop "$PKG"/usr/share/applications/
+    ln -s /usr/lib/java/lib/amd64/libnpjp2.so "$PKG"/usr/lib/mozilla/plugins/libnpjp2-jre8.so
     # remove broken libraries
     rm $PKG/usr/lib/jre/lib/amd64/libavplugin-*.so
 }
