@@ -1,0 +1,21 @@
+# Description: Scaling, colorspace conversion, and dithering library
+# URL: http://forum.doom9.org/showthread.php?t=171334
+# Packager: milisarge
+# Depends on: 
+
+name=zimg
+version=2.5.1
+release=1
+source=(https://github.com/sekrit-twc/zimg/archive/release-$version.tar.gz)
+
+build() {
+  cd zimg-release-${version}
+
+  ./autogen.sh
+  ./configure \
+    --prefix='/usr' \
+    --enable-x86simd \
+	--disable-static
+  make
+  make DESTDIR="${PKG}" install
+}
