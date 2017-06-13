@@ -6,7 +6,7 @@
 name=jre
 version=1.8.0_131
 release=1
-source=(file:///$name-8u${version#*_}-linux-x64.tar.gz)
+source=(http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/jre-8u131-linux-x64.tar.gz)
 
 build(){
     cd $name$version
