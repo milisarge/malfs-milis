@@ -1604,6 +1604,7 @@ if [ `id -u` = 0 ] ; then
 		if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
 			paketad=`echo "$2" | cut -d'#' -f1`	
 			kkont=`kurulu_kontrol "$paketad"`
+			
 			if [ "$kkont" = "degil" ];then
 				icerik_ekle "$2"
 			elif [ "$kkont" = "kurulu" ];then
@@ -1624,17 +1625,15 @@ if [ `id -u` = 0 ] ; then
 					icerik_ekle "$2"
 				fi
 			else
-				if [ "$tekrarkur" = "evet" ];then
-					while true; do
-						ryaz 31 "$2 paketi talimatname dışı.Yine de kurulsun mu? (kokdizin=$kokdizin) "
-						read -p "e veya h -> " eh
-						case $eh in
-							[Ee]* ) icerik_ekle "$2"; break;;
-							[Hh]* ) break;;
-							* ) echo "e veya h";;
-						esac
-					done
-				fi
+				while true; do
+					ryaz 31 "$2 paketi talimatname dışı.Yine de kurulsun mu? (kokdizin=$kokdizin) "
+					read -p "e veya h -> " eh
+					case $eh in
+						[Ee]* ) icerik_ekle "$2"; break;;
+						[Hh]* ) break;;
+						* ) echo "e veya h";;
+					esac
+				done
 			fi
 		else
 			ryaz 31 "yerelde mps paketi bulunamadı."
