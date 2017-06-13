@@ -5,7 +5,7 @@
 
 name=hddtemp
 version=0.3-beta15
-release=1
+release=2
 source=(http://nongnu.askapache.com/hddtemp/$name-$version.tar.bz2
 	http://nongnu.askapache.com/hddtemp/hddtemp.db
 	hddtemp-0.3-beta15-satacmds.patch
@@ -33,5 +33,5 @@ build() {
 	make
 	make DESTDIR=$PKG install
 	install -m 0644 -D $SRC/hddtemp.db $PKG/etc/hddtemp.db
-	install -m 0744 -D $SRC/hddtemp.rc $PKG/etc/rc.d/hddtemp
+	install -m 0744 -D $SRC/hddtemp.rc $PKG/etc/rc.d/init.d/hddtemp
 }
