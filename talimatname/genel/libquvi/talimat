@@ -1,0 +1,16 @@
+# Description: video linklerini ayrıştıran kütüphane
+# URL:         http://quvi.sourceforge.net/
+# Packager:    milisarge
+# Depends on:  libquvi-scripts lua51
+
+name=libquvi
+version=0.4.1
+release=1
+source=(http://downloads.sourceforge.net/sourceforge/quvi/$name-$version.tar.xz)
+
+build () {
+    cd "$name-$version"
+    ./configure --prefix=/usr --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+}

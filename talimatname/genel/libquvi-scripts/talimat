@@ -1,0 +1,17 @@
+# Description: video linklerini ayrıştıran betikler
+# URL:         http://quvi.sourceforge.net/
+# Packager:    milisarge
+# Depends on:  lua
+
+name=libquvi-scripts
+version=0.4.21
+release=1
+source=(http://downloads.sourceforge.net/sourceforge/quvi/$name-$version.tar.xz)
+
+build () {
+    cd "$name-$version"
+    ./configure --prefix=/usr --mandir=/usr/man --with-nsfw --with-nlfy
+    make
+    make DESTDIR=$PKG install
+    rm -rf $(find $PKG/usr/share -name README)
+}
