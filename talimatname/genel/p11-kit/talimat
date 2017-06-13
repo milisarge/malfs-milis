@@ -4,19 +4,23 @@
 # Depends on: libffi libtasn1
 
 name=p11-kit
-version=0.23.2
+version=0.23.7
 release=1
 
-source=(http://p11-glue.freedesktop.org/releases/$name-$version.tar.gz)
+source=(https://github.com/p11-glue/p11-kit/archive/$version.tar.gz
+		libnssckbi-compat.patch)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
---sysconfdir=/etc
-make
-make DESTDIR=$PKG install
-rm -r $PKG/usr/share
-if [ -f $PKG/etc/pkcs11/pkcs11.conf.example ]; then
-	mv $PKG/etc/pkcs11/pkcs11.conf{.example,}
-fi
+	cd $name-$version
+	patch -Np1 -i ../libnssckbi-compat.patch
+	NOCONFIGURE=1 ./autogen.sh
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--libexecdir=/usr/lib \
+	--with-module-path=/usr/lib/pkcs11 \
+	--with-trust-paths=/etc/ca-certificates/trust-source:/usr/share/ca-certificates/trust-source:/etc/ssl
+	make
+	make DESTDIR="$PKG" install
+	ln -srf "$PKG/usr/bin/update-ca-trust" "$PKG/usr/lib/p11-kit/trust-extract-compat"
 }
