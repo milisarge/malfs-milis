@@ -1,0 +1,18 @@
+# Description: Microsoft sıkıştırma kütüphaneleri
+# URL: http://www.cabextract.org.uk/libmspack/
+# Packager: milisarge
+# Depends on: 
+
+name=libmspack
+version=1.5
+release=1
+source=(https://github.com/kyz/libmspack/archive/v$version.tar.gz)
+
+build() {
+  cd $name-$version/$name/trunk
+  autoreconf -vfi
+  ./configure --prefix=/usr --disable-static
+  make
+  make check
+  make DESTDIR="$PKG/" install
+}

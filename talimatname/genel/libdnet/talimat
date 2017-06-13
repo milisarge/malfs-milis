@@ -1,0 +1,18 @@
+# Description: ARP arkaplan çalıştırma ve araçlar
+# URL:         http://arpon.sf.net
+# Packager:    milisarge
+# Depends on:  libpcap libnet 
+
+name=libdnet
+version=1.11
+release=1
+source=(http://download.sourceforge.net/$name/$name-$version.tar.gz)
+
+build() {
+    cd  $name-$version
+    autoreconf -i -Iconfig
+    ./configure --prefix=/usr \
+                --mandir=/usr/man
+    make
+    make install DESTDIR=$PKG
+}

@@ -1,0 +1,45 @@
+README for open-vm-tools
+
+INTRODUCTION
+
+This port contains VMware Tools.  You should install it if you are running CRUX
+as a virtual machine under the VMware hypervisor.
+This has only been tested on single core 32-bit virtual machines.
+The VMware filesystem (vmhgfs) has not been tested.
+Feedback is appreciated.
+
+POST-INSTALL
+
+1. Run the post-install script.
+2. Add vmtools to the list of services to start at boot time.
+
+FAQ
+
+Q: What is the difference between this and the official commercial VMware Tools
+   distribution?
+
+A: This code comes from the GPL release of VMware's tools, so in theory
+   it should work just as the commercial version.
+   That said, since this port is intended to be used on a server environment,
+   all the desktop utilities have been removed (eg: no GUI applications).
+
+Q: Where is the driver for the VMware network adapter and disk controller?
+
+A: Some device drivers are already included in the Linux kernel and disabled
+   in this port.
+   Please enable these kernel options:
+   * CONFIG_VMWARE_BALLOON
+   * CONFIG_VMWARE_PVSCSI
+   * CONFIG_VMXNET3
+   If your boot filesystem is connected to a paravirtual SCSI interface make
+   sure CONFIG_VMWARE_PVSCSI is set as builtin instead of module.
+   
+
+Q: Why do I have to shutdown/reboot twice my VM from VMware before it reacts?
+
+A: Did you run the post-install script?
+
+
+--
+If you have any feedback/problems please email me:
+Alan Mizrahi, alan at mizrahi dot com dot ve
