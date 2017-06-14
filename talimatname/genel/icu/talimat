@@ -4,13 +4,13 @@
 # Depends on:
 
 name=icu
-version=56.1
+version=58.2
 release=1
 source=(http://download.$name-project.org/files/icu4c/$version/icu4c-${version//./_}-src.tgz)
 
 build () {
-cd $name/source
-CC=gcc CXX=g++ ./configure --prefix=/usr
-make
-make prefix=$PKG/usr install
+	cd $name/source
+	CC=gcc CXX=g++ ./configure --prefix=/usr
+	make
+	make prefix=$PKG/usr install
 }
