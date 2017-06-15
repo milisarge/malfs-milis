@@ -243,6 +243,11 @@ def bolumCoz(hedef):
 def sistemKopyala(baglam):
 	os.system("clear")
 	komut=""
+	# kurulum.desktop silinmesi
+	komut1="rm /root/Masaüstü/kurulum.desktop"
+	komut2="rm /root/Desktop/kurulum.desktop"
+	os.system(komut1)
+	os.system(komut2)
 	#bazı dizinleri atlamak için ve hız rsync
 	dizinler=["bin","boot","home","lib","sources","usr","depo","etc","include","lib64","opt","root","sbin","var"]
 	yenidizinler=["srv","proc","tmp","mnt","sys","run","dev","media"]
@@ -259,11 +264,7 @@ def sistemKopyala(baglam):
 		komut="mkdir -p "+baglam+"/"+ydizin
 		os.system(komut)
 		print (ydizin,"oluşturuldu.")
-	# kurulum.desktop silinmesi
-	komut="rm /root/Masaüstü/kurulum.desktop"
-	komut2="rm /root/Desktop/kurulum.desktop"
-	os.system(komut)
-	os.system(komut2)
+	
 	#yükleme akışı için acp
 	#os.system("acp -g -axnu / "+baglam)
 	#normal cp
