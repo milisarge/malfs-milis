@@ -1,0 +1,23 @@
+# Description: süreç bazlı net kullanım grafik göstericisi
+# URL:         https://github.com/raboof/nethogs
+# Packager:    milisarge
+# Depends on:  libpcap
+
+name=nethogs
+version=0.8.5
+release=1
+source=(https://github.com/raboof/nethogs/archive/v$version.tar.gz)
+
+build() {
+  cd "$SRC/$name-$version"
+  sed -i 's|/sbin|/bin|' src/MakeApp.mk
+  sed -i 's|/local||'  Makefile
+  unset CFLAGS
+  unset CXXFLAGS
+  make prefix="/usr"
+  make prefix="/usr" libnethogs
+  make prefix="/usr" DESTDIR="$PKG" install
+  make prefix="/usr" DESTDIR="$PKG" install_lib
+  install -Dm755 src/libnethogs.h "$PKG/usr/include/libnethogs.h"
+  ln -s "/usr/lib/libnethogs.so.$version" "$PKG/usr/lib/libnethogs.so"
+}
