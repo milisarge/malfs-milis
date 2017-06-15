@@ -1,0 +1,17 @@
+# Description: süreç bazlı net kullanım grafik göstericisi arayüzü
+# URL:         https://github.com/mbfoss/gnethogs
+# Packager:    milisarge
+# Depends on:  nethogs gtkmm3 intltool libxml2
+
+name=gnethogs
+version=0.2
+release=1
+source=(https://github.com/mbfoss/gnethogs/archive/v$version.tar.gz)
+
+build() {
+  cd "$SRC/$name-$version"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+}
