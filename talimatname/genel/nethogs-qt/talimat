@@ -1,0 +1,20 @@
+# Description: süreç bazlı net kullanım grafik göstericisi qt arayüzü
+# URL:         https://github.com/mbfoss/gnethogs
+# Packager:    milisarge
+# Depends on:  nethogs qt5
+
+name=nethogs-qt
+version=0.0.4
+release=1
+source=(http://slist.lilotux.net/linux/nethogs-qt/$name-$version.tgz
+		nethogs-qt.desktop)
+
+build() {
+  cd "$SRC/$name-$version"
+  qmake-qt5
+  make
+  install -d "$PKG"/usr/bin/
+  install -m 755 nethogs-qt "$PKG"/usr/bin/
+  install -d "$PKG"/usr/share/applications
+  cp $SRC/nethogs-qt.desktop "$PKG"/usr/share/applications/
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Nethogs Ağ Gözlemleyici
+Exec=nethogs-qt
+Comment=Süreç bazlı ağ gözlemleme
+Icon=hwinfo
+Terminal=false
+Categories=Network;
