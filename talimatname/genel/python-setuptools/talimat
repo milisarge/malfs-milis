@@ -1,7 +1,7 @@
 # Description: Python paketlerini kolayca indirin, oluşturun, yükleyin, yükseltin ve kaldırın
 # URL: https://bitbucket.org/pypa/setuptools
 # Packager: milisarge
-# Depends on: python sqlite
+# Depends on: python sqlite libffi
 
 name=python-setuptools
 version=36.0.1
