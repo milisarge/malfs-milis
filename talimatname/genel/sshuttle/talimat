@@ -1,7 +1,7 @@
 # Description: tcp paketleri ssh üzerinde yönlendiren şeffaf vekil sunucu
 # URL: https://github.com/sshuttle/sshuttle
 # Packager: milisarge
-# Depends on: python3 python3-setuptools iptables net-tools 
+# Depends on: python3 python3-setuptools iptables net-tools sqlite
 
 name=sshuttle
 hesap=sshuttle
