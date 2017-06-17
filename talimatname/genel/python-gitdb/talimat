@@ -1,0 +1,15 @@
+# Description: python için gitdb nesne kütüphanesi
+# URL: https://github.com/gitpython-developers/gitdb
+# Packager: milisarge
+# Depends on: python python-setuptools 
+
+name=python-gitdb
+_name=gitdb
+version=0.6.4
+release=1
+source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${version}.tar.gz)
+
+build() {
+	cd "${SRC}/${_name}-${version}" 
+	python setup.py install --skip-build --root=$PKG --optimize=1
+}
