@@ -1,16 +1,20 @@
 # Description: Python paketlerini kolayca indirin, oluşturun, yükleyin, yükseltin ve kaldırın
 # URL: https://bitbucket.org/pypa/setuptools
 # Packager: milisarge
-# Depends on: python3
+# Depends on: python3 sqlite
 
 name=python3-setuptools
-version=6.0.2
+version=36.0.1
 release=1
 
-source=(http://pypi.python.org/packages/source/s/setuptools/setuptools-$version.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${name:8:1}/${name#*-}/${name#*-}-$version.zip)
 
 build() {
-    cd setuptools-$version
-    python3 setup.py build install --root=$PKG
-    rm $PKG/usr/bin/easy_install
+	cd ${name#*-}-$version
+	export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
+	python3 bootstrap.py 
+	python3 setup.py build
+	python3 setup.py install --prefix=/usr --root=$PKG --optimize=1
+	unset SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES
+	rm $PKG/usr/bin/easy_install
 }
