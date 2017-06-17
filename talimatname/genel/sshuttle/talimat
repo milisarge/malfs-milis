@@ -1,0 +1,28 @@
+# Description: tcp paketleri ssh üzerinde yönlendiren şeffaf vekil sunucu
+# URL: https://github.com/sshuttle/sshuttle
+# Packager: milisarge
+# Depends on: python3 python3-setuptools iptables net-tools 
+
+name=sshuttle
+hesap=sshuttle
+version=0.78.2
+release=1.0
+source=(prefixes.conf
+		tunnel.conf)
+
+build() {
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	
+	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	cd $SRC/$name
+	python3 setup.py build
+	python3 setup.py install --root="$PKG" -O1
+	install -d "$PKG/etc/sshuttle"
+	install -m644 "$SRC"/{tunnel.conf,prefixes.conf} "$PKG/etc/sshuttle"
+}
