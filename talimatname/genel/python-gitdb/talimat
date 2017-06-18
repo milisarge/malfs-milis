@@ -1,7 +1,7 @@
 # Description: python için gitdb nesne kütüphanesi
 # URL: https://github.com/gitpython-developers/gitdb
 # Packager: milisarge
-# Depends on: python python-setuptools 
+# Depends on: python python-setuptools python-smmap
 
 name=python-gitdb
 _name=gitdb
