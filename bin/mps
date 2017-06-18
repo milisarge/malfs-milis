@@ -1255,8 +1255,12 @@ ayarlar() {
 				paket_kur_oto2 "$2" ;;	
 			-kuruld)
 				paket_inkur_liste_direk "$2" ;;
-			-kurul)
-				paket_inkur_liste "$2" ;;
+			-kurul|kurul)
+				if [ -f $PWD/mps.liste ]; then
+					paket_inkur_liste mps.liste
+				else
+					paket_inkur_liste "$2"
+				fi ;;
 			-kur)
 				paket_inkur_oto "$2" ;;	
 			 kur)
