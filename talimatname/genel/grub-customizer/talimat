@@ -1,0 +1,19 @@
+# Description: Grafiksel grub2 ayar yöneticisi
+# URL:         https://launchpad.net/grub-customizer
+# Packager:    yasarciv
+# Depends on:  cmake gtkmm3 hicolor-icon-theme grub 
+
+name=grub-customizer
+version=5.0.6
+release=1
+source=(https://launchpad.net/grub-customizer/5.0/$version/+download/$name_$version.tar.gz
+		grub.cfg)
+
+build() {
+  cd $name-$version
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .&& make
+  make install DESTDIR=${PKG} || return 1
+  install -d ${PKG}/etc/grub-customizer
+  install -Dm644 ${SRC}/grub.cfg ${PKG}/etc/grub-customizer/grub.cfg
+  install -d ${PKG}/usr/share/doc/grub-customizer/
+}
