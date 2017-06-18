@@ -11,5 +11,5 @@ source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_
 
 build() {
 	cd "${SRC}/${_name}-${version}" 
-	python setup.py install --skip-build --root=$PKG --optimize=1
+	python setup.py install  --root=$PKG --optimize=1
 }
