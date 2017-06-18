@@ -1,0 +1,15 @@
+# Description: Çok yönlü bir kaynak istatistik aracı
+# URL:  http://dag.wieers.com/home-made/dstat/
+# Packager: milisarge
+# Depends on: python
+
+name=dstats
+version=0.7.3
+release=1
+source=(https://github.com/dagwieers/dstat/archive/${version}.tar.gz)
+
+build() {
+	cd $name-$name-$version
+	make DESTDIR=$PKG install
+	make DESTDIR=$PKG docs
+}
