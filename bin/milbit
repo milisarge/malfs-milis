@@ -70,6 +70,46 @@ insert_header "KERNEL: `uname -r`"
 echo "YÜKLENEN KERNEL MODÜLLER:" >> $info
 lsmod|awk '{print$1}' >> $info
 ;;
+JAVA )
+insert_header "Java Güvenlik Bilgisi:"
+javaguvenlik=`ls ~/.java/deployment/security/exception.sites`
+if [ $javaguvenlik ]; then
+  cat ~/.java/deployment/security/exception.sites >> $info
+else
+  echo "Java güvenlik bilgisi dosyası bulunamadı." >> $info
+fi
+;;
+Yüklü )
+insert_header "Java Yüklenmiş mi?:"
+yuklukont=`ls /var/lib/pkg/DB/jre/kurulan`
+if [ $yuklukont ]; then
+  echo "Java yüklü." >> $info
+else
+  echo "Yüklü java bulunamadı." >> $info
+fi
+;;
+Sertifikalar )
+insert_header "Yüklü Sertifika Bilgileri:"
+ls /etc/ssl/certs/*.pem >> $info
+;;
+Host )
+insert_header "Java Güvenlik Bilgisi:"
+hostd="/etc/hosts"
+if [ -f "$hostd" ]; then
+  cat /etc/hosts >> $info
+else
+  echo "Host dosyası bulunamadı." >> $info
+fi
+;;
+Java_Policy )
+insert_header "Java.policy Bilgisi:"
+policy="~/.java.policy"
+if [ -f "$policy" ]; then
+  cat ~/.java.policy >> $info
+else
+  echo "Java.policy dosyası bulunamadı." >> $info
+fi
+;;
 İşlemci )
 egrep "vendor|name|cores|flags|MHz|address|cpuid" /proc/cpuinfo|sort -u > $info
 dmidecode -t 4|egrep "Family|ACPI|APIC|PGE|threading|Thermal|Speed|Clock|Thread|capable" >> $info
@@ -289,11 +329,11 @@ export MILIS_BILGI='
 '`txtcolor 500 darkred x-large normal "  MİLİS SİSTEM BİLGİ TOPLAYICISI - MİLBİT"`'
 </hbox>
 '`hsep`'
-<notebook show-tabs="true" show-border="false" labels="Cihaz|Medya|Sürücüler|Ağ|Log|Milis|Çeşitli" height-request="350">
+<notebook show-tabs="true" show-border="false" labels="Cihaz|Medya|Sürücüler|Ağ|Log|Milis|E-İmza|Çeşitli" height-request="350">
 <vbox>
 	<hbox>
 		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
-			<label>Element</label>
+			<label>Elemanlar</label>
 			<variable>Cihaz</variable>
 			<width>130</width>
 			<height>300</height>
@@ -319,7 +359,7 @@ export MILIS_BILGI='
 <vbox>
 	<hbox>
 		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
-			<label>Element</label>
+			<label>Elemanlar</label>
 			<variable>grafikler</variable>
 			<width>130</width>
 			<height>300</height>
@@ -341,7 +381,7 @@ export MILIS_BILGI='
 <vbox>
 	<hbox>
 		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
-			<label>Element</label>
+			<label>Elemanlar</label>
 			<variable>suruculer</variable>
 			<width>130</width>
 			<height>300</height>
@@ -361,7 +401,7 @@ export MILIS_BILGI='
 <vbox>
 	<hbox>
 		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
-			<label>Element</label>
+			<label>Elemanlar</label>
 			<variable>ag</variable>
 			<width>130</width>
 			<height>300</height>
@@ -384,7 +424,7 @@ export MILIS_BILGI='
 <vbox>
 	<hbox>
 		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
-			<label>Element</label>
+			<label>Elemanlar</label>
 			<variable>logs</variable>
 			<width>130</width>
 			<height>300</height>
@@ -407,7 +447,7 @@ export MILIS_BILGI='
 <vbox>
 	<hbox>
 		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
-			<label>Element</label>
+			<label>Elemanlar</label>
 			<variable>milis</variable>
 			<width>130</width>
 			<height>300</height>
@@ -423,17 +463,21 @@ export MILIS_BILGI='
 		</edit>
 	</hbox>
 </vbox>
-
 <vbox>
 	<hbox>
 		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
-			<label>Element</label>
-			<variable>cesitli</variable>
+			<label>Elamanlar</label>
+			<variable>imza</variable>
 			<width>130</width>
 			<height>300</height>
-			<item>lspci</item>
-			<item>lsmod</item>
-			'`craction '\$cesitli' machinfo7`'
+			<item>Sertifikalar</item>
+			<item>Yüklü JAVA </item>
+			<item>Kart Bilgisi</item>
+			<item>MEB İnterneti</item>
+			<item>JAVA Güvenlik</item>
+            <item>Host Dosyası</item>
+            <item>Java_Policy</item>
+			'`craction '\$imza' machinfo7`'
 		</tree>
 		<edit editable="false" wrap-mode="0" left-margin="10">
 			<variable>machinfo7</variable>
@@ -442,10 +486,29 @@ export MILIS_BILGI='
 		</edit>
 	</hbox>
 </vbox>
+
+<vbox>
+	<hbox>
+		<tree selection-mode="3" exported-column="0" rules-hint="true" headers-clickable="false">
+			<label>Elemanlar</label>
+			<variable>cesitli</variable>
+			<width>130</width>
+			<height>300</height>
+			<item>lspci</item>
+			<item>lsmod</item>
+			'`craction '\$cesitli' machinfo8`'
+		</tree>
+		<edit editable="false" wrap-mode="0" left-margin="10">
+			<variable>machinfo8</variable>
+			<width>450</width>
+			<input file>'$tmpsi'/info.tmp</input>
+		</edit>
+	</hbox>
+</vbox>
 </notebook>
 <hbox>
 	'`butcustom "Ekrandaki bilgiyi metin düzenleyicide açar." "Bilgiyi Dosyada Aç" btnOpen stock gtk-file false`'
-		<action>kwrite $info || leafpad $info || beaver $info || mousepad $info || kate $info</action>
+		<action>kwrite $info || leafpad $info || beaver $info || mousepad $info || geany $info || kate $info</action>
 	</button>
 	'`butcustom "Mevcut Bilgi ekranını dosyaya yazdırır /root/psinfo.txt" "Dosyaya Yazdır" btnDump stock gtk-revert-to-saved false`'</button>
 	'`butcustom "Kapsamlı sistem raporunu dosyaya yazdırır /root/Desktop/psinfo.txt" "Kapsamlı Rapor Yazdır" btnReport stock gtk-go-down true`'</button>
