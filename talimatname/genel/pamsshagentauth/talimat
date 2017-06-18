@@ -1,0 +1,16 @@
+# Description: ssh-agent ile pam modülünün yetkilendirilmesi
+# URL: http://pamsshagentauth.sourceforge.net/
+# Packager: milisarge
+# Depends on: 
+
+name=pamsshagentauth
+version=0.10.3
+release=1
+source=(http://downloads.sourceforge.net/project/pamsshagentauth/pam_ssh_agent_auth/v$version/pam_ssh_agent_auth-$version.tar.bz2)
+
+build() {
+	cd "$SRC/pam_ssh_agent_auth-$version"
+	./configure --prefix=/usr --with-mantype=man --libexecdir=/usr/lib/security
+	make
+	make DESTDIR="$PKG/" install
+}
