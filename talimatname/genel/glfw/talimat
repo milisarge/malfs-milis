@@ -1,0 +1,17 @@
+# Description: çoğulortam için OpenGL, OpenGL ES, Vulkan kütüphanesi
+# URL:         http://www.glfw.org
+# Packager:    milisarge
+# Depends on:  xorg cmake
+
+name=glfw
+version=3.2.1
+release=1
+source=(https://github.com/$name/$name/archive/$version.tar.gz)
+
+build() {
+	cd $name-$version
+	mkdir build; cd build
+	cmake ..  -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=on
+	make
+	make DESTDIR=$PKG install
+}
