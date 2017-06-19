@@ -1,0 +1,43 @@
+# Description: Hızlı ve güvenli bir web tarayıcısı
+# URL: http://www.opera.com/
+# Packager: yasarciv67
+# Depends on: gtk2 desktop-file-utils shared-mime-info xorg-libxtst gconf xorg-libxscrnsaver alsa-lib nss freefont-ttf libnotify hicolor-icon-theme 
+
+name=opera-web-browser
+_name=opera
+version=45.0.2552.898
+release=1
+source=(http://get.geo.opera.com/pub/$_name/desktop/$version/linux/$_name-stable_${version}_amd64.deb
+		opera
+		default
+		)
+
+build() {
+    sed -e "s/%_name%/$_name/g" -i "$SRC/opera"
+    sed -e "s/%operabin%/$_name\/$_name/g" \
+        -i "$SRC/opera"
+    bsdtar -xf $_name-stable_${version}_amd64.deb    
+    bsdtar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$PKG/"
+    # get rid of the extra subfolder {i386,x86_64}-linux-gnu
+    (
+        cd "$PKG/usr/lib/"*-linux-gnu/
+        mv "$_name" ../
+    )
+    rm -rf "$PKG/usr/lib/"*-linux-gnu
+
+    # suid opera_sandbox
+    chmod 4755 "$PKG/usr/lib/$_name/opera_sandbox"
+
+    # install default options
+    install -Dm644 "$SRC/default" "$PKG/etc/$_name/default"
+
+    # install opera wrapper
+    rm "$PKG/usr/bin/$_name"
+    install -Dm755 "$SRC/opera" "$PKG/usr/bin/$_name"
+
+    # license
+
+    install -Dm644 \
+        "$PKG/usr/share/doc/${_name}-stable/copyright" \
+        "$PKG/usr/share/licenses/$_name/copyright"
+}
