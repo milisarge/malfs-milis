@@ -1,0 +1,17 @@
+# Description: Karma tabloların ve bağlı bir listenin C önişlemci uygulamaları
+# URL: https://troydhanson.github.io/uthash/
+# Packager: milisarge
+# Depends on: 
+
+name=uthash
+version=2.0.2
+release=1
+source=(https://github.com/troydhanson/uthash/archive/v$version.tar.gz)
+
+build() {
+  cd "${SRC}/${name}-${version}/src"
+  install -dm755 "${PKG}"/usr/include/
+  for h in *.h; do
+      install -m 644 ${h} "${PKG}"/usr/include/
+  done
+}
