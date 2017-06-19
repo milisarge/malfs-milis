@@ -1,0 +1,24 @@
+# Description: LLVM linker
+# URL:         http://llvm.org/
+# Packager:    milisarge
+# Depends on:  llvm cmake
+
+name=lld
+version=4.0.0
+release=1
+source=(http://releases.llvm.org/$version/lld-$version.src.tar.xz)
+
+build() {
+  
+  cd $name-$version.src
+  mkdir build
+  cd build
+  cmake ../
+  make -C tools/lld  DESTDIR=$PKG install
+  cd lib
+  install -d $PKG/usr/lib/
+  cp *.a $PKG/usr/lib/
+  cp -r $SRC/$name-$version.src/include $PKG/usr/
+  mv $PKG/usr/local/* $PKG/usr/
+  rm -r $PKG/usr/local
+}

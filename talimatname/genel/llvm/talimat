@@ -1,40 +1,38 @@
-# Description: LLVM derleyici arka uç
+# Description: LLVM derleyicisi
 # URL:         http://llvm.org/
 # Packager:    milisarge
-# Depends on:  python
+# Depends on:  python cmake
 
 name=llvm
-version=3.7.0
+version=4.0.0
 release=1
 source=(http://llvm.org/releases/$version/$name-$version.src.tar.xz \
-        config.h llvm-config.h)
+		llvm-config.h)
 
 build() {
+  export CC=gcc
+  export CXX=g++
+
   cd $name-$version.src
 
   mkdir build
   cd build
 
-  ../configure --prefix=/usr \
-    --without-oprofile \
-    --enable-cxx11 \
-    --enable-targets=x86,x86_64,r600 \
-    --enable-shared \
-    --mandir=/usr/man
+  cmake -DLLVM_ENABLE_CXX1Y=1 \
+    -DLLVM_INCLUDE_EXAMPLES=0 \
+    -DLLVM_INCLUDE_TESTS=0 \
+    -DLLVM_ENABLE_OCAMLDOC=0 \
+    -DLLVM_TARGETS_TO_BUILD='X86;AMDGPU;BPF' \
+    -DLLVM_BUILD_LLVM_DYLIB=1 \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr ..
 
-  make DISABLE_ASSERTIONS=1 $MAKEFLAGS
-  make DISABLE_ASSERTIONS=1 DESTDIR=$PKG install
+  MAKEFLAGS="$MAKEFLAGS" make
+  make DESTDIR=$PKG install
 
-  find $PKG -name .dir -delete
-  rm -rf $PKG/usr/docs
-
-  # multilib stubs
-  mv $PKG/usr/include/llvm/Config/config{,-64}.h
+  # multilib stub
   mv $PKG/usr/include/llvm/Config/llvm-config{,-64}.h
-  install -m 0644 $SRC/config.h $PKG/usr/include/llvm/Config/
-  install -m 0644 $SRC/llvm-config.h $PKG/usr/include/llvm/Config/
 
-  # remove example hello transform
-  rm $PKG/usr/lib/LLVMHello.so
+  install -m 0644 $SRC/llvm-config.h $PKG/usr/include/llvm/Config/
 
 }

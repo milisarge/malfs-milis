@@ -1,0 +1,35 @@
+# Description: sağlamlık, optimallik ve netlik öncelik veren bir programlama dili
+# URL: http://ziglang.org
+# Packager: milisarge
+# Depends on: cmake llvm clang
+
+name=zig
+hesap=ziglang
+version=0.1
+release=1
+source=()
+
+build() {
+    
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	cd $SRC/$name
+	
+    mkdir -p build
+    cd build
+    cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o)) \
+        -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2- | sed "s/ .*//") \
+        -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $(cc -print-file-name=crtbegin.o))
+
+    make
+    make DESTDIR="$PKG" install
+}
