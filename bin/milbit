@@ -103,8 +103,8 @@ fi
 ;;
 Java_Policy )
 insert_header "Java.policy Bilgisi:"
-policy="~/.java.policy"
-if [ -f "$policy" ]; then
+policy="`cat ~/.java.policy`"
+if [ "$policy" ]; then
   cat ~/.java.policy >> $info
 else
   echo "Java.policy dosyası bulunamadı." >> $info
