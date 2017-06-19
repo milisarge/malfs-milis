@@ -1,0 +1,19 @@
+# Description: Ur/Web: web framework için saf fonksiyonel dil
+# URL:         http://www.impredicative.com/ur/
+# Packager:    milisarge
+# Depends on:  mlton sqlite uthash 
+
+name=urweb
+version=20170105
+release=1
+source=(http://www.impredicative.com/ur/urweb-20170105.tgz
+		use-system-uthash.patch)
+
+build() {
+	cd "$name-$version"
+	patch -p1 -i "$SRC/use-system-uthash.patch"
+	./configure --prefix=/usr
+	make
+	make -k check
+	make DESTDIR="$PKG/" install
+}
