@@ -4,7 +4,7 @@
 # Depends on: cmake llvm clang
 
 name=zig
-hesap=ziglang
+hesap=zig-lang
 version=0.1
 release=1
 source=()
