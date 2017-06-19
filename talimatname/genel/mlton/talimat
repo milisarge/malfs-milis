@@ -1,0 +1,16 @@
+# Description: standart ML derleyicisi
+# URL: http://mlton.org/
+# Packager: milisarge
+# Depends on: setconf python
+
+name=mlton
+version=20130715
+release=1
+source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.src.tgz
+        http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version-1.amd64-linux.tgz)
+
+build() {
+  setconf usr/bin/mlton lib="$SRC/usr/lib/mlton"
+  PATH="$PATH:$SRC/usr/bin" make -C "$name-$version" -j1 all-no-docs
+  make -C "$name-$version" DESTDIR="$PKG" -j1 install-no-docs
+}
