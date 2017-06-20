@@ -4,19 +4,19 @@
 # Depends on: xfce4-libui libnotify 
 
 name=xfce4-notifyd
-version=0.2.4
-release=3
+version=0.3.6
+release=4
 
-source=(http://archive.xfce.org/src/apps/$name/0.2/$name-$version.tar.bz2)
+source=(http://archive.xfce.org/src/apps/$name/0.3/$name-$version.tar.bz2)
 build() {
-cd $name-$version
- ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --disable-debug
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	 ./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib \
+		--localstatedir=/var \
+		--disable-static \
+		--disable-debug
+	make
+	make DESTDIR=$PKG install
 }
