@@ -6,7 +6,7 @@
 name=zig
 hesap=zig-lang
 version=0.1
-release=1
+release=2
 source=()
 
 build() {

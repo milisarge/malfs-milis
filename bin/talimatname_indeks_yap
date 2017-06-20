@@ -271,7 +271,7 @@ EOH
 		else { $odd = "odd"; }
 	}
 	print "  </table>\n";
-	print "  <p><b>$count ports</b></p>\n";
+	print "  <p><b>$count talimat</b></p>\n";
 
 	if ($options{footer})
 	{
