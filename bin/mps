@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="0.9.8"
+versiyon="0.9.9"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -999,6 +999,38 @@ git_proje_kur(){
 	
 }	
 
+op_kur(){
+	local mopsyol mops
+	mops=$1
+	mopsyol="~/mops/$mops"
+	# talimatnameye bak
+	if [ -d $mopsyol ]; then
+		$mopsyol/talimat kur
+	# yerelde ara
+	elif [ -f $PWD/"$mops" ]; then
+		./"$mops" kur
+	else
+		ryaz 31 "$1 mops talimatı bulunamadı!"
+	fi
+ 	
+}
+
+op_sil(){
+	local mopsyol mops
+	mops=$1
+	mopsyol="~/mops/$mops"
+	# talimatnameye bak
+	if [ -d $mopsyol ]; then
+		$mopsyol/talimat sil
+	# yerelde ara
+	elif [ -f $PWD/"$mops" ]; then
+		./"$mops" sil
+	else
+		ryaz 31 "$1 mops talimatı bulunamadı!"
+	fi
+ 	
+}
+
 servis_kur(){
 	cd /sources/milis.git/ayarlar/servisler
 	if make kur-$1
@@ -1285,13 +1317,20 @@ ayarlar() {
 				else
 					paket_inkur_oto "$2" 
 				fi ;;
-			#özel git projesi kurmak için
+			# özel git projesi kurmak için
 			gitkur)
 				git_proje_kur "$2" ;;
-			#ilgili paketin servisini kurar
+			# otomatik poroje sistemi
+			# özel git projesi kurmak için
+			opk)
+				op_kur "$2" ;;
+			# özel git projesi silmek için
+			ops)
+				op_sil "$2" ;;
+			# ilgili paketin servisini kurar
 			serkur)
 				servis_kur "$2" ;;
-			#ilgili paketin servisini siler
+			# ilgili paketin servisini siler
 			sersil)
 				servis_sil "$2" ;;
 			kurkos)
