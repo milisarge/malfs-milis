@@ -1,10 +1,10 @@
 # Description: Çeşitli GNOME modülleri için ortak API'li kitaplık.
 # URL: http://www.gnome.org
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: iso-codes itstool xorg-app gtk3 docbook-xml gnome-doc-utils gsettings-desktop-schemas gobject-introspection startup-notification xorg-xkeyboard-config
 
 name=gnome-desktop
-version=3.18.0
+version=3.24.2
 release=1
 source=( http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 
