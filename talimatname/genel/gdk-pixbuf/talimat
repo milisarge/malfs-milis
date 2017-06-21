@@ -4,7 +4,7 @@
 # Depends on: gobject-introspection jasper xorg-libxcomposite libtiff libpng libjpeg-turbo
 
 name=gdk-pixbuf
-version=2.32.3
+version=2.36.6
 release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 
@@ -18,4 +18,5 @@ cd $name-$version
 make
 make DESTDIR=$PKG install
 mkdir -p $PKG/etc/gtk-2.0
+rm -r $PKG/usr/share/gtk-doc
 }
