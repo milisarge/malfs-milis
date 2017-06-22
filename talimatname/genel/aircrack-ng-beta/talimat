@@ -1,0 +1,20 @@
+# Description: 802.11 WEP ve WPA-PSK protokolleri için key cracker.
+# URL: http://www.aircrack-ng.org/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: openssl sqlite iw net-tools wireless-tools
+
+name=aircrack-ng-beta
+version=1.2
+release=1
+source=(http://download.aircrack-ng.org/aircrack-ng-$version-beta3.tar.gz)
+
+build() {
+  cd "$SRC/aircrack-ng-$version-beta3"
+
+  make SQLITE=true UNSTABLE=true
+  
+  cd "$SRC/aircrack-ng-$version-beta3"
+
+  make DESTDIR="$PKG" SQLITE=true UNSTABLE=true \
+    bindir=/usr/bin sbindir=/usr/bin mandir=/usr/share/man/man1 install
+}
