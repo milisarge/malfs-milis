@@ -1,4 +1,0 @@
-rm -f /etc/gtk-2.0/gdk-pixbuf.loaders &> /dev/null
-rm -f /etc/gtk-2.0/gtk.immodules &> /dev/null
-/usr/bin/gdk-pixbuf-query-loaders --update-cache
-gdk-pixbuf-query-loaders > /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
