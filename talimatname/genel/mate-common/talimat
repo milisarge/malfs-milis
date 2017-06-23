@@ -1,17 +1,17 @@
-# Description: MATE için ortak geliştirme makroları
-# URL:  http://matsusoft.com.ar/projects/mate
-# Packager: yasarciv
-# Depends on: intltool
+# Description: MATE için yaygın geliştirme makroları
+# URL: http://www.mate-desktop.org
+# Packager: yasarciv67@gmail.com
+# Depends on: gtk-doc intltool
 
 name=mate-common
-version=1.16.0
+version=1.18.0
 release=1
-source=(http://pub.mate-desktop.org/releases/${version%.*}/${name}-${version}.tar.xz)
+source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
 build() {
-	cd $name-$version
-   ./configure \
+  cd $name-$version
+    ./configure \
         --prefix=/usr
-make
-make DESTDIR=$PKG install
+  make
+  make DESTDIR=$PKG install
 }

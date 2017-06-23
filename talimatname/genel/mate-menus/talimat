@@ -1,21 +1,25 @@
-# Description: MATE menüsü
-# URL:  http://matsusoft.com.ar/projects/mate
-# Packager: yasarciv
-# Depends on: intltool glib gobject-introspection python
+# Description: Freedesktop.org'dan Masaüstü Menüsü Teknik Özelliklerini uygulayan bir kütüphane
+# URL: http://www.mate-desktop.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: glib gobject-introspection intltool python
 
 name=mate-menus
-version=1.16.0
+version=1.18.0
 release=1
 source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
 build() {
-cd $name-$version
-./configure \
---prefix=/usr \
---sysconfdir=/etc \
---localstatedir=/var  \
---enable-python \
---disable-static
-make
-make DESTDIR=$PKG install
+  cd $name-$version
+    PYTHON=/usr/bin/python2 ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --enable-python
+
+    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+  make
+  make DESTDIR=$PKG install
 }
+

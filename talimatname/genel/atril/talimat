@@ -1,10 +1,10 @@
-# Description: Basit bir pdf belge görüntüleyici
-# URL: http://matsusoft.com.ar/projects/mate
-# Packager: milisarge yasarciv
-# Depends on: caja dconf djvulibre gtk2 libsecret libspectre mate-desktop mate-icon-theme poppler-glib poppler
+# Description: MATE belge görüntüleyici
+# URL: http://mate-desktop.org
+# Packager: yasarciv67@gmail.com
+# Depends on: caja caja-extensions gobject-introspection intltool itstool djvulibre libspectre poppler-glib webkitgtk2
 
 name=atril
-version=1.16.1
+version=1.18.0
 release=1
 source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
@@ -14,7 +14,6 @@ cd $name-$version
         --prefix=/usr \
         --libexecdir=/usr/lib/${name} \
         --with-gtk=2.0 \
-        --enable-gtk-doc \
         --enable-djvu \
         --enable-dvi \
         --enable-epub \
@@ -22,8 +21,12 @@ cd $name-$version
         --enable-pixbuf \
         --enable-comics \
         --enable-xps \
-        --enable-introspection \
-        --disable-static
+        --enable-introspection
+        
+ #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
 make
 make DESTDIR=$PKG install
+   
 }

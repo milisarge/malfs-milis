@@ -1,20 +1,22 @@
-# Description: Donanım sensörlerinden okumaları görüntülemek için bir MATE Panel uygulaması.
-# URL: http://www.jwz.org/xscreensaver/
-# Packager: yasarciv
-# Depends on: gtk2 libatasmart libnotify lm-sensors mate-panel
+# Description: İşlemci sıcaklığı, fan hızı ve voltaj okumaları da dahil olmak üzere donanım sensörlerinden okumaları görüntülemek için kullanılan MATE Panel uygulaması
+# URL: http://www.mate-desktop.org
+# Packager: yasarciv67@gmail.com
+# Depends on: docbook-xsl intltool itstool libatasmart libnotify lm-sensors mate-panel
 
 name=mate-sensors-applet
-version=1.16.0
+version=1.18.2
 release=1
 source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
 build() {
-cd $name-$version
-./configure \
+  cd $name-$version
+    ./configure \
         --prefix=/usr \
-        --libexecdir=/usr/lib/${name} \
-        --with-gtk=2.0 \
-        --disable-static
-make
-make DESTDIR=$PKG install
+        --libexecdir=/usr/lib/$name
+
+    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+  make
+  make DESTDIR=$PKG install
 }

@@ -1,11 +1,11 @@
 # Description: MATE temaları
 # URL: http://matsusoft.com.ar/projects/mate
 # Packager: milisarge yasarciv
-# Depends on: gtk2
+# Depends on: gtk2 intltool gtk-engines gtk-engine-murrine mate-icon-theme
 
 
 name=mate-themes
-version=3.20.7
+version=3.22.12
 release=1
 source=(http://pub.mate-desktop.org/releases/themes/${version%.*}/${name}-${version}.tar.xz)
 

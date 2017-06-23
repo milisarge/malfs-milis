@@ -1,10 +1,10 @@
-# Description: MATE için Kontrol Merkezi
+# Description: MATE masaüstü için ses karıştırıcı kitaplığı
 # URL: http://www.mate-desktop.org/
 # Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool mate-desktop mate-menus mate-settings-daemon marco xorg-libxscrnsaver 
+# Depends on: intltool glib pulseaudio
 
-name=mate-control-center
-version=1.18.1
+name=libmatemixer
+version=1.18.0
 release=1
 source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
@@ -13,14 +13,11 @@ build() {
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
-        --sbindir=/usr/bin \
-        --localstatedir=/var \
-        --disable-update-mimedb
+        --localstatedir=/var
 
     #https://bugzilla.gnome.org/show_bug.cgi?id=656231
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
   make
   make DESTDIR=$PKG install
-  rm $PKG/usr/share/applications/mimeinfo.cache
 }

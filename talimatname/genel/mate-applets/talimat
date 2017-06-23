@@ -1,25 +1,23 @@
 # Description: MATE paneli için appletler
-# URL: http://matsusoft.com.ar/projects/mate
-# Packager: milisarge yasarciv
-# Depends on: gtksourceview2 libgtop libnotify mate-panel mate-icon-theme python-gobject upower wireless-tools upower
+# URL: http://www.mate-desktop.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: intltool itstool gtksourceview3 libgtop libnotify mate-panel polkit dbus-python python-gobject2 upower wireless-tools
 
 name=mate-applets
-version=1.16.0
+version=1.18.1
 release=1
 source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
- ./configure \
+sed -i 's/env python/env python2/' invest-applet/invest/{chart.py,invest-applet.py,mate-invest-chart}
+    PYTHON=/usr/bin/python2 ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
-        --libexecdir=/usr/lib/${name} \
-        --with-cpufreq-lib=cpupower \
+        --libexecdir=/usr/lib/$name \
         --enable-polkit \
-        --enable-ipv6 \
-        --enable-upower \
-        --with-gtk=2.0 \
-        --disable-static
-make
-make DESTDIR=$PKG install
+        --enable-ipv6
+  make
+  make DESTDIR=$PKG install
 }
+

@@ -1,3 +1,4 @@
-gtk-update-icon-cache -q -t -f /usr/share/icons/matefaenza
-gtk-update-icon-cache -q -t -f /usr/share/icons/matefaenzadark
-gtk-update-icon-cache -q -t -f /usr/share/icons/matefaenzagray
+/usr/bin/gtk-update-icon-cache -f -t /usr/share/icons/matefaenza
+/usr/bin/gtk-update-icon-cache -f -t /usr/share/icons/matefaenzadark
+/usr/bin/gtk-update-icon-cache -f -t /usr/share/icons/matefaenzagray
+

@@ -1,26 +1,25 @@
-# Description: MATE için ekran koruyucusu
-# URL:  http://matsusoft.com.ar/projects/mate
-# Packager: yasarciv
-# Depends on: gtk2 libnotify xorg-libxscrnsaver mate-desktop mate-libkbd mate-menus mate-power-manager mate-session-manager xorg-libxscrnsaver
+# Description: MATE için ekran koruyucu ve kilitleyici
+# URL: http://www.mate-desktop.org
+# Packager: yasarciv67@gmail.com
+# Depends on: intltool libmatekbd libnotify xorg-libxscrnsaver mate-desktop mate-menus mate-session-manager
 
 name=mate-screensaver
-version=1.16.0
+version=1.18.1
 release=1
 source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
 build() {
-cd $name-$version
-./configure \
+  cd $name-$version
+    ./configure \
         --prefix=/usr \
-        --libexecdir=/usr/lib/${name} \
+        --libexecdir=/usr/lib/$name \
         --sysconfdir=/etc \
         --with-xscreensaverdir=/usr/share/xscreensaver/config \
         --with-xscreensaverhackdir=/usr/lib/xscreensaver \
         --with-mit-ext \
         --with-libnotify \
         --enable-locking \
-        --with-gtk=2.0 \
-        --disable-static
-make 
-make DESTDIR=$PKG install
+        --without-console-kit
+  make
+  make DESTDIR=$PKG install
 }

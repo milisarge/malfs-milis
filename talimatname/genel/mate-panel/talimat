@@ -1,22 +1,28 @@
 # Description: MATE paneli
-# URL:  http://matsusoft.com.ar/projects/mate
-# Packager: yasarciv
-# Depends on: caja gobject-introspection gtk2 libcanberra xorg-libice librsvg libsoup xorg-libsm xorg-libxau libwnck marco mate-desktop mate-libweather mate-menus mate-session-manager
+# URL: http://www.mate-desktop.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: dbus-glib libwnck3 libcanberra libmateweather xorg-libsm mate-menus mate-desktop intltool itstool gobject-introspection
 
 name=mate-panel
-version=1.16.0
+version=1.18.3
 release=1
 source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
-        --libexecdir=/usr/lib/${name} \
+  cd $name-$version
+    ./configure \
+        --prefix=/usr \
+        --libexecdir=/usr/lib/$name \
         --sysconfdir=/etc \
         --localstatedir=/var \
-        --with-gtk=2.0 \
         --enable-introspection \
-        --disable-static
-make
-make DESTDIR=$PKG install
+        --with-gtk=3.0
+
+    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+  make
+  make DESTDIR=$PKG install
 }
+
+# vim: set ts=2 et:
