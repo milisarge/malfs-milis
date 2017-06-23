@@ -1,0 +1,18 @@
+# Description: Küçük ve hafif metin düzenleyici
+# URL: https://github.com/linuxmint/xed
+# Packager: Cihan Alkan
+# Depends on: libpeas gtksourceview3 gobject-introspection desktop-file-utils xorg-libsm enchant gnome-common yelp-tools iso-codes
+
+name=xed
+version=1.4.3
+release=1
+source=(https://github.com/linuxmint/$name/archive/$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./autogen.sh --with-gtk=3.0 --prefix="/usr" \
+         --localstatedir="/var" \
+         --libexecdir="/usr/lib/xed"
+    make CFLAGS='-w -O2'
+	make DESTDIR=$PKG install
+}
