@@ -1,0 +1,17 @@
+# Description: A GObject-tabanlı eklenti
+# URL: http://ftp.gnome.org/pub/gnome/sources/libpeas
+# Packager: Cihan Alkan
+# Depends on: gtk3
+
+name=libpeas
+version=1.20.0
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/1.20/$name-$version.tar.xz)
+
+
+build() {
+cd $name-$version
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var  --disable-static
+  make
+make DESTDIR=$PKG install
+}
