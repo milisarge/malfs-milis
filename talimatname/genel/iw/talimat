@@ -1,0 +1,17 @@
+# Description: Kablosuz aygıtlar için nl80211 tabanlı CLI ayarlama aracı
+# URL: http://wireless.kernel.org/en/users/Documentation/iw
+# Packager: yakar (aydin@komutan.org)
+# Depends on: libnl
+
+name=iw
+version=4.9
+release=1
+source=(https://www.kernel.org/pub/software/network/$name/$name-$version.tar.xz)
+
+build() {
+  cd "$SRC"/$name-$version
+  make
+  
+  cd "$SRC"/$name-$version
+  make DESTDIR="$PKG" SBINDIR="/usr/bin" install
+}

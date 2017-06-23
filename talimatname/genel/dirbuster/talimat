@@ -1,0 +1,25 @@
+# Description: Web/uygulama sunucularındaki klasör ve dosyaları deneme yanılma yolu ile tespit eder
+# URL: http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project
+# Packager: yakar (aydin@komutan.org)
+# Depends on: openjdk
+
+name=dirbuster
+version=0.12
+release=1
+source=(http://downloads.sourceforge.net/dirbuster/DirBuster-$version.tar.bz2)
+
+build() {
+  cd "$SRC"
+
+  mkdir -p "$PKG/usr/share/dirbuster"
+  mkdir -p "$PKG/usr/bin"
+
+  cp --no-preserve=ownership -a DirBuster-$version/* \
+    "$PKG/usr/share/dirbuster"
+
+  cat > "$PKG/usr/bin/dirbuster" <<EOF
+#!/bin/sh
+exec /opt/jdk/bin/java -jar /usr/share/dirbuster/DirBuster-$version.jar "\$@"
+EOF
+  chmod +x "$PKG/usr/bin/dirbuster"
+}
