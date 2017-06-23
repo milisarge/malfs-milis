@@ -1,0 +1,31 @@
+# Description: A set of symbols and convenience functions for indicators
+# URL: https://launchpad.net/libindicator
+# Packager: yasarciv
+# Depends on: gtk3
+
+name=libindicator
+version=12.10.1
+release=1
+source=(https://launchpad.net/$name/12.10/12.10.1/+download/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i libindicator/Makefile.{am,in}
+    sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i configure
+    sed 's/LIBM="-lmw"/LIBM=" -lmw"/g' -i configure
+    sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i configure
+    sed 's/LIBS="-lm  $LIBS"/LIBS=" -lm  $LIBS"/g' -i configure
+    sed 's/LIBS="-lmw  $LIBS"/LIBS=" -lmw  $LIBS"/g' -i configure
+    sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i m4/libtool.m4
+  export CFLAGS="${CFLAGS} -Wno-error=deprecated-declarations"
+   ./configure \
+      --prefix=/usr \
+      --localstatedir=/var \
+      --libexecdir=/usr/lib/libindicator \
+      --sysconfdir=/etc \
+      --with-gtk=3 \
+      --disable-static \
+      --disable-tests
+    make
+  make DESTDIR=$PKG install
+}
