@@ -4,7 +4,7 @@
 # Depends on: mate-common dconf gtk2 iso-codes xorg-libxklavier
 
 name=mate-libkbd
-version=1.16.0
+version=1.18.2
 release=1
 _name=libmatekbd
 source=(http://pub.mate-desktop.org/releases/${version%.*}/${_name}-$version.tar.xz)

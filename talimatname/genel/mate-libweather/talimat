@@ -4,7 +4,7 @@
 # Depends on: dconf gtk2 libsoup
 
 name=mate-libweather
-version=1.16.1
+version=1.18.1
 release=1
 _name=libmateweather
 source=(http://pub.mate-desktop.org/releases/${version%.*}/${_name}-$version.tar.xz)
