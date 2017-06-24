@@ -96,9 +96,9 @@ def karsilamaEkrani():
 	text="Milis Linux (Milli İşletim Sistemi) sıfır kaynak koddan üretilen,kendine has paket yöneticisine sahip,\
 	bağımsız tabanlı yerli linux işletim sistemi projesidir.\
 	Genel felsefe olarak ülkemizdeki bilgisayar kullanıcıları için linuxu kolaylaştırıp\
-	Milis işletim sisteminin sorunsuz bir işletim sistemi olmasını sağlamayı ve yazılımsal\
+	Milis İşletim Sisteminin sorunsuz bir işletim sistemi olmasını sağlamayı ve yazılımsal\
 	olarak dışa bağımlı olmaktan kurtarmayı esas alır. Ayrıca her türlü katkıda bulunmak\
-	isteyenler için bulunmaz bir türkçe açık kaynak projesidir.\
+	isteyenler için bulunmaz bir Türkçe açık kaynak projesidir.\
 	\n\n\nKuruluma devam etmek istiyor musunuz ?",width=80,height=12)
 	if status == "ok":
 		kullaniciKontrol()
