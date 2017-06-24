@@ -1,0 +1,30 @@
+# Description: rust paket yöneticisi
+# URL: https://github.com/rust-lang/cargo/
+# Packager: milisarge
+# Depends on: rust cmake 
+
+name=cargo
+version=0.17.0
+release=1
+
+source=(https://github.com/rust-lang/cargo/archive/$version.tar.gz
+        https://static.rust-lang.org/dist/cargo-nightly-x86_64-unknown-linux-gnu.tar.gz)
+
+build() {
+  cd $name-$version/src/rust-installer 
+  wget http://anduin.linuxfromscratch.org/BLFS/rust/rust-installer-20161004.tar.xz
+  tar -xf rust-installer-20161004.tar.xz --strip-components=1 
+  cd ../../
+ 
+  ./configure --prefix=/usr      \
+              --sysconfdir=/etc  \
+              --cargo=$SRC/cargo-nightly*/cargo/bin/cargo 
+  export SSL_CERT_FILE=/etc/ssl/ca-bundle.crt
+  make
+  make DESTDIR=$PKG install
+
+  rm -f $PKG/usr/lib/rustlib/{install.log,manifest-cargo,uninstall.sh,components,rust-installer-version}
+  
+  install -d $PKG/usr/share/bash-completion/completions
+  mv $PKG/usr/etc/bash_completion.d/cargo $PKG/usr/share/bash-completion/completions/cargo
+} 
