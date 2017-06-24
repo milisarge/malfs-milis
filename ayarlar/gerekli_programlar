@@ -35,6 +35,7 @@ gparted
 sshfs-fuse
 vlc
 alsa-utils
+alsa-plugins
 geeqie
 sysv-rc-conf
 rfkill
