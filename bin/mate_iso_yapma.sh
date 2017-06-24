@@ -35,6 +35,7 @@ fi
 if [ -f /usr/bin/lxdm ];then
 	cp -rf /sources/milis.git/ayarlar/servisler/mbd/init.d/lxdm /etc/init.d/
 fi
+cp -rf /sources/milis.git/ayarlar/milbit/milbit.desktop /usr/share/applications/
 cp ayarlar/kurulum.desktop /root/Desktop/
 cp ayarlar/kurulum.desktop /root/Masaüstü/
 tamir_touchpad
