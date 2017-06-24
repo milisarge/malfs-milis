@@ -1,0 +1,19 @@
+# Description: Geliştiriciler için sofistike text editörü
+# URL: https://www.sublimetext.com
+# Packager: yakar (aydin@komutan.org)
+# Depends on: 
+
+name=sublime-text
+version=3
+release=1
+source=(https://download.sublimetext.com/sublime_text_3_build_3126_x64.tar.bz2)
+
+build() {
+	cd $SRC/sublime_text_3
+	
+	mkdir -p $PKG/usr/share/applications/
+	mkdir -p $PKG/opt/sublime_text/
+
+	mv sublime_text.desktop $PKG/usr/share/applications/
+	mv -v * $PKG/opt/sublime_text/
+}
