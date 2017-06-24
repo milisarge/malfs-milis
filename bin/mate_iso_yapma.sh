@@ -9,7 +9,7 @@ mps -kuruld /root/talimatname/temel-ek/derleme.sira
 mps kur $masaustu
 # girisci kurulum
 mps kur lxdm
-mps -kurul /root/ayarlar/gerekli_programlar
+mps -kurul /root/ayarlar/gerekli_programlar_$masaustu
 cp /root/ayarlar/.xinitrc.$masaustu /root/.xinitrc
 cp -r /root/ayarlar/$masaustu/.config /root/
 cp /root/ayarlar/network /etc/sysconfig/
