@@ -32,6 +32,9 @@ xdg-user-dirs-update
 if [ -f /usr/bin/slim ];then
 	cp -f /root/ayarlar/.xinitrc.slim /root/.xinitrc
 fi
+if [ -f /usr/bin/lxdm ];then
+	cp -rf /sources/milis.git/ayarlar/servisler/mbd/init.d/lxdm /etc/init.d/
+fi
 cp ayarlar/kurulum.desktop /root/Desktop/
 cp ayarlar/kurulum.desktop /root/Masaüstü/
 tamir_touchpad
