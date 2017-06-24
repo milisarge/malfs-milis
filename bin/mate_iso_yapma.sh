@@ -5,6 +5,7 @@ mps -GG && mps -G
 mps kur linux-firmware
 mps kur kernel
 mps kur dracut
+mps kur xorg
 mps -kuruld /root/talimatname/temel-ek/derleme.sira
 mps kur $masaustu
 # girisci kurulum
