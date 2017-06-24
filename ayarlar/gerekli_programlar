@@ -34,6 +34,7 @@ firefox
 gparted
 sshfs-fuse
 vlc
+alsa-utils
 geeqie
 sysv-rc-conf
 rfkill
