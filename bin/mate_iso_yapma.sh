@@ -1,6 +1,7 @@
 #!/bin/bash
 # lfs dizini oluşturup ortama girdikten sonra bu betiği çalıştırabilirsiniz,bütün ortam içi işlemler yapılacaktır.
 masaustu="mate"
+girisyonetici="slim"
 mps -GG && mps -G
 mps kur linux-firmware
 mps kur kernel
@@ -9,7 +10,7 @@ mps kur xorg
 mps -kuruld /root/talimatname/temel-ek/derleme.sira
 mps kur $masaustu
 # girisci kurulum
-mps kur lxdm
+mps kur $girisyonetici
 mps -kurul /root/ayarlar/gerekli_programlar_$masaustu
 cp /root/ayarlar/.xinitrc.$masaustu /root/.xinitrc
 cp -r /root/ayarlar/$masaustu/.config /root/
