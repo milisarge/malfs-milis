@@ -1,0 +1,19 @@
+# Description: BASH'da yazılmış görüntüleri destekleyen bir CLI sistem bilgisi aracı.
+# URL: https://github.com/dylanaraps/
+# Packager: Cihan Alkan
+# Depends on:
+
+name=neofetch
+version=3.2.0
+release=1
+
+source=(https://github.com/dylanaraps/neofetch/archive/$version.tar.gz
+		linux)
+
+
+build() {
+	cd $name-$version
+	cp -f $SRC/linux $SRC/$name-$version/ascii/distro/
+	make DESTDIR=$PKG install
+}
+
