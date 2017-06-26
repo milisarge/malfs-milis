@@ -1,0 +1,18 @@
+# Description: Sıradan metinden büyük harfler çıkartmak için kullanılan bir program
+# URL: http://www.figlet.org/
+# Packager: Cihan Alkan
+# Depends on: 
+
+name=figlet
+version=2.2.5
+release=1
+source=(ftp://ftp.figlet.org/pub/figlet/program/unix/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make DEFAULTFONTDIR=/usr/share/figlet/fonts all
+	make check
+	make DESTDIR=$PKG  BINDIR=/usr/bin MANDIR=/usr/share/man \
+	DEFAULTFONTDIR=/usr/share/figlet/fonts install 
+	install -D -m644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+}
