@@ -4,13 +4,13 @@
 # Depends on: gconf gtk2 expat hunspell libgcrypt nss xorg-libxtst libnotify xdg-utils xorg-libxscrnsaver alsa-lib libgnome-keyring
 
 name=slack
-version=2.5.2
+version=2.6.3
 release=1
 source=(https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-$version-amd64.deb
 $name.desktop)
 
 build() {
-	bsdtar -xf $name-desktop-2.5.2-amd64.deb
+	bsdtar -xf $name-desktop-$version-amd64.deb
 	bsdtar -xf data.tar.xz
     mkdir -p $PKG/opt/$name $PKG/usr/bin
     cp -R usr/lib/$name/* $PKG/opt/$name
