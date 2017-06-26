@@ -1,0 +1,22 @@
+# Description: YAML ayrıştırıcı ve yayıcı C ++, YAML 1.2 spesifikasyonu etrafında yazılmıştır
+# URL: https://github.com/jbeder/yaml-cpp
+# Packager: Cihan Alkan
+# Depends on: boost cmake
+
+name=yaml-cpp
+version=0.5.3
+release=1
+
+source=(https://github.com/jbeder/yaml-cpp/archive/release-$version.tar.gz
+        500db60f899ae6845039d4eca503133d0db81dbd.patch
+        1f4b6d5c855b59e849b7228090981c520928c2a4.patch)
+
+build() {
+cd yaml-cpp-release-$version
+    patch -Np1 < $SRC/500db60f899ae6845039d4eca503133d0db81dbd.patch
+    patch -Np1 < $SRC/1f4b6d5c855b59e849b7228090981c520928c2a4.patch
+    
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON
+    make
+    make DESTDIR=$PKG install
+}
