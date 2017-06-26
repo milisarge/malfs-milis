@@ -1,7 +1,7 @@
 # Description: Geliştiriciler için sofistike text editörü
 # URL: https://www.sublimetext.com
 # Packager: yakar (aydin@komutan.org)
-# Depends on: 
+# Depends on: desktop-file-utils libpng gtk2
 
 name=sublime-text
 version=3
@@ -16,4 +16,5 @@ build() {
 
 	mv sublime_text.desktop $PKG/usr/share/applications/
 	mv -v * $PKG/opt/sublime_text/
+	rm $PKG/opt/sublime_text/python3.3.zip
 }
