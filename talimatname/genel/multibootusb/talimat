@@ -4,13 +4,22 @@
 # Depends on: mtools parted python3-qt5 dbus-python python3-pip python3-six
 
 name=multibootusb
+hesap=oltulu
 version=8.8.0
 release=1
 
-source=(https://github.com/oltulu/multibootusb/archive/master.zip)
+source=()
 
 build() {
-	cd $_name-master
-	chmod 755 "$SRC/$_name-master/data/multibootusb.desktop"
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	cd $SRC/$name
+	chmod 755 "$SRC/$name/data/multibootusb.desktop"
     python3 setup.py install --root="$PKG/" --optimize=1
 }
