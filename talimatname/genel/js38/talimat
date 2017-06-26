@@ -1,0 +1,41 @@
+# Description: JavaScript tercüman ve kütüphaneleri - Sürüm 38
+# URL: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Releases/38
+# Packager: Cihan Alkan
+# Depends on: nspr icu libffi python zip
+
+name=js38
+version=38.8.0
+release=1
+source=(https://ftp.mozilla.org/pub/firefox/releases/38.8.0esr/source/firefox-38.8.0esr.source.tar.bz2
+        mozjs38-fix-tracelogger.patch
+        mozjs38-shell-version.patch
+        mozjs38-pkg-config-version.patch
+        mozjs38-install-name.patch
+        mozjs38-copy-headers.patch
+        mozjs38-add-bracket.patch
+        mozjs38-1269317.patch)
+
+build() {
+  cd mozilla-esr38
+  patch -Np1 -i $SRC/mozjs38-fix-tracelogger.patch
+  patch -Np1 -i $SRC/mozjs38-shell-version.patch
+  patch -Np1 -i $SRC/mozjs38-pkg-config-version.patch
+  patch -Np1 -i $SRC/mozjs38-install-name.patch
+  patch -Np1 -i $SRC/mozjs38-copy-headers.patch
+  patch -Np1 -i $SRC/mozjs38-add-bracket.patch
+  patch -Np1 -i $SRC/mozjs38-1269317.patch
+  unset CPPFLAGS
+  CXXFLAGS+=' -fno-delete-null-pointer-checks -fpermissive -fno-tree-vrp -fno-strict-aliasing'
+  CFLAGS+=' -fno-delete-null-pointer-checks -fpermissive -fno-tree-vrp -fno-strict-aliasing'
+  export PYTHON=/usr/bin/python2
+  export SHELL=$XTERM_SHELL
+  cd $SRC/mozilla-esr38/js/src
+  ./configure --prefix=/usr --with-system-nspr --enable-system-ffi \
+    --with-system-zlib --with-system-icu --with-intl-api --enable-ctypes \
+    --enable-threadsafe --enable-system-ffi --enable-shared-js --enable-gcgenerational --disable-optimize --enable-pie
+  SHELL=/bin/sh make
+  SHELL=/bin/sh make DESTDIR="$PKG" install
+  rm -f "$PKG"/usr/lib/*.ajs
+  rm -f "$PKG"/usr/bin/js38
+  find "$PKG"/usr/{lib/pkgconfig,include} -type f -exec chmod -x {} +
+}
