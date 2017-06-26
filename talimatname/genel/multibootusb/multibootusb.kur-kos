@@ -1,1 +1,0 @@
-sed -i 's/Exec=multibootusb-pkexec/Exec=sudo multibootusb-pkexec/g' /usr/share/applications/multibootusb.desktop
