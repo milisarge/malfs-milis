@@ -1,0 +1,21 @@
+# Description: PNG formatlı grafik dosyalarını oluşturmak için kullanılan bir dizi rutin
+# URL: http://www.libpng.org/pub/png/libpng.html
+# Packager: Cihan Alkan
+# Depends on: glibc
+
+name=libpng12
+version=1.2.57
+release=1
+source=(https://sourceforge.net/projects/libpng/files/libpng-$version.tar.xz
+https://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-$version-apng.patch.gz)
+
+build() {
+	cd libpng-$version
+#patch -Np0 -i $SRC/libpng-$version-apng.patch
+  ./configure --prefix='/usr'
+  make
+	make DESTDIR=$PKG install
+  rm -rf $PKG/usr/{bin,include,lib/{libpng.{a,so},pkgconfig},share}
+
+  install -Dm 644 LICENSE -t $PKG/usr/share/licenses/libpng12/
+}
