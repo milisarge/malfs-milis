@@ -1,0 +1,27 @@
+# Description: DNS, Alan Adı, IP adresleri, web siteleri, kişiler vb. hakkında bilgi toplamak için açık kaynaklı bir istihbarat ve adli bilişim uygulaması.
+# URL: http://www.paterva.com/web5
+# Packager: yakar (aydin@komutan.org)
+# Depends on: giflib
+
+name=maltego
+version=4.0.11.9358
+release=1
+source=(https://www.paterva.com/malv4/community/MaltegoCE.v${version}.zip)
+
+build() {
+  cd "$SRC/MaltegoCommunity_4.0.11CE"
+
+  mkdir -p "$PKG/usr/bin"
+  mkdir -p "$PKG/usr/share/maltego"
+  mkdir -p "$PKG/usr/share/doc/maltego"
+
+  cp -aR * "$PKG/usr/share/maltego"
+
+  cat > "$PKG/usr/bin/maltego" << EOF
+#!/bin/sh
+cd /usr/share/maltego/bin
+exec ./maltego "\$@"
+EOF
+
+  chmod +x "$PKG/usr/bin/maltego"
+}
