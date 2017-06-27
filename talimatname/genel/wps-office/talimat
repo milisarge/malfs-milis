@@ -6,7 +6,7 @@
 name=wps-office
 version=10.1.0.5707
 _version=10.1.0.5707~a21
-release=1
+release=2
 source=(https://sourceforge.net/projects/mebis/files/Programlar/wps-office-$version-x86_64.tar.xz
         WEBDINGS.ttf
         WINGDNG2.ttf
