@@ -16,7 +16,7 @@ source=(https://sourceforge.net/projects/mebis/files/Programlar/wps-office-$vers
         wingding.ttf)
 
 build() {
-  cd wps-office_${_version}_x86_64
+  #cd wps-office_${_version}_x86_64
   sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' wps wpp et
   sed -i 's|/office6/${gApp}  ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wps
   sed -i 's|/office6/${gApp} ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wpp et
