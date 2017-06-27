@@ -7,7 +7,7 @@ name=wps-office
 version=10.1.0.5707
 _version=10.1.0.5707~a21
 release=1
-source=(http://kdl1.cache.wps.com/ksodl/download/linux/a21/wps-office_$version~a21_x86_64.tar.xz
+source=(https://sourceforge.net/projects/mebis/files/Programlar/wps-office-$version-x86_64.tar.xz
         WEBDINGS.ttf
         WINGDNG2.ttf
         WINGDNG3.ttf
