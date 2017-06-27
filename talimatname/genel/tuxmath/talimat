@@ -1,0 +1,31 @@
+# Description: Çocukların matematik gerçeklerini uygulamalarına yardımcı olan bir arcade oyunu
+# URL: http://tux4kids.alioth.debian.org/
+# Packager: Cihan Alkan
+# Depends on: t4k-common
+
+name=tuxmath
+version=2.0.3
+release=1
+
+source=(http://distro.ibiblio.org/slitaz/sources/packages/t/tuxmath_w_fonts-2.0.3.tar.gz
+        tuxmath.desktop)
+
+
+build() {
+  cd tuxmath_w_fonts-2.0.3
+
+  ./configure --prefix=/usr
+
+  make
+    make DESTDIR=$PKG install
+  # install .desktop dosyası ve simge
+  mkdir -p $PKG/usr/share/{applications,pixmaps}
+  install -D $SRC/tuxmath.desktop $PKG/usr/share/applications/tuxmath.desktop
+  install -D -m644 data/images/icons/icon.png $PKG/usr/share/pixmaps/tuxmath.png
+
+  # install lisans
+  install -D -m644 doc/OFL \
+    $PKG/usr/share/licenses/$name/OFL
+  install -D -m644 doc/README_DATA_LICENSES \
+    $PKG/usr/share/licenses/$name/DATA_LICENSES
+}
