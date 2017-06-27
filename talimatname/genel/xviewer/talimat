@@ -1,0 +1,19 @@
+# Description: Basit ve kullanımı kolay bir resim görüntüleyici.
+# URL: https://github.com/linuxmint/xviewer
+# Packager: Cihan Alkan
+# Depends on: gnome-desktop gnome-common libglade yelp-tools libpeas
+
+name=xviewer
+version=1.4.2
+release=1
+source=(https://github.com/linuxmint/$name/archive/$version.tar.gz)
+
+build() {
+  cd $name-$version    
+    gnome-autogen.sh --prefix="/usr" \
+        --localstatedir="/var" \
+         --libexecdir="/usr/lib/$name"
+  make
+make DESTDIR=$PKG install
+
+}
