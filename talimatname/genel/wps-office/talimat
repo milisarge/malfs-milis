@@ -4,10 +4,10 @@
 # Depends on: libpng xorg-fontconfig pango libxml2 xorg-libsm xorg-libxext xorg-libxrender xorg-glu
 
 name=wps-office
-version=10.1.0.5672
-_version=10.1.0.5672~a21
+version=10.1.0.5707
+_version=10.1.0.5707~a21
 release=1
-source=(http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_$version~a21_x86.tar.xz
+source=(http://kdl1.cache.wps.com/ksodl/download/linux/a21/wps-office_$version~a21_x86.tar.xz
         WEBDINGS.ttf
         WINGDNG2.ttf
         WINGDNG3.ttf
