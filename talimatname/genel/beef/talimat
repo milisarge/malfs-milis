@@ -1,0 +1,47 @@
+# Description: The Browser Exploitation Framework that focuses on the web browser
+# URL: http://beefproject.com/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: ruby23 ruby-bundler23 sqlite python
+
+name=beef
+version=0.4.7.0
+release=1
+source=(beef_gemkur)
+
+build() {
+
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone http://github.com/beefproject/$name.git $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	
+	git clone "$DERLEME_KAYNAKDIZIN/$name" "$PKG/usr/share/$name"
+
+	cd "$PKG/usr/share/$name"
+
+	mkdir -p "$PKG/usr/bin"
+
+	# beef_gemkur
+	cp $SRC/beef_gemkur $PKG/usr/bin
+	chmod +x "$PKG/usr/bin/beef_gemkur"
+
+	# beef
+	cat > "$PKG/usr/bin/$name" << EOF
+#!/bin/sh
+#check if last gem (nokogiri) are installed?
+if ! gem spec nokogiri > /dev/null 2>&1; then
+	/usr/bin/beef_gemkur
+fi
+
+# run beef
+cd /usr/share/$name
+exec ruby $name "\${@}"
+EOF
+
+  chmod +x "$PKG/usr/bin/$name"
+  
+  rm "$PKG/usr/share/$name/install"
+}
