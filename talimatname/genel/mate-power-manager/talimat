@@ -1,7 +1,7 @@
 # Description: MATE masaüstü için güç yönetim aracı
 # URL: http://www.mate-desktop.org/
 # Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool mate-panel dbus-glib libcanberra libgnome-keyring libnotify upower
+# Depends on: intltool itstool mate-panel dbus-glib libcanberra libgnome-keyring libnotify upower consolekit2
 
 name=mate-power-manager
 version=1.18.0
