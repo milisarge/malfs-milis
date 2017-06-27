@@ -1,0 +1,31 @@
+# Description: Ruby yorumlayıcı
+# URL: http://www.ruby-lang.org
+# Packager: yakar (aydin@komutan.org)
+# Depends on: libffi yaml
+
+name=ruby23
+_name=ruby
+version=2.3.4
+release=1
+source=(http://cache.ruby-lang.org/pub/$_name/${version%.*}/$_name-$version.tar.xz
+		gemrc)
+
+build () {
+    cd $_name-$version
+
+    PKG_CONFIG=/usr/bin/pkg-config ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --sharedstatedir=/var/lib \
+    --libexecdir=/usr/lib/ruby \
+    --enable-shared \
+    --disable-rpath \
+    --disable-install-doc \
+    --with-dbm-type=gdbm_compat
+    
+    make
+    make DESTDIR="${PKG}" install-nodoc
+
+    install -D -m644 ${SRC}/gemrc "${PKG}/etc/gemrc"
+}
