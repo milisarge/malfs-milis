@@ -1,0 +1,48 @@
+# Description: WPS Office Türkçe
+# URL: http://wps-community.org/
+# Packager: Cihan Alkan
+# Depends on: libpng xorg-fontconfig pango libxml2 xorg-libsm xorg-libxext xorg-libxrender xorg-glu
+
+name=wps-office
+version=10.1.0.5672
+_version=10.1.0.5672~a21
+release=1
+source=(http://kdl1.cache.wps.com/ksodl/download/linux/a21/wps-office_${_version}_x86_64.tar.xz
+        WEBDINGS.ttf
+        WINGDNG2.ttf
+        WINGDNG3.ttf
+        symbol.ttf
+        mtextra.ttf
+        wingding.ttf)
+
+build() {
+  cd wps-office_${_version}_x86_64
+  sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' wps wpp et
+  sed -i 's|/office6/${gApp}  ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wps
+  sed -i 's|/office6/${gApp} ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wpp et
+
+
+  install -d $PKG/usr/lib
+  cp -r office6 $PKG/usr/lib
+
+  install -d $PKG/usr/bin
+  install -m755 wps wpp et $PKG/usr/bin
+
+  install -d $PKG/usr/share/applications
+  cp -r resource/applications/* $PKG/usr/share/applications
+
+  install -d $PKG/usr/share/icons
+  cp -r resource/icons/* $PKG/usr/share/icons
+
+  install -d $PKG/usr/share/mime
+  cp -r resource/mime/* $PKG/usr/share/mime
+
+  #cp -r $SRC/usr/share $PKG/usr/
+
+  install -d $PKG/usr/share/fonts/wps-office
+  cp -r fonts/* $PKG/usr/share/fonts/wps-office
+  cp -r $SRC/*.ttf $PKG/usr/share/fonts/wps-office
+
+
+  install -Dm644 office6/mui/default/EULA.txt $PKG/usr/share/licenses/$name/EULA.txt
+}
