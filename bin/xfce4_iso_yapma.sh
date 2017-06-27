@@ -1,12 +1,16 @@
 #!/bin/bash
 # lfs dizini oluşturup ortama girdikten sonra bu betiği çalıştırabilirsiniz,bütün ortam içi işlemler yapılacaktır.
 masaustu="xfce4"
-mps -GG && mps -G
+girisyonetici="slim"
 mps kur linux-firmware
 mps kur kernel
+mps kur dracut
+mps kur xorg
 mps -kuruld /root/talimatname/temel-ek/derleme.sira
 mps kur $masaustu
-mps -kurul /root/ayarlar/gerekli_programlar
+# girisci kurulum
+mps kur $girisyonetici
+mps -kurul /root/ayarlar/gerekli_programlar_$masaustu
 cp /root/ayarlar/.xinitrc.$masaustu /root/.xinitrc
 cp -r /root/ayarlar/$masaustu/.config /root/
 cp /root/ayarlar/network /etc/sysconfig/
@@ -26,6 +30,9 @@ export LANG="tr_TR.UTF-8"
 xdg-user-dirs-update
 if [ -f /usr/bin/slim ];then
 	cp -f /root/ayarlar/.xinitrc.slim /root/.xinitrc
+fi
+if [ -f /usr/bin/lxdm ];then
+	cp -rf /sources/milis.git/ayarlar/servisler/mbd/init.d/lxdm /etc/init.d/
 fi
 cp -rf /sources/milis.git/ayarlar/milbit/milbit.desktop /usr/share/applications/
 cp ayarlar/kurulum.desktop /root/Desktop/
