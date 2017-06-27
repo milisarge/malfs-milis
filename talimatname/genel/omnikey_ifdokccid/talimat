@@ -1,0 +1,22 @@
+# Description: HID Global OMNIKEY CardMan Akıllı Kart okuyucu serisi için CCID sürücüsü
+# URL: http://www.hidglobal.com/
+# Packager: Cihan Alkan
+# Depends on: pcsc-lite libusb
+
+name=omnikey_ifdokccid
+version=4.2.8
+release=1
+
+source=(http://www.hidglobal.com/sites/hidglobal.com/files/drivers/ifdokccid_linux_x86_64-v$version.tar.gz)
+
+build() {
+cd $SRC/ifdokccid_linux_x86_64-v$version
+    mkdir -p $PKG/usr/lib/pcsc/drivers
+    cp -r ifdokccid_linux_x86_64-v$version.bundle $PKG/usr/lib/pcsc/drivers
+    mkdir -p $PKG/etc
+    install -m0600 omnikey.ini $PKG/etc/omnikey.ini
+    mkdir -p $PKG/etc/udev/rules.d
+    install -m0644 z98_omnikey.rules $PKG/etc/udev/rules.d/z98_omnikey.rules
+    mkdir -p $PKG/usr/lib/udev
+    install -m0744 ok_pcscd_hotplug.sh $PKG/usr/lib/udev/ok_pcscd_hotplug.sh
+}
