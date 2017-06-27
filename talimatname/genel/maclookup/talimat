@@ -1,0 +1,19 @@
+# Description: IEEE MA-L/OUI açık listesinden MAC adresi görüntüleme aracı.
+# URL: https://github.com/paraxor/maclookup
+# Packager: yakar (aydin@komutan.org)
+# Depends on: 
+
+name=maclookup
+version=0.4
+release=1
+source=(https://github.com/paraxor/$name/archive/${version}.tar.gz)
+
+build() {
+  cd "$SRC/$name-$version"
+
+  mkdir -p "$PKG/usr/share/$name"
+
+  install -Dm755 $name.sh "$PKG/usr/bin/$name"
+
+  sh $name.sh -u -f "$PKG/usr/share/$name/oui.txt"
+}
