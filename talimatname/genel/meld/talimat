@@ -1,0 +1,21 @@
+# Description: Farklılıkları tespit etme ve birleştirme aracı.
+# URL: http://meldmerge.org/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: python-gobject python-cairo gtksourceview3 gsettings-desktop-schemas dconf
+
+name=meld
+version=3.16.4
+release=1
+source=(https://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	mkdir -p $PKG/opt/ $PKG/usr/bin/ $PKG/usr/share/applications/
+	cp -r $SRC/$name-$version $PKG/opt/
+	cd $PKG/opt/$name-$version
+
+  	python setup.py build
+
+	cp $PKG/opt/$name-$version/build/share/applications/meld.desktop $PKG/usr/share/applications/
+  	ln -s /opt/$name-$version/bin/$name $PKG/usr/bin/meld
+	#chmod +x "$PKG/usr/bin/$name"
+}
