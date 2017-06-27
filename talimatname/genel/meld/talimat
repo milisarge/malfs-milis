@@ -6,7 +6,8 @@
 name=meld
 version=3.16.4
 release=1
-source=(https://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+source=(https://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz
+	meld.desktop)
 
 build() {
 	mkdir -p $PKG/opt/ $PKG/usr/bin/
@@ -15,6 +16,7 @@ build() {
 
   	python setup.py build
 
+	mv $PKG/$name-$version/meld.desktop /usr/share/applications/
   	ln -s /opt/$name-$version/bin/$name $PKG/usr/bin/meld
 	#chmod +x "$PKG/usr/bin/$name"
 }
