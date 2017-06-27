@@ -1,0 +1,33 @@
+# Description: X11 ve OpenGL'i destekleyen, zengin özelliklere sahip bir ekran kaydedici.
+# URL: http://www.maartenbaert.be/simplescreenrecorder/
+# Packager: Cihan Alkan
+# Depends on: qt4 ffmpeg jack xorg-glu xorg-libx11 xorg-libxi xorg-libxext xorg-libxfixes
+
+name=simplescreenrecorder
+version=0.3.8
+release=1
+
+source=(simplescreenrecorder_tr.qm
+        simplescreenrecorder.desktop)
+
+
+build() {
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone https://github.com/MaartenBaert/ssr.git $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+
+
+	cd $name
+	./configure --prefix=/usr --disable-assert
+	make
+	rm $SRC/$name/data/$name.desktop
+	cp $SRC/$name.desktop $SRC/$name/data/
+	make DESTDIR=$PKG install
+	mkdir -p /usr/share/$name/translations
+	cp $SRC/simplescreenrecorder_tr.qm /usr/share/$name/translations/
+}
