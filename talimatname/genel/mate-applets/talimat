@@ -1,7 +1,7 @@
 # Description: MATE paneli için appletler
 # URL: http://www.mate-desktop.org/
 # Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool gtksourceview3 libgtop libnotify mate-panel polkit dbus-python python-gobject2 upower wireless-tools
+# Depends on: intltool itstool gtksourceview3 libgtop libnotify mate-panel polkit dbus-python python-gobject upower wireless-tools
 
 name=mate-applets
 version=1.18.1
