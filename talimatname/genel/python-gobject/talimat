@@ -4,7 +4,7 @@
 # Depends on: python-cairo gobject-introspection xorg-libxxf86vm libffi 
 
 name=python-gobject
-version=3.18.2
+version=3.24.1
 release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/pygobject/${version%.*}/pygobject-$version.tar.xz)
