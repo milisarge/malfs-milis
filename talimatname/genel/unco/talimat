@@ -1,0 +1,27 @@
+# Description: verilen komutları geri işletme-tarihçe
+# URL: https://github.com/kazuho/unco
+# Packager: milisarge
+# Depends on: cmake
+
+name=unco
+hesap=kazuho
+version=0.2.0
+release=1
+source=()
+
+build() {
+    
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	cd $SRC/$name
+	
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	make
+	make DESTDIR="$PKG" install
+}
