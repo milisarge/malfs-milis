@@ -1,0 +1,23 @@
+# Description: Gtk2 için opengl uzantıları
+# URL: http://gtkglext.sourceforge.net/
+# Packager: Cihan Alkan
+# Depends on: glib gtk2
+
+name=gtkglext
+version=1.2.0
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/gtkglext/$name-$version.tar.gz
+       gtk2.20.patch)
+
+
+build() {
+	cd $name-$version
+	patch -Np1 -i $SRC/gtk2.20.patch
+	sed '/AC_PATH_XTRA/d' -i configure.in
+
+	autoreconf --force --install
+	./configure --prefix=/usr --disable-static
+	make
+	make DESTDIR=$PKG install
+}
