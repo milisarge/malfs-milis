@@ -11,8 +11,7 @@ source=( https://git.libssh.org/projects/libssh.git/snapshot/$name-$version.tar.
 	
 build() {
 	cd $SRC/
-	cmake $name-$version/ 
-	-DCMAKE_INSTALL_PREFIX=/usr \
+	cmake $name-$version/ -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
  	make
  	make DESTDIR=$PKG install
