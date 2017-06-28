@@ -1,0 +1,21 @@
+# Description: java .class dosyalarının kaynak kodunu gösteren uygulama
+# URL: http://jd.benow.ca/
+# Packager: milisarge
+# Depends on: jre
+
+name=jd-gui
+version=1.4.0
+release=1
+source=(https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1.4.0.jar
+		https://github.com/java-decompiler/jd-gui/raw/v1.4.0/src/linux/resources/jd_icon_128.png
+		jd-gui.desktop)
+
+build() {
+	cd "$SRC"
+	install -Dm644 "$name-$version.jar" "$PKG/usr/share/java/$name/$name.jar"
+	install -d "$PKG/usr/bin"
+	echo -e "#!/bin/sh\nexec java -jar /usr/share/java/$name/$name.jar" '"$@"' > "$PKG/usr/bin/$name"
+	chmod 755 "$PKG/usr/bin/$name"
+	install -Dm644 jd-gui.desktop "$PKG/usr/share/applications/$name.desktop"
+	install -Dm644 jd_icon_128.png "$PKG/usr/share/pixmaps/$name.png"
+}
