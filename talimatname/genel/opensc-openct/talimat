@@ -1,0 +1,26 @@
+# Description: OpenSC compiled with OpenCT instead of PCSC, working with e.g. SafeNet/Aladdin eToken Pro 64k
+# URL: https://github.com/OpenSC/OpenSC/wiki
+# Packager: milisarge
+# Depends on: openct 
+
+name=opensc-openct
+_name=OpenSC
+version=0.16.0
+release=1
+source=(https://github.com/OpenSC/OpenSC/archive/$version.tar.gz)
+
+build() {
+	_prefix=/opt/$name
+
+	cd $_name-$version
+	./bootstrap
+	./configure \
+	--prefix=$_prefix \
+	--disable-pcsc \
+	--enable-openct
+
+	make
+	mkdir -p ./$_prefix
+	make DESTDIR="$PKG" install
+
+}
