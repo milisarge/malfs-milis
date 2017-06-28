@@ -124,8 +124,10 @@ paket_sil(){
 					done
 				fi
 				if [ "$sil_onay" = "e" ];then
+					[ -f "$talimatname_dizin/genel/$paket/$paket.kos-sil" ] && bash "$talimatname_dizin/genel/$paket/$paket.kos-sil"
 					xargs rm -r -f < /tmp/$paket.sil &&
 					rm -r -f /var/lib/pkg/DB/"$paket" &&
+					[ -f "$talimatname_dizin/genel/$paket/$paket.sil-kos" ] && bash "$talimatname_dizin/genel/$paket/$paket.sil-kos"
 					ryaz 34 $paket" paketi silindi."
 					loglama "$paket paketi silindi."
 					rm -f /tmp/$paket.sil

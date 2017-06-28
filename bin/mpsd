@@ -594,16 +594,10 @@ add_meta_files() {
 	if [ -f $PKGMK_ROOT/${NAME}.kos-kur ]; then
 		cp $PKGMK_ROOT/${NAME}.kos-kur .PRE
 	fi
-	if [ -f $PKGMK_ROOT/${NAME}.kos-sil ]; then
-		cp $PKGMK_ROOT/${NAME}.kos-sil .PRES
-	fi
 	if [ -f $PKGMK_ROOT/${NAME}.kur-kos ]; then
 		cp $PKGMK_ROOT/${NAME}.kur-kos .POST
 	fi
-	if [ -f $PKGMK_ROOT/${NAME}.sil-kos ]; then
-		cp $PKGMK_ROOT/${NAME}.sil-kos .POSTS
-	fi
-	for file in .README .PRE .POST .PRES .POSTS; do
+	for file in .README .PRE .POST; do
 		if [ -f $file ]; then
 			bsdtar -r -f $PAKETLEME_DIZIN/$1 \
 			$file
@@ -691,7 +685,7 @@ add_meta_to_archive() {
 
 	rm $PAKETLEME_DIZIN/$1
 
-	for file in .META .MTREE .README .PRE .POST .PRES .POSTS .INFO; do
+	for file in .META .MTREE .README .PRE .POST .INFO; do
 		if [ -f $file ]; then
 			bsdtar -r -f $PAKETLEME_DIZIN/$1 \
 			$file
