@@ -1,20 +1,18 @@
-# Description: Library for accessing ssh client services through C libraries
+# Description: C kitaplıkları aracılığıyla ssh istemci servislerine erişmek için kütüphane
 # URL: http://www.libssh.org/
-# Packager: pierre at nutyx dot org
+# Packager: yakar (aydin@komutan.org)
 # Depends on: doxygen cmake
 
 name=libssh
-version=0.7.2
+version=0.7.5
 release=1
 
-source=( https://red.libssh.org/attachments/download/177/$name-$version.tar.xz)
+source=( https://git.libssh.org/projects/libssh.git/snapshot/$name-$version.tar.gz )
 	
 build() {
-	mkdir build
-  	cd build
-	cmake ../$name-$version \
-    		-DCMAKE_INSTALL_PREFIX=/usr \
-    		-DCMAKE_BUILD_TYPE=Release
+	cd $SRC/
+	cmake $name-$version/ -DCMAKE_INSTALL_PREFIX=/usr \
+    	  -DCMAKE_BUILD_TYPE=Release
 	make
 	make DESTDIR=$PKG install
 }
