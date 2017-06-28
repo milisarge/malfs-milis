@@ -1,0 +1,141 @@
+#! /bin/bash
+# milisia ağ sistemi (mas) bash tabanlı konsol uygulaması. 
+# milisarge <milisarge@gmail.com> 2017
+surum="0.0.1"
+surumbilgi=" <milisarge@gmail.com> 2017"
+anayer="/opt/milisia"
+servis="cjdroute"
+servisk="cjdns"
+pingkontrol="fcf4:e309:14b5:5498:cafd:4f59:4b9c:7f84" # hia.cjdns.ca
+ayardosya="ayarlar/milisia_genel.conf"
+noktadepo="noktalar"
+nokta_adres="https://github.com/milisarge/$noktadepo"
+
+[ ! -d $anayer ] && mkdir -p $anayer
+[ ! -d $anayer/ayarlar ] && mkdir -p $anayer/ayarlar
+[ ! -c /dev/net/tun ] && aygit_ekle
+[ ! -f /usr/bin/$servis ] && mps kur $servisk
+[ ! -f /usr/bin/json ] && json_kur
+
+aygit_ekle(){
+	mkdir -p /dev/net &&
+	mknod /dev/net/tun c 10 200 &&
+	chmod 0666 /dev/net/tun	
+}
+
+json_kur(){
+	curl -L https://github.com/trentm/json/raw/master/lib/json.js > /usr/bin/json && chmod +x /usr/bin/json
+}
+
+baslat(){
+	cjdroute < $anayer/$ayardosya
+}
+
+durdur(){
+	echo "servis durduruluyor"
+	killall -9 cjdroute
+	echo "servis durduruldu"
+}
+
+olustur(){
+	if [ ! -f $anayer/$ayardosya ]; then
+		cjdroute --genconf | cjdroute --cleanconf > $anayer/$ayardosya
+		echo "ayar dosyası oluşturuldu"
+	else
+		echo "zaten ayar dosyası mevcut!"
+		echo "yeniden oluşturmak için --zo kullanın"
+	fi
+}
+
+yeniden_olustur(){
+	mv $anayer/$ayardosya $anayer/$ayardosya-"`date +%m-%d-%y.%H%M%S`"
+	cjdroute --genconf | cjdroute --cleanconf > $anayer/$ayardosya
+	echo "ayar dosyası oluşturuldu"
+}
+
+genel_kimlik(){
+	cat $anayer/$ayardosya | egrep -m 1 '"publicKey"' | awk -F '"' '{ print $4 }'
+}
+
+ozel_kimlik(){
+	cat $anayer/$ayardosya | egrep -m 1 '"privateKey"' | awk -F '"' '{ print $4 }' 
+}
+
+ipv6_al(){
+	#grep -Eo '"ipv6" :.*?[^\\]",' $ayardosya | awk '{print $3}' ;;		
+	#cat $ayardosya | json.js ipv6
+	cat $anayer/$ayardosya | egrep -m 1 '"ipv6"' | awk -F '"' '{ print $4 }'
+}
+
+nokta_ekle(){
+	if [ ! -f $anayer/$ayardosya ]; then
+		olustur
+	fi
+	ipadres="`json -f $1 -Ma key | sed -n 1p`"
+	icerik="`json -f $1 -Ma value`"
+	json -I -f $anayer/$ayardosya -e 'this.interfaces.UDPInterface[0]["connectTo"]["'$ipadres'"]='"$icerik"' ' 
+}
+
+depo_guncelle(){
+	if [ ! -d $anayer/$noktadepo  ];then
+		git clone $nokta_adres $anayer/$noktadepo
+	else
+		cd $anayer/$noktadepo
+		git pull
+		cd -
+	fi
+}
+
+rpc_sifre(){
+	cat $anayer/$ayardosya | json admin.password
+	#cat $ayardosya | egrep -m 3 '"password"' | awk -F '"' '{ print $4 }' | sed -n 1p
+}
+
+menu() {
+	
+	while [ "$1" ]; do
+		case $1 in
+			yeni|--o)
+				olustur ;;
+			zyeni|--zo)
+				yeniden_olustur ;;
+			basla|--b)
+				baslat ;;
+			yebas|--b)
+				durdur && baslat ;;
+			ping|--p)
+				ping6 $pingkontrol ;;
+			guncelle|--g)
+				depo_guncelle ;;
+			kimlik|--k)	
+				genel_kimlik ;;
+			okimlik|--ok)	
+				ozel_kimlik ;;
+			ip|--i)
+				ipv6_al ;;
+			ekle|--e)	
+				if [ ! "$2" ]; then
+					echo "nokta ayar dosyası belirtin!"
+					exit 1
+				fi
+				nokta_ekle $anayer/$noktadepo/$2 ;;
+			sil|--s)	
+				if [ ! "$2" ]; then
+					echo "nokta ayar dosyası belirtin!"
+					exit 1
+				fi
+				nokta_sil $anayer/$noktadepo/$2 ;;
+			rpcs|--rs)	
+				rpc_sifre ;;
+			dur|--d)
+				durdur ;;
+			ekle|--e)
+				peer_ekle "$2" ;;	
+			surum|--s)
+				echo "$surum $surumbilgi" ;;
+		esac
+		shift
+	done
+}
+
+menu "$@"
