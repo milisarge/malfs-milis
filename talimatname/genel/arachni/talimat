@@ -1,0 +1,62 @@
+# Description: Web uygulama güvenliği için modüler pentest aracı.
+# URL: https://www.arachni-scanner.com
+# Packager: yakar (aydin@komutan.org)
+# Depends on: ruby23 ruby-bundler23
+
+name=arachni
+version=1.5.1
+release=1
+source=()
+
+build() {
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone http://github.com/Arachni/$name.git $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	
+	git clone "$DERLEME_KAYNAKDIZIN/$name" "$PKG/usr/share/$name"
+
+	cd "$PKG/usr/share/$name"
+
+  	progs="arachni arachni_console arachni_multi arachni_reporter arachni_restore"
+  	progs="${progs} arachni_rest_server arachni_rpc arachni_rpcd"
+  	progs="$progs arachni_rpcd_monitor arachni_script"
+
+  	mkdir -p "$PKG/usr/bin"
+  	mkdir -p "$PKG/usr/share/$name"
+  	touch "$PKG/usr/share/$name/.gemkur"
+
+  	install -Dm644 -t "$PKG/usr/share/doc/$name" *.md
+  	install -Dm644 LICENSE.md "$PKG/usr/share/licenses/$name/LICENSE.md"
+
+  	#cp --no-preserve=ownership -a * "$PKG/usr/share/$name"
+
+  	for prog in ${progs}
+  	do
+    	cat > "$PKG/usr/bin/${prog//_/-}" << EOF
+#!/bin/sh
+cd /usr/share/$name
+if [ -f "/usr/share/$name/.gemkur" ]; then
+	/usr/bin/arachni_gemkur
+fi
+if [ -f "/usr/bin/ruby23" ]; then
+	exec ruby23 /usr/share/$name/bin/$prog "\$@"
+else
+	exec ruby /usr/share/$name/bin/$prog "\$@"
+fi
+EOF
+  	done
+
+  	cat > "$PKG/usr/bin/arachni_gemkur" << EOF
+#!/bin/sh
+set -e
+cd /usr/share/$name
+bundler install
+rm /usr/share/$name/.gemkur
+EOF
+
+  	chmod +x "$PKG"/usr/bin/*
+}
