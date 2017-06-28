@@ -1,0 +1,24 @@
+# Description:  Perl pcsc modülü
+# URL:          https://github.com/gitpan/pcsc-perl
+# Packager :	milisarge
+# Depends on:   pcsc-lite
+
+name=pcsc-perl
+version=1.4.14
+release=1
+source=(http://ludovic.rousseau.free.fr/softwares/$name/$name-$version.tar.bz2)
+
+build() {
+	export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$PKG'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$PKG'" \
+      MODULEBUILDRC=/dev/null
+	
+	cd "$name-$version"
+	/usr/bin/perl Makefile.PL
+	make
+	export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+	make DESTDIR=${PKG} install
+	find "$PKG" -name .packlist -o -name perllocal.pod -delete
+}
