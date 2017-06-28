@@ -10,9 +10,10 @@ release=1
 source=(http://ludovic.rousseau.free.fr/softwares/pcsc-tools/$name-$version.tar.bz2)
 
 build() {
-    cd $SRC/$name-$version
-./configure
-    sed -i -e 's:-Wall -O2:${CFLAGS}:g' Makefile
+    cd $SRC/$name-$version 
+     ./configure
+     sed -i -e 's:-Wall -O2:${CFLAGS}:g' Makefile
      make
      make DESTDIR=$PKG install
+     mv $PKG/usr/local/*  $PKG/usr/
 }
