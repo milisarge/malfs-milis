@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Burp Suite (Ücretsiz)
+Exec=burpsuite
+Terminal=false
+Icon=burpsuite
+Type=Application
+Categories=Network;
+Version=1.0
