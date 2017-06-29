@@ -1,0 +1,15 @@
+#!/bin/bash
+masa=mate
+if [ "`cat ~/.xinitrc | grep $masa`" ]; then
+	
+	mv /usr/share/icons/mate/24x24/places/start-here.png /usr/share/icons/mate/24x24/places/start-here1.png
+	cp -rf /root/ayarlar/milislogo.png /usr/share/icons/mate/24x24/places/start-here.png
+	mv /usr/share/icons/matefaenza/places/24/start-here-mate.png /usr/share/icons/matefaenza/places/24/start-here-mate1.png
+	cp -rf /root/ayarlar/milislogo.png /usr/share/icons/matefaenza/places/24/start-here-mate.png
+	mv /usr/share/icons/Adwaita/24x24/places/start-here.png /usr/share/icons/Adwaita/24x24/places/start-here1.png
+	cp -rf /root/ayarlar/milislogo.png /usr/share/icons/Adwaita/24x24/places/start-here.png
+	echo "Menü logosu değiştirildi."
+else
+	echo "masaüstü mate değil!"
+fi
+
