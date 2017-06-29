@@ -1,7 +1,7 @@
 # Description: MATE menü düzenleme aracı
 # URL: http://www.mate-desktop.org/
 # Packager: yasarciv67@gmail.com
-# Depends on: intltool gtk3 mate-menus python-gobject2 
+# Depends on: intltool gtk3 mate-menus python-gobject 
 
 name=mozo
 version=1.18.0
