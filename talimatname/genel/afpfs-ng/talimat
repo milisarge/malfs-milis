@@ -1,0 +1,40 @@
+# Description: Apple Dosyalama Protokol (AFP) kütüphanesi.
+# URL: http://alexthepuffin.googlepages.com/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: gmp fuse libgcrypt
+
+name=afpfs-ng
+version=0.8.1
+release=1
+source=( http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2
+		 fix_afpfs-ng_includes.patch
+		 01-gcrypt.patch
+		 02-pointer.patch
+		 10-fix-errno.patch
+		 20-build-error-fixes.patch
+		 21-header-path-fix.patch
+		 30-include-fixes.patch
+)
+
+build() {
+	cd "$SRC/$name-$version"
+
+	# apply patches
+	patch -Np1 -i "$SRC/fix_afpfs-ng_includes.patch"
+	patch -Np1 -i "$SRC/01-gcrypt.patch"
+	patch -Np1 -i "$SRC/02-pointer.patch"
+	patch -Np1 -i "$SRC/10-fix-errno.patch"
+	patch -Np1 -i "$SRC/20-build-error-fixes.patch"
+	patch -Np1 -i "$SRC/21-header-path-fix.patch"
+	patch -Np1 -i "$SRC/30-include-fixes.patch"
+
+	./configure --prefix=/usr
+	make
+	make DESTDIR="$PKG" install
+
+	# install headers
+	cd include
+	for header in afpfs-ng/*.h; do
+		install -Dm644 "$header" "$PKG/usr/include/$header"
+	done
+}
