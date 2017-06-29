@@ -1,7 +1,7 @@
 # Description: Gobject tabanlı eklenti motoru
 # URL: https://wiki.gnome.org/Projects/Libpeas
 # Packager: yasarciv67@gmail.com
-# Depends on: gtk-doc intltool python-gobject python-gobject2 glade gobject-introspection gnome-common gtk3
+# Depends on: gtk-doc intltool python-gobject python-gobject glade gobject-introspection gnome-common gtk3
 
 name=libpeas
 version=1.20.0
