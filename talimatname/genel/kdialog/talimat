@@ -1,0 +1,20 @@
+# Description: Kabuk komut dosyalarından diyalog kutuları görüntülemek için bir yardımcı program
+# URL: https://www.kde.org/
+# Packager: Cihan Alkan
+# Depends on: python kf5-kdelibs4support
+
+name=kdialog
+version=17.04.2
+release=1
+source=(https://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+
+build() {
+  mkdir -p build
+cd build
+  cmake ../$name-$version \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF
+  make
+  make DESTDIR=$PKG install
+}
