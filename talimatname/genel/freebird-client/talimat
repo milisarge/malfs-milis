@@ -12,7 +12,7 @@ source=( http://downloads.sourceforge.net/firebird/Firebird-$version-0.tar.bz2
 
 build() {
 
-cd $SRC/Firebird-$version-0
+  cd $SRC/Firebird-$version-0
   patch -Np1 -i ../firebird-c++11.patch
   patch -Np0 -i ../firebird-c++14.patch
   ./configure --prefix=/usr --with-system-icu --without-fbudf \
@@ -30,7 +30,6 @@ cd $SRC/Firebird-$version-0
 
   install -m644 gen/firebird/*.msg $PKG/usr/share/firebird
   install -m755 gen/firebird/bin/fb_config $PKG/usr/bin
-  install -m644 ${SRC}/LICENSE $PKG/usr/share/licenses/$name/LICENSE
 
   # Add libgds support FS#30062 FS#30282
   cd $PKG/usr/lib
