@@ -1,0 +1,15 @@
+# Description: Magic kütüphanesi için python bağlantısı.
+# URL: http://darwinsys.com/file/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: python-setuptools
+
+name=python-magic
+version=5.29
+release=1
+source=(ftp://ftp.astron.com/pub/file/file-${version}.tar.gz)
+
+build() {
+  cd "${SRC}/file-${version}/python"
+  python setup.py install --root="${PKG}" --optimize=1
+  install -Dm0644 "${SRC}/file-${version}/COPYING" "${PKG}/usr/share/licenses/${name}/COPYING"
+}
