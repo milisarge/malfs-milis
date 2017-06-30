@@ -1,0 +1,22 @@
+# Description: Standart Linux masaüstü üzerinde Android uygulamaları çalıştır
+# URL: http://www.shashlik.io
+# Packager: Cihan Alkan
+# Depends on: python3 kdialog zenity
+
+name=shashlik
+version=0.9.3
+release=1
+source=(http://static.davidedmundson.co.uk/shashlik/shashlik_$version.deb
+shashlik.desktop
+shashlik-gui.sh)
+
+build() {
+  ar x ${SRC}/shashlik_$version.deb
+  tar -xJC $PKG -f data.tar.xz
+  install -dm755 $PKG/usr/bin
+  ln -s /opt/shashlik/bin/shashlik-run $PKG/usr/bin/
+  ln -s /opt/shashlik/bin/shashlik-install $PKG/usr/bin/
+  cp -f /$SRC/shashlik.desktop /usr/share/applications/shashlik.desktop
+  cp -f /$SRC/shashlik-gui.sh /bin/
+
+}

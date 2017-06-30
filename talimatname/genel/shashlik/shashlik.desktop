@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Android Apk Kur
+CommentAndroid uygulamaları çalıştır
+Icon=multimedia-volume-control
+Exec=/bin/shashlik-gui.sh
+Type=Application
+Icon=/opt/shashlik/data/shashlik.png
+StartupNotify=true
+Terminal=false
+Categories=X-XFCE;Utility;
