@@ -1,0 +1,17 @@
+# Description: Birçok farklı hizmeti destekleyen çok hızlı ağ oturum açma test (fuzzer) uygulaması.
+# URL: https://www.thc.org/thc-hydra/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: postgresql subversion libssh mariadb libidn libfbclient afpfs-ng zlib openssl ncurses pcre
+
+name=hydra
+version=8.5
+release=1
+source=(https://www.thc.org/releases/${name}-${version}.tar.gz)
+
+build() {
+  cd ${name}-${version}
+  ./configure --fhs
+  make
+  make DESTDIR="${PKG}" install
+  install -Dm 644 README -t "${PKG}/usr/share/doc/${name}"
+}
