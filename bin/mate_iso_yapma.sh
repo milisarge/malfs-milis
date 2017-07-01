@@ -1,7 +1,7 @@
 #!/bin/bash
 # lfs dizini oluşturup ortama girdikten sonra bu betiği çalıştırabilirsiniz,bütün ortam içi işlemler yapılacaktır.
 masaustu="mate"
-girisyonetici="slim"
+girisyonetici="lxdm"
 mps kur linux-firmware
 mps kur kernel
 mps kur dracut
@@ -11,6 +11,8 @@ mps kur $masaustu
 # girisci kurulum
 mps kur $girisyonetici
 mps -kurul /root/ayarlar/gerekli_programlar_$masaustu
+mkdir /usr/share/backgrounds/milis
+cp /root/ayarlar/mate/milis-arkaplan/* /usr/share/backgrounds/milis/
 cp /root/ayarlar/.xinitrc.$masaustu /root/.xinitrc
 cp -r /root/ayarlar/$masaustu/.config /root/
 cp /root/ayarlar/network /etc/sysconfig/
