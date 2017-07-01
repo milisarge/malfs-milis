@@ -4,42 +4,54 @@
 # Depends on: cmake libevent
 
 name=mariadb
-version=10.1.11
+version=10.2.6
 release=1
 
-source=(https://downloads.mariadb.org/interstitial/mariadb-$version/source/mariadb-$version.tar.gz )
+source=(ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-$version/source/mariadb-$version.tar.gz
+		libmysql.version)
 
 
 build() {
-source /etc/blfs-bootscripts
-wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-tar xvf $scripts-$scriptsversion.tar.bz2
-
 cd $name-$version
-
-sed -i "s@data/test@\${INSTALL_MYSQLTESTDIR}@g" sql/CMakeLists.txt
-
+#patch -Np1 < "${SRC}"/0001-openssl-1-1-0.patch
 mkdir build
 cd build
 
-cmake -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=/usr                      \
-      -DINSTALL_DOCDIR=share/doc/$name-$version        \
-      -DINSTALL_DOCREADMEDIR=share/doc/$name-$version  \
-      -DINSTALL_MANDIR=share/man                       \
-      -DINSTALL_MYSQLSHAREDIR=share/mysql              \
-      -DINSTALL_MYSQLTESTDIR=share/mysql/test          \
-      -DINSTALL_PLUGINDIR=lib/mysql/plugin             \
-      -DINSTALL_SBINDIR=sbin                           \
-      -DINSTALL_SCRIPTDIR=bin                          \
-      -DINSTALL_SQLBENCHDIR=share/mysql/bench          \
-      -DINSTALL_SUPPORTFILESDIR=share/mysql            \
-      -DMYSQL_DATADIR=/srv/mysql                       \
-      -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock        \
-      -DWITH_EXTRA_CHARSETS=complex                    \
-      -DWITH_EMBEDDED_SERVER=ON                        \
-      -DTOKUDB_OK=0                                    \
-      ..
+cmake $SRC/${name}-${version} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DMYSQL_DATADIR=/var/lib/mysql \
+    -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock \
+    -DDEFAULT_CHARSET=utf8 \
+    -DDEFAULT_COLLATION=utf8_general_ci \
+    -DENABLED_LOCAL_INFILE=ON \
+    -DINSTALL_MANDIR=share/man \
+    -DINSTALL_PLUGINDIR=/usr/lib/mysql/plugin \
+    -DINSTALL_SCRIPTDIR=bin \
+    -DINSTALL_INCLUDEDIR=include/mysql \
+    -DINSTALL_DOCREADMEDIR=share/mysql \
+    -DINSTALL_SUPPORTFILESDIR=share/mysql \
+    -DINSTALL_MYSQLSHAREDIR=share/mysql \
+    -DINSTALL_DOCDIR=share/mysql/docs \
+    -DINSTALL_SHAREDIR=share/mysql \
+    -DWITH_PCRE=system \
+    -DWITH_READLINE=ON \
+    -DWITH_ZLIB=system \
+    -DWITH_SSL=system \
+    -DWITH_LIBWRAP=OFF \
+    -DWITH_EXTRA_CHARSETS=complex \
+    -DWITH_EMBEDDED_SERVER=ON \
+    -DWITH_ARCHIVE_STORAGE_ENGINE=1 \
+    -DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
+    -DWITH_INNOBASE_STORAGE_ENGINE=1 \
+    -DWITH_PARTITION_STORAGE_ENGINE=1 \
+    -DWITHOUT_EXAMPLE_STORAGE_ENGINE=1 \
+    -DWITHOUT_FEDERATED_STORAGE_ENGINE=1 \
+    -DWITHOUT_TOKUDB_STORAGE_ENGINE=1 \
+    -DCMAKE_C_FLAGS="-fPIC ${CFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer" \
+    -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti" \
+	-DWITH_MYSQLD_LDFLAGS="${LDFLAGS}"
+
 make
 
 make DESTDIR=$PKG install
@@ -68,7 +80,7 @@ net_buffer_length = 16K
 myisam_sort_buffer_size = 8M
 
 # Don't listen on a TCP/IP port at all.
-skip-networking
+#skip-networking
 
 # required unique id between 1 and 2^32 - 1
 server-id       = 1
@@ -117,12 +129,13 @@ interactive-timeout
 
 # End /etc/mysql/my.cnf
 EOF
-# Cleanup
-rm -r $PKG/usr/share/mysql/test
 
 
-# Service
-
-cd $SRC/$scripts-$scriptsversion
-make DESTDIR=$PKG install-mysql
+#servis
+cd /sources/milis.git/ayarlar/servisler
+make DESTDIR=$PKG kur-mysql  
+    
+#gereksizler	
+rm -r ${PKG}/usr/{data,mysql-test,sql-bench}
+rm ${PKG}/usr/share/man/man1/mysql-test-run.pl.1
 }
