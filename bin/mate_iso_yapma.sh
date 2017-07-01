@@ -31,7 +31,7 @@ export LC_ALL="tr_TR.UTF-8"
 export LANG="tr_TR.UTF-8"
 xdg-user-dirs-update
 if [ -f /usr/bin/slim ];then
-	cp -f /root/ayarlar/.xinitrc.slim /root/.xinitrc
+	cp -f /root/ayarlar/.xinitrc-$masa.slim /root/.xinitrc
 fi
 if [ -f /usr/bin/lxdm ];then
 	cp -rf /sources/milis.git/ayarlar/servisler/mbd/init.d/lxdm /etc/init.d/
