@@ -11,5 +11,5 @@ source=( https://pypi.python.org/packages/source/P/PyOpenGL/PyOpenGL-$version.ta
 
 build() {
     cd PyOpenGL-$version
-    python setup.py install --prefix=/usr --root=$PKG --optimize=1
+    python2 setup.py install --prefix=/usr --root=$PKG --optimize=1
 }
