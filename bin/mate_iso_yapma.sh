@@ -1,4 +1,5 @@
 #!/bin/bash
+# mate iso yapma
 # lfs dizini oluşturup ortama girdikten sonra bu betiği çalıştırabilirsiniz,bütün ortam içi işlemler yapılacaktır.
 masaustu="mate"
 girisyonetici="slim"
