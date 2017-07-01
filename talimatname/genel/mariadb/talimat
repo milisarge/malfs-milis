@@ -1,7 +1,7 @@
 # Description: MariaDB bir çatal ve MySQL ilişkisel veritabanı yönetim sisteminin yerini alıyor.
 # URL: http://www.mariadb.org/en/about/
 # Packagers: milisarge
-# Depends on: cmake libevent
+# Depends on: pcre cmake libevent
 
 name=mariadb
 version=10.2.6
