@@ -57,13 +57,13 @@ case "$1" in
 
    stop)
       log_info_msg "Stopping MySQL daemon..."
-      killproc -p ${PIDFILE} /usr/sbin/mysqld
+      killproc -p ${PIDFILE} /usr/bin/mysqld
       evaluate_retval
       ;;
 
    reload)
       log_info_msg "Reloading MySQL ..."
-      killproc -p ${PIDFILE} /usr/sbin/mysqld -HUP
+      killproc -p ${PIDFILE} /usr/bin/mysqld -HUP
       evaluate_retval
       ;;
 
@@ -74,7 +74,7 @@ case "$1" in
       ;;
 
    status)
-      statusproc /usr/sbin/mysqld
+      statusproc /usr/bin/mysqld
       ;;
 
    *)
