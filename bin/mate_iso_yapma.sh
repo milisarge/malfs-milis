@@ -1,7 +1,7 @@
 #!/bin/bash
 # lfs dizini oluşturup ortama girdikten sonra bu betiği çalıştırabilirsiniz,bütün ortam içi işlemler yapılacaktır.
 masaustu="mate"
-girisyonetici="lxdm"
+girisyonetici="slim"
 mps kur linux-firmware
 mps kur kernel
 mps kur dracut
