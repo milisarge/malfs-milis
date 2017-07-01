@@ -38,4 +38,5 @@ cp -rf /sources/milis.git/ayarlar/milbit/milbit.desktop /usr/share/applications/
 cp ayarlar/kurulum.desktop /root/Desktop/
 cp ayarlar/kurulum.desktop /root/Masaüstü/
 tamir_touchpad
+tamir_mate_logo
 tamir_masaustu
