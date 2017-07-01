@@ -1,0 +1,36 @@
+# Description: Farklı açık kaynaklarından (arama motorları, pgp anahtar sunucuları) e-posta hesapları ve alt alan adı toplamak için kullanılan araç.
+# URL: http://www.edge-security.com/theHarvester.php
+# Packager: yakar (aydin@komutan.org)
+# Depends on: python-pip
+
+name=theharvester
+version=56.eb08d32
+release=1
+source=()
+
+build() {
+    if [ ! -d $DERLEME_KAYNAKDIZIN/theHarvester ];then
+		git clone https://github.com/laramies/theHarvester.git $DERLEME_KAYNAKDIZIN/theHarvester
+	else
+		cd $DERLEME_KAYNAKDIZIN/theHarvester
+		git pull
+		cd -
+	fi
+
+  cp -r $DERLEME_KAYNAKDIZIN/theHarvester $SRC
+  cd "$SRC/theHarvester"
+
+  sed -i 's|env python$|env python2|' theHarvester.py
+
+  mkdir -p "$PKG/usr/bin"
+  mkdir -p "$PKG/usr/share/theharvester"
+
+  install -Dm755 *.py "$PKG/usr/share/theharvester"
+  install -Dm644 -t "$PKG/usr/share/doc/theharvester" changelog.txt
+  install -Dm644 -t "$PKG/usr/share/licenses/theharvester" COPYING LICENSES
+
+  cp --no-preserve=ownership -a discovery lib *.txt \
+    "$PKG/usr/share/theharvester"
+
+  ln -s "/usr/share/theharvester/theHarvester.py" "$PKG/usr/bin/theharvester"
+}
