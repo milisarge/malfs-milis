@@ -1,5 +1,4 @@
 #!/bin/sh
-
 pip2 install pyqtgraph
 pip2 install pydeep
 pip2 install pylzma
