@@ -1,4 +1,4 @@
-mps -kur python
+mps kur python
 curl https://bootstrap.pypa.io/get-pip.py | python -
-mps -kur python3
+mps kur python3
 curl https://bootstrap.pypa.io/get-pip.py | python3 -
