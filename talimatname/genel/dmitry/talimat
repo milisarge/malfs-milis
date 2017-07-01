@@ -1,0 +1,16 @@
+# Description: Derinlemesine bilgi toplama aracı. Bilgisayarlar hakkında bilgi toplar. Olası alt alan adları, e-posta adresleri, çalışma süresi bilgilerini toplayabilir, tcp port taramaları, whois aramaları ve daha fazlasını çalıştırabilir.
+# URL: https://github.com/jaygreig86/dmitry/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: 
+
+name=dmitry
+version=1.3a
+release=1
+source=(http://dl.packetstormsecurity.net/UNIX/misc/DMitry-$version.tar.gz)
+
+build() {
+  cd $SRC/DMitry-$version
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+  make DESTDIR=$PKG install
+}

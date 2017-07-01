@@ -1,0 +1,24 @@
+# Description: Gömülü (embedded) dosyalarda binary görüntüyü aramak için kullanılan bir araç.
+# URL: http://binwalk.org
+# Packager: yakar (aydin@komutan.org)
+# Depends on: python-magic python-opengl
+
+name=binwalk
+version=2.1.1
+release=1
+source=(https://github.com/devttys0/$name/archive/v${version}.tar.gz)
+
+build() {
+  cd "$SRC/$name-$version"
+
+  python2 setup.py build
+
+  mkdir -p "$PKG/opt"
+
+  python2 setup.py install --root="$PKG" --optimize=1
+
+  install -Dm644 -t "$PKG/usr/share/doc/$name" README.md INSTALL.md API.md
+  #install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+
+  #ln -sf /usr/share/firmware-mod-kit "$PKG/opt/firmware-mod-kit"
+}

@@ -1,0 +1,27 @@
+# Description: DNS tarayıcı
+# URL: http://ha.ckers.org/fierce/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: perl-net-dns
+
+name=fierce
+version=0.9.9
+release=1
+source=()
+
+build() {
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone https://github.com/yakar/fierce.git $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+	fi
+
+	cp -r $DERLEME_KAYNAKDIZIN/$name  $SRC
+	cd $SRC/$name
+
+  # Conform to our install location.
+  sed -i 's|hosts\.txt|/etc/fierce/hosts.txt|' "fierce.pl"
+
+  install -D -m755 fierce.pl "$PKG"/usr/bin/fierce.pl
+  install -D -m644 hosts.txt "$PKG"/etc/fierce/hosts.txt
+}
