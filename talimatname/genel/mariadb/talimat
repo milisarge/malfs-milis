@@ -7,13 +7,11 @@ name=mariadb
 version=10.2.6
 release=1
 
-source=(ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-$version/source/mariadb-$version.tar.gz
-		libmysql.version)
+source=(ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-$version/source/mariadb-$version.tar.gz)
 
 
 build() {
 cd $name-$version
-#patch -Np1 < "${SRC}"/0001-openssl-1-1-0.patch
 mkdir build
 cd build
 
