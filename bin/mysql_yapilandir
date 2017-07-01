@@ -2,6 +2,7 @@
 mysql_install_db --basedir=/usr --datadir=/srv/mysql --user=mysql &&
 
 chown -R mysql:mysql /srv/mysql &&
+chown -R mysql:mysql /var/lib/mysql &&
 
 /etc/init.d/mysql start &&
 

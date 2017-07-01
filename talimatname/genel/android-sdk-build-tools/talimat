@@ -1,0 +1,28 @@
+# Description: Google Android SDK için araçlar oluşturun (aapt, aidl, dexdump, dx, llvm-rs-cc)
+# URL: http://developer.android.com/sdk/index.html
+# Packager: Cihan Alkan
+# Depends on:  
+
+name=android-sdk-build-tools
+version=r26
+release=1
+_android=android-8.0.0
+_sdk=android-sdk
+source=(https://dl-ssl.google.com/android/repository/build-tools_$version-linux.zip)
+
+build() {
+  cd $PKG
+  install -Dm644 $SRC/$_android/NOTICE.txt usr/share/licenses/$name/NOTICE.txt
+  ver=$(cat "$SRC/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
+  mkdir -p opt/$_sdk/build-tools/$ver
+  cp -r $SRC/$_android/* $PKG/opt/$_sdk/build-tools/$ver
+  chmod +Xr -R $PKG/opt/$_sdk/build-tools/$ver
+
+mkdir $PKG/usr/bin
+  ln -s /opt/android-sdk/build-tools/26.0.0/aapt $PKG/usr/bin/
+  ln -s /opt/android-sdk/build-tools/26.0.0/aapt2 $PKG/usr/bin/
+  ln -s /opt/android-sdk/build-tools/26.0.0/bcc_compat $PKG/usr/bin/
+  ln -s /opt/android-sdk/build-tools/26.0.0/aidl $PKG/usr/bin/
+  ln -s /opt/android-sdk/build-tools/26.0.0/dexdump $PKG/usr/bin/
+  ln -s /opt/android-sdk/build-tools/26.0.0/zipalign $PKG/usr/bin/
+}
