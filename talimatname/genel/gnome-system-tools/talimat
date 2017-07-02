@@ -1,0 +1,25 @@
+# Description: Cross-platform configuration utilities for GNOME
+# URL: http://projects.gnome.org/gst/
+# Packager: milisarge
+# Depends on: intltool  gnome-doc-utils wireless-tools liboobs polkit-gnome dconf 
+
+name=gnome-system-tools
+version=3.0.0
+release=1
+source=(ftp://ftp.gnome.org/pub/gnome/sources/gnome-system-tools/3.0/$name-$version.tar.bz2
+		po.patch)
+
+build() {
+    cd "${SRC}/${name}-${version}"
+    patch -Np1 -i "${SRC}/po.patch"
+    ./configure \
+    --prefix=/usr  \
+    --sysconfdir=/etc \
+	--localstatedir=/var \
+	--disable-scrollkeeper \
+	--disable-static \
+	--disable-services \
+	--disable-schemas-compile LIBS="-lm -lgthread-2.0"
+    make
+    make DESTDIR="${PKG}" install
+}
