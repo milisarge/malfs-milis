@@ -1,0 +1,21 @@
+# Description: GTK + ile karmakarışık entegrasyon
+# URL: https://git.gnome.org/browse/clutter-gtk
+# Packager: Cihan Alkan
+# Depends on: clutter
+
+name=clutter-gtk
+version=1.8.2
+release=1
+source=(https://git.gnome.org/browse/clutter-gtk/snapshot/clutter-gtk-1.8.2.tar.xz)
+
+build() {
+  cd $name-$version    
+  NOCONFIGURE=1 ./autogen.sh
+
+  ./configure --prefix=/usr --enable-gtk-doc
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+make DESTDIR=$PKG install
+
+}
