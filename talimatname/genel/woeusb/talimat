@@ -1,0 +1,32 @@
+# Description: Windows DVD'sinden veya bir iso dosyasından Windows USB bellek kurulum aracı oluşturma programı
+# URL: https://github.com/slacka/WoeUSB
+# Packager: Cihan Alkan
+# Depends on: wxgtk28 grub
+
+name=woeusb
+version=2.0.3
+release=1
+
+source=(trad.mo)
+
+
+build() {
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
+		git clone https://github.com/slacka/WoeUSB.git $DERLEME_KAYNAKDIZIN/$name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$name 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	cd $SRC/$name
+	./configure
+	make
+	make DESTDIR=$PKG prefix=/usr/ install
+mkdir $PKG/usr/share/woeusb/locale/tr
+mkdir $PKG/usr/share/woeusb/locale/tr/LC_MESSAGES
+
+cp $SRC/trad.mo $PKG/usr/share/woeusb/locale/tr/LC_MESSAGES/
+echo "Comment[tr_TR]=Windows DVD'sinden veya bir iso dosyasından Windows USB bellek kurulum aracı oluşturma programı" >> $PKG/usr/share//applications/woeusbgui.desktop
+
+}
