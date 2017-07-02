@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /opt/wpscan
+bundler install
+
+/usr/bin/wpscan --update >/dev/null 2>&1
