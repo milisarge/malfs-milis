@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pip2 install pysqlite
+pip2 install lxml
+pip2 install pycurl
