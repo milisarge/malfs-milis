@@ -3,10 +3,12 @@
 # Packager: Cihan Alkan
 # Depends on: libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
 
-name=firefox
+name=firefox54-bin
+_name=firefox
 version=54.0
 release=1
-source=(https://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/tr/firefox-$version.tar.bz2)
+source=(https://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/tr/firefox-$version.tar.bz2
+		firefox.desktop)
  
 build() {
 
@@ -17,19 +19,19 @@ build() {
 
 
   # Kurulum
-  cp -r firefox/ $PKG//opt/$name
+  cp -r firefox/ $PKG//opt/$_name
 
   # /usr/bin symlinks
-  ln -s /opt/$name/firefox $PKG/usr/bin/$name 
+  ln -s /opt/$_name/firefox $PKG/usr/bin/$_name 
 
   # Masaüstü
-  install -m644 /root/talimatname/genel/firefox/*.desktop $PKG/usr/share/applications/
+  install -m644 $_name.desktop $PKG/usr/share/applications/
 
   # Simgeler
   for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
     install -d $PKG/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$name/browser/chrome/icons/default/default${i/x*}.png \
-          $PKG/usr/share/icons/hicolor/$i/apps/$name.png
+    ln -s /opt/$_name/browser/chrome/icons/default/default${i/x*}.png \
+          $PKG/usr/share/icons/hicolor/$i/apps/$_name.png
   done
  _distini="$PKG/opt/firefox/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
@@ -40,10 +42,10 @@ about=Milis Lİnux 1.0 için Mozilla Firefox
 
 [Preferences]
 app.distributor=milis
-app.distributor.channel=$name
+app.distributor.channel=$_name
 app.partner.archlinux=milis
 END
   # 128x128
-  ln -s /opt/$name/browser/icons/mozicon128.png \
-        $PKG/usr/share/icons/hicolor/128x128/apps/$name.png
+  ln -s /opt/$_name/browser/icons/mozicon128.png \
+        $PKG/usr/share/icons/hicolor/128x128/apps/$_name.png
 }
