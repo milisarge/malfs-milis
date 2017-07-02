@@ -1,0 +1,22 @@
+# Description: Linux ad alanları sandbox programı
+# URL: https://l3net.wordpress.com/projects/firejail/
+# Packager: Cihan Alkan
+# Depends on: 
+
+name=firejail
+version=0.9.48
+release=1
+
+source=(https://sourceforge.net/projects/firejail/files/firejail/firejail-$version.tar.xz)
+
+
+build() {
+
+	cd $name-$version
+
+export CFLAGS="${CFLAGS/-fsanitize=undefined/}"
+	./configure --prefix=/usr
+	make
+
+	make DESTDIR=$PKG install
+}
