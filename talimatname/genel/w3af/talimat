@@ -6,7 +6,8 @@
 name=w3af
 version=1.6.54
 release=1
-source=(https://github.com/andresriancho/w3af/archive/${version}.tar.gz w3af.desktop requirements.txt)
+source=(https://github.com/andresriancho/w3af/archive/${version}.tar.gz 
+		w3af.desktop)
 
 
 build() {
