@@ -1,0 +1,31 @@
+# Description: Web uygulamalarındaki link verilmeyen kaynakları deneme/yanılma (fuzzer) yolu ile bulan araç.
+# URL: https://github.com/xmendez/wfuzz
+# Packager: yakar (aydin@komutan.org)
+# Depends on: python-pip python-xml
+
+name=wfuzz
+version=2.1.5
+release=1
+source=(https://github.com/xmendez/$name/archive/v$version.tar.gz)
+
+build() {
+  cd "$SRC/$name-$version"
+
+  mkdir -p "$PKG/usr/bin"
+  mkdir -p "$PKG/usr/share/$name"
+
+  install -Dm644 README "$PKG/usr/share/doc/$name/README"
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+
+  rm LICENSE README README.md setup.py
+
+  cp -a * "$PKG/usr/share/$name"
+
+  cat > "$PKG/usr/bin/$name" << EOF
+#!/bin/sh
+cd /usr/share/$name
+exec python2 $name.py "\$@"
+EOF
+
+  chmod a+x $PKG/usr/bin/$name
+}
