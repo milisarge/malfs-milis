@@ -1,0 +1,43 @@
+# Description: Web Uygulama Atak ve Denetim Aracı.
+# URL: http://w3af.sourceforge.net/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: python-pip python-gtksourceview2 python-yaml python-gtk gtk2 sqlite libxml2 libxslt yaml
+
+name=w3af
+version=1.6.54
+release=1
+source=(https://github.com/andresriancho/w3af/archive/${version}.tar.gz w3af.desktop requirements.txt)
+
+
+build() {
+  cd "$SRC/w3af-$version"
+
+  # Enforce python2
+  sed -i -e 's|#!\s*/usr/bin/python[^\d.]*$|#!/usr/bin/python2|' \
+    -e 's|#!\s*/usr/bin/env python[^\d.]*$|#!/usr/bin/env python2|' \
+    $(find . -name '*.py') w3af_{console,gui}
+
+  # Remove dependency checks.
+  sed -i 's/dependency_check()/#&/' w3af_{console,gui}
+
+  mkdir -p "$PKG/usr/bin"
+  mkdir -p "$PKG/usr/share/w3af"
+  mkdir -p "$PKG/usr/share/applications"
+
+  cp --no-preserve=ownership -a * "$PKG/usr/share/w3af"
+
+  install -Dm644 "$SRC/w3af.desktop" "$PKG/usr/share/applications"
+
+  cat > "$PKG/usr/bin/w3af" << EOF
+#!/bin/sh
+exec python2 /usr/share/w3af/w3af_console "\$@"
+EOF
+
+  cat > "$PKG/usr/bin/w3af-gui" << EOF
+#!/bin/sh
+exec python2 /usr/share/w3af/w3af_gui "\$@"
+EOF
+
+  chmod +x "$PKG/usr/share/w3af"/w3af_{console,gui} \
+    "$PKG/usr/bin"/{w3af,w3af-gui}
+}
