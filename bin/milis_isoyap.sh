@@ -1,11 +1,11 @@
 #!/bin/bash
 # lfs dizini oluşturup ortama girdikten sonra bu betiği çalıştırabilirsiniz,bütün ortam içi işlemler yapılacaktır.
 
-if [ ! "$2" ]; then
+if [ ! "$1" ]; then
 	echo "ayar dosyası belirtiniz."
 	exit 1
 else
-	source "$2"
+	source "$1"
 	echo "masaüstü: $masaustu" 
 	echo "giris yoneticisi: $girisyonetici" 
 	echo "ek paket listesi: $ekpaketliste" 
