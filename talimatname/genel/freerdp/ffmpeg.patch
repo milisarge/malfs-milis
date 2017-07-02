@@ -1,0 +1,177 @@
+diff -ru freerdp-1.0.2.orig/channels/drdynvc/tsmf/ffmpeg/tsmf_ffmpeg.c freerdp-1.0.2/channels/drdynvc/tsmf/ffmpeg/tsmf_ffmpeg.c
+--- freerdp-1.0.2.orig/channels/drdynvc/tsmf/ffmpeg/tsmf_ffmpeg.c	2013-01-03 06:46:59.000000000 +0900
++++ freerdp-1.0.2/channels/drdynvc/tsmf/ffmpeg/tsmf_ffmpeg.c	2017-05-02 14:47:47.897325525 +0900
+@@ -34,12 +34,39 @@
+ #define AVMEDIA_TYPE_AUDIO 1
+ #endif
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 54
++#define MAX_AUDIO_FRAME_SIZE AVCODEC_MAX_AUDIO_FRAME_SIZE
++#else
++#define MAX_AUDIO_FRAME_SIZE 192000
++#endif
++
++#if LIBAVCODEC_VERSION_MAJOR < 55
++#define AV_CODEC_ID_VC1 CODEC_ID_VC1
++#define AV_CODEC_ID_WMAV2 CODEC_ID_WMAV2
++#define AV_CODEC_ID_WMAPRO CODEC_ID_WMAPRO
++#define AV_CODEC_ID_MP3 CODEC_ID_MP3
++#define AV_CODEC_ID_MP2 CODEC_ID_MP2
++#define AV_CODEC_ID_MPEG2VIDEO CODEC_ID_MPEG2VIDEO
++#define AV_CODEC_ID_WMV3 CODEC_ID_WMV3
++#define AV_CODEC_ID_AAC CODEC_ID_AAC
++#define AV_CODEC_ID_H264 CODEC_ID_H264
++#define AV_CODEC_ID_AC3 CODEC_ID_AC3
++#endif
++
++#if LIBAVUTIL_VERSION_MAJOR < 52
++#define AV_PIX_FMT_YUV420P PIX_FMT_YUV420P
++#endif
++
+ typedef struct _TSMFFFmpegDecoder
+ {
+ 	ITSMFDecoder iface;
+ 
+ 	int media_type;
++#if LIBAVCODEC_VERSION_MAJOR < 55
+ 	enum CodecID codec_id;
++#else
++	enum AVCodecID codec_id;
++#endif
+ 	AVCodecContext* codec_context;
+ 	AVCodec* codec;
+ 	AVFrame* frame;
+@@ -54,7 +81,7 @@
+ {
+ 	TSMFFFmpegDecoder* mdecoder = (TSMFFFmpegDecoder*) decoder;
+ 
+-	mdecoder->codec_context = avcodec_alloc_context();
++	mdecoder->codec_context = avcodec_alloc_context3(NULL);
+ 	if (!mdecoder->codec_context)
+ 	{
+ 		DEBUG_WARN("avcodec_alloc_context failed.");
+@@ -73,8 +100,11 @@
+ 	mdecoder->codec_context->bit_rate = media_type->BitRate;
+ 	mdecoder->codec_context->time_base.den = media_type->SamplesPerSecond.Numerator;
+ 	mdecoder->codec_context->time_base.num = media_type->SamplesPerSecond.Denominator;
+-
++#if LIBAVCODEC_VERSION_MAJOR < 55
+ 	mdecoder->frame = avcodec_alloc_frame();
++#else
++	mdecoder->frame = av_frame_alloc();
++#endif
+ 
+ 	return true;
+ }
+@@ -88,6 +118,7 @@
+ 	mdecoder->codec_context->channels = media_type->Channels;
+ 	mdecoder->codec_context->block_align = media_type->BlockAlign;
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 55
+ #ifdef AV_CPU_FLAG_SSE2
+ 	mdecoder->codec_context->dsp_mask = AV_CPU_FLAG_SSE2 | AV_CPU_FLAG_MMX2;
+ #else
+@@ -97,6 +128,13 @@
+ 	mdecoder->codec_context->dsp_mask = FF_MM_SSE2 | FF_MM_MMX2;
+ #endif
+ #endif
++#else  /* LIBAVCODEC_VERSION_MAJOR < 55 */
++#ifdef AV_CPU_FLAG_SSE2
++	av_set_cpu_flags_mask(AV_CPU_FLAG_SSE2 | AV_CPU_FLAG_MMXEXT);
++#else
++	av_set_cpu_flags_mask(FF_MM_SSE2 | FF_MM_MMX2);
++#endif
++#endif /* LIBAVCODEC_VERSION_MAJOR < 55 */
+ 
+ 	return true;
+ }
+@@ -203,28 +241,28 @@
+ 	switch (media_type->SubType)
+ 	{
+ 		case TSMF_SUB_TYPE_WVC1:
+-			mdecoder->codec_id = CODEC_ID_VC1;
++			mdecoder->codec_id = AV_CODEC_ID_VC1;
+ 			break;
+ 		case TSMF_SUB_TYPE_WMA2:
+-			mdecoder->codec_id = CODEC_ID_WMAV2;
++			mdecoder->codec_id = AV_CODEC_ID_WMAV2;
+ 			break;
+ 		case TSMF_SUB_TYPE_WMA9:
+-			mdecoder->codec_id = CODEC_ID_WMAPRO;
++			mdecoder->codec_id = AV_CODEC_ID_WMAPRO;
+ 			break;
+ 		case TSMF_SUB_TYPE_MP3:
+-			mdecoder->codec_id = CODEC_ID_MP3;
++			mdecoder->codec_id = AV_CODEC_ID_MP3;
+ 			break;
+ 		case TSMF_SUB_TYPE_MP2A:
+-			mdecoder->codec_id = CODEC_ID_MP2;
++			mdecoder->codec_id = AV_CODEC_ID_MP2;
+ 			break;
+ 		case TSMF_SUB_TYPE_MP2V:
+-			mdecoder->codec_id = CODEC_ID_MPEG2VIDEO;
++			mdecoder->codec_id = AV_CODEC_ID_MPEG2VIDEO;
+ 			break;
+ 		case TSMF_SUB_TYPE_WMV3:
+-			mdecoder->codec_id = CODEC_ID_WMV3;
++			mdecoder->codec_id = AV_CODEC_ID_WMV3;
+ 			break;
+ 		case TSMF_SUB_TYPE_AAC:
+-			mdecoder->codec_id = CODEC_ID_AAC;
++			mdecoder->codec_id = AV_CODEC_ID_AAC;
+ 			/* For AAC the pFormat is a HEAACWAVEINFO struct, and the codec data
+ 			   is at the end of it. See
+ 			   http://msdn.microsoft.com/en-us/library/dd757806.aspx */
+@@ -236,10 +274,10 @@
+ 			break;
+ 		case TSMF_SUB_TYPE_H264:
+ 		case TSMF_SUB_TYPE_AVC1:
+-			mdecoder->codec_id = CODEC_ID_H264;
++			mdecoder->codec_id = AV_CODEC_ID_H264;
+ 			break;
+ 		case TSMF_SUB_TYPE_AC3:
+-			mdecoder->codec_id = CODEC_ID_AC3;
++			mdecoder->codec_id = AV_CODEC_ID_AC3;
+ 			break;
+ 		default:
+ 			return false;
+@@ -299,7 +337,12 @@
+ 		mdecoder->decoded_size = avpicture_get_size(mdecoder->codec_context->pix_fmt,
+ 			mdecoder->codec_context->width, mdecoder->codec_context->height);
+ 		mdecoder->decoded_data = xzalloc(mdecoder->decoded_size);
++
++#if LIBAVCODEC_VERSION_MAJOR < 55
+ 		frame = avcodec_alloc_frame();
++#else
++		frame = av_frame_alloc();
++#endif
+ 		avpicture_fill((AVPicture *) frame, mdecoder->decoded_data,
+ 			mdecoder->codec_context->pix_fmt,
+ 			mdecoder->codec_context->width, mdecoder->codec_context->height);
+@@ -337,7 +380,7 @@
+ #endif
+ 
+ 	if (mdecoder->decoded_size_max == 0)
+-		mdecoder->decoded_size_max = AVCODEC_MAX_AUDIO_FRAME_SIZE + 16;
++		mdecoder->decoded_size_max = MAX_AUDIO_FRAME_SIZE + 16;
+ 	mdecoder->decoded_data = xzalloc(mdecoder->decoded_size_max);
+ 	/* align the memory for SSE2 needs */
+ 	dst = (uint8*) (((uintptr_t)mdecoder->decoded_data + 15) & ~ 0x0F);
+@@ -348,7 +391,7 @@
+ 	while (src_size > 0)
+ 	{
+ 		/* Ensure enough space for decoding */
+-		if (mdecoder->decoded_size_max - mdecoder->decoded_size < AVCODEC_MAX_AUDIO_FRAME_SIZE)
++		if (mdecoder->decoded_size_max - mdecoder->decoded_size < MAX_AUDIO_FRAME_SIZE)
+ 		{
+ 			mdecoder->decoded_size_max = mdecoder->decoded_size_max * 2 + 16;
+ 			mdecoder->decoded_data = xrealloc(mdecoder->decoded_data, mdecoder->decoded_size_max);
+@@ -445,7 +488,7 @@
+ 
+ 	switch (mdecoder->codec_context->pix_fmt)
+ 	{
+-		case PIX_FMT_YUV420P:
++		case AV_PIX_FMT_YUV420P:
+ 			return RDP_PIXFMT_I420;
+ 
+ 		default:

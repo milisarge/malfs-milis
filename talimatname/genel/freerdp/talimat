@@ -1,0 +1,33 @@
+# Description:	uzaktan erişim protokolu
+# URL:		http://www.freerdp.com/
+# Packager: milisarge
+# Depends on: xorg-libx11 xorg-libxrender xorg-libxcursor xorg-libxext ffmpeg pulseaudio cups openh264 
+
+name=freerdp
+hesap=FreeRDP
+_name=FreeRDP
+version=2.0.0
+release=1
+source=()
+
+build() {
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$_name  ];then
+		git clone https://github.com/$hesap/$_name $DERLEME_KAYNAKDIZIN/$_name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$_name 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$_name $SRC/
+	cd $SRC/FreeRDP/
+
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DWITH_PULSE=ON \
+		-DWITH_SERVER=ON \
+		-DWITH_OPENH264=ON \
+		.
+	make
+	make DESTDIR=$PKG install
+}

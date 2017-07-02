@@ -1,0 +1,31 @@
+# Description: A remote desktop client written in GTK+ - git checkout
+# URL: http://www.remmina.org/
+# Packager: milisarge
+# Depends on: intltool gtk3 cmake avahi xorg-libxkbfile freerdp telepathy-glib gtk2 libjpeg-turbo libssh libunique vte3 libgcrypt xorg-libxdmcp libgnome-keyring libvncserver libsecret webkitgtk2 
+
+name=remmina
+hesap=FreeRDP
+_name=Remmina
+version=1.2.0
+release=1
+source=()
+
+build() {
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$_name  ];then
+		git clone https://github.com/$hesap/$_name $DERLEME_KAYNAKDIZIN/$_name 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$_name 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$_name $SRC/
+	cd $SRC/$_name
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DWITH_APPINDICATOR=OFF \
+		-DWITH_AVAHI=OFF \
+		.
+	make
+	make DESTDIR="${PKG}/" install
+}

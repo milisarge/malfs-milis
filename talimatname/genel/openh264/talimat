@@ -1,0 +1,16 @@
+# Description:	açık kaynak h264 kodek uyg.
+# URL:		http://www.openh264.org/
+# Packager: milisarge
+# Depends on:	nasm
+
+name=openh264
+version=1.1-2103-g69a8b3c
+release=1
+source=(https://github.com/cisco/$name/archive/v$version.zip)
+
+build() {
+	cd ${name}-${version##*-g}*
+
+	make
+	make PREFIX=$PKG/usr install
+}
