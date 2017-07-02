@@ -1,0 +1,19 @@
+# Description: Serbestçe yeniden kullanılabilir Autoconf makroları topluluğu
+# URL: http://www.gnu.org/software/autoconf-archive/
+# Packager: Cihan Alkan
+# Depends on: 
+
+name=autoconf-archive
+version=2017.03.21
+release=1
+
+source=(http://ftpmirror.gnu.org/$name/$name-$version.tar.xz)
+
+
+build() {
+cd $name-$version
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+
+}
