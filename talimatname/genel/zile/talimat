@@ -1,0 +1,18 @@
+# Description: Zile metin düzenleyici
+# URL: http://zile.sf.net
+# Packager: milisarge
+# Depends on: gc help2man
+
+name=zile
+version=2.4.13
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build()
+{
+    cd $name-$version
+    ./configure --prefix=/usr
+    find -name Makefile | xargs -n1 sed -i 's|makeinfo|true|g'
+    make
+    make DESTDIR=$PKG install
+}
