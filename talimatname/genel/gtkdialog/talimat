@@ -1,11 +1,11 @@
 # Description: Gtkdialog hızlı arayüz yapma aracı 
 # URL: http://linux.pte.hu/~pipas/gtkdialog/ 
 # Packager: milisarge
-# Depends on: gtk2
+# Depends on: gtk2 vte
 
 name=gtkdialog
 version=0.8.3
-release=1
+release=2
 source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gtkdialog/gtkdialog-$version.tar.gz)
 
 build() {
