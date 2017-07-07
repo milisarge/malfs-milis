@@ -4,12 +4,10 @@
 # Depends on: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff xorg curl db mariadb openldap postgresql sqlite unixodbc openssl cyrus-sasl kerberos
 
 name=php
-version=5.6.16
-release=3
+version=5.6.31
+release=1
 
-source=(http://php.net/distributions/$name-$version.tar.xz
-		http://mirror.internode.on.net/pub/php/manual/php_manual_tr.tar.gz)
-
+source=(http://php.net/distributions/$name-$version.tar.xz)
 build () {
 
     cd $name-$version
@@ -40,11 +38,7 @@ build () {
     
     install -v -m644 php.ini-production $PKG/etc/php.ini 
     mv -v $PKG/etc/php-fpm.conf{.default,}  
-    install -v -m755 -d $PKG/usr/share/doc/php-$version 
-    install -v -m644    CODING_STANDARDS EXTENSIONS INSTALL NEWS README* UPGRADING* php.gif \
-                    $PKG/usr/share/doc/php-$version
 
-    sed -i 's@php/includes"@&\ninclude_path = ".:/usr/lib/php"@' \
-		$PKG/etc/php.ini
+    sed -i 's@php/includes"@&\ninclude_path = ".:/usr/lib/php"@' $PKG/etc/php.ini
 		
 }
