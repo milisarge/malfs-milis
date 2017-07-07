@@ -1,0 +1,18 @@
+# Description: Hızlı klavye yazma uygulaması
+# URL: http://klavaro.sourceforge.net/
+# Packager: Cihan Alkan
+# Depends on: curl intltool gtk3
+
+name=klavaro
+version=3.03
+release=1
+source=(https://sourceforge.net/projects/klavaro/files/klavaro-3.03.tar.bz2
+klavaro.mo)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr
+  make
+make DESTDIR=$PKG install
+cp -f $SRC/klavaro.mo /usr/share/locale/tr/LC_MESSAGES/
+}
