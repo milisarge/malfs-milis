@@ -4,13 +4,20 @@
 # Depends on: xorg-libxrandr gdk-pixbuf xorg-mesa xorg-glu pango gobject-introspection
 
 name=cogl
-version=1.22.0
+version=1.22.2
 release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
-./configure --prefix=/usr
+  ./configure --prefix=/usr \
+    --enable-gles{1,2} \
+    --enable-{kms,wayland}-egl-platform \
+    --enable-wayland-egl-server
+
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
 make
 make DESTDIR=$PKG install
 }

@@ -1,0 +1,19 @@
+# Description: Hızlı, görsel açıdan zengin grafik kullanıcı arayüzleri oluşturmak için bir GObject tabanlı kitaplık.
+# URL: https://blogs.gnome.org/clutter
+# Packager: yasarciv67@gmail.com
+# Depends on: atk cogl json-glib gobject-introspection gtk3 xorg-libxi
+
+name=clutter
+version=1.26.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+	--sysconfdir=/etc 	\
+	--enable-egl-backend
+make
+make DESTDIR=$PKG install
+}

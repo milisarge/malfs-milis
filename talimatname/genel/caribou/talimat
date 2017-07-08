@@ -1,0 +1,20 @@
+# Description: Bir metin girişi ve UI gezinme uygulaması (ekran klavyesi).
+# URL: http://live.gnome.org/Caribou
+# Packager: yasarciv67@gmail.com
+# Depends on: at-spi2-atk python-atspi python-gobject gtk3 xorg-libxklavier libgee clutter dconf
+
+name=caribou
+version=0.4.21
+release=3
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr         \
+            --sysconfdir=/etc     \
+            --disable-gtk2-module \
+            --disable-static
+make
+make DESTDIR=$PKG install
+}
