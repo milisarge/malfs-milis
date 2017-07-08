@@ -1,0 +1,16 @@
+# Description: Renk profilleri oluşturmak için paylaşılan renk hedefleri.
+# URL: http://www.gnome.org
+# Packager: yasarciv67@gmail.com
+# Depends on: 
+
+name=shared-color-targets
+version=0.1.7
+release=1
+source=(http://people.freedesktop.org/~hughsient/releases/$name-$version.tar.xz)
+
+build(){
+	cd $name-$version
+./configure --prefix=/usr       
+  make
+  make DESTDIR=$PKG install
+}

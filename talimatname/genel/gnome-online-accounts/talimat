@@ -1,0 +1,21 @@
+# Description: GNOME service to access online accounts.
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: gcr kerberos libgnome-keyring libnotify librest libsecret json-glib docbook-xsl gobject-introspection webkit2gtk3 telepathy-glib gtk-update-icon-cache
+
+name=gnome-online-accounts
+version=3.22.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/${name}/${version%.*}/${name}-$version.tar.xz) 
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--enable-media-server \
+--enable-kerberos \
+--enable-lastfm \
+--disable-static 
+make
+make -j1 DESTDIR=$PKG install
+}

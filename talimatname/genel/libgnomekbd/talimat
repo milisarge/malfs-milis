@@ -1,0 +1,17 @@
+# Description: GNOME klavye kitaplığı
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: gtk3 intltool xorg-libxkbfile xorg-libxklavier gobject-introspection
+
+name=libgnomekbd
+version=3.22.0.1
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make 
+make DESTDIR=$PKG install
+}

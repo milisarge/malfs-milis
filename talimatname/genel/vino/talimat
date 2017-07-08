@@ -1,0 +1,17 @@
+# Description: GNOME masaüstü için bir VNC sunucusu
+# URL: http://www.gnome.org
+# Packager: yasarciv67@gmail.com 
+# Depends on: gconf libsoup telepathy-glib desktop-file-utils libnotify desktop-file-utils
+
+name=vino
+version=3.22.0
+release=1
+
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc 
+	make
+	make DESTDIR=$PKG install
+}
