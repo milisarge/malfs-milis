@@ -1,0 +1,25 @@
+# Description: IBus is an Intelligent Input Bus
+# URL: http://ibus.googlecode.com
+# Packager: yasarciv67@gmail.com
+# Depends on: dconf iso-codes gobject-introspection gtk2 libnotify vala python python-gobject libxkbcommon dbus-python python-xdg
+
+name=ibus
+version=1.5.15
+release=2
+           
+source=(https://github.com/ibus/ibus/releases/download/$version/$name-$version.tar.gz)
+build() {
+cd $name-$version
+
+sed -i 's@/desktop/ibus@/org/freedesktop/ibus@g' \
+    data/ibus.schemas.in \
+    data/dconf/org.freedesktop.ibus.gschema.xml.in
+
+./configure --prefix=/usr           \
+            --sysconfdir=/etc       \
+            --enable-gtk-doc        \
+            --disable-emoji-dict
+rm -f tools/main.c
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,20 @@
+# Description: GNOME Bluetooth altsistemi.
+# URL: https://wiki.gnome.org/Projects/GnomeBluetooth
+# Packager: yasarciv67@gmail.com 
+# Depends on: itstool gtk3 gobject-introspection bluez gtk-doc libnotify libcanberra gtk-update-icon-cache
+
+name=gnome-bluetooth
+version=3.20.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --enable-gtk-doc \
+--disable-icon-update \
+--disable-schemas-compile \
+--disable-desktop-update
+make
+make DESTDIR=$PKG install
+}

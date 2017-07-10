@@ -1,0 +1,17 @@
+# Description: Cups-pk-helper paketi, Cup'ları hassas taneciklerle yapılandırmak için kullanılan bir PolicyKit yardımcısı içerir
+# URL: http://www.freedesktop.org/software/cups-pk-helper/releases"
+# Packager: yasarciv67@gmail.com
+# Depends on: polkit intltool cups
+
+name=cups-pk-helper
+version=0.2.6
+release=1
+
+source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

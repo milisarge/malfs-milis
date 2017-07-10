@@ -1,0 +1,17 @@
+# Description: Kitaplık, AppStream meta verilerini okumak ve yazmak için.
+# URL: http://people.freedesktop.org/~hughsient/appstream-glib/
+# Packager: yasarciv67@gmail.com
+# Depends on: gdk-pixbuf json-glib libarchive libsoup pango gcab gobject-introspection gtk3 yaml
+ 
+name=appstream-glib
+version=0.5.17
+release=1
+
+source=(http://people.freedesktop.org/~hughsient/$name/releases/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}

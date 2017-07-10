@@ -1,0 +1,17 @@
+# Description: Gcab paketi, Microsoft kabin (.cab) arşivlerini oluşturmak için kullanılan bir program ve bir kitaplık içerir.
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: glib gobject-introspection intltool vala
+
+name=gcab
+version=0.7
+release=2
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-static
+  make
+make DESTDIR=$PKG install
+}
