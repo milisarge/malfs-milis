@@ -34,6 +34,9 @@ fi
 if [ -z ${yerelsil+:} ]; then
 	yerelsil="silme"
 fi
+if [ -z ${ektalimatname+:} ]; then
+	ektalimatname="/root/talimatlar"
+fi
 
 
 icerik_ekle(){
@@ -1057,6 +1060,23 @@ servis_sil(){
 	cd -
 }
 
+servisler_kontrol(){
+	servisler=`ls /sources/milis.git/ayarlar/servisler/mbd/init.d`
+	for ser in $(ls /etc/init.d/) ; do 
+		if [ ! -f /sources/milis.git/ayarlar/servisler/mbd/init.d/$ser ];then
+			printf "%12s %s\n" "$ser mbd kaydı bulunamadı!"
+		else
+			if cmp -s "/sources/milis.git/ayarlar/servisler/mbd/init.d/$ser" "$ser"
+			then
+			   printf "%12s %s\n" "$ser" "mbd uyumsuz"
+			else
+			   #ryaz 32 "$ser mbd +++++"
+			   printf "%12s %s\n" "$ser" "mbd +++++"
+			fi
+		fi	
+	done
+}
+
 paketvt_guncelle(){
 	temel_tarihce_kontrol
 	wget -q --spider "$sunucu""paket.vt"
@@ -1335,6 +1355,9 @@ ayarlar() {
 			# ilgili paketin servisini siler
 			sersil)
 				servis_sil "$2" ;;
+			# servislerin mbd kontrolu
+			serkon)
+				servisler_kontrol ;;
 			kurkos)
 				local pkt
 				pkt="`find $talimatname_dizin -name $2`"
