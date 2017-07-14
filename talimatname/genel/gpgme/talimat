@@ -4,7 +4,7 @@
 # Depends on: libassuan
 
 name=gpgme
-version=1.7.0
+version=1.6.0
 release=1
 source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
 
