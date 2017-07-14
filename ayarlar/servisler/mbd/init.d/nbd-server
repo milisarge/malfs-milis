@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# /etc/rc.d/init.d/nbd-server: start/stop nbd daemon
+#
+
+case $1 in
+start)
+  /usr/bin/nbd-server -p /var/run/nbd-server.pid -l /etc/nbd-server/allow
+  ;;
+stop)
+  if [ -f /var/run/nbd-server.pid ]; then
+    kill `cat /var/run/nbd-server.pid`
+    rm -f /var/run/nbd-server.pid
+  else
+    killall -q /usr/sbin/nbd-server
+  fi
+  ;;
+restart)
+  $0 stop
+  sleep 2
+  $0 start
+  ;;
+*)
+  echo "kullanim: $0 [start|stop|restart]"
+  ;;
+esac
+
+# End of file

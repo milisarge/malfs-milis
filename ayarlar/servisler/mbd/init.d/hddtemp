@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# /etc/rc.d/hddtemp: start/stop hddtemp daemon
+#
+
+# Check for configuration files
+[ -f /etc/hddtemp.db ] || exit 1
+
+case $1 in
+start)
+	printf "Starting hddtemp..."
+	/usr/sbin/hddtemp -d -l 127.0.0.1 $(ls /dev/sd[a-z] | xargs)
+	if [ $? = 0 ]; then
+		printf " done.\n"
+	else
+		printf " error.\n"
+	fi
+	;;
+stop)
+	printf "Shutting down hddtemp..."
+	killall -q /usr/sbin/hddtemp
+	printf " done.\n"
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart]"
+	exit 1
+	;;
+esac
+
+exit $?
+
+# End of file
