@@ -1,0 +1,65 @@
+#!/bin/sh
+#
+# /etc/rc.d/openvpn: start/stop openvpn daemon
+#
+
+CONFDIR=/etc/openvpn
+RUNDIR=/var/run
+
+# optional arguments to openvpn
+OPTARGS="--fast-io"
+
+usage() {
+	echo "Usage: $0 [start|stop|restart] <config-name>"
+	exit 0
+}
+
+# require a config name to be specified
+if [ -z "$2" ]
+then
+	usage
+fi
+
+CONF=${CONFDIR}/${2}.conf
+PID=${RUNDIR}/openvpn.${2}.pid
+
+# check for the existence of the specified config
+if [ ! -f ${CONF} ]
+then
+	echo "Can't find config file ${CONF}! Exiting."
+	exit 1
+fi
+
+case $1 in
+	start)
+		# check for an existing PID; this tunnel may already be running
+		if [ -f ${PID} ]
+		then
+			echo "VPN '${2}' appears to be running already. If not, remove the stale PID file '${PID}'. Exiting."
+			exit 2
+		fi
+		# start the specified VPN config
+		echo "Starting VPN '${2}'..."
+		/usr/sbin/openvpn --config ${CONF} --writepid ${PID} --daemon ovpn-${2} ${OPTARGS}
+		;;
+	stop)
+		# check for an existing PID; this tunnel should already be running
+		if [ ! -f ${PID} ]
+		then
+			echo "VPN '${2}' doesn't appear to be running. Exiting."
+			exit 3
+		fi
+		# stop the specified VPN config
+		echo "Stopping VPN '${2}'..."
+		kill `cat ${PID}`
+		rm -f ${PID}
+		;;
+	restart)
+		${0} stop ${2}; sleep 3; ${0} start ${2}
+		;;
+	*)
+		usage
+		;;
+esac
+
+# End of file
