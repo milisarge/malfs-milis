@@ -1,0 +1,17 @@
+# Description: Otomatik arşiv oluşturucu ve çıkarıcı kitaplığı
+# URL: https://wiki.gnome.org/TingweiLan/GSoC2013Final
+# Packager: yasarciv67@gmail.com
+# Depends on: intltool vala gtk3 gobject-introspection gnome-common glib
+
+name=gnome-autoar
+version=0.2.2
+release=1
+source=(https://download.gnome.org/sources/$name/0.1/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+   ./configure --prefix=/usr --disable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make -j1
+  make DESTDIR=$PKG install
+}
