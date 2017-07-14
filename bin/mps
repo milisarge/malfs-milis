@@ -24,7 +24,9 @@ LOGDIZIN="/var/log/mps"
 tekrarkur="hayir"
 logdosya=/var/log/mps/mps.log
 #temel paket koruma
-tpk="evet"
+if [ -z ${tpk+:} ]; then
+	lokal="evet"
+fi
 if [ -z ${lokal+:} ]; then
 	lokal="tr"
 fi
