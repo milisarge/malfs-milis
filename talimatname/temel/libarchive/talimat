@@ -1,9 +1,10 @@
 # Description: farklı arşiv tiplerini uygulayan kütüphane
 # URL: http://people.freebsd.org/~kientzle/libarchive
 # Packager: milisarge
+# Depends on:
 
 name=libarchive
-version=3.3.1
+version=3.3.2
 release=1
 
 source=(http://www.libarchive.org/downloads/libarchive-$version.tar.gz
@@ -12,9 +13,12 @@ source=(http://www.libarchive.org/downloads/libarchive-$version.tar.gz
 build() {
 	cd $name-$version
 
-	./configure --prefix=/usr \
-	--mandir=/usr/share/man \
-	--infodir=/usr/share/info 
+	autoreconf -fi
+  ./configure \
+      --prefix=/usr \
+      --without-xml2 \
+      --without-nettle \
+      --disable-static
 	make
 	make DESTDIR=$PKG install
 
