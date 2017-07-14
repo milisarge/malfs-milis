@@ -1511,6 +1511,9 @@ ayarlar() {
 			#komple kurulu sistemin guncellenmesi
 			-GS)
 				sistem_guncelle ;;
+			#tekil temel paket guncelleme-single base package updating
+			-tg)
+				paket_sil "$2" "evet" &&  mps -ik $2 ;;
 			#tekil paket guncelleme-single package updating
 			-g|--pkgu)
 				if [ ! "$2" ]; then
