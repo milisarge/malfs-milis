@@ -256,7 +256,8 @@ def sistemKopyala(baglam):
 	for dizin in dizinler:
 		i+=1
 		print (i,"/",mikdiz,dizin,"kopyalanıyor.....")
-		komut="rsync --delete -a --info=progress2 /"+dizin+" "+baglam+" --exclude /proc"
+		#komut="rsync --delete -a --info=progress2 /"+dizin+" "+baglam+" --exclude /proc"
+		komut="rsync --delete -axHAWX --info=progress2 --numeric-ids /"+dizin+" "+baglam+" --exclude /proc"
 		print (dizin,"kopyalandı.")
 		os.system(komut)
 	for ydizin in yenidizinler:
