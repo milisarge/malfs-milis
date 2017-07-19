@@ -1,0 +1,21 @@
+# Description: Bilgisayara kayıtlı şifreleri bulma programı
+# URL: https://github.com/AlessandroZ/LaZagne
+# Packager: Cihan Alkan
+# Depends on: python-pyasn1 python-crypto python
+
+name=lazagne
+version=2.2
+release=1
+
+source=(https://github.com/AlessandroZ/LaZagne/archive/$version.tar.gz
+		sifrebul)
+
+build() {
+	cd LaZagne-$version
+    mkdir -p $PKG/usr/share/$name
+	cp -r Linux/* $PKG/usr/share/$name/
+
+    mkdir -p $PKG/usr/bin
+    cp $SRC/sifrebul $PKG/usr/bin/
+    chmod +x $PKG/usr/bin/sifrebul
+}
