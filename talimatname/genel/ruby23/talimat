@@ -1,31 +1,43 @@
-# Description: Ruby yorumlayıcı
+# Description: Ruby2.3 yorumlayıcı
 # URL: http://www.ruby-lang.org
-# Packager: yakar (aydin@komutan.org)
+# Packager: milisarge
 # Depends on: libffi yaml
 
 name=ruby23
 _name=ruby
+_rubyver=2.3
 version=2.3.4
 release=1
-source=(http://cache.ruby-lang.org/pub/$_name/${version%.*}/$_name-$version.tar.xz
-		gemrc)
+source=(http://cache.ruby-lang.org/pub/$_name/${version%.*}/$_name-$version.tar.xz)
 
 build () {
-    cd $_name-$version
+	cd $_name-$version
 
-    PKG_CONFIG=/usr/bin/pkg-config ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --sharedstatedir=/var/lib \
-    --libexecdir=/usr/lib/ruby \
-    --enable-shared \
-    --disable-rpath \
-    --disable-install-doc \
-    --with-dbm-type=gdbm_compat
-    
-    make
-    make DESTDIR="${PKG}" install-nodoc
+	 PKG_CONFIG=/usr/bin/pkg-config ./configure \
+	--prefix=/opt/ruby${_rubyver} \
+	--program-suffix=-${_rubyver} \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--sharedstatedir=/var/lib \
+	--libexecdir=/usr/lib/ruby \
+	--enable-shared \
+	--disable-rpath \
+	--with-dbm-type=gdbm_compat
 
-    install -D -m644 ${SRC}/gemrc "${PKG}/etc/gemrc"
+	make ruby
+	make test
+	make DESTDIR="${PKG}" install-nodoc
+
+	install -dm755 $PKG//usr/bin
+	install -dm755 $PKG//usr/lib
+
+	for i in erb irb rdoc ri ruby testrb rake gem; do
+		ln -s /opt/ruby${_rubyver}/bin/$i-${_rubyver} $PKG/usr/bin/$i-${_rubyver}
+		ln -s /opt/ruby${_rubyver}/bin/$i-${_rubyver} $PKG/opt/ruby${_rubyver}/bin/$i
+	done
+
+	ln -s /opt/$_name$_rubyver/lib/libruby.so.${_rubyver} $PKG/usr/lib/libruby.so.${_rubyver}
+
+	install -D -m644 COPYING "${PKG}/usr/share/licenses/ruby${_rubyver}/LICENSE"
+	install -D -m644 BSDL "${PKG}/usr/share/licenses/ruby${_rubyver}/BSDL"
 }
