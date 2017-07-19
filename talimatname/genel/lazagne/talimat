@@ -1,7 +1,7 @@
 # Description: Bilgisayara kayıtlı şifreleri bulma programı
 # URL: https://github.com/AlessandroZ/LaZagne
 # Packager: Cihan Alkan
-# Depends on: python-pyasn1 python-crypto python
+# Depends on: python-pyasn1 python-crypto python python-pip
 
 name=lazagne
 version=2.2
