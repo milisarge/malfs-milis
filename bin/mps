@@ -246,6 +246,43 @@ derleme_listyap(){
 	fi
 }
 
+derleme_listyap_yeni(){
+	bagimlist=`bagimlilar "$1"`
+	echo $bagimlist
+	if [ "$bagimlist" != "talimatyok" ];then
+		for bagim in $bagimlist;do
+			
+			if [ "`cat tumbag.liste | grep $bagim`" != "$bagim" ];then
+				derleme_listyap "$bagim"
+			fi
+			echo "c"
+		done
+		
+		if  ! grep -Fxq "$1" tumbag.liste
+		then
+			ana="`find $talimatname_dizin -name $1`"
+			dal="`find $ektalimatname -name $1`"
+			if [ ! -z "$ana" -a "$ana" != " " ]; then
+				echo ${ana#"$talimatname_dizin"}
+			elif [ ! -z "$dal" -a "$dal" != " " ]; then
+				echo ${dal#"$ektalimatname"}
+			fi
+			#sadece genel bagimliliklar derlenecek
+			echo "$1" >> tumbag.liste 
+			if [ -f "$talimatname_dizin/genel/$1/talimat" ];then
+				echo "$ana" >> bag.liste 
+			elif [ -f "$dal/talimat" ];then
+				echo "$dal" >> bag.liste
+			fi
+		fi
+	else
+		ryaz 31 "$1 talimatı bulunamadı."
+		hataloglama "$1 talimatı bulunamadı."
+		exit 1 
+	fi
+}
+
+
 derleme_listbilgi(){
 	ryaz 34 "yapim asamasında"
 }
@@ -573,6 +610,32 @@ bagimlilar(){
 	konum="`find "$talimatname_dizin" -name $1`"
 	if [ -f "$konum/talimat" ];then
 		bagimd=`cat $konum/talimat | grep "Depends on" | cut -d':' -f2`
+											   
+		if [ -n "$bagimd" ]; then
+			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+			#sıralı gösterme
+			echo `echo "$bagimd" | sed 's/,/ /g'`
+		fi
+	else
+		echo "talimatyok"
+		exit 1
+	fi
+}
+
+bagimlilar_yeni(){
+	local bagimd konum
+	konum="`find "$talimatname_dizin" -name $1`"
+	konumek="`find "$ektalimatname" -name $1`"
+	if [ -f "$konum/talimat" ];then
+		bagimd=`cat $konum/talimat | grep "Depends on" | cut -d':' -f2`
+											   
+		if [ -n "$bagimd" ]; then
+			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+			#sıralı gösterme
+			echo `echo "$bagimd" | sed 's/,/ /g'`
+		fi
+	elif [ -f "$konumek/talimat" ];then
+		bagimd=`cat $konumek/talimat | grep "Depends on" | cut -d':' -f2`
 											   
 		if [ -n "$bagimd" ]; then
 			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
