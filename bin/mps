@@ -1250,7 +1250,9 @@ kurulum_dogrulama_icerik(){
 		done
 	else
 		ryaz 32 "$paketadi hasarlı kurulum tesbiti!"
-		#rm -r $VT/$paketadi
+		#if [ ! -d "$VT/$paketadi" ]; then
+			#rm -r $VT/$paketadi
+		#fi
 		#mps -i $paketadi
 		#mps -k "$paketdepo/$paketadi#"*.mps.lz
 		ryaz 32  "$paketadi hasarlı kurulum onarıldı."
@@ -1641,7 +1643,7 @@ ayarlar() {
 					ryaz 31 "paket ismi eksik"
 					exit 1
 				fi
-				kurulum_dogrulama_icerik ;;
+				kurulum_dogrulama_icerik "$2" ;;
 			-kdk)
 				kurban_kurtar $2 ;;
 			-suko)
