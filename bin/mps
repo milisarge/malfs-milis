@@ -1170,6 +1170,29 @@ kurulum_dogrulama(){
 	done
 }
 
+kurulum_dogrulama_icerik(){
+	paketadi="$1"
+	echo $VT
+	tarihce_olustur
+	if [ -f "$VT/$paketadi/kurulan" ]; then
+		cat /var/lib/pkg/DB/$paketadi/kurulan | cut -d '>' -f2 > /tmp/$paketadi.sildog
+		for kuruland in `cat /tmp/$paketadi.sildog`
+		do
+			if [ ! -f "$kuruland" ]; then
+				ryaz 32 "$kuruland dosya hasarlı"
+			elif [ ! -d "$kuruland" ]; then
+				ryaz 32 "$kuruland dizin hasarlı"
+			fi
+		done
+	else
+		ryaz 32 "$paketadi hasarlı kurulum tesbiti!"
+		#rm -r $VT/$paketadi
+		#mps -i $paketadi
+		#mps -k "$paketdepo/$paketadi#"*.mps.lz
+		ryaz 32  "$paketadi hasarlı kurulum onarıldı."
+	fi
+}
+
 kurulum_dosya_listele(){
 	cat "$VT/$1/kurulan"
 }
@@ -1549,6 +1572,12 @@ ayarlar() {
 				ryaz 31 `kurulu_kontrol "$2"`;;
 			-kudo)
 				kurulum_dogrulama ;;
+			-kdi)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					exit 1
+				fi
+				kurulum_dogrulama_icerik ;;
 			-kdk)
 				kurban_kurtar $2 ;;
 			-suko)
