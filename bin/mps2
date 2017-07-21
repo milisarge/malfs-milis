@@ -38,6 +38,7 @@ if [ -z ${yerelsil+:} ]; then
 fi
 if [ -z ${ektalimatname+:} ]; then
 	ektalimatname="/root/talimatlar"
+	[ ! -d /root/talimatlar ] && mkdir -p /root/talimatlar
 fi
 
 
