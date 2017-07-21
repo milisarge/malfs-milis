@@ -26,9 +26,7 @@ abort_on_build() {
         exit $E_BUILD
 }
 get_filename() {
-	if [[ "$1" =~ "--"(.+) ]] ;then
-		echo "$DERLEME_KAYNAKDIZIN/${BASH_REMATCH[1]}"
-	elif [[ $1 =~ ^(http|https|ftp|file)://.*/(.+) ]]; then
+	if [[ $1 =~ ^(http|https|ftp|file)://.*/(.+) ]]; then
 		echo "$DERLEME_KAYNAKDIZIN/${BASH_REMATCH[2]}"
 	else
 		echo $1
@@ -145,16 +143,10 @@ downloads_file_with_curl() {
 	fi
 }
 download_file() {
-	
-    if [[ "$1" =~ (.+)"--" ]] ;then
-		adres="${BASH_REMATCH[0]}"
-		adres=`echo $adres | sed s'/..$//' `
-	else
-		adres="$1"
-	fi
-	info "İndiriliyor $adres"
+	info "İndiriliyor '$1'."
+
 	LOCAL_FILENAME=`get_filename $1`
-	info "kayıt:$LOCAL_FILENAME"
+
 	if [ ! "`type -p wget`" ]; then
 		warning "Command 'wget' not found."
 		info "You should install 'wget' as soon as possible, trying with curl ..."
@@ -162,7 +154,7 @@ download_file() {
 	else
 		LOCAL_FILENAME_PARTIAL="$LOCAL_FILENAME.partial"
 		DOWNLOAD_OPTS="--passive-ftp --no-directories --tries=3 --waitretry=3 \
-		-O  $LOCAL_FILENAME \
+		--directory-prefix=$DERLEME_KAYNAKDIZIN \
 		--output-document=$LOCAL_FILENAME_PARTIAL --no-check-certificate"
 
 		if [ -f "$LOCAL_FILENAME_PARTIAL" ]; then
@@ -172,7 +164,7 @@ download_file() {
 
 		error=1
 
-		BASENAME=`get_basename $adres`
+		BASENAME=`get_basename $1`
 		for REPO in ${PKGMK_SOURCE_MIRRORS[@]}; do
 			REPO="`echo $REPO | sed 's|/$||'`"
 			wget $RESUME_CMD $DOWNLOAD_OPTS $PKGMK_WGET_OPTS $REPO/$BASENAME
@@ -184,7 +176,7 @@ download_file() {
 
 		if [ $error != 0 ]; then
 			while true; do
-				wget $RESUME_CMD $DOWNLOAD_OPTS $PKGMK_WGET_OPTS $adres
+				wget $RESUME_CMD $DOWNLOAD_OPTS $PKGMK_WGET_OPTS $1
 				error=$?
 				if [ $error != 0 ] && [ "$RESUME_CMD" ]; then
 					info "Partial download failed, restarting"
@@ -197,7 +189,7 @@ download_file() {
 		fi
 	
 		if [ $error != 0 ]; then
-			error "İndiriliyor '$adres' başarısız."
+			error "İndiriliyor '$1' başarısız."
 			exit $E_DOWNLOAD
 		fi
 	
