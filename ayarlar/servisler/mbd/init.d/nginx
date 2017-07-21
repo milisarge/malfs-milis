@@ -46,11 +46,6 @@ nginx_reload() {
   kill -HUP $(cat $PID)
 }
 
-nginx_winch() {
-  echo "Nginx eski süreçleri kapatıyor..."
-  kill -WINCH $(cat $PID)
-}
-
 nginx_upgrade() {
   echo "Nginx ikili dosyası üst sürüme geciriliyor."
   kill -USR2 $(cat $PID)
@@ -98,5 +93,5 @@ case "$1" in
     nginx_rotate
     ;;
   *)
-  echo "usage: `basename $0` {check|start|term|stop|winch|reload|restart|upgrade|rotate}"
+  echo "usage: `basename $0` {check|start|term|stop|reload|restart|upgrade|rotate}"
 esac
