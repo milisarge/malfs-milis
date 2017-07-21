@@ -48,7 +48,7 @@ nginx_reload() {
 
 nginx_winch() {
   echo "Nginx eski süreçleri kapatıyor..."
-  kill -WINCH $(cat $PID.oldbin)
+  kill -WINCH $(cat $PID)
 }
 
 nginx_upgrade() {
