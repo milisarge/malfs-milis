@@ -1,0 +1,19 @@
+# Description: Nim programlama dili paket yöneticisi
+# URL: https://github.com/nim-lang/nimble
+# Packager: milisarge
+# Depends on: nim 
+
+name=nimble
+version=0.8.6
+release=1
+source=(https://github.com/nim-lang/nimble/archive/v$version.tar.gz--nimble-$version.tar.gz)
+
+build() {
+  cd ${name}-${version}
+  nim c -d:release src/nimble
+  install -Dm 755 src/nimble -t "${PKG}/usr/bin"
+  install -Dm 644 license.txt "${PKG}/usr/share/licenses/${name}/LICENSE"
+  cp -r src/nimblepkg "${PKG}/usr/share/${name}"
+  ln -s /usr/share/${name} "${PKG}/usr/bin/nimblepkg"
+
+}
