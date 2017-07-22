@@ -1376,6 +1376,7 @@ ayarlar() {
 				kurulum_onay="olumsuz"
 				paket_derle "$2" ;;
 			odkp)
+				[ -d "$talimatname_dizin/temel/$2" ] && ryaz 31 "temel paket için odkp kullanılamaz!";exit 1
 				oto_derle_kur_paketle "$2" ;;	
 			-dk|--pkdk)
 				paket_derle "$2" ;;	
