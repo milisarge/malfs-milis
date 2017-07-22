@@ -1,0 +1,49 @@
+# Description: Imperative, multi-paradigm, compiled programming language
+# URL: https://nim-lang.org/
+# Packager: milisarge
+# Depends on: python3 
+
+name=nim
+_name=Nim
+version=0.17.0
+release=1
+source=(https://github.com/nim-lang/Nim/archive/v$version.tar.gz--${_name}-$version.tar.gz
+		https://github.com/nim-lang/csources/archive/v$version.tar.gz--csources-$version.tar.gz)
+
+build() {
+	cd ${_name}-${version}
+	mv ../csources-${version} csources
+	rm bin/empty.txt
+	
+	export PATH="${SRC}/${_name}-${version}/bin:${PATH}"
+	cd csources
+	sh build.sh
+	cd ..
+	nim c -d:release koch
+	./koch boot -d:release -d:nativeStacktrace -d:useGnuReadline
+	cd lib
+	nim c --app:lib -d:createNimRtl -d:release nimrtl.nim
+	cd ..
+	cd tools
+	nim c -d:release nimgrep.nim
+	cd ..
+	export PATH="${SRC}/${_name}-${version}/bin:${PATH}"
+	./koch install "${PKG}"
+	install -d "${PKG}/usr/lib"
+	cp -a lib "${PKG}/usr/lib/nim"
+	cp -a compiler "${PKG}/usr/lib/nim"
+	install -Dm 644 compiler.nimble "${PKG}/usr/lib/nim/compiler"
+	install -m 755 lib/libnimrtl.so "${PKG}/usr/lib/libnimrtl.so"
+	# Fix FS#48118, related to the doc2 command
+	ln -s /usr/share/nim/doc "${PKG}/usr/lib/nim/doc"
+	install -Dm 644 config/* -t "${PKG}/etc"
+	install -Dm 755 bin/* tools/nimgrep -t "${PKG}/usr/bin"
+	# Fix FS#50252, unusual placement of header files
+	install -d "${PKG}/usr/include"
+	cp -a "${PKG}/usr/lib/nim/"*.h "${PKG}/usr/include"
+	install -d "${PKG}/usr/share/nim/doc"
+	cp -a examples web doc/* "${PKG}/usr/share/nim/doc"
+	install -Dm 644 copying.txt "${PKG}/usr/share/licenses/${name}/LICENSE"
+	rm -r "${PKG}/nim" "${PKG}/usr/lib/nim/lib/nimcache"
+	rm -r "${PKG}/usr/share/nim/doc/web/"
+}
