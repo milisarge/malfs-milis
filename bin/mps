@@ -499,8 +499,16 @@ surum_kontrol(){
 				esac
 			done	
 			if [ "$gun_onay" = "e" ];then
-				paket_sil "$1" "evet"
-				paket_inkur_oto $1
+				if [ -d "$talimatname_dizin/temel/$1" ]; then
+					tpk="hayir" 
+					paket_sil "$1" "evet"
+					mps -i $1
+					pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3`
+					icerik_ekle "$paketdepo$pkt"
+				else
+					paket_sil "$1" "evet"
+					paket_inkur_oto $1
+				fi
 				ryaz 33 "$1 sürüm güncellemesi yapıldı"
 			else
 				ryaz 31 "$1 sürüm güncellemesi yapılmadı"
@@ -1234,29 +1242,56 @@ kurulum_dogrulama(){
 	done
 }
 
+chr_yordam() {
+  [ "$1" -lt 256 ] || return 1
+  printf "\\$(printf '%03o' "$1")"
+}
+
+ord_yordam() {
+  LC_CTYPE=C printf '%d' "'$1"
+}
+
 kurulum_dogrulama_icerik(){
 	paketadi="$1"
-	echo $VT
-	tarihce_yap
+	#echo $VT
+	#tarihce_yap
 	if [ -f "$VT/$paketadi/kurulan" ]; then
-		cat /var/lib/pkg/DB/$paketadi/kurulan | cut -d '>' -f2 > /tmp/$paketadi.sildog
-		for kuruland in `cat /tmp/$paketadi.sildog`
+		ilksatir=`head -n 1 $VT/$paketadi/kurulan`
+		if [[ `echo ${ilksatir}` =~ ^‘ ]] ; then 
+			ryaz 32 "temel sistem paket kurulan hatası düzeltildi!"
+			sed -i 's/‘/'\''\//;s/’/'\''/' $VT/$paketadi/kurulan
+		fi
+		for kdd in `cat /var/lib/pkg/DB/$paketadi/kurulan`
 		do
-			if [ ! -f "$kuruland" ]; then
-				ryaz 32 "$kuruland dosya hasarlı"
-			elif [ ! -d "$kuruland" ]; then
-				ryaz 32 "$kuruland dizin hasarlı"
+			kuruland=$(echo $kdd | sed 's/^.\(.*\).$/\1/')
+			if [ ! -f "$kuruland" ] && [ ! -d "$kuruland" ] ; then
+				ryaz 31 "$kuruland hasarlı"
 			fi
 		done
-	else
+		ryaz 32 "$paketadi kurulum doğrulama tamamlandı." 
+	elif [ -d "$VT/$paketadi" ]; then
 		ryaz 32 "$paketadi hasarlı kurulum tesbiti!"
+		#onarma
 		#if [ ! -d "$VT/$paketadi" ]; then
 			#rm -r $VT/$paketadi
 		#fi
 		#mps -i $paketadi
 		#mps -k "$paketdepo/$paketadi#"*.mps.lz
 		ryaz 32  "$paketadi hasarlı kurulum onarıldı."
+	else
+		ryaz 31 "$paketadi kurulu değil!"
 	fi
+}
+
+tamir_temel_kurulan(){
+	if [ ! -d $VT ] ; then
+		ryaz 31 "paket kurulum vt bulunamadı!"
+		exit 1
+	fi
+	for paketadi in `ls $VT`
+	do
+		sed -i 's/‘/'\''\//;s/’/'\''/' $VT/$paketadi/kurulan
+	done
 }
 
 kurulum_dosya_listele(){
@@ -1639,7 +1674,7 @@ ayarlar() {
 				ryaz 31 `kurulu_kontrol "$2"`;;
 			-kudo)
 				kurulum_dogrulama ;;
-			-kdi)
+			-kdi|dogrula)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
 					exit 1
@@ -1682,6 +1717,8 @@ ayarlar() {
 					shift ;;
 			-trl)
 				tarihce_liste ;;
+			-tamir-tk)
+				tamir_temel_kurulan ;;
 			dos)
 				tarihce_yukle "temel" ;;
 			-trs)
