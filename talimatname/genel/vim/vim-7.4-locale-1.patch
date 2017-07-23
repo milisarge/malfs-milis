@@ -1,0 +1,11 @@
+--- vim74/src/main.c.original	2014-06-17 17:24:55.000000000 +0200
++++ vim74/src/main.c	2014-06-17 17:25:44.000000000 +0200
+@@ -1563,7 +1563,7 @@
+ 	if (p != NULL && *p != NUL)
+ 	{
+ 	    vim_snprintf((char *)NameBuff, MAXPATHL, "%s/lang", p);
+-	    bindtextdomain(VIMPACKAGE, (char *)NameBuff);
++	    bindtextdomain(VIMPACKAGE, "/usr/share/locale");
+ 	}
+ 	if (mustfree)
+ 	    vim_free(p);

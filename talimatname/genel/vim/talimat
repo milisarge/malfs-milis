@@ -8,7 +8,7 @@ version=7.4
 release=1
 
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2
-        http://downloads.nutyx.org/files/patchs/vim/vim-7.4-locale-1.patch)
+        vim-7.4-locale-1.patch)
 build()
 {
 vimv="vim${version/./}"
