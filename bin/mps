@@ -1379,7 +1379,7 @@ ayarlar() {
 					kokdizin="$4"
 				fi
 				ikaynak="ag" ;;
-			-ikz|--inkuzo)
+			-ikz|yekur)
 				ikaynak="ag" 
 				tekrarkur="evet" ;;
 			-k|--yrku)
