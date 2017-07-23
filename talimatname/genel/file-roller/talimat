@@ -5,7 +5,7 @@
 
 name=file-roller
 version=3.24.1
-release=1
+release=2
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
 
 build() {
@@ -16,4 +16,5 @@ cd $name-$version
 	make
 	make DESTDIR=$PKG install
 	chmod -v 0755 $PKG/usr/lib/file-roller/isoinfo.sh
+	rm -r $PKG/usr/share/help
 }
