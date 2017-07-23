@@ -1,0 +1,3 @@
+#!/bin/bash
+mv `type -p tar` "$(type -p tar)"-eski
+ln -s $(type -p bsdtar) /usr/bin/tar
