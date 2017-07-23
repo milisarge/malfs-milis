@@ -45,7 +45,11 @@ icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
 	paketad=`basename $paketad`
 	ryaz 34 $paketad" paketi kuruluyor-> $kokdizin" 
-	tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
+	if [ `type -p bsdtar` ];then
+		bsdtar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
+	else
+		tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
+	fi
 	#kos-kur kontrolu
 	if [ -f /tmp/.PRE ];then
 		if [ "$kokdizin" == "/" ];then
@@ -56,7 +60,11 @@ icerik_ekle(){
 		rm  /tmp/.PRE
 	fi
 	mkdir -p kur.$paketad &&
-	tar xf $1 -C kur.$paketad && 
+	if [ `type -p bsdtar` ];then
+		bsdtar xf $1 -C kur.$paketad
+	else
+		tar xf $1 -C kur.$paketad
+	fi
 	#istenmeyen yerellerin silinmesi
 	if [ -d kur.$paketad/usr/share/locale ] && [ "$yerelsil" == "evet" ];then
 		for lkl in `ls kur.$paketad/usr/share/locale/`;do
