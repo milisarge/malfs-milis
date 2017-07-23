@@ -45,7 +45,7 @@ icerik_ekle(){
 	paketad=`echo "$1" | cut -d'#' -f1`	
 	paketad=`basename $paketad`
 	ryaz 34 $paketad" paketi kuruluyor-> $kokdizin" 
-	if [ `type -p bsdtar` ];then
+	if [ -f /usr/bin/bsdtar ];then
 		bsdtar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 	else
 		tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
@@ -60,7 +60,7 @@ icerik_ekle(){
 		rm  /tmp/.PRE
 	fi
 	mkdir -p kur.$paketad &&
-	if [ -f `type -p bsdtar` ];then
+	if [ -f /usr/bin/bsdtar ];then
 		bsdtar xf $1 -C kur.$paketad
 	else
 		tar xf $1 -C kur.$paketad
