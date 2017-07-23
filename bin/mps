@@ -60,7 +60,7 @@ icerik_ekle(){
 		rm  /tmp/.PRE
 	fi
 	mkdir -p kur.$paketad &&
-	if [ `type -p bsdtar` ];then
+	if [ -f `type -p bsdtar` ];then
 		bsdtar xf $1 -C kur.$paketad
 	else
 		tar xf $1 -C kur.$paketad
