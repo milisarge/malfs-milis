@@ -500,6 +500,7 @@ surum_kontrol(){
 			done	
 			if [ "$gun_onay" = "e" ];then
 				if [ -d "$talimatname_dizin/temel/$1" ]; then
+					kurulum_dogrulama_icerik $1
 					tpk="hayir" 
 					paket_sil "$1" "evet"
 					mps -i $1
