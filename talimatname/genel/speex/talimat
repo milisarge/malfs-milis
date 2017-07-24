@@ -1,20 +1,20 @@
 # Description: Ücretsiz konuşma için ücretsiz bir codec bileşeni
 # URL: http://www.speex.org/
 # Packager: milisarge
-# Depends on: libogg 
+# Depends on: libogg speexdsp
 
 name=speex
-version=1.2rc2
+version=1.2.0
 release=1
 
-source=(  http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)
+source=(http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)
 
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
---disable-static \
---docdir=/usr/share/doc/speex-$version
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static \
+	--enable-binaries # Must be given or configure won't use pkg-config correctly
+	make
+	make -k check
+	make DESTDIR=$PKG install
 }  

@@ -1,18 +1,19 @@
-# Description: Güvenli gerçekzamanlı taşıyıcı protokolü
+# Description: Güvenli gerçek zamanlı taşıyıcı protokolü
 # URL: https://github.com/cisco/libsrtp
 # Packager:	milisarge
 # Depends on:	
 
 name=libsrtp
-version=2.0.0
+version=1.5.4
 release=1
-source=(https://github.com/cisco/$name/archive/v$version.tar.gz)
+source=(https://github.com/cisco/libsrtp/archive/v$version.tar.gz--$name-$version.tar.gz)
 
 build() {
 	cd $name-$version
 	autoreconf -fvi
-	./configure --prefix=/usr --enable-openssl
-	make
+	./configure --prefix=/usr
+	#./configure --prefix=/usr
+    make libsrtp.a shared_library
 	make DESTDIR="$PKG" install
 	install -Dm0644 LICENSE "${PKG}"/usr/share/licenses/${name}/LICENSE
 }
