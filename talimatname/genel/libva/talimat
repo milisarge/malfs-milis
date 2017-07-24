@@ -1,0 +1,21 @@
+# Description: Video Acceleration API to enable hardware accelerated video decode/encode.
+# URL: http://freedesktop.org/wiki/Software/vaapi
+# Packager: milisarge
+# Depends on: xorg-mesa
+
+name=libva
+version=1.8.2
+release=1
+source=(https://www.freedesktop.org/software/vaapi/releases/$name/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--disable-wayland \
+		--disable-dependency-tracking
+
+	make
+	make DESTDIR=$PKG install
+}
