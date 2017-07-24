@@ -1,0 +1,17 @@
+# Description: firejail için qt5 tabanlı arayüz
+# URL: https://l3net.wordpress.com/projects/firejail/
+# Packager: milisarge
+# Depends on: firejail qt5
+
+name=firetools
+version=0.9.46
+release=1
+source=(http://sourceforge.net/projects/firejail/files/firetools/firetools-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	export CFLAGS=${CFLAGS/-fsanitize=undefined/}
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
