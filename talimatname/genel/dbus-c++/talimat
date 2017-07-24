@@ -1,0 +1,29 @@
+# Description: A C++ API for D-BUS
+# URL: http://sourceforge.net/projects/dbus-cplusplus/
+# Packager: milisarge
+# Depends on: dbus glib
+
+name=dbus-c++
+_name=libdbus-c++
+version=0.9.0
+release=1
+source=(http://sourceforge.net/projects/dbus-cplusplus/files/dbus-c%2B%2B/$version/libdbus-c%2B%2B-$version.tar.gz
+		gcc47.patch
+		disable-threading.patch
+		fix-writechar.patch)
+
+build() {
+    cd "$SRC/$_name-$version"
+    patch -Np0 -i "$SRC/gcc47.patch"
+    patch -Np1 -i "$SRC/disable-threading.patch"
+    patch -Np1 -i "$SRC/fix-writechar.patch"
+    export LDFLAGS+=" -lexpat "
+    ./autogen.sh --prefix=/usr \
+                 --disable-static \
+                 --enable-glib \
+                 --disable-ecore
+
+  make
+  cd "$SRC/$_name-$version"
+  make DESTDIR="$PKG" install
+}
