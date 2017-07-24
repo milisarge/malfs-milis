@@ -1,0 +1,19 @@
+# Description: NAT-PMP protokolunun uygulanması
+# URL: http://miniupnp.free.fr/libnatpmp.html
+# Packager: milisarge
+# Depends on: 
+
+name=libnatpmp
+version=20150609
+release=1
+source=(http://miniupnp.tuxfamily.org/files/libnatpmp-20150609.tar.gz
+)
+
+build() {
+cd $name-$version
+  sed -e 's/CFLAGS = /CFLAGS += /' -i Makefile
+  make
+  make INSTALLPREFIX="$PKG/usr" INSTALLDIRINC="$PKG/usr/include" install
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+  install -Dm644 natpmpc.1 "$PKG/usr/share/man/man1/natpmpc.1"
+}
