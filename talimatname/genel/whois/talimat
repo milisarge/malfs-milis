@@ -4,7 +4,7 @@
 # Depends on:
 
 name=whois
-version=5.2.11
+version=5.2.16
 release=1
 
 source=(ftp://ftp.debian.org/debian/pool/main/w/$name/${name}_$version.tar.xz)
