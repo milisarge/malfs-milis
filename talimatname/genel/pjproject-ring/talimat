@@ -1,0 +1,57 @@
+# Description: Open source SIP stack and media stack, built with patches from SavoirFaire Linux (mostly GnuTLS support)
+# URL: http://www.pjsip.org/
+# Packager: milisarge
+# Depends on: gnutls portaudio speex alsa-lib libsamplerate ffmpeg libsrtp opus gsm libsrtp
+
+name=pjproject-ring
+_name=pjproject
+version=2.6
+release=1
+source=(http://www.pjsip.org/release/2.6/$_name-$version.tar.bz2
+		endianness.patch
+		gnutls.patch
+		notestsapps.patch
+		fix_base64.patch
+		ipv6.patch
+		ice_config.patch
+		multiple_listeners.patch
+		pj_ice_sess.patch
+		fix_turn_fallback.patch
+		fix_ioqueue_ipv6_sendto.patch
+		add_dtls_transport.patch)
+
+build() {
+  cd "${SRC}/${_name}-${version}"
+
+  for patch in endianness.patch gnutls.patch notestsapps.patch fix_base64.patch \
+	ipv6.patch ice_config.patch multiple_listeners.patch \
+	pj_ice_sess.patch fix_turn_fallback.patch \
+	fix_ioqueue_ipv6_sendto.patch add_dtls_transport.patch
+
+  do
+    patch -p1 < ../"$patch"
+  done
+  cd "${SRC}/${_name}-${version}"
+  export CXXFLAGS="${CXXFLAGS} -DNDEBUG -fPIC -DPJSIP_MAX_PKT_LEN=8000"
+  export CFLAGS="${CXXFLAGS}"
+
+  ./configure \
+      --prefix=/usr \
+      --enable-shared \
+      --enable-ssl=gnutls \
+      --with-external-speex \
+      --with-external-srtp \
+      --with-external-pa \
+      --with-external-gsm \
+      --enable-ext-sound \
+      --disable-oss \
+      --disable-opencore-amr \
+      --disable-v4l2 \
+      --disable-video \
+      --disable-sound
+
+  make dep
+  make
+  make DESTDIR="${PKG}" install
+
+}
