@@ -1,46 +1,57 @@
 # Description: Ses ve videoyu kaydetmek, dönüştürmek ve akışlamak için eksiksiz, çapraz platformlu bir çözüm.
 # URL: http://ffmpeg.org/
 # Packager: milisarge
-# Depends on: yasm opus fdk-aac x264 x265 liba52 libass freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
+# Depends on: yasm opus fdk-aac x264 x265 liba52 libass libva libwebp libvdpau freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
 
 name=ffmpeg
-version=2.8.4
+version=3.3.2
 release=1
-source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.bz2)
+source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.xz
+		ffmpeg-x264-10bit.sh)
 
 build() {
-cd ffmpeg-$version
+cd $name-$version
 
-sed -e '/UPD.*=/,/SET_SCA.*=/d' \
-    -e '/SET_SHA.*=/d' \
-    -e '/GET_LAS.*=/d' \
-    -i libavcodec/libvpxenc.c
+[ -e '/usr/lib/pkgconfig/libwebp.pc' ] && PKGMK_FFMPEG+=' --enable-libwebp'
+[ -e '/usr/lib/pkgconfig/vdpau.pc' ] && PKGMK_FFMPEG+=' --enable-vdpau'
+[ -e '/usr/lib/pkgconfig/freetype2.pc' ] && PKGMK_FFMPEG+=' --enable-libfreetype'
+[ -e '/usr/lib/pkgconfig/x264.pc' ] && PKGMK_FFMPEG+=' --enable-libx264'
+[ -e '/usr/lib/pkgconfig/x265.pc' ] && PKGMK_FFMPEG+=' --enable-libx265'
+[ -e '/usr/lib/pkgconfig/libass.pc' ] && PKGMK_FFMPEG+=' --enable-libass'
+[ -e '/usr/include/lame/lame.h' ] && PKGMK_FFMPEG+=' --enable-libmp3lame'
+[ -e '/usr/lib/pkgconfig/opus.pc' ] && PKGMK_FFMPEG+=' --enable-libopus'
+[ -e '/usr/lib/pkgconfig/vpx.pc' ] && PKGMK_FFMPEG+=' --enable-libvpx'
+[ -e '/usr/lib/pkgconfig/vorbis.pc' ] && PKGMK_FFMPEG+=' --enable-libvorbis'
+[ -e '/usr/lib/pkgconfig/theora.pc' ] && PKGMK_FFMPEG+=' --enable-libtheora'
+[ -e '/usr/lib/pkgconfig/fdk-aac.pc' ] && PKGMK_FFMPEG+=' --enable-libfdk-aac --enable-nonfree'
 
-sed -i 's/-lflite"/-lflite -lasound"/' configure
+	if [ -e '/usr/lib/pkgconfig/gnutls.pc' ]; then
+		PKGMK_FFMPEG+=' --enable-gnutls'
+	else
+		PKGMK_FFMPEG+=' --enable-openssl --enable-nonfree'
+	fi
 
-./configure --prefix=/usr      \
-            --enable-gpl         \
-            --enable-version3    \
-            --enable-nonfree     \
-            --disable-static     \
-            --enable-shared      \
-            --disable-debug      \
-	    --enable-libass      \
-            --enable-libfdk-aac  \
-            --enable-libfreetype \
-            --enable-libmp3lame  \
-	    --enable-libopus     \
-            --enable-libtheora   \
-            --enable-libvorbis   \
-            --enable-libvpx      \
-            --enable-libx264     \
-	    --enable-libx265     \
-            --enable-x11grab     \
-	    --enable-openssl     \
-            --docdir=/usr/share/doc/$name-$version
-make
-gcc tools/qt-faststart.c -o tools/qt-faststart
-make DESTDIR=$PKG install
-install -v -m755 tools/qt-faststart \
-$PKG/usr/bin
+	./configure ${PKGMK_FFMPEG} \
+		--prefix=/usr \
+		--disable-debug \
+		--disable-doc \
+		--enable-gpl \
+		--enable-version3 \
+		--enable-shared \
+		--enable-pic \
+		--enable-avfilter \
+		--enable-avresample \
+		--enable-postproc \
+		--enable-pthreads \
+		--enable-swresample
+
+	make
+	make DESTDIR=$PKG install install-man
+
+	rm -r $PKG/usr/share/ffmpeg/examples
+
+	if [ -e '/usr/lib/pkgconfig/x264.pc' ]; then
+		install -m 0755 -D $SRC/ffmpeg-x264-10bit.sh \
+			$PKG/usr/bin/ffmpeg-x264-10bit
+	fi
 }
