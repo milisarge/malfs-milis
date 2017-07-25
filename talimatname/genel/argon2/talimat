@@ -1,0 +1,18 @@
+# Description: The password hash Argon2, winner of PHC
+# URL: https://github.com/P-H-C/phc-winner-argon2  
+# Packager: milisarge
+# Depends on:
+
+name=argon2
+version=20161029
+release=1
+source=(https://github.com/P-H-C/phc-winner-argon2/archive/$version.tar.gz--$name-$version.tar.gz)
+
+build() {
+	cd phc-winner-argon2-$version
+	sed -i "/^#/d;s/\/@HOST_MULTIARCH@//g;s/@UPSTREAM_VER@/$version/g" libargon2.pc
+	sed -i '1d' libargon2.pc
+	make -j1
+	make DESTDIR="$PKG" install
+	install -Dm644 libargon2.pc $PKG/usr/lib/pkgconfig/libargon2.pc
+}
