@@ -19,6 +19,6 @@ build() {
     --with-contrib="no" \
     --enable-ipv6
 
-  DISABLE_CONTRIB_DOWNLOADS="TRUE" make
+  DISABLE_CONTRIB_DOWNLOADS="TRUE" make -j1
   DISABLE_CONTRIB_DOWNLOADS="TRUE" make DESTDIR="$PKG" install
 }
