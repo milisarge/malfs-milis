@@ -1,0 +1,22 @@
+# Description: Video Decode and Presentation API for Unix provides a complete solution for decoding, post-processing, compositing, and displaying compressed or uncompressed video streams.
+# URL: http://cgit.freedesktop.org/vdpau/libvdpau
+# Packager: milisarge
+# Depends on: xorg-libxext xorg-dri2proto
+
+name=libvdpau
+version=1.1.1
+release=1
+source=(http://people.freedesktop.org/~aplattner/vdpau/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man \
+		--disable-dependency-tracking \
+		--disable-documentation
+
+	make
+	make DESTDIR=$PKG install
+}
