@@ -1,17 +1,28 @@
 # Description: JSON C++ kütüphanesi
 # URL: http://jsoncpp.sourceforge.net/
 # Packager: milisarge
-# Depends on:	scons
+# Depends on: cmake
 
 name=jsoncpp
-version=1.7.4
+version=1.8.1
 release=1
-source=(https://github.com/open-source-parsers/$name/archive/$version.zip)
+source=(https://github.com/open-source-parsers/$name/archive/$version.zip--${name}-${version}.tar.gz)
 
 build () {
-	cd $name-$version
-	scons platform=linux-gcc
-	mkdir -p $PKG/usr/{include/jsoncpp,lib}
-	cp -r include/json $PKG/usr/include/jsoncpp/
-	cp libs/linux-gcc-*/libjson_linux-gcc-*_libmt.so $PKG/usr/lib/libjsoncpp.so
+  cd ${name}-${version}
+  mkdir -p build
+  #python3 doxybuild.py --with-dot
+  cd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_STATIC_LIBS=ON \
+    ..
+  make
+  cd ..
+  make -C build DESTDIR="${PKG}" install
+  install -Dm 644 LICENSE -t "${PKG}/usr/share/licenses/${name}"
 }
