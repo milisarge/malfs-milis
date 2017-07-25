@@ -26,7 +26,7 @@ abort_on_build() {
         exit $E_BUILD
 }
 get_filename() {
-	if [[ "$1" =~ "--"(.+) ]] ;then
+	if [[ "$1" =~ "::"(.+) ]] ;then
 		echo "$DERLEME_KAYNAKDIZIN/${BASH_REMATCH[1]}"
 	elif [[ $1 =~ ^(http|https|ftp|file)://.*/(.+) ]]; then
 		echo "$DERLEME_KAYNAKDIZIN/${BASH_REMATCH[2]}"
@@ -146,7 +146,7 @@ downloads_file_with_curl() {
 }
 download_file() {
 	
-    if [[ "$1" =~ (.+)"--" ]] ;then
+    if [[ "$1" =~ (.+)"::" ]] ;then
 		adres="${BASH_REMATCH[0]}"
 		adres=`echo $adres | sed s'/..$//' `
 	else

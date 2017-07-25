@@ -6,7 +6,7 @@
 name=libringclient
 version=1.0.0
 release=1
-source=(https://github.com/savoirfairelinux/ring-lrc/archive/master.tar.gz--$name-$version-master.tar.gz)
+source=(https://github.com/savoirfairelinux/ring-lrc/archive/master.tar.gz::$name-$version-master.tar.gz)
 
 build() {
   cd "ring-lrc-master"

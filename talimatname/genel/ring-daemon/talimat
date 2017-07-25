@@ -6,7 +6,7 @@
 name=ring-daemon
 version=4.0.0
 release=1
-source=(https://github.com/savoirfairelinux/$name/archive/$version.tar.gz--$name-$version.tar.gz)
+source=(https://github.com/savoirfairelinux/$name/archive/$version.tar.gz::$name-$version.tar.gz)
 
 build() {
   cd "${name}-$version"

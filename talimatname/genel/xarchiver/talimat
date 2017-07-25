@@ -7,7 +7,7 @@ name=xarchiver
 version=0.5.4.11
 release=1
 
-source=(https://github.com/ib/xarchiver/archive/$version.tar.gz--$name-$version.tar.gz)
+source=(https://github.com/ib/xarchiver/archive/$version.tar.gz::$name-$version.tar.gz)
 
 build() {
 cd $name-$version

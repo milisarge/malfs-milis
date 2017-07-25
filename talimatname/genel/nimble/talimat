@@ -6,7 +6,7 @@
 name=nimble
 version=0.8.6
 release=1
-source=(https://github.com/nim-lang/nimble/archive/v$version.tar.gz--nimble-$version.tar.gz)
+source=(https://github.com/nim-lang/nimble/archive/v$version.tar.gz::nimble-$version.tar.gz)
 
 build() {
   cd ${name}-${version}

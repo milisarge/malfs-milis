@@ -6,7 +6,7 @@
 name=restbed
 version=4.6
 release=1
-source=(https://github.com/Corvusoft/restbed/archive/$version.tar.gz--$name-$version.tar.gz
+source=(https://github.com/Corvusoft/restbed/archive/$version.tar.gz::$name-$version.tar.gz
 		strand.patch)
 
 build() {

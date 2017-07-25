@@ -6,7 +6,7 @@
 name=kashmir
 version=20150805
 release=1
-source=(https://github.com/Corvusoft/kashmir-dependency/archive/master.tar.gz--$name-$version.tar.gz)
+source=(https://github.com/Corvusoft/kashmir-dependency/archive/master.tar.gz::$name-$version.tar.gz)
 
 build() {
 	cd kashmir-dependency-master
