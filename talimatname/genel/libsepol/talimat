@@ -1,0 +1,15 @@
+# Description: SELinux ikili politika manipülasyon kütüphanesi
+# URL: http://userspace.selinuxproject.org
+# Packager: yasarciv67@gmail.com
+# Depends on: 
+
+name=libsepol
+version=2.4
+release=1
+
+source=(https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${name}-${version}.tar.gz)
+build() {
+  cd ${name}-${version}
+  make
+  make DESTDIR=${PKG} LIBDIR=${PKG}/usr/lib SHLIBDIR=${PKG}/usr/lib install
+}

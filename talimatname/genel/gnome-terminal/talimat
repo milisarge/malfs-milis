@@ -1,0 +1,22 @@
+# Description: GNOME için terminal emülatörü 
+# URL: http://www.gnome.org
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache dconf gconf gtk2 gnome-doc-utils gsettings-desktop-schemas vte3 nautilus 
+
+name=gnome-terminal
+version=3.22.1
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr       \
+      --disable-static     \
+      --disable-migration    \
+      --disable-search-provider \
+      --without-pcre2 --with-nautilus-extension
+make
+make DESTDIR=$PKG install
+
+}

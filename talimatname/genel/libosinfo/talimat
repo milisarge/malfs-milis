@@ -1,0 +1,19 @@
+# Description: İşletim Sistemi bilgi veritabanı
+# URL: http://libosinfo.org
+# Packager: yasarciv67@gmail.com
+# Depends on: glib libxslt gobject-introspection intltool libsoup vala check
+
+name=libosinfo
+version=1.0.0
+release=1
+
+source=(https://releases.pagure.org/libosinfo/$name-$version.tar.gz{,.asc})
+
+build() {
+ cd $name-$version
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+              --with-usb-ids-path=/usr/share/hwdata/usb.ids \
+              --with-pci-ids-path=/usr/share/hwdata/pci.ids
+ make
+ make DESTDIR=$PKG install
+}

@@ -1,0 +1,17 @@
+# Description: GNOME için bir metin düzenleyici
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache enchant gtk3 gtksourceview3 gvfs libpeas yelp-xsl enchant iso-codes libsoup libzeitgeist python-gobject python 
+
+name=gedit
+version=3.22.0
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+tamir_masaustu
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-spell
+make
+make DESTDIR=$PKG install
+}

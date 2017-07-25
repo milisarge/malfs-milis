@@ -1,0 +1,14 @@
+# Description: gnome sistem
+# URL: sistem
+# Packager: yasarciv67@gmail.com
+# Depends on: alacarte baobab dconf-editor eog evince evolution folks gdl gdm gedit-plugins gnome-calculator gnome-calendar gnome-clocks gnome-icon-theme-extras gnome-icon-theme-symbolic gnome-nettool gnome-photos gnome-power-manager gnome-screenshot gnome-session gnome-shell gnome-shell-extensions gnome-system-monitor gnome-terminal gnome-tweak-tool gnome-user-docs gnome-weather gtk-vnc totem 
+
+name=gnome
+version=1
+release=1
+
+source=(talimat)
+
+build() {
+echo "gnome derlemesi bitti"
+}

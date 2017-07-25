@@ -1,0 +1,20 @@
+# Description: GNOME masaüstü için renk profili yöneticisi
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: adwaita-icon-theme appstream-glib libcanberra vte3 exiv2 desktop-file-utils shared-color-targets colord-gtk libexif intltool yelp-tools pango cairo desktop-file-utils gtk-update-icon-cache
+
+name=gnome-color-manager
+version=3.22.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+ 
+build() {
+  unset MAKEFLAGS
+  cd $name-$version 
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+        --libexecdir=/usr/lib/gnome-color-manager \
+        --disable-static --disable-man-pages
+  make 
+  make DESTDIR=$PKG install
+}

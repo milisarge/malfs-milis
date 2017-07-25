@@ -1,0 +1,17 @@
+# Description: Sistem seslerinin oynatılması için küçük bir kitaplık
+# URL: https://wiki.gnome.org/Projects/GSound
+# Packager: yasarciv67@gmail.com
+# Depends on: glib libcanberra
+
+name=gsound
+version=1.0.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/${name}/${version%.*}/${name}-$version.tar.xz)
+
+build() {
+cd ${name}-$version
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+}
