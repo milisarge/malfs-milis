@@ -1,0 +1,18 @@
+# Description: GData protokolünü kullanarak çevrimiçi hizmet API'lerine erişmek için kullanılan GLib tabanlı kitaplık.
+# URL: http://live.gnome.org/libgdata
+# Packager: yasarciv67@gmail.com 
+# Depends on: liboauth libsoup json-glib gnome-online-accounts gcr uhttpmock gtk-doc
+
+name=libgdata
+version=0.17.6
+release=1
+
+source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${version%.*}/$name-$version.tar.xz )
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --disable-static --disable-tests
+	make
+	make DESTDIR=$PKG install
+}
+ 

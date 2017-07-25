@@ -1,0 +1,23 @@
+# Description: Fotoğraf ve video çekmek için web kameranızı kullanın, fantezi özel efektler uygulayın ve eğlencenizi başkaları ile paylaşın.
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com 
+# Depends on: libcanberra clutter-gst clutter-gtk gnome-desktop gnome-video-effects gstreamer1-plugins-bad gstreamer1-plugins-good itstool librsvg libgudev gobject-introspection vala gtk-update-icon-cache tdb
+
+name=cheese
+version=3.24.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+      --disable-static --disable-schemas-compile --libexecdir=/usr/lib/cheese \
+      --enable-gtk-doc
+
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+make -j1
+make DESTDIR=$PKG install
+}

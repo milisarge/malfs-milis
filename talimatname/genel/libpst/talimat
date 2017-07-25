@@ -1,0 +1,18 @@
+# Description: Outlook .pst dosya çeviricisi
+# URL: http://www.five-ten-sg.com/libpst/
+# Packager: yasarciv67@gmail.com
+# Depends on: python boost libgsf
+
+name=libpst
+version=0.6.67
+release=1
+
+source=(http://www.five-ten-sg.com/libpst/packages/${name}-${version}.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --mandir=/usr/share/man \
+   --disable-static --enable-libpst-shared --disable-dii
+make
+make DESTDIR=$PKG install
+}

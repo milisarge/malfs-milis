@@ -1,0 +1,27 @@
+# Description: SELinux kitaplığı ve basit araçları
+# URL: http://userspace.selinuxproject.org"
+# Packager: yasarciv67@gmail.com
+# Depends on: python3 python libsepol pcre
+
+
+name=libselinux
+version=2.4
+release=1
+
+source=(https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${name}-${version}.tar.gz
+        libselinux.tmpfiles.d)
+build() {
+cd ${name}-${version}
+  sed -i 's|pkg-config --cflags ruby|pkg-config --cflags ruby-$(RUBYLIBVER)|' src/Makefile
+  sed -i 's|site_ruby|vendor_ruby|' src/Makefile
+ #make swigify
+  make all
+  #make PYTHON=python2 pywrap
+  #make PYTHON=python3 pywrap
+  #make rubywrap 
+make DESTDIR=${PKG} USRBINDIR=${PKG}/usr/bin LIBDIR=${PKG}/usr/lib SHLIBDIR=${PKG}/usr/lib install
+#make DESTDIR=${PKG} USRBINDIR=${PKG}/usr/bin LIBDIR=${PKG}/usr/lib SHLIBDIR=${PKG}/usr/lib PYTHON=python2 install-pywrap
+#make DESTDIR=${PKG} USRBINDIR=${PKG}/usr/bin LIBDIR=${PKG}/usr/lib SHLIBDIR=${PKG}/usr/lib PYTHON=python3 install-pywrap
+#make DESTDIR=${PKG} USRBINDIR=${PKG}/usr/bin LIBDIR=${PKG}/usr/lib SHLIBDIR=${PKG}/usr/lib install-rubywrap
+install -Dm 0644 ${SRC}/libselinux.tmpfiles.d ${PKG}/usr/lib/tmpfiles.d/libselinux.conf
+}

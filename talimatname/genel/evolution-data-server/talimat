@@ -1,0 +1,21 @@
+# Description: Kartvizit görevleri ve takvim bilgileri ile çalışan programlar.
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com 
+# Depends on: vim db gnome-online-accounts gnome-common gperf icu libgdata libical libsecret libsoup nss libgweather vala gobject-introspection kerberos gtk3 gtk-doc openldap
+
+name=evolution-data-server
+version=3.22.6
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+ ./configure --prefix=/usr --sysconfdir=/etc \
+   --localstatedir=/var --with-openldap=yes \
+   --with-krb5=/usr --with-libdb=/usr \
+   --enable-vala-bindings --disable-uoa \
+   --enable-gtk-doc --disable-google-auth
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,19 @@
+# Description: GNOME dosya yöneticisi
+# URL: http://live.gnome.org/Nautilus
+# Packager: yasarciv67@gmail.com 
+# Depends on: gnome-autoar libnotify gnome-desktop shared-mime-info gobject-introspection exempi libexif gvfs gtk-update-icon-cache desktop-file-utils libselinux desktop-file-utils tracker
+
+name=nautilus
+version=3.22.3
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr    \
+      --sysconfdir=/etc  \
+      --disable-packagekit 
+make
+make DESTDIR=$PKG install
+}

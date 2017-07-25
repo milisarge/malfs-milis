@@ -1,0 +1,19 @@
+# Description: OpenPGP için Kütüphane komut istemleri
+# URL: http://git.gnome.org/libcryptui
+# Packager: yasarciv67@gmail.com
+# Depends on: gtk3 gpgme dbus-glib gnupg libnotify libgnome-keyring dconf gobject-introspection intltool
+
+
+name=libcryptui
+version=3.12.2
+release=1
+
+source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	sed -i "s@1.2 1.4 2.0@1.2 1.4 2.0 2.1@" configure
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

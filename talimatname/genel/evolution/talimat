@@ -1,0 +1,24 @@
+# Description: E-postalarınızı, kişilerinizi ve programınızı yönetin.
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache adwaita-icon-theme bogofilter evolution-data-server gnome-desktop gnome-icon-theme highlight shared-mime-info gstreamer1 libcanberra libgweather libcryptui gtkspell gtkhtml highlight itstool libpst libgdata shared-mime-info webkitgtk3 libnotify clutter-gtk geoclue geocode-glib libchamplain gtk-doc openldap gtksourceview3 gtkspell openldap tdb
+
+name=evolution
+version=3.22.1
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr     \
+      --sysconfdir=/etc   \
+      --disable-gtkspell  \
+      --disable-pst-import \
+      --disable-spamassassin \
+      --with-openldap \
+      --enable-gtk-doc \
+      --disable-autoar
+make
+make DESTDIR=$PKG install
+}

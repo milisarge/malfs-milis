@@ -1,0 +1,17 @@
+# Description: Mevcut hava koşullarına ve tahminlerine erişin.
+# URL: http://www.gnome.org
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 gjs libgweather desktop-file-utils geoclue2
+
+name=gnome-weather
+version=3.20.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make
+make DESTDIR=$PKG install
+}

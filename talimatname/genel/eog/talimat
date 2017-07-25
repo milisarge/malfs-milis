@@ -1,0 +1,19 @@
+# Description: Eye of Gnome: Bir görüntü izleme ve kataloglama programı.
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache adwaita-icon-theme desktop-file-utils gnome-desktop gnome-icon-theme libpeas shared-mime-info yelp-xsl gobject-introspection librsvg exempi lcms2 libexif
+
+name=eog
+version=3.20.5
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--localstatedir=/var \
+--sysconfdir=/etc
+make
+make DESTDIR=$PKG install
+}

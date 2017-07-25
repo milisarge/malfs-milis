@@ -1,0 +1,18 @@
+# Description: Exiv2 kitaplığının çevresindeki GObject tabanlı sarmalayıcı.
+# URL: https://wiki.gnome.org/Projects/gexiv2
+# Packager: yasarciv67@gmail.com
+# Depends on: glib exiv2 gobject-introspection python-gobject
+
+name=libgexiv2
+version=0.10.4
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/${name/lib/}/${version%.*}/${name/lib/}-$version.tar.xz)
+
+build() {
+cd ${name/lib/}-$version
+	./configure --prefix=/usr \
+		 --enable-introspection
+	make
+	make DESTDIR=$PKG install
+}

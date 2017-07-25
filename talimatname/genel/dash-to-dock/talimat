@@ -1,0 +1,16 @@
+# Description: Çizgiyi genel görünümden kaldırarak kenarda gezdirerek hareket ettirin.
+# URL: https://micheleg.github.io/dash-to-dock/
+# Packagers: yasarciv67@gmail.com
+# Depends on: intltool dconf 
+
+name=dash-to-dock
+version=57
+release=1
+source=()
+
+build() {
+git clone https://github.com/micheleg/dash-to-dock.git
+cd $name
+make
+make DESTDIR=$PKG install
+}

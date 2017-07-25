@@ -1,0 +1,17 @@
+# Description: GNOME için bir sistem monitörü
+# URL: http://library.gnome.org/users/gnome-system-monitor/3.1/gnome-system-monitor.html
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache adwaita-icon-theme itstool libgtop libwnck3 gtkmm3 glibmm librsvg gnome-icon-theme desktop-file-utils gnome-doc-utils
+
+name=gnome-system-monitor
+version=3.22.2
+release=1
+
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --enable-wnck
+	make
+	make DESTDIR=$PKG install
+}

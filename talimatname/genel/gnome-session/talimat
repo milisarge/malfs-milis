@@ -1,0 +1,21 @@
+# Description: GNOME oturum yöneticisi
+# URL: http://www.gnome.org
+# Packager: yasarciv67@gmail.com
+# Depends on: openbox xorg-libsm gconf gtk3 json-glib startup-notification upower xmlto consolekit2 gnome-desktop gtk-update-icon-cache
+
+name=gnome-session
+version=3.22.2
+release=1
+
+source=(timeout.patch
+	http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+patch -Np1 -i ../timeout.patch
+./configure --prefix=/usr --docdir=/usr/share/doc/gnome-session-$version \
+--enable-consolekit \
+--enable-docbook-docs
+make
+make DESTDIR=$PKG install
+} 

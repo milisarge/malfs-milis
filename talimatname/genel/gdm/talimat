@@ -1,0 +1,35 @@
+# Description: Grafiksel girişler ve yerel ve uzaktaki ekranları yönetme
+# URL: http://www.gnome.org/
+# Packager: yasarciv67@gmail.com 
+# Depends on: accountsservice nss libcanberra gnome-shell gnome-session upower
+
+name=gdm
+version=3.16.4
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz )
+
+build() {
+cd $name-$version
+./configure --prefix=/usr    \
+      --sysconfdir=/etc  \
+      --localstatedir=/var \
+      --with-run-dir=/run/gdm \
+      --enable-gdm-xsession \
+      --enable-ipv6  \
+      --enable-authentication-scheme=pam \
+		  --disable-static \
+		  --with-xdmcp=yes \
+      --with-xinerama \
+      --with-audit \
+      --with-selinux \
+      --without-wayland \
+      --without-plymouth \
+			--without-systemd \
+			--without-xevie \
+			--disable-schemas-compile \
+			--without-tcp-wrappers 
+			 
+ make
+make DESTDIR=$PKG install
+}
+

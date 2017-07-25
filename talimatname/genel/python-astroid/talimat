@@ -1,0 +1,16 @@
+# Description: Python 3 Logilab projeleri tarafından kullanılan faydalı modüller.
+# URL: https://bitbucket.org/logilab/astroid
+# Packager: yasarciv67@gmail.com
+# Depends on: python python-six python3-setuptools
+
+name=python-astroid
+version=1.4.5
+release=1
+
+source=(https://pypi.python.org/packages/source/a/astroid/astroid-${version}.tar.gz)
+
+build() {
+    cd astroid-$version
+    python3 setup.py check
+    python3 setup.py install --prefix=/usr --root=$PKG
+}
