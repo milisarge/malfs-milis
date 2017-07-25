@@ -1,7 +1,7 @@
 # Description: GTK + ile karmakarışık entegrasyon
 # URL: https://git.gnome.org/browse/clutter-gtk
 # Packager: Cihan Alkan
-# Depends on: clutter
+# Depends on: clutter vim
 
 name=clutter-gtk
 version=1.8.2
