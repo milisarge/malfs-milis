@@ -1,0 +1,24 @@
+# Description: ring.cx is free software for universal communication which respects freedoms and privacy of its users (formerly known as SFLphone)
+# URL: https://ring.cx
+# Packager: milisarge
+# Depends on: boost msgpack-c autoconf-archive opendht yaml-cpp alsa-lib pulseaudio jack jsoncpp libsamplerate libsndfile dbus-c++ ffmpeg gnutls gsm libupnp libnatpmp crypto++ libva boost libvdpau pjproject-ring restbed 
+
+name=ring-daemon
+version=4.0.0
+release=1
+source=(https://github.com/savoirfairelinux/$name/archive/$version.tar.gz--$name-$version.tar.gz)
+
+build() {
+  cd "${name}-$version"
+  autoreconf --force --install --verbose
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/bin \
+    --sysconfdir=/etc \
+    --with-contrib="no" \
+    --enable-ipv6
+
+  DISABLE_CONTRIB_DOWNLOADS="TRUE" make
+  DISABLE_CONTRIB_DOWNLOADS="TRUE" make DESTDIR="$PKG" install
+}

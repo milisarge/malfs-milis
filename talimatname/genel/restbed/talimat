@@ -1,0 +1,24 @@
+# Description: A framework for asynchronous RESTful functionality in C++11 applications
+# URL: https://github.com/Corvusoft/restbed
+# Packager: milisarge
+# Depends on: cmake asio kashmir
+
+name=restbed
+version=4.6
+release=1
+source=(https://github.com/Corvusoft/restbed/archive/$version.tar.gz--$name-$version.tar.gz
+		strand.patch)
+
+build() {
+  cd "$SRC/$name-$version"
+  # Necessary to build against asio 1.10.X
+  patch -p1 < "$SRC"/strand.patch
+  mkdir -p build
+  cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_SHARED=on
+  make
+  make DESTDIR="$PKG" install
+}

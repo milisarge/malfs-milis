@@ -1,0 +1,18 @@
+# Description: Cross-platform C++ library for ASynchronous network I/O
+# URL: http://asio.sourceforge.net
+# Packager: milisarge
+# Depends on: boost 
+
+name=asio
+version=1.10.8
+release=1
+source=(http://downloads.sourceforge.net/asio/$name-$version.tar.bz2)
+
+build() {
+  cd "${SRC}/${name}-${version}"
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=${PKG} install
+  #license
+  install -D -m644 LICENSE_1_0.txt "${PKG}/usr/share/licenses/${name}/LICENSE"
+}
