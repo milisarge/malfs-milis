@@ -1,0 +1,22 @@
+# Description: Client communication library for ring.cx (formerly known as SFLphone)
+# URL: https://ring.cx
+# Packager: milisarge
+# Depends on: cmake qt5 ring-daemon
+
+name=libringclient
+version=1.0.0
+release=1
+source=(https://github.com/savoirfairelinux/ring-lrc/archive/master.tar.gz--$name-$version-master.tar.gz)
+
+build() {
+  cd "ring-lrc-master"
+  mkdir -p build
+  cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+
+  make
+  make DESTDIR="$PKG" install
+
+}
