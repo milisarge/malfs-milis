@@ -1,23 +1,15 @@
 # Description: Kademlia DHT'nin (Distributed Hash Table) bir C ++ 11 uygulaması,
 # URL: https://github.com/savoirfairelinux/opendht
 # packager: milisarge
-# Depends on: cmake gnutls nettle msgpack-c python3-setuptools cython
+# Depends on: cmake gnutls nettle msgpack-c python3-setuptools cython argon2
 
 name=opendht
-version=master
+version=1.3.5
 release=1
-source=()
-_source=https://github.com/savoirfairelinux/opendht
+source=(https://github.com/savoirfairelinux/opendht/archive/1.3.5.tar.gz--$name-$version.tar.gz)
 
 build() {
-    if [ ! -d  $DERLEME_KAYNAKDIZIN/$name ];then
-		git clone $_source $DERLEME_KAYNAKDIZIN/$name
-	else
-		cd $DERLEME_KAYNAKDIZIN/$name
-		git pull
-	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
-	cd $SRC/$name
+	cd $name-$version
 	mkdir -p build
 	cd build
 	cmake .. \
