@@ -5,12 +5,13 @@
 
 name=xfce4-appfinder
 version=4.12.0
-release=1
+release=2
 
-source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+source=(https://github.com/xfce-mirror/xfce4-appfinder/archive/master.tar.gz::$name-$version.tar.gz)
 
 build() {
-cd $name-$version
+cd $name-master
+./autogen.sh
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
