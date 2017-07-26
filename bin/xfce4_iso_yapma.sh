@@ -1,8 +1,10 @@
 #!/bin/bash
+# xfce4 iso yapma
 # lfs dizini oluşturup ortama girdikten sonra bu betiği çalıştırabilirsiniz,bütün ortam içi işlemler yapılacaktır.
 masaustu="xfce4"
 girisyonetici="slim"
 mps kur linux-firmware
+mps kur lsb-release
 mps kur kernel
 mps kur dracut
 mps kur xorg

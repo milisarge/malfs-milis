@@ -4,6 +4,7 @@
 masaustu="mate"
 girisyonetici="slim"
 mps kur linux-firmware
+mps kur lsb-release
 mps kur kernel
 mps kur dracut
 mps kur xorg
