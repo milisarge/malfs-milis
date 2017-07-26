@@ -3,7 +3,7 @@
 # Packager: yasarciv67@gmail.com
 # Depends on: python3-astroid python3-setuptools python3-six
 
-name=python-pylint
+name=python3-pylint
 version=1.6.4
 release=1
 
