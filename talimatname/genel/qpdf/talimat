@@ -4,14 +4,15 @@
 # Depends on: pcre libxslt
 
 name=qpdf
-version=6.0.0
+version=20170726
 release=2
-source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz)
+source=(https://github.com/qpdf/qpdf/archive/master.zip::$name-$version.tar.gz)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr    \
-            --disable-static 
-make 
-make DESTDIR=$PKG install
+	cd $name-master
+	./autogen.sh
+	./configure --prefix=/usr    \
+	--disable-static 
+	make 
+	make DESTDIR=$PKG install
 }
