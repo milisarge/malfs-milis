@@ -5,25 +5,24 @@
 
 name=libmad
 version=0.15.1b
-release=2
+release=3
 
-source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz\
-	http://www.linuxfromscratch.org/patches/blfs/svn/libmad-$version-fixes-1.patch
-	mad.pc)
+source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz
+		libmad.patch 
+		amd64-64bit.diff 
+		frame_length.diff 
+		optimize.diff)
 
 
 build() {
-	cd $name-$version
-        patch -Np1 -i ../libmad-$version-fixes-1.patch
-        sed "s@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@g" -i configure.ac
-        touch NEWS AUTHORS ChangeLog
-        autoreconf -fi
-        ./configure --prefix=/usr --disable-static
-        make
-        make DESTDIR=$PKG install
-        mkdir -p $PKG/usr/lib/pkgconfig
-
-install -Dm644 $SRC/mad.pc $PKG/usr/lib/pkgconfig/mad.pc
-
-sed -i "s/#version#/$version/" $PKG/usr/lib/pkgconfig/mad.pc
+	cd ${name}-${version}
+	patch -p1 -i "${SRC}/libmad.patch"
+	patch -p1 -i "${SRC}/amd64-64bit.diff"
+	patch -p1 -i "${SRC}/frame_length.diff"
+	patch -p1 -i "${SRC}/optimize.diff"
+	CFLAGS="$CFLAGS -ftree-vectorize -ftree-vectorizer-verbose=1"
+	autoconf
+	./configure --prefix=/usr
+	make
+	make DESTDIR="${PKG}" install
 }
