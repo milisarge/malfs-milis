@@ -4,9 +4,9 @@
 # Depends on: gtk2 yasm desktop-file-utils libdvdnav libdvdcss cdparanoia libcdio-paranoia libdvdread samba libbluray live xorg-libxvmc opus alsa-utils pulseaudio sdl jack openal sgml-common aalib giflib libjpeg-turbo libmng libpng openjpeg libcaca faac faad2 lame liba52 libdv libmad libmpeg2 libtheora libvpx lzo mpg123 speex xvid libmpcdec xorg-fontconfig freetype gnutls openssl opus unrar libxslt docbook-xsl docbook-xml enca glib xorg-libxxf86dga 
 
 name=mplayer
-version=2017-04-29
+version=0.26.0
 release=1
-source=(http://distfiles.serverop.de/mplayer-$version.tar.xz
+source=(https://github.com/mpv-player/mpv/archive/v$version.tar.gz::$name-$version.tar.gz
 		http://www1.mplayerhq.hu/MPlayer/releases/fonts/font-arial-iso-8859-1.tar.bz2 
 		mplayer.conf)
 
