@@ -1,5 +1,4 @@
 # Description: Çoklu-Görüntü Ağ Grafikleri okumak, görüntülemek, yazmak ve incelemek için referans kitaplığı.
-MNG popüler PNG resim formatının animasyon uzantısıdır.
 # URL: http://sourceforge.net/projects/libmng/
 # Packager: milisarge
 # Depends on: libjpeg-turbo lcms
