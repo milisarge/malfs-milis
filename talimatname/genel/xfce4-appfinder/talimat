@@ -1,7 +1,7 @@
 # Description: Xfce için bir uygulama bulucu
 # URL: http://http://www.xfce.org/projects/xfce4-appfinder/
 # Packager: milisarge
-# Depends on: xfce4-libui xfce4-garcon 
+# Depends on: xfce4-libui xfce4-garcon xfce4-dev-tools
 
 name=xfce4-appfinder
 version=4.12.0
