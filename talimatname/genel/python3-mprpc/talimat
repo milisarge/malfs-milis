@@ -1,0 +1,15 @@
+# Description: Hızlı MessagePack RPC kütüphanesi
+# URL: https://github.com/studio-ousia/mprpc
+# Packager: milisarge
+# Depends on: python3 python3-setuptools
+
+name=python3-mprpc
+version=0.1.14
+release=1
+
+source=(https://github.com/studio-ousia/mprpc/archive/v0.1.14.tar.gz::$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    python3 setup.py install --prefix=/usr --root=$PKG
+}
