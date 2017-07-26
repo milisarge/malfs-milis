@@ -8,7 +8,7 @@ version=0.1.5
 release=1
 
 source=( http://sourceforge.net/projects/libusb/files/libusb-compat-0.1/libusb-compat-$version/$name-$version.tar.bz2)
-        http://downloads.sourceforge.net/libusb/libusb-compat-0.1.5.tar.bz2
+   
 build() {
 cd $name-$version
 ./configure --prefix=/usr \
