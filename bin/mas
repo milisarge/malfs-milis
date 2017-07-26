@@ -11,17 +11,19 @@ ayardosya="ayarlar/milisia_genel.conf"
 noktadepo="noktalar"
 nokta_adres="https://github.com/milisarge/$noktadepo"
 
+aygit_ekle(){
+	mkdir -p /dev/net &&
+	mknod /dev/net/tun c 10 200 &&
+	chmod 0666 /dev/net/tun	
+}
+
 [ ! -d $anayer ] && mkdir -p $anayer
 [ ! -d $anayer/ayarlar ] && mkdir -p $anayer/ayarlar
 [ ! -c /dev/net/tun ] && aygit_ekle
 [ ! -f /usr/bin/$servis ] && mps kur $servisk
 [ ! -f /usr/bin/json ] && json_kur
 
-aygit_ekle(){
-	mkdir -p /dev/net &&
-	mknod /dev/net/tun c 10 200 &&
-	chmod 0666 /dev/net/tun	
-}
+
 
 json_kur(){
 	curl -L https://github.com/trentm/json/raw/master/lib/json.js > /usr/bin/json && chmod +x /usr/bin/json
