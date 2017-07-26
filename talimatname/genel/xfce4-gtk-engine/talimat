@@ -7,7 +7,7 @@ _name=gtk-xfce-engine
 
 name=xfce4-gtk-engine
 version=3.2.0
-release=1
+release=2
 
 source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
 
