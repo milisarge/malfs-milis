@@ -5,7 +5,7 @@
 
 name=xfce4-appfinder
 version=4.12.0
-release=2
+release=3
 
 source=(https://github.com/xfce-mirror/xfce4-appfinder/archive/master.tar.gz::$name-$version.tar.gz
 		appfinder-preferences-ui.h)
