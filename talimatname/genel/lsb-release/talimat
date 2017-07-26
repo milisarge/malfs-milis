@@ -1,0 +1,19 @@
+# Description: Dağıtımın (Linux Standards Base) bilgisi verir.
+# URL: http://www.linuxbase.org/
+# Packager: milisarge
+# Depends on: 
+
+name=lsb-release
+version=1.4
+release=1
+source=(http://sourceforge.net/projects/lsb/files/lsb_release/${version}/${name}-${version}.tar.gz \
+         lsbrelease milis-release system-release)
+
+build() {
+	cd ${name}-${version}
+    install -Dm 755 lsb_release "$PKG/usr/bin/lsb_release"
+	mkdir -p $PKG/etc/
+	cp $SRC/lsbrelease $PKG/etc/lsb-release
+	cp $SRC/milis-release $PKG/etc/milis-release
+	cp $SRC/system-release $PKG/etc/system-release
+}
