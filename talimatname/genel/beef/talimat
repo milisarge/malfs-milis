@@ -1,7 +1,7 @@
 # Description: The Browser Exploitation Framework that focuses on the web browser
 # URL: http://beefproject.com/
 # Packager: yakar (aydin@komutan.org)
-# Depends on: ruby23 ruby-bundler23 sqlite python
+# Depends on: ruby23 ruby23-bundler sqlite python
 
 name=beef
 version=0.4.7.0
@@ -38,7 +38,7 @@ fi
 
 # run beef
 cd /usr/share/$name
-exec ruby $name "\${@}"
+exec ruby-2.3 $name "\${@}"
 EOF
 
   chmod +x "$PKG/usr/bin/$name"
