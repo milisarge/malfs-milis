@@ -307,6 +307,16 @@ kur-lxdm: dizinleri-olustur
 	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc5.d/S95lxdm
 	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc6.d/K05lxdm
 
+kur-mdm: dizinleri-olustur
+	install -m ${MODE} mbd/init.d/mdm        ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/mdm ${EXTDIR}/rc.d/rc0.d/K05mdm
+	ln -sf  ../init.d/mdm ${EXTDIR}/rc.d/rc1.d/K05mdm
+	ln -sf  ../init.d/mdm ${EXTDIR}/rc.d/rc2.d/K05mdm
+	ln -sf  ../init.d/mdm ${EXTDIR}/rc.d/rc3.d/K05mdm
+	ln -sf  ../init.d/mdm ${EXTDIR}/rc.d/rc4.d/K05mdm
+	ln -sf  ../init.d/mdm ${EXTDIR}/rc.d/rc5.d/S95mdm
+	ln -sf  ../init.d/mdm ${EXTDIR}/rc.d/rc6.d/K05mdm
+
 kur-mysql: dizinleri-olustur
 	install -m ${MODE} mbd/init.d/mysql      ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/mysql ${EXTDIR}/rc.d/rc0.d/K26mysql
@@ -860,6 +870,16 @@ sil-lxdm:
 	rm -f ${EXTDIR}/rc.d/rc4.d/K05lxdm
 	rm -f ${EXTDIR}/rc.d/rc5.d/S95lxdm
 	rm -f ${EXTDIR}/rc.d/rc6.d/K05lxdm
+	
+sil-mdm:
+	rm -f ${EXTDIR}/rc.d/init.d/mdm
+	rm -f ${EXTDIR}/rc.d/rc0.d/K05mdm
+	rm -f ${EXTDIR}/rc.d/rc1.d/K05mdm
+	rm -f ${EXTDIR}/rc.d/rc2.d/K05mdm
+	rm -f ${EXTDIR}/rc.d/rc3.d/K05mdm
+	rm -f ${EXTDIR}/rc.d/rc4.d/K05mdm
+	rm -f ${EXTDIR}/rc.d/rc5.d/S95mdm
+	rm -f ${EXTDIR}/rc.d/rc6.d/K05mdm
 
 sil-mysql:
 	rm -f ${EXTDIR}/rc.d/init.d/mysql

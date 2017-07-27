@@ -1,0 +1,47 @@
+#!/bin/sh
+# Begin /etc/rc.d/init.d/mdm
+
+. /lib/lsb/init-functions
+
+BIN_FILE="/usr/bin/mdm"
+DUR_BIN_FILE="/usr/bin/mdm-stop"
+YEYUKLE_BIN_FILE="/usr/bin/mdm-safe-restart"
+
+case $1 in
+   start)
+	log_info_msg "Yerel ayarlar eklendi..."
+    yerel_ayar
+    log_info_msg "MDM başlatılıyor..."
+	start_daemon $BIN_FILE --nodaemon
+	evaluate_retval
+	;;
+
+   stop)
+	log_info_msg "MDM durduruluyor..."
+ 	killproc $DUR_BIN_FILE
+	evaluate_retval
+	;;
+
+   restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+	
+	reload)
+	log_info_msg "MDM yeniden yükleniyor..."
+ 	killproc $YEYUKLE_BIN_FILE
+	evaluate_retval
+	;;
+
+   status)
+        statusproc ${BIN_FILE}
+        ;;
+
+   *)
+	echo "usage: $0 [start|stop|restart|reload|status]"
+        exit 1
+	;;
+esac
+
+# End /etc/rc.d/init.d/mdm
