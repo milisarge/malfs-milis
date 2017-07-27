@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /usr/share/beef
-bundle install
+bundle-2.3 install
