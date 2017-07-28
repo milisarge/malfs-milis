@@ -1251,6 +1251,16 @@ kurulum_dogrulama(){
 	done
 }
 
+kurulum_dogrulama_icerik_tum(){
+	for kuruland in `ls $VT`
+	do
+		if [ -f "$VT/$kuruland/kurulan" ]; then
+			kurulum_dogrulama_icerik $kuruland
+			ryaz 32  "$kuruland kurulum icerik onarıldı."
+		fi
+	done
+}
+
 chr_yordam() {
   [ "$1" -lt 256 ] || return 1
   printf "\\$(printf '%03o' "$1")"
@@ -1692,6 +1702,8 @@ ayarlar() {
 					exit 1
 				fi
 				kurulum_dogrulama_icerik "$2" ;;
+			-kdit)
+				kurulum_dogrulama_icerik_tum ;;
 			-kdk)
 				kurban_kurtar $2 ;;
 			-suko)
