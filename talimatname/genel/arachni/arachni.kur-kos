@@ -1,0 +1,2 @@
+cd /usr/share/arachni
+bundle-2.3 install
