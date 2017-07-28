@@ -10,7 +10,4 @@ printf "\n restarted in a infinite loop, this take around     "
 printf "\n 1 minute post login, please not force the use of   "
 printf "\n getty@tty1 unles you know how deal with the problem"
 printf "\n"
-gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-getent passwd mdm || userdel mdm
-getent group mdm || groupdel mdm
 mps serkur mdm && mps sersil slim && mps sersil lxdm
