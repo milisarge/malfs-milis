@@ -1,7 +1,7 @@
 # Description: Web uygulama güvenliği için modüler pentest aracı.
 # URL: https://www.arachni-scanner.com
 # Packager: yakar (aydin@komutan.org)
-# Depends on: ruby23 ruby-bundler23
+# Depends on: ruby23 ruby23-bundler
 
 name=arachni
 version=1.5.1
@@ -27,36 +27,17 @@ build() {
 
   	mkdir -p "$PKG/usr/bin"
   	mkdir -p "$PKG/usr/share/$name"
-  	touch "$PKG/usr/share/$name/.gemkur"
 
   	install -Dm644 -t "$PKG/usr/share/doc/$name" *.md
   	install -Dm644 LICENSE.md "$PKG/usr/share/licenses/$name/LICENSE.md"
-
-  	#cp --no-preserve=ownership -a * "$PKG/usr/share/$name"
 
   	for prog in ${progs}
   	do
     	cat > "$PKG/usr/bin/${prog//_/-}" << EOF
 #!/bin/sh
-cd /usr/share/$name
-if [ -f "/usr/share/$name/.gemkur" ]; then
-	/usr/bin/arachni_gemkur
-fi
-if [ -f "/usr/bin/ruby23" ]; then
-	exec ruby23 /usr/share/$name/bin/$prog "\$@"
-else
-	exec ruby /usr/share/$name/bin/$prog "\$@"
-fi
+exec ruby-2.3 /usr/share/$name/bin/$prog "\$@"
 EOF
   	done
-
-  	cat > "$PKG/usr/bin/arachni_gemkur" << EOF
-#!/bin/sh
-set -e
-cd /usr/share/$name
-bundler install
-rm /usr/share/$name/.gemkur
-EOF
 
   	chmod +x "$PKG"/usr/bin/*
 }
