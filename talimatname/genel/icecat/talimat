@@ -1,0 +1,58 @@
+# Description: Firefox Web Tarayıcısının GNU çatallaması
+# URL: http://www.gnu.org/software/gnuzilla/
+# Packager: milisarge
+# Depends on: unzip zip python yasm xorg-mesa xorg-imake gconf autoconf2 pulseaudio dejavu-ttf gstreamer-plugins-base cargo gtk3 gtk2 xorg-libxt startup-notification dbus-glib alsa-lib ffmpeg libvpx icu libevent nss hunspell sqlite freefont-ttf
+
+name=icecat
+version=52.1.0
+release=1
+source=(http://ftpmirror.gnu.org/gnuzilla/52.1.0/icecat-$version-gnu1.tar.bz2
+		mozconfig
+		icecat.desktop
+		icecat-safe.desktop
+		vendor.js
+		fix-wifi-scanner.diff
+		no-crmf.diff)
+
+build() {
+
+  cd "${SRC}/${name}-${version}"
+  sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
+  sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
+
+  patch -Np1 -i ../fix-wifi-scanner.diff
+  patch -Np1 -i ../no-crmf.diff
+  
+  cp -v ${SRC}/mozconfig .mozconfig
+
+  mkdir -p "$SRC/path"
+
+  ln -s /usr/bin/python2 "$SRC/path/python"
+
+  cd "${SRC}/${name}-${version}"
+
+  ICECATDIR="/usr/lib/${name}" && export ICECATDIR
+
+  CPPFLAGS+=" -O2"
+  LDFLAGS+=" -Wl,-z,now"
+
+  export PATH="$SRC/path:$PATH"
+
+SHELL=/bin/sh  make -f client.mk build
+SHELL=/bin/sh  make -f client.mk DESTDIR="${PKG}" install
+
+  install -m755 -d ${PKG}/usr/share/applications
+  install -m755 -d ${PKG}/usr/share/pixmaps
+
+  for i in 16 32 48; do
+      install -Dm644 ${SRC}/${name}-${version}/browser/branding/official/default${i}.png \
+      "$PKG/usr/share/icons/hicolor/${i}x${i}/apps/icecat.png"
+  done
+
+  install -Dm644 ${SRC}/${name}-${version}/browser/branding/official/default48.png ${PKG}/usr/share/pixmaps/icecat.png
+  install -Dm644 ${SRC}/icecat.desktop ${PKG}/usr/share/applications/
+  install -Dm644 ${SRC}/icecat-safe.desktop ${PKG}/usr/share/applications/
+  install -Dm644 "${SRC}"/vendor.js "${PKG}${ICECATDIR}/browser/defaults/preferences/vendor.js"
+  rm -rv "$PKG"/usr/{include,lib/icecat-devel,share/idl}
+
+}
