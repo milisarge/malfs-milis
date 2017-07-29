@@ -6,6 +6,7 @@ girisyonetici="slim"
 mps kur linux-firmware
 mps kur lsb-release
 mps kur kernel
+[ -f /usr/bin/dracut ] && rm -rf /usr/bin/dracut
 mps kur dracut
 mps kur xorg
 mps -kuruld /root/talimatname/temel-ek/derleme.sira
