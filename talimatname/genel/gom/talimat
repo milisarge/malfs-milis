@@ -1,0 +1,21 @@
+# Description: SQLite nesne eşleyicisine bir GObject
+# URL: https://wiki.gnome.org/Projects/Gom
+# Packager: yasarciv67@gmail.com
+# Depends on: intltool gtk-doc gobject-introspection gdk-pixbuf gnome-common glib sqlite 
+
+name=gom
+version=0.3.2
+release=1
+source=(https://git.gnome.org/browse/$name/snapshot/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr \
+    --disable-static --enable-gtk-doc
+  make
+  make DESTDIR="$PKG" install
+
+# vim:set ts=2 sw=2 et:
+
+}

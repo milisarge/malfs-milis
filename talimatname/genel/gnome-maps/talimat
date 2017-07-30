@@ -1,0 +1,18 @@
+# Description: Bu paket GNOME için bir harita uygulamasıdır.
+# URL: http://www.gnome.org/"
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache clutter-gtk geoclue2 geocode-glib gjs libchamplain libgee folks gfbgraph
+
+name=gnome-maps
+version=3.22.2
+release=1
+
+source=(http://download.gnome.org/sources/$name/${version:0:4}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool 
+make
+make DESTDIR=$PKG install
+}

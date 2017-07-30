@@ -1,0 +1,17 @@
+# Description: Gucharmap, Unicode karakter haritası ve yazı tipi görüntüleyici.
+# URL: http://www.gnome.org
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 itstool gobject-introspection vala
+
+name=gucharmap
+version=8.0.1
+release=1
+
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+    cd $name-$version
+	./configure --prefix=/usr --enable-vala
+    make
+    make DESTDIR=$PKG install
+}

@@ -1,0 +1,19 @@
+# Description: DMAP protokol ailesini uygulayan bir kütüphane
+# URL: http://www.flyn.org/projects/libdmapsharing/index.html
+# Packager: yasarciv67@gmail.com
+# Depends on: gtk-doc gobject-introspection libsoup avahi gstreamer1-plugins-base gdk-pixbuf 
+
+name=libdmapsharing
+version=2.9.39
+release=1
+source=(https://git.gnome.org/browse/$name/snapshot/LIBDMAPSHARING_2_9_39.tar.xz)
+
+build() {
+  cd LIBDMAPSHARING_2_9_39 
+ ./autogen.sh
+  ./configure --prefix=/usr --with-mdns=avahi --enable-gtk-doc
+
+  make
+  make DESTDIR="$PKG" install
+
+}

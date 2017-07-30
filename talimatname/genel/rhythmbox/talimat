@@ -1,0 +1,29 @@
+# Description: iTunes benzeri müzik çalma ve yönetim uygulaması
+# URL: http://www.rhythmbox.org
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gobject-introspection intltool gtk3 gdk-pixbuf libsoup libpeas libxml2 tdb json-glib totem-pl-parser libmtp gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good webkit2gtk3 python python-gobject
+
+name=rhythmbox
+version=3.4.1
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:3}/$name-$version.tar.xz)
+
+build() {
+tamir_masaustu
+	cd $name-$version
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--disable-scrollkeeper \
+		--enable-python=yes \
+		--enable-vala \
+		--enable-browser-plugin \
+		--enable-musicbrainz \
+		--with-gudev \
+		--with-mtp \
+		--with-gnome-keyring \
+		--with-brasero \
+		--with-webkit
+	make
+	make DESTDIR=$PKG install
+}

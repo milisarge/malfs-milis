@@ -1,0 +1,23 @@
+# Description: Grilo çerçevesi için bir eklenti koleksiyonu
+# URL: https://git.gnome.org/browse/grilo-plugins
+# Packager: yasarciv67@gmail.com
+# Depends on: meson grilo lua libmediaart libgdata tracker gom libdmapsharing chromaprint gstreamer1-plugins-bad yelp
+
+name=grilo-plugins
+version=0.3.4
+release=1
+source=()
+
+build() {
+  git clone git://git.gnome.org/grilo-plugins
+  cd $name
+ mkdir build
+ cd build
+  export LANG=en_US.UTF-8
+  meson --prefix=/usr --buildtype=plain ../$name
+  ninja
+  ninja test
+  make
+  make DESTDIR="$PKG" ninja install
+  
+}

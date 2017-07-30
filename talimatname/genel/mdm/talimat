@@ -1,0 +1,68 @@
+# Description: MDM Giriş Yöneticisi (consolekit destekli)
+# URL: http://www.linuxmint.com
+# Packager: yasarciv67@gmail.com
+# Depends on: gnome-common intltool gnome-doc-utils xorg-server pango zenity popt xorg-libdmx libgnomecanvas dbus-glib webkitgtk2
+
+name=mdm
+version=2.0.17
+release=1
+
+source=(https://github.com/linuxmint/$name/archive/$version.tar.gz
+mdm.pam
+mdm-autologin.pam
+defaults.conf
+org.cinnamon.pkexec.mdmsetup.policy
+resim-1.jpg)
+
+build() {
+    cd $name-$version
+    aclocal --install
+    gnome-doc-prepare --force
+    chmod +x ./autogen.sh
+    export AUTOMAKE=automake
+    ./autogen.sh --enable-ipv6=yes --with-prefetch \
+    --prefix=/usr --with-console-kit=yes --sysconfdir=/etc \
+    --with-systemd=no --libexecdir=/usr/lib/mdm --localstatedir=/var/lib \
+    --disable-static --with-xevie=yes --disable-scrollkeeper \
+    --enable-secureremote=yes --enable-ipv6=yes \
+    --enable-compile-warnings=no --sbindir=/usr/bin \
+    LDFLAGS="-lXau -lm"
+
+    sed -i -e 's|${prefix}|/usr|' config.h
+
+    make DESTDIR=$PKG   
+    make DESTDIR=$PKG install
+
+    #PAM, we use our own, not LinuxMint stuff, problem?...
+    install -m755 -d "${PKG}/etc/pam.d"
+    install -m644    "${SRC}/mdm-autologin.pam" "${PKG}/etc/pam.d/mdm-autologin"
+    install -m644    "${SRC}/mdm.pam"           "${PKG}/etc/pam.d/mdm"
+    
+    #configuration
+    install -m444 "${SRC}/defaults.conf" "${PKG}/usr/share/mdm/"
+    install -m444 "${SRC}/defaults.conf" "${PKG}/usr/share/mdm/distro.conf"
+    cp "${SRC}/resim-1.jpg" "${PKG}/usr/share/mdm/themes/"
+    rm -f "${PKG}/usr/share/xsessions/gnome.desktop" || true
+    
+    #PolicyKit execution scheme (need some tests)
+    install -m755 -d "${PKG}/usr/share/polkit-1/actions/"
+    install -m644    "${SRC}/org.cinnamon.pkexec.mdmsetup.policy" "${PKG}/usr/share/polkit-1/actions/"
+
+    #Why on the hay this directory is created empty in etc, remove it
+    rmdir "${PKG}/etc/dm"
+    
+    #Fix mdm files conflict with gnome-control-center (usr/share/pixmaps/faces/*)
+    install -m755 -d "${PKG}/usr/share/pixmaps/faces/"
+    make DESTDIR=${PKG} install -C gui/faces
+    
+    #Fix gdmsetup.desktop
+    sed -i -e 's|^Exec=gksu|Exec=pkexec|' "${PKG}/usr/share/mdm/applications/mdmsetup.desktop"
+    sed -i -e 's|^Categories=|Categories=GNOME;GTK;System;Settings;X-GNOME-Settings-Panel;X-GNOME-SystemSettings;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;|' "${PKG}/usr/share/mdm/applications/mdmsetup.desktop"
+
+    #Fix erroneous path for certain applications
+    install -m755 -d "${PKG}/usr/share/applications"
+    mv -f ${PKG}/usr/share/mdm/applications/*.* "${PKG}/usr/share/applications"
+    chmod 755 ${PKG}/usr/share/applications/*.*
+    rmdir "${PKG}/usr/share/mdm/applications"
+
+}
