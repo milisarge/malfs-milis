@@ -30,6 +30,8 @@
 /usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent 10
 /usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/default-size-columns 85
 /usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/default-size-rows 20
+/usr/bin/dconf write /org/gnome/terminal/legacy/new-terminal-mode "'tab'"
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/scrollbar-policy "'always'"
 
 # Metin düzenleyici satır numaralarını göster
 /usr/bin/dconf write /org/gnome/gedit/preferences/editor/display-line-numbers true
@@ -40,9 +42,6 @@
 /usr/bin/dconf write /org/gnome/desktop/peripherals/touchpad/tap-to-click true
 
 # Masaustu secenekleri
-mkdir /usr/share/backgrounds/milis
-wget --no-check-certificate https://raw.githubusercontent.com/yasarciv/milis-gorsel/master/masa-arkaplan/milis-arkaplan2.png -O /usr/share/backgrounds/milis/*
-
 /usr/bin/dconf write /org/gnome/desktop/background/show-desktop-icons true
 /usr/bin/dconf write /org/gnome/desktop/background/picture-uri "'/usr/share/backgrounds/milis/milis-arkaplan2.png'"
 /usr/bin/dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita'"
@@ -79,10 +78,12 @@ wget --no-check-certificate https://raw.githubusercontent.com/yasarciv/milis-gor
 /usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/opaque-background true
 /usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 32
 /usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/background-color "'#000000'"
-/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.9
-/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-color "'#fce94f'"
-/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-border-color "'#fce94f'"
-/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-border-width "'1'"
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.5
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-color "'#8ae234'"
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-border-color "'#8ae234'"
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-border-width "1"
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/intellihide true
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height true
 
 # Mouse seçenekleri
 /usr/bin/dconf write /org/gnome/settings-daemon/peripherals/mouse/locate-pointer false
