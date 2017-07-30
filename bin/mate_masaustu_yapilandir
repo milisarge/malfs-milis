@@ -10,8 +10,6 @@ cp /root/ayarlar/milislogo.png /usr/share/icons/
 echo "Metin düzenleyici ayarlandı"
 
 # Masaustu secenekleri
-mkdir /usr/share/backgrounds/milis
-wget --no-check-certificate https://raw.githubusercontent.com/yasarciv/milis-gorsel/master/masa-arkaplan/milis-arkaplan1.png -O /usr/share/backgrounds/milis/*
 /usr/bin/dconf write /org/mate/desktop/background/picture-filename "'/usr/share/backgrounds/milis/milis-arkaplan1.png'"
 /usr/bin/dconf write /org/mate/desktop/interface/gtk-theme "'BlueMenta'"
 /usr/bin/dconf write /org/mate/desktop/interface/icon-theme "'matefaenza'"
