@@ -1465,7 +1465,7 @@ agdan_kur(){
 						paket_sil "$1" "evet"
 					fi
 					icerik_ekle "$paketdepo$pkt"
-					exit 1
+					#exit 1
 				fi
 			else
 				ryaz 31 "paket sunucuda yok!"
