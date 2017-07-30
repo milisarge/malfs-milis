@@ -1,0 +1,91 @@
+#!/bin/bash
+# 
+# Author: Yaşar Çiv <yasarciv67@gmail.com> Fuat Bölük <fuat@fuxproject.org>
+# fux-theme'den çatallanmıştır 
+
+# Favori uygulamalar
+/usr/bin/dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'gnome-system-monitor.desktop', 'org.gnome.Screenshot.desktop', 'org.gnome.Nautilus.desktop']"
+
+# Etkin eklentiler
+/usr/bin/dconf write /org/gnome/shell/enabled-extensions "['alternate-tab@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'places-menu@gnome-shell-extensions.gcampax.github.com']"
+
+# Masaüstü yöneticisi dili
+/usr/bin/gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'tr')]"
+
+# Pencere başlık düğmeleri
+/usr/bin/dconf write /org/gnome/desktop/wm/preferences/button-layout "'appmenu:minimize,maximize,close'"
+
+# Uygulama menüsünü pencere başlığında göster
+/usr/bin/dconf write /org/gnome/settings-daemon/plugins/xsettings/overrides "{'Gtk/ShellShowsAppMenu': <0>}"
+
+# Terminal seçenekleri
+/usr/bin/gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 'system'
+/usr/bin/gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-colors false
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-transparent-background true
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/scrollbar-policy "'never'"
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-color "'#000000'"
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/foreground-color "'#ffffff'"
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent 10
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/default-size-columns 85
+/usr/bin/dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/default-size-rows 20
+
+# Metin düzenleyici satır numaralarını göster
+/usr/bin/dconf write /org/gnome/gedit/preferences/editor/display-line-numbers true
+
+# Touchpad seçenekleri
+/usr/bin/dconf write /org/gnome/desktop/peripherals/touchpad/natural-scroll false
+/usr/bin/dconf write /org/gnome/desktop/peripherals/touchpad/scroll-method "'two-finger-scrolling'"
+/usr/bin/dconf write /org/gnome/desktop/peripherals/touchpad/tap-to-click true
+
+# Masaustu secenekleri
+mkdir /usr/share/backgrounds/milis
+wget --no-check-certificate https://raw.githubusercontent.com/yasarciv/milis-gorsel/master/masa-arkaplan/milis-arkaplan2.png -O /usr/share/backgrounds/milis/*
+
+/usr/bin/dconf write /org/gnome/desktop/background/show-desktop-icons true
+/usr/bin/dconf write /org/gnome/desktop/background/picture-uri "'/usr/share/backgrounds/milis/milis-arkaplan2.png'"
+/usr/bin/dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita'"
+/usr/bin/dconf write /org/gnome/desktop/interface/icon-theme "'Adwaita'"
+/usr/bin/dconf write /org/gnome/desktop/interface/document-font-name "'FreeSans 10'"
+/usr/bin/dconf write /org/gnome/desktop/interface/monospace-font-name "'Monospace 10'"
+/usr/bin/dconf write /org/gnome/desktop/interface/font-name "'FreeSans 10'"
+/usr/bin/dconf write /org/gnome/desktop/interface/show-battery-percentage true
+
+# Nautilus seçenekleri
+/usr/bin/dconf write /org/gnome/nautilus/preferences/always-use-location-entry false
+/usr/bin/dconf write /org/gnome/nautilus/preferences/sort-directories-first true
+/usr/bin/dconf write /org/gnome/nautilus/preferences/executable-text-activation "'ask'"
+
+/usr/bin/gsettings set org.gnome.nautilus.window-state geometry '767x402+599+27'
+/usr/bin/gsettings set org.gnome.nautilus.desktop home-icon-name 'Ev Dizini'
+/usr/bin/gsettings set org.gnome.nautilus.desktop trash-icon-name 'Çöp'
+/usr/bin/gsettings set org.gnome.nautilus.desktop network-icon-name 'Ağ Sunucuları'
+
+/usr/bin/dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'small'"
+/usr/bin/dconf write /org/gnome/nautilus/icon-view/thumbnail-size 48
+
+# Raporlama kapalı
+/usr/bin/dconf write /org/gnome/desktop/privacy/report-technical-problems false
+
+# Tarihi göster
+/usr/bin/dconf write /org/gnome/desktop/interface/clock-show-date true
+
+# Dash seçenekleri
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-background-color true
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink true
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots true
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-customize-running-dots true
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/opaque-background true
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 32
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/background-color "'#000000'"
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.9
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-color "'#fce94f'"
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-border-color "'#fce94f'"
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-border-width "'1'"
+
+# Mouse seçenekleri
+/usr/bin/dconf write /org/gnome/settings-daemon/peripherals/mouse/locate-pointer false
+/usr/bin/dconf write /org/gnome/desktop/peripherals/mouse/natural-scroll false
+
+# Bitti

@@ -1,0 +1,19 @@
+# Description: GNOME Canvas kitaplığı
+# URL: http://www.gnome.org
+# Packager: yasarciv67@gmail.com
+# Depends on: intltool libglade libart_lgpl 
+
+name=libgnomecanvas
+version=2.30.3
+release=3.0
+source=(https://download.gnome.org/sources/$name/2.30/$name-$version.tar.bz2
+)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr --disable-static \
+      --enable-glade
+  make
+  make DESTDIR="${PKG}" install
+
+}
