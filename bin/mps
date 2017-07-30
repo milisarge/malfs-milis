@@ -38,6 +38,7 @@ if [ -z ${yerelsil+:} ]; then
 fi
 if [ -z ${ektalimatname+:} ]; then
 	ektalimatname="/root/talimatlar"
+	[ ! -d /root/talimatlar ] && mkdir -p /root/talimatlar
 fi
 
 
@@ -225,7 +226,7 @@ yeniden_paketle(){
 		lzip -9 "$1".mps
 }
 
-derleme_listyap(){
+derleme_listyap_eski(){
 	bagimlist=`bagimlilar "$1"`
 
 	if [ "$bagimlist" != "talimatyok" ];then
@@ -254,16 +255,28 @@ derleme_listyap(){
 	fi
 }
 
-derleme_listyap_yeni(){
+derleme_listyap_kontrol(){
+	
+	if [ -f tumbag.liste ];then
+		mv tumbag.liste tumbag.liste.eski
+	fi
+	if [ -f bag.liste ];then
+		mv bag.liste bag.liste.eski
+	fi
+	touch tumbag.liste 
+	touch bag.liste 
+}
+
+derleme_listyap(){
+	
 	bagimlist=`bagimlilar "$1"`
-	echo $bagimlist
+	#echo $bagimlist
 	if [ "$bagimlist" != "talimatyok" ];then
 		for bagim in $bagimlist;do
 			
 			if [ "`cat tumbag.liste | grep $bagim`" != "$bagim" ];then
 				derleme_listyap "$bagim"
 			fi
-			echo "c"
 		done
 		
 		if  ! grep -Fxq "$1" tumbag.liste
@@ -297,10 +310,11 @@ derleme_listbilgi(){
 
 # -derlist
 paket_derle_liste(){
-	for dpkt in `cat $1`;do
+	for dpktyer in `cat $1`;do
+		dpkt=`basename $dpktyer`
 		echo $dpkt "derleniyor...."
 		zorla_derle="yok"
-		paket_derle $dpkt
+		paket_derle $dpktyer
 	done
 }
 
@@ -308,7 +322,8 @@ paket_derle_liste(){
 # -derle
 paket_derle_kur(){
 	tekrarkur="hayir"
-	mps -dly "$1"  && mps -derlist bag.liste
+	derleme_listyap_kontrol
+	derleme_listyap "$1"  && paket_derle_liste bag.liste
 }
 
 # odkp
@@ -318,9 +333,9 @@ oto_derle_kur_paketle(){
 	paket_inkur_oto $1 &&
 	if [ -f  "$talimatname_dizin/genel/$1/$1.sira" ];then
 		ryaz 32 "sıralı derleme yapılacak."
-		mps -derlist "$talimatname_dizin/genel/$1/$1.sira"
+		paket_derle_liste "$talimatname_dizin/genel/$1/$1.sira"
 	else
-		mps -derle $1
+		paket_derle_kur $1
 	fi 
 }
 
@@ -382,7 +397,8 @@ paket_kur_liste_zorla(){
 
 #otomatik kontrollu kur
 paket_kur_oto2(){
-	mps -dly "$1" > /dev/null && mps -ok bag.liste
+	derleme_listyap_kontrol
+	derleme_listyap "$1" > /dev/null && mps -ok bag.liste
 }
 
 paket_inkur_liste_direk(){
@@ -403,17 +419,25 @@ paket_inkur_liste(){
 # -kur
 paket_inkur_oto(){
 	local konum anakonum
-	mps -dly "$1" | grep "bulunamadı"
-	#derleme_listyap "$1" > mps.log &&
+	derleme_listyap_kontrol
+	derleme_listyap "$1" | grep "bulunamadı"
 	local kpkt
-	for kpkt in `cat bag.liste`;do	
+	for paketkonum in `cat bag.liste`;do	
 		# önce talimat-anatalimat karşılaştırması yapılır.
+		kpkt=`basename $paketkonum`
 		konum="`find "$talimatname_dizin" -name $kpkt`"
 		anakonum="`find "$ana_talimatname_dizin" -name $kpkt`"
-		if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "evet" ];then
-			mps -ik "$kpkt"
+		ekkonum="`find "$ektalimatname" -name $kpkt`"
+		if [ -f  "$anakonum/talimat" ];then
+			if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "evet" ];then
+				agdan_kur "$kpkt"
+			else
+				ryaz 31 "$kpkt talimat eşitsizliğinden atlandı." 
+			fi
+		elif [ -f  "$ekkonum/talimat" ];then
+			agdan_kur "$kpkt"
 		else
-			ryaz 31 "$kpkt talimat eşitsizliğinden kurulmadı." 
+			ryaz 31 "$kpkt talimatı bulunamadı!"
 		fi
 	done
 	rm -rf *.liste *.eski
@@ -569,51 +593,56 @@ devir_kontrol(){
 }
    
 paket_derle(){
+	#parametre olarak direk konum gelecek
 	#eski derleme kalıntılarını temizle
 	if [ -d tmp.* ];then
 		rm -r tmp.*
 	fi
 	kaynakdizin_kontrol
-	local konum derleme_onay eh bagimd
+	local konum derleme_onay eh bagimd derpaket
 	derleme_onay="h"
-	konum="`find "$talimatname_dizin" -name $1`"
-	anakonum="`find "$ana_talimatname_dizin" -name $1`"
+	if [ -d "$1" ];then
+		konum="$1"
+		derpaket=`basename $1`
+	else
+		konum="`find "$talimatname_dizin" -name $1`"
+		#anakonum="`find "$ana_talimatname_dizin" -name $1`"
+		derpaket="$1"
+	fi
 	if [ -d "$konum" ];then
-		mkdir -p tmp."$1" 
-		cp -a $konum/* tmp."$1"/
-		cd tmp."$1"
+		mkdir -p tmp."$derpaket" 
+		cp -a $konum/* tmp."$derpaket"/
+		cd tmp."$derpaket"
 		# önce talimat-anatalimat karşılaştırması yapılır.
 		#if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "degil" ];then
 		#	zorla_derle="var"
 		#fi
 		# kurulu ve değişiklik yoksa derlenmez.
-		if [ "`kurulu_kontrol "$1"`" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
+		if [ "`kurulu_kontrol "$derpaket"`" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
 			derleme_onay="h"
 		else
 			derleme_onay="e"
 		fi 
 		if [ "$derleme_onay" = "e" ];then
-			ryaz 33 "$1" "derleniyor...."
-			#mpsd -d > /dev/null
-			#mpsd -d
+			ryaz 33 "$derpaket" "derleniyor...."
 			echo "------------------------"
-			mpsd -d 2>&1|tee /tmp/"$1".log
-			if ( grep "^=======>" /tmp/"$1".log| tail -1 |grep "ERROR"  > /dev/null);then
-				echo "derleme sisteminde hata oluştu -----> " /tmp/"$1".log
+			mpsd -d 2>&1|tee /tmp/"$derpaket".log
+			if ( grep "^=======>" /tmp/"$derpaket".log| tail -1 |grep "ERROR"  > /dev/null);then
+				echo "derleme sisteminde hata oluştu -----> " /tmp/"$derpaket".log
 				exit 1
 			fi
 			if [ "$kurulum_onay" = "evet" ];then
-				for kpkt in `ls $1* | cut -d'#' -f1`;do
+				for kpkt in `ls $derpaket* | cut -d'#' -f1`;do
 					mps -k "$kpkt#"*
 				done	
 			fi
 			mv *.mps.lz ../
 		else
 			ryaz 32 "paket zaten kurulu,yine de derlemek için:
-			mps -zd $1"
+			mps -zd $derpaket"
 		fi 
 		cd ..
-		rm -r tmp."$1"
+		rm -r tmp."$derpaket"
 	else
 		ryaz 31 "talimat dosyası bulunamadı."
 		hataloglama "talimat dosyası bulunamadı."
@@ -622,7 +651,7 @@ paket_derle(){
 }
 
 
-bagimlilar(){
+bagimlilar_eski(){
 	local bagimd konum
 	konum="`find "$talimatname_dizin" -name $1`"
 	if [ -f "$konum/talimat" ];then
@@ -639,7 +668,7 @@ bagimlilar(){
 	fi
 }
 
-bagimlilar_yeni(){
+bagimlilar(){
 	local bagimd konum
 	konum="`find "$talimatname_dizin" -name $1`"
 	konumek="`find "$ektalimatname" -name $1`"
@@ -665,6 +694,7 @@ bagimlilar_yeni(){
 	fi
 }
 
+#ektalimatname eklenecek
 bagimli_bilgi(){
 	local bagimd konum bag
 	konum="`find "$talimatname_dizin" -name $1`"
@@ -1372,6 +1402,86 @@ paket_indir(){
 	
 }
 
+yerelden_kur(){
+	local silme
+	pkontrol=`basename $1 | grep -w "mps.lz"`
+	if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
+		paketad=`echo "$1" | cut -d'#' -f1`	
+		kkont=`kurulu_kontrol "$paketad"`
+		
+		if [ "$kkont" = "degil" ];then
+			icerik_ekle "$1"
+		elif [ "$kkont" = "kurulu" ];then
+			if [ "$tekrarkur" = "hayir" ];then
+				while true; do
+					ryaz 31 "$1 paketi zaten kurulu silinip kurulsun mu?"
+					read -p "e veya h -> " eh
+					case $eh in
+						[Ee]* ) silme="e"; break;;
+						[Hh]* ) break;;
+						* ) echo "e veya h";;
+					esac
+				done
+			fi
+			if [ "$silme" = "e" ];then
+				ryaz 33 "silinecekelerin kontrolu için"
+				paket_sil "$paketad"
+				icerik_ekle "$1"
+			fi
+		else
+			icerik_ekle "$1"
+			#while true; do
+				#ryaz 31 "$1 paketi talimatname dışı.Yine de kurulsun mu? (kokdizin=$kokdizin) "
+				#read -p "e veya h -> " eh
+				#case $eh in
+				#	[Ee]* ) icerik_ekle "$1"; break;;
+				#	[Hh]* ) break;;
+				#	* ) echo "e veya h";;
+				#esac
+			#done
+		fi
+	else
+		ryaz 31 "yerelde mps paketi bulunamadı."
+	fi
+}
+
+agdan_kur(){
+	local kontroldeg
+	kkont=`kurulu_kontrol "$1"`
+	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
+		pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3` 
+		if [ ! -z "$pkt" -a "$pkt" != "" ]; then
+			cpaket="${pkt/'#'/'%23'}"
+			ryaz 33 "agdan cekiliyor:" "$1"
+			#paket sunucuda varsa
+			wget -q --spider "$sunucu$cpaket"
+			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
+			if [ $? -eq 0 ]; then
+				#wget  -P "$paketdepo" "$sunucu$cpaket"
+				paket_indir "$1"
+				
+				if [ "$kurulum_onay" = "evet" ];then
+					if [ "$tekrarkur" = "evet" ];then
+						paket_sil "$1" "evet"
+					fi
+					icerik_ekle "$paketdepo$pkt"
+					exit 1
+				fi
+			else
+				ryaz 31 "paket sunucuda yok!"
+				hataloglama "paket sunucuda yok!"
+			fi
+		else
+			ryaz 31 "$1 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
+			hataloglama "$1 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
+		fi
+	else
+		ryaz 32 "$1 paketi zaten kurulu!"
+		#hataloglama "$1 paketi zaten kurulu!"
+	fi
+	#exit 1
+}
+
 yardim(){
  echo "yardim"
 }
@@ -1382,22 +1492,22 @@ ayarlar() {
 	while [ "$1" ]; do
 		case $1 in
 			-i|--indir)
-				ikaynak="ag" 
-				kurulum_onay="olumsuz";;
+				kurulum_onay="olumsuz"
+				agdan_kur "$2" ;;
 			-ik|--inku)
 				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 					kokdizin="$4"
 				fi
-				ikaynak="ag" ;;
+				agdan_kur "$2" ;;
 			-ikz|yekur)
-				ikaynak="ag" 
-				tekrarkur="evet" ;;
+				tekrarkur="evet"  
+				agdan_kur "$2" ;;
 			-k|--yrku)
 				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 					kokdizin="$4"
 					tekrarkur="evet"
 				fi
-				ikaynak="yerel" ;;
+				yerelden_kur "$2" ;;
 			-s|sil)
 				if [[ "$2" == "py-"* ]]; then
 					pypaket=`echo "$2" | cut -d'-' -f 2`
@@ -1484,7 +1594,7 @@ ayarlar() {
 						kokdizin="$4"
 						tekrarkur="evet"
 					fi
-					ikaynak="yerel" 
+					yerelden_kur "$2"
 				else
 					paket_inkur_oto "$2" 
 				fi ;;
@@ -1592,14 +1702,7 @@ ayarlar() {
 			-kl|--kurulu-liste)
 				ls $VT ;;	
 			-dly|--drly)
-				if [ -f tumbag.liste ];then
-					mv tumbag.liste tumbag.liste.eski
-				fi
-				if [ -f bag.liste ];then
-					mv bag.liste bag.liste.eski
-				fi
-				touch tumbag.liste 
-				touch bag.liste 
+				derleme_listyap_kontrol
 				derleme_listyap "$2" ;;	
 			-dlb|--drlb)
 				derleme_listbilgi "$2";;	
@@ -1773,7 +1876,7 @@ $betikad $versiyon Milis Paket Sistemi
 Secenekler:
  -G			ikili paket veritabanını günceller
  -Ggit			git sunucusundan talimatname ve sistem gunceller
- -kur paket_ismi	ilgili paketi bagimliliklariyla agdan cekip kurar
+  kur paket_ismi	ilgili paketi bagimliliklariyla agdan cekip kurar
  -s paket_ismi		ilgili paketi kaldirir
  -k paket_ismi		yereldeki paketi bagimliliksiz kurar
  -kl			kurulu paket listesini verir
@@ -1790,86 +1893,6 @@ _EOF
 ana(){
 if [ `id -u` = 0 ] ; then	
 	ayarlar "$@"
-
-	if [ "$ikaynak" = "ag" ]; then
-		local kontroldeg
-		kkont=`kurulu_kontrol "$2"`
-		if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
-			pkt=`cat "$paketdepo""paket.vt" | grep "^$2 " | cut -d' ' -f3` 
-			if [ ! -z "$pkt" -a "$pkt" != "" ]; then
-				cpaket="${pkt/'#'/'%23'}"
-				ryaz 33 "agdan cekiliyor:" "$2"
-				#paket sunucuda varsa
-				wget -q --spider "$sunucu$cpaket"
-				#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
-				if [ $? -eq 0 ]; then
-					#wget  -P "$paketdepo" "$sunucu$cpaket"
-					paket_indir "$2"
-					
-					if [ "$kurulum_onay" = "evet" ];then
-						if [ "$tekrarkur" = "evet" ];then
-							paket_sil "$2" "evet"
-						fi
-						icerik_ekle "$paketdepo$pkt"
-						exit 1
-					fi
-				else
-					ryaz 31 "paket sunucuda yok!"
-					hataloglama "paket sunucuda yok!"
-				fi
-			else
-				ryaz 31 "$2 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
-				hataloglama "$2 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
-			fi
-		else
-			ryaz 32 "$2 paketi zaten kurulu!"
-			hataloglama "$2 paketi zaten kurulu!"
-		fi
-		exit 1
-	fi
-
-	if [ "$ikaynak" = "yerel" ]; then
-		local silme
-		pkontrol=`basename $2 | grep -w "mps.lz"`
-		if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
-			paketad=`echo "$2" | cut -d'#' -f1`	
-			kkont=`kurulu_kontrol "$paketad"`
-			
-			if [ "$kkont" = "degil" ];then
-				icerik_ekle "$2"
-			elif [ "$kkont" = "kurulu" ];then
-				if [ "$tekrarkur" = "hayir" ];then
-					while true; do
-						ryaz 31 "$2 paketi zaten kurulu silinip kurulsun mu?"
-						read -p "e veya h -> " eh
-						case $eh in
-							[Ee]* ) silme="e"; break;;
-							[Hh]* ) break;;
-							* ) echo "e veya h";;
-						esac
-					done
-				fi
-				if [ "$silme" = "e" ];then
-					ryaz 33 "silinecekelerin kontrolu için"
-					paket_sil "$paketad"
-					icerik_ekle "$2"
-				fi
-			else
-				icerik_ekle "$2"
-				#while true; do
-					#ryaz 31 "$2 paketi talimatname dışı.Yine de kurulsun mu? (kokdizin=$kokdizin) "
-					#read -p "e veya h -> " eh
-					#case $eh in
-					#	[Ee]* ) icerik_ekle "$2"; break;;
-					#	[Hh]* ) break;;
-					#	* ) echo "e veya h";;
-					#esac
-				#done
-			fi
-		else
-			ryaz 31 "yerelde mps paketi bulunamadı."
-		fi
-	fi
 else
 	sudo mps "$@"
 fi
