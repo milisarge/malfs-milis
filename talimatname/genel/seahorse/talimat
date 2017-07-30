@@ -1,0 +1,17 @@
+# Description: PGP anahtarlarını yönetmek için GNOME uygulaması.
+# URL: http://www.gnome.org/"
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 gcr libsecret desktop-file-utils dconf gpgme openldap intltool yelp-tools gobject-introspection xorg-libsm vala
+
+name=seahorse
+version=3.20.0
+release=2
+
+source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	 ./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,17 @@
+# Description: Müzik oynatımı ve yönetimi için program
+# URL: http://www.gnome.org
+# Packager: yasarciv67@gmail.com
+# Depends on: gsettings-desktop-schemas desktop-file-utils python-gobject gtk-update-icon-cache gobject-introspection grilo-plugins gtk3 intltool itstool libmediaart python tracker
+
+name=gnome-music
+version=3.22.2
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+ 
+build() {
+cd $name-$version
+./configure --prefix=/usr --disable-schemas-compile
+make
+make DESTDIR=$PKG install
+}

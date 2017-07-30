@@ -1,0 +1,14 @@
+# Description: gnome-ekstra sistem
+# URL: sistem
+# Packager: yasarciv67@gmail.com
+# Depends on: aisleriot brasero four-in-a-row gnome-chess gnome-disk-utility gnome-maps  gucharmap quadrapassel rhythmbox seahorse seahorse-nautilus shotwell
+
+name=gnome-ekstra
+version=1
+release=1
+
+source=(talimat)
+
+build() {
+echo "gnome-ekstra derlemesi bitti"
+}

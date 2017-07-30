@@ -1,0 +1,19 @@
+# Description: CD/DVD yönetim aracı
+# URL: https://wiki.gnome.org/Apps/Brasero
+# Packager: yasarciv67@gmail.com
+# Depends on: gtk-doc yelp-tools gnome-common intltool libburn libisofs nautilus gobject-introspection gconf itstool gtk3 gstreamer1-plugins-base totem-pl-parser cdrkit cdrdao shared-mime-info libcanberra dvd+rw-tools dconf libnotify gvfs 
+
+name=brasero
+version=3.12.1
+release=1
+source=(https://download.gnome.org/sources/brasero/${version:0:4}/brasero-3.12.1.tar.xz
+)
+
+build() {
+  cd $name-$version
+  autoreconf -fi  
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --disable-caches --disable-schemas-compile --enable-compile-warnings=minimum
+  make
+  make DESTDIR=$PKG install
+}

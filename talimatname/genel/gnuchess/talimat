@@ -1,0 +1,16 @@
+# Description: Bilgisayara karşı bir satranç satranç oynamak içindir ve grafiksel satranç cepheleri için bir motor içerir 
+# URL: http://www.gnu.org/software/chess/chess.html
+# Packager: yasarciv67
+# Depends on: 
+
+name=gnuchess
+version=6.2.4
+release=1
+source=(http://ftp.gnu.org/pub/gnu/chess/gnuchess-6.2.4.tar.gz)
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr
+  make  
+  make DESTDIR=$PKG/usr install
+
+}

@@ -1,0 +1,16 @@
+getent group mdm >/dev/null 2>&1 || groupadd -g 128 mdm
+getent passwd mdm >/dev/null 2>&1 || /usr/sbin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /sbin/nologin mdm
+passwd -l mdm > /dev/null
+chown root:mdm /var/lib/mdm > /dev/null
+chmod 1770 /var/lib/mdm > /dev/null
+mps serkur mdm && mps sersil slim && mps sersil lxdm && mps sersil gdm
+
+gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+printf "\n Varsayılan olarak tty1 devre dışıdır, çünkü bu bir hata"
+printf "\n tty1 çalışıyorsa, mdm otomatik olarak çalışır "
+printf "\n sonsuz bir döngü içinde yeniden başlatıldığında, bu etrafında almak   "
+printf "\n giriş yaptıktan 1 dakika sonraya kadar lütfen zor kullanmayın   "
+printf "\n sorunla nasıl başa çıkacağınızı bilmiyorsanız getty@tty1"
+printf "\n"
+
+
