@@ -404,7 +404,7 @@ paket_kur_oto2(){
 paket_inkur_liste_direk(){
 	local kpkt
 	for kpkt in `cat $1`;do
-		mps -ik "$kpkt"
+		agdan_kur "$kpkt"
 	done
 }
 
@@ -440,6 +440,7 @@ paket_inkur_oto(){
 			ryaz 31 "$kpkt talimatı bulunamadı!"
 		fi
 	done
+	ryaz 32 "\n$1 kurulum işlemi tamamlandı."
 	rm -rf *.liste *.eski
 }
 
@@ -1476,7 +1477,8 @@ agdan_kur(){
 			hataloglama "$1 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 		fi
 	else
-		ryaz 32 "$1 paketi zaten kurulu!"
+		#ryaz 32 "$1 paketi zaten kurulu!"
+		printf "."
 		#hataloglama "$1 paketi zaten kurulu!"
 	fi
 	#exit 1
