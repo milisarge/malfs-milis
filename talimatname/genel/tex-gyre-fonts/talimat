@@ -1,0 +1,16 @@
+# Description: Substitute PostScript fonts in OpenType format
+# URL: http://www.gust.org.pl/projects/e-foundry/tex-gyre
+# Packager: milisarge
+# Depends on: 
+
+name=tex-gyre-fonts
+version=2.005
+release=1
+source=(http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg-${version}otf.zip
+		http://www.gust.org.pl/projects/e-foundry/tex-gyre/../licenses/GUST-FONT-LICENSE.txt)
+
+build() {
+	install -d "$PKG/usr/share/fonts/${name%-fonts}"
+	install -t "$PKG/usr/share/fonts/${name%-fonts}" -m644 *.otf
+	install -Dm644 GUST-FONT-LICENSE.txt "$PKG/usr/share/licenses/$name/LICENSE"
+}
