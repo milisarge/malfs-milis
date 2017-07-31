@@ -1,2 +1,3 @@
 #!/bin/bash
+[ ! -d /var/lib/pkg/DB/tex-gyre-fonts ] && mps kur tex-gyre-fonts
 cp -rf /sources/milis.git/ayarlar/98-tamir.conf /etc/fonts/conf.d/
