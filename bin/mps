@@ -470,8 +470,8 @@ paketsiz_talimatlar(){
 }
 
 paket_guncelle(){
-	surum_kontrol $1
-	devir_kontrol $1
+	surum_kontrol $1 $2
+	devir_kontrol $1 $2
 }
 
 paket_guncelle_oto(){
@@ -483,27 +483,77 @@ paket_guncelle_oto(){
 	rm bag.liste tumbag.liste
 }
 
+dongu_gosterge(){
+	count=0
+	total=$1
+	pstr="[=======================================================================]"
+
+	while [ $count -lt $total ]; do
+	  sleep 0.5 # this is work
+	  count=$(( $count + 1 ))
+	  pd=$(( $count * 73 / $total ))
+	  printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
+	done
+}
+
+
 sistem_guncelle(){
-	tarihce_yap
+	count=0
+	esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
+	local kpkt
+	local pk_guncelle
+	total=`mps -kl | wc -l`
+	pstr="[=======================================================================]"
+	mps -GG 
+	mps -G
+	GS_CIKTI="H"
+	while [ $count -lt $total ]; do
+		count=$(( $count + 1 ))
+		pd=$(( $count * 73 / $total ))
+		printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
+		kpkt=$(ls $VT | tr " " "\n" | sed -n ${count}'p')
+		pk_guncelle="e"
+		case "${esgec[@]}" in  *"$kpkt"*) pk_guncelle="h" ;; esac
+		if [ "$pk_guncelle" = "e" ];then
+			paket_guncelle "$kpkt" $GS_CIKTI
+			#printf "."
+		else
+			[ $GS_CIKTI = "E" ] && ryaz 31 $kpkt "güncellemesi atlandı"
+			#ryaz 31  "$kpkt atlandı"
+		fi
+	done
+	ryaz 32 "\nSistem Güncellemesi Tamamlandı."
+}
+
+sistem_guncelle_eski(){
+	#tarihce_yap
 	# güncellemede atlanacak paketler.
 	esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
 	local kpkt
 	local pk_guncelle
-	mps -GG 
-	mps -G
+	#mps -GG 
+	#mps -G
+	GS_CIKTI="H"
 	for kpkt in `mps -kl`;do
 		pk_guncelle="e"
 		case "${esgec[@]}" in  *"$kpkt"*) pk_guncelle="h" ;; esac
 		if [ "$pk_guncelle" = "e" ];then
-			paket_guncelle "$kpkt"
+			paket_guncelle "$kpkt" $GS_CIKTI
+			#printf "."
 		else
-			ryaz 31 $kpkt "güncellemesi atlandı"
+			[ $GS_CIKTI = "E" ] && ryaz 31 $kpkt "güncellemesi atlandı"
+			printf "."
 		fi
 		
 	done
+	ryaz 32 "\nSistem Güncellemesi Tamamlandı."
 }
 
 surum_kontrol(){
+	GS_CIKTI="E"
+	if [ "$2" ]; then
+		GS_CIKTI="$2"
+	fi
 	local ksurum version pkt dusuk yuksek durum
 	durum="belirsiz"
 	satir=`sed -n '7p' <  /var/lib/pkg/DB/"$1"/META`
@@ -514,7 +564,8 @@ surum_kontrol(){
 	
 	if [ "$ksurum" = "$version" ];then
 		durum="guncel"
-		ryaz 33 "$1 sürümü güncel"
+		[ $GS_CIKTI = "E" ] && ryaz 33 "$1 sürümü güncel"
+		#printf "."
 	else
 		if [ "$ksurum" = "$dusuk" ];then
 			durum="yukselt"
@@ -554,6 +605,10 @@ surum_kontrol(){
 }
 
 devir_kontrol(){
+	GS_CIKTI="E"
+	if [ "$2" ]; then
+		GS_CIKTI="$2"
+	fi
 	local kdevir release pkt dusuk yuksek durum gun_onay
 	durum="belirsiz"
 	satir=`sed -n '8p' <  /var/lib/pkg/DB/"$1"/META`
@@ -564,7 +619,8 @@ devir_kontrol(){
 	
 	if [ "$kdevir" = "$release" ];then
 		durum="guncel"
-		ryaz 33 "$1 deviri güncel"
+		[ $GS_CIKTI = "E" ] && ryaz 33 "$1 deviri güncel"
+		#printf "."
 	else
 		if [ "$kdevir" = "$dusuk" ];then
 			durum="yukselt"
