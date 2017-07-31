@@ -1,0 +1,18 @@
+# Description:  Beep ses çalmak için konsol uygulaması
+# URL:  http://www.johnath.com/beep/
+# Packager: milisarge
+# Depends on:   
+
+name=beep
+version=1.3
+release=1
+source=(http://www.johnath.com/beep/$name-$version.tar.gz)
+
+build() {
+    cd "$name-$version"
+    make
+    mkdir -p $PKG/usr/bin
+    mkdir -p $PKG/usr/share/man
+    make INSTALL_DIR=$PKG/usr/bin MAN_DIR=$PKG/usr/share/man install
+    chmod 4755 $PKG/usr/bin/beep
+}
