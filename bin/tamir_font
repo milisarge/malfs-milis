@@ -1,0 +1,2 @@
+#!/bin/bash
+cp -rf /sources/milis.git/ayarlar/98-tamir.conf /etc/fonts/conf.d/
