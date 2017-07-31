@@ -501,16 +501,16 @@ sistem_guncelle(){
 	esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
 	local kpkt
 	local pk_guncelle
-	total=`mps -kl | wc -l`
+	total=`ls $VT | wc -l`
 	pstr="[=======================================================================]"
-	mps -GG 
-	mps -G
+	#mps -GG 
+	#mps -G
 	GS_CIKTI="H"
 	while [ $count -lt $total ]; do
 		count=$(( $count + 1 ))
 		pd=$(( $count * 73 / $total ))
 		printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
-		kpkt=$(ls $VT | tr " " "\n" | sed -n ${count}'p')
+		kpkt=$(ls -rct $VT | tr " " "\n" | sed -n ${count}'p')
 		pk_guncelle="e"
 		case "${esgec[@]}" in  *"$kpkt"*) pk_guncelle="h" ;; esac
 		if [ "$pk_guncelle" = "e" ];then
