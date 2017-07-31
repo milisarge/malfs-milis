@@ -166,12 +166,13 @@ paket_sil(){
 paket_ara(){
 	paket="$1"
 	for pkt in `cat /depo/paketler/paket.vt  | grep $paket |  awk '{print $1}'`; do
-		pakdesc=$(find /root/talimatname -name "$pkt" | xargs -I %  sed -n '1{p;q}' %/talimat | sed s'/# Description: //g');
+		pakdesc=$(find $talimatname_dizin -name "$pkt" | xargs -I %  sed -n '1{p;q}' %/talimat | sed s'/# Description: //g');
 		ryaz 34 "$pkt - $pakdesc";
 	done
 }
 kelime_bul(){
-	grep --color -H -ri "$1" /root/talimatname/
+	grep --color -H -ri "$1" $talimatname_dizin
+	grep --color -H -ri "$1" $ektalimatname
 }
 paket_bilgi2(){
 	local paket kkont
@@ -661,19 +662,20 @@ paket_derle(){
 		konum="$1"
 		derpaket=`basename $1`
 	else
-		konum="`find "$talimatname_dizin" -name $1`"
-		#anakonum="`find "$ana_talimatname_dizin" -name $1`"
+		sonuc="`find "$talimatname_dizin" -name $1`"
+		eksonuc="`find "$ektalimatname" -name $1`"
+		if [ -f  "$sonuc/talimat" ];then
+			konum=$sonuc
+		elif [ -f  "$eksonuc/talimat" ];then
+			konum=$eksonuc
+		fi
 		derpaket="$1"
 	fi
 	if [ -d "$konum" ];then
 		mkdir -p tmp."$derpaket" 
 		cp -a $konum/* tmp."$derpaket"/
 		cd tmp."$derpaket"
-		# önce talimat-anatalimat karşılaştırması yapılır.
-		#if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "degil" ];then
-		#	zorla_derle="var"
-		#fi
-		# kurulu ve değişiklik yoksa derlenmez.
+		
 		if [ "`kurulu_kontrol "$derpaket"`" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
 			derleme_onay="h"
 		else
