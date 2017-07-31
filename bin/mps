@@ -503,8 +503,8 @@ sistem_guncelle(){
 	local pk_guncelle
 	total=`ls $VT | wc -l`
 	pstr="[=======================================================================]"
-	#mps -GG 
-	#mps -G
+	mps -GG 
+	mps -G
 	GS_CIKTI="H"
 	while [ $count -lt $total ]; do
 		count=$(( $count + 1 ))
