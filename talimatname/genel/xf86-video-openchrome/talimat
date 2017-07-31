@@ -4,7 +4,7 @@
 # Depends on: xorg xorg-libdrm xorg-libxvmc
 
 name=xf86-video-openchrome
-version=0.5.0
+version=0.6.0
 release=1
 
 source=(http://xorg.freedesktop.org/archive/individual/driver/${name}-${version}.tar.bz2)
