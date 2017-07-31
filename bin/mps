@@ -575,6 +575,7 @@ surum_kontrol(){
 		gun_onay="h"
 		if [ "$durum" <> "guncel" ];then
 			while true; do
+				printf "\n"
 				ryaz 34 "$1 sürüm $durum""me işlemi uygulanacak. $ksurum <> $version ";read -p "e veya h-> " eh
 				case $eh in
 					[Ee]* ) gun_onay="e"; break;;
@@ -630,6 +631,7 @@ devir_kontrol(){
 		gun_onay="h"
 		if [ "$durum" <> "guncel" ];then
 			while true; do
+				printf "\n"
 				ryaz 34 "$1 devir $durum""me işlemi uygulanacak. $kdevir <> $release ";read -p "e veya h-> " eh
 				case $eh in
 					[Ee]* ) gun_onay="e"; break;;
