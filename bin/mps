@@ -440,7 +440,7 @@ paket_inkur_oto(){
 			ryaz 31 "$kpkt talimatı bulunamadı!"
 		fi
 	done
-	ryaz 32 "\n$1 kurulum işlemi tamamlandı."
+	ryaz 32 "\n$1 $(kurulu_kontrol $1) "
 	rm -rf *.liste *.eski
 }
 
