@@ -1,0 +1,19 @@
+# Description: hardisk silinmiş jpeg-mov kurtarıcı
+# Url: https://github.com/samueltardieu/recoverjpeg
+# Packager: milisarge
+# Depends on: python 
+
+name=recoverjpeg
+version=2.6.1
+release=1
+source=(http://www.rfc1149.net/download/${name}/${name}-${version}.tar.gz)
+
+build () {
+	cd $name-$version
+	sed -i '1s,.*,#! /usr/bin/python2,' scripts/remove-duplicates
+	./configure --prefix=/usr
+	make
+	make DESTDIR="${PKG}/" install
+	install -D -m 644 COPYING ${PKG}/usr/share/licenses/$name/COPYING
+}
+
