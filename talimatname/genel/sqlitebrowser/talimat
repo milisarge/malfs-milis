@@ -1,0 +1,24 @@
+# Description: SQL veritabanı Qt5 tabanlı yönetim arayüzü
+# URL: http://www.sqlite.org/
+# Packager: milisarge
+# Depends on: sqlite cmake libxkbcommon qt5 
+
+name=sqlitebrowser
+version=3.9.1
+release=1
+
+source=(https://github.com/sqlitebrowser/sqlitebrowser/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build () {
+	cd "$SRC"/$name-$version
+	sed -i 's|Icon=.*|Icon=sqlitebrowser|' distri/sqlitebrowser.desktop
+	sed -i \
+	-e 's|DB Browser for SQLite|sqlitebrowser|g' \
+	CMakeLists.txt
+	cmake -DUSE_QT5=TRUE -DCMAKE_INSTALL_PREFIX=/usr .
+	make
+	make install DESTDIR="$PKG"
+	install -Dm0644 distri/sqlitebrowser.desktop "$PKG"/usr/share/applications/sqlitebrowser.desktop
+	install -dm0755 "$PKG"/usr/share/icons/
+	install -m0644 images/sqlitebrowser.svg "$PKG"/usr/share/icons/
+}
