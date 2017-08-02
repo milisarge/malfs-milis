@@ -6,13 +6,16 @@
 name=milis-yukleyici
 version=1.0
 release=1
-source=(https://github.com/sonakinci41/Milis-Yukleyici/archive/master.tar.gz::$name-$version.tar.gz)
+source=(https://github.com/sonakinci41/Milis-Yukleyici/archive/master.tar.gz::$name-$version.tar.gz
+		yukleyici.desktop)
 
 build() {
 
 	install -d  $PKG/usr/share/milis-yukleyici
+	install -d  $PKG/usr/share/applications
 	install -d  $PKG/usr/bin
 	cp -r $SRC/Milis-Yukleyici-master/* $PKG/usr/share/milis-yukleyici
+	cp $SRC/yukleyici.desktop $PKG/usr/share/applications/yukleyici.desktop
 	chmod 755 $PKG/usr/share/milis-yukleyici/milis-kur
 	cat > "$PKG/usr/bin/milis-kurulum" << EOF
 #!/bin/sh

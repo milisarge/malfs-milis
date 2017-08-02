@@ -1,0 +1,10 @@
+[Desktop Entry]
+Path=/usr/share/milis-yukleyici
+Name=Milis Linux Yükleyicisi
+Comment=Milis Linux Yükleyicisi
+Exec=milis-kurulum
+Terminal=false
+Type=Application
+Icon=/sources/milis.git/ayarlar/milislogo.png
+Categories=System;
+StartupNotify=false
