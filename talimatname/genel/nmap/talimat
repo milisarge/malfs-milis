@@ -1,16 +1,17 @@
 # Description: Ağ tarama ve güvenlik denetimi programı
 # URL: http://insecure.org/nmap/
 # Packager: milisarge@gmail.com
-# Depends on: pcre libpcap lua liblinear 
+# Depends on: pcre libpcap lua liblinear python
 
 name=nmap
-version=7.01
+version=7.60
 release=1
 
 source=(http://nmap.org/dist/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
+export PYTHON=python2
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --localedir=/usr/share/locale \
@@ -19,5 +20,8 @@ cd $name-$version
 --infodir=/usr/share/info
 make || make -j1
 make DESTDIR=$PKG install
+#zenmap için
+python2 -m compileall "${PKG}"/usr/lib/python2.7/site-packages/zenmapCore
+rm "${PKG}"/usr/bin/uninstall_*
 rm -rf $PKG/usr/share/info/dir
 }
