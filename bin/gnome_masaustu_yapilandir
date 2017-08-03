@@ -84,6 +84,7 @@
 /usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-border-width "1"
 /usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/intellihide true
 /usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height true
+/usr/bin/dconf write /org/gnome/shell/extensions/dash-to-dock/show-apps-at-top true
 
 # Mouse seçenekleri
 /usr/bin/dconf write /org/gnome/settings-daemon/peripherals/mouse/locate-pointer false
