@@ -1,7 +1,7 @@
 # Description: En yaygın komut satırı ağ araçlarının bazıları için GUI arayüzü
 # URL: http://www.gnome.org/"
 # Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 itstool libgtop vala bind nmap traceroute net-tools whois
+# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 itstool libgtop vala nmap traceroute net-tools whois
 
 name=gnome-nettool
 version=3.8.1
