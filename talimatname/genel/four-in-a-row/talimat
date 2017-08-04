@@ -4,10 +4,10 @@
 # Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache hicolor-icon-theme gtk3 libcanberra librsvg tdb
 
 name=four-in-a-row
-version=3.24.1
+version=3.22.1
 release=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+source=(http://ftp.acc.umu.se/pub/gnome/sources/four-in-a-row/3.22/four-in-a-row-$version.tar.xz)
 
 build() {
 cd $name-$version
