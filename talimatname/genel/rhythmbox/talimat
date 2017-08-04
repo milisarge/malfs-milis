@@ -10,7 +10,7 @@ release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:3}/$name-$version.tar.xz)
 
 build() {
-tamir_masaustu
+
 	cd $name-$version
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
