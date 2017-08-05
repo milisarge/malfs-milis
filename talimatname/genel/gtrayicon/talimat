@@ -1,0 +1,25 @@
+# Description: Hızlı ve menulü , sistem çekmecesi için simge oluştuma uygulaması
+# URL: http://gtrayicon.sourceforge.net/
+# Packager: milisarge
+# Depends on: gtk2 libglade
+
+name=gtrayicon
+version=1.1
+release=1
+source=(http://kaynaklar.milislinux.org/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make
+	install -d $PKG/usr/share/$name
+	install -d $PKG/usr/bin
+	install -m 644 $name.glade $PKG/usr/share/$name/
+	install -m 644 activate.svg $PKG/usr/share/$name/
+	install -m 644 deactivate.svg $PKG/usr/share/$name/
+	install -m 755 $name $PKG/usr/bin/
+	install -m 644 README $PKG/usr/share/$name/
+	install -m 644 ChangeLog $PKG/usr/share/$name/
+	install -m 644 LICENSE $PKG/usr/share/$name/
+	install -m 644 sample.menu $PKG/usr/share/$name/
+}
+
