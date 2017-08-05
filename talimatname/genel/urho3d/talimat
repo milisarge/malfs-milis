@@ -1,0 +1,23 @@
+# Description: c++ kullanan hafif 2D ve 3D oyun makinesi 
+# URL: http://www.rhythmbox.org
+# Packager: yasarciv67@gmail.com
+# Depends on: cmake xorg-libx11 xorg-glu xorg-libxrandr
+
+name=urho3d
+version=1.6
+release=1
+
+source=(https://github.com/urho3d/Urho3D/archive/1.6.tar.gz::Urho3D-1.6.tar.gz)
+
+build() {
+	cd Urho3D-1.6
+	mkdir -p "$SRC/Urho3D-$version/build"
+    cd "$SRC/Urho3D-$version/build"
+    cmake "$SRC/Urho3D-$version/" -DCMAKE_INSTALL_PREFIX="/usr" -DURHO3D_USE_LIB_DEB=1 -DURHO3D_SAMPLES=1
+    make
+    cd "$SRC/Urho3D-$version/build"
+    make DESTDIR="$PKG/" install
+    cd "$PKG/usr/bin"
+    mv "./Editor.sh" "./urho3d-editor.sh"
+    rm lua luac
+}
