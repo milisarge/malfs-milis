@@ -1,0 +1,18 @@
+# Description: Hızlı ve menulü , sistem çekmecesi için simge oluştuma uygulaması
+# URL: http://gtrayicon.sourceforge.net/
+# Packager: milisarge
+# Depends on: xorg-libxinerama xorg-libxscrnsaver pango libnotify gtk2 libxdg-basedir
+
+name=dunst
+version=1.2.0
+release=1
+source=(https://github.com/dunst-project/dunst/archive/v1.2.0.tar.gz::$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+	make DESTDIR="${PKG}" PREFIX=/usr install
+	install -Dm644 "${SRC}/$name-$version/LICENSE" "${PKG}/usr/share/licenses/${name}/LICENSE"
+	rm -rf ${PKG}/usr/lib/
+}
+
