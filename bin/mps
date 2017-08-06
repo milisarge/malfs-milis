@@ -1252,7 +1252,7 @@ servisler_kontrol(){
 
 paketvt_guncelle(){
 	temel_tarihce_kontrol
-	wget -q --spider "$sunucu""paket.vt"
+	wget --no-check-certificate -q --spider "$sunucu""paket.vt"
 	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
 	if [ $? -eq 0 ]; then	
 		ryaz 32 $sunucu
@@ -1260,7 +1260,7 @@ paketvt_guncelle(){
 		if [ -f "$paketdepo""paket.vt" ];then
 			mv "$paketdepo""paket.vt" "$paketdepo""paket.vt.eski"
 		fi
-		wget -q --show-progress -P "$paketdepo" "$sunucu""paket.vt"
+		wget --no-check-certificate -q --show-progress -P "$paketdepo" "$sunucu""paket.vt"
 		#rm /tmp/paket.vt*
 		mps -kudo
 		exit 1
