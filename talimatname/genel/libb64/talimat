@@ -1,0 +1,30 @@
+# Description: Base64 Encoding/Decoding Routines
+# URL: http://libb64.sourceforge.net
+# Packager: milisarge
+# Depends on: 
+
+name=libb64
+version=1.2.1
+release=1
+source=(https://downloads.sourceforge.net/${name}/${name}-${version}.zip
+        https://sources.debian.net/data/main/libb/libb64/1.2-3/debian/patches/bufsiz-as-buffer-size.diff)
+
+build() {
+	cd $name-$version
+	patch -p1 -i "$SRC"/bufsiz-as-buffer-size.diff
+
+	cd src
+	export CFLAGS="${CFLAGS} -fPIC"
+	make
+
+	export CFLAGS="${CFLAGS} -shared -Wl,-soname,${name}.so.0"
+	gcc ${LDFLAGS} ${CFLAGS} *.o -o ${name}.so.0
+
+	install -d "${PKG}/usr/lib"
+	install libb64.so.0 "${PKG}/usr/lib"
+	ln -sf /usr/lib/libb64.so.0 "${PKG}/usr/lib/libb64.so"
+	cd ..
+	cp -r include "${PKG}/usr"
+
+	install -Dm644 LICENSE "${PKG}"/usr/share/licenses/${name}/LICENSE
+}

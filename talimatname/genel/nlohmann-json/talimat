@@ -1,0 +1,25 @@
+# Description: JSON for Modern C++
+# URL: https://nlohmann.github.io/json/
+# Packager: milisarge
+# Depends on: cmake
+
+name=nlohmann-json
+version=2.1.1
+release=1
+source=(https://github.com/nlohmann/json/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+	cd "json-$version"
+	mkdir -p build
+
+	cd build
+	cmake ../ \
+	-DBuildTests=OFF \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr
+	make
+	make DESTDIR=${PKG} install
+	install -d ${PKG}/usr/lib/
+	mv ${PKG}/usr/cmake ${PKG}/usr/lib/
+ 	install -Dm644 ../LICENSE.MIT ${PKG}/usr/share/licenses/nlohmann_json-git/LICENSE
+}

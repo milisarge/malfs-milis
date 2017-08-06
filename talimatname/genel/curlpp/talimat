@@ -1,0 +1,18 @@
+# Description: cURLpp is a C++ wrapper for libcURL.
+# URL: http://curlpp.org
+# Packager: milisarge
+# Depends on: cmake
+
+name=curlpp
+version=0.8.1
+release=1
+source=(https://github.com/jpbarrette/curlpp/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+	cd "curlpp-$version"
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib' ..
+	make
+	make DESTDIR="$PKG/" install
+}
