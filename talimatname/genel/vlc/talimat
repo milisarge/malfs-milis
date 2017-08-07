@@ -1,30 +1,48 @@
 # Description: VLC, özgür ve açık kaynak kodlu, platformlar arası, bir ortam oynatıcı ve çatıdır.
 # URL: http://www.videolan.org/vlc/
-# Packager: milisarge@gmail.com
-# Depends on: libvlc qt5 x264 flac libmad glib dbus libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+# Packager: milisarge
+# Depends on: libssh2 qt5 x264 flac libmad glib dbus libupnp libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg28 faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=vlc
-version=3.0.0
-release=20160606
+version=2.2.6
+release=1
 
-source=( http://anduin.linuxfromscratch.org/BLFS/$name/$name-$version-$release.tar.xz)
+source=(https://download.videolan.org/${name}/${version}/${name}-${version}.tar.xz
+		lua53_compat.patch)
 	
 build() {
 
-cd $name-$version-$release
+	cd $name-$version
+	sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
+	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+	patch -p1 < "${SRC}/lua53_compat.patch"
 
-sed -i '/seems to be moved/s/^/#/' autotools/ltmain.sh
+	sed -i '/seems to be moved/s/^/#/' autotools/ltmain.sh
+    export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
+	export CXXFLAGS+=" -std=c++11"
+	export LUAC=/usr/bin/luac
+	export LUA_LIBS="`pkg-config --libs lua`"
+	export RCC=/usr/bin/rcc-qt5
 
-BUILDCC=gcc \
-./configure --prefix=/usr \
-            --disable-swscale \
-            --disable-lua \
-            --disable-a52 \
-            --disable-avcodec \
-            RCC=/usr/bin/rcc-qt5
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--disable-rpath \
+		--enable-faad \
+		--enable-nls \
+		--enable-lirc \
+		--enable-ncurses \
+		--enable-realrtsp \
+		--enable-aa \
+		--enable-vcdx \
+		--enable-upnp \
+		--enable-opus \
+		--enable-sftp
 
-
-make
-make DESTDIR=$PKG docdir=/usr/share/doc/$name-$version-release install
+	make
+	make DESTDIR=$PKG install
+	for res in 16 32 48 128; do
+    install -Dm 644 "${SRC}/vlc-${version}/share/icons/${res}x${res}/vlc.png" \
+       "${PKG}/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
+	done
 
 }
