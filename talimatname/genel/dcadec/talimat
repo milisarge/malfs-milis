@@ -1,0 +1,19 @@
+# Description: DTS Coherent Acoustics decoder with support for HD extensions
+# URL:  https://github.com/foo86/dcadec.git
+# Packager: milisarge
+# Depends on: 
+
+name=dcadec
+version=0.2.0
+release=1
+source=(https://github.com/foo86/dcadec/archive/v${version}.tar.gz::${name}-${version}.tar.gz)
+
+build() {
+	cd dcadec-${version}
+	export CONFIG_SHARED='TRUE'
+	make
+	export CONFIG_SHARED='TRUE'
+	export PREFIX='/usr'
+	make DESTDIR="${PKG}" install
+	mv "${PKG}"/usr/bin/dcadec{,-hd}
+}
