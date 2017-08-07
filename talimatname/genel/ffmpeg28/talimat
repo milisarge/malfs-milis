@@ -1,7 +1,7 @@
 # Description: Ses ve videoyu kaydetmek, dönüştürmek ve akışlamak için eksiksiz, çapraz platformlu bir çözüm.
 # URL: http://ffmpeg.org/
 # Packager: milisarge
-# Depends on: yasm opus dcadec gsm libmodplug vid-stab soxr libssh v4l-utils opencore-amr fdk-aac x264 x265 ladspa liba52 libass libva libwebp libvdpau freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
+# Depends on: yasm opus dcadec gsm libmodplug gnutls vid-stab soxr libssh v4l-utils opencore-amr fdk-aac x264 x265 ladspa liba52 libass libva libwebp libvdpau freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
 
 name=ffmpeg28
 version=2.8.12
