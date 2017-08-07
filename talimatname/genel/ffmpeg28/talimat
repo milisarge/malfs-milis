@@ -1,0 +1,64 @@
+# Description: Ses ve videoyu kaydetmek, dönüştürmek ve akışlamak için eksiksiz, çapraz platformlu bir çözüm.
+# URL: http://ffmpeg.org/
+# Packager: milisarge
+# Depends on: yasm opus dcadec gsm libmodplug vid-stab soxr libssh v4l-utils opencore-amr fdk-aac x264 x265 ladspa liba52 libass libva libwebp libvdpau freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
+
+name=ffmpeg28
+version=2.8.12
+release=1
+source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.xz)
+
+build() {
+cd ffmpeg-${version}
+
+	#--enable-libschroedinger \
+
+  ./configure \
+    --prefix='/usr' \
+    --incdir='/usr/include/ffmpeg2.8' \
+    --libdir='/usr/lib/ffmpeg2.8' \
+    --shlibdir='/usr/lib/ffmpeg2.8' \
+    --disable-debug \
+    --disable-static \
+    --disable-stripping \
+    --enable-avisynth \
+    --enable-avresample \
+    --enable-fontconfig \
+    --enable-gnutls \
+    --enable-gpl \
+    --enable-ladspa \
+    --enable-libass \
+    --enable-libbluray \
+    --enable-libdcadec \
+    --enable-libfreetype \
+    --enable-libfribidi \
+    --enable-libgsm \
+    --enable-libmodplug \
+    --enable-libmp3lame \
+    --enable-libopencore_amrnb \
+    --enable-libopencore_amrwb \
+    --enable-libopenjpeg \
+    --enable-libopus \
+    --enable-libpulse \
+    --enable-libsoxr \
+    --enable-libspeex \
+    --enable-libssh \
+    --enable-libtheora \
+    --enable-libv4l2 \
+    --enable-libvidstab \
+    --enable-libvorbis \
+    --enable-libvpx \
+    --enable-libwebp \
+    --enable-libx264 \
+    --enable-libx265 \
+    --enable-libxvid \
+    --enable-shared \
+    --enable-version3 \
+    --enable-x11grab
+  make
+  make DESTDIR="${PKG}" install
+  rm -rf "${PKG}"/usr/share
+  find "${PKG}"/usr/bin -type f -exec mv {} {}2.8 \;
+  install -dm 755 "${PKG}"/etc/ld.so.conf.d
+  echo -e '/usr/lib/\n/usr/lib/ffmpeg2.8/' > "${PKG}"/etc/ld.so.conf.d/ffmpeg2.8.conf
+}
