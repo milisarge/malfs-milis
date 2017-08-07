@@ -1,0 +1,122 @@
+# Description: mplayer ve mplayer2 tabanlı çoklu kütüphane destekli medya uygulaması
+# URL: http://mpv.io/
+# Packager: milisarge
+# Depends on: sdl2 sndio rsound openal uchardet v4l-utils libcdio-paranoia ffmpeg lcms2 samba ladspa xorg-libxscrnsaver libbluray libvdpau libquvi xorg-libxinerama xorg-libxv libxkbcommon desktop-file-utils hicolor-icon-theme xdg-utils lua lua52 libdvdnav xorg-libxrandr jack 
+
+name=mpv
+version=0.26.0
+release=1
+source=(https://github.com/$name-player/$name/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	
+	./bootstrap.py
+	
+./waf configure \
+        --color=yes \
+        --prefix=/usr \
+        --confdir=/etc/mpv \
+        --progress \
+        \
+        --enable-libmpv-shared \
+        --disable-libmpv-static \
+        --disable-static-build \
+        --disable-debug-build \
+        \
+        --disable-manpage-build \
+        --disable-html-build \
+        --disable-pdf-build \
+        \
+        --enable-cplugins \
+        --enable-zsh-comp \
+        --disable-test \
+        --disable-clang-database \
+        \
+        --disable-win32-internal-pthreads \
+        --enable-iconv \
+        --enable-termios \
+        --enable-shm \
+        --enable-libsmbclient \
+        --enable-libass \
+        --enable-libass-osd \
+        --enable-encoding \
+        --enable-libbluray \
+        --enable-dvdread \
+        --enable-dvdnav \
+        --enable-cdda \
+        --enable-uchardet \
+        --disable-rubberband \
+        --enable-lcms2 \
+        --disable-vapoursynth \
+        --disable-vapoursynth-lazy \
+        --enable-libarchive \
+        --enable-libavdevice \
+        \
+        --enable-sdl2 \
+        --disable-sdl1 \
+        --enable-oss-audio \
+        --enable-rsound \
+        --enable-sndio \
+        --enable-pulse \
+        --enable-jack \
+        --enable-openal \
+        --disable-opensles \
+        --enable-alsa \
+        --disable-coreaudio \
+        --disable-audiounit \
+        --disable-wasapi \
+        \
+        --disable-cocoa \
+        --enable-drm \
+        --enable-gbm \
+        --enable-wayland \
+        --enable-x11 \
+        --enable-xv \
+        --disable-gl-cocoa \
+        --enable-gl-x11 \
+        --enable-egl-x11 \
+        --enable-egl-drm \
+        --enable-gl-wayland \
+        --disable-gl-win32 \
+        --disable-gl-dxinterop \
+        --disable-egl-angle \
+        --disable-egl-angle-lib \
+        --enable-vdpau \
+        --enable-vdpau-gl-x11 \
+        --enable-vaapi \
+        --enable-vaapi-x11 \
+        --disable-vaapi-wayland \
+        --disable-vaapi-drm \
+        --disable-vaapi-glx \
+        --disable-vaapi-x-egl \
+        --disable-caca \
+        --enable-jpeg \
+        --disable-direct3d \
+        --disable-android \
+        --disable-rpi \
+        --disable-ios-gl \
+        --enable-plain-gl \
+        --disable-mali-fbdev \
+        --enable-gl \
+        \
+        --enable-vaapi-hwaccel \
+        --disable-videotoolbox-hwaccel-new \
+        --disable-videotoolbox-hwaccel-old \
+        --disable-videotoolbox-gl \
+        --enable-vdpau-hwaccel \
+        --disable-d3d-hwaccel \
+        --disable-d3d-hwaccel-new \
+        --enable-cuda-hwaccel \
+        \
+        --enable-tv \
+        --enable-tv-v4l2 \
+        --enable-libv4l2 \
+        --enable-audio-input \
+        --enable-dvbin \
+        \
+        --disable-apple-remote \
+        --disable-macos-touchbar
+	./waf build
+	./waf install --destdir="$PKG"
+}
