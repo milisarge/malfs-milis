@@ -1,0 +1,16 @@
+# Description: Simple solution for streaming PCM data from client to server in real time.
+# URL: http://github.com/Themaister/RSound
+# Packager: milisarge
+# Depends on: 
+
+name=rsound
+version=1.1
+release=1
+source=(http://cloud.github.com/downloads/Themaister/RSound/$name-$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+  cd "${name}-${version}"
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+}
