@@ -1,0 +1,18 @@
+# Description: ssh2 kütüphanesi
+# URL: http://www.libssh2.org/
+# Packager: yakar (aydin@komutan.org)
+# Depends on: doxygen cmake
+
+name=libssh2
+version=1.8.0
+release=1
+
+source=(https://www.libssh2.org/download/$name-$version.tar.gz)
+	
+build() {
+	cd "$name-$version"
+	./configure --prefix=/usr
+	make
+	make DESTDIR="$PKG" install
+	install -Dm644 COPYING "$PKG/usr/share/licenses/$name/LICENSE"
+}
