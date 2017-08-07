@@ -1,7 +1,7 @@
 # Description: VLC, özgür ve açık kaynak kodlu, platformlar arası, bir ortam oynatıcı ve çatıdır.
 # URL: http://www.videolan.org/vlc/
 # Packager: milisarge
-# Depends on: libssh2 qt5 x264 flac libmad glib dbus libupnp libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg28 faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+# Depends on: opus libssh2 qt5 x264 flac libmad glib dbus libupnp libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg28 faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=vlc
 version=2.2.6
@@ -35,6 +35,7 @@ build() {
 		--enable-aa \
 		--enable-vcdx \
 		--enable-upnp \
+		--enable-bluray \
 		--enable-opus \
 		--enable-sftp
 
