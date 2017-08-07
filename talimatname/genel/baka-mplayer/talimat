@@ -1,0 +1,21 @@
+# Description: Mpv tabanlı qt5 medya oynatıcısı
+# URL: http://bakamplayer.u8sand.net/
+# Packager: milisarge
+# Depends on: mpv qt5
+
+name=baka-mplayer
+version=2.0.4
+release=1
+
+source=(https://github.com/u8sand/Baka-MPlayer/archive/v${version}.tar.gz::$name-$version.tar.gz)
+	
+build() {
+	mkdir ${SRC}/build
+	cd ${SRC}/build
+	qmake-qt5 ../Baka-MPlayer-${version}/src \
+		CONFIG+=release \
+		CONFIG+=install_translations \
+		-spec linux-g++
+	make -j$(nproc)
+	make INSTALL_ROOT=${PKG} install
+}
