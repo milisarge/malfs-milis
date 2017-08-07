@@ -1,0 +1,25 @@
+# Description: Web tabanlı gerçek zamanlı sistem performans izleyici uygulaması
+# URL: https://github.com/firehol/netdata/wiki
+# Packager: milisarge
+# Depends on: libmnl libnetfilter_acct
+
+name=netdata
+version=1.7.0
+release=1
+
+source=(https://github.com/firehol/netdata/releases/download/v${version}/netdata-${version}.tar.xz)
+
+build(){
+	cd $name-$version
+	./configure \
+		--prefix="/usr" \
+		--sbindir="/usr/bin" \
+		--sysconfdir="/etc" \
+		--libexecdir="/usr/lib" \
+		--localstatedir="/var" \
+		--with-zlib --with-math --with-user=netdata
+	make
+    make DESTDIR=$PKG install    
+    touch "$PKG/etc/netdata/netdata.conf"
+	install -Dm0644 "system/netdata.logrotate" "$PKG/etc/logrotate.d/netdata"
+}

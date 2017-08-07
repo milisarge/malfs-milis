@@ -1,0 +1,16 @@
+# Description: Genişletilmiş hesap altyapısına bağlantı sağlayan kütüphane
+# URL: https://www.netfilter.org/projects/libnetfilter_acct/
+# Packager: milisarge
+# Depends on: libnfnetlink libmnl 
+
+name=libnetfilter_acct
+version=1.0.3
+release=1
+source=(http://www.netfilter.org/projects/libnetfilter_acct/files/$name-$version.tar.bz2)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+}
