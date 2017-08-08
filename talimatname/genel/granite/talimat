@@ -1,0 +1,27 @@
+# Description: Gtk+ genişletilmiş kütüphanesi
+# URL: https://github.com/elementary/granite
+# Packager: milisarge
+# Depends on: cmake gobject-introspection vala cairo gdk-pixbuf glib gtk3 libgee pango 
+
+name=granite
+version=0.4.1
+release=1
+source=(https://github.com/elementary/granite/archive/0.4.1.tar.gz::$name-$version.tar.gz)
+
+build() {
+  cd granite-${version}
+
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+
+  mkdir build
+  cd build
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
+
+  make
+  make DESTDIR="${PKG}" install
+}
