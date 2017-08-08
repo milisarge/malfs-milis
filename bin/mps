@@ -43,6 +43,8 @@ fi
 
 if [ -z ${sunucular+:} ]; then
 	declare -a sunucular=("paketler.milislinux.org")
+	awk ' {print;} NR == 1 { print "sunucular=(paketler.milislinux.org/)"; }' /etc/mps.conf > /etc/mps2.conf
+	mv /etc/mps2.conf /etc/mps.conf
 fi
 
 icerik_ekle(){
