@@ -41,71 +41,63 @@ if [ -z ${ektalimatname+:} ]; then
 	[ ! -d /root/talimatlar ] && mkdir -p /root/talimatlar
 fi
 
-if [ -z ${sunucular+:} ]; then
-	declare -a sunucular=("paketler.milislinux.org")
-fi
 
 icerik_ekle(){
-	if [ -f "$1" ];then
-		paketad=`echo "$1" | cut -d'#' -f1`	
-		paketad=`basename $paketad`
-		ryaz 34 $paketad" paketi kuruluyor-> $kokdizin" 
-		if [ -f /usr/bin/bsdtar ];then
-			bsdtar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
-		else
-			tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
-		fi
-		#kos-kur kontrolu
-		if [ -f /tmp/.PRE ];then
-			if [ "$kokdizin" == "/" ];then
-				bash  /tmp/.PRE
-			else
-				cp /tmp/.PRE $kokdizin/tmp/$paketad.PRE
-			fi
-			rm  /tmp/.PRE
-		fi
-		mkdir -p kur.$paketad &&
-		if [ -f /usr/bin/bsdtar ];then
-			bsdtar xf $1 -C kur.$paketad
-		else
-			tar xf $1 -C kur.$paketad
-		fi
-		#istenmeyen yerellerin silinmesi
-		if [ -d kur.$paketad/usr/share/locale ] && [ "$yerelsil" == "evet" ];then
-			for lkl in `ls kur.$paketad/usr/share/locale/`;do
-				if [ "$lkl" != "$lokal" ];then rm -r kur.$paketad/usr/share/locale/$lkl; fi
-			done
-		fi
-		#doc dizini silinmesi
-		if [ -d kur.$paketad/usr/share/doc ] && [ "$docsil" == "evet" ];then
-			rm -r kur.$paketad/usr/share/doc
-		fi
-		mkdir -p $kokdizin/var/lib/pkg/DB/"$paketad" && 
-		cp -v -afr kur.$paketad/* $kokdizin > kur.$paketad/kurulan 
-		cp kur.$paketad/kurulan /tmp/ &&cat kur.$paketad/kurulan | cut -d '>' -f2 > $kokdizin/var/lib/pkg/DB/"$paketad"/kurulan &&
-		#mv  kur.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
-		mv  kur.$paketad/.META $kokdizin/var/lib/pkg/DB/"$paketad"/META &&
-		
-		#kur-kos calistirilmasi
-		if [ -f kur.$paketad/.POST ];then
-			if [ "$kokdizin" == "/" ];then
-				bash  kur.$paketad/.POST
-			else
-				cp kur.$paketad/.POST $kokdizin/tmp/$paketad.POST
-			fi
-			rm  kur.$paketad/.POST
-		fi
-		
-		rm -r kur.$paketad
-		if [ -f $kokdizin/etc/ld.so.conf ];then
-			ldconfig -r $kokdizin
-		fi
-		ryaz 34 $paketad" paketi kuruldu."
-		loglama "$paketad paketi kuruldu."
+	paketad=`echo "$1" | cut -d'#' -f1`	
+	paketad=`basename $paketad`
+	ryaz 34 $paketad" paketi kuruluyor-> $kokdizin" 
+	if [ -f /usr/bin/bsdtar ];then
+		bsdtar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 	else
-		ryaz 31 "icerik_ekle:paket konum parametresi boş!!!"
-		exit 1
+		tar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 	fi
+	#kos-kur kontrolu
+	if [ -f /tmp/.PRE ];then
+		if [ "$kokdizin" == "/" ];then
+			bash  /tmp/.PRE
+		else
+			cp /tmp/.PRE $kokdizin/tmp/$paketad.PRE
+		fi
+		rm  /tmp/.PRE
+	fi
+	mkdir -p kur.$paketad &&
+	if [ -f /usr/bin/bsdtar ];then
+		bsdtar xf $1 -C kur.$paketad
+	else
+		tar xf $1 -C kur.$paketad
+	fi
+	#istenmeyen yerellerin silinmesi
+	if [ -d kur.$paketad/usr/share/locale ] && [ "$yerelsil" == "evet" ];then
+		for lkl in `ls kur.$paketad/usr/share/locale/`;do
+			if [ "$lkl" != "$lokal" ];then rm -r kur.$paketad/usr/share/locale/$lkl; fi
+		done
+	fi
+	#doc dizini silinmesi
+	if [ -d kur.$paketad/usr/share/doc ] && [ "$docsil" == "evet" ];then
+		rm -r kur.$paketad/usr/share/doc
+	fi
+	mkdir -p $kokdizin/var/lib/pkg/DB/"$paketad" && 
+	cp -v -afr kur.$paketad/* $kokdizin > kur.$paketad/kurulan 
+	cp kur.$paketad/kurulan /tmp/ &&cat kur.$paketad/kurulan | cut -d '>' -f2 > $kokdizin/var/lib/pkg/DB/"$paketad"/kurulan &&
+	#mv  kur.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
+	mv  kur.$paketad/.META $kokdizin/var/lib/pkg/DB/"$paketad"/META &&
+	
+	#kur-kos calistirilmasi
+	if [ -f kur.$paketad/.POST ];then
+		if [ "$kokdizin" == "/" ];then
+			bash  kur.$paketad/.POST
+		else
+			cp kur.$paketad/.POST $kokdizin/tmp/$paketad.POST
+		fi
+		rm  kur.$paketad/.POST
+	fi
+	
+	rm -r kur.$paketad
+	if [ -f $kokdizin/etc/ld.so.conf ];then
+		ldconfig -r $kokdizin
+	fi
+	ryaz 34 $paketad" paketi kuruldu."
+	loglama "$paketad paketi kuruldu."
 	
 }
 
@@ -171,20 +163,17 @@ paket_sil(){
 	fi
 
 }
-
 paket_ara(){
 	paket="$1"
-	for pkt in `cat /depo/paketler/paket*.vt  | grep $paket |  awk '{print $1}'`; do
+	for pkt in `cat /depo/paketler/paket.vt  | grep $paket |  awk '{print $1}'`; do
 		pakdesc=$(find $talimatname_dizin -name "$pkt" | xargs -I %  sed -n '1{p;q}' %/talimat | sed s'/# Description: //g');
 		ryaz 34 "$pkt - $pakdesc";
 	done
 }
-
 kelime_bul(){
 	grep --color -H -ri "$1" $talimatname_dizin
 	grep --color -H -ri "$1" $ektalimatname
 }
-
 paket_bilgi2(){
 	local paket kkont
 	kkont=`kurulu_kontrol "$1"`
@@ -473,18 +462,10 @@ paket_sil_oto_onayli(){
 }
 
 paketsiz_talimatlar(){
-	for talimatyol in `( ls -d $talimatname_dizin/genel/*  & ls -d $ektalimatname/*/*  ) | cat`;do
-		#echo $talimat
-		if [ -d $talimatyol ];then
-			talimat=$(basename $talimatyol)
-			if [[ ! $(cat $paketdepo/paket*.vt | grep  $talimat#) ]] ;then 
-				if [ -d $talimatname_dizin/*/$talimat ];then
-					ack=`grep -e '# Description:' $talimatname_dizin/genel/$talimat/talimat | cut -d':' -f2`
-				elif [ -d $ektalimatname/*/$talimat ];then
-					ack=`grep -e '# Description:' $ektalimatname/*/$talimat/talimat | cut -d':' -f2`
-				fi
-				printf '%s = %s \n' "$talimat" "$ack"
-			fi
+	for talimat in `ls $talimatname_dizin/genel`;do
+		if [[ ! $(cat $paketdepo/paket.vt | grep  $talimat#) ]] ;then 
+			ack=`grep -e '# Description:' $talimatname_dizin/genel/$talimat/talimat | cut -d':' -f2`
+			printf '%s = %s \n' "$talimat" "$ack"
 		fi
 	done
 }
@@ -577,16 +558,7 @@ surum_kontrol(){
 	durum="belirsiz"
 	satir=`sed -n '7p' <  /var/lib/pkg/DB/"$1"/META`
 	ksurum=${satir:1:${#satir}-1} 
-	
-	if [ -d $(find $talimatname_dizin -name $1) ];then
-		pkt="`find $talimatname_dizin -name $1`"
-	elif [ -d $(find $ektalimatname -name $1) ];then
-		pkt="`find $ektalimatname -name $1`"
-	else
-		ryaz 31 "$1 talimatnamelerde olmayan bir paket sürüm kontrolü iptal edildi!"
-		exit 1
-	fi
-	
+	pkt="`find $talimatname_dizin -name $1`"
 	source $pkt/talimat
 	dusuk=`echo -e "$ksurum\n$version" | sort -V | head -n1`
 	
@@ -642,16 +614,7 @@ devir_kontrol(){
 	durum="belirsiz"
 	satir=`sed -n '8p' <  /var/lib/pkg/DB/"$1"/META`
 	kdevir=${satir:1:${#satir}-1} 
-	
-	if [ -d $(find $talimatname_dizin -name $1) ];then
-		pkt="`find $talimatname_dizin -name $1`"
-	elif [ -d $(find $ektalimatname -name $1) ];then
-		pkt="`find $ektalimatname -name $1`"
-	else
-		ryaz 31 "$1 talimatnamelerde olmayan bir paket sürüm kontrolü iptal edildi!"
-		exit 1
-	fi
-
+	pkt="`find $talimatname_dizin -name $1`"
 	source $pkt/talimat
 	dusuk=`echo -e "$kdevir\n$release" | sort -V | head -n1`
 	
@@ -791,34 +754,10 @@ bagimlilar(){
 	fi
 }
 
-ters_bagimli_bilgi(){
-	gentalimatlar=$(ls $talimatname_dizin/genel/)
-	for tal in $gentalimatlar;do
-		#echo $tal
-		bagimd=`cat $talimatname_dizin/genel/$tal/talimat | grep "Depends" | cut -d':' -f2`
-		if [ -n "$bagimd" ]; then
-			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-			for bag in $bagimd;do
-				if [ $bag = $1 ];then
-					echo $tal
-				fi
-			done
-		fi
-	done
-}
-
+#ektalimatname eklenecek
 bagimli_bilgi(){
 	local bagimd konum bag
-	bkonum="`find "$talimatname_dizin" -name $1`"
-	bekkonum="`find "$ektalimatname" -name $1`"
-	if [ $bkonum ];then
-		konum=$bkonum
-	elif [ $bekkonum ];then
-		konum=$bekkonum
-	else
-		ryaz 31 "$1 talimatı bulunamadı!"
-		exit 1
-	fi
+	konum="`find "$talimatname_dizin" -name $1`"
 	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
 	if [ -n "$bagimd" ]; then
 		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
@@ -836,16 +775,7 @@ bagimli_bilgi(){
 bagimli_bilgi_dosyala(){
 	rm -f "$1.gerekler.liste"
 	local bagimd konum bag
-	bkonum="`find "$talimatname_dizin" -name $1`"
-	bekkonum="`find "$ektalimatname" -name $1`"
-	if [ $bkonum ];then
-		konum=$bkonum
-	elif [ $bekkonum ];then
-		konum=$bekkonum
-	else
-		ryaz 31 "$1 talimatı bulunamadı!"
-		exit 1
-	fi
+	konum="`find "$talimatname_dizin" -name $1`"
 	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
 	if [ -n "$bagimd" ]; then
 		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
@@ -858,6 +788,13 @@ bagimli_bilgi_dosyala(){
 	fi
 	echo "$1" >> "$1.gerekler.liste"
 	
+}
+
+ters_bagimli(){
+	local ara
+	ara=" $1 "
+	sy=`grep -o "/" <<<"$talimatname_dizin" | wc -l`
+	grep -rli "$ara" "$talimatname_dizin" | cut -d'/' -f`expr $sy + 3`
 }
 
 silme_kurban_kontrol(){
@@ -933,7 +870,7 @@ kurban_kurtar(){
 }
 
 ters_bagimli_kontrol(){
-	ters_bagimli_bilgi "$1" | sort > tersb.liste
+	ters_bagimli "$1" | sort > tersb.liste
 	ls /var/lib/pkg/DB/ | sed  "/$1/d" | sort  > simdiki.liste
 	comm -12 tersb.liste simdiki.liste
 	rm tersb.liste simdiki.liste
@@ -945,8 +882,6 @@ kurulu_kontrol(){
 		exit 1
 	fi
 	if [[ $(find $talimatname_dizin -name $1) ]];then
-		echo "degil"
-	elif [[ $(find $ektalimatname -name $1) ]];then
 		echo "degil"
 	else
 		echo "tanimsiz"
@@ -1090,22 +1025,6 @@ sunucu_ayarla(){
 	else
 		ryaz 31 "Tanımsız paket sunucusu!"
 		hataloglama "Tanımsız paket sunucusu!"
-	fi
-}
-
-sunucu_ayarla_y(){
-	wget -q --spider "$1/paket.vt"
-	yenisun="$1"
-	if [ $? -eq 0 ]; then
-		source /etc/mps.conf
-		ydizi=("${sunucular[@]}")
-		ydizi[0]="$1"
-		echo ${ydizi[@]}
-		esnc=${sunucular[0]}
-		ysnc=${ydizi[0]}
-		sed  -i "/^sunucular/s/"${esnc}"\'"$ysnc"'/g" /etc/mps.conf
-	else
-		ryaz 31 "Tanımsız paket sunucusu!"
 	fi
 }
 
@@ -1331,9 +1250,9 @@ servisler_kontrol(){
 	done
 }
 
-paketvt_guncelle_eski(){
+paketvt_guncelle(){
 	temel_tarihce_kontrol
-	wget -q --spider "$sunucu""paket.vt"
+	wget --no-check-certificate -q --spider "$sunucu""paket.vt"
 	#if wget -P /tmp -q "$sunucu""paket.vt" > /dev/null; then
 	if [ $? -eq 0 ]; then	
 		ryaz 32 $sunucu
@@ -1341,7 +1260,7 @@ paketvt_guncelle_eski(){
 		if [ -f "$paketdepo""paket.vt" ];then
 			mv "$paketdepo""paket.vt" "$paketdepo""paket.vt.eski"
 		fi
-		wget -q --show-progress -P "$paketdepo" "$sunucu""paket.vt"
+		wget --no-check-certificate -q --show-progress -P "$paketdepo" "$sunucu""paket.vt"
 		#rm /tmp/paket.vt*
 		mps -kudo
 		exit 1
@@ -1350,20 +1269,11 @@ paketvt_guncelle_eski(){
 	hataloglama "paket veritabanı güncelleme olumsuz."
 }
 
-
 talimat_bilgi(){
 	local konum HEAD
-	bkonum="`find "$talimatname_dizin" -name $1`"
-	bekkonum="`find "$ektalimatname" -name $1`"
-	if [ $bkonum ];then
-		konum=$bkonum
-	elif [ $bekkonum ];then
-		konum=$bekkonum
-	else
-		ryaz 31 "$1 talimatı bulunamadı!"
-		exit 1
-	fi
-	grep -B 12 "build()" $konum/talimat
+	konum="`find "$talimatname_dizin" -name $1`"
+	HEAD=`grep -B 12 "build()" $konum/talimat`
+	echo $HEAD
 }
 
 sistem_kontrol(){
@@ -1372,16 +1282,14 @@ sistem_kontrol(){
 }
 
 sunucu_kontrol(){
-	uzunluk=${#sunucular[@]}
-	for ((i=1;i<=$uzunluk;i++)); do
-		pktsunucu=${sunucular[$i-1]} 
-		wget --no-check-certificate -q --spider "$pktsunucu/paket.vt"
-		if [ $? -eq 0 ]; then
-			ryaz 32 "$pktsunucu paket sunucu aktif"
-		else
-			ryaz 31 "$pktsunucu sunucu erişim dışı" 
-		fi
-	done
+	wget -q --spider $sunucu
+	if [ $? -eq 0 ]; then
+		ryaz 32 "paket sunucu aktif"
+	else
+		ryaz 31 "sunucu erişim dışı"
+		hataloglama "sunucu erişim dışı"
+		exit 1
+	fi
 }	
 
 gitayar_kontrol(){
@@ -1529,83 +1437,30 @@ pvt_olustur(){
 	ryaz 32 "paket.vt oluşturuldu."
 }
 
-paketvt_guncelle(){
-	uzunluk=${#sunucular[@]}
-	#for snc in "${sunucular[@]}"
-	for ((i=1;i<=$uzunluk;i++)); do
-	   pktsunucu=${sunucular[$i-1]} 
-	   pkvt=""
-	   if [ $i = 1 ];then
-			pktvt="paket.vt"
-	   else
-			pktvt="paket${i-1}.vt"
-	   fi
-	   wget --no-check-certificate -q --spider "$pktsunucu""paket.vt"
-	   if [ $? -eq 0 ]; then	
-			ryaz 32 $pktsunucu
-			ryaz 32 "paket veritabanı güncelleniyor." "$paketdepo""$pktvt"
-			if [ -f "$paketdepo""$pktvt" ];then
-				mv "$paketdepo""$pktvt" "$paketdepo""$pktvt.eski"
-			fi
-			wget --no-check-certificate -q --show-progress -P "$paketdepo" "$pktsunucu""paket.vt" -O "$paketdepo""$pktvt"
-			#rm /tmp/paket.vt*
+paket_indir(){
+	local pkt
+	if [ -f "$paketdepo""paket.vt" ];then
+		pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3`
+		ekontdeg=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f2`
+		cpaket="${pkt/'#'/'%23'}"
+		wget  -nc -q --show-progress -P "$paketdepo" "$sunucu$cpaket"
+		if [[ "$?" != 0 ]]; then
+			ryaz 31 "indirme hatalı"
+			hataloglama "indirme hatalı"
 		else
-			ryaz 31 "$pktsunucu paket veritabanı güncelleme olumsuz."
-			hataloglama "paket veritabanı güncelleme olumsuz."
+			ryaz 34 "$1 indirildi"
 		fi
-	done
+		mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
+		if [ "$ekontdeg" != "$mkontdeg" ];then
+			ryaz 31 "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
+			hataloglama "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
+			rm -f "$paketdepo$pkt" 
+			paket_indir "$1" 
+		fi
+	fi
+	
 	
 }
-
-paket_indir(){
-	if [ -f "$paketdepo""paket.vt" ];then
-		local pkt
-		uzunluk=${#sunucular[@]}
-		#paketin paketin sunucularında aranaması,buldugu sunucudan indirmesi
-		for ((i=1;i<=$uzunluk;i++)); do
-			pktsunucu=${sunucular[$i-1]}
-			pkvt=""
-			if [ $i = 1 ];then
-				pktvt="paket.vt"
-			else
-				pktvt="paket${i-1}.vt"
-			fi
-			pkt=`cat "$paketdepo$pktvt" | grep "^$1 " | cut -d' ' -f3`
-			#ryaz 32 "$1 paketi $pktsunucu altında aranıyor"
-			if [ $pkt ];then
-				#ryaz 32 "$1 paketi $pktsunucu altında bulundu"
-				ekontdeg=`cat "$paketdepo$pktvt" | grep "^$1 " | cut -d' ' -f2`
-				cpaket="${pkt/'#'/'%23'}"
-				#paketin sunucuda varlık kontrolu
-				wget -q --spider "$pktsunucu$cpaket"
-				if [ $? -eq 0 ]; then	
-					wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket"
-					if [[ "$?" != 0 ]]; then
-						ryaz 31 "indirme hatalı"
-						hataloglama "indirme hatalı"
-					else
-						ryaz 34 "$1 indirildi \t $pktsunucu"
-						break
-					fi
-					mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
-					if [ "$ekontdeg" != "$mkontdeg" ];then
-						ryaz 31 "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
-						hataloglama "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
-						rm -f "$paketdepo$pkt" 
-						paket_indir "$1" 
-					fi
-				else
-					ryaz 31 "$1 paketi bulunamadı $pktsunucu dan silinmiş olmalı!"
-				fi
-			else
-				ryaz 31 "$pktsunucu-$1 paketi bulunmuyor!"
-			fi
-		done	
-	else
-		ryaz 31 "$paketdepo altında paket.vt dosyanız yok.Güncelleme yapınız!"
-	fi
-}
-
 
 yerelden_kur(){
 	local silme
@@ -1654,30 +1509,38 @@ agdan_kur(){
 	local kontroldeg
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
-		paket_indir "$1"
-		if [ -f "$paketdepo$1#"* ];then
-			if [ "$kurulum_onay" = "evet" ];then
-				if [ "$tekrarkur" = "evet" ];then
-					paket_sil "$1" "evet"
-				fi
-				#icerik_ekle "$paketdepo$pkt"
+		pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3` 
+		if [ ! -z "$pkt" -a "$pkt" != "" ]; then
+			cpaket="${pkt/'#'/'%23'}"
+			ryaz 33 "agdan cekiliyor:" "$1"
+			#paket sunucuda varsa
+			wget -q --spider "$sunucu$cpaket"
+			#if wget -P /tmp -q "$sunucu$cpaket" > /dev/null; then
+			if [ $? -eq 0 ]; then
+				#wget  -P "$paketdepo" "$sunucu$cpaket"
+				paket_indir "$1"
 				
-				surumler=$(ls "$paketdepo$1#"* | wc -l)
-				if [ $surumler = 1 ];then
-					icerik_ekle $(ls "$paketdepo$1#"*)
-				else
-					ryaz 31 "$1 paketinin birden fazla sürümü var!"
+				if [ "$kurulum_onay" = "evet" ];then
+					if [ "$tekrarkur" = "evet" ];then
+						paket_sil "$1" "evet"
+					fi
+					icerik_ekle "$paketdepo$pkt"
+					#exit 1
 				fi
+			else
+				ryaz 31 "paket sunucuda yok!"
+				hataloglama "paket sunucuda yok!"
 			fi
 		else
-			ryaz 31 "$1 indirme hatası"		
+			ryaz 31 "$1 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
+			hataloglama "$1 paket sunucuda yok!( mps -G komutuyla güncelleme yapınız. )"
 		fi
-	elif [ "$kkont" = "kurulu" ];then
+	else
 		#ryaz 32 "$1 paketi zaten kurulu!"
 		printf "."
-	else
-		ryaz 31 "tanımsız paket veya tekrar kurulum iptali var!"
+		#hataloglama "$1 paketi zaten kurulu!"
 	fi
+	#exit 1
 }
 
 yardim(){
@@ -1907,10 +1770,8 @@ ayarlar() {
 			-b|--pkbl)
 				paket_bilgi "$2" ;;
 			#sunucu bilgisi alma
-			-sun2|sunucu)
+			-sun|sunucu)
 				ryaz 32 $sunucu ;;
-			-sun|sunucular)
-				ryaz 32 ${sunucular[@]} ;;
 			sun)
 				if [ ! "$2" ]; then
 					ryaz 31 "sunucu bilgi eksik"
@@ -1922,13 +1783,12 @@ ayarlar() {
 				bagimli_bilgi "$2" | column -t;;
 			-bbd)
 				bagimli_bilgi_dosyala "$2" ;;
-			-tb|tersbag)
-				ters_bagimli_bilgi "$2" ;;
+			-tb|--pktb)
+				ters_bagimli "$2" ;;
 			-tbk|--pktbk)
 				ters_bagimli_kontrol "$2" ;;
-			-talb|bilgi)
-				talimat_bilgi "$2"
-				paket_bilgi "$2" ;;
+			-talb|--talb)
+				talimat_bilgi "$2" | column -t;;
 			-to)
 				if [ ! "$2" ]; then
 					ryaz 31 "talimat ismi eksik"
@@ -1959,8 +1819,6 @@ ayarlar() {
 			-G|--pvtg)
 				paketvt_guncelle
 				mps -kudo ;;
-			-G2)
-				paketvt_guncelle_yeni ;;
 			#komple kurulu sistemin guncellenmesi
 			-GS|yukselt)
 				sistem_guncelle ;;
