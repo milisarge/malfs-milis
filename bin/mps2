@@ -42,7 +42,7 @@ if [ -z ${ektalimatname+:} ]; then
 fi
 
 if [ -z ${sunucular+:} ]; then
-	declare -a sunucular=("127.0.0.1:8000/" "paketler.milislinux.org")
+	declare -a sunucular=("paketler.milislinux.org")
 fi
 
 icerik_ekle(){
