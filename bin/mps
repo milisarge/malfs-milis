@@ -1497,6 +1497,21 @@ tamir_temel_kurulan(){
 	done
 }
 
+depo_paketler_liste(){
+	ls $VT/*.mps.lz
+}
+
+depo_paketler_sil(){
+	while true; do
+		ryaz 34 $VT " paketleri kaldırılsın mı?";read -p "e veya h-> " eh
+		case $eh in
+			[Ee]* ) echo "$VT paketler silinecek"; break;;
+			[Hh]* ) break;;
+			* ) echo "e veya h";;
+		esac
+	done	
+}
+
 kurulum_dosya_listele(){
 	cat "$VT/$1/kurulan"
 }
@@ -1899,7 +1914,7 @@ ayarlar() {
 					exit 1
 				fi
 				paket_sil_oto "$2" ;;	
-			-kl|--kurulu-liste)
+			-kl|liste)
 				ls $VT ;;	
 			-dly|--drly)
 				derleme_listyap_kontrol
@@ -2018,6 +2033,10 @@ ayarlar() {
 				sunucu_kontrol ;;
 			-pot)
 				paketsiz_talimatlar ;;
+			-dpl|deplist)
+				depo_paketler_liste ;;
+			-dps|depsil)
+				depo_paketler_sil ;;
 			-dota)
 				dosyadan_talimat_islem $2 $3 ;;
 			-cf|--config-file)
