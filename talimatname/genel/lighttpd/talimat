@@ -1,0 +1,28 @@
+# Description: Hızlı,güvenli ve esnek web sunucu uygulaması
+# URL: http://www.lighttpd.net/
+# Packager: milisarge
+# Depends on: pcre
+
+name=lighttpd
+version=1.4.45
+release=1
+source=(http://download.$name.net/$name/releases-1.4.x/$name-$version.tar.xz \
+        $name.conf )
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --libdir=/usr/lib/$name --with-openssl \
+        --mandir=/usr/man --with-pcre
+    make
+    make DESTDIR=$PKG install
+
+    install -D -m 644 $SRC/$name.conf $PKG/etc/$name.conf
+    install -d $PKG/var/www/{htdocs,logs}
+    install -d $PKG/var/run
+    install -d $PKG/etc/ssl/certs
+    #touch $PKG/var/run/lighttpd.pid
+    touch $PKG/etc/ssl/certs/lighttpd.pem
+    chmod 0600 $PKG/etc/ssl/certs/lighttpd.pem
+    cd /sources/milis.git/ayarlar/servisler
+	make DESTDIR=$PKG kur-lighttpd
+}

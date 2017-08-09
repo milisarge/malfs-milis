@@ -75,6 +75,16 @@ kur-hiawatha: dizinleri-olustur
 	ln -sf  ../init.d/hiawatha ${EXTDIR}/rc.d/rc4.d/S32hiawatha
 	ln -sf  ../init.d/hiawatha ${EXTDIR}/rc.d/rc5.d/S32hiawatha
 	ln -sf  ../init.d/hiawatha ${EXTDIR}/rc.d/rc6.d/K28hiawatha
+
+kur-lighttpd: dizinleri-olustur
+	install -m ${MODE} mbd/init.d/lighttpd     ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/lighttpd ${EXTDIR}/rc.d/rc0.d/K28lighttpd
+	ln -sf  ../init.d/lighttpd ${EXTDIR}/rc.d/rc1.d/K28lighttpd
+	ln -sf  ../init.d/lighttpd ${EXTDIR}/rc.d/rc2.d/K28lighttpd
+	ln -sf  ../init.d/lighttpd ${EXTDIR}/rc.d/rc3.d/S32lighttpd
+	ln -sf  ../init.d/lighttpd ${EXTDIR}/rc.d/rc4.d/S32lighttpd
+	ln -sf  ../init.d/lighttpd ${EXTDIR}/rc.d/rc5.d/S32lighttpd
+	ln -sf  ../init.d/lighttpd ${EXTDIR}/rc.d/rc6.d/K28lighttpd
 	
 kur-nginx: dizinleri-olustur
 	install -m ${MODE} mbd/init.d/nginx     ${EXTDIR}/rc.d/init.d/
@@ -658,6 +668,16 @@ sil-hiawatha:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S32hiawatha
 	rm -f ${EXTDIR}/rc.d/rc5.d/S32hiawatha
 	rm -f ${EXTDIR}/rc.d/rc6.d/K28hiawatha
+	
+sil-lighttpd:
+	rm -f ${EXTDIR}/rc.d/init.d/lighttpd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K28lighttpd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K28lighttpd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K28lighttpd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S32lighttpd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S32lighttpd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S32lighttpd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K28lighttpd
 	
 sil-nginx:
 	rm -f ${EXTDIR}/rc.d/init.d/nginx
