@@ -39,6 +39,7 @@ alsa-plugins
 geeqie
 sysv-rc-conf
 rfkill
+netcat
 samba
 catfish
 libreoffice
