@@ -5,29 +5,37 @@
 
 name=slim
 version=1.3.6
-release=3
+release=4
 source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.gz
-        $name.rc
         background.jpg
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
 		slim.conf
-		slim.rc
+		slim-1.3.6-fix-libslim-libraries.patch
+		slim-1.3.6-add-sessiondir.patch
+		slim.pam
+        slim.logrotate
 		slim.theme)
 
 build () {
 	cd $name-$version
 
-	# Slimlock inşa etmeyin (pam nedeniyle)
-	sed -i -e 's:${MANDIR}:/usr/man:g' -e '224d' CMakeLists.txt
+	sed -i 's|set(LIBDIR "/lib")|set(LIBDIR "/usr/lib")|' CMakeLists.txt
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr
+	patch -Np1 -i ../slim-1.3.6-fix-libslim-libraries.patch
+	patch -Np1 -i ../slim-1.3.6-add-sessiondir.patch
 
-	make
+	cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DUSE_PAM=yes \
+    -DUSE_CONSOLEKIT=no
+    
+    make
 	make DESTDIR=$PKG install
 	mkdir $PKG/etc/rc.d/
 	mkdir $PKG/etc/rc.d/init.d
 	cp $SRC/slim.conf $PKG/etc/
-	install -m 755 ../$name.rc $PKG/etc/rc.d/init.d/$name
 	cd ../
 
 	install -d $PKG/usr/share/slim/themes/milis
@@ -35,10 +43,18 @@ build () {
 	cp $SRC/milis-linux-tree.png $PKG/usr/share/slim/themes/milis/panel.png
 	cp $SRC/slim.theme $PKG/usr/share/slim/themes/milis/
 	chmod 0644 $PKG/usr/share/slim/themes/milis/*
-
+     
+    install -Dm644 "$SRC/slim.pam" "$PKG/etc/pam.d/slim"
+	install -Dm644 "$SRC/slim.logrotate" "$PKG/etc/logrotate.d/slim"
+	install -Dm644 $SRC/$name-$version/slimlock.conf "$PKG/etc/slimlock.conf"
+	
 	# Systemd desteği yok
-	rm -r $PKG/lib $PKG/usr/man/man1/slimlock.1
+	rm -r $PKG/usr/lib/systemd $PKG/usr/share/man
 
 	cd /sources/milis.git/ayarlar/servisler
 	make DESTDIR=$PKG kur-slim
+	
+	
+
+	sed -i -e 's|#xserver_arguments.*|xserver_arguments -nolisten tcp vt07|' -e 's|/var/run/slim.lock|/var/lock/slim.lock|' "$PKG/etc/slim.conf"
 }
