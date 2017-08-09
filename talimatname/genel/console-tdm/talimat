@@ -1,0 +1,14 @@
+# Description: cdm tabanlı giriş yöneticisi
+# URL: https://github.com/dopsi/console-tdm
+# Packager: milisarge
+# Depends on: xorg-xinit 
+
+name=console-tdm
+version=1.2.2
+release=1
+source=(https://github.com/dopsi/console-tdm/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+    cd "$SRC/$name-$version"
+    make DESTDIR="$PKG" PREFIX="/usr" install
+}
