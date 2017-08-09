@@ -1,9 +1,9 @@
 /var/log/slim.log {
-    compress
-    rotate 1
-    size 1024k
-    notifempty
-    missingok
-    copytruncate
-    noolddir
+   compress
+   rotate 4
+   size=1M
+   notifempty
+   missingok
+   copytruncate
+   noolddir
 }

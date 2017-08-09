@@ -10,51 +10,57 @@ source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.
         background.jpg
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
 		slim.conf
-		slim-1.3.6-fix-libslim-libraries.patch
-		slim-1.3.6-add-sessiondir.patch
-		slim.pam
+		slim.conf.patch
+		CMakeLists.txt.patch
+		slim-1.3.6_freetype-2.5.1.diff
         slim.logrotate
 		slim.theme)
 
 build () {
-	cd $name-$version
+cd $name-$version
 
-	sed -i 's|set(LIBDIR "/lib")|set(LIBDIR "/usr/lib")|' CMakeLists.txt
+patch -p0 < $SRC/slim.conf.patch
+patch -p0 < $SRC/CMakeLists.txt.patch
+patch -p1 < $SRC/slim-1.3.6_freetype-2.5.1.diff
 
-	patch -Np1 -i ../slim-1.3.6-fix-libslim-libraries.patch
-	patch -Np1 -i ../slim-1.3.6-add-sessiondir.patch
+# Fix location of man-pages
+sed "s/share\/man/man/" -i CMakeLists.txt
+sed -i "s/DESTINATION lib/DESTINATION lib64/" CMakeLists.txt
 
-	cmake \
+mkdir -p build
+
+
+cd build
+  cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DUSE_PAM=yes \
-    -DUSE_CONSOLEKIT=no
-    
-    make
-	make DESTDIR=$PKG install
-	mkdir $PKG/etc/rc.d/
-	mkdir $PKG/etc/rc.d/init.d
-	cp $SRC/slim.conf $PKG/etc/
-	cd ../
+    -DUSE_CONSOLEKIT=no \
+    -DCMAKE_BUILD_TYPE=Release ..
+  make
+  make install DESTDIR=$PKG
+cd ..
 
-	install -d $PKG/usr/share/slim/themes/milis
-	cp $SRC/background.jpg $PKG/usr/share/slim/themes/milis/
-	cp $SRC/milis-linux-tree.png $PKG/usr/share/slim/themes/milis/panel.png
-	cp $SRC/slim.theme $PKG/usr/share/slim/themes/milis/
-	chmod 0644 $PKG/usr/share/slim/themes/milis/*
-     
-    install -Dm644 "$SRC/slim.pam" "$PKG/etc/pam.d/slim"
-	install -Dm644 "$SRC/slim.logrotate" "$PKG/etc/logrotate.d/slim"
-	install -Dm644 $SRC/$name-$version/slimlock.conf "$PKG/etc/slimlock.conf"
-	
-	# Systemd desteği yok
-	rm -r $PKG/usr/lib/systemd $PKG/usr/share/man
+mv $SRC/slim.conf $PKG/etc/slim.conf
 
-	cd /sources/milis.git/ayarlar/servisler
-	make DESTDIR=$PKG kur-slim
-	
-	
+mkdir -p $PKG/etc/logrotate.d
+cat $SRC/slim.logrotate > $PKG/etc/logrotate.d/slim
 
-	sed -i -e 's|#xserver_arguments.*|xserver_arguments -nolisten tcp vt07|' -e 's|/var/run/slim.lock|/var/lock/slim.lock|' "$PKG/etc/slim.conf"
+# Kill the incorrectly-placed (and useless anyway) systemd stuff
+rm -rf $PKG/usr/usr
+# Kill systemd stuff
+rm -rf $PKG/lib
+
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+# Remove slimlock as we don't build it
+rm $PKG/usr/man/man1/slimlock.1.gz
+
+install -d $PKG/usr/share/slim/themes/milis
+cp $SRC/background.jpg $PKG/usr/share/slim/themes/milis/
+cp $SRC/milis-linux-tree.png $PKG/usr/share/slim/themes/milis/panel.png
+cp $SRC/slim.theme $PKG/usr/share/slim/themes/milis/
+chmod 0644 $PKG/usr/share/slim/themes/milis/*
+
+cd /sources/milis.git/ayarlar/servisler
+make DESTDIR=$PKG kur-slim
 }
