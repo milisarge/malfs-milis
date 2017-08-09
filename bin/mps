@@ -828,11 +828,18 @@ bagimli_bilgi(){
 		#echo `echo "$bagimd" | sed 's/,/ /g'`
 		#kurulu kontrollu gosterim
 		for bag in $bagimd;do
-			echo $bag "`kurulu_kontrol $bag`"
+			if [ "$2" = "dogrula" ];then
+				kurulum_dogrulama_icerik "$bag"
+			else
+				echo "$1" "`kurulu_kontrol $bag`"
+			fi
 		done
 	fi
-	echo "$1" "`kurulu_kontrol $1`"
-	
+	if [ "$2" = "dogrula" ];then
+		kurulum_dogrulama_icerik "$1"
+	else
+		echo "$1" "`kurulu_kontrol $1`"
+	fi
 }
 
 bagimli_bilgi_dosyala(){
@@ -1436,11 +1443,12 @@ kurulum_dogrulama(){
 }
 
 kurulum_dogrulama_icerik_tum(){
-	for kuruland in `ls $VT`
+	tarihce_yap
+	for kurulanpak in `ls $VT`
 	do
-		if [ -f "$VT/$kuruland/kurulan" ]; then
-			kurulum_dogrulama_icerik $kuruland
-			ryaz 32  "$kuruland kurulum icerik onarıldı."
+		if [ -f "$VT/$kurulanpak/kurulan" ]; then
+			kurulum_dogrulama_icerik $kurulanpak
+			ryaz 32  "$kurulanpak kurulum icerik onarıldı."
 		fi
 	done
 }
@@ -1464,22 +1472,31 @@ kurulum_dogrulama_icerik(){
 			ryaz 32 "temel sistem paket kurulan hatası düzeltildi!"
 			sed -i 's/‘/'\''\//;s/’/'\''/' $VT/$paketadi/kurulan
 		fi
-		for kdd in `cat /var/lib/pkg/DB/$paketadi/kurulan`
-		do
-			kuruland=$(echo $kdd | sed 's/^.\(.*\).$/\1/')
-			if [ ! -f "$kuruland" ] && [ ! -d "$kuruland" ] ; then
-				ryaz 31 "$kuruland hasarlı"
+		IFS=''
+		while read dosyayol;do
+			dosyayol=$(echo $dosyayol | sed 's/^.\(.*\).$/\1/')
+			netdosyayol="${dosyayol:1:${#dosyayol}-1}"
+			if [ ! -f $netdosyayol ] && [ ! -d $netdosyayol ] ; then
+				ryaz 31 "$netdosyayol hasarlı"
+				while true; do
+					ryaz 34 $paketadi" paketi yenilensin mi?";read -p "e veya h-> " eh
+					case $eh in
+						[Ee]* ) tekrarkur="evet";agdan_kur "$paketadi";break;;
+						[Hh]* ) break;;
+						* ) echo "e veya h";;
+					esac
+				done
 			fi
-		done
+		done < "$VT/$paketadi/kurulan"
+		
 		ryaz 32 "$paketadi kurulum doğrulama tamamlandı." 
 	elif [ -d "$VT/$paketadi" ]; then
-		ryaz 32 "$paketadi hasarlı kurulum tesbiti!"
+		cp -rf $VT $VT.yedek
+		ryaz 31 "$paketadi hasarlı kurulum tesbiti!"
 		#onarma
-		#if [ ! -d "$VT/$paketadi" ]; then
-			#rm -r $VT/$paketadi
-		#fi
-		#mps -i $paketadi
-		#mps -k "$paketdepo/$paketadi#"*.mps.lz
+		rm -r $VT/$paketadi
+		mps -i $paketadi
+		mps -k "$paketdepo/$paketadi#"*.mps.lz
 		ryaz 32  "$paketadi hasarlı kurulum onarıldı."
 	else
 		ryaz 31 "$paketadi kurulu değil!"
@@ -1935,8 +1952,10 @@ ayarlar() {
 					exit 1
 				fi
 				sunucu_ayarla  "$2" ;;
-			-bb|--pkbb)
+			-bb|bagbil)
 				bagimli_bilgi "$2" | column -t;;
+			-bbdog|bdogrula)
+				bagimli_bilgi "$2" "dogrula";;
 			-bbd)
 				bagimli_bilgi_dosyala "$2" ;;
 			-tb|tersbag)
@@ -2025,7 +2044,7 @@ ayarlar() {
 					exit 1
 				fi
 				kurulum_dogrulama_icerik "$2" ;;
-			-kdit)
+			-kdit|tumdogrula)
 				kurulum_dogrulama_icerik_tum ;;
 			-kdk)
 				kurban_kurtar $2 ;;
