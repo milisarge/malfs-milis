@@ -1442,6 +1442,39 @@ kurulum_dogrulama(){
 	done
 }
 
+paket_icerik_dogrulama(){
+	local dosyayol kontpaketadi tempmpslz pidanayol
+	kontpaketadi="$1"
+	if [ -f "$paketdepo/$kontpaketadi#"*.mps.lz ];then
+		tempmpslz=$(mktemp)
+		if [ -d $2 ];then
+			pidanayol="$2"
+			tar tf "$paketdepo/$kontpaketadi#"*.mps.lz > $tempmpslz
+			IFS=''
+			while read dosyayol;do
+				if [ ! -f $pidanayol$dosyayol ] && [ ! -d $pidanayol$dosyayol ] && [ $dosyayol != ".MTREE" ] && [ $dosyayol != ".META" ]; then
+					ryaz 31 "$pidanayol$dosyayol hasarlı"
+					while true; do
+						ryaz 34 $kontpaketadi" paketi yenilensin mi?";read -p "e veya h-> " eh
+						case $eh in
+							[Ee]* ) tekrarkur="evet";agdan_kur "$kontpaketadi";break;;
+							[Hh]* ) break;;
+							* ) echo "e veya h";;
+						esac
+					done
+				fi
+			done < $tempmpslz
+		else
+			ryaz 31 "$2 kök dizini bulunamadı!"
+			exit 1
+		fi
+	else
+		ryaz 31 "$1 paketi bulunamadı!"
+		exit 1
+	fi
+}
+
+
 kurulum_dogrulama_icerik_tum(){
 	tarihce_yap
 	for kurulanpak in `ls $VT`
@@ -1515,14 +1548,16 @@ tamir_temel_kurulan(){
 }
 
 depo_paketler_liste(){
-	ls $VT/*.mps.lz
+	ls $paketdepo*.mps.lz
 }
 
 depo_paketler_sil(){
 	while true; do
-		ryaz 34 $VT " paketleri kaldırılsın mı?";read -p "e veya h-> " eh
+		pktsay="0"
+		[[ $(ls  $paketdepo*.mps.lz) ]] && pktsay=$(ls $paketdepo/*.mps.lz | wc -l)
+		ryaz 34 "$paketdepo altındaki $pktsay paket silinecek?";read -p "e veya h-> " eh
 		case $eh in
-			[Ee]* ) echo "$VT paketler silinecek"; break;;
+			[Ee]* ) rm $paketdepo/*.mps.lz;ryaz 32 "$paketdepo paketler temizlendi."; break;;
 			[Hh]* ) break;;
 			* ) echo "e veya h";;
 		esac
@@ -1725,7 +1760,7 @@ ayarlar() {
 		case $1 in
 			-i|--indir)
 				kurulum_onay="olumsuz"
-				agdan_kur "$2" ;;
+				paket_indir "$2" ;;
 			-ik|--inku)
 				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 					kokdizin="$4"
@@ -2044,6 +2079,17 @@ ayarlar() {
 					exit 1
 				fi
 				kurulum_dogrulama_icerik "$2" ;;
+			-pid|pdogrula)
+				kokdzn=""
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					exit 1
+				elif [ ! "$3" ]; then
+					kokdzn="/"
+				else
+					kokdzn="$3"
+				fi
+				paket_icerik_dogrulama "$2" "$kokdzn";;
 			-kdit|tumdogrula)
 				kurulum_dogrulama_icerik_tum ;;
 			-kdk)
