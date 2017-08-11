@@ -40,5 +40,6 @@ fi
 cp -rf /sources/milis.git/ayarlar/milbit/milbit.desktop /usr/share/applications/
 cp ayarlar/kurulum.desktop /root/Desktop/
 cp ayarlar/kurulum.desktop /root/Masaüstü/
+rm -f /root/.gitconfig
 tamir_touchpad
 tamir_masaustu
