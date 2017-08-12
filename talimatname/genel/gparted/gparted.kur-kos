@@ -1,2 +1,2 @@
 gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-cp /sources/milis.git/talimatname/genel/gparted/gparted-normal.desktop /usr/share/applications/
+cp -f /sources/milis.git/talimatname/genel/gparted/gparted.desktop /usr/share/applications/
