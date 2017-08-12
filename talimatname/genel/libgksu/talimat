@@ -42,6 +42,6 @@ build() {
   rm -f ${PKG}/usr/lib/*.a
   install -m755 -d "${PKG}/usr/share/gconf/schemas"
   gconf-merge-schema "${PKG}/usr/share/gconf/schemas/$name.schemas" --domain libgksu ${PKG}/etc/gconf/schemas/*.schemas
-  rm -f ${PKG}/etc/gconf
-  rm -f ${PKG}/usr/share/gtk-doc
+  rm -rf ${PKG}/etc/gconf
+  rm -rf ${PKG}/usr/share/gtk-doc
 }
