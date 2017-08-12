@@ -1,0 +1,43 @@
+# Description: Equinox GTK teması için tasarlanmış simge teması 
+# URL: http://gnome-look.org/content/show.php/Faenza?content=128143
+# Packager: yasarciv67@gmail.com
+# Depends on: 
+
+
+name=faenza-icon-theme
+version=1.3.1
+release=1
+source=(http://ppa.launchpad.net/tiheum/equinox/ubuntu/pool/main/f/$name/${name}_${version}.tar.gz)
+
+build() {
+  cd $name-1.3
+  mkdir -p "$PKG/usr/share/icons" "$PKG/usr/lib" "$PKG/usr/share"
+
+  cp -rf Faenza{,-Dark,-Darkest,-Darker,-Ambiance,-Radiance} "$PKG/usr/share/icons/"
+  cp -rf rhythmbox "$PKG/usr/lib/"
+  cp -rf emesene "$PKG/usr/share/"
+
+  # set the Arch Linux Distributor and start menu logo
+  for theme in Faenza{,-Dark}; do
+    for size in 22 24 32 48 64 96; do
+      cd "$PKG/usr/share/icons/$theme/places/$size/"
+      # no distributor-logo for Faenza-Dark
+      [[ $theme == Faenza ]] && ln -sf distributor-logo{-milislogo,}.png
+      ln -sf start-here{-milislogo,}.png
+    done
+    cd "$PKG/usr/share/icons/$theme/places/scalable/"
+    # no distributor-logo for Faenza-Dark
+    [[ $theme == Faenza ]] && ln -sf distributor-logo{-milislogo,}.svg
+    ln -sf start-here{-milislogo,}.svg
+    ln -sf start-here{-archlinux-symbolic,-symbolic}.svg
+  done
+
+  for theme in Faenza{,-Dark}; do
+    cd "$PKG/usr/share/icons/$theme/apps/scalable/"
+    ln -sf gnome-session-reboot.svg system-reboot.svg
+    for size in 16 22 24 32 48 64 96; do
+      cd "$PKG/usr/share/icons/$theme/apps/$size/"
+      ln -sf gnome-session-reboot.png system-reboot.png
+    done
+  done
+}
