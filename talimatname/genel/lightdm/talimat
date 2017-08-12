@@ -35,7 +35,6 @@ patch -Np1 -i ../lightdm-default-config.patch
     --enable-liblightdm-qt5=no \
     --disable-tests
   
-install=lightdm.install
   make DESTDIR=${PKG} install
   make DESTDIR=${PKG} -C liblightdm-qt uninstall
   install -m 755 ../Xsession ${PKG}/etc/lightdm/Xsession
@@ -57,13 +56,7 @@ install=lightdm.install
   install -dm 750 -g 102 ${PKG}/usr/share/polkit-1/rules.d
   install -m 644 ../lightdm.rules ${PKG}/usr/share/polkit-1/rules.d/lightdm.rules
 
-  # Systemd
-  #install -dm 755 ${PKG}/usr/lib/{systemd/system,tmpfiles.d}
-  #install -m 644 ../lightdm.service ${PKG}/usr/lib/systemd/system/lightdm.service
-  #install -m 644 ../lightdm.tmpfiles ${PKG}/usr/lib/tmpfiles.d/lightdm.conf
-
-
-  make DESTDIR=${PKG} -C liblightdm-gobject install
+   make DESTDIR=${PKG} -C liblightdm-gobject install
   make DESTDIR=${PKG} -C liblightdm-qt install
   make DESTDIR=${PKG} -C liblightdm-gobject uninstall
   find ${PKG} -type d -name *qt5* -exec rm -rf {} +

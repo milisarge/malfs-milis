@@ -1,0 +1,24 @@
+# Description: Xfce4 paneli için pulseaudio eklentisi
+# URL: http://xfce.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: xfce4-panel pulseaudio gtk-update-icon-cache libnotify intltool dbus-glib pavucontrol xfce4-dev-tools
+
+name=xfce4-pulseaudio-plugin
+version=0.2.5
+release=1
+source=(https://git.xfce.org/panel-plugins/$name/snapshot/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+  NOCONFIGURE=1 ./autogen.sh
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --enable-keybinder \
+    --enable-libnotify \
+    --enable-maintainer-mode
+	make
+	make DESTDIR=$PKG install
+}
