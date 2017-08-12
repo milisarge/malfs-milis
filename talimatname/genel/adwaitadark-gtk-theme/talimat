@@ -1,0 +1,15 @@
+# Description: Koyu bir gtk2 teması
+# URL: https://www.xfce-look.org/p/1099669/
+# Packager: yasarciv67@gmail.com
+# Depends on: 
+
+name=adwaitadark-gtk-theme
+version=1
+release=1
+source=(https://dl.opendesktop.org/api/files/download/id/1462546831/175933-AdwaitaDark.tar.gz)
+
+build() {
+	cd $SRC/AdwaitaDark 	
+	install -d "$PKG/usr/share/themes/AdwaitaDark/"
+	cp -a * "$PKG/usr/share/themes/AdwaitaDark/"
+}
