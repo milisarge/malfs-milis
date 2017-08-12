@@ -1,0 +1,18 @@
+# Description: Linux için bir simge seti
+# URL: https://github.com/sonakinci41/DamaDamas-icon-theme
+# Packager: yasarciv67@gmail.com
+# Depends on: hicolor-icon-theme
+
+name=damadamas-icon-theme
+_name=DamaDamas-icon-theme
+version=0.1
+release=1
+source=()
+
+build() {
+git clone https://github.com/sonakinci41/DamaDamas-icon-theme.git
+  cd "${_name}"
+  rm {CMakeLists.txt,README.md}
+  install -d "$PKG/usr/share/icons/$_name"
+  cp -a * "$PKG/usr/share/icons/$_name/"
+}
