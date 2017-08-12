@@ -1739,7 +1739,7 @@ agdan_kur(){
 				surumler=$(ls "$paketdepo$1#"* | wc -l)
 				if [ $surumler = 1 ];then
 					icerik_ekle $(ls "$paketdepo$1#"*)
-				else
+				elif [ $surumler > 1 ]
 					ryaz 31 "$1 paketinin birden fazla sürümü var!"
 					kurulacak_guncel_paket=$(ls -1t "$paketdepo$1#"* | head -1)
 					ryaz 32 "$kurulacak_guncel_paket sürümü kuruluyor"
