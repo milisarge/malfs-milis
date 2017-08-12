@@ -16,7 +16,7 @@ build() {
     --disable-static \
     --disable-nautilus-extension
     
-make
-make DESTDIR=$PKG install
-  rm -rf $PKG/usr/share/applications
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/applications
 }
