@@ -1735,13 +1735,15 @@ agdan_kur(){
 				if [ "$tekrarkur" = "evet" ];then
 					paket_sil "$1" "evet"
 				fi
-				#icerik_ekle "$paketdepo$pkt"
-				
+				#depo/paketler altında birden fazla sürüm kontrolü yapılır,güncel olan seçilir.
 				surumler=$(ls "$paketdepo$1#"* | wc -l)
 				if [ $surumler = 1 ];then
 					icerik_ekle $(ls "$paketdepo$1#"*)
 				else
 					ryaz 31 "$1 paketinin birden fazla sürümü var!"
+					kurulacak_guncel_paket=$(ls -1t "$paketdepo$1#"* | head -1)
+					ryaz 32 "$kurulacak_guncel_paket sürümü kuruluyor"
+					icerik_ekle $kurulacak_guncel_paket
 				fi
 			fi
 		else
