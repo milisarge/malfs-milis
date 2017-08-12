@@ -114,8 +114,12 @@ icerik_ekle(){
 paket_sil(){
 	local paket kkont sil_onay oto_silme
 	paket="$1"
+	tersbag_goster="hayir"
 	if [ "$2" ]; then
 		oto_silme="$2"
+	fi
+	if [ "$3" ]; then
+		tersbag_goster="evet"
 	fi
 	if [ "$tpk" = "evet" ] && [ -d "$talimatname_dizin/temel/$1" ];then
 		ryaz 31 "$1 temel sistem paketidir.Silinemez!!!"
@@ -127,10 +131,12 @@ paket_sil(){
                 #dizin koruma
                 kurban_kurtar $1
 				cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
-				ryaz 31 "ters bagimliliklar"
-				ryaz 31 "------------------"
-				ters_bagimli_kontrol "$paket"
-				ryaz 31 "------------------"
+				if [ "$tersbag_goster" = "evet" ];then
+					ryaz 31 "ters bagimliliklar"
+					ryaz 31 "------------------"
+					ters_bagimli_kontrol "$paket"
+					ryaz 31 "------------------"
+				fi
 				ryaz 31 "kurban dosyalar"
 				ryaz 31 "------------------"
 				silme_kurban_kontrol /tmp/$paket.sil
@@ -1791,6 +1797,8 @@ ayarlar() {
 				paket_sil "$2" ;;
 			-sz|zorsil)
 				paket_sil "$2" "evet";;	
+			gsil)
+				paket_sil "$2" "hayir" "evet";;	
 			-S|silgrub)
 				mps -bbd "$2"
 				paket_sil_oto_onayli "$2.gerekler.liste" ;;
