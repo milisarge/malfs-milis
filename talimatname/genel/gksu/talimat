@@ -1,0 +1,22 @@
+# Description: Su için bir grafik ön uç
+# URL: http://www.nongnu.org/gksu/index.html
+# Packager: yasarciv67@gmail.com
+# Depends on: gtk-doc intltool libgksu xorg-xauth
+
+name=gksu
+version=2.0.2
+release=1
+source=(http://people.debian.org/~kov/gksu/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-nautilus-extension
+    
+make
+make DESTDIR=$PKG install
+  rm -rf $PKG/usr/share/applications
+}
