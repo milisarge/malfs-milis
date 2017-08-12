@@ -1724,7 +1724,8 @@ agdan_kur(){
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
 		paket_indir "$1"
-		if [ -f "$paketdepo$1#"* ];then
+		echo $1
+		if [ -f $(ls -1t "$paketdepo$1#"* | head -1)  ];then
 			if [ "$kurulum_onay" = "evet" ];then
 				if [ "$tekrarkur" = "evet" ];then
 					paket_sil "$1" "evet"
