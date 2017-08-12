@@ -5,7 +5,7 @@
 
 name=fbida
 version=2.10
-release=1
+release=2
 source=(http://dl.bytesex.org/releases/fbida/$name-$version.tar.gz
 		ida-desktop.patch)
 
@@ -17,6 +17,8 @@ build() {
 	make verbose=yes
 	convert -resize 25% logo.jpg ida.png
 	make STRIP="" DESTDIR=$PKG prefix=/usr install
-	install -D -m644 desktop/ida.desktop $PKG/usr/share/applications/ida.desktop"
-	install -D -m644 ida.png $PKG/usr/share/pixmaps/ida.png"
+	install -d -m644 $PKG/usr/share/applications
+	install -d -m644 $PKG/usr/share/pixmaps
+	cp -f desktop/ida.desktop $PKG/usr/share/applications/ida.desktop
+	cp -f ida.png $PKG/usr/share/pixmaps/ida.png
 }
