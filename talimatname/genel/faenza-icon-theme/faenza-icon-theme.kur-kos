@@ -1,0 +1,6 @@
+gtk-update-icon-cache -f /usr/share/icons/Faenza-Ambiance
+gtk-update-icon-cache -f /usr/share/icons/Faenza
+gtk-update-icon-cache -f /usr/share/icons/Faenza-Dark
+gtk-update-icon-cache -f /usr/share/icons/Faenza-Darker
+gtk-update-icon-cache -f /usr/share/icons/Faenza-Darkest
+gtk-update-icon-cache -f /usr/share/icons/Faenza-Radiance
