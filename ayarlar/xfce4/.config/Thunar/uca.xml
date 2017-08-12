@@ -1,0 +1,52 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Uçbirimi Buraya Aç</name>
+	<unique-id>1502567563531824-6</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Özel işlem için örnek</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>gksu-root-terminal</icon>
+	<name>Yetkili uçbirimi aç</name>
+	<unique-id>1502567415246345-4</unique-id>
+	<command>gksu &quot;xfce4-terminal --default-working-directory=%f&quot;</command>
+	<description>Bu dizinde root terminali açmak için bu düğmeyi kullanın</description>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>Thunar</icon>
+	<name>Dizini yetkili olarak aç</name>
+	<unique-id>1502568163799225-10</unique-id>
+	<command>gksudo thunar %f</command>
+	<description>Bu dizini yetkili kullanıcı haklarıyla açmak için bunu kullanın</description>
+	<patterns>*</patterns>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>accessories-text-editor</icon>
+	<name>Yetkili olarak düzenle</name>
+	<unique-id>1502568287741885-14</unique-id>
+	<command>gksudo geany %f</command>
+	<description>Dosyayı yetkili kullanıcı haklarıyla düzenlemek için bunu kullanın</description>
+	<patterns>*</patterns>
+	<text-files/>
+</action>
+<action>
+	<icon>edit-find</icon>
+	<name>Dosyaları ara...</name>
+	<unique-id>1502568595302733-17</unique-id>
+	<command>catfish --path=%f</command>
+	<description>Bu dizinde dosya aramak için bunu kullanın</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>
