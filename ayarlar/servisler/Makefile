@@ -478,6 +478,16 @@ kur-samba: dizinleri-olustur
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S45samba
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc6.d/K48samba
 
+kur-pulseaudio: dizinleri-olustur
+	install -m ${MODE} mbd/init.d/pulseaudio      ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/pulseaudio ${EXTDIR}/rc.d/rc0.d/K55pulseaudio
+	ln -sf  ../init.d/pulseaudio ${EXTDIR}/rc.d/rc1.d/K55pulseaudio
+	ln -sf  ../init.d/pulseaudio ${EXTDIR}/rc.d/rc2.d/K55pulseaudio
+	ln -sf  ../init.d/pulseaudio ${EXTDIR}/rc.d/rc3.d/S55pulseaudio
+	ln -sf  ../init.d/pulseaudio ${EXTDIR}/rc.d/rc4.d/S55pulseaudio
+	ln -sf  ../init.d/pulseaudio ${EXTDIR}/rc.d/rc5.d/S55pulseaudio
+	ln -sf  ../init.d/pulseaudio ${EXTDIR}/rc.d/rc6.d/K55pulseaudio
+
 kur-sddm: dizinleri-olustur
 	install -m ${MODE} mbd/init.d/sddm        ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc0.d/K05sddm
@@ -1061,6 +1071,16 @@ sil-samba:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S45samba
 	rm -f ${EXTDIR}/rc.d/rc5.d/S45samba
 	rm -f ${EXTDIR}/rc.d/rc6.d/K48samba
+	
+sil-pulseaudio:
+	rm -f ${EXTDIR}/rc.d/init.d/pulseaudio
+	rm -f ${EXTDIR}/rc.d/rc0.d/K55pulseaudio
+	rm -f ${EXTDIR}/rc.d/rc1.d/K55pulseaudio
+	rm -f ${EXTDIR}/rc.d/rc2.d/K55pulseaudio
+	rm -f ${EXTDIR}/rc.d/rc3.d/S55pulseaudio
+	rm -f ${EXTDIR}/rc.d/rc4.d/S55pulseaudio
+	rm -f ${EXTDIR}/rc.d/rc5.d/S55pulseaudio
+	rm -f ${EXTDIR}/rc.d/rc6.d/K55pulseaudio
 
 sil-sddm:
 	rm -f ${EXTDIR}/rc.d/init.d/sddm
