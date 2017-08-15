@@ -4,13 +4,12 @@
 # Depends on: xorg-xauth libjpeg-turbo libpng cmake xorg-libxft
 
 name=slim
-version=1.3.6
-release=4
-source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.gz
-        background.jpg
+version=2.0
+release=1
+source=(http://kaynaklar.milislinux.org/slim-$version.tar.gz
+        panel.png
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
 		slim.conf
-		slim.conf.patch
 		CMakeLists.txt.patch
 		slim-1.3.6_freetype-2.5.1.diff
         slim.logrotate
@@ -19,7 +18,6 @@ source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$version.tar.
 build () {
 cd $name-$version
 
-patch -p0 < $SRC/slim.conf.patch
 patch -p0 < $SRC/CMakeLists.txt.patch
 patch -p1 < $SRC/slim-1.3.6_freetype-2.5.1.diff
 
@@ -54,10 +52,13 @@ for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; r
 
 # Remove slimlock as we don't build it
 rm $PKG/usr/man/man1/slimlock.1.gz
+rm $PKG/etc/init.d/slim.init
+rm -rf $PKG/usr/share/slim/themes/xamplar
+rm -rf $PKG/usr/man/
 
 install -d $PKG/usr/share/slim/themes/milis
-cp $SRC/background.jpg $PKG/usr/share/slim/themes/milis/
-cp $SRC/milis-linux-tree.png $PKG/usr/share/slim/themes/milis/panel.png
+cp $SRC/panel.png $PKG/usr/share/slim/themes/milis/
+cp $SRC/milis-linux-tree.png $PKG/usr/share/slim/themes/milis/background.png
 cp $SRC/slim.theme $PKG/usr/share/slim/themes/milis/
 chmod 0644 $PKG/usr/share/slim/themes/milis/*
 
