@@ -1,0 +1,17 @@
+# Description: Gnome kapatma menüsüne uyku tuşu ekler
+# URL: https://github.com/laserb/gnome-shell-extension-suspend-button
+# Packagers: yasarciv67@gmail.com
+# Depends on: gnome-shell
+
+name=gnome-suspend-button
+_name=gnome-shell-extension-suspend-button
+version=1
+release=1
+source=()
+
+build() {
+git clone https://github.com/laserb/gnome-shell-extension-suspend-button.git
+cd $_name
+make
+make DESTDIR=$PKG install
+}
