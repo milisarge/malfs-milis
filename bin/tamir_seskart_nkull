@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo setfacl -m u:$USER:rw /dev/snd/* 
