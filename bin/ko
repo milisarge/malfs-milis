@@ -6,7 +6,7 @@
 ######################################
 
 user_groups=""
-default_groups=(users disk network floppy fuse video lp tty audio cdrom scanner adm vboxusers wheel)
+default_groups=(users disk network netdev floppy fuse video lp tty audio cdrom scanner adm vboxusers wheel)
 
 # Avoid spaces troubles :)
 OLD_IFS=$IFS
