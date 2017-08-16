@@ -4,7 +4,7 @@
 # Depends on: 
 
 name=xfce4-artwork
-version=0.1.1a_git20110420
+version=0.1.1
 _debian_version=0.1.1a~git+20110420
 release=1
 source=(http://ftp.debian.org/debian/pool/main/x/$name/${name}_$_debian_version.orig.tar.gz)
