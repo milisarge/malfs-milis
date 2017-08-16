@@ -475,7 +475,7 @@ paket_sil_oto(){
 paket_sil_oto_onayli(){
 	local spkt
 	cat $1
-	for spkt in `cat $1`;do
+	for spkt in `perl -e 'print reverse <>' $1`;do
 		paket_sil "$spkt" "hayir" "evet"
 	done
 }
