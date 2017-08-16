@@ -1,7 +1,7 @@
 # Description: Qt4 için bağlayıcı python
 # URL: http://www.riverbankcomputing.co.uk/software/pyqt/intro
 # Packager: milisarge
-# Depends on: dbus-python sip qt4 phonon 
+# Depends on: dbus-python python-sip qt4 phonon 
 
 name=python-qt4
 version=4.11.2
