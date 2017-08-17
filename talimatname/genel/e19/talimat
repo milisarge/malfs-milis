@@ -1,7 +1,7 @@
 # Description: Enlightenment DR19 pencere yöneticisi
 # URL: http://www.enlightenment.org/
 # Packager: milisarge
-# Depends on: elementary-e19 evas_generic_loaders-e19 xorg-xcb-util-keysyms xorg-font-dejavu-ttf
+# Depends on: elementary-e19 evas_generic_loaders-e19 xorg-xcb-util-keysyms dejavu-ttf
 
 name=e19
 version=0.19.14
