@@ -1,0 +1,17 @@
+# Description: evas generic loaders 
+# URL: http://www.enlightenment.org/
+# Packager: milisarge
+# Depends on: efl-e19 
+
+name=evas_generic_loaders-e19
+version=1.17.0
+release=1
+source=(http://download.enlightenment.org/rel/libs/evas_generic_loaders/evas_generic_loaders-$version.tar.gz)
+
+build()
+{
+    cd evas_generic_loaders-$version 
+    ./configure --prefix=/usr
+    make
+    make -j1 DESTDIR=$PKG install
+}
