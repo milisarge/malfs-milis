@@ -1,12 +1,12 @@
-# Description: e19 widget set
+# Description: enlightenment widget set
 # URL: http://www.enlightenment.org/
 # Packager: milisarge
-# Depends on: efl-e19 
+# Depends on: efl
 
-name=elementary-e19
-version=1.15.2
+name=elementary
+version=1.17.1
 release=1
-source=(http://download.enlightenment.org/rel/libs/elementary/elementary-$version.tar.gz)
+source=(http://download.enlightenment.org/rel/libs/elementary/elementary-$version.tar.xz)
 
 build()
 {

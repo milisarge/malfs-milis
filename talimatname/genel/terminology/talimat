@@ -1,12 +1,12 @@
 # Description: terminal emulator 
 # URL: http://www.enlightenment.org/
 # Packager: milisarge
-# Depends on: elementary-e19
+# Depends on: elementary
 
-name=terminology-e19
-version=0.9.1
+name=terminology
+version=1.0.0
 release=1
-source=(http://download.enlightenment.org/rel/apps/terminology/terminology-$version.tar.gz)
+source=(http://download.enlightenment.org/rel/apps/terminology/terminology-$version.tar.xz)
 
 build()
 {

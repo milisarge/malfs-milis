@@ -1,25 +1,25 @@
 # Description: efl kütüphaneleri
 # URL: http://www.enlightenment.org/
 # Packager: milisarge
-# Depends on: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver gstreamer-plugins-base giflib libtiff gstreamer
+# Depends on: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver gstreamer-plugins-base giflib libtiff gstreamer gstreamer1 poppler libspectre libraw librsvg gstreamer1-plugins-base
 
 name=efl
-version=1.8.6
+version=1.20.2
 release=1
-source=(http://download.enlightenment.org/rel/libs/$name/$name-$version.tar.gz
-	$name-$version-giflib.patch)
+source=(http://download.enlightenment.org/rel/libs/$name/$name-$version.tar.xz)
 
 build()
 {
     cd $name-$version 
-	patch -p1 -i $SRC/$name-$version-giflib.patch
-    ./autogen.sh --prefix=/usr \
+    ./configure --prefix=/usr \
                 --with-tests=none \
                 --disable-fribidi \
                 --disable-pulseaudio \
                 --disable-physics \
+                --disable-systemd \
 		        --disable-gstreamer \
 		        --enable-gstreamer1 \
+		        --enable-i-really-know-what-i-am-doing-and-that-this-will-probably-break-things-and-i-will-fix-them-myself-and-send-patches-abb \
                 --disable-doc
     make
     make -j1 DESTDIR=$PKG install

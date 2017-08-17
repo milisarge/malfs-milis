@@ -1,12 +1,12 @@
-# Description: Enlightenment DR19 pencere yöneticisi
+# Description: Enlightenment DR21 pencere yöneticisi
 # URL: http://www.enlightenment.org/
 # Packager: milisarge
-# Depends on: elementary-e19 evas_generic_loaders-e19 xorg-xcb-util-keysyms dejavu-ttf
+# Depends on: elementary evas_generic_loaders xorg-xcb-util-keysyms dejavu-ttf
 
-name=e19
-version=0.19.14
+name=e21
+version=0.21.9
 release=1
-source=(http://download.enlightenment.org/rel/apps/enlightenment/enlightenment-$version.tar.gz)
+source=(http://download.enlightenment.org/rel/apps/enlightenment/enlightenment-$version.tar.xz)
 
 build()
 {
