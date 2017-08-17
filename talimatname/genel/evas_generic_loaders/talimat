@@ -1,0 +1,17 @@
+# Description: evas yükleyicileri
+# URL: http://www.enlightenment.org/
+# Packager: milisarge
+# Depends on: efl 
+
+name=evas_generic_loaders
+version=1.17.0
+release=1
+source=(http://download.enlightenment.org/rel/libs/$name/$name-$version.tar.xz)
+
+build()
+{
+    cd $name-$version 
+    ./configure --prefix=/usr
+    make
+    make -j1 DESTDIR=$PKG install
+}
