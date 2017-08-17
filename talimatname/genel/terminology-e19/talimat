@@ -1,0 +1,18 @@
+# Description: terminal emulator 
+# URL: http://www.enlightenment.org/
+# Packager: milisarge
+# Depends on: elementary-e19
+
+name=terminology-e19
+version=0.9.1
+release=1
+source=(http://download.enlightenment.org/rel/apps/terminology/terminology-$version.tar.gz)
+
+build()
+{
+    cd terminology-$version 
+    ./configure --prefix=/usr \
+                --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+}

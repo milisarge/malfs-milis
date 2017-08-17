@@ -1,0 +1,17 @@
+# Description: e19 widget set
+# URL: http://www.enlightenment.org/
+# Packager: milisarge
+# Depends on: efl-e19 
+
+name=elementary-e19
+version=1.15.2
+release=1
+source=(http://download.enlightenment.org/rel/libs/elementary/elementary-$version.tar.gz)
+
+build()
+{
+    cd elementary-$version 
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}

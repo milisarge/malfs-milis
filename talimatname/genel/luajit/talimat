@@ -3,22 +3,14 @@
 # Packager: milisarge
 # Depends on:
 
-
 name=luajit
-version=2.0.3
+version=2.0.4
 release=1
 source=(http://luajit.org/download/LuaJIT-$version.tar.gz)
 
-
-
 build() {
-
   cd LuaJIT-$version
-
   sed -i 's/PREFIX= \/usr\/local/\PREFIX= \/usr/' Makefile
-
   make
-
   make DESTDIR=$PKG install
-
 }

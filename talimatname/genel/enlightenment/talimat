@@ -1,0 +1,14 @@
+# Description: enlightenment masaüstü
+# URL:  sistem
+# Packager: milisarge
+# Depends on: bullet efl elementary-e19 evas_generic_loaders terminology-e19 e19 efl-e19 luajit
+
+name=enlightenment-sistem
+version=1
+release=1
+
+source=(talimat)
+
+build() {
+echo "enlightenment sistem"
+}

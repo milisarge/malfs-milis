@@ -1,0 +1,23 @@
+# Description: efl kütüphaneleri
+# URL: http://www.enlightenment.org/
+# Packager: milisarge
+# Depends on: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver xorg-libxcursor xorg-libxcomposite xorg-libxinerama xorg-libxrandr xorg-libxtst gst-plugins-base giflib libtiff gstreamer pulseaudio bullet luajit fribidi
+
+name=efl-e19
+version=1.15.3
+release=1
+source=(http://download.enlightenment.org/rel/libs/efl/efl-$version.tar.gz)
+
+build()
+{
+    cd efl-$version 
+    ./configure --prefix=/usr \
+                --disable-gstreamer \
+                --enable-gstreamer1 \
+                --enable-multisense \
+                --with-tests=none \
+                --with-opengl=full \
+                --disable-doc
+    make
+    make -j1 DESTDIR=$PKG install
+}

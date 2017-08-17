@@ -1,0 +1,19 @@
+# Description: Enlightenment DR19 pencere yöneticisi
+# URL: http://www.enlightenment.org/
+# Packager: milisarge
+# Depends on: elementary-e19 evas_generic_loaders-e19 xorg-xcb-util-keysyms xorg-font-dejavu-ttf
+
+name=e19
+version=0.19.14
+release=1
+source=(http://download.enlightenment.org/rel/apps/enlightenment/enlightenment-$version.tar.gz)
+
+build()
+{
+    cd enlightenment-$version
+    ./configure --prefix=/usr \
+                --disable-mount-udisks
+    make
+    make install DESTDIR=$PKG
+    rm -r $PKG/usr/share/enlightenment/{AUTHORS,COPYING,doc/}
+}
