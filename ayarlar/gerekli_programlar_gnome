@@ -21,7 +21,7 @@ scrot
 ntp
 syslinux
 rdesktop
-opera-web-browser
+firefox
 epiphany
 sshfs-fuse
 ffmpegthumbnailer
@@ -37,10 +37,10 @@ xdg-user-dirs
 vokoscreen
 gtkdialog
 python-pip
+python3-pip
 python3-yaml
 python-yaml
 python3-pythondialog
+node
 isodumper
 libreoffice
-
-

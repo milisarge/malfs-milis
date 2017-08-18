@@ -4,10 +4,10 @@
 # fux-theme'den çatallanmıştır 
 
 # Favori uygulamalar
-/usr/bin/dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'gnome-system-monitor.desktop', 'org.gnome.Screenshot.desktop', 'org.gnome.Nautilus.desktop']"
+/usr/bin/dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'gnome-system-monitor.desktop', 'org.gnome.Screenshot.desktop', 'org.gnome.Nautilus.desktop', 'rhythmbox.desktop', 'tracker-needle.desktop', 'org.gnome.Weather.Application.desktop', 'milbit.desktop']"
 
 # Etkin eklentiler
-/usr/bin/dconf write /org/gnome/shell/enabled-extensions "['alternate-tab@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'places-menu@gnome-shell-extensions.gcampax.github.com']"
+/usr/bin/dconf write /org/gnome/shell/enabled-extensions "['alternate-tab@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com']"
 
 # Masaüstü yöneticisi dili
 /usr/bin/gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'tr')]"
@@ -43,7 +43,8 @@
 
 # Masaustu secenekleri
 /usr/bin/dconf write /org/gnome/desktop/background/show-desktop-icons true
-/usr/bin/dconf write /org/gnome/desktop/background/picture-uri "'/usr/share/backgrounds/milis/milis-arkaplan2.png'"
+/usr/bin/dconf write /org/gnome/desktop/background/picture-uri "'/root/ayarlar/milis-linux-arkaplan.png'"
+/usr/bin/dconf write /org/gnome/shell/extensions/user-theme/name "'Nightingale'"
 /usr/bin/dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita'"
 /usr/bin/dconf write /org/gnome/desktop/interface/icon-theme "'Adwaita'"
 /usr/bin/dconf write /org/gnome/desktop/interface/document-font-name "'FreeSans 10'"
@@ -57,7 +58,7 @@
 /usr/bin/dconf write /org/gnome/nautilus/preferences/executable-text-activation "'ask'"
 
 /usr/bin/gsettings set org.gnome.nautilus.window-state geometry '767x402+599+27'
-/usr/bin/gsettings set org.gnome.nautilus.desktop home-icon-name 'Ev Dizini'
+/usr/bin/gsettings set org.gnome.nautilus.desktop home-icon-name 'Başlangıç'
 /usr/bin/gsettings set org.gnome.nautilus.desktop trash-icon-name 'Çöp'
 /usr/bin/gsettings set org.gnome.nautilus.desktop network-icon-name 'Ağ Sunucuları'
 
