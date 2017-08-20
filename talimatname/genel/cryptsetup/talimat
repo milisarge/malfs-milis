@@ -1,0 +1,20 @@
+# Description: kullanıcı dostu dm-crypt/LUKS arayüzü
+# URL: https://gitlab.com/cryptsetup/cryptsetup
+# Packager: milisarge
+# Depends on: libgcrypt popt
+
+name=cryptsetup
+version=1.7.5
+release=1
+source=(https://kernel.org/pub/linux/utils/$name/v1.7/$name-$version.tar.xz)
+
+build() {
+    cd $name-$version
+    LIBS="-lpthread" ./configure \
+      --prefix=/usr \
+      --enable-cryptsetup-reencrypt \
+      -disable-nls \
+      --disable-static
+    make
+    make DESTDIR=$PKG install
+}
