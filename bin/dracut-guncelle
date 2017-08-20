@@ -2,14 +2,6 @@
 # dracut ve modulleri için geerekli güncelleme betiği
 dracutmilisrepo="https://github.com/milisarge/dracut-milis"
 dracutmilis="/opt/dracut-milis"
-if [ -d $dracutmilis ];then
-	dracut_guncelle
-else
-	echo "dracut-milis klonlanıyor."
-	git clone $dracutmilisrepo $dracutmilis
-	echo "dracut-milis klonlandı."
-	[ -d $dracutmilis ] && dracut_guncelle
-fi
 
 dracut_guncelle(){
 	moduller_guncelle
@@ -20,3 +12,15 @@ moduller_guncelle(){
 	cp -rf  $dracutmilis/moduller/* /usr/lib/dracut/modules.d/
 	echo "modüller güncellendi."
 }
+
+
+if [ -d $dracutmilis ];then
+	dracut_guncelle
+else
+	echo "dracut-milis klonlanıyor."
+	git clone $dracutmilisrepo $dracutmilis
+	echo "dracut-milis klonlandı."
+	[ -d $dracutmilis ] && dracut_guncelle
+fi
+
+
