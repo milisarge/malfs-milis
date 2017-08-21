@@ -1048,7 +1048,7 @@ baslatici_olustur(){
 	#mkdir -p /usr/lib/dracut/modules.d/01milis
 	#cp /root/bin/dracut/* /usr/lib/dracut/modules.d/01milis/
 	#dracut -N --xz --force-add milis --omit systemd /boot/initramfs $kernelv
-	dracut -N --force --xz --add 'dmsquash-live pollcdrom' --omit systemd  /boot/initramfs $kernelv
+	dracut -N --force --xz --add 'crypt dmsquash-live pollcdrom livenet' --omit systemd  /boot/initramfs $kernelv
 }
 
 grub_efi_boot(){
@@ -1130,26 +1130,30 @@ squashfs_olustur(){
     cp ./ayarlar/mps.conf $LFS/etc/mps.conf
     cp -f ./rootfs/etc/rc.d/init.d/* $LFS/etc/rc.d/init.d/
     iso_etiket="MILIS_CALISAN"
-    rm iso_icerik/boot/kernel
-    rm iso_icerik/boot/initramfs
-    rm -r iso_icerik/LiveOS
+    rm -rf iso_icerik/boot/kernel
+    rm -rf iso_icerik/boot/initramfs
+    rm -rf iso_icerik/LiveOS
     cp $LFS/boot/kernel-* iso_icerik/boot/kernel
     cp $LFS/boot/initramfs* iso_icerik/boot/initramfs
     anayer=$(du -sm "$LFS"|awk '{print $1}')
     fazladan="$((anayer))"
     mkdir -p tmp
-    mkdir -p tmp/LiveOS
+    #yeni dracut guncellemesiyle-210817 gerek yok
+    #mkdir -p tmp/LiveOS
+    
     #fallocate -l 32G tmp/LiveOS/rootfs.img
     #if [ -f $bos_imaj ];
 	#then
 	   #cp $bos_imaj tmp/LiveOS/ext3fs.img
 	#else
 	   #dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count="$((anayer+fazladan))"
-	dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16384
+	#yeni dracut guncellemesiyle-210817 gerek yok
+	#dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16384
+	dd if=/dev/zero of=tmp/ext3fs.img bs=1MB count=16384
 	#dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16192
-    mke2fs -t ext4 -L $iso_etiket -F tmp/LiveOS/ext3fs.img
+    mke2fs -t ext4 -L $iso_etiket -F tmp/ext3fs.img
     mkdir -p temp-root
-    mount -o loop tmp/LiveOS/ext3fs.img temp-root
+    mount -o loop tmp/ext3fs.img temp-root
     cp -dpR $LFS/* temp-root/
     #rsync -a kur/ temp-root
     umount -l temp-root
