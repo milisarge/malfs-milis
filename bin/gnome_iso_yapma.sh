@@ -48,7 +48,7 @@ fi
 
 cd /var/lib/pkg/DB
 grep -rli '/mnt/lfs' * | xargs -i@ sed -i 's/\/mnt\/lfs\///g' @
-cd /root/
+cd /sources/milis.git
 if [ ! -f /usr/bin/dracut ];then
 	tamir_dracut
 fi
