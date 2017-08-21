@@ -1142,10 +1142,10 @@ squashfs_olustur(){
     #mkdir -p tmp/LiveOS
 	#dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16192
 	#dd if=/dev/zero of=tmp/ext3fs.img bs=1MB count=16384
-    fallocate -l 16G tmp/ext3fs.img
-    mke2fs -t ext4 -L $iso_etiket -F tmp/ext3fs.img
+    fallocate -l 16G tmp/rootfs.img
+    mke2fs -t ext4 -L $iso_etiket -F tmp/rootfs.img
     mkdir -p temp-root
-    mount -o loop tmp/ext3fs.img temp-root
+    mount -o loop tmp/rootfs.img temp-root
     cp -dpR $LFS/* temp-root/
     #rsync -a kur/ temp-root
     umount -l temp-root
@@ -1157,8 +1157,9 @@ squashfs_olustur(){
 }
 
 iso_olustur(){
+	iso_etiket="MILIS_CALISAN"
 	rm milis_calisan.iso
-	genisoimage -l -V MILIS_CALISAN -R -J -pad -no-emul-boot -boot-load-size 4 -boot-info-table  \
+	genisoimage -l -V $iso_etiket -R -J -pad -no-emul-boot -boot-load-size 4 -boot-info-table  \
 	-b boot/isolinux/isolinux.bin -c boot/isolinux/boot.cat -o milis_calisan.iso iso_icerik && isohybrid milis_calisan.iso
 }
 
