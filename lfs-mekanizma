@@ -1129,7 +1129,7 @@ squashfs_olustur(){
     cp rootfs/etc/profile $LFS/etc/profile
     cp ./ayarlar/mps.conf $LFS/etc/mps.conf
     cp -f ./rootfs/etc/rc.d/init.d/* $LFS/etc/rc.d/init.d/
-    iso_etiket="MILIS_CALISAN"
+    iso_etiket="MILIS_DISK_IMAJ"
     rm -rf iso_icerik/boot/kernel
     rm -rf iso_icerik/boot/initramfs
     rm -rf iso_icerik/LiveOS
@@ -1140,17 +1140,9 @@ squashfs_olustur(){
     mkdir -p tmp
     #yeni dracut guncellemesiyle-210817 gerek yok
     #mkdir -p tmp/LiveOS
-    
-    #fallocate -l 32G tmp/LiveOS/rootfs.img
-    #if [ -f $bos_imaj ];
-	#then
-	   #cp $bos_imaj tmp/LiveOS/ext3fs.img
-	#else
-	   #dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count="$((anayer+fazladan))"
-	#yeni dracut guncellemesiyle-210817 gerek yok
-	#dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16384
-	dd if=/dev/zero of=tmp/ext3fs.img bs=1MB count=16384
 	#dd if=/dev/zero of=tmp/LiveOS/ext3fs.img bs=1MB count=16192
+	#dd if=/dev/zero of=tmp/ext3fs.img bs=1MB count=16384
+    fallocate -l 16G tmp/ext3fs.img
     mke2fs -t ext4 -L $iso_etiket -F tmp/ext3fs.img
     mkdir -p temp-root
     mount -o loop tmp/ext3fs.img temp-root
