@@ -129,7 +129,7 @@ paket_sil(){
 		if [ "$kkont" = "kurulu" ];then
 			if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
                 #dizin koruma
-                kurban_kurtar $1
+                etkilenen_kurtar $1
 				cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 				if [ "$tersbag_goster" = "evet" ];then
 					ryaz 31 "ters bagimliliklar"
@@ -137,9 +137,9 @@ paket_sil(){
 					ters_bagimli_kontrol "$paket"
 					ryaz 31 "------------------"
 				fi
-				ryaz 31 "kurban dosyalar"
+				ryaz 31 "etkilenen dosyalar"
 				ryaz 31 "------------------"
-				silme_kurban_kontrol /tmp/$paket.sil
+				silme_etkilenen_kontrol /tmp/$paket.sil
 				ryaz 31 "------------------"
 				if [ "$oto_silme" = "evet" ];then
 					sil_onay="e"
@@ -875,7 +875,7 @@ bagimli_bilgi_dosyala(){
 	
 }
 
-silme_kurban_kontrol(){
+silme_etkilenen_kontrol(){
 	local dizin
 	for f in $(cat $1) ; do 
 		dizin="${f%\'}"
@@ -913,7 +913,7 @@ log_analiz(){
 	fi
 }
 
-kurban_kurtar(){
+etkilenen_kurtar(){
 	local dizin paket
 	paket=$1
 	if [ -f /var/lib/pkg/DB/$paket/kurulan ];then
@@ -936,9 +936,9 @@ kurban_kurtar(){
 		if [ -f /tmp/$paket.kurtar ];then
 			mv /var/lib/pkg/DB/$paket/kurulan /var/lib/pkg/DB/$paket/ilk.kurulan
 			grep -v -F -x -f "/tmp/$paket.kurtar" "/tmp/$paket.sil" > /var/lib/pkg/DB/$paket/kurulan
-			ryaz 32 "$paket kurban dosyaları kurtarıldı."
+			ryaz 32 "$paket etkilenen dosyaları kurtarıldı."
 		else
-			ryaz 32 "$paket kurban dosyası yok."
+			ryaz 32 "$paket etkilenen dosyası yok."
 		fi
 		rm -f /tmp/$paket.sil
 	else
@@ -2105,7 +2105,7 @@ ayarlar() {
 			-kdit|tumdogrula)
 				kurulum_dogrulama_icerik_tum ;;
 			-kdk)
-				kurban_kurtar $2 ;;
+				etkilenen_kurtar $2 ;;
 			-suko)
 				sunucu_kontrol ;;
 			-pot)
