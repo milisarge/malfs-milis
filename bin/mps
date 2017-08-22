@@ -1855,7 +1855,7 @@ ayarlar() {
 				fi ;;
 			-kur)
 				paket_inkur_oto "$2" ;;	
-			#git-paketvt güncelle ve kur
+			### mps gkur paketismi = git-paketvt güncelle ve kur
 			gkur)
 				git_guncelle && paketvt_guncelle && paket_inkur_oto "$2" ;;		
 			kur)
@@ -1883,7 +1883,7 @@ ayarlar() {
 			# özel git projesi kurmak için
 			gitkur)
 				git_proje_kur "$2" ;;
-			# otomatik poroje sistemi
+			# otomatik proje sistemi
 			# özel git projesi kurmak için
 			opk)
 				op_kur "$2" ;;
