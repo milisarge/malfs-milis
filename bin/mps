@@ -1763,7 +1763,7 @@ ayarlar() {
 	
 	while [ "$1" ]; do
 		case $1 in
-			### Milis Paket Sistemi Yardim
+			### Milis_Paket_Sistemi_Yardim
 			### --------------------------
 			### mps -i paketismi = sadece paketi indirir,paket kurulmaz.
 			-i|--indir)
@@ -1804,8 +1804,10 @@ ayarlar() {
 			### mps zorsil|-sz paketismi = ilgili paketi onaysız kaldırır.
 			-sz|zorsil)
 				paket_sil "$2" "evet";;	
+			### mps gsil paketismi = ilgili paketi güvenli(ters bağımlılıklarına da bakarak) kaldırır.
 			gsil)
 				paket_sil "$2" "hayir" "evet";;	
+			### mps -S|silgrub paketismi = ilgili paketi altbağımlılıklarını da sorarak kaldırır.
 			-S|silgrub)
 				mps -bbd "$2"
 				paket_sil_oto_onayli "$2.gerekler.liste" ;;
@@ -2177,7 +2179,7 @@ ayarlar() {
 	done
 }
 yardim_icerik(){
-	cat /root/bin/mps | sed -e 's/^[ \t]*//' | sed -n '/^###/p'  | sed  '/ /s/^###//g'
+	cat /root/bin/mps | sed -e 's/^[ \t]*//' | sed -n '/^###/p'  | sed  '/ /s/^###//g' | awk '{split($0,a,"=");  printf "%-6s %-13s %-18s %-40s \n",$1,$2,$3,a[2]}'
 }
 yardim() {
     cat <<_EOF
