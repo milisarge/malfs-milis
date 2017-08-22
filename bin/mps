@@ -1759,32 +1759,34 @@ agdan_kur(){
 	fi
 }
 
-yardim(){
- echo "yardim"
-}
-
-
 ayarlar() {
 	
 	while [ "$1" ]; do
 		case $1 in
+			### Milis Paket Sistemi Yardim
+			### --------------------------
+			### mps -i paketismi = sadece paketi indirir,paket kurulmaz.
 			-i|--indir)
 				kurulum_onay="olumsuz"
 				paket_indir "$2" ;;
+			### mps -ik paketismi = ilgili paketi indirirve kurar.
 			-ik|--inku)
 				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 					kokdizin="$4"
 				fi
 				agdan_kur "$2" ;;
+			### mps -ikz|yekur paketismi = ilgili indirip tekrardan kurar,kurulu olmasına bakılmaz.
 			-ikz|yekur)
 				tekrarkur="evet"  
 				agdan_kur "$2" ;;
-			-k|--yrku)
+			### mps -k paketismi..mps.lz = yerel dizindeki paketi kurar.
+			-k)
 				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 					kokdizin="$4"
 					tekrarkur="evet"
 				fi
 				yerelden_kur "$2" ;;
+			### mps sil|-s paketismi = ilgili paketi onaylı kaldırır.
 			-s|sil)
 				if [[ "$2" == "py-"* ]]; then
 					pypaket=`echo "$2" | cut -d'-' -f 2`
@@ -1799,6 +1801,7 @@ ayarlar() {
 					exit 1
 				fi
 				paket_sil "$2" ;;
+			### mps zorsil|-sz paketismi = ilgili paketi onaysız kaldırır. \n
 			-sz|zorsil)
 				paket_sil "$2" "evet";;	
 			gsil)
@@ -2163,6 +2166,8 @@ ayarlar() {
 			-v)
 				ryaz 33 "$betikad $versiyon  $iletisim" 
 				exit 0 ;;
+			-y|yardim)
+				yardim_icerik;;
 			-h|--help)
 				yardim
 				exit 0 ;;
@@ -2171,7 +2176,9 @@ ayarlar() {
 		shift
 	done
 }
-
+yardim_icerik(){
+	cat /root/bin/mps | sed -e 's/^[ \t]*//' | sed -n '/^###/p'  | sed  '/ /s/^###//g'
+}
 yardim() {
     cat <<_EOF
     
