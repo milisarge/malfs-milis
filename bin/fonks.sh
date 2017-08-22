@@ -1,7 +1,7 @@
 #!/bin/sh
 
 . /usr/bin/gettext.sh
-alias sed="busybox sed"
+
 
 # Internal
 lgettext() { gettext -d 'x' "$@"; }
