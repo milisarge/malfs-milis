@@ -1,0 +1,17 @@
+# Description: bsdiff,bspatch ikili dosyalar için fark ve yama uygulaması
+# URL: https://github.com/mendsley/bsdiff
+# Packager: milisarge
+# Depends on: valgrind
+
+name=bsdiff
+version=4.3
+release=1
+source=(https://github.com/mendsley/bsdiff/archive/master.tar.gz::$name-mendsley-$version.tar.gz)
+
+build() {
+	cd ${name}-master
+	./autogen.sh
+	./configure --prefix=/usr
+	make
+	make prefix=$PKG/usr install
+}
