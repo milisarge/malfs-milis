@@ -1801,7 +1801,7 @@ ayarlar() {
 					exit 1
 				fi
 				paket_sil "$2" ;;
-			### mps zorsil|-sz paketismi = ilgili paketi onaysız kaldırır. \n
+			### mps zorsil|-sz paketismi = ilgili paketi onaysız kaldırır.
 			-sz|zorsil)
 				paket_sil "$2" "evet";;	
 			gsil)
