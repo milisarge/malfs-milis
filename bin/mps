@@ -1855,7 +1855,10 @@ ayarlar() {
 				fi ;;
 			-kur)
 				paket_inkur_oto "$2" ;;	
-			 kur)
+			#git-paketvt güncelle ve kur
+			gkur)
+				git_guncelle && paketvt_guncelle && paket_inkur_oto "$2" ;;		
+			kur)
 				if [[ "$2" == "py-"* ]]; then
 					pypaket=`echo "$2" | cut -d'-' -f 2`
 					echo $pypaket "pip2 ile kurulacak"
