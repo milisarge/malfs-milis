@@ -41,5 +41,5 @@ build() {
 	install -Dm644 "$SRC/milis-linux-tree.png" "$PKG/usr/share/plymouth/milis.png"
 	install -Dm644 "$SRC/plymouthd.conf" "$PKG/etc/plymouth/plymouthd.conf"
 	cd /sources/milis.git/ayarlar/servisler
-	make DESTDIR=$PKG kur-slim
+	make DESTDIR=$PKG kur-plymouth
 }
