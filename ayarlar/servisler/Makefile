@@ -498,6 +498,16 @@ kur-sddm: dizinleri-olustur
 	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc5.d/S95sddm
 	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc6.d/K05sddm
 
+kur-plymouth: dizinleri-olustur
+	install -m ${MODE} mbd/init.d/plymouth ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/plymouth ${EXTDIR}/rc.d/rc0.d/K20plymouth
+	ln -sf ../init.d/plymouth ${EXTDIR}/rc.d/rc1.d/K20plymouth
+	ln -sf ../init.d/plymouth ${EXTDIR}/rc.d/rc2.d/S20plymouth
+	ln -sf ../init.d/plymouth ${EXTDIR}/rc.d/rc3.d/S20plymouth
+	ln -sf ../init.d/plymouth ${EXTDIR}/rc.d/rc4.d/S20plymouth
+	ln -sf ../init.d/plymouth ${EXTDIR}/rc.d/rc5.d/S20plymouth
+	ln -sf ../init.d/plymouth ${EXTDIR}/rc.d/rc6.d/K20plymouth
+
 kur-sendmail: dizinleri-olustur
 	install -m ${MODE} mbd/init.d/sendmail   ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/sendmail ${EXTDIR}/rc.d/rc0.d/K25sendmail
@@ -880,6 +890,16 @@ sil-krb5:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S28krb5
 	rm -f ${EXTDIR}/rc.d/rc5.d/S28krb5
 	rm -f ${EXTDIR}/rc.d/rc6.d/K42krb5
+	
+sil-plymouth:
+	rm -f ${EXTDIR}/rc.d/init.d/plymouth
+	rm -f ${EXTDIR}/rc.d/rc0.d/K20plymouth
+	rm -f ${EXTDIR}/rc.d/rc1.d/K20plymouth
+	rm -f ${EXTDIR}/rc.d/rc2.d/S20plymouth
+	rm -f ${EXTDIR}/rc.d/rc3.d/S20plymouth
+	rm -f ${EXTDIR}/rc.d/rc4.d/S20plymouth
+	rm -f ${EXTDIR}/rc.d/rc5.d/S20plymouth
+	rm -f ${EXTDIR}/rc.d/rc6.d/K20plymouth
 
 sil-lprng:
 	rm -f ${EXTDIR}/rc.d/init.d/lprng
