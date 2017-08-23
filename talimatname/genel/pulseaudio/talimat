@@ -4,10 +4,11 @@
 # Depends on: fftw intltool json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate 
 
 name=pulseaudio
-version=7.1
+version=10.99.1
 release=1
 
-source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz)
+source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz
+		pulseaudio.desktop)
 
 build() {
 unset MAKEFLAGS
@@ -28,5 +29,7 @@ for size in 16 22 32 48 64 128; do
     mkdir -p $PKG/usr/share/icons/hicolor/${size}x${size}/{apps,devices}
     ln -s ../apps/pulseaudio.png $PKG/usr/share/icons/hicolor/${size}x${size}/devices/audio-backend-pulseaudio.png
 done
+mkdir -p $PKG/etc/xdg/autostart
+cp -f $SRC/pulseaudio.desktop $PKG/etc/xdg/autostart/
 rm -f $PKG/etc/dbus-1/system.d/pulseaudio-system.conf
 }
