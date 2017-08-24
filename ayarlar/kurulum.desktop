@@ -2,7 +2,7 @@
 Path=/usr/bin
 Name=Milis Linux Kurulumu
 Comment=Milis Linux Kurulumu
-Exec=milis-kur
+Exec=sudo milis-kur-konsol
 Terminal=true
 Type=Application
 Icon=/sources/milis.git/ayarlar/milislogo.png

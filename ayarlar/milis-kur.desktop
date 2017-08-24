@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Milis Linux Installer
+Name[tr]=Milis Linux Yükleyicisi
+GenericName=Milis Linux Installer
+GenericName[tr]=Milis Linux Yükleyicisi
+Exec=sudo milis-kur
+Icon=/sources/milis.git/ayarlar/milislogo.png
+Terminal=false
+Categories=Application;System;
+StartupNotify=true
