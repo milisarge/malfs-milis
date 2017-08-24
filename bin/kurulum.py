@@ -139,6 +139,8 @@ def kullaniciOlustur(isim,kullisim,kullsifre):
 	os.system(ayar_komut)
 	ayar_komut2="cp -r /root/.xinitrc /home/"+kullisim+"/"
 	os.system(ayar_komut2)
+	ayar_komut3="chown "+kullisim+":"+kullisim+" -R /home/"+kullisim
+	os.system(ayar_komut3)
 	saat_komut="saat_ayarla_tr"
 	os.system(saat_komut)
 	d.infobox(text=kullisim+" kullanıcısı başarıyla oluşturuldu.")
