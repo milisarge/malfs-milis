@@ -59,6 +59,7 @@ python-yaml
 python3-pythondialog
 python3-qt5
 python3-parted
+python3-pytz
 node
 numix-gtk-theme
 slim

@@ -4,17 +4,17 @@
 # Depends on: freetype fox libpng libjpeg-turbo libtiff expat intltool
 
 name=xfe
-version=1.41
+version=1.42
 release=1
-
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+
 build() {
-cd $name-$version
-export CFLAGS="$CFLAGS `pkg-config --cflags freetype2`"
-aclocal
-automake --add-missing
-autoreconf
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	export CFLAGS="$CFLAGS `pkg-config --cflags freetype2`"
+	aclocal
+	automake --add-missing
+	autoreconf
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }
