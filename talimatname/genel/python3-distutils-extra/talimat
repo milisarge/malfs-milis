@@ -1,0 +1,14 @@
+# Description: Python3 derleme sistemi
+# URL: https://launchpad.net/python-distutils-extra
+# Packager: milisarge
+# Depends on: python3 python3-setuptools intltool
+
+name=python3-distutils-extra
+version=2.40
+release=1
+source=(https://launchpad.net/ubuntu/+archive/primary/+files/python-distutils-extra_2.40.tar.xz)
+
+build() {
+	cd python-distutils-extra-$version
+	python3 setup.py install --root="$PKG/"
+}
