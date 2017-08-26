@@ -4,7 +4,7 @@
 # Depends on: perl-uri xfce4-libui xfce4-libutil
 
 name=exo
-version=0.10.7
+version=0.11.5
 release=1
 source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
 
