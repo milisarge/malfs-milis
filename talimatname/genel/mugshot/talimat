@@ -6,7 +6,7 @@
 name=mugshot
 version=0.3.2
 release=1
-source=(https://launchpad.net/mugshot/${version%.*}/0.3.2/+download/m$name-$version.tar.gz::$name-$version.tar.gz
+source=(https://launchpad.net/mugshot/${version%.*}/0.3.2/+download/$name-$version.tar.gz::$name-$version.tar.gz
 		office-phone.patch
 		missing_default_face.patch
 		fix-local.patch.gz)
