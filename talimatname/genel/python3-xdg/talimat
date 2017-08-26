@@ -1,0 +1,15 @@
+# Description: FreeDesktop standartlarına erişmek için kullanılan Python3 kütüphanesi
+# URL: http://freedesktop.org/wiki/Software/pyxdg
+# Packager: geantbrun at gmail dot com
+# Depends on: python3 
+
+name=python3-xdg
+version=0.25
+release=1
+
+source=(http://people.freedesktop.org/~takluyver/pyxdg-$version.tar.gz)
+
+build() {
+	cd pyxdg-$version
+	python3 setup.py install --prefix=/usr --root=$PKG
+}
