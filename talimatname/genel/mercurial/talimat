@@ -1,23 +1,45 @@
-# Description: Python'da yazılmış, Git ve Bazaar'a benzer, dağıtılmış bir kaynak denetim yönetimi aracıdır. Mozilla ve Vim gibi projeler tarafından kullanılmaktadır.
+# Description: Python'da yazılmış, Git ve Bazaar'a benzer,dağıtılmış bir kaynak denetim yönetimi aracıdır.
 # URL: http://mercurial.selenic.com
 # Packager: milisarge
-# Depends on: python git gnupg subversion bzr python-docutils ca-certificates
+# Depends on: python tk
 
 name=mercurial
-version=3.7.1
-release=2
-source=(https://www.mercurial-scm.org/release/mercurial-$version.tar.gz)
+version=4.3.1
+release=1
+source=(https://www.mercurial-scm.org/release/mercurial-$version.tar.gz
+		mercurial.profile)
  
 build() {
+	cd $name-$version	
+	sed -i -e 's#env python#env python2#' mercurial/lsprof.py
+	cd contrib/chg
+	make
+	cd $SRC/${name}-${version}
+	python2 setup.py install --root="${PKG}/" --optimize=1
 
-cd $name-$version
-	
-make build
-	
-make doc
+	install -d ${PKG}/usr/share/man/{man1,man5}
+	install -m644 doc/hg.1 "${PKG}/usr/share/man/man1"
+	install -m644 doc/{hgrc.5,hgignore.5} "${PKG}/usr/share/man/man5"
+	install -m755 contrib/hgk "${PKG}/usr/bin"
+	install -m644 -D contrib/zsh_completion "${PKG}/usr/share/zsh/site-functions/_hg"
+	install -m644 -D contrib/bash_completion "${PKG}/usr/share/bash-completion/completions/hg"
+	install -d "${PKG}/usr/share/emacs/site-lisp"
+	install -m644 contrib/{mq.el,mercurial.el} "${PKG}/usr/share/emacs/site-lisp"
 
-make DESTDIR=$PKG PREFIX=/usr install-bin
-	
-make DESTDIR=$PKG PREFIX=/usr install-doc
-	
+	vimpath="${PKG}/usr/share/vim/vimfiles"
+	install -Dm644 contrib/vim/HGAnnotate.vim "${vimpath}/syntax/HGAnnotate.vim"
+
+	# set some variables
+	install -m755 -d ${PKG}/etc/profile.d
+	install -m755 ${SRC}/mercurial.profile "${PKG}/etc/profile.d/mercurial.sh"
+
+	# install configuration file
+	install -m755 -d ${PKG}/etc/mercurial
+	# install -m644 contrib/sample.hgrc "${PKG}/etc/mercurial/hgrc"
+
+	# FS#38825 - Add certs config to package
+	echo -e "\n[web]\ncacerts = /etc/ssl/certs/ca-certificates.crt\n" >> "${PKG}/etc/mercurial/hgrc"
+
+	cd contrib/chg
+	make DESTDIR="${PKG}" PREFIX=/usr install
 }
