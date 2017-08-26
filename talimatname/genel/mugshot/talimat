@@ -8,8 +8,7 @@ version=0.3.2
 release=1
 source=(https://launchpad.net/mugshot/${version%.*}/0.3.2/+download/$name-$version.tar.gz::$name-$version.tar.gz
 		office-phone.patch
-		missing_default_face.patch
-		fix-local.patch.gz)
+		missing_default_face.patch)
 
 build() {
 	cd "${SRC}/${name}-${version}"
@@ -17,8 +16,6 @@ build() {
 	cd "${SRC}"
 	patch -Np1 -i "${SRC}"/missing_default_face.patch
 	cd "${SRC}/${name}-${version}"
-	zcat $SRC/fix-local.patch.gz | patch -p1 --verbose || exit 1
-	sed -i 's/^Categories=*.*/Categories=X-XFCE;GTK;DesktopSettings;/g' mugshot.desktop.in
 	python3 setup.py build
 	python3 setup.py install --root=$PKG --optimize=1
 	if [ -d $PKG/usr/share/doc ]; then
