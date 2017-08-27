@@ -4,23 +4,42 @@
 # Depends on:
 
 name=lua
-version=5.3.2
-release=2
+version=5.3.4
 _majorver=${version%.*}
+release=1
 
-source=(http://www.lua.org/ftp/$name-$version.tar.gz lua.pc
-	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-shared_library-1.patch)
+source=(https://www.lua.org/ftp/lua-$version.tar.gz
+        liblua.so.patch
+        lua.pc
+        LICENSE)
+        
 build() {
-	cd $name-$version
-	patch -Np1 -i ../$name-$version-shared_library-1.patch
-	sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h
 
-    	make linux
-	make INSTALL_TOP=$PKG/usr  TO_LIB="liblua.so liblua.so.5.3 liblua.so.5.3.2" \
-	INSTALL_DATA="cp -d" INSTALL_MAN=$PKG/usr/share/man/man1 install
-	mkdir -pv $PKG/usr/share/doc/$name-$version
-	cp -v doc/*.{html,css,gif,png} $PKG/usr/share/doc/$name-$version
-	mkdir -p $PKG/usr/lib/pkgconfig
-	sed "s/%VER%/$_majorver/g;s/%REL%/$pkgver/g" ../lua.pc \
-> $PKG/usr/lib/pkgconfig/lua.pc
+	cd $SRC/lua-$version
+	patch -p1 -i ../liblua.so.patch
+
+	sed "s/%VER%/$_majorver/g;s/%REL%/$version/g" ../lua.pc > lua.pc
+
+	# quite a lot of packages still use lua 5.1 API, enable 5.1 compat mode
+	make MYCFLAGS="$CFLAGS -fPIC -DLUA_COMPAT_5_2 -DLUA_COMPAT_5_1" MYLDFLAGS="$LDFLAGS" linux
+	
+	make \
+	TO_LIB="liblua.a liblua.so liblua.so.$_majorver liblua.so.$version" \
+	INSTALL_DATA='cp -d' \
+	INSTALL_TOP="$PKG"/usr \
+	INSTALL_MAN="$PKG"/usr/share/man/man1 \
+	install
+
+	ln -sf /usr/bin/lua "$PKG"/usr/bin/lua$_majorver
+	ln -sf /usr/bin/luac "$PKG"/usr/bin/luac$_majorver
+	ln -sf /usr/lib/liblua.so.$version "$PKG"/usr/lib/liblua$_majorver.so
+
+	install -Dm644 lua.pc "$PKG"/usr/lib/pkgconfig/${name}53.pc
+	ln -sf /usr/lib/pkgconfig/${name}53.pc "$PKG"/usr/lib/pkgconfig/$name.pc
+
+	install -d "$PKG"/usr/share/doc/$name
+	install -m644 doc/*.{gif,png,css,html} "$PKG"/usr/share/doc/$name
+	install -Dm644 ../LICENSE "$PKG"/usr/share/licenses/$name/LICENSE
+	rm -r $PKG/usr/share/doc
+	rm -r $PKG/usr/share/man
 }
