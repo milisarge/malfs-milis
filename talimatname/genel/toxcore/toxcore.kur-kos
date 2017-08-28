@@ -1,0 +1,4 @@
+/sbin/groupadd -g 92 tox-bootstrapd
+/sbin/useradd -g tox-bootstrapd -u 92 -d /var/tox-bootstrapd -s /bin/false tox-bootstrapd
+/bin/passwd -l tox-bootstrapd
+[[ -d var/lib/tox-bootstrapd ]] || install -dm 750 -o tox-bootstrapd -g tox-bootstrapd var/lib/tox-bootstrapd

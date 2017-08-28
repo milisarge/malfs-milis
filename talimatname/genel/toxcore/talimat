@@ -4,7 +4,7 @@
 # Depends on: libconfig libsodium libvpx opus cmake
 
 name=toxcore
-version=0.1.8
+version=0.1.10
 release=1
 source=(https://github.com/TokTok/c-toxcore/archive/v$version.tar.gz)
 
