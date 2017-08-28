@@ -1,0 +1,24 @@
+# Description: yüksek derece ayarlanabilir pencere yöneticisi altyapısı
+# URL: https://awesomewm.org/
+# Packager: milisarge
+# Depends on: asciidoc cmake docbook-xsl doxygen imagemagick xmlto cairo dbus gdk-pixbuf imlib2 libxdg-basedir lua lua-lgi pango startup-notification xcb-util-cursor xcb-util-keysyms xcb-util-wm libxkbcommon xcb-util-xrm 
+
+name=awesome
+version=4.2
+release=1
+source=(https://github.com/awesomeWM/awesome/releases/download/v4.2/awesome-4.2.tar.xz::$name-$version.tar.xz)
+
+build() {
+	cd ${name}-${version}
+	mkdir -p build
+	cd build
+	cmake .. \
+	-DCMAKE_BUILD_TYPE=RELEASE \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DSYSCONFDIR=/etc \
+	-DLUA_LIBRARY=/usr/lib/liblua.so
+	make
+	cd ..
+	make -C build DESTDIR="${PKG}" install
+	install -Dm 644 awesome.desktop -t "${PKG}/usr/share/xsessions"
+}
