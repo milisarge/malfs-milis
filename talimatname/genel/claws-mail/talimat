@@ -1,7 +1,7 @@
 # Description: GTK+ temelli bir elektronik posta istemcisi
 # URL: http://www.claws-mail.org
 # Packagers: milisarge
-# Depends on: bogofilter,enchant,aspell,libetpan,gnupg,gpgme,gnutls,dbus,gtk2,libtasn1,enchant
+# Depends on: bogofilter enchant aspell libetpan gnupg gpgme gnutls dbus gtk2 libtasn1 enchant
 
 name=claws-mail
 version=3.11.1
