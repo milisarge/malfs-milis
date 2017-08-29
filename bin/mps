@@ -837,7 +837,7 @@ bagimli_bilgi(){
 			if [ "$2" = "dogrula" ];then
 				kurulum_dogrulama_icerik "$bag"
 			else
-				echo "$1" "`kurulu_kontrol $bag`"
+				echo "$bag" "`kurulu_kontrol $bag`"
 			fi
 		done
 	fi
