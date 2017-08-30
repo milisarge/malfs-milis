@@ -818,15 +818,17 @@ ters_bagimli_bilgi(){
 kirik_ters_bagimli_bilgi(){
 	gentalimatlar=$(ls $talimatname_dizin/genel/)
 	for tal in $gentalimatlar;do
-		#echo $tal
-		bagimd=`cat $talimatname_dizin/genel/$tal/talimat | grep "Depends" | cut -d':' -f2`
-		if [ -n "$bagimd" ]; then
-			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-			for bag in $bagimd;do
-				if [ $bag = $1 ];then
-					kirik_kontrol_paket $bag
-				fi
-			done
+		#paket kuruluysa kontrolu yapılacak
+		if [ -d "$VT/$tal" ];then
+			bagimd=`cat $talimatname_dizin/genel/$tal/talimat | grep "Depends" | cut -d':' -f2`
+			if [ -n "$bagimd" ]; then
+				bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+				for bag in $bagimd;do
+					if [ $bag = $1 ];then
+						kirik_kontrol_paket $tal
+					fi
+				done
+			fi
 		fi
 	done
 }
@@ -2258,3 +2260,4 @@ ana "$@"
 #33 sari
 #34 mavi
 #34 mor
+k
