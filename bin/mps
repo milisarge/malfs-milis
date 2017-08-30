@@ -2032,6 +2032,7 @@ ayarlar() {
 				derleme_listyap "$2" ;;	
 			-dlb|--drlb)
 				derleme_listbilgi "$2";;	
+			### mps -b paketismi = ilgili paketin kurulum bilgilerini verir.
 			-b|--pkbl)
 				paket_bilgi "$2" ;;
 			#sunucu bilgisi alma
