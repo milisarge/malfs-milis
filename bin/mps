@@ -1827,7 +1827,7 @@ ayarlar() {
 				zorla_derle="evet"
 				kurulum_onay="olumsuz"
 				paket_derle "$2" ;;
-			### mps odkp paketismi = bir paketi bağımlılık zinciri çıkarıp gerekli tüm paketleri önce kurar gerekli olanları derler,paketler ve kurar.
+			### mps odkp paketismi = bir paketi bağımlılık zinciri çıkarıp gereklileri önce kurar gerekli olanları derler,paketler ve kurar.
 			odkp)
 				if [ -d "$talimatname_dizin/temel/$2" ] ; then 
 					ryaz 31 "temel paket için odkp kullanılamaz!"
