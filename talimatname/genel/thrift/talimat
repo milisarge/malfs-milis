@@ -33,7 +33,7 @@ build() {
 	--without-nodejs \
     --without-tests
 
-	make
+	make -j2
 	make DESTDIR="$PKG" install
 	install -m0644 -D contrib/thrift.vim "$PKG"/usr/share/vim/vimfiles/syntax/thrift.vim
 	install -m0644 -D contrib/thrift.el "$PKG"/usr/share/emacs/site-lisp/thrift.el
