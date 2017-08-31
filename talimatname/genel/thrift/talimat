@@ -1,0 +1,41 @@
+# Description: Ölçeklenebilir çoğul programlama dilleri için IPC/RPC çatısı
+# URL: http://thrift.apache.org/
+# Packager: milisarge
+# Depends on: qt5 boost libevent
+
+name=thrift
+version=0.10.0
+release=1
+source=(https://github.com/apache/thrift/archive/$version.zip::$name-$zip.zip)
+
+build() {
+	cd thrift-$version
+
+	./bootstrap.sh
+	./configure --prefix=/usr \
+	--with-cpp \
+	--with-c_glib \
+	--with-qt5 \
+	--with-libevent \
+	--with-csharp \
+	--without-haskell \
+	--without-php \
+	--without-ruby \
+	--without-python \
+	--without-erlang \
+	--without-perl \
+	--without-java \
+	--without-c_sharp \
+	--without-d \
+	--without-php \
+	--without-go \
+	--without-lua \
+	--without-nodejs \
+    --without-tests
+
+	make
+	make DESTDIR="$PKG" install
+	install -m0644 -D contrib/thrift.vim "$PKG"/usr/share/vim/vimfiles/syntax/thrift.vim
+	install -m0644 -D contrib/thrift.el "$PKG"/usr/share/emacs/site-lisp/thrift.el
+
+}
