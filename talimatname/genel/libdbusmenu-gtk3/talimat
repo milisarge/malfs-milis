@@ -20,7 +20,7 @@ build() {
       --localstatedir=/var \
       --disable-{dumper,static,tests} \
       --with-gtk=3
-  make
+  make -j1
   make -C libdbusmenu-glib DESTDIR=$PKG install
   make -C libdbusmenu-gtk DESTDIR=$PKG install
   make -C libdbusmenu-glib DESTDIR=$PKG uninstall

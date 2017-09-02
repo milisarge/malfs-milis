@@ -6,9 +6,8 @@
 name=indicator-sound
 version=12.10.2
 release=1
-source=(https://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.gz
-http://pkgbuild.com/~bgyorgy/sources/indicator-sound-translations-20130310.tar.gz
-)
+source=(https://launchpad.net/${name}/${version%.*}/${version}/+download/${name}-${version}.tar.gz
+		http://pkgbuild.com/~bgyorgy/sources/indicator-sound-translations-20130310.tar.gz)
 
 build() {
   cd ${name}-${version}
