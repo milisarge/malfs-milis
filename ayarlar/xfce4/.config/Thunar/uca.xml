@@ -25,7 +25,7 @@
 	<icon>Thunar</icon>
 	<name>Dizini yetkili olarak aç</name>
 	<unique-id>1502568163799225-10</unique-id>
-	<command>gksudo thunar %f</command>
+	<command>gksu thunar %f</command>
 	<description>Bu dizini yetkili kullanıcı haklarıyla açmak için bunu kullanın</description>
 	<patterns>*</patterns>
 	<directories/>
