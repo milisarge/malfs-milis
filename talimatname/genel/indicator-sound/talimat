@@ -4,9 +4,9 @@
 # Depends on: intltool vala ido libdbusmenu-gtk3 libgee libindicator libindicator-gtk2 pulseaudio libnotify 
 
 name=indicator-sound
-version=12.10.2
+version=12.10.1
 release=1
-source=(https://launchpad.net/${name}/${version%.*}/${version}/+download/${name}-${version}.tar.gz
+source=(https://launchpad.net/indicator-sound/12.10/$version/+download/$name-$version.tar.gz
 		http://pkgbuild.com/~bgyorgy/sources/indicator-sound-translations-20130310.tar.gz)
 
 build() {
