@@ -1,9 +1,9 @@
-# Description: DBusMenu protokolünün GTK2 uygulaması olan kitaplık
+# Description: DBusMenu protokolünün GTK3 uygulaması olan kitaplık
 # URL: https://launchpad.net/dbusmenu
 # Packager: milisarge
 # Depends on: python gobject-introspection gtk2 gtk3 libdbusmenu-glib vala gnome-doc-utils atk libepoxy json-glib
 
-name=libdbusmenu-gtk2
+name=libdbusmenu-gtk3
 _name=libdbusmenu
 release=1
 version=16.04.0
@@ -19,7 +19,7 @@ build() {
       --sysconfdir=/etc \
       --localstatedir=/var \
       --disable-{dumper,static,tests} \
-      --with-gtk=2
+      --with-gtk=3
   make
   make -C libdbusmenu-glib DESTDIR=$PKG install
   make -C libdbusmenu-gtk DESTDIR=$PKG install

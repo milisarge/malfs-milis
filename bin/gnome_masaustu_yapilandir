@@ -64,6 +64,8 @@
 
 /usr/bin/dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'small'"
 /usr/bin/dconf write /org/gnome/nautilus/icon-view/thumbnail-size 48
+/usr/bin/dconf write /org/gnome/nautilus/preferences/show-create-link true
+/usr/bin/dconf write /org/gnome/nautilus/preferences/show-delete-permanently true
 
 # Raporlama kapalı
 /usr/bin/dconf write /org/gnome/desktop/privacy/report-technical-problems false

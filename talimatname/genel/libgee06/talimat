@@ -1,0 +1,18 @@
+# Description: GObject koleksiyon kütüphanesi (eski)
+# URL: http://www.gnome.org/
+# Packager: milisarge
+# Depends on: glib gobject-introspection vala 
+
+name=libgee06
+_name=libgee
+version=0.6.8
+release=1
+
+source=(http://ftp.acc.umu.se/pub/gnome/sources/$_name/${version%.*}/$_name-$version.tar.xz)
+	
+build() {
+cd $_name-$version
+./configure --prefix=/usr
+make 
+make DESTDIR=$PKG install
+}

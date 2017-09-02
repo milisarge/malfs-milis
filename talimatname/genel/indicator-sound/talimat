@@ -1,0 +1,30 @@
+# Description: Birleştirilmiş ses menü göstergesi.
+# URL: https://launchpad.net/indicator-sound
+# Packager: yasarciv67@gmail.com
+# Depends on: intltool vala ido libdbusmenu-gtk3 libgee libindicator-gtk3 pulseaudio libnotify 
+
+name=indicator-sound
+version=12.10.2
+release=1
+source=(https://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.gz
+http://pkgbuild.com/~bgyorgy/sources/indicator-sound-translations-20130310.tar.gz
+)
+
+build() {
+  cd ${name}-${version}
+# Install updated language files
+  rename ${name}- '' ../po/${name}-*.po
+  mv -f -t po ../po/*
+  printf "%s\n" po/*.po | sed -e 's/po\///g' -e 's/\.po//g' >po/LINGUAS  
+  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+  ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --libexecdir="/usr/lib/${name}" --disable-{schemas-compile,static}
+  make
+  make DESTDIR="${PKG}" install
+# Fix icon names to provide the playlist icon
+  install -dm 755 "${PKG}"/usr/share/libindicator/icons/hicolor/{16x16,scalable}/mimetypes
+  mv "${PKG}"/usr/share/libindicator/icons/hicolor/16x16/{status/sound-icon.png,mimetypes/playlist.png}
+  mv "${PKG}"/usr/share/libindicator/icons/hicolor/scalable/{status/sound-icon.svg,mimetypes/playlist.svg}
+  rm -r "${PKG}"/usr/share/libindicator/icons/hicolor/{16x16,scalable}/status
+# vim: ts=2 sw=2 et:
+
+}

@@ -1,19 +1,22 @@
 # Description : DBusMenu protokolünün Glib uygulaması sağlayan kitaplık
 # URL: https://launchpad.net/dbusmenu
 # Packager: milisarge
-# Depends on: python gobject-introspection gtk2 gtk3 glib vala gnome-doc-utils atk libepoxy json-glib
+# Depends on: python gobject-introspection gtk2 gtk3 glib vala gnome-doc-utils atk libepoxy json-glib gnome-common pkg-config valgrind
 
 name=libdbusmenu-glib
 _name=libdbusmenu
 release=1
-version=0.5.90
+version=16.04.0
 
-source=(http://launchpad.net/dbusmenu/0.6/${version}/+download/${_name}-$version.tar.gz )
+source=(https://launchpad.net/${_name}/${version%.*}/${version}/+download/${_name}-${version}.tar.gz )
 
 build() {
-  cd libdbusmenu-$version
+  export HAVE_VALGRIND_TRUE='#'
+  export HAVE_VALGRIND_FALSE=''
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
+  cd $_name-$version
+
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$_name \
                --disable-static --disable-scrollkeeper --disable-tests
 
   make

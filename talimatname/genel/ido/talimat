@@ -1,0 +1,26 @@
+# Description: Göstergeler için kullanılan pencere öğeleri ve diğer nesneler
+# URL: https://launchpad.net/ido
+# Packager: yasarciv67@gmail.com
+# Depends on: gtk3 
+
+name=ido
+version=12.10.2
+release=1
+source=(https://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.gz
+)
+
+build() {
+  cd $name-${version}
+
+  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+
+  ./configure \
+    --prefix='/usr' \
+    --localstatedir='/var' \
+    --sysconfdir='/etc'
+  make
+  make DESTDIR="${PKG}" install
+
+# vim: ts=2 sw=2 et:
+
+}
