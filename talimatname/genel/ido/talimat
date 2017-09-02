@@ -18,9 +18,7 @@ build() {
     --prefix='/usr' \
     --localstatedir='/var' \
     --sysconfdir='/etc'
-  make
+  make -j1
   make DESTDIR="${PKG}" install
-
-# vim: ts=2 sw=2 et:
 
 }
