@@ -1,0 +1,19 @@
+# Description: OpenPGM: implementation of the Pragmatic General Multicast (PGM, RFC3208)
+# URL: https://www.freshports.org/net/openpgm/
+# Packager: milisarge
+# Depends on: python
+
+name=libpgm
+version=5.2.122
+release=1
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/openpgm/$name-$version.tar.gz
+)
+
+build() {
+  cd "$SRC/$name-$version/openpgm/pgm"
+  find . -type f -exec sed -i 's/python/python2/g' {} \+
+  cd "$SRC/$name-$version/openpgm/pgm"
+  ./configure --prefix=/usr
+  make
+  make prefix="$PKG/usr" install
+}
