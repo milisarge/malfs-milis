@@ -1,0 +1,17 @@
+# Description: standart ML derleyicisinin güncel gerçeklemesi
+# URL: http://www.polyml.org
+# Packager: milisarge
+# Depends on: libffi
+
+name=polyml
+version=5.7
+release=1
+source=(https://github.com/${name}/${name}/archive/v${version}.tar.gz::$name-$version.tar.gz)
+
+build() {
+  cd "$SRC/$name-$version"
+  ./configure --prefix=/usr --without-x --with-system-libffi --with-gmp --enable-shared
+  make
+  make -k check
+  make DESTDIR="$PKG/" install
+}
