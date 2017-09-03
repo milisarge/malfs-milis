@@ -1,0 +1,37 @@
+# Description: JIT destekli pythonda yazılmış python
+# URL: http://pypy.org
+# Packager: milisarge
+# Depends on: python tk sqlite mercurial pycparser libffi 
+
+name=pypy
+version=5.8.0
+release=1
+source=(https://bitbucket.org/pypy/pypy/downloads/pypy2-v$version-src.tar.bz2)
+
+build() {
+
+	cd pypy2-v${version}-src/pypy/goal
+
+	python2 ../../rpython/bin/rpython -Ojit --shared targetpypystandalone
+
+	# Compile binary modules
+	PYTHONPATH=../.. ./pypy-c ../tool/build_cffi_imports.py
+
+	cd $SRC/pypy2-v${version}-src
+
+	# Prepare installation
+	python2 pypy/tool/release/package.py --archive-name pypy --targetdir .
+	mkdir unpacked
+	tar xf pypy.tar.bz2 -C unpacked
+
+	# Install pypy
+	cd unpacked
+	install -Dm755 pypy/bin/pypy "${PKG}"/opt/pypy/bin/pypy
+	install -Dm755 pypy/bin/libpypy-c.so "${PKG}"/usr/lib/libpypy-c.so
+	cp -r pypy/include pypy/lib_pypy pypy/lib-python pypy/site-packages "${PKG}"/opt/pypy/
+	cd ..
+
+	# Install symlink
+	mkdir -p "${PKG}"/usr/bin
+	ln -s /opt/pypy/bin/pypy "${PKG}"/usr/bin/pypy
+}
