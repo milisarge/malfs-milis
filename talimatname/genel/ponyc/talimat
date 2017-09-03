@@ -1,0 +1,39 @@
+# Description: Aktör modellemeye dayanan yüksek performanslı dil.
+# URL: http://ponylang.org/
+# Packager: milisarge
+# Depends on: llvm pcre2
+
+name=ponyc
+version=0.19.0
+release=1
+source=(https://github.com/ponylang/ponyc/archive/$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+ cd ponyc-$version
+  sed -i 's/-Werror //' Makefile
+
+  make -j1 config=release prefix=/usr arch=x86-64 verbose=
+
+  mkdir docs
+  build/release/ponyc packages/stdlib -rexpr -g -o docs
+
+  make -j1 config=release prefix=/usr arch=x86-64 verbose= test
+  
+  install -Dm755 build/release/ponyc "$PKG"/usr/lib/pony/"$version"/bin/ponyc
+  install -Dm644 build/release/libponyrt-pic.a "$PKG"/usr/lib/libponyrt.a
+  install -Dm644 build/release/libponyc.a "$PKG"/usr/lib/libponyc.a
+  install -Dm644 src/libponyrt/pony.h "$PKG"/usr/include/pony.h
+
+  install -dm755 "$PKG"/usr/bin
+  ln -sf /usr/lib/pony/"$version"/bin/ponyc "$PKG"/usr/bin
+
+  cp -dr --no-preserve=ownership packages "$PKG"/usr/lib/pony/"$version"
+
+  install -dm755 "$PKG"/usr/share/doc/pony
+  cp -dr --no-preserve=ownership examples "$PKG"/usr/share/doc/pony
+
+  cp -dr docs/* "$PKG"/usr/share/doc/pony
+
+  install -Dm644 LICENSE "$PKG"/usr/share/licenses/"$name"/LICENSE
+
+}
