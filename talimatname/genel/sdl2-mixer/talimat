@@ -6,8 +6,7 @@
 name=sdl2-mixer
 version=2.0.1
 release=1
-source=(https://www.libsdl.otg/projects/SDL_mixer/release/SDL2_mixer-2.0.1.tar.gz
-)
+source=(https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$version.tar.gz)
 
 build() {
 	cd "${SRC}/SDL2_mixer-${version}/"
