@@ -9,7 +9,7 @@ release=1
 source=(http://kaynaklar.milislinux.org//smpeg2.tar.gz)
 
 build() {
-  cd ${SRC}/${name}
+  cd $SRC/release_2_0_0
   ./autogen.sh
   ./configure --prefix=/usr --mandir=/usr/share/man --disable-static
   make
