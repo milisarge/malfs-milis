@@ -10,12 +10,8 @@ release=1
 source=(ftp://mama.indstate.edu/linux/$name/$name-$version.tgz)
 
 build () {
-
 	cd $name-$version
-
 	make
-
-	make MANDIR=$PKG/usr/share/man/man1 install 
-	chmod -v 644 $PKG/usr/share/man/man1/tree.1
-	
+	mkdir -p $PKG/usr/bin
+	cp tree $PKG/usr/bin/
 }
