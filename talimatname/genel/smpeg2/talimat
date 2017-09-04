@@ -1,0 +1,19 @@
+# Description: SDL2 MPEG Player Library
+# URL: http://icculus.org/smpeg/
+# Packager: milisarge
+# Depends on: sdl2 
+
+name=smpeg2
+version=2.0.0
+release=1
+source=(http://kaynaklar.milislinux.org//smpeg2.tar.gz)
+
+build() {
+  cd ${SRC}/${name}
+  ./autogen.sh
+  ./configure --prefix=/usr --mandir=/usr/share/man --disable-static
+  make
+  make DESTDIR=${PKG} install
+  rm ${PKG}/usr/bin/plaympeg
+  rm -r ${PKG}/usr/share/man
+}

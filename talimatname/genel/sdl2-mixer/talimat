@@ -1,0 +1,21 @@
+# Description: A simple multi-channel audio mixer (Version 2)
+# URL: http://www.libsdl.org/projects/SDL_mixer
+# Packager: milisarge
+# Depends on: fluidsynth sdl2 libvorbis libmodplug smpeg2 flac 
+
+name=sdl2-mixer
+version=2.0.1
+release=1
+source=(https://www.libsdl.otg/projects/SDL_mixer/release/SDL2_mixer-2.0.1.tar.gz
+)
+
+build() {
+	cd "${SRC}/SDL2_mixer-${version}/"
+	sed -i "s|/etc/timidity|/etc/timidity++|g" timidity/config.h
+	sed -i "s|/etc/timidity++.cfg|/etc/timidity++/timidity.cfg|g" timidity/config.h
+	export CFLAGS+=" ${CFLAGS} -I/usr/include/libmodplug"
+	./configure --disable-static --prefix=/usr
+	make
+	make DESTDIR="${PKG}" install
+	install -Dm644 COPYING.txt "${PKG}/usr/share/licenses/${name}/LICENSE"
+}
