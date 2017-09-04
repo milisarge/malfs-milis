@@ -1,0 +1,16 @@
+# Description: Aynı anda birden fazla USB aygıtına bir ISO dosyası yazın
+# URL: https://wiki.gnome.org/Apps/MultiWriter
+# Packager: Cihan Alkan
+# Depends on: intltool gtk3 libcanberra libgusb udisks2 appstream-glib tdb
+
+name=gnome-multi-writer
+version=3.24.0
+release=1
+source=(https://download.gnome.org/sources/$name/3.24/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --libexecdir=/usr/lib/$name
+	make
+	make DESTDIR=$PKG install
+}
