@@ -815,6 +815,18 @@ ters_bagimli_bilgi(){
 	done
 }
 
+ters_bagimli_bilgi_yeni(){
+	gtbpaket=$1
+	tbgdosya=$(mktemp)
+	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}\s" $talimatname_dizin > $tbgdosya ; 
+	#grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}\s" $ektalimatname >> $tbgdosya ; 
+	#grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}$" $ektalimatname >> $tbgdosya ; 
+	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}$" $talimatname_dizin >> $tbgdosya ; 
+	cat $tbgdosya | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort > /tmp/${gtbpaket}.tb.txt ;
+	rm -f $tbgdosya
+	cat /tmp/${gtbpaket}.tb.txt
+}
+
 kirik_ters_bagimli_bilgi(){
 	gentalimatlar=$(ls $talimatname_dizin/genel/)
 	for tal in $gentalimatlar;do
@@ -2057,6 +2069,8 @@ ayarlar() {
 				bagimli_bilgi_dosyala "$2" ;;
 			-tb|tersbag)
 				ters_bagimli_bilgi "$2" ;;
+			-tb2|tersbag2)
+				ters_bagimli_bilgi_yeni "$2" ;;
 			-tbk|--pktbk)
 				ters_bagimli_kontrol "$2" ;;
 			-talb|bilgi)
