@@ -12,7 +12,7 @@ build() {
   cd $name-$version
   ./configure --prefix=/usr \
               --mandir=/usr/man \
-              --disable-debug \
+              --disable-debug 
   make
   make DESTDIR=$PKG install
 }
