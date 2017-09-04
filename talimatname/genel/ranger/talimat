@@ -1,10 +1,10 @@
 # Description: Ranger, VI anahtar bağları olan bir dosya yöneticisidir.
 # URL: http://ranger.nongnu.org/
 # Packager: milisarge
-# Depends on: python
+# Depends on: python3
 
 name=ranger
-version=1.7.1
+version=1.8.1
 release=1
 
 source=(http://ranger.nongnu.org/$name-$version.tar.gz
@@ -12,5 +12,5 @@ source=(http://ranger.nongnu.org/$name-$version.tar.gz
 
 build() {
     cd $name-$version
-    python2 setup.py install --prefix=/usr --root=$PKG
+    python3 setup.py install --prefix=/usr --root=$PKG
 }
