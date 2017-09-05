@@ -1,18 +1,19 @@
-# Description: Wiki konsepti icin tasarlanmis WYSIWYG metin editoru
+# Description: Wiki kavramını masaüstüne getirmeyi amaçlayan bir WYSIWYG metin editörü.
 # URL: http://zim-wiki.org/
-# Packager: milisarge
-# Depends on: python-gtk dejavu-ttf desktop-file-utils
+# Packager: Cihan Alkan
+# Depends on: python-gtk dejavu-ttf
 
-run=(dejavu-ttf desktop-file-utils shared-mime-info)
 name=zim
-version=0.60
-release=2
-source=(http://www.zim-wiki.org/downloads/$name-$version.tar.gz)
+version=0.67
+release=1
+
+source=(http://zim-wiki.org/downloads/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    # zim's setup.py subclasses distutil's install class, adding a flag to
-    # disable running update-desktop-database and update-mime-database
-    # during the install: --skip-xdg-cmd
-    python2 setup.py install --prefix=/usr --root=$PKG --skip-xdg-cmd
+    for file in zim/inc/xdot.py; do
+        sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
+    done
+	sed -i 's|\t\tinstall_class.run(self)|&\n\t\treturn None|' setup.py
+    python2 setup.py install --root=$PKG --optimize=1 
 }
