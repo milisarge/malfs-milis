@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Eta-pen
+Name[tr]=Tahta Kalemi
+Type=Application
+Comment=Screen Drawing Tool
+Comment[tr]=Ekran Çizim Aracı
+Terminal=false
+Exec=/usr/bin/eta-pen
+Icon=/usr/share/icons/tahtakalemi.png
+Categories=Qt;Education;
+GenericName=Screen Drawing Tool
+GenericName[tr]=Ekran Çizim Aracı

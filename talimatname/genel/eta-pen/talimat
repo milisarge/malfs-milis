@@ -1,0 +1,27 @@
+# Description: Ekrana birşeyler çizme için basit bir araç
+# URL: https://github.com/E-Tahta/eta-pen
+# Packager: Cihan Alkan
+# Depends on: qt5
+
+name=eta-pen
+version=0.1.2
+release=1
+
+source=(https://github.com/E-Tahta/eta-pen/archive/master.tar.gz::$name-$version.tar.gz
+		tahtakalemi.png
+        eta-pen.desktop)
+
+build() {
+	
+	cd $SRC/$name-master
+	qmake-qt5 eta-pen.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug 
+	make
+	mkdir -p $PKG/usr/bin
+	mkdir -p $PKG/usr/share/applications
+	mkdir -p $PKG/usr/share/icons
+
+	mv $name $PKG/usr/bin/
+	mv $SRC/$name.desktop $PKG/usr/share/applications/
+	mv $SRC/tahtakalemi.png $PKG/usr/share/icons/
+
+}
