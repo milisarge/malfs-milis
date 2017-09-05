@@ -4,7 +4,7 @@
 # Depends on: libffi python jemalloc cmake ccache
  
 name=rust
-version=1.16.0
+version=1.20.0
 release=1
 source=(http://static.rust-lang.org/dist/rustc-$version-src.tar.gz)
  
