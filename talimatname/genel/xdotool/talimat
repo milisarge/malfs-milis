@@ -1,0 +1,23 @@
+# Description: fare ve klavye tuş sinyalleri göndermeye yarayan konsol uygulaması
+# URL: http://www.semicomplete.com/projects/xdotool
+# Packager: milisarge
+# Depends on: xorg-libxtst xorg-libxinerama libxkbcommon
+
+name=xdotool
+version=3.2
+release=1
+source=(https://github.com/jordansissel/xdotool/archive/v3.20160805.1.tar.gz::$name-$version.tar.gz)
+
+
+build() {
+  cd ${name}-3.20160805.1
+
+  # Build
+  make PREFIX=/usr DESTDIR=${PKG}
+  make PREFIX=/usr DESTDIR=${PKG} \
+    pre-install \
+    installlib \
+    installprog \
+    installman \
+    installheader
+}
