@@ -1,0 +1,5 @@
+[install]
+prefix = "/usr"
+
+[rust]
+channel = "stable"
