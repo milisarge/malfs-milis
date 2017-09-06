@@ -246,35 +246,6 @@ yeniden_paketle(){
 		lzip -9 "$1".mps
 }
 
-derleme_listyap_eski(){
-	bagimlist=`bagimlilar "$1"`
-
-	if [ "$bagimlist" != "talimatyok" ];then
-		for bagim in $bagimlist;do
-			
-			if [ "`cat tumbag.liste | grep $bagim`" != "$bagim" ];then
-				derleme_listyap "$bagim"
-			fi
-			
-		done
-		
-		if  ! grep -Fxq "$1" tumbag.liste
-		then
-			ana="`find $talimatname_dizin -name $1`"
-			echo ${ana#"$talimatname_dizin"}
-			#sadece genel bagimliliklar derlenecek
-			echo "$1" >> tumbag.liste 
-			if [ -d "$talimatname_dizin/genel/$1" ];then
-				echo "$1" >> bag.liste 
-			fi
-		fi
-	else
-		ryaz 31 "$1 talimatı bulunamadı."
-		hataloglama "$1 talimatı bulunamadı."
-		exit 1 
-	fi
-}
-
 derleme_listyap_kontrol(){
 	
 	if [ -f tumbag.liste ];then
@@ -287,7 +258,7 @@ derleme_listyap_kontrol(){
 	touch bag.liste 
 }
 
-derleme_listyap(){
+derleme_listyap_eski(){
 	
 	bagimlist=`bagimlilar "$1"`
 	#echo $bagimlist
@@ -345,41 +316,51 @@ gerekleri_dosyala(){
 dly_yeni(){
 	dlymap["$1"]=1
 	altgerekler=($(bagimlilar $1))
-	for altgerek in ${altgerekler[@]};do
-		if [[ ! ${dlymap["$altgerek"]} ]] ; then
-			dly_yeni $altgerek
-		fi
-	done
-	dlyD+=("$1")
-	gerekleri_dosyala "$1"	
+	if [ "$altgerekler" != "talimatyok" ];then
+		for altgerek in ${altgerekler[@]};do
+			if [[ ! ${dlymap["$altgerek"]} ]] ; then
+				dly_yeni $altgerek
+			fi
+		done
+		dlyD+=("$1")
+		gerekleri_dosyala "$1"	
+	else
+		ryaz 31 "$1 talimatı bulunamadı."
+		exit 1 
+	fi
 }
 
 kly_yeni(){
 	#[ ! ${klyD[0]} ] && klyD+=("$1")
 	[ ! -d "$VT/$1" ] && klymap["$1"]=1
 	altgerekler=($(bagimlilar $1))
-	for altgerek in ${altgerekler[@]};do
-		if [ ! -d "$VT/$altgerek" ] ;then
-			if [[ ! ${klymap["$altgerek"]} ]] ; then
-				#klyD+=("$altgerek")
-				#echo ${klyD[-1]}
-				kly_yeni $altgerek
+	if [ "$altgerekler" != "talimatyok" ];then
+		for altgerek in ${altgerekler[@]};do
+			if [ ! -d "$VT/$altgerek" ] ;then
+				if [[ ! ${klymap["$altgerek"]} ]] ; then
+					#klyD+=("$altgerek")
+					#echo ${klyD[-1]}
+					kly_yeni $altgerek
+				fi
 			fi
-		fi
-	done
-	klyD+=("$1")
-	echo ${klyD[-1]}
+		done
+		klyD+=("$1")
+		gerekleri_dosyala ${klyD[-1]}
+	else
+		ryaz 31 "$1 talimatı bulunamadı."
+		exit 1 
+	fi
 }
 
-dly_dosyala(){
-	derleme_listyap_kontrol
+derleme_listyap(){
 	local pkt dlyp
 	dlyD=()
 	declare -A dlymap
+	derleme_listyap_kontrol
 	dly_yeni $1
 }
 
-kly_dosyala(){
+kurulum_listyap(){
 	klyD=()
 	declare -A klymap
 	kly_yeni "$1"
@@ -499,9 +480,10 @@ paket_inkur_liste(){
 # otomatik kontrollu kur
 # -kur
 paket_inkur_oto(){
-	local konum anakonum
+	local konum anakonum kurdurum
 	derleme_listyap_kontrol
-	derleme_listyap "$1" | grep "bulunamadı"
+	#derleme_listyap "$1" | grep "bulunamadı"
+	kurulum_listyap "$1" | grep "bulunamadı"
 	local kpkt
 	for paketkonum in `cat bag.liste`;do	
 		# önce talimat-anatalimat karşılaştırması yapılır.
@@ -521,7 +503,14 @@ paket_inkur_oto(){
 			ryaz 31 "$kpkt talimatı bulunamadı!"
 		fi
 	done
-	ryaz 32 "\n$1 $(kurulu_kontrol $1) "
+	if [ $(kurulu_kontrol $1) = "degil" ];then
+		kurdurum="kurulu değil"
+	elif [ $(kurulu_kontrol $1) = "kurulu" ];then
+		kurdurum="kurulu"
+	else
+		kurdurum="tanımsız paket"
+	fi
+	ryaz 32 "\n$1 $kurdurum "
 	rm -rf *.liste *.eski
 }
 
@@ -564,7 +553,7 @@ paket_guncelle(){
 }
 
 paket_guncelle_oto(){
-	mps -dly "$1" > /dev/null &&
+	derleme_listyap "$1" > /dev/null &&
 	local kpkt
 	for kpkt in `cat bag.liste`;do
 		mps -g "$kpkt"
@@ -2104,12 +2093,12 @@ ayarlar() {
 				ls $VT ;;	
 			### mps -dly paketismi = ilgili paketin genel ve tüm bağımlılık listesini verir,oluşturur.
 			-dly|--drly)
-				derleme_listyap_kontrol
 				derleme_listyap "$2" ;;	
-			-dly2|--drly)
-				dly_dosyala "$2" ;;	
+			-dly_eski|--drly)
+				derleme_listyap_eski "$2" ;;	
+			### mps -kly paketismi = ilgili paketin ve kurulması gereken altgereklerini verir,oluştur.
 			-kly)
-				kly_dosyala "$2" ;;	
+				kurulum_listyap "$2" ;;	
 			-dlb|--drlb)
 				derleme_listbilgi "$2";;	
 			### mps -b paketismi = ilgili paketin kurulum bilgilerini verir.
@@ -2118,6 +2107,7 @@ ayarlar() {
 			#sunucu bilgisi alma
 			-sun2|sunucu)
 				ryaz 32 $sunucu ;;
+			### mps sunucular . = paket sunucularını verir.
 			-sun|sunucular)
 				ryaz 32 ${sunucular[@]} ;;
 			sun)
