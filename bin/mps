@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="1.0 Milis Paket Sistemi"
+versiyon="1.1 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -323,6 +323,65 @@ derleme_listyap(){
 	fi
 }
 
+gerekleri_dosyala(){
+	local altgerek
+	altgerek="$1"
+	ana="`find $talimatname_dizin -name $altgerek`"
+	dal="`find $ektalimatname -name $altgerek`"
+	if [ ! -z "$ana" -a "$ana" != " " ]; then
+		echo ${ana#"$talimatname_dizin"}
+	elif [ ! -z "$dal" -a "$dal" != " " ]; then
+		echo ${dal#"$ektalimatname"}
+	fi
+	#sadece genel bagimliliklar derlenecek
+	echo "$altgerek" >> tumbag.liste 
+	if [ -f "$talimatname_dizin/genel/$altgerek/talimat" ];then
+		echo "$ana" >> bag.liste 
+	elif [ -f "$dal/talimat" ];then
+		echo "$dal" >> bag.liste
+	fi
+}
+
+dly_yeni(){
+	dlymap["$1"]=1
+	altgerekler=($(bagimlilar $1))
+	for altgerek in ${altgerekler[@]};do
+		if [[ ! ${dlymap["$altgerek"]} ]] ; then
+			dly_yeni $altgerek
+		fi
+	done
+	dlyD+=("$1")
+	gerekleri_dosyala "$1"	
+}
+
+kly_yeni(){
+	[ ! ${klyD[0]} ] && klyD+=("$1")
+	[ ! -d "$VT/$1" ] && klymap["$1"]=1
+	altgerekler=($(bagimlilar $1))
+	for altgerek in ${altgerekler[@]};do
+		if [ ! -d "$VT/$altgerek" ] ;then
+			if [[ ! ${klymap["$altgerek"]} ]] ; then
+				klyD+=("$altgerek")
+				echo $altgerek
+				kly_yeni $altgerek
+			fi
+		fi
+	done
+}
+
+dly_dosyala(){
+	derleme_listyap_kontrol
+	local pkt dlyp
+	dlyD=()
+	declare -A dlymap
+	dly_yeni $1
+}
+
+kly_dosyala(){
+	klyD=()
+	eclare -A klymap
+	kly_yeni "$1"
+}
 
 derleme_listbilgi(){
 	ryaz 34 "yapim asamasında"
@@ -2041,9 +2100,12 @@ ayarlar() {
 			### mps liste . = sistemde kurulu olan paket listesini verir.
 			-kl|liste)
 				ls $VT ;;	
+			### mps -dly paketismi = ilgili paketin genel ve tüm bağımlılık listesini verir,oluşturur.
 			-dly|--drly)
 				derleme_listyap_kontrol
 				derleme_listyap "$2" ;;	
+			-dly2|--drly)
+				dly_dosyala "$2" ;;	
 			-dlb|--drlb)
 				derleme_listbilgi "$2";;	
 			### mps -b paketismi = ilgili paketin kurulum bilgilerini verir.
