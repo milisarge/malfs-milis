@@ -355,18 +355,20 @@ dly_yeni(){
 }
 
 kly_yeni(){
-	[ ! ${klyD[0]} ] && klyD+=("$1")
+	#[ ! ${klyD[0]} ] && klyD+=("$1")
 	[ ! -d "$VT/$1" ] && klymap["$1"]=1
 	altgerekler=($(bagimlilar $1))
 	for altgerek in ${altgerekler[@]};do
 		if [ ! -d "$VT/$altgerek" ] ;then
 			if [[ ! ${klymap["$altgerek"]} ]] ; then
-				klyD+=("$altgerek")
-				echo $altgerek
+				#klyD+=("$altgerek")
+				#echo ${klyD[-1]}
 				kly_yeni $altgerek
 			fi
 		fi
 	done
+	klyD+=("$1")
+	echo ${klyD[-1]}
 }
 
 dly_dosyala(){
@@ -379,7 +381,7 @@ dly_dosyala(){
 
 kly_dosyala(){
 	klyD=()
-	eclare -A klymap
+	declare -A klymap
 	kly_yeni "$1"
 }
 
@@ -2106,6 +2108,8 @@ ayarlar() {
 				derleme_listyap "$2" ;;	
 			-dly2|--drly)
 				dly_dosyala "$2" ;;	
+			-kly)
+				kly_dosyala "$2" ;;	
 			-dlb|--drlb)
 				derleme_listbilgi "$2";;	
 			### mps -b paketismi = ilgili paketin kurulum bilgilerini verir.
