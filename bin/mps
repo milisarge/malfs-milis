@@ -530,22 +530,30 @@ paket_sil_oto_onayli(){
 }
 
 paket_sil_gerekli(){
-	ryaz 33 "deneme aşamasında!!!"
-	bagimli_bilgi_dosyala "$1"
-	rm -f /tmp/$1.silinecekler
-	touch /tmp/$1.silinecekler
-	for pkaltb in $(cat /tmp/$1.gerekler.liste);do
-		tbsonuc=()
-		tbsonuc=$(ters_bagimli_bilgi $pkaltb)
-		if [ ${#tbsonuc[0]} = 0 ];then
-			ryaz 32 "$pkaltb silinebilir."
-			echo "$pkaltb" >> /tmp/$1.silinecekler
-		else
-			ryaz 31 "$pkaltb silinemez."
-		fi
-	done
-	cat /tmp/$1.silinecekler
-	paket_sil_oto_onayli "/tmp/$1.silinecekler"
+	if [ -d $VT/$1 ];then
+		bagimli_bilgi_dosyala "$1"
+		rm -f /tmp/$1.silinecekler
+		touch /tmp/$1.silinecekler
+		for pkaltb in $(cat /tmp/$1.gerekler.liste);do
+			if [ -d $VT/$pkaltb ];then
+				tbsonuc=()
+				tbsonuc=$(ters_bagimli_bilgi $pkaltb)
+				if [ ${#tbsonuc[0]} = 0 ];then
+					ryaz 32 "$pkaltb silinebilir."
+					echo "$pkaltb" >> /tmp/$1.silinecekler
+				else
+					ryaz 31 "$pkaltb silinemez."
+				fi
+			else
+				ryaz 32 "$pkaltb zaten kurulu değil"
+			fi
+		done
+		cat /tmp/$1.silinecekler
+		paket_sil_oto_onayli "/tmp/$1.silinecekler"
+	else
+		ryaz 32 "$1 zaten kurulu değil"
+		exit 1
+	fi
 }
 
 paketsiz_talimatlar(){
