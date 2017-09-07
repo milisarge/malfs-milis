@@ -2147,6 +2147,7 @@ ayarlar() {
 				ters_bagimli_bilgi "$2" ;;
 			-tbk|--pktbk)
 				ters_bagimli_kontrol "$2" ;;
+			### mps bilgi paketismi = ilgili paketin talimat ve kurulum bilgilerini verir.
 			-talb|bilgi)
 				talimat_bilgi "$2"
 				paket_bilgi "$2" ;;
@@ -2157,6 +2158,7 @@ ayarlar() {
 					exit 1
 				fi
 				talimat_olustur "$2" ;;
+			### mps log yyyy-aa-gg olay = mps.log verisi çekmek için (ör: mps log 2017-01-01 silindi)
 			log)
 				local logyardim
 				logyardim="mps log zaman durum (ör: mps log 2017-01-01 silindi)"
@@ -2173,22 +2175,25 @@ ayarlar() {
 					exit 1
 				fi
 				log_analiz "$2" "$3" ;;
+			### mps guncelle . = paket veritabanı ve git güncellemesi-talimatname bilgilerini günceller.
 			guncelle)
 				mps -GG && mps -G ;;
+			### mps -GG . = git güncellemelerini ve talimatname bilgilerini günceller.
 			-Ggit|-GG)
 				git_guncelle ;;
+			### mps -G . = paket veritabanı bilgilerini günceller.
 			-G|--pvtg)
 				paketvt_guncelle
 				mps -kudo ;;
 			-G2)
 				paketvt_guncelle_yeni ;;
-			#komple kurulu sistemin guncellenmesi
+			### mps yukselt . = tüm sistemin güncellemesini gerçekleştirir.
 			-GS|yukselt)
 				sistem_guncelle ;;
 			#tekil temel paket guncelleme-single base package updating
 			-tg)
 				paket_sil "$2" "evet" &&  mps -ik $2 ;;
-			#tekil paket guncelleme-single package updating
+			### mps -g paketismi = ilgili paketi tekil günceller.
 			-g|--pkgu)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
@@ -2214,6 +2219,7 @@ ayarlar() {
 					exit 1
 				fi
 				paket_guncelle_oto "$2";;
+			### mps -kk paketismi = ilgili paketin kurulu olma durumunu gösterir.
 			-kk|--kurulu-kontrol)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
@@ -2295,12 +2301,14 @@ ayarlar() {
 				fi
 					tarihce_sil "$2"
 					shift ;;
+			### mps -v . = mps sürüm bilgilerini gösterir.
 			-v)
 				ryaz 33 "$betikad $versiyon  $iletisim" 
 				exit 0 ;;
-			-y|yardim)
+			
+			-y|-h|yardim)
 				yardim_icerik;;
-			-h|--help)
+			-h2|--help)
 				yardim
 				exit 0 ;;
 			
