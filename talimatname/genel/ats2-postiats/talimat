@@ -1,0 +1,26 @@
+# Description: Statik tip tanımlamalı programlama dilleri
+# URL: http://www.ats-lang.org/
+# Packager: milisarge
+# Depends on: 
+
+name=ats2-postiats
+_name=ATS2-Postiats
+version=0.3.6
+release=1
+source=(https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-$version/ATS2-Postiats-$version.tgz)
+
+build() {
+  cd "${SRC}/${_name}-${version}"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  mkdir -p $PKG/usr/lib/ats2-postiats-0.3.6/bin/
+  make -j1 all
+  make DESTDIR="${PKG}" install
+
+  local profiled="${PKG}/etc/profile.d"
+  local patshome="/usr/lib/${name}-${version}"
+  mkdir -p "${profiled}"
+  echo "export PATSHOME=${patshome}" > "${profiled}/${name}.sh"
+  echo "setenv PATSHOME ${patshome}" > "${profiled}/${name}.csh"
+  chmod 0755 "${profiled}/${name}.sh" "${profiled}/${name}.csh"
+}
