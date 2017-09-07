@@ -524,10 +524,28 @@ paket_sil_oto(){
 
 paket_sil_oto_onayli(){
 	local spkt
-	cat $1
 	for spkt in `perl -e 'print reverse <>' $1`;do
 		paket_sil "$spkt" "hayir" "evet"
 	done
+}
+
+paket_sil_gerekli(){
+	ryaz 33 "deneme aşamasında!!!"
+	bagimli_bilgi_dosyala "$1"
+	rm -f /tmp/$1.silinecekler
+	touch /tmp/$1.silinecekler
+	for pkaltb in $(cat /tmp/$1.gerekler.liste);do
+		tbsonuc=()
+		tbsonuc=$(ters_bagimli_bilgi $pkaltb)
+		if [ ${#tbsonuc[0]} = 0 ];then
+			ryaz 32 "$pkaltb silinebilir."
+			echo "$pkaltb" >> /tmp/$1.silinecekler
+		else
+			ryaz 31 "$pkaltb silinemez."
+		fi
+	done
+	cat /tmp/$1.silinecekler
+	paket_sil_oto_onayli "/tmp/$1.silinecekler"
 }
 
 paketsiz_talimatlar(){
@@ -849,7 +867,7 @@ bagimlilar(){
 	fi
 }
 
-ters_bagimli_bilgi(){
+ters_bagimli_bilgi_eski(){
 	gentalimatlar=$(ls $talimatname_dizin/genel/)
 	for tal in $gentalimatlar;do
 		#echo $tal
@@ -865,32 +883,26 @@ ters_bagimli_bilgi(){
 	done
 }
 
-ters_bagimli_bilgi_yeni(){
+ters_bagimli_bilgi(){
 	gtbpaket=$1
 	tbgdosya=$(mktemp)
 	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}\s" $talimatname_dizin > $tbgdosya ; 
-	#grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}\s" $ektalimatname >> $tbgdosya ; 
-	#grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}$" $ektalimatname >> $tbgdosya ; 
+	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}\s" $ektalimatname >> $tbgdosya ; 
+	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}$" $ektalimatname >> $tbgdosya ; 
 	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}$" $talimatname_dizin >> $tbgdosya ; 
-	cat $tbgdosya | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort > /tmp/${gtbpaket}.tb.txt ;
+	cat $tbgdosya | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort > /tmp/${gtbpaket}.tb.txt
 	rm -f $tbgdosya
 	cat /tmp/${gtbpaket}.tb.txt
+	rm -rf $tbgdizin
 }
 
 kirik_ters_bagimli_bilgi(){
-	gentalimatlar=$(ls $talimatname_dizin/genel/)
-	for tal in $gentalimatlar;do
+	ters_bagimli_bilgi $1
+	talimatlar=$(cat /tmp/$1.tb.txt)
+	for tal in $talimatlar;do
 		#paket kuruluysa kontrolu yapılacak
 		if [ -d "$VT/$tal" ];then
-			bagimd=`cat $talimatname_dizin/genel/$tal/talimat | grep "Depends" | cut -d':' -f2`
-			if [ -n "$bagimd" ]; then
-				bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-				for bag in $bagimd;do
-					if [ $bag = $1 ];then
-						kirik_kontrol_paket $tal
-					fi
-				done
-			fi
+			kirik_kontrol_paket $tal
 		fi
 	done
 }
@@ -929,7 +941,7 @@ bagimli_bilgi(){
 }
 
 bagimli_bilgi_dosyala(){
-	rm -f "$1.gerekler.liste"
+	rm -f "/tmp/$1.gerekler.liste"
 	local bagimd konum bag
 	bkonum="`find "$talimatname_dizin" -name $1`"
 	bekkonum="`find "$ektalimatname" -name $1`"
@@ -948,10 +960,10 @@ bagimli_bilgi_dosyala(){
 		#echo `echo "$bagimd" | sed 's/,/ /g'`
 		#kurulu kontrollu gosterim
 		for bag in $bagimd;do
-			echo $bag >> "$1.gerekler.liste"
+			echo $bag >> "/tmp/$1.gerekler.liste"
 		done
 	fi
-	echo "$1" >> "$1.gerekler.liste"
+	echo "$1" >> "/tmp/$1.gerekler.liste"
 	
 }
 
@@ -1028,7 +1040,8 @@ etkilenen_kurtar(){
 }
 
 ters_bagimli_kontrol(){
-	ters_bagimli_bilgi "$1" | sort > tersb.liste
+	ters_bagimli_bilgi $1
+	cat /tmp/${1}.tb.txt | sort > tersb.liste
 	ls /var/lib/pkg/DB/ | sed  "/$1/d" | sort  > simdiki.liste
 	comm -12 tersb.liste simdiki.liste
 	rm tersb.liste simdiki.liste
@@ -1889,8 +1902,7 @@ ayarlar() {
 				paket_sil "$2" "hayir" "evet";;	
 			### mps -S|silgrub paketismi = ilgili paketi altbağımlılıklarını da sorarak kaldırır.
 			-S|silgrub)
-				mps -bbd "$2"
-				paket_sil_oto_onayli "$2.gerekler.liste" ;;
+				paket_sil_gerekli "$2" ;;
 			### mps ara aranan = paket isimleri ve açıklamalarında anahtar kelime arar.
 			-pa|ara)
 				paket_ara "$2" ;;
@@ -2125,8 +2137,6 @@ ayarlar() {
 				bagimli_bilgi_dosyala "$2" ;;
 			-tb|tersbag)
 				ters_bagimli_bilgi "$2" ;;
-			-tb2|tersbag2)
-				ters_bagimli_bilgi_yeni "$2" ;;
 			-tbk|--pktbk)
 				ters_bagimli_kontrol "$2" ;;
 			-talb|bilgi)
