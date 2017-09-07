@@ -1,0 +1,16 @@
+# Description: GnuPG için arayüz uygulaması
+# URL: https://www.gnupg.org/related_software/gpa/
+# Packager: milisarge
+# Depends on: gpgme gtk2 
+
+name=gpa
+version=0.9.10
+release=1
+source=(ftp://ftp.gnupg.org/gcrypt/gpa/$name-$version.tar.bz2)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG/" install
+}
