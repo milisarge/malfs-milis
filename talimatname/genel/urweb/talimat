@@ -4,9 +4,9 @@
 # Depends on:  mlton sqlite uthash 
 
 name=urweb
-version=20170105
+version=20170720
 release=1
-source=(http://www.impredicative.com/ur/urweb-20170105.tgz
+source=(http://www.impredicative.com/ur/urweb-$version.tgz
 		use-system-uthash.patch)
 
 build() {
