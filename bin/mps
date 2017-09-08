@@ -1915,13 +1915,16 @@ ayarlar() {
 				paket_sil "$2" "hayir" "evet";;	
 			### mps -S|silgrub paketismi = ilgili paketi altbağımlılıklarını da sorarak kaldırır.
 			-S|silgrub)
-				paket_sil_gerekli "$2" ;;
+				paket_sil_gerekli "$2" 
+				exit 0 ;;
 			### mps ara aranan = paket isimleri ve açıklamalarında anahtar kelime arar.
 			-pa|ara)
-				paket_ara "$2" ;;
+				paket_ara "$2" 
+				exit 0 ;;
 			### mps bul aranan = talimat dosyaları içinde anahtar kelimeyi arar.
 			bul)
-				kelime_bul "$2" ;;
+				kelime_bul "$2" 
+				exit 0 ;;
 			### mps -d paketisimi = sadece paketi bağımlıksız derler.Genelde bağımlılığı olmayan paketler için kullanılır.
 			-d|--pkde)
 				zorla_derle="yok"
@@ -1938,7 +1941,8 @@ ayarlar() {
 					ryaz 31 "temel paket için odkp kullanılamaz!"
 					exit 1
 				fi
-				oto_derle_kur_paketle "$2" ;;	
+				oto_derle_kur_paketle "$2" 
+				exit 0 ;;
 			-dk|--pkdk)
 				paket_derle "$2" ;;	
 			### mps -derlist liste = verilen liste dosyasındaki paketleri derler.Alt alta yazılı olmalıdır.
