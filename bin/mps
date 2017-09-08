@@ -905,7 +905,9 @@ ters_bagimli_bilgi(){
 }
 
 kirik_ters_bagimli_bilgi(){
+	ryaz 32 "Aşağıdaki kurulu ters bağımlılıklarda kırılım araması yapılacaktır."
 	ters_bagimli_bilgi $1
+	ryaz 32 "........"
 	talimatlar=$(cat /tmp/$1.tb.txt)
 	for tal in $talimatlar;do
 		#paket kuruluysa kontrolu yapılacak
