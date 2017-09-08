@@ -2079,7 +2079,8 @@ ayarlar() {
 					hataloglama "(-kkp) paket ismi eksik"
 					exit 1
 				fi
-				kirik_kontrol_paket "$2" ;;
+				kirik_kontrol_paket "$2" 
+				exit 0 ;;
 			### mps kirma paketismi = ilgili paketin sistemde kırdığı paketler tespit edilir.
 			kirma)
 				if [ ! "$2" ]; then
