@@ -4,9 +4,9 @@
 # Depends on:
 
 name=libedit
-version=20140620.3.1
-release=2
-_version=20140620-3.1
+_version=20170329-3.1
+version=${_version/-/_}
+release=1
 
 source=(http://www.thrysoee.dk/editline/libedit-${_version}.tar.gz)
 
@@ -16,4 +16,5 @@ build(){
                 --enable-widec
     make
     make DESTDIR=$PKG install    
+    rm -rf $PKG/usr/share/man
 }

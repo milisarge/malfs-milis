@@ -1,24 +1,18 @@
 # Description: Sxhkd, komutları çalıştırarak girdi olaylarına tepki veren bir X arka plan programıdır.
 # URL: https://github.com/baskerville/sxhkd
 # Packager: milisarge
-# Depends on: libxcb xcb-util xcb-util-wm xcb-util-keysyms git
+# Depends on: libxcb xcb-util xcb-util-wm xcb-util-keysyms
 
 name=sxhkd
-version=0.5.5
+version=0.5.8
 release=1
 
-source=()
+source=(https://github.com/baskerville/sxhkd/archive/$version.tar.gz::$name-$version.tar.gz)
 
 build() {
-
-  git clone https://github.com/baskerville/sxhkd.git
-  
-  cd $name
-  
+  cd $name-$version
   make PREFIX=/usr
-
   make PREFIX=/usr DESTDIR="$PKG" install
-
 }
 
 	
