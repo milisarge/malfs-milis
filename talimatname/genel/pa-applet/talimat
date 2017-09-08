@@ -1,0 +1,25 @@
+# Description: PulseAudio kontrol uygulaması
+# URL: https://github.com/fernandotcl/pa-applet
+# Packager: yasarciv67@gmail.com
+# Depends on: glib gtk3 libnotify pulseaudio 
+
+name=pa-applet
+version=2017.09
+release=1
+source=()
+
+build() {
+git clone https://github.com/fernandotcl/pa-applet.git
+	    cd "$name"
+
+	        echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	
+	CFLAGS+=" -Wno-error"
+	./autogen.sh
+	./configure --prefix=/usr
+	make
+	make DESTDIR="$PKG/" install
+
+	install -D -m644 LICENSE "${PKG}/usr/share/licenses/${name}/LICENSE"
+
+}
