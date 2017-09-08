@@ -2062,7 +2062,8 @@ ayarlar() {
 					hataloglama "(-kdl) paket ismi eksik"
 					exit 1
 				fi
-				kurulum_dosya_listele "$2" ;;	
+				kurulum_dosya_listele "$2" 
+				exit 0 ;;	
 			### mps -kkp paketismi = ilgili paketin çalışması için eksik olan dosyaları tesbit eder.
 			-kkp)
 				if [ ! "$2" ]; then
