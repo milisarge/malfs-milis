@@ -1,7 +1,7 @@
 # Description: Apache taşınabilir çalışma zamanı yardımcı program kütüphanesi
 # URL: http://apr.apache.org/
 # Packager: milisarge
-# Depends on: apr expat
+# Depends on: apr expat unixodbc
 
 name=apr-util
 version=1.5.4
