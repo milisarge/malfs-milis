@@ -2311,7 +2311,9 @@ ayarlar() {
 			-h2|--help)
 				yardim
 				exit 0 ;;
-			
+			*)
+				ryaz 31 "Geçersiz Parametre!  --> mps yardim "
+				exit 0 ;;
 		esac
 		shift
 	done
