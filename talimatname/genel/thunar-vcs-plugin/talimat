@@ -1,0 +1,17 @@
+# Description: Thunar için SVN ve GIT entegrasyonu.
+# URL: http://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin
+# Packager: yasarciv67@gmail.com
+# Depends on: intltool thunar subversion apr 
+
+name=thunar-vcs-plugin
+version=0.1.5
+release=1
+source=(http://archive.xfce.org/src/thunar-plugins/thunar-vcs-plugin/${version%.*}/$name-$version.tar.bz2
+)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/xfce4
+  make
+  make DESTDIR=$PKG install
+}
