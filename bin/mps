@@ -1901,7 +1901,8 @@ ayarlar() {
 					pip3 uninstall $pypaket
 					exit 1
 				fi
-				paket_sil "$2" ;;
+				paket_sil "$2" 
+				exit 0 ;;
 			### mps zorsil|-sz paketismi = ilgili paketi onaysız kaldırır.
 			-sz|zorsil)
 				paket_sil "$2" "evet";;	
@@ -1993,7 +1994,8 @@ ayarlar() {
 					yerelden_kur "$2"
 				else
 					paket_inkur_oto "$2" 
-				fi ;;
+				fi 
+				exit 0 ;;
 			# özel git projesi kurmak için
 			gitkur)
 				git_proje_kur "$2" ;;
