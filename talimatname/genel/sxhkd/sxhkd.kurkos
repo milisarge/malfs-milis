@@ -1,0 +1,3 @@
+mkdir -p ~/.config/sxhkd
+cp /sources/milis.git/talimatname/genel/sxhkd/sxhkdrc ~/.config/sxhkd
+echo "~/.config/sxhkd altındaki ayar dosyasına bakınız."

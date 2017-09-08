@@ -1,0 +1,4 @@
+super + Escape
+	notify-send merhaba
+super + F2
+	notify-send gülegüle
