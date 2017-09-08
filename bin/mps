@@ -2083,17 +2083,20 @@ ayarlar() {
 					hataloglama "(kirma) paket ismi eksik"
 					exit 1
 				fi
-				kirik_ters_bagimli_bilgi "$2" ;;
+				kirik_ters_bagimli_bilgi "$2" 
+				exit 0 ;;
 			### mps -kks . = sistemde kurulu tüm paketlerin kırık kontrolünü yapar.Eksik dosyaları tespit eder.
 			-kks)
-				kirik_kontrol_sistem ;;
+				kirik_kontrol_sistem 
+				exit 0 ;;
 			-pak|--paketle)
 				if [ ! "$2" ]; then
 					ryaz 31 "paketlenecek dizin ismi eksik"
 					hataloglama "paketlenecek dizin ismi eksik"
 					exit 1
 				fi
-				yeniden_paketle "$2" ;;
+				yeniden_paketle "$2" 
+				exit 0 ;;
 			-psk|--paksiskur)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket liste yok"
@@ -2105,7 +2108,8 @@ ayarlar() {
 					hataloglama "hedef dizin yok"
 					exit 1
 				fi
-				sistem_kur "$2" "$3" ;;
+				sistem_kur "$2" "$3" 
+				exit 0 ;;
 			-po)
 				pvt_olustur ;;
 			-os|--pkos)
