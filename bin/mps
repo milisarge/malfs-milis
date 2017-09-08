@@ -2239,7 +2239,8 @@ ayarlar() {
 				fi
 				ryaz 31 `kurulu_kontrol "$2"`;;
 			-kudo)
-				kurulum_dogrulama ;;
+				kurulum_dogrulama 
+				exit 0 ;;
 			-kdi|dogrula)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
@@ -2258,19 +2259,24 @@ ayarlar() {
 				fi
 				paket_icerik_dogrulama "$2" "$kokdzn";;
 			-kdit|tumdogrula)
-				kurulum_dogrulama_icerik_tum ;;
+				kurulum_dogrulama_icerik_tum 
+				exit 0 ;;
 			-kdk)
 				etkilenen_kurtar $2 ;;
 			-suko)
 				sunucu_kontrol ;;
 			-pot)
-				paketsiz_talimatlar ;;
+				paketsiz_talimatlar 
+				exit 0 ;;
 			-dpl|deplist)
-				depo_paketler_liste ;;
+				depo_paketler_liste 
+				exit 0 ;;
 			-dps|depsil)
-				depo_paketler_sil ;;
+				depo_paketler_sil 
+				exit 0 ;;
 			-dota)
-				dosyadan_talimat_islem $2 $3 ;;
+				dosyadan_talimat_islem $2 $3 
+				exit 0 ;;
 			-cf|--config-file)
 				if [ ! "$2" ]; then
 					echo "ayardosyası gerek $1"
@@ -2284,12 +2290,15 @@ ayarlar() {
 					ryaz 31 "paket ismi eksik"
 					exit 1
 				fi
-				kurulan_dosya_bul "$2";;
+				kurulan_dosya_bul "$2"
+				exit 0 ;;
 			-tro)
-				tarihce_yap ;;
+				tarihce_yap 
+				exit 0 ;;
 			-trot)
 				temel_tarihce="evet"
-				tarihce_yap ;;
+				tarihce_yap 
+				exit 0 ;;
 			-try)
 				if [ ! "$2" ]; then
 					ryaz 31 "tarihce dosyasi eksik $1"
@@ -2303,7 +2312,8 @@ ayarlar() {
 			-tamir-tk)
 				tamir_temel_kurulan ;;
 			dos)
-				tarihce_yukle "temel" ;;
+				tarihce_yukle "temel" 
+				exit 0 ;;
 			-trs)
 				if [ ! "$2" ]; then
 					ryaz 31 "parametre eksik $1"
