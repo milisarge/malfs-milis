@@ -912,7 +912,9 @@ kirik_ters_bagimli_bilgi(){
 	for tal in $talimatlar;do
 		#paket kuruluysa kontrolu yapılacak
 		if [ -d "$VT/$tal" ];then
+			ryaz 34 "$tal paketi araştırılıyor:"
 			kirik_kontrol_paket $tal
+			ryaz 34 "--------------------------"
 		fi
 	done
 }
