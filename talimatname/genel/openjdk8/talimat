@@ -125,7 +125,7 @@ build() {
 		-e '/@LN@/s//\/bin\/ln/' \
 		-e '/@LS@/s//\/bin\/ls/' \
 		-e '/@MKDIR@/s//\/bin\/mkdir/' \
-		-e '/@OPENSSL@/s//\/usr\/bin\/openssl/' \
+		-e '/@OPENSSL@/s//\/bin\/openssl/' \
 		-e "/@SSLDIR@/s//\/usr\/share\/$name/" \
 		-e '/@PREFIX@/s//\/usr/' \
 		-e '/@RM@/s//\/bin\/rm/' \
