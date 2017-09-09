@@ -92,11 +92,6 @@ build() {
 	mkdir -p $PKG/usr/lib/java/$name
 	cp -r openjdk.build/images/j2sdk-image/* $PKG/usr/lib/java/$name
 
-	mkdir -p $PKG/etc/revdep.d
-	echo "/usr/lib/java/$name/jre/lib/amd64" > $PKG/etc/revdep.d/$name
-	echo "/usr/lib/java/$name/jre/lib/amd64/jli" >> $PKG/etc/revdep.d/$name
-	echo "/usr/lib/java/$name/jre/lib/amd64/server" >> $PKG/etc/revdep.d/$name
-
 	# remove unneeded files
 	rm -f $PKG/usr/lib/java/$name/src.zip
 	rm -rf $PKG/usr/lib/java/$name/{demo,sample}
