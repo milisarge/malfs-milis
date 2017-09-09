@@ -585,7 +585,7 @@ paket_guncelle_oto(){
 		durum=`kurulu_kontrol "$kpkt"`
 		if [ "$durum" = "kurulu" ]; then
 			paket_guncelle "$kpkt"
-		fi;;
+		fi
 	done
 	rm bag.liste tumbag.liste
 }
