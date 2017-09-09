@@ -1,10 +1,10 @@
 # Description: Konsol tabanlı bir MP3 çalar. Unix için en hızlı MP3 kod çözücüsü olduğunu iddia ediyor.
 # URL: http://mpg123.de/
 # Packager: milisarge
-# Depends on: alsa-lib 
+# Depends on: alsa-lib pulseaudio
 
 name=mpg123
-version=1.23.0
+version=1.25.0
 release=1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
