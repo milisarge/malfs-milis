@@ -602,6 +602,39 @@ dongu_gosterge(){
 	done
 }
 
+guncelleme_tespit(){
+	guncelleme_dosya="/tmp/mps.guncellenecekler"
+	rm -f $guncelleme_dosya
+	touch $guncelleme_dosya
+	for kpaket in $(ls $VT/);do
+		satir=$(sed -n '7p' <  $VT/$kpaket/META)
+		surum=${satir:1:${#satir}-1}
+		satir2=$(sed -n '8p' <  $VT/$kpaket/META)
+		devir=${satir2:1:${#satir2}-1}
+		#deposurum=$(grep " $kpaket#" /depo/paketler/paket.vt | cut -d' ' -f3 | cut -d'#' -f 2 | cut -d'-' -f1)
+		if [ -d $(find $talimatname_dizin -name $kpaket) ];then
+			pkt="`find $talimatname_dizin -name $kpaket`"
+		elif [ -d $(find $ektalimatname -name $kpaket) ];then
+			pkt="`find $ektalimatname -name $kpaket`"
+		else
+			ryaz 31 "$kpaket talimatnamelerde olmayan bir paket sürüm kontrolü iptal edildi!"
+			exit 1
+		fi
+		
+		source $pkt/talimat
+		deposurum=`echo -e "$version" | sort -V | head -n1`
+		depodevir=`echo -e "$release" | sort -V | head -n1`
+		#echo $kpaket "  :  $surum --->  $deposurum" "$devir --->  $depodevir"
+		#sleep 3
+		if [ "$surum" != "$deposurum" ];then
+			printf "$kpaket -surum: ";echo "$surum --->  $deposurum"
+			echo $kpaket >> $guncelleme_dosya
+		elif [ "$devir" != "$depodevir" ];then
+			printf "$kpaket -devir: ";echo "$devir --->  $depodevir"
+			echo $kpaket >> $guncelleme_dosya
+		fi
+	done																																																									
+}		
 
 sistem_guncelle(){
 	count=0
@@ -2198,19 +2231,25 @@ ayarlar() {
 				log_analiz "$2" "$3" ;;
 			### mps guncelle . = paket veritabanı ve git güncellemesi-talimatname bilgilerini günceller.
 			guncelle)
-				mps -GG && mps -G ;;
+				mps -GG && mps -G 
+				exit 0 ;;
 			### mps -GG . = git güncellemelerini ve talimatname bilgilerini günceller.
 			-Ggit|-GG)
-				git_guncelle ;;
+				git_guncelle 
+				exit 0 ;;
 			### mps -G . = paket veritabanı bilgilerini günceller.
 			-G|--pvtg)
 				paketvt_guncelle
-				mps -kudo ;;
-			-G2)
-				paketvt_guncelle_yeni ;;
+				mps -kudo 
+				exit 0 ;;
+			### mps tespit . = tüm sistemin güncellemesi için güncellenecek paket listelistesini gösterir.
+			tespit)
+				guncelleme_tespit
+				exit 0 ;;
 			### mps yukselt . = tüm sistemin güncellemesini gerçekleştirir.
 			-GS|yukselt)
-				sistem_guncelle ;;
+				sistem_guncelle 
+				exit 0 ;;
 			#tekil temel paket guncelleme-single base package updating
 			-tg)
 				paket_sil "$2" "evet" &&  mps -ik $2 ;;
