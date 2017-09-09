@@ -1,0 +1,26 @@
+# Description: Gri ve mavi bir xfce teması
+# URL: https://github.com/shimmerproject/Greybird
+# Packager: yasarciv67@gmail.com
+# Depends on: gtk-engine-murrine gtk3
+
+name=greybird-theme
+version=3.22.4
+release=1
+source=(https://github.com/shimmerproject/Greybird/archive/v3.22.4.tar.gz
+)
+
+build() {
+
+	install -dm 755 "$PKG/usr/share/themes/Greybird Compact"
+	install -dm 755 "$PKG/usr/share/themes/Greybird a11y"
+	
+	cp -r  "Greybird-$version/" "$PKG/usr/share/themes/Greybird/"
+	rm -rf "$PKG/usr/share/themes/Greybird/.gitignore"
+	
+	ln -s  "/usr/share/themes/Greybird/xfwm4-compact" \
+	       "$PKG/usr/share/themes/Greybird Compact/xfwm4"
+	      
+	ln -s  "/usr/share/themes/Greybird/xfwm4-a11y" \
+	       "$PKG/usr/share/themes/Greybird a11y/xfwm4"
+
+}

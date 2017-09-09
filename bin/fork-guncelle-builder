@@ -1,0 +1,4 @@
+#!/bin/bash
+git remote add upstream https://github.com/yakar/milis-builder.git
+git fetch upstream
+git pull upstream master
