@@ -390,7 +390,7 @@ paket_derle_kur(){
 
 # odkp
 oto_derle_kur_paketle(){
-	mps -G
+	paketvt_guncelle
 	# mps -kur
 	paket_inkur_oto $1 &&
 	if [ -f  "$talimatname_dizin/genel/$1/$1.sira" ];then
@@ -582,7 +582,10 @@ paket_guncelle_oto(){
 	derleme_listyap "$1" > /dev/null &&
 	local kpkt
 	for kpkt in `cat bag.liste`;do
-		mps -g "$kpkt"
+		durum=`kurulu_kontrol "$kpkt"`
+		if [ "$durum" = "kurulu" ]; then
+			paket_guncelle "$kpkt"
+		fi;;
 	done
 	rm bag.liste tumbag.liste
 }
@@ -607,8 +610,8 @@ sistem_guncelle(){
 	local pk_guncelle
 	total=`ls $VT | wc -l`
 	pstr="[=======================================================================]"
-	mps -GG 
-	mps -G
+	git_guncelle
+	paketvt_guncelle
 	GS_CIKTI="H"
 	while [ $count -lt $total ]; do
 		count=$(( $count + 1 ))
@@ -1929,7 +1932,8 @@ ayarlar() {
 			-d|--pkde)
 				zorla_derle="yok"
 				kurulum_onay="olumsuz"
-				paket_derle "$2" ;;
+				paket_derle "$2" 
+				exit 0 ;;
 			### mps -zd paketismi = Pake kurulu olsa bile derleme yapılır.Bağımlıksız derleme için kullanılır.
 			-zd|--pkzde)
 				zorla_derle="evet"
