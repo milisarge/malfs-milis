@@ -53,11 +53,12 @@ b777bafb674555e48fd8437618270931  xwininfo-1.1.3.tar.bz2
 EOF
 for paket in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 	do
+		cd $DERLEME_KAYNAKDIZIN/
 		#agdan ceker
 		if [ ! -f $DERLEME_KAYNAKDIZIN/$paket ];then
-			wget http://mirror.switch.ch/ftp/mirror/X11/pub/individual/${section}/$paket -c $DERLEME_KAYNAKDIZIN/
+			wget http://mirror.switch.ch/ftp/mirror/X11/pub/individual/${section}/$paket
 		fi
-		cd $DERLEME_KAYNAKDIZIN/
+		
 		grep $paket $SRC/list.md5 |md5sum -c -
 		paketdizini=$(echo $paket | sed 's/.tar.bz2//')
 		cd -
