@@ -1623,6 +1623,7 @@ paket_icerik_dogrulama(){
 
 
 kurulum_dogrulama_icerik_tum(){
+	ryaz 33  "paket veritabanı yedekleniyor"
 	tarihce_yap
 	for kurulanpak in `ls $VT`
 	do
@@ -1646,28 +1647,32 @@ kurulum_dogrulama_icerik(){
 	paketadi="$1"
 	#echo $VT
 	#tarihce_yap
+	ryaz 33  "$paketadi içeriği kontro ediliyor."
 	if [ -f "$VT/$paketadi/kurulan" ]; then
 		ilksatir=`head -n 1 $VT/$paketadi/kurulan`
 		if [[ `echo ${ilksatir}` =~ ^‘ ]] ; then 
 			ryaz 32 "temel sistem paket kurulan hatası düzeltildi!"
 			sed -i 's/‘/'\''\//;s/’/'\''/' $VT/$paketadi/kurulan
 		fi
-		IFS=''
-		while read dosyayol;do
+		for dosyayol in $(cat $VT/$paketadi/kurulan);do
 			dosyayol=$(echo $dosyayol | sed 's/^.\(.*\).$/\1/')
-			netdosyayol="${dosyayol:1:${#dosyayol}-1}"
-			if [ ! -f $netdosyayol ] && [ ! -d $netdosyayol ] ; then
-				ryaz 31 "$netdosyayol hasarlı"
+			#netdosyayol="${dosyayol:1:${#dosyayol}-1}"
+			#echo $dosyayol
+			#echo $netdosyayol
+			if [ ! -f $dosyayol ] && [ ! -d $dosyayol ] ; then
+				ryaz 31 "$dosyayol hasarlı"
 				while true; do
-					ryaz 34 $paketadi" paketi yenilensin mi?";read -p "e veya h-> " eh
+					ryaz 34 $paketadi "paketi yenilensin mi?"
+					read -p "e veya h -> " eh;
 					case $eh in
 						[Ee]* ) tekrarkur="evet";agdan_kur "$paketadi";break;;
 						[Hh]* ) break;;
 						* ) echo "e veya h";;
 					esac
-				done
+				done	
+				
 			fi
-		done < "$VT/$paketadi/kurulan"
+		done
 		
 		ryaz 32 "$paketadi kurulum doğrulama tamamlandı." 
 	elif [ -d "$VT/$paketadi" ]; then
