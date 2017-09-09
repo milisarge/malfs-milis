@@ -1,20 +1,27 @@
 # Description: RDF verilerine üst düzey bir arayüz sağlayan kütüphane
 # URL: http://download.librdf.org/source/
 # Packager: milisarge
-# Depends on:
+# Depends on: rasqal raptor sqlite libiodbc pcre
 
 name=redland
 version=1.0.17
-release=3
+release=4
 
-source=(http://download.librdf.org/source/$name-$version.tar.gz)
+source=(http://download.librdf.org/source/$name-$version.tar.gz
+		rpath.diff)
 
 build() {
 cd $name-$version
-	
 ./configure --prefix=/usr \
-	--disable-static
- 
-make
+	--enable-release \
+	--enable-silent-rules \
+	--disable-static \
+	--with-raptor=system \
+	--with-rasqal=system \
+	--with-sqlite=3 \
+	--with-bdb=no
+patch -Np0 -i "${SRC}/rpath.diff"
+make -j1
 make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
 }
