@@ -602,7 +602,7 @@ dongu_gosterge(){
 
 sistem_guncelle(){
 	count=0
-	esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
+	esgec=(xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
 	local kpkt
 	local pk_guncelle
 	total=`ls $VT | wc -l`
