@@ -4,9 +4,9 @@
 # Depends on: harfbuzz libpng xorg-mesa xorg-glu xcb-util xorg-libx11 xorg-libxinerama xorg-libxt xorg-libxfont xorg-libxkbfile xorg-libxmu xorg-libxrender xorg-libxrandr xorg-libxcursor xorg-libxtst xorg-libxxf86vm xorg-libxaw xorg-xbitmaps xorg-libxv xorg-libdmx xorg-libxt 
 
 name=xorg-app
-version=7.7
-release=4
-
+version=7.8
+release=1
+section=app
 source=()
 
 build() {
@@ -51,18 +51,20 @@ dcd227388b57487d543cab2fd7a602d7  xset-1.2.3.tar.bz2
 b777bafb674555e48fd8437618270931  xwininfo-1.1.3.tar.bz2
 3025b152b4f13fdffd0c46d0be587be6  xwud-1.0.4.tar.bz2
 EOF
-for package in $(grep -v '^#' list.md5 |cut -d " " -f 3)
+for paket in $(grep -v '^#' list.md5 |cut -d " " -f 3)
 	do
 		#agdan ceker
-		wget http://mirror.switch.ch/ftp/mirror/X11/pub/individual/${section}/$package
-		#yerelden
-		#cp /sources/$package .
-		grep $package list.md5 |md5sum -c -
-		packagedir=$(echo $package | sed 's/.tar.bz2//')
-		tar -xf $package
+		if [ ! -f $DERLEME_KAYNAKDIZIN/$paket ];then
+			wget http://mirror.switch.ch/ftp/mirror/X11/pub/individual/${section}/$paket -c $DERLEME_KAYNAKDIZIN/
+		fi
+		cd $DERLEME_KAYNAKDIZIN/
+		grep $paket $SRC/list.md5 |md5sum -c -
+		paketdizini=$(echo $paket | sed 's/.tar.bz2//')
+		cd -
+		tar -xf $DERLEME_KAYNAKDIZIN/$paket 
 
-		pushd $packagedir
-		case $packagedir in
+		pushd $paketdizini
+		case $paketdizini in
 			luit-[0-9]* )
 				line1="#ifdef _XOPEN_SOURCE"
 				line2="#  undef _XOPEN_SOURCE"
