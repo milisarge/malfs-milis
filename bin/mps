@@ -1645,34 +1645,35 @@ ord_yordam() {
 
 kurulum_dogrulama_icerik(){
 	paketadi="$1"
+	onar="hayir"	
 	#echo $VT
 	#tarihce_yap
-	ryaz 33  "$paketadi içeriği kontro ediliyor."
+	ryaz 33  "$paketadi içeriği kontrol ediliyor."
 	if [ -f "$VT/$paketadi/kurulan" ]; then
 		ilksatir=`head -n 1 $VT/$paketadi/kurulan`
 		if [[ `echo ${ilksatir}` =~ ^‘ ]] ; then 
 			ryaz 32 "temel sistem paket kurulan hatası düzeltildi!"
 			sed -i 's/‘/'\''\//;s/’/'\''/' $VT/$paketadi/kurulan
 		fi
-		for dosyayol in $(cat $VT/$paketadi/kurulan);do
+		#for dosyayol in $(cat $VT/$paketadi/kurulan);do
+		while read dosyayol; do    
+		#for dosyayol in $(<$VT/$paketadi/kurulan);do
 			dosyayol=$(echo $dosyayol | sed 's/^.\(.*\).$/\1/')
-			#netdosyayol="${dosyayol:1:${#dosyayol}-1}"
-			#echo $dosyayol
-			#echo $netdosyayol
+			netdosyayol="${dosyayol:1:${#dosyayol}-1}"
 			if [ ! -f $dosyayol ] && [ ! -d $dosyayol ] ; then
 				ryaz 31 "$dosyayol hasarlı"
-				while true; do
-					ryaz 34 $paketadi "paketi yenilensin mi?"
-					read -p "e veya h -> " eh;
-					case $eh in
-						[Ee]* ) tekrarkur="evet";agdan_kur "$paketadi";break;;
-						[Hh]* ) break;;
-						* ) echo "e veya h";;
-					esac
-				done	
-				
+				onar="evet"
 			fi
-		done
+		done < $VT/$paketadi/kurulan
+
+		if [ $onar = "evet" ];then
+			ryaz 34 "$paketadi hasarlı dosya barındırıyor,düzeltilsin mi?";read -p "e veya h-> " eh
+			case $eh in
+				[Ee]* ) tekrarkur="evet";agdan_kur "$paketadi";;
+				[Hh]* ) ryaz 31 "$paketadi pas geçildi.";;
+				* ) echo "e veya h";;
+			esac
+		fi
 		
 		ryaz 32 "$paketadi kurulum doğrulama tamamlandı." 
 	elif [ -d "$VT/$paketadi" ]; then
