@@ -1,7 +1,7 @@
 # Description: Elektronik tablo belgelerinin dosya içe aktarma filtresi kütüphanesi.
 # URL: https://gitlab.com/orcus/orcus/blob/master/README.md
 # Packager: Cihan Alkan
-# Depends on:libwpd boost mdds libixion
+# Depends on: libwpd boost mdds libixion
 
 name=liborcus
 version=0.12.1
