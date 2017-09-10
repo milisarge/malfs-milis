@@ -1,4 +1,4 @@
-#!/bin/bash
+e#!/bin/bash
 . /etc/mpsd.conf
 if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
@@ -638,7 +638,7 @@ guncelleme_tespit(){
 
 sistem_guncelle(){
 	count=0
-	esgec=(xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
+	esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
 	local kpkt
 	local pk_guncelle
 	total=`ls $VT | wc -l`
