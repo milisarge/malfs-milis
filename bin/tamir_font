@@ -1,3 +1,4 @@
 #!/bin/bash
-#[ ! -d /var/lib/pkg/DB/tex-gyre-fonts ] && mps kur tex-gyre-fonts
+[ ! -d /var/lib/pkg/DB/tex-gyre-fonts ] && mps kur tex-gyre-fonts
+cp -rf /sources/milis.git/ayarlar/70-no-bitmaps.conf /etc/fonts/conf.d/
 cp -rf /sources/milis.git/ayarlar/98-tamir.conf /etc/fonts/conf.d/
