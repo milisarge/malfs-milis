@@ -1,0 +1,24 @@
+# Description: Genel amaçlı formül çözümleyici ve yorumlayıcı
+# URL: https://gitlab.com/ixion/ixion/blob/master/README.md
+# Packager: Cihan Alkan
+# Depends on: boost mdds
+
+name=libixion
+version=0.13.0
+release=1
+
+source=(http://kohei.us/files/ixion/src/libixion-0.13.0.tar.xz)
+
+build() {
+ cd $name-$version 
+./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var \
+		--disable-python \
+		|| return 1
+	make || return 1
+	make DESTDIR=$PKG install
+install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+}
