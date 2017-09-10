@@ -1,4 +1,4 @@
-e#!/bin/bash
+#!/bin/bash
 . /etc/mpsd.conf
 if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
