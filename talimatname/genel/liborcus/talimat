@@ -10,8 +10,10 @@ release=1
 source=(https://kohei.us/files/orcus/src/$name-$version.tar.xz)
 
 build() {
- cd $name-$version
- ./configure --prefix=/usr
- make
-make DESTDIR=$PKG install
+	cd $name-$version
+	[ ! -f /usr/lib/pkgconfig/python3.pc ] && ln -s /usr/lib/pkgconfig/python-3.5.pc /usr/lib/pkgconfig/python3.pc
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+	rm -f /usr/lib/pkgconfig/python3.pc
 }

@@ -1,24 +1,22 @@
 # Description: Genel amaçlı formül çözümleyici ve yorumlayıcı
 # URL: https://gitlab.com/ixion/ixion/blob/master/README.md
 # Packager: Cihan Alkan
-# Depends on: boost mdds
+# Depends on: boost mdds python3
 
 name=libixion
-version=0.13.0
+version=0.12.2
 release=1
 
-source=(http://kohei.us/files/ixion/src/libixion-0.13.0.tar.xz)
+source=(http://kohei.us/files/ixion/src/libixion-$version.tar.xz)
 
 build() {
- cd $name-$version 
-./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--mandir=/usr/share/man \
-		--localstatedir=/var \
-		--disable-python \
-		|| return 1
-	make || return 1
+	cd $name-$version 
+	[ ! -f /usr/lib/pkgconfig/python3.pc ] && ln -s /usr/lib/pkgconfig/python-3.5.pc /usr/lib/pkgconfig/python3.pc
+	./configure \
+	--prefix=/usr \
+	 --disable-static
+	make
 	make DESTDIR=$PKG install
-install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+	install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+	rm -f /usr/lib/pkgconfig/python3.pc
 }
