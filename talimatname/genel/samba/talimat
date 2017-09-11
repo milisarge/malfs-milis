@@ -4,19 +4,13 @@
 # Depends on: talloc tevent avahi gnutls libgpg-error popt python cups kerberos libcap tdb openldap libxslt
 
 name=samba
-version=4.4.5
+version=4.6.7
 release=1
-
-source=( http://ftp.samba.org/pub/samba/stable/$name-$version.tar.gz
-http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20170225.tar.xz)
+source=(https://www.samba.org/samba/ftp/stable/$name-$version.tar.gz
+		samba.conf)
 
 build() {
 
-if [ "`uname -m`" == "x86_64" ]; then
-        LIB=lib64
-else
-        LIB=lib
-fi
 cd $name-$version
 
 
@@ -36,24 +30,19 @@ make
 sed -i "/samba3.blackbox.failure.failure/i \^samba3.raw.eas" selftest/knownfail
 
 make DESTDIR=$PKG install
-
-install -d $PKG/$LIB
-mv -v $PKG/usr/lib/libnss_win{s,bind}.so*   $PKG/$LIB
-ln -v -sf /$LIB/libnss_winbind.so.2 $PKG/usr/lib/libnss_winbind.so
-ln -v -sf /$LIB/libnss_wins.so.2    $PKG/usr/lib/libnss_wins.so
-   
+ 
 install -v -m644 examples/smb.conf.default $PKG/etc/samba/smb.conf.default
 
 mkdir -pv $PKG/etc/openldap/schema
-install -v -m644 examples/LDAP/README \
-$PKG/etc/openldap/schema/README.LDAP
+install -v -m644 examples/LDAP/README $PKG/etc/openldap/schema/README.LDAP
 
-install -v -m644 examples/LDAP/samba* \
-$PKG/etc/openldap/schema
+install -v -m644 examples/LDAP/samba* $PKG/etc/openldap/schema
 
-install -v -m755 examples/LDAP/{get*,ol*} \
-$PKG/etc/openldap/schema
+install -v -m755 examples/LDAP/{get*,ol*} $PKG/etc/openldap/schema
 
+#ld.conf
+mkdir -pv $PKG/etc/ld.so.conf.d
+cp -f $SRC/samba.conf $PKG/etc/ld.so.conf.d/
 
 #  cups 
 cd $PKG/usr/lib/
@@ -61,9 +50,9 @@ install -d cups/backend
 ln -v -sf $PKG/usr/bin/smbspool $PKG/usr/lib/cups/backend/smb
 
 # servis
-cd $SRC/blfs-bootscripts-20170225
-make DESTDIR=$PKG install-samba
-make DESTDIR=$PKG install-winbindd
+cd /sources/milis.git/ayarlar/servisler
+make DESTDIR=$PKG kur-samba     
+make DESTDIR=$PKG kur-winbindd   
 
 # Doublon
 rm -f $PKG/usr/lib/python2.7/site-packages/talloc.so

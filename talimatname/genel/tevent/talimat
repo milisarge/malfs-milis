@@ -4,15 +4,15 @@
 # Depends on: talloc python
 
 name=tevent
-version=0.9.28
+version=0.9.33
 release=1
 source=(https://www.samba.org/ftp/$name/$name-$version.tar.gz)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
---bundled-libraries=NONE \
---builtin-libraries=replace
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	./configure --prefix=/usr \
+	--bundled-libraries=NONE \
+	--builtin-libraries=replace
+	make
+	make DESTDIR=$PKG install
 }
