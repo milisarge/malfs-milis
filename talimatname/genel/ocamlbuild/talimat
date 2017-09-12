@@ -4,13 +4,13 @@
 # Depends on: ocaml
 
 name=ocamlbuild
-version=0.9.3
+version=0.11.0
 release=1
 source=(https://github.com/ocaml/${name}/archive/$version.tar.gz)
 
 build() {
 	cd $name-$version
-	make configure OCAML_NATIVE_TOOLS=false
-	make -j1
-	make DESTDIR="$PKG/" install
+	make configure OCAMLBUILD_PREFIX=/usr
+	make
+	make install DESTDIR=$PKG
 }
