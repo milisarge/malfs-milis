@@ -1,0 +1,25 @@
+# Description: Paket bağımlılık çözücü
+# URL: http://potassco.sourceforge.net/
+# Packager: milisarge
+# Depends on: boost cmake re2c clingo
+
+name=aspcud
+version=1.9.1
+release=1
+source=(
+http://downloads.sourceforge.net/project/potassco/aspcud/1.9.1/$name-$version-source.tar.gz)
+
+build() {
+	mkdir -p build
+	cd build
+	cmake "../$pkgname-$pkgver-source" \
+	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-DCUDF2LP_LOC=cudf2lp \
+	-DGRINGO_LOC=gringo \
+	-DCLASP_LOC=clasp \
+	-DCMAKE_BUILD_TYPE=Release \
+	-GNinja
+	ninja
+
+	DESTDIR="$pkgdir" ninja -C $SRC/build install
+}
