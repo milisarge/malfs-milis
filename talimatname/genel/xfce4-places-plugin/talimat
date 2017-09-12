@@ -1,0 +1,34 @@
+# Description: Xfce paneli için Yerler Menüsü eklentisi
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-places-plugin
+# Packager: yasarciv67@gmail.com
+# Depends on: intltool libnotify xfce4-panel 
+
+name=xfce4-places-plugin
+version=1.7.0
+release=1
+source=(http://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$version.tar.bz2
+mounts.patch
+undefined-symbol.patch
+)
+
+build() {
+  cd "$name-$version"
+  # Disk olmayan diğer bağları göster (örn. NFS)
+
+  patch -Np1 -i "${SRC}/mounts.patch"
+
+  # Bug 11939
+
+  patch -Np1 -i "${SRC}/undefined-symbol.patch"
+  ./configure \
+	--prefix=/usr \
+        --sysconfdir=/etc \
+        --libexecdir=/usr/lib \
+        --localstatedir=/var \
+        --disable-static \
+        --disable-debug
+
+  make
+  make DESTDIR="$PKG" install
+
+}
