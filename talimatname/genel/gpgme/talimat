@@ -1,20 +1,20 @@
 # Description: GnuPG için bir C sarıcı kütüphanesi
 # URL: http://www.gnupg.org/related_software/gpgme/
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: libassuan
 
 name=gpgme
-version=1.6.0
+version=1.9.0
 release=1
 source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
---disable-fd-passing \
---disable-gpgsm-test
+	cd $name-$version
+	./configure --prefix=/usr \
+	--disable-fd-passing \
+	--disable-gpgsm-test
 
-make
-make DESTDIR=$PKG install
-rm $PKG/usr/share/info/dir
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/info
 }
