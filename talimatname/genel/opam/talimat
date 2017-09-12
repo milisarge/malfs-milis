@@ -1,0 +1,18 @@
+# Description: Ocaml paket yöneticisi.
+# URL: http://opam.ocaml.org
+# Packager: milisarge
+# Depends on: aspcud ocaml unzip
+
+name=opam
+version=1.2.2
+release=1
+source=(https://github.com/ocaml/opam/releases/download/$version/opam-full-$version.tar.gz::$name-$version.tar.xz)
+
+build() {
+	cd "opam-full-$version"
+	./configure --prefix=/usr
+	make -j1 lib-ext all
+	make -C "$SRC/opam-full-$version" DESTDIR="$PKG" install
+}
+
+
