@@ -1,0 +1,19 @@
+# Description: TCP port tarayıcı,asenkron SYNC paketleri kullanarak tarama yapar.
+# URL: https://github.com/robertdavidgraham/masscan
+# Packager: milisarge
+# Depends on: libpcap 
+
+name=masscan
+version=master
+release=1
+source=(https://github.com/robertdavidgraham/masscan/archive/master.tar.gz::$name-master.tar.gz)
+
+
+build() {
+	cd ${name}-master
+	make
+	make DESTDIR="${PKG}" install
+	install -Dm 644 doc/masscan.8 "${PKG}/usr/share/man/man8/masscan.8"
+	install -Dm 644 README.md "${PKG}/usr/share/doc/${name}/README"
+	install -Dm 644 doc/masscan.8.markdown "${PKG}/usr/share/doc/${name}/DOCUMENTATION"
+}
