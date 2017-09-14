@@ -2320,6 +2320,7 @@ ayarlar() {
 				etkilenen_kurtar $2 ;;
 			-suko)
 				sunucu_kontrol ;;
+			### mps -pot . = talimatı olup ta paketi henüz depoda yer almayan talimatları listeler.
 			-pot)
 				paketsiz_talimatlar 
 				exit 0 ;;
