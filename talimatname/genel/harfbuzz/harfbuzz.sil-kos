@@ -1,0 +1,1 @@
+[ -d /usr/share/gir-1.0.ydk ] && mv /usr/share/gir-1.0.ydk /usr/share/gir-1.0
