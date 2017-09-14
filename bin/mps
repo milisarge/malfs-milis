@@ -139,7 +139,7 @@ paket_sil(){
 				fi
 				ryaz 31 "etkilenen dosyalar"
 				ryaz 31 "------------------"
-				silme_etkilenen_kontrol /tmp/$paket.sil
+				silme_etkilenen_kontrol /tmp/$paket.sil $paket
 				ryaz 31 "------------------"
 				if [ "$oto_silme" = "evet" ];then
 					sil_onay="e"
@@ -1016,6 +1016,9 @@ bagimli_bilgi_dosyala(){
 }
 
 silme_etkilenen_kontrol(){
+	paketet="$2"
+	mkdir -p /var/lib/pkg/etkilenen
+	mkdir -p /var/lib/pkg/etkilenen/$paketet
 	local dizin
 	for f in $(cat $1) ; do 
 		dizin="${f%\'}"
@@ -1025,6 +1028,7 @@ silme_etkilenen_kontrol(){
 				if ! grep -Fxq " '$dizin/$g'" "$1"
 				then
 					echo "$dizin/$g"
+					cp -rf "$dizin/$g" /var/lib/pkg/etkilenen/$paketet
 				fi
 			done
 		fi
