@@ -29,5 +29,4 @@ cd $name-$version
   mv "$PKG"/usr/include/harfbuzz/hb-icu.h ./usr/include/harfbuzz
   cp -r $SRC/hb-icu/* "$PKG"
   rm -rf $PKG/usr/share/gtk-doc
-
 }
