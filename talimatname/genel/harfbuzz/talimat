@@ -1,17 +1,33 @@
 # Description: OpenType metin şekillendirme motoru
 # URL: http://www.freedesktop.org/software/harfbuzz
-# Packager: milisarge
-# Depends on: cairo glib icu freetype
+# Packager: Cihan Alkan
+# Depends on: cairo glib icu freetype ragel graphite2
 
 name=harfbuzz
-version=1.1.2
+version=1.5.1
 release=1
 source=(http://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
-./configure --prefix=/usr \
---with-gobject
-make
-make DESTDIR=$PKG install
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --with-cairo \
+    --with-freetype \
+    --with-glib \
+    --with-gobject \
+    --with-graphite2 \
+    --with-icu 
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR=$PKG install
+  install -Dm644 COPYING "$PKG/usr/share/licenses/harfbuzz/COPYING"
+  mkdir -p ../hb-icu/usr/{include/harfbuzz,lib/pkgconfig}; cd ../hb-icu
+  mv "$PKG"/usr/lib/libharfbuzz-icu* ./usr/lib
+  mv "$PKG"/usr/lib/pkgconfig/harfbuzz-icu.pc ./usr/lib/pkgconfig
+  mv "$PKG"/usr/include/harfbuzz/hb-icu.h ./usr/include/harfbuzz
+  cp -r $SRC/hb-icu/* "$PKG"
+  rm -rf $PKG/usr/share/gtk-doc
+
 }

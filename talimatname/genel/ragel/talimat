@@ -1,0 +1,18 @@
+# Description: Sonlu durum makinelerini düzenli dillerden çalıştırılabilir C, C ++, Objective-C veya D koduna derler.
+# URL: http://www.complang.org/ragel/
+# Packager: Cihan Alkan
+# Depends on:
+
+name=ragel
+version=6.10
+release=1
+
+source=(https://www.colm.net/files/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr CXXFLAGS="$CXXFLAGS -std=gnu++98" 
+	make
+	make DESTDIR=$PKG install
+	install -m0644 -D ragel.vim "$PKG"/usr/share/vim/vimfiles/syntax/ragel.vim
+}
