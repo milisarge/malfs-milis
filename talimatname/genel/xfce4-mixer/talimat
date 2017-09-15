@@ -5,7 +5,7 @@
 
 name=xfce4-mixer
 version=4.11.0
-release=1
+release=2
 
 source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
 
@@ -16,8 +16,7 @@ cd $name-$version
    	 --sysconfdir=/etc \
     	--libexecdir=/usr/lib \
     	--localstatedir=/var \
-    	--disable-static \
-    	--disable-debug
+    	--disable-static 
 	make
 	make DESTDIR=$PKG install
 }
