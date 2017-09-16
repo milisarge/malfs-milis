@@ -5,7 +5,7 @@
 
 name=boost
 version=1.60.0
-release=2
+release=3
 _boostver=${version//./_}
 source=(https://downloads.sourceforge.net/project/${name}/${name}/${version}/${name}_${_boostver}.tar.bz2)
 
@@ -49,6 +49,7 @@ build() {
    ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3 \
       --with-libraries=python
 
+   "${_stagedir}"/bin/b2 clean
    "${_stagedir}"/bin/b2 \
       variant=release \
       debug-symbols=off \
