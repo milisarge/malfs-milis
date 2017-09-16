@@ -2344,7 +2344,7 @@ ayarlar() {
 				fi
 				ayar_dosyasi="$2"
 				shift ;;
-			# bir dosyanın kurulmuş hangi pakette olduğunu bulur
+			### mps -hp aranan = ilgili aranan ifadenin hangi paketlerde olabileceğini listeler.
 			-hp)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
