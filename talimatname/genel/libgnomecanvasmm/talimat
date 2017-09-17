@@ -1,0 +1,21 @@
+# Description: Libgnomecanvas için bir C ++ sarmalayıcı.
+# URL: http://www.gtkmm.org/
+# Packager: yasarciv67@gmail.com
+# Depends on: pkg-config gtkmm libgnomecanvas 
+
+name=libgnomecanvasmm
+version=2.26.0
+release=1
+source=(https://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.bz2
+)
+
+build() {
+  cd $name-$version
+
+  CXXFLAGS+=' -std=c++11'
+  ./configure --prefix=/usr --sysconfdir=/etc \
+              --localstatedir=/var
+  make
+  make DESTDIR=$PKG install
+
+}
