@@ -1,0 +1,34 @@
+# Description: Bir WebKit2 tabanlı uygulama sınıfları ve yeni bir QML API'sı
+# URL: http://qt-project.org/
+# Packager: milisarge
+# Depends on: ffmpeg jsoncpp libvpx libevent libsrtp xorg-libxdamage protobuf nss gstreamer1-plugins-base libwebp xorg-libxcomposite libxslt gstreamer1-plugins-good python ruby qt5 ninja
+
+name=qt5-webengine
+_name=qtwebengine
+version=5.9.1
+release=1
+
+#source=(http://download.qt.io/official_releases/qt/5.9/$version/submodules/$_name-opensource-src-$version.tar.xz)
+source=(http://download.qt.io/official_releases/qt/${version%.*}/$version/single/qt-everywhere-opensource-src-$version.tar.xz
+		last-commit-position.patch
+		clip-ft-glyph.diff 
+		harmony-fix.diff
+		gzip_string.py)
+
+build() {
+	cd $SRC/qt-everywhere-opensource-src-$version/qtwebengine/
+
+	#patch -p1 -i $SRC/last-commit-position.patch
+	patch -d src/3rdparty/chromium/third_party -Np3 < $SRC/clip-ft-glyph.diff
+    patch -Np1 -i $SRC/harmony-fix.diff
+	
+	install -d build
+	cd build
+    cp -rf $SRC/gzip_string.py $SRC/qt-everywhere-opensource-src-5.9.1/qtwebengine/src/3rdparty/chromium/tools/grit/grit/format/
+	qmake-qt5  WEBENGINE_CONFIG+="use_proprietary_codecs use_system_ffmpeg use_system_icu" ../qtwebengine.pro
+	make
+	make INSTALL_ROOT=$PKG install
+	find "$PKG/usr/lib" -type f -name '*.prl' \
+	-exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+}

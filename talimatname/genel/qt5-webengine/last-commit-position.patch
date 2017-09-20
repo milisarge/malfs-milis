@@ -1,0 +1,28 @@
+diff -pruN qtwebengine-opensource-src-5.9.1.orig/src/3rdparty/chromium/tools/gn/BUILD.gn qtwebengine-opensource-src-5.9.1/src/3rdparty/chromium/tools/gn/BUILD.gn
+--- qtwebengine-opensource-src-5.9.1.orig/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-08-06 08:14:54.775770614 +0000
++++ qtwebengine-opensource-src-5.9.1/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-08-06 08:17:54.230085298 +0000
+@@ -269,7 +269,6 @@ executable("gn") {
+ 
+   deps = [
+     ":gn_lib",
+-    ":last_commit_position",
+     "//base",
+     "//build/config/sanitizers:deps",
+     "//build/win:default_exe_manifest",
+diff -pruN qtwebengine-opensource-src-5.9.1.orig/src/3rdparty/chromium/tools/gn/gn_main.cc qtwebengine-opensource-src-5.9.1/src/3rdparty/chromium/tools/gn/gn_main.cc
+--- qtwebengine-opensource-src-5.9.1.orig/src/3rdparty/chromium/tools/gn/gn_main.cc	2017-08-06 08:14:54.746771855 +0000
++++ qtwebengine-opensource-src-5.9.1/src/3rdparty/chromium/tools/gn/gn_main.cc	2017-08-06 08:18:53.627541541 +0000
+@@ -12,13 +12,7 @@
+ #include "tools/gn/standard_out.h"
+ #include "tools/gn/switches.h"
+ 
+-// Only the GN-generated build makes this header for now.
+-// TODO(brettw) consider adding this if we need it in GYP.
+-#if defined(GN_BUILD)
+-#include "tools/gn/last_commit_position.h"
+-#else
+ #define LAST_COMMIT_POSITION "UNKNOWN"
+-#endif
+ 
+ namespace {
+ 
