@@ -1,10 +1,10 @@
 # Description: C ve C ++ kitaplıkları için Python bağlamaları oluşturmayı kolaylaştıran bir araç
 # URL: http://www.riverbankcomputing.co.uk/software/sip/intro
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: python3 
 
 name=python3-sip
-version=4.18.1
+version=4.19.3
 release=1
 
 source=(http://sourceforge.net/projects/pyqt/files/sip/sip-$version/sip-$version.tar.gz )

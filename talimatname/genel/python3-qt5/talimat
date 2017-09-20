@@ -1,10 +1,10 @@
 # Description: Qt5 için bağlayıcı python
-# URL: http://www.riverbankcomputing.co.uk/software/pyqt/intro
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: dbus-python python3-sip qt5 qt5-webkit python3-opengl python3
+# URL: https://sourceforge.net/projects/pyqt/f
+# Packager: milisarge
+# Depends on: dbus-python python3-sip qt5 qt5-webkit python3-opengl python3 qt5-webengine
 
 name=python3-qt5
-version=5.7
+version=5.9
 release=1
 
 source=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$version/PyQt5_gpl-$version.tar.gz)
