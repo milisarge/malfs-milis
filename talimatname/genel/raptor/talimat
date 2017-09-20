@@ -1,18 +1,18 @@
 # Description: RDF / XML / N-Üçlülerini RDF üçlülerine ayrıştıran bir C kitaplığı
 # URL: http://download.librdf.org/source/
 # Packager: milisarge
-# Depends on: expat libxml2 curl icu 
+# Depends on: libxml2 icu 
 
 name=raptor
 version=2.0.15
-release=1
+release=2
 
 source=(http://librdf.org/dist/source/raptor2-$version.tar.gz)
 build() {
-cd raptor2-$version
-./configure --prefix=/usr \
---disable-static \
---with-icu-config=/usr/bin/icu-config
-make
-make DESTDIR=$PKG install
+	cd raptor2-$version
+	./configure --prefix=/usr \
+	--disable-static \
+	--with-icu-config=/usr/bin/icu-config
+	make
+	make DESTDIR=$PKG install
 }

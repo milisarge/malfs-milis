@@ -4,15 +4,16 @@
 # Depends on: python
  
 name=libxml2
-version=2.9.3
+version=2.9.5
 release=1
 
 source=(ftp://xmlsoft.org/libxml2/$name-$version.tar.gz)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr \
- --disable-static --with-history
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	./configure --prefix=/usr \
+	 --disable-static --with-history
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
 }

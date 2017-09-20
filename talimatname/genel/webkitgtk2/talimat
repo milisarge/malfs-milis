@@ -1,20 +1,24 @@
 # Description: WebKitGTK+, WebKit rendering motorunun tam özellikli bir portudur
 # URL: http://webkitgtk.org/
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: libwebp libsecret geoclue gperf gtk2 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
 
 name=webkitgtk2
 version=2.4.11
-release=1
-source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz)
+release=2
+source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz
+		webkitgtk-2.4.9-abs.patch
+		icu59.patch)
 
 build() {
 	cd webkitgtk-$version
-
+    patch -Np1 -i ../webkitgtk-2.4.9-abs.patch
+    patch -Np1 -i ../icu59.patch
 	install -d build
 	cd build
-	
-    CXX="g++ -std=c++98"
+	CXXFLAGS+=" -fno-delete-null-pointer-checks"
+    CFLAGS+=" -fno-delete-null-pointer-checks"
+    
 	../configure \
 		--prefix=/usr \
 		--disable-geolocation \
@@ -24,9 +28,12 @@ build() {
 		--enable-jit \
 		--libexecdir=/usr/lib/webkitgtk2 \
 		--with-gtk=2.0 \
-		--disable-webkit2
+		--disable-webkit2 \
+		--disable-gtk-doc 
+		
+    sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-
-make || make -j1
-make DESTDIR=$PKG install || make -j1 DESTDIR=$PKG install
+	make 
+	make -j1 DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
 }

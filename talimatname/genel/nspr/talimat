@@ -4,10 +4,10 @@
 # Depends on:
 
 name=nspr
-version=4.14
+version=4.16
 release=1
 
-source=( http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$version/src/$name-$version.tar.gz )
+source=(http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$version/src/$name-$version.tar.gz )
 build () {
 
 cd $name-$version/$name

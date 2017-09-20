@@ -4,13 +4,20 @@
 # Depends on:
 
 name=icu
-version=56.1
+version=59.1
 release=1
-source=(http://download.$name-project.org/files/icu4c/$version/icu4c-${version//./_}-src.tgz)
+source=(http://download.icu-project.org/files/icu4c/$version/icu4c-${version//./_}-src.tgz)
 
-build () {
-	cd $name/source
-	CC=gcc CXX=g++ ./configure --prefix=/usr
+build() {
+	cd icu/source
+
+	sed -i 's/xlocale/locale/' i18n/digitlst.cpp
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--mandir=/usr/share/man \
+	--sbindir=/usr/bin
 	make
-	make prefix=$PKG/usr install
+    make -k check
+	make -j1 DESTDIR=$PKG install
+	install -Dm644 ${SRC}/icu/LICENSE ${PKG}/usr/share/licenses/icu/LICENSE
 }

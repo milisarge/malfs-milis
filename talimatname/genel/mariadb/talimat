@@ -4,7 +4,7 @@
 # Depends on: pcre cmake libevent
 
 name=mariadb
-version=10.2.6
+version=10.1.26
 release=1
 
 source=(ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-$version/source/mariadb-$version.tar.gz)
