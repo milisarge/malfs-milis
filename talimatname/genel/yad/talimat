@@ -4,13 +4,13 @@
 # Depends on: gtk2 webkitgtk2 gtk3
 
 name=yad
-version=0.35.0
+version=0.39.0
 release=1
 source=(https://sourceforge.net/projects/yad-dialog/files/$name-$version.tar.xz)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }

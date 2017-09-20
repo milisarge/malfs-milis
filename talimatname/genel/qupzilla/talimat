@@ -1,11 +1,11 @@
 # Description:  Çapraz platform QtWebKit tarayıcı.
 # URL: http://www.qupzilla.com/
 # Packager: milisarge
-# Depends on: qt5 desktop-file-utils hunspell qt5-webkit
+# Depends on: qt5 desktop-file-utils hunspell qt5-webkit qt5-webengine
 
 name=qupzilla
 version=2.1.2
-release=1
+release=2
 
 source=(https://github.com/QupZilla/qupzilla/releases/download/v$version/QupZilla-$version.tar.xz
 		https://raw.githubusercontent.com/6c37/crux-ports/3.3/qupzilla/plugins-80fea7d.zip)
