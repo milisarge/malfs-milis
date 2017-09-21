@@ -4,7 +4,7 @@
 # Depends on: libwpd boost mdds libixion
 
 name=liborcus
-version=0.13.0
+version=0.12.1
 release=1
 
 source=(https://kohei.us/files/orcus/src/$name-$version.tar.xz)
