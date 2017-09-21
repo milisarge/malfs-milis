@@ -1,5 +1,9 @@
-[ -f /usr/bin/xdg-desktop-menu ] && /usr/bin/xdg-desktop-menu forceupdate
-[ -f /usr/bin/update-desktop-database ] && /usr/bin/update-desktop-database /usr/share/applications
-
-tamir_desktop_database
-
+_l="/etc/login.defs"
+_p="/etc/passwd"
+l=$(grep "^UID_MIN" $_l)
+l1=$(grep "^UID_MAX" $_l)
+users=(`awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{ if ( $3 >= min && $3 <= max  && $7 != "/sbin/nologin" ) print $1 }' "$_p"`)
+for user in "${users[@]}"; do
+cp -r /tmp/libreoffice "/home/$user/.config/"
+sudo chmod -R 777 /home/$user/.config/libreoffice
+done

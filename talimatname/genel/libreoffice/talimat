@@ -1,76 +1,79 @@
-# Description: LibreOffice tam özellikli bir ofis paketidir. Microsoft Office ile büyük ölçüde uyumludur ve OpenOffice.org'dan gelmektedir.
-# URL: http://www.libreoffice.org
-# Packagers: alihan-ozturk28@hotmail.com
-# Depends on: tar apache-ant junit openldap python3 cups curl libatomic-ops gtk2 gtk3 perl-archive-zip perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt neon nss poppler postgresql redland icu hunspell gsfonts dejavu-ttf p7zip graphite2 npapi-sdk clucene serf unixodbc
-
-PKGMK_IGNORE_UNPACK="yes"
+# Description: Ofis Programı
+# URL: http://www.libreoffice.org/
+# Packager: Cihan Alkan
+# Depends on:hunspell python3 libwpd neon pango nspr clucene openjdk xmlsec libodfgen libwps libvisio libcdr libmspub libmwaw libe-book libabw libzmf libpagemaker libcmis cppunit libtommath  graphite2 harfbuzz redland raptor hyphen mythes lpsolve libexttextcat liborcus gpgmepp beanshell libpng cairo apache-ant junit libetonyek openldap sane bluez poppler   cups,curl,libatomic-ops,gperf,gtk2,gtk3,perl-archive-zip,perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt nss postgresql icu gsfonts dejavu-ttf npapi-sdk serf unixodbc xdg-utils desktop-file-utils
 
 name=libreoffice
-version=5.2.3.3
+version=5.4.1.2
 release=1
 
-source=(http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-$version.tar.xz)
+source=(http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-$version.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-dictionaries-$version.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-help-$version.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-translations-$version.tar.xz
+    http://kaynaklar.milislinux.org/libreofis-milis-ekler.tar.xz)
 
 build() {
-    unset ACLOCAL
-    export LO_PREFIX=/usr
+        unset ACLOCAL
+        export LO_PREFIX=/usr
 
-    tar -xf ../../../sources/libreoffice-5.2.3.3.tar.xz --no-overwrite-dir
+	#cd $SRC
+	#tar -xf $name-$version.tar.xz --no-overwrite-dir
 
 	cd $name-$version
+
 	install -dm755 external/tarballs
-	cd external/tarballs/
-	wget http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-dictionaries-$version.tar.xz
-	wget http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-help-$version.tar.xz
-	wget http://download.documentfoundation.org/libreoffice/src/${version%.*}/$name-translations-$version.tar.xz
-	cd ../../
-
-    sed -e "/gzip -f/d"   \
-        -e "s|.1.gz|.1|g" \
-        -i bin/distro-install-desktop-integration
-
-    sed -e "/distro-install-file-lists/d" -i Makefile.in
-
-	sed -e "/ustrbuf/a #include <algorithm>" \
-	    -i svl/source/misc/gridprinter.cxx
-
-	sed -i "s#isnan#std::&#g" xmloff/source/draw/ximp3dscene.cxx
-
-    # i686 build broken
-    [ "$PKGMK_ARCH" = "i686" ] && sed -i '/CppunitTest_sw_ooxmlimport/d' sw/Module_sw.mk
-    [ "$PKGMK_ARCH" = "i686" ] && sed -i '/CppunitTest_sw_ooxmlexport7/d' sw/Module_sw.mk
+	ln -sv $SRC/$name-dictionaries-$version.tar.xz  external/tarballs/
+	ln -sv $SRC/$name-help-$version.tar.xz          external/tarballs/
+        ln -sv $SRC/$name-translations-$version.tar.xz  external/tarballs/
 
 
-    chmod -v +x bin/unpack-sources
+        sed -e "/gzip -f/d"   \
+            -e "s|.1.gz|.1|g" \
+            -i bin/distro-install-desktop-integration
+
+        sed -e "/distro-install-file-lists/d" -i Makefile.in
+
+
+	chmod -v +x bin/unpack-sources
 
 ./autogen.sh --prefix=$LO_PREFIX         \
              --sysconfdir=/etc           \
-             --with-vendor="Milis"       \
-             --with-lang="es tr ar ru en-GB fr"   \
+             --with-vendor="Milis Linux" \
+             --with-lang="tr"            \
              --with-help                 \
              --with-myspell-dicts        \
              --with-alloc=system         \
-             --with-java                 \
+             --without-junit             \
              --without-system-dicts      \
              --disable-dconf             \
-             --disable-odk               \
+             --enable-odk                \
+		     --with-jdk-home="/opt/jdk"  \
+       		 --with-ant-home="/opt/ant"  \
              --disable-firebird-sdbc     \
              --enable-release-build=yes  \
              --enable-python=system      \
              --with-system-apr           \
-             --with-system-boost=yes     \
+             --with-system-boost         \
              --with-system-clucene       \
              --with-system-cairo         \
              --with-system-curl          \
              --with-system-expat         \
-             --with-system-graphite      \
-             --with-system-harfbuzz      \
              --with-system-icu           \
              --with-system-jpeg          \
              --with-system-lcms2         \
              --with-system-libatomic_ops \
              --with-system-libpng        \
              --with-system-libxml        \
+	         --with-system-libodfgen     \
+		     --with-system-libmwaw       \
+		     --with-system-libetonyek    \
+		     --with-system-libvisio      \
+		     --with-system-libcmis       \
+		     --with-system-libmspub      \
+		     --with-system-libexttextcat \
+		     --with-system-orcus \
+		     --with-system-liblangtag \
              --with-system-neon          \
              --with-system-nss           \
              --with-system-odbc          \
@@ -81,29 +84,35 @@ build() {
              --with-system-redland       \
              --with-system-serf          \
              --with-system-zlib          \
-             --with-jdk-home=/opt/jdk    \
-             --with-ant-home=/opt/ant    \
+		     --with-system-beanshell \
+		     --with-system-cppunit\
+		     --with-system-graphite\
+		     --with-system-harfbuzz\
+		     --with-system-glm \
+		     --with-system-libwpg \
+		     --with-system-libwps \
+		     --with-system-libzmf \
+		     --with-system-gpgmepp \
              --with-parallelism=$(getconf _NPROCESSORS_ONLN)
-
-	make build-nocheck
-	make DESTDIR=$PKG distro-pack-install
+	make -i build-nocheck
+	make -i DESTDIR=$PKG distro-pack-install
 
 	install -v -m755 -d $PKG/$LO_PREFIX/share/appdata
 	install -v -m644    sysui/desktop/appstream-appdata/*.xml $PKG/$LO_PREFIX/share/appdata
 
-	# Installation des Dictionnaires 
+	# Sözlük kurulumu
 	chown -cR 0:0 dictionaries/ 
-	for lang in en fr_FR es de it_IT pt_PT no nl_NL sv_SE da_DK
+	for lang in en
 	do
 	  mkdir -pv $PKG/$LO_PREFIX/lib/libreoffice/share/extensions/dict-$lang
 	  cp -R dictionaries/$lang/* $PKG/$LO_PREFIX/lib/libreoffice/share/extensions/dict-$lang
 	done
 
-	# This symlink is necessary for the desktop menu entries
+	# Bu sembolik bağ, masaüstü menü girdileri için gereklidir
 	ln -sv -f $LO_PREFIX/lib/libreoffice/program/soffice \
 	$PKG/usr/bin/libreoffice
 
-	# Icones
+	# Simgeler
 	for res in 16 32 48 128 256
 	do
 	  mkdir -p $PKG/$LO_PREFIX/share/icons/hicolor/${res}x${res}/{apps,mimetypes}
@@ -113,7 +122,11 @@ build() {
 	  	$PKG/$LO_PREFIX/share/icons/hicolor/${res}x${res}/mimetypes
 	done
  
-	# Nettoyage
 	rm -rf $PKG/gid*
-	rm -rf $PKG/usr/share/man
+    cp -R $SRC/flat_logo.svg $PKG/usr/lib/libreoffice/program/flat_logo.svg
+    cp -R $SRC/intro.png $PKG/usr/lib/libreoffice/program/intro.png
+    cp -R $SRC/*.desktop $PKG/usr/lib/libreoffice/share/xdg/
+    mkdir -p $PKG/tmp
+    mv $SRC/libreoffice $PKG/tmp/
 }
+
