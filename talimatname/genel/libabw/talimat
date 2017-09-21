@@ -1,0 +1,20 @@
+# Description: AbiWord belgelerinin dosya formatını ayrıştıran bir kütüphane
+# URL: https://wiki.documentfoundation.org/DLP/Libraries/libabw
+# Packager: Cihan Alkan
+# Depends on: libxml2 librevenge doxygen boost
+
+name=libabw
+version=0.1.1
+release=1
+
+source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz
+	    https://github.com/LibreOffice/libabw/commit/ee2d0729.patch::libabw-boost-1.59.patch)
+
+build() {
+	cd $name-$version
+	patch -p1 -i $SRC/libabw-boost-1.59.patch
+	autoreconf -vi
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
