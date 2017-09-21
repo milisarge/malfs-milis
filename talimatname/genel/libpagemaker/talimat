@@ -1,0 +1,19 @@
+# Description: Aldus/Adobe PageMaker belgelerinin dosya biçimini ayrıştıran bir kitaplık
+# URL: https://wiki.documentfoundation.org/DLP/Libraries/libpagemaker
+# Packager: Cihan Alkan
+# Depends on: librevenge boost
+
+name=libpagemaker
+version=0.0.3
+release=1
+
+source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+
+ ./configure --prefix=/usr
+ make
+ make DESTDIR=$PKG install
+  install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

@@ -1,0 +1,31 @@
+# Description: Karışık Tamsayılı Lineer Programlama (MILP) çözücü
+# URL: http://lpsolve.sourceforge.net/
+# Packager: Cihan Alkan
+# Depends on:
+
+name=lpsolve
+version=5.5.2.5
+release=1
+
+source=(https://downloads.sourceforge.net/project/lpsolve/lpsolve/5.5.2.5/lp_solve_5.5.2.5_source.tar.gz
+        cflags.patch
+        lpsolve-5.5.2.0.defines.patch)
+
+build() {
+ cd lp_solve_5.5
+
+  patch -Np1 -i $SRC/cflags.patch
+
+  patch -Np1 -i $SRC/lpsolve-5.5.2.0.defines.patch
+  cd lpsolve55
+  sh -x ccc
+#  rm bin/ux*/liblpsolve55.a
+  cd ../lp_solve
+  sh -x ccc
+  cd $SRC/lp_solve_5.5
+  install -dm755 $PKG/usr/{bin,lib,include/lpsolve}
+  install -m755 lp_solve/bin/ux*/lp_solve $PKG/usr/bin/
+  install -m755 lpsolve55/bin/ux*/liblpsolve55.so $PKG/usr/lib/
+  install -m644 lp*.h $PKG/usr/include/lpsolve/
+
+}

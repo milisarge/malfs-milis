@@ -1,0 +1,18 @@
+# Description: basit bir eş anlamlılar listesi
+# URL: http://hunspell.sourceforge.net/ 
+# Packager: Cihan Alkan
+# Depends on: hunspell
+
+name=mythes
+version=1.2.4
+release=1
+
+source=(https://downloads.sourceforge.net/project/hunspell/MyThes/1.2.4/mythes-1.2.4.tar.gz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr --disable-static
+  make
+ make DESTDIR=$PKG install
+  install -m0644 -D COPYING "$PKG"/usr/share/licenses/mythes/COPYING
+}

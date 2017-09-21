@@ -1,0 +1,17 @@
+# Description: Bazı eski mac metin belgeleri için kütüphaneyi içe aktarın.
+# URL: https://sourceforge.net/projects/libmwaw/
+# Packager: Cihan Alkan
+# Depends on: doxygen boost librevenge
+
+name=libmwaw
+version=0.3.12
+release=1
+
+source=(https://sourceforge.net/projects/$name/files/$name/$name-$version/$name-$version.tar.xz)
+
+build() {
+ cd $name-$version
+ ./configure --prefix=/usr
+ make
+make DESTDIR=$PKG install
+}

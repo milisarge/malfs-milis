@@ -1,0 +1,17 @@
+# Description: Tamsayılı temelli sayısal teorik uygulamalar için yüksek seviyede optimize edilmiş ve taşınabilir rutinler
+# URL: http://www.libtom.org/
+# Packager: Cihan Alkan
+# Depends on:
+
+name=libtommath
+version=1.0.1
+release=1
+
+source=(https://github.com/libtom/libtommath/releases/download/v$version/ltm-$version.tar.xz)
+
+build() {
+ cd $name-$version
+  make -f makefile.shared IGNORE_SPEED=1
+  make -f makefile.shared PREFIX=/usr DESTDIR=$PKG INSTALL_GROUP=root install
+  install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

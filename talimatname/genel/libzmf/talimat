@@ -1,0 +1,19 @@
+# Description: Zoner çizim ve bitmap dosyalarını içe aktarmak için bir kütüphane
+# URL: https://wiki.documentfoundation.org/DLP/Libraries/libzmf
+# Packager: Cihan Alkan
+# Depends on: librevenge boost libpng doxygen
+
+name=libzmf
+version=0.0.1
+release=1
+
+source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+
+ ./configure --prefix=/usr --disable-werror
+ make
+ make DESTDIR=$PKG install
+  install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}
