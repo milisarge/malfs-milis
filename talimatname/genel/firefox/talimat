@@ -1,60 +1,176 @@
-# Description: Mozilla.org'dan bağımsız web tarayıcısı
+# Description: Mozilla.org'dan Bağımsız Web Tarayıcısı
 # URL: http://www.mozilla.com/firefox/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: autoconf2 libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
+# Packager: Cihan Alkan
+# Depends on: libvpx libevent rust cargo autoconf2 pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
 
 name=firefox
-version=53.0
+version=55.0.3
 release=1
-source=(https://ftp.mozilla.org/pub/firefox/releases/$version/source/firefox-$version.source.tar.xz
-	firefox-install-dir.patch firefox.desktop)
- 
+
+source=(https://ftp.mozilla.org/pub/mozilla.org/$name/releases/$version/source/firefox-$version.source.tar.xz
+        http://download.cdn.mozilla.net/pub/$name/releases/$version/linux-x86_64/xpi/tr.xpi
+        https://github.com/oltulu/milis/raw/master/firefox/mozilla.tar.xz::mozilla-milis.tar.xz)
+
 build() {
-	cd firefox-$version
 
-	sed -i '/^ftfntfmt.h/ i freetype/ftfntfmt.h' config/system-headers
-	# stupid workaround
-	sed -i '2,7d' js/src/configure
-	patch -p1 -i $SRC/firefox-install-dir.patch
+cd $name-$version
+# Locale autodetect
+sed -i '/intl.locale.matchOS/s/false/true/' modules/libpref/init/all.js
 
-cat <<- EOF > .mozconfig
-	mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-shared
-	mk_add_options MOZ_MAKE_FLAGS="-j1"
-	ac_add_options --prefix=/usr
-	ac_add_options --enable-default-toolkit=cairo-gtk3
-	ac_add_options --with-system-jpeg
-	ac_add_options --with-system-zlib
-	ac_add_options --with-system-png
-	ac_add_options --with-system-nspr
-	ac_add_options --with-system-nss
-	ac_add_options --with-system-cairo
-	ac_add_options --enable-system-ffi
-	ac_add_options --enable-system-pixman
-	ac_add_options --enable-system-sqlite
-	ac_add_options --enable-alsa
-	ac_add_options --with-pthreads
-	ac_add_options --enable-official-branding
-	ac_add_options --with-distribution-id=org.milislinux
-	ac_add_options --enable-extensions=default,-gnomevfs
-	ac_add_options --disable-tests
-	ac_add_options --disable-dbus
-	ac_add_options --disable-debug
-	ac_add_options --disable-updater
-	ac_add_options --disable-gnomeui
-	ac_add_options --disable-crashreporter
-	ac_add_options --disable-necko-wifi
-	ac_add_options --disable-pulseaudio
-	ac_add_options --disable-gconf
-	ac_add_options --disable-rust
+cat > mozconfig << "EOF"
+# Çok çekirdekli bir işlemciniz varsa, tüm çekirdekler varsayılan olarak kullanılacaktır. 
+# İsterseniz, kullanılan çekirdek sayısını azaltabilirsiniz. Bunun için bir sonraki satır 
+#başındaki # işaretini kaldırın ve geçerli CPU çekirdeği sayısını 1'e ayarlayın.
+
+#mk_add_options MOZ_MAKE_FLAGS="-j1"
+
+# If you have installed dbus-glib, comment out this line:
+ac_add_options --disable-dbus
+
+# Dbus-glib'yi kurduysanız ve kablosuz araçları yüklediyseniz 
+# ve coğrafi konum web servislerini kullanmak istiyorsanız, 
+#bir alt satırıdaki # işaretini kaldırın.
+
+ac_add_options --disable-necko-wifi
+
+# Gtk +-2 ile oluşturmak istiyorsanız bir alt satırıdaki # işaretini kaldırın.
+#ac_add_options --enable-default-toolkit=cairo-gtk2
+
+# İsteğe bağlı bağımlılıkları yüklediyseniz bu satırların işaretini kaldırın::
+#ac_add_options --enable-system-hunspell
+#ac_add_options --enable-startup-notification
+
+# PulseAudio kurulu ise aşağıdaki seçeneği açın
+# ac_add_options --disable-pulseaudio
+
+# GConf yüklediyseniz, bu satırı açın
+ac_add_options --disable-gconf
+
+# Önerilen bağımlılıkları yüklemediyseniz # işaretini kaldırın:
+ac_add_options --enable-system-sqlite
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+#ac_add_options --with-system-icu
+
+# If you are going to apply the patch for system graphite
+# and system harfbuzz, uncomment these lines:
+#ac_add_options --with-system-graphite2
+#ac_add_options --with-system-harfbuzz
+
+# Stripping is now enabled by default.
+# Uncomment these lines if you need to run a debugger:
+#ac_add_options --disable-strip
+#ac_add_options --disable-install-strip
+
+# Bu satırın altındaki herhangi bir şeyi değiştirmemenizi öneriyoruz:
+ac_add_options --prefix=/usr
+ac_add_options --enable-application=browser
+
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests
+
+
+# ac_add_options --enable-gio
+ac_add_options --enable-official-branding
+ac_add_options --enable-safe-browsing
+ac_add_options --enable-url-classifier
+
+# From firefox-40, using system cairo causes firefox to crash
+# frequently when it is doing background rendering in a tab.
+#ac_add_options --enable-system-cairo
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+
+ac_add_options --with-pthreads
+
+ac_add_options --with-system-bz2
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-png
+ac_add_options --with-system-zlib
+
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
 EOF
 
-SHELL=/bin/sh make -f client.mk build
-SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install
+test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozconfig || true
 
-	mkdir -p $PKG/usr/share/pixmaps
-	ln -s /usr/lib/firefox/browser/chrome/icons/default/default48.png $PKG/usr/share/pixmaps/firefox_default48.png
-	install -D -m 0644 $SRC/firefox.desktop $PKG/usr/share/applications/firefox.desktop
-	# Remove crap
-	rm $PKG/usr/lib/firefox/browser/features/{firefox@getpocket.com.xpi,webcompat@mozilla.org.xpi}
+sed -e 's/256/224/'                           \
+    -i netwerk/protocol/http/Http2Session.cpp
+    
+SHELL=/bin/sh make -f client.mk
 
+mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
+
+SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
+
+chown -R 0:0 $PKG/usr/lib/firefox-$version
+ln -sf ../lib/firefox-$version/firefox $PKG/usr/bin
+ln -sf ../mozilla/plugins $PKG/usr/lib/firefox-$version
+
+# Gnash için gerekli
+mkdir -p $PKG/usr/include/npapi
+cp -v dom/plugins/base/*.h $PKG/usr/include/npapi
+
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/firefox.desktop << "EOF" &&
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Firefox
+Comment=İnternette gezinin
+Icon=firefox
+Exec=firefox
+Categories=Network;GTK;Application;Browser;WebBrowser;
+StartupNotify=true
+Terminal=false
+EOF
+mkdir -pv $PKG/usr/share/pixmaps
+ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
+
+for i in 16 22 24 32 48 256
+do
+   mkdir -p $PKG/usr/share/icons/hicolor/${i}x${i}/apps
+   cp browser/branding/official/default${i}.png \
+      $PKG/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png
+done
+
+for lang in tr
+do 
+install -Dm644 $SRC/$lang.xpi \
+    $PKG/usr/lib/firefox-$version/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
+done
+
+cat > $PKG/usr/lib/firefox-$version/defaults/pref/vendor.js << "EOF"
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Disable default browser checking.
+pref("browser.shell.checkDefaultBrowser", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+EOF
+
+# Firefox hakkında kısmı
+ _distini="$PKG/usr/lib/firefox-$version/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$_distini" <<END
+
+[Global]
+id=Milis Linux
+version=1.0 Atilla
+about=Milis Linux için Mozilla Firefox
+
+[Preferences]
+app.distributor=milis
+app.distributor.channel=$name
+app.partner.archlinux=milis
+END
+
+mkdir -p $PKG/tmp
+mv $SRC/.mozilla $PKG/tmp/
 }
+

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Firefox
-Comment=Browser
-Comment[tr]=İnternet Tarayıcı 
-Exec=firefox
-Icon=firefox
-Terminal=false
-Type=Application
-Categories=Application;Network;
