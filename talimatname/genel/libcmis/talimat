@@ -1,0 +1,19 @@
+# Description: CMIS protokolü için bir C / C ++ istemci kitaplığı
+# URL: https://github.com/tdf/libcmis
+# Packager: Cihan Alkan
+# Depends on: libxml2 boost libpng doxygen docbook2x
+
+name=libcmis
+version=0.5.1
+release=1
+
+source=(https://github.com/tdf/libcmis/releases/download/v$version/$name-$version.tar.gz
+        google_drive.diff)
+
+build() {
+  cd $name-$version
+  patch -Np1 -i $SRC/google_drive.diff
+ ./configure --prefix=/usr DOCBOOK2MAN='docbook2man' --disable-werror
+ make
+ make DESTDIR=$PKG install
+}
