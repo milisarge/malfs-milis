@@ -811,9 +811,7 @@ devir_kontrol(){
 paket_derle(){
 	#parametre olarak direk konum gelecek
 	#eski derleme kalıntılarını temizle
-	if [ -d tmp.* ];then
-		rm -r tmp.*
-	fi
+	rm -rf tmp.*
 	kaynakdizin_kontrol
 	local konum derleme_onay eh bagimd derpaket
 	derleme_onay="h"
