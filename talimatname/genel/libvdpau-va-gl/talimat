@@ -1,0 +1,16 @@
+# Description: OpenGL/VAAPI destekli VDPAU sürücüleri
+# URL: https://github.com/i-rinat/libvdpau-va-gl
+# Packager: milisarge
+# Depends on: cmake libvdpau libva ffmpeg xorg-glu 
+
+name=libvdpau-va-gl
+version=0.4.2
+release=1
+source=(https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.2.tar.gz::$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  make
+  make DESTDIR="$PKG" install
+}
