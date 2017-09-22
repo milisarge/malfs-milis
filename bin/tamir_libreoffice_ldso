@@ -1,0 +1,1 @@
+echo "/usr/lib/libreoffice/sdk/lib" > /etc/ld.so.conf.d/libreoffice.conf
