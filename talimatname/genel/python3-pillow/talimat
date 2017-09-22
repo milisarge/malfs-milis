@@ -1,15 +1,15 @@
 # Description: Python Görüntüleme Kitaplığı (PIL) çatalı
 # URL: http://python-imaging.github.io/
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: python3 python3-setuptools lcms libwebp tk sane openjpeg
 
 name=python3-pillow
-version=3.4.2
-_sanever=2.8.2
+version=4.2.1
+_sanever=2.8.3
 _appname=Pillow
 release=1
 
-source=(https://pypi.python.org/packages/46/4f/94f6165052774839b4a4af0c72071aa528d5dc8cb8bc6bb43e24a55c10cc/Pillow-$version.tar.gz
+source=(https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$version.tar.gz
        https://github.com/python-pillow/Sane/archive/v$_sanever.tar.gz)
 
 build() {
@@ -22,9 +22,9 @@ build() {
     cd Sane
     python3 setup.py install --prefix=/usr --root=$PKG
     cd ../libImaging
-    install -dm755 $PKG/usr/include/python*
-    install -m644 -t $PKG/usr/include/python* *.h
-    # rename /bin/*.py to *
+    install -dm755 $PKG/usr/include/python3.5m
+    install -m644 -t $PKG/usr/include/python3.5m *.h
+    
     cd $PKG/usr/bin
     for f in *.py; do
         mv $f "${f%.py}2"
