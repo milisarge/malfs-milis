@@ -2250,7 +2250,7 @@ ayarlar() {
 				paketvt_guncelle
 				mps -kudo 
 				exit 0 ;;
-			### mps tespit . = tüm sistemin güncellemesi için güncellenecek paket listelistesini gösterir.
+			### mps tespit . = tüm sistemin güncellemesi için güncellenecek paket listesini gösterir.
 			tespit)
 				guncelleme_tespit
 				exit 0 ;;
