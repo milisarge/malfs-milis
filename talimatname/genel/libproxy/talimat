@@ -4,7 +4,7 @@
 # Depends on: cmake networkmanager python perl glib webkitgtk3
 
 name=libproxy
-version=0.4.12
+version=0.4.15
 release=1
 
 source=(https://github.com/libproxy/libproxy/archive/$version.tar.gz)
