@@ -1,0 +1,17 @@
+# Description: Sysfs temelli sistem araçları
+# URL: http://linux-diag.sourceforge.net/Sysfsutils.html
+# Packager: milisarge
+# Depends on: 
+
+name=sysfsutils
+version=2.1.0
+release=2
+source=(http://downloads.sourceforge.net/project/linux-diag/$name/$version/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --mandir=/usr/share/man
+    make
+    make DESTDIR=$PKG install
+    rm -f $PKG/usr/bin/dlist_test
+}
