@@ -1,0 +1,2 @@
+#!/bin/sh
+for dosya in $(find .);do shasum $dosya;done > shasum.liste
