@@ -5,7 +5,7 @@
 
 name=obexd
 version=0.48
-release=1
+release=2
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)
 build() {

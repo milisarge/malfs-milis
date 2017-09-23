@@ -1,19 +1,15 @@
 # Description: Linux için bluetooth istemci ve kütüphaneleri.
 # URL: http://www.bluez.org/
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
 
 name=bluez
-version=5.37
-release=2
+version=5.47
+release=1
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
-	$name-$version-obexd_without_systemd-1.patch)
+	    http://www.linuxfromscratch.org/patches/blfs/svn/bluez-$version-obexd_without_systemd-1.patch)
 build() {
-
-source /etc/blfs-bootscripts
-wget    http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-$scriptsversion.tar.bz2
-tar xvf $scripts-$scriptsversion.tar.bz2
 
 cd $name-$version
 patch -Np1 -i ../$name-$version-obexd_without_systemd-1.patch
@@ -69,10 +65,6 @@ install -m644 profiles/network/network.conf \
 	profiles/input/input.conf \
 	$PKG/etc/bluetooth
 
-install -v -dm755 $PKG/usr/share/doc/$name-$version
-install -v -m644 doc/*.txt $PKG/usr/share/doc/$name-$version
-
-# Startup Script 
-cd ../$scripts-$scriptsversion
-make DESTDIR=$PKG install-bluetooth
+cd /sources/milis.git/ayarlar/servisler
+make DESTDIR=$PKG kur-bluetooth    
 }
