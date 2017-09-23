@@ -1,16 +1,16 @@
 # Description: Video 4 Linux için kullanıcı alanı araçları ve dönüştürme kütüphanesi
 # URL: http://freshmeat.net/projects/libv4l
 # Packager: milisarge
-# Depends on: libjpeg-turbo qt4
+# Depends on: libjpeg-turbo
 
 name=v4l-utils
-version=1.10.0
+version=1.12.5
 release=1
 
 source=(http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2)
 
 build() {
-	cd $name-$version
+	cd "${SRC}/${name}-${version}"
 	./configure --prefix=/usr --sysconfdir=/etc
 	MAKEFLAGS="-j1" make install DESTDIR=$PKG
 	rm -f $PKG/usr/bin/ivtv-ctl
