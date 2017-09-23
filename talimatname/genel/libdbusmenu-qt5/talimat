@@ -1,7 +1,7 @@
 # Description : DBusMenu protokolünün Qt5 uygulamasını sağlayan kitaplık
 # URL: https://www.kde.org/
 # Packager: alihan-ozturk28@hotmail.com yasarciv67@gmail.com
-# Depends on: cmake qt5 qjson libdbusmenu-qt 
+# Depends on: cmake qt5 qjson 
 
 name=libdbusmenu-qt5
 _name=libdbusmenu-qt
