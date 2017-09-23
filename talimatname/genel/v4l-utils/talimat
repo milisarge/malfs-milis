@@ -1,7 +1,7 @@
 # Description: Video 4 Linux için kullanıcı alanı araçları ve dönüştürme kütüphanesi
 # URL: http://freshmeat.net/projects/libv4l
 # Packager: milisarge
-# Depends on: libjpeg-turbo 
+# Depends on: libjpeg-turbo qt4
 
 name=v4l-utils
 version=1.10.0
