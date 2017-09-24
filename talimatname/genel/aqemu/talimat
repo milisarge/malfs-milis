@@ -6,13 +6,25 @@
 name=aqemu
 version=0.9.2
 release=2
-source=(https://github.com/tobimensch/$name/archive/v$version.tar.gz)
+source=(https://github.com/tobimensch/$name/archive/v$version.tar.gz::$name-$version.tar.gz
+		https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/translations/Turkish.ts::$name-Turkish.ts)
 
 build() {
   cd $name-$version
   cp /usr/bin/rcc-qt5 /usr/bin/rcc
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DQT_QMAKE_EXECUTABLE=qmake4
+  cp $SRC/$name-Turkish.ts $SRC/$name-$version/resources/translations/Turkish.ts
+  mkdir build
+  cd build
+  cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DMAN_PAGE_COMPRESSOR=bzip2 \
+		-DCMAKE_BUILD_TYPE=Release \
+		../
   make 
+  make translations_target
   make DESTDIR="$PKG" install
+  for dil in $(ls $SRC/$name-$version/resources/translations/*.ts  | sed 's/\.ts$//' );do
+	lrelease-qt5 -compress -silent -nounfinished ${dil}.ts -qm $PKG/usr/share/$name/$(basename $dil).qm
+  done
   rm /usr/bin/rcc
 }
