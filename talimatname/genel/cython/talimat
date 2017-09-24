@@ -1,11 +1,11 @@
 # Description: Python için C uzantıları.
 # URL: http://www.cython.org/
 # Packager: milisarge
-# Depends on: python python3 python-setuptools
+# Depends on: python python3 python-setuptools python3-setuptools
 
 name=cython
-version=0.24
-release=2
+version=0.26
+release=1
 source=(https://github.com/cython/cython/archive/$version.tar.gz)
 
 build() {
