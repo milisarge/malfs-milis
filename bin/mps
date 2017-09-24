@@ -736,7 +736,7 @@ surum_kontrol(){
 					kurulum_dogrulama_icerik $1
 					tpk="hayir" 
 					paket_sil "$1" "evet"
-					mps -i $1
+					paket_indir $1
 					pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3`
 					icerik_ekle "$paketdepo$pkt"
 				else
@@ -1584,7 +1584,7 @@ kurulum_dogrulama(){
 		if [ ! -f "$VT/$kuruland/kurulan" ]; then
 			ryaz 32 "$kuruland hasarlı kurulum tesbiti!"
 			rm -r $VT/$kuruland
-			mps -i $kuruland
+			paket_indir $kuruland
 			mps -k "$paketdepo/$kuruland"*.mps.lz
 			ryaz 32  "$kuruland hasarlı kurulum onarıldı."
 		fi
@@ -1683,7 +1683,7 @@ kurulum_dogrulama_icerik(){
 		ryaz 31 "$paketadi hasarlı kurulum tesbiti!"
 		#onarma
 		rm -r $VT/$paketadi
-		mps -i $paketadi
+		paket_indir $paketadi
 		mps -k "$paketdepo/$paketadi#"*.mps.lz
 		ryaz 32  "$paketadi hasarlı kurulum onarıldı."
 	else
@@ -1808,15 +1808,13 @@ paket_indir(){
 						ryaz 31 "indirme hatalı"
 						hataloglama "indirme hatalı"
 					else
-						ryaz 34 "$1 indirildi \t $pktsunucu"
-						break
-					fi
-					mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
-					if [ "$ekontdeg" != "$mkontdeg" ];then
-						ryaz 31 "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
-						hataloglama "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
-						rm -f "$paketdepo$pkt" 
-						paket_indir "$1" 
+						mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
+						if [ "$ekontdeg" != "$mkontdeg" ];then
+							ryaz 31 "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
+							hataloglama "sha1sum uyusmaslik tesbit edildi,paket tekrar indiriliyor."
+							rm -f "$paketdepo$pkt" 
+							paket_indir "$1" 
+						fi
 					fi
 				else
 					ryaz 31 "$1 paketi bulunamadı $pktsunucu dan silinmiş olmalı!"
@@ -1917,7 +1915,8 @@ ayarlar() {
 			### mps -i paketismi = sadece paketi indirir,paket kurulmaz.
 			-i|--indir)
 				kurulum_onay="olumsuz"
-				paket_indir "$2" ;;
+				paket_indir "$2" 
+				exit 0 ;;
 			### mps -ik paketismi = ilgili paketi indirirve kurar.
 			-ik|--inku)
 				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
