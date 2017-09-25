@@ -1,7 +1,7 @@
 # Description: Lxqt-session paketi, LXQt için varsayılan oturum yöneticisini içerir.
 # URL: http://lxqt.org
 # Packager: yasarciv67@gmail.com
-# Depends on: liblxqt xdg-user-dirs kf5-kwindowsystem kf5-breeze-icons kf5-oxygen-icons5 lxdm lxqt-build-tools
+# Depends on: liblxqt xdg-user-dirs kf5-kwindowsystem kf5-breeze-icons kf5-oxygen-icons5 lxqt-build-tools
 
 name=lxqt-session
 version=0.11.1
