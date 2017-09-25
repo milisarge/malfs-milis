@@ -2416,9 +2416,7 @@ ayarlar() {
 				exit 0 ;;
 			
 			-y|-h|yardim)
-				yardim_icerik;;
-			-h2|--help)
-				yardim
+				yardim_icerik
 				exit 0 ;;
 			*)
 				ryaz 31 "Geçersiz Parametre!  --> mps yardim "
