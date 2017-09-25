@@ -1,6 +1,6 @@
 # Description: Userspace server and client tools necessary to use the kernel's NFS abilities.
 # URL: http://nfs.sourceforge.net
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libtirpc rpcbind
 
 name=nfs-utils

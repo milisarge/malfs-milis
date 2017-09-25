@@ -1,8 +1,7 @@
 # Description: Distributed version control system designed to handle small to very large projects.
 # URL: http://git-scm.com/
-# Maintainers: Junio C Hamano, Linus Torvalds
-# Packagers: tnut at nutyx dot org, pierre at nutyx dot org
-# Depends on: openssh
+# Packager: milisarge
+# Depends on: 
 
 name=git
 version=2.7.1

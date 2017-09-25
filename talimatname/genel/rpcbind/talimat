@@ -1,6 +1,6 @@
 # Description: portmap replacement which supports RPC over various protocols
 # URL: http://rpcbind.sourceforge.net/
-# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
 # Depends on: libtirpc
 
 name=rpcbind

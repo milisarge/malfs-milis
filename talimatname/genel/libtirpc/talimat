@@ -1,7 +1,7 @@
 # Description: Transport Independent RPC library (SunRPC replacement)
 # URL: http://downloads.sourceforge.net/project/libtirpc
-# Maintainer: Gilles Quillard gilles dot quillard at bull dot net,
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Packager: milisarge
+# Depends on: 
 
 name=libtirpc
 version=0.3.2

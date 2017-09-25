@@ -1,6 +1,7 @@
 # Description: XFS filesystem utilities
 # URL: http://oss.sgi.com/projects/xfs/
-# Packager: pierre at nutyx dot org
+# Packager: milisarge
+# Depends on: 
 
 name=xfsprogs
 version=4.3.0

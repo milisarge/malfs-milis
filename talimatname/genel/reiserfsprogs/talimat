@@ -1,6 +1,8 @@
 # Description: Utilities for use with the Reiser file system.
 # URL: http://www.kernel.org/pub/linux/utils/fs/reiserfs/
-# Packager: tnut at nutyx dot org
+# Packager: milisarge
+# Depends on: 
+
 name=reiserfsprogs
 version=3.6.24
 release=1
