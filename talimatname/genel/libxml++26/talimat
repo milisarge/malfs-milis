@@ -1,0 +1,19 @@
+# Description: XML dosyalarını ayrıştırmak için kullanılan kitaplıklar ve yardımcı programlar.
+# URL: http://libxmlplusplus.sourceforge.net/
+# Packager: milisarge
+# Depends on: libxml2 glibmm
+ 
+name=libxml++26
+version=2.40.1
+release=1
+
+source=(http://ftp.gnome.org/pub/GNOME/sources/libxml++/${version:0:4}/libxml++-${version}.tar.xz::$name-$version.tar.gz)
+
+build() {
+	cd "${SRC}/libxml++-${version}"
+  ./configure --prefix=/usr
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR="${PKG}" install
+}
