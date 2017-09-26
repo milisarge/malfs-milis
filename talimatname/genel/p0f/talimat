@@ -1,0 +1,24 @@
+# Description: p0f, tcp-ip trafik akışını takip ve dinleme uygulaması
+# URL: http://lcamtuf.coredump.cx/p0f3/
+# Packager: milisarge
+# Depends on: libpcap
+
+name=p0f
+version=3.09b
+release=1
+
+source=(http://lcamtuf.coredump.cx/p0f3/releases/p0f-3.09b.tgz)
+
+build() {
+    cd $name-$version
+    install -d $PKG/usr/bin
+    install -d $PKG/usr/share/$name
+    install -d $PKG/etc
+    make
+    cd tools
+    make
+    cd ..
+    cp p0f tools/p0f-client tools/p0f-sendsyn tools/p0f-sendsyn6 $PKG/usr/bin/
+	cp docs/* $PKG/usr/share/$name/
+	cp p0f.fp $PKG/etc/p0f
+}
