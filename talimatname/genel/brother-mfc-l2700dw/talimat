@@ -1,0 +1,38 @@
+# Description: Brother MFC-L2700DW için LPR ve CUPS sürücüsü
+# URL: http://support.brother.com/g/b/countrytop.aspx?c=tr&lang=tr
+# Packager: Cihan Alkan
+# Depends on: cups
+
+name=brother-mfc-l2700dw
+version=3.2.0
+release=1
+source=(http://download.brother.com/welcome/dlf101789/mfcl2700dwlpr-$version-1.i386.rpm
+	    http://download.brother.com/welcome/dlf101790/mfcl2700dwcupswrapper-$version-1.i386.rpm)
+
+build() {
+#  '/usr/local' klasörüne kurma
+	if [ -d $SRC/usr/local/Brother ]; then
+		install -dm755 "$SRC/usr/share"
+		mv "$SRC/usr/local/Brother/" "$SRC/usr/share/brother"
+		rm -rf "$SRC/usr/local"
+	        sed -i 's|/usr/local/Brother|/usr/share/brother|g' `grep -lr '/usr/local/Brother' ./`
+        fi
+
+ # setup cups-directories
+	install -dm755 "$SRC/usr/share/cups/model"
+	install -dm755 "$SRC/usr/lib/cups/filter"
+# copy ppd and filter file to their destination dirs
+        cd `find . -type d -name 'cupswrapper'`
+        cp *lpdwrapper* "$SRC/usr/lib/cups/filter/"
+        cp *.ppd "$SRC/usr/share/cups/model/"
+
+        cd "$SRC"
+# get absolute printer path
+        _baseDir="\"/$(find opt -maxdepth 3 -depth -print -quit -type d)\""
+# replace the dynamic basedir var with the absolute path
+        sed -i "s|\`readlink\ \$0\`|$_baseDir|" $SRC/usr/lib/cups/filter/*lpdwrapper*
+# /etc/printcap is managed by cups
+        rm "$(find $SRC -type f -name 'setupPrintcap*')"
+    cp -R "$SRC/usr" "$PKG"
+    cp -R "$SRC/opt" "$PKG"
+}
