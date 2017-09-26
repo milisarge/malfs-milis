@@ -113,18 +113,24 @@ done
 echo 1>&2 "
 $name kullanıcısının oluşturulması.
 "
-if [ -d /home/${name} ]; then
-	chown -R ${name}:${name} /home/${name}
+if [ -f /root/.xinitrc ]; then
+	cp /root/.xinitrc /home/${name}/
 fi
+# kullanıcı izinlerin ayarlanması
+if [ -d /home/${name} ]; then
+	#evdizini
+	chown -R ${name}:${name} /home/${name}
+	#ses aygıtları
+	setfacl -m u:${name}:rw /dev/snd/* 
+fi
+
 if [ -z "$user_groups" ]; then
     /sbin/useradd -c "${description}" -m "${name}" || exit 1
 else
     /sbin/useradd -c "${description}" -G "$user_groups" -m "${name}" || exit 1
 fi
 
-if [ -f /root/.xinitrc ]; then
-	cp /root/.xinitrc /home/${name}/
-fi
+
 
 passwd "$name"
 
