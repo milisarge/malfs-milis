@@ -4,50 +4,40 @@
 # Depends on: unzip
 
 name=dmd
-version=2.074.0
+version=2.072.2
 release=1
-source=(http://downloads.dlang.org/releases/2017/dmd.$version.linux.tar.xz
-		dmd.conf
-		dmd.desktop 
-		dmd.logo_48.png
-		default_ddoc_theme.ddoc)
+source=(http://crux.ster.zone/downloads/$name/$name-$version.tar.gz
+	http://crux.ster.zone/downloads/$name/druntime-$version.tar.gz
+	http://crux.ster.zone/downloads/$name/phobos-$version.tar.gz)
 
-build(){
-	if [ ! -f $DERLEME_KAYNAKDIZIN/phobos-$version.tar.gz ];then
-		wget https://github.com/dlang/phobos/archive/v$version.tar.gz -O $DERLEME_KAYNAKDIZIN/phobos-$version.tar.gz
-    else
-		bsdtar -xf $DERLEME_KAYNAKDIZIN/phobos-$version.tar.gz -C $SRC/
-    fi
-    if [ ! -f $DERLEME_KAYNAKDIZIN/druntime-$version.tar.gz ];then
-		wget https://github.com/dlang/druntime/archive/v$version.tar.gz -O $DERLEME_KAYNAKDIZIN/druntime-$version.tar.gz
-    else
-		bsdtar -xf $DERLEME_KAYNAKDIZIN/druntime-$version.tar.gz -C $SRC/
-    fi
-    
-    cd dmd2/src/dmd
-    mkdir -p res
-    cp $SRC/default_ddoc_theme.ddoc res/
+#source=(https://github.com/dlang/dmd/archive/v$version.tar.gz
+#	https://github.com/dlang/druntime/archive/v$version.tar.gz
+#	https://github.com/dlang/phobos/archive/v$version.tar.gz)
+
+build() {
+	ln -s druntime-$version druntime
+	cd dmd-$version/src
+
 	echo $version > ../VERSION
-	make -j1 -f posix.mak MODEL=64 RELEASE=1 AUTO_BOOTSTRAP=1
-	
+	make -f posix.mak MODEL=64 RELEASE=1 AUTO_BOOTSTRAP=1
+
 	cd $SRC/druntime-$version
-	
-	make -j1 -f posix.mak MODEL=64 DMD=$SRC/dmd2/src/dmd RELEASE=1
+	make -f posix.mak MODEL=64 DMD=$SRC/dmd-$version/src/dmd RELEASE=1
 
 	cd $SRC/phobos-$version
-	make -j1 -f posix.mak MODEL=64 DMD=$SRC/dmd2/src/dmd RELEASE=1
+	make -f posix.mak MODEL=64 DMD=$SRC/dmd-$version/src/dmd RELEASE=1
 
-	install -m 0755 -D $SRC/dmd2/src/dmd $PKG/usr/bin/dmd
+	install -m 0755 -D $SRC/dmd-$version/src/dmd $PKG/usr/bin/dmd
 
 	install -d $PKG/etc
 	echo -e "[Environment]\nDFLAGS=-I/usr/include/dlang/dmd -L-L/usr/lib -L-L/usr/lib32 -L--export-dynamic" > $PKG/etc/dmd.conf
 
 	install -d %PKG/usr/share/man/man{1,5}
-	cp -r $SRC/dmd2/docs/man/man1/* $pkgdir/usr/share/man/man1/
-	cp -r $SRC/dmd2/docs/man/man5/* $pkgdir/usr/share/man/man5/
+	cp -r $SRC/dmd-$version/docs/man/man1/* $pkgdir/usr/share/man/man1/
+	cp -r $SRC/dmd-$version/docs/man/man5/* $pkgdir/usr/share/man/man5/
 
 	install -d $PKG/usr/share/d/samples/
-	cp -r $SRC/dmd2/samples/* $PKG/usr/share/d/samples/
+	cp -r $SRC/dmd-$version/samples/* $PKG/usr/share/d/samples/
 
 	# Phobos standard library
 	install -m 0644 -D $SRC/phobos-$version/generated/linux/release/64/libphobos2.a \
@@ -59,5 +49,4 @@ build(){
 
 	install -m 0644 -D $SRC/phobos-$version/generated/linux/release/64/libphobos2.so \
 		$PKG/usr/lib/libphobos2.so
-	
 }
