@@ -1,0 +1,17 @@
+# Description: A simple build configuration and project generation tool using lua
+# URL: http://industriousone.com/premake
+# Packager: milisarge
+# Depends on: 
+
+name=premake
+version=4.3
+release=1
+source=(http://downloads.sourceforge.net/project/premake/Premake/4.3/premake-4.3-src.zip)
+
+build() {
+  cd "$SRC/premake-$version/build/gmake.unix"
+  make
+  cd "$SRC/premake-$version"
+  install -Dm755 "bin/release/premake4" "${PKG}/usr/bin/premake4"
+  install -Dm644 LICENSE.txt "$PKG/usr/share/licenses/$name/LICENSE"
+}
