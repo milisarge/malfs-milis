@@ -1,0 +1,17 @@
+# Description: SDL graphics drawing primitives and other support functions (Version 2)
+# URL: http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/
+# Packager: milisarge
+# Depends on: sdl2 
+
+name=sdl2_gfx
+version=1.0.3
+release=1
+source=(http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-$version.tar.gz)
+
+build() {
+	cd SDL2_gfx-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR="$PKG" install
+	install -Dm644 COPYING "$PKG/usr/share/licenses/$name/LICENSE"
+}
