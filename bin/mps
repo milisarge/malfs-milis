@@ -318,7 +318,7 @@ paketdepo_analiz(){
 			if [[ $konum != "-1" && $konum != "0" ]];then
 				source $_konum/talimat
 				if [ -f $pkt ];then
-					tar xf $pkt .META 
+					bsdtar xf $pkt .META 
 					if [ -f $PWD/.META ];then
 						mv .META  /tmp/$_apaket.META
 						satir=$(sed -n '7p' <  /tmp/$_apaket.META)
