@@ -53,6 +53,8 @@ _paket_adi_gerekli="paket ismi eksik!"
 _dizin_bulunamadi="dizin bulunamadı!"
 _talimat_sayisi_fazla="talimatnameler altında birden fazla talimat mevcut!"
 _talimat_bulunamadi="ilgili talimat bulunamadı!"
+_dosya_yolu_bulunamadi="dosya yolu bulunamadı!"
+_shasum_uyumsuzluk="shasum uyumsuzluğu tespit edildi!"
 _gerekler_belirleniyor="bağımlılıkları belirleniyor."
 _paket_kuruldu="paketi kuruldu."
 _paket_kurulu_degil="paketi kurulu değil!"
@@ -305,53 +307,72 @@ talimat_bul(){
 	fi  
 }
 
-paketdepo_analiz(){
-	_aranandepo=$1
-	_uyumsuz_paketler="/tmp/uyumsuz_paketler"
-	if [[ -d $_aranandepo && ! -f $_aranandepo ]];then
-		rm -f $_uyumsuz_paketler
-		_gcc_uyumsuz_paketler=$(mktemp)
-		for pkt in $(ls $_aranandepo*mps.lz);do
-			local _konum 
-			_apaket=$(basename $_aranandepo$pkt |cut -d'#' -f 1)
-			_konum=$(anatalimat_bul $_apaket)
-			if [[ $konum != "-1" && $konum != "0" ]];then
-				source $_konum/talimat
-				if [ -f $pkt ];then
-					bsdtar xf $pkt .META 
-					if [ -f $PWD/.META ];then
-						mv .META  /tmp/$_apaket.META
-						satir=$(sed -n '7p' <  /tmp/$_apaket.META)
-						psurum=${satir:1:${#satir}-1}
-						satir2=$(sed -n '8p' <  /tmp/$_apaket.META)
-						pdevir=${satir2:1:${#satir2}-1}
-						deposurum=`echo -e "$version" | sort -V | head -n1`
-						depodevir=`echo -e "$release" | sort -V | head -n1`
-						_surumbilgi="gereken_sürüm:$deposurum ! paket_sürüm:$psurum"
-						_devirbilgi="gereken_devir:$depodevir ! paket_devir:$pdevir"
-						ryaz 33 "$pkt"
-						if [ "$deposurum" != "$psurum" ];then
-							ryaz 31 "$_surumbilgi"
-							echo "$pkt" >> $_gcc_uyumsuz_paketler
-						fi
-						if [ "$depodevir" != "$pdevir" ];then
-							ryaz 31 "$_devirbilgi"
-							echo "$pkt" >> $_gcc_uyumsuz_paketler
-						fi
-					else
-						ryaz 31 "$_apaket depoda yok. mps -i $_apaket"
+paket_analiz(){
+	_gcc_uyumsuz_paketler="/tmp/gcc_uyumsuz_paketler"
+	_pkvt="paket.vt"
+	if [ -z "$1" ];then echo "$_paket_adi_gerekli";exit 1;fi
+	local pkt _apaket _konum
+	pkt=$1
+	if [ -f $pkt ];then
+		_apaket=$(basename $pkt |cut -d'#' -f 1)
+		_konum=$(anatalimat_bul $_apaket)
+		_depo_sha=$(cat "$paketdepo$_pkvt"  | grep "$_apaket#" | cut -d' ' -f2)
+		_paket_sha=$(sha1sum $pkt | cut -d ' ' -f1)
+		if [[ $_konum != "-1" && $_konum != "0" ]];then
+			source $_konum/talimat
+			if [ -f $pkt ];then
+				bsdtar xf $pkt .META 
+				if [ -f $PWD/.META ];then
+					mv .META  /tmp/$_apaket.META
+					satir=$(sed -n '7p' <  /tmp/$_apaket.META)
+					psurum=${satir:1:${#satir}-1}
+					satir2=$(sed -n '8p' <  /tmp/$_apaket.META)
+					pdevir=${satir2:1:${#satir2}-1}
+					deposurum=`echo -e "$version" | sort -V | head -n1`
+					depodevir=`echo -e "$release" | sort -V | head -n1`
+					_surumbilgi="gereken_sürüm:$deposurum ! paket_sürüm:$psurum"
+					_devirbilgi="gereken_devir:$depodevir ! paket_devir:$pdevir"
+					ryaz 33 "$pkt"
+					if [ "$deposurum" != "$psurum" ];then
+						ryaz 31 "$_surumbilgi"
+						echo "$pkt" >> $_gcc_uyumsuz_paketler
+					fi
+					if [ "$depodevir" != "$pdevir" ];then
+						ryaz 31 "$_devirbilgi"
+						echo "$pkt" >> $_gcc_uyumsuz_paketler
+					fi
+					if [ "$_paket_sha" != "$_depo_sha" ];then
+						ryaz 31 "$_shasum_uyumsuzluk"
+						echo "$pkt" >> $_gcc_uyumsuz_paketler
 					fi
 				else
 					ryaz 31 "$_apaket depoda yok. mps -i $_apaket"
 				fi
 			else
-				ryaz 31 "$1 $_talimat_bulunamadi"
+				ryaz 31 "$_apaket depoda yok. mps -i $_apaket"
 			fi
+		else
+			ryaz 31 "$1 $_talimat_bulunamadi"
+		fi
+		rm -f /tmp/$_apaket.META
+	else
+		ryaz 31 "$pkt $_dosya_yolu_bulunamadi"
+		exit 0
+	fi
+}	
+
+paketdepo_analiz(){
+	_aranandepo=$1
+	_uyumsuz_paketler="/tmp/uyumsuz_paketler"
+	if [[ -d $_aranandepo && ! -f $_aranandepo ]];then
+		rm -f $_uyumsuz_paketler
+		_gcc_uyumsuz_paketler="/tmp/gcc_uyumsuz_paketler"
+		for pkt in $(ls $_aranandepo*mps.lz);do
+			paket_analiz $pkt
 			echo "-"
 		done
 		echo "tarama bitti"
 		sort -u $_gcc_uyumsuz_paketler > $_uyumsuz_paketler
-		rm /tmp/*.META
 		echo "file://$_uyumsuz_paketler"
 		exit 0
 	else
@@ -1897,7 +1918,7 @@ paket_indir(){
 					else
 						mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
 						if [ "$ekontdeg" != "$mkontdeg" ];then
-							ryaz 31 "sha1sum uyusmaslik tespit edildi,paket tekrar indiriliyor."
+							ryaz 31 "$_shasum_uyumsuzluk,paket tekrar indiriliyor."
 							hataloglama "sha1sum uyusmaslik tespit edildi,paket tekrar indiriliyor."
 							rm -f "$paketdepo$pkt" 
 							paket_indir "$1" 
@@ -2305,6 +2326,9 @@ ayarlar() {
 				ters_bagimli_bilgi "$2" ;;
 			-tbk)
 				ters_bagimli_kontrol "$2" ;;
+			pka)
+				paket_analiz "$2" 
+				exit 0;;
 			pda)
 				paketdepo_analiz "$2"
 				exit 0 ;;
