@@ -1,24 +1,22 @@
 # Description: Son derece güçlü ICCCM uyumlu çoklu sanal masaüstü pencere yöneticisi.
 # URL: http://www.fvwm.org/
 # Packager: milisarge@gmail.com
-# Depends on: imlib2
+# Depends on: libxslt libstroke fribidi xorg-libxpm librsvg xorg-libxinerama xorg-libxcursor python-xdg
 
 name=fvwm
-version=2.6.4
+version=2.6.7
 release=1
-source=(ftp://ftp.fvwm.org/pub/fvwm/version-2/$name-$version.tar.bz2)
+source=(https://github.com/fvwmorg/fvwm/archive/$version.tar.gz::$name-$version.tar.bz2
+		fvwm.desktop)
 
 build() {
 	cd $name-$version
-
-	./configure \
-		--prefix=/usr \
-		--mandir=/usr/man \
-		--libexecdir=/usr/lib \
-		--disable-gtk \
-		--disable-nls
-
+	sed -e 's|ln -sf|ln -sfr|g' -i default-config/Makefile.am
+    autoreconf -vi
+	PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --with-stroke-library
 	make
-	make DESTDIR=$PKG install
-	rm -r $PKG/usr/share/doc
+	make DESTDIR="${PKG}" install
+	install -D -m644 ../fvwm.desktop "${PKG}/usr/share/xsessions/fvwm.desktop"
+	install -D -m644 COPYING "${PKG}/usr/share/licenses/${name}/COPYING"
+	rm -rf $PKG/usr/share/doc
 }

@@ -1,0 +1,25 @@
+# Description: A stroke (mouse gesture) translation library
+# URL: http://etla.net/libstroke/
+# Packager: milisarge
+# Depends on: xorg-libx11 
+
+name=libstroke
+version=0.5.1
+release=1
+source=(http://www.etla.net/libstroke/libstroke-${version}fvwm.tar.gz
+		libgstroke-Makefile.am.patch
+		libstroke-Makefile.am.patch
+		libstroke-0.5.1-m4_syntax.patch
+		libstroke-0.5.1-no_gtk1.patch)
+
+build() {
+	cd ${pkgname}-${pkgver}
+	patch -p1 -i "${srcdir}/libgstroke-Makefile.am.patch"
+	patch -p1 -i "${srcdir}/libstroke-Makefile.am.patch"
+	patch -p1 -i "${srcdir}/libstroke-0.5.1-m4_syntax.patch"
+	patch -p1 -i "${srcdir}/libstroke-0.5.1-no_gtk1.patch"
+	autoreconf --force --install
+	./configure --prefix=/usr
+	make
+	make DESTDIR="${pkgdir}" install
+}
