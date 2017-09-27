@@ -49,7 +49,8 @@ fi
 
 
 # Türkçe Mesajlar
-_param_paket_adi_gerekli="paket ismi eksik!"
+_paket_adi_gerekli="paket ismi eksik!"
+_dizin_bulunamadi="dizin bulunamadı!"
 _talimat_sayisi_fazla="talimatnameler altında birden fazla talimat mevcut!"
 _talimat_bulunamadi="ilgili talimat bulunamadı!"
 _gerekler_belirleniyor="bağımlılıkları belirleniyor."
@@ -284,7 +285,7 @@ yeniden_paketle(){
 }
 
 talimat_bul(){
-	if [ -z "$1" ];then echo "$_param_paket_adi_gerekli";exit 1;fi
+	if [ -z "$1" ];then echo "$_paket_adi_gerekli";exit 1;fi
 	local _apaket="$1"
 	_bulunan=()
 	#_bulunan=$(find $talimatname $ektalimatname -name $_apaket)
@@ -292,6 +293,81 @@ talimat_bul(){
 	while IFS=  read -r -d $'\0'; do
 		_bulunan+=("$REPLY")
 	done < <(find $talimatname $ektalimatname -name ${_apaket} -print0)
+	if [ ${#_bulunan[@]} > 1  ];then echo "$(date +'%F %T') ${_apaket} $_talimat_sayisi_fazla" >> $LOGDIZIN/mps-hata.log;fi
+	if [ ${_bulunan[0]} ] ; then
+		if [ -f "${_bulunan[0]}/talimat" ];then
+			echo "${_bulunan[0]}"
+		else
+			echo "0"
+		fi
+	else
+		echo "-1"
+	fi  
+}
+
+paketdepo_analiz(){
+	_aranandepo=$1
+	_uyumsuz_paketler="/tmp/uyumsuz_paketler"
+	if [[ -d $_aranandepo && ! -f $_aranandepo ]];then
+		rm -f $_uyumsuz_paketler
+		_gcc_uyumsuz_paketler=$(mktemp)
+		for pkt in $(ls $_aranandepo*mps.lz);do
+			local _konum 
+			_apaket=$(basename $_aranandepo$pkt |cut -d'#' -f 1)
+			_konum=$(anatalimat_bul $_apaket)
+			if [[ $konum != "-1" && $konum != "0" ]];then
+				source $_konum/talimat
+				if [ -f $pkt ];then
+					tar xf $pkt .META 
+					if [ -f $PWD/.META ];then
+						mv .META  /tmp/$_apaket.META
+						satir=$(sed -n '7p' <  /tmp/$_apaket.META)
+						psurum=${satir:1:${#satir}-1}
+						satir2=$(sed -n '8p' <  /tmp/$_apaket.META)
+						pdevir=${satir2:1:${#satir2}-1}
+						deposurum=`echo -e "$version" | sort -V | head -n1`
+						depodevir=`echo -e "$release" | sort -V | head -n1`
+						_surumbilgi="gereken_sürüm:$deposurum ! paket_sürüm:paket$psurum"
+						_devirbilgi="gereken_devir:$depodevir ! paket_devir:paket$pdevir"
+						ryaz 33 "$pkt"
+						if [ "$deposurum" != "$psurum" ];then
+							ryaz 31 "$_surumbilgi"
+							echo "$pkt" >> $_gcc_uyumsuz_paketler
+						fi
+						if [ "$depodevir" != "$pdevir" ];then
+							ryaz 31 "$_devirbilgi"
+							echo "$pkt" >> $_gcc_uyumsuz_paketler
+						fi
+					else
+						ryaz 31 "$_apaket depoda yok. mps -i $_apaket"
+					fi
+				else
+					ryaz 31 "$_apaket depoda yok. mps -i $_apaket"
+				fi
+			else
+				ryaz 31 "$1 $_talimat_bulunamadi"
+			fi
+			echo "-"
+		done
+		echo "tarama bitti"
+		sort -u $_gcc_uyumsuz_paketler > $_uyumsuz_paketler
+		rm /tmp/*.META
+		echo "file://$_uyumsuz_paketler"
+		exit 0
+	else
+		ryaz 31 "$1 $_dizin_bulunamadi"
+		exit 1
+	fi
+}
+
+anatalimat_bul(){
+	if [ -z "$1" ];then echo "$_paket_adi_gerekli";exit 1;fi
+	local _apaket="$1"
+	_bulunan=()
+	_bulunan=()
+	while IFS=  read -r -d $'\0'; do
+		_bulunan+=("$REPLY")
+	done < <(find $anatalimatname -name ${_apaket} -print0)
 	if [ ${#_bulunan[@]} > 1  ];then echo "$(date +'%F %T') ${_apaket} $_talimat_sayisi_fazla" >> $LOGDIZIN/mps-hata.log;fi
 	if [ ${_bulunan[0]} ] ; then
 		if [ -f "${_bulunan[0]}/talimat" ];then
@@ -2229,6 +2305,9 @@ ayarlar() {
 				ters_bagimli_bilgi "$2" ;;
 			-tbk)
 				ters_bagimli_kontrol "$2" ;;
+			pda)
+				paketdepo_analiz "$2"
+				exit 0 ;;
 			### mps tbilgi paketismi = ilgili paketin talimat bilgilerini verir.
 			tbilgi)
 				talimat_bilgi "$2"
@@ -2313,14 +2392,14 @@ ayarlar() {
 			#bagimliliklariyla beraber paket guncelleme-package updating with depencies
 			-go|--pkgo)
 				if [ ! "$2" ]; then
-					ryaz 31 "$_param_paket_adi_gerekli"
+					ryaz 31 "$_paket_adi_gerekli"
 					exit 1
 				fi
 				paket_guncelle_oto "$2";;
 			### mps -kk paketismi = ilgili paketin kurulu olma durumunu gösterir.
 			-kk|--kurulu-kontrol)
 				if [ ! "$2" ]; then
-					ryaz 31 "$_param_paket_adi_gerekli"
+					ryaz 31 "$_paket_adi_gerekli"
 					exit 1
 				fi
 				ryaz 31 `kurulu_kontrol "$2"`
@@ -2330,14 +2409,14 @@ ayarlar() {
 				exit 0 ;;
 			-kdi|dogrula)
 				if [ ! "$2" ]; then
-					ryaz 31 "$_param_paket_adi_gerekli"
+					ryaz 31 "$_paket_adi_gerekli"
 					exit 1
 				fi
 				kurulum_dogrulama_icerik "$2" ;;
 			-pid|pdogrula)
 				kokdzn=""
 				if [ ! "$2" ]; then
-					ryaz 31 "$_param_paket_adi_gerekli"
+					ryaz 31 "$_paket_adi_gerekli"
 					exit 1
 				elif [ ! "$3" ]; then
 					kokdzn="/"
