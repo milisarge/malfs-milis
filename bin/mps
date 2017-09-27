@@ -1407,43 +1407,48 @@ hataloglama(){
 	echo "$(date +'%F %T') $1" >> "$kokdizin/$LOGDIZIN/mps-hata.log"
 }
 
-dosyadan_talimat_islem(){
-	local dosya
-	dosya=$1
+indir_talimat_paketle(){
+	local dosya _ip _talkonum
+	_wget="wget --quiet --no-check-certificate"
+	if [ ! -z "$1" ];then dosya=$1;else ryaz 31 "link parametre eksik";exit 1;fi
+	if [ ! -z "$2" ];then _ip=$2;else ryaz 31 "ip tipi parametresi eksik";exit 1;fi
+	if [ ! -z "$3" ];then _talkonum=$3;else ryaz 31 "talimatname konum parametre eksik";exit 1;fi
+	
 	urlkont='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
-	if [[ $dosya =~ $urlkont ]]
-	then 
-		ryaz 32 "talimat linkten cekilecek"
+	if [[ $dosya =~ $urlkont ]];then 
 		gdosya=`mktemp`
-		wget $2 $dosya -O $gdosya
+		if [[ $_ip =~ "-6" ]]; then 
+			ryaz 32 "talimat ipv6 linkten cekilecek"
+			$_wget $_ip $dosya -O $gdosya
+		else
+			ryaz 32 "talimat ipv4 linkten cekilecek"
+			$_wget $_ip $dosya -O $gdosya
+		fi
 		dosya=$gdosya
-	fi
-	if [[ $2 =~ "-6" ]]; then 
-		ryaz 32 "talimat linkten cekilecek"
-		gdosya=`mktemp`
-		wget $2 $dosya -O $gdosya
-		dosya=$gdosya
-	fi
-	if [ ! -f $dosya ];then
-		ryaz 31 "$dosya talimat dosyasi yok!"
-		hataloglama "$dosya talimat dosyasi yok!"
+	else
+		ryaz 31 "link geçersiz"
 		exit 1
 	fi
 	
-	local paketisim
-	paketisim=`grep -ri 'name=' $dosya | cut -d'=' -f 2`
-	if [ ! -n "$paketisim" ]; then
-		ryaz 31 "paket ismi degiskeni bulunamadı!"
-		hataloglama "paket ismi degiskeni bulunamadı!"
+	if [ ! -f $dosya ];then
+		ryaz 31 "$dosya talimat dosyasi yok!"
 		exit 1
 	fi
-	if [ ! -f /root/talimatname/genel/$paketisim ];then
-		mkdir /root/talimatname/genel/$paketisim
-		cp -f $dosya /root/talimatname/genel/$paketisim/talimat
+	
+	local _isim
+	_isim=()
+	_isim=`grep 'name=' $dosya | cut -d'=' -f 2`
+	paketisim="${_isim[0]}"
+	if [ ! -n "$paketisim" ]; then
+		ryaz 31 "paket ismi degiskeni bulunamadı!"
+		exit 1
+	fi
+	if [ ! -d $_talkonum/$paketisim ];then
+		mkdir $_talkonum/$paketisim
+		cp -f $dosya $_talkonum/$paketisim/talimat
 		ryaz 32 "$paketisim talimatı hazırlandı."
 	else
 		ryaz 31 "$paketisim talimatı zaten talimatnamede var!"
-		hataloglama "$paketisim talimatı zaten talimatnamede var!"
 	fi
 }
 
@@ -2468,8 +2473,13 @@ ayarlar() {
 			-dps|depsil)
 				depo_paketler_sil 
 				exit 0 ;;
-			-dota)
-				dosyadan_talimat_islem $2 $3 
+			### mps link url_adres = verilen url adresindeki talimatı ektalimatname/topluluk altına inidirir.
+			link)
+				mkdir -p $ektalimatname/topluluk
+				indir_talimat_paketle $2 "-4" "$ektalimatname/topluluk"
+				exit 0 ;;
+			ti)
+				indir_talimat_paketle $2 "-4" "$talimatname/genel"
 				exit 0 ;;
 			-cf|--config-file)
 				if [ ! "$2" ]; then
