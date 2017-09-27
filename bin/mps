@@ -327,8 +327,8 @@ paketdepo_analiz(){
 						pdevir=${satir2:1:${#satir2}-1}
 						deposurum=`echo -e "$version" | sort -V | head -n1`
 						depodevir=`echo -e "$release" | sort -V | head -n1`
-						_surumbilgi="gereken_sürüm:$deposurum ! paket_sürüm:paket$psurum"
-						_devirbilgi="gereken_devir:$depodevir ! paket_devir:paket$pdevir"
+						_surumbilgi="gereken_sürüm:$deposurum ! paket_sürüm:$psurum"
+						_devirbilgi="gereken_devir:$depodevir ! paket_devir:$pdevir"
 						ryaz 33 "$pkt"
 						if [ "$deposurum" != "$psurum" ];then
 							ryaz 31 "$_surumbilgi"
