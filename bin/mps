@@ -362,6 +362,7 @@ paket_analiz(){
 }	
 
 paketdepo_analiz(){
+	paketvt_guncelle
 	_aranandepo=$1
 	_uyumsuz_paketler="/tmp/uyumsuz_paketler"
 	if [[ -d $_aranandepo && ! -f $_aranandepo ]];then
