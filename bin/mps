@@ -2327,9 +2327,11 @@ ayarlar() {
 				ters_bagimli_bilgi "$2" ;;
 			-tbk)
 				ters_bagimli_kontrol "$2" ;;
+			### mps pka paketismi = ilgili paketin depo-gitdepo uyumluluğunu kontrol eder.
 			pka)
 				paket_analiz "$2" 
 				exit 0;;
+			### mps pda paketdepo = paketlerin olduğu dizindeki paketlerin depo-gitdepo uyumluluğunu kontrol eder.
 			pda)
 				paketdepo_analiz "$2"
 				exit 0 ;;
