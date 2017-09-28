@@ -1,17 +1,27 @@
 # Description: GNOME için bir metin düzenleyici
 # URL: http://www.gnome.org/
 # Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache enchant gtk3 gtksourceview3 gvfs libpeas yelp-xsl enchant iso-codes libsoup libzeitgeist python-gobject python 
+# Depends on: gsettings-desktop-schemas desktop-file-utils shared-mime-info gtk-update-icon-cache enchant gtk3 gtksourceview3 gvfs libpeas yelp-xsl enchant iso-codes libsoup libzeitgeist python-gobject python 
 
 name=gedit
-version=3.22.0
+version=3.22.1
 release=1
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
 
-tamir_masaustu
 build() {
-cd $name-$version
-./configure --prefix=/usr --disable-spell
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	update-mime-database /usr/share/mime 
+	gdk-pixbuf-query-loaders --update-cache
+	./configure --prefix=/usr \
+	--sysconfdir=/etc --localstatedir=/var \
+	--libexecdir=/usr/lib \
+	--disable-updater \
+	--disable-schemas-compile \
+	--enable-python \
+	--disable-spell 
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
+	rm -rf $PKG/usr/share/help
 }
