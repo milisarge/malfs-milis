@@ -5,7 +5,7 @@
 
 name=firefox
 version=55.0.3
-release=2
+release=3
 
 source=(https://ftp.mozilla.org/pub/mozilla.org/$name/releases/$version/source/firefox-$version.source.tar.xz
         http://download.cdn.mozilla.net/pub/$name/releases/$version/linux-x86_64/xpi/tr.xpi
@@ -41,7 +41,7 @@ ac_add_options --disable-necko-wifi
 #ac_add_options --enable-startup-notification
 
 # PulseAudio kurulu ise aşağıdaki seçeneği açın
-ac_add_options --disable-pulseaudio
+#ac_add_options --disable-pulseaudio
 
 # GConf yüklediyseniz, bu satırı açın
 ac_add_options --disable-gconf
