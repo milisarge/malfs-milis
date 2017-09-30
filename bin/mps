@@ -952,12 +952,10 @@ paket_derle(){
 		konum="$1"
 		derpaket=`basename $1`
 	else
-		sonuc="`find "$talimatname" -name $1`"
-		eksonuc="`find "$ektalimatname" -name $1`"
-		if [ -f  "$sonuc/talimat" ];then
-			konum=$sonuc
-		elif [ -f  "$eksonuc/talimat" ];then
-			konum=$eksonuc
+		konum=$(talimat_bul $1)
+		if [[ $konum == "-1" || $konum == "0" ]];then
+			ryaz 31 "$1 $_talimat_bulunamadi"
+			exit 1
 		fi
 		derpaket="$1"
 	fi
