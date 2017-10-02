@@ -1,0 +1,20 @@
+# Description: D programlama dili paket-kütüphane yöneticisi
+# URL: https://github.com/dlang/dub
+# Packager: milisarge
+# Depends on: dmd 
+
+name=dub
+version=1.5.0
+release=1
+source=(https://github.com/dlang/dub/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+	DC=dmd
+	cd "$SRC/dub-$version"
+	echo "module dub.version_;" > source/dub/version_.d
+	echo "enum dubVersion = \"$version\";" >> source/dub/version_.d
+	$DC -ofbin/dub -w -O -g -version=DubUseCurl -Isource -L-lcurl @build-files.txt
+	install -Dm755 "bin/dub" "$PKG/usr/bin/dub"
+	install -Dm644 "LICENSE.txt" "$PKG/usr/share/licenses/$name/LICENSE"
+	install -Dm644 "scripts/bash-completion/dub.bash" "$PKG/usr/share/bash-completion/completions/dub"
+}
