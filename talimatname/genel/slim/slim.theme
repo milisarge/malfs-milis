@@ -2,34 +2,28 @@
 background_style        stretch
 background_color        #000000
 
-input_panel_x           300
-input_panel_y           100
+input_panel_x           50%
+input_panel_y           50%
       
-input_font          	Open Sans:size=16:bold:dpi=96
+input_font          	DejaVu Sans Light:ExtraLight:size=10.5:dpi=96
 input_fgcolor           #000000
 input_color				#000000
 
-username_font          	Open Sans:size=16:bold:dpi=96
+username_font          	DejaVu Sans Light:ExtraLight:size=16:dpi=96
 username_color        	#000000
-username_x              265
-username_y              200
-password_x              287
-password_y              200
+username_x              50%
+username_y              50%
+password_x              50%
+password_y              50%
 
-username_msg            KULLANICI
-password_msg            ŞİFRE
+username_msg            KULLANICI ADINIZ
+password_msg            ŞİFRENİZ
 
 
-input_name_x           295
-input_name_y           245
-input_pass_x           295
-input_pass_y           245
-
-#welcome_msg      %host
-#welcome_x        200
-#welcome_y        150
-#welcome_font     Open Sans:size=16:bold:dpi=96 
-#welcome_color    #000000
+input_name_x           65
+input_name_y           200
+input_pass_x           65
+input_pass_y           200
 
 
 msg_color               #000000
@@ -40,29 +34,13 @@ msg_shadow_xoffset 	1
 msg_shadow_yoffset 	1
 
 session_msg      Oturumlar:
-session_font     Open Sans:size=14:bold:dpi=96
-session_x        300
-session_y        650
+session_font     DejaVu Sans Light:ExtraLight:size=14:dpi=96
+session_x        50%
+session_y        75%
 session_color    #000000
 
 hints_msg      [F1]=oturum seçimi  -  reboot=yeniden başlat  -  console=uçbirim 
-hints_x        300
-hints_y        600
-hints_font     Open Sans:size=12:dpi=96
-hints_color    #000000
-#
-#### slimlock options ####
-#
-dpms_standby_timeout      60
-dpms_off_timeout          1200
-wrong_passwd_timeout       2
-passwd_feedback_x         300
-passwd_feedback_y         600
-passwd_feedback_msg       Şifreniz başarısız
-passwd_feedback_capslock  CaPsLocK AÇIK
-show_username              1
-show_welcome_msg           1
-tty_lock                   0
-bell                       0
-
-
+hints_x        	50%
+hints_y 		90%
+hints_font     DejaVu Sans Light:ExtraLight:size=12:dpi=96
+hints_color #000000
