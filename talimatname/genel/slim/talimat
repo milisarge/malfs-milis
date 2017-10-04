@@ -5,7 +5,7 @@
 
 name=slim
 version=2.0
-release=1
+release=2
 source=(http://kaynaklar.milislinux.org/slim-$version.tar.gz
         panel.png
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
