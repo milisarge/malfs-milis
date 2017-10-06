@@ -295,7 +295,7 @@ talimat_bul(){
 	while IFS=  read -r -d $'\0'; do
 		_bulunan+=("$REPLY")
 	done < <(find $talimatname $ektalimatname -name ${_apaket} -print0)
-	if [ ${#_bulunan[@]} > 1  ];then echo "$(date +'%F %T') ${_apaket} $_talimat_sayisi_fazla" >> $LOGDIZIN/mps-hata.log;fi
+	if [ ${#_bulunan[@]} -gt 1  ];then echo "$(date +'%F %T') ${_apaket} $_talimat_sayisi_fazla" >> $LOGDIZIN/mps-hata.log;fi
 	if [ ${_bulunan[0]} ] ; then
 		if [ -f "${_bulunan[0]}/talimat" ];then
 			echo "${_bulunan[0]}"
