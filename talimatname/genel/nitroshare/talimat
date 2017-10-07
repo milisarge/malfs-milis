@@ -7,7 +7,7 @@ name=nitroshare
 version=0.3.3
 release=1
 
-source=(https://github.com/nitroshare/nitroshare-desktop/archive/$version.tar.gz
+source=(https://github.com/nitroshare/nitroshare-desktop/archive/$version.tar.gz::$name-$version.tar.gz
         https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/aboutdialog.cpp
         https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/tr.ts::$name-tr.ts)
 
