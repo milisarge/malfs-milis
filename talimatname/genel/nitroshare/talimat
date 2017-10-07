@@ -1,0 +1,29 @@
+# Description: Ağ üzerinden dosya paylaşma uygulaması
+# URL: https://nitroshare.net
+# Packager: Cihan Alkan
+# Depends on:qt5 libnotify
+
+name=nitroshare
+version=0.3.3
+release=1
+
+source=(https://github.com/nitroshare/nitroshare-desktop/archive/$version.tar.gz
+        https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/aboutdialog.cpp
+        https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/tr.ts::$name-tr.ts)
+
+build() {
+   mv $name-tr.ts $name-desktop-$version/src/data/ts/
+   mv aboutdialog.cpp $name-desktop-$version/src/application/
+   cd $name-desktop-$version
+  
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+   make
+
+  make DESTDIR="$PKG" install
+    # lisans
+    install -Dm644 \
+        "LICENSE.txt" \
+        "$PKG/usr/share/licenses/$name/LICENSE.txt"
+	rm /sources/$version.tar.gz
+
+}
