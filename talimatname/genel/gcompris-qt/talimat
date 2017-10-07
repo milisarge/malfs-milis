@@ -1,0 +1,25 @@
+# Description: 2 ila 10 yaş arası çocuklar için çeşitli aktivitelerden oluşan eğitim yazılımı paketi
+# URL: http://gcompris.net/
+# Packager: Cihan Alkan
+# Depends on:qt5 hicolor-icon-theme
+
+name=gcompris-qt
+version=0.80
+release=1
+
+source=(http://gcompris.net/download/qt/src/$name-$version.tar.xz)
+
+build() {
+
+	cd $name-$version
+	mkdir build 
+	cd build 
+  
+	cmake \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	..
+	make
+	cd $SRC/$name-$version
+	make -C build DESTDIR="$PKG" install
+}
