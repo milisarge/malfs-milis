@@ -316,7 +316,7 @@ paket_analiz(){
 	if [ -f $pkt ];then
 		_apaket=$(basename $pkt |cut -d'#' -f 1)
 		_konum=$(anatalimat_bul $_apaket)
-		_depo_sha=$(cat "$paketdepo$_pkvt"  | grep "$_apaket#" | cut -d' ' -f2)
+		_depo_sha=$(cat "$paketdepo$_pkvt"  | grep " $_apaket#" | cut -d' ' -f2)
 		_paket_sha=$(sha1sum $pkt | cut -d ' ' -f1)
 		if [[ $_konum != "-1" && $_konum != "0" ]];then
 			source $_konum/talimat
