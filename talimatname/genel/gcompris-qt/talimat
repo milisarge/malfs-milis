@@ -14,10 +14,11 @@ build() {
 	cd $name-$version
 	mkdir build 
 	cd build 
-  
+
 	cmake \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DQML_BOX2D_LIBRARY=/usr/lib/qt/qml/Box2D.2.0 \
 	..
 	make
 	cd $SRC/$name-$version
