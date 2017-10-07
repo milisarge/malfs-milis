@@ -1,31 +1,50 @@
 # Description: OpenCV (Açık Kaynaklı Bilgisayar Vizyon Kütüphanesi) açık kaynaklı bir bilgisayar görme ve makine öğrenme yazılımı kütüphanesi.
 # URL: http://opencv.org/
 # Packager: milisarge
-# Depends on: libjpeg-turbo libtiff jasper libpng ffmpeg28 gstreamer xine-lib v4l-utils xorg-mesa
+# Depends on: libjpeg-turbo libtiff jasper libpng ffmpeg28 gstreamer xine-lib v4l-utils xorg-mesa python3-numpy python-numpy gtkglext libgphoto2
 
 _pybin=python2
 _pydir=python2.7
 
 name=opencv
 version=3.3.0
-release=1
+release=2
 
-source=(http://downloads.sourceforge.net/opencvlibrary/$name-$version.zip )
+source=(http://downloads.sourceforge.net/opencvlibrary/$name-$version.zip
+		https://raw.githubusercontent.com/opencv/opencv_3rdparty/a62e20676a60ee0ad6581e217fe7e4bada3b95db/ippicv/ippicv_2017u2_lnx_intel64_20170418.tgz)
    
 build() {
-        cd $name-*
+        cd $name-$version
+        
+        ipp_surum=ippicv_2017u2_lnx_intel64_20170418.tgz
+        ipp_file=$DERLEME_KAYNAKDIZIN/$ipp_surum &&
+		ipp_hash=$(md5sum $ipp_file | cut -d" " -f1) &&
+		ipp_dir=.cache/ippicv                           &&
+
+		mkdir -p $ipp_dir &&
+		cp $ipp_file $ipp_dir/$ipp_hash-$ipp_surum
+
+        
         mkdir build
         cd build
-        cmake   -DCMAKE_BUILD_TYPE=Release \
-                -DCMAKE_INSTALL_PREFIX=/usr \
-                -DCMAKE_SKIP_RPATH=ON \
-                -DWITH_XINE=ON \
-                -DWITH_UiNICAP=OFF \
-                -DPYTHON_EXECUTABLE=/usr/bin/$_pybin \
-                -DPYTHON_INCLUDE_DIR=/usr/include/$_pydir \
-                -DPYTHON_LIBRARY=/usr/lib/lib$_pydir.so ../
+		cmake  -D WITH_OPENCL=ON \
+		-DWITH_OPENGL=ON \
+		-DWITH_TBB=ON \
+		-DWITH_XINE=ON \
+		-DWITH_GSTREAMER=OFF \
+		-DBUILD_WITH_DEBUG_INFO=OFF \
+		-DBUILD_TESTS=OFF \
+		-DBUILD_PERF_TESTS=OFF \
+		-DBUILD_EXAMPLES=ON \
+		-DINSTALL_C_EXAMPLES=ON \
+		-DINSTALL_PYTHON_EXAMPLES=ON \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_SKIP_RPATH=ON \
+		 ..
         make
         make DESTDIR=$PKG install
+        
 }
 
 
