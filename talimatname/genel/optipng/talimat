@@ -1,0 +1,23 @@
+# Description: PNG dosyalarını herhangi bir bilgi kaybı olmadan daha küçük bir boyuta sıkıştırır.
+# URL: http://optipng.sourceforge.net/
+# Packager: Cihan Alkan
+# Depends on: libpng
+
+name=optipng
+version=0.7.6
+release=1
+
+source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+
+build() {
+
+   cd $name-$version
+
+  ./configure --prefix=/usr --mandir=/usr/share/man --with-system-libs
+  make
+
+  make prefix="$PKG/usr" mandir="$PKG/usr/share/man" install
+
+  # install license
+  install -Dm0644 LICENSE.txt "$PKG/usr/share/licenses/$name/LICENSE"
+}

@@ -1,0 +1,52 @@
+# Description: Küçük çocuklar için tasarlanmış çizim programı
+# URL: http://tuxpaint.org/
+# Packager: Cihan Alkan
+# Depends on: optipng setconf sdl-ttf sdl-mixer python fribidi sdl-image sdl-pango libpaper librsvg
+
+name=tuxpaint
+version=0.9.22
+release=1
+
+source=(https://downloads.sourceforge.net/sourceforge/tuxpaint/$name-$version.tar.gz)
+
+build() {
+
+   cd $name-$version
+# python2 fix
+  for f in docs/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
+    sed -i '0,/on/s//on2/' $f
+  done
+
+  # libpng15 fix
+  sed -i 's:$(ARCH_LINKS):$(ARCH_LINKS) -lpng:' Makefile
+
+  # libpng16 fix
+  find -name '*.png' -exec optipng -quiet -force -fix {} +
+
+  # fullscreen by default
+  sed -i 's:# fu:fu:' src/tuxpaint.conf
+
+  # desktop shortcut categories
+  setconf src/tuxpaint.desktop Categories 'Game;KidsGame;Graphics;RasterGraphics;'
+
+  # bash completion placement
+  setconf Makefile COMPLETIONDIR '$(DESTDIR)/usr/share/bash-completion/completions'
+
+  cd $SRC
+  make -C "$name-$version" PREFIX=/usr clean translations all -j1
+
+  make -C "$name-$version" \
+    PREFIX=/usr \
+    GNOME_PREFIX=/usr \
+    X11_ICON_PREFIX="$PKG/usr/share/pixmaps" \
+    DESTDIR="$PKG" \
+    install -j1
+
+  # fix permissions
+  chmod -R 644 "$PKG/usr/share/doc/tuxpaint-dev/"*
+  chmod 755 "$PKG/usr/share/doc/tuxpaint-dev/html"
+
+  # bash completions
+  mv "$PKG/usr/share/bash-completion/completions/tuxpaint-completion.bash" \
+    "$PKG/usr/share/bash-completion/completions/tuxpaint"
+}
