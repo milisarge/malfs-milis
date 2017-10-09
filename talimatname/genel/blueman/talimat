@@ -1,0 +1,29 @@
+# Description: A GTK+ Bluetooth Yöneticisi
+# URL: https://github.com/blueman-project/blueman
+# Packager: milisarge
+# Depends on: cython intltool bluez dbus-glib gconf gtk3 notification-daemon libnotify polkit python3-cairo dbus-python python3-gobject startup-notification 
+
+name=blueman
+version=2.0.5
+release=1
+source=(https://github.com/blueman-project/blueman/releases/download/2.0.5/$name-$version.tar.xz::$name-$version.tar.xz)
+
+build() {
+    cd "${SRC}/${name}-${version}"
+    NOCONFIGURE=1 ./autogen.sh
+    export PYTHON=/usr/bin/python3
+    export CYTHONEXEC=/usr/bin/cython
+
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --libexecdir=/usr/lib/${name} \
+        --with-gtk=3.0 \
+        --disable-hal \
+        --disable-sendto \
+        --disable-static
+
+    make
+    make DESTDIR="${PKG}" install
+    rm -r $PKG/etc/dbus-1
+}
