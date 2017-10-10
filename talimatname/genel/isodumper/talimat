@@ -1,10 +1,10 @@
 # Description: ISO imajlarini USB belleğe yazdırmak için usb-imagewriter temelli bir program
 # URL: https://github.com/papoteur-mga/isodumper
-# Packager: alihan-ozturk28@hotmail.com
+# Packager: milisarge
 # Depends on: intltool imagemagick coreutils pango polkit procps-ng python-gtk python-cairo python-gobject2 libglade python dbus-python python-parted udisks2 xorg-term
 
 name=isodumper
-version=0.48
+version=0.59
 release=1
 source=( http://gitweb.mageia.org/software/isodumper/snapshot/$name-$version.tar.gz
          header.png
@@ -14,6 +14,22 @@ build() {
 cd $name-$version
 make
 make  DESTDIR=$PKG install
+
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/isodumper.desktop << "EOF" &&
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=ISO Dumper
+Comment=ISO Kalıp Yazma Programı
+Icon=isodumper
+Exec=isodumper
+Categories=Utility;
+StartupNotify=true
+Terminal=false
+EOF
+
 cp $SRC/header.png $PKG/usr/share/isodumper
 cp $SRC/header.svg $PKG/usr/share/isodumper
 }
