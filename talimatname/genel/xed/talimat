@@ -4,7 +4,7 @@
 # Depends on: libpeas gtksourceview3 gobject-introspection desktop-file-utils xorg-libsm enchant gnome-common yelp-tools iso-codes
 
 name=xed
-version=1.4.3
+version=1.4.6
 release=1
 source=(https://github.com/linuxmint/$name/archive/$version.tar.gz)
 
