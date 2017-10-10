@@ -1,0 +1,14 @@
+# Description: android cihazlar için udev kuralları
+# URL: https://github.com/M0Rf30/android-udev-rules
+# Packager: milisarge
+# Depends on: libmtp
+
+name=android-udev
+version=20170910
+release=1
+source=(https://github.com/M0Rf30/android-udev-rules/archive/$version.zip::android-udev-$version.zip)
+
+build() {
+  cd android-udev-rules-$version
+  install -Dm 644 51-android.rules "$PKG"/usr/lib/udev/rules.d/51-android.rules
+}

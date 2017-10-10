@@ -1,0 +1,21 @@
+# Description: Samsung cihazlara firmware yükleme aracı
+# URL: http://www.glassechidna.com.au/products/heimdall/
+# Packager: milisarge
+# Depends on: cmake qt5
+
+name=heimdall
+version=1.4.2
+release=1
+source=(https://github.com/Benjamin-Dobell/Heimdall/archive/v${version}.tar.gz::$name-$version.tar.gz
+		heimdall.desktop)
+
+build(){
+	cd Heimdall-$version
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr
+	make
+	install -m644 -D $SRC/heimdall.desktop "$PKG/usr/share/applications/heimdall.desktop"
+	install -m644 -D LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+	install -d "$PKG"/usr/bin
+	install -Dm755 bin/* "$PKG"/usr/bin/
+	install -Dm644 heimdall/60-heimdall.rules "$PKG"/usr/lib/udev/rules.d/60-heimdall.rules
+}
