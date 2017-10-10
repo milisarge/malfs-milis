@@ -1,7 +1,7 @@
 # Description: Samsung cihazlara firmware yükleme aracı
 # URL: http://www.glassechidna.com.au/products/heimdall/
 # Packager: milisarge
-# Depends on: cmake qt5
+# Depends on: cmake qt5 android-udev
 
 name=heimdall
 version=1.4.2
