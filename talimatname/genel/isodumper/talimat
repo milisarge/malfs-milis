@@ -14,6 +14,22 @@ build() {
 cd $name-$version
 make
 make  DESTDIR=$PKG install
+
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/isodumper.desktop << "EOF" &&
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=ISO Dumper
+Comment=ISO Kalıp Yazma Programı
+Icon=isodumper
+Exec=isodumper
+Categories=Utility;
+StartupNotify=true
+Terminal=false
+EOF
+
 cp $SRC/header.png $PKG/usr/share/isodumper
 cp $SRC/header.svg $PKG/usr/share/isodumper
 }
