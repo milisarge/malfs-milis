@@ -1,25 +1,32 @@
 # Description: X Pencere Sistemi icin hafif bir sistem monitoru
 # URL: http://conky.sourceforge.net
-# Packager: dei
-# Depends on: wireless-tools glib lua tolua++ cairo curl imlib2 xorg-libxdamage xorg-libxft
+# Packager: milisarge
+# Depends on: wireless-tools glib lua cairo imlib2 xorg-libxdamage xorg-libxft libxml2 docbook2x docbook-xml xorg-libxinerama
 
 name=conky
-version=1.9.0
+version=1.10.6
 release=1
-source=(http://freefr.dl.sourceforge.net/sourceforge/conky/$name-$version.tar.gz)
+source=(https://github.com/brndnmtthws/conky/archive/v$version.tar.gz::$name-$version.tar.gz)
 
 build() {
-cd $name-$version
-CPPFLAGS="${CXXFLAGS}" LIBS="${LDFLAGS}" LUA_LIBS="-llua5.1" LUA_CFLAGS="-I/usr/include/lua5.1" \
-./configure --prefix=/usr      \
-            --sysconfdir=/etc  \
-            --enable-wlan      \
-	    --enable-rss       \
-	    --enable-ibm       \
-	    --enable-imlib2    \
-	    --enable-lua       \
-            --enable-lua-cairo \
-            --enable-lua-imlib2
-make
-make DESTDIR=$PKG install
+	cd $name-$version
+	[ ! -f /usr/lib/pkgconfig/ncurses.pc ] && ln -s /usr/lib/pkgconfig/ncursesw.pc /usr/lib/pkgconfig/ncurses.pc
+	cmake \
+	-D CMAKE_BUILD_TYPE=Release \
+	-D MAINTAINER_MODE=ON \
+	-D BUILD_CURL=ON \
+	-D BUILD_XDBE=ON \
+	-D BUILD_IMLIB2=ON \
+	-D BUILD_RSS=ON \
+	-D BUILD_WEATHER_METAR=ON \
+	-D BUILD_WEATHER_XOAP=ON \
+	-D BUILD_WLAN=ON \
+	-D CMAKE_INSTALL_PREFIX=/usr \
+	.
+	make
+	make DESTDIR=$PKG install
+	install -Dm644 COPYING "${PKG}/usr/share/licenses/${name}/LICENSE"
+	install -Dm644 extras/vim/syntax/conkyrc.vim "${PKG}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
+	install -Dm644 extras/vim/ftdetect/conkyrc.vim "${PKG}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
+	rm -rf /usr/lib/pkgconfig/ncurses.pc
 }
