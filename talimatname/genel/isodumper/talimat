@@ -4,7 +4,7 @@
 # Depends on: intltool imagemagick coreutils pango polkit procps-ng python-gtk python-cairo python-gobject2 libglade python dbus-python python-parted udisks2 xorg-term
 
 name=isodumper
-version=0.49
+version=0.48
 release=1
 source=( http://gitweb.mageia.org/software/isodumper/snapshot/$name-$version.tar.gz
          header.png
