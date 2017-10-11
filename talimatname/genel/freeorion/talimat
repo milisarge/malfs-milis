@@ -1,0 +1,22 @@
+# Description: Dönüşümlü galaxy ve uzay istila oyunu 
+# URL: http://www.freeorion.org/
+# Packager: milisarge
+# Depends on: boost cmake boost python sdl2 libvorbis glew openal hicolor-icon-theme freetype
+
+name=freeorion
+version=0.4.7
+release=1
+source=(https://github.com/freeorion/freeorion/releases/download/v${version}/FreeOrion_v${version}_2017-04-24.60d06dc_Source.tar.gz)
+
+build() {
+  cd $SRC/src-tarball
+  mkdir -p build
+  cd $SRC/src-tarball/build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    ..
+  make
+  make DESTDIR=$PKG install
+}
