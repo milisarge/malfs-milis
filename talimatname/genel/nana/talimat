@@ -1,0 +1,19 @@
+# Description: C++ statik bağlamlı arayüz kütüphanesi
+# URL: http://nanapro.org/en-us/
+# Packager: milisarge
+# Depends on: alsa-lib cmake libjpeg-turbo libpng xorg-libx11 xorg-libxft xorg-proto 
+
+name=nana
+version=1.5.5
+release=1
+source=(https://downloads.sourceforge.net/project/nanapro/Nana/Nana%201.x/nana%20$version.zip)
+
+build() {
+    cd ${SRC}/${name}
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DNANA_CMAKE_NANA_FILESYSTEM_FORCE=YES
+    make
+    make DESTDIR="${PKG}" install
+}
