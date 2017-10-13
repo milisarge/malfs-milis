@@ -302,10 +302,17 @@ class renk:
 class Arge:
 	
 	def indir(self,link):
+		'''
 		if "packages/" in link:
 			paket=link.split("?h=packages/")[1]
 		else:
 			paket=link.split("?h=")[1]
+		'''
+		paket=link.split("/")[-1]
+		if paket == "":
+			paket=link.split("/")[-2]
+		if "=" in paket:
+			paket=paket.split("=")[1] 
 		print renk.tamamb+paket+" indiriliyor..."+renk.son
 		try:
 			veri = urllib2.urlopen(link)
