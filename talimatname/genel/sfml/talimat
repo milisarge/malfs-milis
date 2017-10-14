@@ -1,0 +1,32 @@
+# Description: Sade,hızlı,çoğl platform destekli multimedya kütüphanesi
+# URL: http://www.sfml-dev.org/
+# Packager: milisarge
+# Depends on: flac freetype libjpeg-turbo libvorbis xorg-mesa openal util-linux xorg-libsm xorg-libxrandr xcb-util-image
+
+name=sfml
+version=2.4.2
+release=1
+source=(https://www.sfml-dev.org/files/SFML-$version-sources.zip)
+
+build() {
+	cd SFML-$version
+
+	install -d build
+	cd build
+
+	cmake .. \
+		-DCMAKE_BUILD_TYPE='Release' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DSFML_INSTALL_PKGCONFIG_FILES=1 \
+		-DSFML_BUILD_EXAMPLES=0 \
+		-DSFML_BUILD_DOC=0 \
+
+
+	make
+	make DESTDIR=$PKG install
+
+	install -D -m 0644 $PKG/usr/share/SFML/cmake/Modules/FindSFML.cmake \
+		$PKG/usr/share/cmake/Modules/FindSFML.cmake
+
+	rm -r $PKG/usr/share/SFML/{license,readme}.txt
+}
