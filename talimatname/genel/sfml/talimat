@@ -10,7 +10,7 @@ source=(https://www.sfml-dev.org/files/SFML-$version-sources.zip)
 
 build() {
 	cd SFML-$version
-
+    cmake_surum=3.4
 	install -d build
 	cd build
 
@@ -26,7 +26,7 @@ build() {
 	make DESTDIR=$PKG install
 
 	install -D -m 0644 $PKG/usr/share/SFML/cmake/Modules/FindSFML.cmake \
-		$PKG/usr/share/cmake/Modules/FindSFML.cmake
+		$PKG/usr/share/cmake-$cmake_surum/Modules/FindSFML.cmake
 
 	rm -r $PKG/usr/share/SFML/{license,readme}.txt
 }

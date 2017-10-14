@@ -11,12 +11,11 @@ source=(https://www.sfml-dev.org/files/CSFML-$version-sources.zip)
 build() {
 	cd CSFML-$version
 
-	#sed -e 's|cmake/Config.cmake|cmake/Modules/FindSFML.cmake|' \
-	#	-i CMakeLists.txt
+	#sed -e 's|cmake/Config.cmake|cmake/Modules/FindSFML.cmake|' -i CMakeLists.txt
 
 	install -d build
 	cd build
-
+    CMAKE_MODULE_PATH="/usr/share/SFML/cmake/Modules"
 	cmake .. \
 		-DCMAKE_BUILD_TYPE='Release' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
