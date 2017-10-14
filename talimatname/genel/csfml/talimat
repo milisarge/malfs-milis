@@ -1,0 +1,31 @@
+# Description: sfml C kütüphanesi
+# URL: https://www.sfml-dev.org/download/csfml/
+# Packager: milisarge
+# Depends on: sfml
+
+name=csfml
+version=2.4
+release=1
+source=(https://www.sfml-dev.org/files/CSFML-$version-sources.zip)
+
+build() {
+	cd CSFML-$version
+
+	#sed -e 's|cmake/Config.cmake|cmake/Modules/FindSFML.cmake|' \
+	#	-i CMakeLists.txt
+
+	install -d build
+	cd build
+
+	cmake .. \
+		-DCMAKE_BUILD_TYPE='Release' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DSFML_BUILD_DOC=0
+
+	make
+	make DESTDIR=$PKG install
+
+	rm -r $PKG/usr/share/CSFML/{license,readme}.txt
+	rmdir $PKG/usr/share/CSFML
+	rmdir $PKG/usr/share
+}
