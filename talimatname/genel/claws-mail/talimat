@@ -4,8 +4,8 @@
 # Depends on: bogofilter enchant aspell libetpan gnupg gpgme gnutls dbus gtk2 libtasn1 enchant
 
 name=claws-mail
-version=3.11.1
-release=3
+version=3.15.1
+release=1
 source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
 
 build() {
