@@ -1,0 +1,32 @@
+# Description: Mutt paketi bir posta kullanıcı aracısı içerir.
+# URL: http://www.neomutt.org/
+# Packager: milisarge
+# Depends on:  
+
+name=neomutt
+version=20171013
+release=1
+source=(https://github.com/$name/$name/archive/$name-$version.tar.gz)
+
+build () {
+	cd $name-$name-$version
+
+	./prepare \
+		--prefix=/usr \
+		--with-docdir=/usr/share/doc/$name \
+		--with-mailpath=/var/spool/mail \
+		--enable-pop \
+		--enable-imap \
+		--enable-smtp \
+		--enable-hcache \
+		--enable-sidebar \
+		--enable-compressed \
+		--with-ssl \
+		--enable-hcache \
+		--disable-nls \
+		--with-regex \
+		--with-gdbm
+
+	make
+	make DESTDIR=$PKG install
+}
