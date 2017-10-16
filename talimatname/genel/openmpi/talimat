@@ -1,0 +1,16 @@
+# Description: Yüksek performans mesaj iletim arayüzü
+# URL: https://www.open-mpi.org
+# Packager: milisarge
+# Depends on:
+
+name=openmpi
+version=2.1.1
+release=1
+source=(https://www.open-mpi.org/software/ompi/v2.1/downloads/$name-$version.tar.bz2)
+
+build () {
+  cd "$name-$version"
+  ./configure --prefix="$PKG/usr"
+  make "$MAKEFLAGS"
+  make install
+}
