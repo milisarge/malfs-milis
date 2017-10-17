@@ -4,7 +4,7 @@
 # Depends on: python
 
 name=ninja
-version=1.6.0
+version=1.8.2
 release=1
 source=(https://github.com/martine/$name/archive/v$version.tar.gz)
 
