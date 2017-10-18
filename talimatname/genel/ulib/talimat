@@ -1,0 +1,29 @@
+# Description: Sade ve hızlı c++ uygulama geliştirme çatısı
+# URL: https://github.com/stefanocasazza/ULib
+# Packager: milisarge
+# Depends on: sqlite libzip
+
+name=ulib
+version=2.3.4
+release=1
+source=(https://github.com/stefanocasazza/ULib/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+  cd "${SRC}/ULib-${version}"
+  ./configure \
+  --enable-debug \
+  --with-sqlite3 \
+  --with-ipv6 \
+  --with-userver-ipc \
+  --with-userver-udp \
+  --enable-HPS   \
+  --enable-load-balance \
+  --enable-zip \
+  --enable-http2 \
+  --sysconfdir=/etc \
+  --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+  mkdir -p $PKG/usr/share/ulib
+  cp -r examples $PKG/usr/share/ulib/
+}
