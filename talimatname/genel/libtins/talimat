@@ -1,0 +1,20 @@
+# Description: Yüksek seviye ağ paket koklama ve işleme c++ kütüphanesi
+# URL: http://libtins.github.io/
+# Packager: milisarge
+# Depends on: cmake libpcap 
+
+name=libtins
+version=3.5
+release=1
+source=(https://github.com/mfontanini/libtins/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+  cd "${SRC}/libtins-${version}"
+  mkdir build
+  cd build
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D LIBTINS_ENABLE_CXX11=yes ../
+  make
+  make DESTDIR="${PKG}" install
+  install -Dm644 ../LICENSE "${PKG}/usr/share/licenses/${name}/LICENSE"
+  rm -R "${PKG}/usr/CMake/"
+}
