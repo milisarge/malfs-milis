@@ -4,7 +4,7 @@
 # Depends on: sqlite libzip
 
 name=ulib
-version=2.3.4
+version=1.4.2
 release=1
 source=(https://github.com/stefanocasazza/ULib/archive/v$version.tar.gz::$name-$version.tar.gz)
 
@@ -24,6 +24,4 @@ build() {
   --prefix=/usr
   make
   make DESTDIR="${PKG}" install
-  mkdir -p $PKG/usr/share/ulib
-  cp -r examples $PKG/usr/share/ulib/
 }
