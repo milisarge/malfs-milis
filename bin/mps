@@ -1458,9 +1458,9 @@ else
 	name=$1
 	mkdir -p $name
 	tee "$name/talimat" > /dev/null <<EOF
-# description:x
-# url:x
-# packager:milisarge
+# Description: paket açıklaması
+# Url: paketin ilgili web sayfası
+# Packager: paketci
 # Depends on: 
 
 name=$name
@@ -1469,11 +1469,11 @@ release=1
 source=()
 
 build () {
-	cd name-version
+	cd \$name-\$version
 	./autogen.sh
 	./configure --prefix=/usr
 	make
-	make DESTDIR=$PKG install
+	make DESTDIR=\$PKG install
 }
 
 EOF
