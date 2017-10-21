@@ -1,0 +1,2 @@
+#çakışan paket silinmesi
+[ -d /var/lib/pkg/DB/chromium ] && mps sil chromium
