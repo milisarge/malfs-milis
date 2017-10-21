@@ -1,0 +1,15 @@
+# Description: Google'nin açık kaynak kodlu web tarayıcısı
+# URL: https://www.chromium.org/Home
+# Packager: Cihan Alkan
+# Depends on: libwebp minizip libjipeg-turbo
+
+name=chromium-bin
+version=62.0.3202.62
+release=1
+
+source=(http://www.ftp.uni-erlangen.de/archlinux/extra/os/x86_64/chromium-62.0.3202.62-1-x86_64.pkg.tar.xz)
+
+build() {
+  cp -ar "$SRC/usr" "$PKG/usr"
+  chmod 4755 "$PKG/usr/lib/chromium/chrome-sandbox"
+}
