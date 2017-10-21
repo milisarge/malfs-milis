@@ -1,0 +1,22 @@
+# Description: Çok oyunculu tavşan oyunu
+# URL: https://github.com/MCMic/jumpnbump
+# Packager: milisarge
+# Depends on: sdl2 sdl2-mixer sdl2_net python-gtk 
+
+name=jumpnbump
+version=1.60
+release=1
+source=(https://gitlab.com/LibreGames/jumpnbump/uploads/9f3a356c52f433e3af10f1ef800fce5d/jumpnbump-$version.tar.xz
+		menu.patch
+		desktop.patch)
+
+build() {
+  cd $SRC/${name}-${version}/menu
+  patch -p0 < $SRC/menu.patch || return 1
+  cd "${SRC}/${name}-${version}/"
+  make -j1 PREFIX=/usr 
+  make PREFIX="${PKG}/usr/" install
+  cd ${PKG}/usr/share/applications/
+  rm "jumpnbump.desktop"
+  patch -p0 < ${SRC}/desktop.patch || return 1
+}

@@ -1,6 +1,6 @@
 # Description: Gzip ve PKZIP'de bulunan deflate sıkıştırma yöntemini uygulayan sıkıştırma kitaplığı
 # URL: https://www.zlib.net/
-# Packager: Cihan Alkan
+# Packager: milisarge
 # Depends on: 
 
 name=minizip
@@ -20,10 +20,6 @@ build() {
 	autoreconf --install
 	./configure --prefix=/usr --enable-static=no
 	make
-
-cd ${SRC}/zlib-$version
-	make install DESTDIR=${PKG}
-	install -D -m644 LICENSE ${PKG}/usr/share/licenses/zlib/LICENSE
 
 	cd ${SRC}/zlib-$version/contrib/minizip
 	make install DESTDIR=${PKG}

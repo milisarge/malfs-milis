@@ -1,0 +1,17 @@
+# Description: SDL-2 için çapraz platform bir ağ kitaplığı.
+# URL: http://www.libsdl.org/projects/SDL_net
+# Packager: milisarge
+# Depends on: sdl2
+
+name=sdl2_net
+version=2.0.1
+release=1
+source=(https://www.libsdl.org/projects/SDL_net/release/SDL2_net-$version.tar.gz)
+
+build() {
+	cd SDL2_net-$version
+	./configure --disable-static --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
+
