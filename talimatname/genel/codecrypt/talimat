@@ -1,0 +1,18 @@
+# Description: Kuantum algoritmalı şifreleme uygulaması
+# URL: http://e-x-a.org/codecrypt/
+# Packager: milisarge
+# Depends on: fftw crypto++ 
+
+name=codecrypt
+version=1.7.6
+release=1
+source=(https://github.com/exaexa/codecrypt/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+	cd "${SRC}/${name}-${version}"
+	./autogen.sh
+	./configure LIBS=-lpthread --prefix=/usr
+	make
+	make -k check
+	make DESTDIR="$PKG/" install
+}
