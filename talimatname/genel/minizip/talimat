@@ -1,0 +1,31 @@
+# Description: Gzip ve PKZIP'de bulunan deflate sıkıştırma yöntemini uygulayan sıkıştırma kitaplığı
+# URL: https://www.zlib.net/
+# Packager: Cihan Alkan
+# Depends on: 
+
+name=minizip
+version=1.2.11
+release=1
+source=(https://zlib.net/zlib-${version}.tar.gz)
+
+build() {
+    cd zlib-$version
+	grep -A 24 '^  Copyright' zlib.h > LICENSE
+	./configure --prefix=/usr
+	make
+
+	cd contrib/minizip
+	cp Makefile Makefile.orig
+	cp ../README.contrib readme.txt
+	autoreconf --install
+	./configure --prefix=/usr --enable-static=no
+	make
+
+cd ${SRC}/zlib-$version
+	make install DESTDIR=${PKG}
+	install -D -m644 LICENSE ${PKG}/usr/share/licenses/zlib/LICENSE
+
+	cd ${SRC}/zlib-$version/contrib/minizip
+	make install DESTDIR=${PKG}
+	install -D -m644 ${SRC}/zlib-$version/LICENSE ${PKG}/usr/share/licenses/minizip/LICENSE
+}
