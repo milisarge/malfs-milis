@@ -1,0 +1,15 @@
+# Description: Multiple dispatch implementation in Python
+# URL: https://github.com/mrocklin/multipledispatch
+# Packager: milisarge
+# Depends on: python3 python3-setuptools
+
+name=python3-multipledispatch
+version=0.4.8
+release=1
+source=(https://github.com/mrocklin/multipledispatch/archive/$version.tar.gz::$name-$version.tar.gz)
+
+build() {
+	cd "${SRC}"/multipledispatch-$version
+	python3 setup.py build
+	python3 setup.py install --skip-build --prefix=/usr --root="$PKG" --optimize=1
+}
