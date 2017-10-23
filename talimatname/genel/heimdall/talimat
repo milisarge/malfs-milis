@@ -5,12 +5,16 @@
 
 name=heimdall
 version=1.4.2
-release=1
+release=2
 source=(https://github.com/Benjamin-Dobell/Heimdall/archive/v${version}.tar.gz::$name-$version.tar.gz
+		https://github.com/oltulu/Heimdall/raw/master/heimdall-frontend/mainwindow.ui::$name-mainwindow.ui
+		https://github.com/oltulu/Heimdall/raw/master/heimdall-frontend/aboutform.ui::$name-aboutform.ui
 		heimdall.desktop)
 
 build(){
 	cd Heimdall-$version
+	cp -r $SRC/$name-mainwindow.ui $SRC/Heimdall-$version/heimdall-frontend/
+    cp -r $SRC/$name-aboutform.ui $SRC/Heimdall-$version/heimdall-frontend/
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr
 	make
 	install -m644 -D $SRC/heimdall.desktop "$PKG/usr/share/applications/heimdall.desktop"
