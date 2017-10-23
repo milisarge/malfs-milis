@@ -1,0 +1,23 @@
+# Description: C standart kütüphanesinin hafif gerçeklemesi
+# URL: http://www.musl-libc.org/
+# Packager: milisarge
+# Depends on: 
+
+name=musl
+version=1.1.17
+release=1
+source=(https://www.musl-libc.org/releases/musl-1.1.17.tar.gz{,.asc}
+)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr/lib/musl \
+    --exec-prefix=/usr \
+    --enable-wrapper=all
+  make
+  make DESTDIR="$PKG" install
+  install -dm755 "$PKG"/usr/lib/
+  mv "$PKG"/lib/ld-musl*.so* "$PKG"/usr/lib/
+  rmdir "$PKG"/lib
+  install -Dm0644 COPYRIGHT "$PKG"/usr/share/licenses/musl/COPYRIGHT
+}
