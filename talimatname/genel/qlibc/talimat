@@ -1,0 +1,18 @@
+# Description: Hızlı ve sade C kütüphaneleri 
+# Url: https://github.com/wolkykim/qlibc
+# Packager: milisarge
+# Depends on: 
+
+name=qlibc
+version=2.4.2
+release=1
+source=(https://github.com/wolkykim/qlibc/archive/v$version.tar.gz::$name-$version.tar.gz)
+
+build () {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make tests
+	make DESTDIR=$PKG install
+}
+
