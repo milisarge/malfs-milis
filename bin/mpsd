@@ -59,7 +59,7 @@ check_pkgfile() {
 		error "'versiyon' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
 		exit $E_TALIMAT
 	fi
-	if [ "$SURUM_YOKSAY" = "yok" ]; then
+	if [ "$DEVIR_YOKSAY" = "yok" ]; then
 		if [ "${release}" == "" ]; then
 			error " 'release' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
 			exit $E_TALIMAT
@@ -495,52 +495,6 @@ remove_devel() {
 	for DIR in usr opt/*; do
 		for SUBDIR in include lib/pkgconfig; do
 			if [ -d $DIR/$SUBDIR ]; then
-				rm -r $DIR/$SUBDIR
-			fi
-		done
-	done
-}
-pack_doc() {
-	local DIR SUBDIR
-	for DIR in usr/share opt/*/share; do
-		for SUBDIR in doc gtk-doc; do
-			if [ -d $DIR/$SUBDIR ]; then
-				bsdtar -r -f \
-				$PAKETLEME_DIZIN/${name}.${group}#$version-any.${PKT_UZANTISI} \
-				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
-				j=1
-			fi
-		done
-	done
-}
-remove_doc() {
-	local DIR SUBDIR
-	for DIR in usr/share opt/*/share; do
-		for SUBDIR in doc gtk-doc; do
-			if [ -d $DIR/$SUBDIR ]; then
-				rm -r $DIR/$SUBDIR
-			fi
-		done
-	done
-}
-pack_man() {
-	local DIR SUBDIR
-	for DIR in usr/share opt/*/share; do
-		for SUBDIR in info man; do
-			if [ -d $DIR/$SUBDIR  ]; then
-				bsdtar -r -f \
-				$PAKETLEME_DIZIN/${name}.${group}#$version-any.${PKT_UZANTISI} \
-				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
-				j=1
-			fi
-		done
-	done
-}
-remove_man() {
-	local DIR SUBDIR
-	for DIR in usr/share opt/*/share; do
-		for SUBDIR in info man; do
-			if [ -d $DIR/$SUBDIR  ]; then
 				rm -r $DIR/$SUBDIR
 			fi
 		done
@@ -1117,7 +1071,7 @@ parse_options() {
 				DERLEME_AYARDOSYASI="$2"
 				shift ;;
 			-v|--version)
-				echo "`basename $PKGMK_COMMAND` (cards) $PKGMK_VERSION"
+				echo "`basename $PKGMK_COMMAND`  $PKGMK_VERSION"
 				exit 0 ;;
 			-h|--help)
 				print_help
@@ -1229,7 +1183,7 @@ main() {
 		info "versiyon: $version"
 	fi
 	if [ ! -z "$release" ]; then
-		info "surum: $release"
+		info "devir: $release"
 	fi
 	if [ ! -z "$group" ]; then
 		info "grup: $group"
@@ -1419,7 +1373,7 @@ PKGMK_DOWNLOAD="yok"
 DOSYAIZLEME_YOKSAY="evet"
 PKGMK_IGNORE_NEW="evet"
 MD5SUM_YOKSAY="evet"
-SURUM_YOKSAY="yok"
+DEVIR_YOKSAY="yok"
 REPO_YOKSAY="evet"
 
 PKGMK_NO_STRIP="yok"
