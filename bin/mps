@@ -185,14 +185,7 @@ paket_sil(){
 					done
 				fi
 				if [ "$sil_onay" = "e" ];then
-					_konum=$(talimat_bul $paket)
-
-					if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
-						echo "tanimsiz"
-					else
-						echo "degil"
-					fi
-									
+					_konum=$(talimat_bul $paket)									
 					[ -f "$_konum/$paket.kos-sil" ] && bash "$_konum/$paket.kos-sil"
 					xargs rm -r -f < /tmp/$paket.sil &&
 					rm -r -f "$VT/$paket" &&
@@ -634,10 +627,10 @@ paket_inkur_oto(){
 		kurdurum="kurulu değil"
 	elif [ $(kurulu_kontrol $1) = "kurulu" ];then
 		kurdurum="kurulu"
+		ryaz 32 "\n$1 $kurdurum "
 	else
 		kurdurum="$_paket_tanimsiz"
 	fi
-	ryaz 32 "\n$1 $kurdurum "
 	rm -rf *.liste
 }
 
@@ -1876,8 +1869,8 @@ paket_indir(){
 							hataloglama "sha1sum uyusmaslik tespit edildi,paket tekrar indiriliyor."
 							rm -f "$paketdepo$pkt" 
 							paket_indir "$1" 
-						else
-							ryaz 32 "$_zaten $1 $_paket_onbellek_depoda_var"
+						#else
+							#ryaz 32 "$_zaten $1 $_paket_onbellek_depoda_var"
 						fi
 					fi
 				else
