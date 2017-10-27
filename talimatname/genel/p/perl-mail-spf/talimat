@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/J/JM/JMEHNLE/mail-spf/Mail-SPF-v$version.tar.gz)
 
-build() {
+derle() {
 cd Mail-SPF-v$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

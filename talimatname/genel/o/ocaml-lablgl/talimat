@@ -9,7 +9,7 @@ version=1.05
 release=1
 source=(https://forge.ocamlcore.org/frs/download.php/1254/lablgl-$version.tar.gz)
 
-build() {
+derle() {
 	cd ${_name}-$version
 	
 	sed 17d Makefile.config.linux.mdk > Makefile.config	

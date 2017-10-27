@@ -13,7 +13,7 @@ source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$versi
          sddm-0.14.0-consolekit.patch
          ecb903e4.patch)
 
-build() {
+derle() {
 wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20160902.tar.xz
 tar xvf blfs-bootscripts-20160902.tar.xz
 

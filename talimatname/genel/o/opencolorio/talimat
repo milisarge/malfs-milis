@@ -10,7 +10,7 @@ release=1
 
 source=(https://github.com/imageworks/OpenColorIO/archive/v$version.tar.gz)
 
-build() {
+derle() {
 cd OpenColorIO-$version
 mkdir build
 cd build

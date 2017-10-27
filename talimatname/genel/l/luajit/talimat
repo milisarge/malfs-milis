@@ -8,7 +8,7 @@ version=2.0.4
 release=1
 source=(http://luajit.org/download/LuaJIT-$version.tar.gz)
 
-build() {
+derle() {
   cd LuaJIT-$version
   sed -i 's/PREFIX= \/usr\/local/\PREFIX= \/usr/' Makefile
   make

@@ -10,7 +10,7 @@ _name=pygeoip
 
 source=( https://pypi.python.org/packages/source/p/${_name}/${_name}-$version.tar.gz)
 
-build() {
+derle() {
 cd ${_name}-$version
 python setup.py build
 python setup.py install --optimize=1 --root=$PKG

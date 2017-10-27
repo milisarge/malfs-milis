@@ -8,7 +8,7 @@ version=15.5.0
 release=1
 source=(http://pypi.python.org/packages/source/T/Twisted/Twisted-$version.tar.bz2)
 
-build() {
+derle() {
 	cd Twisted-$version
 	/usr/bin/python2 setup.py install --root=$PKG
 }

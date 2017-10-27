@@ -9,7 +9,7 @@ version=2.17
 release=1
 source=( http://xorg.freedesktop.org/archive/individual/data/${_name}/${_name}-$version.tar.bz2)
 
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-xkb-rules-symlink=xorg
 make

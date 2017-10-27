@@ -9,7 +9,7 @@ _version=3.19
 release=1
 source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${_version}/$name-$version.tar.xz)
 
-build() {
+derle() {
   cd $name-$version
   tamir_docbookxml
   ./configure --prefix=/usr        \

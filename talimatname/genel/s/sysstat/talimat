@@ -8,7 +8,7 @@ version=11.1.8
 release=1
 source=(http://perso.wanadoo.fr/sebastien.godard/sysstat-11.1.8.tar.xz)
  
-build() {
+derle() {
 
 cd $name-$version
 	   

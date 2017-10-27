@@ -10,7 +10,7 @@ source=(https://dl-ssl.google.com/android/repository/platform-tools_$version-lin
          license.html
          source.properties)
 
-build() {
+derle() {
   install -Dm644 $SRC/license.html usr/share/licenses/$name/license.html
   cd $PKG
   mkdir -p opt etc/profile.d

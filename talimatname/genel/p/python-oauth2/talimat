@@ -10,7 +10,7 @@ release=1
 source=(
 https://pypi.python.org/packages/source/o/oauth2/oauth2-$version.tar.gz)
 
-build() {
+derle() {
     cd oauth2-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

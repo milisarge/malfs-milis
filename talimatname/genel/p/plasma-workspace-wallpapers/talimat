@@ -12,7 +12,7 @@ source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
 _name=plasma-workspace-wallpapers
 release=1
 
-build() {
+derle() {
 cd $name-$version
 cmake -DCMAKE_BUILD_TYPE=Release  \
       -DCMAKE_INSTALL_PREFIX=/usr \

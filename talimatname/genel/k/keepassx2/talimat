@@ -8,7 +8,7 @@ version=2.0.3
 release=1
 source=(https://github.com/keepassx/keepassx/archive/$version.tar.gz)
 
-build() {
+derle() {
 	
 	pushd */
 	sed -r 's|(keepassx)|\12|g' -i CMakeLists.txt share/linux/keepassx.desktop

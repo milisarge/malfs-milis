@@ -8,7 +8,7 @@ version=0.12.1
 release=1
 source=(https://crux.nu/~tek/${name}-${version}.tar.xz)
 
-build() {
+derle() {
   cd $name-$version
   make EXTRA_CFLAGS="-Os"
   install -D src/efibootmgr $PKG/usr/sbin/efibootmgr

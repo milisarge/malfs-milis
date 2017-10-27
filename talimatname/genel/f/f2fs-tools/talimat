@@ -9,7 +9,7 @@ release=1
 
 source=(https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	autoreconf -fi
 	./configure --prefix=/usr --sbindir=/usr/bin

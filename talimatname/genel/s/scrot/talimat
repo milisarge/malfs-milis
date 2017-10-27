@@ -9,7 +9,7 @@ release=1
 
 source=("http://scrot.sourcearchive.com/downloads/0.8-17/scrot_0.8.orig.tar.gz")
         
-build() {
+derle() {
   cd $SRC/$name-0.8
   ./configure --prefix=/usr \
               --mandir=/usr/share/man

@@ -9,7 +9,7 @@ release=1
 source=(http://ftp.gnu.org/pub/gnu/clisp/latest/$name-$version.tar.bz2
 		Makefile-R.yama)
 
-build() {
+derle() {
 
    cd $name-$version
 

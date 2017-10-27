@@ -8,7 +8,7 @@ version=1.4
 release=1
 source=( http://sourceforge.net/projects/kaosx/files/sources/grub-themes/$name-$version.zip)
 
-build() {
+derle() {
 cd $SRC
 
 mkdir -p $PKG/usr/share/grub/themes

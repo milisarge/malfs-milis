@@ -7,7 +7,7 @@ name=libkcddb
 version=26160902
 release=1
 
-build() {
+derle() {
    git clone git://anongit.kde.org/libkcddb.git
    mkdir build
    cd build

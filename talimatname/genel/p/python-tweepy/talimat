@@ -10,7 +10,7 @@ release=1
 source=(
 http://pypi.python.org/packages/source/t/tweepy/tweepy-$version.tar.gz)
 
-build() {
+derle() {
     cd tweepy-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

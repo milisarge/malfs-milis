@@ -8,7 +8,7 @@ version=0.8.7
 release=1
 source=(https://github.com/Guake/$name/archive/$version.tar.gz)
 
-build() {
+derle() {
 	# Python2 fix
 	cd $name-$version
 	sed -i 's|/usr/bin/env python|/usr/bin/python2|' src/guake/prefs.py

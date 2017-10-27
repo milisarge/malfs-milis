@@ -12,7 +12,7 @@ http://downloads.sourceforge.net/sourceforge/wvware/$name-$version.tar.gz
 libwmf.0.2.8.4-libpng-1.5.patch
 libwmf.0.2.8.4-useafterfree.patch)
 
-build(){
+derle(){
     cd $name-$version
     patch -p1 -i $SRC/libwmf.0.2.8.4-libpng-1.5.patch
     patch -p1 -i $SRC/libwmf.0.2.8.4-useafterfree.patch

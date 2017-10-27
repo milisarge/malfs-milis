@@ -11,7 +11,7 @@ source=(http://www.galago-project.org/files/releases/source/notify-python/notify
 	http://downloads.nutyx.org/files/patchs/$name/python-notify-0.1.1-fix-gtk-symbols-1.patch
 	http://downloads.nutyx.org/files/patchs/$name/libnotify07.patch)
 
-build() {
+derle() {
 	cd notify-python-$version
 	patch  -p1 < $SRC/libnotify07.patch
 	patch -Np1 -i ../python-notify-0.1.1-fix-gtk-symbols-1.patch

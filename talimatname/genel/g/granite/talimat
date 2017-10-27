@@ -8,7 +8,7 @@ version=0.4.1
 release=1
 source=(https://github.com/elementary/granite/archive/0.4.1.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
   cd granite-${version}
 
   if [[ -d build ]]; then

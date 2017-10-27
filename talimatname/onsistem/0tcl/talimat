@@ -1,7 +1,7 @@
 version=8.6.4
 source=( http://sourceforge.net/projects/tcl/files/Tcl/$version/tcl-core${version}-src.tar.gz)
 
-build()
+derle()
 {
 cd tcl$version
 

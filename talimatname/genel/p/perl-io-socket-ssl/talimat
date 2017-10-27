@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-$version.tar.gz)
 
-build() {
+derle() {
 cd IO-Socket-SSL-$version
 yes | perl Makefile.PL INSTALLDIRS=vendor
 make

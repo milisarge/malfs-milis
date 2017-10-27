@@ -13,7 +13,7 @@ source=(https://www.lua.org/ftp/lua-$version.tar.gz
         lua.pc
         LICENSE)
         
-build() {
+derle() {
 
 	cd $SRC/lua-$version
 	patch -p1 -i ../liblua.so.patch

@@ -8,7 +8,7 @@ version=0.10.0
 release=1
 source=(https://pypi.python.org/packages/a3/ea/84a41e03f1ab14fb314c8bcf1c451090efa14c5cdfb9797d1079f502b54e/thrift-0.10.0.zip)
 
-build() {
+derle() {
 	cd "thrift-${version}" 
 	python3 setup.py install --root=$PKG --optimize=1
 }

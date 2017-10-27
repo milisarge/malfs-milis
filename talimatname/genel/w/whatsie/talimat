@@ -8,7 +8,7 @@ version=2.1.0
 release=1
 source=(https://github.com/gsantner/whatsie/releases/download/v2.1.0/$name-$version-linux-amd64.deb)
 
-build() {
+derle() {
   ar x $name-$version-linux-amd64.deb
   bsdtar -xf data.tar.gz -C "$PKG/"
   mkdir -p "$PKG/usr/bin/"

@@ -10,7 +10,7 @@ release=1
 #source=(http://pypi.python.org/packages/source/p/pylint/pylint-${version}.tar.gz)
 source=()
 
-build() {
+derle() {
     git clone https://github.com/PyCQA/pylint.git
     cd pylint
     python3 setup.py check

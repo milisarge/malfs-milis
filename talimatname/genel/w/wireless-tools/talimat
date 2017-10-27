@@ -9,7 +9,7 @@ release=1
 
 source=(  http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.$version.tar.gz)
 
-build() {
+derle() {
 cd wireless_tools.$version
 make
 mkdir -p $PKG/usr/{sbin,lib,include,share/man}

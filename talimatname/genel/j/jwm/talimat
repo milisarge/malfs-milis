@@ -8,7 +8,7 @@ version=2.3.5
 release=1
 source=(http://joewing.net/projects/jwm/releases/$name-$version.tar.xz $name.desktop $name.readme)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --disable-confirm \

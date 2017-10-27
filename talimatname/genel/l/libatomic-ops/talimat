@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.ivmaisoft.com/_bin/atomic_ops//libatomic_ops-$version.tar.gz)
 
-build() {
+derle() {
 cd libatomic_ops-$version
 sed -i 's#pkgdata#doc#' doc/Makefile.am 
 autoreconf -fi

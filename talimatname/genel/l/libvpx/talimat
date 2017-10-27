@@ -8,7 +8,7 @@ version=1.5.0
 release=1
 
 source=(http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-$version.tar.bz2)
-build() {
+derle() {
 cd $name-$version
 sed   -e 's/cp -p/cp/'       \
       -i build/make/Makefile 

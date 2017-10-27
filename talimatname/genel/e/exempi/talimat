@@ -8,7 +8,7 @@ version=2.2.2
 release=1
 source=( http://libopenraw.freedesktop.org/download/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 
 ./configure \

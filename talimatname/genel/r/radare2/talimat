@@ -8,7 +8,7 @@ version=1.5.0
 release=1
 source=(https://github.com/radare/radare2/archive/$version.tar.gz)
 
-build() {
+derle() {
   cd ${name}-${version}
 
   ./configure --prefix=/usr \

@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.twaren.net/Unix/GNU/gnu/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr \
 		--with-xml-prefix=/usr \

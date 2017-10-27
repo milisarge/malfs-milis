@@ -9,7 +9,7 @@ release=1
 source=(ftp://ftp.proftpd.org/distrib/source/$name-$version.tar.gz
 		proftpd.conf)
  
-build() {
+derle() {
 	
 cd $name-$version
 

@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/P/PE/PERLER/Crypt-OpenSSL-RSA-$version.tar.gz)
 
-build() {
+derle() {
 cd Crypt-OpenSSL-RSA-$version
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make

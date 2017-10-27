@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.wavpack.com/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --enable-mmx \

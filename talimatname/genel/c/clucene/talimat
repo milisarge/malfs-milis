@@ -9,7 +9,7 @@ release=1
 source=(http://downloads.sourceforge.net/clucene/$name/$name-core-$version.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-contribs_lib-1.patch)
 
-build() {
+derle() {
         cd $name-core-$version
         patch -Np1 -i ../$name-$version-contribs_lib-1.patch &&
         mkdir build

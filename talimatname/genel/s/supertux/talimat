@@ -8,7 +8,7 @@ version=0.5.1
 release=1
 source=(https://github.com/SuperTux/supertux/releases/download/v$version/SuperTux-v$version-Source.tar.gz)
     
-build() {
+derle() {
 	cd SuperTux-v$version-Source
 	cmake . \
       -DCMAKE_INSTALL_PREFIX=/usr \

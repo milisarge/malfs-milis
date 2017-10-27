@@ -10,7 +10,7 @@ release=1
 source=(ftp://ftp.debian.org/debian/pool/main/w/$name/${name}_$version.tar.xz)
 
 
-build() {
+derle() {
 cd $name-$version
 make prefix=/usr 
 make prefix=/usr BASEDIR=$PKG install-whois

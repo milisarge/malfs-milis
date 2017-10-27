@@ -9,7 +9,7 @@ release=2
 source=(http://www.squid-cache.org/Versions/v3/3.5/$name-$version.tar.xz
         squid_servisi)
 
-build () {
+derle() {
     cd $name-$version
 
     ./configure --prefix=/usr \

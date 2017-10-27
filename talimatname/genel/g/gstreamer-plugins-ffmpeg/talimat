@@ -10,7 +10,7 @@ _name=gst-ffmpeg
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.bz2
 	    http://downloads.nutyx.org/files/patchs/$name/h264_qpel_mmx.patch)
 
-build() {
+derle() {
 unset CFLAGS
 unset CXXFLAGS
 

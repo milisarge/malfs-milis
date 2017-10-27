@@ -9,7 +9,7 @@ release=1
 
 source=(http://fossies.org/linux/misc//sane-backends-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-backends-$version
 
 	./configure --prefix=/usr \

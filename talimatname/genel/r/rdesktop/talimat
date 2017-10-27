@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz
 	rdesktop-send_physical_buttons.diff)
 
-build() {
+derle() {
 	cd $name-$version
 	 patch -i $SRC/rdesktop-send_physical_buttons.diff 
 

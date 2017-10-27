@@ -9,7 +9,7 @@ release=1
 
 source=( https://github.com/LMDB/lmdb/archive/LMDB_$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-LMDB_$version
 	cd libraries/liblmdb
 	make

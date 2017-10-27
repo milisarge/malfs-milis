@@ -9,7 +9,7 @@ release=1
 
 source=(https://movit.sesse.net/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr
   make

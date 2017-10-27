@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/pypa/setuptools_scm/archive/v$version.tar.gz)
 
-build() {
+derle() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=$version
 	cd "$SRC"/setuptools_scm-$version
 	python3 setup.py build

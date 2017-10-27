@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-HMAC-$version.tar.gz)
 
-build() {
+derle() {
 cd Digest-HMAC-$version
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make

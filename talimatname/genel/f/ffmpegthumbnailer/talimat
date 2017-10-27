@@ -8,7 +8,7 @@ version=2.2.0
 release=2
 source=(https://github.com/dirkvdb/$name/archive/$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	mkdir -p build
 	cd build

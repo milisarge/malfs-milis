@@ -8,7 +8,7 @@ version=1.0
 release=1
 source=(https://kaynaklar.milislinux.org/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cp -r $SRC/usr $PKG/ 
 	cp -r $SRC/opt $PKG/
 }

@@ -11,7 +11,7 @@ release=1
 source=( http://downloads.sourceforge.net/openjpeg.mirror/${_name}-$version.tar.gz )
 
 
-build() {
+derle() {
 	cd openjpeg-$version
 	mkdir -v build
 	cd build

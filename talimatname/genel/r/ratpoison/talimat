@@ -11,7 +11,7 @@ source=(http://savannah.nongnu.org/download/$name/$name-$version.tar.xz
 $name.desktop
 $name.README)
 
-build(){
+derle(){
     cd $name-$version
     sed -i 's|PRINT_ERROR (("XGetWMName|PRINT_DEBUG (("XGetWMName|' src/manage.c
     ./configure --prefix=/usr

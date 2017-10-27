@@ -8,7 +8,7 @@ version=0.5.8
 release=1
 source=(http://gondor.apana.org.au/~herbert/$name/files/$name-$version.tar.gz)
 
-build(){
+derle(){
 cd $name-$version
 ./configure --bindir=/bin \
 --mandir=/usr/share/man

@@ -9,7 +9,7 @@ release=1
 
 source=(http://liba52.sourceforge.net/files/a52dec-$version.tar.gz)
 
-build() {
+derle() {
 	cd a52dec-$version
 	./configure --prefix=/usr \
             --mandir=/usr/share/man \

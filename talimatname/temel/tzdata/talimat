@@ -8,7 +8,7 @@ version=2016a
 release=1
 
 source=(http://www.iana.org/time-zones/repository/releases/$name$version.tar.gz)
-build() {
+derle() {
 timezones=('africa' 'antarctica' 'asia' 'australasia'
            'europe' 'northamerica' 'southamerica'
            'pacificnew' 'etcetera' 'backward'

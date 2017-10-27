@@ -10,7 +10,7 @@ source=(
 https://github.com/downloads/naihe2010/apvlv/$name-$version-Source.tar.gz
 $name.desktop)
 
-build(){
+derle(){
     cd $name-$version-Source
     mkdir -p build
     cd build

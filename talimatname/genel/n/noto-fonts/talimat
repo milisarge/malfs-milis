@@ -10,7 +10,7 @@ release=1
 
 source=(https://github.com/googlei18n/noto-fonts/archive/$_commit.zip)
 
-build() {
+derle() {
   mkdir -p $PKG/usr/share/fonts/noto
   install -m644 $name-*/hinted/Noto*.ttf $PKG/usr/share/fonts/noto
 

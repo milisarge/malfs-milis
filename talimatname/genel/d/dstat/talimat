@@ -8,7 +8,7 @@ version=0.7.3
 release=1
 source=(https://github.com/dagwieers/dstat/archive/${version}.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	make DESTDIR=$PKG install
 	make DESTDIR=$PKG docs

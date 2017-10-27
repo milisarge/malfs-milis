@@ -8,7 +8,7 @@ version=0.7
 release=1
 source=(https://nardcore.org/ctunnel/$version/$name-$version.tar.gz)
 
-build(){
+derle(){
     cd $SRC/$name-$version
     sed -i 's/-lgcrypt/-lgcrypt -lgpg-error/' src/Makefile
     make

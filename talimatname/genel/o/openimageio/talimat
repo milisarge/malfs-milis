@@ -10,7 +10,7 @@ release=1
 
 source=(https://github.com/OpenImageIO/oiio/archive/release.zip)
 
-build() {
+derle() {
 
 cd oiio-release
 mkdir build

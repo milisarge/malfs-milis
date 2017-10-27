@@ -8,7 +8,7 @@ version=1.4.0
 release=1
 
 source=(http://download.videolan.org/libdvdcss/$version/libdvdcss-$version.tar.bz2)
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --disable-static \
 --docdir=/usr/share/doc/libdvdcss-$version

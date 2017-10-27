@@ -8,7 +8,7 @@ version=3.04
 release=1
 source=(ftp://ftp.foolabs.com/pub/xpdf/$name-$version.tar.gz)
 
-build() {
+derle() {
     cd $name-$version
 
     sed -i 's/\(s = XmStringCreateLocalized(\)/\1(char *)/g' xpdf/XPDFViewer.cc

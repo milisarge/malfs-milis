@@ -9,7 +9,7 @@ release=1
 source=(http://www.clamav.net/downloads/production/$name-${version%.*}.tar.gz \
 	clamd.conf freshclam.conf clamd freshclam)
 
-build() {
+derle() {
 
 	cd $name-${version%.*}
 	./configure --prefix=/usr \

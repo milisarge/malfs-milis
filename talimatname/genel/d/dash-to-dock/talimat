@@ -8,7 +8,7 @@ version=57
 release=1
 source=()
 
-build() {
+derle() {
 git clone https://github.com/micheleg/dash-to-dock.git
 cd $name
 make

@@ -8,7 +8,7 @@ version=2.92
 release=1
 source=(https://download.transmissionbt.com/files/$name-$version.tar.xz)
 
-build() {
+derle() {
     cd $name-$version
 
     ./configure --prefix=/usr \

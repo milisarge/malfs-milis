@@ -8,7 +8,7 @@ version=6.1.26
 release=1
 source=(http://download.oracle.com/berkeley-db/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 cd build_unix
 ../dist/configure --prefix=/usr \

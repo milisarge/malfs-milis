@@ -9,7 +9,7 @@ version=1
 release=1
 source=()
 
-build() {
+derle() {
 	git clone https://github.com/ilnanny/$_name.git
   cd "${_name}"
   rm {credits,icon-theme.cache,lila-hd-32-px.png,Lila-HD-Icon-theme-3.0-Preview.png,README.md,install,SupportMe}

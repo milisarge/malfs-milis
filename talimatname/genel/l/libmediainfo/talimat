@@ -9,7 +9,7 @@ release=1
 
 source=( http://downloads.sourceforge.net/mediainfo/${name}_${version}.tar.bz2)
 
-build(){
+derle(){
     cd $SRC/MediaInfoLib/Project/GNU/Library
     sh ./autogen
     ./configure --prefix=/usr \

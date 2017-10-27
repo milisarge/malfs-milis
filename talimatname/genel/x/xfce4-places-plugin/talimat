@@ -11,7 +11,7 @@ mounts.patch
 undefined-symbol.patch
 )
 
-build() {
+derle() {
   cd "$name-$version"
   # Disk olmayan diğer bağları göster (örn. NFS)
 

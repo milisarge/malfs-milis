@@ -11,7 +11,7 @@ version=1.15.1
 release=1
 source=(https://rubygems.org/downloads/$_gemname-$version.gem)
 
-build () {
+derle() {
 	cd "$srcdir"
 
 	local _gemdir="$(ruby-${_rubyver} -rubygems -e'puts Gem.default_dir')"

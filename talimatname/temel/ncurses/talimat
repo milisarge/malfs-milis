@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://invisible-island.net/ncurses/ncurses-$version.tar.gz)
 
-build()
+derle()
 {
 cd ncurses-$version
 

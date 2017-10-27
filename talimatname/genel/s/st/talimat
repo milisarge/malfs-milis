@@ -9,7 +9,7 @@ release=1
 
 source=(http://dl.suckless.org/st/$name-$version.tar.gz)
 
-build(){
+derle(){
 	cd $name-$version
 	local file
 	sed \

@@ -9,7 +9,7 @@ release=1
 source=(http://www.dillo.org/download/dillo-$version.tar.bz2
         http://www.dillo.org/Icons/d2_icon3_122x122.png)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --enable-ssl

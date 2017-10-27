@@ -25,7 +25,7 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
         i8042-fix-aliases.patch)
 
 
-build() {
+derle() {
   
   cd "${SRC}/linux-${_basekernel}"
   cp "${SRC}/patch-$version.xz" .

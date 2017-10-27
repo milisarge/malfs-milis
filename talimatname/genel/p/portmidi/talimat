@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.sourceforge.net/project/portmedia/$name/$version/$name-src-$version.zip \
         portmidi-217-build-fix.patch)
 
-build() {
+derle() {
 
 unset MAKEFLAGS
 

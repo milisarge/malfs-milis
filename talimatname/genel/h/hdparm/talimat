@@ -8,7 +8,7 @@ version=9.52
 release=1
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version && make
 	make DESTDIR=$PKG binprefix=/usr install
 }

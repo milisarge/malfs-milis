@@ -9,7 +9,7 @@ release=1
 
 source=(http://curl.haxx.se/download/$name-$version.tar.lzma)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr \
 	--bindir=/bin  \

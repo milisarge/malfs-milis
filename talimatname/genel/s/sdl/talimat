@@ -8,7 +8,7 @@ version=1.2.15
 release=1
 
 source=(http://www.libsdl.org/release/SDL-$version.tar.gz)
-build() {
+derle() {
 cd SDL-$version
 sed -i '/_XData32/s:register long:register _Xconst long:' src/video/x11/SDL_x11sym.h 
 ./configure --prefix=/usr --disable-static 

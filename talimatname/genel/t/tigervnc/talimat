@@ -8,7 +8,7 @@ version=1.6.0
 release=2
 source=(https://github.com/TigerVNC/$name/archive/v$version.tar.gz)
 
-build() {
+derle() {
 	mv $DERLEME_KAYNAKDIZIN/v$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
 	mkdir build
 	cd build

@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.kernel.org/pub/linux/utils/boot/syslinux/$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i "s|win32/syslinux.exe||g" Makefile
 	make || true

@@ -8,7 +8,7 @@ version=1.15.1
 release=1
 source=(https://rubygems.org/downloads/${name#ruby-}-$version.gem)
 
-build () {
+derle() {
 	cd "$SRC"
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
 	HOME="/tmp" GEM_HOME="$_gemdir" 

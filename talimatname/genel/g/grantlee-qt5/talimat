@@ -8,7 +8,7 @@ version=5.1.0
 release=1
 source=(http://downloads.grantlee.org/grantlee-$version.tar.gz)
 
-build() {
+derle() {
   cd grantlee-$version
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \

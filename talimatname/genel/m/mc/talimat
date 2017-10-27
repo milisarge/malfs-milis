@@ -8,7 +8,7 @@ version=4.8.15
 release=1
 
 source=(https://www.midnight-commander.org/downloads/$name-$version.tar.xz)
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --enable-charset  \

@@ -8,7 +8,7 @@ version=0.10.3
 release=1
 source=(http://downloads.sourceforge.net/project/pamsshagentauth/pam_ssh_agent_auth/v$version/pam_ssh_agent_auth-$version.tar.bz2)
 
-build() {
+derle() {
 	cd "$SRC/pam_ssh_agent_auth-$version"
 	./configure --prefix=/usr --with-mantype=man --libexecdir=/usr/lib/security
 	make

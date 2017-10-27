@@ -8,7 +8,7 @@ version=5.2.0
 release=1
 source=(https://github.com/potassco/clingo/archive/v$version.tar.gz::$name-$ersion.tar.gz)
 
-build() {
+derle() {
 	mkdir -p build
 	cd build
 

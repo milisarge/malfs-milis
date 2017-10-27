@@ -9,7 +9,7 @@ release=1
 source=(http://www.dest-unreach.org/$name/download/$name-$version.tar.bz2
 	libressl.patch)
 
-build () {
+derle() {
 	cd $name-$version
 	patch -p1 < $SRC/libressl.patch
 	./configure --prefix=/usr

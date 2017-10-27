@@ -9,7 +9,7 @@ version=0.50.0
 release=1
 source=(ftp://ftp.gnu.org/gnu/aspell/dict/tr/$name-$_version.tar.bz2)
 
-build() {
+derle() {
   cd aspell-tr*
   ./configure
   make

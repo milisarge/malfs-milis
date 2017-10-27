@@ -8,7 +8,7 @@ version=2.0.15
 release=2
 
 source=(http://librdf.org/dist/source/raptor2-$version.tar.gz)
-build() {
+derle() {
 	cd raptor2-$version
 	./configure --prefix=/usr \
 	--disable-static \

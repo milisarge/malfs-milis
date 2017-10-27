@@ -9,7 +9,7 @@ version=0.39.0
 release=1
 source=(http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
 
-build(){
+derle(){
     cd $name-$version
     ./configure --prefix=/usr
     make

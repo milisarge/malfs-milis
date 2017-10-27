@@ -10,7 +10,7 @@ release=1
 source=(http://ranger.nongnu.org/$name-$version.tar.gz
 )
 
-build() {
+derle() {
     cd $name-$version
     python3 setup.py install --prefix=/usr --root=$PKG
 }

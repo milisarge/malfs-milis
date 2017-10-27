@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   cmake -DCMAKE_INSTALL_PREFIX=/usr
   make 

@@ -8,7 +8,7 @@ version=f77eef219cdb0caf31b094a9db4668e936abda8c
 release=1
 source=(http://repo.or.cz/amule.git/snapshot/$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-f77eef2
 
 	./configure \

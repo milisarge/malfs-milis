@@ -9,7 +9,7 @@ release=1
 source=(http://sourceforge.net/projects/lsb/files/lsb_release/${version}/${name}-${version}.tar.gz \
          lsbrelease milis-release system-release)
 
-build() {
+derle() {
 	cd ${name}-${version}
     install -Dm 755 lsb_release "$PKG/usr/bin/lsb_release"
 	mkdir -p $PKG/etc/

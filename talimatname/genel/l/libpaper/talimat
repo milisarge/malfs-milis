@@ -10,7 +10,7 @@ release=1
 source=(http://ftp.debian.org/debian/pool/main/libp/libpaper/$name\_$version+nmu4.tar.gz
 		run-parts)
 
-build () {
+derle() {
 
     cd $name-$version+nmu4
     

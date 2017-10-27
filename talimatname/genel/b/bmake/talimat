@@ -8,7 +8,7 @@ version=20150910
 release=1
 source=(http://www.crufty.net/ftp/pub/sjg/bmake-$version.tar.gz)
 
-build(){
+derle(){
     cd $name
     # Add missing bsd.*.mk symlinks (thanks to Arch)
     _links_orig="dep doc init lib links man nls obj own prog subdir"

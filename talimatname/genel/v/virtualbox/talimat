@@ -20,7 +20,7 @@ source=(http://download.virtualbox.org/virtualbox/$version/VirtualBox-${version}
 	http://download.virtualbox.org/virtualbox/$version/${_name}-${version}-${_release}.vbox-extpack
 	virtualbox.60-vboxdrv.rules)
 
-build() {
+derle() {
 	sh VirtualBox-${version}-${_release}-Linux_${_ARCH}.run --keep --noexec --target $SRC/
 	mkdir -p $PKG/opt/VirtualBox $PKG/etc/vbox $PKG/usr/bin $PKG/etc/udev/rules.d/ \
 	$PKG/usr/share/applications/ $PKG/usr/share/pixmaps/

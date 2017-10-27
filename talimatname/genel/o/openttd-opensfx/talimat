@@ -9,7 +9,7 @@ version=0.2.3
 release=1
 source=(http://bundles.openttdcoop.org/opensfx/releases/opensfx-${version}.zip)
 
-build() {
+derle() {
 	cd ${SRC}/opensfx-${version}
 
 	chmod 0644 *

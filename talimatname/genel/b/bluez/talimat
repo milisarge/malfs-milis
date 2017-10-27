@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
 	    http://www.linuxfromscratch.org/patches/blfs/svn/bluez-$version-obexd_without_systemd-1.patch)
-build() {
+derle() {
 
 cd $name-$version
 patch -Np1 -i ../$name-$version-obexd_without_systemd-1.patch

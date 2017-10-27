@@ -9,7 +9,7 @@ version=0.1.3
 release=1
 source=(http://people.freedesktop.org/~dbn/initd-tools/releases/$name-$version.tar.gz)
 
-build() {
+derle() {
 
 	cd $name-$version
 

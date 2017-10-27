@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.portaudio.com/archives/pa_stable_v${version}.tgz)
 
-build() {
+derle() {
 cd portaudio
 ./configure --prefix=/usr --enable-cxx
 make||make -j1

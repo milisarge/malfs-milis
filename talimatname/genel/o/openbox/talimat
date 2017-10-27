@@ -10,7 +10,7 @@ release=1
 source=(http://openbox.org/dist/openbox/$name-$version.tar.gz \
         openbox.xinitrc)
 
-build()
+derle()
 {
    cd $name-$version
    ./configure --prefix=/usr \

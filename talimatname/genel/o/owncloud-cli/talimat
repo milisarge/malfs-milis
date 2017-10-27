@@ -10,7 +10,7 @@ _name=owncloudclient
 
 source=(https://download.owncloud.com/desktop/stable/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 
 mkdir build
 cd    build

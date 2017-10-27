@@ -8,7 +8,7 @@ version=1.2.8
 release=1
 source=(http://www.libsdl.org/projects/SDL_net/release/SDL_net-$version.tar.gz)
 
-build() {
+derle() {
 	cd SDL_net-$version
 	./configure --prefix=/usr
 	make

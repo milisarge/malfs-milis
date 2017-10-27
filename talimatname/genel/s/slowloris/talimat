@@ -8,7 +8,7 @@ version=0.7
 release=1
 source=(https://raw.githubusercontent.com/llaera/slowloris.pl/master/slowloris.pl)
 
-build() {
+derle() {
   cd "$SRC"
   install -Dm755 "$SRC/slowloris.pl" "$PKG/usr/bin/slowloris"
 }

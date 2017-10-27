@@ -9,7 +9,7 @@ release=1
 
 source=(https://gitlab.com/accounts-sso/signond/repository/archive.tar.bz2)
 
-build() {
+derle() {
 cd $name*
 
 sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro

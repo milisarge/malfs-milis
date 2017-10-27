@@ -10,7 +10,7 @@ release=1
 source=(https://fedorahosted.org/releases/m/l/mlocate/mlocate-${version}.tar.xz 
 		updatedb.conf)
 
-build() {
+derle() {
 	cd ${name}-$version
 	sed -i '/^groupname /s/mlocate/locate/' Makefile.in
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/lib

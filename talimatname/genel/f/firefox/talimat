@@ -11,7 +11,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/$name/releases/$version/source/f
         http://download.cdn.mozilla.net/pub/$name/releases/$version/linux-x86_64/xpi/tr.xpi
         https://github.com/oltulu/milis/raw/master/firefox/mozilla.tar.xz::mozilla-milis.tar.xz)
 
-build() {
+derle() {
 
 cd $name-$version
 # Locale autodetect

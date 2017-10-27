@@ -9,7 +9,7 @@ release=1
 source=(http://ftp.mozilla.org/pub/security/nss/releases/NSS_${version//./_}_RTM/src/$name-$version.tar.gz \
         nss-config.in nss.pc.in nss-util.pc.in nss-softokn.pc.in)
 
-build() {
+derle() {
 	cd $name-$version/
 
 	sed -i nss/coreconf/Linux.mk \

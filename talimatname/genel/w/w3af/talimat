@@ -10,7 +10,7 @@ source=(https://github.com/andresriancho/w3af/archive/${version}.tar.gz
 		w3af.desktop)
 
 
-build() {
+derle() {
   cd "$SRC/w3af-$version"
 
   # Enforce python2

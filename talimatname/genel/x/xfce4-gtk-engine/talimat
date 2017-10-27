@@ -11,7 +11,7 @@ release=2
 
 source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
 
-build() {
+derle() {
 cd ${_name}-$version
 	./configure --prefix=/usr \
 	--enable-gtk3

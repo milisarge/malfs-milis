@@ -10,7 +10,7 @@ release=1
 source=(https://github.com/lxde/$_name/releases/download/$version/$_name-$version.tar.xz)
 
 
-build() {
+derle() {
 	mkdir -v build
 	cd build
 	cmake $SRC/$_name-$version \

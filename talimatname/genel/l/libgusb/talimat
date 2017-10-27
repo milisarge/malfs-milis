@@ -9,7 +9,7 @@ release=1
 
 source=(http://people.freedesktop.org/~hughsient/releases/$name-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --disable-static

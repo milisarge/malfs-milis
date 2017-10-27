@@ -8,7 +8,7 @@ version=1.5.4
 release=1
 source=(http://archive.apache.org/dist/apr/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --with-apr=/usr \

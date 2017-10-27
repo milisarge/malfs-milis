@@ -17,7 +17,7 @@ GOOGLE_API_KEY=AIzaSyBhWJ-j5RXyt5911BMuVen-WuS10mvOnrY
 GOOGLE_DEFAULT_CLIENT_ID=952820686433-mbp5sv9scfj78siq96jlvrem47qgvbi3.apps.googleusercontent.com
 GOOGLE_DEFAULT_CLIENT_SECRET=XU4b-j0Ssy-XkTvSVmiFMvNY
 
-build() {
+derle() {
 	cd $name-$version
 	SLKCFLAGS="-O2 -fPIC"
 	LIBDIRSUFFIX=""

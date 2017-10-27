@@ -8,7 +8,7 @@ version=0.9.8.4
 release=1
 source=(https://github.com/g-truc/glm/archive/$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER_ID=GNU -DCMAKE_CXX_FLAGS=" -std=c++11"
 	make DESTDIR=$PKG install

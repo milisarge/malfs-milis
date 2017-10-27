@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/urho3d/Urho3D/archive/1.6.tar.gz::Urho3D-1.6.tar.gz)
 
-build() {
+derle() {
 	cd Urho3D-1.6
 	mkdir -p "$SRC/Urho3D-$version/build"
     cd "$SRC/Urho3D-$version/build"

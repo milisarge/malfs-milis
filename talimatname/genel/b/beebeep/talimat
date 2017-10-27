@@ -13,7 +13,7 @@ source=(http://netcologne.dl.sourceforge.net/project/${name}/Sources/${name}-cod
         ${name}.desktop
         ${name}_script)
 
-build() {
+derle() {
 	cd beebeep-code-${_version}
 	patch -p1 -i $SRC/phonon.patch
 	cd src && qmake-qt4

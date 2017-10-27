@@ -11,7 +11,7 @@ release=1
 
 source=(http://download.gnome.org/sources/$_name/${version%.*}/$_name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $_name-$version
 	PYTHON=python2 ./configure --prefix=/usr \
 		--disable-gtk-doc \

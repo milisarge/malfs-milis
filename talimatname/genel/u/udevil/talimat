@@ -7,7 +7,7 @@ name=udevil
 version=0.4.4
 release=2
 source=(https://github.com/IgnorantGuru/$name/archive/$version.tar.gz::$name-$version.tar.gz)
-build() {
+derle() {
 	cd udevil-$version
 	./configure --prefix=/usr \
 		--disable-systemd \

@@ -8,7 +8,7 @@ version=3.12
 release=1
 source=(http://pyyaml.org/download/pyyaml/PyYAML-$version.tar.gz)
 
-build() {
+derle() {
 	cd PyYAML-$version
 	python3 setup.py install --root=$PKG
 }

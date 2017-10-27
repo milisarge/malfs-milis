@@ -12,7 +12,7 @@ https://fedorahosted.org/releases/l/o/logrotate/logrotate-$version.tar.gz
 logrotate.conf
 logrotate.README)
 
-build() {
+derle() {
     cd $name-$version
     make WITH_ACL=yes RPM_OPT_FLAGS="$CFLAGS" EXTRA_LDFLAGS="$LDFLAGS"
     make test

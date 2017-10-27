@@ -10,7 +10,7 @@ _name=ktp-filetransfer-handler
 
 source=(http://download.kde.org/stable/applications/$version/src/${_name}-$version.tar.xz)
 
-build() {
+derle() {
   cd ktp-filetransfer-handler-$version
   cmake -DCMAKE_INSTALL_PREFIX=/usr  \
         -DCMAKE_BUILD_TYPE=Release   \

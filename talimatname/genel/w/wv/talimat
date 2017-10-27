@@ -8,7 +8,7 @@ version=1.2.9
 release=1
 
 source=(http://www.abiword.com/downloads/$name/$version/$name-$version.tar.gz)
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --mandir=/usr/share/man
 make

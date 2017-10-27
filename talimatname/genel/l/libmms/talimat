@@ -10,7 +10,7 @@ release=1
 source=(
 http://download.sourceforge.net/libmms/$name-$version.tar.gz)
 
-build(){
+derle(){
     cd $name-$version
     ./configure --prefix=/usr
     make

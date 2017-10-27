@@ -8,7 +8,7 @@ version=git
 release=1
 
 source=(shared-build.patch)
-build() {
+derle() {
 if [ ! -d $DERLEME_KAYNAKDIZIN/$name.git ];then
 	git clone https://github.com/gjedeer/$name.git
 else

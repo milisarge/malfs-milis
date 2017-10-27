@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/beanshell/beanshell/releases/download/$version/bsh-$version.jar)
 
-build() {
+derle() {
   install -m755 -d $PKG/usr/share/java/
   install -D -m644 $SRC/bsh-$version.jar $PKG/usr/share/java/bsh.jar
 }

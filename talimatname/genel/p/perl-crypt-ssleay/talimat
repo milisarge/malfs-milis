@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/CPAN/authors/id/N/NA/NANIS/Crypt-SSLeay-$version.tar.gz)
 
-build() {
+derle() {
 cd Crypt-SSLeay-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

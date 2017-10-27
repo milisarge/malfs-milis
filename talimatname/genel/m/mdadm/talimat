@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.kernel.org/pub/linux/utils/raid/$name/$name-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 sed -i 's/Wall -Werror/Wall/' Makefile
 make

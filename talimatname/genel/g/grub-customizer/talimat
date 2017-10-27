@@ -9,7 +9,7 @@ release=1
 source=(https://launchpad.net/grub-customizer/5.0/${version}/+download/grub-customizer_${version}.tar.gz
 		grub.cfg)
 
-build() {
+derle() {
   cd $name-$version
   cmake -DCMAKE_INSTALL_PREFIX=/usr .&& make
   make install DESTDIR=${PKG} || return 1

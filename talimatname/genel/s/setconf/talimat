@@ -8,7 +8,7 @@ version=0.7.4
 release=1
 source=(http://setconf.roboticoverlords.org/$name-$version.tar.xz)
 
-build () {
+derle() {
 	cd "$name-$version"
 
 	install -Dm755 "$name.py" "$PKG/usr/bin/$name"

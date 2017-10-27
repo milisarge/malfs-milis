@@ -9,7 +9,7 @@ release=1
 source=(http://www.quut.com/$name/$name-$version.tar.gz
         gsm.patch)
 
-build() {
+derle() {
   cd $name-*
   patch -Np0 -i $SRC/gsm.patch
   CFLAGS="${CFLAGS} -fPIC"

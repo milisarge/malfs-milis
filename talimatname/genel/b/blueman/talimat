@@ -8,7 +8,7 @@ version=2.0.5
 release=1
 source=(https://github.com/blueman-project/blueman/releases/download/2.0.5/$name-$version.tar.xz::$name-$version.tar.xz)
 
-build() {
+derle() {
     cd "${SRC}/${name}-${version}"
     NOCONFIGURE=1 ./autogen.sh
     export PYTHON=/usr/bin/python2

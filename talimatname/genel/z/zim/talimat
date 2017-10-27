@@ -9,7 +9,7 @@ release=1
 
 source=(http://zim-wiki.org/downloads/$name-$version.tar.gz)
 
-build() {
+derle() {
     cd $name-$version
     for file in zim/inc/xdot.py; do
         sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file

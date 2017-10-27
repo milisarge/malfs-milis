@@ -9,7 +9,7 @@ release=1
 source=(http://ftp.debian.org/debian/pool/main/h/heirloom-$name/heirloom-mailx_12.5.orig.tar.gz
 		http://www.linuxfromscratch.org/patches/blfs/svn/heirloom-$name-12.5-fixes-1.patch )
  
-build() {
+derle() {
 
 cd heirloom-$name-$version
 

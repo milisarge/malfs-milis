@@ -8,7 +8,7 @@ version=5.1.3
 release=1
 source=(http://feedparser.googlecode.com/files/$name-$version.tar.bz2)
 
-build() {
+derle() {
   cd $name-$version
   python setup.py install --root=$PKG
 }

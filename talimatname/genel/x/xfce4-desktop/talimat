@@ -12,7 +12,7 @@ release=1
 
 source=(http://archive.xfce.org/src/xfce/${_name}/4.12/${_name}-$version.tar.bz2)
 
-build() {
+derle() {
 cd ${_name}-$version
 #duvar kagidi yuklemek icin
 #sed -i "s/xfce-blue.jpg/milis.jpg/" common/xfdesktop-common.h

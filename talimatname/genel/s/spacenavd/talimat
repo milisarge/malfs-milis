@@ -9,7 +9,7 @@ release=1
 
 source=(https://freefr.dl.sourceforge.net/project/spacenav/spacenav%20daemon/spacenavd%20$version/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd ${name}-${version}
 	./configure --prefix=/usr \
 	--disable-debug

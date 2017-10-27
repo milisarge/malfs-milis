@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.sourceforge.net/nfs/$name-$version.tar.bz2)
 run=(rpcbind)
 
-build() {
+derle() {
 source  /etc/blfs-bootscripts
 wget \
 http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

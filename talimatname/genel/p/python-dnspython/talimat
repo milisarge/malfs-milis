@@ -10,7 +10,7 @@ release=1
 source=(
 http://www.dnspython.org/kits/$version/dnspython-$version.tar.gz)
 
-build() {
+derle() {
     cd dnspython-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

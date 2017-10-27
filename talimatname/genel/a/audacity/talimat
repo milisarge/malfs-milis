@@ -8,7 +8,7 @@ version=2.1.1
 release=1
 source=("https://github.com/audacity/audacity/archive/Audacity-${version}.tar.gz"
         'ffmpeg.patch')
-build() {
+derle() {
 
   cd "${SRC}/${name}-Audacity-${version}"
   patch -p1 -i "${SRC}/ffmpeg.patch"

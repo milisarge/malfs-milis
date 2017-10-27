@@ -8,7 +8,7 @@ version=7.1p2
 release=2
 source=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p2.tar.gz)
 
-build() {
+derle() {
 
 cd openssh-$version/contrib
 make gnome-ssh-askpass2

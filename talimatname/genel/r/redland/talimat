@@ -10,7 +10,7 @@ release=4
 source=(http://download.librdf.org/source/$name-$version.tar.gz
 		rpath.diff)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 	--enable-release \

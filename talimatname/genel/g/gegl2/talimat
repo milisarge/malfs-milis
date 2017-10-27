@@ -12,7 +12,7 @@ source=(https://download.gimp.org/pub/gegl/0.2/gegl-$version.tar.bz2
         gegl-0.2.0-lua-5.2.patch
         gegl-0.2.0-remove-src-over-op.patch)
 
-build() {
+derle() {
 	cd gegl-${version}
 	patch -Np1 -i ../gegl-0.2.0-ffmpeg-0.11.patch
 	patch -Np1 -i ../gegl-0.2.0-CVE-2012-4433.patch

@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/F/FL/FLORA/ExtUtils-Depends-$version.tar.gz)
 
-build() {
+derle() {
 	cd ExtUtils-Depends-$version
 	perl Makefile.PL
 	make

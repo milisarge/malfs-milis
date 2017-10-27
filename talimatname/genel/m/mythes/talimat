@@ -9,7 +9,7 @@ release=1
 
 source=(https://downloads.sourceforge.net/project/hunspell/MyThes/1.2.4/mythes-1.2.4.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr --disable-static
   make

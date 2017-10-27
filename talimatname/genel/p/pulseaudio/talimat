@@ -10,7 +10,7 @@ release=1
 source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz
 		pulseaudio.desktop)
 
-build() {
+derle() {
 unset MAKEFLAGS
 cd pulseaudio-$version
 

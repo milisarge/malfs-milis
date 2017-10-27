@@ -11,7 +11,7 @@ _version=$(printf "%i%.2i%.2i%.2i" ${version//./ })
 
 source=(http://www.sqlite.org/2017/sqlite-autoconf-${_version}.tar.gz)
 
-build() {
+derle() {
   cd sqlite-autoconf-$_srcver
   export CPPFLAGS="$CPPFLAGS -DSQLITE_ENABLE_COLUMN_METADATA=1 \
                              -DSQLITE_ENABLE_UNLOCK_NOTIFY \

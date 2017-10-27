@@ -8,7 +8,7 @@ version=3.2.5
 release=1
 source=(http://bitbucket.org/eigen/eigen/get/$version.tar.bz2)
 
-build() {
+derle() {
 	cd eigen-eigen-*
 	mkdir build
 	cd build

@@ -8,7 +8,7 @@ version=5.49
 release=1
 source=(http://sillycycle.com/xlock/recent-releases/xlockmore-$version.tar.xz)
 
-build(){
+derle(){
   cd $name-$version
   ./configure --prefix=/usr --enable-vtlock --enable-syslog \
         --enable-multiple-user --enable-multiple-root \

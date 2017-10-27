@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/postgres/pgadmin3/archive/REL-1_22_2.tar.gz
 		pgadmin3-fix-segfault.patch)
 
-build() {
+derle() {
 	cd $name-REL-1_22_2
 	 bash bootstrap
 	patch -p1 -i $SRC/pgadmin3-fix-segfault.patch

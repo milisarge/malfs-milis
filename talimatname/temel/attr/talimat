@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
 
-build() {
+derle() {
 cd attr-$version
 
 sed -i -e 's|/@pkg_name@|&-@pkg_version@|' include/builddefs.in

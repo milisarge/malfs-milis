@@ -10,7 +10,7 @@ release=1
 source=(http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$version/source/$name-$version.source.tar.bz2
 		$name.desktop)
 
-build() {
+derle() {
 export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/thunderbird"
 export PYTHON="/usr/bin/python2"
 

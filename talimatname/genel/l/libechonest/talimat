@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/lfranchi/libechonest/archive/$version.tar.gz)
 
-build() {
+derle() {
   mkdir build
   cd build
   

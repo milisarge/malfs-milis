@@ -10,7 +10,7 @@ release=1
 source=(http://launchpad.net/sni-qt/trunk/$version/+download/sni-qt-$version.tar.bz2
         sni-qt.conf)
 
-build() {
+derle() {
 mkdir build
 
 sed -i '/tests/ d' sni-qt-$version/CMakeLists.txt

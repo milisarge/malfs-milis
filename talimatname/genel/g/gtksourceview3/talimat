@@ -9,7 +9,7 @@ release=1
 _name=gtksourceview
 source=(http://download.gnome.org/sources/${_name}/${version:0:4}/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 	cd ${_name}-$version
 	./configure --prefix=/usr
 	make

@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/Corvusoft/restbed/archive/$version.tar.gz::$name-$version.tar.gz
 		strand.patch)
 
-build() {
+derle() {
   cd "$SRC/$name-$version"
   # Necessary to build against asio 1.10.X
   patch -p1 < "$SRC"/strand.patch

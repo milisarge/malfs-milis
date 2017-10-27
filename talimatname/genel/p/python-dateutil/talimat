@@ -10,7 +10,7 @@ release=1
 source=(
 http://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-$version.tar.gz)
 
-build() {
+derle() {
     cd $name-$version
     python2 setup.py install --prefix=/usr --root=$PKG
     # Düzeltmeler

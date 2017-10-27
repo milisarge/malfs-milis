@@ -9,7 +9,7 @@ version=0.5.3
 release=1
 source=(http://bundles.openttdcoop.org/opengfx/releases/${version}/opengfx-${version}.zip)
 
-build() {
+derle() {
     cd ${SRC}
     tar xvf opengfx-${version}.tar
     cd opengfx-${version}

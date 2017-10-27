@@ -8,7 +8,7 @@ version=0.13.6
 release=1
 source=(http://rtorrent.net/downloads/libtorrent-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
 
   # remove cppunit dependency

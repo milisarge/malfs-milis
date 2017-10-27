@@ -8,7 +8,7 @@ version=0.11.4
 release=1
 source=(https://git.gnome.org/browse/geary/snapshot/$name-$version.tar.xz)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr --disable-schemas-compile --disable-desktop-update --disable-icon-update
   make

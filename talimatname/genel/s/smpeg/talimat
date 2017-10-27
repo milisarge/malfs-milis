@@ -10,7 +10,7 @@ source=(http://ftp.slackware.com/pub/vectorlinux/VL64-7.0/source/sourceVL/smpeg/
 	smpeg-mpegaudiosdl.patch
 	smpeg-0.4.4_m4.patch)
 
-build() {
+derle() {
 	cd smpeg-$version
 	./configure \
 		--prefix=/usr \

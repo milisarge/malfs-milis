@@ -8,7 +8,7 @@ version=2.5.1
 release=1
 source=(https://github.com/sekrit-twc/zimg/archive/release-$version.tar.gz)
 
-build() {
+derle() {
   cd zimg-release-${version}
 
   ./autogen.sh

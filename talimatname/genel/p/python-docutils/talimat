@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/docutils/docutils-$version.tar.gz)
 
-build() {
+derle() {
     cd docutils-$version
     python2 setup.py install --root=$PKG
 }

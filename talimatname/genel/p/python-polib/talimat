@@ -7,7 +7,7 @@ name=python-polib
 version=1.0.4
 release=1
 source=(https://bitbucket.org/izi/polib/downloads/polib-${version}.tar.gz)
-build() {
+derle() {
 cd polib-$version
 python2 setup.py build
 python2 setup.py install --root=$PKG --optimize=1

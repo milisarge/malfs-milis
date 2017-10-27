@@ -9,7 +9,7 @@ release=1
 _version=1.8.0.60
 source=(http://anduin.linuxfromscratch.org/files/BLFS/OpenJDK-${_version}/OpenJDK-${_version}-`uname -m`-bin.tar.xz )
 	
-build() {
+derle() {
 cd OpenJDK*
 install -vdm755 $PKG/opt/OpenJDK-$version-bin
 mv -v * $PKG/opt/OpenJDK-$version-bin 

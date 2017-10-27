@@ -8,7 +8,7 @@ version=0.3.4
 release=1
 source=()
 
-build() {
+derle() {
   git clone git://git.gnome.org/grilo-plugins
   cd $name
  mkdir build

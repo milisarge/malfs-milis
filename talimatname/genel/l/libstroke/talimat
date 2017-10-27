@@ -12,7 +12,7 @@ source=(http://www.etla.net/libstroke/libstroke-${version}fvwm.tar.gz
 		libstroke-0.5.1-m4_syntax.patch
 		libstroke-0.5.1-no_gtk1.patch)
 
-build() {
+derle() {
 	cd ${pkgname}-${pkgver}
 	patch -p1 -i "${srcdir}/libgstroke-Makefile.am.patch"
 	patch -p1 -i "${srcdir}/libstroke-Makefile.am.patch"

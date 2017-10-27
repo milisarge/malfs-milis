@@ -18,7 +18,7 @@ source=(http://downloads.digium.com/pub/asterisk/releases/asterisk-$version.tar.
         build-disable-sounds-en-gsm.patch
 )
 
-build () {
+derle() {
 
     cd asterisk-$version
 

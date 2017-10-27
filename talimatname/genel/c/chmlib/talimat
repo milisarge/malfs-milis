@@ -8,7 +8,7 @@ version=0.40
 release=1
 source=(http://morte.jedrea.com/~jedwin/projects/$name/$name-$version.tar.bz2)
 
-build(){
+derle(){
     cd $name-$version
     ./configure --prefix=/usr \
                 --enable-examples=yes

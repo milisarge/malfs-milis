@@ -11,7 +11,7 @@ source=(https://github.com/OpenMandrivaAssociation/ladspa/raw/master/ladspa_sdk_
        ladspa-fix-memleak-in-plugin-scanning.patch
        ladspa-fallback-ladspa-path.patch)
 
-build() {
+derle() {
 cd ladspa_sdk/src
 
 patch -Np1 -i ../../ladspa-fix-memleak-in-plugin-scanning.patch

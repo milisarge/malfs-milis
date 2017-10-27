@@ -9,7 +9,7 @@ release=1
 
 source=(https://code.soundsoftware.ac.uk/attachments/download/1520/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $SRC/$name-$version
 ./configure --prefix=/usr
 make

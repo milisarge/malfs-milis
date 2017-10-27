@@ -9,7 +9,7 @@ release=1
 source=(http://download.sourceforge.net/blackboxwm/$name-$version.tar.bz2
         $name-$version-include-fix.diff)
 
-build () {
+derle() {
 
     cd $name-$version
     patch -p1 -i $SRC/$name-$version-include-fix.diff

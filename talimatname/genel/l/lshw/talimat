@@ -10,7 +10,7 @@ source=(http://ezix.org/software/files/$name-$version.tar.gz
 		lshw-gtk.desktop
 		lshw-gtk.xpm)
 
-build() {
+derle() {
 	cd $SRC/$name-$version
 	make || return 1
 	make DESTDIR=$PKG install

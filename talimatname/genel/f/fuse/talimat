@@ -8,7 +8,7 @@ version=2.9.4
 release=1
 source=( https://github.com/libfuse/libfuse/releases/download/fuse_2_9_4/fuse-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --disable-static INIT_D_PATH=/tmp/init.d

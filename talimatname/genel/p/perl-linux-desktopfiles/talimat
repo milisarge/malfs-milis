@@ -10,7 +10,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/T/TR/TRIZEN/$_name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $_name-$version
 	perl Build.PL --destdir "$PKG" --installdirs vendor
 	./Build

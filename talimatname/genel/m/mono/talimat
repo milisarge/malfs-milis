@@ -10,7 +10,7 @@ release=1
 source=(http://download.mono-project.com/sources/$name/$name-$version.tar.bz2
 	mono.binfmt.d)
 
-build() {
+derle() {
 	cd $name-${version%.*}
 	./configure --prefix=/usr \
     --sysconfdir=/etc \

@@ -10,7 +10,7 @@ release=1
 
 source=(https://github.com/engla/${_ananame}/archive/master.zip)
 
-build() {
+derle() {
 	cd "${_ananame}-master"
 	export PYTHON=/usr/bin/python2
    ./autogen.sh --prefix=/usr

@@ -8,7 +8,7 @@ version=2.0.23
 release=1
 source=(http://downloads.sourceforge.net/project/sdlgfx/SDL_gfx-$version.tar.gz)
 
-build() {
+derle() {
 	cd SDL_gfx-$version
 	./configure	--prefix=/usr
 	make

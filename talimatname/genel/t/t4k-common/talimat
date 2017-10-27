@@ -12,7 +12,7 @@ source=(http://downloads.sourceforge.net/project/tuxmath/$_name/$_name-$version.
         libpng15.patch)
 
 
-build() {
+derle() {
 	cd $SRC/$_name-$version
 	patch -Np2 -i "$SRC/libpng15.patch"
 	./configure --prefix=/usr 

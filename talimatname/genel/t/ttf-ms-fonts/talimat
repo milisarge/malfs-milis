@@ -13,7 +13,7 @@ source=($_sfpath/andale32.exe $_sfpath/arial32.exe  $_sfpath/arialb32.exe
         $_sfpath/impact32.exe $_sfpath/times32.exe  $_sfpath/trebuc32.exe
         $_sfpath/verdan32.exe $_sfpath/webdin32.exe )
 
-build() {
+derle() {
 	for i in *.exe; do
 	    7z e -y $i;
 	done

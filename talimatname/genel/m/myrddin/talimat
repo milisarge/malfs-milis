@@ -8,7 +8,7 @@ version=0.2.0
 release=1
 source=(https://myrlang.org//releases/$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd mc
 	./configure --prefix="/usr"
 	make

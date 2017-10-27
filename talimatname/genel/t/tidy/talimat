@@ -8,7 +8,7 @@ version=20101110
 release=1
 source=(http://anduin.linuxfromscratch.org/BLFS/$name/$name-cvs\_$version.tar.bz2)
 
-build() {
+derle() {
 
 	cd $name-cvs\_$version
 

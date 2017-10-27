@@ -9,7 +9,7 @@ release=1
 
 source=(http://sourceforge.net/projects/libjpeg-turbo/files/$version/libjpeg-turbo-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 sed -i -e '/^docdir/ s:$:/libjpeg-turbo-1.4.2:' Makefile.in
 

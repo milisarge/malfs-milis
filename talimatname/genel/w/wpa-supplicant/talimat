@@ -9,7 +9,7 @@ release=1
 
 source=(http://hostap.epitest.fi/releases/wpa_supplicant-$version.tar.gz)
 
-build() {
+derle() {
 cd wpa_supplicant-$version
 cat > wpa_supplicant/.config << "EOF"
 CONFIG_BACKEND=file

@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.x.org/contrib/applications/xli.1.16.tar.gz
 	http://downloads.nutyx.org/files/patchs/$name/xli-1.16-makefile-1.patch)
-build() {
+derle() {
 sed -i "s/varargs/stdarg/" rlelib.c
 mv Makefile{.std,}
 patch -Np0 -i xli-1.16-makefile-1.patch

@@ -9,7 +9,7 @@ release=1
 
 source=(http://delta.affinix.com/download/$name/2.0/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	mkdir build
 	cd    build

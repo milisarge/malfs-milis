@@ -9,7 +9,7 @@ release=1
 
 source=()
 
-build(){
+derle(){
 	git clone https://github.com/pcbsd/lumina.git
     cd $SRC/lumina/
     $SRC/lumina/libLumina/make-linux-distro.sh Debian

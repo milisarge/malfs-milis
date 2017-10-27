@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Try-Tiny-$version.tar.gz)
 
-build() {
+derle() {
 cd Try-Tiny-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

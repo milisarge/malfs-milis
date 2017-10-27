@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/V/VI/VIPUL/Digest-Nilsimsa-$version.tar.gz)
 
-build() {
+derle() {
 cd Digest-Nilsimsa-$version
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make

@@ -14,7 +14,7 @@ source=(http://downloads.sourceforge.net/opencvlibrary/$name-$version.zip
 		https://raw.githubusercontent.com/opencv/opencv_3rdparty/a62e20676a60ee0ad6581e217fe7e4bada3b95db/ippicv/ippicv_2017u2_lnx_intel64_20170418.tgz
 		https://github.com/opencv/opencv_contrib/archive/$version.tar.gz::opencv_contrib-$version.tar.gz)
    
-build() {
+derle() {
         cd $name-$version
         
         ipp_surum=ippicv_2017u2_lnx_intel64_20170418.tgz

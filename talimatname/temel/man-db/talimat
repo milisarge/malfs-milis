@@ -9,7 +9,7 @@ release=1
 
 source=(http://savannah.nongnu.org/download/man-db/man-db-$version.tar.xz)
 
-build()
+derle()
 {
 cd man-db-$version
 PKG_CONFIG_PATH="/usr/lib/pkgconfig" ./configure --prefix=/usr \

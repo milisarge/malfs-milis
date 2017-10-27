@@ -8,7 +8,7 @@ version=0.9.1
 release=1
 
 source=(http://archive.xfce.org/src/apps/parole/${version%.*}/parole-$version.tar.bz2)
-build() {
+derle() {
 	cd parole-$version
 	./configure --prefix=/usr
 	make

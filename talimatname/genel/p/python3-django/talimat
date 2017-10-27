@@ -9,7 +9,7 @@ release=1
 
 source=(https://pypi.python.org/packages/c0/31/4bffd9183066eea645430114419c30b030b599320da8246701b81c6a78d2/Django-1.11.2.tar.gz)
 
-build() {
+derle() {
 	cd Django-$version
 	python3 setup.py build
 	python3 setup.py install --prefix=/usr --root=$PKG --optimize=1

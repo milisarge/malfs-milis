@@ -9,7 +9,7 @@ release=1
 
 source=(http://bitmath.org/code/mtdev/mtdev-$version.tar.bz2)
 
-build()
+derle()
 {
 cd $name-$version
 ./configure --prefix=/usr \

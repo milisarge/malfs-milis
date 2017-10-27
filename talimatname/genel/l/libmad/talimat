@@ -14,7 +14,7 @@ source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz
 		optimize.diff)
 
 
-build() {
+derle() {
 	cd ${name}-${version}
 	patch -p1 -i "${SRC}/libmad.patch"
 	patch -p1 -i "${SRC}/amd64-64bit.diff"

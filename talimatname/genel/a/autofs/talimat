@@ -8,7 +8,7 @@ version=5.1.1
 release=1
 source=(http://www.kernel.org/pub/linux/daemons/autofs/v5/$name-$version.tar.xz auto.master)
 
-build() {
+derle() {
 
 	cd $name-$version
 

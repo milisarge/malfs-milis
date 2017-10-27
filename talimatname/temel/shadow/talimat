@@ -9,7 +9,7 @@ release=1
 
 source=( http://pkg-shadow.alioth.debian.org/releases/shadow-$version.tar.xz)
 
-build()
+derle()
 {
 cd shadow-$version
 

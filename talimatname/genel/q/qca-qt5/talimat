@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.kde.org/stable/qca/$version/src/qca-$version.tar.xz)
 
-build() {
+derle() {
 cd qca-$version
 cmake -DCMAKE_INSTALL_PREFIX=/usr   \
       -DBUILD_TESTS=OFF             \

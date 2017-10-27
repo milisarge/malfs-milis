@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/robertdavidgraham/masscan/archive/master.tar.gz::$name-master.tar.gz)
 
 
-build() {
+derle() {
 	cd ${name}-master
 	make
 	make DESTDIR="${PKG}" install

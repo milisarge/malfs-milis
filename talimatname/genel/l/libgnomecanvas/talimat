@@ -9,7 +9,7 @@ release=3.0
 source=(https://download.gnome.org/sources/$name/2.30/$name-$version.tar.bz2
 )
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr --disable-static \
       --enable-glade

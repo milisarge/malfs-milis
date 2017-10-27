@@ -10,7 +10,7 @@ source=(https://downloads.sourceforge.net/project/sbcl/sbcl/1.3.17/sbcl-$version
 		arch-fixes.lisp
 		customize-target-features.lisp)
 
-build() {
+derle() {
   cd "$SRC/$name-$version"
   export CFLAGS+=" -D_GNU_SOURCE -fno-omit-frame-pointer -DSBCL_HOME=/usr/lib/sbcl"
   export GNUMAKE="make"

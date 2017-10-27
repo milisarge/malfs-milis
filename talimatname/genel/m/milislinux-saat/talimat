@@ -10,7 +10,7 @@ source=(kk_milislinux-saat
 		milislinux-saat.xpm
 		milislinux-saat.desktop)
 
-build () {
+derle() {
   install -d "$PKG/usr/share/pixmaps"
   install -d "$PKG/usr/share/applications"
   install -d "$PKG/usr/bin"

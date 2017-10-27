@@ -9,7 +9,7 @@ release=1
 
 source=(http://jfs.sourceforge.net/project/pub/$name-$version.tar.gz)
 
-build() {
+derle() {
 
 cd $name-$version
 sed "s@<unistd.h>@&\n#include <sys/types.h>@g" -i fscklog/extract.c

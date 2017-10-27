@@ -8,7 +8,7 @@ version=4.2.1
 release=1
 source=(https://pypi.python.org/packages/e8/13/d0b0599099d6cd23663043a2a0bb7c61e58c6ba359b2656e6fb000ef5b98/pexpect-$version.tar.gz)
 
-build() {
+derle() {
 	cd "pexpect-$version"
 	python setup.py install --root="$PKG"
 }

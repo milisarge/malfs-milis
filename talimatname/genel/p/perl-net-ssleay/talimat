@@ -10,7 +10,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/M/MI/MIKEM/${_cpanname}-$version.tar.gz)
 
-build() {
+derle() {
 cd ${_cpanname}-$version
 sed -i \
       -e "/\$opts->{optimize} = '-O2 -g';/d" \

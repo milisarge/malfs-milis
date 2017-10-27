@@ -8,7 +8,7 @@ version=4.14.24
 release=1
 source=(https://github.com/rapid7/metasploit-framework/archive/$version.tar.gz)
 
-build () {
+derle() {
 	cd "${name}-framework-$version"
 	bundle config build.nokogiri --use-system-libraries
 	sed 's|git ls-files|find -type f|' -i metasploit-framework.gemspec

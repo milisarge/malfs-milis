@@ -10,7 +10,7 @@ release=1
 
 source=(http://www.thrysoee.dk/editline/libedit-${_version}.tar.gz)
 
-build(){
+derle(){
     cd $name-${_version}
     ./configure --prefix=/usr \
                 --enable-widec

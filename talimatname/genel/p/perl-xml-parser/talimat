@@ -10,7 +10,7 @@ release=2
 source=(http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$version.tar.gz)
 run=(perl)
 
-build() {
+derle() {
 cd XML-Parser-$version
 perl Makefile.PL
 make OPTIMIZE="$CFLAGS"

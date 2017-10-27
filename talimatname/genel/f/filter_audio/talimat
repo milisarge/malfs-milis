@@ -8,7 +8,7 @@ version=master
 release=1
 source=(https://github.com/irungentoo/$name/archive/$version.tar.gz)
 
-build() {
+derle() {
     mv $DERLEME_KAYNAKDIZIN/$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
     cd $name-$version
     make

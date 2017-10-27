@@ -8,7 +8,7 @@ version=1.8.0_131
 release=1
 source=(http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/jre-8u131-linux-x64.tar.gz)
 
-build(){
+derle(){
     cd $name$version
 
     install -d $PKG/usr/{bin,share,lib/$name}

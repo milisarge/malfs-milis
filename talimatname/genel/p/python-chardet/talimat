@@ -9,7 +9,7 @@ version=2.3.0
 release=1
 source=(https://pypi.python.org/packages/source/c/$_name/$_name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $_name-$version
 	/usr/bin/python2 setup.py build
 	/usr/bin/python2 setup.py install --root=$PKG

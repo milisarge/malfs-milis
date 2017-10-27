@@ -9,7 +9,7 @@ version=0.6.4
 release=1
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${version}.tar.gz)
 
-build() {
+derle() {
 	cd "${SRC}/${_name}-${version}" 
 	python setup.py install  --root=$PKG --optimize=1
 }

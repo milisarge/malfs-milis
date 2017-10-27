@@ -8,7 +8,7 @@ version=3.12.0.2
 release=1
 source=(http://downloads.sourceforge.net/project/$name/FileZilla_Client/$version/FileZilla_${version}_src.tar.bz2)
 
-build() {
+derle() {
     cd $name-$version
     ./configure \
         --prefix=/usr \

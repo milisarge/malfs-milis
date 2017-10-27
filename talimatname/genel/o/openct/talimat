@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/OpenSC/openct/archive/openct-$version.tar.gz
 		udev-sleep.patch)
 
-build() {
+derle() {
     cd $name-$name-$version
     patch -p1 -i "${SRC}/udev-sleep.patch"
 	./bootstrap

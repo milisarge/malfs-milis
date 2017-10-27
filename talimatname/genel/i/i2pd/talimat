@@ -10,7 +10,7 @@ source=(https://github.com/PurpleI2P/${name}/archive/${version}.tar.gz
 		i2pd.conf
 		tunnels.conf)
 
-build() {
+derle() {
 	cd $SRC/$name-$version
 	cd build
 	cmake . -Wno-dev \

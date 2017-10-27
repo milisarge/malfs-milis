@@ -11,7 +11,7 @@ source=("http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-$ve
         spamassassin.service 
 	spamassassin-net-dns-01.patch)
 
-build() {
+derle() {
 cd Mail-SpamAssassin-$version
 
 sed -i t/sa_compile.t \

@@ -8,7 +8,7 @@ version=1.4.2
 release=1
 source=(https://github.com/linuxmint/$name/archive/$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version    
     gnome-autogen.sh --prefix="/usr" \
         --localstatedir="/var" \

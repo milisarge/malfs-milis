@@ -10,7 +10,7 @@ release=1
 
 source=(http://php.net/distributions/${_name}-$version.tar.xz)
 
-build () {
+derle() {
 
     cd ${_name}-$version
 

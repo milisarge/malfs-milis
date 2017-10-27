@@ -12,7 +12,7 @@ _name=qt-everywhere-opensource-src-${version}
 source=(http://download.qt.io/official_releases/qt/${version%.*}/$version/single/qt-everywhere-opensource-src-$version.tar.xz
 	    qt5-logo.png)
 
-build() {
+derle() {
 
 cd ${_name}*
 	# Respect system CXX

@@ -8,7 +8,7 @@ version=2.0.20150612
 release=2
 source=(https://github.com/$name/$name/releases/download/20150612/fontforge-20150612.tar.gz)
 
-build() {
+derle() {
         cd $name*
 	rm -rf libltdl
 	rm m4/argz.m4

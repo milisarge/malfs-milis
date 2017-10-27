@@ -8,7 +8,7 @@ version=5.1.12
 release=1
 source=(http://download.gna.org/allegro/allegro-unstable/$version/$name-$version.tar.gz)
 
-build() {
+derle() {
 
     cd $name-$version.0
 

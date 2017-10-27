@@ -8,7 +8,7 @@ version=1.5.0
 release=1
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXrandr-$version.tar.bz2)
 
-build() {
+derle() {
 cd libXrandr-$version
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make

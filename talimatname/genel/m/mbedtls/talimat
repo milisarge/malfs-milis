@@ -9,7 +9,7 @@ release=1
 
 source=(https://tls.mbed.org/download/mbedtls-$version-gpl.tgz)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
 	sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h

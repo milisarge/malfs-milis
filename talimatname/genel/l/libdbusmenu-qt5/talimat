@@ -9,7 +9,7 @@ release=1
 version=0.9.3+16.04.20160218
 source=(http://archive.ubuntu.com/ubuntu/pool/main/libd/$_name/libdbusmenu-qt_$version.orig.tar.gz)
 
-build() {
+derle() {
 cd libdbusmenu-qt-$version
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \

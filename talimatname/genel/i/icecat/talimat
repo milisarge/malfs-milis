@@ -14,7 +14,7 @@ source=(http://ftpmirror.gnu.org/gnuzilla/52.1.0/icecat-$version-gnu1.tar.bz2
 		fix-wifi-scanner.diff
 		no-crmf.diff)
 
-build() {
+derle() {
 
   cd "${SRC}/${name}-${version}"
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk

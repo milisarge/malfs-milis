@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/Crypt-OpenSSL-Random-$version.tar.gz)
 
-build() {
+derle() {
 cd Crypt-OpenSSL-Random-$version
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make

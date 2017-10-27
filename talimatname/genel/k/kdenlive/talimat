@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
 
-build() {
+derle() {
   mkdir -p build
   cd build
   cmake ../$name-$version       \

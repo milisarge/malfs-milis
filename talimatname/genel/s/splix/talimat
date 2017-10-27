@@ -8,7 +8,7 @@ version=2.0.0
 release=1
 source=(splix-deviceID.patch)
 
-build() {
+derle() {
   
 	cd $DERLEME_KAYNAKDIZIN
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$name ];then

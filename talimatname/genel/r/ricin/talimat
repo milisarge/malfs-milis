@@ -9,7 +9,7 @@ version=0.0.7
 release=1
 source=(https://github.com/RicinApp/${_name}/archive/v${version}.tar.gz)
 
-build() {
+derle() {
     cd ${_name}-${version}
     make autogen
     make release

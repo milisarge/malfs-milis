@@ -9,7 +9,7 @@ release=1
 source=(http://www.centerim.org/download/releases/$name-$version.tar.gz
 	   http://downloads.nutyx.org/files/patchs/centerim/$name-$version-gcc-1.patch)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -Np1 -i ../$name-$version-gcc-1.patch
 	./configure --prefix=/usr

@@ -10,7 +10,7 @@ release=1
 source=(
 http://www.cpan.org/authors/id/G/GB/GBARR/TimeDate-$version.tar.gz)
 
-build() {
+derle() {
     cd TimeDate-$version
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1

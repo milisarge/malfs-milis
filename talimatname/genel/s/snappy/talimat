@@ -9,7 +9,7 @@ release=1
 
 source=(http://snappy.googlecode.com/files/$name-$version.tar.gz)
 
-build () {
+derle() {
 cd $name-$version
 CXXFLAGS+=\ -DNDEBUG
 ./configure --prefix=/usr

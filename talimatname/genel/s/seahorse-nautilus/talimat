@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i "s@1.2 1.4 2.0@1.2 1.4 2.0 2.1@" configure
 	 ./configure --prefix=/usr

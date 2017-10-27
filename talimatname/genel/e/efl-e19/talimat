@@ -8,7 +8,7 @@ version=1.15.3
 release=1
 source=(http://download.enlightenment.org/rel/libs/efl/efl-$version.tar.gz)
 
-build()
+derle()
 {
     cd efl-$version 
     ./configure --prefix=/usr \

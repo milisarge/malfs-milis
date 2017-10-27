@@ -10,7 +10,7 @@ release=1
 source=(
 https://pypi.python.org/packages/source/C/CherryPy/CherryPy-$version.tar.gz)
 
-build() {
+derle() {
     cd CherryPy-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

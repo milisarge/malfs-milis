@@ -10,7 +10,7 @@ release=1
 source=(https://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/tr/firefox-$version.tar.bz2
 		firefox.desktop)
  
-build() {
+derle() {
 
   mkdir -p $PKG/usr/bin
   mkdir -p $PKG/usr/share/applications

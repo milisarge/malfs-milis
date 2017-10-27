@@ -8,7 +8,7 @@ version=git
 release=1
 source=()
 
-build() {
+derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/fifth ];then
 		git clone https://github.com/clbr/fifth.git $DERLEME_KAYNAKDIZIN/fifth
 	else

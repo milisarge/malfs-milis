@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/quodlibet/mutagen/archive/release-$version.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-release-$version
 	python2 setup.py install --root=$PKG
 	mkdir -p $PKG/usr/bin

@@ -36,7 +36,7 @@ unpack_source() {
 	export LC_ALL="$SAVED_LC_ALL"
 }
 
-build() {
+derle() {
 
 	cd "${SRC}"/${name}-${version}
 	LC_ALL=C \

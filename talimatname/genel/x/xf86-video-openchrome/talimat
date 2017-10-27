@@ -9,7 +9,7 @@ release=1
 
 source=(http://xorg.freedesktop.org/archive/individual/driver/${name}-${version}.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr
     make

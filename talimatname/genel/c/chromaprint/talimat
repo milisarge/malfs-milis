@@ -8,7 +8,7 @@ version=1.4.2
 release=1
 source=(https://github.com/acoustid/$name/releases/download/v$version/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 cmake \
 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=ON .

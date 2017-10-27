@@ -9,7 +9,7 @@ version=git
 release=1
 source=(rc.connmand)
 
-build() {
+derle() {
 	cd $DERLEME_KAYNAKDIZIN
 
 	if cd $name; then

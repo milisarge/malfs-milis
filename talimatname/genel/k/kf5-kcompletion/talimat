@@ -11,7 +11,7 @@ _version=5.27
 
 source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 cd ${_name}-$version
 
 cmake -DCMAKE_INSTALL_PREFIX=/usr \

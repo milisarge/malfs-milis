@@ -8,7 +8,7 @@ version=1.2.2
 release=1
 source=(https://github.com/ocaml/opam/releases/download/$version/opam-full-$version.tar.gz::$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd "opam-full-$version"
 	./configure --prefix=/usr
 	make -j1 lib-ext all

@@ -15,7 +15,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/38.8.0esr/source/firefox-38
         mozjs38-add-bracket.patch
         mozjs38-1269317.patch)
 
-build() {
+derle() {
   cd mozilla-esr38
   patch -Np1 -i $SRC/mozjs38-fix-tracelogger.patch
   patch -Np1 -i $SRC/mozjs38-shell-version.patch

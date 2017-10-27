@@ -10,7 +10,7 @@ _name=phonon-backend-vlc
 
 source=( http://download.kde.org/stable/phonon/${_name}/$version/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 cd phonon-vlc-$version
 cmake -DCMAKE_BUILD_TYPE=Release     \
       -DCMAKE_SKIP_RPATH=ON          \

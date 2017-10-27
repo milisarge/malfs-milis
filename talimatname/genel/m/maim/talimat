@@ -8,7 +8,7 @@ version=4.4.62
 release=1
 source=(https://github.com/naelstrof/maim/archive/v$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	cmake -DJPEG_INCLUDE_DIR:PATH=C:/MinGW/include/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	make

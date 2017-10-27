@@ -9,7 +9,7 @@ release=1
 
 source=(http://tango.freedesktop.org/releases/$name-$version.tar.gz)
 
-build()
+derle()
 {
 cd $name-$version
 ./configure --prefix=/usr

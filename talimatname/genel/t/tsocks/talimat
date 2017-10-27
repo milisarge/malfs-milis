@@ -11,7 +11,7 @@ GIT_COMMIT=be36c83a7326c75123fa019a4cb53792ecd8f689
 source=(https://github.com/Elysion-tcfa/tsocks/archive/${GIT_COMMIT}.tar.gz
 		fix-mkinstalldirs.patch)
 
-build(){
+derle(){
 	cd "${SRC}/tsocks-${GIT_COMMIT}"
 	export CPPFLAGS=
 	patch -p1 < ../fix-mkinstalldirs.patch

@@ -9,7 +9,7 @@ version=0.9.0
 release=1
 source=(https://pypi.org/packages/source/s/${_name}/${_name}-${version}.tar.gz)
 
-build() {
+derle() {
 	cd "${SRC}/${_name}-${version}" 
 	python3 setup.py build
 	python3 setup.py install  --root=$PKG --optimize=1

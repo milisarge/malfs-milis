@@ -9,7 +9,7 @@ release=1
 source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/$name-$version.tgz
 	$name-config.patch slapd bdb.yama)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -p0 -i $SRC/$name-config.patch
 	patch -p0 -i $SRC/bdb.yama

@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/spanezz/nodm/archive/0.13.tar.gz::$name-$version.tar.gz
 		nodm.conf)
 
-build() {
+derle() {
 	cd "$SRC/$name-$version"
 	./autogen.sh
 	./configure --prefix=/usr/

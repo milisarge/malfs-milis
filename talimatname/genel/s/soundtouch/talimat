@@ -7,7 +7,7 @@ name=soundtouch
 version=1.9.2
 release=1
 source=(http://www.surina.net/soundtouch/$name-$version.tar.gz)
-build() {
+derle() {
 cd $name
 ./bootstrap
 ./configure --prefix=/usr \

@@ -9,7 +9,7 @@ release=1
 
 source=(http://netfilter.org/projects/nftables/files/nftables-$version.tar.bz2)
 
-build(){
+derle(){
     cd $name-$version
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \

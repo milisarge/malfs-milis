@@ -1,7 +1,7 @@
 version=1.28
 source=(http://ftp.gnu.org/gnu/tar/tar-$version.tar.xz)
 
-build()
+derle()
 {
 cd tar-$version
 ./configure --prefix=/tools

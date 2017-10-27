@@ -8,7 +8,7 @@ version=1.1-2103-g69a8b3c
 release=1
 source=(https://github.com/cisco/$name/archive/v$version.zip)
 
-build() {
+derle() {
 	cd ${name}-${version##*-g}*
 
 	make

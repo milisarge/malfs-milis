@@ -9,7 +9,7 @@ release=2
 
 source=(http://anduin.linuxfromscratch.org/BLFS/okular/okular-15.12.1+df0c412.tar.xz )
 
-build() {
+derle() {
 #  git clone -b frameworks git://anongit.kde.org/okular.git
   cd $name-$version
   cmake -DCMAKE_BUILD_TYPE=Release   \

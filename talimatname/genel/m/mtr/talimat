@@ -8,7 +8,7 @@ version=0.87
 release=1
 source=(ftp://ftp.bitwizard.nl/mtr/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 
 	./configure \

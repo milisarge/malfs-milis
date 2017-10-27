@@ -9,7 +9,7 @@ release=1
 
 source=(https://projects.universe-factory.net/attachments/download/85/${name}-${version}.tar.xz)
 
-build() {
+derle() {
 	mkdir -p "build-${version}"
 	cd "build-${version}"	
 	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr "../${name}-${version}"

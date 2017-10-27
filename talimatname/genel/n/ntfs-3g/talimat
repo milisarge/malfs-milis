@@ -8,7 +8,7 @@ version=2015.3.14
 release=1
 
 source=(http://tuxera.com/opensource/${name}_ntfsprogs-$version.tgz)
-build() {
+derle() {
 cd ${name}_ntfsprogs-$version
 ./configure --prefix=/usr \
 --disable-static 

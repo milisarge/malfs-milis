@@ -9,7 +9,7 @@ release=1
 source=(http://llvm.org/releases/$version/{llvm,cfe}-$version.src.tar.xz \
   llvm-config.h)
 
-build() {
+derle() {
   mv cfe-$version.src llvm-$version.src/tools/clang
 
   cd llvm-$version.src

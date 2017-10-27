@@ -11,7 +11,7 @@ source=(https://github.com/nitroshare/nitroshare-desktop/archive/$version.tar.gz
         https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/aboutdialog.cpp
         https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/tr.ts::$name-tr.ts)
 
-build() {
+derle() {
    mv $name-tr.ts $name-desktop-$version/src/data/ts/tr.ts
    mv aboutdialog.cpp $name-desktop-$version/src/application/
    cd $name-desktop-$version

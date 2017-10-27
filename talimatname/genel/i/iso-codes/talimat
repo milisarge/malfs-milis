@@ -8,7 +8,7 @@ version=3.65
 release=1
 source=(http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr
 make

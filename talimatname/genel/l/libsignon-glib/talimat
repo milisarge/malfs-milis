@@ -11,7 +11,7 @@ PKGMK_KEEP_SOURCES="no"
 
 source=(https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.gz)
 
-build() {
+derle() {
 cd libsignon-glib*
   ./autogen.sh
   ./configure --prefix=/usr        \

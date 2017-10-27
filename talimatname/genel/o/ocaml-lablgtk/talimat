@@ -9,7 +9,7 @@ version=2.18.5
 release=1
 source=(https://forge.ocamlcore.org/frs/download.php/1627/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd ${_name}-$version
 	export LD_LIBRARY_PATH=/usr/lib/ocaml/stublibs/:/usr/lib/ocaml/:${LD_LIBRARY_PATH}
 	

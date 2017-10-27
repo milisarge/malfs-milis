@@ -8,7 +8,7 @@ version=1.03
 release=1
 source="http://www.lzop.org/download/$name-$version.tar.gz"
 
-build() {
+derle() {
 	cd $name-$version
 
 	./configure \

@@ -10,7 +10,7 @@ release=1
 source=(http://web.mit.edu/kerberos/dist/$name/$version/$name-$version.tar.gz \
         $name-config_LDFLAGS.patch)
 
-build() {
+derle() {
 	cd $name-$version/src/build-tools
 	patch -p1 -i $SRC/$name-config_LDFLAGS.patch
 

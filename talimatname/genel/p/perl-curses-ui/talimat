@@ -8,7 +8,7 @@ version=0.9609
 release=1
 source=(http://search.cpan.org/CPAN/authors/id/M/MD/MDXI/Curses-UI-$version.tar.gz)
 
-build() {
+derle() {
     cd Curses-UI-$version
 
 	perl Makefile.PL

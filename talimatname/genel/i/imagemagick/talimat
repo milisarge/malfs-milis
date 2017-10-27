@@ -9,7 +9,7 @@ release=1
 _version=6.9.3-6
 source=(https://launchpad.net/imagemagick/main/6.9.3-6/+download/ImageMagick-$version.tar.gz)
 
-build () {
+derle() {
     cd ImageMagick-*
 
     [ "`uname -m`" == "i686"   ] && EXTRAOPTS="--with-gcc-arch=i686"

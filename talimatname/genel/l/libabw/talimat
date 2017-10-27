@@ -10,7 +10,7 @@ release=1
 source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz
 	    https://github.com/LibreOffice/libabw/commit/ee2d0729.patch::libabw-boost-1.59.patch)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -p1 -i $SRC/libabw-boost-1.59.patch
 	autoreconf -vi

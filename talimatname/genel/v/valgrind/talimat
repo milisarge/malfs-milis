@@ -8,7 +8,7 @@ version=3.13.0
 release=1
 source=(ftp://sourceware.org/pub/valgrind/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i 's|/doc/valgrind||' docs/Makefile.in 
 	./configure --prefix=/usr \

@@ -9,7 +9,7 @@ release=1
 
 source=(http://gcompris.net/download/qt/src/$name-$version.tar.xz)
 
-build() {
+derle() {
 
 	cd $name-$version
 	mkdir build 

@@ -9,7 +9,7 @@ uzunisim=mysql-connector-java-${version}
 release=1
 source=(https://cdn.mysql.com/Downloads/Connector-J/${uzunisim}.tar.gz)
 
-build() {
+derle() {
 	cd $uzunisim
 	jdkyol=`readlink -f /opt/jdk`
 	install -d "$PKG$jdkyol/jre/lib/ext/"

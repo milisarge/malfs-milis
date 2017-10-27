@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr                     \
             --infodir=/usr/share/info         \

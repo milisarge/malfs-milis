@@ -8,7 +8,7 @@ version=2.1.1
 release=2
 source=(https://github.com/git-cola/git-cola/archive/v$version.zip)
 
-build() {
+derle() {
 	cd $SRC/${name}-$version
 	/usr/bin/python setup.py install --root=$PKG
 find $PKG -name '*.egg-info' | xargs rm -rf

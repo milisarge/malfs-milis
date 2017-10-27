@@ -8,7 +8,7 @@ version=1.7.5
 release=1
 source=(https://kernel.org/pub/linux/utils/$name/v1.7/$name-$version.tar.xz)
 
-build() {
+derle() {
     cd $name-$version
     LIBS="-lpthread" ./configure \
       --prefix=/usr \

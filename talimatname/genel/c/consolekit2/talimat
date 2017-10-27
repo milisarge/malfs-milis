@@ -11,7 +11,7 @@ source=(https://github.com/Consolekit2/ConsoleKit2/releases/download/$version/Co
 	75-consolekit2.rules
 	consolekit2.logrotate)
 
-build() {
+derle() {
 cd ConsoleKit2-$version
 
 ./configure                    \

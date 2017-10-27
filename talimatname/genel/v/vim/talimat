@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2
         vim-7.4-locale-1.patch)
-build()
+derle()
 {
 vimv="vim${version/./}"
 cd $vimv

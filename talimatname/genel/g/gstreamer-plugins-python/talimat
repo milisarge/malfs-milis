@@ -9,7 +9,7 @@ release=1
 _name=gst-python
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.bz2)
 
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr
 

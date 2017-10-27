@@ -9,7 +9,7 @@ release=1
 source=(https://bitbucket.org/multicoreware/x265/get/$version.tar.bz2
  http://www.linuxfromscratch.org/patches/downloads/x265/x265_1.8-enable_static-1.patch)
 
-build() {
+derle() {
 	cd multicoreware-$name-*
 	patch -Np1 -i ../x265_1.8-enable_static-1.patch
 	mkdir bld 

@@ -8,7 +8,7 @@ version=git
 release=1
 source=()
 
-build() {
+derle() {
 	cd $DERLEME_KAYNAKDIZIN
 	if [ ! -d $name ]; then
 		git clone git://github.com/ocaml/$name $name -b 4.04

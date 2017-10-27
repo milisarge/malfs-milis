@@ -10,7 +10,7 @@ release=1
 
 source=(http://download.kde.org/stable/oxygen-gtk2/$version/src/$name-$version.tar.bz2)
 
-build() {
+derle() {
   	cd $name-$version
         mkdir build
         cd build

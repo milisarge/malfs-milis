@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/roxterm/roxterm-$version.tar.xz)
 
-build() {
+derle() {
   cd "${SRC}/${name}-${version}"
   python2 mscript.py configure --prefix='/usr'
   python2 mscript.py build

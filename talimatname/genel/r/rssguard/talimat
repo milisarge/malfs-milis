@@ -9,7 +9,7 @@ release=1
 
 source=("https://bitbucket.org/skunkos/rssguard/get/$version.tar.bz2")
 
-build() {
+derle() {
   mkdir -p build
   cd build
 

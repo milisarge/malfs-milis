@@ -9,7 +9,7 @@ release=1
 source=(http://crux.ster.zone/downloads/$name/$name-$version.tar.gz
 	$name-$version-gcc4.diff)
 
-build() {
+derle() {
 
 	cd $name-$version
 

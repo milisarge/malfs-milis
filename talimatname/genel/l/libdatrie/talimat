@@ -8,7 +8,7 @@ release=1
 
 source=(
 http://linux.thai.net/pub/thailinux/software/libthai/$name-$version.tar.xz)
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \

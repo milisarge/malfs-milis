@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.gnome.org/pub/GNOME/sources/liboobs/3.0/$name-$version.tar.gz )
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr
 make

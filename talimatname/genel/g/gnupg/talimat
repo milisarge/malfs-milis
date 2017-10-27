@@ -8,7 +8,7 @@ version=2.1.11
 release=1
 source=(ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-$version.tar.bz2)
 
-build() {
+derle() {
 cd gnupg-$version
 
 sed -e 's|\(GNUPGHOME\)=\$(abs_builddir)|\1=`/bin/pwd`|' \

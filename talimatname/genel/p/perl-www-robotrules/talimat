@@ -9,7 +9,7 @@ release=2
 
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-$version.tar.gz)
 
-build() {
+derle() {
 cd WWW-RobotRules-$version
 perl Makefile.PL
 make

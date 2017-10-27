@@ -9,7 +9,7 @@ release=1
 source=(https://storage.googleapis.com/golang/${name}${version}.src.tar.gz)
 
 
-build() {
+derle() {
  
     cd $SRC/go/src
     export CGO_ENABLED=0

@@ -9,7 +9,7 @@ version=20170302
 release=1
 source=(https://github.com/horst3180/$name/archive/$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	./autogen.sh --prefix=/usr
 	make DESTDIR=$PKG install

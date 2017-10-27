@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.kernel.org/pub/linux/utils/net/$name/iproute2-$version.tar.xz)
 
-build()
+derle()
 {
 cd iproute2-$version
 sed -i '/^TARGETS/s@arpd@@g' misc/Makefile

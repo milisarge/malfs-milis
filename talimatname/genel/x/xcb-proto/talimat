@@ -9,7 +9,7 @@ release=1
 
 source=(http://xcb.freedesktop.org/dist/xcb-proto-$version.tar.bz2)
 
-build() {
+derle() {
 	cd xcb-proto-$version
 
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var

@@ -1,6 +1,6 @@
 version=5.2.2
 source=(http://tukaani.org/xz/xz-$version.tar.xz)
-build() {
+derle() {
 cd xz-$version
 ./configure --prefix=/tools
 make

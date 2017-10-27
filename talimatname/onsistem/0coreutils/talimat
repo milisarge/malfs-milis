@@ -1,6 +1,6 @@
 version=8.25
 source=(http://ftp.gnu.org/gnu/coreutils/coreutils-$version.tar.xz)
-build()
+derle()
 {
 cd coreutils-$version
 ./configure --prefix=/tools --enable-install-program=hostname

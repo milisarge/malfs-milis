@@ -8,7 +8,7 @@ version=1.41
 release=1
 
 source=(http://sg.danny.cz/sg/p/sg3_utils-$version.tar.xz)
-build() {
+derle() {
 cd sg3_utils-$version
 ./configure --prefix=/usr --disable-static
 make

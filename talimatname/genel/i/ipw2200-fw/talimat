@@ -8,7 +8,7 @@ version=3.1
 release=1
 source=(http://downloads.nutyx.org/files/$name-$version.tgz)
 
-build() {
+derle() {
 	cd $name-$version
 	for i in ipw*.fw
 	do

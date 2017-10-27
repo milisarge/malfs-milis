@@ -8,7 +8,7 @@ version=1.0
 release=1
 source=(https://sourceforge.net/projects/psi/files/Psi/1.0/$name-$version.tar.xz)
 
-build() {
+derle() {
   cd psi-$version
    ./configure --prefix=/usr  \
    --libdir=/usr/lib \

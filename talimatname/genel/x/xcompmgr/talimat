@@ -9,7 +9,7 @@ release=1
 
 source=(http://xorg.freedesktop.org/releases/individual/app/${name}-${version}.tar.bz2 fix_broken_shadows.diff)
 
-build() {
+derle() {
   cd ${name}-${version}
   patch -Np0 -i ${SRC}/fix_broken_shadows.diff
   ./configure --prefix=/usr

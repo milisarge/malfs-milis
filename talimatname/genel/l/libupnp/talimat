@@ -8,7 +8,7 @@ version=1.6.19
 release=1
 source=(http://downloads.sourceforge.net/project/pupnp/pupnp/libUPnP%20$version/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 
 	./configure \

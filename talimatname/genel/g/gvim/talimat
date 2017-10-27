@@ -8,7 +8,7 @@ version=8.0.0329
 release=1
 source=(http://crux.nu/files/distfiles/vim-$version.tar.xz)
 
-build () {
+derle() {
     cd vim-$version/src
     
     ./configure --prefix=/usr \

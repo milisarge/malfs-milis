@@ -9,7 +9,7 @@ release=1
 
 source=(http://people.freedesktop.org/~takluyver/pyxdg-$version.tar.gz)
 
-build() {
+derle() {
 	cd pyxdg-$version
 	python3 setup.py install --prefix=/usr --root=$PKG
 }

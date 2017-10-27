@@ -9,7 +9,7 @@ release=1
 source=(http://miniupnp.tuxfamily.org/files/libnatpmp-20150609.tar.gz
 )
 
-build() {
+derle() {
 cd $name-$version
   sed -e 's/CFLAGS = /CFLAGS += /' -i Makefile
   make

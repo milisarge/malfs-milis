@@ -10,7 +10,7 @@ release=1
 source=(https://storage.googleapis.com/golang/${_name}${version}.src.tar.gz)
 
 
-build() {
+derle() {
     export GOROOT_BOOTSTRAP=/usr/local/gccgo
     export GOROOT_FINAL=/usr/lib/go
     export GOOS=linux

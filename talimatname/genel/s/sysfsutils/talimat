@@ -8,7 +8,7 @@ version=2.1.0
 release=2
 source=(http://downloads.sourceforge.net/project/linux-diag/$name/$version/$name-$version.tar.gz)
 
-build() {
+derle() {
     cd $name-$version
     ./configure --prefix=/usr --mandir=/usr/share/man
     make

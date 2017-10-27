@@ -10,7 +10,7 @@ release=1
 source=(https://sourceforge.net/projects/firejail/files/firejail/firejail-$version.tar.xz)
 
 
-build() {
+derle() {
 
 	cd $name-$version
 

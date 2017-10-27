@@ -10,7 +10,7 @@ release=1
 
 source=(https://github.com/$isim/$isim/archive/release-$version.tar.gz)
 
-build() {
+derle() {
 	cd $isim-release-$version
 	make dependencies
 	make core

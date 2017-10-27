@@ -14,7 +14,7 @@ defaults.conf
 org.cinnamon.pkexec.mdmsetup.policy
 resim-1.jpg)
 
-build() {
+derle() {
     cd $name-$version
     aclocal --install
     gnome-doc-prepare --force

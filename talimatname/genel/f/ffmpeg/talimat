@@ -9,7 +9,7 @@ release=1
 source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.xz
 		ffmpeg-x264-10bit.sh)
 
-build() {
+derle() {
 cd $name-$version
 
 [ -e '/usr/lib/pkgconfig/libwebp.pc' ] && PKGMK_FFMPEG+=' --enable-libwebp'

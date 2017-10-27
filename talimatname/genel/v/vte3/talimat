@@ -9,7 +9,7 @@ release=1
 _name=vte
 source=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${version%.*}/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 	cd ${_name}-$version
 	./configure --prefix=/usr\
 		--libexecdir=/usr/lib/$name \

@@ -8,7 +8,7 @@ version=0.28.2
 release=1
 source=(ftp://ftp.gnome.org/pub/gnome/sources/vte/${version%.*}/vte-$version.tar.xz )
 
-build() {
+derle() {
   cd vte-$version
 
   ./configure --prefix=/usr \

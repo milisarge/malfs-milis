@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnu.org/gnu/sed/sed-$version.tar.bz2)
 
-build()
+derle()
 {
 cd sed-$version
 ./configure --prefix=/usr --bindir=/bin \

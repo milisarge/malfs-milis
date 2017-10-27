@@ -8,7 +8,7 @@ version=1.0.31
 release=1
 source=(https://github.com/gsliepen/tinc/archive/release-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-release-$version
 	autoreconf -fsi
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin

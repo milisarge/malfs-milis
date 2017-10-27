@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/IgnorantGuru/$name/archive/$version.tar.gz 
 https://github.com/BwackNinja/spacefm/commit/f167b2831bc2556fc383cf30ae6ce4d117b67c04.patch)
 
-build () {
+derle() {
     cd $name-$version
     patch -p1 < $SRC/f167b2831bc2556fc383cf30ae6ce4d117b67c04.patch
     ./configure --prefix=/usr \

@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.xiph.org/releases/$name/$name-$version.tar.gz)
 
-build () {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --enable-custom-modes --disable-static \
 --docdir=/usr/share/doc/$name-$version

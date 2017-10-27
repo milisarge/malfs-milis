@@ -8,7 +8,7 @@ version=1.3.10
 release=1
 source=(https://netix.dl.sourceforge.net/project/gmtp/gMTP-$version/gmtp-$version.tar.gz)
 
-build() {
+derle() {
   cd "${name}-${version}"
   ./configure --prefix=/usr
   make

@@ -8,7 +8,7 @@ version=4.5
 release=1
 source=(http://dl.suckless.org/tools/$name-$version.tar.gz)
 
-build(){
+derle(){
     cd $name-$version
 
     make install PREFIX=/usr \

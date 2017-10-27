@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/fvwmorg/fvwm/archive/$version.tar.gz::$name-$version.tar.bz2
 		fvwm.desktop)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -e 's|ln -sf|ln -sfr|g' -i default-config/Makefile.am
     autoreconf -vi

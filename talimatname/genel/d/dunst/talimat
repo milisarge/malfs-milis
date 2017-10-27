@@ -8,7 +8,7 @@ version=1.2.0
 release=1
 source=(https://github.com/dunst-project/dunst/archive/v1.2.0.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 	make DESTDIR="${PKG}" PREFIX=/usr install

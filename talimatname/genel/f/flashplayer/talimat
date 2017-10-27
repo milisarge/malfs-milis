@@ -10,7 +10,7 @@ source=(https://fpdownload.adobe.com/get/flashplayer/pdc/$version/flash_player_p
 		flashplayer.mms.cfg)
       
 
-build() {
+derle() {
 	cd $SRC
 	install -Dm644 libpepflashplayer.so "$PKG/usr/lib/mozilla/plugins/libflashplayer.so"
 	install -Dm644 -t "$PKG/usr/share/licenses/$name" license.pdf LGPL/notice.txt

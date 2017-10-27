@@ -11,7 +11,7 @@ release=1
 source=(https://github.com/textbrowser/qtchess/archive/v${_version}.tar.gz
 		qtchess.desktop)
 
-build () {
+derle() {
 	cd "$name-$_version"
     qmake-qt5 -o Makefile qtchess.pro
     sed -i s_'-Werror'__g Makefile # stack protector is not proctecting small arrays

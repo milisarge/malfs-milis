@@ -8,7 +8,7 @@ version=0.25
 release=1
 source=(http://www.exiv2.org/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 	./configure --prefix=/usr \
 		 --disable-static

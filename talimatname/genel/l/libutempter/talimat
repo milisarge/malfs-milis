@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.altlinux.org/pub/people/ldv/utempter/$name-$version.tar.bz2)
 
-build(){
+derle(){
     cd $name-$version
     RPM_OPT_FLAGS="$CFLAGS" make
     make

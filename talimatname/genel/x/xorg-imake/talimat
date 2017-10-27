@@ -8,7 +8,7 @@ version=1.0.7
 release=1
 source=(http://xorg.freedesktop.org/releases/individual/util/imake-$version.tar.bz2)
 
-build() {
+derle() {
 	cd imake-$version
 	./configure --prefix=/usr
 	make

@@ -10,7 +10,7 @@ release=1
 source=(https://github.com/$hesap/$name/archive/$name-v$version.tar.gz
 		cjdns.servis cjdns.rc.d cjdns.sh)
  
-build () {
+derle() {
 	
 	#if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
 	#	git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 

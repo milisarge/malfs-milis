@@ -8,7 +8,7 @@ version=2.4
 release=1
 source=(https://www.sfml-dev.org/files/CSFML-$version-sources.zip)
 
-build() {
+derle() {
 	cd CSFML-$version
 
 	#sed -e 's|cmake/Config.cmake|cmake/Modules/FindSFML.cmake|' -i CMakeLists.txt

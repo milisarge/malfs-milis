@@ -9,7 +9,7 @@ release=1
 
 source=()
 	
-build() {
+derle() {
 	
 	#bagımlılıklar kontrol edilecek.
 	

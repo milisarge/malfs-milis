@@ -9,7 +9,7 @@ release=1
 source=(https://www.samba.org/samba/ftp/stable/$name-$version.tar.gz
 		samba.conf)
 
-build() {
+derle() {
 
 cd $name-$version
 

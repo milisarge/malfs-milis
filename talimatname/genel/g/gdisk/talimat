@@ -8,7 +8,7 @@ version=1.0.0
 release=1
 source=(http://downloads.sourceforge.net/project/gptfdisk/gptfdisk/$version/gptfdisk-$version.tar.gz)
 
-build() {
+derle() {
 
 	cd gptfdisk-$version
 

@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/jordansissel/xdotool/archive/v3.20160805.1.tar.gz::$name-$version.tar.gz)
 
 
-build() {
+derle() {
   cd ${name}-3.20160805.1
 
   # Build

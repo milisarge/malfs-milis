@@ -10,7 +10,7 @@ release=2
 source=(http://www.mpfr.org/mpfr-current/mpfr-$version.tar.xz
 	    http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-upstream_fixes-1.patch)
 
-build()
+derle()
 {
 cd mpfr-$version
 patch -Np1 -i ../$name-$version-upstream_fixes-1.patch

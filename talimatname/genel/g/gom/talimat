@@ -8,7 +8,7 @@ version=0.3.2
 release=1
 source=(https://git.gnome.org/browse/$name/snapshot/$name-$version.tar.xz)
 
-build() {
+derle() {
   cd $name-$version
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \

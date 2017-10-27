@@ -10,7 +10,7 @@ release=1
 source=(
 http://www.cpan.org/authors/id/A/AV/AVIF/Time-Duration-$version.tar.gz)
 
-build() {
+derle() {
     cd Time-Duration-$version
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1

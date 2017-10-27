@@ -8,7 +8,7 @@ version=1.7.23
 release=1
 source=( https://portswigger.net/burp/releases/download?productid=100\&version=${version}\&type=jar $name.desktop $name-48.png $name-32.png $name-16.png LICENSE )
 
-build() {
+derle() {
 	cd "$SRC"
 
   	mkdir -p "$PKG/usr/bin" "$PKG/usr/share/applications/" "$PKG/usr/share/$name/"

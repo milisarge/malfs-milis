@@ -16,7 +16,7 @@ source=(https://launchpad.net/lightdm/${version%.*}/${version}/+download/lightdm
         lightdm-default-config.patch
         Xsession)
 
-build () {
+derle() {
 	cd $name-$version
 patch -Np1 -i ../lightdm-default-config.patch
 

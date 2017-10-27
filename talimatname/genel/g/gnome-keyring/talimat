@@ -8,7 +8,7 @@ version=3.20
 release=1
 source=(http://ftp.acc.umu.se/pub/GNOME/sources/$name/$version/$name-$version.0.tar.xz)
 
-build(){
+derle(){
 	cd $name-$version.0
 
 	sed -i -e "s/USE_NLS=yes/USE_NLS=no/" \

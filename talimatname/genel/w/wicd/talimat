@@ -9,7 +9,7 @@ release=1
 
 source=( http://launchpad.net/wicd/1.7/$version/+download/$name-$version.tar.gz \
 	 http://downloads.nutyx.org/files/patchs/$name/dbus_string_fix.patch wicd.rc)
-build() {
+derle() {
 unset MAKEFLAGS
 cd $name-$version
 patch -Np0 -i ../dbus_string_fix.patch

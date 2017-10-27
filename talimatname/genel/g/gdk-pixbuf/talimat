@@ -10,7 +10,7 @@ source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$versio
 		gdk-pixbuf.loaders
 		gdk-pixbuf-register.sh)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \

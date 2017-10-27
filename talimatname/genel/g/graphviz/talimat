@@ -8,7 +8,7 @@ version=2.38.0
 release=1
 source=(http://www.graphviz.org/pub/graphviz/stable/SOURCES/$name-$version.tar.gz)
 
-build () {
+derle() {
 
 	cd $name-$version
 

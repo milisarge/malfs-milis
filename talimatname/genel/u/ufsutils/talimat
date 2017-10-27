@@ -9,7 +9,7 @@ release=1
 source=(https://mirrors.kernel.org/debian/pool/main/u/ufsutils/ufsutils_8.2.orig.tar.gz
 	https://mirrors.kernel.org/debian/pool/main/u/ufsutils/ufsutils_8.2-3.debian.tar.gz)
 
-build() {
+derle() {
 unset MAKEFLAGS
 cd ${name}-${version}
 	for i in ../debian/patches/*.patch;do patch -p1 -i ${i};done

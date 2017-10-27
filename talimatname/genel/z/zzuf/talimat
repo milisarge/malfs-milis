@@ -8,7 +8,7 @@ version=0.15
 release=1
 source=(https://github.com/samhocevar/$name/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd "$SRC/zzuf-$version"
   sh bootstrap
   ./configure --prefix=/usr

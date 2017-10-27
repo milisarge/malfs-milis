@@ -10,7 +10,7 @@ release=1
 source=(
 https://pypi.python.org/packages/source/s/simplejson/simplejson-$version.tar.gz)
 
-build() {
+derle() {
     cd simplejson-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

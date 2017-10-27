@@ -8,7 +8,7 @@ version=3.17.6
 release=1
 source=(http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-$version-plugin.run)
 
-build() {
+derle() {
     sh "hplip-$version-plugin.run" --target "$SRC/hplip-$version-plugin" --noexec
     cd "$SRC/hplip-$version-plugin"
     _arch='x86_64'

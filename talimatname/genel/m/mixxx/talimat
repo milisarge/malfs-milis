@@ -9,7 +9,7 @@ release=2
 
 source=(http://downloads.mixxx.org/$name-$version/$name-$version-src.tar.gz)
 
-build() {
+derle() {
 cd $SRC/$name-$version
 scons qtdir=/usr prefix=/usr faad=1
 scons qtdir=/usr prefix=/usr install_root=$PKG/usr install

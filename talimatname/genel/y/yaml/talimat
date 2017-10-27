@@ -8,7 +8,7 @@ version=0.1.7
 release=1
 source=(http://pyyaml.org/download/libyaml/yaml-$version.tar.gz)
 
-build() {
+derle() {
 	cd yaml-$version
 	./configure --prefix=/usr --disable-static 
 	make DESTDIR=$PKG install

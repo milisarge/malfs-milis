@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i '/DG_DISABLE_DEPRECATED/d' glade/Makefile.in
 	./configure --prefix=/usr \

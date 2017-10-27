@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/sourceforge/pptpclient/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i 's|BINDIR=$(DESTDIR)/usr|BINDIR=$(DESTDIR)|' Makefile
 	sed -i 's|/bin/ip|/sbin/ip|g' routing.c

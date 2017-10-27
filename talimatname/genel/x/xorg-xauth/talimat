@@ -8,7 +8,7 @@ version=1.0.9
 release=2
 source=(http://xorg.freedesktop.org/releases/individual/app/xauth-$version.tar.bz2)
 
-build() {
+derle() {
 	cd xauth-$version
 
 	./configure --prefix=/usr

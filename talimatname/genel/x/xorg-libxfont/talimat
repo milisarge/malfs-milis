@@ -8,7 +8,7 @@ version=1.5.1
 release=1
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfont-$version.tar.bz2)
 
-build() {
+derle() {
 cd libXfont-$version
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make

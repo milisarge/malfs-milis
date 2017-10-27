@@ -8,7 +8,7 @@ version=4.0.11.9358
 release=1
 source=(https://www.paterva.com/malv4/community/MaltegoCE.v${version}.zip)
 
-build() {
+derle() {
   cd "$SRC/MaltegoCommunity_4.0.11CE"
 
   mkdir -p "$PKG/usr/bin"

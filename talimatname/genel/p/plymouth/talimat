@@ -11,7 +11,7 @@ source=(https://www.freedesktop.org/software/plymouth/releases/$name-$version.ta
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
 		plymouthd.conf)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr \
 	--exec-prefix=/usr \

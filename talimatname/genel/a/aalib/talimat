@@ -8,7 +8,7 @@ version=1.4rc5
 release=2
 source=(http://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz)
 
-build() {
+derle() {
 cd aalib-*
 ./configure --prefix=/usr \
  --mandir=/usr/share/man \

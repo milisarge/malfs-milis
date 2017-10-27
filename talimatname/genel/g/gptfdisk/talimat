@@ -9,7 +9,7 @@ release=1
 source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-convenience-1.patch)
 
-build () {
+derle() {
 cd $name-$version
 patch -Np1 -i ../$name-$version-convenience-1.patch
 make

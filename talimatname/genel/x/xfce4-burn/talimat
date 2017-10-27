@@ -10,7 +10,7 @@ release=3
 
 source=(http://archive.xfce.org/src/apps/xfburn/${version%.*}/xfburn-$version.tar.bz2)
 
-build() {
+derle() {
 cd ${_name}-$version	
 ./configure --prefix=/usr \
 --enable-gstreamer

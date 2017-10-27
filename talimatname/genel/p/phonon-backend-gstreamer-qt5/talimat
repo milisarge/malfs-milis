@@ -10,7 +10,7 @@ _name=phonon-backend-gstreamer
 
 source=( http://download.kde.org/stable/phonon/${_name}/$version/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 cd phonon-gstreamer-$version
 cmake -DCMAKE_BUILD_TYPE=Release     \
       -DCMAKE_SKIP_RPATH=ON          \

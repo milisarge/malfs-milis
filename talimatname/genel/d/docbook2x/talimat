@@ -11,7 +11,7 @@ source=(
 http://downloads.sourceforge.net/$name/docbook2X-$version.tar.gz
 docbook2x.datadir.patch)
 
-build(){
+derle(){
     cd docbook2X-$version
     patch < ../$name.datadir.patch || exit 1
     sed -e 's/AM_CONFIG_HEADER(/AC_CONFIG_HEADERS(/' -i configure.ac || exit 1

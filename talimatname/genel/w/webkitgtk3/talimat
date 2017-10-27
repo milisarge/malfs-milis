@@ -10,7 +10,7 @@ source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz
 		webkitgtk-2.4.9-abs.patch
 		icu59.patch)
 
-build() {
+derle() {
 	cd webkitgtk-$version
     patch -Np1 -i ../webkitgtk-2.4.9-abs.patch
     patch -Np1 -i ../icu59.patch

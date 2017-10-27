@@ -9,7 +9,7 @@ version=2.11.1
 release=1
 source=( http://fontconfig.org/release/${_name}-$version.tar.gz)
 
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr \
 --sysconfdir=/etc \

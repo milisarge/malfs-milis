@@ -9,7 +9,7 @@ version=1
 release=1
 source=()
 
-build() {
+derle() {
 git clone https://github.com/laserb/gnome-shell-extension-suspend-button.git
 cd $_name
 make

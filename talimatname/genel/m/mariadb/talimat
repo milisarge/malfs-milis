@@ -10,7 +10,7 @@ release=1
 source=(ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-$version/source/mariadb-$version.tar.gz)
 
 
-build() {
+derle() {
 cd $name-$version
 mkdir build
 cd build

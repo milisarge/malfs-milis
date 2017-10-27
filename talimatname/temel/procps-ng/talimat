@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/project/$name/Production/$name-$version.tar.xz)
 
-build()
+derle()
 {
 cd $name-$version
 

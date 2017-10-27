@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.sourceforge.net/project/$name/$name/$version/minidlna-$version.tar.gz
 	minidlna)
         
-build() {
+derle() {
   cd $name-$version
   sed -i 's|#user=.*|user=nobody|g' minidlna.conf
   ./configure --prefix=/usr

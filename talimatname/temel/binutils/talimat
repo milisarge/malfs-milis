@@ -11,7 +11,7 @@ source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-1.patch
 	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-2.patch)
 	
-build() {
+derle() {
 	cd binutils-$version
 
 	patch -Np1 -i ../binutils-$version-upstream_fix-1.patch

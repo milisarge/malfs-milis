@@ -8,7 +8,7 @@ version=2.8.9dev.14
 release=1
 source=(http://invisible-island.net/datafiles/release/lynx-cur.tar.bz2)
 
-build() {
+derle() {
 	cd lynx$version
 	./configure \
 		--prefix=/usr \

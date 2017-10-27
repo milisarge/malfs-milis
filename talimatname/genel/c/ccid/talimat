@@ -8,7 +8,7 @@ version=1.4.27
 release=1
 source=(https://alioth.debian.org/frs/download.php/file/4218/${name}-${version}.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr \
 	  --sysconfdir=/etc \

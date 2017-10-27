@@ -12,7 +12,7 @@ source=(http://get.geo.opera.com/pub/$_name/desktop/$version/linux/$_name-stable
 		default
 		)
 
-build() {
+derle() {
     sed -e "s/%_name%/$_name/g" -i "$SRC/opera"
     sed -e "s/%operabin%/$_name\/$_name/g" \
         -i "$SRC/opera"

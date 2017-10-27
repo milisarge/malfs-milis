@@ -8,7 +8,7 @@ version=0.8.2
 release=1
 source=(https://github.com/Ettercap/ettercap/archive/v$version.tar.gz)
  
-build () {
+derle() {
   cp $DERLEME_KAYNAKDIZIN/v$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
   cd $SRC/$name-$version
   mkdir build

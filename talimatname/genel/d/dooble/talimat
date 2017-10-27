@@ -8,7 +8,7 @@ version=1.56c
 release=1
 source=(https://github.com/textbrowser/$name/archive/v$version.tar.gz)
 
-build () {
+derle() {
 	cd "$name-$version/Version 1.x/"
 	
 	sed -i 's_-Werror__g' dooble.qt5.pro

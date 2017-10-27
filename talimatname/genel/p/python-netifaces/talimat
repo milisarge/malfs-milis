@@ -10,7 +10,7 @@ release=1
 source=(
 https://pypi.python.org/packages/source/n/netifaces/netifaces-$version.tar.gz)
 
-build() {
+derle() {
     cd netifaces-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

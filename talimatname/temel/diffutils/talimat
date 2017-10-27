@@ -9,7 +9,7 @@ release=1
 
 source=( http://ftp.gnu.org/gnu/$name/diffutils-$version.tar.xz )
 
-build() {
+derle() {
 	cd diffutils-$version
 	sed -i 's:= @mkdir_p@:= /bin/mkdir -p:' po/Makefile.in.in
 	./configure --prefix=/usr \

@@ -10,7 +10,7 @@ release=1
 source=(
 http://cyberelk.net/tim/data/pycups/pycups-$version.tar.bz2)
 
-build() {
+derle() {
     cd pycups-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

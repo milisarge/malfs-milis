@@ -9,7 +9,7 @@ release=1
 _version=4.0-20161112
 source=(http://www.openprinting.org/download/foomatic/foomatic-db-${_version}.tar.gz)
 
-build() {
+derle() {
 	cd $name-*
 	./configure --prefix=/usr
 	make

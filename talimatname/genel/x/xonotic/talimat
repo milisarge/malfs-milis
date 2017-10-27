@@ -8,7 +8,7 @@ version=0.8.2
 release=1
 source=(https://dl.xonotic.org/$name-$version.zip)
 
-build() {
+derle() {
 	cd Xonotic
 
 	make -C source/darkplaces CPUOPTIMIZATIONS="${CFLAGS}" DP_FS_BASEDIR=/usr/share/xonotic/ DP_LINK_TO_LIBJPEG=1 cl-release

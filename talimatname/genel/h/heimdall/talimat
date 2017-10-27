@@ -11,7 +11,7 @@ source=(https://github.com/Benjamin-Dobell/Heimdall/archive/v${version}.tar.gz::
 		https://github.com/oltulu/Heimdall/raw/master/heimdall-frontend/aboutform.ui::$name-aboutform.ui
 		heimdall.desktop)
 
-build(){
+derle(){
 	cd Heimdall-$version
 	cp -r $SRC/$name-mainwindow.ui $SRC/Heimdall-$version/heimdall-frontend/
     cp -r $SRC/$name-aboutform.ui $SRC/Heimdall-$version/heimdall-frontend/

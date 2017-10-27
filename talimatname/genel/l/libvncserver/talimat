@@ -8,7 +8,7 @@ version=0.9.11
 release=1
 
 source=(https://github.com/LibVNC/libvncserver/archive/LibVNCServer-${version}.tar.gz)
-build () {
+derle() {
 	cd $name-LibVNCServer-$version
 	./autogen.sh
 	./configure --prefix=/usr

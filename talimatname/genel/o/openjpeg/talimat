@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.sourceforge.net/openjpeg.mirror/$name-$version.tar.gz )
 
 
-build() {
+derle() {
 	cd openjpeg-$version
 	autoreconf -f -i
 	./configure --prefix=/usr --disable-static

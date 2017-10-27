@@ -9,7 +9,7 @@ release=1
 source=(http://cache.ruby-lang.org/pub/$name/${version%.*}/$name-$version.tar.xz
 		gemrc)
 
-build () {
+derle() {
     cd $name-$version
 
     PKG_CONFIG=/usr/bin/pkg-config ./configure \

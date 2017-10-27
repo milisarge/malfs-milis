@@ -9,7 +9,7 @@ version=2.5.1
 release=1
 source=(ftp://ftp.daper.net/pub/soft/$name/stable/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 	autoreconf -f -i -Wall,no-obsolete
     ./configure --prefix=/usr --without-rcc \

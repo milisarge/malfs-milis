@@ -10,7 +10,7 @@ release=2
 source=(http://downloads.sourceforge.net/project/$name/$name/1.3.3/$name-$version.tar.gz
 	iostream.patch msggen.pl.patch)
 
-build() {
+derle() {
 	cd $name-$version
 
 	patch -p 1 -i $SRC/iostream.patch

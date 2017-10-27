@@ -9,7 +9,7 @@ version=1
 release=1
 source=(https://dl.opendesktop.org/api/files/download/id/1460760205/166760-Nightingale.tar.gz)
 
-build() {
+derle() {
   cd Nightingale
   install -d "$PKG/usr/share/themes/$_name"
   cp -a * "$PKG/usr/share/themes/$_name/"

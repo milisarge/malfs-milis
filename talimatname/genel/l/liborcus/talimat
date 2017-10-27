@@ -9,7 +9,7 @@ release=1
 
 source=(https://kohei.us/files/orcus/src/$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd $name-$version
 	[ ! -f /usr/lib/pkgconfig/python3.pc ] && ln -s /usr/lib/pkgconfig/python-3.5.pc /usr/lib/pkgconfig/python3.pc
 	./configure --prefix=/usr

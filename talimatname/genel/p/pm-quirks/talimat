@@ -9,7 +9,7 @@ release=1
 
 source=(http://pm-utils.freedesktop.org/releases/pm-quirks-${version}.tar.gz)
 
-build() {
+derle() {
 	install -m755 -d "${PKG}/usr/lib/pm-utils/video-quirks"
 	install -m644 video-quirks/*.quirkdb "${PKG}/usr/lib/pm-utils/video-quirks/"
 }

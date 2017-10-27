@@ -8,7 +8,7 @@ version=1.0.0
 release=1
 source=(https://github.com/nabla-c0d3/sslyze/archive/$version.tar.gz)
 
-build() {
+derle() {
     cd sslyze-$version
 	python2 setup.py build
 	python2 setup.py install --root="$PKG" --optimize=1

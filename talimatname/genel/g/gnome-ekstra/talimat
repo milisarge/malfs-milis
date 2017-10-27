@@ -9,6 +9,6 @@ release=1
 
 source=(talimat)
 
-build() {
+derle() {
 echo "gnome-ekstra derlemesi bitti"
 }

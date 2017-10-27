@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Daemon-$version.tar.gz)
 
-build() {
+derle() {
 cd HTTP-Daemon-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

@@ -8,7 +8,7 @@ version=0.12.0
 release=1
 source=(https://launchpad.net/geoclue/trunk/0.12/+download/geoclue-0.12.0.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 sed -i "s@ -Werror@@" configure &&
 sed -i "s@libnm_glib@libnm-glib@g" configure &&

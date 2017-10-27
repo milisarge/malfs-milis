@@ -8,7 +8,7 @@ version=9.11.0
 release=1
 source=(ftp://ftp.isc.org/isc/bind9/$version/bind-$version.tar.gz)
 
-build() {
+derle() {
     cd bind-$version
 
     ./configure --prefix=/usr \

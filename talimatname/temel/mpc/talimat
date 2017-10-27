@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.multiprecision.org/mpc/download/mpc-$version.tar.gz)
 
-build()
+derle()
 {
 cd mpc-$version
 ./configure --prefix=/usr --libdir=/lib

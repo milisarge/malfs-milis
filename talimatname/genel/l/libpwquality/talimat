@@ -9,7 +9,7 @@ release=1
 
 source=(https://fedorahosted.org/releases/l/i/libpwquality/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 PYTHON=python2 ./configure --prefix=/usr \
         --sysconfdir=/etc                \

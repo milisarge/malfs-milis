@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/G/GR/GRANTM/XML-Simple-$version.tar.gz)
 
-build() {
+derle() {
 cd XML-Simple-$version
 perl Makefile.PL
 make

@@ -9,7 +9,7 @@ release=1
 
 source=(http://sourceforge.net/projects/$name/files/$version/$name-$version.tar.gz
 	)
-build(){
+derle(){
 cd $name-$version
 cd build
 cmake .. -DLENSFUN_INSTALL_PREFIX=/usr

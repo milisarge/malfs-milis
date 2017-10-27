@@ -9,7 +9,7 @@ version=0.3.6
 release=1
 source=(https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-$version/ATS2-Postiats-$version.tgz)
 
-build() {
+derle() {
   cd "${SRC}/${_name}-${version}"
   ./autogen.sh
   ./configure --prefix=/usr

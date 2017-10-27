@@ -12,7 +12,7 @@ source=(https://github.com/vkohaupt/${name}/archive/${_version}.tar.gz
 		desktop_file.patch
 		fix_lrelease.patch)
 	
-build() {
+derle() {
 
 	cd "${SRC}"/${name}-${_version}
 	# sürüm yama

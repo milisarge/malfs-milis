@@ -10,7 +10,7 @@ source=( http://repository.timesys.com/buildsources/g/ghostscript/ghostscript-9.
          http://ghostscript.googlecode.com/files/ghostscript-fonts-std-8.11.tar.gz
          http://ftp.gnu.org/pub/gnu/ghostscript/gnu-gs-fonts-other-6.0.tar.gz )
 
-build() {
+derle() {
 cd $name-$version
 sed -i 's/ZLIBDIR=src/ZLIBDIR=$includedir/' configure.ac configure
 rm -rf freetype lcms2 jpeg libpng zlib

@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/wxpython/wxPython-src-${version}.tar.bz2
 	make-abicheck-non-fatal.patch wxGTK-collision.patch configure_in.diff)
-build() {
+derle() {
 cd wx*-$version
 
 patch -p1 -i ../wxGTK-collision.patch

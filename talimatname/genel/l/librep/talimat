@@ -9,7 +9,7 @@ release=2
 
 source=(http://download.tuxfamily.org/$name/${name}_$version.tar.xz)
 
-build() {
+derle() {
 export CFLAGS="$CFLAGS -std=gnu90"
 cd ${name}_$version
 ./configure --prefix=/usr \

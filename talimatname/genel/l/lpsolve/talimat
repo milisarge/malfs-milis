@@ -11,7 +11,7 @@ source=(https://downloads.sourceforge.net/project/lpsolve/lpsolve/5.5.2.5/lp_sol
         cflags.patch
         lpsolve-5.5.2.0.defines.patch)
 
-build() {
+derle() {
  cd lp_solve_5.5
 
   patch -Np1 -i $SRC/cflags.patch

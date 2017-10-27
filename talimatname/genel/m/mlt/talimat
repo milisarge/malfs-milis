@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/mltframework/mlt/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr        \
 	--avformat-swscale         \

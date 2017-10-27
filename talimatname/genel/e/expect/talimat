@@ -8,7 +8,7 @@ version=5.45
 release=1
 source=(http://downloads.sourceforge.net/project/$name/Expect/$version/$name$version.tar.gz)
 
-build() {
+derle() {
    cd ${name}${version}
 
    ./configure --prefix=/usr --mandir=/usr/man --enable-gcc

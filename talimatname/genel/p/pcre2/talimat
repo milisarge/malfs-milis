@@ -9,7 +9,7 @@ release=1
 
 source=( ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/$name-$version.tar.bz2 )
 PKGMK_GROUPS=(devel man doc)
-build() {
+derle() {
 cd $name-$version
 
 [ "${CARCH}" = "x86_64" ] && export CFLAGS="${CFLAGS} -fPIC"

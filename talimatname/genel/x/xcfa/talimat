@@ -9,7 +9,7 @@ release=2
 
 source=(http://download.tuxfamily.org/xcfaudio/xcfa_download/src/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr
 make

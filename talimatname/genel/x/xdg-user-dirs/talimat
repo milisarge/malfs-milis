@@ -9,7 +9,7 @@ release=2
 source=(http://user-dirs.freedesktop.org/releases/$name-$version.tar.gz
         xdg-user-dirs-src)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr --sysconfdir=/etc
   make

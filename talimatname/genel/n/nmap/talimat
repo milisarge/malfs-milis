@@ -9,7 +9,7 @@ release=1
 
 source=(http://nmap.org/dist/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 export PYTHON=python2
 ./configure --prefix=/usr \

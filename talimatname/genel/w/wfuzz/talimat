@@ -8,7 +8,7 @@ version=2.1.5
 release=1
 source=(https://github.com/xmendez/$name/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd "$SRC/$name-$version"
 
   mkdir -p "$PKG/usr/bin"

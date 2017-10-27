@@ -9,7 +9,7 @@ release=1
 
 source=(https://sources.archlinux.org/other/packages/$name/mp4v2-${version}.tar.bz2)
 
-build() {
+derle() {
 	cd mp4v2-$version
 	./configure --prefix=/usr
 	make

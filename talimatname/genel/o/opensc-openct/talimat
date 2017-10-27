@@ -9,7 +9,7 @@ version=0.16.0
 release=1
 source=(https://github.com/OpenSC/OpenSC/archive/$version.tar.gz)
 
-build() {
+derle() {
 	_prefix=/opt/$name
 
 	cd $_name-$version

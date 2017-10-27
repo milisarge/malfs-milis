@@ -10,7 +10,7 @@ release=3
 source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2
 0001-Pass-VT-number-to-xinit-if-XDG_VTNR-is-set.patch
         xfce-polkit-gnome-authentication-agent-1.desktop)
-build() {
+derle() {
 cd $name-$version
 patch -Np1 -i ../0001-Pass-VT-number-to-xinit-if-XDG_VTNR-is-set.patch
 ./configure \

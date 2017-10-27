@@ -8,7 +8,7 @@ version=0.6.0
 release=1
 source=(http://sourceforge.net/projects/extremetuxracer/files/releases/0.6.0/etr-$version.tar.xz)
 
-build() {
+derle() {
 
 cd etr-$version
 

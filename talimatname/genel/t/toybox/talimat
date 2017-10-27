@@ -8,7 +8,7 @@ version=0.7.4
 release=1.0
 source=(http://landley.net/toybox/downloads/toybox-$version.tar.gz)
 
-build() {
+derle() {
 	cd "${SRC}/${name}-${version}"
 	make menuconfig
 	bash scripts/make.sh

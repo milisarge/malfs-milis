@@ -19,7 +19,7 @@ source=(
 	bumblebeed
 )
 
-build() {
+derle() {
 	cd $name-$version
 
 	for p in $SRC/*.patch; do

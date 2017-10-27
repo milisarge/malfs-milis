@@ -8,7 +8,7 @@ release=1
 version=1.14.0
 source=( http://wayland.freedesktop.org/releases/$name-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr    \
             --disable-static \

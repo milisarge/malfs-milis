@@ -9,7 +9,7 @@ version=3.4.0
 release=1
 source=(http://downloads.sourceforge.net/project/${_name}/${_name}/${version}/python3-${_name}-${version}.tar.bz2)
 
-build() {
+derle() {
 	cd "${SRC}/${_name}-${version}"
 	python3 ./setup.py install --prefix=/usr --root="${PKG}" -O1
 }

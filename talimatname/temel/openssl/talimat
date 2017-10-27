@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.openssl.org/source/$name-$version.tar.gz)
 
-build() {
+derle() {
 unset MAKEFLAGS
 
 cd $name-$version

@@ -8,7 +8,7 @@ version=2.17
 release=1
 source=(https://github.com/eliben/$name/archive/release_v$version.zip::$name-$version.zip)
 
-build() {
+derle() {
 	cd $name-release_v$version
 	/usr/bin/python setup.py build
 

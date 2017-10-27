@@ -8,7 +8,7 @@ version=2.14
 release=1
 source=(http://feh.finalrewind.org/$name-$version.tar.bz2)
 
-build() {
+derle() {
         cd $name-$version
 	sed -i "s:doc/feh:&-2.14:" config.mk
         make PREFIX=/usr

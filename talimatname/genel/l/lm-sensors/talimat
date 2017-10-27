@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.osuosl.org/pub/blfs/conglomeration/lmsensors/lm_sensors-$version.tar.bz2)
 
-build() {
+derle() {
 	cd lm_sensors-$version
 	make PREFIX=/usr DESTDIR=$PKG \
 	BUILD_STATIC_LIB=0 \

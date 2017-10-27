@@ -9,7 +9,7 @@ release=1
 
 source=(http://launchpad.net/libindicator/0.5/$version/+download/libindicator-$version.tar.gz)
 
-build() {
+derle() {
 
   sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i libindicator-$version/libindicator/Makefile.{am,in}
   sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i libindicator-$version/configure

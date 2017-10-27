@@ -10,7 +10,7 @@ _name=polkit-kde-agent
 
 source=( http://download.kde.org/stable/plasma/$version/${_name}-1-$version.tar.xz)
 
-build() {
+derle() {
 cd ${_name}-1-$version
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \

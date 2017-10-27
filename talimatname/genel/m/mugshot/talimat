@@ -10,7 +10,7 @@ source=(https://launchpad.net/mugshot/${version%.*}/0.3.2/+download/$name-$versi
 		office-phone.patch
 		missing_default_face.patch)
 
-build() {
+derle() {
 	cd "${SRC}/${name}-${version}"
 	patch -p1 -i "${SRC}"/office-phone.patch
 	cd "${SRC}"

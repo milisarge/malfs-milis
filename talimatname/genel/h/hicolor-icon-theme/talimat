@@ -8,7 +8,7 @@ version=0.15
 release=1
 source=(  http://ftp.osuosl.org/pub/blfs/conglomeration/hicolor-icon-theme/$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr \
 	--mandir=/usr/share/man \

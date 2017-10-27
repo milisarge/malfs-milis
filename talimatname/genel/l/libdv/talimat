@@ -8,7 +8,7 @@ version=1.0.0
 release=1
 
 source=(http://downloads.sourceforge.net/libdv/libdv-1.0.0.tar.gz)
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --disable-xv \
 --disable-static

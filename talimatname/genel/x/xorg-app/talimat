@@ -9,7 +9,7 @@ release=1
 section=app
 source=()
 
-build() {
+derle() {
 unset MAKEFLAGS
 cat > list.md5 << "EOF"
 53a48e1fdfec29ab2e89f86d4b7ca902  bdftopcf-1.0.5.tar.bz2

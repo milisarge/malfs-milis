@@ -8,7 +8,7 @@ version=1.3.13
 release=1
 source=(http://littlesvr.ca/isomaster/releases/$name-$version.tar.bz2)
 
-build() {
+derle() {
   cd $name-$version
 
   make PREFIX=/usr

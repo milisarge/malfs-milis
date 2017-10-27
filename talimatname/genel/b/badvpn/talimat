@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/ambrop72/badvpn/archive/$version.tar.gz
 		badvpn-ncd.conf.d)
 
-build() {
+derle() {
 	cd $name-$version
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
 	make

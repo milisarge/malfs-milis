@@ -8,7 +8,7 @@ version=3.5
 release=1
 source=(https://github.com/mfontanini/libtins/archive/v$version.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
   cd "${SRC}/libtins-${version}"
   mkdir build
   cd build

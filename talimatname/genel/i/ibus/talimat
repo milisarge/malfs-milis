@@ -8,7 +8,7 @@ version=1.5.15
 release=1
            
 source=(https://github.com/ibus/ibus/releases/download/$version/$name-$version.tar.gz)
-build() {
+derle() {
 cd $name-$version
 
 sed -i 's@/desktop/ibus@/org/freedesktop/ibus@g' \

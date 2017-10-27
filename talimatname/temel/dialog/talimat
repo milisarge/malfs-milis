@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://dickey.his.com/dialog/$name-1.2-20140911.tgz)
 
-build() {
+derle() {
 	cd $name-1.2-20140911
 	./configure --prefix=/usr \
 	--enable-nls --bindir=/bin \

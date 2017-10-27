@@ -8,7 +8,7 @@ version=4.05.0
 release=1
 source=(http://caml.inria.fr/pub/distrib/$name-${version%.*}/$name-$version.tar.xz)
 
-build() {
+derle() {
     cd $name-$version
     ./configure -prefix /usr -x11include /usr/include -no-graph
     make -j1 world.opt

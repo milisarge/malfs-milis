@@ -7,7 +7,7 @@ version=3.8.2
 release=1
 
 source=(http://www.boomerangsworld.de/cms/$name/downloads/$name-$version.tar.gz)
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --enable-xft

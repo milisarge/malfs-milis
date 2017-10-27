@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/clbr/urlmatch/archive/v$version.tar.gz)
 	
-build() {
+derle() {
 	cd "${name}-$version"
 	make
 	make install DESTDIR="${PKG}"

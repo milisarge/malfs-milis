@@ -10,7 +10,7 @@ release=1
 source=(
 http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-$version.tar.gz)
 
-build() {
+derle() {
     cd XML-SAX-Base-$version
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1

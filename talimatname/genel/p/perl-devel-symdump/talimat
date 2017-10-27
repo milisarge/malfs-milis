@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/A/AN/ANDK/Devel-Symdump-$version.tar.gz)
 
-build() {
+derle() {
     cd Devel-Symdump-$version
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1

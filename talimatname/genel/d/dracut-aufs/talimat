@@ -9,7 +9,7 @@ release=1
 source=(aufs-mount.sh
 		module-setup.sh)
 
-build() {
+derle() {
 	install -d $PKG/usr/lib/dracut/modules.d/99aufs-mount
 	install -m 755 $SRC/aufs-mount.sh   $PKG/usr/lib/dracut/modules.d/99aufs-mount/
 	install -m 755 $SRC/module-setup.sh $PKG/usr/lib/dracut/modules.d/99aufs-mount/

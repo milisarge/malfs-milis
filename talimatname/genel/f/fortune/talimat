@@ -14,7 +14,7 @@ source=(http://www.ibiblio.org/pub/Linux/games/amusements/$name/$name-$version.t
   http://www.splitbrain.org/_media/projects/fortunes/fortune-discworld.tgz \
   http://crux.nu/files/distfiles/fortune-mod-prog-style.tar.gz)
 
-build(){
+derle(){
   local cookie
   cd $name-$version
 

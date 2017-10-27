@@ -10,7 +10,7 @@ release=1
 
 source=( https://launchpad.net/ubuntu/+archive/primary/+files/libtimezonemap_0.4.5.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
   autoreconf -vfi
   ./configure --prefix=/usr --enable-introspection --with-gtk=3

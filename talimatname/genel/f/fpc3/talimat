@@ -7,7 +7,7 @@ name=fpc3
 version=3.0.2
 release=1
 source=(ftp://ftp.freepascal.org/pub/fpc/dist/$version/source/fpcbuild-$version.tar.gz)
-build() {
+derle() {
 	cd "$SRC"/fpcbuild-$version
 	pushd fpcsrc/compiler
 	fpcmake -Tall

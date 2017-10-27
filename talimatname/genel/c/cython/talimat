@@ -8,7 +8,7 @@ version=0.26
 release=1
 source=(https://github.com/cython/cython/archive/$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	/usr/bin/python setup.py install --root $PKG
 	/usr/bin/python3 setup.py install --root $PKG

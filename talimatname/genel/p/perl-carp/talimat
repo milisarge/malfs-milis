@@ -8,7 +8,7 @@ version=1.38
 release=1
 source=(http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Carp-1.38.tar.gz)
 
-build() {
+derle() {
 	_distdir="Carp-1.38"
 	
 	export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

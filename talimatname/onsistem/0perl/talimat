@@ -1,7 +1,7 @@
 version=5.22.1
 source=(http://ftp.funet.fi/pub/CPAN/src/perl-$version.tar.bz2
 	)
-build()
+derle()
 {
 cd perl-$version
 

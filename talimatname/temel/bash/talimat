@@ -10,7 +10,7 @@ release=3
 source=(http://ftp.gnu.org/gnu/bash/bash-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-upstream_fixes-2.patch)
 
-build()
+derle()
 {
 cd bash-$version
 patch -Np1 -i ../$name-$version-upstream_fixes-2.patch

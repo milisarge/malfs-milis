@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://mama.indstate.edu/linux/$name/$name-$version.tgz)
 
-build () {
+derle() {
 	cd $name-$version
 	make
 	mkdir -p $PKG/usr/bin

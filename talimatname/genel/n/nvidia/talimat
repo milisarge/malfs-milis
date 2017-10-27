@@ -9,7 +9,7 @@ release=1
 source=(http://us.download.nvidia.com/XFree86/Linux-x86_64/$version/NVIDIA-Linux-x86_64-$version-no-compat32.run \
     90-nvidia-uvm.rules)
 
-build() {
+derle() {
     sh NVIDIA-Linux-x86_64-$version-no-compat32.run --extract-only
     cd NVIDIA-Linux-x86_64-$version-no-compat32
 

@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/cedl38/xfce4-windowck-plugin/archive/v0.4.4.tar.gz
 https://github.com/yasarciv/xfce4-windowck-plugin/raw/master/po/tr.po)
 
-build() {
+derle() {
   cd "$name-$version"
 cp ../tr.po $SRC/$name-$version/po/
 

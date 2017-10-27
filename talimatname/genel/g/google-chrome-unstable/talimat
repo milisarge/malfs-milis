@@ -11,7 +11,7 @@ release=1
 source=("https://dl.google.com/linux/direct/google-chrome-unstable_current_${_arch}.deb"
          "https://www.google.com/chrome/intl/en/eula_text.html")
 
-build() {
+derle() {
 
 	bsdtar -xf google-chrome-unstable_current_${_arch}.deb
 	bsdtar -xf data.tar.xz -C "$PKG/"

@@ -9,7 +9,7 @@ release=1
 
 source=(https://pypi.python.org/packages/source/a/astroid/astroid-${version}.tar.gz)
 
-build() {
+derle() {
     cd astroid-$version
     python3 setup.py check
     python3 setup.py install --prefix=/usr --root=$PKG

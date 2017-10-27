@@ -8,7 +8,7 @@ version=0.15.2
 release=1
 source=(http://sourceforge.net/projects/crawl-ref/files/Stone%20Soup/$version/stone_soup-${version}.tar.xz)
 
-build () {
+derle() {
 
     cd stone_soup-$version/source
 

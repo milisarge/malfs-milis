@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnu.org/gnu/libsigsegv/$name-$version.tar.gz)
 
-build () {
+derle() {
 
     cd $name-$version
     

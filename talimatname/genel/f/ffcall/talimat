@@ -8,7 +8,7 @@ version=1.10
 release=1
 source=(http://www.haible.de/bruno/gnu/${name}-${version}.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	[ "`uname -m`" = "x86_64" ] && CONFIGFLAG="--with-pic"
 	./configure --prefix=/usr --mandir=/usr/share/man $CONFIGFLAG

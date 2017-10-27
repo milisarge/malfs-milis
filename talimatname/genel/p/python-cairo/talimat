@@ -9,7 +9,7 @@ release=1
 
 source=(http://cairographics.org/releases/py2cairo-$version.tar.bz2)
 
-build() {
+derle() {
 	cd py2cairo-$version
 	python2 ./waf configure --prefix=/usr
 	./waf build

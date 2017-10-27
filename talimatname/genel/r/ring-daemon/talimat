@@ -8,7 +8,7 @@ version=4.0.0
 release=1
 source=(https://github.com/savoirfairelinux/$name/archive/$version.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
   cd "${name}-$version"
   autoreconf --force --install --verbose
   ./configure \

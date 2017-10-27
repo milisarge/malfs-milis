@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/A/AB/ABH/Mozilla-CA-$version.tar.gz)
 
-build() {
+derle() {
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 unset PERL5LIB PERL_MM_OPT
 

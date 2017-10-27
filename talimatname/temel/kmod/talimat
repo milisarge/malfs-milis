@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz )
 
-build()
+derle()
 {
 cd $name-$version
 ./configure --prefix=/usr \

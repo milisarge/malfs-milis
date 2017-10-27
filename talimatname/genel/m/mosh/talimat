@@ -9,7 +9,7 @@ release=1
 
 source=(http://mosh.mit.edu/$name-$version.tar.gz)
 
-build(){
+derle(){
     cd $name-$version
     ./autogen.sh
     ./configure --prefix=/usr

@@ -9,7 +9,7 @@ release=1
 #source=(http://downloads.sourceforge.net/freetype/$name-$version.tar.bz2 \
 source=(http://david.freetype.org/jam/${name}-${version}.tar.bz2)
 
-build() {
+derle() {
   cd "${SRC}/${name}-${version}"
   ./configure --prefix=/usr
   make

@@ -9,7 +9,7 @@ release=1
 
 source=(https://fedorahosted.org/releases/x/m/xmlto/$name-$version.tar.bz2)
 
-build() {
+derle() {
 unset MAKEFLAGS	
 cd $name-$version
 ./configure --prefix=/usr

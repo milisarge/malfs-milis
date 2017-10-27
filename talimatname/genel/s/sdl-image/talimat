@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.libsdl.org/projects/SDL_image/release/SDL_image-$version.tar.gz)
 
-build() {
+derle() {
 
 cd SDL_image-$version
 

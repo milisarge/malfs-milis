@@ -10,7 +10,7 @@ version=2.19
 release=1
 source=(https://github.com/ThomasHabets/${_projname}/archive/${_projname}-${version}.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd "${_projname}-${_projname}-$version"
 	autoreconf -i
 	./configure --prefix=/usr --program-suffix=${_suffix} --sbindir=/usr/bin

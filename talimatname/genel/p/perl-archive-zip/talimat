@@ -9,7 +9,7 @@ release=1
 
 source=(http://cpan.metacpan.org/authors/id/P/PH/PHRED/Archive-Zip-$version.tar.gz)
 
-build() {
+derle() {
 	cd Archive-*
         perl Makefile.PL
 	make OPTIMIZE="${CFLAGS}"

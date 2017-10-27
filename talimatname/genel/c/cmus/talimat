@@ -8,7 +8,7 @@ version=2.7.1
 release=1
 source=(https://github.com/cmus/cmus/archive/v${version}.tar.gz)
 
-build() {
+derle() {
     cd $name-$version
 
     ./configure prefix=/usr mandir=/usr/man CONFIG_ARTS=n

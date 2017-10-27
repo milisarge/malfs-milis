@@ -11,7 +11,7 @@ source=(http://www.cryptopp.com/cryptopp${_version}.zip
         crypto++-CVE-2015-2141.patch
         crypto++-libcrypto++.pc)
 
-build() {
+derle() {
 
   patch -p1 -i $SRC/crypto++-CVE-2015-2141.patch
 

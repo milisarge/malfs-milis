@@ -8,7 +8,7 @@ version=2.02.141
 release=1
 
 source=(ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz)
-build() {
+derle() {
 cd LVM2.$version
 ./configure \
 --prefix=/usr \

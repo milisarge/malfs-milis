@@ -9,7 +9,7 @@ release=1
 source=(https://sourceforge.net/projects/klavaro/files/klavaro-3.03.tar.bz2
 klavaro.mo)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr
   make

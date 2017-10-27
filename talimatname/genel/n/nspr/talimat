@@ -8,7 +8,7 @@ version=4.16
 release=1
 
 source=(http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$version/src/$name-$version.tar.gz )
-build () {
+derle() {
 
 cd $name-$version/$name
 sed -ri 's#^(RELEASE_BINS =).*#\1#' pr/src/misc/Makefile.in &&

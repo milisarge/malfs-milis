@@ -9,7 +9,7 @@ release=2
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	unset MAKEFLAGS
 	cd $SRC*
 

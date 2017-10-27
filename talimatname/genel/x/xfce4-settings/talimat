@@ -10,7 +10,7 @@ release=3
 source=(http://archive.xfce.org/src/xfce/${name}/${version%.*}/$name-$version.tar.bz2 
 default-xsettings-xml.patch)
 
-build() {
+derle() {
 cd $name-$version
 patch -Np1 -i $SRC/default-xsettings-xml.patch
 ./configure \

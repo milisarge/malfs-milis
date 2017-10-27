@@ -10,7 +10,7 @@ _name=polkit-qt-1
 
 source=(http://download.kde.org/stable/apps/KDE4.x/admin/${_name}-$version.tar.bz2)
 
-build() {
+derle() {
 cd ${_name}-$version
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \

@@ -9,7 +9,7 @@ release=2
 
 source=(http://ftp.gnu.org/gnu/bison/bison-$version.tar.xz)
 
-build(){
+derle(){
 	cd bison-$version
 	./configure --prefix=/usr \
 	--docdir=/usr/share/doc/$name-$version

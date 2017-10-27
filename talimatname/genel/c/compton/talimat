@@ -8,7 +8,7 @@ version=git
 release=1
 source=()
 
-build() {
+derle() {
 	cd $DERLEME_KAYNAKDIZIN
 	
 	if cd $name; then

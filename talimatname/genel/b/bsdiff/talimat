@@ -8,7 +8,7 @@ version=4.3
 release=1
 source=(https://github.com/mendsley/bsdiff/archive/master.tar.gz::$name-mendsley-$version.tar.gz)
 
-build() {
+derle() {
 	cd ${name}-master
 	./autogen.sh
 	./configure --prefix=/usr

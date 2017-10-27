@@ -9,7 +9,7 @@ release=2.0
 source=(https://github.com/firehol/$name/archive/v$version.tar.gz
 )
 
-build() {
+derle() {
 	cd "$name-$version"
 	./autogen.sh
 	./configure  --disable-man --prefix="/usr" --sysconfdir="/etc" --sbindir="/usr/bin"

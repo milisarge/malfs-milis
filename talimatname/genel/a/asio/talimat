@@ -8,7 +8,7 @@ version=1.10.8
 release=1
 source=(http://downloads.sourceforge.net/asio/$name-$version.tar.bz2)
 
-build() {
+derle() {
   cd "${SRC}/${name}-${version}"
   ./configure --prefix=/usr
   make

@@ -9,7 +9,7 @@ release=1
 
 source=(http://ludovic.rousseau.free.fr/softwares/pcsc-tools/$name-$version.tar.bz2)
 
-build() {
+derle() {
     cd $SRC/$name-$version 
      ./configure
      sed -i -e 's:-Wall -O2:${CFLAGS}:g' Makefile

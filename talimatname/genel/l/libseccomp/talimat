@@ -11,7 +11,7 @@ source=(
 http://downloads.sourceforge.net/project/$name/$name-$version/$name-$version.tar.gz)
 
 
-build(){
+derle(){
     cd $name-$version
     ./configure --prefix=/usr
     make

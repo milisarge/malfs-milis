@@ -7,7 +7,7 @@ source=(http://www.libarchive.org/downloads/$name-$version.tar.gz
 	http://downloads.nutyx.org/files/patchs/$name/$name-$version-sparce-mtree-01.patch
 	)
 
-build() {
+derle() {
 cd $name-$version
 patch -Np1 -i ../$name-$version-mtree-fix-line-filename-length-calculation-01.patch
 patch -Np1 -i ../$name-$version-limit-write-requests-to-at-most-INT_MAX-01.patch

@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.intra2net.com/en/developer/libftdi/download/${name}1-$version.tar.bz2)
 
-build() {
+derle() {
 cd ${name}1-$version
 sed -i 's|LIB_SUFFIX 64|LIB_SUFFIX ""|' CMakeLists.txt
 sed -i "s|MODE=\"0664\", GROUP=\"plugdev\"|TAG+=\"uaccess\"|g" packages/99-libftdi.rules

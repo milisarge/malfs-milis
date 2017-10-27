@@ -10,7 +10,7 @@ release=20160606
 source=( http://anduin.linuxfromscratch.org/BLFS/vlc/vlc-$version-$release.tar.xz
          lua53_compat.patch)
 	
-build() {
+derle() {
 
 cd vlc-$version-$release
 

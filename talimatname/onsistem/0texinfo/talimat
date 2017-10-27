@@ -2,7 +2,7 @@ version=6.1
 source=(\
 http://ftp.gnu.org/gnu/texinfo/texinfo-$version.tar.xz)
 
-build()
+derle()
 {
 cd texinfo-*
 

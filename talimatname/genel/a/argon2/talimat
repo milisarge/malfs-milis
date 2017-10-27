@@ -8,7 +8,7 @@ version=20161029
 release=1
 source=(https://github.com/P-H-C/phc-winner-argon2/archive/$version.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd phc-winner-argon2-$version
 	sed -i "/^#/d;s/\/@HOST_MULTIARCH@//g;s/@UPSTREAM_VER@/$version/g" libargon2.pc
 	sed -i '1d' libargon2.pc

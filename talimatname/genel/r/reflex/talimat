@@ -8,7 +8,7 @@ version=20100627
 release=1
 source=(ftp://invisible-island.net/${name}/${name}-${version}.tgz)
 
-build() {
+derle() {
     cd $name-$version
     ./configure --prefix=/usr --mandir=/usr/man
     make

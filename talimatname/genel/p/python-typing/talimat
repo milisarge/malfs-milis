@@ -8,7 +8,7 @@ version=3.6.1
 release=1
 source=(https://pypi.python.org/packages/17/75/3698d7992a828ad6d7be99c0a888b75ed173a9280e53dbae67326029b60e/typing-3.6.1.tar.gz)
 
-build() {
+derle() {
 	cd "$SRC/typing-$version"
 	python2 setup.py build
 	python2 setup.py install --prefix=/usr --root="$PKG" --optimize=1

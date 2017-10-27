@@ -10,7 +10,7 @@ release=1
 source=(http://ftp.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v${version}/$name-$version.tar.xz)
 
 
-build() {
+derle() {
 	export CFLAGS="$CFLAGS -std=gnu90"
         cd $name-$version
         ./configure --prefix=/usr \

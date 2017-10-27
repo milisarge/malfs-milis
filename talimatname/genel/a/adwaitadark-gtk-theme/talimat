@@ -8,7 +8,7 @@ version=1
 release=1
 source=(https://dl.opendesktop.org/api/files/download/id/1462546831/175933-AdwaitaDark.tar.gz)
 
-build() {
+derle() {
 	cd $SRC/AdwaitaDark 	
 	install -d "$PKG/usr/share/themes/AdwaitaDark/"
 	cp -a * "$PKG/usr/share/themes/AdwaitaDark/"

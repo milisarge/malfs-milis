@@ -10,7 +10,7 @@ release=1
 source=(
 https://pypi.python.org/packages/source/u/urwid/urwid-$version.tar.gz)
 
-build() {
+derle() {
     cd urwid-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

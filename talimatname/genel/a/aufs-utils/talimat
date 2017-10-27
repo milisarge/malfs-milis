@@ -8,7 +8,7 @@ version=20160301
 release=1
 source=()
 
-build() {
+derle() {
 	git clone git://git.code.sf.net/p/aufs/aufs-util aufs-aufs-util
 	cd aufs-aufs-util
 	date -d @$(git log -n1 --pretty=format:%ct) '+%Y%m%d'

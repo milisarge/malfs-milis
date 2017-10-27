@@ -8,7 +8,7 @@ version=1.9a
 release=1
 source=(http://mupdf.com/downloads/$name-$version-source.tar.gz)
 
-build() {
+derle() {
     cd $name-$version-source
     
     rm -r thirdparty/{freetype*,jpeg*,zlib,curl}

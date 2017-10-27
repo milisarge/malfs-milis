@@ -9,7 +9,7 @@ release=2
 
 source=(http://www.nico.schottelius.org/software/$name/archives/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	source /etc/blfs-bootscripts
 	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 	tar xvf $scripts-$scriptsversion.tar.bz2

@@ -8,7 +8,7 @@ version=2.6.4
 release=1
 source=(ftp://ftp.freepascal.org/pub/fpc/dist/$version/source/fpcbuild-$version.tar.gz)
 
-build() {
+derle() {
     cd fpcbuild-$version/fpcsrc
     mkdir -p $PKG/usr/lib/fpc/src
     cp -R . $PKG/usr/lib/fpc/src

@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.blender.org/source/blender-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	mkdir build
 	cd build

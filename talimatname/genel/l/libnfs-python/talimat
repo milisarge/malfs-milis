@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/sahlberg/$name/archive/master.zip::$name-${version}-$release.tar.gz)
 
-build() {
+derle() {
     cd $name-master
     python2 setup.py install --prefix=/usr --root=$PKG
     python3 setup.py install --prefix=/usr --root=$PKG

@@ -8,7 +8,7 @@ version=3.9.0
 release=6
 source=(http://gpodder.org/src/$name-$version.tar.gz)
 
-build(){
+derle(){
 	cd $name-$version
 	PYTHON=python2 DESTDIR=${PKG} make install || return 1
 	mkdir -p $PKG/usr/bin

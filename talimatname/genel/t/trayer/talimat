@@ -9,7 +9,7 @@ release=1
 source=(http://download.gna.org/fvwm-crystal/trayer/${version}/${name}-${version}.tar.gz
 		trayer.diff manpage.diff )
 
-build() {
+derle() {
 	cd $name-$version
 	patch -p0 -i ../trayer.diff
 	patch -p1 -i ../manpage.diff

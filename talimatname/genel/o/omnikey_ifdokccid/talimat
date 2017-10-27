@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.hidglobal.com/sites/hidglobal.com/files/drivers/ifdokccid_linux_x86_64-v$version.tar.gz)
 
-build() {
+derle() {
 cd $SRC/ifdokccid_linux_x86_64-v$version
     mkdir -p $PKG/usr/lib/pcsc/drivers
     cp -r ifdokccid_linux_x86_64-v$version.bundle $PKG/usr/lib/pcsc/drivers

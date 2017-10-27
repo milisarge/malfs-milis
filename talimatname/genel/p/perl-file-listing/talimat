@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/File-Listing-$version.tar.gz)
 
-build() {
+derle() {
 cd File-Listing-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

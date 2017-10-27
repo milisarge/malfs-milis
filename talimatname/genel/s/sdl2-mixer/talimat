@@ -8,7 +8,7 @@ version=2.0.1
 release=1
 source=(https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$version.tar.gz)
 
-build() {
+derle() {
 	cd "${SRC}/SDL2_mixer-${version}/"
 	sed -i "s|/etc/timidity|/etc/timidity++|g" timidity/config.h
 	sed -i "s|/etc/timidity++.cfg|/etc/timidity++/timidity.cfg|g" timidity/config.h

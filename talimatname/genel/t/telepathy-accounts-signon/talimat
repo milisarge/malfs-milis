@@ -9,7 +9,7 @@ release=1
 
 source=(https://gitlab.com/accounts-sso/$name/repository/archive.tar.gz)
 
-build() {
+derle() {
   mkdir -p build 
   cd build
   qmake-qt5 ../$name*

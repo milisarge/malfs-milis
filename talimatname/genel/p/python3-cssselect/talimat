@@ -9,7 +9,7 @@ release=1
 
 source=(https://pypi.python.org/packages/77/ff/9c865275cd19290feba56344eba570e719efb7ca5b34d67ed12b22ebbb0d/cssselect-$version.tar.gz)
 
-build() {
+derle() {
     cd cssselect-$version
     python3 setup.py install --prefix=/usr --root=$PKG
 }

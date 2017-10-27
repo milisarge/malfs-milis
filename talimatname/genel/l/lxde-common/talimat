@@ -13,7 +13,7 @@ source=(http://downloads.sourceforge.net/lxde/$name-$version.tar.xz
 	http://downloads.nutyx.org/files/patchs/xfce/wall-sekong.jpg 
 	lxde.desktop)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 	--sysconfdir=/etc

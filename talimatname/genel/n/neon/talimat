@@ -10,7 +10,7 @@ release=1
 source=( http://www.webdav.org/neon/$name-$version.tar.gz)
 
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --with-ssl \

@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IO-Tty-$version.tar.gz)
 
-build() {
+derle() {
     cd IO-Tty-$version
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1

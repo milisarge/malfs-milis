@@ -9,7 +9,7 @@ version=0.66
 release=1
 source=(obmenu-generator-src schema.pl)
 
-build() {
+derle() {
 	
 	install -d $PKG/etc/xdg/$name
 	install -D -m644 schema.pl $PKG/etc/xdg/$name

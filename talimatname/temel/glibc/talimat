@@ -12,7 +12,7 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$kernelversion.tar.xz
 	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-fhs-1.patch
 	http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz glibc.locales.supported )
 	
-build() {
+derle() {
 
 # Headers
 cd linux-$kernelversion

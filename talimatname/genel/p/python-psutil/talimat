@@ -10,7 +10,7 @@ release=1
 source=(
 https://pypi.python.org/packages/source/p/psutil/psutil-$version.tar.gz)
 
-build() {
+derle() {
     cd psutil-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 }

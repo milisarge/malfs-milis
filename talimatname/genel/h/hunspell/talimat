@@ -8,7 +8,7 @@ version=1.3.3
 release=1
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
         ./configure --prefix=/usr \
 		    --disable-static \

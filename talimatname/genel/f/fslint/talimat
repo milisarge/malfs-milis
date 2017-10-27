@@ -8,7 +8,7 @@ version=2.44
 release=1
 source=("http://www.pixelbeat.org/$name/$name-$version.tar.gz")
       
-build() {
+derle() {
   cd "${name}-${version}"
   sed -i -e s_^liblocation=.*_liblocation=\'/usr/share/fslint\'_ fslint-gui
   install -d "${PKG}"/usr/share/$name/fslint/{fstool,supprt/rmlint}

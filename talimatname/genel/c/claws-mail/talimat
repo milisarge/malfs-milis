@@ -8,7 +8,7 @@ version=3.15.1
 release=1
 source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --mandir=/usr/share/man \
 --disable-compface --disable-ldap \

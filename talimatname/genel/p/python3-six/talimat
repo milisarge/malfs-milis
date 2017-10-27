@@ -10,7 +10,7 @@ release=1
 source=(
 http://pypi.python.org/packages/source/s/six/six-$version.tar.gz)
 
-build() {
+derle() {
     cd six-$version
     python3 setup.py check
     python3 setup.py install --prefix=/usr --root=$PKG

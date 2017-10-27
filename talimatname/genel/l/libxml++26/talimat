@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnome.org/pub/GNOME/sources/libxml++/${version:0:4}/libxml++-${version}.tar.xz::$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd "${SRC}/libxml++-${version}"
   ./configure --prefix=/usr
 

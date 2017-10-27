@@ -8,7 +8,7 @@ version=4.6
 release=1
 source=(https://www.kernel.org/pub/software/network/$name/$name-$version.tar.xz)
 
-build() {
+derle() {
   cd $name-$version
 
   ./configure --prefix=/usr \

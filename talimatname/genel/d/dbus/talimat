@@ -9,7 +9,7 @@ release=1
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
        dbus.system-local.conf)
 
-build() {
+derle() {
 	source /etc/blfs-bootscripts
 	wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/$scripts-$scriptsversion.tar.bz2
 	tar xvf $scripts-$scriptsversion.tar.bz2

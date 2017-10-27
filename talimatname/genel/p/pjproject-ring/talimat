@@ -20,7 +20,7 @@ source=(http://www.pjsip.org/release/2.6/$_name-$version.tar.bz2
 		fix_ioqueue_ipv6_sendto.patch
 		add_dtls_transport.patch)
 
-build() {
+derle() {
   cd "${SRC}/${_name}-${version}"
 
   for patch in endianness.patch gnutls.patch notestsapps.patch fix_base64.patch \

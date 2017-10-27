@@ -10,7 +10,7 @@ release=2
 source=(https://github.com/milisarge/KutuphaneOtomasyonu/archive/$version.tar.gz
 		baglanti.java)
 
-build() {
+derle() {
 	cd KutuphaneOtomasyonu-$version
 	export JAVA_HOME=/opt/jdk
 	export ANT_HOME="/opt/ant"

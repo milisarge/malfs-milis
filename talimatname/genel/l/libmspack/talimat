@@ -8,7 +8,7 @@ version=1.5
 release=1
 source=(https://github.com/kyz/libmspack/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version/$name/trunk
   autoreconf -vfi
   ./configure --prefix=/usr --disable-static

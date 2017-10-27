@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.infodrom.org/projects/sysklogd/download/sysklogd-$version.tar.gz)
 
-build()
+derle()
 {
 cd sysklogd-$version
 

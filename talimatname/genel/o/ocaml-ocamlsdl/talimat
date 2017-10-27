@@ -8,7 +8,7 @@ version=0.9.1
 release=1
 source=(http://downloads.sourceforge.net/project/ocamlsdl/OCamlSDL/${name#ocaml-}-${version}/${name#ocaml-}-${version}.tar.gz)
 
-build() {
+derle() {
 	cd "${SRC}/${name#ocaml-}-${version}"
     ./configure
     make

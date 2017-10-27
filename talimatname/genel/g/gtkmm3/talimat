@@ -8,7 +8,7 @@ version=3.18.1
 release=1
 source=(http://download.gnome.org/sources/gtkmm/${version:0:4}/gtkmm-$version.tar.xz)
 
-build() {
+derle() {
 	cd gtkmm-$version
 	./configure --prefix=/usr
 	make -j1

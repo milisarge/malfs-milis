@@ -11,7 +11,7 @@ release=1
 
 source=(http://launchpad.net/libappindicator/${version%.*}/$version/+download/libappindicator-$version.tar.gz)
 
-build() {
+derle() {
 
   export CFLAGS+=" -Wno-error=deprecated-declarations"
   cd libappindicator-$version

@@ -10,7 +10,7 @@ release=1
 
 source=(http://ftp.acc.umu.se/pub/gnome/sources/$_name/${version%.*}/$_name-$version.tar.xz)
 	
-build() {
+derle() {
 cd $_name-$version
 ./configure --prefix=/usr
 make 

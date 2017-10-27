@@ -8,7 +8,7 @@ version=5.8.0
 release=1
 source=(https://bitbucket.org/pypy/pypy/downloads/pypy2-v$version-src.tar.bz2)
 
-build() {
+derle() {
 
 	cd pypy2-v${version}-src/pypy/goal
 

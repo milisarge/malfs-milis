@@ -9,7 +9,7 @@ release=1
 
 source=(https://pypi.io/packages/source/l/lxml/lxml-$version.tar.gz)
 
-build() {
+derle() {
     cd lxml-$version
     python3 setup.py install --prefix=/usr --root=$PKG
 }

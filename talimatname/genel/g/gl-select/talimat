@@ -8,6 +8,6 @@ version=1.6
 release=1
 source=(gl-select-kod)
 
-build() {
+derle() {
   install -D -m 0755 -o root -g root $SRC/gl-select-kod $PKG/usr/bin/$name
 }

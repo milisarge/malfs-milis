@@ -7,7 +7,7 @@ name=k3b
 version=20160902
 release=1
 
-build() {
+derle() {
    git clone git://anongit.kde.org/k3b.git
    mkdir build
    cd build

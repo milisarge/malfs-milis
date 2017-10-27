@@ -9,7 +9,7 @@ release=1
 source=(https://launchpad.net/indicator-sound/12.10/$version/+download/$name-$version.tar.gz
 		http://pkgbuild.com/~bgyorgy/sources/indicator-sound-translations-20130310.tar.gz)
 
-build() {
+derle() {
   cd ${name}-${version}
 # Install updated language files
   rename ${name}- '' ../po/${name}-*.po

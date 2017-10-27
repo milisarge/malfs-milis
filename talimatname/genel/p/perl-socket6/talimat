@@ -9,7 +9,7 @@ release=2
 
 source=(http://search.cpan.org/CPAN/authors/id/U/UM/UMEMOTO/Socket6-$version.tar.gz)
 
-build() {
+derle() {
 cd Socket6-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

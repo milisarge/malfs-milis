@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.sourceforge.net/infozip/unzip60.tar.gz)
 
 
-build() {
+derle() {
 	cd $name${version/./}
 	export CFLAGS="$CFLAGS -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NFS \
   -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT \

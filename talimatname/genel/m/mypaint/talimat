@@ -8,7 +8,7 @@ version=1.3.0
 release=1
 source=()
 
-build ()
+derle()
 { 
 	if [ -d $DERLEME_KAYNAKDIZIN/$name ];then
 		cd $DERLEME_KAYNAKDIZIN/$name

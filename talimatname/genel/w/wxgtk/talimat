@@ -9,7 +9,7 @@ release=2
 
 source=(http://downloads.sourceforge.net/wxwindows/wxWidgets-$version.tar.bz2
 	make-abicheck-non-fatal.patch)
-build() {
+derle() {
 cd wxWidgets-$version
 patch -Np1 -i ../make-abicheck-non-fatal.patch
 ./configure --prefix=/usr --libdir=/usr/lib --with-gtk=2 --with-opengl --enable-unicode \

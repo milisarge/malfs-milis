@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.ftp.uni-erlangen.de/archlinux/extra/os/x86_64/chromium-62.0.3202.62-1-x86_64.pkg.tar.xz)
 
-build() {
+derle() {
   cp -ar "$SRC/usr" "$PKG/usr"
   chmod 4755 "$PKG/usr/lib/chromium/chrome-sandbox"
 }

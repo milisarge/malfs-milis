@@ -9,7 +9,7 @@ release=1
 
 source=( https://github.com/openwifi-su/lwlocate/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd lwlocate-$version/master
   make -f Makelib
   make

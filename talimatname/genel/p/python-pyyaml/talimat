@@ -9,7 +9,7 @@ release=1
 
 source=(http://pyyaml.org/download/pyyaml/PyYAML-$version.tar.gz)
 
-build() {
+derle() {
 cd PyYAML-$version
 python setup.py build
 python setup.py install --optimize=1 --root=$PKG

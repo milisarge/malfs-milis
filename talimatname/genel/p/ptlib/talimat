@@ -10,7 +10,7 @@ release=1
 source=(ftp://ftp.gnome.org/pub/GNOME/sources/$name/${version%.*}/$name-$version.tar.xz
 	 http://www.linuxfromscratch.org/patches/blfs/svn/ptlib-$version-bison_fixes-1.patch)
 
-build() {
+derle() {
 cd $name-$version
 patch -Np1 -i ../ptlib-$version-bison_fixes-1.patch
 ./configure --prefix=/usr

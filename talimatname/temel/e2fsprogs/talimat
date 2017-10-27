@@ -9,7 +9,7 @@ release=1
 
 source=(http://prdownloads.sourceforge.net/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 
 sed -e '/int.*old_desc_blocks/s/int/blk64_t/' \

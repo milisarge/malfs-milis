@@ -8,7 +8,7 @@ version=3.1
 release=1
 source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i "s:sbin:bin:g" Makefile
 	make prefix=/usr

@@ -10,7 +10,7 @@ _name=ktp-desktop-applets
 
 source=(http://download.kde.org/stable/applications/$version/src/${_name}-$version.tar.xz)
 
-build() {
+derle() {
   cd ktp-desktop-applets-$version
   cmake -DCMAKE_INSTALL_PREFIX=/usr  \
         -DCMAKE_BUILD_TYPE=Release   \

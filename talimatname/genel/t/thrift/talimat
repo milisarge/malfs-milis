@@ -8,7 +8,7 @@ version=0.10.0
 release=1
 source=(https://github.com/apache/thrift/archive/$version.zip::$name-$zip.zip)
 
-build() {
+derle() {
 	cd thrift-$version
 
 	./bootstrap.sh

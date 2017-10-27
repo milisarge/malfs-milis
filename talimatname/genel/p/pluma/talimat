@@ -8,7 +8,7 @@ version=1.18.2
 release=1
 source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
 
-build() {
+derle() {
   cd $name-$version
     sed -i 's/python/python2/' plugins/externaltools/data/switch-c.tool.in
     PYTHON=/usr/bin/python2 ./configure \

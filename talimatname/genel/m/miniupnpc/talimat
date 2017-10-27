@@ -9,7 +9,7 @@ release=1
 
 source=(http://miniupnp.free.fr/files/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $SRC/$name-$version
   make
   make DESTDIR=$PKG install

@@ -9,7 +9,7 @@ release=1
 source=(http://tadas.dailyda.com/software/$name-$version.tar.gz
 		http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-build-fixes-1.patch)
  
-build() {
+derle() {
 
 cd $name-$version
 	

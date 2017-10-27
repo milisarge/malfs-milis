@@ -10,7 +10,7 @@ release=1
 source=(https://github.com/tdf/libcmis/releases/download/v$version/$name-$version.tar.gz
         google_drive.diff)
 
-build() {
+derle() {
   cd $name-$version
   patch -Np1 -i $SRC/google_drive.diff
  ./configure --prefix=/usr DOCBOOK2MAN='docbook2man' --disable-werror

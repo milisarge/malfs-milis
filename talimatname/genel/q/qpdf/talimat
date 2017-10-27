@@ -8,7 +8,7 @@ version=20170726
 release=2
 source=(https://github.com/qpdf/qpdf/archive/master.zip::$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-master
 	./autogen.sh
 	./configure --prefix=/usr    \

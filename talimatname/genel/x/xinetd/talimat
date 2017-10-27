@@ -9,7 +9,7 @@ release=1
 source=(ftp://anduin.linuxfromscratch.org/BLFS/xinetd/$name-$version.tar.gz
 		xinetd.conf chargen daytime echo systat xined_time )
  
-build() {
+derle() {
 
 cd $name-$version
 

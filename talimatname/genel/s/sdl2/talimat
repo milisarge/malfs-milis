@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.libsdl.org/release/SDL2-$version.tar.gz)
 
-build() {
+derle() {
   mkdir build
   cd build
   ../SDL2-$version/configure --prefix=/usr     \

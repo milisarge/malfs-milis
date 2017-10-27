@@ -8,7 +8,7 @@ version=1.6.17
 release=1
 source=(http://www.nlnetlabs.nl/downloads/ldns/$name-$version.tar.gz)
  
-build() {
+derle() {
 
 	cd $name-$version
 	

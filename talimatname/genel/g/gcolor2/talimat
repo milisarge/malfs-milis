@@ -10,7 +10,7 @@ source=(http://downloads.sourceforge.net/project/gcolor2/gcolor2/0.4/gcolor2-0.4
 	http://downloads.nutyx.org/files/patchs/$name/gcolor2.desktop
 	http://downloads.nutyx.org/files/patchs/$name/gcolor2-amd64-1.patch)
 
-build() {
+derle() {
 cd $name-$version
 [ "`uname -m`" == "x86_64" ] && (patch -p1 < ../gcolor2-amd64-1.patch)
 sed -i 's/\[:space:\]/[&]/g' configure

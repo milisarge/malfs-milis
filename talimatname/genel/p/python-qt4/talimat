@@ -8,7 +8,7 @@ version=4.11.2
 release=1
 
 source=(http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-$version/PyQt-x11-gpl-$version.tar.gz)
-build() {
+derle() {
 cd PyQt-x11-gpl-$version
 
 python2 configure-ng.py   \

@@ -9,7 +9,7 @@ release=1
 source=(http://www.ece.uvic.ca/~mdadams/$name/software/$name-$version.zip \
 	 http://www.linuxfromscratch.org/patches/blfs/svn/jasper-1.900.1-security_fixes-2.patch)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -Np1 -i ../$name-$version-security_fixes-2.patch
 	./configure --prefix=/usr --enable-shared \

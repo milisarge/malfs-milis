@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/benoitc/${name}/archive/${version}.tar.gz)
 
-build() {
+derle() {
 	cd "${name}-${version}"
 	python3 setup.py install --root="${PKG}" --prefix=/usr --optimize=1
 	mv "${PKG}/usr/bin/gunicorn" "${PKG}/usr/bin/gunicorn3"

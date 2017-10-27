@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.netlib.org/$name/$name-$version.tgz )
 
-build() {
+derle() {
 	cd $name-$version
 	mkdir build
 	cd build

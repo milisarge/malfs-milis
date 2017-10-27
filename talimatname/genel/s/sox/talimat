@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2
        sox-dynamic.patch) 
 
-build() {
+derle() {
   cd $name-$version
   sed -i 's|man1/sox.1 soxeffect.7|man1/sox.1.gz soxeffect.7.gz|' Makefile.in
 

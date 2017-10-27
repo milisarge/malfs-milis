@@ -11,7 +11,7 @@ source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.
 sed -e '/TryExec/s@=@=/usr/bin/@' \
     -i xsession/lxqt.desktop.in 
     
-build() {
+derle() {
 	mkdir -v build
 	cd build
 	cmake $SRC/$name-$version \

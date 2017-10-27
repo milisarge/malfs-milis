@@ -8,7 +8,7 @@ version=2.6.1
 release=1
 
 source=(https://github.com/google/protobuf/releases/download/v$version/protobuf-$version.tar.bz2)
-build () 
+derle() 
 { 
 cd ${name}-$version
 ./autogen.sh

@@ -9,7 +9,7 @@ version=0.1.26
 release=1
 source=(http://www.freedesktop.org/software/${name%-*}/releases/$name-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --enable-vala \

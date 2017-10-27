@@ -10,7 +10,7 @@ release=1
 source=(https://www.kernel.org/pub/linux/kernel/people/kdave/$name/$name-v$version.tar.xz
 	http://downloads.nutyx.org/files/$name-man-v$version.tar.xz)
 
-build(){
+derle(){
 cd $name-v$version
 ./configure --prefix=/usr libdir=/lib \
 bindir=/sbin

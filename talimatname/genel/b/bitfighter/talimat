@@ -11,7 +11,7 @@ source=(http://bitfighter.org/files/bitfighter-${version/./}.tar.gz
 		bitfighter.png
 		bitfighter.desktop)
 
-build() {
+derle() {
   cd ${name}-${version/./}
   mkdir -p build
   cd build

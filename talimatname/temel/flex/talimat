@@ -9,7 +9,7 @@ release=1
 
 source=(http://prdownloads.sourceforge.net/flex/flex-$version.tar.xz)
 
-build() {
+derle() {
 	cd flex-$version
 	sed -i -e '/test-bison/d' tests/Makefile.in
 

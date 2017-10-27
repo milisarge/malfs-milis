@@ -9,7 +9,7 @@ release=1
 
 source=(http://archive.ubuntu.com/ubuntu/pool/main/s/$name/${name}_$version.orig.tar.gz) 
 
-build() {
+derle() {
 cd $name-$version
 echo 'INSTALLS =' >>tests/unit/tst_inactivity_timer.pro
 echo 'INSTALLS =' >>tests/unit/tst_signon_ui.pro

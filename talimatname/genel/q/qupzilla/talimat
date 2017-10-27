@@ -10,7 +10,7 @@ release=2
 source=(https://github.com/QupZilla/qupzilla/releases/download/v$version/QupZilla-$version.tar.xz
 		https://raw.githubusercontent.com/6c37/crux-ports/3.3/qupzilla/plugins-80fea7d.zip)
 		
-build () {
+derle() {
 	cd QupZilla-$version
 	mv $SRC/$name-plugins-master/plugins/* src/plugins
 	export USE_WEBGL=true \

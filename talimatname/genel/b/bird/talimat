@@ -8,7 +8,7 @@ version=1.6.3
 release=1
 source=(ftp://bird.network.cz/pub/bird/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure \
     --prefix=/usr \

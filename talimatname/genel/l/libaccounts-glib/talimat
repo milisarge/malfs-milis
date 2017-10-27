@@ -11,7 +11,7 @@ PKGMK_KEEP_SOURCES="no"
 
 source=(https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.zip)      
                                                                                                          
-build() {
+derle() {
 cd libaccounts*
 ./autogen.sh
 ./configure \

@@ -9,7 +9,7 @@ release=1
 source=(http://slist.lilotux.net/linux/nethogs-qt/$name-$version.tgz
 		nethogs-qt.desktop)
 
-build() {
+derle() {
   cd "$SRC/$name-$version"
   qmake-qt5
   make

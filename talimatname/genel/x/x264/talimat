@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-${version/./-}-stable.tar.bz2)
 
-build() {
+derle() {
 cd x264-snapshot-${version/./-}-stable
 ./configure \
 --prefix=/usr \

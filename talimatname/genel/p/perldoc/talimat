@@ -13,7 +13,7 @@ perldoc.desktop
 perldoc.png
 )
 
-build(){
+derle(){
 mkdir -p $PKG/usr/share/doc/$name-$version
 cp -rf $SRC/perldoc-html/* \
 $PKG/usr/share/doc/$name-$version/

@@ -10,7 +10,7 @@ source=( http://gitweb.mageia.org/software/isodumper/snapshot/$name-$version.tar
          header.png
          header.svg)
 
-build() {
+derle() {
 cd $name-$version
 make
 make  DESTDIR=$PKG install

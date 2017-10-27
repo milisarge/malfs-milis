@@ -9,7 +9,7 @@ release=2
 
 source=( http://hal.freedesktop.org/releases/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd udisks-$version
 ./configure --prefix=/usr \
 --sysconfdir=/etc \

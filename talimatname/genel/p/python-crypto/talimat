@@ -10,7 +10,7 @@ release=1
 source=(
 http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-$version.tar.gz)
 
-build() {
+derle() {
     cd pycrypto-$version
     python2 setup.py build
     python2 setup.py install --prefix=/usr --root=$PKG

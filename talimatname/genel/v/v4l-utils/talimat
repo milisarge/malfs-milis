@@ -9,7 +9,7 @@ release=1
 
 source=(http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd "${SRC}/${name}-${version}"
 	./configure --prefix=/usr --sysconfdir=/etc
 	MAKEFLAGS="-j1" make install DESTDIR=$PKG

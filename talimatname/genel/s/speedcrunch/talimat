@@ -8,7 +8,7 @@ version=0.12.0
 release=1
 
 source=(https://bitbucket.org/heldercorreia/speedcrunch/get/release-$version.tar.bz2)
-build ()
+derle()
 {
 	cd */src
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr

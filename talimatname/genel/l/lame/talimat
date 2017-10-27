@@ -7,7 +7,7 @@ version=3.99.5
 release=2
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
-build() {
+derle() {
 cd $name-$version
 sed -i -e '/xmmintrin\.h/d' configure
 ./configure --prefix=/usr --enable-mp3rtp --disable-static

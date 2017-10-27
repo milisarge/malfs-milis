@@ -9,7 +9,7 @@ release=1
 
 source=(http://nodejs.org/dist/v$version/node-v$version.tar.xz
 node.npm.sh)
-build() {
+derle() {
 	cd node-v$version
 	./configure \
 	--prefix=/usr \

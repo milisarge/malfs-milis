@@ -8,7 +8,7 @@ version=1.34
 release=1
 source=(http://search.cpan.org/CPAN/authors/id/G/GI/GIRAFFED/Curses-$version.tar.gz)
 
-build() {
+derle() {
     cd Curses-$version
 
 	perl Makefile.PL

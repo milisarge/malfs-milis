@@ -8,7 +8,7 @@ version=3.52.10
 release=1
 
 source=(http://downloads.sourceforge.net/sourceforge/iodbc/$name-$version.tar.gz)
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --disable-static \

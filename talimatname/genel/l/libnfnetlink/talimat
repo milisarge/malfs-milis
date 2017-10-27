@@ -9,7 +9,7 @@ release=1
 source=(http://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2
 	sync_with_kernel_headers.patch)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -p1 -i $SRC/sync_with_kernel_headers.patch
 	./configure --prefix=/usr

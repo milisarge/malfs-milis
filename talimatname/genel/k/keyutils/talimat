@@ -9,7 +9,7 @@ release=1
 
 source=( http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 )
 
-build() {
+derle() {
 	unset MAKEFLAGS
         cd $name-$version
 	sed -i "s/-O2/${CFLAGS}/" Makefile

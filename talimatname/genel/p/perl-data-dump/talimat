@@ -10,7 +10,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/$_name-$version.tar.gz)
 
-build() {
+derle() {
 cd $_name-$version
 perl Makefile.PL
 make OPTIMIZE="$CFLAGS"

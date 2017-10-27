@@ -8,7 +8,7 @@ version=4.86
 release=1
 source=(ftp://ftp.exim.org/pub/exim/exim4/$name-$version.tar.bz2)
 
-build() {
+derle() {
 
     cd $name-$version
 

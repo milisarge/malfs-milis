@@ -8,7 +8,7 @@ version=7.4.2
 release=2
 source=(http://www.hboehm.info/gc/gc_source/gc-$version.tar.gz)
 
-build() {
+derle() {
 cd gc-*
 sed -i 's#pkgdata#doc#' doc/doc.am && autoreconf &&
 ./configure --prefix=/usr \

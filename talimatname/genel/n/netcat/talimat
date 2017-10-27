@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.sourceforge.net/netcat/netcat-0.7.1.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 
 	./configure --prefix=/usr \

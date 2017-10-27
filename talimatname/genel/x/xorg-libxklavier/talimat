@@ -10,7 +10,7 @@ release=1
 source=(http://pkgs.fedoraproject.org/repo/pkgs/libxklavier/${_name}-$version.tar.bz2/13af74dcb6011ecedf1e3ed122bd31fa/${_name}-$version.tar.bz2)
 
 
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr \
 --disable-static

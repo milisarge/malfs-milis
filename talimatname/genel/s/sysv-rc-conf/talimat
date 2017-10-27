@@ -9,7 +9,7 @@ version=0.98
 release=1
 source=($name.pl)
 
-build() {
+derle() {
 	mkdir $PKG/usr
 	mkdir $PKG/usr/bin
     install -m755 $name.pl $PKG/usr/bin/$name

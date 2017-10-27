@@ -8,7 +8,7 @@ version=17.0.0
 release=1
 source=( http://ftp.mozilla.org/pub/mozilla.org/js/mozjs$version.tar.gz )
 
-build () {
+derle() {
 cd mozjs$version/js/src
 sed -i 's/(defined\((@TEMPLATE_FILE)\))/\1/' config/milestone.pl
 ./configure --prefix=/usr       \

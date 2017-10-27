@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/sonakinci41/Milis-Yukleyici/archive/master.tar.gz::$name-$version.tar.gz
 		yukleyici.desktop)
 
-build() {
+derle() {
 
 	install -d  $PKG/usr/share/milis-yukleyici
 	install -d  $PKG/usr/share/applications

@@ -8,7 +8,7 @@ version=1.0.3
 release=1
 source=(http://www.netfilter.org/projects/libnetfilter_acct/files/$name-$version.tar.bz2)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr
   make

@@ -10,7 +10,7 @@ release=1
 
 source=(https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${version//./_}.tar.gz)
 
-build() {
+derle() {
 cd OpenSubdiv-${version//./_}
 rm -rf build
 mkdir build

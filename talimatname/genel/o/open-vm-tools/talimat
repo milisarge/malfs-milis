@@ -10,7 +10,7 @@ source=(https://github.com/vmware/open-vm-tools/archive/stable-${version/_/-}.ta
 		vmtools.rc
 		tools.conf)
 
-build(){
+derle(){
 	cd $name-stable-$version
 	cd $name
 	sed -ie 's|-Werror||g' configure.ac

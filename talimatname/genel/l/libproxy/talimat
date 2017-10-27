@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/libproxy/libproxy/archive/$version.tar.gz)
 
-build() {
+derle() {
 mkdir build
 cd build
 cmake ../${name}-${version}                 \

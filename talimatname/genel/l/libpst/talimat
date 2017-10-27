@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.five-ten-sg.com/libpst/packages/${name}-${version}.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --mandir=/usr/share/man \
    --disable-static --enable-libpst-shared --disable-dii

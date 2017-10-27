@@ -9,7 +9,7 @@ release=2
 
 source=( ftp://space.mit.edu/pub/davis/$name/v2.2/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	unset MAKEFLAGS
 	cd $name-$version
 	./configure --prefix=/usr \

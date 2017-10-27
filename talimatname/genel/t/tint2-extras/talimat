@@ -8,7 +8,7 @@ version=0.11
 release=1
 source=(http://tint2.googlecode.com/files/tint2-$version.tar.bz2)
 
-build() {
+derle() {
   cd tint2-$version
 
   cmake \

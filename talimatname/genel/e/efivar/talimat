@@ -8,7 +8,7 @@ version=0.24
 release=1
 source=( https://github.com/rhinstaller/$name/releases/download/$version/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
 cd src/test

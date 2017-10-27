@@ -8,7 +8,7 @@ version=2.12.42
 release=1
 source=(https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-${version}.tar.gz)
 
-build(){
+derle(){
 	cd gtk-sharp-${version}
 	./configure --prefix=/usr --sysconfdir=/etc --disable-static
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool

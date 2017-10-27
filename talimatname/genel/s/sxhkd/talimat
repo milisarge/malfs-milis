@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/baskerville/sxhkd/archive/$version.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   make PREFIX=/usr
   make PREFIX=/usr DESTDIR="$PKG" install

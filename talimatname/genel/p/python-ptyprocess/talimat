@@ -8,7 +8,7 @@ version=0.5.1
 release=1
 source=(https://pypi.python.org/packages/source/p/ptyprocess/ptyprocess-$version.tar.gz)
 
-build() {
+derle() {
 	cd ptyprocess-$version
 	python setup.py install --root="$PKG/" --prefix=/usr --optimize=0
 }

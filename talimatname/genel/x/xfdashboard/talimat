@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/gmc-holle/xfdashboard/archive/0.7.3.tar.gz
 )
 
-build() {
+derle() {
   cd $name-$version
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --disable-dependency-tracking
 

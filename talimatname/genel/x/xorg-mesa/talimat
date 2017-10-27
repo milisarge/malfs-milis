@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.freedesktop.org/pub/mesa/mesa-$version.tar.xz)
 
-build() {
+derle() {
 	cd mesa-$version
 
 	CONFIG_SHELL=/bin/bash \

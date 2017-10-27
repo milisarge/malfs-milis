@@ -10,7 +10,7 @@ version=0.5
 _name=qtkeychain
 source=(https://github.com/frankosterfeld/qtkeychain/archive/$version.zip )
 
-build() {
+derle() {
 mkdir build
 cd    build
 cmake ../$_name-$version            \

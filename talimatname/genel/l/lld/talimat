@@ -8,7 +8,7 @@ version=4.0.0
 release=1
 source=(http://releases.llvm.org/$version/lld-$version.src.tar.xz)
 
-build() {
+derle() {
   
   cd $name-$version.src
   mkdir build

@@ -8,7 +8,7 @@ version=1.3.3
 release=1
 source=(http://fltk.org/pub/fltk/$version/fltk-$version-source.tar.gz)
 
-build() {
+derle() {
 cd fltk-*
 
 sed -i -e '/cat./d' documentation/Makefile

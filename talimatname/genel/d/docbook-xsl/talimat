@@ -9,7 +9,7 @@ release=2
 source=(http://downloads.sourceforge.net/docbook/$name-$version.tar.bz2
 	 http://downloads.sourceforge.net/docbook/docbook-xsl-doc-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 install -v -m755 -d $PKG/usr/share/xml/docbook/xsl-stylesheets-$version
 cp -v -R VERSION common eclipse epub epub3 extensions fo highlighting html \

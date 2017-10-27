@@ -8,7 +8,7 @@ version=0.9.49
 release=1
 source=(https://updates.tdesktop.com/tlinux/tsetup.$version.tar.xz)
 
-build() {
+derle() {
 	cd Telegram
 
 	install -Dm755 Telegram $PKG/usr/bin/telegram

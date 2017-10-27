@@ -9,7 +9,7 @@ release=1
 source=(https://www.hiawatha-webserver.org/files/$name-$version.tar.gz
         hiawatha.conf.sample)
 
-build() {
+derle() {
 
   cd "$name-$version"
   sed -i 's/www-data/http/g' extra/logrotate.in

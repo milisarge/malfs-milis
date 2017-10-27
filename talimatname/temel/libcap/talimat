@@ -9,7 +9,7 @@ release=1
 
 source=(  https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$version.tar.xz)
 
-build() {
+derle() {
 cd libcap-$version
 sed -i 's:LIBDIR:PAM_&:g' pam_cap/Makefile
 sed -i '/install.*STALIBNAME/d' libcap/Makefile

@@ -8,7 +8,7 @@ version=3.3.2
 release=1
 source=(http://downloads.sourceforge.net/sourceforge/${name}/${name}-${version}.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	make DESTDIR="$PKG" prefix=/usr install
 }

@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd gmp-$version
 	case `uname -m` in
 	 i?86)

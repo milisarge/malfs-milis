@@ -9,7 +9,7 @@ release=1
 source=(http://www.impredicative.com/ur/urweb-$version.tgz
 		use-system-uthash.patch)
 
-build() {
+derle() {
 	cd "$name-$version"
 	patch -p1 -i "$SRC/use-system-uthash.patch"
 	./configure --prefix=/usr

@@ -9,7 +9,7 @@ release=1
 
 source=(https://gitlab.com/accounts-sso/signon-plugin-oauth2/repository/archive.tar.gz)
 
-build() {
+derle() {
 cd signon-plugin-oauth2*
 sed -i '/-Werror/d' common-project-config.pri
 

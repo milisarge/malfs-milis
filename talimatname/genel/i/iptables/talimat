@@ -8,7 +8,7 @@ version=1.6.0
 release=1
 source=(ftp://ftp.netfilter.org/pub/iptables/$name-$version.tar.bz2)
 
-build () {
+derle() {
     cd $name-$version
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \

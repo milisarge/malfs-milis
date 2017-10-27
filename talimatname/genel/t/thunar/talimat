@@ -9,7 +9,7 @@ release=1
 
 source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2
 		no-root-warning.patch)
-build() {
+derle() {
 	cd Thunar-$version
 	patch $SRC/Thunar-$version/thunar/thunar-window.c $SRC/no-root-warning.patch
 	./configure \

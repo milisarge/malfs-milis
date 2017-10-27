@@ -8,7 +8,7 @@ version=2.1
 release=1
 
 source=(http://www.csie.ntu.edu.tw/~cjlin/liblinear/oldfiles/$name-$version.tar.gz)
-build() {
+derle() {
 cd $name-$version
 make lib
 mkdir -p $PKG/usr/{lib,include}

@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/cracklib/cracklib/releases/download/$name-$version/$name-$version.tar.gz
 	https://github.com/cracklib/cracklib/releases/download/$name-$version/$name-words-2.9.6.gz)
 
-build()
+derle()
 {
 if [ "`uname -m`" == "x86_64" ]; then
         LIB=lib64

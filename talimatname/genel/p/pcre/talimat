@@ -8,7 +8,7 @@ version=8.38
 release=1
 
 source=( ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/$name-$version.tar.bz2 )
-build() {
+derle() {
 cd $name-$version
 
 [ "${CARCH}" = "x86_64" ] && export CFLAGS="${CFLAGS} -fPIC"

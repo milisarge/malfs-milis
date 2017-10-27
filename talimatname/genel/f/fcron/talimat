@@ -8,7 +8,7 @@ version=3.2.0
 release=1
 source=(http://fcron.free.fr/archives/$name-$version.src.tar.gz )
 
-build() {
+derle() {
 unset MAKEFLAGS
 source /etc/blfs-bootscripts
 wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

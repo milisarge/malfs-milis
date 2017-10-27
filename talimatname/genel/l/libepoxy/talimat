@@ -9,7 +9,7 @@ release=1
 
 source=( https://github.com/anholt/libepoxy/releases/download/v$version/libepoxy-$version.tar.bz2)
 
-build() {
+derle() {
 cd libepoxy-$version
 ./configure --prefix=/usr
 make

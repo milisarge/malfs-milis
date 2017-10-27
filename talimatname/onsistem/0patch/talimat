@@ -1,7 +1,7 @@
 version=2.7.5
 source=(http://ftp.gnu.org/gnu/patch/patch-$version.tar.xz)
 
-build()
+derle()
 {
 cd patch-$version
 

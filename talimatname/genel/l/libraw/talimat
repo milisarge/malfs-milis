@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.libraw.org/data/LibRaw-$version.tar.gz)
 
-build ()
+derle()
 {
 cd LibRaw-$version
 ./configure --prefix=/usr

@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz{,.asc})
 
-build() {
+derle() {
 cd $name-$version
 PYTHONPROG=/usr/bin/python2 ./configure --prefix=/usr \
     --sysconfdir=/etc --sbindir=/usr/bin \

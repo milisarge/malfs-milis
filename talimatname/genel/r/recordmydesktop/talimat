@@ -8,7 +8,7 @@ version=0.3.8.1
 release=1
 source=(http://download.sourceforge.net/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr \
               --mandir=/usr/man

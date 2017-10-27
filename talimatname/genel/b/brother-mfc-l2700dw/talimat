@@ -9,7 +9,7 @@ release=1
 source=(http://download.brother.com/welcome/dlf101789/mfcl2700dwlpr-$version-1.i386.rpm
 	    http://download.brother.com/welcome/dlf101790/mfcl2700dwcupswrapper-$version-1.i386.rpm)
 
-build() {
+derle() {
 #  '/usr/local' klasörüne kurma
 	if [ -d $SRC/usr/local/Brother ]; then
 		install -dm755 "$SRC/usr/share"

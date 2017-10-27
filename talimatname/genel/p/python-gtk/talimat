@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/pygtk/${version%.*}/pygtk-$version.tar.bz2)
 	
-build() {
+derle() {
 cd pygtk-$version
 ./configure --prefix=/usr
 make

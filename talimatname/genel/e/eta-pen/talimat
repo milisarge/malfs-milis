@@ -11,7 +11,7 @@ source=(https://github.com/E-Tahta/eta-pen/archive/master.tar.gz::$name-$version
 		tahtakalemi.png
         eta-pen.desktop)
 
-build() {
+derle() {
 	
 	cd $SRC/$name-master
 	qmake-qt5 eta-pen.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug 

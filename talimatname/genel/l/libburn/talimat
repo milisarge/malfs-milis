@@ -9,7 +9,7 @@ release=1
 
 source=(http://files.libburnia-project.org/releases/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --disable-static
 make

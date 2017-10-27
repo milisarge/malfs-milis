@@ -8,7 +8,7 @@ version=1.16.0
 release=1
 source=(http://kcat.strangesoft.net/openal-releases/openal-soft-$version.tar.bz2 )
 
-build() {
+derle() {
 cd openal-soft-$version/build
 
 cmake ../ \

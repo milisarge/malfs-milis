@@ -10,7 +10,7 @@ release=1
 #source=(http://encfs.googlecode.com/files/$name-$version.tgz )
 source=(https://github.com/vgough/$name/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
 
   autoreconf -if

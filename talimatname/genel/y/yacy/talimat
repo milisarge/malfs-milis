@@ -11,7 +11,7 @@ release=1
 source=("http://www.yacy.net/release/yacy_v${version}_${_pkgextraver}.tar.gz"
         yacy.rc)
 
-build() {
+derle() {
 	. /etc/profile.d/ant.sh
 
 	cd "$SRC/$name"

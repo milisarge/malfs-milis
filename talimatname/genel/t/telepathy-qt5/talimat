@@ -9,7 +9,7 @@ release=1
 
 source=(http://telepathy.freedesktop.org/releases/telepathy-qt/telepathy-qt-$version.tar.gz)
 
-build() {
+derle() {
   cd telepathy-qt-$version
   cmake -DCMAKE_BUILD_TYPE=Release   \
         -DCMAKE_INSTALL_PREFIX=/usr  \

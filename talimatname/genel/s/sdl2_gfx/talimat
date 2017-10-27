@@ -8,7 +8,7 @@ version=1.0.3
 release=1
 source=(http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-$version.tar.gz)
 
-build() {
+derle() {
 	cd SDL2_gfx-$version
 	./configure --prefix=/usr
 	make

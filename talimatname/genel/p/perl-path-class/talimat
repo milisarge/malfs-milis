@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/Path-Class-$version.tar.gz)
 
-build() {
+derle() {
 export PERL_MM_USE_DEFAULT=1 PERL5LIB=""  \
        PERL_AUTOINSTALL=--skipdeps        \
        PERL_MM_OPT="INSTALLDIRS=vendor"   \

@@ -18,7 +18,7 @@ source=(http://downloads.sourceforge.net/project/vice-emu/releases/vice-$version
 	icons.tar.gz
 	vice)
 
-build() {
+derle() {
 	cd vice-$version
 	patch -p1 < $SRC/vice-2.4-no-fc-cache.patch || return
 	patch -p1 < $SRC/vice-2.4-64bit.patch || return

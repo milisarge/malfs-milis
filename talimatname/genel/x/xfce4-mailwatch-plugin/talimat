@@ -9,7 +9,7 @@ release=1
 
 source=(http://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$version.tar.bz2)
 
-build() {
+derle() {
   cd "$SRC/$name-$version"
 
   ./configure \

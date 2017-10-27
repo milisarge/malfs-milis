@@ -8,7 +8,7 @@ version=2.0
 release=1
 source=(http://freedesktop.org/software/pulseaudio/pavucontrol/$name-$version.tar.xz pavucontrol-gtk2.patch)
 
-build() {
+derle() {
 	cd $name-$version
 
 	# Fix gtk2 compilation

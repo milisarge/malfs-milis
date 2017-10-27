@@ -37,7 +37,7 @@ unpack_source() {
 	done
 }
 
-build() {
+derle() {
 	JAVA_DIR=/opt/OpenJDK-8u60-bin
 
 	mkdir $SRC/build

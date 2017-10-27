@@ -8,7 +8,7 @@ version=4.22
 release=1
 source=(http://dist.schmorp.de/$name/Attic/$name-$version.tar.gz)
 
-build () {
+derle() {
     cd $name-$version
     ./configure --prefix=/usr \
         --disable-static

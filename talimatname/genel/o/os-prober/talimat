@@ -8,7 +8,7 @@ version=1.71
 release=1
 source=(http://ftp.de.debian.org/debian/pool/main/o/os-prober/os-prober_1.71.tar.xz)
 
-build() {
+derle() {
 	cd $name-$version
 
 	# Compile newns

@@ -8,7 +8,7 @@ version=0.7.0
 release=1
 source=(https://github.com/zaphoyd/${name}/archive/${version}.tar.gz)
 
-build() {
+derle() {
 	cd ${name}-${version}
 	WSPP_ENABLE_CPP11=1 \
 	BOOST_LIBS=/usr/lib \

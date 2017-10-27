@@ -9,7 +9,7 @@ release=2
 
 source=(http://icculus.org/openbox/obconf/$name-$version.tar.gz)
 
-build() {
+derle() {
    cd $name-$version
    ./configure --prefix=/usr
    make

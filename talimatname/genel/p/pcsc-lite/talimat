@@ -8,7 +8,7 @@ version=1.8.21
 release=1
 source=(https://alioth.debian.org/frs/download.php/file/4216/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i -e "s:python:python2:g" src/spy/pcsc-spy
 	./configure --prefix=/usr \

@@ -10,7 +10,7 @@ release=1
  
 source=(http://downloads.sourceforge.net/lxde/${_name}-$version.tar.gz)
  
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr 	
 make

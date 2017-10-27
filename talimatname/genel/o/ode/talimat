@@ -8,7 +8,7 @@ version=0.11.1
 release=1
 source=(http://download.sourceforge.net/opende/$name-$version.tar.bz2)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr \
               --disable-static \

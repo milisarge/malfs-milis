@@ -9,7 +9,7 @@ release=1
 source=(https://github.com/QtDesktop/$name/archive/v$version.tar.gz \
 qps.desktop)
 
-build() {
+derle() {
 	
 	cd $SRC/$name-$version
     cmake .

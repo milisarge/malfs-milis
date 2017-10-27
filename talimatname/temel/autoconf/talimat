@@ -8,7 +8,7 @@ version=2.69
 release=1
 
 source=(http://ftp.gnu.org/gnu/autoconf/autoconf-$version.tar.xz)
-build()
+derle()
 {
 cd autoconf-$version
 ./configure --prefix=/usr

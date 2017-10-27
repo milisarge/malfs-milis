@@ -9,7 +9,7 @@ version=2.4.2
 release=1
 source=(https://pypi.python.org/packages/source/G/Glances/Glances-$version.tar.gz)
 
-build() {
+derle() {
   cd Glances-$version
   python setup.py install -O1 --prefix='/usr' --root=$PKG --optimize=1
 }

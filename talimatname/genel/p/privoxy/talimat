@@ -10,7 +10,7 @@ source=(https://downloads.sourceforge.net/ijbswa/privoxy-$version-stable-src.tar
 		privoxy.logrotate.d
 		privoxy.sysusers)
 
-build() {
+derle() {
   cd "${SRC}/${name}-${version}-stable"
 
   autoheader

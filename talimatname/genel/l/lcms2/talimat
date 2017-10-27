@@ -10,7 +10,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/lcms/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name*
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \

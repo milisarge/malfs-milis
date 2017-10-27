@@ -10,6 +10,6 @@ release=1
 
 source=()
 
-build() {
+derle() {
 echo "lxqt sistem"
 }

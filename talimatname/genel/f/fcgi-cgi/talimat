@@ -8,7 +8,7 @@ version=0.2.2
 release=1
 source=(http://git.lighttpd.net/fcgi-cgi.git/snapshot/$name-$version.tar.gz)
 
-build(){
+derle(){
 	cd $name-$version
 	./autogen.sh
 	./configure --prefix=/usr

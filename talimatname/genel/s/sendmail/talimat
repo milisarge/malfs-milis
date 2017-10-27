@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.sendmail.org/pub/$name/$name.$version.tar.gz site.config.m4)
 
-build() {
+derle() {
 
     cd $name-$version
     

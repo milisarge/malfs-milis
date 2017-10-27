@@ -10,7 +10,7 @@ release=1
 source=( ftp://ftp.musicbrainz.org/pub/musicbrainz/historical/libmusicbrainz-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/blfs/svn/libmusicbrainz-$version-missing-includes-1.patch )
 
-build() {
+derle() {
 cd libmusicbrainz-$version
 patch -Np1 -i ../libmusicbrainz-$version-missing-includes-1.patch
 ./configure --prefix=/usr --disable-static

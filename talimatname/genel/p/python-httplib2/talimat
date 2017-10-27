@@ -12,7 +12,7 @@ https://github.com/jcgregorio/httplib2/archive/v${version}.tar.gz
 $name.ssl_hostname.patch
 $name.cert.patch)
 
-build() {
+derle() {
     cd httplib2-$version
     # Patch, ref FS#36839
     patch -p1 -i $SRC/$name.ssl_hostname.patch

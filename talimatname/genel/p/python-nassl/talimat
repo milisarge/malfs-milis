@@ -8,7 +8,7 @@ version=0.15.1
 release=1
 source=(https://pypi.python.org/packages/88/9b/31de4f1419d310d0c967d2dcd38e880b413c0912433a448866c4db0dcd02/nassl-0.15.1.tar.gz)
 
-build() {
+derle() {
 	cd "$SRC/nassl-$version"
 	python2 setup.py build
 	python2 setup.py install --root="$PKG" --optimize=1

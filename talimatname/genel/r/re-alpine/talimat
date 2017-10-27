@@ -8,7 +8,7 @@ version=2.03
 release=1
 source=(http://sourceforge.net/projects/re-alpine/files/$name-$version.tar.bz2)
  
-build() {
+derle() {
 
 cd $name-$version
 	

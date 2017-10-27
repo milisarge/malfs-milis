@@ -9,7 +9,7 @@ release=1
 
 source=( https://github.com/kergoth/tslib/releases/download/1.1/tslib-1.1.tar.xz)
 
-build(){
+derle(){
 cd $name-$version
 ./autogen.sh
 ./configure --prefix=/usr \

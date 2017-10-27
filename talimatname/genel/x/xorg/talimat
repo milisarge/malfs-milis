@@ -9,7 +9,7 @@ release=1
 section=driver
 source=()
 
-build() {
+derle() {
 cat > list.md5 << "EOF"
 0f209d13b39427c1a6d38d70059b1e8f  xf86-input-evdev-2.10.4.tar.bz2
 58e5b7722a402114093bf193962d1e3a  xf86-input-synaptics-1.9.0.tar.bz2

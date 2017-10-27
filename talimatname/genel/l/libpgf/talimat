@@ -9,7 +9,7 @@ release=1
 
 source=(http://sourceforge.net/projects/$name/files/$name/$version-latest/libPGF-codec-and-console-src.zip)
 
-build() {
+derle() {
  cd $SRC/PGF/Codec
  dos2unix configure.ac
  sh ./autogen.sh

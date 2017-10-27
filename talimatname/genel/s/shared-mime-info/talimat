@@ -9,7 +9,7 @@ release=1
 
 source=( http://freedesktop.org/~hadess/$name-$version.tar.xz)
 
-build() {
+derle() {
 unset MAKEFLAGS
 cd $name-$version
 ./configure --prefix=/usr --disable-update-mimedb

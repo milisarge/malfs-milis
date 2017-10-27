@@ -10,7 +10,7 @@ release=1
 
 source=(http://freefr.dl.sourceforge.net/sourceforge/obmenu/$name-$version.tar.gz)
  
-build() {
+derle() {
 cd $name-$version
 python2 setup.py install --root=$PKG
    

@@ -8,7 +8,7 @@ version=devel
 release=1
 source=(https://github.com/gtk-gnutella/gtk-gnutella/archive/$version.tar.gz)
 
-build() {
+derle() {
     cd gtk-gnutella-devel
   ./build.sh --prefix=/usr --enable-halloc --gtk2
   make install INSTALL_PREFIX=$PKG/

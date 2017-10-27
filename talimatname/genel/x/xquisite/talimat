@@ -8,7 +8,7 @@ version=0.4.6
 release=1
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
 
-build() {
+derle() {
 mkdir -p $PKG//usr/share/icons/
 cp -a * $PKG//usr/share/icons/
 }

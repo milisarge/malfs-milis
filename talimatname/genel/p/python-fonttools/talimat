@@ -9,7 +9,7 @@ release=1
 
 source=(http://pypi.python.org/packages/source/F/FontTools/FontTools-$version.tar.gz)
 
-build() {
+derle() {
     cd FontTools-$version
     python2 setup.py build install --root=$PKG       
 }

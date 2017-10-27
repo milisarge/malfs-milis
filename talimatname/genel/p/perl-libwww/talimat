@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/libwww-perl-$version.tar.gz)
 
-build() {
+derle() {
 cd libwww-perl-$version
 perl Makefile.PL  --aliases IINSTALLDIRS=vendor
 make

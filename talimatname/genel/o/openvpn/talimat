@@ -9,7 +9,7 @@ release=1
 source=(http://swupdate.openvpn.net/community/releases/$name-$version.tar.gz \
         openvpnd)
 
-build() {
+derle() {
   install -D -m 755 openvpnd $PKG/etc/rc.d/init.d/openvpn
   cd $name-$version
 

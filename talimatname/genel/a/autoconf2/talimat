@@ -9,7 +9,7 @@ version=2.13
 release=1
 source=( http://mirror.rackdc.com/gnu/${_name}/${_name}-$version.tar.gz)
 
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr \
             --infodir=/usr/share/info \

@@ -10,7 +10,7 @@ version=2.32.0
 release=1
 
 source=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${version%.*}/${_name}-$version.tar.bz2)
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr
 make -C rsvg install DESTDIR=$PKG

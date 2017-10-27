@@ -9,7 +9,7 @@ release=1
 
 source=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz)
 
-build() {
+derle() {
 
 cd $name-$version
 ./configure --prefix=/usr \

@@ -8,7 +8,7 @@ version=git
 release=1
 source=(https://github.com/robm/dzen/archive/master.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd "$SRC"/$name-master
 	sed -i 's|DZEN_XMP|DZEN_XPM|g' main.c
 

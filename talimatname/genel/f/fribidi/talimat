@@ -8,7 +8,7 @@ version=0.19.7
 release=1
 source=( http://fribidi.org/download/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 sed -i "s|glib/gstrfuncs\.h|glib.h|" charset/fribidi-char-sets.c
 sed -i "s|glib/gmem\.h|glib.h|" lib/mem.h

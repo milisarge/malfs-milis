@@ -9,7 +9,7 @@ release=1
 source=(https://www.vpn.net/installers/$name-$version-x64.tgz 
 		hamachi.servis)
 
-build() {
+derle() {
 
 	cd "${SRC}"/logmein-hamachi-2.1.0.174-x64
 	# Directories

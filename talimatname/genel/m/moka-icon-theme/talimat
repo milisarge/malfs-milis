@@ -9,7 +9,7 @@ version=5.3.5
 release=1
 source=(https://github.com/snwh/$name/archive/v$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
         bash autogen.sh --prefix=/usr
 		make

@@ -11,7 +11,7 @@ _version=5.27
 
 source=( http://download.kde.org/stable/frameworks/${_version}/portingAids/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 cd ${_name}-$version
 
 sed -i "s:4.2:4.5:g" cmake/FindDocBookXML4.cmake

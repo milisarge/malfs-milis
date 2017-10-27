@@ -9,7 +9,7 @@ release=1
 
 source=(http://lcamtuf.coredump.cx/p0f3/releases/p0f-3.09b.tgz)
 
-build() {
+derle() {
     cd $name-$version
     install -d $PKG/usr/bin
     install -d $PKG/usr/share/$name

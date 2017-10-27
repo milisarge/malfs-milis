@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/modules/by-module/ExtUtils/ExtUtils-PkgConfig-$version.tar.gz)
 
-build() {
+derle() {
 	cd ExtUtils-PkgConfig-$version
 	perl Makefile.PL
 	make

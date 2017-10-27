@@ -8,7 +8,7 @@ version=0.0.3
 release=2
 source=(https://pypi.python.org/packages/source/P/PySensors/PySensors-$version.tar.gz)
 
-build() {
+derle() {
   cd PySensors-$version
   python setup.py install -O1 --prefix='/usr' --root=$PKG --optimize=1
 }

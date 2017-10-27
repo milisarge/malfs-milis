@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.savannah.gnu.org/releases/libpipeline/libpipeline-$version.tar.gz)
 
-build()
+derle()
 {
 cd $name-$version
 PKG_CONFIG_PATH=/tools/lib/pkgconfig \

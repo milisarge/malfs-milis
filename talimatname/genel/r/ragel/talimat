@@ -9,7 +9,7 @@ release=1
 
 source=(https://www.colm.net/files/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr CXXFLAGS="$CXXFLAGS -std=gnu++98" 
 	make

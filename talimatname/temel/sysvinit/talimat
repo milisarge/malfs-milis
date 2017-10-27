@@ -10,7 +10,7 @@ release=2
 source=(http://ftp.twaren.net/Unix/NonGNU/sysvinit/sysvinit-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/lfs/development/sysvinit-2.88dsf-consolidated-1.patch)
 
-build()
+derle()
 {
 cd sysvinit-$version
 patch -Np1 -i ../sysvinit-2.88dsf-consolidated-1.patch

@@ -1,7 +1,7 @@
 version=4.1
 source=(http://ftp.gnu.org/gnu/make/make-$version.tar.bz2)
 
-build()
+derle()
 {
 cd  make-$version
 

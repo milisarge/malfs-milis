@@ -9,7 +9,7 @@ release=1
 
 source=(https://downloads.sourceforge.net/sourceforge/tuxpaint/$name-$version.tar.gz)
 
-build() {
+derle() {
 
    cd $name-$version
 # python2 fix

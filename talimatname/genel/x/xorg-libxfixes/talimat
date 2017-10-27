@@ -8,7 +8,7 @@ version=5.0.1
 release=1
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfixes-$version.tar.bz2)
 
-build() {
+derle() {
 cd libXfixes-$version
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make

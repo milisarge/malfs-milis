@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.greenwoodsoftware.com/less/less-$version.tar.gz)
 
-build()
+derle()
 {
 cd less-$version
 ./configure --prefix=/usr \

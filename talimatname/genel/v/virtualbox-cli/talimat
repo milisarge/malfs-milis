@@ -13,7 +13,7 @@ release=1
 
 source=(http://download.virtualbox.org/virtualbox/${version}/VirtualBox-${version}-${buildrelease}-Linux_${_ARCH}.run)
 
-build() {
+derle() {
 sh VirtualBox-${version}-${buildrelease}-Linux_${_ARCH}.run --target vb --keep --noexec
 cd vb
 tar xfj VirtualBox.tar.bz2

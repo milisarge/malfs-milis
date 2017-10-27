@@ -10,7 +10,7 @@ release=1
 source=(
 http://www.cpan.org/authors/id/R/RC/RCLAMP/Pod-Coverage-$version.tar.gz)
 
-build() {
+derle() {
     cd Pod-Coverage-$version
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1

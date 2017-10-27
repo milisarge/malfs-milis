@@ -11,7 +11,7 @@ _name=libksysguard
 source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz
         libksysguard-5.5.5-glibc2.23-1.patch )
 
-build() {
+derle() {
 cd ${_name}-$version
 patch -Np1 -i ../libksysguard-5.5.5-glibc2.23-1.patch
 cmake -DCMAKE_INSTALL_PREFIX=/usr \

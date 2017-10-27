@@ -11,7 +11,7 @@ source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz
 	http://downloads.nutyx.org/files/patchs/$name/id3lib-3.8.3-CVE-2007-4460.patch
 	http://downloads.nutyx.org/files/patchs/$name/id3lib-3.8.3-gcc-4.3.patch)
 
-build() {
+derle() {
 cd $name-$version
 patch -p1 -i ../patch_id3lib_3.8.3_UTF16_writing_bug.diff
 patch -p0 -i ../id3lib-3.8.3-CVE-2007-4460.patch

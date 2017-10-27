@@ -8,7 +8,7 @@ version=9.6.3
 release=1
 source=(https://ftp.postgresql.org/pub/source/v$version/postgresql-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 	sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h &&
 	./configure --prefix=/usr \

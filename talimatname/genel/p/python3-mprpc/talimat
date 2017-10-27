@@ -10,7 +10,7 @@ release=1
 
 source=(https://github.com/studio-ousia/mprpc/archive/v0.1.14.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
     cd $_name-$version
     python3 setup.py install --prefix=/usr --root=$PKG
 }

@@ -10,7 +10,7 @@ _name=pyparted
 
 source=(https://github.com/rhinstaller/${_name}/archive/v${version}.tar.gz)
 
-build() {
+derle() {
 	cd ${_name}-$version
 	python3 setup.py build
 	python3 setup.py install --optimize=1 --root=$PKG

@@ -8,7 +8,7 @@ version=3.4
 release=1
 source=(http://expect.sourceforge.net/$name/$name.tar.gz)
 
-build () {
+derle() {
    cd $name-$version
    sed -i -e 's/depot\/path/usr\/bin/g' stopwatch
    install -D -m0755 $name $PKG/usr/sbin/$name

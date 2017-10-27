@@ -14,7 +14,7 @@ http://www.python.org/ftp/python/$version/Python-$version.tar.xz
 python.png)
 
 
-build() {
+derle() {
     cd Python-$version
     ./configure --prefix=/usr \
                 --with-system-expat \

@@ -10,7 +10,7 @@ release=1
 source=(
 https://pypi.python.org/packages/source/r/reportlab/reportlab-$version.tar.gz)
 
-build() {
+derle() {
     cd reportlab-$version
     python3 setup.py install --prefix=/usr --root=$PKG
     python3 setup.py tests

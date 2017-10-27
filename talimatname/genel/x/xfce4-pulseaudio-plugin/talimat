@@ -8,7 +8,7 @@ version=0.3.0
 release=1
 source=(https://git.xfce.org/panel-plugins/$name/snapshot/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
   NOCONFIGURE=1 ./autogen.sh
 ./configure \

@@ -8,7 +8,7 @@ version=2.40
 release=1
 source=(https://launchpad.net/ubuntu/+archive/primary/+files/python-distutils-extra_2.40.tar.xz)
 
-build() {
+derle() {
 	cd $name-$version
 	python setup.py install --root="$PKG/"
 }

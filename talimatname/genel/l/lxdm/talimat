@@ -17,7 +17,7 @@ lxdm.conf.in.patch
 lxdm.pam
 Xsession)
 
-build() {
+derle() {
     
     cd $uisim
     patch -Np1 < ../lxdm.in.patch

@@ -3,7 +3,7 @@ source=(\
 http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
 )
 
-build()
+derle()
 {
 cd glibc-$version
 

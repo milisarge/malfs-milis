@@ -8,7 +8,7 @@ version=6.32
 release=1
 source=(http://$name.netfilter.org/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr --sbindir=/usr/bin --with-kmod=no
 	make

@@ -8,7 +8,7 @@ version=2.1
 release=1
 source=(https://launchpad.net/$name/master/$version/+download/$name-$version.tar.gz)
 
-build() {
+derle() {
 
     cd $name-$version
 

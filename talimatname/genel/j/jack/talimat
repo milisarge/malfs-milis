@@ -11,7 +11,7 @@ source=(http://jackaudio.org/downloads/${_longname}-$version.tar.gz
         jack-99-audio.conf
         jack-40-hpet-permissions.rules)
 
-build() {
+derle() {
 cd ${_longname}-$version
 ./configure --prefix=/usr --libdir=/usr/lib
 make

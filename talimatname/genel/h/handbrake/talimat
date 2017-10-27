@@ -8,7 +8,7 @@ version=0.10.3
 release=1
 source=(http://download.handbrake.fr/releases/$version/HandBrake-$version.tar.bz2)
 
-build() {
+derle() {
 	cd HandBrake-$version
 
 	    ./configure \

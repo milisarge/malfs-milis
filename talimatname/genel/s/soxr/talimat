@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.sourceforge.net/project/soxr/soxr-$version-Source.tar.xz)
 
-build() {
+derle() {
 	cd soxr-$version-Source
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \

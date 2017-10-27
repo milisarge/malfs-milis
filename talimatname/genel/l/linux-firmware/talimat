@@ -8,7 +8,7 @@ version=20161122
 release=1
 source=(http://distfiles.serverop.de/$name-$version.tar.xz)
 
-build() {
+derle() {
     cd $name-$version
 
     # Build/Package

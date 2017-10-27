@@ -8,7 +8,7 @@ version=4.2
 release=1
 source=(https://github.com/awesomeWM/awesome/releases/download/v4.2/awesome-4.2.tar.xz::$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd ${name}-${version}
 	mkdir -p build
 	cd build

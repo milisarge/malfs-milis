@@ -8,7 +8,7 @@ version=3.0.2
 release=1
 source=( http://download.kde.org/stable/$name/$version/src/$name-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \

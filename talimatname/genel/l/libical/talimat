@@ -9,7 +9,7 @@ release=2
 
 source=( https://github.com/libical/libical/releases/download/v2.0.0/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	mkdir build
 	cd build

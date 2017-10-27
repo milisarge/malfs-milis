@@ -8,7 +8,7 @@ version=0.4.7.0
 release=1
 source=(beef_gemkur)
 
-build() {
+derle() {
 
     if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
 		git clone http://github.com/beefproject/$name.git $DERLEME_KAYNAKDIZIN/$name 

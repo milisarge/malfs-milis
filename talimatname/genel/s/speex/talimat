@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)
 
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static \
 	--enable-binaries # Must be given or configure won't use pkg-config correctly

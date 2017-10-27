@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.sudo.ws/sudo/dist/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib \

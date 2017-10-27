@@ -10,7 +10,7 @@ release=1
 source=(https://github.com/arvidn/libtorrent/archive/libtorrent-$_version.tar.gz::$name-$version.tar.gz
 		libtorrent-boost-1.65.patch)
 
-build() {
+derle() {
 	cd libtorrent-libtorrent-$_version
      ./autotool.sh
     patch -p1 -i $SRC/libtorrent-boost-1.65.patch

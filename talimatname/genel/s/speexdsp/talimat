@@ -8,7 +8,7 @@ version=1.2rc3
 release=1
 source=(http://downloads.us.xiph.org/releases/speex/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
 	make

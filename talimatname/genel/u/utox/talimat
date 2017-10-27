@@ -9,7 +9,7 @@ version=0.9.4
 release=1
 source=(https://github.com/GrayHatter/$_name/archive/v$version/$name-$version.tar.gz)
 
-build() {
+derle() {
     cd $_name-$version
     make
     make PREFIX=/usr DESTDIR=$PKG install

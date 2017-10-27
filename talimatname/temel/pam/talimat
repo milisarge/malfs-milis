@@ -9,7 +9,7 @@ release=1
 
 source=(http://linux-pam.org/library/Linux-PAM-$version.tar.bz2)
 
-build() {
+derle() {
 if [ "`uname -m`" == "x86_64" ]; then
         LIB=lib64
 else

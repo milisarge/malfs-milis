@@ -9,7 +9,7 @@ release=1
 
 source=( http://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-${version}+0.93+1.tar.bz2)
 
-build() {
+derle() {
 	cd $SRC/libcdio-paranoia-${version}+0.93+1
 	./configure --prefix=/usr --disable-static 
 	make	

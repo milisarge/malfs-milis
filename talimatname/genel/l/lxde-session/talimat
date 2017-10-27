@@ -11,7 +11,7 @@ release=3
 source=(http://downloads.sourceforge.net/lxde/${_name}-$version.tar.xz)
 
 
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr --disable-man
 make

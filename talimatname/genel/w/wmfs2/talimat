@@ -8,7 +8,7 @@ version=git
 release=1
 source=()
 
-build() {
+derle() {
   if cd $DERLEME_KAYNAKDIZIN/wmfs ; then
     git pull
   else

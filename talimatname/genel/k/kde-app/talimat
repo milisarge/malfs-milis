@@ -9,6 +9,6 @@ version=20160924
 
 source=(talimat)
 
-build() {
+derle() {
 echo "KDE Applications 5"
 }

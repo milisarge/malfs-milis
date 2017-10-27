@@ -10,7 +10,7 @@ release=1
 source=( ftp://sourceware.org/pub/$name/$name-$version.tar.gz )
 
 
-build() {
+derle() {
 cd $name-$version
 sed -e '/^includesdir/ s:$(libdir)/@PACKAGE_NAME@-@PACKAGE_VERSION@/include:$(includedir):' \
 -i include/Makefile.in

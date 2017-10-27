@@ -10,7 +10,7 @@ release=1
 source=(
 http://pypi.python.org/packages/source/c/cssutils/cssutils-$version.zip)
 
-build() {
+derle() {
     cd cssutils-$version
     python2 setup.py install --prefix=/usr --root=$PKG
 

@@ -9,7 +9,7 @@ version=3.4.0
 release=1
 source=(http://downloads.sourceforge.net/project/${_name}/${_name}/${version}/python2-${_name}-${version}.tar.bz2)
 
-build() {
+derle() {
 	cd python2-${_name}-$version
 	python2 ./setup.py install --prefix=/usr --root="${PKG}" -O1
 }

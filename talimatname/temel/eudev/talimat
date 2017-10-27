@@ -10,7 +10,7 @@ release=1
 source=(http://dev.gentoo.org/~blueness/eudev/$name-$version.tar.gz
 		http://anduin.linuxfromscratch.org/sources/other/udev-lfs-20140408.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 sed -r -i 's|/usr(/bin/test)|\1|' test/udev-test.pl
 

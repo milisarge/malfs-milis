@@ -8,7 +8,7 @@ version=4.2.1
 release=1
 source=(https://github.com/jemalloc/jemalloc/releases/download/${version}/${name}-${version}.tar.bz2)
  
-build() {
+derle() {
 	cd $name-$version
   ./configure --prefix=/usr
 	make

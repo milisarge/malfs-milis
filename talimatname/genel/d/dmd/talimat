@@ -14,7 +14,7 @@ source=(http://crux.ster.zone/downloads/$name/$name-$version.tar.gz
 #	https://github.com/dlang/druntime/archive/v$version.tar.gz
 #	https://github.com/dlang/phobos/archive/v$version.tar.gz)
 
-build() {
+derle() {
 	ln -s druntime-$version druntime
 	cd dmd-$version/src
 

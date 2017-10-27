@@ -1,6 +1,6 @@
 version=1.18-rc1
 source=(http://download.savannah.gnu.org/releases/lzip/lzip-$version.tar.gz)
-build() {
+derle() {
 cd lzip-$version
 ./configure --prefix=/tools
 make

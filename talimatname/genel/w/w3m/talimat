@@ -9,7 +9,7 @@ release=1
 source=(http://downloads.sourceforge.net/w3m/w3m-0.5.3.tar.gz
 		http://www.linuxfromscratch.org/patches/downloads/w3m/w3m-0.5.3-bdwgc72-1.patch )
  
-build() {
+derle() {
 
 cd $name-$version
 	

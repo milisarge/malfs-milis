@@ -10,7 +10,7 @@ release=1
 source=(https://distfiles.macports.org/libgphoto2/libgphoto2-2.5.10.tar.bz2
 		jpeg.patch)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -Np1 -i ../jpeg.patch
 	./configure --prefix=/usr --sysconfdir=/etc

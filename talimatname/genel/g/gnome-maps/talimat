@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.gnome.org/sources/$name/${version:0:4}/$name-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr
 sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool 

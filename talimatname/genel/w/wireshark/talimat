@@ -9,7 +9,7 @@ release=1
 source=(http://www.$name.org/download/src/all-versions/$name-$version.tar.bz2
  wireshark-2.0.1-lua_5_3_1-1.patch)
 
-build() {
+derle() {
   cd $name-$version
   patch -Np1 -i ../wireshark-2.0.1-lua_5_3_1-1.patch
   ./configure --prefix=/usr \

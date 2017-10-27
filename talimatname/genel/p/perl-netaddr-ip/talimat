@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIKER/NetAddr-IP-$version.tar.gz)
 
-build() {
+derle() {
 cd NetAddr-IP-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

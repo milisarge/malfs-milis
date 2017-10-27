@@ -9,7 +9,7 @@ release=1
 
 source=(http://prdownloads.sourceforge.net/psmisc/psmisc-$version.tar.gz)
 
-build()
+derle()
 {
 cd psmisc-$version
 ./configure --prefix=/usr --libdir=/lib --bindir=/bin

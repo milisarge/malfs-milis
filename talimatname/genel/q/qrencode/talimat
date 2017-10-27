@@ -9,7 +9,7 @@ release=1
 
 source=(http://megaui.net/fukuchi/works/${name}/${name}-${version}.tar.bz2)
 
-build() {
+derle() {
   cd $SRC/$name-$version
   ./configure --prefix=/usr
   make

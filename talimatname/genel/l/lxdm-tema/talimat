@@ -8,7 +8,7 @@ version=1.0
 release=1
 source=(https://github.com/yasarciv/$name/archive/$version.tar.gz)
 
-build () {
+derle() {
   cd $name-$version
   install -d "$PKG/usr/share/lxdm/themes"
   install -d "$PKG/etc/lxdm"

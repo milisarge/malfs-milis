@@ -9,7 +9,7 @@ release=1
 source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/openpgm/$name-$version.tar.gz
 )
 
-build() {
+derle() {
   cd "$SRC/$name-$version/openpgm/pgm"
   find . -type f -exec sed -i 's/python/python2/g' {} \+
   cd "$SRC/$name-$version/openpgm/pgm"

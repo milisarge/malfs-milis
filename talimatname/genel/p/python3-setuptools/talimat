@@ -9,7 +9,7 @@ release=1
 
 source=(https://files.pythonhosted.org/packages/source/${name:8:1}/${name#*-}/${name#*-}-$version.zip)
 
-build() {
+derle() {
 	cd ${name#*-}-$version
 	export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
 	python3 bootstrap.py 

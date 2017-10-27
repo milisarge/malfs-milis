@@ -10,7 +10,7 @@ release=1
 source=(
 http://pypi.python.org/packages/source/v/virtualenv/virtualenv-$version.tar.gz)
 
-build() {
+derle() {
     cd virtualenv-$version
     python3 setup.py install --prefix=/usr --root=$PKG
 }

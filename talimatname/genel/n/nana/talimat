@@ -8,7 +8,7 @@ version=1.5.5
 release=1
 source=(https://downloads.sourceforge.net/project/nanapro/Nana/Nana%201.x/nana%20$version.zip)
 
-build() {
+derle() {
     cd ${SRC}/${name}
     cmake \
         -DCMAKE_BUILD_TYPE=Release \

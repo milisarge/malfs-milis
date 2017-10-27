@@ -8,7 +8,7 @@ E_DOWNLOAD=4   # error during download
 E_UNPACK=5     # error during unpacking of source file(s)
 E_MD5=6        # md5sum verification failed
 E_FOOTPRINT=7  # footprint check failure
-E_BUILD=8      # error while running 'build()'
+E_BUILD=8      # error while running 'derle()'
 E_INSTALL=9    # paket kurulum hatası (mps -k)
 
 info() {
@@ -42,8 +42,8 @@ check_pkgfile() {
 	if [ "${name}" == "" ]; then
 		error "Variable 'name' not initiated or not found in $PKGMK_PKGFILE."
 		exit $E_TALIMAT
-	elif [ "`type -t build`" != "function" ]; then
-		error "Function 'build' not specified in $PKGMK_PKGFILE."
+	elif [ "`type -t derle`" != "function" ]; then
+		error "$PKGMK_PKGFILE dosyası içinde 'derle' fonksiyonu bulunamadı."
 		exit $E_TALIMAT
 	fi
 	NAME_TEST=`echo "${name}" | sed 's@[[a-z0-9]*[-_+]*]*@@g'`
@@ -648,7 +648,7 @@ compress_archive() {
 	esac
 }
 
-derle() {
+derleme_yap() {
 	if [ "$PAKETSIZ_DERLEME" = "evet" ]; then
 		paketsiz_derle
 	else
@@ -676,7 +676,7 @@ paketsiz_derle() {
 	unpack_source
 	
 	cd $SRC
-	(set -e -x ; build)
+	(set -e -x ; derle)
 	
 	
 #	cd $PKG
@@ -725,7 +725,7 @@ build_package() {
 	unpack_source
 		
 	cd $SRC
-	(set -e -x ; build)
+	(set -e -x ; derle)
 	
 	if [ $? = 0 ]; then
 		if [ "$PKGMK_NO_STRIP" = "yok" ]; then
@@ -1044,7 +1044,6 @@ print_help() {
 	echo "  -eo,  --extract-only        do not build, only extract source file(s)"
 	echo "  -utd, --up-to-date          do not build, only check if package is up to date"
 	echo "  -ur,  --update-repo         do not build, only update the $REPO_DOSYASI file"
-	echo "  -uc,  --update-collection   do not build, only update the $REPO_DOSYASI file of the collection means from the parent directory"
 	echo "  -uf,  --update-footprint    update footprint using result from last build"
 	echo "  -ic,  --ignore-collection     build packages without update the $REPO_DOSYASI file of the collection means from the parent directory"
 	echo "  -if,  --ignore-footprint    build packages without checking footprint"
@@ -1084,8 +1083,6 @@ parse_options() {
 				PKGMK_UP_TO_DATE="evet" ;;
 			-sk|--sd-kontrol)
 				SOZDIZIM_KONTROL="evet" ;;
-			-uc|--update-collection)
-				PKGMK_UPDATE_COLLECTION="evet";;
 			-ur|--update-repo)
 				PKGMK_UPDATE_REPO="evet" ;;
 			-uf|--update-footprint)
@@ -1333,7 +1330,7 @@ main() {
 			info "Package '$TARGET' is up to date."
 		else
 			download_source
-			derle
+			derleme_yap
 		fi
 	else
 		FOUND=false
@@ -1345,7 +1342,7 @@ main() {
 				info "Package '$TARGET' is up to date."
 			else
 				download_source
-				derle
+				derleme_yap
 				break
 			fi
 		done
@@ -1355,7 +1352,7 @@ main() {
 			download_source
 			PKGMK_BUILDVER="`get_package_builddate $TARGET`"
 			TARGET=$PAKETLEME_DIZIN/${name}#$version-$MIMARI.$PKT_UZANTISI
-			derle $TARGET
+			derleme_yap $TARGET
 		fi
 	fi
 	if [ "$DERLE_KUR" != "yok" ]; then

@@ -8,7 +8,7 @@ version=1.4.2
 release=1
 
 source=(http://files.libburnia-project.org/releases/libisoburn-$version.tar.gz)
-build () {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --disable-static \
 --enable-pkg-check-modules

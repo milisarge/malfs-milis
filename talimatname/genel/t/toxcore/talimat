@@ -8,7 +8,7 @@ version=0.1.10
 release=1
 source=(https://github.com/TokTok/c-toxcore/archive/v$version.tar.gz)
 
-build() {
+derle() {
 	cd c-toxcore-$version
 	sed -i "/Rpath/d;/RPATH/d" CMakeLists.txt
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \

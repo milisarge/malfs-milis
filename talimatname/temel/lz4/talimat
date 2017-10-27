@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/Cyan4973/lz4/archive/r131.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 make PREFIX=/usr
 

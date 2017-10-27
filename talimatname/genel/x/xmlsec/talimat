@@ -8,7 +8,7 @@ version=1.2.24
 release=1
 source=(https://www.aleksey.com/xmlsec/download/xmlsec1-$version.tar.gz)
 
-build() {
+derle() {
   cd xmlsec1-$version
   ./configure --prefix=/usr --disable-static
   make

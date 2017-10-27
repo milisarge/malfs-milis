@@ -8,7 +8,7 @@ version=1.5.0
 release=1.
 source=(https://git.xfce.org/panel-plugins/xfce4-hardware-monitor-plugin/snapshot/$name-$version.tar.bz2)
 
-build() {
+derle() {
   cd $name-$version
   sed -i '/c++11/d' configure.ac
   sed -i '/gnu++11/d' configure.ac

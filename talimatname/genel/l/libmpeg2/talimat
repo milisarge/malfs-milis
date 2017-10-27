@@ -8,7 +8,7 @@ version=0.5.1
 release=1
 
 source=( http://$name.sourceforge.net/files/$name-$version.tar.gz)
-build() {
+derle() {
 cd $name-$version
 sed -i 's/static const/static/' libmpeg2/idct_mmx.c
 ./configure --prefix=/usr --enable-shared

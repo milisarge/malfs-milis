@@ -9,7 +9,7 @@ release=1
 
 source=()
 
-build() {
+derle() {
 
 git clone git://anongit.kde.org/kdeconnect-kde.git
 

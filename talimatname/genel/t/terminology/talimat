@@ -8,7 +8,7 @@ version=1.0.0
 release=1
 source=(http://download.enlightenment.org/rel/apps/terminology/terminology-$version.tar.xz)
 
-build()
+derle()
 {
     cd terminology-$version 
     ./configure --prefix=/usr \

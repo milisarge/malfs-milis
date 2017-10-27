@@ -9,7 +9,7 @@ release=1
 _boostver=${version//./_}
 source=(https://downloads.sourceforge.net/project/${name}/${name}/${version}/${name}_${_boostver}.tar.bz2)
 
-build() {
+derle() {
    export _stagedir="${SRC}/stagedir"
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 

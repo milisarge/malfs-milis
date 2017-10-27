@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.debian.org/debian/pool/main/t/$name/${name}_$version.orig.tar.bz2)
        
-build() {
+derle() {
 cd $name-$version
 
 cat > config_linux.py << "EOF"

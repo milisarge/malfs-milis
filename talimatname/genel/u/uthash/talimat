@@ -8,7 +8,7 @@ version=2.0.2
 release=1
 source=(https://github.com/troydhanson/uthash/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd "${SRC}/${name}-${version}/src"
   install -dm755 "${PKG}"/usr/include/
   for h in *.h; do

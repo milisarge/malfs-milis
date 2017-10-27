@@ -9,7 +9,7 @@ release=1
 
 source=()
 
-build() {
+derle() {
 
 for lang in de es fr it sv tr
 do

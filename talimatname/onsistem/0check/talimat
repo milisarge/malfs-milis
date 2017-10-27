@@ -1,7 +1,7 @@
 name=check
 version=0.10.0
 source=(http://sourceforge.net/projects/check/files/check/$version/$name-$version.tar.gz )
-build()
+derle()
 {
 cd $name-$version
 

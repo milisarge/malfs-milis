@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.gnu.org/gnu/mtools/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd $name-$version
 
 	sed -i '/^SAMPLE FILE$/s:^:# :' mtools.conf

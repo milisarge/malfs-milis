@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/gitpan/Glib/archive/cpan_path/XAOC/Glib-$version.tar.gz.tar.gz)
 
-build() {
+derle() {
 	cd Glib-cpan_path-XAOC-Glib-$version.tar.gz
 	perl Makefile.PL
 	make

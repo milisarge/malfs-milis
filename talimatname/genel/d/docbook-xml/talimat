@@ -25,7 +25,7 @@ unpack_source() {
 	unzip -q -d $SRC/$name-4.1.2 $DERLEME_KAYNAKDIZIN/docbkx412.zip
 }
 
-build() {
+derle() {
 	# copy to proper locations
 	for DTDVERSION in 4.5 4.4 4.3 4.2 4.1.2
 	do

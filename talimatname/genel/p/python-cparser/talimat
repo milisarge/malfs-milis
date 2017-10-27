@@ -9,7 +9,7 @@ version=2.14
 release=1
 source=(https://github.com/eliben/$_name/archive/release_v$version.zip)
 
-build() {
+derle() {
 	cd $_name-release_v$version
 	/usr/bin/python2 setup.py build
 

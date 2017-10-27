@@ -10,7 +10,7 @@ release=1
 source=(
 http://downloads.sourceforge.net/zenlib/${name}_${version}.tar.bz2)
 
-build(){
+derle(){
     cd $SRC/ZenLib/Project/GNU/Library
     sh ./autogen
     ./configure --prefix=/usr \

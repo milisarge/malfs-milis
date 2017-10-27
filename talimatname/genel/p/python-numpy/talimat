@@ -9,7 +9,7 @@ release=1
 
 source=(http://sourceforge.net/projects/numpy/files/NumPy/$version/numpy-$version.tar.gz)
 
-build() {
+derle() {
 	cd numpy-$version
 	export Atlas=None
 	export LDFLAGS="$LDFLAGS -shared"

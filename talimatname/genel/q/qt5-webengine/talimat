@@ -15,7 +15,7 @@ source=(http://download.qt.io/official_releases/qt/${version%.*}/$version/single
 		harmony-fix.diff
 		gzip_string.py)
 
-build() {
+derle() {
 	cd $SRC/qt-everywhere-opensource-src-$version/qtwebengine/
 
 	#patch -p1 -i $SRC/last-commit-position.patch

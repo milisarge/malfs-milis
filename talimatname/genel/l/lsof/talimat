@@ -8,7 +8,7 @@ version=4.89
 release=1
 source=(ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/lsof_$version.tar.bz2)
 
-build() {
+derle() {
     cd lsof_${version}
     tar -xf lsof_${version}_src.tar
     cd lsof_${version}_src

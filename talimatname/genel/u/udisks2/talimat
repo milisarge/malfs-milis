@@ -10,7 +10,7 @@ release=1
 source=(http://udisks.freedesktop.org/releases/udisks-$version.tar.bz2
 	udisk2-2.1.5-policy-1.patch)
 
-build() {
+derle() {
 cd udisks-$version
 patch -Np1 -i ../udisk2-2.1.5-policy-1.patch
 ./configure --prefix=/usr \

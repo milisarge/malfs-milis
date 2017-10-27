@@ -8,7 +8,7 @@ version=0.3.8
 release=1
 source=(https://download.gimp.org/pub/gegl/0.3/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --disable-docs
 LC_ALL=tr_TR.UTF-8

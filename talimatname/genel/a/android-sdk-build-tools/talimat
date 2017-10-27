@@ -10,7 +10,7 @@ _android=android-8.0.0
 _sdk=android-sdk
 source=(https://dl-ssl.google.com/android/repository/build-tools_$version-linux.zip)
 
-build() {
+derle() {
   cd $PKG
   install -Dm644 $SRC/$_android/NOTICE.txt usr/share/licenses/$name/NOTICE.txt
   ver=$(cat "$SRC/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')

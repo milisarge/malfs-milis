@@ -9,7 +9,7 @@ release=1
 source=(http://www.akiskart.com.tr/dosyalar/akis_${version}_amd64.deb
 		akia)
 
-build() {
+derle() {
   ar x ${SRC}/akis_${version}_amd64.deb
   tar -xf data.tar.gz -C "${SRC}"
   rm -rf "${SRC}"/usr/bin

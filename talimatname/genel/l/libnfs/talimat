@@ -8,7 +8,7 @@ version=2.0.0
 release=1
 source=(https://github.com/sahlberg/libnfs/archive/libnfs-2.0.0.tar.gz)
 
-build() {
+derle() {
 	cd "$name-$name-$version"
 	autoreconf -vif
 	./configure --prefix=/usr

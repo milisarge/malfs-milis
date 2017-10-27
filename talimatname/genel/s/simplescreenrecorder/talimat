@@ -11,7 +11,7 @@ source=(simplescreenrecorder_tr.qm
         simplescreenrecorder.desktop)
 
 
-build() {
+derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
 		git clone https://github.com/MaartenBaert/ssr.git $DERLEME_KAYNAKDIZIN/$name 
 	else

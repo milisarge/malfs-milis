@@ -8,7 +8,7 @@ version=2.9.39
 release=1
 source=(https://git.gnome.org/browse/$name/snapshot/LIBDMAPSHARING_2_9_39.tar.xz)
 
-build() {
+derle() {
   cd LIBDMAPSHARING_2_9_39 
  ./autogen.sh
   ./configure --prefix=/usr --with-mdns=avahi --enable-gtk-doc

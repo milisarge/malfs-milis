@@ -8,7 +8,7 @@ version=1.0.2
 release=1
 source=(https://github.com/wolkykim/libasyncd/archive/v$version.tar.gz::$name-$version.tar.gz)
 
-build () {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr
 	make -j1 QLIBC=system DESTDIR=$PKG install

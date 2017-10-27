@@ -20,7 +20,7 @@ version() {
 	fi
 }
 
-build() {
+derle() {
 	git clone "https://github.com/LemonBoy/bar.git"
 	cd bar
 	make

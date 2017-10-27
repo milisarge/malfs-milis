@@ -1,7 +1,7 @@
 version=1.0.6
 source=(http://www.bzip.org/$version/bzip2-$version.tar.gz)
 
-build()
+derle()
 {
 cd bzip2-$version
 

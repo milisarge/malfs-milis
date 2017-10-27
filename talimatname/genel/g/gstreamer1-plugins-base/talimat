@@ -9,7 +9,7 @@ release=1
 _name=gst-plugins-base
 source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr \
 --with-package-name="GStreamer Base Plugins for Milis" \

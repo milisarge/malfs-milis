@@ -8,7 +8,7 @@ version=2.1.5
 release=1
 source=(https://github.com/msgpack/msgpack-c/releases/download/cpp-${version}/msgpack-${version}.tar.gz)
 
-build() {
+derle() {
 	cd msgpack-$version
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
 		-DMSGPACK_CXX11=ON \

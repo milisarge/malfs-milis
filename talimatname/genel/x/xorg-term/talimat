@@ -10,7 +10,7 @@ release=1
 source=(ftp://invisible-island.net/${_name}/${_name}-$version.tgz
 	$name.list)
 
-build() {
+derle() {
 cd ${_name}-*
 
 sed -i '/v0/{n;s/new:/new:kb=^?:/}' termcap &&

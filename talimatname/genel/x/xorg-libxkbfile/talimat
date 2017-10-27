@@ -8,7 +8,7 @@ version=1.0.9
 release=1
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libxkbfile-$version.tar.bz2)
 
-build() {
+derle() {
 	cd libxkbfile-$version
 
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var

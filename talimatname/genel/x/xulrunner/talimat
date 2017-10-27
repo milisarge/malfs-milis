@@ -8,7 +8,7 @@ version=41.0.2
 release=1
 source=(http://ftp.mozilla.org/pub/xulrunner/releases/$version/source/$name-$version.source.tar.xz)
 
-build() {
+derle() {
   mkdir ${PKG}/opt/
 
   mkdir ${PKG}/usr/

@@ -11,7 +11,7 @@ source=(https://github.com/clbr/webkitfltk/archive/v0.5.1.tar.gz
 		https://github.com/clbr/webkitfltk/commit/6db7be57eb6f633d63fb90397adb21c6247ab410.patch
 		https://github.com/clbr/webkitfltk/commit/83626b77fc7d8fae005fd4575dd85dbb0f243081.patch)
 
-build() {
+derle() {
 	#git clone https://github.com/clbr/webkitfltk.git
 	cd "${name}-${version}"
 	patch -p1 -i $SRC/6db7be57eb6f633d63fb90397adb21c6247ab410.patch

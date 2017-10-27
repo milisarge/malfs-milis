@@ -10,7 +10,7 @@ release=1
 source=( ftp://ftp.debian.org/debian/pool/main/n/nasm/nasm_2.11.06-1really2.11.05.orig.tar.xz
 		http://www.nasm.us/pub/nasm/releasebuilds/$version/nasm-$version-xdoc.tar.xz)
 
-build() {
+derle() {
 	cd $name-2.11.05
 	./configure --prefix=/usr\
 		    --mandir=/usr/share/man

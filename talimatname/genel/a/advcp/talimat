@@ -10,7 +10,7 @@ release=1
 source=(ftp://ftp.gnu.org/gnu/$_name/$_name-$version.tar.xz
 		advcpmv-${version}.patch)
 
-build() {
+derle() {
   export FORCE_UNSAFE_CONFIGURE=1
   cd ${SRC}/${_name}-${version}
 

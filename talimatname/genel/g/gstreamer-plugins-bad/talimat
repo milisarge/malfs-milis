@@ -10,7 +10,7 @@ _name=gst-plugins-bad
 source=(http://gstreamer.freedesktop.org/src/$_name/$_name-$version.tar.bz2
 	    $name-$version-compatibility-1.patch)
 
-build() {
+derle() {
 cd $_name-$version
 patch -Np1 -i ../$name-$version-compatibility-1.patch
 ./configure --prefix=/usr \

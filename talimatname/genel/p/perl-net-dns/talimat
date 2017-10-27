@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/N/NL/NLNETLABS/Net-DNS-$version.tar.gz)
 
-build() {
+derle() {
 cd Net-DNS-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

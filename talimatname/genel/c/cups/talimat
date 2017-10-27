@@ -8,7 +8,7 @@ version=2.1.3
 release=1
 source=( http://cups.org/software/$version/cups-$version-source.tar.gz)
 
-build() {
+derle() {
 	source /etc/blfs-bootscripts
 	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
         tar xvf $scripts-$scriptsversion.tar.bz2

@@ -32,7 +32,7 @@ fi
 
 #
 #
-build() {
+derle() {
     cd $name-$version
     ./configure --prefix=/usr \
                 --sbin-path=/usr/sbin/nginx \

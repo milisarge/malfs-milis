@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnu.org/gnu/findutils/findutils-$version.tar.gz)
 
-build()
+derle()
 {
 	cd findutils-$version
 	./configure --prefix=/usr \

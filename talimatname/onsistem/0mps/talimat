@@ -1,6 +1,6 @@
 version=0.1
 source=(http://github.org/milisarge/malfs/mps-$version.tar.gz)
-build()
+derle()
 {
 cd mps-$version
 

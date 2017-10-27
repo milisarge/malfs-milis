@@ -8,7 +8,7 @@ version=2.2.9
 release=1
 source=(http://www.bennewitz.com/bluefish/stable/source/$name-$version.tar.bz2)
 
-build() {
+derle() {
 gdk-pixbuf-query-loaders --update-cache
 cd $name-$version
  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' \

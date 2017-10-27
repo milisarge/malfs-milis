@@ -10,7 +10,7 @@ source=(https://github.com/tobimensch/$name/archive/v$version.tar.gz::$name-$ver
 	https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/translations/Turkish.ts::$name-Turkish.ts
 	https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/menu_data/aqemu.desktop::$name-aqemu.desktop)
 
-build() {
+derle() {
   cd $name-$version
   cp /usr/bin/rcc-qt5 /usr/bin/rcc
   cp $SRC/$name-Turkish.ts $SRC/$name-$version/resources/translations/Turkish.ts

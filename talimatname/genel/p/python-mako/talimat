@@ -8,7 +8,7 @@ version=1.0.1
 release=1
 source=(https://pypi.python.org/packages/source/M/Mako/Mako-$version.tar.gz)
 
-build() {
+derle() {
 	cd Mako-$version
 	/usr/bin/python2 setup.py build
 	/usr/bin/python2 setup.py install --prefix=/usr --root=$PKG --optimize=1

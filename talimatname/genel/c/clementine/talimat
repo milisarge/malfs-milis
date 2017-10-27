@@ -10,7 +10,7 @@ source=(https://github.com/clementine-player/Clementine/archive/$version.tar.gz
 	clementine-1.2.3-gcc5.1-1.patch
         clementine-1.2.3-udisks-namespace.patch)
 
-build() {
+derle() {
 cd Clementine-$version
 
 patch -Np1 -i $SRC/clementine-1.2.3-udisks-namespace.patch

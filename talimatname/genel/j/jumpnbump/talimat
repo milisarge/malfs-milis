@@ -10,7 +10,7 @@ source=(https://gitlab.com/LibreGames/jumpnbump/uploads/9f3a356c52f433e3af10f1ef
 		menu.patch
 		desktop.patch)
 
-build() {
+derle() {
   cd $SRC/${name}-${version}/menu
   patch -p0 < $SRC/menu.patch || return 1
   cd "${SRC}/${name}-${version}/"

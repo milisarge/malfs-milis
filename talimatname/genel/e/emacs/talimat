@@ -10,7 +10,7 @@ release=1
 source=(https://ftp.gnu.org/pub/gnu/emacs/$name-$version.tar.xz
 		site-start.el)
 
-build () {
+derle() {
 
     cd $name-$version
     

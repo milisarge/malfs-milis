@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/clbr/librangetree/archive/v$version.tar.gz)
 	
-build() {
+derle() {
 	cd "${name}-$version"
 	make -j1
 	make install DESTDIR="${PKG}"

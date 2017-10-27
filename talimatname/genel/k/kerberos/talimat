@@ -9,7 +9,7 @@ release=1
 
 source=(http://web.mit.edu/$name/dist/krb5/1.14/krb5-$version.tar.gz)
 
-build()  {
+derle()  {
         cd krb5-$version
         cd src
         sed -e "s@python2.5/Python.h@& python2.7/Python.h@g" \

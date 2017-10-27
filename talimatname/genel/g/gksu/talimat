@@ -8,7 +8,7 @@ version=2.0.2
 release=1
 source=(http://people.debian.org/~kov/gksu/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr \
     --sysconfdir=/etc \

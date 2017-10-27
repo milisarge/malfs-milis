@@ -10,7 +10,7 @@ release=1
 source=(https://github.com/p11-glue/p11-kit/archive/$version.tar.gz
 		libnssckbi-compat.patch)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -Np1 -i ../libnssckbi-compat.patch
 	NOCONFIGURE=1 ./autogen.sh

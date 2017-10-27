@@ -10,7 +10,7 @@ source=(http://downloads.sourceforge.net/project/$name/FooBillard-Sources/$name-
 	foobillard-ttf-$version.patch
 	undef.nvidia.patch)
 
-build() {
+derle() {
 
     cd $name-$version
     patch -p 1 -i $SRC/foobillard-ttf-$version.patch

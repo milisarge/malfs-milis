@@ -8,7 +8,7 @@ version=1.6.3
 release=1
 
 source=(https://opensource.conformal.com/snapshots/xombrero/xombrero-$version.tgz)
-build() {
+derle() {
 cd $name-$version
 sed -i 's|/usr/local/share/|/usr/share/|' {unix.c,xombrero.conf,xombrero.h}
 

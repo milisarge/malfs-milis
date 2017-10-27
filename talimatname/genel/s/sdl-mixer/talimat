@@ -8,7 +8,7 @@ version=1.2.12
 release=2
 source=(http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-$version.tar.gz)
 
-build() {
+derle() {
 	cd SDL_mixer-$version
 	sed -i -e 's|/usr/local/lib/timidity|/usr/share/timidity|g' timidity/config.h
 	./configure --prefix=/usr

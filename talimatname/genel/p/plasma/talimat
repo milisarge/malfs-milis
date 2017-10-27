@@ -9,7 +9,7 @@ release=1
 
 source=(talimat)
 
-build() {
+derle() {
 echo "KDE Plasma 5"
 }
 

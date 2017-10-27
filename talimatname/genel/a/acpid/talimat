@@ -8,7 +8,7 @@ version=2.0.25
 release=1
 source=(http://downloads.sourceforge.net/acpid2/$name-$version.tar.xz lid lid.sh)
 
-build() {
+derle() {
 
 	cd $name-$version
 

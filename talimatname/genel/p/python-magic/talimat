@@ -8,7 +8,7 @@ version=5.29
 release=1
 source=(ftp://ftp.astron.com/pub/file/file-${version}.tar.gz)
 
-build() {
+derle() {
   cd "${SRC}/file-${version}/python"
   python setup.py install --root="${PKG}" --optimize=1
   install -Dm0644 "${SRC}/file-${version}/COPYING" "${PKG}/usr/share/licenses/${name}/COPYING"

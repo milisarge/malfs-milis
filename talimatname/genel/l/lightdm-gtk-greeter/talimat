@@ -9,7 +9,7 @@ release=1
 
 source=(https://launchpad.net/$name/${version%.?}/$version/+download/$name-$version.tar.gz)
 
-build () {
+derle() {
 	cd $name-$version
   ./configure \
     --prefix='/usr' \

@@ -11,7 +11,7 @@ source=(
 http://www.lua.org/ftp/lua-$version.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/7.4/lua-5.1.5-shared_library-2.patch)
 
-build(){
+derle(){
     cd lua-$version
     patch -Np1 -i ../lua-5.1.5-shared_library-2.patch
     sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h

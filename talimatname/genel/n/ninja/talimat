@@ -8,7 +8,7 @@ version=1.8.2
 release=1
 source=(https://github.com/martine/$name/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   ./configure.py --bootstrap
   install -D -m 0755 $name $PKG/usr/bin/$name

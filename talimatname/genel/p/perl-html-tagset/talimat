@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/P/PE/PETDANCE/HTML-Tagset-$version.tar.gz)
 
-build() {
+derle() {
 cd HTML-Tagset-$version
 perl Makefile.PL INSTALLDIRS=vendor
 make

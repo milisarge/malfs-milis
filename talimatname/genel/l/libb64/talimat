@@ -9,7 +9,7 @@ release=1
 source=(https://downloads.sourceforge.net/${name}/${name}-${version}.zip
         https://sources.debian.net/data/main/libb/libb64/1.2-3/debian/patches/bufsiz-as-buffer-size.diff)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -p1 -i "$SRC"/bufsiz-as-buffer-size.diff
 

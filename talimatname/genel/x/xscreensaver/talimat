@@ -8,7 +8,7 @@ version=5.34
 release=1
 source=(http://www.jwz.org/xscreensaver/$name-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib \

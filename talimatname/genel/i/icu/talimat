@@ -8,7 +8,7 @@ version=59.1
 release=1
 source=(http://download.icu-project.org/files/icu4c/$version/icu4c-${version//./_}-src.tgz)
 
-build() {
+derle() {
 	cd icu/source
 
 	sed -i 's/xlocale/locale/' i18n/digitlst.cpp

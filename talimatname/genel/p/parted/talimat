@@ -10,7 +10,7 @@ release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
  http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-devmapper-1.patch)
 
-build() {
+derle() {
 cd $name-$version
 patch -Np1 -i ../parted-3.2-devmapper-1.patch
 ./configure --prefix=/usr \

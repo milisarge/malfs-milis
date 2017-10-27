@@ -10,7 +10,7 @@ source=( http://downloads.sourceforge.net/firebird/Firebird-$version-0.tar.bz2
 		firebird-c++11.patch
         firebird-c++14.patch)
 
-build() {
+derle() {
 
   cd $SRC/Firebird-$version-0
   patch -Np1 -i ../firebird-c++11.patch

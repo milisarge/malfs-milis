@@ -9,7 +9,7 @@ release=1
 
 source=( https://launchpad.net/catfish-search/${version%.*}/$version/+download/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	cd ${name}-$version
 	python setup.py build
 	python setup.py install --root="$PKG" --optimize=1	

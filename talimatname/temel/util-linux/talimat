@@ -9,7 +9,7 @@ release=1
 source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version:0:4}/util-linux-$version.tar.xz
 	)
 
-build()
+derle()
 {
 cd util-linux-$version
 

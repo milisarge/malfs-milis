@@ -8,7 +8,7 @@ version=4.9.0
 release=1
 source=(http://www.tcpdump.org/release/$name-$version.tar.gz)
 
-build() {
+derle() {
     cd $name-$version
     ./configure --prefix=/usr --enable-ipv6 
     make

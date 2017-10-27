@@ -12,7 +12,7 @@ release=1
 _name=qt-everywhere-opensource-src-${_qtversion}
 source=(http://download.kde.org/stable/qtwebkit-2.3/$version/src/qtwebkit-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/blfs/svn/qtwebkit-2.3.4-gcc5-1.patch)
-build() {
+derle() {
 mkdir qtwebkit-$version
 cd qtwebkit-$version
 tar xf ../qtwebkit-$version.tar.gz

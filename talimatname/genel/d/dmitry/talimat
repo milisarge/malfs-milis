@@ -8,7 +8,7 @@ version=1.3a
 release=1
 source=(http://dl.packetstormsecurity.net/UNIX/misc/DMitry-$version.tar.gz)
 
-build() {
+derle() {
   cd $SRC/DMitry-$version
   ./configure --prefix=/usr --sysconfdir=/etc
   make

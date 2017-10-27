@@ -9,7 +9,7 @@ release=1
 source=(http://www.hboehm.info/gc/gc_source/gc-${version}.tar.gz
         https://github.com/ivmai/libatomic_ops/archive/libatomic_ops-${version//\./_}.tar.gz)
 
-build () {
+derle() {
 
     cd gc-$version
 

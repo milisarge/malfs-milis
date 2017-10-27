@@ -9,7 +9,7 @@ version=1.7.1
 release=1
 source=(http://download.camlcity.org/download/${_name}-$version.tar.gz)
 
-build() {
+derle() {
 
     cd ${_name}-$version
     

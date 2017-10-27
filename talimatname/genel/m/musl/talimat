@@ -9,7 +9,7 @@ release=1
 source=(https://www.musl-libc.org/releases/musl-1.1.17.tar.gz{,.asc}
 )
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr/lib/musl \
     --exec-prefix=/usr \

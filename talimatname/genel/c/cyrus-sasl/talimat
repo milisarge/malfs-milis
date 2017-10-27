@@ -9,7 +9,7 @@ release=1
 source=(ftp://ftp.cyrusimap.org/cyrus-sasl/$name-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/blfs/svn/cyrus-sasl-$version-fixes-3.patch)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -Np1 -i ../cyrus-sasl-$version-fixes-3.patch
 	autoreconf -fi

@@ -8,7 +8,7 @@ version=1.5.1
 release=3
 source=(http://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
   NOCONFIGURE=1 ./autogen.sh
   ./configure \

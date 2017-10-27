@@ -9,7 +9,7 @@ version=0.8.0-rc1
 release=1
 source=(https://github.com/signal11/hidapi/archive/$name-$version.tar.gz)
 
-build() {
+derle() {
 	cd "$name-$name-$version"
     ./bootstrap
     ./configure --enable-testgui --prefix=/usr

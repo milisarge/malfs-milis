@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.spice-space.org/download/libcacard/libcacard-$version.tar.xz)
 
-build() {
+derle() {
  cd libcacard-$version
   ./configure --prefix=/usr
   make

@@ -9,7 +9,7 @@ release=1
 source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2
 	 http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$version-blfs_layout-1.patch)
 
-build(){
+derle(){
 
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

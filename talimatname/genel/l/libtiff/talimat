@@ -10,7 +10,7 @@ release=1
 source=(http://download.osgeo.org/libtiff/tiff-$version.tar.gz)
 
 
-build() {
+derle() {
 cd tiff-$version
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \

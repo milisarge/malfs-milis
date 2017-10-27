@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.zlib.net/zlib-$version.tar.xz)
 
-build() {
+derle() {
 
 if [ -L /bin/pwd ];then
 	mv -v /tools/bin/ld /tools/bin/ld-old

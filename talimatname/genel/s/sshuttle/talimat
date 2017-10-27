@@ -10,7 +10,7 @@ release=1.0
 source=(prefixes.conf
 		tunnel.conf)
 
-build() {
+derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
 		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
 	else

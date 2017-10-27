@@ -14,7 +14,7 @@ source=( ftp://alpha.gnu.org/gnu/grub/grub-2.02~beta3.tar.xz \
          grub_mkconfig.patch \
          grub.default)
 
-build() {
+derle() {
 cd $name-2.02~beta3
 
 patch -Np1 -i ../milis_name.patch

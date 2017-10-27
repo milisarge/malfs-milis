@@ -8,7 +8,7 @@ version=4.1
 release=1
 source=(http://www.openprinting.org/download/foomatic/${name}-devel-${version}-current.tar.gz)
 
-build() {
+derle() {
 	cd $name-*
 	./configure --prefix=/usr
 	make

@@ -11,7 +11,7 @@ _name=ModemManager
 source=( http://www.freedesktop.org/software/${_name}/${_name}-$version.tar.xz)
 
 
-build() {
+derle() {
 cd ${_name}-$version
 ./configure --prefix=/usr        \
             --sysconfdir=/etc    \

@@ -8,7 +8,7 @@ version=16.4.0
 release=1
 source=(http://prdownloads.sf.net/$name/$name-$version.tar.bz2)
 
-build() {
+derle() {
 	tamir_qt4path
 	cd $name-$version
 	sed -i -e 's|kde-config|kde4-config|g' Makefile

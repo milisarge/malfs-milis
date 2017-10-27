@@ -9,7 +9,7 @@ release=1
 source=(http://download.sourceforge.net/project/$name/$name/$version/${name}_${version//./_}.zip \
         entity.patch $name-use-stl.patch)
 
-build() {
+derle() {
   export CXXFLAGS="${CXXFLAGS} -fPIC"
   cd $name
 

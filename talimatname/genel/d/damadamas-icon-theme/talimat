@@ -9,7 +9,7 @@ version=0.1
 release=1
 source=()
 
-build() {
+derle() {
 git clone https://github.com/sonakinci41/DamaDamas-icon-theme.git
   cd "${_name}"
   rm {CMakeLists.txt,README.md}

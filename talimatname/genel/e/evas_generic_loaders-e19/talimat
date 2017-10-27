@@ -8,7 +8,7 @@ version=1.17.0
 release=1
 source=(http://download.enlightenment.org/rel/libs/evas_generic_loaders/evas_generic_loaders-$version.tar.gz)
 
-build()
+derle()
 {
     cd evas_generic_loaders-$version 
     ./configure --prefix=/usr

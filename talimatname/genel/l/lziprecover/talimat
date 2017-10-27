@@ -9,7 +9,7 @@ release=1
 
 source=(http://download.savannah.gnu.org/releases/lzip/$name/$name-$version.tar.gz)
 
-build(){
+derle(){
     cd $name-$version
     ./configure --prefix=/usr
     make

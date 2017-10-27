@@ -9,7 +9,7 @@ release=5
 
 source=(http://downloads.sourceforge.net/pcmanfm/${name}-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
             --sysconfdir=/etc \

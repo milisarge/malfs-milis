@@ -10,7 +10,7 @@ release=1
 source=(https://github.com/AlessandroZ/LaZagne/archive/$version.tar.gz
 		sifrebul)
 
-build() {
+derle() {
 	cd LaZagne-$version
     mkdir -p $PKG/usr/share/$name
 	cp -r Linux/* $PKG/usr/share/$name/

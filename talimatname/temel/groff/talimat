@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnu.org/gnu/groff/groff-$version.tar.gz)
 
-build()
+derle()
 {
 cd groff-$version
 

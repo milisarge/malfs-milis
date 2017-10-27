@@ -11,7 +11,7 @@ source=(http://ftp.de.debian.org/debian/pool/main/h/hfsprogs/${name}_${version}.
         license
         makefile.patch)
 
-build() {
+derle() {
  cd diskdev_cmds-${version}
   for patch in ../debian/patches/*.patch ../makefile.patch
   do

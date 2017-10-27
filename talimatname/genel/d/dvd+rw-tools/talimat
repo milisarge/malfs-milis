@@ -9,7 +9,7 @@ release=1
 source=( http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-$version.tar.gz \
 	transport.patch)
 
-build() {
+derle() {
 	cd $name-$version
 	patch -Np1 -i ../transport.patch
 	make

@@ -9,7 +9,7 @@ release=1
 
 source=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-Pod-Coverage-$version.tar.gz)
 
-build() {
+derle() {
     cd Test-Pod-Coverage-$version
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1

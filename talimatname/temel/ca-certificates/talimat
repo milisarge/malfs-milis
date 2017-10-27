@@ -9,7 +9,7 @@ release=1
 
 source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
 
-build() {
+derle() {
 
 mkdir -p $PKG/{bin,etc/ssl}
 cp $SRC/ca-bundle.crt $PKG/etc/ssl/

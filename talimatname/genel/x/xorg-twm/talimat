@@ -9,7 +9,7 @@ version=1.0.9
 release=1
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/app/${_name}-$version.tar.bz2)
 
-build() {
+derle() {
 	cd ${_name}-$version
 	sed -i -e '/^rcdir =/s,^\(rcdir = \).*,\1/etc/X11/app-defaults,' src/Makefile.in
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var

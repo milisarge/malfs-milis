@@ -9,7 +9,7 @@ release=3
 
 source=(http://downloads.sourceforge.net/rox/rox-filer-2.11.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version/ROX-Filer
 sed -i 's:g_strdup(getenv("APP_DIR")):"/usr/share/rox":' src/main.c
 mkdir build

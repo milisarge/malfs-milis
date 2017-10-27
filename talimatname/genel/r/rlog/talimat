@@ -10,7 +10,7 @@ release=1
 source=(http://rlog.googlecode.com/files/$name-$version.tar.gz 
        $name-section.patch)
 
-build () {
+derle() {
 	cd $name-$version
 	patch -Np1 -i ../$name-section.patch
 	./configure --prefix=/usr

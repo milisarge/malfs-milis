@@ -9,7 +9,7 @@ release=1
 
 source=( http://source.pisilinux.org/1.0/qjson-0.82_d0f62e65.tar.gz)
 
-build() {
+derle() {
 cd $name
 mkdir build
 cd build

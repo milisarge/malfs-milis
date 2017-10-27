@@ -8,7 +8,7 @@ version=1.1.0
 release=1
 source=(https://github.com/cginternals/$name/archive/master.zip)
 
-build() {
+derle() {
 
 cd $name-master
 

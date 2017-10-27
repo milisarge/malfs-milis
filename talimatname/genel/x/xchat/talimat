@@ -9,7 +9,7 @@ release=2
 
 source=(http://www.xchat.org/files/source/${version%.*}/$name-$version.tar.xz
 	http://www.linuxfromscratch.org/patches/blfs/svn/xchat-2.8.8-glib-2.31-1.patch)        
-build() {
+derle() {
 cd $name-$version
 patch -Np1 -i ../xchat-2.8.8-glib-2.31-1.patch
 LIBS+="-lgmodule-2.0" ./configure --prefix=/usr \

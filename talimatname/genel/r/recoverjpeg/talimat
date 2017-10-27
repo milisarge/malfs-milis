@@ -8,7 +8,7 @@ version=2.6.1
 release=1
 source=(http://www.rfc1149.net/download/${name}/${name}-${version}.tar.gz)
 
-build () {
+derle() {
 	cd $name-$version
 	sed -i '1s,.*,#! /usr/bin/python2,' scripts/remove-duplicates
 	./configure --prefix=/usr

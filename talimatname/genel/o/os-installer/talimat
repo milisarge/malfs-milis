@@ -11,7 +11,7 @@ _version=v12.5
 source=( https://github.com/solus-project/$name/archive/${_version}.tar.gz
          10-livecd.rules)
 
-build() {
+derle() {
 cd $name-$version
 python setup.py build
 python setup.py install --optimize=1 --root=$PKG

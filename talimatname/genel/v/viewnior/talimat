@@ -8,7 +8,7 @@ version=1.6
 release=1
 source=(https://github.com/xsisqox/Viewnior/archive/$name-$version.tar.gz)
 
-build() {
+derle() {
     cd Viewnior-$name-$version
     ./autogen.sh
     ./configure

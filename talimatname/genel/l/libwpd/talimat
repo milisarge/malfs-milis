@@ -9,7 +9,7 @@ release=1
 
 source=(http://prdownloads.sourceforge.net/libwpd/libwpd-$version.tar.gz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --disable-static
 make

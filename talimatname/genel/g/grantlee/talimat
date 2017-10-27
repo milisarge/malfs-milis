@@ -8,7 +8,7 @@ version=0.5.1
 release=2
 source=(http://downloads.grantlee.org/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
 
   sed -e 's|INCLUDE_INSTALL_DIR include|INCLUDE_INSTALL_DIR include/grantlee-qt4|' -i CMakeLists.txt

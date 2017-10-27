@@ -8,7 +8,7 @@ version=5.2.2
 release=1
 
 source=(http://tukaani.org/xz/xz-$version.tar.xz)
-build()
+derle()
 {
 cd xz-$version
 

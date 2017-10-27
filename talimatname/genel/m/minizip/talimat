@@ -8,7 +8,7 @@ version=1.2.11
 release=1
 source=(https://zlib.net/zlib-${version}.tar.gz)
 
-build() {
+derle() {
     cd zlib-$version
 	grep -A 24 '^  Copyright' zlib.h > LICENSE
 	./configure --prefix=/usr

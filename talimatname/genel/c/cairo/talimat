@@ -9,7 +9,7 @@ version=1.14.6
 release=1
 source=( http://cairographics.org/releases/$name-$version.tar.xz)
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr \
             --disable-static \

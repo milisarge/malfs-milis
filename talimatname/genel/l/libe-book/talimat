@@ -10,7 +10,7 @@ source=(https://sourceforge.net/projects/${name//-/}/files//libe-book-0.1.2/libe
 		0001-Disable-werror-by-default-since-gperf-code-will-not-.patch
 		boost159.patch)
 
-build() {
+derle() {
 	cd ${name}-${version}
 	# https://sourceforge.net/p/libebook/code/ci/784c5168d1a62618e53619fd0a979363d596775a/
 	patch -Np1 -i ../0001-Disable-werror-by-default-since-gperf-code-will-not-.patch

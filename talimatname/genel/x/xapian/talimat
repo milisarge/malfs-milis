@@ -8,7 +8,7 @@ version=1.2.22
 release=1
 
 source=( http://oligarchy.co.uk/xapian/$version/xapian-core-$version.tar.xz)
-build() {
+derle() {
 cd $name-core-$version
 ./configure --prefix=/usr \
 --disable-static \

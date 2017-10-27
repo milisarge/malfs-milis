@@ -15,7 +15,7 @@ source=(http://people.debian.org/~kov/gksu/$name-$version.tar.gz
         libgksu-2.0.7-libs.patch
         libgksu-2.0.7-polinguas.patch)
 
-build() {
+derle() {
   cd $name-$version
   patch -Np1 -i "${SRC}/libgksu-2.0.0-fbsd.patch"
   patch -Np1 -i "${SRC}/libgksu-2.0.7-libs.patch"

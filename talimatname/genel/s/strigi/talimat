@@ -9,7 +9,7 @@ release=2
 
 source=( http://www.vandenoever.info/software/$name/$name-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-$version
 sed -i "s/BufferedStream :/STREAMS_EXPORT &/" libstreams/include/strigi/bufferedstream.h
 mkdir build

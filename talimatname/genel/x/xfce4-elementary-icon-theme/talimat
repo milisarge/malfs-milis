@@ -8,7 +8,7 @@ version=0.8
 release=1
 
 source=(https://github.com/shimmerproject/elementary-xfce/archive/v$version.tar.gz)
-build() {
+derle() {
 install -d -m 0755 $PKG//usr/share/icons
 mv elementary-xfce-$version/elementary-xfce{,-dark,-darker} $PKG//usr/share/icons
 }

@@ -1,7 +1,7 @@
 name=pkgutils
 version=5.35.6
 source=(http://crux.nu/files/$name-$version.tar.gz)
-build()
+derle()
 {
 cd $name-$version
 

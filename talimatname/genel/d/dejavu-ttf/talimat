@@ -8,7 +8,7 @@ version=2.35
 release=1
 source=(http://downloads.sourceforge.net/dejavu/dejavu-fonts-ttf-$version.tar.bz2)
 
-build() {
+derle() {
 	cd dejavu-fonts-ttf-$version/ttf
 	install -v -d -m755 $PKG/usr/share/fonts/dejavu
 	install -v -m644 *.ttf $PKG/usr/share/fonts/dejavu

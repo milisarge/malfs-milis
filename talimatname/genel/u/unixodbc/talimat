@@ -8,7 +8,7 @@ version=2.3.4
 release=1
 
 source=(ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-$version.tar.gz)
-build() { 
+derle() { 
 cd unixODBC-$version
 ./configure --prefix=/usr --sysconfdir=/etc/unixODBC \
 --enable-gui=no

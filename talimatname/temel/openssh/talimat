@@ -10,7 +10,7 @@ release=1
 source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
 		http://downloads.nutyx.org/files/patchs/openssh-server/service-saravane-01.patch)
 
-build() {
+derle() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 

@@ -8,7 +8,7 @@ version=7.3.2
 release=1
 source=(http://waterlan.home.xs4all.nl/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   make
   make DESTDIR=$PKG install

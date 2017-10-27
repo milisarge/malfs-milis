@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/libtom/libtommath/releases/download/v$version/ltm-$version.tar.xz)
 
-build() {
+derle() {
  cd $name-$version
   make -f makefile.shared IGNORE_SPEED=1
   make -f makefile.shared PREFIX=/usr DESTDIR=$PKG INSTALL_GROUP=root install

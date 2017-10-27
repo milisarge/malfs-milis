@@ -10,7 +10,7 @@ version=2.1.3
 release=1
 source=(https://files.pythonhosted.org/packages/source/g/${_name2}/${_name}-${version}.tar.gz)
 
-build() {
+derle() {
 	cd "${SRC}/${_name}-${version}" 
 	python3 setup.py install --root=$PKG --optimize=1
 }

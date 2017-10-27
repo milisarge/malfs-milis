@@ -8,7 +8,7 @@ version=150813
 release=1
 source=(http://www.fastandeasyhacking.com/download/armitage${version}.tgz)
 
-build() {
+derle() {
   cd "$SRC/armitage"
 
   mkdir -p "$PKG/usr/bin"

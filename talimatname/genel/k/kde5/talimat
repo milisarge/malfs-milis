@@ -9,7 +9,7 @@ version=20161011
 
 source=(talimat)
 
-build() {
+derle() {
 
 unset makeflags
 

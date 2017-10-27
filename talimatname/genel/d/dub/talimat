@@ -8,7 +8,7 @@ version=1.5.0
 release=1
 source=(https://github.com/dlang/dub/archive/v$version.tar.gz::$name-$version.tar.gz)
 
-build() {
+derle() {
 	DC=dmd
 	cd "$SRC/dub-$version"
 	echo "module dub.version_;" > source/dub/version_.d

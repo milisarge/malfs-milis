@@ -8,7 +8,7 @@ version=2.3
 release=1
 source=(https://github.com/CoolerVoid/0d1n/archive/$version.tar.gz)
 
-build() {
+derle() {
 	cd $name-$version
 	make
 	mkdir -p "$PKG/usr/share/0d1n"

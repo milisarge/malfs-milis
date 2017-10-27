@@ -9,7 +9,7 @@ version=1.5.2
 release=1
 source=(http://binaries.openttd.org/releases/${version}/${name}-${version}-source.tar.xz)
 
-build() {
+derle() {
   cd ${name}-${version} 
 
  ./configure \

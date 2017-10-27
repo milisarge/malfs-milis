@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.xz)
 
-build()
+derle()
 {
 cd  inetutils-$version
 

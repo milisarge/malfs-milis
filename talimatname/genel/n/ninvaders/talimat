@@ -9,7 +9,7 @@ release=1
 
 source=( http://downloads.sourceforge.net/sourceforge/ninvaders/$name-$version.tar.gz)
 
-build(){
+derle(){
     cd $name-$version
     make CFLAGS="${CFLAGS}" &&
     install -Dm755 nInvaders $PKG/usr/bin/$name

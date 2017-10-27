@@ -8,7 +8,7 @@ version=0.52.18
 release=1
 
 source=( http://fedorahosted.org/releases/n/e/$name/$name-$version.tar.gz )
-build() {
+derle() {
 cd $name-$version
 sed -e 's/^LIBNEWT =/#&/' \
     -e '/install -m 644 $(LIBNEWT)/ s/^/#/' \

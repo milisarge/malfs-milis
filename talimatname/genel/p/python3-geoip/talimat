@@ -10,7 +10,7 @@ _name=pygeoip
 
 source=(https://pypi.python.org/packages/source/G/GeoIP/GeoIP-$version.tar.gz)
 
-build() {
+derle() {
 	cd GeoIP-$version
 	python3 setup.py build
 	python3 setup.py install --optimize=1 --root=$PKG

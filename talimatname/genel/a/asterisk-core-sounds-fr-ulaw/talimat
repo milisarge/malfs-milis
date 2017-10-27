@@ -8,7 +8,7 @@ version=1.4.27
 release=1
 source=(http://downloads.digium.com/pub/telephony/sounds/releases/$name-$version.tar.gz)
 
-build () {
+derle() {
 
     install -d -m 750 $PKG/var/lib/asterisk/sounds
     mv $SRC/* $PKG/var/lib/asterisk/sounds

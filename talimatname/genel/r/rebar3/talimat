@@ -8,7 +8,7 @@ version=3.3.4
 release=1
 source=(https://github.com/rebar/rebar3/archive/${version}.tar.gz)
 
-build(){
+derle(){
 	cd "$SRC/$name-$version"
 	./bootstrap
 	install -Dm0755 "${name}" "$PKG/usr/bin/${name}"

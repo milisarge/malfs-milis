@@ -8,7 +8,7 @@ version=git
 release=1
 source=(tshzset.patch Makefile.patch)
 
-build() {
+derle() {
 	git clone https://github.com/antirez/hping
 
 	cd $name

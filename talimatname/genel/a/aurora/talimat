@@ -10,7 +10,7 @@ release=2
 source=(https://dl.opendesktop.org/api/files/download/id/1460970469/56438-$name-$version.tar.bz2 \
     https://dl.opendesktop.org/api/files/download/id/1460970232/80431-aurorasmooth.tar.bz2)
 
-build() {
+derle() {
 unset MAKEFLAGS
 tar zxf aurora-gtk-engine-1.5.tar.gz
 cd aurora-1.5

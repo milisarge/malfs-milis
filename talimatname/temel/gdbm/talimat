@@ -9,7 +9,7 @@ release=1
 
 source=(http://ftp.gnu.org/gnu/gdbm/gdbm-$version.tar.gz)
 
-build() {
+derle() {
 cd gdbm-$version
 ./configure --prefix=/usr --libdir=/lib \
 --bindir=/bin --enable-libgdbm-compat

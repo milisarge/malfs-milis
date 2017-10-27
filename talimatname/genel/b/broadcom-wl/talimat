@@ -9,7 +9,7 @@ release=6
 [[ "`uname -m`" == "x86_64" ]] && _arch=_64 || _arch=
 source=("http://www.broadcom.com/docs/linux_sta/hybrid-v35${_arch}-nodebug-pcoem-${version//./_}.tar.gz"
         broadcom-wl.modprobe.d broadcom-wl.license.patch broadcom-wl.linux-recent.patch broadcom-wl.gcc.patch)
-build() {
+derle() {
 
 KERNELRELEASE=`uname -r`
 

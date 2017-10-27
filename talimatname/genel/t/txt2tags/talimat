@@ -9,7 +9,7 @@ release=1
 
 source=(http://txt2tags.googlecode.com/files/$name-$version.tgz)
 
-build() {
+derle() {
 cd $name-$version
 	mkdir -p $PKG/usr/bin
 	mkdir -p $PKG/usr/share/{man/man1,man/fr/man1,vim/syntax,doc/$name}

@@ -11,7 +11,7 @@ source=(ftp://ftp.isc.org/isc/$name/$version/$name-$version.tar.gz
 		dhcp-4.3.3-missing_ipv6-1.patch
 		dhclient.conf ifconfig.eth0 dhcpd.conf )
 
-build() {
+derle() {
 
 	cd $name-$version
 	patch -Np1 -i $SRC/dhcp-4.3.3-missing_ipv6-1.patch

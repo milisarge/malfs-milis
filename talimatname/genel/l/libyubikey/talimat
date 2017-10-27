@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/Yubico/yubico-c/archive/libyubikey-$version.tar.gz
 	libyubikey.70-yubikey.rules)
-build ()
+derle()
 {
 cd yubico-c-libyubikey-$version
 autoreconf --install

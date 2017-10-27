@@ -9,7 +9,7 @@ release=1
 
 source=(https://bitbucket.org/mgorny/npapi-sdk/downloads/npapi-sdk-$version.tar.bz2)
 
-build() {
+derle() {
 cd npapi-sdk-$version
 ./configure --prefix=/usr
 make

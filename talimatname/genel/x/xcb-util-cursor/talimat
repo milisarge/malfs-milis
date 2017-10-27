@@ -9,7 +9,7 @@ release=1
 
 source=(http://xcb.freedesktop.org/dist/xcb-util-cursor-$version.tar.bz2)
 
-build() {
+derle() {
 cd $name-*
 ./configure --prefix=/usr
 make

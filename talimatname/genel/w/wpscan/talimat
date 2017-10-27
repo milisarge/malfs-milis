@@ -8,7 +8,7 @@ version=2.9.2
 release=1
 source=(https://github.com/wpscanteam/wpscan/archive/${version}.tar.gz https://github.com/wpscanteam/wpscan/commit/f6644eebf95baea3356290ecd6364f0a4a456406.patch)
 
-build() {
+derle() {
   cd $SRC/${name}-${version}
   bundle config build.nokogiri --use-system-libraries
   echo 2.3.3 > .ruby-version

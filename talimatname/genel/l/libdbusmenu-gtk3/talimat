@@ -10,7 +10,7 @@ version=16.04.0
 
 source=(http://launchpad.net/$_name/${version%.*}/${version}/+download/${_name}-$version.tar.gz )
 
-build() {
+derle() {
   export HAVE_VALGRIND_TRUE='#'
   export HAVE_VALGRIND_FALSE=''
 

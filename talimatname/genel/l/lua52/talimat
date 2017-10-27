@@ -9,7 +9,7 @@ release=1
 source=(http://www.lua.org/ftp/lua-$version.tar.gz
 	lua.diff lua-5.2-cflags.diff lua.pc)
 
-build() {
+derle() {
 	cd lua-$version
 
 	patch -p1 -i $SRC/lua.diff

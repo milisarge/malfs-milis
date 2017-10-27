@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/skvadrik/re2c/archive/$version.tar.gz::$name-$version.tar.gz)
 	
-build() {
+derle() {
 	cd $name-$version/re2c
 	./autogen.sh
 	./configure --prefix=/usr

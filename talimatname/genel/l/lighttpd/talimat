@@ -9,7 +9,7 @@ release=1
 source=(http://download.$name.net/$name/releases-1.4.x/$name-$version.tar.xz \
         $name.conf )
 
-build() {
+derle() {
     cd $name-$version
     ./configure --prefix=/usr --libdir=/usr/lib/$name --with-openssl \
         --mandir=/usr/man --with-pcre

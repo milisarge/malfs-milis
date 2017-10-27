@@ -9,7 +9,7 @@ release=1
 source=(ftp://ftp.alsa-project.org/pub/plugins/$name-$version.tar.bz2
 	$name.conf)
 
-build() {
+derle() {
 cd $name-$version
 
 sed -i "/speex_preprocess.h/i#include <stdint.h>" speex/pcm_speex.c

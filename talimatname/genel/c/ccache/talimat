@@ -8,7 +8,7 @@ version=3.3.4
 release=1
 source=(http://samba.org/ftp/ccache/ccache-$version.tar.xz)
 
-build() {
+derle() {
   cd ${SRC}/${name}-${version}
   ./configure --prefix=/usr \
               --sysconfdir=/etc

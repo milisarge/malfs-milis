@@ -9,7 +9,7 @@ release=1
 
 source=(http://fungi.yuggoth.org/weather/src/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd "$name-$version"
   sed -i 's|env python|env python2|' *
 

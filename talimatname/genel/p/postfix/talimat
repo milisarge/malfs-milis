@@ -9,7 +9,7 @@ release=1
 
 source=(ftp://ftp.porcupine.org/mirrors/postfix-release/official/$name-$version.tar.gz)
 
-build() {
+derle() {
 
     cd $name-$version
     

@@ -9,7 +9,7 @@ release=1
 source=(http://downloads.sourceforge.net/fetchmail/$name-$version.tar.xz
 		.fetchmailrc)
 
-build() {
+derle() {
 
 	cd $name-$version
 

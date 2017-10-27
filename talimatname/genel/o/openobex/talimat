@@ -8,7 +8,7 @@ version=1.7.2
 release=1
 
 source=( http://downloads.sourceforge.net/$name/$name-$version-Source.tar.gz)
-build() {
+derle() {
 cd $name-$version-Source
 mkdir build
 cd build

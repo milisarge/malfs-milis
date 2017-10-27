@@ -8,7 +8,7 @@ version=2.3
 release=1
 source=(https://www.fossil-scm.org/index.html/uv/fossil-src-$version.tar.gz)
 
-build () {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr --json --disable-internal-sqlite
 	make

@@ -9,7 +9,7 @@ release=2
 
 source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
 
-build() {
+derle() {
   cd $name-$version
   ./configure --prefix=/usr             \
               --without-ca-certificates \

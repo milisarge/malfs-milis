@@ -9,7 +9,7 @@ release=1
 
 source=(http://roy.marples.name/downloads/$name/$name-$version.tar.xz)
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix= \
 	--libexecdir=/lib/dhcpcd \

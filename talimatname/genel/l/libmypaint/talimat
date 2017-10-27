@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/mypaint/libmypaint/archive/v$version.tar.gz)
 
-build ()
+derle()
 { 
 	cd ${name}-$version
 	./autogen.sh

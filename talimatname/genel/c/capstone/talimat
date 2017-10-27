@@ -8,7 +8,7 @@ version=4.0-alpha5
 release=1
 source=(https://github.com/aquynh/capstone/archive/${version}.tar.gz)
 
-build() {
+derle() {
   cd ${name}-${version}
   make
   make DESTDIR="${PKG}" install

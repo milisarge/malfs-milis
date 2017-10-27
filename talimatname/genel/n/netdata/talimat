@@ -9,7 +9,7 @@ release=1
 
 source=(https://github.com/firehol/netdata/releases/download/v${version}/netdata-${version}.tar.xz)
 
-build(){
+derle(){
 	cd $name-$version
 	./configure \
 		--prefix="/usr" \

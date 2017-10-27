@@ -9,7 +9,7 @@ release=1
 
 source=(https://releases.pagure.org/libosinfo/$name-$version.tar.gz{,.asc})
 
-build() {
+derle() {
  cd $name-$version
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --with-usb-ids-path=/usr/share/hwdata/usb.ids \

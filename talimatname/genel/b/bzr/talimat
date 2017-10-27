@@ -9,7 +9,7 @@ release=1
 source=(
 http://launchpad.net/bzr/${version%.*}/$version/+download/bzr-$version.tar.gz)
 
-build() {
+derle() {
     cd $name-$version
     sed -i -e 's|man/man1|share/&|' setup.py
     python2 setup.py install --prefix=/usr --root=$PKG

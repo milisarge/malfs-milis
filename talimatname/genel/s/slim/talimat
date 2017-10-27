@@ -15,7 +15,7 @@ source=(http://kaynaklar.milislinux.org/slim-$version.tar.gz
         slim.logrotate
 		slim.theme)
 
-build () {
+derle() {
 cd $name-$version
 
 patch -p0 < $SRC/CMakeLists.txt.patch

@@ -10,7 +10,7 @@ release=1
 source=(trad.mo)
 
 
-build() {
+derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
 		git clone https://github.com/slacka/WoeUSB.git $DERLEME_KAYNAKDIZIN/$name 
 	else

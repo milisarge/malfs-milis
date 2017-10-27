@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/J/JA/JASLONG/Mail-DKIM-$version.tar.gz)
 
-build() {
+derle() {
 cd Mail-DKIM-$version
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make

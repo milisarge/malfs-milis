@@ -8,7 +8,7 @@ version=3.22
 release=1
 source=(https://dl.opendesktop.org/api/files/download/id/1495049712/GreybirdClassicTR_GTK3_22.tar.gz)
 
-build() {
+derle() {
   cd GreybirdClassicTR_GTK3_22
     install -d "$PKG/usr/share/themes"
   cp -a * "$PKG/usr/share/themes/"

@@ -11,7 +11,7 @@ source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2
         libxcb-1.1-no-pthread-stubs.patch
         python-35x-fixes.patch)
 
-build() {
+derle() {
 cd $name-$version
 patch -Np1 -i ../libxcb-1.1-no-pthread-stubs.patch
 patch -Np1 -i ../python-35x-fixes.patch

@@ -10,7 +10,7 @@ source=(http://static.davidedmundson.co.uk/shashlik/shashlik_$version.deb
 shashlik.desktop
 shashlik-gui.sh)
 
-build() {
+derle() {
   ar x ${SRC}/shashlik_$version.deb
   tar -xJC $PKG -f data.tar.xz
   install -dm755 $PKG/usr/bin

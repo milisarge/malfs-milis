@@ -7,7 +7,7 @@ name=tig
 version=2.1.1
 release=1
 source=(http://jonas.nitro.dk/${name}/releases/${name}-${version}.tar.gz)
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --sysconfdir=/etc
 make

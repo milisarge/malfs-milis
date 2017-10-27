@@ -9,7 +9,7 @@ release=1
 source=(https://www.mercurial-scm.org/release/mercurial-$version.tar.gz
 		mercurial.profile)
  
-build() {
+derle() {
 	cd $name-$version	
 	sed -i -e 's#env python#env python2#' mercurial/lsprof.py
 	cd contrib/chg

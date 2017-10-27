@@ -8,7 +8,7 @@ version=5.1.2
 release=1
 source=(http://downloads.sourceforge.net/giflib/giflib-$version.tar.bz2 )
 
-build() {
+derle() {
 cd $name-$version
 ./configure --prefix=/usr --disable-static
 make

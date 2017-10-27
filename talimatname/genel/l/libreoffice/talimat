@@ -13,7 +13,7 @@ source=(http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-$vers
 	http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-translations-$version.tar.xz
     http://kaynaklar.milislinux.org/libreofis-milis-ekler.tar.xz)
 
-build() {
+derle() {
         unset ACLOCAL
         export LO_PREFIX=/usr
 

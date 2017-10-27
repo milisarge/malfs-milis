@@ -10,7 +10,7 @@ version=2.0.0
 release=1
 source=()
 
-build() {
+derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$_name  ];then
 		git clone https://github.com/$hesap/$_name $DERLEME_KAYNAKDIZIN/$_name 
 	else

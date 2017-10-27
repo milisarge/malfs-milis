@@ -8,7 +8,7 @@ version=1.8
 release=1
 source=(http://github.com/zeux/pugixml/releases/download/v$version/pugixml-$version.tar.gz)
 
-build() {
+derle() {
 mkdir -p build
   cd build
   cmake "$SRC/pugixml-$version" \

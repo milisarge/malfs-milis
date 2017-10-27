@@ -10,7 +10,7 @@ version=2.3.4
 release=1
 source=(http://cache.ruby-lang.org/pub/$_name/${version%.*}/$_name-$version.tar.xz)
 
-build () {
+derle() {
 	cd $_name-$version
 
 	 PKG_CONFIG=/usr/bin/pkg-config ./configure \

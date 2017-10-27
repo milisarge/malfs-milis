@@ -8,7 +8,7 @@ version=0.8.5
 release=1
 source=(https://github.com/raboof/nethogs/archive/v$version.tar.gz)
 
-build() {
+derle() {
   cd "$SRC/$name-$version"
   sed -i 's|/sbin|/bin|' src/MakeApp.mk
   sed -i 's|/local||'  Makefile

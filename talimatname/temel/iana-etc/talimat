@@ -9,7 +9,7 @@ release=1
 
 source=(http://sethwklein.net/iana-etc-2.30.tar.bz2)
 
-build()
+derle()
 {
 cd iana-etc-$version
 

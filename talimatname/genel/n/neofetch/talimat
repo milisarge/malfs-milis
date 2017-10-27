@@ -11,7 +11,7 @@ source=(https://github.com/dylanaraps/neofetch/archive/$version.tar.gz
 		linux)
 
 
-build() {
+derle() {
 	cd $name-$version
 	cp -f $SRC/linux $SRC/$name-$version/ascii/distro/
 	make DESTDIR=$PKG install

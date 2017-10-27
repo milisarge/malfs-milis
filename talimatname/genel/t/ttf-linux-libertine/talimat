@@ -11,7 +11,7 @@ release=1
 
 source=("http://downloads.sourceforge.net/project/linuxlibertine/linuxlibertine/${version}/LinLibertine"{TTF,OTF}"_${version}_${_reldate}.tgz") 
 
-build() {
+derle() {
 	cd $SRC
 	install -dm755 $PKG/usr/share/fonts/{OTF,TTF}
 	install -m644 *.ttf $PKG/usr/share/fonts/TTF

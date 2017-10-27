@@ -8,7 +8,7 @@ version=0.12
 release=1
 source=(https://s3.amazonaws.com/${name}_releases/releases/$name-$version.tar.gz)
 
-build(){
+derle(){
     cd $name-$version
     CFLAGS="$CFLAGS -Wno-error"
     ./configure --prefix=/usr \

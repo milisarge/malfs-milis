@@ -10,7 +10,7 @@ release=1
 source=( http://files.musepack.net/source/$name-$version.tar.bz2)
 
 
-build() {
+derle() {
 	cd $name-$version
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man \

@@ -9,7 +9,7 @@ release=1
 
 source=(http://www.cpan.org/authors/id/E/ET/ETHER/URI-$version.tar.gz)
 
-build() {
+derle() {
 cd URI-$version
 	perl Makefile.PL
 	make

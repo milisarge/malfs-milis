@@ -11,7 +11,7 @@ source=(
 http://www.rarlab.com/rar/unrarsrc-$version.tar.gz
 )
 
-build() {
+derle() {
 cd $name
 make -f makefile
 install -Dm755 unrar $PKG/usr/bin/unrar

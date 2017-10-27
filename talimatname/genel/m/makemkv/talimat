@@ -14,7 +14,7 @@ source=(http://www.makemkv.com/download/${name}-bin-${version}.tar.gz
         mmdtsdec.1)
 
 
-build() {
+derle() {
   cd "${SRC}/${name}-oss-${version}"
   ./configure --prefix=/usr
   make

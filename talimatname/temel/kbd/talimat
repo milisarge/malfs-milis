@@ -10,7 +10,7 @@ release=2
 source=(http://ftp.altlinux.com/pub/people/legion/kbd/kbd-$version.tar.xz \
 	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-backspace-1.patch)
 
-build()
+derle()
 {
 cd kbd-$version
 

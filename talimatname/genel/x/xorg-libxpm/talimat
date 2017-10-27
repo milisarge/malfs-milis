@@ -8,7 +8,7 @@ version=3.5.11
 release=1
 source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXpm-$version.tar.bz2)
 
-build() {
+derle() {
 cd libXpm-$version
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make

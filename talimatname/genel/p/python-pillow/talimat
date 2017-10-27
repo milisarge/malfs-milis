@@ -12,7 +12,7 @@ release=1
 source=(https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-$version.tar.gz
        https://github.com/python-pillow/Sane/archive/v$_sanever.tar.gz)
 
-build() {
+derle() {
     cd $SRC
     sed -i "s|os.path.join|'../libImaging', &|" $SRC/Sane-$_sanever/setup.py
     cp -r $SRC/Sane-${_sanever} $SRC/${_appname}-$version/Sane

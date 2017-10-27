@@ -10,7 +10,7 @@ release=1
 source=(http://sourceforge.net/projects/razor/files/razor-agents/$version/razor-agents-$version.tar.bz2
 	razor-2.85-cosmetic-pv-fix.patch)
 
-build() {
+derle() {
 cd razor-agents-$version
 patch -p1 -i $SRC/razor-2.85-cosmetic-pv-fix.patch
 perl Makefile.PL INSTALLDIRS=vendor

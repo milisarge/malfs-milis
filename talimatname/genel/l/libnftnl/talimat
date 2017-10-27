@@ -9,7 +9,7 @@ release=1
 
 source=(http://netfilter.org/projects/libnftnl/files/libnftnl-$version.tar.bz2)
 
-build(){
+derle(){
     cd $name-$version
     ./configure --prefix=/usr
     make

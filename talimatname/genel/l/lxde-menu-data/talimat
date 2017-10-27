@@ -9,7 +9,7 @@ release=2
 _name=lxmenu-data
 
 source=(http://downloads.sourceforge.net/lxde/${_name}-$version.tar.xz)
-build() {
+derle() {
 cd $_name-$version
 ./configure --prefix=/usr --sysconfdir=/etc
 make

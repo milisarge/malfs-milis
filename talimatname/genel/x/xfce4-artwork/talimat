@@ -9,7 +9,7 @@ _debian_version=0.1.1a~git+20110420
 release=1
 source=(http://ftp.debian.org/debian/pool/main/x/$name/${name}_$_debian_version.orig.tar.gz)
 
-build() {
+derle() {
   cd "$SRC/$name-0.1.1a"
 
   ./configure --prefix=/usr

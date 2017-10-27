@@ -9,7 +9,7 @@ release=2
 source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz
      	dvdauthor-0.7.1-glibc220.patch)
 
-build() {
+derle() {
 	cd $name
 
 	patch -p1 -i $SRC/dvdauthor-0.7.1-glibc220.patch

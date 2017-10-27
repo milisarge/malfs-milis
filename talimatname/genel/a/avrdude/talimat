@@ -8,7 +8,7 @@ version=6.3
 release=1
 source=(http://download.savannah.gnu.org/releases/avrdude/${name}-$version.tar.gz)
 
-build() {
+derle() {
 cd ${name}-$version
 ./bootstrap
   ./configure --mandir=/usr/share/man \

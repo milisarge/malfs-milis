@@ -8,7 +8,7 @@ version=2.14
 release=1
 source=(http://beyondgrep.com/$name-$version-single-file)
 
-build() {
+derle() {
     install -D -m 0755 $name-$version-single-file $PKG/usr/bin/$name
     mkdir -p $PKG/usr/man/man1
     pod2man $PKG/usr/bin/$name > $PKG/usr/man/man1/$name.1

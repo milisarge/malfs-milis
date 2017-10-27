@@ -12,7 +12,7 @@ source=(
 http://poppler.freedesktop.org/$name-$version.tar.xz
 http://poppler.freedesktop.org/poppler-data-$dataversion.tar.gz)
 
-build() {
+derle() {
 cd poppler-$version
  
 CXXFLAGS="-std=c++11"

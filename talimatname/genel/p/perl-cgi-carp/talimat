@@ -8,7 +8,7 @@ version=4.35
 release=1
 source=(http://search.cpan.org/CPAN/authors/id/L/LE/LEEJO/CGI-4.35.tar.gz)
 
-build() {
+derle() {
 	_distdir="CGI-4.35"
 	
 	export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

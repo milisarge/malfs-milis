@@ -9,7 +9,7 @@ release=1
 
 source=(http://sourceforge.net/projects/pyqt/files/sip/sip-$version/sip-$version.tar.gz )
 
-build() {
+derle() {
 	cd sip-$version
 	python2 configure.py -b /usr/bin \
 	-d /usr/lib/python2.7/site-packages \

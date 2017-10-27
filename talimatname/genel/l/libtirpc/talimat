@@ -10,7 +10,7 @@ release=1
 source=(http://downloads.sourceforge.net/project/libtirpc/libtirpc/$version/libtirpc-$version.tar.bz2
 	 http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-api_fixes-1.patch)
 
-build()
+derle()
 {
 cd libtirpc-$version
 

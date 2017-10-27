@@ -9,7 +9,7 @@ version=4.9.0
 _name=phonon
 source=(http://download.kde.org/stable/${_name}/$version/${_name}-$version.tar.xz)
 
-build() {
+derle() {
 	cd phonon-$version
 	cmake ../phonon-$version           \
 		-DCMAKE_BUILD_TYPE=Release \

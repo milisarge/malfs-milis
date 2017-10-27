@@ -1,6 +1,6 @@
 version=0.19.7
 source=(http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz)
-build()
+derle()
 {
 cd gettext-$version/gettext-tools
 

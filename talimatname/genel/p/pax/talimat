@@ -8,7 +8,7 @@ version=070715
 release=1
 source=(http://downloads.sourceforge.net/heirloom/heirloom-070715.tar.bz2)
  
-build() {
+derle() {
 
 cd heirloom-$version
 

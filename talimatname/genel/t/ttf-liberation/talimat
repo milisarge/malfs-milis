@@ -13,7 +13,7 @@ ttf-liberation.30-0-liberation-mono.conf
 ttf-liberation.30-0-liberation-sans.conf
 ttf-liberation.30-0-liberation-serif.conf)
 
-build(){
+derle(){
     cd liberation-fonts-ttf-$version
     install -d $PKG/usr/share/fonts/TTF/
     install -m644 *.ttf $PKG/usr/share/fonts/TTF/

@@ -8,7 +8,7 @@ version=1.8.1
 release=1
 source=(https://github.com/open-source-parsers/$name/archive/$version.zip--${name}-${version}.tar.gz)
 
-build () {
+derle() {
   cd ${name}-${version}
   mkdir -p build
   #python3 doxybuild.py --with-dot

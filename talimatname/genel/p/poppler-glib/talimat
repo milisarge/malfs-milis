@@ -9,7 +9,7 @@ release=1
 
 source=(http://poppler.freedesktop.org/poppler-$version.tar.xz)
 
-build() {
+derle() {
 cd poppler-$version
 
 CXXFLAGS="-std=c++11"

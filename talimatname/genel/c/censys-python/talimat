@@ -8,7 +8,7 @@ version=git
 release=1
 source=(https://github.com/censys/censys-python/archive/master.tar.gz::$name-$version-$release.tar.gz)
 
-build() {
+derle() {
 	cd $name-master
 	python3 setup.py install --prefix=/usr --root=$PKG
 	python2 setup.py install --prefix=/usr --root=$PKG

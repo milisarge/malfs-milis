@@ -2,7 +2,7 @@ version=2.26
 source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-2.patch)
 
-build()
+derle()
 {
 cd binutils-$version
 
