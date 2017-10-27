@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="1.1.1 Milis Paket Sistemi"
+versiyon="1.1.2 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -108,11 +108,11 @@ icerik_ekle(){
 		if [ -d kur.$paketad/usr/share/doc ] && [ "$docsil" == "evet" ];then
 			rm -r kur.$paketad/usr/share/doc
 		fi
-		mkdir -p $kokdizin/var/lib/pkg/DB/"$paketad" && 
+		mkdir -p $kokdizin$VT/"$paketad" && 
 		cp -v -afr kur.$paketad/* $kokdizin > kur.$paketad/kurulan 
-		cp kur.$paketad/kurulan /tmp/ &&cat kur.$paketad/kurulan | cut -d '>' -f2 > $kokdizin/var/lib/pkg/DB/"$paketad"/kurulan &&
-		#mv  kur.$paketad/.MTREE /var/lib/pkg/DB/"$paketad"/files &&
-		mv  kur.$paketad/.META $kokdizin/var/lib/pkg/DB/"$paketad"/META &&
+		cp kur.$paketad/kurulan /tmp/ &&cat kur.$paketad/kurulan | cut -d '>' -f2 > $kokdizin$VT/"$paketad"/kurulan &&
+		#mv  kur.$paketad/.MTREE $VT/"$paketad"/files &&
+		mv  kur.$paketad/.META $kokdizin$VT/"$paketad"/META &&
 		
 		#kur-kos calistirilmasi
 		if [ -f kur.$paketad/.POST ];then
@@ -154,10 +154,10 @@ paket_sil(){
 	else
 		kkont=`kurulu_kontrol "$1"`
 		if [ "$kkont" = "kurulu" ];then
-			if [ -f "/var/lib/pkg/DB/$paket/kurulan" ];then
+			if [ -f "$VT/$paket/kurulan" ];then
                 #dizin koruma
                 etkilenen_kurtar $1
-				cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
+				cat $VT/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 				if [ "$tersbag_goster" = "evet" ];then
 					ryaz 31 "ters bagimliliklar"
 					ryaz 31 "------------------"
@@ -185,10 +185,18 @@ paket_sil(){
 					done
 				fi
 				if [ "$sil_onay" = "e" ];then
-					[ -f "$talimatname/genel/$paket/$paket.kos-sil" ] && bash "$talimatname/genel/$paket/$paket.kos-sil"
+					_konum=$(talimat_bul $paket)
+
+					if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+						echo "tanimsiz"
+					else
+						echo "degil"
+					fi
+									
+					[ -f "$_konum/$paket.kos-sil" ] && bash "$_konum/$paket.kos-sil"
 					xargs rm -r -f < /tmp/$paket.sil &&
-					rm -r -f /var/lib/pkg/DB/"$paket" &&
-					[ -f "$talimatname/genel/$paket/$paket.sil-kos" ] && bash "$talimatname/genel/$paket/$paket.sil-kos"
+					rm -r -f "$VT/$paket" &&
+					[ -f "$_konum/$paket.sil-kos" ] && bash "$_konum/$paket.sil-kos"
 					ryaz 34 $paket" $_paket_silindi"
 					loglama "$paket $_paket_silindi"
 					rm -f /tmp/$paket.sil
@@ -229,7 +237,7 @@ paket_bilgi2(){
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" = "kurulu" ];then
 		paket="$1"
-		cat /var/lib/pkg/DB/"$paket"/META
+		cat "$VT/$paket"/META
 	elif [ "$kkont" = "degil" ];then
 		echo "$_paket_kurulu_degil"
 	else
@@ -243,15 +251,15 @@ paket_bilgi(){
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" = "kurulu" ];then
 		paket="$1"
-		satir=`sed -n '1p' <  /var/lib/pkg/DB/"$paket"/META`
+		satir=`sed -n '1p' <  $VT/"$paket"/META`
 		ryaz 32 "ADI        :" ${satir:1:${#satir}-1} 
-		satir=`sed -n '2p' <  /var/lib/pkg/DB/"$paket"/META`
+		satir=`sed -n '2p' <  $VT/"$paket"/META`
 		ryaz 32 "TANIM      :" ${satir:1:${#satir}-1} 
-		satir=`sed -n '3p' <  /var/lib/pkg/DB/"$paket"/META`
+		satir=`sed -n '3p' <  $VT/"$paket"/META`
 		ryaz 32 "URL        :" ${satir:1:${#satir}-1} 
-		satir=`sed -n '5p' <  /var/lib/pkg/DB/"$paket"/META`
+		satir=`sed -n '5p' <  $VT/"$paket"/META`
 		ryaz 32 "PAKETÇİ    :" ${satir:1:${#satir}-1} 
-		satir=`sed -n '6p' <  /var/lib/pkg/DB/"$paket"/META`
+		satir=`sed -n '6p' <  $VT/"$paket"/META`
 		satir=${satir:1:${#satir}-1} 
 		printf -v boyut '%d\n' "$satir" 2>/dev/null
 		if [ $boyut -lt 1048576 ];then
@@ -262,13 +270,13 @@ paket_bilgi(){
 			_ek="mb"
 		fi
 		ryaz 32 "KUR BOYUT  :" "$boyut $_ek (tahmini)"
-		satir=`sed -n '7p' <  /var/lib/pkg/DB/"$paket"/META`
+		satir=`sed -n '7p' <  $VT/"$paket"/META`
 		ryaz 32 "SÜRÜM      :" ${satir:1:${#satir}-1}
-		satir=`sed -n '8p' <  /var/lib/pkg/DB/"$paket"/META`
+		satir=`sed -n '8p' <  $VT/"$paket"/META`
 		ryaz 32 "DEVİR      :" ${satir:1:${#satir}-1}
-		satir=`sed -n '9p' <  /var/lib/pkg/DB/"$paket"/META`
+		satir=`sed -n '9p' <  $VT/"$paket"/META`
 		ryaz 32 "PAKETLENME :" `date -d @${satir:1:${#satir}-1}`
-		#satir=`sed -n '4p' <  /var/lib/pkg/DB/"$paket"/META`
+		#satir=`sed -n '4p' <  $VT/"$paket"/META`
 		#ryaz 32 "YP:" ${satir:1:${#satir}-1} 
 	elif [ "$kkont" = "degil" ];then
 		ryaz 31 "$1 $_paket_kurulu_degil"
@@ -414,25 +422,6 @@ derleme_listyap_kontrol(){
 	touch gerek.liste 
 }
 
-gerekleri_dosyala_eski(){
-	local altgerek
-	altgerek="$1"
-	ana="`find $talimatname -name $altgerek`"
-	dal="`find $ektalimatname -name $altgerek`"
-	if [ ! -z "$ana" -a "$ana" != " " ]; then
-		echo ${ana#"$talimatname"}
-	elif [ ! -z "$dal" -a "$dal" != " " ]; then
-		echo ${dal#"$ektalimatname"}
-	fi
-	#sadece genel bagimliliklar derlenecek
-	echo "$altgerek" >> tumgerekler.liste 
-	if [ -f "$talimatname/genel/$altgerek/talimat" ];then
-		echo "$ana" >> gerek.liste 
-	elif [ -f "$dal/talimat" ];then
-		echo "$dal" >> gerek.liste
-	fi
-}
-
 gerekleri_dosyala(){
 	local _altgerek _konum
 	_altgerek="$1"
@@ -529,10 +518,11 @@ paket_derle_kur(){
 oto_derle_kur_paketle(){
 	paketvt_guncelle
 	# mps -kur
+	_konum=$(talimat_bul $1)
 	paket_inkur_oto $1 &&
-	if [ -f  "$talimatname/genel/$1/$1.sira" ];then
+	if [ -f  "$_konum/$1.sira" ];then
 		ryaz 32 "sıralı derleme yapılacak."
-		paket_derle_liste "$talimatname/genel/$1/$1.sira"
+		paket_derle_liste "$_konum/$1.sira"
 	else
 		paket_derle_kur $1
 	fi 
@@ -694,13 +684,13 @@ paket_sil_gerekli(){
 }
 
 paketsiz_talimatlar(){
-	for talimatyol in `( ls -d $talimatname/genel/*  & ls -d $ektalimatname/*/*  ) | cat`;do
+	for talimatyol in `( ls -d $talimatname/genel/*/*  & ls -d $ektalimatname/*/*  ) | cat`;do
 		#echo $talimat
 		if [ -d $talimatyol ];then
 			talimat=$(basename $talimatyol)
 			if [[ ! $(cat $paketdepo/paket*.vt | grep  $talimat#) ]] ;then 
-				if [ -d $talimatname/*/$talimat ];then
-					ack=`grep -e '# Description:' $talimatname/genel/$talimat/talimat | cut -d':' -f2`
+				if [ -d $talimatname/*/*/$talimat ];then
+					ack=`grep -e '# Description:' $talimatname/genel/*/$talimat/talimat | cut -d':' -f2`
 				elif [ -d $ektalimatname/*/$talimat ];then
 					ack=`grep -e '# Description:' $ektalimatname/*/$talimat/talimat | cut -d':' -f2`
 				fi
@@ -799,30 +789,6 @@ sistem_guncelle(){
 	ryaz 32 "\nSistem Güncellemesi Tamamlandı."
 }
 
-sistem_guncelle_eski(){
-	#tarihce_yap
-	# güncellemede atlanacak paketler.
-	esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src vlc)
-	local kpkt
-	local pk_guncelle
-	#mps -GG 
-	#mps -G
-	GS_CIKTI="H"
-	for kpkt in `mps -kl`;do
-		pk_guncelle="e"
-		case "${esgec[@]}" in  *"$kpkt"*) pk_guncelle="h" ;; esac
-		if [ "$pk_guncelle" = "e" ];then
-			paket_guncelle "$kpkt" $GS_CIKTI
-			#printf "."
-		else
-			[ $GS_CIKTI = "E" ] && ryaz 31 $kpkt "güncellemesi atlandı"
-			printf "."
-		fi
-		
-	done
-	ryaz 32 "\nSistem Güncellemesi Tamamlandı."
-}
-
 surum_kontrol(){
 	local _konum
 	GS_CIKTI="E"
@@ -831,7 +797,7 @@ surum_kontrol(){
 	fi
 	local ksurum version pkt dusuk yuksek durum
 	durum="belirsiz"
-	satir=`sed -n '7p' <  /var/lib/pkg/DB/"$1"/META`
+	satir=`sed -n '7p' <  $VT/"$1"/META`
 	ksurum=${satir:1:${#satir}-1} 
 	
 	
@@ -896,7 +862,7 @@ devir_kontrol(){
 	fi
 	local kdevir release pkt dusuk yuksek durum gun_onay
 	durum="belirsiz"
-	satir=`sed -n '8p' <  /var/lib/pkg/DB/"$1"/META`
+	satir=`sed -n '8p' <  $VT/"$1"/META`
 	kdevir=${satir:1:${#satir}-1} 
 	
 	_konum=$(talimat_bul $1)
@@ -1035,22 +1001,6 @@ bagimlilar(){
 	fi
 }
 
-ters_bagimli_bilgi_eski(){
-	gentalimatlar=$(ls $talimatname/genel/)
-	for tal in $gentalimatlar;do
-		#echo $tal
-		bagimd=`cat $talimatname/genel/$tal/talimat | grep "Depends" | cut -d':' -f2`
-		if [ -n "$bagimd" ]; then
-			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-			for bag in $bagimd;do
-				if [ $bag = $1 ];then
-					echo $tal
-				fi
-			done
-		fi
-	done
-}
-
 ters_bagimli_bilgi(){
 	gtbpaket=$1
 	tbgdosya=$(mktemp)
@@ -1184,8 +1134,8 @@ log_analiz(){
 etkilenen_kurtar(){
 	local dizin paket
 	paket=$1
-	if [ -f /var/lib/pkg/DB/$paket/kurulan ];then
-		cat /var/lib/pkg/DB/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
+	if [ -f $VT/$paket/kurulan ];then
+		cat $VT/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 		for f in $(cat /tmp/$paket.sil) ; do 
 			dizin="${f%\'}"
 			dizin="${dizin#\'}"
@@ -1202,8 +1152,8 @@ etkilenen_kurtar(){
 			fi
 		done
 		if [ -f /tmp/$paket.kurtar ];then
-			mv /var/lib/pkg/DB/$paket/kurulan /var/lib/pkg/DB/$paket/ilk.kurulan
-			grep -v -F -x -f "/tmp/$paket.kurtar" "/tmp/$paket.sil" > /var/lib/pkg/DB/$paket/kurulan
+			mv $VT/$paket/kurulan $VT/$paket/ilk.kurulan
+			grep -v -F -x -f "/tmp/$paket.kurtar" "/tmp/$paket.sil" > $VT/$paket/kurulan
 			ryaz 32 "$paket etkilenen dosyaları kurtarıldı."
 		else
 			ryaz 32 "$paket etkilenen dosyası yok."
@@ -1218,7 +1168,7 @@ etkilenen_kurtar(){
 ters_bagimli_kontrol(){
 	ters_bagimli_bilgi $1
 	cat /tmp/${1}.tb.txt | sort > tersb.liste
-	ls /var/lib/pkg/DB/ | sed  "/$1/d" | sort  > simdiki.liste
+	ls $VT/ | sed  "/$1/d" | sort  > simdiki.liste
 	comm -12 tersb.liste simdiki.liste
 	rm tersb.liste simdiki.liste
 }
@@ -1226,7 +1176,7 @@ ters_bagimli_kontrol(){
 kurulu_kontrol(){
 	local _konum _apaket
 	_apaket=$1
-	if [ -d "$kokdizin/var/lib/pkg/DB/$_apaket" ];then
+	if [ -d "$kokdizin$VT/$_apaket" ];then
 		echo "kurulu"
 		exit 0
 	fi
@@ -1311,8 +1261,8 @@ tarihce_yukle(){
 	sil_onay="h"
 	if [ -f $TARIHCE_DIZIN/"$1-pkvt.tar.lz" ];then
 		bsdtar -p -o -C /tmp -xf $TARIHCE_DIZIN/"$1-pkvt.tar.lz" 2>/dev/null
-		ls /tmp/var/lib/pkg/DB/ > hedef.pkvt
-		ls /var/lib/pkg/DB/ > simdiki.pkvt
+		ls /tmp$VT/ > hedef.pkvt
+		ls $VT/ > simdiki.pkvt
 		grep -v -F -x -f hedef.pkvt simdiki.pkvt > sil.liste
 		grep -v -F -x -f simdiki.pkvt hedef.pkvt > kur.liste
 		#rm hedef.pkvt simdiki.pkvt
@@ -1441,9 +1391,9 @@ indir_talimat_paketle(){
 		ryaz 31 "paket ismi degiskeni bulunamadı!"
 		exit 1
 	fi
-	if [ ! -d $_talkonum/$paketisim ];then
-		mkdir $_talkonum/$paketisim
-		cp -f $dosya $_talkonum/$paketisim/talimat
+	if [ ! -d $_talkonum/${paketisim:0:1}/$paketisim ];then
+		mkdir -p $_talkonum/${paketisim:0:1}/$paketisim
+		cp -f $dosya $_talkonum/${paketisim:0:1}/$paketisim/talimat
 		ryaz 32 "$paketisim talimatı hazırlandı."
 	else
 		ryaz 31 "$paketisim talimatı zaten talimatnamede var!"
@@ -1665,7 +1615,7 @@ kirik_kontrol_sistem(){
 	local onek sonek
 	onek="'"
 	sonek="'"
-	for paket in `ls /var/lib/pkg/DB/`
+	for paket in `ls $VT/`
 	do	
 		ryaz 33 $paket "kontrol ediliyor."
 		kirik_kontrol_paket $paket
