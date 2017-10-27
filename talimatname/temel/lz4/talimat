@@ -1,7 +1,7 @@
-# Description: Very fast lossless compression algorithm
+# Tanım: Very fast lossless compression algorithm
 # Url: https://github.com/Cyan4973/lz4
-# Maintainer: Yann Collet
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
 
 name=lz4
 version=r131

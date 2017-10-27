@@ -1,16 +1,13 @@
-# Description: The Man-DB package contains programs for finding and viewing man pages.
+# Tanım: The Man-DB package contains programs for finding and viewing man pages.
 # URL: http://savannah.nongnu.org/projects/man-db
-# Maintainer: Colin Watson cjwatson at debian dot org
-# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=man-db
 version=2.7.2
 release=1
 
-source=(http://savannah.nongnu.org/download/man-db/man-db-$version.tar.xz \
-)
-
-run=(groff less)
+source=(http://savannah.nongnu.org/download/man-db/man-db-$version.tar.xz)
 
 build()
 {

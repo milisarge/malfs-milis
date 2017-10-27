@@ -1,7 +1,8 @@
-# Description: Programs for controlling the startup, running, and shutdown of the system.
+# Tanım: Programs for controlling the startup, running, and shutdown of the system.
 # URL: ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/
-# Maintainer: sysvinit-devel@nongnu.org
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
+
 name=sysvinit
 version=2.88dsf
 release=2

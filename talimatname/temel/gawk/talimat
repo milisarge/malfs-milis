@@ -1,7 +1,7 @@
-# Description: The Gawk package contains programs for manipulating text files.
+# Tanım: The Gawk package contains programs for manipulating text files.
 # URL: http://www.gnu.org/software/gawk/
-# Maintainers: Paul Rubin,Paul Finlason,Richard Stallman,David Trueman and,Arnold Robbins
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=gawk
 version=4.1.3
@@ -9,16 +9,14 @@ release=1
 
 source=(http://ftp.gnu.org/gnu/gawk/gawk-$version.tar.xz)
 
-build()
-{
-cd gawk-$version
-./configure --prefix=/usr
-make
-# Some checks fails
-make check || true
-make DESTDIR=$PKG install
-rm -rf $PKG/usr/share/info/dir
-
+build() {
+	cd gawk-$version
+	./configure --prefix=/usr
+	make
+	# Some checks fails
+	make check || true
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/info/dir
 }
 
 

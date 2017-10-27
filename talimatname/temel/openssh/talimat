@@ -1,12 +1,15 @@
-# Description: Free version of the SSH connectivity tools
+# Tanım: Free version of the SSH connectivity tools
 # URL: http://www.openssh.org/
-# Packagers: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
+
 name=openssh
 version=7.1p2
 release=1
 
 source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
-	http://downloads.nutyx.org/files/patchs/openssh-server/service-saravane-01.patch)
+		http://downloads.nutyx.org/files/patchs/openssh-server/service-saravane-01.patch)
+
 build() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

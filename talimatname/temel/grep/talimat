@@ -1,7 +1,7 @@
-# Description: Searches input(s) file(s) for lines containing a match to a specified pattern.
+# Tanım: Searches input(s) file(s) for lines containing a match to a specified pattern.
 # URL: http://www.gnu.org/software/grep/
-# Maintainers: Jim Meyering jim at meyering dot net,Paolo Bonzini bonzini at gnu dot org
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=grep
 version=2.23

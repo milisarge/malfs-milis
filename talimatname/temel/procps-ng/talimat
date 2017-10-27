@@ -1,13 +1,13 @@
-# Description: Utilities for monitoring your system and its processes.
+# Tanım: Utilities for monitoring your system and its processes.
 # URL: http://procps.sourceforge.net/
-# Packager: pierre at nutyx dot org, tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=procps-ng
 version=3.3.11
 release=1
 
-source=(http://downloads.sourceforge.net/project/$name/Production/$name-$version.tar.xz )
-
-#PKGMK_GROUPS=(devel man doc)
+source=(http://downloads.sourceforge.net/project/$name/Production/$name-$version.tar.xz)
 
 build()
 {
@@ -28,5 +28,4 @@ mkdir -p $PKG/usr/lib
 mv $PKG/lib/pkgconfig \
 $PKG/usr/lib/
 rm -r $PKG/usr/share/doc
-
 }

@@ -1,17 +1,16 @@
-# Description: Utilities for showing and setting the basic system characteristics
+# Tanım: Utilities for showing and setting the basic system characteristics
 # URL: http://www.gnu.org/software/coreutils/
-# Maintainer: Jim Meyering meyering at redhat dot com
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=coreutils
 version=8.25
 release=2
 
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-i18n-2.patch
-	)
-build()
-{
+	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-i18n-2.patch)
+
+build() {
 cd $name-$version
 
 patch -Np1 -i ../$name-$version-i18n-2.patch

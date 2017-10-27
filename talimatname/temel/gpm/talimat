@@ -1,6 +1,8 @@
-# Description: A free library for arbitrary precision arithmetic.
+# Tanım: A free library for arbitrary precision arithmetic.
 # URL: http://unix.schottelius.org/gpm
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=gpm
 version=1.20.7
 release=2

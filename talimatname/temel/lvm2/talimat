@@ -1,6 +1,7 @@
-# Description: Allows spanning of file systems across multiple physical disks and partitions.
+# Tanım: Allows spanning of file systems across multiple physical disks and partitions.
 # URL: http://sourceware.org/lvm2/
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
 
 name=lvm2
 version=2.02.141

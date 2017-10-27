@@ -1,7 +1,7 @@
-# Description: Give certain users (or groups) the ability to run some commands as root.
+# Tanım: Give certain users (or groups) the ability to run some commands as root.
 # URL: http://www.sudo.ws
-# Packagers: milisarge@gmail.com
-# Depends on: pam
+# Paketçi: milisarge
+# Gerekler:
 
 name=sudo
 version=1.8.15

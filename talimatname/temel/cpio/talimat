@@ -1,15 +1,13 @@
-# Description: Copies files into or out of a cpio or tar archive.
+# Tanım: Copies files into or out of a cpio or tar archive.
 # URL: http://www.gnu.org/software/cpio/
-# Maintainer: Sergey Poznyakoff
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=cpio
 version=2.11
 release=1
 
-source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2\
-)
-
+source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
 	cd $name-$version

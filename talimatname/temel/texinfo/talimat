@@ -1,7 +1,8 @@
-# Description: Texinfo is the official documentation format of the GNU project.
+# Tanım: Texinfo is the official documentation format of the GNU project.
 # URL: http://www.gnu.org/software/texinfo
-# Maintainer: Karl Berry
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
+
 name=texinfo
 version=6.1
 release=1

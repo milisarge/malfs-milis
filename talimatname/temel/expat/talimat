@@ -1,7 +1,8 @@
-# Description: The Expat package contains a stream oriented C library for parsing XML.
+# Tanım: The Expat package contains a stream oriented C library for parsing XML.
 # URL: http://expat.sourceforge.net/
-# Packager: tnut at nutyx dot org
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
+
 name=expat
 version=2.1.0
 release=1
@@ -9,9 +10,8 @@ release=1
 source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
 
 build() {
-cd $name-$version
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
-
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }

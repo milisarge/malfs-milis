@@ -1,7 +1,8 @@
-# Description: The GDBM package contains the GNU Database Manager.
+# Tanım: The GDBM package contains the GNU Database Manager.
 # URL: http://www.gnu.org/software/gdbm/gdbm.html
-# Maintainers: Philip A. Nelson  phil at cs dot wwu dot edu,Jason Downs downsj at downsj dot com,Sergey Poznyakoff gray at gnu dot org dot ua
-# Packagers: pierre at nutyx dot org,tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=gdbm
 version=1.11
 release=1

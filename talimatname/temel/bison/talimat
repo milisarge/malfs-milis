@@ -1,21 +1,21 @@
-# Description: The Bison package contains a parser generator
+# Tanım: The Bison package contains a parser generator
 # URL: http://www.gnu.org/software/bison/
-# Maintainers: Robert Corbett,Richard Stallman,Wilfred Hansen
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
+
 name=bison
 version=3.0.4
 release=2
 
 source=(http://ftp.gnu.org/gnu/bison/bison-$version.tar.xz)
 
-build()
-{
-cd bison-$version
-./configure --prefix=/usr \
---docdir=/usr/share/doc/$name-$version
-make
-make check||true
-make DESTDIR=$PKG install
-rm -r $PKG/usr/share/info $PKG/usr/share/doc/
-rm $PKG/usr/share/bison/README
+build(){
+	cd bison-$version
+	./configure --prefix=/usr \
+	--docdir=/usr/share/doc/$name-$version
+	make
+	make check||true
+	make DESTDIR=$PKG install
+	rm -r $PKG/usr/share/info $PKG/usr/share/doc/
+	rm $PKG/usr/share/bison/README
 }

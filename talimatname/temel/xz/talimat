@@ -1,7 +1,7 @@
-# Description: Free general-purpose data compression software with high compression ratio.
+# Tanım: Free general-purpose data compression software with high compression ratio.
 # URL: http://tukaani.org/xz/
-# Maintainer: Lasse Collin, lasse dot collin at tukaani dot org
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
 
 name=xz
 version=5.2.2

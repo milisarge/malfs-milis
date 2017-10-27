@@ -1,6 +1,8 @@
-# Description: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security.
+# Tanım: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security.
 # URL: http://www.openssl.org/
-# Packager: tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=openssl
 version=1.0.2f
 release=1

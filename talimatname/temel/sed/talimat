@@ -1,7 +1,8 @@
-# Description: Takes text input, do some operation on it, and outputs the modified text.
+# Tanım: Takes text input, do some operation on it, and outputs the modified text.
 # URL: http://www.gnu.org/software/sed//sed.html
-# Maintainers: Ken Pizzini ken at gnu dot org,Paolo Bonzini bonzini at gnu dot org
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=sed
 version=4.2.2
 release=1

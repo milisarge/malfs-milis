@@ -1,7 +1,8 @@
-# Description: For logging system messages, such as those given by the kernel.
+# Tanım: For logging system messages, such as those given by the kernel.
 # URL: http://www.infodrom.org/projects/sysklogd/
-# Maintainer: Dr. Greg Wettstein, greg at wind dot enjellic dot com
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
+
 name=sysklogd
 version=1.5.1
 release=1

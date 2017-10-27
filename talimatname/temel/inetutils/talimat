@@ -1,7 +1,7 @@
-# Description: The Inetutils package contains programs for basic networking.
+# Tanım: The Inetutils package contains programs for basic networking.
 # URL: http://www.gnu.org/software/inetutils/
-# Maintainers: Alain Malgoire,Alfred M. Szmidt,Arash Yadegarnia,Bernhard Rosenkraenzer,Dan Stromberg,David O'Shea and many more
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=inetutils
 version=1.9.4

@@ -1,7 +1,8 @@
-# Description: The Kbd package contains key-table files, console fonts, and keyboard utilities
+# Tanım: The Kbd package contains key-table files, console fonts, and keyboard utilities
 # URL: ftp://devel.altlinux.org/legion/kbd/
-# Packager: Risto Kankkunen's
-# Maintainer: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=kbd
 version=2.0.3
 release=2

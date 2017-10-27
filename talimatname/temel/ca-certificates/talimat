@@ -1,6 +1,7 @@
-# Description: Certificate Authority certificates, the Public Key Infrastructure.
+# Tanım: Certificate Authority certificates, the Public Key Infrastructure.
 # URL: http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=ca-certificates
 version=20160110

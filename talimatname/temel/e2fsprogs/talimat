@@ -1,7 +1,7 @@
-# Description: Utilities for handling the ext2,3 and 4 files system.
+# Tanım: Utilities for handling the ext2,3 and 4 files system.
 # URL: http://e2fsprogs.sourceforge.net/
-# Maintainers: Ted Ts'o tytso at mit dot edu,tytso at alum dot mit dot edu
-# Packagers: tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=e2fsprogs
 version=1.42.13
@@ -9,10 +9,7 @@ release=1
 
 source=(http://prdownloads.sourceforge.net/$name/$name-$version.tar.gz)
 
-#PKGMK_GROUPS=(devel man doc)
-
-build()
-{
+build() {
 cd $name-$version
 
 sed -e '/int.*old_desc_blocks/s/int/blk64_t/' \

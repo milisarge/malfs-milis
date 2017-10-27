@@ -1,7 +1,8 @@
-# Description: The M4 package contains a macro processor
+# Tanım: The M4 package contains a macro processor
 # URL: http://www.seindal.dk/rene/gnu/
-# Maintainer: Tim Rice, tim at multitalents dot net
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=m4
 version=1.4.17
 release=1

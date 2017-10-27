@@ -1,7 +1,8 @@
+# Tanım: Commands for Manipulating POSIX Access Control Lists
 # URL: http://savannah.nongnu.org/projects/acl
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
-description="Commands for Manipulating POSIX Access Control Lists."
 name=acl
 version=2.2.52
 release=1

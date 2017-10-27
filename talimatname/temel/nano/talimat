@@ -1,11 +1,11 @@
-# Description: A simple text editor which aims to replace Pico, the default editor in the Pine package.
+# Tanım: A simple text editor which aims to replace Pico, the default editor in the Pine package.
 # URL: http://www.nano-editor.org/
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
 
 name=nano
 version=2.5.2
 release=1
-#PAKET_LOKAL="hepsi"
 
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 

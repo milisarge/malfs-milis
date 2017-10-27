@@ -1,12 +1,13 @@
-# Description: PCI bus configuration space access library and tools
+# Tanım: PCI bus configuration space access library and tools
 # URL: http://atrey.karlin.mff.cuni.cz/~mj/pciutils.html
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=pciutils
 version=3.4.1
 release=1
 
-source=( ftp://ftp.kernel.org/pub/software/utils/$name/$name-$version.tar.xz )
+source=(ftp://ftp.kernel.org/pub/software/utils/$name/$name-$version.tar.xz)
 
 build() {
 cd $name-$version

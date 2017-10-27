@@ -1,7 +1,7 @@
-# Description: To create nice user interfaces to shell scripts or other scripting languages.
+# Tanım: To create nice user interfaces to shell scripts or other scripting languages.
 # URL: http://hightek.org/dialog/
-# Maintainer: Thomas E. Dickey dickey at invisible-island dot net
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=dialog
 version=1.2.20140911
@@ -10,11 +10,11 @@ release=1
 source=(ftp://dickey.his.com/dialog/$name-1.2-20140911.tgz)
 
 build() {
-cd $name-1.2-20140911
-./configure --prefix=/usr \
---enable-nls --bindir=/bin \
---with-ncursesw \
---mandir=/usr/share/man
-make
-make DESTDIR=$PKG install
+	cd $name-1.2-20140911
+	./configure --prefix=/usr \
+	--enable-nls --bindir=/bin \
+	--with-ncursesw \
+	--mandir=/usr/share/man
+	make
+	make DESTDIR=$PKG install
 }

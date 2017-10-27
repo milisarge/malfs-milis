@@ -1,7 +1,8 @@
-# Description: The GNU generic library support script.
+# Tanım: The GNU generic library support script.
 # URL: http://www.gnu.org/software/libtool/
-# Maintainer: Gordon Matzigkeit  gord at gnu dot org
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=libtool
 version=2.4.6
 release=1

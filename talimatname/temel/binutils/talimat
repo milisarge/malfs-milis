@@ -1,7 +1,8 @@
-# Description: Linker, assembler, and other tools for handling object files.
+# Tanım: Linker, assembler, and other tools for handling object files.
 # URL: http://sources.redhat.com/binutils/
-# Maintainers: Tristan Gingold ( gingold at adacore dot com ),Alan Modra ( amodra at bigpond dot net dot au )
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
+
 name=binutils
 version=2.26
 release=3
@@ -9,40 +10,40 @@ release=3
 source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2
 	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-1.patch
 	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-2.patch)
-build()
-{
-cd binutils-$version
+	
+build() {
+	cd binutils-$version
 
-patch -Np1 -i ../binutils-$version-upstream_fix-1.patch
-patch -Np1 -i ../binutils-$version-upstream_fix-2.patch
+	patch -Np1 -i ../binutils-$version-upstream_fix-1.patch
+	patch -Np1 -i ../binutils-$version-upstream_fix-2.patch
 
-mkdir -v build
-cd build
+	mkdir -v build
+	cd build
 
-../configure \
---prefix=/usr --includedir=/usr/include \
---bindir=/bin --sbindir=/sbin \
---datarootdir=/usr/share \
---enable-shared --disable-werror
+	../configure \
+	--prefix=/usr --includedir=/usr/include \
+	--bindir=/bin --sbindir=/sbin \
+	--datarootdir=/usr/share \
+	--enable-shared --disable-werror
 
-make tooldir=/
+	make tooldir=/
 
-# make  LDFLAGS="" -k check || true
+	# make  LDFLAGS="" -k check || true
 
-# make tooldir=/usr DESTDIR=$PKG install
-make tooldir=/usr DESTDIR=$PKG install
+	# make tooldir=/usr DESTDIR=$PKG install
+	make tooldir=/usr DESTDIR=$PKG install
 
-rm -rf $PKG/usr/share/info/dir
-rm $PKG/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}.1
-mkdir $PKG/lib
-for lib in libopcodes libbfd
-do
-	mv $PKG/usr/lib/$lib-$version.20160125.so \
-	$PKG/lib/$lib-$version.so
-	ln -s $lib-$version.so  $PKG/lib/$lib
-	ln -s ../../lib/$lib-$version.20160125.so \
-	$PKG/usr/lib/$lib-$version.so
-	ln -s ../../lib/$lib-$version.so \
-	$PKG/usr/lib/$lib
-done
+	rm -rf $PKG/usr/share/info/dir
+	rm $PKG/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}.1
+	mkdir $PKG/lib
+	for lib in libopcodes libbfd
+	do
+		mv $PKG/usr/lib/$lib-$version.20160125.so \
+		$PKG/lib/$lib-$version.so
+		ln -s $lib-$version.so  $PKG/lib/$lib
+		ln -s ../../lib/$lib-$version.20160125.so \
+		$PKG/usr/lib/$lib-$version.so
+		ln -s ../../lib/$lib-$version.so \
+		$PKG/usr/lib/$lib
+	done
 }

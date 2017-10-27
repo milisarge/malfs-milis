@@ -1,6 +1,8 @@
-# Description: Pluggable Authentication Modules to choose how applications authenticate users.
+# Tanım: Pluggable Authentication Modules to choose how applications authenticate users.
 # URL: http://www.kernel.org/pub/libs/pam
-# Packager: tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=pam
 version=1.2.1
 release=1

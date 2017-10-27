@@ -1,6 +1,7 @@
-# Description: POSIX 1003.1e capabilities library
+# Tanım: POSIX 1003.1e capabilities library
 # URL: http://www.kernel.org/pub/linux/libs/security/linux-privs/
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=libcap
 version=2.25

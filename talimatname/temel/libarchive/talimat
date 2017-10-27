@@ -1,7 +1,7 @@
-# Description: farklı arşiv tiplerini uygulayan kütüphane
+# Tanım: farklı arşiv tiplerini uygulayan kütüphane
 # URL: http://people.freebsd.org/~kientzle/libarchive
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libarchive
 version=3.3.2

@@ -1,7 +1,8 @@
-# Description: System utilities for handling file systems consoles partitions and messages.
+# Tanım: System utilities for handling file systems consoles partitions and messages.
 # URL: http://freshmeat.net/projects/util-linux/
-# Maintainer: Karel Zak kzak at redhat dot com 
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
+
 name=util-linux
 version=2.27.1
 release=1

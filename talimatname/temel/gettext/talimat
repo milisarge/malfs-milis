@@ -1,7 +1,7 @@
-# Description: Utilities for internationalization and localization.
+# Tanım: Utilities for internationalization and localization.
 # URL: http://www.gnu.org/software/gettext/
-# Maintainer: Ulrich Drepper
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=gettext
 version=0.19.7

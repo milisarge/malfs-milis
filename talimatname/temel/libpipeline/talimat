@@ -1,7 +1,7 @@
-# Description: C library for manipulating pipelines of subprocesses in a flexible way
+# Tanım: C library for manipulating pipelines of subprocesses in a flexible way
 # URL: http://libpipeline.nongnu.org/
-# Maintainer: Colin Watson cjwatson at debian dot org
-# Packager: tnuttens at gmail dot com
+# Paketçi: milisarge
+# Gerekler:
 
 name=libpipeline
 version=1.4.1

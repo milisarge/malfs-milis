@@ -1,8 +1,7 @@
-# Description: The Kmod package contains libraries and utilities for loading kernel modules.
+# Tanım: The Kmod package contains libraries and utilities for loading kernel modules.
 # URL: http://www.kernel.org/pub/linux/kernel/people/rusty/modules
-# Packager: pierre at nutyx dot org
-
-PKGMK_GROUPS=(devel doc man)
+# Paketçi: milisarge
+# Gerekler:
 
 name=kmod
 version=22

@@ -1,7 +1,8 @@
-# Description: The Gzip package contains programs for compressing and decompressing files.
+# Tanım: The Gzip package contains programs for compressing and decompressing files.
 # URL: http://www.gzip.org/
-# Maintainers: Jean-loup Gailly jloup at gzip dot org,Mark Adler for the decompression code.
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=gzip
 version=1.6
 release=1

@@ -1,7 +1,8 @@
-# Description: GNU compiler collection, which includes the C, C++, fortran and objc compilers.
+# Tanım: GNU compiler collection, which includes the C, C++, fortran and objc compilers.
 # URL: http://gcc.gnu.org
-# Packagers: milisarge@gmail.com
-# Maintainers: Jakub Jelinek (jakub at redhat dot com),Manuel López-Ibáñez (manu at gcc dot gnu.org,Giovanni Bajo,Peter Barada,Gerald Baumgartner and a lot more.
+# Paketçi: milisarge@gmail.com
+# Gerekler:
+
 name=gcc
 version=5.3.0
 release=1

@@ -1,7 +1,8 @@
-# Description: The GNU patch tool
+# Tanım: The GNU patch tool
 # URL: http://www.gnu.org/software/patch/patch.html
-# Maintainers: Larry Wall,Paul Eggert,Wayne Davison,David MacKenzie,Andreas Gruenbacher
-# Packager: tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=patch
 version=2.7.5
 release=1

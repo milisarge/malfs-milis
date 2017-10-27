@@ -1,6 +1,8 @@
-# Description: Synchronizing files over a network by sending just the differences in the files.
+# Tanım: Synchronizing files over a network by sending just the differences in the files.
 # URL: http://samba.anu.edu.au/rsync/
-# Packager: tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=rsync
 version=3.1.2
 release=1

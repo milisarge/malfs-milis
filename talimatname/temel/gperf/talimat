@@ -1,7 +1,7 @@
-# Description: Gperf generates a perfect hash function from a key set.
+# Tanım: Gperf generates a perfect hash function from a key set.
 # URL: http://www.gnu.org/software/gperf/gperf.html
-# Maintainers: Keith Bostic,Michael Tiemann,Doug Lea,Adam de Boor and,Nels Olson,Bruno Haible
-# Packagers: geantbrun at nutyx dot org,tnut at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=gperf
 version=3.0.4

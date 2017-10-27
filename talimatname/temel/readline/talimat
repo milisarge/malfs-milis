@@ -1,15 +1,14 @@
-# Description: Set of libraries that offers command-line editing and history capabilities.
+# Tanım: Set of libraries that offers command-line editing and history capabilities.
 # URL: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
-# Maintainer: Chet Ramey, chet dot ramey at case dot edu
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=readline
 version=6.3
 release=1
 
 source=(http://ftp.gnu.org/gnu/readline/readline-$version.tar.gz
 	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-upstream_fixes-3.patch)
-
-#PKGMK_GROUPS=(devel man doc)
 
 build()
 {

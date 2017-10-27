@@ -1,7 +1,8 @@
-# Description: The Shadow package contains programs for handling passwords in a secure way.
+# Tanım: The Shadow package contains programs for handling passwords in a secure way.
 # URL: http://shadow.pld.org.pl/
-# Maintainer: pkg-shadow-devel@lists.alioth.debian.org
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
+
 name=shadow
 version=4.2.1
 release=1

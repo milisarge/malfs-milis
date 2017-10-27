@@ -1,7 +1,8 @@
-# Description: The Zlib package contains compression and decompression routines used by some programs.
+# Tanım: The Zlib package contains compression and decompression routines used by some programs.
 # URL: http://www.zlib.net/
-# Maintainer: Jean-loup Gailly (compression), Mark Adler (decompression)
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
+
 name=zlib
 version=1.2.8
 release=1
@@ -9,8 +10,7 @@ release=1
 source=(http://www.zlib.net/zlib-$version.tar.xz)
 
 build() {
-# Vérifier si necessaire de faire les verifs du bon fonctionnement de
-# glibc et du linker
+
 if [ -L /bin/pwd ];then
 	mv -v /tools/bin/ld /tools/bin/ld-old
 	mv -v /tools/$(uname -m)-pc-linux-gnu/bin/ld /tools/$(uname -m)-pc-linux-gnu/bin/ld-old

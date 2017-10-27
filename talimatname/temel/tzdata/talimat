@@ -1,6 +1,8 @@
-# Description: The zoneinfo database or IANA Time Zone
+# Tanım: The zoneinfo database or IANA Time Zone
 # URL: http://www.gnu.org/software/libc/
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
+
 name=tzdata
 version=2016a
 release=1

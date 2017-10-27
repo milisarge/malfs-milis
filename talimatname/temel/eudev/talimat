@@ -1,15 +1,14 @@
-
-# Description: The Eudev package contains programs for dynamic creation of device nodes.
+# Tanım: The Eudev package contains programs for dynamic creation of device nodes.
 # URL: http://www.gentoo.org/proj/en/eudev/
-# Maintainers: Ian Stakenvicius,Tony Vroon,Francisco Blas Izquierdo Riera,Luca Barbato,Matt Thode,Richard Yao,Anthony G. Basile
-# Packager: milisarge
+# Paketçi: milisarge
+# Gerekler:
 
 name=eudev
 version=3.1.5
 release=1
 
 source=(http://dev.gentoo.org/~blueness/eudev/$name-$version.tar.gz
-	http://anduin.linuxfromscratch.org/sources/other/udev-lfs-20140408.tar.bz2)
+		http://anduin.linuxfromscratch.org/sources/other/udev-lfs-20140408.tar.bz2)
 
 build() {
 cd $name-$version

@@ -1,8 +1,7 @@
-# Description: Squashfs is a compressed read-only filesystem for Linux.
+# Tanım: Squashfs is a compressed read-only filesystem for Linux.
 # URL: http://squashfs.sourceforge.net/
-# Maintainer: phillip at lougher.demon.co.uk
-# Packager: milisarge@gmail.com
-# Depends on: zlib lzo xz lz4
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=squashfs
 version=4.3

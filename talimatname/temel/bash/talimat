@@ -1,6 +1,7 @@
-# Description: The Bash package contains the Bourne-Again SHell.
-# Maintainers: Brian Fox,Chet Ramey and many more
-# Packager: milisarge@gmail.com
+# Tanım: The Bash package contains the Bourne-Again SHell.
+# Url: http://ftp.gnu.org/gnu/bash/
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=bash
 version=4.3.30

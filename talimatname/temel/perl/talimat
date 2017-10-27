@@ -1,6 +1,7 @@
-# Description: The Perl package contains the Practical Extraction and Report Language.
+# Tanım: The Perl package contains the Practical Extraction and Report Language.
 # URL: http://www.perl.org/
-# Packager: pierre at nutyx dot org
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl
 version=5.22.1

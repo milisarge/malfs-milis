@@ -1,7 +1,8 @@
-# Description: The Iana-Etc package provides data for network services and protocols.
+# Tanım: The Iana-Etc package provides data for network services and protocols.
 # URL: http://www.sethwklein.net/projects/iana-etc/
-# Maintainer: Seth W. Klein sk at sethwklein dot net
-# Packager: milisarge@gmail.com
+# Paketçi: milisarge
+# Gerekler:
+
 name=iana-etc
 version=2.30
 release=1

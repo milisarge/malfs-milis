@@ -1,7 +1,7 @@
-# Description: Programs for basic and advanced network routing.
+# Tanım: Programs for basic and advanced network routing.
 # URL: http://linux-net.osdl.org/index.php/Iproute2
-# Packager: pierre at nutyx dot org
-PKGMK_GROUPS=(devel man doc)
+# Paketçi: milisarge
+# Gerekler:
 
 name=iproute2
 version=4.4.0

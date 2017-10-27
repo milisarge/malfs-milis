@@ -1,7 +1,7 @@
-# Description: Utilities to administer the extended attributes on filesystem objects
+# Tanım: Utilities to administer the extended attributes on filesystem objects
 # URL: http://savannah.nongnu.org/projects/attr
-# Maintainers: Andreas Gruenbacher <agruen>, Brandon Philips <philips>
-# Packagers: milisarge@gmail.com
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=attr
 version=2.4.47
