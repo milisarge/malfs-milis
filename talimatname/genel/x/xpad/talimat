@@ -1,7 +1,7 @@
-# Description: Yapiskan notlar benzeri not alma uygulamasi
+# Tanım: Yapiskan notlar benzeri not alma uygulamasi
 # URL: http://mterry.name/xpad/
-# Packager: dei
-# Depends on: intltool xorg-libsm gtk3
+# Paketçi: dei
+# Gerekler: intltool xorg-libsm gtk3
 
 name=xpad
 version=4.3.1

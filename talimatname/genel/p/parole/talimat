@@ -1,7 +1,7 @@
-# Description: GStreamer çerçevesine dayanan modern bir medya oynatıcı
+# Tanım: GStreamer çerçevesine dayanan modern bir medya oynatıcı
 # URL: http://docs.xfce.org/apps/parole/start
-# Packager: milisarge
-# Depends on: libnotify dbus-glib xfce4-libui gstreamer1-plugins-base gstreamer1-plugins-good libdvdcss libdvdnav libdvdread startup-notification
+# Paketçi: milisarge
+# Gerekler: libnotify dbus-glib xfce4-libui gstreamer1-plugins-base gstreamer1-plugins-good libdvdcss libdvdnav libdvdread startup-notification
 
 name=parole
 version=0.9.1

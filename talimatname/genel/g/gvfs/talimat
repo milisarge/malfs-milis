@@ -1,7 +1,7 @@
-# Description: GVfs, GIO'nun G/Ç soyutlamasıyla çalışmak üzere tasarlanmış bir kullanıcı alanı sanal dosya sistemidir.
+# Tanım: GVfs, GIO'nun G/Ç soyutlamasıyla çalışmak üzere tasarlanmış bir kullanıcı alanı sanal dosya sistemidir.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: avahi dbus-glib intltool libsecret gtk3 libsoup udisks2 obexd fuse libarchive samba bluez gcr libgphoto2 libmtp glib
+# Paketçi: milisarge
+# Gerekler: avahi dbus-glib intltool libsecret gtk3 libsoup udisks2 obexd fuse libarchive samba bluez gcr libgphoto2 libmtp glib
 
 name=gvfs
 version=1.33.1

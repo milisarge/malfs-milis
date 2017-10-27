@@ -1,7 +1,7 @@
-# Description: Substitute PostScript fonts in OpenType format
+# Tanım: Substitute PostScript fonts in OpenType format
 # URL: http://www.gust.org.pl/projects/e-foundry/tex-gyre
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=tex-gyre-fonts
 version=2.005

@@ -1,7 +1,7 @@
-# Description: Sonraki nesil python üst düzey betik dili
+# Tanım: Sonraki nesil python üst düzey betik dili
 # URL: URL: http://www.python.org
-# Packager: milisarge
-# Depends on: libffi sqlite 
+# Paketçi: milisarge
+# Gerekler: libffi sqlite 
 
 _pybasever=2.7
 

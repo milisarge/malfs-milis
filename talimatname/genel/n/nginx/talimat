@@ -1,7 +1,7 @@
-# Description: NGINX, ücretsiz, açık kaynaklı, yüksek performanslı bir HTTP sunucusu ve ters proxy yanı sıra bir IMAP / POP3 proxy sunucusudur.
+# Tanım: NGINX, ücretsiz, açık kaynaklı, yüksek performanslı bir HTTP sunucusu ve ters proxy yanı sıra bir IMAP / POP3 proxy sunucusudur.
 # URL: http://nginx.net/
-# Packager: milisarge
-# Depends on: libxml2 libxslt pcre
+# Paketçi: milisarge
+# Gerekler: libxml2 libxslt pcre
 
 name=nginx
 version=1.13.2

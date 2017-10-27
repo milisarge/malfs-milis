@@ -1,7 +1,7 @@
-# Description: Otomatik bağlama arthizmetleri operasyonları için autofs kontrolleri.
+# Tanım: Otomatik bağlama arthizmetleri operasyonları için autofs kontrolleri.
 # URL: http://www.kernel.org/pub/linux/daemons/autofs
-# Packager: milisarge
-# Depends on: libtirpc nfs-utils libxml2 kerberos openldap cyrus-sasl
+# Paketçi: milisarge
+# Gerekler: libtirpc nfs-utils libxml2 kerberos openldap cyrus-sasl
 
 name=autofs
 version=5.1.1

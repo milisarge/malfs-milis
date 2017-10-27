@@ -1,7 +1,7 @@
-# Description: Düşük düzey kriptografi kütüphanesi
+# Tanım: Düşük düzey kriptografi kütüphanesi
 # URL: http://www.lysator.liu.se/~nisse/nettle/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=nettle
 version=3.2

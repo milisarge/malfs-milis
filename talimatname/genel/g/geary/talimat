@@ -1,7 +1,7 @@
-# Description: A lightweight email client for the GNOME desktop
+# Tanım: A lightweight email client for the GNOME desktop
 # URL: http://www.yorba.org/projects/geary/
-# Packager: milisarge
-# Depends on: cmake gnome-doc-utils tdb gobject-introspection intltool vala git gnome-keyring gmime iso-codes libcanberra libgee libnotify librsvg webkitgtk3
+# Paketçi: milisarge
+# Gerekler: cmake gnome-doc-utils tdb gobject-introspection intltool vala git gnome-keyring gmime iso-codes libcanberra libgee libnotify librsvg webkitgtk3
 
 name=geary
 version=0.11.4

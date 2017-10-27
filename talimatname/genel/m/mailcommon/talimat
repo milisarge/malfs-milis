@@ -1,7 +1,7 @@
-# Description : Posta uygulamaları için destek sağlayan KDE PIM kütüphanesi
+# Tanım: Posta uygulamaları için destek sağlayan KDE PIM kütüphanesi
 # URL : https://community.kde.org/KDE_PIM
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : mailimporter messagelib kf5-extra-cmake-modules kf5-kdoctools boost qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: mailimporter messagelib kf5-extra-cmake-modules kf5-kdoctools boost qt5
 
 name=mailcommon
 version=16.08.2

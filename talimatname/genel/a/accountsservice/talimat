@@ -1,7 +1,7 @@
-# Description: Kullanici hesaplari ve hesaplarla iliskili ayarlar
+# Tanım: Kullanici hesaplari ve hesaplarla iliskili ayarlar
 # URL: http://www.freedesktop.org/wiki/Software/AccountsService/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: xmlto libxslt polkit gobject-introspection vala
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: xmlto libxslt polkit gobject-introspection vala
 
 name=accountsservice
 version=0.6.43

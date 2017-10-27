@@ -1,7 +1,7 @@
-# Description: Dinamik analiz araçları oluşturmak için bir alet çerçevesi.
+# Tanım: Dinamik analiz araçları oluşturmak için bir alet çerçevesi.
 # URL: http://valgrind.org
-# Packager: milisarge
-# Depends on: boost llvm gdb libxslt
+# Paketçi: milisarge
+# Gerekler: boost llvm gdb libxslt
 
 name=valgrind
 version=3.13.0

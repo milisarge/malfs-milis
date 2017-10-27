@@ -1,7 +1,7 @@
-# Description: ID3v1 and ID3v2 taglarını okuma yazma ve düzenleme için kütüphane
+# Tanım: ID3v1 and ID3v2 taglarını okuma yazma ve düzenleme için kütüphane
 # URL: http://id3lib.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=id3lib
 version=3.8.3

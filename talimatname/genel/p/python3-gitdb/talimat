@@ -1,7 +1,7 @@
-# Description: python için gitdb nesne kütüphanesi
+# Tanım: python için gitdb nesne kütüphanesi
 # URL: http://pyyaml.org/wiki/PyYAML
-# Packager: milisarge
-# Depends on: python3 python3-setuptools python3-smmap
+# Paketçi: milisarge
+# Gerekler: python3 python3-setuptools python3-smmap
 
 name=python3-gitdb
 _name=gitdb

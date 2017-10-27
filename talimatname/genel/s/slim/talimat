@@ -1,7 +1,7 @@
-# Description: Grafiksel oturum açma yardımcı programı
+# Tanım: Grafiksel oturum açma yardımcı programı
 # URL: http://sourceforge.net/projects/slim.berlios
-# Packager: milisarge
-# Depends on: xorg-xauth libjpeg-turbo libpng cmake xorg-libxft
+# Paketçi: milisarge
+# Gerekler: xorg-xauth libjpeg-turbo libpng cmake xorg-libxft
 
 name=slim
 version=2.0

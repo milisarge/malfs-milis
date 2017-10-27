@@ -1,7 +1,7 @@
-# Description: Python'da yazılmış (green unicorn) WSGI HTTP sunucu
+# Tanım: Python'da yazılmış (green unicorn) WSGI HTTP sunucu
 # URL: http://pypi.python.org/pypi/six/
-# Packager: milisarge
-# Depends on: python python3 python-pip python3-pip
+# Paketçi: milisarge
+# Gerekler: python python3 python-pip python3-pip
 
 name=gunicorn
 version=19.7.0

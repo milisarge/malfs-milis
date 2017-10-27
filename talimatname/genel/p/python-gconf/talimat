@@ -1,7 +1,7 @@
-# Description: GConf yapılandırma veritabanı sistemi için Python bağları
+# Tanım: GConf yapılandırma veritabanı sistemi için Python bağları
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: python-gtk gconf 
+# Paketçi: milisarge
+# Gerekler: python-gtk gconf 
 
 _name=gnome-python
 

@@ -1,7 +1,7 @@
-# Description: Sistem istatistiklerini sorgulamak için kütüphane (net, kaynak kullanımı, ...)
+# Tanım: Sistem istatistiklerini sorgulamak için kütüphane (net, kaynak kullanımı, ...)
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake qt5 lxqt-build-tools
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake qt5 lxqt-build-tools
 
 name=libsysstat
 version=0.3.3

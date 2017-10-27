@@ -1,7 +1,7 @@
-# Description: Mevcut hava koşullarına ve tahminlerine erişin.
+# Tanım: Mevcut hava koşullarına ve tahminlerine erişin.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 gjs libgweather desktop-file-utils geoclue2
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 gjs libgweather desktop-file-utils geoclue2
 
 name=gnome-weather
 version=3.20.2

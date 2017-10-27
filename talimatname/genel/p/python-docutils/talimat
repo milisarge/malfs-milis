@@ -1,7 +1,7 @@
-# Description: Düz metin dökümanlarını HTML, XML veya LaTeX gibi formatlara dönüştürmek için araçlar seti
+# Tanım: Düz metin dökümanlarını HTML, XML veya LaTeX gibi formatlara dönüştürmek için araçlar seti
 # URL: http://docutils.sourceforge.net
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-docutils
 version=0.12

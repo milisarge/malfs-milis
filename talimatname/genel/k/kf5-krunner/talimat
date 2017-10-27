@@ -1,7 +1,7 @@
-# Description: Bir dize sorgusu verilen farklı eylemler sağlamak için çerçeve
+# Tanım: Bir dize sorgusu verilen farklı eylemler sağlamak için çerçeve
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kio kf5-kservice kf5-plasma-framework kf5-solid kf5-threadweaver
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kio kf5-kservice kf5-plasma-framework kf5-solid kf5-threadweaver
 
 name=kf5-krunner
 version=5.27.0

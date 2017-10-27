@@ -1,7 +1,7 @@
-# Description: Kitaplık AppStream meta verilerini okumak ve yazmak için.
+# Tanım: Kitaplık AppStream meta verilerini okumak ve yazmak için.
 # URL: http://people.freedesktop.org/~hughsient/appstream-glib/
-# Packager: yasarciv67@gmail.com
-# Depends on: gdk-pixbuf json-glib libarchive libsoup pango gcab gobject-introspection gtk3 yaml
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gdk-pixbuf json-glib libarchive libsoup pango gcab gobject-introspection gtk3 yaml
  
 name=appstream-glib
 version=0.5.17

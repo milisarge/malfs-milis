@@ -1,7 +1,7 @@
-# Description: Libsigc ++ paketi, standart C ++ için tip öncesi bir geri arama sistemi uygular.
+# Tanım: Libsigc ++ paketi, standart C ++ için tip öncesi bir geri arama sistemi uygular.
 # URL: http://libsigc.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libsigc++
 version=2.6.2

@@ -1,7 +1,7 @@
-# Description: dialup ağ yapılandırması için noktadan noktaya arkaplan çalışanı
+# Tanım: dialup ağ yapılandırması için noktadan noktaya arkaplan çalışanı
 # URL: http://samba.org/ppp
-# Packager: milisarge
-# Depends on: libpcap 
+# Paketçi: milisarge
+# Gerekler: libpcap 
 
 name=ppp
 version=2.4.5

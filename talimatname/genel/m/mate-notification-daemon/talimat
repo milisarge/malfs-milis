@@ -1,7 +1,7 @@
-# Description: MATE için bildirim uygulaması
+# Tanım: MATE için bildirim uygulaması
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: dbus-glib libcanberra libwnck3 libnotify intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: dbus-glib libcanberra libwnck3 libnotify intltool
 
 name=mate-notification-daemon
 version=1.18.0

@@ -3,7 +3,7 @@ Date:                    2012-03-29 (gobject-introspection) and 2014-03-04 (git)
 Initial Package Version: 2.28.6
 Upstream Status:         not submitted (gobject-introspection) and committed (git)
 Origin:                  Andrew Benton (gobject-introspection) and upstream (git)
-Description:             Fixes compiling with recent versions of gobject-introspection; and upstream fixes
+Tanım:             Fixes compiling with recent versions of gobject-introspection; and upstream fixes
 
 diff -Naur pygobject-2.28.6.orig/configure.ac pygobject-2.28.6/configure.ac
 --- pygobject-2.28.6.orig/configure.ac	2011-06-13 13:33:56.000000000 -0300

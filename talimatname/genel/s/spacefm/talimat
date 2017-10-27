@@ -1,7 +1,7 @@
-# Description: Çok panelli sekmeli dosya yöneticisi
+# Tanım: Çok panelli sekmeli dosya yöneticisi
 # URL: http://ignorantguru.github.com/spacefm/
-# Packager: Maximilian Dietrich, dxm at openmailbox dot org
-# Depends on: gtk2 eudev shared-mime-info desktop-file-utils xorg-libxdamage
+# Paketçi: Maximilian Dietrich, dxm at openmailbox dot org
+# Gerekler: gtk2 eudev shared-mime-info desktop-file-utils xorg-libxdamage
 
 name=spacefm
 version=1.0.5

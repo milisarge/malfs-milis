@@ -1,7 +1,7 @@
-# Description: Qt5 tabanlı Telepathy istemcileri için bir kütüphane
+# Tanım: Qt5 tabanlı Telepathy istemcileri için bir kütüphane
 # URL: http://telepathy.freedesktop.org/wiki/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: telepathy-farstream libxslt cmake doxygen qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: telepathy-farstream libxslt cmake doxygen qt5
 
 name=telepathy-qt5
 version=0.9.7

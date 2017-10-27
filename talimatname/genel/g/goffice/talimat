@@ -1,7 +1,7 @@
-# Description: GOffice, GLib ve Gtk + üzerine inşa edilmiş ve Gnumeric gibi yazılımlar tarafından kullanılan doküman odaklı nesnelerin ve araçların bir kütüphanesidir
+# Tanım: GOffice, GLib ve Gtk + üzerine inşa edilmiş ve Gnumeric gibi yazılımlar tarafından kullanılan doküman odaklı nesnelerin ve araçların bir kütüphanesidir
 # URL: http://freecode.com/projects/goffice
-# Packager: milisarge
-# Depends on: libgsf libglade pango pcre gtk3 librsvg
+# Paketçi: milisarge
+# Gerekler: libgsf libglade pango pcre gtk3 librsvg
 
 name=goffice
 version=0.10.27

@@ -1,7 +1,7 @@
-# Description: cografi ip çözücü veritabanı
+# Tanım: cografi ip çözücü veritabanı
 # URL: http://www.maxmind.com/app/c
-# Packager:	milisarge
-# Depends on:	
+# Paketçi:	milisarge
+# Gerekler:	
 
 name=geoip-database
 version=20170601

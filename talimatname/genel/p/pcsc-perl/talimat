@@ -1,7 +1,7 @@
-# Description:  Perl pcsc modülü
+# Tanım:  Perl pcsc modülü
 # URL:          https://github.com/gitpan/pcsc-perl
-# Packager :	milisarge
-# Depends on:   pcsc-lite
+# Paketçi:	milisarge
+# Gerekler:   pcsc-lite
 
 name=pcsc-perl
 version=1.4.14

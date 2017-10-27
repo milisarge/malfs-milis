@@ -1,7 +1,7 @@
-# Description: MATE paneli
+# Tanım: MATE paneli
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: dbus-glib libwnck3 libcanberra libmateweather xorg-libsm mate-menus mate-desktop intltool itstool gobject-introspection
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: dbus-glib libwnck3 libcanberra libmateweather xorg-libsm mate-menus mate-desktop intltool itstool gobject-introspection
 
 name=mate-panel
 version=1.18.3

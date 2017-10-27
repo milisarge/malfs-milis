@@ -1,7 +1,7 @@
-# Description: Pidgin, AIM, ICQ, GroupWise, MSN, Jabber, IRC, Napster, Gadu-Gadu, SILC, Zephyr ve Yahoo gibi geniş bir ağ yelpazesiyle bağlanabilen bir Gtk+ 2 anında mesajlaşma istemcisidir.
+# Tanım: Pidgin, AIM, ICQ, GroupWise, MSN, Jabber, IRC, Napster, Gadu-Gadu, SILC, Zephyr ve Yahoo gibi geniş bir ağ yelpazesiyle bağlanabilen bir Gtk+ 2 anında mesajlaşma istemcisidir.
 # URL:  http://www.pidgin.im
-# Packager: milisarge
-# Depends on: desktop-file-utils gtk2 gstreamer1 libxml2 perl-xml-parser gnutls nss nspr xorg-libxscrnsaver xorg-libxrandr xorg-libxinerama xorg-libsm xscreensaver startup-notification hicolor-icon-theme libidn dbus networkmanager
+# Paketçi: milisarge
+# Gerekler: desktop-file-utils gtk2 gstreamer1 libxml2 perl-xml-parser gnutls nss nspr xorg-libxscrnsaver xorg-libxrandr xorg-libxinerama xorg-libsm xscreensaver startup-notification hicolor-icon-theme libidn dbus networkmanager
 
 name=pidgin
 version=2.10.12

@@ -1,7 +1,7 @@
-# Description: Bir Atomic Bomberman klonu (SDL/MultiPlayer/Network).
+# Tanım: Bir Atomic Bomberman klonu (SDL/MultiPlayer/Network).
 # URL: http://www.bomberclone.de/
-# Packager: milisarge
-# Depends on: sdl-mixer sdl-image
+# Paketçi: milisarge
+# Gerekler: sdl-mixer sdl-image
 
 name=bomberclone
 version=0.11.9

@@ -1,7 +1,7 @@
-# Description: GnuPG için bir C sarıcı kütüphanesi
+# Tanım: GnuPG için bir C sarıcı kütüphanesi
 # URL: http://www.gnupg.org/related_software/gpgme/
-# Packager: milisarge
-# Depends on: libassuan
+# Paketçi: milisarge
+# Gerekler: libassuan
 
 name=gpgme
 version=1.9.0

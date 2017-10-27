@@ -1,7 +1,7 @@
-# Description: Wireshark dünyanın önde gelen ve yaygın olarak kullanılan ağ protokol analizörüdür.
+# Tanım: Wireshark dünyanın önde gelen ve yaygın olarak kullanılan ağ protokol analizörüdür.
 # URL: http://www.wireshark.org
-# Packager: milisarge
-# Depends on: gtk3 libpcap pcre
+# Paketçi: milisarge
+# Gerekler: gtk3 libpcap pcre
 
 name=wireshark
 version=2.0.1

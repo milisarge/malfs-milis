@@ -1,7 +1,7 @@
-# Description: android cihazlar için udev kuralları
+# Tanım: android cihazlar için udev kuralları
 # URL: https://github.com/M0Rf30/android-udev-rules
-# Packager: milisarge
-# Depends on: libmtp
+# Paketçi: milisarge
+# Gerekler: libmtp
 
 name=android-udev
 version=20170910

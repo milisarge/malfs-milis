@@ -1,7 +1,7 @@
-# Description: Unicode çift yönlü algoritmanın ücretsiz uygulanması
+# Tanım: Unicode çift yönlü algoritmanın ücretsiz uygulanması
 # URL: http://fribidi.freedesktop.org/wiki/
-# Packager: milisarge
-# Depends on: glib
+# Paketçi: milisarge
+# Gerekler: glib
 
 name=fribidi
 version=0.19.7

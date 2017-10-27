@@ -1,7 +1,7 @@
-# Description: Exif ve Iptc meta veri işleme kitaplığı ve araçları
+# Tanım: Exif ve Iptc meta veri işleme kitaplığı ve araçları
 # URL: http://www.exiv2.org/index.html
-# Packager: milisarge
-# Depends on: expat
+# Paketçi: milisarge
+# Gerekler: expat
 
 name=exiv2
 version=0.25

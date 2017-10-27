@@ -1,7 +1,7 @@
-# Description : KDE 5 için GTK2 ve GTK3 Yapılandırıcı
+# Tanım: KDE 5 için GTK2 ve GTK3 Yapılandırıcı
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-karchive kf5-kcmutils kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-kwidgetsaddons plasma-kde-cli-tools 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-karchive kf5-kcmutils kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-kwidgetsaddons plasma-kde-cli-tools 
 
 name=plasma-kde-gtk-config
 version=5.8.1

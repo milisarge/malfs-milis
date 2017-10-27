@@ -1,7 +1,7 @@
-# Description : SDDM paketi, Qt ve QML'de yazılmış hafif bir ekran yöneticisi içerir.
+# Tanım: SDDM paketi, Qt ve QML'de yazılmış hafif bir ekran yöneticisi içerir.
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake kf5-extra-cmake-modules qt5 upower consolekit2 xorg-libxkbfile libxcb
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: cmake kf5-extra-cmake-modules qt5 upower consolekit2 xorg-libxkbfile libxcb
 
 name=sddm
 release=1

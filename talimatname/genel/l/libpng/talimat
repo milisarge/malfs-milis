@@ -1,7 +1,7 @@
-# Description: Diğer programlar tarafından PNG dosyalarını okuma ve yazma için kullanılan kütüphaneler.
+# Tanım: Diğer programlar tarafından PNG dosyalarını okuma ve yazma için kullanılan kütüphaneler.
 # URL: http://www.libpng.org/pub/png/libpng.html
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libpng
 version=1.6.29

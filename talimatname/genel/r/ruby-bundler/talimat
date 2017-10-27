@@ -1,7 +1,7 @@
-# Description: Ruby uygulama-paket yöneticisi
+# Tanım: Ruby uygulama-paket yöneticisi
 # URL: http://www.ruby-lang.org
-# Packager: milisarge
-# Depends on: ruby
+# Paketçi: milisarge
+# Gerekler: ruby
 
 name=ruby-bundler
 version=1.15.1

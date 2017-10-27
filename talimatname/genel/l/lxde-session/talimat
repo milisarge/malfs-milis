@@ -1,7 +1,7 @@
-# Description: LXDE için varsayılan oturum yöneticisini içerir
+# Tanım: LXDE için varsayılan oturum yöneticisini içerir
 # URL: http://lxde.org/
-# Packager: milisarge@gmail.com
-# Depends on: dbus-glib gtk2 libunique1 lsb-release polkit vala upower pm-utils
+# Paketçi: milisarge@gmail.com
+# Gerekler: dbus-glib gtk2 libunique1 lsb-release polkit vala upower pm-utils
 
 name=lxde-session
 _name=lxsession

@@ -1,7 +1,7 @@
-# Description: Yeni nesil GNOME kabuğu
+# Tanım: Yeni nesil GNOME kabuğu
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com 
-# Depends on: telepathy-logger telepathy-mission-control caribou evolution-data-server gjs gnome-control-center libcroco mutter startup-notification gnome-bluetooth gstreamer1-plugins-base network-manager-applet gtk-doc adwaita-icon-theme dconf gnome-backgrounds gnome-menus gnome-themes-standard telepathy-mission-control
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: telepathy-logger telepathy-mission-control caribou evolution-data-server gjs gnome-control-center libcroco mutter startup-notification gnome-bluetooth gstreamer1-plugins-base network-manager-applet gtk-doc adwaita-icon-theme dconf gnome-backgrounds gnome-menus gnome-themes-standard telepathy-mission-control
 
 name=gnome-shell
 version=3.22.2

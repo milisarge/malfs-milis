@@ -1,7 +1,7 @@
-# Description: Doküman merkezli eklenti sistemi
+# Tanım: Doküman merkezli eklenti sistemi
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kjobwidgets kf5-knotifications kf5-kservice kf5-kwidgetsaddons kf5-kxmlgui kf5-ktextwidgets
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kjobwidgets kf5-knotifications kf5-kservice kf5-kwidgetsaddons kf5-kxmlgui kf5-ktextwidgets
 
 name=kf5-kparts
 version=5.27.0

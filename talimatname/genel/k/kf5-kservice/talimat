@@ -1,7 +1,7 @@
-# Description: Gelişmiş eklenti ve servis içgözlemi
+# Tanım: Gelişmiş eklenti ve servis içgözlemi
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-ki18n kf5-kdoctools
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-ki18n kf5-kdoctools
 
 name=kf5-kservice
 version=5.27.0

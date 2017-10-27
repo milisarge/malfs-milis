@@ -1,7 +1,7 @@
-# Description: Metin düzeni ve sunumu için bir kütüphane
+# Tanım: Metin düzeni ve sunumu için bir kütüphane
 # URL: http://gnome.org
-# Packager: milisarge
-# Depends on: python cairo freetype xorg-libxft gobject-introspection harfbuzz xorg-libxxf86vm 
+# Paketçi: milisarge
+# Gerekler: python cairo libthai freetype xorg-libxft gobject-introspection harfbuzz xorg-libxxf86vm 
 
 name=pango
 version=1.38.1

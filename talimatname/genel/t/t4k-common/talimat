@@ -1,7 +1,7 @@
-# Description: TuxType ve TuxMath tarafından paylaşılan kod için ortak kütüphane
+# Tanım: TuxType ve TuxMath tarafından paylaşılan kod için ortak kütüphane
 # URL: http://tux4kids.alioth.debian.org/
-# Packager: Cihan Alkan
-# Depends on: sdl-image sdl-mixer sdl-net sdl-ttf sdl-pango librsvg
+# Paketçi: Cihan Alkan
+# Gerekler: sdl-image sdl-mixer sdl-net sdl-ttf sdl-pango librsvg
 
 name=t4k-common
 _name=t4k_common

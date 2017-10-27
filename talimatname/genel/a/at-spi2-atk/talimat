@@ -1,7 +1,7 @@
-# Description: ATK'yı at-spi D-Bus'a köprüleyen GTK + modülü
+# Tanım: ATK'yı at-spi D-Bus'a köprüleyen GTK + modülü
 # URL: http://www.gtk.org/
-# Packager: milisarge
-# Depends on: intltool at-spi2-core atk
+# Paketçi: milisarge
+# Gerekler: intltool at-spi2-core atk
 
 name=at-spi2-atk
 version=2.18.1

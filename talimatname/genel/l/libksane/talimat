@@ -1,7 +1,7 @@
-# Description: Bir resim tarama kitaplığı
+# Tanım: Bir resim tarama kitaplığı
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: sane kf5-extra-cmake-modules qt5 kf5-ki18n kf5-kwallet kf5-ktextwidgets
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: sane kf5-extra-cmake-modules qt5 kf5-ki18n kf5-kwallet kf5-ktextwidgets
 
 name=libksane
 version=16.08.2

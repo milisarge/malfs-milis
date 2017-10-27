@@ -1,7 +1,7 @@
-# Description: C kitaplıkları aracılığıyla ssh istemci servislerine erişmek için kütüphane
+# Tanım: C kitaplıkları aracılığıyla ssh istemci servislerine erişmek için kütüphane
 # URL: http://www.libssh.org/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: doxygen cmake
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: doxygen cmake
 
 name=libssh
 version=0.7.5

@@ -1,7 +1,7 @@
-# Description: Renk profilleri oluşturmak için paylaşılan renk hedefleri.
+# Tanım: Renk profilleri oluşturmak için paylaşılan renk hedefleri.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: 
 
 name=shared-color-targets
 version=0.1.7

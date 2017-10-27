@@ -1,7 +1,7 @@
-# Description: Bu paket GNOME için bir harita uygulamasıdır.
+# Tanım: Bu paket GNOME için bir harita uygulamasıdır.
 # URL: http://www.gnome.org/"
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache clutter-gtk geoclue2 geocode-glib gjs libchamplain libgee folks gfbgraph
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache clutter-gtk geoclue2 geocode-glib gjs libchamplain libgee folks gfbgraph
 
 name=gnome-maps
 version=3.22.2

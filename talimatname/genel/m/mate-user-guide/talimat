@@ -1,7 +1,7 @@
-# Description: MATE Kullanım Kılavuzu
+# Tanım: MATE Kullanım Kılavuzu
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: yelp itstool intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: yelp itstool intltool
 
 name=mate-user-guide
 version=1.18.0

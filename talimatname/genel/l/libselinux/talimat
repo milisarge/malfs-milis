@@ -1,7 +1,7 @@
-# Description: SELinux kitaplığı ve basit araçları
+# Tanım: SELinux kitaplığı ve basit araçları
 # URL: http://userspace.selinuxproject.org"
-# Packager: yasarciv67@gmail.com
-# Depends on: python3 python libsepol pcre
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: python3 python libsepol pcre
 
 
 name=libselinux

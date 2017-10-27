@@ -1,7 +1,7 @@
-# Description: GObject tabanlı kitaplık, çalma listesi formatlarını analiz eder ve kaydeder.
+# Tanım: GObject tabanlı kitaplık, çalma listesi formatlarını analiz eder ve kaydeder.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: gmime intltool libsoup gobject-introspection 
+# Paketçi: milisarge
+# Gerekler: gmime intltool libsoup gobject-introspection 
 
 name=totem-pl-parser
 version=3.10.6

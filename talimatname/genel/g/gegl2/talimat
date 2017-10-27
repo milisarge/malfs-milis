@@ -1,7 +1,7 @@
-# Description: Genel Grafik Kitaplığı
+# Tanım: Genel Grafik Kitaplığı
 # URL: http://gegl.org/
-# Packager: milisarge
-# Depends on: intltool libopenraw babl gtk2 librsvg libpng ruby lua ffmpeg librsvg openexr exiv2 json-glib jasper vala libspiro
+# Paketçi: milisarge
+# Gerekler: intltool libopenraw babl gtk2 librsvg libpng ruby lua ffmpeg librsvg openexr exiv2 json-glib jasper vala libspiro
 
 name=gegl2
 version=0.2.0

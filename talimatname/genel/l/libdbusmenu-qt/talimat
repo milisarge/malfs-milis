@@ -1,7 +1,7 @@
-# Description: DBusMenu spesifikasyonunun Qt uygulanmasını sağlayan bir kütüphane
+# Tanım: DBusMenu spesifikasyonunun Qt uygulanmasını sağlayan bir kütüphane
 # URL: http://launchpad.net/libdbusmenu-qt
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: qt4
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt4
 
 name=libdbusmenu-qt
 version=0.9.2

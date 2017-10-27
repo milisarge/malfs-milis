@@ -1,7 +1,7 @@
-# Description: Tüm KDE Framework'ler tarafından kullanılan ekstra CMake modülleri 5 paketi
+# Tanım: Tüm KDE Framework'ler tarafından kullanılan ekstra CMake modülleri 5 paketi
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: cmake
 
 name=kf5-extra-cmake-modules
 version=5.27.0

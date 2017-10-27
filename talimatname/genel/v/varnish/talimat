@@ -1,7 +1,7 @@
-# Description: Varnish bir web uygulaması hızlandırıcısıdır.
+# Tanım: Varnish bir web uygulaması hızlandırıcısıdır.
 # URL: http://www.varnish-cache.org/
-# Packager: milisarge
-# Depends on: libedit pcre python-docutils 
+# Paketçi: milisarge
+# Gerekler: libedit pcre python-docutils 
 
 name=varnish
 version=4.0.3

@@ -1,7 +1,7 @@
-# Description: Pm-utils, askıya alma ve HAL adına devam etmeyi içeren küçük bir komut koleksiyonudur.
+# Tanım: Pm-utils, askıya alma ve HAL adına devam etmeyi içeren küçük bir komut koleksiyonudur.
 # URL: http://pm-utils.freedesktop.org/wiki/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=pm-quirks
 version=20100619

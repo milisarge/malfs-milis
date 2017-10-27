@@ -1,7 +1,7 @@
-# Description: Giblib, imlib2'yi sarmalayan basit bir kütüphanedir.
+# Tanım: Giblib, imlib2'yi sarmalayan basit bir kütüphanedir.
 # URL: http://www.linuxbrit.co.uk/giblib
-# Packager: milisarge
-# Depends on: imlib2 freetype
+# Paketçi: milisarge
+# Gerekler: imlib2 freetype
 
 name=giblib
 version=1.2.4

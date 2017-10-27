@@ -1,7 +1,7 @@
-# Description: Lxqt-common paketi çeşitli LXQt bileşenleri için ortak dosyalar sağlar.
+# Tanım: Lxqt-common paketi çeşitli LXQt bileşenleri için ortak dosyalar sağlar.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: hicolor-icon-theme xorg-app
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: hicolor-icon-theme xorg-app
 
 name=lxqt-common
 version=0.11.2

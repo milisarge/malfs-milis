@@ -1,7 +1,7 @@
-# Description: Xfce paneli için tarih ve saat görüntüleme eklentisi
+# Tanım: Xfce paneli için tarih ve saat görüntüleme eklentisi
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel
+# Paketçi: milisarge
+# Gerekler: xfce4-panel
 
 name=xfce4-datetime-plugin
 version=0.6.2

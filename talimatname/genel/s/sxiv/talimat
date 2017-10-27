@@ -1,7 +1,7 @@
-# Description: Basit X resim görüntüleyici.
+# Tanım: Basit X resim görüntüleyici.
 # URL: https://github.com/muennich/sxiv
-# Packager: milisarge
-# Depends on: desktop-file-utils hicolor-icon-theme imlib2 
+# Paketçi: milisarge
+# Gerekler: desktop-file-utils hicolor-icon-theme imlib2 
 
 name=sxiv
 version=1.2

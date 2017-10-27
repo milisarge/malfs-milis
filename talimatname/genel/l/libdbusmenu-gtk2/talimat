@@ -1,7 +1,7 @@
-# Description: DBusMenu protokolünün GTK2 uygulaması olan kitaplık
+# Tanım: DBusMenu protokolünün GTK2 uygulaması olan kitaplık
 # URL: https://launchpad.net/dbusmenu
-# Packager: milisarge
-# Depends on: python gobject-introspection gtk2 gtk3 libdbusmenu-glib vala gnome-doc-utils atk libepoxy json-glib
+# Paketçi: milisarge
+# Gerekler: python gobject-introspection gtk2 gtk3 libdbusmenu-glib vala gnome-doc-utils atk libepoxy json-glib
 
 name=libdbusmenu-gtk2
 _name=libdbusmenu

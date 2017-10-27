@@ -1,7 +1,7 @@
-# Description: Minimal boyutta pencere yoneticisi
+# Tanım: Minimal boyutta pencere yoneticisi
 # URL: http://xorg.freedesktop.org 
-# Packager: milisarge
-# Depends on: xorg-server 
+# Paketçi: milisarge
+# Gerekler: xorg-server 
 
 _name=twm
 name=xorg-twm

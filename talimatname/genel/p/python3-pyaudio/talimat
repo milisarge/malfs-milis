@@ -1,7 +1,7 @@
-# Description: PortAudio için python3 kütüphanesi
+# Tanım: PortAudio için python3 kütüphanesi
 # URL: http://people.csail.mit.edu/hubert/pyaudio
-# Packager: milisarge
-# Depends on: portaudio python3-setuptools 
+# Paketçi: milisarge
+# Gerekler: portaudio python3-setuptools 
 
 name=python3-pyaudio
 version=0.2.11

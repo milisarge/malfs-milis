@@ -1,7 +1,7 @@
-# Description: Sistem politikası ve kimlik doğrulama özelliklerinin soyutlanması
+# Tanım: Sistem politikası ve kimlik doğrulama özelliklerinin soyutlanması
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kcoreaddons  polkit-qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kcoreaddons  polkit-qt5
 
 name=kf5-kauth
 version=5.27.0

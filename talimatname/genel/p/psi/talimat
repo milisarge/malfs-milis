@@ -1,7 +1,7 @@
-# Description: Psi qt tabanlı xmpp mesajlaşma aracı
+# Tanım: Psi qt tabanlı xmpp mesajlaşma aracı
 # URL: http://psi-im.org/
-# Packagers: milisarge
-# Depends on: qca-qt5 qt5
+# Paketçi: milisarge
+# Gerekler: qca-qt5 qt5
 
 name=psi
 version=1.0

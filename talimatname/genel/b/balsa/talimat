@@ -1,7 +1,7 @@
-# Description: Gnome 2 tabanlı e-posta istemcisi.
+# Tanım: Gnome 2 tabanlı e-posta istemcisi.
 # URL: https://pawsa.fedorapeople.org/balsa/
-# Packager: milisarge
-# Depends on: aspell enchant gmime libesmtp rarian pcre gtksourceview2 gtksourceview3 libnotify kerberos sendmail openldap openssl sqlite webkitgtk2 gtkhtml procmail
+# Paketçi: milisarge
+# Gerekler: aspell enchant gmime libesmtp rarian pcre gtksourceview2 gtksourceview3 libnotify kerberos sendmail openldap openssl sqlite webkitgtk2 gtkhtml procmail
 
 name=balsa
 version=2.5.2

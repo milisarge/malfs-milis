@@ -1,7 +1,7 @@
-# Description: p0f, tcp-ip trafik akışını takip ve dinleme uygulaması
+# Tanım: p0f, tcp-ip trafik akışını takip ve dinleme uygulaması
 # URL: http://lcamtuf.coredump.cx/p0f3/
-# Packager: milisarge
-# Depends on: libpcap
+# Paketçi: milisarge
+# Gerekler: libpcap
 
 name=p0f
 version=3.09b

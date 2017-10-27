@@ -1,7 +1,7 @@
-# Description: PortAudio için python kütüphanesi
+# Tanım: PortAudio için python kütüphanesi
 # URL: http://people.csail.mit.edu/hubert/pyaudio
-# Packager: milisarge
-# Depends on: portaudio python-setuptools 
+# Paketçi: milisarge
+# Gerekler: portaudio python-setuptools 
 
 name=python-pyaudio
 version=0.2.11

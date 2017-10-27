@@ -1,7 +1,7 @@
-# Description: Dağıtık yazılım ayarlama,sürüm takip yönetimi uygulaması
+# Tanım: Dağıtık yazılım ayarlama,sürüm takip yönetimi uygulaması
 # Url: https://www.fossil-scm.org
-# Packager: milisarge
-# Depends on: sqlite
+# Paketçi: milisarge
+# Gerekler: sqlite
 
 name=fossil
 version=2.3

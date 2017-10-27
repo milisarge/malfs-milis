@@ -1,7 +1,7 @@
-# Description: X.Org icin Xdamage kutuphanesi
+# Tanım: X.Org icin Xdamage kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-libx11 xorg-proto xorg-libxfixes 
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xorg-proto xorg-libxfixes 
 
 name=xorg-libxdamage
 version=1.1.4

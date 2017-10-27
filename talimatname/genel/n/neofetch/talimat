@@ -1,7 +1,7 @@
-# Description: BASH'da yazılmış görüntüleri destekleyen bir CLI sistem bilgisi aracı.
+# Tanım: BASH'da yazılmış görüntüleri destekleyen bir CLI sistem bilgisi aracı.
 # URL: https://github.com/dylanaraps/
-# Packager: Cihan Alkan
-# Depends on:
+# Paketçi: Cihan Alkan
+# Gerekler:
 
 name=neofetch
 version=3.2.0

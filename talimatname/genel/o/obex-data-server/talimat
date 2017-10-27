@@ -1,7 +1,7 @@
-# Description: OBEX Veri Sunucusu paketi, üst düzey OBEX istemci ve sunucu tarafında işlevsellik sağlayan D-Bus servisini içerir.
+# Tanım: OBEX Veri Sunucusu paketi, üst düzey OBEX istemci ve sunucu tarafında işlevsellik sağlayan D-Bus servisini içerir.
 # URL: http://tadas.dailyda.com
-# Packager: milisarge
-# Depends on: bluez dbus-glib imagemagick gdk-pixbuf libusb-compat openobex
+# Paketçi: milisarge
+# Gerekler: bluez dbus-glib imagemagick gdk-pixbuf libusb-compat openobex
 
 name=obex-data-server
 version=0.4.6 	

@@ -1,7 +1,7 @@
-# Description:  Güvenli lan chat uygulaması
+# Tanım:  Güvenli lan chat uygulaması
 # URL: https://sourceforge.net/projects/beebeep/
-# Packager: milisarge
-# Depends on: qt4 phonon-qt4 libxcb avahi libxcb
+# Paketçi: milisarge
+# Gerekler: qt4 phonon-qt4 libxcb avahi libxcb
 
 name=beebeep
 _version=721

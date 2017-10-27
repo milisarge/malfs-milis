@@ -1,7 +1,7 @@
-# Description: Talloc, yıkıcılarla hiyerarşik, referans sayılmış bir bellek havuzu sistemidir.Samba'da kullanılan çekirdek bellek ayırıcısıdır.
+# Tanım: Talloc, yıkıcılarla hiyerarşik, referans sayılmış bir bellek havuzu sistemidir.Samba'da kullanılan çekirdek bellek ayırıcısıdır.
 # URL: https://talloc.samba.org
-# Packager: milisarge
-# Depends on: python libxslt
+# Paketçi: milisarge
+# Gerekler: python libxslt
 
 name=talloc
 version=2.1.10

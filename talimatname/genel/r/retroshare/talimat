@@ -1,7 +1,7 @@
-# Description: retroshare,osya paylaşımı,mesajlaşma vb. uygulamalar içeren f2f çatısı
+# Tanım: retroshare,osya paylaşımı,mesajlaşma vb. uygulamalar içeren f2f çatısı
 # URL: http://retroshare.sourceforge.net/
-# Packager: milisarge
-# Depends on: libupnp sqlcipher qt5 libgnome-keyring libxslt ffmpeg opencv libmicrohttpd speexdsp
+# Paketçi: milisarge
+# Gerekler: libupnp sqlcipher qt5 libgnome-keyring libxslt ffmpeg opencv libmicrohttpd speexdsp
 
 name=retroshare
 version=0.6.2

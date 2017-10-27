@@ -1,7 +1,7 @@
-# Description: Dooble,güvenli webkit tarayıcısı
+# Tanım: Dooble,güvenli webkit tarayıcısı
 # URL: http://dooble.sourceforge.net/
-# Packager: milisarge
-# Depends on: libpng qt5 openssl libspoton qt5-webkit
+# Paketçi: milisarge
+# Gerekler: libpng qt5 openssl libspoton qt5-webkit
 
 name=dooble
 version=1.56c

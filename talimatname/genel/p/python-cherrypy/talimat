@@ -1,7 +1,7 @@
-# Description: Pythonic, nesne yönelimli bir web geliştirme çerçevesi.
+# Tanım: Pythonic, nesne yönelimli bir web geliştirme çerçevesi.
 # URL: http://www.cherrypy.org/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-cherrypy
 version=3.6.0

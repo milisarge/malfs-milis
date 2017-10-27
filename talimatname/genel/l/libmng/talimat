@@ -1,7 +1,7 @@
-# Description: Çoklu-Görüntü Ağ Grafikleri okumak, görüntülemek, yazmak ve incelemek için referans kitaplığı.
+# Tanım: Çoklu-Görüntü Ağ Grafikleri okumak, görüntülemek, yazmak ve incelemek için referans kitaplığı.
 # URL: http://sourceforge.net/projects/libmng/
-# Packager: milisarge
-# Depends on: libjpeg-turbo lcms
+# Paketçi: milisarge
+# Gerekler: libjpeg-turbo lcms
 
 name=libmng
 version=2.0.3

@@ -1,7 +1,7 @@
-# Description: nVIDIA Linux Display Driver
+# Tanım: nVIDIA Linux Display Driver
 # URL: http://www.nvidia.com/
-# Packager: milisarge
-# Depends on: gtk2 gl-select kernel
+# Paketçi: milisarge
+# Gerekler: gtk2 gl-select kernel
 
 name=nvidia
 version=381.22

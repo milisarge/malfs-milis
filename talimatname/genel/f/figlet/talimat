@@ -1,7 +1,7 @@
-# Description: Sıradan metinden büyük harfler çıkartmak için kullanılan bir program
+# Tanım: Sıradan metinden büyük harfler çıkartmak için kullanılan bir program
 # URL: http://www.figlet.org/
-# Packager: Cihan Alkan
-# Depends on: 
+# Paketçi: Cihan Alkan
+# Gerekler: 
 
 name=figlet
 version=2.2.5

@@ -1,7 +1,7 @@
-# Description: RIP, OSPFv2 and BGP uygulaması
+# Tanım: RIP, OSPFv2 and BGP uygulaması
 # URL: http://bird.network.cz/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=bird
 version=1.6.3

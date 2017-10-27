@@ -1,7 +1,7 @@
-# Description: GNOME3 için ortak makro (GIT Version)
+# Tanım: GNOME3 için ortak makro (GIT Version)
 # URL: http://www.gnome.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=gnome-common
 version=3.18.0

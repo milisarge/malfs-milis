@@ -1,7 +1,7 @@
-# Description: X.Org X11 Autotools makrolari
+# Tanım: X.Org X11 Autotools makrolari
 # URL: http://www.x.org
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 _name=util-macros
 name=xorg-util-macros

@@ -1,7 +1,7 @@
-# Description: PKZIP uyumlu .zip dosyalari yaratir
+# Tanım: PKZIP uyumlu .zip dosyalari yaratir
 # URL: http://infozip.sourceforge.net/Zip.html
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=zip
 version=3.0

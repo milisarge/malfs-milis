@@ -1,7 +1,7 @@
-# Description: C uygulaması geliştirme için küçük kütüphane
+# Tanım: C uygulaması geliştirme için küçük kütüphane
 # URL: https://launchpad.net/libnih
-# Packager: milisarge
-# Depends on: dbus
+# Paketçi: milisarge
+# Gerekler: dbus
 
 name=libnih
 version=1.0.3

@@ -1,7 +1,7 @@
-# Description: X için ekran görüntüleri sağlar
+# Tanım: X için ekran görüntüleri sağlar
 # URL: 
-# Packager: milisarge
-# Depends on: xorg-libxext libpng libjpeg-turbo 
+# Paketçi: milisarge
+# Gerekler: xorg-libxext libpng libjpeg-turbo 
 
 name=xli
 version=1

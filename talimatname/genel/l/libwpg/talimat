@@ -1,7 +1,7 @@
-# Description: Corel WordPerfect (tm) Grafik görüntülerini içe aktarmak ve dönüştürmek için kullanılan kitaplık.
+# Tanım: Corel WordPerfect (tm) Grafik görüntülerini içe aktarmak ve dönüştürmek için kullanılan kitaplık.
 # URL: http://libwpg.sourceforge.net/libwpg.htm
-# Packager: milisarge
-# Depends on: libwpd
+# Paketçi: milisarge
+# Gerekler: libwpd
 
 name=libwpg
 version=0.3.0

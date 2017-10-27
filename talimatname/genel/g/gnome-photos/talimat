@@ -1,7 +1,7 @@
-# Description: GNOME'da fotoğraflarınıza erişin, bunları organize edin ve paylaşın.
+# Tanım: GNOME'da fotoğraflarınıza erişin, bunları organize edin ve paylaşın.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache babl exempi gegl gfbgraph gnome-desktop gnome-online-accounts grilo libgdata libexif tracker libgexiv2
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache babl exempi gegl gfbgraph gnome-desktop gnome-online-accounts grilo libgdata libexif tracker libgexiv2
 
 name=gnome-photos
 version=3.22.2

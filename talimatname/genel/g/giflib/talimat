@@ -1,7 +1,7 @@
-# Description: GIFLIB, GIF görüntüleriyle çalışmak için taşınabilir araçlar ve kitaplık rutinleri paketidir.
+# Tanım: GIFLIB, GIF görüntüleriyle çalışmak için taşınabilir araçlar ve kitaplık rutinleri paketidir.
 # URL:  http://downloads.sourceforge.net/giflib/
-# Packager: milisarge
-# Depends on: xmlto
+# Paketçi: milisarge
+# Gerekler: xmlto
 
 name=giflib
 version=5.1.2

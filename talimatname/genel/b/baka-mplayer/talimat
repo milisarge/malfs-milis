@@ -1,7 +1,7 @@
-# Description: Mpv tabanlı qt5 medya oynatıcısı
+# Tanım: Mpv tabanlı qt5 medya oynatıcısı
 # URL: http://bakamplayer.u8sand.net/
-# Packager: milisarge
-# Depends on: mpv qt5
+# Paketçi: milisarge
+# Gerekler: mpv qt5
 
 name=baka-mplayer
 version=2.0.4

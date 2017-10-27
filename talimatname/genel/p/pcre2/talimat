@@ -1,7 +1,7 @@
-# Description: Perl ile Uyumlu Normal İfade kütüphaneleri (2nci vers.)
+# Tanım: Perl ile Uyumlu Normal İfade kütüphaneleri (2nci vers.)
 # URL: http://www.pcre.org/
-# Packager: yasarciv67@gmail.com
-# Depends on:
+# Paketçi: yasarciv67@gmail.com
+# Gerekler:
 
 name=pcre2
 version=10.22

@@ -1,7 +1,7 @@
-# Description: terminal emulator 
+# Tanım: terminal emulator 
 # URL: http://www.enlightenment.org/
-# Packager: milisarge
-# Depends on: elementary
+# Paketçi: milisarge
+# Gerekler: elementary
 
 name=terminology
 version=1.0.0

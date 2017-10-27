@@ -1,7 +1,7 @@
-# Description: OpenSSL kütüphanesine Python arabirimi.
+# Tanım: OpenSSL kütüphanesine Python arabirimi.
 # URL: http://pypi.python.org/pypi/pyOpenSSL
-# Packager: milisarge
-# Depends on: python-cryptography
+# Paketçi: milisarge
+# Gerekler: python-cryptography
 
 name=python-openssl
 version=0.15.1

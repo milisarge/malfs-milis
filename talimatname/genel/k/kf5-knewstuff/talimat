@@ -1,7 +1,7 @@
-# Description: Uygulama varlıklarını ağdan indirmeye destek
+# Tanım: Uygulama varlıklarını ağdan indirmeye destek
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-attica kf5-karchive kf5-kcompletion kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kitemviews kf5-kservice kf5-ktextwidgets kf5-kxmlgui
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-attica kf5-karchive kf5-kcompletion kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kitemviews kf5-kservice kf5-ktextwidgets kf5-kxmlgui
 
 name=kf5-knewstuff
 version=5.27.0

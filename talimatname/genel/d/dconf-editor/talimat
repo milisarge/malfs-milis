@@ -1,7 +1,7 @@
-# Description: DConf veritabanı için bir grafik editör.
+# Tanım: DConf veritabanı için bir grafik editör.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: dconf dbus gtk3 libxml2 libxslt vala 
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: dconf dbus gtk3 libxml2 libxslt vala 
 
 name=dconf-editor
 version=3.23.4

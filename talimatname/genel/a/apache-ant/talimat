@@ -1,7 +1,7 @@
-# Description: Ant paketi Java tabanlı bir inşa aracıdır.
+# Tanım: Ant paketi Java tabanlı bir inşa aracıdır.
 # URL: http://ant.apache.org/
-# Packager: milisarge
-# Depends on: glib openjdk
+# Paketçi: milisarge
+# Gerekler: glib openjdk
 
 name=apache-ant
 version=1.9.6

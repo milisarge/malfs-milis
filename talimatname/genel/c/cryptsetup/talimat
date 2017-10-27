@@ -1,7 +1,7 @@
-# Description: kullanıcı dostu dm-crypt/LUKS arayüzü
+# Tanım: kullanıcı dostu dm-crypt/LUKS arayüzü
 # URL: https://gitlab.com/cryptsetup/cryptsetup
-# Packager: milisarge
-# Depends on: libgcrypt popt
+# Paketçi: milisarge
+# Gerekler: libgcrypt popt
 
 name=cryptsetup
 version=1.7.5

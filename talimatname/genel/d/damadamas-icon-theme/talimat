@@ -1,7 +1,7 @@
-# Description: Linux için bir simge seti
+# Tanım: Linux için bir simge seti
 # URL: https://github.com/sonakinci41/DamaDamas-icon-theme
-# Packager: yasarciv67@gmail.com
-# Depends on: hicolor-icon-theme
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: hicolor-icon-theme
 
 name=damadamas-icon-theme
 _name=DamaDamas-icon-theme

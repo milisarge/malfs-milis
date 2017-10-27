@@ -1,7 +1,7 @@
-# Description: Lxqt-globalkeys paketi genel klavye kısayollarını ve bir kısayol GUI editörünü kaydetmek için kullanılan bir arka plan programı içerir.
+# Tanım: Lxqt-globalkeys paketi genel klavye kısayollarını ve bir kısayol GUI editörünü kaydetmek için kullanılan bir arka plan programı içerir.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: liblxqt
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: liblxqt
 
 name=lxqt-globalkeys
 version=0.11.1

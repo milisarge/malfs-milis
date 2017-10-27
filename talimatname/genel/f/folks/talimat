@@ -1,7 +1,7 @@
-# Description: Kişileri meta-kişilere toplamak için kütüphane
+# Tanım: Kişileri meta-kişilere toplamak için kütüphane
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: intltool libgee libzeitgeist telepathy-glib evolution-data-server gobject-introspection vala
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: intltool libgee libzeitgeist telepathy-glib evolution-data-server gobject-introspection vala
 
 name=folks
 version=0.11.3

@@ -1,7 +1,7 @@
-# Description: Qt GUI ile hızlı tarama masaüstü arama motoru
+# Tanım: Qt GUI ile hızlı tarama masaüstü arama motoru
 # URL: http://strigi.sourceforge.net
-# Packager: milisarge
-# Depends on: curl qt4 exiv2 ffmpeg libxml2
+# Paketçi: milisarge
+# Gerekler: curl qt4 exiv2 ffmpeg libxml2
 
 name=strigi
 version=0.7.8

@@ -1,7 +1,7 @@
-# Description: mDNS için nss modülü
+# Tanım: mDNS için nss modülü
 # URL: http://0pointer.de/lennart/projects/nss-mdns/
-# Packager: milisarge
-# Depends on:	
+# Paketçi: milisarge
+# Gerekler:	
 
 name=nss-mdns
 version=0.10

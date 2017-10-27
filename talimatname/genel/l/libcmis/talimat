@@ -1,7 +1,7 @@
-# Description: CMIS protokolü için bir C / C ++ istemci kitaplığı
+# Tanım: CMIS protokolü için bir C / C ++ istemci kitaplığı
 # URL: https://github.com/tdf/libcmis
-# Packager: Cihan Alkan
-# Depends on: libxml2 boost libpng doxygen docbook2x
+# Paketçi: Cihan Alkan
+# Gerekler: libxml2 boost libpng doxygen docbook2x
 
 name=libcmis
 version=0.5.1

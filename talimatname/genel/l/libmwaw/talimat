@@ -1,7 +1,7 @@
-# Description: Bazı eski mac metin belgeleri için kütüphaneyi içe aktarın.
+# Tanım: Bazı eski mac metin belgeleri için kütüphaneyi içe aktarın.
 # URL: https://sourceforge.net/projects/libmwaw/
-# Packager: Cihan Alkan
-# Depends on: doxygen boost librevenge
+# Paketçi: Cihan Alkan
+# Gerekler: doxygen boost librevenge
 
 name=libmwaw
 version=0.3.12

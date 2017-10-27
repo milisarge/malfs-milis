@@ -1,7 +1,7 @@
-# Description: Xarchiver, GTK + 2 araç seti ile inşa edilmiş hafif, masaüstü bağımsız bir arşiv yöneticisidir.
+# Tanım: Xarchiver, GTK + 2 araç seti ile inşa edilmiş hafif, masaüstü bağımsız bir arşiv yöneticisidir.
 # URL: http://xarchiver.sourceforge.net/
-# Packager: milisarge
-# Depends on: gtk2 intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama unzip p7zip lzop unrar
+# Paketçi: milisarge
+# Gerekler: gtk2 intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama unzip p7zip lzop unrar
 
 name=xarchiver
 version=0.5.4.11

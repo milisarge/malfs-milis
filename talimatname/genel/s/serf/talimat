@@ -1,7 +1,7 @@
-# Description: C tabanlı HTTP istemci kütüphanesi Apache Portable Runtime (APR) kütüphanesi üzerine inşa edilmiştir.
+# Tanım: C tabanlı HTTP istemci kütüphanesi Apache Portable Runtime (APR) kütüphanesi üzerine inşa edilmiştir.
 # URL: https://code.google.com/p/serf/
-# Packager: milisarge
-# Depends on: apr-util openssl scons kerberos 
+# Paketçi: milisarge
+# Gerekler: apr-util openssl scons kerberos 
 
 name=serf
 version=1.3.8	

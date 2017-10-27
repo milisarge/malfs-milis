@@ -1,7 +1,7 @@
-# Description: Quasar DV codec (libdv), DV video için bir yazılım codec bileşenidir
+# Tanım: Quasar DV codec (libdv), DV video için bir yazılım codec bileşenidir
 # URL: http://downloads.sourceforge.net/libdv
-# Packager: milisarge
-# Depends on: popt sdl xorg-libxv 
+# Paketçi: milisarge
+# Gerekler: popt sdl xorg-libxv 
 
 name=libdv
 version=1.0.0

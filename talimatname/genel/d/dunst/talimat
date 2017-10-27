@@ -1,7 +1,7 @@
-# Description: Hızlı ve menulü , sistem çekmecesi için simge oluştuma uygulaması
+# Tanım: Hızlı ve menulü , sistem çekmecesi için simge oluştuma uygulaması
 # URL: http://gtrayicon.sourceforge.net/
-# Packager: milisarge
-# Depends on: xorg-libxinerama xorg-libxscrnsaver pango libnotify gtk2 libxdg-basedir
+# Paketçi: milisarge
+# Gerekler: xorg-libxinerama xorg-libxscrnsaver pango libnotify gtk2 libxdg-basedir
 
 name=dunst
 version=1.2.0

@@ -1,7 +1,7 @@
-# Description: Bu panel eklentisi, sistemin geçerli CPU yükünü göstermek için birden fazla ekran modu (LED, gradyan, yangın vb.) sunar.
+# Tanım: Bu panel eklentisi, sistemin geçerli CPU yükünü göstermek için birden fazla ekran modu (LED, gradyan, yangın vb.) sunar.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel
+# Paketçi: milisarge
+# Gerekler: xfce4-panel
 
 name=xfce4-cpugraph-plugin
 version=1.0.5

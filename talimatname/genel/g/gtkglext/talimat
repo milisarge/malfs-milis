@@ -1,7 +1,7 @@
-# Description: Gtk2 için opengl uzantıları
+# Tanım: Gtk2 için opengl uzantıları
 # URL: http://gtkglext.sourceforge.net/
-# Packager: Cihan Alkan
-# Depends on: glib gtk2
+# Paketçi: Cihan Alkan
+# Gerekler: glib gtk2
 
 name=gtkglext
 version=1.2.0

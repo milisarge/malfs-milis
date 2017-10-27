@@ -1,7 +1,7 @@
-# Description: Perl modülü binası
+# Tanım: Perl modülü binası
 # URL:http://search.cpan.org/~leont/Module-Build-0.4216
-# Packagers: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 _name=Module-Build
 name=perl-module-build

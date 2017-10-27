@@ -1,7 +1,7 @@
-# Description: Tanımlama dilleri için etiketlerle erişim arayüz kütüphanesi
+# Tanım: Tanımlama dilleri için etiketlerle erişim arayüz kütüphanesi
 # URL: http://tagoh.bitbucket.org/liblangtag/index.html
-# Packager: Cihan Alkan
-# Depends on: libxml2 glib gobject-introspection
+# Paketçi: Cihan Alkan
+# Gerekler: libxml2 glib gobject-introspection
 
 name=liblangtag
 version=0.6.2

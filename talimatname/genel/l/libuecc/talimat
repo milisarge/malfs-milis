@@ -1,7 +1,7 @@
-# Description: Çok küçük Elliptic Curve Cryptography kütüphanesi
+# Tanım: Çok küçük Elliptic Curve Cryptography kütüphanesi
 # URL: http://git.universe-factory.net/libuecc/
-# Packager: milisarge
-# Depends on: cmake 
+# Paketçi: milisarge
+# Gerekler: cmake 
 
 name=libuecc
 version=7

@@ -1,7 +1,7 @@
-# Description: Cross-platform C++ library for ASynchronous network I/O
+# Tanım: Cross-platform C++ library for ASynchronous network I/O
 # URL: http://asio.sourceforge.net
-# Packager: milisarge
-# Depends on: boost 
+# Paketçi: milisarge
+# Gerekler: boost 
 
 name=asio
 version=1.10.8

@@ -1,7 +1,7 @@
-# Description: X.Org yazı tipi araçları.
+# Tanım: X.Org yazı tipi araçları.
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 _name=font-util
 name=xorg-font-util

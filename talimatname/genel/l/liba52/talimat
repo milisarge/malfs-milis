@@ -1,7 +1,7 @@
-# Description: ATSC A/52 akışlarını çözmek için ücretsiz bir kütüphane
+# Tanım: ATSC A/52 akışlarını çözmek için ücretsiz bir kütüphane
 # URL: http://liba52.sourceforge.net/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=liba52
 version=0.7.4

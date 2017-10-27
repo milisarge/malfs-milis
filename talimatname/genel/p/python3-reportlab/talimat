@@ -1,7 +1,7 @@
-# Description: Kanıtlanmış bir endüstri gücü PDF oluşturma çözümü
+# Tanım: Kanıtlanmış bir endüstri gücü PDF oluşturma çözümü
 # URL: http://www.reportlab.org/rl_toolkit.html
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: python3 python3-pillow freetype python3-pip
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: python3 python3-pillow freetype python3-pip
 
 name=python3-reportlab
 version=3.3.0

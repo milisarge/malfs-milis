@@ -1,7 +1,7 @@
-# Description: İnternetten hava durumu bilgisine erişim sağlar
+# Tanım: İnternetten hava durumu bilgisine erişim sağlar
 # URL: https://wiki.gnome.org/action/show/Projects/LibGWeather?action=show&redirect=LibGWeather
-# Packager: yasarciv67@gmail.com 
-# Depends on: geocode-glib gtk3 libsoup gobject-introspection vala gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: geocode-glib gtk3 libsoup gobject-introspection vala gtk-update-icon-cache
 
 name=libgweather
 version=3.20.3

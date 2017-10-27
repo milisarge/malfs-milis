@@ -1,7 +1,7 @@
-# Description : Etkinlik oluşturmak için kütüphane
+# Tanım: Etkinlik oluşturmak için kütüphane
 # URL : https://community.kde.org/KDE_PIM
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules kf5-kdoctools qt5 boost calendarsupport kdgantt2
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules kf5-kdoctools qt5 boost calendarsupport kdgantt2
 
 name=eventviews
 version=16.08.2

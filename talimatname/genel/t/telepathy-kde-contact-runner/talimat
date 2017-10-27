@@ -1,7 +1,7 @@
-# Description: KDE Telepati için KRunner eklentisi
+# Tanım: KDE Telepati için KRunner eklentisi
 # URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals kf5-krunner 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals kf5-krunner 
 
 name=telepathy-kde-contact-runner
 version=16.08.2

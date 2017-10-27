@@ -1,7 +1,7 @@
-# Description: Özgür pascal derleyicisi
+# Tanım: Özgür pascal derleyicisi
 # URL: http://www.freepascal.org/
-# Packager: milisarge
-# Depends on: fpc gdb
+# Paketçi: milisarge
+# Gerekler: fpc gdb
 
 name=fpc3
 version=3.0.2

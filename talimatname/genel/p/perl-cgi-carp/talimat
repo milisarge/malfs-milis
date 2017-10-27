@@ -1,7 +1,7 @@
-# Description:  Perl CGI Carp modülü
+# Tanım:  Perl CGI Carp modülü
 # URL:          http://search.cpan.org/~leejo/CGI-4.35/lib/CGI/Carp.pm
-# Packager :	milisarge
-# Depends on:   
+# Paketçi:	milisarge
+# Gerekler:   
 
 name=perl-cgi-carp
 version=4.35

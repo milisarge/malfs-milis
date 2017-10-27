@@ -1,7 +1,7 @@
-# Description: Hafif panel/görev çubuğu
+# Tanım: Hafif panel/görev çubuğu
 # URL: http://tint2.googlecode.com
-# Packager: milisarge
-# Depends on: tint2 python-gtk
+# Paketçi: milisarge
+# Gerekler: tint2 python-gtk
 
 name=tint2-extras
 version=0.11

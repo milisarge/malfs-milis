@@ -1,7 +1,7 @@
-# Description: Wiki kavramını masaüstüne getirmeyi amaçlayan bir WYSIWYG metin editörü.
+# Tanım: Wiki kavramını masaüstüne getirmeyi amaçlayan bir WYSIWYG metin editörü.
 # URL: http://zim-wiki.org/
-# Packager: Cihan Alkan
-# Depends on: python-gtk dejavu-ttf
+# Paketçi: Cihan Alkan
+# Gerekler: python-gtk dejavu-ttf
 
 name=zim
 version=0.67

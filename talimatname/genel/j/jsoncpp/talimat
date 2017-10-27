@@ -1,7 +1,7 @@
-# Description: JSON C++ kütüphanesi
+# Tanım: JSON C++ kütüphanesi
 # URL: http://jsoncpp.sourceforge.net/
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=jsoncpp
 version=1.8.1

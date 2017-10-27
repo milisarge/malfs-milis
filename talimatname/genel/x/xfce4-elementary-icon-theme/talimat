@@ -1,7 +1,7 @@
-# Description: Elementary simge teması
+# Tanım: Elementary simge teması
 # URL: https://github.com/shimmerproject/elementary-xfce
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=xfce4-elementary-icon-theme
 version=0.8

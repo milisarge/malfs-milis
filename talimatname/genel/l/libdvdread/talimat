@@ -1,7 +1,7 @@
-# Description: DVD video disklerini okumak için basit bir temel sağlar
+# Tanım: DVD video disklerini okumak için basit bir temel sağlar
 # URL: http://mplayerhq.hu
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libdvdread
 version=5.0.3

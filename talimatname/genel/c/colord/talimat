@@ -1,7 +1,7 @@
-# Description: Renkli aygıtları yönetmek için sistem arka plan programı
+# Tanım: Renkli aygıtları yönetmek için sistem arka plan programı
 # URL: http://www.freedesktop.org/software/colord/
-# Packager: milisarge yasarciv67@gmail.com
-# Depends on: libgudev sqlite polkit lcms2 gobject-introspection libusb dbus vala libgusb
+# Paketçi: milisarge yasarciv67@gmail.com
+# Gerekler: libgudev sqlite polkit lcms2 gobject-introspection libusb dbus vala libgusb
 
 name=colord
 version=1.3.5

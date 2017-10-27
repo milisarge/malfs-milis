@@ -1,7 +1,7 @@
-# Description: GNU Projesi hata ayıklayıcı olan GDB, başka bir programın yürütülürken "içinde" olan biteni görmenizi sağlar.
+# Tanım: GNU Projesi hata ayıklayıcı olan GDB, başka bir programın yürütülürken "içinde" olan biteni görmenizi sağlar.
 # URL: http://www.sourceware.org/gdb/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=gdb
 version=7.10.1

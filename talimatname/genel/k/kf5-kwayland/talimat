@@ -1,7 +1,7 @@
-# Description: Wayland kütüphaneleri için Qt tarzı İstemci ve Sunucu kitaplığı sarmalayıcı
+# Tanım: Wayland kütüphaneleri için Qt tarzı İstemci ve Sunucu kitaplığı sarmalayıcı
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules qt5 wayland
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules qt5 wayland
 
 name=kf5-kwayland
 version=5.27.0

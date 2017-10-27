@@ -1,7 +1,7 @@
-# Description: Foomatic - Foomatic'in veritabanı motoru, Foomatic'in XML veritabanındaki verilerden PPD dosyaları oluşturur. Ayrıca, doğrudan baskı kuyrukları oluşturmak ve işleri işlemek için komut dosyaları içerir.
+# Tanım: Foomatic - Foomatic'in veritabanı motoru, Foomatic'in XML veritabanındaki verilerden PPD dosyaları oluşturur. Ayrıca, doğrudan baskı kuyrukları oluşturmak ve işleri işlemek için komut dosyaları içerir.
 # URL: http://www.linuxprinting.org/foomatic.html
-# Packager: milisarge
-# Depends on: libxml2 cups
+# Paketçi: milisarge
+# Gerekler: libxml2 cups
 
 name=foomatic-db-engine
 version=4.1

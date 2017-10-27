@@ -1,7 +1,7 @@
-# Description: Libgudev paketi, libudev için GObject bağlamlarını içerir.
+# Tanım: Libgudev paketi, libudev için GObject bağlamlarını içerir.
 # URL: http://www.codeforge.com/s/0/libgudev
-# Packager: milisarge
-# Depends on: glib gobject-introspection gtk-doc
+# Paketçi: milisarge
+# Gerekler: glib gobject-introspection gtk-doc
 
 name=libgudev
 version=230

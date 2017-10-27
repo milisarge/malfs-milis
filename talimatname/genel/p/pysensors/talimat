@@ -1,7 +1,7 @@
-# Description: Libsensors'a python bağları (ctypes aracılığıyla)
+# Tanım: Libsensors'a python bağları (ctypes aracılığıyla)
 # URL: https://bitbucket.org/blackjack/pysensors/
-# Packager: milisarge
-# Depends on: python python-setuptools lm-sensors
+# Paketçi: milisarge
+# Gerekler: python python-setuptools lm-sensors
 
 name=pysensors
 version=0.0.3

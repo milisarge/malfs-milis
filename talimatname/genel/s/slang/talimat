@@ -1,7 +1,7 @@
-# Description: S-Lang güçlü bir yorumlanmış dil
+# Tanım: S-Lang güçlü bir yorumlanmış dil
 # URL: http://gd.tuwien.ac.at/editors/davis/slang
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=slang
 version=2.2.4

@@ -1,7 +1,7 @@
-# Description: POSIX sistemleri için en kaliteli yazıcı sürücüleri
+# Tanım: POSIX sistemleri için en kaliteli yazıcı sürücüleri
 # URL: http://gimp-print.sourceforge.net
-# Packager: milisarge
-# Depends on: ijs gimp gtk2 cups foomatic-db-engine ghostscript
+# Paketçi: milisarge
+# Gerekler: ijs gimp gtk2 cups foomatic-db-engine ghostscript
 
 name=gutenprint
 version=5.2.9

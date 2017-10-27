@@ -1,7 +1,7 @@
-# Description: JavaScript in java gerçeklemesi
+# Tanım: JavaScript in java gerçeklemesi
 # URL: https://github.com/mozilla/rhino
-# Packager: milisarge
-# Depends on: apache-ant openjdk
+# Paketçi: milisarge
+# Gerekler: apache-ant openjdk
 
 name=rhino
 version=1.7.7.1

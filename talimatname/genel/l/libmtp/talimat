@@ -1,7 +1,7 @@
-# Description: Medya Aktarma Protokolünün kütüphane uygulaması.
+# Tanım: Medya Aktarma Protokolünün kütüphane uygulaması.
 # URL: http://libmtp.sourceforge.net
-# Packager: milisarge
-# Depends on: libusb libgcrypt
+# Paketçi: milisarge
+# Gerekler: libusb libgcrypt
 
 name=libmtp
 version=1.1.9

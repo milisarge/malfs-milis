@@ -1,7 +1,7 @@
-# Description: PC / SC Mimarisi akıllı kart araçları
+# Tanım: PC / SC Mimarisi akıllı kart araçları
 # URL: http://ludovic.rousseau.free.fr/softwares/pcsc-tools/
-# Packager: Cihan Alkan
-# Depends on: pcsc-lite
+# Paketçi: Cihan Alkan
+# Gerekler: pcsc-lite
 
 name=pcsc-tools
 version=1.5.2

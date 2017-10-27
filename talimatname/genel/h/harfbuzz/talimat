@@ -1,7 +1,7 @@
-# Description: OpenType metin şekillendirme motoru
+# Tanım: OpenType metin şekillendirme motoru
 # URL: http://www.freedesktop.org/software/harfbuzz
-# Packager: Cihan Alkan
-# Depends on: cairo glib icu freetype ragel graphite2
+# Paketçi: Cihan Alkan
+# Gerekler: cairo glib icu freetype ragel graphite2
 
 name=harfbuzz
 version=1.5.1

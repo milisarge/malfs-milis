@@ -1,7 +1,7 @@
-# Description: Lximage-qt paketi, hafif bir resim görüntüleyici ve ekran görüntüsü programı içerir.
+# Tanım: Lximage-qt paketi, hafif bir resim görüntüleyici ve ekran görüntüsü programı içerir.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: libfm-qt libexif
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: libfm-qt libexif
 
 name=lximage-qt
 version=0.5.1

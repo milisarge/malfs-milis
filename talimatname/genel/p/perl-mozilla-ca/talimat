@@ -1,7 +1,7 @@
-# Description: PEM formatında Mozilla CA sertifika paketi
+# Tanım: PEM formatında Mozilla CA sertifika paketi
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-mozilla-ca
 version=20130114

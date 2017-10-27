@@ -1,7 +1,7 @@
-# Description: Censys içi python kütüphaneleri-gerekler belirlenecek
+# Tanım: Censys içi python kütüphaneleri-gerekler belirlenecek
 # URL: https://github.com/censys/censys-python
-# Packager: milisarge
-# Depends on: python python3 python3-setuptools python-setuptools python-netaddr python3-netaddr
+# Paketçi: milisarge
+# Gerekler: python python3 python3-setuptools python-setuptools python-netaddr python3-netaddr
 
 name=censys-python
 version=git

@@ -1,7 +1,7 @@
-# Description: Xtables-addons patch-o-matic'in (-ng) devamı niteliğindedir. Ana Xtables paketinde kabul edilmeyen uzantılar içeriyor.
+# Tanım: Xtables-addons patch-o-matic'in (-ng) devamı niteliğindedir. Ana Xtables paketinde kabul edilmeyen uzantılar içeriyor.
 # URL: http://xtables-addons.sourceforge.net/
-# Packager: milisarge
-# Depends on: iptables libmnl
+# Paketçi: milisarge
+# Gerekler: iptables libmnl
 
 name=xtables-addons
 version=2.10

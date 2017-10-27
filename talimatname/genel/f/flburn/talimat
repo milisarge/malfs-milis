@@ -1,7 +1,7 @@
-# Description: CD/DVD yazma uygulamasi
+# Tanım: CD/DVD yazma uygulamasi
 # URL: http://sourceforge.net/projects/gnomebaker/
-# Packager: milisarge
-# Depends on: fltk1, libburn, libisoburn
+# Paketçi: milisarge
+# Gerekler: fltk1, libburn, libisoburn
 
 name=flburn
 version=0.0.3

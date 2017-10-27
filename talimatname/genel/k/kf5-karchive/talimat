@@ -1,7 +1,7 @@
-# Description: Çeşitli arşiv türlerine erişim sağlayan Qt 5 eklentisi
+# Tanım: Çeşitli arşiv türlerine erişim sağlayan Qt 5 eklentisi
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules qt5 bzip2 xz zlib
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules qt5 bzip2 xz zlib
 
 name=kf5-karchive
 version=5.27.0

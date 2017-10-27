@@ -1,7 +1,7 @@
-# Description: Web/uygulama sunucularındaki klasör ve dosyaları deneme yanılma yolu ile tespit eder
+# Tanım: Web/uygulama sunucularındaki klasör ve dosyaları deneme yanılma yolu ile tespit eder
 # URL: http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project
-# Packager: yakar (aydin@komutan.org)
-# Depends on: openjdk
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: openjdk
 
 name=dirbuster
 version=0.12

@@ -1,7 +1,7 @@
-# Description: Uygulamaları genişletmek için tasarlanmış bir programlama dili
+# Tanım: Uygulamaları genişletmek için tasarlanmış bir programlama dili
 # URL: http://www.lua.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=lua
 version=5.3.4

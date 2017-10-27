@@ -1,7 +1,7 @@
-# Description: Sybase ve MS SQL Server veritabanlarına erişmek için kullanılan kütüphane.
+# Tanım: Sybase ve MS SQL Server veritabanlarına erişmek için kullanılan kütüphane.
 # URL: http: http://www.freetds.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: unixodbc
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: unixodbc
 
 name=freetds
 version=1.00

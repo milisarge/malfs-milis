@@ -1,7 +1,7 @@
-# Description: GNOME masaüstü için renk profili yöneticisi
+# Tanım: GNOME masaüstü için renk profili yöneticisi
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: adwaita-icon-theme appstream-glib tdb libcanberra vte3 exiv2 desktop-file-utils shared-color-targets colord-gtk libexif intltool yelp-tools pango cairo desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: adwaita-icon-theme appstream-glib tdb libcanberra vte3 exiv2 desktop-file-utils shared-color-targets colord-gtk libexif intltool yelp-tools pango cairo desktop-file-utils gtk-update-icon-cache
 
 name=gnome-color-manager
 version=3.22.2

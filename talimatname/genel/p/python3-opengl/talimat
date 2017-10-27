@@ -1,7 +1,7 @@
-# Description: Çapraz platform Python, OpenGL ve ilgili API'lere bağlanır.
+# Tanım: Çapraz platform Python, OpenGL ve ilgili API'lere bağlanır.
 # URL: http://pyopengl.sourceforge.net/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: python3 freeglut python3-setuptools
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: python3 freeglut python3-setuptools
 
 name=python3-opengl
 version=3.1.0

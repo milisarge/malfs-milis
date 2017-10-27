@@ -1,7 +1,7 @@
-# Description: Son derece güçlü ICCCM uyumlu çoklu sanal masaüstü pencere yöneticisi.
+# Tanım: Son derece güçlü ICCCM uyumlu çoklu sanal masaüstü pencere yöneticisi.
 # URL: http://www.fvwm.org/
-# Packager: milisarge@gmail.com
-# Depends on: libxslt libstroke fribidi xorg-libxpm librsvg xorg-libxinerama xorg-libxcursor python-xdg
+# Paketçi: milisarge@gmail.com
+# Gerekler: libxslt libstroke fribidi xorg-libxpm librsvg xorg-libxinerama xorg-libxcursor python-xdg
 
 name=fvwm
 version=2.6.7

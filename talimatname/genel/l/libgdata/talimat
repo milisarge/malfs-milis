@@ -1,7 +1,7 @@
-# Description: GData protokolünü kullanarak çevrimiçi hizmet API'lerine erişmek için kullanılan GLib tabanlı kitaplık.
+# Tanım: GData protokolünü kullanarak çevrimiçi hizmet API'lerine erişmek için kullanılan GLib tabanlı kitaplık.
 # URL: http://live.gnome.org/libgdata
-# Packager: yasarciv67@gmail.com 
-# Depends on: liboauth libsoup json-glib gnome-online-accounts gcr uhttpmock gtk-doc
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: liboauth libsoup json-glib gnome-online-accounts gcr uhttpmock gtk-doc
 
 name=libgdata
 version=0.17.6

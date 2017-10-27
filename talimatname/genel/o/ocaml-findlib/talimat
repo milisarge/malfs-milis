@@ -1,7 +1,7 @@
-# Description: O'Caml kütüphane yöneticisi
+# Tanım: O'Caml kütüphane yöneticisi
 # URL: http://projects.camlcity.org/projects/findlib.html
-# Packager: milisarge
-# Depends on: ocaml
+# Paketçi: milisarge
+# Gerekler: ocaml
 
 name=ocaml-findlib
 _name=findlib

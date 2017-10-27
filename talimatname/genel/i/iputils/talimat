@@ -1,7 +1,7 @@
-# Description: temel ağ uygulamaları
+# Tanım: temel ağ uygulamaları
 # URL: http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils
-# Packager: milisarge
-# Depends on: libcap libidn
+# Paketçi: milisarge
+# Gerekler: libcap libidn
 
 name=iputils
 version=s20161105

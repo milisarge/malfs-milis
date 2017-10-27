@@ -20,4 +20,4 @@ index 04d343f..044ef78 100644
 +includedir=@INCLUDE_INSTALL_ROOT_DIR@
  
  Name: Yaml-cpp
- Description: A YAML parser and emitter for C++
+ Tanım: A YAML parser and emitter for C++

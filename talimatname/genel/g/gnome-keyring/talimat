@@ -1,7 +1,7 @@
-# Description: GNOME anahtarlık işlevleri
+# Tanım: GNOME anahtarlık işlevleri
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: libgcrypt libtasn1 gcr
+# Paketçi: milisarge
+# Gerekler: libgcrypt libtasn1 gcr
 
 name=gnome-keyring
 version=3.20

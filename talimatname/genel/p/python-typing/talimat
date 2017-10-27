@@ -1,7 +1,7 @@
-# Description: Python için yazım ipuçları
+# Tanım: Python için yazım ipuçları
 # URL: https://pypi.python.org/pypi/typing/
-# Packager: milisarge
-# Depends on: python-setuptools python 
+# Paketçi: milisarge
+# Gerekler: python-setuptools python 
 
 name=python-typing
 version=3.6.1

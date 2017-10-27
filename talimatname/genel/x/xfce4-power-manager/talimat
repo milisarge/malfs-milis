@@ -1,7 +1,7 @@
-# Description: Xfce masaüstü için güç yöneticisi.
+# Tanım: Xfce masaüstü için güç yöneticisi.
 # URL: http://goodies.xfce.org/projects/applications/xfce4-power-manager
-# Packager: milisarge
-# Depends on: dbus-glib xorg-app libnotify xfce4-panel upower udisks 
+# Paketçi: milisarge
+# Gerekler: dbus-glib xorg-app libnotify xfce4-panel upower udisks 
 
 name=xfce4-power-manager
 version=1.4.4

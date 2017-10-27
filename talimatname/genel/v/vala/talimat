@@ -1,7 +1,7 @@
-# Description: GObject türü sistem için derleyici
+# Tanım: GObject türü sistem için derleyici
 # URL: http://live.gnome.org/Vala
-# Packager: milisarge
-# Depends on: glib 
+# Paketçi: milisarge
+# Gerekler: glib 
 
 name=vala
 version=0.28.1

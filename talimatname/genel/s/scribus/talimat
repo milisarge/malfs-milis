@@ -1,7 +1,7 @@
-# Description: Masaüstü yayıncılık yazılımı
+# Tanım: Masaüstü yayıncılık yazılımı
 # URL: http://www.scribus.net
-# Packager: milisarge
-# Depends on: cmake boost aspell cups qt4 gnutls kerberos boost ghostscript lcms libxml2 cairo desktop-file-utils shared-mime-info
+# Paketçi: milisarge
+# Gerekler: cmake boost aspell cups qt4 gnutls kerberos boost ghostscript lcms libxml2 cairo desktop-file-utils shared-mime-info
 
 name=scribus
 version=1.4.5

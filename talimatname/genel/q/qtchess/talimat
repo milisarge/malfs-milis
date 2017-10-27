@@ -1,7 +1,7 @@
-# Description: qt tabanlı P2P satranç oyunu
+# Tanım: qt tabanlı P2P satranç oyunu
 # URL: http://qtchess.sourceforge.net/
-# Packager: milisarge
-# Depends on: qt5
+# Paketçi: milisarge
+# Gerekler: qt5
 
 name=qtchess
 version=20160904

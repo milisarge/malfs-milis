@@ -1,7 +1,7 @@
-# Description: Hızlı ve menulü , sistem çekmecesi için simge oluştuma uygulaması
+# Tanım: Hızlı ve menulü , sistem çekmecesi için simge oluştuma uygulaması
 # URL: http://gtrayicon.sourceforge.net/
-# Packager: milisarge
-# Depends on: gtk2 libglade
+# Paketçi: milisarge
+# Gerekler: gtk2 libglade
 
 name=gtrayicon
 version=1.1

@@ -1,7 +1,7 @@
-# Description: Vte, GTK+ 2 için bir terminal emülatörü widget'ı uygulayan bir kitaplık (libvte)
+# Tanım: Vte, GTK+ 2 için bir terminal emülatörü widget'ı uygulayan bir kitaplık (libvte)
 # URL: http://developer.gnome.org/arch/gnome/widgets/vte.html
-# Packager: milisarge
-# Depends on: gtk2 intltool gobject-introspection 
+# Paketçi: milisarge
+# Gerekler: gtk2 intltool gobject-introspection 
 
 name=vte
 version=0.28.2

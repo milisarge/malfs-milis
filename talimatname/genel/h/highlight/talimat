@@ -1,7 +1,7 @@
-# Description: Hızlı ve esnek kaynak kodu vurgulayıcı (CLI sürümü)
+# Tanım: Hızlı ve esnek kaynak kodu vurgulayıcı (CLI sürümü)
 # URL: http://www.andre-simon.de/doku/highlight/highlight.html
-# Packager: milisarge
-# Depends on: qt4 boost lua
+# Paketçi: milisarge
+# Gerekler: qt4 boost lua
 
 name=highlight
 version=3.23

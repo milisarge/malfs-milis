@@ -1,7 +1,7 @@
-# Description: Xfce için, hatırlatıcılar ile basit bir takvim uygulaması. 
+# Tanım: Xfce için, hatırlatıcılar ile basit bir takvim uygulaması. 
 # URL: https://www.xfce.org/projects
-# Packager: milisarge
-# Depends on: exo intltool xfce4-panel libnotify 
+# Paketçi: milisarge
+# Gerekler: exo intltool xfce4-panel libnotify 
 
 name=orage
 version=4.12.1

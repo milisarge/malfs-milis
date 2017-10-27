@@ -1,8 +1,8 @@
-# Description: lxde terminal uygulaması
+# Tanım: lxde terminal uygulaması
 # URL: http://lxde.org/
 # Maintainer: NuTyX core team
-# Packager: milisarge@gmail.com
-# Depends on: intltool vte
+# Paketçi: milisarge@gmail.com
+# Gerekler: intltool vte
 
 name=lxde-terminal
 _name=lxterminal

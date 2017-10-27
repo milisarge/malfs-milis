@@ -1,7 +1,7 @@
-# Description: Bu, esnek, hızlı sözcüksel tarayıcının bir varyantı
+# Tanım: Bu, esnek, hızlı sözcüksel tarayıcının bir varyantı
 # URL: http://invisible-island.net/reflex/reflex.html
-# packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=reflex
 version=20100627

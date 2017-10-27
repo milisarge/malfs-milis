@@ -1,7 +1,7 @@
-# Description: p2p şifreli iletişim protokol çekirdeği
+# Tanım: p2p şifreli iletişim protokol çekirdeği
 # URL: https://github.com/TokTok/c-toxcore/
-# packager: milisarge
-# Depends on: libconfig libsodium libvpx opus cmake
+# Paketçi: milisarge
+# Gerekler: libconfig libsodium libvpx opus cmake
 
 name=toxcore
 version=0.1.10

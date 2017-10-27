@@ -1,7 +1,7 @@
-# Description: Microsoft Works dosya sözcük işlemci biçimi içe aktarma filtre kitaplığı
+# Tanım: Microsoft Works dosya sözcük işlemci biçimi içe aktarma filtre kitaplığı
 # URL: https://sourceforge.net/projects/libwps/
-# Packager: Cihan Alkan
-# Depends on: doxygen libwpd boost librevenge
+# Paketçi: Cihan Alkan
+# Gerekler: doxygen libwpd boost librevenge
 
 name=libwps
 version=0.4.7

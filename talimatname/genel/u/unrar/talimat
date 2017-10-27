@@ -1,7 +1,7 @@
-# Description: RAR arşivlerinden dosyaları ayıklamak için kullanılan RAR çıkarma yardımcı programı.
+# Tanım: RAR arşivlerinden dosyaları ayıklamak için kullanılan RAR çıkarma yardımcı programı.
 # URL: http://www.rarlab.com/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=unrar
 version=5.3.9

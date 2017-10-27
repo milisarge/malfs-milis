@@ -1,7 +1,7 @@
-# Description: Shoutcast / icecast sunucusuna erişmek için kullanılan kitaplık
+# Tanım: Shoutcast / icecast sunucusuna erişmek için kullanılan kitaplık
 # URL: http://www.icecast.org/
-# Packager: milisarge
-# Depends on: libvorbis libtheora speex 
+# Paketçi: milisarge
+# Gerekler: libvorbis libtheora speex 
 
 name=libshout
 version=2.3.1

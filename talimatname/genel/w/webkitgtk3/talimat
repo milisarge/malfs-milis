@@ -1,7 +1,7 @@
-# Description: Web Tarayıcıları için küçük, verimli ve hızlı render motoru.
+# Tanım: Web Tarayıcıları için küçük, verimli ve hızlı render motoru.
 # URL: http://www.webkitgtk.org/
-# Packager: milisarge
-# Depends on: libwebp libsecret geoclue gperf gtk2 gtk3 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
+# Paketçi: milisarge
+# Gerekler: libwebp libsecret geoclue gperf gtk2 gtk3 curl dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
 
 name=webkitgtk3
 version=2.4.11

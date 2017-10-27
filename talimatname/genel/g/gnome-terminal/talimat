@@ -1,7 +1,7 @@
-# Description: GNOME için terminal emülatörü 
+# Tanım: GNOME için terminal emülatörü 
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache dconf gconf gtk2 gnome-doc-utils gsettings-desktop-schemas vte3 nautilus 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache dconf gconf gtk2 gnome-doc-utils gsettings-desktop-schemas vte3 nautilus 
 
 name=gnome-terminal
 version=3.22.1

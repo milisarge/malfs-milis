@@ -1,7 +1,7 @@
-# Description: Snappy bir sıkıştırma / açma kütüphanesi.
+# Tanım: Snappy bir sıkıştırma / açma kütüphanesi.
 # URL: http://code.google.com/p/snappy/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=snappy
 version=1.1.1

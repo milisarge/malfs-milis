@@ -1,7 +1,7 @@
-# Description: Curses :: UI, Perl için nesne yönelimli bir kullanıcı arabirimi çerçevesidir.
+# Tanım: Curses :: UI, Perl için nesne yönelimli bir kullanıcı arabirimi çerçevesidir.
 # URL: https://metacpan.org/pod/Curses::UI
-# Packager : milisarge
-# Depends on:   
+# Paketçi: milisarge
+# Gerekler:   
 
 name=perl-curses-ui
 version=0.9609

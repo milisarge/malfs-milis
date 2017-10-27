@@ -1,7 +1,7 @@
-# Description: Grsync bir rsync GUI (Grafik Kullanıcı Arayüzü) 'dir.
+# Tanım: Grsync bir rsync GUI (Grafik Kullanıcı Arayüzü) 'dir.
 # URL: http://www.opbyte.it/grsync/
-# Packager: milisarge
-# Depends on: gtk2
+# Paketçi: milisarge
+# Gerekler: gtk2
 
 name=grsync
 version=1.2.6

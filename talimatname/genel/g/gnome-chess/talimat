@@ -1,7 +1,7 @@
-# Description: Klasik iki oyunculu masaüstü oyunu
+# Tanım: Klasik iki oyunculu masaüstü oyunu
 # URL: http://www.gnome.org/"
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache hicolor-icon-theme gtk3 librsvg appstream-glib yelp-tools gnuchess
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache hicolor-icon-theme gtk3 librsvg appstream-glib yelp-tools gnuchess
 
 name=gnome-chess
 version=3.24.1

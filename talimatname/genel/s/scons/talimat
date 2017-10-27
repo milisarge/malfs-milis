@@ -1,7 +1,7 @@
-# Description: SCons, Açık Kaynaklı bir yazılım geliştirme aracı, yani yeni nesil bir yapı aracıdır.
+# Tanım: SCons, Açık Kaynaklı bir yazılım geliştirme aracı, yani yeni nesil bir yapı aracıdır.
 # URL: http://scons.org
-# Packager: milisarge
-# Depends on: python 
+# Paketçi: milisarge
+# Gerekler: python 
 
 name=scons
 version=2.4.1

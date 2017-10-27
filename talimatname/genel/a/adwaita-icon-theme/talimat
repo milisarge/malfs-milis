@@ -1,7 +1,7 @@
-# Description: Adwaita ikon teması.
+# Tanım: Adwaita ikon teması.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: intltool gtk-update-icon-cache hicolor-icon-theme icon-naming-utils librsvg
+# Paketçi: milisarge
+# Gerekler: intltool gtk-update-icon-cache hicolor-icon-theme icon-naming-utils librsvg
 
 name=adwaita-icon-theme
 version=3.24.0

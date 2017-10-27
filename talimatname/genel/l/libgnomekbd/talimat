@@ -1,7 +1,7 @@
-# Description: GNOME klavye kitaplığı
+# Tanım: GNOME klavye kitaplığı
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 intltool xorg-libxkbfile xorg-libxklavier gobject-introspection
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 intltool xorg-libxkbfile xorg-libxklavier gobject-introspection
 
 name=libgnomekbd
 version=3.22.0.1

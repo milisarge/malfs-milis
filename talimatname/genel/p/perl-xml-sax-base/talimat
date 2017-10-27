@@ -1,7 +1,7 @@
-# Description: Temel sınıf SAX Sürücüleri ve Filtreleri
+# Tanım: Temel sınıf SAX Sürücüleri ve Filtreleri
 # URL: http://search.cpan.org/dist/XML-SAX-Base
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-xml-sax-base
 version=1.08

@@ -1,7 +1,7 @@
-# Description: Ayrıştırma ve YAML yaymak için C kitaplığı (YAML Markup Language değil)
+# Tanım: Ayrıştırma ve YAML yaymak için C kitaplığı (YAML Markup Language değil)
 # URL:  http://pyyaml.org/
-# Packager:  milisarge
-# Depends on: doxygen 
+# Paketçi:  milisarge
+# Gerekler: doxygen 
 
 name=yaml
 version=0.1.7

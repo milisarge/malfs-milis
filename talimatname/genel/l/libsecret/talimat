@@ -1,7 +1,7 @@
-# Description: Secret Service API'sına erişmek için GObject tabanlı kütüphane.
+# Tanım: Secret Service API'sına erişmek için GObject tabanlı kütüphane.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: intltool libxslt docbook-xsl glib gobject-introspection libgcrypt vala 
+# Paketçi: milisarge
+# Gerekler: intltool libxslt docbook-xsl glib gobject-introspection libgcrypt vala 
 
 name=libsecret
 version=0.18.3

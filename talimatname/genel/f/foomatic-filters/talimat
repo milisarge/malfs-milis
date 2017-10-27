@@ -1,7 +1,7 @@
-# Description: Foomatic - gelen PostScript verilerini dönüştürmek için yazıcı biriktiricileri tarafından kullanılan süzgeç komut dosyaları.
+# Tanım: Foomatic - gelen PostScript verilerini dönüştürmek için yazıcı biriktiricileri tarafından kullanılan süzgeç komut dosyaları.
 # URL: http://www.linuxprinting.org/foomatic.html
-# Packager: milisarge
-# Depends on: libxml2 cups cups-filters
+# Paketçi: milisarge
+# Gerekler: libxml2 cups cups-filters
 
 name=foomatic-filters
 version=4.0.20150819

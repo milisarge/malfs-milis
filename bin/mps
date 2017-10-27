@@ -10,8 +10,9 @@ paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
 	sunucu="127.0.0.1:8000/"
 fi
-#sunucu="http://milis.gungre.ch/packages/"
-git_sunucu="https://github.com/milisarge/malfs-milis"
+if [ -z ${git_sunucu+:} ]; then
+	git_sunucu="https://github.com/milisarge/malfs-milis"
+fi
 ikaynak=""
 betikad=${0##*/}
 kurulum_onay="evet"
@@ -215,7 +216,7 @@ paket_sil(){
 paket_ara(){
 	paket="$1"
 	for pkt in `cat /depo/paketler/paket*.vt  | grep $paket |  awk '{print $1}'`; do
-		pakdesc=$(find $talimatname -name "$pkt" | xargs -I %  sed -n '1{p;q}' %/talimat | sed s'/# Description: //g');
+		pakdesc=$(find $talimatname -name "$pkt" | xargs -I %  sed -n '1{p;q}' %/talimat | sed s'/# Tanım: //g');
 		ryaz 34 "$pkt - $pakdesc";
 	done
 }
@@ -685,9 +686,9 @@ paketsiz_talimatlar(){
 			talimat=$(basename $talimatyol)
 			if [[ ! $(cat $paketdepo/paket*.vt | grep  $talimat#) ]] ;then 
 				if [ -d $talimatname/*/*/$talimat ];then
-					ack=`grep -e '# Description:' $talimatname/genel/*/$talimat/talimat | cut -d':' -f2`
+					ack=`grep -e '# Tanım:' $talimatname/genel/*/$talimat/talimat | cut -d':' -f2`
 				elif [ -d $ektalimatname/*/$talimat ];then
-					ack=`grep -e '# Description:' $ektalimatname/*/$talimat/talimat | cut -d':' -f2`
+					ack=`grep -e '# Tanım:' $ektalimatname/*/$talimat/talimat | cut -d':' -f2`
 				fi
 				printf '%s = %s \n' "$talimat" "$ack"
 			fi
@@ -962,7 +963,7 @@ bagimlilar_eski(){
 	konum="`find "$talimatname" -name $1`"
 	konumek="`find "$ektalimatname" -name $1`"
 	if [ -f "$konum/talimat" ];then
-		bagimd=`cat $konum/talimat | grep "Depends on" | cut -d':' -f2`
+		bagimd=`cat $konum/talimat | grep "Gerekler" | cut -d':' -f2`
 											   
 		if [ -n "$bagimd" ]; then
 			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
@@ -970,7 +971,7 @@ bagimlilar_eski(){
 			echo `echo "$bagimd" | sed 's/,/ /g'`
 		fi
 	elif [ -f "$konumek/talimat" ];then
-		bagimd=`cat $konumek/talimat | grep "Depends on" | cut -d':' -f2`
+		bagimd=`cat $konumek/talimat | grep "Gerekler" | cut -d':' -f2`
 											   
 		if [ -n "$bagimd" ]; then
 			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
@@ -988,7 +989,7 @@ bagimlilar(){
 	local bagimd konum
 	konum=$(talimat_bul $1)
 	if [[ $konum != "-1" && $konum != "0" ]];then
-		bagimd=`cat $konum/talimat | grep "Depends on" | cut -d':' -f2`
+		bagimd=`cat $konum/talimat | grep "Gerekler" | cut -d':' -f2`
 		bagimd=$(echo "$bagimd" | sed 's/,/ /g')										   
 		echo "$bagimd"
 	else
@@ -999,10 +1000,10 @@ bagimlilar(){
 ters_bagimli_bilgi(){
 	gtbpaket=$1
 	tbgdosya=$(mktemp)
-	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}\s" $talimatname > $tbgdosya ; 
-	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}\s" $ektalimatname >> $tbgdosya ; 
-	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}$" $ektalimatname >> $tbgdosya ; 
-	grep -rli "\s${gtbpaket}\s.*Depends\|Depends.*\s${gtbpaket}$" $talimatname >> $tbgdosya ; 
+	grep -rli "\s${gtbpaket}\s.*Gerekler\|Gerekler.*\s${gtbpaket}\s" $talimatname > $tbgdosya ; 
+	grep -rli "\s${gtbpaket}\s.*Gerekler\|Gerekler.*\s${gtbpaket}\s" $ektalimatname >> $tbgdosya ; 
+	grep -rli "\s${gtbpaket}\s.*Gerekler\|Gerekler.*\s${gtbpaket}$" $ektalimatname >> $tbgdosya ; 
+	grep -rli "\s${gtbpaket}\s.*Gerekler\|Gerekler.*\s${gtbpaket}$" $talimatname >> $tbgdosya ; 
 	cat $tbgdosya | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort > /tmp/${gtbpaket}.tb.txt
 	rm -f $tbgdosya
 	cat /tmp/${gtbpaket}.tb.txt
@@ -1036,7 +1037,7 @@ bagimli_bilgi(){
 		ryaz 31 "$1 talimatı bulunamadı!"
 		exit 1
 	fi
-	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
+	bagimd=`cat $konum/talimat | grep "Gerekler" | cut -d':' -f2`
 	if [ -n "$bagimd" ]; then
 		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
 		#sıralı gösterme
@@ -1070,7 +1071,7 @@ bagimli_bilgi_dosyala(){
 		ryaz 31 "$1 talimatı bulunamadı!"
 		exit 1
 	fi
-	bagimd=`cat $konum/talimat | grep "Depends" | cut -d':' -f2`
+	bagimd=`cat $konum/talimat | grep "Gerekler" | cut -d':' -f2`
 	if [ -n "$bagimd" ]; then
 		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
 		#sıralı gösterme
@@ -1403,10 +1404,10 @@ else
 	name=$1
 	mkdir -p $name
 	tee "$name/talimat" > /dev/null <<EOF
-# Description: paket açıklaması
+# Tanım: paket açıklaması
 # Url: paketin ilgili web sayfası
-# Packager: paketci
-# Depends on: 
+# Paketçi: paketçi
+# Gerekler: 
 
 name=$name
 version=1

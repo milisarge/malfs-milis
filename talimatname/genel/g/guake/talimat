@@ -1,7 +1,7 @@
-# Description: Guake, Gnome için tepeden inişli bir terminaldir (KDE Yakuake, Tilda veya Quake'de kullanılan terminal tarzında)
+# Tanım: Guake, Gnome için tepeden inişli bir terminaldir (KDE Yakuake, Tilda veya Quake'de kullanılan terminal tarzında)
 # URL: http://guake-project.org/
-# Packager: milisarge aydinyakar
-# Depends on: intltool gnome-common python-notify vte python-vte python-gconf dbus-python python-keybinder python-xdg libutempter
+# Paketçi: milisarge aydinyakar
+# Gerekler: intltool gnome-common python-notify vte python-vte python-gconf dbus-python python-keybinder python-xdg libutempter
 
 name=guake
 version=0.8.7

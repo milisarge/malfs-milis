@@ -1,7 +1,7 @@
-# Description: X için basit terminal uygulaması
+# Tanım: X için basit terminal uygulaması
 # URL: http://st.suckless.org/
-# Packager: milisarge
-# Depends on: xorg-libxext xorg-libxft
+# Paketçi: milisarge
+# Gerekler: xorg-libxext xorg-libxft
 
 name=st
 version=0.7

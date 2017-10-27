@@ -1,7 +1,7 @@
-# Description: Perl'den gettext () fonksiyon ailesine erişime izin verir.
+# Tanım: Perl'den gettext () fonksiyon ailesine erişime izin verir.
 # URL: http://search.cpan.org/dist/gettext/
-# Packager: alihan-ozturk28@hotmail.com milisarge
-# Depends on: 
+# Paketçi: alihan-ozturk28@hotmail.com milisarge
+# Gerekler: 
 
 name=perl-locale-gettext
 version=1.07

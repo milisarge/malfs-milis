@@ -1,7 +1,7 @@
-# Description: Rasgele sayıların öngörülemeyen bir akışı üreten ve /dev/random'ı besleyen program
+# Tanım: Rasgele sayıların öngörülemeyen bir akışı üreten ve /dev/random'ı besleyen program
 # URL: http://www.issihosts.com/haveged/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=haveged
 version=1.9.1

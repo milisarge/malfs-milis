@@ -1,7 +1,7 @@
-# Description: Ekran görüntüsü alma uygulaması
+# Tanım: Ekran görüntüsü alma uygulaması
 # URL: https://github.com/naelstrof/maim
-# Packager: milisarge
-# Depends on: cmake slop freetype xorg-libxfixes xorg-libxrandr libjpeg-turbo xorg-libxcomposite
+# Paketçi: milisarge
+# Gerekler: cmake slop freetype xorg-libxfixes xorg-libxrandr libjpeg-turbo xorg-libxcomposite
 
 name=maim
 version=4.4.62

@@ -1,4 +1,4 @@
-Description: Ensure internal headers are picked instead of system headers.
+Tanım: Ensure internal headers are picked instead of system headers.
 Origin: http://anonscm.debian.org/gitweb/?p=collab-maint/afpfs-ng.git;a=blob;f=debian/patches/header-path-fix.patch
 
 --- a/include/afpfs-ng/afp.h

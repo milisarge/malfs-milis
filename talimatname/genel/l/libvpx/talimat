@@ -1,7 +1,7 @@
-# Description: VP8 Codec SDK'sı
+# Tanım: VP8 Codec SDK'sı
 # URL: http://webm.googlecode.com/files/libvpx-v1.1.0.tar.bz2
-# Packager: milisarge
-# Depends on: yasm 
+# Paketçi: milisarge
+# Gerekler: yasm 
 
 name=libvpx
 version=1.5.0

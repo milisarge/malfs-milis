@@ -1,7 +1,7 @@
-# Description: Çeşitli Google hizmetlerine genel API'lerinden erişmek için KDE tabanlı bir kütüphane
+# Tanım: Çeşitli Google hizmetlerine genel API'lerinden erişmek için KDE tabanlı bir kütüphane
 # URL: https://projects.kde.org/projects/extragear/libs/libkgapi
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kcalcore kcontacts kf5-extra-cmake-modules kf5-kdoctools qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kcalcore kcontacts kf5-extra-cmake-modules kf5-kdoctools qt5
 
 name=libkgapi
 version=5.3.1

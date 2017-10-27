@@ -1,7 +1,7 @@
-# Description: Aktivite sistemi tarafından toplanan kullanım verilerine erişmek için bir kütüphane
+# Tanım: Aktivite sistemi tarafından toplanan kullanım verilerine erişmek için bir kütüphane
 # URL: https://community.kde.org/Frameworks
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules boost kf5-kactivities
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules boost kf5-kactivities
 
 name=kf5-kactivities-stats
 version=5.27.0

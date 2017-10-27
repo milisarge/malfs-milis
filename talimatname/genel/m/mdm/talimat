@@ -1,7 +1,7 @@
-# Description: MDM Giriş Yöneticisi (consolekit destekli)
+# Tanım: MDM Giriş Yöneticisi (consolekit destekli)
 # URL: http://www.linuxmint.com
-# Packager: yasarciv67@gmail.com
-# Depends on: gnome-common intltool gnome-doc-utils xorg-server pango zenity popt xorg-libdmx libgnomecanvas dbus-glib webkitgtk2
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gnome-common intltool gnome-doc-utils xorg-server pango zenity popt xorg-libdmx libgnomecanvas dbus-glib webkitgtk2
 
 name=mdm
 version=2.0.17

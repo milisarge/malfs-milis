@@ -1,7 +1,7 @@
-# Description: Distributed version control system designed to handle small to very large projects.
+# Tanım: Distributed version control system designed to handle small to very large projects.
 # URL: http://git-scm.com/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=git
 version=2.7.1

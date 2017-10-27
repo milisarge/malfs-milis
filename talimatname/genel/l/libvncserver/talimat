@@ -1,7 +1,7 @@
-# Description: VNC sunucusunu kolayca uygulamanıza olanak tanıyan çapraz platform C kütüphaneleri
+# Tanım: VNC sunucusunu kolayca uygulamanıza olanak tanıyan çapraz platform C kütüphaneleri
 # URL: https://libvnc.github.io/
-# Packager: milisarge
-# Depends on: libjpeg-turbo libpng gnutls libgcrypt sdl
+# Paketçi: milisarge
+# Gerekler: libjpeg-turbo libpng gnutls libgcrypt sdl
 
 name=libvncserver
 version=0.9.11

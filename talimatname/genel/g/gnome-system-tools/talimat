@@ -1,7 +1,7 @@
-# Description: Cross-platform configuration utilities for GNOME
+# Tanım: Cross-platform configuration utilities for GNOME
 # URL: http://projects.gnome.org/gst/
-# Packager: milisarge
-# Depends on: intltool  gnome-doc-utils wireless-tools liboobs polkit-gnome dconf 
+# Paketçi: milisarge
+# Gerekler: intltool  gnome-doc-utils wireless-tools liboobs polkit-gnome dconf 
 
 name=gnome-system-tools
 version=3.0.0

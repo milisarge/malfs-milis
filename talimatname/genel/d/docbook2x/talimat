@@ -1,8 +1,8 @@
-# Description: DocBook belgelerini Unix yardım sayfası formatına ve GNU Texinfo formatına dönüştürür.
+# Tanım: DocBook belgelerini Unix yardım sayfası formatına ve GNU Texinfo formatına dönüştürür.
 # URL: URL: http://docbook2x.sourceforge.net/
 # NuTyX package info file (http://nutyx.org)
-# Packager: milisarge
-# Depends on: openjade libxslt perl-xml-sax
+# Paketçi: milisarge
+# Gerekler: openjade libxslt perl-xml-sax
 
 name=docbook2x
 version=0.8.8

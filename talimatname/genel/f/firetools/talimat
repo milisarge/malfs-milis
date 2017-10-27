@@ -1,7 +1,7 @@
-# Description: firejail için qt5 tabanlı arayüz
+# Tanım: firejail için qt5 tabanlı arayüz
 # URL: https://l3net.wordpress.com/projects/firejail/
-# Packager: milisarge
-# Depends on: firejail qt5
+# Paketçi: milisarge
+# Gerekler: firejail qt5
 
 name=firetools
 version=0.9.46

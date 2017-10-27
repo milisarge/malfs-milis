@@ -1,7 +1,7 @@
-# Description: Wacom tabletlerini ve özelliklerini belirlemek için Kütüphane
+# Tanım: Wacom tabletlerini ve özelliklerini belirlemek için Kütüphane
 # URL: http://linuxwacom.sourceforge.net/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: glib libgudev
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: glib libgudev
 
 name=libwacom
 version=0.21

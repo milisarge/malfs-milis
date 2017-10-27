@@ -1,7 +1,7 @@
-# Description: Bu eklenti anlık disk / bölüm performansını görüntüler (saniyede bayt aktarılır).
+# Tanım: Bu eklenti anlık disk / bölüm performansını görüntüler (saniyede bayt aktarılır).
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-diskperf-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel
+# Paketçi: milisarge
+# Gerekler: xfce4-panel
 
 name=xfce4-diskperf-plugin
 version=2.5.5

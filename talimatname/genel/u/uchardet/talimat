@@ -1,7 +1,7 @@
-# Description: Encoding detector library ported from Mozilla
+# Tanım: Encoding detector library ported from Mozilla
 # URL: https://www.freedesktop.org/wiki/Software/uchardet
-# Packager: milisarge
-# Depends on: cmake 
+# Paketçi: milisarge
+# Gerekler: cmake 
 
 name=uchardet
 version=0.0.6

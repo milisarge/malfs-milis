@@ -1,7 +1,7 @@
-# Description: GTK clutter widget.
+# Tanım: GTK clutter widget.
 # URL: http://www.clutter-project.org
-# Packager: yasarciv67@gmail.com
-# Depends on: clutter gtk3 gobject-introspection
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: clutter gtk3 gobject-introspection
 
 name=clutter-gtk
 version=1.8.2

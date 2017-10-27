@@ -1,7 +1,7 @@
-# Description: Web sunucu güvenliğini artırabilmek, bağlantı hizmet aksatma (DoS) saldırıları, http sunucusu güvenlik açıklarını test etmek için perl'de yazılmış bir araç.
+# Tanım: Web sunucu güvenliğini artırabilmek, bağlantı hizmet aksatma (DoS) saldırıları, http sunucusu güvenlik açıklarını test etmek için perl'de yazılmış bir araç.
 # URL: http://ha.ckers.org/slowloris/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: perl-io-socket-ssl
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: perl-io-socket-ssl
 
 name=slowloris
 version=0.7

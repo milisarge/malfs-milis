@@ -1,7 +1,7 @@
-# Description: Enlightenment DR21 pencere yöneticisi
+# Tanım: Enlightenment DR21 pencere yöneticisi
 # URL: http://www.enlightenment.org/
-# Packager: milisarge
-# Depends on: elementary evas_generic_loaders xorg-xcb-util-keysyms dejavu-ttf
+# Paketçi: milisarge
+# Gerekler: elementary evas_generic_loaders xorg-xcb-util-keysyms dejavu-ttf
 
 name=e21
 version=0.21.9

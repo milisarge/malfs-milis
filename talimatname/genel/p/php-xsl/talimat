@@ -1,7 +1,7 @@
-# Description: libxslt kütüphanesi kullanılarak xslt php uyarlaması
+# Tanım: libxslt kütüphanesi kullanılarak xslt php uyarlaması
 # URL: http://www.php.net
-# Packager: milisarge
-# Depends on: libxslt
+# Paketçi: milisarge
+# Gerekler: libxslt
 
 name=php-xsl
 version=5.6.31

@@ -1,7 +1,7 @@
-# Description: Basit uç kontrolü için bir perl modülü
+# Tanım: Basit uç kontrolü için bir perl modülü
 # URL: http://search.cpan.org/~jstowe/TermReadKey-2.33/
-# Packagers: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 _name=TermReadKey
 name=perl-term-readkey

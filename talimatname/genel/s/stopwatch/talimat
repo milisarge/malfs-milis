@@ -1,7 +1,7 @@
-# Description: Elle zamanlamayı fiziksel bir kronometrede olduğu gibi sağlar. Geri sayım sayacı olarak da kullanılabilir.
+# Tanım: Elle zamanlamayı fiziksel bir kronometrede olduğu gibi sağlar. Geri sayım sayacı olarak da kullanılabilir.
 # URL: http://expect.sourceforge.net/stopwatch/
-# Packager: milisarge
-# Depends on: tcl tk
+# Paketçi: milisarge
+# Gerekler: tcl tk
 
 name=stopwatch
 version=3.4

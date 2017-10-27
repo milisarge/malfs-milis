@@ -1,7 +1,7 @@
-# Description: python2 dialog arayüzü
+# Tanım: python2 dialog arayüzü
 # URL: http://pythondialog.sf.net
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-pythondialog
 _name=pythondialog

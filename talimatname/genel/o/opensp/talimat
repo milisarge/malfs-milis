@@ -1,7 +1,7 @@
-# Description: SGML / XML dosyalarını kullanmak için C ++ kütüphanesi.
+# Tanım: SGML / XML dosyalarını kullanmak için C ++ kütüphanesi.
 # URL: http://openjade.sourceforge.net/doc/
-# Packager: milisarge
-# Depends on: sgml-common
+# Paketçi: milisarge
+# Gerekler: sgml-common
 
 name=opensp
 version=1.5.2

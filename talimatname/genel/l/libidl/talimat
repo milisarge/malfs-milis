@@ -1,7 +1,7 @@
-# Description: CORBA 2.2 IDL ve Netscape'in XPIDL'leri için bir ön uç
+# Tanım: CORBA 2.2 IDL ve Netscape'in XPIDL'leri için bir ön uç
 # URL: http://www.gnome.org
-# Packager: milisarge
-# Depends on: glib 
+# Paketçi: milisarge
+# Gerekler: glib 
 
 name=libidl
 version=0.8.14

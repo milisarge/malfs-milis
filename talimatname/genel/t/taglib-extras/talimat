@@ -1,7 +1,7 @@
-# Description: KDE için ek taglib eklentileri
+# Tanım: KDE için ek taglib eklentileri
 # URL: http://developer.kde.org/~wheeler/taglib.html
-# Packager: milisarge
-# Depends on: taglib 
+# Paketçi: milisarge
+# Gerekler: taglib 
 
 name=taglib-extras
 version=1.0.1

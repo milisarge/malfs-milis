@@ -1,7 +1,7 @@
-# Description: SDL yüzeyleri (Version 2) olarak çeşitli biçimlerin görüntülerini yüklemek için basit bir kütüphane
+# Tanım: SDL yüzeyleri (Version 2) olarak çeşitli biçimlerin görüntülerini yüklemek için basit bir kütüphane
 # URL: http://www.libsdl.org/projects/SDL_image
-# Packager: yasarciv67@gmail.com
-# Depends on: sdl2 libpng libtiff libjpeg-turbo libwebp cmake
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: sdl2 libpng libtiff libjpeg-turbo libwebp cmake
 
 name=sdl2-image
 version=2.0.1

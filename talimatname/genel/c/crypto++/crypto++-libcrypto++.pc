@@ -5,7 +5,7 @@ libdir=${prefix}/lib
 includedir=${prefix}/include
 
 Name: libcrypto++-5.6.2
-Description: Class library of cryptographic schemes
+Tanım: Class library of cryptographic schemes
 Version: 5.6.2
 Libs: -L${libdir} -lcryptopp
 Cflags: -I${includedir} 

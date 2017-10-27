@@ -1,7 +1,7 @@
-# Description: Google'nin açık kaynak kodlu web tarayıcısı
+# Tanım: Google'nin açık kaynak kodlu web tarayıcısı
 # URL: https://www.chromium.org/Home
-# Packager: Cihan Alkan
-# Depends on: libwebp minizip libjpeg-turbo
+# Paketçi: Cihan Alkan
+# Gerekler: libwebp minizip libjpeg-turbo
 
 name=chromium-bin
 version=62.0.3202.62

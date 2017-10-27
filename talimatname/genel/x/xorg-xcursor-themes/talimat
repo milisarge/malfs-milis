@@ -1,7 +1,7 @@
-# Description: X Pencere sistemi fare imlecleri icin temalar
+# Tanım: X Pencere sistemi fare imlecleri icin temalar
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-app 
+# Paketçi: milisarge
+# Gerekler: xorg-app 
 
 _name=xcursor-themes
 name=xorg-xcursor-themes

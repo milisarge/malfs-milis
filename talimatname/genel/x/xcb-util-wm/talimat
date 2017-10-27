@@ -1,7 +1,7 @@
-# Description: XCB yardımcı programları kitaplığı
+# Tanım: XCB yardımcı programları kitaplığı
 # URL: http://xcb.freedesktop.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: libxcb xcb-util xorg-util-macros
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: libxcb xcb-util xorg-util-macros
 
 name=xcb-util-wm
 version=0.4.1

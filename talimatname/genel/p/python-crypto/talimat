@@ -1,7 +1,7 @@
-# Description: Python için şifreleme modülleri.
+# Tanım: Python için şifreleme modülleri.
 # URL: http://www.dlitz.net/software/pycrypto/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-crypto
 version=2.6.1

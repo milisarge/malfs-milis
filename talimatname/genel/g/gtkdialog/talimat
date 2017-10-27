@@ -1,7 +1,7 @@
-# Description: Gtkdialog hızlı arayüz yapma aracı 
+# Tanım: Gtkdialog hızlı arayüz yapma aracı 
 # URL: http://linux.pte.hu/~pipas/gtkdialog/ 
-# Packager: milisarge
-# Depends on: gtk2 vte
+# Paketçi: milisarge
+# Gerekler: gtk2 vte
 
 name=gtkdialog
 version=0.8.3

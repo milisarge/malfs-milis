@@ -1,7 +1,7 @@
-# Description: Xfce4 paneli için komut satırı eklentisi.
+# Tanım: Xfce4 paneli için komut satırı eklentisi.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-verve-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel
+# Paketçi: milisarge
+# Gerekler: xfce4-panel
 
 name=xfce4-verve-plugin
 version=1.1.0

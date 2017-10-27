@@ -1,7 +1,7 @@
-# Description: Tamamen XCB'ye dayanan hafif bir çubuktur.
+# Tanım: Tamamen XCB'ye dayanan hafif bir çubuktur.
 # URL: https://github.com/LemonBoy/bar
-# Packager: milisarge
-# Depends on: libxcb git xorg-libxinerama
+# Paketçi: milisarge
+# Gerekler: libxcb git xorg-libxinerama
 
 name=lemonbar
 version=v1.1.r12.gb331ee3

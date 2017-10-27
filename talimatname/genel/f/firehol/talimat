@@ -1,7 +1,7 @@
-# Description: The iptables stateful packet filtering firewall builder.
+# Tanım: The iptables stateful packet filtering firewall builder.
 # URL: http://firehol.sourceforge.net
-# Packager: milisarge
-# Depends on: iptables iproute2 iprange ipset
+# Paketçi: milisarge
+# Gerekler: iptables iproute2 iprange ipset
 
 name=firehol
 version=3.1.3

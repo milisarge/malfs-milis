@@ -1,7 +1,7 @@
-# Description:	Microcode update for Intel CPUs
+# Tanım:	Microcode update for Intel CPUs
 # URL:		http://downloadcenter.intel.com/SearchResult.aspx?lang=eng&keyword=%22microcode%22
-# Packager:	milisarge
-# Depends on: 
+# Paketçi:	milisarge
+# Gerekler: 
 
 name=intel-ucode
 version=2.1.12

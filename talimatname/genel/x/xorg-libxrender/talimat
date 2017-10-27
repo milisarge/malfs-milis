@@ -1,7 +1,7 @@
-# Description: X.Org Xrender kutuphanesi
+# Tanım: X.Org Xrender kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-libx11 xorg-proto 
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xorg-proto 
 
 name=xorg-libxrender
 version=0.9.9

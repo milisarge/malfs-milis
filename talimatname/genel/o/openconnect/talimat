@@ -1,7 +1,7 @@
-# Description: SSL VPN istemcisi.
+# Tanım: SSL VPN istemcisi.
 # URL: http://infradead.org/openconnect
-# Packager: milisarge
-# Depends on: libxml2 openssl pkg-config vpnc zlib
+# Paketçi: milisarge
+# Gerekler: libxml2 openssl pkg-config vpnc zlib
 
 name=openconnect
 version=7.06

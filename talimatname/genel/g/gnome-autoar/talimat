@@ -1,7 +1,7 @@
-# Description: Otomatik arşiv oluşturucu ve çıkarıcı kitaplığı
+# Tanım: Otomatik arşiv oluşturucu ve çıkarıcı kitaplığı
 # URL: https://wiki.gnome.org/TingweiLan/GSoC2013Final
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool vala gtk3 gobject-introspection gnome-common glib
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool vala gtk3 gobject-introspection gnome-common glib
 
 name=gnome-autoar
 version=0.2.2

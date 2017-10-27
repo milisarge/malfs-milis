@@ -1,7 +1,7 @@
-# Description: X Pencere Sistemi icin hafif bir sistem monitoru
+# Tanım: X Pencere Sistemi icin hafif bir sistem monitoru
 # URL: http://conky.sourceforge.net
-# Packager: milisarge
-# Depends on: wireless-tools glib lua cairo imlib2 xorg-libxdamage xorg-libxft libxml2 docbook2x docbook-xml xorg-libxinerama
+# Paketçi: milisarge
+# Gerekler: wireless-tools glib lua cairo imlib2 xorg-libxdamage xorg-libxft libxml2 docbook2x docbook-xml xorg-libxinerama
 
 name=conky
 version=1.10.6

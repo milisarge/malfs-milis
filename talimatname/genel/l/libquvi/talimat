@@ -1,7 +1,7 @@
-# Description: video linklerini ayrıştıran kütüphane
+# Tanım: video linklerini ayrıştıran kütüphane
 # URL:         http://quvi.sourceforge.net/
-# Packager:    milisarge
-# Depends on:  libquvi-scripts lua51
+# Paketçi:    milisarge
+# Gerekler:  libquvi-scripts lua51
 
 name=libquvi
 version=0.4.1

@@ -1,7 +1,7 @@
-# Description: Entangled, Kademlia'ya dayanan, dağıtılmış bir karma tablo (DHT) ve peer-to-peer tuple alanıdır.
+# Tanım: Entangled, Kademlia'ya dayanan, dağıtılmış bir karma tablo (DHT) ve peer-to-peer tuple alanıdır.
 # URL: URL: http://entangled.sourceforge.net/
-# Packager: milisarge
-# Depends on: python python-twisted python-zope_interface python-cairo python-gtk
+# Paketçi: milisarge
+# Gerekler: python python-twisted python-zope_interface python-cairo python-gtk
 
 name=entangled
 version=0.1

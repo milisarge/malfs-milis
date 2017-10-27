@@ -1,7 +1,7 @@
-# Description: MATE için güçlü bir metin editörü
+# Tanım: MATE için güçlü bir metin editörü
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool gobject-introspection iso-codes gtksourceview3 libpeas 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool itstool gobject-introspection iso-codes gtksourceview3 libpeas 
 
 name=pluma
 version=1.18.2

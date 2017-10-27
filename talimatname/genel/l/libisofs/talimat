@@ -1,7 +1,7 @@
-# Description: Libisofs, bir ISO-9660 dosya sistemi oluşturmak için kullanılan bir kütüphanedir
+# Tanım: Libisofs, bir ISO-9660 dosya sistemi oluşturmak için kullanılan bir kütüphanedir
 # URL: http://libburnia.pykix.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libisofs
 version=1.4.2

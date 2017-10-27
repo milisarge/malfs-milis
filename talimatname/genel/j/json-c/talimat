@@ -1,7 +1,7 @@
-# Description: C'de bir JSON uygulaması
+# Tanım: C'de bir JSON uygulaması
 # URL: https://github.com/json-c/json-c/wiki
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=json-c
 version=0.12

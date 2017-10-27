@@ -1,7 +1,7 @@
-# Description: 7zip sıkıştırılmış dosya arşivinin komut satırı sürümü
+# Tanım: 7zip sıkıştırılmış dosya arşivinin komut satırı sürümü
 # URL: http://p7zip.sourceforge.net
-# Packager: milisarge
-# Depends on: nasm yasm 
+# Paketçi: milisarge
+# Gerekler: nasm yasm 
 
 name=p7zip
 version=9.38.1

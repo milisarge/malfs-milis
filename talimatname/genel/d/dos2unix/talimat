@@ -1,7 +1,7 @@
-# Description : Metin dosyası format dönüştürücü
+# Tanım: Metin dosyası format dönüştürücü
 # URL : http://waterlan.home.xs4all.nl/dos2unix.html
-# Packager : milisarge
-# Depends on : perl
+# Paketçi: milisarge
+# Gerekler: perl
 
 name=dos2unix
 version=7.3.2

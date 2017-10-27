@@ -1,7 +1,7 @@
-# Description: Düşük gecikmeli sesli iletişim codec bileşeni
+# Tanım: Düşük gecikmeli sesli iletişim codec bileşeni
 # URL: http://www.celt-codec.org/
-# Packager: milisarge
-# Depends on: libogg
+# Paketçi: milisarge
+# Gerekler: libogg
 
 name=celt
 version=0.11.3

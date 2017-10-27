@@ -1,7 +1,7 @@
-# Description: komut satirinda json parcalayici
+# Tanım: komut satirinda json parcalayici
 # URL: https://stedolan.github.io/jq/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=jq
 version=1.5

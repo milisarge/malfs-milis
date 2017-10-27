@@ -1,7 +1,7 @@
-# Description: X.Org icin Xft kutuphanesi
+# Tanım: X.Org icin Xft kutuphanesi
 # URL: http://xorg.freedesktop.org/
-# Packager: milisarge
-# Depends on: xorg-libxrender freetype xorg-fontconfig 
+# Paketçi: milisarge
+# Gerekler: xorg-libxrender freetype xorg-fontconfig 
 
 name=xorg-libxft
 version=2.3.2

@@ -1,7 +1,7 @@
-# Description: standart ML derleyicisi
+# Tanım: standart ML derleyicisi
 # URL: http://mlton.org/
-# Packager: milisarge
-# Depends on: setconf python
+# Paketçi: milisarge
+# Gerekler: setconf python
 
 name=mlton
 version=20130715

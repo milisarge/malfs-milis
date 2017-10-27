@@ -1,7 +1,7 @@
-# Description: Metin tamamlama yardımcıları ve widget'ları
+# Tanım: Metin tamamlama yardımcıları ve widget'ları
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: qt5 kf5-kconfig kf5-kwidgetsaddons
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 kf5-kconfig kf5-kwidgetsaddons
 
 name=kf5-kcompletion
 version=5.27.0

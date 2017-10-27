@@ -1,7 +1,7 @@
-# Description: Bir EXIF dosyasını ayrıştırmak ve bu etiketlerdeki verileri okumak için bir kitaplık
+# Tanım: Bir EXIF dosyasını ayrıştırmak ve bu etiketlerdeki verileri okumak için bir kitaplık
 # URL: http://libexif.sourceforge.net
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libexif
 version=0.6.21

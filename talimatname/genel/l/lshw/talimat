@@ -1,7 +1,7 @@
-# Description: donanım bilgisi gösteren bir araç
+# Tanım: donanım bilgisi gösteren bir araç
 # URL:         http://ezix.org/project/wiki/HardwareLiSter
-# Packager:    milisarge
-# Depends on:  libglade gtk2
+# Paketçi:    milisarge
+# Gerekler:  libglade gtk2
 
 name=lshw
 version=B.02.18

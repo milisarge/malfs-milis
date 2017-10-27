@@ -1,7 +1,7 @@
-# Description: Statik tip tanımlamalı programlama dilleri
+# Tanım: Statik tip tanımlamalı programlama dilleri
 # URL: http://www.ats-lang.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=ats2-postiats
 _name=ATS2-Postiats

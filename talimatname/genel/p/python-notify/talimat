@@ -1,7 +1,7 @@
-# Description: Libnotify için bağlayıcı python
+# Tanım: Libnotify için bağlayıcı python
 # URL: http://www.galago-project.org/
-# Packager: milisarge
-# Depends on: libnotify python-gtk dbus-glib 
+# Paketçi: milisarge
+# Gerekler: libnotify python-gtk dbus-glib 
 
 name=python-notify
 version=0.1.1

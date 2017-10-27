@@ -1,7 +1,7 @@
-# Description: MATE panelindeki çeşitli uygulamalardan gelen bilgileri görüntülemek için küçük bir applet
+# Tanım: MATE panelindeki çeşitli uygulamalardan gelen bilgileri görüntülemek için küçük bir applet
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: libindicator mate-panel
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: libindicator mate-panel
 
 name=mate-indicator-applet
 version=1.18.0

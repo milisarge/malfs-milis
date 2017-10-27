@@ -1,7 +1,7 @@
-# Description: Sonraki nesil python üst düzey betik dili
+# Tanım: Sonraki nesil python üst düzey betik dili
 # URL: http://www.python.org
-# Packager: milisarge
-# Depends on: sqlite expat 
+# Paketçi: milisarge
+# Gerekler: sqlite expat 
 
 name=python3
 version=3.5.1

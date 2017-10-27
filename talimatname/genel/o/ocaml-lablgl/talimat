@@ -1,7 +1,7 @@
-# Description: O'Caml kütüphane yöneticisi
+# Tanım: O'Caml kütüphane yöneticisi
 # URL: http://projects.camlcity.org/projects/findlib.html
-# Packager: milisarge
-# Depends on: ocaml camlp4 xorg-glu xorg-libxi xorg-libxmu
+# Paketçi: milisarge
+# Gerekler: ocaml camlp4 xorg-glu xorg-libxi xorg-libxmu
 
 name=ocaml-lablgl
 _name=lablgl

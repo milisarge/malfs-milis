@@ -1,7 +1,7 @@
-# Description:	VMWare Araçları
+# Tanım:	VMWare Araçları
 # URL:		    http://open-vm-tools.sf.net/
-# Packager:     milisarge
-# Depends on:	    libdnet glib libmspack
+# Paketçi:     milisarge
+# Gerekler:	    libdnet glib libmspack
 
 name=open-vm-tools
 version=10.1.5

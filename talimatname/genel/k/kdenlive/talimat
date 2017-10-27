@@ -1,7 +1,7 @@
-# Description: Linux için MLT video çerçevesini kullanan doğrusal olmayan bir video düzenleyicisi
+# Tanım: Linux için MLT video çerçevesini kullanan doğrusal olmayan bir video düzenleyicisi
 # URL: http://www.kdenlive.org/
-# Packager: milisarge
-# Depends on: kf5-knewstuff kf5-kplotting kf5-knotifyconfig kf5-kded kf5-kfilemetadata qt5-webkit mlt xorg-glu sdl-image hicolor-icon-theme qt5 kf5-extra-cmake-modules kf5-kdoctools v4l-utils ffmpeg cdrkit libdv recordmydesktop xine-ui dvdauthor plasma-desktop
+# Paketçi: milisarge
+# Gerekler: kf5-knewstuff kf5-kplotting kf5-knotifyconfig kf5-kded kf5-kfilemetadata qt5-webkit mlt xorg-glu sdl-image hicolor-icon-theme qt5 kf5-extra-cmake-modules kf5-kdoctools v4l-utils ffmpeg cdrkit libdv recordmydesktop xine-ui dvdauthor plasma-desktop
 
 name=kdenlive
 version=16.08.1

@@ -1,7 +1,7 @@
-# Description: IceWM, hedefi hız ve hafiflik olan bir pencere yöneticisi
+# Tanım: IceWM, hedefi hız ve hafiflik olan bir pencere yöneticisi
 # URL: http://www.icewm.org/
-# Packager: milisarge
-# Depends on: xorg gdk-pixbuf
+# Paketçi: milisarge
+# Gerekler: xorg gdk-pixbuf
 
 name=icewm
 version=1.3.8

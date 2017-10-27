@@ -1,7 +1,7 @@
-# Description: çoğulortam için OpenGL, OpenGL ES, Vulkan kütüphanesi
+# Tanım: çoğulortam için OpenGL, OpenGL ES, Vulkan kütüphanesi
 # URL:         http://www.glfw.org
-# Packager:    milisarge
-# Depends on:  xorg cmake
+# Paketçi:    milisarge
+# Gerekler:  xorg cmake
 
 name=glfw
 version=3.2.1

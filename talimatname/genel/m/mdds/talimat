@@ -1,7 +1,7 @@
-# Description: Çok boyutlu veri yapıları ve indeksleme algoritmalarının bir koleksiyonu
+# Tanım: Çok boyutlu veri yapıları ve indeksleme algoritmalarının bir koleksiyonu
 # URL: https://gitlab.com/mdds/mdds
-# Packager: Cihan Alkan
-# Depends on: boost
+# Paketçi: Cihan Alkan
+# Gerekler: boost
 
 name=mdds
 version=1.2.3

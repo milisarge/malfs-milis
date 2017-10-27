@@ -1,7 +1,7 @@
-# Description: Lxqt-l10n paketi LXQt masaüstünün tüm bileşenleri için çeviri sağlar
+# Tanım: Lxqt-l10n paketi LXQt masaüstünün tüm bileşenleri için çeviri sağlar
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: liblxqt
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: liblxqt
 
 name=lxqt-l10n
 version=0.11.2

@@ -1,7 +1,7 @@
-# Description: X.org için Bileşik Pencere efektleri yöneticisi
+# Tanım: X.org için Bileşik Pencere efektleri yöneticisi
 # URL: http://xorg.freedesktop.org/
-# Packager: milisarge
-# Depends on: xorg-libxcomposite xorg-libxdamage xorg-libxrender xorg-libxext
+# Paketçi: milisarge
+# Gerekler: xorg-libxcomposite xorg-libxdamage xorg-libxrender xorg-libxext
 
 name=xcompmgr
 version=1.1.7

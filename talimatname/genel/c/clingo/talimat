@@ -1,7 +1,7 @@
-# Description: mantık programları için temel bilgi veren ayrıştırıcı uygulama
+# Tanım: mantık programları için temel bilgi veren ayrıştırıcı uygulama
 # URL: https://potassco.org
-# Packager: milisarge
-# Depends on: re2c cmake ninja python lua clang
+# Paketçi: milisarge
+# Gerekler: re2c cmake ninja python lua clang
 
 name=clingo
 version=5.2.0

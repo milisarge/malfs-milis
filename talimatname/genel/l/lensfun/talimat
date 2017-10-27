@@ -1,7 +1,7 @@
-# Description: Fotoğrafik merceklerin veri tabanı ve veritabanına gelişmiş erişim sağlayan bir kütüphane
+# Tanım: Fotoğrafik merceklerin veri tabanı ve veritabanına gelişmiş erişim sağlayan bir kütüphane
 # URL: http://lensfun.berlios.de
-# Packager: milisarge
-# Depends on: cmake glib libpng doxygen 
+# Paketçi: milisarge
+# Gerekler: cmake glib libpng doxygen 
 
 name=lensfun
 version=0.3.1

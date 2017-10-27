@@ -1,7 +1,7 @@
-# Description : Video dosyaları için FFmpeg tabanlı küçük resim yaratıcısı
+# Tanım: Video dosyaları için FFmpeg tabanlı küçük resim yaratıcısı
 # URL : https://cgit.kde.org/ffmpegthumbs.git/
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules kf5-kdoctools kf5-kio ffmpeg
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules kf5-kdoctools kf5-kio ffmpeg
 
 name=ffmpegthumbs
 version=16.08.2

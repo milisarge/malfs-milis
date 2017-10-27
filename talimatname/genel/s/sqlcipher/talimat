@@ -1,7 +1,7 @@
-# Description: sqlite veritabanları için 256bit şifreleme eklentisi
+# Tanım: sqlite veritabanları için 256bit şifreleme eklentisi
 # URL: https://www.zetetic.net/sqlcipher/
-# Packager: milisarge
-# Depends on: sqlite tcl 
+# Paketçi: milisarge
+# Gerekler: sqlite tcl 
 
 name=sqlcipher
 version=3.4.1

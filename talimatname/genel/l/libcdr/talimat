@@ -1,7 +1,7 @@
-# Description: LibreOffice için CorelDraw dosya biçimi ithalatçı kütüphanesi
+# Tanım: LibreOffice için CorelDraw dosya biçimi ithalatçı kütüphanesi
 # URL: https://wiki.documentfoundation.org/DLP/Libraries/libcdr
-# Packager: Cihan Alkan
-# Depends on: doxygen libwpd boost librevenge icu lcms2
+# Paketçi: Cihan Alkan
+# Gerekler: doxygen libwpd boost librevenge icu lcms2
 
 name=libcdr
 version=0.1.3

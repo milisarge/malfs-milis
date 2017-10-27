@@ -1,7 +1,7 @@
-# Description: Temel JPEG hızlandırmak için SIMD kullanan orijinal IJG libjpeg çatalı
+# Tanım: Temel JPEG hızlandırmak için SIMD kullanan orijinal IJG libjpeg çatalı
 # URL: http://libjpeg-turbo.virtualgl.org/
-# Packager: milisarge
-# Depends on: nasm 
+# Paketçi: milisarge
+# Gerekler: nasm 
 
 name=libjpeg-turbo
 version=1.4.2

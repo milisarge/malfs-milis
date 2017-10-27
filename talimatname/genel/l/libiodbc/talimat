@@ -1,7 +1,7 @@
-# Description: Linux için bağımsız açık veri tabanı bağlantısı
+# Tanım: Linux için bağımsız açık veri tabanı bağlantısı
 # URL: http://www.iodbc.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libiodbc
 version=3.52.10

@@ -1,7 +1,7 @@
-# Description:	QEMU, iyi öykünme hızı elde etmek için dinamik çeviri kullanan bir işlemci öykünücüsüdür (PC, PowerPC, PowerMac, güneş, Mips, ARM vb.)
+# Tanım:	QEMU, iyi öykünme hızı elde etmek için dinamik çeviri kullanan bir işlemci öykünücüsüdür (PC, PowerPC, PowerMac, güneş, Mips, ARM vb.)
 # URL: http://www.qemu.org
-# Packager: milisarge
-# Depends on: gtk2 gtk3 sdl glib python vte vte3 xorg-mesa nss lzo cyrus-sasl alsa-lib alsa-plugins alsa-utils curl check bluez ncurses nfs-utils libgcrypt libcap-ng gnutls libusb bzip2 usbutils bridge-utils
+# Paketçi: milisarge
+# Gerekler: gtk2 gtk3 sdl glib python vte vte3 xorg-mesa nss lzo cyrus-sasl alsa-lib alsa-plugins alsa-utils curl check bluez ncurses nfs-utils libgcrypt libcap-ng gnutls libusb bzip2 usbutils bridge-utils
 
 name=qemu-all
 version=2.6.0

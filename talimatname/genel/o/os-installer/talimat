@@ -1,7 +1,7 @@
-# Description: İşletim sistemini diske yükleme uygulaması
+# Tanım: İşletim sistemini diske yükleme uygulaması
 # URL: https://www.solus-project.com
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: python-setuptools gsettings-desktop-schemas gnome-desktop libtimezonemap gparted python-cairo python-geoip python-gobject python-parted xorg-app
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: python-setuptools gsettings-desktop-schemas gnome-desktop libtimezonemap gparted python-cairo python-geoip python-gobject python-parted xorg-app
 
 name=os-installer
 version=12.5

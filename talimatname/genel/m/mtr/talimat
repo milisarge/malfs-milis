@@ -1,7 +1,7 @@
-# Description: Matt's traceroute - ağ test aracı
+# Tanım: Matt's traceroute - ağ test aracı
 # URL: http://www.bitwizard.nl/mtr/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=mtr
 version=0.87

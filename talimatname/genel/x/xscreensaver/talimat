@@ -1,7 +1,7 @@
-# Description: X Pencere Yoneticisi icin ekran koruyucu
+# Tanım: X Pencere Yoneticisi icin ekran koruyucu
 # URL: http://www.jwz.org/xscreensaver/
-# Packager: milisarge
-# Depends on: bc libglade xorg-libxmu xorg-libxt xorg-libxpm 
+# Paketçi: milisarge
+# Gerekler: bc libglade xorg-libxmu xorg-libxt xorg-libxpm 
 
 name=xscreensaver
 version=5.34

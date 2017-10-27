@@ -1,7 +1,7 @@
-# Description: OpenGL Gölgeleme Dili (GLSL) spesifikasyonuna dayalı 3D yazılım için C ++ matematik kütüphanesi.
+# Tanım: OpenGL Gölgeleme Dili (GLSL) spesifikasyonuna dayalı 3D yazılım için C ++ matematik kütüphanesi.
 # URL: http://glm.g-truc.net
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=glm
 version=0.9.8.4

@@ -1,7 +1,7 @@
-# Description: XCB araç kütüphanesi
+# Tanım: XCB araç kütüphanesi
 # URL: http://xcb.freedesktop.org
-# Packager:    milisarge
-# Depends on: libxcb
+# Paketçi:    milisarge
+# Gerekler: libxcb
 
 name=xorg-xcb-util-keysyms
 version=0.4.0

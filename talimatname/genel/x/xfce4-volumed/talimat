@@ -1,7 +1,7 @@
-# Description: XF86 Ses tuşlarını etkinleştiren ve senkronize sesli uyarıları destekleyen temel hizmet programı
+# Tanım: XF86 Ses tuşlarını etkinleştiren ve senkronize sesli uyarıları destekleyen temel hizmet programı
 # URL: http://xfce.org/
-# Packager: milisarge
-# Depends on: gstreamer-plugins-base keybinder xfce4-conf glib
+# Paketçi: milisarge
+# Gerekler: gstreamer-plugins-base keybinder xfce4-conf glib
 
 name=xfce4-volumed
 version=0.1.13

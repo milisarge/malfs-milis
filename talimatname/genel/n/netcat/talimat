@@ -1,7 +1,7 @@
-# Description: Ağ bağlantıları üzerinden veri okuma ve yazma
+# Tanım: Ağ bağlantıları üzerinden veri okuma ve yazma
 # URL: http://netcat.sourceforge.net
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=netcat
 version=0.7.1

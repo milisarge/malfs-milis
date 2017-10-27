@@ -1,7 +1,7 @@
-# Description: shell script dosyalari icin dialog pencereleri
+# Tanım: shell script dosyalari icin dialog pencereleri
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: itstool gtk3 libnotify yelp-tools
+# Paketçi: milisarge
+# Gerekler: itstool gtk3 libnotify yelp-tools
 
 name=zenity
 version=3.16.3

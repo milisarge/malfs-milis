@@ -1,7 +1,7 @@
-# Description: X.Org icin dmx kutuphanesi
+# Tanım: X.Org icin dmx kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-libx11 xorg-libxext 
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xorg-libxext 
 
 name=xorg-libdmx
 version=1.1.3

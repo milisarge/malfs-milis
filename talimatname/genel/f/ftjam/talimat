@@ -1,7 +1,7 @@
-# Description: FT Jam - Jam yapım aracının gelişmiş bir sürümü
+# Tanım: FT Jam - Jam yapım aracının gelişmiş bir sürümü
 # URL: http://freetype.org/jam/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ftjam
 version=2.5.3rc2

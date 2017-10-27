@@ -1,7 +1,7 @@
-# Description: X.Org Xpm kutuphanesi
+# Tanım: X.Org Xpm kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-libx11 xorg-libxt xorg-libxext 
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-libx11 xorg-libxt xorg-libxext 
 
 name=xorg-libxpm
 version=3.5.11

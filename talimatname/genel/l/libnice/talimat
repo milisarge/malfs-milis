@@ -1,7 +1,7 @@
-# Description: IETF'nin ICE taslağının bir uygulaması (p2p UDP veri akışları için)
+# Tanım: IETF'nin ICE taslağının bir uygulaması (p2p UDP veri akışları için)
 # URL: http://people.suug.ch/~tgr/libnl
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: glib gstreamer1-plugins-base 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: glib gstreamer1-plugins-base 
 
 name=libnice
 version=0.1.13

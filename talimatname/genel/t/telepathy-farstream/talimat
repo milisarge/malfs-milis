@@ -1,7 +1,7 @@
-# Description: Akış motorunu kullanmak için bir telepatik arka plan.
+# Tanım: Akış motorunu kullanmak için bir telepatik arka plan.
 # URL: http://telepathy.freedesktop.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: farstream telepathy-glib 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: farstream telepathy-glib 
 
 name=telepathy-farstream
 version=0.6.0

@@ -1,7 +1,7 @@
-# Description: Bu eklenti, panelde seçtiğiniz ağ arabirimlerinin güncel yükünü görüntüler.
+# Tanım: Bu eklenti, panelde seçtiğiniz ağ arabirimlerinin güncel yükünü görüntüler.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-netload-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel
+# Paketçi: milisarge
+# Gerekler: xfce4-panel
 
 name=xfce4-netload-plugin
 version=1.2.4

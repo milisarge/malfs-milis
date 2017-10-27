@@ -2,7 +2,7 @@
 ########################################################################
 # Begin iptables
 #
-# Description : Start iptables
+# Tanım: Start iptables
 #
 # Authors     : Ken Moffat - ken@linuxfromscratch.org
 #               Bruce Dubbs - bdubbs@linuxfromscratch.org
@@ -19,8 +19,8 @@
 # Should-Stop:
 # Default-Start:     3 4 5
 # Default-Stop:     
-# Short-Description: Loads iptables rules.
-# Description:       Iptables provides firewall for Linux systems.
+# Short-Tanım: Loads iptables rules.
+# Tanım:       Iptables provides firewall for Linux systems.
 # X-LFS-Provided-By: BLFS / LFS 7.0
 ### END INIT INFO
 

@@ -1,7 +1,7 @@
-# Description: Mozilla.org'dan Bağımsız Web Tarayıcısı
+# Tanım: Mozilla.org'dan Bağımsız Web Tarayıcısı
 # URL: http://www.mozilla.com/firefox/
-# Packager: Cihan Alkan
-# Depends on: libvpx libevent rust cargo autoconf2 pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
+# Paketçi: Cihan Alkan
+# Gerekler: libvpx libevent rust cargo autoconf2 pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
 
 name=firefox
 version=55.0.3

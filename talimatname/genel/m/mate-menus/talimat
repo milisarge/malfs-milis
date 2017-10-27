@@ -1,7 +1,7 @@
-# Description: Freedesktop.org'dan Masaüstü Menüsü Teknik Özelliklerini uygulayan bir kütüphane
+# Tanım: Freedesktop.org'dan Masaüstü Menüsü Teknik Özelliklerini uygulayan bir kütüphane
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: glib gobject-introspection intltool python
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: glib gobject-introspection intltool python
 
 name=mate-menus
 version=1.18.0

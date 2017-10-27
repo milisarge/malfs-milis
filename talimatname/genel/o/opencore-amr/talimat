@@ -1,7 +1,7 @@
-# Description: Adaptive Multi Rate (AMR) konuşma codec'inin açık kaynak uygulaması
+# Tanım: Adaptive Multi Rate (AMR) konuşma codec'inin açık kaynak uygulaması
 # URL: http://opencore-amr.sourceforge.net/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on :
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler:
 
 name=opencore-amr
 version=0.1.3

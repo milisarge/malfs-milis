@@ -1,7 +1,7 @@
-# Description: python2 django web framework
+# Tanım: python2 django web framework
 # URL:         https://www.djangoproject.com/
-# Packager:    milisarge
-# Depends on:  python-setuptools python
+# Paketçi:    milisarge
+# Gerekler:  python-setuptools python
 
 name=python-django
 version=1.11.2

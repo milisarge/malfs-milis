@@ -1,7 +1,7 @@
-# Description: Curses, Perl ile sisteminizin curses (3) kütüphanesi arasındaki arabirimdir.
+# Tanım: Curses, Perl ile sisteminizin curses (3) kütüphanesi arasındaki arabirimdir.
 # URL: http://search.cpan.org/~giraffed/Curses-1.34/Curses.pm
-# Packager : milisarge
-# Depends on:   
+# Paketçi: milisarge
+# Gerekler:   
 
 name=perl-curses
 version=1.34

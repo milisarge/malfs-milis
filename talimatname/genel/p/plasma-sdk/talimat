@@ -1,7 +1,7 @@
-# Description : Plazma gelişimi için yararlı uygulamalar
+# Tanım: Plazma gelişimi için yararlı uygulamalar
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk@hotmail.com
-# Depends on: qt5-webkit kf5-karchive kf5-kcompletion kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdeclarative kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-kpackage kf5-kservice kf5-ktexteditor kf5-kwidgetsaddons kf5-plasma-framework kf5-kitemmodels 
+# Paketçi: alihan-ozturk@hotmail.com
+# Gerekler: qt5-webkit kf5-karchive kf5-kcompletion kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdeclarative kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-kpackage kf5-kservice kf5-ktexteditor kf5-kwidgetsaddons kf5-plasma-framework kf5-kitemmodels 
 
 name=plasma-sdk
 version=5.8.1

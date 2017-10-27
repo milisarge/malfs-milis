@@ -1,7 +1,7 @@
-# Description: C ve C++ için garbage collection ve bellek taşması (memory leak) dedektörü.
+# Tanım: C ve C++ için garbage collection ve bellek taşması (memory leak) dedektörü.
 # URL: http://www.hboehm.info/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=boehm-gc
 version=7.4.2

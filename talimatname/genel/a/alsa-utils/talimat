@@ -1,7 +1,7 @@
-# Description: Alsa ses desteğini ayarlamak ve kullanmak için çeşitli araçlar.
+# Tanım: Alsa ses desteğini ayarlamak ve kullanmak için çeşitli araçlar.
 # URL: http://www.alsa-project.org
-# Packager: milisarge
-# Depends on: alsa-lib xmlto libsamplerate gawk
+# Paketçi: milisarge
+# Gerekler: alsa-lib xmlto libsamplerate gawk
 
 name=alsa-utils
 version=1.1.0

@@ -1,7 +1,7 @@
-# Description: Lxqt-admin paketi, LXQt'nin çalıştığı işletim sisteminin ayarlarını yapmak için iki GUI aracı sunar.
+# Tanım: Lxqt-admin paketi, LXQt'nin çalıştığı işletim sisteminin ayarlarını yapmak için iki GUI aracı sunar.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: liblxqt polkit
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: liblxqt polkit
 
 name=lxqt-admin
 version=0.11.1

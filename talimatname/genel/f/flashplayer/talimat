@@ -1,7 +1,7 @@
-# Description: Adobe Flash Player
+# Tanım: Adobe Flash Player
 # URL: http://www.macromedia.com
-# Packager: milisarge
-# Depends on: nss
+# Paketçi: milisarge
+# Gerekler: nss
 
 name=flashplayer
 version=27.0.0.170

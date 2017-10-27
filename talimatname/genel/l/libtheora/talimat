@@ -1,7 +1,7 @@
-# Description: Xiph.org tarafından geliştirilen açık bir video codec bileşeni
+# Tanım: Xiph.org tarafından geliştirilen açık bir video codec bileşeni
 # URL: http://www.xiph.org
-# Packager: milisarge
-# Depends on: libogg libvorbis
+# Paketçi: milisarge
+# Gerekler: libogg libvorbis
 
 name=libtheora
 version=1.1.1

@@ -1,7 +1,7 @@
-# Description: MATE oturum yönetici ve yapılandırma programı
+# Tanım: MATE oturum yönetici ve yapılandırma programı
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: dbus-glib gtk3 xorg-libsm mate-desktop intltool xorg-xtrans gnome-keyring xdg-user-dirs
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: dbus-glib gtk3 xorg-libsm mate-desktop intltool xorg-xtrans gnome-keyring xdg-user-dirs
 
 name=mate-session-manager
 version=1.18.0

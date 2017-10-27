@@ -1,7 +1,7 @@
-# Description : İstemci adına kullanıcı kimlik doğrulamasını yapan bir D-Bus servisi
+# Tanım: İstemci adına kullanıcı kimlik doğrulamasını yapan bir D-Bus servisi
 # URL : https://gitlab.com/accounts-sso/signond/
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : qt5 libproxy doxygen dejavu-ttf freefont-ttf ttf-liberation noto-fonts
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 libproxy doxygen dejavu-ttf freefont-ttf ttf-liberation noto-fonts
 
 name=signond
 version=8.58

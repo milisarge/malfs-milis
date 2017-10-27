@@ -1,7 +1,7 @@
-# Description: brainfuck dili derleyicisi
+# Tanım: brainfuck dili derleyicisi
 # URL: https://github.com/benjamin-james/brainfuck
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=brainfuck
 version=0.1

@@ -1,7 +1,7 @@
-# Description: opendht tabanlı yapıştır uygulaması 64kb maks.
+# Tanım: opendht tabanlı yapıştır uygulaması 64kb maks.
 # URL: https://github.com/sim590/dpaste
-# Packager: milisarge
-# Depends on: gnutls opendht glibmm curlpp nlohmann-json libb64
+# Paketçi: milisarge
+# Gerekler: gnutls opendht glibmm curlpp nlohmann-json libb64
 
 name=dpaste
 version=0.3.3

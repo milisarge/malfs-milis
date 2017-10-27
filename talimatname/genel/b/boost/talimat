@@ -1,7 +1,7 @@
-# Description: Boost paketi C++ için özgür ve taşınabilir kaynak kütüphanelerinden oluşan bir settir.
+# Tanım: Boost paketi C++ için özgür ve taşınabilir kaynak kütüphanelerinden oluşan bir settir.
 # URL: http://boost.sourceforge.net/
-# Packager: milisarge
-# Depends on: icu python python3
+# Paketçi: milisarge
+# Gerekler: icu python python3
 
 name=boost
 version=1.65.1

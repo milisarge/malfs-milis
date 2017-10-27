@@ -1,7 +1,7 @@
-# Description: Geliştirilmiş seccomp kitaplığı
+# Tanım: Geliştirilmiş seccomp kitaplığı
 # URL: http://sourceforge.net/projects/libseccomp/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libseccomp
 version=2.1.1

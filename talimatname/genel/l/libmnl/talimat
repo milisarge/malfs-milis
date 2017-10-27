@@ -1,7 +1,7 @@
-# Description: Netlink geliştiricilerine yönelik minimalist kullanıcı-alanı kütüphanesi
+# Tanım: Netlink geliştiricilerine yönelik minimalist kullanıcı-alanı kütüphanesi
 # URL: http://www.netfilter.org/projects/libmnl/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libmnl
 version=1.0.3

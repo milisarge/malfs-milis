@@ -1,7 +1,7 @@
-# Description: Gtk+ genişletilmiş kütüphanesi
+# Tanım: Gtk+ genişletilmiş kütüphanesi
 # URL: https://github.com/elementary/granite
-# Packager: milisarge
-# Depends on: cmake gobject-introspection vala cairo gdk-pixbuf glib gtk3 libgee pango 
+# Paketçi: milisarge
+# Gerekler: cmake gobject-introspection vala cairo gdk-pixbuf glib gtk3 libgee pango 
 
 name=granite
 version=0.4.1

@@ -1,7 +1,7 @@
-# Description: Bilimsel Kütüphane (GSL), C ve C ++ programcıları için sayısal bir kütüphanedir.
+# Tanım: Bilimsel Kütüphane (GSL), C ve C ++ programcıları için sayısal bir kütüphanedir.
 # URL: http://www.gnu.org/software/gsl/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=gsl
 version=2.1

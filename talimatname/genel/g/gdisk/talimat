@@ -1,7 +1,7 @@
-# Description: GPT fdisk
+# Tanım: GPT fdisk
 # URL: http://rodsbooks.com/gdisk/
-# Packager: milisarge
-# Depends on: popt
+# Paketçi: milisarge
+# Gerekler: popt
 
 name=gdisk
 version=1.0.0

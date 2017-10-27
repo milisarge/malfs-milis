@@ -1,7 +1,7 @@
-# Description: LXQt openssh şifre istemi
+# Tanım: LXQt openssh şifre istemi
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: liblxqt lxqt-build-tools
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: liblxqt lxqt-build-tools
 
 name=lxqt-openssh-askpass
 version=0.11.1

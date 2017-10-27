@@ -1,7 +1,7 @@
-# Description: GTK+3 saat dilimi haritası aracı
+# Tanım: GTK+3 saat dilimi haritası aracı
 # URL: https://launchpad.net/timezonemap
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: gtk3 json-glib vala gobject-introspection libsoup
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: gtk3 json-glib vala gobject-introspection libsoup
 
 name=libtimezonemap
 version=0.4.5

@@ -1,7 +1,7 @@
-# Description: Belirli bir ana makineye ulaşmak için paketlerin aldığı ağ yolunu görüntüleyin.
+# Tanım: Belirli bir ana makineye ulaşmak için paketlerin aldığı ağ yolunu görüntüleyin.
 # URL: http://traceroute.sourceforge.net/ 
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=traceroute
 version=2.0.21

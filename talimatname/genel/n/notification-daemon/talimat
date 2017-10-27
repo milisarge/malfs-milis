@@ -1,7 +1,7 @@
-# Description: Pasif pop-up bildirimlerini görüntülemek için arka plan programı
+# Tanım: Pasif pop-up bildirimlerini görüntülemek için arka plan programı
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: intltool gtk3 libcanberra 
+# Paketçi: milisarge
+# Gerekler: intltool gtk3 libcanberra 
 
 name=notification-daemon
 version=3.20.0

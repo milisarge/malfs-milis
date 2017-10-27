@@ -1,7 +1,7 @@
-# Description: Çeşitli popüler ses biçimlerinin meta verilerini okumak ve düzenlemek için bir kütüphane
+# Tanım: Çeşitli popüler ses biçimlerinin meta verilerini okumak ve düzenlemek için bir kütüphane
 # URL: http://developer.kde.org/~wheeler/taglib.html
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=taglib
 version=1.10

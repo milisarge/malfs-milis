@@ -1,7 +1,7 @@
-# Description: Caja eklentileri
+# Tanım: Caja eklentileri
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: caja gupnp
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: caja gupnp
 
 name=caja-extensions
 version=1.18.1

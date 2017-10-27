@@ -1,7 +1,7 @@
-# Description: Vim düzenleyicisinin GTK sürümü
+# Tanım: Vim düzenleyicisinin GTK sürümü
 # URL: http://www.vim.org/
-# Packager: milisarge
-# Depends on: vim gtk2 xorg-libxt
+# Paketçi: milisarge
+# Gerekler: vim gtk2 xorg-libxt
 
 name=gvim
 version=8.0.0329

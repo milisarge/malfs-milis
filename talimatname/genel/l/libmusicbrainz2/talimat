@@ -1,7 +1,7 @@
-# Description: MusicBrainz Sunucusuna Erişimi Sağlayan Kitaplık
+# Tanım: MusicBrainz Sunucusuna Erişimi Sağlayan Kitaplık
 # URL: http://musicbrainz.org/doc/libmusicbrainz
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=libmusicbrainz2
 version=2.1.5

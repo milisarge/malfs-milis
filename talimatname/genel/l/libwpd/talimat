@@ -1,7 +1,7 @@
-# Description: WordPerfect (tm) belgelerini içe aktarmak için kitaplık
+# Tanım: WordPerfect (tm) belgelerini içe aktarmak için kitaplık
 # URL: http://libwpd.sourceforge.net/
-# Packager: milisarge
-# Depends on: libgsf librevenge
+# Paketçi: milisarge
+# Gerekler: libgsf librevenge
 
 name=libwpd
 version=0.10.0

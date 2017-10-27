@@ -1,7 +1,7 @@
-# Description: Hızlı, hafif bir pencere yöneticisi
+# Tanım: Hızlı, hafif bir pencere yöneticisi
 # URL: http://flwm.sourceforge.net/
-# Packager: milisarge
-# Depends on: fltk1
+# Paketçi: milisarge
+# Gerekler: fltk1
 
 name=flwm
 version=git

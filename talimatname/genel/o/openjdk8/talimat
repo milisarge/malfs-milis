@@ -1,7 +1,7 @@
-# Description: Java Development Kit (JDK) adı verilen bir dizi program.
+# Tanım: Java Development Kit (JDK) adı verilen bir dizi program.
 # URL: http://openjdk.java.net/
-# Packager: milisarge@gmail.com
-# Depends on: openjdk alsa-lib cups xorg-fontconfig freetype giflib gtk2 krb5 lcms2 libjpeg-turbo libpng libxslt nss unzip xorg-libxt xorg-libxtst xorg-libxinerama zip
+# Paketçi: milisarge@gmail.com
+# Gerekler: openjdk alsa-lib cups xorg-fontconfig freetype giflib gtk2 krb5 lcms2 libjpeg-turbo libpng libxslt nss unzip xorg-libxt xorg-libxtst xorg-libxinerama zip
 
 name=openjdk8
 openjdk_release=8

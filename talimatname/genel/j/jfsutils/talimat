@@ -1,7 +1,7 @@
-# Description: Administration and debugging tools for the jfs file system.
+# Tanım: Administration and debugging tools for the jfs file system.
 # URL: http://jfs.sourgeforge.net
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=jfsutils
 version=1.1.15

@@ -1,7 +1,7 @@
-# Description: Klasik mod dahil olmak üzere GNOME kabuğu için uzantılar
+# Tanım: Klasik mod dahil olmak üzere GNOME kabuğu için uzantılar
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: gnome-shell nautilus
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: gnome-shell nautilus
 
 name=gnome-shell-extensions
 version=3.22.2

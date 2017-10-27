@@ -1,7 +1,7 @@
-# Description: Python3 derleme sistemi
+# Tanım: Python3 derleme sistemi
 # URL: https://launchpad.net/python-distutils-extra
-# Packager: milisarge
-# Depends on: python3 python3-setuptools intltool
+# Paketçi: milisarge
+# Gerekler: python3 python3-setuptools intltool
 
 name=python3-distutils-extra
 version=2.40

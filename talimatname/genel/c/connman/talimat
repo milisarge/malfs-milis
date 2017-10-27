@@ -1,7 +1,7 @@
-# Description: Kablosuz LAN ağı programı (git çıkışı)
+# Tanım: Kablosuz LAN ağı programı (git çıkışı)
 # URL:         https://01.org/connman
-# Packager:    milisarge
-# Depends on:  dbus gnutls glib xtables-addons openconnect openvpn wpa-supplicant
+# Paketçi:    milisarge
+# Gerekler:  dbus gnutls glib xtables-addons openconnect openvpn wpa-supplicant
 # Optional:    pptp bluez
 
 name=connman

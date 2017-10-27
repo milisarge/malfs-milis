@@ -1,7 +1,7 @@
-# Description: Arduino prototiplendirme kartı için geliştirici kiti (SDK).
+# Tanım: Arduino prototiplendirme kartı için geliştirici kiti (SDK).
 # URL: https://github.com/arduino/Arduino
-# Packager: milisarge
-# Depends on : gtk2 desktop-file-utils shared-mime-info openjdk avrdude apache-ant unzip
+# Paketçi: milisarge
+# Gerekler: gtk2 desktop-file-utils shared-mime-info openjdk avrdude apache-ant unzip
 
 name=arduino
 version=1.6.11

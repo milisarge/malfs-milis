@@ -1,7 +1,7 @@
-# Description: XFCE4 masasustu için Exo destek kutuphanesi
+# Tanım: XFCE4 masasustu için Exo destek kutuphanesi
 # URL: http://www.os-cillation.de/
-# Packager: milisarge
-# Depends on: perl-uri xfce4-libui xfce4-libutil
+# Paketçi: milisarge
+# Gerekler: perl-uri xfce4-libui xfce4-libutil
 
 name=exo
 version=0.11.5

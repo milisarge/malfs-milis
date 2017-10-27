@@ -1,7 +1,7 @@
-# Description: Göstergeler için kullanılan pencere öğeleri ve diğer nesneler
+# Tanım: Göstergeler için kullanılan pencere öğeleri ve diğer nesneler
 # URL: https://launchpad.net/ido
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 
 
 name=ido
 version=12.10.2

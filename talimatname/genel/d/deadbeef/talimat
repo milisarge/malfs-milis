@@ -1,7 +1,7 @@
-# Description: GNU/Linux icin GTK+ ses oynatici
+# Tanım: GNU/Linux icin GTK+ ses oynatici
 # URL: http://deadbeef.sourceforge.net
-# Packager: milisarge
-# Depends on: gtk3 x264 flac libmad glib librsvg libcaca alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi libdv speex pulseaudio
+# Paketçi: milisarge
+# Gerekler: gtk3 x264 flac libmad glib librsvg libcaca alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi libdv speex pulseaudio
 
 name=deadbeef
 version=0.6.1

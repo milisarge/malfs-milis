@@ -1,7 +1,7 @@
-# Description: Fortune, eğlenceli olması amaçlanan rastgele kısa mesajlar görüntüler.
+# Tanım: Fortune, eğlenceli olması amaçlanan rastgele kısa mesajlar görüntüler.
 # URL: http://www.ibiblio.org/pub/Linux/games/amusements/fortune/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=fortune
 version=0.2

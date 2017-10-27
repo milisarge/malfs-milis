@@ -1,7 +1,7 @@
-# Description: Harici programlar tarafından dijital kameraya erişime izin vermek için tasarlanmış gphoto2 çekirdek kütüphanesi.
+# Tanım: Harici programlar tarafından dijital kameraya erişime izin vermek için tasarlanmış gphoto2 çekirdek kütüphanesi.
 # URL: http://www.gphoto.org/proj/libgphoto2/
-# Packager: milisarge
-# Depends on: libjpeg-turbo libexif libusb-compat 
+# Paketçi: milisarge
+# Gerekler: libjpeg-turbo libexif libusb-compat 
 
 name=libgphoto2
 version=2.5.10

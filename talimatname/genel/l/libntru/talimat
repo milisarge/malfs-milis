@@ -1,7 +1,7 @@
-# Description: NTRUEncrypt C de yazılmışı
+# Tanım: NTRUEncrypt C de yazılmışı
 # URL: https://github.com/tbuktu/libntru
-# Packager: milisarge
-# Depends on:  
+# Paketçi: milisarge
+# Gerekler:  
 
 name=libntru
 version=0.4.1

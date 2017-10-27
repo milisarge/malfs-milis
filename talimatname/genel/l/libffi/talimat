@@ -1,7 +1,7 @@
-# Description: Çeşitli arama kurallarına taşınabilir, yüksek seviyeli bir programlama arabirimi sağlayın.
+# Tanım: Çeşitli arama kurallarına taşınabilir, yüksek seviyeli bir programlama arabirimi sağlayın.
 # URL: http://sourceware.org/libffi/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libffi
 version=3.2.1

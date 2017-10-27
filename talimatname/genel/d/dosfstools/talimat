@@ -1,7 +1,7 @@
-# Description: DOS dosya sistemi yardımcı programları
+# Tanım: DOS dosya sistemi yardımcı programları
 # URL: https://github.com/dosfstools/dosfstools
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=dosfstools
 version=3.0.13

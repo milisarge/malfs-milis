@@ -1,7 +1,7 @@
-# Description: Hızlı ve  küçük pencere yöneticisi.
+# Tanım: Hızlı ve  küçük pencere yöneticisi.
 # URL:         http://blackboxwm.sourceforge.net
-# Packager:    milisarge
-# Depends on:  xorg
+# Paketçi:    milisarge
+# Gerekler:  xorg
 
 name=blackbox
 version=0.70.1

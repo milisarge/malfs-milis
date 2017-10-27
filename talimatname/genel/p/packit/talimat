@@ -1,7 +1,7 @@
-# description: Ağ sızma ve paket takip uygulaması
+# Tanım: Ağ sızma ve paket takip uygulaması
 # url: https://github.com/eribertomota/packit/
-# packager:milisarge
-# Depends on: libnet libpcap
+# Paketçi:milisarge
+# Gerekler: libnet libpcap
 
 name=packit
 version=1.5

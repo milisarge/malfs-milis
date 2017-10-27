@@ -1,7 +1,7 @@
-# Description: MS-Explorer veya Commander, X için dosya yöneticisi gibi.
+# Tanım: MS-Explorer veya Commander, X için dosya yöneticisi gibi.
 # URL: http://roland65.free.fr/xfe
-# Packager: milisarge
-# Depends on: freetype fox libpng libjpeg-turbo libtiff expat intltool
+# Paketçi: milisarge
+# Gerekler: freetype fox libpng libjpeg-turbo libtiff expat intltool
 
 name=xfe
 version=1.42

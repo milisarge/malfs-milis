@@ -1,7 +1,7 @@
-# Description: JSON for Modern C++
+# Tanım: JSON for Modern C++
 # URL: https://nlohmann.github.io/json/
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=nlohmann-json
 version=2.1.1

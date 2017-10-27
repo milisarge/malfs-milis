@@ -1,7 +1,7 @@
-# Description: X.Org icin Xcursor kutuphanesi
+# Tanım: X.Org icin Xcursor kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-libxrender xorg-libxfixes xorg-libx11 
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-libxrender xorg-libxfixes xorg-libx11 
 
 name=xorg-libxcursor
 version=1.1.14

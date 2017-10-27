@@ -1,7 +1,7 @@
-# Description: Cairo tabanlı GTK motoru.
+# Tanım: Cairo tabanlı GTK motoru.
 # URL: http://www.cimitan.com/murrine/
-# Packager: milisarge
-# Depends on: gtk2
+# Paketçi: milisarge
+# Gerekler: gtk2
 
 name=murrine
 version=0.98.2

@@ -1,7 +1,7 @@
-# Description= locate/updatedb birleştirilmiş uygulaması
-# Url= https://fedorahosted.org/mlocate/
-# Packager: milisarge
-# Depends on:
+# Tanım: locate/updatedb birleştirilmiş uygulaması
+# Url: https://fedorahosted.org/mlocate/
+# Paketçi: milisarge
+# Gerekler:
 
 name=mlocate
 version=0.26

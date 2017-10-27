@@ -1,7 +1,7 @@
-# Description: D programlama dili paket-kütüphane yöneticisi
+# Tanım: D programlama dili paket-kütüphane yöneticisi
 # URL: https://github.com/dlang/dub
-# Packager: milisarge
-# Depends on: dmd 
+# Paketçi: milisarge
+# Gerekler: dmd 
 
 name=dub
 version=1.5.0

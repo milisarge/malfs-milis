@@ -1,7 +1,7 @@
-# Description: java-jdbc mysql bağlayıcısı
+# Tanım: java-jdbc mysql bağlayıcısı
 # URL: https://dev.mysql.com/downloads/connector/j/
-# Packager: milisarge
-# Depends on: openjdk mariadb
+# Paketçi: milisarge
+# Gerekler: openjdk mariadb
 
 name=java-mysql
 version=5.1.41

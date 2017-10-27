@@ -1,7 +1,7 @@
-# Description: Uzak posta sunucularından posta alır ve yerel makinelere iletir
+# Tanım: Uzak posta sunucularından posta alır ve yerel makinelere iletir
 # URL: http://www.fetchmail.info
-# Packager: milisarge
-# Depends on: openssl procmail python tk
+# Paketçi: milisarge
+# Gerekler: openssl procmail python tk
 
 name=fetchmail
 version=6.3.26

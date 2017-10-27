@@ -111,7 +111,7 @@ diff -ruN libmad-0.15.1b.orig/mad.pc.in libmad-0.15.1b/mad.pc.in
 +includedir=@includedir@
 +
 +Name: MAD
-+Description: libmad - MPEG audio decoder library
++Tanım: libmad - MPEG audio decoder library
 +Version: @VERSION@
 +Libs: -L${libdir} -lmad
 +Cflags:

@@ -1,7 +1,7 @@
-# Description: TCP paketlerini kullanan bir traceroute uygulaması.
+# Tanım: TCP paketlerini kullanan bir traceroute uygulaması.
 # URL: http://michael.toren.net/code/tcptraceroute/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: libpcap libnet
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: libpcap libnet
 
 name=tcptraceroute
 version=1.5beta7

@@ -1,7 +1,8 @@
-# Description: çeşitli dosya arşivleri yönetmek için bir betik.
+# Tanım: çeşitli dosya arşivleri yönetmek için bir betik.
 # URL: http://www.nongnu.org/atool/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
+# Grup: araçlar
 
 name=atool
 version=0.39.0

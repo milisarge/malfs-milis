@@ -1,7 +1,7 @@
-# Description: Dağıtımın (Linux Standards Base) bilgisi verir.
+# Tanım: Dağıtımın (Linux Standards Base) bilgisi verir.
 # URL: http://www.linuxbase.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=lsb-release
 version=1.4

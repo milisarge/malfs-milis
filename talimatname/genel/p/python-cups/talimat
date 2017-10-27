@@ -1,7 +1,7 @@
-# Description: Python CUPS Bağlantıları
+# Tanım: Python CUPS Bağlantıları
 # URL: http://cyberelk.net/tim/software/pycups/
-# Packager: milisarge
-# Depends on: cups python
+# Paketçi: milisarge
+# Gerekler: cups python
 
 name=python-cups
 version=1.9.73

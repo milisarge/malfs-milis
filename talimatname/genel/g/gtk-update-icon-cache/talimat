@@ -1,7 +1,7 @@
-# Description: GTK + güncelleme simgesi önbellek aracı
+# Tanım: GTK + güncelleme simgesi önbellek aracı
 # URL: http://www.gtk.org/
-# Packager: milisarge
-# Depends on: gdk-pixbuf glib atk pango cairo libffi libpng pcre
+# Paketçi: milisarge
+# Gerekler: gdk-pixbuf glib atk pango cairo libffi libpng pcre
 
 name=gtk-update-icon-cache
 version=2.24.29

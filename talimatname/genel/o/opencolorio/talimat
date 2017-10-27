@@ -1,7 +1,7 @@
-# Description: Görsel efektler ve animasyon için bir renk yönetimi çerçevesi
+# Tanım: Görsel efektler ve animasyon için bir renk yönetimi çerçevesi
 # URL: http://opencolorio.org
-# Packager: yasarciv67@gmail.com
-# Depends on: python cmake
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: python cmake
 
 
 name=opencolorio

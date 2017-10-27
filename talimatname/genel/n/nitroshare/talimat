@@ -1,7 +1,7 @@
-# Description: Ağ üzerinden dosya paylaşma uygulaması
+# Tanım: Ağ üzerinden dosya paylaşma uygulaması
 # URL: https://nitroshare.net
-# Packager: Cihan Alkan
-# Depends on:qt5 libnotify
+# Paketçi: Cihan Alkan
+# Gerekler:qt5 libnotify
 
 name=nitroshare
 version=0.3.3

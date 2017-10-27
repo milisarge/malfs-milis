@@ -1,7 +1,7 @@
-# Description:	uzaktan erişim protokolu
+# Tanım:	uzaktan erişim protokolu
 # URL:		http://www.freerdp.com/
-# Packager: milisarge
-# Depends on: xorg-libx11 xorg-libxrender xorg-libxcursor xorg-libxext ffmpeg pulseaudio cups openh264 
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xorg-libxrender xorg-libxcursor xorg-libxext ffmpeg pulseaudio cups openh264 
 
 name=freerdp
 hesap=FreeRDP

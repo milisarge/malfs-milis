@@ -1,7 +1,7 @@
-# Description: Bir çapraz platform Bütünleşik Geliştirme Ortamı (IDE).
+# Tanım: Bir çapraz platform Bütünleşik Geliştirme Ortamı (IDE).
 # URL: http://www.codeblocks.org/
-# Packager: milisarge
-# Depends on: zip boost desktop-file-utils gamin gtk-update-icon-cache hicolor-icon-theme hunspell shared-mime-info wxgtk28
+# Paketçi: milisarge
+# Gerekler: zip boost desktop-file-utils gamin gtk-update-icon-cache hicolor-icon-theme hunspell shared-mime-info wxgtk28
 
 name=codeblocks
 version=16.01

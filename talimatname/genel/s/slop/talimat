@@ -1,7 +1,7 @@
-# Description: Kullanıcının seçtiği bölgeyi stdout a veren uygulama
+# Tanım: Kullanıcının seçtiği bölgeyi stdout a veren uygulama
 # URL: https://github.com/naelstrof/slop
-# Packager: milisarge
-# Depends on: cmake xorg-libxext glm xorg-mesa
+# Paketçi: milisarge
+# Gerekler: cmake xorg-libxext glm xorg-mesa
 
 name=slop
 version=5.3.37

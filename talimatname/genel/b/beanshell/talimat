@@ -1,7 +1,7 @@
-# Description: Java ile yazılmış nesne tabanlı komut dosyası dili özelliklerine sahip, küçük, ücretsiz, gömülebilir, kaynak seviyesi Java yorumlayıcısı
+# Tanım: Java ile yazılmış nesne tabanlı komut dosyası dili özelliklerine sahip, küçük, ücretsiz, gömülebilir, kaynak seviyesi Java yorumlayıcısı
 # URL: https://github.com/beanshell/beanshell
-# Packager: Cihan Alkan
-# Depends on:
+# Paketçi: Cihan Alkan
+# Gerekler:
 
 name=beanshell
 version=2.0b6

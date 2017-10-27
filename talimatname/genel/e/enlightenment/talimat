@@ -1,7 +1,7 @@
-# Description: enlightenment masaüstü
+# Tanım: enlightenment masaüstü
 # URL:  sistem
-# Packager: milisarge
-# Depends on: bullet efl evas_generic_loaders terminology e21 luajit
+# Paketçi: milisarge
+# Gerekler: bullet efl evas_generic_loaders terminology e21 luajit
 
 name=enlightenment-sistem
 version=1

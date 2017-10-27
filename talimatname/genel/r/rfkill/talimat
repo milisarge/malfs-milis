@@ -1,7 +1,7 @@
-# Description:	Rfkill anahtarlarını sorgulamak ve değiştirmek için kullanıcı alanı aracı
+# Tanım:	Rfkill anahtarlarını sorgulamak ve değiştirmek için kullanıcı alanı aracı
 # URL: http://wireless.kernel.org/en/users/Documentation/rfkill
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=rfkill
 version=0.5

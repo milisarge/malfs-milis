@@ -1,7 +1,7 @@
-# Description: Web sunucu zafiyet tarayıcı aracı
+# Tanım: Web sunucu zafiyet tarayıcı aracı
 # URL: https://cirt.net/Nikto2
-# Packager: yakar (aydin@komutan.org)
-# Depends on: 
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: 
 
 name=nikto
 version=2.1.5

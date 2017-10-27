@@ -1,7 +1,7 @@
-# Description: Dracut için aufs modülünü kullanarak dizinlerin başlama esnasında bağlanmasını sağlar.
+# Tanım: Dracut için aufs modülünü kullanarak dizinlerin başlama esnasında bağlanmasını sağlar.
 # URL: https://abf-doc.rosalinux.ru/din/dracut-aufs.git
-# Packager: milisarge
-# Depends on: dracut
+# Paketçi: milisarge
+# Gerekler: dracut
 
 name=dracut-aufs
 version=1.0

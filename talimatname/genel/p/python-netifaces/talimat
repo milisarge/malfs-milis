@@ -1,7 +1,7 @@
-# Description: Python'daki ağ arabirimi bilgilerine erişmek için taşınabilir modül.
+# Tanım: Python'daki ağ arabirimi bilgilerine erişmek için taşınabilir modül.
 # URL: http://alastairs-place.net/netifaces/
-# Packager: milisarge
-# Depends on: python-setuptools 
+# Paketçi: milisarge
+# Gerekler: python-setuptools 
 
 name=python-netifaces
 version=0.10.4

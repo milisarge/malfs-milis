@@ -1,7 +1,7 @@
-# Description: Xfce panel eklentisi, panelde simge durumuna küçültülmüş pencere başlığını ve düğmelerini koymaya olanak tanır..
+# Tanım: Xfce panel eklentisi, panelde simge durumuna küçültülmüş pencere başlığını ve düğmelerini koymaya olanak tanır..
 # URL: https://github.com/cedl38/xfce4-windowck-plugin
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool xfce4-dev-tools python3 imagemagick xfce4-panel graphite2
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool xfce4-dev-tools python3 imagemagick xfce4-panel graphite2
 
 name=xfce4-windowck-plugin
 version=0.4.4

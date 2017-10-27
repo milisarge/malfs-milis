@@ -1,7 +1,7 @@
-# Description: Yerel kodlamayı belirleyin
+# Tanım: Yerel kodlamayı belirleyin
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-encode-locale
 version=1.03

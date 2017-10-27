@@ -1,7 +1,7 @@
-# Description: Bir Gnutella sunucu / istemci
+# Tanım: Bir Gnutella sunucu / istemci
 # URL: http://gtk-gnutella.sourceforge.net/
-# Packager: milisarge
-# Depends on: desktop-file-utils gtk2
+# Paketçi: milisarge
+# Gerekler: desktop-file-utils gtk2
 
 name=gtk-gnutella
 version=devel

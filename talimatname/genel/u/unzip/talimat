@@ -1,7 +1,7 @@
-# Description: PKZIP tarafından yapılanlar gibi .zip arşivlerini açar.
+# Tanım: PKZIP tarafından yapılanlar gibi .zip arşivlerini açar.
 # URL: http://www.info-zip.org
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=unzip
 version=6.0

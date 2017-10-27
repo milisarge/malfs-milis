@@ -1,7 +1,7 @@
-# Description: Grafiksel grub2 ayar yöneticisi
+# Tanım: Grafiksel grub2 ayar yöneticisi
 # URL:         https://launchpad.net/grub-customizer
-# Packager:    yasarciv
-# Depends on:  cmake gtkmm3 hicolor-icon-theme grub 
+# Paketçi:    yasarciv
+# Gerekler:  cmake gtkmm3 hicolor-icon-theme grub 
 
 name=grub-customizer
 version=5.0.6

@@ -1,7 +1,7 @@
-# Description: IP veya port ayarlamaları için yetkili uygulaması
+# Tanım: IP veya port ayarlamaları için yetkili uygulaması
 # URL: http://ipset.netfilter.org/
-# Packager: milisarge
-# Depends on: iptables libmnl
+# Paketçi: milisarge
+# Gerekler: iptables libmnl
 
 name=ipset
 version=6.32

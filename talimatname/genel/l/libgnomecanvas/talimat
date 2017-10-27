@@ -1,7 +1,7 @@
-# Description: GNOME Canvas kitaplığı
+# Tanım: GNOME Canvas kitaplığı
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool libglade libart_lgpl 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool libglade libart_lgpl 
 
 name=libgnomecanvas
 version=2.30.3

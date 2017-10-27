@@ -1,7 +1,7 @@
-# Description: GNOME belgeleme yardımcı programları.
+# Tanım: GNOME belgeleme yardımcı programları.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: intltool libxslt libxml2 rarian
+# Paketçi: milisarge
+# Gerekler: intltool libxslt libxml2 rarian
 
 name=gnome-doc-utils
 version=0.20.10

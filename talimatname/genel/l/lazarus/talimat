@@ -1,7 +1,7 @@
-# Description: fpc için arayüz
+# Tanım: fpc için arayüz
 # URL: http://www.lazarus-ide.org/
-# Packager: milisarge
-# Depends on: fpc fpc-src gdb gtk2
+# Paketçi: milisarge
+# Gerekler: fpc fpc-src gdb gtk2
 
 name=lazarus
 version=1.6.4

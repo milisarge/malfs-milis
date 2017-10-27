@@ -1,7 +1,7 @@
-# Description: Bir masaüstü oturumu kaydetmek için bir program
+# Tanım: Bir masaüstü oturumu kaydetmek için bir program
 # URL: http://recordmydesktop.sourceforge.net/
-# Packager: milisarge@gmail.com
-# Depends on: libtheora xorg-libxdamage xorg-libxext
+# Paketçi: milisarge@gmail.com
+# Gerekler: libtheora xorg-libxdamage xorg-libxext
 
 name=recordmydesktop
 version=0.3.8.1

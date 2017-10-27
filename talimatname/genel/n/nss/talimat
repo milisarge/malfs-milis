@@ -1,7 +1,7 @@
-# Description: Güvenlik özellikli istemci ve sunucu uygulamalarının çapraz platform geliştirmesi desteği
+# Tanım: Güvenlik özellikli istemci ve sunucu uygulamalarının çapraz platform geliştirmesi desteği
 # URL: http://www.mozilla.org
-# Packager: milisarge
-# Depends on: nspr sqlite 
+# Paketçi: milisarge
+# Gerekler: nspr sqlite 
 
 name=nss
 version=3.31

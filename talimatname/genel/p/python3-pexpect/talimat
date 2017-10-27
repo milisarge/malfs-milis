@@ -1,7 +1,7 @@
-# Description: Diğer programların otomasyon ve kontrolu için kullanılan python3 kütüphanesi.
+# Tanım: Diğer programların otomasyon ve kontrolu için kullanılan python3 kütüphanesi.
 # URL: http://pexpect.readthedocs.org/en/stable/
-# Packager: milisarge
-# Depends on: python3
+# Paketçi: milisarge
+# Gerekler: python3
 
 name=python3-pexpect
 version=4.2.1

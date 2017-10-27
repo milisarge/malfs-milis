@@ -1,7 +1,7 @@
-# Description: Logrotate yardımcı programı, günlük yönetimini basitleştirmek için tasarlanmıştır
+# Tanım: Logrotate yardımcı programı, günlük yönetimini basitleştirmek için tasarlanmıştır
 # URL: https://fedorahosted.org/logrotate/
-# Packager: milisarge
-# Depends on: popt
+# Paketçi: milisarge
+# Gerekler: popt
 
 name=logrotate
 version=3.8.8

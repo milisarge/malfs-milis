@@ -1,7 +1,7 @@
-# Description: Panel için monitör sistemi
+# Tanım: Panel için monitör sistemi
 # URL: http://goodies.xfce.org/projects/panel-plugins/start
-# Packager: milisarge
-# Depends on: xfce4-panel
+# Paketçi: milisarge
+# Gerekler: xfce4-panel
 
 name=xfce4-systemload-plugin
 version=1.1.2

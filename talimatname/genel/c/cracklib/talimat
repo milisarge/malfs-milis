@@ -1,7 +1,7 @@
-# Description: Kullanıcı tarafından seçilen parolaları kelimeler listeleri ile karşılaştırarak parolaları zorlamak için Kütüphane
+# Tanım: Kullanıcı tarafından seçilen parolaları kelimeler listeleri ile karşılaştırarak parolaları zorlamak için Kütüphane
 # URL: http://sourceforge.net/projects/cracklib/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=cracklib
 version=2.9.6

@@ -1,7 +1,7 @@
-# Description: MATE klavye kitaplığı
+# Tanım: MATE klavye kitaplığı
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool gtk3 xorg-libxklavier
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool gtk3 xorg-libxklavier
 
 name=libmatekbd
 version=1.18.2

@@ -1,7 +1,7 @@
-# Description : KDE PIM için ortak kütüphaneler
+# Tanım: KDE PIM için ortak kütüphaneler
 # URL : https://community.kde.org/KDE_PIM
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : qt5 akonadi kcontacts kf5-extra-cmake-modules kf5-kdoctools boost libkdepim kpimtextedit kf5-knewstuff kimap
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 akonadi kcontacts kf5-extra-cmake-modules kf5-kdoctools boost libkdepim kpimtextedit kf5-knewstuff kimap
 
 name=pimcommon
 version=16.08.2

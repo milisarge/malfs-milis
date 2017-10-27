@@ -1,7 +1,7 @@
-# Description: JavaScript yorumlayıcı ve kitaplığı
+# Tanım: JavaScript yorumlayıcı ve kitaplığı
 # URL: https://developer.mozilla.org/En/SpiderMonkey/1.8.5
-# Packager: milisarge
-# Depends on: libffi nspr zip python
+# Paketçi: milisarge
+# Gerekler: libffi nspr zip python
 
 name=js2
 version=24.2.0

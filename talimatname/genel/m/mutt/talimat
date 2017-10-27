@@ -1,7 +1,7 @@
-# Description: Mutt paketi bir posta kullanıcı aracısı içerir. Bu, e-postanızı okumak, yazmak, cevaplamak, kaydetmek ve silmek için yararlıdır.
+# Tanım: Mutt paketi bir posta kullanıcı aracısı içerir. Bu, e-postanızı okumak, yazmak, cevaplamak, kaydetmek ve silmek için yararlıdır.
 # URL: http://www.mutt.org/
-# Packager: milisarge
-# Depends on: aspell aspell-fr cyrus-sasl gdb gnupg gpgme libidn kerberos sendmail slang openssl gnutls db libxslt lynx 
+# Paketçi: milisarge
+# Gerekler: aspell aspell-fr cyrus-sasl gdb gnupg gpgme libidn kerberos sendmail slang openssl gnutls db libxslt lynx 
 
 name=mutt
 version=1.5.24	

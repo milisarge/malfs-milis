@@ -1,7 +1,7 @@
-# Description: Bir ses meta veri etiketi okuyucu ve yazıcı
+# Tanım: Bir ses meta veri etiketi okuyucu ve yazıcı
 # URL: https://bitbucket.org/lazka/mutagen
-# Packager: milisarge
-# Depends on: python 
+# Paketçi: milisarge
+# Gerekler: python 
 
 name=mutagen
 version=1.38

@@ -1,7 +1,7 @@
-# Description: MATE için bir dosya arşivleyici
+# Tanım: MATE için bir dosya arşivleyici
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: caja intltool itstool gtk3 gzip libarchive tar unzip zip p7zip unrar
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: caja intltool itstool gtk3 gzip libarchive tar unzip zip p7zip unrar
 
 name=engrampa
 version=1.18.2

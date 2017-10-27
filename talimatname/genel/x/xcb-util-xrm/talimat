@@ -1,7 +1,7 @@
-# Description: X kaynak yönetimi için xcb yardımcı araç kütüphanesi
+# Tanım: X kaynak yönetimi için xcb yardımcı araç kütüphanesi
 # URL: https://github.com/Airblader/xcb-util-xrm
-# Packager: milisarge
-# Depends on: xorg-util-macros xorg-libx11 xcb-util
+# Paketçi: milisarge
+# Gerekler: xorg-util-macros xorg-libx11 xcb-util
 
 name=xcb-util-xrm
 _name=util-xrm

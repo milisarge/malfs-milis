@@ -1,7 +1,7 @@
-# Description: JSON verisini encode, decode etmek ve düzenlemek için C kütüphanesi
+# Tanım: JSON verisini encode, decode etmek ve düzenlemek için C kütüphanesi
 # URL: http://www.digip.org/jansson/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=jansson
 version=2.7

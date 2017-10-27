@@ -1,7 +1,7 @@
-# Description: .opus dosyalarını açma, arama ve çözme için kitaplık
+# Tanım: .opus dosyalarını açma, arama ve çözme için kitaplık
 # URL: http://www.opus-codec.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: libogg opus
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: libogg opus
 
 name=opusfile
 version=0.7

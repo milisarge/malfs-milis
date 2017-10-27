@@ -1,8 +1,8 @@
-# Description:  sysvinit yonetimi
+# Tanım:  sysvinit yonetimi
 # URL:          http://sysv-rc-conf.sourceforge.net/
 # Maintainer:   milisarge
-# Packager :	milisarge
-# Depends on:   perl-curses perl-curses-ui perl-term-readkey
+# Paketçi:	milisarge
+# Gerekler:   perl-curses perl-curses-ui perl-term-readkey
 
 name=sysv-rc-conf
 version=0.98

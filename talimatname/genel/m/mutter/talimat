@@ -1,7 +1,7 @@
-# Description: GNOME için bir pencere yöneticisi
+# Tanım: GNOME için bir pencere yöneticisi
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: libinput clutter gnome-desktop libxkbcommon upower zenity gobject-introspection libcanberra startup-notification gtk-doc
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: libinput clutter gnome-desktop libxkbcommon upower zenity gobject-introspection libcanberra startup-notification gtk-doc
 
 name=mutter
 version=3.22.2

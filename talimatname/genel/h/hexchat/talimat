@@ -1,7 +1,7 @@
-# Description: HexChat bir IRC sohbet programıdır. Aynı anda birden fazla IRC kanalına (sohbet odaları) katılmanızı, herkese açık olarak konuşmanızı, özel birebir konuşmalar yapmanızı, vb. olanak sağlar. Dosya aktarımları da mümkündür.
+# Tanım: HexChat bir IRC sohbet programıdır. Aynı anda birden fazla IRC kanalına (sohbet odaları) katılmanızı, herkese açık olarak konuşmanızı, özel birebir konuşmalar yapmanızı, vb. olanak sağlar. Dosya aktarımları da mümkündür.
 # URL: https://dl.hexchat.net/hexchat	
-# Packager: milisarge
-# Depends on: lua52 glib gtk2 dbus libnotify libcanberra openssl pciutils desktop-file-utils pango
+# Paketçi: milisarge
+# Gerekler: lua52 glib gtk2 dbus libnotify libcanberra openssl pciutils desktop-file-utils pango
 
 name=hexchat
 version=2.12.3	

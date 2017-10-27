@@ -1,7 +1,7 @@
-# Description: A simple & beautiful desktop client for WhatsApp Web.
+# Tanım: A simple & beautiful desktop client for WhatsApp Web.
 # URL: https://github.com/gsantner/whatsie
-# Packager: kadanur
-# Depends on: desktop-file-utils gconf gtk2 gvfs hicolor-icon-theme libgcrypt libgudev libnotify xorg-libxtst nss python xdg-utils 
+# Paketçi: kadanur
+# Gerekler: desktop-file-utils gconf gtk2 gvfs hicolor-icon-theme libgcrypt libgudev libnotify xorg-libxtst nss python xdg-utils 
 
 name=whatsie
 version=2.1.0

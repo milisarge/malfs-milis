@@ -1,7 +1,7 @@
-# Description: Microsoft ITSS/CHM formatinda dosyalar icin kutuphane
+# Tanım: Microsoft ITSS/CHM formatinda dosyalar icin kutuphane
 # URL: http://morte.jedrea.com/~jedwin/projects/chmlib/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on:
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler:
 
 name=chmlib
 version=0.40

@@ -1,7 +1,7 @@
-# Description: Ekran sıyırma gibi hızlı dönüş projeleri için tasarlanmış bir Python HTML / XML ayrıştırıcı
+# Tanım: Ekran sıyırma gibi hızlı dönüş projeleri için tasarlanmış bir Python HTML / XML ayrıştırıcı
 # URL: http://www.crummy.com/software/BeautifulSoup/index.html
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-beautifulsoup3
 version=3.2.1

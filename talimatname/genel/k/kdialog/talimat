@@ -1,7 +1,7 @@
-# Description: Kabuk komut dosyalarından diyalog kutuları görüntülemek için bir yardımcı program
+# Tanım: Kabuk komut dosyalarından diyalog kutuları görüntülemek için bir yardımcı program
 # URL: https://www.kde.org/
-# Packager: Cihan Alkan
-# Depends on: python kf5-kdelibs4support
+# Paketçi: Cihan Alkan
+# Gerekler: python kf5-kdelibs4support
 
 name=kdialog
 version=17.04.2

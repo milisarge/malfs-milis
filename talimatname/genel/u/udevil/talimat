@@ -1,7 +1,7 @@
-# Description: Çıkarılabilir aygıtları,ISO dosyalarını,nfs://, smb://, ftp://, ssh:// ve WebDAV URL'lerini ve tmpfs/ramfs dosya sistemlerini bağlayın ve çıkarın.
+# Tanım: Çıkarılabilir aygıtları,ISO dosyalarını,nfs://, smb://, ftp://, ssh:// ve WebDAV URL'lerini ve tmpfs/ramfs dosya sistemlerini bağlayın ve çıkarın.
 # URL: http://ignorantguru.github.com/udevil
-# Packager: milisarge
-# Depends on: glib intltool
+# Paketçi: milisarge
+# Gerekler: glib intltool
 
 name=udevil
 version=0.4.4

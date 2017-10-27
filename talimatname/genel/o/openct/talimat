@@ -1,7 +1,7 @@
-# Description: Implements drivers for several smart card readers
+# Tanım: Implements drivers for several smart card readers
 # URL: https://github.com/OpenSC/openct/
-# Packager: milisarge
-# Depends on: doxygen pcsc-lite libusb-compat 
+# Paketçi: milisarge
+# Gerekler: doxygen pcsc-lite libusb-compat 
 
 name=openct
 version=0.6.20

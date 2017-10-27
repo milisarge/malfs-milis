@@ -1,7 +1,7 @@
-# Description: FLTK temelli hizli, kucuk grafiksel arayuzlu bir web tarayici
+# Tanım: FLTK temelli hizli, kucuk grafiksel arayuzlu bir web tarayici
 # URL: http://www.dillo.org/
-# Packagers: milisarge
-# Depends on: fltk1
+# Paketçi: milisarge
+# Gerekler: fltk1
 
 name=dillo
 version=3.0.5

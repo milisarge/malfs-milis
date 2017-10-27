@@ -1,7 +1,7 @@
-# Description: Xine-dvdnav eklentisi için kütüphane
+# Tanım: Xine-dvdnav eklentisi için kütüphane
 # URL: http://mplayerhq.hu
-# Packager: milisarge
-# Depends on: libdvdread 
+# Paketçi: milisarge
+# Gerekler: libdvdread 
 
 name=libdvdnav
 version=5.0.3

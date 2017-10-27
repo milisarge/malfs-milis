@@ -1,7 +1,7 @@
-# Description: Çok noktaya yayın / tek noktaya yayın DNS-SD çerçevesi
+# Tanım: Çok noktaya yayın / tek noktaya yayın DNS-SD çerçevesi
 # URL: http://www.avahi.org/
-# Packager: milisarge
-# Depends on: intltool glib dbus-python gobject-introspection libdaemon nss-mdns
+# Paketçi: milisarge
+# Gerekler: intltool glib dbus-python gobject-introspection libdaemon nss-mdns
 
 name=avahi
 version=0.6.32

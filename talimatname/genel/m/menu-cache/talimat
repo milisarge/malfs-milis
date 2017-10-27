@@ -1,7 +1,7 @@
-# Description: Freedesktop.org uyumlu menüler için önbellekleme mekanizması
+# Tanım: Freedesktop.org uyumlu menüler için önbellekleme mekanizması
 # URL: http://lxde.org/
-# Packager: milisarge
-# Depends on: libfm-extra
+# Paketçi: milisarge
+# Gerekler: libfm-extra
 
 
 name=menu-cache

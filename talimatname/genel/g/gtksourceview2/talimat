@@ -1,7 +1,7 @@
-# Description: GTK+ 2 metin işlevlerini sözdizimini vurgulamaya genişletmek için kullanılan kitaplıklar.
+# Tanım: GTK+ 2 metin işlevlerini sözdizimini vurgulamaya genişletmek için kullanılan kitaplıklar.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: gtk2 libxml2
+# Paketçi: milisarge
+# Gerekler: gtk2 libxml2
 
 name=gtksourceview2
 version=2.10.5

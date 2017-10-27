@@ -1,7 +1,7 @@
-# Description: X11 panosuna komut satırı arayüzü
+# Tanım: X11 panosuna komut satırı arayüzü
 # URL: https://github.com/astrand/xclip
-# Packager: milisarge
-# Depends on: xorg-libxmu
+# Paketçi: milisarge
+# Gerekler: xorg-libxmu
 
 name=xclip
 version=0.12

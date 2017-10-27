@@ -1,7 +1,7 @@
-# Description: Soulseek istemci, pythonda yazılmış
+# Tanım: Soulseek istemci, pythonda yazılmış
 # URL: https://github.com/Nicotine-Plus/nicotine-plus
-# Packager: milisarge
-# Depends on: mutagen python-gtk 
+# Paketçi: milisarge
+# Gerekler: mutagen python-gtk 
 
 name=nicotine-plus
 version=1.4.1

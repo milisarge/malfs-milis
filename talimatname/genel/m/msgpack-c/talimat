@@ -1,7 +1,7 @@
-# Description: Verimli bir nesne serileştirme kitaplığı, C / C ++ sürümü.
+# Tanım: Verimli bir nesne serileştirme kitaplığı, C / C ++ sürümü.
 # URL: https://github.com/msgpack/msgpack-c
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=msgpack-c
 version=2.1.5

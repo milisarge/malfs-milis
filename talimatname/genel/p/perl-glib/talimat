@@ -1,7 +1,7 @@
-# Description: Glib için perl bağlayıcısı
+# Tanım: Glib için perl bağlayıcısı
 # URL: http://www.gtkperl.org
-# Packager: milisarge
-# Depends on: perl-extutils-depends gobject-introspection perl-extutils-pkgconfig 
+# Paketçi: milisarge
+# Gerekler: perl-extutils-depends gobject-introspection perl-extutils-pkgconfig 
 
 name=perl-glib
 version=1.304

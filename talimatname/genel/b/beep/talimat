@@ -1,7 +1,7 @@
-# Description:  Beep ses çalmak için konsol uygulaması
+# Tanım:  Beep ses çalmak için konsol uygulaması
 # URL:  http://www.johnath.com/beep/
-# Packager: milisarge
-# Depends on:   
+# Paketçi: milisarge
+# Gerekler:   
 
 name=beep
 version=1.3

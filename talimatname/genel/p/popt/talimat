@@ -1,7 +1,7 @@
-# Description: Bazı programlar tarafından komut satırı seçeneklerini ayrıştırmak için kullanılan popt kitaplıkları.
+# Tanım: Bazı programlar tarafından komut satırı seçeneklerini ayrıştırmak için kullanılan popt kitaplıkları.
 # URL: http://freshmeat.net/projects/popt/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=popt
 version=1.16

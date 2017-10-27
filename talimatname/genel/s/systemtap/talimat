@@ -1,7 +1,7 @@
-# Description: Çalışan Linux sistemi hakkında bilgi toplamanın basitleştirilmesi için altyapı.
+# Tanım: Çalışan Linux sistemi hakkında bilgi toplamanın basitleştirilmesi için altyapı.
 # URL: http://sourceware.org/systemtap/
-# Packager: milisarge
-# Depends on: elfutils 
+# Paketçi: milisarge
+# Gerekler: elfutils 
 
 name=systemtap
 version=2.9

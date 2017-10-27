@@ -1,7 +1,7 @@
-# Description: Komut satırı arayüzü ile ağ algılayıcısı
+# Tanım: Komut satırı arayüzü ile ağ algılayıcısı
 # URL: http://www.tcpdump.org
-# Packager: milisarge
-# Depends on: libpcap
+# Paketçi: milisarge
+# Gerekler: libpcap
 
 name=tcpdump
 version=4.9.0

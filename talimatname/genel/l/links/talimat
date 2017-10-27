@@ -1,7 +1,7 @@
-# Description: Metin ve grafik modu WWW tarayıcı. Tablolar ve çerçeveler oluşturma desteği içerir
+# Tanım: Metin ve grafik modu WWW tarayıcı. Tablolar ve çerçeveler oluşturma desteği içerir
 # URL: http://links.twibright.com/
-# Packager: milisarge
-# Depends on: gpm libpng libtiff libjpeg-turbo
+# Paketçi: milisarge
+# Gerekler: gpm libpng libtiff libjpeg-turbo
 
 name=links
 version=2.12

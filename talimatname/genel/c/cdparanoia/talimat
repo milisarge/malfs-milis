@@ -1,7 +1,7 @@
-# Description: Kompakt Disk dijital ses çıkarma aracı
+# Tanım: Kompakt Disk dijital ses çıkarma aracı
 # URL: http://xiph.org/paranoia/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=cdparanoia
 version=10.2

@@ -1,7 +1,7 @@
-# Description: c++ kullanan hafif 2D ve 3D oyun makinesi 
+# Tanım: c++ kullanan hafif 2D ve 3D oyun makinesi 
 # URL: http://www.rhythmbox.org
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake xorg-libx11 xorg-glu xorg-libxrandr
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake xorg-libx11 xorg-glu xorg-libxrandr
 
 name=urho3d
 version=1.6

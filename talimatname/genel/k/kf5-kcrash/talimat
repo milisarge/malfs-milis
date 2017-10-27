@@ -1,7 +1,7 @@
-# Description: Uygulamalardan gelen uygulama çöküş analizi ve hata raporu için destek
+# Tanım: Uygulamalardan gelen uygulama çöküş analizi ve hata raporu için destek
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kcoreaddons kf5-kwindowsystem
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kcoreaddons kf5-kwindowsystem
 
 name=kf5-kcrash
 version=5.27.0

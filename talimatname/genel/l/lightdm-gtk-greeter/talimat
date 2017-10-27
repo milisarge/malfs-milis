@@ -1,7 +1,7 @@
-# Description: Lightdm için GTK karşılayıcı
+# Tanım: Lightdm için GTK karşılayıcı
 # URL: https://launchpad.net/lightdm-gtk-greeter
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 lightdm exo gobject-introspection intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 lightdm exo gobject-introspection intltool
 
 name=lightdm-gtk-greeter
 version=2.0.2

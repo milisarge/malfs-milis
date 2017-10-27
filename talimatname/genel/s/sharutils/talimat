@@ -1,7 +1,7 @@
-# Description: 'Kabuk' arşivleri oluşturabilen araçlar içerir.
+# Tanım: 'Kabuk' arşivleri oluşturabilen araçlar içerir.
 # URL: https://www.gnu.org/software/sharutils/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=sharutils
 version=4.15.2

@@ -1,7 +1,7 @@
-# Description: Çevrimiçi hesap veritabanına erişmek için t5 tabanlı istemci kitaplığı
+# Tanım: Çevrimiçi hesap veritabanına erişmek için t5 tabanlı istemci kitaplığı
 # URL: https://gitlab.com/accounts-sso/libaccounts-qt
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: qt5 libaccounts-glib
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 libaccounts-glib
 
 name=libaccounts-qt5
 version=1.14

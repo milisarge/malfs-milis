@@ -1,7 +1,7 @@
-# Description:	Asterisk temel sesleri.
+# Tanım:	Asterisk temel sesleri.
 # URL:		    http://www.asterisk.org
-# Packager:     milisarge
-# Depends on:   asterisk
+# Paketçi:     milisarge
+# Gerekler:   asterisk
 
 name=asterisk-core-sounds-fr-alaw
 version=1.4.27

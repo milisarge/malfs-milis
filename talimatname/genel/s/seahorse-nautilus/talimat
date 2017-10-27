@@ -1,7 +1,7 @@
-# Description: Nautilus için PGP şifreleme ve imzalama.
+# Tanım: Nautilus için PGP şifreleme ve imzalama.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 libcryptui dbus-glib gnome-keyring gconf gnupg gpgme nautilus libnotify seahorse
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 libcryptui dbus-glib gnome-keyring gconf gnupg gpgme nautilus libnotify seahorse
 
 name=seahorse-nautilus
 version=3.11.92

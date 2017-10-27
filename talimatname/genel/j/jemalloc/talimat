@@ -1,7 +1,7 @@
-# Description: Genel amaçlı ölçeklenebilir eşzamanlı malloc uygulaması.
+# Tanım: Genel amaçlı ölçeklenebilir eşzamanlı malloc uygulaması.
 # URL: http://www.canonware.com/jemalloc/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
  
 name=jemalloc
 version=4.2.1

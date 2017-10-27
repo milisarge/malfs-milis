@@ -1,7 +1,7 @@
-# Description: Masaüstü için paylaşılan GSettings şemaları
+# Tanım: Masaüstü için paylaşılan GSettings şemaları
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: intltool glib gobject-introspection
+# Paketçi: milisarge
+# Gerekler: intltool glib gobject-introspection
 
 name=gsettings-desktop-schemas
 version=3.24.0

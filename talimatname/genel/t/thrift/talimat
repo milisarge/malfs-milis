@@ -1,7 +1,7 @@
-# Description: Ölçeklenebilir çoğul programlama dilleri için IPC/RPC çatısı
+# Tanım: Ölçeklenebilir çoğul programlama dilleri için IPC/RPC çatısı
 # URL: http://thrift.apache.org/
-# Packager: milisarge
-# Depends on: qt5 boost libevent
+# Paketçi: milisarge
+# Gerekler: qt5 boost libevent
 
 name=thrift
 version=0.10.0

@@ -1,5 +1,5 @@
 [Unit]
-Description=Spamassassin daemon
+Tanım:Spamassassin daemon
 After=syslog.target network.target
 
 [Service]

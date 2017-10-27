@@ -1,7 +1,7 @@
-# Description: Linux ethernet köprüleme konfigürasyonları için çeşitli araçlar.
+# Tanım: Linux ethernet köprüleme konfigürasyonları için çeşitli araçlar.
 # URL: http://sourceforge.net/projects/bridge/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=bridge-utils
 version=1.5

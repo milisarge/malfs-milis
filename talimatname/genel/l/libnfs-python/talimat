@@ -1,7 +1,7 @@
-# Description: Python libnfs bağlamları
+# Tanım: Python libnfs bağlamları
 # URL: https://github.com/sahlberg/libnfs-python
-# Packager: milisarge
-# Depends on: python3 python3-setuptools python python-setuptools libnfs swig
+# Paketçi: milisarge
+# Gerekler: python3 python3-setuptools python python-setuptools libnfs swig
 
 name=libnfs-python
 version=git

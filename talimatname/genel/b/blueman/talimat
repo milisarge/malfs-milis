@@ -1,7 +1,7 @@
-# Description: A GTK+ Bluetooth Yöneticisi
+# Tanım: A GTK+ Bluetooth Yöneticisi
 # URL: https://github.com/blueman-project/blueman
-# Packager: milisarge
-# Depends on: cython intltool bluez dbus-glib gconf gtk3 notification-daemon libnotify polkit python-cairo dbus-python python-gobject startup-notification 
+# Paketçi: milisarge
+# Gerekler: cython intltool bluez dbus-glib gconf gtk3 notification-daemon libnotify polkit python-cairo dbus-python python-gobject startup-notification 
 
 name=blueman
 version=2.0.5

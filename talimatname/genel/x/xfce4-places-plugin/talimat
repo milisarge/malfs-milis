@@ -1,7 +1,7 @@
-# Description: Xfce paneli için Yerler Menüsü eklentisi
+# Tanım: Xfce paneli için Yerler Menüsü eklentisi
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-places-plugin
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool libnotify xfce4-panel 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool libnotify xfce4-panel 
 
 name=xfce4-places-plugin
 version=1.7.0

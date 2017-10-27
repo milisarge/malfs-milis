@@ -1,7 +1,7 @@
-# Description: java web uygulamaları için tarayıcı eklentisi
+# Tanım: java web uygulamaları için tarayıcı eklentisi
 # URL: http://icedtea.classpath.org/wiki/IcedTea-Web
-# Packager: milisarge
-# Depends on: firefox npapi-sdk junit openjdk rhino xorg-libxtst zip
+# Paketçi: milisarge
+# Gerekler: firefox npapi-sdk junit openjdk rhino xorg-libxtst zip
 
 name=icedtea-web
 version=1.6.2

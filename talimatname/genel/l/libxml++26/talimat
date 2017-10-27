@@ -1,7 +1,7 @@
-# Description: XML dosyalarını ayrıştırmak için kullanılan kitaplıklar ve yardımcı programlar.
+# Tanım: XML dosyalarını ayrıştırmak için kullanılan kitaplıklar ve yardımcı programlar.
 # URL: http://libxmlplusplus.sourceforge.net/
-# Packager: milisarge
-# Depends on: libxml2 glibmm
+# Paketçi: milisarge
+# Gerekler: libxml2 glibmm
  
 name=libxml++26
 version=2.40.1

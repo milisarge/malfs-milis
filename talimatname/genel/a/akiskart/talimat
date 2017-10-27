@@ -1,7 +1,7 @@
-# Description: AKIS kart sürücü ve dosyaları
+# Tanım: AKIS kart sürücü ve dosyaları
 # URL: http://www.akiskart.com.tr
-# Packager: milisarge
-# Depends on: pcsc-lite ccid openjdk 
+# Paketçi: milisarge
+# Gerekler: pcsc-lite ccid openjdk 
 
 name=akiskart
 version=1.6

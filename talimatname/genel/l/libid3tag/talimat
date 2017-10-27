@@ -1,7 +1,7 @@
-# Description: Id3 etiketleme için kütüphane
+# Tanım: Id3 etiketleme için kütüphane
 # URL: http://www.mars.org/home/rob/proj/mpeg/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libid3tag
 version=0.15.1b

@@ -1,7 +1,7 @@
-# Description: Çoklu platform P2P dosya paylaşım istemcisi.
+# Tanım: Çoklu platform P2P dosya paylaşım istemcisi.
 # URL: http://www.amule.org/
-# Packager: milisarge
-# Depends on: crypto++ libupnp wxgtk libnotify
+# Paketçi: milisarge
+# Gerekler: crypto++ libupnp wxgtk libnotify
 
 name=amule
 version=f77eef219cdb0caf31b094a9db4668e936abda8c

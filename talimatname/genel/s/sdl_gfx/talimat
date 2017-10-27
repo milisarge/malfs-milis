@@ -1,7 +1,7 @@
-# Description: SDL grafik çizim ilkelleri ve diğer destek fonksiyonları.
+# Tanım: SDL grafik çizim ilkelleri ve diğer destek fonksiyonları.
 # URL: http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx
-# Packager: milisarge
-# Depends on: sdl
+# Paketçi: milisarge
+# Gerekler: sdl
 
 name=sdl_gfx
 version=2.0.23

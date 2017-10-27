@@ -1,7 +1,7 @@
-# Description: Resim metaverilerini değiştirmek için bir kütüphane
+# Tanım: Resim metaverilerini değiştirmek için bir kütüphane
 # URL: http://www.kde.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: exiv2 qt5 kf5-extra-cmake-modules
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: exiv2 qt5 kf5-extra-cmake-modules
 
 name=libkexiv2
 version=16.08.2

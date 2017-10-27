@@ -1,7 +1,7 @@
-# Description: The mdadm package contains administration tools for software RAID.
+# Tanım: The mdadm package contains administration tools for software RAID.
 # URL: http://www.cse.unsw.edu.au/~neilb/source/mdadm/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=mdadm
 version=3.4

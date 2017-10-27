@@ -1,7 +1,7 @@
-# Description: Yapılandırma dosyalarını ayrıştırmak için C kütüphanesi
+# Tanım: Yapılandırma dosyalarını ayrıştırmak için C kütüphanesi
 # URL: https://github.com/martinh/libconfuse
-# Packager: milisarge
-# Depends on :
+# Paketçi: milisarge
+# Gerekler:
 
 name=libconfuse
 _name=confuse

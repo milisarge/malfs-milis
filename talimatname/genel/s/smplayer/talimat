@@ -1,7 +1,7 @@
-# Description: SMPlayer kurulu kodekleriyle tüm ses ve video türlerini oynatabilen Linux için ücretsiz bir medya oynatıcısıdır.
+# Tanım: SMPlayer kurulu kodekleriyle tüm ses ve video türlerini oynatabilen Linux için ücretsiz bir medya oynatıcısıdır.
 # URL: http://smplayer.sf.net/
-# packager: milisarge
-# Depends on: mplayer qt4
+# Paketçi: milisarge
+# Gerekler: mplayer qt4
 
 name=smplayer
 version=16.4.0

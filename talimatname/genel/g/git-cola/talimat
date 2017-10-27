@@ -1,7 +1,7 @@
-# Description: Git icin guclu bir grafik kullanici arayuzu
+# Tanım: Git icin guclu bir grafik kullanici arayuzu
 # URL:  http://git-cola.github.com/
-# Packager: milisarge
-# Depends on: git python-qt4 icu gvim
+# Paketçi: milisarge
+# Gerekler: git python-qt4 icu gvim
 
 name=git-cola
 version=2.1.1

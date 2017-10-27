@@ -1,7 +1,7 @@
-# Description: Cairo kütüphanesi için Python3 konnektörü.
+# Tanım: Cairo kütüphanesi için Python3 konnektörü.
 # URL: http://www.cairographics.org/
-# Packager:alihan-ozturk28@hotmail.com
-# Depends on: python3 cairo
+# Paketçi:alihan-ozturk28@hotmail.com
+# Gerekler: python3 cairo
 
 name=python3-cairo
 version=1.10.0

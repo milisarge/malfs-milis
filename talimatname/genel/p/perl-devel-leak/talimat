@@ -1,7 +1,7 @@
-# Description: Geri kazanılmayan perl nesneleri aramak için yardımcı program.
+# Tanım: Geri kazanılmayan perl nesneleri aramak için yardımcı program.
 # URL: https://metacpan.org/pod/Devel::Leak
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on:
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler:
 
 name=perl-devel-leak
 version=0.03

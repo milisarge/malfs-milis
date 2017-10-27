@@ -1,7 +1,7 @@
-# Description: Kullanıcı modunda sayfa hatalarını işleme.
+# Tanım: Kullanıcı modunda sayfa hatalarını işleme.
 # URL: http://ftp.debian.org/debian/pool/main/libp/libpaper
-# Packager: milisarge
-# Depends on:  	
+# Paketçi: milisarge
+# Gerekler:  	
 
 name=libsigsegv
 version=2.11

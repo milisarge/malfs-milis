@@ -1,7 +1,7 @@
-# Description: Thunar dosya yöneticisi
+# Tanım: Thunar dosya yöneticisi
 # URL: http://thunar.xfce.org
-# Packagers: milisarge
-# Depends on: libnotify libexif exo xfce4-libui xfce4-panel desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: libnotify libexif exo xfce4-libui xfce4-panel desktop-file-utils
 
 name=thunar
 version=1.6.12

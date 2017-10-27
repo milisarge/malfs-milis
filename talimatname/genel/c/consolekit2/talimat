@@ -1,7 +1,7 @@
-# Description: Kullanıcı tanımlama ve izleme, oturumlar girişi ve aktif oturumların çerçevesi
+# Tanım: Kullanıcı tanımlama ve izleme, oturumlar girişi ve aktif oturumların çerçevesi
 # URL: https://github.com/ConsoleKit2/ConsoleKit2
-# Packager: milisarge
-# Depends on: acl dbus glib xorg-libx11 polkit eudev pam zlib xmlto
+# Paketçi: milisarge
+# Gerekler: acl dbus glib xorg-libx11 polkit eudev pam zlib xmlto
 
 name=consolekit2
 version=1.0.0

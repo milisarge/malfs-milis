@@ -1,7 +1,7 @@
-# Description: Basit ve son derece özelleştirilebilir hızlı başlatma aracı.
+# Tanım: Basit ve son derece özelleştirilebilir hızlı başlatma aracı.
 # URL: http://code.google.com/p/wbar
-# Packager: milisarge
-# Depends on: libglade imlib2
+# Paketçi: milisarge
+# Gerekler: libglade imlib2
 
 name=wbar
 version=2.3.4

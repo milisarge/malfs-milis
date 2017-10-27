@@ -1,7 +1,7 @@
-# Description: 3-D icin Athena uygulama araclari
+# Tanım: 3-D icin Athena uygulama araclari
 # URL: URL: http://directory.fsf.org/project/xaw3d/
-# Packager:   milisarge
-# Depends on: xorg-proto xorg-libxmu xorg-util-macros 
+# Paketçi:   milisarge
+# Gerekler: xorg-proto xorg-libxmu xorg-util-macros 
 
 name=xorg-libxaw3d
 version=1.6.2

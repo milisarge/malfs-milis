@@ -1,7 +1,7 @@
-# Description: SPL (Samsung Printer Language) yazıcıları için cups sürücüleri
+# Tanım: SPL (Samsung Printer Language) yazıcıları için cups sürücüleri
 # URL: http://splix.ap2c.org/
-# Packager: milisarge
-# Depends on: cups jbigkit krb5 subversion ghostscript 
+# Paketçi: milisarge
+# Gerekler: cups jbigkit krb5 subversion ghostscript 
 
 name=splix
 version=2.0.0

@@ -1,7 +1,7 @@
-# Description: Herhangi bir ses kaynağından parmak izi ayıklamak için özel bir algoritma uygular.
+# Tanım: Herhangi bir ses kaynağından parmak izi ayıklamak için özel bir algoritma uygular.
 # URL: http://acoustid.org/chromaprint/
-# Packager: milisarge
-# Depends on: ffmpeg cmake
+# Paketçi: milisarge
+# Gerekler: ffmpeg cmake
 
 name=chromaprint
 version=1.4.2

@@ -1,7 +1,7 @@
-# Description: JBIG1 sıkıştırma standardı uygulaması
+# Tanım: JBIG1 sıkıştırma standardı uygulaması
 # URL: http://www.cl.cam.ac.uk/~mgk25/jbigkit/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=jbigkit
 version=2.1

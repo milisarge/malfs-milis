@@ -1,7 +1,7 @@
-# Description: Perl Modülü: DNS çözümleyicisine arayüz
+# Tanım: Perl Modülü: DNS çözümleyicisine arayüz
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: perl-digest-hmac perl-net-ip perl-io-socket-inet6 perl-socket6 
+# Paketçi: milisarge
+# Gerekler: perl-digest-hmac perl-net-ip perl-io-socket-inet6 perl-socket6 
 
 name=perl-net-dns
 version=0.81

@@ -1,7 +1,7 @@
-# Description: Openbox için yapılandırma aracı
+# Tanım: Openbox için yapılandırma aracı
 # URL: http://obmenu.sourceforge.net
-# Packager: milisarge
-# Depends on: python-gtk 
+# Paketçi: milisarge
+# Gerekler: python-gtk 
  
  
 name=obmenu

@@ -1,7 +1,7 @@
-# Description: C ve C ++ kitaplıkları için Python bağlamaları oluşturmayı kolaylaştıran bir araç
+# Tanım: C ve C ++ kitaplıkları için Python bağlamaları oluşturmayı kolaylaştıran bir araç
 # URL: http://www.riverbankcomputing.co.uk/software/sip/intro
-# Packager: milisarge
-# Depends on: python3 
+# Paketçi: milisarge
+# Gerekler: python3 
 
 name=python3-sip
 version=4.19.3

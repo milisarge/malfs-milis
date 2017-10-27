@@ -1,7 +1,7 @@
-# Description: Symas LMDB, Symas OpenLDAP Projesi için geliştirdiğimiz olağanüstü derecede hızlı, bellek açısından verimli bir veritabanıdır.
+# Tanım: Symas LMDB, Symas OpenLDAP Projesi için geliştirdiğimiz olağanüstü derecede hızlı, bellek açısından verimli bir veritabanıdır.
 # URL: http://symas.com/mdb
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: 
 
 name=lmdb
 version=0.9.18

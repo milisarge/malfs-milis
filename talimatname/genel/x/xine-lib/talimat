@@ -1,7 +1,7 @@
-# Description: Xine kütüphanesini içeriyor
+# Tanım: Xine kütüphanesini içeriyor
 # URL: http://xinehq.de/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: xorg-mesa xorg-libxvmc libxcb faad2 speex libmng libvorbis flac libtheora sdl ffmpeg samba librsvg imagemagick 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: xorg-mesa xorg-libxvmc libxcb faad2 speex libmng libvorbis flac libtheora sdl ffmpeg samba librsvg imagemagick 
 
 name=xine-lib
 version=1.2.6

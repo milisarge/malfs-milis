@@ -1,7 +1,7 @@
-# Description: A remote desktop client written in GTK+ - git checkout
+# Tanım: A remote desktop client written in GTK+ - git checkout
 # URL: http://www.remmina.org/
-# Packager: milisarge
-# Depends on: intltool gtk3 cmake avahi xorg-libxkbfile freerdp telepathy-glib gtk2 libjpeg-turbo libssh libunique vte3 libgcrypt xorg-libxdmcp libgnome-keyring libvncserver libsecret webkitgtk2 
+# Paketçi: milisarge
+# Gerekler: intltool gtk3 cmake avahi xorg-libxkbfile freerdp telepathy-glib gtk2 libjpeg-turbo libssh libunique vte3 libgcrypt xorg-libxdmcp libgnome-keyring libvncserver libsecret webkitgtk2 
 
 name=remmina
 hesap=FreeRDP

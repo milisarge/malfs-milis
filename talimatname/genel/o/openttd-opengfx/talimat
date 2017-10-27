@@ -1,7 +1,7 @@
-# Description: Openttd için ücretsiz grafik seti
+# Tanım: Openttd için ücretsiz grafik seti
 # URL: http://dev.openttdcoop.org/projects/opengfx
-# Packager: milisarge
-# Depends on:  
+# Paketçi: milisarge
+# Gerekler:  
 
 
 name=openttd-opengfx

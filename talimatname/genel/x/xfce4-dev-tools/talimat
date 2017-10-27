@@ -1,7 +1,7 @@
-# Description: xfce4 geliştirme araçları
+# Tanım: xfce4 geliştirme araçları
 # URL: http://thunar.xfce.org
-# Packagers: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=xfce4-dev-tools
 version=4.12.0

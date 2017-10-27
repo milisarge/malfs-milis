@@ -1,7 +1,7 @@
-# Description: X Font Servisi icin FS kutuphanesi
+# Tanım: X Font Servisi icin FS kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-xtrans 
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-xtrans 
 
 name=xorg-libfs
 version=1.0.7

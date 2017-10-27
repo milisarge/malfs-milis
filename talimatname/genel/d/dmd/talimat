@@ -1,7 +1,7 @@
-# Description: D programlama dili başvuru derleyici
+# Tanım: D programlama dili başvuru derleyici
 # URL: http://www.dlang.org
-# Packager: milisarge
-# Depends on: unzip
+# Paketçi: milisarge
+# Gerekler: unzip
 
 name=dmd
 version=2.072.2

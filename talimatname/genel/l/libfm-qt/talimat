@@ -1,7 +1,7 @@
-# Description: Libfm-qt, masaüstü dosya yöneticileri oluşturmak için bileşenleri sağlayan bir kütüphane olan libfm'in Qt bağlantı noktasıdır.
+# Tanım: Libfm-qt, masaüstü dosya yöneticileri oluşturmak için bileşenleri sağlayan bir kütüphane olan libfm'in Qt bağlantı noktasıdır.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake libfm qt5
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake libfm qt5
 
 name=libfm-qt
 version=0.11.2

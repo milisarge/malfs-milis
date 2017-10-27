@@ -1,7 +1,7 @@
-# Description: Firefox Web Tarayıcısının GNU çatallaması
+# Tanım: Firefox Web Tarayıcısının GNU çatallaması
 # URL: http://www.gnu.org/software/gnuzilla/
-# Packager: milisarge
-# Depends on: unzip zip python yasm xorg-mesa xorg-imake gconf autoconf2 pulseaudio dejavu-ttf gstreamer-plugins-base cargo gtk3 gtk2 xorg-libxt startup-notification dbus-glib alsa-lib ffmpeg libvpx icu libevent nss hunspell sqlite freefont-ttf
+# Paketçi: milisarge
+# Gerekler: unzip zip python yasm xorg-mesa xorg-imake gconf autoconf2 pulseaudio dejavu-ttf gstreamer-plugins-base cargo gtk3 gtk2 xorg-libxt startup-notification dbus-glib alsa-lib ffmpeg libvpx icu libevent nss hunspell sqlite freefont-ttf
 
 name=icecat
 version=52.1.0

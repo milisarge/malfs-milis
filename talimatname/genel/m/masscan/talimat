@@ -1,7 +1,7 @@
-# Description: TCP port tarayıcı,asenkron SYNC paketleri kullanarak tarama yapar.
+# Tanım: TCP port tarayıcı,asenkron SYNC paketleri kullanarak tarama yapar.
 # URL: https://github.com/robertdavidgraham/masscan
-# Packager: milisarge
-# Depends on: libpcap 
+# Paketçi: milisarge
+# Gerekler: libpcap 
 
 name=masscan
 version=master

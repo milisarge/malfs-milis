@@ -1,7 +1,7 @@
-# Description: Kf5 için Breeze Icon Teması
+# Tanım: Kf5 için Breeze Icon Teması
 # URL: https://www.kde.org/
-# Packager: milisarge
-# Depends on: cmake, qt5, kf5-extra-cmake-modules
+# Paketçi: milisarge
+# Gerekler: cmake, qt5, kf5-extra-cmake-modules
 
 name=kf5-breeze-icons
 version=5.27.0

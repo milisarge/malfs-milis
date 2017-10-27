@@ -1,7 +1,7 @@
-# Description: php-gd kütüphanesi
+# Tanım: php-gd kütüphanesi
 # URL: http://www.php.net
-# Packager: milisarge
-# Depends on: libgd
+# Paketçi: milisarge
+# Gerekler: libgd
 
 name=php-gd
 version=5.6.31

@@ -1,7 +1,7 @@
-# Description: Hafif vala tabanlı Tox istemcisi
+# Tanım: Hafif vala tabanlı Tox istemcisi
 # URL: https://github.com/RicinApp/Ricin
-# packager: milisarge
-# Depends on: toxcore meson gtk3 vala json-glib libsoup libnotify
+# Paketçi: milisarge
+# Gerekler: toxcore meson gtk3 vala json-glib libsoup libnotify
 
 name=ricin
 _name=Ricin

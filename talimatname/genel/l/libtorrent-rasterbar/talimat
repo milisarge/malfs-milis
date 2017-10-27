@@ -1,7 +1,7 @@
-# Description: Bir C ++ bittorrent kitaplığı.
+# Tanım: Bir C ++ bittorrent kitaplığı.
 # URL: http://www.rasterbar.com/products/libtorrent/
-# Packager: milisarge
-# Depends on: boost
+# Paketçi: milisarge
+# Gerekler: boost
 
 name=libtorrent-rasterbar
 version=1.1.4

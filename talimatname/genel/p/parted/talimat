@@ -1,7 +1,7 @@
-# Description: Bölüm oluşturma, yok etme, yeniden boyutlandırma, kontrol etme ve kopyalama için bir program
+# Tanım: Bölüm oluşturma, yok etme, yeniden boyutlandırma, kontrol etme ve kopyalama için bir program
 # URL: http://www.gnu.org/software/parted/index.shtml
-# Packager: milisarge
-# Depends on: lvm2 
+# Paketçi: milisarge
+# Gerekler: lvm2 
 
 name=parted
 version=3.2

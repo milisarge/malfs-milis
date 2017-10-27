@@ -1,7 +1,7 @@
-# Description: SCard API (PC/SC) kullanan smartkartlara erişim kütüphanesi
+# Tanım: SCard API (PC/SC) kullanan smartkartlara erişim kütüphanesi
 # URL: https://pcsclite.alioth.debian.org/pcsclite.html
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=pcsc-lite
 version=1.8.21

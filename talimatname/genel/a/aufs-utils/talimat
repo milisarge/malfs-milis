@@ -1,7 +1,7 @@
-# Description: aufs-utils
+# Tanım: aufs-utils
 # URL: git.code.sf.net/p/aufs/aufs-util
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=aufs-utils
 version=20160301

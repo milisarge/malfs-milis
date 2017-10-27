@@ -2,7 +2,7 @@
 ########################################################################
 # Begin scriptname
 #
-# Description : Varnish init script
+# Tanım: Varnish init script
 #
 # Authors     : alienus at nutyx dot org
 #
@@ -20,8 +20,8 @@
 # Should-Stop:
 # Default-Start:
 # Default-Stop:
-# Short-Description:
-# Description:
+# Short-Tanım:
+# Tanım:
 # X-LFS-Provided-By:
 ### END INIT INFO
 

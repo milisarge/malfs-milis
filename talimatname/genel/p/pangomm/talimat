@@ -1,7 +1,7 @@
-# Description: Pango için C ++ bağları
+# Tanım: Pango için C ++ bağları
 # URL: http://cairographics.org/cairomm/
-# Packager: milisarge
-# Depends on: pango glibmm cairomm
+# Paketçi: milisarge
+# Gerekler: pango glibmm cairomm
 
 name=pangomm
 version=2.38.1

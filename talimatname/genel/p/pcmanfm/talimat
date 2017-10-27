@@ -1,7 +1,7 @@
-# Description: Son derece hızlı, hafif, sekmeli tarama özellikli zengin dosya yöneticisi içerir.
+# Tanım: Son derece hızlı, hafif, sekmeli tarama özellikli zengin dosya yöneticisi içerir.
 # URL: http://pcmanfm.sourceforge.net/
-# Packager: milisarge@gmail.com
-# Depends on: libfm lxde-menu-data
+# Paketçi: milisarge@gmail.com
+# Gerekler: libfm lxde-menu-data
 
 name=pcmanfm
 version=1.2.4

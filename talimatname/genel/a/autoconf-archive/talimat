@@ -1,7 +1,7 @@
-# Description: Serbestçe yeniden kullanılabilir Autoconf makroları topluluğu
+# Tanım: Serbestçe yeniden kullanılabilir Autoconf makroları topluluğu
 # URL: http://www.gnu.org/software/autoconf-archive/
-# Packager: Cihan Alkan
-# Depends on: 
+# Paketçi: Cihan Alkan
+# Gerekler: 
 
 name=autoconf-archive
 version=2017.03.21

@@ -1,7 +1,7 @@
-# Description: OAuth 1.0 istemcileri ve sunucuları oluşturmak için tamamen test edilmiş, soyut bir arayüz.
+# Tanım: OAuth 1.0 istemcileri ve sunucuları oluşturmak için tamamen test edilmiş, soyut bir arayüz.
 # URL: https://github.com/simplegeo/python-oauth2
-# Packager: milisarge
-# Depends on: python-httplib2 python-setuptools 
+# Paketçi: milisarge
+# Gerekler: python-httplib2 python-setuptools 
 
 name=python-oauth2
 version=1.5.211

@@ -1,7 +1,7 @@
-# Description: GNOME Disk Yönetimi Yardımcı Programı
+# Tanım: GNOME Disk Yönetimi Yardımcı Programı
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache  libcanberra libdvdread gnome-settings-daemon librsvg gtk3 intltool libsecret libpwquality udisks2 xorg-libxinerama xorg-app
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache  libcanberra libdvdread gnome-settings-daemon librsvg gtk3 intltool libsecret libpwquality udisks2 xorg-libxinerama xorg-app
 
 name=gnome-disk-utility
 version=3.22.1

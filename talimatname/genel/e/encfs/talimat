@@ -1,7 +1,7 @@
-# Description: Kullanıcı alanındaki şifreli dosya sistemi
+# Tanım: Kullanıcı alanındaki şifreli dosya sistemi
 # URL: http://www.arg0.net/encfs
-# Packager: milisarge
-# Depends on: boost fuse rlog
+# Paketçi: milisarge
+# Gerekler: boost fuse rlog
 
 
 name=encfs

@@ -1,7 +1,7 @@
-# Description: URW'den gelen Standart Ghostscript Type1 yazı tipleri
+# Tanım: URW'den gelen Standart Ghostscript Type1 yazı tipleri
 # URL: http://sourceforge.net/projects/ghostscript
-# Packager: milisarge
-# Depends on: xorg-app
+# Paketçi: milisarge
+# Gerekler: xorg-app
 
 name=gsfonts
 version=8.11

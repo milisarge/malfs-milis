@@ -1,7 +1,7 @@
-# Description: Python için CSS Basamaklı Stil Sayfaları kitaplığı.
+# Tanım: Python için CSS Basamaklı Stil Sayfaları kitaplığı.
 # URL: http://cthedot.de/cssutils/
-# Packager: milisarge
-# Depends on: python-setuptools
+# Paketçi: milisarge
+# Gerekler: python-setuptools
 
 name=python-cssutils
 version=1.0

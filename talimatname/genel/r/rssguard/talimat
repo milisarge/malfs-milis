@@ -1,7 +1,7 @@
-# Description: RSS / RDF ve ATOM da dahil olmak üzere en bilinen besleme formatlarını elde edebilen besleme okuyucu
+# Tanım: RSS / RDF ve ATOM da dahil olmak üzere en bilinen besleme formatlarını elde edebilen besleme okuyucu
 # URL: https://bitbucket.org/skunkos/rssguard/wiki/Home
-# Packager: milisarge
-# Depends on: cmake qt5
+# Paketçi: milisarge
+# Gerekler: cmake qt5
 
 name=rssguard
 version=3.0.1

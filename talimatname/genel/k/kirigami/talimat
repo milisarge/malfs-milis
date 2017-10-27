@@ -1,7 +1,7 @@
-# Description: QtQuick tabanlı bileşenler seti
+# Tanım: QtQuick tabanlı bileşenler seti
 # URL: https://community.kde.org/Frameworks
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: qt5 kf5-extra-cmake-modules kf5-plasma-framework
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 kf5-extra-cmake-modules kf5-plasma-framework
 
 name=kirigami
 version=1.0.2

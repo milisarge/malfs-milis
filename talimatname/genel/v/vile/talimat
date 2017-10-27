@@ -1,7 +1,7 @@
-# Description: VI Emacs gibi - başka bir tam özellikli vi klonu
+# Tanım: VI Emacs gibi - başka bir tam özellikli vi klonu
 # URL: http://invisible-island.net/vile/
-# Packager: milisarge
-# Depends on: reflex
+# Paketçi: milisarge
+# Gerekler: reflex
 
 name=vile
 version=9.8

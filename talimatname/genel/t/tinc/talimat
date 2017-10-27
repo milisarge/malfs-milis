@@ -1,7 +1,7 @@
-# Description: bir vpn uygulaması
+# Tanım: bir vpn uygulaması
 # URL:  http://www.tinc-vpn.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=tinc
 version=1.0.31

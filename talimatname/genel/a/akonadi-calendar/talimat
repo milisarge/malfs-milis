@@ -1,7 +1,7 @@
-# Description: Akonadi takvim eklentisi
+# Tanım: Akonadi takvim eklentisi
 # URL: https://projects.kde.org/akonadi
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules boost kf5-kdoctools kf5-kdelibs4support kf5-kcodecs kf5-kio kf5-kwallet kmailtransport kcontacts kcalcore kidentitymanagement kcalutils akonadi-contacts
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules boost kf5-kdoctools kf5-kdelibs4support kf5-kcodecs kf5-kio kf5-kwallet kmailtransport kcontacts kcalcore kidentitymanagement kcalutils akonadi-contacts
 
 name=akonadi-calendar
 version=16.08.2

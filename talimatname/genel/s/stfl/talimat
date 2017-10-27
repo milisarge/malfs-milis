@@ -1,7 +1,7 @@
-# Description: Metin terminalleri için curses tabanlı bir widget seti uygulayan kütüphane
+# Tanım: Metin terminalleri için curses tabanlı bir widget seti uygulayan kütüphane
 # URL: http://www.clifford.at/stfl
-# Packager: milisarge
-# Depends on: ncurses
+# Paketçi: milisarge
+# Gerekler: ncurses
 
 name=stfl
 version=0.24

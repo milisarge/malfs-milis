@@ -1,7 +1,7 @@
-# Description: Genişletilmiş hesap altyapısına bağlantı sağlayan kütüphane
+# Tanım: Genişletilmiş hesap altyapısına bağlantı sağlayan kütüphane
 # URL: https://www.netfilter.org/projects/libnetfilter_acct/
-# Packager: milisarge
-# Depends on: libnfnetlink libmnl 
+# Paketçi: milisarge
+# Gerekler: libnfnetlink libmnl 
 
 name=libnetfilter_acct
 version=1.0.3

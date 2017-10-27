@@ -1,7 +1,7 @@
-# Description: Linux için geliştirici önizleme kanalı olan Google Chrome Tarayıcısı
+# Tanım: Linux için geliştirici önizleme kanalı olan Google Chrome Tarayıcısı
 # URL:        http://dev.chromium.org/getting-involved/dev-channel
-# Packager:  milisarge
-# Depends on: nss gconf libjpeg-turbo freetype cairo libxslt libpng alsa-lib hicolor-icon-theme xdg-utils
+# Paketçi:  milisarge
+# Gerekler: nss gconf libjpeg-turbo freetype cairo libxslt libpng alsa-lib hicolor-icon-theme xdg-utils
 
 name=google-chrome-unstable
 version=50.0.2638.0

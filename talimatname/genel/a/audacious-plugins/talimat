@@ -1,7 +1,7 @@
-# Description: Audacious müzik çalar için eklentiler.
+# Tanım: Audacious müzik çalar için eklentiler.
 # URL: http://audacious-media-player.org
-# Packagers: milisarge
-# Depends on: gtk3 audacious alsa-utils flac lame libcdio libsamplerate libsndfile libvorbis mpg123 neon pulseaudio faad2 ffmpeg
+# Paketçi: milisarge
+# Gerekler: gtk3 audacious alsa-utils flac lame libcdio libsamplerate libsndfile libvorbis mpg123 neon pulseaudio faad2 ffmpeg
 
 name=audacious-plugins
 version=3.7.2

@@ -583,18 +583,18 @@ add_meta_to_archive() {
 	bsdtar xf $PAKETLEME_DIZIN/$1
 	# üstbaşlık bilgilerinin türkçe harf desteği için
 	LC_ALL="tr_TR.UTF-8"
-	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
-		DESC="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
+	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^Tanım|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
+		DESC="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^Tanım|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
 	else
 		DESC="belirsiz"
 	fi
-	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^pack|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
-		PACK="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^pack|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
+	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^Paketçi|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
+		PACK="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^Paketçi|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
 	else
 		PACK="belirsiz"
 	fi
-	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^maint|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
-		MAINT="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^maint|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
+	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^Tamirci|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
+		MAINT="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^Tamirci|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
 	else
 		MAINT="belirsiz"
 	fi

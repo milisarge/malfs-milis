@@ -1,7 +1,7 @@
-# Description: Bilgisayarınızdaki dosyalardan CD veya DVD'leri veya başka yerlerden indirilen ISO görüntülerini yakın.
+# Tanım: Bilgisayarınızdaki dosyalardan CD veya DVD'leri veya başka yerlerden indirilen ISO görüntülerini yakın.
 # URL: http://www.xfce.org/projects/xfburn/
-# Packager: milisarge
-# Depends on: gstreamer-plugins-base exo libisoburn xorg-pixman startup-notification gstreamer-plugins-good 
+# Paketçi: milisarge
+# Gerekler: gstreamer-plugins-base exo libisoburn xorg-pixman startup-notification gstreamer-plugins-good 
 
 _name=xfburn
 name=xfce4-burn

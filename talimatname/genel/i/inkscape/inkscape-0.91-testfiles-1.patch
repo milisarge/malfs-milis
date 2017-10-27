@@ -3,7 +3,7 @@ Date: 2015-02-07
 Initial Package Version: 0.91
 Upstream Status: Applied
 Origin: Upstream
-Description: The tarball for 0.91 is missing the svg files used for the
+Tanım: The tarball for 0.91 is missing the svg files used for the
 extensions tests. Taken from
 https://bazaar.launchpad.net/~inkscape.dev/inkscape/RELEASE_0_91_BRANCH/files/head:/share/extensions
 /test/svg/

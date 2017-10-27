@@ -1,7 +1,7 @@
-# Description: süreç bazlı net kullanım grafik göstericisi arayüzü
+# Tanım: süreç bazlı net kullanım grafik göstericisi arayüzü
 # URL:         https://github.com/mbfoss/gnethogs
-# Packager:    milisarge
-# Depends on:  nethogs gtkmm3 intltool libxml2
+# Paketçi:    milisarge
+# Gerekler:  nethogs gtkmm3 intltool libxml2
 
 name=gnethogs
 version=0.2

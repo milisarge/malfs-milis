@@ -1,7 +1,7 @@
-# Description: Aspell yazım denetimi yazılımı için Türkçe sözlükler.
+# Tanım: Aspell yazım denetimi yazılımı için Türkçe sözlükler.
 # URL: http://aspell.net
-# Packager: milisarge
-# Depends on: aspell
+# Paketçi: milisarge
+# Gerekler: aspell
 
 _version=0.50-0
 name=aspell-tr

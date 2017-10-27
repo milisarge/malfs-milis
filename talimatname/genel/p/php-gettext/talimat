@@ -1,7 +1,7 @@
-# Description: Php için Gettext modülü
+# Tanım: Php için Gettext modülü
 # URL: http://www.php.net
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=php-gettext
 version=5.6.31

@@ -1,7 +1,7 @@
-# Description: Mozilla XULRunner temelli programlanabilir bir web tarayici
+# Tanım: Mozilla XULRunner temelli programlanabilir bir web tarayici
 # URL: http://conkeror.mozdev.org/
-# Packager: milisarge
-# Depends on: xulrunner desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: xulrunner desktop-file-utils
 
 name=conkeror
 version=git

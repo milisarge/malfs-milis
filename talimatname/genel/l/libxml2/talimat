@@ -1,7 +1,7 @@
-# Description: XML dosyalarını ayrıştırmak için kullanılan kitaplıklar ve yardımcı programlar.
+# Tanım: XML dosyalarını ayrıştırmak için kullanılan kitaplıklar ve yardımcı programlar.
 # URL: http://xmlsoft.org/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
  
 name=libxml2
 version=2.9.5

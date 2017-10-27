@@ -1,7 +1,7 @@
-# Description: MATE masaüstü için hesap makinesi
+# Tanım: MATE masaüstü için hesap makinesi
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool gtk3 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool itstool gtk3 
 
 name=mate-calc
 version=1.18.0

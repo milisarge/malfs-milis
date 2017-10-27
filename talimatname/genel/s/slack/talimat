@@ -1,7 +1,7 @@
-# Description: Linux için Slack masaüstü uygulaması
+# Tanım: Linux için Slack masaüstü uygulaması
 # URL: https://slack.com/apps
-# Packager: yasarciv67@gmail.com
-# Depends on: gconf gtk2 expat hunspell libgcrypt nss xorg-libxtst libnotify xdg-utils xorg-libxscrnsaver alsa-lib libgnome-keyring
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gconf gtk2 expat hunspell libgcrypt nss xorg-libxtst libnotify xdg-utils xorg-libxscrnsaver alsa-lib libgnome-keyring
 
 name=slack
 version=2.7.1

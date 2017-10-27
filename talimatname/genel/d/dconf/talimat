@@ -1,7 +1,7 @@
-# Description: Düşük seviyeli bir yapılandırma sistemi.
+# Tanım: Düşük seviyeli bir yapılandırma sistemi.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: dbus gtk3 libxml2 vala
+# Paketçi: milisarge
+# Gerekler: dbus gtk3 libxml2 vala
 
 name=dconf
 version=0.26.0

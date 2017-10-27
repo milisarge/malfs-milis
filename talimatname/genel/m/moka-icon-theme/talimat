@@ -1,7 +1,7 @@
-# Description: Moka, net, basit ve tutarlı olacak şekilde tasarlanmış, stil sahibi bir Linux masaüstü simge setidir. Moka Icon Teması (simge varlıkları ve kaynakları) bir Creative Commons Attribution-ShareAlike 4.0 lisansı altındadır.
+# Tanım: Moka, net, basit ve tutarlı olacak şekilde tasarlanmış, stil sahibi bir Linux masaüstü simge setidir. Moka Icon Teması (simge varlıkları ve kaynakları) bir Creative Commons Attribution-ShareAlike 4.0 lisansı altındadır.
 # URL: https://github.com/snwh/moka-icon-theme
-# Packager: yasarciv
-# Depends on: gtk-update-icon-cache faba-icon-theme
+# Paketçi: yasarciv
+# Gerekler: gtk-update-icon-cache faba-icon-theme
 
 
 name=moka-icon-theme

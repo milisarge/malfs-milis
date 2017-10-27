@@ -1,7 +1,7 @@
-# Description: MATE için WebDAV aracılığıyla kullanıcı düzeyinde ortak dosya paylaşımı
+# Tanım: MATE için WebDAV aracılığıyla kullanıcı düzeyinde ortak dosya paylaşımı
 # URL: http://www.mate-desktop.org
-# Packager: yasarciv67@gmail.com
-# Depends on: caja dbus-glib intltool itstool libcanberra libnotify gtk3 mod-dnssd
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: caja dbus-glib intltool itstool libcanberra libnotify gtk3 mod-dnssd
 
 name=mate-user-share
 version=1.18.0

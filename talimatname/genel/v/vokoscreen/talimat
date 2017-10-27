@@ -1,7 +1,7 @@
-# Description: Kolay ekran çekim uygulaması
+# Tanım: Kolay ekran çekim uygulaması
 # URL: http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
-# Packager: milisarge@gmail.com
-# Depends on: xorg-libxrandr v4l-utils qt5 ffmpeg lame lsof pulseaudio xdg-utils
+# Paketçi: milisarge@gmail.com
+# Gerekler: xorg-libxrandr v4l-utils qt5 ffmpeg lame lsof pulseaudio xdg-utils
 
 name=vokoscreen
 _version=2.5.4-beta

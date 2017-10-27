@@ -1,7 +1,7 @@
-# Description: GtkSourceView widget'ı için Python bağları
+# Tanım: GtkSourceView widget'ı için Python bağları
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: gtksourceview2 python-gtk 
+# Paketçi: milisarge
+# Gerekler: gtksourceview2 python-gtk 
 
 name=python-gtksourceview2
 version=2.10.1

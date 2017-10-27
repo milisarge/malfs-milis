@@ -1,7 +1,7 @@
-# Description: X.Org xkbfile kutuphanesi
+# Tanım: X.Org xkbfile kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-libx11 
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-libx11 
 
 name=xorg-libxkbfile
 version=1.0.9

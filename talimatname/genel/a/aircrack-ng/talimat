@@ -1,7 +1,7 @@
-# Description: WEP ve WPA için kablosuz şifresi çözmek için bir yardımcı araç.
+# Tanım: WEP ve WPA için kablosuz şifresi çözmek için bir yardımcı araç.
 # URL: http://www.aircrack-ng.org/
-# Packager: milisarge
-# Depends on: libnl
+# Paketçi: milisarge
+# Gerekler: libnl
 
 name=aircrack-ng
 version=1.2

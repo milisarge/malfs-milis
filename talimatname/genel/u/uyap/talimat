@@ -1,7 +1,7 @@
-# Description: UYAP UDF Düzenleyici
+# Tanım: UYAP UDF Düzenleyici
 # URL: uyap.gov.tr
-# Packager: milisarge
-# Depends on: openjdk akiskart jre opensc
+# Paketçi: milisarge
+# Gerekler: openjdk akiskart jre opensc
 
 name=uyap
 version=1.0

@@ -1,7 +1,7 @@
-# Description: Xpdf 3.0'a dayalı PDF işleme kütüphanesi
+# Tanım: Xpdf 3.0'a dayalı PDF işleme kütüphanesi
 # URL: http://poppler.freedesktop.org/
-# Packager: milisarge
-# Depends on: xorg-libxxf86vm libpng xorg-fontconfig libjpeg-turbo cairo libxml2 openjpeg lcms2 
+# Paketçi: milisarge
+# Gerekler: xorg-libxxf86vm libpng xorg-fontconfig libjpeg-turbo cairo libxml2 openjpeg lcms2 
 
 dataversion=0.4.7
 name=poppler

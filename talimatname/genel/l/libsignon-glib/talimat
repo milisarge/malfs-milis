@@ -1,7 +1,7 @@
-# Description: Hesap kimlik doğrulamasını yürüten uygulamalar için GLib tabanlı istemci kitaplığı
+# Tanım: Hesap kimlik doğrulamasını yürüten uygulamalar için GLib tabanlı istemci kitaplığı
 # URL: https://gitlab.com/accounts-sso/libsignon-glib 
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: signond python-gobject gobject-introspection
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: signond python-gobject gobject-introspection
 
 name=libsignon-glib
 version=1.14

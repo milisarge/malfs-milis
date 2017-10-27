@@ -1,7 +1,7 @@
-# Description: NInvaders ASCII çıkışı için ncurses tabanlı bir Space Invaders klonudur.
+# Tanım: NInvaders ASCII çıkışı için ncurses tabanlı bir Space Invaders klonudur.
 # URL: http://ninvaders.sourceforge.net/ 
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ninvaders
 version=0.1.1

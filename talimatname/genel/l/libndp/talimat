@@ -1,7 +1,7 @@
-# Description: Libndp paketi, IPv6 Komşu Bulma Protokolü için bir sarıcı sağlar.
+# Tanım: Libndp paketi, IPv6 Komşu Bulma Protokolü için bir sarıcı sağlar.
 # URL: http://libndp.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libndp
 version=1.5

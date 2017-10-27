@@ -1,7 +1,7 @@
-# Description: MATE belge görüntüleyici
+# Tanım: MATE belge görüntüleyici
 # URL: http://mate-desktop.org
-# Packager: yasarciv67@gmail.com
-# Depends on: caja caja-extensions gobject-introspection intltool itstool djvulibre libspectre poppler-glib webkitgtk2
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: caja caja-extensions gobject-introspection intltool itstool djvulibre libspectre poppler-glib webkitgtk2
 
 name=atril
 version=1.18.0

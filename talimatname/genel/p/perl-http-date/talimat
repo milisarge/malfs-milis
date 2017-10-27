@@ -1,7 +1,7 @@
-# Description: Tarih dönüştürme rutinleri
+# Tanım: Tarih dönüştürme rutinleri
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=perl-http-date
 version=6.02

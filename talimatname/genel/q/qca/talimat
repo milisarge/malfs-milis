@@ -1,7 +1,7 @@
-# Description: Qt Şifreleme Mimarisi (Qt4).
+# Tanım: Qt Şifreleme Mimarisi (Qt4).
 # URL: http://delta.affinix.com/qca/
-# Packager: milisage
-# Depends on: qt4
+# Paketçi: milisage
+# Gerekler: qt4
 
 name=qca
 version=2.1.0

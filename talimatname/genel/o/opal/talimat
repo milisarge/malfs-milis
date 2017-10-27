@@ -1,7 +1,7 @@
-# Description: Çok sayıda telefon protokolünü normalleştirmek için C ++ sınıf kütüphanesi
+# Tanım: Çok sayıda telefon protokolünü normalleştirmek için C ++ sınıf kütüphanesi
 # URL: http://ftp.gnu.org/opal
-# Packager: milisarge
-# Depends on: ptlib
+# Paketçi: milisarge
+# Gerekler: ptlib
 
 name=opal
 version=3.10.10

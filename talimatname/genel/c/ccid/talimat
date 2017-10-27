@@ -1,7 +1,7 @@
-# Description: USB Chip/Smart kart arayüz erişim sürücüsü
+# Tanım: USB Chip/Smart kart arayüz erişim sürücüsü
 # URL: http://pcsclite.alioth.debian.org/ccid.html
-# Packager: milisarge
-# Depends on: pcsc-lite libusb
+# Paketçi: milisarge
+# Gerekler: pcsc-lite libusb
 
 name=ccid
 version=1.4.27

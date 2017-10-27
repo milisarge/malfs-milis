@@ -1,7 +1,7 @@
-# Description: Güvenli kanallar üzerinden iletişim kurabilmeniz için SSL içindeki keyfi TCP bağlantılarını şifreleyin
+# Tanım: Güvenli kanallar üzerinden iletişim kurabilmeniz için SSL içindeki keyfi TCP bağlantılarını şifreleyin
 # URL: http://www.stunnel.org
-# Packager: milisarge
-# Depends on:  	
+# Paketçi: milisarge
+# Gerekler:  	
 
 name=stunnel
 version=5.26

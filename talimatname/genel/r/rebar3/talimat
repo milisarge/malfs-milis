@@ -1,7 +1,7 @@
-# Description: otp esaslarına göre erlang derleme aracı
+# Tanım: otp esaslarına göre erlang derleme aracı
 # URL: https://github.com/rebar/rebar3
-# Packager: milisarge
-# Depends on: erlang
+# Paketçi: milisarge
+# Gerekler: erlang
 
 name=rebar3
 version=3.3.4

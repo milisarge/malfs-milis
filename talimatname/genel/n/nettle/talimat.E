@@ -1,6 +1,6 @@
-# Description: Low-level cryptographic library that is designed to fit easily in many contexts. 
+# Tanım: Low-level cryptographic library that is designed to fit easily in many contexts. 
 # URL: http://www.lysator.liu.se/~nisse/nettle/
-# Packager: tnut at nutyx dot org
+# Paketçi: tnut at nutyx dot org
 
 name=nettle
 version=3.2

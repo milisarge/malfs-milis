@@ -1,7 +1,7 @@
-# Description: Xmp (Adobe'nin Genişletilebilir Meta Veri Platformu) uygulanması.
+# Tanım: Xmp (Adobe'nin Genişletilebilir Meta Veri Platformu) uygulanması.
 # URL: http://libopenraw.freedesktop.org/wiki/Exempi/
-# Packager: milisarge
-# Depends on: expat boost
+# Paketçi: milisarge
+# Gerekler: expat boost
 
 name=exempi
 version=2.2.2

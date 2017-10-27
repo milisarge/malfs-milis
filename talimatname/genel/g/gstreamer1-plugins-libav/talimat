@@ -1,7 +1,7 @@
-# Description: Birçok kod çözücü ve kodlayıcı içeren Libav tabanlı eklenti
+# Tanım: Birçok kod çözücü ve kodlayıcı içeren Libav tabanlı eklenti
 # URL: http://gstreamer.freedesktop.org/modules/gst-libav.html
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: gstreamer1-plugins-base yasm
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: gstreamer1-plugins-base yasm
 
 name=gstreamer1-plugins-libav
 version=1.6.3

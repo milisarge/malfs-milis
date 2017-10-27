@@ -1,7 +1,7 @@
-# Description: hafif çapta programcılar için webcam uygulaması
+# Tanım: hafif çapta programcılar için webcam uygulaması
 # URL: http://www.firestorm.cx/fswebcam
-# Packager: milisarge
-# Depends on: libgd 
+# Paketçi: milisarge
+# Gerekler: libgd 
 
 name=fswebcam
 version=20140113

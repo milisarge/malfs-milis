@@ -1,7 +1,7 @@
-# Description: Ristretto, Xfce masaüstü ortamı için hızlı ve hafif bir resim görüntüleme aracıdır.
+# Tanım: Ristretto, Xfce masaüstü ortamı için hızlı ve hafif bir resim görüntüleme aracıdır.
 # URL: http://goodies.xfce.org/projects/applications/ristretto
-# Packager: milisarge
-# Depends on: xorg-libxinerama xorg-libxrandr xorg-libsm thunar libexif 
+# Paketçi: milisarge
+# Gerekler: xorg-libxinerama xorg-libxrandr xorg-libsm thunar libexif 
 
 name=ristretto
 version=0.8.0

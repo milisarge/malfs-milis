@@ -1,7 +1,7 @@
-# Description: Libxfce4ui paketi, diğer Xfce uygulamaları tarafından kullanılan GTK+ 2 widget'larını içerir.
+# Tanım: Libxfce4ui paketi, diğer Xfce uygulamaları tarafından kullanılan GTK+ 2 widget'larını içerir.
 # URL: http://www.xfce.org/projects/libraries/
-# Packager: milisarge
-# Depends on: gtk2 gtk3 startup-notification xfce4-conf
+# Paketçi: milisarge
+# Gerekler: gtk2 gtk3 startup-notification xfce4-conf
 
 _name=libxfce4ui
 

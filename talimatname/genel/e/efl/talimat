@@ -1,7 +1,7 @@
-# Description: efl kütüphaneleri
+# Tanım: efl kütüphaneleri
 # URL: http://www.enlightenment.org/
-# Packager: milisarge
-# Depends on: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver gstreamer-plugins-base giflib libtiff gstreamer gstreamer1 poppler libspectre libraw librsvg gstreamer1-plugins-base
+# Paketçi: milisarge
+# Gerekler: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver gstreamer-plugins-base giflib libtiff gstreamer gstreamer1 poppler libspectre libraw librsvg gstreamer1-plugins-base
 
 name=efl
 version=1.20.2

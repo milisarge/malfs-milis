@@ -1,7 +1,7 @@
-# Description: LessTif, Motif® araç kitinin bir klonudur.
+# Tanım: LessTif, Motif® araç kitinin bir klonudur.
 # URL: http://www.lesstif.org/
-# Packager: milisarge
-# Depends on: freetype xorg-libxt xorg-libxext
+# Paketçi: milisarge
+# Gerekler: freetype xorg-libxt xorg-libxext
 
 name=lesstif
 version=0.95.2

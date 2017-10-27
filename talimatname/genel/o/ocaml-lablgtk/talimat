@@ -1,7 +1,7 @@
-# Description: O'Caml kütüphane yöneticisi
+# Tanım: O'Caml kütüphane yöneticisi
 # URL: http://projects.camlcity.org/projects/findlib.html
-# Packager: milisarge
-# Depends on: ocaml ocaml-findlib ocaml-lablgl gtk2 librsvg libglade gtksourceview2 xorg-mesa
+# Paketçi: milisarge
+# Gerekler: ocaml ocaml-findlib ocaml-lablgl gtk2 librsvg libglade gtksourceview2 xorg-mesa
 
 name=ocaml-lablgtk
 _name=lablgtk

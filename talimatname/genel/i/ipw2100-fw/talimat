@@ -1,7 +1,7 @@
-# Description: IPW2100 Intel Centrino wifi için sürücüler
+# Tanım: IPW2100 Intel Centrino wifi için sürücüler
 # URL: http://ipw2100.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ipw2100-fw
 version=1.3

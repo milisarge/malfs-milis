@@ -1,7 +1,7 @@
-# Description: Ekranınızın fotoğraflarını çekin.
+# Tanım: Ekranınızın fotoğraflarını çekin.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 libcanberra gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 libcanberra gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
 
 name=gnome-screenshot
 version=3.22.0

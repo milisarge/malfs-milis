@@ -1,8 +1,8 @@
-# Description:  openbox menu yapıcı
+# Tanım:  openbox menu yapıcı
 # URL:          https://github.com/trizen/obmenu-generator
 # Maintainer:   milisarge
-# Packager :	milisarge
-# Depends on:   perl-module-build perl-data-dump perl-linux-desktopfiles 
+# Paketçi:	milisarge
+# Gerekler:   perl-module-build perl-data-dump perl-linux-desktopfiles 
 
 name=obmenu-generator
 version=0.66

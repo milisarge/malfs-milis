@@ -1,7 +1,7 @@
-# Description: Libguestfs, sanal makine (VM) disk görüntülerine erişmek ve değiştirmek için kullanılan bir takım araçtır
+# Tanım: Libguestfs, sanal makine (VM) disk görüntülerine erişmek ve değiştirmek için kullanılan bir takım araçtır
 # URL: http://libguestfs.org
-# Packager: milisarge
-# Depends on: ocaml ocaml-findlib python ruby lua cdrkit qemu augeas libxml2 pcre db systemtap fuse gdisk bash-completion libconfig
+# Paketçi: milisarge
+# Gerekler: ocaml ocaml-findlib python ruby lua cdrkit qemu augeas libxml2 pcre db systemtap fuse gdisk bash-completion libconfig
 
 
 

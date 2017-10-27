@@ -1,7 +1,7 @@
-# Description: GTK+ ve GNOME için C ++ arabirimleri
+# Tanım: GTK+ ve GNOME için C ++ arabirimleri
 # URL: http://www.gtkmm.org/
-# Packager: yasarciv milisarge
-# Depends on: gtk3 glibmm pangomm atkmm
+# Paketçi: yasarciv milisarge
+# Gerekler: gtk3 glibmm pangomm atkmm
 
 name=gtkmm3
 version=3.18.1

@@ -1,7 +1,7 @@
-# Description: Sistem genelinde ayrıcalıkları kontrol etmek için uygulama geliştirme araç seti
+# Tanım: Sistem genelinde ayrıcalıkları kontrol etmek için uygulama geliştirme araç seti
 # URL: http://hal.freedesktop.org/docs/polkit
-# Packager: milisarge
-# Depends on: glib js1 gobject-introspection intltool libxslt docbook-xsl
+# Paketçi: milisarge
+# Gerekler: glib js1 gobject-introspection intltool libxslt docbook-xsl
 
 name=polkit
 version=0.113

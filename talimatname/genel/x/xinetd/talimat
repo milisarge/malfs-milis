@@ -1,7 +1,7 @@
-# Description: Xinetd, * inetd * için güvenli bir değiştirme olan, genişletilmiş InterNET hizmetleri arka plan programıdır.
+# Tanım: Xinetd, * inetd * için güvenli bir değiştirme olan, genişletilmiş InterNET hizmetleri arka plan programıdır.
 # URL: ftp://anduin.linuxfromscratch.org/BLFS/xinetd/xinetd-2.3.15.tar.gz
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=xinetd
 version=2.3.15	

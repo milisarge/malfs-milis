@@ -1,7 +1,7 @@
-# Description: GNOME dosya yöneticisi
+# Tanım: GNOME dosya yöneticisi
 # URL: http://live.gnome.org/Nautilus
-# Packager: yasarciv67@gmail.com 
-# Depends on: gnome-autoar libnotify gnome-desktop shared-mime-info gobject-introspection exempi libexif gvfs gtk-update-icon-cache desktop-file-utils libselinux desktop-file-utils tracker
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: gnome-autoar libnotify gnome-desktop shared-mime-info gobject-introspection exempi libexif gvfs gtk-update-icon-cache desktop-file-utils libselinux desktop-file-utils tracker
 
 name=nautilus
 version=3.22.3

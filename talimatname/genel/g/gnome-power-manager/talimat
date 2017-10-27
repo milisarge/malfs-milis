@@ -1,7 +1,7 @@
-# Description: Sistem güç bilgisi ve istatistikleri.
+# Tanım: Sistem güç bilgisi ve istatistikleri.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 upower dconf hicolor-icon-theme gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 upower dconf hicolor-icon-theme gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
 
 name=gnome-power-manager
 version=3.22.2

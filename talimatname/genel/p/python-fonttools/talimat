@@ -1,7 +1,7 @@
-# Description: Font dosyalarını değiştirmek için araçlar
+# Tanım: Font dosyalarını değiştirmek için araçlar
 # URL: http://sourceforge.net/projects/fonttools/
-# Packager: milisarge
-# Depends on: python python-numpy python-setuptools 
+# Paketçi: milisarge
+# Gerekler: python python-numpy python-setuptools 
 
 name=python-fonttools
 version=2.4

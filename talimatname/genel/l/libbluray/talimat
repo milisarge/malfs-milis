@@ -1,7 +1,7 @@
-# Description: Blu-Ray erişim kitaplığı.
+# Tanım: Blu-Ray erişim kitaplığı.
 # URL: http://www.videolan.org/developers/libbluray.html
-# Packager: milisarge
-# Depends on: libxml2 freetype
+# Paketçi: milisarge
+# Gerekler: libxml2 freetype
 
 name=libbluray
 version=0.6.2

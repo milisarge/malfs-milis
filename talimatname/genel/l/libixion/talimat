@@ -1,7 +1,7 @@
-# Description: Genel amaçlı formül çözümleyici ve yorumlayıcı
+# Tanım: Genel amaçlı formül çözümleyici ve yorumlayıcı
 # URL: https://gitlab.com/ixion/ixion/blob/master/README.md
-# Packager: Cihan Alkan
-# Depends on: boost mdds python3
+# Paketçi: Cihan Alkan
+# Gerekler: boost mdds python3
 
 name=libixion
 version=0.12.2

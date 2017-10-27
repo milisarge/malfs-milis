@@ -1,7 +1,7 @@
-# Description: XML Güvenlik Kütüphanesi LibXML2 tabanlı bir C kütüphanesi
+# Tanım: XML Güvenlik Kütüphanesi LibXML2 tabanlı bir C kütüphanesi
 # URL: https://www.aleksey.com/xmlsec/index.html
-# Packager: Cihan Alkan
-# Depends on: libxslt nss
+# Paketçi: Cihan Alkan
+# Gerekler: libxslt nss
 
 name=xmlsec
 version=1.2.24

@@ -1,7 +1,7 @@
-# Description: Freedesktop.org Hicolor icon temasi
+# Tanım: Freedesktop.org Hicolor icon temasi
 # URL: http://icon-theme.freedesktop.org/wiki/HicolorTheme
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=hicolor-icon-theme
 version=0.15

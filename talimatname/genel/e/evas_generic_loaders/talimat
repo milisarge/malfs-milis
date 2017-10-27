@@ -1,7 +1,7 @@
-# Description: evas yükleyicileri
+# Tanım: evas yükleyicileri
 # URL: http://www.enlightenment.org/
-# Packager: milisarge
-# Depends on: efl 
+# Paketçi: milisarge
+# Gerekler: efl 
 
 name=evas_generic_loaders
 version=1.17.0

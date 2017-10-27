@@ -1,7 +1,7 @@
-# Description: Xfce4 panelindeki uygulamalardan bilgi görüntülemek için eklenti
+# Tanım: Xfce4 panelindeki uygulamalardan bilgi görüntülemek için eklenti
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-indicator-plugin
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool xfce4-dev-tools hicolor-icon-theme ido libindicator libindicator-gtk2 libindicator xfce4-panel xdg-utils 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool xfce4-dev-tools hicolor-icon-theme ido libindicator libindicator-gtk2 libindicator xfce4-panel xdg-utils 
 
 name=xfce4-indicator-plugin
 version=2.3.3

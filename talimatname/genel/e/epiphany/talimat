@@ -1,7 +1,7 @@
-# Description: WebKit oluşturma altyapısına dayalı bir GNOME web tarayıcısı.
+# Tanım: WebKit oluşturma altyapısına dayalı bir GNOME web tarayıcısı.
 # URL: http://www.gnome.org/"
-# Packager: yasarciv67@gmail.com
-# Depends on: adwaita-icon-theme avahi libwnck3 avahi gcr gnome-desktop iso-codes libgnome-keyring libnotify webkit2gtk3 gobject-introspection nss xorg-libxkbfile gnome-desktop gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: adwaita-icon-theme avahi libwnck3 avahi gcr gnome-desktop iso-codes libgnome-keyring libnotify webkit2gtk3 gobject-introspection nss xorg-libxkbfile gnome-desktop gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
 
 name=epiphany
 version=3.22.4

@@ -1,7 +1,7 @@
-# Description: 	Güvenli IM platformu olan Telegram uygulaması
+# Tanım: 	Güvenli IM platformu olan Telegram uygulaması
 # URL: http://www.telegram.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=telegram-bin
 version=0.9.49

@@ -1,7 +1,7 @@
-# Description: Qt4 lib için QtWebkit modülü
+# Tanım: Qt4 lib için QtWebkit modülü
 # Url: http://trac.webkit.org/wiki/QtWebKit
-# Packager: milisarge
-# Depends on: ruby python qt4
+# Paketçi: milisarge
+# Gerekler: ruby python qt4
 
 PKGMK_IGNORE_UNPACK="yes"
 

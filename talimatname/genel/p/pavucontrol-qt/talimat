@@ -1,7 +1,7 @@
-# Description: Pulseaudio ayarları için bir Qt tabanlı GUI yapılandırma aracıdır.
+# Tanım: Pulseaudio ayarları için bir Qt tabanlı GUI yapılandırma aracıdır.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: liblxqt pulseaudio glib
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: liblxqt pulseaudio glib
 
 name=pavucontrol-qt
 version=0.2.0

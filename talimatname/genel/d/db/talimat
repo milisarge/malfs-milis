@@ -1,7 +1,7 @@
-# Description: Berkeley DB gömülü veri tabanı sistemi
+# Tanım: Berkeley DB gömülü veri tabanı sistemi
 # URL: http://www.oracle.com/technology/software/products/berkeley-db/index.html
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=db
 version=6.1.26

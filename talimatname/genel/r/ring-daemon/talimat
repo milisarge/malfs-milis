@@ -1,7 +1,7 @@
-# Description: ring.cx is free software for universal communication which respects freedoms and privacy of its users (formerly known as SFLphone)
+# Tanım: ring.cx is free software for universal communication which respects freedoms and privacy of its users (formerly known as SFLphone)
 # URL: https://ring.cx
-# Packager: milisarge
-# Depends on: boost msgpack-c autoconf-archive opendht yaml-cpp alsa-lib pulseaudio jack jsoncpp libsamplerate libsndfile dbus-c++ ffmpeg xorg-libxtst gnutls gsm libupnp libnatpmp crypto++ libva boost libvdpau pjproject-ring restbed 
+# Paketçi: milisarge
+# Gerekler: boost msgpack-c autoconf-archive opendht yaml-cpp alsa-lib pulseaudio jack jsoncpp libsamplerate libsndfile dbus-c++ ffmpeg xorg-libxtst gnutls gsm libupnp libnatpmp crypto++ libva boost libvdpau pjproject-ring restbed 
 
 name=ring-daemon
 version=4.0.0

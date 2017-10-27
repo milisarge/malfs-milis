@@ -1,7 +1,7 @@
-# Description: Python Görüntüleme Kitaplığı (PIL) çatalı
+# Tanım: Python Görüntüleme Kitaplığı (PIL) çatalı
 # URL: http://python-imaging.github.io/
-# Packager: milisarge
-# Depends on: python3 python3-setuptools lcms libwebp tk sane openjpeg
+# Paketçi: milisarge
+# Gerekler: python3 python3-setuptools lcms libwebp tk sane openjpeg
 
 name=python3-pillow
 version=4.2.1

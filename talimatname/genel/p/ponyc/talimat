@@ -1,7 +1,7 @@
-# Description: Aktör modellemeye dayanan yüksek performanslı dil.
+# Tanım: Aktör modellemeye dayanan yüksek performanslı dil.
 # URL: http://ponylang.org/
-# Packager: milisarge
-# Depends on: llvm pcre2
+# Paketçi: milisarge
+# Gerekler: llvm pcre2
 
 name=ponyc
 version=0.19.0

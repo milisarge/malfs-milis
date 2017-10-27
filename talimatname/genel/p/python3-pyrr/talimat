@@ -1,7 +1,7 @@
-# Description: Numpy i kullanarak 3D matematik fonksiyon kütüphanesi
+# Tanım: Numpy i kullanarak 3D matematik fonksiyon kütüphanesi
 # URL: https://github.com/adamlwgriffiths/Pyrr
-# Packager: milisarge
-# Depends on: python3 python3-setuptools python3-multipledispatch python3-numpy
+# Paketçi: milisarge
+# Gerekler: python3 python3-setuptools python3-multipledispatch python3-numpy
 
 name=python3-pyrr
 version=0.9.2

@@ -1,7 +1,7 @@
-# Description: Uzaktan Destek için Bir Hepsi Bir Arada Yazılım.
+# Tanım: Uzaktan Destek için Bir Hepsi Bir Arada Yazılım.
 # URL: http://anydesk.de/
-# Packager: Cihan Alkan
-# Depends on: gtkglext
+# Paketçi: Cihan Alkan
+# Gerekler: gtkglext
 
 name=anydesk
 version=2.9.3

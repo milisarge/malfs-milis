@@ -1,7 +1,7 @@
-# Description: VNC istemcisi
+# Tanım: VNC istemcisi
 # URL: http://tigervnc.org
-# Packager: milisarge
-# Depends on: cmake fltk1 gegl libjpeg-turbo xorg-libxtst xorg-libxfont xorg-xauth xorg-xkbcomp xorg-libpixman libgcrypt xorg-libxdamage gnutls
+# Paketçi: milisarge
+# Gerekler: cmake fltk1 gegl libjpeg-turbo xorg-libxtst xorg-libxfont xorg-xauth xorg-xkbcomp xorg-libpixman libgcrypt xorg-libxdamage gnutls
 
 name=tigervnc
 version=1.6.0

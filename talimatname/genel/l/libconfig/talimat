@@ -1,7 +1,7 @@
-# Description: C / C ++ yapılandırma dosyası kitaplığı
+# Tanım: C / C ++ yapılandırma dosyası kitaplığı
 # URL: http://www.hyperrealm.com/libconfig/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libconfig
 version=1.5

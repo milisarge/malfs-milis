@@ -1,7 +1,7 @@
-# Description : KDE sistem ayarları
+# Tanım: KDE sistem ayarları
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk@hotmail.com
-# Depends on: kf5-kauth kf5-kcmutils kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-khtml kf5-ki18n kf5-kiconthemes kf5-kio kf5-kitemviews kf5-kservice kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui 
+# Paketçi: alihan-ozturk@hotmail.com
+# Gerekler: kf5-kauth kf5-kcmutils kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-khtml kf5-ki18n kf5-kiconthemes kf5-kio kf5-kitemviews kf5-kservice kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui 
 
 name=plasma-systemsettings
 version=5.8.1

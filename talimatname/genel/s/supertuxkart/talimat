@@ -1,7 +1,7 @@
-# Description: 3D kart yarış oyunu
+# Tanım: 3D kart yarış oyunu
 # URL: http://supertuxkart.sourceforge.net/
-# Packager: milisarge
-# Depends on: cmake setconf bluez subversion xorg-mesa imagemagick openal libvorbis fribidi xorg-libxrandr xorg-glu
+# Paketçi: milisarge
+# Gerekler: cmake setconf bluez subversion xorg-mesa imagemagick openal libvorbis fribidi xorg-libxrandr xorg-glu
 
 name=supertuxkart
 version=0.9.2

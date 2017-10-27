@@ -1,7 +1,7 @@
-# Description: X pencere uygulamalarında kullanılabilen uygulamaları sağlar.
+# Tanım: X pencere uygulamalarında kullanılabilen uygulamaları sağlar.
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: harfbuzz libpng xorg-mesa xorg-glu xcb-util xorg-libx11 xorg-libxinerama xorg-libxt xorg-libxfont xorg-libxkbfile xorg-libxmu xorg-libxrender xorg-libxrandr xorg-libxcursor xorg-libxtst xorg-libxxf86vm xorg-libxaw xorg-xbitmaps xorg-libxv xorg-libdmx xorg-libxt 
+# Paketçi: milisarge
+# Gerekler: harfbuzz libpng xorg-mesa xorg-glu xcb-util xorg-libx11 xorg-libxinerama xorg-libxt xorg-libxfont xorg-libxkbfile xorg-libxmu xorg-libxrender xorg-libxrandr xorg-libxcursor xorg-libxtst xorg-libxxf86vm xorg-libxaw xorg-xbitmaps xorg-libxv xorg-libdmx xorg-libxt 
 
 name=xorg-app
 version=7.8

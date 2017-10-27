@@ -1,7 +1,7 @@
-# Description: Gtk2 için C ++ bağları
+# Tanım: Gtk2 için C ++ bağları
 # URL: http://gtkmm.sourceforge.net/
-# Packager: milisarge
-# Depends on: gtk2 pangomm cairomm atkmm
+# Paketçi: milisarge
+# Gerekler: gtk2 pangomm cairomm atkmm
 
 name=gtkmm
 version=2.24.4

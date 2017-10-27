@@ -1,7 +1,7 @@
-# Description: Tamamen entegre bir 3B grafik oluşturma paketi
+# Tanım: Tamamen entegre bir 3B grafik oluşturma paketi
 # URL: http://www.blender.org
-# Packager: yasarciv67@gmail.com
-# Depends on: desktop-file-utils cmake python xorg-libx11 openjpeg libpng freetype boost glew llvm opensubdiv opencolorio openimageio hicolor-icon-theme jack libsndfile openal openexr fftw ffmpeg
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: desktop-file-utils cmake python xorg-libx11 openjpeg libpng freetype boost glew llvm opensubdiv opencolorio openimageio hicolor-icon-theme jack libsndfile openal openexr fftw ffmpeg
 
 name=blender
 version=2.78a

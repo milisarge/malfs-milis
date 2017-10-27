@@ -1,7 +1,7 @@
-# Description: GStreamer multimedya çerçevesi taban eklentileri
+# Tanım: GStreamer multimedya çerçevesi taban eklentileri
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-base.html
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: gstreamer alsa-lib pango cdparanoia libogg libtheora libvorbis xorg-libxv xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: gstreamer alsa-lib pango cdparanoia libogg libtheora libvorbis xorg-libxv xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
 
 name=gstreamer-plugins-base
 version=0.10.36

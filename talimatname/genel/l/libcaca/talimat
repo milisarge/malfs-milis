@@ -1,7 +1,7 @@
-# Description: Renkli ASCII Sanat Kütüphanesi
+# Tanım: Renkli ASCII Sanat Kütüphanesi
 # URL: http://libcaca.zoy.org/
-# Packager: milisarge
-# Depends on: imlib2 
+# Paketçi: milisarge
+# Gerekler: imlib2 
 
 name=libcaca
 version=0.99.beta19

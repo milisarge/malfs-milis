@@ -1,7 +1,7 @@
-# Description: Node.js®, Chrome'un V8 JavaScript motorunda inşa edilmiş bir JavaScript çalışma zamanıdır.
+# Tanım: Node.js®, Chrome'un V8 JavaScript motorunda inşa edilmiş bir JavaScript çalışma zamanıdır.
 # URL: http://nodejs.org/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=node
 version=7.10.0

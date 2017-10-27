@@ -1,7 +1,7 @@
-# Description: Ekrana birşeyler çizme için basit bir araç
+# Tanım: Ekrana birşeyler çizme için basit bir araç
 # URL: https://github.com/E-Tahta/eta-pen
-# Packager: Cihan Alkan
-# Depends on: qt5
+# Paketçi: Cihan Alkan
+# Gerekler: qt5
 
 name=eta-pen
 version=0.1.2

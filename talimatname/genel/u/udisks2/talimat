@@ -1,7 +1,7 @@
-# Description: Diskler ve depolama aygıtlarına erişmek ve bunları değiştirmek için uygulama, araçlar ve kitaplıklar.
+# Tanım: Diskler ve depolama aygıtlarına erişmek ve bunları değiştirmek için uygulama, araçlar ve kitaplıklar.
 # URL: http://www.freedesktop.org/wiki/Software/udisks
-# Packager: milisarge
-# Depends on: acl libgudev expat libatasmart libxslt polkit gobject-introspection docbook-xsl
+# Paketçi: milisarge
+# Gerekler: acl libgudev expat libatasmart libxslt polkit gobject-introspection docbook-xsl
 
 name=udisks2
 version=2.1.6

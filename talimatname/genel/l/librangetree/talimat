@@ -1,7 +1,7 @@
-# Description: librangetree kitaplığı
+# Tanım: librangetree kitaplığı
 # URL: https://github.com/clbr/librangetree
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=librangetree
 version=1.3.1

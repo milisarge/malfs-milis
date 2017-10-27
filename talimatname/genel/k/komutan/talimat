@@ -1,7 +1,7 @@
-# Description: milis işletim sistemi web tabanlı yönetim programı
+# Tanım: milis işletim sistemi web tabanlı yönetim programı
 # URL: https://github.com/milisarge/komutan
-# Packager: milisarge
-# Depends on: python python-pip python-yaml gunicorn
+# Paketçi: milisarge
+# Gerekler: python python-pip python-yaml gunicorn
 name=komutan
 name2=mps
 version=git

@@ -1,7 +1,7 @@
-# Description : GTK + ve GNOME için kullanıcı arabirimi oluşturucu.
+# Tanım: GTK + ve GNOME için kullanıcı arabirimi oluşturucu.
 # URL : http://glade.gnome.org/
-# Packager : milisarge
-# Depends on : gtk3 libxml2 desktop-file-utils intltool gobject-introspection python-gobject itstool docbook-xsl
+# Paketçi: milisarge
+# Gerekler: gtk3 libxml2 desktop-file-utils intltool gobject-introspection python-gobject itstool docbook-xsl
 
 name=glade
 version=3.19.0

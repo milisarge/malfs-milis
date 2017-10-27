@@ -1,7 +1,7 @@
-# Description: Yazım denetimi ve morfolojik analizler için kütüphane ve uygulama
+# Tanım: Yazım denetimi ve morfolojik analizler için kütüphane ve uygulama
 # URL: http://hunspell.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=hunspell
 version=1.3.3

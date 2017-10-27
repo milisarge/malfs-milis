@@ -1,7 +1,7 @@
-# Description: Libburn, optik medyada önceden formatlanmış verileri yazmak için kullanılan bir kütüphanedir
+# Tanım: Libburn, optik medyada önceden formatlanmış verileri yazmak için kullanılan bir kütüphanedir
 # URL: http://icculus.org/burn/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libburn
 version=1.4.2

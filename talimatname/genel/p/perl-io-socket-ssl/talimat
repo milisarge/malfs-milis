@@ -1,7 +1,7 @@
-# Description: "IO::Socket::INET" için neredeyse şeffaf SSL kapsülleme
+# Tanım: "IO::Socket::INET" için neredeyse şeffaf SSL kapsülleme
 # URL: http://search.cpan.org/dist/IO-Socket-SSL/
-# Packager: milisarge
-# Depends on: perl-net-ssleay perl-uri 
+# Paketçi: milisarge
+# Gerekler: perl-net-ssleay perl-uri 
 
 name=perl-io-socket-ssl
 version=1.988

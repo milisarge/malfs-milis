@@ -1,7 +1,7 @@
-# Description: SSH Dosya Aktarım Protokolünü temel alan FUSE istemcisi
+# Tanım: SSH Dosya Aktarım Protokolünü temel alan FUSE istemcisi
 # URL: http://fuse.sourceforge.net/sshfs.html
-# Packager: milisarge@gmail.com
-# Depends on: fuse glib openssh 
+# Paketçi: milisarge@gmail.com
+# Gerekler: fuse glib openssh 
 
 name=sshfs-fuse
 version=2.5

@@ -1,7 +1,7 @@
-# Description: Sodium, şifreleme, şifre çözme, imzalar, şifre karması ve daha fazlası için modern, kullanımı kolay bir yazılım kütüphanesi.
+# Tanım: Sodium, şifreleme, şifre çözme, imzalar, şifre karması ve daha fazlası için modern, kullanımı kolay bir yazılım kütüphanesi.
 # URL: http://doc.libsodium.org/
-# Packager: milisarge
-# Depends on :
+# Paketçi: milisarge
+# Gerekler:
 
 name=libsodium
 version=master

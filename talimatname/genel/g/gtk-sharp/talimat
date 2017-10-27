@@ -1,7 +1,7 @@
-# Description: c# için gtk2 kütüphaneleri
+# Tanım: c# için gtk2 kütüphaneleri
 # URL: http://www.mono-project.com/docs/gui/gtksharp/
-# Packager: milisarge
-# Depends on: mono libglade gtk2
+# Paketçi: milisarge
+# Gerekler: mono libglade gtk2
 
 name=gtk-sharp
 version=2.12.42

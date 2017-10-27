@@ -1,7 +1,7 @@
-# Description: Çeşitli erişilebilirlik arabirimleri sağlayan bir kütüphane.
+# Tanım: Çeşitli erişilebilirlik arabirimleri sağlayan bir kütüphane.
 # URL: http://www.gtk.org/
-# Packager: milisarge
-# Depends on: glib pcre gobject-introspection
+# Paketçi: milisarge
+# Gerekler: glib pcre gobject-introspection
 
 name=atk
 version=2.18.0

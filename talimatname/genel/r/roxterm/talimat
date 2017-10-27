@@ -1,7 +1,7 @@
-# Description: ROXTerm, VTE kütüphanesine dayanan bir terminal emülatörüdür.
+# Tanım: ROXTerm, VTE kütüphanesine dayanan bir terminal emülatörüdür.
 # URL: http://roxterm.sourceforge.net/
-# Packager: milisarge
-# Depends on: dbus-glib vte3 hicolor-icon-theme xorg-libsm lockfile
+# Paketçi: milisarge
+# Gerekler: dbus-glib vte3 hicolor-icon-theme xorg-libsm lockfile
 
 name=roxterm
 version=3.3.1

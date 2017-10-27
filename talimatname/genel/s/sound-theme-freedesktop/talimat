@@ -1,7 +1,7 @@
-# Description: Bu paket masaüstü için ses temaları içeriyor.
+# Tanım: Bu paket masaüstü için ses temaları içeriyor.
 # URL: http://freedesktop.org/wiki/Specifications/sound-theme-spec
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool
 
 name=sound-theme-freedesktop
 version=0.8

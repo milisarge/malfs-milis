@@ -1,7 +1,7 @@
-# Description: Masaüstü bildirim kitaplığı
+# Tanım: Masaüstü bildirim kitaplığı
 # URL: http://www.galago-project.org/news/index.php
-# Packager: milisarge
-# Depends on: gobject-introspection gdk-pixbuf gtk3
+# Paketçi: milisarge
+# Gerekler: gobject-introspection gdk-pixbuf gtk3
 
 name=libnotify
 version=0.7.6

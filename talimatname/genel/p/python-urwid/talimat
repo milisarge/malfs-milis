@@ -1,7 +1,7 @@
-# Description: Urwid, Curses tabanlı bir Python kullanıcı arabirimi kütüphanesi.
+# Tanım: Urwid, Curses tabanlı bir Python kullanıcı arabirimi kütüphanesi.
 # URL: http://excess.org/urwid/
-# Packager: milisarge
-# Depends on: python-setuptools 
+# Paketçi: milisarge
+# Gerekler: python-setuptools 
 
 name=python-urwid
 version=1.2.1

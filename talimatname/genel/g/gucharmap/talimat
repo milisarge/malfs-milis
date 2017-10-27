@@ -1,7 +1,7 @@
-# Description: Gucharmap, Unicode karakter haritası ve yazı tipi görüntüleyici.
+# Tanım: Gucharmap, Unicode karakter haritası ve yazı tipi görüntüleyici.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 itstool gobject-introspection vala
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 itstool gobject-introspection vala
 
 name=gucharmap
 version=8.0.1

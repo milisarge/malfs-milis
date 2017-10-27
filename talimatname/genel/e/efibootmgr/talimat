@@ -1,7 +1,7 @@
-# Description: UEFI üretici yazılımı önyükleme yöneticisi değişkenlerini değiştirmek için kullanılan araç
+# Tanım: UEFI üretici yazılımı önyükleme yöneticisi değişkenlerini değiştirmek için kullanılan araç
 # URL: https://github.com/rhinstaller/efibootmgr
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: efivar
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: efivar
 
 name=efibootmgr
 version=0.12.1

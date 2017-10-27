@@ -1,7 +1,7 @@
-# Description: Konsol müzik çalar.
+# Tanım: Konsol müzik çalar.
 # URL: http://moc.daper.net/
-# Packager: milisarge
-# Depends on: curl libsndfile jack libid3tag libmad
+# Paketçi: milisarge
+# Gerekler: curl libsndfile jack libid3tag libmad
  
 
 name=moc

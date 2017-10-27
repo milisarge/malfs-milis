@@ -1,7 +1,7 @@
-# Description: Python için basit ve hızlı, genişletilebilir JSON kodlayıcı / kod çözücü.
+# Tanım: Python için basit ve hızlı, genişletilebilir JSON kodlayıcı / kod çözücü.
 # URL: http://undefined.org/python/#simplejson
-# Packager: milisarge
-# Depends on: python-setuptools 
+# Paketçi: milisarge
+# Gerekler: python-setuptools 
 
 name=python-simplejson
 version=3.6.3

@@ -1,7 +1,7 @@
-# Description: Netlink soketleri ile ilgili uygulamalar için kitaplık
+# Tanım: Netlink soketleri ile ilgili uygulamalar için kitaplık
 # URL: http://people.suug.ch/~tgr/libnl
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libnl
 version=3.2.27

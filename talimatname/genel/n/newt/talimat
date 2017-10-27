@@ -1,7 +1,7 @@
-# Description: Newt, renkli metin modu, widget tabanlı kullanıcı arabirimleri için bir programlama kütüphanesi.
+# Tanım: Newt, renkli metin modu, widget tabanlı kullanıcı arabirimleri için bir programlama kütüphanesi.
 # URL: https://admin.fedoraproject.org/pkgdb/package/rpms/newt/
-# Packager: milisarge
-# Depends on: popt slang
+# Paketçi: milisarge
+# Gerekler: popt slang
 
 name=newt
 version=0.52.18

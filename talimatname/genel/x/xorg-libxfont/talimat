@@ -1,7 +1,7 @@
-# Description: X.Org icin Xfont kutuphanesi
+# Tanım: X.Org icin Xfont kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: freetype xorg-proto xorg-xtrans xorg-libfontenc 
+# Paketçi: milisarge
+# Gerekler: freetype xorg-proto xorg-xtrans xorg-libfontenc 
 
 name=xorg-libxfont
 version=1.5.1

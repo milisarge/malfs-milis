@@ -1,7 +1,7 @@
-# Description: python3 django web framework
+# Tanım: python3 django web framework
 # URL:         https://www.djangoproject.com/
-# Packager:    milisarge
-# Depends on:  python3-setuptools python3
+# Paketçi:    milisarge
+# Gerekler:  python3-setuptools python3
 
 name=python3-django
 version=1.11.2

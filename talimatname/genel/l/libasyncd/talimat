@@ -1,7 +1,7 @@
-# Description: Gömülü ssl destekli asenkron c,c++ sunucu uygulaması.
+# Tanım: Gömülü ssl destekli asenkron c,c++ sunucu uygulaması.
 # Url: https://github.com/wolkykim/libasyncd
-# Packager: milisarge
-# Depends on: libevent qlibc
+# Paketçi: milisarge
+# Gerekler: libevent qlibc
 
 name=libasyncd
 version=1.0.2

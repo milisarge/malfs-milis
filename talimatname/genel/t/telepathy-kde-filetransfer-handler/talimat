@@ -1,7 +1,7 @@
-# Description: KDE Telepathy dosya aktarım işleyici
+# Tanım: KDE Telepathy dosya aktarım işleyici
 # URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals 
 
 name=telepathy-kde-filetransfer-handler
 version=16.08.2

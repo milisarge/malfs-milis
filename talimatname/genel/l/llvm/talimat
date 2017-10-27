@@ -1,7 +1,7 @@
-# Description: LLVM derleyicisi
+# Tanım: LLVM derleyicisi
 # URL:         http://llvm.org/
-# Packager:    milisarge
-# Depends on:  python cmake
+# Paketçi:    milisarge
+# Gerekler:  python cmake
 
 name=llvm
 version=4.0.0

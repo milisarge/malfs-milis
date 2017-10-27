@@ -1,7 +1,7 @@
-# Description: CD/DVD yönetim aracı
+# Tanım: CD/DVD yönetim aracı
 # URL: https://wiki.gnome.org/Apps/Brasero
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk-doc yelp-tools gnome-common intltool libburn libisofs nautilus gobject-introspection gconf itstool gtk3 gstreamer1-plugins-base totem-pl-parser cdrkit cdrdao shared-mime-info libcanberra dvd+rw-tools dconf libnotify gvfs 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk-doc yelp-tools gnome-common intltool libburn libisofs nautilus gobject-introspection gconf itstool gtk3 gstreamer1-plugins-base totem-pl-parser cdrkit cdrdao shared-mime-info libcanberra dvd+rw-tools dconf libnotify gvfs 
 
 name=brasero
 version=3.12.1

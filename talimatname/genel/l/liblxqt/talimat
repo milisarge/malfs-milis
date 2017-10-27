@@ -1,7 +1,7 @@
-# Description: Liblxqt tüm LXQt bileşenleri için temel yardımcı program kitaplığıdır.
+# Tanım: Liblxqt tüm LXQt bileşenleri için temel yardımcı program kitaplığıdır.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: kf5-kwindowsystem libqtxdg
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: kf5-kwindowsystem libqtxdg
 
 name=liblxqt
 version=0.11.1

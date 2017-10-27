@@ -1,7 +1,7 @@
-# Description: VPN istemcisi
+# Tanım: VPN istemcisi
 # URL: http://www.openvpn.net
-# Packager: milisarge
-# Depends on:  
+# Paketçi: milisarge
+# Gerekler:  
 
 name=openvpn
 version=2.4.0

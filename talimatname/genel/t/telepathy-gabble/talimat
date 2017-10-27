@@ -1,7 +1,7 @@
-# Description: Telepati için bir Jabber / XMPP bağlantı yöneticisi
+# Tanım: Telepati için bir Jabber / XMPP bağlantı yöneticisi
 # URL: http://telepathy.freedesktop.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: telepathy-glib libsoup libnice sqlite libxslt
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: telepathy-glib libsoup libnice sqlite libxslt
 
 name=telepathy-gabble
 version=0.18.3

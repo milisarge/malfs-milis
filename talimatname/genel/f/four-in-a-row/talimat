@@ -1,7 +1,7 @@
-# Description: Kazanmak için aynı renkteki çizgileri yapın
+# Tanım: Kazanmak için aynı renkteki çizgileri yapın
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache hicolor-icon-theme gtk3 libcanberra librsvg tdb
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache hicolor-icon-theme gtk3 libcanberra librsvg tdb
 
 name=four-in-a-row
 version=3.22.1

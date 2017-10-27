@@ -1,7 +1,7 @@
-# Description: python3 dialog arayüzü
+# Tanım: python3 dialog arayüzü
 # URL: http://pythondialog.sf.net
-# Packager: milisarge
-# Depends on: python3
+# Paketçi: milisarge
+# Gerekler: python3
 
 name=python3-pythondialog
 _name=pythondialog

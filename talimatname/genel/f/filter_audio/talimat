@@ -1,7 +1,7 @@
-# Description: Webrtc kodundan yapılan hafif ses filtreleme kitaplığı.
+# Tanım: Webrtc kodundan yapılan hafif ses filtreleme kitaplığı.
 # URL: https://github.com/irungentoo/filter_audio
-# packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=filter_audio
 version=master

@@ -1,7 +1,7 @@
-# Description: Berkeley Mail'den türetilen bir komut satırı posta kullanıcı aracısı.
+# Tanım: Berkeley Mail'den türetilen bir komut satırı posta kullanıcı aracısı.
 # URL: http://heirloom.sourceforge.net/mailx.html
-# Packager: milisarge
-# Depends on: openssl kerberos sendmail
+# Paketçi: milisarge
+# Gerekler: openssl kerberos sendmail
 
 name=mailx
 version=12.5	

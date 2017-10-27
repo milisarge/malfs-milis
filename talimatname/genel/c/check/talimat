@@ -1,7 +1,7 @@
-# Description: C için birim test çerçevesi
+# Tanım: C için birim test çerçevesi
 # URL:	http://check.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=check
 version=0.10.0

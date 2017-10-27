@@ -1,7 +1,7 @@
-# Description: Libglade için bir C ++ sarmalayıcı.
+# Tanım: Libglade için bir C ++ sarmalayıcı.
 # URL: http://gtkmm.sourceforge.net/
-# Packager: yasarciv67@gmail.com
-# Depends on: pkg-config libglade gtkmm
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: pkg-config libglade gtkmm
 
 name=libglademm
 version=2.6.7

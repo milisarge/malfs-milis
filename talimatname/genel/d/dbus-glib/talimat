@@ -1,7 +1,7 @@
-# Description: D-Bus GLib paketi, D-Bus API'sine GLib arabirimleri içerir.
+# Tanım: D-Bus GLib paketi, D-Bus API'sine GLib arabirimleri içerir.
 # URL: http://www.freedesktop.org/wiki/Software/DBusBindings
-# Packager: milisarge
-# Depends on: dbus expat glib
+# Paketçi: milisarge
+# Gerekler: dbus expat glib
 
 name=dbus-glib
 version=0.104

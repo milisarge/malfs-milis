@@ -1,7 +1,7 @@
-# Description: Blok cihazlarının NBD protokolüyle paylaşma ve kullanma
+# Tanım: Blok cihazlarının NBD protokolüyle paylaşma ve kullanma
 # URL: http://nbd.sourceforge.net/
 # Maintainer: milisarge
-# Depends on: gnutls glib
+# Gerekler: gnutls glib
 
 name=nbd
 version=3.15.2

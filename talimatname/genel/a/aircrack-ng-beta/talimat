@@ -1,7 +1,7 @@
-# Description: 802.11 WEP ve WPA-PSK protokolleri için key cracker.
+# Tanım: 802.11 WEP ve WPA-PSK protokolleri için key cracker.
 # URL: http://www.aircrack-ng.org/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: sqlite iw net-tools wireless-tools
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: sqlite iw net-tools wireless-tools
 
 name=aircrack-ng-beta
 version=1.2

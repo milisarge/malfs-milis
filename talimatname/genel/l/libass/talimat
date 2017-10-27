@@ -1,7 +1,7 @@
-# Description: Libass ASS / SSA (Gelişmiş Altyapı Alfa / Altyapı Alfa) altyazı biçimi için taşınabilir bir altyazı oluşturucudur. Çoğunlukla VSFilter ile uyumludur.
+# Tanım: Libass ASS / SSA (Gelişmiş Altyapı Alfa / Altyapı Alfa) altyazı biçimi için taşınabilir bir altyazı oluşturucudur. Çoğunlukla VSFilter ile uyumludur.
 # URL: https://github.com/libass
-# Packager: milisarge
-# Depends on: freetype fribidi xorg-fontconfig harfbuzz
+# Paketçi: milisarge
+# Gerekler: freetype fribidi xorg-fontconfig harfbuzz
 
 name=libass
 version=0.13.1

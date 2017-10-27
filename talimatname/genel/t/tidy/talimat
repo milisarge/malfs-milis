@@ -1,7 +1,7 @@
-# Description: HTML, XHTML ve XML dosyalarını okumak ve işaretleme biçimini temizlemek için kullanılan araçlar ve kitaplıklar
+# Tanım: HTML, XHTML ve XML dosyalarını okumak ve işaretleme biçimini temizlemek için kullanılan araçlar ve kitaplıklar
 # URL: http://tidy.sourceforge.net/ 
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=tidy
 version=20101110

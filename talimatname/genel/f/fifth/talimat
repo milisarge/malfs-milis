@@ -1,7 +1,7 @@
-# Description: Opera'nın en iyi özelliklerini taşıyan Linux'a özel tarayıcı
+# Tanım: Opera'nın en iyi özelliklerini taşıyan Linux'a özel tarayıcı
 # URL: http://fifth-browser.sourceforge.net/
-# Packager: milisarge
-# Depends on: webkitfltk urlmatch physfs desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: webkitfltk urlmatch physfs desktop-file-utils
 
 name=fifth
 version=git

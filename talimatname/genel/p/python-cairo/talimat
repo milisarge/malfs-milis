@@ -1,7 +1,7 @@
-# Description: Cairo kütüphanesi için Python2 konektörü
+# Tanım: Cairo kütüphanesi için Python2 konektörü
 # URL: http://www.cairographics.org/
-# Packager: milisarge
-# Depends on: cairo 
+# Paketçi: milisarge
+# Gerekler: cairo 
 
 name=python-cairo
 version=1.10.0

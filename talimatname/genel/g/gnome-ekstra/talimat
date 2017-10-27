@@ -1,7 +1,7 @@
-# Description: gnome-ekstra sistem
+# Tanım: gnome-ekstra sistem
 # URL: sistem
-# Packager: yasarciv67@gmail.com
-# Depends on: aisleriot brasero four-in-a-row gnome-chess gnome-disk-utility gnome-maps  gucharmap quadrapassel rhythmbox seahorse seahorse-nautilus shotwell
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: aisleriot brasero four-in-a-row gnome-chess gnome-disk-utility gnome-maps  gucharmap quadrapassel rhythmbox seahorse seahorse-nautilus shotwell
 
 name=gnome-ekstra
 version=1

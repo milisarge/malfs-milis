@@ -1,7 +1,7 @@
-# Description: gl/glx kütüphane seçicisi
+# Tanım: gl/glx kütüphane seçicisi
 # URL: talimatname/genel/gl-select
-# Packager: milisarge
-# Depends on: xorg-server
+# Paketçi: milisarge
+# Gerekler: xorg-server
 
 name=gl-select
 version=1.6

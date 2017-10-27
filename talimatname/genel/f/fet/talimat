@@ -1,7 +1,7 @@
-# Description: Bir okul, lise veya üniversitenin zaman çizelgesini otomatik olarak planlamak için bir yazılım.
+# Tanım: Bir okul, lise veya üniversitenin zaman çizelgesini otomatik olarak planlamak için bir yazılım.
 # URL: http://lalescu.ro/liviu/fet/
-# Packager: Cihan Alkan
-# Depends on: qt5 hicolor-icon-theme
+# Paketçi: Cihan Alkan
+# Gerekler: qt5 hicolor-icon-theme
 
 name=fet
 version=5.33.1

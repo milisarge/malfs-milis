@@ -1,7 +1,7 @@
-# Description: Sistem çağrı izleme programı (iz, makas, vb. gibi)
+# Tanım: Sistem çağrı izleme programı (iz, makas, vb. gibi)
 # URL: http://sourceforge.net/projects/strace/
-# Packager: milisarge
-# Depends on: libunwind
+# Paketçi: milisarge
+# Gerekler: libunwind
 
 name=strace
 version=4.12

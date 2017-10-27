@@ -1,7 +1,7 @@
-# Description: ACPI olayları için esnek ve genişletilebilir bir arthizmet.
+# Tanım: ACPI olayları için esnek ve genişletilebilir bir arthizmet.
 # URL: 		http://sourceforge.net/projects/acpid2/
-# Packager: 	milisarge
-# Depends on:
+# Paketçi: 	milisarge
+# Gerekler:
 
 name=acpid
 version=2.0.25

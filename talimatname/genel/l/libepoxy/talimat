@@ -1,7 +1,7 @@
-# Description: OpenGL işlev göstergesi yönetimi ile ilgili kitaplık
+# Tanım: OpenGL işlev göstergesi yönetimi ile ilgili kitaplık
 # URL: https://github.com/anholt/libepoxy
-# Packager: milisarge
-# Depends on: glibc xorg-mesa python xorg-util-macros 
+# Paketçi: milisarge
+# Gerekler: glibc xorg-mesa python xorg-util-macros 
 
 name=libepoxy
 version=1.3.1

@@ -1,7 +1,7 @@
-# Description: GNUPlot, bir grafik çizim yazılımı
+# Tanım: GNUPlot, bir grafik çizim yazılımı
 # URL: http://www.gnuplot.info/
-# Packager: milisarge
-# Depends on: libgd pango
+# Paketçi: milisarge
+# Gerekler: libgd pango
 
 name=gnuplot
 version=5.0.5

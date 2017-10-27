@@ -1,7 +1,7 @@
-# Description: Testdisk güçlü ve özgür bir veri kurtarma yazılımıdır
+# Tanım: Testdisk güçlü ve özgür bir veri kurtarma yazılımıdır
 # URL: http://www.cgsecurity.org/wiki/TestDisk
-# Packager: yasarciv
-# Depends on: ntfs-3g libjpeg-turbo
+# Paketçi: yasarciv
+# Gerekler: ntfs-3g libjpeg-turbo
 
 name=testdisk
 version=7.0

@@ -1,7 +1,7 @@
-# Description: java .class dosyalarının kaynak kodunu gösteren uygulama
+# Tanım: java .class dosyalarının kaynak kodunu gösteren uygulama
 # URL: http://jd.benow.ca/
-# Packager: milisarge
-# Depends on: jre
+# Paketçi: milisarge
+# Gerekler: jre
 
 name=jd-gui
 version=1.4.0

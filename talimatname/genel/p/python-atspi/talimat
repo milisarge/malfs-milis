@@ -1,7 +1,7 @@
-# Description: Bu pakette, GNOME Erişilebilirlik'in temel bileşenleri için Python bağları bulunmaktadır.
+# Tanım: Bu pakette, GNOME Erişilebilirlik'in temel bileşenleri için Python bağları bulunmaktadır.
 # URL: http://www.cairographics.org/
-# Packager: milisarge
-# Depends on: python-gobject at-spi2-core 
+# Paketçi: milisarge
+# Gerekler: python-gobject at-spi2-core 
 
 name=python-atspi
 version=2.16.0

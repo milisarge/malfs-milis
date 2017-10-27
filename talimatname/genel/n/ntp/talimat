@@ -1,7 +1,7 @@
-# Description: NTP, bilgisayar saatlerini bir ağ üzerinden senkronize etmek için tasarlanmış bir protokoldür.
+# Tanım: NTP, bilgisayar saatlerini bir ağ üzerinden senkronize etmek için tasarlanmış bir protokoldür.
 # URL: http://www.ntp.org/ 
-# Packagers: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ntp
 version=4.2.8p5

@@ -1,7 +1,7 @@
-# Description: Netfilter kullanıcı alanı araçları
+# Tanım: Netfilter kullanıcı alanı araçları
 # URL: http://netfilter.org/projects/nftables/ 
-# Packager: milisarge
-# Depends on: docbook2x libmnl libnftnl
+# Paketçi: milisarge
+# Gerekler: docbook2x libmnl libnftnl
 
 name=nftables
 version=0.2

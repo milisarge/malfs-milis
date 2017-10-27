@@ -1,7 +1,7 @@
-# Description: Zip modülü, bir Perl programının Zip arşiv dosyalarını oluşturmasına, işlenmesine, okumasına ve yazmasına olanak tanır.
+# Tanım: Zip modülü, bir Perl programının Zip arşiv dosyalarını oluşturmasına, işlenmesine, okumasına ve yazmasına olanak tanır.
 # URL: http://search.cpan.org/~adamk/Archive-Zip-1.23/lib/Archive/Zip.pm
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on :
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler:
 
 name=perl-archive-zip
 version=1.57

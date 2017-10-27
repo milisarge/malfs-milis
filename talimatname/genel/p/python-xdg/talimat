@@ -1,7 +1,7 @@
-# Description: FreeDesktop standartlarına erişmek için kullanılan Python kütüphanesi
+# Tanım: FreeDesktop standartlarına erişmek için kullanılan Python kütüphanesi
 # URL: http://freedesktop.org/wiki/Software/pyxdg
-# Packager: geantbrun at gmail dot com
-# Depends on: python 
+# Paketçi: geantbrun at gmail dot com
+# Gerekler: python 
 
 name=python-xdg
 version=0.25

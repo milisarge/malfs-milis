@@ -1,7 +1,7 @@
-# Description: IBus is an Intelligent Input Bus
+# Tanım: IBus is an Intelligent Input Bus
 # URL: http://ibus.googlecode.com
-# Packager: yasarciv67@gmail.com
-# Depends on: dconf iso-codes gobject-introspection gtk2 libnotify vala python python-gobject libxkbcommon dbus-python python-xdg
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: dconf iso-codes gobject-introspection gtk2 libnotify vala python python-gobject libxkbcommon dbus-python python-xdg
 
 name=ibus
 version=1.5.15

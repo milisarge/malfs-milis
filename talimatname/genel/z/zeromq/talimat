@@ -1,7 +1,7 @@
-# Description: Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ.
+# Tanım: Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ.
 # URL: http://www.zeromq.org
-# Packager: milisarge
-# Depends on: asciidoc xmlto libsodium libpgm
+# Paketçi: milisarge
+# Gerekler: asciidoc xmlto libsodium libpgm
 
 name=zeromq
 version=4.2.2

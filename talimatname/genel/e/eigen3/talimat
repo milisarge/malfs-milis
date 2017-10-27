@@ -1,7 +1,7 @@
-# Description: Vektör ve matris matematik için hafif bir C ++ şablon kütüphanesi.
+# Tanım: Vektör ve matris matematik için hafif bir C ++ şablon kütüphanesi.
 # URL: http://eigen.tuxfamily.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: cmake
 
 name=eigen3
 version=3.2.5

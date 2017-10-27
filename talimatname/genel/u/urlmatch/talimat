@@ -1,7 +1,7 @@
-# Description: Hızlı URL eşleştirici kitaplığı
+# Tanım: Hızlı URL eşleştirici kitaplığı
 # URL: https://github.com/clbr/urlmatch
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=urlmatch
 version=1.0

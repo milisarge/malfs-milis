@@ -1,7 +1,7 @@
-# Description: Elf dosyalarını işlemek için araçlar ve kütüphaneler seti.
+# Tanım: Elf dosyalarını işlemek için araçlar ve kütüphaneler seti.
 # URL: http://xiph.org/ao/
-# Packager: tnut at nutyx dot org
-# Depends on:
+# Paketçi: tnut at nutyx dot org
+# Gerekler:
 
 name=elfutils
 version=0.164

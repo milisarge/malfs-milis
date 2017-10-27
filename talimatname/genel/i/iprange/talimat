@@ -1,7 +1,7 @@
-# Description: ip aralıklarını yönetme aracı- firehol projesinden
+# Tanım: ip aralıklarını yönetme aracı- firehol projesinden
 # URL: http://firehol.org/
-# Packager: milisarge
-# Depends on: help2man 
+# Paketçi: milisarge
+# Gerekler: help2man 
 
 name=iprange
 version=1.0.3

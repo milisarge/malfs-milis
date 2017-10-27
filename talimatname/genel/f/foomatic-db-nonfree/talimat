@@ -1,7 +1,7 @@
-# Description: Foomatic veritabanı uzantısı, özgür olmayan lisanslarla üreticinin sağladığı PPD dosyalarından oluşur ve bunların yeniden dağıtılabilmelerini sağlar.
+# Tanım: Foomatic veritabanı uzantısı, özgür olmayan lisanslarla üreticinin sağladığı PPD dosyalarından oluşur ve bunların yeniden dağıtılabilmelerini sağlar.
 # URL: http://www.linuxprinting.org/foomatic.html
-# Packager: milisarge
-# Depends on: cups perl libxml2
+# Paketçi: milisarge
+# Gerekler: cups perl libxml2
 
 name=foomatic-db-nonfree
 version=20150819

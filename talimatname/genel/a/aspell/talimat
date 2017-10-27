@@ -1,7 +1,7 @@
-# Description: İnteraktif yazım denetimi programı ve kütüphaneleri.
+# Tanım: İnteraktif yazım denetimi programı ve kütüphaneleri.
 # URL: http://aspell.net
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=aspell
 version=0.60.6.1

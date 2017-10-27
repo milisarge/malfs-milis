@@ -1,7 +1,7 @@
-# Description: Exim, Internet'e bağlı Unix sistemlerinde kullanılmak üzere Cambridge Üniversitesi'nde geliştirilen bir mesaj aktarma aracısıdır (MTA).
+# Tanım: Exim, Internet'e bağlı Unix sistemlerinde kullanılmak üzere Cambridge Üniversitesi'nde geliştirilen bir mesaj aktarma aracısıdır (MTA).
 # URL: http://www.exim.org
-# Packager: berlius at nutyx dot com
-# Depends on: db openssl pcre cyrus-sasl libidn pam mariadb openldap openssl gnutls postgresql sqlite xorg
+# Paketçi: berlius at nutyx dot com
+# Gerekler: db openssl pcre cyrus-sasl libidn pam mariadb openldap openssl gnutls postgresql sqlite xorg
 
 name=exim
 version=4.86

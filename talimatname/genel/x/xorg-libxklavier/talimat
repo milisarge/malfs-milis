@@ -1,7 +1,7 @@
-# Description: X ortami icin klavye kutuphanesi
+# Tanım: X ortami icin klavye kutuphanesi
 # URL:  http://www.freedesktop.org/wiki/Software/LibXklavier
-# Packager: milisarge
-# Depends on: iso-codes libxml2 xorg-libx11 glib gobject-introspection xorg-libxkbfile 
+# Paketçi: milisarge
+# Gerekler: iso-codes libxml2 xorg-libx11 glib gobject-introspection xorg-libxkbfile 
 
 _name=libxklavier
 name=xorg-libxklavier

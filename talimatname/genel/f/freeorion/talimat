@@ -1,7 +1,7 @@
-# Description: Dönüşümlü galaxy ve uzay istila oyunu 
+# Tanım: Dönüşümlü galaxy ve uzay istila oyunu 
 # URL: http://www.freeorion.org/
-# Packager: milisarge
-# Depends on: boost cmake boost python sdl2 libvorbis glew openal hicolor-icon-theme freetype
+# Paketçi: milisarge
+# Gerekler: boost cmake boost python sdl2 libvorbis glew openal hicolor-icon-theme freetype
 
 name=freeorion
 version=0.4.7

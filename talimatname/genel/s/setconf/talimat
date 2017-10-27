@@ -1,7 +1,7 @@
-# Description: Ayar dosyalarındaki ayarları kolayca değiştirme aracı
+# Tanım: Ayar dosyalarındaki ayarları kolayca değiştirme aracı
 # URL: http://setconf.roboticoverlords.org/
-# Packager: milisarge
-# Depends: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=setconf
 version=0.7.4

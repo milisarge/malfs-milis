@@ -1,7 +1,7 @@
-# Description: Http üzerinden tek yönlü senkronizasyon
+# Tanım: Http üzerinden tek yönlü senkronizasyon
 # URL:         http://jw.tks6.net/files/crux/httpup_manual.html 
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=httpup
 version=0.4.0l

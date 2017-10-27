@@ -1,7 +1,7 @@
-# Description: Transparan SOCKS vekil kütüphanesi (ipv6 destekli)
+# Tanım: Transparan SOCKS vekil kütüphanesi (ipv6 destekli)
 # URL: https://github.com/Elysion-tcfa/tsocks
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=tsocks
 version=1.8beta6

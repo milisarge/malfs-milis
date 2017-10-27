@@ -1,7 +1,7 @@
-# Description: GObject koleksiyon kütüphanesi (eski)
+# Tanım: GObject koleksiyon kütüphanesi (eski)
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: glib gobject-introspection vala 
+# Paketçi: milisarge
+# Gerekler: glib gobject-introspection vala 
 
 name=libgee
 version=0.18.0

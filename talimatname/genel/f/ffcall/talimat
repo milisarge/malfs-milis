@@ -1,7 +1,7 @@
-# Description: Gömülü yorumlayıcılarda yabancı işlev çağrıları uygulamak için C kütüphanesi
+# Tanım: Gömülü yorumlayıcılarda yabancı işlev çağrıları uygulamak için C kütüphanesi
 # URL: http://www.gnu.org/software/libffcall/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ffcall
 version=1.10

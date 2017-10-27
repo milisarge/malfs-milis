@@ -1,7 +1,7 @@
-# Description: MATE için yaygın geliştirme makroları
+# Tanım: MATE için yaygın geliştirme makroları
 # URL: http://www.mate-desktop.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk-doc intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk-doc intltool
 
 name=mate-common
 version=1.18.0

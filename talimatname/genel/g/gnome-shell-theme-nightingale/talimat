@@ -1,7 +1,7 @@
-# Description: Gnome-shell için bir kabuk teması
+# Tanım: Gnome-shell için bir kabuk teması
 # URL: https://www.opendesktop.org/p/1013006/
-# Packager: yasarciv67@gmail.com
-# Depends on: gnome-shell
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gnome-shell
 
 name=gnome-shell-theme-nightingale
 _name=Nightingale

@@ -1,7 +1,7 @@
-# Description: mplayer ve mplayer2 tabanlı çoklu kütüphane destekli medya uygulaması
+# Tanım: mplayer ve mplayer2 tabanlı çoklu kütüphane destekli medya uygulaması
 # URL: http://mpv.io/
-# Packager: milisarge
-# Depends on: sdl2 sndio rsound openal uchardet v4l-utils libcdio-paranoia ffmpeg lcms2 samba ladspa xorg-libxscrnsaver libbluray libvdpau libquvi xorg-libxinerama xorg-libxv libxkbcommon desktop-file-utils hicolor-icon-theme xdg-utils lua lua52 libdvdnav xorg-libxrandr jack 
+# Paketçi: milisarge
+# Gerekler: sdl2 sndio rsound openal uchardet v4l-utils libcdio-paranoia ffmpeg lcms2 samba ladspa xorg-libxscrnsaver libbluray libvdpau libquvi xorg-libxinerama xorg-libxv libxkbcommon desktop-file-utils hicolor-icon-theme xdg-utils lua lua52 libdvdnav xorg-libxrandr jack 
 
 name=mpv
 version=0.26.0

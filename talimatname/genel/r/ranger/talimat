@@ -1,7 +1,7 @@
-# Description: Ranger, VI anahtar bağları olan bir dosya yöneticisidir.
+# Tanım: Ranger, VI anahtar bağları olan bir dosya yöneticisidir.
 # URL: http://ranger.nongnu.org/
-# Packager: milisarge
-# Depends on: python3
+# Paketçi: milisarge
+# Gerekler: python3
 
 name=ranger
 version=1.8.1

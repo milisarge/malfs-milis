@@ -1,7 +1,7 @@
-# Description: python3 bilimsel araç kütüphanesi
+# Tanım: python3 bilimsel araç kütüphanesi
 # URL: http://numpy.scipy.org/
-# Packager: milisarge
-# Depends on: python3-setuptools lapack
+# Paketçi: milisarge
+# Gerekler: python3-setuptools lapack
 
 name=python3-numpy
 version=1.11.2

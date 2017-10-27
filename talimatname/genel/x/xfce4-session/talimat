@@ -1,7 +1,7 @@
-# Description: Xfce4-session, Xfce için bir oturum yöneticisi
+# Tanım: Xfce4-session, Xfce için bir oturum yöneticisi
 # URL: http://www.xfce.org
-# Packager: milisarge
-# Depends on: gnupg polkit consolekit2 udisks upower xorg-libxres libwnck xfce4-libui xorg-app xlockmore
+# Paketçi: milisarge
+# Gerekler: gnupg polkit consolekit2 udisks upower xorg-libxres libwnck xfce4-libui xorg-app xlockmore
 
 name=xfce4-session
 version=4.12.1

@@ -1,7 +1,7 @@
-# Description: $@ Öğesinin uygun yerelleştirilmesiyle minimum deneme/yakalama
+# Tanım: $@ Öğesinin uygun yerelleştirilmesiyle minimum deneme/yakalama
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=perl-try-tiny
 version=0.22

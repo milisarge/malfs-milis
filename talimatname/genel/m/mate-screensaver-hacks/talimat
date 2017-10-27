@@ -1,7 +1,7 @@
-# Description:  MATE için xscreensaver'dan ekran koruyucularını etkinleştir.
+# Tanım:  MATE için xscreensaver'dan ekran koruyucularını etkinleştir.
 # URL: http://www.jwz.org/xscreensaver/
-# Packager: yasarciv
-# Depends on: xscreensaver
+# Paketçi: yasarciv
+# Gerekler: xscreensaver
 
 name=mate-screensaver-hacks
 version=5.26

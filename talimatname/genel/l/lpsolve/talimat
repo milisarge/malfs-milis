@@ -1,7 +1,7 @@
-# Description: Karışık Tamsayılı Lineer Programlama (MILP) çözücü
+# Tanım: Karışık Tamsayılı Lineer Programlama (MILP) çözücü
 # URL: http://lpsolve.sourceforge.net/
-# Packager: Cihan Alkan
-# Depends on:
+# Paketçi: Cihan Alkan
+# Gerekler:
 
 name=lpsolve
 version=5.5.2.5

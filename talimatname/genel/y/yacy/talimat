@@ -1,7 +1,7 @@
-# Description: p2p merkezi olmayan arama motoru
+# Tanım: p2p merkezi olmayan arama motoru
 # URL: http://yacy.net/
-# Packager: milisarge@gmail.com
-# Depends on: openjdk apache-ant
+# Paketçi: milisarge@gmail.com
+# Gerekler: openjdk apache-ant
 
 name=yacy
 version=1.82

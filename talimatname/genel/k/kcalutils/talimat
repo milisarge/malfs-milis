@@ -1,7 +1,7 @@
-# Description : KDE takvim yardımcı program kütüphanesi
+# Tanım: KDE takvim yardımcı program kütüphanesi
 # URL : https://projects.kde.org/projects/kde/
-# Packager : alihan-oztuk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules python kf5-kdoctools kcalcore kidentitymanagement
+# Paketçi: alihan-oztuk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules python kf5-kdoctools kcalcore kidentitymanagement
 
 name=kcalutils
 version=16.08.2

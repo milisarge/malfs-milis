@@ -1,7 +1,7 @@
-# Description: XCB yardımcı programları kitaplığı
+# Tanım: XCB yardımcı programları kitaplığı
 # URL: http://xcb.freedesktop.org
-# Packager: milisarge
-# Depends on: libxcb xcb-util xorg-util-macros
+# Paketçi: milisarge
+# Gerekler: libxcb xcb-util xorg-util-macros
 
 name=xcb-util-image
 version=0.4.0

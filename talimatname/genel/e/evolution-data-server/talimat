@@ -1,7 +1,7 @@
-# Description: Kartvizit görevleri ve takvim bilgileri ile çalışan programlar.
+# Tanım: Kartvizit görevleri ve takvim bilgileri ile çalışan programlar.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: vim db gnome-online-accounts gnome-common gperf icu libgdata libical libsecret libsoup nss libgweather vala gobject-introspection kerberos gtk3 gtk-doc openldap
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: vim db gnome-online-accounts gnome-common gperf icu libgdata libical libsecret libsoup nss libgweather vala gobject-introspection kerberos gtk3 gtk-doc openldap
 
 name=evolution-data-server
 version=3.22.6

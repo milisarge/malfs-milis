@@ -1,7 +1,7 @@
-# Description: ISO ülkesi, alt bölüm, dil, para birimi ve senaryo tanımları ve çevirileri
+# Tanım: ISO ülkesi, alt bölüm, dil, para birimi ve senaryo tanımları ve çevirileri
 # URL: http://pypi.python.org/pypi/pycountry
-# Packager: milisarge
-# Depends on: python-setuptools python-lxml 
+# Paketçi: milisarge
+# Gerekler: python-setuptools python-lxml 
 
 name=python-pycountry
 version=1.5

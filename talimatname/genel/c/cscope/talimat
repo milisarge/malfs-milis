@@ -1,7 +1,7 @@
-# Description: Geliştiricinin kaynak koda gözatma aracı 
+# Tanım: Geliştiricinin kaynak koda gözatma aracı 
 # URL: http://cscope.sourceforge.net/
-# packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=cscope
 version=15.8b

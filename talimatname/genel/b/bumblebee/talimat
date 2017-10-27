@@ -1,7 +1,7 @@
-# Description: NVIDIA VirtualGL destek uygulaması
+# Tanım: NVIDIA VirtualGL destek uygulaması
 # URL:         http://www.bumblebee-project.org
-# Packager:    milisarge
-# Depends on:  virtualgl glib
+# Paketçi:    milisarge
+# Gerekler:  virtualgl glib
 
 name=bumblebee
 version=3.2.1

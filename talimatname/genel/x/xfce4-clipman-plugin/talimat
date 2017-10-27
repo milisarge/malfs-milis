@@ -1,7 +1,7 @@
-# Description: Xfce4 paneli için bir pano eklentisi
+# Tanım: Xfce4 paneli için bir pano eklentisi
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-clipman-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel libunique1 xorg-libxtst qrencode
+# Paketçi: milisarge
+# Gerekler: xfce4-panel libunique1 xorg-libxtst qrencode
 
 name=xfce4-clipman-plugin
 version=1.2.6

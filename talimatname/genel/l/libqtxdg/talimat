@@ -1,7 +1,7 @@
-# Description: Freedesktop.org'u sağlayan kütüphane Qt için XDG teknik özellikleri uygulamaları
+# Tanım: Freedesktop.org'u sağlayan kütüphane Qt için XDG teknik özellikleri uygulamaları
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake gtk2
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake gtk2
 
 name=libqtxdg
 version=2.0.0

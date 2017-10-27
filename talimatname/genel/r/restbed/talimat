@@ -1,7 +1,7 @@
-# Description: A framework for asynchronous RESTful functionality in C++11 applications
+# Tanım: A framework for asynchronous RESTful functionality in C++11 applications
 # URL: https://github.com/Corvusoft/restbed
-# Packager: milisarge
-# Depends on: cmake asio kashmir
+# Paketçi: milisarge
+# Gerekler: cmake asio kashmir
 
 name=restbed
 version=4.6

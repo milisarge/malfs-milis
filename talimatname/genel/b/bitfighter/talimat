@@ -1,7 +1,7 @@
-# Description: Hızlı tempolu ekip tabanlı dış alan çok oyunculu muharebe oyunu
+# Tanım: Hızlı tempolu ekip tabanlı dış alan çok oyunculu muharebe oyunu
 # URL:         http://bitfighter.org/
-# Packager:    milisarge
-# Depends on:  cmake xorg-glu sdl2 libpng libvorbis libmodplug openal speex 
+# Paketçi:    milisarge
+# Gerekler:  cmake xorg-glu sdl2 libpng libvorbis libmodplug openal speex 
 
 name=bitfighter
 version=0.19f

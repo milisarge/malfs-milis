@@ -1,7 +1,7 @@
-# Description: Telepati D-Bus protokolü için GLib bağları
+# Tanım: Telepati D-Bus protokolü için GLib bağları
 # URL: http://telepathy.freedesktop.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: dbus-glib libxslt gobject-introspection vala 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: dbus-glib libxslt gobject-introspection vala 
 
 name=telepathy-glib
 version=0.24.1

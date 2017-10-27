@@ -1,7 +1,7 @@
-# Description: GNOME için bilimsel hesap makinesi
+# Tanım: GNOME için bilimsel hesap makinesi
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gtksourceview3 gtk3 itstool vala libsoup
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtksourceview3 gtk3 itstool vala libsoup
 
 name=gnome-calculator
 version=3.22.2

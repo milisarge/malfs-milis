@@ -1,7 +1,7 @@
-# Description: Dosya yönetimi için kütüphane
+# Tanım: Dosya yönetimi için kütüphane
 # URL: http://pcmanfm.sourceforge.net/
-# Packager: milisarge
-# Depends on: udisks shared-mime-info xorg-libxinerama xorg-libxrandr xorg-libxdamage gtk2 menu-cache dbus-glib desktop-file-utils vala 
+# Paketçi: milisarge
+# Gerekler: udisks shared-mime-info xorg-libxinerama xorg-libxrandr xorg-libxdamage gtk2 menu-cache dbus-glib desktop-file-utils vala 
 
 name=libfm
 version=1.2.3

@@ -1,7 +1,7 @@
-# Description: "RESTful" olduğunu söyleyen internet servislerine daha kolay erişmenizi sağlar.
+# Tanım: "RESTful" olduğunu söyleyen internet servislerine daha kolay erişmenizi sağlar.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: libsoup gobject-introspection 
+# Paketçi: milisarge
+# Gerekler: libsoup gobject-introspection 
 
 name=librest
 version=0.7.93

@@ -1,7 +1,7 @@
-# Description: James Clark'ın Belge Stili Semantiği ve Şartname Dilinin uygulanması
+# Tanım: James Clark'ın Belge Stili Semantiği ve Şartname Dilinin uygulanması
 # URL: http://openjade.sourceforge.net/ 
-# Packager: milisarge
-# Depends on: opensp
+# Paketçi: milisarge
+# Gerekler: opensp
 
 
 name=openjade

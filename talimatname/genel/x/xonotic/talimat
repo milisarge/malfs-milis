@@ -1,7 +1,7 @@
-# Description: Xonotic, net hareket ve geniş bir silah yelpazesine sahip, bağımlılık yaratan, arena tarzı bir birinci şahıs nişancılık oyunudur.
+# Tanım: Xonotic, net hareket ve geniş bir silah yelpazesine sahip, bağımlılık yaratan, arena tarzı bir birinci şahıs nişancılık oyunudur.
 # URL: https://xonotic.org
-# Packager: milisarge
-# Depends on: alsa-lib libjpeg-turbo libmodplug libvorbis xorg-libxpm xorg-libxxf86dga xorg-libxxf86vm libpng xorg-mesa
+# Paketçi: milisarge
+# Gerekler: alsa-lib libjpeg-turbo libmodplug libvorbis xorg-libxpm xorg-libxxf86dga xorg-libxxf86vm libpng xorg-mesa
 
 name=xonotic
 version=0.8.2

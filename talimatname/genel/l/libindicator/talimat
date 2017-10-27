@@ -1,7 +1,7 @@
-# Description: Göstergeler için bir dizi sembol ve kolaylık fonksiyonu
+# Tanım: Göstergeler için bir dizi sembol ve kolaylık fonksiyonu
 # URL: https://launchpad.net/libindicator
-# Packager: yasarciv
-# Depends on: gtk3
+# Paketçi: yasarciv
+# Gerekler: gtk3
 
 name=libindicator
 version=12.10.1

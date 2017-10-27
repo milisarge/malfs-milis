@@ -1,7 +1,7 @@
-# Description: Ses tempo, basamak ve oynatma oranını değiştirmeye izin veren ses işleme kitaplığı.
+# Tanım: Ses tempo, basamak ve oynatma oranını değiştirmeye izin veren ses işleme kitaplığı.
 # Url: http://www.surina.net/soundtouch/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=soundtouch
 version=1.9.2

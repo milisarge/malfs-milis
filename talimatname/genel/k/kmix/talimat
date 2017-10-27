@@ -1,7 +1,7 @@
-# Description: KDE ses kontrol programı
+# Tanım: KDE ses kontrol programı
 # URL: http://kde.org/applications/multimedia/kmix/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kcmutils kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdelibs4support kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-knotifications kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui alsa-lib  pulseaudio libcanberra kf5-plasma-framework
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kcmutils kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdelibs4support kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-knotifications kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui alsa-lib  pulseaudio libcanberra kf5-plasma-framework
 
 name=kmix
 version=16.08.2

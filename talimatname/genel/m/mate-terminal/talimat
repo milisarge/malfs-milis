@@ -1,7 +1,7 @@
-# Description: MATE terminal emülatorü
+# Tanım: MATE terminal emülatorü
 # URL: http://www.mate-desktop.org
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool xorg-libsm mate-desktop vte3 dconf
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool itstool xorg-libsm mate-desktop vte3 dconf
 
 name=mate-terminal
 version=1.18.1

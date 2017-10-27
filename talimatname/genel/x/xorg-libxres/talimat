@@ -1,7 +1,7 @@
-# Description: X.Org icin Xres kutuphanesi
+# Tanım: X.Org icin Xres kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-libx11 xorg-libxext 
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-libx11 xorg-libxext 
 
 name=xorg-libxres
 version=1.0.7

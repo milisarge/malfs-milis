@@ -1,7 +1,7 @@
-# Description: CPU kullanımı, ağ bant genişliği vb. Izlemenizi sağlayan Xfce4 paneli için eklenti
+# Tanım: CPU kullanımı, ağ bant genişliği vb. Izlemenizi sağlayan Xfce4 paneli için eklenti
 # URL: http://git.xfce.org/panel-plugins/xfce4-hardware-monitor-plugin/
-# Packager: yasarciv67@gmail.com
-# Depends on: autoconf-archive intltool xfce4-dev-tools lm-sensors gtkmm libglademm libgnomecanvasmm libgtop xfce4-libui xfce4-panel 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: autoconf-archive intltool xfce4-dev-tools lm-sensors gtkmm libglademm libgnomecanvasmm libgtop xfce4-libui xfce4-panel 
 
 name=xfce4-hardware-monitor-plugin
 version=1.5.0

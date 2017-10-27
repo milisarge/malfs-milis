@@ -1,7 +1,7 @@
-# Description: E-postalarınızı, kişilerinizi ve programınızı yönetin.
+# Tanım: E-postalarınızı, kişilerinizi ve programınızı yönetin.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache adwaita-icon-theme bogofilter evolution-data-server gnome-desktop gnome-icon-theme highlight shared-mime-info gstreamer1 libcanberra libgweather libcryptui gtkspell gtkhtml highlight itstool libpst libgdata shared-mime-info webkitgtk3 libnotify clutter-gtk geoclue geocode-glib libchamplain gtk-doc openldap gtksourceview3 gtkspell openldap tdb
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache adwaita-icon-theme bogofilter evolution-data-server gnome-desktop gnome-icon-theme highlight shared-mime-info gstreamer1 libcanberra libgweather libcryptui gtkspell gtkhtml highlight itstool libpst libgdata shared-mime-info webkitgtk3 libnotify clutter-gtk geoclue geocode-glib libchamplain gtk-doc openldap gtksourceview3 gtkspell openldap tdb
 
 name=evolution
 version=3.22.1

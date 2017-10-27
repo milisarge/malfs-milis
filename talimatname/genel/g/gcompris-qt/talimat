@@ -1,7 +1,7 @@
-# Description: 2 ila 10 yaş arası çocuklar için çeşitli aktivitelerden oluşan eğitim yazılımı paketi
+# Tanım: 2 ila 10 yaş arası çocuklar için çeşitli aktivitelerden oluşan eğitim yazılımı paketi
 # URL: http://gcompris.net/
-# Packager: Cihan Alkan
-# Depends on:qt5 hicolor-icon-theme
+# Paketçi: Cihan Alkan
+# Gerekler:qt5 hicolor-icon-theme
 
 name=gcompris-qt
 version=0.80

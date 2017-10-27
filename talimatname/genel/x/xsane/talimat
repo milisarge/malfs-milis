@@ -1,7 +1,7 @@
-# Description: SANE-1.0.24 için ön uç. Görüntü kalitesini ve kullanımı kolaylaştırmak için ek özelliklere sahiptir
+# Tanım: SANE-1.0.24 için ön uç. Görüntü kalitesini ve kullanımı kolaylaştırmak için ek özelliklere sahiptir
 # URL: http://www.xsane.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: gtk2 sane lcms gimp libjpeg-turbo
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: gtk2 sane lcms gimp libjpeg-turbo
 
 name=xsane
 version=0.999

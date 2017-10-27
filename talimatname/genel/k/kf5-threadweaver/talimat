@@ -1,7 +1,7 @@
-# Description: Üst düzey çok iş parçacıklı çerçeve
+# Tanım: Üst düzey çok iş parçacıklı çerçeve
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules qt5
 
 name=kf5-threadweaver
 version=5.27.0

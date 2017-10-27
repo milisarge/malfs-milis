@@ -1,7 +1,7 @@
-# Description: SDL MPEG oynatıcı kitaplığı.
+# Tanım: SDL MPEG oynatıcı kitaplığı.
 # URL: http://www.lokigames.com/development/smpeg.php3
-# Packager: milisarge
-# Depends on: sdl
+# Paketçi: milisarge
+# Gerekler: sdl
 
 name=smpeg
 version=0.4.5

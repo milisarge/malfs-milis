@@ -1,7 +1,7 @@
-# Description: UNIX icin programlanabilir bir komut arayuzu (shell)
+# Tanım: UNIX icin programlanabilir bir komut arayuzu (shell)
 # URL: http://www.zsh.org 
-# Packager: milisarge
-# Depends on: pcre 
+# Paketçi: milisarge
+# Gerekler: pcre 
 
 name=zsh
 version=5.3.1

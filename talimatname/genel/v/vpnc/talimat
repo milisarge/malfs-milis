@@ -1,7 +1,7 @@
-# Description: Cisco vpn konsantratörü için istemci
+# Tanım: Cisco vpn konsantratörü için istemci
 # URL: https://www.unix-ag.uni-kl.de/~massar/vpnc/
-# Packager: milisarge
-# Depends on: libgcrypt
+# Paketçi: milisarge
+# Gerekler: libgcrypt
 
 name=vpnc
 version=0.5.3

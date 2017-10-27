@@ -1,8 +1,8 @@
-# Description: lxde icin ekran ayarlama
+# Tanım: lxde icin ekran ayarlama
 # URL: http://lxde.org/about.html
 # Maintainer: Martin Bagge brother at bsnet dot se Hong Jen Yee (PCMan) pcman dot tw at gmail dotcom
-# Packager: milisarge@gmail.com
-# Depends on: gtk2 xorg-app
+# Paketçi: milisarge@gmail.com
+# Gerekler: gtk2 xorg-app
 
 name=lxde-randr
 _name=lxrandr

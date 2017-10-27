@@ -1,7 +1,7 @@
-# Description: Gelişmiş GNOME3 seçeneklerini özelleştiren bir araç.
+# Tanım: Gelişmiş GNOME3 seçeneklerini özelleştiren bir araç.
 # URL: https://live.gnome.org/GnomeTweakTool
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 gconf python-gobject gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 gconf python-gobject gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
 
 name=gnome-tweak-tool
 version=3.22.0

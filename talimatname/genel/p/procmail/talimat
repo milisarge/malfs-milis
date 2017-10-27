@@ -1,7 +1,7 @@
-# Description: Gelen postaları filtrelemek ve sıralamak için özerk bir posta işlemcisi
+# Tanım: Gelen postaları filtrelemek ve sıralamak için özerk bir posta işlemcisi
 # URL: http://www.ring.gr.jp/archives/net/mail/procmail/
-# Packager: milisarge
-# Depends on:	
+# Paketçi: milisarge
+# Gerekler:	
 
 name=procmail
 version=3.22

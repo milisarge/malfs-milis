@@ -1,7 +1,7 @@
-# Description: XCB yardımcı programları kitaplığı
+# Tanım: XCB yardımcı programları kitaplığı
 # URL: http://xcb.freedesktop.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: libxcb xorg-util-macros
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: libxcb xorg-util-macros
 
 name=xcb-util-renderutil
 version=0.3.9

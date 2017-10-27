@@ -1,7 +1,7 @@
-# Description: HTML ayrıştırması için faydalı veri tabloları
+# Tanım: HTML ayrıştırması için faydalı veri tabloları
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=perl-html-tagset
 version=3.20

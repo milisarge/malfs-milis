@@ -1,7 +1,7 @@
-# Description: Ayrıştırma dizini listesi
+# Tanım: Ayrıştırma dizini listesi
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: perl-http-date 
+# Paketçi: milisarge
+# Gerekler: perl-http-date 
 
 name=perl-file-listing
 version=6.04

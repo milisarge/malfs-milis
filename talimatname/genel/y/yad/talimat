@@ -1,7 +1,7 @@
-# Description: shell skriptleri icin dialog penceresi araci
+# Tanım: shell skriptleri icin dialog penceresi araci
 # URL:  https://sourceforge.net/projects/yad-dialog/
-# Packager: milisarge
-# Depends on: gtk2 webkitgtk2 gtk3
+# Paketçi: milisarge
+# Gerekler: gtk2 webkitgtk2 gtk3
 
 name=yad
 version=0.39.0

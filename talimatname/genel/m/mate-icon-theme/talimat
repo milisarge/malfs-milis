@@ -1,7 +1,7 @@
-# Description: MATE için simge teması
+# Tanım: MATE için simge teması
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: icon-naming-utils intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: icon-naming-utils intltool
 
 name=mate-icon-theme
 version=1.18.2

@@ -1,7 +1,7 @@
-# Description: hardisk silinmiş jpeg-mov kurtarıcı
+# Tanım: hardisk silinmiş jpeg-mov kurtarıcı
 # Url: https://github.com/samueltardieu/recoverjpeg
-# Packager: milisarge
-# Depends on: python 
+# Paketçi: milisarge
+# Gerekler: python 
 
 name=recoverjpeg
 version=2.6.1

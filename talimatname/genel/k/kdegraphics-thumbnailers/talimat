@@ -1,7 +1,7 @@
-# Description : Çeşitli grafik dosyası formatları için küçük resim oluşturucular
+# Tanım: Çeşitli grafik dosyası formatları için küçük resim oluşturucular
 # URL : https://projects.kde.org/projects/kde/kdegraphics/kdegraphics-thumbnailers
-# Packager : pierre at nutyx dot org
-# Depends on : kf5-extra-cmake-modules kf5-kio libkdcraw libkexiv2
+# Paketçi: pierre at nutyx dot org
+# Gerekler: kf5-extra-cmake-modules kf5-kio libkdcraw libkexiv2
 
 name=kdegraphics-thumbnailers
 version=16.08.2

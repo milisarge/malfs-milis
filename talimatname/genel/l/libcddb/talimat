@@ -1,7 +1,7 @@
-# Description: Bir CDDB sunucusundaki verilere erişmek için farklı protokolleri (CDDBP, HTTP, SMTP) uygular
+# Tanım: Bir CDDB sunucusundaki verilere erişmek için farklı protokolleri (CDDBP, HTTP, SMTP) uygular
 # URL: http://sourceforge.net/projects/libcddb/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
  
 name=libcddb
 version=1.3.2

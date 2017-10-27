@@ -1,7 +1,7 @@
-# Description: DVD+-RW/R araçları
+# Tanım: DVD+-RW/R araçları
 # URL: http://fy.chalmers.se/~appro/linux/DVD+RW/
-# Packager: milisarge@gmail.com
-# Depends on:
+# Paketçi: milisarge@gmail.com
+# Gerekler:
 
 name=dvd+rw-tools
 version=7.1

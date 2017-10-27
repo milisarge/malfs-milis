@@ -1,7 +1,7 @@
-# Description: C ayrıştırıcı ve AST jeneratörü Python ile yazılmış.
+# Tanım: C ayrıştırıcı ve AST jeneratörü Python ile yazılmış.
 # URL: https://github.com/eliben/pycparser
-# Packager: milisarge
-# Depends on: python-setuptools
+# Paketçi: milisarge
+# Gerekler: python-setuptools
 
 name=python-cparser
 _name=pycparser

@@ -1,7 +1,7 @@
-# Description: Glade arayüz dosyalarını bir programda çalışma zamanında yüklemenize izin verir.
+# Tanım: Glade arayüz dosyalarını bir programda çalışma zamanında yüklemenize izin verir.
 # URL: http://www.jamesh.id.au/software/libglade/
-# Packager: milisarge
-# Depends on: gtk2 libxml2
+# Paketçi: milisarge
+# Gerekler: gtk2 libxml2
 
 name=libglade
 version=2.6.4

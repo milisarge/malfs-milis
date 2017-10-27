@@ -1,7 +1,7 @@
-# Description:	Önyüklenebilir CD'ler ve benzeri diğer formatlar hakkında bilgi dökümü için kullanılan bir araçtır.
+# Tanım:	Önyüklenebilir CD'ler ve benzeri diğer formatlar hakkında bilgi dökümü için kullanılan bir araçtır.
 # URL:	https://fedorahosted.org/dumpet/
 # Pacakager: milisarge
-# Depends on: libxml2 popt
+# Gerekler: libxml2 popt
 
 name=dumpet
 version=2.1

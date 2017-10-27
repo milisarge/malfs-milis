@@ -1,7 +1,7 @@
-# Description: Basic dilinden C diline çevirici
+# Tanım: Basic dilinden C diline çevirici
 # URL: http://www.basic-converter.org
-# Packager: milisarge
-# Depends on: gtksourceview2
+# Paketçi: milisarge
+# Gerekler: gtksourceview2
 
 name=bacon
 version=3.5.4

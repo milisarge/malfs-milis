@@ -1,7 +1,7 @@
-# Description: GNOME için menü düzenleyici
+# Tanım: GNOME için menü düzenleyici
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gnome-menus python-gobject gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gnome-menus python-gobject gtk-update-icon-cache
 
 name=alacarte
 version=3.11.91

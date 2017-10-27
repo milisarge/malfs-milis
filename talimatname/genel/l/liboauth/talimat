@@ -1,7 +1,7 @@
-# Description: Http://oauth.net/ protokolünün bir POSIX-C uygulaması. LibOauth, URL'leri kodlamak ve HTTP istek verisini oAuth standardına göre imzalamak için işlevsellik sağlar.
+# Tanım: Http://oauth.net/ protokolünün bir POSIX-C uygulaması. LibOauth, URL'leri kodlamak ve HTTP istek verisini oAuth standardına göre imzalamak için işlevsellik sağlar.
 # URL: http://sourceforge.net/projects/liboauth
-# Packager: milisarge
-# Depends on: curl nss 
+# Paketçi: milisarge
+# Gerekler: curl nss 
 
 name=liboauth
 version=1.0.3

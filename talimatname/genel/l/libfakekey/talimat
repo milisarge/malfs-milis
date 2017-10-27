@@ -1,7 +1,7 @@
-# Description: X sanal klavye kitaplığı.
+# Tanım: X sanal klavye kitaplığı.
 # URL: https://www.yoctoproject.org/tools-resources/projects/matchbox
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: xorg-libxtst 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: xorg-libxtst 
 
 name=libfakekey
 version=0.1

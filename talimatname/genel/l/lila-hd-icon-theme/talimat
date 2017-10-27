@@ -1,7 +1,7 @@
-# Description: Linux için Lila simge seti
+# Tanım: Linux için Lila simge seti
 # URL: https://github.com/ilnanny/Lila-HD-icon-theme
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk-update-icon-cache
 
 name=lila-hd-icon-theme
 _name=Lila-HD-icon-theme

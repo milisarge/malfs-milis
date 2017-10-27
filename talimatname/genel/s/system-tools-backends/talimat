@@ -1,7 +1,7 @@
-# Description: Sistem Araçları Arka Uçları, Linux ve diğer Unix sistemleri için bir dizi çapraz platform komut dosyasıdır.
+# Tanım: Sistem Araçları Arka Uçları, Linux ve diğer Unix sistemleri için bir dizi çapraz platform komut dosyasıdır.
 # URL: http://www.gnome.org
-# Packager: milisarge
-# Depends on: perl-xml-parser dbus-glib polkit 
+# Paketçi: milisarge
+# Gerekler: perl-xml-parser dbus-glib polkit 
 
 name=system-tools-backends
 version=2.10.2

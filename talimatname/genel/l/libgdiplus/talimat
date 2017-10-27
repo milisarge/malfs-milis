@@ -1,7 +1,7 @@
-# Description: GDI + API'nin Açık Kaynak Uygulaması
+# Tanım: GDI + API'nin Açık Kaynak Uygulaması
 # URL: http://www.mono-project.com/
-# Packager: milisarge
-# Depends on: libtiff cairo giflib glib libexif
+# Paketçi: milisarge
+# Gerekler: libtiff cairo giflib glib libexif
  
 name=libgdiplus
 version=4.2

@@ -1,7 +1,7 @@
-# Description: Python 2 ve 3 uyumluluk programları.
+# Tanım: Python 2 ve 3 uyumluluk programları.
 # URL: http://pypi.python.org/pypi/six/
-# Packager: milisarge
-# Depends on: python 
+# Paketçi: milisarge
+# Gerekler: python 
 
 name=python-six
 version=1.7.3

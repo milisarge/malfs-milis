@@ -1,7 +1,7 @@
-# Description: Microsoft® Word benzeri basit bir kelime işlemci yazılımı.
+# Tanım: Microsoft® Word benzeri basit bir kelime işlemci yazılımı.
 # URL: http://www.abisource.com/
-# Packagers: milisarge
-# Depends on: boost cairo aspell fribidi enchant wv librsvg gtk2 redland rasqal desktop-file-utils gtk3
+# Paketçi: milisarge
+# Gerekler: boost cairo aspell fribidi enchant wv librsvg gtk2 redland rasqal desktop-file-utils gtk3
 
 name=abiword
 version=3.0.1

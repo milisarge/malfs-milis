@@ -1,7 +1,7 @@
-# Description: A stroke (mouse gesture) translation library
+# Tanım: A stroke (mouse gesture) translation library
 # URL: http://etla.net/libstroke/
-# Packager: milisarge
-# Depends on: xorg-libx11 
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 
 
 name=libstroke
 version=0.5.1

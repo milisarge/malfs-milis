@@ -1,7 +1,7 @@
-# Description: Bağlantı yöneticilerinin detaylarının bir kısmını soyutlayan bir Telepati bileşeni.
+# Tanım: Bağlantı yöneticilerinin detaylarının bir kısmını soyutlayan bir Telepati bileşeni.
 # URL: http://telepathy.freedesktop.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: telepathy-glib libgnome-keyring dconf networkmanager  
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: telepathy-glib libgnome-keyring dconf networkmanager  
 
 name=telepathy-mission-control
 version=5.16.3

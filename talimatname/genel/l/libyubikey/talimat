@@ -1,7 +1,7 @@
-# Description: Yubico C düşük seviye Kütüphane: Yubico YubiKey Tek İşlemli Parolaları (OTP'ler) işlemek için kullanılan C kütüphanesi
+# Tanım: Yubico C düşük seviye Kütüphane: Yubico YubiKey Tek İşlemli Parolaları (OTP'ler) işlemek için kullanılan C kütüphanesi
 # URL: http://www.yubico.com/
-# Packager: milisarge
-# Depends on: libusb asciidoc
+# Paketçi: milisarge
+# Gerekler: libusb asciidoc
 
 name=libyubikey
 version=1.13

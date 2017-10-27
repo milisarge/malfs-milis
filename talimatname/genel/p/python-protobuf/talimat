@@ -1,7 +1,7 @@
-# Description: Google veri değişim biçim aracının python api'si
+# Tanım: Google veri değişim biçim aracının python api'si
 # URL: http://code.google.com/p/protobuf/
-# Packager: milisarge
-# Depends on: protobuf python-setuptools 
+# Paketçi: milisarge
+# Gerekler: protobuf python-setuptools 
 
 _name=protobuf
 

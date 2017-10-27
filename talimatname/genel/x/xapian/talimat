@@ -1,7 +1,7 @@
-# Description: Xapian, açık kaynak kodlu bir arama motoru kütüphanesi.
+# Tanım: Xapian, açık kaynak kodlu bir arama motoru kütüphanesi.
 # URL: http://oligarchy.co.uk/xapian.html
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=xapian
 version=1.2.22

@@ -1,7 +1,7 @@
-# Description: Libgusb paketi libusb-1.0 için GObject sarmalayıcılarını içerir
+# Tanım: Libgusb paketi libusb-1.0 için GObject sarmalayıcılarını içerir
 # URL: https://gitorious.org/gusb/
-# Packager: milisarge
-# Depends on: libusb gperf glib gobject-introspection libgudev
+# Paketçi: milisarge
+# Gerekler: libusb gperf glib gobject-introspection libgudev
 
 name=libgusb
 version=0.2.8

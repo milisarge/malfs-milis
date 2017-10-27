@@ -1,7 +1,7 @@
-# Description: FAAD2, açık kaynak kodlu bir MPEG-4 ve MPEG-2 AAC kod çözücüdür, GPLv2 lisansı altında lisanslanmıştır.
+# Tanım: FAAD2, açık kaynak kodlu bir MPEG-4 ve MPEG-2 AAC kod çözücüdür, GPLv2 lisansı altında lisanslanmıştır.
 # URL: http://www.audiocoding.com
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=faad2
 version=2.7

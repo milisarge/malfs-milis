@@ -1,7 +1,7 @@
-# Description: Nf_tables alt sistemine arabirim sağlayan Netfilter kütüphanesi
+# Tanım: Nf_tables alt sistemine arabirim sağlayan Netfilter kütüphanesi
 # URL: http://netfilter.org/projects/libnftnl/
-# Packager: milisarge
-# Depends on: libmnl
+# Paketçi: milisarge
+# Gerekler: libmnl
 
 name=libnftnl
 version=1.0.3

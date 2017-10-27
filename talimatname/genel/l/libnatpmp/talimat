@@ -1,7 +1,7 @@
-# Description: NAT-PMP protokolunun uygulanması
+# Tanım: NAT-PMP protokolunun uygulanması
 # URL: http://miniupnp.free.fr/libnatpmp.html
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libnatpmp
 version=20150609

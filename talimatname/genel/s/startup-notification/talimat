@@ -1,7 +1,7 @@
-# Description: Uygulama başlatmayı izleme ve görüntüleme
+# Tanım: Uygulama başlatmayı izleme ve görüntüleme
 # URL: http://freedesktop.org/wiki/Software/startup-notification
-# Packager: milisarge
-# Depends on: xorg-libx11 xcb-util 
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xcb-util 
 
 name=startup-notification
 version=0.12

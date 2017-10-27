@@ -1,7 +1,7 @@
-# Description: PBX yazılım implementasyonu.
+# Tanım: PBX yazılım implementasyonu.
 # URL:         http://www.asterisk.org
-# Packager:    milisarge
-# Depends on:  openssl ncurses jansson opus libxml2 doxygen
+# Paketçi:    milisarge
+# Gerekler:  openssl ncurses jansson opus libxml2 doxygen
 
 name=asterisk
 version=13.6.0

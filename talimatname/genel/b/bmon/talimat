@@ -1,7 +1,7 @@
-# Description: Ağ bant genişliği göstergesi.
+# Tanım: Ağ bant genişliği göstergesi.
 # URL:         http://freshmeat.net/projects/bmon
-# Packager:    milisarge
-# Depends on:  ncurses
+# Paketçi:    milisarge
+# Gerekler:  ncurses
 
 name=bmon
 version=2.1.0

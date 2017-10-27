@@ -1,7 +1,7 @@
-# Description: Ruby yorumlayıcı
+# Tanım: Ruby yorumlayıcı
 # URL: http://www.ruby-lang.org
-# Packager: milisarge
-# Depends on: libffi yaml
+# Paketçi: milisarge
+# Gerekler: libffi yaml
 
 name=ruby
 version=2.4.1

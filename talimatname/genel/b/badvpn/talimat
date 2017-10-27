@@ -1,7 +1,7 @@
-# Description: P2P vpn sistemi,ağ arayüz ayarları için ncd programlama dili
+# Tanım: P2P vpn sistemi,ağ arayüz ayarları için ncd programlama dili
 # URL: https://github.com/ambrop72/badvpn
-# packager: milisarge
-# Depends on: nss cmake
+# Paketçi: milisarge
+# Gerekler: nss cmake
 
 name=badvpn
 version=1.999.130

@@ -1,7 +1,7 @@
-# Description: Çoğu ses biçimi için etiketleri görüntüleme ve düzenleme programı
+# Tanım: Çoğu ses biçimi için etiketleri görüntüleme ve düzenleme programı
 # URL: http://projects.gnome.org/easytag/
-# Packager: milisarge
-# Depends on: id3lib libid3tag flac libvorbis speex gtk2 itstool
+# Paketçi: milisarge
+# Gerekler: id3lib libid3tag flac libvorbis speex gtk2 itstool
 
 name=easytag
 version=2.2.2

@@ -1,7 +1,7 @@
-# Description: MP3 kodlayıcı, sıkıştırılmış ses dosyalarını analiz etmek için kullanışlı bir MP3 çerçeve analizörü.
+# Tanım: MP3 kodlayıcı, sıkıştırılmış ses dosyalarını analiz etmek için kullanışlı bir MP3 çerçeve analizörü.
 # URL: http://lame.sourceforge.net/index.php
-# Packager: milisarge
-# Depends on: libsndfile nasm 
+# Paketçi: milisarge
+# Gerekler: libsndfile nasm 
 name=lame
 version=3.99.5
 release=2

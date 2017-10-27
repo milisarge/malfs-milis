@@ -1,7 +1,7 @@
-# Description: OpenJPEG, JPEG-2000 standardının açık kaynaklı bir uygulamasıdır.
+# Tanım: OpenJPEG, JPEG-2000 standardının açık kaynaklı bir uygulamasıdır.
 # URL: http://www.ijg.org/
-# Packager: milisarge
-# Depends on: cmake lcms2 libpng libtiff 
+# Paketçi: milisarge
+# Gerekler: cmake lcms2 libpng libtiff 
 
 _name=openjpeg
 name=openjpeg2

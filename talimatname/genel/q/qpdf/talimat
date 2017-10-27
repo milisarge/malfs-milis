@@ -1,7 +1,7 @@
-# Description: Qpdf paketi, PDF dosyaları üzerinde yapısal, içerik koruma dönüştürmeleri yapan komut satırı programları ve kitaplığı içerir.
+# Tanım: Qpdf paketi, PDF dosyaları üzerinde yapısal, içerik koruma dönüştürmeleri yapan komut satırı programları ve kitaplığı içerir.
 # URL: http://qpdf.sourceforge.net/
-# Packager: milisarge
-# Depends on: pcre libxslt
+# Paketçi: milisarge
+# Gerekler: pcre libxslt
 
 name=qpdf
 version=20170726

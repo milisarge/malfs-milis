@@ -1,7 +1,7 @@
-# Description: Küçük OpenGL programları için işlevsellik sağlar
+# Tanım: Küçük OpenGL programları için işlevsellik sağlar
 # URL: http://freeglut.sourceforge.net/
-# Packager: milisarge
-# Depends on: cmake xorg-mesa xorg-glu xorg-libxi
+# Paketçi: milisarge
+# Gerekler: cmake xorg-mesa xorg-glu xorg-libxi
 
 name=freeglut
 version=3.0.0

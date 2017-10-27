@@ -1,7 +1,7 @@
-# Description: DTS Coherent Acoustics decoder with support for HD extensions
+# Tanım: DTS Coherent Acoustics decoder with support for HD extensions
 # URL:  https://github.com/foo86/dcadec.git
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=dcadec
 version=0.2.0

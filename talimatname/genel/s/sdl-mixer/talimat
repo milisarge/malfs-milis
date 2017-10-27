@@ -1,7 +1,7 @@
-# Description: Örnek bir çok kanallı ses karıştırıcı kitaplığı.
+# Tanım: Örnek bir çok kanallı ses karıştırıcı kitaplığı.
 # URL: http://www.libsdl.org/projects/SDL_mixer
-# Packager: milisarge
-# Depends on: libvorbis smpeg libmikmod flac
+# Paketçi: milisarge
+# Gerekler: libvorbis smpeg libmikmod flac
 
 name=sdl-mixer
 version=1.2.12

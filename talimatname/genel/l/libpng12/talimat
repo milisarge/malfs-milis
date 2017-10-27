@@ -1,7 +1,7 @@
-# Description: PNG formatlı grafik dosyalarını oluşturmak için kullanılan bir dizi rutin
+# Tanım: PNG formatlı grafik dosyalarını oluşturmak için kullanılan bir dizi rutin
 # URL: http://www.libpng.org/pub/png/libpng.html
-# Packager: Cihan Alkan
-# Depends on: glibc
+# Paketçi: Cihan Alkan
+# Gerekler: glibc
 
 name=libpng12
 version=1.2.57

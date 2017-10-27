@@ -1,7 +1,7 @@
-# Description: ASN.1 türleri ve codec bileşenleri.
+# Tanım: ASN.1 türleri ve codec bileşenleri.
 # URL: http://pypi.python.org/pypi/pyasn1
-# Packager: milisarge
-# Depends on: python-setuptools
+# Paketçi: milisarge
+# Gerekler: python-setuptools
 
 name=python-pyasn1
 _name=pyasn1

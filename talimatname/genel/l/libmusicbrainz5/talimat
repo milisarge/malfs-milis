@@ -1,7 +1,7 @@
-# Description: MusicBrainz Sunucusuna Erişimi Sağlayan Kitaplık
+# Tanım: MusicBrainz Sunucusuna Erişimi Sağlayan Kitaplık
 # URL: http://musicbrainz.org/doc/libmusicbrainz
-# Packager: milisarge
-# Depends on: cmake expat neon doxygen
+# Paketçi: milisarge
+# Gerekler: cmake expat neon doxygen
 
 name=libmusicbrainz5
 version=5.1.0

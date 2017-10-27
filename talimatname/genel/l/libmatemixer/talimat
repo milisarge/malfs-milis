@@ -1,7 +1,7 @@
-# Description: MATE masaüstü için ses karıştırıcı kitaplığı
+# Tanım: MATE masaüstü için ses karıştırıcı kitaplığı
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool glib pulseaudio
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool glib pulseaudio
 
 name=libmatemixer
 version=1.18.0

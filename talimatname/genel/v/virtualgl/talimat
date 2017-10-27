@@ -1,7 +1,7 @@
-# Description: opengl kullanan bir uygulamadan opengl ekran kartına 3d komut iletir
+# Tanım: opengl kullanan bir uygulamadan opengl ekran kartına 3d komut iletir
 # URL:         http://virtualgl.org
-# Packager:    milisarge
-# Depends on:  xorg-libxv xorg-glu libjpeg-turbo xorg-xcb-util-keysyms
+# Paketçi:    milisarge
+# Gerekler:  xorg-libxv xorg-glu libjpeg-turbo xorg-xcb-util-keysyms
 
 name=virtualgl
 version=2.5.2

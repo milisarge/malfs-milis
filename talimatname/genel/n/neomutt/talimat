@@ -1,7 +1,7 @@
-# Description: Mutt paketi bir posta kullanıcı aracısı içerir.
+# Tanım: Mutt paketi bir posta kullanıcı aracısı içerir.
 # URL: http://www.neomutt.org/
-# Packager: milisarge
-# Depends on:  
+# Paketçi: milisarge
+# Gerekler:  
 
 name=neomutt
 version=20171013

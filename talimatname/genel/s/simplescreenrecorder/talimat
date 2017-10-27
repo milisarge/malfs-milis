@@ -1,7 +1,7 @@
-# Description: X11 ve OpenGL'i destekleyen, zengin özelliklere sahip bir ekran kaydedici.
+# Tanım: X11 ve OpenGL'i destekleyen, zengin özelliklere sahip bir ekran kaydedici.
 # URL: http://www.maartenbaert.be/simplescreenrecorder/
-# Packager: Cihan Alkan
-# Depends on: qt4 ffmpeg jack xorg-glu xorg-libx11 xorg-libxi xorg-libxext xorg-libxfixes
+# Paketçi: Cihan Alkan
+# Gerekler: qt4 ffmpeg jack xorg-glu xorg-libx11 xorg-libxi xorg-libxext xorg-libxfixes
 
 name=simplescreenrecorder
 version=0.3.8

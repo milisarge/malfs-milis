@@ -1,7 +1,7 @@
-# Description: Ratpoison, kullanıcının fareyle uygulamayı yönetmesine izin veren C ile yazılmış bir döşeme penceresi yöneticisidir. Kullanıcı arabirimi, Screen'den esinlenmiştir.
+# Tanım: Ratpoison, kullanıcının fareyle uygulamayı yönetmesine izin veren C ile yazılmış bir döşeme penceresi yöneticisidir. Kullanıcı arabirimi, Screen'den esinlenmiştir.
 # URL: http://www.nongnu.org/ratpoison/
-# Packager: milisarge
-# Depends on: texinfo xorg-libxft xorg-libxinerama xorg-libxtst
+# Paketçi: milisarge
+# Gerekler: texinfo xorg-libxft xorg-libxinerama xorg-libxtst
 
 name=ratpoison
 version=1.4.7

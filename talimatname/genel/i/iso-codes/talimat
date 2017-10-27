@@ -1,7 +1,7 @@
-# Description: ISO Kodları paketi, ülke, dil ve para birimi adlarının bir listesini içerir
+# Tanım: ISO Kodları paketi, ülke, dil ve para birimi adlarının bir listesini içerir
 # URL: http://pkg-isocodes.alioth.debian.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=iso-codes
 version=3.65

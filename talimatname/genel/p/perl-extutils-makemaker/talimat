@@ -1,7 +1,7 @@
-# Description: Bu yardımcı program, bir Makefile'den bir uzantı modülü için bir Makefile yazmak üzere tasarlanmıştır.
+# Tanım: Bu yardımcı program, bir Makefile'den bir uzantı modülü için bir Makefile yazmak üzere tasarlanmıştır.
 # URL: http://search.cpan.org/~bingos/ExtUtils-MakeMaker-6.98/lib/ExtUtils/MakeMaker.pm
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-extutils-makemaker
 version=6.98

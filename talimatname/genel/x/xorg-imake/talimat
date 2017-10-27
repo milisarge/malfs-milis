@@ -1,7 +1,7 @@
-# Description: imake derleme sistemi
+# Tanım: imake derleme sistemi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-cf-files
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-cf-files
 
 name=xorg-imake
 version=1.0.7

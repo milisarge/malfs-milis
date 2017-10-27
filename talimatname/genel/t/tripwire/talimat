@@ -1,7 +1,7 @@
-# Description: Tripwire paketi, belirli bir sistemdeki dosyaların bütünlüğünü doğrulamak için kullanılan programları içerir.
+# Tanım: Tripwire paketi, belirli bir sistemdeki dosyaların bütünlüğünü doğrulamak için kullanılan programları içerir.
 # URL: http://downloads.sourceforge.net/tripwire
-# Packager: milisarge
-# Depends on:  	
+# Paketçi: milisarge
+# Gerekler:  	
 
 name=tripwire
 version=2.4.2.2

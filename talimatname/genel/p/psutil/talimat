@@ -1,7 +1,7 @@
-# Description: Çalışan süreçler ve sistem kullanımı hakkında bilgi almak için kütüphane
+# Tanım: Çalışan süreçler ve sistem kullanımı hakkında bilgi almak için kütüphane
 # URL: https://github.com/giampaolo/psutil
-# Packager: milisarge
-# Depends on: python python-setuptools
+# Paketçi: milisarge
+# Gerekler: python python-setuptools
 
 name=psutil
 version=3.1.1

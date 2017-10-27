@@ -1,7 +1,7 @@
-# Description: DMAP protokol ailesini uygulayan bir kütüphane
+# Tanım: DMAP protokol ailesini uygulayan bir kütüphane
 # URL: http://www.flyn.org/projects/libdmapsharing/index.html
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk-doc gobject-introspection libsoup avahi gstreamer1-plugins-base gdk-pixbuf 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk-doc gobject-introspection libsoup avahi gstreamer1-plugins-base gdk-pixbuf 
 
 name=libdmapsharing
 version=2.9.39

@@ -1,6 +1,6 @@
-# Description: Yönetici ayrıcalıkları gerektiren paketlerin şifresini almak için iletişim kutusu
+# Tanım: Yönetici ayrıcalıkları gerektiren paketlerin şifresini almak için iletişim kutusu
 # URL:  http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/
-# Packager: milisarge
+# Paketçi: milisarge
 # Depend on: gdk-pixbuf gtk2 xorg-libx11
 
 name=ssh-askpass

@@ -1,7 +1,7 @@
-# Description: OpenBox için bir GUI Qt tabanlı yapılandırma aracıdır.
+# Tanım: OpenBox için bir GUI Qt tabanlı yapılandırma aracıdır.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk2 hicolor-icon-theme liblxqt openbox
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk2 hicolor-icon-theme liblxqt openbox
 
 name=obconf-qt
 version=0.11.1

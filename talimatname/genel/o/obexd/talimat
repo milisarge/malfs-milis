@@ -1,7 +1,7 @@
-# Description: Obexd paketi OBEX istemci ve sunucu işlevselliğini sağlayan D-Bus hizmetlerini içerir.
+# Tanım: Obexd paketi OBEX istemci ve sunucu işlevselliğini sağlayan D-Bus hizmetlerini içerir.
 # URL: http://www.bluez.org/
-# Packager: milisarge
-# Depends on: bluez libical 
+# Paketçi: milisarge
+# Gerekler: bluez libical 
 
 name=obexd
 version=0.48

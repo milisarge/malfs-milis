@@ -1,7 +1,7 @@
-# Description: Tox protokolü üzerinden tünel TCP bağlantıları
+# Tanım: Tox protokolü üzerinden tünel TCP bağlantıları
 # URL: http://tuntox.pl/
-# Packager: milisarge
-# Depends on: cscope toxcore
+# Paketçi: milisarge
+# Gerekler: cscope toxcore
 
 name=tuntox
 version=git

@@ -1,7 +1,7 @@
-# Description: Taşınabilir web oluşturma motoru WebKit'in GTK+ 2 ve 3 platformlarına bağlantı noktası.
+# Tanım: Taşınabilir web oluşturma motoru WebKit'in GTK+ 2 ve 3 platformlarına bağlantı noktası.
 # URL: http://webkitgtk.org/
-# Packager: milisarge
-# Depends on: enchant cmake gstreamer1-plugins-base xorg-libxt  gtk2 gtk3 hunspell icu libgudev libsecret libsoup libwebp xorg-mesa ruby sqlite geoclue gobject-introspection hicolor-icon-theme llvm harfbuzz libnotify
+# Paketçi: milisarge
+# Gerekler: enchant cmake gstreamer1-plugins-base xorg-libxt  gtk2 gtk3 hunspell icu libgudev libsecret libsoup libwebp xorg-mesa ruby sqlite geoclue gobject-introspection hicolor-icon-theme llvm harfbuzz libnotify
 
 name=webkit2gtk3
 version=2.17.4

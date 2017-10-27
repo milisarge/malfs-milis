@@ -1,7 +1,7 @@
-# Description: Ruby2.3 uygulama-paket yöneticisi
+# Tanım: Ruby2.3 uygulama-paket yöneticisi
 # URL: http://www.ruby-lang.org
-# Packager: milisarge
-# Depends on: ruby23
+# Paketçi: milisarge
+# Gerekler: ruby23
 
 name=ruby23-bundler
 _rubyver=2.3

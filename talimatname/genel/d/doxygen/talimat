@@ -1,7 +1,7 @@
-# Description: C++, C, Java, IDL ve PHP icin dokumantasyon sistemi
+# Tanım: C++, C, Java, IDL ve PHP icin dokumantasyon sistemi
 # URL:  http://www.doxygen.org/
-# Packager: milisarge
-# Depends on: python cmake
+# Paketçi: milisarge
+# Gerekler: python cmake
 
 name=doxygen
 version=1.8.11

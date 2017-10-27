@@ -1,7 +1,7 @@
-# Description: C ++ programları ve kitaplıkları için esnek bir mesaj günlüğü tesisi
+# Tanım: C ++ programları ve kitaplıkları için esnek bir mesaj günlüğü tesisi
 # URL: http://www.arg0.net/rlog
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=rlog
 version=1.4

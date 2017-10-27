@@ -1,7 +1,7 @@
-# Description: Bash tamamlama fonksiyonları
+# Tanım: Bash tamamlama fonksiyonları
 # URL: http://bash-completion.alioth.debian.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=bash-completion
 version=2.1

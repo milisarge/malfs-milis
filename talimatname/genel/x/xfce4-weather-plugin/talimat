@@ -1,7 +1,7 @@
-# Description: Bu panel eklentisi, xoap.weather.com tarafından sağlanan hava verileri kullanılarak, mevcut sıcaklık ve hava durumunu gösterir.
+# Tanım: Bu panel eklentisi, xoap.weather.com tarafından sağlanan hava verileri kullanılarak, mevcut sıcaklık ve hava durumunu gösterir.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-weather-plugin
-# Packager: milisarge
-# Depends on: libsoup xfce4-panel
+# Paketçi: milisarge
+# Gerekler: libsoup xfce4-panel
 
 name=xfce4-weather-plugin
 version=0.8.6

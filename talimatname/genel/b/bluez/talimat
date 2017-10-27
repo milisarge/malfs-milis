@@ -1,7 +1,7 @@
-# Description: Linux için bluetooth istemci ve kütüphaneleri.
+# Tanım: Linux için bluetooth istemci ve kütüphaneleri.
 # URL: http://www.bluez.org/
-# Packager: milisarge
-# Depends on: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
+# Paketçi: milisarge
+# Gerekler: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
 
 name=bluez
 version=5.47

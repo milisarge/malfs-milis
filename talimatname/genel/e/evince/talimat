@@ -1,7 +1,7 @@
-# Description: Pdf, Postscript, DjVu, Tiff, DVI belge görüntüleyici.
+# Tanım: Pdf, Postscript, DjVu, Tiff, DVI belge görüntüleyici.
 # URL: http://gnome.org"
-# Packager: yasarciv67@gmail.com
-# Depends on: adwaita-icon-theme gtk3 gnome-icon-theme itstool yelp-xsl gobject-introspection libgnome-keyring nautilus poppler-glib gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: adwaita-icon-theme gtk3 gnome-icon-theme itstool yelp-xsl gobject-introspection libgnome-keyring nautilus poppler-glib gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
 
 name=evince
 version=3.22.1

@@ -1,7 +1,7 @@
-# Description: A header-only library intended to provide functionality needed in many software projects, but not present in the C++ standard library
+# Tanım: A header-only library intended to provide functionality needed in many software projects, but not present in the C++ standard library
 # URL: https://github.com/Corvusoft/kashmir-dependency
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=kashmir
 version=20150805

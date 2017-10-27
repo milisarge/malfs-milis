@@ -1,7 +1,7 @@
-# Description: Libstatgrab, çalıştırıldığı sistemle ilgili istatistiklere çapraz platform erişimi sağlayan bir kitaplıktır.
+# Tanım: Libstatgrab, çalıştırıldığı sistemle ilgili istatistiklere çapraz platform erişimi sağlayan bir kitaplıktır.
 # URL: http://www.i-scream.org/libstatgrab/
-# Packager: milisarge
-# Depends on:  	
+# Paketçi: milisarge
+# Gerekler:  	
 
 name=libstatgrab
 version=0.91

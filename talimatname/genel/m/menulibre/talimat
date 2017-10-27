@@ -1,7 +1,7 @@
-# Description: An advanced menu editor that provides modern features in a clean, easy-to-use interface. All without GNOME dependencies
+# Tanım: An advanced menu editor that provides modern features in a clean, easy-to-use interface. All without GNOME dependencies
 # URL: https://launchpad.net/menulibre
-# Packager: milisarge
-# Depends on: python3-distutils-extra gdk-pixbuf gnome-menus gsettings-desktop-schemas gtksourceview3 python3 python3-gobject python3-psutil python3-xdg xdg-utils 
+# Paketçi: milisarge
+# Gerekler: python3-distutils-extra gdk-pixbuf gnome-menus gsettings-desktop-schemas gtksourceview3 python3 python3-gobject python3-psutil python3-xdg xdg-utils 
 
 name=menulibre
 version=2.1.3

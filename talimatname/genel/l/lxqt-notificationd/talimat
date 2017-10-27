@@ -1,7 +1,7 @@
-# Description: Lxqt-notificationd paketi, LXQt bildirim arka plan programıdır.
+# Tanım: Lxqt-notificationd paketi, LXQt bildirim arka plan programıdır.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: lxqt-common liblxqt
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: lxqt-common liblxqt
 
 name=lxqt-notificationd
 version=0.11.1

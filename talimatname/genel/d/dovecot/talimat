@@ -1,7 +1,7 @@
-# Description: Ssl / ipv6 desteği olan IMAP ve POP3 sunucusu, öncelikle güvenlik göz önüne alınarak yazılmıştır
+# Tanım: Ssl / ipv6 desteği olan IMAP ve POP3 sunucusu, öncelikle güvenlik göz önüne alınarak yazılmıştır
 # URL: http://dovecot.org
-# Packager: milisarge
-# Depends on: clucene icu libcap pam mariadb kerberos openldap openssl postgresql sqlite valgrind
+# Paketçi: milisarge
+# Gerekler: clucene icu libcap pam mariadb kerberos openldap openssl postgresql sqlite valgrind
 
 name=dovecot
 version=2.2.21

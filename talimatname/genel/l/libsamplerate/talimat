@@ -1,7 +1,7 @@
-# Description: Secret Rabbit Code (aka libsamplerate), ses için örnek bir hız dönüştürücüsüdür.
+# Tanım: Secret Rabbit Code (aka libsamplerate), ses için örnek bir hız dönüştürücüsüdür.
 # URL: http://www.mega-nerd.com/SRC/index.html
-# Packager: pierre at nutyx dot org
-# Depends on: libsndfile flac 
+# Paketçi: pierre at nutyx dot org
+# Gerekler: libsndfile flac 
 
 name=libsamplerate
 version=0.1.8

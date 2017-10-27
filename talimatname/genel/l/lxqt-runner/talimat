@@ -1,7 +1,7 @@
-# Description: Lxqt-runner paketi, adlarını yazarak programları hızlı bir şekilde başlatmak için kullanılan bir araç sağlar.
+# Tanım: Lxqt-runner paketi, adlarını yazarak programları hızlı bir şekilde başlatmak için kullanılan bir araç sağlar.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: lxqt-globalkeys menu-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: lxqt-globalkeys menu-cache
 
 name=lxqt-runner
 version=0.11.1

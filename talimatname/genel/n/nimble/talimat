@@ -1,7 +1,7 @@
-# Description: Nim programlama dili paket yöneticisi
+# Tanım: Nim programlama dili paket yöneticisi
 # URL: https://github.com/nim-lang/nimble
-# Packager: milisarge
-# Depends on: nim 
+# Paketçi: milisarge
+# Gerekler: nim 
 
 name=nimble
 version=0.8.6

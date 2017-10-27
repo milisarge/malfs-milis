@@ -1,7 +1,7 @@
-# Description: İzole edilmiş Python ortamları yaratmak için kullanılan araç.
+# Tanım: İzole edilmiş Python ortamları yaratmak için kullanılan araç.
 # URL: https://virtualenv.pypa.io/ 
-# Packager: milisarge
-# Depends on: python 
+# Paketçi: milisarge
+# Gerekler: python 
 
 name=python-virtualenv
 version=15.1.0

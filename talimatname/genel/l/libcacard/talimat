@@ -1,7 +1,7 @@
-# Description: Common Access Card) library thar provides emulation of smart cards to a virtual card reader running in a guest virtual machine
+# Tanım: Common Access Card) library thar provides emulation of smart cards to a virtual card reader running in a guest virtual machine
 # URL: http://www.spice-space.org/page/Libcacard
-# Packager: milisarge
-# Depends on: nss glib
+# Paketçi: milisarge
+# Gerekler: nss glib
 
 name=libcacard
 version=2.5.3

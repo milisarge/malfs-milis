@@ -1,7 +1,7 @@
-# Description: Koyu bir gtk2 teması
+# Tanım: Koyu bir gtk2 teması
 # URL: https://www.xfce-look.org/p/1099669/
-# Packager: yasarciv67@gmail.com
-# Depends on: 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: 
 
 name=adwaitadark-gtk-theme
 version=1

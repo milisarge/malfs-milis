@@ -1,7 +1,7 @@
-# Description: D-Bus at-spi için protokol tanımları ve programı
+# Tanım: D-Bus at-spi için protokol tanımları ve programı
 # URL: http://www.gtk.org/
-# Packager: milisarge
-# Depends on: intltool glib dbus gobject-introspection xorg-libx11 xorg-libxtst
+# Paketçi: milisarge
+# Gerekler: intltool glib dbus gobject-introspection xorg-libx11 xorg-libxtst
 
 name=at-spi2-core
 version=2.18.3

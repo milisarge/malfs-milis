@@ -1,7 +1,7 @@
-# Description: iTunes benzeri müzik çalma ve yönetim uygulaması
+# Tanım: iTunes benzeri müzik çalma ve yönetim uygulaması
 # URL: http://www.rhythmbox.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gobject-introspection intltool gtk3 gdk-pixbuf libsoup libpeas libxml2 tdb json-glib totem-pl-parser libmtp gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good webkit2gtk3 python python-gobject
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gobject-introspection intltool gtk3 gdk-pixbuf libsoup libpeas libxml2 tdb json-glib totem-pl-parser libmtp gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good webkit2gtk3 python python-gobject
 
 name=rhythmbox
 version=3.4.1

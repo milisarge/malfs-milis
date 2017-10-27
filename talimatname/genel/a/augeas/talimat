@@ -1,7 +1,7 @@
-# Description: Konfigürasyon dosyalarını okuyup ağaç şeklinde görüntülemeyi sağlayan bir araç.
+# Tanım: Konfigürasyon dosyalarını okuyup ağaç şeklinde görüntülemeyi sağlayan bir araç.
 # URL: http://augeas.net
-# Packager: milisarge
-# Depends on: libxml2
+# Paketçi: milisarge
+# Gerekler: libxml2
 
 name=augeas
 version=1.4.0

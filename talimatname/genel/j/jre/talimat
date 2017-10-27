@@ -1,7 +1,7 @@
-# Description: Java Runtime Environment
+# Tanım: Java Runtime Environment
 # URL:         http://www.oracle.com/technetwork/java/javase/overview/index.html
-# Packager:    milisarge
-# Depends on:
+# Paketçi:    milisarge
+# Gerekler:
 
 name=jre
 version=1.8.0_131

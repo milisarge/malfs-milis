@@ -1,7 +1,7 @@
-# Description: Posta mesajları ve haber grubu makaleleri için kitaplık
+# Tanım: Posta mesajları ve haber grubu makaleleri için kitaplık
 # URL: https://projects.kde.org/kmime
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules python boost kf5-ki18n kf5-kcodecs
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules python boost kf5-ki18n kf5-kcodecs
 
 name=kmime
 version=16.08.2

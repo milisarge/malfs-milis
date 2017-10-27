@@ -1,7 +1,7 @@
-# Description: Merkezi SGML kataloglarını koruma araçları.
+# Tanım: Merkezi SGML kataloglarını koruma araçları.
 # URL: http://www.docbook.org/xml/ 
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=sgml-common
 version=0.6.3

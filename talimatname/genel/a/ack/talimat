@@ -1,7 +1,7 @@
-# Description: Kaynak kod içerisinde arama yapmayı sağlayan grep benzeri bir araç.
+# Tanım: Kaynak kod içerisinde arama yapmayı sağlayan grep benzeri bir araç.
 # URL:         http://beyondgrep.com/
-# Packager:    milisarge
-# Depends on:
+# Paketçi:    milisarge
+# Gerekler:
 
 name=ack
 version=2.14

@@ -1,7 +1,7 @@
-# Description: RDF / XML / N-Üçlülerini RDF üçlülerine ayrıştıran bir C kitaplığı
+# Tanım: RDF / XML / N-Üçlülerini RDF üçlülerine ayrıştıran bir C kitaplığı
 # URL: http://download.librdf.org/source/
-# Packager: milisarge
-# Depends on: libxml2 icu 
+# Paketçi: milisarge
+# Gerekler: libxml2 icu 
 
 name=raptor
 version=2.0.15

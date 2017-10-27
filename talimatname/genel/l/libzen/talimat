@@ -1,7 +1,7 @@
-# Description: Libmediainfo ve mediainfo için paylaşılan kütüphane
+# Tanım: Libmediainfo ve mediainfo için paylaşılan kütüphane
 # URL: http://mediainfo.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libzen
 version=0.4.31

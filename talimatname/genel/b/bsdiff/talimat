@@ -1,7 +1,7 @@
-# Description: bsdiff,bspatch ikili dosyalar için fark ve yama uygulaması
+# Tanım: bsdiff,bspatch ikili dosyalar için fark ve yama uygulaması
 # URL: https://github.com/mendsley/bsdiff
-# Packager: milisarge
-# Depends on: valgrind
+# Paketçi: milisarge
+# Gerekler: valgrind
 
 name=bsdiff
 version=4.3

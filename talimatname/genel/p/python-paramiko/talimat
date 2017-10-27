@@ -1,7 +1,7 @@
-# Description: SSH2 protokolünü uygulayan Python modülü
+# Tanım: SSH2 protokolünü uygulayan Python modülü
 # URL: https://github.com/paramiko/paramiko/
-# Packager: milisarge
-# Depends on: python python-crypto python-ecdsa 
+# Paketçi: milisarge
+# Gerekler: python python-crypto python-ecdsa 
 
 name=python-paramiko
 version=1.15.1

@@ -1,7 +1,7 @@
-# Description: SQLite için Python2 sarmalayıcı.
+# Tanım: SQLite için Python2 sarmalayıcı.
 # URL: https://github.com/rogerbinns/apsw
-# Packager: milisarge
-# Depends on: python sqlite
+# Paketçi: milisarge
+# Gerekler: python sqlite
 
 name=python-apsw
 version=3.8.4.3

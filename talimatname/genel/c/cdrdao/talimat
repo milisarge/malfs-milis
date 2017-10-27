@@ -1,7 +1,7 @@
-# Description: Ses / veri CD-R'lerini disk at once (DAO) modda kaydeder
+# Tanım: Ses / veri CD-R'lerini disk at once (DAO) modda kaydeder
 # URL: http://cdrdao.sourceforge.net
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: lame libao libvorbis libmad
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: lame libao libvorbis libmad
 
 name=cdrdao
 version=1.2.3

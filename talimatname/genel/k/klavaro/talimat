@@ -1,7 +1,7 @@
-# Description: Hızlı klavye yazma uygulaması
+# Tanım: Hızlı klavye yazma uygulaması
 # URL: http://klavaro.sourceforge.net/
-# Packager: Cihan Alkan
-# Depends on: curl intltool gtk3
+# Paketçi: Cihan Alkan
+# Gerekler: curl intltool gtk3
 
 name=klavaro
 version=3.03

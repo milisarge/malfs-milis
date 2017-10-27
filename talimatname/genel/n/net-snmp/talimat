@@ -1,7 +1,7 @@
-# Description: SNMP v1, SNMP v2c ve SNMP v3'ü hem IPv4 hem de IPv6 kullanarak uygulamak için kullanılan bir uygulama paketi.
+# Tanım: SNMP v1, SNMP v2c ve SNMP v3'ü hem IPv4 hem de IPv6 kullanarak uygulamak için kullanılan bir uygulama paketi.
 # URL: http://www.net-snmp.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: python python-setuptools libnl openssl pciutils perl-term-readkey perl-tk perl
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: python python-setuptools libnl openssl pciutils perl-term-readkey perl-tk perl
 
 name=net-snmp
 version=5.7.3

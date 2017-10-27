@@ -1,7 +1,7 @@
-# Description: GO Programlama dili
+# Tanım: GO Programlama dili
 # URL: http://golang.org/
-# Packager: milisarge@gmail.com
-# Depends on: gcc-go
+# Paketçi: milisarge@gmail.com
+# Gerekler: gcc-go
 
 name=go18
 _name=go

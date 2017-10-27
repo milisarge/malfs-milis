@@ -1,7 +1,7 @@
-# Description: Vlc'den kütüphane
+# Tanım: Vlc'den kütüphane
 # URL: http://www.slackware.com/~alien/slackbuilds/vlc/
-# Packager: milisarge
-# Depends on: libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+# Paketçi: milisarge
+# Gerekler: libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=libvlc
 version=3.0.0

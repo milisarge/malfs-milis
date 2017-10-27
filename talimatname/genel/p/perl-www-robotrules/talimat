@@ -1,7 +1,7 @@
-# Description: Robots.txt türevli izinlerin veritabanı
+# Tanım: Robots.txt türevli izinlerin veritabanı
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: perl-uri 
+# Paketçi: milisarge
+# Gerekler: perl-uri 
 
 name=perl-www-robotrules
 version=6.02

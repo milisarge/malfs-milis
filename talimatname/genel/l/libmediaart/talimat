@@ -1,7 +1,7 @@
-# Description: Medya sanat önbelleklerini ayıklama ve yönetme ile görevli kütüphane
+# Tanım: Medya sanat önbelleklerini ayıklama ve yönetme ile görevli kütüphane
 # URL: https://github.com/curlybeast/libmediaart
-# Packager: yasarciv67@gmail.com
-# Depends on: gdk-pixbuf
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gdk-pixbuf
 
 name=libmediaart
 version=1.9.0

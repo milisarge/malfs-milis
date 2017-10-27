@@ -1,7 +1,7 @@
-# Description: Gravatar desteği sağlayan KDE PIM kütüphanesi
+# Tanım: Gravatar desteği sağlayan KDE PIM kütüphanesi
 # URL: https://community.kde.org/KDE_PIM
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules kf5-kconfig kf5-kwidgetsaddons pimcommon kf5-kdoctools boost
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules kf5-kconfig kf5-kwidgetsaddons pimcommon kf5-kdoctools boost
 
 name=libgravatar
 version=16.08.2

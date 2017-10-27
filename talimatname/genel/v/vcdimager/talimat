@@ -1,7 +1,7 @@
-# Description: Video CD'leri ve Süper Video CD'leri geliştirme, ayrıştırma ve analiz etme için tam özellikli bir mastering paketidir
+# Tanım: Video CD'leri ve Süper Video CD'leri geliştirme, ayrıştırma ve analiz etme için tam özellikli bir mastering paketidir
 # URL: http://www.vcdimager.org/
-# Packager: milisarge
-# Depends on: libcdio libxml2 
+# Paketçi: milisarge
+# Gerekler: libcdio libxml2 
 
 name=vcdimager
 version=0.7.24

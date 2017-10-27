@@ -1,7 +1,7 @@
-# Description: DVD yazma araçları.
+# Tanım: DVD yazma araçları.
 # URL: http://dvdauthor.sourceforge.net/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: libxml2 libdvdnav libpng fribidi freetype
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: libxml2 libdvdnav libpng fribidi freetype
 
 name=dvdauthor
 version=0.7.1

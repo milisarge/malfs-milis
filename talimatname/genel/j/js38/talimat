@@ -1,7 +1,7 @@
-# Description: JavaScript tercüman ve kütüphaneleri - Sürüm 38
+# Tanım: JavaScript tercüman ve kütüphaneleri - Sürüm 38
 # URL: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Releases/38
-# Packager: Cihan Alkan
-# Depends on: nspr icu libffi python zip
+# Paketçi: Cihan Alkan
+# Gerekler: nspr icu libffi python zip
 
 name=js38
 version=38.8.0

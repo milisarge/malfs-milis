@@ -1,7 +1,7 @@
-# Description: Şifre yöneticisi
+# Tanım: Şifre yöneticisi
 # URL: http://www.keepassx.org/
-# Packager: milisarge
-# Depends on: qt4 libgcrypt
+# Paketçi: milisarge
+# Gerekler: qt4 libgcrypt
 
 name=keepassx2
 version=2.0.3

@@ -1,7 +1,7 @@
-# Description: Google Android SDK için araçlar oluşturun (aapt, aidl, dexdump, dx, llvm-rs-cc)
+# Tanım: Google Android SDK için araçlar oluşturun (aapt, aidl, dexdump, dx, llvm-rs-cc)
 # URL: http://developer.android.com/sdk/index.html
-# Packager: Cihan Alkan
-# Depends on:  
+# Paketçi: Cihan Alkan
+# Gerekler:  
 
 name=android-sdk-build-tools
 version=r26

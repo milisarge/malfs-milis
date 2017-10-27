@@ -1,7 +1,7 @@
-# Description: FSlint gereksiz / şüpheli disk kullanımını bulmak için bir araçtır.
+# Tanım: FSlint gereksiz / şüpheli disk kullanımını bulmak için bir araçtır.
 # URL: http://www.pixelbeat.org/fslint/
-# Packager: yasarciv milisarge
-# Depends on: python python-gtk
+# Paketçi: yasarciv milisarge
+# Gerekler: python python-gtk
 
 name=fslint 
 version=2.44   

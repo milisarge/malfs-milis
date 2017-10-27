@@ -1,7 +1,7 @@
-# Description: Lua Programlama Dili için Dosya Sistemi Kütüphanesi
+# Tanım: Lua Programlama Dili için Dosya Sistemi Kütüphanesi
 # URL: http://www.keplerproject.org/luafilesystem/
-# Packager: milisarge
-# Depends on: lua
+# Paketçi: milisarge
+# Gerekler: lua
 
 name=lua-filesystem
 version=1.6.3

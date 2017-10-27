@@ -1,7 +1,7 @@
-# Description: XCB X protokol açıklamaları
+# Tanım: XCB X protokol açıklamaları
 # URL: http://xcb.freedesktop.org
-# Packager: milisarge
-# Depends on: python 
+# Paketçi: milisarge
+# Gerekler: python 
 
 name=xcb-proto
 version=1.12

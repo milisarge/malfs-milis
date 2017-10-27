@@ -1,7 +1,7 @@
-# Description: Düşen blokları bir araya getirin (GNOME için Tetris benzeri oyun)
+# Tanım: Düşen blokları bir araya getirin (GNOME için Tetris benzeri oyun)
 # URL: https://live.gnome.org/Quadrapassel
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache intltool itstool gobject-introspection desktop-file-utils hicolor-icon-theme clutter-gtk libcanberra librsvg
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache intltool itstool gobject-introspection desktop-file-utils hicolor-icon-theme clutter-gtk libcanberra librsvg
 
 name=quadrapassel
 version=3.22.0

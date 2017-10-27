@@ -1,7 +1,7 @@
-# Description: Midna bir Grub temasıdır.
+# Tanım: Midna bir Grub temasıdır.
 # URL: http://kaosx.us
-# Packager: alihan-ozturk8@hotmail.com
-# Depends on: grub
+# Paketçi: alihan-ozturk8@hotmail.com
+# Gerekler: grub
 
 name=grub-theme-midna
 version=1.4

@@ -1,7 +1,7 @@
-# Description: MATE için ekran koruyucu ve kilitleyici
+# Tanım: MATE için ekran koruyucu ve kilitleyici
 # URL: http://www.mate-desktop.org
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool libmatekbd libnotify xorg-libxscrnsaver mate-desktop mate-menus mate-session-manager
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool libmatekbd libnotify xorg-libxscrnsaver mate-desktop mate-menus mate-session-manager
 
 name=mate-screensaver
 version=1.18.1

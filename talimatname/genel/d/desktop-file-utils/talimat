@@ -1,7 +1,7 @@
-# Description: Masaüstü girdileri ile çalışmak için komut satırı yardımcı programları
+# Tanım: Masaüstü girdileri ile çalışmak için komut satırı yardımcı programları
 # URL:  http://freedesktop.org/software/desktop-file-utils
-# Packager: milisarge
-# Depends on: glib
+# Paketçi: milisarge
+# Gerekler: glib
 
 name=desktop-file-utils
 version=0.22

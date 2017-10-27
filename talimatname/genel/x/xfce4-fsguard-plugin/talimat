@@ -1,7 +1,7 @@
-# Description: Bu eklenti, boş disk alanı için seçilen bağlantı noktasını denetler.
+# Tanım: Bu eklenti, boş disk alanı için seçilen bağlantı noktasını denetler.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-fsguard-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel 
+# Paketçi: milisarge
+# Gerekler: xfce4-panel 
 
 name=xfce4-fsguard-plugin
 version=1.0.2

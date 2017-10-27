@@ -1,7 +1,7 @@
-# Description: Güvenlik, ölçeklenebilirlik, hız ve kullanım kolaylığı için tasarlanmış bir yönlendirme motoru
+# Tanım: Güvenlik, ölçeklenebilirlik, hız ve kullanım kolaylığı için tasarlanmış bir yönlendirme motoru
 # URL: https://github.com/cjdelisle/cjdns
-# Packager: milisarge
-# Depends on : node python
+# Paketçi: milisarge
+# Gerekler: node python
 
 name=cjdns
 hesap=cjdelisle

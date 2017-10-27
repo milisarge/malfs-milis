@@ -1,7 +1,7 @@
-# Description: xfce4 ayar uygulamaları.
+# Tanım: xfce4 ayar uygulamaları.
 # URL: http://wiki.xfce.org/releng/4.10/
-# Packager: milisarge
-# Depends on: exo xfce4-libui xfce4-garcon xorg-libxklavier xorg-libxkbfile libcanberra gnome-icon-theme
+# Paketçi: milisarge
+# Gerekler: exo xfce4-libui xfce4-garcon xorg-libxklavier xorg-libxkbfile libcanberra gnome-icon-theme
 
 name=xfce4-settings
 version=4.12.0

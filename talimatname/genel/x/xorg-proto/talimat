@@ -1,6 +1,6 @@
-# Description: X11 gelistiricileri icin protokol dosyalari (headers)
+# Tanım: X11 gelistiricileri icin protokol dosyalari (headers)
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
+# Paketçi: milisarge
 
 name=xorg-proto
 version=7.7

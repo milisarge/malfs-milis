@@ -1,7 +1,7 @@
-# Description: Fastjar, Sun'ın jar yardımcı programının bir uygulamasıdır.
+# Tanım: Fastjar, Sun'ın jar yardımcı programının bir uygulamasıdır.
 # URL: https://savannah.nongnu.org/projects/fastjar
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: zlib
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: zlib
 
 name=fastjar
 version=0.98

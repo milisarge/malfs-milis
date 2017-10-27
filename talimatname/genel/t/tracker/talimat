@@ -1,7 +1,7 @@
-# Description: Anlamsal veri depolama.
+# Tanım: Anlamsal veri depolama.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: dbus exempi libgee gdk-pixbuf glib gnome-keyring gobject-introspection gstreamer1-plugins-base gtk3 icu libjpeg-turbo libexif libgsf libmediaart libosinfo libpng networkmanager pango poppler python sqlite libtiff totem-pl-parser upower util-linux vala zlib desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: dbus exempi libgee gdk-pixbuf glib gnome-keyring gobject-introspection gstreamer1-plugins-base gtk3 icu libjpeg-turbo libexif libgsf libmediaart libosinfo libpng networkmanager pango poppler python sqlite libtiff totem-pl-parser upower util-linux vala zlib desktop-file-utils gtk-update-icon-cache
 
 name=tracker
 version=1.10.3

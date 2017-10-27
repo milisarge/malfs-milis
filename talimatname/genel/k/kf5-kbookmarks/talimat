@@ -1,7 +1,7 @@
-# Description: Yer imleri ve XBEL formatı desteği
+# Tanım: Yer imleri ve XBEL formatı desteği
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: qt5 kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-kiconthemes kf5-kwidgetsaddons kf5-kconfigwidgets  kf5-kxmlgui
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-kiconthemes kf5-kwidgetsaddons kf5-kconfigwidgets  kf5-kxmlgui
 
 name=kf5-kbookmarks
 version=5.27.0

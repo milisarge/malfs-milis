@@ -1,7 +1,7 @@
-# Description: Acik kaynak kodlu video donusturucu
+# Tanım: Acik kaynak kodlu video donusturucu
 # URL: http://handbrake.fr/
-# Packager: milisarge
-# Depends on: cmake qt5 libnotify lame x264 gtk3 faad2 freetype fribidi xorg-fontconfig libass libbluray libogg libpng libsamplerate libtheora libvorbis libvpx libxml2 perl-xml-parser pcre xorg-pixman python yasm x265
+# Paketçi: milisarge
+# Gerekler: cmake qt5 libnotify lame x264 gtk3 faad2 freetype fribidi xorg-fontconfig libass libbluray libogg libpng libsamplerate libtheora libvorbis libvpx libxml2 perl-xml-parser pcre xorg-pixman python yasm x265
 
 name=handbrake
 version=0.10.3

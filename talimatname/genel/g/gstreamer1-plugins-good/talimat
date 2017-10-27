@@ -1,7 +1,7 @@
-# Description: GStreamer İyi Eklentileri, kaliteli kod, doğru işlevsellik ve tercih edilen lisansımız (eklenti kodu için LGPL, destekleyici kitaplık için LGPL veya LGPL uyumlu) olması düşünülen eklentiler dizisidir.
+# Tanım: GStreamer İyi Eklentileri, kaliteli kod, doğru işlevsellik ve tercih edilen lisansımız (eklenti kodu için LGPL, destekleyici kitaplık için LGPL veya LGPL uyumlu) olması düşünülen eklentiler dizisidir.
 # URL: http://gstreamer.freedesktop.org/
-# Packager: milisarge
-# Depends on: gstreamer1-plugins-base flac gdk-pixbuf libjpeg-turbo libpng libsoup libvpx
+# Paketçi: milisarge
+# Gerekler: gstreamer1-plugins-base flac gdk-pixbuf libjpeg-turbo libpng libsoup libvpx
 
 name=gstreamer1-plugins-good
 version=1.6.3

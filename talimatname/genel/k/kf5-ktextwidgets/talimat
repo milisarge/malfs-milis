@@ -1,7 +1,7 @@
-# Description: Gelişmiş metin düzenleme widget'ları 
+# Tanım: Gelişmiş metin düzenleme widget'ları 
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kservice kf5-kwidgetsaddons kf5-kwindowsystem kf5-sonnet
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kservice kf5-kwidgetsaddons kf5-kwindowsystem kf5-sonnet
 
 name=kf5-ktextwidgets
 version=5.27.0

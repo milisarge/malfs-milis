@@ -1,7 +1,7 @@
-# Description: Modern video araç seti
+# Tanım: Modern video araç seti
 # URL: http://movit.sesse.net/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: eigen3 gtest sdl2 fftw libepoxy
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: eigen3 gtest sdl2 fftw libepoxy
 
 name=movit
 version=1.3.2

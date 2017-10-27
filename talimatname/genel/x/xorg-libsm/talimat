@@ -1,7 +1,7 @@
-# Description: X.Org icin oturum yonetimi kutuphanesi
+# Tanım: X.Org icin oturum yonetimi kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-libice xorg-proto xorg-xtrans 
+# Paketçi: milisarge
+# Gerekler: xorg-libice xorg-proto xorg-xtrans 
 
 name=xorg-libsm
 version=1.2.2

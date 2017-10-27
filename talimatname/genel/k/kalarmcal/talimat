@@ -1,7 +1,7 @@
-# Description : KAlarm takvim verilerine erişebilmenizi ve kullanabilmenizi sağlayan kütüphane
+# Tanım: KAlarm takvim verilerine erişebilmenizi ve kullanabilmenizi sağlayan kütüphane
 # URL : https://projects.kde.org/kalarcal
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules boost kf5-kdoctools kf5-kdelibs4support akonadi kcalcore kholidays kidentitymanagement
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules boost kf5-kdoctools kf5-kdelibs4support akonadi kcalcore kholidays kidentitymanagement
 
 name=kalarmcal
 version=16.08.2

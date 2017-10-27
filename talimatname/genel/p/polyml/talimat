@@ -1,7 +1,7 @@
-# Description: standart ML derleyicisinin güncel gerçeklemesi
+# Tanım: standart ML derleyicisinin güncel gerçeklemesi
 # URL: http://www.polyml.org
-# Packager: milisarge
-# Depends on: libffi
+# Paketçi: milisarge
+# Gerekler: libffi
 
 name=polyml
 version=5.7

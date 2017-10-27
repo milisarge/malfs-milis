@@ -1,7 +1,7 @@
-# Description : Çalışma zamanını ve kütüphaneyi kullanıcı faaliyetlerini ayrı etkinlikler halinde organize etmek için
+# Tanım: Çalışma zamanını ve kütüphaneyi kullanıcı faaliyetlerini ayrı etkinlikler halinde organize etmek için
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: qt5 boost kf5-kcmutils kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdeclarative kf5-kglobalaccel kf5-ki18n kf5-kio kf5-kservice kf5-kwindowsystem kf5-kxmlgui
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 boost kf5-kcmutils kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdeclarative kf5-kglobalaccel kf5-ki18n kf5-kio kf5-kservice kf5-kwindowsystem kf5-kxmlgui
 
 name=kf5-kactivities
 version=5.27.0

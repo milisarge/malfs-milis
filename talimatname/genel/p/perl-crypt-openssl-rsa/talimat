@@ -1,7 +1,7 @@
-# Description: OpenSSL RSA yöntemlerine arabirim
+# Tanım: OpenSSL RSA yöntemlerine arabirim
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: perl-crypt-openssl-random perl-crypt-openssl-bignum 
+# Paketçi: milisarge
+# Gerekler: perl-crypt-openssl-random perl-crypt-openssl-bignum 
 
 name=perl-crypt-openssl-rsa
 version=0.28

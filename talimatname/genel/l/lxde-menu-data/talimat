@@ -1,7 +1,7 @@
-# Description: LXDE için freedesktop.org menü spesifik uyumlu masaüstü menüleri oluşturmak için gerekli dosyalar.
+# Tanım: LXDE için freedesktop.org menü spesifik uyumlu masaüstü menüleri oluşturmak için gerekli dosyalar.
 # URL: http://lxde.org/
-# Packager: milisarge
-# Depends on: intltool
+# Paketçi: milisarge
+# Gerekler: intltool
 
 name=lxde-menu-data
 version=0.1.4

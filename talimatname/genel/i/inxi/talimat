@@ -1,7 +1,7 @@
-# Description: inxi sistem bilgi betigi
+# Tanım: inxi sistem bilgi betigi
 # URL: http://inxi.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=inxi
 version=master

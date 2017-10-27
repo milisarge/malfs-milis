@@ -1,7 +1,7 @@
-# Description: Pty soyutlama
+# Tanım: Pty soyutlama
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kcoreaddons kf5-ki18n
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kcoreaddons kf5-ki18n
 
 name=kf5-kpty
 version=5.27.0

@@ -1,7 +1,7 @@
-# Description: EFI değişkenlerini işlemek için araçlar ve kütüphane.
+# Tanım: EFI değişkenlerini işlemek için araçlar ve kütüphane.
 # URL: https://github.com/rhinstaller/efivar
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: popt
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: popt
 
 name=efivar
 version=0.24

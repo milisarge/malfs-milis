@@ -1,7 +1,7 @@
-# Description: Hızlı ve güvenilir FTP, FTPS ve SFTP istemcisi
+# Tanım: Hızlı ve güvenilir FTP, FTPS ve SFTP istemcisi
 # URL: http://filezilla-project.org
-# Packager: milisarge
-# Depends on: wxgtk libidn gnutls xdg-utils tinyxml dbus
+# Paketçi: milisarge
+# Gerekler: wxgtk libidn gnutls xdg-utils tinyxml dbus
 
 name=filezilla
 version=3.12.0.2

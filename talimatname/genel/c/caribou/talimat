@@ -1,7 +1,7 @@
-# Description: Bir metin girişi ve UI gezinme uygulaması (ekran klavyesi).
+# Tanım: Bir metin girişi ve UI gezinme uygulaması (ekran klavyesi).
 # URL: http://live.gnome.org/Caribou
-# Packager: yasarciv67@gmail.com
-# Depends on: at-spi2-atk python-atspi python-gobject gtk2 gtk3 xorg-libxklavier libgee clutter dconf libxkbcommon
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: at-spi2-atk python-atspi python-gobject gtk2 gtk3 xorg-libxklavier libgee clutter dconf libxkbcommon
 
 name=caribou
 version=0.4.21

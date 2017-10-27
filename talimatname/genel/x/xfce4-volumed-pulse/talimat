@@ -1,7 +1,7 @@
-# Description: Xfce için pulseaudio kullanan bir ses tuşları kontrol programı
+# Tanım: Xfce için pulseaudio kullanan bir ses tuşları kontrol programı
 # URL: https://git.xfce.org/apps/xfce4-volumed-pulse
-# Packager: milisarge
-# Depends on: libnotify pulseaudio keybinder xfce4-conf 
+# Paketçi: milisarge
+# Gerekler: libnotify pulseaudio keybinder xfce4-conf 
 
 name=xfce4-volumed-pulse
 version=0.2.2

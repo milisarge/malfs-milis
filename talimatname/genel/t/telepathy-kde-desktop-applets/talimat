@@ -1,7 +1,7 @@
-# Description: KDE-Telepati Plasma masaüstü uygulamaları
+# Tanım: KDE-Telepati Plasma masaüstü uygulamaları
 # URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules kf5-kdoctools kf5-plasma-framework telepathy-kde-common-internals telepathy-kde-accounts-kcm 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules kf5-kdoctools kf5-plasma-framework telepathy-kde-common-internals telepathy-kde-accounts-kcm 
 
 name=telepathy-kde-desktop-applets
 version=16.08.2

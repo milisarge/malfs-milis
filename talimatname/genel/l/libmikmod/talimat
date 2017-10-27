@@ -1,7 +1,7 @@
-# Description: Taşınabilir bir ses kütüphanesi
+# Tanım: Taşınabilir bir ses kütüphanesi
 # URL: http://mikmod.raphnet.net/
-# Packager: milisarge
-# Depends on: xorg-libxtst pulseaudio
+# Paketçi: milisarge
+# Gerekler: xorg-libxtst pulseaudio
 
 name=libmikmod
 version=3.3.11

@@ -1,7 +1,7 @@
-# Description: Çapraz platform ses çıkışı kitaplığı ve eklentileri.
+# Tanım: Çapraz platform ses çıkışı kitaplığı ve eklentileri.
 # URL: http://www.xiph.org/ao/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: alsa-lib
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: alsa-lib
 
 name=libao
 version=1.2.0

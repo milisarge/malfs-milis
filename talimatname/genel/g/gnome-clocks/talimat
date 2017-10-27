@@ -1,7 +1,7 @@
-# Description: GNOME için saat uygulaması
+# Tanım: GNOME için saat uygulaması
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 libcanberra gnome-desktop libnotify libgweather desktop-file-utils geoclue2 geocode-glib gsound
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 libcanberra gnome-desktop libnotify libgweather desktop-file-utils geoclue2 geocode-glib gsound
 
 name=gnome-clocks
 version=3.22.1

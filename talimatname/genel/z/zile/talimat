@@ -1,7 +1,7 @@
-# Description: Zile metin düzenleyici
+# Tanım: Zile metin düzenleyici
 # URL: http://zile.sf.net
-# Packager: milisarge
-# Depends on: gc help2man
+# Paketçi: milisarge
+# Gerekler: gc help2man
 
 name=zile
 version=2.4.13

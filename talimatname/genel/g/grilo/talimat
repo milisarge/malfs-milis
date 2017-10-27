@@ -1,7 +1,7 @@
-# Description: Çerçeve, medya keşfi yapma ve uygulama geliştiricileri için gezinmeyi kolaylaştırmaya odaklanmıştır.
+# Tanım: Çerçeve, medya keşfi yapma ve uygulama geliştiricileri için gezinmeyi kolaylaştırmaya odaklanmıştır.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: glib libxml2 gobject-introspection gtk3 liboauth libsoup totem-pl-parser vala
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: glib libxml2 gobject-introspection gtk3 liboauth libsoup totem-pl-parser vala
 
 name=grilo
 version=0.3.2

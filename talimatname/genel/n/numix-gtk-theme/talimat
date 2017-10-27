@@ -1,7 +1,7 @@
-# Description: Modern bir görünüme sahip düz ve hafif bir tema (GNOME, Openbox, Birlik, Xfce)
+# Tanım: Modern bir görünüme sahip düz ve hafif bir tema (GNOME, Openbox, Birlik, Xfce)
 # URL: http://numixproject.org/
-# Packager: milisarge
-# Depends on : gdk-pixbuf glib libxml2 gtk-update-icon-cache
+# Paketçi: milisarge
+# Gerekler: gdk-pixbuf glib libxml2 gtk-update-icon-cache
 
 name=numix-gtk-theme
 version=2.2.3

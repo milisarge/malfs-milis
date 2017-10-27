@@ -1,7 +1,7 @@
-# Description: Açık kaynaklı bir SVG editörü
+# Tanım: Açık kaynaklı bir SVG editörü
 # URL: http://www.inkscape.org
-# Packager: milisarge
-# Depends on: gc boost gsl gtkmm intltool libxslt popt poppler lcms lcms2
+# Paketçi: milisarge
+# Gerekler: gc boost gsl gtkmm intltool libxslt popt poppler lcms lcms2
 
 name=inkscape
 version=0.91

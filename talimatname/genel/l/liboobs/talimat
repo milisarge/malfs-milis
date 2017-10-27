@@ -1,7 +1,7 @@
-# Description: Sistem-araçları backend'lerine GObject tabanlı arayüz - paylaşılan kütüphane
+# Tanım: Sistem-araçları backend'lerine GObject tabanlı arayüz - paylaşılan kütüphane
 # URL: http://libopenraw.freedesktop.org/wiki/Exempi
-# Packager: milisarge
-# Depends on: system-tools-backends 
+# Paketçi: milisarge
+# Gerekler: system-tools-backends 
 
 name=liboobs
 version=3.0.0

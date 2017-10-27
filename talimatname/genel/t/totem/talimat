@@ -1,7 +1,7 @@
-# Description: GStreamer tabanlı GNOME3 film oynatıcı.
+# Tanım: GStreamer tabanlı GNOME3 film oynatıcı.
 # URL: http://www.gnome.org/projects/totem/"
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache grilo libpeas gnome-icon-theme iso-codes gnome-doc-utils python-xdg clutter-gst clutter-gtk xorg-libsm libpeas python-gobject libgdata gstreamer1-plugins-good gstreamer1-plugins-bad totem-pl-parser nautilus python3-pylint
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache grilo libpeas gnome-icon-theme iso-codes gnome-doc-utils python-xdg clutter-gst clutter-gtk xorg-libsm libpeas python-gobject libgdata gstreamer1-plugins-good gstreamer1-plugins-bad totem-pl-parser nautilus python3-pylint
 
 name=totem
 version=3.22.0

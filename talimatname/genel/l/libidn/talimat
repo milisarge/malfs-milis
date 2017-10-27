@@ -1,7 +1,7 @@
-# Description: GNU Libidn, Stringprep, Punycode ve IDNA 2003 teknik özelliklerinin tam olarak belgelendirilmiş bir uygulamasıdır.
+# Tanım: GNU Libidn, Stringprep, Punycode ve IDNA 2003 teknik özelliklerinin tam olarak belgelendirilmiş bir uygulamasıdır.
 # URL: http://www.gnu.org/software/libidn/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libidn
 version=1.32

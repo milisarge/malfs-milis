@@ -1,7 +1,7 @@
-# Description: MATE için medya araçları
+# Tanım: MATE için medya araçları
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool libcanberra libmatemixer mate-desktop
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool libcanberra libmatemixer mate-desktop
 
 name=mate-media
 version=1.18.0

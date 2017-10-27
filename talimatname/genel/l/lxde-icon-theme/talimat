@@ -1,7 +1,7 @@
-# Description: LXDE Simge Tema paketi, LXDE için nuoveXT 2.2 Simge Teması içeriyor.
+# Tanım: LXDE Simge Tema paketi, LXDE için nuoveXT 2.2 Simge Teması içeriyor.
 # URL: http://lxde.org/
-# Packager: geantbrun at gmail dot com
-# Depends on: gtk-update-icon-cache
+# Paketçi: geantbrun at gmail dot com
+# Gerekler: gtk-update-icon-cache
 
 name=lxde-icon-theme
 version=0.5.1

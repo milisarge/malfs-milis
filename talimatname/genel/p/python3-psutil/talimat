@@ -1,7 +1,7 @@
-# Description: Python3 için çapraz platform işlem ve sistem yardımcı programları modülü.
+# Tanım: Python3 için çapraz platform işlem ve sistem yardımcı programları modülü.
 # URL: http://code.google.com/p/psutil/
-# Packager: milisarge
-# Depends on: python3-setuptools 
+# Paketçi: milisarge
+# Gerekler: python3-setuptools 
 
 name=python3-psutil
 version=2.1.3

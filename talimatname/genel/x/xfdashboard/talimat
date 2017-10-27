@@ -1,7 +1,7 @@
-# Description: Belki Xfce için bir kontrol paneli gibi bir Gnome kabuğu
+# Tanım: Belki Xfce için bir kontrol paneli gibi bir Gnome kabuğu
 # URL: http://goodies.xfce.org/projects/applications/xfdashboard/start
-# Packager: yasarciv67@gmail.com
-# Depends on: xfce4-dev-tools libwnck3 clutter xfce4-garcon 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: xfce4-dev-tools libwnck3 clutter xfce4-garcon 
 
 name=xfdashboard
 version=0.7.3

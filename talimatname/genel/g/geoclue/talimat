@@ -1,7 +1,7 @@
-# Description: D-Bus mesajlaşma sisteminde inşa edilen modüler coğrafi bilgi hizmetleri.
+# Tanım: D-Bus mesajlaşma sisteminde inşa edilen modüler coğrafi bilgi hizmetleri.
 # URL: https://launchpad.net/geoclue/
-# Packager: milisarge
-# Depends on: libsoup dbus-glib gconf libxslt
+# Paketçi: milisarge
+# Gerekler: libsoup dbus-glib gconf libxslt
 
 name=geoclue
 version=0.12.0

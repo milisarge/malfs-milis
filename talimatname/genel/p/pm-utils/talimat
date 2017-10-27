@@ -1,7 +1,7 @@
-# Description: Askıya alma ve hazırda bekletme güç yönetimi için yardımcı programlar ve komut dosyaları
+# Tanım: Askıya alma ve hazırda bekletme güç yönetimi için yardımcı programlar ve komut dosyaları
 # URL: http://pm-utils.freedesktop.org
-# Packager: milisarge
-# Depends on: pm-quirks 
+# Paketçi: milisarge
+# Gerekler: pm-quirks 
 
 name=pm-utils
 version=1.4.1

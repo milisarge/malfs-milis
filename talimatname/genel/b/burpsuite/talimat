@@ -1,7 +1,7 @@
-# Description: Web uygulama testleri için entegre bir platform (ücretsiz sürüm).
+# Tanım: Web uygulama testleri için entegre bir platform (ücretsiz sürüm).
 # URL: http://portswigger.net/burp/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: giflib
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: giflib
 
 name=burpsuite
 version=1.7.23

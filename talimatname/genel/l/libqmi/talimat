@@ -1,7 +1,7 @@
-# Description: WWAN modemleri ve Qualcomm MSM Arayüz protokolünü konuşan cihazlarla konuşmak için.
+# Tanım: WWAN modemleri ve Qualcomm MSM Arayüz protokolünü konuşan cihazlarla konuşmak için.
 # URL: http://www.freedesktop.org/software/libqmi/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: glib libmbim
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: glib libmbim
 
 name=libqmi
 version=1.12.6

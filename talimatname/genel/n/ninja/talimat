@@ -1,7 +1,7 @@
-# Description: Hıza odaklı küçük yapı sistemi
+# Tanım: Hıza odaklı küçük yapı sistemi
 # URL: http://martine.github.io/ninja/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=ninja
 version=1.8.2

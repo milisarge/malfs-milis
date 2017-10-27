@@ -1,7 +1,7 @@
-# Description: Optimized Link State Routing Protocol gerçeklemesi
+# Tanım: Optimized Link State Routing Protocol gerçeklemesi
 # URL: http://www.olsr.org/mediawiki/index.php/Olsrd
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=olsrd
 version=0.9.6

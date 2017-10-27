@@ -1,7 +1,7 @@
-# Description: sağlamlık, optimallik ve netlik öncelik veren bir programlama dili
+# Tanım: sağlamlık, optimallik ve netlik öncelik veren bir programlama dili
 # URL: http://ziglang.org
-# Packager: milisarge
-# Depends on: cmake llvm clang lld
+# Paketçi: milisarge
+# Gerekler: cmake llvm clang lld
 
 name=zig
 hesap=zig-lang

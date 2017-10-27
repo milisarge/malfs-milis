@@ -1,7 +1,7 @@
-# Description: Gtk temelli ve webkit motorunu kullanan basit tarayıcı
+# Tanım: Gtk temelli ve webkit motorunu kullanan basit tarayıcı
 # URL: https://opensource.conformal.com/wiki/xombrero
-# Packager: milisarge
-# Depends on: libbsd libsoup gnutls gtk3 webkitgtk3
+# Paketçi: milisarge
+# Gerekler: libbsd libsoup gnutls gtk3 webkitgtk3
 
 name=xombrero
 version=1.6.3

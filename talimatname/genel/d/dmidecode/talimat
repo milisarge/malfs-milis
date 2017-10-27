@@ -1,7 +1,7 @@
-# Description: Sistemin SMBIOS / DMI standardına göre BIOS'unuzun donanım bilgisidir.
+# Tanım: Sistemin SMBIOS / DMI standardına göre BIOS'unuzun donanım bilgisidir.
 # URL: 		   http://www.nongnu.org/dmidecode/
-# Packager:    milisarge
-# Depends on:
+# Paketçi:    milisarge
+# Gerekler:
 
 name=dmidecode
 version=3.1

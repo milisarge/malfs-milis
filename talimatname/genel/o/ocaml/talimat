@@ -1,7 +1,7 @@
-# Description: Caml, program güvenliği ve güvenilirliği göz önünde bulundurularak tasarlanmış genel amaçlı bir programlama dilidir.
+# Tanım: Caml, program güvenliği ve güvenilirliği göz önünde bulundurularak tasarlanmış genel amaçlı bir programlama dilidir.
 # URL: http://caml.inria.fr/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ocaml
 version=4.05.0

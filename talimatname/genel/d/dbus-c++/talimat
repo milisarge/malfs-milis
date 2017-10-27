@@ -1,7 +1,7 @@
-# Description: A C++ API for D-BUS
+# Tanım: A C++ API for D-BUS
 # URL: http://sourceforge.net/projects/dbus-cplusplus/
-# Packager: milisarge
-# Depends on: dbus glib
+# Paketçi: milisarge
+# Gerekler: dbus glib
 
 name=dbus-c++
 _name=libdbus-c++

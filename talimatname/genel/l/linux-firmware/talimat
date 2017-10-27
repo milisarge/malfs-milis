@@ -1,7 +1,7 @@
-# Description: Kernel için firmware ikilileri
+# Tanım: Kernel için firmware ikilileri
 # URL:         https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
-# Packager:    milisarge
-# Depends on:
+# Paketçi:    milisarge
+# Gerekler:
 
 name=linux-firmware
 version=20161122

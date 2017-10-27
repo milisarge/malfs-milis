@@ -1,7 +1,7 @@
-# Description: Hafif bir giriş yönetici
+# Tanım: Hafif bir giriş yönetici
 # URL: https://launchpad.net/lightdm
-# Packager: yasarciv67@gmail.com
-# Depends on: gcc glib gobject-introspection gtk-doc intltool itstool libgcrypt xorg-libx11 libxcb xorg-libxdmcp xorg-libxklavier pam polkit qt4 qt5 vala
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gcc glib gobject-introspection gtk-doc intltool itstool libgcrypt xorg-libx11 libxcb xorg-libxdmcp xorg-libxklavier pam polkit qt4 qt5 vala
 
 name=lightdm
 version=1.22.0

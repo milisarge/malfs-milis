@@ -1,7 +1,7 @@
-# Description: Linux çekirdeği paket filtreleme ve kontrol aracı
+# Tanım: Linux çekirdeği paket filtreleme ve kontrol aracı
 # URL: http://www.iptables.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=iptables
 version=1.6.0

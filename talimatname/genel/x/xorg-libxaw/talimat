@@ -1,7 +1,7 @@
-# Description: Athena Widget araclari
+# Tanım: Athena Widget araclari
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-libx11 xorg-libxext xorg-libxt xorg-libxmu xorg-libxpm xorg-libxau 
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-libx11 xorg-libxext xorg-libxt xorg-libxmu xorg-libxpm xorg-libxau 
 
 name=xorg-libxaw
 version=1.0.13

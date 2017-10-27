@@ -1,7 +1,7 @@
-# Description: DVD şifre çözme için portatif soyutlama kütüphanesi
+# Tanım: DVD şifre çözme için portatif soyutlama kütüphanesi
 # URL: http://www.videolan.org
-# Packager: milisarge
-# Depends on: doxygen 
+# Paketçi: milisarge
+# Gerekler: doxygen 
 
 name=libdvdcss
 version=1.4.0

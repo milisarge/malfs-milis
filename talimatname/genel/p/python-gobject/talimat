@@ -1,7 +1,7 @@
-# Description: GLib'in GObject sınıfı için Python 2'nin bağlantılarını sağlar.
+# Tanım: GLib'in GObject sınıfı için Python 2'nin bağlantılarını sağlar.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: python-cairo gobject-introspection xorg-libxxf86vm libffi 
+# Paketçi: milisarge
+# Gerekler: python-cairo gobject-introspection xorg-libxxf86vm libffi 
 
 name=python-gobject
 version=3.24.1

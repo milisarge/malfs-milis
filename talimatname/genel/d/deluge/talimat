@@ -1,7 +1,7 @@
-# Description: Python ve GTK tabanlı bittorrent istemcisi.
+# Tanım: Python ve GTK tabanlı bittorrent istemcisi.
 # URL: http://deluge-torrent.org/
-# Packager: milisarge
-# Depends on: librsvg libtorrent-rasterbar python-gtk python-openssl python-chardet python-xdg python-twisted intltool python-mako
+# Paketçi: milisarge
+# Gerekler: librsvg libtorrent-rasterbar python-gtk python-openssl python-chardet python-xdg python-twisted intltool python-mako
 
 name=deluge
 version=1.3.12

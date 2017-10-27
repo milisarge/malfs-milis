@@ -1,7 +1,7 @@
-# Description: Uzun yıllar önce PWLib olarak ortaya çıkmış bir sınıf kitaplığı.
+# Tanım: Uzun yıllar önce PWLib olarak ortaya çıkmış bir sınıf kitaplığı.
 # URL: http://ftp.gnu.org/gun/pth
-# Packager: milisarge
-# Depends on: alsa-lib expat pulseaudio
+# Paketçi: milisarge
+# Gerekler: alsa-lib expat pulseaudio
 
 name=ptlib
 version=2.10.11

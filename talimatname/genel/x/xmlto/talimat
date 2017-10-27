@@ -1,7 +1,7 @@
-# Description: Xml'yi diğer birçok biçime dönüştürün
+# Tanım: Xml'yi diğer birçok biçime dönüştürün
 # URL: http://cyberelk.net/tim/software/xmlto/
-# Packager: milisarge
-# Depends on: libxslt docbook-xsl docbook-xml
+# Paketçi: milisarge
+# Gerekler: libxslt docbook-xsl docbook-xml
 
 name=xmlto
 version=0.0.26

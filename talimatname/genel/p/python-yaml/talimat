@@ -1,7 +1,7 @@
-# Description: python için yaml ayrıştırıcı
+# Tanım: python için yaml ayrıştırıcı
 # URL: http://pyyaml.org/wiki/PyYAML
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-yaml
 version=3.12

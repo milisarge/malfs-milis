@@ -1,7 +1,7 @@
-# Description: Hafif renk yönetimi geliştirme kitaplığı/motor
+# Tanım: Hafif renk yönetimi geliştirme kitaplığı/motor
 # URL: http://www.littlecms.com/
-# Packager: milisarge
-# Depends on: libjpeg-turbo libtiff 
+# Paketçi: milisarge
+# Gerekler: libjpeg-turbo libtiff 
 
 
 name=lcms2

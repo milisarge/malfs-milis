@@ -1,7 +1,7 @@
-# Description: Standart Linux masaüstü üzerinde Android uygulamaları çalıştır
+# Tanım: Standart Linux masaüstü üzerinde Android uygulamaları çalıştır
 # URL: http://www.shashlik.io
-# Packager: Cihan Alkan
-# Depends on: python3 kdialog zenity
+# Paketçi: Cihan Alkan
+# Gerekler: python3 kdialog zenity
 
 name=shashlik
 version=0.9.3

@@ -1,7 +1,7 @@
-# Description: Medya oynatıcı özelliklerini açıklayan veri dosyaları, post-HAL sistemleri için
+# Tanım: Medya oynatıcı özelliklerini açıklayan veri dosyaları, post-HAL sistemleri için
 # URL: http://cgit.freedesktop.org/media-player-info/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: python3
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: python3
 
 name=media-player-info
 version=22

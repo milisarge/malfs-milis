@@ -1,7 +1,7 @@
-# Description: Genel SMBus erişimi ve donanım izleme için kullanıcı alanı araçlarının toplanması
+# Tanım: Genel SMBus erişimi ve donanım izleme için kullanıcı alanı araçlarının toplanması
 # URL: http://dl.lm-sensors.org/lm-sensors/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=lm-sensors
 version=3.4.0

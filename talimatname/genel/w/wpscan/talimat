@@ -1,7 +1,7 @@
-# Description: WordPress zafiyet tarayıcısı
+# Tanım: WordPress zafiyet tarayıcısı
 # URL: http://wpscan.org
-# Packager: yakar (aydin@komutan.org)
-# Depends on: ruby-bundler libxslt yaml curl
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: ruby-bundler libxslt yaml curl
 
 name=wpscan
 version=2.9.2

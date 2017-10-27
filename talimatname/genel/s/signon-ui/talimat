@@ -1,7 +1,7 @@
-# Description : Bir çevrimiçi hesabın oturum açma işlemi sırasında kullanıcı etkileşimlerini işleme tabi tutmaktan sorumlu UI bileşeni
+# Tanım: Bir çevrimiçi hesabın oturum açma işlemi sırasında kullanıcı etkileşimlerini işleme tabi tutmaktan sorumlu UI bileşeni
 # URL : https://launchpad.net/online-accounts-signon-ui
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : qt5 libaccounts-qt5 qt5-webkit signond libnotify
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 libaccounts-qt5 qt5-webkit signond libnotify
 
 name=signon-ui
 version=0.17+15.10.20150810

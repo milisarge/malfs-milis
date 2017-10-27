@@ -1,7 +1,7 @@
-# Description: OpenGL Extension Wrangler Library (GLEW), çapraz platform açık kaynak C / C ++ uzantısı yükleme kitaplığıdır.
+# Tanım: OpenGL Extension Wrangler Library (GLEW), çapraz platform açık kaynak C / C ++ uzantısı yükleme kitaplığıdır.
 # URL: http://glew.sourceforge.net/
-# Packager: milisarge
-# Depends on: xorg-mesa xorg-libxi xorg-libxmu
+# Paketçi: milisarge
+# Gerekler: xorg-mesa xorg-libxi xorg-libxmu
 
 name=glew
 version=2.0.0

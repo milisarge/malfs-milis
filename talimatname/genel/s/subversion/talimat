@@ -1,7 +1,7 @@
-# Description: Bir sürüm kontrol sistemi (CVS değiştirme)
+# Tanım: Bir sürüm kontrol sistemi (CVS değiştirme)
 # URL: http://subversion.apache.org
-# Packager: milisarge@gmail.com
-# Depends on: apr serf cyrus-sasl
+# Paketçi: milisarge@gmail.com
+# Gerekler: apr serf cyrus-sasl
 
 name=subversion
 version=1.9.3

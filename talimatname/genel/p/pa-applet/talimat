@@ -1,7 +1,7 @@
-# Description: PulseAudio kontrol uygulaması
+# Tanım: PulseAudio kontrol uygulaması
 # URL: https://github.com/fernandotcl/pa-applet
-# Packager: yasarciv67@gmail.com
-# Depends on: glib gtk3 libnotify pulseaudio 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: glib gtk3 libnotify pulseaudio 
 
 name=pa-applet
 version=2017.09

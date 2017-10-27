@@ -1,7 +1,7 @@
-# Description: Disk kullanımı, günlükleri ve yazı tiplerini görüntüleme, ekran görüntüsü alma, sözlükleri yönetme ve dosyaları arama için ortak MATE yardımcı programları
+# Tanım: Disk kullanımı, günlükleri ve yazı tiplerini görüntüleme, ekran görüntüsü alma, sözlükleri yönetme ve dosyaları arama için ortak MATE yardımcı programları
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool mate-panel mate-desktop libcanberra libgtop xorg-libsm
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool itstool mate-panel mate-desktop libcanberra libgtop xorg-libsm
 
 name=mate-utils
 version=1.18.2

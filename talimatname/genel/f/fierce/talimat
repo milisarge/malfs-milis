@@ -1,7 +1,7 @@
-# Description: DNS tarayıcı
+# Tanım: DNS tarayıcı
 # URL: http://ha.ckers.org/fierce/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: perl-net-dns
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: perl-net-dns
 
 name=fierce
 version=0.9.9

@@ -1,7 +1,7 @@
-# Description: Libparted'e Python bağları
+# Tanım: Libparted'e Python bağları
 # URL: https://fedorahosted.org/pyparted/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: parted python
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: parted python
 
 name=python-parted
 version=3.10.0

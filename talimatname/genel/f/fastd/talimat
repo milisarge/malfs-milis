@@ -1,7 +1,7 @@
-# Description: hızlı ve güvenli tünelleme uygulaması
+# Tanım: hızlı ve güvenli tünelleme uygulaması
 # URL: https://projects.universe-factory.net/projects/fastd
-# Packager: milisarge
-# Depends on: pkg-config cmake libcap libuecc libsodium json-c
+# Paketçi: milisarge
+# Gerekler: pkg-config cmake libcap libuecc libsodium json-c
 
 name=fastd
 version=18

@@ -1,7 +1,7 @@
-# Description: Bir vpn hizmeti.
+# Tanım: Bir vpn hizmeti.
 # URL: https://www.vpn.net/linux
-# Packager: kadanur
-# Depends on: 
+# Paketçi: kadanur
+# Gerekler: 
 
 name=logmein-hamachi
 version=2.1.0.174

@@ -1,7 +1,7 @@
-# Description: Coğrafi bölge için tatil ve diğer özel olayları belirleyen C ++ API'si
+# Tanım: Coğrafi bölge için tatil ve diğer özel olayları belirleyen C ++ API'si
 # URL : https://projects.kde.org/projects/kde/pim
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : kf5-extra-cmake-modules python kf5-kdoctools kf5-kdelibs4support kf5-kitemviews qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules python kf5-kdoctools kf5-kdelibs4support kf5-kitemviews qt5
 
 name=kholidays
 version=16.08.2

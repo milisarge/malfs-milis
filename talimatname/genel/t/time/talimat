@@ -1,7 +1,7 @@
-# Description: Diğer programların kullandığı CPU kaynaklarının (örneğin zaman ve bellek gibi) birçoğunu ölçer.
+# Tanım: Diğer programların kullandığı CPU kaynaklarının (örneğin zaman ve bellek gibi) birçoğunu ölçer.
 # URL: http://ftp.gnu.org/gnu/time
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on:
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler:
 
 name=time
 version=1.7

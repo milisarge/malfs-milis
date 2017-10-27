@@ -1,7 +1,7 @@
-# Description: Basit, küçük, minimal, C ++ XML ayrıştırıcı
+# Tanım: Basit, küçük, minimal, C ++ XML ayrıştırıcı
 # URL: http://www.grinninglizard.com/tinyxml/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=tinyxml
 version=2.6.2

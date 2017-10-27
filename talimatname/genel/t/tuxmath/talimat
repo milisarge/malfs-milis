@@ -1,7 +1,7 @@
-# Description: Çocukların matematik gerçeklerini uygulamalarına yardımcı olan bir arcade oyunu
+# Tanım: Çocukların matematik gerçeklerini uygulamalarına yardımcı olan bir arcade oyunu
 # URL: http://tux4kids.alioth.debian.org/
-# Packager: Cihan Alkan
-# Depends on: t4k-common
+# Paketçi: Cihan Alkan
+# Gerekler: t4k-common
 
 name=tuxmath
 version=2.0.3

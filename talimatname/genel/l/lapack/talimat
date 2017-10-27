@@ -1,7 +1,7 @@
-# Description: Temel Lineer Cebir Altprogramları
+# Tanım: Temel Lineer Cebir Altprogramları
 # URL: http://www.netlib.org/blas
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=lapack
 version=3.5.0

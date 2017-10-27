@@ -1,7 +1,7 @@
-# Description: PulseAudio Ses Kontrolü (pavucontrol), PulseAudio ses sunucusu için basit bir GTK tabanlı ses kontrol aracıdır ("karıştırıcı").
+# Tanım: PulseAudio Ses Kontrolü (pavucontrol), PulseAudio ses sunucusu için basit bir GTK tabanlı ses kontrol aracıdır ("karıştırıcı").
 # URL: http://www.freedesktop.org/software/pulseaudio/pavucontrol/
-# Packager: milisarge
-# Depends on: pulseaudio gtk2 libcanberra gtkmm libsigc++
+# Paketçi: milisarge
+# Gerekler: pulseaudio gtk2 libcanberra gtkmm libsigc++
 
 name=pavucontrol
 version=2.0

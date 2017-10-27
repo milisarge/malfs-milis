@@ -1,7 +1,7 @@
-# Description: Ericsson Computer Science Laboratory tarafindan gelistirilen bir proglamlama dili
+# Tanım: Ericsson Computer Science Laboratory tarafindan gelistirilen bir proglamlama dili
 # URL: http://erlang.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=erlang
 version=20.0

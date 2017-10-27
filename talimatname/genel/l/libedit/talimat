@@ -1,7 +1,7 @@
-# Description: Genel satır düzenleme, tarih ve tokenization işlevleri sağlayan komut satırı düzenleyicisi.
+# Tanım: Genel satır düzenleme, tarih ve tokenization işlevleri sağlayan komut satırı düzenleyicisi.
 # URL: http://thrysoee.dk/editline/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libedit
 _version=20170329-3.1

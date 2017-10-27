@@ -1,7 +1,7 @@
-# Description: Dokunmatik Ekran Erişim Kitaplığı.
+# Tanım: Dokunmatik Ekran Erişim Kitaplığı.
 # URL: https://github.com/kergoth/tslib
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: 
 
 name=tslib
 version=1.1

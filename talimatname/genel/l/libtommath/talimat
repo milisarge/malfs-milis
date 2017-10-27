@@ -1,7 +1,7 @@
-# Description: Tamsayılı temelli sayısal teorik uygulamalar için yüksek seviyede optimize edilmiş ve taşınabilir rutinler
+# Tanım: Tamsayılı temelli sayısal teorik uygulamalar için yüksek seviyede optimize edilmiş ve taşınabilir rutinler
 # URL: http://www.libtom.org/
-# Packager: Cihan Alkan
-# Depends on:
+# Paketçi: Cihan Alkan
+# Gerekler:
 
 name=libtommath
 version=1.0.1

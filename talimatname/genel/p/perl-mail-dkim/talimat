@@ -1,7 +1,7 @@
-# Description: İnternet postasını DKIM/DomainKey imzaları ile imzalar/doğrular
+# Tanım: İnternet postasını DKIM/DomainKey imzaları ile imzalar/doğrular
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: perl-crypt-openssl-rsa perl-digest-sha1 perl-mailtools perl-net-dns 
+# Paketçi: milisarge
+# Gerekler: perl-crypt-openssl-rsa perl-digest-sha1 perl-mailtools perl-net-dns 
 
 name=perl-mail-dkim
 version=0.40

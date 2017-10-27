@@ -1,7 +1,7 @@
-# Description: Qt için süreç yöneticisi
+# Tanım: Qt için süreç yöneticisi
 # URL: https://github.com/QtDesktop/qps/
-# Packager: yasarciv67@gmail.com
-# Depends on: qt5
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: qt5
 
 name=qps
 version=1.10.16

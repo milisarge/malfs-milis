@@ -1,7 +1,7 @@
-# Description: GTK +, çok platformlu bir araç setidir (sürüm 2)
+# Tanım: GTK +, çok platformlu bir araç setidir (sürüm 2)
 # URL: http://www.gtk.org/
-# Packager: milisarge
-# Depends on: gtk-doc shared-mime-info xorg-libxinerama xorg-libxrandr cairo pango pangox-compat atk libtiff cups gdk-pixbuf xorg-libxi xorg-libxcursor hicolor-icon-theme gtk-update-icon-cache
+# Paketçi: milisarge
+# Gerekler: gtk-doc shared-mime-info xorg-libxinerama xorg-libxrandr cairo pango pangox-compat atk libtiff cups gdk-pixbuf xorg-libxi xorg-libxcursor hicolor-icon-theme gtk-update-icon-cache
 
 name=gtk2
 version=2.24.29

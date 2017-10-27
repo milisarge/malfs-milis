@@ -1,7 +1,7 @@
-# Description: METAR verilerinden hava durumu tahminlerini gösteren CLI aracı
+# Tanım: METAR verilerinden hava durumu tahminlerini gösteren CLI aracı
 # URL: http://fungi.yuggoth.org/weather/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=weather
 version=2.0

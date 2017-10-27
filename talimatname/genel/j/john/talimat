@@ -1,7 +1,7 @@
-# Description: John the Ripper hızlı bir şifre kırma yazılımıdır
+# Tanım: John the Ripper hızlı bir şifre kırma yazılımıdır
 # URL: http://www.openwall.com/john/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=john
 _version=1.8.0-jumbo-1

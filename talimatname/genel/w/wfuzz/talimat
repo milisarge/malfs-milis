@@ -1,7 +1,7 @@
-# Description: Web uygulamalarındaki link verilmeyen kaynakları deneme/yanılma (fuzzer) yolu ile bulan araç.
+# Tanım: Web uygulamalarındaki link verilmeyen kaynakları deneme/yanılma (fuzzer) yolu ile bulan araç.
 # URL: https://github.com/xmendez/wfuzz
-# Packager: yakar (aydin@komutan.org)
-# Depends on: python-pip python-xml python-lxml
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: python-pip python-xml python-lxml
 
 name=wfuzz
 version=2.1.5

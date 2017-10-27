@@ -1,7 +1,7 @@
-# Description: LXQt uygulamaları için çeşitli paketleme araçları ve komut dosyaları
+# Tanım: LXQt uygulamaları için çeşitli paketleme araçları ve komut dosyaları
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake
 
 name=lxqt-build-tools
 version=0.3.2

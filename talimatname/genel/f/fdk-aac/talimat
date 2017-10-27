@@ -1,7 +1,7 @@
-# Description: Fraunhofer FDK AAC Advanced Audio Codec kütüphanesi.
+# Tanım: Fraunhofer FDK AAC Advanced Audio Codec kütüphanesi.
 # URL: http://www.iis.fraunhofer.de/en/ff/amm/impl/fdkaaccodec.html
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=fdk-aac
 version=0.1.4

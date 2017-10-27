@@ -1,7 +1,7 @@
-# Description: Qt5 için bağlayıcı pythonu
+# Tanım: Qt5 için bağlayıcı pythonu
 # URL: http://www.riverbankcomputing.co.uk/software/pyqt/intro
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: dbus-python python-sip qt5 qt5-webkit python-opengl python
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: dbus-python python-sip qt5 qt5-webkit python-opengl python
 
 name=python-qt5
 version=5.7

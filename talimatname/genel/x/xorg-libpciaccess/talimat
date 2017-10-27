@@ -1,7 +1,7 @@
-# Description: X.Org PCI erisim kutuphanesi
+# Tanım: X.Org PCI erisim kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packagers: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 _name=libpciaccess
 name=xorg-libpciaccess

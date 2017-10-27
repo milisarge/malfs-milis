@@ -1,7 +1,7 @@
-# Description: F2FS dosya sistemi araçları
+# Tanım: F2FS dosya sistemi araçları
 # URL: http://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/about/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=f2fs-tools
 version=1.8.0

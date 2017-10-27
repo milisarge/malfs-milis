@@ -1,7 +1,7 @@
-# Description: iptables ayarlamaları için güçlü bir arayüz uygulaması
+# Tanım: iptables ayarlamaları için güçlü bir arayüz uygulaması
 # URL: http://www.vuurmuur.org
-# Packager: milisarge
-# Depends on: libnetfilter_log iptables libjpeg-turbo 
+# Paketçi: milisarge
+# Gerekler: libnetfilter_log iptables libjpeg-turbo 
 
 name=vuurmuur
 _name=Vuurmuur

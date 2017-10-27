@@ -1,7 +1,7 @@
-# Description: GNOME Bluetooth altsistemi.
+# Tanım: GNOME Bluetooth altsistemi.
 # URL: https://wiki.gnome.org/Projects/GnomeBluetooth
-# Packager: yasarciv67@gmail.com 
-# Depends on: itstool gtk3 gobject-introspection bluez gtk-doc libnotify libcanberra gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: itstool gtk3 gobject-introspection bluez gtk-doc libnotify libcanberra gtk-update-icon-cache
 
 name=gnome-bluetooth
 version=3.20.0

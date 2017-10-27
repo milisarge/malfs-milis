@@ -1,7 +1,7 @@
-# Description: Hafif bir GTK2 tabanlı systray
+# Tanım: Hafif bir GTK2 tabanlı systray
 # URL: http://home.gna.org/fvwm-crystal/
-# Packager: milisarge@gmail.com
-# Depends on: xorg-libxmu gtk2
+# Paketçi: milisarge@gmail.com
+# Gerekler: xorg-libxmu gtk2
 
 name=trayer
 version=1.0

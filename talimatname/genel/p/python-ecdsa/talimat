@@ -1,7 +1,7 @@
-# Description: ECDSA'nın Python'da uygulanması
+# Tanım: ECDSA'nın Python'da uygulanması
 # URL: https://github.com/warner/python-ecdsa
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-ecdsa
 version=0.11

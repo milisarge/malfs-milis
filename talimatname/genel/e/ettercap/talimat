@@ -1,7 +1,7 @@
-# Description: Ethernet LAN'lar için bir ağ algılayıcı/durdurucu/günlükleyici
+# Tanım: Ethernet LAN'lar için bir ağ algılayıcı/durdurucu/günlükleyici
 # URL: http://ettercap.github.com/ettercap/
-# packager: milisarge
-# Depends on : libpcap pcre libnet ethtool ghostscript cmake gtk2
+# Paketçi: milisarge
+# Gerekler: libpcap pcre libnet ethtool ghostscript cmake gtk2
 
 name=ettercap
 version=0.8.2

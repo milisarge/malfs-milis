@@ -1,7 +1,7 @@
-# Description: Ağ tarama ve güvenlik denetimi programı
+# Tanım: Ağ tarama ve güvenlik denetimi programı
 # URL: http://insecure.org/nmap/
-# Packager: milisarge@gmail.com
-# Depends on: pcre libpcap lua liblinear python
+# Paketçi: milisarge@gmail.com
+# Gerekler: pcre libpcap lua liblinear python
 
 name=nmap
 version=7.60

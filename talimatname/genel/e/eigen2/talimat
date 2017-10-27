@@ -1,7 +1,7 @@
-# Description: Vektör ve matris matematik için hafif bir C ++ şablon kütüphanesi.
+# Tanım: Vektör ve matris matematik için hafif bir C ++ şablon kütüphanesi.
 # URL: http://eigen.tuxfamily.org/
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=eigen2
 version=2.0.17

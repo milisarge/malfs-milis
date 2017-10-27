@@ -1,7 +1,7 @@
-# Description: Ham dosyalardaki exif bilgilerini oluşturur ve yeniden yazar
+# Tanım: Ham dosyalardaki exif bilgilerini oluşturur ve yeniden yazar
 # URL: http://search.cpan.org/~exiftool/Image-ExifTool/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-image-exiftool
 version=9.90

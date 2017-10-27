@@ -1,7 +1,7 @@
-# Description: NTFS-3G, Linux sistemleri için istikrarlı, tam özellikli, okuma-yazma NTFS sürücüsüdür.
+# Tanım: NTFS-3G, Linux sistemleri için istikrarlı, tam özellikli, okuma-yazma NTFS sürücüsüdür.
 # URL: http://www.tuxera.com/community/open-source-ntfs-3g/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ntfs-3g
 version=2015.3.14

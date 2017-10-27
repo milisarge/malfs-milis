@@ -1,7 +1,7 @@
-# Description: HP DeskJet, OfficeJet, Photosmart, Business Inkjet ve bazı LaserJet serileri için sürücüler
+# Tanım: HP DeskJet, OfficeJet, Photosmart, Business Inkjet ve bazı LaserJet serileri için sürücüler
 # URL: http://hplipopensource.com/hplip-web/index.html
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: v4l-utils libgphoto2 python3-sip python3-qt5 avahi python3 wget ghostscript foomatic-db foomatic-db-engine usbutils sane xsane cups cups-filters rpcbind libusb libusb-compat net-snmp dbus-python python3-gobject python-notify python3-pillow python3-reportlab
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: v4l-utils libgphoto2 python3-sip python3-qt5 avahi python3 wget ghostscript foomatic-db foomatic-db-engine usbutils sane xsane cups cups-filters rpcbind libusb libusb-compat net-snmp dbus-python python3-gobject python-notify python3-pillow python3-reportlab
 
 name=hplip
 version=3.16.10

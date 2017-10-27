@@ -1,7 +1,7 @@
-# Description: Apple Dosyalama Protokol (AFP) kütüphanesi.
+# Tanım: Apple Dosyalama Protokol (AFP) kütüphanesi.
 # URL: http://alexthepuffin.googlepages.com/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: fuse libgcrypt
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: fuse libgcrypt
 
 name=afpfs-ng
 version=0.8.1

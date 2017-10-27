@@ -1,7 +1,7 @@
-# Description: C++ statik bağlamlı arayüz kütüphanesi
+# Tanım: C++ statik bağlamlı arayüz kütüphanesi
 # URL: http://nanapro.org/en-us/
-# Packager: milisarge
-# Depends on: alsa-lib cmake libjpeg-turbo libpng xorg-libx11 xorg-libxft xorg-proto 
+# Paketçi: milisarge
+# Gerekler: alsa-lib cmake libjpeg-turbo libpng xorg-libx11 xorg-libxft xorg-proto 
 
 name=nana
 version=1.5.5

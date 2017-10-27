@@ -1,7 +1,7 @@
-# Description: Gparted, disk bölümlerini oluşturabilen, yeniden düzenleyen veya silebilen bir Gtk 2 GUI olan Gnome bölümü düzenleyicidir.
+# Tanım: Gparted, disk bölümlerini oluşturabilen, yeniden düzenleyen veya silebilen bir Gtk 2 GUI olan Gnome bölümü düzenleyicidir.
 # URL: http://gparted.sourceforge.net/
-# Packager: milisarge
-# Depends on: ssh-askpass gnome-doc-utils gtk2 parted gtkmm libsigc++ ntfs-3g lvm2
+# Paketçi: milisarge
+# Gerekler: ssh-askpass gnome-doc-utils gtk2 parted gtkmm libsigc++ ntfs-3g lvm2
 
 name=gparted
 version=0.27.0

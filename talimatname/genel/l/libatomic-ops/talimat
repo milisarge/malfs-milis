@@ -1,7 +1,7 @@
-# Description: Bir dizi mimaride atom hafızası güncelleme işlemleri için uygulamalar.
+# Tanım: Bir dizi mimaride atom hafızası güncelleme işlemleri için uygulamalar.
 # URL: http://www.hpl.hp.com/research/linux/atomic_ops/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on :
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler:
 
 name=libatomic-ops
 version=7.4.4

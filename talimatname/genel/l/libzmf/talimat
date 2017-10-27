@@ -1,7 +1,7 @@
-# Description: Zoner çizim ve bitmap dosyalarını içe aktarmak için bir kütüphane
+# Tanım: Zoner çizim ve bitmap dosyalarını içe aktarmak için bir kütüphane
 # URL: https://wiki.documentfoundation.org/DLP/Libraries/libzmf
-# Packager: Cihan Alkan
-# Depends on: librevenge boost libpng doxygen
+# Paketçi: Cihan Alkan
+# Gerekler: librevenge boost libpng doxygen
 
 name=libzmf
 version=0.0.1

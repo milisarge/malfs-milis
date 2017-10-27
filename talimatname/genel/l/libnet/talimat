@@ -1,7 +1,7 @@
-# Description: Ağ paketleri inşa etmek ve enjekte etmek için kütüphane.
+# Tanım: Ağ paketleri inşa etmek ve enjekte etmek için kütüphane.
 # URL: http://libnet-dev.sf.net
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libnet
 version=1.1.6

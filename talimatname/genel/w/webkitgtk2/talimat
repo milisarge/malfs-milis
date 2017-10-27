@@ -1,7 +1,7 @@
-# Description: WebKitGTK+, WebKit rendering motorunun tam özellikli bir portudur
+# Tanım: WebKitGTK+, WebKit rendering motorunun tam özellikli bir portudur
 # URL: http://webkitgtk.org/
-# Packager: milisarge
-# Depends on: libwebp libsecret geoclue gperf gtk2 dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
+# Paketçi: milisarge
+# Gerekler: libwebp libsecret geoclue gperf gtk2 dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
 
 name=webkitgtk2
 version=2.4.11

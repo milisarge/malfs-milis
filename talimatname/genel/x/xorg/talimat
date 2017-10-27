@@ -1,7 +1,7 @@
-# Description: xf86-input-evdev, synaptics, vmmouse, wacom,  xf86-video-ati, fbdev, intel, nouveau, vmware sürücüleri
+# Tanım: xf86-input-evdev, synaptics, vmmouse, wacom,  xf86-video-ati, fbdev, intel, nouveau, vmware sürücüleri
 # URL: http://ftp.x.org/archive//individual
-# Packager: milisarge
-# Depends on: mtdev xorg-libxvmc xorg-server xcb-util xorg-xkeyboard-config xorg-twm xorg-term xorg-xclock xorg-xinit libevdev
+# Paketçi: milisarge
+# Gerekler: mtdev xorg-libxvmc xorg-server xcb-util xorg-xkeyboard-config xorg-twm xorg-term xorg-xclock xorg-xinit libevdev
 
 name=xorg
 version=7.8

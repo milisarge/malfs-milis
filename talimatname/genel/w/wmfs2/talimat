@@ -1,7 +1,7 @@
-# Description: X için hafif ve son derece yapılandırılabilir döşeme penceresi yöneticisi
+# Tanım: X için hafif ve son derece yapılandırılabilir döşeme penceresi yöneticisi
 # URL: http://wmfs.info/
-# Packager: milisarge
-# Depends on: xorg-libxft, xorg-libx11, imlib2, 
+# Paketçi: milisarge
+# Gerekler: xorg-libxft, xorg-libx11, imlib2, 
 
 name=wmfs2
 version=git

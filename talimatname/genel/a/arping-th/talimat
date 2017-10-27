@@ -1,7 +1,7 @@
-# Description: ARP Ping uygulaması- Thomas Habets
+# Tanım: ARP Ping uygulaması- Thomas Habets
 # URL: http://www.habets.pp.se/synscan/programs.php
-# Packager: milisarge
-# Depends on: libnet libcap-ng libpcap
+# Paketçi: milisarge
+# Gerekler: libnet libcap-ng libpcap
 
 name=arping-th
 _projname=arping

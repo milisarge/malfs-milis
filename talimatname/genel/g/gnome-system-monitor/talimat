@@ -1,7 +1,7 @@
-# Description: GNOME için bir sistem monitörü
+# Tanım: GNOME için bir sistem monitörü
 # URL: http://library.gnome.org/users/gnome-system-monitor/3.1/gnome-system-monitor.html
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache adwaita-icon-theme itstool libgtop libwnck3 gtkmm3 glibmm librsvg gnome-icon-theme desktop-file-utils gnome-doc-utils
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache adwaita-icon-theme itstool libgtop libwnck3 gtkmm3 glibmm librsvg gnome-icon-theme desktop-file-utils gnome-doc-utils
 
 name=gnome-system-monitor
 version=3.22.2

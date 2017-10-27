@@ -1,7 +1,7 @@
-# Description: X Pencere Sistem Kilidi Ekranı
+# Tanım: X Pencere Sistem Kilidi Ekranı
 # URL: http://www.tux.org/~bagleyd/xlockmore.html 
-# Packager: milisarge
-# Depends on: gtk2 fortune
+# Paketçi: milisarge
+# Gerekler: gtk2 fortune
 
 name=xlockmore
 version=5.49

@@ -1,7 +1,7 @@
-# Description: MPEG-4 kitaplığı
+# Tanım: MPEG-4 kitaplığı
 # URL: http://code.google.com/p/mp4v2
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libmp4v2
 version=2.0.0

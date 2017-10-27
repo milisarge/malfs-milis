@@ -1,7 +1,7 @@
-# Description: Normal ifadelerden C tabanlı tanıyıcılar üretmek için kullanılan bir araç
+# Tanım: Normal ifadelerden C tabanlı tanıyıcılar üretmek için kullanılan bir araç
 # URL: http://re2c.sourceforge.net/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=re2c
 version=1.0.2

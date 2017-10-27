@@ -1,7 +1,7 @@
-# Description: Libxfce4util paketi Xfce masaüstü ortamı için temel bir yardımcı program kütüphanesi.
+# Tanım: Libxfce4util paketi Xfce masaüstü ortamı için temel bir yardımcı program kütüphanesi.
 # URL: http://ww.xfce.org/projects/libraries/
-# Packager: milisarge
-# Depends on: glib intltool
+# Paketçi: milisarge
+# Gerekler: glib intltool
 
 _name=libxfce4util
 

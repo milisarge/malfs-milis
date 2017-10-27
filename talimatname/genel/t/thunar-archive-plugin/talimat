@@ -1,7 +1,7 @@
-# Description: Arşivlerle uğraşmak için Thunar filemanager eklentisi
+# Tanım: Arşivlerle uğraşmak için Thunar filemanager eklentisi
 # URL: http://foo-projects.org/~benny/projects/thunar-archive-plugin
-# Packager: milisarge
-# Depends on: thunar xarchiver
+# Paketçi: milisarge
+# Gerekler: thunar xarchiver
 
 name=thunar-archive-plugin
 version=0.3.1

@@ -1,0 +1,19 @@
+# Tanım: linux msn istemcisi
+# URL: http://amsn.sourceforge.net
+# Paketçi: milisarge
+# Gerekler: tk libjpeg-turbo libpng
+
+name=amsn
+version=0.98.9
+release=1
+source=(http://download.sourceforge.net/$name/$name/$version/$name-$version-src.tar.bz2)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr 
+  make
+  make DESTDIR=$PKG install
+  rm -rf $PKG/usr/share/amsn/{AGREEMENT,CREDITS,FAQ,GNUGPL,HELP,INSTALL} \
+         $PKG/usr/share/amsn/{TODO,docs,README,plugins/*/READM{E,E.txt}} \
+         $PKG/usr/share/amsn/utils/*/{LICENSE.txt,license.terms}
+}

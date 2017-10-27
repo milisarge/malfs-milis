@@ -1,7 +1,7 @@
-# Description : Dosya yöneticileri tarafından kullanılabilen hafif video küçük resim görüntüleyici.
+# Tanım: Dosya yöneticileri tarafından kullanılabilen hafif video küçük resim görüntüleyici.
 # URL : https://github.com/dirkvdb/ffmpegthumbnailer
-# Packager : yasarciv67@gmail.com
-# Depends on : cmake libjpeg-turbo libpng ffmpeg gvfs
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake libjpeg-turbo libpng ffmpeg gvfs
 
 name=ffmpegthumbnailer
 version=2.2.0

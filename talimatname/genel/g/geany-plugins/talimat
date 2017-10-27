@@ -1,7 +1,7 @@
-# Description: Geany için birçok eklenti
+# Tanım: Geany için birçok eklenti
 # URL: http://plugins.geany.org/
-# Packager: milisarge
-# Depends on: geany
+# Paketçi: milisarge
+# Gerekler: geany
 
 name=geany-plugins
 version=1.26

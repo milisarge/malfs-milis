@@ -1,7 +1,7 @@
-# Description: Qt tabanlı hafif bir terminal emülatörü.
+# Tanım: Qt tabanlı hafif bir terminal emülatörü.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: liblxqt lxqt-qtermwidget lxqt-l10n
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: liblxqt lxqt-qtermwidget lxqt-l10n
 
 name=qterminal
 version=0.7.1

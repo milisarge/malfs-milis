@@ -1,7 +1,7 @@
-# Description: Ana makinenizin diğer kullanıcılarına e-posta göndermek için Posta Aktarma Aracısı (MTA)
+# Tanım: Ana makinenizin diğer kullanıcılarına e-posta göndermek için Posta Aktarma Aracısı (MTA)
 # URL: http://www.postfix.org
-# Packager: milisarge
-# Depends on: db cyrus-sasl openssl icu mariadb openldap pcre postgresql sqlite
+# Paketçi: milisarge
+# Gerekler: db cyrus-sasl openssl icu mariadb openldap pcre postgresql sqlite
 
 name=postfix
 version=3.0.3

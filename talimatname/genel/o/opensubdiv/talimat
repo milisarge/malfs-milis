@@ -1,7 +1,7 @@
-# Description: Açık Kaynaklı bir alt bölüm yüzey kütüphanesi
+# Tanım: Açık Kaynaklı bir alt bölüm yüzey kütüphanesi
 # URL: http://graphics.pixar.com/opensubdiv
-# Packager: yasarciv67@gmail.com
-# Depends on: python python-docutils python-pygments cmake glew xorg-libxcursor xorg-app xorg-libxinerama
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: python python-docutils python-pygments cmake glew xorg-libxcursor xorg-app xorg-libxinerama
 
 
 name=opensubdiv

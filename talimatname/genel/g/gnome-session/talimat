@@ -1,7 +1,7 @@
-# Description: GNOME oturum yöneticisi
+# Tanım: GNOME oturum yöneticisi
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: openbox xorg-libsm gconf gtk3 json-glib startup-notification upower xmlto consolekit2 gnome-desktop gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: openbox xorg-libsm gconf gtk3 json-glib startup-notification upower xmlto consolekit2 gnome-desktop gtk-update-icon-cache
 
 name=gnome-session
 version=3.22.2

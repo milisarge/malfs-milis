@@ -1,7 +1,7 @@
-# Description: Facebook Grafiği API'si için GLib / GObject sarmalayıcı.
+# Tanım: Facebook Grafiği API'si için GLib / GObject sarmalayıcı.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: librest json-glib gobject-introspection gnome-online-accounts
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: librest json-glib gobject-introspection gnome-online-accounts
 
 name=gfbgraph
 version=0.2.3

@@ -1,7 +1,7 @@
-# Description: Sistem performansını ve kullanım etkinliğini izlemek için kullanılan yardımcı programlar.
+# Tanım: Sistem performansını ve kullanım etkinliğini izlemek için kullanılan yardımcı programlar.
 # URL: http://perso.wanadoo.fr/sebastien.godard
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=sysstat
 version=11.1.8	

@@ -1,7 +1,7 @@
-# Description: GNOME için kontrol merkezi
+# Tanım: GNOME için kontrol merkezi
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: iso-codes accountsservice clutter-gtk colord-gtk gnome-online-accounts gnome-settings-daemon grilo libgtop libpwquality kerberos shared-mime-info cheese cups samba gnome-bluetooth ibus modemmanager network-manager-applet gnome-color-manager sound-theme-freedesktop cups-pk-helper vino gsettings-desktop-schemas libgudev tzdata webkit2gtk3
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: iso-codes accountsservice clutter-gtk colord-gtk gnome-online-accounts gnome-settings-daemon grilo libgtop libpwquality kerberos shared-mime-info cheese cups samba gnome-bluetooth ibus modemmanager network-manager-applet gnome-color-manager sound-theme-freedesktop cups-pk-helper vino gsettings-desktop-schemas libgudev tzdata webkit2gtk3
 
 name=gnome-control-center
 version=3.22.1

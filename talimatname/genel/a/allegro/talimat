@@ -1,7 +1,7 @@
-# Description: C/C++ için çoklu platform oyun geliştirme kütüphanesi.
+# Tanım: C/C++ için çoklu platform oyun geliştirme kütüphanesi.
 # URL:         http://alleg.sourceforge.net/
-# Packager:    milisarge
-# Depends on:  flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga
+# Paketçi:    milisarge
+# Gerekler:  flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga
 
 name=allegro
 version=5.1.12

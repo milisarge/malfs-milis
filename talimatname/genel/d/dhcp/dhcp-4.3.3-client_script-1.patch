@@ -3,7 +3,7 @@ Date:                    2012-08-14
 Initial Package Version: 4.2.4-P1
 Upstream Status:         Rejected by upstream.
 Origin:                  Based on Debian's dhclient-script, but modified for BLFS
-Description:             This patch replaces original linux script for dhcp client with
+Tanım:             This patch replaces original linux script for dhcp client with
                          better one which is based on Debian's dhclient-script, but modified
                          to be used on LFS/BLFS. It also removes net-tools dependency.
 

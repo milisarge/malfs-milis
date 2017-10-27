@@ -1,7 +1,7 @@
-# Description: interaktif bir süreç görüntüleyici/düzenleyici
+# Tanım: interaktif bir süreç görüntüleyici/düzenleyici
 # URL: http://htop.sourceforge.net/
-# Packager: milisarge
-# Depends on: ncurses
+# Paketçi: milisarge
+# Gerekler: ncurses
 
 name=htop
 version=1.0.3

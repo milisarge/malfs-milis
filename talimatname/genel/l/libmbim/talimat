@@ -1,7 +1,7 @@
-# Description: MBIM modem protokol yardımcı kitaplığı.
+# Tanım: MBIM modem protokol yardımcı kitaplığı.
 # URL: http://www.freedesktop.org/wiki/Software/libmbim/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: glib gobject-introspection libgudev
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: glib gobject-introspection libgudev
 
 name=libmbim
 version=1.14.0

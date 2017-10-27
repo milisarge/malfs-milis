@@ -1,7 +1,7 @@
-# Description: Netscape Taşınabilir Çalışma Zamanı Kitaplığı (NSPR)
+# Tanım: Netscape Taşınabilir Çalışma Zamanı Kitaplığı (NSPR)
 # URL: http://www.mozilla.org/projects/nspr/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=nspr
 version=4.16

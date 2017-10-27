@@ -1,7 +1,7 @@
-# Description: Konsol için bir Twitter istemcisi.
+# Tanım: Konsol için bir Twitter istemcisi.
 # URL: http://pypi.python.org/pypi/turses/
-# Packager: milisarge
-# Depends on: python-oauth2 python-setuptools python-tweepy python-urwid 
+# Paketçi: milisarge
+# Gerekler: python-oauth2 python-setuptools python-tweepy python-urwid 
 
 name=turses
 version=0.2.23

@@ -1,7 +1,7 @@
-# Description: Assuan protokolünü kullanan basit bir PIN veya parolalı giriş diyaloglarının bir koleksiyonu
+# Tanım: Assuan protokolünü kullanan basit bir PIN veya parolalı giriş diyaloglarının bir koleksiyonu
 # URL: http://www.gnupg.org/
-# Packager: milisarge
-# Depends on: libcap libsecret libassuan
+# Paketçi: milisarge
+# Gerekler: libcap libsecret libassuan
 
 name=pinentry
 version=0.9.7

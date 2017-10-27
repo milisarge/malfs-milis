@@ -1,7 +1,7 @@
-# Description: Gecikmeli iş yürütme ve toplu işlem.
+# Tanım: Gecikmeli iş yürütme ve toplu işlem.
 # URL: http://ftp.de.debian.org/debian/pool/main/a/at
-# Packager: milisarge
-# Depends on: sendmail pam
+# Paketçi: milisarge
+# Gerekler: sendmail pam
 
 name=at
 version=3.1.16

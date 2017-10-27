@@ -1,7 +1,7 @@
-# Description: GPL virus tarayicisi
+# Tanım: GPL virus tarayicisi
 # URL: http://www.clamav.net/
-# Packager: milisarge
-# Depends on: zlib bzip2 gmp curl
+# Paketçi: milisarge
+# Gerekler: zlib bzip2 gmp curl
 
 name=clamav
 version=0.99.0

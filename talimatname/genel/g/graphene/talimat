@@ -1,7 +1,7 @@
-# Description: grafiksel veri tipleri için ince katman
+# Tanım: grafiksel veri tipleri için ince katman
 # URL: https://github.com/ebassi/graphene/
-# Packager: milisarge
-# Depends on: gtk-doc gobject-introspection meson glib
+# Paketçi: milisarge
+# Gerekler: gtk-doc gobject-introspection meson glib
 
 name=graphene
 version=1.6.0

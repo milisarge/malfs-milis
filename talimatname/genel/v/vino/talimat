@@ -1,7 +1,7 @@
-# Description: GNOME masaüstü için bir VNC sunucusu
+# Tanım: GNOME masaüstü için bir VNC sunucusu
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com 
-# Depends on: gconf libsoup telepathy-glib desktop-file-utils libnotify desktop-file-utils
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: gconf libsoup telepathy-glib desktop-file-utils libnotify desktop-file-utils
 
 name=vino
 version=3.22.0

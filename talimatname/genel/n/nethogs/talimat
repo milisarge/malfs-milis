@@ -1,7 +1,7 @@
-# Description: süreç bazlı net kullanım grafik göstericisi
+# Tanım: süreç bazlı net kullanım grafik göstericisi
 # URL:         https://github.com/raboof/nethogs
-# Packager:    milisarge
-# Depends on:  libpcap
+# Paketçi:    milisarge
+# Gerekler:  libpcap
 
 name=nethogs
 version=0.8.5

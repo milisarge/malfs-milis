@@ -1,7 +1,7 @@
-# Description: Komut satırı tabanlı durdurma ve dilimli indirme özellikleri olan hızlı bir indirme yöneticisi.
+# Tanım: Komut satırı tabanlı durdurma ve dilimli indirme özellikleri olan hızlı bir indirme yöneticisi.
 # URL:         http://aria2.sourceforge.net/
-# Packager:    milisarge
-# Depends on:  gnutls gmp libxml2
+# Paketçi:    milisarge
+# Gerekler:  gnutls gmp libxml2
 
 name=aria2
 version=1.32.0

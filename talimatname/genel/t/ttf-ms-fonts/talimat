@@ -1,7 +1,7 @@
-# Description: Microsoft'un Çekirdek TTF Fontları
+# Tanım: Microsoft'un Çekirdek TTF Fontları
 # URL: http://corefonts.sourceforge.net
-# Packager: milisarge
-# Depends on: xorg-libx11 xorg-fontconfig libarchive p7zip 
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xorg-fontconfig libarchive p7zip 
 _sfpath="http://downloads.sourceforge.net/corefonts"
 
 name=ttf-ms-fonts

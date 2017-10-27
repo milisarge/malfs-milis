@@ -1,7 +1,7 @@
-# Description: Web Uygulama Atak ve Denetim Aracı.
+# Tanım: Web Uygulama Atak ve Denetim Aracı.
 # URL: http://w3af.sourceforge.net/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: python-pip python-gtksourceview2 python-yaml python-gtk gtk2 sqlite libxml2 libxslt yaml
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: python-pip python-gtksourceview2 python-yaml python-gtk gtk2 sqlite libxml2 libxslt yaml
 
 name=w3af
 version=1.6.54

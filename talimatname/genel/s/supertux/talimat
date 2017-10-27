@@ -1,7 +1,7 @@
-# Description: Bir zamanların efsane oyunu SuperMario benzeri bir oyun
+# Tanım: Bir zamanların efsane oyunu SuperMario benzeri bir oyun
 # URL: http://supertux.github.io/
-# Packager: yasarciv67@gmail.com
-# Depends on: sdl2-image physfs openal libogg libvorbis glew glbinding cmake boost
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: sdl2-image physfs openal libogg libvorbis glew glbinding cmake boost
 
 name=supertux
 version=0.5.1

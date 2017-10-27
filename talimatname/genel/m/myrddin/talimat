@@ -1,7 +1,7 @@
-# Description: Compiler and tools for the Myrddin programming language.
+# Tanım: Compiler and tools for the Myrddin programming language.
 # URL: https://myrlang.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=myrddin
 version=0.2.0

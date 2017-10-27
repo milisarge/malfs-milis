@@ -1,7 +1,7 @@
-# Description: Yuvarlak veya kesin İngilizce sürelerin ifadesi
+# Tanım: Yuvarlak veya kesin İngilizce sürelerin ifadesi
 # URL: http://search.cpan.org/dist/Time-Duration 
-# Packager: milisarge
-# Depends on: perl-test-pod perl-test-pod-coverage 
+# Paketçi: milisarge
+# Gerekler: perl-test-pod perl-test-pod-coverage 
 
 name=perl-time-duration
 version=1.1

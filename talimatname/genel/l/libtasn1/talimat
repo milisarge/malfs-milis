@@ -1,7 +1,7 @@
-# Description: Bir ASN.1 şemasını takiben DER/BER verilerini kodlayan ve çözen son derece taşınabilir C kütüphanesi.
+# Tanım: Bir ASN.1 şemasını takiben DER/BER verilerini kodlayan ve çözen son derece taşınabilir C kütüphanesi.
 # URL: http://www.gnu.org/software/gnutls/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libtasn1
 version=4.7

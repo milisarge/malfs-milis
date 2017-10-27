@@ -1,7 +1,7 @@
-# Description: Dosya Değiştirme Monitörünün bir alt kümesi olarak tanımlanan dosya ve dizin izleme sistemi
+# Tanım: Dosya Değiştirme Monitörünün bir alt kümesi olarak tanımlanan dosya ve dizin izleme sistemi
 # URL:  http://www.gnome.org/~veillard/gamin
-# Packager: milisarge
-# Depends on: glib python
+# Paketçi: milisarge
+# Gerekler: glib python
 
 name=gamin
 version=0.1.10

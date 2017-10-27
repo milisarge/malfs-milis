@@ -1,7 +1,7 @@
-# Description: Program API'larını tanımlamak ve onları üniform, makine tarafından okunabilir bir biçimde toplamak için kullanılır.
+# Tanım: Program API'larını tanımlamak ve onları üniform, makine tarafından okunabilir bir biçimde toplamak için kullanılır.
 # URL: http://live.gnome.org/GObjectIntrospection
-# Packager: milisarge yasarciv67@gmail.com
-# Depends on: glib
+# Paketçi: milisarge yasarciv67@gmail.com
+# Gerekler: glib
 
 name=gobject-introspection
 version=1.53.1

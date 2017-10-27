@@ -1,7 +1,7 @@
-# Description: hızlı ve kolay boyama uygulaması
+# Tanım: hızlı ve kolay boyama uygulaması
 # URL: http://mypaint.intilinux.com/
-# Packagers: milisarge
-# Depends on: desktop-file-utils gtk3 gegl babl lcms2 json-c python-cairo python-gobject python-gtk python-numpy python-protobuf scons swig libmypaint
+# Paketçi: milisarge
+# Gerekler: desktop-file-utils gtk3 gegl babl lcms2 json-c python-cairo python-gobject python-gtk python-numpy python-protobuf scons swig libmypaint
 
 name=mypaint
 version=1.3.0

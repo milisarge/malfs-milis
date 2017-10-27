@@ -1,7 +1,7 @@
-# Description: TrueType yazı tipi işleme kitaplığı
+# Tanım: TrueType yazı tipi işleme kitaplığı
 # URL: http://www.freetype.org
-# Packager: milisarge
-# Depends on: libpng
+# Paketçi: milisarge
+# Gerekler: libpng
 
 name=freetype
 version=2.6.3

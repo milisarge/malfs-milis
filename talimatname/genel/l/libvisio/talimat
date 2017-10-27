@@ -1,7 +1,7 @@
-# Description: Visio diyagramlarını yorumlama ve içe aktarma kabiliyeti sağlayan kitaplık
+# Tanım: Visio diyagramlarını yorumlama ve içe aktarma kabiliyeti sağlayan kitaplık
 # URL: https://wiki.documentfoundation.org/DLP/Libraries/libvisio
-# Packager: Cihan Alkan
-# Depends on: doxygen libwpd boost librevenge icu libxml2 doxygen
+# Paketçi: Cihan Alkan
+# Gerekler: doxygen libwpd boost librevenge icu libxml2 doxygen
 
 name=libvisio
 version=0.1.5

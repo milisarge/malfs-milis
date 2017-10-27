@@ -1,7 +1,7 @@
-# Description: GNOME takvimi
+# Tanım: GNOME takvimi
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache evolution-data-server desktop-file-utils intltool python
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache evolution-data-server desktop-file-utils intltool python
 
 name=gnome-calendar
 version=3.22.2

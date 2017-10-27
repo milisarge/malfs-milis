@@ -1,7 +1,7 @@
-# Description: Hızlı,fonksiyonel X dosya yöneticisi
+# Tanım: Hızlı,fonksiyonel X dosya yöneticisi
 # URL: http://www.boomerangsworld.de/cms/worker/
-# Packager: milisarge@gmail.com
-# Depends on: xorg-libx11 xorg-libxft
+# Paketçi: milisarge@gmail.com
+# Gerekler: xorg-libx11 xorg-libxft
 name=worker
 version=3.8.2
 release=1

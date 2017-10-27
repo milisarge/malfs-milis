@@ -1,7 +1,7 @@
-# Description: SSDP üzerinden kaynak keşif ve duyurunun taşınması için bir GObject tabanlı API
+# Tanım: SSDP üzerinden kaynak keşif ve duyurunun taşınması için bir GObject tabanlı API
 # URL: http://gupnp.org/
-# Packager: milisarge
-# Depends on: libsoup
+# Paketçi: milisarge
+# Gerekler: libsoup
 
 name=gssdp
 version=0.14.11

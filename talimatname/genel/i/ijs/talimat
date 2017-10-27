@@ -1,7 +1,7 @@
-# Description: Raster sayfa görüntülerinin iletimi için bir protokol uygulayan bir kütüphane.
+# Tanım: Raster sayfa görüntülerinin iletimi için bir protokol uygulayan bir kütüphane.
 # URL: http://www.linuxfoundation.org/collaborate/workgroups/openprinting
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ijs
 version=0.35

@@ -1,7 +1,7 @@
-# Description: Screen, fiziksel bir terminali birkaç işlem arasında, genellikle etkileşimli kabuklarla çoğaltılan tam ekran bir pencere yöneticisidir
+# Tanım: Screen, fiziksel bir terminali birkaç işlem arasında, genellikle etkileşimli kabuklarla çoğaltılan tam ekran bir pencere yöneticisidir
 # URL: http://www.gnu.org/software/screen/screen.html
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=screen
 version=4.3.1

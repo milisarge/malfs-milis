@@ -1,7 +1,7 @@
-# Description: LXAppearance OBconf paketi, OpenBox'u yapılandırmak üzere LXAppearance için bir eklenti içerir.
+# Tanım: LXAppearance OBconf paketi, OpenBox'u yapılandırmak üzere LXAppearance için bir eklenti içerir.
 # URL: http://lxde.org/
-# Packager: milisarge@gmail.com
-# Depends on: gtk2 intltool lxde-appearance openbox
+# Paketçi: milisarge@gmail.com
+# Gerekler: gtk2 intltool lxde-appearance openbox
 
 name=lxde-appearance-obconf
 _name=lxappearance-obconf

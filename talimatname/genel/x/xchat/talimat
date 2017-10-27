@@ -1,7 +1,7 @@
-# Description: Bir GTK+ tabanlı IRC istemcisi
+# Tanım: Bir GTK+ tabanlı IRC istemcisi
 # URL: http://www.xchat.org/
-# Packager: milisarge
-# Depends on: shared-mime-info gtk2 enchant dbus-glib
+# Paketçi: milisarge
+# Gerekler: shared-mime-info gtk2 enchant dbus-glib
 
 name=xchat
 version=2.8.8

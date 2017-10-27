@@ -1,7 +1,7 @@
-# Description: Internet standartı Dosya Aktarım Protokolüne güçlü ve esnek bir arabirim.
+# Tanım: Internet standartı Dosya Aktarım Protokolüne güçlü ve esnek bir arabirim.
 # URL: http://www.ncftp.com/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ncftp
 version=3.2.5	

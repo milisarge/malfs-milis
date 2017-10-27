@@ -1,7 +1,7 @@
-# Description: Windows DVD'sinden veya bir iso dosyasından Windows USB bellek kurulum aracı oluşturma programı
+# Tanım: Windows DVD'sinden veya bir iso dosyasından Windows USB bellek kurulum aracı oluşturma programı
 # URL: https://github.com/slacka/WoeUSB
-# Packager: Cihan Alkan
-# Depends on: wxgtk grub libnotify parted ntfs-3g p7zip
+# Paketçi: Cihan Alkan
+# Gerekler: wxgtk grub libnotify parted ntfs-3g p7zip
 
 name=woeusb
 version=2.0.3

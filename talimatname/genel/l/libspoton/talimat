@@ -1,7 +1,7 @@
-# Description: Spot-On bağlam kütüphanesi
+# Tanım: Spot-On bağlam kütüphanesi
 # URL:         http://spot-on.sourceforge.net/
-# Packager:    milisarge
-# Depends on:  sqlite unzip libgcrypt libntru
+# Paketçi:    milisarge
+# Gerekler:  sqlite unzip libgcrypt libntru
 
 name=libspoton
 version=2017.01.20

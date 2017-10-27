@@ -1,7 +1,7 @@
-# Description: TIFF görüntüleri manipüle etmek için kütüphane
+# Tanım: TIFF görüntüleri manipüle etmek için kütüphane
 # URL: http://www.remotesensing.org/libtiff/
-# Packager: milisarge
-# Depends on: libjpeg-turbo 
+# Paketçi: milisarge
+# Gerekler: libjpeg-turbo 
 
 name=libtiff
 version=4.0.6

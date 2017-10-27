@@ -1,7 +1,7 @@
-# Description: Basit Dizin Erişim Protokolü (LDAP) Araç Seti
+# Tanım: Basit Dizin Erişim Protokolü (LDAP) Araç Seti
 # URL: https://www.openldap.org/
-# Packager: milisarge
-# Depends on: cyrus-sasl
+# Paketçi: milisarge
+# Gerekler: cyrus-sasl
 
 name=openldap
 version=2.4.44

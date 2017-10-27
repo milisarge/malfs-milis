@@ -1,7 +1,7 @@
-# Description : Dolphin sürüm kontrol eklentisi kitaplığı
+# Tanım: Dolphin sürüm kontrol eklentisi kitaplığı
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules kf5-kxmlgui kf5-ki18n kf5-kio kf5-kdelibs4support kf5-ktexteditor kf5-kparts dolphin
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules kf5-kxmlgui kf5-ki18n kf5-kio kf5-kdelibs4support kf5-ktexteditor kf5-kparts dolphin
 
 name=dolphin-plugins
 version=16.08.2

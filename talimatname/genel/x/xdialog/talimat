@@ -1,7 +1,7 @@
-# Description: dialog ve cdialog un geliştirilmiş sürümü  
+# Tanım: dialog ve cdialog un geliştirilmiş sürümü  
 # URL: http://xdialog.dyns.net/
-# Packager: milisarge
-# Depends on: gtk2
+# Paketçi: milisarge
+# Gerekler: gtk2
 
 name=xdialog
 version=2.3.1

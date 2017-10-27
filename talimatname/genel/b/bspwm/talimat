@@ -1,7 +1,7 @@
-# Description: İkili alan bölümlemesi bazlı döşeme pencere yöneticisi.
+# Tanım: İkili alan bölümlemesi bazlı döşeme pencere yöneticisi.
 # URL: https://github.com/baskerville/bspwm
-# Packager: milisarge
-# Depends on: libxcb xcb-util xcb-util-wm git
+# Paketçi: milisarge
+# Gerekler: libxcb xcb-util xcb-util-wm git
 
 name=bspwm
 version=0.9

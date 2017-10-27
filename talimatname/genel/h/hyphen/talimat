@@ -1,7 +1,7 @@
-# Description: Dönüştürülmüş TeX tireleme kalıplarını kullanmak için tire, tireleme kitaplığı
+# Tanım: Dönüştürülmüş TeX tireleme kalıplarını kullanmak için tire, tireleme kitaplığı
 # URL: http://hunspell.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=hyphen
 version=2.8.8

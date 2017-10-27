@@ -1,7 +1,7 @@
-# Description: Video dengeleme kitaplığı
+# Tanım: Video dengeleme kitaplığı
 # URL: http://public.hronopik.de/vid.stab
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake git
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: cmake git
 
 name=vid-stab
 version=1.1

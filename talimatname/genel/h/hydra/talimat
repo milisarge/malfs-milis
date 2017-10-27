@@ -1,7 +1,7 @@
-# Description: Birçok farklı hizmeti destekleyen çok hızlı ağ oturum açma test (fuzzer) uygulaması.
+# Tanım: Birçok farklı hizmeti destekleyen çok hızlı ağ oturum açma test (fuzzer) uygulaması.
 # URL: https://www.thc.org/thc-hydra/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: postgresql subversion libssh mariadb libidn freebird-client afpfs-ng zlib openssl ncurses pcre
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: postgresql subversion libssh mariadb libidn freebird-client afpfs-ng zlib openssl ncurses pcre
 
 name=hydra
 version=8.5

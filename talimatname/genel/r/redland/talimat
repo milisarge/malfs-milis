@@ -1,7 +1,7 @@
-# Description: RDF verilerine üst düzey bir arayüz sağlayan kütüphane
+# Tanım: RDF verilerine üst düzey bir arayüz sağlayan kütüphane
 # URL: http://download.librdf.org/source/
-# Packager: milisarge
-# Depends on: rasqal raptor sqlite libiodbc pcre
+# Paketçi: milisarge
+# Gerekler: rasqal raptor sqlite libiodbc pcre
 
 name=redland
 version=1.0.17

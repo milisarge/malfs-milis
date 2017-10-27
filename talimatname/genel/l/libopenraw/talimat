@@ -1,7 +1,7 @@
-# Description: Raw dosyalarının çözülmesi için kütüphane
+# Tanım: Raw dosyalarının çözülmesi için kütüphane
 # URL: http://libopenraw.freedesktop.org/
-# Packager: milisarge
-# Depends on: boost libxml2 gdk-pixbuf
+# Paketçi: milisarge
+# Gerekler: boost libxml2 gdk-pixbuf
 
 name=libopenraw
 version=0.1.0

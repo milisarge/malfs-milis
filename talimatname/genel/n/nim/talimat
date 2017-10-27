@@ -1,7 +1,7 @@
-# Description: Imperative, multi-paradigm, compiled programming language
+# Tanım: Imperative, multi-paradigm, compiled programming language
 # URL: https://nim-lang.org/
-# Packager: milisarge
-# Depends on: python3 
+# Paketçi: milisarge
+# Gerekler: python3 
 
 name=nim
 _name=Nim

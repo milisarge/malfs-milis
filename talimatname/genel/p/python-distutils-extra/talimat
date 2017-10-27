@@ -1,7 +1,7 @@
-# Description: Python derleme sistemi
+# Tanım: Python derleme sistemi
 # URL: https://launchpad.net/python-distutils-extra
-# Packager: milisarge
-# Depends on: python python-setuptools intltool
+# Paketçi: milisarge
+# Gerekler: python python-setuptools intltool
 
 name=python-distutils-extra
 version=2.40

@@ -1,7 +1,7 @@
-# Description: Gzip ve PKZIP'de bulunan deflate sıkıştırma yöntemini uygulayan sıkıştırma kitaplığı
+# Tanım: Gzip ve PKZIP'de bulunan deflate sıkıştırma yöntemini uygulayan sıkıştırma kitaplığı
 # URL: https://www.zlib.net/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=minizip
 version=1.2.11

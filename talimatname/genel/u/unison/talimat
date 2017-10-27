@@ -1,7 +1,7 @@
-# Description: Dosya Yedekleme-Eşitleme Uygulaması
+# Tanım: Dosya Yedekleme-Eşitleme Uygulaması
 # URL: http://www.cis.upenn.edu/~bcpierce/unison/
-# Packager:  milisarge
-# Depends on: ocaml
+# Paketçi:  milisarge
+# Gerekler: ocaml
 
 name=unison
 version=git

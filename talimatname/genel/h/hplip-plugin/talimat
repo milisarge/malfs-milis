@@ -1,7 +1,7 @@
-# Description: HPs hplip yazıcı ikili sürücüler
+# Tanım: HPs hplip yazıcı ikili sürücüler
 # URL: http://hplipopensource.com/node/309
-# Packager: milisarge
-# Depends on: hplip
+# Paketçi: milisarge
+# Gerekler: hplip
 
 name=hplip-plugin
 version=3.17.6

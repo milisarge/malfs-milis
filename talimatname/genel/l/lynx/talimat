@@ -1,7 +1,7 @@
-# Description: Metin tabanlı web tarayıcısı.
+# Tanım: Metin tabanlı web tarayıcısı.
 # URL: http://lynx.isc.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=lynx
 version=2.8.9dev.14

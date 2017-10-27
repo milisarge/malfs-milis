@@ -1,7 +1,7 @@
-# Description: Açık Kaynaklı H265/HEVC video kodlayıcı.
+# Tanım: Açık Kaynaklı H265/HEVC video kodlayıcı.
 # URL: https://bitbucket.org/multicoreware/x265/wiki/Home
-# Packager: milisarge
-# Depends on: yasm cmake
+# Paketçi: milisarge
+# Gerekler: yasm cmake
 
 name=x265
 version=1.8

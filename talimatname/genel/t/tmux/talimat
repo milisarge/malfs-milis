@@ -1,7 +1,7 @@
-# Description: Terminal çoklayıcı.
+# Tanım: Terminal çoklayıcı.
 # URL: https://tmux.github.io
-# Packager: milisarge
-# Depends on: libevent 
+# Paketçi: milisarge
+# Gerekler: libevent 
 
 name=tmux
 version=2.2

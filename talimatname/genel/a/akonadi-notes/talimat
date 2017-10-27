@@ -1,7 +1,7 @@
-# Description: Akonadi notlar eklentisi
+# Tanım: Akonadi notlar eklentisi
 # URL: https://projects.kde.org/kdepimlibs
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules boost kf5-kcodecs akonadi kf5-kdelibs4support kf5-kio kf5-kcompletion kf5-kcodecs phonon-qt5 kcontacts kcalcore kmime kf5-ki18n kf5-kitemviews kf5-kconfig kf5-solid qt5 kldap kmbox grantlee-qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules boost kf5-kcodecs akonadi kf5-kdelibs4support kf5-kio kf5-kcompletion kf5-kcodecs phonon-qt5 kcontacts kcalcore kmime kf5-ki18n kf5-kitemviews kf5-kconfig kf5-solid qt5 kldap kmbox grantlee-qt5
 
 name=akonadi-notes
 version=16.08.2

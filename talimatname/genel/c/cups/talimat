@@ -1,7 +1,7 @@
-# Description: CUPS yazdırma sistemi
+# Tanım: CUPS yazdırma sistemi
 # URL: http://www.cups.org
-# Packager: milisarge
-# Depends on: avahi python gnutls xdg-utils gtk-update-icon-cache
+# Paketçi: milisarge
+# Gerekler: avahi python gnutls xdg-utils gtk-update-icon-cache
 
 name=cups
 version=2.1.3

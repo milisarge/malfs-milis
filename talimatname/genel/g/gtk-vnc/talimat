@@ -1,7 +1,7 @@
-# Description: GTK için bir VNC görüntüleyici widget'ı
+# Tanım: GTK için bir VNC görüntüleyici widget'ı
 # URL: http://live.gnome.org/gtk-vnc
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 python-gtk gnutls pulseaudio cyrus-sasl
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 python-gtk gnutls pulseaudio cyrus-sasl
 
 name=gtk-vnc
 version=0.6.0

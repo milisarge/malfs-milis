@@ -1,7 +1,7 @@
-# Description: Qt, GUI uygulamaları geliştirmek için yaygın olarak kullanılan çapraz platform bir çerçevedir
+# Tanım: Qt, GUI uygulamaları geliştirmek için yaygın olarak kullanılan çapraz platform bir çerçevedir
 # URL: http://www.qt.io/
-# Packager: milisarge
-# Depends on: glib atk pango cairo gdk-pixbuf xorg-fontconfig xorg-libsm xorg-libxrandr xorg-libxv xorg-libxi xorg-libxinerama xorg-libxcursor xorg-libxfixes xorg-mesa xorg-glu alsa-lib dbus icu libjpeg-turbo libmng libtiff openssl sqlite cups gtk2 gstreamer-plugins-base postgresql pulseaudio unixodbc
+# Paketçi: milisarge
+# Gerekler: glib atk pango cairo gdk-pixbuf xorg-fontconfig xorg-libsm xorg-libxrandr xorg-libxv xorg-libxi xorg-libxinerama xorg-libxcursor xorg-libxfixes xorg-mesa xorg-glu alsa-lib dbus icu libjpeg-turbo libmng libtiff openssl sqlite cups gtk2 gstreamer-plugins-base postgresql pulseaudio unixodbc
 
 name=qt4
 version=4.8.7

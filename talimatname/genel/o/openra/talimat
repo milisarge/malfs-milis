@@ -1,7 +1,7 @@
-# Description= RedAlert oyunun mono tabanlı açık kaynak uygulaması
-# Url= http://www.openra.net
-# Packager: milisarge
-# Depends on: mono dejavu-ttf openal freetype sdl2 lua51 hicolor-icon-theme gtk-update-icon-cache desktop-file-utils xdg-utils zenity unzip
+# Tanım: RedAlert oyunun mono tabanlı açık kaynak uygulaması
+# Url: http://www.openra.net
+# Paketçi: milisarge
+# Gerekler: mono dejavu-ttf openal freetype sdl2 lua51 hicolor-icon-theme gtk-update-icon-cache desktop-file-utils xdg-utils zenity unzip
 
 name=openra
 isim=OpenRA

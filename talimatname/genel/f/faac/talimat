@@ -1,7 +1,7 @@
-# Description: FAAC bir MPEG-4 ve MPEG-2 AAC kodlayıcıdır.FAAC kalitesinin şu anda mevcut olan en iyi AAC enkoderlerle eşit olmadığını unutmayın.
+# Tanım: FAAC bir MPEG-4 ve MPEG-2 AAC kodlayıcıdır.FAAC kalitesinin şu anda mevcut olan en iyi AAC enkoderlerle eşit olmadığını unutmayın.
 # URL: http://www.audiocoding.com
-# Packager: milisarge
-# Depends on: libmp4v2
+# Paketçi: milisarge
+# Gerekler: libmp4v2
 
 name=faac
 version=1.28

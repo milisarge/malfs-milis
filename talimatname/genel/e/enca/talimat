@@ -1,7 +1,7 @@
-# Description : Karakter analizörü ve dönüştürücü.
+# Tanım: Karakter analizörü ve dönüştürücü.
 # URL: http://cihar.com/software/enca/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=enca
 release=1

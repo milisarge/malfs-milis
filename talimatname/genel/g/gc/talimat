@@ -1,7 +1,7 @@
-# Description: C ve C ++ için gereksiz veri toplayıcı
+# Tanım: C ve C ++ için gereksiz veri toplayıcı
 # URL: http://www.hpl.hp.com/personal/Hans_Boehm/gc/
-# Packager: milisarge
-# Depends on: libatomic-ops
+# Paketçi: milisarge
+# Gerekler: libatomic-ops
 
 name=gc
 version=7.4.2

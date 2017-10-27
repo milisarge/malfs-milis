@@ -1,7 +1,7 @@
-# Description: Open source SIP stack and media stack, built with patches from SavoirFaire Linux (mostly GnuTLS support)
+# Tanım: Open source SIP stack and media stack, built with patches from SavoirFaire Linux (mostly GnuTLS support)
 # URL: http://www.pjsip.org/
-# Packager: milisarge
-# Depends on: gnutls portaudio speex alsa-lib libsamplerate ffmpeg libsrtp opus gsm libsrtp
+# Paketçi: milisarge
+# Gerekler: gnutls portaudio speex alsa-lib libsamplerate ffmpeg libsrtp opus gsm libsrtp
 
 name=pjproject-ring
 _name=pjproject

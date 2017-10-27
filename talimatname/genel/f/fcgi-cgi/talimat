@@ -1,7 +1,7 @@
-# Description: cgi uygulamalarını çalıştrmak için FastCGI uygulaması
+# Tanım: cgi uygulamalarını çalıştrmak için FastCGI uygulaması
 # URL: http://cgit.stbuehler.de/gitosis/fcgi-cgi/
-# Packager: milisarge
-# Depends on: glib libev
+# Paketçi: milisarge
+# Gerekler: glib libev
 
 name=fcgi-cgi
 version=0.2.2

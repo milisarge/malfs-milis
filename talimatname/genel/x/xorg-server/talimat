@@ -1,7 +1,7 @@
-# Description: X Pencere Sistemi cekirdegi
+# Tanım: X Pencere Sistemi cekirdegi
 # URL: http://xorg.freedesktop.org
-# Packagers: milisarge
-# Depends on: xcb-util-keysyms libepoxy xcb-util-image xcb-util-renderutil xcb-util-wm xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
+# Paketçi: milisarge
+# Gerekler: xcb-util-keysyms libepoxy xcb-util-image xcb-util-renderutil xcb-util-wm xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
 
 name=xorg-server
 version=1.18.1

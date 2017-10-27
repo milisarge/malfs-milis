@@ -1,7 +1,7 @@
-# Description: İşlemler ve çalışan sistem hakkında bilgi içeren bir kütüphane
+# Tanım: İşlemler ve çalışan sistem hakkında bilgi içeren bir kütüphane
 # URL: http://www.gnu.org/directory/libs/LibGTop.html
-# Packager: milisarge
-# Depends on: gtk-doc intltool gobject-introspection 
+# Paketçi: milisarge
+# Gerekler: gtk-doc intltool gobject-introspection 
 
 name=libgtop
 version=2.32.0

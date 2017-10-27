@@ -1,7 +1,7 @@
-# Description: jack girişlerini yeniden ayarlama yapar.
+# Tanım: jack girişlerini yeniden ayarlama yapar.
 # URL:         http://alsa-project.org/
-# Packager:    milisarge
-# Depends on:  gtk3
+# Paketçi:    milisarge
+# Gerekler:  gtk3
 
 name=hdajackretask
 version=1.1.3

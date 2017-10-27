@@ -1,7 +1,7 @@
-# Description: Pango için X Pencere Sistemi yazı tipi desteği
+# Tanım: Pango için X Pencere Sistemi yazı tipi desteği
 # URL: http://gnome.org
-# Packager: milisarge
-# Depends on: pango 
+# Paketçi: milisarge
+# Gerekler: pango 
 
 name=pangox-compat
 version=0.0.2

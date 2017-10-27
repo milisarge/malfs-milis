@@ -1,7 +1,7 @@
-# Description: Libksba, X.509 sertifikaları, CMS verileri ve ilgili nesnelerle çalışmanın görevlerini daha kolay hale getiren bir kütüphanedir (Şifreleme Mesaj Sözdizimi).
+# Tanım: Libksba, X.509 sertifikaları, CMS verileri ve ilgili nesnelerle çalışmanın görevlerini daha kolay hale getiren bir kütüphanedir (Şifreleme Mesaj Sözdizimi).
 # URL: http://www.gnupg.org/related_software/libksba/
-# Packager: milisarge
-# Depends on: libgpg-error
+# Paketçi: milisarge
+# Gerekler: libgpg-error
 
 name=libksba
 version=1.3.3

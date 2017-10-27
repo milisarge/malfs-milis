@@ -1,7 +1,7 @@
-# Description: PNG dosyalarını herhangi bir bilgi kaybı olmadan daha küçük bir boyuta sıkıştırır.
+# Tanım: PNG dosyalarını herhangi bir bilgi kaybı olmadan daha küçük bir boyuta sıkıştırır.
 # URL: http://optipng.sourceforge.net/
-# Packager: Cihan Alkan
-# Depends on: libpng
+# Paketçi: Cihan Alkan
+# Gerekler: libpng
 
 name=optipng
 version=0.7.6

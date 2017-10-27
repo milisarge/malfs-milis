@@ -1,7 +1,7 @@
-# Description: Libgnomecanvas için bir C ++ sarmalayıcı.
+# Tanım: Libgnomecanvas için bir C ++ sarmalayıcı.
 # URL: http://www.gtkmm.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: pkg-config gtkmm libgnomecanvas 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: pkg-config gtkmm libgnomecanvas 
 
 name=libgnomecanvasmm
 version=2.26.0

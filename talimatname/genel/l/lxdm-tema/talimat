@@ -1,7 +1,7 @@
-# Description: milislinux lxdm teması
+# Tanım: milislinux lxdm teması
 # URL: http://milis.gungre.ch/
-# Packager: milisarge yasarciv
-# Depends on: lxdm mate-themes
+# Paketçi: milisarge yasarciv
+# Gerekler: lxdm mate-themes
 
 name=lxdm-tema
 version=1.0

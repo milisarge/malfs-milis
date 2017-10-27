@@ -1,7 +1,7 @@
-# Description: Ruby2.3 yorumlayıcı
+# Tanım: Ruby2.3 yorumlayıcı
 # URL: http://www.ruby-lang.org
-# Packager: milisarge
-# Depends on: libffi yaml
+# Paketçi: milisarge
+# Gerekler: libffi yaml
 
 name=ruby23
 _name=ruby

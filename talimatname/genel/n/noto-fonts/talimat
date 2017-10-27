@@ -1,7 +1,7 @@
-# Description : Google Noto TTF yazı tipi
+# Tanım: Google Noto TTF yazı tipi
 # URL : https://www.google.com/get/noto/
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : xorg-fontconfig
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: xorg-fontconfig
 
 name=noto-fonts
 version=20151224

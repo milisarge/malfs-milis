@@ -1,7 +1,7 @@
-# Description: WPA kablosuz ağlar için anahtar müzakeresi sağlayan bir yardımcı program
+# Tanım: WPA kablosuz ağlar için anahtar müzakeresi sağlayan bir yardımcı program
 # URL: http://hostap.epitest.fi/wpa_supplicant
-# Packager: milisarge
-# Depends on: libnl dbus libxml2 
+# Paketçi: milisarge
+# Gerekler: libnl dbus libxml2 
 
 name=wpa-supplicant
 version=2.5

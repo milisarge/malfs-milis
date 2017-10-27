@@ -1,7 +1,7 @@
-# Description: Gdk Pixbuf, görüntü yükleme ve piksel tampon manipülasyonu için bir araç takımıdır.
+# Tanım: Gdk Pixbuf, görüntü yükleme ve piksel tampon manipülasyonu için bir araç takımıdır.
 # URL: http://www.gtk.org/
-# Packager: milisarge
-# Depends on: gobject-introspection jasper xorg-libxcomposite libtiff libpng libjpeg-turbo
+# Paketçi: milisarge
+# Gerekler: gobject-introspection jasper xorg-libxcomposite libtiff libpng libjpeg-turbo
 
 name=gdk-pixbuf
 version=2.32.3

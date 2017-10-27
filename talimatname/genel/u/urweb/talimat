@@ -1,7 +1,7 @@
-# Description: Ur/Web: web framework için saf fonksiyonel dil
+# Tanım: Ur/Web: web framework için saf fonksiyonel dil
 # URL:         http://www.impredicative.com/ur/
-# Packager:    milisarge
-# Depends on:  mlton sqlite uthash 
+# Paketçi:    milisarge
+# Gerekler:  mlton sqlite uthash 
 
 name=urweb
 version=20170720

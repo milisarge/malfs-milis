@@ -1,7 +1,7 @@
-# Description: MakeMKV, kendi videonuzu ücretsiz ve patentlere dönüştürmek için tek tıklamayla çözümünüzdür, her yere oynatılabilecek kayıtsız format.
+# Tanım: MakeMKV, kendi videonuzu ücretsiz ve patentlere dönüştürmek için tek tıklamayla çözümünüzdür, her yere oynatılabilecek kayıtsız format.
 # URL: http://www.makemkv.com
-# Packager: milisarge
-# Depends on: qt5 libxkbcommon hicolor-icon-theme icu ffmpeg desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: qt5 libxkbcommon hicolor-icon-theme icu ffmpeg desktop-file-utils
 
 name=makemkv
 version=1.9.9

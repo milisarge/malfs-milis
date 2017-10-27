@@ -1,7 +1,7 @@
-# Description: Graphite2, grafit fontlar için bir işleme motorudur
+# Tanım: Graphite2, grafit fontlar için bir işleme motorudur
 # URL: http://projects.palaso.org/projects/graphitedev
-# Packager: alihan-ozturk8@hotmail.com
-# Depends on: cmake freetype python harfbuzz
+# Paketçi: alihan-ozturk8@hotmail.com
+# Gerekler: cmake freetype python harfbuzz
 
 name=graphite2
 version=1.3.8

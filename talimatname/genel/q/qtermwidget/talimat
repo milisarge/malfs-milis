@@ -1,8 +1,8 @@
-# Description: Terminal Widget based on qt4
+# Tanım: Terminal Widget based on qt4
 # URL: http://sourceforge.net/projects/qterminal/
 # Maintainer: https://github.com/qterminal/qtermwidget.git
-# Packager: pierre at nutyx dot org
-# Depends on: qt4
+# Paketçi: pierre at nutyx dot org
+# Gerekler: qt4
 
 name=qtermwidget
 version=20130206

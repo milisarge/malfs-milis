@@ -1,7 +1,7 @@
-# Description: Joe'nun kendi editörü, WordStar, Pico ve Emacs'ı taklit edebilen küçük bir metin editörüdür.
+# Tanım: Joe'nun kendi editörü, WordStar, Pico ve Emacs'ı taklit edebilen küçük bir metin editörüdür.
 # URL: http://downloads.sourceforge.net/joe-editor
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=joe
 version=4.1

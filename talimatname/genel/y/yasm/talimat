@@ -1,7 +1,7 @@
-# Description: Bir cok sentaks ve mimari destekleyen Assembler
+# Tanım: Bir cok sentaks ve mimari destekleyen Assembler
 # URL: http://www.tortall.net/projects/yasm/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=yasm
 version=1.3.0

@@ -1,7 +1,7 @@
-# Description: Uygulama girdi testi (fuzzing) aracı.
+# Tanım: Uygulama girdi testi (fuzzing) aracı.
 # URL: http://sam.zoy.org/zzuf/
-# Packager: yakar (aydin@komutan.org)
-# Depends on:
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler:
 
 name=zzuf
 version=0.15

@@ -1,7 +1,7 @@
-# Description: GNOME service to access online accounts.
+# Tanım: GNOME service to access online accounts.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gcr kerberos libgnome-keyring libnotify librest libsecret json-glib docbook-xsl gobject-introspection webkit2gtk3 telepathy-glib gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gcr kerberos libgnome-keyring libnotify librest libsecret json-glib docbook-xsl gobject-introspection webkit2gtk3 telepathy-glib gtk-update-icon-cache
 
 name=gnome-online-accounts
 version=3.22.2

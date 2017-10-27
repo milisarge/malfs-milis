@@ -1,7 +1,7 @@
-# Description: Hafif panel/görev çubuğu
+# Tanım: Hafif panel/görev çubuğu
 # URL: http://tint2.googlecode.com
-# Packager: Vitaly Sinilin, vs at kp4 dot ru
-# Depends on: cmake imlib2 pango
+# Paketçi: Vitaly Sinilin, vs at kp4 dot ru
+# Gerekler: cmake imlib2 pango
 
 name=tint2
 version=0.11

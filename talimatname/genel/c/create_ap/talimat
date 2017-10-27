@@ -1,7 +1,7 @@
-# Description: NAT / Köprülü Yazılım Erişim Noktası oluşturmak için bir kabuk betiği
+# Tanım: NAT / Köprülü Yazılım Erişim Noktası oluşturmak için bir kabuk betiği
 # URL: https://github.com/oblique/create_ap
-# Packager: Cihan Alkan
-# Depends on: iptables 
+# Paketçi: Cihan Alkan
+# Gerekler: iptables 
 
 name=create_ap
 version=0.4.6

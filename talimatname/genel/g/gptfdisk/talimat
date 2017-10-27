@@ -1,7 +1,7 @@
-# Description: Küresel Benzersiz Tanıtıcı bölüm tablosu disklerinde çalışan bölümleme aracı
+# Tanım: Küresel Benzersiz Tanıtıcı bölüm tablosu disklerinde çalışan bölümleme aracı
 # URL: http://www.rodsbooks.com/gdisk/index.html
-# Packager: milisarge
-# Depends on: popt icu
+# Paketçi: milisarge
+# Gerekler: popt icu
 
 name=gptfdisk
 version=1.0.1

@@ -1,7 +1,7 @@
-# Description: Sistem düzeyinde hizmetler sağlamak için genişletilebilir arka plan programı
+# Tanım: Sistem düzeyinde hizmetler sağlamak için genişletilebilir arka plan programı
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kinit kf5-kservice kf5-kdoctools
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kinit kf5-kservice kf5-kdoctools
 
 name=kf5-kded
 version=5.27.0

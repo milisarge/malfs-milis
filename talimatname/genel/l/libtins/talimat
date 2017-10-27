@@ -1,7 +1,7 @@
-# Description: Yüksek seviye ağ paket koklama ve işleme c++ kütüphanesi
+# Tanım: Yüksek seviye ağ paket koklama ve işleme c++ kütüphanesi
 # URL: http://libtins.github.io/
-# Packager: milisarge
-# Depends on: cmake libpcap 
+# Paketçi: milisarge
+# Gerekler: cmake libpcap 
 
 name=libtins
 version=3.5

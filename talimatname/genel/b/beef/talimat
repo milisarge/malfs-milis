@@ -1,7 +1,7 @@
-# Description: The Browser Exploitation Framework that focuses on the web browser
+# Tanım: The Browser Exploitation Framework that focuses on the web browser
 # URL: http://beefproject.com/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: ruby23 ruby23-bundler sqlite python
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: ruby23 ruby23-bundler sqlite python
 
 name=beef
 version=0.4.7.0

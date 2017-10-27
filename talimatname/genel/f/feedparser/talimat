@@ -1,7 +1,7 @@
-# Description: Python'da RSS ve Atom feed'lerini ayrıştırın
+# Tanım: Python'da RSS ve Atom feed'lerini ayrıştırın
 # URL: https://code.google.com/p/feedparser/
-# Packager: milisarge
-# Depends on: python-setuptools
+# Paketçi: milisarge
+# Gerekler: python-setuptools
 
 name=feedparser
 version=5.1.3

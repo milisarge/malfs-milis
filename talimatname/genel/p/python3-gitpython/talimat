@@ -1,7 +1,7 @@
-# Description: python için Git kütüphanesi
+# Tanım: python için Git kütüphanesi
 # URL: http://pyyaml.org/wiki/PyYAML
-# Packager: milisarge
-# Depends on: python3 python3-setuptools 
+# Paketçi: milisarge
+# Gerekler: python3 python3-setuptools 
 
 name=python3-gitpython
 _name=GitPython

@@ -1,7 +1,7 @@
-# Description: Müzik oynatımı ve yönetimi için program
+# Tanım: Müzik oynatımı ve yönetimi için program
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils python-gobject gtk-update-icon-cache gobject-introspection grilo-plugins gtk3 intltool itstool libmediaart python tracker
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils python-gobject gtk-update-icon-cache gobject-introspection grilo-plugins gtk3 intltool itstool libmediaart python tracker
 
 name=gnome-music
 version=3.22.2

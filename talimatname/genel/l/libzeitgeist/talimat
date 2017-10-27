@@ -1,7 +1,7 @@
-# Description: C ve Vala'dan Zeitgeist olay günlüğüne erişmek ve yönetmek için kullanılan istemci kitaplığı.
+# Tanım: C ve Vala'dan Zeitgeist olay günlüğüne erişmek ve yönetmek için kullanılan istemci kitaplığı.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: glib
+# Paketçi: milisarge
+# Gerekler: glib
 
 name=libzeitgeist
 version=0.3.18

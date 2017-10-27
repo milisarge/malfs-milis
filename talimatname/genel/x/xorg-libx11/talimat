@@ -1,7 +1,7 @@
-# Description: X Pencere Sistemi icin X11 kutuphanesi
+# Tanım: X Pencere Sistemi icin X11 kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: libxcb xorg-proto xorg-xtrans 
+# Paketçi: milisarge
+# Gerekler: libxcb xorg-proto xorg-xtrans 
 
 name=xorg-libx11
 version=1.6.3

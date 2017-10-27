@@ -1,7 +1,7 @@
-# Description: A real-time software synthesizer.
+# Tanım: A real-time software synthesizer.
 # URL: http://www.fluidsynth.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=fluidsynth
 version=1.1.3

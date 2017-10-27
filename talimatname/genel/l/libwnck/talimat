@@ -1,7 +1,7 @@
-# Description: Windows navigator inşaat kiti içerir
+# Tanım: Windows navigator inşaat kiti içerir
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: xorg-libxres gtk2 intltool gobject-introspection startup-notification gtk-doc
+# Paketçi: milisarge
+# Gerekler: xorg-libxres gtk2 intltool gobject-introspection startup-notification gtk-doc
 
 name=libwnck
 version=2.31.0

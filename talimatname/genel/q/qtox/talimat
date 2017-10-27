@@ -1,7 +1,7 @@
-# Description: C++/Qt tabanlı tox bağlanıcısı
+# Tanım: C++/Qt tabanlı tox bağlanıcısı
 # URL: https://github.com/qTox/qTox
-# Packager: milisarge
-# Depends on: cmake qt5 desktop-file-utils openal qrencode gtk2 ffmpeg sqlcipher toxcore
+# Paketçi: milisarge
+# Gerekler: cmake qt5 desktop-file-utils openal qrencode gtk2 ffmpeg sqlcipher toxcore
 
 name=qtox
 name2=qTox

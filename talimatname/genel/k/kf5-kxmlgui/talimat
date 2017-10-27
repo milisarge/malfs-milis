@@ -1,7 +1,7 @@
-# Description: Kullanıcı tarafından konfigüre edilebilir ana pencereler
+# Tanım: Kullanıcı tarafından konfigüre edilebilir ana pencereler
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-kitemviews kf5-ktextwidgets kf5-kwidgetsaddons kf5-kwindowsystem kf5-attica
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-kitemviews kf5-ktextwidgets kf5-kwidgetsaddons kf5-kwindowsystem kf5-attica
 
 name=kf5-kxmlgui
 version=5.27.0

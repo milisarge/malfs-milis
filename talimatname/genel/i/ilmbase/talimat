@@ -1,7 +1,7 @@
-# Description: OpenEXR için ILM'den temel kütüphaneler
+# Tanım: OpenEXR için ILM'den temel kütüphaneler
 # URL: http://openexr.com/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ilmbase
 version=2.2.0

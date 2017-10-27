@@ -1,7 +1,7 @@
-# Description: HFS/HFS + kullanıcı alanı etiketleri
+# Tanım: HFS/HFS + kullanıcı alanı etiketleri
 # URL: http://www.opensource.apple.com/
-# Packager: milisarge
-# Depends on: libbsd openssl
+# Paketçi: milisarge
+# Gerekler: libbsd openssl
 
 name=hfsprogs
 version=332.25

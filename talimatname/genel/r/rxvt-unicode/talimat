@@ -1,7 +1,7 @@
-# Description: Rxvt terminal emülatörünün geliştirilmiş bir unicode özellikli sürümü.
+# Tanım: Rxvt terminal emülatörünün geliştirilmiş bir unicode özellikli sürümü.
 # URL: http://software.schmorp.de/pkg/rxvt-unicode.html
-# Packager: milisarge
-# Depends on: gdk-pixbuf xorg-libxft startup-notification
+# Paketçi: milisarge
+# Gerekler: gdk-pixbuf xorg-libxft startup-notification
 
 name=rxvt-unicode
 version=9.20

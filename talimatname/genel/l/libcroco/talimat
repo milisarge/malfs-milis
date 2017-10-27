@@ -1,7 +1,7 @@
-# Description: Libcroco paketi, tek başına bir CSS2 ayrıştırma ve değiştirme kütüphanesi içerir.
+# Tanım: Libcroco paketi, tek başına bir CSS2 ayrıştırma ve değiştirme kütüphanesi içerir.
 # URL: https://launchpad.net/libcroco
-# Packager: milisarge
-# Depends on: libxml2 glib 
+# Paketçi: milisarge
+# Gerekler: libxml2 glib 
 
 name=libcroco
 version=0.6.11

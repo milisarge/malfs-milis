@@ -1,7 +1,7 @@
-# Description: TCL için bir GUI araç seti.
+# Tanım: TCL için bir GUI araç seti.
 # URL: http://www.tcl.tk/
-# Packager: milisarge
-# Depends on: tcl xorg-fontconfig xorg-libxft xorg-libxscrnsaver 
+# Paketçi: milisarge
+# Gerekler: tcl xorg-fontconfig xorg-libxft xorg-libxscrnsaver 
 
 name=tk
 version=8.6.6

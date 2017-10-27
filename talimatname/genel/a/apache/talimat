@@ -1,7 +1,7 @@
-# Description:  Açık kaynak web sunucusu.
+# Tanım:  Açık kaynak web sunucusu.
 # URL: http://httpd.apache.org/ABOUT_APACHE.html
-# Packager: milisarge
-# Depends on: pcre apr-util sqlite expat
+# Paketçi: milisarge
+# Gerekler: pcre apr-util sqlite expat
 
 name=apache
 version=2.4.18

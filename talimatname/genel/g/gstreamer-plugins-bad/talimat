@@ -1,7 +1,7 @@
-# Description: GStreamer Bad Plug-ins, diğerlerine kıyasla eşit olmayan bir dizi eklentidir.
+# Tanım: GStreamer Bad Plug-ins, diğerlerine kıyasla eşit olmayan bir dizi eklentidir.
 # URL: https://gstreamer.freedesktop.org/modules/gst-plugins-bad.html
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: gstreamer-plugins-base faac faad2 libmms libpng libvpx xvid jasper
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: gstreamer-plugins-base faac faad2 libmms libpng libvpx xvid jasper
 
 name=gstreamer-plugins-bad
 version=0.10.23

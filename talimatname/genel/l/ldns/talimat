@@ -1,7 +1,7 @@
-# Description: DNS programlamayı basitleştirmek amacıyla hızlı DNS kütüphanesi.
+# Tanım: DNS programlamayı basitleştirmek amacıyla hızlı DNS kütüphanesi.
 # URL: http://www.nlnetlabs.nl
-# Packager: milisarge
-# Depends on: openssl ca-certificates libcap python swig doxygen 
+# Paketçi: milisarge
+# Gerekler: openssl ca-certificates libcap python swig doxygen 
 
 name=ldns
 version=1.6.17	

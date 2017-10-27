@@ -1,7 +1,7 @@
-# Description: Dinamik resim format dönüşüm kütüphanesi
+# Tanım: Dinamik resim format dönüşüm kütüphanesi
 # URL: http://gegl.org/babl
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=babl
 version=0.1.14

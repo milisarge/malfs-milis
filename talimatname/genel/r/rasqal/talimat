@@ -1,7 +1,7 @@
-# Description: Kaynak Tanımlama Çerçevesi (RDF) sorgu sözdizimini işleyen ücretsiz bir C kitaplığı
+# Tanım: Kaynak Tanımlama Çerçevesi (RDF) sorgu sözdizimini işleyen ücretsiz bir C kitaplığı
 # URL: http://download.librdf.org/source/
-# Packager: milisarge
-# Depends on: libxslt raptor libgcrypt 
+# Paketçi: milisarge
+# Gerekler: libxslt raptor libgcrypt 
 
 name=rasqal
 version=0.9.33

@@ -1,7 +1,7 @@
-# Description: Linux için kablolu ve kablosuz ağ yöneticisi
+# Tanım: Linux için kablolu ve kablosuz ağ yöneticisi
 # URL: http://wicd.sourceforge.net/
-# Packager: milisarge
-# Depends on: python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd 
+# Paketçi: milisarge
+# Gerekler: python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd 
 
 name=wicd
 version=1.7.2.4

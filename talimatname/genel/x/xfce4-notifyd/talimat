@@ -1,7 +1,7 @@
-# Description: Freedesktop masaüstü bildirimleri belirtiminin "sunucu tarafı" kısmı.
+# Tanım: Freedesktop masaüstü bildirimleri belirtiminin "sunucu tarafı" kısmı.
 # URL: http://git.xfce.org/kelnos/xfce4-notifyd/
-# Packager: milisarge
-# Depends on: xfce4-libui libnotify 
+# Paketçi: milisarge
+# Gerekler: xfce4-libui libnotify 
 
 name=xfce4-notifyd
 version=0.3.6

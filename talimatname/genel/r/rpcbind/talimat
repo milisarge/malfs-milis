@@ -1,7 +1,7 @@
-# Description: portmap replacement which supports RPC over various protocols
+# Tanım: portmap replacement which supports RPC over various protocols
 # URL: http://rpcbind.sourceforge.net/
-# Packager: milisarge
-# Depends on: libtirpc
+# Paketçi: milisarge
+# Gerekler: libtirpc
 
 name=rpcbind
 version=0.2.3

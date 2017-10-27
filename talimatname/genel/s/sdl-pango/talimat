@@ -1,7 +1,7 @@
-# Description: Pango SDL ciltlemesi
+# Tanım: Pango SDL ciltlemesi
 # URL: http://sdlpango.sourceforge.net/
-# Packager: Cihan Alkan
-# Depends on: pango sdl
+# Paketçi: Cihan Alkan
+# Gerekler: pango sdl
 
 name=sdl-pango
 version=0.1.2

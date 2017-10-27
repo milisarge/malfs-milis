@@ -1,7 +1,7 @@
-# Description: X için basit bir komut satırı ekran görüntüsü programı
+# Tanım: X için basit bir komut satırı ekran görüntüsü programı
 # URL: http://scrot.sourcearchive.com/
-# Packager: milisarge
-# Depends on: giblib
+# Paketçi: milisarge
+# Gerekler: giblib
 
 name=scrot
 version=0.8.17

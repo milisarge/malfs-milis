@@ -1,7 +1,7 @@
-# Description: Birçok özelliği destekleyen kapsamlı HTTP istemci kütüphanesi.
+# Tanım: Birçok özelliği destekleyen kapsamlı HTTP istemci kütüphanesi.
 # URL: http://code.google.com/p/httplib2/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-httplib2
 version=0.9

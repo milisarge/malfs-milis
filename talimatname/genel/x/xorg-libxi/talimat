@@ -1,7 +1,7 @@
-# Description: X.Org Xi kutuphanesi
+# Tanım: X.Org Xi kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-libx11 xorg-libxext xorg-libxfixes 
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-libx11 xorg-libxext xorg-libxfixes 
 
 name=xorg-libxi
 version=1.7.6

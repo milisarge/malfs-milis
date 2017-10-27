@@ -1,7 +1,7 @@
-# Description:  Perl Carp modülü
+# Tanım:  Perl Carp modülü
 # URL:          http://search.cpan.org/dist/Carp-Always
-# Packager :	milisarge
-# Depends on:   
+# Paketçi:	milisarge
+# Gerekler:   
 
 name=perl-carp-always
 version=0.13

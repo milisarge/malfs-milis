@@ -1,7 +1,7 @@
-# Description: Docbook-xml dönüşümleri için XML stil sayfaları
+# Tanım: Docbook-xml dönüşümleri için XML stil sayfaları
 # URL:  http://scrollkeeper.sourceforge.net/docbook.shtml
-# Packager: milisarge
-# Depends on: libxml2 docbook-xml
+# Paketçi: milisarge
+# Gerekler: libxml2 docbook-xml
 
 name=docbook-xsl
 version=1.79.1

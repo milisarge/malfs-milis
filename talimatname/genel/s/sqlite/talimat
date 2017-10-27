@@ -1,7 +1,7 @@
-# Description: SQL veritabanı motoru
+# Tanım: SQL veritabanı motoru
 # URL: http://www.sqlite.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=sqlite
 version=3.20.1

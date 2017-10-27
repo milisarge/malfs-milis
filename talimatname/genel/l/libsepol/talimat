@@ -1,7 +1,7 @@
-# Description: SELinux ikili politika manipülasyon kütüphanesi
+# Tanım: SELinux ikili politika manipülasyon kütüphanesi
 # URL: http://userspace.selinuxproject.org
-# Packager: yasarciv67@gmail.com
-# Depends on: 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: 
 
 name=libsepol
 version=2.4

@@ -1,7 +1,7 @@
-# Description: Makefile üretmek için kullanılır ve platformdan ve derleyiciden bağımsız olmayı amaçlar.
+# Tanım: Makefile üretmek için kullanılır ve platformdan ve derleyiciden bağımsız olmayı amaçlar.
 # URL: http://www.cmake.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=cmake
 version=3.4.3

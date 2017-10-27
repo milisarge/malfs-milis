@@ -1,7 +1,7 @@
-# Description: X.Org icin Xdmcp kutuphanesi
+# Tanım: X.Org icin Xdmcp kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto 
+# Paketçi: milisarge
+# Gerekler: xorg-proto 
 
 _name=libXdmcp
 name=xorg-libxdmcp

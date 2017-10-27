@@ -1,7 +1,7 @@
-# Description: ssh2 kütüphanesi
+# Tanım: ssh2 kütüphanesi
 # URL: http://www.libssh2.org/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: doxygen cmake
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: doxygen cmake
 
 name=libssh2
 version=1.8.0

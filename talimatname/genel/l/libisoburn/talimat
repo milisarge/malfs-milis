@@ -1,7 +1,7 @@
-# Description: Libisoburn libburn ve libisofs kütüphaneleri için bir ön uçtur
+# Tanım: Libisoburn libburn ve libisofs kütüphaneleri için bir ön uçtur
 # URL: http://libburnia-project.org/
-# Packager: milisarge
-# Depends on: libburn libisofs acl attr 
+# Paketçi: milisarge
+# Gerekler: libburn libisofs acl attr 
 
 name=libisoburn
 version=1.4.2

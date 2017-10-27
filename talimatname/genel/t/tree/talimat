@@ -1,7 +1,7 @@
-# Description: Dizin ağacını göster
+# Tanım: Dizin ağacını göster
 # URL: http://mama.indstate.edu/users/ice/tree/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=tree
 version=1.7.0

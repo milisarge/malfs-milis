@@ -1,7 +1,7 @@
-# Description: Çeşitli servis sağlayıcılar için mobil geniş bant ayarları
+# Tanım: Çeşitli servis sağlayıcılar için mobil geniş bant ayarları
 # URL: http://git.gnome.org/browse/mobile-broadband-provider-info/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: 
 
 name=mobile-broadband-provider-info
 version=20151214

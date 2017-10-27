@@ -1,7 +1,7 @@
-# Description: Kaynak ve ağ erişimi soyutlama
+# Tanım: Kaynak ve ağ erişimi soyutlama
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: desktop-file-utils kf5-attica kf5-kbookmarks kf5-kjobwidgets kf5-kwallet kf5-solid kerberos
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: desktop-file-utils kf5-attica kf5-kbookmarks kf5-kjobwidgets kf5-kwallet kf5-solid kerberos
 
 name=kf5-kio
 version=5.27.0

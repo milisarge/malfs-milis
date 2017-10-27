@@ -1,7 +1,7 @@
-# Description: Telepati için bir IRC bağlantı yöneticisi
+# Tanım: Telepati için bir IRC bağlantı yöneticisi
 # URL: http://telepathy.freedesktop.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: telepathy-glib 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: telepathy-glib 
 
 name=telepathy-idle
 version=0.1.16

@@ -1,7 +1,7 @@
-# Description: Xfce4 masaüstü için arka plan resimleri
+# Tanım: Xfce4 masaüstü için arka plan resimleri
 # URL: http://goodies.xfce.org/projects/artwork/xfce4-artwork
-# Packager: yasarciv67@gmail.com
-# Depends on: 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: 
 
 name=xfce4-artwork
 version=0.1.1

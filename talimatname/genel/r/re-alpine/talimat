@@ -1,7 +1,7 @@
 # Desciription: Washington Üniversitesi tarafından geliştirilen Alpine, metin tabanlı e-posta istemcisinin devamı.
 # URL: http://sourceforge.net/projects/re-alpine/files/re-alpine-2.03.tar.bz2
-# Packager: milisarge
-# Depends on: openssl aspell tcl pam 
+# Paketçi: milisarge
+# Gerekler: openssl aspell tcl pam 
 
 name=re-alpine
 version=2.03	

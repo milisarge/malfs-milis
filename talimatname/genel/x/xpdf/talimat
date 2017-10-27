@@ -1,7 +1,7 @@
-# Description: PDF goruntuleyici
+# Tanım: PDF goruntuleyici
 # URL: http://foolabs.com/xpdf
-# Packager: milisarge
-# Depends on: lesstif
+# Paketçi: milisarge
+# Gerekler: lesstif
 
 name=xpdf
 version=3.04

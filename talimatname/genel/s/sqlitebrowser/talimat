@@ -1,7 +1,7 @@
-# Description: SQL veritabanı Qt5 tabanlı yönetim arayüzü
+# Tanım: SQL veritabanı Qt5 tabanlı yönetim arayüzü
 # URL: http://www.sqlite.org/
-# Packager: milisarge
-# Depends on: sqlite cmake libxkbcommon qt5 
+# Paketçi: milisarge
+# Gerekler: sqlite cmake libxkbcommon qt5 
 
 name=sqlitebrowser
 version=3.9.1

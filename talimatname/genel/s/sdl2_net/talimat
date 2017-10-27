@@ -1,7 +1,7 @@
-# Description: SDL-2 için çapraz platform bir ağ kitaplığı.
+# Tanım: SDL-2 için çapraz platform bir ağ kitaplığı.
 # URL: http://www.libsdl.org/projects/SDL_net
-# Packager: milisarge
-# Depends on: sdl2
+# Paketçi: milisarge
+# Gerekler: sdl2
 
 name=sdl2_net
 version=2.0.1

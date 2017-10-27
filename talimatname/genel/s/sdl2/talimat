@@ -1,7 +1,7 @@
-# Description: Bir video çerçeve arabelleği, ses çıkışı, fare ve klavyeye taşınabilir düşük seviye erişimi için bir kütüphane
+# Tanım: Bir video çerçeve arabelleği, ses çıkışı, fare ve klavyeye taşınabilir düşük seviye erişimi için bir kütüphane
 # URL: http://www.libsdl.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: xorg-libxext xorg-libxrender xorg-libx11 xorg-libxcursor alsa-lib xorg-mesa pulseaudio xorg-libxrandr xorg-libxinerama libxkbcommon wayland 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: xorg-libxext xorg-libxrender xorg-libx11 xorg-libxcursor alsa-lib xorg-mesa pulseaudio xorg-libxrandr xorg-libxinerama libxkbcommon wayland 
 
 name=sdl2
 version=2.0.4

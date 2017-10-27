@@ -1,7 +1,7 @@
-# Description: Bir WebKit2 tabanlı uygulama sınıfları ve yeni bir QML API'sı
+# Tanım: Bir WebKit2 tabanlı uygulama sınıfları ve yeni bir QML API'sı
 # URL: http://qt-project.org/
-# Packager: milisarge
-# Depends on: cmake gstreamer1-plugins-base libwebp xorg-libxcomposite libxslt gstreamer1-plugins-good python ruby qt5 hyphen
+# Paketçi: milisarge
+# Gerekler: cmake gstreamer1-plugins-base libwebp xorg-libxcomposite libxslt gstreamer1-plugins-good python ruby qt5 hyphen
 
 name=qt5-webkit
 _name=qtwebkit

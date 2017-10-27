@@ -1,7 +1,7 @@
-# Description: D-Bus mesajlaşma sisteminde inşa edilen modüler coğrafi bilgi hizmetleri.
+# Tanım: D-Bus mesajlaşma sisteminde inşa edilen modüler coğrafi bilgi hizmetleri.
 # URL: http://freedesktop.org/software/geoclue/docs/
-# Packager: yasarciv67@gmail.com
-# Depends on: avahi libsoup json-glib modemmanager libnotify geoip python gobject-introspection intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: avahi libsoup json-glib modemmanager libnotify geoip python gobject-introspection intltool
 
 name=geoclue2
 version=2.4.6

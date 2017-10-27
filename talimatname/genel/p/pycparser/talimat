@@ -1,7 +1,7 @@
-# Description: Pythonda yazılmış C ayrıştırıcı and AST üretici
+# Tanım: Pythonda yazılmış C ayrıştırıcı and AST üretici
 # URL: https://github.com/eliben/pycparser
-# Packager: milisarge
-# Depends on: python-setuptools
+# Paketçi: milisarge
+# Gerekler: python-setuptools
 
 name=pycparser
 version=2.17

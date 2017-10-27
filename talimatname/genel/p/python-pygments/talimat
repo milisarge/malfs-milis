@@ -1,7 +1,7 @@
-# Description: Python sözdizimi vurgulayıcı
+# Tanım: Python sözdizimi vurgulayıcı
 # URL: https://pypi.python.org/pypi/Pygments
-# Packager: milisarge
-# Depends on: python-setuptools 
+# Paketçi: milisarge
+# Gerekler: python-setuptools 
 
 name=python-pygments
 version=1.6

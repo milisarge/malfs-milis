@@ -1,7 +1,7 @@
-# Description : Bir bilgisayar görüntüleme sunucusu protokolü
+# Tanım: Bir bilgisayar görüntüleme sunucusu protokolü
 # URL:  http://wayland.freedesktop.org/
-# Packager: milisarge
-# Depends on: libffi doxygen xmlto docbook-xml libxslt
+# Paketçi: milisarge
+# Gerekler: libffi doxygen xmlto docbook-xml libxslt
 
 name=wayland
 release=1

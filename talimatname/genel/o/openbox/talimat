@@ -1,7 +1,7 @@
-# Description: Openbox oldukça yapılandırılabilir bir pencere yöneticisi.
+# Tanım: Openbox oldukça yapılandırılabilir bir pencere yöneticisi.
 # URL: http://openbox.org/wiki/Main_Page
-# Packager: milisarge
-# Depends on: xorg pcre pango freetype libpng xorg-fontconfig harfbuzz dbus imlib2 librsvg startup-notification xcb-util libxcb libxml2 dbus
+# Paketçi: milisarge
+# Gerekler: xorg pcre pango freetype libpng xorg-fontconfig harfbuzz dbus imlib2 librsvg startup-notification xcb-util libxcb libxml2 dbus
 
 name=openbox
 version=3.6.1

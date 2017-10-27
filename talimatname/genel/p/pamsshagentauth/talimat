@@ -1,7 +1,7 @@
-# Description: ssh-agent ile pam modülünün yetkilendirilmesi
+# Tanım: ssh-agent ile pam modülünün yetkilendirilmesi
 # URL: http://pamsshagentauth.sourceforge.net/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=pamsshagentauth
 version=0.10.3

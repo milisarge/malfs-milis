@@ -1,7 +1,7 @@
-# Description: The Vim package contains a powerful text editor.
+# Tanım: The Vim package contains a powerful text editor.
 # URL: http://www.vim.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=vim
 version=7.4

@@ -1,7 +1,7 @@
-# Description: Ücretsiz konuşma için ücretsiz bir codec bileşeni
+# Tanım: Ücretsiz konuşma için ücretsiz bir codec bileşeni
 # URL: http://www.speex.org/
-# Packager: milisarge
-# Depends on: libogg speexdsp
+# Paketçi: milisarge
+# Gerekler: libogg speexdsp
 
 name=speex
 version=1.2.0

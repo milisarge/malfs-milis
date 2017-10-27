@@ -1,4 +1,4 @@
-Description: Copy headers on install instead of symlinking
+Tanım: Copy headers on install instead of symlinking
 Author: Rico Tzschichholz <ricotz@ubuntu.com>
 Forwarded: no
 Last-Update: 2014-10-29

@@ -1,7 +1,7 @@
-# Description: Vera font ailesi ek karakterlerle türemiştir
+# Tanım: Vera font ailesi ek karakterlerle türemiştir
 # URL: http://dejavu.sourceforge.net/
-# Packager: milisarge
-# Depends on: xorg-libx11,xorg-fontconfig
+# Paketçi: milisarge
+# Gerekler: xorg-libx11,xorg-fontconfig
 
 name=dejavu-ttf
 version=2.35

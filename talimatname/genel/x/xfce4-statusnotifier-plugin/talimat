@@ -1,7 +1,7 @@
-# Description: Xfce4 panelindeki durum bildirim göstergelerine eklenti
+# Tanım: Xfce4 panelindeki durum bildirim göstergelerine eklenti
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-statusnotifier-plugin
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool python3 xfce4-panel libdbusmenu-gtk3 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool python3 xfce4-panel libdbusmenu-gtk3 
 
 name=xfce4-statusnotifier-plugin
 version=0.2.0

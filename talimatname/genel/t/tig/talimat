@@ -1,7 +1,7 @@
-# Description: Git için metin modu arabirimi.
+# Tanım: Git için metin modu arabirimi.
 # URL: http://jonas.nitro.dk/tig/
-# Packager: milisarge
-# Depends on: asciidoc xmlto
+# Paketçi: milisarge
+# Gerekler: asciidoc xmlto
 
 name=tig
 version=2.1.1

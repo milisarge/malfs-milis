@@ -1,7 +1,7 @@
-# Description: Bileşik uzatma protokolü belirtimi ve üstbilgi dosyaları
+# Tanım: Bileşik uzatma protokolü belirtimi ve üstbilgi dosyaları
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=xorg-compositeproto
 version=0.4.2

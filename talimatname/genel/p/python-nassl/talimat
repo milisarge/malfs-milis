@@ -1,7 +1,7 @@
-# Description: Python2.7 ve SSLyze için deneysel openssl bağlayıcısı
+# Tanım: Python2.7 ve SSLyze için deneysel openssl bağlayıcısı
 # URL: http://pypi.python.org/pypi/nassl
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-nassl
 version=0.15.1

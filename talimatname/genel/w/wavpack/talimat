@@ -1,7 +1,7 @@
-# Description: Kayıpsız, kayıplı ve melez sıkıştırma modlu ses sıkıştırma formatı
+# Tanım: Kayıpsız, kayıplı ve melez sıkıştırma modlu ses sıkıştırma formatı
 # URL: http://www.wavpack.com/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: 
 
 name=wavpack
 version=4.75.0

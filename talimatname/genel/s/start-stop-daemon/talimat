@@ -1,7 +1,7 @@
-# Description: sistem servislerinin kontrol programı
+# Tanım: sistem servislerinin kontrol programı
 # URL: http://man7.org/linux/man-pages/man8/start-stop-daemon.8.html
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=start-stop-daemon
 version=1.0

@@ -1,7 +1,7 @@
-# Description: Compton-conf, X bileşik yöneticisi Compton için bir yapılandırma aracıdır.
+# Tanım: Compton-conf, X bileşik yöneticisi Compton için bir yapılandırma aracıdır.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake liblxqt lxqt-l10n libconfig
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake liblxqt lxqt-l10n libconfig
 
 name=compton-conf
 version=0.2.1

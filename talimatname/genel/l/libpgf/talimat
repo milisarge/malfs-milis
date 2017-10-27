@@ -1,7 +1,7 @@
-# Description: Aşamalı Grafik Dosyasının (PGF) bir uygulaması
+# Tanım: Aşamalı Grafik Dosyasının (PGF) bir uygulaması
 # URL: http://www.libpgf.org
-# Packager: milisarge
-# Depends on: dos2unix
+# Paketçi: milisarge
+# Gerekler: dos2unix
 
 name=libpgf
 version=7.15.32

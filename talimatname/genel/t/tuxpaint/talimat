@@ -1,7 +1,7 @@
-# Description: Küçük çocuklar için tasarlanmış çizim programı
+# Tanım: Küçük çocuklar için tasarlanmış çizim programı
 # URL: http://tuxpaint.org/
-# Packager: Cihan Alkan
-# Depends on: optipng setconf sdl-ttf sdl-mixer python fribidi sdl-image sdl-pango libpaper librsvg
+# Paketçi: Cihan Alkan
+# Gerekler: optipng setconf sdl-ttf sdl-mixer python fribidi sdl-image sdl-pango libpaper librsvg
 
 name=tuxpaint
 version=0.9.22

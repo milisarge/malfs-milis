@@ -1,7 +1,7 @@
-# Description: Aynı anda birden fazla WEP ve WPA şifreli ağa saldırmak için kullanılan bir araç
+# Tanım: Aynı anda birden fazla WEP ve WPA şifreli ağa saldırmak için kullanılan bir araç
 # URL: https://github.com/derv82/wifite
-# Packager: milisarge
-# Depends on: python aircrack-ng
+# Paketçi: milisarge
+# Gerekler: python aircrack-ng
 
 name=wifite
 version=git

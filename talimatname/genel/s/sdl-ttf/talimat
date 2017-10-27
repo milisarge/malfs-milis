@@ -1,7 +1,7 @@
-# Description: Libsdl için TrueType kitaplığı.
+# Tanım: Libsdl için TrueType kitaplığı.
 # URL: http://www.libsdl.org/projects/SDL_ttf/
-# Packager: milisarge
-# Depends on: freetype sdl
+# Paketçi: milisarge
+# Gerekler: freetype sdl
 
 name=sdl-ttf
 version=2.0.11

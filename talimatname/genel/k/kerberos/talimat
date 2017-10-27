@@ -1,7 +1,7 @@
-# Description: Kerberos ağ kimlik doğrulama sistemi
+# Tanım: Kerberos ağ kimlik doğrulama sistemi
 # URL: http://web.mit.edu/kerberos/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=kerberos
 version=1.14

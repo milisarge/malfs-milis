@@ -1,7 +1,7 @@
-# Description: Hafif bir X11 masaüstü paneli içerir
+# Tanım: Hafif bir X11 masaüstü paneli içerir
 # URL: http://lxde.org/
-# Packager: milisarge@gmail.com
-# Depends on: gtk2 menu-cache alsa-lib libwnck wireless-tools keybinder2 libfm
+# Paketçi: milisarge@gmail.com
+# Gerekler: gtk2 menu-cache alsa-lib libwnck wireless-tools keybinder2 libfm
 
 name=lxde-panel
 _name=lxpanel

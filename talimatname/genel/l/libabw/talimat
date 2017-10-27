@@ -1,7 +1,7 @@
-# Description: AbiWord belgelerinin dosya formatını ayrıştıran bir kütüphane
+# Tanım: AbiWord belgelerinin dosya formatını ayrıştıran bir kütüphane
 # URL: https://wiki.documentfoundation.org/DLP/Libraries/libabw
-# Packager: Cihan Alkan
-# Depends on: libxml2 librevenge doxygen boost
+# Paketçi: Cihan Alkan
+# Gerekler: libxml2 librevenge doxygen boost
 
 name=libabw
 version=0.1.1

@@ -1,7 +1,7 @@
-# Description: Geçerli Xlib arabirimini değiştiren X Pencere Sistem protokolüne arabirim.
+# Tanım: Geçerli Xlib arabirimini değiştiren X Pencere Sistem protokolüne arabirim.
 # URL: http://xcb.freedesktop.org
-# Packager: milisarge
-# Depends on: xcb-proto xorg-libxdmcp xorg-libxau libxslt xorg-util-macros
+# Paketçi: milisarge
+# Gerekler: xcb-proto xorg-libxdmcp xorg-libxau libxslt xorg-util-macros
 
 name=libxcb
 version=1.12

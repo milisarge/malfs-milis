@@ -1,7 +1,7 @@
-# Description: Büyük ölçekli uygulamalar için doğrusal sınıflayıcı öğrenmek için kütüphane.
+# Tanım: Büyük ölçekli uygulamalar için doğrusal sınıflayıcı öğrenmek için kütüphane.
 # URL: http://www.csie.ntu.edu.tw/~cjlin/liblinear/
-# Packager:milisarge
-# Depends on:
+# Paketçi:milisarge
+# Gerekler:
 
 name=liblinear
 version=2.1

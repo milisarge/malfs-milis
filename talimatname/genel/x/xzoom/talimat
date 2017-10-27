@@ -1,7 +1,7 @@
-# Description: Ekran Büyüteci
+# Tanım: Ekran Büyüteci
 # URL: ftp://sunsite.unc.edu/pub/linux/libs/X/
-# Packager: milisarge
-# Depends on: xorg-imake xorg-libxt xorg-libxext xorg-gccmakedep
+# Paketçi: milisarge
+# Gerekler: xorg-imake xorg-libxt xorg-libxext xorg-gccmakedep
 
 name=xzoom
 version=0.3

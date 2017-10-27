@@ -1,7 +1,7 @@
-# Description: İşlemci sıcaklığı, fan hızı ve voltaj okumaları da dahil olmak üzere donanım sensörlerinden okumaları görüntülemek için kullanılan MATE Panel uygulaması
+# Tanım: İşlemci sıcaklığı, fan hızı ve voltaj okumaları da dahil olmak üzere donanım sensörlerinden okumaları görüntülemek için kullanılan MATE Panel uygulaması
 # URL: http://www.mate-desktop.org
-# Packager: yasarciv67@gmail.com
-# Depends on: docbook-xsl intltool itstool libatasmart libnotify lm-sensors mate-panel
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: docbook-xsl intltool itstool libatasmart libnotify lm-sensors mate-panel
 
 name=mate-sensors-applet
 version=1.18.2

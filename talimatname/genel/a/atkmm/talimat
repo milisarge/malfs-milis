@@ -1,7 +1,7 @@
-# Description: Atkmm, ATK erişilebilirlik araç seti kütüphanesi için resmi C ++ arayüzüdür.
+# Tanım: Atkmm, ATK erişilebilirlik araç seti kütüphanesi için resmi C ++ arayüzüdür.
 # URL: http://gtkmm.sourceforge.net/
-# Packager: milisarge
-# Depends on: atk glibmm libsigc++
+# Paketçi: milisarge
+# Gerekler: atk glibmm libsigc++
 
 name=atkmm
 version=2.24.1

@@ -1,7 +1,7 @@
-# Description: Gnome icin yardim dosyalari
+# Tanım: Gnome icin yardim dosyalari
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: itstool intltool gtk-doc libxslt hicolor-icon-theme webkitgtk3, yelp-xsl, desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: itstool intltool gtk-doc libxslt hicolor-icon-theme webkitgtk3, yelp-xsl, desktop-file-utils
 
 
 name=yelp

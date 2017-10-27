@@ -1,7 +1,7 @@
-# Description: Hesap bağlanırken şifreler ve SSL hataları için UI/KWallet entegrasyonu sağlayın
+# Tanım: Hesap bağlanırken şifreler ve SSL hataları için UI/KWallet entegrasyonu sağlayın
 # URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules qca-qt5 telepathy-kde-common-internals kf5-kdewebkit
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules qca-qt5 telepathy-kde-common-internals kf5-kdewebkit
 
 name=telepathy-kde-auth-handler
 version=16.08.2

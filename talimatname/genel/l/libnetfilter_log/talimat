@@ -1,7 +1,7 @@
-# Description: kernel paket filtresi tarafından günlüğe kaydedilen paketlere arabirim sağlayan bir kullanıcı alanı kütüphanesi.
+# Tanım: kernel paket filtresi tarafından günlüğe kaydedilen paketlere arabirim sağlayan bir kullanıcı alanı kütüphanesi.
 # URL: http://netfilter.org/projects/libnetfilter_log/
-# Packager: milisarge
-# Depends on: libnfnetlink
+# Paketçi: milisarge
+# Gerekler: libnfnetlink
 
 name=libnetfilter_log
 version=1.0.1

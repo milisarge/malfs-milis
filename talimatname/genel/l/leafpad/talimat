@@ -1,7 +1,7 @@
-# Description: GTK + 2.0 için bir not defteri klonu
+# Tanım: GTK + 2.0 için bir not defteri klonu
 # URL: http://tarot.freeshell.org/leafpad/
-# Packager: milisarge
-# Depends on: gtk2 desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: gtk2 desktop-file-utils
 
 name=leafpad
 version=0.8.18.1

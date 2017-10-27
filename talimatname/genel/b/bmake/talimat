@@ -1,7 +1,7 @@
-# Description: NetBSD 'make' inşa aracının taşınabilir bir sürümü.
+# Tanım: NetBSD 'make' inşa aracının taşınabilir bir sürümü.
 # URL: http://www.crufty.net/help/sjg/bmake.html
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=bmake
 version=20150910

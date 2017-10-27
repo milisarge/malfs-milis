@@ -1,7 +1,7 @@
-# Description: C ++ kütüphanesinin PDF dosya formatıyla çalışması için.
+# Tanım: C ++ kütüphanesinin PDF dosya formatıyla çalışması için.
 # URL: http://podofo.sourceforge.net
-# Packager: milisarge
-# Depends on: cmake xorg-fontconfig freetype libidn libpng libtiff lua51 
+# Paketçi: milisarge
+# Gerekler: cmake xorg-fontconfig freetype libidn libpng libtiff lua51 
 
 name=podofo
 version=0.9.5

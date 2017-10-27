@@ -1,7 +1,7 @@
-# Description: her ortam için hafif vekil sunucu
+# Tanım: her ortam için hafif vekil sunucu
 # URL: http://www.3proxy.ru/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=3proxy
 version=0.8.6

@@ -1,7 +1,7 @@
-# Description: MATE için Faenza simge teması 
+# Tanım: MATE için Faenza simge teması 
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: mate-common
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: mate-common
 
 name=mate-icon-theme-faenza
 version=1.18.1

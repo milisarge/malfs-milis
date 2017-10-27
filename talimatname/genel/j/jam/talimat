@@ -1,7 +1,7 @@
-# Description: Jam bir yazılım oluşturma aracıdır.
+# Tanım: Jam bir yazılım oluşturma aracıdır.
 # URL: http://www.perforce.com/documentation/jam
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=jam
 version=2.5

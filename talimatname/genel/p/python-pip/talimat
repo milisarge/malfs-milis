@@ -1,7 +1,7 @@
-# Description: Python-pip (pypi python paketlerini yüklemek için kolay kurulum değiştirme)
+# Tanım: Python-pip (pypi python paketlerini yüklemek için kolay kurulum değiştirme)
 # URL: http://www.pip-installer.org
-# Packager: milisarge
-# Depends on: python python-setuptools
+# Paketçi: milisarge
+# Gerekler: python python-setuptools
 
 name=python-pip
 version=9.0.1

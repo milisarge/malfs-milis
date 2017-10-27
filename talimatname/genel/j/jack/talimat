@@ -1,7 +1,7 @@
-# Description: Düşük gecikmeli bir ses sunucusu
+# Tanım: Düşük gecikmeli bir ses sunucusu
 # URL: http://jackaudio.org
-# Packager: milisarge
-# Depends on: db libsamplerate readline doxygen celt
+# Paketçi: milisarge
+# Gerekler: db libsamplerate readline doxygen celt
 
 _longname=jack-audio-connection-kit
 name=jack

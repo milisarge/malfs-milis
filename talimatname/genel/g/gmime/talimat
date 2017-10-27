@@ -1,7 +1,7 @@
-# Description: Çok Amaçlı Internet Posta Uzantısı'nı kullanarak ileti ayrıştırma ve oluşturma araçları
+# Tanım: Çok Amaçlı Internet Posta Uzantısı'nı kullanarak ileti ayrıştırma ve oluşturma araçları
 # URL: http://spruce.sourceforge.net/gmime
-# Packager: milisarge
-# Depends on: glib libgpg-error
+# Paketçi: milisarge
+# Gerekler: glib libgpg-error
 
 name=gmime
 version=2.6.20

@@ -1,7 +1,7 @@
-# Description: w3m öncelikli olarak bir sayfalıyıcıdır. Ayrıca konsol tabanlı tarayıcı altyapılarında kullanılabilir.
+# Tanım: w3m öncelikli olarak bir sayfalıyıcıdır. Ayrıca konsol tabanlı tarayıcı altyapılarında kullanılabilir.
 # URL: http://w3m.sourceforge.net/
-# Packager: milisarge
-# Depends on: gc imlib2 gtk2 gdk-pixbuf 
+# Paketçi: milisarge
+# Gerekler: gc imlib2 gtk2 gdk-pixbuf 
 
 name=w3m
 version=0.5.3	

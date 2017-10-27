@@ -1,7 +1,7 @@
-# Description: Eğrilerin çizimini basitleştiren kütüphane
+# Tanım: Eğrilerin çizimini basitleştiren kütüphane
 # URL: https://github.com/fontforge/libspiro
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libspiro
 version=0.5.20150702

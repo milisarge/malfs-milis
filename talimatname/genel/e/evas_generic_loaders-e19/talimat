@@ -1,7 +1,7 @@
-# Description: evas generic loaders 
+# Tanım: evas generic loaders 
 # URL: http://www.enlightenment.org/
-# Packager: milisarge
-# Depends on: efl-e19 
+# Paketçi: milisarge
+# Gerekler: efl-e19 
 
 name=evas_generic_loaders-e19
 version=1.17.0

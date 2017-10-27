@@ -1,7 +1,7 @@
-# Description: Basit bir GTK + 2 renk seçici
+# Tanım: Basit bir GTK + 2 renk seçici
 # URL: http://gcolor2.sourceforge.net/
-# Packager: milisarge
-# Depends on: gtk2
+# Paketçi: milisarge
+# Gerekler: gtk2
 
 name=gcolor2
 version=0.4

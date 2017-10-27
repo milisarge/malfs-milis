@@ -1,7 +1,7 @@
-# Description: Bazı programlar tarafından posta aktarım katmanına e-posta göndermeyi yönetmek için kullanılan kitaplıklar.
+# Tanım: Bazı programlar tarafından posta aktarım katmanına e-posta göndermeyi yönetmek için kullanılan kitaplıklar.
 # URL: http://www.stafford.uklinux.net/libesmtp/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libesmtp
 version=1.0.6

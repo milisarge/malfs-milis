@@ -1,7 +1,7 @@
-# Description: GTK-engines paketi, sekiz tema / motor ve GTK2 için iki ilave motor içerir.
+# Tanım: GTK-engines paketi, sekiz tema / motor ve GTK2 için iki ilave motor içerir.
 # URL: http://ftp.gnome.org/pub/gnome/sources/gtk-engines
-# Packager: milisarge
-# Depends on: gtk2 lua 
+# Paketçi: milisarge
+# Gerekler: gtk2 lua 
 
 name=gtk-engines
 version=2.20.2	

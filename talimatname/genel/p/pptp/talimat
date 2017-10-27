@@ -1,7 +1,7 @@
-# Description: Tescilli Microsoft Noktadan Noktaya Tünel Protokolü, PPTP için istemci.
+# Tanım: Tescilli Microsoft Noktadan Noktaya Tünel Protokolü, PPTP için istemci.
 # URL: http://pptpclient.sourceforge.net/
-# Packager: milisarge
-# Depends on: ppp 
+# Paketçi: milisarge
+# Gerekler: ppp 
 
 name=pptp
 version=1.7.2

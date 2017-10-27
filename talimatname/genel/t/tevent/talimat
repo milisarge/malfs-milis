@@ -1,7 +1,7 @@
-# Description: Talloc bellek yönetimi kitaplığına dayanan olay sistemi
+# Tanım: Talloc bellek yönetimi kitaplığına dayanan olay sistemi
 # URL: https://tevent.samba.org
-# Packager: milisarge
-# Depends on: talloc python
+# Paketçi: milisarge
+# Gerekler: talloc python
 
 name=tevent
 version=0.9.33

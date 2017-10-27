@@ -1,7 +1,7 @@
-# Description: Sysfs temelli sistem araçları
+# Tanım: Sysfs temelli sistem araçları
 # URL: http://linux-diag.sourceforge.net/Sysfsutils.html
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=sysfsutils
 version=2.1.0

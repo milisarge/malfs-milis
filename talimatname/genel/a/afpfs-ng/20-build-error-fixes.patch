@@ -1,4 +1,4 @@
-Description: Fix build errors.
+Tanım: Fix build errors.
 Origin: http://anonscm.debian.org/gitweb/?p=collab-maint/afpfs-ng.git;a=blob;f=debian/patches/build-error-fixes.patch
 
 --- a/lib/afp_url.c

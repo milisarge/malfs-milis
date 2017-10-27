@@ -1,7 +1,7 @@
-# Description: hafif linux giriş yöneticisi
+# Tanım: hafif linux giriş yöneticisi
 # URL: http://sourceforge.net/projects/lxdm/
-# Packager: milisarge
-# Depends on: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2 mate-themes
+# Paketçi: milisarge
+# Gerekler: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2 mate-themes
 
 name=lxdm
 version=0.5.3

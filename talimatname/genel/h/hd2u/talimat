@@ -1,7 +1,7 @@
-# Description: Metin formatlari icin donusturucu
+# Tanım: Metin formatlari icin donusturucu
 # URL: http://terminus.sk/~hany
-# Packager: milisarge
-# Depends on: popt
+# Paketçi: milisarge
+# Gerekler: popt
 
 name=hd2u
 version=1.0.3

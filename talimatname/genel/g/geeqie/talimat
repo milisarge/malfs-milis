@@ -1,7 +1,7 @@
-# Description: image dosyalari icin hafif bir goruntuleyici
+# Tanım: image dosyalari icin hafif bir goruntuleyici
 # URL: http://www.geeqie.org/
-# Packager: milisarge
-# Depends on: exiv2 gtk2 lcms desktop-file-utils intltool librsvg fbida
+# Paketçi: milisarge
+# Gerekler: exiv2 gtk2 lcms desktop-file-utils intltool librsvg fbida
 
 name=geeqie
 version=1.3

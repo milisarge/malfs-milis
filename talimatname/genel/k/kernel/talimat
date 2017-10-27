@@ -1,7 +1,7 @@
-# Description: kararli kernel surumu
+# Tanım: kararli kernel surumu
 # URL: http://www.kernel.org
-# Packagers: milisarge
-# Depends on: linux-firmware intel-ucode
+# Paketçi: milisarge
+# Gerekler: linux-firmware intel-ucode
 
 name=kernel
 _basekernel=4.10

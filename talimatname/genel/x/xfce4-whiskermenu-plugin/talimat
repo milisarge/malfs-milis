@@ -1,7 +1,7 @@
-# Description: Xfce4 için alternatif menü
+# Tanım: Xfce4 için alternatif menü
 # URL: http://gottcode.org/xfce4-whiskermenu-plugin/
-# Packager: milisarge
-# Depends on: cmake xfce4-panel exo
+# Paketçi: milisarge
+# Gerekler: cmake xfce4-panel exo
 
 name=xfce4-whiskermenu-plugin
 version=2.1.3

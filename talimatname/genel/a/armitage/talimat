@@ -1,7 +1,7 @@
-# Description: Metasploit için grafiksel yönetim aracı.
+# Tanım: Metasploit için grafiksel yönetim aracı.
 # URL: http://www.fastandeasyhacking.com/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: metasploit nmap postgresql
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: metasploit nmap postgresql
 
 name=armitage
 version=150813

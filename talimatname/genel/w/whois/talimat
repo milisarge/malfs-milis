@@ -1,7 +1,7 @@
-# Description: Dizin hizmetini sorgulayan istemci tarafı uygulaması
+# Tanım: Dizin hizmetini sorgulayan istemci tarafı uygulaması
 # URL: http://ftp.debian.org/debian/pool/main/w/whois
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=whois
 version=5.2.16

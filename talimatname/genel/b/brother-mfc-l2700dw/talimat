@@ -1,7 +1,7 @@
-# Description: Brother MFC-L2700DW için LPR ve CUPS sürücüsü
+# Tanım: Brother MFC-L2700DW için LPR ve CUPS sürücüsü
 # URL: http://support.brother.com/g/b/countrytop.aspx?c=tr&lang=tr
-# Packager: Cihan Alkan
-# Depends on: cups
+# Paketçi: Cihan Alkan
+# Gerekler: cups
 
 name=brother-mfc-l2700dw
 version=3.2.0

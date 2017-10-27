@@ -1,7 +1,7 @@
-# Description: bti (twitter/identi.ca konsol istemcisi)
+# Tanım: bti (twitter/identi.ca konsol istemcisi)
 # URL: http://gregkh.github.com/bti/
-# Packager: milisarge
-# Depends on: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre
+# Paketçi: milisarge
+# Gerekler: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre
 
 name=bti
 version=034

@@ -1,7 +1,7 @@
-# Description: SWIG Basitleştirilmiş Sarmalayıcı ve Arayüz Jeneratörü
+# Tanım: SWIG Basitleştirilmiş Sarmalayıcı ve Arayüz Jeneratörü
 # URL: http://www.swig.org/
-# Packager: milisarge
-# Depends on: pcre 
+# Paketçi: milisarge
+# Gerekler: pcre 
 
 name=swig
 version=3.0.12

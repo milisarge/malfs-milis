@@ -1,7 +1,7 @@
-# Description: GNOME için bir metin düzenleyici
+# Tanım: GNOME için bir metin düzenleyici
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gsettings-desktop-schemas desktop-file-utils shared-mime-info gtk-update-icon-cache enchant gtk3 gtksourceview3 gvfs libpeas yelp-xsl enchant iso-codes libsoup libzeitgeist python-gobject python 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gsettings-desktop-schemas desktop-file-utils shared-mime-info gtk-update-icon-cache enchant gtk3 gtksourceview3 gvfs libpeas yelp-xsl enchant iso-codes libsoup libzeitgeist python-gobject python 
 
 name=gedit
 version=3.22.1

@@ -1,7 +1,7 @@
-# Description: XFCE icin xquisite icon temasi
+# Tanım: XFCE icin xquisite icon temasi
 # URL: http://xfce-look.org/content/show.php/Xquisite?content=69735
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=xquisite
 version=0.4.6

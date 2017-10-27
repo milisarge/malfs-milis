@@ -1,7 +1,7 @@
-# Description: Karakter kodlaması otomatik algılama için Python modülü.
+# Tanım: Karakter kodlaması otomatik algılama için Python modülü.
 # URL: https://github.com/erikrose/chardet
-# Packager: milisarge
-# Depends on: python-setuptools
+# Paketçi: milisarge
+# Gerekler: python-setuptools
 
 name=python-chardet
 _name=chardet

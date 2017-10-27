@@ -1,7 +1,7 @@
-# Description: Python çağıran C kodu için Yabancı Fonksiyon Arayüzü.
+# Tanım: Python çağıran C kodu için Yabancı Fonksiyon Arayüzü.
 # URL: http://cffi.readthedocs.org/
-# Packager: milisarge
-# Depends on: libffi python-cparser
+# Paketçi: milisarge
+# Gerekler: libffi python-cparser
 
 name=python-cffi
 _name=cffi

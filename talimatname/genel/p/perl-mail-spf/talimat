@@ -1,7 +1,7 @@
-# Description: SPF desteği sağlayan Perl modülü
+# Tanım: SPF desteği sağlayan Perl modülü
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: perl-error perl-netaddr-ip perl-uri perl-net-dns perl-net-dns-resolver-programmable 
+# Paketçi: milisarge
+# Gerekler: perl-error perl-netaddr-ip perl-uri perl-net-dns perl-net-dns-resolver-programmable 
 
 name=perl-mail-spf
 version=2.9.0

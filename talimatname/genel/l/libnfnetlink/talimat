@@ -1,7 +1,7 @@
-# Description: Netfilter kernel/userspace iletişim kütüphnesi
+# Tanım: Netfilter kernel/userspace iletişim kütüphnesi
 # URL: http://www.netfilter.org/projects/libnfnetlink/index.html
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libnfnetlink
 version=1.0.1

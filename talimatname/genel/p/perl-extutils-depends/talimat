@@ -1,7 +1,7 @@
-# Description: XS uzantılarına bağlı XS uzantılarını kolayca oluşturun
+# Tanım: XS uzantılarına bağlı XS uzantılarını kolayca oluşturun
 # URL: http://search.cpan.org/~flora/ExtUtils-Depends-0.304/lib/ExtUtils/Depends.pm
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-extutils-depends
 version=0.304

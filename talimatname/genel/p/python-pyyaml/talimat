@@ -1,7 +1,7 @@
-# Description: Yeni nesil YAML ayrıştırıcı ve vericiyi uygulayan Python modülü
+# Tanım: Yeni nesil YAML ayrıştırıcı ve vericiyi uygulayan Python modülü
 # URL: http://pyyaml.org/
-# Packager: milisarge
-# Depends on: python python3 yaml 
+# Paketçi: milisarge
+# Gerekler: python python3 yaml 
 
 name=python-pyyaml
 version=3.11

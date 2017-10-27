@@ -1,7 +1,7 @@
-# Description: X giriş yöneticisi
+# Tanım: X giriş yöneticisi
 # URL: http://enricozini.org/sw/nodm/
-# Packager: milisarge
-# Depends on: help2man xorg-xinit 
+# Paketçi: milisarge
+# Gerekler: help2man xorg-xinit 
 
 name=nodm
 version=0.13

@@ -1,7 +1,7 @@
-# Description: MATE için dosya yöneticisi
+# Tanım: MATE için dosya yöneticisi
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: exempi gvfs libexif xorg-libsm mate-desktop libnotify gstreamer1 gobject-introspection intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: exempi gvfs libexif xorg-libsm mate-desktop libnotify gstreamer1 gobject-introspection intltool
 
 name=caja
 version=1.18.3

@@ -2,7 +2,7 @@ Submitted By: Bruce Dubbs (bdubbs at liinuxfromscratch dot com)
 Date: 2014-03-01
 Initial Package Version: CVS_20101030
 Origin: Self
-Description: Removes ifconfig and hostname from the build
+Tanım: Removes ifconfig and hostname from the build
              due to duplication in inetutils
 
 diff -Naur a/Makefile b/Makefile

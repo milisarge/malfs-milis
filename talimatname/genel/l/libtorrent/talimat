@@ -1,7 +1,7 @@
-# Description: Torrent kitaplığı
+# Tanım: Torrent kitaplığı
 # URL:         https://rakshasa.github.io/rtorrent
-# Packager:    milisarge
-# Depends on:  libsigc++
+# Paketçi:    milisarge
+# Gerekler:  libsigc++
 
 name=libtorrent
 version=0.13.6

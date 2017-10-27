@@ -1,7 +1,7 @@
-# Description: GNOME Tespit Kütüphaneleri.
+# Tanım: GNOME Tespit Kütüphaneleri.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 gdk-pixbuf pango cairo
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 gdk-pixbuf pango cairo
 
 name=gdl
 version=3.22.0

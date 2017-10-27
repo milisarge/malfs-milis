@@ -1,7 +1,7 @@
-# Description: GStreamer için Qt5 bağları.
+# Tanım: GStreamer için Qt5 bağları.
 # URL: http://gstreamer.freedesktop.org/modules/qt-gstreamer.htm
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake boost xorg-mesa doxygen gstreamer1-plugins-good qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: cmake boost xorg-mesa doxygen gstreamer1-plugins-good qt5
 
 name=qt5-gstreamer
 version=1.2.0

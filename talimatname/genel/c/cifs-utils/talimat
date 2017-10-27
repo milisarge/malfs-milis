@@ -1,7 +1,7 @@
-# Description: CIFS dosya sistemi kullanıcı alanı araçları
+# Tanım: CIFS dosya sistemi kullanıcı alanı araçları
 # URL: http://www.samba.org
-# Packager: milisarge
-# Depends on: samba
+# Paketçi: milisarge
+# Gerekler: samba
 
 name=cifs-utils
 version=6.5

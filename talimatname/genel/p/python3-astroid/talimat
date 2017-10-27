@@ -1,7 +1,7 @@
-# Description: Python 3 Logilab projeleri tarafından kullanılan faydalı modüller.
+# Tanım: Python 3 Logilab projeleri tarafından kullanılan faydalı modüller.
 # URL: https://bitbucket.org/logilab/astroid
-# Packager: yasarciv67@gmail.com
-# Depends on: python3 python3-six python3-setuptools
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: python3 python3-six python3-setuptools
 
 name=python3-astroid
 version=1.4.5

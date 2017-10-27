@@ -1,7 +1,7 @@
-# Description: A simple build configuration and project generation tool using lua
+# Tanım: A simple build configuration and project generation tool using lua
 # URL: http://industriousone.com/premake
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=premake
 version=4.3

@@ -1,7 +1,7 @@
-# Description: Tüm GnuPG bileşenleri için ortak hata değerlerini tanımlayan bir kitaplık içerir
+# Tanım: Tüm GnuPG bileşenleri için ortak hata değerlerini tanımlayan bir kitaplık içerir
 # URL: http://www.gnupg.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libgpg-error
 version=1.21

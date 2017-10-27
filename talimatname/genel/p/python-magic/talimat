@@ -1,7 +1,7 @@
-# Description: Magic kütüphanesi için python bağlantısı.
+# Tanım: Magic kütüphanesi için python bağlantısı.
 # URL: http://darwinsys.com/file/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: python-setuptools
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: python-setuptools
 
 name=python-magic
 version=5.29

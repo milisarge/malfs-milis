@@ -1,7 +1,7 @@
-# Description: OpenCV (Açık Kaynaklı Bilgisayar Vizyon Kütüphanesi) açık kaynaklı bir bilgisayar görme ve makine öğrenme yazılımı kütüphanesi.
+# Tanım: OpenCV (Açık Kaynaklı Bilgisayar Vizyon Kütüphanesi) açık kaynaklı bir bilgisayar görme ve makine öğrenme yazılımı kütüphanesi.
 # URL: http://opencv.org/
-# Packager: milisarge
-# Depends on: libjpeg-turbo libtiff jasper libpng ffmpeg28 gstreamer xine-lib v4l-utils xorg-mesa python3-numpy python-numpy gtkglext libgphoto2
+# Paketçi: milisarge
+# Gerekler: libjpeg-turbo libtiff jasper libpng ffmpeg28 gstreamer xine-lib v4l-utils xorg-mesa python3-numpy python-numpy gtkglext libgphoto2
 
 _pybin=python2
 _pydir=python2.7

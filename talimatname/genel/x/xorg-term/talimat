@@ -1,7 +1,7 @@
-# Description: X Pencere Sistemi icin terminal emulatoru
+# Tanım: X Pencere Sistemi icin terminal emulatoru
 # URL: http://invisible-island.net/xorg-term/
-# Packager: milisarge
-# Depends on: xorg-app xorg-fontconfig xorg-libxft 
+# Paketçi: milisarge
+# Gerekler: xorg-app xorg-fontconfig xorg-libxft 
 
 _name=xterm
 name=xorg-term

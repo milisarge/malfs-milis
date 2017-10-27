@@ -1,7 +1,7 @@
-# Description : KDE'nin API multimedya programı. KDE tarafından daha fazla desteklenen eski aRts'in yerini alıyor.
+# Tanım: KDE'nin API multimedya programı. KDE tarafından daha fazla desteklenen eski aRts'in yerini alıyor.
 # URL: https://www.kde.org/
-# Packager: milisarge
-# Depends on: cmake kf5-extra-cmake-modules glib qt4 pulseaudio
+# Paketçi: milisarge
+# Gerekler: cmake kf5-extra-cmake-modules glib qt4 pulseaudio
 
 name=phonon-qt4
 release=1

@@ -1,7 +1,7 @@
-# Description: MATE için bir sistem monitörü
+# Tanım: MATE için bir sistem monitörü
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool gtkmm3 libgtop libwnck3 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool itstool gtkmm3 libgtop libwnck3 
 
 name=mate-system-monitor
 version=1.18.0

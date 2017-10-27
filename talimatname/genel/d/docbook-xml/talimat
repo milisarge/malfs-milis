@@ -1,7 +1,7 @@
-# Description: XML veri dosyalarının DocBook kural setine göre doğrulanması için bir doküman tipi tanımları
+# Tanım: XML veri dosyalarının DocBook kural setine göre doğrulanması için bir doküman tipi tanımları
 # URL: http://www.docbook.org/
-# Packager: milisarge
-# Depends on: libxml2 unzip
+# Paketçi: milisarge
+# Gerekler: libxml2 unzip
 
 name=docbook-xml
 version=4.5

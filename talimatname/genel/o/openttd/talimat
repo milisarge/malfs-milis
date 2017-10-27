@@ -1,7 +1,7 @@
-# Description:Transport Tycoon Deluxe çalıştırmak için bir motor.
+# Tanım:Transport Tycoon Deluxe çalıştırmak için bir motor.
 # URL: http://www.openttd.org
-# Packager: milisarge
-# Depends on: libpng sdl icu xorg-fontconfig lzo hicolor-icon-theme desktop-file-utils xz openttd-opengfx openttd-opensfx
+# Paketçi: milisarge
+# Gerekler: libpng sdl icu xorg-fontconfig lzo hicolor-icon-theme desktop-file-utils xz openttd-opengfx openttd-opensfx
 
 
 name=openttd

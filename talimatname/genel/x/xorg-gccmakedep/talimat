@@ -1,7 +1,7 @@
-# Description: creates dependencies in Makefiles
+# Tanım: creates dependencies in Makefiles
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=xorg-gccmakedep
 version=1.0.3

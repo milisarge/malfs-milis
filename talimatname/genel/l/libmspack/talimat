@@ -1,7 +1,7 @@
-# Description: Microsoft sıkıştırma kütüphaneleri
+# Tanım: Microsoft sıkıştırma kütüphaneleri
 # URL: http://www.cabextract.org.uk/libmspack/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libmspack
 version=1.5

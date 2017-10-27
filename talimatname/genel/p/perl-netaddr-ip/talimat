@@ -1,7 +1,7 @@
-# Description: IP adreslerini ve alt ağları yönetmek için Perl modülü
+# Tanım: IP adreslerini ve alt ağları yönetmek için Perl modülü
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-netaddr-ip
 version=4.075

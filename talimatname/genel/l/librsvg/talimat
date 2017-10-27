@@ -1,7 +1,7 @@
-# Description: Ölçeklenebilir Vektör Grafikleri işlemek, değiştirmek ve görüntülemek için kullanılan kütüphane ve araçlar.
+# Tanım: Ölçeklenebilir Vektör Grafikleri işlemek, değiştirmek ve görüntülemek için kullanılan kütüphane ve araçlar.
 # URL: http://librsvg.sourceforge.net/
-# Packager: milisarge
-# Depends on: gdk-pixbuf libcroco pango vala
+# Paketçi: milisarge
+# Gerekler: gdk-pixbuf libcroco pango vala
 
 name=librsvg
 version=2.40.13

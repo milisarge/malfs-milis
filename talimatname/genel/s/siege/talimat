@@ -1,7 +1,7 @@
-# Description: http stres test performans ölçüm uygulaması
+# Tanım: http stres test performans ölçüm uygulaması
 # URL: https://www.joedog.org/siege-home/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=siege
 version=4.0.4

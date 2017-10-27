@@ -1,7 +1,7 @@
-# Description: Python Caja için bağlama, Caja özellik sayfası ve menü öğesi uzantılarının Python'da yazılmasına izin vermek
+# Tanım: Python Caja için bağlama, Caja özellik sayfası ve menü öğesi uzantılarının Python'da yazılmasına izin vermek
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool caja python-gobject
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool caja python-gobject
 
 name=python-caja
 version=1.18.0

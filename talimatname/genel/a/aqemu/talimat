@@ -1,7 +1,7 @@
-# Description: Qt5 ile yazılmış bir QEMU arayüzü
+# Tanım: Qt5 ile yazılmış bir QEMU arayüzü
 # URL: https://github.com/tobimensch/aqemu
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake qt5 qemu-all libvncserver 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake qt5 qemu-all libvncserver 
 
 name=aqemu
 version=0.9.2

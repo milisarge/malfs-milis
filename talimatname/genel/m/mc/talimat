@@ -1,7 +1,7 @@
-# Description: Midnight Commander, Norton Commander'ı öykünen metin tabanlı bir dosya yöneticisi/kabuğu
+# Tanım: Midnight Commander, Norton Commander'ı öykünen metin tabanlı bir dosya yöneticisi/kabuğu
 # URL: https://www.midnight-commander.org/
-# Packager: milisarge@gmail.com
-# Depends on: pcre glib gpm
+# Paketçi: milisarge@gmail.com
+# Gerekler: pcre glib gpm
 
 name=mc
 version=4.8.15

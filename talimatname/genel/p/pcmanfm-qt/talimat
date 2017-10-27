@@ -1,7 +1,7 @@
-# Description: LXQt dosya yöneticisi, PCManFM'in Qt portu
+# Tanım: LXQt dosya yöneticisi, PCManFM'in Qt portu
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: libfm-qt lxde-menu-data
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: libfm-qt lxde-menu-data
 
 name=pcmanfm-qt
 version=0.11.3

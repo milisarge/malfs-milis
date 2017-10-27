@@ -1,7 +1,7 @@
-# Description: Taşınabilir oyun kütüphaneler takımı
+# Tanım: Taşınabilir oyun kütüphaneler takımı
 # URL: http://plib.sourceforge.net/
-# Packager: milisarge
-# Depends on: freeglut xorg-libxmu
+# Paketçi: milisarge
+# Gerekler: freeglut xorg-libxmu
 
 name=plib
 version=1.8.5

@@ -1,7 +1,7 @@
-# Description: Sahte terminal altında altsüreç çalıştırma 
+# Tanım: Sahte terminal altında altsüreç çalıştırma 
 # URL: https://github.com/pexpect/ptyprocess
-# Packager: milisarge
-# Depends on: python python-setuptools
+# Paketçi: milisarge
+# Gerekler: python python-setuptools
 
 name=python-ptyprocess
 version=0.5.1

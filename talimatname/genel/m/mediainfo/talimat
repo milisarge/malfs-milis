@@ -1,7 +1,7 @@
-# Description: Video veya ses dosyası ile ilgili teknik ve etiket bilgilerini gösterin.
+# Tanım: Video veya ses dosyası ile ilgili teknik ve etiket bilgilerini gösterin.
 # URL: http://mediainfo.sourceforge.net/
-# Packager: milisarge
-# Depends on: libmediainfo
+# Paketçi: milisarge
+# Gerekler: libmediainfo
 
 name=mediainfo
 version=0.7.69

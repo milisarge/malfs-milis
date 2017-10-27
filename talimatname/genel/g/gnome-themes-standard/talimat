@@ -1,7 +1,7 @@
-# Description: GNOME Temaları Standart paketi varsayılan GNOME temasının çeşitli bileşenlerini içerir.
+# Tanım: GNOME Temaları Standart paketi varsayılan GNOME temasının çeşitli bileşenlerini içerir.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk2 gtk3 librsvg
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk2 gtk3 librsvg
 
 name=gnome-themes-standard
 version=3.22.3

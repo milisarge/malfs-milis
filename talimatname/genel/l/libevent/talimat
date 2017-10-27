@@ -1,7 +1,7 @@
-# Description: Bir etkinlik bildirim kitaplığı
+# Tanım: Bir etkinlik bildirim kitaplığı
 # URL: http://www.monkey.org/~provos/libevent/ 
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libevent
 version=2.0.22

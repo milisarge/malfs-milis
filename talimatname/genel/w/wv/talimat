@@ -1,7 +1,7 @@
-# Description: MSWord kitaplığı, Word 2000, 97, 95 ve 6 dosya formatlarını yükleyebilir ve ayrıştırabilir
+# Tanım: MSWord kitaplığı, Word 2000, 97, 95 ve 6 dosya formatlarını yükleyebilir ve ayrıştırabilir
 # URL: http://wvware.sourceforge.net/
-# Packager: milisarge
-# Depends on: libgsf libpng
+# Paketçi: milisarge
+# Gerekler: libgsf libpng
 
 name=wv
 version=1.2.9

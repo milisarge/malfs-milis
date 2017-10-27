@@ -1,7 +1,7 @@
-# Description : Qt5 Şifreleme Mimarisi
+# Tanım: Qt5 Şifreleme Mimarisi
 # URL : http://delta.affinix.com/qca/
-# Packager : alihan-ozturk28@hotmail.com
-# Depends on : qt5 nss cmake doxygen
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 nss cmake doxygen
 
 name=qca-qt5
 version=2.1.1

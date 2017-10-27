@@ -1,7 +1,7 @@
-# Description: Rasterized haritaları görüntülemek için Gtk3 aracı.
+# Tanım: Rasterized haritaları görüntülemek için Gtk3 aracı.
 # URL: http://projects.gnome.org/libchamplain/
-# Packager: yasarciv67@gmail.com
-# Depends on: clutter-gtk libsoup cairo sqlite gobject-introspection
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: clutter-gtk libsoup cairo sqlite gobject-introspection
 
 name=libchamplain
 version=0.12.14

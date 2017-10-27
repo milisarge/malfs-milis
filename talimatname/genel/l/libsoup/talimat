@@ -1,7 +1,7 @@
-# Description: Libsoup, GNOME için bir HTTP istemci / sunucu kitaplığıdır.
+# Tanım: Libsoup, GNOME için bir HTTP istemci / sunucu kitaplığıdır.
 # URL: https://wiki.gnome.org/Projects/libsoup
-# Packager: milisarge
-# Depends on: glib-networking libxml2 gobject-introspection vala sqlite 
+# Paketçi: milisarge
+# Gerekler: glib-networking libxml2 gobject-introspection vala sqlite 
 
 name=libsoup
 version=2.52.2

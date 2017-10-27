@@ -1,7 +1,7 @@
-# Description: XKB belirtimiyle tanımlanan anahtar dizinlerinin daha düşük bir alt kümesini işleyen bir kitaplık
+# Tanım: XKB belirtimiyle tanımlanan anahtar dizinlerinin daha düşük bir alt kümesini işleyen bir kitaplık
 # URL: http://xkbcommon.org/
-# Packager: milisarge
-# Depends on: xorg-xkeyboard-config libxcb doxygen xorg-util-macros 
+# Paketçi: milisarge
+# Gerekler: xorg-xkeyboard-config libxcb doxygen xorg-util-macros 
 
 name=libxkbcommon
 version=0.5.0

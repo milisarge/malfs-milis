@@ -1,7 +1,7 @@
-# Description: Google Android SDK için platform-araçları (adb ve fastboot)
+# Tanım: Google Android SDK için platform-araçları (adb ve fastboot)
 # URL: http://developer.android.com/sdk/index.html
-# Packager: Cihan Alkan
-# Depends on: ncurses zlib
+# Paketçi: Cihan Alkan
+# Gerekler: ncurses zlib
 
 name=android-sdk-platform-tools
 version=r26.0.0

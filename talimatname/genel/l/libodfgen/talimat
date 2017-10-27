@@ -1,7 +1,7 @@
-# Description: Open Document Format'da belge üretmek için kütüphane
+# Tanım: Open Document Format'da belge üretmek için kütüphane
 # URL: http://sourceforge.net/p/libwpd/wiki/libodfgen/
-# Packager: Cihan Alkan
-# Depends on: boost doxygen libwpd libwpg librevenge
+# Paketçi: Cihan Alkan
+# Gerekler: boost doxygen libwpd libwpg librevenge
 
 name=libodfgen
 version=0.1.6

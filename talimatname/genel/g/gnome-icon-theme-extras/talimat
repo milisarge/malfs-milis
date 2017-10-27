@@ -1,7 +1,7 @@
-# Description: GNOME simge teması ekstralaraı
+# Tanım: GNOME simge teması ekstralaraı
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gnome-icon-theme
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gnome-icon-theme
 
 name=gnome-icon-theme-extras
 version=3.12.0

@@ -1,7 +1,7 @@
-# Description: GStreamer multimedya çerçevesi python eklentileri
+# Tanım: GStreamer multimedya çerçevesi python eklentileri
 # URL: http://gstreamer.freedesktop.org/
-# Packager: milisarge
-# Depends on: gstreamer gstreamer-plugins-base python-gobject2
+# Paketçi: milisarge
+# Gerekler: gstreamer gstreamer-plugins-base python-gobject2
 
 name=gstreamer-plugins-python
 version=0.10.22

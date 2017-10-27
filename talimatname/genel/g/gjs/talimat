@@ -1,7 +1,7 @@
-# Description: GNOME için Javascript Bağları
+# Tanım: GNOME için Javascript Bağları
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: cairo dbus-glib gobject-introspection js2 xorg-libxxf86vm
+# Paketçi: milisarge
+# Gerekler: cairo dbus-glib gobject-introspection js2 xorg-libxxf86vm
 
 name=gjs
 version=1.44.0

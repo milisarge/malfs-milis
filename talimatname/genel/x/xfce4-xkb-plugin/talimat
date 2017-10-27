@@ -1,7 +1,7 @@
-# Description: Bu eklenti, birden fazla (şu an 4'e kadar X11 protokolü sınırlaması nedeniyle) klavye düzenlerini kurmanıza ve kullanmanıza olanak tanır.
+# Tanım: Bu eklenti, birden fazla (şu an 4'e kadar X11 protokolü sınırlaması nedeniyle) klavye düzenlerini kurmanıza ve kullanmanıza olanak tanır.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin
-# Packager: milisarge
-# Depends on: librsvg xorg-libxklavier xfce4-panel
+# Paketçi: milisarge
+# Gerekler: librsvg xorg-libxklavier xfce4-panel
 
 name=xfce4-xkb-plugin
 version=0.7.1

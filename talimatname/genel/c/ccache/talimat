@@ -1,7 +1,7 @@
-# Description: bir önbellek derleyicisi
+# Tanım: bir önbellek derleyicisi
 # URL: http://ccache.samba.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=ccache
 version=3.3.4

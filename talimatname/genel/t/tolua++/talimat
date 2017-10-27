@@ -1,7 +1,7 @@
-# Description: C / C ++ kodunu Lua ile bütünleştiren bir araç
+# Tanım: C / C ++ kodunu Lua ile bütünleştiren bir araç
 # URL: http://www.codenix.com/~tolua
-# Packager: milisarge
-# Depends on: scons lua51
+# Paketçi: milisarge
+# Gerekler: scons lua51
 
 name=tolua++
 version=1.0.93

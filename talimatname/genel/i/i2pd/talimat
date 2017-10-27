@@ -1,7 +1,7 @@
-# Description: I2P sistemi c++
+# Tanım: I2P sistemi c++
 # URL: https://github.com/PurpleI2P/i2pd
-# Packager: milisarge
-# Depends on: cmake boost miniupnpc websocketpp
+# Paketçi: milisarge
+# Gerekler: cmake boost miniupnpc websocketpp
 
 name=i2pd
 version=2.11.0

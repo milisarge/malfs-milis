@@ -1,7 +1,7 @@
-# Description: Hdparm paketi, ATA/IDE'yi denetlemek için kullanışlı bir yardımcı program içerir
+# Tanım: Hdparm paketi, ATA/IDE'yi denetlemek için kullanışlı bir yardımcı program içerir
 # URL: http://hdparm.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=hdparm
 version=9.52

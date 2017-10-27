@@ -1,7 +1,7 @@
-# Description: GLib Ağ Paketi, GLib için Ağa bağlı gio modülleri içerir.
+# Tanım: GLib Ağ Paketi, GLib için Ağa bağlı gio modülleri içerir.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: glib dbus gnutls libgcrypt gsettings-desktop-schemas p11-kit
+# Paketçi: milisarge
+# Gerekler: glib dbus gnutls libgcrypt gsettings-desktop-schemas p11-kit
 
 name=glib-networking
 version=2.50.0

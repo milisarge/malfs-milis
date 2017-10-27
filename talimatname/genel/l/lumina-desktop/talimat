@@ -1,7 +1,7 @@
-# Description: FreeBSD için Hafif QT5 Masaüstü
+# Tanım: FreeBSD için Hafif QT5 Masaüstü
 # URL: https://github.com/pcbsd/lumina
-# Packager: milisarge
-# Depends on: qt5 fluxbox kf5-kwindowsystem kf5-oxygen-icons5 xcb-util-image xscreensaver desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: qt5 fluxbox kf5-kwindowsystem kf5-oxygen-icons5 xcb-util-image xscreensaver desktop-file-utils
 
 name=lumina-desktop
 version=0.8.7

@@ -1,7 +1,7 @@
-# Description: Web tabanlı gerçek zamanlı sistem performans izleyici uygulaması
+# Tanım: Web tabanlı gerçek zamanlı sistem performans izleyici uygulaması
 # URL: https://github.com/firehol/netdata/wiki
-# Packager: milisarge
-# Depends on: libmnl libnetfilter_acct
+# Paketçi: milisarge
+# Gerekler: libmnl libnetfilter_acct
 
 name=netdata
 version=1.7.0

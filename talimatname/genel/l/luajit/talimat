@@ -1,7 +1,7 @@
-# Description: Lua için Just-In-Time Derleyici
+# Tanım: Lua için Just-In-Time Derleyici
 # URL: http://luajit.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=luajit
 version=2.0.4

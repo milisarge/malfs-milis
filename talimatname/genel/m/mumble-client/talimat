@@ -1,7 +1,7 @@
-# Description:  Sesli chat uygulaması- bağlanıcı uygulama
+# Tanım:  Sesli chat uygulaması- bağlanıcı uygulama
 # URL: http://mumble.sourceforge.net
-# Packager: milisarge
-# Depends on: boost qt4 speex speexdsp libsndfile protobuf
+# Paketçi: milisarge
+# Gerekler: boost qt4 speex speexdsp libsndfile protobuf
 
 name=mumble-client
 version=1.2.19

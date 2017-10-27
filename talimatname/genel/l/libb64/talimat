@@ -1,7 +1,7 @@
-# Description: Base64 Encoding/Decoding Routines
+# Tanım: Base64 Encoding/Decoding Routines
 # URL: http://libb64.sourceforge.net
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libb64
 version=1.2.1

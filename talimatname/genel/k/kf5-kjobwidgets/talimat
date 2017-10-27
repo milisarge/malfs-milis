@@ -1,7 +1,7 @@
-# Description: İş örneklerini izlemek için kullanılan widget'lar
+# Tanım: İş örneklerini izlemek için kullanılan widget'lar
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kcoreaddons kf5-kwidgetsaddons
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kcoreaddons kf5-kwidgetsaddons
 
 name=kf5-kjobwidgets
 version=5.27.0

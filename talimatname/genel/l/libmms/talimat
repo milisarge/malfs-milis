@@ -1,7 +1,7 @@
-# Description: MMS akış protokol kitaplığı
+# Tanım: MMS akış protokol kitaplığı
 # URL: http://sourceforge.net/projects/libmms/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libmms
 version=0.6.4

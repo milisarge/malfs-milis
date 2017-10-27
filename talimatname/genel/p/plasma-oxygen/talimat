@@ -1,7 +1,7 @@
-# Description : KDE Oxygen stili
+# Tanım: KDE Oxygen stili
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk@hotmail.com
-# Depends on: kf5-frameworkintegration kf5-kcmutils kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kguiaddons kf5-ki18n kf5-kwidgetsaddons kf5-kwindowsystem plasma-kdecoration libxcb
+# Paketçi: alihan-ozturk@hotmail.com
+# Gerekler: kf5-frameworkintegration kf5-kcmutils kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kguiaddons kf5-ki18n kf5-kwidgetsaddons kf5-kwindowsystem plasma-kdecoration libxcb
 
 name=plasma-oxygen
 version=5.8.1

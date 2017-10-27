@@ -1,7 +1,7 @@
-# Description: Gelişmiş nesne-ilişkisel veritabanı yönetim sistemi (ORDBMS). 
+# Tanım: Gelişmiş nesne-ilişkisel veritabanı yönetim sistemi (ORDBMS). 
 # URL: http://www.postgresql.org/docs
-# Packagers: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=postgresql
 version=9.6.3

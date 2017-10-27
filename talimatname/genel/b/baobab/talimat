@@ -1,7 +1,7 @@
-# Description: Bir grafik dizin ağacı çözümleyicisi
+# Tanım: Bir grafik dizin ağacı çözümleyicisi
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: adwaita-icon-theme gtk3 itstool vala desktop-file-utils gsettings-desktop-schemas librsvg gobject-introspection desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: adwaita-icon-theme gtk3 itstool vala desktop-file-utils gsettings-desktop-schemas librsvg gobject-introspection desktop-file-utils gtk-update-icon-cache
 
 name=baobab
 version=3.22.1

@@ -1,7 +1,7 @@
-# Description: İşletim Sistemi bilgi veritabanı
+# Tanım: İşletim Sistemi bilgi veritabanı
 # URL: http://libosinfo.org
-# Packager: yasarciv67@gmail.com
-# Depends on: glib libxslt gobject-introspection intltool libsoup vala check
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: glib libxslt gobject-introspection intltool libsoup vala check
 
 name=libosinfo
 version=1.0.0

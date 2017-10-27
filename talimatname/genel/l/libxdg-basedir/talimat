@@ -1,7 +1,7 @@
-# Description: XDG Temel Dizini teknik özelliklerinin bir uygulaması.
+# Tanım: XDG Temel Dizini teknik özelliklerinin bir uygulaması.
 # URL: https://github.com/devnev/libxdg-basedir
-# Packager: milisarge
-# Depends on:  
+# Paketçi: milisarge
+# Gerekler:  
 
 name=libxdg-basedir
 version=1.2.0

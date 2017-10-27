@@ -1,7 +1,7 @@
-# Description: Çeşitli GNOME modülleri için ortak API'li kitaplık.
+# Tanım: Çeşitli GNOME modülleri için ortak API'li kitaplık.
 # URL: http://www.gnome.org
-# Packager: milisarge
-# Depends on: iso-codes itstool xorg-app gtk3 docbook-xml gnome-doc-utils gsettings-desktop-schemas gobject-introspection startup-notification xorg-xkeyboard-config
+# Paketçi: milisarge
+# Gerekler: iso-codes itstool xorg-app gtk3 docbook-xml gnome-doc-utils gsettings-desktop-schemas gobject-introspection startup-notification xorg-xkeyboard-config
 
 name=gnome-desktop
 version=3.24.2

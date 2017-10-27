@@ -1,7 +1,7 @@
-# Description: Joe'nun pencere yöneticisi yalnızca Xlib'yi en az kullanır.
+# Tanım: Joe'nun pencere yöneticisi yalnızca Xlib'yi en az kullanır.
 # URL: http://joewing.net/programs/jwm/
-# Packager: milisarge
-# Depends on: xorg xorg-libxt xorg-libxft xorg-libxmu xorg-mesa libpng libjpeg-turbo
+# Paketçi: milisarge
+# Gerekler: xorg xorg-libxt xorg-libxft xorg-libxmu xorg-mesa libpng libjpeg-turbo
 
 name=jwm
 version=2.3.5

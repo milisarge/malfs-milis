@@ -1,7 +1,7 @@
-# Description: SQLite nesne eşleyicisine bir GObject
+# Tanım: SQLite nesne eşleyicisine bir GObject
 # URL: https://wiki.gnome.org/Projects/Gom
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool gtk-doc gobject-introspection gdk-pixbuf gnome-common glib sqlite 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool gtk-doc gobject-introspection gdk-pixbuf gnome-common glib sqlite 
 
 name=gom
 version=0.3.2

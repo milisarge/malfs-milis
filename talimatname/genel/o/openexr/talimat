@@ -1,7 +1,7 @@
-# Description: Yüksek dinamik aralıklı bir resim dosya formatı kütüphanesi
+# Tanım: Yüksek dinamik aralıklı bir resim dosya formatı kütüphanesi
 # URL: http://www.openexr.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: ilmbase 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: ilmbase 
 
 name=openexr
 version=2.2.0

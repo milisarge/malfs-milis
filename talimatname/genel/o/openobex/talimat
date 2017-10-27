@@ -1,7 +1,7 @@
-# Description: Aygıtlar arasında ikili dosya aktarımları için kullanılan Nesne Değişimi Protokolünü uygular.
+# Tanım: Aygıtlar arasında ikili dosya aktarımları için kullanılan Nesne Değişimi Protokolünü uygular.
 # URL: http://dev.zuckschwerdt.org/openobex/
-# Packager: milisarge
-# Depends on: bluez libusb docbook-xsl
+# Paketçi: milisarge
+# Gerekler: bluez libusb docbook-xsl
 
 name=openobex
 version=1.7.2

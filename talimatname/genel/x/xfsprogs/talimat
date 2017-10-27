@@ -1,7 +1,7 @@
-# Description: XFS filesystem utilities
+# Tanım: XFS filesystem utilities
 # URL: http://oss.sgi.com/projects/xfs/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=xfsprogs
 version=4.3.0

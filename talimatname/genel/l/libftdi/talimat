@@ -1,7 +1,7 @@
-# Description: FTDI yongaları ile konuşmak için bir kütüphane, isteğe bağlı python bağları.
+# Tanım: FTDI yongaları ile konuşmak için bir kütüphane, isteğe bağlı python bağları.
 # URL: http://www.intra2net.com/en/developer/libftdi/download.php
-# Packager: milisarge
-# Depends on: libusb libconfuse boost cmake python swig
+# Paketçi: milisarge
+# Gerekler: libusb libconfuse boost cmake python swig
 
 name=libftdi
 version=1.3

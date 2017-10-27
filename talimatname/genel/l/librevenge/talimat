@@ -1,7 +1,7 @@
-# Description: Librevenge, belge içe aktarma filtreleri yazmak için kullanılan bir temel kitaplıktır.
+# Tanım: Librevenge, belge içe aktarma filtreleri yazmak için kullanılan bir temel kitaplıktır.
 # URL: http://sf.net/p/libwpd/librevenge/
-# Packager: milisarge
-# Depends on: boost cppunit doxygen
+# Paketçi: milisarge
+# Gerekler: boost cppunit doxygen
 
 name=librevenge
 version=0.0.4

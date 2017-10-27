@@ -1,7 +1,7 @@
-# Description: XCB imleç kitaplığı
+# Tanım: XCB imleç kitaplığı
 # URL: http://cgit.freedesktop.org/xcb/util-cursor:
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: libxcb  xcb-util-renderutil xcb-util-image
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: libxcb  xcb-util-renderutil xcb-util-image
 
 name=xcb-util-cursor
 version=0.1.3

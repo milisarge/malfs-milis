@@ -1,7 +1,7 @@
-# Description: XSLT kitaplıkları, XSLT dosyalarını desteklemek için libxml2 kitaplıklarını genişletmek için kullanılır.
+# Tanım: XSLT kitaplıkları, XSLT dosyalarını desteklemek için libxml2 kitaplıklarını genişletmek için kullanılır.
 # URL: http://xmlsoft.org/XSLT/
-# Packager: milisarge
-# Depends on: libxml2 libgcrypt
+# Paketçi: milisarge
+# Gerekler: libxml2 libgcrypt
 
 name=libxslt
 version=1.1.28

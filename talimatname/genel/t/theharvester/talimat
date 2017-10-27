@@ -1,7 +1,7 @@
-# Description: Farklı açık kaynaklarından (arama motorları, pgp anahtar sunucuları) e-posta hesapları ve alt alan adı toplamak için kullanılan araç.
+# Tanım: Farklı açık kaynaklarından (arama motorları, pgp anahtar sunucuları) e-posta hesapları ve alt alan adı toplamak için kullanılan araç.
 # URL: http://www.edge-security.com/theHarvester.php
-# Packager: yakar (aydin@komutan.org)
-# Depends on: python-pip
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: python-pip
 
 name=theharvester
 version=56.eb08d32

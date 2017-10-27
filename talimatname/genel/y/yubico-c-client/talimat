@@ -1,7 +1,7 @@
-# Description: Yubico icin C dili kutuphaneleri
+# Tanım: Yubico icin C dili kutuphaneleri
 # URL: http://www.yubico.com/
-# Packager: - https://github.com/Yubico/yubico-c-client.git
-# Depends on: libyubikey curl 
+# Paketçi: - https://github.com/Yubico/yubico-c-client.git
+# Gerekler: libyubikey curl 
 
 name=yubico-c-client
 version=2.9

@@ -1,7 +1,7 @@
-# Description: Kernel modulleri desteğine sahip bir grafik önyükleme başlatma ekranı
+# Tanım: Kernel modulleri desteğine sahip bir grafik önyükleme başlatma ekranı
 # URL: http://www.pulseaudio.org
-# Packager: milisarge
-# Depends on: xorg-libdrm pango docbook-xsl gtk3
+# Paketçi: milisarge
+# Gerekler: xorg-libdrm pango docbook-xsl gtk3
 
 name=plymouth
 version=0.9.3

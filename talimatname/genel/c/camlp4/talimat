@@ -1,7 +1,7 @@
-# Description: Camlp4 tool  
+# Tanım: Camlp4 tool  
 # URL: https://github.com/ocaml/camlp4
 # Packeger: milisarge
-# Depends on: ocaml ocamlbuild
+# Gerekler: ocaml ocamlbuild
 
 name=camlp4
 version=git

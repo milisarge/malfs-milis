@@ -1,7 +1,7 @@
-# Description: QT IMAP e-posta istemcisi
+# Tanım: QT IMAP e-posta istemcisi
 # URL: http://trojita.flaska.net
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: git desktop-file-utils hicolor-icon-theme qt5-webkit qtkeychain-qt5 qt5 gpgmepp
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: git desktop-file-utils hicolor-icon-theme qt5-webkit qtkeychain-qt5 qt5 gpgmepp
 
 name=trojita
 version=0.7

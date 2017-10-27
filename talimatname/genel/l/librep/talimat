@@ -1,7 +1,7 @@
-# Description: Librep paketi bir Lisp sistemi içeriyor.
+# Tanım: Librep paketi bir Lisp sistemi içeriyor.
 # URL: http://librep.sourceforge.net/
-# Packager: milisarge
-# Depends on: libffi 
+# Paketçi: milisarge
+# Gerekler: libffi 
 
 name=librep
 version=0.92.5

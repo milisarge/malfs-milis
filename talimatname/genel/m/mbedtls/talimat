@@ -1,7 +1,7 @@
-# Description: Gömülü sistemler için şifreleme kütüphanesi (eskiden PolarSSL olarak bilinir).
+# Tanım: Gömülü sistemler için şifreleme kütüphanesi (eskiden PolarSSL olarak bilinir).
 # URL: https://tls.mbed.org
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=mbedtls
 version=2.3.0

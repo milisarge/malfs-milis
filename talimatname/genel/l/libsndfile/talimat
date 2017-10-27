@@ -1,7 +1,7 @@
-# Description: Örneklenmiş ses içeren dosyaları okumak ve yazmak için bir C kütüphanesi
+# Tanım: Örneklenmiş ses içeren dosyaları okumak ve yazmak için bir C kütüphanesi
 # URL: http://www.mega-nerd.com/libsndfile/
-# Packager: milisarge
-# Depends on: flac alsa-lib libogg libvorbis
+# Paketçi: milisarge
+# Gerekler: flac alsa-lib libogg libvorbis
 
 name=libsndfile
 version=1.0.25

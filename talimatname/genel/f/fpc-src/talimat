@@ -1,7 +1,7 @@
-# Description: fpc kaynak kodları
+# Tanım: fpc kaynak kodları
 # URL: http://www.lazarus-ide.org/
-# Packager: milisarge
-# Depends on: fpc
+# Paketçi: milisarge
+# Gerekler: fpc
 
 name=fpc-src
 version=2.6.4

@@ -1,7 +1,7 @@
-# Description: Tango simgelerinin yeni adlarını GNOME ve KDE masaüstleri tarafından kullanılan eski adlarla eşleştirir
+# Tanım: Tango simgelerinin yeni adlarını GNOME ve KDE masaüstleri tarafından kullanılan eski adlarla eşleştirir
 # URL: http://tango.freedesktop.org/
-# Packager: milisarge
-# Depends on: perl-xml-simple
+# Paketçi: milisarge
+# Gerekler: perl-xml-simple
 
 name=icon-naming-utils
 version=0.8.90

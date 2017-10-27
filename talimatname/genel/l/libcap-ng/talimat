@@ -1,7 +1,7 @@
-# Description: POSIX yetenekleri ile programlamayı geleneksel libcap'tan daha kolay hale getiren bir kütüphane.
+# Tanım: POSIX yetenekleri ile programlamayı geleneksel libcap'tan daha kolay hale getiren bir kütüphane.
 # URL: http://people.redhat.com/sgrubb/libcap-ng/
-# Packager: milisarge
-# Depends on: glibc
+# Paketçi: milisarge
+# Gerekler: glibc
 
 name=libcap-ng
 version=0.7.7

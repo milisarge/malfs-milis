@@ -1,7 +1,7 @@
-# Description : Plugin tabanlı kitaplık pencere süslemeleri oluşturmak için
+# Tanım: Plugin tabanlı kitaplık pencere süslemeleri oluşturmak için
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake kf5-extra-cmake-modules qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: cmake kf5-extra-cmake-modules qt5
 
 name=plasma-kdecoration
 version=5.8.1

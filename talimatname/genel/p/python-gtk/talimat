@@ -1,7 +1,7 @@
-# Description: GLib'in GObject sınıfı için Python 2'nin bağlantılarını sağlar.
+# Tanım: GLib'in GObject sınıfı için Python 2'nin bağlantılarını sağlar.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: python-gobject2 python-cairo libglade 
+# Paketçi: milisarge
+# Gerekler: python-gobject2 python-cairo libglade 
 
 name=python-gtk
 version=2.24.0

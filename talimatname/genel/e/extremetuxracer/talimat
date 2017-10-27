@@ -1,7 +1,7 @@
-# Description: Tux Racer tabanlı yüksek hızlı kutupsal yarış oyunu.
+# Tanım: Tux Racer tabanlı yüksek hızlı kutupsal yarış oyunu.
 # URL: http://sourceforge.net/projects/extremetuxracer/
-# Packager: milisarge
-# Depends on: sdl sdl-image sdl-mixer xorg-mesa xorg-glu freetype
+# Paketçi: milisarge
+# Gerekler: sdl sdl-image sdl-mixer xorg-mesa xorg-glu freetype
 
 name=extremetuxracer
 version=0.6.0

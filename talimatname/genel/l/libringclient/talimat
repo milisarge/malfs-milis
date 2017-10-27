@@ -1,7 +1,7 @@
-# Description: Client communication library for ring.cx (formerly known as SFLphone)
+# Tanım: Client communication library for ring.cx (formerly known as SFLphone)
 # URL: https://ring.cx
-# Packager: milisarge
-# Depends on: cmake qt5 ring-daemon
+# Paketçi: milisarge
+# Gerekler: cmake qt5 ring-daemon
 
 name=libringclient
 version=1.0.0

@@ -1,7 +1,7 @@
-# Description: Thunar için SVN ve GIT entegrasyonu.
+# Tanım: Thunar için SVN ve GIT entegrasyonu.
 # URL: http://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool thunar subversion apr 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool thunar subversion apr 
 
 name=thunar-vcs-plugin
 version=0.1.5

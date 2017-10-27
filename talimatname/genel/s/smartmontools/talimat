@@ -1,7 +1,7 @@
-# Description: S.M.A.R.T.'yi kontrol edin ve izleyin. Etkin ATA ve SCSI Sabit Diskler
+# Tanım: S.M.A.R.T.'yi kontrol edin ve izleyin. Etkin ATA ve SCSI Sabit Diskler
 # URL: http://smartmontools.sourceforge.net
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=smartmontools
 version=6.5

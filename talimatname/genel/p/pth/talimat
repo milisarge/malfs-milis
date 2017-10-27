@@ -1,7 +1,7 @@
-# Description: Unix platformları için çok taşınabilir bir POSIX / ANSI-C tabanlı kitaplık içerir
+# Tanım: Unix platformları için çok taşınabilir bir POSIX / ANSI-C tabanlı kitaplık içerir
 # URL: http://www.gnu.org/software/pth/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=pth
 version=2.0.7

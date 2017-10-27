@@ -1,7 +1,7 @@
-# Description: ileri düzey exploit kullanarak geliştirme ve test etme çatı uygulaması
+# Tanım: ileri düzey exploit kullanarak geliştirme ve test etme çatı uygulaması
 # URL: http://www.metasploit.com
-# Packager: milisarge
-# Depends on: ruby libpcap postgresql ruby-bundler sqlite libxslt clang
+# Paketçi: milisarge
+# Gerekler: ruby libpcap postgresql ruby-bundler sqlite libxslt clang
 
 name=metasploit
 version=4.14.24

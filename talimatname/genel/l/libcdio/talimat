@@ -1,7 +1,7 @@
-# Description: GNU Kompakt Disk Giriş ve Kontrol Kütüphanesi
+# Tanım: GNU Kompakt Disk Giriş ve Kontrol Kütüphanesi
 # URL: http://www.gnu.org/software/libcdio/
-# Packager: milisarge
-# Depends on: libcddb
+# Paketçi: milisarge
+# Gerekler: libcddb
 
 name=libcdio
 version=0.93

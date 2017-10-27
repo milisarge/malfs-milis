@@ -1,7 +1,7 @@
-# Description: Help2man, program çıktısından otomatik olarak basit manuel sayfalar üretmek için kullanılan bir araçtır.
+# Tanım: Help2man, program çıktısından otomatik olarak basit manuel sayfalar üretmek için kullanılan bir araçtır.
 # URL: http://www.gnu.org/software/help2man/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: perl-locale-gettext
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: perl-locale-gettext
 
 name=help2man
 version=1.47.3

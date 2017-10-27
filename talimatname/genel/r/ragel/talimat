@@ -1,7 +1,7 @@
-# Description: Sonlu durum makinelerini düzenli dillerden çalıştırılabilir C, C ++, Objective-C veya D koduna derler.
+# Tanım: Sonlu durum makinelerini düzenli dillerden çalıştırılabilir C, C ++, Objective-C veya D koduna derler.
 # URL: http://www.complang.org/ragel/
-# Packager: Cihan Alkan
-# Depends on:
+# Paketçi: Cihan Alkan
+# Gerekler:
 
 name=ragel
 version=6.10

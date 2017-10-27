@@ -1,7 +1,7 @@
-# Description: Geliştiriciler için sofistike text editörü
+# Tanım: Geliştiriciler için sofistike text editörü
 # URL: https://www.sublimetext.com
-# Packager: yakar (aydin@komutan.org)
-# Depends on: desktop-file-utils libpng gtk2
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: desktop-file-utils libpng gtk2
 
 name=sublime-text
 version=3

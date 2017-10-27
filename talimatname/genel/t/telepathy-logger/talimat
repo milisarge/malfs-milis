@@ -1,7 +1,7 @@
-# Description: Telepati-logger, Telepati çerçevesindeki tüm iletişimlerin günlüğünü merkezileştiren bir arka plan programıdır.
+# Tanım: Telepati-logger, Telepati çerçevesindeki tüm iletişimlerin günlüğünü merkezileştiren bir arka plan programıdır.
 # URL: http://telepathy.freedesktop.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: intltool sqlite telepathy-glib gobject-introspection 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: intltool sqlite telepathy-glib gobject-introspection 
 
 name=telepathy-logger
 version=0.8.2

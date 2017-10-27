@@ -1,7 +1,7 @@
-# Description: FAT, ext2 /3/4 ve btrfs dosya sistemlerinden, CD'lerden ve PXE'den önyükleme yapan önyükleyici yükleyicileri
+# Tanım: FAT, ext2 /3/4 ve btrfs dosya sistemlerinden, CD'lerden ve PXE'den önyükleme yapan önyükleyici yükleyicileri
 # URL: http://syslinux.org
-# Packager: milisarge
-# Depends on: mtools nasm 
+# Paketçi: milisarge
+# Gerekler: mtools nasm 
 
 name=syslinux
 version=6.03

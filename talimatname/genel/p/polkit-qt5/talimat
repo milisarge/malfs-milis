@@ -1,7 +1,7 @@
-# Description : Geliştiricilerin güzel bir Qt tarzı API ile PolicyKit API'sine erişmelerini sağlayan bir kütüphane
+# Tanım: Geliştiricilerin güzel bir Qt tarzı API ile PolicyKit API'sine erişmelerini sağlayan bir kütüphane
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: polkit qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: polkit qt5
 
 name=polkit-qt5
 release=1

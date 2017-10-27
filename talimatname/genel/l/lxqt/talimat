@@ -1,7 +1,7 @@
-# Description: Lxqt masaüstü ortamı
+# Tanım: Lxqt masaüstü ortamı
 # URL:  https://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: compton-conf libqtxdg lxqt-build-tools libsysstat liblxqt libfm-qt lxqt-common lxqt-l10n lxqt-qtplugin obconf-qt pavucontrol-qt qtermwidget lximage-qt pcmanfm-qt qterminal lxqt-about lxqt-admin lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-policykit lxqt-powermanagement lxqt-session lxqt-sudo lxqt-panel lxqt-runner qps
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: compton-conf libqtxdg lxqt-build-tools libsysstat liblxqt libfm-qt lxqt-common lxqt-l10n lxqt-qtplugin obconf-qt pavucontrol-qt qtermwidget lximage-qt pcmanfm-qt qterminal lxqt-about lxqt-admin lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-policykit lxqt-powermanagement lxqt-session lxqt-sudo lxqt-panel lxqt-runner qps
 
  
 name=lxqt

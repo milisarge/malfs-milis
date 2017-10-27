@@ -1,7 +1,7 @@
-# Description: X için analog saat
+# Tanım: X için analog saat
 # URL: http://xorg.freedesktop.org 
-# Packager: milisarge
-# Depends on: xorg-libxft xorg-server 
+# Paketçi: milisarge
+# Gerekler: xorg-libxft xorg-server 
 
 _name=xclock
 name=xorg-xclock

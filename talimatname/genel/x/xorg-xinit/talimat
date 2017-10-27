@@ -1,6 +1,6 @@
-# Description: X Pencere Sistemi icin oturum hazirlayici
-# Packager: milisarge
-# Depends on: xorg-server desktop-file-utils shared-mime-info
+# Tanım: X Pencere Sistemi icin oturum hazirlayici
+# Paketçi: milisarge
+# Gerekler: xorg-server desktop-file-utils shared-mime-info
 
 _name=xinit
 run=(desktop-file-utils shared-mime-info)

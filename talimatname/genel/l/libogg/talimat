@@ -1,7 +1,7 @@
-# Description: Ogg bit akışı ve çerçeveleme kitaplığı
+# Tanım: Ogg bit akışı ve çerçeveleme kitaplığı
 # URL: http://xiph.org/ogg/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libogg
 version=1.3.2

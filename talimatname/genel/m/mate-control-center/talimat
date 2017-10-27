@@ -1,7 +1,7 @@
-# Description: MATE için Kontrol Merkezi
+# Tanım: MATE için Kontrol Merkezi
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool mate-desktop mate-menus mate-settings-daemon marco xorg-libxscrnsaver 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool itstool mate-desktop mate-menus mate-settings-daemon marco xorg-libxscrnsaver 
 
 name=mate-control-center
 version=1.18.1

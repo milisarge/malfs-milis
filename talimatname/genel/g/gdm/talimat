@@ -1,7 +1,7 @@
-# Description: Grafiksel girişler ve yerel ve uzaktaki ekranları yönetme
+# Tanım: Grafiksel girişler ve yerel ve uzaktaki ekranları yönetme
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: accountsservice nss libcanberra gnome-shell gnome-session upower
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: accountsservice nss libcanberra gnome-shell gnome-session upower
 
 name=gdm
 version=3.16.4

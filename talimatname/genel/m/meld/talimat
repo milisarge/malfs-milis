@@ -1,7 +1,7 @@
-# Description: Farklılıkları tespit etme ve birleştirme aracı.
+# Tanım: Farklılıkları tespit etme ve birleştirme aracı.
 # URL: http://meldmerge.org/
-# Packager: yakar (aydin@komutan.org)
-# Depends on: python-gobject python-cairo gtksourceview3 gsettings-desktop-schemas dconf
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: python-gobject python-cairo gtksourceview3 gsettings-desktop-schemas dconf
 
 name=meld
 version=3.16.4

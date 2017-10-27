@@ -1,7 +1,7 @@
-# Description: Glasgow Haskell derleyicisi
+# Tanım: Glasgow Haskell derleyicisi
 # URL: http://www.haskell.org/haskellwiki/Glasgow_Haskell_Compiler
-# Packager: milisarge
-# Depends on: docbook-xsl libedit libffi
+# Paketçi: milisarge
+# Gerekler: docbook-xsl libedit libffi
 
 name=ghc
 version=8.0.2

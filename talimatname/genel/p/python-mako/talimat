@@ -1,7 +1,7 @@
-# Description: Python ile yazılmış bir şablon kütüphanesi.
+# Tanım: Python ile yazılmış bir şablon kütüphanesi.
 # URL: http://www.makotemplates.org/
-# Packager: milisarge
-# Depends on: python-setuptools
+# Paketçi: milisarge
+# Gerekler: python-setuptools
 
 name=python-mako
 version=1.0.1

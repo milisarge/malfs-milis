@@ -1,7 +1,7 @@
-# Description: Python'da yazılmış, Git ve Bazaar'a benzer,dağıtılmış bir kaynak denetim yönetimi aracıdır.
+# Tanım: Python'da yazılmış, Git ve Bazaar'a benzer,dağıtılmış bir kaynak denetim yönetimi aracıdır.
 # URL: http://mercurial.selenic.com
-# Packager: milisarge
-# Depends on: python tk
+# Paketçi: milisarge
+# Gerekler: python tk
 
 name=mercurial
 version=4.3.1

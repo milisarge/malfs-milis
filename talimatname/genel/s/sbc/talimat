@@ -1,7 +1,7 @@
-# Description: Verileri Bluetooth ses çıkış cihazlarına aktarmak için kullanılan dijital ses kodlayıcı ve kod çözücü.
+# Tanım: Verileri Bluetooth ses çıkış cihazlarına aktarmak için kullanılan dijital ses kodlayıcı ve kod çözücü.
 # URL: https://fr.wikipedia.org/wiki/SBC_%28codec%29
-# Packager: milisarge
-# Depends on: libsndfile 
+# Paketçi: milisarge
+# Gerekler: libsndfile 
 
 name=sbc
 version=1.2

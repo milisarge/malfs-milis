@@ -1,7 +1,7 @@
-# Description: 	Bir programın çağrı zincirini belirlemek için taşınabilir ve verimli bir C API'yi tanımlayın.
+# Tanım: 	Bir programın çağrı zincirini belirlemek için taşınabilir ve verimli bir C API'yi tanımlayın.
 # URL:         	http://www.nongnu.org/libunwind/
-# Packager: 	milisarge
-# Depends on:
+# Paketçi: 	milisarge
+# Gerekler:
 
 name=libunwind
 version=1.1

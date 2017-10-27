@@ -1,7 +1,7 @@
-# Description: Libcolord için GTK entegrasyonu
+# Tanım: Libcolord için GTK entegrasyonu
 # URL: http://www.freedesktop.org/software/colord/
-# Packager: milisarge
-# Depends on: colord gtk3 gobject-introspection vala
+# Paketçi: milisarge
+# Gerekler: colord gtk3 gobject-introspection vala
 
 
 name=colord-gtk

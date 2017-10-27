@@ -1,7 +1,7 @@
-# Description: komut satırından kullanılan şifreli tünelleme uygulaması
+# Tanım: komut satırından kullanılan şifreli tünelleme uygulaması
 # URL: http://nardcore.org/ctunnel
-# Packager: milisarge
-# Depends on: libgcrypt
+# Paketçi: milisarge
+# Gerekler: libgcrypt
 
 name=ctunnel
 version=0.7

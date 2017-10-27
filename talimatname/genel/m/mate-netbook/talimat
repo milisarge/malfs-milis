@@ -1,7 +1,7 @@
-# Description: Basit bir pencere yönetim aracı
+# Tanım: Basit bir pencere yönetim aracı
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool libfakekey mate-panel
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool libfakekey mate-panel
 
 name=mate-netbook
 version=1.18.0

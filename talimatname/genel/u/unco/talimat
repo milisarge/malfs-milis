@@ -1,7 +1,7 @@
-# Description: verilen komutları geri işletme-tarihçe
+# Tanım: verilen komutları geri işletme-tarihçe
 # URL: https://github.com/kazuho/unco
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=unco
 hesap=kazuho

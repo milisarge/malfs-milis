@@ -1,7 +1,7 @@
-# Description: Gksu yetkilendirme kütüphanesi
+# Tanım: Gksu yetkilendirme kütüphanesi
 # URL: http://www.nongnu.org/gksu/index.html
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool gtk-doc gconf gtk2 libgnome-keyring libgtop startup-notification libglade
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool gtk-doc gconf gtk2 libgnome-keyring libgtop startup-notification libglade
 
 name=libgksu
 version=2.0.12

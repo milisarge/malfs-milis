@@ -1,7 +1,7 @@
-# Description: Bind araçları
+# Tanım: Bind araçları
 # URL: http://www.isc.org/software/bind
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=bindutils
 version=9.11.0

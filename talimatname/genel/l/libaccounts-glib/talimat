@@ -1,7 +1,7 @@
-# Description: Çevrimiçi hesap veritabanına erişmek için Glib tabanlı istemci kitaplığı 
+# Tanım: Çevrimiçi hesap veritabanına erişmek için Glib tabanlı istemci kitaplığı 
 # URL: https://gitlab.com/accounts-sso/libaccounts-glib
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: dbus-glib libxml2 sqlite python-gobject docbook-xsl
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: dbus-glib libxml2 sqlite python-gobject docbook-xsl
 
 name=libaccounts-glib
 version=1.21

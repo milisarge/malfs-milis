@@ -1,7 +1,7 @@
-# Description: Python için XML bağlayıcı kitaplık
+# Tanım: Python için XML bağlayıcı kitaplık
 # URL: http://www.gnome.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: python
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: python
 
 name=python-xml
 version=0.8.4

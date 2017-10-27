@@ -1,7 +1,7 @@
-# Description: Tüm Twitter API'sına erişmek için bir Python kitaplığı.
+# Tanım: Tüm Twitter API'sına erişmek için bir Python kitaplığı.
 # URL: http://pypi.python.org/pypi/tweepy/
-# Packager: milisarge
-# Depends on: python-simplejson 
+# Paketçi: milisarge
+# Gerekler: python-simplejson 
 
 name=python-tweepy
 version=2.2

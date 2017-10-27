@@ -1,7 +1,7 @@
-# Description: Cairo, çoklu çıktı aygıtlarını destekleyen 2D grafik kitaplığıdır.
+# Tanım: Cairo, çoklu çıktı aygıtlarını destekleyen 2D grafik kitaplığıdır.
 # URL: http://www.cairographics.org/
-# Packager: milisarge
-# Depends on: libpng,glib,xorg-pixman,xorg-fontconfig,xcb-util,xorg-libxrender,xorg-mesa,xorg-glu,xorg-libxxf86vm
+# Paketçi: milisarge
+# Gerekler: libpng,glib,xorg-pixman,xorg-fontconfig,xcb-util,xorg-libxrender,xorg-mesa,xorg-glu,xorg-libxxf86vm
 
 
 name=cairo

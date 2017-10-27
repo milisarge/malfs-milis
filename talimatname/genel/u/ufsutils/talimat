@@ -1,7 +1,7 @@
-# Description: UFS dosya sistemini yönetmek için kullanılan yardımcı programlar, çoğunlukla BSD'de veya türemiş işletim sistemlerinde kullanılır.
+# Tanım: UFS dosya sistemini yönetmek için kullanılan yardımcı programlar, çoğunlukla BSD'de veya türemiş işletim sistemlerinde kullanılır.
 # URL: https://packages.debian.org/sid/ufsutils
-# Packager: milisarge
-# Depends on: libbsd libedit
+# Paketçi: milisarge
+# Gerekler: libbsd libedit
 
 name=ufsutils
 version=8.2

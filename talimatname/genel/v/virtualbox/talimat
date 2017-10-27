@@ -1,7 +1,7 @@
-# Description: VirtualBox, güçlü bir 32 ve 64 bit sanallaştırma ürünüdür
+# Tanım: VirtualBox, güçlü bir 32 ve 64 bit sanallaştırma ürünüdür
 # URL: http://virtualbox.org
-# Packager: milisarge
-# Depends on: virtualbox-cli sdl
+# Paketçi: milisarge
+# Gerekler: virtualbox-cli sdl
 
 name=virtualbox
 version=5.0.12

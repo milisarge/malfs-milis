@@ -1,7 +1,7 @@
-# Description: IM hesabı sağlamak için libaccounts ve libsignon ile entegre Telepati için bir görev kontrol eklentisi
+# Tanım: IM hesabı sağlamak için libaccounts ve libsignon ile entegre Telepati için bir görev kontrol eklentisi
 # URL: https://gitlab.com/accounts-sso/telepathy-accounts-signon
-# Packager: milisarge
-# Depends on: qt5 telepathy-mission-control libaccounts-glib libsignon-glib
+# Paketçi: milisarge
+# Gerekler: qt5 telepathy-mission-control libaccounts-glib libsignon-glib
 
 name=telepathy-accounts-signon
 version=1.0

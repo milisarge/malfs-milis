@@ -1,7 +1,7 @@
-# Description : DBusMenu protokolünün Glib uygulaması sağlayan kitaplık
+# Tanım: DBusMenu protokolünün Glib uygulaması sağlayan kitaplık
 # URL: https://launchpad.net/dbusmenu
-# Packager: milisarge
-# Depends on: python gobject-introspection gtk2 gtk3 glib vala gnome-doc-utils atk libepoxy json-glib gnome-common pkg-config valgrind
+# Paketçi: milisarge
+# Gerekler: python gobject-introspection gtk2 gtk3 glib vala gnome-doc-utils atk libepoxy json-glib gnome-common pkg-config valgrind
 
 name=libdbusmenu-glib
 _name=libdbusmenu

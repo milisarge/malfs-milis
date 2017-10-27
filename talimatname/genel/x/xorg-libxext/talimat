@@ -1,7 +1,7 @@
-# Description: X.Org icin Xext kutuphanesi
+# Tanım: X.Org icin Xext kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-libx11
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-libx11
 
 name=xorg-libxext
 version=1.3.3

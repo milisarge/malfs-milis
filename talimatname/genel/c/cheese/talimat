@@ -1,7 +1,7 @@
-# Description: Fotoğraf ve video çekmek için web kameranızı kullanın, fantezi özel efektler uygulayın ve eğlencenizi başkaları ile paylaşın.
+# Tanım: Fotoğraf ve video çekmek için web kameranızı kullanın, fantezi özel efektler uygulayın ve eğlencenizi başkaları ile paylaşın.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: libcanberra clutter-gst clutter-gtk gnome-desktop gnome-video-effects gstreamer1-plugins-bad gstreamer1-plugins-good itstool librsvg libgudev gobject-introspection vala gtk-update-icon-cache tdb
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: libcanberra clutter-gst clutter-gtk gnome-desktop gnome-video-effects gstreamer1-plugins-bad gstreamer1-plugins-good itstool librsvg libgudev gobject-introspection vala gtk-update-icon-cache tdb
 
 name=cheese
 version=3.24.0

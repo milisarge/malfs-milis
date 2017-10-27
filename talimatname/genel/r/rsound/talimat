@@ -1,7 +1,7 @@
-# Description: Simple solution for streaming PCM data from client to server in real time.
+# Tanım: Simple solution for streaming PCM data from client to server in real time.
 # URL: http://github.com/Themaister/RSound
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=rsound
 version=1.1

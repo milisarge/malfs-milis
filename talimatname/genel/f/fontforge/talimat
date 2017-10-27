@@ -1,7 +1,7 @@
-# Description: Anahat ve bitmap yazı tipi düzenleyicisi
+# Tanım: Anahat ve bitmap yazı tipi düzenleyicisi
 # URL: http://fontforge.sourceforge.net
-# Packager: milisarge
-# Depends on: xorg-libxi libxml2 pango giflib libtiff
+# Paketçi: milisarge
+# Gerekler: xorg-libxi libxml2 pango giflib libtiff
 
 name=fontforge
 version=2.0.20150612

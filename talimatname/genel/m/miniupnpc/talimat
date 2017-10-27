@@ -1,7 +1,7 @@
-# Description: Internet Ağ Geçidi Aygıtlarına erişmek için küçük bir UPnP istemci kitaplığı/aracı
+# Tanım: Internet Ağ Geçidi Aygıtlarına erişmek için küçük bir UPnP istemci kitaplığı/aracı
 # URL: http://miniupnp.free.fr
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=miniupnpc
 version=1.9

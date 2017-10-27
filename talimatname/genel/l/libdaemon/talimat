@@ -1,7 +1,7 @@
-# Description: UNIX programlarını yazmayı kolaylaştıran hafif C kütüphanesi
+# Tanım: UNIX programlarını yazmayı kolaylaştıran hafif C kütüphanesi
 # URL: http://0pointer.de/lennart/projects/libdaemon/ 
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libdaemon
 version=0.14

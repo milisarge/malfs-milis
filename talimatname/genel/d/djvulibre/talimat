@@ -1,7 +1,7 @@
-# Description: DjVu ('déjà vu') dokümanlarını oluşturmak, değiştirmek ve görüntülemek için takım
+# Tanım: DjVu ('déjà vu') dokümanlarını oluşturmak, değiştirmek ve görüntülemek için takım
 # URL: URL: http://djvu.sourceforge.net
-# Packager: milisarge
-# Depends on: librsvg libtiff libjpeg-turbo hicolor-icon-theme
+# Paketçi: milisarge
+# Gerekler: librsvg libtiff libjpeg-turbo hicolor-icon-theme
 
 name=djvulibre
 version=3.5.25.3

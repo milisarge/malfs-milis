@@ -1,7 +1,7 @@
-# Description: .NET'in ücretsiz uygulanması
+# Tanım: .NET'in ücretsiz uygulanması
 # URL: http://www.mono-project.com/
-# Packager: milisarge
-# Depends on: ca-certificates libgdiplus python
+# Paketçi: milisarge
+# Gerekler: ca-certificates libgdiplus python
  
 name=mono
 version=5.0.0.94

@@ -1,7 +1,7 @@
-# Description: X.org trans kutuphanesi
+# Tanım: X.org trans kutuphanesi
 # URL: http://xorg.freedesktop.org
-# Packagers: milisarge
-# Depends on: libxcb
+# Paketçi: milisarge
+# Gerekler: libxcb
 
 _name=xtrans 
 name=xorg-xtrans

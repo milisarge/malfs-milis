@@ -1,7 +1,7 @@
-# Description: açık kaynak assembler çözücü,hata ayıklayıcı ve ikili okuyucu çatı uygulaması
+# Tanım: açık kaynak assembler çözücü,hata ayıklayıcı ve ikili okuyucu çatı uygulaması
 # URL: https://radare.org
-# Packager: milisarge
-# Depends on: capstone libzip 
+# Paketçi: milisarge
+# Gerekler: capstone libzip 
 
 name=radare2
 version=1.5.0

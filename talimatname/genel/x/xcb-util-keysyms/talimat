@@ -1,7 +1,7 @@
-# Description: Standart X anahtar sabitleri ve tuş kodlarına / anahtar kodlarına dönüşüm
+# Tanım: Standart X anahtar sabitleri ve tuş kodlarına / anahtar kodlarına dönüşüm
 # URL: http://xcb.freedesktop.org
-# Packagers: alihan-ozturk28@hotmail.com
-# Depends on: libxcb xorg-util-macros
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: libxcb xorg-util-macros
 
 name=xcb-util-keysyms
 version=0.4.0

@@ -1,7 +1,7 @@
-# Description: Python yerel zaman kütüphanesi
+# Tanım: Python yerel zaman kütüphanesi
 # URL: http://pypi.python.org/pypi/pytz
-# Packager: milisarge
-# Depends on: python python-setuptools
+# Paketçi: milisarge
+# Gerekler: python python-setuptools
 
 name=python-pytz
 version=2017.2

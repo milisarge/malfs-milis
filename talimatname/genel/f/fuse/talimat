@@ -1,7 +1,7 @@
-# Description: Bir kullanıcı alanı programında bir dosya sistemini uygulamayı mümkün kılan bir kütüphane.
+# Tanım: Bir kullanıcı alanı programında bir dosya sistemini uygulamayı mümkün kılan bir kütüphane.
 # URL: http://fuse.sourceforge.net/
-# Packager: milisarge
-# Depends on: doxygen
+# Paketçi: milisarge
+# Gerekler: doxygen
 
 name=fuse
 version=2.9.4

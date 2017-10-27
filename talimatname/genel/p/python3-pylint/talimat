@@ -1,7 +1,7 @@
-# Description: Hataları ve kalitesiz işaretleri arayan Python kodunu analiz eder
+# Tanım: Hataları ve kalitesiz işaretleri arayan Python kodunu analiz eder
 # URL: http://pylint.org
-# Packager: yasarciv67@gmail.com
-# Depends on: python3-astroid python3-setuptools python3-six
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: python3-astroid python3-setuptools python3-six
 
 name=python3-pylint
 version=1.6.4

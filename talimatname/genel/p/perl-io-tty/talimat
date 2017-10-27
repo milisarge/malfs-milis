@@ -1,7 +1,7 @@
-# Description: TTY'lere ve PTY'lere bir arayüz sağlama
+# Tanım: TTY'lere ve PTY'lere bir arayüz sağlama
 # URL: http://search.cpan.org/dist/IO-Tty/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-io-tty
 version=1.11

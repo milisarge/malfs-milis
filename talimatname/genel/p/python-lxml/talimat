@@ -1,7 +1,7 @@
-# Description: Libxml2 ve libxslt kitaplıkları için Python2 bağlaması.
+# Tanım: Libxml2 ve libxslt kitaplıkları için Python2 bağlaması.
 # URL: http://lxml.de/
-# Packager: milisarge
-# Depends on: libxslt python-beautifulsoup3 python-cssselect
+# Paketçi: milisarge
+# Gerekler: libxslt python-beautifulsoup3 python-cssselect
 
 name=python-lxml
 version=3.7.3

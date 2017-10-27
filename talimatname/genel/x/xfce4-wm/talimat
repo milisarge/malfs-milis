@@ -1,7 +1,7 @@
-# Description: Xfwm4, Xfce için pencere yöneticisi.
+# Tanım: Xfwm4, Xfce için pencere yöneticisi.
 # URL: http://www.xfce.org/projects/xfwm4/
-# Packager: milisarge
-# Depends on: xorg-libxres libwnck xfce4-libui xfce4-libutil startup-notification 
+# Paketçi: milisarge
+# Gerekler: xorg-libxres libwnck xfce4-libui xfce4-libutil startup-notification 
 
 _name=xfwm4
 name=xfce4-wm

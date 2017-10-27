@@ -1,7 +1,7 @@
-# Description: X pencere sistemi için dizgici(compositor)
+# Tanım: X pencere sistemi için dizgici(compositor)
 # URL: https://github.com/chjj/compton
-# Packager:  milisarge
-# Depends on: libconfig pcre xorg-mesa xorg-libxcomposite xorg-libxinerama xorg-libxrandr xorg-libxdamage
+# Paketçi:  milisarge
+# Gerekler: libconfig pcre xorg-mesa xorg-libxcomposite xorg-libxinerama xorg-libxrandr xorg-libxdamage
 
 name=compton
 version=git

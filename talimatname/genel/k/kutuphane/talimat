@@ -1,7 +1,7 @@
-# Description: Javada yazılmış bir kütüphane uygulaması - Ebubekir Bastama
+# Tanım: Javada yazılmış bir kütüphane uygulaması - Ebubekir Bastama
 # URL: https://github.com/ebubekirbastama/KutuphaneOtomasyonu
-# Packager: milisarge
-# Depends on: apache-ant openjdk java-mysql mariadb xorg-server
+# Paketçi: milisarge
+# Gerekler: apache-ant openjdk java-mysql mariadb xorg-server
 
 name=kutuphane
 version=1.0

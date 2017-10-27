@@ -1,7 +1,7 @@
-# Description: Unicode Uluslararası Bileşenleri, olgun ve yaygın olarak kullanılan C / C ++ kitaplıkları kümesidir
+# Tanım: Unicode Uluslararası Bileşenleri, olgun ve yaygın olarak kullanılan C / C ++ kitaplıkları kümesidir
 # URL: http://www.icu-project.org/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=icu
 version=59.1

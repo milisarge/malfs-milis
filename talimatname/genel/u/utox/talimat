@@ -1,7 +1,7 @@
-# Description: Hafif Tox istemcisi
+# Tanım: Hafif Tox istemcisi
 # URL: https://github.com/GrayHatter/uTox
-# packager: milisarge
-# Depends on: gtk3 toxcore openal v4l-utils xorg-libxrender dbus hicolor-icon-theme xorg-fontconfig desktop-file-utils xorg-libxext xorg-libxrender filter_audio
+# Paketçi: milisarge
+# Gerekler: gtk3 toxcore openal v4l-utils xorg-libxrender dbus hicolor-icon-theme xorg-fontconfig desktop-file-utils xorg-libxext xorg-libxrender filter_audio
 
 name=utox
 _name=uTox

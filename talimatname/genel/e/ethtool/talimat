@@ -1,7 +1,7 @@
-# Description: Linux net sürücüsü tanılama ve ayarlama aracı
+# Tanım: Linux net sürücüsü tanılama ve ayarlama aracı
 # URL: https://www.kernel.org/pub/software/network/ethtool/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=ethtool
 version=4.6

@@ -1,7 +1,7 @@
-# Description: Veri yapısı işleme için yararlı olan düşük seviye kütüphaneler
+# Tanım: Veri yapısı işleme için yararlı olan düşük seviye kütüphaneler
 # URL: http://www.gtk.org/
-# Packager: milisarge
-# Depends on: libffi pcre python elfutils
+# Paketçi: milisarge
+# Gerekler: libffi pcre python elfutils
 
 name=glib
 version=2.53.1

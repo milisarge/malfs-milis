@@ -1,7 +1,7 @@
-# Description: Diğer bazı GnuPG ile ilgili paketlerin kullandığı bir IPC kitaplığı içerir
+# Tanım: Diğer bazı GnuPG ile ilgili paketlerin kullandığı bir IPC kitaplığı içerir
 # URL: http://www.gnupg.org/related_software/libassuan/
-# Packager: milisarge
-# Depends on: libgpg-error 
+# Paketçi: milisarge
+# Gerekler: libgpg-error 
 
 name=libassuan
 version=2.4.3

@@ -1,7 +1,7 @@
-# Description: Musepack kod çözme kütüphanesi
+# Tanım: Musepack kod çözme kütüphanesi
 # URL: http://www.musepack.net/index.php?pg=home
-# Packager: milisarge
-# Depends on: nasm 
+# Paketçi: milisarge
+# Gerekler: nasm 
 
 name=libmpcdec
 version=1.2.6

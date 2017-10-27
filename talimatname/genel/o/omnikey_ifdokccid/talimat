@@ -1,7 +1,7 @@
-# Description: HID Global OMNIKEY CardMan Akıllı Kart okuyucu serisi için CCID sürücüsü
+# Tanım: HID Global OMNIKEY CardMan Akıllı Kart okuyucu serisi için CCID sürücüsü
 # URL: http://www.hidglobal.com/
-# Packager: Cihan Alkan
-# Depends on: pcsc-lite libusb
+# Paketçi: Cihan Alkan
+# Gerekler: pcsc-lite libusb
 
 name=omnikey_ifdokccid
 version=4.2.8

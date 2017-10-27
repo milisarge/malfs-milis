@@ -1,7 +1,7 @@
-# Description: Webkit Portu, Fltk 1.3'e
+# Tanım: Webkit Portu, Fltk 1.3'e
 # URL: https://github.com/clbr/webkitfltk
-# Packager: milisarge
-# Depends on: zlib libpng libjpeg-turbo libxml2 sqlite freetype xorg-fontconfig xorg-libxcursor cairo openssl curl icu harfbuzz fltk1 git ruby
+# Paketçi: milisarge
+# Gerekler: zlib libpng libjpeg-turbo libxml2 sqlite freetype xorg-fontconfig xorg-libxcursor cairo openssl curl icu harfbuzz fltk1 git ruby
 
 name=webkitfltk
 version=0.5.1

@@ -1,7 +1,7 @@
-# Description: Xfdesktop masa yoneticisi xfce4 için.
+# Tanım: Xfdesktop masa yoneticisi xfce4 için.
 # URL: http://www.xfce.org
-# Packagers: milisarge@gmail.com
-# Depends on: exo libwnck xfce4-libui thunar xfce4-garcon
+# Paketçi: milisarge@gmail.com
+# Gerekler: exo libwnck xfce4-libui thunar xfce4-garcon
 
 _name=xfdesktop
 run=(gtk-update-icon-cache)

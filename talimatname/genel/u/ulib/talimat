@@ -1,7 +1,7 @@
-# Description: Sade ve hızlı c++ uygulama geliştirme çatısı
+# Tanım: Sade ve hızlı c++ uygulama geliştirme çatısı
 # URL: https://github.com/stefanocasazza/ULib
-# Packager: milisarge
-# Depends on: sqlite libzip
+# Paketçi: milisarge
+# Gerekler: sqlite libzip
 
 name=ulib
 version=1.4.2

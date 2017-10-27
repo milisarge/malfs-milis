@@ -1,7 +1,7 @@
-# Description: Genel ad alanı yardımcıları (SAX2'den aktarılan)
+# Tanım: Genel ad alanı yardımcıları (SAX2'den aktarılan)
 # URL: http://search.cpan.org/dist/XML-NamespaceSupport
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=perl-xml-namespacesupport
 version=1.11

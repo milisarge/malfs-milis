@@ -1,7 +1,7 @@
-# Description: Multimedya akışı için bir dizi C ++ kütüphanesi
+# Tanım: Multimedya akışı için bir dizi C ++ kütüphanesi
 # URL: http://www.live555.com/liveMedia/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=live
 version=2014.07.04

@@ -1,7 +1,7 @@
-# Description: GNOME Ayarları programı.
+# Tanım: GNOME Ayarları programı.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: geoclue2 geocode-glib libgweather librsvg networkmanager nss intltool cups colord gnome-desktop libcanberra libnotify libgnomekbd libwacom pulseaudio upower xorg gsettings-desktop-schemas gtk-update-icon-cache tdb
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: geoclue2 geocode-glib libgweather librsvg networkmanager nss intltool cups colord gnome-desktop libcanberra libnotify libgnomekbd libwacom pulseaudio upower xorg gsettings-desktop-schemas gtk-update-icon-cache tdb
 
 name=gnome-settings-daemon
 version=3.22.1

@@ -1,7 +1,7 @@
-# Description: Django şablon sistemine dayanan ve Qt ile yazılmış bir dize şablonu altyapısı
+# Tanım: Django şablon sistemine dayanan ve Qt ile yazılmış bir dize şablonu altyapısı
 # URL: http://www.gitorious.org/grantlee/pages/Home
-# Packager: milisarge
-# Depends on: qt4
+# Paketçi: milisarge
+# Gerekler: qt4
 
 name=grantlee
 version=0.5.1

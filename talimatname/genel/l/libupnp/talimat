@@ -1,7 +1,7 @@
-# Description: Portatif bir Açık Kaynak UPnP Geliştirme Seti.
+# Tanım: Portatif bir Açık Kaynak UPnP Geliştirme Seti.
 # URL: http://pupnp.sourceforge.net/
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libupnp
 version=1.6.19

@@ -1,7 +1,7 @@
-# Description: Qt tabanlı bir ses çalar.
+# Tanım: Qt tabanlı bir ses çalar.
 # URL: http://qmmp.ylsoftware.com
-# Packager: milisarge@gmail.com
-# Depends on: subversion libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+# Paketçi: milisarge@gmail.com
+# Gerekler: subversion libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 name=qmmp
 version=svn

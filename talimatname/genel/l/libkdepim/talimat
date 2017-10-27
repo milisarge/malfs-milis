@@ -1,7 +1,7 @@
-# Description: KDE PIM uygulamaları için kütüphaneler
+# Tanım: KDE PIM uygulamaları için kütüphaneler
 # URL: https://community.kde.org/KDE_PIM
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on : qt5 kf5-extra-cmake-modules akonadi-contacts akonadi-search kcontacts kontactinterface  kldap kf5-kdoctools boost kf5-kdelibs4support kmime kf5-kcmutils
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 kf5-extra-cmake-modules akonadi-contacts akonadi-search kcontacts kontactinterface  kldap kf5-kdoctools boost kf5-kdelibs4support kmime kf5-kcmutils
 
 name=libkdepim
 version=16.08.2

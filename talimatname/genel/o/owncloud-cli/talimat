@@ -1,7 +1,7 @@
-# Description : OwnCloud Masaüstü İstemcisi, ownCloud Sunucusu'ndan bilgisayarınızla dosyaları senkronize etmek için kullanılan bir araçtır.
+# Tanım: OwnCloud Masaüstü İstemcisi, ownCloud Sunucusu'ndan bilgisayarınızla dosyaları senkronize etmek için kullanılan bir araçtır.
 # URL: http://owncloud.org/
-# Packager: milisarge
-# Depends on: cmake qt5 qtkeychain-qt5
+# Paketçi: milisarge
+# Gerekler: cmake qt5 qtkeychain-qt5
 
 name=owncloud-cli
 release=2

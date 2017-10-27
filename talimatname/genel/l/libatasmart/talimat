@@ -1,7 +1,7 @@
-# Description: Bir disk raporlama kitaplığı. Yalnızca ATA S.M.A.R.T işlevinin bir alt kümesini destekler.
+# Tanım: Bir disk raporlama kitaplığı. Yalnızca ATA S.M.A.R.T işlevinin bir alt kümesini destekler.
 # URL: http://0pointer.de/blog/projects/being-smart.html
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libatasmart
 version=0.19

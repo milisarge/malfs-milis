@@ -1,7 +1,7 @@
-# Description: MATE temaları
+# Tanım: MATE temaları
 # URL: http://mate-desktop.org
-# Packager: milisarge yasarciv
-# Depends on: gtk2 intltool gtk-engines gtk-engine-murrine mate-icon-theme
+# Paketçi: milisarge yasarciv
+# Gerekler: gtk2 intltool gtk-engines gtk-engine-murrine mate-icon-theme
 
 
 name=mate-themes

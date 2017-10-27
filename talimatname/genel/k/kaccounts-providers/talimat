@@ -1,7 +1,7 @@
-# Description: Google, Facebook, Owncloud, IMAP, Jabber vb. siteler ve hizmetleri için web hesaplarını yönetme sistemi
+# Tanım: Google, Facebook, Owncloud, IMAP, Jabber vb. siteler ve hizmetleri için web hesaplarını yönetme sistemi
 # URL: https://www.kde.org/applications/internet
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules kf5-kdoctools kaccounts-integration intltool
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules kf5-kdoctools kaccounts-integration intltool
 
 name=kaccounts-providers
 version=16.08.2

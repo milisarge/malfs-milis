@@ -1,7 +1,7 @@
-# Description: VTE widget seti için Python bağları
+# Tanım: VTE widget seti için Python bağları
 # URL: http://developer.gnome.org/arch/gnome/widgets/vte.html
-# Packager: milisarge
-# Depends on: vte vala
+# Paketçi: milisarge
+# Gerekler: vte vala
 
 name=python-vte
 version=0.28.2

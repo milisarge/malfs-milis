@@ -1,7 +1,7 @@
-# Description: MATE için bir pencere yöneticisi
+# Tanım: MATE için bir pencere yöneticisi
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: libcanberra libgtop mate-desktop zenity intltool itstool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: libcanberra libgtop mate-desktop zenity intltool itstool
 
 name=marco
 version=1.18.1

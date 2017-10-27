@@ -1,7 +1,7 @@
-# Description: X11 Video Motion Compensation uzatma kitaplığı
+# Tanım: X11 Video Motion Compensation uzatma kitaplığı
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-libx11 xorg-libxext xorg-libxv
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xorg-libxext xorg-libxv
 
 name=xorg-libxvmc
 version=1.0.9

@@ -1,7 +1,7 @@
-# Description: Bu paket GNOME için belgeler içerir
+# Tanım: Bu paket GNOME için belgeler içerir
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com 
-# Depends on: itstool
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: itstool
 
 name=gnome-user-docs
 version=3.22.0

@@ -1,21 +1,19 @@
-# Description: ağ araçları
+# Tanım: ağ araçları
 # URL: http://net-tools.sourceforge.net/
-# Maintainer: http://linuxfromscratch.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
-description="Collection of programs for controlling the network subsystem of the Linux kernel."
 name=net-tools
 version=20101030
 release=1
 
 source=(http://anduin.linuxfromscratch.org/sources/BLFS/svn/n/$name-CVS_$version.tar.gz
-net-tools-CVS_20101030-remove_dups-1.patch)
+		net-tools-CVS_20101030-remove_dups-1.patch)
 
 build() {
-cd net-tools-CVS_20101030
-patch -Np1 -i ../net-tools-CVS_20101030-remove_dups-1.patch 
-yes "" | make config 
-make
-make update DESTDIR=$PKG install
+	cd net-tools-CVS_20101030
+	patch -Np1 -i ../net-tools-CVS_20101030-remove_dups-1.patch 
+	yes "" | make config 
+	make
+	make update DESTDIR=$PKG install
 }

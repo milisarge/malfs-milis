@@ -1,7 +1,7 @@
-# Description: Oksijen fontları paketi, KDE tarafından kullanılan bir yazı tipidir.
+# Tanım: Oksijen fontları paketi, KDE tarafından kullanılan bir yazı tipidir.
 # URL: http://www.kde.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake fontforge
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: cmake fontforge
 
 name=oxygen-fonts
 version=5.4.3

@@ -1,7 +1,7 @@
-# Description: RAW resim kodunu çözmek için kullanılan bir C ++ arabirimi
+# Tanım: RAW resim kodunu çözmek için kullanılan bir C ++ arabirimi
 # URL: http://www.kde.org
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: qt5 kf5-extra-cmake-modules libraw
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: qt5 kf5-extra-cmake-modules libraw
 
 name=libkdcraw
 version=16.08.2

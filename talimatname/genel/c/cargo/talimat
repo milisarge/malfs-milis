@@ -1,7 +1,7 @@
-# Description: rust paket yöneticisi
+# Tanım: rust paket yöneticisi
 # URL: https://github.com/rust-lang/cargo/
-# Packager: milisarge
-# Depends on: rust cmake 
+# Paketçi: milisarge
+# Gerekler: rust cmake 
 
 name=cargo
 version=0.21.1

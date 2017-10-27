@@ -1,7 +1,7 @@
-# Description: Bayes algoritmasına göre çalışan hızlı bir spam filtresi.
+# Tanım: Bayes algoritmasına göre çalışan hızlı bir spam filtresi.
 # URL: http://bogofilter.sourceforge.net/
-# Packager: milisarge
-# Depends on: db
+# Paketçi: milisarge
+# Gerekler: db
 
 name=bogofilter
 version=1.2.4

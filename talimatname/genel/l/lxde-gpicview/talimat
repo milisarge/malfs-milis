@@ -1,7 +1,7 @@
-# Description: GPicView paketi hafif resim görüntüleyici içerir
+# Tanım: GPicView paketi hafif resim görüntüleyici içerir
 # URL: http://lxde.org/
-# Packager: milisarge@gmail.com
-# Depends on: gtk2
+# Paketçi: milisarge@gmail.com
+# Gerekler: gtk2
 
 name=lxde-gpicview
 _name=gpicview

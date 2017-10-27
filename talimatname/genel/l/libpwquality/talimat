@@ -1,7 +1,7 @@
-# Description: Şifre kalite kontrolü ve rastgele şifreler üreten kütüphane.
+# Tanım: Şifre kalite kontrolü ve rastgele şifreler üreten kütüphane.
 # URL: https://fedorahosted.org/libpwquality/
-# Packager: alihan-ozturk@hotmail.com
-# Depends on: python cracklib
+# Paketçi: alihan-ozturk@hotmail.com
+# Gerekler: python cracklib
 
 name=libpwquality
 version=1.3.0

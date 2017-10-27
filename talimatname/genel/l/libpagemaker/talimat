@@ -1,7 +1,7 @@
-# Description: Aldus/Adobe PageMaker belgelerinin dosya biçimini ayrıştıran bir kitaplık
+# Tanım: Aldus/Adobe PageMaker belgelerinin dosya biçimini ayrıştıran bir kitaplık
 # URL: https://wiki.documentfoundation.org/DLP/Libraries/libpagemaker
-# Packager: Cihan Alkan
-# Depends on: librevenge boost
+# Paketçi: Cihan Alkan
+# Gerekler: librevenge boost
 
 name=libpagemaker
 version=0.0.3

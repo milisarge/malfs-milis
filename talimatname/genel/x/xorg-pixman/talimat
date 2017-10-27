@@ -1,7 +1,7 @@
-# Description: X.org piksel manupulasyonu icin kutuphane
+# Tanım: X.org piksel manupulasyonu icin kutuphane
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: libpng 
+# Paketçi: milisarge
+# Gerekler: libpng 
 
 _name=pixman
 name=xorg-pixman

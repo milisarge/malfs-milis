@@ -1,7 +1,7 @@
-# Description: Coğrafi kodlama ve ters geocoding için kolaylık sağlayan bir kitaplık.
+# Tanım: Coğrafi kodlama ve ters geocoding için kolaylık sağlayan bir kitaplık.
 # URL: https://en.wikipedia.org/wiki/Geocoding
-# Packager: yasarciv67@gmail.com 
-# Depends on: json-glib libsoup gobject-introspection gtk-doc
+# Paketçi: yasarciv67@gmail.com 
+# Gerekler: json-glib libsoup gobject-introspection gtk-doc
 
 name=geocode-glib
 version=3.20.1

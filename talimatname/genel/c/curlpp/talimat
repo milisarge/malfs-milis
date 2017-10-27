@@ -1,7 +1,7 @@
-# Description: cURLpp is a C++ wrapper for libcURL.
+# Tanım: cURLpp is a C++ wrapper for libcURL.
 # URL: http://curlpp.org
-# Packager: milisarge
-# Depends on: cmake
+# Paketçi: milisarge
+# Gerekler: cmake
 
 name=curlpp
 version=0.8.1

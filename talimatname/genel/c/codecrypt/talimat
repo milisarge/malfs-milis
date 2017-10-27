@@ -1,7 +1,7 @@
-# Description: Kuantum algoritmalı şifreleme uygulaması
+# Tanım: Kuantum algoritmalı şifreleme uygulaması
 # URL: http://e-x-a.org/codecrypt/
-# Packager: milisarge
-# Depends on: fftw crypto++ 
+# Paketçi: milisarge
+# Gerekler: fftw crypto++ 
 
 name=codecrypt
 version=1.7.6

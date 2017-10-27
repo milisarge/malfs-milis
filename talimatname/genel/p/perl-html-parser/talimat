@@ -1,7 +1,7 @@
-# Description: Perl HTML ayrıştırıcı modülü
+# Tanım: Perl HTML ayrıştırıcı modülü
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: perl-html-tagset 
+# Paketçi: milisarge
+# Gerekler: perl-html-tagset 
 
 name=perl-html-parser
 version=3.71

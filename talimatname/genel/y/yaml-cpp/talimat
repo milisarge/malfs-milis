@@ -1,7 +1,7 @@
-# Description: YAML ayrıştırıcı ve yayıcı C ++, YAML 1.2 spesifikasyonu etrafında yazılmıştır
+# Tanım: YAML ayrıştırıcı ve yayıcı C ++, YAML 1.2 spesifikasyonu etrafında yazılmıştır
 # URL: https://github.com/jbeder/yaml-cpp
-# Packager: Cihan Alkan
-# Depends on: boost cmake
+# Paketçi: Cihan Alkan
+# Gerekler: boost cmake
 
 name=yaml-cpp
 version=0.5.3

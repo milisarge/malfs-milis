@@ -1,7 +1,7 @@
-# Description: Nesneye yönelik bir GL / GLES Soyutlama / Yardımcı Katman
+# Tanım: Nesneye yönelik bir GL / GLES Soyutlama / Yardımcı Katman
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: xorg-libxrandr gdk-pixbuf xorg-mesa xorg-glu pango gobject-introspection
+# Paketçi: milisarge
+# Gerekler: xorg-libxrandr gdk-pixbuf xorg-mesa xorg-glu pango gobject-introspection
 
 name=cogl
 version=1.22.2

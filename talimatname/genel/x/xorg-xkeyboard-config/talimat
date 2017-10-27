@@ -1,7 +1,7 @@
-# Description: X.org icin klavye konfigurasyonu
+# Tanım: X.org icin klavye konfigurasyonu
 # URL: http://www.freedesktop.org/wiki/Software_2fXKeyboardConfig
-# Packager: milisarge
-# Depends on: xorg-app intltool 
+# Paketçi: milisarge
+# Gerekler: xorg-app intltool 
 
 _name=xkeyboard-config
 name=xorg-xkeyboard-config

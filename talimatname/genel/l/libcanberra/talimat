@@ -1,7 +1,7 @@
-# Description: XDG ses temasının ve isim özelliklerinin uygulanması.
+# Tanım: XDG ses temasının ve isim özelliklerinin uygulanması.
 # URL: http://0pointer.de/lennart/projects/libcanberra/
-# Packager: milisarge
-# Depends on: libvorbis
+# Paketçi: milisarge
+# Gerekler: libvorbis
 # Optional: pulseaudio gstreamer alsa-lib gtk3
 
 name=libcanberra

@@ -1,7 +1,7 @@
-# Description: Periyodik olarak postaları kontrol etmek için konforlu, çok parçacıklı, çoklu posta kutusu, çok protokollü eklenti.
+# Tanım: Periyodik olarak postaları kontrol etmek için konforlu, çok parçacıklı, çoklu posta kutusu, çok protokollü eklenti.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-mailwatch-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel gnutls libgcrypt intltool perl-xml-parser xfce4-libui
+# Paketçi: milisarge
+# Gerekler: xfce4-panel gnutls libgcrypt intltool perl-xml-parser xfce4-libui
 
 name=xfce4-mailwatch-plugin
 version=1.2.0

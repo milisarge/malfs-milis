@@ -1,7 +1,7 @@
-# Description: X Video uzantısı istemcisi kitaplığı
+# Tanım: X Video uzantısı istemcisi kitaplığı
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-proto xorg-libx11 xorg-libxext 
+# Paketçi: milisarge
+# Gerekler: xorg-proto xorg-libx11 xorg-libxext 
 
 name=xorg-libxv
 version=1.0.10

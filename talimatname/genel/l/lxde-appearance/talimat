@@ -1,7 +1,7 @@
-# Description: GTK + 2 için masaüstünden bağımsız bir tema değiştirici içeriyor
+# Tanım: GTK + 2 için masaüstünden bağımsız bir tema değiştirici içeriyor
 # URL: http://lxde.org/
-# Packager: milisarge@gmail.com
-# Depends on: gtk2 intltool
+# Paketçi: milisarge@gmail.com
+# Gerekler: gtk2 intltool
 
 name=lxde-appearance
 _name=lxappearance

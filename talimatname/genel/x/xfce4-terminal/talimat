@@ -1,7 +1,7 @@
-# Description: Xfce4 Terminal, bir GTK + 2 terminal emülatörüdür. Bu, bir Xorg penceresinin konforunda komutları veya programları çalıştırmak için kullanışlıdır; Dosyaları Xfce4 Terminaline sürükleyip bırakabilir veya farenizle metni kopyalayıp yapıştırabilirsiniz.
+# Tanım: Xfce4 Terminal, bir GTK + 2 terminal emülatörüdür. Bu, bir Xorg penceresinin konforunda komutları veya programları çalıştırmak için kullanışlıdır; Dosyaları Xfce4 Terminaline sürükleyip bırakabilir veya farenizle metni kopyalayıp yapıştırabilirsiniz.
 # URL: http://www.os-cillation.com/index.php?id=42&L=5
-# Packager: milisarge
-# Depends on: exo vte vte3
+# Paketçi: milisarge
+# Gerekler: exo vte vte3
 
 name=xfce4-terminal
 version=0.8.6

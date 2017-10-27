@@ -1,7 +1,7 @@
-# Description: Grilo çerçevesi için bir eklenti koleksiyonu
+# Tanım: Grilo çerçevesi için bir eklenti koleksiyonu
 # URL: https://git.gnome.org/browse/grilo-plugins
-# Packager: yasarciv67@gmail.com
-# Depends on: meson grilo lua libmediaart libgdata tracker gom libdmapsharing chromaprint gstreamer1-plugins-bad yelp
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: meson grilo lua libmediaart libgdata tracker gom libdmapsharing chromaprint gstreamer1-plugins-bad yelp
 
 name=grilo-plugins
 version=0.3.4

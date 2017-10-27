@@ -1,7 +1,7 @@
-# Description: Hızlı ve sade C kütüphaneleri 
+# Tanım: Hızlı ve sade C kütüphaneleri 
 # Url: https://github.com/wolkykim/qlibc
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=qlibc
 version=2.4.2

@@ -1,7 +1,7 @@
-# Description: yüksek performans loop/event modeli
+# Tanım: yüksek performans loop/event modeli
 # URL: http://software.schmorp.de/pkg/libev.html
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=libev
 version=4.22

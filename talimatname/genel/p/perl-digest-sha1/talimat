@@ -1,7 +1,7 @@
-# Description: SHA-1 Algoritmasına Perl Arayüzü
+# Tanım: SHA-1 Algoritmasına Perl Arayüzü
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=perl-digest-sha1
 version=2.13

@@ -1,7 +1,7 @@
-# Description: Bölüm tablası kurtarma / tahmin aracı.
+# Tanım: Bölüm tablası kurtarma / tahmin aracı.
 # URL: https://github.com/baruch/gpart
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=gpart
 version=0.2.2

@@ -1,7 +1,7 @@
-# Description: GtkSourceView, standart GTK+ metin widget'ını genişleten bir metin widgettır
+# Tanım: GtkSourceView, standart GTK+ metin widget'ını genişleten bir metin widgettır
 # URL: http://mail.gnome.org/mailman/listinfo/gnome-devtools
-# Packager: milisarge yasarciv67@gmail.com
-# Depends on: gtk3 libxml2
+# Paketçi: milisarge yasarciv67@gmail.com
+# Gerekler: gtk3 libxml2
 
 name=gtksourceview3
 version=3.24.2

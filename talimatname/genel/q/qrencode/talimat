@@ -1,7 +1,7 @@
-# Description: C kütüphanesi, bir QR Code sembolündeki verileri şifrelemek için kullanılır.
+# Tanım: C kütüphanesi, bir QR Code sembolündeki verileri şifrelemek için kullanılır.
 # URL: http://megaui.net/fukuchi/works/qrencode/index.en.html
-# Packager: milisarge
-# Depends on: libpng sdl 
+# Paketçi: milisarge
+# Gerekler: libpng sdl 
 
 name=qrencode
 version=3.4.4

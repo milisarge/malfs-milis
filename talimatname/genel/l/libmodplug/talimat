@@ -1,7 +1,7 @@
-# Description: Library for playing module music.
+# Tanım: Library for playing module music.
 # URL: http://modplug-xmms.sourceforge.net/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libmodplug
 version=0.8.8.5

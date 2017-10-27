@@ -1,7 +1,7 @@
-# Description: Txt2tags bir belge üretecidir
+# Tanım: Txt2tags bir belge üretecidir
 # URL: http://txt2tags.sourceforge.net
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=txt2tags
 version=2.6

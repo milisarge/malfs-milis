@@ -1,7 +1,7 @@
-# Description: Kablosuz aygıtlar için nl80211 tabanlı CLI ayarlama aracı
+# Tanım: Kablosuz aygıtlar için nl80211 tabanlı CLI ayarlama aracı
 # URL: http://wireless.kernel.org/en/users/Documentation/iw
-# Packager: yakar (aydin@komutan.org)
-# Depends on: libnl
+# Paketçi: yakar (aydin@komutan.org)
+# Gerekler: libnl
 
 name=iw
 version=4.9

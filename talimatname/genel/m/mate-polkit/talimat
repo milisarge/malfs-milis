@@ -1,7 +1,7 @@
-# Description: MATE masaüstü için PolicyKit entegrasyonu
+# Tanım: MATE masaüstü için PolicyKit entegrasyonu
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 polkit accountsservice gobject-introspection intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 polkit accountsservice gobject-introspection intltool
 
 name=mate-polkit
 version=1.18.1

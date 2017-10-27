@@ -1,7 +1,7 @@
-# Description: Bir müzik çalar ve kütüphane organizatörü.
+# Tanım: Bir müzik çalar ve kütüphane organizatörü.
 # URL: http://www.clementine-player.org/
-# Packager: milisarge
-# Depends on: cmake boost qt4 qjson sparsehash xorg-mesa libcdio libmtp protobuf qca taglib chromaprint glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad gvfs
+# Paketçi: milisarge
+# Gerekler: cmake boost qt4 qjson sparsehash xorg-mesa libcdio libmtp protobuf qca taglib chromaprint glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad gvfs
 
 name=clementine
 version=1.2.3

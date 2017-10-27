@@ -1,7 +1,7 @@
-# Description: Kaynak kodu otomatik konfigüre etmek için bir GNU aracı. (Legacy 2.1x version)
+# Tanım: Kaynak kodu otomatik konfigüre etmek için bir GNU aracı. (Legacy 2.1x version)
 # URL: http://www.gnu.org/software/autoconf/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on:
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler:
 
 name=autoconf2
 _name=autoconf

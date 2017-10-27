@@ -1,7 +1,7 @@
-# Description: ncurses kutuphanesini kullanan kucuk ve hizli bir muzik oynatici
+# Tanım: ncurses kutuphanesini kullanan kucuk ve hizli bir muzik oynatici
 # URL: http://cmus.sf.net/
-# Packager: milisarge
-# Depends on: alsa-lib alsa-plugins flac libid3tag libmad libogg libmpcdec libvorbis
+# Paketçi: milisarge
+# Gerekler: alsa-lib alsa-plugins flac libid3tag libmad libogg libmpcdec libvorbis
 
 name=cmus
 version=2.7.1

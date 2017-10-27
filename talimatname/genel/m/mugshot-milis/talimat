@@ -1,7 +1,7 @@
-# Description: Kişisel bilgileri düzenleme uygulaması
+# Tanım: Kişisel bilgileri düzenleme uygulaması
 # URL: https://launchpad.net/mugshot
-# Packager: milisarge
-# Depends on: intltool gtk3 python3-distutils-extra python3-pexpect dbus-python python3-cairo python3-gobject accountsservice 
+# Paketçi: milisarge
+# Gerekler: intltool gtk3 python3-distutils-extra python3-pexpect dbus-python python3-cairo python3-gobject accountsservice 
 
 name=mugshot-milis
 version=0.3.2

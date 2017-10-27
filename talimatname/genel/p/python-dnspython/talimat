@@ -1,7 +1,7 @@
-# Description: Python için bir DNS araç seti.
+# Tanım: Python için bir DNS araç seti.
 # URL: http://www.dnspython.org/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-dnspython
 version=1.11.1

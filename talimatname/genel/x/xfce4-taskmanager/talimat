@@ -1,7 +1,7 @@
-# Description: Xfce için görev yöneticisi
+# Tanım: Xfce için görev yöneticisi
 # URL: http://goodies.xfce.org/projects/applications/xfce4-taskmanager
-# Packager: milisarge
-# Depends on: gtk2 libwnck
+# Paketçi: milisarge
+# Gerekler: gtk2 libwnck
 
 name=xfce4-taskmanager
 version=1.1.0

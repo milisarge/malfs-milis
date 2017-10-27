@@ -1,7 +1,7 @@
-# Description : KDE Plasma çalışma alanı
+# Tanım: KDE Plasma çalışma alanı
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk@hotmail.com
-# Depends on: consolekit2 kf5-baloo kf5-kdesu kf5-kdewebkit kf5-kjsembed kf5-knotifyconfig kf5-krunner plasma-kwin kf5-kxmlrpcclient plasma-libkscreen plasma-libksysguard kf5-networkmanager-qt kf5-ktexteditor kf5-kwayland libdbusmenu-qt5 pm-utils gvfs plasma-kscreenlocker plasma-breeze plasma-kactivitymanagerd kholidays
+# Paketçi: alihan-ozturk@hotmail.com
+# Gerekler: consolekit2 kf5-baloo kf5-kdesu kf5-kdewebkit kf5-kjsembed kf5-knotifyconfig kf5-krunner plasma-kwin kf5-kxmlrpcclient plasma-libkscreen plasma-libksysguard kf5-networkmanager-qt kf5-ktexteditor kf5-kwayland libdbusmenu-qt5 pm-utils gvfs plasma-kscreenlocker plasma-breeze plasma-kactivitymanagerd kholidays
 
 name=plasma-workspace
 version=5.8.1

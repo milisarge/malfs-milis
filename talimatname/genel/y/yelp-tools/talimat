@@ -1,7 +1,7 @@
-# Description: Yelp dokumantasyonu hazirlamak icin araclar 
+# Tanım: Yelp dokumantasyonu hazirlamak icin araclar 
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: libxslt libxml2 yelp-xsl, itstool
+# Paketçi: milisarge
+# Gerekler: libxslt libxml2 yelp-xsl, itstool
 
 name=yelp-tools
 version=3.16.1

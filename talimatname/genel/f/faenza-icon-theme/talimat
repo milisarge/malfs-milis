@@ -1,7 +1,7 @@
-# Description: Equinox GTK teması için tasarlanmış simge teması 
+# Tanım: Equinox GTK teması için tasarlanmış simge teması 
 # URL: http://gnome-look.org/content/show.php/Faenza?content=128143
-# Packager: yasarciv67@gmail.com
-# Depends on: 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: 
 
 
 name=faenza-icon-theme

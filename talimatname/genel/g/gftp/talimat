@@ -1,7 +1,7 @@
-# Description: X pencereleri için çok iş parçacıklı bir ftp istemcisi
+# Tanım: X pencereleri için çok iş parçacıklı bir ftp istemcisi
 # URL: http://gftp.seul.org/
-# Packager: milisarge
-# Depends on: gtk2 xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
+# Paketçi: milisarge
+# Gerekler: gtk2 xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
 
 name=gftp
 version=2.0.19

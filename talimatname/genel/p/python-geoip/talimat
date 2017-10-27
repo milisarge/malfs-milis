@@ -1,7 +1,7 @@
-# Description: GeoIP aramaları için Python API'sı
+# Tanım: GeoIP aramaları için Python API'sı
 # URL: https://pypi.python.org/pypi/pygeoip/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: python
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: python
 
 name=python-geoip
 version=0.2.7

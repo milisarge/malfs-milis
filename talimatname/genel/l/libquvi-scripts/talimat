@@ -1,7 +1,7 @@
-# Description: video linklerini ayrıştıran betikler
+# Tanım: video linklerini ayrıştıran betikler
 # URL:         http://quvi.sourceforge.net/
-# Packager:    milisarge
-# Depends on:  lua
+# Paketçi:    milisarge
+# Gerekler:  lua
 
 name=libquvi-scripts
 version=0.4.21

@@ -1,7 +1,7 @@
-# Description: Çizgiyi genel görünümden kaldırarak kenarda gezdirerek hareket ettirin.
+# Tanım: Çizgiyi genel görünümden kaldırarak kenarda gezdirerek hareket ettirin.
 # URL: https://micheleg.github.io/dash-to-dock/
-# Packagers: yasarciv67@gmail.com
-# Depends on: intltool dconf 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool dconf 
 
 name=dash-to-dock
 version=57

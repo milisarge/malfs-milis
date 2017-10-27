@@ -1,7 +1,7 @@
-# Description: Sistem bildirimleri için soyutlama
+# Tanım: Sistem bildirimleri için soyutlama
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-kwindowsystem phonon-qt5 libdbusmenu-qt5
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-kwindowsystem phonon-qt5 libdbusmenu-qt5
 
 name=kf5-knotifications
 version=5.27.0

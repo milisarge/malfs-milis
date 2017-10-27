@@ -1,7 +1,7 @@
-# Description: Ağın daha doğrudan yönetilebilir olmasını sağlayan basitleştiren ve geliştiren araçlar
+# Tanım: Ağın daha doğrudan yönetilebilir olmasını sağlayan basitleştiren ve geliştiren araçlar
 # URL: http://projects.gnome.org/NetworkManager/
-# Packager: milisarge
-# Depends on: gtk3 gconf iso-codes gobject-introspection libgnome-keyring gnome-keyring libsecret libnotify networkmanager polkit-gnome modemmanager gtk-update-icon-cache
+# Paketçi: milisarge
+# Gerekler: gtk3 gconf iso-codes gobject-introspection libgnome-keyring gnome-keyring libsecret libnotify networkmanager polkit-gnome modemmanager gtk-update-icon-cache
 
 name=network-manager-applet
 version=1.4.6

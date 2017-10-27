@@ -1,7 +1,7 @@
-# Description: Adından da anlaşılacağı üzere qtermwidget Qt için bir terminal widgettır.
+# Tanım: Adından da anlaşılacağı üzere qtermwidget Qt için bir terminal widgettır.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake qt5
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake qt5
 
 name=lxqt-qtermwidget
 _name=qtermwidget

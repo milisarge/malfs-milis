@@ -1,7 +1,7 @@
-# Description: fare ve klavye tuş sinyalleri göndermeye yarayan konsol uygulaması
+# Tanım: fare ve klavye tuş sinyalleri göndermeye yarayan konsol uygulaması
 # URL: http://www.semicomplete.com/projects/xdotool
-# Packager: milisarge
-# Depends on: xorg-libxtst xorg-libxinerama libxkbcommon
+# Paketçi: milisarge
+# Gerekler: xorg-libxtst xorg-libxinerama libxkbcommon
 
 name=xdotool
 version=3.2

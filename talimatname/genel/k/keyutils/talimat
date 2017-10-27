@@ -1,7 +1,7 @@
-# Description: Keyutils, çekirdekte anahtar tutma yerini yönetmek için kullanılan bir dizi araçtır.
+# Tanım: Keyutils, çekirdekte anahtar tutma yerini yönetmek için kullanılan bir dizi araçtır.
 # URL: https://rhn.redhat.com/errata/RHEA-2006-0090.html
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=keyutils
 version=1.5.9

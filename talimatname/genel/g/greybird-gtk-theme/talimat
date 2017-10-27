@@ -1,7 +1,7 @@
-# Description: Linux için bir Gtk teması
+# Tanım: Linux için bir Gtk teması
 # URL: https://www.xfce-look.org/p/1176474/
-# Packager: yasarciv67@gmail.com
-# Depends on: 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: 
 
 name=greybird-gtk-theme
 version=3.22

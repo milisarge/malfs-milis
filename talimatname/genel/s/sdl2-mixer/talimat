@@ -1,7 +1,7 @@
-# Description: A simple multi-channel audio mixer (Version 2)
+# Tanım: A simple multi-channel audio mixer (Version 2)
 # URL: http://www.libsdl.org/projects/SDL_mixer
-# Packager: milisarge
-# Depends on: fluidsynth sdl2 libvorbis libmodplug smpeg2 flac 
+# Paketçi: milisarge
+# Gerekler: fluidsynth sdl2 libvorbis libmodplug smpeg2 flac 
 
 name=sdl2-mixer
 version=2.0.1

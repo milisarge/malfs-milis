@@ -1,7 +1,7 @@
-# Description: smart kartlar için araç seti ve kütüphane
+# Tanım: smart kartlar için araç seti ve kütüphane
 # URL: https://github.com/OpenSC/OpenSC/wiki
-# Packager: milisarge
-# Depends on: pcsc-lite libxslt docbook-xsl
+# Paketçi: milisarge
+# Gerekler: pcsc-lite libxslt docbook-xsl
 
 name=opensc
 version=0.16.0

@@ -1,7 +1,7 @@
-# Description: Xfce4 paneli için CPU frekansı eklentisi
+# Tanım: Xfce4 paneli için CPU frekansı eklentisi
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-cpufreq-plugin
-# Packager: milisarge
-# Depends on: xfce4-panel 
+# Paketçi: milisarge
+# Gerekler: xfce4-panel 
 
 name=xfce4-cpufreq-plugin
 version=1.1.2

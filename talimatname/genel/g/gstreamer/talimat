@@ -1,7 +1,7 @@
-# Description: GStreamer ana kütüphanedir. Başlıkları, temel kitaplık dosyalarını ve temel öğeleri içerir.
+# Tanım: GStreamer ana kütüphanedir. Başlıkları, temel kitaplık dosyalarını ve temel öğeleri içerir.
 # URL: https://gstreamer.freedesktop.org/modules/gstreamer.html
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: glib libxml2 gsl gobject-introspection
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: glib libxml2 gsl gobject-introspection
 
 name=gstreamer
 version=0.10.36

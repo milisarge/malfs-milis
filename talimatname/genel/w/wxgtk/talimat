@@ -1,7 +1,7 @@
-# Description: GUI için GTK+ wxWidgets API'sının uygulanması
+# Tanım: GUI için GTK+ wxWidgets API'sının uygulanması
 # URL: http://wxwidgets.org
-# Packager: milisarge
-# Depends on: gtk2 gstreamer-plugins-base xorg-mesa xorg-libsm xorg-libxxf86vm sdl
+# Paketçi: milisarge
+# Gerekler: gtk2 gstreamer-plugins-base xorg-mesa xorg-libsm xorg-libxxf86vm sdl
 
 name=wxgtk
 version=3.0.2

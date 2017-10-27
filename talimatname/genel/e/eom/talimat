@@ -1,7 +1,7 @@
-# Description: MATE için bir resim gösterici
+# Tanım: MATE için bir resim gösterici
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gobject-introspection intltool itstool dbus-glib exempi lcms2 libexif libjpeg-turbo mate-desktop libpeas librsvg
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gobject-introspection intltool itstool dbus-glib exempi lcms2 libexif libjpeg-turbo mate-desktop libpeas librsvg
 
 name=eom
 version=1.18.2

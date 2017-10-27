@@ -1,7 +1,7 @@
-# Description: Gedit için eklentiler
+# Tanım: Gedit için eklentiler
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gedit gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gedit gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
 
 name=gedit-plugins
 version=3.22.0

@@ -1,7 +1,7 @@
-# Description: SSL sunucu analiz uygulaması
+# Tanım: SSL sunucu analiz uygulaması
 # URL: https://github.com/nabla-c0d3/sslyze/
-# Packager: milisarge
-# Depends on: python-setuptools python python-nassl python-lxml python-typing 
+# Paketçi: milisarge
+# Gerekler: python-setuptools python python-nassl python-lxml python-typing 
 
 name=sslyze
 version=1.0.0

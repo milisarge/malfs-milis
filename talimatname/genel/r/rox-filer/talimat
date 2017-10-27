@@ -1,7 +1,7 @@
-# Description: İsteğe bağlı olarak masaüstü arka planını ve panellerini yönetebilen küçük ve hızlı dosya yöneticisi
+# Tanım: İsteğe bağlı olarak masaüstü arka planını ve panellerini yönetebilen küçük ve hızlı dosya yöneticisi
 # URL: http://roscidus.com/desktop/ROX-Filer
-# Packager: milisarge
-# Depends on: xorg-libsm libglade shared-mime-info
+# Paketçi: milisarge
+# Gerekler: xorg-libsm libglade shared-mime-info
 
 name=rox-filer
 version=2.11

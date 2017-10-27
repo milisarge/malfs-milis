@@ -1,7 +1,7 @@
-# Description: Genel HTTP ve WebDAV için sarmalayıcı
+# Tanım: Genel HTTP ve WebDAV için sarmalayıcı
 # URL: http://www.webdav.org/neon/
-# Packager: milisarge
-# Depends on: kerberos libxml2 
+# Paketçi: milisarge
+# Gerekler: kerberos libxml2 
 
 name=neon
 version=0.30.1

@@ -1,7 +1,7 @@
-# Description: Clutter için GStreamer bağları
+# Tanım: Clutter için GStreamer bağları
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 clutter gstreamer1-plugins-base gobject-introspection
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 clutter gstreamer1-plugins-base gobject-introspection
 
 name=clutter-gst
 version=3.0.20

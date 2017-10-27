@@ -1,8 +1,8 @@
-# Description: Ağ Kimlik Doğrulama İletişim Kuralı
+# Tanım: Ağ Kimlik Doğrulama İletişim Kuralı
 # URL: http://web.mit.edu/kerberos
 # Maintainer: Jose V Beneyto, sepen at crux dot nu
-# Packager: Alan Mizrahi, alan at mizrahi dot com dot ve
-# Depends on: openldap e2fsprogs
+# Paketçi: Alan Mizrahi, alan at mizrahi dot com dot ve
+# Gerekler: openldap e2fsprogs
 
 name=krb5
 version=1.14

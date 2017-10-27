@@ -1,7 +1,7 @@
-# Description: Broadcom 802.11abgn hybrid Linux networking device driver
+# Tanım: Broadcom 802.11abgn hybrid Linux networking device driver
 # URL: http://www.broadcom.com/support/802.11/linux_sta.php
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=broadcom-wl
 version=6.30.223.248

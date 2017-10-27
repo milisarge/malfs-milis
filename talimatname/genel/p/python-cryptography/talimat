@@ -1,7 +1,7 @@
-# Description: Şifreleme tariflerini ve ilkelleri Python geliştiricilerine sunacak şekilde tasarlanmış bir paket
+# Tanım: Şifreleme tariflerini ve ilkelleri Python geliştiricilerine sunacak şekilde tasarlanmış bir paket
 # URL: http://pypi.python.org/pypi/cryptography
-# Packager: milisarge
-# Depends on: python-six python-cffi python-enum34 python-pyasn1
+# Paketçi: milisarge
+# Gerekler: python-six python-cffi python-enum34 python-pyasn1
 
 name=python-cryptography
 _name=cryptography

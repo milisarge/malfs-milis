@@ -1,7 +1,7 @@
-# Description: XPath desteği ile hafif, basit ve hızlı C ++ ayrıştırıcısı.
+# Tanım: XPath desteği ile hafif, basit ve hızlı C ++ ayrıştırıcısı.
 # URL: http://pugixml.org
-# Packager: Cihan Alkan
-# Depends on: cmake
+# Paketçi: Cihan Alkan
+# Gerekler: cmake
 
 name=pugixml
 version=1.8

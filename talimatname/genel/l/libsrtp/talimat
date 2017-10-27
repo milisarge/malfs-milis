@@ -1,7 +1,7 @@
-# Description: Güvenli gerçek zamanlı taşıyıcı protokolü
+# Tanım: Güvenli gerçek zamanlı taşıyıcı protokolü
 # URL: https://github.com/cisco/libsrtp
-# Packager:	milisarge
-# Depends on:	
+# Paketçi:	milisarge
+# Gerekler:	
 
 name=libsrtp
 version=1.5.4

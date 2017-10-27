@@ -1,7 +1,7 @@
-# Description: Linux ve Unix için metin modu RSS haber okuyucu.
+# Tanım: Linux ve Unix için metin modu RSS haber okuyucu.
 # URL: http://kiza.kcore.de/software/snownews/
-# Packager: milisarge
-# Depends on: libxml2 gettext perl
+# Paketçi: milisarge
+# Gerekler: libxml2 gettext perl
 
 name=snownews
 version=1.5.12

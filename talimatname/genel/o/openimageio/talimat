@@ -1,7 +1,7 @@
-# Description: Sınıflar, yardımcı programlar ve uygulamalar da dahil olmak üzere resim okumak ve yazmak için
+# Tanım: Sınıflar, yardımcı programlar ve uygulamalar da dahil olmak üzere resim okumak ve yazmak için
 # URL: http://www.openimageio.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: cmake qt4 python boost xorg-mesa openexr jasper glew libtiff opencolorio
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: cmake qt4 python boost xorg-mesa openexr jasper glew libtiff opencolorio
 
 
 name=openimageio

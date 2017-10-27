@@ -1,7 +1,7 @@
-# Description: Alan ve hızın optimize edilmesi de dahil olmak üzere çeşitli karma harita uygulamaları içerir.
+# Tanım: Alan ve hızın optimize edilmesi de dahil olmak üzere çeşitli karma harita uygulamaları içerir.
 # URL: http://code.google.com/p/sparsehash
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=sparsehash
 version=2.0.2

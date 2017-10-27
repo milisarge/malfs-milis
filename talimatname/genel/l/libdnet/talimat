@@ -1,7 +1,7 @@
-# Description: ARP arkaplan çalıştırma ve araçlar
+# Tanım: ARP arkaplan çalıştırma ve araçlar
 # URL:         http://arpon.sf.net
-# Packager:    milisarge
-# Depends on:  libpcap libnet 
+# Paketçi:    milisarge
+# Gerekler:  libpcap libnet 
 
 name=libdnet
 version=1.11

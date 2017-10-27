@@ -1,7 +1,7 @@
-# Description: XML ve PO uzantilari icin dönüştürücü
+# Tanım: XML ve PO uzantilari icin dönüştürücü
 # URL: http://itstool.org/
-# Packager: milisarge
-# Depends on: docbook-xml docbook-xsl python
+# Paketçi: milisarge
+# Gerekler: docbook-xml docbook-xsl python
 
 name=itstool
 version=2.0.2

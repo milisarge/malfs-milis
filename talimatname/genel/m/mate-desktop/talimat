@@ -1,7 +1,7 @@
-# Description: Çeşitli MATE modülleri için ortak API'li kitaplık
+# Tanım: Çeşitli MATE modülleri için ortak API'li kitaplık
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: gobject-introspection intltool gtk3 startup-notification dconf
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gobject-introspection intltool gtk3 startup-notification dconf
 
 name=mate-desktop
 version=1.18.0

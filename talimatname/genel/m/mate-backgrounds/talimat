@@ -1,7 +1,7 @@
-# Description: MATE için arka plan resimleri ve verileri
+# Tanım: MATE için arka plan resimleri ve verileri
 # URL: http://www.mate-desktop.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool
 
 name=mate-backgrounds
 version=1.18.0

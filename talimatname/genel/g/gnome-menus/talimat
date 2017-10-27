@@ -1,7 +1,7 @@
-# Description: GNOME menü özellikleri.
+# Tanım: GNOME menü özellikleri.
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool glib gobject-introspection
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool glib gobject-introspection
 
 name=gnome-menus
 version=3.13.3

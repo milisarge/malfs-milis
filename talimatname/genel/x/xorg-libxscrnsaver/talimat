@@ -1,7 +1,7 @@
-# Description: X Ekran Koruyucu icin kutuphane
+# Tanım: X Ekran Koruyucu icin kutuphane
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-libx11 xorg-proto xorg-libxext 
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xorg-proto xorg-libxext 
 
 name=xorg-libxscrnsaver
 version=1.2.2

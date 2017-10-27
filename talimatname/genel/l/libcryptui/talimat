@@ -1,7 +1,7 @@
-# Description: OpenPGP için Kütüphane komut istemleri
+# Tanım: OpenPGP için Kütüphane komut istemleri
 # URL: http://git.gnome.org/libcryptui
-# Packager: yasarciv67@gmail.com
-# Depends on: gtk3 gpgme dbus-glib gnupg libnotify libgnome-keyring dconf gobject-introspection intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: gtk3 gpgme dbus-glib gnupg libnotify libgnome-keyring dconf gobject-introspection intltool
 
 
 name=libcryptui

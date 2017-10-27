@@ -1,7 +1,7 @@
-# Description: Mozilla.org'dan Bağımsız Web Tarayıcısı
+# Tanım: Mozilla.org'dan Bağımsız Web Tarayıcısı
 # URL: http://www.mozilla.com/firefox/
-# Packager: Cihan Alkan
-# Depends on: libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
+# Paketçi: Cihan Alkan
+# Gerekler: libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
 
 name=firefox-bin
 _name=firefox

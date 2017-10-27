@@ -1,7 +1,7 @@
-# Description: Dolaşıma izin veren, aralıklı bağlantıyı destekleyen ve kullanıcı tuş vuruşlarının akıllı yerel eko ve hat düzenini sağlayan uzak terminal uygulaması.
+# Tanım: Dolaşıma izin veren, aralıklı bağlantıyı destekleyen ve kullanıcı tuş vuruşlarının akıllı yerel eko ve hat düzenini sağlayan uzak terminal uygulaması.
 # URL: http://mosh.mit.edu/ 
-# Packager: milisarge
-# Depends on: libutempter perl-io-tty protobuf 
+# Paketçi: milisarge
+# Gerekler: libutempter perl-io-tty protobuf 
 
 name=mosh
 version=1.2.4

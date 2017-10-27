@@ -1,7 +1,7 @@
-# Description: Lxqt-config paketi LXQt sistem ayarlar merkezi sağlar.
+# Tanım: Lxqt-config paketi LXQt sistem ayarlar merkezi sağlar.
 # URL: http://lxqt.org
-# Packager: yasarciv67@gmail.com
-# Depends on: liblxqt plasma-libkscreen
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: liblxqt plasma-libkscreen
 
 name=lxqt-config
 version=0.11.1

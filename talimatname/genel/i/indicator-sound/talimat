@@ -1,7 +1,7 @@
-# Description: Birleştirilmiş ses menü göstergesi.
+# Tanım: Birleştirilmiş ses menü göstergesi.
 # URL: https://launchpad.net/indicator-sound
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool vala ido libdbusmenu-gtk3 libgee06 libindicator libindicator-gtk2 pulseaudio libnotify 
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool vala ido libdbusmenu-gtk3 libgee06 libindicator libindicator-gtk2 pulseaudio libnotify 
 
 name=indicator-sound
 version=12.10.1

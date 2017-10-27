@@ -1,7 +1,7 @@
-# Description: CSS3 Seçicilerini ayrıştıran ve XPath 1.0'a çeviren bir Python2 kitaplığı.
+# Tanım: CSS3 Seçicilerini ayrıştıran ve XPath 1.0'a çeviren bir Python2 kitaplığı.
 # URL: http://pypi.python.org/pypi/cssselect
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-cssselect
 version=1.0.1

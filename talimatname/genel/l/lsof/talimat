@@ -1,7 +1,7 @@
-# Description: Lsof paketi, belirli bir çalışan uygulama veya işlem için Açık Dosyaları Listelemek için kullanışlıdır.
+# Tanım: Lsof paketi, belirli bir çalışan uygulama veya işlem için Açık Dosyaları Listelemek için kullanışlıdır.
 # URL: ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/
-# Packager: milisarge
-# Depends on:	
+# Paketçi: milisarge
+# Gerekler:	
 
 name=lsof
 version=4.89

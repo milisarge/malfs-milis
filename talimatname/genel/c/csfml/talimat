@@ -1,7 +1,7 @@
-# Description: sfml C kütüphanesi
+# Tanım: sfml C kütüphanesi
 # URL: https://www.sfml-dev.org/download/csfml/
-# Packager: milisarge
-# Depends on: sfml
+# Paketçi: milisarge
+# Gerekler: sfml
 
 name=csfml
 version=2.4

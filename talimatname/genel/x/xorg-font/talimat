@@ -1,7 +1,7 @@
-# Description: Xorg font paketleri, Xorg uygulamalarına gerekli yazı tiplerini sağlar.
+# Tanım: Xorg font paketleri, Xorg uygulamalarına gerekli yazı tiplerini sağlar.
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-font-util xorg-encodings xorg-xcursor-themes xorg-fontconfig
+# Paketçi: milisarge
+# Gerekler: xorg-font-util xorg-encodings xorg-xcursor-themes xorg-fontconfig
 
 name=xorg-font
 version=7.7

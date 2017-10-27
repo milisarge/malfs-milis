@@ -1,7 +1,7 @@
-# Description: O'Caml sdl kütüphanesi
+# Tanım: O'Caml sdl kütüphanesi
 # URL: https://sourceforge.net/projects/ocamlsdl/
-# Packager: milisarge
-# Depends on: ocaml ocaml-findlib ocaml-lablgl sdl sdl-ttf sdl-image sdl-mixer
+# Paketçi: milisarge
+# Gerekler: ocaml ocaml-findlib ocaml-lablgl sdl sdl-ttf sdl-image sdl-mixer
 
 name=ocaml-ocamlsdl
 version=0.9.1

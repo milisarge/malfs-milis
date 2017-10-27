@@ -1,7 +1,7 @@
-# Description: Ücretsiz, açık ve patentsiz ses codec'i, kabaca diğer formatlarla karşılaştırılabilir.
+# Tanım: Ücretsiz, açık ve patentsiz ses codec'i, kabaca diğer formatlarla karşılaştırılabilir.
 # URL: http://www.vorbis.com/
-# Packager: milisarge
-# Depends on: libogg doxygen 
+# Paketçi: milisarge
+# Gerekler: libogg doxygen 
 name=libvorbis
 version=1.3.5
 release=1

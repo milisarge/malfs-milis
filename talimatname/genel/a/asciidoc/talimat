@@ -1,7 +1,7 @@
-# Description: Kısa metinler, dokümanlar ve  UNIX man sayfaları için belge formatı. 
+# Tanım: Kısa metinler, dokümanlar ve  UNIX man sayfaları için belge formatı. 
 # URL: http://www.methods.co.nz/asciidoc/
-# Packager: milisarge
-# Depends on: docbook-xsl libxslt python
+# Paketçi: milisarge
+# Gerekler: docbook-xsl libxslt python
 
 name=asciidoc
 version=8.6.9

@@ -1,7 +1,7 @@
-# Description: Komut satırı ve web kullanıcı arayüzü ile BitTorrent istemcisi/arka plan programı
+# Tanım: Komut satırı ve web kullanıcı arayüzü ile BitTorrent istemcisi/arka plan programı
 # URL: https://transmissionbt.com/
-# Packager: milisarge
-# Depends on: curl libevent gtk3 intltool
+# Paketçi: milisarge
+# Gerekler: curl libevent gtk3 intltool
 
 name=transmission
 version=2.92

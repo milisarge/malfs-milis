@@ -1,7 +1,7 @@
-# Description: A web proxy with advanced filtering capabilities.
+# Tanım: A web proxy with advanced filtering capabilities.
 # URL: https://www.privoxy.org
-# Packager: milisarge
-# Depends on: pcre 
+# Paketçi: milisarge
+# Gerekler: pcre 
 
 name=privoxy
 version=3.0.26

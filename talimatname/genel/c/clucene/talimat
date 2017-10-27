@@ -1,7 +1,7 @@
-# Description: CLucene, yüksek performanslı bir metin arama motoru olan Lucene'in C ++ versiyonudur.
+# Tanım: CLucene, yüksek performanslı bir metin arama motoru olan Lucene'in C ++ versiyonudur.
 # URL: http://clucene.sourceforge.net
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: cmake
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: cmake
 
 name=clucene
 version=2.3.3.4

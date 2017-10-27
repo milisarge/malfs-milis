@@ -1,7 +1,7 @@
-# Description: Sahte bir kök ortamı sağlar.
+# Tanım: Sahte bir kök ortamı sağlar.
 # URL: http://packages.debian.org/fakeroot
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=fakeroot
 version=1.20.2

@@ -1,7 +1,7 @@
-# Description: Gnome uygulamalari icin konfigurasyon database 
+# Tanım: Gnome uygulamalari icin konfigurasyon database 
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: dbus-glib intltool libxml2 gobject-introspection gtk3 polkit
+# Paketçi: milisarge
+# Gerekler: dbus-glib intltool libxml2 gobject-introspection gtk3 polkit
 
 name=gconf
 version=3.2.6

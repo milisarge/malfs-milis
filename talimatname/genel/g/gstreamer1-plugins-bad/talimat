@@ -1,7 +1,7 @@
-# Description: GStreamer Bad Plug-ins, diğerlerine kıyasla eşit olmayan bir dizi eklentidir.
+# Tanım: GStreamer Bad Plug-ins, diğerlerine kıyasla eşit olmayan bir dizi eklentidir.
 # URL: http://gstreamer.freedesktop.org/modules/gst-plugins-bad.html
-# Packager: milisarge
-# Depends on: gstreamer1-plugins-base libdvdread libdvdnav faac faad2 libexif libmpeg2 mpg123
+# Paketçi: milisarge
+# Gerekler: gstreamer1-plugins-base libdvdread libdvdnav faac faad2 libexif libmpeg2 mpg123
 
 name=gstreamer1-plugins-bad
 version=1.6.3

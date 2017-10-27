@@ -1,7 +1,7 @@
-# Description: X11'de numlock tuşunu açar
+# Tanım: X11'de numlock tuşunu açar
 # URL: https://admin.fedoraproject.org/pkgdb/package/rpms/numlockx/
-# Packager: milisarge
-# Depends on: xorg-libxtst
+# Paketçi: milisarge
+# Gerekler: xorg-libxtst
 
 name=numlockx
 version=1.2

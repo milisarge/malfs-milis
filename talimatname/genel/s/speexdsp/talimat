@@ -1,7 +1,7 @@
-# Description: DSP library derived from Speex
+# Tanım: DSP library derived from Speex
 # URL: http://downloads.us.xiph.org
-# Packager: milisarge
-# Depends on:
+# Paketçi: milisarge
+# Gerekler:
 
 name=speexdsp
 version=1.2rc3

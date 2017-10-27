@@ -1,7 +1,7 @@
-# Description: Çok yönlü bir kaynak istatistik aracı
+# Tanım: Çok yönlü bir kaynak istatistik aracı
 # URL:  http://dag.wieers.com/home-made/dstat/
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=dstat
 version=0.7.3

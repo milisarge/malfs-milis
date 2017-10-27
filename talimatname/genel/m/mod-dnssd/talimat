@@ -1,7 +1,7 @@
-# Description: Apache için Zeroconf modülü
+# Tanım: Apache için Zeroconf modülü
 # URL: http://0pointer.de/lennart/projects/mod_dnssd
-# Packager: milisarge
-# Depends on: avahi apache
+# Paketçi: milisarge
+# Gerekler: avahi apache
 
 _name=mod_dnssd
 name=mod-dnssd

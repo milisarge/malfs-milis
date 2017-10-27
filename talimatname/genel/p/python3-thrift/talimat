@@ -1,7 +1,7 @@
-# Description: python3 için thrift kütüphanesi
+# Tanım: python3 için thrift kütüphanesi
 # URL: https://thrift.apache.org/
-# Packager: milisarge
-# Depends on: python3 python3-setuptools thrift
+# Paketçi: milisarge
+# Gerekler: python3 python3-setuptools thrift
 
 name=python3-thrift
 version=0.10.0

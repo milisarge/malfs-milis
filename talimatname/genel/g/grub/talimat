@@ -1,7 +1,7 @@
-# Description: Çoklu önyükleme yükleyicisi
+# Tanım: Çoklu önyükleme yükleyicisi
 # URL: http://www.gnu.org/software/grub/
 # Pcakager: alihan-ozturk8@hotmail.com
-# Depends on: freetype help2man efivar efibootmgr os-prober dosfstools fuse mtools libisoburn
+# Gerekler: freetype help2man efivar efibootmgr os-prober dosfstools fuse mtools libisoburn
 
 name=grub
 version=2.02-beta3

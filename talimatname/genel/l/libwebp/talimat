@@ -1,7 +1,7 @@
-# Description: WebP kütüphanesi ve dönüştürme araçları
+# Tanım: WebP kütüphanesi ve dönüştürme araçları
 # URL: https://developers.google.com/speed/webp/
-# Packager: milisarge
-# Depends on: libpng libjpeg-turbo libtiff
+# Paketçi: milisarge
+# Gerekler: libpng libjpeg-turbo libtiff
 
 name=libwebp
 version=0.5.0

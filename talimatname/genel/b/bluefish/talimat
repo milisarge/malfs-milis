@@ -1,7 +1,7 @@
-# Description: Deneyimli web geliştiricileri ve programcılar için güçlü bir editör.
+# Tanım: Deneyimli web geliştiricileri ve programcılar için güçlü bir editör.
 # URL: http://bluefish.openoffice.nl/
-# Packager: milisarge
-# Depends on: pcre enchant gtk3 desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: pcre enchant gtk3 desktop-file-utils
 
 name=bluefish
 version=2.2.9

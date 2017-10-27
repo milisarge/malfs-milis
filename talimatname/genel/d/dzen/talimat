@@ -1,7 +1,7 @@
-# Description: General purpose messaging, notification and menuing program for X11.
+# Tanım: General purpose messaging, notification and menuing program for X11.
 # URL:         https://github.com/robm/dzen
 # Maintainer:  6c37 Team, https://github.com/6c37/crux-ports-git/issues
-# Depends on:  xorg-libx11 xorg-libxpm xorg-libxinerama xorg-libxft
+# Gerekler:  xorg-libx11 xorg-libxpm xorg-libxinerama xorg-libxft
 
 name=dzen
 version=git

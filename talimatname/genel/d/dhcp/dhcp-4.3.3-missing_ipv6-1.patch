@@ -3,7 +3,7 @@ Date: 2011-11-23
 Initial Package Version: 4.2.2
 Upstream Status: unknown
 Origin: found at fedora
-Description: Allow dhcp4 to work even if the kernel doesn't support ipv6.
+Tanım: Allow dhcp4 to work even if the kernel doesn't support ipv6.
 Fixed up by hand to apply to 4.2.2 (to me, it looks identical to the 4.2.0
 version, but patch failed in one hunk when I tried to apply that one).
 

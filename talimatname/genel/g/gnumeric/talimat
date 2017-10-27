@@ -1,7 +1,7 @@
-# Description: Gnumeric paketi, sayısal verileri işlemek ve analiz etmek için kullanılan bir elektronik tablo programıdır.
+# Tanım: Gnumeric paketi, sayısal verileri işlemek ve analiz etmek için kullanılan bir elektronik tablo programıdır.
 # URL: http://www.gnumeric.org/
-# Packager: milisarge
-# Depends on : shared-mime-info goffice libglade gconf desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: shared-mime-info goffice libglade gconf desktop-file-utils
 
 name=gnumeric
 version=1.12.27

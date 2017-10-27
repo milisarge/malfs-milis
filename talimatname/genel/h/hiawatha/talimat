@@ -1,7 +1,7 @@
-# Description: Guvenli ve gelişmiş bir webserver
+# Tanım: Guvenli ve gelişmiş bir webserver
 # URL: https://www.hiawatha-webserver.org/
-# Packager: milisarge
-# Depends on : cmake libxslt mbedtls
+# Paketçi: milisarge
+# Gerekler: cmake libxslt mbedtls
 
 name=hiawatha
 version=10.3

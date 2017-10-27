@@ -1,7 +1,7 @@
-# Description: Lua bindings for gnome/gobject using gobject-introspection library
+# Tanım: Lua bindings for gnome/gobject using gobject-introspection library
 # URL: https://github.com/pavouk/lgi
-# Packager: milisarge
-# Depends on: glib libffi lua gobject-introspection
+# Paketçi: milisarge
+# Gerekler: glib libffi lua gobject-introspection
 
 name=lua-lgi
 version=0.9.1

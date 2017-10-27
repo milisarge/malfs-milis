@@ -1,7 +1,7 @@
-# Description: Fontconfig, erişim kitaplığı ve ilkelerin yapılandırması
+# Tanım: Fontconfig, erişim kitaplığı ve ilkelerin yapılandırması
 # URL: http://xorg-fontconfig.org/wiki/
-# Packager: milisarge
-# Depends on: freetype expat libpng 
+# Paketçi: milisarge
+# Gerekler: freetype expat libpng 
 
 _name=fontconfig
 name=xorg-fontconfig

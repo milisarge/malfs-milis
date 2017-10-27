@@ -1,7 +1,7 @@
-# Description: Dosya sistemine erişmek için kullanılan araçların toplanması MS-DOS
+# Tanım: Dosya sistemine erişmek için kullanılan araçların toplanması MS-DOS
 # URL: http://mtools.linux.lu/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=mtools
 version=4.0.18

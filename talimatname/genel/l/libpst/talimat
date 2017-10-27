@@ -1,7 +1,7 @@
-# Description: Outlook .pst dosya çeviricisi
+# Tanım: Outlook .pst dosya çeviricisi
 # URL: http://www.five-ten-sg.com/libpst/
-# Packager: yasarciv67@gmail.com
-# Depends on: python boost libgsf
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: python boost libgsf
 
 name=libpst
 version=0.6.67

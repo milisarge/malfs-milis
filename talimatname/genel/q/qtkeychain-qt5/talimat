@@ -1,7 +1,7 @@
-# Description : Güvenli kimlik bilgisi deposu için destek sağlar
+# Tanım: Güvenli kimlik bilgisi deposu için destek sağlar
 # URL: https://github.com/frankosterfeld/qtkeychain
-# Packager: milisarge
-# Depends on: cmake qt5 icu
+# Paketçi: milisarge
+# Gerekler: cmake qt5 icu
 
 
 name=qtkeychain-qt5

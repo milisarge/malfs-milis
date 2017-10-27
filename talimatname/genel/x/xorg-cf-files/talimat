@@ -1,7 +1,7 @@
-# Description: xorg ayar dosyaları
+# Tanım: xorg ayar dosyaları
 # URL: http://xorg.freedesktop.org
-# Packager: milisarge
-# Depends on: xorg-util-macros
+# Paketçi: milisarge
+# Gerekler: xorg-util-macros
 
 name=xorg-cf-files
 version=1.0.6

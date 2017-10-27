@@ -1,7 +1,7 @@
-# Description: açık kaynak assembler çözücü platformu
+# Tanım: açık kaynak assembler çözücü platformu
 # URL: http://www.capstone-engine.org/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=capstone
 version=4.0-alpha5

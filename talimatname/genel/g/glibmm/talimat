@@ -1,7 +1,7 @@
-# Description: Gtkmm, popüler GTK kitaplığı GTK + için resmi C ++ arayüzüdür.
+# Tanım: Gtkmm, popüler GTK kitaplığı GTK + için resmi C ++ arayüzüdür.
 # URL: http://www.gtkmm.org
-# Packager: milisarge
-# Depends on: libsigc++ glib 
+# Paketçi: milisarge
+# Gerekler: libsigc++ glib 
 
 name=glibmm
 version=2.46.3

@@ -1,7 +1,7 @@
-# Description: GNU CLisp, ANSI Common Lisp uygulamasıdır.
+# Tanım: GNU CLisp, ANSI Common Lisp uygulamasıdır.
 # URL: http://clisp.cons.org/
-# Packager: milisarge
-# Depends on: libsigsegv
+# Paketçi: milisarge
+# Gerekler: libsigsegv
 
 name=clisp
 version=2.49

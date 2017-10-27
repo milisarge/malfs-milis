@@ -1,7 +1,7 @@
-# Description: Podcast aboneliği senkronizasyonu aracı
+# Tanım: Podcast aboneliği senkronizasyonu aracı
 # URL: http://thp.io/2010/mygpoclient
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=mygpoclient
 version=1.7

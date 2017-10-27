@@ -1,7 +1,7 @@
-# Description: Özellikle genişletilebilir, ilişkili gerçek zamanlı metin editörü
+# Tanım: Özellikle genişletilebilir, ilişkili gerçek zamanlı metin editörü
 # URL: https://www.gnu.org/software/emacs/
-# Packager: milisarge
-# Depends on: gtk2 desktop-file-utils libjpeg-turbo giflib
+# Paketçi: milisarge
+# Gerekler: gtk2 desktop-file-utils libjpeg-turbo giflib
 
 name=emacs
 version=24.5

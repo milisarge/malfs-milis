@@ -1,7 +1,7 @@
-# Description: Vamp ses analizi eklentisi sistemi
+# Tanım: Vamp ses analizi eklentisi sistemi
 # URL: http://www.vamp-plugins.org/
-# Packager: milisarge
-# Depends on: libsndfile 
+# Paketçi: milisarge
+# Gerekler: libsndfile 
 
 name=vamp-plugin-sdk
 version=2.6

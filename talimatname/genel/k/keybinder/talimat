@@ -1,7 +1,7 @@
-# Description: Genel tuş vuruşlarını kaydetmek için bir kütüphane
+# Tanım: Genel tuş vuruşlarını kaydetmek için bir kütüphane
 # URL: https://github.com/engla/keybinder
-# Packager: milisarge
-# Depends on: gtk2 python-gtk gobject-introspection
+# Paketçi: milisarge
+# Gerekler: gtk2 python-gtk gobject-introspection
 
 name=keybinder
 version=0.3.1

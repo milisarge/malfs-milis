@@ -1,7 +1,7 @@
-# Description: GNOME anahtarlık istemci kitaplığı
+# Tanım: GNOME anahtarlık istemci kitaplığı
 # URL: http://www.gnome.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: python dbus glib intltool libgcrypt gobject-introspection vala 
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: python dbus glib intltool libgcrypt gobject-introspection vala 
 
 name=libgnome-keyring
 version=3.12.0

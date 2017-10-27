@@ -1,7 +1,7 @@
-# Description: Libunistring, Unicode dizelerinin değiştirilmesi için işlevler sağlayan bir kitaplıktır
+# Tanım: Libunistring, Unicode dizelerinin değiştirilmesi için işlevler sağlayan bir kitaplıktır
 # URL: http://www.gnu.org/software/bison/
-# Packager: milisarge
-# Depends on: 
+# Paketçi: milisarge
+# Gerekler: 
 
 name=libunistring
 version=0.9.6

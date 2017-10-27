@@ -1,7 +1,7 @@
-# Description: Sade,hızlı,çoğl platform destekli multimedya kütüphanesi
+# Tanım: Sade,hızlı,çoğl platform destekli multimedya kütüphanesi
 # URL: http://www.sfml-dev.org/
-# Packager: milisarge
-# Depends on: flac freetype libjpeg-turbo libvorbis xorg-mesa openal util-linux xorg-libsm xorg-libxrandr xcb-util-image
+# Paketçi: milisarge
+# Gerekler: flac freetype libjpeg-turbo libvorbis xorg-mesa openal util-linux xorg-libsm xorg-libxrandr xcb-util-image
 
 name=sfml
 version=2.4.2

@@ -1,7 +1,7 @@
-# Description: Gerçek zamanlı MIDI giriş/çıkış için platform bağımsız kütüphane
+# Tanım: Gerçek zamanlı MIDI giriş/çıkış için platform bağımsız kütüphane
 # URL: http://portmedia.sourceforge.net
-# Packager: milisarge
-# Depends on: cmake glib alsa-lib openjdk
+# Paketçi: milisarge
+# Gerekler: cmake glib alsa-lib openjdk
 
 name=portmidi
 version=217

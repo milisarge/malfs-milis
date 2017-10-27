@@ -1,7 +1,7 @@
-# Description: Bu pakette GNOME masaüstü tarafından kullanılan varsayılan simge teması bulunur.
+# Tanım: Bu pakette GNOME masaüstü tarafından kullanılan varsayılan simge teması bulunur.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: hicolor-icon-theme, gtk-update-icon-cache, icon-naming-utils, intltool
+# Paketçi: milisarge
+# Gerekler: hicolor-icon-theme, gtk-update-icon-cache, icon-naming-utils, intltool
 
 name=gnome-icon-theme
 version=3.12.0

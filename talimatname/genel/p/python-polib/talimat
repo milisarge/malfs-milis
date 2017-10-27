@@ -1,7 +1,7 @@
-# Description : Gettext dosyalarını işlemek için bir kütüphane
+# Tanım: Gettext dosyalarını işlemek için bir kütüphane
 # URL: http://polib.readthedocs.org/en/latest/index.html
-# Packager: milisarge
-# Depends on: python
+# Paketçi: milisarge
+# Gerekler: python
 
 name=python-polib
 version=1.0.4

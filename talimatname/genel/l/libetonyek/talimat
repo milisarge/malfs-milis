@@ -1,7 +1,7 @@
-# Description: Apple Keynote sunumlarını okumak ve dönüştürmek için kullanılan kütüphane ve araçlar
+# Tanım: Apple Keynote sunumlarını okumak ve dönüştürmek için kullanılan kütüphane ve araçlar
 # URL: https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
-# Packager: Cihan Alkan
-# Depends on: libxml2 boost librevenge doxygen mdds libwpd liblangtag glm
+# Paketçi: Cihan Alkan
+# Gerekler: libxml2 boost librevenge doxygen mdds libwpd liblangtag glm
 
 name=libetonyek
 version=0.1.6

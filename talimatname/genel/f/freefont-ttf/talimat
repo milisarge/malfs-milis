@@ -1,7 +1,7 @@
-# Description: Unicode karakter setini kapsayan ücretsiz anahat yazı tipleri seti
+# Tanım: Unicode karakter setini kapsayan ücretsiz anahat yazı tipleri seti
 # URL: http://www.nongnu.org/freefont/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: xorg-server
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: xorg-server
 
 name=freefont-ttf
 version=20120503

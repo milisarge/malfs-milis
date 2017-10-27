@@ -1,7 +1,7 @@
-# Description: Akonadi içerisinde aramak için gerekli kütüphaneler ve artsüreçler.
+# Tanım: Akonadi içerisinde aramak için gerekli kütüphaneler ve artsüreçler.
 # URL: https://projects.kde.org/akonadi
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-extra-cmake-modules boost kf5-kdoctools kf5-kdelibs4support xapian akonadi kf5-ki18n kf5-kconfig kf5-kcrash  kcontacts kmime kcalcore kf5-kcmutils kf5-krunner akonadi-mime
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-extra-cmake-modules boost kf5-kdoctools kf5-kdelibs4support xapian akonadi kf5-ki18n kf5-kconfig kf5-kcrash  kcontacts kmime kcalcore kf5-kcmutils kf5-krunner akonadi-mime
 
 name=akonadi-search
 version=16.08.2

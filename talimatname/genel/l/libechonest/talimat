@@ -1,7 +1,7 @@
-# Description: Echo Nest ile arabirim oluşturmak için C ++ kütüphanesi (qt5 sürümünü oluşturur)
+# Tanım: Echo Nest ile arabirim oluşturmak için C ++ kütüphanesi (qt5 sürümünü oluşturur)
 # URL: https://projects.kde.org/projects/playground/libs/libechonest
-# Packager: milisarge
-# Depends on: qt5
+# Paketçi: milisarge
+# Gerekler: qt5
 
 name=libechonest
 version=2.3.1

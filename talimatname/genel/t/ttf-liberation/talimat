@@ -1,7 +1,7 @@
-# Description: Red Hats Liberation yazı tipleri.
+# Tanım: Red Hats Liberation yazı tipleri.
 # URL: https://www.redhat.com/promo/fonts/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: xorg-fontconfig xorg-font-util xorg-encodings fontforge
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: xorg-fontconfig xorg-font-util xorg-encodings fontforge
 
 name=ttf-liberation
 version=2.00.1

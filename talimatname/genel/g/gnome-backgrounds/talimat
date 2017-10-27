@@ -1,7 +1,7 @@
-# Description: GNOME için arkaplan resim ve verileri
+# Tanım: GNOME için arkaplan resim ve verileri
 # URL: http://www.gnome.org/
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool
 
 name=gnome-backgrounds
 version=3.22.1

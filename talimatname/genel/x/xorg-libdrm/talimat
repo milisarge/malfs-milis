@@ -1,7 +1,7 @@
-# Description: Çekirdek DRM servislerine kullanıcı alanı arayüzü.
+# Tanım: Çekirdek DRM servislerine kullanıcı alanı arayüzü.
 # URL: http://dri.freedesktop.org/
-# Packager: milisarge
-# Depends on: docbook-xsl libxslt xorg-util-macros xorg-libpciaccess 
+# Paketçi: milisarge
+# Gerekler: docbook-xsl libxslt xorg-util-macros xorg-libpciaccess 
 
 _name=libdrm
 name=xorg-libdrm

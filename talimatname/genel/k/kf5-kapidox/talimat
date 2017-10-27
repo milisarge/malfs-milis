@@ -1,7 +1,7 @@
-# Description: Çerçeveler API Belgeleri Araçları
+# Tanım: Çerçeveler API Belgeleri Araçları
 # URL: https://www.kde.org/
-# Packager: alihan-ozturk28@hotmail.com
-# Depends on: kf5-attica doxygen python-pyyaml
+# Paketçi: alihan-ozturk28@hotmail.com
+# Gerekler: kf5-attica doxygen python-pyyaml
 
 name=kf5-kapidox
 version=5.27.0

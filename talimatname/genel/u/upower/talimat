@@ -1,7 +1,7 @@
-# Description: UPower, güç aygıtlarını numaralandırmak, aygıt olaylarını dinlemek ve geçmişi ve istatistikleri sorgulamak için bir soyutlamadır.
+# Tanım: UPower, güç aygıtlarını numaralandırmak, aygıt olaylarını dinlemek ve geçmişi ve istatistikleri sorgulamak için bir soyutlamadır.
 # URL: http://upower.freedesktop.org
-# Packager: yasarciv milisarge
-# Depends on: dbus-glib libusb intltool polkit gobject-introspection libgudev pm-utils
+# Paketçi: yasarciv milisarge
+# Gerekler: dbus-glib libusb intltool polkit gobject-introspection libgudev pm-utils
 
 name=upower
 version=0.99.4

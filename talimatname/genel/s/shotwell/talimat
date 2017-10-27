@@ -1,7 +1,7 @@
-# Description: GNOME masaüstü ortamı için tasarlanmış bir dijital fotoğraf düzenleyicisi.
+# Tanım: GNOME masaüstü ortamı için tasarlanmış bir dijital fotoğraf düzenleyicisi.
 # URL: http://www.gnome.org
-# Packager: yasarciv67@gmail.com
-# Depends on: dconf desktop-file-utils hicolor-icon-theme gnome-doc-utils json-glib libgphoto2 libgee libgexiv2 gtk3 libgudev libraw libsoup libxml2 librest gstreamer1-plugins-base webkit2gtk3
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: dconf desktop-file-utils hicolor-icon-theme gnome-doc-utils json-glib libgphoto2 libgee libgexiv2 gtk3 libgudev libraw libsoup libxml2 librest gstreamer1-plugins-base webkit2gtk3
 
 name=shotwell
 version=0.23.7

@@ -1,7 +1,7 @@
-# Description: Basitliğe ve ses kalitesine odaklanmış Winamp benzeri hafif bir müzik çalar.
+# Tanım: Basitliğe ve ses kalitesine odaklanmış Winamp benzeri hafif bir müzik çalar.
 # URL: http://audacious-media-player.org
-# Packagers: milisarge
-# Depends on: glib gtk2 python xorg-libsm gnome-icon-theme hicolor-icon-theme desktop-file-utils
+# Paketçi: milisarge
+# Gerekler: glib gtk2 python xorg-libsm gnome-icon-theme hicolor-icon-theme desktop-file-utils
 
 name=audacious
 version=3.7.2

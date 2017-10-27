@@ -1,8 +1,8 @@
-# Description: Cairo vektör grafik kütüphanesine C ++ bağları
+# Tanım: Cairo vektör grafik kütüphanesine C ++ bağları
 # URL: http://cairographics.org/
 # Maintainer: Murray Cumming <murrayc@murrayc.com>
-# Packager: milisarge
-# Depends on: cairo,libsigc++
+# Paketçi: milisarge
+# Gerekler: cairo,libsigc++
 
 name=cairomm
 version=1.12.0

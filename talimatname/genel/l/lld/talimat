@@ -1,7 +1,7 @@
-# Description: LLVM linker
+# Tanım: LLVM linker
 # URL:         http://llvm.org/
-# Packager:    milisarge
-# Depends on:  llvm cmake
+# Paketçi:    milisarge
+# Gerekler:  llvm cmake
 
 name=lld
 version=4.0.0

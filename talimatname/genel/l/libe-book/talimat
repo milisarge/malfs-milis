@@ -1,7 +1,7 @@
-# Description: e-kitap formatları için kütüphane
+# Tanım: e-kitap formatları için kütüphane
 # URL: http://sourceforge.net/projects/libebook/
-# Packager: milisarge
-# Depends on: boost cppunit doxygen librevenge libxml2 
+# Paketçi: milisarge
+# Gerekler: boost cppunit doxygen librevenge libxml2 
 
 name=libe-book
 version=0.1.2

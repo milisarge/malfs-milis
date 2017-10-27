@@ -1,7 +1,7 @@
-# Description: GTK-Doc, C koduna eklenen yorumlardan API dokümantasyonu üretmeye başlayan bir projedir.
+# Tanım: GTK-Doc, C koduna eklenen yorumlardan API dokümantasyonu üretmeye başlayan bir projedir.
 # URL: http://www.gnome.org/
-# Packager: milisarge
-# Depends on: docbook-xml docbook-xsl itstool libxslt
+# Paketçi: milisarge
+# Gerekler: docbook-xml docbook-xsl itstool libxslt
 
 name=gtk-doc
 version=1.25

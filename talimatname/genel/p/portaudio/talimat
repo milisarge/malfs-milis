@@ -1,7 +1,7 @@
-# Description: Ücretsiz, çapraz platform, açık kaynak, ses G/Ç kitaplığı
+# Tanım: Ücretsiz, çapraz platform, açık kaynak, ses G/Ç kitaplığı
 # URL: http://www.portaudio.com
-# Packager: milisarge
-# Depends on: jack 
+# Paketçi: milisarge
+# Gerekler: jack 
 
 name=portaudio
 version=19_20140130

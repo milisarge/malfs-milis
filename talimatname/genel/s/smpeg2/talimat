@@ -1,7 +1,7 @@
-# Description: SDL2 MPEG Player Library
+# Tanım: SDL2 MPEG Player Library
 # URL: http://icculus.org/smpeg/
-# Packager: milisarge
-# Depends on: sdl2 
+# Paketçi: milisarge
+# Gerekler: sdl2 
 
 name=smpeg2
 version=2.0.0

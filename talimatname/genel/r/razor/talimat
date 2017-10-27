@@ -1,7 +1,7 @@
-# Description: Dağıtılmış, ortak çalışan, spam tespit ve filtreleme ağı.
+# Tanım: Dağıtılmış, ortak çalışan, spam tespit ve filtreleme ağı.
 # URL: http://search.cpan.org/
-# Packager: milisarge
-# Depends on: perl perl-net-dns perl-digest-sha1 perl-uri perl-digest-nilsimsa 
+# Paketçi: milisarge
+# Gerekler: perl perl-net-dns perl-digest-sha1 perl-uri perl-digest-nilsimsa 
 
 name=razor
 version=2.85

@@ -1,7 +1,7 @@
-# Description: Ortaya çıkan JPEG-2000 Bölüm 1'de belirtilen codec bileşeninin yazılım tabanlı bir uygulaması
+# Tanım: Ortaya çıkan JPEG-2000 Bölüm 1'de belirtilen codec bileşeninin yazılım tabanlı bir uygulaması
 # URL: http://www.ece.uvic.ca/~mdadams/jasper/
-# Packager: milisarge
-# Depends on: libjpeg-turbo
+# Paketçi: milisarge
+# Gerekler: libjpeg-turbo
 
 name=jasper
 version=1.900.1

@@ -1,7 +1,7 @@
-# Description: Kablosuz Uzantıları değiştirmeye izin veren araçlar
+# Tanım: Kablosuz Uzantıları değiştirmeye izin veren araçlar
 # URL: http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
-# Packager: milisarge@gmail.com
-# Depends on: 
+# Paketçi: milisarge@gmail.com
+# Gerekler: 
 
 name=wireless-tools
 version=29

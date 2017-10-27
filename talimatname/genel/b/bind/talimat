@@ -1,7 +1,7 @@
-# Description: BIND, Etki Alanı Ad Sistemi (DNS) bilgilerini İnternet'te yayınlamanızı ve kullanıcılarınız için DNS sorgularını çözmeyi sağlayan açık kaynaklı bir yazılımdır.
+# Tanım: BIND, Etki Alanı Ad Sistemi (DNS) bilgilerini İnternet'te yayınlamanızı ve kullanıcılarınız için DNS sorgularını çözmeyi sağlayan açık kaynaklı bir yazılımdır.
 # URL: http://www.isc.org/downloads/bind/
-# Packager: milisarge
-# Depends on: kerberos libxml2
+# Paketçi: milisarge
+# Gerekler: kerberos libxml2
 
 name=bind
 version=9.10.3.p2

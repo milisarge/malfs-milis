@@ -1,7 +1,7 @@
-# Description: Libusb-compat paketi libusb-0.1 gibi görünme, hissetme ve davranmayı amaçlamaktadır.
+# Tanım: Libusb-compat paketi libusb-0.1 gibi görünme, hissetme ve davranmayı amaçlamaktadır.
 # URL: https://sourceforge.net/p/libusb/wiki/Home/
-# Packager: milisarge
-# Depends on: libusb 
+# Paketçi: milisarge
+# Gerekler: libusb 
 
 name=libusb-compat
 version=0.1.5

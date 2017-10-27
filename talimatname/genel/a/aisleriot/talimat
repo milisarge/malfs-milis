@@ -1,7 +1,7 @@
-# Description: Guile şemasında yazılmış sabır oyunları topluluğu
+# Tanım: Guile şemasında yazılmış sabır oyunları topluluğu
 # URL: https://wiki.gnome.org/Apps/Aisleriot
-# Packager: yasarciv67@gmail.com
-# Depends on: intltool itstool docbook-xsl yelp-tools appstream-glib gnome-common gtk3 librsvg libcanberra gconf dconf tdb desktop-file-utils guile
+# Paketçi: yasarciv67@gmail.com
+# Gerekler: intltool itstool docbook-xsl yelp-tools appstream-glib gnome-common gtk3 librsvg libcanberra gconf dconf tdb desktop-file-utils guile
 
 name=aisleriot
 version=3.22.2

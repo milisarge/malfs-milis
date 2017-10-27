@@ -1,7 +1,7 @@
-# Description: Python paketlerindeki scm verilerinin yönetimini sağlayan setuptools eklentisi
+# Tanım: Python paketlerindeki scm verilerinin yönetimini sağlayan setuptools eklentisi
 # URL: https://github.com/pypa/setuptools_scm
-# Packager: milisarge
-# Depends on: python3 sqlite python3-setuptools
+# Paketçi: milisarge
+# Gerekler: python3 sqlite python3-setuptools
 
 name=python3-setuptools-scm
 version=1.15.6

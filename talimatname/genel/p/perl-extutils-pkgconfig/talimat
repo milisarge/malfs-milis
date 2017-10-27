@@ -1,7 +1,7 @@
-# Description: Pkgconfig için Perl bağlayıcısı
+# Tanım: Pkgconfig için Perl bağlayıcısı
 # URL: http://search.cpan.org/~xaoc/ExtUtils-PkgConfig-1.15/lib/ExtUtils/PkgConfig.pm
-# Packager: milisarge
-# Depends on: perl-extutils-depends 
+# Paketçi: milisarge
+# Gerekler: perl-extutils-depends 
 
 name=perl-extutils-pkgconfig
 version=1.15
