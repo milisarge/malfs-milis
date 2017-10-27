@@ -9,8 +9,7 @@ E_UNPACK=5     # error during unpacking of source file(s)
 E_MD5=6        # md5sum verification failed
 E_FOOTPRINT=7  # footprint check failure
 E_BUILD=8      # error while running 'build()'
-E_INSTALL=9    # error while installing the package via 'pkgadd'
-E_DEPS=10      # error while searching runtime deps via 'pkginfo -b'
+E_INSTALL=9    # paket kurulum hatası (mps -k)
 
 info() {
 	echo "=======> $1"
@@ -621,36 +620,7 @@ add_meta_to_archive() {
 	echo "B$PKGMK_BUILDVER" >> .META
 	echo "a$ARCH" >> .META
 	echo "G$GRUP" >> .META
-	# TODO improve the pkginfo --runtimedepfiles functionnality
-	if [ "$PKGMK_IGNORE_RUNTIMEDEPS" == "yok" ];then
-		for dep in `pkginfo --runtimedepfiles $TAR|grep -v ^[A-Z]`; do
-			echo "R$dep" >> .META
-		done
-		# We don't want any .devel dependencies here
-		sed -i '/^R[[a-z0-9]*[-_+]*]*\.devel/d' .META
-		if [ ! -z $run ] && [ "$NAME" == "$name" ]; then
-			info "Adding runtime deps to Archive $NAME"
-			for rd in ${run[@]}; do
-				if [ "`pkginfo -b $rd`" == "0" ] || [ "`pkginfo -b $rd`" == "" ]; then
-					error "Runtime dependencie $rd not found, cannot continue"
-					clean
-					exit $E_DEPS;
-				fi
-				echo "R$rd`pkginfo -b $rd`" >> .META
-			done
-		fi
-		if [ -f $PKGMK_ROOT/${NAME}.run ]; then
-			info "Adding runtime deps to Archive $NAME"
-			for rd in `cat $PKGMK_ROOT/${NAME}.run`; do
-				if [ "`pkginfo -b $rd`" == "0" ] || [ "`pkginfo -b $rd`" == "" ]; then
-					error "Runtime dependencie $rd not found, cannot continue"
-					clean
-					exit $E_DEPS;
-				fi
-				echo "R$rd`pkginfo -b $rd`" >> .META
-			done
-		fi
-	fi
+	
 	bsdtar -tf $PAKETLEME_DIZIN/$1 > .MTREE
 
 	rm $PAKETLEME_DIZIN/$1
@@ -880,7 +850,7 @@ install_package() {
 		if [ "`get_package_arch $TARGET`" = "$MIMARI" ] || [ "`get_package_arch $TARGET`" = "any" ]; then
 			info "kuruluyor '$TARGET'."
 				
-			if [ "$DERLE_KUR" = "install" ]; then
+			if [ "$DERLE_KUR" = "kur" ]; then
 				COMMAND="mps -k $PAKETLEME_DIZIN/$TARGET"
 			else
 				COMMAND="mps -k $PAKETLEME_DIZIN/$TARGET"
@@ -920,12 +890,6 @@ paket_kur() {
 
 			echo "$COMMAND2"
 			$COMMAND2
-			
-			if [ "$DERLE_KUR" = "install" ]; then
-				COMMAND="pkgadd $PAKETLEME_DIZIN/$TARGET"
-			else
-				COMMAND="pkgadd -u $PAKETLEME_DIZIN/$TARGET"
-			fi
 			
 			cd $PKGMK_ROOT
 			echo "$COMMAND"
@@ -1120,11 +1084,11 @@ parse_options() {
 	while [ "$1" ]; do
 		case $1 in
 			-i|--install)
-				DERLE_KUR="install" ;;
+				DERLE_KUR="kur" ;;
 			-pk|--pkur)
 				PAKET_KURMA="evet" ;;
 			-u|--upgrade)
-				DERLE_KUR="upgrade" ;;
+				DERLE_KUR="guncelle" ;;
 			-r|--recursive)
 				PKGMK_RECURSIVE="evet" ;;
 			-d|--download)
@@ -1246,40 +1210,43 @@ main() {
 		echo "$version"
 		exit 0
 	fi
-	info "DERLE_KUR: $DERLE_KUR"
-	info "PAKET_KURMA: $PAKET_KURMA"
-	info "DERLEME_SANTIYE: $DERLEME_SANTIYE"
-	info "DERLEME_KAYNAKDIZIN: $DERLEME_KAYNAKDIZIN"
+	
+	## bu bilgiler gösterilmeyecek<
+	#info "DERLE_KUR: $DERLE_KUR"
+	#info "PAKET_KURMA: $PAKET_KURMA"
+	#info "DERLEME_SANTIYE: $DERLEME_SANTIYE"
+	#info "DERLEME_KAYNAKDIZIN: $DERLEME_KAYNAKDIZIN"
 
-	if [ "$DERLE_KUR" = "yok" ]; then
-		PKGMK_CLEAN="yok"
-		warning "TEMIZLIK PAS GECILDI."
-	else
-		info "PKGMK_KEEP_SOURCES: $PKGMK_KEEP_SOURCES"
-		info "PKGMK_CLEAN: $PKGMK_CLEAN"
-	fi
-	if [ "$PKGMK_CLEAN" != "yok" ]; then
-		DOSYAIZLEME_YOKSAY="evet"
-		MD5SUM_YOKSAY="evet"
-		warning "FOOTPRINT AND MD5SUM IGNORED"
-	else
-		if [ "$PKGMK_UPDATE_REPO" != "evet" ]; then
-			info "REPO_YOKSAY: $REPO_YOKSAY"
-		else
-			info "PKGMK_UPDATE_REPO: $PKGMK_UPDATE_REPO"
-		fi
-		info "DOSYAIZLEME_YOKSAY: $DOSYAIZLEME_YOKSAY"
-		info "MD5SUM_YOKSAY: $MD5SUM_YOKSAY"	
-	fi
-	if [ "$REPO_YOKSAY"  == "evet" ]; then
-		info "$REPO_DOSYASI dosyası silenecek"
-	fi
+	#if [ "$DERLE_KUR" = "yok" ]; then
+	#	PKGMK_CLEAN="yok"
+	#	warning "TEMIZLIK PAS GECILDI."
+	#else
+	#	info "PKGMK_KEEP_SOURCES: $PKGMK_KEEP_SOURCES"
+	#	info "PKGMK_CLEAN: $PKGMK_CLEAN"
+	#fi
+	#if [ "$PKGMK_CLEAN" != "yok" ]; then
+	#	DOSYAIZLEME_YOKSAY="evet"
+	#	MD5SUM_YOKSAY="evet"
+	#	warning "FOOTPRINT AND MD5SUM IGNORED"
+	#else
+	#	if [ "$PKGMK_UPDATE_REPO" != "evet" ]; then
+	#		info "REPO_YOKSAY: $REPO_YOKSAY"
+	#	else
+	#		info "PKGMK_UPDATE_REPO: $PKGMK_UPDATE_REPO"
+	#	fi
+	#	info "DOSYAIZLEME_YOKSAY: $DOSYAIZLEME_YOKSAY"
+	#	info "MD5SUM_YOKSAY: $MD5SUM_YOKSAY"	
+	#fi
+	#if [ "$REPO_YOKSAY"  == "evet" ]; then
+	#	info "$REPO_DOSYASI dosyası silenecek"
+	#fi
+	
 
-	info "PKT_SIKISTIRMA: $PKT_SIKISTIRMA"
-	if [ "$PKT_SIKISTIRMA" != "yok" ]; then
-		info "PKT_SIKISTIRMA_MODU: $PKT_SIKISTIRMA_MODU"
-	fi
-
+	#info "PKT_SIKISTIRMA: $PKT_SIKISTIRMA"
+	#if [ "$PKT_SIKISTIRMA" != "yok" ]; then
+	#	info "PKT_SIKISTIRMA_MODU: $PKT_SIKISTIRMA_MODU"
+	#fi
+    ## >bu bilgiler gösterilmeyecek
 	info "isim: ${name}"
 	if [ ! -z "$version" ]; then
 		info "versiyon: $version"
@@ -1484,7 +1451,6 @@ MD5SUM_YOKSAY="evet"
 SURUM_YOKSAY="yok"
 REPO_YOKSAY="evet"
 KOLEKSIYON_YOKSAY="evet"
-PKGMK_IGNORE_RUNTIMEDEPS="evet"
 
 PKGMK_NO_STRIP="yok"
 
