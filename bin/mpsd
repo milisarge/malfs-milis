@@ -475,37 +475,7 @@ make_work_dir() {
 remove_work_dir() {
 	rm -rf $DERLEME_SANTIYE
 }
-pack_lib() {
-	local DIR SUBDIR
-	for DIR in usr opt/*; do
-		for SUBDIR in lib lib64; do
-			if [ -d $DIR/$SUBDIR/pkgconfig ]; then
-				mv $DIR/$SUBDIR/pkgconfig $PKG
-			fi
-			if [ -d $DIR/$SUBDIR ]; then
-				bsdtar -r -f \
-				$PAKETLEME_DIZIN/${name}.${group}#$version-${MIMARI}.${PKT_UZANTISI} \
-				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
-				rm -r $DIR/$SUBDIR
-				j=1
-			fi
-			if [ -d $PKG/pkgconfig ]; then
-				mkdir $DIR/$SUBDIR
-				mv $PKG/pkgconfig $DIR/$SUBDIR/pkgconfig
-			fi
-		done
-	done
-}
-remove_lib() {
-	local DIR SUBDIR
-	for DIR in usr opt/*; do
-		for SUBDIR in lib lib64;do
-			if [ -d $DIR/$SUBDIR ]; then
-				rm -r $DIR/$SUBDIR
-			fi
-		done
-	done
-}
+
 pack_devel() {
 	local DIR SUBDIR
 	for DIR in usr opt/*; do
@@ -577,21 +547,7 @@ remove_man() {
 		done
 	done
 }
-pack_service() {
-	local DIR="etc/rc.d"
-	if [ -d $DIR ]; then
-		bsdtar -r -f \
-		$PAKETLEME_DIZIN/${name}.${group}#$version-any.${PKT_UZANTISI} \
-		$DIR || BUILD_SUCCESSFUL="yok"
-		j=1
-	fi
-}
-remove_service() {
-	local DIR="etc/rc.d"
-	if [ -d $DIR ]; then
-		rm -r $DIR
-	fi
-}
+
 add_meta_files() {
 	local NAME
 	NAME="`get_package_name $1`"
