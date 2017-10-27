@@ -269,8 +269,10 @@ paket_bilgi(){
 		ryaz 32 "DEVİR      :" ${satir:1:${#satir}-1}
 		satir=`sed -n '9p' <  $VT/"$paket"/META`
 		ryaz 32 "PAKETLENME :" `date -d @${satir:1:${#satir}-1}`
-		#satir=`sed -n '4p' <  $VT/"$paket"/META`
-		#ryaz 32 "YP:" ${satir:1:${#satir}-1} 
+		satir=`sed -n '10p' <  $VT/"$paket"/META`
+		ryaz 32 "MİMARİ     :" ${satir:1:${#satir}-1}
+		satir=`sed -n '11p' <  $VT/"$paket"/META`
+		ryaz 32 "GRUP       :" ${satir:1:${#satir}-1}
 	elif [ "$kkont" = "degil" ];then
 		ryaz 31 "$1 $_paket_kurulu_degil"
 	else

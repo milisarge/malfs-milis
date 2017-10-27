@@ -571,7 +571,7 @@ add_meta_files() {
 }
 
 add_meta_to_archive() {
-	local NAME TAR SIZE_I DESC URL PACK MAINT ARCH
+	local NAME TAR SIZE_I DESC URL PACK MAINT ARCH GRUP
 	NAME="`get_package_name $1`"
 	ARCH="`get_package_arch $1`"
 
@@ -587,22 +587,27 @@ add_meta_to_archive() {
 	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
 		DESC="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^desc|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
 	else
-		DESC="n.a"
+		DESC="belirsiz"
 	fi
 	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^pack|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
 		PACK="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^pack|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
 	else
-		PACK="n.a"
+		PACK="belirsiz"
 	fi
 	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^maint|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
 		MAINT="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^maint|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
 	else
-		MAINT="n.a"
+		MAINT="belirsiz"
 	fi
 	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^url|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
 		URL="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^url|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
 	else
-		URL="n.a"
+		URL="belirsiz"
+	fi
+	if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^Grup|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then
+		GRUP="`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^Grup|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"
+	else
+		GRUP="belirsiz"
 	fi
 	SIZE_I="`du -b $PAKETLEME_DIZIN/$1|sed "s/\t/ /"|cut -d " " -f1`"
 	echo "N$NAME" > .META
@@ -615,6 +620,7 @@ add_meta_to_archive() {
 	echo "r$release" >> .META
 	echo "B$PKGMK_BUILDVER" >> .META
 	echo "a$ARCH" >> .META
+	echo "G$GRUP" >> .META
 	# TODO improve the pkginfo --runtimedepfiles functionnality
 	if [ "$PKGMK_IGNORE_RUNTIMEDEPS" == "yok" ];then
 		for dep in `pkginfo --runtimedepfiles $TAR|grep -v ^[A-Z]`; do
