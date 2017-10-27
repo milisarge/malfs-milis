@@ -720,7 +720,7 @@ build_package() {
 		warning "Packages should be built as root."
 	fi
 	
-	info "Building '$TARGET'."
+	info "Derleniyor '$TARGET'."
 	
 	unpack_source
 		
@@ -975,26 +975,6 @@ build_needed() {
 	echo $RESULT
 }
 
-update_collection_repo()
-{
-	local HEAD BUILD_DATE RELEASE DESCRIPTION URL MAINTAINER PACKAGER EXTENSION
-	if [ -f $REPO_DOSYASI ]; then
-		HEAD=`head -1 $REPO_DOSYASI`
-		if [ "${HEAD:10:1}" = "#" ]; then 
-			BUILD_DATE="`echo $HEAD|cut -d "#" -f1`"
-			EXTENSION="`echo $HEAD|cut -d "#" -f2`"
-			VERSION="`echo $HEAD|cut -d "#" -f3`"
-			RELEASE="`echo $HEAD|cut -d "#" -f4`"
-			DESCRIPTION="`echo $HEAD|cut -d "#" -f5`"
-			URL="`echo $HEAD|cut -d "#" -f6`"
-			MAINTAINER="`echo $HEAD|cut -d "#" -f7`"
-			PACKAGER="`echo $HEAD|cut -d "#" -f8`"
-			[ -f ../$REPO_DOSYASI ] && sed -i "/#$name#/d" ../$REPO_DOSYASI
-			echo "`md5sum $REPO_DOSYASI|cut -d " " -f1`#$BUILD_DATE#$name##$version-#$RELEASE#$DESCRIPTION#$URL#$MAINTAINER#$PACKAGER#$EXTENSION" \
-			>> ../$REPO_DOSYASI
-		fi
-	fi
-}
 update_repo()
 {
 	local FILE MD5SUM EXT
@@ -1288,10 +1268,7 @@ main() {
 		update_repo
 		exit 0
 	fi
-	if [ "$PKGMK_UPDATE_COLLECTION" = "evet" ]; then
-		update_collection_repo
-		exit 0
-	fi
+	
 	if [ "$PKGMK_UPDATE_REPO" = "evet" ]; then
 		update_repo
 		exit 0
@@ -1302,7 +1279,6 @@ main() {
 	fi
 	
 	if [ "$SOZDIZIM_KONTROL" = "evet" ]; then
-		update_collection_repo
 		info "description: $description"
 		info "url: $url"
 		info "packager: $packager"
@@ -1407,9 +1383,7 @@ main() {
 	if [ "$REPO_YOKSAY" != "evet" ] && [ "$PKGMK_CLEAN" != "evet" ]; then
 		update_repo
 	fi
-	if [ "$KOLEKSIYON_YOKSAY" != "evet" ]; then
-		update_collection_repo
-	fi
+	
 	exit 0
 }
 
@@ -1450,7 +1424,6 @@ PKGMK_IGNORE_NEW="evet"
 MD5SUM_YOKSAY="evet"
 SURUM_YOKSAY="yok"
 REPO_YOKSAY="evet"
-KOLEKSIYON_YOKSAY="evet"
 
 PKGMK_NO_STRIP="yok"
 
