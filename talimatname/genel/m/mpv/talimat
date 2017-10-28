@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: sdl2 sndio rsound openal uchardet v4l-utils libcdio-paranoia ffmpeg lcms2 samba ladspa xorg-libxscrnsaver libbluray libvdpau libquvi xorg-libxinerama xorg-libxv libxkbcommon desktop-file-utils hicolor-icon-theme xdg-utils lua lua52 libdvdnav xorg-libxrandr jack 
 
-name=mpv
-version=0.26.0
-release=1
-source=(https://github.com/$name-player/$name/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=mpv
+surum=0.26.0
+devir=1
+kaynak=(https://github.com/$isim-player/$isim/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	
 	./bootstrap.py
 	

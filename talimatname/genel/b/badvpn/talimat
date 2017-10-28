@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: nss cmake
 
-name=badvpn
-version=1.999.130
-release=1
-source=(https://github.com/ambrop72/badvpn/archive/$version.tar.gz
+isim=badvpn
+surum=1.999.130
+devir=1
+kaynak=(https://github.com/ambrop72/badvpn/archive/$surum.tar.gz
 		badvpn-ncd.conf.d)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
 	make
 	make DESTDIR="$PKG" install

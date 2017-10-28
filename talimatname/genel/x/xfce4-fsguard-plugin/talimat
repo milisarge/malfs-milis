@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xfce4-panel 
 
-name=xfce4-fsguard-plugin
-version=1.0.2
-release=2
+isim=xfce4-fsguard-plugin
+surum=1.0.2
+devir=2
 
-source=(http://archive.xfce.org/src/panel-plugins/$name/1.0/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/1.0/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--libexecdir=/usr/lib \

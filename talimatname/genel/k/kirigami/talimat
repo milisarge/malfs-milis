@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 kf5-extra-cmake-modules kf5-plasma-framework
 
-name=kirigami
-version=1.0.2
-release=1
+isim=kirigami
+surum=1.0.2
+devir=1
 
-source=(http://download.kde.org/stable/$name/$name-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/$isim/$isim-$surum.tar.xz)
 
 derle() {
   mkdir build
   cd build
-  cmake ../$name-$version       \
+  cmake ../$isim-$surum       \
     -DCMAKE_BUILD_TYPE=Release  \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib    \

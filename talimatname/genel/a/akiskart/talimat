@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: pcsc-lite ccid openjdk 
 
-name=akiskart
-version=1.6
-release=1
-source=(http://www.akiskart.com.tr/dosyalar/akis_${version}_amd64.deb
+isim=akiskart
+surum=1.6
+devir=1
+kaynak=(http://www.akiskart.com.tr/dosyalar/akis_${surum}_amd64.deb
 		akia)
 
 derle() {
-  ar x ${SRC}/akis_${version}_amd64.deb
+  ar x ${SRC}/akis_${surum}_amd64.deb
   tar -xf data.tar.gz -C "${SRC}"
   rm -rf "${SRC}"/usr/bin
   install -dm755 "${PKG}"/usr

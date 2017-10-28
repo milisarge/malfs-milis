@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libxcb  xcb-util-renderutil xcb-util-image
 
-name=xcb-util-cursor
-version=0.1.3
-release=1
+isim=xcb-util-cursor
+surum=0.1.3
+devir=1
 
-source=(http://xcb.freedesktop.org/dist/xcb-util-cursor-$version.tar.bz2)
+kaynak=(http://xcb.freedesktop.org/dist/xcb-util-cursor-$surum.tar.bz2)
 
 derle() {
-cd $name-*
+cd $isim-*
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

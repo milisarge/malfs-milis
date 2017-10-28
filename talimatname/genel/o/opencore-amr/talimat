@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=opencore-amr
-version=0.1.3
-release=1
+isim=opencore-amr
+surum=0.1.3
+devir=1
 
-source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr --disable-static
   make
   make DESTDIR=$PKG install

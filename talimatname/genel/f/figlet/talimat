@@ -3,16 +3,16 @@
 # Paketçi: Cihan Alkan
 # Gerekler: 
 
-name=figlet
-version=2.2.5
-release=1
-source=(ftp://ftp.figlet.org/pub/figlet/program/unix/$name-$version.tar.gz)
+isim=figlet
+surum=2.2.5
+devir=1
+kaynak=(ftp://ftp.figlet.org/pub/figlet/program/unix/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make DEFAULTFONTDIR=/usr/share/figlet/fonts all
 	make check
 	make DESTDIR=$PKG  BINDIR=/usr/bin MANDIR=/usr/share/man \
 	DEFAULTFONTDIR=/usr/share/figlet/fonts install 
-	install -D -m644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+	install -D -m644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
 }

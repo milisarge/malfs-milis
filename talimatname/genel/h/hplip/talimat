@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: v4l-utils libgphoto2 python3-sip python3-qt5 avahi python3 wget ghostscript foomatic-db foomatic-db-engine usbutils sane xsane cups cups-filters rpcbind libusb libusb-compat net-snmp dbus-python python3-gobject python-notify python3-pillow python3-reportlab
 
-name=hplip
-version=3.16.10
-release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz
+isim=hplip
+surum=3.16.10
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz
         0022-Add-include-cups-ppd.h-in-various-places-as-CUPS-2.2.patch
         fix_tabs.patch)
 
 
 derle() {
-        cd $name-$version
+        cd $isim-$surum
         patch -Np0 -i $SRC/fix_tabs.patch
         patch -Np1 -i $SRC/0022-Add-include-cups-ppd.h-in-various-places-as-CUPS-2.2.patch
 

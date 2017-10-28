@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 colord itstool sane dconf intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama v4l-utils libgphoto2
 
-name=simple-scan
-version=3.12.2
-release=1
+isim=simple-scan
+surum=3.12.2
+devir=1
 
-source=(https://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.xz)
+kaynak=(https://launchpad.net/$isim/${surum%.*}/$surum/+download/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 		--disable-schemas-compile
 	make

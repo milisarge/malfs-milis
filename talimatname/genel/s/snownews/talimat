@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libxml2 gettext perl
 
-name=snownews
-version=1.5.12
-release=1
-source=(http://kiza.kcore.de/software/$name/download/$name-$version.tar.gz)
+isim=snownews
+surum=1.5.12
+devir=1
+kaynak=(http://kiza.kcore.de/software/$isim/download/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   
   ./configure --prefix=/usr \
               --disable-nls

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=filter_audio
-version=master
-release=1
-source=(https://github.com/irungentoo/$name/archive/$version.tar.gz)
+isim=filter_audio
+surum=master
+devir=1
+kaynak=(https://github.com/irungentoo/$isim/archive/$surum.tar.gz)
 
 derle() {
-    mv $DERLEME_KAYNAKDIZIN/$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
-    cd $name-$version
+    mv $DERLEME_KAYNAKDIZIN/$surum.tar.gz $DERLEME_KAYNAKDIZIN/$isim-$surum.tar.gz
+    cd $isim-$surum
     make
     make DESTDIR=$PKG install
 }

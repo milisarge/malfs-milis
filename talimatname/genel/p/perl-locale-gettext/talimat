@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com milisarge
 # Gerekler: 
 
-name=perl-locale-gettext
-version=1.07
-release=1
+isim=perl-locale-gettext
+surum=1.07
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/gettext-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/gettext-$surum.tar.gz)
 
 derle() {
-    cd Locale-gettext-$version
+    cd Locale-gettext-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1

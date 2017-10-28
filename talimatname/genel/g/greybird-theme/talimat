@@ -3,10 +3,10 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk-engine-murrine gtk3
 
-name=greybird-theme
-version=3.22.4
-release=1
-source=(https://github.com/shimmerproject/Greybird/archive/v3.22.4.tar.gz
+isim=greybird-theme
+surum=3.22.4
+devir=1
+kaynak=(https://github.com/shimmerproject/Greybird/archive/v3.22.4.tar.gz
 )
 
 derle() {
@@ -14,7 +14,7 @@ derle() {
 	install -dm 755 "$PKG/usr/share/themes/Greybird Compact"
 	install -dm 755 "$PKG/usr/share/themes/Greybird a11y"
 	
-	cp -r  "Greybird-$version/" "$PKG/usr/share/themes/Greybird/"
+	cp -r  "Greybird-$surum/" "$PKG/usr/share/themes/Greybird/"
 	rm -rf "$PKG/usr/share/themes/Greybird/.gitignore"
 	
 	ln -s  "/usr/share/themes/Greybird/xfwm4-compact" \

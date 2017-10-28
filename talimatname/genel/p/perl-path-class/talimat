@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-path-class
-version=0.33
-release=1
+isim=perl-path-class
+surum=0.33
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/Path-Class-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/Path-Class-$surum.tar.gz)
 
 derle() {
 export PERL_MM_USE_DEFAULT=1 PERL5LIB=""  \
@@ -16,7 +16,7 @@ export PERL_MM_USE_DEFAULT=1 PERL5LIB=""  \
        PERL_MB_OPT="--installdirs vendor" \
        MODULEBUILDRC=/dev/null
 
-cd Path-Class-$version
+cd Path-Class-$surum
 perl Makefile.PL
 make
 make DESTDIR=$PKG install

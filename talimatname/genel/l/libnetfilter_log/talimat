@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libnfnetlink
 
-name=libnetfilter_log
-version=1.0.1
-release=1
-source=(http://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2)
+isim=libnetfilter_log
+surum=1.0.1
+devir=1
+kaynak=(http://www.netfilter.org/projects/$isim/files/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure \
 		--prefix=/usr \
 		--disable-static

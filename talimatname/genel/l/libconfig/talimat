@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libconfig
-version=1.5
-release=2
-source=(http://www.hyperrealm.com/libconfig/libconfig-$version.tar.gz)
+isim=libconfig
+surum=1.5
+devir=2
+kaynak=(http://www.hyperrealm.com/libconfig/libconfig-$surum.tar.gz)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr
 

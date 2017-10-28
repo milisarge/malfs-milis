@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: apr expat unixodbc postgresql
 
-name=apr-util
-version=1.5.4
-release=1
-source=(http://archive.apache.org/dist/apr/$name-$version.tar.bz2)
+isim=apr-util
+surum=1.5.4
+devir=1
+kaynak=(http://archive.apache.org/dist/apr/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --with-apr=/usr \
 --with-gdbm=/usr \

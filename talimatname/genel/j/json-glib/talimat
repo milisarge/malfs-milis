@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gobject-introspection
 
-name=json-glib
-version=1.2.8
-release=1
-source=( http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz )
+isim=json-glib
+surum=1.2.8
+devir=1
+kaynak=( http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz )
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
   	make
   	make DESTDIR=$PKG install

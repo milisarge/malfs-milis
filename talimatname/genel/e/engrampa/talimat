@@ -3,19 +3,19 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: caja intltool itstool gtk3 gzip libarchive tar unzip zip p7zip unrar
 
-name=engrampa
-version=1.18.2
-release=1
-source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz \
-fr-rpm-bsdtar.patch)
+isim=engrampa
+surum=1.18.2
+devir=1
+kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz
+		fr-rpm-bsdtar.patch)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   # This patch 'depends' on libarchive
     patch -Np1 -i "$SRC/fr-rpm-bsdtar.patch"
     ./configure \
         --prefix=/usr \
-        --libexecdir=/usr/lib/$name \
+        --libexecdir=/usr/lib/$isim \
         --disable-packagekit
 
     #https://bugzilla.gnome.org/show_bug.cgi?id=656231

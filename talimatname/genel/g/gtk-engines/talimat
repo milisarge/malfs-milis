@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 lua 
 
-name=gtk-engines
-version=2.20.2	
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk-engines/2.20/$name-$version.tar.bz2)
+isim=gtk-engines
+surum=2.20.2	
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/gtk-engines/2.20/$isim-$surum.tar.bz2)
  
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 	
 	./configure --prefix=/usr 
 	

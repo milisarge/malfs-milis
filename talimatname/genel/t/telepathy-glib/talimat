@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: dbus-glib libxslt gobject-introspection vala 
 
-name=telepathy-glib
-version=0.24.1
-release=1
+isim=telepathy-glib
+surum=0.24.1
+devir=1
 
-source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
+kaynak=(http://telepathy.freedesktop.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib/telepathy \
 --enable-vala-bindings \

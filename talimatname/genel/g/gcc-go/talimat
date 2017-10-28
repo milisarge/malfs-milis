@@ -3,19 +3,19 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=gcc-go
-version=5.3.0
-release=1
+isim=gcc-go
+surum=5.3.0
+devir=1
 
-source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.bz2)
+kaynak=(http://ftp.gnu.org/gnu/gcc/gcc-$surum/gcc-$surum.tar.bz2)
 
 derle() {
-	cd gcc-$version
+	cd gcc-$surum
 	mkdir -v ../gcc-build
 	cd ../gcc-build
 
 	SED=sed \
-	../gcc-$version/configure \
+	../gcc-$surum/configure \
 	--enable-threads=posix \
 	--enable-shared \
 	--enable-__cxa_atexit \

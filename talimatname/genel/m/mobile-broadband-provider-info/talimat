@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: 
 
-name=mobile-broadband-provider-info
-version=20151214
-release=1
+isim=mobile-broadband-provider-info
+surum=20151214
+devir=1
 
-source=(http://download.gnome.org/sources/$name/$version/$name-$version.tar.xz)
+kaynak=(http://download.gnome.org/sources/$isim/$surum/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr
   make
   make DESTDIR=$PKG install

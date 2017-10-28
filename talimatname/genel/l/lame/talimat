@@ -2,15 +2,15 @@
 # URL: http://lame.sourceforge.net/index.php
 # Paketçi: milisarge
 # Gerekler: libsndfile nasm 
-name=lame
-version=3.99.5
-release=2
+isim=lame
+surum=3.99.5
+devir=2
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i -e '/xmmintrin\.h/d' configure
 ./configure --prefix=/usr --enable-mp3rtp --disable-static
 make
-make DESTDIR=$PKG pkghtmldir=/usr/share/doc/$name-$version install
+make DESTDIR=$PKG pkghtmldir=/usr/share/doc/$isim-$surum install
 }

@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules qt5 kf5-kauth kf5-ki18n kf5-kiconthemes kf5-kio kf5-kservice kf5-kwidgetsaddons xfsprogs reiserfsprogs ntfs-3g jfsutils e2fsprogs dosfstools parted
 
-name=kpmcore
-version=2.2.1
-release=1
+isim=kpmcore
+surum=2.2.1
+devir=1
 
-source=( http://download.kde.org/stable/$name/$version/src/$name-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/$isim/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

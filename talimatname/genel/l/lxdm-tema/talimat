@@ -3,13 +3,13 @@
 # Paketçi: milisarge yasarciv
 # Gerekler: lxdm mate-themes
 
-name=lxdm-tema
-version=1.0
-release=1
-source=(https://github.com/yasarciv/$name/archive/$version.tar.gz)
+isim=lxdm-tema
+surum=1.0
+devir=1
+kaynak=(https://github.com/yasarciv/$isim/archive/$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   install -d "$PKG/usr/share/lxdm/themes"
   install -d "$PKG/etc/lxdm"
   cp -r lxdm-themes/Milis-Lxdm-Tema "$PKG/usr/share/lxdm/themes"

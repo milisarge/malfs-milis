@@ -2,24 +2,24 @@
 # URL: https://github.com/milisarge/komutan
 # Paketçi: milisarge
 # Gerekler: python python-pip python-yaml gunicorn
-name=komutan
+isim=komutan
 name2=mps
-version=git
-release=5
+surum=git
+devir=5
 
-source=()
+kaynak=()
 derle() {
-if [ ! -d $DERLEME_KAYNAKDIZIN/$name ];then
-	git clone https://github.com/milisarge/$name.git $DERLEME_KAYNAKDIZIN/$name
+if [ ! -d $DERLEME_KAYNAKDIZIN/$isim ];then
+	git clone https://github.com/milisarge/$isim.git $DERLEME_KAYNAKDIZIN/$isim
 else
-	cd $DERLEME_KAYNAKDIZIN/$name
+	cd $DERLEME_KAYNAKDIZIN/$isim
 	git pull
 	cd -
 fi
 mkdir $PKG/opt
-cp -r $DERLEME_KAYNAKDIZIN/$name $PKG/opt/ 
-install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name.desktop "${PKG}"/usr/share/applications/$name.desktop
-install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name.svg "${PKG}"/usr/share/pixmaps/$name.svg
-install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name2.desktop "${PKG}"/usr/share/applications/$name2.desktop
-install -D -m644 $DERLEME_KAYNAKDIZIN/$name/$name2.svg "${PKG}"/usr/share/pixmaps/$name2.svg
+cp -r $DERLEME_KAYNAKDIZIN/$isim $PKG/opt/ 
+install -D -m644 $DERLEME_KAYNAKDIZIN/$isim/$isim.desktop "${PKG}"/usr/share/applications/$isim.desktop
+install -D -m644 $DERLEME_KAYNAKDIZIN/$isim/$isim.svg "${PKG}"/usr/share/pixmaps/$isim.svg
+install -D -m644 $DERLEME_KAYNAKDIZIN/$isim/$isim2.desktop "${PKG}"/usr/share/applications/$isim2.desktop
+install -D -m644 $DERLEME_KAYNAKDIZIN/$isim/$isim2.svg "${PKG}"/usr/share/pixmaps/$isim2.svg
 }

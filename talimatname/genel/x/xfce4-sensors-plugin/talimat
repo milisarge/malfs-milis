@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xfce4-panel lm-sensors libnotify hicolor-icon-theme
 
-name=xfce4-sensors-plugin
-version=1.2.6
-release=1
+isim=xfce4-sensors-plugin
+surum=1.2.6
+devir=1
 
-source=(http://archive.xfce.org/src/panel-plugins/$name/1.2/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/1.2/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

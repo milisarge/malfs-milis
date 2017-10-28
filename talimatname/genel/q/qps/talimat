@@ -3,15 +3,15 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: qt5
 
-name=qps
-version=1.10.16
-release=1
-source=(https://github.com/QtDesktop/$name/archive/v$version.tar.gz \
+isim=qps
+surum=1.10.16
+devir=1
+kaynak=(https://github.com/QtDesktop/$isim/archive/v$surum.tar.gz \
 qps.desktop)
 
 derle() {
 	
-	cd $SRC/$name-$version
+	cd $SRC/$isim-$surum
     cmake .
     make
   install -D -m 755 src/qps $PKG/usr/bin/qps

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libtasn1 nettle libidn p11-kit
 
-name=gnutls
-version=3.4.9
-release=1
-source=(ftp://ftp.gnutls.org/gcrypt/$name/v${version:0:3}/$name-$version.tar.xz)
+isim=gnutls
+surum=3.4.9
+devir=1
+kaynak=(ftp://ftp.gnutls.org/gcrypt/$isim/v${version:0:3}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --with-zlib \
 --with-default-trust-store-file=/etc/ssl/ca-bundle.crt \

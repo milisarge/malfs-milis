@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: parted python
 
-name=python-parted
-version=3.10.0
-release=1
-_name=pyparted
+isim=python-parted
+surum=3.10.0
+devir=1
+_isim=pyparted
 
-source=( https://fedorahosted.org/releases/p/y/${_name}/${_name}-$version.tar.gz)
+kaynak=( https://fedorahosted.org/releases/p/y/${_name}/${_name}-$surum.tar.gz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 python setup.py build
 python setup.py install --optimize=1 --root=$PKG
 }

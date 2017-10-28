@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools
 
-name=pycparser
-version=2.17
-release=1
-source=(https://github.com/eliben/$name/archive/release_v$version.zip::$name-$version.zip)
+isim=pycparser
+surum=2.17
+devir=1
+kaynak=(https://github.com/eliben/$isim/archive/release_v$surum.zip::$isim-$surum.zip)
 
 derle() {
-	cd $name-release_v$version
+	cd $isim-release_v$surum
 	/usr/bin/python setup.py build
 
 	cd pycparser

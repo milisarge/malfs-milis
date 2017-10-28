@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-six python-cffi python-enum34 python-pyasn1
 
-name=python-cryptography
-_name=cryptography
-version=1.2.3
-release=1
-source=(http://pypi.python.org/packages/source/c/$_name/$_name-$version.tar.gz)
+isim=python-cryptography
+_isim=cryptography
+surum=1.2.3
+devir=1
+kaynak=(http://pypi.python.org/packages/source/c/$_name/$_name-$surum.tar.gz)
 
 derle() {
-	cd $_name-$version
+	cd $_name-$surum
 	/usr/bin/python2 setup.py build
 	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
 }

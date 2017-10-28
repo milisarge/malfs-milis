@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: rasqal raptor sqlite libiodbc pcre
 
-name=redland
-version=1.0.17
-release=4
+isim=redland
+surum=1.0.17
+devir=4
 
-source=(http://download.librdf.org/source/$name-$version.tar.gz
+kaynak=(http://download.librdf.org/source/$isim-$surum.tar.gz
 		rpath.diff)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 	--enable-release \
 	--enable-silent-rules \

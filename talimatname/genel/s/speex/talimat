@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libogg speexdsp
 
-name=speex
-version=1.2.0
-release=1
+isim=speex
+surum=1.2.0
+devir=1
 
-source=(http://downloads.us.xiph.org/releases/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.us.xiph.org/releases/$isim/$isim-$surum.tar.gz)
 
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static \
 	--enable-binaries # Must be given or configure won't use pkg-config correctly
 	make

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: acl libgudev expat libatasmart libxslt polkit gobject-introspection docbook-xsl
 
-name=udisks2
-version=2.1.6
-release=1
+isim=udisks2
+surum=2.1.6
+devir=1
 
-source=(http://udisks.freedesktop.org/releases/udisks-$version.tar.bz2
+kaynak=(http://udisks.freedesktop.org/releases/udisks-$surum.tar.bz2
 	udisk2-2.1.5-policy-1.patch)
 
 derle() {
-cd udisks-$version
+cd udisks-$surum
 patch -Np1 -i ../udisk2-2.1.5-policy-1.patch
 ./configure --prefix=/usr \
 --sysconfdir=/etc \

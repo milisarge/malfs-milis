@@ -3,15 +3,15 @@
 # Paketçi:    milisarge
 # Gerekler:  libglade gtk2
 
-name=lshw
-version=B.02.18
-release=1
-source=(http://ezix.org/software/files/$name-$version.tar.gz
+isim=lshw
+surum=B.02.18
+devir=1
+kaynak=(http://ezix.org/software/files/$isim-$surum.tar.gz
 		lshw-gtk.desktop
 		lshw-gtk.xpm)
 
 derle() {
-	cd $SRC/$name-$version
+	cd $SRC/$isim-$surum
 	make || return 1
 	make DESTDIR=$PKG install
 

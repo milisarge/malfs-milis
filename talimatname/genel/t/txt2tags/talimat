@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=txt2tags
-version=2.6
-release=1
+isim=txt2tags
+surum=2.6
+devir=1
 
-source=(http://txt2tags.googlecode.com/files/$name-$version.tgz)
+kaynak=(http://txt2tags.googlecode.com/files/$isim-$surum.tgz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	mkdir -p $PKG/usr/bin
-	mkdir -p $PKG/usr/share/{man/man1,man/fr/man1,vim/syntax,doc/$name}
+	mkdir -p $PKG/usr/share/{man/man1,man/fr/man1,vim/syntax,doc/$isim}
 	# bin
 	sed -i "s/env\ python/env\ python2/" txt2tags
 	install -m 755 txt2tags $PKG/usr/bin
@@ -23,7 +23,7 @@ cd $name-$version
 	install -m 644 doc/manpage.man $PKG/usr/share/man/man1/txt2tags.1
 	install -m 644 doc/manpage-fr.man $PKG/usr/share/man/fr/man1/txt2tags.1
 	# doc
-	install -m 644 doc/{*.pdf,*.t2t} $PKG/usr/share/doc/$name
+	install -m 644 doc/{*.pdf,*.t2t} $PKG/usr/share/doc/$isim
 	# locale fr
 	mkdir -p $PKG/usr/share/locale/fr/LC_MESSAGES/
 	cd po

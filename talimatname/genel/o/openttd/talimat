@@ -4,23 +4,23 @@
 # Gerekler: libpng sdl icu xorg-fontconfig lzo hicolor-icon-theme desktop-file-utils xz openttd-opengfx openttd-opensfx
 
 
-name=openttd
-version=1.5.2
-release=1
-source=(http://binaries.openttd.org/releases/${version}/${name}-${version}-source.tar.xz)
+isim=openttd
+surum=1.5.2
+devir=1
+kaynak=(http://binaries.openttd.org/releases/${surum}/${isim}-${surum}-source.tar.xz)
 
 derle() {
-  cd ${name}-${version} 
+  cd ${isim}-${surum} 
 
  ./configure \
     --prefix-dir=/usr \
-    --binary-name=${name} \
+    --binary-isim=${isim} \
     --binary-dir=bin \
-    --data-dir=share/${name} \
+    --data-dir=share/${isim} \
     --install-dir=${PKG} \
-    --doc-dir=share/doc/${name} \
-    --menu-name="OpenTTD" \
-    --personal-dir=.${name}    
+    --doc-dir=share/doc/${isim} \
+    --menu-isim="OpenTTD" \
+    --personal-dir=.${isim}    
 
   make
   make install

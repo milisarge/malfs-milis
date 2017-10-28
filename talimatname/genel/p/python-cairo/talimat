@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cairo 
 
-name=python-cairo
-version=1.10.0
-release=1
+isim=python-cairo
+surum=1.10.0
+devir=1
 
-source=(http://cairographics.org/releases/py2cairo-$version.tar.bz2)
+kaynak=(http://cairographics.org/releases/py2cairo-$surum.tar.bz2)
 
 derle() {
-	cd py2cairo-$version
+	cd py2cairo-$surum
 	python2 ./waf configure --prefix=/usr
 	./waf build
 	./waf install --destdir=$PKG

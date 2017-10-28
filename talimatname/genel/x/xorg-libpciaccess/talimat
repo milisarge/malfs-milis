@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-_name=libpciaccess
-name=xorg-libpciaccess
-version=0.13.4
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$version.tar.bz2)
+_isim=libpciaccess
+isim=xorg-libpciaccess
+surum=0.13.4
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$surum.tar.bz2)
 
 derle() {
-	cd ${_name}-$version
+	cd ${_name}-$surum
 
 	./configure --prefix=/usr
 

@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: qt5
 
-name=qtchess
-version=20160904
-_version=2016.09.04
-release=1
+isim=qtchess
+surum=20160904
+_surum=2016.09.04
+devir=1
 
-source=(https://github.com/textbrowser/qtchess/archive/v${_version}.tar.gz
+kaynak=(https://github.com/textbrowser/qtchess/archive/v${_version}.tar.gz
 		qtchess.desktop)
 
 derle() {
-	cd "$name-$_version"
+	cd "$isim-$_version"
     qmake-qt5 -o Makefile qtchess.pro
     sed -i s_'-Werror'__g Makefile # stack protector is not proctecting small arrays
     make
     install -Dm755  QtChess -- "${PKG}/usr/bin/qtchess"
-    install -Dm644  $SRC/qtchess.desktop -- "${PKG}/usr/share/applications/${name}.desktop"
-	install -Dm644  Images/chess.png -- "${PKG}/usr/share/icons/hicolor/48x48/$name.png"
+    install -Dm644  $SRC/qtchess.desktop -- "${PKG}/usr/share/applications/${isim}.desktop"
+	install -Dm644  Images/chess.png -- "${PKG}/usr/share/icons/hicolor/48x48/$isim.png"
 }

@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: polkit qt5
 
-name=polkit-qt5
-release=1
-version=0.112.0
-_name=polkit-qt-1
+isim=polkit-qt5
+devir=1
+surum=0.112.0
+_isim=polkit-qt-1
 
-source=(http://download.kde.org/stable/apps/KDE4.x/admin/${_name}-$version.tar.bz2)
+kaynak=(http://download.kde.org/stable/apps/KDE4.x/admin/${_name}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DCMAKE_INSTALL_LIBDIR=lib  \

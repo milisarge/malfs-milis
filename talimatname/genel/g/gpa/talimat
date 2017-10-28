@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gpgme gtk2 
 
-name=gpa
-version=0.9.10
-release=1
-source=(ftp://ftp.gnupg.org/gcrypt/gpa/$name-$version.tar.bz2)
+isim=gpa
+surum=0.9.10
+devir=1
+kaynak=(ftp://ftp.gnupg.org/gcrypt/gpa/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr
   make
   make DESTDIR="$PKG/" install

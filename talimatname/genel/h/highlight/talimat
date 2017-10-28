@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: qt4 boost lua
 
-name=highlight
-version=3.23
-release=1
-source=(http://www.andre-simon.de/zip/$name-$version.tar.bz2)
+isim=highlight
+surum=3.23
+devir=1
+kaynak=(http://www.andre-simon.de/zip/$isim-$surum.tar.bz2)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     make QMAKE=qmake-qt4
     make DESTDIR=$PKG QMAKE=qmake-qt4 install
 }

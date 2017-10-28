@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: docbook-xsl libxslt python
 
-name=asciidoc
-version=8.6.9
-release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+isim=asciidoc
+surum=8.6.9
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --sysconfdir=/etc
     make

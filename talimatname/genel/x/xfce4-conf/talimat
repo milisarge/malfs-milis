@@ -3,16 +3,16 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: xfce4-libutil dbus-glib perl-glib 
 
-_name=xfconf
+_isim=xfconf
 
-name=xfce4-conf
-version=4.12.0
-release=1
+isim=xfce4-conf
+surum=4.12.0
+devir=1
 
-source=(http://archive.xfce.org/xfce/${version%.*}/src/${_name}-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/xfce/${surum%.*}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure \
 	--prefix=/usr \
     --sysconfdir=/etc \

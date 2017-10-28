@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-http-date perl-http-message 
 
-name=perl-http-cookies
-version=6.01
-release=1
+isim=perl-http-cookies
+surum=6.01
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Cookies-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Cookies-$surum.tar.gz)
 
 derle() {
-cd HTTP-Cookies-$version
+cd HTTP-Cookies-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: gstreamer-plugins-base exo libisoburn xorg-pixman startup-notification gstreamer-plugins-good 
 
-_name=xfburn
-name=xfce4-burn
-version=0.5.4
-release=3
+_isim=xfburn
+isim=xfce4-burn
+surum=0.5.4
+devir=3
 
-source=(http://archive.xfce.org/src/apps/xfburn/${version%.*}/xfburn-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/xfburn/${surum%.*}/xfburn-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version	
+cd ${_name}-$surum	
 ./configure --prefix=/usr \
 --enable-gstreamer
 make

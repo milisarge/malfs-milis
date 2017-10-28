@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 xcb-util 
 
-name=startup-notification
-version=0.12
-release=1
+isim=startup-notification
+surum=0.12
+devir=1
 
-source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz)
+kaynak=(http://www.freedesktop.org/software/$isim/releases/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 		--infodir=/usr/share/info \
 		--mandir=/usr/share/man

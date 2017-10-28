@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: desktop-file-utils kf5-attica kf5-kbookmarks kf5-kjobwidgets kf5-kwallet kf5-solid kerberos
 
-name=kf5-kio
-version=5.27.0
-release=1
-_name=kio
-_version=5.27
+isim=kf5-kio
+surum=5.27.0
+devir=1
+_isim=kio
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: dbus-python python3-sip qt5 qt5-webkit python3-opengl python3 qt5-webengine
 
-name=python3-qt5
-version=5.9
-release=1
+isim=python3-qt5
+surum=5.9
+devir=1
 
-source=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$version/PyQt5_gpl-$version.tar.gz)
+kaynak=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$surum/PyQt5_gpl-$surum.tar.gz)
 derle() {
-cd PyQt5_gpl-$version
+cd PyQt5_gpl-$surum
 
 python3 configure.py   \
      -q /usr/bin/qmake-qt5 \

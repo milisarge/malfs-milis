@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=haveged
-version=1.9.1
-release=1
-source=(http://downloads.sourceforge.net/project/haveged/$name-$version.tar.gz)
+isim=haveged
+surum=1.9.1
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/haveged/$isim-$surum.tar.gz)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
 
     source  /etc/blfs-bootscripts
 	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

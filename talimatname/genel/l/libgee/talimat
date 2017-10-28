@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: glib gobject-introspection vala 
 
-name=libgee
-version=0.18.0
-release=1
+isim=libgee
+surum=0.18.0
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make 
 make DESTDIR=$PKG install

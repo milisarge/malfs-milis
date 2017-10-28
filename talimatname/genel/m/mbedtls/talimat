@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=mbedtls
-version=2.3.0
-release=1
+isim=mbedtls
+surum=2.3.0
+devir=1
 
-source=(https://tls.mbed.org/download/mbedtls-$version-gpl.tgz)
+kaynak=(https://tls.mbed.org/download/mbedtls-$surum-gpl.tgz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
 	sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
 

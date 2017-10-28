@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-_cpanname=Net-SSLeay
-name=perl-net-ssleay
-version=1.63
-release=1
+_cpanisim=Net-SSLeay
+isim=perl-net-ssleay
+surum=1.63
+devir=1
 
-source=(http://www.cpan.org/authors/id/M/MI/MIKEM/${_cpanname}-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/M/MI/MIKEM/${_cpanname}-$surum.tar.gz)
 
 derle() {
-cd ${_cpanname}-$version
+cd ${_cpanname}-$surum
 sed -i \
       -e "/\$opts->{optimize} = '-O2 -g';/d" \
       inc/Module/Install/PRIVATE/Net/SSLeay.pm
@@ -23,7 +23,7 @@ PERL_MM_USE_DEFAULT=1 perl Makefile.PL -- INSTALLDIRS=vendor
 make
 make install DESTDIR=$PKG
 
-install -D -m644 README $PKG/usr/share/licenses/$name/LICENSE
+install -D -m644 README $PKG/usr/share/licenses/$isim/LICENSE
 find $PKG \
          -name '*.bs' -or \
          -name '.packlist' -or \

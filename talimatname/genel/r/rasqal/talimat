@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libxslt raptor libgcrypt 
 
-name=rasqal
-version=0.9.33
-release=1
+isim=rasqal
+surum=0.9.33
+devir=1
 
-source=(http://download.librdf.org/source/$name-$version.tar.gz)
+kaynak=(http://download.librdf.org/source/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static
 make

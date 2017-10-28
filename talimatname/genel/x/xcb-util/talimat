@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libxcb xorg-util-macros 
 
-name=xcb-util
-version=0.4.0
-release=1
+isim=xcb-util
+surum=0.4.0
+devir=1
 
-source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
+kaynak=(http://xcb.freedesktop.org/dist/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 

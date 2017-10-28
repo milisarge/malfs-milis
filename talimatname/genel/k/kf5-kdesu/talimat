@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kservice kf5-kpty 
 
-name=kf5-kdesu
-version=5.27.0
-release=1
-_name=kdesu
-_version=5.27
+isim=kf5-kdesu
+surum=5.27.0
+devir=1
+_isim=kdesu
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

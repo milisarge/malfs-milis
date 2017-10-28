@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: yasm opus dcadec gsm libmodplug gnutls libbluray vid-stab soxr libssh v4l-utils opencore-amr fdk-aac x264 x265 ladspa liba52 libass libva libwebp libvdpau freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
 
-name=ffmpeg28
-version=2.8.12
-release=1
-source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.xz)
+isim=ffmpeg28
+surum=2.8.12
+devir=1
+kaynak=(http://ffmpeg.org/releases/ffmpeg-$surum.tar.xz)
 
 derle() {
-cd ffmpeg-${version}
+cd ffmpeg-${surum}
 
 	#--enable-libschroedinger \
 

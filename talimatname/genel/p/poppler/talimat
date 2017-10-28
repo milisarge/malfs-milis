@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxxf86vm libpng xorg-fontconfig libjpeg-turbo cairo libxml2 openjpeg lcms2 
 
-dataversion=0.4.7
-name=poppler
-version=0.46.0
-release=1
+datasurum=0.4.7
+isim=poppler
+surum=0.46.0
+devir=1
 
-source=(
-http://poppler.freedesktop.org/$name-$version.tar.xz
+kaynak=(
+http://poppler.freedesktop.org/$isim-$surum.tar.xz
 http://poppler.freedesktop.org/poppler-data-$dataversion.tar.gz)
 
 derle() {
-cd poppler-$version
+cd poppler-$surum
  
 CXXFLAGS="-std=c++11"
  

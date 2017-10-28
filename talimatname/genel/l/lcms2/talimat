@@ -4,14 +4,14 @@
 # Gerekler: libjpeg-turbo libtiff 
 
 
-name=lcms2
-version=2.7
-release=1
+isim=lcms2
+surum=2.7
+devir=1
 
-source=(http://downloads.sourceforge.net/lcms/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/lcms/$isim-$surum.tar.gz)
 
 derle() {
-cd $name*
+cd $isim*
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --infodir=/usr/share/info \

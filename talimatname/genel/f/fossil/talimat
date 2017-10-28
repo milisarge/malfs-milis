@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: sqlite
 
-name=fossil
-version=2.3
-release=1
-source=(https://www.fossil-scm.org/index.html/uv/fossil-src-$version.tar.gz)
+isim=fossil
+surum=2.3
+devir=1
+kaynak=(https://www.fossil-scm.org/index.html/uv/fossil-src-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --json --disable-internal-sqlite
 	make
 	install -Dm755 fossil "$PKG"/usr/bin/fossil
 	install -Dm644 tools/fossil-autocomplete.bash "$PKG"/usr/share/bash-completion/completions/fossil
-	install -Dm644 COPYRIGHT-BSD2.txt "$PKG"/usr/share/licenses/$name/LICENSE
+	install -Dm644 COPYRIGHT-BSD2.txt "$PKG"/usr/share/licenses/$isim/LICENSE
 }

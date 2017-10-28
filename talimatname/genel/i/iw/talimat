@@ -3,15 +3,15 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: libnl
 
-name=iw
-version=4.9
-release=1
-source=(https://www.kernel.org/pub/software/network/$name/$name-$version.tar.xz)
+isim=iw
+surum=4.9
+devir=1
+kaynak=(https://www.kernel.org/pub/software/network/$isim/$isim-$surum.tar.xz)
 
 derle() {
-  cd "$SRC"/$name-$version
+  cd "$SRC"/$isim-$surum
   make
   
-  cd "$SRC"/$name-$version
+  cd "$SRC"/$isim-$surum
   make DESTDIR="$PKG" SBINDIR="/usr/bin" install
 }

@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-karchive kf5-kcodecs kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-kio kf5-kjobwidgets kf5-kjs kf5-knotifications kf5-kparts kf5-kservice kf5-ktextwidgets kf5-kwallet kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui kf5-sonnet giflib libjpeg-turbo libpng phonon-qt5 giflib openssl
 
-name=kf5-khtml
-version=5.27.0
-release=1
-_name=khtml
-_version=5.27
+isim=kf5-khtml
+surum=5.27.0
+devir=1
+_isim=khtml
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/portingAids/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/portingAids/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 libxml2
 
-name=gtksourceview2
-version=2.10.5
-release=2
-source=(http://ftp.gnome.org/pub/gnome/sources/gtksourceview/2.10/gtksourceview-${version}.tar.bz2)
+isim=gtksourceview2
+surum=2.10.5
+devir=2
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/gtksourceview/2.10/gtksourceview-${surum}.tar.bz2)
 
 derle() {
-cd gtksourceview-$version
+cd gtksourceview-$surum
 sed -i 's#python#python2#' gtksourceview/language-specs/convert.py
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static

@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 perl-xml-parser python-gtk gobject-introspection pcre2
 
-name=vte3
-version=0.49.1
-release=1
-_name=vte
-source=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${version%.*}/${_name}-$version.tar.xz)
+isim=vte3
+surum=0.49.1
+devir=1
+_isim=vte
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${surum%.*}-$surum.tar.xz)
 
 derle() {
-	cd ${_name}-$version
+	cd ${_name}-$surum
 	./configure --prefix=/usr\
-		--libexecdir=/usr/lib/$name \
+		--libexecdir=/usr/lib/$isim \
 		--enable-introspection \
 		--with-xft2 \
 		--with-pangox

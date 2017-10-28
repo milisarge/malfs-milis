@@ -3,28 +3,28 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=lua
-version=5.3.4
-_majorver=${version%.*}
-release=1
+isim=lua
+surum=5.3.4
+_majorver=${surum%.*}
+devir=1
 
-source=(https://www.lua.org/ftp/lua-$version.tar.gz
+kaynak=(https://www.lua.org/ftp/lua-$surum.tar.gz
         liblua.so.patch
         lua.pc
         LICENSE)
         
 derle() {
 
-	cd $SRC/lua-$version
+	cd $SRC/lua-$surum
 	patch -p1 -i ../liblua.so.patch
 
-	sed "s/%VER%/$_majorver/g;s/%REL%/$version/g" ../lua.pc > lua.pc
+	sed "s/%VER%/$_majorver/g;s/%REL%/$surum/g" ../lua.pc > lua.pc
 
 	# quite a lot of packages still use lua 5.1 API, enable 5.1 compat mode
 	make MYCFLAGS="$CFLAGS -fPIC -DLUA_COMPAT_5_2 -DLUA_COMPAT_5_1" MYLDFLAGS="$LDFLAGS" linux
 	
 	make \
-	TO_LIB="liblua.a liblua.so liblua.so.$_majorver liblua.so.$version" \
+	TO_LIB="liblua.a liblua.so liblua.so.$_majorver liblua.so.$surum" \
 	INSTALL_DATA='cp -d' \
 	INSTALL_TOP="$PKG"/usr \
 	INSTALL_MAN="$PKG"/usr/share/man/man1 \
@@ -32,14 +32,14 @@ derle() {
 
 	ln -sf /usr/bin/lua "$PKG"/usr/bin/lua$_majorver
 	ln -sf /usr/bin/luac "$PKG"/usr/bin/luac$_majorver
-	ln -sf /usr/lib/liblua.so.$version "$PKG"/usr/lib/liblua$_majorver.so
+	ln -sf /usr/lib/liblua.so.$surum "$PKG"/usr/lib/liblua$_majorver.so
 
-	install -Dm644 lua.pc "$PKG"/usr/lib/pkgconfig/${name}53.pc
-	ln -sf /usr/lib/pkgconfig/${name}53.pc "$PKG"/usr/lib/pkgconfig/$name.pc
+	install -Dm644 lua.pc "$PKG"/usr/lib/pkgconfig/${isim}53.pc
+	ln -sf /usr/lib/pkgconfig/${isim}53.pc "$PKG"/usr/lib/pkgconfig/$isim.pc
 
-	install -d "$PKG"/usr/share/doc/$name
-	install -m644 doc/*.{gif,png,css,html} "$PKG"/usr/share/doc/$name
-	install -Dm644 ../LICENSE "$PKG"/usr/share/licenses/$name/LICENSE
+	install -d "$PKG"/usr/share/doc/$isim
+	install -m644 doc/*.{gif,png,css,html} "$PKG"/usr/share/doc/$isim
+	install -Dm644 ../LICENSE "$PKG"/usr/share/licenses/$isim/LICENSE
 	rm -r $PKG/usr/share/doc
 	rm -r $PKG/usr/share/man
 }

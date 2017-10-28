@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:
 
-name=dmidecode
-version=3.1
-release=1
-source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
+isim=dmidecode
+surum=3.1
+devir=1
+kaynak=(http://download.savannah.gnu.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i "s:sbin:bin:g" Makefile
 	make prefix=/usr
 	make prefix=/usr DESTDIR="${PKG}" install

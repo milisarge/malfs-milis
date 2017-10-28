@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:	nasm
 
-name=openh264
-version=1.1-2103-g69a8b3c
-release=1
-source=(https://github.com/cisco/$name/archive/v$version.zip)
+isim=openh264
+surum=1.1-2103-g69a8b3c
+devir=1
+kaynak=(https://github.com/cisco/$isim/archive/v$surum.zip)
 
 derle() {
-	cd ${name}-${version##*-g}*
+	cd ${isim}-${version##*-g}*
 
 	make
 	make PREFIX=$PKG/usr install

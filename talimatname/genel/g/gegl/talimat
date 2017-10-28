@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: babl gtk2 librsvg libpng ruby lua ffmpeg librsvg openexr exiv2 json-glib
 
-name=gegl
-version=0.3.8
-release=1
-source=(https://download.gimp.org/pub/gegl/0.3/$name-$version.tar.bz2)
+isim=gegl
+surum=0.3.8
+devir=1
+kaynak=(https://download.gimp.org/pub/gegl/0.3/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-docs
 LC_ALL=tr_TR.UTF-8
 make

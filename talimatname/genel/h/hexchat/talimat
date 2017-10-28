@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: lua52 glib gtk2 dbus libnotify libcanberra openssl pciutils desktop-file-utils pango
 
-name=hexchat
-version=2.12.3	
-release=1
-source=(https://dl.hexchat.net/hexchat/$name-$version.tar.xz)
+isim=hexchat
+surum=2.12.3	
+devir=1
+kaynak=(https://dl.hexchat.net/hexchat/$isim-$surum.tar.xz)
  
 derle() {
 	gdk-pixbuf-query-loaders --update-cache
-	cd $name-$version
+	cd $isim-$surum
 	
 	./configure \
     --prefix='/usr' \

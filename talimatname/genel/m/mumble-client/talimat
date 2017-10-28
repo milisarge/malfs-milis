@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: boost qt4 speex speexdsp libsndfile protobuf
 
-name=mumble-client
-version=1.2.19
-release=1
-source=(https://github.com/mumble-voip/mumble/releases/download/$version/mumble-$version.tar.gz)
+isim=mumble-client
+surum=1.2.19
+devir=1
+kaynak=(https://github.com/mumble-voip/mumble/releases/download/$surum/mumble-$surum.tar.gz)
 
 derle() {
-	cd mumble-$version
+	cd mumble-$surum
 
 	qmake-qt4 main.pro \
 	    CONFIG+=no-bundled-speex \

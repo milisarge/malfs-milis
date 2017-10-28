@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg xorg-libdrm xorg-libxvmc
 
-name=xf86-video-openchrome
-version=0.6.0
-release=1
+isim=xf86-video-openchrome
+surum=0.6.0
+devir=1
 
-source=(http://xorg.freedesktop.org/archive/individual/driver/${name}-${version}.tar.bz2)
+kaynak=(http://xorg.freedesktop.org/archive/individual/driver/${isim}-${surum}.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
     make
 	make DESTDIR=$PKG install

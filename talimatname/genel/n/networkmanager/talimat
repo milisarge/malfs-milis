@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: libndp libsoup libgudev modemmanager dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt
 
-_name=NetworkManager
+_isim=NetworkManager
 
-name=networkmanager
-version=1.4.2
-release=1
+isim=networkmanager
+surum=1.4.2
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$_name/${version%.*}/$_name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$_name/${surum%.*}/$_name-$surum.tar.xz)
 
 derle() {
 
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --localstatedir=/var \
@@ -22,7 +22,7 @@ cd ${_name}-$version
 --with-session-tracking=consolekit \
 --with-suspend-resume=upower \
 --with-dbus-sys-dir=/etc/dbus-1/system.d \
---docdir=/usr/share/doc/networkmanager-$version \
+--docdir=/usr/share/doc/networkmanager-$surum \
 --with-systemdsystemunitdir=no \
 --disable-ppp
 

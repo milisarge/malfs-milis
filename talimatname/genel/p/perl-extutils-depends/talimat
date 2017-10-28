@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-extutils-depends
-version=0.304
-release=1
+isim=perl-extutils-depends
+surum=0.304
+devir=1
 
-source=(http://www.cpan.org/authors/id/F/FL/FLORA/ExtUtils-Depends-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/F/FL/FLORA/ExtUtils-Depends-$surum.tar.gz)
 
 derle() {
-	cd ExtUtils-Depends-$version
+	cd ExtUtils-Depends-$surum
 	perl Makefile.PL
 	make
 	make DESTDIR=$PKG install

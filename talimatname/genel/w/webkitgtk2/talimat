@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libwebp libsecret geoclue gperf gtk2 dbus gstreamer1-plugins-base icu enchant libsoup libxslt xorg-libxt ruby
 
-name=webkitgtk2
-version=2.4.11
-release=2
-source=(http://webkitgtk.org/releases/webkitgtk-$version.tar.xz
+isim=webkitgtk2
+surum=2.4.11
+devir=2
+kaynak=(http://webkitgtk.org/releases/webkitgtk-$surum.tar.xz
 		webkitgtk-2.4.9-abs.patch
 		icu59.patch)
 
 derle() {
-	cd webkitgtk-$version
+	cd webkitgtk-$surum
     patch -Np1 -i ../webkitgtk-2.4.9-abs.patch
     patch -Np1 -i ../icu59.patch
 	install -d build

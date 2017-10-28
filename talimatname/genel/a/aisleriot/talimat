@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool itstool docbook-xsl yelp-tools appstream-glib gnome-common gtk3 librsvg libcanberra gconf dconf tdb desktop-file-utils guile
 
-name=aisleriot
-version=3.22.2
-release=1
-source=(https://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=aisleriot
+surum=3.22.2
+devir=1
+kaynak=(https://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
- cd $name-$version  
+ cd $isim-$surum  
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib --disable-static \
     --with-kde-card-theme-path=/usr/share/carddecks \

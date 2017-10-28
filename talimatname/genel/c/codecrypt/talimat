@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: fftw crypto++ 
 
-name=codecrypt
-version=1.7.6
-release=1
-source=(https://github.com/exaexa/codecrypt/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=codecrypt
+surum=1.7.6
+devir=1
+kaynak=(https://github.com/exaexa/codecrypt/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd "${SRC}/${name}-${version}"
+	cd "${SRC}/${isim}-${surum}"
 	./autogen.sh
 	./configure LIBS=-lpthread --prefix=/usr
 	make

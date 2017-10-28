@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:  libpcap libnet 
 
-name=libdnet
-version=1.11
-release=1
-source=(http://download.sourceforge.net/$name/$name-$version.tar.gz)
+isim=libdnet
+surum=1.11
+devir=1
+kaynak=(http://download.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-    cd  $name-$version
+    cd  $isim-$surum
     autoreconf -i -Iconfig
     ./configure --prefix=/usr \
                 --mandir=/usr/man

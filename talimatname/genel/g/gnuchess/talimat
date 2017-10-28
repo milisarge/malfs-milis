@@ -3,12 +3,12 @@
 # Paketçi: yasarciv67
 # Gerekler: 
 
-name=gnuchess
-version=6.2.5
-release=1
-source=(http://ftp.gnu.org/pub/gnu/chess/$name-$version.tar.gz)
+isim=gnuchess
+surum=6.2.5
+devir=1
+kaynak=(http://ftp.gnu.org/pub/gnu/chess/$isim-$surum.tar.gz)
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr
   make  
   make DESTDIR=$PKG install

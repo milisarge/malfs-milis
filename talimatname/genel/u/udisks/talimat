@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: acl libgudev dbus-glib libatasmart lvm2 parted polkit sg3-utils docbook-xsl 
 
-name=udisks
-version=1.0.5
-release=2
+isim=udisks
+surum=1.0.5
+devir=2
 
-source=( http://hal.freedesktop.org/releases/$name-$version.tar.gz)
+kaynak=( http://hal.freedesktop.org/releases/$isim-$surum.tar.gz)
 
 derle() {
-cd udisks-$version
+cd udisks-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --localstatedir=/var \

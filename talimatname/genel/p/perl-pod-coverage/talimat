@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: perl-devel-symdump 
 
-name=perl-pod-coverage
-version=0.23
-release=1
+isim=perl-pod-coverage
+surum=0.23
+devir=1
 
-source=(
-http://www.cpan.org/authors/id/R/RC/RCLAMP/Pod-Coverage-$version.tar.gz)
+kaynak=(
+http://www.cpan.org/authors/id/R/RC/RCLAMP/Pod-Coverage-$surum.tar.gz)
 
 derle() {
-    cd Pod-Coverage-$version
+    cd Pod-Coverage-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1

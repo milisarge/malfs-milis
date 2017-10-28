@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: doxygen pcsc-lite libusb-compat 
 
-name=openct
-version=0.6.20
-release=1
-source=(https://github.com/OpenSC/openct/archive/openct-$version.tar.gz
+isim=openct
+surum=0.6.20
+devir=1
+kaynak=(https://github.com/OpenSC/openct/archive/openct-$surum.tar.gz
 		udev-sleep.patch)
 
 derle() {
-    cd $name-$name-$version
+    cd $isim-$isim-$surum
     patch -p1 -i "${SRC}/udev-sleep.patch"
 	./bootstrap
     ./configure --prefix=/usr \

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: aspell dbus-glib
 
-name=enchant
-version=1.6.0
-release=1
-source=(http://www.abisource.com/downloads/$name/$version/$name-$version.tar.gz)
+isim=enchant
+surum=1.6.0
+devir=1
+kaynak=(http://www.abisource.com/downloads/$isim/$surum/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure \
 		--prefix=/usr \

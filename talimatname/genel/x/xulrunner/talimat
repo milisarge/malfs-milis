@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=xulrunner
-version=41.0.2
-release=1
-source=(http://ftp.mozilla.org/pub/xulrunner/releases/$version/source/$name-$version.source.tar.xz)
+isim=xulrunner
+surum=41.0.2
+devir=1
+kaynak=(http://ftp.mozilla.org/pub/xulrunner/releases/$surum/source/$isim-$surum.source.tar.xz)
 
 derle() {
   mkdir ${PKG}/opt/
@@ -15,7 +15,7 @@ derle() {
 
   mkdir ${PKG}/usr/bin/
 
-  cp -R "${SRC}/${name}" "${PKG}/opt/${name}"
+  cp -R "${SRC}/${isim}" "${PKG}/opt/${isim}"
 
-  ln -s "/opt/${name}/${name}" "${PKG}/usr/bin/${name}"
+  ln -s "/opt/${isim}/${isim}" "${PKG}/usr/bin/${isim}"
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 xorg-proto xorg-libxfixes 
 
-name=xorg-libxdamage
-version=1.1.4
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXdamage-$version.tar.bz2)
+isim=xorg-libxdamage
+surum=1.1.4
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXdamage-$surum.tar.bz2)
 
 derle() {
-cd libXdamage-$version
+cd libXdamage-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

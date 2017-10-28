@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: popt icu
 
-name=gptfdisk
-version=1.0.1
-release=1
-source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz
-	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-convenience-1.patch)
+isim=gptfdisk
+surum=1.0.1
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/$isim/$isim/$surum/$isim-$surum.tar.gz
+	http://www.linuxfromscratch.org/patches/blfs/svn/$isim-$surum-convenience-1.patch)
 
 derle() {
-cd $name-$version
-patch -Np1 -i ../$name-$version-convenience-1.patch
+cd $isim-$surum
+patch -Np1 -i ../$isim-$surum-convenience-1.patch
 make
 make DESTDIR=$PKG install
 }

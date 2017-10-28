@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: mplayer qt4
 
-name=smplayer
-version=16.4.0
-release=1
-source=(http://prdownloads.sf.net/$name/$name-$version.tar.bz2)
+isim=smplayer
+surum=16.4.0
+devir=1
+kaynak=(http://prdownloads.sf.net/$isim/$isim-$surum.tar.bz2)
 
 derle() {
 	tamir_qt4path
-	cd $name-$version
+	cd $isim-$surum
 	sed -i -e 's|kde-config|kde4-config|g' Makefile
 
 	# Çoğu hata ayıklama mesajını kaldır

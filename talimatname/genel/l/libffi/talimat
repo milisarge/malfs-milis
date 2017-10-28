@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libffi
-version=3.2.1
-release=1
+isim=libffi
+surum=3.2.1
+devir=1
 
-source=( ftp://sourceware.org/pub/$name/$name-$version.tar.gz )
+kaynak=( ftp://sourceware.org/pub/$isim/$isim-$surum.tar.gz )
 
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -e '/^includesdir/ s:$(libdir)/@PACKAGE_NAME@-@PACKAGE_VERSION@/include:$(includedir):' \
 -i include/Makefile.in
 sed -e '/^includedir/ s:${libdir}/@PACKAGE_NAME@-@PACKAGE_VERSION@/include:@includedir@:' \

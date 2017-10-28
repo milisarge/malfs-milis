@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: nss gconf libjpeg-turbo freetype cairo libxslt libpng alsa-lib hicolor-icon-theme xdg-utils
 
-name=google-chrome
-version=48.0.2564.103
-release=1
+isim=google-chrome
+surum=48.0.2564.103
+devir=1
 [ "`uname -m`" == "i686" ] && _arch="i386"
 [ "`uname -m`" == "x86_64" ] && _arch="amd64"
-source=("https://dl.google.com/linux/direct/google-chrome-stable_current_${_arch}.deb"
+kaynak=("https://dl.google.com/linux/direct/google-chrome-stable_current_${_arch}.deb"
          "https://www.google.com/chrome/intl/en/eula_text.html")
 
 derle() {

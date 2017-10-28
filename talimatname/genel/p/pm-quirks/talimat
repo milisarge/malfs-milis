@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=pm-quirks
-version=20100619
-release=1
+isim=pm-quirks
+surum=20100619
+devir=1
 
-source=(http://pm-utils.freedesktop.org/releases/pm-quirks-${version}.tar.gz)
+kaynak=(http://pm-utils.freedesktop.org/releases/pm-quirks-${surum}.tar.gz)
 
 derle() {
 	install -m755 -d "${PKG}/usr/lib/pm-utils/video-quirks"

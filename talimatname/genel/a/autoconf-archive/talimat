@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: 
 
-name=autoconf-archive
-version=2017.03.21
-release=1
+isim=autoconf-archive
+surum=2017.03.21
+devir=1
 
-source=(http://ftpmirror.gnu.org/$name/$name-$version.tar.xz)
+kaynak=(http://ftpmirror.gnu.org/$isim/$isim-$surum.tar.xz)
 
 
 derle() {
-cd $name-$version
+cd $isim-$surum
   ./configure --prefix=/usr
   make
   make DESTDIR=$PKG install

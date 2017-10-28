@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules qt5 qt5-webkit libwlocate kf5-kdoctools kf5-kio kf5-kparts kf5-knewstuff kf5-kcrash kf5-kcoreaddons kf5-ki18n kf5-kwallet kf5-krunner
 
-name=marble
-version=16.08.1
-release=1
+isim=marble
+surum=16.08.1
+devir=1
 
-source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
 mkdir -p build
@@ -15,9 +15,9 @@ sed -e '/mobile/d' \
       -e '/qt/d'  \
       -e '/Quick/d' \
       -e '/touch/d' \
-      -i $name-$version/src/apps/CMakeLists.txt
+      -i $isim-$surum/src/apps/CMakeLists.txt
 cd build
-cmake ../$name-$version       \
+cmake ../$isim-$surum       \
       -DWITH_libshp=OFF \
       -DWITH_libgps=OFF \
       -DWITH_QextSerialPort=OFF \

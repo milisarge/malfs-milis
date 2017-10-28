@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gdk-pixbuf glib atk pango cairo libffi libpng pcre
 
-name=gtk-update-icon-cache
-version=2.24.29
-release=2
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
+isim=gtk-update-icon-cache
+surum=2.24.29
+devir=2
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${surum%.*}/gtk+-$surum.tar.xz)
 
 derle() {
-cd gtk+-$version
+cd gtk+-$surum
 sed -i 's#.*@man_#man_#' docs/reference/gtk/Makefile.in
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \

@@ -3,23 +3,23 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 libglade
 
-name=gtrayicon
-version=1.1
-release=1
-source=(http://kaynaklar.milislinux.org/$name-$version.tar.gz)
+isim=gtrayicon
+surum=1.1
+devir=1
+kaynak=(http://kaynaklar.milislinux.org/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make
-	install -d $PKG/usr/share/$name
+	install -d $PKG/usr/share/$isim
 	install -d $PKG/usr/bin
-	install -m 644 $name.glade $PKG/usr/share/$name/
-	install -m 644 activate.svg $PKG/usr/share/$name/
-	install -m 644 deactivate.svg $PKG/usr/share/$name/
-	install -m 755 $name $PKG/usr/bin/
-	install -m 644 README $PKG/usr/share/$name/
-	install -m 644 ChangeLog $PKG/usr/share/$name/
-	install -m 644 LICENSE $PKG/usr/share/$name/
-	install -m 644 sample.menu $PKG/usr/share/$name/
+	install -m 644 $isim.glade $PKG/usr/share/$isim/
+	install -m 644 activate.svg $PKG/usr/share/$isim/
+	install -m 644 deactivate.svg $PKG/usr/share/$isim/
+	install -m 755 $isim $PKG/usr/bin/
+	install -m 644 README $PKG/usr/share/$isim/
+	install -m 644 ChangeLog $PKG/usr/share/$isim/
+	install -m 644 LICENSE $PKG/usr/share/$isim/
+	install -m 644 sample.menu $PKG/usr/share/$isim/
 }
 

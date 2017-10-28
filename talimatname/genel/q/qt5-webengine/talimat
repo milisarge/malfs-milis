@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: ffmpeg jsoncpp libvpx libevent libsrtp xorg-libxdamage protobuf nss gstreamer1-plugins-base libwebp xorg-libxcomposite libxslt gstreamer1-plugins-good python ruby qt5 ninja
 
-name=qt5-webengine
-_name=qtwebengine
-version=5.9.1
-release=1
+isim=qt5-webengine
+_isim=qtwebengine
+surum=5.9.1
+devir=1
 
-#source=(http://download.qt.io/official_releases/qt/5.9/$version/submodules/$_name-opensource-src-$version.tar.xz)
-source=(http://download.qt.io/official_releases/qt/${version%.*}/$version/single/qt-everywhere-opensource-src-$version.tar.xz
+#kaynak=(http://download.qt.io/official_releases/qt/5.9/$surum/submodules/$_name-opensource-src-$surum.tar.xz)
+kaynak=(http://download.qt.io/official_releases/qt/${surum%.*}/$surum/single/qt-everywhere-opensource-src-$surum.tar.xz
 		last-commit-position.patch
 		clip-ft-glyph.diff 
 		harmony-fix.diff
 		gzip_string.py)
 
 derle() {
-	cd $SRC/qt-everywhere-opensource-src-$version/qtwebengine/
+	cd $SRC/qt-everywhere-opensource-src-$surum/qtwebengine/
 
 	#patch -p1 -i $SRC/last-commit-position.patch
 	patch -d src/3rdparty/chromium/third_party -Np3 < $SRC/clip-ft-glyph.diff

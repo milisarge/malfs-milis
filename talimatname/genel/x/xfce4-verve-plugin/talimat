@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xfce4-panel
 
-name=xfce4-verve-plugin
-version=1.1.0
-release=1
+isim=xfce4-verve-plugin
+surum=1.1.0
+devir=1
 
-source=(http://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-debug
 make

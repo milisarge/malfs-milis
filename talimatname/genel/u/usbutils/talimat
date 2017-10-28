@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libusb-compat
 
-name=usbutils
-version=008
-release=1
+isim=usbutils
+surum=008
+devir=1
 
-source=(http://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-$version.tar.xz)
+kaynak=(http://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i '/^usbids/ s:usb.ids:hwdata/&:' lsusb.py
 ./configure --prefix=/usr \
 --datadir=/usr/share/hwdata \

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=soxr
-version=0.1.2
-release=1
+isim=soxr
+surum=0.1.2
+devir=1
 
-source=(http://downloads.sourceforge.net/project/soxr/soxr-$version-Source.tar.xz)
+kaynak=(http://downloads.sourceforge.net/project/soxr/soxr-$surum-Source.tar.xz)
 
 derle() {
-	cd soxr-$version-Source
+	cd soxr-$surum-Source
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_EXAMPLES=OFF \
@@ -26,6 +26,6 @@ derle() {
 		.
 	make
 	make DESTDIR="$PKG" install
-	install -Dm644 LICENCE "$PKG"/usr/share/licenses/$name/LICENSE
+	install -Dm644 LICENCE "$PKG"/usr/share/licenses/$isim/LICENSE
 	rm -r "$PKG"/usr/share/doc/
 }

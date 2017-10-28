@@ -3,18 +3,18 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libevdev mtdev libwacom
 
-name=libinput
-version=1.4.0
-release=1
+isim=libinput
+surum=1.4.0
+devir=1
 
-source=(http://freedesktop.org/software/$name/$name-$version.tar.xz )
+kaynak=(http://freedesktop.org/software/$isim/$isim-$surum.tar.xz )
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static \
 --with-udev-dir=/lib/udev
 make
 make DESTDIR=$PKG install
-install -v -dm755 $PKG/usr/share/doc/libinput-$version
-cp -rv doc/html/* $PKG/usr/share/doc/libinput-$version
+install -v -dm755 $PKG/usr/share/doc/libinput-$surum
+cp -rv doc/html/* $PKG/usr/share/doc/libinput-$surum
 }

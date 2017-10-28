@@ -3,14 +3,14 @@
 # Paketçi: yasarciv
 # Gerekler: ntfs-3g libjpeg-turbo
 
-name=testdisk
-version=7.0
-release=1
-source=(http://www.cgsecurity.org/$name-$version.tar.bz2)
+isim=testdisk
+surum=7.0
+devir=1
+kaynak=(http://www.cgsecurity.org/$isim-$surum.tar.bz2)
 
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 
 ./configure --prefix=/usr
 

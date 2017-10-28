@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml surum="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -11,10 +11,10 @@
     xmlns:ns1="http://sozi.baierouge.fr"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     id="svg3263"
-    sodipodi:docname="terminal.svg"
+    sodipodi:docisim="terminal.svg"
     viewBox="0 0 744.09 1052.4"
-    version="1.1"
-    inkscape:version="0.48.3.1 r9886"
+    surum="1.1"
+    inkscape:surum="0.48.3.1 r9886"
   >
   <defs
       id="defs3265"
@@ -117,10 +117,10 @@
           >image/svg+xml</dc:format
         >
         <dc:type
-            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+            rdf:rekaynak="http://purl.org/dc/dcmitype/StillImage"
         />
         <cc:license
-            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+            rdf:rekaynak="http://creativecommons.org/licenses/publicdomain/"
         />
         <dc:publisher
           >
@@ -180,13 +180,13 @@
           rdf:about="http://creativecommons.org/licenses/publicdomain/"
         >
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Reproduction"
+            rdf:rekaynak="http://creativecommons.org/ns#Reproduction"
         />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Distribution"
+            rdf:rekaynak="http://creativecommons.org/ns#Distribution"
         />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+            rdf:rekaynak="http://creativecommons.org/ns#DerivativeWorks"
         />
       </cc:License
       >

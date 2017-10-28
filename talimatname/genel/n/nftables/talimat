@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: docbook2x libmnl libnftnl
 
-name=nftables
-version=0.2
-release=1
+isim=nftables
+surum=0.2
+devir=1
 
-source=(http://netfilter.org/projects/nftables/files/nftables-$version.tar.bz2)
+kaynak=(http://netfilter.org/projects/nftables/files/nftables-$surum.tar.bz2)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 CONFIG_MAN=y DB2MAN=docbook2man

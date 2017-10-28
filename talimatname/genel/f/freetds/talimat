@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: unixodbc
 
-name=freetds
-version=1.00
-release=1
-source=( ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.tar.bz2)
+isim=freetds
+surum=1.00
+devir=1
+kaynak=( ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.tar.bz2)
 
 derle() {
-         cd $name-$version
+         cd $isim-$surum
          ./configure --prefix=/usr \
                      --sysconfdir=/etc/freetds \
                      --enable-msdblib \

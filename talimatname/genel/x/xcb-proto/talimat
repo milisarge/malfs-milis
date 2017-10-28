@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python 
 
-name=xcb-proto
-version=1.12
-release=1
+isim=xcb-proto
+surum=1.12
+devir=1
 
-source=(http://xcb.freedesktop.org/dist/xcb-proto-$version.tar.bz2)
+kaynak=(http://xcb.freedesktop.org/dist/xcb-proto-$surum.tar.bz2)
 
 derle() {
-	cd xcb-proto-$version
+	cd xcb-proto-$surum
 
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 

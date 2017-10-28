@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: fltk1
 
-name=dillo
-version=3.0.5
-release=1
-source=(http://www.dillo.org/download/dillo-$version.tar.bz2
+isim=dillo
+surum=3.0.5
+devir=1
+kaynak=(http://www.dillo.org/download/dillo-$surum.tar.bz2
         http://www.dillo.org/Icons/d2_icon3_122x122.png)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --enable-ssl
 

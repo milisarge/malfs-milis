@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: kerberos libxml2
 
-name=bind
-version=9.10.3.p2
-release=1
-source=(ftp://ftp.isc.org/isc/bind9/9.10.3-P3/bind-9.10.3-P2.tar.gz)
+isim=bind
+surum=9.10.3.p2
+devir=1
+kaynak=(ftp://ftp.isc.org/isc/bind9/9.10.3-P3/bind-9.10.3-P2.tar.gz)
 
 derle(){
     # blfs-bootscript
@@ -15,7 +15,7 @@ derle(){
     tar xvf $scripts-$scriptsversion.tar.bz2
 
     # pkg
-    cd $name-9.10.3-P2
+    cd $isim-9.10.3-P2
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --localstatedir=/var \
@@ -31,12 +31,12 @@ derle(){
 	make DESTDIR=$PKG -C bin/dig install
 
     # doc
-    install -v -m755 -d $PKG/usr/share/doc/bind-$version/{arm,misc} &&
+    install -v -m755 -d $PKG/usr/share/doc/bind-$surum/{arm,misc} &&
     install -v -m644 doc/arm/*.html \
-        $PKG/usr/share/doc/bind-$version/arm &&
+        $PKG/usr/share/doc/bind-$surum/arm &&
     install -v -m644 \
         doc/misc/{dnssec,ipv6,migrat*,options,rfc-compliance,roadmap,sdb} \
-            $PKG/usr/share/doc/bind-$version/misc
+            $PKG/usr/share/doc/bind-$surum/misc
 
     # init script
     cd $SRC/$scripts-$scriptsversion

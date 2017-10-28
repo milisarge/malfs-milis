@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: gnutls portaudio speex alsa-lib libsamplerate ffmpeg libsrtp opus gsm libsrtp
 
-name=pjproject-ring
-_name=pjproject
-version=2.6
-release=1
-source=(http://www.pjsip.org/release/2.6/$_name-$version.tar.bz2
+isim=pjproject-ring
+_isim=pjproject
+surum=2.6
+devir=1
+kaynak=(http://www.pjsip.org/release/2.6/$_name-$surum.tar.bz2
 		endianness.patch
 		gnutls.patch
 		notestsapps.patch
@@ -21,7 +21,7 @@ source=(http://www.pjsip.org/release/2.6/$_name-$version.tar.bz2
 		add_dtls_transport.patch)
 
 derle() {
-  cd "${SRC}/${_name}-${version}"
+  cd "${SRC}/${_name}-${surum}"
 
   for patch in endianness.patch gnutls.patch notestsapps.patch fix_base64.patch \
 	ipv6.patch ice_config.patch multiple_listeners.patch \
@@ -31,7 +31,7 @@ derle() {
   do
     patch -p1 < ../"$patch"
   done
-  cd "${SRC}/${_name}-${version}"
+  cd "${SRC}/${_name}-${surum}"
   export CXXFLAGS="${CXXFLAGS} -DNDEBUG -fPIC -DPJSIP_MAX_PKT_LEN=8000"
   export CFLAGS="${CXXFLAGS}"
 

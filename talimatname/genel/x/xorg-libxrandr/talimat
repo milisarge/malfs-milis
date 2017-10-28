@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-libx11 xorg-libxext xorg-libxrender 
 
-name=xorg-libxrandr
-version=1.5.0
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXrandr-$version.tar.bz2)
+isim=xorg-libxrandr
+surum=1.5.0
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXrandr-$surum.tar.bz2)
 
 derle() {
-cd libXrandr-$version
+cd libXrandr-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

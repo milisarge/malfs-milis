@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libffi doxygen xmlto docbook-xml libxslt
 
-name=wayland
-release=1
-version=1.14.0
-source=( http://wayland.freedesktop.org/releases/$name-$version.tar.xz)
+isim=wayland
+devir=1
+surum=1.14.0
+kaynak=( http://wayland.freedesktop.org/releases/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr    \
             --disable-static \
             --disable-documentation

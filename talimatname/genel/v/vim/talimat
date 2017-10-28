@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=vim
-version=7.4
-release=1
+isim=vim
+surum=7.4
+devir=1
 
-source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2
+kaynak=(ftp://ftp.vim.org/pub/vim/unix/vim-$surum.tar.bz2
         vim-7.4-locale-1.patch)
 derle()
 {
@@ -23,7 +23,7 @@ echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
 make
 mkdir -p $PKG/usr/share/locale
 
-make DESTDIR=$PKG DEST_HELP=$PKG/usr/share/doc/vim-$version \
+make DESTDIR=$PKG DEST_HELP=$PKG/usr/share/doc/vim-$surum \
 LANGSUBLOC=/usr/share/locale install
 
 ln -sv vim $PKG/usr/bin/vi

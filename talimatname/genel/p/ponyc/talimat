@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: llvm pcre2
 
-name=ponyc
-version=0.19.0
-release=1
-source=(https://github.com/ponylang/ponyc/archive/$version.tar.gz::$name-$version.tar.gz)
+isim=ponyc
+surum=0.19.0
+devir=1
+kaynak=(https://github.com/ponylang/ponyc/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
- cd ponyc-$version
+ cd ponyc-$surum
   sed -i 's/-Werror //' Makefile
 
   make -j1 config=release prefix=/usr arch=x86-64 verbose=
@@ -19,21 +19,21 @@ derle() {
 
   make -j1 config=release prefix=/usr arch=x86-64 verbose= test
   
-  install -Dm755 build/release/ponyc "$PKG"/usr/lib/pony/"$version"/bin/ponyc
+  install -Dm755 build/release/ponyc "$PKG"/usr/lib/pony/"$surum"/bin/ponyc
   install -Dm644 build/release/libponyrt-pic.a "$PKG"/usr/lib/libponyrt.a
   install -Dm644 build/release/libponyc.a "$PKG"/usr/lib/libponyc.a
   install -Dm644 src/libponyrt/pony.h "$PKG"/usr/include/pony.h
 
   install -dm755 "$PKG"/usr/bin
-  ln -sf /usr/lib/pony/"$version"/bin/ponyc "$PKG"/usr/bin
+  ln -sf /usr/lib/pony/"$surum"/bin/ponyc "$PKG"/usr/bin
 
-  cp -dr --no-preserve=ownership packages "$PKG"/usr/lib/pony/"$version"
+  cp -dr --no-preserve=ownership packages "$PKG"/usr/lib/pony/"$surum"
 
   install -dm755 "$PKG"/usr/share/doc/pony
   cp -dr --no-preserve=ownership examples "$PKG"/usr/share/doc/pony
 
   cp -dr docs/* "$PKG"/usr/share/doc/pony
 
-  install -Dm644 LICENSE "$PKG"/usr/share/licenses/"$name"/LICENSE
+  install -Dm644 LICENSE "$PKG"/usr/share/licenses/"$isim"/LICENSE
 
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: intltool python dbus-python python-gtk feedparser mygpoclient
 
-name=gpodder
-version=3.9.0
-release=6
-source=(http://gpodder.org/src/$name-$version.tar.gz)
+isim=gpodder
+surum=3.9.0
+devir=6
+kaynak=(http://gpodder.org/src/$isim-$surum.tar.gz)
 
 derle(){
-	cd $name-$version
+	cd $isim-$surum
 	PYTHON=python2 DESTDIR=${PKG} make install || return 1
 	mkdir -p $PKG/usr/bin
 	mkdir -p $PKG/usr/man/man1

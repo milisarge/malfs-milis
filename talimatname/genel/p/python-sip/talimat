@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: python 
 
-name=python-sip
-version=4.18.1
-release=1
+isim=python-sip
+surum=4.18.1
+devir=1
 
-source=(http://sourceforge.net/projects/pyqt/files/sip/sip-$version/sip-$version.tar.gz )
+kaynak=(http://sourceforge.net/projects/pyqt/files/sip/sip-$surum/sip-$surum.tar.gz )
 
 derle() {
-	cd sip-$version
+	cd sip-$surum
 	python2 configure.py -b /usr/bin \
 	-d /usr/lib/python2.7/site-packages \
 	-e /usr/include/python2.7 \

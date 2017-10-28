@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gsettings-desktop-schemas desktop-file-utils shared-mime-info gtk-update-icon-cache enchant gtk3 gtksourceview3 gvfs libpeas yelp-xsl enchant iso-codes libsoup libzeitgeist python-gobject python 
 
-name=gedit
-version=3.22.1
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=gedit
+surum=3.22.1
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	update-mime-database /usr/share/mime 
 	gdk-pixbuf-query-loaders --update-cache
 	./configure --prefix=/usr \

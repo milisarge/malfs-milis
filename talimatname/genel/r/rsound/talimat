@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=rsound
-version=1.1
-release=1
-source=(http://cloud.github.com/downloads/Themaister/RSound/$name-$version.tar.gz::$name-$version.tar.gz)
+isim=rsound
+surum=1.1
+devir=1
+kaynak=(http://cloud.github.com/downloads/Themaister/RSound/$isim-$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-  cd "${name}-${version}"
+  cd "${isim}-${surum}"
   ./configure --prefix=/usr
   make
   make DESTDIR="${PKG}" install

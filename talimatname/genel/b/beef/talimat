@@ -3,24 +3,24 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: ruby23 ruby23-bundler sqlite python
 
-name=beef
-version=0.4.7.0
-release=1
-source=(beef_gemkur)
+isim=beef
+surum=0.4.7.0
+devir=1
+kaynak=(beef_gemkur)
 
 derle() {
 
-    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-		git clone http://github.com/beefproject/$name.git $DERLEME_KAYNAKDIZIN/$name 
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone http://github.com/beefproject/$isim.git $DERLEME_KAYNAKDIZIN/$isim 
 	else
-		cd $DERLEME_KAYNAKDIZIN/$name 
+		cd $DERLEME_KAYNAKDIZIN/$isim 
 		git pull
 		cd -
 	fi
 	
-	git clone "$DERLEME_KAYNAKDIZIN/$name" "$PKG/usr/share/$name"
+	git clone "$DERLEME_KAYNAKDIZIN/$isim" "$PKG/usr/share/$isim"
 
-	cd "$PKG/usr/share/$name"
+	cd "$PKG/usr/share/$isim"
 
 	mkdir -p "$PKG/usr/bin"
 
@@ -29,7 +29,7 @@ derle() {
 	chmod +x "$PKG/usr/bin/beef_gemkur"
 
 	# beef
-	cat > "$PKG/usr/bin/$name" << EOF
+	cat > "$PKG/usr/bin/$isim" << EOF
 #!/bin/sh
 #check if last gem (nokogiri) are installed?
 if ! gem spec nokogiri > /dev/null 2>&1; then
@@ -37,11 +37,11 @@ if ! gem spec nokogiri > /dev/null 2>&1; then
 fi
 
 # run beef
-cd /usr/share/$name
-exec ruby-2.3 $name "\${@}"
+cd /usr/share/$isim
+exec ruby-2.3 $isim "\${@}"
 EOF
 
-  chmod +x "$PKG/usr/bin/$name"
+  chmod +x "$PKG/usr/bin/$isim"
   
-  rm "$PKG/usr/share/$name/install"
+  rm "$PKG/usr/share/$isim/install"
 }

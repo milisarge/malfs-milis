@@ -3,21 +3,21 @@
 # Paketçi: milisarge
 # Gerekler: python3 python3-setuptools lcms libwebp tk sane openjpeg
 
-name=python3-pillow
-version=4.2.1
+isim=python3-pillow
+surum=4.2.1
 _sanever=2.8.3
-_appname=Pillow
-release=1
+_appisim=Pillow
+devir=1
 
-source=(https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$version.tar.gz
+kaynak=(https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$surum.tar.gz
        https://github.com/python-pillow/Sane/archive/v$_sanever.tar.gz)
 
 derle() {
     cd $SRC
     sed -i "s|os.path.join|'../libImaging', &|" $SRC/Sane-$_sanever/setup.py
-    cp -r $SRC/Sane-${_sanever} $SRC/${_appname}-$version/Sane
+    cp -r $SRC/Sane-${_sanever} $SRC/${_appname}-$surum/Sane
 
-    cd Pillow-$version
+    cd Pillow-$surum
     python3 setup.py install --prefix=/usr --root=$PKG
     cd Sane
     python3 setup.py install --prefix=/usr --root=$PKG

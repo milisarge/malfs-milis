@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:  	
 
-name=tripwire
-version=2.4.2.2
-release=1
-source=(http://downloads.sourceforge.net/tripwire/$name-$version-src.tar.bz2)
+isim=tripwire
+surum=2.4.2.2
+devir=1
+kaynak=(http://downloads.sourceforge.net/tripwire/$isim-$surum-src.tar.bz2)
 
 derle() {
 
-    cd $name-$version-src
+    cd $isim-$surum-src
     
 	sed -i -e 's@TWBIN="${prefix}@TWBIN="$PKG/usr@' install/install.cfg            
 	sed -i -e 's@TWPOLICY="${sysconfdir}@TWPOLICY="$PKG/etc@' install/install.cfg            

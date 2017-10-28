@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: id3lib libid3tag flac libvorbis speex gtk2 itstool
 
-name=easytag
-version=2.2.2
-release=2
-source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=easytag
+surum=2.2.2
+devir=2
+kaynak=(http://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

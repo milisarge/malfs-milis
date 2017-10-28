@@ -29,8 +29,8 @@ ac_add_options --disable-debug-symbols
 ac_add_options --disable-tests
 ac_add_options --disable-eme
 
-ac_add_options --with-app-basename=icecat
-ac_add_options --with-app-name=icecat
+ac_add_options --with-app-baseisim=icecat
+ac_add_options --with-app-isim=icecat
 
 STRIP_FLAGS="--strip-debug"
 

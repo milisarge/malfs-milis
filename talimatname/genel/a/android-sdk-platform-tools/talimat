@@ -3,20 +3,20 @@
 # Paketçi: Cihan Alkan
 # Gerekler: ncurses zlib
 
-name=android-sdk-platform-tools
-version=r26.0.0
-release=1
-source=(https://dl-ssl.google.com/android/repository/platform-tools_$version-linux.zip
+isim=android-sdk-platform-tools
+surum=r26.0.0
+devir=1
+kaynak=(https://dl-ssl.google.com/android/repository/platform-tools_$surum-linux.zip
          license.html
          source.properties)
 
 derle() {
-  install -Dm644 $SRC/license.html usr/share/licenses/$name/license.html
+  install -Dm644 $SRC/license.html usr/share/licenses/$isim/license.html
   cd $PKG
   mkdir -p opt etc/profile.d
-  echo 'export PATH=$PATH:/opt/android-sdk/platform-tools' > "etc/profile.d/$name.sh"
-  echo 'setenv PATH ${PATH}:/opt/android-sdk/platform-tools' > "etc/profile.d/$name.csh"
-  chmod 755 etc/profile.d/$name.{csh,sh}
+  echo 'export PATH=$PATH:/opt/android-sdk/platform-tools' > "etc/profile.d/$isim.sh"
+  echo 'setenv PATH ${PATH}:/opt/android-sdk/platform-tools' > "etc/profile.d/$isim.csh"
+  chmod 755 etc/profile.d/$isim.{csh,sh}
   mkdir -p opt/android-sdk
   cp -a $SRC/platform-tools $PKG/opt/android-sdk/platform-tools
   install -m644 $SRC/source.properties $PKG/opt/android-sdk/platform-tools/source.properties

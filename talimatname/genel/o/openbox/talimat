@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler: xorg pcre pango freetype libpng xorg-fontconfig harfbuzz dbus imlib2 librsvg startup-notification xcb-util libxcb libxml2 dbus
 
-name=openbox
-version=3.6.1
-release=1
+isim=openbox
+surum=3.6.1
+devir=1
 
-source=(http://openbox.org/dist/openbox/$name-$version.tar.gz \
+kaynak=(http://openbox.org/dist/openbox/$isim-$surum.tar.gz \
         openbox.xinitrc)
 
 derle()
 {
-   cd $name-$version
+   cd $isim-$surum
    ./configure --prefix=/usr \
 	--sysconfdir=/etc \
-	--docdir=/usr/share/doc/$name-$version
+	--docdir=/usr/share/doc/$isim-$surum
    make
    make DESTDIR=$PKG install
    rm -rf $PKG/usr/share/doc

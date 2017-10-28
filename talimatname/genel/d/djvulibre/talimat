@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: librsvg libtiff libjpeg-turbo hicolor-icon-theme
 
-name=djvulibre
-version=3.5.25.3
-release=1
-source=(
-http://downloads.sourceforge.net/djvu/$name-$version.tar.gz)
+isim=djvulibre
+surum=3.5.25.3
+devir=1
+kaynak=(
+http://downloads.sourceforge.net/djvu/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-3.5.25
+    cd $isim-3.5.25
     ./configure --prefix=/usr \
                 --disable-desktopfiles
     make

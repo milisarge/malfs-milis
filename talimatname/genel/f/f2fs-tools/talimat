@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=f2fs-tools
-version=1.8.0
-release=1
+isim=f2fs-tools
+surum=1.8.0
+devir=1
 
-source=(https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/$name-$version.tar.gz)
+kaynak=(https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	autoreconf -fi
 	./configure --prefix=/usr --sbindir=/usr/bin
 	make

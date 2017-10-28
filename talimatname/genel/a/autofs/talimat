@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libtirpc nfs-utils libxml2 kerberos openldap cyrus-sasl
 
-name=autofs
-version=5.1.1
-release=1
-source=(http://www.kernel.org/pub/linux/daemons/autofs/v5/$name-$version.tar.xz auto.master)
+isim=autofs
+surum=5.1.1
+devir=1
+kaynak=(http://www.kernel.org/pub/linux/daemons/autofs/v5/$isim-$surum.tar.xz auto.master)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
     source  /etc/blfs-bootscripts
 	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

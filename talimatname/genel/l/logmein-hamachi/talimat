@@ -3,10 +3,10 @@
 # Paketçi: kadanur
 # Gerekler: 
 
-name=logmein-hamachi
-version=2.1.0.174
-release=1
-source=(https://www.vpn.net/installers/$name-$version-x64.tgz 
+isim=logmein-hamachi
+surum=2.1.0.174
+devir=1
+kaynak=(https://www.vpn.net/installers/$isim-$surum-x64.tgz 
 		hamachi.servis)
 
 derle() {
@@ -14,17 +14,17 @@ derle() {
 	cd "${SRC}"/logmein-hamachi-2.1.0.174-x64
 	# Directories
 	install -d "${PKG}"/usr/bin
-	install -d "${PKG}"/opt/${name}/bin
-	install -d "${PKG}"/usr/share/licenses/${name}
+	install -d "${PKG}"/opt/${isim}/bin
+	install -d "${PKG}"/usr/share/licenses/${isim}
 	# Files
-	install -m 755 hamachid "${PKG}"/opt/${name}/bin
-	install -m 755 dnsup "${PKG}"/opt/${name}/bin
-	install -m 755 dnsdown "${PKG}"/opt/${name}/bin
-	install -m 755 uninstall.sh "${PKG}"/opt/${name}
-	install -m 444 README "${PKG}"/opt/${name}
-	install -m 444 LICENSE "${PKG}"/opt/${name}
-	install -m 444 CHANGES "${PKG}"/opt/${name}
-	ln -sf "/opt/$name/bin/hamachid" "${PKG}"/usr/bin/hamachi
+	install -m 755 hamachid "${PKG}"/opt/${isim}/bin
+	install -m 755 dnsup "${PKG}"/opt/${isim}/bin
+	install -m 755 dnsdown "${PKG}"/opt/${isim}/bin
+	install -m 755 uninstall.sh "${PKG}"/opt/${isim}
+	install -m 444 README "${PKG}"/opt/${isim}
+	install -m 444 LICENSE "${PKG}"/opt/${isim}
+	install -m 444 CHANGES "${PKG}"/opt/${isim}
+	ln -sf "/opt/$isim/bin/hamachid" "${PKG}"/usr/bin/hamachi
 	install -d $PKG/etc/rc.d/init.d
 	cp $SRC/hamachi.servis  $PKG/etc/rc.d/init.d/hamachid
 

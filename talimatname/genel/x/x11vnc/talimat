@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libjpeg-turbo xorg-libxdamage xorg-libxinerama xorg-libxrandr xorg-libxtst
 
-name=x11vnc
-version=0.9.13
-release=1
-source=(http://prdownloads.sf.net/libvncserver/$name-$version.tar.gz)
+isim=x11vnc
+surum=0.9.13
+devir=1
+kaynak=(http://prdownloads.sf.net/libvncserver/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	CONFIG_SHELL=/bin/bash \
 	./configure --prefix=/usr \
 		    --disable-nls \

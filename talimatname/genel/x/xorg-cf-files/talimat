@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-util-macros
 
-name=xorg-cf-files
-version=1.0.6
-release=1
-source=(http://xorg.freedesktop.org/releases/individual/util/$name-$version.tar.bz2)
+isim=xorg-cf-files
+surum=1.0.6
+devir=1
+kaynak=(http://xorg.freedesktop.org/releases/individual/util/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules konsole kf5-karchive kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-knotifications kf5-knotifyconfig kf5-kparts kf5-kwidgetsaddons kf5-kwindowsystem
 
-name=yakuake
-version=3.0.2
-release=1
-source=( http://download.kde.org/stable/$name/$version/src/$name-$version.tar.xz)
+isim=yakuake
+surum=3.0.2
+devir=1
+kaynak=( http://download.kde.org/stable/$isim/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -Wno-dev

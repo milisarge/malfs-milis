@@ -3,16 +3,16 @@
 # Paketçi: Cihan Alkan
 # Gerekler: 
 
-name=firejail
-version=0.9.48
-release=1
+isim=firejail
+surum=0.9.48
+devir=1
 
-source=(https://sourceforge.net/projects/firejail/files/firejail/firejail-$version.tar.xz)
+kaynak=(https://sourceforge.net/projects/firejail/files/firejail/firejail-$surum.tar.xz)
 
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
 export CFLAGS="${CFLAGS/-fsanitize=undefined/}"
 	./configure --prefix=/usr

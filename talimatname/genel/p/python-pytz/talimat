@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python python-setuptools
 
-name=python-pytz
-version=2017.2
-release=1
+isim=python-pytz
+surum=2017.2
+devir=1
 
-source=(https://pypi.python.org/packages/a4/09/c47e57fc9c7062b4e83b075d418800d322caa87ec0ac21e6308bd3a2d519/pytz-2017.2.zip)
+kaynak=(https://pypi.python.org/packages/a4/09/c47e57fc9c7062b4e83b075d418800d322caa87ec0ac21e6308bd3a2d519/pytz-2017.2.zip)
 
 derle() {
-	cd pytz-$version
+	cd pytz-$surum
     python2 setup.py install --root=$PKG/
 }

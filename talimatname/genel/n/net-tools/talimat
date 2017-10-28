@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=net-tools
-version=20101030
-release=1
+isim=net-tools
+surum=20101030
+devir=1
 
-source=(http://anduin.linuxfromscratch.org/sources/BLFS/svn/n/$name-CVS_$version.tar.gz
+kaynak=(http://anduin.linuxfromscratch.org/sources/BLFS/svn/n/$isim-CVS_$surum.tar.gz
 		net-tools-CVS_20101030-remove_dups-1.patch)
 
 derle() {

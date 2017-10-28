@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=bash-completion
-version=2.1
-release=1
-source=(https://launchpad.net/$name/master/$version/+download/$name-$version.tar.gz)
+isim=bash-completion
+surum=2.1
+devir=1
+kaynak=(https://launchpad.net/$isim/master/$surum/+download/$isim-$surum.tar.gz)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
 
     sed -i Makefile.* \
 	-e 's|pkgconfigdir = .*|pkgconfigdir = /usr/lib/pkgconfig|g' \
@@ -22,7 +22,7 @@ derle() {
     make DESTDIR=$PKG install
 
     mv $PKG/etc/bash_completion{.sh,}
-    chmod 0755 $PKG/usr/share/$name/bash_completion
+    chmod 0755 $PKG/usr/share/$isim/bash_completion
 
     # files allready installed
     for FILE in cal dmesg eject hexdump hwclock ionice look renice rtcwake

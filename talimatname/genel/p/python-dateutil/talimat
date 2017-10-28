@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: python-six python-setuptools
 
-name=python-dateutil
-version=2.2
-release=1
+isim=python-dateutil
+surum=2.2
+devir=1
 
-source=(
-http://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-$version.tar.gz)
+kaynak=(
+http://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
     # Düzeltmeler
     chmod -R a+r $PKG/usr/lib/python2.7/

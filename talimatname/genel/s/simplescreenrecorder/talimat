@@ -3,31 +3,31 @@
 # Paketçi: Cihan Alkan
 # Gerekler: qt4 ffmpeg jack xorg-glu xorg-libx11 xorg-libxi xorg-libxext xorg-libxfixes
 
-name=simplescreenrecorder
-version=0.3.8
-release=1
+isim=simplescreenrecorder
+surum=0.3.8
+devir=1
 
-source=(simplescreenrecorder_tr.qm
+kaynak=(simplescreenrecorder_tr.qm
         simplescreenrecorder.desktop)
 
 
 derle() {
-	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-		git clone https://github.com/MaartenBaert/ssr.git $DERLEME_KAYNAKDIZIN/$name 
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/MaartenBaert/ssr.git $DERLEME_KAYNAKDIZIN/$isim 
 	else
-		cd $DERLEME_KAYNAKDIZIN/$name 
+		cd $DERLEME_KAYNAKDIZIN/$isim 
 		git pull
 		cd -
 	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
 
 
-	cd $name
+	cd $isim
 	./configure --prefix=/usr --disable-assert
 	make
-	rm $SRC/$name/data/$name.desktop
-	cp $SRC/$name.desktop $SRC/$name/data/
+	rm $SRC/$isim/data/$isim.desktop
+	cp $SRC/$isim.desktop $SRC/$isim/data/
 	make DESTDIR=$PKG install
-	mkdir -p /usr/share/$name/translations
-	cp $SRC/simplescreenrecorder_tr.qm /usr/share/$name/translations/
+	mkdir -p /usr/share/$isim/translations
+	cp $SRC/simplescreenrecorder_tr.qm /usr/share/$isim/translations/
 }

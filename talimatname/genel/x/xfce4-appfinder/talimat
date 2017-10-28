@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: xfce4-libui xfce4-garcon xfce4-dev-tools
 
-name=xfce4-appfinder
-version=4.12.0
-release=3
+isim=xfce4-appfinder
+surum=4.12.0
+devir=3
 
-source=(https://github.com/xfce-mirror/xfce4-appfinder/archive/master.tar.gz::$name-$version.tar.gz
+kaynak=(https://github.com/xfce-mirror/xfce4-appfinder/archive/master.tar.gz::$isim-$surum.tar.gz
 		appfinder-preferences-ui.h)
 
 derle() {
-cd $name-master
+cd $isim-master
 ./autogen.sh
 cp $SRC/appfinder-preferences-ui.h src/
 ./configure \

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libmms
-version=0.6.4
-release=1
+isim=libmms
+surum=0.6.4
+devir=1
 
-source=(
-http://download.sourceforge.net/libmms/$name-$version.tar.gz)
+kaynak=(
+http://download.sourceforge.net/libmms/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install

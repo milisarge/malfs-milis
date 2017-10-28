@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: boost cppunit doxygen librevenge libxml2 
 
-name=libe-book
-version=0.1.2
-release=1
-source=(https://sourceforge.net/projects/${name//-/}/files//libe-book-0.1.2/libe-book-$version.tar.xz
+isim=libe-book
+surum=0.1.2
+devir=1
+kaynak=(https://sourceforge.net/projects/${name//-/}/files//libe-book-0.1.2/libe-book-$surum.tar.xz
 		0001-Disable-werror-by-default-since-gperf-code-will-not-.patch
 		boost159.patch)
 
 derle() {
-	cd ${name}-${version}
+	cd ${isim}-${surum}
 	# https://sourceforge.net/p/libebook/code/ci/784c5168d1a62618e53619fd0a979363d596775a/
 	patch -Np1 -i ../0001-Disable-werror-by-default-since-gperf-code-will-not-.patch
 	patch -Np1 -i ../boost159.patch

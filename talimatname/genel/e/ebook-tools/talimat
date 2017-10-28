@@ -3,21 +3,21 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake libxml2 libzip
 
-name=ebook-tools
-version=0.2.2
-release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+isim=ebook-tools
+surum=0.2.2
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
 cd $SRC
 mkdir build
 cd build
-cmake ../$name-$version        \
+cmake ../$isim-$surum        \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 make
 make DESTDIR=$PKG install
 
-install -Dm644 $SRC/$name-$version/LICENSE \
-     $PKG/usr/share/licenses/$name/LICENSE
+install -Dm644 $SRC/$isim-$surum/LICENSE \
+     $PKG/usr/share/licenses/$isim/LICENSE
 }

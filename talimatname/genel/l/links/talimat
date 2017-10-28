@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: gpm libpng libtiff libjpeg-turbo
 
-name=links
-version=2.12
-release=1
+isim=links
+surum=2.12
+devir=1
 
-source=(http://links.twibright.com/download/links-$version.tar.bz2)
+kaynak=(http://links.twibright.com/download/links-$surum.tar.bz2)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --enable-graphics \
 --mandir=/usr/share/man
 make
 make DESTDIR=$PKG install
-mkdir -p $PKG/usr/share/doc/$name-$version
+mkdir -p $PKG/usr/share/doc/$isim-$surum
 install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO \
-$PKG/usr/share/doc/$name-$version
+$PKG/usr/share/doc/$isim-$surum
 }

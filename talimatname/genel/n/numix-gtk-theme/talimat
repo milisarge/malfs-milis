@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gdk-pixbuf glib libxml2 gtk-update-icon-cache
 
-name=numix-gtk-theme
-version=2.2.3
-release=1
-source=(https://github.com/numixproject/numix-gtk-theme/archive/v$version.tar.gz)
+isim=numix-gtk-theme
+surum=2.2.3
+devir=1
+kaynak=(https://github.com/numixproject/numix-gtk-theme/archive/v$surum.tar.gz)
  
 derle() {
-	mv $DERLEME_KAYNAKDIZIN/v$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
-	cd $name-$version
+	mv $DERLEME_KAYNAKDIZIN/v$surum.tar.gz $DERLEME_KAYNAKDIZIN/$isim-$surum.tar.gz
+	cd $isim-$surum
 	
 	if [ ! -d $DERLEME_KAYNAKDIZIN/numix-icon-theme-circle ];then
 		git clone https://github.com/numixproject/numix-icon-theme-circle $DERLEME_KAYNAKDIZIN/numix-icon-theme-circle

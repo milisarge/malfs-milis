@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool xfce4-dev-tools hicolor-icon-theme ido libindicator libindicator-gtk2 libindicator xfce4-panel xdg-utils 
 
-name=xfce4-indicator-plugin
-version=2.3.3
-release=1
-source=(http://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$version.tar.bz2
+isim=xfce4-indicator-plugin
+surum=2.3.3
+devir=1
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/${surum%.*}/$isim-$surum.tar.bz2
 )
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib --disable-static
 
   make

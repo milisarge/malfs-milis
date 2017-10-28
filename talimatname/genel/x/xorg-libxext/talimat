@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-libx11
 
-name=xorg-libxext
-version=1.3.3
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXext-$version.tar.bz2)
+isim=xorg-libxext
+surum=1.3.3
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXext-$surum.tar.bz2)
 
 derle() {
-cd libXext-$version
+cd libXext-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

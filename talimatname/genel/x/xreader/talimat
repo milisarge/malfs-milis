@@ -3,16 +3,16 @@
 # Paketçi: milisarge yasarciv
 # Gerekler: ghostscript poppler-glib djvulibre desktop-file-utils gsettings-desktop-schemas gtk3 gtk2 libsecret mate-common yelp-tools
 
-name=xreader
-version=1.4.1
-release=1
-source=(https://github.com/linuxmint/$name/archive/$version.tar.gz)
+isim=xreader
+surum=1.4.1
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./autogen.sh --prefix="/usr" \
 	 --localstatedir="/var" \
-	 --libexecdir="/usr/lib/$name" \
+	 --libexecdir="/usr/lib/$isim" \
 	 --disable-caja --disable-nemo
 	make
 	make DESTDIR=$PKG install

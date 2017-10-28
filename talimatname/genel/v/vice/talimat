@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 giflib lame libpng libjpeg-turbo xorg-libxdamage xorg-libsm vte xorg-libxxf86vm xorg-fontconfig xorg-font-util libpcap libnet sdl dialog xmlto texi2html zlib
 
-name=vice
-version=2.4
-release=2
-source=(http://downloads.sourceforge.net/project/vice-emu/releases/vice-$version.tar.gz
+isim=vice
+surum=2.4
+devir=2
+kaynak=(http://downloads.sourceforge.net/project/vice-emu/releases/vice-$surum.tar.gz
 	vice-2.4-no-fc-cache.patch
 	vice-2.4-64bit.patch
 	vice-2.4-giflib.patch
@@ -19,7 +19,7 @@ source=(http://downloads.sourceforge.net/project/vice-emu/releases/vice-$version
 	vice)
 
 derle() {
-	cd vice-$version
+	cd vice-$surum
 	patch -p1 < $SRC/vice-2.4-no-fc-cache.patch || return
 	patch -p1 < $SRC/vice-2.4-64bit.patch || return
 	patch -p1 < $SRC/vice-2.4-giflib.patch || return
@@ -45,9 +45,9 @@ derle() {
   	ICONSIZES="48 32 24 22 16"
 	for i in $ICONSIZES; do
 	mkdir -p $PKG/usr/share/icons/hicolor/$i\x$i/apps;
-	cp $SRC/$name-$i.png $PKG/usr/share/icons/hicolor/$i\x$i/apps;
+	cp $SRC/$isim-$i.png $PKG/usr/share/icons/hicolor/$i\x$i/apps;
    	done;
-    	cp $SRC/$name.png $PKG/usr/share/applications/
+    	cp $SRC/$isim.png $PKG/usr/share/applications/
   
 
 	make DESTDIR=$PKG install

@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=dvd+rw-tools
-version=7.1
-release=1
-source=( http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-$version.tar.gz \
+isim=dvd+rw-tools
+surum=7.1
+devir=1
+kaynak=( http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-$surum.tar.gz \
 	transport.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -Np1 -i ../transport.patch
 	make
 	mkdir -p $PKG/usr/bin $PKG/usr/share/man/man1

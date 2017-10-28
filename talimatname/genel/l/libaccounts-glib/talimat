@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: dbus-glib libxml2 sqlite python-gobject docbook-xsl
 
-name=libaccounts-glib
-version=1.21
-release=1
+isim=libaccounts-glib
+surum=1.21
+devir=1
 
 PKGMK_KEEP_SOURCES="no"
 
-source=(https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.zip)      
+kaynak=(https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.zip)      
                                                                                                          
 derle() {
 cd libaccounts*

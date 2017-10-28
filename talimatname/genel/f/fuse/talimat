@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: doxygen
 
-name=fuse
-version=2.9.4
-release=1
-source=( https://github.com/libfuse/libfuse/releases/download/fuse_2_9_4/fuse-$version.tar.gz)
+isim=fuse
+surum=2.9.4
+devir=1
+kaynak=( https://github.com/libfuse/libfuse/releases/download/fuse_2_9_4/fuse-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static INIT_D_PATH=/tmp/init.d
 make
 make DESTDIR=$PKG install
 mkdir -p $PKG/lib
 mv -v $PKG/usr/lib/libfuse.so.* $PKG/lib
-ln -sfv ../../lib/libfuse.so.$version $PKG/usr/lib/libfuse.so
+ln -sfv ../../lib/libfuse.so.$surum $PKG/usr/lib/libfuse.so
 rm -rf $PKG/tmp
 rm $PKG/dev/fuse
 }

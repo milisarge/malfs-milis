@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=sgml-common
-version=0.6.3
-release=1
+isim=sgml-common
+surum=0.6.3
+devir=1
 
-source=(
-ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/sgml-common-$version.tgz
-http://www.linuxfromscratch.org/patches/blfs/7.5/sgml-common-$version-manpage-1.patch)
+kaynak=(
+ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/sgml-common-$surum.tgz
+http://www.linuxfromscratch.org/patches/blfs/7.5/sgml-common-$surum-manpage-1.patch)
 
 derle(){
-    cd $name-$version
-    patch -Np1 -i ../sgml-common-$version-manpage-1.patch &&
+    cd $isim-$surum
+    patch -Np1 -i ../sgml-common-$surum-manpage-1.patch &&
     autoreconf -f -i
     ./configure --prefix=/usr \
                 --sysconfdir=/etc

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libdaemon
-version=0.14
-release=1
+isim=libdaemon
+surum=0.14
+devir=1
 
-source=( http://pkgs.fedoraproject.org/repo/pkgs/libdaemon/libdaemon-0.14.tar.gz/509dc27107c21bcd9fbf2f95f5669563/$name-$version.tar.gz)
+kaynak=( http://pkgs.fedoraproject.org/repo/pkgs/libdaemon/libdaemon-0.14.tar.gz/509dc27107c21bcd9fbf2f95f5669563/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 		--disable-doxygen \
 		--disable-lynx

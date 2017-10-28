@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: zlib bzip2 gmp curl
 
-name=clamav
-version=0.99.0
-release=1
-source=(http://www.clamav.net/downloads/production/$name-${version%.*}.tar.gz \
+isim=clamav
+surum=0.99.0
+devir=1
+kaynak=(http://www.clamav.net/downloads/production/$isim-${surum%.*}.tar.gz \
 	clamd.conf freshclam.conf clamd freshclam)
 
 derle() {
 
-	cd $name-${version%.*}
+	cd $isim-${surum%.*}
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
 		--enable-id-check \
@@ -19,7 +19,7 @@ derle() {
 		--with-tcpwrappers
 	make
 	make DESTDIR=$PKG install
-	mkdir -p $PKG/var/run/$name $PKG/var/log/$name
+	mkdir -p $PKG/var/run/$isim $PKG/var/log/$isim
 	install -o root -g root -m 0644 $SRC/{clamd,freshclam}.conf \
 		$PKG/etc/
 	install -d $PKG/etc/rc.d

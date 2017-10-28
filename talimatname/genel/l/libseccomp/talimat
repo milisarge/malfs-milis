@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libseccomp
-version=2.1.1
-release=1
+isim=libseccomp
+surum=2.1.1
+devir=1
 
-source=(
-http://downloads.sourceforge.net/project/$name/$name-$version/$name-$version.tar.gz)
+kaynak=(
+http://downloads.sourceforge.net/project/$isim/$isim-$surum/$isim-$surum.tar.gz)
 
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install    

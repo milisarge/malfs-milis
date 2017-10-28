@@ -3,10 +3,10 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: 
 
-name=go
-version=1.4.3
-release=1
-source=(https://storage.googleapis.com/golang/${name}${version}.src.tar.gz)
+isim=go
+surum=1.4.3
+devir=1
+kaynak=(https://storage.googleapis.com/golang/${isim}${surum}.src.tar.gz)
 
 
 derle() {

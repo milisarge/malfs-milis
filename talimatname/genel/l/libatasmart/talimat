@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libatasmart
-version=0.19
-release=1
+isim=libatasmart
+surum=0.19
+devir=1
 
-source=(http://0pointer.de/public/$name-$version.tar.xz)
+kaynak=(http://0pointer.de/public/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static
 make
-make DESTDIR=$PKG docdir=/usr/share/doc/libatasmart-$version install
+make DESTDIR=$PKG docdir=/usr/share/doc/libatasmart-$surum install
 }

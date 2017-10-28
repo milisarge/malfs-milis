@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: apr-util openssl scons kerberos 
 
-name=serf
-version=1.3.8	
-release=1
-source=(https://archive.apache.org/dist/$name/$name-$version.tar.bz2)
+isim=serf
+surum=1.3.8	
+devir=1
+kaynak=(https://archive.apache.org/dist/$isim/$isim-$surum.tar.bz2)
  
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 	
 sed -i "/Append/s:RPATH=libdir,::"   SConstruct 
 sed -i "/Default/s:lib_static,::"    SConstruct 

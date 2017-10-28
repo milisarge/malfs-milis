@@ -3,11 +3,11 @@
 # Paketçi: Cihan Alkan
 # Gerekler: gtkglext
 
-name=anydesk
-version=2.9.3
-release=1
+isim=anydesk
+surum=2.9.3
+devir=1
 
-source=(https://download.anydesk.com/linux/anydesk_2.9.3-1_amd64.deb?_ga=2.95152536.542585341.1498502992-1480999265.1498502992
+kaynak=(https://download.anydesk.com/linux/anydesk_2.9.3-1_amd64.deb?_ga=2.95152536.542585341.1498502992-1480999265.1498502992
 user.conf)
 
 

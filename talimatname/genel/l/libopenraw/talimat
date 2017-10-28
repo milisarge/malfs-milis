@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: boost libxml2 gdk-pixbuf
 
-name=libopenraw
-version=0.1.0
-release=1
-source=(https://libopenraw.freedesktop.org/download/$name-$version.tar.bz2)
+isim=libopenraw
+surum=0.1.0
+devir=1
+kaynak=(https://libopenraw.freedesktop.org/download/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-${version}
+	cd $isim-${surum}
 	./configure --prefix=/usr
 	make
 	make DESTDIR="$PKG" install

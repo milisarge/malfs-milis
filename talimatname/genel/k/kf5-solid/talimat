@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 kf5-extra-cmake-modules eudev udisks udisks2 upower media-player-info gvfs
 
-name=kf5-solid
-version=5.27.0
-release=1
-_name=solid
-_version=5.27
+isim=kf5-solid
+surum=5.27.0
+devir=1
+_isim=solid
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

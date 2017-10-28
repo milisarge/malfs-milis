@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gcc glib gobject-introspection gtk-doc intltool itstool libgcrypt xorg-libx11 libxcb xorg-libxdmcp xorg-libxklavier pam polkit qt4 qt5 vala
 
-name=lightdm
-version=1.22.0
-release=1
+isim=lightdm
+surum=1.22.0
+devir=1
 
-source=(https://launchpad.net/lightdm/${version%.*}/${version}/+download/lightdm-${version}.tar.xz
+kaynak=(https://launchpad.net/lightdm/${surum%.*}.tar.xz
         lightdm.service
         lightdm.tmpfiles
         lightdm.pam
@@ -17,7 +17,7 @@ source=(https://launchpad.net/lightdm/${version%.*}/${version}/+download/lightdm
         Xsession)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 patch -Np1 -i ../lightdm-default-config.patch
 
   export MOC4=moc-qt4

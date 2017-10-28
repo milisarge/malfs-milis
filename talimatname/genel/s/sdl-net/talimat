@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: sdl
 
-name=sdl-net
-version=1.2.8
-release=1
-source=(http://www.libsdl.org/projects/SDL_net/release/SDL_net-$version.tar.gz)
+isim=sdl-net
+surum=1.2.8
+devir=1
+kaynak=(http://www.libsdl.org/projects/SDL_net/release/SDL_net-$surum.tar.gz)
 
 derle() {
-	cd SDL_net-$version
+	cd SDL_net-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

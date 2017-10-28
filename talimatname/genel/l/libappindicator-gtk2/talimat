@@ -5,16 +5,16 @@
 
 run=(libindicator-gtk2 libdbusmenu-gtk2 libdbusmenu-glib)
 
-name=libappindicator-gtk2
-version=12.10.0
-release=1
+isim=libappindicator-gtk2
+surum=12.10.0
+devir=1
 
-source=(http://launchpad.net/libappindicator/${version%.*}/$version/+download/libappindicator-$version.tar.gz)
+kaynak=(http://launchpad.net/libappindicator/${surum%.*}/$surum/+download/libappindicator-$surum.tar.gz)
 
 derle() {
 
   export CFLAGS+=" -Wno-error=deprecated-declarations"
-  cd libappindicator-$version
+  cd libappindicator-$surum
   sed -i 's|/cli/|/mono/|' bindings/mono/{appindicator-sharp-0.1.pc.in,Makefile.in}
 
   autoreconf -vfi

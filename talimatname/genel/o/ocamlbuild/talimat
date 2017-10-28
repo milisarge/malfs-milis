@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: ocaml
 
-name=ocamlbuild
-version=0.11.0
-release=1
-source=(https://github.com/ocaml/${name}/archive/$version.tar.gz)
+isim=ocamlbuild
+surum=0.11.0
+devir=1
+kaynak=(https://github.com/ocaml/${isim}/archive/$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make configure OCAMLBUILD_PREFIX=/usr
 	make
 	make install DESTDIR=$PKG

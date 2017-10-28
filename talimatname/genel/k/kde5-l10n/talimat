@@ -3,21 +3,21 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-ki18n kf5-kdoctools phonon-qt5
 
-name=kde5-l10n
-version=16.08.2
-release=1
+isim=kde5-l10n
+surum=16.08.2
+devir=1
 
-source=()
+kaynak=()
 
 derle() {
 
 for lang in de es fr it sv tr
 do
   cd $SRC
-  wget http://download.kde.org/stable/applications/$version/src/kde-l10n/kde-l10n-$lang-$version.tar.xz
-  tar xf kde-l10n-$lang-$version.tar.xz
+  wget http://download.kde.org/stable/applications/$surum/src/kde-l10n/kde-l10n-$lang-$surum.tar.xz
+  tar xf kde-l10n-$lang-$surum.tar.xz
 
-  cd kde-l10n-$lang-$version/5/$lang
+  cd kde-l10n-$lang-$surum/5/$lang
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release
   make

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: glib gobject-introspection gtk-doc
 
-name=libgudev
-version=230
-release=1
+isim=libgudev
+surum=230
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/libgudev/$version/libgudev-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/libgudev/$surum/libgudev-$surum.tar.xz)
 derle() {
-cd ${name}-$version
+cd ${isim}-$surum
 
 ./configure --prefix=/usr
 make

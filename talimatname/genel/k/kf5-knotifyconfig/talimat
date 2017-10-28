@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kcompletion kf5-kconfig kf5-ki18n kf5-kio phonon-qt5
 
-name=kf5-knotifyconfig
-version=5.27.0
-release=1
-_name=knotifyconfig
-_version=5.27
+isim=kf5-knotifyconfig
+surum=5.27.0
+devir=1
+_isim=knotifyconfig
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

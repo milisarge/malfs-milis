@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=uthash
-version=2.0.2
-release=1
-source=(https://github.com/troydhanson/uthash/archive/v$version.tar.gz)
+isim=uthash
+surum=2.0.2
+devir=1
+kaynak=(https://github.com/troydhanson/uthash/archive/v$surum.tar.gz)
 
 derle() {
-  cd "${SRC}/${name}-${version}/src"
+  cd "${SRC}/${isim}-${surum}/src"
   install -dm755 "${PKG}"/usr/include/
   for h in *.h; do
       install -m 644 ${h} "${PKG}"/usr/include/

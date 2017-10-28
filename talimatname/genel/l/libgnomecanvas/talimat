@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool libglade libart_lgpl 
 
-name=libgnomecanvas
-version=2.30.3
-release=3.0
-source=(https://download.gnome.org/sources/$name/2.30/$name-$version.tar.bz2
+isim=libgnomecanvas
+surum=2.30.3
+devir=3.0
+kaynak=(https://download.gnome.org/sources/$isim/2.30/$isim-$surum.tar.bz2
 )
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr --disable-static \
       --enable-glade
   make

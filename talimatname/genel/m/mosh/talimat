@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: libutempter perl-io-tty protobuf 
 
-name=mosh
-version=1.2.4
-release=1
+isim=mosh
+surum=1.2.4
+devir=1
 
-source=(http://mosh.mit.edu/$name-$version.tar.gz)
+kaynak=(http://mosh.mit.edu/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./autogen.sh
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
-    install -Dm644 conf/bash_completion.d/$name \
-        $PKG/usr/share/bash-completion/completions/$name
+    install -Dm644 conf/bash_completion.d/$isim \
+        $PKG/usr/share/bash-completion/completions/$isim
 }
 
 

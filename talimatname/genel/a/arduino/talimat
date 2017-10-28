@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 desktop-file-utils shared-mime-info openjdk avrdude apache-ant unzip
 
-name=arduino
-version=1.6.11
-release=1
-source=(https://github.com/arduino/Arduino/archive/$version.tar.gz
+isim=arduino
+surum=1.6.11
+devir=1
+kaynak=(https://github.com/arduino/Arduino/archive/$surum.tar.gz
 		arduino.sh)
 
 derle() {
-cd "Arduino-${version}/build"
+cd "Arduino-${surum}/build"
     export PATH=/opt/OpenJDK-8u60-bin/jre/bin/:$PATH
     ant clean build
 
-    cd ${SRC}/"Arduino-${version}/build/linux/work"
+    cd ${SRC}/"Arduino-${surum}/build/linux/work"
 
     # Create directories
     install -dm755 "${PKG}/usr/share/"{doc,icons/hicolor,applications,mime/packages}

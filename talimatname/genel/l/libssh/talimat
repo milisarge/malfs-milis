@@ -3,15 +3,15 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: doxygen cmake
 
-name=libssh
-version=0.7.5
-release=1
+isim=libssh
+surum=0.7.5
+devir=1
 
-source=( https://git.libssh.org/projects/libssh.git/snapshot/$name-$version.tar.gz)
+kaynak=( https://git.libssh.org/projects/libssh.git/snapshot/$isim-$surum.tar.gz)
 	
 derle() {
 	cd $SRC/
-	cmake $name-$version/ -DCMAKE_INSTALL_PREFIX=/usr \
+	cmake $isim-$surum/ -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
  	make
  	make DESTDIR=$PKG install

@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxext libpng libjpeg-turbo 
 
-name=xli
-version=1
-release=1
+isim=xli
+surum=1
+devir=1
 
-source=(ftp://ftp.x.org/contrib/applications/xli.1.16.tar.gz
-	http://downloads.nutyx.org/files/patchs/$name/xli-1.16-makefile-1.patch)
+kaynak=(ftp://ftp.x.org/contrib/applications/xli.1.16.tar.gz
+	http://downloads.nutyx.org/files/patchs/$isim/xli-1.16-makefile-1.patch)
 derle() {
 sed -i "s/varargs/stdarg/" rlelib.c
 mv Makefile{.std,}

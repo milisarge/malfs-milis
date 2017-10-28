@@ -3,13 +3,13 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: apr serf cyrus-sasl
 
-name=subversion
-version=1.9.3
-release=1
-source=(http://www.apache.org/dist/$name/$name-$version.tar.bz2)
+isim=subversion
+surum=1.9.3
+devir=1
+kaynak=(http://www.apache.org/dist/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
 
     ./configure --prefix=/usr \
                 --with-apr=/usr \

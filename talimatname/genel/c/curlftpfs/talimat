@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: fuse glib
 
-name=curlftpfs
-version=0.9.2
-release=1
-source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+isim=curlftpfs
+surum=0.9.2
+devir=1
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure \
 		--prefix=/usr \
 		--mandir=/usr/man

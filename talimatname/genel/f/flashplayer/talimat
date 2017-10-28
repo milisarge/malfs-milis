@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: nss
 
-name=flashplayer
-version=27.0.0.170
-release=1
-source=(https://fpdownload.adobe.com/get/flashplayer/pdc/$version/flash_player_ppapi_linux.x86_64.tar.gz::$name-$version.tar.gz
+isim=flashplayer
+surum=27.0.0.170
+devir=1
+kaynak=(https://fpdownload.adobe.com/get/flashplayer/pdc/$surum/flash_player_ppapi_linux.x86_64.tar.gz::$isim-$surum.tar.gz
 		flashplayer.mms.cfg)
       
 
 derle() {
 	cd $SRC
 	install -Dm644 libpepflashplayer.so "$PKG/usr/lib/mozilla/plugins/libflashplayer.so"
-	install -Dm644 -t "$PKG/usr/share/licenses/$name" license.pdf LGPL/notice.txt
+	install -Dm644 -t "$PKG/usr/share/licenses/$isim" license.pdf LGPL/notice.txt
 	install -D -m644 flashplayer.mms.cfg $PKG/etc/adobe/mms.cfg
 }

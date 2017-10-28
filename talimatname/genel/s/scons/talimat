@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python 
 
-name=scons
-version=2.4.1
-release=1
+isim=scons
+surum=2.4.1
+devir=1
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 derle() 
 { 
-cd $name-$version
+cd $isim-$surum
 python2 setup.py install --standard-lib --prefix=/usr --install-data=/usr/share --root=$PKG --optimize=1;
-install -D -m644 LICENSE.txt $PKG/usr/share/licenses/$name/LICENSE
+install -D -m644 LICENSE.txt $PKG/usr/share/licenses/$isim/LICENSE
 }

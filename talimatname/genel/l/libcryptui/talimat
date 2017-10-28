@@ -4,14 +4,14 @@
 # Gerekler: gtk3 gpgme dbus-glib gnupg libnotify libgnome-keyring dconf gobject-introspection intltool
 
 
-name=libcryptui
-version=3.12.2
-release=1
+isim=libcryptui
+surum=3.12.2
+devir=1
 
-source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/GNOME/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i "s@1.2 1.4 2.0@1.2 1.4 2.0 2.1@" configure
 	./configure --prefix=/usr
 	make

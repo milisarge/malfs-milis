@@ -3,13 +3,13 @@
 # Paketçi: Cihan Alkan
 # Gerekler: cairo glib icu freetype ragel graphite2
 
-name=harfbuzz
-version=1.5.1
-release=3
-source=(http://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2)
+isim=harfbuzz
+surum=1.5.1
+devir=3
+kaynak=(http://www.freedesktop.org/software/$isim/release/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
   NOCONFIGURE=1 ./autogen.sh
   ./configure \
     --prefix=/usr \

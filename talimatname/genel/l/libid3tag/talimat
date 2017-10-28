@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libid3tag
-version=0.15.1b
-release=1
+isim=libid3tag
+surum=0.15.1b
+devir=1
 
-source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz\
-	http://downloads.nutyx.org/files/patchs/$name/id3tag.pc)
+kaynak=(ftp://ftp.mars.org/pub/mpeg/$isim-$surum.tar.gz\
+	http://downloads.nutyx.org/files/patchs/$isim/id3tag.pc)
 
 derle() {
 	mkdir -p $PKG/usr/lib/pkgconfig/
-	sed "s/#version#/$version/" id3tag.pc > \
+	sed "s/#version#/$surum/" id3tag.pc > \
 	$PKG/usr/lib/pkgconfig/id3tag.pc
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr 
 	make
 	make DESTDIR=$PKG install

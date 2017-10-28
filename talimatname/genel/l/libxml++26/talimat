@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libxml2 glibmm
  
-name=libxml++26
-version=2.40.1
-release=1
+isim=libxml++26
+surum=2.40.1
+devir=1
 
-source=(http://ftp.gnome.org/pub/GNOME/sources/libxml++/${version:0:4}/libxml++-${version}.tar.xz::$name-$version.tar.gz)
+kaynak=(http://ftp.gnome.org/pub/GNOME/sources/libxml++/${version:0:4}/libxml++-${surum}.tar.xz::$isim-$surum.tar.gz)
 
 derle() {
-	cd "${SRC}/libxml++-${version}"
+	cd "${SRC}/libxml++-${surum}"
   ./configure --prefix=/usr
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool

@@ -3,21 +3,21 @@
 # Packeger: milisarge
 # Gerekler: ocaml ocamlbuild
 
-name=camlp4
-version=git
-release=1
-source=()
+isim=camlp4
+surum=git
+devir=1
+kaynak=()
 
 derle() {
 	cd $DERLEME_KAYNAKDIZIN
-	if [ ! -d $name ]; then
-		git clone git://github.com/ocaml/$name $name -b 4.04
+	if [ ! -d $isim ]; then
+		git clone git://github.com/ocaml/$isim $isim -b 4.04
 	else
-		cd $name && git pull && make clean
+		cd $isim && git pull && make clean
 	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC
 
-	cd $SRC/$name
+	cd $SRC/$isim
 
 	./configure --bindir=/usr/bin --libdir=/usr/lib/ocaml
 	make -j1

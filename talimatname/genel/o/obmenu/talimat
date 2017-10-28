@@ -4,14 +4,14 @@
 # Gerekler: python-gtk 
  
  
-name=obmenu
-version=1.0
-release=1
+isim=obmenu
+surum=1.0
+devir=1
 
-source=(http://freefr.dl.sourceforge.net/sourceforge/obmenu/$name-$version.tar.gz)
+kaynak=(http://freefr.dl.sourceforge.net/sourceforge/obmenu/$isim-$surum.tar.gz)
  
 derle() {
-cd $name-$version
+cd $isim-$surum
 python2 setup.py install --root=$PKG
    
 }

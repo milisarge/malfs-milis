@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=texi2html
-version=5.0
-release=1
-source=("http://download.savannah.gnu.org/releases/texi2html/$name-$version.tar.bz2")
+isim=texi2html
+surum=5.0
+devir=1
+kaynak=("http://download.savannah.gnu.org/releases/texi2html/$isim-$surum.tar.bz2")
 
 derle() {
-  cd "$name-$version"
+  cd "$isim-$surum"
   ./configure --prefix=/usr
   make
   make DESTDIR="$PKG"  install

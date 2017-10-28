@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: glib libcanberra
 
-name=gsound
-version=1.0.2
-release=1
+isim=gsound
+surum=1.0.2
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/${name}/${version%.*}/${name}-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/${isim}/${surum%.*}-$surum.tar.xz)
 
 derle() {
-cd ${name}-$version
+cd ${isim}-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

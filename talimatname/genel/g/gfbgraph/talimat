@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: librest json-glib gobject-introspection gnome-online-accounts
 
-name=gfbgraph
-version=0.2.3
-release=1
+isim=gfbgraph
+surum=0.2.3
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

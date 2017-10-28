@@ -4,15 +4,15 @@
 # Gerekler: kf5-frameworkintegration kf5-kcmutils kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kguiaddons kf5-ki18n kf5-kwidgetsaddons kf5-kwindowsystem plasma-kdecoration libxcb plasma-kde-cli-tools
 
 
-name=plasma-breeze-gtk
-version=5.8.1
-release=1
-_name=breeze-gtk
+isim=plasma-breeze-gtk
+surum=5.8.1
+devir=1
+_isim=breeze-gtk
 
-source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/plasma/$surum/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

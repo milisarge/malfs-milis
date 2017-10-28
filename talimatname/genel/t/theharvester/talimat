@@ -3,10 +3,10 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: python-pip
 
-name=theharvester
-version=56.eb08d32
-release=1
-source=()
+isim=theharvester
+surum=56.eb08d32
+devir=1
+kaynak=()
 
 derle() {
     if [ ! -d $DERLEME_KAYNAKDIZIN/theHarvester ];then

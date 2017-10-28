@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: atk xorg-fontconfig gtk2 libpng pango xorg-pixman xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama desktop-file-utils
 
-name=geany
-version=1.31
-release=1
-source=(http://download.$name.org/$name-$version.tar.bz2)
+isim=geany
+surum=1.31
+devir=1
+kaynak=(http://download.$isim.org/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

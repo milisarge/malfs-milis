@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libevent qlibc
 
-name=libasyncd
-version=1.0.2
-release=1
-source=(https://github.com/wolkykim/libasyncd/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=libasyncd
+surum=1.0.2
+devir=1
+kaynak=(https://github.com/wolkykim/libasyncd/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make -j1 QLIBC=system DESTDIR=$PKG install
 }

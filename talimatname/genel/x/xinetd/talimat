@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=xinetd
-version=2.3.15	
-release=1
-source=(ftp://anduin.linuxfromscratch.org/BLFS/xinetd/$name-$version.tar.gz
+isim=xinetd
+surum=2.3.15	
+devir=1
+kaynak=(ftp://anduin.linuxfromscratch.org/BLFS/xinetd/$isim-$surum.tar.gz
 		xinetd.conf chargen daytime echo systat xined_time )
  
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 
 source  /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

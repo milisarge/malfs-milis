@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libffi nspr zip python
 
-name=js2
-version=24.2.0
-release=1
-source=( http://ftp.mozilla.org/pub/mozilla.org/js/mozjs-$version.tar.bz2 )
+isim=js2
+surum=24.2.0
+devir=1
+kaynak=( http://ftp.mozilla.org/pub/mozilla.org/js/mozjs-$surum.tar.bz2 )
 
 derle() {
-cd mozjs-$version/js/src
+cd mozjs-$surum/js/src
 
 sed -i 's/(defined\((@TEMPLATE_FILE)\))/\1/' config/milestone.pl
 

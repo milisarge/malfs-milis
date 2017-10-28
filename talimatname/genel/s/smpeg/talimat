@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: sdl
 
-name=smpeg
-version=0.4.5
-release=2
-source=(http://ftp.slackware.com/pub/vectorlinux/VL64-7.0/source/sourceVL/smpeg/0.4.5/src/smpeg-0.4.5.tar.gz
+isim=smpeg
+surum=0.4.5
+devir=2
+kaynak=(http://ftp.slackware.com/pub/vectorlinux/VL64-7.0/source/sourceVL/smpeg/0.4.5/src/smpeg-0.4.5.tar.gz
 	smpeg-mpegaudiosdl.patch
 	smpeg-0.4.4_m4.patch)
 
 derle() {
-	cd smpeg-$version
+	cd smpeg-$surum
 	./configure \
 		--prefix=/usr \
 		--mandir=/usr/share/man \

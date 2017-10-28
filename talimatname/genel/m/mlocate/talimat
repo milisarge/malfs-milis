@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=mlocate
-version=0.26
-release=1
+isim=mlocate
+surum=0.26
+devir=1
 
-source=(https://fedorahosted.org/releases/m/l/mlocate/mlocate-${version}.tar.xz 
+kaynak=(https://fedorahosted.org/releases/m/l/mlocate/mlocate-${surum}.tar.xz 
 		updatedb.conf)
 
 derle() {
-	cd ${name}-$version
+	cd ${isim}-$surum
 	sed -i '/^groupname /s/mlocate/locate/' Makefile.in
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/lib
 	make

@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: git qt5 kf5-extra-cmake-modules kf5-kconfig kf5-kdoctools kf5-kcodecs kf5-ki18n kf5-kio kf5-kwidgetsaddons kf5-kxmlgui 
 
-name=libkcddb
-version=26160902
-release=1
+isim=libkcddb
+surum=26160902
+devir=1
 
 derle() {
    git clone git://anongit.kde.org/libkcddb.git
    mkdir build
    cd build
-   cmake ../$name                \
+   cmake ../$isim                \
      -DCMAKE_BUILD_TYPE=Release  \
      -DCMAKE_INSTALL_PREFIX=/usr \
      -DCMAKE_INSTALL_LIBDIR=lib  \

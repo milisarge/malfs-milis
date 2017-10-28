@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libunistring
-version=0.9.6
-release=1
+isim=libunistring
+surum=0.9.6
+devir=1
 
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+kaynak=(ftp://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr -disable-static
 make
 make DESTDIR=$PKG install

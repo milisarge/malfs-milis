@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: git  kf5-extra-cmake-modules kf5-khtml kf5-threadweaver kf5-kactivities kf5-kdelibs4support kf5-kpty plasma-libkscreen freetype poppler-qt5 libspectre djvulibre qca-qt5 libkexiv2 chmlib zlib ebook-tools kf5-kdoctools phonon-qt5
    
-name=okular
-version=15.12.1+df0c412
-release=2
+isim=okular
+surum=15.12.1+df0c412
+devir=2
 
-source=(http://anduin.linuxfromscratch.org/BLFS/okular/okular-15.12.1+df0c412.tar.xz )
+kaynak=(http://anduin.linuxfromscratch.org/BLFS/okular/okular-15.12.1+df0c412.tar.xz )
 
 derle() {
 #  git clone -b frameworks git://anongit.kde.org/okular.git
-  cd $name-$version
+  cd $isim-$surum
   cmake -DCMAKE_BUILD_TYPE=Release   \
         -DCMAKE_INSTALL_PREFIX=/usr  \
         -DSYSCONF_INSTALL_DIR=/etc   \

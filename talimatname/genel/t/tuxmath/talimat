@@ -3,11 +3,11 @@
 # Paketçi: Cihan Alkan
 # Gerekler: t4k-common
 
-name=tuxmath
-version=2.0.3
-release=1
+isim=tuxmath
+surum=2.0.3
+devir=1
 
-source=(http://distro.ibiblio.org/slitaz/sources/packages/t/tuxmath_w_fonts-2.0.3.tar.gz
+kaynak=(http://distro.ibiblio.org/slitaz/sources/packages/t/tuxmath_w_fonts-2.0.3.tar.gz
         tuxmath.desktop)
 
 
@@ -25,7 +25,7 @@ derle() {
 
   # install lisans
   install -D -m644 doc/OFL \
-    $PKG/usr/share/licenses/$name/OFL
+    $PKG/usr/share/licenses/$isim/OFL
   install -D -m644 doc/README_DATA_LICENSES \
-    $PKG/usr/share/licenses/$name/DATA_LICENSES
+    $PKG/usr/share/licenses/$isim/DATA_LICENSES
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 desktop-file-utils harfbuzz atk gdk-pixbuf xorg-libx11 xorg-libxext xorg-libxrender xorg-libxdmcp xcb-proto xorg-proto xorg-libxau libxcb libpng freetype xorg-fontconfig xorg-pixman pango cairo pcre glib
 
-name=isomaster
-version=1.3.13
-release=1
-source=(http://littlesvr.ca/isomaster/releases/$name-$version.tar.bz2)
+isim=isomaster
+surum=1.3.13
+devir=1
+kaynak=(http://littlesvr.ca/isomaster/releases/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   make PREFIX=/usr
 

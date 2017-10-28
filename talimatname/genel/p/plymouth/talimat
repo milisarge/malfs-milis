@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libdrm pango docbook-xsl gtk3
 
-name=plymouth
-version=0.9.3
-release=1
+isim=plymouth
+surum=0.9.3
+devir=1
 
-source=(https://www.freedesktop.org/software/plymouth/releases/$name-$version.tar.xz
+kaynak=(https://www.freedesktop.org/software/plymouth/releases/$isim-$surum.tar.xz
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
 		plymouthd.conf)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	--exec-prefix=/usr \
 	--libdir=/usr/lib \

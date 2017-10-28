@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libjpeg-turbo
 
-name=v4l-utils
-version=1.12.5
-release=1
+isim=v4l-utils
+surum=1.12.5
+devir=1
 
-source=(http://linuxtv.org/downloads/v4l-utils/$name-$version.tar.bz2)
+kaynak=(http://linuxtv.org/downloads/v4l-utils/$isim-$surum.tar.bz2)
 
 derle() {
-	cd "${SRC}/${name}-${version}"
+	cd "${SRC}/${isim}-${surum}"
 	./configure --prefix=/usr --sysconfdir=/etc
 	MAKEFLAGS="-j1" make install DESTDIR=$PKG
 	rm -f $PKG/usr/bin/ivtv-ctl

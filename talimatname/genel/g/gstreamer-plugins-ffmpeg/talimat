@@ -3,24 +3,24 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: gstreamer gstreamer-plugins-base yasm sdl
 
-name=gstreamer-plugins-ffmpeg
-version=0.10.13
-release=1
-_name=gst-ffmpeg
-source=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.bz2
-	    http://downloads.nutyx.org/files/patchs/$name/h264_qpel_mmx.patch)
+isim=gstreamer-plugins-ffmpeg
+surum=0.10.13
+devir=1
+_isim=gst-ffmpeg
+kaynak=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$surum.tar.bz2
+	    http://downloads.nutyx.org/files/patchs/$isim/h264_qpel_mmx.patch)
 
 derle() {
 unset CFLAGS
 unset CXXFLAGS
 
-cd ${_name}-$version
+cd ${_name}-$surum
 patch -Np1 -i ../h264_qpel_mmx.patch
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --localstatedir=/var \
 --with-ffmpeg-extra-configure="--enable-runtime-cpudetect" \
---with-package-name='PisiLinux gstreamer-ffmpeg package' \
+--with-package-isim='PisiLinux gstreamer-ffmpeg package' \
 --with-package-origin='https://milis.gungre.ch/'
 
 make || make -j1

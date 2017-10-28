@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=gsl
-version=2.1
-release=1
-source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz)
+isim=gsl
+surum=2.1
+devir=1
+kaynak=(http://ftp.gnu.org/pub/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static
 make

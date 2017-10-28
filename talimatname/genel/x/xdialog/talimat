@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk2
 
-name=xdialog
-version=2.3.1
-release=1
-source=(http://xdialog.free.fr/Xdialog-$version.tar.bz2)
+isim=xdialog
+surum=2.3.1
+devir=1
+kaynak=(http://xdialog.free.fr/Xdialog-$surum.tar.bz2)
 
 derle() {
-  cd Xdialog-$version
+  cd Xdialog-$surum
   ./configure --prefix=/usr \
               --disable-gtktest \
               --with-gtk2 

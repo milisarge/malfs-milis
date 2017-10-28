@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: glib gstreamer1-plugins-base 
 
-name=libnice
-version=0.1.13
-release=1
+isim=libnice
+surum=0.1.13
+devir=1
 
-source=(http://nice.freedesktop.org/releases/$name-$version.tar.gz)
+kaynak=(http://nice.freedesktop.org/releases/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --without-gstreamer-0.10 \
 --disable-static

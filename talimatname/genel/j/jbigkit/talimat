@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=jbigkit
-version=2.1
-release=1
-source=(http://www.cl.cam.ac.uk/~mgk25/$name/download/$name-$version.tar.gz)
+isim=jbigkit
+surum=2.1
+devir=1
+kaynak=(http://www.cl.cam.ac.uk/~mgk25/$isim/download/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	export CFLAGS="$CFLAGS -fPIC"
 

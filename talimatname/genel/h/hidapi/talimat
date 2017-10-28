@@ -4,13 +4,13 @@
 # Gerekler: libusb fox
 
 
-name=hidapi
-version=0.8.0-rc1
-release=1
-source=(https://github.com/signal11/hidapi/archive/$name-$version.tar.gz)
+isim=hidapi
+surum=0.8.0-rc1
+devir=1
+kaynak=(https://github.com/signal11/hidapi/archive/$isim-$surum.tar.gz)
 
 derle() {
-	cd "$name-$name-$version"
+	cd "$isim-$isim-$surum"
     ./bootstrap
     ./configure --enable-testgui --prefix=/usr
     make

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:  
 
-name=libxdg-basedir
-version=1.2.0
-release=1
-source=(https://github.com/devnev/libxdg-basedir/archive/$name-$version.tar.gz)
+isim=libxdg-basedir
+surum=1.2.0
+devir=1
+kaynak=(https://github.com/devnev/libxdg-basedir/archive/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$name-$version
+	cd $isim-$isim-$surum
 
 	./autogen.sh --prefix=/usr
 

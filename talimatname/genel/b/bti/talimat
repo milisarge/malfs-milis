@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre
 
-name=bti
-version=034
-release=1
-source=(https://www.kernel.org/pub/software/web/bti/bti-$version.tar.xz)
+isim=bti
+surum=034
+devir=1
+kaynak=(https://www.kernel.org/pub/software/web/bti/bti-$surum.tar.xz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
@@ -17,5 +17,5 @@ derle(){
     install -Dm644 bti-bashcompletion \
         $PKG/etc/bash_completion.d/bti
     install -Dm644 README \
-        $PKG/usr/share/doc/$name-$version/README
+        $PKG/usr/share/doc/$isim-$surum/README
 }

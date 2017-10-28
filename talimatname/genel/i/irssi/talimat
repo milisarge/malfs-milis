@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: glib
 
-name=irssi
-version=0.8.20
-release=1
-source=(https://github.com/irssi-import/irssi/releases/download/$version/$name-$version.tar.xz)
+isim=irssi
+surum=0.8.20
+devir=1
+kaynak=(https://github.com/irssi-import/irssi/releases/download/$surum/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--enable-ipv6 \

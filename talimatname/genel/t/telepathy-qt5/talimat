@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: telepathy-farstream libxslt cmake doxygen qt5
 
-name=telepathy-qt5
-version=0.9.7
-release=1
+isim=telepathy-qt5
+surum=0.9.7
+devir=1
 
-source=(http://telepathy.freedesktop.org/releases/telepathy-qt/telepathy-qt-$version.tar.gz)
+kaynak=(http://telepathy.freedesktop.org/releases/telepathy-qt/telepathy-qt-$surum.tar.gz)
 
 derle() {
-  cd telepathy-qt-$version
+  cd telepathy-qt-$surum
   cmake -DCMAKE_BUILD_TYPE=Release   \
         -DCMAKE_INSTALL_PREFIX=/usr  \
         -DPYTHON_EXECUTABLE=/usr/bin/python \

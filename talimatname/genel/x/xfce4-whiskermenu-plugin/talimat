@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake xfce4-panel exo
 
-name=xfce4-whiskermenu-plugin
-version=2.1.3
-release=1
-source=(https://github.com/gottcode/xfce4-whiskermenu-plugin/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=xfce4-whiskermenu-plugin
+surum=2.1.3
+devir=1
+kaynak=(https://github.com/gottcode/xfce4-whiskermenu-plugin/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr

@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: libgd 
 
-name=fswebcam
-version=20140113
-release=1
-source=(http://www.firestorm.cx/fswebcam/files/$name-$version.tar.xz)
+isim=fswebcam
+surum=20140113
+devir=1
+kaynak=(http://www.firestorm.cx/fswebcam/files/$isim-$surum.tar.xz)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
   ./configure --prefix=/usr
   make
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
   make DESTDIR="$PKG/" install
   sed "s_^_#_g" -i example.conf
   install -Dm644 example.conf "$PKG"/etc/fswebcam.conf

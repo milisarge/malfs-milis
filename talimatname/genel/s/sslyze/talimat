@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools python python-nassl python-lxml python-typing 
 
-name=sslyze
-version=1.0.0
-release=1
-source=(https://github.com/nabla-c0d3/sslyze/archive/$version.tar.gz)
+isim=sslyze
+surum=1.0.0
+devir=1
+kaynak=(https://github.com/nabla-c0d3/sslyze/archive/$surum.tar.gz)
 
 derle() {
-    cd sslyze-$version
+    cd sslyze-$surum
 	python2 setup.py build
 	python2 setup.py install --root="$PKG" --optimize=1
 	install -Dm644 README.md "$PKG/usr/share/doc/sslyze/README.md"

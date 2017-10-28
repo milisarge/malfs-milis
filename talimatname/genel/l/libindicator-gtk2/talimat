@@ -3,27 +3,27 @@
 # Paketçi: milisarge
 # Gerekler: gtk2
 
-name=libindicator-gtk2
-version=12.10.1
-release=1
+isim=libindicator-gtk2
+surum=12.10.1
+devir=1
 
-source=(http://launchpad.net/libindicator/0.5/$version/+download/libindicator-$version.tar.gz)
+kaynak=(http://launchpad.net/libindicator/0.5/$surum/+download/libindicator-$surum.tar.gz)
 
 derle() {
 
-  sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i libindicator-$version/libindicator/Makefile.{am,in}
-  sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i libindicator-$version/configure
-  sed 's/LIBM="-lmw"/LIBM=" -lmw"/g' -i libindicator-$version/configure
-  sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i libindicator-$version/configure
-  sed 's/LIBS="-lm  $LIBS"/LIBS=" -lm  $LIBS"/g' -i libindicator-$version/configure
-  sed 's/LIBS="-lmw  $LIBS"/LIBS=" -lmw  $LIBS"/g' -i libindicator-$version/configure
+  sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i libindicator-$surum/libindicator/Makefile.{am,in}
+  sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i libindicator-$surum/configure
+  sed 's/LIBM="-lmw"/LIBM=" -lmw"/g' -i libindicator-$surum/configure
+  sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i libindicator-$surum/configure
+  sed 's/LIBS="-lm  $LIBS"/LIBS=" -lm  $LIBS"/g' -i libindicator-$surum/configure
+  sed 's/LIBS="-lmw  $LIBS"/LIBS=" -lmw  $LIBS"/g' -i libindicator-$surum/configure
 
-  cd libindicator-$version
+  cd libindicator-$surum
 
   ./configure --prefix=/usr                \
               --sysconfdir=/etc            \
               --localstatedir=/var         \
-              --libexecdir=/usr/lib/$name  \
+              --libexecdir=/usr/lib/$isim  \
               --disable-static             \
               --with-gtk=2
 make -j1

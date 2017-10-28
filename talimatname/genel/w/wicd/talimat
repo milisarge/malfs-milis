@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: python-gtk wpa-supplicant dbus-python wireless-tools dhcpcd 
 
-name=wicd
-version=1.7.2.4
-release=1
+isim=wicd
+surum=1.7.2.4
+devir=1
 
-source=( http://launchpad.net/wicd/1.7/$version/+download/$name-$version.tar.gz \
-	 http://downloads.nutyx.org/files/patchs/$name/dbus_string_fix.patch wicd.rc)
+kaynak=( http://launchpad.net/wicd/1.7/$surum/+download/$isim-$surum.tar.gz \
+	 http://downloads.nutyx.org/files/patchs/$isim/dbus_string_fix.patch wicd.rc)
 derle() {
 unset MAKEFLAGS
-cd $name-$version
+cd $isim-$surum
 patch -Np0 -i ../dbus_string_fix.patch
 sed -i '/wpath.logrotate\|wpath.systemd/d' setup.py
 python setup.py configure --no-install-kde \

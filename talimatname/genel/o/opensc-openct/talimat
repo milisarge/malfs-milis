@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: openct 
 
-name=opensc-openct
-_name=OpenSC
-version=0.16.0
-release=1
-source=(https://github.com/OpenSC/OpenSC/archive/$version.tar.gz)
+isim=opensc-openct
+_isim=OpenSC
+surum=0.16.0
+devir=1
+kaynak=(https://github.com/OpenSC/OpenSC/archive/$surum.tar.gz)
 
 derle() {
-	_prefix=/opt/$name
+	_prefix=/opt/$isim
 
-	cd $_name-$version
+	cd $_name-$surum
 	./bootstrap
 	./configure \
 	--prefix=$_prefix \

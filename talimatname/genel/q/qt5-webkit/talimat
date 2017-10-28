@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: cmake gstreamer1-plugins-base libwebp xorg-libxcomposite libxslt gstreamer1-plugins-good python ruby qt5 hyphen
 
-name=qt5-webkit
-_name=qtwebkit
-version=5.9.0
-release=1
+isim=qt5-webkit
+_isim=qtwebkit
+surum=5.9.0
+devir=1
 
-source=(http://download.qt.io/community_releases/5.9/$version-final/$_name-opensource-src-$version.tar.xz
+kaynak=(http://download.qt.io/community_releases/5.9/$surum-final/$_name-opensource-src-$surum.tar.xz
 		qt5-webkit-icu59.patch)
 
 derle() {
-	cd $_name-opensource-src-$version
+	cd $_name-opensource-src-$surum
 	patch -p1 -i $SRC/qt5-webkit-icu59.patch
     install -d build
 	cd build

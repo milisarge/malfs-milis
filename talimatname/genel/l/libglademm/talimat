@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: pkg-config libglade gtkmm
 
-name=libglademm
-version=2.6.7
-release=1
-source=(https://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.bz2
+isim=libglademm
+surum=2.6.7
+devir=1
+kaynak=(https://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.bz2
 )
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   CXXFLAGS+=' -std=c++11'
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var

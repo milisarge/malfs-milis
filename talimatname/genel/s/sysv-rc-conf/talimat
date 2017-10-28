@@ -4,13 +4,13 @@
 # Paketçi:	milisarge
 # Gerekler:   perl-curses perl-curses-ui perl-term-readkey
 
-name=sysv-rc-conf
-version=0.98
-release=1
-source=($name.pl)
+isim=sysv-rc-conf
+surum=0.98
+devir=1
+kaynak=($isim.pl)
 
 derle() {
 	mkdir $PKG/usr
 	mkdir $PKG/usr/bin
-    install -m755 $name.pl $PKG/usr/bin/$name
+    install -m755 $isim.pl $PKG/usr/bin/$isim
 }

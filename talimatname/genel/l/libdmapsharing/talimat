@@ -3,10 +3,10 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk-doc gobject-introspection libsoup avahi gstreamer1-plugins-base gdk-pixbuf 
 
-name=libdmapsharing
-version=2.9.39
-release=1
-source=(https://git.gnome.org/browse/$name/snapshot/LIBDMAPSHARING_2_9_39.tar.xz)
+isim=libdmapsharing
+surum=2.9.39
+devir=1
+kaynak=(https://git.gnome.org/browse/$isim/snapshot/LIBDMAPSHARING_2_9_39.tar.xz)
 
 derle() {
   cd LIBDMAPSHARING_2_9_39 

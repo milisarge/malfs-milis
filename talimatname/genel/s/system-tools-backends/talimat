@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-xml-parser dbus-glib polkit 
 
-name=system-tools-backends
-version=2.10.2
-release=1
+isim=system-tools-backends
+surum=2.10.2
+devir=1
 
-source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.bz2)
+kaynak=(http://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc
 make

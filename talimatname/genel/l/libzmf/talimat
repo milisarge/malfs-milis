@@ -3,17 +3,17 @@
 # Paketçi: Cihan Alkan
 # Gerekler: librevenge boost libpng doxygen
 
-name=libzmf
-version=0.0.1
-release=1
+isim=libzmf
+surum=0.0.1
+devir=1
 
-source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz)
+kaynak=(https://dev-www.libreoffice.org/src/$isim/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
  ./configure --prefix=/usr --disable-werror
  make
  make DESTDIR=$PKG install
-  install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+  install -Dm644 COPYING $PKG/usr/share/licenses/$isim/COPYING
 }

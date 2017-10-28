@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: sane kf5-extra-cmake-modules qt5 kf5-ki18n kf5-kwallet kf5-ktextwidgets
 
-name=libksane
-version=16.08.2
-release=1
+isim=libksane
+surum=16.08.2
+devir=1
 
-source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 mkdir build
 cd    build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \

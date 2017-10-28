@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-lwp-protocol-https perl-try-tiny perl-path-class 
 
-name=perl-crypt-ssleay
-version=0.72
-release=1
+isim=perl-crypt-ssleay
+surum=0.72
+devir=1
 
-source=(http://www.cpan.org/CPAN/authors/id/N/NA/NANIS/Crypt-SSLeay-$version.tar.gz)
+kaynak=(http://www.cpan.org/CPAN/authors/id/N/NA/NANIS/Crypt-SSLeay-$surum.tar.gz)
 
 derle() {
-cd Crypt-SSLeay-$version
+cd Crypt-SSLeay-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libxml2 librevenge doxygen boost
 
-name=libabw
-version=0.1.1
-release=1
+isim=libabw
+surum=0.1.1
+devir=1
 
-source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz
+kaynak=(https://dev-www.libreoffice.org/src/$isim/$isim-$surum.tar.xz
 	    https://github.com/LibreOffice/libabw/commit/ee2d0729.patch::libabw-boost-1.59.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -p1 -i $SRC/libabw-boost-1.59.patch
 	autoreconf -vi
 	./configure --prefix=/usr

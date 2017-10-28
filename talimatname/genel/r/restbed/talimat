@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake asio kashmir
 
-name=restbed
-version=4.6
-release=1
-source=(https://github.com/Corvusoft/restbed/archive/$version.tar.gz::$name-$version.tar.gz
+isim=restbed
+surum=4.6
+devir=1
+kaynak=(https://github.com/Corvusoft/restbed/archive/$surum.tar.gz::$isim-$surum.tar.gz
 		strand.patch)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
   # Necessary to build against asio 1.10.X
   patch -p1 < "$SRC"/strand.patch
   mkdir -p build

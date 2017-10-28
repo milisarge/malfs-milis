@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=nlohmann-json
-version=2.1.1
-release=1
-source=(https://github.com/nlohmann/json/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=nlohmann-json
+surum=2.1.1
+devir=1
+kaynak=(https://github.com/nlohmann/json/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd "json-$version"
+	cd "json-$surum"
 	mkdir -p build
 
 	cd build

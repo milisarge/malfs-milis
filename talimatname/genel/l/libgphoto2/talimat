@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libjpeg-turbo libexif libusb-compat 
 
-name=libgphoto2
-version=2.5.10
-release=1
+isim=libgphoto2
+surum=2.5.10
+devir=1
 
-source=(https://distfiles.macports.org/libgphoto2/libgphoto2-2.5.10.tar.bz2
+kaynak=(https://distfiles.macports.org/libgphoto2/libgphoto2-2.5.10.tar.bz2
 		jpeg.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -Np1 -i ../jpeg.patch
 	./configure --prefix=/usr --sysconfdir=/etc
 	make

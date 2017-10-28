@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=icu
-version=59.1
-release=1
-source=(http://download.icu-project.org/files/icu4c/$version/icu4c-${version//./_}-src.tgz)
+isim=icu
+surum=59.1
+devir=1
+kaynak=(http://download.icu-project.org/files/icu4c/$surum/icu4c-${version//./_}-src.tgz)
 
 derle() {
 	cd icu/source

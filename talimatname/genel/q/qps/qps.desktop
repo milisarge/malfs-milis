@@ -4,8 +4,8 @@
 <head>
 <title>svntogit/community.git - Git clone of the 'community' repository
 </title>
-<meta name='generator' content='cgit v0.12'/>
-<meta name='robots' content='index, nofollow'/>
+<meta isim='generator' content='cgit v0.12'/>
+<meta isim='robots' content='index, nofollow'/>
 <link rel='stylesheet' type='text/css' href='/cgit.css'/>
 <link rel='shortcut icon' href='/favicon.ico'/>
 <link rel='alternate' title='Atom feed' href='https://git.archlinux.org/svntogit/community.git/atom/trunk/qps.desktop?h=packages/qps' type='application/atom+xml'/>
@@ -37,13 +37,13 @@
 </td><td class='sub right'></td></tr></table>
 <table class='tabs'><tr><td>
 <a href='/svntogit/community.git/?h=packages/qps'>summary</a><a href='/svntogit/community.git/refs/?h=packages/qps'>refs</a><a href='/svntogit/community.git/log/trunk/qps.desktop?h=packages/qps'>log</a><a class='active' href='/svntogit/community.git/tree/trunk/qps.desktop?h=packages/qps'>tree</a><a href='/svntogit/community.git/commit/trunk/qps.desktop?h=packages/qps'>commit</a><a href='/svntogit/community.git/diff/trunk/qps.desktop?h=packages/qps'>diff</a><a href='/svntogit/community.git/stats/trunk/qps.desktop?h=packages/qps'>stats</a></td><td class='form'><form class='right' method='get' action='/svntogit/community.git/log/trunk/qps.desktop'>
-<input type='hidden' name='h' value='packages/qps'/><select name='qt'>
+<input type='hidden' isim='h' value='packages/qps'/><select isim='qt'>
 <option value='grep'>log msg</option>
 <option value='author'>author</option>
 <option value='committer'>committer</option>
 <option value='range'>range</option>
 </select>
-<input class='txt' type='text' size='10' name='q' value=''/>
+<input class='txt' type='text' size='10' isim='q' value=''/>
 <input type='submit' value='search'/>
 </form>
 </td></tr></table>

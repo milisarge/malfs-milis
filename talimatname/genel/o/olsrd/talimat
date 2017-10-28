@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=olsrd
-version=0.9.6
-release=1
-source=(http://www.olsr.org/releases/0.9/$name-$version.tar.gz)
+isim=olsrd
+surum=0.9.6
+devir=1
+kaynak=(http://www.olsr.org/releases/0.9/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make prefix=/usr 
 	make libdir=/usr/lib/olsrd sbindir=/usr/bin DESTDIR=${PKG} install
 }

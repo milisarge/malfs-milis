@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libmad
-version=0.15.1b
-release=3
+isim=libmad
+surum=0.15.1b
+devir=3
 
-source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz
+kaynak=(ftp://ftp.mars.org/pub/mpeg/$isim-$surum.tar.gz
 		libmad.patch 
 		amd64-64bit.diff 
 		frame_length.diff 
@@ -15,7 +15,7 @@ source=(ftp://ftp.mars.org/pub/mpeg/$name-$version.tar.gz
 
 
 derle() {
-	cd ${name}-${version}
+	cd ${isim}-${surum}
 	patch -p1 -i "${SRC}/libmad.patch"
 	patch -p1 -i "${SRC}/amd64-64bit.diff"
 	patch -p1 -i "${SRC}/frame_length.diff"

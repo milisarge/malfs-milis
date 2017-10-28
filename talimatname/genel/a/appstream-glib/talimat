@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gdk-pixbuf json-glib libarchive libsoup pango gcab gobject-introspection gtk3 yaml
  
-name=appstream-glib
-version=0.5.17
-release=1
+isim=appstream-glib
+surum=0.5.17
+devir=1
 
-source=(http://people.freedesktop.org/~hughsient/$name/releases/$name-$version.tar.xz)
+kaynak=(http://people.freedesktop.org/~hughsient/$isim/releases/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

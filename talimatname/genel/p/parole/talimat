@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libnotify dbus-glib xfce4-libui gstreamer1-plugins-base gstreamer1-plugins-good libdvdcss libdvdnav libdvdread startup-notification
 
-name=parole
-version=0.9.1
-release=1
+isim=parole
+surum=0.9.1
+devir=1
 
-source=(http://archive.xfce.org/src/apps/parole/${version%.*}/parole-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/parole/${surum%.*}/parole-$surum.tar.bz2)
 derle() {
-	cd parole-$version
+	cd parole-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

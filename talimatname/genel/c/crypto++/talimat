@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: unzip
 
-name=crypto++
-version=5.6.2
-_version=562
-release=1
-source=(http://www.cryptopp.com/cryptopp${_version}.zip
+isim=crypto++
+surum=5.6.2
+_surum=562
+devir=1
+kaynak=(http://www.cryptopp.com/cryptopp${_version}.zip
         crypto++-CVE-2015-2141.patch
         crypto++-libcrypto++.pc)
 
@@ -26,5 +26,5 @@ derle() {
   install -m644 *.h $PKG/usr/include/cryptopp/
   install -m644 libcryptopp.so $PKG/usr/lib/libcryptopp.so
   install -m644 $SRC/crypto++-libcrypto++.pc $PKG/usr/lib/pkgconfig/libcrypto++.pc
-  install -D -m644 License.txt $PKG/usr/share/licenses/$name/LICENSE
+  install -D -m644 License.txt $PKG/usr/share/licenses/$isim/LICENSE
 }

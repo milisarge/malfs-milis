@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python git ninja
 
-name=meson
-version=0.40.0
-release=1
+isim=meson
+surum=0.40.0
+devir=1
 
-source=(https://github.com/mesonbuild/meson/releases/download/$version/$name-$version.tar.gz)
+kaynak=(https://github.com/mesonbuild/meson/releases/download/$surum/$isim-$surum.tar.gz)
  
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   python3 setup.py install --root="$PKG" --optimize=1
 }

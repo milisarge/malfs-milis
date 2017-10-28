@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-encode-locale perl-file-listing perl-html-parser perl-http-cookies perl-http-daemon perl-http-date perl-http-negotiate perl-lwp-mediatypes perl-net-http perl-uri perl-www-robotrules perl-http-message 
 
-name=perl-libwww
-version=6.06
-release=1
+isim=perl-libwww
+surum=6.06
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/libwww-perl-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/libwww-perl-$surum.tar.gz)
 
 derle() {
-cd libwww-perl-$version
+cd libwww-perl-$surum
 perl Makefile.PL  --aliases IINSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

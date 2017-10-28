@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kcompletion kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kparts kf5-kwidgetsaddons kf5-kxmlgui kf5-kdoctools
 
-name=kf5-kross
-version=5.27.0
-release=1
-_name=kross
-_version=5.27
+isim=kf5-kross
+surum=5.27.0
+devir=1
+_isim=kross
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/portingAids/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/portingAids/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

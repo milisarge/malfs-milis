@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: asciidoc xmlto
 
-name=tig
-version=2.1.1
-release=1
-source=(http://jonas.nitro.dk/${name}/releases/${name}-${version}.tar.gz)
+isim=tig
+surum=2.1.1
+devir=1
+kaynak=(http://jonas.nitro.dk/${isim}/releases/${isim}-${surum}.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc
 make
 make DESTDIR=$PKG install install-doc-man

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=whois
-version=5.2.16
-release=1
+isim=whois
+surum=5.2.16
+devir=1
 
-source=(ftp://ftp.debian.org/debian/pool/main/w/$name/${name}_$version.tar.xz)
+kaynak=(ftp://ftp.debian.org/debian/pool/main/w/$isim/${isim}_$surum.tar.xz)
 
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 make prefix=/usr 
 make prefix=/usr BASEDIR=$PKG install-whois
 make prefix=/usr BASEDIR=$PKG install-mkpasswd

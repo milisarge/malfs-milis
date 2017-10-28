@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=rlog
-version=1.4
-release=1
+isim=rlog
+surum=1.4
+devir=1
 
-source=(http://rlog.googlecode.com/files/$name-$version.tar.gz 
-       $name-section.patch)
+kaynak=(http://rlog.googlecode.com/files/$isim-$surum.tar.gz 
+       $isim-section.patch)
 
 derle() {
-	cd $name-$version
-	patch -Np1 -i ../$name-section.patch
+	cd $isim-$surum
+	patch -Np1 -i ../$isim-section.patch
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

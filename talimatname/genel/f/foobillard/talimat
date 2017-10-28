@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: libpng sdl freetype xorg-glu freeglut xorg-libxaw xorg-libxi xorg-mesa
 
-name=foobillard
-version=3.0a
-release=1
-source=(http://downloads.sourceforge.net/project/$name/FooBillard-Sources/$name-$version.tar.gz
-	foobillard-ttf-$version.patch
+isim=foobillard
+surum=3.0a
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/$isim/FooBillard-Sources/$isim-$surum.tar.gz
+	foobillard-ttf-$surum.patch
 	undef.nvidia.patch)
 
 derle() {
 
-    cd $name-$version
-    patch -p 1 -i $SRC/foobillard-ttf-$version.patch
+    cd $isim-$surum
+    patch -p 1 -i $SRC/foobillard-ttf-$surum.patch
     patch -p 1 -i $SRC/undef.nvidia.patch
     ./configure --prefix=/usr \
 	            --enable-nvidia=no

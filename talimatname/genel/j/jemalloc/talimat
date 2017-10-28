@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
  
-name=jemalloc
-version=4.2.1
-release=1
-source=(https://github.com/jemalloc/jemalloc/releases/download/${version}/${name}-${version}.tar.bz2)
+isim=jemalloc
+surum=4.2.1
+devir=1
+kaynak=(https://github.com/jemalloc/jemalloc/releases/download/${surum}/${isim}-${surum}.tar.bz2)
  
 derle() {
-	cd $name-$version
+	cd $isim-$surum
   ./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

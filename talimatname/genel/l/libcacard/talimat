@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: nss glib
 
-name=libcacard
-version=2.5.3
-release=1
+isim=libcacard
+surum=2.5.3
+devir=1
 
-source=(http://www.spice-space.org/download/libcacard/libcacard-$version.tar.xz)
+kaynak=(http://www.spice-space.org/download/libcacard/libcacard-$surum.tar.xz)
 
 derle() {
- cd libcacard-$version
+ cd libcacard-$surum
   ./configure --prefix=/usr
   make
   make DESTDIR="$PKG" install

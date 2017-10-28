@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:  	
 
-name=libstatgrab
-version=0.91
-release=1
+isim=libstatgrab
+surum=0.91
+devir=1
 
-source=(http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/$name-$version.tar.gz)
+kaynak=(http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/$isim-$surum.tar.gz)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
     
  	./configure --prefix=/usr  \
  	        --disable-static \

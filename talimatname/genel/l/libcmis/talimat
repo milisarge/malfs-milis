@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libxml2 boost libpng doxygen docbook2x
 
-name=libcmis
-version=0.5.1
-release=1
+isim=libcmis
+surum=0.5.1
+devir=1
 
-source=(https://github.com/tdf/libcmis/releases/download/v$version/$name-$version.tar.gz
+kaynak=(https://github.com/tdf/libcmis/releases/download/v$surum/$isim-$surum.tar.gz
         google_drive.diff)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   patch -Np1 -i $SRC/google_drive.diff
  ./configure --prefix=/usr DOCBOOK2MAN='docbook2man' --disable-werror
  make

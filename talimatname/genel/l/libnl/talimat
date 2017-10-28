@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libnl
-version=3.2.27
-release=1
+isim=libnl
+surum=3.2.27
+devir=1
 
-source=(https://github.com/thom311/libnl/releases/download/libnl$(echo $version|sed 's/\./_/g')/$name-$version.tar.gz)
+kaynak=(https://github.com/thom311/libnl/releases/download/libnl$(echo $surum|sed 's/\./_/g')/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --disable-static

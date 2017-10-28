@@ -3,17 +3,17 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: cmake qt5
 
-name=lxqt-qtermwidget
-_name=qtermwidget
-version=0.7.1
-release=1
-source=(https://github.com/lxde/$_name/releases/download/$version/$_name-$version.tar.xz)
+isim=lxqt-qtermwidget
+_isim=qtermwidget
+surum=0.7.1
+devir=1
+kaynak=(https://github.com/lxde/$_name/releases/download/$surum/$_name-$surum.tar.xz)
 
 
 derle() {
 	mkdir -v build
 	cd build
-	cmake $SRC/$_name-$version \
+	cmake $SRC/$_name-$surum \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib

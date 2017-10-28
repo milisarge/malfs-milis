@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:
 
-name=linux-firmware
-version=20161122
-release=1
-source=(http://distfiles.serverop.de/$name-$version.tar.xz)
+isim=linux-firmware
+surum=20161122
+devir=1
+kaynak=(http://distfiles.serverop.de/$isim-$surum.tar.xz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
 
     # Build/Package
     make DESTDIR=$PKG FIRMWAREDIR=/lib/firmware install

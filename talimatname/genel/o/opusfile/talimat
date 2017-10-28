@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libogg opus
 
-name=opusfile
-version=0.7
-release=1
+isim=opusfile
+surum=0.7
+devir=1
 
-source=(http://downloads.xiph.org/releases/opus/$name-$version.tar.gz)
+kaynak=(http://downloads.xiph.org/releases/opus/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr
    make
    make DESTDIR=$PKG install

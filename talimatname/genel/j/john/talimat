@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=john
-_version=1.8.0-jumbo-1
-version=1.8.0
-release=1
-source=(http://www.openwall.com/$name/j/$name-$_version.tar.xz)
+isim=john
+_surum=1.8.0-jumbo-1
+surum=1.8.0
+devir=1
+kaynak=(http://www.openwall.com/$isim/j/$isim-$_version.tar.xz)
 
 derle() {
 
-  sed -i 's|/usr/libexec|/usr/lib|g' $name-$_version/src/params.h
+  sed -i 's|/usr/libexec|/usr/lib|g' $isim-$_version/src/params.h
 
-  cd $name-$_version/src
+  cd $isim-$_version/src
 
   # fix compilation with gcc 5.x
   ./configure CFLAGS=-std=gnu89
@@ -21,8 +21,8 @@ derle() {
   make
 
   install -d $PKG/usr/bin
-  install -d $PKG/usr/lib/$name
-  install -m 755 ../run/* $PKG/usr/lib/$name
+  install -d $PKG/usr/lib/$isim
+  install -m 755 ../run/* $PKG/usr/lib/$isim
   echo -e '#!/bin/sh\n/usr/lib/john/john "$@"\n' > $PKG/usr/bin/john
   chmod 755 $PKG/usr/bin/john
 }

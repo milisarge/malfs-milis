@@ -3,31 +3,31 @@
 # Paketçi: milisarge
 # Gerekler: docbook-xsl libedit libffi
 
-name=ghc
-version=8.0.2
-release=1
-source=(https://downloads.haskell.org/~ghc/$version/$name-$version-src.tar.xz)
+isim=ghc
+surum=8.0.2
+devir=1
+kaynak=(https://downloads.haskell.org/~ghc/$surum/$isim-$surum-src.tar.xz)
 
 derle() {
 	# if ghc is not previously installed bootstrap it
 	if [ ! -e /usr/bin/ghc ]; then
 
 		# download binary bootstrap file if it does not exist
-		if [ ! -f "$DERLEME_KAYNAKDIZIN/$name-$version-x86_64-centos67-linux.tar.xz" ]; then
+		if [ ! -f "$DERLEME_KAYNAKDIZIN/$isim-$surum-x86_64-centos67-linux.tar.xz" ]; then
 
-			wget http://downloads.haskell.org/~ghc/$version/$name-$version-x86_64-centos67-linux.tar.xz \
-				--output-document="$DERLEME_KAYNAKDIZIN/$name-$version-x86_64-centos67-linux.tar.xz"
+			wget http://downloads.haskell.org/~ghc/$surum/$isim-$surum-x86_64-centos67-linux.tar.xz \
+				--output-document="$DERLEME_KAYNAKDIZIN/$isim-$surum-x86_64-centos67-linux.tar.xz"
 		fi
 
 		install -d tmp
 		cd tmp
 
-		bsdtar -xf "$DERLEME_KAYNAKDIZIN/$name-$version-x86_64-centos67-linux.tar.xz"
-		mv $name-$version ../$name-$version-binary
+		bsdtar -xf "$DERLEME_KAYNAKDIZIN/$isim-$surum-x86_64-centos67-linux.tar.xz"
+		mv $isim-$surum ../$isim-$surum-binary
 		cd -
 		rmdir tmp
 
-		cd $name-$version-binary
+		cd $isim-$surum-binary
 
 		# hack for gmp and ncurses for bootstrap binary ghc
 		ln -s /lib/libgmp.so.10 libgmp.so.3
@@ -41,7 +41,7 @@ derle() {
 		export PATH="$SRC/binary/bin:$PATH"
 	fi
 
-	cd $name-$version
+	cd $isim-$surum
 
         ./configure \
                 --prefix=/usr \

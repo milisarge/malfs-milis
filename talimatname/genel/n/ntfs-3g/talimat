@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ntfs-3g
-version=2015.3.14
-release=1
+isim=ntfs-3g
+surum=2015.3.14
+devir=1
 
-source=(http://tuxera.com/opensource/${name}_ntfsprogs-$version.tgz)
+kaynak=(http://tuxera.com/opensource/${isim}_ntfsprogs-$surum.tgz)
 derle() {
-cd ${name}_ntfsprogs-$version
+cd ${isim}_ntfsprogs-$surum
 ./configure --prefix=/usr \
 --disable-static 
 make

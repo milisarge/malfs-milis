@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=unzip
-version=6.0
-release=1
+isim=unzip
+surum=6.0
+devir=1
 
-source=(http://downloads.sourceforge.net/infozip/unzip60.tar.gz)
+kaynak=(http://downloads.sourceforge.net/infozip/unzip60.tar.gz)
 
 
 derle() {
-	cd $name${version/./}
+	cd $isim${version/./}
 	export CFLAGS="$CFLAGS -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NFS \
   -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT \
   -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DNO_LCHMOD -DDATE_FORMAT=DF_YMD \

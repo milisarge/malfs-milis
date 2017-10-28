@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: crypto++ libupnp wxgtk libnotify
 
-name=amule
-version=f77eef219cdb0caf31b094a9db4668e936abda8c
-release=1
-source=(http://repo.or.cz/amule.git/snapshot/$version.tar.gz)
+isim=amule
+surum=f77eef219cdb0caf31b094a9db4668e936abda8c
+devir=1
+kaynak=(http://repo.or.cz/amule.git/snapshot/$surum.tar.gz)
 
 derle() {
-	cd $name-f77eef2
+	cd $isim-f77eef2
 
 	./configure \
 		--prefix=/usr \

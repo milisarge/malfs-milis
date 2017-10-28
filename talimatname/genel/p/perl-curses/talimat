@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:   
 
-name=perl-curses
-version=1.34
-release=1
-source=(http://search.cpan.org/CPAN/authors/id/G/GI/GIRAFFED/Curses-$version.tar.gz)
+isim=perl-curses
+surum=1.34
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GI/GIRAFFED/Curses-$surum.tar.gz)
 
 derle() {
-    cd Curses-$version
+    cd Curses-$surum
 
 	perl Makefile.PL
 	make CC="${CC:-gcc}" LD="${CC:-gcc}" OPTIMIZE="$CFLAGS"

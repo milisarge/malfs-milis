@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=php-gettext
-version=5.6.31
-release=1
-source=(http://www.php.net/distributions/php-$version.tar.xz)
+isim=php-gettext
+surum=5.6.31
+devir=1
+kaynak=(http://www.php.net/distributions/php-$surum.tar.xz)
 
 derle() {
-	cd php-$version
+	cd php-$surum
 
 	./configure \
 		--disable-all \

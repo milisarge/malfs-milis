@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libffi 
 
-name=librep
-version=0.92.5
-release=2
+isim=librep
+surum=0.92.5
+devir=2
 
-source=(http://download.tuxfamily.org/$name/${name}_$version.tar.xz)
+kaynak=(http://download.tuxfamily.org/$isim/${isim}_$surum.tar.xz)
 
 derle() {
 export CFLAGS="$CFLAGS -std=gnu90"
-cd ${name}_$version
+cd ${isim}_$surum
 ./configure --prefix=/usr \
 --disable-static
 make || make -j1

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: yasm cmake
 
-name=x265
-version=1.8
-release=1
-source=(https://bitbucket.org/multicoreware/x265/get/$version.tar.bz2
+isim=x265
+surum=1.8
+devir=1
+kaynak=(https://bitbucket.org/multicoreware/x265/get/$surum.tar.bz2
  http://www.linuxfromscratch.org/patches/downloads/x265/x265_1.8-enable_static-1.patch)
 
 derle() {
-	cd multicoreware-$name-*
+	cd multicoreware-$isim-*
 	patch -Np1 -i ../x265_1.8-enable_static-1.patch
 	mkdir bld 
 	cd bld

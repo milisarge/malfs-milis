@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=physfs
-version=2.0.3
-release=1
-source=(http://icculus.org/$name/downloads/$name-$version.tar.bz2)
+isim=physfs
+surum=2.0.3
+devir=1
+kaynak=(http://icculus.org/$isim/downloads/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	sed -i -e 's|-Werror||' CMakeLists.txt
 

@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: boost llvm gdb libxslt
 
-name=valgrind
-version=3.13.0
-release=1
-source=(ftp://sourceware.org/pub/valgrind/$name-$version.tar.bz2)
+isim=valgrind
+surum=3.13.0
+devir=1
+kaynak=(ftp://sourceware.org/pub/valgrind/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i 's|/doc/valgrind||' docs/Makefile.in 
 	./configure --prefix=/usr \
-    --datadir=/usr/share/doc/$name-$version
+    --datadir=/usr/share/doc/$isim-$surum
 	make
 	make DESTDIR=$PKG install
 }

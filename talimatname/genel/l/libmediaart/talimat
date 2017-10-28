@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gdk-pixbuf
 
-name=libmediaart
-version=1.9.0
-release=1
+isim=libmediaart
+surum=1.9.0
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:3}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:3}/$isim-$surum.tar.xz)
 
 derle() {
- cd $name-$version
+ cd $isim-$surum
  ./configure --prefix=/usr \
  	--disable-static --enable-gdkpixbuf --disable-qt
  make

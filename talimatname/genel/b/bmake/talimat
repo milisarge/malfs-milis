@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=bmake
-version=20150910
-release=1
-source=(http://www.crufty.net/ftp/pub/sjg/bmake-$version.tar.gz)
+isim=bmake
+surum=20150910
+devir=1
+kaynak=(http://www.crufty.net/ftp/pub/sjg/bmake-$surum.tar.gz)
 
 derle(){
-    cd $name
+    cd $isim
     # Add missing bsd.*.mk symlinks (thanks to Arch)
     _links_orig="dep doc init lib links man nls obj own prog subdir"
     _links_new="dep doc inc init lib links man nls obj own prog subdir"

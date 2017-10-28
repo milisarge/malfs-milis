@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: gpgmepp kf5-kconfig kf5-kcoreaddons kf5-kdbusaddons kf5-ki18n kf5-kiconthemes kf5-knotifications kf5-kservice kf5-kwidgetsaddons kf5-kwindowsystem libgcrypt gnupg
 
-name=kf5-kwallet
-version=5.27.0
-release=1
-_name=kwallet
-_version=5.27
+isim=kf5-kwallet
+surum=5.27.0
+devir=1
+_isim=kwallet
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_BUILD_TYPE=Release        \
       -DCMAKE_INSTALL_PREFIX=/usr       \
       -DLIB_INSTALL_DIR=lib \

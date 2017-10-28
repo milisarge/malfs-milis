@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk-doc yelp-tools gnome-common intltool libburn libisofs nautilus gobject-introspection gconf itstool gtk3 gstreamer1-plugins-base totem-pl-parser cdrkit cdrdao shared-mime-info libcanberra dvd+rw-tools dconf libnotify gvfs 
 
-name=brasero
-version=3.12.1
-release=1
-source=(https://download.gnome.org/sources/brasero/${version:0:4}/brasero-3.12.1.tar.xz
+isim=brasero
+surum=3.12.1
+devir=1
+kaynak=(https://download.gnome.org/sources/brasero/${version:0:4}/brasero-3.12.1.tar.xz
 )
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   autoreconf -fi  
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --disable-caches --disable-schemas-compile --enable-compile-warnings=minimum

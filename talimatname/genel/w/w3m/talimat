@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: gc imlib2 gtk2 gdk-pixbuf 
 
-name=w3m
-version=0.5.3	
-release=1
-source=(http://downloads.sourceforge.net/w3m/w3m-0.5.3.tar.gz
+isim=w3m
+surum=0.5.3	
+devir=1
+kaynak=(http://downloads.sourceforge.net/w3m/w3m-0.5.3.tar.gz
 		http://www.linuxfromscratch.org/patches/downloads/w3m/w3m-0.5.3-bdwgc72-1.patch )
  
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 	
 patch -Np1 -i $SRC/w3m-0.5.3-bdwgc72-1.patch 
 sed -i 's/file_handle/file_foo/' istream.{c,h} 

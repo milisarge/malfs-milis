@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: popt
 
-name=hd2u
-version=1.0.3
-release=1
-source=(http://terminus.sk/~hany/\_data/hd2u/$name-$version.tgz)
+isim=hd2u
+surum=1.0.3
+devir=1
+kaynak=(http://terminus.sk/~hany/\_data/hd2u/$isim-$surum.tgz)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr
 	make

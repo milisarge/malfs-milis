@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python3 sqlite libffi
 
-name=python3-setuptools
-version=36.0.1
-release=1
+isim=python3-setuptools
+surum=36.0.1
+devir=1
 
-source=(https://files.pythonhosted.org/packages/source/${name:8:1}/${name#*-}/${name#*-}-$version.zip)
+kaynak=(https://files.pythonhosted.org/packages/source/${name:8:1}/${name#*-}/${name#*-}-$surum.zip)
 
 derle() {
-	cd ${name#*-}-$version
+	cd ${name#*-}-$surum
 	export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
 	python3 bootstrap.py 
 	python3 setup.py build

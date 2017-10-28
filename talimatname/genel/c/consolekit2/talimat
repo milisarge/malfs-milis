@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: acl dbus glib xorg-libx11 polkit eudev pam zlib xmlto
 
-name=consolekit2
-version=1.0.0
-release=2
-source=(https://github.com/Consolekit2/ConsoleKit2/releases/download/$version/ConsoleKit2-$version.tar.bz2
+isim=consolekit2
+surum=1.0.0
+devir=2
+kaynak=(https://github.com/Consolekit2/ConsoleKit2/releases/download/$surum/ConsoleKit2-$surum.tar.bz2
         consolekit2.tmpfiles.conf
 	75-consolekit2.rules
 	consolekit2.logrotate)
 
 derle() {
-cd ConsoleKit2-$version
+cd ConsoleKit2-$surum
 
 ./configure                    \
 	--prefix=/usr          \

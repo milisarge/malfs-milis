@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: dos2unix
 
-name=libpgf
-version=7.15.32
-release=1
+isim=libpgf
+surum=7.15.32
+devir=1
 
-source=(http://sourceforge.net/projects/$name/files/$name/$version-latest/libPGF-codec-and-console-src.zip)
+kaynak=(http://sourceforge.net/projects/$isim/files/$isim/$surum-latest/libPGF-codec-and-console-src.zip)
 
 derle() {
  cd $SRC/PGF/Codec

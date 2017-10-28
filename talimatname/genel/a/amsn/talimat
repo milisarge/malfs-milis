@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: tk libjpeg-turbo libpng
 
-name=amsn
-version=0.98.9
-release=1
-source=(http://download.sourceforge.net/$name/$name/$version/$name-$version-src.tar.bz2)
+isim=amsn
+surum=0.98.9
+devir=1
+kaynak=(http://download.sourceforge.net/$isim/$isim/$surum/$isim-$surum-src.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr 
   make
   make DESTDIR=$PKG install

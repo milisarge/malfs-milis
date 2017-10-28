@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=fcron
-version=3.2.0
-release=1
-source=(http://fcron.free.fr/archives/$name-$version.src.tar.gz )
+isim=fcron
+surum=3.2.0
+devir=1
+kaynak=(http://fcron.free.fr/archives/$isim-$surum.src.tar.gz )
 
 derle() {
 unset MAKEFLAGS
@@ -14,7 +14,7 @@ source /etc/blfs-bootscripts
 wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 tar xf $scripts-$scriptsversion.tar.bz2
 # build package
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc \
 --without-sendmail --localstatedir=/var \
 --with-boot-install=no --mandir=/usr/share/man \

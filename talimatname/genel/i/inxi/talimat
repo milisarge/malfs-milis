@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=inxi
-version=master
-release=1
-source=(https://github.com/smxi/inxi/archive/master.tar.gz)
+isim=inxi
+surum=master
+devir=1
+kaynak=(https://github.com/smxi/inxi/archive/master.tar.gz)
 
 derle(){
-	mv $DERLEME_KAYNAKDIZIN/$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
-	cd $name-$version
+	mv $DERLEME_KAYNAKDIZIN/$surum.tar.gz $DERLEME_KAYNAKDIZIN/$isim-$surum.tar.gz
+	cd $isim-$surum
 	install -Dm755 inxi \
 	$PKG/usr/bin/inxi
 	install -Dm644 inxi.1 \

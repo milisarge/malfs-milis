@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libnl
 
-name=aircrack-ng
-version=1.2
-release=1
-source=(http://download.aircrack-ng.org/$name-$version-rc4.tar.gz)
+isim=aircrack-ng
+surum=1.2
+devir=1
+kaynak=(http://download.aircrack-ng.org/$isim-$surum-rc4.tar.gz)
 
 derle() {
-  cd $name-$version-rc4
+  cd $isim-$surum-rc4
   make \
       prefix=/usr \
       SQLITE=false \

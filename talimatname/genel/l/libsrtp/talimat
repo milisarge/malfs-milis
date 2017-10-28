@@ -3,17 +3,17 @@
 # Paketçi:	milisarge
 # Gerekler:	
 
-name=libsrtp
-version=1.5.4
-release=1
-source=(https://github.com/cisco/libsrtp/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=libsrtp
+surum=1.5.4
+devir=1
+kaynak=(https://github.com/cisco/libsrtp/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	autoreconf -fvi
 	./configure --prefix=/usr
 	#./configure --prefix=/usr
     make libsrtp.a shared_library
 	make DESTDIR="$PKG" install
-	install -Dm0644 LICENSE "${PKG}"/usr/share/licenses/${name}/LICENSE
+	install -Dm0644 LICENSE "${PKG}"/usr/share/licenses/${isim}/LICENSE
 }

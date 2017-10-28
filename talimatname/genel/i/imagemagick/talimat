@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: freetype ghostscript lcms libgsf giflib libxml2 openexr libwmf libpng librsvg libwebp djvulibre
 
-name=imagemagick
-version=6.9.3-6
-release=1
-_version=6.9.3-6
-source=(https://launchpad.net/imagemagick/main/6.9.3-6/+download/ImageMagick-$version.tar.gz)
+isim=imagemagick
+surum=6.9.3-6
+devir=1
+_surum=6.9.3-6
+kaynak=(https://launchpad.net/imagemagick/main/6.9.3-6/+download/ImageMagick-$surum.tar.gz)
 
 derle() {
     cd ImageMagick-*

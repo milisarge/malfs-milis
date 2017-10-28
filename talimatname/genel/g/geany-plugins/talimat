@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: geany
 
-name=geany-plugins
-version=1.26
-release=1
-source=(http://plugins.geany.org/geany-plugins/$name-$version.tar.bz2)
+isim=geany-plugins
+surum=1.26
+devir=1
+kaynak=(http://plugins.geany.org/geany-plugins/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

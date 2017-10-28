@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gc boost gsl gtkmm intltool libxslt popt poppler lcms lcms2
 
-name=inkscape
-version=0.91
-release=1
-source=(https://launchpad.net/inkscape/0.91.x/0.91/+download/inkscape-0.91.tar.bz2
+isim=inkscape
+surum=0.91
+devir=1
+kaynak=(https://launchpad.net/inkscape/0.91.x/0.91/+download/inkscape-0.91.tar.bz2
 		inkscape-0.91-testfiles-1.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -Np1 -i ../inkscape-0.91-testfiles-1.patch
 	CXXFLAGS="-g -O2 -std=c++11" ./configure --prefix=/usr
 	make

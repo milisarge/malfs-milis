@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: intltool libopenraw babl gtk2 librsvg libpng ruby lua ffmpeg librsvg openexr exiv2 json-glib jasper vala libspiro
 
-name=gegl2
-version=0.2.0
-release=2
-source=(https://download.gimp.org/pub/gegl/0.2/gegl-$version.tar.bz2
+isim=gegl2
+surum=0.2.0
+devir=2
+kaynak=(https://download.gimp.org/pub/gegl/0.2/gegl-$surum.tar.bz2
 		gegl-0.2.0-ffmpeg-0.11.patch
         gegl-0.2.0-CVE-2012-4433.patch
         gegl-0.2.0-lua-5.2.patch
         gegl-0.2.0-remove-src-over-op.patch)
 
 derle() {
-	cd gegl-${version}
+	cd gegl-${surum}
 	patch -Np1 -i ../gegl-0.2.0-ffmpeg-0.11.patch
 	patch -Np1 -i ../gegl-0.2.0-CVE-2012-4433.patch
 	patch -Np1 -i ../gegl-0.2.0-lua-5.2.patch

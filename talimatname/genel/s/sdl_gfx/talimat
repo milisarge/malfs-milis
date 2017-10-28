@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: sdl
 
-name=sdl_gfx
-version=2.0.23
-release=1
-source=(http://downloads.sourceforge.net/project/sdlgfx/SDL_gfx-$version.tar.gz)
+isim=sdl_gfx
+surum=2.0.23
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/sdlgfx/SDL_gfx-$surum.tar.gz)
 
 derle() {
-	cd SDL_gfx-$version
+	cd SDL_gfx-$surum
 	./configure	--prefix=/usr
 	make
 	make DESTDIR=$PKG install

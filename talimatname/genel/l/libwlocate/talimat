@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: wireless-tools
 
-name=libwlocate
-version=0.1
-release=1
+isim=libwlocate
+surum=0.1
+devir=1
 
-source=( https://github.com/openwifi-su/lwlocate/archive/v$version.tar.gz)
+kaynak=( https://github.com/openwifi-su/lwlocate/archive/v$surum.tar.gz)
 
 derle() {
-  cd lwlocate-$version/master
+  cd lwlocate-$surum/master
   make -f Makelib
   make
   install -Dm644 libwlocate.so $PKG/usr/lib/libwlocate.so

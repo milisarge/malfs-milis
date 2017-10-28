@@ -4,11 +4,11 @@
 # Gerekler: python python-docutils python-pygments cmake glew xorg-libxcursor xorg-app xorg-libxinerama
 
 
-name=opensubdiv
-version=3.0.2
-release=1
+isim=opensubdiv
+surum=3.0.2
+devir=1
 
-source=(https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${version//./_}.tar.gz)
+kaynak=(https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${version//./_}.tar.gz)
 
 derle() {
 cd OpenSubdiv-${version//./_}

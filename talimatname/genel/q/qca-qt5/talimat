@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 nss cmake doxygen
 
-name=qca-qt5
-version=2.1.1
-release=1
+isim=qca-qt5
+surum=2.1.1
+devir=1
 
-source=(http://download.kde.org/stable/qca/$version/src/qca-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/qca/$surum/src/qca-$surum.tar.xz)
 
 derle() {
-cd qca-$version
+cd qca-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr   \
       -DBUILD_TESTS=OFF             \
       -DQCA_SUFFIX=qt5              \

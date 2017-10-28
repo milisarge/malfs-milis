@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: intltool glib dbus-python gobject-introspection libdaemon nss-mdns
 
-name=avahi
-version=0.6.32
-release=1
-source=(https://github.com/lathiat/avahi/releases/download/v$version/$name-$version.tar.gz)
+isim=avahi
+surum=0.6.32
+devir=1
+kaynak=(https://github.com/lathiat/avahi/releases/download/v$surum/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \

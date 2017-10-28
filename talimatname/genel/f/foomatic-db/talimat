@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libxml2
 
-name=foomatic-db
-version=4.0.20161112
-release=1
-_version=4.0-20161112
-source=(http://www.openprinting.org/download/foomatic/foomatic-db-${_version}.tar.gz)
+isim=foomatic-db
+surum=4.0.20161112
+devir=1
+_surum=4.0-20161112
+kaynak=(http://www.openprinting.org/download/foomatic/foomatic-db-${_version}.tar.gz)
 
 derle() {
-	cd $name-*
+	cd $isim-*
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

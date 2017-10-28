@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python python-setuptools 
 
-name=python-gitpython
-_name=GitPython
+isim=python-gitpython
+_isim=GitPython
 _name2=gitpython
-version=2.1.3
-release=1
-source=(https://files.pythonhosted.org/packages/source/g/${_name2}/${_name}-${version}.tar.gz)
+surum=2.1.3
+devir=1
+kaynak=(https://files.pythonhosted.org/packages/source/g/${_name2}/${_name}-${surum}.tar.gz)
 
 derle() {
-	cd "${SRC}/${_name}-${version}" 
+	cd "${SRC}/${_name}-${surum}" 
 	python setup.py install --root=$PKG --optimize=1
 }

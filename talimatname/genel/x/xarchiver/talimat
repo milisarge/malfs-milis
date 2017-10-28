@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 intltool xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama unzip p7zip lzop unrar
 
-name=xarchiver
-version=0.5.4.11
-release=1
+isim=xarchiver
+surum=0.5.4.11
+devir=1
 
-source=(https://github.com/ib/xarchiver/archive/$version.tar.gz::$name-$version.tar.gz)
+kaynak=(https://github.com/ib/xarchiver/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--libexecdir=/usr/lib/xfce4 \

@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache gtk3 gcr libsecret desktop-file-utils dconf gpgme openldap intltool yelp-tools gobject-introspection xorg-libsm vala
 
-name=seahorse
-version=3.20.0
-release=2
+isim=seahorse
+surum=3.20.0
+devir=2
 
-source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	 ./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

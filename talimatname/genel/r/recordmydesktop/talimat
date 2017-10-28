@@ -3,13 +3,13 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: libtheora xorg-libxdamage xorg-libxext
 
-name=recordmydesktop
-version=0.3.8.1
-release=1
-source=(http://download.sourceforge.net/$name/$name-$version.tar.gz)
+isim=recordmydesktop
+surum=0.3.8.1
+devir=1
+kaynak=(http://download.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr \
               --mandir=/usr/man
   make

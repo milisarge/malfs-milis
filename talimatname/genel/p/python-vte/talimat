@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: vte vala
 
-name=python-vte
-version=0.28.2
-release=1
-source=(ftp://ftp.gnome.org/pub/gnome/sources/vte/${version%.*}/vte-$version.tar.xz )
+isim=python-vte
+surum=0.28.2
+devir=1
+kaynak=(ftp://ftp.gnome.org/pub/gnome/sources/vte/${surum%.*}/vte-$surum.tar.xz )
 
 derle() {
-  cd vte-$version
+  cd vte-$surum
 
   ./configure --prefix=/usr \
-              --libexecdir=/usr/lib/$name \
+              --libexecdir=/usr/lib/$isim \
               --disable-static \
               --disable-debugging \
               --enable-python \

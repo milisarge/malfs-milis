@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-gobject2 python-cairo libglade 
 
-name=python-gtk
-version=2.24.0
-release=1
+isim=python-gtk
+surum=2.24.0
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/pygtk/${version%.*}/pygtk-$version.tar.bz2)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/pygtk/${surum%.*}/pygtk-$surum.tar.bz2)
 	
 derle() {
-cd pygtk-$version
+cd pygtk-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

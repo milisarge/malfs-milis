@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: iptables libmnl
 
-name=xtables-addons
-version=2.10
-release=1
-source=(http://downloads.sourceforge.net/project/$name/Xtables-addons/$name-$version.tar.xz)
+isim=xtables-addons
+surum=2.10
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/$isim/Xtables-addons/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure \
 		--prefix=/usr \

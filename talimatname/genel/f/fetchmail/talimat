@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: openssl procmail python tk
 
-name=fetchmail
-version=6.3.26
-release=1
-source=(http://downloads.sourceforge.net/fetchmail/$name-$version.tar.xz
+isim=fetchmail
+surum=6.3.26
+devir=1
+kaynak=(http://downloads.sourceforge.net/fetchmail/$isim-$surum.tar.xz
 		.fetchmailrc)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr --with-ssl --enable-fallback=procmail
 

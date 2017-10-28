@@ -3,13 +3,13 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: 
 
-name=nikto
-version=2.1.5
-release=1
-source=(https://cirt.net/$name/$name-$version.tar.bz2)
+isim=nikto
+surum=2.1.5
+devir=1
+kaynak=(https://cirt.net/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $SRC/$name-$version
+  cd $SRC/$isim-$surum
 
   install -d "$PKG/usr/share/nikto"
   cp -a * "$PKG/usr/share/nikto"
@@ -17,8 +17,8 @@ derle() {
   #install -Dm 755 "$SRC/nikto.sh" "$PKG/usr/bin/nikto"
   #install -Dm 644 program/nikto.conf "$PKG/etc/nikto.conf"
   #install -Dm 644 documentation/nikto.1 "$PKG/usr/share/man/man1/nikto.1"
-  #install -Dm 644 program/docs/nikto_manual.html "$PKG/usr/share/doc/$name/manual.html"
-  #install -Dm 644 README.md "$PKG/usr/share/doc/$name/README"
+  #install -Dm 644 program/docs/nikto_manual.html "$PKG/usr/share/doc/$isim/manual.html"
+  #install -Dm 644 README.md "$PKG/usr/share/doc/$isim/README"
 
   mkdir -p $PKG/usr/bin
   cat > $PKG/usr/bin/nikto << EOF

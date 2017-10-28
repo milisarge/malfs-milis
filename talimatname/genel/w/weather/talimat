@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=weather
-version=2.0
-release=1
+isim=weather
+surum=2.0
+devir=1
 
-source=(http://fungi.yuggoth.org/weather/src/$name-$version.tar.gz)
+kaynak=(http://fungi.yuggoth.org/weather/src/$isim-$surum.tar.gz)
 
 derle() {
-  cd "$name-$version"
+  cd "$isim-$surum"
   sed -i 's|env python|env python2|' *
 
   # set up correlation sets
@@ -31,7 +31,7 @@ derle() {
   install -Dm644 weather.1   "$PKG/usr/share/man/man1/weather.1"
   install -Dm644 weatherrc.5 "$PKG/usr/share/man/man5/weatherrc.5"
 
-  install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/BSD2"
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/BSD2"
 }
 
 	

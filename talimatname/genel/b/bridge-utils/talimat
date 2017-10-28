@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=bridge-utils
-version=1.5
-release=1
-source=( http://sourceforge.net/projects/bridge/files/bridge/$name-$version.tar.gz
+isim=bridge-utils
+surum=1.5
+devir=1
+kaynak=( http://sourceforge.net/projects/bridge/files/bridge/$isim-$surum.tar.gz
 	 http://www.linuxfromscratch.org/patches/blfs/svn/bridge-utils-1.5-linux_3.8_fix-1.patch)
 
 derle() {
@@ -14,7 +14,7 @@ source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
-cd $name-$version
+cd $isim-$surum
 patch -Np1 -i ../bridge-utils-1.5-linux_3.8_fix-1.patch
 autoconf -o configure configure.in
 ./configure --prefix=/usr

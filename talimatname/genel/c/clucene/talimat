@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake
 
-name=clucene
-version=2.3.3.4
-release=1
-source=(http://downloads.sourceforge.net/clucene/$name/$name-core-$version.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-contribs_lib-1.patch)
+isim=clucene
+surum=2.3.3.4
+devir=1
+kaynak=(http://downloads.sourceforge.net/clucene/$isim/$isim-core-$surum.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/svn/$isim-$surum-contribs_lib-1.patch)
 
 derle() {
-        cd $name-core-$version
-        patch -Np1 -i ../$name-$version-contribs_lib-1.patch &&
+        cd $isim-core-$surum
+        patch -Np1 -i ../$isim-$surum-contribs_lib-1.patch &&
         mkdir build
         cd build
         cmake -DCMAKE_INSTALL_PREFIX=/usr \

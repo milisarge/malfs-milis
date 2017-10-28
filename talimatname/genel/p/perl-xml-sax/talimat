@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: perl-xml-namespacesupport perl-xml-sax-base 
 
-name=perl-xml-sax
-version=0.99
-release=1
+isim=perl-xml-sax
+surum=0.99
+devir=1
 
-source=(
-http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-$version.tar.gz
+kaynak=(
+http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-$surum.tar.gz
 perl-xml-sax.patch)
 
 derle() {
-    cd XML-SAX-$version
+    cd XML-SAX-$surum
     patch -Np1 -i ../perl-xml-sax.patch || exit 1
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1

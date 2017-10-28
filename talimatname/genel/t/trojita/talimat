@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: git desktop-file-utils hicolor-icon-theme qt5-webkit qtkeychain-qt5 qt5 gpgmepp
 
-name=trojita
-version=0.7
-release=1
+isim=trojita
+surum=0.7
+devir=1
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.xz)
 
 derle() {
   mkdir build
   cd build
-  cmake ../$name-$version           \
+  cmake ../$isim-$surum           \
     -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
     -DCMAKE_BUILD_TYPE=Release      \
     -DCMAKE_INSTALL_PREFIX=/usr

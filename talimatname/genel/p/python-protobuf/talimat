@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: protobuf python-setuptools 
 
-_name=protobuf
+_isim=protobuf
 
-name=python-protobuf
-version=2.6.1
-release=1
+isim=python-protobuf
+surum=2.6.1
+devir=1
 
-source=(https://github.com/google/protobuf/releases/download/$version/protobuf-$version.tar.bz2)
+kaynak=(https://github.com/google/protobuf/releases/download/$surum/protobuf-$surum.tar.bz2)
 
 derle() 
 { 
-cd ${_name}-$version/python
+cd ${_name}-$surum/python
 python2 setup.py install --prefix=/usr --root=$PKG
 }

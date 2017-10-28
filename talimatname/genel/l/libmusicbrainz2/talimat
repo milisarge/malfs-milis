@@ -3,23 +3,23 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=libmusicbrainz2
-version=2.1.5
-release=1
+isim=libmusicbrainz2
+surum=2.1.5
+devir=1
 
-source=( ftp://ftp.musicbrainz.org/pub/musicbrainz/historical/libmusicbrainz-$version.tar.gz
-	http://www.linuxfromscratch.org/patches/blfs/svn/libmusicbrainz-$version-missing-includes-1.patch )
+kaynak=( ftp://ftp.musicbrainz.org/pub/musicbrainz/historical/libmusicbrainz-$surum.tar.gz
+	http://www.linuxfromscratch.org/patches/blfs/svn/libmusicbrainz-$surum-missing-includes-1.patch )
 
 derle() {
-cd libmusicbrainz-$version
-patch -Np1 -i ../libmusicbrainz-$version-missing-includes-1.patch
+cd libmusicbrainz-$surum
+patch -Np1 -i ../libmusicbrainz-$surum-missing-includes-1.patch
 ./configure --prefix=/usr --disable-static
 make
 cd python
 python setup.py build
 cd ..
 make DESTDIR=$PKG install
-mkdir -p $PKG/usr/share/doc/libmusicbrainz-$version
+mkdir -p $PKG/usr/share/doc/libmusicbrainz-$surum
 install -v -m644 -D docs/mb_howto.txt \
-$PKG/usr/share/doc/libmusicbrainz-$version/mb_howto.txt
+$PKG/usr/share/doc/libmusicbrainz-$surum/mb_howto.txt
 }

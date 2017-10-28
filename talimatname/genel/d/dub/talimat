@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: dmd 
 
-name=dub
-version=1.5.0
-release=1
-source=(https://github.com/dlang/dub/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=dub
+surum=1.5.0
+devir=1
+kaynak=(https://github.com/dlang/dub/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
 	DC=dmd
-	cd "$SRC/dub-$version"
+	cd "$SRC/dub-$surum"
 	echo "module dub.version_;" > source/dub/version_.d
-	echo "enum dubVersion = \"$version\";" >> source/dub/version_.d
-	$DC -ofbin/dub -w -O -g -version=DubUseCurl -Isource -L-lcurl @build-files.txt
+	echo "enum dubVersion = \"$surum\";" >> source/dub/version_.d
+	$DC -ofbin/dub -w -O -g -surum=DubUseCurl -Isource -L-lcurl @build-files.txt
 	install -Dm755 "bin/dub" "$PKG/usr/bin/dub"
-	install -Dm644 "LICENSE.txt" "$PKG/usr/share/licenses/$name/LICENSE"
+	install -Dm644 "LICENSE.txt" "$PKG/usr/share/licenses/$isim/LICENSE"
 	install -Dm644 "scripts/bash-completion/dub.bash" "$PKG/usr/share/bash-completion/completions/dub"
 }

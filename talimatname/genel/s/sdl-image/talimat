@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: sdl libjpeg-turbo libpng libtiff libwebp
 
-name=sdl-image
-version=1.2.12
-release=1
+isim=sdl-image
+surum=1.2.12
+devir=1
 
-source=(http://www.libsdl.org/projects/SDL_image/release/SDL_image-$version.tar.gz)
+kaynak=(http://www.libsdl.org/projects/SDL_image/release/SDL_image-$surum.tar.gz)
 
 derle() {
 
-cd SDL_image-$version
+cd SDL_image-$surum
 
 ./configure --prefix=/usr \
    

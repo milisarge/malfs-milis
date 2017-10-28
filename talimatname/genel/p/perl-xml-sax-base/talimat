@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-xml-sax-base
-version=1.08
-release=1
+isim=perl-xml-sax-base
+surum=1.08
+devir=1
 
-source=(
-http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-$version.tar.gz)
+kaynak=(
+http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-$surum.tar.gz)
 
 derle() {
-    cd XML-SAX-Base-$version
+    cd XML-SAX-Base-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make test

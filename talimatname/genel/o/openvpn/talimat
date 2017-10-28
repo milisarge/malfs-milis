@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:  
 
-name=openvpn
-version=2.4.0
-release=1
-source=(http://swupdate.openvpn.net/community/releases/$name-$version.tar.gz \
+isim=openvpn
+surum=2.4.0
+devir=1
+kaynak=(http://swupdate.openvpn.net/community/releases/$isim-$surum.tar.gz \
         openvpnd)
 
 derle() {
   install -D -m 755 openvpnd $PKG/etc/rc.d/init.d/openvpn
-  cd $name-$version
+  cd $isim-$surum
 
   ./configure --prefix=/usr \
               --mandir=/usr/man \

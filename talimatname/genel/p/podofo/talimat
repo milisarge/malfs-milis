@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake xorg-fontconfig freetype libidn libpng libtiff lua51 
 
-name=podofo
-version=0.9.5
-release=1
+isim=podofo
+surum=0.9.5
+devir=1
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     mkdir build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr .. \

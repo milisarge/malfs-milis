@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: perl-test-pod perl-test-pod-coverage 
 
-name=perl-time-duration
-version=1.1
-release=1
+isim=perl-time-duration
+surum=1.1
+devir=1
 
-source=(
-http://www.cpan.org/authors/id/A/AV/AVIF/Time-Duration-$version.tar.gz)
+kaynak=(
+http://www.cpan.org/authors/id/A/AV/AVIF/Time-Duration-$surum.tar.gz)
 
 derle() {
-    cd Time-Duration-$version
+    cd Time-Duration-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1

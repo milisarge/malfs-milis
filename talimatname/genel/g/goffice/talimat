@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libgsf libglade pango pcre gtk3 librsvg
 
-name=goffice
-version=0.10.27
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=goffice
+surum=0.10.27
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

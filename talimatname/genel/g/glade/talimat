@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 libxml2 desktop-file-utils intltool gobject-introspection python-gobject itstool docbook-xsl
 
-name=glade
-version=3.19.0
-_version=3.19
-release=1
-source=(http://ftp.gnome.org/pub/GNOME/sources/$name/${_version}/$name-$version.tar.xz)
+isim=glade
+surum=3.19.0
+_surum=3.19
+devir=1
+kaynak=(http://ftp.gnome.org/pub/GNOME/sources/$isim/${_version}/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   tamir_docbookxml
   ./configure --prefix=/usr        \
               --sysconfdir=/etc    \

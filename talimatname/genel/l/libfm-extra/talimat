@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: glib intltool perl-xml-parser
 
-name=libfm-extra
-_name=libfm
-version=1.2.3
-release=1
-source=(http://downloads.sourceforge.net/pcmanfm/${_name}-$version.tar.xz)
+isim=libfm-extra
+_isim=libfm
+surum=1.2.3
+devir=1
+kaynak=(http://downloads.sourceforge.net/pcmanfm/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr     \
             --sysconfdir=/etc \
             --with-extra-only \

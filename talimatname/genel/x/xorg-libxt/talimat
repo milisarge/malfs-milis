@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libsm xorg-libx11 xorg-proto 
 
-name=xorg-libxt
-version=1.1.5
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXt-$version.tar.bz2)
+isim=xorg-libxt
+surum=1.1.5
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXt-$surum.tar.bz2)
 
 derle() {
-cd libXt-$version
+cd libXt-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 --with-appdefaultdir=/etc/X11/app-defaults
 make

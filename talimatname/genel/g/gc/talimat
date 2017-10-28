@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: libatomic-ops
 
-name=gc
-version=7.4.2
-release=2
-source=(http://www.hboehm.info/gc/gc_source/gc-$version.tar.gz)
+isim=gc
+surum=7.4.2
+devir=2
+kaynak=(http://www.hboehm.info/gc/gc_source/gc-$surum.tar.gz)
 
 derle() {
 cd gc-*

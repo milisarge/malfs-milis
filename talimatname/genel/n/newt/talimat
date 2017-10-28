@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: popt slang
 
-name=newt
-version=0.52.18
-release=1
+isim=newt
+surum=0.52.18
+devir=1
 
-source=( http://fedorahosted.org/releases/n/e/$name/$name-$version.tar.gz )
+kaynak=( http://fedorahosted.org/releases/n/e/$isim/$isim-$surum.tar.gz )
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -e 's/^LIBNEWT =/#&/' \
     -e '/install -m 644 $(LIBNEWT)/ s/^/#/' \
     -e 's/$(LIBNEWT)/$(LIBNEWTSONAME)/g' \

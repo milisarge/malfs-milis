@@ -3,16 +3,16 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: gtk2 intltool
 
-name=lxde-appearance
-_name=lxappearance
-version=0.6.2
-release=1
+isim=lxde-appearance
+_isim=lxappearance
+surum=0.6.2
+devir=1
 
-source=(http://downloads.sourceforge.net/lxde/files/${_name}-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/lxde/files/${_name}-$surum.tar.xz)
 
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr     \
             --sysconfdir=/etc \
             --disable-static  \

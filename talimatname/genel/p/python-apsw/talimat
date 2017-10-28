@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python sqlite
 
-name=python-apsw
-version=3.8.4.3
-release=1
+isim=python-apsw
+surum=3.8.4.3
+devir=1
 
-source=(
-https://github.com/rogerbinns/apsw/archive/$version-r1.tar.gz)
+kaynak=(
+https://github.com/rogerbinns/apsw/archive/$surum-r1.tar.gz)
 
 derle() {
-    cd apsw-$version-r1
+    cd apsw-$surum-r1
     python2 setup.py install --prefix=/usr --root=$PKG
 }

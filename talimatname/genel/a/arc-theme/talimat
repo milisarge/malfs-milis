@@ -4,13 +4,13 @@
 # Gerekler: gtk3 gtk-engine-murrine arc-icon-theme
 
 
-name=arc-theme
-version=20170302
-release=1
-source=(https://github.com/horst3180/$name/archive/$version.tar.gz)
+isim=arc-theme
+surum=20170302
+devir=1
+kaynak=(https://github.com/horst3180/$isim/archive/$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./autogen.sh --prefix=/usr
 	make DESTDIR=$PKG install
 }

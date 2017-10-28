@@ -3,16 +3,16 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: liblxqt pulseaudio glib
 
-name=pavucontrol-qt
-version=0.2.0
-release=1
-source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz)
+isim=pavucontrol-qt
+surum=0.2.0
+devir=1
+kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
 
 derle() {
 	mkdir -v build
 	cd build
-	cmake $SRC/$name-$version \
+	cmake $SRC/$isim-$surum \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		

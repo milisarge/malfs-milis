@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: iso-codes librsvg xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage gtk2 consolekit2 mate-themes
 
-name=lxdm
-version=0.5.3
-release=7
+isim=lxdm
+surum=0.5.3
+devir=7
 uisim=lxdm-a548c73
 tema=lxdm-tema
 tsurum=1.1
 
-source=(http://kaynaklar.milislinux.org/$uisim.tar.xz
+kaynak=(http://kaynaklar.milislinux.org/$uisim.tar.xz
 https://github.com/yasarciv/$tema/archive/$tsurum.tar.gz
 lxdm.in.patch
 lxdm.conf.in.patch

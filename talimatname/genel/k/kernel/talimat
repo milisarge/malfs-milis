@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: linux-firmware intel-ucode
 
-name=kernel
+isim=kernel
 _basekernel=4.10
-version=4.10.17
-release=1
+surum=4.10.17
+devir=1
 
-source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
-        http://www.kernel.org/pub/linux/kernel/v4.x/patch-${version}.xz
+kaynak=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
+        http://www.kernel.org/pub/linux/kernel/v4.x/patch-${surum}.xz
         config
         aufs4-loopback.patch
         aufs4-base.patch
@@ -28,10 +28,10 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
 derle() {
   
   cd "${SRC}/linux-${_basekernel}"
-  cp "${SRC}/patch-$version.xz" .
-  unxz patch-$version.xz
+  cp "${SRC}/patch-$surum.xz" .
+  unxz patch-$surum.xz
   # güncel kernel yama
-  patch -p1 -i "patch-${version}"
+  patch -p1 -i "patch-${surum}"
   
   patch -p1 -i "${SRC}/i8042-fix-aliases.patch"
   
@@ -52,7 +52,7 @@ derle() {
 
   # kernel sürümüne devir sayısı eklemek için
   # set extraversion to release
-  #sed -ri "s|^(EXTRAVERSION =).*|\1 -${release}|" Makefile
+  #sed -ri "s|^(EXTRAVERSION =).*|\1 -${devir}|" Makefile
 
   cd "${SRC}/linux-${_basekernel}"
   
@@ -72,11 +72,11 @@ derle() {
 
   # get kernel version
   #_kernver="$(make kernelrelease)"
-  #KERNEL_VERSION="${version}-milis"
-  _kernver="${version}-milis"
+  #KERNEL_VERSION="${surum}-milis"
+  _kernver="${surum}-milis"
   mkdir -p "${PKG}"/{lib/modules,lib/firmware,boot}
   make INSTALL_MOD_PATH="${PKG}" modules_install
-  cp arch/$KARCH/boot/bzImage "${PKG}/boot/kernel-${version}"
+  cp arch/$KARCH/boot/bzImage "${PKG}/boot/kernel-${surum}"
 
   # add vmlinux
   install -D -m644 vmlinux "${PKG}/usr/src/linux-${_kernver}/vmlinux"

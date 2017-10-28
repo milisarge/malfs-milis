@@ -3,13 +3,13 @@
 # Paketçi:	milisarge
 # Gerekler: geoip-database
 
-name=geoip
-version=1.6.10
-release=1
-source=(https://github.com/maxmind/${name}-api-c/archive/v${version}.tar.gz)
+isim=geoip
+surum=1.6.10
+devir=1
+kaynak=(https://github.com/maxmind/${isim}-api-c/archive/v${surum}.tar.gz)
 
 derle() {
-	cd geoip-api-c-$version
+	cd geoip-api-c-$surum
 
 	autoreconf -vi
 

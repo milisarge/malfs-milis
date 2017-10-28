@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: sfml
 
-name=csfml
-version=2.4
-release=1
-source=(https://www.sfml-dev.org/files/CSFML-$version-sources.zip)
+isim=csfml
+surum=2.4
+devir=1
+kaynak=(https://www.sfml-dev.org/files/CSFML-$surum-sources.zip)
 
 derle() {
-	cd CSFML-$version
+	cd CSFML-$surum
 
 	#sed -e 's|cmake/Config.cmake|cmake/Modules/FindSFML.cmake|' -i CMakeLists.txt
 

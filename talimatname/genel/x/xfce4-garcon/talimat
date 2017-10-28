@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 xfce4-libui xfce4-libutil 
 
-_name=garcon
+_isim=garcon
 
-name=xfce4-garcon
-version=0.5.0
-release=2
+isim=xfce4-garcon
+surum=0.5.0
+devir=2
 
-source=(http://archive.xfce.org/src/xfce/garcon/0.5/${_name}-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/xfce/garcon/0.5/${_name}-$surum.tar.bz2)
 		
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

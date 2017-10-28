@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gnutls opendht glibmm curlpp nlohmann-json libb64
 
-name=dpaste
-version=0.3.3
-release=1
-source=(https://github.com/sim590/dpaste/archive/$version.tar.gz::$name-$version.tar.gz)
+isim=dpaste
+surum=0.3.3
+devir=1
+kaynak=(https://github.com/sim590/dpaste/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd "$name-$version"
+	cd "$isim-$surum"
 	./autogen.sh
 	./configure CPPFLAGS=-I/usr/include/nlohmann --disable-debug
 	make

@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=cmake
-version=3.4.3
-release=1
-source=(http://www.cmake.org/files/v${version%.*}/$name-$version.tar.gz)
+isim=cmake
+surum=3.4.3
+devir=1
+kaynak=(http://www.cmake.org/files/v${surum%.*}/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./bootstrap --prefix=/usr \
 --mandir=/share/man \
 --system-libs \
 --no-system-jsoncpp \
---docdir=/share/doc/cmake-$version
+--docdir=/share/doc/cmake-$surum
 make
 make DESTDIR=$PKG install
 }

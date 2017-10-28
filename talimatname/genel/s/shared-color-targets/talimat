@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: 
 
-name=shared-color-targets
-version=0.1.7
-release=1
-source=(http://people.freedesktop.org/~hughsient/releases/$name-$version.tar.xz)
+isim=shared-color-targets
+surum=0.1.7
+devir=1
+kaynak=(http://people.freedesktop.org/~hughsient/releases/$isim-$surum.tar.xz)
 
 derle(){
-	cd $name-$version
+	cd $isim-$surum
 ./configure --prefix=/usr       
   make
   make DESTDIR=$PKG install

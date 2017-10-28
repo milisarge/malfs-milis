@@ -3,19 +3,19 @@
 # Paketçi:    milisarge
 # Gerekler:
 
-name=jre
-version=1.8.0_131
-release=1
-source=(http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/jre-8u131-linux-x64.tar.gz)
+isim=jre
+surum=1.8.0_131
+devir=1
+kaynak=(http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/jre-8u131-linux-x64.tar.gz)
 
 derle(){
-    cd $name$version
+    cd $isim$surum
 
-    install -d $PKG/usr/{bin,share,lib/$name}
-    mv bin lib plugin  $PKG/usr/lib/$name
+    install -d $PKG/usr/{bin,share,lib/$isim}
+    mv bin lib plugin  $PKG/usr/lib/$isim
     install -d "$PKG"/usr/lib/mozilla/plugins
     # several symlinks
-    ln -s $name $PKG/usr/lib/java
+    ln -s $isim $PKG/usr/lib/java
     ln -s ../lib/java/bin/java $PKG/usr/bin/java
     ln -s ../lib/java/bin/javaws $PKG/usr/bin/javaws
     ln -s ../lib/java/bin/keytool $PKG/usr/bin/keytool

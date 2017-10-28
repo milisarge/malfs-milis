@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=ladspa
-version=1.13
-release=1
+isim=ladspa
+surum=1.13
+devir=1
 
-source=(https://github.com/OpenMandrivaAssociation/ladspa/raw/master/ladspa_sdk_$version.tgz
+kaynak=(https://github.com/OpenMandrivaAssociation/ladspa/raw/master/ladspa_sdk_$surum.tgz
        ladspa-fix-memleak-in-plugin-scanning.patch
        ladspa-fallback-ladspa-path.patch)
 

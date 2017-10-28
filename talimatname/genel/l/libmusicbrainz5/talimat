@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake expat neon doxygen
 
-name=libmusicbrainz5
-version=5.1.0
-release=1
+isim=libmusicbrainz5
+surum=5.1.0
+devir=1
 
-source=( https://github.com/metabrainz/libmusicbrainz/releases/download/release-$version/libmusicbrainz-$version.tar.gz)
+kaynak=( https://github.com/metabrainz/libmusicbrainz/releases/download/release-$surum/libmusicbrainz-$surum.tar.gz)
 
 derle() {
-cd libmusicbrainz-$version
+cd libmusicbrainz-$surum
 mkdir build
 cd build
 cmake .. \
@@ -21,6 +21,6 @@ make
 doxygen ../Doxyfile
 make DESTDIR=$PKG install
 # Documentation
-mkdir -p $PKG/usr/share/doc/$name-$version
-cp -vr docs/ $PKG/usr/share/doc/$name-$version
+mkdir -p $PKG/usr/share/doc/$isim-$surum
+cp -vr docs/ $PKG/usr/share/doc/$isim-$surum
 }

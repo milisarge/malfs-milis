@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gc libunistring libffi emacs gdb
 
-name=guile
-version=2.2.2
-release=1
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+isim=guile
+surum=2.2.2
+devir=1
+kaynak=(ftp://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.xz)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
 
     ./configure \
         --prefix=/usr \

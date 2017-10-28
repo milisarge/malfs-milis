@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler:  
 
-name=neomutt
-version=20171013
-release=1
-source=(https://github.com/$name/$name/archive/$name-$version.tar.gz)
+isim=neomutt
+surum=20171013
+devir=1
+kaynak=(https://github.com/$isim/$isim/archive/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$name-$version
+	cd $isim-$isim-$surum
 
 	./prepare \
 		--prefix=/usr \
-		--with-docdir=/usr/share/doc/$name \
+		--with-docdir=/usr/share/doc/$isim \
 		--with-mailpath=/var/spool/mail \
 		--enable-pop \
 		--enable-imap \

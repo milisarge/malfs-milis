@@ -3,28 +3,28 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=tinyxml
-version=2.6.2
-release=1
-source=(http://download.sourceforge.net/project/$name/$name/$version/${name}_${version//./_}.zip \
-        entity.patch $name-use-stl.patch)
+isim=tinyxml
+surum=2.6.2
+devir=1
+kaynak=(http://download.sourceforge.net/project/$isim/$isim/$surum/${isim}_${version//./_}.zip \
+        entity.patch $isim-use-stl.patch)
 
 derle() {
   export CXXFLAGS="${CXXFLAGS} -fPIC"
-  cd $name
+  cd $isim
 
   patch -p0 -i $SRC/entity.patch 
-  patch -p0 -i $SRC/$name-use-stl.patch
+  patch -p0 -i $SRC/$isim-use-stl.patch
   sed -i -e "/^TINYXML_USE_STL/ s/=.*/= YES/" \
          -e "/^RELEASE_CFLAGS/ s/-O3/${CXXFLAGS}/" Makefile
 
   make
-  g++ ${CXXFLAGS} -DTIXML_USE_STL -shared -o lib$name.so.$version \
-    -Wl,-soname,lib$name.so.${version:0:1} *.o
+  g++ ${CXXFLAGS} -DTIXML_USE_STL -shared -o lib$isim.so.$surum \
+    -Wl,-soname,lib$isim.so.${version:0:1} *.o
 
   mkdir -p $PKG/usr/{include,lib}
-  install -m 0755 lib$name.so.$version $PKG/usr/lib/
+  install -m 0755 lib$isim.so.$surum $PKG/usr/lib/
   install -m 0644 *.h $PKG/usr/include/
-  ln -s lib$name.so.$version $PKG/usr/lib/lib$name.so.${version:0:1}
-  ln -s lib$name.so.$version $PKG/usr/lib/lib$name.so
+  ln -s lib$isim.so.$surum $PKG/usr/lib/lib$isim.so.${version:0:1}
+  ln -s lib$isim.so.$surum $PKG/usr/lib/lib$isim.so
 }

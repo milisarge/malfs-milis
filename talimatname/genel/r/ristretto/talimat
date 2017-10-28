@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxinerama xorg-libxrandr xorg-libsm thunar libexif 
 
-name=ristretto
-version=0.8.0
-release=1
+isim=ristretto
+surum=0.8.0
+devir=1
 
-source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc
 make

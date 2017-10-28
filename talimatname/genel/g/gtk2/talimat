@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: gtk-doc shared-mime-info xorg-libxinerama xorg-libxrandr cairo pango pangox-compat atk libtiff cups gdk-pixbuf xorg-libxi xorg-libxcursor hicolor-icon-theme gtk-update-icon-cache
 
-name=gtk2
-version=2.24.29
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
+isim=gtk2
+surum=2.24.29
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${surum%.*}/gtk+-$surum.tar.xz)
 
 gdk-pixbuf-query-loaders > /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
 
 derle() {
-cd gtk+-$version
+cd gtk+-$surum
 sed -i 's#l \(gtk-.*\).sgml#& -o \1#' docs/{faq,tutorial}/Makefile.in
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
@@ -37,7 +37,7 @@ cd $PKG
 
 # 1. Création de l'archive des fichiers souhaités
 bsdtar -cf \
-$PKGMK_PACKAGE_DIR/${name}.doc#$version-any.mps \
+$PKGMK_PACKAGE_DIR/${isim}.doc#$surum-any.mps \
 usr/share/gtk-doc usr/share/gtk-2.0/demo
 # 2. On efface CES MÊMES fichiers
 rm -r usr/share/{gtk-doc,gtk-2.0/demo}
@@ -47,7 +47,7 @@ devel () {
 cd $PKG
 
 bsdtar -cf \
-$PKGMK_PACKAGE_DIR/$name.devel#$version-any.mps \
+$PKGMK_PACKAGE_DIR/$isim.devel#$surum-any.mps \
 usr/lib/pkgconfig \
 usr/include \
 usr/share/gir-1.0

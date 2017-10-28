@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: pcre
 
-name=lighttpd
-version=1.4.45
-release=1
-source=(http://download.$name.net/$name/releases-1.4.x/$name-$version.tar.xz \
-        $name.conf )
+isim=lighttpd
+surum=1.4.45
+devir=1
+kaynak=(http://download.$isim.net/$isim/releases-1.4.x/$isim-$surum.tar.xz \
+        $isim.conf )
 
 derle() {
-    cd $name-$version
-    ./configure --prefix=/usr --libdir=/usr/lib/$name --with-openssl \
+    cd $isim-$surum
+    ./configure --prefix=/usr --libdir=/usr/lib/$isim --with-openssl \
         --mandir=/usr/man --with-pcre
     make
     make DESTDIR=$PKG install
 
-    install -D -m 644 $SRC/$name.conf $PKG/etc/$name.conf
+    install -D -m 644 $SRC/$isim.conf $PKG/etc/$isim.conf
     install -d $PKG/var/www/{htdocs,logs}
     install -d $PKG/var/run
     install -d $PKG/etc/ssl/certs

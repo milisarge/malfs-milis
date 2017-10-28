@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-http-date
-version=6.02
-release=1
+isim=perl-http-date
+surum=6.02
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Date-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Date-$surum.tar.gz)
 
 derle() {
-cd HTTP-Date-$version
+cd HTTP-Date-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

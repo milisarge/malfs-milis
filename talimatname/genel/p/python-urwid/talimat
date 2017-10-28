@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools 
 
-name=python-urwid
-version=1.2.1
-release=1
+isim=python-urwid
+surum=1.2.1
+devir=1
 
-source=(
-https://pypi.python.org/packages/source/u/urwid/urwid-$version.tar.gz)
+kaynak=(
+https://pypi.python.org/packages/source/u/urwid/urwid-$surum.tar.gz)
 
 derle() {
-    cd urwid-$version
+    cd urwid-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

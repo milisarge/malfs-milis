@@ -3,23 +3,23 @@
 # Paketçi: milisarge
 # Gerekler: libnetfilter_log iptables libjpeg-turbo 
 
-name=vuurmuur
-_name=Vuurmuur
-version=0.8rc2
-release=1
-source=(ftp://ftp.vuurmuur.org/releases/$version/$_name-$version.tar.gz)
+isim=vuurmuur
+_isim=Vuurmuur
+surum=0.8rc2
+devir=1
+kaynak=(ftp://ftp.vuurmuur.org/releases/$surum/$_name-$surum.tar.gz)
 
 derle() {
 
 
-	cd Vuurmuur-$version
+	cd Vuurmuur-$surum
 	chown -R root:root .
 	for file in libvuurmuur vuurmuur vuurmuur_conf ; do
-	  tar xfvz $file-$version.tar.gz
+	  tar xfvz $file-$surum.tar.gz
 	done
 	chown -R root:root .
 	CFLAGS="$SLKCFLAGS" \
-	cd libvuurmuur-$version
+	cd libvuurmuur-$surum
 	./configure \
 	  --prefix=/usr \
 	  --sysconfdir=/etc
@@ -43,7 +43,7 @@ derle() {
 
 
 
-	cd $SRC/Vuurmuur-$version/vuurmuur-$version
+	cd $SRC/Vuurmuur-$surum/vuurmuur-$surum
 	./configure \
 	  --prefix=/usr \
 	  --sysconfdir=/etc \
@@ -111,7 +111,7 @@ derle() {
 
 
 
-	cd $SRC/Vuurmuur-$version/vuurmuur_conf-$version
+	cd $SRC/Vuurmuur-$surum/vuurmuur_conf-$surum
 	./configure \
 	  --prefix=/usr \
 	  --sysconfdir=/etc \
@@ -158,15 +158,15 @@ derle() {
 	)
 
 
-	cd $SRC/Vuurmuur-$version/installer/zones
+	cd $SRC/Vuurmuur-$surum/installer/zones
 	( for zone in dmz inet lan vpn ; do
 		mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/zones/$zone/networks
-		cat $SRC/Vuurmuur-$version/installer/zones/$zone/zone.config > $PKG/etc/vuurmuur/textdir/zones/$zone/zone.config
+		cat $SRC/Vuurmuur-$surum/installer/zones/$zone/zone.config > $PKG/etc/vuurmuur/textdir/zones/$zone/zone.config
 	  done
 	)
 	mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/zones/inet/networks/internet/groups
 	mkdir -p -m 700 $PKG/etc/vuurmuur/textdir/zones/inet/networks/internet/hosts
-	cat $SRC/Vuurmuur-$version/installer/zones/inet/networks/internet/network.config > $PKG/etc/vuurmuur/textdir/zones/inet/networks/internet/network.config
+	cat $SRC/Vuurmuur-$surum/installer/zones/inet/networks/internet/network.config > $PKG/etc/vuurmuur/textdir/zones/inet/networks/internet/network.config
 	mkdir -p -m 700 $PKG/etc/vuurmuur/plugins
 	touch $PKG/etc/vuurmuur/plugins/textdir.conf
 	chmod 600 $PKG/etc/vuurmuur/plugins/textdir.conf

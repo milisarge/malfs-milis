@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=mygpoclient
-version=1.7
-release=2
-source=(http://thp.io/2010/mygpoclient/$name-$version.tar.gz)
+isim=mygpoclient
+surum=1.7
+devir=2
+kaynak=(http://thp.io/2010/mygpoclient/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   python setup.py install --root=$PKG
 }

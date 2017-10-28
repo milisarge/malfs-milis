@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool glib gobject-introspection
 
-name=gnome-menus
-version=3.13.3
-release=1
+isim=gnome-menus
+surum=3.13.3
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure  --prefix=/usr --sysconfdir=/etc \
       --disable-static
 make

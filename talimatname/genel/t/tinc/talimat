@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=tinc
-version=1.0.31
-release=1
-source=(https://github.com/gsliepen/tinc/archive/release-$version.tar.gz)
+isim=tinc
+surum=1.0.31
+devir=1
+kaynak=(https://github.com/gsliepen/tinc/archive/release-$surum.tar.gz)
 
 derle() {
-	cd $name-release-$version
+	cd $isim-release-$surum
 	autoreconf -fsi
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
 	make

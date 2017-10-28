@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: glib python
 
-name=gamin
-version=0.1.10
-release=1
-source=(http://www.gnome.org/~veillard/gamin/sources/$name-$version.tar.gz
+isim=gamin
+surum=0.1.10
+devir=1
+kaynak=(http://www.gnome.org/~veillard/gamin/sources/$isim-$surum.tar.gz
 	remove_deprecated_G_CONST_RETURN.patch)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 patch -p0 < ../remove_deprecated_G_CONST_RETURN.patch
 sed -i 's/G_CONST_RETURN/const/' server/gam_{node,subscription}.{c,h}
 

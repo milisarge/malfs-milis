@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: tint2 python-gtk
 
-name=tint2-extras
-version=0.11
-release=1
-source=(http://tint2.googlecode.com/files/tint2-$version.tar.bz2)
+isim=tint2-extras
+surum=0.11
+devir=1
+kaynak=(http://tint2.googlecode.com/files/tint2-$surum.tar.bz2)
 
 derle() {
-  cd tint2-$version
+  cd tint2-$surum
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \

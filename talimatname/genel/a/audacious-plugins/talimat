@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 audacious alsa-utils flac lame libcdio libsamplerate libsndfile libvorbis mpg123 neon pulseaudio faad2 ffmpeg
 
-name=audacious-plugins
-version=3.7.2
-release=1
-source=(http://distfiles.audacious-media-player.org/$name-$version.tar.bz2)
+isim=audacious-plugins
+surum=3.7.2
+devir=1
+kaynak=(http://distfiles.audacious-media-player.org/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=fortune
-version=0.2
-release=1
-source=(http://www.ibiblio.org/pub/Linux/games/amusements/$name/$name-$version.tar.gz \
-        $name-$version.patch \
+isim=fortune
+surum=0.2
+devir=1
+kaynak=(http://www.ibiblio.org/pub/Linux/games/amusements/$isim/$isim-$surum.tar.gz \
+        $isim-$surum.patch \
   http://crux.nu/~tek/fortune_big.zip \
   http://www.schwarzvogel.de/pkgs/kernelcookies-8.tar.gz \
   http://www.splitbrain.org/_media/projects/fortunes/fortune-simpsons-chalkboard.tgz \
@@ -16,15 +16,15 @@ source=(http://www.ibiblio.org/pub/Linux/games/amusements/$name/$name-$version.t
 
 derle(){
   local cookie
-  cd $name-$version
+  cd $isim-$surum
 
-  patch -p1 < ../$name-$version.patch
+  patch -p1 < ../$isim-$surum.patch
   make
 
   mkdir -p $PKG/usr/{bin,man/man6,share/games/fortunes}
 
-  install -m 755 $name $PKG/usr/bin/$name
-  install -m 644 debian/$name.6 $PKG/usr/man/man6/
+  install -m 755 $isim $PKG/usr/bin/$isim
+  install -m 644 debian/$isim.6 $PKG/usr/man/man6/
 
   cd $SRC
   for cookie in */prog-style */discworld */chalkboard */kernelcookies fortune

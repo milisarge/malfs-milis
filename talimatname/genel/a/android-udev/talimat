@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: libmtp
 
-name=android-udev
-version=20170910
-release=1
-source=(https://github.com/M0Rf30/android-udev-rules/archive/$version.zip::android-udev-$version.zip)
+isim=android-udev
+surum=20170910
+devir=1
+kaynak=(https://github.com/M0Rf30/android-udev-rules/archive/$surum.zip::android-udev-$surum.zip)
 
 derle() {
-  cd android-udev-rules-$version
+  cd android-udev-rules-$surum
   install -Dm 644 51-android.rules "$PKG"/usr/lib/udev/rules.d/51-android.rules
 }

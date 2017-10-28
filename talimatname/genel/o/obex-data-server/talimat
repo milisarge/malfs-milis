@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: bluez dbus-glib imagemagick gdk-pixbuf libusb-compat openobex
 
-name=obex-data-server
-version=0.4.6 	
-release=1
-source=(http://tadas.dailyda.com/software/$name-$version.tar.gz
-		http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-build-fixes-1.patch)
+isim=obex-data-server
+surum=0.4.6 	
+devir=1
+kaynak=(http://tadas.dailyda.com/software/$isim-$surum.tar.gz
+		http://www.linuxfromscratch.org/patches/downloads/$isim/$isim-$surum-build-fixes-1.patch)
  
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 	
 patch -Np1 -i $SRC/obex-data-server-0.4.6-build-fixes-1.patch 
 	

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake libvdpau libva ffmpeg xorg-glu 
 
-name=libvdpau-va-gl
-version=0.4.2
-release=1
-source=(https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.2.tar.gz::$name-$version.tar.gz)
+isim=libvdpau-va-gl
+surum=0.4.2
+devir=1
+kaynak=(https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.2.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
   make DESTDIR="$PKG" install

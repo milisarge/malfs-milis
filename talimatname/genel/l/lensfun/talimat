@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake glib libpng doxygen 
 
-name=lensfun
-version=0.3.1
-release=1
+isim=lensfun
+surum=0.3.1
+devir=1
 
-source=(http://sourceforge.net/projects/$name/files/$version/$name-$version.tar.gz
+kaynak=(http://sourceforge.net/projects/$isim/files/$surum/$isim-$surum.tar.gz
 	)
 derle(){
-cd $name-$version
+cd $isim-$surum
 cd build
 cmake .. -DLENSFUN_INSTALL_PREFIX=/usr
 make all

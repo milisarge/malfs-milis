@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: python gobject-introspection gtk2 gtk3 libdbusmenu-glib vala gnome-doc-utils atk libepoxy json-glib
 
-name=libdbusmenu-gtk2
-_name=libdbusmenu
-release=1
-version=16.04.0
+isim=libdbusmenu-gtk2
+_isim=libdbusmenu
+devir=1
+surum=16.04.0
 
-source=(http://launchpad.net/$_name/${version%.*}/${version}/+download/${_name}-$version.tar.gz )
+kaynak=(http://launchpad.net/$_name/${surum%.*}-$surum.tar.gz )
 
 derle() {
   export HAVE_VALGRIND_TRUE='#'
   export HAVE_VALGRIND_FALSE=''
 
-  cd $_name-$version
+  cd $_name-$surum
     ./configure --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \

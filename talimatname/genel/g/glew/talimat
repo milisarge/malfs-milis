@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-mesa xorg-libxi xorg-libxmu
 
-name=glew
-version=2.0.0
-release=1
-source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tgz)
+isim=glew
+surum=2.0.0
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/$isim/$isim/$surum/$isim-$surum.tgz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	sed -i -e "s|lib64|lib|" config/Makefile.linux
 	sed -i -e '/^.PHONY: .*\.pc$/d' -i Makefile

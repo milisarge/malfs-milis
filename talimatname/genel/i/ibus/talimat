@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: dconf iso-codes gobject-introspection gtk2 libnotify vala python python-gobject libxkbcommon dbus-python python-xdg
 
-name=ibus
-version=1.5.15
-release=1
+isim=ibus
+surum=1.5.15
+devir=1
            
-source=(https://github.com/ibus/ibus/releases/download/$version/$name-$version.tar.gz)
+kaynak=(https://github.com/ibus/ibus/releases/download/$surum/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 sed -i 's@/desktop/ibus@/org/freedesktop/ibus@g' \
     data/ibus.schemas.in \

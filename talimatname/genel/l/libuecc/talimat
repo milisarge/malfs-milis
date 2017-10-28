@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: cmake 
 
-name=libuecc
-version=7
-release=1
+isim=libuecc
+surum=7
+devir=1
 
-source=(https://projects.universe-factory.net/attachments/download/85/${name}-${version}.tar.xz)
+kaynak=(https://projects.universe-factory.net/attachments/download/85/${isim}-${surum}.tar.xz)
 
 derle() {
-	mkdir -p "build-${version}"
-	cd "build-${version}"	
-	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr "../${name}-${version}"
+	mkdir -p "build-${surum}"
+	cd "build-${surum}"	
+	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr "../${isim}-${surum}"
 	make
 	make DESTDIR=$PKG install
 }

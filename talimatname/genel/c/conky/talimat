@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: wireless-tools glib lua cairo imlib2 xorg-libxdamage xorg-libxft libxml2 docbook2x docbook-xml xorg-libxinerama
 
-name=conky
-version=1.10.6
-release=1
-source=(https://github.com/brndnmtthws/conky/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=conky
+surum=1.10.6
+devir=1
+kaynak=(https://github.com/brndnmtthws/conky/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	[ ! -f /usr/lib/pkgconfig/ncurses.pc ] && ln -s /usr/lib/pkgconfig/ncursesw.pc /usr/lib/pkgconfig/ncurses.pc
 	cmake \
 	-D CMAKE_BUILD_TYPE=Release \
@@ -25,7 +25,7 @@ derle() {
 	.
 	make
 	make DESTDIR=$PKG install
-	install -Dm644 COPYING "${PKG}/usr/share/licenses/${name}/LICENSE"
+	install -Dm644 COPYING "${PKG}/usr/share/licenses/${isim}/LICENSE"
 	install -Dm644 extras/vim/syntax/conkyrc.vim "${PKG}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
 	install -Dm644 extras/vim/ftdetect/conkyrc.vim "${PKG}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
 	rm -rf /usr/lib/pkgconfig/ncurses.pc

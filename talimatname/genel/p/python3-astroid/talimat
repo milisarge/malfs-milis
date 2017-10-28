@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: python3 python3-six python3-setuptools
 
-name=python3-astroid
-version=1.4.5
-release=1
+isim=python3-astroid
+surum=1.4.5
+devir=1
 
-source=(https://pypi.python.org/packages/source/a/astroid/astroid-${version}.tar.gz)
+kaynak=(https://pypi.python.org/packages/source/a/astroid/astroid-${surum}.tar.gz)
 
 derle() {
-    cd astroid-$version
+    cd astroid-$surum
     python3 setup.py check
     python3 setup.py install --prefix=/usr --root=$PKG
 }

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=popt
-version=1.16
-release=1
+isim=popt
+surum=1.16
+devir=1
 
-source=(http://rpm5.org/files/popt/popt-1.16.tar.gz)
+kaynak=(http://rpm5.org/files/popt/popt-1.16.tar.gz)
 
 derle() { 	
-cd  popt-$version
+cd  popt-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

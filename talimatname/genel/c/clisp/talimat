@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libsigsegv
 
-name=clisp
-version=2.49
-release=1
-source=(http://ftp.gnu.org/pub/gnu/clisp/latest/$name-$version.tar.bz2
+isim=clisp
+surum=2.49
+devir=1
+kaynak=(http://ftp.gnu.org/pub/gnu/clisp/latest/$isim-$surum.tar.bz2
 		Makefile-R.yama)
 
 derle() {
 
-   cd $name-$version
+   cd $isim-$surum
 
   ./configure \
     --prefix=/usr \

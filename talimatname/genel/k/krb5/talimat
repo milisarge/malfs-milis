@@ -4,17 +4,17 @@
 # Paketçi: Alan Mizrahi, alan at mizrahi dot com dot ve
 # Gerekler: openldap e2fsprogs
 
-name=krb5
-version=1.14
-release=1
-source=(http://web.mit.edu/kerberos/dist/$name/$version/$name-$version.tar.gz \
-        $name-config_LDFLAGS.patch)
+isim=krb5
+surum=1.14
+devir=1
+kaynak=(http://web.mit.edu/kerberos/dist/$isim/$surum/$isim-$surum.tar.gz \
+        $isim-config_LDFLAGS.patch)
 
 derle() {
-	cd $name-$version/src/build-tools
-	patch -p1 -i $SRC/$name-config_LDFLAGS.patch
+	cd $isim-$surum/src/build-tools
+	patch -p1 -i $SRC/$isim-config_LDFLAGS.patch
 
-	cd $SRC/$name-$version/src
+	cd $SRC/$isim-$surum/src
         sed -e '/KRB5ROOT=/ s/\/local//' -i util/ac_check_krb5.m4
 
 	export CFLAGS="${CFLAGS/-Os/-O2} -I/usr/include/et"

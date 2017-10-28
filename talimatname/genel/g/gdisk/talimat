@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: popt
 
-name=gdisk
-version=1.0.0
-release=1
-source=(http://downloads.sourceforge.net/project/gptfdisk/gptfdisk/$version/gptfdisk-$version.tar.gz)
+isim=gdisk
+surum=1.0.0
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/gptfdisk/gptfdisk/$surum/gptfdisk-$surum.tar.gz)
 
 derle() {
 
-	cd gptfdisk-$version
+	cd gptfdisk-$surum
 
 	make
 

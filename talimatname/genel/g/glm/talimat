@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=glm
-version=0.9.8.4
-release=1
-source=(https://github.com/g-truc/glm/archive/$version.tar.gz)
+isim=glm
+surum=0.9.8.4
+devir=1
+kaynak=(https://github.com/g-truc/glm/archive/$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER_ID=GNU -DCMAKE_CXX_FLAGS=" -std=c++11"
 	make DESTDIR=$PKG install
 	rm -rf $PKG/usr/lib64/cmake/glm/glmConfig.cmake

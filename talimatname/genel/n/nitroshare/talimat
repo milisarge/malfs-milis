@@ -3,18 +3,18 @@
 # Paketçi: Cihan Alkan
 # Gerekler:qt5 libnotify
 
-name=nitroshare
-version=0.3.3
-release=1
+isim=nitroshare
+surum=0.3.3
+devir=1
 
-source=(https://github.com/nitroshare/nitroshare-desktop/archive/$version.tar.gz::$name-$version.tar.gz
+kaynak=(https://github.com/nitroshare/nitroshare-desktop/archive/$surum.tar.gz::$isim-$surum.tar.gz
         https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/aboutdialog.cpp
-        https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/tr.ts::$name-tr.ts)
+        https://raw.githubusercontent.com/oltulu/milis/master/nitroshare/tr.ts::$isim-tr.ts)
 
 derle() {
-   mv $name-tr.ts $name-desktop-$version/src/data/ts/tr.ts
-   mv aboutdialog.cpp $name-desktop-$version/src/application/
-   cd $name-desktop-$version
+   mv $isim-tr.ts $isim-desktop-$surum/src/data/ts/tr.ts
+   mv aboutdialog.cpp $isim-desktop-$surum/src/application/
+   cd $isim-desktop-$surum
   
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
    make
@@ -23,7 +23,7 @@ derle() {
     # lisans
     install -Dm644 \
         "LICENSE.txt" \
-        "$PKG/usr/share/licenses/$name/LICENSE.txt"
-	rm /sources/$version.tar.gz
+        "$PKG/usr/share/licenses/$isim/LICENSE.txt"
+	rm /sources/$surum.tar.gz
 
 }

@@ -2,19 +2,19 @@
 # URL: http://www.lysator.liu.se/~nisse/nettle/
 # Paketçi: tnut at nutyx dot org
 
-name=nettle
-version=3.2
-release=1
+isim=nettle
+surum=3.2
+devir=1
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 chmod -v 755 $PKG/usr/lib/libhogweed.so.4.1 $PKG/usr/lib/libnettle.so.6.1
-install -v -m755 -d $PKG/usr/share/doc/nettle-$version
+install -v -m755 -d $PKG/usr/share/doc/nettle-$surum
 rm -rf $PKG/usr/share/info/dir
-install -v -m644 nettle.html $PKG/usr/share/doc/nettle-$version
+install -v -m644 nettle.html $PKG/usr/share/doc/nettle-$surum
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=httpup
-version=0.4.0l
-release=1
-source=(http://crux.nu/files/$name-$version.tar.gz)
+isim=httpup
+surum=0.4.0l
+devir=1
+kaynak=(http://crux.nu/files/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     make
     make DESTDIR=$PKG prefix=/usr mandir=/usr/share/man install
 }

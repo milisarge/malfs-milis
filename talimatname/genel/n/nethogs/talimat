@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:  libpcap
 
-name=nethogs
-version=0.8.5
-release=1
-source=(https://github.com/raboof/nethogs/archive/v$version.tar.gz)
+isim=nethogs
+surum=0.8.5
+devir=1
+kaynak=(https://github.com/raboof/nethogs/archive/v$surum.tar.gz)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
   sed -i 's|/sbin|/bin|' src/MakeApp.mk
   sed -i 's|/local||'  Makefile
   unset CFLAGS
@@ -19,5 +19,5 @@ derle() {
   make prefix="/usr" DESTDIR="$PKG" install
   make prefix="/usr" DESTDIR="$PKG" install_lib
   install -Dm755 src/libnethogs.h "$PKG/usr/include/libnethogs.h"
-  ln -s "/usr/lib/libnethogs.so.$version" "$PKG/usr/lib/libnethogs.so"
+  ln -s "/usr/lib/libnethogs.so.$surum" "$PKG/usr/lib/libnethogs.so"
 }

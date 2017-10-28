@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=python-pexpect
-version=4.2.1
-release=1
-source=(https://pypi.python.org/packages/e8/13/d0b0599099d6cd23663043a2a0bb7c61e58c6ba359b2656e6fb000ef5b98/pexpect-$version.tar.gz)
+isim=python-pexpect
+surum=4.2.1
+devir=1
+kaynak=(https://pypi.python.org/packages/e8/13/d0b0599099d6cd23663043a2a0bb7c61e58c6ba359b2656e6fb000ef5b98/pexpect-$surum.tar.gz)
 
 derle() {
-	cd "pexpect-$version"
+	cd "pexpect-$surum"
 	python setup.py install --root="$PKG"
 }

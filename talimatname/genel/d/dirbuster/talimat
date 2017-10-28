@@ -3,10 +3,10 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: openjdk
 
-name=dirbuster
-version=0.12
-release=1
-source=(http://downloads.sourceforge.net/dirbuster/DirBuster-$version.tar.bz2)
+isim=dirbuster
+surum=0.12
+devir=1
+kaynak=(http://downloads.sourceforge.net/dirbuster/DirBuster-$surum.tar.bz2)
 
 derle() {
   cd "$SRC"
@@ -14,12 +14,12 @@ derle() {
   mkdir -p "$PKG/usr/share/dirbuster"
   mkdir -p "$PKG/usr/bin"
 
-  cp --no-preserve=ownership -a DirBuster-$version/* \
+  cp --no-preserve=ownership -a DirBuster-$surum/* \
     "$PKG/usr/share/dirbuster"
 
   cat > "$PKG/usr/bin/dirbuster" <<EOF
 #!/bin/sh
-exec /opt/jdk/bin/java -jar /usr/share/dirbuster/DirBuster-$version.jar "\$@"
+exec /opt/jdk/bin/java -jar /usr/share/dirbuster/DirBuster-$surum.jar "\$@"
 EOF
   chmod +x "$PKG/usr/bin/dirbuster"
 }

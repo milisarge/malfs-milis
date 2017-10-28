@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler:qt5 hicolor-icon-theme
 
-name=gcompris-qt
-version=0.80
-release=1
+isim=gcompris-qt
+surum=0.80
+devir=1
 
-source=(http://gcompris.net/download/qt/src/$name-$version.tar.xz)
+kaynak=(http://gcompris.net/download/qt/src/$isim-$surum.tar.xz)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 	mkdir build 
 	cd build 
 
@@ -21,6 +21,6 @@ derle() {
 	-DQML_BOX2D_LIBRARY=/usr/lib/qt/qml/Box2D.2.0 \
 	..
 	make
-	cd $SRC/$name-$version
+	cd $SRC/$isim-$surum
 	make -C build DESTDIR="$PKG" install
 }

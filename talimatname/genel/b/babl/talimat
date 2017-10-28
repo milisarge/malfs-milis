@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=babl
-version=0.1.14
-release=1
-source=(http://download.gimp.org/pub/$name/0.1/$name-$version.tar.bz2)
+isim=babl
+surum=0.1.14
+devir=1
+kaynak=(http://download.gimp.org/pub/$isim/0.1/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-docs
 make
 make DESTDIR=$PKG install

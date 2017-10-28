@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ncftp
-version=3.2.5	
-release=1
-source=(ftp://ftp.ncftp.com/ncftp/$name-$version-src.tar.bz2)
+isim=ncftp
+surum=3.2.5	
+devir=1
+kaynak=(ftp://ftp.ncftp.com/ncftp/$isim-$surum-src.tar.bz2)
  
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 	
 ./configure --prefix=/usr --sysconfdir=/etc 
 make -C libncftp shared 

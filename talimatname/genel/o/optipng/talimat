@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libpng
 
-name=optipng
-version=0.7.6
-release=1
+isim=optipng
+surum=0.7.6
+devir=1
 
-source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz)
 
 derle() {
 
-   cd $name-$version
+   cd $isim-$surum
 
   ./configure --prefix=/usr --mandir=/usr/share/man --with-system-libs
   make
@@ -19,5 +19,5 @@ derle() {
   make prefix="$PKG/usr" mandir="$PKG/usr/share/man" install
 
   # install license
-  install -Dm0644 LICENSE.txt "$PKG/usr/share/licenses/$name/LICENSE"
+  install -Dm0644 LICENSE.txt "$PKG/usr/share/licenses/$isim/LICENSE"
 }

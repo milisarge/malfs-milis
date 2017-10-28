@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=hyphen
-version=2.8.8
-release=1
-source=( http://downloads.sourceforge.net/hunspell/$name-$version.tar.gz)
+isim=hyphen
+surum=2.8.8
+devir=1
+kaynak=( http://downloads.sourceforge.net/hunspell/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
         ./configure --prefix=/usr \
 		    --disable-static
         make

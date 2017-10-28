@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: doxygen libwpd boost librevenge icu lcms2
 
-name=libcdr
-version=0.1.3
-release=1
+isim=libcdr
+surum=0.1.3
+devir=1
 
-source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz)
+kaynak=(https://dev-www.libreoffice.org/src/$isim/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

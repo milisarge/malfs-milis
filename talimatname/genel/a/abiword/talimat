@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: boost cairo aspell fribidi enchant wv librsvg gtk2 redland rasqal desktop-file-utils gtk3
 
-name=abiword
-version=3.0.1
-release=3
-source=(http://www.abisource.com/downloads/$name/$version/source/$name-$version.tar.gz)
+isim=abiword
+surum=3.0.1
+devir=3
+kaynak=(http://www.abisource.com/downloads/$isim/$surum/source/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

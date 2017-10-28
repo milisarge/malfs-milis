@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 cmake doxygen
 
-name=grantlee-qt5
-version=5.1.0
-release=1
-source=(http://downloads.grantlee.org/grantlee-$version.tar.gz)
+isim=grantlee-qt5
+surum=5.1.0
+devir=1
+kaynak=(http://downloads.grantlee.org/grantlee-$surum.tar.gz)
 
 derle() {
-  cd grantlee-$version
+  cd grantlee-$surum
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTS=OFF

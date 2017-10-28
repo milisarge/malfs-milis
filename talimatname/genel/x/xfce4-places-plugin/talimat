@@ -3,16 +3,16 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool libnotify xfce4-panel 
 
-name=xfce4-places-plugin
-version=1.7.0
-release=1
-source=(http://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$version.tar.bz2
+isim=xfce4-places-plugin
+surum=1.7.0
+devir=1
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/${surum%.*}/$isim-$surum.tar.bz2
 mounts.patch
 undefined-symbol.patch
 )
 
 derle() {
-  cd "$name-$version"
+  cd "$isim-$surum"
   # Disk olmayan diğer bağları göster (örn. NFS)
 
   patch -Np1 -i "${SRC}/mounts.patch"

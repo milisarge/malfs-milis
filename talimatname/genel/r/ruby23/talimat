@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libffi yaml
 
-name=ruby23
-_name=ruby
+isim=ruby23
+_isim=ruby
 _rubyver=2.3
-version=2.3.4
-release=1
-source=(http://cache.ruby-lang.org/pub/$_name/${version%.*}/$_name-$version.tar.xz)
+surum=2.3.4
+devir=1
+kaynak=(http://cache.ruby-lang.org/pub/$_name/${surum%.*}/$_name-$surum.tar.xz)
 
 derle() {
-	cd $_name-$version
+	cd $_name-$surum
 
 	 PKG_CONFIG=/usr/bin/pkg-config ./configure \
 	--prefix=/opt/ruby${_rubyver} \

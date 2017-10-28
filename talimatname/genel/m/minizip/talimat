@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=minizip
-version=1.2.11
-release=1
-source=(https://zlib.net/zlib-${version}.tar.gz)
+isim=minizip
+surum=1.2.11
+devir=1
+kaynak=(https://zlib.net/zlib-${surum}.tar.gz)
 
 derle() {
-    cd zlib-$version
+    cd zlib-$surum
 	grep -A 24 '^  Copyright' zlib.h > LICENSE
 	./configure --prefix=/usr
 	make
@@ -21,7 +21,7 @@ derle() {
 	./configure --prefix=/usr --enable-static=no
 	make
 
-	cd ${SRC}/zlib-$version/contrib/minizip
+	cd ${SRC}/zlib-$surum/contrib/minizip
 	make install DESTDIR=${PKG}
-	install -D -m644 ${SRC}/zlib-$version/LICENSE ${PKG}/usr/share/licenses/minizip/LICENSE
+	install -D -m644 ${SRC}/zlib-$surum/LICENSE ${PKG}/usr/share/licenses/minizip/LICENSE
 }

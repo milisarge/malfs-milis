@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake gnome-doc-utils tdb gobject-introspection intltool vala git gnome-keyring gmime iso-codes libcanberra libgee libnotify librsvg webkitgtk3
 
-name=geary
-version=0.11.4
-release=1
-source=(https://git.gnome.org/browse/geary/snapshot/$name-$version.tar.xz)
+isim=geary
+surum=0.11.4
+devir=1
+kaynak=(https://git.gnome.org/browse/geary/snapshot/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr --disable-schemas-compile --disable-desktop-update --disable-icon-update
   make
   make DESTDIR="${PKG}" install

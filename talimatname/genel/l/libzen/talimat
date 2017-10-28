@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libzen
-version=0.4.31
-release=1
+isim=libzen
+surum=0.4.31
+devir=1
 
-source=(
-http://downloads.sourceforge.net/zenlib/${name}_${version}.tar.bz2)
+kaynak=(
+http://downloads.sourceforge.net/zenlib/${isim}_${surum}.tar.bz2)
 
 derle(){
     cd $SRC/ZenLib/Project/GNU/Library
@@ -29,6 +29,6 @@ derle(){
     install -dm755 $PKG/usr/lib/pkgconfig
     install -m644 $SRC/ZenLib/Project/GNU/Library/libzen.pc \
         $PKG/usr/lib/pkgconfig
-    sed -i -e 's|Version: |Version: '$version'|g' \
+    sed -i -e 's|Version: |Version: '$surum'|g' \
         $PKG/usr/lib/pkgconfig/libzen.pc
 }

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: yasm opus fdk-aac x264 x265 liba52 libass libva libwebp libvdpau freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
 
-name=ffmpeg
-version=3.3.2
-release=1
-source=(http://ffmpeg.org/releases/ffmpeg-$version.tar.xz
+isim=ffmpeg
+surum=3.3.2
+devir=1
+kaynak=(http://ffmpeg.org/releases/ffmpeg-$surum.tar.xz
 		ffmpeg-x264-10bit.sh)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 [ -e '/usr/lib/pkgconfig/libwebp.pc' ] && PKGMK_FFMPEG+=' --enable-libwebp'
 [ -e '/usr/lib/pkgconfig/vdpau.pc' ] && PKGMK_FFMPEG+=' --enable-vdpau'

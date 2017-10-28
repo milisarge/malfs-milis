@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: mtdev xorg-libxvmc xorg-server xcb-util xorg-xkeyboard-config xorg-twm xorg-term xorg-xclock xorg-xinit libevdev
 
-name=xorg
-version=7.8
-release=1
+isim=xorg
+surum=7.8
+devir=1
 section=driver
-source=()
+kaynak=()
 
 derle() {
 cat > list.md5 << "EOF"

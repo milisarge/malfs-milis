@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python python3 yaml 
 
-name=python-pyyaml
-version=3.11
-release=1
+isim=python-pyyaml
+surum=3.11
+devir=1
 
-source=(http://pyyaml.org/download/pyyaml/PyYAML-$version.tar.gz)
+kaynak=(http://pyyaml.org/download/pyyaml/PyYAML-$surum.tar.gz)
 
 derle() {
-cd PyYAML-$version
+cd PyYAML-$surum
 python setup.py build
 python setup.py install --optimize=1 --root=$PKG
 python3 setup.py build

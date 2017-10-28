@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=sqlite
-version=3.20.1
+isim=sqlite
+surum=3.20.1
 _srcver=3200100
-release=1
-_version=$(printf "%i%.2i%.2i%.2i" ${version//./ })
+devir=1
+_surum=$(printf "%i%.2i%.2i%.2i" ${version//./ })
 
-source=(http://www.sqlite.org/2017/sqlite-autoconf-${_version}.tar.gz)
+kaynak=(http://www.sqlite.org/2017/sqlite-autoconf-${_version}.tar.gz)
 
 derle() {
   cd sqlite-autoconf-$_srcver

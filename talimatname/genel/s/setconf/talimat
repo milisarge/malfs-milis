@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=setconf
-version=0.7.4
-release=1
-source=(http://setconf.roboticoverlords.org/$name-$version.tar.xz)
+isim=setconf
+surum=0.7.4
+devir=1
+kaynak=(http://setconf.roboticoverlords.org/$isim-$surum.tar.xz)
 
 derle() {
-	cd "$name-$version"
+	cd "$isim-$surum"
 
-	install -Dm755 "$name.py" "$PKG/usr/bin/$name"
+	install -Dm755 "$isim.py" "$PKG/usr/bin/$isim"
 }

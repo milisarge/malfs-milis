@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-crypt-openssl-random perl-crypt-openssl-bignum 
 
-name=perl-crypt-openssl-rsa
-version=0.28
-release=1
+isim=perl-crypt-openssl-rsa
+surum=0.28
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/P/PE/PERLER/Crypt-OpenSSL-RSA-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/P/PE/PERLER/Crypt-OpenSSL-RSA-$surum.tar.gz)
 
 derle() {
-cd Crypt-OpenSSL-RSA-$version
+cd Crypt-OpenSSL-RSA-$surum
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make pure_install doc_install  DESTDIR=$PKG

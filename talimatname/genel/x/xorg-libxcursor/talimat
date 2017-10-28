@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-libxrender xorg-libxfixes xorg-libx11 
 
-name=xorg-libxcursor
-version=1.1.14
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXcursor-$version.tar.bz2)
+isim=xorg-libxcursor
+surum=1.1.14
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXcursor-$surum.tar.bz2)
 
 derle() {
-cd libXcursor-$version
+cd libXcursor-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make	
 make DESTDIR=$PKG install

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ilmbase
-version=2.2.0
-release=1
-source=( http://download.savannah.nongnu.org/releases/openexr/$name-$version.tar.gz)
+isim=ilmbase
+surum=2.2.0
+devir=1
+kaynak=( http://download.savannah.nongnu.org/releases/openexr/$isim-$surum.tar.gz)
 
 derle() {
 # build package
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-build-docs \
 --mandir=/usr/share/man \

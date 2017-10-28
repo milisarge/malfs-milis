@@ -3,15 +3,15 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool xfce4-dev-tools python3 imagemagick xfce4-panel graphite2
 
-name=xfce4-windowck-plugin
-version=0.4.4
-release=1
-source=(https://github.com/cedl38/xfce4-windowck-plugin/archive/v0.4.4.tar.gz
+isim=xfce4-windowck-plugin
+surum=0.4.4
+devir=1
+kaynak=(https://github.com/cedl38/xfce4-windowck-plugin/archive/v0.4.4.tar.gz
 https://github.com/yasarciv/xfce4-windowck-plugin/raw/master/po/tr.po)
 
 derle() {
-  cd "$name-$version"
-cp ../tr.po $SRC/$name-$version/po/
+  cd "$isim-$surum"
+cp ../tr.po $SRC/$isim-$surum/po/
 
     ./autogen.sh \
     --prefix=/usr 

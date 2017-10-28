@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python3 python3-setuptools python3-multipledispatch python3-numpy
 
-name=python3-pyrr
-version=0.9.2
-release=1
-source=(https://github.com/adamlwgriffiths/Pyrr/archive/${version}.tar.gz::$name-$version.tar.gz)
+isim=python3-pyrr
+surum=0.9.2
+devir=1
+kaynak=(https://github.com/adamlwgriffiths/Pyrr/archive/${surum}.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd "$SRC/Pyrr-$version"
+	cd "$SRC/Pyrr-$surum"
 	python3 setup.py install --root="$PKG/" --optimize=1
 }

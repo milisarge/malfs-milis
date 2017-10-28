@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 xorg-proto xorg-libxfixes xorg-libxext xorg-compositeproto 
 
-name=xorg-libxcomposite
-version=0.4.4
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXcomposite-$version.tar.bz2)
+isim=xorg-libxcomposite
+surum=0.4.4
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXcomposite-$surum.tar.bz2)
 
 derle() {
-cd libXcomposite-$version
+cd libXcomposite-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

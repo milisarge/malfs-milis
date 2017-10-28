@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: qt4 libgcrypt
 
-name=keepassx2
-version=2.0.3
-release=1
-source=(https://github.com/keepassx/keepassx/archive/$version.tar.gz)
+isim=keepassx2
+surum=2.0.3
+devir=1
+kaynak=(https://github.com/keepassx/keepassx/archive/$surum.tar.gz)
 
 derle() {
 	
@@ -19,7 +19,7 @@ derle() {
 
 	mkdir build 
 	cd build
-	cmake ../*-$version/ \
+	cmake ../*-$surum/ \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_BINDIR=/usr/bin \

@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: desktop-file-utils gtk2
 
-name=gtk-gnutella
-version=devel
-release=1
-source=(https://github.com/gtk-gnutella/gtk-gnutella/archive/$version.tar.gz)
+isim=gtk-gnutella
+surum=devel
+devir=1
+kaynak=(https://github.com/gtk-gnutella/gtk-gnutella/archive/$surum.tar.gz)
 
 derle() {
     cd gtk-gnutella-devel

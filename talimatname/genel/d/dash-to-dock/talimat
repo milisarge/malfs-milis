@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool dconf 
 
-name=dash-to-dock
-version=57
-release=1
-source=()
+isim=dash-to-dock
+surum=57
+devir=1
+kaynak=()
 
 derle() {
 git clone https://github.com/micheleg/dash-to-dock.git
-cd $name
+cd $isim
 make
 make DESTDIR=$PKG install
 }

@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: icu
 
-name=freebird-client
-version=2.5.7.27050
-release=1
-source=( http://downloads.sourceforge.net/firebird/Firebird-$version-0.tar.bz2
+isim=freebird-client
+surum=2.5.7.27050
+devir=1
+kaynak=( http://downloads.sourceforge.net/firebird/Firebird-$surum-0.tar.bz2
 		firebird-c++11.patch
         firebird-c++14.patch)
 
 derle() {
 
-  cd $SRC/Firebird-$version-0
+  cd $SRC/Firebird-$surum-0
   patch -Np1 -i ../firebird-c++11.patch
   patch -Np0 -i ../firebird-c++14.patch
   ./configure --prefix=/usr --with-system-icu --without-fbudf \
@@ -23,7 +23,7 @@ derle() {
 
   CXXFLAGS+=' -fno-lifetime-dse' make -j1
 
-  mkdir -p $PKG/usr/{bin,share/{firebird,licenses/$name}}
+  mkdir -p $PKG/usr/{bin,share/{firebird,licenses/$isim}}
 
   cp -R gen/firebird/{lib,include} $PKG/usr
   rm -f $PKG/usr/lib/libedit.a

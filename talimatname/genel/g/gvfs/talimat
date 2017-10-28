@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: avahi dbus-glib intltool libsecret gtk3 libsoup udisks2 obexd fuse libarchive samba bluez gcr libgphoto2 libmtp glib
 
-name=gvfs
-version=1.33.1
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=gvfs
+surum=1.33.1
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --sysconfdir=/etc \
 		  --localstatedir=/var --disable-static \
 		  --libexecdir=/usr/lib/gvfs \

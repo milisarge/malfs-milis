@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache intltool itstool gobject-introspection desktop-file-utils hicolor-icon-theme clutter-gtk libcanberra librsvg
 
-name=quadrapassel
-version=3.22.0
-release=1
+isim=quadrapassel
+surum=3.22.0
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
    --disable-schemas-compile
 make

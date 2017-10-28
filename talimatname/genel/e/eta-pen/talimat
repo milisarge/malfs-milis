@@ -3,25 +3,25 @@
 # Paketçi: Cihan Alkan
 # Gerekler: qt5
 
-name=eta-pen
-version=0.1.2
-release=1
+isim=eta-pen
+surum=0.1.2
+devir=1
 
-source=(https://github.com/E-Tahta/eta-pen/archive/master.tar.gz::$name-$version.tar.gz
+kaynak=(https://github.com/E-Tahta/eta-pen/archive/master.tar.gz::$isim-$surum.tar.gz
 		tahtakalemi.png
         eta-pen.desktop)
 
 derle() {
 	
-	cd $SRC/$name-master
+	cd $SRC/$isim-master
 	qmake-qt5 eta-pen.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug 
 	make
 	mkdir -p $PKG/usr/bin
 	mkdir -p $PKG/usr/share/applications
 	mkdir -p $PKG/usr/share/icons
 
-	mv $name $PKG/usr/bin/
-	mv $SRC/$name.desktop $PKG/usr/share/applications/
+	mv $isim $PKG/usr/bin/
+	mv $SRC/$isim.desktop $PKG/usr/share/applications/
 	mv $SRC/tahtakalemi.png $PKG/usr/share/icons/
 
 }

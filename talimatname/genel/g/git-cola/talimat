@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: git python-qt4 icu gvim
 
-name=git-cola
-version=2.1.1
-release=2
-source=(https://github.com/git-cola/git-cola/archive/v$version.zip)
+isim=git-cola
+surum=2.1.1
+devir=2
+kaynak=(https://github.com/git-cola/git-cola/archive/v$surum.zip)
 
 derle() {
-	cd $SRC/${name}-$version
+	cd $SRC/${isim}-$surum
 	/usr/bin/python setup.py install --root=$PKG
 find $PKG -name '*.egg-info' | xargs rm -rf
 }

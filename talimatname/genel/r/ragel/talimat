@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler:
 
-name=ragel
-version=6.10
-release=1
+isim=ragel
+surum=6.10
+devir=1
 
-source=(https://www.colm.net/files/$name/$name-$version.tar.gz)
+kaynak=(https://www.colm.net/files/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr CXXFLAGS="$CXXFLAGS -std=gnu++98" 
 	make
 	make DESTDIR=$PKG install

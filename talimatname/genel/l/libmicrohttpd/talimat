@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libgcrypt gnutls
 
-name=libmicrohttpd
-version=0.9.54
-release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+isim=libmicrohttpd
+surum=0.9.54
+devir=1
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	CONFIG_SHELL=/bin/bash \
 	./configure \
 		--prefix=/usr \

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxtst xorg-libxinerama libxkbcommon
 
-name=xdotool
-version=3.2
-release=1
-source=(https://github.com/jordansissel/xdotool/archive/v3.20160805.1.tar.gz::$name-$version.tar.gz)
+isim=xdotool
+surum=3.2
+devir=1
+kaynak=(https://github.com/jordansissel/xdotool/archive/v3.20160805.1.tar.gz::$isim-$surum.tar.gz)
 
 
 derle() {
-  cd ${name}-3.20160805.1
+  cd ${isim}-3.20160805.1
 
   # Build
   make PREFIX=/usr DESTDIR=${PKG}

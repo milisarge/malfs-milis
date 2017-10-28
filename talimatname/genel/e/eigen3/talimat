@@ -3,10 +3,10 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake
 
-name=eigen3
-version=3.2.5
-release=1
-source=(http://bitbucket.org/eigen/eigen/get/$version.tar.bz2)
+isim=eigen3
+surum=3.2.5
+devir=1
+kaynak=(http://bitbucket.org/eigen/eigen/get/$surum.tar.bz2)
 
 derle() {
 	cd eigen-eigen-*

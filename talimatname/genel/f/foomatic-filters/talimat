@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libxml2 cups cups-filters
 
-name=foomatic-filters
-version=4.0.20150819
-release=1
-_version=4.0-20150819
-source=(http://www.openprinting.org/download/foomatic/$name-${_version}.tar.gz)
+isim=foomatic-filters
+surum=4.0.20150819
+devir=1
+_surum=4.0-20150819
+kaynak=(http://www.openprinting.org/download/foomatic/$isim-${_version}.tar.gz)
 
 derle() {
-cd $name-*
+cd $isim-*
 autoreconf
 ./configure --prefix=/usr \
 --sysconfdir=/etc

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 gstreamer-plugins-base xorg-mesa xorg-libsm xorg-libxxf86vm sdl
 
-name=wxgtk
-version=3.0.2
-release=2
+isim=wxgtk
+surum=3.0.2
+devir=2
 
-source=(http://downloads.sourceforge.net/wxwindows/wxWidgets-$version.tar.bz2
+kaynak=(http://downloads.sourceforge.net/wxwindows/wxWidgets-$surum.tar.bz2
 	make-abicheck-non-fatal.patch)
 derle() {
-cd wxWidgets-$version
+cd wxWidgets-$surum
 patch -Np1 -i ../make-abicheck-non-fatal.patch
 ./configure --prefix=/usr --libdir=/usr/lib --with-gtk=2 --with-opengl --enable-unicode \
 --enable-graphics_ctx  --enable-mediactrl --enable-webview --with-regex=builtin \

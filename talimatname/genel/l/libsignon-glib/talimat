@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: signond python-gobject gobject-introspection
 
-name=libsignon-glib
-version=1.14
-release=1
+isim=libsignon-glib
+surum=1.14
+devir=1
 
 PKGMK_KEEP_SOURCES="no"
 
-source=(https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.gz)
+kaynak=(https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.gz)
 
 derle() {
 cd libsignon-glib*

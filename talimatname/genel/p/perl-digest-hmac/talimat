@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-digest-sha1 
 
-name=perl-digest-hmac
-version=1.03
-release=1
+isim=perl-digest-hmac
+surum=1.03
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-HMAC-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-HMAC-$surum.tar.gz)
 
 derle() {
-cd Digest-HMAC-$version
+cd Digest-HMAC-$surum
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

@@ -3,18 +3,18 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: xorg-mesa xorg-libxvmc libxcb faad2 speex libmng libvorbis flac libtheora sdl ffmpeg samba librsvg imagemagick 
 
-name=xine-lib
-version=1.2.6
-release=1
+isim=xine-lib
+surum=1.2.6
+devir=1
 
-source=(http://downloads.sourceforge.net/xine/$name-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/xine/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure  --prefix=/usr \
 --disable-vcd \
 --disable-modplug \
---docdir=/usr/share/doc/$name-$version
+--docdir=/usr/share/doc/$isim-$surum
 make
 make DESTDIR=$PKG install
 }

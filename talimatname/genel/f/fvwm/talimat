@@ -3,20 +3,20 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: libxslt libstroke fribidi xorg-libxpm librsvg xorg-libxinerama xorg-libxcursor python-xdg
 
-name=fvwm
-version=2.6.7
-release=1
-source=(https://github.com/fvwmorg/fvwm/archive/$version.tar.gz::$name-$version.tar.bz2
+isim=fvwm
+surum=2.6.7
+devir=1
+kaynak=(https://github.com/fvwmorg/fvwm/archive/$surum.tar.gz::$isim-$surum.tar.bz2
 		fvwm.desktop)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -e 's|ln -sf|ln -sfr|g' -i default-config/Makefile.am
     autoreconf -vi
 	PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --with-stroke-library
 	make
 	make DESTDIR="${PKG}" install
 	install -D -m644 ../fvwm.desktop "${PKG}/usr/share/xsessions/fvwm.desktop"
-	install -D -m644 COPYING "${PKG}/usr/share/licenses/${name}/COPYING"
+	install -D -m644 COPYING "${PKG}/usr/share/licenses/${isim}/COPYING"
 	rm -rf $PKG/usr/share/doc
 }

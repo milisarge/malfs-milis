@@ -3,10 +3,10 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: 
 
-name=greybird-gtk-theme
-version=3.22
-release=1
-source=(https://dl.opendesktop.org/api/files/download/id/1495049712/GreybirdClassicTR_GTK3_22.tar.gz)
+isim=greybird-gtk-theme
+surum=3.22
+devir=1
+kaynak=(https://dl.opendesktop.org/api/files/download/id/1495049712/GreybirdClassicTR_GTK3_22.tar.gz)
 
 derle() {
   cd GreybirdClassicTR_GTK3_22

@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: nim 
 
-name=nimble
-version=0.8.6
-release=1
-source=(https://github.com/nim-lang/nimble/archive/v$version.tar.gz::nimble-$version.tar.gz)
+isim=nimble
+surum=0.8.6
+devir=1
+kaynak=(https://github.com/nim-lang/nimble/archive/v$surum.tar.gz::nimble-$surum.tar.gz)
 
 derle() {
-  cd ${name}-${version}
+  cd ${isim}-${surum}
   nim c -d:release src/nimble
   install -Dm 755 src/nimble -t "${PKG}/usr/bin"
-  install -Dm 644 license.txt "${PKG}/usr/share/licenses/${name}/LICENSE"
-  cp -r src/nimblepkg "${PKG}/usr/share/${name}"
-  ln -s /usr/share/${name} "${PKG}/usr/bin/nimblepkg"
+  install -Dm 644 license.txt "${PKG}/usr/share/licenses/${isim}/LICENSE"
+  cp -r src/nimblepkg "${PKG}/usr/share/${isim}"
+  ln -s /usr/share/${isim} "${PKG}/usr/bin/nimblepkg"
 
 }

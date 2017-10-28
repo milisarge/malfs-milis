@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules qt5 doxygen telepathy-qt5 glib dbus-glib telepathy-logger
 
-name=telepathy-logger-qt
-version=15.04.0
-_version=15.04
-release=1
+isim=telepathy-logger-qt
+surum=15.04.0
+_surum=15.04
+devir=1
 
-source=(http://download.kde.org/stable/$name/${_version}/src/$name-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/$isim/${_version}/src/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 cmake -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_INSTALL_DIR=lib 

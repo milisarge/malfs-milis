@@ -3,15 +3,15 @@
 # Paketçi:		milisarge
 # Gerekler:	xorg dbus fribidi
 
-name=fluxbox
-version=1.3.7
-release=1
-source=(http://downloads.sourceforge.net/fluxbox/$name-$version.tar.xz
+isim=fluxbox
+surum=1.3.7
+devir=1
+kaynak=(http://downloads.sourceforge.net/fluxbox/$isim-$surum.tar.xz
 		fluxbox.desktop)
 
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 
 ./configure --prefix=/usr
 

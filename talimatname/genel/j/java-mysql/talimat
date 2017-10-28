@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: openjdk mariadb
 
-name=java-mysql
-version=5.1.41
-uzunisim=mysql-connector-java-${version}
-release=1
-source=(https://cdn.mysql.com/Downloads/Connector-J/${uzunisim}.tar.gz)
+isim=java-mysql
+surum=5.1.41
+uzunisim=mysql-connector-java-${surum}
+devir=1
+kaynak=(https://cdn.mysql.com/Downloads/Connector-J/${uzunisim}.tar.gz)
 
 derle() {
 	cd $uzunisim

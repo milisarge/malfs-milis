@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: doxygen 
 
-name=libdvdcss
-version=1.4.0
-release=1
+isim=libdvdcss
+surum=1.4.0
+devir=1
 
-source=(http://download.videolan.org/libdvdcss/$version/libdvdcss-$version.tar.bz2)
+kaynak=(http://download.videolan.org/libdvdcss/$surum/libdvdcss-$surum.tar.bz2)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static \
---docdir=/usr/share/doc/libdvdcss-$version
+--docdir=/usr/share/doc/libdvdcss-$surum
 make
 make DESTDIR=$PKG install
 }

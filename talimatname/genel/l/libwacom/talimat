@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: glib libgudev
 
-name=libwacom
-version=0.21
-release=1
+isim=libwacom
+surum=0.21
+devir=1
 
-source=(http://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-$version.tar.bz2)
+kaynak=(http://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

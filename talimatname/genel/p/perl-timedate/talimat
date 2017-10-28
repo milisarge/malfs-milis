@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-timedate
-version=2.30
-release=1
+isim=perl-timedate
+surum=2.30
+devir=1
 
-source=(
-http://www.cpan.org/authors/id/G/GB/GBARR/TimeDate-$version.tar.gz)
+kaynak=(
+http://www.cpan.org/authors/id/G/GB/GBARR/TimeDate-$surum.tar.gz)
 
 derle() {
-    cd TimeDate-$version
+    cd TimeDate-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1

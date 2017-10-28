@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libpcap
 
-name=tcpdump
-version=4.9.0
-release=1
-source=(http://www.tcpdump.org/release/$name-$version.tar.gz)
+isim=tcpdump
+surum=4.9.0
+devir=1
+kaynak=(http://www.tcpdump.org/release/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr --enable-ipv6 
     make
     make DESTDIR=$PKG install
-    rm $PKG/usr/sbin/tcpdump.$version
+    rm $PKG/usr/sbin/tcpdump.$surum
 }

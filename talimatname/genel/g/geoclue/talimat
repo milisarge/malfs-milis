@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libsoup dbus-glib gconf libxslt
 
-name=geoclue
-version=0.12.0
-release=1
-source=(https://launchpad.net/geoclue/trunk/0.12/+download/geoclue-0.12.0.tar.gz)
+isim=geoclue
+surum=0.12.0
+devir=1
+kaynak=(https://launchpad.net/geoclue/trunk/0.12/+download/geoclue-0.12.0.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i "s@ -Werror@@" configure &&
 sed -i "s@libnm_glib@libnm-glib@g" configure &&
 sed -i "s@geoclue/libgeoclue.la@& -lgthread-2.0@g" \

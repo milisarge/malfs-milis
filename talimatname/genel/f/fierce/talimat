@@ -3,21 +3,21 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: perl-net-dns
 
-name=fierce
-version=0.9.9
-release=1
-source=()
+isim=fierce
+surum=0.9.9
+devir=1
+kaynak=()
 
 derle() {
-    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-		git clone https://github.com/yakar/fierce.git $DERLEME_KAYNAKDIZIN/$name 
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/yakar/fierce.git $DERLEME_KAYNAKDIZIN/$isim 
 	else
-		cd $DERLEME_KAYNAKDIZIN/$name 
+		cd $DERLEME_KAYNAKDIZIN/$isim 
 		git pull
 	fi
 
-	cp -r $DERLEME_KAYNAKDIZIN/$name  $SRC
-	cd $SRC/$name
+	cp -r $DERLEME_KAYNAKDIZIN/$isim  $SRC
+	cd $SRC/$isim
 
   # Conform to our install location.
   sed -i 's|hosts\.txt|/etc/fierce/hosts.txt|' "fierce.pl"

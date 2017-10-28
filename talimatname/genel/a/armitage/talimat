@@ -3,10 +3,10 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: metasploit nmap postgresql
 
-name=armitage
-version=150813
-release=1
-source=(http://www.fastandeasyhacking.com/download/armitage${version}.tgz)
+isim=armitage
+surum=150813
+devir=1
+kaynak=(http://www.fastandeasyhacking.com/download/armitage${surum}.tgz)
 
 derle() {
   cd "$SRC/armitage"

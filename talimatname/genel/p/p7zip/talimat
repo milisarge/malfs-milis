@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: nasm yasm 
 
-name=p7zip
-version=9.38.1
-release=1
+isim=p7zip
+surum=9.38.1
+devir=1
 
-source=(http://downloads.sourceforge.net/sourceforge/$name/${name}_${version}_src_all.tar.bz2)
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/${isim}_${surum}_src_all.tar.bz2)
 
 derle() {
-	cd ${name}_$version
+	cd ${isim}_$surum
 	[[ `uname -m` = x86_64 ]] \
 	&& cp makefile.linux_amd64_asm makefile.machine \
 	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine

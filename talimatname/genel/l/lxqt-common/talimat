@@ -3,10 +3,10 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: hicolor-icon-theme xorg-app
 
-name=lxqt-common
-version=0.11.2
-release=1
-source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz)
+isim=lxqt-common
+surum=0.11.2
+devir=1
+kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
 sed -e '/TryExec/s@=@=/usr/bin/@' \
     -i xsession/lxqt.desktop.in 
@@ -14,7 +14,7 @@ sed -e '/TryExec/s@=@=/usr/bin/@' \
 derle() {
 	mkdir -v build
 	cd build
-	cmake $SRC/$name-$version \
+	cmake $SRC/$isim-$surum \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr 
 		

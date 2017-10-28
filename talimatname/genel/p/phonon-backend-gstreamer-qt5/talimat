@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: phonon-qt5 gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad gstreamer1-plugins-ugly libxml2 pulseaudio
 
-name=phonon-backend-gstreamer-qt5
-release=1
-version=4.9.0
-_name=phonon-backend-gstreamer
+isim=phonon-backend-gstreamer-qt5
+devir=1
+surum=4.9.0
+_isim=phonon-backend-gstreamer
 
-source=( http://download.kde.org/stable/phonon/${_name}/$version/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/phonon/${_name}/$surum/${_name}-$surum.tar.xz)
 
 derle() {
-cd phonon-gstreamer-$version
+cd phonon-gstreamer-$surum
 cmake -DCMAKE_BUILD_TYPE=Release     \
       -DCMAKE_SKIP_RPATH=ON          \
       -DCMAKE_INSTALL_PREFIX=/usr    \

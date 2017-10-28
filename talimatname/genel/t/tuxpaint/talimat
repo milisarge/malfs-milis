@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: optipng setconf sdl-ttf sdl-mixer python fribidi sdl-image sdl-pango libpaper librsvg
 
-name=tuxpaint
-version=0.9.22
-release=1
+isim=tuxpaint
+surum=0.9.22
+devir=1
 
-source=(https://downloads.sourceforge.net/sourceforge/tuxpaint/$name-$version.tar.gz)
+kaynak=(https://downloads.sourceforge.net/sourceforge/tuxpaint/$isim-$surum.tar.gz)
 
 derle() {
 
-   cd $name-$version
+   cd $isim-$surum
 # python2 fix
   for f in docs/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
     sed -i '0,/on/s//on2/' $f
@@ -33,9 +33,9 @@ derle() {
   setconf Makefile COMPLETIONDIR '$(DESTDIR)/usr/share/bash-completion/completions'
 
   cd $SRC
-  make -C "$name-$version" PREFIX=/usr clean translations all -j1
+  make -C "$isim-$surum" PREFIX=/usr clean translations all -j1
 
-  make -C "$name-$version" \
+  make -C "$isim-$surum" \
     PREFIX=/usr \
     GNOME_PREFIX=/usr \
     X11_ICON_PREFIX="$PKG/usr/share/pixmaps" \

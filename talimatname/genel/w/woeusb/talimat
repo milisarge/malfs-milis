@@ -3,23 +3,23 @@
 # Paketçi: Cihan Alkan
 # Gerekler: wxgtk grub libnotify parted ntfs-3g p7zip
 
-name=woeusb
-version=2.0.3
-release=1
+isim=woeusb
+surum=2.0.3
+devir=1
 
-source=(trad.mo)
+kaynak=(trad.mo)
 
 
 derle() {
-	if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-		git clone https://github.com/slacka/WoeUSB.git $DERLEME_KAYNAKDIZIN/$name 
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/slacka/WoeUSB.git $DERLEME_KAYNAKDIZIN/$isim 
 	else
-		cd $DERLEME_KAYNAKDIZIN/$name 
+		cd $DERLEME_KAYNAKDIZIN/$isim 
 		git pull
 		cd -
 	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
-	cd $SRC/$name
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
 	./configure
 	make
 	make DESTDIR=$PKG prefix=/usr/ install

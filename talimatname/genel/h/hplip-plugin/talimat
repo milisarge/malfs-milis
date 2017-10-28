@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: hplip
 
-name=hplip-plugin
-version=3.17.6
-release=1
-source=(http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-$version-plugin.run)
+isim=hplip-plugin
+surum=3.17.6
+devir=1
+kaynak=(http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-$surum-plugin.run)
 
 derle() {
-    sh "hplip-$version-plugin.run" --target "$SRC/hplip-$version-plugin" --noexec
-    cd "$SRC/hplip-$version-plugin"
+    sh "hplip-$surum-plugin.run" --target "$SRC/hplip-$surum-plugin" --noexec
+    cd "$SRC/hplip-$surum-plugin"
     _arch='x86_64'
 
     install -d "$PKG/usr/share/hplip/data/firmware"
@@ -34,14 +34,14 @@ derle() {
 [plugin]
 installed = 1
 eula = 1
-version = $version
+version = $surum
 EOF
 
     install -m644 hplip.state "$PKG/var/lib/hp"
     # Create symlinks
     find "$PKG/usr/share/hplip" -type f -name "*.so" | while read f; do
         lib_dir="${f%/*}"
-        lib_name="${f##*/}"
+        lib_isim="${f##*/}"
         ln -vsf "$lib_name" "$lib_dir/${lib_name%%-*}.so"
     done
 

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libburn libisofs acl attr 
 
-name=libisoburn
-version=1.4.2
-release=1
+isim=libisoburn
+surum=1.4.2
+devir=1
 
-source=(http://files.libburnia-project.org/releases/libisoburn-$version.tar.gz)
+kaynak=(http://files.libburnia-project.org/releases/libisoburn-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static \
 --enable-pkg-check-modules
 make

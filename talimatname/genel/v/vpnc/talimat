@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libgcrypt
 
-name=vpnc
-version=0.5.3
-release=1
-source=(https://www.unix-ag.uni-kl.de/~massar/$name/$name-$version.tar.gz)
+isim=vpnc
+surum=0.5.3
+devir=1
+kaynak=(https://www.unix-ag.uni-kl.de/~massar/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	make
 	make DESTDIR=$PKG PREFIX=/usr MANDIR=/usr/share/man install

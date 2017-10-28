@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: pcsc-lite
 
-name=pcsc-tools
-version=1.5.2
-release=1
+isim=pcsc-tools
+surum=1.5.2
+devir=1
 
-source=(http://ludovic.rousseau.free.fr/softwares/pcsc-tools/$name-$version.tar.bz2)
+kaynak=(http://ludovic.rousseau.free.fr/softwares/pcsc-tools/$isim-$surum.tar.bz2)
 
 derle() {
-    cd $SRC/$name-$version 
+    cd $SRC/$isim-$surum 
      ./configure
      sed -i -e 's:-Wall -O2:${CFLAGS}:g' Makefile
      make

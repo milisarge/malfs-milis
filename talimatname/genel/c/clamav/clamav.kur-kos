@@ -6,6 +6,6 @@ if [ -z `getent passwd clamav` ]; then
 	useradd -r -g clamav -d /etc/clamav -s /bin/false -c "ClamAV" clamav
 fi
 
-name=clamav
-chown -R $name:$name $PKG/var/run/$name $PKG/var/log/$name
+isim=clamav
+chown -R $isim:$isim $PKG/var/run/$isim $PKG/var/log/$isim
 install -o clamav -g clamav -m 0775 -d /usr/share/clamav

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libmnl libnetfilter_acct
 
-name=netdata
-version=1.7.0
-release=1
+isim=netdata
+surum=1.7.0
+devir=1
 
-source=(https://github.com/firehol/netdata/releases/download/v${version}/netdata-${version}.tar.xz)
+kaynak=(https://github.com/firehol/netdata/releases/download/v${surum}/netdata-${surum}.tar.xz)
 
 derle(){
-	cd $name-$version
+	cd $isim-$surum
 	./configure \
 		--prefix="/usr" \
 		--sbindir="/usr/bin" \

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: gstreamer-plugins-base keybinder xfce4-conf glib
 
-name=xfce4-volumed
-version=0.1.13
-release=1
-source=(http://archive.xfce.org/src/apps/$name/${version::3}/$name-$version.tar.bz2)
+isim=xfce4-volumed
+surum=0.1.13
+devir=1
+kaynak=(http://archive.xfce.org/src/apps/$isim/${version::3}/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
-	./configure --prefix=/usr --libexecdir=/usr/lib/$name
+	./configure --prefix=/usr --libexecdir=/usr/lib/$isim
 	make
 	make DESTDIR=$PKG install
 }

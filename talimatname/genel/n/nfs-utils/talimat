@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: libtirpc rpcbind
 
-name=nfs-utils
-version=1.3.3
-release=1
+isim=nfs-utils
+surum=1.3.3
+devir=1
 
-source=(http://downloads.sourceforge.net/nfs/$name-$version.tar.bz2)
+kaynak=(http://downloads.sourceforge.net/nfs/$isim-$surum.tar.bz2)
 run=(rpcbind)
 
 derle() {
@@ -18,7 +18,7 @@ tar xvf $scripts-$scriptsversion.tar.bz2
 	
 # build package
 
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr     \
 --sysconfdir=/etc \
 --disable-nfsv4   \

@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python python-setuptools intltool
 
-name=python-distutils-extra
-version=2.40
-release=1
-source=(https://launchpad.net/ubuntu/+archive/primary/+files/python-distutils-extra_2.40.tar.xz)
+isim=python-distutils-extra
+surum=2.40
+devir=1
+kaynak=(https://launchpad.net/ubuntu/+archive/primary/+files/python-distutils-extra_2.40.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	python setup.py install --root="$PKG/"
 }

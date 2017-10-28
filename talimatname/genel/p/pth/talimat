@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=pth
-version=2.0.7
-release=1
+isim=pth
+surum=2.0.7
+devir=1
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i 's#$(LOBJS): Makefile#$(LOBJS): pth_p.h Makefile#' Makefile.in
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \

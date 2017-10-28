@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
  
-name=libcddb
-version=1.3.2
-release=1
+isim=libcddb
+surum=1.3.2
+devir=1
 
-source=(http://downloads.sourceforge.net/sourceforge/${name}/${name}-${version}.tar.bz2)
+kaynak=(http://downloads.sourceforge.net/sourceforge/${isim}/${isim}-${surum}.tar.bz2)
 derle(){
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr 
 make
 make DESTDIR=$PKG install

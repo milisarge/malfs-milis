@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools 
 
-name=python-simplejson
-version=3.6.3
-release=1
+isim=python-simplejson
+surum=3.6.3
+devir=1
 
-source=(
-https://pypi.python.org/packages/source/s/simplejson/simplejson-$version.tar.gz)
+kaynak=(
+https://pypi.python.org/packages/source/s/simplejson/simplejson-$surum.tar.gz)
 
 derle() {
-    cd simplejson-$version
+    cd simplejson-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

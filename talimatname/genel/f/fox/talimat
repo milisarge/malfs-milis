@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxcursor xorg-libxft xorg-libxrandr xorg-libxxf86vm xorg-mesa cups xorg-glu
 
-name=fox
-version=1.6.50
-release=1
-source=(ftp://ftp.fox-toolkit.org/pub/$name-$version.tar.gz)
+isim=fox
+surum=1.6.50
+devir=1
+kaynak=(ftp://ftp.fox-toolkit.org/pub/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	--mandir=/usr/share/man \
 	--with-xft=yes \

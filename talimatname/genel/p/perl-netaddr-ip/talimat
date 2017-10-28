@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-netaddr-ip
-version=4.075
-release=1
+isim=perl-netaddr-ip
+surum=4.075
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIKER/NetAddr-IP-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/M/MI/MIKER/NetAddr-IP-$surum.tar.gz)
 
 derle() {
-cd NetAddr-IP-$version
+cd NetAddr-IP-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

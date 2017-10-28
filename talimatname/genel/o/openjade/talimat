@@ -4,14 +4,14 @@
 # Gerekler: opensp
 
 
-name=openjade
-version=1.3.3-pre1
-release=2
-source=(http://downloads.sourceforge.net/project/$name/$name/1.3.3/$name-$version.tar.gz
+isim=openjade
+surum=1.3.3-pre1
+devir=2
+kaynak=(http://downloads.sourceforge.net/project/$isim/$isim/1.3.3/$isim-$surum.tar.gz
 	iostream.patch msggen.pl.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	patch -p 1 -i $SRC/iostream.patch
 	patch -p 1 -i $SRC/msggen.pl.patch

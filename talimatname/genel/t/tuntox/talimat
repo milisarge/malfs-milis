@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: cscope toxcore
 
-name=tuntox
-version=git
-release=1
+isim=tuntox
+surum=git
+devir=1
 
-source=(shared-build.patch)
+kaynak=(shared-build.patch)
 derle() {
-if [ ! -d $DERLEME_KAYNAKDIZIN/$name.git ];then
-	git clone https://github.com/gjedeer/$name.git
+if [ ! -d $DERLEME_KAYNAKDIZIN/$isim.git ];then
+	git clone https://github.com/gjedeer/$isim.git
 else
-	cd $DERLEME_KAYNAKDIZIN/$name.git
+	cd $DERLEME_KAYNAKDIZIN/$isim.git
 	git pull
 	cd -
 fi
-cd $name
+cd $isim
 patch -p1 -i ../shared-build.patch
 make
 install -Dm755 tuntox "$PKG/usr/bin/tuntox"

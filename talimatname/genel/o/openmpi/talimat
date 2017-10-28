@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=openmpi
-version=2.1.1
-release=1
-source=(https://www.open-mpi.org/software/ompi/v2.1/downloads/$name-$version.tar.bz2)
+isim=openmpi
+surum=2.1.1
+devir=1
+kaynak=(https://www.open-mpi.org/software/ompi/v2.1/downloads/$isim-$surum.tar.bz2)
 
 derle() {
-  cd "$name-$version"
+  cd "$isim-$surum"
   ./configure --prefix="$PKG/usr"
   make "$MAKEFLAGS"
   make install

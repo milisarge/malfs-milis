@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 
 
-name=rdesktop
-version=1.8.2
-release=1
+isim=rdesktop
+surum=1.8.2
+devir=1
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz
 	rdesktop-send_physical_buttons.diff)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	 patch -i $SRC/rdesktop-send_physical_buttons.diff 
 
         ./configure --prefix=/usr \

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=capstone
-version=4.0-alpha5
-release=1
-source=(https://github.com/aquynh/capstone/archive/${version}.tar.gz)
+isim=capstone
+surum=4.0-alpha5
+devir=1
+kaynak=(https://github.com/aquynh/capstone/archive/${surum}.tar.gz)
 
 derle() {
-  cd ${name}-${version}
+  cd ${isim}-${surum}
   make
   make DESTDIR="${PKG}" install
 }

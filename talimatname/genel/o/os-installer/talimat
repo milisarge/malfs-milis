@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: python-setuptools gsettings-desktop-schemas gnome-desktop libtimezonemap gparted python-cairo python-geoip python-gobject python-parted xorg-app
 
-name=os-installer
-version=12.5
-release=1
-_version=v12.5
+isim=os-installer
+surum=12.5
+devir=1
+_surum=v12.5
 
-source=( https://github.com/solus-project/$name/archive/${_version}.tar.gz
+kaynak=( https://github.com/solus-project/$isim/archive/${_version}.tar.gz
          10-livecd.rules)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 python setup.py build
 python setup.py install --optimize=1 --root=$PKG
 

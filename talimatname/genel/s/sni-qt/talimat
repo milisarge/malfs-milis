@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: cmake libdbusmenu-qt  
 
-name=sni-qt
-version=0.2.6
-release=1
+isim=sni-qt
+surum=0.2.6
+devir=1
 
-source=(http://launchpad.net/sni-qt/trunk/$version/+download/sni-qt-$version.tar.bz2
+kaynak=(http://launchpad.net/sni-qt/trunk/$surum/+download/sni-qt-$surum.tar.bz2
         sni-qt.conf)
 
 derle() {
 mkdir build
 
-sed -i '/tests/ d' sni-qt-$version/CMakeLists.txt
+sed -i '/tests/ d' sni-qt-$surum/CMakeLists.txt
 
 cd build
-cmake ../sni-qt-$version        \
+cmake ../sni-qt-$surum        \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
 make

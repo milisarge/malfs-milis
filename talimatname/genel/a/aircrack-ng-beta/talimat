@@ -3,17 +3,17 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: sqlite iw net-tools wireless-tools
 
-name=aircrack-ng-beta
-version=1.2
-release=1
-source=(http://download.aircrack-ng.org/aircrack-ng-$version-beta3.tar.gz)
+isim=aircrack-ng-beta
+surum=1.2
+devir=1
+kaynak=(http://download.aircrack-ng.org/aircrack-ng-$surum-beta3.tar.gz)
 
 derle() {
-  cd "$SRC/aircrack-ng-$version-beta3"
+  cd "$SRC/aircrack-ng-$surum-beta3"
 
   make SQLITE=true UNSTABLE=true
   
-  cd "$SRC/aircrack-ng-$version-beta3"
+  cd "$SRC/aircrack-ng-$surum-beta3"
 
   make DESTDIR="$PKG" SQLITE=true UNSTABLE=true \
     bindir=/usr/bin sbindir=/usr/bin mandir=/usr/share/man/man1 install

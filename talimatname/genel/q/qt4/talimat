@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: glib atk pango cairo gdk-pixbuf xorg-fontconfig xorg-libsm xorg-libxrandr xorg-libxv xorg-libxi xorg-libxinerama xorg-libxcursor xorg-libxfixes xorg-mesa xorg-glu alsa-lib dbus icu libjpeg-turbo libmng libtiff openssl sqlite cups gtk2 gstreamer-plugins-base postgresql pulseaudio unixodbc
 
-name=qt4
-version=4.8.7
-release=6
+isim=qt4
+surum=4.8.7
+devir=6
 
-_name=qt-everywhere-opensource-src-${version}
+_isim=qt-everywhere-opensource-src-${surum}
 
-source=(http://download.qt-project.org/official_releases/qt/${version%.*}/$version/${_name}.tar.gz)
+kaynak=(http://download.qt-project.org/official_releases/qt/${surum%.*}.tar.gz)
 
 derle() {
 

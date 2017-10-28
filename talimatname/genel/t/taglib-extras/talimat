@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: taglib 
 
-name=taglib-extras
-version=1.0.1
-release=1
+isim=taglib-extras
+surum=1.0.1
+devir=1
 
-source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
+kaynak=(http://downloads.nutyx.org/files/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   cmake -DCMAKE_INSTALL_PREFIX=/usr
   make 
   make DESTDIR=$PKG install

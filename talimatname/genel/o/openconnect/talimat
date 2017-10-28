@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libxml2 openssl pkg-config vpnc zlib
 
-name=openconnect
-version=7.06
-release=1
-source=(ftp://ftp.infradead.org/pub/$name/$name-$version.tar.gz)
+isim=openconnect
+surum=7.06
+devir=1
+kaynak=(ftp://ftp.infradead.org/pub/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr \
 				--bindir=/usr/bin \

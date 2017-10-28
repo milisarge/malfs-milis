@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python python-crypto python-ecdsa 
 
-name=python-paramiko
-version=1.15.1
-release=1
+isim=python-paramiko
+surum=1.15.1
+devir=1
 
-source=(
-http://pypi.python.org/packages/source/p/paramiko/paramiko-$version.tar.gz)
+kaynak=(
+http://pypi.python.org/packages/source/p/paramiko/paramiko-$surum.tar.gz)
 
 derle() {
-    cd paramiko-$version
+    cd paramiko-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

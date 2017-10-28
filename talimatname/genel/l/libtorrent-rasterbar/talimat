@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: boost
 
-name=libtorrent-rasterbar
-version=1.1.4
-_version=1_1_4
-release=1
-source=(https://github.com/arvidn/libtorrent/archive/libtorrent-$_version.tar.gz::$name-$version.tar.gz
+isim=libtorrent-rasterbar
+surum=1.1.4
+_surum=1_1_4
+devir=1
+kaynak=(https://github.com/arvidn/libtorrent/archive/libtorrent-$_version.tar.gz::$isim-$surum.tar.gz
 		libtorrent-boost-1.65.patch)
 
 derle() {
@@ -39,7 +39,7 @@ derle() {
     python2 setup.py install --root="$PKG" --optimize=1
     
     # license
-    install -D -m644 COPYING "${PKG}/usr/share/licenses/${name}/LICENSE"
+    install -D -m644 COPYING "${PKG}/usr/share/licenses/${isim}/LICENSE"
     
     # remove most example binaries
     rm "$PKG"/usr/bin/{*_test,*_tester,simple_client,stats_counters}

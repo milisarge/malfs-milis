@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ninvaders
-version=0.1.1
-release=1
+isim=ninvaders
+surum=0.1.1
+devir=1
 
-source=( http://downloads.sourceforge.net/sourceforge/ninvaders/$name-$version.tar.gz)
+kaynak=( http://downloads.sourceforge.net/sourceforge/ninvaders/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     make CFLAGS="${CFLAGS}" &&
-    install -Dm755 nInvaders $PKG/usr/bin/$name
+    install -Dm755 nInvaders $PKG/usr/bin/$isim
 }

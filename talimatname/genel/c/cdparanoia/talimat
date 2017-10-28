@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=cdparanoia
-version=10.2
-release=1
-source=(http://downloads.xiph.org/releases/cdparanoia/$name-III-$version.src.tgz \
+isim=cdparanoia
+surum=10.2
+devir=1
+kaynak=(http://downloads.xiph.org/releases/cdparanoia/$isim-III-$surum.src.tgz \
 	 http://www.linuxfromscratch.org/patches/blfs/svn/cdparanoia-III-10.2-gcc_fixes-1.patch)
 
 derle() {
-cd $name-III-$version
+cd $isim-III-$surum
 patch -Np1 -i ../cdparanoia-III-10.2-gcc_fixes-1.patch
 ./configure --prefix=/usr
 make || make -j1

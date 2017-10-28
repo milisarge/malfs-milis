@@ -3,16 +3,16 @@
 # Paketçi:    milisarge
 # Gerekler:  xorg
 
-name=blackbox
-version=0.70.1
-release=1
-source=(http://download.sourceforge.net/blackboxwm/$name-$version.tar.bz2
-        $name-$version-include-fix.diff)
+isim=blackbox
+surum=0.70.1
+devir=1
+kaynak=(http://download.sourceforge.net/blackboxwm/$isim-$surum.tar.bz2
+        $isim-$surum-include-fix.diff)
 
 derle() {
 
-    cd $name-$version
-    patch -p1 -i $SRC/$name-$version-include-fix.diff
+    cd $isim-$surum
+    patch -p1 -i $SRC/$isim-$surum-include-fix.diff
     ./configure --prefix=/usr
 
     make

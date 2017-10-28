@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libxslt python3-beautifulsoup4 python3-cssselect
 
-name=python3-lxml
-version=3.8.0
-release=1
+isim=python3-lxml
+surum=3.8.0
+devir=1
 
-source=(https://pypi.io/packages/source/l/lxml/lxml-$version.tar.gz)
+kaynak=(https://pypi.io/packages/source/l/lxml/lxml-$surum.tar.gz)
 
 derle() {
-    cd lxml-$version
+    cd lxml-$surum
     python3 setup.py install --prefix=/usr --root=$PKG
 }

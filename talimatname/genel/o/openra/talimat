@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: mono dejavu-ttf openal freetype sdl2 lua51 hicolor-icon-theme gtk-update-icon-cache desktop-file-utils xdg-utils zenity unzip
 
-name=openra
+isim=openra
 isim=OpenRA
-version=20170421
-release=1
+surum=20170421
+devir=1
 
-source=(https://github.com/$isim/$isim/archive/release-$version.tar.gz)
+kaynak=(https://github.com/$isim/$isim/archive/release-$surum.tar.gz)
 
 derle() {
-	cd $isim-release-$version
+	cd $isim-release-$surum
 	make dependencies
 	make core
 	make tools

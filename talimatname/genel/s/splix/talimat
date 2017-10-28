@@ -3,23 +3,23 @@
 # Paketçi: milisarge
 # Gerekler: cups jbigkit krb5 subversion ghostscript 
 
-name=splix
-version=2.0.0
-release=1
-source=(splix-deviceID.patch)
+isim=splix
+surum=2.0.0
+devir=1
+kaynak=(splix-deviceID.patch)
 
 derle() {
   
 	cd $DERLEME_KAYNAKDIZIN
-	if [ ! -d $DERLEME_KAYNAKDIZIN/$name ];then
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim ];then
 		 svn co http://svn.code.sf.net/p/splix/code/splix/
 	else
-		cd $DERLEME_KAYNAKDIZIN/$name
+		cd $DERLEME_KAYNAKDIZIN/$isim
 		svn up
 		cd -
 	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$name ${SRC}/$name
-	cd "${SRC}/${name}"
+	cp -r $DERLEME_KAYNAKDIZIN/$isim ${SRC}/$isim
+	cd "${SRC}/${isim}"
 	patch -Np1 -i ../splix-deviceID.patch
 	CXXFLAGS+=" -fno-strict-aliasing"
 	make drv

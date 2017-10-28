@@ -3,35 +3,35 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=sqlmap
-version=git
-release=1
-source=()
+isim=sqlmap
+surum=git
+devir=1
+kaynak=()
 
 derle() {
   git clone https://github.com/sqlmapproject/sqlmap.git
-  cd $name
+  cd $isim
   python2 -m compileall .
   python2 -O -m compileall .
 
   install -d "$PKG/etc"
   install -d "$PKG/usr/bin"
-  install -d "$PKG/opt/$name"
+  install -d "$PKG/opt/$isim"
   install -d "$PKG/usr/share/doc"
 
-  mv doc "$PKG/usr/share/doc/$name"
+  mv doc "$PKG/usr/share/doc/$isim"
   mv sqlmap.conf "$PKG/etc/sqlmap.conf"
-  ln -sf /etc/sqlmap.conf "$PKG/opt/$name/sqlmap.conf"
-  cp -R --no-preserve=ownership * "$PKG/opt/$name"
+  ln -sf /etc/sqlmap.conf "$PKG/opt/$isim/sqlmap.conf"
+  cp -R --no-preserve=ownership * "$PKG/opt/$isim"
 
   cat > "$PKG/usr/bin/sqlmap" << EOF
 #!/bin/sh
-cd /opt/$name
+cd /opt/$isim
 python2 sqlmap.py "\$@"
 EOF
   cat > "$PKG/usr/bin/sqlmapapi" << EOF
 #!/bin/sh
-cd /opt/$name
+cd /opt/$isim
 python2 sqlmapapi.py "\$@"
 EOF
 

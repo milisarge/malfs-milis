@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk-doc intltool gobject-introspection 
 
-name=libgtop
-version=2.32.0
-release=1
+isim=libgtop
+surum=2.32.0
+devir=1
 
-source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static
 make

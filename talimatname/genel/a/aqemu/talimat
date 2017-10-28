@@ -3,18 +3,18 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: cmake qt5 qemu-all libvncserver 
 
-name=aqemu
-version=0.9.2
-release=3
-source=(https://github.com/tobimensch/$name/archive/v$version.tar.gz::$name-$version.tar.gz
-	https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/translations/Turkish.ts::$name-Turkish.ts
-	https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/menu_data/aqemu.desktop::$name-aqemu.desktop)
+isim=aqemu
+surum=0.9.2
+devir=3
+kaynak=(https://github.com/tobimensch/$isim/archive/v$surum.tar.gz::$isim-$surum.tar.gz
+	https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/translations/Turkish.ts::$isim-Turkish.ts
+	https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/menu_data/aqemu.desktop::$isim-aqemu.desktop)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   cp /usr/bin/rcc-qt5 /usr/bin/rcc
-  cp $SRC/$name-Turkish.ts $SRC/$name-$version/resources/translations/Turkish.ts
-  cp $SRC/$name-aqemu.desktop $SRC/$name-$version/menu_data/aqemu.desktop
+  cp $SRC/$isim-Turkish.ts $SRC/$isim-$surum/resources/translations/Turkish.ts
+  cp $SRC/$isim-aqemu.desktop $SRC/$isim-$surum/menu_data/aqemu.desktop
   mkdir build
   cd build
   cmake \
@@ -25,8 +25,8 @@ derle() {
   make 
   make translations_target
   make DESTDIR="$PKG" install
-  for dil in $(ls $SRC/$name-$version/resources/translations/*.ts  | sed 's/\.ts$//' );do
-	lrelease-qt5 -compress -silent -nounfinished ${dil}.ts -qm $PKG/usr/share/$name/$(basename $dil).qm
+  for dil in $(ls $SRC/$isim-$surum/resources/translations/*.ts  | sed 's/\.ts$//' );do
+	lrelease-qt5 -compress -silent -nounfinished ${dil}.ts -qm $PKG/usr/share/$isim/$(basename $dil).qm
   done
   rm /usr/bin/rcc
 }

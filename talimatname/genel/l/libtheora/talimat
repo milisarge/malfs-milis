@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libogg libvorbis
 
-name=libtheora
-version=1.1.1
-release=1
+isim=libtheora
+surum=1.1.1
+devir=1
 
-source=(http://downloads.xiph.org/releases/theora/$name-$version.tar.xz)
+kaynak=(http://downloads.xiph.org/releases/theora/$isim-$surum.tar.xz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i 's/png_\(sizeof\)/\1/g' examples/png2theora.c
 ./configure --prefix=/usr --disable-static
 make

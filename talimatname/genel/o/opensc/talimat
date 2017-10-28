@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: pcsc-lite libxslt docbook-xsl
 
-name=opensc
-version=0.16.0
-release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+isim=opensc
+surum=0.16.0
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   export LIBS=-lltdl
    _sheetdir=(/usr/share/xml/docbook/xsl-stylesheets-*)
   ./bootstrap

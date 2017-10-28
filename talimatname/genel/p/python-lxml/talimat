@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: libxslt python-beautifulsoup3 python-cssselect
 
-name=python-lxml
-version=3.7.3
-release=1
+isim=python-lxml
+surum=3.7.3
+devir=1
 
-source=(https://pypi.io/packages/source/l/lxml/lxml-$version.tar.gz)
+kaynak=(https://pypi.io/packages/source/l/lxml/lxml-$surum.tar.gz)
 
 derle() {
-    cd lxml-$version
+    cd lxml-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
     # Belgeleme
-    install -d $PKG/usr/share/doc/$name-$version
-    cp -r doc/html $PKG/usr/share/doc/$name-$version
+    install -d $PKG/usr/share/doc/$isim-$surum
+    cp -r doc/html $PKG/usr/share/doc/$isim-$surum
 }

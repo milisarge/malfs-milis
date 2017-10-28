@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-net-dns 
 
-name=perl-net-dns-resolver-programmable
-version=0.003
-release=1
+isim=perl-net-dns-resolver-programmable
+surum=0.003
+devir=1
 
-source=(http://www.cpan.org/authors/id/J/JM/JMEHNLE/net-dns-resolver-programmable/Net-DNS-Resolver-Programmable-v$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/J/JM/JMEHNLE/net-dns-resolver-programmable/Net-DNS-Resolver-Programmable-v$surum.tar.gz)
 
 derle() {
-cd Net-DNS-Resolver-Programmable-v$version
+cd Net-DNS-Resolver-Programmable-v$surum
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

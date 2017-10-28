@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=speexdsp
-version=1.2rc3
-release=1
-source=(http://downloads.us.xiph.org/releases/speex/$name-$version.tar.gz)
+isim=speexdsp
+surum=1.2rc3
+devir=1
+kaynak=(http://downloads.us.xiph.org/releases/speex/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
 	make
 	make DESTDIR="$PKG" install

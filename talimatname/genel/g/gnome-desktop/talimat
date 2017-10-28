@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: iso-codes itstool xorg-app gtk3 docbook-xml gnome-doc-utils gsettings-desktop-schemas gobject-introspection startup-notification xorg-xkeyboard-config
 
-name=gnome-desktop
-version=3.24.2
-release=1
-source=( http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=gnome-desktop
+surum=3.24.2
+devir=1
+kaynak=( http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --localstatedir=/var \
 --sysconfdir=/etc \
---libexecdir=/usr/lib/$name \
+--libexecdir=/usr/lib/$isim \
 --with-gnome-distributor="Milis"
 make
 make DESTDIR=$PKG install

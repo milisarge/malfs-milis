@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxrender freetype xorg-fontconfig 
 
-name=xorg-libxft
-version=2.3.2
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXft-$version.tar.bz2)
+isim=xorg-libxft
+surum=2.3.2
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXft-$surum.tar.bz2)
 
 derle() {
-cd libXft-$version
+cd libXft-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

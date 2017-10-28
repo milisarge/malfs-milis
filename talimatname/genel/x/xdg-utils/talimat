@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: links xmlto xorg-app
 
-name=xdg-utils
-version=1.1.0.rc3
-release=2
-_version=1.1.0-rc3
-source=(http://people.freedesktop.org/~rdieter/$name/$name-${_version}.tar.gz)
+isim=xdg-utils
+surum=1.1.0.rc3
+devir=2
+_surum=1.1.0-rc3
+kaynak=(http://people.freedesktop.org/~rdieter/$isim/$isim-${_version}.tar.gz)
 
 derle() {
-cd $name-${_version}
+cd $isim-${_version}
 ./configure --prefix=/usr \
 --mandir=/usr/share/man
 make

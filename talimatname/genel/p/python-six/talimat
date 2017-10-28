@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: python 
 
-name=python-six
-version=1.7.3
-release=1
+isim=python-six
+surum=1.7.3
+devir=1
 
-source=(
-http://pypi.python.org/packages/source/s/six/six-$version.tar.gz)
+kaynak=(
+http://pypi.python.org/packages/source/s/six/six-$surum.tar.gz)
 
 derle() {
-    cd six-$version
+    cd six-$surum
     python2 setup.py check
     python2 setup.py install --prefix=/usr --root=$PKG
 }

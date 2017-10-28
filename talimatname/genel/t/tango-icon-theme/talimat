@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: icon-naming-utils imagemagick 
 
-name=tango-icon-theme
-version=0.8.90
-release=1
+isim=tango-icon-theme
+surum=0.8.90
+devir=1
 
-source=(http://tango.freedesktop.org/releases/$name-$version.tar.gz)
+kaynak=(http://tango.freedesktop.org/releases/$isim-$surum.tar.gz)
 
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

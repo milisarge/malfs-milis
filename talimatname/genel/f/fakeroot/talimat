@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=fakeroot
-version=1.20.2
-release=1
-source=(http://ftp.debian.org/debian/pool/main/f/$name/${name}_${version}.orig.tar.bz2)
+isim=fakeroot
+surum=1.20.2
+devir=1
+kaynak=(http://ftp.debian.org/debian/pool/main/f/$isim/${isim}_${surum}.orig.tar.bz2)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --libdir=/usr/lib/libfakeroot \
                 --disable-static \

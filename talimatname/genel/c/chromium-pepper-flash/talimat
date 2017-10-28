@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=chromium-pepper-flash
-version=20.0.0.228
-release=2
+isim=chromium-pepper-flash
+surum=20.0.0.228
+devir=2
 
 [ "`uname -m`" == "i686"   ] && _ARCH=i386
 [ "`uname -m`" == "x86_64"   ] && _ARCH=x86_64
 
-source=(http://docs.volcanis.me/.pepper-flash/`uname -m`/libpepflashplayer.so \
+kaynak=(http://docs.volcanis.me/.pepper-flash/`uname -m`/libpepflashplayer.so \
 	http://docs.volcanis.me/.pepper-flash/`uname -m`/manifest.json)
 
 derle() {

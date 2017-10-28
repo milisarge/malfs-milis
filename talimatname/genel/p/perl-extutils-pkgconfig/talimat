@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-extutils-depends 
 
-name=perl-extutils-pkgconfig
-version=1.15
-release=1
+isim=perl-extutils-pkgconfig
+surum=1.15
+devir=1
 
-source=(http://www.cpan.org/modules/by-module/ExtUtils/ExtUtils-PkgConfig-$version.tar.gz)
+kaynak=(http://www.cpan.org/modules/by-module/ExtUtils/ExtUtils-PkgConfig-$surum.tar.gz)
 
 derle() {
-	cd ExtUtils-PkgConfig-$version
+	cd ExtUtils-PkgConfig-$surum
 	perl Makefile.PL
 	make
 	make DESTDIR=$PKG install

@@ -3,53 +3,53 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 gl-select kernel
 
-name=nvidia
-version=381.22
-release=1
-source=(http://us.download.nvidia.com/XFree86/Linux-x86_64/$version/NVIDIA-Linux-x86_64-$version-no-compat32.run \
+isim=nvidia
+surum=381.22
+devir=1
+kaynak=(http://us.download.nvidia.com/XFree86/Linux-x86_64/$surum/NVIDIA-Linux-x86_64-$surum-no-compat32.run \
     90-nvidia-uvm.rules)
 
 derle() {
-    sh NVIDIA-Linux-x86_64-$version-no-compat32.run --extract-only
-    cd NVIDIA-Linux-x86_64-$version-no-compat32
+    sh NVIDIA-Linux-x86_64-$surum-no-compat32.run --extract-only
+    cd NVIDIA-Linux-x86_64-$surum-no-compat32
 
     # libraries
     install -d $PKG/usr/lib/{tls,vdpau}
-    install -m 0755 libGL.so.$version              $PKG/usr/lib
+    install -m 0755 libGL.so.$surum              $PKG/usr/lib
     install -m 0755 libOpenCL.so.1.0.0             $PKG/usr/lib
-    install -m 0755 libcuda.so.$version            $PKG/usr/lib
-    install -m 0755 libnvidia-cfg.so.$version      $PKG/usr/lib
-    install -m 0755 libnvidia-compiler.so.$version $PKG/usr/lib
-    install -m 0755 libnvidia-encode.so.$version   $PKG/usr/lib
-    install -m 0755 libnvidia-fbc.so.$version      $PKG/usr/lib
-    install -m 0755 libnvidia-glcore.so.$version   $PKG/usr/lib
-    install -m 0755 libnvidia-gtk2.so.$version     $PKG/usr/lib
-    install -m 0755 libnvidia-gtk3.so.$version     $PKG/usr/lib
-    install -m 0755 libnvidia-ifr.so.$version      $PKG/usr/lib
-    install -m 0755 libnvidia-ml.so.$version       $PKG/usr/lib
-    install -m 0755 libnvidia-opencl.so.$version   $PKG/usr/lib
-    install -m 0755 libnvidia-tls.so.$version      $PKG/usr/lib
-    install -m 0755 libnvcuvid.so.$version         $PKG/usr/lib
-    install -m 0755 tls/libnvidia-tls.so.$version  $PKG/usr/lib/tls
-    install -m 0755 libvdpau_nvidia.so.$version    $PKG/usr/lib/vdpau
-    install -m 0755 libnvidia-fatbinaryloader.so.$version $PKG/usr/lib
+    install -m 0755 libcuda.so.$surum            $PKG/usr/lib
+    install -m 0755 libnvidia-cfg.so.$surum      $PKG/usr/lib
+    install -m 0755 libnvidia-compiler.so.$surum $PKG/usr/lib
+    install -m 0755 libnvidia-encode.so.$surum   $PKG/usr/lib
+    install -m 0755 libnvidia-fbc.so.$surum      $PKG/usr/lib
+    install -m 0755 libnvidia-glcore.so.$surum   $PKG/usr/lib
+    install -m 0755 libnvidia-gtk2.so.$surum     $PKG/usr/lib
+    install -m 0755 libnvidia-gtk3.so.$surum     $PKG/usr/lib
+    install -m 0755 libnvidia-ifr.so.$surum      $PKG/usr/lib
+    install -m 0755 libnvidia-ml.so.$surum       $PKG/usr/lib
+    install -m 0755 libnvidia-opencl.so.$surum   $PKG/usr/lib
+    install -m 0755 libnvidia-tls.so.$surum      $PKG/usr/lib
+    install -m 0755 libnvcuvid.so.$surum         $PKG/usr/lib
+    install -m 0755 tls/libnvidia-tls.so.$surum  $PKG/usr/lib/tls
+    install -m 0755 libvdpau_nvidia.so.$surum    $PKG/usr/lib/vdpau
+    install -m 0755 libnvidia-fatbinaryloader.so.$surum $PKG/usr/lib
 
-    ln -s libvdpau_nvidia.so.$version $PKG/usr/lib/vdpau/libvdpau_nvidia.so.1
-    ln -s libvdpau_nvidia.so.$version $PKG/usr/lib/vdpau/libvdpau_nvidia.so
+    ln -s libvdpau_nvidia.so.$surum $PKG/usr/lib/vdpau/libvdpau_nvidia.so.1
+    ln -s libvdpau_nvidia.so.$surum $PKG/usr/lib/vdpau/libvdpau_nvidia.so
 
-    ln -s libnvcuvid.so.$version $PKG/usr/lib/libnvcuvid.so.1
-    ln -s libnvcuvid.so.$version $PKG/usr/lib/libnvcuvid.so
+    ln -s libnvcuvid.so.$surum $PKG/usr/lib/libnvcuvid.so.1
+    ln -s libnvcuvid.so.$surum $PKG/usr/lib/libnvcuvid.so
 
-    ln -s libnvidia-ml.so.$version $PKG/usr/lib/libnvidia-ml.so.1
-    ln -s libnvidia-ml.so.$version $PKG/usr/lib/libnvidia-ml.so
+    ln -s libnvidia-ml.so.$surum $PKG/usr/lib/libnvidia-ml.so.1
+    ln -s libnvidia-ml.so.$surum $PKG/usr/lib/libnvidia-ml.so
 
     ln -s libOpenCL.so.1.0.0 $PKG/usr/lib/libOpenCL.so
 
     # xorg driver/extensions
     install -d $PKG/usr/lib/xorg/modules/{drivers,extensions}
     install -m 0755 nvidia_drv.so                  $PKG/usr/lib/xorg/modules/drivers
-    install -m 0755 libglx.so.$version             $PKG/usr/lib/xorg/modules/extensions
-    install -m 0755 libnvidia-wfb.so.$version      $PKG/usr/lib/xorg/modules
+    install -m 0755 libglx.so.$surum             $PKG/usr/lib/xorg/modules/extensions
+    install -m 0755 libnvidia-wfb.so.$surum      $PKG/usr/lib/xorg/modules
 
     # nvidia programs amd man-pages
     install -d $PKG/usr/{bin,share/man/man1}
@@ -65,8 +65,8 @@ derle() {
     install -m 0644 nvidia-settings.png $PKG/usr/share/pixmaps
 
     # additional symlinks required by gl-select
-    ln -s libGL.so.$version $PKG/usr/lib/libGL_so_1_2_nvidia
-    ln -s libglx.so.$version $PKG/usr/lib/xorg/modules/extensions/libglx_so_nvidia
+    ln -s libGL.so.$surum $PKG/usr/lib/libGL_so_1_2_nvidia
+    ln -s libglx.so.$surum $PKG/usr/lib/xorg/modules/extensions/libglx_so_nvidia
 
     # opencl icd file
     install -m 0644 -D nvidia.icd $PKG/etc/OpenCL/vendors/nvidia.icd
@@ -76,8 +76,8 @@ derle() {
     install -m 0644 $SRC/90-nvidia-uvm.rules $PKG/lib/udev/rules.d/90-nvidia-uvm.rules
 
     # nvidia-settings registry key file
-    install -D -m 0644 nvidia-application-profiles-$version-key-documentation \
-        $PKG/usr/share/nvidia/nvidia-application-profiles-$version-key-documentation
+    install -D -m 0644 nvidia-application-profiles-$surum-key-documentation \
+        $PKG/usr/share/nvidia/nvidia-application-profiles-$surum-key-documentation
 
     # kernel modules
     #cd /lib/modules/`uname -r`/build

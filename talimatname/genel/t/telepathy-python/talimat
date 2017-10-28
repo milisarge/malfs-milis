@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: dbus-python libxslt
 
-name=telepathy-python
-version=0.15.19
-release=1
+isim=telepathy-python
+surum=0.15.19
+devir=1
 
-source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
+kaynak=(http://telepathy.freedesktop.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr
   make
   make DESTDIR=$PKG install

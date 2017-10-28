@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake boost scons
 
-name=websocketpp
-version=0.7.0
-release=1
-source=(https://github.com/zaphoyd/${name}/archive/${version}.tar.gz)
+isim=websocketpp
+surum=0.7.0
+devir=1
+kaynak=(https://github.com/zaphoyd/${isim}/archive/${surum}.tar.gz)
 
 derle() {
-	cd ${name}-${version}
+	cd ${isim}-${surum}
 	WSPP_ENABLE_CPP11=1 \
 	BOOST_LIBS=/usr/lib \
 	BOOST_INCLUDES=/usr/include/boost \

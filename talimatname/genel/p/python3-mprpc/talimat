@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python3 python3-setuptools
 
-name=python3-mprpc
-_name=mprpc
-version=0.1.14
-release=1
+isim=python3-mprpc
+_isim=mprpc
+surum=0.1.14
+devir=1
 
-source=(https://github.com/studio-ousia/mprpc/archive/v0.1.14.tar.gz::$name-$version.tar.gz)
+kaynak=(https://github.com/studio-ousia/mprpc/archive/v0.1.14.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-    cd $_name-$version
+    cd $_name-$surum
     python3 setup.py install --prefix=/usr --root=$PKG
 }

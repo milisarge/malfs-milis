@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: openjdk akiskart jre opensc
 
-name=uyap
-version=1.0
-release=1
-source=(https://kaynaklar.milislinux.org/$name-$version.tar.gz)
+isim=uyap
+surum=1.0
+devir=1
+kaynak=(https://kaynaklar.milislinux.org/$isim-$surum.tar.gz)
 
 derle() {
 	cp -r $SRC/usr $PKG/ 

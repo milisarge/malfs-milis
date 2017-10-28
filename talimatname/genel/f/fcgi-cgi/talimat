@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: glib libev
 
-name=fcgi-cgi
-version=0.2.2
-release=1
-source=(http://git.lighttpd.net/fcgi-cgi.git/snapshot/$name-$version.tar.gz)
+isim=fcgi-cgi
+surum=0.2.2
+devir=1
+kaynak=(http://git.lighttpd.net/fcgi-cgi.git/snapshot/$isim-$surum.tar.gz)
 
 derle(){
-	cd $name-$version
+	cd $isim-$surum
 	./autogen.sh
 	./configure --prefix=/usr
 	make

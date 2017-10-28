@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: python
 
-name=python-geoip
-version=0.2.7
-release=1
-_name=pygeoip
+isim=python-geoip
+surum=0.2.7
+devir=1
+_isim=pygeoip
 
-source=( https://pypi.python.org/packages/source/p/${_name}/${_name}-$version.tar.gz)
+kaynak=( https://pypi.python.org/packages/source/p/${_name}/${_name}-$surum.tar.gz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 python setup.py build
 python setup.py install --optimize=1 --root=$PKG
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libnotify gtk3 gstreamer1 curl hicolor-icon-theme xdg-utils 
 
-name=uget
-version=2.0.9
-release=1
+isim=uget
+surum=2.0.9
+devir=1
 
-source=(http://downloads.sourceforge.net/urlget/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/urlget/$isim-$surum.tar.gz)
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 	make DESTDIR=$PKG install

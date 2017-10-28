@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=opus
-version=1.1.2
-release=1
+isim=opus
+surum=1.1.2
+devir=1
 
-source=(http://downloads.xiph.org/releases/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.xiph.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --enable-custom-modes --disable-static \
---docdir=/usr/share/doc/$name-$version
+--docdir=/usr/share/doc/$isim-$surum
 make
 make DESTDIR=$PKG install
 }

@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler: intltool gtk3 python3-distutils-extra python3-pexpect dbus-python python3-cairo python3-gobject accountsservice 
 
-name=mugshot
-version=0.3.2
-release=1
-source=(https://launchpad.net/mugshot/${version%.*}/0.3.2/+download/$name-$version.tar.gz::$name-$version.tar.gz
+isim=mugshot
+surum=0.3.2
+devir=1
+kaynak=(https://launchpad.net/mugshot/${surum%.*}/0.3.2/+download/$isim-$surum.tar.gz::$isim-$surum.tar.gz
 		office-phone.patch
 		missing_default_face.patch)
 
 derle() {
-	cd "${SRC}/${name}-${version}"
+	cd "${SRC}/${isim}-${surum}"
 	patch -p1 -i "${SRC}"/office-phone.patch
 	cd "${SRC}"
 	patch -Np1 -i "${SRC}"/missing_default_face.patch
-	cd "${SRC}/${name}-${version}"
+	cd "${SRC}/${isim}-${surum}"
 	python3 setup.py build
 	python3 setup.py install --root=$PKG --optimize=1
 	if [ -d $PKG/usr/share/doc ]; then

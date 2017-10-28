@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cups perl libxml2
 
-name=foomatic-db-nonfree
-version=20150819
-release=1
-_version=20150819
-source=(http://www.openprinting.org/download/foomatic/$name-${_version}.tar.gz)
+isim=foomatic-db-nonfree
+surum=20150819
+devir=1
+_surum=20150819
+kaynak=(http://www.openprinting.org/download/foomatic/$isim-${_version}.tar.gz)
 
 derle() {
-	cd $name-*
+	cd $isim-*
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

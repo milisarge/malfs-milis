@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: doxygen
 
-name=alsa-lib
-version=1.1.0
-release=1
-source=(ftp://ftp.alsa-project.org/pub/lib/$name-$version.tar.bz2)
+isim=alsa-lib
+surum=1.1.0
+devir=1
+kaynak=(ftp://ftp.alsa-project.org/pub/lib/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure
 make
 make DESTDIR=$PKG install
 make doc
-install -v -d -m755 $PKG/usr/share/doc/$name-$version/html
-cp -a doc/doxygen/html/* $PKG/usr/share/doc/$name-$version/html
-chmod 644 $PKG/usr/share/doc/$name-$version/html/*
+install -v -d -m755 $PKG/usr/share/doc/$isim-$surum/html
+cp -a doc/doxygen/html/* $PKG/usr/share/doc/$isim-$surum/html
+chmod 644 $PKG/usr/share/doc/$isim-$surum/html/*
 }

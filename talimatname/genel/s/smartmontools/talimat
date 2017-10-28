@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=smartmontools
-version=6.5
-release=1
+isim=smartmontools
+surum=6.5
+devir=1
 
-source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz )
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz )
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Depend on: gdk-pixbuf gtk2 xorg-libx11
 
-name=ssh-askpass
-version=7.1p2
-release=2
-source=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p2.tar.gz)
+isim=ssh-askpass
+surum=7.1p2
+devir=2
+kaynak=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p2.tar.gz)
 
 derle() {
 
-cd openssh-$version/contrib
+cd openssh-$surum/contrib
 make gnome-ssh-askpass2
 install -v -d -m755 $PKG/usr/libexec/openssh/contrib
 install -v -m755    gnome-ssh-askpass2 \

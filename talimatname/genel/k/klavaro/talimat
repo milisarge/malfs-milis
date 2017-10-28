@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: curl intltool gtk3
 
-name=klavaro
-version=3.03
-release=1
-source=(https://sourceforge.net/projects/klavaro/files/klavaro-3.03.tar.bz2
+isim=klavaro
+surum=3.03
+devir=1
+kaynak=(https://sourceforge.net/projects/klavaro/files/klavaro-3.03.tar.bz2
 klavaro.mo)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr
   make
 make DESTDIR=$PKG install

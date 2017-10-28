@@ -3,21 +3,21 @@
 # Paketçi: milisarge
 # Gerekler: python tk sqlite mercurial pycparser libffi 
 
-name=pypy
-version=5.8.0
-release=1
-source=(https://bitbucket.org/pypy/pypy/downloads/pypy2-v$version-src.tar.bz2)
+isim=pypy
+surum=5.8.0
+devir=1
+kaynak=(https://bitbucket.org/pypy/pypy/downloads/pypy2-v$surum-src.tar.bz2)
 
 derle() {
 
-	cd pypy2-v${version}-src/pypy/goal
+	cd pypy2-v${surum}-src/pypy/goal
 
 	python2 ../../rpython/bin/rpython -Ojit --shared targetpypystandalone
 
 	# Compile binary modules
 	PYTHONPATH=../.. ./pypy-c ../tool/build_cffi_imports.py
 
-	cd $SRC/pypy2-v${version}-src
+	cd $SRC/pypy2-v${surum}-src
 
 	# Prepare installation
 	python2 pypy/tool/release/package.py --archive-name pypy --targetdir .

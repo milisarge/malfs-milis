@@ -3,32 +3,32 @@
 # Paketçi: milisarge
 # Gerekler: cmake llvm clang lld
 
-name=zig
+isim=zig
 hesap=zig-lang
-version=0.1
-release=2
-source=()
+surum=0.1
+devir=2
+kaynak=()
 
 derle() {
     
-    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/$hesap/$isim $DERLEME_KAYNAKDIZIN/$isim 
 	else
-		cd $DERLEME_KAYNAKDIZIN/$name 
+		cd $DERLEME_KAYNAKDIZIN/$isim 
 		git pull
 		cd -
 	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
-	cd $SRC/$name
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
 	
     mkdir -p build
     cd build
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o)) \
+        -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-isim=crt1.o)) \
         -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2- | sed "s/ .*//") \
-        -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $(cc -print-file-name=crtbegin.o))
+        -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $(cc -print-file-isim=crtbegin.o))
 
     make
     make DESTDIR="$PKG" install

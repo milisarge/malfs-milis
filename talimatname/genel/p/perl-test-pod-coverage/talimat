@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-pod-coverage 
 
-name=perl-test-pod-coverage
-version=1.08
-release=1
+isim=perl-test-pod-coverage
+surum=1.08
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-Pod-Coverage-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-Pod-Coverage-$surum.tar.gz)
 
 derle() {
-    cd Test-Pod-Coverage-$version
+    cd Test-Pod-Coverage-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1

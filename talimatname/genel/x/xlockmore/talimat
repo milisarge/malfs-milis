@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 fortune
 
-name=xlockmore
-version=5.49
-release=1
-source=(http://sillycycle.com/xlock/recent-releases/xlockmore-$version.tar.xz)
+isim=xlockmore
+surum=5.49
+devir=1
+kaynak=(http://sillycycle.com/xlock/recent-releases/xlockmore-$surum.tar.xz)
 
 derle(){
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr --enable-vtlock --enable-syslog \
         --enable-multiple-user --enable-multiple-root \
         --without-motif --with-opengl --without-esound

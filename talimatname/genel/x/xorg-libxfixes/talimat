@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 xorg-proto 
 
-name=xorg-libxfixes
-version=5.0.1
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfixes-$version.tar.bz2)
+isim=xorg-libxfixes
+surum=5.0.1
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfixes-$surum.tar.bz2)
 
 derle() {
-cd libXfixes-$version
+cd libXfixes-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

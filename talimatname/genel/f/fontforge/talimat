@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxi libxml2 pango giflib libtiff
 
-name=fontforge
-version=2.0.20150612
-release=2
-source=(https://github.com/$name/$name/releases/download/20150612/fontforge-20150612.tar.gz)
+isim=fontforge
+surum=2.0.20150612
+devir=2
+kaynak=(https://github.com/$isim/$isim/releases/download/20150612/fontforge-20150612.tar.gz)
 
 derle() {
-        cd $name*
+        cd $isim*
 	rm -rf libltdl
 	rm m4/argz.m4
 	./bootstrap
         ./configure --prefix=/usr    \
             --disable-static \
             --enable-gtk2-use \
-            --docdir=/usr/share/doc/fontforge-$version
+            --docdir=/usr/share/doc/fontforge-$surum
         make
         make DESTDIR=$PKG install
 }

@@ -3,17 +3,17 @@
 # Paketçi:    milisarge
 # Gerekler:  ncurses
 
-name=bmon
-version=2.1.0
-release=1
-source=(http://crux.ster.zone/downloads/$name/$name-$version.tar.gz
-	$name-$version-gcc4.diff)
+isim=bmon
+surum=2.1.0
+devir=1
+kaynak=(http://crux.ster.zone/downloads/$isim/$isim-$surum.tar.gz
+	$isim-$surum-gcc4.diff)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
-	patch -p1 -i $SRC/$name-$version-gcc4.diff
+	patch -p1 -i $SRC/$isim-$surum-gcc4.diff
 	./configure --prefix=/usr
 
 	make

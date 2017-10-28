@@ -3,10 +3,10 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool gtk-doc gconf gtk2 libgnome-keyring libgtop startup-notification libglade
 
-name=libgksu
-version=2.0.12
-release=1
-source=(http://people.debian.org/~kov/gksu/$name-$version.tar.gz
+isim=libgksu
+surum=2.0.12
+devir=1
+kaynak=(http://people.debian.org/~kov/gksu/$isim-$surum.tar.gz
         libgksu-2.0.0-fbsd.patch
         libgksu-2.0.12-automake-1.11.2.patch
         libgksu-2.0.12-fix-make-3.82.patch
@@ -16,7 +16,7 @@ source=(http://people.debian.org/~kov/gksu/$name-$version.tar.gz
         libgksu-2.0.7-polinguas.patch)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   patch -Np1 -i "${SRC}/libgksu-2.0.0-fbsd.patch"
   patch -Np1 -i "${SRC}/libgksu-2.0.7-libs.patch"
   patch -Np1 -i "${SRC}/libgksu-2.0.7-polinguas.patch"
@@ -41,7 +41,7 @@ derle() {
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${PKG}" install
   rm -f ${PKG}/usr/lib/*.a
   install -m755 -d "${PKG}/usr/share/gconf/schemas"
-  gconf-merge-schema "${PKG}/usr/share/gconf/schemas/$name.schemas" --domain libgksu ${PKG}/etc/gconf/schemas/*.schemas
+  gconf-merge-schema "${PKG}/usr/share/gconf/schemas/$isim.schemas" --domain libgksu ${PKG}/etc/gconf/schemas/*.schemas
   rm -rf ${PKG}/etc/gconf
   rm -rf ${PKG}/usr/share/gtk-doc
 }

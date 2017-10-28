@@ -3,27 +3,27 @@
 # Paketçi: milisarge
 # Gerekler: node python
 
-name=cjdns
+isim=cjdns
 hesap=cjdelisle
-version=19.1
-release=1
-source=(https://github.com/$hesap/$name/archive/$name-v$version.tar.gz
+surum=19.1
+devir=1
+kaynak=(https://github.com/$hesap/$isim/archive/$isim-v$surum.tar.gz
 		cjdns.servis cjdns.rc.d cjdns.sh)
  
 derle() {
 	
-	#if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-	#	git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+	#if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+	#	git clone https://github.com/$hesap/$isim $DERLEME_KAYNAKDIZIN/$isim 
 	#else
-	#	cd $DERLEME_KAYNAKDIZIN/$name 
+	#	cd $DERLEME_KAYNAKDIZIN/$isim 
 	#	git pull
 	#	cd -
 	#fi
 	
-	#cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
-	#cd $SRC/$name
+	#cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	#cd $SRC/$isim
 	
-	cd $name-$name-v$version
+	cd $isim-$isim-v$surum
 	
 	bash 'do'
 	install -Dm755 cjdroute "$PKG/usr/bin/cjdroute"

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=tex-gyre-fonts
-version=2.005
-release=1
-source=(http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg-${version}otf.zip
+isim=tex-gyre-fonts
+surum=2.005
+devir=1
+kaynak=(http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg-${surum}otf.zip
 		http://www.gust.org.pl/projects/e-foundry/tex-gyre/../licenses/GUST-FONT-LICENSE.txt)
 
 derle() {
 	install -d "$PKG/usr/share/fonts/${name%-fonts}"
 	install -t "$PKG/usr/share/fonts/${name%-fonts}" -m644 *.otf
-	install -Dm644 GUST-FONT-LICENSE.txt "$PKG/usr/share/licenses/$name/LICENSE"
+	install -Dm644 GUST-FONT-LICENSE.txt "$PKG/usr/share/licenses/$isim/LICENSE"
 }

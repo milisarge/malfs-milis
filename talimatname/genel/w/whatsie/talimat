@@ -3,16 +3,16 @@
 # Paketçi: kadanur
 # Gerekler: desktop-file-utils gconf gtk2 gvfs hicolor-icon-theme libgcrypt libgudev libnotify xorg-libxtst nss python xdg-utils 
 
-name=whatsie
-version=2.1.0
-release=1
-source=(https://github.com/gsantner/whatsie/releases/download/v2.1.0/$name-$version-linux-amd64.deb)
+isim=whatsie
+surum=2.1.0
+devir=1
+kaynak=(https://github.com/gsantner/whatsie/releases/download/v2.1.0/$isim-$surum-linux-amd64.deb)
 
 derle() {
-  ar x $name-$version-linux-amd64.deb
+  ar x $isim-$surum-linux-amd64.deb
   bsdtar -xf data.tar.gz -C "$PKG/"
   mkdir -p "$PKG/usr/bin/"
-  ln -s /opt/$name/$name "$PKG/usr/bin/$name"
+  ln -s /opt/$isim/$isim "$PKG/usr/bin/$isim"
   cd $PKG
   for d in $(find . -type d); do
     chmod 755 $d

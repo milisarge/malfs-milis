@@ -3,14 +3,14 @@
 # Paketçi: berlius at nutyx dot com
 # Gerekler: db openssl pcre cyrus-sasl libidn pam mariadb openldap openssl gnutls postgresql sqlite xorg
 
-name=exim
-version=4.86
-release=1
-source=(ftp://ftp.exim.org/pub/exim/exim4/$name-$version.tar.bz2)
+isim=exim
+surum=4.86
+devir=1
+kaynak=(ftp://ftp.exim.org/pub/exim/exim4/$isim-$surum.tar.bz2)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
 
     source  /etc/blfs-bootscripts
 	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

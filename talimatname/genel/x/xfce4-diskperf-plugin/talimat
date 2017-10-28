@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xfce4-panel
 
-name=xfce4-diskperf-plugin
-version=2.5.5
-release=2
+isim=xfce4-diskperf-plugin
+surum=2.5.5
+devir=2
 
-source=(http://archive.xfce.org/src/panel-plugins/$name/2.5/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/2.5/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

@@ -105,7 +105,7 @@ Known values for OPTION are:
   --prefix=DIR        change the output directory for catalog files
                       [default $DIR]
   --show              display the output filenames and paths
-  --version=x.y.z     change the DocBook version [default $VERSION]
+  --surum=x.y.z     change the DocBook version [default $VERSION]
   --debug             display script action information
   --help              display this help and exit
 EOF
@@ -201,7 +201,7 @@ newdir=0
 verbose=0
 #
 # Isolate the script name for messages
-pname=`basename $0`
+pisim=`basename $0`
 VERSION=4.1.2
 
 if test "$XML_CATALOG_FILES" != ""
@@ -229,7 +229,7 @@ while test $# -gt 0; do
         show=1
         ;;
 
-    -v=* | --version=*)
+    -v=* | --surum=*)
         VERSION=$optarg
 	;;
 
@@ -492,10 +492,10 @@ for version in current 1.39 1.40 1.41 1.42 1.43 1.44 1.45 1.46 1.47 \
                1.48 1.49 1.50
 do
     xmlcatalog --noout --add "rewriteSystem" \
-	"http://docbook.sourceforge.net/release/xsl/$version" \
+	"http://docbook.sourceforge.net/release/xsl/$surum" \
 	"file://$xsldir" $CATALOG
     xmlcatalog --noout --add "rewriteURI" \
-	"http://docbook.sourceforge.net/release/xsl/$version" \
+	"http://docbook.sourceforge.net/release/xsl/$surum" \
 	"file://$xsldir" $CATALOG
 done
 

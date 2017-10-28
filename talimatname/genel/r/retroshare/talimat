@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libupnp sqlcipher qt5 libgnome-keyring libxslt ffmpeg opencv libmicrohttpd speexdsp
 
-name=retroshare
-version=0.6.2
-release=1
-source=(https://github.com/RetroShare/RetroShare/archive/v$version.tar.gz)
+isim=retroshare
+surum=0.6.2
+devir=1
+kaynak=(https://github.com/RetroShare/RetroShare/archive/v$surum.tar.gz)
 
 derle() {
-	cd RetroShare-$version
+	cd RetroShare-$surum
 	cd libretroshare/src
 	LANG=C ./version_detail.sh
 	cd ../..

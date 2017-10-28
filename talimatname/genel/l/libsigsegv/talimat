@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:  	
 
-name=libsigsegv
-version=2.11
-release=1
+isim=libsigsegv
+surum=2.11
+devir=1
 
-source=(http://ftp.gnu.org/gnu/libsigsegv/$name-$version.tar.gz)
+kaynak=(http://ftp.gnu.org/gnu/libsigsegv/$isim-$surum.tar.gz)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
     
  	./configure --prefix=/usr  \
  	        --enable-shared \

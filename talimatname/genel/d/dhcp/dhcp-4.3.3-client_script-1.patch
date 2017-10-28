@@ -61,7 +61,7 @@ Tanım:             This patch replaces original linux script for dhcp client wi
 -      echo search $new_domain_name >> /etc/resolv.conf.dhclient
 -    fi
 -    for nameserver in $new_domain_name_servers; do
--      echo nameserver $nameserver >>/etc/resolv.conf.dhclient
+-      echo nameserver $isimserver >>/etc/resolv.conf.dhclient
 -    done
 -
 -    mv /etc/resolv.conf.dhclient /etc/resolv.conf
@@ -102,7 +102,7 @@ Tanım:             This patch replaces original linux script for dhcp client wi
 +
 +        if [ -n "$new_domain_name_servers" ]; then
 +            for nameserver in $new_domain_name_servers; do
-+                echo nameserver $nameserver >>$new_resolv_conf
++                echo nameserver $isimserver >>$new_resolv_conf
 +            done
 +        else # keep 'old' nameservers
 +            sed -n /^\w*[Nn][Aa][Mm][Ee][Ss][Ee][Rr][Vv][Ee][Rr]/p /etc/resolv.conf >>$new_resolv_conf
@@ -123,11 +123,11 @@ Tanım:             This patch replaces original linux script for dhcp client wi
 +        if [ -n "$new_dhcp6_name_servers" ]; then
 +            for nameserver in $new_dhcp6_name_servers; do
 +                # append %interface to link-local-address nameservers
-+                if [ "${nameserver##fe80::}" != "$nameserver" ] ||
-+                   [ "${nameserver##FE80::}" != "$nameserver" ]; then
++                if [ "${nameserver##fe80::}" != "$isimserver" ] ||
++                   [ "${nameserver##FE80::}" != "$isimserver" ]; then
 +                    nameserver="${nameserver}%${interface}"
 +                fi
-+                echo nameserver $nameserver >>$new_resolv_conf
++                echo nameserver $isimserver >>$new_resolv_conf
 +            done
 +        else # keep 'old' nameservers
 +            sed -n /^\w*[Nn][Aa][Mm][Ee][Ss][Ee][Rr][Vv][Ee][Rr]/p /etc/resolv.conf >>$new_resolv_conf
@@ -141,7 +141,7 @@ Tanım:             This patch replaces original linux script for dhcp client wi
 -    for nameserver in ${new_dhcp6_name_servers} ; do
 -      # If the nameserver has a link-local address
 -      # add a <zone_id> (interface name) to it.
--      if  [[ "$nameserver" =~ ^fe80:: ]]
+-      if  [[ "$isimserver" =~ ^fe80:: ]]
 -      then
 -	zone_id="%$interface"
 -      else
@@ -159,7 +159,7 @@ Tanım:             This patch replaces original linux script for dhcp client wi
 +    local current_hostname
 +
 +    if [ -n "$new_host_name" ]; then
-+        current_hostname=$(hostname)
++        current_hostisim=$(hostname)
 +
 +        # current host name is empty, '(none)' or 'localhost' or differs from new one from DHCP
 +        if [ -z "$current_hostname" ] ||
@@ -260,7 +260,7 @@ Tanım:             This patch replaces original linux script for dhcp client wi
 -  
 -if [ x$reason = xBOUND ] || [ x$reason = xRENEW ] || \
 -   [ x$reason = xREBIND ] || [ x$reason = xREBOOT ]; then
--  current_hostname=`hostname`
+-  current_hostisim=`hostname`
 -  if [ x$current_hostname = x ] || \
 -     [ x$current_hostname = "x(none)" ] || \
 -     [ x$current_hostname = xlocalhost ] || \

@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools
 
-name=feedparser
-version=5.1.3
-release=1
-source=(http://feedparser.googlecode.com/files/$name-$version.tar.bz2)
+isim=feedparser
+surum=5.1.3
+devir=1
+kaynak=(http://feedparser.googlecode.com/files/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   python setup.py install --root=$PKG
 }

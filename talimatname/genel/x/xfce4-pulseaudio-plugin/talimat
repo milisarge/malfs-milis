@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: xfce4-panel pulseaudio gtk-update-icon-cache libnotify intltool dbus-glib pavucontrol xfce4-dev-tools
 
-name=xfce4-pulseaudio-plugin
-version=0.3.0
-release=1
-source=(https://git.xfce.org/panel-plugins/$name/snapshot/$name-$version.tar.bz2)
+isim=xfce4-pulseaudio-plugin
+surum=0.3.0
+devir=1
+kaynak=(https://git.xfce.org/panel-plugins/$isim/snapshot/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
   NOCONFIGURE=1 ./autogen.sh
 ./configure \
     --prefix=/usr \

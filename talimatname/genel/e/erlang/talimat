@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=erlang
-version=20.0
-release=1
-source=(http://erlang.org/download/otp_src_$version.tar.gz)
+isim=erlang
+surum=20.0
+devir=1
+kaynak=(http://erlang.org/download/otp_src_$surum.tar.gz)
 
 derle(){
-	cd otp_src_$version
+	cd otp_src_$surum
 	./configure --prefix=/usr \
 			--enable-threads \
 			--enable-smp-support \

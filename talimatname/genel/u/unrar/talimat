@@ -3,21 +3,21 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=unrar
-version=5.3.9
-release=1
+isim=unrar
+surum=5.3.9
+devir=1
 
-source=(
-http://www.rarlab.com/rar/unrarsrc-$version.tar.gz
+kaynak=(
+http://www.rarlab.com/rar/unrarsrc-$surum.tar.gz
 )
 
 derle() {
-cd $name
+cd $isim
 make -f makefile
 install -Dm755 unrar $PKG/usr/bin/unrar
 
 # doc & license
-mkdir -p $PKG/usr/share/doc/$name-$version
+mkdir -p $PKG/usr/share/doc/$isim-$surum
 install -m644 {license.txt,readme.txt} \
-$PKG/usr/share/doc/$name-$version
+$PKG/usr/share/doc/$isim-$surum
 }

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-net-ssleay perl-uri 
 
-name=perl-io-socket-ssl
-version=1.988
-release=1
+isim=perl-io-socket-ssl
+surum=1.988
+devir=1
 
-source=(http://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-$surum.tar.gz)
 
 derle() {
-cd IO-Socket-SSL-$version
+cd IO-Socket-SSL-$surum
 yes | perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

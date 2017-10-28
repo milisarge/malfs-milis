@@ -3,26 +3,26 @@
 # Paketçi: yasarciv milisarge
 # Gerekler: python python-gtk
 
-name=fslint 
-version=2.44   
-release=1
-source=("http://www.pixelbeat.org/$name/$name-$version.tar.gz")
+isim=fslint 
+surum=2.44   
+devir=1
+kaynak=("http://www.pixelbeat.org/$isim/$isim-$surum.tar.gz")
       
 derle() {
-  cd "${name}-${version}"
+  cd "${isim}-${surum}"
   sed -i -e s_^liblocation=.*_liblocation=\'/usr/share/fslint\'_ fslint-gui
-  install -d "${PKG}"/usr/share/$name/fslint/{fstool,supprt/rmlint}
+  install -d "${PKG}"/usr/share/$isim/fslint/{fstool,supprt/rmlint}
 
-  install -D -m755 -t "${PKG}"/usr/share/$name/$name $name/find* $name/zipdir $name/fslint
-  install -D -m755 -t "${PKG}"/usr/share/$name/$name/fstool $name/fstool/*
-  install -D -m755 -t "${PKG}"/usr/share/$name/$name/supprt $name/supprt/get* $name/supprt/fslver $name/supprt/md5sum_approx
-  install -D -m755 -t "${PKG}"/usr/share/$name/$name/supprt/rmlint fslint/supprt/rmlint/*
-  install -D -m755 $name-gui "${PKG}"/usr/bin/$name-gui
-  install -D -m644 $name.glade "${PKG}"/usr/share/$name/$name.glade
-  install -D -m644 $name.desktop "${PKG}"/usr/share/applications/$name.desktop
-  install -D -m644 fslint_icon.png "${PKG}"/usr/share/$name/fslint_icon.png
+  install -D -m755 -t "${PKG}"/usr/share/$isim/$isim $isim/find* $isim/zipdir $isim/fslint
+  install -D -m755 -t "${PKG}"/usr/share/$isim/$isim/fstool $isim/fstool/*
+  install -D -m755 -t "${PKG}"/usr/share/$isim/$isim/supprt $isim/supprt/get* $isim/supprt/fslver $isim/supprt/md5sum_approx
+  install -D -m755 -t "${PKG}"/usr/share/$isim/$isim/supprt/rmlint fslint/supprt/rmlint/*
+  install -D -m755 $isim-gui "${PKG}"/usr/bin/$isim-gui
+  install -D -m644 $isim.glade "${PKG}"/usr/share/$isim/$isim.glade
+  install -D -m644 $isim.desktop "${PKG}"/usr/share/applications/$isim.desktop
+  install -D -m644 fslint_icon.png "${PKG}"/usr/share/$isim/fslint_icon.png
   mkdir -p "${PKG}"/usr/share/pixmaps
-  ln -s /usr/share/$name/fslint_icon.png "${PKG}"/usr/share/pixmaps/fslint_icon.png
+  ln -s /usr/share/$isim/fslint_icon.png "${PKG}"/usr/share/pixmaps/fslint_icon.png
   make -C po DESTDIR="${PKG}" install
   mkdir -p "${PKG}"/usr/share/fslint/po
   cp -r po/locale "${PKG}"/usr/share/fslint/po/

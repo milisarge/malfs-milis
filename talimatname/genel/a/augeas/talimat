@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libxml2
 
-name=augeas
-version=1.4.0
-release=1
-source=(http://download.augeas.net/$name-$version.tar.gz)
+isim=augeas
+surum=1.4.0
+devir=1
+kaynak=(http://download.augeas.net/$isim-$surum.tar.gz)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
 
     ./configure --prefix=/usr
 

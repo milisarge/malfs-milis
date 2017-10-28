@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: 
 
-name=lmdb
-version=0.9.18
-release=1
+isim=lmdb
+surum=0.9.18
+devir=1
 
-source=( https://github.com/LMDB/lmdb/archive/LMDB_$version.tar.gz)
+kaynak=( https://github.com/LMDB/lmdb/archive/LMDB_$surum.tar.gz)
 
 derle() {
-	cd $name-LMDB_$version
+	cd $isim-LMDB_$surum
 	cd libraries/liblmdb
 	make
 	sed -i 's| liblmdb.a||' Makefile

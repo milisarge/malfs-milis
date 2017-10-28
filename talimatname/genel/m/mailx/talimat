@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: openssl kerberos sendmail
 
-name=mailx
-version=12.5	
-release=1
-source=(http://ftp.debian.org/debian/pool/main/h/heirloom-$name/heirloom-mailx_12.5.orig.tar.gz
-		http://www.linuxfromscratch.org/patches/blfs/svn/heirloom-$name-12.5-fixes-1.patch )
+isim=mailx
+surum=12.5	
+devir=1
+kaynak=(http://ftp.debian.org/debian/pool/main/h/heirloom-$isim/heirloom-mailx_12.5.orig.tar.gz
+		http://www.linuxfromscratch.org/patches/blfs/svn/heirloom-$isim-12.5-fixes-1.patch )
  
 derle() {
 
-cd heirloom-$name-$version
+cd heirloom-$isim-$surum
 
 patch -Np1 -i $SRC/heirloom-mailx-12.5-fixes-1.patch 
 	

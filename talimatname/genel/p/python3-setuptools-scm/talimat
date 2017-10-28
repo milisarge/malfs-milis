@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: python3 sqlite python3-setuptools
 
-name=python3-setuptools-scm
-version=1.15.6
-release=1
+isim=python3-setuptools-scm
+surum=1.15.6
+devir=1
 
-source=(https://github.com/pypa/setuptools_scm/archive/v$version.tar.gz)
+kaynak=(https://github.com/pypa/setuptools_scm/archive/v$surum.tar.gz)
 
 derle() {
-	export SETUPTOOLS_SCM_PRETEND_VERSION=$version
-	cd "$SRC"/setuptools_scm-$version
+	export SETUPTOOLS_SCM_PRETEND_VERSION=$surum
+	cd "$SRC"/setuptools_scm-$surum
 	python3 setup.py build
 	python3 setup.py egg_info
 	python3 setup.py install --root "$PKG"

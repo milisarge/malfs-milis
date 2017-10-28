@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-kdoctools telepathy-kde-common-internals 
 
-name=telepathy-kde-contact-list
-version=16.08.2
-release=1
-_name=ktp-contact-list
+isim=telepathy-kde-contact-list
+surum=16.08.2
+devir=1
+_isim=ktp-contact-list
 
-source=(http://download.kde.org/stable/applications/$version/src/${_name}-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/applications/$surum/src/${_name}-$surum.tar.xz)
 
 derle() {
-  cd ktp-contact-list-$version
+  cd ktp-contact-list-$surum
   cmake -DCMAKE_INSTALL_PREFIX=/usr  \
         -DCMAKE_BUILD_TYPE=Release   \
         -DBUILD_TESTING=OFF

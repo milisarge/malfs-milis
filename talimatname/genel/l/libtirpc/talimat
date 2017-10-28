@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libtirpc
-version=0.3.2
-release=1
+isim=libtirpc
+surum=0.3.2
+devir=1
 
-source=(http://downloads.sourceforge.net/project/libtirpc/libtirpc/$version/libtirpc-$version.tar.bz2
-	 http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-api_fixes-1.patch)
+kaynak=(http://downloads.sourceforge.net/project/libtirpc/libtirpc/$surum/libtirpc-$surum.tar.bz2
+	 http://www.linuxfromscratch.org/patches/downloads/$isim/$isim-$surum-api_fixes-1.patch)
 
 derle()
 {
-cd libtirpc-$version
+cd libtirpc-$surum
 
-patch -Np1 -i ../libtirpc-$version-api_fixes-1.patch
+patch -Np1 -i ../libtirpc-$surum-api_fixes-1.patch
 
 ./configure --prefix=/usr     \
             --sysconfdir=/etc \

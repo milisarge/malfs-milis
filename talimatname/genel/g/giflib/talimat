@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: xmlto
 
-name=giflib
-version=5.1.2
-release=1
-source=(http://downloads.sourceforge.net/giflib/giflib-$version.tar.bz2 )
+isim=giflib
+surum=5.1.2
+devir=1
+kaynak=(http://downloads.sourceforge.net/giflib/giflib-$surum.tar.bz2 )
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install
-install -v -dm755 $PKG/usr/share/doc/giflib-$version/html
+install -v -dm755 $PKG/usr/share/doc/giflib-$surum/html
 install -v -m644 doc/*.html \
-$PKG/usr/share/doc/giflib-$version/html
+$PKG/usr/share/doc/giflib-$surum/html
 }

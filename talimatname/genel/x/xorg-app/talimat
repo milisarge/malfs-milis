@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: harfbuzz libpng xorg-mesa xorg-glu xcb-util xorg-libx11 xorg-libxinerama xorg-libxt xorg-libxfont xorg-libxkbfile xorg-libxmu xorg-libxrender xorg-libxrandr xorg-libxcursor xorg-libxtst xorg-libxxf86vm xorg-libxaw xorg-xbitmaps xorg-libxv xorg-libdmx xorg-libxt 
 
-name=xorg-app
-version=7.8
-release=1
+isim=xorg-app
+surum=7.8
+devir=1
 section=app
-source=()
+kaynak=()
 
 derle() {
 unset MAKEFLAGS

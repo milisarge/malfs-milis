@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: openssl aspell tcl pam 
 
-name=re-alpine
-version=2.03	
-release=1
-source=(http://sourceforge.net/projects/re-alpine/files/$name-$version.tar.bz2)
+isim=re-alpine
+surum=2.03	
+devir=1
+kaynak=(http://sourceforge.net/projects/re-alpine/files/$isim-$surum.tar.bz2)
  
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 	
 ./configure --prefix=/usr       \
             --sysconfdir=/etc   \

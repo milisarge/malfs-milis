@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=dstat
-version=0.7.3
-release=1
-source=(https://github.com/dagwieers/dstat/archive/${version}.tar.gz)
+isim=dstat
+surum=0.7.3
+devir=1
+kaynak=(https://github.com/dagwieers/dstat/archive/${surum}.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make DESTDIR=$PKG install
 	make DESTDIR=$PKG docs
 }

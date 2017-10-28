@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules boost kf5-kcodecs akonadi kf5-kdelibs4support kf5-kio kf5-kcompletion kf5-kcodecs phonon-qt5 kcontacts kcalcore kmime kf5-ki18n kf5-kitemviews kf5-kconfig kf5-solid qt5 kldap kmbox grantlee-qt5
 
-name=akonadi-notes
-version=16.08.2
-release=1
-source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+isim=akonadi-notes
+surum=16.08.2
+devir=1
+kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
   mkdir -p build
   cd build
-  cmake ../$name-$version \
+  cmake ../$isim-$surum \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \

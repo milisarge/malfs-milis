@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 desktop-file-utils libjpeg-turbo giflib
 
-name=emacs
-version=24.5
-release=1
+isim=emacs
+surum=24.5
+devir=1
 
-source=(https://ftp.gnu.org/pub/gnu/emacs/$name-$version.tar.xz
+kaynak=(https://ftp.gnu.org/pub/gnu/emacs/$isim-$surum.tar.xz
 		site-start.el)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
     
 	./configure --prefix=/usr        \
             --without-gnutls     \

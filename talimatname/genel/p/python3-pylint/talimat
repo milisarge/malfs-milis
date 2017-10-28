@@ -3,12 +3,12 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: python3-astroid python3-setuptools python3-six
 
-name=python3-pylint
-version=1.6.4
-release=1
+isim=python3-pylint
+surum=1.6.4
+devir=1
 
-#source=(http://pypi.python.org/packages/source/p/pylint/pylint-${version}.tar.gz)
-source=()
+#kaynak=(http://pypi.python.org/packages/source/p/pylint/pylint-${surum}.tar.gz)
+kaynak=()
 
 derle() {
     git clone https://github.com/PyCQA/pylint.git

@@ -3,20 +3,20 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool vala ido libdbusmenu-gtk3 libgee06 libindicator libindicator-gtk2 pulseaudio libnotify 
 
-name=indicator-sound
-version=12.10.1
-release=1
-source=(https://launchpad.net/indicator-sound/12.10/$version/+download/$name-$version.tar.gz
+isim=indicator-sound
+surum=12.10.1
+devir=1
+kaynak=(https://launchpad.net/indicator-sound/12.10/$surum/+download/$isim-$surum.tar.gz
 		http://pkgbuild.com/~bgyorgy/sources/indicator-sound-translations-20130310.tar.gz)
 
 derle() {
-  cd ${name}-${version}
+  cd ${isim}-${surum}
 # Install updated language files
-  rename ${name}- '' ../po/${name}-*.po
+  rename ${isim}- '' ../po/${isim}-*.po
   mv -f -t po ../po/*
   printf "%s\n" po/*.po | sed -e 's/po\///g' -e 's/\.po//g' >po/LINGUAS  
   export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
-  ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --libexecdir="/usr/lib/${name}" --disable-{schemas-compile,static}
+  ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --libexecdir="/usr/lib/${isim}" --disable-{schemas-compile,static}
   make
   make DESTDIR="${PKG}" install
 # Fix icon names to provide the playlist icon

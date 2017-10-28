@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: desktop-file-utils gtk3 gegl babl lcms2 json-c python-cairo python-gobject python-gtk python-numpy python-protobuf scons swig libmypaint
 
-name=mypaint
-version=1.3.0
-release=1
-source=()
+isim=mypaint
+surum=1.3.0
+devir=1
+kaynak=()
 
 derle()
 { 
-	if [ -d $DERLEME_KAYNAKDIZIN/$name ];then
-		cd $DERLEME_KAYNAKDIZIN/$name
+	if [ -d $DERLEME_KAYNAKDIZIN/$isim ];then
+		cd $DERLEME_KAYNAKDIZIN/$isim
 		git pull
 	else	
-		git clone https://github.com/mypaint/mypaint.git $DERLEME_KAYNAKDIZIN/$name
+		git clone https://github.com/mypaint/mypaint.git $DERLEME_KAYNAKDIZIN/$isim
 	fi
-	cd $DERLEME_KAYNAKDIZIN/$name
+	cd $DERLEME_KAYNAKDIZIN/$isim
 	scons prefix="/usr" enable_gegl=true use_sharedlib=yes
 	scons prefix="/usr" enable_gegl=true use_sharedlib=yes --install-sandbox="$PKG" "$PKG"
 }

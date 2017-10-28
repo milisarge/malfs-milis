@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: zlib
 
-name=fastjar
-version=0.98
-release=1
-source=(http://download.savannah.nongnu.org/releases/fastjar/$name-$version.tar.gz
+isim=fastjar
+surum=0.98
+devir=1
+kaynak=(http://download.savannah.nongnu.org/releases/fastjar/$isim-$surum.tar.gz
 	    fastjar-jartool.c_rev1.62.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -i $SRC/fastjar-jartool.c_rev1.62.patch
 
 	./configure --prefix=/usr

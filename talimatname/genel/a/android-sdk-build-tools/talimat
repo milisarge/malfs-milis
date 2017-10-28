@@ -3,16 +3,16 @@
 # Paketçi: Cihan Alkan
 # Gerekler:  
 
-name=android-sdk-build-tools
-version=r26
-release=1
+isim=android-sdk-build-tools
+surum=r26
+devir=1
 _android=android-8.0.0
 _sdk=android-sdk
-source=(https://dl-ssl.google.com/android/repository/build-tools_$version-linux.zip)
+kaynak=(https://dl-ssl.google.com/android/repository/build-tools_$surum-linux.zip)
 
 derle() {
   cd $PKG
-  install -Dm644 $SRC/$_android/NOTICE.txt usr/share/licenses/$name/NOTICE.txt
+  install -Dm644 $SRC/$_android/NOTICE.txt usr/share/licenses/$isim/NOTICE.txt
   ver=$(cat "$SRC/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
   mkdir -p opt/$_sdk/build-tools/$ver
   cp -r $SRC/$_android/* $PKG/opt/$_sdk/build-tools/$ver

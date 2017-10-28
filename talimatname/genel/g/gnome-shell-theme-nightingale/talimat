@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gnome-shell
 
-name=gnome-shell-theme-nightingale
-_name=Nightingale
-version=1
-release=1
-source=(https://dl.opendesktop.org/api/files/download/id/1460760205/166760-Nightingale.tar.gz)
+isim=gnome-shell-theme-nightingale
+_isim=Nightingale
+surum=1
+devir=1
+kaynak=(https://dl.opendesktop.org/api/files/download/id/1460760205/166760-Nightingale.tar.gz)
 
 derle() {
   cd Nightingale

@@ -3,10 +3,10 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: fuse libgcrypt
 
-name=afpfs-ng
-version=0.8.1
-release=1
-source=( http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2
+isim=afpfs-ng
+surum=0.8.1
+devir=1
+kaynak=( http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.bz2
 		 fix_afpfs-ng_includes.patch
 		 01-gcrypt.patch
 		 02-pointer.patch
@@ -17,7 +17,7 @@ source=( http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.b
 )
 
 derle() {
-	cd "$SRC/$name-$version"
+	cd "$SRC/$isim-$surum"
 
 	# apply patches
 	patch -Np1 -i "$SRC/fix_afpfs-ng_includes.patch"

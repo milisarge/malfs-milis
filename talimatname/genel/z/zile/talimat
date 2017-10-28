@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gc help2man
 
-name=zile
-version=2.4.13
-release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+isim=zile
+surum=2.4.13
+devir=1
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle()
 {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     find -name Makefile | xargs -n1 sed -i 's|makeinfo|true|g'
     make

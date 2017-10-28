@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: farstream telepathy-glib 
 
-name=telepathy-farstream
-version=0.6.0
-release=1
+isim=telepathy-farstream
+surum=0.6.0
+devir=1
 
-source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
+kaynak=(http://telepathy.freedesktop.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static
 make

@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=toybox
-version=0.7.4
-release=1.0
-source=(http://landley.net/toybox/downloads/toybox-$version.tar.gz)
+isim=toybox
+surum=0.7.4
+devir=1.0
+kaynak=(http://landley.net/toybox/downloads/toybox-$surum.tar.gz)
 
 derle() {
-	cd "${SRC}/${name}-${version}"
+	cd "${SRC}/${isim}-${surum}"
 	make menuconfig
 	bash scripts/make.sh
-	mkdir -p "${PKG}/usr/share/licenses/${name}"
+	mkdir -p "${PKG}/usr/share/licenses/${isim}"
 	mkdir -p "${PKG}/usr/bin"
 	PREFIX=${PKG}/usr/toybox/ make install
-	install -m755 "${SRC}/${name}-${version}/${name}" "${PKG}/usr/bin/"
-	cp "${SRC}/${name}-${version}/LICENSE" "${PKG}/usr/share/licenses/toybox/"
+	install -m755 "${SRC}/${isim}-${surum}/${isim}" "${PKG}/usr/bin/"
+	cp "${SRC}/${isim}-${surum}/LICENSE" "${PKG}/usr/share/licenses/toybox/"
 }

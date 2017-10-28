@@ -3,14 +3,14 @@
 # Paketçi:    yasarciv
 # Gerekler:  cmake gtkmm3 hicolor-icon-theme grub 
 
-name=grub-customizer
-version=5.0.6
-release=1
-source=(https://launchpad.net/grub-customizer/5.0/${version}/+download/grub-customizer_${version}.tar.gz
+isim=grub-customizer
+surum=5.0.6
+devir=1
+kaynak=(https://launchpad.net/grub-customizer/5.0/${surum}/+download/grub-customizer_${surum}.tar.gz
 		grub.cfg)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   cmake -DCMAKE_INSTALL_PREFIX=/usr .&& make
   make install DESTDIR=${PKG} || return 1
   install -d ${PKG}/etc/grub-customizer

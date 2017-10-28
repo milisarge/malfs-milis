@@ -3,17 +3,17 @@
 # Paketçi: Cihan Alkan
 # Gerekler:
 
-name=neofetch
-version=3.2.0
-release=1
+isim=neofetch
+surum=3.2.0
+devir=1
 
-source=(https://github.com/dylanaraps/neofetch/archive/$version.tar.gz
+kaynak=(https://github.com/dylanaraps/neofetch/archive/$surum.tar.gz
 		linux)
 
 
 derle() {
-	cd $name-$version
-	cp -f $SRC/linux $SRC/$name-$version/ascii/distro/
+	cd $isim-$surum
+	cp -f $SRC/linux $SRC/$isim-$surum/ascii/distro/
 	make DESTDIR=$PKG install
 }
 

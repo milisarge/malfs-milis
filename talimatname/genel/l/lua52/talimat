@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler: readline
 
-name=lua52
-version=5.2.4
-release=1
-source=(http://www.lua.org/ftp/lua-$version.tar.gz
+isim=lua52
+surum=5.2.4
+devir=1
+kaynak=(http://www.lua.org/ftp/lua-$surum.tar.gz
 	lua.diff lua-5.2-cflags.diff lua.pc)
 
 derle() {
-	cd lua-$version
+	cd lua-$surum
 
 	patch -p1 -i $SRC/lua.diff
 	patch -p1 -i $SRC/lua-5.2-cflags.diff
 
-	sed -e "s/%VER%/${version%.*}/g;s/%REL%/$version/g" $SRC/lua.pc > lua.pc
+	sed -e "s/%VER%/${surum%.*}/g;s/%REL%/$surum/g" $SRC/lua.pc > lua.pc
 	sed -e 's:llua:llua5.2:' -e 's:/include:/include/lua5.2:' -i lua.pc
 
 	sed -r \
@@ -29,7 +29,7 @@ derle() {
 
 	make \
 		TO_BIN="lua5.2 luac5.2" \
-		TO_LIB="liblua5.2.a liblua5.2.so liblua5.2.so.5.2 liblua5.2.so.$version" \
+		TO_LIB="liblua5.2.a liblua5.2.so liblua5.2.so.5.2 liblua5.2.so.$surum" \
 		INSTALL_DATA='cp -d' \
 		INSTALL_TOP="$PKG/usr" \
 		INSTALL_INC="$PKG/usr/include/lua5.2" \
@@ -40,7 +40,7 @@ derle() {
 
 	# fixups
 	ln -s liblua5.2.so $PKG/usr/lib/liblua.so.5.2
-	ln -s liblua5.2.so $PKG/usr/lib/liblua.so.$version
+	ln -s liblua5.2.so $PKG/usr/lib/liblua.so.$surum
 	cd $PKG/usr/share/man/man1
 	mv lua.1 lua5.2.1
 	mv luac.1 luac5.2.1

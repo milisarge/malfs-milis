@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-html-tagset
-version=3.20
-release=1
+isim=perl-html-tagset
+surum=3.20
+devir=1
 
-source=(http://www.cpan.org/authors/id/P/PE/PETDANCE/HTML-Tagset-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/P/PE/PETDANCE/HTML-Tagset-$surum.tar.gz)
 
 derle() {
-cd HTML-Tagset-$version
+cd HTML-Tagset-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

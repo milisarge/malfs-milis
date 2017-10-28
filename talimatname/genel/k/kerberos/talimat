@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=kerberos
-version=1.14
-release=1
+isim=kerberos
+surum=1.14
+devir=1
 
-source=(http://web.mit.edu/$name/dist/krb5/1.14/krb5-$version.tar.gz)
+kaynak=(http://web.mit.edu/$isim/dist/krb5/1.14/krb5-$surum.tar.gz)
 
 derle()  {
-        cd krb5-$version
+        cd krb5-$surum
         cd src
         sed -e "s@python2.5/Python.h@& python2.7/Python.h@g" \
     	-e "s@-lpython2.5]@&,\n  AC_CHECK_LIB(python2.7,main,[PYTHON_LIB=-lpython2.7])@g" \
@@ -49,7 +49,7 @@ ln -v -sf ../../lib/libkrb5support.so.0.1 $PKG/usr/lib/libkrb5support.so
 mv -v $PKG/usr/bin/ksu $PKG/bin
 chmod -v 755 $PKG/bin/ksu 
 
-install -v -dm755 $PKG/usr/share/doc/krb5-$version
-cp -vfr ../doc/*  $PKG/usr/share/doc/krb5-$version
+install -v -dm755 $PKG/usr/share/doc/krb5-$surum
+cp -vfr ../doc/*  $PKG/usr/share/doc/krb5-$surum
 
 }

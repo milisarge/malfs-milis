@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=iptables
-version=1.6.0
-release=1
-source=(ftp://ftp.netfilter.org/pub/iptables/$name-$version.tar.bz2)
+isim=iptables
+surum=1.6.0
+devir=1
+kaynak=(ftp://ftp.netfilter.org/pub/iptables/$isim-$surum.tar.bz2)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
                 --enable-libipq \

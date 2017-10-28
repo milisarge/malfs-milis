@@ -3,15 +3,15 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: python-pip python-gtksourceview2 python-yaml python-gtk gtk2 sqlite libxml2 libxslt yaml
 
-name=w3af
-version=1.6.54
-release=1
-source=(https://github.com/andresriancho/w3af/archive/${version}.tar.gz 
+isim=w3af
+surum=1.6.54
+devir=1
+kaynak=(https://github.com/andresriancho/w3af/archive/${surum}.tar.gz 
 		w3af.desktop)
 
 
 derle() {
-  cd "$SRC/w3af-$version"
+  cd "$SRC/w3af-$surum"
 
   # Enforce python2
   sed -i -e 's|#!\s*/usr/bin/python[^\d.]*$|#!/usr/bin/python2|' \

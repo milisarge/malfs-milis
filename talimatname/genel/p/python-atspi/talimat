@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-gobject at-spi2-core 
 
-name=python-atspi
-version=2.16.0
-release=1
+isim=python-atspi
+surum=2.16.0
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/pyatspi/${version%.*}/pyatspi-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/pyatspi/${surum%.*}/pyatspi-$surum.tar.xz)
 
 derle() {
-cd pyatspi-$version
+cd pyatspi-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

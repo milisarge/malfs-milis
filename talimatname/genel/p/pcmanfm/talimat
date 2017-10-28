@@ -3,13 +3,13 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: libfm lxde-menu-data
 
-name=pcmanfm
-version=1.2.4
-release=1
+isim=pcmanfm
+surum=1.2.4
+devir=1
 
-source=(http://downloads.sourceforge.net/${name}/${name}-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/${isim}/${isim}-$surum.tar.xz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc
 make
 make DESTDIR=$PKG install

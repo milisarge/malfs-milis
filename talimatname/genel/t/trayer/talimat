@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: xorg-libxmu gtk2
 
-name=trayer
-version=1.0
-release=1
-source=(http://download.gna.org/fvwm-crystal/trayer/${version}/${name}-${version}.tar.gz
+isim=trayer
+surum=1.0
+devir=1
+kaynak=(http://download.gna.org/fvwm-crystal/trayer/${surum}/${isim}-${surum}.tar.gz
 		trayer.diff manpage.diff )
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -p0 -i ../trayer.diff
 	patch -p1 -i ../manpage.diff
 	sed -i 's/$(LIBS) $(OBJ) $(SYSTRAYOBJ)/$(OBJ) $(SYSTRAYOBJ) $(LIBS) -lX11/' Makefile

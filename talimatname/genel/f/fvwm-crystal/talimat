@@ -3,12 +3,12 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: fvwm imagemagick python feh xdg-user-dirs trayer
 
-name=fvwm-crystal
-version=3.3.2
-release=1
-source=(http://downloads.sourceforge.net/sourceforge/${name}/${name}-${version}.tar.gz)
+isim=fvwm-crystal
+surum=3.3.2
+devir=1
+kaynak=(http://downloads.sourceforge.net/sourceforge/${isim}/${isim}-${surum}.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make DESTDIR="$PKG" prefix=/usr install
 }

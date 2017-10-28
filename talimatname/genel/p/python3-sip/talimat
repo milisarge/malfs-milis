@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python3 
 
-name=python3-sip
-version=4.19.3
-release=1
+isim=python3-sip
+surum=4.19.3
+devir=1
 
-source=(http://sourceforge.net/projects/pyqt/files/sip/sip-$version/sip-$version.tar.gz )
+kaynak=(http://sourceforge.net/projects/pyqt/files/sip/sip-$surum/sip-$surum.tar.gz )
 
 derle() {
-	cd sip-$version
+	cd sip-$surum
 	python3 configure.py -b /usr/bin \
 	-d /usr/lib/python3.5/site-packages \
 	-e /usr/include/python3.5* \

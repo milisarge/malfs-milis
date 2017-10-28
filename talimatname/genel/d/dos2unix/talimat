@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: perl
 
-name=dos2unix
-version=7.3.2
-release=1
-source=(http://waterlan.home.xs4all.nl/$name/$name-$version.tar.gz)
+isim=dos2unix
+surum=7.3.2
+devir=1
+kaynak=(http://waterlan.home.xs4all.nl/$isim/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   make
   make DESTDIR=$PKG install
 }

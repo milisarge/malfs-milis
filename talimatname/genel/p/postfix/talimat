@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: db cyrus-sasl openssl icu mariadb openldap pcre postgresql sqlite
 
-name=postfix
-version=3.0.3
-release=1
+isim=postfix
+surum=3.0.3
+devir=1
 
-source=(ftp://ftp.porcupine.org/mirrors/postfix-release/official/$name-$version.tar.gz)
+kaynak=(ftp://ftp.porcupine.org/mirrors/postfix-release/official/$isim-$surum.tar.gz)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
     
     source  /etc/blfs-bootscripts
 	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

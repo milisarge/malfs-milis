@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtksourceview2
 
-name=bacon
-version=3.5.4
-release=1
+isim=bacon
+surum=3.5.4
+devir=1
 
-source=(http://www.basic-converter.org/stable/$name-$version.tar.gz)
+kaynak=(http://www.basic-converter.org/stable/$isim-$surum.tar.gz)
 
 derle(){
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --sysconfdir=/etc --with-bash
 	make -j1
 	make BINDIR="$PKG/usr/bin/" LIBDIR="$PKG/usr/lib" MANDIR="$PKG/usr/share/man" DATADIR="$PKG/usr/share" install

@@ -3,14 +3,14 @@
 # Paketçi: milisarge yasarciv67@gmail.com
 # Gerekler: gtk3 libxml2
 
-name=gtksourceview3
-version=3.24.2
-release=1
-_name=gtksourceview
-source=(http://download.gnome.org/sources/${_name}/${version:0:4}/${_name}-$version.tar.xz)
+isim=gtksourceview3
+surum=3.24.2
+devir=1
+_isim=gtksourceview
+kaynak=(http://download.gnome.org/sources/${_name}/${version:0:4}/${_name}-$surum.tar.xz)
 
 derle() {
-	cd ${_name}-$version
+	cd ${_name}-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

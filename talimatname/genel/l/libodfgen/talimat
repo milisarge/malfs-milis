@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: boost doxygen libwpd libwpg librevenge
 
-name=libodfgen
-version=0.1.6
-release=1
+isim=libodfgen
+surum=0.1.6
+devir=1
 
-source=(http://sourceforge.net/projects/libwpd/files/libodfgen/libodfgen-$version/$name-$version.tar.xz)
+kaynak=(http://sourceforge.net/projects/libwpd/files/libodfgen/libodfgen-$surum/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

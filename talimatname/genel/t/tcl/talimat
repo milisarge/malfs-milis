@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=tcl
-version=8.6.4
-release=1
+isim=tcl
+surum=8.6.4
+devir=1
 
-source=( http://downloads.sourceforge.net/$name/$name$version-src.tar.gz)
+kaynak=( http://downloads.sourceforge.net/$isim/$isim$surum-src.tar.gz)
 
 derle() {
 # build package
-cd $name$version/unix
+cd $isim$surum/unix
 
 if [ "$CARCH" = "x86_64" ]; then
 	./configure --prefix=/usr --mandir=/usr/share/man --enable-threads --enable-64bit

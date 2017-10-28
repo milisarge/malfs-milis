@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-mesa
 
-name=libva
-version=1.8.2
-release=1
-source=(https://www.freedesktop.org/software/vaapi/releases/$name/$name-$version.tar.bz2)
+isim=libva
+surum=1.8.2
+devir=1
+kaynak=(https://www.freedesktop.org/software/vaapi/releases/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure \
 		--prefix=/usr \

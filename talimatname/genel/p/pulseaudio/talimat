@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: fftw intltool json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate 
 
-name=pulseaudio
-version=10.99.1
-release=1
+isim=pulseaudio
+surum=10.99.1
+devir=1
 
-source=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz
+kaynak=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$surum.tar.xz
 		pulseaudio.desktop)
 
 derle() {
 unset MAKEFLAGS
-cd pulseaudio-$version
+cd pulseaudio-$surum
 
 sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
 

@@ -3,14 +3,14 @@
 # Paketçi:    milisarge
 # Gerekler:  nethogs qt5
 
-name=nethogs-qt
-version=0.0.4
-release=1
-source=(http://slist.lilotux.net/linux/nethogs-qt/$name-$version.tgz
+isim=nethogs-qt
+surum=0.0.4
+devir=1
+kaynak=(http://slist.lilotux.net/linux/nethogs-qt/$isim-$surum.tgz
 		nethogs-qt.desktop)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
   qmake-qt5
   make
   install -d "$PKG"/usr/bin/

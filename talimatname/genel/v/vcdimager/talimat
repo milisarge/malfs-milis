@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libcdio libxml2 
 
-name=vcdimager
-version=0.7.24
-release=1
+isim=vcdimager
+surum=0.7.24
+devir=1
 
-source=(http://ftp.twaren.net/Unix/GNU/gnu/$name/$name-$version.tar.gz)
+kaynak=(http://ftp.twaren.net/Unix/GNU/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 		--with-xml-prefix=/usr \
 		--mandir=/usr/share/man \

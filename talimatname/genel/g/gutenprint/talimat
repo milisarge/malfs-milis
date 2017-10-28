@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: ijs gimp gtk2 cups foomatic-db-engine ghostscript
 
-name=gutenprint
-version=5.2.9
-release=2
-source=(http://downloads.sourceforge.net/gimp-print/$name-$version.tar.bz2)
+isim=gutenprint
+surum=5.2.9
+devir=2
+kaynak=(http://downloads.sourceforge.net/gimp-print/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i 's|$(PACKAGE)/doc|doc/$(PACKAGE)-$(VERSION)|' \
        {,doc/,doc/developer/}Makefile.in
 

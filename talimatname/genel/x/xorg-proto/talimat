@@ -2,11 +2,11 @@
 # URL: http://xorg.freedesktop.org
 # Paketçi: milisarge
 
-name=xorg-proto
-version=7.7
-release=1
+isim=xorg-proto
+surum=7.7
+devir=1
 
-source=()
+kaynak=()
 
 derle() {
 unset MAKEFLAGS

@@ -3,16 +3,16 @@
 # Paketçi: milisarge yasarciv
 # Gerekler: intltool python-distutils-extra python-gobject python-xdg python-pexpect python-cairo python-ptyprocess gtk3 xdg-utils mlocate
 
-name=catfish
-version=1.4.2
-release=1
+isim=catfish
+surum=1.4.2
+devir=1
 
-source=( https://launchpad.net/catfish-search/${version%.*}/$version/+download/$name-$version.tar.bz2)
+kaynak=( https://launchpad.net/catfish-search/${surum%.*}/$surum/+download/$isim-$surum.tar.bz2)
 
 derle() {
-	cd ${name}-$version
+	cd ${isim}-$surum
 	python setup.py build
 	python setup.py install --root="$PKG" --optimize=1	
 	install -d "$PKG/usr/share/pixmaps"
-	ln -s "/usr/share/icons/hicolor/scalable/apps/$name.svg" "$PKG/usr/share/pixmaps/$name.svg"
+	ln -s "/usr/share/icons/hicolor/scalable/apps/$isim.svg" "$PKG/usr/share/pixmaps/$isim.svg"
 }

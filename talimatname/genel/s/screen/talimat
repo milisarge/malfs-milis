@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=screen
-version=4.3.1
-release=1
+isim=screen
+surum=4.3.1
+devir=1
 
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+kaynak=(ftp://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr                     \
             --infodir=/usr/share/info         \
             --mandir=/usr/share/man           \

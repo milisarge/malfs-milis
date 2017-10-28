@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: python
 
-name=python-xml
-version=0.8.4
-release=1
+isim=python-xml
+surum=0.8.4
+devir=1
 
-source=(http://downloads.sourceforge.net/pyxml/PyXML-0.8.4.tar.gz)
+kaynak=(http://downloads.sourceforge.net/pyxml/PyXML-0.8.4.tar.gz)
 
 derle() {
-	cd PyXML-$version
+	cd PyXML-$surum
 	python2 setup.py build
 	python2 setup.py install --prefix=/usr --root=$PKG
 

@@ -3,14 +3,14 @@
 # Paketçi: yasarciv milisarge
 # Gerekler: dbus-glib libusb intltool polkit gobject-introspection libgudev pm-utils
 
-name=upower
-version=0.99.4
-release=1
-source=(http://$name.freedesktop.org/releases/$name-$version.tar.xz
+isim=upower
+surum=0.99.4
+devir=1
+kaynak=(http://$isim.freedesktop.org/releases/$isim-$surum.tar.xz
 	fix-critical-action.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--enable-deprecated \

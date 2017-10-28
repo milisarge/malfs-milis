@@ -4,14 +4,14 @@
 # Gerekler: python cmake
 
 
-name=opencolorio
-version=1.0.9
-release=1
+isim=opencolorio
+surum=1.0.9
+devir=1
 
-source=(https://github.com/imageworks/OpenColorIO/archive/v$version.tar.gz)
+kaynak=(https://github.com/imageworks/OpenColorIO/archive/v$surum.tar.gz)
 
 derle() {
-cd OpenColorIO-$version
+cd OpenColorIO-$surum
 mkdir build
 cd build
 

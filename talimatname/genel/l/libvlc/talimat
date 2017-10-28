@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
-name=libvlc
-version=3.0.0
-release=20160606
+isim=libvlc
+surum=3.0.0
+devir=20160606
 
-source=( http://anduin.linuxfromscratch.org/BLFS/vlc/vlc-$version-$release.tar.xz
+kaynak=( http://anduin.linuxfromscratch.org/BLFS/vlc/vlc-$surum-$devir.tar.xz
          lua53_compat.patch)
 	
 derle() {
 
-cd vlc-$version-$release
+cd vlc-$surum-$devir
 
 sed -i '/seems to be moved/s/^/#/' autotools/ltmain.sh
 

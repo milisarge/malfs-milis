@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: xorg-server
 
-name=gl-select
-version=1.6
-release=1
-source=(gl-select-kod)
+isim=gl-select
+surum=1.6
+devir=1
+kaynak=(gl-select-kod)
 
 derle() {
-  install -D -m 0755 -o root -g root $SRC/gl-select-kod $PKG/usr/bin/$name
+  install -D -m 0755 -o root -g root $SRC/gl-select-kod $PKG/usr/bin/$isim
 }

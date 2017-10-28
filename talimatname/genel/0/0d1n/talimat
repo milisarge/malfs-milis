@@ -3,13 +3,13 @@
 # Paketçi: kadanur
 # Gerekler: 
 
-name=0d1n
-version=2.3
-release=1
-source=(https://github.com/CoolerVoid/0d1n/archive/$version.tar.gz)
+isim=0d1n
+surum=2.3
+devir=1
+kaynak=(https://github.com/CoolerVoid/0d1n/archive/$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make
 	mkdir -p "$PKG/usr/share/0d1n"
 	install -Dm755 0d1n "$PKG/usr/bin/0d1n"

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=tree
-version=1.7.0
-release=1
+isim=tree
+surum=1.7.0
+devir=1
 
-source=(ftp://mama.indstate.edu/linux/$name/$name-$version.tgz)
+kaynak=(ftp://mama.indstate.edu/linux/$isim/$isim-$surum.tgz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make
 	mkdir -p $PKG/usr/bin
 	cp tree $PKG/usr/bin/

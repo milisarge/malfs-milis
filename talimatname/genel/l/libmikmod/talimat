@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxtst pulseaudio
 
-name=libmikmod
-version=3.3.11
-release=1
+isim=libmikmod
+surum=3.3.11
+devir=1
 
-source=( http://downloads.sourceforge.net/mikmod/$name-$version.tar.gz)
+kaynak=( http://downloads.sourceforge.net/mikmod/$isim-$surum.tar.gz)
 
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 		--prefix=/usr \
 		--disable-static

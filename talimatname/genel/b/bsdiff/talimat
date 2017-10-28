@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: valgrind
 
-name=bsdiff
-version=4.3
-release=1
-source=(https://github.com/mendsley/bsdiff/archive/master.tar.gz::$name-mendsley-$version.tar.gz)
+isim=bsdiff
+surum=4.3
+devir=1
+kaynak=(https://github.com/mendsley/bsdiff/archive/master.tar.gz::$isim-mendsley-$surum.tar.gz)
 
 derle() {
-	cd ${name}-master
+	cd ${isim}-master
 	./autogen.sh
 	./configure --prefix=/usr
 	make

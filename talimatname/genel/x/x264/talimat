@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: yasm 
 
-name=x264
-version=20150908.2245
-release=1
+isim=x264
+surum=20150908.2245
+devir=1
 
-source=(http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-${version/./-}-stable.tar.bz2)
+kaynak=(http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-${version/./-}-stable.tar.bz2)
 
 derle() {
 cd x264-snapshot-${version/./-}-stable

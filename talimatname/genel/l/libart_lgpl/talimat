@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libart_lgpl
-version=2.3.21
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/2.3/$name-$version.tar.bz2)
+isim=libart_lgpl
+surum=2.3.21
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/2.3/$isim-$surum.tar.bz2)
 derle(){
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr
   make
   make DESTDIR=$PKG install

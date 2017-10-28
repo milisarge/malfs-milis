@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-socket6
-version=0.25
-release=2
+isim=perl-socket6
+surum=0.25
+devir=2
 
-source=(http://search.cpan.org/CPAN/authors/id/U/UM/UMEMOTO/Socket6-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/U/UM/UMEMOTO/Socket6-$surum.tar.gz)
 
 derle() {
-cd Socket6-$version
+cd Socket6-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

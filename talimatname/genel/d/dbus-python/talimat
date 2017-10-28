@@ -3,25 +3,25 @@
 # Paketçi: milisarge
 # Gerekler: python python3 dbus-glib
 
-name=dbus-python
-version=1.2.2
-release=1
-source=(http://pkgs.fedoraproject.org/repo/pkgs/$name/$name-$version.tar.gz/d1f2c7ba976d457206caf57d20b5cb5d/dbus-python-1.2.2.tar.gz)
+isim=dbus-python
+surum=1.2.2
+devir=1
+kaynak=(http://pkgs.fedoraproject.org/repo/pkgs/$isim/$isim-$surum.tar.gz/d1f2c7ba976d457206caf57d20b5cb5d/dbus-python-1.2.2.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	mkdir python2
 	pushd python2
 	PYTHON=/usr/bin/python \
 	../configure --prefix=/usr \
-		--docdir=/usr/share/doc/dbus-python-$version
+		--docdir=/usr/share/doc/dbus-python-$surum
 	make
 	popd
 	mkdir python3
 	pushd python3
 	PYTHON=/usr/bin/python3 \
 	../configure --prefix=/usr \
-		--docdir=/usr/share/doc/dbus-python-$version
+		--docdir=/usr/share/doc/dbus-python-$surum
 	popd
 	make DESTDIR=$PKG -C python2 install
 	make DESTDIR=$PKG -C python3 install

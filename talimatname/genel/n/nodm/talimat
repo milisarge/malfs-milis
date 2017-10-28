@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: help2man xorg-xinit 
 
-name=nodm
-version=0.13
-release=1
-source=(https://github.com/spanezz/nodm/archive/0.13.tar.gz::$name-$version.tar.gz
+isim=nodm
+surum=0.13
+devir=1
+kaynak=(https://github.com/spanezz/nodm/archive/0.13.tar.gz::$isim-$surum.tar.gz
 		nodm.conf)
 
 derle() {
-	cd "$SRC/$name-$version"
+	cd "$SRC/$isim-$surum"
 	./autogen.sh
 	./configure --prefix=/usr/
 	make

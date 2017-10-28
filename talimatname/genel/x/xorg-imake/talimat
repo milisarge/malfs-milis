@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-cf-files
 
-name=xorg-imake
-version=1.0.7
-release=1
-source=(http://xorg.freedesktop.org/releases/individual/util/imake-$version.tar.bz2)
+isim=xorg-imake
+surum=1.0.7
+devir=1
+kaynak=(http://xorg.freedesktop.org/releases/individual/util/imake-$surum.tar.bz2)
 
 derle() {
-	cd imake-$version
+	cd imake-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

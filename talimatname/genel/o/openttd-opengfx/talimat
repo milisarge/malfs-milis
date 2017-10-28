@@ -4,15 +4,15 @@
 # Gerekler:  
 
 
-name=openttd-opengfx
-version=0.5.3
-release=1
-source=(http://bundles.openttdcoop.org/opengfx/releases/${version}/opengfx-${version}.zip)
+isim=openttd-opengfx
+surum=0.5.3
+devir=1
+kaynak=(http://bundles.openttdcoop.org/opengfx/releases/${surum}/opengfx-${surum}.zip)
 
 derle() {
     cd ${SRC}
-    tar xvf opengfx-${version}.tar
-    cd opengfx-${version}
+    tar xvf opengfx-${surum}.tar
+    cd opengfx-${surum}
     install -d ${PKG}/usr/share/openttd/data   
     install -m644 *.grf ${PKG}/usr/share/openttd/data
     install -m644 *.obg ${PKG}/usr/share/openttd/data

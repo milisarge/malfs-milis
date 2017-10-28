@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools 
 
-name=protobuf
-version=2.6.1
-release=1
+isim=protobuf
+surum=2.6.1
+devir=1
 
-source=(https://github.com/google/protobuf/releases/download/v$version/protobuf-$version.tar.bz2)
+kaynak=(https://github.com/google/protobuf/releases/download/v$surum/protobuf-$surum.tar.bz2)
 derle() 
 { 
-cd ${name}-$version
+cd ${isim}-$surum
 ./autogen.sh
 ./configure --prefix=/usr --disable-static
 make DESTDIR=$PKG install

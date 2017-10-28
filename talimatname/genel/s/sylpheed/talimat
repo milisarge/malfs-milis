@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: atk expat freetype glib libpng pcre cairo cyrus-sasl xorg-fontconfig libassuan libgpg-error openldap pango gtk2 gnupg gpgme desktop-file-utils
 
-name=sylpheed
-version=3.6.0
-release=1
+isim=sylpheed
+surum=3.6.0
+devir=1
 
-source=(http://sylpheed.sraoss.jp/sylpheed/v${version%.*}/$name-$version.tar.bz2)
+kaynak=(http://sylpheed.sraoss.jp/sylpheed/v${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-        cd $name-$version
+        cd $isim-$surum
         ./configure --prefix=/usr \
         --enable-static=no \
         --disable-gtkspell \

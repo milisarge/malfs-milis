@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk3 clutter gstreamer1-plugins-base gobject-introspection
 
-name=clutter-gst
-version=3.0.20
-release=1
+isim=clutter-gst
+surum=3.0.20
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr 
 make
 make DESTDIR=$PKG install

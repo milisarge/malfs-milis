@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: libxcb xcb-util xcb-util-wm git
 
-name=bspwm
-version=0.9
-release=1
-source=()
+isim=bspwm
+surum=0.9
+devir=1
+kaynak=()
 
 derle() {
 
   git clone https://github.com/baskerville/bspwm.git
 
-  cd $name
+  cd $isim
 
   make PREFIX=/usr
 

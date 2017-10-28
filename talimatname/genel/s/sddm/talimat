@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake kf5-extra-cmake-modules qt5 upower consolekit2 xorg-libxkbfile libxcb
 
-name=sddm
-release=1
-version=0.14.0
+isim=sddm
+devir=1
+surum=0.14.0
 
-source=( https://github.com/sddm/sddm/releases/download/v$version/${name}-$version.tar.xz
+kaynak=( https://github.com/sddm/sddm/releases/download/v$surum/${isim}-$surum.tar.xz
          sddm.conf
          10-backlight.rules
          sddm-0.14.0-consolekit.patch
@@ -17,7 +17,7 @@ derle() {
 wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20160902.tar.xz
 tar xvf blfs-bootscripts-20160902.tar.xz
 
-cd ${name}-$version
+cd ${isim}-$surum
 sed -e '/UPOWER_SERVICE)/ s:^://:' \
     -i src/daemon/PowerManager.cpp
 mkdir build

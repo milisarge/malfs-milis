@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: avahi apache
 
-_name=mod_dnssd
-name=mod-dnssd
-version=0.6
-release=1
+_isim=mod_dnssd
+isim=mod-dnssd
+surum=0.6
+devir=1
 
-source=(http://0pointer.de/lennart/projects/${_name}/${_name}-${version}.tar.gz
+kaynak=(http://0pointer.de/lennart/projects/${_name}/${_name}-${surum}.tar.gz
         fix_undefined_reference.patch)
         
 derle() {
-  cd ${_name}-$version
+  cd ${_name}-$surum
   patch -p1 < ${SRC}/fix_undefined_reference.patch
   ./configure --prefix=/usr --disable-lynx
   make

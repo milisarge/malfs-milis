@@ -3,20 +3,20 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: openjdk apache-ant
 
-name=yacy
-version=1.82
+isim=yacy
+surum=1.82
 _pkgextraver=20150121_9000
-release=1
+devir=1
 
-source=("http://www.yacy.net/release/yacy_v${version}_${_pkgextraver}.tar.gz"
+kaynak=("http://www.yacy.net/release/yacy_v${surum}_${_pkgextraver}.tar.gz"
         yacy.rc)
 
 derle() {
 	. /etc/profile.d/ant.sh
 
-	cd "$SRC/$name"
+	cd "$SRC/$isim"
 	ant all
-	cd "$SRC/$name"
+	cd "$SRC/$isim"
 	ant installonlinux -DDESTDIR="$PKG/"
 	install -d "$PKG"/usr/share/java/yacy
 	install -t "$PKG"/usr/share/java/yacy/ lib/*.jar
@@ -28,8 +28,8 @@ derle() {
 
 	# servis dosya
 	install -d $PKG/usr/bin
-	install -m 0750  $SRC/$name/startYACY.sh $PKG/usr/bin/yacy-start
-	install -m 0750  $SRC/$name/stopYACY.sh $PKG/usr/bin/yacy-stop
+	install -m 0750  $SRC/$isim/startYACY.sh $PKG/usr/bin/yacy-start
+	install -m 0750  $SRC/$isim/stopYACY.sh $PKG/usr/bin/yacy-stop
 
 	rm -f "$PKG"/usr/share/yacy/DATA "$PKG"/var/log/yacy
 }

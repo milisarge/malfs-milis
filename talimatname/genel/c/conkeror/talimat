@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xulrunner desktop-file-utils
 
-name=conkeror
-version=git
-release=1
-source=()
+isim=conkeror
+surum=git
+devir=1
+kaynak=()
 
 derle() {
   git clone git://repo.or.cz/conkeror.git
-  cd $name
+  cd $isim
   make PREFIX=/usr
 
   make DESTDIR="$PKG" PREFIX=/usr install

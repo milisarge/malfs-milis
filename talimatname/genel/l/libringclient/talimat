@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: cmake qt5 ring-daemon
 
-name=libringclient
-version=1.0.0
-release=1
-source=(https://github.com/savoirfairelinux/ring-lrc/archive/master.tar.gz::$name-$version-master.tar.gz)
+isim=libringclient
+surum=1.0.0
+devir=1
+kaynak=(https://github.com/savoirfairelinux/ring-lrc/archive/master.tar.gz::$isim-$surum-master.tar.gz)
 
 derle() {
   cd "ring-lrc-master"

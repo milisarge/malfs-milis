@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=sysstat
-version=11.1.8	
-release=1
-source=(http://perso.wanadoo.fr/sebastien.godard/sysstat-11.1.8.tar.xz)
+isim=sysstat
+surum=11.1.8	
+devir=1
+kaynak=(http://perso.wanadoo.fr/sebastien.godard/sysstat-11.1.8.tar.xz)
  
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 	   
 source  /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

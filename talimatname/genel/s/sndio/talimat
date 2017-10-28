@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: alsa-lib
 
-name=sndio
-version=1.2.0
-release=1
-source=(http://www.sndio.org/$name-$version.tar.gz)
+isim=sndio
+surum=1.2.0
+devir=1
+kaynak=(http://www.sndio.org/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

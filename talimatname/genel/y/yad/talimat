@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 webkitgtk2 gtk3
 
-name=yad
-version=0.39.0
-release=1
-source=(https://sourceforge.net/projects/yad-dialog/files/$name-$version.tar.xz)
+isim=yad
+surum=0.39.0
+devir=1
+kaynak=(https://sourceforge.net/projects/yad-dialog/files/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

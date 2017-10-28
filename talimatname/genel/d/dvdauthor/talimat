@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libxml2 libdvdnav libpng fribidi freetype
 
-name=dvdauthor
-version=0.7.1
-release=2
-source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz
+isim=dvdauthor
+surum=0.7.1
+devir=2
+kaynak=(http://downloads.sourceforge.net/project/$isim/$isim/$surum/$isim-$surum.tar.gz
      	dvdauthor-0.7.1-glibc220.patch)
 
 derle() {
-	cd $name
+	cd $isim
 
 	patch -p1 -i $SRC/dvdauthor-0.7.1-glibc220.patch
 

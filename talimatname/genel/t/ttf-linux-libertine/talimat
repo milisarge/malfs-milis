@@ -5,11 +5,11 @@
 
 _reldate=2012_07_02
 
-name=ttf-linux-libertine
-version=5.3.0
-release=1
+isim=ttf-linux-libertine
+surum=5.3.0
+devir=1
 
-source=("http://downloads.sourceforge.net/project/linuxlibertine/linuxlibertine/${version}/LinLibertine"{TTF,OTF}"_${version}_${_reldate}.tgz") 
+kaynak=("http://downloads.sourceforge.net/project/linuxlibertine/linuxlibertine/${surum}/LinLibertine"{TTF,OTF}"_${surum}_${_reldate}.tgz") 
 
 derle() {
 	cd $SRC
@@ -17,7 +17,7 @@ derle() {
 	install -m644 *.ttf $PKG/usr/share/fonts/TTF
 	install -m644 *.otf $PKG/usr/share/fonts/OTF
 
-	install -Dm644 OFL-1.1.txt $PKG/usr/share/licenses/$name/LICENSE
-	install -Dm644 LICENCE.txt $PKG/usr/share/licenses/$name/README
+	install -Dm644 OFL-1.1.txt $PKG/usr/share/licenses/$isim/LICENSE
+	install -Dm644 LICENCE.txt $PKG/usr/share/licenses/$isim/README
 }
 

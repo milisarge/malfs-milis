@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: qt5 fluxbox kf5-kwindowsystem kf5-oxygen-icons5 xcb-util-image xscreensaver desktop-file-utils
 
-name=lumina-desktop
-version=0.8.7
-release=1
+isim=lumina-desktop
+surum=0.8.7
+devir=1
 
-source=()
+kaynak=()
 
 derle(){
 	git clone https://github.com/pcbsd/lumina.git

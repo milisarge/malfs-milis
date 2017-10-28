@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: adwaita-icon-theme libepoxy xorg-libxinerama,xorg-libxrandr xorg-libxcursor at-spi2-atk cups colord xorg-libxi atk cairo pango pangox-compat gdk-pixbuf gtk-update-icon-cache graphene
 
-name=gtk3
-version=3.22.15
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)
+isim=gtk3
+surum=3.22.15
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${surum%.*}/gtk+-$surum.tar.xz)
 
 derle() {
-cd gtk+-$version
+cd gtk+-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc         \
 --mandir=/usr/share/man   \

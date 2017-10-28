@@ -4,13 +4,13 @@
 # Gerekler:
 # Grup: araçlar
 
-name=atool
-version=0.39.0
-release=1
-source=(http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
+isim=atool
+surum=0.39.0
+devir=1
+kaynak=(http://savannah.nongnu.org/download/$isim/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make prefix=$PKG/usr install

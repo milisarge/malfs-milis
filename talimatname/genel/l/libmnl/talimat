@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libmnl
-version=1.0.3
-release=1
+isim=libmnl
+surum=1.0.3
+devir=1
 
-source=(
-http://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2)
+kaynak=(
+http://www.netfilter.org/projects/$isim/files/$isim-$surum.tar.bz2)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install    

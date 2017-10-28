@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools
 
-name=python-mako
-version=1.0.1
-release=1
-source=(https://pypi.python.org/packages/source/M/Mako/Mako-$version.tar.gz)
+isim=python-mako
+surum=1.0.1
+devir=1
+kaynak=(https://pypi.python.org/packages/source/M/Mako/Mako-$surum.tar.gz)
 
 derle() {
-	cd Mako-$version
+	cd Mako-$surum
 	/usr/bin/python2 setup.py build
 	/usr/bin/python2 setup.py install --prefix=/usr --root=$PKG --optimize=1
 }

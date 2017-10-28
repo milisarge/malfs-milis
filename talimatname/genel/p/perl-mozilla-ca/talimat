@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-mozilla-ca
-version=20130114
-release=1
+isim=perl-mozilla-ca
+surum=20130114
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/A/AB/ABH/Mozilla-CA-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/A/AB/ABH/Mozilla-CA-$surum.tar.gz)
 
 derle() {
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 unset PERL5LIB PERL_MM_OPT
 
-cd Mozilla-CA-$version
+cd Mozilla-CA-$surum
 perl Makefile.PL
 make
 make install INSTALLDIRS=vendor DESTDIR=$PKG

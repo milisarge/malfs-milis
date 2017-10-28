@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libpng giblib libexif xorg-libxt xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama curl
 
-name=feh
-version=2.14
-release=1
-source=(http://feh.finalrewind.org/$name-$version.tar.bz2)
+isim=feh
+surum=2.14
+devir=1
+kaynak=(http://feh.finalrewind.org/$isim-$surum.tar.bz2)
 
 derle() {
-        cd $name-$version
+        cd $isim-$surum
 	sed -i "s:doc/feh:&-2.14:" config.mk
         make PREFIX=/usr
         make DESTDIR=$PKG PREFIX=/usr install

@@ -3,17 +3,17 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: sdl2 libpng libtiff libjpeg-turbo libwebp cmake
 
-name=sdl2-image
-version=2.0.1
-release=1
-source=(https://www.libsdl.org/projects/SDL_image/release/SDL2_image-$version.tar.gz)
+isim=sdl2-image
+surum=2.0.1
+devir=1
+kaynak=(https://www.libsdl.org/projects/SDL_image/release/SDL2_image-$surum.tar.gz)
     
 derle() {
-	cd SDL2_image-$version
+	cd SDL2_image-$surum
   ./configure --disable-static --prefix=/usr
   		
 	make
 	make DESTDIR=$PKG install
-install -Dm644 COPYING.txt "$PKG/usr/share/licenses/$name/LICENSE"
+install -Dm644 COPYING.txt "$PKG/usr/share/licenses/$isim/LICENSE"
 }
 

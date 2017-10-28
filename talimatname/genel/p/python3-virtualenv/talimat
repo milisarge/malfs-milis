@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: python3
 
-name=python3-virtualenv
-version=14.0.5
-release=1
+isim=python3-virtualenv
+surum=14.0.5
+devir=1
 
-source=(
-http://pypi.python.org/packages/source/v/virtualenv/virtualenv-$version.tar.gz)
+kaynak=(
+http://pypi.python.org/packages/source/v/virtualenv/virtualenv-$surum.tar.gz)
 
 derle() {
-    cd virtualenv-$version
+    cd virtualenv-$surum
     python3 setup.py install --prefix=/usr --root=$PKG
 }
 

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: alsa-lib cmake
 
-name=openal
-version=1.16.0
-release=1
-source=(http://kcat.strangesoft.net/openal-releases/openal-soft-$version.tar.bz2 )
+isim=openal
+surum=1.16.0
+devir=1
+kaynak=(http://kcat.strangesoft.net/openal-releases/openal-soft-$surum.tar.bz2 )
 
 derle() {
-cd openal-soft-$version/build
+cd openal-soft-$surum/build
 
 cmake ../ \
 	-DCMAKE_INSTALL_PREFIX=/usr \

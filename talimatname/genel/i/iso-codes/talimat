@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=iso-codes
-version=3.65
-release=1
-source=(http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-$version.tar.xz)
+isim=iso-codes
+surum=3.65
+devir=1
+kaynak=(http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

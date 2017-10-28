@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: desktop-file-utils cmake python xorg-libx11 openjpeg libpng freetype boost glew llvm opensubdiv opencolorio openimageio hicolor-icon-theme jack libsndfile openal openexr fftw ffmpeg
 
-name=blender
-version=2.78a
-release=1
+isim=blender
+surum=2.78a
+devir=1
 
-source=(http://download.blender.org/source/blender-$version.tar.gz)
+kaynak=(http://download.blender.org/source/blender-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	mkdir build
 	cd build
 	cmake -C../build_files/cmake/config/blender_full.cmake .. \

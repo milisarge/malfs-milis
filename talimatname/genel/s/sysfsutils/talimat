@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=sysfsutils
-version=2.1.0
-release=2
-source=(http://downloads.sourceforge.net/project/linux-diag/$name/$version/$name-$version.tar.gz)
+isim=sysfsutils
+surum=2.1.0
+devir=2
+kaynak=(http://downloads.sourceforge.net/project/linux-diag/$isim/$surum/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr --mandir=/usr/share/man
     make
     make DESTDIR=$PKG install

@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=pcre
-version=8.38
-release=1
+isim=pcre
+surum=8.38
+devir=1
 
-source=( ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/$name-$version.tar.bz2 )
+kaynak=( ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/$isim-$surum.tar.bz2 )
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 [ "${CARCH}" = "x86_64" ] && export CFLAGS="${CFLAGS} -fPIC"
 
 ./configure --prefix=/usr \
---docdir=/usr/share/doc/pcre-$version \
+--docdir=/usr/share/doc/pcre-$surum \
 --enable-unicode-properties \
 --enable-pcre16 \
 --enable-pcre32 \

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-uri 
 
-name=perl-www-robotrules
-version=6.02
-release=2
+isim=perl-www-robotrules
+surum=6.02
+devir=2
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-$surum.tar.gz)
 
 derle() {
-cd WWW-RobotRules-$version
+cd WWW-RobotRules-$surum
 perl Makefile.PL
 make
 make DESTDIR=$PKG install

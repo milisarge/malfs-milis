@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: alsa-lib pulseaudio
 
-name=mpg123
-version=1.25.0
-release=1
+isim=mpg123
+surum=1.25.0
+devir=1
 
-source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+kaynak=( http://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --with-module-suffix=.so
 make
 make DESTDIR=$PKG install

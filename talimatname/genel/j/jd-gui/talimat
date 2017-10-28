@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler: jre
 
-name=jd-gui
-version=1.4.0
-release=1
-source=(https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1.4.0.jar
+isim=jd-gui
+surum=1.4.0
+devir=1
+kaynak=(https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1.4.0.jar
 		https://github.com/java-decompiler/jd-gui/raw/v1.4.0/src/linux/resources/jd_icon_128.png
 		jd-gui.desktop)
 
 derle() {
 	cd "$SRC"
-	install -Dm644 "$name-$version.jar" "$PKG/usr/share/java/$name/$name.jar"
+	install -Dm644 "$isim-$surum.jar" "$PKG/usr/share/java/$isim/$isim.jar"
 	install -d "$PKG/usr/bin"
-	echo -e "#!/bin/sh\nexec java -jar /usr/share/java/$name/$name.jar" '"$@"' > "$PKG/usr/bin/$name"
-	chmod 755 "$PKG/usr/bin/$name"
-	install -Dm644 jd-gui.desktop "$PKG/usr/share/applications/$name.desktop"
-	install -Dm644 jd_icon_128.png "$PKG/usr/share/pixmaps/$name.png"
+	echo -e "#!/bin/sh\nexec java -jar /usr/share/java/$isim/$isim.jar" '"$@"' > "$PKG/usr/bin/$isim"
+	chmod 755 "$PKG/usr/bin/$isim"
+	install -Dm644 jd-gui.desktop "$PKG/usr/share/applications/$isim.desktop"
+	install -Dm644 jd_icon_128.png "$PKG/usr/share/pixmaps/$isim.png"
 }

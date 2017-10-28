@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=xfce4-dev-tools
-version=4.12.0
-release=1
-source=(http://archive.xfce.org/xfce/4.12/src/$name-$version.tar.bz2)
+isim=xfce4-dev-tools
+surum=4.12.0
+devir=1
+kaynak=(http://archive.xfce.org/xfce/4.12/src/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

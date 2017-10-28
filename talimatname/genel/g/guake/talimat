@@ -3,14 +3,14 @@
 # Paketçi: milisarge aydinyakar
 # Gerekler: intltool gnome-common python-notify vte python-vte python-gconf dbus-python python-keybinder python-xdg libutempter
 
-name=guake
-version=0.8.7
-release=1
-source=(https://github.com/Guake/$name/archive/$version.tar.gz)
+isim=guake
+surum=0.8.7
+devir=1
+kaynak=(https://github.com/Guake/$isim/archive/$surum.tar.gz)
 
 derle() {
 	# Python2 fix
-	cd $name-$version
+	cd $isim-$surum
 	sed -i 's|/usr/bin/env python|/usr/bin/python2|' src/guake/prefs.py
 
 	NOCONFIGURE=1 ./autogen.sh

@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: gsfonts libjpeg-turbo xorg-libx11 gdk-pixbuf gtk2 xorg-libxt
 
-name=libwmf
-version=0.2.8.4
-release=1
+isim=libwmf
+surum=0.2.8.4
+devir=1
 
-source=(
-http://downloads.sourceforge.net/sourceforge/wvware/$name-$version.tar.gz
+kaynak=(
+http://downloads.sourceforge.net/sourceforge/wvware/$isim-$surum.tar.gz
 libwmf.0.2.8.4-libpng-1.5.patch
 libwmf.0.2.8.4-useafterfree.patch)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     patch -p1 -i $SRC/libwmf.0.2.8.4-libpng-1.5.patch
     patch -p1 -i $SRC/libwmf.0.2.8.4-useafterfree.patch
     ./configure --prefix=/usr \

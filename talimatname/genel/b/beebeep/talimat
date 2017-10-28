@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: qt4 phonon-qt4 libxcb avahi libxcb
 
-name=beebeep
-_version=721
-version=3.0.6
-release=1
-source=(http://netcologne.dl.sourceforge.net/project/${name}/Sources/${name}-code-${version}.zip
+isim=beebeep
+_surum=721
+surum=3.0.6
+devir=1
+kaynak=(http://netcologne.dl.sourceforge.net/project/${isim}/Sources/${isim}-code-${surum}.zip
 		phonon.patch
-        ${name}.xpm
-        ${name}.desktop
-        ${name}_script)
+        ${isim}.xpm
+        ${isim}.desktop
+        ${isim}_script)
 
 derle() {
 	cd beebeep-code-${_version}
@@ -20,11 +20,11 @@ derle() {
 	cd ../plugins && qmake-qt4
 	cd .. && qmake-qt4
 	make
-	install -Dm755 "${SRC}/beebeep-code-${_version}/test/${name}" "${PKG}/usr/lib/${name}/${name}"
-	mkdir -p "${PKG}/usr/lib/${name}"
-	cp -a ${SRC}/beebeep-code-${_version}/test/lib*.so.* ${PKG}/usr/lib/${name}/
+	install -Dm755 "${SRC}/beebeep-code-${_version}/test/${isim}" "${PKG}/usr/lib/${isim}/${isim}"
+	mkdir -p "${PKG}/usr/lib/${isim}"
+	cp -a ${SRC}/beebeep-code-${_version}/test/lib*.so.* ${PKG}/usr/lib/${isim}/
 
-	install -Dm755 "${SRC}/${name}_script" "${PKG}/usr/bin/${name}"
-	install -Dm644 "${SRC}/${name}.xpm" "${PKG}/usr/share/pixmaps/${name}.xpm"
-	install -Dm755 "${SRC}/${name}.desktop" "${PKG}/usr/share/applications/${name}.desktop"
+	install -Dm755 "${SRC}/${isim}_script" "${PKG}/usr/bin/${isim}"
+	install -Dm644 "${SRC}/${isim}.xpm" "${PKG}/usr/share/pixmaps/${isim}.xpm"
+	install -Dm755 "${SRC}/${isim}.desktop" "${PKG}/usr/share/applications/${isim}.desktop"
 }

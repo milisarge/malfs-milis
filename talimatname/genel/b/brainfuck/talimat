@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=brainfuck
-version=0.1
-release=1
-source=(https://github.com/benjamin-james/brainfuck/archive/0.1.tar.gz)
+isim=brainfuck
+surum=0.1
+devir=1
+kaynak=(https://github.com/benjamin-james/brainfuck/archive/0.1.tar.gz)
 
 derle() {
-	cd "${name}-${version}"
+	cd "${isim}-${surum}"
 	make
 	make DESTDIR="${PKG}/" PREFIX="/usr" install
 }

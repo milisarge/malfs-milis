@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gnome-common intltool gnome-doc-utils xorg-server pango zenity popt xorg-libdmx libgnomecanvas dbus-glib webkitgtk2
 
-name=mdm
-version=2.0.17
-release=1
+isim=mdm
+surum=2.0.17
+devir=1
 
-source=(https://github.com/linuxmint/$name/archive/$version.tar.gz
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz
 mdm.pam
 mdm-autologin.pam
 defaults.conf
@@ -15,7 +15,7 @@ org.cinnamon.pkexec.mdmsetup.policy
 resim-1.jpg)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     aclocal --install
     gnome-doc-prepare --force
     chmod +x ./autogen.sh

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=lziprecover
-version=1.18
-release=1
+isim=lziprecover
+surum=1.18
+devir=1
 
-source=(http://download.savannah.gnu.org/releases/lzip/$name/$name-$version.tar.gz)
+kaynak=(http://download.savannah.gnu.org/releases/lzip/$isim/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make prefix=$PKG/usr install

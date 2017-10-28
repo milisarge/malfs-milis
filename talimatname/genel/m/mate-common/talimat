@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk-doc intltool
 
-name=mate-common
-version=1.18.0
-release=1
-source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+isim=mate-common
+surum=1.18.0
+devir=1
+kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
     ./configure \
         --prefix=/usr
   make

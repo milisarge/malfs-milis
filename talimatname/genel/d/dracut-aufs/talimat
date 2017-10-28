@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: dracut
 
-name=dracut-aufs
-version=1.0
-release=1
-source=(aufs-mount.sh
+isim=dracut-aufs
+surum=1.0
+devir=1
+kaynak=(aufs-mount.sh
 		module-setup.sh)
 
 derle() {

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python python-twisted python-zope_interface python-cairo python-gtk
 
-name=entangled
-version=0.1
-release=1
-source=(https://sourceforge.net/projects/$name/files/$name/0.1/$name-$version.tar.gz)
+isim=entangled
+surum=0.1
+devir=1
+kaynak=(https://sourceforge.net/projects/$isim/files/$isim/0.1/$isim-$surum.tar.gz)
 
 derle() {
-    mkdir -p $PKG/usr/share/$name
-	cp -r entangled-0.1/* $PKG/usr/share/$name/
+    mkdir -p $PKG/usr/share/$isim
+	cp -r entangled-0.1/* $PKG/usr/share/$isim/
 
 }

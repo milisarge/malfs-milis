@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=lua51
-version=5.1.5
-release=1
+isim=lua51
+surum=5.1.5
+devir=1
 
-source=(
-http://www.lua.org/ftp/lua-$version.tar.gz
+kaynak=(
+http://www.lua.org/ftp/lua-$surum.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/7.4/lua-5.1.5-shared_library-2.patch)
 
 derle(){
-    cd lua-$version
+    cd lua-$surum
     patch -Np1 -i ../lua-5.1.5-shared_library-2.patch
     sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h
 
@@ -24,7 +24,7 @@ derle(){
     make \
         INSTALL_TOP=$PKG/usr \
         TO_BIN='lua5.1 luac5.1' \
-        TO_LIB="liblua5.1.a liblua5.1.so liblua5.1.so.5.1 liblua5.1.so.$version" \
+        TO_LIB="liblua5.1.a liblua5.1.so liblua5.1.so.5.1 liblua5.1.so.$surum" \
         INSTALL_INC=$PKG/usr/include/lua5.1 \
         INSTALL_DATA="cp -d" \
         INSTALL_MAN=$PKG/usr/share/man/man1 \
@@ -34,7 +34,7 @@ derle(){
     install -Dm644 etc/lua.pc $PKG/usr/lib/pkgconfig/lua5.1.pc
     # symlinks
     ln -s liblua5.1.so $PKG/usr/lib/liblua.so.5.1
-    ln -s liblua5.1.so $PKG/usr/lib/liblua.so.$version
+    ln -s liblua5.1.so $PKG/usr/lib/liblua.so.$surum
     # rename man pages
     cd $PKG/usr/share/man/man1
     mv lua.1 lua5.1.1

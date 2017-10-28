@@ -3,16 +3,16 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: gtk2 gtk3
 
-_name=gtk-xfce-engine
+_isim=gtk-xfce-engine
 
-name=xfce4-gtk-engine
-version=3.2.0
-release=2
+isim=xfce4-gtk-engine
+surum=3.2.0
+devir=2
 
-source=(http://archive.xfce.org/src/xfce/${_name}/${version%.*}/${_name}-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/xfce/${_name}/${surum%.*}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 	./configure --prefix=/usr \
 	--enable-gtk3
 	make

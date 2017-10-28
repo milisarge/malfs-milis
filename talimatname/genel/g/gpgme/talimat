@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libassuan
 
-name=gpgme
-version=1.9.0
-release=1
-source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+isim=gpgme
+surum=1.9.0
+devir=1
+kaynak=(ftp://ftp.gnupg.org/gcrypt/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	--disable-fd-passing \
 	--disable-gpgsm-test

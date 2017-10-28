@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: qca-qt5 qt5
 
-name=psi
-version=1.0
-release=1
-source=(https://sourceforge.net/projects/psi/files/Psi/1.0/$name-$version.tar.xz)
+isim=psi
+surum=1.0
+devir=1
+kaynak=(https://sourceforge.net/projects/psi/files/Psi/1.0/$isim-$surum.tar.xz)
 
 derle() {
-  cd psi-$version
+  cd psi-$surum
    ./configure --prefix=/usr  \
    --libdir=/usr/lib \
    --enable-whiteboarding \

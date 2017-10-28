@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libunwind
 
-name=strace
-version=4.12
-release=1
-source=(http://download.sourceforge.net/$name/$name-$version.tar.xz)
+isim=strace
+surum=4.12
+devir=1
+kaynak=(http://download.sourceforge.net/$isim/$isim-$surum.tar.xz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
     --with-libunwind
     make

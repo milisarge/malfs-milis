@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:   
 
-name=beep
-version=1.3
-release=1
-source=(http://www.johnath.com/beep/$name-$version.tar.gz)
+isim=beep
+surum=1.3
+devir=1
+kaynak=(http://www.johnath.com/beep/$isim-$surum.tar.gz)
 
 derle() {
-    cd "$name-$version"
+    cd "$isim-$surum"
     make
     mkdir -p $PKG/usr/bin
     mkdir -p $PKG/usr/share/man

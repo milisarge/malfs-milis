@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=git
-version=2.7.1
-release=1
+isim=git
+surum=2.7.1
+devir=1
 
-source=( https://www.kernel.org/pub/software/scm/$name/$name{,-manpages,-htmldocs}-$version.tar.xz)
+kaynak=( https://www.kernel.org/pub/software/scm/$isim/$isim{,-manpages,-htmldocs}-$surum.tar.xz)
 run=(openssh)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib \

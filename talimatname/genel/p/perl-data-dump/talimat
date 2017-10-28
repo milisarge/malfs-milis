@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-_name=Data-Dump
-name=perl-data-dump
-version=1.23
-release=1
+_isim=Data-Dump
+isim=perl-data-dump
+surum=1.23
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/$_name-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/$_name-$surum.tar.gz)
 
 derle() {
-cd $_name-$version
+cd $_name-$surum
 perl Makefile.PL
 make OPTIMIZE="$CFLAGS"
 make DESTDIR=$PKG install

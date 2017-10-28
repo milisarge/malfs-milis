@@ -3,13 +3,13 @@
 # Paketçi:	milisarge
 # Gerekler:
 
-name=c-ares
-version=1.12.0
-release=1
-source=(https://c-ares.haxx.se/download/$name-$version.tar.gz)
+isim=c-ares
+surum=1.12.0
+devir=1
+kaynak=(https://c-ares.haxx.se/download/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

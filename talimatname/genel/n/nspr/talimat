@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=nspr
-version=4.16
-release=1
+isim=nspr
+surum=4.16
+devir=1
 
-source=(http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$version/src/$name-$version.tar.gz )
+kaynak=(http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$surum/src/$isim-$surum.tar.gz )
 derle() {
 
-cd $name-$version/$name
+cd $isim-$surum/$isim
 sed -ri 's#^(RELEASE_BINS =).*#\1#' pr/src/misc/Makefile.in &&
 sed -i 's#$(LIBRARY) ##' config/rules.mk &&
 ./configure --prefix=/usr \

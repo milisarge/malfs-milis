@@ -3,19 +3,19 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: xorg-fontconfig
 
-name=noto-fonts
-version=20151224
+isim=noto-fonts
+surum=20151224
 _commit=3f1dc1
-release=1
+devir=1
 
-source=(https://github.com/googlei18n/noto-fonts/archive/$_commit.zip)
+kaynak=(https://github.com/googlei18n/noto-fonts/archive/$_commit.zip)
 
 derle() {
   mkdir -p $PKG/usr/share/fonts/noto
-  install -m644 $name-*/hinted/Noto*.ttf $PKG/usr/share/fonts/noto
+  install -m644 $isim-*/hinted/Noto*.ttf $PKG/usr/share/fonts/noto
 
   mkdir -p $PKG/usr/share/fonts/TTF
   for font in Arimo Cousine Tinos; do
-    install -m644 $name-*/hinted/$font*.ttf $PKG/usr/share/fonts/TTF
+    install -m644 $isim-*/hinted/$font*.ttf $PKG/usr/share/fonts/TTF
   done
 }

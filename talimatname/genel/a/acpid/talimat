@@ -3,14 +3,14 @@
 # Paketçi: 	milisarge
 # Gerekler:
 
-name=acpid
-version=2.0.25
-release=1
-source=(http://downloads.sourceforge.net/acpid2/$name-$version.tar.xz lid lid.sh)
+isim=acpid
+surum=2.0.25
+devir=1
+kaynak=(http://downloads.sourceforge.net/acpid2/$isim-$surum.tar.xz lid lid.sh)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
 	source  /etc/blfs-bootscripts
 	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
@@ -18,12 +18,12 @@ derle() {
 
 
 	./configure --prefix=/usr \
-		--docdir=/usr/share/doc/$name-$version
+		--docdir=/usr/share/doc/$isim-$surum
 	make
 	make DESTDIR=$PKG install
 	install -m755 -d $PKG/etc/acpi/events
 
-	cp -r samples $PKG/usr/share/doc/$name-$version
+	cp -r samples $PKG/usr/share/doc/$isim-$surum
 	cp -r $SRC/lid $PKG/etc/acpi/events
 	cp -r $SRC/lid.sh $PKG/etc/acpi
 

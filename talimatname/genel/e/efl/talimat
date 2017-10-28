@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver gstreamer-plugins-base giflib libtiff gstreamer gstreamer1 poppler libspectre libraw librsvg gstreamer1-plugins-base
 
-name=efl
-version=1.20.2
-release=1
-source=(http://download.enlightenment.org/rel/libs/$name/$name-$version.tar.xz)
+isim=efl
+surum=1.20.2
+devir=1
+kaynak=(http://download.enlightenment.org/rel/libs/$isim/$isim-$surum.tar.xz)
 
 derle()
 {
-    cd $name-$version 
+    cd $isim-$surum 
     ./configure --prefix=/usr \
                 --with-tests=none \
                 --disable-fribidi \

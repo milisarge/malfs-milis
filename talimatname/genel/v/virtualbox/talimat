@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: virtualbox-cli sdl
 
-name=virtualbox
-version=5.0.12
-release=1
-_name=Oracle_VM_VirtualBox_Extension_Pack
-_release=104815
+isim=virtualbox
+surum=5.0.12
+devir=1
+_isim=Oracle_VM_VirtualBox_Extension_Pack
+_devir=104815
 
 DOSYAIZLEME_YOKSAY="evet"
 MD5SUM_YOKSAY="evet"
@@ -16,12 +16,12 @@ MD5SUM_YOKSAY="evet"
 [ "`uname -m`" == "i686"   ] && _ARCH=x86
 [ "`uname -m`" == "x86_64"   ] && _ARCH=amd64
 
-source=(http://download.virtualbox.org/virtualbox/$version/VirtualBox-${version}-${_release}-Linux_${_ARCH}.run
-	http://download.virtualbox.org/virtualbox/$version/${_name}-${version}-${_release}.vbox-extpack
+kaynak=(http://download.virtualbox.org/virtualbox/$surum/VirtualBox-${surum}-${_release}-Linux_${_ARCH}.run
+	http://download.virtualbox.org/virtualbox/$surum/${_name}-${surum}-${_release}.vbox-extpack
 	virtualbox.60-vboxdrv.rules)
 
 derle() {
-	sh VirtualBox-${version}-${_release}-Linux_${_ARCH}.run --keep --noexec --target $SRC/
+	sh VirtualBox-${surum}-${_release}-Linux_${_ARCH}.run --keep --noexec --target $SRC/
 	mkdir -p $PKG/opt/VirtualBox $PKG/etc/vbox $PKG/usr/bin $PKG/etc/udev/rules.d/ \
 	$PKG/usr/share/applications/ $PKG/usr/share/pixmaps/
 	cd $PKG/opt/VirtualBox
@@ -47,8 +47,8 @@ derle() {
 	echo "INSTALL_DIR="\"/opt/VirtualBox\" >> \
 		$PKG/etc/vbox/vbox.cfg
 
-	install -D -m 644 $SRC/${_name}-$version-${_release}.vbox-extpack \
-		$PKG/opt/VirtualBox/ExtensionPacks/${_name}-$version-${_release}.vbox-extpack
+	install -D -m 644 $SRC/${_name}-$surum-${_release}.vbox-extpack \
+		$PKG/opt/VirtualBox/ExtensionPacks/${_name}-$surum-${_release}.vbox-extpack
 	mkdir -p $PKG/etc/ld.so.conf.d
 	echo /opt/VirtualBox > $PKG/etc/ld.so.conf.d/virtualbox.conf
 	# Icon

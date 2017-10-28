@@ -3,16 +3,16 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: dbus-glib libwnck3 libcanberra libmateweather xorg-libsm mate-menus mate-desktop intltool itstool gobject-introspection
 
-name=mate-panel
-version=1.18.3
-release=1
-source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+isim=mate-panel
+surum=1.18.3
+devir=1
+kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
     ./configure \
         --prefix=/usr \
-        --libexecdir=/usr/lib/$name \
+        --libexecdir=/usr/lib/$isim \
         --sysconfdir=/etc \
         --localstatedir=/var \
         --enable-introspection \

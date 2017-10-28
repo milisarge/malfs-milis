@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=bitchx
-version=1.2.1
-release=1
-source=(http://www.bitchx.com/download/$name-$version.tar.gz)
+isim=bitchx
+surum=1.2.1
+devir=1
+kaynak=(http://www.bitchx.com/download/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --exec_prefix=/usr --prefix=/usr --enable-ipv6 --with-plugins --with-ssl --mandir=/usr/share/
 	make 
 	make DESTDIR=$PKG install

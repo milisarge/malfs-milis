@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: python3 freeglut python3-setuptools
 
-name=python3-opengl
-version=3.1.0
-release=1
+isim=python3-opengl
+surum=3.1.0
+devir=1
 
-source=( https://pypi.python.org/packages/source/P/PyOpenGL/PyOpenGL-$version.tar.gz)
+kaynak=( https://pypi.python.org/packages/source/P/PyOpenGL/PyOpenGL-$surum.tar.gz)
 
 derle() {
-    cd PyOpenGL-$version
+    cd PyOpenGL-$surum
     python3 setup.py install --prefix=/usr --root=$PKG --optimize=1
 }

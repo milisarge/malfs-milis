@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gstreamer-plugins-base libunique1 xfce4-libutil xfce4-panel 
 
-name=xfce4-mixer
-version=4.11.0
-release=2
+isim=xfce4-mixer
+surum=4.11.0
+devir=2
 
-source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure \
     	--prefix=/usr \
    	 --sysconfdir=/etc \

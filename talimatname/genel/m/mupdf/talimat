@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: curl freetype libjpeg-turbo xorg-libxext
 
-name=mupdf
-version=1.9a
-release=1
-source=(http://mupdf.com/downloads/$name-$version-source.tar.gz)
+isim=mupdf
+surum=1.9a
+devir=1
+kaynak=(http://mupdf.com/downloads/$isim-$surum-source.tar.gz)
 
 derle() {
-    cd $name-$version-source
+    cd $isim-$surum-source
     
     rm -r thirdparty/{freetype*,jpeg*,zlib,curl}
     make build=release 

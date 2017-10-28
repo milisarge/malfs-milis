@@ -3,15 +3,15 @@
 # Paketçi: 	milisarge
 # Gerekler:
 
-name=libunwind
-version=1.1
-release=1
+isim=libunwind
+surum=1.1
+devir=1
 
-source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
+kaynak=(http://download.savannah.gnu.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
 
-	cd $name-$version/
+	cd $isim-$surum/
 	./configure --prefix=/usr --mandir=/usr/man/
 	make
 	make -j1 DESTDIR=$PKG PREFIX=/usr install

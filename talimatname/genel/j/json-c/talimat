@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=json-c
-version=0.12
-release=1
-source=(https://s3.amazonaws.com/${name}_releases/releases/$name-$version.tar.gz)
+isim=json-c
+surum=0.12
+devir=1
+kaynak=(https://s3.amazonaws.com/${isim}_releases/releases/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     CFLAGS="$CFLAGS -Wno-error"
     ./configure --prefix=/usr \
                 --disable-static

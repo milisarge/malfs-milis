@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake git
 
-name=vid-stab
-version=1.1
-release=1
+isim=vid-stab
+surum=1.1
+devir=1
 
-source=()
+kaynak=()
 
 derle() {
 

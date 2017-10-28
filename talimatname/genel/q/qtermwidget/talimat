@@ -4,14 +4,14 @@
 # Paketçi: pierre at nutyx dot org
 # Gerekler: qt4
 
-name=qtermwidget
-version=20130206
-release=2
+isim=qtermwidget
+surum=20130206
+devir=2
 
-source=(http://downloads.nutyx.org/files/patchs/$name/$name-$version.tar.bz2)
+kaynak=(http://downloads.nutyx.org/files/patchs/$isim/$isim-$surum.tar.bz2)
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr

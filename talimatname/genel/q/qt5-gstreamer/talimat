@@ -3,20 +3,20 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake boost xorg-mesa doxygen gstreamer1-plugins-good qt5
 
-name=qt5-gstreamer
-version=1.2.0
-release=1
+isim=qt5-gstreamer
+surum=1.2.0
+devir=1
 
-source=(http://gstreamer.freedesktop.org/src/qt-gstreamer/qt-gstreamer-$version.tar.xz
+kaynak=(http://gstreamer.freedesktop.org/src/qt-gstreamer/qt-gstreamer-$surum.tar.xz
         qt5-gstreamer-1.6.patch)
 
 derle() {
   mkdir build
-  cd qt-gstreamer-$version
+  cd qt-gstreamer-$surum
   patch -p1 -i ../qt5-gstreamer-1.6.patch
 
   cd ../build
-  cmake ../qt-gstreamer-$version \
+  cmake ../qt-gstreamer-$surum \
     -DCMAKE_INSTALL_PREFIX=/usr  \
     -DCMAKE_BUILD_TYPE=Release   \
     -DCMAKE_INSTALL_LIBDIR=lib   \

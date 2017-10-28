@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=3proxy
-version=0.8.6
-release=1
-source=(https://github.com/z3APA3A/3proxy/archive/3proxy-$version.tar.gz)
+isim=3proxy
+surum=0.8.6
+devir=1
+kaynak=(https://github.com/z3APA3A/3proxy/archive/3proxy-$surum.tar.gz)
 _prefix=/usr
 _etcdir=/etc/3proxy
 

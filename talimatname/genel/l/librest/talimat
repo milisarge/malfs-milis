@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libsoup gobject-introspection 
 
-name=librest
-version=0.7.93
-release=2
+isim=librest
+surum=0.7.93
+devir=2
 
-source=(http://ftp.gnome.org/pub/gnome/sources/rest/${version%.*}/rest-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/rest/${surum%.*}/rest-$surum.tar.xz)
 
 derle() {
-cd rest-$version
+cd rest-$surum
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

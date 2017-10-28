@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools 
 
-name=python-netifaces
-version=0.10.4
-release=1
+isim=python-netifaces
+surum=0.10.4
+devir=1
 
-source=(
-https://pypi.python.org/packages/source/n/netifaces/netifaces-$version.tar.gz)
+kaynak=(
+https://pypi.python.org/packages/source/n/netifaces/netifaces-$surum.tar.gz)
 
 derle() {
-    cd netifaces-$version
+    cd netifaces-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

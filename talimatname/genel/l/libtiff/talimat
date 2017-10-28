@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libjpeg-turbo 
 
-name=libtiff
-version=4.0.6
-release=1
+isim=libtiff
+surum=4.0.6
+devir=1
 
-source=(http://download.osgeo.org/libtiff/tiff-$version.tar.gz)
+kaynak=(http://download.osgeo.org/libtiff/tiff-$surum.tar.gz)
 
 
 derle() {
-cd tiff-$version
+cd tiff-$surum
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --infodir=/usr/share/info \

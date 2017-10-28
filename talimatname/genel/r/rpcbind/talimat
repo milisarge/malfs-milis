@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: libtirpc
 
-name=rpcbind
-version=0.2.3
-release=1
+isim=rpcbind
+surum=0.2.3
+devir=1
 
-source=(http://downloads.sourceforge.net/rpcbind/rpcbind-$version.tar.bz2 )
+kaynak=(http://downloads.sourceforge.net/rpcbind/rpcbind-$surum.tar.bz2 )
 
 derle() {
     source /etc/blfs-bootscripts
@@ -15,7 +15,7 @@ derle() {
     wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
     tar xvf $scripts-$scriptsversion.tar.bz2
 
-    cd rpcbind-$version
+    cd rpcbind-$surum
     sed -i "/servname/s:rpcbind:sunrpc:" src/rpcbind.c
 
     ./configure --prefix=/usr \

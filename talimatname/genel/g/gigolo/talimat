@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: intltool gtk2 gvfs 
 
-name=gigolo
-version=0.4.2
-release=1
-source=(http://files.uvena.de/gigolo/$name-$version.tar.bz2)
+isim=gigolo
+surum=0.4.2
+devir=1
+kaynak=(http://files.uvena.de/gigolo/$isim-$surum.tar.bz2)
 
 derle() {
-  cd "${SRC}"/$name-$version
+  cd "${SRC}"/$isim-$surum
   ./configure --prefix=/usr
   make
   make DESTDIR="${PKG}" install

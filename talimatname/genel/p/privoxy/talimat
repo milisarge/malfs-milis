@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: pcre 
 
-name=privoxy
-version=3.0.26
-release=1
-source=(https://downloads.sourceforge.net/ijbswa/privoxy-$version-stable-src.tar.gz
+isim=privoxy
+surum=3.0.26
+devir=1
+kaynak=(https://downloads.sourceforge.net/ijbswa/privoxy-$surum-stable-src.tar.gz
 		privoxy.logrotate.d
 		privoxy.sysusers)
 
 derle() {
-  cd "${SRC}/${name}-${version}-stable"
+  cd "${SRC}/${isim}-${surum}-stable"
 
   autoheader
 
@@ -29,7 +29,7 @@ derle() {
 
     s+^#\?user-manual .*+user-manual /usr/share/doc/privoxy/user-manual/+' config
 
-  cd "${SRC}/${name}-${version}-stable"
+  cd "${SRC}/${isim}-${surum}-stable"
 
   install -Dm644 "$SRC/privoxy.sysusers" "$PKG/usr/lib/sysusers.d/privoxy.conf"
 

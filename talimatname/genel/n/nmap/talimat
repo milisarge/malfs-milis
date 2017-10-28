@@ -3,19 +3,19 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: pcre libpcap lua liblinear python
 
-name=nmap
-version=7.60
-release=1
+isim=nmap
+surum=7.60
+devir=1
 
-source=(http://nmap.org/dist/$name-$version.tar.bz2)
+kaynak=(http://nmap.org/dist/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 export PYTHON=python2
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --localedir=/usr/share/locale \
---docdir=/usr/share/doc/$name-$version \
+--docdir=/usr/share/doc/$isim-$surum \
 --with-liblua=included \
 --infodir=/usr/share/info
 make || make -j1

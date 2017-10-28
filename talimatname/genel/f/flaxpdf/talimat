@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: fltk1 poppler lzo
 
-name=flaxpdf
-version=0.7.3
-release=1
+isim=flaxpdf
+surum=0.7.3
+devir=1
 
-source=(https://github.com/clbr/flaxpdf/archive/v0.7.3.tar.gz)
+kaynak=(https://github.com/clbr/flaxpdf/archive/v0.7.3.tar.gz)
 
 derle() {
-	cd "${name}-$version"
+	cd "${isim}-$surum"
 	mkdir -p config
 	touch config/config.rpath
 	./autogen.sh

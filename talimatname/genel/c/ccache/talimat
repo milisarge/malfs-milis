@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=ccache
-version=3.3.4
-release=1
-source=(http://samba.org/ftp/ccache/ccache-$version.tar.xz)
+isim=ccache
+surum=3.3.4
+devir=1
+kaynak=(http://samba.org/ftp/ccache/ccache-$surum.tar.xz)
 
 derle() {
-  cd ${SRC}/${name}-${version}
+  cd ${SRC}/${isim}-${surum}
   ./configure --prefix=/usr \
               --sysconfdir=/etc
   make
-  cd ${SRC}/${name}-${version}
+  cd ${SRC}/${isim}-${surum}
   install -Dm 755 ccache ${PKG}/usr/bin/ccache
   install -Dm 644 ccache.1 ${PKG}/usr/share/man/man1/ccache.1
   install -d ${PKG}/usr/lib/ccache/bin

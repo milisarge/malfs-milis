@@ -3,16 +3,16 @@
 # Paketçi:     milisarge
 # Gerekler:	    libdnet glib libmspack
 
-name=open-vm-tools
-version=10.1.5
-release=1
-source=(https://github.com/vmware/open-vm-tools/archive/stable-${version/_/-}.tar.gz
+isim=open-vm-tools
+surum=10.1.5
+devir=1
+kaynak=(https://github.com/vmware/open-vm-tools/archive/stable-${version/_/-}.tar.gz
 		vmtools.rc
 		tools.conf)
 
 derle(){
-	cd $name-stable-$version
-	cd $name
+	cd $isim-stable-$surum
+	cd $isim
 	sed -ie 's|-Werror||g' configure.ac
 	autoreconf -iv
 	CXXFLAGS+=' -std=gnu++11 -fpermissive '

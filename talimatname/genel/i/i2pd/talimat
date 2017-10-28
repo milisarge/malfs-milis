@@ -3,58 +3,58 @@
 # Paketçi: milisarge
 # Gerekler: cmake boost miniupnpc websocketpp
 
-name=i2pd
-version=2.11.0
-release=1
-source=(https://github.com/PurpleI2P/${name}/archive/${version}.tar.gz
+isim=i2pd
+surum=2.11.0
+devir=1
+kaynak=(https://github.com/PurpleI2P/${isim}/archive/${surum}.tar.gz
 		i2pd.conf
 		tunnels.conf)
 
 derle() {
-	cd $SRC/$name-$version
+	cd $SRC/$isim-$surum
 	cd build
 	cmake . -Wno-dev \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DWITH_UPNP=1 -DWITH_PCH=1 \
 	  -DCMAKE_BUILD_TYPE=Release
 	make
-	_conf_dest=etc/${name}
-	_home_dest=var/lib/${name}
+	_conf_dest=etc/${isim}
+	_home_dest=var/lib/${isim}
 	_share_dest=usr/share
 
-	cd $SRC/$name-$version
+	cd $SRC/$isim-$surum
 
 	cd build
 	make DESTDIR=$PKG install
 	install -Dm0644 $SRC/i2pd.conf $PKG/${_conf_dest}/i2pd.conf
 	install -Dm0644 $SRC/tunnels.conf $PKG/${_conf_dest}/tunnels.conf
-	install -Dm0644 $SRC/$name-$version/docs/subscriptions.txt $PKG/${_conf_dest}/subscriptions.txt
+	install -Dm0644 $SRC/$isim-$surum/docs/subscriptions.txt $PKG/${_conf_dest}/subscriptions.txt
 	install -d -m0750 $PKG/${_home_dest}
 	ln -s /${_conf_dest}/i2pd.conf $PKG/${_home_dest}/i2pd.conf
 	ln -s /${_conf_dest}/tunnels.conf $PKG/${_home_dest}/tunnels.conf
 	ln -s /${_conf_dest}/subscriptions.txt $PKG/${_home_dest}/subscriptions.txt
 
-	cd $SRC/$name-$version/contrib
-	_dest="$PKG/${_share_dest}/${name}"
+	cd $SRC/$isim-$surum/contrib
+	_dest="$PKG/${_share_dest}/${isim}"
 	find ./certificates -type d -exec install -d {} ${_dest}/{} \;
 	find ./certificates -type f -exec install -Dm644 {} ${_dest}/{} \;
-	ln -s /${_share_dest}/${name}/certificates $PKG/${_home_dest}/certificates
+	ln -s /${_share_dest}/${isim}/certificates $PKG/${_home_dest}/certificates
 
 	# license
-	install -Dm644 $SRC/$name-$version/LICENSE "$PKG/${_share_dest}/licenses/${name}/LICENSE"
+	install -Dm644 $SRC/$isim-$surum/LICENSE "$PKG/${_share_dest}/licenses/${isim}/LICENSE"
 
 	# docs
-	_dest="$PKG/${_share_dest}/doc/${name}"
-	install -Dm644 $SRC/$name-$version/README.md "${_dest}/README.md"
-	install -Dm644 $SRC/$name-$version/docs/configuration.md "${_dest}/configuration.md"
-	install -Dm644 $SRC/$name-$version/docs/family.md "${_dest}/family.md"
-	install -Dm644 $SRC/$name-$version/docs/config_opts_after_2.3.0.md "${_dest}/config_opts_after_2.3.0.md"
+	_dest="$PKG/${_share_dest}/doc/${isim}"
+	install -Dm644 $SRC/$isim-$surum/README.md "${_dest}/README.md"
+	install -Dm644 $SRC/$isim-$surum/docs/configuration.md "${_dest}/configuration.md"
+	install -Dm644 $SRC/$isim-$surum/docs/family.md "${_dest}/family.md"
+	install -Dm644 $SRC/$isim-$surum/docs/config_opts_after_2.3.0.md "${_dest}/config_opts_after_2.3.0.md"
 
 	# remove src folder
 	rm -r "$PKG/usr/src"
 
 	#man
-	install -Dm644 $SRC/$name-$version/debian/i2pd.1 "$PKG/${_share_dest}/man/man1/i2pd.1"
+	install -Dm644 $SRC/$isim-$surum/debian/i2pd.1 "$PKG/${_share_dest}/man/man1/i2pd.1"
 
 	chmod -R o= $PKG/${_home_dest}
 }

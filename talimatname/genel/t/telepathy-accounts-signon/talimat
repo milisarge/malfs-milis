@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: qt5 telepathy-mission-control libaccounts-glib libsignon-glib
 
-name=telepathy-accounts-signon
-version=1.0
-release=1
+isim=telepathy-accounts-signon
+surum=1.0
+devir=1
 
-source=(https://gitlab.com/accounts-sso/$name/repository/archive.tar.gz)
+kaynak=(https://gitlab.com/accounts-sso/$isim/repository/archive.tar.gz)
 
 derle() {
   mkdir -p build 
   cd build
-  qmake-qt5 ../$name*
+  qmake-qt5 ../$isim*
   make INSTALL_ROOT=$PKG install
 }

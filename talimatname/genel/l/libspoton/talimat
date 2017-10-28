@@ -3,10 +3,10 @@
 # Paketçi:    milisarge
 # Gerekler:  sqlite unzip libgcrypt libntru
 
-name=libspoton
-version=2017.01.20
-release=1
-source=(http://downloads.sourceforge.net/project/spot-on/Version%20${version}/Spot-On-Src.d.zip?r=)
+isim=libspoton
+surum=2017.01.20
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/spot-on/Version%20${surum}/Spot-On-Src.d.zip?r=)
 
 derle() {
 	unzip $SRC/Spot*

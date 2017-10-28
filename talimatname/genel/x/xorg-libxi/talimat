@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-libx11 xorg-libxext xorg-libxfixes 
 
-name=xorg-libxi
-version=1.7.6
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXi-$version.tar.bz2)
+isim=xorg-libxi
+surum=1.7.6
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXi-$surum.tar.bz2)
 
 derle() {
-cd libXi-$version
+cd libXi-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

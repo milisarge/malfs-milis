@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-knotifyconfig kf5-kemoticons kf5-kparts kf5-kidletime qca-qt5 hicolor-icon-theme kf5-extra-cmake-modules kf5-kdoctools
 
-name=konversation
-version=1.6.2
-release=1
+isim=konversation
+surum=1.6.2
+devir=1
 
-source=(http://download.kde.org/stable/$name/$version/src/$name-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/$isim/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   cmake -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DKDE_INSTALL_LIBDIR=lib

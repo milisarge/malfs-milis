@@ -3,11 +3,11 @@
 # Paketçi:    milisarge
 # Gerekler:  virtualgl glib
 
-name=bumblebee
-version=3.2.1
-release=1
-source=(
-	http://www.bumblebee-project.org/bumblebee-$version.tar.gz
+isim=bumblebee
+surum=3.2.1
+devir=1
+kaynak=(
+	http://www.bumblebee-project.org/bumblebee-$surum.tar.gz
 	0001-bb_nvidia_modeset-detection_bug699_01.patch
 	0002-bb_nvidia_modeset-detection_bug699_02.patch
 	0003-bb_nvidia_umv_detection_bug699.patch
@@ -20,7 +20,7 @@ source=(
 )
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	for p in $SRC/*.patch; do
 		patch -p1 < $p

@@ -4,15 +4,15 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: gtk2
 
-name=lxde-input
-_name=lxinput
-version=0.3.4
-release=1
+isim=lxde-input
+_isim=lxinput
+surum=0.3.4
+devir=1
  
-source=(http://downloads.sourceforge.net/lxde/${_name}-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/lxde/${_name}-$surum.tar.xz)
  
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr 	
 make
 make DESTDIR=$PKG install

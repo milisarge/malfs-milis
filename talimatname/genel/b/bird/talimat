@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=bird
-version=1.6.3
-release=1
-source=(ftp://bird.network.cz/pub/bird/$name-$version.tar.gz)
+isim=bird
+surum=1.6.3
+devir=1
+kaynak=(ftp://bird.network.cz/pub/bird/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --docdir=/usr/share/doc/$name \
+    --docdir=/usr/share/doc/$isim \
     --enable-ipv6
 	make
 	make \
@@ -23,20 +23,20 @@ derle() {
     sysconfdir="$PKG/etc" \
     sbindir="$PKG/usr/bin" \
     localstatedir="$PKG/var" \
-    docdir="$PKG/usr/share/doc/$name" \
+    docdir="$PKG/usr/share/doc/$isim" \
     install
     ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --docdir=/usr/share/doc/$name 
+    --docdir=/usr/share/doc/$isim 
     make
 	make \
     prefix="$PKG/usr" \
     sysconfdir="$PKG/etc" \
     sbindir="$PKG/usr/bin" \
     localstatedir="$PKG/var" \
-    docdir="$PKG/usr/share/doc/$name" \
+    docdir="$PKG/usr/share/doc/$isim" \
     install
 }

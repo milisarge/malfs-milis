@@ -3,20 +3,20 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: gstreamer-plugins-base faac faad2 libmms libpng libvpx xvid jasper
 
-name=gstreamer-plugins-bad
-version=0.10.23
-release=1
-_name=gst-plugins-bad
-source=(http://gstreamer.freedesktop.org/src/$_name/$_name-$version.tar.bz2
-	    $name-$version-compatibility-1.patch)
+isim=gstreamer-plugins-bad
+surum=0.10.23
+devir=1
+_isim=gst-plugins-bad
+kaynak=(http://gstreamer.freedesktop.org/src/$_name/$_name-$surum.tar.bz2
+	    $isim-$surum-compatibility-1.patch)
 
 derle() {
-cd $_name-$version
-patch -Np1 -i ../$name-$version-compatibility-1.patch
+cd $_name-$surum
+patch -Np1 -i ../$isim-$surum-compatibility-1.patch
 ./configure --prefix=/usr \
 --with-gtk=3.0 \
 --disable-examples \
---with-package-name='Milis gstreamer-plugins-bad package' \
+--with-package-isim='Milis gstreamer-plugins-bad package' \
 --with-package-origin='https://milis.gungre.ch/'
 
 make

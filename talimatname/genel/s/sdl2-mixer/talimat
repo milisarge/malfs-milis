@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: fluidsynth sdl2 libvorbis libmodplug smpeg2 flac 
 
-name=sdl2-mixer
-version=2.0.1
-release=1
-source=(https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$version.tar.gz)
+isim=sdl2-mixer
+surum=2.0.1
+devir=1
+kaynak=(https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$surum.tar.gz)
 
 derle() {
-	cd "${SRC}/SDL2_mixer-${version}/"
+	cd "${SRC}/SDL2_mixer-${surum}/"
 	sed -i "s|/etc/timidity|/etc/timidity++|g" timidity/config.h
 	sed -i "s|/etc/timidity++.cfg|/etc/timidity++/timidity.cfg|g" timidity/config.h
 	export CFLAGS+=" ${CFLAGS} -I/usr/include/libmodplug"
 	./configure --disable-static --prefix=/usr
 	make
 	make DESTDIR="${PKG}" install
-	install -Dm644 COPYING.txt "${PKG}/usr/share/licenses/${name}/LICENSE"
+	install -Dm644 COPYING.txt "${PKG}/usr/share/licenses/${isim}/LICENSE"
 }

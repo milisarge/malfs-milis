@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python3
 
-name=ranger
-version=1.8.1
-release=1
+isim=ranger
+surum=1.8.1
+devir=1
 
-source=(http://ranger.nongnu.org/$name-$version.tar.gz
+kaynak=(http://ranger.nongnu.org/$isim-$surum.tar.gz
 )
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     python3 setup.py install --prefix=/usr --root=$PKG
 }

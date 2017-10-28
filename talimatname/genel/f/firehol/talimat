@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: iptables iproute2 iprange ipset
 
-name=firehol
-version=3.1.3
-release=1.0
-source=(https://github.com/firehol/firehol/releases/download/v3.1.3/firehol-3.1.3.tar.xz)
+isim=firehol
+surum=3.1.3
+devir=1.0
+kaynak=(https://github.com/firehol/firehol/releases/download/v3.1.3/firehol-3.1.3.tar.xz)
 
 derle() {
-  cd "$name-$version"
+  cd "$isim-$surum"
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \

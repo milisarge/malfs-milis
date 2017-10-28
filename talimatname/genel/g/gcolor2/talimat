@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: gtk2
 
-name=gcolor2
-version=0.4
-release=1
-source=(http://downloads.sourceforge.net/project/gcolor2/gcolor2/0.4/gcolor2-0.4.tar.gz
-	http://downloads.nutyx.org/files/patchs/$name/gcolor2.desktop
-	http://downloads.nutyx.org/files/patchs/$name/gcolor2-amd64-1.patch)
+isim=gcolor2
+surum=0.4
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/gcolor2/gcolor2/0.4/gcolor2-0.4.tar.gz
+	http://downloads.nutyx.org/files/patchs/$isim/gcolor2.desktop
+	http://downloads.nutyx.org/files/patchs/$isim/gcolor2-amd64-1.patch)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 [ "`uname -m`" == "x86_64" ] && (patch -p1 < ../gcolor2-amd64-1.patch)
 sed -i 's/\[:space:\]/[&]/g' configure
 ./configure --prefix=/usr

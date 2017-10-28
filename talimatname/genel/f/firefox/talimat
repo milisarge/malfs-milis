@@ -3,17 +3,17 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libvpx libevent rust cargo autoconf2 pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
 
-name=firefox
-version=55.0.3
-release=3
+isim=firefox
+surum=55.0.3
+devir=3
 
-source=(https://ftp.mozilla.org/pub/mozilla.org/$name/releases/$version/source/firefox-$version.source.tar.xz
-        http://download.cdn.mozilla.net/pub/$name/releases/$version/linux-x86_64/xpi/tr.xpi
+kaynak=(https://ftp.mozilla.org/pub/mozilla.org/$isim/releases/$surum/source/firefox-$surum.source.tar.xz
+        http://download.cdn.mozilla.net/pub/$isim/releases/$surum/linux-x86_64/xpi/tr.xpi
         https://github.com/oltulu/milis/raw/master/firefox/mozilla.tar.xz::mozilla-milis.tar.xz)
 
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 # Locale autodetect
 sed -i '/intl.locale.matchOS/s/false/true/' modules/libpref/init/all.js
 
@@ -105,9 +105,9 @@ mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
 
 SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
 
-chown -R 0:0 $PKG/usr/lib/firefox-$version
-ln -sf ../lib/firefox-$version/firefox $PKG/usr/bin
-ln -sf ../mozilla/plugins $PKG/usr/lib/firefox-$version
+chown -R 0:0 $PKG/usr/lib/firefox-$surum
+ln -sf ../lib/firefox-$surum/firefox $PKG/usr/bin
+ln -sf ../mozilla/plugins $PKG/usr/lib/firefox-$surum
 
 # Gnash için gerekli
 mkdir -p $PKG/usr/include/npapi
@@ -128,7 +128,7 @@ StartupNotify=true
 Terminal=false
 EOF
 mkdir -pv $PKG/usr/share/pixmaps
-ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
+ln -sf /usr/lib/firefox-$surum/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
 
 for i in 16 22 24 32 48 256
 do
@@ -140,10 +140,10 @@ done
 for lang in tr
 do 
 install -Dm644 $SRC/$lang.xpi \
-    $PKG/usr/lib/firefox-$version/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
+    $PKG/usr/lib/firefox-$surum/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
 done
 
-cat > $PKG/usr/lib/firefox-$version/defaults/pref/vendor.js << "EOF"
+cat > $PKG/usr/lib/firefox-$surum/defaults/pref/vendor.js << "EOF"
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
 
@@ -156,17 +156,17 @@ pref("extensions.shownSelectionUI", true);
 EOF
 
 # Firefox hakkında kısmı
- _distini="$PKG/usr/lib/firefox-$version/distribution/distribution.ini"
+ _distini="$PKG/usr/lib/firefox-$surum/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
 
 [Global]
 id=Milis Linux
-version=1.0 Atilla
+surum=1.0 Atilla
 about=Milis Linux için Mozilla Firefox
 
 [Preferences]
 app.distributor=milis
-app.distributor.channel=$name
+app.distributor.channel=$isim
 app.partner.archlinux=milis
 END
 

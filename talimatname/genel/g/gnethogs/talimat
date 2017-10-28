@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:  nethogs gtkmm3 intltool libxml2
 
-name=gnethogs
-version=0.2
-release=1
-source=(https://github.com/mbfoss/gnethogs/archive/v$version.tar.gz)
+isim=gnethogs
+surum=0.2
+devir=1
+kaynak=(https://github.com/mbfoss/gnethogs/archive/v$surum.tar.gz)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
   ./autogen.sh
   ./configure --prefix=/usr
   make

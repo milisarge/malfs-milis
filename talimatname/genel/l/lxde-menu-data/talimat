@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: intltool
 
-name=lxde-menu-data
-version=0.1.4
-release=2
-_name=lxmenu-data
+isim=lxde-menu-data
+surum=0.1.4
+devir=2
+_isim=lxmenu-data
 
-source=(http://downloads.sourceforge.net/lxde/${_name}-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/lxde/${_name}-$surum.tar.xz)
 derle() {
-cd $_name-$version
+cd $_name-$surum
 ./configure --prefix=/usr --sysconfdir=/etc
 make
 make DESTDIR=$PKG install

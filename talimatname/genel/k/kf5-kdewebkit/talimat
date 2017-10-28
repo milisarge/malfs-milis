@@ -3,17 +3,17 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5-webkit kf5-kconfig kf5-kcoreaddons kf5-kio kf5-kjobwidgets kf5-kparts kf5-kservice kf5-kwallet 
 
-name=kf5-kdewebkit
-version=5.27.0
-release=1
-_name=kdewebkit
-_version=5.27
+isim=kf5-kdewebkit
+surum=5.27.0
+devir=1
+_isim=kdewebkit
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
 
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

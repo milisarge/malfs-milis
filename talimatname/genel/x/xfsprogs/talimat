@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=xfsprogs
-version=4.3.0
-release=1
+isim=xfsprogs
+surum=4.3.0
+devir=1
 
-source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
+kaynak=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 make DEBUG=-DNDEBUG INSTALL_USER=root INSTALL_GROUP=root \
      LOCAL_CONFIGURE_OPTIONS="--enable-readline"
 

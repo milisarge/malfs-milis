@@ -2,10 +2,10 @@
 +++ asterisk-13.2.0/menuselect-tree.moh-wav-disable	2015-04-01 13:43:24.193315947 +0900
 @@ -2086,7 +2086,7 @@
  	</category>
- 	<category name="MENUSELECT_MOH" displayname="Music On Hold File Packages" positive_output="yes">
- 		<member name="MOH-OPSOUND-WAV" displayname="opsound.org Music On Hold Files, WAV format" >
+ 	<category isim="MENUSELECT_MOH" displayisim="Music On Hold File Packages" positive_output="yes">
+ 		<member isim="MOH-OPSOUND-WAV" displayisim="opsound.org Music On Hold Files, WAV format" >
 -			<defaultenabled>yes</defaultenabled>
 +			<defaultenabled>no</defaultenabled>
  			<support_level>core</support_level>
  		</member>
- 		<member name="MOH-OPSOUND-ULAW" displayname="opsound.org Music On Hold Files, mu-Law format" >
+ 		<member isim="MOH-OPSOUND-ULAW" displayisim="opsound.org Music On Hold Files, mu-Law format" >

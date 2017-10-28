@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: xorg-server
 
-name=freefont-ttf
-version=20120503
-release=1
-source=(http://ftp.gnu.org/gnu/freefont/$name-$version.zip)
+isim=freefont-ttf
+surum=20120503
+devir=1
+kaynak=(http://ftp.gnu.org/gnu/freefont/$isim-$surum.zip)
 
 derle() {
-        cd freefont-$version
+        cd freefont-$surum
         install -v -d -m755 $PKG/usr/share/fonts/freefont
         install -v -m644 *.ttf $PKG/usr/share/fonts/freefont/
 

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: asciidoc cmake docbook-xsl doxygen imagemagick xmlto cairo dbus gdk-pixbuf imlib2 libxdg-basedir lua lua-lgi pango startup-notification xcb-util-cursor xcb-util-keysyms xcb-util-wm libxkbcommon xcb-util-xrm 
 
-name=awesome
-version=4.2
-release=1
-source=(https://github.com/awesomeWM/awesome/releases/download/v4.2/awesome-4.2.tar.xz::$name-$version.tar.xz)
+isim=awesome
+surum=4.2
+devir=1
+kaynak=(https://github.com/awesomeWM/awesome/releases/download/v4.2/awesome-4.2.tar.xz::$isim-$surum.tar.xz)
 
 derle() {
-	cd ${name}-${version}
+	cd ${isim}-${surum}
 	mkdir -p build
 	cd build
 	cmake .. \

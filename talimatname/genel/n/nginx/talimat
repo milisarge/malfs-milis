@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: libxml2 libxslt pcre
 
-name=nginx
-version=1.13.2
-release=1
+isim=nginx
+surum=1.13.2
+devir=1
 
-source=(http://nginx.org//download/$name-$version.tar.gz
+kaynak=(http://nginx.org//download/$isim-$surum.tar.gz
 		nginx.servis
 		nginx.logrotate)
 
@@ -33,7 +33,7 @@ fi
 #
 #
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --sbin-path=/usr/sbin/nginx \
                 --conf-path=/etc/nginx/nginx.conf \
@@ -77,7 +77,7 @@ derle() {
     make DESTDIR=$PKG install
 
     # Make the temp path.
-    install -dm700 $PKG/var/lib/$name
+    install -dm700 $PKG/var/lib/$isim
     # Move html directory and do not use /srv/www as it is used by apache
     mkdir -p $PKG/$HTMLDIR
     mv $PKG/usr/html $PKG/$HTMLDIR
@@ -86,7 +86,7 @@ derle() {
     sed -i \
           -e '/root[ ]*html/s|html;|/srv/http/&|' \
             -e '$s|.*|    include /etc/nginx/conf.d/\*.conf;\n&|' \
-                $PKG/etc/nginx/$name.conf
+                $PKG/etc/nginx/$isim.conf
     # install the nginx init script
     install -Dm755 $SRC/nginx.servis $PKG/etc/rc.d/init.d/nginx
     # install the logrotate file
@@ -95,10 +95,10 @@ derle() {
     sed -e "s,@USER@,$NGINXUSER," -e "s,@GROUP@,$NGINXGROUP," \
         $PKG/etc/logrotate.d/nginx
     # Set the permissions for the log directory.
-    chown $NGINXUSER $PKG/var/log/$name
-    chmod 750 $PKG/var/log/$name
+    chown $NGINXUSER $PKG/var/log/$isim
+    chmod 750 $PKG/var/log/$isim
     # Create sub-directory for virtual servers.
-    mkdir -p $PKG/etc/$name/conf.d
+    mkdir -p $PKG/etc/$isim/conf.d
     # Remove perllocal.pod and .packlist if present in the package
     for i in perllocal.pod .packlist; do
         find $PKG -name "$i" -exec rm -rf {} \;

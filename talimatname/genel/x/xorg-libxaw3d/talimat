@@ -3,13 +3,13 @@
 # Paketçi:   milisarge
 # Gerekler: xorg-proto xorg-libxmu xorg-util-macros 
 
-name=xorg-libxaw3d
-version=1.6.2
-release=1
-source=(http://xorg.freedesktop.org/archive/individual/lib/libXaw3d-$version.tar.bz2)
+isim=xorg-libxaw3d
+surum=1.6.2
+devir=1
+kaynak=(http://xorg.freedesktop.org/archive/individual/lib/libXaw3d-$surum.tar.bz2)
 
 derle() {
-cd libXaw3d-$version
+cd libXaw3d-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

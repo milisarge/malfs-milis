@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: libsoup gobject-introspection vala gtk-doc
 
-name=uhttpmock
-version=0.5.0
-release=1
+isim=uhttpmock
+surum=0.5.0
+devir=1
 
-source=(http://tecnocode.co.uk/downloads/$name/$name-$version.tar.xz)
+kaynak=(http://tecnocode.co.uk/downloads/$isim/$isim-$surum.tar.xz)
 
 derle() {
-	cd ${name}-$version
+	cd ${isim}-$surum
 	./configure --prefix=/usr   \
       --disable-static
 	make

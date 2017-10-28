@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-oauth2 python-setuptools python-tweepy python-urwid 
 
-name=turses
-version=0.2.23
-release=1
+isim=turses
+surum=0.2.23
+devir=1
 
-source=(
-http://pypi.python.org/packages/source/t/turses/turses-$version.tar.gz)
+kaynak=(
+http://pypi.python.org/packages/source/t/turses/turses-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

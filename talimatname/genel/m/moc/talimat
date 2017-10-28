@@ -4,13 +4,13 @@
 # Gerekler: curl libsndfile jack libid3tag libmad
  
 
-name=moc
-version=2.5.1
-release=1
-source=(ftp://ftp.daper.net/pub/soft/$name/stable/$name-$version.tar.bz2)
+isim=moc
+surum=2.5.1
+devir=1
+kaynak=(ftp://ftp.daper.net/pub/soft/$isim/stable/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	autoreconf -f -i -Wall,no-obsolete
     ./configure --prefix=/usr --without-rcc \
     --with-alsa --with-jack --with-aac --with-mp3 \

@@ -3,11 +3,11 @@
 # Packdeconnectkager : alihan-ozturk28@hotmail.com
 # Gerekler: git kf5-extra-cmake-modules kf5-kio kf5-kcmutils qca-qt5 libfakekey qjson sshfs-fuse hicolor-icon-theme kf5-kwayland
 
-name=kdeconnect
-version=0.9g
-release=1
+isim=kdeconnect
+surum=0.9g
+devir=1
 
-source=()
+kaynak=()
 
 derle() {
 

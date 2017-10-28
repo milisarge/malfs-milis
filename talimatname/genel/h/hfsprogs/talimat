@@ -3,27 +3,27 @@
 # Paketçi: milisarge
 # Gerekler: libbsd openssl
 
-name=hfsprogs
-version=332.25
-release=1
-source=(http://ftp.de.debian.org/debian/pool/main/h/hfsprogs/${name}_${version}.orig.tar.gz
-        http://ftp.de.debian.org/debian/pool/main/h/hfsprogs/${name}_${version}-11.debian.tar.gz
+isim=hfsprogs
+surum=332.25
+devir=1
+kaynak=(http://ftp.de.debian.org/debian/pool/main/h/hfsprogs/${isim}_${surum}.orig.tar.gz
+        http://ftp.de.debian.org/debian/pool/main/h/hfsprogs/${isim}_${surum}-11.debian.tar.gz
         license
         makefile.patch)
 
 derle() {
- cd diskdev_cmds-${version}
+ cd diskdev_cmds-${surum}
   for patch in ../debian/patches/*.patch ../makefile.patch
   do
     patch -Np1 -i ${patch}
   done
   make -f Makefile.lnx
   install -m 755 -d ${PKG}/usr/bin
-  install -m 755 -d ${PKG}/usr/share/licenses/${name}
-  install -m 755 -d ${PKG}/usr/share/${name}
+  install -m 755 -d ${PKG}/usr/share/licenses/${isim}
+  install -m 755 -d ${PKG}/usr/share/${isim}
   install -m 755 -d ${PKG}/usr/share/man/man8/
 
-  install -m 644 ../license ${PKG}/usr/share/licenses/${name}/APSL
+  install -m 644 ../license ${PKG}/usr/share/licenses/${isim}/APSL
 
   install -m 755 newfs_hfs.tproj/newfs_hfs ${PKG}/usr/bin/mkfs.hfsplus
   install -m 755 fsck_hfs.tproj/fsck_hfs ${PKG}/usr/bin/fsck.hfsplus

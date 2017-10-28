@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: tcl
 
-name=expect
-version=5.45
-release=1
-source=(http://downloads.sourceforge.net/project/$name/Expect/$version/$name$version.tar.gz)
+isim=expect
+surum=5.45
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/$isim/Expect/$surum/$isim$surum.tar.gz)
 
 derle() {
-   cd ${name}${version}
+   cd ${isim}${surum}
 
    ./configure --prefix=/usr --mandir=/usr/man --enable-gcc
    make

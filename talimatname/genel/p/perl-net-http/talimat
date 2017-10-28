@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-net-http
-version=6.06
-release=1
+isim=perl-net-http
+surum=6.06
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Net-HTTP-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Net-HTTP-$surum.tar.gz)
 
 derle() {
-cd Net-HTTP-$version
+cd Net-HTTP-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

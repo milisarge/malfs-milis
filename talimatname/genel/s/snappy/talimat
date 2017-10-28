@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=snappy
-version=1.1.1
-release=1
+isim=snappy
+surum=1.1.1
+devir=1
 
-source=(http://snappy.googlecode.com/files/$name-$version.tar.gz)
+kaynak=(http://snappy.googlecode.com/files/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 CXXFLAGS+=\ -DNDEBUG
 ./configure --prefix=/usr
 make

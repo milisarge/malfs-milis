@@ -3,18 +3,18 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: consolekit2 desktop-file-utils gtk2 hicolor-icon-theme lxde-icon-theme lxde-panel lxde-session openbox pcmanfm shared-mime-info menu-cache lxde-menu-data
 
-name=lxde-common
-version=0.99.1
-release=1
+isim=lxde-common
+surum=0.99.1
+devir=1
 
-source=(http://downloads.sourceforge.net/lxde/$name-$version.tar.xz
+kaynak=(http://downloads.sourceforge.net/lxde/$isim-$surum.tar.xz
 	http://nutyx.meticul.eu/files/patchs/oxygen-icons/icon-sekong.png
 	http://nutyx.meticul.eu/files/patchs/lxde-common/chrystal_red_root.png
 	http://downloads.nutyx.org/files/patchs/xfce/wall-sekong.jpg 
 	lxde.desktop)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 	--sysconfdir=/etc
 make

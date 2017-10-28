@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 pangomm cairomm atkmm
 
-name=gtkmm
-version=2.24.4
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=gtkmm
+surum=2.24.4
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 CXXFLAGS+=' -std=c++11'
 

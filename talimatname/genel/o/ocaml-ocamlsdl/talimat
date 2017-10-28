@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: ocaml ocaml-findlib ocaml-lablgl sdl sdl-ttf sdl-image sdl-mixer
 
-name=ocaml-ocamlsdl
-version=0.9.1
-release=1
-source=(http://downloads.sourceforge.net/project/ocamlsdl/OCamlSDL/${name#ocaml-}-${version}/${name#ocaml-}-${version}.tar.gz)
+isim=ocaml-ocamlsdl
+surum=0.9.1
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/ocamlsdl/OCamlSDL/${name#ocaml-}-${surum}/${name#ocaml-}-${surum}.tar.gz)
 
 derle() {
-	cd "${SRC}/${name#ocaml-}-${version}"
+	cd "${SRC}/${name#ocaml-}-${surum}"
     ./configure
     make
     export OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)"

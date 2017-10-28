@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: ncurses
 
-name=htop
-version=1.0.3
-release=1
-source=(http://hisham.hm/$name/releases/$version/$name-$version.tar.gz)
+isim=htop
+surum=1.0.3
+devir=1
+kaynak=(http://hisham.hm/$isim/releases/$surum/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr --disable-nls
     make
     make DESTDIR=$PKG install

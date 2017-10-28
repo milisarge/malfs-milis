@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xfce4-panel
 
-name=xfce4-datetime-plugin
-version=0.6.2
-release=2
+isim=xfce4-datetime-plugin
+surum=0.6.2
+devir=2
 
-source=(http://archive.xfce.org/src/panel-plugins/$name/0.6/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/0.6/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

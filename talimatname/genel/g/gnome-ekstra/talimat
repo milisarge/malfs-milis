@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: aisleriot brasero four-in-a-row gnome-chess gnome-disk-utility gnome-maps  gucharmap quadrapassel rhythmbox seahorse seahorse-nautilus shotwell
 
-name=gnome-ekstra
-version=1
-release=1
+isim=gnome-ekstra
+surum=1
+devir=1
 
-source=(talimat)
+kaynak=(talimat)
 
 derle() {
 echo "gnome-ekstra derlemesi bitti"

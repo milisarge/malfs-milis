@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=xquisite
-version=0.4.6
-release=1
-source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
+isim=xquisite
+surum=0.4.6
+devir=1
+kaynak=(http://downloads.nutyx.org/files/$isim-$surum.tar.gz)
 
 derle() {
 mkdir -p $PKG//usr/share/icons/

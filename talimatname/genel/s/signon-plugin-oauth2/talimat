@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: signond qt5
 
-name=signon-plugin-oauth2
-version=0.23
-release=1
+isim=signon-plugin-oauth2
+surum=0.23
+devir=1
 
-source=(https://gitlab.com/accounts-sso/signon-plugin-oauth2/repository/archive.tar.gz)
+kaynak=(https://gitlab.com/accounts-sso/signon-plugin-oauth2/repository/archive.tar.gz)
 
 derle() {
 cd signon-plugin-oauth2*

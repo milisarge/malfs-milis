@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libzip
-version=1.0.1
-release=1
+isim=libzip
+surum=1.0.1
+devir=1
 
-source=(http://www.nih.at/$name/$name-$version.tar.xz)
+kaynak=(http://www.nih.at/$isim/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 
 ln -s /usr/lib/libzip/include/zipconf.h $PKG/usr/include/zipconf.h
-install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+install -Dm644 LICENSE $PKG/usr/share/licenses/$isim/LICENSE
 }

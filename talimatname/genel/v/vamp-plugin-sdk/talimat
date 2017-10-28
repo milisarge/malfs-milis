@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libsndfile 
 
-name=vamp-plugin-sdk
-version=2.6
-release=1
+isim=vamp-plugin-sdk
+surum=2.6
+devir=1
 
-source=(https://code.soundsoftware.ac.uk/attachments/download/1520/$name-$version.tar.gz)
+kaynak=(https://code.soundsoftware.ac.uk/attachments/download/1520/$isim-$surum.tar.gz)
 
 derle() {
-cd $SRC/$name-$version
+cd $SRC/$isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

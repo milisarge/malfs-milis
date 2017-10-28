@@ -3,19 +3,19 @@
 # Paketçi:  milisarge
 # Gerekler: libconfig pcre xorg-mesa xorg-libxcomposite xorg-libxinerama xorg-libxrandr xorg-libxdamage
 
-name=compton
-version=git
-release=1
-source=()
+isim=compton
+surum=git
+devir=1
+kaynak=()
 
 derle() {
 	cd $DERLEME_KAYNAKDIZIN
 	
-	if cd $name; then
+	if cd $isim; then
 		git fetch -q; git reset --hard origin/master
 	else
-		git clone git://github.com/chjj/$name $name
-		cd $name
+		git clone git://github.com/chjj/$isim $isim
+		cd $isim
 	fi
 
 	make NO_DBUS=1 compton

@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: asciidoc xmlto libsodium libpgm
 
-name=zeromq
-version=4.2.2
-release=1
-source=(https://github.com/zeromq/libzmq/releases/download/v$version/$name-$version.tar.gz
+isim=zeromq
+surum=4.2.2
+devir=1
+kaynak=(https://github.com/zeromq/libzmq/releases/download/v$surum/$isim-$surum.tar.gz
 		https://raw.githubusercontent.com/zeromq/cppzmq/b0e6d4b/zmq.hpp::zmq.hpp.4.2.2)
 
 derle() {
 
-  sed -i 's/libzmq_werror="yes"/libzmq_werror="no"/' $name-$version/configure
-  cp zmq.hpp.$version zmq.hpp
-  cd "$SRC/$name-$version"
+  sed -i 's/libzmq_werror="yes"/libzmq_werror="no"/' $isim-$surum/configure
+  cp zmq.hpp.$surum zmq.hpp
+  cd "$SRC/$isim-$surum"
   ./configure prefix=/usr --with-pgm --with-libsodium \
   --enable-static
 

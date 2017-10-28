@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: lvm2 
 
-name=parted
-version=3.2
-release=1
+isim=parted
+surum=3.2
+devir=1
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
- http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-devmapper-1.patch)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.xz
+ http://www.linuxfromscratch.org/patches/blfs/svn/$isim-$surum-devmapper-1.patch)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 patch -Np1 -i ../parted-3.2-devmapper-1.patch
 ./configure --prefix=/usr \
 --disable-static
@@ -22,9 +22,9 @@ make -C doc html
 makeinfo --html -o doc/html doc/parted.texi
 makeinfo --plaintext -o doc/parted.txt doc/parted.texi
 
-install -v -m755 -d $PKG/usr/share/doc/parted-$version/html
+install -v -m755 -d $PKG/usr/share/doc/parted-$surum/html
 install -v -m644    doc/html/* \
-$PKG/usr/share/doc/parted-$version/html
+$PKG/usr/share/doc/parted-$surum/html
 install -v -m644 doc/{FAT,API,parted.{txt,html}} \
-$PKG/usr/share/doc/parted-$version
+$PKG/usr/share/doc/parted-$surum
 }

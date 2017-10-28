@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: glib exiv2 gobject-introspection python-gobject
 
-name=libgexiv2
-version=0.10.4
-release=1
+isim=libgexiv2
+surum=0.10.4
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/${name/lib/}/${version%.*}/${name/lib/}-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/${name/lib/}/${surum%.*}-$surum.tar.xz)
 
 derle() {
-cd ${name/lib/}-$version
+cd ${name/lib/}-$surum
 	./configure --prefix=/usr \
 		 --enable-introspection
 	make

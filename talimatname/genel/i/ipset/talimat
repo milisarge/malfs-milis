@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: iptables libmnl
 
-name=ipset
-version=6.32
-release=1
-source=(http://$name.netfilter.org/$name-$version.tar.bz2)
+isim=ipset
+surum=6.32
+devir=1
+kaynak=(http://$isim.netfilter.org/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --sbindir=/usr/bin --with-kmod=no
 	make
 	make DESTDIR="$PKG" install
 	install -Dm644 lib/libipset.pc "$PKG/usr/lib/pkgconfig/libipset.pc"
 	# default config file
-	install -Dm 644 /dev/null "$PKG/etc/$name.conf"
+	install -Dm 644 /dev/null "$PKG/etc/$isim.conf"
 }

@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: xine-lib curl xorg-libxft xorg-libxxf86vm xdg-utils shared-mime-info hicolor-icon-theme desktop-file-utils
 
-name=xine-ui
-version=0.99.9
-release=1
+isim=xine-ui
+surum=0.99.9
+devir=1
 
-source=(http://downloads.sourceforge.net/xine/$name-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/xine/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr           \
              --mandir=/usr/share/man \
              --with-x                \

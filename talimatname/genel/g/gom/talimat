@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool gtk-doc gobject-introspection gdk-pixbuf gnome-common glib sqlite 
 
-name=gom
-version=0.3.2
-release=1
-source=(https://git.gnome.org/browse/$name/snapshot/$name-$version.tar.xz)
+isim=gom
+surum=0.3.2
+devir=1
+kaynak=(https://git.gnome.org/browse/$isim/snapshot/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
     --disable-static --enable-gtk-doc

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=keyutils
-version=1.5.9
-release=1
+isim=keyutils
+surum=1.5.9
+devir=1
 
-source=( http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 )
+kaynak=( http://people.redhat.com/~dhowells/$isim/$isim-$surum.tar.bz2 )
 
 derle() {
 	unset MAKEFLAGS
-        cd $name-$version
+        cd $isim-$surum
 	sed -i "s/-O2/${CFLAGS}/" Makefile
         make
         make DESTDIR=$PKG install

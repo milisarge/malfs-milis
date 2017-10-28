@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: bc libglade xorg-libxmu xorg-libxt xorg-libxpm 
 
-name=xscreensaver
-version=5.34
-release=1
-source=(http://www.jwz.org/xscreensaver/$name-$version.tar.gz)
+isim=xscreensaver
+surum=5.34
+devir=1
+kaynak=(http://www.jwz.org/xscreensaver/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib \
 --without-gnome

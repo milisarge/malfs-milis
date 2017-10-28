@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools
 
-name=python-enum34
-_name=enum34
-version=1.1.2
-release=1
-source=(http://pypi.python.org/packages/source/e/$_name/$_name-$version.tar.gz)
+isim=python-enum34
+_isim=enum34
+surum=1.1.2
+devir=1
+kaynak=(http://pypi.python.org/packages/source/e/$_name/$_name-$surum.tar.gz)
 
 derle() {
-	cd $_name-$version
+	cd $_name-$surum
 	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
 
 	rm $PKG/usr/lib/python*/site-packages/enum/{LICENSE,README}

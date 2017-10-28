@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=tidy
-version=20101110
-release=1
-source=(http://anduin.linuxfromscratch.org/BLFS/$name/$name-cvs\_$version.tar.bz2)
+isim=tidy
+surum=20101110
+devir=1
+kaynak=(http://anduin.linuxfromscratch.org/BLFS/$isim/$isim-cvs\_$surum.tar.bz2)
 
 derle() {
 
-	cd $name-cvs\_$version
+	cd $isim-cvs\_$surum
 
 	./configure \
 		--prefix=/usr \

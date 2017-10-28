@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: flac freetype libjpeg-turbo libvorbis xorg-mesa openal util-linux xorg-libsm xorg-libxrandr xcb-util-image
 
-name=sfml
-version=2.4.2
-release=1
-source=(https://www.sfml-dev.org/files/SFML-$version-sources.zip)
+isim=sfml
+surum=2.4.2
+devir=1
+kaynak=(https://www.sfml-dev.org/files/SFML-$surum-sources.zip)
 
 derle() {
-	cd SFML-$version
+	cd SFML-$surum
     cmake_surum=3.4
 	install -d build
 	cd build

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: pkg-config cmake libcap libuecc libsodium json-c
 
-name=fastd
-version=18
-release=1
-source=(https://projects.universe-factory.net/attachments/download/86/$name-$version.tar.xz)
+isim=fastd
+surum=18
+devir=1
+kaynak=(https://projects.universe-factory.net/attachments/download/86/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	mkdir -p build
 	cd build
 	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr -D ENABLE_SYSTEMD=ON -D ENABLE_LTO=ON -D ENABLE_OPENSSL=ON ../

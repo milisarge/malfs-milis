@@ -3,10 +3,10 @@
 # Paketçi:    milisarge
 # Gerekler:  openssl ncurses jansson opus libxml2 doxygen
 
-name=asterisk
-version=13.6.0
-release=1
-source=(http://downloads.digium.com/pub/asterisk/releases/asterisk-$version.tar.gz
+isim=asterisk
+surum=13.6.0
+devir=1
+kaynak=(http://downloads.digium.com/pub/asterisk/releases/asterisk-$surum.tar.gz
         https://github.com/seanbright/asterisk-opus/archive/bb2925fc4eaad5b30b93eece851297de5c12e06c.tar.gz
         asterisk.rc
         build-enable-aelparse.patch
@@ -20,7 +20,7 @@ source=(http://downloads.digium.com/pub/asterisk/releases/asterisk-$version.tar.
 
 derle() {
 
-    cd asterisk-$version
+    cd asterisk-$surum
 
     # patch to add Opus transcoding and VP8 passthrough
     # https://github.com/seanbright/asterisk-opus

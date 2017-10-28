@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com yasarciv67@gmail.com
 # Gerekler: cmake qt5 qjson 
 
-name=libdbusmenu-qt5
-_name=libdbusmenu-qt
-release=1
-version=0.9.3+16.04.20160218
-source=(http://archive.ubuntu.com/ubuntu/pool/main/libd/$_name/libdbusmenu-qt_$version.orig.tar.gz)
+isim=libdbusmenu-qt5
+_isim=libdbusmenu-qt
+devir=1
+surum=0.9.3+16.04.20160218
+kaynak=(http://archive.ubuntu.com/ubuntu/pool/main/libd/$_name/libdbusmenu-qt_$surum.orig.tar.gz)
 
 derle() {
-cd libdbusmenu-qt-$version
+cd libdbusmenu-qt-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DCMAKE_INSTALL_LIBDIR=lib  \

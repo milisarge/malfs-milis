@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: cmake lcms2 libpng libtiff 
 
-_name=openjpeg
-name=openjpeg2
-version=2.1.0
-release=1
+_isim=openjpeg
+isim=openjpeg2
+surum=2.1.0
+devir=1
 
-source=( http://downloads.sourceforge.net/openjpeg.mirror/${_name}-$version.tar.gz )
+kaynak=( http://downloads.sourceforge.net/openjpeg.mirror/${_name}-$surum.tar.gz )
 
 
 derle() {
-	cd openjpeg-$version
+	cd openjpeg-$surum
 	mkdir -v build
 	cd build
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..

@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler:
 
-buildrelease=104815
-name=virtualbox-cli
-version=5.0.12
-release=1
+builddevir=104815
+isim=virtualbox-cli
+surum=5.0.12
+devir=1
 
 [ "`uname -m`" == "i686"   ] && _ARCH=x86
 [ "`uname -m`" == "x86_64"   ] && _ARCH=amd64
 
-source=(http://download.virtualbox.org/virtualbox/${version}/VirtualBox-${version}-${buildrelease}-Linux_${_ARCH}.run)
+kaynak=(http://download.virtualbox.org/virtualbox/${surum}/VirtualBox-${surum}-${buildrelease}-Linux_${_ARCH}.run)
 
 derle() {
-sh VirtualBox-${version}-${buildrelease}-Linux_${_ARCH}.run --target vb --keep --noexec
+sh VirtualBox-${surum}-${buildrelease}-Linux_${_ARCH}.run --target vb --keep --noexec
 cd vb
 tar xfj VirtualBox.tar.bz2
 cd src/vboxhost/
@@ -37,12 +37,12 @@ vboxnetflt
 vboxpci
 EOF
 # post-install autogen
-cat > $PKGMK_ROOT/$name.post-install << "EOF"
+cat > $PKGMK_ROOT/$isim.post-install << "EOF"
 . lib/lsb/init-functions
 log_success_msg "update modules population"
 EOF
-echo "depmod $KERNELRELEASE" >> $PKGMK_ROOT/$name.post-install
-cat >> $PKGMK_ROOT/$name.post-install << "EOF"
+echo "depmod $KERNELRELEASE" >> $PKGMK_ROOT/$isim.post-install
+cat >> $PKGMK_ROOT/$isim.post-install << "EOF"
 log_warning_msg "${WARNING}Check the file /etc/sysconfig/modules.d/virtualbox.conf ${NORMAL}"
 log_warning_msg "${WARNING}Reboot if you want the modules being automatically loaded${NORMAL}"
 EOF

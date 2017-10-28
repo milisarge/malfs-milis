@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python3-setuptools lapack
 
-name=python3-numpy
-version=1.11.2
-release=1
+isim=python3-numpy
+surum=1.11.2
+devir=1
 
-source=(http://sourceforge.net/projects/numpy/files/NumPy/$version/numpy-$version.tar.gz)
+kaynak=(http://sourceforge.net/projects/numpy/files/NumPy/$surum/numpy-$surum.tar.gz)
 
 derle() {
-	cd numpy-$version
+	cd numpy-$surum
 	export Atlas=None
 	export LDFLAGS="$LDFLAGS -shared"
 	python3 setup.py config_fc --fcompiler=gnu95 build

@@ -3,30 +3,30 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: giflib
 
-name=burpsuite
-version=1.7.23
-release=1
-source=( https://portswigger.net/burp/releases/download?productid=100\&version=${version}\&type=jar $name.desktop $name-48.png $name-32.png $name-16.png LICENSE )
+isim=burpsuite
+surum=1.7.23
+devir=1
+kaynak=( https://portswigger.net/burp/releases/download?productid=100\&surum=${surum}\&type=jar $isim.desktop $isim-48.png $isim-32.png $isim-16.png LICENSE )
 
 derle() {
 	cd "$SRC"
 
-  	mkdir -p "$PKG/usr/bin" "$PKG/usr/share/applications/" "$PKG/usr/share/$name/"
+  	mkdir -p "$PKG/usr/bin" "$PKG/usr/share/applications/" "$PKG/usr/share/$isim/"
   	mkdir -p "$PKG/usr/share/icons/hicolor/16x16/apps/" "$PKG/usr/share/icons/hicolor/32x32/apps/" "$PKG/usr/share/icons/hicolor/48x48/apps/"
 
-  	cp $SRC/$name-16.png $PKG/usr/share/icons/hicolor/16x16/apps/$name.png
-  	cp $SRC/$name-32.png $PKG/usr/share/icons/hicolor/32x32/apps/$name.png
-  	cp $SRC/$name-48.png $PKG/usr/share/icons/hicolor/48x48/apps/$name.png
-  	cp $SRC/$name.desktop $PKG/usr/share/applications/
-  	cp $SRC/download\?productid\=100\&version\=$version\&type\=jar $PKG/usr/share/$name/$name.jar
+  	cp $SRC/$isim-16.png $PKG/usr/share/icons/hicolor/16x16/apps/$isim.png
+  	cp $SRC/$isim-32.png $PKG/usr/share/icons/hicolor/32x32/apps/$isim.png
+  	cp $SRC/$isim-48.png $PKG/usr/share/icons/hicolor/48x48/apps/$isim.png
+  	cp $SRC/$isim.desktop $PKG/usr/share/applications/
+  	cp $SRC/download\?productid\=100\&version\=$surum\&type\=jar $PKG/usr/share/$isim/$isim.jar
 
-  	#install -Dm644 "$SRC/burpsuite_free_v$version.jar" "$PKG/usr/share/$name/$name.jar"
-  	install -Dm644 "$SRC/LICENSE" "$PKG/usr/share/licenses/$name/LICENSE"
+  	#install -Dm644 "$SRC/burpsuite_free_v$surum.jar" "$PKG/usr/share/$isim/$isim.jar"
+  	install -Dm644 "$SRC/LICENSE" "$PKG/usr/share/licenses/$isim/LICENSE"
 
-  	cat > "$PKG/usr/bin/$name" << EOF
+  	cat > "$PKG/usr/bin/$isim" << EOF
 #!/bin/sh
-exec java -jar /usr/share/$name/$name.jar "\${@}"
+exec java -jar /usr/share/$isim/$isim.jar "\${@}"
 EOF
 
-  	chmod +x "$PKG/usr/bin/$name"
+  	chmod +x "$PKG/usr/bin/$isim"
 }

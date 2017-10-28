@@ -3,16 +3,16 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: doxygen cmake
 
-name=libssh2
-version=1.8.0
-release=1
+isim=libssh2
+surum=1.8.0
+devir=1
 
-source=(https://www.libssh2.org/download/$name-$version.tar.gz)
+kaynak=(https://www.libssh2.org/download/$isim-$surum.tar.gz)
 	
 derle() {
-	cd "$name-$version"
+	cd "$isim-$surum"
 	./configure --prefix=/usr
 	make
 	make DESTDIR="$PKG" install
-	install -Dm644 COPYING "$PKG/usr/share/licenses/$name/LICENSE"
+	install -Dm644 COPYING "$PKG/usr/share/licenses/$isim/LICENSE"
 }

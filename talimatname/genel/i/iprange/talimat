@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: help2man 
 
-name=iprange
-version=1.0.3
-release=2.0
-source=(https://github.com/firehol/$name/archive/v$version.tar.gz
+isim=iprange
+surum=1.0.3
+devir=2.0
+kaynak=(https://github.com/firehol/$isim/archive/v$surum.tar.gz
 )
 
 derle() {
-	cd "$name-$version"
+	cd "$isim-$surum"
 	./autogen.sh
 	./configure  --disable-man --prefix="/usr" --sysconfdir="/etc" --sbindir="/usr/bin"
 	make

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=libical
-version=2.0.0
-release=2
+isim=libical
+surum=2.0.0
+devir=2
 
-source=( https://github.com/libical/libical/releases/download/v2.0.0/$name-$version.tar.gz)
+kaynak=( https://github.com/libical/libical/releases/download/v2.0.0/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	mkdir build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \

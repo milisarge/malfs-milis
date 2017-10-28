@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: xorg plasma-kwin plasma-workspace kf5-attica kf5-baloo kf5-karchive kf5-kauth kf5-kbookmarks kf5-kcmutils kf5-kcodecs kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdeclarative kf5-kded kf5-kdelibs4support kf5-kemoticons kf5-kglobalaccel kf5-kguiaddons kf5-ki18n kf5-kiconthemes kf5-kio kio-extras kf5-kitemviews kf5-kjobwidgets kf5-knewstuff kf5-knotifications kf5-knotifyconfig kf5-kparts kf5-kpeople kf5-krunner kf5-kservice kf5-kwallet kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui kf5-solid kf5-sonnet phonon-qt5 libxcb xcb-util-image libcanberra pulseaudio plasma-breeze plasma-kde-cli-tools plasma-oxygen desktop-file-utils xdg-utils kf5-kactivities-stats kf5-kpackage 
 
-name=plasma-desktop
-version=5.8.1
-release=1
+isim=plasma-desktop
+surum=5.8.1
+devir=1
 
-source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/plasma/$surum/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

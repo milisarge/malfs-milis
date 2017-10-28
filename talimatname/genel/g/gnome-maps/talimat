@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache clutter-gtk geoclue2 geocode-glib gjs libchamplain libgee folks gfbgraph
 
-name=gnome-maps
-version=3.22.2
-release=1
+isim=gnome-maps
+surum=3.22.2
+devir=1
 
-source=(http://download.gnome.org/sources/$name/${version:0:4}/$name-$version.tar.xz)
+kaynak=(http://download.gnome.org/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool 
 make

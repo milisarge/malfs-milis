@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: glib libffi lua gobject-introspection
 
-name=lua-lgi
-version=0.9.1
-release=1
-source=(https://github.com/pavouk/lgi/archive/$version.tar.gz::$name-$version.tar.gz)
+isim=lua-lgi
+surum=0.9.1
+devir=1
+kaynak=(https://github.com/pavouk/lgi/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd lgi-$version
+	cd lgi-$surum
 
 	make
 	make \
@@ -22,18 +22,18 @@ derle() {
 	"$PKG/usr/bin/dump-typelib"
 
 	# docs
-	install -d "$PKG/usr/share/doc/$name"
+	install -d "$PKG/usr/share/doc/$isim"
 	install -Dm644 docs/* \
-	"$PKG/usr/share/doc/$name"
+	"$PKG/usr/share/doc/$isim"
 
 	# samples
-	install -d "$PKG/usr/share/$name/samples/gtk-demo"
+	install -d "$PKG/usr/share/$isim/samples/gtk-demo"
 	install -Dm644 samples/*.lua \
-	"$PKG/usr/share/$name/samples"
+	"$PKG/usr/share/$isim/samples"
 	install -Dm644 samples/gtk-demo/* \
-	"$PKG/usr/share/$name/samples/gtk-demo"
+	"$PKG/usr/share/$isim/samples/gtk-demo"
 
 	# license
 	install -Dm644 LICENSE \
-	"$PKG/usr/share/licenses/$name/LICENSE"
+	"$PKG/usr/share/licenses/$isim/LICENSE"
 }

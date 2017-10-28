@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: pcre 
 
-name=swig
-version=3.0.12
-release=1
+isim=swig
+surum=3.0.12
+devir=1
 
-source=("http://downloads.sourceforge.net/$name/$name-$version.tar.gz")
+kaynak=("http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz")
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install
-	install -D -m644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+	install -D -m644 LICENSE $PKG/usr/share/licenses/$isim/LICENSE
 }

@@ -3,10 +3,10 @@
 # Paketçi: Cihan Alkan
 # Gerekler: nspr icu libffi python zip
 
-name=js38
-version=38.8.0
-release=1
-source=(https://ftp.mozilla.org/pub/firefox/releases/38.8.0esr/source/firefox-38.8.0esr.source.tar.bz2
+isim=js38
+surum=38.8.0
+devir=1
+kaynak=(https://ftp.mozilla.org/pub/firefox/releases/38.8.0esr/source/firefox-38.8.0esr.source.tar.bz2
         mozjs38-fix-tracelogger.patch
         mozjs38-shell-version.patch
         mozjs38-pkg-config-version.patch

@@ -3,17 +3,17 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=openjdk
-version=8u60
-release=1
-_version=1.8.0.60
-source=(http://anduin.linuxfromscratch.org/files/BLFS/OpenJDK-${_version}/OpenJDK-${_version}-`uname -m`-bin.tar.xz )
+isim=openjdk
+surum=8u60
+devir=1
+_surum=1.8.0.60
+kaynak=(http://anduin.linuxfromscratch.org/files/BLFS/OpenJDK-${_version}/OpenJDK-${_version}-`uname -m`-bin.tar.xz )
 	
 derle() {
 cd OpenJDK*
-install -vdm755 $PKG/opt/OpenJDK-$version-bin
-mv -v * $PKG/opt/OpenJDK-$version-bin 
-chown -R root:root $PKG/opt/OpenJDK-$version-bin
+install -vdm755 $PKG/opt/OpenJDK-$surum-bin
+mv -v * $PKG/opt/OpenJDK-$surum-bin 
+chown -R root:root $PKG/opt/OpenJDK-$surum-bin
 mkdir -p $PKG/etc/profile.d
 cat > $PKG/etc/profile.d/openjdk.sh << "EOF"
 # Begin /etc/profile.d/openjdk.sh
@@ -48,5 +48,5 @@ unset AUTO_CLASSPATH_DIR dir jar
 # End /etc/profile.d/openjdk.sh
 EOF
 
-ln -sv OpenJDK-$version-bin $PKG/opt/jdk
+ln -sv OpenJDK-$surum-bin $PKG/opt/jdk
 }

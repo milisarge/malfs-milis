@@ -4,10 +4,10 @@
 # Gerekler: gtk2
 
 
-name=aurora
-version=1.5.1
-release=2
-source=(https://dl.opendesktop.org/api/files/download/id/1460970469/56438-$name-$version.tar.bz2 \
+isim=aurora
+surum=1.5.1
+devir=2
+kaynak=(https://dl.opendesktop.org/api/files/download/id/1460970469/56438-$isim-$surum.tar.bz2 \
     https://dl.opendesktop.org/api/files/download/id/1460970232/80431-aurorasmooth.tar.bz2)
 
 derle() {

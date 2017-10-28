@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=bindutils
-version=9.11.0
-release=1
-source=(ftp://ftp.isc.org/isc/bind9/$version/bind-$version.tar.gz)
+isim=bindutils
+surum=9.11.0
+devir=1
+kaynak=(ftp://ftp.isc.org/isc/bind9/$surum/bind-$surum.tar.gz)
 
 derle() {
-    cd bind-$version
+    cd bind-$surum
 
     ./configure --prefix=/usr \
                 --disable-linux-caps \

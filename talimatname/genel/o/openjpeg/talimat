@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: lcms2 libpng libtiff 
 
-name=openjpeg
-version=1.5.2
-release=1
+isim=openjpeg
+surum=1.5.2
+devir=1
 
-source=(http://downloads.sourceforge.net/openjpeg.mirror/$name-$version.tar.gz )
+kaynak=(http://downloads.sourceforge.net/openjpeg.mirror/$isim-$surum.tar.gz )
 
 
 derle() {
-	cd openjpeg-$version
+	cd openjpeg-$surum
 	autoreconf -f -i
 	./configure --prefix=/usr --disable-static
 	make

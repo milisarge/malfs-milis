@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: 
 
-name=wireless-tools
-version=29
-release=1
+isim=wireless-tools
+surum=29
+devir=1
 
-source=(  http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.$version.tar.gz)
+kaynak=(  http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.$surum.tar.gz)
 
 derle() {
-cd wireless_tools.$version
+cd wireless_tools.$surum
 make
 mkdir -p $PKG/usr/{sbin,lib,include,share/man}
 make PREFIX=$PKG/usr INSTALL_MAN=$PKG/usr/share/man install

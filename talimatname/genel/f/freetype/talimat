@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libpng
 
-name=freetype
-version=2.6.3
-release=1
-source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+isim=freetype
+surum=2.6.3
+devir=1
+kaynak=( http://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -e "/AUX.*.gxvalid/s@^# @@" \
 -e "/AUX.*.otvalid/s@^# @@" \
 -i modules.cfg
@@ -21,8 +21,8 @@ make
 make DESTDIR=$PKG install
 cd ..
 mkdir docs
-wget http://downloads.sourceforge.net/freetype/freetype-doc-$version.tar.bz2
-tar -xf freetype-doc-$version.tar.bz2 --strip-components=2 -C docs
-install -v -m755 -d $PKG/usr/share/doc/$name-$version
-cp -v -R docs/*     $PKG/usr/share/doc/$name-$version
+wget http://downloads.sourceforge.net/freetype/freetype-doc-$surum.tar.bz2
+tar -xf freetype-doc-$surum.tar.bz2 --strip-components=2 -C docs
+install -v -m755 -d $PKG/usr/share/doc/$isim-$surum
+cp -v -R docs/*     $PKG/usr/share/doc/$isim-$surum
 }

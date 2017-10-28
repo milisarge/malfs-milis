@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: clisp
 
-name=sbcl
-version=1.3.17
-release=1
-source=(https://downloads.sourceforge.net/project/sbcl/sbcl/1.3.17/sbcl-$version-source.tar.bz2
+isim=sbcl
+surum=1.3.17
+devir=1
+kaynak=(https://downloads.sourceforge.net/project/sbcl/sbcl/1.3.17/sbcl-$surum-source.tar.bz2
 		arch-fixes.lisp
 		customize-target-features.lisp)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
   export CFLAGS+=" -D_GNU_SOURCE -fno-omit-frame-pointer -DSBCL_HOME=/usr/lib/sbcl"
   export GNUMAKE="make"
   # build system uses LINKFLAGS and OS_LIBS to build LDFLAGS
@@ -35,11 +35,11 @@ derle() {
 
   mkdir -p "$PKG/usr/share/sbcl-source"
 
-  cp -R -t "$PKG/usr/share/sbcl-source" "$SRC/$name-$version/"{src,contrib}
+  cp -R -t "$PKG/usr/share/sbcl-source" "$SRC/$isim-$surum/"{src,contrib}
 
   # license
 
-  install -D -m644 "$SRC/$name-$version/COPYING"  "$PKG/usr/share/licenses/$name/license.txt"
+  install -D -m644 "$SRC/$isim-$surum/COPYING"  "$PKG/usr/share/licenses/$isim/license.txt"
 
   # drop unwanted files
 

@@ -12,7 +12,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/default-inkscape-SVG.svg inks
 --- inkscape-0.91/share/extensions/test/svg/default-inkscape-SVG.svg	1970-01-01 01:00:00.000000000 +0100
 +++ inkscape-0.91-testfiles/share/extensions/test/svg/default-inkscape-SVG.svg	2015-02-07 13:59:29.083967647 +0000
 @@ -0,0 +1,37 @@
-+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<?xml surum="1.0" encoding="UTF-8" standalone="no"?>
 +<!-- Created with Inkscape (http://www.inkscape.org/) -->
 +<svg
 +   xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/default-inkscape-SVG.svg inks
 +         rdf:about="">
 +        <dc:format>image/svg+xml</dc:format>
 +        <dc:type
-+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
++           rdf:rekaynak="http://purl.org/dc/dcmitype/StillImage" />
 +      </cc:Work>
 +    </rdf:RDF>
 +  </metadata>
@@ -53,7 +53,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/default-plain-SVG.svg inkscap
 --- inkscape-0.91/share/extensions/test/svg/default-plain-SVG.svg	1970-01-01 01:00:00.000000000 +0100
 +++ inkscape-0.91-testfiles/share/extensions/test/svg/default-plain-SVG.svg	2015-02-07 13:59:29.087967572 +0000
 @@ -0,0 +1,29 @@
-+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<?xml surum="1.0" encoding="UTF-8" standalone="no"?>
 +<!-- Created with Inkscape (http://www.inkscape.org/) -->
 +
 +<svg
@@ -62,7 +62,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/default-plain-SVG.svg inkscap
 +   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 +   xmlns:svg="http://www.w3.org/2000/svg"
 +   xmlns="http://www.w3.org/2000/svg"
-+   version="1.1"
++   surum="1.1"
 +   width="744.09448819"
 +   height="1052.3622047">
 +  <defs
@@ -74,7 +74,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/default-plain-SVG.svg inkscap
 +         rdf:about="">
 +        <dc:format>image/svg+xml</dc:format>
 +        <dc:type
-+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
++           rdf:rekaynak="http://purl.org/dc/dcmitype/StillImage" />
 +        <dc:title></dc:title>
 +      </cc:Work>
 +    </rdf:RDF>
@@ -86,7 +86,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/empty-SVG.svg inkscape-0.91-t
 --- inkscape-0.91/share/extensions/test/svg/empty-SVG.svg	1970-01-01 01:00:00.000000000 +0100
 +++ inkscape-0.91-testfiles/share/extensions/test/svg/empty-SVG.svg	2015-02-07 13:59:29.087967572 +0000
 @@ -0,0 +1,13 @@
-+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<?xml surum="1.0" encoding="UTF-8" standalone="no"?>
 +<!-- Created with Inkscape (http://www.inkscape.org/) -->
 +
 +<svg
@@ -95,7 +95,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/empty-SVG.svg inkscape-0.91-t
 +   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 +   xmlns:svg="http://www.w3.org/2000/svg"
 +   xmlns="http://www.w3.org/2000/svg"
-+   version="1.1"
++   surum="1.1"
 +   width="744.09448819"
 +   height="1052.3622047">
 +</svg>
@@ -103,7 +103,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/multilayered-test.svg inkscap
 --- inkscape-0.91/share/extensions/test/svg/multilayered-test.svg	1970-01-01 01:00:00.000000000 +0100
 +++ inkscape-0.91-testfiles/share/extensions/test/svg/multilayered-test.svg	2015-02-07 13:59:29.091967496 +0000
 @@ -0,0 +1,152 @@
-+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<?xml surum="1.0" encoding="UTF-8" standalone="no"?>
 +<!-- Created with Inkscape (http://www.inkscape.org/) -->
 +
 +<svg
@@ -118,9 +118,9 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/multilayered-test.svg inkscap
 +   width="210mm"
 +   height="297mm"
 +   id="svg2"
-+   version="1.1"
-+   inkscape:version="0.48+devel "
-+   sodipodi:docname="Nouveau document 1">
++   surum="1.1"
++   inkscape:surum="0.48+devel "
++   sodipodi:docisim="Nouveau document 1">
 +  <defs
 +     id="defs4" />
 +  <sodipodi:namedview
@@ -148,7 +148,7 @@ diff -Naur inkscape-0.91/share/extensions/test/svg/multilayered-test.svg inkscap
 +         rdf:about="">
 +        <dc:format>image/svg+xml</dc:format>
 +        <dc:type
-+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
++           rdf:rekaynak="http://purl.org/dc/dcmitype/StillImage" />
 +        <dc:title></dc:title>
 +      </cc:Work>
 +    </rdf:RDF>

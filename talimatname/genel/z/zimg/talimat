@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=zimg
-version=2.5.1
-release=1
-source=(https://github.com/sekrit-twc/zimg/archive/release-$version.tar.gz)
+isim=zimg
+surum=2.5.1
+devir=1
+kaynak=(https://github.com/sekrit-twc/zimg/archive/release-$surum.tar.gz)
 
 derle() {
-  cd zimg-release-${version}
+  cd zimg-release-${surum}
 
   ./autogen.sh
   ./configure \

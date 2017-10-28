@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: ilmbase 
 
-name=openexr
-version=2.2.0
-release=1
+isim=openexr
+surum=2.2.0
+devir=1
 
-source=( http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
+kaynak=( http://savannah.nongnu.org/download/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --localstatedir=/var \
 --sysconfdir=/etc

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: glib
 
-name=libzeitgeist
-version=0.3.18
-release=1
+isim=libzeitgeist
+surum=0.3.18
+devir=1
 
-source=(http://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.gz)
+kaynak=(http://launchpad.net/$isim/${surum%.*}/$surum/+download/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static	
 make

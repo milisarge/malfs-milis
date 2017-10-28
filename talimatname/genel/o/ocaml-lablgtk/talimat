@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: ocaml ocaml-findlib ocaml-lablgl gtk2 librsvg libglade gtksourceview2 xorg-mesa
 
-name=ocaml-lablgtk
-_name=lablgtk
-version=2.18.5
-release=1
-source=(https://forge.ocamlcore.org/frs/download.php/1627/$name-$version.tar.gz)
+isim=ocaml-lablgtk
+_isim=lablgtk
+surum=2.18.5
+devir=1
+kaynak=(https://forge.ocamlcore.org/frs/download.php/1627/$isim-$surum.tar.gz)
 
 derle() {
-	cd ${_name}-$version
+	cd ${_name}-$surum
 	export LD_LIBRARY_PATH=/usr/lib/ocaml/stublibs/:/usr/lib/ocaml/:${LD_LIBRARY_PATH}
 	
 	./configure \

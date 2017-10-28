@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: boost cmake boost python sdl2 libvorbis glew openal hicolor-icon-theme freetype
 
-name=freeorion
-version=0.4.7
-release=1
-source=(https://github.com/freeorion/freeorion/releases/download/v${version}/FreeOrion_v${version}_2017-04-24.60d06dc_Source.tar.gz)
+isim=freeorion
+surum=0.4.7
+devir=1
+kaynak=(https://github.com/freeorion/freeorion/releases/download/v${surum}/FreeOrion_v${surum}_2017-04-24.60d06dc_Source.tar.gz)
 
 derle() {
   cd $SRC/src-tarball

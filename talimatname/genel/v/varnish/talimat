@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: libedit pcre python-docutils 
 
-name=varnish
-version=4.0.3
-release=1
+isim=varnish
+surum=4.0.3
+devir=1
 
-source=(
-http://repo.varnish-cache.org/source/$name-$version.tar.gz
+kaynak=(
+http://repo.varnish-cache.org/source/$isim-$surum.tar.gz
 varnish.service)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --localstatedir=/var/lib
@@ -20,5 +20,5 @@ derle(){
     make DESTDIR=$PKG install
 
     # install the varnish init script
-    install -Dm755 $SRC/$name.service $PKG/etc/rc.d/init.d/$name
+    install -Dm755 $SRC/$isim.service $PKG/etc/rc.d/init.d/$isim
 }

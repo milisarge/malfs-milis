@@ -3,27 +3,27 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: ruby-bundler libxslt yaml curl
 
-name=wpscan
-version=2.9.2
-release=1
-source=(https://github.com/wpscanteam/wpscan/archive/${version}.tar.gz https://github.com/wpscanteam/wpscan/commit/f6644eebf95baea3356290ecd6364f0a4a456406.patch)
+isim=wpscan
+surum=2.9.2
+devir=1
+kaynak=(https://github.com/wpscanteam/wpscan/archive/${surum}.tar.gz https://github.com/wpscanteam/wpscan/commit/f6644eebf95baea3356290ecd6364f0a4a456406.patch)
 
 derle() {
-  cd $SRC/${name}-${version}
+  cd $SRC/${isim}-${surum}
   bundle config build.nokogiri --use-system-libraries
   echo 2.3.3 > .ruby-version
   patch -p1 < ../f6644eebf95baea3356290ecd6364f0a4a456406.patch
 
-  install -d "${PKG}/opt/${name}"
-  cp -ra --no-preserve=owner . "${PKG}/opt/${name}"
+  install -d "${PKG}/opt/${isim}"
+  cp -ra --no-preserve=owner . "${PKG}/opt/${isim}"
 
   install -d "${PKG}/usr/bin"
-  cat > "${PKG}/usr/bin/${name}" << EOF
+  cat > "${PKG}/usr/bin/${isim}" << EOF
 #!/bin/sh
-BUNDLE_GEMFILE=/opt/${name}/Gemfile bundle exec ruby /opt/${name}/${name}.rb "\$@"
+BUNDLE_GEMFILE=/opt/${isim}/Gemfile bundle exec ruby /opt/${isim}/${isim}.rb "\$@"
 EOF
-  chmod 755 "${PKG}/usr/bin/${name}"
+  chmod 755 "${PKG}/usr/bin/${isim}"
 
-  install -Dm 644 LICENSE -t "${PKG}/usr/share/licenses/${name}"
-  install -Dm 644 CHANGELOG.md DISCLAIMER.txt README.md -t "${PKG}/usr/share/doc/${name}"
+  install -Dm 644 LICENSE -t "${PKG}/usr/share/licenses/${isim}"
+  install -Dm 644 CHANGELOG.md DISCLAIMER.txt README.md -t "${PKG}/usr/share/doc/${isim}"
 }

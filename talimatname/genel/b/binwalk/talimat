@@ -3,13 +3,13 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: python-magic python-opengl python-pip python python-setuptools
 
-name=binwalk
-version=2.1.1
-release=1
-source=(https://github.com/devttys0/$name/archive/v${version}.tar.gz)
+isim=binwalk
+surum=2.1.1
+devir=1
+kaynak=(https://github.com/devttys0/$isim/archive/v${surum}.tar.gz)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
 
   python2 setup.py build
 
@@ -17,8 +17,8 @@ derle() {
 
   python2 setup.py install --root="$PKG" --optimize=1
 
-  install -Dm644 -t "$PKG/usr/share/doc/$name" README.md INSTALL.md API.md
-  #install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+  install -Dm644 -t "$PKG/usr/share/doc/$isim" README.md INSTALL.md API.md
+  #install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
 
   #ln -sf /usr/share/firmware-mod-kit "$PKG/opt/firmware-mod-kit"
 }

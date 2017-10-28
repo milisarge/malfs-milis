@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: pkg-config libtool wayland xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage expat llvm elfutils xorg-libxshmfence wayland libvdpau
 
-name=xorg-mesa
-version=17.1.8
-release=1
+isim=xorg-mesa
+surum=17.1.8
+devir=1
 
-source=(ftp://ftp.freedesktop.org/pub/mesa/mesa-$version.tar.xz)
+kaynak=(ftp://ftp.freedesktop.org/pub/mesa/mesa-$surum.tar.xz)
 
 derle() {
-	cd mesa-$version
+	cd mesa-$surum
 
 	CONFIG_SHELL=/bin/bash \
 	./configure \

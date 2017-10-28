@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool vala gtk3 gobject-introspection gnome-common glib
 
-name=gnome-autoar
-version=0.2.2
-release=1
-source=(https://download.gnome.org/sources/$name/0.2/$name-$version.tar.xz)
+isim=gnome-autoar
+surum=0.2.2
+devir=1
+kaynak=(https://download.gnome.org/sources/$isim/0.2/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
    ./configure --prefix=/usr --disable-gtk-doc
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make -j1

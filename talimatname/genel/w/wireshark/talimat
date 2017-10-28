@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 libpcap pcre
 
-name=wireshark
-version=2.0.1
-release=1
-source=(http://www.$name.org/download/src/all-versions/$name-$version.tar.bz2
+isim=wireshark
+surum=2.0.1
+devir=1
+kaynak=(http://www.$isim.org/download/src/all-versions/$isim-$surum.tar.bz2
  wireshark-2.0.1-lua_5_3_1-1.patch)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   patch -Np1 -i ../wireshark-2.0.1-lua_5_3_1-1.patch
   ./configure --prefix=/usr \
               --mandir=/usr/man \
-              --with-plugins=/usr/lib/$name/plugins \
+              --with-plugins=/usr/lib/$isim/plugins \
               --disable-nls \
               --enable-snmp \
               --disable-gcry \

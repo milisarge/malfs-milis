@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=reiserfsprogs
-version=3.6.24
-release=1
+isim=reiserfsprogs
+surum=3.6.24
+devir=1
 
-source=(http://ftp.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v${version}/$name-$version.tar.xz)
+kaynak=(http://ftp.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/v${surum}/$isim-$surum.tar.xz)
 
 
 derle() {
 	export CFLAGS="$CFLAGS -std=gnu90"
-        cd $name-$version
+        cd $isim-$surum
         ./configure --prefix=/usr \
                 --sbindir=/sbin
         make

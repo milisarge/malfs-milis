@@ -3,24 +3,24 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=advcp
-_name=coreutils
-version=8.24
-release=1
-source=(ftp://ftp.gnu.org/gnu/$_name/$_name-$version.tar.xz
-		advcpmv-${version}.patch)
+isim=advcp
+_isim=coreutils
+surum=8.24
+devir=1
+kaynak=(ftp://ftp.gnu.org/gnu/$_name/$_name-$surum.tar.xz
+		advcpmv-${surum}.patch)
 
 derle() {
   export FORCE_UNSAFE_CONFIGURE=1
-  cd ${SRC}/${_name}-${version}
+  cd ${SRC}/${_name}-${surum}
 
-  patch -p1 -i ${SRC}/advcpmv-${version}.patch
+  patch -p1 -i ${SRC}/advcpmv-${surum}.patch
 
   ./configure --prefix=/usr \
               --libexecdir=/usr/lib \
               --enable-no-install-program=groups,hostname,kill,uptime
   make $MAKEFLAGS -j1
-  cd ${SRC}/${_name}-${version}
+  cd ${SRC}/${_name}-${surum}
   install -D src/cp ${PKG}/usr/bin/acp
   install -D src/mv ${PKG}/usr/bin/amv
 

@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: texinfo xorg-libxft xorg-libxinerama xorg-libxtst
 
-name=ratpoison
-version=1.4.7
-release=2
+isim=ratpoison
+surum=1.4.7
+devir=2
 
-source=(http://savannah.nongnu.org/download/$name/$name-$version.tar.xz
-$name.desktop
-$name.README)
+kaynak=(http://savannah.nongnu.org/download/$isim/$isim-$surum.tar.xz
+$isim.desktop
+$isim.README)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     sed -i 's|PRINT_ERROR (("XGetWMName|PRINT_DEBUG (("XGetWMName|' src/manage.c
     ./configure --prefix=/usr
     make CFLAGS="$CFLAGS -DHAVE_GETLINE"
@@ -28,12 +28,12 @@ derle(){
         {Ratpoison.pm,ratpoison-cmd.el,ratpoison.rb,ratpoison.lisp,ratpoison.py} \
             $PKG/usr/share/ratpoison/bindings/
 
-    install -Dm644 $SRC/$name.desktop \
-        $PKG/usr/share/xsessions/$name.desktop
+    install -Dm644 $SRC/$isim.desktop \
+        $PKG/usr/share/xsessions/$isim.desktop
 
-    mv $PKG/usr/share/doc/$name $PKG/usr/share/doc/$name-$version
-    install -m644 $SRC/$name.README \
-        $PKG/usr/share/doc/$name-$version/$name.README
+    mv $PKG/usr/share/doc/$isim $PKG/usr/share/doc/$isim-$surum
+    install -m644 $SRC/$isim.README \
+        $PKG/usr/share/doc/$isim-$surum/$isim.README
 }
 
 

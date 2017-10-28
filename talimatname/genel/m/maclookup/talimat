@@ -3,17 +3,17 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: 
 
-name=maclookup
-version=0.4
-release=1
-source=(https://github.com/paraxor/$name/archive/${version}.tar.gz)
+isim=maclookup
+surum=0.4
+devir=1
+kaynak=(https://github.com/paraxor/$isim/archive/${surum}.tar.gz)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
 
-  mkdir -p "$PKG/usr/share/$name"
+  mkdir -p "$PKG/usr/share/$isim"
 
-  install -Dm755 $name.sh "$PKG/usr/bin/$name"
+  install -Dm755 $isim.sh "$PKG/usr/bin/$isim"
 
-  sh $name.sh -u -f "$PKG/usr/share/$name/oui.txt"
+  sh $isim.sh -u -f "$PKG/usr/share/$isim/oui.txt"
 }

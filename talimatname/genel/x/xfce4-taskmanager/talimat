@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 libwnck
 
-name=xfce4-taskmanager
-version=1.1.0
-release=2
+isim=xfce4-taskmanager
+surum=1.1.0
+devir=2
 
-source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/$isim/${surum%.*}/$isim-$surum.tar.bz2)
         
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --libexecdir=/usr/lib \

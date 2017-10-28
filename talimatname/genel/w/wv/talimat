@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libgsf libpng
 
-name=wv
-version=1.2.9
-release=1
+isim=wv
+surum=1.2.9
+devir=1
 
-source=(http://www.abiword.com/downloads/$name/$version/$name-$version.tar.gz)
+kaynak=(http://www.abiword.com/downloads/$isim/$surum/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --mandir=/usr/share/man
 make
 make DESTDIR=$PKG install

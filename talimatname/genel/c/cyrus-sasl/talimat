@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: db
 
-name=cyrus-sasl
-version=2.1.26
-release=1
-source=(ftp://ftp.cyrusimap.org/cyrus-sasl/$name-$version.tar.gz
-	http://www.linuxfromscratch.org/patches/blfs/svn/cyrus-sasl-$version-fixes-3.patch)
+isim=cyrus-sasl
+surum=2.1.26
+devir=1
+kaynak=(ftp://ftp.cyrusimap.org/cyrus-sasl/$isim-$surum.tar.gz
+	http://www.linuxfromscratch.org/patches/blfs/svn/cyrus-sasl-$surum-fixes-3.patch)
 
 derle() {
-	cd $name-$version
-	patch -Np1 -i ../cyrus-sasl-$version-fixes-3.patch
+	cd $isim-$surum
+	patch -Np1 -i ../cyrus-sasl-$surum-fixes-3.patch
 	autoreconf -fi
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \

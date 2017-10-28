@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: xfce4-dev-tools libwnck3 clutter xfce4-garcon 
 
-name=xfdashboard
-version=0.7.3
-release=1
-source=(https://github.com/gmc-holle/xfdashboard/archive/0.7.3.tar.gz
+isim=xfdashboard
+surum=0.7.3
+devir=1
+kaynak=(https://github.com/gmc-holle/xfdashboard/archive/0.7.3.tar.gz
 )
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --disable-dependency-tracking
 
   # -Wl,--as-needed should come before all libraries

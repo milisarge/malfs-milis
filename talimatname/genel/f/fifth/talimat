@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: webkitfltk urlmatch physfs desktop-file-utils
 
-name=fifth
-version=git
-release=1
-source=()
+isim=fifth
+surum=git
+devir=1
+kaynak=()
 
 derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/fifth ];then
@@ -17,7 +17,7 @@ derle() {
 		cd -
 	fi
 	cp -r $DERLEME_KAYNAKDIZIN/fifth ${SRC}/fifth
-	cd "${SRC}/${name}"
+	cd "${SRC}/${isim}"
 	./autogen.sh
 	./configure
 	make

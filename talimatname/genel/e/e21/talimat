@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: elementary evas_generic_loaders xorg-xcb-util-keysyms dejavu-ttf
 
-name=e21
-version=0.21.9
-release=1
-source=(http://download.enlightenment.org/rel/apps/enlightenment/enlightenment-$version.tar.xz)
+isim=e21
+surum=0.21.9
+devir=1
+kaynak=(http://download.enlightenment.org/rel/apps/enlightenment/enlightenment-$surum.tar.xz)
 
 derle()
 {
-    cd enlightenment-$version
+    cd enlightenment-$surum
     ./configure --prefix=/usr \
                 --disable-mount-udisks
     make

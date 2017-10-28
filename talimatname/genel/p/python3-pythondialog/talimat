@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python3
 
-name=python3-pythondialog
-_name=pythondialog
-version=3.4.0
-release=1
-source=(http://downloads.sourceforge.net/project/${_name}/${_name}/${version}/python3-${_name}-${version}.tar.bz2)
+isim=python3-pythondialog
+_isim=pythondialog
+surum=3.4.0
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/${_name}/${_name}/${surum}/python3-${_name}-${surum}.tar.bz2)
 
 derle() {
-	cd "${SRC}/${_name}-${version}"
+	cd "${SRC}/${_name}-${surum}"
 	python3 ./setup.py install --prefix=/usr --root="${PKG}" -O1
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: portaudio python3-setuptools 
 
-name=python3-pyaudio
-version=0.2.11
-release=1
-source=(https://files.pythonhosted.org/packages/source/P/PyAudio/PyAudio-$version.tar.gz)
+isim=python3-pyaudio
+surum=0.2.11
+devir=1
+kaynak=(https://files.pythonhosted.org/packages/source/P/PyAudio/PyAudio-$surum.tar.gz)
 
 derle() {
-  cd $SRC/PyAudio-$version
+  cd $SRC/PyAudio-$surum
   python3 setup.py build
   python3 setup.py install --root=$PKG
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools
 
-name=python-pyasn1
-_name=pyasn1
-version=0.1.9
-release=1
-source=(http://pypi.python.org/packages/source/p/$_name/$_name-$version.tar.gz)
+isim=python-pyasn1
+_isim=pyasn1
+surum=0.1.9
+devir=1
+kaynak=(http://pypi.python.org/packages/source/p/$_name/$_name-$surum.tar.gz)
 
 derle() {
-	cd $_name-$version
+	cd $_name-$surum
 	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
 }

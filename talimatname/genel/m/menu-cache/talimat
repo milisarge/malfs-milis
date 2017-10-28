@@ -4,13 +4,13 @@
 # Gerekler: libfm-extra
 
 
-name=menu-cache
-version=1.0.1
-release=1
+isim=menu-cache
+surum=1.0.1
+devir=1
 
-source=(http://downloads.sourceforge.net/lxde/$name-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/lxde/$isim-$surum.tar.xz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr  --disable-static
 make
 make DESTDIR=$PKG install

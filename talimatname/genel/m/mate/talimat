@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: atril caja caja-extensions engrampa eom libmatekbd libmatemixer libmateweather libpeas marco mate-applets mate-backgrounds mate-calc mate-common mate-control-center mate-desktop mate-icon-theme mate-icon-theme-faenza mate-indicator-applet mate-media mate-menus mate-netbook mate-notification-daemon mate-panel mate-polkit mate-power-manager mate-screensaver mate-sensors-applet mate-session-manager mate-settings-daemon mate-system-monitor mate-terminal mate-themes mate-user-guide mate-user-share mate-utils mozo pluma python-caja
 
-name=mate
-version=1
-release=1
+isim=mate
+surum=1
+devir=1
 
-source=(talimat)
+kaynak=(talimat)
 
 derle() {
 echo "mate sistem"

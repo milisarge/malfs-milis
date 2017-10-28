@@ -3,11 +3,11 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
 
-name=firefox-bin
-_name=firefox
-version=54.0
-release=1
-source=(https://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/tr/firefox-$version.tar.bz2
+isim=firefox-bin
+_isim=firefox
+surum=54.0
+devir=1
+kaynak=(https://ftp.mozilla.org/pub/firefox/releases/$surum/linux-x86_64/tr/firefox-$surum.tar.bz2
 		firefox.desktop)
  
 derle() {
@@ -37,7 +37,7 @@ derle() {
   install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
 id=Milis
-version=1.0 Atilla
+surum=1.0 Atilla
 about=Milis Lİnux 1.0 için Mozilla Firefox
 
 [Preferences]

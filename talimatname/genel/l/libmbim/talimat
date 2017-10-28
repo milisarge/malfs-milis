@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: glib gobject-introspection libgudev
 
-name=libmbim
-version=1.14.0
-release=1
+isim=libmbim
+surum=1.14.0
+devir=1
 
-source=( http://www.freedesktop.org/software/$name/$name-$version.tar.xz)
+kaynak=( http://www.freedesktop.org/software/$isim/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
             --disable-static
 

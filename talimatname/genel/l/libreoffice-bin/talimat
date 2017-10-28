@@ -3,44 +3,44 @@
 # Paketçi: milisarge
 # Gerekler: cups xorg-libxaw xorg-libxcursor xorg-libxft xorg-libxinerama xorg-libxi xorg-libxrandr dbus-glib krb5
 
-name=libreoffice-bin
+isim=libreoffice-bin
 namep=libreoffice
-version=5.1.3
-release=1
-source=(http://tdf.c3sl.ufpr.br/libreoffice/stable/5.1.3/rpm/x86_64/LibreOffice_5.1.3_Linux_x86-64_rpm.tar.gz)
+surum=5.1.3
+devir=1
+kaynak=(http://tdf.c3sl.ufpr.br/libreoffice/stable/5.1.3/rpm/x86_64/LibreOffice_5.1.3_Linux_x86-64_rpm.tar.gz)
 
 
 derle() {
     local workd="$SRC/tmp_work"
     mkdir $workd
 
-    cd LibreOffice_${version}*/RPMS
+    cd LibreOffice_${surum}*/RPMS
     for rpm in *.rpm; do
         bsdtar -p -o -C $workd -xf $rpm
     done
 
     bsdtar -p -o -C $workd -xf \
-        $namep${version%.*}-freedesktop-menus-${version%.*}*.noarch.rpm
+        $isimp${surum%.*}*.noarch.rpm
 
     cd $workd
-    mkdir -p $PKG/usr/lib/$namep
-    mv opt/$namep*/* $PKG/usr/lib/$namep
+    mkdir -p $PKG/usr/lib/$isimp
+    mv opt/$isimp*/* $PKG/usr/lib/$isimp
 
-    cd $PKG/usr/lib/$namep
-    ln -sf basis${version%.*} basis-link
+    cd $PKG/usr/lib/$isimp
+    ln -sf basis${surum%.*} basis-link
 
     mkdir -p $PKG/usr/bin
     local programs=(sbase scalc sdraw simpress smath soffice spadmin swriter)
     for program in ${programs[@]}; do
-        ln -sf /usr/lib/$namep/program/$program $PKG/usr/bin/$program
+        ln -sf /usr/lib/$isimp/program/$program $PKG/usr/bin/$program
     done
 
     mkdir -p $PKG/usr/share/applications
-    cd $PKG/usr/lib/$namep/share/xdg/
+    cd $PKG/usr/lib/$isimp/share/xdg/
 
     for desktop in *.desktop; do
        sed -i '/^Exec=/s/libreoffice[^ ]*/soffice/' $desktop
-       ln -sf /usr/lib/$namep/share/xdg/$desktop $PKG/usr/share/applications/$desktop 
+       ln -sf /usr/lib/$isimp/share/xdg/$desktop $PKG/usr/share/applications/$desktop 
     done
 
     mv $workd/usr/share/{mime,icons} $PKG/usr/share

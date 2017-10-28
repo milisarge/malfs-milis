@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libndp
-version=1.5
-release=1
+isim=libndp
+surum=1.5
+devir=1
 
-source=(http://libndp.org/files/$name-$version.tar.gz)
+kaynak=(http://libndp.org/files/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --localstatedir=/var \

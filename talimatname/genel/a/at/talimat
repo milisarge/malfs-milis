@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: sendmail pam
 
-name=at
-version=3.1.16
-release=1
-source=(http://ftp.de.debian.org/debian/pool/main/a/at/at_$version.orig.tar.gz)
+isim=at
+surum=3.1.16
+devir=1
+kaynak=(http://ftp.de.debian.org/debian/pool/main/a/at/at_$surum.orig.tar.gz)
 
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 
 source  /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
@@ -21,8 +21,8 @@ install -v -m755 -d $PKG/root/at/atjobs
 
 sed -i '/docdir/s/=.*/= @docdir@/' Makefile.in
 
-./configure --with-daemon_username=atd        \
-            --with-daemon_groupname=atd       \
+./configure --with-daemon_userisim=atd        \
+            --with-daemon_groupisim=atd       \
             --with-jobdir=/root/at/atjobs \
             --with-atspool=/root/at/atspool \
             SENDMAIL=/usr/sbin/sendmail

@@ -6,16 +6,16 @@
 _pybin=python2
 _pydir=python2.7
 
-name=opencv
-version=3.3.0
-release=2
+isim=opencv
+surum=3.3.0
+devir=2
 
-source=(http://downloads.sourceforge.net/opencvlibrary/$name-$version.zip
+kaynak=(http://downloads.sourceforge.net/opencvlibrary/$isim-$surum.zip
 		https://raw.githubusercontent.com/opencv/opencv_3rdparty/a62e20676a60ee0ad6581e217fe7e4bada3b95db/ippicv/ippicv_2017u2_lnx_intel64_20170418.tgz
-		https://github.com/opencv/opencv_contrib/archive/$version.tar.gz::opencv_contrib-$version.tar.gz)
+		https://github.com/opencv/opencv_contrib/archive/$surum.tar.gz::opencv_contrib-$surum.tar.gz)
    
 derle() {
-        cd $name-$version
+        cd $isim-$surum
         
         ipp_surum=ippicv_2017u2_lnx_intel64_20170418.tgz
         ipp_file=$DERLEME_KAYNAKDIZIN/$ipp_surum &&
@@ -42,14 +42,14 @@ derle() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_SKIP_RPATH=ON \
-		-DOPENCV_EXTRA_MODULES_PATH="$SRC/opencv_contrib-$version/modules" \
+		-DOPENCV_EXTRA_MODULES_PATH="$SRC/opencv_contrib-$surum/modules" \
 		 ..
         make
         make DESTDIR=$PKG install
         cd "$PKG/usr/share"
 		if [[ -d OpenCV/samples ]]; then
-			mv OpenCV/samples "$SRC/$name-samples"
-			mv OpenCV $name #dizini ismi tutarlı olması için
+			mv OpenCV/samples "$SRC/$isim-samples"
+			mv OpenCV $isim #dizini ismi tutarlı olması için
 		elif [[ ! -d OpenCV ]]; then
 			echo "Dizin adlandırma hatası!"
 		fi

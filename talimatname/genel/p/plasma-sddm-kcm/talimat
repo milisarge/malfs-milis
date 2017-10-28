@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk@hotmail.com
 # Gerekler: kf5-extra-cmake-modules sddm qt5 kf5-kio kf5-kauth kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kxmlgui xorg-libx11 xcb-util-image libxcb xorg-libxcursor
 
-name=plasma-sddm-kcm
-version=5.8.1
-release=1
-_name=sddm-kcm
+isim=plasma-sddm-kcm
+surum=5.8.1
+devir=1
+_isim=sddm-kcm
 
-source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/plasma/$surum/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DKDE_INSTALL_LIBDIR=lib \

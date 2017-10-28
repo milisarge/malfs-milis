@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: db libsamplerate readline doxygen celt
 
-_longname=jack-audio-connection-kit
-name=jack
-version=0.124.1
-release=1
-source=(http://jackaudio.org/downloads/${_longname}-$version.tar.gz
+_longisim=jack-audio-connection-kit
+isim=jack
+surum=0.124.1
+devir=1
+kaynak=(http://jackaudio.org/downloads/${_longname}-$surum.tar.gz
         jack-99-audio.conf
         jack-40-hpet-permissions.rules)
 
 derle() {
-cd ${_longname}-$version
+cd ${_longname}-$surum
 ./configure --prefix=/usr --libdir=/usr/lib
 make
 make DESTDIR=$PKG install

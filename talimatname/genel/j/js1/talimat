@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libffi nspr zip python
 
-name=js1
-version=17.0.0
-release=1
-source=( http://ftp.mozilla.org/pub/mozilla.org/js/mozjs$version.tar.gz )
+isim=js1
+surum=17.0.0
+devir=1
+kaynak=( http://ftp.mozilla.org/pub/mozilla.org/js/mozjs$surum.tar.gz )
 
 derle() {
-cd mozjs$version/js/src
+cd mozjs$surum/js/src
 sed -i 's/(defined\((@TEMPLATE_FILE)\))/\1/' config/milestone.pl
 ./configure --prefix=/usr       \
             --enable-readline   \

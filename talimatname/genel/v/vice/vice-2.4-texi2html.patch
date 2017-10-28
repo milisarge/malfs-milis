@@ -2,7 +2,7 @@
 +++ b/doc/html/texi2html	2015-11-10 12:22:18.750067582 -0800
 @@ -1557,17 +1557,13 @@
      $level--; # here we start at 0
-     if ($name =~ /^appendix/) {
+     if ($isim =~ /^appendix/) {
  	# appendix style
 -	if (defined(@appendix_sec_num)) {
 -	    &incr_sec_num($level, @appendix_sec_num);

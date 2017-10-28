@@ -3,19 +3,19 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libusb-compat libjpeg-turbo libtiff gtk2 libexif cups
 
-name=sane
-version=1.0.25
-release=1
+isim=sane
+surum=1.0.25
+devir=1
 
-source=(http://fossies.org/linux/misc//sane-backends-$version.tar.gz)
+kaynak=(http://fossies.org/linux/misc//sane-backends-$surum.tar.gz)
 
 derle() {
-	cd $name-backends-$version
+	cd $isim-backends-$surum
 
 	./configure --prefix=/usr \
 		--localstatedir=/var \
 		--sysconfdir=/etc \
-		--with-docdir=/usr/share/doc/sane-backend-$version \
+		--with-docdir=/usr/share/doc/sane-backend-$surum \
 		--enable-libusb_1_0 \
 		--enable-pthread \
         --disable-rpath \

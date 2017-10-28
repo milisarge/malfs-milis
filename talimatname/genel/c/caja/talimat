@@ -3,16 +3,16 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: exempi gvfs libexif xorg-libsm mate-desktop libnotify gstreamer1 gobject-introspection intltool
 
-name=caja
-version=1.18.3
-release=1
-source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+isim=caja
+surum=1.18.3
+devir=1
+kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version   
+  cd $isim-$surum   
   ./configure \
         --prefix=/usr \
-        --libexecdir=/usr/lib/$name \
+        --libexecdir=/usr/lib/$isim \
         --with-gtk=2.0 \
         --enable-introspection \
         --disable-update-mimedb

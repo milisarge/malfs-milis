@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cups python
 
-name=python-cups
-version=1.9.73
-release=1
+isim=python-cups
+surum=1.9.73
+devir=1
 
-source=(
-http://cyberelk.net/tim/data/pycups/pycups-$version.tar.bz2)
+kaynak=(
+http://cyberelk.net/tim/data/pycups/pycups-$surum.tar.bz2)
 
 derle() {
-    cd pycups-$version
+    cd pycups-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

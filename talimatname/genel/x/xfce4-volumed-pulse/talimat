@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libnotify pulseaudio keybinder xfce4-conf 
 
-name=xfce4-volumed-pulse
-version=0.2.2
-release=1
-source=(http://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2
+isim=xfce4-volumed-pulse
+surum=0.2.2
+devir=1
+kaynak=(http://archive.xfce.org/src/apps/$isim/${surum%.*}/$isim-$surum.tar.bz2
 )
 
 derle() {
 
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr --sysconfdir=/etc \
               --libexecdir=/usr/lib \
               --localstatedir=/var

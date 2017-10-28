@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: ocaml
 
-name=ocaml-findlib
-_name=findlib
-version=1.7.1
-release=1
-source=(http://download.camlcity.org/download/${_name}-$version.tar.gz)
+isim=ocaml-findlib
+_isim=findlib
+surum=1.7.1
+devir=1
+kaynak=(http://download.camlcity.org/download/${_name}-$surum.tar.gz)
 
 derle() {
 
-    cd ${_name}-$version
+    cd ${_name}-$surum
     
     ./configure -bindir /usr/bin \
                 -config /etc/findlib.conf

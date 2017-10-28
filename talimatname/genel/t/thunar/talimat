@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libnotify libexif exo xfce4-libui xfce4-panel desktop-file-utils
 
-name=thunar
-version=1.6.12
-release=1
+isim=thunar
+surum=1.6.12
+devir=1
 
-source=(http://archive.xfce.org/src/xfce/thunar/${version%.*}/Thunar-$version.tar.bz2
+kaynak=(http://archive.xfce.org/src/xfce/thunar/${surum%.*}/Thunar-$surum.tar.bz2
 		no-root-warning.patch)
 derle() {
-	cd Thunar-$version
-	patch $SRC/Thunar-$version/thunar/thunar-window.c $SRC/no-root-warning.patch
+	cd Thunar-$surum
+	patch $SRC/Thunar-$surum/thunar/thunar-window.c $SRC/no-root-warning.patch
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \

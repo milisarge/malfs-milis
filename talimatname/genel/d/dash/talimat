@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=dash
-version=0.5.8
-release=1
-source=(http://gondor.apana.org.au/~herbert/$name/files/$name-$version.tar.gz)
+isim=dash
+surum=0.5.8
+devir=1
+kaynak=(http://gondor.apana.org.au/~herbert/$isim/files/$isim-$surum.tar.gz)
 
 derle(){
-cd $name-$version
+cd $isim-$surum
 ./configure --bindir=/bin \
 --mandir=/usr/share/man
 make

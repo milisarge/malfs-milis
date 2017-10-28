@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:	
 
-name=lsof
-version=4.89
-release=1
-source=(ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/lsof_$version.tar.bz2)
+isim=lsof
+surum=4.89
+devir=1
+kaynak=(ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/lsof_$surum.tar.bz2)
 
 derle() {
-    cd lsof_${version}
-    tar -xf lsof_${version}_src.tar
-    cd lsof_${version}_src
+    cd lsof_${surum}
+    tar -xf lsof_${surum}_src.tar
+    cd lsof_${surum}_src
     yes "" | ./Configure linux
     sed -i -e "s/-DLINUXV/${CFLAGS} -DLINUXV/" Makefile
     make

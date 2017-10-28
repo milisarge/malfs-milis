@@ -3,17 +3,17 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: exo libwnck xfce4-libui thunar xfce4-garcon
 
-_name=xfdesktop
+_isim=xfdesktop
 run=(gtk-update-icon-cache)
 
-name=xfce4-desktop
-version=4.12.3
-release=1
+isim=xfce4-desktop
+surum=4.12.3
+devir=1
 
-source=(http://archive.xfce.org/src/xfce/${_name}/4.12/${_name}-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/xfce/${_name}/4.12/${_name}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 #duvar kagidi yuklemek icin
 #sed -i "s/xfce-blue.jpg/milis.jpg/" common/xfdesktop-common.h
 ./configure \

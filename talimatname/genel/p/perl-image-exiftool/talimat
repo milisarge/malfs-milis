@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-image-exiftool
-version=9.90
-release=1
+isim=perl-image-exiftool
+surum=9.90
+devir=1
 
-source=(http://www.cpan.org/authors/id/E/EX/EXIFTOOL/Image-ExifTool-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/E/EX/EXIFTOOL/Image-ExifTool-$surum.tar.gz)
 
 derle() {
-cd Image-ExifTool-$version
+cd Image-ExifTool-$surum
 perl Makefile.PL
 make
 make DESTDIR=$PKG install

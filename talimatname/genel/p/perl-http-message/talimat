@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: perl-encode-locale perl-html-parser perl-http-date perl-lwp-mediatypes perl-uri 
 
-name=perl-http-message
-version=6.06
-release=1
+isim=perl-http-message
+surum=6.06
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Message-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Message-$surum.tar.gz)
 
 derle() {
 ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""  \
@@ -16,7 +16,7 @@ derle() {
       PERL_MB_OPT="--installdirs vendor"    \
       MODULEBUILDRC=/dev/null)
 
-cd HTTP-Message-$version
+cd HTTP-Message-$surum
 perl Makefile.PL
 make
 make DESTDIR=$PKG install

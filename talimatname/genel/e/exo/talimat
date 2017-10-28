@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: perl-uri xfce4-libui xfce4-libutil
 
-name=exo
-version=0.11.5
-release=1
-source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+isim=exo
+surum=0.11.5
+devir=1
+kaynak=(http://archive.xfce.org/src/xfce/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure --prefix=/usr \
 	--sysconfdir=/etc
 	make

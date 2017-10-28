@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: system-tools-backends 
 
-name=liboobs
-version=3.0.0
-release=1
+isim=liboobs
+surum=3.0.0
+devir=1
 
-source=(ftp://ftp.gnome.org/pub/GNOME/sources/liboobs/3.0/$name-$version.tar.gz )
+kaynak=(ftp://ftp.gnome.org/pub/GNOME/sources/liboobs/3.0/$isim-$surum.tar.gz )
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

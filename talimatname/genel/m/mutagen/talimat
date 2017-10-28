@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python 
 
-name=mutagen
-version=1.38
-release=1
+isim=mutagen
+surum=1.38
+devir=1
 
-source=(https://github.com/quodlibet/mutagen/archive/release-$version.tar.gz::$name-$version.tar.gz)
+kaynak=(https://github.com/quodlibet/mutagen/archive/release-$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-release-$version
+	cd $isim-release-$surum
 	python2 setup.py install --root=$PKG
 	mkdir -p $PKG/usr/bin
 	install -m755 tools/* $PKG/usr/bin

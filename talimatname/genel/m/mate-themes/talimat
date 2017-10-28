@@ -4,13 +4,13 @@
 # Gerekler: gtk2 intltool gtk-engines gtk-engine-murrine mate-icon-theme
 
 
-name=mate-themes
-version=3.22.12
-release=1
-source=(http://pub.mate-desktop.org/releases/themes/${version%.*}/${name}-${version}.tar.xz)
+isim=mate-themes
+surum=3.22.12
+devir=1
+kaynak=(http://pub.mate-desktop.org/releases/themes/${surum%.*}.tar.xz)
 
 derle() {
-	cd ${name}-${version}
+	cd ${isim}-${surum}
     ./configure \
         --prefix=/usr 
 make

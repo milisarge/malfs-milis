@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: glib gtk3 libnotify pulseaudio 
 
-name=pa-applet
-version=2017.09
-release=1
-source=(pa-applet.desktop)
+isim=pa-applet
+surum=2017.09
+devir=1
+kaynak=(pa-applet.desktop)
 
 derle() {
 git clone https://github.com/fernandotcl/pa-applet.git
-	    cd "$name"
+	    cd "$isim"
 
 	        echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 	
@@ -20,7 +20,7 @@ git clone https://github.com/fernandotcl/pa-applet.git
 	make
 	make DESTDIR="$PKG/" install
 
-	install -D -m644 LICENSE "${PKG}/usr/share/licenses/${name}/LICENSE"
+	install -D -m644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
 	cd ..
 	install -D pa-applet.desktop "$PKG/etc/xdg/autostart/pa-applet.desktop"
 }

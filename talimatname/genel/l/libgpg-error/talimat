@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libgpg-error
-version=1.21
-release=1
+isim=libgpg-error
+surum=1.21
+devir=1
 
-source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+kaynak=(ftp://ftp.gnupg.org/gcrypt/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 install -v -m644 -D README \
-$PKG/usr/share/doc/$name-$version/README
+$PKG/usr/share/doc/$isim-$surum/README
 rm -f $PKG/usr/share/info/dir
 }

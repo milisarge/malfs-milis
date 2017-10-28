@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=gnome-common
-version=3.18.0
-release=1
-source=(http://download.gnome.org/sources/$name/${version:0:4}/$name-$version.tar.xz)
+isim=gnome-common
+surum=3.18.0
+devir=1
+kaynak=(http://download.gnome.org/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make  DESTDIR=$PKG/ install

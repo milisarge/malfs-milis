@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 desktop-file-utils
 
-name=leafpad
-version=0.8.18.1
-release=1
+isim=leafpad
+surum=0.8.18.1
+devir=1
 
-source=(http://download.savannah.gnu.org/releases/${name}/${name}-${version}.tar.gz)
+kaynak=(http://download.savannah.gnu.org/releases/${isim}/${isim}-${surum}.tar.gz)
 
 derle(){
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --enable-chooser
 	make
 	make DESTDIR=$PKG install

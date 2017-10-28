@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: pulseaudio gtk2 libcanberra gtkmm libsigc++
 
-name=pavucontrol
-version=2.0
-release=1
-source=(http://freedesktop.org/software/pulseaudio/pavucontrol/$name-$version.tar.xz pavucontrol-gtk2.patch)
+isim=pavucontrol
+surum=2.0
+devir=1
+kaynak=(http://freedesktop.org/software/pulseaudio/pavucontrol/$isim-$surum.tar.xz pavucontrol-gtk2.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	# Fix gtk2 compilation
 	patch -p1 -i $SRC/pavucontrol-gtk2.patch

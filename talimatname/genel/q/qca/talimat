@@ -3,14 +3,14 @@
 # Paketçi: milisage
 # Gerekler: qt4
 
-name=qca
-version=2.1.0
-release=1
+isim=qca
+surum=2.1.0
+devir=1
 
-source=(http://delta.affinix.com/download/$name/2.0/$name-$version.tar.gz)
+kaynak=(http://delta.affinix.com/download/$isim/2.0/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	mkdir build
 	cd    build
 	cmake -DCMAKE_INSTALL_PREFIX=$PKG/$QT4DIR \

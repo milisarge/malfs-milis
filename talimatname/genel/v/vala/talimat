@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: glib 
 
-name=vala
-version=0.28.1
-release=1
+isim=vala
+surum=0.28.1
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/vala/${version%.*}/$name-$version.tar.xz )
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/vala/${surum%.*}/$isim-$surum.tar.xz )
 
 derle() {
-cd $name-*
+cd $isim-*
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

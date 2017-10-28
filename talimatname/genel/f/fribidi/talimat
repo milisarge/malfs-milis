@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: glib
 
-name=fribidi
-version=0.19.7
-release=1
-source=( http://fribidi.org/download/$name-$version.tar.bz2)
+isim=fribidi
+surum=0.19.7
+devir=1
+kaynak=( http://fribidi.org/download/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i "s|glib/gstrfuncs\.h|glib.h|" charset/fribidi-char-sets.c
 sed -i "s|glib/gmem\.h|glib.h|" lib/mem.h
 ./configure --prefix=/usr \

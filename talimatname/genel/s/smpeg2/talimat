@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: sdl2 
 
-name=smpeg2
-version=2.0.0
-release=1
-source=(http://kaynaklar.milislinux.org//smpeg2.tar.gz)
+isim=smpeg2
+surum=2.0.0
+devir=1
+kaynak=(http://kaynaklar.milislinux.org//smpeg2.tar.gz)
 
 derle() {
   cd $SRC/release_2_0_0

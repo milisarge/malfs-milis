@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libgsf librevenge
 
-name=libwpd
-version=0.10.0
-release=1
+isim=libwpd
+surum=0.10.0
+devir=1
 
-source=(http://prdownloads.sourceforge.net/libwpd/libwpd-$version.tar.gz)
+kaynak=(http://prdownloads.sourceforge.net/libwpd/libwpd-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

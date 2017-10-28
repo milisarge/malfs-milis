@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: polkit intltool cups
 
-name=cups-pk-helper
-version=0.2.6
-release=1
+isim=cups-pk-helper
+surum=0.2.6
+devir=1
 
-source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)
+kaynak=(http://www.freedesktop.org/software/$isim/releases/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc
 make
 make DESTDIR=$PKG install

@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: dconf desktop-file-utils hicolor-icon-theme gnome-doc-utils json-glib libgphoto2 libgee libgexiv2 gtk3 libgudev libraw libsoup libxml2 librest gstreamer1-plugins-base webkit2gtk3
 
-name=shotwell
-version=0.23.7
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=shotwell
+surum=0.23.7
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 			--disable-schemas-compile \
 			--disable-desktop-update \

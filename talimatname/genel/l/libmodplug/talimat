@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libmodplug
-version=0.8.8.5
-release=1
-source=(http://downloads.sourceforge.net/project/modplug-xmms/$name/$version/$name-$version.tar.gz)
+isim=libmodplug
+surum=0.8.8.5
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/modplug-xmms/$isim/$surum/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install 

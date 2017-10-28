@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: telepathy-kde-accounts-kcm telepathy-kde-approver telepathy-kde-auth-handler telepathy-kde-call-ui telepathy-kde-contact-runner telepathy-kde-contact-list telepathy-kde-desktop-applets telepathy-kde-filetransfer-handler telepathy-kde-integration-module telepathy-kde-send-file telepathy-kde-text-ui telepathy-mission-control telepathy-idle telepathy-logger telepathy-gabble telepathy-python
 
-name=telepathy
-version=16.08.2
-release=1
+isim=telepathy
+surum=16.08.2
+devir=1
 
-source=(talimat)
+kaynak=(talimat)
 
 derle() {
 echo "KDE Telepathy"

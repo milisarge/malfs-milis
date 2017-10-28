@@ -3,21 +3,21 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=python-httplib2
-version=0.9
-release=1
+isim=python-httplib2
+surum=0.9
+devir=1
 
-source=(
-https://github.com/jcgregorio/httplib2/archive/v${version}.tar.gz
-$name.ssl_hostname.patch
-$name.cert.patch)
+kaynak=(
+https://github.com/jcgregorio/httplib2/archive/v${surum}.tar.gz
+$isim.ssl_hostname.patch
+$isim.cert.patch)
 
 derle() {
-    cd httplib2-$version
+    cd httplib2-$surum
     # Patch, ref FS#36839
-    patch -p1 -i $SRC/$name.ssl_hostname.patch
+    patch -p1 -i $SRC/$isim.ssl_hostname.patch
     # Patch, ref FS#40179
-    patch -p1 -i $SRC/$name.cert.patch
+    patch -p1 -i $SRC/$isim.cert.patch
     #
     python2 setup.py install --prefix=/usr --root=$PKG
 }

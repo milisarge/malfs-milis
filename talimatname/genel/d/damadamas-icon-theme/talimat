@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: hicolor-icon-theme
 
-name=damadamas-icon-theme
-_name=DamaDamas-icon-theme
-version=0.1
-release=1
-source=()
+isim=damadamas-icon-theme
+_isim=DamaDamas-icon-theme
+surum=0.1
+devir=1
+kaynak=()
 
 derle() {
 git clone https://github.com/sonakinci41/DamaDamas-icon-theme.git

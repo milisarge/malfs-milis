@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=lapack
-version=3.5.0
-release=1
+isim=lapack
+surum=3.5.0
+devir=1
 
-source=(http://www.netlib.org/$name/$name-$version.tgz )
+kaynak=(http://www.netlib.org/$isim/$isim-$surum.tgz )
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	mkdir build
 	cd build
 	cmake .. \

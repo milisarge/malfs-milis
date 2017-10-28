@@ -4,20 +4,20 @@
 # Gerekler: cmake qt5 icu
 
 
-name=qtkeychain-qt5
-release=3
-version=0.5
-_name=qtkeychain
-source=(https://github.com/frankosterfeld/qtkeychain/archive/$version.zip )
+isim=qtkeychain-qt5
+devir=3
+surum=0.5
+_isim=qtkeychain
+kaynak=(https://github.com/frankosterfeld/qtkeychain/archive/$surum.zip )
 
 derle() {
 mkdir build
 cd    build
-cmake ../$_name-$version            \
+cmake ../$_name-$surum            \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib  \
         -DCMAKE_BUILD_TYPE=Release  \
-        -DCMAKE_INSTALL_LIBEXECDIR=lib/$name \
+        -DCMAKE_INSTALL_LIBEXECDIR=lib/$isim \
         
 make
 make DESTDIR=$PKG install

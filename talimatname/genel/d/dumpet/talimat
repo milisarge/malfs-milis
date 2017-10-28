@@ -3,13 +3,13 @@
 # Pacakager: milisarge
 # Gerekler: libxml2 popt
 
-name=dumpet
-version=2.1
-release=1
-source=(https://fedorahosted.org/releases/d/u/dumpet/$name-$version.tar.bz2)
+isim=dumpet
+surum=2.1
+devir=1
+kaynak=(https://fedorahosted.org/releases/d/u/dumpet/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   make
   make DESTDIR=$PKG install
 }

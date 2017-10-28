@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 gconf iso-codes gobject-introspection libgnome-keyring gnome-keyring libsecret libnotify networkmanager polkit-gnome modemmanager gtk-update-icon-cache
 
-name=network-manager-applet
-version=1.4.6
-release=1
+isim=network-manager-applet
+surum=1.4.6
+devir=1
 
-source=( http://ftp.gnome.org/pub/gnome/sources/$name/1.4/$name-$version.tar.xz)
+kaynak=( http://ftp.gnome.org/pub/gnome/sources/$isim/1.4/$isim-$surum.tar.xz)
  
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
             --sysconfdir=/etc \
             --disable-static \

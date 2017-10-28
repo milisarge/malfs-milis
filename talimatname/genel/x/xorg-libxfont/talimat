@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: freetype xorg-proto xorg-xtrans xorg-libfontenc 
 
-name=xorg-libxfont
-version=1.5.1
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfont-$version.tar.bz2)
+isim=xorg-libxfont
+surum=1.5.1
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXfont-$surum.tar.bz2)
 
 derle() {
-cd libXfont-$version
+cd libXfont-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

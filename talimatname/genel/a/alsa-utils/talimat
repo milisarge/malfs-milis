@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: alsa-lib xmlto libsamplerate gawk
 
-name=alsa-utils
-version=1.1.0
-release=1
-source=(ftp://ftp.alsa-project.org/pub/utils/$name-$version.tar.bz2)
+isim=alsa-utils
+surum=1.1.0
+devir=1
+kaynak=(ftp://ftp.alsa-project.org/pub/utils/$isim-$surum.tar.bz2)
 
 derle() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
 
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-alsaconf \
 --disable-bat \

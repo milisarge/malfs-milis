@@ -3,14 +3,14 @@
 # Paketçi: Vitaly Sinilin, vs at kp4 dot ru
 # Gerekler: cmake imlib2 pango
 
-name=tint2
-version=0.11
-release=2
-source=(http://$name.googlecode.com/files/$name-$version.tar.bz2 \
+isim=tint2
+surum=0.11
+devir=2
+kaynak=(http://$isim.googlecode.com/files/$isim-$surum.tar.bz2 \
         add-power-now-support.patch)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   patch -p0 -i $SRC/add-power-now-support.patch
 

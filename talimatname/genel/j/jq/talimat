@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=jq
-version=1.5
-release=1
-source=(https://github.com/stedolan/$name/releases/download/$name-$version/$name-$version.tar.gz)
+isim=jq
+surum=1.5
+devir=1
+kaynak=(https://github.com/stedolan/$isim/releases/download/$isim-$surum/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr
 	make

@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules boost kf5-kdoctools kf5-kdelibs4support akonadi kcalcore kholidays kidentitymanagement
 
-name=kalarmcal
-version=16.08.2
-release=1
+isim=kalarmcal
+surum=16.08.2
+devir=1
 
-source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=rfkill
-version=0.5
-release=2
-source=(http://www.kernel.org/pub/software/network/$name/$name-$version.tar.xz)
+isim=rfkill
+surum=0.5
+devir=2
+kaynak=(http://www.kernel.org/pub/software/network/$isim/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make
 	make DESTDIR=$PKG install 
 }

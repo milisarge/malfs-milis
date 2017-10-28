@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: desktop-file-utils gtk2 gstreamer1 libxml2 perl-xml-parser gnutls nss nspr xorg-libxscrnsaver xorg-libxrandr xorg-libxinerama xorg-libsm xscreensaver startup-notification hicolor-icon-theme libidn dbus networkmanager
 
-name=pidgin
-version=2.10.12
-release=1
+isim=pidgin
+surum=2.10.12
+devir=1
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --with-gstreamer=1.0 \

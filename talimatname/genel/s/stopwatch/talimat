@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: tcl tk
 
-name=stopwatch
-version=3.4
-release=1
-source=(http://expect.sourceforge.net/$name/$name.tar.gz)
+isim=stopwatch
+surum=3.4
+devir=1
+kaynak=(http://expect.sourceforge.net/$isim/$isim.tar.gz)
 
 derle() {
-   cd $name-$version
+   cd $isim-$surum
    sed -i -e 's/depot\/path/usr\/bin/g' stopwatch
-   install -D -m0755 $name $PKG/usr/sbin/$name
+   install -D -m0755 $isim $PKG/usr/sbin/$isim
   
 }

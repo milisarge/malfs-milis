@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libexif libjpeg-turbo libid3tag flac libvorbis ffmpeg sqlite
 
-name=minidlna
-version=1.1.4
-release=1
+isim=minidlna
+surum=1.1.4
+devir=1
 
-source=(http://downloads.sourceforge.net/project/$name/$name/$version/minidlna-$version.tar.gz
+kaynak=(http://downloads.sourceforge.net/project/$isim/$isim/$surum/minidlna-$surum.tar.gz
 	minidlna)
         
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   sed -i 's|#user=.*|user=nobody|g' minidlna.conf
   ./configure --prefix=/usr
   make

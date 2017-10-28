@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: cmake webkitgtk2 djvulibre poppler-glib gtk2
 
-name=apvlv
-version=0.1.f7f7b9c
-release=2
-source=(
-https://github.com/downloads/naihe2010/apvlv/$name-$version-Source.tar.gz
-$name.desktop)
+isim=apvlv
+surum=0.1.f7f7b9c
+devir=2
+kaynak=(
+https://github.com/downloads/naihe2010/apvlv/$isim-$surum-Source.tar.gz
+$isim.desktop)
 
 derle(){
-    cd $name-$version-Source
+    cd $isim-$surum-Source
     mkdir -p build
     cd build
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
@@ -21,6 +21,6 @@ derle(){
     make DESTDIR=$PKG install
 
     # desktop integration
-    install -Dm644 $SRC/$name.desktop \
-        $PKG/usr/share/applications/$name.desktop
+    install -Dm644 $SRC/$isim.desktop \
+        $PKG/usr/share/applications/$isim.desktop
 }

@@ -3,17 +3,17 @@
 # Paketçi: Cihan Alkan
 # Gerekler: sdl-image sdl-mixer sdl-net sdl-ttf sdl-pango librsvg
 
-name=t4k-common
-_name=t4k_common
-version=0.1.1
-release=1
+isim=t4k-common
+_isim=t4k_common
+surum=0.1.1
+devir=1
 
-source=(http://downloads.sourceforge.net/project/tuxmath/$_name/$_name-$version.tar.gz
+kaynak=(http://downloads.sourceforge.net/project/tuxmath/$_name/$_name-$surum.tar.gz
         libpng15.patch)
 
 
 derle() {
-	cd $SRC/$_name-$version
+	cd $SRC/$_name-$surum
 	patch -Np2 -i "$SRC/libpng15.patch"
 	./configure --prefix=/usr 
 	make

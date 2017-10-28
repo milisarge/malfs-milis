@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=pcsc-lite
-version=1.8.21
-release=1
-source=(https://alioth.debian.org/frs/download.php/file/4216/$name-$version.tar.bz2)
+isim=pcsc-lite
+surum=1.8.21
+devir=1
+kaynak=(https://alioth.debian.org/frs/download.php/file/4216/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i -e "s:python:python2:g" src/spy/pcsc-spy
 	./configure --prefix=/usr \
 	  --sbindir=/usr/bin \

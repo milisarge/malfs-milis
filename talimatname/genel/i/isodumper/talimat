@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: intltool imagemagick coreutils pango polkit procps-ng python-gtk python-cairo python-gobject2 libglade python dbus-python python-parted udisks2 xorg-term
 
-name=isodumper
-version=0.48
-release=1
-source=( http://gitweb.mageia.org/software/isodumper/snapshot/$name-$version.tar.gz
+isim=isodumper
+surum=0.48
+devir=1
+kaynak=( http://gitweb.mageia.org/software/isodumper/snapshot/$isim-$surum.tar.gz
          header.png
          header.svg)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 make
 make  DESTDIR=$PKG install
 

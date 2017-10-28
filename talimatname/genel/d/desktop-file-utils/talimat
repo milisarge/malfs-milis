@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: glib
 
-name=desktop-file-utils
-version=0.22
-release=1
-source=(  http://freedesktop.org/software/$name/releases/$name-$version.tar.xz)
+isim=desktop-file-utils
+surum=0.22
+devir=1
+kaynak=(  http://freedesktop.org/software/$isim/releases/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libsndfile 
 
-name=sbc
-version=1.2
-release=1
+isim=sbc
+surum=1.2
+devir=1
 
-source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)
+kaynak=(http://www.kernel.org/pub/linux/bluetooth/$isim-$surum.tar.xz)
 
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static
 make

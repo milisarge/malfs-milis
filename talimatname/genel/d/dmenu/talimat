@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxinerama
 
-name=dmenu
-version=4.5
-release=1
-source=(http://dl.suckless.org/tools/$name-$version.tar.gz)
+isim=dmenu
+surum=4.5
+devir=1
+kaynak=(http://dl.suckless.org/tools/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
 
     make install PREFIX=/usr \
                  LIBDIR=/usr/lib \

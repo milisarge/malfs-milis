@@ -3,20 +3,20 @@
 # Paketçi: Cihan Alkan
 # Gerekler: boost mdds python3
 
-name=libixion
-version=0.12.2
-release=1
+isim=libixion
+surum=0.12.2
+devir=1
 
-source=(http://kohei.us/files/ixion/src/libixion-$version.tar.xz)
+kaynak=(http://kohei.us/files/ixion/src/libixion-$surum.tar.xz)
 
 derle() {
-	cd $name-$version 
+	cd $isim-$surum 
 	[ ! -f /usr/lib/pkgconfig/python3.pc ] && ln -s /usr/lib/pkgconfig/python-3.5.pc /usr/lib/pkgconfig/python3.pc
 	./configure \
 	--prefix=/usr \
 	 --disable-static
 	make
 	make DESTDIR=$PKG install
-	install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+	install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
 	rm -f /usr/lib/pkgconfig/python3.pc
 }

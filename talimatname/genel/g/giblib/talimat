@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: imlib2 freetype
 
-name=giblib
-version=1.2.4
-release=1
-source=(https://mirrors.kernel.org/debian/pool/main/${name:0:1}/${name}/${name}_${version}.orig.tar.gz)
-# http://linuxbrit.co.uk/downloads/$name-$version.tar.gz)
+isim=giblib
+surum=1.2.4
+devir=1
+kaynak=(https://mirrors.kernel.org/debian/pool/main/${name:0:1}/${isim}/${isim}_${surum}.orig.tar.gz)
+# http://linuxbrit.co.uk/downloads/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version*
+cd $isim-$surum*
         ./configure --prefix=/usr
         make
         make DESTDIR=$PKG install

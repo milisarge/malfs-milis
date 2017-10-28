@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: python boost libgsf
 
-name=libpst
-version=0.6.67
-release=1
+isim=libpst
+surum=0.6.67
+devir=1
 
-source=(http://www.five-ten-sg.com/libpst/packages/${name}-${version}.tar.gz)
+kaynak=(http://www.five-ten-sg.com/libpst/packages/${isim}-${surum}.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --mandir=/usr/share/man \
    --disable-static --enable-libpst-shared --disable-dii
 make

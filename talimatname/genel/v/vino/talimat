@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com 
 # Gerekler: gconf libsoup telepathy-glib desktop-file-utils libnotify desktop-file-utils
 
-name=vino
-version=3.22.0
-release=1
+isim=vino
+surum=3.22.0
+devir=1
 
-source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc 
 	make
 	make DESTDIR=$PKG install

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-uri
-version=1.67
-release=1
+isim=perl-uri
+surum=1.67
+devir=1
 
-source=(http://www.cpan.org/authors/id/E/ET/ETHER/URI-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/E/ET/ETHER/URI-$surum.tar.gz)
 
 derle() {
-cd URI-$version
+cd URI-$surum
 	perl Makefile.PL
 	make
 	make DESTDIR=$PKG install

@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk3 lightdm exo gobject-introspection intltool
 
-name=lightdm-gtk-greeter
-version=2.0.2
-release=1
+isim=lightdm-gtk-greeter
+surum=2.0.2
+devir=1
 
-source=(https://launchpad.net/$name/${version%.?}/$version/+download/$name-$version.tar.gz)
+kaynak=(https://launchpad.net/$isim/${surum%.*}/$surum/+download/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
   ./configure \
     --prefix='/usr' \
     --libexecdir='/usr/lib/lightdm' \

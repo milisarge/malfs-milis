@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:  xorg-libxv xorg-glu libjpeg-turbo xorg-xcb-util-keysyms
 
-name=virtualgl
-version=2.5.2
-release=1
-source=(https://github.com/VirtualGL/$name/archive/$version.tar.gz)
+isim=virtualgl
+surum=2.5.2
+devir=1
+kaynak=(https://github.com/VirtualGL/$isim/archive/$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	 cmake . \
 		-DCMAKE_BINARY_DIR=/usr \

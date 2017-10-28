@@ -4,19 +4,19 @@
 # Gerekler:  dbus gnutls glib xtables-addons openconnect openvpn wpa-supplicant
 # Optional:    pptp bluez
 
-name=connman
-version=git
-release=1
-source=(rc.connmand)
+isim=connman
+surum=git
+devir=1
+kaynak=(rc.connmand)
 
 derle() {
 	cd $DERLEME_KAYNAKDIZIN
 
-	if cd $name; then
+	if cd $isim; then
 		git fetch -q; git reset --hard origin/master
 	else
-		git clone git://git.kernel.org/pub/scm/network/connman/connman.git -b master $name
-		cd $name
+		git clone git://git.kernel.org/pub/scm/network/connman/connman.git -b master $isim
+		cd $isim
 	fi
 
 

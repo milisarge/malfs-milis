@@ -3,14 +3,14 @@
 # Paketçi: - https://github.com/Yubico/yubico-c-client.git
 # Gerekler: libyubikey curl 
 
-name=yubico-c-client
-version=2.9
-release=1
+isim=yubico-c-client
+surum=2.9
+devir=1
 
-source=(http://yubico-c-client.googlecode.com/files/ykclient-$version.tar.gz)
+kaynak=(http://yubico-c-client.googlecode.com/files/ykclient-$surum.tar.gz)
 derle()
 {
-cd ykclient-$version
+cd ykclient-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR="${PKG}/" install

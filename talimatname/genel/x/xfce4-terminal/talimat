@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: exo vte vte3
 
-name=xfce4-terminal
-version=0.8.6
-release=1
+isim=xfce4-terminal
+surum=0.8.6
+devir=1
 
-source=(http://archive.xfce.org/src/apps/${name}/${version%.*}/$name-$version.tar.bz2 )
+kaynak=(http://archive.xfce.org/src/apps/${isim}/${surum%.*}/$isim-$surum.tar.bz2 )
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

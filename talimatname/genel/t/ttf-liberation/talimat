@@ -3,26 +3,26 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: xorg-fontconfig xorg-font-util xorg-encodings fontforge
 
-name=ttf-liberation
-version=2.00.1
-release=1
+isim=ttf-liberation
+surum=2.00.1
+devir=1
 
-source=(
-https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-$version.tar.gz
+kaynak=(
+https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-$surum.tar.gz
 ttf-liberation.30-0-liberation-mono.conf
 ttf-liberation.30-0-liberation-sans.conf
 ttf-liberation.30-0-liberation-serif.conf)
 
 derle(){
-    cd liberation-fonts-ttf-$version
+    cd liberation-fonts-ttf-$surum
     install -d $PKG/usr/share/fonts/TTF/
     install -m644 *.ttf $PKG/usr/share/fonts/TTF/
 
     # install fontconfig files
     install -Dm644 $SRC/ttf-liberation.30-0-liberation-mono.conf \
-       $PKG/etc/fonts/conf.avail/30-$name-mono.conf
+       $PKG/etc/fonts/conf.avail/30-$isim-mono.conf
     install -Dm644 $SRC/ttf-liberation.30-0-liberation-sans.conf \
-       $PKG/etc/fonts/conf.avail/30-$name-sans.conf
+       $PKG/etc/fonts/conf.avail/30-$isim-sans.conf
     install -Dm644 $SRC/ttf-liberation.30-0-liberation-serif.conf \
         $PKG/etc/fonts/conf.avail/30-$pkgname-serif.conf
 }

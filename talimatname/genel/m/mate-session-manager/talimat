@@ -3,16 +3,16 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: dbus-glib gtk3 xorg-libsm mate-desktop intltool xorg-xtrans gnome-keyring xdg-user-dirs
 
-name=mate-session-manager
-version=1.18.0
-release=1
-source=(http://pub.mate-desktop.org/releases/${version%.*}/$name-$version.tar.xz)
+isim=mate-session-manager
+surum=1.18.0
+devir=1
+kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
     ./configure \
         --prefix=/usr \
-        --libexecdir=/usr/lib/$name \
+        --libexecdir=/usr/lib/$isim \
         --sysconfdir=/etc \
         --localstatedir=/var \
         --disable-upower

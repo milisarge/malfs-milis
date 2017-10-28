@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: firefox npapi-sdk junit openjdk rhino xorg-libxtst zip
 
-name=icedtea-web
-version=1.6.2
-release=1
-source=(http://icedtea.wildebeest.org/download/source/$name-$version.tar.gz)
+isim=icedtea-web
+surum=1.6.2
+devir=1
+kaynak=(http://icedtea.wildebeest.org/download/source/$isim-$surum.tar.gz)
 
 unpack_source() {
 	local FILE LOCAL_FILENAME COMMAND
@@ -38,7 +38,7 @@ unpack_source() {
 
 derle() {
 
-	cd "${SRC}"/${name}-${version}
+	cd "${SRC}"/${isim}-${surum}
 	LC_ALL=C \
 	CFLAGS="$CFLAGS -fno-delete-null-pointer-checks -fno-omit-frame-pointer -fno-lifetime-dse" \
 	CXXFLAGS="$CXXFLAGS -fno-delete-null-pointer-checks -fno-omit-frame-pointer -fno-lifetime-dse" \
@@ -48,8 +48,8 @@ derle() {
 	./configure \
 		--prefix=/usr \
 		--datarootdir=/usr/share \
-		--libdir=/usr/lib/$name \
-		--libexecdir=/usr/lib/$name \
+		--libdir=/usr/lib/$isim \
+		--libexecdir=/usr/lib/$isim \
 		--with-jdk-home=/opt/OpenJDK-8u60-bin \
 		--with-rhino=/usr/share/java/rhino.jar \
 		--with-firefox=/usr/bin/firefox \
@@ -67,7 +67,7 @@ derle() {
 
 	make DESTDIR=$PKG install-exec-local install-data-local
 	
-	cd "${SRC}"/${name}-${version} 
+	cd "${SRC}"/${isim}-${surum} 
 	
 	rm -rf $PKG/usr/share/man/*
 	rm -rf $PKG/usr/share/doc
@@ -78,13 +78,13 @@ derle() {
 	mv itweb-settings.desktop.in itweb-settings.desktop
 	install -m 644 {javaws,itweb-settings}.desktop "${PKG}"/usr/share/applications
 	install -m 755 -d "${PKG}"/usr/bin
-	install -m 755 -d "${PKG}"/usr/share/${name}/bin
-	pushd "${PKG}"/usr/share/${name}/bin
+	install -m 755 -d "${PKG}"/usr/share/${isim}/bin
+	pushd "${PKG}"/usr/share/${isim}/bin
 	for file in *; do
-	ln -sf /usr/share/${name}/bin/${file} "${PKG}"/usr/bin/
+	ln -sf /usr/share/${isim}/bin/${file} "${PKG}"/usr/bin/
 	done
 	popd
 	install -d -m 755 $PKG/usr/lib/mozilla/plugins
-	ln -s ../../$name/IcedTeaPlugin.so $PKG/usr/lib/mozilla/plugins/
+	ln -s ../../$isim/IcedTeaPlugin.so $PKG/usr/lib/mozilla/plugins/
 
 }

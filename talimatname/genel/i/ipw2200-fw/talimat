@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ipw2200-fw
-version=3.1
-release=1
-source=(http://downloads.nutyx.org/files/$name-$version.tgz)
+isim=ipw2200-fw
+surum=3.1
+devir=1
+kaynak=(http://downloads.nutyx.org/files/$isim-$surum.tgz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	for i in ipw*.fw
 	do
 	install -D -m 644 $i $PKG/lib/firmware/$i
 	done
 	# Install firmware licence
- 	install -D -m 644 LICENSE.ipw2200-fw $PKG/usr/share/licenses/$name/LICENSE
+ 	install -D -m 644 LICENSE.ipw2200-fw $PKG/usr/share/licenses/$isim/LICENSE
 }

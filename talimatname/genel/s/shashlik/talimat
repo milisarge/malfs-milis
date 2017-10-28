@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: python3 kdialog zenity
 
-name=shashlik
-version=0.9.3
-release=1
-source=(http://static.davidedmundson.co.uk/shashlik/shashlik_$version.deb
+isim=shashlik
+surum=0.9.3
+devir=1
+kaynak=(http://static.davidedmundson.co.uk/shashlik/shashlik_$surum.deb
 shashlik.desktop
 shashlik-gui.sh)
 
 derle() {
-  ar x ${SRC}/shashlik_$version.deb
+  ar x ${SRC}/shashlik_$surum.deb
   tar -xJC $PKG -f data.tar.xz
   install -dm755 $PKG/usr/bin
   ln -s /opt/shashlik/bin/shashlik-run $PKG/usr/bin/

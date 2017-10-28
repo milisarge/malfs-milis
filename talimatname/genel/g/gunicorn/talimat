@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python python3 python-pip python3-pip
 
-name=gunicorn
-version=19.7.0
-release=1
+isim=gunicorn
+surum=19.7.0
+devir=1
 
-source=(https://github.com/benoitc/${name}/archive/${version}.tar.gz)
+kaynak=(https://github.com/benoitc/${isim}/archive/${surum}.tar.gz)
 
 derle() {
-	cd "${name}-${version}"
+	cd "${isim}-${surum}"
 	python3 setup.py install --root="${PKG}" --prefix=/usr --optimize=1
 	mv "${PKG}/usr/bin/gunicorn" "${PKG}/usr/bin/gunicorn3"
 	python setup.py install --root="${PKG}" --prefix=/usr --optimize=1

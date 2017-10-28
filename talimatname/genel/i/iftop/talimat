@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libpcap, ncurses
 
-name=iftop
-version=1.0pre4
-release=1
-source=(http://www.ex-parrot.com/~pdw/iftop/download/$name-$version.tar.gz)
+isim=iftop
+surum=1.0pre4
+devir=1
+kaynak=(http://www.ex-parrot.com/~pdw/iftop/download/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr --mandir=/usr/man
     make iftop
     make DESTDIR=$PKG install

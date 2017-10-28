@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=postgresql
-version=9.6.3
-release=1
-source=(https://ftp.postgresql.org/pub/source/v$version/postgresql-$version.tar.bz2)
+isim=postgresql
+surum=9.6.3
+devir=1
+kaynak=(https://ftp.postgresql.org/pub/source/v$surum/postgresql-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h &&
 	./configure --prefix=/usr \
 	--enable-thread-safety \
@@ -21,5 +21,5 @@ derle() {
 	make DESTDIR=$PKG install-man
 	rm -rf $PKG/usr/share/doc
 	cd /sources/milis.git/ayarlar/servisler
-	make DESTDIR=$PKG kur-$name   
+	make DESTDIR=$PKG kur-$isim   
 }

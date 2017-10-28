@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: boost cppunit doxygen
 
-name=librevenge
-version=0.0.4
-release=1
-source=(http://sourceforge.net/projects/libwpd/files/$name/$name-$version/$name-$version.tar.xz)
+isim=librevenge
+surum=0.0.4
+devir=1
+kaynak=(http://sourceforge.net/projects/libwpd/files/$isim/$isim-$surum/$isim-$surum.tar.xz)
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

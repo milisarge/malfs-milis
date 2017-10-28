@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=db
-version=6.1.26
-release=1
-source=(http://download.oracle.com/berkeley-db/$name-$version.tar.gz)
+isim=db
+surum=6.1.26
+devir=1
+kaynak=(http://download.oracle.com/berkeley-db/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 cd build_unix
 ../dist/configure --prefix=/usr \
 --enable-compat185 \
@@ -17,7 +17,7 @@ cd build_unix
 --enable-cxx --enable-dbm
 make
 make DESTDIR=$PKG \
-docdir=/usr/share/doc/$name-$version install
+docdir=/usr/share/doc/$isim-$surum install
 
 chown -R 0:0 $PKG
 chmod -R +w $PKG

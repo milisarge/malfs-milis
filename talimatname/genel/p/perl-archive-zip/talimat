@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=perl-archive-zip
-version=1.57
-release=1
+isim=perl-archive-zip
+surum=1.57
+devir=1
 
-source=(http://cpan.metacpan.org/authors/id/P/PH/PHRED/Archive-Zip-$version.tar.gz)
+kaynak=(http://cpan.metacpan.org/authors/id/P/PH/PHRED/Archive-Zip-$surum.tar.gz)
 
 derle() {
 	cd Archive-*

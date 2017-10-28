@@ -3,18 +3,18 @@
 # Paketçi: Cihan Alkan
 # Gerekler:
 
-name=libexttextcat
-version=3.4.4
-release=1
+isim=libexttextcat
+surum=3.4.4
+devir=1
 
-source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz)
+kaynak=(https://dev-www.libreoffice.org/src/$isim/$isim-$surum.tar.xz)
 
 derle() {
- cd $name-$version
+ cd $isim-$surum
 
   ./configure --prefix=/usr
   make
   make DESTDIR="$PKG" install
   
-  install -D -m644 LICENSE "$PKG"/usr/share/licenses/$name/LICENSE
+  install -D -m644 LICENSE "$PKG"/usr/share/licenses/$isim/LICENSE
 }

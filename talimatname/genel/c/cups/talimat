@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: avahi python gnutls xdg-utils gtk-update-icon-cache
 
-name=cups
-version=2.1.3
-release=1
-source=( http://cups.org/software/$version/cups-$version-source.tar.gz)
+isim=cups
+surum=2.1.3
+devir=1
+kaynak=( http://cups.org/software/$surum/cups-$surum-source.tar.gz)
 
 derle() {
 	source /etc/blfs-bootscripts
 	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-bootscripts-$scriptsversion.tar.bz2
         tar xvf $scripts-$scriptsversion.tar.bz2
-	cd $name-$version
+	cd $isim-$surum
 	sed -i 's:555:755:g;s:444:644:g' Makedefs.in
 	sed -i '/MAN.*.EXT/s:.gz::g' \
 	configure config-scripts/cups-manpages.m4
@@ -23,13 +23,13 @@ derle() {
 		--disable-systemd \
 		--with-rcdir=/tmp/cupsinit \
 		--with-system-groups=lpadmin \
-		--with-docdir=/usr/share/cups/doc-$version
+		--with-docdir=/usr/share/cups/doc-$surum
 	make
 	make BUILDROOT=$PKG install
 
 	rm -rf $PKG/tmp/cupsinit
 	mkdir -p $PKG/usr/share/doc
-	ln -svnf ../cups/doc-$version $PKG/usr/share/doc/cups-$version
+	ln -svnf ../cups/doc-$surum $PKG/usr/share/doc/cups-$surum
 
 	# Lanceur
 	if [ ! -f $PKG/usr/share/applications/cups.desktop ]; then
@@ -39,7 +39,7 @@ derle() {
 	fi
 	# Startup Script
 	cd ../$scripts-$scriptsversion
-	make DESTDIR=$PKG install-$name
+	make DESTDIR=$PKG install-$isim
 
 	# Supprimer les filtres faisant parti de cups-filters
 	rm -rf $PKG/usr/share/cups/banners

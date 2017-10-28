@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-crypt-openssl-random
-version=0.06
-release=1
+isim=perl-crypt-openssl-random
+surum=0.06
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/Crypt-OpenSSL-Random-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/Crypt-OpenSSL-Random-$surum.tar.gz)
 
 derle() {
-cd Crypt-OpenSSL-Random-$version
+cd Crypt-OpenSSL-Random-$surum
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make pure_install doc_install DESTDIR=$PKG

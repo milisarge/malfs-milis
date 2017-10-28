@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: dbus-python python-sip qt4 phonon-qt4
 
-name=python-qt4
-version=4.11.2
-release=1
+isim=python-qt4
+surum=4.11.2
+devir=1
 
-source=(http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-$version/PyQt-x11-gpl-$version.tar.gz)
+kaynak=(http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-$surum/PyQt-x11-gpl-$surum.tar.gz)
 derle() {
-cd PyQt-x11-gpl-$version
+cd PyQt-x11-gpl-$surum
 
 python2 configure-ng.py   \
      -v /usr/share/sip \

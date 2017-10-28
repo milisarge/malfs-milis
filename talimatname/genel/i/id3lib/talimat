@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=id3lib
-version=3.8.3
-release=1
-source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz
-	http://downloads.nutyx.org/files/patchs/$name/patch_id3lib_3.8.3_UTF16_writing_bug.diff
-	http://downloads.nutyx.org/files/patchs/$name/id3lib-3.8.3-CVE-2007-4460.patch
-	http://downloads.nutyx.org/files/patchs/$name/id3lib-3.8.3-gcc-4.3.patch)
+isim=id3lib
+surum=3.8.3
+devir=1
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz
+	http://downloads.nutyx.org/files/patchs/$isim/patch_id3lib_3.8.3_UTF16_writing_bug.diff
+	http://downloads.nutyx.org/files/patchs/$isim/id3lib-3.8.3-CVE-2007-4460.patch
+	http://downloads.nutyx.org/files/patchs/$isim/id3lib-3.8.3-gcc-4.3.patch)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 patch -p1 -i ../patch_id3lib_3.8.3_UTF16_writing_bug.diff
 patch -p0 -i ../id3lib-3.8.3-CVE-2007-4460.patch
 patch -p1 -i ../id3lib-3.8.3-gcc-4.3.patch

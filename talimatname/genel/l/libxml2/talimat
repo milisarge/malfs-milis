@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python
  
-name=libxml2
-version=2.9.5
-release=1
+isim=libxml2
+surum=2.9.5
+devir=1
 
-source=(ftp://xmlsoft.org/libxml2/$name-$version.tar.gz)
+kaynak=(ftp://xmlsoft.org/libxml2/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	 --disable-static --with-history
 	make

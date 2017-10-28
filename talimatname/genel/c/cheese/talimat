@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com 
 # Gerekler: libcanberra clutter-gst clutter-gtk gnome-desktop gnome-video-effects gstreamer1-plugins-bad gstreamer1-plugins-good itstool librsvg libgudev gobject-introspection vala gtk-update-icon-cache tdb
 
-name=cheese
-version=3.24.0
-release=1
+isim=cheese
+surum=3.24.0
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --disable-static --disable-schemas-compile --libexecdir=/usr/lib/cheese \
       --enable-gtk-doc

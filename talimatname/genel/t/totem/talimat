@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache grilo libpeas gnome-icon-theme iso-codes gnome-doc-utils python-xdg clutter-gst clutter-gtk xorg-libsm libpeas python-gobject libgdata gstreamer1-plugins-good gstreamer1-plugins-bad totem-pl-parser nautilus python3-pylint
 
-name=totem
-version=3.22.0
-release=1
+isim=totem
+surum=3.22.0
+devir=1
 
-source=(http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
   --disable-static \
   --enable-python \

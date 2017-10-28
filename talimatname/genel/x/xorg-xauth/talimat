@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-server
 
-name=xorg-xauth
-version=1.0.9
-release=2
-source=(http://xorg.freedesktop.org/releases/individual/app/xauth-$version.tar.bz2)
+isim=xorg-xauth
+surum=1.0.9
+devir=2
+kaynak=(http://xorg.freedesktop.org/releases/individual/app/xauth-$surum.tar.bz2)
 
 derle() {
-	cd xauth-$version
+	cd xauth-$surum
 
 	./configure --prefix=/usr
 

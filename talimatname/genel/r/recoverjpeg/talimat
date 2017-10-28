@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: python 
 
-name=recoverjpeg
-version=2.6.1
-release=1
-source=(http://www.rfc1149.net/download/${name}/${name}-${version}.tar.gz)
+isim=recoverjpeg
+surum=2.6.1
+devir=1
+kaynak=(http://www.rfc1149.net/download/${isim}/${isim}-${surum}.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i '1s,.*,#! /usr/bin/python2,' scripts/remove-duplicates
 	./configure --prefix=/usr
 	make
 	make DESTDIR="${PKG}/" install
-	install -D -m 644 COPYING ${PKG}/usr/share/licenses/$name/COPYING
+	install -D -m 644 COPYING ${PKG}/usr/share/licenses/$isim/COPYING
 }
 

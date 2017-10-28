@@ -3,18 +3,18 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libxslt nss
 
-name=xmlsec
-version=1.2.24
-release=1
-source=(https://www.aleksey.com/xmlsec/download/xmlsec1-$version.tar.gz)
+isim=xmlsec
+surum=1.2.24
+devir=1
+kaynak=(https://www.aleksey.com/xmlsec/download/xmlsec1-$surum.tar.gz)
 
 derle() {
-  cd xmlsec1-$version
+  cd xmlsec1-$surum
   ./configure --prefix=/usr --disable-static
   make
 
   make DESTDIR=$PKG install
-  install -dm755 "$PKG"/usr/share/licenses/$name
-  install -m644 COPYING $PKG/usr/share/licenses/$name/
+  install -dm755 "$PKG"/usr/share/licenses/$isim
+  install -m644 COPYING $PKG/usr/share/licenses/$isim/
 
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake slop freetype xorg-libxfixes xorg-libxrandr libjpeg-turbo xorg-libxcomposite
 
-name=maim
-version=4.4.62
-release=1
-source=(https://github.com/naelstrof/maim/archive/v$version.tar.gz)
+isim=maim
+surum=4.4.62
+devir=1
+kaynak=(https://github.com/naelstrof/maim/archive/v$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	cmake -DJPEG_INCLUDE_DIR:PATH=C:/MinGW/include/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	make
 	make DESTDIR=$PKG install

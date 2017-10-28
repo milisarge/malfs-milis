@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: aspcud ocaml unzip
 
-name=opam
-version=1.2.2
-release=1
-source=(https://github.com/ocaml/opam/releases/download/$version/opam-full-$version.tar.gz::$name-$version.tar.xz)
+isim=opam
+surum=1.2.2
+devir=1
+kaynak=(https://github.com/ocaml/opam/releases/download/$surum/opam-full-$surum.tar.gz::$isim-$surum.tar.xz)
 
 derle() {
-	cd "opam-full-$version"
+	cd "opam-full-$surum"
 	./configure --prefix=/usr
 	make -j1 lib-ext all
-	make -C "$SRC/opam-full-$version" DESTDIR="$PKG" install
+	make -C "$SRC/opam-full-$surum" DESTDIR="$PKG" install
 }
 
 

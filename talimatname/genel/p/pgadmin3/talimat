@@ -3,23 +3,23 @@
 # Paketçi:    milisarge
 # Gerekler:  wxgtk postgresql libgcrypt libxslt libxml2 libnotify
 
-name=pgadmin3
-version=1.22.2
-release=1
-source=(https://github.com/postgres/pgadmin3/archive/REL-1_22_2.tar.gz
+isim=pgadmin3
+surum=1.22.2
+devir=1
+kaynak=(https://github.com/postgres/pgadmin3/archive/REL-1_22_2.tar.gz
 		pgadmin3-fix-segfault.patch)
 
 derle() {
-	cd $name-REL-1_22_2
+	cd $isim-REL-1_22_2
 	 bash bootstrap
 	patch -p1 -i $SRC/pgadmin3-fix-segfault.patch
-	 ./configure --prefix=/usr --with-wx-version=3.0 --with-libgcrypt
+	 ./configure --prefix=/usr --with-wx-surum=3.0 --with-libgcrypt
 	make all
 	make DESTDIR=$PKG install
 	find $PKG/usr/share/pgadmin3/docs/* ! -wholename "*tr_TR*" | xargs rm -rf
 	rm -r "$PKG/usr/share/pgadmin3/i18n/"
 	install -d "$PKG/usr/share/pgadmin3/i18n/"
-	install -Dm644 i18n/$name.lng "$PKG/usr/share/pgadmin3/i18n"
+	install -Dm644 i18n/$isim.lng "$PKG/usr/share/pgadmin3/i18n"
 	cp -r i18n/tr_TR "$PKG/usr/share/pgadmin3/i18n/"
 	install -Dm644 "pgadmin/include/images/pgAdmin3.png" "$PKG/usr/share/pgadmin3/pgadmin3.png"
 	install -Dm644 "pkg/pgadmin3.desktop" "$PKG/usr/share/applications/pgadmin3.desktop"

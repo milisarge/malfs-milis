@@ -4,16 +4,16 @@
 # Paketçi: milisarge
 # Gerekler: openjade libxslt perl-xml-sax
 
-name=docbook2x
-version=0.8.8
-release=2
-source=(
-http://downloads.sourceforge.net/$name/docbook2X-$version.tar.gz
+isim=docbook2x
+surum=0.8.8
+devir=2
+kaynak=(
+http://downloads.sourceforge.net/$isim/docbook2X-$surum.tar.gz
 docbook2x.datadir.patch)
 
 derle(){
-    cd docbook2X-$version
-    patch < ../$name.datadir.patch || exit 1
+    cd docbook2X-$surum
+    patch < ../$isim.datadir.patch || exit 1
     sed -e 's/AM_CONFIG_HEADER(/AC_CONFIG_HEADERS(/' -i configure.ac || exit 1
 
     autoreconf -i -f

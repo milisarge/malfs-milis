@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libpcap pcre libnet ethtool ghostscript cmake gtk2
 
-name=ettercap
-version=0.8.2
-release=1
-source=(https://github.com/Ettercap/ettercap/archive/v$version.tar.gz)
+isim=ettercap
+surum=0.8.2
+devir=1
+kaynak=(https://github.com/Ettercap/ettercap/archive/v$surum.tar.gz)
  
 derle() {
-  cp $DERLEME_KAYNAKDIZIN/v$version.tar.gz $DERLEME_KAYNAKDIZIN/$name-$version.tar.gz
-  cd $SRC/$name-$version
+  cp $DERLEME_KAYNAKDIZIN/v$surum.tar.gz $DERLEME_KAYNAKDIZIN/$isim-$surum.tar.gz
+  cd $SRC/$isim-$surum
   mkdir build
   cd build
   cmake -D ENABLE_GTK=ON -D CMAKE_INSTALL_PREFIX=/usr -D INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release ../

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=liba52
-version=0.7.4
-release=1
+isim=liba52
+surum=0.7.4
+devir=1
 
-source=(http://liba52.sourceforge.net/files/a52dec-$version.tar.gz)
+kaynak=(http://liba52.sourceforge.net/files/a52dec-$surum.tar.gz)
 
 derle() {
-	cd a52dec-$version
+	cd a52dec-$surum
 	./configure --prefix=/usr \
             --mandir=/usr/share/man \
             --enable-shared \
@@ -22,5 +22,5 @@ derle() {
         # required for xine-lib
         install -m644 liba52/a52_internal.h $PKG/usr/include/a52dec/
 	install -v -m644 -D doc/liba52.txt \
-    	$PKG/usr/share/doc/liba52-$version/liba52.txt
+    	$PKG/usr/share/doc/liba52-$surum/liba52.txt
 }

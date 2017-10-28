@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=gdb
-version=7.10.1
-release=1
-source=(http://ftp.gnu.org/gnu/gdb/$name-$version.tar.xz)
+isim=gdb
+surum=7.10.1
+devir=1
+kaynak=(http://ftp.gnu.org/gnu/gdb/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --with-system-readline
 make
 make DESTDIR=$PKG install

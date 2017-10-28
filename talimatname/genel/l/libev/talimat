@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libev
-version=4.22
-release=1
-source=(http://dist.schmorp.de/$name/Attic/$name-$version.tar.gz)
+isim=libev
+surum=4.22
+devir=1
+kaynak=(http://dist.schmorp.de/$isim/Attic/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
         --disable-static
     make

@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-karchive kf5-kcmutils kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-knewstuff kf5-kwidgetsaddons plasma-kde-cli-tools 
 
-name=plasma-kde-gtk-config
-version=5.8.1
-release=1
-_name=kde-gtk-config
+isim=plasma-kde-gtk-config
+surum=5.8.1
+devir=1
+_isim=kde-gtk-config
 
-source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/plasma/$surum/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_BUILD_TYPE=Release        \
       -DCMAKE_INSTALL_PREFIX=/usr       \
       -DLIB_INSTALL_DIR=lib             \

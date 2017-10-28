@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=hunspell
-version=1.3.3
-release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+isim=hunspell
+surum=1.3.3
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
         ./configure --prefix=/usr \
 		    --disable-static \
         	    --with-ui \

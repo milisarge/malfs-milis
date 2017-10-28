@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 xorg-proto 
 
-name=xorg-libxrender
-version=0.9.9
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXrender-$version.tar.bz2)
+isim=xorg-libxrender
+surum=0.9.9
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXrender-$surum.tar.bz2)
 
 derle() {
-cd libXrender-$version
+cd libXrender-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

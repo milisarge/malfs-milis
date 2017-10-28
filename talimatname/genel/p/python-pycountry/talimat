@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools python-lxml 
 
-name=python-pycountry
-version=1.5
-release=1
+isim=python-pycountry
+surum=1.5
+devir=1
 
-source=(
-http://pypi.python.org/packages/source/p/pycountry/pycountry-$version.tar.gz)
+kaynak=(
+http://pypi.python.org/packages/source/p/pycountry/pycountry-$surum.tar.gz)
 
 derle() {
-    cd pycountry-$version
+    cd pycountry-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

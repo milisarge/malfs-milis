@@ -3,11 +3,11 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libwebp minizip libjpeg-turbo
 
-name=chromium-bin
-version=62.0.3202.62
-release=1
+isim=chromium-bin
+surum=62.0.3202.62
+devir=1
 
-source=(http://www.ftp.uni-erlangen.de/archlinux/extra/os/x86_64/chromium-62.0.3202.62-1-x86_64.pkg.tar.xz)
+kaynak=(http://www.ftp.uni-erlangen.de/archlinux/extra/os/x86_64/chromium-62.0.3202.62-1-x86_64.pkg.tar.xz)
 
 derle() {
   cp -ar "$SRC/usr" "$PKG/usr"

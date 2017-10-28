@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: aalib giflib xorg-libxext libtiff freetype xorg-libsm libpng libjpeg-turbo libid3tag
 
-name=imlib2
-version=1.4.7
-release=1
-source=(http://downloads.sourceforge.net/enlightenment/$name-$version.tar.gz)
+isim=imlib2
+surum=1.4.7
+devir=1
+kaynak=(http://downloads.sourceforge.net/enlightenment/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 case $(uname -m) in
 	i686)
 		EXTRAOPTS="--disable-mmx";;

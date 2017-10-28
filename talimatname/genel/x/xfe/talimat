@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: freetype fox libpng libjpeg-turbo libtiff expat intltool
 
-name=xfe
-version=1.42
-release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+isim=xfe
+surum=1.42
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	export CFLAGS="$CFLAGS `pkg-config --cflags freetype2`"
 	aclocal
 	automake --add-missing

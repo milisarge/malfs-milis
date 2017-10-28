@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libxml2 intltool glib 
 
-name=shared-mime-info
-version=1.5
-release=1
+isim=shared-mime-info
+surum=1.5
+devir=1
 
-source=( http://freedesktop.org/~hadess/$name-$version.tar.xz)
+kaynak=( http://freedesktop.org/~hadess/$isim-$surum.tar.xz)
 
 derle() {
 unset MAKEFLAGS
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-update-mimedb
 make -j1
 make DESTDIR=$PKG install

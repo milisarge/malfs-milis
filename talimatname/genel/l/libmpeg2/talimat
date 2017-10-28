@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libmpeg2
-version=0.5.1
-release=1
+isim=libmpeg2
+surum=0.5.1
+devir=1
 
-source=( http://$name.sourceforge.net/files/$name-$version.tar.gz)
+kaynak=( http://$isim.sourceforge.net/files/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i 's/static const/static/' libmpeg2/idct_mmx.c
 ./configure --prefix=/usr --enable-shared
 make
 make DESTDIR=$PKG install
-install -v -m755 -d $PKG/usr/share/doc/mpeg2dec-$version
+install -v -m755 -d $PKG/usr/share/doc/mpeg2dec-$surum
 install -v -m644 README doc/libmpeg2.txt \
-$PKG/usr/share/doc/mpeg2dec-$version
+$PKG/usr/share/doc/mpeg2dec-$surum
 }

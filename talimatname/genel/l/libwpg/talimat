@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libwpd
 
-name=libwpg
-version=0.3.0
-release=1
+isim=libwpg
+surum=0.3.0
+devir=1
 
-source=(http://sourceforge.net/projects/libwpg/files/libwpg/libwpg-$version/$name-$version.tar.gz)
+kaynak=(http://sourceforge.net/projects/libwpg/files/libwpg/libwpg-$surum/$isim-$surum.tar.gz)
 
 derle() {
-		cd $name-$version
+		cd $isim-$surum
                 ./configure --prefix=/usr --without-docs
 		make
 		make DESTDIR=$PKG install

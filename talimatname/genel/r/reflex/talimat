@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=reflex
-version=20100627
-release=1
-source=(ftp://invisible-island.net/${name}/${name}-${version}.tgz)
+isim=reflex
+surum=20100627
+devir=1
+kaynak=(ftp://invisible-island.net/${isim}/${isim}-${surum}.tgz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr --mandir=/usr/man
     make
     make DESTDIR=$PKG install

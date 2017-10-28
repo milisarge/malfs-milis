@@ -3,13 +3,13 @@
 # Paketçi: Cihan Alkan
 # Gerekler: iptables 
 
-name=create_ap
-version=0.4.6
-release=1
+isim=create_ap
+surum=0.4.6
+devir=1
 
-source=(https://github.com/oblique/$name/archive/v$version.tar.gz::${name}-${version}.tar.gz)
+kaynak=(https://github.com/oblique/$isim/archive/v$surum.tar.gz::${isim}-${surum}.tar.gz)
 
 derle() {
-    make -C "${name}-${version}" DESTDIR=$PKG install
-    install -Dm 644 "${name}-${version}/LICENSE" "${PKG}/usr/share/licenses/${name}/LICENSE"
+    make -C "${isim}-${surum}" DESTDIR=$PKG install
+    install -Dm 644 "${isim}-${surum}/LICENSE" "${PKG}/usr/share/licenses/${isim}/LICENSE"
 }

@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: keybinder python-gtk gnome-common
 
-_ananame=keybinder
-name=python-keybinder
-version=0.3.1
-release=1
+_anaisim=keybinder
+isim=python-keybinder
+surum=0.3.1
+devir=1
 
-source=(https://github.com/engla/${_ananame}/archive/master.zip)
+kaynak=(https://github.com/engla/${_ananame}/archive/master.zip)
 
 derle() {
 	cd "${_ananame}-master"

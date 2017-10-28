@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: sdl sdl-image sdl-mixer xorg-mesa xorg-glu freetype
 
-name=extremetuxracer
-version=0.6.0
-release=1
-source=(http://sourceforge.net/projects/extremetuxracer/files/releases/0.6.0/etr-$version.tar.xz)
+isim=extremetuxracer
+surum=0.6.0
+devir=1
+kaynak=(http://sourceforge.net/projects/extremetuxracer/files/releases/0.6.0/etr-$surum.tar.xz)
 
 derle() {
 
-cd etr-$version
+cd etr-$surum
 
 ./configure --prefix=/usr
 

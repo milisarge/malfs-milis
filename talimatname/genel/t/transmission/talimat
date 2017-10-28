@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: curl libevent gtk3 intltool
 
-name=transmission
-version=2.92
-release=1
-source=(https://download.transmissionbt.com/files/$name-$version.tar.xz)
+isim=transmission
+surum=2.92
+devir=1
+kaynak=(https://download.transmissionbt.com/files/$isim-$surum.tar.xz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
 
     ./configure --prefix=/usr \
                 --enable-cli \

@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: intltool gtk3 cmake avahi xorg-libxkbfile freerdp telepathy-glib gtk2 libjpeg-turbo libssh libunique vte3 libgcrypt xorg-libxdmcp libgnome-keyring libvncserver libsecret webkitgtk2 
 
-name=remmina
+isim=remmina
 hesap=FreeRDP
-_name=Remmina
-version=1.2.0
-release=1
-source=()
+_isim=Remmina
+surum=1.2.0
+devir=1
+kaynak=()
 
 derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$_name  ];then

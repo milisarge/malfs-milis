@@ -3,13 +3,13 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: python-setuptools
 
-name=python-magic
-version=5.29
-release=1
-source=(ftp://ftp.astron.com/pub/file/file-${version}.tar.gz)
+isim=python-magic
+surum=5.29
+devir=1
+kaynak=(ftp://ftp.astron.com/pub/file/file-${surum}.tar.gz)
 
 derle() {
-  cd "${SRC}/file-${version}/python"
+  cd "${SRC}/file-${surum}/python"
   python setup.py install --root="${PKG}" --optimize=1
-  install -Dm0644 "${SRC}/file-${version}/COPYING" "${PKG}/usr/share/licenses/${name}/COPYING"
+  install -Dm0644 "${SRC}/file-${surum}/COPYING" "${PKG}/usr/share/licenses/${isim}/COPYING"
 }

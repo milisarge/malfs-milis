@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=start-stop-daemon
-version=1.0
-release=1
-source=(start-stop-daemon.c start-stop-daemon.8 ornek_servis makefile)
+isim=start-stop-daemon
+surum=1.0
+devir=1
+kaynak=(start-stop-daemon.c start-stop-daemon.8 ornek_servis makefile)
 
 derle() {
     make
     install -d $PKG/{sbin,usr/share/man/man8}
-    install -m 755 $name $PKG/sbin/
-    install -m 644 $name.8 $PKG/usr/share/man/man8/
+    install -m 755 $isim $PKG/sbin/
+    install -m 644 $isim.8 $PKG/usr/share/man/man8/
 }

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libtasn1
-version=4.7
-release=1
+isim=libtasn1
+surum=4.7
+devir=1
 
-source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+kaynak=( http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static \
 --mandir=/usr/share/man \

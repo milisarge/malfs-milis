@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 xorg-libxrender xorg-libxcursor xorg-libxext ffmpeg pulseaudio cups openh264 
 
-name=freerdp
+isim=freerdp
 hesap=FreeRDP
-_name=FreeRDP
-version=2.0.0
-release=1
-source=()
+_isim=FreeRDP
+surum=2.0.0
+devir=1
+kaynak=()
 
 derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$_name  ];then

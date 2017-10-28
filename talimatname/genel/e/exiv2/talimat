@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: expat
 
-name=exiv2
-version=0.25
-release=1
-source=(http://www.exiv2.org/$name-$version.tar.gz)
+isim=exiv2
+surum=0.25
+devir=1
+kaynak=(http://www.exiv2.org/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure --prefix=/usr \
 		 --disable-static
 	make

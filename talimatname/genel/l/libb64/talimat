@@ -3,22 +3,22 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libb64
-version=1.2.1
-release=1
-source=(https://downloads.sourceforge.net/${name}/${name}-${version}.zip
+isim=libb64
+surum=1.2.1
+devir=1
+kaynak=(https://downloads.sourceforge.net/${isim}/${isim}-${surum}.zip
         https://sources.debian.net/data/main/libb/libb64/1.2-3/debian/patches/bufsiz-as-buffer-size.diff)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -p1 -i "$SRC"/bufsiz-as-buffer-size.diff
 
 	cd src
 	export CFLAGS="${CFLAGS} -fPIC"
 	make
 
-	export CFLAGS="${CFLAGS} -shared -Wl,-soname,${name}.so.0"
-	gcc ${LDFLAGS} ${CFLAGS} *.o -o ${name}.so.0
+	export CFLAGS="${CFLAGS} -shared -Wl,-soname,${isim}.so.0"
+	gcc ${LDFLAGS} ${CFLAGS} *.o -o ${isim}.so.0
 
 	install -d "${PKG}/usr/lib"
 	install libb64.so.0 "${PKG}/usr/lib"
@@ -26,5 +26,5 @@ derle() {
 	cd ..
 	cp -r include "${PKG}/usr"
 
-	install -Dm644 LICENSE "${PKG}"/usr/share/licenses/${name}/LICENSE
+	install -Dm644 LICENSE "${PKG}"/usr/share/licenses/${isim}/LICENSE
 }

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: dbus-glib xorg-app libnotify xfce4-panel upower udisks 
 
-name=xfce4-power-manager
-version=1.4.4
-release=2
+isim=xfce4-power-manager
+surum=1.4.4
+devir=2
 
-source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/xfce/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc

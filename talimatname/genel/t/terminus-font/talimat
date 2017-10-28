@@ -3,15 +3,15 @@
 # NuTyX package info file (http://nutyx.org)
 # Paketçi: # NuTyX package info file (http://nutyx.org)
 # Gerekler: xorg-app xorg-fontconfig xorg-font-util 
-name=terminus-font
-version=4.39
-release=1
+isim=terminus-font
+surum=4.39
+devir=1
 
-source=(
-http://downloads.sourceforge.net/project/$name/$name-$version/$name-$version.tar.gz)
+kaynak=(
+http://downloads.sourceforge.net/project/$isim/$isim-$surum/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --psfdir=/usr/share/kbd/consolefonts \
                 --x11dir=/usr/share/fonts/misc

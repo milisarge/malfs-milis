@@ -22,7 +22,7 @@ diff -Nru fortune-0.2/fortune.c fortune-0.2-new/fortune.c
 @@ -140,7 +142,7 @@
    char *re;
  
-   progname=argv[0]; re=NULL;
+   progisim=argv[0]; re=NULL;
 -  while ((c = getopt_long(argc, argv, "h?m:V",
 +  while ((c = getopt_long(argc, argv, "h?som:V",
  			  long_options, (int *) 0)) != EOF) {

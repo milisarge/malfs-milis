@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: ruby
 
-name=ruby-bundler
-version=1.15.1
-release=1
-source=(https://rubygems.org/downloads/${name#ruby-}-$version.gem)
+isim=ruby-bundler
+surum=1.15.1
+devir=1
+kaynak=(https://rubygems.org/downloads/${name#ruby-}-$surum.gem)
 
 derle() {
 	cd "$SRC"
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
 	HOME="/tmp" GEM_HOME="$_gemdir" 
 	GEM_PATH="$_gemdir" 
-	gem install --no-user-install --ignore-dependencies -i "$PKG/$_gemdir" -n "$PKG/usr/bin" "${name#ruby-}-$version.gem"
-	rm "$PKG/$_gemdir/cache/${name#ruby-}-$version.gem"
+	gem install --no-user-install --ignore-dependencies -i "$PKG/$_gemdir" -n "$PKG/usr/bin" "${name#ruby-}-$surum.gem"
+	rm "$PKG/$_gemdir/cache/${name#ruby-}-$surum.gem"
 }

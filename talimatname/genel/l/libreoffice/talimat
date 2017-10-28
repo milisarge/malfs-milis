@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler:hunspell python3 libwpd neon pango nspr clucene openjdk xmlsec libodfgen libwps libvisio libcdr libmspub libmwaw libe-book libabw libzmf libpagemaker libcmis cppunit libtommath  graphite2 harfbuzz redland raptor hyphen mythes lpsolve libexttextcat liborcus gpgmepp beanshell libpng cairo apache-ant junit libetonyek openldap sane bluez poppler   cups,curl,libatomic-ops,gperf,gtk2,gtk3,perl-archive-zip,perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt nss postgresql icu gsfonts dejavu-ttf npapi-sdk serf unixodbc xdg-utils desktop-file-utils
 
-name=libreoffice
-version=5.4.1.2
-release=1
+isim=libreoffice
+surum=5.4.1.2
+devir=1
 
-source=(http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-$version.tar.xz
-	http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-dictionaries-$version.tar.xz
-	http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-help-$version.tar.xz
-	http://download.documentfoundation.org/libreoffice/src/5.4.1/$name-translations-$version.tar.xz
+kaynak=(http://download.documentfoundation.org/libreoffice/src/5.4.1/$isim-$surum.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/5.4.1/$isim-dictionaries-$surum.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/5.4.1/$isim-help-$surum.tar.xz
+	http://download.documentfoundation.org/libreoffice/src/5.4.1/$isim-translations-$surum.tar.xz
     http://kaynaklar.milislinux.org/libreofis-milis-ekler.tar.xz)
 
 derle() {
@@ -18,14 +18,14 @@ derle() {
         export LO_PREFIX=/usr
 
 	#cd $SRC
-	#tar -xf $name-$version.tar.xz --no-overwrite-dir
+	#tar -xf $isim-$surum.tar.xz --no-overwrite-dir
 
-	cd $name-$version
+	cd $isim-$surum
 
 	install -dm755 external/tarballs
-	ln -sv $SRC/$name-dictionaries-$version.tar.xz  external/tarballs/
-	ln -sv $SRC/$name-help-$version.tar.xz          external/tarballs/
-        ln -sv $SRC/$name-translations-$version.tar.xz  external/tarballs/
+	ln -sv $SRC/$isim-dictionaries-$surum.tar.xz  external/tarballs/
+	ln -sv $SRC/$isim-help-$surum.tar.xz          external/tarballs/
+        ln -sv $SRC/$isim-translations-$surum.tar.xz  external/tarballs/
 
 
         sed -e "/gzip -f/d"   \

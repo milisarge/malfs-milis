@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cython intltool bluez dbus-glib gconf gtk3 notification-daemon libnotify polkit python-cairo dbus-python python-gobject startup-notification 
 
-name=blueman
-version=2.0.5
-release=1
-source=(https://github.com/blueman-project/blueman/releases/download/2.0.5/$name-$version.tar.xz::$name-$version.tar.xz)
+isim=blueman
+surum=2.0.5
+devir=1
+kaynak=(https://github.com/blueman-project/blueman/releases/download/2.0.5/$isim-$surum.tar.xz::$isim-$surum.tar.xz)
 
 derle() {
-    cd "${SRC}/${name}-${version}"
+    cd "${SRC}/${isim}-${surum}"
     NOCONFIGURE=1 ./autogen.sh
     export PYTHON=/usr/bin/python2
     export CYTHONEXEC=/usr/bin/cython

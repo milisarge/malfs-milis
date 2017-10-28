@@ -3,10 +3,10 @@
 # Paketçi:	milisarge
 # Gerekler:   pcsc-lite
 
-name=pcsc-perl
-version=1.4.14
-release=1
-source=(http://ludovic.rousseau.free.fr/softwares/$name/$name-$version.tar.bz2)
+isim=pcsc-perl
+surum=1.4.14
+devir=1
+kaynak=(http://ludovic.rousseau.free.fr/softwares/$isim/$isim-$surum.tar.bz2)
 
 derle() {
 	export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -15,7 +15,7 @@ derle() {
       PERL_MB_OPT="--installdirs vendor --destdir '$PKG'" \
       MODULEBUILDRC=/dev/null
 	
-	cd "$name-$version"
+	cd "$isim-$surum"
 	/usr/bin/perl Makefile.PL
 	make
 	export PERL_MM_USE_DEFAULT=1 PERL5LIB=""

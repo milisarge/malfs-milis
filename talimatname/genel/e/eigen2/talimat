@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=eigen2
-version=2.0.17
-release=1
-source=(http://bitbucket.org/eigen/eigen/get/$version.tar.bz2)
+isim=eigen2
+surum=2.0.17
+devir=1
+kaynak=(http://bitbucket.org/eigen/eigen/get/$surum.tar.bz2)
 
 derle() {
 	cd eigen-eigen-*

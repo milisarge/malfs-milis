@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool thunar subversion apr 
 
-name=thunar-vcs-plugin
-version=0.1.5
-release=1
-source=(http://archive.xfce.org/src/thunar-plugins/thunar-vcs-plugin/${version%.*}/$name-$version.tar.bz2
+isim=thunar-vcs-plugin
+surum=0.1.5
+devir=1
+kaynak=(http://archive.xfce.org/src/thunar-plugins/thunar-vcs-plugin/${surum%.*}/$isim-$surum.tar.bz2
 )
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/xfce4
   make
   make DESTDIR=$PKG install

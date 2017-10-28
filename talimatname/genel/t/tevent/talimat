@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: talloc python
 
-name=tevent
-version=0.9.33
-release=1
-source=(https://www.samba.org/ftp/$name/$name-$version.tar.gz)
+isim=tevent
+surum=0.9.33
+devir=1
+kaynak=(https://www.samba.org/ftp/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	--bundled-libraries=NONE \
 	--builtin-libraries=replace

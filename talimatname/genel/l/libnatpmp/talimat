@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libnatpmp
-version=20150609
-release=1
-source=(http://miniupnp.tuxfamily.org/files/libnatpmp-20150609.tar.gz
+isim=libnatpmp
+surum=20150609
+devir=1
+kaynak=(http://miniupnp.tuxfamily.org/files/libnatpmp-20150609.tar.gz
 )
 
 derle() {
-cd $name-$version
+cd $isim-$surum
   sed -e 's/CFLAGS = /CFLAGS += /' -i Makefile
   make
   make INSTALLPREFIX="$PKG/usr" INSTALLDIRINC="$PKG/usr/include" install
-  install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
   install -Dm644 natpmpc.1 "$PKG/usr/share/man/man1/natpmpc.1"
 }

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-error
-version=0.17022
-release=1
+isim=perl-error
+surum=0.17022
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Error-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Error-$surum.tar.gz)
 
 derle() {
-cd Error-$version
+cd Error-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

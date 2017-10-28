@@ -4,11 +4,11 @@
 # Gerekler: xorg-libx11 xorg-fontconfig libarchive p7zip 
 _sfpath="http://downloads.sourceforge.net/corefonts"
 
-name=ttf-ms-fonts
-version=2.0
-release=1
+isim=ttf-ms-fonts
+surum=2.0
+devir=1
 
-source=($_sfpath/andale32.exe $_sfpath/arial32.exe  $_sfpath/arialb32.exe
+kaynak=($_sfpath/andale32.exe $_sfpath/arial32.exe  $_sfpath/arialb32.exe
         $_sfpath/comic32.exe  $_sfpath/courie32.exe $_sfpath/georgi32.exe
         $_sfpath/impact32.exe $_sfpath/times32.exe  $_sfpath/trebuc32.exe
         $_sfpath/verdan32.exe $_sfpath/webdin32.exe )

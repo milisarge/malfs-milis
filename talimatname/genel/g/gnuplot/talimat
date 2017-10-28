@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libgd pango
 
-name=gnuplot
-version=5.0.5
-release=1
-source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz)
+isim=gnuplot
+surum=5.0.5
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/$isim/$isim/$surum/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
                 --with-x \

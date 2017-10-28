@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: python llvm cmake
 
-name=clang
-version=4.0.0
-release=1
-source=(http://llvm.org/releases/$version/{llvm,cfe}-$version.src.tar.xz \
+isim=clang
+surum=4.0.0
+devir=1
+kaynak=(http://llvm.org/releases/$surum/{llvm,cfe}-$surum.src.tar.xz \
   llvm-config.h)
 
 derle() {
-  mv cfe-$version.src llvm-$version.src/tools/clang
+  mv cfe-$surum.src llvm-$surum.src/tools/clang
 
-  cd llvm-$version.src
+  cd llvm-$surum.src
   mkdir build
   cd build
 

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: qt5 boost libevent
 
-name=thrift
-version=0.10.0
-release=1
-source=(https://github.com/apache/thrift/archive/$version.zip::$name-$zip.zip)
+isim=thrift
+surum=0.10.0
+devir=1
+kaynak=(https://github.com/apache/thrift/archive/$surum.zip::$isim-$zip.zip)
 
 derle() {
-	cd thrift-$version
+	cd thrift-$surum
 
 	./bootstrap.sh
 	./configure --prefix=/usr \

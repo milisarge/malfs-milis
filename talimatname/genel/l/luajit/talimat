@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=luajit
-version=2.0.4
-release=1
-source=(http://luajit.org/download/LuaJIT-$version.tar.gz)
+isim=luajit
+surum=2.0.4
+devir=1
+kaynak=(http://luajit.org/download/LuaJIT-$surum.tar.gz)
 
 derle() {
-  cd LuaJIT-$version
+  cd LuaJIT-$surum
   sed -i 's/PREFIX= \/usr\/local/\PREFIX= \/usr/' Makefile
   make
   make DESTDIR=$PKG install

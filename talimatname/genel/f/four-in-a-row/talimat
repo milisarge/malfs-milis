@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache hicolor-icon-theme gtk3 libcanberra librsvg tdb
 
-name=four-in-a-row
-version=3.22.1
-release=1
+isim=four-in-a-row
+surum=3.22.1
+devir=1
 
-source=(http://ftp.acc.umu.se/pub/gnome/sources/four-in-a-row/3.22/four-in-a-row-$version.tar.xz)
+kaynak=(http://ftp.acc.umu.se/pub/gnome/sources/four-in-a-row/3.22/four-in-a-row-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure --prefix=/usr     
 	make
 	make DESTDIR=$PKG install

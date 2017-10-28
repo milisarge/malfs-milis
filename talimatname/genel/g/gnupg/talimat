@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: npth libgpg-error libgcrypt libassuan libksba pinentry openldap libusb-compat curl
 
-name=gnupg
-version=2.1.11
-release=1
-source=(ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-$version.tar.bz2)
+isim=gnupg
+surum=2.1.11
+devir=1
+kaynak=(ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-$surum.tar.bz2)
 
 derle() {
-cd gnupg-$version
+cd gnupg-$surum
 
 sed -e 's|\(GNUPGHOME\)=\$(abs_builddir)|\1=`/bin/pwd`|' \
     -i tests/openpgp/Makefile.in
 
 ./configure --prefix=/usr \
 --enable-symcryptrun \
---docdir=/usr/share/doc/gnupg-$version
+--docdir=/usr/share/doc/gnupg-$surum
 make
 
 makeinfo --html --no-split -o doc/gnupg_nochunks.html doc/gnupg.texi
@@ -32,12 +32,12 @@ do
 done
 
 install -v -m755 -d \
-$PKG/usr/share/doc/gnupg-$version/html
+$PKG/usr/share/doc/gnupg-$surum/html
 if [ -f doc/gnupg_nochunks.html ];then
 	install -v -m644 doc/gnupg_nochunks.html \
-	$PKG/usr/share/doc/gnupg-$version/gnupg.html
+	$PKG/usr/share/doc/gnupg-$surum/gnupg.html
 fi
 install -v -m644 doc/*.texi doc/gnupg.txt \
-$PKG/usr/share/doc/gnupg-$version
+$PKG/usr/share/doc/gnupg-$surum
 rm $PKG/usr/share/info/dir
 }

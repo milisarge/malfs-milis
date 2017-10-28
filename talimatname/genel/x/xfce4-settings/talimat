@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: exo xfce4-libui xfce4-garcon xorg-libxklavier xorg-libxkbfile libcanberra gnome-icon-theme
 
-name=xfce4-settings
-version=4.12.0
-release=3
+isim=xfce4-settings
+surum=4.12.0
+devir=3
 
-source=(http://archive.xfce.org/src/xfce/${name}/${version%.*}/$name-$version.tar.bz2 
+kaynak=(http://archive.xfce.org/src/xfce/${isim}/${surum%.*}/$isim-$surum.tar.bz2 
 default-xsettings-xml.patch)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 patch -Np1 -i $SRC/default-xsettings-xml.patch
 ./configure \
     --prefix=/usr \

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: glibc
 
-name=libcap-ng
-version=0.7.7
-release=1
+isim=libcap-ng
+surum=0.7.7
+devir=1
 
-source=(http://people.redhat.com/sgrubb/$name/$name-$version.tar.gz)
+kaynak=(http://people.redhat.com/sgrubb/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static \
 --without-python

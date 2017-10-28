@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: toxcore meson gtk3 vala json-glib libsoup libnotify
 
-name=ricin
-_name=Ricin
-version=0.0.7
-release=1
-source=(https://github.com/RicinApp/${_name}/archive/v${version}.tar.gz)
+isim=ricin
+_isim=Ricin
+surum=0.0.7
+devir=1
+kaynak=(https://github.com/RicinApp/${_name}/archive/v${surum}.tar.gz)
 
 derle() {
-    cd ${_name}-${version}
+    cd ${_name}-${surum}
     make autogen
     make release
     cd build

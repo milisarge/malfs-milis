@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libxcb xcb-util xcb-util-wm xcb-util-keysyms
 
-name=sxhkd
-version=0.5.8
-release=1
+isim=sxhkd
+surum=0.5.8
+devir=1
 
-source=(https://github.com/baskerville/sxhkd/archive/$version.tar.gz::$name-$version.tar.gz)
+kaynak=(https://github.com/baskerville/sxhkd/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   make PREFIX=/usr
   make PREFIX=/usr DESTDIR="$PKG" install
 }

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=cscope
-version=15.8b
-release=1
-source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz)
+isim=cscope
+surum=15.8b
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/$isim/$isim/$surum/$isim-$surum.tar.gz)
 
 derle()
 {
-  cd $name-$version 
+  cd $isim-$surum 
   ./configure --prefix=/usr \
               --mandir=/usr/man
   make

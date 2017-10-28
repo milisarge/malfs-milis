@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libjpeg-turbo jasper lcms2 
 
-name=libraw
-version=0.17.0
-release=1
+isim=libraw
+surum=0.17.0
+devir=1
 
-source=(http://www.libraw.org/data/LibRaw-$version.tar.gz)
+kaynak=(http://www.libraw.org/data/LibRaw-$surum.tar.gz)
 
 derle()
 {
-cd LibRaw-$version
+cd LibRaw-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

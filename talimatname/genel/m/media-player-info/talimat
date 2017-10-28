@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: python3
 
-name=media-player-info
-version=22
-release=1
+isim=media-player-info
+surum=22
+devir=1
 
-source=(http://www.freedesktop.org/software/$name/$name-$version.tar.gz )
+kaynak=(http://www.freedesktop.org/software/$isim/$isim-$surum.tar.gz )
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
       		--with-udevdir=/lib/udev
 

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:	
 
-name=nss-mdns
-version=0.10
-release=1
-source=(http://0pointer.de/lennart/projects/$name/$name-$version.tar.gz)
+isim=nss-mdns
+surum=0.10
+devir=1
+kaynak=(http://0pointer.de/lennart/projects/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure \
 	--prefix=/usr \

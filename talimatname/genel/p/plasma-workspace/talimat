@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk@hotmail.com
 # Gerekler: consolekit2 kf5-baloo kf5-kdesu kf5-kdewebkit kf5-kjsembed kf5-knotifyconfig kf5-krunner plasma-kwin kf5-kxmlrpcclient plasma-libkscreen plasma-libksysguard kf5-networkmanager-qt kf5-ktexteditor kf5-kwayland libdbusmenu-qt5 pm-utils gvfs plasma-kscreenlocker plasma-breeze plasma-kactivitymanagerd kholidays
 
-name=plasma-workspace
-version=5.8.1
-release=1
+isim=plasma-workspace
+surum=5.8.1
+devir=1
 
-source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz
+kaynak=( http://download.kde.org/stable/plasma/$surum/$isim-$surum.tar.xz
          kscreensaver.pam)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

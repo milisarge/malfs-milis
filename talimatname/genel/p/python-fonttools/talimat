@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python python-numpy python-setuptools 
 
-name=python-fonttools
-version=2.4
-release=1
+isim=python-fonttools
+surum=2.4
+devir=1
 
-source=(http://pypi.python.org/packages/source/F/FontTools/FontTools-$version.tar.gz)
+kaynak=(http://pypi.python.org/packages/source/F/FontTools/FontTools-$surum.tar.gz)
 
 derle() {
-    cd FontTools-$version
+    cd FontTools-$surum
     python2 setup.py build install --root=$PKG       
 }

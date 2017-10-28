@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=time
-version=1.7
-release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+isim=time
+surum=1.7
+devir=1
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
 	sed -i 's/$(ACLOCAL)//' Makefile.in               
 	sed -i 's/lu", ptok ((UL) resp->ru.ru_maxrss)/ld", resp->ru.ru_maxrss/' time.c 

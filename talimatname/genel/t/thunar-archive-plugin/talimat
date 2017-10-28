@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: thunar xarchiver
 
-name=thunar-archive-plugin
-version=0.3.1
-release=1
-source=(http://archive.xfce.org/src/thunar-plugins/$name/${version%.*}/$name-$version.tar.bz2)
+isim=thunar-archive-plugin
+surum=0.3.1
+devir=1
+kaynak=(http://archive.xfce.org/src/thunar-plugins/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 ##
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 ./configure	--prefix=/usr \
 		--libexecdir=/usr/lib/thunar \

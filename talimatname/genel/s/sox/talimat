@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: file libsndfile libpng lame opencore-amr gsm libao libmad libid3tag wavpack pulseaudio opusfile time
 
-name=sox
-version=14.4.2
-release=1
+isim=sox
+surum=14.4.2
+devir=1
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.bz2
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2
        sox-dynamic.patch) 
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   sed -i 's|man1/sox.1 soxeffect.7|man1/sox.1.gz soxeffect.7.gz|' Makefile.in
 
   patch -p1 -i $SRC/sox-dynamic.patch

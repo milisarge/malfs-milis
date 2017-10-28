@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libedit
-_version=20170329-3.1
-version=${_version/-/_}
-release=1
+isim=libedit
+_surum=20170329-3.1
+surum=${_version/-/_}
+devir=1
 
-source=(http://www.thrysoee.dk/editline/libedit-${_version}.tar.gz)
+kaynak=(http://www.thrysoee.dk/editline/libedit-${_version}.tar.gz)
 
 derle(){
-    cd $name-${_version}
+    cd $isim-${_version}
     ./configure --prefix=/usr \
                 --enable-widec
     make

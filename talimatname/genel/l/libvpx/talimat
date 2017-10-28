@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler: yasm 
 
-name=libvpx
-version=1.5.0
-release=1
+isim=libvpx
+surum=1.5.0
+devir=1
 
-source=(http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-$version.tar.bz2)
+kaynak=(http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-$surum.tar.bz2)
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed   -e 's/cp -p/cp/'       \
       -i build/make/Makefile 
 chmod -v 644 vpx/*.h 
 mkdir ../libvpx-build
 cd ../libvpx-build
-../libvpx-$version/configure --prefix=/usr \
+../libvpx-$surum/configure --prefix=/usr \
 --enable-shared --disable-static \
 --disable-install-docs \
 --disable-install-srcs

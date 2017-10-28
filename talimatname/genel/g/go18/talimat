@@ -3,11 +3,11 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: gcc-go
 
-name=go18
-_name=go
-version=1.8.1
-release=1
-source=(https://storage.googleapis.com/golang/${_name}${version}.src.tar.gz)
+isim=go18
+_isim=go
+surum=1.8.1
+devir=1
+kaynak=(https://storage.googleapis.com/golang/${_name}${surum}.src.tar.gz)
 
 
 derle() {

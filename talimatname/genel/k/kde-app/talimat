@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: ark baloo-widgets dolphin dolphin-plugins gwenview k3b kate kcalc kde5-l10n kdeconnect kdepim kdepim-addons kdepim-apps-libs kdepim-runtime kirigami kio-extras kolourpaint konsole konversation okular partitionmanager print-manager spectacle yakuake
 
-name=kde-app
-release=1
-version=20160924
+isim=kde-app
+devir=1
+surum=20160924
 
-source=(talimat)
+kaynak=(talimat)
 
 derle() {
 echo "KDE Applications 5"

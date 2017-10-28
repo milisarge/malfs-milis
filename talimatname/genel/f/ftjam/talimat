@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ftjam
-version=2.5.3rc2
-release=1
-#source=(http://downloads.sourceforge.net/freetype/$name-$version.tar.bz2 \
-source=(http://david.freetype.org/jam/${name}-${version}.tar.bz2)
+isim=ftjam
+surum=2.5.3rc2
+devir=1
+#kaynak=(http://downloads.sourceforge.net/freetype/$isim-$surum.tar.bz2 \
+kaynak=(http://david.freetype.org/jam/${isim}-${surum}.tar.bz2)
 
 derle() {
-  cd "${SRC}/${name}-${version}"
+  cd "${SRC}/${isim}-${surum}"
   ./configure --prefix=/usr
   make
 

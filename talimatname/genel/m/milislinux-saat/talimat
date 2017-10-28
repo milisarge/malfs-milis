@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: xdialog
 
-name=milislinux-saat
-version=1.0
-release=1
-source=(kk_milislinux-saat
+isim=milislinux-saat
+surum=1.0
+devir=1
+kaynak=(kk_milislinux-saat
 		milislinux-saat.xpm
 		milislinux-saat.desktop)
 

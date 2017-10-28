@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kcmutils kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdelibs4support kf5-kglobalaccel kf5-ki18n kf5-kiconthemes kf5-knotifications kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui alsa-lib  pulseaudio libcanberra kf5-plasma-framework
 
-name=kmix
-version=16.08.2
-release=1
+isim=kmix
+surum=16.08.2
+devir=1
 
-source=(http://download.kde.org/stable/applications/$version/src/kmix-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/applications/$surum/src/kmix-$surum.tar.xz)
 
 derle() {
-cd kmix-$version
+cd kmix-$surum
 
 sed -e 's|${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR}|${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_SOURCE_DIR}/cmake/modules|' -i CMakeLists.txt
 

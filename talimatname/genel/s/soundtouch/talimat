@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=soundtouch
-version=1.9.2
-release=1
-source=(http://www.surina.net/soundtouch/$name-$version.tar.gz)
+isim=soundtouch
+surum=1.9.2
+devir=1
+kaynak=(http://www.surina.net/soundtouch/$isim-$surum.tar.gz)
 derle() {
-cd $name
+cd $isim
 ./bootstrap
 ./configure --prefix=/usr \
---docdir=/usr/share/doc/$name-$version
+--docdir=/usr/share/doc/$isim-$surum
 make
 make DESTDIR=$PKG install
 }

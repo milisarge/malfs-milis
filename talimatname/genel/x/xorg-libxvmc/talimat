@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 xorg-libxext xorg-libxv
 
-name=xorg-libxvmc
-version=1.0.9
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXvMC-$version.tar.bz2)
+isim=xorg-libxvmc
+surum=1.0.9
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXvMC-$surum.tar.bz2)
 
 derle() {
-	cd libXvMC-$version
+	cd libXvMC-$surum
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 	make DESTDIR=$PKG install

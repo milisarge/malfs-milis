@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libxslt libxml2 yelp-xsl, itstool
 
-name=yelp-tools
-version=3.16.1
-release=1
-source=(http://download.gnome.org/sources/$name/${version:0:4}/$name-$version.tar.xz)
+isim=yelp-tools
+surum=3.16.1
+devir=1
+kaynak=(http://download.gnome.org/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

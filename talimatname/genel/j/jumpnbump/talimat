@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: sdl2 sdl2-mixer sdl2_net python-gtk 
 
-name=jumpnbump
-version=1.60
-release=1
-source=(https://gitlab.com/LibreGames/jumpnbump/uploads/9f3a356c52f433e3af10f1ef800fce5d/jumpnbump-$version.tar.xz
+isim=jumpnbump
+surum=1.60
+devir=1
+kaynak=(https://gitlab.com/LibreGames/jumpnbump/uploads/9f3a356c52f433e3af10f1ef800fce5d/jumpnbump-$surum.tar.xz
 		menu.patch
 		desktop.patch)
 
 derle() {
-  cd $SRC/${name}-${version}/menu
+  cd $SRC/${isim}-${surum}/menu
   patch -p0 < $SRC/menu.patch || return 1
-  cd "${SRC}/${name}-${version}/"
+  cd "${SRC}/${isim}-${surum}/"
   make -j1 PREFIX=/usr 
   make PREFIX="${PKG}/usr/" install
   cd ${PKG}/usr/share/applications/

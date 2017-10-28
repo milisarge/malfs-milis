@@ -3,9 +3,9 @@
 @@ -1755,7 +1755,7 @@
  	<support_level>extended</support_level>
    </member>
-   <member name="astcanary">
+   <member isim="astcanary">
 -	<defaultenabled>yes</defaultenabled>
 +	<defaultenabled>no</defaultenabled>
  	<support_level>core</support_level>
    </member>
-   <member name="astdb2sqlite3">
+   <member isim="astdb2sqlite3">

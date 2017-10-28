@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libspiro
-version=0.5.20150702
-release=1
-source=(https://github.com/fontforge/libspiro/archive/${version}.tar.gz)
+isim=libspiro
+surum=0.5.20150702
+devir=1
+kaynak=(https://github.com/fontforge/libspiro/archive/${surum}.tar.gz)
 
 derle() {
-	cd $name-${version}
+	cd $isim-${surum}
 	autoreconf -i
 	automake --foreign -Wall
 	./configure --prefix=/usr

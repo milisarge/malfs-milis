@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: scons lua51
 
-name=tolua++
-version=1.0.93
-release=1
+isim=tolua++
+surum=1.0.93
+devir=1
 
-source=(ftp://ftp.debian.org/debian/pool/main/t/$name/${name}_$version.orig.tar.bz2)
+kaynak=(ftp://ftp.debian.org/debian/pool/main/t/$isim/${isim}_$surum.orig.tar.bz2)
        
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 cat > config_linux.py << "EOF"
 CCFLAGS = ['-I/usr/include/lua5.1', '-O2', '-ansi', '-Wall', '-fPIC']

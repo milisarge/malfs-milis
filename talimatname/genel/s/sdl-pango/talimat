@@ -3,18 +3,18 @@
 # Paketçi: Cihan Alkan
 # Gerekler: pango sdl
 
-name=sdl-pango
-version=0.1.2
-release=1
+isim=sdl-pango
+surum=0.1.2
+devir=1
 
-source=(https://downloads.sourceforge.net/sourceforge/sdlpango/SDL_Pango-$version.tar.gz
-        SDL_Pango-$version-API-adds.patch
+kaynak=(https://downloads.sourceforge.net/sourceforge/sdlpango/SDL_Pango-$surum.tar.gz
+        SDL_Pango-$surum-API-adds.patch
         matrix_declarations.patch)
 
 
 derle() {
-	cd SDL_Pango-$version
-	patch -Np0 -i $SRC/SDL_Pango-$version-API-adds.patch
+	cd SDL_Pango-$surum
+	patch -Np0 -i $SRC/SDL_Pango-$surum-API-adds.patch
 	patch -Np1 -i $SRC/matrix_declarations.patch
 	./configure --prefix=/usr
 	make

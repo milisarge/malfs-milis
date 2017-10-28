@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: dbus expat glib
 
-name=dbus-glib
-version=0.104
-release=1
-source=(http://dbus.freedesktop.org/releases/$name/$name-$version.tar.gz)
+isim=dbus-glib
+surum=0.104
+devir=1
+kaynak=(http://dbus.freedesktop.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static \
 --sysconfdir=/etc

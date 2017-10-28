@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: opus libssh2 qt5 x264 flac libmad glib dbus libupnp libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg28 faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
-name=vlc
-version=2.2.6
-release=1
+isim=vlc
+surum=2.2.6
+devir=1
 
-source=(https://download.videolan.org/${name}/${version}/${name}-${version}.tar.xz
+kaynak=(https://download.videolan.org/${isim}/${surum}/${isim}-${surum}.tar.xz
 		lua53_compat.patch)
 	
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 	sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
 	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
 	patch -p1 < "${SRC}/lua53_compat.patch"
@@ -42,7 +42,7 @@ derle() {
 	make
 	make DESTDIR=$PKG install
 	for res in 16 32 48 128; do
-    install -Dm 644 "${SRC}/vlc-${version}/share/icons/${res}x${res}/vlc.png" \
+    install -Dm 644 "${SRC}/vlc-${surum}/share/icons/${res}x${res}/vlc.png" \
        "${PKG}/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
 	done
 

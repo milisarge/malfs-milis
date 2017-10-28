@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=python-crypto
-version=2.6.1
-release=1
+isim=python-crypto
+surum=2.6.1
+devir=1
 
-source=(
-http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-$version.tar.gz)
+kaynak=(
+http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-$surum.tar.gz)
 
 derle() {
-    cd pycrypto-$version
+    cd pycrypto-$surum
     python2 setup.py build
     python2 setup.py install --prefix=/usr --root=$PKG
 }

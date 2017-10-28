@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: glib intltool
 
-name=udevil
-version=0.4.4
-release=2
-source=(https://github.com/IgnorantGuru/$name/archive/$version.tar.gz::$name-$version.tar.gz)
+isim=udevil
+surum=0.4.4
+devir=2
+kaynak=(https://github.com/IgnorantGuru/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 derle() {
-	cd udevil-$version
+	cd udevil-$surum
 	./configure --prefix=/usr \
 		--disable-systemd \
 		--with-setfacl-prog=/bin/setfacl

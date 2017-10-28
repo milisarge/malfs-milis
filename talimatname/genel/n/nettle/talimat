@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=nettle
-version=3.2
-release=1
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+isim=nettle
+surum=3.2
+devir=1
+kaynak=(ftp://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   ./configure --prefix=/usr \
               --libdir=/usr/lib \

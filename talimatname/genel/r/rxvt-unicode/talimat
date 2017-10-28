@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: gdk-pixbuf xorg-libxft startup-notification
 
-name=rxvt-unicode
-version=9.20
-release=2
+isim=rxvt-unicode
+surum=9.20
+devir=2
 
-source=(
-http://dist.schmorp.de/rxvt-unicode/Attic/$name-$version.tar.bz2
-$name.desktop
-$name.svg)
+kaynak=(
+http://dist.schmorp.de/rxvt-unicode/Attic/$isim-$surum.tar.bz2
+$isim.desktop
+$isim.svg)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --localstatedir=/var \
@@ -48,8 +48,8 @@ derle(){
     TERMINFO=$PKG/usr/share/terminfo make install DESTDIR=$PKG
 
     # Openclipart simgesiyle masaüstü bütünleşmesi
-    install -Dm 644 $SRC/$name.desktop \
-        $PKG/usr/share/applications/$name.desktop
-    install -Dm 644 $SRC/$name.svg \
-        $PKG/usr/share/icons/hicolor/scalable/apps/$name.svg
+    install -Dm 644 $SRC/$isim.desktop \
+        $PKG/usr/share/applications/$isim.desktop
+    install -Dm 644 $SRC/$isim.svg \
+        $PKG/usr/share/icons/hicolor/scalable/apps/$isim.svg
 }

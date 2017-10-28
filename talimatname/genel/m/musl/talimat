@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=musl
-version=1.1.17
-release=1
-source=(https://www.musl-libc.org/releases/musl-1.1.17.tar.gz{,.asc}
+isim=musl
+surum=1.1.17
+devir=1
+kaynak=(https://www.musl-libc.org/releases/musl-1.1.17.tar.gz{,.asc}
 )
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr/lib/musl \
     --exec-prefix=/usr \
     --enable-wrapper=all

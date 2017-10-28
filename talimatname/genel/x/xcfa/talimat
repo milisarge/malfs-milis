@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 vte taglib curl dvd+rw-tools alsa-lib xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama
 
-name=xcfa
-version=4.3.4
-release=2
+isim=xcfa
+surum=4.3.4
+devir=2
 
-source=(http://download.tuxfamily.org/xcfaudio/xcfa_download/src/$name-$version.tar.gz)
+kaynak=(http://download.tuxfamily.org/xcfaudio/xcfa_download/src/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

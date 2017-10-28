@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: popt
 
-name=efivar
-version=0.24
-release=1
-source=( https://github.com/rhinstaller/$name/releases/download/$version/$name-$version.tar.bz2)
+isim=efivar
+surum=0.24
+devir=1
+kaynak=( https://github.com/rhinstaller/$isim/releases/download/$surum/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
 cd src/test
 make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1

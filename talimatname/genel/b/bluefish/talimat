@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: pcre enchant gtk3 desktop-file-utils
 
-name=bluefish
-version=2.2.9
-release=1
-source=(http://www.bennewitz.com/bluefish/stable/source/$name-$version.tar.bz2)
+isim=bluefish
+surum=2.2.9
+devir=1
+kaynak=(http://www.bennewitz.com/bluefish/stable/source/$isim-$surum.tar.bz2)
 
 derle() {
 gdk-pixbuf-query-loaders --update-cache
-cd $name-$version
+cd $isim-$surum
  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' \
     src/plugin_zencoding/zencoding/{,filters/,actions/}*.py \
     data/{jsbeautify,jsmin.py,lorem-ipsum-generator}

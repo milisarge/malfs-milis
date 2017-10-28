@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: samba
 
-name=cifs-utils
-version=6.5
-release=1
-source=( http://ftp.samba.org/pub/linux-cifs/$name/$name-$version.tar.bz2)
+isim=cifs-utils
+surum=6.5
+devir=1
+kaynak=( http://ftp.samba.org/pub/linux-cifs/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-systemd
 make
 make DESTDIR=$PKG install

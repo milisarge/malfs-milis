@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libsoup
 
-name=gssdp
-version=0.14.11
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/${name}/${version:0:4}/${name}-${version}.tar.xz)
+isim=gssdp
+surum=0.14.11
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/${isim}/${version:0:4}/${isim}-${surum}.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --disable-static
 make

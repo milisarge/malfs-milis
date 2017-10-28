@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=fpc
-version=2.6.4
-release=1
-source=(ftp://ftp.freepascal.org/pub/fpc/dist/$version/source/fpcbuild-$version.tar.gz
+isim=fpc
+surum=2.6.4
+devir=1
+kaynak=(ftp://ftp.freepascal.org/pub/fpc/dist/$surum/source/fpcbuild-$surum.tar.gz
 	http://crux.ster.zone/downloads/fpc/md5/2f440a0e40d134ed67db2fbf58c6e30a/x86_64-linux-ppcx64.bz2
 	ftp://ftp.freepascal.org/pub/fpc/contrib/libgdb/v7.2/libgdb_mingw702.zip)
 
@@ -16,26 +16,26 @@ derle() {
 
 	export LIBGDBDIR=$SRC/libgdb/win64/x86_64/
 
-	cd fpcbuild-$version/fpcsrc/
+	cd fpcbuild-$surum/fpcsrc/
 	
 	make -j 1 PP=$SRC/x86_64-linux-ppcx64 build
 
-	cp $SRC/fpcbuild-$version/fpcsrc/compiler/ppcx64 \
-		$SRC/fpcbuild-$version/fpcsrc/compiler/ppcx64.new
+	cp $SRC/fpcbuild-$surum/fpcsrc/compiler/ppcx64 \
+		$SRC/fpcbuild-$surum/fpcsrc/compiler/ppcx64.new
 
-	make -j 1 PP=$SRC/fpcbuild-$version/fpcsrc/compiler/ppcx64.new build
-	rm $SRC/fpcbuild-$version/fpcsrc/compiler/ppcx64.new
+	make -j 1 PP=$SRC/fpcbuild-$surum/fpcsrc/compiler/ppcx64.new build
+	rm $SRC/fpcbuild-$surum/fpcsrc/compiler/ppcx64.new
 
-	make -j 1 PP=$SRC/fpcbuild-$version/fpcsrc/compiler/ppcx64 rtl_clean
-	make -j 1 PP=$SRC/fpcbuild-$version/fpcsrc/compiler/ppcx64 rtl packages_all utils
+	make -j 1 PP=$SRC/fpcbuild-$surum/fpcsrc/compiler/ppcx64 rtl_clean
+	make -j 1 PP=$SRC/fpcbuild-$surum/fpcsrc/compiler/ppcx64 rtl packages_all utils
 
-	set -- PP=$SRC/fpcbuild-$version/fpcsrc/compiler/ppcx64 \
-		FPCMAKE=$SRC/fpcbuild-$version/fpcsrc/utils/fpcm/fpcmake \
+	set -- PP=$SRC/fpcbuild-$surum/fpcsrc/compiler/ppcx64 \
+		FPCMAKE=$SRC/fpcbuild-$surum/fpcsrc/utils/fpcm/fpcmake \
 		INSTALL_PREFIX=$PKG/usr \
 		INSTALL_DOCDIR=$PKG/usr/share/doc/fpcbuild \
 		INSTALL_MANDIR=$PKG/usr/share/man \
-		INSTALL_SOURCEDIR=$PKG/usr/lib/fpc/fpcbuild-$version/source
+		INSTALL_SOURCEDIR=$PKG/usr/lib/fpc/fpcbuild-$surum/source
 
 	make -j 1 "$@" compiler_install rtl_install packages_install utils_install
-	ln -sf /usr/lib/fpc/$version/ppcx64 $PKG/usr/bin/ppcx64
+	ln -sf /usr/lib/fpc/$surum/ppcx64 $PKG/usr/bin/ppcx64
 }

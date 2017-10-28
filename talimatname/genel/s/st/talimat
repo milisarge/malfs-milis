@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxext xorg-libxft
 
-name=st
-version=0.7
-release=1
+isim=st
+surum=0.7
+devir=1
 
-source=(http://dl.suckless.org/st/$name-$version.tar.gz)
+kaynak=(http://dl.suckless.org/st/$isim-$surum.tar.gz)
 
 derle(){
-	cd $name-$version
+	cd $isim-$surum
 	local file
 	sed \
 		-e '/char font/s/= .*/= "Fixed:pixelsize=17:style=Condensed";/' \

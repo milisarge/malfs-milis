@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool python3 xfce4-panel libdbusmenu-gtk3 
 
-name=xfce4-statusnotifier-plugin
-version=0.2.0
-release=1
-source=(http://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$version.tar.bz2)
+isim=xfce4-statusnotifier-plugin
+surum=0.2.0
+devir=1
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 		
 derle() {
-  cd "${name}-${version}"
+  cd "${isim}-${surum}"
 
   ./configure \
       --prefix=/usr \

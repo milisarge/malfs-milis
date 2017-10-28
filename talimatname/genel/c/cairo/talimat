@@ -4,13 +4,13 @@
 # Gerekler: libpng,glib,xorg-pixman,xorg-fontconfig,xcb-util,xorg-libxrender,xorg-mesa,xorg-glu,xorg-libxxf86vm
 
 
-name=cairo
-version=1.14.6
-release=1
-source=( http://cairographics.org/releases/$name-$version.tar.xz)
+isim=cairo
+surum=1.14.6
+devir=1
+kaynak=( http://cairographics.org/releases/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
             --disable-static \
 	    --enable-tee

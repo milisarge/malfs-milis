@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-io-tty 
 
-name=perl-ipc-run
-version=0.92
-release=1
+isim=perl-ipc-run
+surum=0.92
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IPC-Run-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IPC-Run-$surum.tar.gz)
 
 derle() {
-    cd IPC-Run-$version
+    cd IPC-Run-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1

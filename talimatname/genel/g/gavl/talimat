@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: 
 
-name=gavl
-version=1.4.0
-release=1
-source=(http://downloads.sourceforge.net/sourceforge/gmerlin/$name-$version.tar.gz)
+isim=gavl
+surum=1.4.0
+devir=1
+kaynak=(http://downloads.sourceforge.net/sourceforge/gmerlin/$isim-$surum.tar.gz)
 
 derle() {
-cd $SRC/$name-$version
+cd $SRC/$isim-$surum
 
 ./configure --prefix=/usr        \
             --without-doxygen    \

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libtiff libjpeg-turbo 
 
-name=lcms
-version=1.19
-release=1
+isim=lcms
+surum=1.19
+devir=1
 
-source=( http://www.littlecms.com/1/$name-$version.tar.gz)
+kaynak=( http://www.littlecms.com/1/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \
 --infodir=/usr/share/info

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: qt4
 
-name=grantlee
-version=0.5.1
-release=2
-source=(http://downloads.grantlee.org/$name-$version.tar.gz)
+isim=grantlee
+surum=0.5.1
+devir=2
+kaynak=(http://downloads.grantlee.org/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   sed -e 's|INCLUDE_INSTALL_DIR include|INCLUDE_INSTALL_DIR include/grantlee-qt4|' -i CMakeLists.txt
 

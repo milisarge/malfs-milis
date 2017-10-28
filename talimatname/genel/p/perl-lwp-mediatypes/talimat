@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-lwp-mediatypes
-version=6.02
-release=1
+isim=perl-lwp-mediatypes
+surum=6.02
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/LWP-MediaTypes-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/LWP-MediaTypes-$surum.tar.gz)
 
 derle() {
-cd LWP-MediaTypes-$version
+cd LWP-MediaTypes-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

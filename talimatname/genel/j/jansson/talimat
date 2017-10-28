@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=jansson
-version=2.7
-release=1
-source=(http://www.digip.org/$name/releases/$name-$version.tar.bz2)
+isim=jansson
+surum=2.7
+devir=1
+kaynak=(http://www.digip.org/$isim/releases/$isim-$surum.tar.bz2)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
 
     ./configure \
 	   --prefix=/usr \

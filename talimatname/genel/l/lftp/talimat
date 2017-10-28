@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gnutls libidn
 
-name=lftp
-version=4.7.7
-release=1
+isim=lftp
+surum=4.7.7
+devir=1
 
-source=(http://lftp.yar.ru/ftp/$name-$version.tar.xz)
+kaynak=(http://lftp.yar.ru/ftp/$isim-$surum.tar.xz)
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	--with-gnutls \
 	--without-openssl \

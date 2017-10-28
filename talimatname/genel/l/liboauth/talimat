@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: curl nss 
 
-name=liboauth
-version=1.0.3
-release=1
+isim=liboauth
+surum=1.0.3
+devir=1
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
  
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static
 make

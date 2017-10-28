@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libusb libgcrypt
 
-name=libotr
-version=4.1.1
-release=1
+isim=libotr
+surum=4.1.1
+devir=1
 
-source=( https://otr.cypherpunks.ca/$name-$version.tar.gz)
+kaynak=( https://otr.cypherpunks.ca/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --disable-static
     make

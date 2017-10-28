@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxmu
 
-name=xclip
-version=0.12
-release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+isim=xclip
+surum=0.12
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man

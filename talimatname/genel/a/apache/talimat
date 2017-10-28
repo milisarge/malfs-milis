@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler: pcre apr-util sqlite expat
 
-name=apache
-version=2.4.18
-release=1
-source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2
-	 http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$version-blfs_layout-1.patch)
+isim=apache
+surum=2.4.18
+devir=1
+kaynak=(http://archive.apache.org/dist/httpd/httpd-$surum.tar.bz2
+	 http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$surum-blfs_layout-1.patch)
 
 derle(){
 
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 
-cd httpd-$version
+cd httpd-$surum
 
-patch -Np1 -i ../httpd-$version-blfs_layout-1.patch
+patch -Np1 -i ../httpd-$surum-blfs_layout-1.patch
 sed '/dir.*CFG_PREFIX/s@^@#@' -i support/apxs.in
 ./configure --enable-authnz-fcgi                            \
             --enable-layout=BLFS                            \

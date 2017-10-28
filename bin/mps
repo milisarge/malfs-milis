@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="1.1.2 Milis Paket Sistemi"
+versiyon="1.1.3 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -332,8 +332,8 @@ paket_analiz(){
 					psurum=${satir:1:${#satir}-1}
 					satir2=$(sed -n '8p' <  /tmp/$_apaket.META)
 					pdevir=${satir2:1:${#satir2}-1}
-					deposurum=`echo -e "$version" | sort -V | head -n1`
-					depodevir=`echo -e "$release" | sort -V | head -n1`
+					deposurum=`echo -e "$surum" | sort -V | head -n1`
+					depodevir=`echo -e "$devir" | sort -V | head -n1`
 					_surumbilgi="gereken_sürüm:$deposurum ! paket_sürüm:$psurum"
 					_devirbilgi="gereken_devir:$depodevir ! paket_devir:$pdevir"
 					ryaz 33 "$pkt"
@@ -743,8 +743,8 @@ guncelleme_tespit(){
 		fi
 		
 		source $_konum/talimat
-		deposurum=`echo -e "$version" | sort -V | head -n1`
-		depodevir=`echo -e "$release" | sort -V | head -n1`
+		deposurum=`echo -e "$surum" | sort -V | head -n1`
+		depodevir=`echo -e "$devir" | sort -V | head -n1`
 		#echo $kpaket "  :  $surum --->  $deposurum" "$devir --->  $depodevir"
 		#sleep 3
 		if [ "$surum" != "$deposurum" ];then
@@ -791,7 +791,7 @@ surum_kontrol(){
 	if [ "$2" ]; then
 		GS_CIKTI="$2"
 	fi
-	local ksurum version pkt dusuk yuksek durum
+	local ksurum surum pkt dusuk yuksek durum
 	durum="belirsiz"
 	satir=`sed -n '7p' <  $VT/"$1"/META`
 	ksurum=${satir:1:${#satir}-1} 
@@ -805,9 +805,9 @@ surum_kontrol(){
 	
 	source $_konum/talimat
 
-	dusuk=`echo -e "$ksurum\n$version" | sort -V | head -n1`
+	dusuk=`echo -e "$ksurum\n$surum" | sort -V | head -n1`
 	
-	if [ "$ksurum" = "$version" ];then
+	if [ "$ksurum" = "$surum" ];then
 		durum="guncel"
 		[ $GS_CIKTI = "E" ] && ryaz 33 "$1 sürümü güncel"
 		#printf "."
@@ -821,7 +821,7 @@ surum_kontrol(){
 		if [ "$durum" <> "guncel" ];then
 			while true; do
 				printf "\n"
-				ryaz 34 "$1 sürüm $durum""me işlemi uygulanacak. $ksurum <> $version ";read -p "e veya h-> " eh
+				ryaz 34 "$1 sürüm $durum""me işlemi uygulanacak. $ksurum <> $surum ";read -p "e veya h-> " eh
 				case $eh in
 					[Ee]* ) gun_onay="e"; break;;
 					[Hh]* ) break;;
@@ -856,7 +856,7 @@ devir_kontrol(){
 	if [ "$2" ]; then
 		GS_CIKTI="$2"
 	fi
-	local kdevir release pkt dusuk yuksek durum gun_onay
+	local kdevir devir pkt dusuk yuksek durum gun_onay
 	durum="belirsiz"
 	satir=`sed -n '8p' <  $VT/"$1"/META`
 	kdevir=${satir:1:${#satir}-1} 
@@ -868,9 +868,9 @@ devir_kontrol(){
 	fi
 	
 	source $_konum/talimat
-	dusuk=`echo -e "$kdevir\n$release" | sort -V | head -n1`
+	dusuk=`echo -e "$kdevir\n$devir" | sort -V | head -n1`
 	
-	if [ "$kdevir" = "$release" ];then
+	if [ "$kdevir" = "$devir" ];then
 		durum="guncel"
 		[ $GS_CIKTI = "E" ] && ryaz 33 "$1 deviri güncel"
 		#printf "."
@@ -884,7 +884,7 @@ devir_kontrol(){
 		if [ "$durum" <> "guncel" ];then
 			while true; do
 				printf "\n"
-				ryaz 34 "$1 devir $durum""me işlemi uygulanacak. $kdevir <> $release ";read -p "e veya h-> " eh
+				ryaz 34 "$1 devir $durum""me işlemi uygulanacak. $kdevir <> $devir ";read -p "e veya h-> " eh
 				case $eh in
 					[Ee]* ) gun_onay="e"; break;;
 					[Hh]* ) break;;
@@ -1400,22 +1400,22 @@ talimat_olustur(){
 if [ "$1" = '?' ];then
 	ryaz 34 "kullanım : mps -to paket_ismi"
 else
-	local name
-	name=$1
-	mkdir -p $name
-	tee "$name/talimat" > /dev/null <<EOF
+	local isim
+	isim=$1
+	mkdir -p $isim
+	tee "$isim/talimat" > /dev/null <<EOF
 # Tanım: paket açıklaması
 # Url: paketin ilgili web sayfası
 # Paketçi: paketçi
 # Gerekler: 
 
-name=$name
-version=1
-release=1
+isim=$isim
+surum=1
+devir=1
 source=()
 
 build () {
-	cd \$name-\$version
+	cd \$isim-\$surum
 	./autogen.sh
 	./configure --prefix=/usr
 	make
@@ -1423,7 +1423,7 @@ build () {
 }
 
 EOF
-	ryaz 34 $name "talimatı oluşturuldu."
+	ryaz 34 $isim "talimatı oluşturuldu."
 fi
 }
 

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: docbook-xsl libxslt xorg-util-macros xorg-libpciaccess 
 
-_name=libdrm
-name=xorg-libdrm
-version=2.4.83
-release=1
-source=( http://dri.freedesktop.org/${_name}/${_name}-$version.tar.bz2)
+_isim=libdrm
+isim=xorg-libdrm
+surum=2.4.83
+devir=1
+kaynak=( http://dri.freedesktop.org/${_name}/${_name}-$surum.tar.bz2)
 
 derle() {
-	cd $_name-$version
+	cd $_name-$surum
 
 	./configure \
 		--prefix=/usr \

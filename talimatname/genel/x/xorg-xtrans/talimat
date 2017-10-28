@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libxcb
 
-_name=xtrans 
-name=xorg-xtrans
-version=1.3.5
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$version.tar.bz2)
+_isim=xtrans 
+isim=xorg-xtrans
+surum=1.3.5
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

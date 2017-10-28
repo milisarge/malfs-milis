@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=hddtemp
-version=0.3-beta15
-release=2
-source=(http://nongnu.askapache.com/hddtemp/$name-$version.tar.bz2
+isim=hddtemp
+surum=0.3-beta15
+devir=2
+kaynak=(http://nongnu.askapache.com/hddtemp/$isim-$surum.tar.bz2
 	http://nongnu.askapache.com/hddtemp/hddtemp.db
 	hddtemp-0.3-beta15-satacmds.patch
 	hddtemp-0.3-beta15-byteswap.patch
@@ -16,7 +16,7 @@ source=(http://nongnu.askapache.com/hddtemp/$name-$version.tar.bz2
 	hddtemp.rc)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	patch -p 1 -i $SRC/hddtemp-0.3-beta15-satacmds.patch
 	patch -p 1 -i $SRC/hddtemp-0.3-beta15-byteswap.patch

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxres gtk2 intltool gobject-introspection startup-notification gtk-doc
 
-name=libwnck
-version=2.31.0
-release=1
+isim=libwnck
+surum=2.31.0
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --program-suffix=-1
 	make GETTEXT_PACKAGE=libwnck-1
 	make DESTDIR=$PKG GETTEXT_PACKAGE=libwnck-1 install

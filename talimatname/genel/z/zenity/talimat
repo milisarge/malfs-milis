@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: itstool gtk3 libnotify yelp-tools
 
-name=zenity
-version=3.16.3
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+isim=zenity
+surum=3.16.3
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var
 make

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: sqlite libzip
 
-name=ulib
-version=1.4.2
-release=1
-source=(https://github.com/stefanocasazza/ULib/archive/v$version.tar.gz::$name-$version.tar.gz)
+isim=ulib
+surum=1.4.2
+devir=1
+kaynak=(https://github.com/stefanocasazza/ULib/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-  cd "${SRC}/ULib-${version}"
+  cd "${SRC}/ULib-${surum}"
   ./configure \
   --enable-debug \
   --with-sqlite3 \

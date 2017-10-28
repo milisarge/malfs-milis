@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 vte
 
-name=gtkdialog
-version=0.8.3
-release=2
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gtkdialog/gtkdialog-$version.tar.gz)
+isim=gtkdialog
+surum=0.8.3
+devir=2
+kaynak=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gtkdialog/gtkdialog-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr
   make
   make prefix=$PKG/usr install
-  mkdir -p "$PKG"/usr/share/$name
-  cp -a examples "$PKG"/usr/share/$name/examples
+  mkdir -p "$PKG"/usr/share/$isim
+  cp -a examples "$PKG"/usr/share/$isim/examples
 }

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-xml-parser
-version=2.43
-release=2
+isim=perl-xml-parser
+surum=2.43
+devir=2
 
-source=(http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$version.tar.gz)
+kaynak=(http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$surum.tar.gz)
 run=(perl)
 
 derle() {
-cd XML-Parser-$version
+cd XML-Parser-$surum
 perl Makefile.PL
 make OPTIMIZE="$CFLAGS"
 make DESTDIR=$PKG install

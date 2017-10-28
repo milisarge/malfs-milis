@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: 
 
-name=wavpack
-version=4.75.0
-release=1
+isim=wavpack
+surum=4.75.0
+devir=1
 
-source=(http://www.wavpack.com/$name-$version.tar.bz2)
+kaynak=(http://www.wavpack.com/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --enable-mmx \
 --enable-static=no 

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg
 
-name=spacenavd
-version=0.6
-release=1
+isim=spacenavd
+surum=0.6
+devir=1
 
-source=(https://freefr.dl.sourceforge.net/project/spacenav/spacenav%20daemon/spacenavd%20$version/$name-$version.tar.gz)
+kaynak=(https://freefr.dl.sourceforge.net/project/spacenav/spacenav%20daemon/spacenavd%20$surum/$isim-$surum.tar.gz)
 
 derle() {
-	cd ${name}-${version}
+	cd ${isim}-${surum}
 	./configure --prefix=/usr \
 	--disable-debug
 	make

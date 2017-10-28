@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: cmake glib alsa-lib openjdk
 
-name=portmidi
-version=217
-release=1
+isim=portmidi
+surum=217
+devir=1
 
-source=(http://downloads.sourceforge.net/project/portmedia/$name/$version/$name-src-$version.zip \
+kaynak=(http://downloads.sourceforge.net/project/portmedia/$isim/$surum/$isim-src-$surum.zip \
         portmidi-217-build-fix.patch)
 
 derle() {
 
 unset MAKEFLAGS
 
-cd $name
+cd $isim
 sed -i "s#/usr/local#/usr#" */CMakeLists.txt pm_python/setup.py
 
 mkdir -p pm_java/Release

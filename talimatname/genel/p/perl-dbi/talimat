@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-dbi
-version=1.631
-release=1
+isim=perl-dbi
+surum=1.631
+devir=1
 
-source=(http://www.cpan.org/authors/id/T/TI/TIMB/DBI-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/T/TI/TIMB/DBI-$surum.tar.gz)
 
 derle() {
-cd DBI-$version
+cd DBI-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

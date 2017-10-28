@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libxcb xorg-util-macros
 
-name=xcb-util-renderutil
-version=0.3.9
-release=1
+isim=xcb-util-renderutil
+surum=0.3.9
+devir=1
 
-source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
+kaynak=(http://xcb.freedesktop.org/dist/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 

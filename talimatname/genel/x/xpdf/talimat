@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: lesstif
 
-name=xpdf
-version=3.04
-release=1
-source=(ftp://ftp.foolabs.com/pub/xpdf/$name-$version.tar.gz)
+isim=xpdf
+surum=3.04
+devir=1
+kaynak=(ftp://ftp.foolabs.com/pub/xpdf/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
 
     sed -i 's/\(s = XmStringCreateLocalized(\)/\1(char *)/g' xpdf/XPDFViewer.cc
 

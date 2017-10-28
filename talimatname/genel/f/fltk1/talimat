@@ -3,10 +3,10 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: libjpeg-turbo libpng xorg-libxft xorg-libxi xorg-libxinerama xorg-mesa doxygen
 
-name=fltk1
-version=1.3.3
-release=1
-source=(http://fltk.org/pub/fltk/$version/fltk-$version-source.tar.gz)
+isim=fltk1
+surum=1.3.3
+devir=1
+kaynak=(http://fltk.org/pub/fltk/$surum/fltk-$surum-source.tar.gz)
 
 derle() {
 cd fltk-*
@@ -22,8 +22,8 @@ sed -i -e '/cat./d' documentation/Makefile
 make
 make -C documentation html
 
-make DESTDIR=$PKG docdir=/usr/share/doc/fltk-$version install
+make DESTDIR=$PKG docdir=/usr/share/doc/fltk-$surum install
 
-make -C test DESTDIR=$PKG docdir=/usr/share/doc/fltk-$version install-linux
-make -C documentation DESTDIR=$PKG docdir=/usr/share/doc/fltk-$version install-linux
+make -C test DESTDIR=$PKG docdir=/usr/share/doc/fltk-$surum install-linux
+make -C documentation DESTDIR=$PKG docdir=/usr/share/doc/fltk-$surum install-linux
 }

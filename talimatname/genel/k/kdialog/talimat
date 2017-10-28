@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: python kf5-kdelibs4support
 
-name=kdialog
-version=17.04.2
-release=1
-source=(https://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+isim=kdialog
+surum=17.04.2
+devir=1
+kaynak=(https://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
   mkdir -p build
 cd build
-  cmake ../$name-$version \
+  cmake ../$isim-$surum \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF

@@ -3,20 +3,20 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: glib libxml2 gsl gobject-introspection
 
-name=gstreamer
-version=0.10.36
-release=1
-source=(http://gstreamer.freedesktop.org/src/$name/$name-$version.tar.bz2)
+isim=gstreamer
+surum=0.10.36
+devir=1
+kaynak=(http://gstreamer.freedesktop.org/src/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i  -e '/YYLEX_PARAM/d' \
   -e '/parse-param.*scanner/i %lex-param { void *scanner }' \
      gst/parse/grammar.y
 
 ./configure --prefix=/usr \
 --disable-static \
---with-package-name="GStreamer for Milis" \
+--with-package-isim="GStreamer for Milis" \
 --with-package-origin="https://milis.gungre.ch/" \
 
 make

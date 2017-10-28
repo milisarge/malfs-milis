@@ -3,20 +3,20 @@
 # Paketçi:  milisarge
 # Gerekler: ocaml
 
-name=unison
-version=git
-release=1
-source=()
+isim=unison
+surum=git
+devir=1
+kaynak=()
 
 derle() {
 	cd $DERLEME_KAYNAKDIZIN
 
-	if cd $name; then
+	if cd $isim; then
 		git pull
 		make clean
 	else
-		git clone git://github.com/bcpierce00/$name $name
-		cd $name
+		git clone git://github.com/bcpierce00/$isim $isim
+		cd $isim
 	fi
 
 	cd src

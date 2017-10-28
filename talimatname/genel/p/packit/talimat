@@ -3,13 +3,13 @@
 # Paketçi:milisarge
 # Gerekler: libnet libpcap
 
-name=packit
-version=1.5
-release=1
-source=(https://github.com/eribertomota/packit/archive/$version.tar.gz::$name-$version.tar.gz)
+isim=packit
+surum=1.5
+devir=1
+kaynak=(https://github.com/eribertomota/packit/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./autogen.sh
 	./configure --prefix=/usr
 	make

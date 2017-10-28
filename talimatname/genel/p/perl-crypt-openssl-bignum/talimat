@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-crypt-openssl-bignum
-version=0.04
-release=1
+isim=perl-crypt-openssl-bignum
+surum=0.04
+devir=1
 
-source=(http://www.cpan.org/authors/id/I/IR/IROBERTS/Crypt-OpenSSL-Bignum-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/I/IR/IROBERTS/Crypt-OpenSSL-Bignum-$surum.tar.gz)
 
 derle() {
-cd Crypt-OpenSSL-Bignum-$version
+cd Crypt-OpenSSL-Bignum-$surum
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make pure_install doc_install DESTDIR=$PKG

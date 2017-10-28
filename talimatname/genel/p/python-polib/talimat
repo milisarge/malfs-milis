@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=python-polib
-version=1.0.4
-release=1
-source=(https://bitbucket.org/izi/polib/downloads/polib-${version}.tar.gz)
+isim=python-polib
+surum=1.0.4
+devir=1
+kaynak=(https://bitbucket.org/izi/polib/downloads/polib-${surum}.tar.gz)
 derle() {
-cd polib-$version
+cd polib-$surum
 python2 setup.py build
 python2 setup.py install --root=$PKG --optimize=1
 }

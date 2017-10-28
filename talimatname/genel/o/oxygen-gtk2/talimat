@@ -4,14 +4,14 @@
 # Gerekler: cmake gtk2 dbus-glib cairo
 
 
-name=oxygen-gtk2
-version=1.4.6
-release=1
+isim=oxygen-gtk2
+surum=1.4.6
+devir=1
 
-source=(http://download.kde.org/stable/oxygen-gtk2/$version/src/$name-$version.tar.bz2)
+kaynak=(http://download.kde.org/stable/oxygen-gtk2/$surum/src/$isim-$surum.tar.bz2)
 
 derle() {
-  	cd $name-$version
+  	cd $isim-$surum
         mkdir build
         cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \

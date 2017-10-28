@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: boost
 
-name=mdds
-version=1.2.3
-release=1
+isim=mdds
+surum=1.2.3
+devir=1
 
-source=(https://kohei.us/files/mdds/src/$name-$version.tar.bz2)
+kaynak=(https://kohei.us/files/mdds/src/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
    ./autogen.sh --prefix=/usr
     make DESTDIR=$PKG install
-  install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
 }

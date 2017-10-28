@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-libx11 xorg-libxext 
 
-name=xorg-libxxf86dga
-version=1.1.4
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXxf86dga-$version.tar.bz2)
+isim=xorg-libxxf86dga
+surum=1.1.4
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXxf86dga-$surum.tar.bz2)
 
 derle() {
-cd libXxf86dga-$version
+cd libXxf86dga-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: lame libao libvorbis libmad
 
-name=cdrdao
-version=1.2.3
-release=1
-source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2 \
-	     http://downloads.nutyx.org/files/patchs/$name/cdrdao-1.2.3-stat.patch)
+isim=cdrdao
+surum=1.2.3
+devir=1
+kaynak=( http://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2 \
+	     http://downloads.nutyx.org/files/patchs/$isim/cdrdao-1.2.3-stat.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	patch -Np1 -i $SRC/cdrdao-1.2.3-stat.patch
     CXXFLAGS+=' -std=c++11 -Wno-narrowing'

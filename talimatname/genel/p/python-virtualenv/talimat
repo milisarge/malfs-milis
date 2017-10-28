@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python 
 
-name=python-virtualenv
-version=15.1.0
-release=1
+isim=python-virtualenv
+surum=15.1.0
+devir=1
 
-source=(https://pypi.python.org/packages/d4/0c/9840c08189e030873387a73b90ada981885010dd9aea134d6de30cd24cb8/virtualenv-15.1.0.tar.gz::$name-$version.tar.gz)
+kaynak=(https://pypi.python.org/packages/d4/0c/9840c08189e030873387a73b90ada981885010dd9aea134d6de30cd24cb8/virtualenv-15.1.0.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-    cd virtualenv-$version
+    cd virtualenv-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

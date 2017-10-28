@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: shared-mime-info gtk2 enchant dbus-glib
 
-name=xchat
-version=2.8.8
-release=2
+isim=xchat
+surum=2.8.8
+devir=2
 
-source=(http://www.xchat.org/files/source/${version%.*}/$name-$version.tar.xz
+kaynak=(http://www.xchat.org/files/source/${surum%.*}/$isim-$surum.tar.xz
 	http://www.linuxfromscratch.org/patches/blfs/svn/xchat-2.8.8-glib-2.31-1.patch)        
 derle() {
-cd $name-$version
+cd $isim-$surum
 patch -Np1 -i ../xchat-2.8.8-glib-2.31-1.patch
 LIBS+="-lgmodule-2.0" ./configure --prefix=/usr \
 --sysconfdir=/etc --enable-shm 

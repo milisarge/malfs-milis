@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libcddb
 
-name=libcdio
-version=0.93
-release=2
+isim=libcdio
+surum=0.93
+devir=2
 
-source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+kaynak=( http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --disable-static 
 	make
 	make DESTDIR=$PKG install

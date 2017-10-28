@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ethtool
-version=4.6
-release=1
-source=(https://www.kernel.org/pub/software/network/$name/$name-$version.tar.xz)
+isim=ethtool
+surum=4.6
+devir=1
+kaynak=(https://www.kernel.org/pub/software/network/$isim/$isim-$surum.tar.xz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   ./configure --prefix=/usr \
               --mandir=/usr/man

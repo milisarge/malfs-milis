@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-imake xorg-libxt xorg-libxext xorg-gccmakedep
 
-name=xzoom
-version=0.3
-release=1
-source=(http://webdiis.unizar.es/pub/unix/X11/$name-$version.tgz
+isim=xzoom
+surum=0.3
+devir=1
+kaynak=(http://webdiis.unizar.es/pub/unix/X11/$isim-$surum.tgz
 ftp://ftp.acc.umu.se/mirror/cdimage/snapshot/Debian/pool/main/x/xzoom/xzoom_0.3-23.diff.gz)
 
 derle() {
-	cd "$name-$version"
+	cd "$isim-$surum"
 	gzip -d $SRC/xzoom_0.3-23.diff.gz
 	patch -Np1 < "$SRC/xzoom_0.3-23.diff"
 	xmkmf -a

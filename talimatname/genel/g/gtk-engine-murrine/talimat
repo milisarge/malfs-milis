@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 intltool
 
-name=gtk-engine-murrine
-version=0.98.2
-release=1
-source=(http://ftp.gnome.org/pub/GNOME/sources/murrine/${version::4}/murrine-$version.tar.xz)
+isim=gtk-engine-murrine
+surum=0.98.2
+devir=1
+kaynak=(http://ftp.gnome.org/pub/GNOME/sources/murrine/${version::4}/murrine-$surum.tar.xz)
 
 derle() {
-	cd murrine-$version
+	cd murrine-$surum
 
 	./configure \
 		--prefix=/usr \

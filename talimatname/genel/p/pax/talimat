@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=pax
-version=070715	
-release=1
-source=(http://downloads.sourceforge.net/heirloom/heirloom-070715.tar.bz2)
+isim=pax
+surum=070715	
+devir=1
+kaynak=(http://downloads.sourceforge.net/heirloom/heirloom-070715.tar.bz2)
  
 derle() {
 
-cd heirloom-$version
+cd heirloom-$surum
 
 sed -i build/mk.config                   \
     -e '/LIBZ/s@ -Wl[^ ]*@@g'            \

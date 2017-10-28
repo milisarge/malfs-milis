@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: efl 
 
-name=evas_generic_loaders
-version=1.17.0
-release=1
-source=(http://download.enlightenment.org/rel/libs/$name/$name-$version.tar.xz)
+isim=evas_generic_loaders
+surum=1.17.0
+devir=1
+kaynak=(http://download.enlightenment.org/rel/libs/$isim/$isim-$surum.tar.xz)
 
 derle()
 {
-    cd $name-$version 
+    cd $isim-$surum 
     ./configure --prefix=/usr
     make
     make -j1 DESTDIR=$PKG install

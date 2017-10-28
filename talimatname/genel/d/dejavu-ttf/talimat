@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11,xorg-fontconfig
 
-name=dejavu-ttf
-version=2.35
-release=1
-source=(http://downloads.sourceforge.net/dejavu/dejavu-fonts-ttf-$version.tar.bz2)
+isim=dejavu-ttf
+surum=2.35
+devir=1
+kaynak=(http://downloads.sourceforge.net/dejavu/dejavu-fonts-ttf-$surum.tar.bz2)
 
 derle() {
-	cd dejavu-fonts-ttf-$version/ttf
+	cd dejavu-fonts-ttf-$surum/ttf
 	install -v -d -m755 $PKG/usr/share/fonts/dejavu
 	install -v -m644 *.ttf $PKG/usr/share/fonts/dejavu
 }

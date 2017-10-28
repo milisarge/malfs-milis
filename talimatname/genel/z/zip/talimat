@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=zip
-version=3.0
-release=1
-source=( http://downloads.sourceforge.net/infozip/zip30.tar.gz)
+isim=zip
+surum=3.0
+devir=1
+kaynak=( http://downloads.sourceforge.net/infozip/zip30.tar.gz)
 
 derle() {
-	cd ${name}30
+	cd ${isim}30
 	make -f unix/Makefile prefix=/usr generic_gcc 
 	make prefix=$PKG/usr MANDIR=$PKG/usr/share/man/man1 -f unix/Makefile install 
         

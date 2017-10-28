@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gnome-shell
 
-name=gnome-suspend-button
-_name=gnome-shell-extension-suspend-button
-version=1
-release=1
-source=()
+isim=gnome-suspend-button
+_isim=gnome-shell-extension-suspend-button
+surum=1
+devir=1
+kaynak=()
 
 derle() {
 git clone https://github.com/laserb/gnome-shell-extension-suspend-button.git

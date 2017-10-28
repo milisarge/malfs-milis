@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: expat xorg-libx11 xorg-libsm xorg-libice
 
-name=dbus
-version=1.10.6
-release=1
-source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
+isim=dbus
+surum=1.10.6
+devir=1
+kaynak=(http://dbus.freedesktop.org/releases/dbus/$isim-$surum.tar.gz \
        dbus.system-local.conf)
 
 derle() {
@@ -14,12 +14,12 @@ derle() {
 	wget http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/$scripts-$scriptsversion.tar.bz2
 	tar xvf $scripts-$scriptsversion.tar.bz2
 
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --with-x \
 		--localstatedir=/var \
 		--disable-doxygen-docs \
 		--disable-xml-docs \
-		--docdir=/usr/share/doc/$name-$version \
+		--docdir=/usr/share/doc/$isim-$surum \
 		--sysconfdir=/etc \
 		--with-console-auth-dir=/run/console \
 		--without-systemdsystemunitdir \

@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt4
 
-name=libdbusmenu-qt
-version=0.9.2
-release=1
+isim=libdbusmenu-qt
+surum=0.9.2
+devir=1
 
-source=(http://launchpad.net/libdbusmenu-qt/trunk/$version/+download/$name-$version.tar.bz2)
+kaynak=(http://launchpad.net/libdbusmenu-qt/trunk/$surum/+download/$isim-$surum.tar.bz2)
 derle() {
-cd $name-$version
+cd $isim-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DWITH_DOC=OFF
       

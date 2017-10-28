@@ -3,16 +3,16 @@
 # Paketçi: Cihan Alkan
 # Gerekler: glib gtk2
 
-name=gtkglext
-version=1.2.0
-release=1
+isim=gtkglext
+surum=1.2.0
+devir=1
 
-source=(http://downloads.sourceforge.net/sourceforge/gtkglext/$name-$version.tar.gz
+kaynak=(http://downloads.sourceforge.net/sourceforge/gtkglext/$isim-$surum.tar.gz
        gtk2.20.patch)
 
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -Np1 -i $SRC/gtk2.20.patch
 	sed '/AC_PATH_XTRA/d' -i configure.in
 

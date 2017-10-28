@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: alsa-lib gtk2 zip unzip libevent libvpx nspr nss yasm dbus-glib doxygen gstreamer-plugins-good gstreamer-plugins-ffmpeg libnotify openjdk startup-notification hunspell sqlite wireless-tools xorg-libx11 xorg-libxt xorg-libxrandr desktop-file-utils hicolor-icon-theme shared-mime-info pulseaudio
 
-name=thunderbird
-version=38.6.0
-release=1
+isim=thunderbird
+surum=38.6.0
+devir=1
 
-source=(http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$version/source/$name-$version.source.tar.bz2
-		$name.desktop)
+kaynak=(http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$surum/source/$isim-$surum.source.tar.bz2
+		$isim.desktop)
 
 derle() {
 export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/thunderbird"
@@ -19,7 +19,7 @@ ARCH=`uname -m`
 
 for lang in da de en-US es-ES fi fr it nb-NO nl pt-PT sv-SE
 do 
-wget  http://download.cdn.mozilla.net/pub/mozilla.org/$name/releases/$version/linux-$ARCH/xpi/$lang.xpi
+wget  http://download.cdn.mozilla.net/pub/mozilla.org/$isim/releases/$surum/linux-$ARCH/xpi/$lang.xpi
 done
 
 cd $SRC/comm-*
@@ -106,7 +106,7 @@ SHELL=/bin/sh make -f client.mk
 SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
 	
 mkdir -pv $PKG/usr/bin
-ln -sfv ../lib/$name-$version/thunderbird $PKG/usr/bin
+ln -sfv ../lib/$isim-$surum/thunderbird $PKG/usr/bin
 
 mkdir -pv $PKG/usr/share/applications 
 install -Dm644 $SRC/thunderbird.desktop \
@@ -119,8 +119,8 @@ done
 
 
 mkdir -p $PKG/etc/ld.so.conf.d
-echo "/usr/lib/$name-$version" > $PKG/etc/ld.so.conf.d/$name.conf
-cat > $PKG/usr/lib/thunderbird-$version/defaults/pref/vendor.js << "EOF"
+echo "/usr/lib/$isim-$surum" > $PKG/etc/ld.so.conf.d/$isim.conf
+cat > $PKG/usr/lib/thunderbird-$surum/defaults/pref/vendor.js << "EOF"
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
 EOF
@@ -128,7 +128,7 @@ EOF
 for lang in da de en-US es-ES fi fr it nb-NO nl pt-PT sv-SE
 do  
     install -Dm644 $SRC/$lang.xpi \
-    $PKG/usr/lib/thunderbird-$version/extensions/langpack-$lang@thunderbird.mozilla.org.xpi
+    $PKG/usr/lib/thunderbird-$surum/extensions/langpack-$lang@thunderbird.mozilla.org.xpi
 done
-chown -R 0:0 $PKG/usr/lib/$name-$version
+chown -R 0:0 $PKG/usr/lib/$isim-$surum
 }

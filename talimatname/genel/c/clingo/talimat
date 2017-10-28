@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: re2c cmake ninja python lua clang
 
-name=clingo
-version=5.2.0
-release=1
-source=(https://github.com/potassco/clingo/archive/v$version.tar.gz::$name-$ersion.tar.gz)
+isim=clingo
+surum=5.2.0
+devir=1
+kaynak=(https://github.com/potassco/clingo/archive/v$surum.tar.gz::$isim-$ersion.tar.gz)
 
 derle() {
 	mkdir -p build
 	cd build
 
-	cmake "../$name-$version" \
+	cmake "../$isim-$surum" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCLINGO_REQUIRE_PYTHON=ON \
 	-DCLINGO_BUILD_PY_SHARED=ON \

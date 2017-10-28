@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python python-setuptools lm-sensors
 
-name=pysensors
-version=0.0.3
-release=2
-source=(https://pypi.python.org/packages/source/P/PySensors/PySensors-$version.tar.gz)
+isim=pysensors
+surum=0.0.3
+devir=2
+kaynak=(https://pypi.python.org/packages/source/P/PySensors/PySensors-$surum.tar.gz)
 
 derle() {
-  cd PySensors-$version
+  cd PySensors-$surum
   python setup.py install -O1 --prefix='/usr' --root=$PKG --optimize=1
 }

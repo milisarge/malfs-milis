@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 
 
-name=libstroke
-version=0.5.1
-release=1
-source=(http://www.etla.net/libstroke/libstroke-${version}fvwm.tar.gz
+isim=libstroke
+surum=0.5.1
+devir=1
+kaynak=(http://www.etla.net/libstroke/libstroke-${surum}fvwm.tar.gz
 		libgstroke-Makefile.am.patch
 		libstroke-Makefile.am.patch
 		libstroke-0.5.1-m4_syntax.patch

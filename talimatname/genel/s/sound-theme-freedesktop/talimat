@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool
 
-name=sound-theme-freedesktop
-version=0.8
-release=1
+isim=sound-theme-freedesktop
+surum=0.8
+devir=1
 
-source=(http://people.freedesktop.org/~mccann/dist/$name-$version.tar.bz2)
+kaynak=(http://people.freedesktop.org/~mccann/dist/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr  
 make
 make DESTDIR=$PKG install

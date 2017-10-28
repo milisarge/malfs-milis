@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-devel-symdump
-version=2.11
-release=1
+isim=perl-devel-symdump
+surum=2.11
+devir=1
 
-source=(http://www.cpan.org/authors/id/A/AN/ANDK/Devel-Symdump-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/A/AN/ANDK/Devel-Symdump-$surum.tar.gz)
 
 derle() {
-    cd Devel-Symdump-$version
+    cd Devel-Symdump-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1

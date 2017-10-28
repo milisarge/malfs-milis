@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: yasm 
 
-name=xvid
-version=1.3.3
-release=1
-source=( http://downloads.xvid.org/downloads/xvidcore-$version.tar.gz )
+isim=xvid
+surum=1.3.3
+devir=1
+kaynak=( http://downloads.xvid.org/downloads/xvidcore-$surum.tar.gz )
 
 derle() {
 cd xvidcore/build/generic
@@ -16,8 +16,8 @@ make DESTDIR=$PKG install
 chmod -v 755 $PKG/usr/lib/libxvidcore.so.4.3
 ln -v -sf libxvidcore.so.4.3 $PKG/usr/lib/libxvidcore.so.4
 ln -v -sf libxvidcore.so.4   $PKG/usr/lib/libxvidcore.so
-install -v -m755 -d $PKG/usr/share/doc/xvidcore-$version/examples
-install -v -m644 ../../doc/* $PKG/usr/share/doc/xvidcore-$version
+install -v -m755 -d $PKG/usr/share/doc/xvidcore-$surum/examples
+install -v -m644 ../../doc/* $PKG/usr/share/doc/xvidcore-$surum
 install -v -m644 ../../examples/* \
-$PKG/usr/share/doc/xvidcore-$version/examples
+$PKG/usr/share/doc/xvidcore-$surum/examples
 }

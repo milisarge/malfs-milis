@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cups ghostscript
 
-name=epson-inkjet-printer-escpr
-version=1.6.1
-release=1
-source=(https://download3.ebz.epson.net/dsc/f/03/00/04/23/02/a5ee7e1622b0ba692bea6763d6d7f4810a8d0808/$name-$version-1lsb3.2.tar.gz)
+isim=epson-inkjet-printer-escpr
+surum=1.6.1
+devir=1
+kaynak=(https://download3.ebz.epson.net/dsc/f/03/00/04/23/02/a5ee7e1622b0ba692bea6763d6d7f4810a8d0808/$isim-$surum-1lsb3.2.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   ./configure --prefix=/usr \
               --with-cupsfilterdir=/usr/lib/cups/filter \

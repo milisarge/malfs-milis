@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libisofs
-version=1.4.2
-release=1
+isim=libisofs
+surum=1.4.2
+devir=1
 
-source=(http://files.libburnia-project.org/releases/$name-$version.tar.gz)
+kaynak=(http://files.libburnia-project.org/releases/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

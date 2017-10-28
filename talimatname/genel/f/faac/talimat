@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: libmp4v2
 
-name=faac
-version=1.28
-release=2
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz
+isim=faac
+surum=1.28
+devir=2
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz
 		altivec.patch
 		mp4v2-1.9.patch
 		mp4v2-2.0.0.patch
 		)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -p1 -i ../mp4v2-1.9.patch
 	patch -p0 -i ../mp4v2-2.0.0.patch
 	patch -p0 -i ../altivec.patch

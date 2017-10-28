@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-cairo gobject-introspection xorg-libxxf86vm libffi 
 
-name=python-gobject
-version=3.24.1
-release=1
+isim=python-gobject
+surum=3.24.1
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/pygobject/${version%.*}/pygobject-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/pygobject/${surum%.*}/pygobject-$surum.tar.xz)
 
 derle() {
-cd pygobject-$version
+cd pygobject-$surum
 mkdir python2
 pushd python2
 ../configure --prefix=/usr \

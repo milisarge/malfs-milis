@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python python-setuptools python-zope_interface
 
-name=python-twisted
-version=15.5.0
-release=1
-source=(http://pypi.python.org/packages/source/T/Twisted/Twisted-$version.tar.bz2)
+isim=python-twisted
+surum=15.5.0
+devir=1
+kaynak=(http://pypi.python.org/packages/source/T/Twisted/Twisted-$surum.tar.bz2)
 
 derle() {
-	cd Twisted-$version
+	cd Twisted-$surum
 	/usr/bin/python2 setup.py install --root=$PKG
 }

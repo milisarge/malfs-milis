@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libevent
-version=2.0.22
-release=1
+isim=libevent
+surum=2.0.22
+devir=1
 
-source=(http://downloads.sourceforge.net/levent/$name-$version-stable.tar.gz)
+kaynak=(http://downloads.sourceforge.net/levent/$isim-$surum-stable.tar.gz)
 derle() {
-cd $name-$version-stable
+cd $isim-$surum-stable
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

@@ -3,25 +3,25 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: xorg-libxrandr v4l-utils qt5 ffmpeg lame lsof pulseaudio xdg-utils
 
-name=vokoscreen
-_version=2.5.4-beta
-version=${_version/-/.}
-release=1
+isim=vokoscreen
+_surum=2.5.4-beta
+surum=${_version/-/.}
+devir=1
 
-source=(https://github.com/vkohaupt/${name}/archive/${_version}.tar.gz
+kaynak=(https://github.com/vkohaupt/${isim}/archive/${_version}.tar.gz
 		desktop_file.patch
 		fix_lrelease.patch)
 	
 derle() {
 
-	cd "${SRC}"/${name}-${_version}
+	cd "${SRC}"/${isim}-${_version}
 	# sürüm yama
 	patch -Np1 < ../fix_lrelease.patch
 	# masaustu yama
 	patch -Np1 < ../desktop_file.patch
 	mkdir -p "${SRC}"/build
 	cd "${SRC}"/build
-	qmake-qt5 ../${name}-${_version} \
+	qmake-qt5 ../${isim}-${_version} \
 		QMAKE_CFLAGS="${CFLAGS}" \
 		QMAKE_CXXFLAGS="${CXXFLAGS}" \
 		CONFIG+=release \

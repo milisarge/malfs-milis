@@ -3,10 +3,10 @@
 # Paketçi:	milisarge
 # Gerekler:   
 
-name=perl-cgi-carp
-version=4.35
-release=1
-source=(http://search.cpan.org/CPAN/authors/id/L/LE/LEEJO/CGI-4.35.tar.gz)
+isim=perl-cgi-carp
+surum=4.35
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/L/LE/LEEJO/CGI-4.35.tar.gz)
 
 derle() {
 	_distdir="CGI-4.35"

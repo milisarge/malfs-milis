@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-app intltool 
 
-_name=xkeyboard-config
-name=xorg-xkeyboard-config
-version=2.17
-release=1
-source=( http://xorg.freedesktop.org/archive/individual/data/${_name}/${_name}-$version.tar.bz2)
+_isim=xkeyboard-config
+isim=xorg-xkeyboard-config
+surum=2.17
+devir=1
+kaynak=( http://xorg.freedesktop.org/archive/individual/data/${_name}/${_name}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-xkb-rules-symlink=xorg
 make
 make DESTDIR=$PKG install

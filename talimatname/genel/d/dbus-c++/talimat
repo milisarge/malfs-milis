@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: dbus glib
 
-name=dbus-c++
-_name=libdbus-c++
-version=0.9.0
-release=1
-source=(http://sourceforge.net/projects/dbus-cplusplus/files/dbus-c%2B%2B/$version/libdbus-c%2B%2B-$version.tar.gz
+isim=dbus-c++
+_isim=libdbus-c++
+surum=0.9.0
+devir=1
+kaynak=(http://sourceforge.net/projects/dbus-cplusplus/files/dbus-c%2B%2B/$surum/libdbus-c%2B%2B-$surum.tar.gz
 		gcc47.patch
 		disable-threading.patch
 		fix-writechar.patch)
 
 derle() {
-    cd "$SRC/$_name-$version"
+    cd "$SRC/$_name-$surum"
     patch -Np0 -i "$SRC/gcc47.patch"
     patch -Np1 -i "$SRC/disable-threading.patch"
     patch -Np1 -i "$SRC/fix-writechar.patch"
@@ -24,6 +24,6 @@ derle() {
                  --disable-ecore
 
   make
-  cd "$SRC/$_name-$version"
+  cd "$SRC/$_name-$surum"
   make DESTDIR="$PKG" install
 }

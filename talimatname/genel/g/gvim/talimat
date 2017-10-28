@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: vim gtk2 xorg-libxt
 
-name=gvim
-version=8.0.0329
-release=1
-source=(http://crux.nu/files/distfiles/vim-$version.tar.xz)
+isim=gvim
+surum=8.0.0329
+devir=1
+kaynak=(http://crux.nu/files/distfiles/vim-$surum.tar.xz)
 
 derle() {
-    cd vim-$version/src
+    cd vim-$surum/src
     
     ./configure --prefix=/usr \
-                --with-vim-name=gvim \
+                --with-vim-isim=gvim \
                 --with-x=yes \
                 --enable-gui=gtk2 \
                 --enable-multibyte \

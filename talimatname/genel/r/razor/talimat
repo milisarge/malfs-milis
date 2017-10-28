@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: perl perl-net-dns perl-digest-sha1 perl-uri perl-digest-nilsimsa 
 
-name=razor
-version=2.85
-release=1
+isim=razor
+surum=2.85
+devir=1
 
-source=(http://sourceforge.net/projects/razor/files/razor-agents/$version/razor-agents-$version.tar.bz2
+kaynak=(http://sourceforge.net/projects/razor/files/razor-agents/$surum/razor-agents-$surum.tar.bz2
 	razor-2.85-cosmetic-pv-fix.patch)
 
 derle() {
-cd razor-agents-$version
+cd razor-agents-$surum
 patch -p1 -i $SRC/razor-2.85-cosmetic-pv-fix.patch
 perl Makefile.PL INSTALLDIRS=vendor
 make

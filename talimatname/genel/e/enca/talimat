@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=enca
-release=1
-version=1.16
-source=(http://dl.cihar.com/${name}/${name}-${version}.tar.xz)
+isim=enca
+devir=1
+surum=1.16
+kaynak=(http://dl.cihar.com/${isim}/${isim}-${surum}.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
               --libexecdir=/usr/lib \
               --mandir=/usr/share/man \

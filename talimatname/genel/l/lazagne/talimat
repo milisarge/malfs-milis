@@ -3,17 +3,17 @@
 # Paketçi: Cihan Alkan
 # Gerekler: python-pyasn1 python-crypto python python-pip
 
-name=lazagne
-version=2.2
-release=1
+isim=lazagne
+surum=2.2
+devir=1
 
-source=(https://github.com/AlessandroZ/LaZagne/archive/$version.tar.gz
+kaynak=(https://github.com/AlessandroZ/LaZagne/archive/$surum.tar.gz
 		sifrebul)
 
 derle() {
-	cd LaZagne-$version
-    mkdir -p $PKG/usr/share/$name
-	cp -r Linux/* $PKG/usr/share/$name/
+	cd LaZagne-$surum
+    mkdir -p $PKG/usr/share/$isim
+	cp -r Linux/* $PKG/usr/share/$isim/
 
     mkdir -p $PKG/usr/bin
     cp $SRC/sifrebul $PKG/usr/bin/

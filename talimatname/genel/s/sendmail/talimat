@@ -3,15 +3,15 @@
 # Paketçi: 	berlius at nutyx dot com
 # Gerekler: 	ghostscript cyrus-sasl openssl procmail openldap 
 
-name=sendmail
-version=8.15.2
-release=1
+isim=sendmail
+surum=8.15.2
+devir=1
 
-source=(ftp://ftp.sendmail.org/pub/$name/$name.$version.tar.gz site.config.m4)
+kaynak=(ftp://ftp.sendmail.org/pub/$isim/$isim.$surum.tar.gz site.config.m4)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
     
     source  /etc/blfs-bootscripts
 	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2

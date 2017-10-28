@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-xml-simple
-version=2.20
-release=1
+isim=perl-xml-simple
+surum=2.20
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GR/GRANTM/XML-Simple-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GR/GRANTM/XML-Simple-$surum.tar.gz)
 
 derle() {
-cd XML-Simple-$version
+cd XML-Simple-$surum
 perl Makefile.PL
 make
 make DESTDIR=$PKG install

@@ -5,14 +5,14 @@
 # Gerekler: gtk2
 
 
-name=lxde-task
-_name=lxtask
-version=0.1.6
-release=1
-source=(http://downloads.sourceforge.net/lxde/${_name}-$version.tar.xz)
+isim=lxde-task
+_isim=lxtask
+surum=0.1.6
+devir=1
+kaynak=(http://downloads.sourceforge.net/lxde/${_name}-$surum.tar.xz)
 
 derle() {
-    cd ${_name}-$version
+    cd ${_name}-$surum
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install

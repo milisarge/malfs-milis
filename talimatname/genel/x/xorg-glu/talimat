@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-mesa 
 
-_name=glu
-name=xorg-glu
-version=9.0.0
-release=1
-source=(ftp://ftp.freedesktop.org/pub/mesa/${_name}/${_name}-$version.tar.bz2)
+_isim=glu
+isim=xorg-glu
+surum=9.0.0
+devir=1
+kaynak=(ftp://ftp.freedesktop.org/pub/mesa/${_name}/${_name}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr --disable-static
 make DESTDIR=$PKG install
 }

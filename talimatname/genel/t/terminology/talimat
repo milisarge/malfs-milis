@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: elementary
 
-name=terminology
-version=1.0.0
-release=1
-source=(http://download.enlightenment.org/rel/apps/terminology/terminology-$version.tar.xz)
+isim=terminology
+surum=1.0.0
+devir=1
+kaynak=(http://download.enlightenment.org/rel/apps/terminology/terminology-$surum.tar.xz)
 
 derle()
 {
-    cd terminology-$version 
+    cd terminology-$surum 
     ./configure --prefix=/usr \
                 --mandir=/usr/man
     make

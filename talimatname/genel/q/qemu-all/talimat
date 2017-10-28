@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 gtk3 sdl glib python vte vte3 xorg-mesa nss lzo cyrus-sasl alsa-lib alsa-plugins alsa-utils curl check bluez ncurses nfs-utils libgcrypt libcap-ng gnutls libusb bzip2 usbutils bridge-utils
 
-name=qemu-all
-version=2.6.0
-release=1
-source=(http://wiki.qemu.org/download/qemu-$version.tar.bz2)
+isim=qemu-all
+surum=2.6.0
+devir=1
+kaynak=(http://wiki.qemu.org/download/qemu-$surum.tar.bz2)
 
 derle() {
 
-  cd qemu-$version
+  cd qemu-$surum
   
   ./configure --prefix=/usr \
       --cc="${CC:=gcc}" \

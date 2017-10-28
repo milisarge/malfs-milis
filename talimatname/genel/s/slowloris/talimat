@@ -3,10 +3,10 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: perl-io-socket-ssl
 
-name=slowloris
-version=0.7
-release=1
-source=(https://raw.githubusercontent.com/llaera/slowloris.pl/master/slowloris.pl)
+isim=slowloris
+surum=0.7
+devir=1
+kaynak=(https://raw.githubusercontent.com/llaera/slowloris.pl/master/slowloris.pl)
 
 derle() {
   cd "$SRC"

@@ -4,11 +4,11 @@
 # Gerekler: cmake qt4 python boost xorg-mesa openexr jasper glew libtiff opencolorio
 
 
-name=openimageio
-version=1.7.14
-release=1
+isim=openimageio
+surum=1.7.14
+devir=1
 
-source=(https://github.com/OpenImageIO/oiio/archive/release.zip)
+kaynak=(https://github.com/OpenImageIO/oiio/archive/release.zip)
 
 derle() {
 

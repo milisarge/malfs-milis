@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libmnl
 
-name=libnftnl
-version=1.0.3
-release=1
+isim=libnftnl
+surum=1.0.3
+devir=1
 
-source=(http://netfilter.org/projects/libnftnl/files/libnftnl-$version.tar.bz2)
+kaynak=(http://netfilter.org/projects/libnftnl/files/libnftnl-$surum.tar.bz2)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make check

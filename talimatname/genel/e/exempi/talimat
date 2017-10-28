@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: expat boost
 
-name=exempi
-version=2.2.2
-release=1
-source=( http://libopenraw.freedesktop.org/download/$name-$version.tar.bz2)
+isim=exempi
+surum=2.2.2
+devir=1
+kaynak=( http://libopenraw.freedesktop.org/download/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 ./configure \
 --prefix=/usr \

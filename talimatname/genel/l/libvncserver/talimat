@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libjpeg-turbo libpng gnutls libgcrypt sdl
 
-name=libvncserver
-version=0.9.11
-release=1
+isim=libvncserver
+surum=0.9.11
+devir=1
 
-source=(https://github.com/LibVNC/libvncserver/archive/LibVNCServer-${version}.tar.gz)
+kaynak=(https://github.com/LibVNC/libvncserver/archive/LibVNCServer-${surum}.tar.gz)
 derle() {
-	cd $name-LibVNCServer-$version
+	cd $isim-LibVNCServer-$surum
 	./autogen.sh
 	./configure --prefix=/usr
 	make

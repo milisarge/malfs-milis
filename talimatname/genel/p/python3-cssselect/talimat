@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python3
 
-name=python3-cssselect
-version=1.0.1
-release=1
+isim=python3-cssselect
+surum=1.0.1
+devir=1
 
-source=(https://pypi.python.org/packages/77/ff/9c865275cd19290feba56344eba570e719efb7ca5b34d67ed12b22ebbb0d/cssselect-$version.tar.gz)
+kaynak=(https://pypi.python.org/packages/77/ff/9c865275cd19290feba56344eba570e719efb7ca5b34d67ed12b22ebbb0d/cssselect-$surum.tar.gz)
 
 derle() {
-    cd cssselect-$version
+    cd cssselect-$surum
     python3 setup.py install --prefix=/usr --root=$PKG
 }

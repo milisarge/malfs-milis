@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler: pcre cmake libevent
 
-name=mariadb
-version=10.1.26
-release=1
+isim=mariadb
+surum=10.1.26
+devir=1
 
-source=(ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-$version/source/mariadb-$version.tar.gz)
+kaynak=(ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-$surum/source/mariadb-$surum.tar.gz)
 
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 mkdir build
 cd build
 
-cmake $SRC/${name}-${version} \
+cmake $SRC/${isim}-${surum} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DMYSQL_DATADIR=/var/lib/mysql \

@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: hunspell
 
-name=mythes
-version=1.2.4
-release=1
+isim=mythes
+surum=1.2.4
+devir=1
 
-source=(https://downloads.sourceforge.net/project/hunspell/MyThes/1.2.4/mythes-1.2.4.tar.gz)
+kaynak=(https://downloads.sourceforge.net/project/hunspell/MyThes/1.2.4/mythes-1.2.4.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr --disable-static
   make
  make DESTDIR=$PKG install

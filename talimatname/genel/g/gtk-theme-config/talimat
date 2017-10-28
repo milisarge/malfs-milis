@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: vala gconf gsettings-desktop-schemas hicolor-icon-theme gtk3 
 
-name=gtk-theme-config
-version=1.1
-release=1
-source=(https://github.com/yasarciv/$name/archive/v$version.tar.gz)
+isim=gtk-theme-config
+surum=1.1
+devir=1
+kaynak=(https://github.com/yasarciv/$isim/archive/v$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   make DESTDIR="$PKG/" install
 
 # vim:set ts=2 sw=2 et:

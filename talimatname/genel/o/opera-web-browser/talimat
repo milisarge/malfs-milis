@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67
 # Gerekler: gtk2 desktop-file-utils shared-mime-info xorg-libxtst gconf xorg-libxscrnsaver alsa-lib nss freefont-ttf libnotify hicolor-icon-theme 
 
-name=opera-web-browser
-_name=opera
-version=45.0.2552.898
-release=1
-source=(http://get.geo.opera.com/pub/$_name/desktop/$version/linux/$_name-stable_${version}_amd64.deb
+isim=opera-web-browser
+_isim=opera
+surum=45.0.2552.898
+devir=1
+kaynak=(http://get.geo.opera.com/pub/$_name/desktop/$surum/linux/$_name-stable_${surum}_amd64.deb
 		opera
 		default
 		)
@@ -16,7 +16,7 @@ derle() {
     sed -e "s/%_name%/$_name/g" -i "$SRC/opera"
     sed -e "s/%operabin%/$_name\/$_name/g" \
         -i "$SRC/opera"
-    bsdtar -xf $_name-stable_${version}_amd64.deb    
+    bsdtar -xf $_name-stable_${surum}_amd64.deb    
     bsdtar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$PKG/"
     # get rid of the extra subfolder {i386,x86_64}-linux-gnu
     (

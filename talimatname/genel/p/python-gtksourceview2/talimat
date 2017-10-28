@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtksourceview2 python-gtk 
 
-name=python-gtksourceview2
-version=2.10.1
-release=1
+isim=python-gtksourceview2
+surum=2.10.1
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/pygtksourceview/2.10/pygtksourceview-${version}.tar.bz2)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/pygtksourceview/2.10/pygtksourceview-${surum}.tar.bz2)
 
 derle() {
-cd pygtksourceview-$version
+cd pygtksourceview-$surum
 PYTHON=python2 ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static --disable-docs
 make

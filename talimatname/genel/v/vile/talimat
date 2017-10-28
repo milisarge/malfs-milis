@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: reflex
 
-name=vile
-version=9.8
-release=1
-source=(ftp://invisible-island.net/vile/$name.tar.gz)
+isim=vile
+surum=9.8
+devir=1
+kaynak=(ftp://invisible-island.net/vile/$isim.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr --with-perl
     make
     make DESTDIR=$PKG install

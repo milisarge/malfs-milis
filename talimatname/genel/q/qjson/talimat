@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake qt5
 
-name=qjson
-version=0.8.2
-release=1
+isim=qjson
+surum=0.8.2
+devir=1
 
-source=( http://source.pisilinux.org/1.0/qjson-0.82_d0f62e65.tar.gz)
+kaynak=( http://source.pisilinux.org/1.0/qjson-0.82_d0f62e65.tar.gz)
 
 derle() {
-cd $name
+cd $isim
 mkdir build
 cd build
 cmake .. \

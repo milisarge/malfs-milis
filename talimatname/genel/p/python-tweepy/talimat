@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-simplejson 
 
-name=python-tweepy
-version=2.2
-release=1
+isim=python-tweepy
+surum=2.2
+devir=1
 
-source=(
-http://pypi.python.org/packages/source/t/tweepy/tweepy-$version.tar.gz)
+kaynak=(
+http://pypi.python.org/packages/source/t/tweepy/tweepy-$surum.tar.gz)
 
 derle() {
-    cd tweepy-$version
+    cd tweepy-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

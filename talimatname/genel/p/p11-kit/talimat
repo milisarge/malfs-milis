@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libffi libtasn1
 
-name=p11-kit
-version=0.23.7
-release=1
+isim=p11-kit
+surum=0.23.7
+devir=1
 
-source=(https://github.com/p11-glue/p11-kit/archive/$version.tar.gz
+kaynak=(https://github.com/p11-glue/p11-kit/archive/$surum.tar.gz
 		libnssckbi-compat.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -Np1 -i ../libnssckbi-compat.patch
 	NOCONFIGURE=1 ./autogen.sh
 	./configure --prefix=/usr \

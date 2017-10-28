@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: intltool gtk-update-icon-cache hicolor-icon-theme icon-naming-utils librsvg
 
-name=adwaita-icon-theme
-version=3.24.0
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+isim=adwaita-icon-theme
+surum=3.24.0
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

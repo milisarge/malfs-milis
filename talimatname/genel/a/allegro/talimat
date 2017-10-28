@@ -3,14 +3,14 @@
 # Paketçi:    milisarge
 # Gerekler:  flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga
 
-name=allegro
-version=5.1.12
-release=1
-source=(http://download.gna.org/allegro/allegro-unstable/$version/$name-$version.tar.gz)
+isim=allegro
+surum=5.1.12
+devir=1
+kaynak=(http://download.gna.org/allegro/allegro-unstable/$surum/$isim-$surum.tar.gz)
 
 derle() {
 
-    cd $name-$version.0
+    cd $isim-$surum.0
 
     cmake \
 	  -DCMAKE_INSTALL_PREFIX=/usr \

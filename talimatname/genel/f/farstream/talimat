@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: gstreamer1-plugins-base libnice gobject-introspection
 
-name=farstream
-version=0.2.7
-release=1
-source=( http://freedesktop.org/software/farstream/releases/farstream/farstream-$version.tar.gz)
+isim=farstream
+surum=0.2.7
+devir=1
+kaynak=( http://freedesktop.org/software/farstream/releases/farstream/farstream-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

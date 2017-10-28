@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: clucene icu libcap pam mariadb kerberos openldap openssl postgresql sqlite valgrind
 
-name=dovecot
-version=2.2.21
-release=1
-source=(http://dovecot.org/releases/2.2/$name-$version.tar.gz local.conf)
+isim=dovecot
+surum=2.2.21
+devir=1
+kaynak=(http://dovecot.org/releases/2.2/$isim-$surum.tar.gz local.conf)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
 
     source  /etc/blfs-bootscripts
 	wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
@@ -20,7 +20,7 @@ derle() {
     ./configure --prefix=/usr \
             --sysconfdir=/etc \
             --localstatedir=/var \
-            --docdir=/usr/share/doc/dovecot-$version \
+            --docdir=/usr/share/doc/dovecot-$surum \
             --disable-static \
             --with-ssl=openssl
 
@@ -28,7 +28,7 @@ derle() {
     make
     make DESTDIR=$PKG install
 
-    cp -r $SRC/$name-$version/doc/example-config/* $PKG/etc/dovecot
+    cp -r $SRC/$isim-$surum/doc/example-config/* $PKG/etc/dovecot
 	sed -i '/^\!include / s/^/#/' $PKG/etc/dovecot/dovecot.conf
     cp -r $SRC/local.conf $PKG/etc/dovecot
 

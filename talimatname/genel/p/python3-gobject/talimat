@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: python3 python3-cairo gobject-introspection xorg-libxxf86vm libffi 
 
-name=python3-gobject
-version=3.18.2
-release=1
+isim=python3-gobject
+surum=3.18.2
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/pygobject/${version%.*}/pygobject-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/pygobject/${surum%.*}/pygobject-$surum.tar.xz)
 
 derle() {
-cd pygobject-$version
+cd pygobject-$surum
 mkdir python3
 pushd python3
 ../configure --prefix=/usr \

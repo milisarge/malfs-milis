@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler: libxcb
 
-name=xorg-xcb-util-keysyms
-version=0.4.0
-release=1
-source=(http://xcb.freedesktop.org/dist/xcb-util-keysyms-$version.tar.bz2)
+isim=xorg-xcb-util-keysyms
+surum=0.4.0
+devir=1
+kaynak=(http://xcb.freedesktop.org/dist/xcb-util-keysyms-$surum.tar.bz2)
 
 derle() {
-	cd xcb-util-keysyms-$version
+	cd xcb-util-keysyms-$surum
 
 	./configure --prefix=/usr
 

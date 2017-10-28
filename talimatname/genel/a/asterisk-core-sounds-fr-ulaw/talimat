@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: asterisk
 
-name=asterisk-core-sounds-fr-ulaw
-version=1.4.27
-release=1
-source=(http://downloads.digium.com/pub/telephony/sounds/releases/$name-$version.tar.gz)
+isim=asterisk-core-sounds-fr-ulaw
+surum=1.4.27
+devir=1
+kaynak=(http://downloads.digium.com/pub/telephony/sounds/releases/$isim-$surum.tar.gz)
 
 derle() {
 

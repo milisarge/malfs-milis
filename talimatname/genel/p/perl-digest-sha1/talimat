@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-digest-sha1
-version=2.13
-release=1
+isim=perl-digest-sha1
+surum=2.13
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-SHA1-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Digest-SHA1-$surum.tar.gz)
 
 derle() {
-cd Digest-SHA1-$version
+cd Digest-SHA1-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

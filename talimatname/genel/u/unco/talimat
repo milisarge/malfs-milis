@@ -3,23 +3,23 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=unco
+isim=unco
 hesap=kazuho
-version=0.2.0
-release=1
-source=()
+surum=0.2.0
+devir=1
+kaynak=()
 
 derle() {
     
-    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-		git clone https://github.com/$hesap/$name $DERLEME_KAYNAKDIZIN/$name 
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/$hesap/$isim $DERLEME_KAYNAKDIZIN/$isim 
 	else
-		cd $DERLEME_KAYNAKDIZIN/$name 
+		cd $DERLEME_KAYNAKDIZIN/$isim 
 		git pull
 		cd -
 	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$name $SRC/
-	cd $SRC/$name
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
 	
 	cmake -DCMAKE_INSTALL_PREFIX=/usr .
 	make

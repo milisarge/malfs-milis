@@ -3,11 +3,11 @@
 # Paketçi: Cihan Alkan
 # Gerekler:
 
-name=lpsolve
-version=5.5.2.5
-release=1
+isim=lpsolve
+surum=5.5.2.5
+devir=1
 
-source=(https://downloads.sourceforge.net/project/lpsolve/lpsolve/5.5.2.5/lp_solve_5.5.2.5_source.tar.gz
+kaynak=(https://downloads.sourceforge.net/project/lpsolve/lpsolve/5.5.2.5/lp_solve_5.5.2.5_source.tar.gz
         cflags.patch
         lpsolve-5.5.2.0.defines.patch)
 

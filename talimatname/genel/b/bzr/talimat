@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: python python-paramiko
 
-name=bzr
-version=2.6.0
-release=1
-source=(
-http://launchpad.net/bzr/${version%.*}/$version/+download/bzr-$version.tar.gz)
+isim=bzr
+surum=2.6.0
+devir=1
+kaynak=(
+http://launchpad.net/bzr/${surum%.*}/$surum/+download/bzr-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     sed -i -e 's|man/man1|share/&|' setup.py
     python2 setup.py install --prefix=/usr --root=$PKG
 

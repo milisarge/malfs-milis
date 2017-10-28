@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=autoconf2
-_name=autoconf
-version=2.13
-release=1
-source=( http://mirror.rackdc.com/gnu/${_name}/${_name}-$version.tar.gz)
+isim=autoconf2
+_isim=autoconf
+surum=2.13
+devir=1
+kaynak=( http://mirror.rackdc.com/gnu/${_name}/${_name}-$surum.tar.gz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr \
             --infodir=/usr/share/info \
             --program-suffix=-2.13

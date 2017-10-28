@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 opal boost gnome-icon-theme dbus gconf libnotify avahi gnome-doc-utils openldap
 
-name=ekiga
-version=4.0.1
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/ekiga/4.0/$name-$version.tar.xz)
+isim=ekiga
+surum=4.0.1
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/ekiga/4.0/$isim-$surum.tar.xz)
 
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr     \
 	            --sysconfdir=/etc \

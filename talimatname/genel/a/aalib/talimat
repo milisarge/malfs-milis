@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libx11 
 
-name=aalib
-version=1.4rc5
-release=2
-source=(http://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz)
+isim=aalib
+surum=1.4rc5
+devir=2
+kaynak=(http://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz)
 
 derle() {
 cd aalib-*

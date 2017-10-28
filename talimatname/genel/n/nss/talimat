@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: nspr sqlite 
 
-name=nss
-version=3.31
-release=1
-source=(http://ftp.mozilla.org/pub/security/nss/releases/NSS_${version//./_}_RTM/src/$name-$version.tar.gz \
+isim=nss
+surum=3.31
+devir=1
+kaynak=(http://ftp.mozilla.org/pub/security/nss/releases/NSS_${version//./_}_RTM/src/$isim-$surum.tar.gz \
         nss-config.in nss.pc.in nss-util.pc.in nss-softokn.pc.in)
 
 derle() {
-	cd $name-$version/
+	cd $isim-$surum/
 
 	sed -i nss/coreconf/Linux.mk \
 		-e 's|^CC.*=.*gcc$|#&|' \
@@ -41,7 +41,7 @@ derle() {
 	install -t "$PKG/usr/include/nss/private" -m644 blapi.h alghmac.h
 	install -m 0755 $SRC/nss-config.in $PKG/usr/bin/nss-config
 
-	_version=$(printf "%i.%i.%i" ${version//./ })
+	_surum=$(printf "%i.%i.%i" ${version//./ })
 	sed -i "s/@VERSION@/$_version/" $PKG/usr/bin/nss-config
 
 	NSS_LIBS=`$PKG/usr/bin/nss-config --libs`
@@ -53,7 +53,7 @@ derle() {
 			-e "s,%prefix%,/usr," \
 			-e "s,%exec_prefix%,/usr/bin," \
 			-e "s,%includedir%,/usr/include/nss," \
-			-e "s,%NSS_VERSION%,$version," \
+			-e "s,%NSS_VERSION%,$surum," \
 			-e "s,%NSPR_VERSION%,$NSPR_VERSION," \
 			-e "s,%FULL_NSS_LIBS%,$NSS_LIBS," \
 			-e "s,%FULL_NSS_CFLAGS%,$NSS_CFLAGS," > \

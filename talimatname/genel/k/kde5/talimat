@@ -3,11 +3,11 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5 plasma kde-app telepathy xorg phonon-backend-gstreamer-qt5 phonon-backend-vlc-qt5 oxygen-gtk2 oxygen-gtk3 gnupg alsa-plugins noto-fonts sddm
 
-name=kde5
-release=1
-version=20161011
+isim=kde5
+devir=1
+surum=20161011
 
-source=(talimat)
+kaynak=(talimat)
 
 derle() {
 

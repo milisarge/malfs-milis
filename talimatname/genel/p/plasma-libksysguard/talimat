@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kauth kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-ki18n kf5-kwidgetsaddons kf5-kwindowsystem kf5-kiconthemes kf5-plasma-framework 
 
-name=plasma-libksysguard
-version=5.8.1
-release=1
-_name=libksysguard
+isim=plasma-libksysguard
+surum=5.8.1
+devir=1
+_isim=libksysguard
 
-source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz
+kaynak=( http://download.kde.org/stable/plasma/$surum/${_name}-$surum.tar.xz
         libksysguard-5.5.5-glibc2.23-1.patch )
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 patch -Np1 -i ../libksysguard-5.5.5-glibc2.23-1.patch
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \

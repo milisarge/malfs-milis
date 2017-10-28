@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler:
 
-name=libtommath
-version=1.0.1
-release=1
+isim=libtommath
+surum=1.0.1
+devir=1
 
-source=(https://github.com/libtom/libtommath/releases/download/v$version/ltm-$version.tar.xz)
+kaynak=(https://github.com/libtom/libtommath/releases/download/v$surum/ltm-$surum.tar.xz)
 
 derle() {
- cd $name-$version
+ cd $isim-$surum
   make -f makefile.shared IGNORE_SPEED=1
   make -f makefile.shared PREFIX=/usr DESTDIR=$PKG INSTALL_GROUP=root install
-  install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+  install -Dm644 LICENSE $PKG/usr/share/licenses/$isim/LICENSE
 }

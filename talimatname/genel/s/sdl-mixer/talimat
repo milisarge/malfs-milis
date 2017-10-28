@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libvorbis smpeg libmikmod flac
 
-name=sdl-mixer
-version=1.2.12
-release=2
-source=(http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-$version.tar.gz)
+isim=sdl-mixer
+surum=1.2.12
+devir=2
+kaynak=(http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-$surum.tar.gz)
 
 derle() {
-	cd SDL_mixer-$version
+	cd SDL_mixer-$surum
 	sed -i -e 's|/usr/local/lib/timidity|/usr/share/timidity|g' timidity/config.h
 	./configure --prefix=/usr
 	make 

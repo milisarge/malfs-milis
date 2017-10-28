@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake
 
-name=jsoncpp
-version=1.8.1
-release=1
-source=(https://github.com/open-source-parsers/$name/archive/$version.zip--${name}-${version}.tar.gz)
+isim=jsoncpp
+surum=1.8.1
+devir=1
+kaynak=(https://github.com/open-source-parsers/$isim/archive/$surum.zip--${isim}-${surum}.tar.gz)
 
 derle() {
-  cd ${name}-${version}
+  cd ${isim}-${surum}
   mkdir -p build
   #python3 doxybuild.py --with-dot
   cd build
@@ -24,5 +24,5 @@ derle() {
   make
   cd ..
   make -C build DESTDIR="${PKG}" install
-  install -Dm 644 LICENSE -t "${PKG}/usr/share/licenses/${name}"
+  install -Dm 644 LICENSE -t "${PKG}/usr/share/licenses/${isim}"
 }

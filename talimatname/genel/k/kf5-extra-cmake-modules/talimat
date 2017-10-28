@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake
 
-name=kf5-extra-cmake-modules
-version=5.27.0
-release=1
-_name=extra-cmake-modules
-_version=5.27
+isim=kf5-extra-cmake-modules
+surum=5.27.0
+devir=1
+_isim=extra-cmake-modules
+_surum=5.27
 
-source=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr  \
       -DECM_MKSPECS_INSTALL_DIR=/usr/lib/qt5/mkspecs
 

@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake fontforge
 
-name=oxygen-fonts
-version=5.4.3
-release=1
+isim=oxygen-fonts
+surum=5.4.3
+devir=1
 
-source=( http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz )
+kaynak=( http://download.kde.org/stable/plasma/$surum/$isim-$surum.tar.xz )
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	cmake -DCMAKE_INSTALL_PREFIX=/usr
 	
     make

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: zip boost desktop-file-utils gamin gtk-update-icon-cache hicolor-icon-theme hunspell shared-mime-info wxgtk28
 
-name=codeblocks
-version=16.01
-release=1
-source=(http://sourceforge.net/projects/$name/files/Sources/16.01/codeblocks_${version}.tar.gz)
+isim=codeblocks
+surum=16.01
+devir=1
+kaynak=(http://sourceforge.net/projects/$isim/files/Sources/16.01/codeblocks_${surum}.tar.gz)
 
 derle() {
-cd $name-*
+cd $isim-*
 export CPPFLAGS+=" -DBOOST_ERROR_CODE_HEADER_ONLY"
 export WX_CONFIG_PATH=/usr/bin/wx-config-2.8
 ./bootstrap

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: cmake qt5 libnotify lame x264 gtk3 faad2 freetype fribidi xorg-fontconfig libass libbluray libogg libpng libsamplerate libtheora libvorbis libvpx libxml2 perl-xml-parser pcre xorg-pixman python yasm x265
 
-name=handbrake
-version=0.10.3
-release=1
-source=(http://download.handbrake.fr/releases/$version/HandBrake-$version.tar.bz2)
+isim=handbrake
+surum=0.10.3
+devir=1
+kaynak=(http://download.handbrake.fr/releases/$surum/HandBrake-$surum.tar.bz2)
 
 derle() {
-	cd HandBrake-$version
+	cd HandBrake-$surum
 
 	    ./configure \
 		--prefix=/usr \

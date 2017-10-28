@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: openssl zlib re2c perl-net-dns perl-io-socket-ssl perl-libwww perl-mail-spf perl-http-message perl-net-http perl-io-socket-inet6 perl-mail-dkim perl-crypt-ssleay razor perl-dbi
 
-name=spamassassin
-version=3.4.1
-release=1
+isim=spamassassin
+surum=3.4.1
+devir=1
 
-source=("http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-$version.tar.gz"{,.asc}
+kaynak=("http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-$surum.tar.gz"{,.asc}
         spamassassin.service 
 	spamassassin-net-dns-01.patch)
 
 derle() {
-cd Mail-SpamAssassin-$version
+cd Mail-SpamAssassin-$surum
 
 sed -i t/sa_compile.t \
 -e 's#^my $temp_binpath = $Config{sitebinexp};#my $temp_binpath = "/bin/site_perl/";#'

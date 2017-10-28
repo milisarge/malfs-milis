@@ -3,13 +3,13 @@
 # Maintainer:  6c37 Team, https://github.com/6c37/crux-ports-git/issues
 # Gerekler:  xorg-libx11 xorg-libxpm xorg-libxinerama xorg-libxft
 
-name=dzen
-version=git
-release=1
-source=(https://github.com/robm/dzen/archive/master.tar.gz::$name-$version.tar.gz)
+isim=dzen
+surum=git
+devir=1
+kaynak=(https://github.com/robm/dzen/archive/master.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd "$SRC"/$name-master
+	cd "$SRC"/$isim-master
 	sed -i 's|DZEN_XMP|DZEN_XPM|g' main.c
 
 	CFLAGS="$CFLAGS -Wall -Os \${INCS} -DVERSION=\\\"\${VERSION}\\\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT `pkg-config --cflags xft`"

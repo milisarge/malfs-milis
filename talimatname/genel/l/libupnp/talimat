@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libupnp
-version=1.6.19
-release=1
-source=(http://downloads.sourceforge.net/project/pupnp/pupnp/libUPnP%20$version/$name-$version.tar.bz2)
+isim=libupnp
+surum=1.6.19
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/pupnp/pupnp/libUPnP%20$surum/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure \
 		--prefix=/usr \

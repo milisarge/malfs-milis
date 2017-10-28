@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ntp
-version=4.2.8p5
-release=1
+isim=ntp
+surum=4.2.8p5
+devir=1
 
-source=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz)
+kaynak=( http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$isim-4.2/$isim-$surum.tar.gz)
 
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --bindir=/usr/sbin \
 --sysconfdir=/etc \
@@ -19,7 +19,7 @@ cd $name-$version
 --infodir=/usr/share/info \
 --enable-linuxcaps \
 --with-lineeditlibs=readline \
---docdir=/usr/share/doc/$name-$version
+--docdir=/usr/share/doc/$isim-$surum
 
 make
 make DESTDIR=$PKG install

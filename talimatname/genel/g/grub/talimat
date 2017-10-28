@@ -3,10 +3,10 @@
 # Pcakager: alihan-ozturk8@hotmail.com
 # Gerekler: freetype help2man efivar efibootmgr os-prober dosfstools fuse mtools libisoburn
 
-name=grub
-version=2.02-beta3
-release=1
-source=( ftp://alpha.gnu.org/gnu/grub/grub-2.02~beta3.tar.xz \
+isim=grub
+surum=2.02-beta3
+devir=1
+kaynak=( ftp://alpha.gnu.org/gnu/grub/grub-2.02~beta3.tar.xz \
          http://source.pisilinux.org/1.0/grub2_extras_915resolution_r10.tar.xz \
          unifont-6.3.20131217.bdf \
          milis_name.patch \
@@ -15,18 +15,18 @@ source=( ftp://alpha.gnu.org/gnu/grub/grub-2.02~beta3.tar.xz \
          grub.default)
 
 derle() {
-cd $name-2.02~beta3
+cd $isim-2.02~beta3
 
 patch -Np1 -i ../milis_name.patch
 patch -i $SRC/initramfs.patch util/grub.d/10_linux.in
 patch -Np1 -i ../grub_mkconfig.patch
 
-cp $SRC/unifont-6.3.20131217.bdf $SRC/$name-2.02~beta3/unifont.bdf
+cp $SRC/unifont-6.3.20131217.bdf $SRC/$isim-2.02~beta3/unifont.bdf
 
-mkdir -p SRC/$name-2.02~beta3/grub-extras/915resolution
-install -d "$SRC/$name-2.02~beta3/grub-extras"
-cp -r "$SRC/915resolution" "SRC/$name-2.02~beta3/grub-extras/915resolution"
-export GRUB_CONTRIB="$SRC/$name-2.02~beta3/grub-extras/"
+mkdir -p SRC/$isim-2.02~beta3/grub-extras/915resolution
+install -d "$SRC/$isim-2.02~beta3/grub-extras"
+cp -r "$SRC/915resolution" "SRC/$isim-2.02~beta3/grub-extras/915resolution"
+export GRUB_CONTRIB="$SRC/$isim-2.02~beta3/grub-extras/"
 
 unset CFLAGS
 unset CPPFLAGS
@@ -56,8 +56,8 @@ unset MAKEFLAGS
 	    	--with-bootdir=/boot \
 		    --with-grubdir=grub
 
-cp -r "$SRC/$name-2.02~beta3" "$SRC/$name-2.02~beta3-efi"
-cd $SRC/$name-2.02~beta3-efi
+cp -r "$SRC/$isim-2.02~beta3" "$SRC/$isim-2.02~beta3-efi"
+cd $SRC/$isim-2.02~beta3-efi
 
 unset CFLAGS
 unset CPPFLAGS
@@ -88,19 +88,19 @@ unset MAKEFLAGS
 			--disable-silent-rules \
 			--disable-werror
 
-cd $SRC/$name-2.02~beta3
+cd $SRC/$isim-2.02~beta3
 make dist
 make
-cd $SRC/$name-2.02~beta3-efi
+cd $SRC/$isim-2.02~beta3-efi
 make
 
-cd $SRC/$name-2.02~beta3
+cd $SRC/$isim-2.02~beta3
 ./grub-mkfont -o unicode.pf2 unifont.bdf
 mkdir -p $PKG/boot/grub
-cp $SRC/$name-2.02~beta3/unicode.pf2 $PKG/boot/grub
+cp $SRC/$isim-2.02~beta3/unicode.pf2 $PKG/boot/grub
 make DESTDIR=$PKG install
 
-cd $SRC/$name-2.02~beta3-efi
+cd $SRC/$isim-2.02~beta3-efi
 make DESTDIR=$PKG install
 
 mkdir -p $PKG/etc/default/grub

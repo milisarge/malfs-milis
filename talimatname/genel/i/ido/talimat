@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk3 
 
-name=ido
-version=12.10.2
-release=1
-source=(https://launchpad.net/$name/${version%.*}/$version/+download/$name-$version.tar.gz
+isim=ido
+surum=12.10.2
+devir=1
+kaynak=(https://launchpad.net/$isim/${surum%.*}/$surum/+download/$isim-$surum.tar.gz
 )
 
 derle() {
-  cd $name-${version}
+  cd $isim-${surum}
 
   export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
 

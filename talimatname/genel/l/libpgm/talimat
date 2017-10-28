@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=libpgm
-version=5.2.122
-release=1
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/openpgm/$name-$version.tar.gz
+isim=libpgm
+surum=5.2.122
+devir=1
+kaynak=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/openpgm/$isim-$surum.tar.gz
 )
 
 derle() {
-  cd "$SRC/$name-$version/openpgm/pgm"
+  cd "$SRC/$isim-$surum/openpgm/pgm"
   find . -type f -exec sed -i 's/python/python2/g' {} \+
-  cd "$SRC/$name-$version/openpgm/pgm"
+  cd "$SRC/$isim-$surum/openpgm/pgm"
   ./configure --prefix=/usr
   make
   make prefix="$PKG/usr" install

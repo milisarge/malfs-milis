@@ -3,20 +3,20 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=libatomic-ops
-version=7.4.4
-release=1
+isim=libatomic-ops
+surum=7.4.4
+devir=1
 
-source=(http://www.ivmaisoft.com/_bin/atomic_ops//libatomic_ops-$version.tar.gz)
+kaynak=(http://www.ivmaisoft.com/_bin/atomic_ops//libatomic_ops-$surum.tar.gz)
 
 derle() {
-cd libatomic_ops-$version
+cd libatomic_ops-$surum
 sed -i 's#pkgdata#doc#' doc/Makefile.am 
 autoreconf -fi
 ./configure --prefix=/usr    \
             --enable-shared  \
             --disable-static \
-            --docdir=/usr/share/doc/libatomic_ops-$version
+            --docdir=/usr/share/doc/libatomic_ops-$surum
 make
 make DESTDIR=$PKG install
 rm -vrf $PKG/usr/share/libatomic_ops

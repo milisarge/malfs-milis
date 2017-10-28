@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: docbook-xml docbook-xsl python
 
-name=itstool
-version=2.0.2
-release=1
-source=(http://files.itstool.org/itstool/$name-$version.tar.bz2 )
+isim=itstool
+surum=2.0.2
+devir=1
+kaynak=(http://files.itstool.org/itstool/$isim-$surum.tar.bz2 )
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

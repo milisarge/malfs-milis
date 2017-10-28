@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: rust cmake 
 
-name=cargo
-version=0.21.1
-release=1
+isim=cargo
+surum=0.21.1
+devir=1
 
-source=(https://github.com/rust-lang/cargo/archive/$version.tar.gz
+kaynak=(https://github.com/rust-lang/cargo/archive/$surum.tar.gz
         https://static.rust-lang.org/dist/cargo-nightly-x86_64-unknown-linux-gnu.tar.gz)
 
 derle() {
-  cd $name-$version/src/
+  cd $isim-$surum/src/
   export SSL_CERT_FILE=/etc/ssl/ca-bundle.crt
   $SRC/cargo-nightly-x86_64-unknown-linux-gnu/cargo/bin/cargo build --release
   cd ..

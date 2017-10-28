@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=ats2-postiats
-_name=ATS2-Postiats
-version=0.3.6
-release=1
-source=(https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-$version/ATS2-Postiats-$version.tgz)
+isim=ats2-postiats
+_isim=ATS2-Postiats
+surum=0.3.6
+devir=1
+kaynak=(https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-$surum/ATS2-Postiats-$surum.tgz)
 
 derle() {
-  cd "${SRC}/${_name}-${version}"
+  cd "${SRC}/${_name}-${surum}"
   ./autogen.sh
   ./configure --prefix=/usr
   mkdir -p $PKG/usr/lib/ats2-postiats-0.3.6/bin/
@@ -18,9 +18,9 @@ derle() {
   make DESTDIR="${PKG}" install
 
   local profiled="${PKG}/etc/profile.d"
-  local patshome="/usr/lib/${name}-${version}"
+  local patshome="/usr/lib/${isim}-${surum}"
   mkdir -p "${profiled}"
-  echo "export PATSHOME=${patshome}" > "${profiled}/${name}.sh"
-  echo "setenv PATSHOME ${patshome}" > "${profiled}/${name}.csh"
-  chmod 0755 "${profiled}/${name}.sh" "${profiled}/${name}.csh"
+  echo "export PATSHOME=${patshome}" > "${profiled}/${isim}.sh"
+  echo "setenv PATSHOME ${patshome}" > "${profiled}/${isim}.csh"
+  chmod 0755 "${profiled}/${isim}.sh" "${profiled}/${isim}.csh"
 }

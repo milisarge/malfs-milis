@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=aufs-utils
-version=20160301
-release=1
-source=()
+isim=aufs-utils
+surum=20160301
+devir=1
+kaynak=()
 
 derle() {
 	git clone git://git.code.sf.net/p/aufs/aufs-util aufs-aufs-util

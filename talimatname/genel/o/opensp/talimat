@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: sgml-common
 
-name=opensp
-version=1.5.2
-release=1
+isim=opensp
+surum=1.5.2
+devir=1
 
-source=(http://downloads.sourceforge.net/openjade/OpenSP-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/openjade/OpenSP-$surum.tar.gz)
 
 derle(){
-    cd OpenSP-$version
+    cd OpenSP-$surum
     sed -i 's/32,/253,/' lib/Syntax.cxx &&
     sed -i 's/LITLEN          240 /LITLEN          8092/' \
         unicode/{gensyntax.pl,unicode.syn} &&

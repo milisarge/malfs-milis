@@ -4,16 +4,16 @@
 # Paketçi:	milisarge
 # Gerekler:   perl-module-build perl-data-dump perl-linux-desktopfiles 
 
-name=obmenu-generator
-version=0.66
-release=1
-source=(obmenu-generator-src schema.pl)
+isim=obmenu-generator
+surum=0.66
+devir=1
+kaynak=(obmenu-generator-src schema.pl)
 
 derle() {
 	
-	install -d $PKG/etc/xdg/$name
-	install -D -m644 schema.pl $PKG/etc/xdg/$name
+	install -d $PKG/etc/xdg/$isim
+	install -D -m644 schema.pl $PKG/etc/xdg/$isim
 	install -d $PKG/usr/bin
-	install -D -m755 -m755 $name-src $PKG/usr/bin/$name
+	install -D -m755 -m755 $isim-src $PKG/usr/bin/$isim
 		
 }

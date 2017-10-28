@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler: xcb-util-keysyms libepoxy xcb-util-image xcb-util-renderutil xcb-util-wm xorg-mesa xorg-glu xorg-pixman xorg-libdmx xorg-libxres xorg-font xorg-xkeyboard-config 
 
-name=xorg-server
-version=1.18.1
-release=1
-source=(http://www.x.org/releases/individual/xserver/$name-$version.tar.bz2
-	http://www.linuxfromscratch.org/patches/downloads/xorg-server/$name-$version-add_prime_support-1.patch
-	http://www.linuxfromscratch.org/patches/downloads/xorg-server/$name-$version-wayland_190-1.patch)
+isim=xorg-server
+surum=1.18.1
+devir=1
+kaynak=(http://www.x.org/releases/individual/xserver/$isim-$surum.tar.bz2
+	http://www.linuxfromscratch.org/patches/downloads/xorg-server/$isim-$surum-add_prime_support-1.patch
+	http://www.linuxfromscratch.org/patches/downloads/xorg-server/$isim-$surum-wayland_190-1.patch)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 
-patch -Np1 -i ../$name-$version-add_prime_support-1.patch
-patch -Np1 -i ../$name-$version-wayland_190-1.patch
+patch -Np1 -i ../$isim-$surum-add_prime_support-1.patch
+patch -Np1 -i ../$isim-$surum-wayland_190-1.patch
 
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 --with-xkb-output=/var/lib/xkb \

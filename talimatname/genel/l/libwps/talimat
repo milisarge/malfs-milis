@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: doxygen libwpd boost librevenge
 
-name=libwps
-version=0.4.7
-release=1
+isim=libwps
+surum=0.4.7
+devir=1
 
-source=(http://downloads.sourceforge.net/project/libwps/$name/$name-$version/$name-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/project/libwps/$isim/$isim-$surum/$isim-$surum.tar.xz)
 
 derle() {
- cd $name-$version
+ cd $isim-$surum
  ./configure --prefix=/usr --disable-static
  make
 make DESTDIR=$PKG install

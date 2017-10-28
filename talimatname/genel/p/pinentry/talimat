@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libcap libsecret libassuan
 
-name=pinentry
-version=0.9.7
-release=1
+isim=pinentry
+surum=0.9.7
+devir=1
 
-source=(ftp://ftp.gnupg.org/gcrypt/$name/$name-$version.tar.bz2)
+kaynak=(ftp://ftp.gnupg.org/gcrypt/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 	--libexecdir=/usr/lib \
 	--disable-pinentry-qt \

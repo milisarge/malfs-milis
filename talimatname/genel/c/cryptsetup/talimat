@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libgcrypt popt
 
-name=cryptsetup
-version=1.7.5
-release=1
-source=(https://kernel.org/pub/linux/utils/$name/v1.7/$name-$version.tar.xz)
+isim=cryptsetup
+surum=1.7.5
+devir=1
+kaynak=(https://kernel.org/pub/linux/utils/$isim/v1.7/$isim-$surum.tar.xz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     LIBS="-lpthread" ./configure \
       --prefix=/usr \
       --enable-cryptsetup-reencrypt \

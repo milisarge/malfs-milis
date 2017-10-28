@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: desktop-file-utils hicolor-icon-theme imlib2 
 
-name=sxiv
-version=1.2
-release=1
+isim=sxiv
+surum=1.2
+devir=1
 
-source=(
-https://github.com/muennich/sxiv/archive/v$version.tar.gz
+kaynak=(
+https://github.com/muennich/sxiv/archive/v$surum.tar.gz
 sxiv.giflib.patch)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     patch -p1 -i ../sxiv.giflib.patch
     make
     make PREFIX=/usr DESTDIR=$PKG install

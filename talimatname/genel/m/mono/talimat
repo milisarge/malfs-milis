@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: ca-certificates libgdiplus python
  
-name=mono
-version=5.0.0.94
-release=1
+isim=mono
+surum=5.0.0.94
+devir=1
 
-source=(http://download.mono-project.com/sources/$name/$name-$version.tar.bz2
+kaynak=(http://download.mono-project.com/sources/$isim/$isim-$surum.tar.bz2
 	mono.binfmt.d)
 
 derle() {
-	cd $name-${version%.*}
+	cd $isim-${surum%.*}
 	./configure --prefix=/usr \
     --sysconfdir=/etc \
     --bindir=/usr/bin \
@@ -21,7 +21,7 @@ derle() {
     --with-mcs-docs=no
   	make
   	make DESTDIR=$PKG install
-	cd $SRC/${name}-${version%.*}/mcs/jay
+	cd $SRC/${isim}-${surum%.*}/mcs/jay
 	make DESTDIR=$PKG prefix=/usr INSTALL=../../install-sh install
 	
 	# install binfmt conf file and pathes

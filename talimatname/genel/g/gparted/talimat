@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: ssh-askpass gnome-doc-utils gtk2 parted gtkmm libsigc++ ntfs-3g lvm2
 
-name=gparted
-version=0.27.0
-release=1
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+isim=gparted
+surum=0.27.0
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr    \
             --disable-static \
 	    --disable-doc

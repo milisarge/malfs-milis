@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libusb
-version=1.0.20
-release=1
+isim=libusb
+surum=1.0.20
+devir=1
 
-source=( http://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+kaynak=( http://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr\
           --disable-build-docs\
           --mandir=/usr/share/man\

@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: 
 
-name=xfce4-artwork
-version=0.1.1
-_debian_version=0.1.1a~git+20110420
-release=1
-source=(http://ftp.debian.org/debian/pool/main/x/$name/${name}_$_debian_version.orig.tar.gz)
+isim=xfce4-artwork
+surum=0.1.1
+_debian_surum=0.1.1a~git+20110420
+devir=1
+kaynak=(http://ftp.debian.org/debian/pool/main/x/$isim/${isim}_$_debian_version.orig.tar.gz)
 
 derle() {
-  cd "$SRC/$name-0.1.1a"
+  cd "$SRC/$isim-0.1.1a"
 
   ./configure --prefix=/usr
   make

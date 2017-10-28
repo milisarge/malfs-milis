@@ -2,13 +2,13 @@
 # URL: http://www.boomerangsworld.de/cms/worker/
 # Paketçi: milisarge@gmail.com
 # Gerekler: xorg-libx11 xorg-libxft
-name=worker
-version=3.8.2
-release=1
+isim=worker
+surum=3.8.2
+devir=1
 
-source=(http://www.boomerangsworld.de/cms/$name/downloads/$name-$version.tar.gz)
+kaynak=(http://www.boomerangsworld.de/cms/$isim/downloads/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --enable-xft
 make

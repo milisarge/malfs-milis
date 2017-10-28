@@ -3,18 +3,18 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gconf gtk2 expat hunspell libgcrypt nss xorg-libxtst libnotify xdg-utils xorg-libxscrnsaver alsa-lib libgnome-keyring
 
-name=slack
-version=2.7.1
-release=1
-source=(https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-$version-amd64.deb
-$name.desktop)
+isim=slack
+surum=2.7.1
+devir=1
+kaynak=(https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-$surum-amd64.deb
+$isim.desktop)
 
 derle() {
-	bsdtar -xf $name-desktop-$version-amd64.deb
+	bsdtar -xf $isim-desktop-$surum-amd64.deb
 	bsdtar -xf data.tar.xz
-    mkdir -p $PKG/opt/$name $PKG/usr/bin
-    cp -R usr/lib/$name/* $PKG/opt/$name
-    install -Dm644 $name.desktop $PKG/usr/share/applications/$name.desktop
-    install -Dm644 usr/share/pixmaps/$name.png $PKG/usr/share/icons/hicolor/512x512/apps/$name.png
-	ln -s /opt/$name/$name $PKG/usr/bin/$name
+    mkdir -p $PKG/opt/$isim $PKG/usr/bin
+    cp -R usr/lib/$isim/* $PKG/opt/$isim
+    install -Dm644 $isim.desktop $PKG/usr/share/applications/$isim.desktop
+    install -Dm644 usr/share/pixmaps/$isim.png $PKG/usr/share/icons/hicolor/512x512/apps/$isim.png
+	ln -s /opt/$isim/$isim $PKG/usr/bin/$isim
 }

@@ -3,39 +3,39 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: ruby23 ruby23-bundler
 
-name=arachni
-version=1.5.1
-release=1
-source=()
+isim=arachni
+surum=1.5.1
+devir=1
+kaynak=()
 
 derle() {
-    if [ ! -d $DERLEME_KAYNAKDIZIN/$name  ];then
-		git clone http://github.com/Arachni/$name.git $DERLEME_KAYNAKDIZIN/$name 
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone http://github.com/Arachni/$isim.git $DERLEME_KAYNAKDIZIN/$isim 
 	else
-		cd $DERLEME_KAYNAKDIZIN/$name 
+		cd $DERLEME_KAYNAKDIZIN/$isim 
 		git pull
 		cd -
 	fi
 	
-	git clone "$DERLEME_KAYNAKDIZIN/$name" "$PKG/usr/share/$name"
+	git clone "$DERLEME_KAYNAKDIZIN/$isim" "$PKG/usr/share/$isim"
 
-	cd "$PKG/usr/share/$name"
+	cd "$PKG/usr/share/$isim"
 
   	progs="arachni arachni_console arachni_multi arachni_reporter arachni_restore"
   	progs="${progs} arachni_rest_server arachni_rpc arachni_rpcd"
   	progs="$progs arachni_rpcd_monitor arachni_script"
 
   	mkdir -p "$PKG/usr/bin"
-  	mkdir -p "$PKG/usr/share/$name"
+  	mkdir -p "$PKG/usr/share/$isim"
 
-  	install -Dm644 -t "$PKG/usr/share/doc/$name" *.md
-  	install -Dm644 LICENSE.md "$PKG/usr/share/licenses/$name/LICENSE.md"
+  	install -Dm644 -t "$PKG/usr/share/doc/$isim" *.md
+  	install -Dm644 LICENSE.md "$PKG/usr/share/licenses/$isim/LICENSE.md"
 
   	for prog in ${progs}
   	do
     	cat > "$PKG/usr/bin/${prog//_/-}" << EOF
 #!/bin/sh
-exec ruby-2.3 /usr/share/$name/bin/$prog "\$@"
+exec ruby-2.3 /usr/share/$isim/bin/$prog "\$@"
 EOF
   	done
 

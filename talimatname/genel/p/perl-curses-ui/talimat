@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:   
 
-name=perl-curses-ui
-version=0.9609
-release=1
-source=(http://search.cpan.org/CPAN/authors/id/M/MD/MDXI/Curses-UI-$version.tar.gz)
+isim=perl-curses-ui
+surum=0.9609
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/M/MD/MDXI/Curses-UI-$surum.tar.gz)
 
 derle() {
-    cd Curses-UI-$version
+    cd Curses-UI-$surum
 
 	perl Makefile.PL
 	make CC="${CC:-gcc}" LD="${CC:-gcc}" OPTIMIZE="$CFLAGS"

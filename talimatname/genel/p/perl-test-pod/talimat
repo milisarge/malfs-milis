@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=perl-test-pod
-version=1.51
-release=1
+isim=perl-test-pod
+surum=1.51
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-Pod-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-Pod-$surum.tar.gz)
 
 derle() {
-    cd Test-Pod-$version
+    cd Test-Pod-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make install INSTALLDIRS=vendor DESTDIR=$PKG || exit 1

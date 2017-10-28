@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libcdio
 
-name=libcdio-paranoia
-version=10.2
-release=1
+isim=libcdio-paranoia
+surum=10.2
+devir=1
 
-source=( http://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-${version}+0.93+1.tar.bz2)
+kaynak=( http://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-${surum}+0.93+1.tar.bz2)
 
 derle() {
-	cd $SRC/libcdio-paranoia-${version}+0.93+1
+	cd $SRC/libcdio-paranoia-${surum}+0.93+1
 	./configure --prefix=/usr --disable-static 
 	make	
 	make DESTDIR=$PKG install

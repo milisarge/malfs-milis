@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: lua
 
-name=lua-filesystem
-version=1.6.3
-release=1
-_version=v_${version//./_}
-source=(https://github.com/keplerproject/luafilesystem/archive/${_version}.tar.gz)
+isim=lua-filesystem
+surum=1.6.3
+devir=1
+_surum=v_${version//./_}
+kaynak=(https://github.com/keplerproject/luafilesystem/archive/${_version}.tar.gz)
 
 derle(){
     cd luafilesystem-${_version}

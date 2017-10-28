@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: polkit gtk3 
 
-name=polkit-gnome
-version=0.105
-release=1
+isim=polkit-gnome
+surum=0.105
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/0.105/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/0.105/$isim-$surum.tar.xz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib/polkit-gnome
 make

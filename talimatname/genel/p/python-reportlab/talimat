@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: python python-pillow freetype python-pip
 
-name=python-reportlab
-version=3.3.0
-release=1
+isim=python-reportlab
+surum=3.3.0
+devir=1
 
-source=(
-https://pypi.python.org/packages/source/r/reportlab/reportlab-$version.tar.gz)
+kaynak=(
+https://pypi.python.org/packages/source/r/reportlab/reportlab-$surum.tar.gz)
 
 derle() {
-    cd reportlab-$version
+    cd reportlab-$surum
     python2 setup.py install --prefix=/usr --root=$PKG --optimize=1
     python2 setup.py tests
 }

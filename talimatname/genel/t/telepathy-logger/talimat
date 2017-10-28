@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: intltool sqlite telepathy-glib gobject-introspection 
 
-name=telepathy-logger
-version=0.8.2
-release=1
+isim=telepathy-logger
+surum=0.8.2
+devir=1
 
-source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.bz2)
+kaynak=(http://telepathy.freedesktop.org/releases/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib/telepathy \
 --disable-static

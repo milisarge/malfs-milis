@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:  	
 
-name=stunnel
-version=5.26
-release=2
+isim=stunnel
+surum=5.26
+devir=2
 
-source=(ftp://ftp.stunnel.org/stunnel/archive/5.x/$name-$version.tar.gz cert-openssl.patch stunnel.conf)
+kaynak=(ftp://ftp.stunnel.org/stunnel/archive/5.x/$isim-$surum.tar.gz cert-openssl.patch stunnel.conf)
 
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
     
     patch -p1 -i $SRC/cert-openssl.patch
     

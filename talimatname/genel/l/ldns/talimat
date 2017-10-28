@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: openssl ca-certificates libcap python swig doxygen 
 
-name=ldns
-version=1.6.17	
-release=1
-source=(http://www.nlnetlabs.nl/downloads/ldns/$name-$version.tar.gz)
+isim=ldns
+surum=1.6.17	
+devir=1
+kaynak=(http://www.nlnetlabs.nl/downloads/ldns/$isim-$surum.tar.gz)
  
 derle() {
 
-	cd $name-$version
+	cd $isim-$surum
 	
 	sed -i 's/defined(@$also)/@$also/' doc/doxyparse.pl 
 	

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: aspell aspell-fr cyrus-sasl gdb gnupg gpgme libidn kerberos sendmail slang openssl gnutls db libxslt lynx 
 
-name=mutt
-version=1.5.24	
-release=1
-source=(ftp://ftp.mutt.org/pub/mutt/$name-$version.tar.gz)
+isim=mutt
+surum=1.5.24	
+devir=1
+kaynak=(ftp://ftp.mutt.org/pub/mutt/$isim-$surum.tar.gz)
  
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 
 cp -v doc/manual.txt{,.shipped} 
 ./configure --prefix=/usr     \

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: freeglut xorg-libxmu
 
-name=plib
-version=1.8.5
-release=1
-source=(http://plib.sourceforge.net/dist/$name-$version.tar.gz)
+isim=plib
+surum=1.8.5
+devir=1
+kaynak=(http://plib.sourceforge.net/dist/$isim-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr \
               --with-x
   make  

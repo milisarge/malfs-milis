@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-libx11 xorg-libxext
 
-name=xorg-libxp
-version=1.0.3
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXp-$version.tar.bz2)
+isim=xorg-libxp
+surum=1.0.3
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXp-$surum.tar.bz2)
 
 derle() {
-cd libXp-$version
+cd libXp-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

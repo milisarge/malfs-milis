@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: telepathy-glib libgnome-keyring dconf networkmanager  
 
-name=telepathy-mission-control
-version=5.16.3
-release=1
+isim=telepathy-mission-control
+surum=5.16.3
+devir=1
 
-source=(http://telepathy.freedesktop.org/releases/$name/$name-$version.tar.gz)
+kaynak=(http://telepathy.freedesktop.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib/telepathy \
 --with-connectivity=nm \

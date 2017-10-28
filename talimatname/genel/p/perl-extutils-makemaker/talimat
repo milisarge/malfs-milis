@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-extutils-makemaker
-version=6.98
-release=1
+isim=perl-extutils-makemaker
+surum=6.98
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-$surum.tar.gz)
 
 derle() {
-    cd ExtUtils-MakeMaker-$version
+    cd ExtUtils-MakeMaker-$surum
     perl Makefile.PL
     make OPTIMIZE="$CFLAGS" || exit 1
     make test

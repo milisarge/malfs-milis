@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python3 python3-setuptools thrift
 
-name=python3-thrift
-version=0.10.0
-release=1
-source=(https://pypi.python.org/packages/a3/ea/84a41e03f1ab14fb314c8bcf1c451090efa14c5cdfb9797d1079f502b54e/thrift-0.10.0.zip)
+isim=python3-thrift
+surum=0.10.0
+devir=1
+kaynak=(https://pypi.python.org/packages/a3/ea/84a41e03f1ab14fb314c8bcf1c451090efa14c5cdfb9797d1079f502b54e/thrift-0.10.0.zip)
 
 derle() {
-	cd "thrift-${version}" 
+	cd "thrift-${surum}" 
 	python3 setup.py install --root=$PKG --optimize=1
 }

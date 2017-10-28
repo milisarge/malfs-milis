@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools 
 
-name=python-pygments
-version=1.6
-release=1
+isim=python-pygments
+surum=1.6
+devir=1
 
-source=(
-http://pypi.python.org/packages/source/P/Pygments/Pygments-$version.tar.gz)
+kaynak=(
+http://pypi.python.org/packages/source/P/Pygments/Pygments-$surum.tar.gz)
 
 derle() {
-    cd Pygments-$version
+    cd Pygments-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

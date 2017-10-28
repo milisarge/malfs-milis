@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: mutagen python-gtk 
 
-name=nicotine-plus
-version=1.4.1
-release=1
-source=(https://github.com/Nicotine-Plus/nicotine-plus/archive/$version.tar.gz::$name-$version.tar.gz)
+isim=nicotine-plus
+surum=1.4.1
+devir=1
+kaynak=(https://github.com/Nicotine-Plus/nicotine-plus/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-  cd nicotine-plus-$version
+  cd nicotine-plus-$surum
   python2 setup.py install --root="$PKG"
 }

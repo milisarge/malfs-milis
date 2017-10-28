@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libglade imlib2
 
-name=wbar
-version=2.3.4
-release=1
+isim=wbar
+surum=2.3.4
+devir=1
 
-source=(https://wbar.googlecode.com/files/wbar-$version.tgz )
+kaynak=(https://wbar.googlecode.com/files/wbar-$surum.tgz )
 
 derle() {
-        cd $name-$version
+        cd $isim-$surum
 
         ./configure --prefix=/usr \
                 --exec_prefix=/usr \

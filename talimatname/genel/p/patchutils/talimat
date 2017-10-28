@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=patchutils
-version=0.3.2
-release=1
-source=(http://cyberelk.net/tim/data/patchutils/stable/$name-$version.tar.bz2)
+isim=patchutils
+surum=0.3.2
+devir=1
+kaynak=(http://cyberelk.net/tim/data/patchutils/stable/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure \
 		--prefix=/usr \

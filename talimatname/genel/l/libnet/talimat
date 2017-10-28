@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libnet
-version=1.1.6
-release=2
-source=(http://downloads.sourceforge.net/project/libnet-dev/libnet-$version.tar.gz)
+isim=libnet
+surum=1.1.6
+devir=2
+kaynak=(http://downloads.sourceforge.net/project/libnet-dev/libnet-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     export CFLAGS=$CFLAGS" -fPIC" 
 
     ./configure --prefix=/usr --mandir=/usr/man

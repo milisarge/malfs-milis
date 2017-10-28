@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-digest-hmac perl-net-ip perl-io-socket-inet6 perl-socket6 
 
-name=perl-net-dns
-version=0.81
-release=1
+isim=perl-net-dns
+surum=0.81
+devir=1
 
-source=(http://www.cpan.org/authors/id/N/NL/NLNETLABS/Net-DNS-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/N/NL/NLNETLABS/Net-DNS-$surum.tar.gz)
 
 derle() {
-cd Net-DNS-$version
+cd Net-DNS-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

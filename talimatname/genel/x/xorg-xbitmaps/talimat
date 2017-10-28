@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-_name=xbitmaps
-name=xorg-xbitmaps
-version=1.1.1
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/data/${_name}-$version.tar.bz2)
+_isim=xbitmaps
+isim=xorg-xbitmaps
+surum=1.1.1
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/data/${_name}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

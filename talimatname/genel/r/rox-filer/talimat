@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libsm libglade shared-mime-info
 
-name=rox-filer
-version=2.11
-release=3
+isim=rox-filer
+surum=2.11
+devir=3
 
-source=(http://downloads.sourceforge.net/rox/rox-filer-2.11.tar.bz2)
+kaynak=(http://downloads.sourceforge.net/rox/rox-filer-2.11.tar.bz2)
 
 derle() {
-cd $name-$version/ROX-Filer
+cd $isim-$surum/ROX-Filer
 sed -i 's:g_strdup(getenv("APP_DIR")):"/usr/share/rox":' src/main.c
 mkdir build
 pushd build 

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libgpg-error
 
-name=libgcrypt
-version=1.7.6
-release=1
-source=(ftp://ftp.gnupg.org/gcrypt/libgcrypt/$name-$version.tar.bz2)
+isim=libgcrypt
+surum=1.7.6
+devir=1
+kaynak=(ftp://ftp.gnupg.org/gcrypt/libgcrypt/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   ./configure \
       --prefix=/usr \

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=xorg-compositeproto
-version=0.4.2
-release=1
-source=(http://xorg.freedesktop.org/releases/individual/proto/compositeproto-$version.tar.bz2)
+isim=xorg-compositeproto
+surum=0.4.2
+devir=1
+kaynak=(http://xorg.freedesktop.org/releases/individual/proto/compositeproto-$surum.tar.bz2)
 
 derle() {
-	cd compositeproto-$version
+	cd compositeproto-$surum
 
 	./configure --prefix=/usr
 

@@ -4,13 +4,13 @@
 # Gerekler: gtk-update-icon-cache faba-icon-theme
 
 
-name=moka-icon-theme
-version=5.3.5
-release=1
-source=(https://github.com/snwh/$name/archive/v$version.tar.gz)
+isim=moka-icon-theme
+surum=5.3.5
+devir=1
+kaynak=(https://github.com/snwh/$isim/archive/v$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
         bash autogen.sh --prefix=/usr
 		make
 		make DESTDIR=$PKG install

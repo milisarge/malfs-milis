@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: hicolor-icon-theme, gtk-update-icon-cache, icon-naming-utils, intltool
 
-name=gnome-icon-theme
-version=3.12.0
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.xz)
+isim=gnome-icon-theme
+surum=3.12.0
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

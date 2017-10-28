@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libconfuse
-_name=confuse
-version=3.0
-release=1
-source=(https://github.com/martinh/libconfuse/releases/download/v3.0/confuse-3.0.tar.gz)
+isim=libconfuse
+_isim=confuse
+surum=3.0
+devir=1
+kaynak=(https://github.com/martinh/libconfuse/releases/download/v3.0/confuse-3.0.tar.gz)
 derle() {
-cd $_name-$version
+cd $_name-$surum
 ./configure --prefix=/usr --enable-shared
 make
 make DESTDIR=$PKG install

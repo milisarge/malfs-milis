@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler: popt
 
-name=logrotate
-version=3.8.8
-release=1
+isim=logrotate
+surum=3.8.8
+devir=1
 
-source=(
-https://fedorahosted.org/releases/l/o/logrotate/logrotate-$version.tar.gz
+kaynak=(
+https://fedorahosted.org/releases/l/o/logrotate/logrotate-$surum.tar.gz
 logrotate.conf
 logrotate.README)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     make WITH_ACL=yes RPM_OPT_FLAGS="$CFLAGS" EXTRA_LDFLAGS="$LDFLAGS"
     make test
     make PREFIX=$PKG MANDIR="/usr/share/man" install

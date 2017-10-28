@@ -3,13 +3,13 @@
 # Paketçi: geantbrun at gmail dot com
 # Gerekler: python3 
 
-name=python3-xdg
-version=0.25
-release=1
+isim=python3-xdg
+surum=0.25
+devir=1
 
-source=(http://people.freedesktop.org/~takluyver/pyxdg-$version.tar.gz)
+kaynak=(http://people.freedesktop.org/~takluyver/pyxdg-$surum.tar.gz)
 
 derle() {
-	cd pyxdg-$version
+	cd pyxdg-$surum
 	python3 setup.py install --prefix=/usr --root=$PKG
 }

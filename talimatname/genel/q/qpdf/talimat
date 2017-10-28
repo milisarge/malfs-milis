@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: pcre libxslt
 
-name=qpdf
-version=20170726
-release=2
-source=(https://github.com/qpdf/qpdf/archive/master.zip::$name-$version.tar.gz)
+isim=qpdf
+surum=20170726
+devir=2
+kaynak=(https://github.com/qpdf/qpdf/archive/master.zip::$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-master
+	cd $isim-master
 	./autogen.sh
 	./configure --prefix=/usr    \
 	--disable-static 

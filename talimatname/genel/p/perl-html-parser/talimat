@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-html-tagset 
 
-name=perl-html-parser
-version=3.71
-release=1
+isim=perl-html-parser
+surum=3.71
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Parser-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Parser-$surum.tar.gz)
 
 derle() {
-cd HTML-Parser-$version
+cd HTML-Parser-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

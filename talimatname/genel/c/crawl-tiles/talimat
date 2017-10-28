@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:  sdl-image sdl dejavu-ttf xorg-glu xorg-mesa glew dejavu-ttf
 
-name=crawl-tiles
-version=0.15.2
-release=1
-source=(http://sourceforge.net/projects/crawl-ref/files/Stone%20Soup/$version/stone_soup-${version}.tar.xz)
+isim=crawl-tiles
+surum=0.15.2
+devir=1
+kaynak=(http://sourceforge.net/projects/crawl-ref/files/Stone%20Soup/$surum/stone_soup-${surum}.tar.xz)
 
 derle() {
 
-    cd stone_soup-$version/source
+    cd stone_soup-$surum/source
 
     sed -i Makefile \
         -e 's|bin_prefix    := bin|bin_prefix    := usr/bin|' \
@@ -18,7 +18,7 @@ derle() {
 	-e 's|MCHMOD := 2755|MCHMOD := 755|'
 
     make DESTDIR=$PKG \
-	 DATADIR=/usr/share/$name \
+	 DATADIR=/usr/share/$isim \
 	 SAVEDIR='~/.crawl/' \
 	 USE_UNICODE=y \
 	 TILES=y \

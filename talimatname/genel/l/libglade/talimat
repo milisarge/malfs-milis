@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: gtk2 libxml2
 
-name=libglade
-version=2.6.4
-release=1
+isim=libglade
+surum=2.6.4
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.bz2)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i '/DG_DISABLE_DEPRECATED/d' glade/Makefile.in
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man \

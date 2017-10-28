@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 perl-xml-parser xorg-libxt xorg-libxres startup-notification xorg-libxinerama xorg-libxrandr xorg-libxcursor xorg-libxdamage intltool gobject-introspection
 
-name=libwnck3
-version=3.14.1
-release=1
+isim=libwnck3
+surum=3.14.1
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/libwnck/${version%.*}/libwnck-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/libwnck/${surum%.*}/libwnck-$surum.tar.xz)
 derle() {
-cd libwnck-$version
+cd libwnck-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

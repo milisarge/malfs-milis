@@ -4,14 +4,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: gtk2 xorg-app
 
-name=lxde-randr
-_name=lxrandr
-version=0.3.0
-release=1
-source=(http://downloads.sourceforge.net/lxde/lxrandr-$version.tar.xz)
+isim=lxde-randr
+_isim=lxrandr
+surum=0.3.0
+devir=1
+kaynak=(http://downloads.sourceforge.net/lxde/lxrandr-$surum.tar.xz)
 
 derle() {
-    cd ${_name}-$version
+    cd ${_name}-$surum
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install

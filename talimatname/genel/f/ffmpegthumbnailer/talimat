@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: cmake libjpeg-turbo libpng ffmpeg gvfs
 
-name=ffmpegthumbnailer
-version=2.2.0
-release=2
-source=(https://github.com/dirkvdb/$name/archive/$version.tar.gz)
+isim=ffmpegthumbnailer
+surum=2.2.0
+devir=2
+kaynak=(https://github.com/dirkvdb/$isim/archive/$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	mkdir -p build
 	cd build
 	cmake .. \

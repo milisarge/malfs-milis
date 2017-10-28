@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver xorg-libxcursor xorg-libxcomposite xorg-libxinerama xorg-libxrandr xorg-libxtst gstreamer-plugins-base giflib libtiff gstreamer pulseaudio bullet luajit fribidi
 
-name=efl-e19
-version=1.15.3
-release=1
-source=(http://download.enlightenment.org/rel/libs/efl/efl-$version.tar.gz)
+isim=efl-e19
+surum=1.15.3
+devir=1
+kaynak=(http://download.enlightenment.org/rel/libs/efl/efl-$surum.tar.gz)
 
 derle()
 {
-    cd efl-$version 
+    cd efl-$surum 
     ./configure --prefix=/usr \
                 --disable-gstreamer \
                 --enable-gstreamer1 \

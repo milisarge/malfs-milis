@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=python-yaml
-version=3.12
-release=1
-source=(http://pyyaml.org/download/pyyaml/PyYAML-$version.tar.gz)
+isim=python-yaml
+surum=3.12
+devir=1
+kaynak=(http://pyyaml.org/download/pyyaml/PyYAML-$surum.tar.gz)
 
 derle() {
-	cd PyYAML-$version
+	cd PyYAML-$surum
 	python2 setup.py install --root=$PKG
 }

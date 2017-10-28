@@ -3,23 +3,23 @@
 # Paketçi: milisarge
 # Gerekler: cmake qt5 qtkeychain-qt5
 
-name=owncloud-cli
-release=2
-version=2.0.2
-_name=owncloudclient
+isim=owncloud-cli
+devir=2
+surum=2.0.2
+_isim=owncloudclient
 
-source=(https://download.owncloud.com/desktop/stable/${_name}-$version.tar.xz)
+kaynak=(https://download.owncloud.com/desktop/stable/${_name}-$surum.tar.xz)
 
 derle() {
 
 mkdir build
 cd    build
 
-cmake ../$_name-$version            \
+cmake ../$_name-$surum            \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib  \
         -DCMAKE_BUILD_TYPE=Release  \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc/$name \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc/$isim \
         
 make
 make DESTDIR=$PKG install

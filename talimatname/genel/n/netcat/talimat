@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=netcat
-version=0.7.1
-release=1
+isim=netcat
+surum=0.7.1
+devir=1
 
-source=(http://download.sourceforge.net/netcat/netcat-0.7.1.tar.bz2)
+kaynak=(http://download.sourceforge.net/netcat/netcat-0.7.1.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure --prefix=/usr \
     --mandir=/usr/share/man

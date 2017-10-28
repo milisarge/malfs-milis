@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: parted python3
 
-name=python3-parted
-version=3.10.7
-release=1
-_name=pyparted
+isim=python3-parted
+surum=3.10.7
+devir=1
+_isim=pyparted
 
-source=(https://github.com/rhinstaller/${_name}/archive/v${version}.tar.gz)
+kaynak=(https://github.com/rhinstaller/${_name}/archive/v${surum}.tar.gz)
 
 derle() {
-	cd ${_name}-$version
+	cd ${_name}-$surum
 	python3 setup.py build
 	python3 setup.py install --optimize=1 --root=$PKG
 }

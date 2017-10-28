@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 libproxy doxygen dejavu-ttf freefont-ttf ttf-liberation noto-fonts
 
-name=signond
-version=8.58
-release=1
+isim=signond
+surum=8.58
+devir=1
 
-source=(https://gitlab.com/accounts-sso/signond/repository/archive.tar.bz2)
+kaynak=(https://gitlab.com/accounts-sso/signond/repository/archive.tar.bz2)
 
 derle() {
-cd $name*
+cd $isim*
 
 sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 

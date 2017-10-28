@@ -3,13 +3,13 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gnome-common mate-panel 
 
-name=brisk-menu
-version=0.4.5
-release=1.0
-source=(https://github.com/solus-project/$name/releases/download/v$version/$name-$version.tar.xz)
+isim=brisk-menu
+surum=0.4.5
+devir=1.0
+kaynak=(https://github.com/solus-project/$isim/releases/download/v$surum/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./autogen.sh --prefix=/usr
 	make -j$(($(getconf _NPROCESSORS_ONLN)+1))
 	make DESTDIR="${PKG}" install

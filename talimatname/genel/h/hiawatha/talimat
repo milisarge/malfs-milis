@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: cmake libxslt mbedtls
 
-name=hiawatha
-version=10.3
-release=1
-source=(https://www.hiawatha-webserver.org/files/$name-$version.tar.gz
+isim=hiawatha
+surum=10.3
+devir=1
+kaynak=(https://www.hiawatha-webserver.org/files/$isim-$surum.tar.gz
         hiawatha.conf.sample)
 
 derle() {
 
-  cd "$name-$version"
+  cd "$isim-$surum"
   sed -i 's/www-data/http/g' extra/logrotate.in
   mkdir -p build
   cd build

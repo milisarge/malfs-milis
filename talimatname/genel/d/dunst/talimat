@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxinerama xorg-libxscrnsaver pango libnotify gtk2 libxdg-basedir
 
-name=dunst
-version=1.2.0
-release=1
-source=(https://github.com/dunst-project/dunst/archive/v1.2.0.tar.gz::$name-$version.tar.gz)
+isim=dunst
+surum=1.2.0
+devir=1
+kaynak=(https://github.com/dunst-project/dunst/archive/v1.2.0.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 	make DESTDIR="${PKG}" PREFIX=/usr install
-	install -Dm644 "${SRC}/$name-$version/LICENSE" "${PKG}/usr/share/licenses/${name}/LICENSE"
+	install -Dm644 "${SRC}/$isim-$surum/LICENSE" "${PKG}/usr/share/licenses/${isim}/LICENSE"
 	rm -rf ${PKG}/usr/lib/
 }
 

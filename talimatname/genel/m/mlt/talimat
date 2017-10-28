@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: ladspa frei0r-plugins libdv sdl-image libsamplerate sox ffmpeg vid-stab qt5 jack libexif swig movit eigen3 
 
-name=mlt
-version=6.2.0
-release=1
+isim=mlt
+surum=6.2.0
+devir=1
 
-source=(https://github.com/mltframework/mlt/archive/v$version.tar.gz)
+kaynak=(https://github.com/mltframework/mlt/archive/v$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
   ./configure --prefix=/usr        \
 	--avformat-swscale         \
 	--enable-gpl --enable-gpl3 \

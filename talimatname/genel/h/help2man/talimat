@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: perl-locale-gettext
 
-name=help2man
-version=1.47.3
-release=1
-source=(http://ftp.gnu.org/gnu/help2man/help2man-$version.tar.xz)
+isim=help2man
+surum=1.47.3
+devir=1
+kaynak=(http://ftp.gnu.org/gnu/help2man/help2man-$surum.tar.xz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
         --mandir=/usr/share/man \
         --infodir=/usr/share/info \

@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: alsa-lib expat pulseaudio
 
-name=ptlib
-version=2.10.11
-release=1
+isim=ptlib
+surum=2.10.11
+devir=1
 
-source=(ftp://ftp.gnome.org/pub/GNOME/sources/$name/${version%.*}/$name-$version.tar.xz
-	 http://www.linuxfromscratch.org/patches/blfs/svn/ptlib-$version-bison_fixes-1.patch)
+kaynak=(ftp://ftp.gnome.org/pub/GNOME/sources/$isim/${surum%.*}/$isim-$surum.tar.xz
+	 http://www.linuxfromscratch.org/patches/blfs/svn/ptlib-$surum-bison_fixes-1.patch)
 
 derle() {
-cd $name-$version
-patch -Np1 -i ../ptlib-$version-bison_fixes-1.patch
+cd $isim-$surum
+patch -Np1 -i ../ptlib-$surum-bison_fixes-1.patch
 ./configure --prefix=/usr
 make 
 make DESTDIR=$PKG install

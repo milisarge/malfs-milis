@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=mtools
-version=4.0.18
-release=1
+isim=mtools
+surum=4.0.18
+devir=1
 
-source=(ftp://ftp.gnu.org/gnu/mtools/$name-$version.tar.bz2)
+kaynak=(ftp://ftp.gnu.org/gnu/mtools/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	sed -i '/^SAMPLE FILE$/s:^:# :' mtools.conf
 

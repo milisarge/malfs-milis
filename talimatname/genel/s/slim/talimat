@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: xorg-xauth libjpeg-turbo libpng cmake xorg-libxft
 
-name=slim
-version=2.0
-release=2
-source=(http://kaynaklar.milislinux.org/slim-$version.tar.gz
+isim=slim
+surum=2.0
+devir=2
+kaynak=(http://kaynaklar.milislinux.org/slim-$surum.tar.gz
         panel.png
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
 		slim.conf
@@ -16,7 +16,7 @@ source=(http://kaynaklar.milislinux.org/slim-$version.tar.gz
 		slim.theme)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 
 patch -p0 < $SRC/CMakeLists.txt.patch
 patch -p1 < $SRC/slim-1.3.6_freetype-2.5.1.diff

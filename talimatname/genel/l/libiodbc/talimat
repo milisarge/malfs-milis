@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libiodbc
-version=3.52.10
-release=1
+isim=libiodbc
+surum=3.52.10
+devir=1
 
-source=(http://downloads.sourceforge.net/sourceforge/iodbc/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/sourceforge/iodbc/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static \
 --includedir=/usr/include/libiodbc \

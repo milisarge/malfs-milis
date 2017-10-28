@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: python3 python3-pip python3-yaml python3-qt5 python3-parted python3-pytz
 
-name=milis-yukleyici
-version=1.0
-release=1
-source=(https://github.com/sonakinci41/Milis-Yukleyici/archive/master.tar.gz::$name-$version.tar.gz
+isim=milis-yukleyici
+surum=1.0
+devir=1
+kaynak=(https://github.com/sonakinci41/Milis-Yukleyici/archive/master.tar.gz::$isim-$surum.tar.gz
 		yukleyici.desktop)
 
 derle() {
@@ -19,7 +19,7 @@ derle() {
 	chmod 755 $PKG/usr/share/milis-yukleyici/milis-kur
 	cat > "$PKG/usr/bin/milis-kurulum" << EOF
 #!/bin/sh
-python3 /usr/share/$name/milis-kur "\$@"
+python3 /usr/share/$isim/milis-kur "\$@"
 EOF
 
   	chmod +x "$PKG"/usr/bin/milis-kurulum

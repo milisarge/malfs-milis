@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-http-date perl-http-message perl-lwp-mediatypes 
 
-name=perl-http-daemon
-version=6.01
-release=1
+isim=perl-http-daemon
+surum=6.01
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Daemon-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Daemon-$surum.tar.gz)
 
 derle() {
-cd HTTP-Daemon-$version
+cd HTTP-Daemon-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

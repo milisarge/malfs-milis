@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xfce4-libui libnotify 
 
-name=xfce4-notifyd
-version=0.3.6
-release=4
+isim=xfce4-notifyd
+surum=0.3.6
+devir=4
 
-source=(http://archive.xfce.org/src/apps/$name/0.3/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/$isim/0.3/$isim-$surum.tar.bz2)
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	 ./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \

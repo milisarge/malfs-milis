@@ -3,16 +3,16 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: xorg-libxext xorg-libxrender xorg-libx11 xorg-libxcursor alsa-lib xorg-mesa pulseaudio xorg-libxrandr xorg-libxinerama libxkbcommon wayland 
 
-name=sdl2
-version=2.0.4
-release=1
+isim=sdl2
+surum=2.0.4
+devir=1
 
-source=(http://www.libsdl.org/release/SDL2-$version.tar.gz)
+kaynak=(http://www.libsdl.org/release/SDL2-$surum.tar.gz)
 
 derle() {
   mkdir build
   cd build
-  ../SDL2-$version/configure --prefix=/usr     \
+  ../SDL2-$surum/configure --prefix=/usr     \
     --enable-sdl-dlopen                        \
     --disable-arts --disable-esd --disable-nas \
     --enable-alsa --enable-pulseaudio-shared   \
@@ -20,5 +20,5 @@ derle() {
     --disable-rpath
   make
   make DESTDIR=$PKG install
-  install -Dm644 ../SDL2-$version/COPYING.txt $PKG/usr/share/licenses/$name/LICENSE
+  install -Dm644 ../SDL2-$surum/COPYING.txt $PKG/usr/share/licenses/$isim/LICENSE
 }

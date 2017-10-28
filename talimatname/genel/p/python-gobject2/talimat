@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: python-cairo xorg-libxxf86vm gobject-introspection
 
-name=python-gobject2
-version=2.28.6
-release=1
+isim=python-gobject2
+surum=2.28.6
+devir=1
 
-source=( http://ftp.gnome.org/pub/gnome/sources/pygobject/${version%.*}/pygobject-$version.tar.xz
+kaynak=( http://ftp.gnome.org/pub/gnome/sources/pygobject/${surum%.*}/pygobject-$surum.tar.xz
          pygobject-2.28.6-fixes-1.patch
          pygobject-2.16.1-fixdetection.patch)
 	
 derle() {
-cd pygobject-$version
+cd pygobject-$surum
 patch -Np1 -i $SRC/pygobject-2.28.6-fixes-1.patch
 patch -Np1 -i $SRC/pygobject-2.16.1-fixdetection.patch
 ./configure --prefix=/usr

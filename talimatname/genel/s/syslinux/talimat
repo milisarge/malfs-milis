@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: mtools nasm 
 
-name=syslinux
-version=6.03
-release=1
+isim=syslinux
+surum=6.03
+devir=1
 
-source=(http://www.kernel.org/pub/linux/utils/boot/syslinux/$name-$version.tar.xz)
+kaynak=(http://www.kernel.org/pub/linux/utils/boot/syslinux/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i "s|win32/syslinux.exe||g" Makefile
 	make || true
 	make SBINDIR=$PKG/usr/sbin BINDIR=$PKG/usr/bin INCDIR=$PKG/usr/include MANDIR=$PKG/usr/share/man AUXDIR=$PKG/usr/lib/syslinux install

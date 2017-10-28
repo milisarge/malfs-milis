@@ -4,15 +4,15 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: intltool vte
 
-name=lxde-terminal
-_name=lxterminal
-version=0.2.0
-release=1
+isim=lxde-terminal
+_isim=lxterminal
+surum=0.2.0
+devir=1
 
-source=(http://downloads.sourceforge.net/lxde/lxterminal-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/lxde/lxterminal-$surum.tar.gz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr \
 make
 make DESTDIR=$PKG install

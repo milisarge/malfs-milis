@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python python-setuptools python-smmap
 
-name=python-gitdb
-_name=gitdb
-version=0.6.4
-release=1
-source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${version}.tar.gz)
+isim=python-gitdb
+_isim=gitdb
+surum=0.6.4
+devir=1
+kaynak=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${surum}.tar.gz)
 
 derle() {
-	cd "${SRC}/${_name}-${version}" 
+	cd "${SRC}/${_name}-${surum}" 
 	python setup.py install  --root=$PKG --optimize=1
 }

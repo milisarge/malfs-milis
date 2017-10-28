@@ -3,16 +3,16 @@
 # Paketçi:    milisarge
 # Gerekler:  cmake xorg-glu sdl2 libpng libvorbis libmodplug openal speex 
 
-name=bitfighter
-version=0.19f
-release=1
-source=(http://bitfighter.org/files/bitfighter-${version/./}.tar.gz
+isim=bitfighter
+surum=0.19f
+devir=1
+kaynak=(http://bitfighter.org/files/bitfighter-${version/./}.tar.gz
 		https://bitfighter.org/files/classic_level_pack.zip
 		bitfighter.png
 		bitfighter.desktop)
 
 derle() {
-  cd ${name}-${version/./}
+  cd ${isim}-${version/./}
   mkdir -p build
   cd build
   cmake \
@@ -24,13 +24,13 @@ derle() {
 
   make VERBOSE=1
   # install game ressources and executable
-  install -d "$PKG"/usr/share/$name "$PKG"/usr/bin
+  install -d "$PKG"/usr/share/$isim "$PKG"/usr/bin
   cd ..
   cp "${SRC}"/classic_level_pack/* resource/
   cp notifier/gci/bitfighter.ini resource/
-  cp -r resource/* "$PKG"/usr/share/$name
-  install -m755 exe/$name "$PKG"/usr/bin/$name
+  cp -r resource/* "$PKG"/usr/share/$isim
+  install -m755 exe/$isim "$PKG"/usr/bin/$isim
   # install a desktop entry
-  install -Dm644 ../$name.png "$PKG"/usr/share/pixmaps/$name.png
-  install -Dm644 ../$name.desktop "$PKG"/usr/share/applications/$name.desktop
+  install -Dm644 ../$isim.png "$PKG"/usr/share/pixmaps/$isim.png
+  install -Dm644 ../$isim.desktop "$PKG"/usr/share/applications/$isim.desktop
 }

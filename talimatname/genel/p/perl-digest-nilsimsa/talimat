@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=perl-digest-nilsimsa
-version=0.06
-release=1
+isim=perl-digest-nilsimsa
+surum=0.06
+devir=1
 
-source=(http://www.cpan.org/authors/id/V/VI/VIPUL/Digest-Nilsimsa-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/V/VI/VIPUL/Digest-Nilsimsa-$surum.tar.gz)
 
 derle() {
-cd Digest-Nilsimsa-$version
+cd Digest-Nilsimsa-$surum
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

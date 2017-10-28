@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=check
-version=0.10.0
-release=1
-source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+isim=check
+surum=0.10.0
+devir=1
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

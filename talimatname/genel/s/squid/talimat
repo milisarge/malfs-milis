@@ -3,14 +3,14 @@
 # Paketçi:    milisarge
 # Gerekler:  
 
-name=squid
-version=3.5.24
-release=2
-source=(http://www.squid-cache.org/Versions/v3/3.5/$name-$version.tar.xz
+isim=squid
+surum=3.5.24
+devir=2
+kaynak=(http://www.squid-cache.org/Versions/v3/3.5/$isim-$surum.tar.xz
         squid_servisi)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc/squid \

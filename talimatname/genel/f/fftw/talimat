@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=fftw
-version=3.3.4
-release=3
-source=(http://www.fftw.org/$name-$version.tar.gz)
+isim=fftw
+surum=3.3.4
+devir=3
+kaynak=(http://www.fftw.org/$isim-$surum.tar.gz)
 
 derle() {
 cd $SRC
-  cp -a $name-$version $name-$version-double
-  cp -a $name-$version $name-$version-long-double
-  mv $name-$version $name-$version-single
+  cp -a $isim-$surum $isim-$surum-double
+  cp -a $isim-$surum $isim-$surum-long-double
+  mv $isim-$surum $isim-$surum-single
 
 # use upstream default CFLAGS while keeping our -march/-mtune
   CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
@@ -22,19 +22,19 @@ cd $SRC
 		 --enable-openmp"
 
 # build double precision
-  cd $SRC/$name-$version-double
+  cd $SRC/$isim-$surum-double
   $CONFIGURE --enable-sse2 --enable-avx
   make
   make DESTDIR=$PKG install
 
   # build & install long double precission
-  cd $SRC/$name-$version-long-double
+  cd $SRC/$isim-$surum-long-double
   $CONFIGURE --enable-long-double
   make
   make DESTDIR=$PKG install
 
   # build & install single precision
-  cd $SRC/$name-$version-single
+  cd $SRC/$isim-$surum-single
   $CONFIGURE --enable-float --enable-sse --enable-avx
   make
   make DESTDIR=$PKG install

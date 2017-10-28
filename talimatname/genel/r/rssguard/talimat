@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: cmake qt5
 
-name=rssguard
-version=3.0.1
-release=1
+isim=rssguard
+surum=3.0.1
+devir=1
 
-source=("https://bitbucket.org/skunkos/rssguard/get/$version.tar.bz2")
+kaynak=("https://bitbucket.org/skunkos/rssguard/get/$surum.tar.bz2")
 
 derle() {
   mkdir -p build

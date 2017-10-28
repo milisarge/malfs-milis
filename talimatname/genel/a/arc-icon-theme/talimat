@@ -4,13 +4,13 @@
 # Gerekler: gtk-update-icon-cache hicolor-icon-theme faba-icon-theme
 
 
-name=arc-icon-theme
-version=20161122
-release=1
-source=(https://github.com/horst3180/$name/archive/$version.tar.gz)
+isim=arc-icon-theme
+surum=20161122
+devir=1
+kaynak=(https://github.com/horst3180/$isim/archive/$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
         ./autogen.sh --prefix=/usr
 make DESTDIR=$PKG install
 }

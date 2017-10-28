@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python-cryptography
 
-name=python-openssl
-version=0.15.1
-release=1
-source=(http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-$version.tar.gz)
+isim=python-openssl
+surum=0.15.1
+devir=1
+kaynak=(http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-$surum.tar.gz)
 
 derle() {
-	cd pyOpenSSL-$version
+	cd pyOpenSSL-$surum
 	/usr/bin/python2 setup.py build
 	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
 }

@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=miniupnpc
-version=1.9
-release=1
+isim=miniupnpc
+surum=1.9
+devir=1
 
-source=(http://miniupnp.free.fr/files/$name-$version.tar.gz)
+kaynak=(http://miniupnp.free.fr/files/$isim-$surum.tar.gz)
 
 derle() {
-  cd $SRC/$name-$version
+  cd $SRC/$isim-$surum
   make
   make DESTDIR=$PKG install
 }

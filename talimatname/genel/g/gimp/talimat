@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: shared-mime-info gtk2 python-gtk curl libexif xorg-libxmu xorg-libxpm openexr gegl2 poppler libmng alsa-lib babl libgudev libwmf
 
-name=gimp
-version=2.8.20
-release=1
-source=(http://download.gimp.org/pub/gimp/v2.8/gimp-$version.tar.bz2)
+isim=gimp
+surum=2.8.20
+devir=1
+kaynak=(http://download.gimp.org/pub/gimp/v2.8/gimp-$surum.tar.bz2)
 
 derle() {
 	gdk-pixbuf-query-loaders --update-cache
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr --sysconfdir=/etc \
 	--enable-mp --enable-gimp-console --enable-gimp-remote \
 	--enable-python --with-gif-compression=lzw --with-libcurl \

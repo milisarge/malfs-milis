@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=chmlib
-version=0.40
-release=1
-source=(http://morte.jedrea.com/~jedwin/projects/$name/$name-$version.tar.bz2)
+isim=chmlib
+surum=0.40
+devir=1
+kaynak=(http://morte.jedrea.com/~jedwin/projects/$isim/$isim-$surum.tar.bz2)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --enable-examples=yes
     make

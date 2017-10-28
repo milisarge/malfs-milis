@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: udisks shared-mime-info xorg-libxinerama xorg-libxrandr xorg-libxdamage gtk2 menu-cache dbus-glib desktop-file-utils vala 
 
-name=libfm
-version=1.2.3
-release=5
+isim=libfm
+surum=1.2.3
+devir=5
 
-source=(http://downloads.sourceforge.net/pcmanfm/${name}-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/pcmanfm/${isim}-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
             --sysconfdir=/etc \
             --disable-static

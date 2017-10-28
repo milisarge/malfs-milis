@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=node
-version=7.10.0
-release=1
+isim=node
+surum=7.10.0
+devir=1
 
-source=(http://nodejs.org/dist/v$version/node-v$version.tar.xz
+kaynak=(http://nodejs.org/dist/v$surum/node-v$surum.tar.xz
 node.npm.sh)
 derle() {
-	cd node-v$version
+	cd node-v$surum
 	./configure \
 	--prefix=/usr \
 	--shared-openssl \

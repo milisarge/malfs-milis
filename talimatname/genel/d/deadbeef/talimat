@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gtk3 x264 flac libmad glib librsvg libcaca alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi libdv speex pulseaudio
 
-name=deadbeef
-version=0.6.1
-release=2
-source=(http://downloads.sourceforge.net/project/$name/$name-$version.tar.bz2)
+isim=deadbeef
+surum=0.6.1
+devir=2
+kaynak=(http://downloads.sourceforge.net/project/$isim/$isim-$surum.tar.bz2)
 
 derle() {
- cd $name-$version
+ cd $isim-$surum
  ./configure --prefix=/usr --disable-ffmpeg --enable-gtk3
   make
   make DESTDIR=$PKG install

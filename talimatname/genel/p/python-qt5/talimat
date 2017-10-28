@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: dbus-python python-sip qt5 qt5-webkit python-opengl python
 
-name=python-qt5
-version=5.7
-release=1
+isim=python-qt5
+surum=5.7
+devir=1
 
-source=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$version/PyQt5_gpl-$version.tar.gz)
+kaynak=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$surum/PyQt5_gpl-$surum.tar.gz)
 derle() {
-cd PyQt5_gpl-$version
+cd PyQt5_gpl-$surum
 
 python2 configure.py   \
      -q /usr/bin/qmake-qt5 \

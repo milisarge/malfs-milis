@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=kashmir
-version=20150805
-release=1
-source=(https://github.com/Corvusoft/kashmir-dependency/archive/master.tar.gz::$name-$version.tar.gz)
+isim=kashmir
+surum=20150805
+devir=1
+kaynak=(https://github.com/Corvusoft/kashmir-dependency/archive/master.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
 	cd kashmir-dependency-master
-	install -D -m644 LICENSE_1_0.txt "${PKG}/usr/share/licenses/${name}/LICENSE_1_0.txt"
-	install -d -m755 "${PKG}/usr/include/${name}/"
+	install -D -m644 LICENSE_1_0.txt "${PKG}/usr/share/licenses/${isim}/LICENSE_1_0.txt"
+	install -d -m755 "${PKG}/usr/include/${isim}/"
 	cp -r "kashmir" "${PKG}/usr/include/"
 }

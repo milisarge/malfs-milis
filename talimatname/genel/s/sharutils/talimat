@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=sharutils
-version=4.15.2
-release=1
+isim=sharutils
+surum=4.15.2
+devir=1
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

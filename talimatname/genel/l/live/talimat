@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=live
-version=2014.07.04
-release=1
+isim=live
+surum=2014.07.04
+devir=1
 
-source=(http://downloads.nutyx.org/files/$name.$version.tar.gz)
+kaynak=(http://downloads.nutyx.org/files/$isim.$surum.tar.gz)
 
 derle() {
 cd $SRC/live

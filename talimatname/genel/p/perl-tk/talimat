@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: perl-devel-leak perl-test-pod xorg-server libpng libjpeg-turbo tk
 
-name=perl-tk
-version=804.033
-release=1
+isim=perl-tk
+surum=804.033
+devir=1
 
-source=( http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-$version.tar.gz)
+kaynak=( http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-$surum.tar.gz)
 
 derle() {
-cd Tk-$version
+cd Tk-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

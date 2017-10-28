@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:  libquvi-scripts lua51
 
-name=libquvi
-version=0.4.1
-release=1
-source=(http://downloads.sourceforge.net/sourceforge/quvi/$name-$version.tar.xz)
+isim=libquvi
+surum=0.4.1
+devir=1
+kaynak=(http://downloads.sourceforge.net/sourceforge/quvi/$isim-$surum.tar.xz)
 
 derle() {
-    cd "$name-$version"
+    cd "$isim-$surum"
     ./configure --prefix=/usr --mandir=/usr/man
     make
     make DESTDIR=$PKG install

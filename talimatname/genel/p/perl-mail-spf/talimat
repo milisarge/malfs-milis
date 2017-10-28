@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: perl-error perl-netaddr-ip perl-uri perl-net-dns perl-net-dns-resolver-programmable 
 
-name=perl-mail-spf
-version=2.9.0
-release=1
+isim=perl-mail-spf
+surum=2.9.0
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/J/JM/JMEHNLE/mail-spf/Mail-SPF-v$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/J/JM/JMEHNLE/mail-spf/Mail-SPF-v$surum.tar.gz)
 
 derle() {
-cd Mail-SPF-v$version
+cd Mail-SPF-v$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

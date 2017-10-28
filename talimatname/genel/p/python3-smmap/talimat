@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python3 python3-setuptools
 
-name=python3-smmap
-_name=smmap2
-version=0.9.0
-release=1
-source=(https://pypi.org/packages/source/s/${_name}/${_name}-${version}.tar.gz)
+isim=python3-smmap
+_isim=smmap2
+surum=0.9.0
+devir=1
+kaynak=(https://pypi.org/packages/source/s/${_name}/${_name}-${surum}.tar.gz)
 
 derle() {
-	cd "${SRC}/${_name}-${version}" 
+	cd "${SRC}/${_name}-${surum}" 
 	python3 setup.py build
 	python3 setup.py install  --root=$PKG --optimize=1
 }

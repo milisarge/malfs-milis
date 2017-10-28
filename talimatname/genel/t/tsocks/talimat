@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=tsocks
-version=1.8beta6
-release=1
+isim=tsocks
+surum=1.8beta6
+devir=1
 GIT_COMMIT=be36c83a7326c75123fa019a4cb53792ecd8f689
 
-source=(https://github.com/Elysion-tcfa/tsocks/archive/${GIT_COMMIT}.tar.gz
+kaynak=(https://github.com/Elysion-tcfa/tsocks/archive/${GIT_COMMIT}.tar.gz
 		fix-mkinstalldirs.patch)
 
 derle(){
@@ -18,6 +18,6 @@ derle(){
 	./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --libdir=/usr/lib
 	make
 	make DESTDIR="${PKG}" install
-	install -d "${PKG}/usr/share/${name}"
-	install -m644 tsocks.conf.{simple,complex}.example "${PKG}/usr/share/${name}"
+	install -d "${PKG}/usr/share/${isim}"
+	install -m644 tsocks.conf.{simple,complex}.example "${PKG}/usr/share/${isim}"
 }

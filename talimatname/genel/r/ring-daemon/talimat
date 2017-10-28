@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: boost msgpack-c autoconf-archive opendht yaml-cpp alsa-lib pulseaudio jack jsoncpp libsamplerate libsndfile dbus-c++ ffmpeg xorg-libxtst gnutls gsm libupnp libnatpmp crypto++ libva boost libvdpau pjproject-ring restbed 
 
-name=ring-daemon
-version=4.0.0
-release=1
-source=(https://github.com/savoirfairelinux/$name/archive/$version.tar.gz::$name-$version.tar.gz)
+isim=ring-daemon
+surum=4.0.0
+devir=1
+kaynak=(https://github.com/savoirfairelinux/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-  cd "${name}-$version"
+  cd "${isim}-$surum"
   autoreconf --force --install --verbose
   ./configure \
     --prefix=/usr \

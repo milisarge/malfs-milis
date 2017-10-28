@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=socat
-version=1.7.3.1
-release=1
-source=(http://www.dest-unreach.org/$name/download/$name-$version.tar.bz2
+isim=socat
+surum=1.7.3.1
+devir=1
+kaynak=(http://www.dest-unreach.org/$isim/download/$isim-$surum.tar.bz2
 	libressl.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -p1 < $SRC/libressl.patch
 	./configure --prefix=/usr
 	make

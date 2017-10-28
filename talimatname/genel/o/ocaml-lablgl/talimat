@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: ocaml camlp4 xorg-glu xorg-libxi xorg-libxmu
 
-name=ocaml-lablgl
-_name=lablgl
-version=1.05
-release=1
-source=(https://forge.ocamlcore.org/frs/download.php/1254/lablgl-$version.tar.gz)
+isim=ocaml-lablgl
+_isim=lablgl
+surum=1.05
+devir=1
+kaynak=(https://forge.ocamlcore.org/frs/download.php/1254/lablgl-$surum.tar.gz)
 
 derle() {
-	cd ${_name}-$version
+	cd ${_name}-$surum
 	
 	sed 17d Makefile.config.linux.mdk > Makefile.config	
 	make lib

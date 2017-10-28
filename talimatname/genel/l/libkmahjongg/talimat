@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-kdoctools kf5-kdelibs4support kf5-kdeclarative kf5-kdnssd kf5-knewstuff openal
 
-name=libkmahjongg
-version=16.08.2
-release=1
+isim=libkmahjongg
+surum=16.08.2
+devir=1
 
-source=(http://download.kde.org/stable/applications/${version}/src/${name}-${version}.tar.xz)
+kaynak=(http://download.kde.org/stable/applications/${surum}/src/${isim}-${surum}.tar.xz)
 
 derle() {
-cd ${name}-${version}
+cd ${isim}-${surum}
 cmake -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_TESTING=OFF \
       -DCMAKE_INSTALL_PREFIX=/usr \

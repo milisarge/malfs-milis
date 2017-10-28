@@ -4,13 +4,13 @@
 # Gerekler: libvorbis
 # Optional: pulseaudio gstreamer alsa-lib gtk3
 
-name=libcanberra
-version=0.30
-release=2
-source=(http://0pointer.de/lennart/projects/$name/$name-$version.tar.xz)
+isim=libcanberra
+surum=0.30
+devir=2
+kaynak=(http://0pointer.de/lennart/projects/$isim/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 
 	./configure \
 		--prefix=/usr \

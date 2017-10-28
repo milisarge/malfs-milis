@@ -4,12 +4,12 @@
 # Gerekler: python psutil python-setuptools
 # Optional: PySensors hddtemp
 
-name=glances
-version=2.4.2
-release=1
-source=(https://pypi.python.org/packages/source/G/Glances/Glances-$version.tar.gz)
+isim=glances
+surum=2.4.2
+devir=1
+kaynak=(https://pypi.python.org/packages/source/G/Glances/Glances-$surum.tar.gz)
 
 derle() {
-  cd Glances-$version
+  cd Glances-$surum
   python setup.py install -O1 --prefix='/usr' --root=$PKG --optimize=1
 }

@@ -3,15 +3,15 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-bluez-qt kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kded kf5-kdbusaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-knotifications kf5-kwidgetsaddons kf5-kwindowsystem kf5-plasma-framework shared-mime-info plasma-kde-cli-tools 
 
-name=plasma-bluedevil
-version=5.8.1
-release=1
-_name=bluedevil
+isim=plasma-bluedevil
+surum=5.8.1
+devir=1
+_isim=bluedevil
 
-source=( http://download.kde.org/stable/plasma/$version/${_name}-$version.tar.xz)
+kaynak=( http://download.kde.org/stable/plasma/$surum/${_name}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

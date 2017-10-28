@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=python-docutils
-version=0.12
-release=1
+isim=python-docutils
+surum=0.12
+devir=1
 
-source=(http://downloads.sourceforge.net/docutils/docutils-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/docutils/docutils-$surum.tar.gz)
 
 derle() {
-    cd docutils-$version
+    cd docutils-$surum
     python2 setup.py install --root=$PKG
 }

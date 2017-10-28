@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-encode-locale
-version=1.03
-release=1
+isim=perl-encode-locale
+surum=1.03
+devir=1
 
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-$version.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-$surum.tar.gz)
 
 derle() {
-cd Encode-Locale-$version
+cd Encode-Locale-$surum
 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

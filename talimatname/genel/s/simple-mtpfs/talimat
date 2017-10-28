@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libmtp fuse
 
-name=simple-mtpfs
-version=0.3.0
-release=1
+isim=simple-mtpfs
+surum=0.3.0
+devir=1
 
-source=(https://github.com/phatina/simple-mtpfs/archive/$name-$version.tar.gz)
+kaynak=(https://github.com/phatina/simple-mtpfs/archive/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$name-$version
+    cd $isim-$isim-$surum
 	if [[ ! -e "./configure" ]]; then 
 	./autogen.sh 
 	./configure --prefix=/usr

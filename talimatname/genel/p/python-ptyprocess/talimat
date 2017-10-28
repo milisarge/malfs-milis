@@ -3,12 +3,12 @@
 # Paketçi: milisarge
 # Gerekler: python python-setuptools
 
-name=python-ptyprocess
-version=0.5.1
-release=1
-source=(https://pypi.python.org/packages/source/p/ptyprocess/ptyprocess-$version.tar.gz)
+isim=python-ptyprocess
+surum=0.5.1
+devir=1
+kaynak=(https://pypi.python.org/packages/source/p/ptyprocess/ptyprocess-$surum.tar.gz)
 
 derle() {
-	cd ptyprocess-$version
+	cd ptyprocess-$surum
 	python setup.py install --root="$PKG/" --prefix=/usr --optimize=0
 }

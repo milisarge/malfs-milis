@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: gssdp util-linux
 
-name=gupnp
-version=0.20.14
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/${name}/${version%.*}/${name}-${version}.tar.xz)
+isim=gupnp
+surum=0.20.14
+devir=1
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/${isim}/${surum%.*}.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i '1s|^#!.*python$|&2|' tools/gupnp-binding-tool
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --disable-static --with-context-manager=linux

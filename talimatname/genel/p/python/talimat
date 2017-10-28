@@ -5,17 +5,17 @@
 
 _pybasever=2.7
 
-name=python
-version=2.7.11
-release=1
+isim=python
+surum=2.7.11
+devir=1
 
-source=(
-http://www.python.org/ftp/python/$version/Python-$version.tar.xz
+kaynak=(
+http://www.python.org/ftp/python/$surum/Python-$surum.tar.xz
 python.png)
 
 
 derle() {
-    cd Python-$version
+    cd Python-$surum
     ./configure --prefix=/usr \
                 --with-system-expat \
                 --with-system-ffi \
@@ -31,13 +31,13 @@ derle() {
     mkdir -p $PKG/usr/share/applications
     echo "[Desktop Entry]
 Categories=Development;Documentation
-Exec=xdg-open file:///usr/share/doc/python-$version/index.html
+Exec=xdg-open file:///usr/share/doc/python-$surum/index.html
 Icon=python
 StartupNotify=false
 Terminal=false
 Type=Application
 Name=Python Documentation
 Name[tr]=Dokumentasyon Python" > $PKG/usr/share/applications/python.desktop
-    install -Dm644 $SRC/$name.png \
-        $PKG/usr/share/icons/hicolor/48x48/apps/$name.png
+    install -Dm644 $SRC/$isim.png \
+        $PKG/usr/share/icons/hicolor/48x48/apps/$isim.png
 }

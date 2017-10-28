@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libnl dbus libxml2 
 
-name=wpa-supplicant
-version=2.5
-release=1
+isim=wpa-supplicant
+surum=2.5
+devir=1
 
-source=(http://hostap.epitest.fi/releases/wpa_supplicant-$version.tar.gz)
+kaynak=(http://hostap.epitest.fi/releases/wpa_supplicant-$surum.tar.gz)
 
 derle() {
-cd wpa_supplicant-$version
+cd wpa_supplicant-$surum
 cat > wpa_supplicant/.config << "EOF"
 CONFIG_BACKEND=file
 CONFIG_CTRL_IFACE=y

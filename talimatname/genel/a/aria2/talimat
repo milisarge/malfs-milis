@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:  gnutls gmp libxml2
 
-name=aria2
-version=1.32.0
-release=1
-source=(https://github.com/aria2/aria2/releases/download/release-$version/$name-$version.tar.xz)
+isim=aria2
+surum=1.32.0
+devir=1
+kaynak=(https://github.com/aria2/aria2/releases/download/release-$surum/$isim-$surum.tar.xz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     ./configure \
 	   --prefix=/usr \
 	   --mandir=$PKG/usr/man

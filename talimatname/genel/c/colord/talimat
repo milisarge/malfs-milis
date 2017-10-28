@@ -3,13 +3,13 @@
 # Paketçi: milisarge yasarciv67@gmail.com
 # Gerekler: libgudev sqlite polkit lcms2 gobject-introspection libusb dbus vala libgusb
 
-name=colord
-version=1.3.5
-release=1
-source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)
+isim=colord
+surum=1.3.5
+devir=1
+kaynak=(http://www.freedesktop.org/software/$isim/releases/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --localstatedir=/var \

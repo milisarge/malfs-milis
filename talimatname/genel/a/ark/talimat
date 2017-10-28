@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-karchive kf5-kconfig kf5-kcrash kf5-kdbusaddons kf5-kdoctools kf5-ki18n kf5-kiconthemes kf5-kio kf5-kservice kf5-kparts kf5-kpty kf5-kwidgetsaddons qjson p7zip zip unzip unrar
 
-name=ark
-version=16.08.2
-release=1
-source=(http://download.kde.org/stable/applications/$version/src/$name-$version.tar.xz)
+isim=ark
+surum=16.08.2
+devir=1
+kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

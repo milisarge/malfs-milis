@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: curl qt4 exiv2 ffmpeg libxml2
 
-name=strigi
-version=0.7.8
-release=2
+isim=strigi
+surum=0.7.8
+devir=2
 
-source=( http://www.vandenoever.info/software/$name/$name-$version.tar.bz2)
+kaynak=( http://www.vandenoever.info/software/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i "s/BufferedStream :/STREAMS_EXPORT &/" libstreams/include/strigi/bufferedstream.h
 mkdir build
 cd    build

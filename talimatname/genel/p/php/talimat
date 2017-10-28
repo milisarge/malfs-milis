@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff xorg curl db mariadb openldap postgresql sqlite unixodbc openssl cyrus-sasl kerberos
 
-name=php
-version=5.6.31
-release=1
+isim=php
+surum=5.6.31
+devir=1
 
-source=(http://php.net/distributions/$name-$version.tar.xz)
+kaynak=(http://php.net/distributions/$isim-$surum.tar.xz)
 derle() {
 
-    cd $name-$version
+    cd $isim-$surum
 
     ./configure --prefix=/usr                \
             --sysconfdir=/etc            \

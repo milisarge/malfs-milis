@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libwpd boost mdds libixion
 
-name=liborcus
-version=0.12.1
-release=1
+isim=liborcus
+surum=0.12.1
+devir=1
 
-source=(https://kohei.us/files/orcus/src/$name-$version.tar.xz)
+kaynak=(https://kohei.us/files/orcus/src/$isim-$surum.tar.xz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	[ ! -f /usr/lib/pkgconfig/python3.pc ] && ln -s /usr/lib/pkgconfig/python-3.5.pc /usr/lib/pkgconfig/python3.pc
 	./configure --prefix=/usr
 	make

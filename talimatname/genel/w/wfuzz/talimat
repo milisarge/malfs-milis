@@ -3,29 +3,29 @@
 # Paketçi: yakar (aydin@komutan.org)
 # Gerekler: python-pip python-xml python-lxml
 
-name=wfuzz
-version=2.1.5
-release=1
-source=(https://github.com/xmendez/$name/archive/v$version.tar.gz)
+isim=wfuzz
+surum=2.1.5
+devir=1
+kaynak=(https://github.com/xmendez/$isim/archive/v$surum.tar.gz)
 
 derle() {
-  cd "$SRC/$name-$version"
+  cd "$SRC/$isim-$surum"
 
   mkdir -p "$PKG/usr/bin"
-  mkdir -p "$PKG/usr/share/$name"
+  mkdir -p "$PKG/usr/share/$isim"
 
-  install -Dm644 README "$PKG/usr/share/doc/$name/README"
-  install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+  install -Dm644 README "$PKG/usr/share/doc/$isim/README"
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
 
   rm LICENSE README README.md setup.py
 
-  cp -a * "$PKG/usr/share/$name"
+  cp -a * "$PKG/usr/share/$isim"
 
-  cat > "$PKG/usr/bin/$name" << EOF
+  cat > "$PKG/usr/bin/$isim" << EOF
 #!/bin/sh
-cd /usr/share/$name
-exec python2 $name.py "\$@"
+cd /usr/share/$isim
+exec python2 $isim.py "\$@"
 EOF
 
-  chmod a+x $PKG/usr/bin/$name
+  chmod a+x $PKG/usr/bin/$isim
 }

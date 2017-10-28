@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: bluez libusb docbook-xsl
 
-name=openobex
-version=1.7.2
-release=1
+isim=openobex
+surum=1.7.2
+devir=1
 
-source=( http://downloads.sourceforge.net/$name/$name-$version-Source.tar.gz)
+kaynak=( http://downloads.sourceforge.net/$isim/$isim-$surum-Source.tar.gz)
 derle() {
-cd $name-$version-Source
+cd $isim-$surum-Source
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \

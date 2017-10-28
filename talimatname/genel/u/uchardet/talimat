@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake 
 
-name=uchardet
-version=0.0.6
-release=1
-source=(https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.6.tar.xz
+isim=uchardet
+surum=0.0.6
+devir=1
+kaynak=(https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.6.tar.xz
 )
 
 derle() {
-	cd ${name}-${version}
+	cd ${isim}-${surum}
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \

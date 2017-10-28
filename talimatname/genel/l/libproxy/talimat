@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: cmake networkmanager python perl glib webkitgtk3
 
-name=libproxy
-version=0.4.15
-release=1
+isim=libproxy
+surum=0.4.15
+devir=1
 
-source=(https://github.com/libproxy/libproxy/archive/$version.tar.gz)
+kaynak=(https://github.com/libproxy/libproxy/archive/$surum.tar.gz)
 
 derle() {
 mkdir build
 cd build
-cmake ../${name}-${version}                 \
+cmake ../${isim}-${surum}                 \
     -DCMAKE_INSTALL_PREFIX=/usr             \
     -DLIBEXEC_INSTALL_DIR=/usr/lib/libproxy \
     -DCMAKE_SKIP_RPATH=ON                   \

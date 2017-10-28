@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler: jack 
 
-name=portaudio
-version=19_20140130
-release=1
+isim=portaudio
+surum=19_20140130
+devir=1
 
-source=(http://www.portaudio.com/archives/pa_stable_v${version}.tgz)
+kaynak=(http://www.portaudio.com/archives/pa_stable_v${surum}.tgz)
 
 derle() {
 cd portaudio

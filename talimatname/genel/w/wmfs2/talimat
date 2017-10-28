@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: xorg-libxft, xorg-libx11, imlib2, 
 
-name=wmfs2
-version=git
-release=1
-source=()
+isim=wmfs2
+surum=git
+devir=1
+kaynak=()
 
 derle() {
   if cd $DERLEME_KAYNAKDIZIN/wmfs ; then

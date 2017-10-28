@@ -3,10 +3,10 @@
 # Paketçi: alihan-ozturk8@hotmail.com
 # Gerekler: grub
 
-name=grub-theme-midna
-version=1.4
-release=1
-source=( http://sourceforge.net/projects/kaosx/files/sources/grub-themes/$name-$version.zip)
+isim=grub-theme-midna
+surum=1.4
+devir=1
+kaynak=( http://sourceforge.net/projects/kaosx/files/sources/grub-themes/$isim-$surum.zip)
 
 derle() {
 cd $SRC

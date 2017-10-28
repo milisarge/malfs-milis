@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libsoup xfce4-panel
 
-name=xfce4-weather-plugin
-version=0.8.6
-release=2
+isim=xfce4-weather-plugin
+surum=0.8.6
+devir=2
 
-source=(http://archive.xfce.org/src/panel-plugins/xfce4-weather-plugin/0.8/$name-$version.tar.bz2)
+kaynak=(http://archive.xfce.org/src/panel-plugins/xfce4-weather-plugin/0.8/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure \
 --prefix=/usr \
 --sysconfdir=/etc \

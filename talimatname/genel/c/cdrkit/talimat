@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libcap cmake
 
-name=cdrkit
-version=1.1.11
-release=3
-source=(https://mirrors.kernel.org/debian/pool/main/c/cdrkit/cdrkit_${version}.orig.tar.gz)
+isim=cdrkit
+surum=1.1.11
+devir=3
+kaynak=(https://mirrors.kernel.org/debian/pool/main/c/cdrkit/cdrkit_${surum}.orig.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	make
 	make PREFIX=$PKG/usr install
 	cd $PKG/usr/bin

@@ -3,10 +3,10 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: apache-ant unzip
 
-name=junit
-version=4.12
-release=1
-source=(https://github.com/junit-team/junit4/releases/download/r4.12/junit-4.12.jar
+isim=junit
+surum=4.12
+devir=1
+kaynak=(https://github.com/junit-team/junit4/releases/download/r4.12/junit-4.12.jar
 		https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/hamcrest/hamcrest-1.3.tgz)
 
 derle() {
@@ -19,6 +19,6 @@ derle() {
     done
     cd ..
 
-	install -D -m 644 $SRC/$name-$version.jar $PKG/usr/share/java/$name-$version.jar
-    ln -s $name-$version.jar $PKG/usr/share/java/$name.jar
+	install -D -m 644 $SRC/$isim-$surum.jar $PKG/usr/share/java/$isim-$surum.jar
+    ln -s $isim-$surum.jar $PKG/usr/share/java/$isim.jar
 }

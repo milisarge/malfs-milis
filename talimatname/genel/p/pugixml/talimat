@@ -3,15 +3,15 @@
 # Paketçi: Cihan Alkan
 # Gerekler: cmake
 
-name=pugixml
-version=1.8
-release=1
-source=(http://github.com/zeux/pugixml/releases/download/v$version/pugixml-$version.tar.gz)
+isim=pugixml
+surum=1.8
+devir=1
+kaynak=(http://github.com/zeux/pugixml/releases/download/v$surum/pugixml-$surum.tar.gz)
 
 derle() {
 mkdir -p build
   cd build
-  cmake "$SRC/pugixml-$version" \
+  cmake "$SRC/pugixml-$surum" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \

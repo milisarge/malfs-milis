@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: pcre 
 
-name=zsh
-version=5.3.1
-release=1
-source=(http://www.zsh.org/pub/$name-$version.tar.xz)
+isim=zsh
+surum=5.3.1
+devir=1
+kaynak=(http://www.zsh.org/pub/$isim-$surum.tar.xz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr \
                 --bindir=/bin \
                 --sysconfdir=/etc/zsh \
@@ -21,9 +21,9 @@ derle(){
     make DESTDIR=$PKG install
 
     make infodir=$PKG/usr/share/info install.info
-    install -v -dm755 $PKG/usr/share/doc/zsh-$version/html
-    install -v -m644 Doc/html/* $PKG/usr/share/doc/zsh-$version/html
-    install -v -m644 Doc/zsh.{html,txt} $PKG/usr/share/doc/zsh-$version
+    install -v -dm755 $PKG/usr/share/doc/zsh-$surum/html
+    install -v -m644 Doc/html/* $PKG/usr/share/doc/zsh-$surum/html
+    install -v -m644 Doc/zsh.{html,txt} $PKG/usr/share/doc/zsh-$surum
 }
 
 

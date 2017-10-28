@@ -3,14 +3,14 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache babl exempi gegl gfbgraph gnome-desktop gnome-online-accounts grilo libgdata libexif tracker libgexiv2
 
-name=gnome-photos
-version=3.22.2
-release=1
+isim=gnome-photos
+surum=3.22.2
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version:0:4}/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr 
 make -j1
 make DESTDIR=$PKG install

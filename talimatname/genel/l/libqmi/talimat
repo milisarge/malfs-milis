@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: glib libmbim
 
-name=libqmi
-version=1.12.6
-release=1
+isim=libqmi
+surum=1.12.6
+devir=1
 
-source=( http://www.freedesktop.org/software/libqmi/libqmi-$version.tar.xz)
+kaynak=( http://www.freedesktop.org/software/libqmi/libqmi-$surum.tar.xz)
 
 derle() {
-cd libqmi-$version
+cd libqmi-$surum
 ./configure --prefix=/usr \
             --disable-static
 

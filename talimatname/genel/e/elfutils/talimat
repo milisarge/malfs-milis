@@ -3,13 +3,13 @@
 # Paketçi: tnut at nutyx dot org
 # Gerekler:
 
-name=elfutils
-version=0.164
-release=1
-source=( https://fedorahosted.org/releases/e/l/$name/$version/$name-$version.tar.bz2)
+isim=elfutils
+surum=0.164
+devir=1
+kaynak=( https://fedorahosted.org/releases/e/l/$isim/$surum/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --program-prefix="eu-"
 make

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=premake
-version=4.3
-release=1
-source=(http://downloads.sourceforge.net/project/premake/Premake/4.3/premake-4.3-src.zip)
+isim=premake
+surum=4.3
+devir=1
+kaynak=(http://downloads.sourceforge.net/project/premake/Premake/4.3/premake-4.3-src.zip)
 
 derle() {
-  cd "$SRC/premake-$version/build/gmake.unix"
+  cd "$SRC/premake-$surum/build/gmake.unix"
   make
-  cd "$SRC/premake-$version"
+  cd "$SRC/premake-$surum"
   install -Dm755 "bin/release/premake4" "${PKG}/usr/bin/premake4"
-  install -Dm644 LICENSE.txt "$PKG/usr/share/licenses/$name/LICENSE"
+  install -Dm644 LICENSE.txt "$PKG/usr/share/licenses/$isim/LICENSE"
 }

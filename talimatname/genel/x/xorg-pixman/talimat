@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libpng 
 
-_name=pixman
-name=xorg-pixman
-version=0.32.6
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$version.tar.bz2)
+_isim=pixman
+isim=xorg-pixman
+surum=0.32.6
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/${_name}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$version
+cd ${_name}-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

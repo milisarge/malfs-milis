@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: cmake qt5 desktop-file-utils openal qrencode gtk2 ffmpeg sqlcipher toxcore
 
-name=qtox
+isim=qtox
 name2=qTox
-version=1.10.1
-release=1
-source=(https://github.com/$name2/$name2/archive/v$version.tar.gz)
+surum=1.10.1
+devir=1
+kaynak=(https://github.com/$isim2/$isim2/archive/v$surum.tar.gz)
 
 derle() {
-	cd $name2-$version
+	cd $isim2-$surum
 	install -d build
 	cd build
 	cmake .. -DCMAKE_INSTALL_PREFIX="/usr"

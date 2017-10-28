@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: perl-xml-simple
 
-name=icon-naming-utils
-version=0.8.90
-release=1
-source=(http://tango.freedesktop.org/releases/$name-$version.tar.bz2)
+isim=icon-naming-utils
+surum=0.8.90
+devir=1
+kaynak=(http://tango.freedesktop.org/releases/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 	./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--libexecdir=/usr/lib/icon-naming-utils \

@@ -3,13 +3,13 @@
 # Paketçi:    milisarge
 # Gerekler:  libsigc++
 
-name=libtorrent
-version=0.13.6
-release=1
-source=(http://rtorrent.net/downloads/libtorrent-$version.tar.gz)
+isim=libtorrent
+surum=0.13.6
+devir=1
+kaynak=(http://rtorrent.net/downloads/libtorrent-$surum.tar.gz)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
   # remove cppunit dependency
   sed -i '/AM_PATH_CPPUNIT(.*)/d' configure.ac

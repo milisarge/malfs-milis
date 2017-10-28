@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libffi python-cparser
 
-name=python-cffi
-_name=cffi
-version=1.5.2
-release=1
-source=(http://pypi.python.org/packages/source/c/$_name/$_name-$version.tar.gz)
+isim=python-cffi
+_isim=cffi
+surum=1.5.2
+devir=1
+kaynak=(http://pypi.python.org/packages/source/c/$_name/$_name-$surum.tar.gz)
 
 derle() {
-	cd $_name-$version
+	cd $_name-$surum
 	/usr/bin/python2 setup.py install --root=$PKG --optimize=1
 }

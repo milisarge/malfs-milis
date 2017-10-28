@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl-net-ip
-version=1.26
-release=1
+isim=perl-net-ip
+surum=1.26
+devir=1
 
-source=(http://www.cpan.org/authors/id/M/MA/MANU/Net-IP-$version.tar.gz)
+kaynak=(http://www.cpan.org/authors/id/M/MA/MANU/Net-IP-$surum.tar.gz)
 
 derle() {
-cd Net-IP-$version
+cd Net-IP-$surum
 PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 make
 make DESTDIR=$PKG install

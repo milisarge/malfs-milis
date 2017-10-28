@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python python3 python-setuptools python3-setuptools
 
-name=cython
-version=0.26
-release=1
-source=(https://github.com/cython/cython/archive/$version.tar.gz)
+isim=cython
+surum=0.26
+devir=1
+kaynak=(https://github.com/cython/cython/archive/$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	/usr/bin/python setup.py install --root $PKG
 	/usr/bin/python3 setup.py install --root $PKG
 }

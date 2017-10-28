@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libmp4v2
-version=2.0.0
-release=1
+isim=libmp4v2
+surum=2.0.0
+devir=1
 
-source=(https://sources.archlinux.org/other/packages/$name/mp4v2-${version}.tar.bz2)
+kaynak=(https://sources.archlinux.org/other/packages/$isim/mp4v2-${surum}.tar.bz2)
 
 derle() {
-	cd mp4v2-$version
+	cd mp4v2-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

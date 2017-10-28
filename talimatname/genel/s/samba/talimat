@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: talloc tevent avahi gnutls libgpg-error popt python cups kerberos libcap tdb openldap libxslt
 
-name=samba
-version=4.6.7
-release=1
-source=(https://www.samba.org/samba/ftp/stable/$name-$version.tar.gz
+isim=samba
+surum=4.6.7
+devir=1
+kaynak=(https://www.samba.org/samba/ftp/stable/$isim-$surum.tar.gz
 		samba.conf)
 
 derle() {
 
-cd $name-$version
+cd $isim-$surum
 
 
 ./configure                             \

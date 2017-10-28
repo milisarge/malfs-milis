@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python 
 
-name=libevdev
-version=1.4.6
-release=1
+isim=libevdev
+surum=1.4.6
+devir=1
 
-source=( http://www.freedesktop.org/software/libevdev/$name-$version.tar.xz)
+kaynak=( http://www.freedesktop.org/software/libevdev/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

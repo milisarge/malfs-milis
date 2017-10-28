@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: libxcb xcb-util xorg-util-macros
 
-name=xcb-util-wm
-version=0.4.1
-release=1
+isim=xcb-util-wm
+surum=0.4.1
+devir=1
 
-source=(http://xcb.freedesktop.org/dist/$name-$version.tar.bz2)
+kaynak=(http://xcb.freedesktop.org/dist/$isim-$surum.tar.bz2)
 
 derle() {
-        cd $name-$version
+        cd $isim-$surum
         ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
         make
         make DESTDIR=$PKG install

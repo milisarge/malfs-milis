@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libtiff cairo giflib glib libexif
  
-name=libgdiplus
-version=4.2
-release=1
-source=(http://download.mono-project.com/sources/${name}/${name}-${version}.tar.gz)
+isim=libgdiplus
+surum=4.2
+devir=1
+kaynak=(http://download.mono-project.com/sources/${isim}/${isim}-${surum}.tar.gz)
 
 derle() {
-	cd $name-${version}
+	cd $isim-${surum}
     sed -i -e 's/-L\${libjpeg_prefix}\/lib -ljpeg/-ljpeg/' configure
 	./configure --prefix=/usr --with-cairo=system
   	make

@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: libxml2 glib gobject-introspection
 
-name=liblangtag
-version=0.6.2
-release=1
+isim=liblangtag
+surum=0.6.2
+devir=1
 
-source=(https://bitbucket.org/tagoh/liblangtag/downloads/$name-$version.tar.bz2)
+kaynak=(https://bitbucket.org/tagoh/liblangtag/downloads/$isim-$surum.tar.bz2)
 
 derle() {
-  cd $name-$version
+  cd $isim-$surum
 
  ./configure --prefix=/usr
  make

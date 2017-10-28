@@ -3,14 +3,14 @@
 # Paketçi:    milisarge
 # Gerekler:  llvm cmake
 
-name=lld
-version=4.0.0
-release=1
-source=(http://releases.llvm.org/$version/lld-$version.src.tar.xz)
+isim=lld
+surum=4.0.0
+devir=1
+kaynak=(http://releases.llvm.org/$surum/lld-$surum.src.tar.xz)
 
 derle() {
   
-  cd $name-$version.src
+  cd $isim-$surum.src
   mkdir build
   cd build
   cmake ../
@@ -18,7 +18,7 @@ derle() {
   cd lib
   install -d $PKG/usr/lib/
   cp *.a $PKG/usr/lib/
-  cp -r $SRC/$name-$version.src/include $PKG/usr/
+  cp -r $SRC/$isim-$surum.src/include $PKG/usr/
   mv $PKG/usr/local/* $PKG/usr/
   rm -r $PKG/usr/local
 }

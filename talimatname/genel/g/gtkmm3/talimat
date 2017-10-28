@@ -3,13 +3,13 @@
 # Paketçi: yasarciv milisarge
 # Gerekler: gtk3 glibmm pangomm atkmm
 
-name=gtkmm3
-version=3.18.1
-release=1
-source=(http://download.gnome.org/sources/gtkmm/${version:0:4}/gtkmm-$version.tar.xz)
+isim=gtkmm3
+surum=3.18.1
+devir=1
+kaynak=(http://download.gnome.org/sources/gtkmm/${version:0:4}/gtkmm-$surum.tar.xz)
 
 derle() {
-	cd gtkmm-$version
+	cd gtkmm-$surum
 	./configure --prefix=/usr
 	make -j1
 	make -j1 DESTDIR=$PKG install

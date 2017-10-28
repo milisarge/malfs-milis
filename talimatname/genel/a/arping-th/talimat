@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libnet libcap-ng libpcap
 
-name=arping-th
-_projname=arping
+isim=arping-th
+_projisim=arping
 _suffix=-th
-version=2.19
-release=1
-source=(https://github.com/ThomasHabets/${_projname}/archive/${_projname}-${version}.tar.gz::$name-$version.tar.gz)
+surum=2.19
+devir=1
+kaynak=(https://github.com/ThomasHabets/${_projname}/archive/${_projname}-${surum}.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd "${_projname}-${_projname}-$version"
+	cd "${_projname}-${_projname}-$surum"
 	autoreconf -i
 	./configure --prefix=/usr --program-suffix=${_suffix} --sbindir=/usr/bin
 	make

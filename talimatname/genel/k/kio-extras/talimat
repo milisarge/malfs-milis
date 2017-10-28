@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 kf5-karchive kf5-kbookmarks kf5-kcodecs kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdelibs4support kf5-kdnssd kf5-kguiaddons kf5-khtml kf5-ki18n kf5-kiconthemes kf5-kio kf5-kparts kf5-kpty kf5-kservice kf5-kxmlgui kf5-solid libjpeg-turbo exiv2 libmtp phonon-qt5 samba shared-mime-info kf5-kactivities openexr
 
-name=kio-extras
-version=16.08.2
-release=1
+isim=kio-extras
+surum=16.08.2
+devir=1
 
-source=(http://download.kde.org/stable/applications/$version/src/kio-extras-$version.tar.xz)
+kaynak=(http://download.kde.org/stable/applications/$surum/src/kio-extras-$surum.tar.xz)
 
 derle() {
-cd    $name-$version
+cd    $isim-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \

@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: python-gtk gconf 
 
-_name=gnome-python
+_isim=gnome-python
 
-name=python-gconf
-version=2.28.1
-release=1
+isim=python-gconf
+surum=2.28.1
+devir=1
 
-source=(http://download.gnome.org/sources/$_name/${version%.*}/$_name-$version.tar.bz2)
+kaynak=(http://download.gnome.org/sources/$_name/${surum%.*}/$_name-$surum.tar.bz2)
 
 derle() {
-	cd $_name-$version
+	cd $_name-$surum
 	PYTHON=python2 ./configure --prefix=/usr \
 		--disable-gtk-doc \
 		--disable-allbindings \

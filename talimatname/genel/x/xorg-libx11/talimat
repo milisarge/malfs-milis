@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libxcb xorg-proto xorg-xtrans 
 
-name=xorg-libx11
-version=1.6.3
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libX11-$version.tar.bz2)
+isim=xorg-libx11
+surum=1.6.3
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libX11-$surum.tar.bz2)
 
 derle() {
-cd libX11-$version
+cd libX11-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

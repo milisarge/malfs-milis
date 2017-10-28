@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libgcrypt libtasn1 gcr
 
-name=gnome-keyring
-version=3.20
-release=1
-source=(http://ftp.acc.umu.se/pub/GNOME/sources/$name/$version/$name-$version.0.tar.xz)
+isim=gnome-keyring
+surum=3.20
+devir=1
+kaynak=(http://ftp.acc.umu.se/pub/GNOME/sources/$isim/$surum/$isim-$surum.0.tar.xz)
 
 derle(){
-	cd $name-$version.0
+	cd $isim-$surum.0
 
 	sed -i -e "s/USE_NLS=yes/USE_NLS=no/" \
 				 -e "s/ENABLE_NLS 1/ENABLE_NLS 0/" configure

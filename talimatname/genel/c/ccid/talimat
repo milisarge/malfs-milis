@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: pcsc-lite libusb
 
-name=ccid
-version=1.4.27
-release=1
-source=(https://alioth.debian.org/frs/download.php/file/4218/${name}-${version}.tar.bz2)
+isim=ccid
+surum=1.4.27
+devir=1
+kaynak=(https://alioth.debian.org/frs/download.php/file/4218/${isim}-${surum}.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	  --sysconfdir=/etc \
 	  --enable-twinserial \

@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: sdl2
 
-name=sdl2_net
-version=2.0.1
-release=1
-source=(https://www.libsdl.org/projects/SDL_net/release/SDL2_net-$version.tar.gz)
+isim=sdl2_net
+surum=2.0.1
+devir=1
+kaynak=(https://www.libsdl.org/projects/SDL_net/release/SDL2_net-$surum.tar.gz)
 
 derle() {
-	cd SDL2_net-$version
+	cd SDL2_net-$surum
 	./configure --disable-static --prefix=/usr
 	make
 	make DESTDIR=$PKG install

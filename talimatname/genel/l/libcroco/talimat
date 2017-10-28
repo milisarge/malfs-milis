@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: libxml2 glib 
 
-name=libcroco
-version=0.6.11
-release=1
+isim=libcroco
+surum=0.6.11
+devir=1
 
-source=(http://ftp.gnome.org/pub/gnome/sources/libcroco/0.6/$name-$version.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/libcroco/0.6/$isim-$surum.tar.xz)
 
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 	--disable-static
 make

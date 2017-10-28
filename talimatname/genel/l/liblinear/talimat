@@ -3,13 +3,13 @@
 # Paketçi:milisarge
 # Gerekler:
 
-name=liblinear
-version=2.1
-release=1
+isim=liblinear
+surum=2.1
+devir=1
 
-source=(http://www.csie.ntu.edu.tw/~cjlin/liblinear/oldfiles/$name-$version.tar.gz)
+kaynak=(http://www.csie.ntu.edu.tw/~cjlin/liblinear/oldfiles/$isim-$surum.tar.gz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 make lib
 mkdir -p $PKG/usr/{lib,include}
 install -vm644 linear.h $PKG/usr/include

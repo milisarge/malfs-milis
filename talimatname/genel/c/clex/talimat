@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=clex
-version=4.6.patch6
-release=1
-source=(http://www.clex.sk/download/$name-$version.tar.gz)
+isim=clex
+surum=4.6.patch6
+devir=1
+kaynak=(http://www.clex.sk/download/$isim-$surum.tar.gz)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install

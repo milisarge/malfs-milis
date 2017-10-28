@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg xorg-libxt xorg-libxft xorg-libxmu xorg-mesa libpng libjpeg-turbo
 
-name=jwm
-version=2.3.5
-release=1
-source=(http://joewing.net/projects/jwm/releases/$name-$version.tar.xz $name.desktop $name.readme)
+isim=jwm
+surum=2.3.5
+devir=1
+kaynak=(http://joewing.net/projects/jwm/releases/$isim-$surum.tar.xz $isim.desktop $isim.readme)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-confirm \
 --disable-fribidi \
@@ -17,7 +17,7 @@ cd $name-$version
 --sysconf=/etc
 make || return 1
 mkdir -p $PKG/usr/share/xsessions
-cp $SRC/$name.desktop $PKG/usr/share/xsessions/
+cp $SRC/$isim.desktop $PKG/usr/share/xsessions/
 sed -i "s|/usr/bin|$PKG/usr/bin|g" src/Makefile
 make SYSCONF=$PKG/etc MANDIR=$PKG/usr/share/man install
 }

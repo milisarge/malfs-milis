@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler: libxcb git xorg-libxinerama
 
-name=lemonbar
-version=v1.1.r12.gb331ee3
-release=1
+isim=lemonbar
+surum=v1.1.r12.gb331ee3
+devir=1
 
-source=()
+kaynak=()
 
 version() {
     cd bar
 
-	if git_version=$( git describe --long --tags 2>/dev/null ); then
+	if git_surum=$( git describe --long --tags 2>/dev/null ); then
 		IFS='-' read last_tag tag_rev commit <<< "$git_version"
 		printf '%s.r%s.%s' "$last_tag" "$tag_rev" "$commit"
 	else

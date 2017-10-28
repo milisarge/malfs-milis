@@ -3,10 +3,10 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=myrddin
-version=0.2.0
-release=1
-source=(https://myrlang.org//releases/$name-$version.tar.xz)
+isim=myrddin
+surum=0.2.0
+devir=1
+kaynak=(https://myrlang.org//releases/$isim-$surum.tar.xz)
 
 derle() {
 	cd mc
@@ -14,11 +14,11 @@ derle() {
 	make
 	make DESTDIR="$PKG" install
 
-	install -Dm644 LICENSE "${PKG}/usr/share/licenses/${name}/LICENSE"
-	install -Dm644 README.md "${PKG}/usr/share/doc/${name}/README.md"
+	install -Dm644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
+	install -Dm644 README.md "${PKG}/usr/share/doc/${isim}/README.md"
 
 	cd support/vim/
 	for dir in *; do
-		install -t "${PKG}/usr/share/${name}/vim/${dir}" -Dm644 "${dir}"/*.vim
+		install -t "${PKG}/usr/share/${isim}/vim/${dir}" -Dm644 "${dir}"/*.vim
 	done
 }

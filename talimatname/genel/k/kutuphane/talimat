@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: apache-ant openjdk java-mysql mariadb xorg-server
 
-name=kutuphane
-version=1.0
-release=2
+isim=kutuphane
+surum=1.0
+devir=2
 
-source=(https://github.com/milisarge/KutuphaneOtomasyonu/archive/$version.tar.gz
+kaynak=(https://github.com/milisarge/KutuphaneOtomasyonu/archive/$surum.tar.gz
 		baglanti.java)
 
 derle() {
-	cd KutuphaneOtomasyonu-$version
+	cd KutuphaneOtomasyonu-$surum
 	export JAVA_HOME=/opt/jdk
 	export ANT_HOME="/opt/ant"
 	cp -f $SRC/baglanti.java src/kutuphane/otomasyonu/

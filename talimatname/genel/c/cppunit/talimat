@@ -3,13 +3,13 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler:
 
-name=cppunit
-version=1.14.0
-release=1
-source=(http://dev-www.libreoffice.org/src/$name-$version.tar.gz)
+isim=cppunit
+surum=1.14.0
+devir=1
+kaynak=(http://dev-www.libreoffice.org/src/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

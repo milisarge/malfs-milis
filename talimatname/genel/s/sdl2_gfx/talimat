@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: sdl2 
 
-name=sdl2_gfx
-version=1.0.3
-release=1
-source=(http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-$version.tar.gz)
+isim=sdl2_gfx
+surum=1.0.3
+devir=1
+kaynak=(http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-$surum.tar.gz)
 
 derle() {
-	cd SDL2_gfx-$version
+	cd SDL2_gfx-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR="$PKG" install
-	install -Dm644 COPYING "$PKG/usr/share/licenses/$name/LICENSE"
+	install -Dm644 COPYING "$PKG/usr/share/licenses/$isim/LICENSE"
 }

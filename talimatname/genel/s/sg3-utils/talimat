@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=sg3-utils
-version=1.41
-release=1
+isim=sg3-utils
+surum=1.41
+devir=1
 
-source=(http://sg.danny.cz/sg/p/sg3_utils-$version.tar.xz)
+kaynak=(http://sg.danny.cz/sg/p/sg3_utils-$surum.tar.xz)
 derle() {
-cd sg3_utils-$version
+cd sg3_utils-$surum
 ./configure --prefix=/usr --disable-static
 make
 make DESTDIR=$PKG install

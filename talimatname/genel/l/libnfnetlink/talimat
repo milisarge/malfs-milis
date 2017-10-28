@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=libnfnetlink
-version=1.0.1
-release=1
-source=(http://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2
+isim=libnfnetlink
+surum=1.0.1
+devir=1
+kaynak=(http://www.netfilter.org/projects/$isim/files/$isim-$surum.tar.bz2
 	sync_with_kernel_headers.patch)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	patch -p1 -i $SRC/sync_with_kernel_headers.patch
 	./configure --prefix=/usr
 	make

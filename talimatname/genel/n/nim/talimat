@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler: python3 
 
-name=nim
-_name=Nim
-version=0.17.2
-release=1
-source=(https://github.com/nim-lang/Nim/archive/v$version.tar.gz::${_name}-$version.tar.gz
-		https://github.com/nim-lang/csources/archive/v$version.tar.gz::csources-$version.tar.gz)
+isim=nim
+_isim=Nim
+surum=0.17.2
+devir=1
+kaynak=(https://github.com/nim-lang/Nim/archive/v$surum.tar.gz::${_name}-$surum.tar.gz
+		https://github.com/nim-lang/csources/archive/v$surum.tar.gz::csources-$surum.tar.gz)
 
 derle() {
-	cd ${_name}-${version}
-	mv ../csources-${version} csources
+	cd ${_name}-${surum}
+	mv ../csources-${surum} csources
 	rm bin/empty.txt
 	
-	export PATH="${SRC}/${_name}-${version}/bin:${PATH}"
+	export PATH="${SRC}/${_name}-${surum}/bin:${PATH}"
 	cd csources
 	sh build.sh
 	cd ..
@@ -27,7 +27,7 @@ derle() {
 	cd tools
 	nim c -d:release nimgrep.nim
 	cd ..
-	export PATH="${SRC}/${_name}-${version}/bin:${PATH}"
+	export PATH="${SRC}/${_name}-${surum}/bin:${PATH}"
 	./koch install "${PKG}"
 	install -d "${PKG}/usr/lib"
 	cp -a lib "${PKG}/usr/lib/nim"
@@ -43,7 +43,7 @@ derle() {
 	cp -a "${PKG}/usr/lib/nim/"*.h "${PKG}/usr/include"
 	install -d "${PKG}/usr/share/nim/doc"
 	cp -a examples web doc/* "${PKG}/usr/share/nim/doc"
-	install -Dm 644 copying.txt "${PKG}/usr/share/licenses/${name}/LICENSE"
+	install -Dm 644 copying.txt "${PKG}/usr/share/licenses/${isim}/LICENSE"
 	rm -r "${PKG}/nim" "${PKG}/usr/lib/nim/lib/nimcache"
 	rm -r "${PKG}/usr/share/nim/doc/web/"
 }

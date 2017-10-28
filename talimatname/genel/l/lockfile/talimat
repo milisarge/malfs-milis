@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python-setuptools
 
-name=lockfile
-version=0.12.2
-release=1
+isim=lockfile
+surum=0.12.2
+devir=1
 
-source=(https://pypi.python.org/packages/source/l/lockfile/lockfile-0.12.2.tar.gz)
+kaynak=(https://pypi.python.org/packages/source/l/lockfile/lockfile-0.12.2.tar.gz)
 
 
 derle() {
-  cd "${SRC}/${name}-${version}"
+  cd "${SRC}/${isim}-${surum}"
   python setup.py install --root=$PKG
 }

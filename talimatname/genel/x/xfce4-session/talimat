@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: gnupg polkit consolekit2 udisks upower xorg-libxres libwnck xfce4-libui xorg-app xlockmore
 
-name=xfce4-session
-version=4.12.1
-release=3
+isim=xfce4-session
+surum=4.12.1
+devir=3
 
-source=(http://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2
+kaynak=(http://archive.xfce.org/src/xfce/$isim/${surum%.*}/$isim-$surum.tar.bz2
 0001-Pass-VT-number-to-xinit-if-XDG_VTNR-is-set.patch
         xfce-polkit-gnome-authentication-agent-1.desktop)
 derle() {
-cd $name-$version
+cd $isim-$surum
 patch -Np1 -i ../0001-Pass-VT-number-to-xinit-if-XDG_VTNR-is-set.patch
 ./configure \
     --prefix=/usr \

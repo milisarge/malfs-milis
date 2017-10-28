@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:  
 
-name=libntru
-version=0.4.1
-release=1
-source=(https://github.com/tbuktu/libntru/archive/${version}.tar.gz)
+isim=libntru
+surum=0.4.1
+devir=1
+kaynak=(https://github.com/tbuktu/libntru/archive/${surum}.tar.gz)
 
 derle() {
-	cd "${SRC}/libntru-${version}"
+	cd "${SRC}/libntru-${surum}"
 	make -f Makefile.linux
 	make -f Makefile.linux install DESTDIR="${PKG}"
 	rm -r "${PKG}/usr/share"

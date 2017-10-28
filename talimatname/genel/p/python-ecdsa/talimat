@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=python-ecdsa
-version=0.11
-release=1
+isim=python-ecdsa
+surum=0.11
+devir=1
 
-source=(http://pypi.python.org/packages/source/e/ecdsa/ecdsa-$version.tar.gz)
+kaynak=(http://pypi.python.org/packages/source/e/ecdsa/ecdsa-$surum.tar.gz)
 
 derle() {
-    cd ecdsa-$version
+    cd ecdsa-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }

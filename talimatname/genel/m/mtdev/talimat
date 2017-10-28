@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=mtdev
-version=1.1.5
-release=1
+isim=mtdev
+surum=1.1.5
+devir=1
 
-source=(http://bitmath.org/code/mtdev/mtdev-$version.tar.bz2)
+kaynak=(http://bitmath.org/code/mtdev/mtdev-$surum.tar.bz2)
 
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-static
 make

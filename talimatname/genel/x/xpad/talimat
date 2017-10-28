@@ -3,13 +3,13 @@
 # Paketçi: dei
 # Gerekler: intltool xorg-libsm gtk3
 
-name=xpad
-version=4.3.1
-release=2
-source=(http://launchpad.net/xpad/trunk/4.3/+download/xpad-$version.tar.bz2)
+isim=xpad
+surum=4.3.1
+devir=2
+kaynak=(http://launchpad.net/xpad/trunk/4.3/+download/xpad-$surum.tar.bz2)
 
 derle(){
-    cd $name-$version
+    cd $isim-$surum
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install helpdir=$PKG/usr/lib/xpad/help

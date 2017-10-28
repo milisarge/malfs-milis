@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: libftdi libusb-compat hidapi
 
-name=avrdude
-version=6.3
-release=1
-source=(http://download.savannah.gnu.org/releases/avrdude/${name}-$version.tar.gz)
+isim=avrdude
+surum=6.3
+devir=1
+kaynak=(http://download.savannah.gnu.org/releases/avrdude/${isim}-$surum.tar.gz)
 
 derle() {
-cd ${name}-$version
+cd ${isim}-$surum
 ./bootstrap
   ./configure --mandir=/usr/share/man \
     --prefix=/usr \

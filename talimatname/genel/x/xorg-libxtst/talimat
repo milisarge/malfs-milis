@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-libx11 xorg-libxext xorg-libxi 
 
-name=xorg-libxtst
-version=1.2.2
-release=1
-source=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXtst-$version.tar.bz2)
+isim=xorg-libxtst
+surum=1.2.2
+devir=1
+kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXtst-$surum.tar.bz2)
 
 derle() {
-cd libXtst-$version
+cd libXtst-$surum
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 make
 make DESTDIR=$PKG install

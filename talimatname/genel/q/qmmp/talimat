@@ -3,11 +3,11 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler: subversion libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
-name=qmmp
-version=svn
-release=1
+isim=qmmp
+surum=svn
+devir=1
 
-source=()
+kaynak=()
 	
 derle() {
 	

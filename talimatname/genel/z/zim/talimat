@@ -3,14 +3,14 @@
 # Paketçi: Cihan Alkan
 # Gerekler: python-gtk dejavu-ttf
 
-name=zim
-version=0.67
-release=1
+isim=zim
+surum=0.67
+devir=1
 
-source=(http://zim-wiki.org/downloads/$name-$version.tar.gz)
+kaynak=(http://zim-wiki.org/downloads/$isim-$surum.tar.gz)
 
 derle() {
-    cd $name-$version
+    cd $isim-$surum
     for file in zim/inc/xdot.py; do
         sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
     done

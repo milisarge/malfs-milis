@@ -3,14 +3,14 @@
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 libaccounts-qt5 qt5-webkit signond libnotify
 
-name=signon-ui
-version=0.17+15.10.20150810
-release=1
+isim=signon-ui
+surum=0.17+15.10.20150810
+devir=1
 
-source=(http://archive.ubuntu.com/ubuntu/pool/main/s/$name/${name}_$version.orig.tar.gz) 
+kaynak=(http://archive.ubuntu.com/ubuntu/pool/main/s/$isim/${isim}_$surum.orig.tar.gz) 
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 echo 'INSTALLS =' >>tests/unit/tst_inactivity_timer.pro
 echo 'INSTALLS =' >>tests/unit/tst_signon_ui.pro
 

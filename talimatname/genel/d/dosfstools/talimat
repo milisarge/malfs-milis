@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=dosfstools
-version=3.0.13
-release=1
-source=( ftp://ftp.debian.org/debian/pool/main/d/$name/$name\_$version.orig.tar.xz)
+isim=dosfstools
+surum=3.0.13
+devir=1
+kaynak=( ftp://ftp.debian.org/debian/pool/main/d/$isim/$isim\_$surum.orig.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 make
 mkdir -p $PKG/sbin
 mkdir -p $PKG/usr/share/man/man8

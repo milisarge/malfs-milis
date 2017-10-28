@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: bogofilter enchant aspell libetpan gnupg gpgme gnutls dbus gtk2 libtasn1 enchant
 
-name=claws-mail
-version=3.15.1
-release=1
-source=(http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
+isim=claws-mail
+surum=3.15.1
+devir=1
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr --mandir=/usr/share/man \
 --disable-compface --disable-ldap \
 --disable-jpilot --enable-enchant --disable-dillo-viewer-plugin \

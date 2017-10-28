@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=xapian
-version=1.2.22
-release=1
+isim=xapian
+surum=1.2.22
+devir=1
 
-source=( http://oligarchy.co.uk/xapian/$version/xapian-core-$version.tar.xz)
+kaynak=( http://oligarchy.co.uk/xapian/$surum/xapian-core-$surum.tar.xz)
 derle() {
-cd $name-core-$version
+cd $isim-core-$surum
 ./configure --prefix=/usr \
 --disable-static \
---docdir=/usr/share/doc/xapian-core-$version
+--docdir=/usr/share/doc/xapian-core-$surum
 make
 make DESTDIR=$PKG install
 }

@@ -3,11 +3,11 @@
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk-update-icon-cache
 
-name=lila-hd-icon-theme
-_name=Lila-HD-icon-theme
-version=1
-release=1
-source=()
+isim=lila-hd-icon-theme
+_isim=Lila-HD-icon-theme
+surum=1
+devir=1
+kaynak=()
 
 derle() {
 	git clone https://github.com/ilnanny/$_name.git

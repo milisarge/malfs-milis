@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler: bluez libical 
 
-name=obexd
-version=0.48
-release=2
+isim=obexd
+surum=0.48
+devir=2
 
-source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)
+kaynak=(http://www.kernel.org/pub/linux/bluetooth/$isim-$surum.tar.xz)
 derle() {
-cd $name-$version
+cd $isim-$surum
 sed -i 's/#include <string.h>/&\n#include <stdio.h>/' plugins/mas.c
 ./configure --prefix=/usr \
 --sysconfdir=/etc \

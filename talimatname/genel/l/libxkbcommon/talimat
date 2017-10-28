@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: xorg-xkeyboard-config libxcb doxygen xorg-util-macros 
 
-name=libxkbcommon
-version=0.5.0
-release=1
+isim=libxkbcommon
+surum=0.5.0
+devir=1
 
-source=(http://xkbcommon.org/download/libxkbcommon-$version.tar.xz)
+kaynak=(http://xkbcommon.org/download/libxkbcommon-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
             --disable-static
 make

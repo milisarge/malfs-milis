@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: libgcrypt
 
-name=ctunnel
-version=0.7
-release=1
-source=(https://nardcore.org/ctunnel/$version/$name-$version.tar.gz)
+isim=ctunnel
+surum=0.7
+devir=1
+kaynak=(https://nardcore.org/ctunnel/$surum/$isim-$surum.tar.gz)
 
 derle(){
-    cd $SRC/$name-$version
+    cd $SRC/$isim-$surum
     sed -i 's/-lgcrypt/-lgcrypt -lgpg-error/' src/Makefile
     make
-    install -m755 -D src/$name $PKG/usr/bin/$name
+    install -m755 -D src/$isim $PKG/usr/bin/$isim
 }

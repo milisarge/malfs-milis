@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: python
 
-name=python-dnspython
-version=1.11.1
-release=1
+isim=python-dnspython
+surum=1.11.1
+devir=1
 
-source=(
-http://www.dnspython.org/kits/$version/dnspython-$version.tar.gz)
+kaynak=(
+http://www.dnspython.org/kits/$surum/dnspython-$surum.tar.gz)
 
 derle() {
-    cd dnspython-$version
+    cd dnspython-$surum
     python2 setup.py install --prefix=/usr --root=$PKG
 }
