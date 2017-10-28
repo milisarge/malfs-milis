@@ -1390,9 +1390,45 @@ indir_talimat_paketle(){
 	if [ ! -d $_talkonum/${paketisim:0:1}/$paketisim ];then
 		mkdir -p $_talkonum/${paketisim:0:1}/$paketisim
 		cp -f $dosya $_talkonum/${paketisim:0:1}/$paketisim/talimat
+		talimat_degisken_cevrim $_talkonum/${paketisim:0:1}/$paketisim/talimat
 		ryaz 32 "$paketisim talimatı hazırlandı."
 	else
 		ryaz 31 "$paketisim talimatı zaten talimatnamede var!"
+	fi
+}
+
+talimat_degisken_cevrim(){
+	_dosya=$1
+	if [ -f $_dosya ];then
+		sed  -i 's/name=/isim=/g' $_dosya
+		sed  -i 's/$name/$isim/g' $_dosya
+		sed  -i 's/${name}/${isim}/g' $_dosya
+		sed  -i 's/version=/surum=/g' $_dosya
+		sed  -i 's/$version/$surum/g' $_dosya
+		sed  -i 's/${version}/${surum}/g' $_dosya
+		sed  -i 's/${version%.*}/${surum%.*}/g' $_dosya
+		sed  -i 's/release=/devir=/g' $_dosya
+		sed  -i 's/$release/$devir/g' $_dosya
+		sed  -i 's/${release}/${devir}/g' $_dosya
+		sed  -i 's/source=/kaynak=/g' $_dosya
+		sed  -i 's/build()/derle()/g' $_dosya
+		sed  -i 's/build ()/derle()/g' $_dosya
+		sed  -i 's/Description:/Tanım:/g' $_dosya
+		sed  -i 's/Description=/Tanım:/g' $_dosya
+		sed  -i 's/Url=/Url:/g' $_dosya
+		sed  -i 's/description:/Tanım:/g' $_dosya
+		sed  -i 's/Description :/Tanım:/g' $_dosya
+		sed  -i 's/Packager:/Paketçi:/g' $_dosya
+		sed  -i 's/packager:/Paketçi:/g' $_dosya
+		sed  -i 's/Packagers:/Paketçi:/g' $_dosya
+		sed  -i 's/Packager :/Paketçi:/g' $_dosya
+		sed  -i 's/Depends on:/Gerekler:/g' $_dosya
+		sed  -i 's/Depends:/Gerekler:/g' $_dosya
+		sed  -i 's/Depends on :/Gerekler:/g' $_dosya
+		sed  -i '/Maintainer:/d' $_dosya
+		sed  -i '/Optional:/d' $_dosya
+	else
+		ryaz 31 "ilgili talimat dosyası bulunamadı."
 	fi
 }
 
@@ -2457,6 +2493,10 @@ ayarlar() {
 					shift ;;
 			-trl)
 				tarihce_liste ;;
+			### mps tdc talimat_dosyası = ilgili talimat dosyasının Türkçe değişken çevrimii yapar.
+			tdc)
+				talimat_degisken_cevrim $2
+				exit 0 ;;
 			-tamir-tk)
 				tamir_temel_kurulan ;;
 			dos)

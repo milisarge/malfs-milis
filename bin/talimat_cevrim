@@ -1,3 +1,4 @@
+#!/bin/bash
 grep -rli 'name=' * | xargs -i@ sed  -i 's/name=/isim=/g' @
 grep -rli '$name' * | xargs -i@ sed  -i 's/$name/$isim/g' @
 grep -rli '${name}' * | xargs -i@ sed  -i 's/${name}/${isim}/g' @
@@ -21,4 +22,8 @@ grep -rli 'packager:' * | xargs -i@ sed  -i 's/packager:/Paketçi:/g' @
 grep -rli 'Packagers:' * | xargs -i@ sed  -i 's/Packagers:/Paketçi:/g' @
 grep -rli 'Packager :' * | xargs -i@ sed  -i 's/Packager :/Paketçi:/g' @
 grep -rli 'Depends on:' * | xargs -i@ sed  -i 's/Depends on:/Gerekler:/g' @
+grep -rli 'Depends:' * | xargs -i@ sed  -i 's/Depends:/Gerekler:/g' @
 grep -rli 'Depends on :' * | xargs -i@ sed  -i 's/Depends on :/Gerekler:/g' @
+grep -rli 'Maintainer:' * | xargs -i@ sed  -i '/Maintainer:/d' @
+grep -rli 'Optional:' * | xargs -i@ sed  -i '/Optional:/d' @
+
