@@ -47,7 +47,7 @@ class Talimat():
 		self.surum=""
 		self.devir=""
 		self.kaynaklar=[]
-		self.derleme="build() {"+"\n"
+		self.derleme="derle() {"+"\n"
 	
 	def ice_aktar(self,dosya,tip):
 		if tip=="arch":
@@ -77,7 +77,7 @@ class Talimat():
 		for gerek in self.gerekler:
 			if os.path.exists(self.talimatname+"temel-ek/"+gerek) is False and os.path.exists(self.talimatname+"temel/"+gerek) is False:
 				gerekstr+=gerek+" "
-				if os.path.exists(self.talimatname+"genel/"+gerek) is False:
+				if os.path.exists(self.talimatname+"genel/"+gerek[0:1]+"/"+gerek) is False:
 					print renk.uyari+gerek+" talimatı yapılmalı!"+renk.son
 		return gerekstr
 		
@@ -105,9 +105,9 @@ class Talimat():
 					if (satir not in self.derleme) and ("pkgver()" not in satir) and ("prepare()" not in satir) and ("build()" not in satir) and ("package()" not in satir) and ("check()" not in satir):
 						satir=satir.replace("pkgdir","PKG")
 						satir=satir.replace("srcdir","SRC")
-						satir=satir.replace("pkgname","name")
-						satir=satir.replace("pkgver","version")
-						satir=satir.replace("pkgrel","release")
+						satir=satir.replace("pkgname","isim")
+						satir=satir.replace("pkgver","surum")
+						satir=satir.replace("pkgrel","devir")
 						self.derleme+=satir+"\n"
 		else:
 			return "blok için gecersiz tip!"
@@ -120,17 +120,17 @@ class Talimat():
 	
 	def icerik(self):
 		icerikstr=""
-		icerikstr+="# Description: "+self.tanim+"\n"
+		icerikstr+="# Tanım: "+self.tanim+"\n"
 		icerikstr+="# URL: "+self.url+"\n"
-		icerikstr+="# Packager: "+self.paketci+"\n"
-		icerikstr+="# Depends on: "+self._gerekler()
+		icerikstr+="# Paketçi: "+self.paketci+"\n"
+		icerikstr+="# Gerekler: "+self._gerekler()
 		icerikstr+="\n"+"\n"
-		icerikstr+="name="+self.isim+"\n"
+		icerikstr+="isim="+self.isim+"\n"
 		if self._isim !="":
-			icerikstr+="_name="+self._isim+"\n"
-		icerikstr+="version="+str(self.surum)+"\n"
-		icerikstr+="release="+str(self.devir)+"\n"
-		icerikstr+="source=("+self._kaynaklar()+")"
+			icerikstr+="_isim="+self._isim+"\n"
+		icerikstr+="surum="+str(self.surum)+"\n"
+		icerikstr+="devir="+str(self.devir)+"\n"
+		icerikstr+="kaynak=("+self._kaynaklar()+")"
 		icerikstr+="\n"+"\n"
 		icerikstr+=self.derleme
 		icerikstr+="}"
