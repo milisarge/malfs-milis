@@ -3,19 +3,19 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=binutils
-version=2.26
-release=3
+isim=binutils
+surum=2.26
+devir=3
 
-source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2
-	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-1.patch
-	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$version-upstream_fix-2.patch)
+kaynak=(http://ftp.gnu.org/gnu/binutils/binutils-$surum.tar.bz2
+	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$surum-upstream_fix-1.patch
+	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$surum-upstream_fix-2.patch)
 	
 derle() {
-	cd binutils-$version
+	cd binutils-$surum
 
-	patch -Np1 -i ../binutils-$version-upstream_fix-1.patch
-	patch -Np1 -i ../binutils-$version-upstream_fix-2.patch
+	patch -Np1 -i ../binutils-$surum-upstream_fix-1.patch
+	patch -Np1 -i ../binutils-$surum-upstream_fix-2.patch
 
 	mkdir -v build
 	cd build
@@ -38,12 +38,12 @@ derle() {
 	mkdir $PKG/lib
 	for lib in libopcodes libbfd
 	do
-		mv $PKG/usr/lib/$lib-$version.20160125.so \
-		$PKG/lib/$lib-$version.so
-		ln -s $lib-$version.so  $PKG/lib/$lib
-		ln -s ../../lib/$lib-$version.20160125.so \
-		$PKG/usr/lib/$lib-$version.so
-		ln -s ../../lib/$lib-$version.so \
+		mv $PKG/usr/lib/$lib-$surum.20160125.so \
+		$PKG/lib/$lib-$surum.so
+		ln -s $lib-$surum.so  $PKG/lib/$lib
+		ln -s ../../lib/$lib-$surum.20160125.so \
+		$PKG/usr/lib/$lib-$surum.so
+		ln -s ../../lib/$lib-$surum.so \
 		$PKG/usr/lib/$lib
 	done
 }

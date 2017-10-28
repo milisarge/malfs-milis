@@ -3,13 +3,13 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=lvm2
-version=2.02.141
-release=1
+isim=lvm2
+surum=2.02.141
+devir=1
 
-source=(ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz)
+kaynak=(ftp://sources.redhat.com/pub/lvm2/LVM2.$surum.tgz)
 derle() {
-cd LVM2.$version
+cd LVM2.$surum
 ./configure \
 --prefix=/usr \
 --exec-prefix= \

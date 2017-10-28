@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=shadow
-version=4.2.1
-release=1
+isim=shadow
+surum=4.2.1
+devir=1
 
-source=( http://pkg-shadow.alioth.debian.org/releases/shadow-$version.tar.xz)
+kaynak=( http://pkg-shadow.alioth.debian.org/releases/shadow-$surum.tar.xz)
 
 derle()
 {
-cd shadow-$version
+cd shadow-$surum
 
 sed -i 's/groups$(EXEEXT) //' src/Makefile.in
 find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;

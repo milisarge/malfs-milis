@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=sudo
-version=1.8.15
-release=1
+isim=sudo
+surum=1.8.15
+devir=1
 
-source=(http://www.sudo.ws/sudo/dist/$name-$version.tar.gz)
+kaynak=(http://www.sudo.ws/sudo/dist/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --libexecdir=/usr/lib \
---docdir=/usr/share/doc/sudo-$version \
+--docdir=/usr/share/doc/sudo-$surum \
 --with-all-insults \
 --with-env-editor \
 --without-sendmail \

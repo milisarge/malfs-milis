@@ -3,17 +3,17 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=coreutils
-version=8.25
-release=2
+isim=coreutils
+surum=8.25
+devir=2
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-i18n-2.patch)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.xz
+	http://www.linuxfromscratch.org/patches/downloads/$isim/$isim-$surum-i18n-2.patch)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 
-patch -Np1 -i ../$name-$version-i18n-2.patch
+patch -Np1 -i ../$isim-$surum-i18n-2.patch
 
 FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr \
 --libexecdir=/lib --bindir=/bin --sbindir=/sbin \

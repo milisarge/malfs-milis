@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=groff
-version=1.22.3
-release=1
+isim=groff
+surum=1.22.3
+devir=1
 
-source=(http://ftp.gnu.org/gnu/groff/groff-$version.tar.gz)
+kaynak=(http://ftp.gnu.org/gnu/groff/groff-$surum.tar.gz)
 
 derle()
 {
-cd groff-$version
+cd groff-$surum
 
 PAGE="A4" ./configure --prefix=/usr
 

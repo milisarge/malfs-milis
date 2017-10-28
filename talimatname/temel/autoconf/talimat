@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=autoconf
-version=2.69
-release=1
+isim=autoconf
+surum=2.69
+devir=1
 
-source=(http://ftp.gnu.org/gnu/autoconf/autoconf-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/autoconf/autoconf-$surum.tar.xz)
 derle()
 {
-cd autoconf-$version
+cd autoconf-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=sed
-version=4.2.2
-release=1
+isim=sed
+surum=4.2.2
+devir=1
 
-source=(http://ftp.gnu.org/gnu/sed/sed-$version.tar.bz2)
+kaynak=(http://ftp.gnu.org/gnu/sed/sed-$surum.tar.bz2)
 
 derle()
 {
-cd sed-$version
+cd sed-$surum
 ./configure --prefix=/usr --bindir=/bin \
---libdir=/lib --htmldir=/usr/share/doc/sed-$version
+--libdir=/lib --htmldir=/usr/share/doc/sed-$surum
 make
 make html
 make check

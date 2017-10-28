@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=findutils
-version=4.6.0
-release=1
+isim=findutils
+surum=4.6.0
+devir=1
 
-source=(http://ftp.gnu.org/gnu/findutils/findutils-$version.tar.gz)
+kaynak=(http://ftp.gnu.org/gnu/findutils/findutils-$surum.tar.gz)
 
 derle()
 {
-	cd findutils-$version
+	cd findutils-$surum
 	./configure --prefix=/usr \
 	--libexecdir=/lib/findutils \
 	--localstatedir=/var/lib/locate \

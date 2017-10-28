@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=nasm
-version=2.11.06
-release=1
+isim=nasm
+surum=2.11.06
+devir=1
 
-source=( ftp://ftp.debian.org/debian/pool/main/n/nasm/nasm_2.11.06-1really2.11.05.orig.tar.xz
-		http://www.nasm.us/pub/nasm/releasebuilds/$version/nasm-$version-xdoc.tar.xz)
+kaynak=( ftp://ftp.debian.org/debian/pool/main/n/nasm/nasm_2.11.06-1really2.11.05.orig.tar.xz
+		http://www.nasm.us/pub/nasm/releasebuilds/$surum/nasm-$surum-xdoc.tar.xz)
 
 derle() {
-	cd $name-2.11.05
+	cd $isim-2.11.05
 	./configure --prefix=/usr\
 		    --mandir=/usr/share/man
 	make
@@ -19,10 +19,10 @@ derle() {
 	mkdir -p $PKG/usr/share/man/man1
 	make INSTALLROOT=$PKG  install
 
-mkdir -pv $PKG/usr/share/doc/nasm-$version/html
-cd ../$name-2.11.06
-cp -v doc/html/*.html    $PKG/usr/share/doc/nasm-$version/html
-cp -v doc/*.{txt,ps,pdf} $PKG/usr/share/doc/nasm-$version
+mkdir -pv $PKG/usr/share/doc/nasm-$surum/html
+cd ../$isim-2.11.06
+cp -v doc/html/*.html    $PKG/usr/share/doc/nasm-$surum/html
+cp -v doc/*.{txt,ps,pdf} $PKG/usr/share/doc/nasm-$surum
 mkdir -pv $PKG/usr/share/info
 cp -v doc/info/*         $PKG/usr/share/info
 }

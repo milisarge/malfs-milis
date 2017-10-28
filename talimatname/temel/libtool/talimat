@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libtool
-version=2.4.6
-release=1
+isim=libtool
+surum=2.4.6
+devir=1
 
-source=(http://ftp.gnu.org/gnu/libtool/libtool-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/libtool/libtool-$surum.tar.xz)
 
 derle()
 {

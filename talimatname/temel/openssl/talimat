@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=openssl
-version=1.0.2f
-release=1
+isim=openssl
+surum=1.0.2f
+devir=1
 
-source=(ftp://ftp.openssl.org/source/$name-$version.tar.gz)
+kaynak=(ftp://ftp.openssl.org/source/$isim-$surum.tar.gz)
 
 derle() {
 unset MAKEFLAGS
 
-cd $name-$version
+cd $isim-$surum
 
 ./config --prefix=/usr \
 	--openssldir=/etc/ssl \

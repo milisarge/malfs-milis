@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=mpc
-version=1.0.3
-release=1
+isim=mpc
+surum=1.0.3
+devir=1
 
-source=(http://www.multiprecision.org/mpc/download/mpc-$version.tar.gz)
+kaynak=(http://www.multiprecision.org/mpc/download/mpc-$surum.tar.gz)
 
 derle()
 {
-cd mpc-$version
+cd mpc-$surum
 ./configure --prefix=/usr --libdir=/lib
 make
 make check

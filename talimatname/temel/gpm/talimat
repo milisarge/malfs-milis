@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=gpm
-version=1.20.7
-release=2
+isim=gpm
+surum=1.20.7
+devir=2
 
-source=(http://www.nico.schottelius.org/software/$name/archives/$name-$version.tar.bz2)
+kaynak=(http://www.nico.schottelius.org/software/$isim/archives/$isim-$surum.tar.bz2)
 
 derle() {
 	source /etc/blfs-bootscripts
 	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 	tar xvf $scripts-$scriptsversion.tar.bz2
 
-	cd $name-$version
+	cd $isim-$surum
 	./autogen.sh
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \

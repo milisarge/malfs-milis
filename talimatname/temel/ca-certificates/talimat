@@ -3,11 +3,11 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=ca-certificates
-version=20160110
-release=1
+isim=ca-certificates
+surum=20160110
+devir=1
 
-source=(http://downloads.nutyx.org/files/$name-$version.tar.gz)
+kaynak=(http://downloads.nutyx.org/files/$isim-$surum.tar.gz)
 
 derle() {
 

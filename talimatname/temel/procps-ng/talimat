@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=procps-ng
-version=3.3.11
-release=1
+isim=procps-ng
+surum=3.3.11
+devir=1
 
-source=(http://downloads.sourceforge.net/project/$name/Production/$name-$version.tar.xz)
+kaynak=(http://downloads.sourceforge.net/project/$isim/Production/$isim-$surum.tar.xz)
 
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 
 ./configure --prefix=/usr \
 --exec-prefix= \
 --libdir=/lib --bindir=/bin --sbindir=/sbin \
---docdir=/usr/share/doc/procps-ng-$version \
+--docdir=/usr/share/doc/procps-ng-$surum \
 --disable-static \
 --disable-skill \
 --disable-kill

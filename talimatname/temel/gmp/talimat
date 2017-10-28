@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=gmp
-version=6.1.0
-release=1
+isim=gmp
+surum=6.1.0
+devir=1
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.xz)
 
 derle() {
-	cd gmp-$version
+	cd gmp-$surum
 	case `uname -m` in
 	 i?86)
 		ABI=32 ./configure --build=i686-pc-linux-gnu \
@@ -27,8 +27,8 @@ derle() {
 	rm -rf $PKG/usr/share/info/dir
 
 	# Documentation
-	#mkdir -p $PKG/usr/share/doc/gmp-${version}
+	#mkdir -p $PKG/usr/share/doc/gmp-${surum}
 
 	#cp doc/{isa_abi_headache,configuration} doc/*.html \
-	#$PKG/usr/share/doc/gmp-${version}
+	#$PKG/usr/share/doc/gmp-${surum}
 }

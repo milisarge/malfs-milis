@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=lzip
-version=1.18-rc1
-release=1
+isim=lzip
+surum=1.18-rc1
+devir=1
 
-source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
+kaynak=(http://download.savannah.gnu.org/releases/$isim/$isim-$surum.tar.gz)
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

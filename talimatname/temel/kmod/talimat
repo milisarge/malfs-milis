@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=kmod
-version=22
-release=1
+isim=kmod
+surum=22
+devir=1
 
-source=(http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz )
+kaynak=(http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$surum.tar.xz )
 
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --bindir=/bin \
 --sysconfdir=/etc \

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=psmisc
-version=22.21
-release=1
+isim=psmisc
+surum=22.21
+devir=1
 
-source=(http://prdownloads.sourceforge.net/psmisc/psmisc-$version.tar.gz)
+kaynak=(http://prdownloads.sourceforge.net/psmisc/psmisc-$surum.tar.gz)
 
 derle()
 {
-cd psmisc-$version
+cd psmisc-$surum
 ./configure --prefix=/usr --libdir=/lib --bindir=/bin
 make
 make DESTDIR=$PKG install

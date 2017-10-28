@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=cpio
-version=2.11
-release=1
+isim=cpio
+surum=2.11
+devir=1
 
-source=( http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+kaynak=( http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.bz2)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	sed -i -e '/gets is a/d' gnu/stdio.in.h
 	./configure \
 		--prefix=/usr \

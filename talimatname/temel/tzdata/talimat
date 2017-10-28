@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=tzdata
-version=2016a
-release=1
+isim=tzdata
+surum=2016a
+devir=1
 
-source=(http://www.iana.org/time-zones/repository/releases/$name$version.tar.gz)
+kaynak=(http://www.iana.org/time-zones/repository/releases/$isim$surum.tar.gz)
 derle() {
 timezones=('africa' 'antarctica' 'asia' 'australasia'
            'europe' 'northamerica' 'southamerica'

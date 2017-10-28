@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-kernelversion=4.4
-name=glibc
-version=2.23
-release=1
+kernelsurum=4.4
+isim=glibc
+surum=2.23
+devir=1
 
-source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$kernelversion.tar.xz
-	http://www.linuxfromscratch.org/patches/downloads/$name/glibc-$version-fhs-1.patch
-	http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz glibc.locales.supported )
+kaynak=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$kernelversion.tar.xz
+	http://www.linuxfromscratch.org/patches/downloads/$isim/glibc-$surum-fhs-1.patch
+	http://ftp.gnu.org/gnu/glibc/glibc-$surum.tar.xz glibc.locales.supported )
 	
 derle() {
 
@@ -23,14 +23,14 @@ find dest/include \( -name .install -o -name ..install.cmd \) -delete
 mkdir -p $PKG/usr/include
 cp -rv dest/include/* $PKG/usr/include
 
-cd ../glibc-$version
+cd ../glibc-$surum
 
-patch -Np1 -i ../glibc-$version-fhs-1.patch
+patch -Np1 -i ../glibc-$surum-fhs-1.patch
 
 mkdir -v ../glibc-build
 cd ../glibc-build
 
-../glibc-$version/configure --prefix=/usr \
+../glibc-$surum/configure --prefix=/usr \
 --disable-profile \
 --enable-kernel=2.6.32 \
 --enable-obsolete-rpc
@@ -44,7 +44,7 @@ make install_root=$PKG install
 rm -rf $PKG/usr/share/info/dir
 
 mkdir -p $PKG/etc
-cp -v ../glibc-$version/nscd/nscd.conf $PKG/etc/nscd.conf
+cp -v ../glibc-$surum/nscd/nscd.conf $PKG/etc/nscd.conf
 mkdir -pv $PKG/var/cache/nscd
 
 touch $PKG/etc/ld.so.conf
@@ -52,7 +52,7 @@ touch $PKG/etc/ld.so.conf
 mkdir -pv $PKG/usr/lib/locale
 
 cp $SRC/glibc.locales.supported \
-../glibc-$version/localedata/SUPPORTED
+../glibc-$surum/localedata/SUPPORTED
 
 make install_root=$PKG localedata/install-locales
 

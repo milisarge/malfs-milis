@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=iana-etc
-version=2.30
-release=1
+isim=iana-etc
+surum=2.30
+devir=1
 
-source=(http://sethwklein.net/iana-etc-2.30.tar.bz2)
+kaynak=(http://sethwklein.net/iana-etc-2.30.tar.bz2)
 
 derle()
 {
-cd iana-etc-$version
+cd iana-etc-$surum
 
 make
 

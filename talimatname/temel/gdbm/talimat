@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=gdbm
-version=1.11
-release=1
+isim=gdbm
+surum=1.11
+devir=1
 
-source=(http://ftp.gnu.org/gnu/gdbm/gdbm-$version.tar.gz)
+kaynak=(http://ftp.gnu.org/gnu/gdbm/gdbm-$surum.tar.gz)
 
 derle() {
-cd gdbm-$version
+cd gdbm-$surum
 ./configure --prefix=/usr --libdir=/lib \
 --bindir=/bin --enable-libgdbm-compat
 

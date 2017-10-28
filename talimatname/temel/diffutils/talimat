@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=diffutils
-version=3.3
-release=1
+isim=diffutils
+surum=3.3
+devir=1
 
-source=( http://ftp.gnu.org/gnu/$name/diffutils-$version.tar.xz )
+kaynak=( http://ftp.gnu.org/gnu/$isim/diffutils-$surum.tar.xz )
 
 derle() {
-	cd diffutils-$version
+	cd diffutils-$surum
 	sed -i 's:= @mkdir_p@:= /bin/mkdir -p:' po/Makefile.in.in
 	./configure --prefix=/usr \
 	--bindir=/bin

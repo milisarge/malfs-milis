@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=perl
-version=5.22.1
-release=1
+isim=perl
+surum=5.22.1
+devir=1
 
-source=(http://ftp.funet.fi/pub/CPAN/src/$name-$version.tar.bz2)
+kaynak=(http://ftp.funet.fi/pub/CPAN/src/$isim-$surum.tar.bz2)
 
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 
 if [ "`uname -m`" == "x86_64" ]; then
 	_ARCH="-Dcccdlflags='-fPIC'"

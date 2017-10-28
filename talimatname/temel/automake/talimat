@@ -3,16 +3,16 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=automake
-version=1.15
-release=2
+isim=automake
+surum=1.15
+devir=2
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.xz)
 derle() {
-cd automake-$version
+cd automake-$surum
 sed -i 's:/\\\${:/\\\$\\{:' bin/automake.in
 ./configure --prefix=/usr \
---docdir=$PKG/usr/share/doc/automake-$version
+--docdir=$PKG/usr/share/doc/automake-$surum
 make
 make prefix=$PKG/usr install
 rm -rf $PKG/usr/share/info/dir

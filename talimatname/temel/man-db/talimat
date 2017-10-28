@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=man-db
-version=2.7.2
-release=1
+isim=man-db
+surum=2.7.2
+devir=1
 
-source=(http://savannah.nongnu.org/download/man-db/man-db-$version.tar.xz)
+kaynak=(http://savannah.nongnu.org/download/man-db/man-db-$surum.tar.xz)
 
 derle()
 {
-cd man-db-$version
+cd man-db-$surum
 PKG_CONFIG_PATH="/usr/lib/pkgconfig" ./configure --prefix=/usr \
 --libexecdir=/usr/lib \
---docdir=/usr/share/doc/man-$version \
+--docdir=/usr/share/doc/man-$surum \
 --sysconfdir=/etc --disable-setuid \
 --with-browser=/usr/bin/lynx --with-vgrind=/usr/bin/vgrind \
 --with-grap=/usr/bin/grap

@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=sysvinit
-version=2.88dsf
-release=2
+isim=sysvinit
+surum=2.88dsf
+devir=2
 
-source=(http://ftp.twaren.net/Unix/NonGNU/sysvinit/sysvinit-$version.tar.bz2
+kaynak=(http://ftp.twaren.net/Unix/NonGNU/sysvinit/sysvinit-$surum.tar.bz2
 	http://www.linuxfromscratch.org/patches/lfs/development/sysvinit-2.88dsf-consolidated-1.patch)
 
 derle()
 {
-cd sysvinit-$version
+cd sysvinit-$surum
 patch -Np1 -i ../sysvinit-2.88dsf-consolidated-1.patch
 
 make -C src

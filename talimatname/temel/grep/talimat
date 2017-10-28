@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=grep
-version=2.23
-release=1
+isim=grep
+surum=2.23
+devir=1
 
-source=(http://ftp.gnu.org/gnu/grep/grep-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/grep/grep-$surum.tar.xz)
 
 derle()
 {
-cd grep-$version
+cd grep-$surum
 
 ./configure --prefix=/usr --bindir=/bin
 make

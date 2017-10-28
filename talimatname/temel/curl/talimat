@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=curl
-version=7.47.1
-release=1
+isim=curl
+surum=7.47.1
+devir=1
 
-source=(http://curl.haxx.se/download/$name-$version.tar.lzma)
+kaynak=(http://curl.haxx.se/download/$isim-$surum.tar.lzma)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr \
 	--bindir=/bin  \
 	--with-ca-path=/etc/ssl/certs \
@@ -23,9 +23,9 @@ derle() {
 			  -o -name \*.3 \)    \
 			  -exec rm {} \;
 
-	install -v -d -m755 $PKG/usr/share/doc/curl-$version
+	install -v -d -m755 $PKG/usr/share/doc/curl-$surum
 	cp -v -R docs/* \
-	$PKG/usr/share/doc/curl-$version
+	$PKG/usr/share/doc/curl-$surum
 
 	# reorganise the libs
 	mkdir $PKG/lib

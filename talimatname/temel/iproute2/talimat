@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=iproute2
-version=4.4.0
-release=1
+isim=iproute2
+surum=4.4.0
+devir=1
 
-source=(http://www.kernel.org/pub/linux/utils/net/$name/iproute2-$version.tar.xz)
+kaynak=(http://www.kernel.org/pub/linux/utils/net/$isim/iproute2-$surum.tar.xz)
 
 derle()
 {
-cd iproute2-$version
+cd iproute2-$surum
 sed -i '/^TARGETS/s@arpd@@g' misc/Makefile
 sed -i /ARPD/d Makefile
 sed -i 's/arpd.8//' man/man8/Makefile

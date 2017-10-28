@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=texinfo
-version=6.1
-release=1
+isim=texinfo
+surum=6.1
+devir=1
 
-source=(http://ftp.gnu.org/gnu/$name/texinfo-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/$isim/texinfo-$surum.tar.xz)
 
 derle()
 {

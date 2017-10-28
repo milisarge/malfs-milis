@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=ncurses
-version=6.0
-release=1
+isim=ncurses
+surum=6.0
+devir=1
 
-source=(ftp://invisible-island.net/ncurses/ncurses-$version.tar.gz)
+kaynak=(ftp://invisible-island.net/ncurses/ncurses-$surum.tar.gz)
 
 derle()
 {
-cd ncurses-$version
+cd ncurses-$surum
 
 sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
 

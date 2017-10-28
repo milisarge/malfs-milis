@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=lz4
-version=r131
-release=1
+isim=lz4
+surum=r131
+devir=1
 
-source=(https://github.com/Cyan4973/lz4/archive/r131.tar.gz)
+kaynak=(https://github.com/Cyan4973/lz4/archive/r131.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 make PREFIX=/usr
 
 make install PREFIX=/usr DESTDIR=$PKG

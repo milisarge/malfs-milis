@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=wget
-version=1.17.1
-release=2
+isim=wget
+surum=1.17.1
+devir=2
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz) 
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.xz) 
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --with-ssl=openssl \

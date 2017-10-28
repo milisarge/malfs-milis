@@ -3,20 +3,20 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=mpfr
-version=3.1.3
-release=2
+isim=mpfr
+surum=3.1.3
+devir=2
 
-source=(http://www.mpfr.org/mpfr-current/mpfr-$version.tar.xz
-	    http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-upstream_fixes-1.patch)
+kaynak=(http://www.mpfr.org/mpfr-current/mpfr-$surum.tar.xz
+	    http://www.linuxfromscratch.org/patches/downloads/$isim/$isim-$surum-upstream_fixes-1.patch)
 
 derle()
 {
-cd mpfr-$version
-patch -Np1 -i ../$name-$version-upstream_fixes-1.patch
+cd mpfr-$surum
+patch -Np1 -i ../$isim-$surum-upstream_fixes-1.patch
 ./configure --prefix=/usr --enable-thread-safe \
 	--libdir=/lib \
-	--docdir=/usr/share/doc/mpfr-$version
+	--docdir=/usr/share/doc/mpfr-$surum
 make
 make check
 make DESTDIR=$PKG install

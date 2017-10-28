@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=patch
-version=2.7.5
-release=1
+isim=patch
+surum=2.7.5
+devir=1
 
-source=(http://ftp.gnu.org/gnu/patch/patch-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/patch/patch-$surum.tar.xz)
 
 derle()
 {
-cd patch-$version
+cd patch-$surum
 ./configure --prefix=/usr
 make
 make prefix=$PKG/usr \

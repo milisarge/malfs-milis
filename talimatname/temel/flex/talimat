@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=flex
-version=2.5.39
-release=1
+isim=flex
+surum=2.5.39
+devir=1
 
-source=(http://prdownloads.sourceforge.net/flex/flex-$version.tar.xz)
+kaynak=(http://prdownloads.sourceforge.net/flex/flex-$surum.tar.xz)
 
 derle() {
-	cd flex-$version
+	cd flex-$surum
 	sed -i -e '/test-bison/d' tests/Makefile.in
 
 	./configure --prefix=/usr \
 	--libdir=/lib --bindir=/bin --sbindir=/sbin \
-	--docdir=/usr/share/doc/flex-$version
+	--docdir=/usr/share/doc/flex-$surum
 
 	make
 	make -k check||true

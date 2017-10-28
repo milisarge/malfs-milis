@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libcap
-version=2.25
-release=1
+isim=libcap
+surum=2.25
+devir=1
 
-source=(  https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$version.tar.xz)
+kaynak=(  https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$surum.tar.xz)
 
 derle() {
-cd libcap-$version
+cd libcap-$surum
 sed -i 's:LIBDIR:PAM_&:g' pam_cap/Makefile
 sed -i '/install.*STALIBNAME/d' libcap/Makefile
 make

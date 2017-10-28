@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=m4
-version=1.4.17
-release=1
+isim=m4
+surum=1.4.17
+devir=1
 
-source=(http://ftp.gnu.org/gnu/m4/m4-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/m4/m4-$surum.tar.xz)
 
 derle()
 {
-cd m4-$version
+cd m4-$surum
 ./configure --prefix=/usr
 make
 make check || true

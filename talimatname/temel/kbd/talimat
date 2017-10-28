@@ -3,18 +3,18 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=kbd
-version=2.0.3
-release=2
+isim=kbd
+surum=2.0.3
+devir=2
 
-source=(http://ftp.altlinux.com/pub/people/legion/kbd/kbd-$version.tar.xz \
-	http://www.linuxfromscratch.org/patches/downloads/$name/$name-$version-backspace-1.patch)
+kaynak=(http://ftp.altlinux.com/pub/people/legion/kbd/kbd-$surum.tar.xz \
+	http://www.linuxfromscratch.org/patches/downloads/$isim/$isim-$surum-backspace-1.patch)
 
 derle()
 {
-cd kbd-$version
+cd kbd-$surum
 
-patch -Np1 -i ../$name-$version-backspace-1.patch
+patch -Np1 -i ../$isim-$surum-backspace-1.patch
 
 sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
 sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in

@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=openssh
-version=7.1p2
-release=1
+isim=openssh
+surum=7.1p2
+devir=1
 
-source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
+kaynak=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$isim-$surum.tar.gz
 		http://downloads.nutyx.org/files/patchs/openssh-server/service-saravane-01.patch)
 
 derle() {
@@ -15,7 +15,7 @@ source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 
 unset MAKEFLAGS
-cd $name-$version
+cd $isim-$surum
 
 install -v -m700 -d $PKG/var/lib/sshd
 
@@ -41,9 +41,9 @@ install -v -m755 contrib/ssh-copy-id $PKG/usr/bin
 install -v -m644 contrib/ssh-copy-id.1 \
 $PKG/usr/share/man/man1
 
-install -v -m755 -d $PKG/usr/share/doc/$name-$version
+install -v -m755 -d $PKG/usr/share/doc/$isim-$surum
 install -v -m644 INSTALL LICENCE OVERVIEW README* \
-$PKG/usr/share/doc/$name-$version
+$PKG/usr/share/doc/$isim-$surum
 
 cd $SRC
 

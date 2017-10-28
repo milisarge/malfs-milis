@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=less
-version=458
-release=1
+isim=less
+surum=458
+devir=1
 
-source=(http://www.greenwoodsoftware.com/less/less-$version.tar.gz)
+kaynak=(http://www.greenwoodsoftware.com/less/less-$surum.tar.gz)
 
 derle()
 {
-cd less-$version
+cd less-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc
 make

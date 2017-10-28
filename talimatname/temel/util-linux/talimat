@@ -3,19 +3,19 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=util-linux
-version=2.27.1
-release=1
-source=(http://www.kernel.org/pub/linux/utils/util-linux/v${version:0:4}/util-linux-$version.tar.xz
+isim=util-linux
+surum=2.27.1
+devir=1
+kaynak=(http://www.kernel.org/pub/linux/utils/util-linux/v${version:0:4}/util-linux-$surum.tar.xz
 	)
 
 derle()
 {
-cd util-linux-$version
+cd util-linux-$surum
 
 mkdir -pv $PKG/var/lib/hwclock
 ./configure ADJTIME_PATH=/var/lib/hwclock/adjtime \
-	--docdir=/usr/share/doc/$name-$version \
+	--docdir=/usr/share/doc/$isim-$surum \
 	--disable-chfn-chsh  \
 	--disable-login      \
 	--disable-nologin    \

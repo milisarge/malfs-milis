@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=gperf
-version=3.0.4
-release=1
+isim=gperf
+surum=3.0.4
+devir=1
 
-source=(ftp://ftp.sunet.se/pub/gnu/$name/$name-$version.tar.gz)
+kaynak=(ftp://ftp.sunet.se/pub/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 ./configure --prefix=/usr \
---docdir=/usr/share/doc/$name-$version
+--docdir=/usr/share/doc/$isim-$surum
 make 
 make DESTDIR=$PKG install
 }  

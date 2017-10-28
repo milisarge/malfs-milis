@@ -3,11 +3,11 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=zlib
-version=1.2.8
-release=1
+isim=zlib
+surum=1.2.8
+devir=1
 
-source=(http://www.zlib.net/zlib-$version.tar.xz)
+kaynak=(http://www.zlib.net/zlib-$surum.tar.xz)
 
 derle() {
 
@@ -34,7 +34,7 @@ if [ -L /bin/pwd ];then
 	rm -v dummy.c a.out dummy.log
 fi
 
-cd zlib-$version
+cd zlib-$surum
 ./configure --prefix=/usr
 make
 make check
@@ -42,6 +42,6 @@ make prefix=$PKG/usr install
 
 mkdir -p $PKG/lib
 mv -v $PKG/usr/lib/libz.so.* $PKG/lib
-ln -sfv ../../lib/libz.so.$version  $PKG/usr/lib/libz.so
+ln -sfv ../../lib/libz.so.$surum  $PKG/usr/lib/libz.so
 }
 

@@ -1,0 +1,11 @@
+grep -rli 'isim=' * | xargs -i@ sed  -i 's/isim=/isim=/g' @
+grep -rli '$isim' * | xargs -i@ sed  -i 's/$isim/$isim/g' @
+grep -rli '${isim}' * | xargs -i@ sed  -i 's/${isim}/${isim}/g' @
+grep -rli 'surum=' * | xargs -i@ sed  -i 's/surum=/surum=/g' @
+grep -rli '$surum' * | xargs -i@ sed  -i 's/$surum/$surum/g' @
+grep -rli '${surum}' * | xargs -i@ sed  -i 's/${surum}/${surum}/g' @
+grep -rli '${surum%.*}/g' @
+grep -rli 'devir=' * | xargs -i@ sed  -i 's/devir=/devir=/g' @
+grep -rli '$devir' * | xargs -i@ sed  -i 's/$devir/$devir/g' @
+grep -rli '${devir}' * | xargs -i@ sed  -i 's/${devir}/${devir}/g' @
+grep -rli 'kaynak=' * | xargs -i@ sed  -i 's/kaynak=/kaynak=/g' @

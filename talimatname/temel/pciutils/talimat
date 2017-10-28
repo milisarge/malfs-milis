@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=pciutils
-version=3.4.1
-release=1
+isim=pciutils
+surum=3.4.1
+devir=1
 
-source=(ftp://ftp.kernel.org/pub/software/utils/$name/$name-$version.tar.xz)
+kaynak=(ftp://ftp.kernel.org/pub/software/utils/$isim/$isim-$surum.tar.xz)
 
 derle() {
-cd $name-$version
+cd $isim-$surum
 make OPT="$CFLAGS -fPIC -DPIC" \
 ZLIB=no \
 PREFIX=/usr \
@@ -25,5 +25,5 @@ SHAREDIR=$PKG/usr/share/misc \
 MANDIR=$PKG/usr/share/man \
 SHARED=yes ZLIB=no \
 install install-lib
-chmod -v 755 $PKG/usr/lib/libpci.so.$version
+chmod -v 755 $PKG/usr/lib/libpci.so.$surum
 }

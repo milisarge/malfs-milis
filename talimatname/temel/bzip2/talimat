@@ -3,17 +3,17 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=bzip2
-version=1.0.6
-release=1
+isim=bzip2
+surum=1.0.6
+devir=1
 
-source=(http://www.bzip.org/$version/bzip2-$version.tar.gz \
-		http://www.linuxfromscratch.org/patches/lfs/development/bzip2-$version-install_docs-1.patch)
+kaynak=(http://www.bzip.org/$surum/bzip2-$surum.tar.gz \
+		http://www.linuxfromscratch.org/patches/lfs/development/bzip2-$surum-install_docs-1.patch)
 
 derle() {
-	cd bzip2-$version
+	cd bzip2-$surum
 
-	patch -Np1 -i ../bzip2-$version-install_docs-1.patch
+	patch -Np1 -i ../bzip2-$surum-install_docs-1.patch
 	sed -i 's@\(ln -s -f \)/bin/@\1@' Makefile
 	sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 

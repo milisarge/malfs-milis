@@ -3,11 +3,11 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=acl
-version=2.2.52
-release=1
+isim=acl
+surum=2.2.52
+devir=1
 
-source=( http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
+kaynak=( http://download.savannah.gnu.org/releases/$isim/$isim-$surum.src.tar.gz)
 
 derle() {
 cd acl-*

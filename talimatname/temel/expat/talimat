@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler: 
 
-name=expat
-version=2.1.0
-release=1
+isim=expat
+surum=2.1.0
+devir=1
 
-source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install

@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=tar
-version=1.28
-release=2
+isim=tar
+surum=1.28
+devir=2
 
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.xz)
 
 derle()
 {
-cd $name-$version
+cd $isim-$surum
 
 FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr --bindir=/bin --libexecdir=/sbin
 

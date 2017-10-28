@@ -3,17 +3,17 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=lzo
-version=2.09
-release=1
+isim=lzo
+surum=2.09
+devir=1
 
-source=(  http://www.oberhumer.com/opensource/$name/download/$name-$version.tar.gz)
+kaynak=(  http://www.oberhumer.com/opensource/$isim/download/$isim-$surum.tar.gz)
 
 derle() {
- cd $name-$version
+ cd $isim-$surum
  ./configure --prefix=/usr \
  --enable-shared \
- --docdir=/usr/share/doc/lzo-$version
+ --docdir=/usr/share/doc/lzo-$surum
  make
  make DESTDIR=$PKG install
 }

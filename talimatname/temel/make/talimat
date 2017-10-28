@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=make
-version=4.1
-release=1
+isim=make
+surum=4.1
+devir=1
 
-source=(http://ftp.gnu.org/gnu/make/make-$version.tar.bz2)
+kaynak=(http://ftp.gnu.org/gnu/make/make-$surum.tar.bz2)
 derle()
 {
-cd  make-$version
+cd  make-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install

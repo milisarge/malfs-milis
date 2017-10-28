@@ -3,21 +3,21 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=gcc
-version=5.3.0
-release=1
+isim=gcc
+surum=5.3.0
+devir=1
 
-source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.bz2)
+kaynak=(http://ftp.gnu.org/gnu/gcc/gcc-$surum/gcc-$surum.tar.bz2)
 
 derle()
 {
-cd gcc-$version
+cd gcc-$surum
 
 mkdir -v ../gcc-build
 cd ../gcc-build
 
 SED=sed \
-../gcc-$version/configure --prefix=/usr \
+../gcc-$surum/configure --prefix=/usr \
     --enable-languages=c,c++,objc,fortran \
     --disable-multilib --disable-bootstrap --with-system-zlib
 
@@ -41,13 +41,13 @@ case `uname -m` in
 		$PKG/usr/lib/{libstdc++.la,libsupc++.la} 
 		mv -v $PKG/usr/lib/*gdb.py \
 		$PKG/usr/share/gdb/auto-load/usr/lib
-		ln -sfv ../../libexec/gcc/i686-pc-linux-gnu/$version/liblto_plugin.so;;
+		ln -sfv ../../libexec/gcc/i686-pc-linux-gnu/$surum/liblto_plugin.so;;
 	x86_64)
 		sed -i "s|-L$SRC[^ ]* ||g" \
 		$PKG/usr/lib64/{libstdc++.la,libsupc++.la} 
 		mv -v $PKG/usr/lib64/*gdb.py \
 		$PKG/usr/share/gdb/auto-load/usr/lib
-		ln -sfv ../../libexec/gcc/x86_64-unknown-linux-gnu/$version/liblto_plugin.so;;
+		ln -sfv ../../libexec/gcc/x86_64-unknown-linux-gnu/$surum/liblto_plugin.so;;
 esac
 
 rm -rf $PKG/usr/share/info/dir

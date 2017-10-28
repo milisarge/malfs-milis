@@ -3,15 +3,15 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=sysklogd
-version=1.5.1
-release=1
+isim=sysklogd
+surum=1.5.1
+devir=1
 
-source=(http://www.infodrom.org/projects/sysklogd/download/sysklogd-$version.tar.gz)
+kaynak=(http://www.infodrom.org/projects/sysklogd/download/sysklogd-$surum.tar.gz)
 
 derle()
 {
-cd sysklogd-$version
+cd sysklogd-$surum
 
 sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
 

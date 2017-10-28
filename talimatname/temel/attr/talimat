@@ -3,14 +3,14 @@
 # Paketçi: milisarge@gmail.com
 # Gerekler:
 
-name=attr
-version=2.4.47
-release=1
+isim=attr
+surum=2.4.47
+devir=1
 
-source=(http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
+kaynak=(http://download.savannah.gnu.org/releases/$isim/$isim-$surum.src.tar.gz)
 
 derle() {
-cd attr-$version
+cd attr-$surum
 
 sed -i -e 's|/@pkg_name@|&-@pkg_version@|' include/builddefs.in
 

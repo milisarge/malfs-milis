@@ -3,16 +3,16 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=gettext
-version=0.19.7
-release=1
+isim=gettext
+surum=0.19.7
+devir=1
 
-source=(http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz)
+kaynak=(http://ftp.gnu.org/gnu/gettext/gettext-$surum.tar.xz)
 derle()
 {
-cd gettext-$version
+cd gettext-$surum
 ./configure --prefix=/usr \
---docdir=/usr/share/doc/gettext-$version
+--docdir=/usr/share/doc/gettext-$surum
 make
 make check||true
 make DESTDIR=$PKG install

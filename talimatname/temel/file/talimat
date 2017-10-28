@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=file
-version=5.25
-release=1
+isim=file
+surum=5.25
+devir=1
 
-source=(ftp://ftp.astron.com/pub/file/file-$version.tar.gz)
+kaynak=(ftp://ftp.astron.com/pub/file/file-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	./configure --prefix=/usr
 	make
 	make check

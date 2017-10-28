@@ -3,14 +3,14 @@
 # Paketçi: milisarge
 # Gerekler:
 
-name=libarchive
-version=3.3.2
-release=1
+isim=libarchive
+surum=3.3.2
+devir=1
 
-source=(http://www.libarchive.org/downloads/libarchive-$version.tar.gz)
+kaynak=(http://www.libarchive.org/downloads/libarchive-$surum.tar.gz)
 
 derle() {
-	cd $name-$version
+	cd $isim-$surum
 	autoreconf -fi
 	./configure \
 	  --prefix=/usr \
