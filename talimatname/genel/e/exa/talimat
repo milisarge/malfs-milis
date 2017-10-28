@@ -1,0 +1,22 @@
+# Tanım: unix ls Rust yeniden yazılmışı
+# URL: https://github.com/ogham/exa
+# Paketçi: milisarge
+# Gerekler: cmake rust cargo libssh2 
+
+isim=exa
+surum=0.7.0
+devir=1
+kaynak=(https://github.com/ogham/exa/archive/v$surum.zip::$isim-$surum.zip)
+
+derle() {
+	cd "${SRC}/${isim}-${surum}"
+	make
+	install -Dm755 "${SRC}/${isim}-${surum}"/target/release/${isim} \
+	"${PKG}"/usr/bin/${isim}
+	install -Dm644 "${SRC}/${isim}-${surum}"/contrib/man/${isim}.1 \
+	"${PKG}"/usr/share/man/man1/${isim}.1
+	install -Dm644 "${SRC}/${isim}-${surum}"/contrib/completions.bash \
+	"${PKG}"/usr/share/bash-completion/completions/${isim}
+	install -Dm644 "${SRC}/${isim}-${surum}"/contrib/completions.zsh \
+	"${PKG}"/usr/share/zsh/site-functions/_${isim}
+}
