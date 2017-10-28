@@ -38,30 +38,30 @@ get_basename() {
 	echo $FILE
 }
 check_pkgfile() {
-	local NAME_TEST
-	if [ "${name}" == "" ]; then
-		error "Variable 'name' not initiated or not found in $PKGMK_PKGFILE."
+	local ISIM_TEST
+	if [ "${isim}" == "" ]; then
+		error "$PKGMK_PKGFILE dosyası içinde 'isim' değişkeni bulunamadı."
 		exit $E_TALIMAT
 	elif [ "`type -t derle`" != "function" ]; then
 		error "$PKGMK_PKGFILE dosyası içinde 'derle' fonksiyonu bulunamadı."
 		exit $E_TALIMAT
 	fi
-	NAME_TEST=`echo "${name}" | sed 's@[[a-z0-9]*[-_+]*]*@@g'`
-	if [ "$NAME_TEST" != "" ]; then
-		error "Variable 'name' contains illegal characters: $NAME_TEST"
+	ISIM_TEST=`echo "${isim}" | sed 's@[[a-z0-9]*[-_+]*]*@@g'`
+	if [ "$ISIM_TEST" != "" ]; then
+		error " 'isim' tanımlı değil veya değişkeni geçersiz karakter barındırıyor: $ISIM_TEST"
 		exit $E_TALIMAT
 	fi
-	if [ ${#name} -gt 50 ];then
-		error "Variable 'name' length higher then 50 characters."
+	if [ ${#isim} -gt 30 ];then
+		error " 'isim' değişkeni 30 karakterden büyük olamaz."
 		exit $E_TALIMAT
 	fi
-	if [ "${version}" == "" ]; then
+	if [ "${surum}" == "" ]; then
 		error "'versiyon' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
 		exit $E_TALIMAT
 	fi
 	if [ "$DEVIR_YOKSAY" = "yok" ]; then
-		if [ "${release}" == "" ]; then
-			error " 'release' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
+		if [ "${devir}" == "" ]; then
+			error " 'devir' degeri $PKGMK_PKGFILE dosyası içinde yok veya tanımlı degil."
 			exit $E_TALIMAT
 		fi
 	fi
@@ -75,9 +75,7 @@ get_package_name() {
 	else
 		EXT=$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
 	fi
-	#eski
-	#NAME=`echo $1|sed "s/i686.$EXT//"|sed "s/x86_64.$EXT//"|sed "s/any.$EXT//"`
-	#echo "${NAME:0:$((${#NAME} - 10 ))}"
+	
 	NAME=`echo "$1" | cut -d'#' -f1`	
 	echo "$NAME"
 }
@@ -203,20 +201,20 @@ download_file() {
 		mv -f "$LOCAL_FILENAME_PARTIAL" "$LOCAL_FILENAME"
 	fi
 }
-download_source() {
+kaynak_indir() {
 	local FILE LOCAL_FILENAME
 
-	for FILE in ${source[@]}; do
+	for FILE in ${kaynak[@]}; do
 		LOCAL_FILENAME=`get_filename $FILE`
 		if [ ! -e $LOCAL_FILENAME ]; then
 			if [ "$LOCAL_FILENAME" = "$FILE" ]; then
-				error "Source file '$LOCAL_FILENAME' not found (can not be downloaded, URL not specified)."
+				error " '$LOCAL_FILENAME' dosyası içinde 'kaynak' değişkeni tanımsız veya yok."
 				exit $E_DOWNLOAD
 			else
 				if [ "$PKGMK_DOWNLOAD" = "evet" ]; then
 					download_file $FILE
 				else
-					error "Source file '$LOCAL_FILENAME' not found (use option -d to download)."
+					error " '$LOCAL_FILENAME' kaynak dosyası bulunamadı."
 					exit $E_DOWNLOAD
 				fi
 			fi
@@ -225,7 +223,7 @@ download_source() {
 }
 remove_source() {
 	local FILE LOCAL_FILENAME
-	for FILE in ${source[@]}; do
+	for FILE in ${kaynak[@]}; do
 		LOCAL_FILENAME=`get_filename $FILE`
 		if [ -e $LOCAL_FILENAME ] && [ "$LOCAL_FILENAME" != "$FILE" ]; then
 			info "Removing $LOCAL_FILENAME"
@@ -236,7 +234,7 @@ remove_source() {
 unpack_source() {
 	local FILE LOCAL_FILENAME COMMAND
 	
-	for FILE in ${source[@]}; do
+	for FILE in ${kaynak[@]}; do
 		LOCAL_FILENAME=`get_filename $FILE`
 		case $LOCAL_FILENAME in
 			*.tar|*.tar.gz|*.tar.Z|*.tgz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.zip|*.rpm)
@@ -266,7 +264,7 @@ get_package_list() {
 	local ARCH FILE i
 	i=0
 	for ARCH in x86_64 i686 any; do
-		for FILE in `find $PAKETLEME_DIZIN -name "${name}*$ARCH.$PKT_UZANTISI*"`; do
+		for FILE in `find $PAKETLEME_DIZIN -name "${isim}*$ARCH.$PKT_UZANTISI*"`; do
 			TARGETS[i]=`basename $FILE`
 			i=$((i+1))
 		done
@@ -275,8 +273,8 @@ get_package_list() {
 make_md5sum() {
 	local FILE LOCAL_FILENAMES
 	
-	if [ "$source" ]; then
-		for FILE in ${source[@]}; do
+	if [ "$kaynak" ]; then
+		for FILE in ${kaynak[@]}; do
 			LOCAL_FILENAMES="$LOCAL_FILENAMES `get_filename $FILE`"
 		done
 		
@@ -481,7 +479,7 @@ pack_devel() {
 		for SUBDIR in include lib/pkgconfig; do
 			if [ -d $DIR/$SUBDIR ]; then
 				bsdtar -r -f \
-				$PAKETLEME_DIZIN/${name}.${group}#$version-any.${PKT_UZANTISI} \
+				$PAKETLEME_DIZIN/${isim}.${group}#$surum-any.${PKT_UZANTISI} \
 				$DIR/$SUBDIR || BUILD_SUCCESSFUL="yok"
 				rm -r $DIR/$SUBDIR
 				j=1
@@ -569,8 +567,8 @@ add_meta_to_archive() {
 	echo "M$MAINT" >> .META
 	echo "P$PACK" >> .META
 	echo "S$SIZE_I" >> .META
-	echo "V$version" >> .META
-	echo "r$release" >> .META
+	echo "V$surum" >> .META
+	echo "r$devir" >> .META
 	echo "B$PKGMK_BUILDVER" >> .META
 	echo "a$ARCH" >> .META
 	echo "G$GRUP" >> .META
@@ -625,7 +623,7 @@ paketsiz_derle() {
 	info "derleniyor... '$TARGET'"
 	
 	if [ "$PKGMK_DOWNLOAD" = "evet" ]; then
-		download_source
+		kaynak_indir
 	fi
 	unpack_source
 	
@@ -704,8 +702,8 @@ build_package() {
 				fi
 			else
 				if [ "$1" != "$TARGET" ]; then
-					if [ -f $PAKETLEME_DIZIN/${name}.${group}#$version-* ]; then
-						rm $PAKETLEME_DIZIN/${name}.${group}#$version-}*
+					if [ -f $PAKETLEME_DIZIN/${isim}.${group}#$surum-* ]; then
+						rm $PAKETLEME_DIZIN/${isim}.${group}#$surum-}*
 					fi
 					pack_${group}
 				fi
@@ -744,7 +742,7 @@ build_package() {
 		#fi
 		
 		if [ "`ls|wc -l`" != "0" ]; then
-			bsdtar -r -f $PAKETLEME_DIZIN/${name}#$version-${MIMARI}.${PKT_UZANTISI} *
+			bsdtar -r -f $PAKETLEME_DIZIN/${isim}#$surum-${MIMARI}.${PKT_UZANTISI} *
 		else
 			error "No files found in $PKG..."
 			exit $E_BUILD
@@ -936,7 +934,7 @@ update_repo()
 	get_package_list
 	if [ ! -z $TARGETS ]; then
 		EXT="`get_package_extension $TARGETS`"
-		echo -n "`get_package_builddate $TARGETS`#$EXT##$version-#$release" > $REPO_DOSYASI
+		echo -n "`get_package_builddate $TARGETS`#$EXT##$surum-#$devir" > $REPO_DOSYASI
 		for string in desc url maint pack; do 
 			if [ ! -z "`cat $PKGMK_ROOT/$PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^$string|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`" ]; then 
 				echo -n "#"`cat $PKGMK_PKGFILE |sed "s@^[ ,\t,#]*@@"|grep -i ^$string|cut -d : -f1 --complement|sed "s@^[ ,\t]*@@"`"" \
@@ -951,7 +949,7 @@ update_repo()
 			MD5SUM=`md5sum $TARGET|cut -d " " -f1`
 			echo "$MD5SUM#`get_package_name $TARGET`#`get_package_arch $TARGET|sed "s/-//"`" >> $REPO_DOSYASI
 		done
-		for FILE in  ${name}*
+		for FILE in  ${isim}*
 		do
 			[ ! -f "$FILE" ] && break
 			if [ "${FILE:$((${#FILE} - ${#EXT} ))}" != "$EXT" ]; then
@@ -1106,7 +1104,7 @@ main() {
 	#fi
 	local FILE TARGET 
 
-	name=`basename $PKGMK_ROOT`
+	isim=`basename $PKGMK_ROOT`
 
 	if [ "$PKGMK_RECURSIVE" = "evet" ]; then
 		recursive "$@"
@@ -1119,26 +1117,26 @@ main() {
 	. $PKGMK_PKGFILE
 	
 	if [ -z $group ]; then
-		group="`echo $name | cut -d "-" -f1`"
+		group="`echo $isim | cut -d "-" -f1`"
 	fi
-	if [ "$group" == "$name" ]; then
+	if [ "$group" == "$isim" ]; then
 		unset group
 	fi
-	if [ -z "$version" ]; then
+	if [ -z "$surum" ]; then
 		if [ ! -z "$group" ];then
 			if [ -f ../$group/$PKGMK_PKGFILE ];then
 				. ../$group/$PKGMK_PKGFILE
 				unset run
 				. $PKGMK_PKGFILE
 			else
-				warning "Variable 'version' not initiated or not found in $PKGMK_PKGFILE."
+				warning "$PKGMK_PKGFILE dosyası içinde 'surum' değişkeni ayarlı değil veya yer almıyor."
 			fi
 		else
-			warning "Variable 'version' not initiated or not found in $PKGMK_PKGFILE."
+			warning "$PKGMK_PKGFILE dosyası içinde 'surum' değişkeni ayarlı değil veya yer almıyor."
 		fi
 	fi
 	if [ "$PKGMK_SHOW_VERSION" == "evet" ]; then
-		echo "$version"
+		echo "$surum"
 		exit 0
 	fi
 	
@@ -1178,17 +1176,17 @@ main() {
 	#	info "PKT_SIKISTIRMA_MODU: $PKT_SIKISTIRMA_MODU"
 	#fi
     ## >bu bilgiler gösterilmeyecek
-	info "isim: ${name}"
-	if [ ! -z "$version" ]; then
-		info "versiyon: $version"
+	info "isim: ${isim}"
+	if [ ! -z "$surum" ]; then
+		info "surum: $surum"
 	fi
-	if [ ! -z "$release" ]; then
-		info "devir: $release"
+	if [ ! -z "$devir" ]; then
+		info "devir: $devir"
 	fi
 	if [ ! -z "$group" ]; then
 		info "grup: $group"
 	fi
-	PKGMK_MD5SUM="$name.`uname -m`.md5sum"
+	PKGMK_MD5SUM="$isim.`uname -m`.md5sum"
 	check_directory "$DERLEME_KAYNAKDIZIN"
 	check_directory "$PAKETLEME_DIZIN"
 	check_directory "`dirname $DERLEME_SANTIYE`"
@@ -1200,10 +1198,10 @@ main() {
 	case $PKT_SIKISTIRMA_MODU in
 		lz|gz|bz2|xz)
 			if [ -z $TARGETS ]; then
-				TARGET="$PAKETLEME_DIZIN/${name}#$version-MIMARI.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU"
+				TARGET="$PAKETLEME_DIZIN/${isim}#$surum-MIMARI.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU"
 			fi;;
 		*)
-			error "Sıkıstırma modu '$PKT_SIKISTIRMA_MODU' desteklenmiyor"
+			error "Sıkıştırma modu '$PKT_SIKISTIRMA_MODU' desteklenmiyor"
 			exit $E_GENERAL
 			;;
 	esac
@@ -1238,7 +1236,7 @@ main() {
 	fi
 	
 	if [ "$PKGMK_UPDATE_MD5SUM" = "evet" ]; then
-		download_source
+		kaynak_indir
 		check_file "$PKGMK_MD5SUM"
 		make_md5sum > $PKGMK_MD5SUM
 		info "Md5sum updated."
@@ -1246,14 +1244,14 @@ main() {
 	fi
 
 	if [ "$PKGMK_DOWNLOAD_ONLY" = "evet" ]; then
-		download_source
+		kaynak_indir
 		exit 0
 	fi
 
 	if [ "$PKGMK_EXTRACT_ONLY" = "evet" ]; then
-		download_source
+		kaynak_indir
 		make_work_dir
-		info "Extracting sources of package '${name}-$version'."
+		info "Extracting sources of package '${isim}-$surum'."
 		unpack_source
 		exit 0
 	fi
@@ -1279,11 +1277,11 @@ main() {
 	fi
 	# From here on it's need to check the base package not any group which means
 	if [ -z $TARGETS ]; then
-		TARGET=$PAKETLEME_DIZIN/${name}#$version-$MIMARI.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
+		TARGET=$PAKETLEME_DIZIN/${isim}#$surum-$MIMARI.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
 		if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ] && [ "$PKGMK_CHECK_MD5SUM" = "yok" ]; then
 			info "Package '$TARGET' is up to date."
 		else
-			download_source
+			kaynak_indir
 			derleme_yap
 		fi
 	else
@@ -1295,7 +1293,7 @@ main() {
 				fi
 				info "Package '$TARGET' is up to date."
 			else
-				download_source
+				kaynak_indir
 				derleme_yap
 				break
 			fi
@@ -1303,9 +1301,9 @@ main() {
 	fi
 	if [ ! -z $FOUND ] ; then
 		if [ $FOUND != true ];  then
-			download_source
+			kaynak_indir
 			PKGMK_BUILDVER="`get_package_builddate $TARGET`"
-			TARGET=$PAKETLEME_DIZIN/${name}#$version-$MIMARI.$PKT_UZANTISI
+			TARGET=$PAKETLEME_DIZIN/${isim}#$surum-$MIMARI.$PKT_UZANTISI
 			derleme_yap $TARGET
 		fi
 	fi
@@ -1356,7 +1354,7 @@ REPO_DOSYASI=".PKGREPO"
 
 
 PKGMK_PKGFILE="talimat"
-PKGMK_MD5SUM="$name.`uname -m`.md5sum"
+PKGMK_MD5SUM="$isim.`uname -m`.md5sum"
 PKGMK_NOSTRIP=".nostrip"
 
 PKGMK_KEEP_SOURCES="yok"
