@@ -1,0 +1,24 @@
+grep -rli 'name=' * | xargs -i@ sed  -i 's/name=/isim=/g' @
+grep -rli '$name' * | xargs -i@ sed  -i 's/$name/$isim/g' @
+grep -rli '${name}' * | xargs -i@ sed  -i 's/${name}/${isim}/g' @
+grep -rli 'version=' * | xargs -i@ sed  -i 's/version=/surum=/g' @
+grep -rli '$version' * | xargs -i@ sed  -i 's/$version/$surum/g' @
+grep -rli '${version}' * | xargs -i@ sed  -i 's/${version}/${surum}/g' @
+grep -rli '${version%.*}' * | xargs -i@ sed  -i 's/${version%.*}/${surum%.*}/g' @
+grep -rli 'release=' * | xargs -i@ sed  -i 's/release=/devir=/g' @
+grep -rli '$release' * | xargs -i@ sed  -i 's/$release/$devir/g' @
+grep -rli '${release}' * | xargs -i@ sed  -i 's/${release}/${devir}/g' @
+grep -rli 'source=' * | xargs -i@ sed  -i 's/source=/kaynak=/g' @
+grep -rli 'build()' * | xargs -i@ sed  -i 's/build()/derle()/g' @
+grep -rli 'build ()' * | xargs -i@ sed  -i 's/build ()/derle()/g' @
+grep -rli 'Description:' * | xargs -i@ sed  -i 's/Description:/Tanım:/g' @
+grep -rli 'Description=' * | xargs -i@ sed  -i 's/Description=/Tanım:/g' @
+grep -rli 'Url=' * | xargs -i@ sed  -i 's/Url=/Url:/g' @
+grep -rli 'description:' * | xargs -i@ sed  -i 's/description:/Tanım:/g' @
+grep -rli 'Description :' * | xargs -i@ sed  -i 's/Description :/Tanım:/g' @
+grep -rli 'Packager:' * | xargs -i@ sed  -i 's/Packager:/Paketçi:/g' @
+grep -rli 'packager:' * | xargs -i@ sed  -i 's/packager:/Paketçi:/g' @
+grep -rli 'Packagers:' * | xargs -i@ sed  -i 's/Packagers:/Paketçi:/g' @
+grep -rli 'Packager :' * | xargs -i@ sed  -i 's/Packager :/Paketçi:/g' @
+grep -rli 'Depends on:' * | xargs -i@ sed  -i 's/Depends on:/Gerekler:/g' @
+grep -rli 'Depends on :' * | xargs -i@ sed  -i 's/Depends on :/Gerekler:/g' @
