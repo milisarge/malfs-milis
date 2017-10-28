@@ -1,0 +1,21 @@
+# Tanım: Programlanabilir ircII istemci
+# URL: http://www.epicsol.org/
+# Paketçi: milisarge
+# Gerekler: tcl 
+
+isim=epic5
+surum=2.0.1
+devir=1
+kaynak=(http://ftp.epicsol.org/pub/epic/EPIC5-PRODUCTION/epic5-$surum.tar.gz)
+
+derle() {
+  cd "$SRC/$isim-$surum"
+  ## ICONV problem
+  unset CPPFLAGS
+  ./configure --prefix=/usr \
+      --with-ssl --with-ipv6 --with-perl --with-tcl \
+  make
+  make prefix="$PKG/usr" libexecdir="$PKG/usr/bin" \
+      mandir="$PKG/usr/share/man" infodir="/usr/share/info" install
+  install -Dm644 COPYRIGHT "$PKG/usr/share/licenses/$isim/COPYRIGHT"
+}
