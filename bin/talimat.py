@@ -67,7 +67,7 @@ class Talimat():
 			if hasattr(pkgbuild, '_name'):
 				self._isim=pkgbuild._name
 			self.surum=pkgbuild.version
-			self.devir=pkgbuild.release
+			self.devir=int(pkgbuild.release)
 			self.kaynaklar=pkgbuild.sources
 			self._ice_aktar_bloklar(dosya,tip)
 		return "tanımlar için gecersiz tip!"
@@ -132,7 +132,9 @@ class Talimat():
 		icerikstr+="devir="+str(self.devir)+"\n"
 		icerikstr+="kaynak=("+self._kaynaklar()+")"
 		icerikstr+="\n"+"\n"
-		icerikstr+=self.derleme
+		# boş satırların temizlenmesi
+		d_icerik = "".join([s for s in self.derleme.splitlines(True) if s.strip("\r\n")])
+		icerikstr+=d_icerik
 		icerikstr+="}"
 		return icerikstr
 		
@@ -195,11 +197,13 @@ class PKGBUILD():
     def _handle_assign(self, token):
         var, equals, value = token.strip().partition('=')
         # Is it an array?
-        if value[0] == '(' and value[-1] == ')':
-            self._symbols[var] = self._clean_array(value)
+        if value!="":
+            if value[0] == '(' and value[-1] == ')':
+                self._symbols[var] = self._clean_array(value)
+            else:
+                self._symbols[var] = self._clean(value)
         else:
             self._symbols[var] = self._clean(value)
-
     def _parse(self, fileobj):
         """Parse PKGBUILD"""
         if hasattr(fileobj, "seek"):
