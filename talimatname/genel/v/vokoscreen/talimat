@@ -5,23 +5,23 @@
 
 isim=vokoscreen
 _surum=2.5.4-beta
-surum=${_version/-/.}
+surum=${_surum/-/.}
 devir=1
 
-kaynak=(https://github.com/vkohaupt/${isim}/archive/${_version}.tar.gz
+kaynak=(https://github.com/vkohaupt/${isim}/archive/${_surum}.tar.gz
 		desktop_file.patch
 		fix_lrelease.patch)
 	
 derle() {
 
-	cd "${SRC}"/${isim}-${_version}
+	cd "${SRC}"/${isim}-${_surum}
 	# sürüm yama
 	patch -Np1 < ../fix_lrelease.patch
 	# masaustu yama
 	patch -Np1 < ../desktop_file.patch
 	mkdir -p "${SRC}"/build
 	cd "${SRC}"/build
-	qmake-qt5 ../${isim}-${_version} \
+	qmake-qt5 ../${isim}-${_surum} \
 		QMAKE_CFLAGS="${CFLAGS}" \
 		QMAKE_CXXFLAGS="${CXXFLAGS}" \
 		CONFIG+=release \

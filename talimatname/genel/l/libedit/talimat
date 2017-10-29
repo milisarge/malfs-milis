@@ -5,10 +5,10 @@
 
 isim=libedit
 _surum=20170329-3.1
-surum=${_version/-/_}
+surum=${_surum/-/_}
 devir=1
 
-kaynak=(http://www.thrysoee.dk/editline/libedit-${_version}.tar.gz)
+kaynak=(http://www.thrysoee.dk/editline/libedit-${_surum}.tar.gz)
 
 derle(){
     cd $isim-${_version}
