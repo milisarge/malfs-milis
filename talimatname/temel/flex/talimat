@@ -10,27 +10,27 @@ devir=1
 kaynak=(http://prdownloads.sourceforge.net/flex/flex-$surum.tar.xz)
 
 derle() {
-	cd flex-$surum
-	sed -i -e '/test-bison/d' tests/Makefile.in
+cd flex-$surum
+sed -i -e '/test-bison/d' tests/Makefile.in
 
-	./configure --prefix=/usr \
-	--libdir=/lib --bindir=/bin --sbindir=/sbin \
-	--docdir=/usr/share/doc/flex-$surum
+./configure --prefix=/usr \
+--libdir=/lib --bindir=/bin --sbindir=/sbin \
+--docdir=/usr/share/doc/flex-$surum
 
-	make
-	make -k check||true
+make
+make -k check||true
 
-	make DESTDIR=$PKG install
+make DESTDIR=$PKG install
 
-	ln -sv libfl.a $PKG/lib/libl.a
-	cat > $PKG/bin/lex << "EOF"
-	#!/bin/sh
-	# Begin /bin/lex
-	exec /bin/flex -l "$@"
-	# End /bin/lex
-	EOF
+ln -sv libfl.a $PKG/lib/libl.a
+cat > $PKG/bin/lex << "EOF"
+#!/bin/sh
+# Begin /bin/lex
+exec /bin/flex -l "$@"
+# End /bin/lex
+EOF
 
-	chmod -v 755 $PKG/bin/lex
+chmod -v 755 $PKG/bin/lex
 
-	rm -r $PKG/usr/share/{info,doc}
+rm -r $PKG/usr/share/{info,doc}
 }
