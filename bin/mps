@@ -800,50 +800,51 @@ surum_kontrol(){
 	_konum=$(talimat_bul $1)
 	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
 		ryaz 31 "$1 $_talimat_bulunamadi $_surum_kontrol_iptal"
-		exit 1
-	fi
-	
-	source $_konum/talimat
-
-	dusuk=`echo -e "$ksurum\n$surum" | sort -V | head -n1`
-	
-	if [ "$ksurum" = "$surum" ];then
-		durum="guncel"
-		[ $GS_CIKTI = "E" ] && ryaz 33 "$1 sürümü güncel"
-		#printf "."
+		
 	else
-		if [ "$ksurum" = "$dusuk" ];then
-			durum="yukselt"
+	
+		source $_konum/talimat
+
+		dusuk=`echo -e "$ksurum\n$surum" | sort -V | head -n1`
+		
+		if [ "$ksurum" = "$surum" ];then
+			durum="guncel"
+			[ $GS_CIKTI = "E" ] && ryaz 33 "$1 sürümü güncel"
+			#printf "."
 		else
-			durum="dusur"
-		fi
-		gun_onay="h"
-		if [ "$durum" <> "guncel" ];then
-			while true; do
-				printf "\n"
-				ryaz 34 "$1 sürüm $durum""me işlemi uygulanacak. $ksurum <> $surum ";read -p "e veya h-> " eh
-				case $eh in
-					[Ee]* ) gun_onay="e"; break;;
-					[Hh]* ) break;;
-					* ) echo "e veya h";;
-				esac
-			done	
-			if [ "$gun_onay" = "e" ];then
-				if [ -d "$talimatname/temel/$1" ]; then
-					kurulum_dogrulama_icerik $1
-					tpk="hayir" 
-					paket_sil "$1" "evet"
-					paket_indir $1
-					pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3`
-					icerik_ekle "$paketdepo$pkt"
-				else
-					paket_sil "$1" "evet"
-					paket_inkur_oto $1
-				fi
-				ryaz 33 "$1 sürüm güncellemesi yapıldı"
+			if [ "$ksurum" = "$dusuk" ];then
+				durum="yukselt"
 			else
-				ryaz 31 "$1 sürüm güncellemesi yapılmadı"
-				hataloglama "$1 sürüm güncellemesi yapılmadı"
+				durum="dusur"
+			fi
+			gun_onay="h"
+			if [ "$durum" <> "guncel" ];then
+				while true; do
+					printf "\n"
+					ryaz 34 "$1 sürüm $durum""me işlemi uygulanacak. $ksurum <> $surum ";read -p "e veya h-> " eh
+					case $eh in
+						[Ee]* ) gun_onay="e"; break;;
+						[Hh]* ) break;;
+						* ) echo "e veya h";;
+					esac
+				done	
+				if [ "$gun_onay" = "e" ];then
+					if [ -d "$talimatname/temel/$1" ]; then
+						kurulum_dogrulama_icerik $1
+						tpk="hayir" 
+						paket_sil "$1" "evet"
+						paket_indir $1
+						pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3`
+						icerik_ekle "$paketdepo$pkt"
+					else
+						paket_sil "$1" "evet"
+						paket_inkur_oto $1
+					fi
+					ryaz 33 "$1 sürüm güncellemesi yapıldı"
+				else
+					ryaz 31 "$1 sürüm güncellemesi yapılmadı"
+					hataloglama "$1 sürüm güncellemesi yapılmadı"
+				fi
 			fi
 		fi
 	fi
@@ -864,43 +865,44 @@ devir_kontrol(){
 	_konum=$(talimat_bul $1)
 	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
 		ryaz 31 "$1 $_talimat_bulunamadi $_devir_kontrol_iptal"
-		exit 1
-	fi
-	
-	source $_konum/talimat
-	dusuk=`echo -e "$kdevir\n$devir" | sort -V | head -n1`
-	
-	if [ "$kdevir" = "$devir" ];then
-		durum="guncel"
-		[ $GS_CIKTI = "E" ] && ryaz 33 "$1 deviri güncel"
-		#printf "."
+		
 	else
-		if [ "$kdevir" = "$dusuk" ];then
-			durum="yukselt"
+	
+		source $_konum/talimat
+		dusuk=`echo -e "$kdevir\n$devir" | sort -V | head -n1`
+		
+		if [ "$kdevir" = "$devir" ];then
+			durum="guncel"
+			[ $GS_CIKTI = "E" ] && ryaz 33 "$1 deviri güncel"
+			#printf "."
 		else
-			durum="dusur"
-		fi
-		gun_onay="h"
-		if [ "$durum" <> "guncel" ];then
-			while true; do
-				printf "\n"
-				ryaz 34 "$1 devir $durum""me işlemi uygulanacak. $kdevir <> $devir ";read -p "e veya h-> " eh
-				case $eh in
-					[Ee]* ) gun_onay="e"; break;;
-					[Hh]* ) break;;
-					* ) echo "e veya h";;
-				esac
-			done	
-			if [ "$gun_onay" = "e" ];then
-				paket_sil "$1" "evet"
-				paket_inkur_oto $1
-				ryaz 33 "$1 devir güncellemesi yapıldı"
+			if [ "$kdevir" = "$dusuk" ];then
+				durum="yukselt"
 			else
-				ryaz 31 "$1 devir güncellemesi yapılmadı"
-				hataloglama "$1 devir güncellemesi yapılmadı"
+				durum="dusur"
 			fi
-		fi
-	fi 
+			gun_onay="h"
+			if [ "$durum" <> "guncel" ];then
+				while true; do
+					printf "\n"
+					ryaz 34 "$1 devir $durum""me işlemi uygulanacak. $kdevir <> $devir ";read -p "e veya h-> " eh
+					case $eh in
+						[Ee]* ) gun_onay="e"; break;;
+						[Hh]* ) break;;
+						* ) echo "e veya h";;
+					esac
+				done	
+				if [ "$gun_onay" = "e" ];then
+					paket_sil "$1" "evet"
+					paket_inkur_oto $1
+					ryaz 33 "$1 devir güncellemesi yapıldı"
+				else
+					ryaz 31 "$1 devir güncellemesi yapılmadı"
+					hataloglama "$1 devir güncellemesi yapılmadı"
+				fi
+			fi
+		fi 
+	fi
 }
    
 paket_derle(){
