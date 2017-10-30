@@ -2,6 +2,7 @@
 # URL: http://www.antigrain.com/
 # Paketçi: milisarge
 # Gerekler: sdl xorg-libx11 freetype
+# Grup: kütüphane
 
 isim=agg
 surum=2.5
