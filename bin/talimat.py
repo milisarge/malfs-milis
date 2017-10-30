@@ -32,6 +32,10 @@ import shlex
 import urllib2
 from requests.exceptions import HTTPError
 
+if os.path.exists("/usr/lib/python2.7/site-packages/requests") is False:
+	print "request kurulacak"
+	os.system("pip2 install requests")
+
 # Milis linux talimat sınıfı
 class Talimat():
 	
