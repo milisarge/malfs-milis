@@ -1,0 +1,26 @@
+# Tanım: Anti-Grain Geometry (AGG) 2D grafik kütüphanesi
+# URL: http://www.antigrain.com/
+# Paketçi: milisarge
+# Gerekler: sdl xorg-libx11 freetype
+
+isim=agg
+surum=2.5
+devir=1
+kaynak=(http://www.antigrain.com/$isim-$surum.tar.gz
+		agg-2.5-libtool.patch)
+
+derle() {
+	cd $isim-$surum
+
+	CXXFLAGS="${CXXFLAGS//-flto/}" LDFLAGS="${LDFLAGS//-flto/}"
+	sed -i -e 's|AM_C_PROTOTYPES|#AM_C_PROTOTYPES|g' configure.in
+	
+	# http://www.hugovil.com/repository/hvlinux/patches/agg-2.5-libtool.patch
+	patch -p 1 -i $SRC/agg-2.5-libtool.patch
+
+	chmod u+x autogen.sh
+	./autogen.sh
+	./configure --prefix=/usr
+	make -j1
+	make DESTDIR=$PKG install
+}

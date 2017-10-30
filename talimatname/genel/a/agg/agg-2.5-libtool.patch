@@ -1,0 +1,46 @@
+Submitted By: Hugo Villeneuve <hugo at hugovil dot com>
+Date: 2011-08-25
+Initial Package Version: 2.5
+Upstream Status: Not sent
+Origin: Hugo Villeneuve
+Description: Fix the following compilation error:
+  /bin/sh ../../../libtool --tag=CXX   --mode=link g++ -I../../../include -I
+    -pipe -O2 -march=native -fomit-frame-pointer -version-info 2:4:0  -L  -o
+    libaggplatformX11.la -rpath /usr/local/lib
+    libaggplatformX11_la-agg_platform_support.lo -lX11
+  libtool: link: require no space between `-L' and `-o'
+
+This is caused by an empty variable x_libraries. Added a conditional automake
+variable to prevent that.
+
+diff -Naur agg-2.5.orig/configure.in agg-2.5.new/configure.in
+--- agg-2.5.orig/configure.in	2006-10-09 00:06:36.000000000 -0400
++++ agg-2.5.new/configure.in	2011-08-25 22:49:03.595769037 -0400
+@@ -123,6 +123,10 @@
+ AM_CONDITIONAL(ENABLE_X11,[test x$no_x = x -a xno != x$enable_platform -a x$win32_host != xyes])
+ AC_SUBST(x_includes)
+ AC_SUBST(x_libraries)
++
++dnl To avoid empty "-L", because libtool doesn't like that.
++AM_CONDITIONAL(EMPTY_X_LIBRAIRIES,[test x$x_libraries = x])
++
+ dnl ###############################################
+ 
+ dnl Settung up library version
+diff -Naur agg-2.5.orig/src/platform/X11/Makefile.am agg-2.5.new/src/platform/X11/Makefile.am
+--- agg-2.5.orig/src/platform/X11/Makefile.am	2006-12-10 19:59:45.000000000 -0500
++++ agg-2.5.new/src/platform/X11/Makefile.am	2011-08-25 22:49:15.801769061 -0400
+@@ -1,7 +1,13 @@
+ if ENABLE_X11
+ lib_LTLIBRARIES = libaggplatformX11.la
+ 
++if EMPTY_X_LIBRAIRIES
++# To avoid empty "-L", because libtool doesn't like that.
++libaggplatformX11_la_LDFLAGS = -version-info @AGG_LIB_VERSION@
++else
+ libaggplatformX11_la_LDFLAGS = -version-info @AGG_LIB_VERSION@  -L@x_libraries@
++endif
++
+ libaggplatformX11_la_SOURCES = agg_platform_support.cpp
+ libaggplatformX11_la_CXXFLAGS =  -I$(top_srcdir)/include -I@x_includes@
+ libaggplatformX11_la_LIBADD = -lX11
