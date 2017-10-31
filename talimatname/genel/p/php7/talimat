@@ -5,14 +5,14 @@
 
 isim=php7
 _isim=php
-surum=7.1.4
+surum=7.1.11
 devir=1
 
-kaynak=(http://php.net/distributions/${_name}-$surum.tar.xz)
+kaynak=(http://php.net/distributions/${_isim}-$surum.tar.xz{,.asc})
 
 derle() {
 
-    cd ${_name}-$surum
+    cd ${_isim}-$surum
 
     ./configure --prefix=/usr            \
             --sysconfdir=/etc            \

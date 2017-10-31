@@ -1,9 +1,9 @@
 # Tanım: php-apache kütüphanesi
 # URL: http://www.php.net
 # Paketçi: halityilmaz1982
-# Gerekler: php apache
+# Gerekler: php7 apache
 
-isim=php-apache
+isim=php7-apache
 surum=7.1.4
 devir=1
 kaynak=(http://www.php.net/distributions/php-$surum.tar.xz apache.conf)
