@@ -1,7 +1,7 @@
 # Tanım: Metin düzeni ve sunumu için bir kütüphane
 # URL: http://gnome.org
 # Paketçi: milisarge
-# Gerekler: python cairo freetype xorg-libxft gobject-introspection harfbuzz xorg-libxxf86vm 
+# Gerekler: python cairo freetype libthai xorg-libxft gobject-introspection harfbuzz xorg-libxxf86vm 
 
 isim=pango
 surum=1.38.1
