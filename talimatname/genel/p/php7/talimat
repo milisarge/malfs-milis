@@ -1,6 +1,6 @@
 # Tanım: Dinamik web sitelerinde kullanılan programlama kodunun doğrudan HTML içine gömülmesini sağlar. Ayrıca, genel amaçlı bir betik dili olarak da yararlıdır.
 # URL: http://www.php.net
-# Paketçi: milisarge
+# Paketçi: milisarge halityilmaz1982
 # Gerekler: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff db mariadb openldap postgresql sqlite unixodbc cyrus-sasl kerberos
 
 isim=php7
@@ -8,43 +8,111 @@ _isim=php
 surum=7.1.11
 devir=1
 
-kaynak=(http://php.net/distributions/${_isim}-$surum.tar.xz{,.asc})
+kaynak=(http://php.net/distributions/${_isim}-$surum.tar.xz{,.asc}
+apache.patch
+php-fpm.patch
+php.ini.patch)
 
 derle() {
 
     cd ${_isim}-$surum
 
-    ./configure --prefix=/usr            \
-            --sysconfdir=/etc            \
-            --localstatedir=/var         \
-            --datadir=/usr/share/php     \
-            --mandir=/usr/share/man      \
-            --enable-fpm                 \
-            --with-fpm-user=www-data     \
-            --with-fpm-group=www-data    \
-            --with-config-file-path=/etc \
-            --with-zlib                  \
-            --enable-bcmath              \
-            --with-bz2                   \
-            --enable-calendar            \
-            --enable-dba=shared          \
-            --with-gdbm                  \
-            --with-gmp                   \
-            --enable-ftp                 \
-            --with-gettext               \
-            --enable-mbstring            \
-            --with-mysqli=shared		 \
-            --with-mysql-sock=/run/mysqld/mysqld.sock \
-            --with-pdo-mysql=shared \
-            --with-readline      
-    make
-    make -j1 INSTALL_ROOT=$PKG install
-    
-    install -v -m644 php.ini-production $PKG/etc/php.ini 
-    if [ -f /etc/php-fpm.conf.default ]; then
-	  mv -v /etc/php-fpm.conf{.default,} &&
-	  mv -v /etc/php-fpm.d/www.conf{.default,}
-	fi
-    sed -i 's@php/includes"@&\ninclude_path = ".:/usr/lib/php"@' $PKG/etc/php.ini
-		
+	patch -p0 -i ${SRC}/apache.patch
+	patch -p0 -i ${SRC}/php-fpm.patch
+	patch -p0 -i ${SRC}/php.ini.patch
+
+    	_phpconfig="--srcdir=${SRC}/${_isim}-${surum} \
+		--config-cache \
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--sysconfdir=/etc/php \
+		--localstatedir=/var \
+		--with-layout=GNU \
+		--with-config-file-path=/etc/php \
+		--with-config-file-scan-dir=/etc/php/conf.d \
+		--disable-rpath \
+		--mandir=/usr/share/man \
+		--without-pear \
+		"
+
+	_phpextensions="\
+		--enable-bcmath=shared \
+		--enable-calendar=shared \
+		--enable-dba=shared \
+		--enable-exif=shared \
+		--enable-ftp=shared \
+		--enable-gd-native-ttf \
+		--enable-mbstring \
+		--enable-shmop=shared \
+		--enable-soap=shared \
+		--enable-sockets=shared \
+		--enable-sysvmsg=shared \
+		--enable-sysvsem=shared \
+		--enable-sysvshm=shared \
+		--enable-zip=shared \
+		--with-bz2=shared \
+		--with-curl=shared \
+		--with-db5=/usr \
+		--with-enchant=shared,/usr \
+		--with-freetype-dir=/usr \
+		--with-gd=shared,/usr \
+		--with-gdbm \
+		--with-gettext=shared \
+		--with-gmp=shared \
+		--with-iconv=shared \
+		--with-imap\
+		--with-imap-ssl \
+		--with-imap=shared \
+		--with-kerberos=/usr \
+		--with-ldap=shared \
+		--with-ldap-sasl \
+		--with-libzip \
+		--with-mcrypt=shared \
+		--with-mhash \
+		--with-mysql-sock=/run/mysqld/mysqld.sock \
+		--with-mysqli=shared,mysqlnd \
+		--with-openssl \
+		--with-pcre-regex=/usr \
+		--with-pdo-dblib=shared,/usr \
+		--with-pdo-mysql=shared,mysqlnd \
+		--with-pdo-odbc=shared,unixODBC,/usr \
+		--with-pdo-pgsql=shared \
+		--with-pdo-sqlite=shared,/usr \
+		--with-pgsql=shared \
+		--with-pspell=shared \
+		--with-readline \
+		--with-sqlite3=shared,/usr \
+		--with-tidy=shared \
+		--with-unixODBC=shared,/usr \
+		--with-xmlrpc=shared \
+		--with-xsl=shared \
+		--with-zlib \
+		--enable-pcntl \
+		"
+
+	EXTENSION_DIR=/usr/lib/php/modules
+	export EXTENSION_DIR
+	
+	cd ${SRC}/${_isim}-${surum}
+
+	./configure ${_phpconfig} \
+		--enable-cgi \
+		--enable-fpm \
+		--with-fpm-acl \
+		--with-fpm-user=http \
+		--with-fpm-group=http \
+		--enable-embed=shared \
+		${_phpextensions}
+	make
+
+	make -j1 INSTALL_ROOT=${PKG} install-{modules,cli,build,headers,programs,pharcmd}
+	install -D -m644 ${SRC}/${_isim}-${surum}/php.ini-production ${PKG}/etc/php/php.ini
+	install -d -m755 ${PKG}/etc/php/conf.d/
+
+	# remove static modules
+	rm -f ${PKG}/usr/lib/php/modules/*.a
+	# remove modules provided by sub packages
+	rm -f ${PKG}/usr/lib/php/modules/{enchant,gd,imap,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	# remove empty directory
+	rmdir ${PKG}/usr/include/php/include		
 }

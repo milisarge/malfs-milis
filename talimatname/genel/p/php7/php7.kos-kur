@@ -10,3 +10,4 @@ if [ "$durum" = "`kurulu_kontrol php`" ]; then
 else
 	echo "eski php sürümü mevcut degil."
 fi
+

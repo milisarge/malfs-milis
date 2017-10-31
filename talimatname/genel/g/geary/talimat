@@ -1,16 +1,27 @@
 # Tanım: A lightweight email client for the GNOME desktop
 # URL: http://www.yorba.org/projects/geary/
-# Paketçi: milisarge
+# Paketçi: milisarge halityilmaz1982
 # Gerekler: cmake gnome-doc-utils tdb gobject-introspection intltool vala git gnome-keyring gmime iso-codes libcanberra libgee libnotify librsvg webkitgtk3
 
 isim=geary
-surum=0.11.4
+surum=0.12.0
 devir=1
-kaynak=(https://git.gnome.org/browse/geary/snapshot/$isim-$surum.tar.xz)
+kaynak=(https://download.gnome.org/sources/geary/${surum%.*}/geary-${surum}.tar.xz)
 
 derle() {
   cd $isim-$surum
-  ./configure --prefix=/usr --disable-schemas-compile --disable-desktop-update --disable-icon-update
+	if [[ -d build ]]; then
+	    rm -rf build
+	  fi
+  mkdir build
+
+  cd build
+  cmake ${SRC}/${isim}-${surum} \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DDESKTOP_UPDATE='FALSE' \
+    -DICON_UPDATE='FALSE' \
+    -DGSETTINGS_COMPILE='FALSE' \
+    -DGSETTINGS_COMPILE_IN_PLACE='FALSE'
   make
   make DESTDIR="${PKG}" install
 }
