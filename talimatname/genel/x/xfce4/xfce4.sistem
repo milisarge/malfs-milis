@@ -48,8 +48,6 @@ xorg-mesa
 xorg-glu
 xorg-libxxf86vm
 cairo
-libdatrie
-libthai
 xorg-libxft
 gobject-introspection
 icu
