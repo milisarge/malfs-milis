@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="1.1.3 Milis Paket Sistemi"
+versiyon="1.1.4 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -48,6 +48,10 @@ if [ -z ${sunucular+:} ]; then
 	mv /etc/mps2.conf /etc/mps.conf
 fi
 
+if [ -z ${silme_esgec+:} ]; then
+	declare -a silme_esgec=()
+fi
+
 
 # Türkçe Mesajlar
 _paket_adi_gerekli="paket ismi eksik!"
@@ -65,6 +69,8 @@ _paket_tanimsiz="paketi tanımsız!"
 _paket_bulunamadi="ilgili paket bulunamadı!"
 _paketvt_guncelleniyor="paket veritabanı güncelleniyor."
 _paket_onbellek_depoda_var="paketi önbellek depoda bulunmakta."
+_paket_depoda_yok="paket depoda bulunmuyor ve gereksiz,"
+_siliniyor="siliniyor"
 _git_guncelleniyor="git sunucudan güncelleme çekiliyor."
 _git_guncel="git deposu güncel"
 _git_guncellendi="git deposu güncellendi."
@@ -698,7 +704,9 @@ paketsiz_talimatlar(){
 
 paket_guncelle(){
 	surum_kontrol $1 $2
-	devir_kontrol $1 $2
+	if [ -d "$VT/$1" ];then
+		devir_kontrol $1 $2
+	fi
 }
 
 paket_guncelle_oto(){
@@ -786,20 +794,29 @@ sistem_guncelle(){
 }
 
 surum_kontrol(){
-	local _konum
+	local _konum pk_sil _paket
+	_paket=$1
 	GS_CIKTI="E"
 	if [ "$2" ]; then
 		GS_CIKTI="$2"
 	fi
 	local ksurum surum pkt dusuk yuksek durum
 	durum="belirsiz"
-	satir=`sed -n '7p' <  $VT/"$1"/META`
+	satir=`sed -n '7p' <  $VT/$_paket/META`
 	ksurum=${satir:1:${#satir}-1} 
 	
 	
-	_konum=$(talimat_bul $1)
+	_konum=$(talimat_bul $_paket)
 	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
-		ryaz 31 "$1 $_talimat_bulunamadi $_surum_kontrol_iptal"
+		ryaz 31 "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
+		pk_sil="e"
+		case "${silme_esgec[@]}" in  *"$_paket"*) pk_sil="h" ;; esac
+		if [ "$pk_sil" = "e" ];then
+			ryaz 32 "$_paket $_paket_depoda_yok $_siliniyor"
+			mps -sz $_paket
+		else
+			ryaz 32 "$_paket silinmesi es geçildi"
+		fi
 		
 	else
 	
@@ -809,7 +826,7 @@ surum_kontrol(){
 		
 		if [ "$ksurum" = "$surum" ];then
 			durum="guncel"
-			[ $GS_CIKTI = "E" ] && ryaz 33 "$1 sürümü güncel"
+			[ $GS_CIKTI = "E" ] && ryaz 33 "$_paket sürümü güncel"
 			#printf "."
 		else
 			if [ "$ksurum" = "$dusuk" ];then
@@ -821,7 +838,7 @@ surum_kontrol(){
 			if [ "$durum" <> "guncel" ];then
 				while true; do
 					printf "\n"
-					ryaz 34 "$1 sürüm $durum""me işlemi uygulanacak. $ksurum <> $surum ";read -p "e veya h-> " eh
+					ryaz 34 "$_paket sürüm $durum""me işlemi uygulanacak. $ksurum <> $surum ";read -p "e veya h-> " eh
 					case $eh in
 						[Ee]* ) gun_onay="e"; break;;
 						[Hh]* ) break;;
@@ -829,21 +846,21 @@ surum_kontrol(){
 					esac
 				done	
 				if [ "$gun_onay" = "e" ];then
-					if [ -d "$talimatname/temel/$1" ]; then
-						kurulum_dogrulama_icerik $1
+					if [ -d "$talimatname/temel/$_paket" ]; then
+						kurulum_dogrulama_icerik $_paket
 						tpk="hayir" 
-						paket_sil "$1" "evet"
-						paket_indir $1
-						pkt=`cat "$paketdepo""paket.vt" | grep "^$1 " | cut -d' ' -f3`
+						paket_sil "$_paket" "evet"
+						paket_indir $_paket
+						pkt=`cat "$paketdepo""paket.vt" | grep "^$_paket " | cut -d' ' -f3`
 						icerik_ekle "$paketdepo$pkt"
 					else
-						paket_sil "$1" "evet"
-						paket_inkur_oto $1
+						paket_sil "$_paket" "evet"
+						paket_inkur_oto $_paket
 					fi
-					ryaz 33 "$1 sürüm güncellemesi yapıldı"
+					ryaz 33 "$_paket sürüm güncellemesi yapıldı"
 				else
-					ryaz 31 "$1 sürüm güncellemesi yapılmadı"
-					hataloglama "$1 sürüm güncellemesi yapılmadı"
+					ryaz 31 "$_paket sürüm güncellemesi yapılmadı"
+					hataloglama "$_paket sürüm güncellemesi yapılmadı"
 				fi
 			fi
 		fi
@@ -852,19 +869,28 @@ surum_kontrol(){
 }
 
 devir_kontrol(){
-	local _konum
+	local _konum pk_sil _paket
+	_paket="$1"
 	GS_CIKTI="E"
 	if [ "$2" ]; then
 		GS_CIKTI="$2"
 	fi
 	local kdevir devir pkt dusuk yuksek durum gun_onay
 	durum="belirsiz"
-	satir=`sed -n '8p' <  $VT/"$1"/META`
+	satir=`sed -n '8p' <  $VT/$_paket/META`
 	kdevir=${satir:1:${#satir}-1} 
 	
-	_konum=$(talimat_bul $1)
+	_konum=$(talimat_bul $_paket)
 	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
-		ryaz 31 "$1 $_talimat_bulunamadi $_devir_kontrol_iptal"
+		ryaz 31 "$_paket $_talimat_bulunamadi $_devir_kontrol_iptal"
+		pk_sil="e"
+		case "${silme_esgec[@]}" in  *"$_paket"*) pk_sil="h" ;; esac
+		if [ "$pk_sil" = "e" ];then
+			ryaz 32 "$_paket $_paket_depoda_yok $_siliniyor"
+			mps -sz $_paket
+		else
+			ryaz 32 "$_paket silinmesi es geçildi"
+		fi
 		
 	else
 	
@@ -873,7 +899,7 @@ devir_kontrol(){
 		
 		if [ "$kdevir" = "$devir" ];then
 			durum="guncel"
-			[ $GS_CIKTI = "E" ] && ryaz 33 "$1 deviri güncel"
+			[ $GS_CIKTI = "E" ] && ryaz 33 "$_paket deviri güncel"
 			#printf "."
 		else
 			if [ "$kdevir" = "$dusuk" ];then
@@ -885,7 +911,7 @@ devir_kontrol(){
 			if [ "$durum" <> "guncel" ];then
 				while true; do
 					printf "\n"
-					ryaz 34 "$1 devir $durum""me işlemi uygulanacak. $kdevir <> $devir ";read -p "e veya h-> " eh
+					ryaz 34 "$_paket devir $durum""me işlemi uygulanacak. $kdevir <> $devir ";read -p "e veya h-> " eh
 					case $eh in
 						[Ee]* ) gun_onay="e"; break;;
 						[Hh]* ) break;;
@@ -893,12 +919,12 @@ devir_kontrol(){
 					esac
 				done	
 				if [ "$gun_onay" = "e" ];then
-					paket_sil "$1" "evet"
-					paket_inkur_oto $1
-					ryaz 33 "$1 devir güncellemesi yapıldı"
+					paket_sil "$_paket" "evet"
+					paket_inkur_oto $_paket
+					ryaz 33 "$_paket devir güncellemesi yapıldı"
 				else
-					ryaz 31 "$1 devir güncellemesi yapılmadı"
-					hataloglama "$1 devir güncellemesi yapılmadı"
+					ryaz 31 "$_paket devir güncellemesi yapılmadı"
+					hataloglama "$_paket devir güncellemesi yapılmadı"
 				fi
 			fi
 		fi 
