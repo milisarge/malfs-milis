@@ -1,0 +1,23 @@
+# Tanım: Tay dili destek rutinleri
+# URL: http://linux.thai.net/projects/libthai
+# Paketçi: milisarge
+# Gerekler: libdatrie 
+
+isim=libthai
+surum=0.1.24
+devir=1
+
+kaynak=(https://mirrors.kernel.org/debian/pool/main/libt/${isim}/${isim}_${surum}.orig.tar.xz)
+
+derle() {
+	cd $isim-$surum
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--disable-static \
+		--disable-doxygen-doc
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
+}
+  
