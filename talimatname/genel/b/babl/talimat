@@ -14,21 +14,3 @@ derle() {
 	make
 	make DESTDIR=$PKG install
 }
-
-surum_takip() {
-	SURUM_LISTE=http://download.gimp.org/pub/babl/0.1/
-	SURUMLER=`curl -L -s $SURUM_LISTE | sed -ne'/'"${isim}"'-[0-9.]*.tar.\(gz\|xz\|bz2\)/p' | sed -e 's/.*'"${isim}"'/'"${isim}"'/g;s/.tar.\(gz\|xz\|bz2\).*/.tar.\1/g' | sort | uniq`
-	ENSON=0
-	for i in ${SURUMLER[@]};do
-		msurum=`echo $i | sed -e 's/'"${isim}"'-//g; s/.tar.*//g'`
-		surum_karsilastir $ENSON $msurum
-		if [ $? -eq 2 ];then
-			ENSON=$msurum
-		fi
-	done
-	surum_karsilastir $surum $ENSON
-	if [ $? -eq 2 ];then
-		echo "$isim: mevcut sürüm : $surum"
-		echo "$isim: yeni sürüm   : $ENSON"
-	fi
-}
