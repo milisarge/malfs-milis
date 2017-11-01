@@ -1,12 +1,12 @@
-. /root/bin/mps
-if [ -d /var/lib/pkg/DB/php ]; then
-	echo "eski php sürümü siliniyor."
-	mps sil php
+cakisan=php
+if [ -d /var/lib/pkg/DB/$cakisan ]; then
+	echo "php7 sürümü siliniyor."
 	nokta=`date +%m-%d-%y.%H%M%S`
 	mkdir -p /var/lib/pkg/koruma
 	[ -f /etc/php.ini ] && cp /etc/php.ini /var/lib/pkg/koruma/php.ini.$nokta
 	[ -f /etc/php-fpm.conf ] && cp /etc/php-fpm.conf /var/lib/pkg/koruma/php-fpm.conf.$nokta
 	[ -f /etc/pear.conf ] && cp /etc/pear.conf /var/lib/pkg/koruma/pear.conf.$nokta
+	mps -sz $cakisan
 else
-	echo "eski php sürümü mevcut degil."
+	echo "çakışan $cakisan paketi mevcut degil."
 fi
