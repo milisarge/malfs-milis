@@ -932,18 +932,23 @@ devir_kontrol(){
 }
 
 talimat_surum_takip(){
-	local konum
+	local konum _takip_uzanti
+	_takip_uzanti=".takip"
 	konum=$(talimat_bul $1)
 	if [[ $konum == "-1" || $konum == "0" ]];then
 		ryaz 31 "$1 $_talimat_bulunamadi"
 		exit 1
 	else
-		source $konum/talimat
-		if [ "`type -t surum_takip`" = "function" ];then
-			ryaz 32 "$1 paketinin kaynak kod arşivleri inceleniyor..." 
-			surum_takip
+		if [ -f "$konum/$1$_takip_uzanti" ];then
+			source $konum/$1$_takip_uzanti
+			if [ "`type -t surum_takip`" = "function" ];then
+				ryaz 32 "$1 paketinin kaynak kod arşivleri inceleniyor..." 
+				surum_takip
+			else
+				ryaz 31 "$1 talimatının sürüm takip işlevi yok!"
+			fi
 		else
-			ryaz 31 "$1 talimatının sürüm takip işlevi yok!"
+			ryaz 31 "$1 talimatının takip betiği yok!"
 		fi
 	fi
 }

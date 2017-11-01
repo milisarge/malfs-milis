@@ -1,24 +1,13 @@
-# Tanım: Dinamik resim format dönüşüm kütüphanesi
-# URL: http://gegl.org/babl
-# Paketçi: milisarge
-# Gerekler:
-
-isim=babl
-surum=0.1.14
-devir=1
-kaynak=(http://download.gimp.org/pub/$isim/0.1/$isim-$surum.tar.bz2)
-
-derle() {
-	cd $isim-$surum
-	./configure --prefix=/usr --disable-docs
-	make
-	make DESTDIR=$PKG install
-}
-
-surum_takip() {
+function surum_takip
+{
+	_talimat=babl
+	isim=babl
+	surum=`grep "surum=" $talimatname/genel/${_talimat:0:1}/$_talimat/talimat | cut -d'=' -f2`
 	SURUM_LISTE=http://download.gimp.org/pub/babl/0.1/
+	
 	SURUMLER=`curl -L -s $SURUM_LISTE | sed -ne'/'"${isim}"'-[0-9.]*.tar.\(gz\|xz\|bz2\)/p' | sed -e 's/.*'"${isim}"'/'"${isim}"'/g;s/.tar.\(gz\|xz\|bz2\).*/.tar.\1/g' | sort | uniq`
 	ENSON=0
+
 	for i in ${SURUMLER[@]};do
 		msurum=`echo $i | sed -e 's/'"${isim}"'-//g; s/.tar.*//g'`
 		surum_karsilastir $ENSON $msurum
@@ -26,6 +15,7 @@ surum_takip() {
 			ENSON=$msurum
 		fi
 	done
+
 	surum_karsilastir $surum $ENSON
 	if [ $? -eq 2 ];then
 		echo "$isim: mevcut sürüm : $surum"
