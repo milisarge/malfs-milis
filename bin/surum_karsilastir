@@ -1,0 +1,75 @@
+#!/bin/bash
+function trs() {                                                                                                                                                                                                           
+    local string="$1"                                                                                                                                                                                                      
+    declare -A translate                                                                                                                                                                                                   
+    translate=( ["a"]="0"                                                                                                                                                                                                  
+              ["b"]="1"                                                                                                                                                                                                    
+              ["c"]="2"                                                                                                                                                                                                    
+              ["d"]="3"                                                                                                                                                                                                    
+              ["e"]="4"                                                                                                                                                                                                    
+              ["f"]="5"                                                                                                                                                                                                    
+              ["g"]="6"                                                                                                                                                                                                    
+              ["h"]="7"                                                                                                                                                                                                    
+              ["i"]="8"                                                                                                                                                                                                    
+              ["j"]="9"                                                                                                                                                                                                    
+              ["k"]="10"                                                                                                                                                                                                   
+              ["l"]="11"                                                                                                                                                                                                   
+              ["m"]="12"                                                                                                                                                                                                   
+              ["n"]="13"                                                                                                                                                                                                   
+              ["o"]="14"                                                                                                                                                                                                   
+              ["p"]="15"                                                                                                                                                                                                   
+              ["q"]="16"                                                                                                                                                                                                   
+              ["r"]="17"                                                                                                                                                                                                   
+              ["s"]="18"                                                                                                                                                                                                   
+              ["t"]="19"                                                                                                                                                                                                   
+              ["u"]="20"                                                                                                                                                                                                   
+              ["v"]="21"                                                                                                                                                                                                   
+              ["w"]="22"                                                                                                                                                                                                   
+              ["x"]="23"                                                                                                                                                                                                   
+              ["y"]="24"                                                                                                                                                                                                   
+              ["z"]="25")                                                                                                                                                                                                  
+    for i in "${!translate[@]}"; do
+                string="$(sed -e "s/$i/${translate[$i]}/g" <<< "$string")" 
+        done
+        echo "$string"
+} 
+
+function surum_karsilastir(){
+    #$1 mevcut $2 enson
+    if [[ $1 == $2 ]];then
+        return 0
+    fi
+    
+    #tireleri noktayla değiştir.
+    V1=`echo $1 | sed 's/\-/\./g'`
+    V2=`echo $2 | sed 's/\-/\./g'`
+        V1=`trs $V1`
+        V2=`trs $V2`
+        
+        local IFS=.
+        local i ver1=($V1) ver2=($V2)
+
+        # boş sahaların 0 ile doldurulması
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # boş sahalarn sıfırla doldurulması
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]}))
+        then
+            return 1 # >
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]}))
+        then
+            return 2 # <
+        fi
+    done
+    return 0 # =
+}
+surum_karsilastir $1 $2

@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="1.1.4 Milis Paket Sistemi"
+versiyon="1.1.5 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -930,7 +930,24 @@ devir_kontrol(){
 		fi 
 	fi
 }
-   
+
+talimat_surum_takip(){
+	local konum
+	konum=$(talimat_bul $1)
+	if [[ $konum == "-1" || $konum == "0" ]];then
+		ryaz 31 "$1 $_talimat_bulunamadi"
+		exit 1
+	else
+		source $konum/talimat
+		if [ "`type -t surum_takip`" = "function" ];then
+			ryaz 32 "$1 paketinin kaynak kod arşivleri inceleniyor..." 
+			surum_takip
+		else
+			ryaz 31 "$1 talimatının sürüm takip işlevi yok!"
+		fi
+	fi
+}
+
 paket_derle(){
 	#parametre olarak direk konum gelecek
 	#eski derleme kalıntılarını temizle
@@ -2503,6 +2520,14 @@ ayarlar() {
 					exit 1
 				fi
 				kurulan_dosya_bul "$2"
+				exit 0 ;;
+			### mps tsk talimat = ilgili talimatın yeni sürümü olup olmadığını kontrol eder.
+			tsk)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					exit 1
+				fi
+				talimat_surum_takip "$2"
 				exit 0 ;;
 			-tro)
 				tarihce_yap 
