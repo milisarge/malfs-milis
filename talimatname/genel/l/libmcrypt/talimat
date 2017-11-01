@@ -1,5 +1,5 @@
-# Tanım: Simetrik algoritma gelitirştirmek için gerekli kütüphane
-# URL: http://www.washington.edu/imap
+# Tanım: Simetrik şifreleme algoritma geliştirmek için gerekli kütüphane
+# URL: http://mcrypt.sourceforge.net/
 # Paketçi: halityilmaz1982
 # Gerekler:
 
@@ -10,9 +10,9 @@ devir=1
 kaynak=(http://downloads.sourceforge.net/mcrypt/${isim}-${surum}.tar.bz2)
 
 derle() {
-  cd ${SRC}/${isim}-${surum}
-  ./configure --prefix=/usr \
-	      --mandir=/usr/share/man
-  make
-  make DESTDIR=$PKG install
+	cd ${SRC}/${isim}-${surum}
+	./configure --prefix=/usr \
+	--mandir=/usr/share/man
+	make
+	make DESTDIR=$PKG install
 }
