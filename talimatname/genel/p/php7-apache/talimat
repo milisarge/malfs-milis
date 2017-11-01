@@ -18,5 +18,6 @@ derle() {
 
 	install -D -m755 ${SRC}/php-${surum}/libs/libphp7.so ${PKG}/usr/lib/httpd/modules/libphp7.so
 	install -D -m644 ${SRC}/apache.conf ${PKG}/etc/httpd/conf/extra/php7_module.conf
+	mkdir -p $PKG/etc/php/conf.d/
 	echo "extension=apache.so" > $PKG/etc/php/conf.d/apache.ini
 }
