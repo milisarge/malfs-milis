@@ -4,18 +4,19 @@
 # Gerekler: php7 apache
 
 isim=php7-apache
-surum=7.1.4
+surum=7.1.11
 devir=1
-kaynak=(http://www.php.net/distributions/php-$surum.tar.xz apache.conf)
+kaynak=(http://www.php.net/distributions/php-$surum.tar.xz 
+		apache.conf)
 
 derle() {
-        cd php-$surum
+	cd php-$surum
 
-        ./configure --disable-all \
-                --with-apxs2
-        make DESTDIR=$PKG install
+	./configure --disable-all \
+			--with-apxs2
+	make DESTDIR=$PKG install
 
-        install -D -m755 ${SRC}/php-${surum}/libs/libphp7.so ${PKG}/usr/lib/httpd/modules/libphp7.so
-        install -D -m644 ${SRC}/apache.conf ${PKG}/etc/httpd/conf/extra/php7_module.conf
-        echo "extension=apache.so" > $PKG/etc/php/conf.d/apache.ini
+	install -D -m755 ${SRC}/php-${surum}/libs/libphp7.so ${PKG}/usr/lib/httpd/modules/libphp7.so
+	install -D -m644 ${SRC}/apache.conf ${PKG}/etc/httpd/conf/extra/php7_module.conf
+	echo "extension=apache.so" > $PKG/etc/php/conf.d/apache.ini
 }

@@ -1,4 +1,4 @@
-# Tanım: Dinamik web sitelerinde kullanılan programlama kodunun doğrudan HTML içine gömülmesini sağlar. Ayrıca, genel amaçlı bir betik dili olarak da yararlıdır.
+# Tanım: Dinamik web sitelerinde kullanılan programlama kodunun doğrudan HTML içine gömülmesini sağlar.
 # URL: http://www.php.net
 # Paketçi: milisarge
 # Gerekler: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff db mariadb openldap postgresql sqlite unixodbc cyrus-sasl kerberos
@@ -8,7 +8,7 @@ _isim=php
 surum=7.1.11
 devir=1
 
-kaynak=(http://php.net/distributions/${_isim}-$surum.tar.xz{,.asc})
+kaynak=(http://php.net/distributions/${_isim}-$surum.tar.xz)
 
 derle() {
 
