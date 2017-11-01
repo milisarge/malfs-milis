@@ -2521,10 +2521,10 @@ ayarlar() {
 				fi
 				kurulan_dosya_bul "$2"
 				exit 0 ;;
-			### mps tsk talimat = ilgili talimatın yeni sürümü olup olmadığını kontrol eder.
-			tsk)
+			### mps tgs talimat = ilgili talimatın kaynak kodunun yeni sürümü olup olmadığını kontrol eder.
+			tgs)
 				if [ ! "$2" ]; then
-					ryaz 31 "paket ismi eksik"
+					ryaz 31 "talimat ismi eksik"
 					exit 1
 				fi
 				talimat_surum_takip "$2"
