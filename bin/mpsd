@@ -344,6 +344,24 @@ check_md5sum() {
 	fi
 }
 
+hash_kontrol() {
+
+	_hata_deger="FAILED"
+	if [ $LC_ALL = "tr_TR.UTF-8" ];then
+		_hata_deger="BAŞARISIZ"
+	fi
+	cd $DERLEME_KAYNAKDIZIN
+	cp $PKGMK_ROOT/$isim.hash $DERLEME_KAYNAKDIZIN/
+	sha256sum -c $DERLEME_KAYNAKDIZIN/$isim.hash > /tmp/$isim.hash.kontrol 2> /dev/null
+	sha512sum -c $DERLEME_KAYNAKDIZIN/$isim.hash >> /tmp/$isim.hash.kontrol 2> /dev/null
+	if [[ $(cat /tmp/$isim.hash.kontrol | grep $_hata_deger) ]];then
+		echo "shasum uyuşmayan kaynak kod var"
+		exit 1
+	fi
+	[ -f $DERLEME_KAYNAKDIZIN/$isim.hash ] && rm $DERLEME_KAYNAKDIZIN/$isim.hash
+	#[ -f /tmp/$isim.hash.kontrol ] && rm /tmp/$isim.hash.kontrol
+}
+
 strip_files() {
 	local FILE FILTER
 	
@@ -464,9 +482,17 @@ make_work_dir() {
 	remove_work_dir
 	mkdir -p $SRC $PKG
 
-	if [ "$MD5SUM_YOKSAY" = "yok" ]; then
-		check_md5sum
-	fi
+	if [ -f $PKGMK_ROOT/$HASH_KONTROL_DOSYA ]; then
+		echo "hash kontrol dosyası var"
+		if [ "$SHASUM_KONTROL_YAP" = "evet" ]; then
+			echo "hash kontrolü yapılacak"
+			hash_kontrol 
+		else
+			echo "hash kontrolü yapılmayacak."
+		fi
+	else
+		echo "hash kontrol dosyası yok-hash kontrolü yapılmayacak."
+	fi	
 }
 
 remove_work_dir() {
@@ -669,7 +695,7 @@ build_package() {
 	make_work_dir
 	
 	if [ "$UID" != "0" ]; then
-		warning "Packages should be built as root."
+		warning "Paketler root olarak derlenmeli."
 	fi
 	
 	info "Derleniyor '$TARGET'."
@@ -1043,16 +1069,12 @@ parse_options() {
 				DOSYAIZLEME_YOKSAY="evet" ;;
 			-in|--ignore-new)
 				PKGMK_IGNORE_NEW="evet" ;;
-			-um|--update-md5sum)
-				PKGMK_UPDATE_MD5SUM="evet" ;;
-			-im|--ignore-md5sum)
-				MD5SUM_YOKSAY="evet" ;;
 			-ic|--ignore-collection)
 				KOLEKSIYON_YOKSAY="evet" ;;
 			-ir|--ignore-repo)
 				REPO_YOKSAY="evet" ;;
-			-cm|--check-md5sum)
-				PKGMK_CHECK_MD5SUM="evet" ;;
+			-shk|--hash-kontrol)
+				SHASUM_KONTROL_YAP="evet" ;;
 			-ns|--no-strip)
 				PKGMK_NO_STRIP="evet" ;;
 			-f|--force)
@@ -1082,26 +1104,15 @@ parse_options() {
 	done
 }
 
-onay_al(){
-	local _mesaj
-	_mesaj="$1"
-	while true; do
-		echo $_mesaj;read -p "e veya h-> " eh
-		case $eh in
-			[Ee]* ) sil_onay="e"; break;;
-			[Hh]* ) break;;
-			* ) echo "e veya h";;
-		esac
-	done
-}
-
 main() {
 	if [ -f /etc/noprofile ]; then
 		source /etc/noprofile
 	fi
 	
+	parse_options "$@"
+
 	if [ "$(md5sum $DERLEME_AYARDOSYASI | cut -d' ' -f1)" = "$(md5sum $ANADERLEME_AYARDOSYASI | cut -d' ' -f1)" ];then
-	   echo "mpsd.conf dosyası aynı"
+	   shift
 	else
 	   echo "mpsd.conf dosyası farklı!"
 	   while true; do
@@ -1113,17 +1124,15 @@ main() {
 			esac
 		done
 	fi
-	parse_options "$@"
-
-        if [ ! -f $DERLEME_AYARDOSYASI ]; then
-                error " '$DERLEME_AYARDOSYASI' dosyası bulunamadı."
-                exit $E_GENERAL
-        fi
-        . $DERLEME_AYARDOSYASI
+	
+	if [ ! -f $DERLEME_AYARDOSYASI ]; then
+			error " '$DERLEME_AYARDOSYASI' dosyası bulunamadı."
+			exit $E_GENERAL
+	fi
+	
+	. $DERLEME_AYARDOSYASI
+	
 	MIMARI=`uname -m`
-	
-	
-	
 	
 	DOSYAIZLEME_YOKSAY="evet"
 	
@@ -1211,7 +1220,6 @@ main() {
 	if [ ! -z "$group" ]; then
 		info "grup: $group"
 	fi
-	PKGMK_MD5SUM="$isim.`uname -m`.md5sum"
 	HASH_KONTROL_DOSYA="$isim.hash"
 	check_directory "$DERLEME_KAYNAKDIZIN"
 	check_directory "$PAKETLEME_DIZIN"
@@ -1254,18 +1262,10 @@ main() {
 	fi
 	
 	if [ "$SOZDIZIM_KONTROL" = "evet" ]; then
-		info "description: $description"
+		info "tanım: $description"
 		info "url: $url"
-		info "packager: $packager"
-		info "maintainer: $maintainer"
-		exit 0
-	fi
-	
-	if [ "$PKGMK_UPDATE_MD5SUM" = "evet" ]; then
-		kaynak_indir
-		check_file "$PKGMK_MD5SUM"
-		make_md5sum > $PKGMK_MD5SUM
-		info "Md5sum updated."
+		info "paketçi: $packager"
+		info "tamirci: $maintainer"
 		exit 0
 	fi
 
@@ -1304,7 +1304,7 @@ main() {
 	# From here on it's need to check the base package not any group which means
 	if [ -z $TARGETS ]; then
 		TARGET=$PAKETLEME_DIZIN/${isim}#$surum-$MIMARI.$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
-		if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ] && [ "$PKGMK_CHECK_MD5SUM" = "yok" ]; then
+		if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ]; then
 			info "Package '$TARGET' is up to date."
 		else
 			kaynak_indir
@@ -1313,7 +1313,7 @@ main() {
 	else
 		FOUND=false
 		for TARGET in ${TARGETS[@]}; do
-			if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ] && [ "$PKGMK_CHECK_MD5SUM" = "yok" ]; then
+			if [ "`build_needed`" = "yok" ] && [ "$PKGMK_FORCE" = "yok" ]; then
 				if [ "`get_package_arch $TARGET`" = "$MIMARI" ]; then
 					FOUND=true
 				fi
@@ -1381,7 +1381,6 @@ REPO_DOSYASI=".PKGREPO"
 
 
 PKGMK_PKGFILE="talimat"
-PKGMK_MD5SUM="$isim.`uname -m`.md5sum"
 PKGMK_NOSTRIP=".nostrip"
 
 PKGMK_KEEP_SOURCES="yok"
@@ -1397,7 +1396,7 @@ DERLEME_SANTIYE="$PWD/work"
 PKGMK_DOWNLOAD="yok"
 DOSYAIZLEME_YOKSAY="evet"
 PKGMK_IGNORE_NEW="evet"
-MD5SUM_YOKSAY="evet"
+SHASUM_KONTROL_YAP="evet"
 DEVIR_YOKSAY="yok"
 REPO_YOKSAY="evet"
 
@@ -1417,9 +1416,6 @@ PKGMK_UP_TO_DATE="yok"
 PKGMK_UPDATE_FOOTPRINT="yok"
 PKGMK_FORCE="yok"
 PKGMK_KEEP_WORK="yok"
-
-PKGMK_UPDATE_MD5SUM="yok"
-PKGMK_CHECK_MD5SUM="yok"
 
 main "$@"
 
