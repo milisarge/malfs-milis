@@ -1082,15 +1082,41 @@ parse_options() {
 	done
 }
 
+onay_al(){
+	local _mesaj
+	_mesaj="$1"
+	while true; do
+		echo $_mesaj;read -p "e veya h-> " eh
+		case $eh in
+			[Ee]* ) sil_onay="e"; break;;
+			[Hh]* ) break;;
+			* ) echo "e veya h";;
+		esac
+	done
+}
+
 main() {
 	if [ -f /etc/noprofile ]; then
 		source /etc/noprofile
 	fi
-
+	
+	if [ "$(md5sum $DERLEME_AYARDOSYASI | cut -d' ' -f1)" = "$(md5sum $ANADERLEME_AYARDOSYASI | cut -d' ' -f1)" ];then
+	   echo "mpsd.conf dosyası aynı"
+	else
+	   echo "mpsd.conf dosyası farklı!"
+	   while true; do
+			echo "mpsd.conf güncel sürümü ile değiştirilsin mi?";read -p "e veya h-> " eh
+			case $eh in
+				[Ee]* ) cp -f $ANADERLEME_AYARDOSYASI $DERLEME_AYARDOSYASI; break;;
+				[Hh]* ) break;;
+				* ) echo "e veya h";;
+			esac
+		done
+	fi
 	parse_options "$@"
 
         if [ ! -f $DERLEME_AYARDOSYASI ]; then
-                error "File '$DERLEME_AYARDOSYASI' not found."
+                error " '$DERLEME_AYARDOSYASI' dosyası bulunamadı."
                 exit $E_GENERAL
         fi
         . $DERLEME_AYARDOSYASI
@@ -1098,10 +1124,9 @@ main() {
 	
 	
 	
-	#if ! (`which pkginfo > /dev/null`); then
-		#warning "pkginfo NOT FOUND, footprint ignored."
+	
 	DOSYAIZLEME_YOKSAY="evet"
-	#fi
+	
 	local FILE TARGET 
 
 	isim=`basename $PKGMK_ROOT`
@@ -1111,7 +1136,7 @@ main() {
 		exit 0
 	fi
 	if [ ! -f $PKGMK_PKGFILE  ]; then
-		error "File '$PKGMK_PKGFILE' not found."
+		error " '$PKGMK_PKGFILE' dosyası bulunamadı"
 		exit $E_TALIMAT
 	fi
 	. $PKGMK_PKGFILE
@@ -1187,6 +1212,7 @@ main() {
 		info "grup: $group"
 	fi
 	PKGMK_MD5SUM="$isim.`uname -m`.md5sum"
+	HASH_KONTROL_DOSYA="$isim.hash"
 	check_directory "$DERLEME_KAYNAKDIZIN"
 	check_directory "$PAKETLEME_DIZIN"
 	check_directory "`dirname $DERLEME_SANTIYE`"
@@ -1340,6 +1366,7 @@ trap "interrupted" SIGHUP SIGINT SIGQUIT SIGTERM
 
 export LC_ALL=POSIX
 DERLEME_AYARDOSYASI="/etc/mpsd.conf"
+ANADERLEME_AYARDOSYASI="/sources/milis.git/ayarlar/mpsd.conf"
 readonly PKGMK_VERSION="1.0"
 readonly PKGMK_COMMAND="$0"
 readonly PKGMK_ROOT="$PWD"
