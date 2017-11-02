@@ -55,9 +55,16 @@ class Talimat():
 	
 	def ice_aktar(self,dosya,tip):
 		if tip=="arch":
+			d_isim=dosya.split("_")[0]
 			pkgbuild=PKGBUILD(dosya)
-			self.tanim=pkgbuild.description
-			self.url=pkgbuild.url
+			if hasattr(pkgbuild, "description"):
+				self.tanim=pkgbuild.description
+			else:
+				self.tanim=""
+			if hasattr(pkgbuild, "url"):
+				self.url=pkgbuild.url
+			else:
+				self.url=""
 			self.paketci="milisarge"
 			if hasattr(pkgbuild, 'makedepends'):
 				for mgerek in pkgbuild.makedepends:
@@ -67,7 +74,10 @@ class Talimat():
 				for gerek in pkgbuild.depends:
 					if gerek not in self.gerekler:
 						self.gerekler.append(gerek)
-			self.isim=pkgbuild.name
+			if isinstance(pkgbuild.name, list):
+				self.isim=d_isim
+			else:
+				self.isim=pkgbuild.name
 			if hasattr(pkgbuild, '_name'):
 				self._isim=pkgbuild._name
 			self.surum=pkgbuild.version
@@ -79,7 +89,7 @@ class Talimat():
 	def _gerekler(self):
 		gerekstr=""
 		for gerek in self.gerekler:
-			if os.path.exists(self.talimatname+"temel-ek/"+gerek) is False and os.path.exists(self.talimatname+"temel/"+gerek) is False:
+			if os.path.exists(self.talimatname+"onsistem/"+gerek) is False and os.path.exists(self.talimatname+"temel/"+gerek) is False:
 				gerekstr+=gerek+" "
 				if os.path.exists(self.talimatname+"genel/"+gerek[0:1]+"/"+gerek) is False:
 					print renk.uyari+gerek+" talimatı yapılmalı!"+renk.son
