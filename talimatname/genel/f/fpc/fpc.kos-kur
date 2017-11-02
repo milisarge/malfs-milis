@@ -1,4 +1,4 @@
-cakisan=fpc
+cakisan=fpc3
 if [ -d /var/lib/pkg/DB/$cakisan ]; then
 	echo "$cakisan sürümü siliniyor."
 	mps -sz $cakisan
