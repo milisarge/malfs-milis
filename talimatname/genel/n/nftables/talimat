@@ -4,7 +4,7 @@
 # Gerekler: docbook2x libmnl libnftnl
 
 isim=nftables
-surum=0.2
+surum=0.8
 devir=1
 
 kaynak=(http://netfilter.org/projects/nftables/files/nftables-$surum.tar.bz2)
@@ -12,12 +12,8 @@ kaynak=(http://netfilter.org/projects/nftables/files/nftables-$surum.tar.bz2)
 derle(){
     cd $isim-$surum
     ./configure --prefix=/usr \
-                --sysconfdir=/etc \
-                CONFIG_MAN=y DB2MAN=docbook2man
+	--sysconfdir=/etc \
+	CONFIG_MAN=y DB2MAN=docbook2man
     make
     make DESTDIR=$PKG install    
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
