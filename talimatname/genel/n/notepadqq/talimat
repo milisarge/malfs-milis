@@ -1,0 +1,18 @@
+# Tanım: Notepad++ linux sürümü
+# URL: http://notepadqq.altervista.org/wp/
+# Paketçi: milisarge
+# Gerekler: qt5 hicolor-icon-theme desktop-file-utils qt5-webkit
+
+isim=notepadqq
+surum=1.2.0
+devir=1
+kaynak=(https://github.com/notepadqq/notepadqq/archive/v$surum.tar.gz::$isim-$surum.tar.gz
+		https://github.com/notepadqq/CodeMirror/archive/5.18.2-nqq.tar.gz)
+
+derle() {
+	cd $isim-$surum
+	cp -rf $SRC/CodeMirror-5.18.2-nqq/* $SRC/$isim-$surum/src/editor/libs/codemirror/
+	qmake-qt5 PREFIX=/usr LRELEASE=/usr/bin/lrelease-qt5 notepadqq.pro
+	make  
+	make INSTALL_ROOT=$PKG install
+}
