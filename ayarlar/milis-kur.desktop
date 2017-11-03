@@ -1,12 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
+Path=/usr/bin
+Name=Milis Linux Kurulumu
+Comment=Milis Linux Kurulumu
+Exec=sudo /opt/Milis-Yukleyici/milis-kur
+Terminal=true
 Type=Application
-Name=Milis Linux Installer
-Name[tr]=Milis Linux Yükleyicisi
-GenericName=Milis Linux Installer
-GenericName[tr]=Milis Linux Yükleyicisi
-Exec=sudo milis-kur
 Icon=/sources/milis.git/ayarlar/milislogo.png
-Terminal=false
-Categories=Application;System;
-StartupNotify=true
+Categories=System;

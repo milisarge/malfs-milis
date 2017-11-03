@@ -1,6 +1,6 @@
 [Desktop Entry]
 Path=/usr/bin
-Name=Milis Linux Kurulumu
+Name=Milis Linux Konsol Tabanlı Kurulumu
 Comment=Milis Linux Kurulumu
 Exec=sudo milis-kur-konsol
 Terminal=true
