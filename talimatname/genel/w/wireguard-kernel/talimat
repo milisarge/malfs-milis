@@ -1,0 +1,26 @@
+# Tanım:  Kernel modül destekli ileri seviye güvenli vpn uygulaması
+# URL: https://www.wireguard.com
+# Paketçi: milisarge
+# Gerekler: libmnl kernel
+# Grup: güvenlik
+
+isim=wireguard-kernel
+surum=0.0.20171101
+devir=1
+kaynak=(https://git.zx2c4.com/WireGuard/snapshot/WireGuard-$surum.tar.xz::WireGuard-$surum.tar.xz)
+
+kernel_surum=$(ls /lib/modules/)
+derle() {
+	cd "WireGuard-$surum"
+	unset LDFLAGS
+	mv /lib/modules/${kernel_surum}/build/vmlinux /lib/modules/${kernel_surum}/build/vmlinux.tmp
+	make -C src/ \
+	KERNELDIR=/lib/modules/${kernel_surum}/build module
+	cd "src"
+	local module
+	for module in *.ko; do
+		install -v -D -m644 ${module} \
+		"$PKG/lib/modules/$kernel_surum/extra/${module}"
+	done
+	mv /lib/modules/${kernel_surum}/build/vmlinux.tmp /lib/modules/${kernel_surum}/build/vmlinux
+}
