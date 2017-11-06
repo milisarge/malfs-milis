@@ -1498,9 +1498,9 @@ else
 isim=$isim
 surum=1
 devir=1
-source=()
+kaynak=()
 
-build () {
+derle() {
 	cd \$isim-\$surum
 	./autogen.sh
 	./configure --prefix=/usr
