@@ -1,7 +1,7 @@
 # Tanım: Dinamik web sitelerinde kullanılan programlama kodunun doğrudan HTML içine gömülmesini sağlar. Ayrıca, genel amaçlı bir betik dili olarak da yararlıdır.
 # URL: http://www.php.net
 # Paketçi: milisarge halityilmaz1982
-# Gerekler: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff db mariadb openldap postgresql sqlite unixodbc cyrus-sasl kerberos
+# Gerekler: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff db mariadb openldap postgresql sqlite unixodbc cyrus-sasl kerberos libgd glibc libmcrypt freetds net-snmp tidy-html5 libzip
 
 isim=php7
 _isim=php
@@ -21,7 +21,7 @@ derle() {
 	patch -p0 -i ${SRC}/php-fpm.patch
 	patch -p0 -i ${SRC}/php.ini.patch
 
-    	_phpconfig="--srcdir=${SRC}/${_isim}-${surum} \
+    	local _phpconfig="--src=../${_isim}-${surum} \
 		--config-cache \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
@@ -35,13 +35,14 @@ derle() {
 		--without-pear \
 		"
 
-	_phpextensions="\
+	local _phpextensions="\
 		--enable-bcmath=shared \
 		--enable-calendar=shared \
 		--enable-dba=shared \
 		--enable-exif=shared \
 		--enable-ftp=shared \
 		--enable-gd-native-ttf \
+		--enable-intl=shared \
 		--enable-mbstring \
 		--enable-shmop=shared \
 		--enable-soap=shared \
@@ -52,7 +53,7 @@ derle() {
 		--enable-zip=shared \
 		--with-bz2=shared \
 		--with-curl=shared \
-		--with-db5=/usr \
+		--with-db=/usr \
 		--with-enchant=shared,/usr \
 		--with-freetype-dir=/usr \
 		--with-gd=shared,/usr \
@@ -60,9 +61,6 @@ derle() {
 		--with-gettext=shared \
 		--with-gmp=shared \
 		--with-iconv=shared \
-		--with-imap\
-		--with-imap-ssl \
-		--with-imap=shared \
 		--with-kerberos=/usr \
 		--with-ldap=shared \
 		--with-ldap-sasl \
@@ -81,6 +79,7 @@ derle() {
 		--with-pgsql=shared \
 		--with-pspell=shared \
 		--with-readline \
+		--with-snmp=shared \
 		--with-sqlite3=shared,/usr \
 		--with-tidy=shared \
 		--with-unixODBC=shared,/usr \
@@ -92,9 +91,10 @@ derle() {
 
 	EXTENSION_DIR=/usr/lib/php/modules
 	export EXTENSION_DIR
-	
-	cd ${SRC}/${_isim}-${surum}
 
+	mkdir ${SRC}/build
+	cd ${SRC}/build
+	ln -s ../${_isim}-${surum}/configure
 	./configure ${_phpconfig} \
 		--enable-cgi \
 		--enable-fpm \
@@ -105,6 +105,15 @@ derle() {
 		${_phpextensions}
 	make
 
+	# apache
+	# reuse the previous run; this will save us a lot of time
+	cp -a ${SRC}/build ${SRC}/build-apache
+	cd ${SRC}/build-apache
+	./configure ${_phpconfig} \
+		--with-apxs2 \
+		${_phpextensions}
+	make		
+	cd ${SRC}/build
 	make -j1 INSTALL_ROOT=${PKG} install-{modules,cli,build,headers,programs,pharcmd}
 	install -D -m644 ${SRC}/${_isim}-${surum}/php.ini-production ${PKG}/etc/php/php.ini
 	install -d -m755 ${PKG}/etc/php/conf.d/
@@ -112,7 +121,7 @@ derle() {
 	# remove static modules
 	rm -f ${PKG}/usr/lib/php/modules/*.a
 	# remove modules provided by sub packages
-	rm -f ${PKG}/usr/lib/php/modules/{enchant,gd,imap,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f ${PKG}/usr/lib/php/modules/{enchant,gd,intl,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 	# remove empty directory
-	rmdir ${PKG}/usr/include/php/include		
+	rmdir ${PKG}/usr/include/php/include
 }
