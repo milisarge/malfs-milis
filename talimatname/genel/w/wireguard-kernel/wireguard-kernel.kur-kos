@@ -1,0 +1,2 @@
+depmod
+modprobe wireguard
