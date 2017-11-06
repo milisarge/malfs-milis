@@ -1,0 +1,27 @@
+# Tanım: Java, HTML5, PHP, Groovy, C ve C++ için geliştirme ortamı.
+# URL: http://netbeans.org/
+# Paketçi: halityilmaz1982
+# Gerekler: openjdk freefont-ttf xorg-libxtst giflib atk 
+
+isim=netbeans
+surum=8.2
+devir=1
+_altsurum=201609300101
+
+kaynak=( http://download.netbeans.org/netbeans/$surum/final/zip/$isim-$surum-$_altsurum.zip
+        https://cdn.rawgit.com/ComFreek/chocolatey-packages/779f5c96f817ed1fa0d76fd90841873dc6c0ba74/icons/netbeans.png
+        $isim.desktop
+        netbeans.conf
+        netbeans.sh)
+
+derle() {
+	mkdir -p "$PKG/usr/"{bin,share/applications}
+	install -Dm755 "$SRC/netbeans.sh" "$PKG/usr/bin/$isim"
+	mkdir -p $PKG/etc
+	cp -r "$SRC/$isim" "$PKG/usr/share/"
+	install -Dm644 "$isim.desktop" "$PKG/usr/share/applications/$isim.desktop"
+	install -Dm644 "$SRC/netbeans.png" "$PKG/usr/share/pixmaps/$isim.png"
+	rm -r "$PKG/usr/share/$isim/bin"
+	cp $PKG/usr/share/netbeans/etc/netbeans.clusters $PKG/etc/
+    cp $PKG/usr/share/netbeans/etc/netbeans.import $PKG/etc/
+}

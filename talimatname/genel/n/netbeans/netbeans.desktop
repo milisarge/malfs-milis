@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Netbeans
+Comment=Netbeans IDE
+Exec=netbeans %f
+Icon=netbeans
+Terminal=false
+Type=Application
+Categories=Development,IDE;
+StartupNotify=false
