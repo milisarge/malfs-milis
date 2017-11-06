@@ -1,0 +1,27 @@
+# Tanım: Hafif bir pdf görüntüleme programı
+# URL: http://www.emma-soft.com/projects/epdfview/
+# Paketçi: halityilmaz1982
+# Gerekler:gtk2 poppler hicolor-icon-theme
+
+isim=epdfview
+surum=0.1.8
+devir=1
+
+kaynak=(http://anduin.linuxfromscratch.org/BLFS/epdfview/epdfview-0.1.8.tar.bz2
+http://www.linuxfromscratch.org/patches/blfs/svn/epdfview-0.1.8-fixes-2.patch)
+
+derle() {
+
+cd $isim-$surum
+patch -Np1 -i ../epdfview-0.1.8-fixes-2.patch
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+for size in 24 32 48; do
+  ln -svf ../../../../epdfview/pixmaps/icon_epdfview-$size.png \
+          /usr/share/icons/hicolor/${size}x${size}/apps
+done
+unset size
+update-desktop-database
+gtk-update-icon-cache -t -f --include-image-data /usr/share/icons/hicolor
+}
