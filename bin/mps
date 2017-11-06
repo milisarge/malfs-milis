@@ -2358,8 +2358,10 @@ ayarlar() {
 				bagimli_bilgi "$2" "dogrula";;
 			-bbd)
 				bagimli_bilgi_dosyala "$2" ;;
+			### mps -tb talimatismi = ilgili talimata gerek duyan(ters-gerekler) talimatları listeler.
 			-tb|tersbag)
 				ters_bagimli_bilgi "$2" ;;
+				exit 0;;
 			-tbk)
 				ters_bagimli_kontrol "$2" ;;
 			### mps pka paketismi = ilgili paketin depo-gitdepo uyumluluğunu kontrol eder.
