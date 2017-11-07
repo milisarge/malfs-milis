@@ -1,0 +1,18 @@
+# Tanım: Histogramik işlevlerle şekiller çizme uygulaması
+# URL: http://fyre.navi.cx/
+# Paketçi: milisarge
+# Gerekler: openexr libglade gnet shared-mime-info hicolor-icon-theme desktop-file-utils 
+# Grup: grafik_tasarım
+
+isim=fyre
+surum=1.0.1
+devir=1
+kaynak=(http://releases.navi.cx/fyre/fyre-$surum.tar.bz2)
+
+derle() {
+	cd "${SRC}/${isim}-${surum}"
+	./configure --prefix=/usr
+	make
+	make update_xdgmime=/bin/false update_fdodesktop=/bin/false gtk_update_icon_cache=/bin/false \
+	prefix="${PKG}/usr" install
+}

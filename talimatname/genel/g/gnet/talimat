@@ -1,0 +1,18 @@
+# Tanım: Basit bir ağ küt/üphanesi
+# URL: http://live.gnome.org/GNetLibrary
+# Paketçi: milisarge
+# Gerekler: glib
+# Grup: kütüphane
+
+isim=gnet
+surum=2.0.8
+devir=1
+kaynak=(http://ftp.gnome.org/pub/GNOME/sources/gnet/${surum%.*}/gnet-2.0.8.tar.bz2)
+
+derle() {
+	cd ${isim}-${surum}
+	LIBS+="-lglib-2.0" ./configure --prefix=/usr
+	make
+	make DESTDIR="${PKG}" install
+	rm -rf $PKG/usr/share/gtk-doc
+}
