@@ -1,0 +1,27 @@
+# Tanım: Android IDE
+# URL: http://tools.android.com/
+# Paketçi: halityilmaz1982
+# Gerekler: openjdk freetype xorg-libxrender xorg-libxtst alsa-lib xorg-mesa
+
+isim=android-studio
+surum=3.0.0.18
+devir=1
+_altsurum=171.4408382
+tanim=Java, HTML5, PHP, Groovy, C ve C++ için geliştirme ortamı
+
+kaynak=(https://dl.google.com/dl/android/studio/ide-zips/$surum/android-studio-ide-$_altsurum-linux.zip
+        $isim.desktop)
+
+derle() {
+
+cd $isim
+
+install -d $PKG/{opt/$isim,usr/bin}
+cp -a bin gradle lib jre plugins $PKG/opt/$isim
+ln -s /opt/android-studio/bin/studio.sh $PKG/usr/bin/$isim
+install -Dm644 bin/studio.png $PKG/usr/share/pixmaps/$isim.png
+install -Dm644 $SRC/$isim.desktop $PKG/usr/share/applications/$isim.desktop
+
+chmod -R ugo+rX $PKG/opt
+
+}

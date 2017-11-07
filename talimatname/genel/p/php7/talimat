@@ -1,7 +1,7 @@
 # Tanım: Dinamik web sitelerinde kullanılan programlama kodunun doğrudan HTML içine gömülmesini sağlar. Ayrıca, genel amaçlı bir betik dili olarak da yararlıdır.
 # URL: http://www.php.net
 # Paketçi: milisarge halityilmaz1982
-# Gerekler: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff db mariadb openldap postgresql sqlite unixodbc cyrus-sasl kerberos libgd glibc libmcrypt freetds net-snmp tidy-html5 libzip
+# Gerekler: apache libxml2 aspell aspell-tr libxslt enchant pcre pth freetype libexif libjpeg-turbo libpng libtiff db mariadb openldap postgresql sqlite unixodbc cyrus-sasl kerberos libgd glibc libmcrypt freetds net-snmp tidy libzip
 
 isim=php7
 _isim=php
@@ -42,7 +42,6 @@ derle() {
 		--enable-exif=shared \
 		--enable-ftp=shared \
 		--enable-gd-native-ttf \
-		--enable-intl=shared \
 		--enable-mbstring \
 		--enable-shmop=shared \
 		--enable-soap=shared \
@@ -121,7 +120,7 @@ derle() {
 	# remove static modules
 	rm -f ${PKG}/usr/lib/php/modules/*.a
 	# remove modules provided by sub packages
-	rm -f ${PKG}/usr/lib/php/modules/{enchant,gd,intl,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f ${PKG}/usr/lib/php/modules/{enchant,gd,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 	# remove empty directory
 	rmdir ${PKG}/usr/include/php/include
 }
