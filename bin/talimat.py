@@ -319,13 +319,8 @@ class renk:
 
 class Arge:
 	
+	# arch pkgbuild linki indirme
 	def indir(self,link):
-		'''
-		if "packages/" in link:
-			paket=link.split("?h=packages/")[1]
-		else:
-			paket=link.split("?h=")[1]
-		'''
 		paket=link.split("/")[-1]
 		if paket == "":
 			paket=link.split("/")[-2]
@@ -340,7 +335,7 @@ class Arge:
 			if e.code == 404:
 				print renk.hata+link+" bulunamadı!"+renk.son
 				return None
-				
+								
 	def aur_link(self,paket):
 		link="https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h="+paket
 		return link
@@ -352,7 +347,33 @@ class Arge:
 	def arch_link(self,paket):
 		link="https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/"+paket
 		return link	
-	
+		
+	# alpine apkbuild linki indirme
+	def indir_alp(self,paket,tip="isim"):
+		if tip=="isim":
+			repolar=["main","community","testing"]
+			for repo in repolar:
+				link="https://git.alpinelinux.org/cgit/aports/plain/"+repo+"/"+paket+"/APKBUILD"
+				try:
+					veri = urllib2.urlopen(link)
+					print renk.tamamb+repo+" reposunda bulundu"+renk.son
+					open(paket+"_apkbuild","w").write(veri.read())
+					return paket+"_apkbuild"
+				except urllib2.HTTPError, e:
+					if e.code == 404:
+						print renk.hata+link+" bulunamadı!"+renk.son
+		elif tip=="link":
+			paket=link.split("/")[-2]
+			print renk.tamamb+paket+" indiriliyor..."+renk.son
+			try:
+				veri = urllib2.urlopen(link)
+				open(paket+"_apkbuild","w").write(veri.read())
+				return paket+"_apkbuild"
+			except urllib2.HTTPError, e:
+				if e.code == 404:
+					print renk.hata+link+" bulunamadı!"+renk.son
+					return None
+		return None
 		
 if __name__ == '__main__':
 	
@@ -362,22 +383,39 @@ if __name__ == '__main__':
 		arge=Arge()
 		if os.path.exists(dosya):
 			talimat.cevir(dosya)
-		elif "https" in dosya or "http" in dosya:
-			Pdosya=arge.indir(dosya)
-			talimat.cevir(Pdosya)
-		elif dosya == "-a":
-			if len(sys.argv) > 2:
-				paket=sys.argv[2]
-				paket=str(paket)
-				link=arge.aur_link(paket)
-				dosya=arge.indir(link)
-				if dosya is None:
-					link=arge.arch_link(paket)
+		elif len(sys.argv) > 2:
+			if dosya == "-a":
+				dosya=sys.argv[2]
+				if "https" in dosya or "http" in dosya:
+					Pdosya=arge.indir(dosya)
+					talimat.cevir(Pdosya)
+				else :
+					paket=sys.argv[2]
+					paket=str(paket)
+					link=arge.aur_link(paket)
 					dosya=arge.indir(link)
 					if dosya is None:
-						link=arge.arch2_link(paket)
+						link=arge.arch_link(paket)
 						dosya=arge.indir(link)
-				if link and dosya:
-					talimat.cevir(dosya)	
+						if dosya is None:
+							link=arge.arch2_link(paket)
+							dosya=arge.indir(link)
+					if link and dosya:
+						talimat.cevir(dosya)	
+			elif dosya == "-al":
+				link=sys.argv[2]
+				if "https" in link or "http" in link:
+					Pdosya=arge.indir_alp(link,"link")
+					print Pdosya
+					#talimat.cevir(Pdosya)
+				else :
+					paket=sys.argv[2]
+					paket=str(paket)
+					dosya=arge.indir_alp(paket,"isim")
+					if dosya:
+						print dosya
+						#talimat.cevir(dosya)
+					else:
+						renk.hata+str(dosya)+" repolarda bulunamadı!"+renk.son	
 		else:
 			print renk.hata+dosya+" paremetre bulunamadı!"+renk.son
