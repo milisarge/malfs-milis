@@ -15,8 +15,8 @@ Milis başta ülkemizin işletim sistemi ihtiyaçlarını dikkate almayı hedefl
 Genel felsefe olarak ülkemizdeki bilgisayar kullanıcıları için linuxu kolaylaştırıp 
 Milis işletim sisteminin sorunsuz bir işletim sistemi olmasını sağlamayı ve yazılımsal olarak dışa bağımlı olmaktan kurtarmayı esas alır. 
 Milis'in ana hedefi ülkemizde her bilgisayarda(resmi,işyerleri,ev kullanıcıları) bağımsız yazılım ve bileşkenlerinin kullanımını sağlamaktır.
-Kısaca Milis,sanal dünyanın getirisi olarak hakkımız olan kaybettiğimiz bilim ve ilerlemenin yeniden yakalanması için Milisçe bir çalışmadır. 
-Ayrıca her türlü katkıda bulunmak isteyenler için bulunmaz bir türkçe açık kaynak projesidir.
+Kısaca Milis Linux,sanal dünyanın getirisi olarak hakkımız olan kaybettiğimiz bilim ve ilerlemenin yeniden yakalanması için Milisçe bir çalışmadır. 
+Ayrıca her türlü katkıda bulunmak isteyenler için bulunmaz bir Türkçe açık kaynak projesidir.
 
 
 Milis Anasayfa : http://milislinux.org
