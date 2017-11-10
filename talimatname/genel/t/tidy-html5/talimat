@@ -17,7 +17,7 @@ derle() {
       -DBUILD_TAB2SPACE=ON        \
       ../..
     make
-    make INSTALL_ROOT=$PKG install
+    make DESTDIR=$PKG install
     install -d $PKG/usr/bin
     install -v -m755 $SRC/$isim-$surum/build/cmake/tab2space $PKG/usr/bin
 }
