@@ -6,12 +6,12 @@
 isim=cmus
 surum=2.7.1
 devir=1
-kaynak=(https://github.com/cmus/cmus/archive/v${surum}.tar.gz)
+kaynak=(https://github.com/cmus/cmus/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
     cd $isim-$surum
 
     ./configure prefix=/usr mandir=/usr/man CONFIG_ARTS=n
     make
-    make DESTDIR=$PKG install install-man
+    make DESTDIR=$PKG install
 }
