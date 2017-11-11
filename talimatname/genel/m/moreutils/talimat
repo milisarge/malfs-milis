@@ -1,0 +1,19 @@
+# Tanım: ek unix araçları
+# URL: https://joeyh.name/code/moreutils/
+# Paketçi: milisarge
+# Gerekler:  docbook2x docbook-xml perl-xml-sax git perl-ipc-run perl-timedate perl-time-duration
+
+isim=moreutils
+surum=0.61
+devir=1
+kaynak=(https://github.com/rtlanceroad/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd $isim-$surum
+	make DOCBOOK2XMAN=docbook2man
+	make PREFIX="$PKG"/usr install
+	 chmod 0644 "$PKG"/usr/share/man/man1/*
+	mv "$PKG"/usr/share/man/man1/ts.1 "$PKG"/usr/share/man/man1/ts.1moreutils
+	mv "$PKG"/usr/share/man/man1/parallel.1 "$PKG"/usr/share/man/man1/parallel-moreutils.1
+	mv "$PKG"/usr/bin/parallel "$PKG"/usr/bin/parallel-moreutils
+}
