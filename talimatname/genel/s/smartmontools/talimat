@@ -4,14 +4,20 @@
 # Gerekler: 
 
 isim=smartmontools
-surum=6.5
+surum=6.6
 devir=1
 
 kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz )
 
 derle() {
 	cd $isim-$surum
-	./configure --prefix=/usr
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--with-initscriptdir=/etc/rc.d/init.d \
+	--localstatedir=/var \
+	--with-savestates \
+	--with-attributelog
+
 	make
 	make DESTDIR=$PKG install
 }
