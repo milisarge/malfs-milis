@@ -4,29 +4,17 @@
 # Gerekler:
 
 isim=sysstat
-surum=11.1.8	
+surum=11.6.1	
 devir=1
-kaynak=(http://perso.wanadoo.fr/sebastien.godard/sysstat-11.1.8.tar.xz)
+kaynak=(http://perso.wanadoo.fr/sebastien.godard/sysstat-$surum.tar.xz)
  
 derle() {
-
-cd $isim-$surum
-	   
-source  /etc/blfs-bootscripts
-wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-tar xvf $scripts-$scriptsversion.tar.bz2 
-
-sa_lib_dir=/usr/lib/sa    \
-sa_dir=/var/log/sa        \
-conf_dir=/etc/sysconfig   \
-./configure --prefix=/usr \
-            --disable-file-attr 
-make
-
-make DESTDIR=$PKG install
-
-	
-cd $scripts-$scriptsversion
-make DESTDIR=$PKG install-sysstat
-	
+	cd $isim-$surum
+	sa_lib_dir=/usr/lib/sa    \
+	sa_dir=/var/log/sa        \
+	conf_dir=/etc/sysconfig   \
+	./configure --prefix=/usr \
+				--disable-file-attr 
+	make
+	make DESTDIR=$PKG install
 }
