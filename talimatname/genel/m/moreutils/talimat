@@ -1,7 +1,7 @@
 # Tanım: ek unix araçları
 # URL: https://joeyh.name/code/moreutils/
 # Paketçi: milisarge
-# Gerekler:  docbook2x docbook-xml perl-xml-sax git perl-ipc-run perl-timedate perl-time-duration
+# Gerekler:  docbook2x docbook-xml perl-xml-sax git perl-timedate perl-time-duration
 
 isim=moreutils
 surum=0.61
