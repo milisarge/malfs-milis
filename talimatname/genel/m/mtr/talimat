@@ -1,10 +1,10 @@
 # Tanım: Matt's traceroute - ağ test aracı
 # URL: http://www.bitwizard.nl/mtr/
 # Paketçi: milisarge
-# Gerekler: 
+# Gerekler: libcap
 
 isim=mtr
-surum=0.87
+surum=0.92
 devir=1
 kaynak=(ftp://ftp.bitwizard.nl/mtr/$isim-$surum.tar.gz)
 
