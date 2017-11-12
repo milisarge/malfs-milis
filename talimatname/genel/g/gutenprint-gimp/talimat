@@ -1,0 +1,27 @@
+# Tanım: Gimp gutenprint eklentisi
+# URL: http://gimp-print.sourceforge.net
+# Paketçi: milisarge
+# Gerekler: gutenprint gimp
+
+isim=gutenprint-gimp
+surum=5.2.13
+devir=1
+kaynak=(http://downloads.sourceforge.net/gimp-print/gutenprint-$surum.tar.bz2)
+
+derle() {
+    cd gutenprint-$surum
+
+    ./configure --prefix=/usr \
+                --disable-{samples,escputil} \
+                --without-{foomatic,ghostscript,doc} \
+                --enable-libgutenprintui2 \
+                --with-gimp2
+    make
+    make DESTDIR=$PKG install
+
+    rm $PKG/usr/lib/libgutenprint.*
+    rm $PKG/usr/lib/pkgconfig/gutenprint.pc
+    rm -r $PKG/usr/include/gutenprint
+    rm -r $PKG/usr/lib/cups
+    rm -r $PKG/usr/{bin,sbin,share} $PKG/etc
+}

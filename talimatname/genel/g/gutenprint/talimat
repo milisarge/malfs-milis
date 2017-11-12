@@ -1,21 +1,23 @@
 # Tanım: POSIX sistemleri için en kaliteli yazıcı sürücüleri
 # URL: http://gimp-print.sourceforge.net
 # Paketçi: milisarge
-# Gerekler: ijs gimp gtk2 cups foomatic-db-engine ghostscript
+# Gerekler: ghostscript
 
 isim=gutenprint
-surum=5.2.9
-devir=2
+surum=5.2.13
+devir=1
 kaynak=(http://downloads.sourceforge.net/gimp-print/$isim-$surum.tar.bz2)
 
 derle() {
-cd $isim-$surum
-sed -i 's|$(PACKAGE)/doc|doc/$(PACKAGE)-$(VERSION)|' \
-       {,doc/,doc/developer/}Makefile.in
+	cd $isim-$surum
+    
+    ./configure --prefix=/usr \
+                --disable-samples \
+                --disable-libgutenprintui2 \
+                --without-gimp2
 
-./configure --prefix=/usr \
---disable-static \
---infodir=/usr/share/info --mandir=/usr/share/man
-make
-make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
+
+    rm -r $PKG/usr/share/gutenprint/doc
 }
