@@ -1,0 +1,17 @@
+# Tanım: Gerçek zamanlı iletişim için asenkron kütüphane desteği
+# Url: http://www.creytiv.com/re.html
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: kütüphane
+
+isim=libre
+surum=0.5.6
+devir=1
+kaynak=(http://www.creytiv.com/pub/re-$surum.tar.gz)
+
+derle() {
+	cd re-$surum
+	make RELEASE=1
+	make DESTDIR=$PKG install
+}
+

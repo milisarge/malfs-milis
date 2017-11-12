@@ -1,0 +1,17 @@
+# Tanım: Gerçek zamanlı sesli ve video iletişim için kütüphane
+# Url: http://www.creytiv.com/rem.html
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: kütüphane
+
+isim=librem
+surum=0.5.2
+devir=1
+kaynak=(http://www.creytiv.com/pub/rem-$surum.tar.gz)
+
+derle() {
+	cd rem-$surum
+	make RELEASE=1
+	make DESTDIR=$PKG install
+}
+
