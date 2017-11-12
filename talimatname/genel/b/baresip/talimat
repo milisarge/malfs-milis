@@ -1,7 +1,7 @@
 # Tanım: Baresip taşınabilir,modular ses ve video destekli SIP kullanıcı uygulaması.
 # Url: http://www.creytiv.com/baresip.html
 # Paketçi: milisarge
-# Gerekler: libre librem
+# Gerekler: libre librem alsa-lib
 # Grup: medya
 
 isim=baresip
