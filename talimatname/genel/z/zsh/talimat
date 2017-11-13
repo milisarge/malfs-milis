@@ -1,29 +1,41 @@
-# Tanım: UNIX icin programlanabilir bir komut arayuzu (shell)
+# Tanım: UNIX için programlanabilir zsh komut arayüzü
 # URL: http://www.zsh.org 
 # Paketçi: milisarge
 # Gerekler: pcre 
+# Grup: sistem
 
 isim=zsh
-surum=5.3.1
+surum=5.4.2
 devir=1
-kaynak=(http://www.zsh.org/pub/$isim-$surum.tar.xz)
+kaynak=(http://www.zsh.org/pub/$isim-$surum.tar.gz)
 
 derle(){
     cd $isim-$surum
-    ./configure --prefix=/usr \
-                --bindir=/bin \
-                --sysconfdir=/etc/zsh \
-                --enable-etcdir=/etc/zsh
+     ./configure \
+      --prefix=/usr \
+      --enable-etcdir=/etc/zsh \
+      --enable-zshrc=/etc/zsh/zshrc \
+      --enable-zlogin=/etc/zsh/zshlogin \
+      --enable-zshenv=/etc/zsh/zshenv \
+      --enable-fndir=/usr/share/zsh/$version/functions \
+      --enable-site-fndir=/usr/share/zsh/site-functions \
+      --enable-maildir-support \
+      --enable-function-subdirs \
+      --enable-pcre \
+      --enable-restricted-r \
+      --enable-cap
     make
-    makeinfo Doc/zsh.texi --html -o Doc/html
-    makeinfo Doc/zsh.texi --html --no-split --no-headers -o Doc/zsh.html
-    makeinfo Doc/zsh.texi --plaintext -o Doc/zsh.txt
-    make DESTDIR=$PKG install
+   
+    # fix a bug in recent glibc versions (2.16)
+    sed -e '/#include "attr.mdh"/d;/#include "attr.pro/d' \
+        -e 's|\(#include <sys/xattr.h>\)|\1\n#include "attr.mdh"\n#include "attr.pro"|g' \
+        -i Src/Modules/attr.c
 
-    make infodir=$PKG/usr/share/info install.info
-    install -v -dm755 $PKG/usr/share/doc/zsh-$surum/html
-    install -v -m644 Doc/html/* $PKG/usr/share/doc/zsh-$surum/html
-    install -v -m644 Doc/zsh.{html,txt} $PKG/usr/share/doc/zsh-$surum
+    make
+    make DESTDIR=$PKG install 
+    install -d $PKG/bin
+    ln -s /usr/bin/zsh $PKG/bin
+
 }
 
 
