@@ -1,0 +1,29 @@
+# Tanım: Şifreli dizin yuvaları yapmaya yarayan konsol uygulaması
+# Url: https://www.dyne.org/software/tomb
+# Paketçi: milisarge
+# Gerekler: zsh cryptsetup gnupg sudo e2fsprogs
+
+isim=tomb
+surum=git
+devir=1
+kaynak=(https://raw.githubusercontent.com/parazyd/gtomb/master/gtomb::gtomb-$devir)
+_git_url="https://github.com/dyne/Tomb"
+
+derle() {
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone $_git_url $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim/extras/kdf-keys
+	make
+	make DESTDIR="${PKG}" PREFIX=/usr install
+	cd $SRC/$isim
+	make DESTDIR="${PKG}" PREFIX=/usr install
+	sed -i "s|/usr/local/bin|/usr/bin|g" $SRC/gtomb-$devir
+	cp $SRC/gtomb-$devir $PKG/usr/bin/gtomb
+}
+
