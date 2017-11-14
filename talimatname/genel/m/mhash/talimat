@@ -1,0 +1,20 @@
+# Tanım:  Farklı hash algoritmaları kütüphanesi
+# URL:  http://mhash.sourceforge.net/
+# Paketçi: milisarge
+# Gerekler:  
+# Grup: kütüphane
+
+isim=mhash
+surum=0.9.9.9
+devir=1
+kaynak=(http://downloads.sourceforge.net/mhash/mhash-$surum.tar.gz)
+
+derle() {
+    cd $isim-$surum
+    ./configure --prefix=/usr --mandir=/usr/share/man
+    make
+    make DESTDIR=$PKG \
+        PREFIX=/usr \
+        MANDIR=/usr/share/man\
+        install
+}

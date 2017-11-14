@@ -1,0 +1,24 @@
+diff -urN a/src/Arguments.h b/src/Arguments.h
+--- a/src/Arguments.h	2017-02-25 20:00:52.071294580 +0100
++++ b/src/Arguments.h	2017-02-25 20:02:45.312061439 +0100
+@@ -100,7 +100,7 @@
+ 	static const VERBOSITY	Default_Verbosity = NORMAL ;
+ 	static const unsigned long	Default_Radius = 0 ; // there is no default radius for all file formats
+ 	static const unsigned int	Max_Algorithm = 3 ;
+-	static const float		Default_Goal = 100.0 ;
++	static constexpr float		Default_Goal = 100.0 ;
+ 	static const DEBUGCOMMAND	Default_DebugCommand = NONE ;
+ 	static const bool		Default_Check = false ;
+ 	static const unsigned int	Default_DebugLevel = 0 ;
+diff -urN a/src/ProgressOutput.h b/src/ProgressOutput.h
+--- a/src/ProgressOutput.h	2017-02-25 20:00:52.071294580 +0100
++++ b/src/ProgressOutput.h	2017-02-25 20:03:13.528919155 +0100
+@@ -64,7 +64,7 @@
+ 	 **/
+ 	void done (float rate, float avgweight = NoAvgWeight) const ;
+ 
+-	static const float NoAvgWeight = -1.0 ;
++	static constexpr float NoAvgWeight = -1.0 ;
+ 
+ 	protected:
+ 	std::string vcompose (const char *msgfmt, va_list ap) const ;

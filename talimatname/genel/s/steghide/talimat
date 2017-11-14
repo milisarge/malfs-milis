@@ -1,0 +1,22 @@
+# Tanım:  Ses ve resim dosyaları içinde veri gizleme uygulaması
+# URL:  http://steghide.sourceforge.net/
+# Paketçi: milisarge
+# Gerekler: mhash libmcrypt
+# Grup: güvenlik
+
+isim=steghide
+surum=0.5.1
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2 
+		float-constexpr.diff 
+		climit.diff 
+		template-headers.diff)
+
+derle() {
+    cd $isim-$surum
+    cat $SRC/*.diff | patch -Np1
+    CONFIG_SHELL=/bin/bash CXX='g++ -std=c++11' ./configure --prefix=/usr --mandir=/usr/share/man
+    make
+    make DESTDIR=$PKG PREFIX=/usr MANDIR=/usr/share/man install
+    rm -rf $PKG/usr/share/doc
+}
