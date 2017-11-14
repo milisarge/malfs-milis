@@ -2,4 +2,4 @@
 if [ -f /boot/initramfs ];then
 	mv /boot/initramfs /boot/initramfs_eski
 fi
-dracut -N --force --xz --omit systemd --add-drivers ahci -f /boot/initramfs `uname -r`
+dracut -N --force --xz --omit systemd --add plymouth --add-drivers ahci -f /boot/initramfs `uname -r`
