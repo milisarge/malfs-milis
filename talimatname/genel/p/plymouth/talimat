@@ -1,13 +1,14 @@
 # Tanım: Kernel modulleri desteğine sahip bir grafik önyükleme başlatma ekranı
 # URL: http://www.freedesktop.org/wiki/Software/Plymouth
 # Paketçi: milisarge
-# Gerekler: xorg-libdrm pango docbook-xsl gtk3
+# Gerekler: xorg-libdrm pango docbook-xsl gtk2
 
 isim=plymouth
-surum=0.9.3
-devir=2
+surum=0.8.8
+devir=1
 
-kaynak=(https://www.freedesktop.org/software/plymouth/releases/$isim-$surum.tar.xz
+#kaynak=(https://www.freedesktop.org/software/plymouth/releases/$isim-$surum.tar.xz
+kaynak=(http://www.freedesktop.org/software/$isim/releases/$isim-$surum.tar.bz2
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
 		plymouthd.conf)
 
