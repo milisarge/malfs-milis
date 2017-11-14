@@ -953,6 +953,35 @@ talimat_surum_takip(){
 	fi
 }
 
+kaynak_kod_indir(){
+	local konum adres adres2
+	_kk_indir="wget --no-check-certificate -q --show-progress"
+	konum=$(talimat_bul $1)
+	if [[ $konum == "-1" || $konum == "0" ]];then
+		ryaz 31 "$1 $_talimat_bulunamadi"
+		exit 1
+	else
+		source $konum/talimat
+		for adres in $kaynak;do
+			
+			urlkont='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
+			if [[ $adres =~ $urlkont ]];then 
+				if [[ $adres =~ "::"  ]];then
+					adres2=$(echo $adres | cut -d':' -f-2)
+					ryaz 32 "$adres2 indiriliyor."
+					$_kk_indir $adres2
+				else
+					ryaz 32 "$adres indiriliyor."
+					$_kk_indir $adres
+				fi
+			else
+				ryaz 32 "$adres kopyalanıyor."
+				[ -f $konum/$adres ] && cp  $konum/$adres .
+			fi	
+		done
+	fi
+}
+
 paket_derle(){
 	#parametre olarak direk konum gelecek
 	#eski derleme kalıntılarını temizle
@@ -2198,6 +2227,14 @@ ayarlar() {
 					paket_inkur_oto "$2" 
 				fi 
 				exit 0 ;;
+			### mps kaynak paketismi = ilgili paketin kaynak kodunu indirir.
+			kaynak)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					exit 1
+				fi
+				kaynak_kod_indir "$2" 
+				exit 0 ;;	
 			# özel git projesi kurmak için
 			gitkur)
 				git_proje_kur "$2" ;;
