@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="1.1.5 Milis Paket Sistemi"
+versiyon="1.1.6 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -168,7 +168,7 @@ paket_sil(){
 				if [ "$tersbag_goster" = "evet" ];then
 					ryaz 31 "ters bagimliliklar"
 					ryaz 31 "------------------"
-					ters_bagimli_kontrol "$paket"
+					ters_bagimli_bilgi "$paket"
 					ryaz 31 "------------------"
 				fi
 				#_etkilenen=$(silme_etkilenen_kontrol /tmp/$paket.sil $paket)
@@ -666,18 +666,23 @@ paket_sil_gerekli(){
 		for pkaltb in $(cat /tmp/$1.gerekler.liste);do
 			if [ -d $VT/$pkaltb ];then
 				tbsonuc=()
-				tbsonuc=$(ters_bagimli_bilgi $pkaltb)
+				tbsonuc=$(ters_bagimli_bilgi $pkaltb "kurulu")
 				if [ ${#tbsonuc[0]} = 0 ];then
+					ryaz 32 "$pkaltb silinebilir."
+					echo "$pkaltb" >> /tmp/$1.silinecekler
+				elif [ "$tbsonuc" = "$1" ];then
 					ryaz 32 "$pkaltb silinebilir."
 					echo "$pkaltb" >> /tmp/$1.silinecekler
 				else
 					ryaz 31 "$pkaltb silinemez."
+					echo "ters gerekleri: $tbsonuc"
 				fi
 			else
 				ryaz 32 "$_zaten $pkaltb $_paket_kurulu_degil"
 			fi
 		done
-		cat /tmp/$1.silinecekler
+		#cat /tmp/$1.silinecekler
+		#paket_sil_oto "/tmp/$1.silinecekler"
 		paket_sil_oto_onayli "/tmp/$1.silinecekler"
 	else
 		ryaz 32 "$_zaten $1 $_paket_kurulu_degil"
@@ -1077,7 +1082,10 @@ bagimlilar(){
 }
 
 ters_bagimli_bilgi(){
+	local gtbpaket _sadece_kurulu
+	_sadece_kurulu="hepsi"
 	gtbpaket=$1
+	if [ ! -z "$2" ];then _sadece_kurulu="$2";fi
 	tbgdosya=$(mktemp)
 	grep -rli "\s${gtbpaket}\s.*Gerekler\|Gerekler.*\s${gtbpaket}\s" $talimatname > $tbgdosya ; 
 	grep -rli "\s${gtbpaket}\s.*Gerekler\|Gerekler.*\s${gtbpaket}\s" $ektalimatname >> $tbgdosya ; 
@@ -1085,7 +1093,17 @@ ters_bagimli_bilgi(){
 	grep -rli "\s${gtbpaket}\s.*Gerekler\|Gerekler.*\s${gtbpaket}$" $talimatname >> $tbgdosya ; 
 	cat $tbgdosya | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort > /tmp/${gtbpaket}.tb.txt
 	rm -f $tbgdosya
-	cat /tmp/${gtbpaket}.tb.txt
+	[ -f /tmp/${gtbpaket}.tbk.txt ] && rm -f /tmp/${gtbpaket}.tbk.txt
+	if [ $_sadece_kurulu = "kurulu" ];then
+		for _kurulu_pkt in $(cat /tmp/${gtbpaket}.tb.txt);do
+			if [ -d $VT/$_kurulu_pkt ];then 
+				echo "$_kurulu_pkt" >> /tmp/${gtbpaket}.tbk.txt
+			fi
+		done
+		[ -f /tmp/${gtbpaket}.tbk.txt ] && cat "/tmp/${gtbpaket}.tbk.txt"
+	else
+		cat "/tmp/${gtbpaket}.tb.txt"
+	fi
 	rm -rf $tbgdizin
 }
 
@@ -2133,8 +2151,8 @@ ayarlar() {
 			gsil)
 				paket_sil "$2" "hayir" "evet"
 				exit 0 ;;	
-			### mps -S|silgrub paketismi = ilgili paketi altbağımlılıklarını da sorarak kaldırır.
-			-S|silgrub)
+			### mps -S|silgrup paketismi = ilgili paketi altbağımlılıklarını da sorarak kaldırır.
+			-S|silgrup)
 				paket_sil_gerekli "$2" 
 				exit 0 ;;
 			### mps ara aranan = paket isimleri ve açıklamalarında anahtar kelime arar.
