@@ -2158,8 +2158,8 @@ ayarlar() {
 			gsil)
 				paket_sil "$2" "hayir" "evet"
 				exit 0 ;;	
-			### mps -S|silgrup paketismi = ilgili paketi altbağımlılıklarını da sorarak kaldırır.
-			-S|silgrup)
+			### mps -S paketismi = ilgili paketi altbağımlılıklarını da sorarak kaldırır.
+			-S)
 				paket_sil_gerekli "$2" 
 				exit 0 ;;
 			### mps -Sz paketismi = ilgili paketi altbağımlılıklarını da sormadan sırayla kaldırır.
