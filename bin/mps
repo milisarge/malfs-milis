@@ -653,7 +653,8 @@ paket_sil_oto(){
 
 paket_sil_oto_onayli(){
 	local spkt
-	for spkt in `perl -e 'print reverse <>' $1`;do
+	#for spkt in `perl -e 'print reverse <>' $1`;do
+	for spkt in $(tac $1);do
 		paket_sil "$spkt" "hayir" "evet"
 	done
 }
