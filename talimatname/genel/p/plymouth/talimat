@@ -1,11 +1,11 @@
 # Tanım: Kernel modulleri desteğine sahip bir grafik önyükleme başlatma ekranı
-# URL: http://www.pulseaudio.org
+# URL: http://www.freedesktop.org/wiki/Software/Plymouth
 # Paketçi: milisarge
 # Gerekler: xorg-libdrm pango docbook-xsl gtk3
 
 isim=plymouth
 surum=0.9.3
-devir=1
+devir=2
 
 kaynak=(https://www.freedesktop.org/software/plymouth/releases/$isim-$surum.tar.xz
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
@@ -24,19 +24,19 @@ derle() {
 	--enable-tracing \
 	--without-rhgb-compat-link \
 	--with-gdm-autostart-file=yes \
-	--with-logo=/usr/share/plymouth/VL.png \
-	--with-background-start-color-stop=0x000000 \
-	--with-background-end-color-stop=0x4D4D4D \
 	--without-system-root-install \
 	--program-prefix="" \
 	--program-suffix="" \
-	--build="x86_64-milis-linux"
-  
-	make || exit 1
+	--with-logo=/usr/share/plymouth/milis.png \
+	--enable-gtk --enable-gdm-transition --enable-pango \
+	--enable-systemd-integration=no \
+	--disable-documentation
+	make || return 1
 
 	make install DESTDIR=$PKG || exit 1
 	
-	rm -rf $PKG/*.wants
+	rm -f "$PKG"/usr/lib/plymouth/*.la
+	#rm -rf $PKG/*.wants
 	
 	install -Dm644 "$SRC/milis-linux-tree.png" "$PKG/usr/share/plymouth/milis.png"
 	install -Dm644 "$SRC/plymouthd.conf" "$PKG/etc/plymouth/plymouthd.conf"
