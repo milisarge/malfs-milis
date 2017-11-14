@@ -18,5 +18,5 @@ derle() {
     CONFIG_SHELL=/bin/bash CXX='g++ -std=c++11' ./configure --prefix=/usr --mandir=/usr/share/man
     make
     make DESTDIR=$PKG PREFIX=/usr MANDIR=/usr/share/man install
-    rm -rf $PKG/usr/share/doc
+    rm -rf $PKG/usr/share/{doc,locale}
 }
