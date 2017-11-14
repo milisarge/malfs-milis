@@ -659,6 +659,7 @@ paket_sil_oto_onayli(){
 }
 
 paket_sil_gerekli(){
+	local _onay
 	if [ -d $VT/$1 ];then
 		bagimli_bilgi_dosyala "$1"
 		rm -f /tmp/$1.silinecekler
@@ -681,9 +682,15 @@ paket_sil_gerekli(){
 				ryaz 32 "$_zaten $pkaltb $_paket_kurulu_degil"
 			fi
 		done
+		_onay="onay"
+		# otomatik onay verme durum kontrolü
+		if [ ! -z "$2" ];then _onay="$2";fi
 		#cat /tmp/$1.silinecekler
-		#paket_sil_oto "/tmp/$1.silinecekler"
-		paket_sil_oto_onayli "/tmp/$1.silinecekler"
+		if [ $_onay = "oto" ];then
+			paket_sil_oto "/tmp/$1.silinecekler"
+		else
+			paket_sil_oto_onayli "/tmp/$1.silinecekler"
+		fi
 	else
 		ryaz 32 "$_zaten $1 $_paket_kurulu_degil"
 		exit 1
@@ -2155,6 +2162,10 @@ ayarlar() {
 			-S|silgrup)
 				paket_sil_gerekli "$2" 
 				exit 0 ;;
+			### mps -Sz paketismi = ilgili paketi altbağımlılıklarını da sormadan sırayla kaldırır.
+			-Sz)
+				paket_sil_gerekli "$2" "oto" 
+				exit 0 ;;
 			### mps ara aranan = paket isimleri ve açıklamalarında anahtar kelime arar.
 			-pa|ara)
 				paket_ara "$2" 
@@ -2642,27 +2653,6 @@ ayarlar() {
 }
 yardim_icerik(){
 	cat /root/bin/mps | sed -e 's/^[ \t]*//' | sed -n '/^###/p'  | sed  '/ /s/^###//g' | awk '{split($0,a,"=");  printf "%-6s %-13s %-18s %-40s \n",$1,$2,$3,a[2]}'
-}
-yardim() {
-    cat <<_EOF
-    
-$betikad $versiyon Milis Paket Sistemi
-
-Secenekler:
- -G			ikili paket veritabanını günceller
- -Ggit			git sunucusundan talimatname ve sistem gunceller
-  kur paket_ismi	ilgili paketi bagimliliklariyla agdan cekip kurar
- -s paket_ismi		ilgili paketi kaldirir
- -k paket_ismi		yereldeki paketi bagimliliksiz kurar
- -kl			kurulu paket listesini verir
- -kk paket_ismi		ilgili paketin kurulu olma durumunu verir
- -d paket_ismi		ilgili paketin talimat dosyasına göre 
-			sadece derler,paketler
- -derle paket_ismi	ilgili paketin talimat dosyasına göre bagimliliklariyla 
-			beraber derler,paketler ve kurar.
-
-_EOF
-    exit 1
 }
 
 ana(){
