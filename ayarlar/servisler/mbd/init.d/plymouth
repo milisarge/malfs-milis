@@ -15,7 +15,7 @@ PATH="/sbin:/bin:/usr/sbin:/usr/bin"
 NAME="plymouth"
 DESC="Boot splash manager"
 
-test -x /usr/sbin/plymouth || exit 0
+test -x /usr/sbin/plymouthd || exit 0
 
 if [ -r "/etc/default/${NAME}" ]
 then
@@ -51,7 +51,7 @@ case "${1}" in
 			true)
 				if ! plymouth --ping
 				then
-					/usr/sbin/plymouth --mode=shutdown --attach-to-session
+					/usr/sbin/plymouthd --mode=shutdown --attach-to-session
 				fi
 
 				RUNLEVEL="$(/sbin/runlevel | cut -d " " -f 2)"
