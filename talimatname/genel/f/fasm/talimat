@@ -1,0 +1,19 @@
+# Tanım: Hızlı ve verimli fasm assembly derleyicisi
+# URL: https://flatassembler.net/
+# Paketçi: milisarge
+# Gerekler: 
+
+isim=fasm
+surum=1.72
+devir=1
+kaynak=(https://flatassembler.net/fasm-$surum.tgz)
+
+derle() {
+    cd "$SRC/fasm"
+  
+	SRCDIR=Linux/x64
+	./fasm.x64 source/${SRCDIR}/fasm.asm
+	mv source/${SRCDIR}/fasm ./fasm
+    mkdir -p $PKG/usr/bin
+    install -m755 fasm $PKG/usr/bin/
+}
