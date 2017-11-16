@@ -1,7 +1,7 @@
-aufs4.10 kbuild patch
+aufs4.13 kbuild patch
 
 diff --git a/fs/Kconfig b/fs/Kconfig
-index 83eab52..31f16c4 100644
+index 7aee6d6..ec92031 100644
 --- a/fs/Kconfig
 +++ b/fs/Kconfig
 @@ -248,6 +248,7 @@ source "fs/pstore/Kconfig"
@@ -21,15 +21,3 @@ index 7bbaca9..a026491 100644
  obj-$(CONFIG_PSTORE)		+= pstore/
  obj-$(CONFIG_EFIVAR_FS)		+= efivarfs/
 +obj-$(CONFIG_AUFS_FS)           += aufs/
-diff --git a/include/uapi/linux/Kbuild b/include/uapi/linux/Kbuild
-index f330ba4..67d88cd 100644
---- a/include/uapi/linux/Kbuild
-+++ b/include/uapi/linux/Kbuild
-@@ -59,6 +59,7 @@ header-y += atmsvc.h
- header-y += atm_tcp.h
- header-y += atm_zatm.h
- header-y += audit.h
-+header-y += aufs_type.h
- header-y += auto_fs4.h
- header-y += auto_fs.h
- header-y += auxvec.h

@@ -1,15 +1,16 @@
-# Tanım: kararli kernel surumu
+# Tanım: Kararli kernel sürümü
 # URL: http://www.kernel.org
 # Paketçi: milisarge
 # Gerekler: linux-firmware intel-ucode
 
 isim=kernel
-_basekernel=4.10
-surum=4.10.17
+_basekernel=4.13
+surum=4.13.12
 devir=1
 
-kaynak=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
+kaynak=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$_basekernel.tar.xz
         http://www.kernel.org/pub/linux/kernel/v4.x/patch-${surum}.xz
+        https://github.com/copperhead/linux-hardened/releases/download/4.13.12.a/linux-hardened-${surum}.a.patch
         config
         aufs4-loopback.patch
         aufs4-base.patch
@@ -27,11 +28,14 @@ kaynak=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
 
 derle() {
   
-  cd "${SRC}/linux-${_basekernel}"
+  cd "${SRC}/linux-$_basekernel"
   cp "${SRC}/patch-$surum.xz" .
   unxz patch-$surum.xz
   # güncel kernel yama
   patch -p1 -i "patch-${surum}"
+  
+  # güvenli kernel yaması
+  patch -p1 -i "${SRC}/linux-hardened-${surum}.a.patch"
   
   patch -p1 -i "${SRC}/i8042-fix-aliases.patch"
   
@@ -42,9 +46,11 @@ derle() {
   patch -p1 -i "${SRC}/aufs4-loopback.patch"
   patch -p1 -i "${SRC}/aufs4-mmap.patch"
   patch -p1 -i "${SRC}/aufs4-standalone.patch"
-  patch -p1 -i "${SRC}/lockdep-debug.patch"
+  #patch -p1 -i "${SRC}/lockdep-debug.patch"
   patch -p1 -i "${SRC}/tmpfs-idr.patch"
   patch -p1 -i "${SRC}/vfs-ino.patch"
+  #fix error: too few arguments to function 'loop_switch' error with RC aufs patches
+  sed -i "s|return loop_switch(lo, NULL);|return loop_switch(lo, NULL, NULL);|g" drivers/block/loop.c
   
   cat "${SRC}/config" > ./.config
 
@@ -59,13 +65,10 @@ derle() {
   export KBUILD_BUILD_USER="milisarge"
   export KBUILD_BUILD_HOST="`uname -m`.milislinux.org"
   
-  # get kernel version
-  make prepare
-  
-  # rewrite configuration
-  yes "" | make config >/dev/null
+  # ayarları onaylama
+  yes "" | make oldconfig >/dev/null
 
-  # build!
+  # derleme
   make ${MAKEFLAGS} bzImage modules
 
   KARCH=x86
@@ -78,17 +81,17 @@ derle() {
   make INSTALL_MOD_PATH="${PKG}" modules_install
   cp arch/$KARCH/boot/bzImage "${PKG}/boot/kernel-${surum}"
 
-  # add vmlinux
+  # vmlinux un source a eklenmesi,modül derlerken bu geçici silinecek
   install -D -m644 vmlinux "${PKG}/usr/src/linux-${_kernver}/vmlinux"
 
-  # remove build and source links
+  # derleme kalıntılarının temizlenmesi
   rm -f "${PKG}"/lib/modules/${_kernver}/{source,build}
-  # remove the firmware
+  # firmwarelerin temizlenmesi
   rm -rf "${PKG}/lib/firmware"
-  # gzip -9 all modules to save 100MB of space
+  # modüllerin sıkıştırılarak ek yer kazanılması
   find "${PKG}" -name '*.ko' -exec gzip -9 {} \;
   
-  #linux-headers
+  #linux-headers / linux modülleri
 
   install -dm755 "${PKG}/lib/modules/${_kernver}"
 
@@ -146,11 +149,7 @@ derle() {
     mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c/${i}"
     cp -a drivers/media/i2c/${i}/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c/${i}"
   done
-
-  # add docbook makefile
-  install -D -m644 Documentation/DocBook/Makefile \
-    "${PKG}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
-
+  
   # add dm headers
   mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/md"
   cp drivers/md/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/md"

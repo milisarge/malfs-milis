@@ -1,14 +1,18 @@
 #!/bin/bash
-surum=4.10.17
+surum=4.13.12
 sonek=milis
+depmod ${surum}-$sonek
 cd /boot
-if [ -f kernel ];then
-	rm kernel
-fi
+[ -L /boot/kernel ] && rm -rf /boot/kernel
 ln -s kernel-$surum kernel
 if [ -f initramfs ];then
 	mv initramfs initramfs_eski
 fi
-dracut -N --force --xz --omit systemd --add-drivers "ahci" -f /boot/initramfs $surum-$sonek
-os-prober
-grub-mkconfig -o /boot/grub/grub.cfg
+
+[ -f /usr/bin/dracut ] && dracut -N --force --xz --omit systemd --add-drivers "ahci" -f /boot/initramfs $surum-$sonek
+[ -f /usr/bin/os-prober ] && os-prober
+if [ -f /usr/bin/grub-mkconfig ];then
+	[ -f /boot/grub/grub.cfg ] && mv /boot/grub/grub.cfg /boot/grub/grub.cfg.eski
+	grub-mkconfig -o /boot/grub/grub.cfg
+fi
+cd -
