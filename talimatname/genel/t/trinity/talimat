@@ -12,6 +12,7 @@ derle() {
 	cd $isim-$surum
 	./configure --prefix=/usr
 	make
-	make DESTDIR=$PKG install
+	mkdir -p $PKG/usr/bin
+    install -m755 trinity $PKG/usr/bin/
 }
 
