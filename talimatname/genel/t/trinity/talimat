@@ -1,0 +1,17 @@
+# Tanım: Linux sistem çağrılarının test uygulaması
+# Url: http://codemonkey.org.uk/projects/trinity/
+# Paketçi: milisarge
+# Gerekler: 
+
+isim=trinity
+surum=1.8
+devir=1
+kaynak=(http://codemonkey.org.uk/projects/trinity/trinity-1.8.tar.xz)
+
+derle() {
+	cd $isim-$surum
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
+
