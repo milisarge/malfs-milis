@@ -1,7 +1,7 @@
 # Tanım: Aygıtlar arasında ikili dosya aktarımları için kullanılan Nesne Değişimi Protokolünü uygular.
 # URL: http://dev.zuckschwerdt.org/openobex/
 # Paketçi: milisarge
-# Gerekler: bluez libusb docbook-xsl
+# Gerekler: bluez libusb
 
 isim=openobex
 surum=1.7.2
@@ -9,13 +9,13 @@ devir=1
 
 kaynak=( http://downloads.sourceforge.net/$isim/$isim-$surum-Source.tar.gz)
 derle() {
-cd $isim-$surum-Source
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_INSTALL_LIBDIR=lib  \
-      -DCMAKE_BUILD_TYPE=Release  \
-      ..
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum-Source
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+		  -DCMAKE_INSTALL_LIBDIR=lib  \
+		  -DCMAKE_BUILD_TYPE=Release  \
+		  ..
+	make
+	make DESTDIR=$PKG install
 }
