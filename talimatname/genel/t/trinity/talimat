@@ -1,7 +1,8 @@
 # Tanım: Linux sistem çağrılarının test uygulaması
 # Url: http://codemonkey.org.uk/projects/trinity/
 # Paketçi: milisarge
-# Gerekler: 
+# Gerekler:
+# Grup: güvenlik 
 
 isim=trinity
 surum=1.8
