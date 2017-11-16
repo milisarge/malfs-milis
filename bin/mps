@@ -794,7 +794,7 @@ sistem_guncelle(){
 		printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
 		kpkt=$(ls -rct $VT | tr " " "\n" | sed -n ${count}'p')
 		pk_guncelle="e"
-		case "${esgec[@]}" in  *"$kpkt"*) pk_guncelle="h" ;; esac
+		case "${esgec[@]}" in  "$kpkt") pk_guncelle="h" ;; esac
 		if [ "$pk_guncelle" = "e" ];then
 			paket_guncelle "$kpkt" $GS_CIKTI
 			#printf "."
