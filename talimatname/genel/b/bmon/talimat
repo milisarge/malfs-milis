@@ -1,21 +1,17 @@
 # Tanım: Ağ bant genişliği göstergesi.
 # URL: http://freshmeat.net/projects/bmon
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: confuse libnl
 
 isim=bmon
-surum=2.1.0
+surum=4.0
 devir=1
-kaynak=(http://crux.ster.zone/downloads/$isim/$isim-$surum.tar.gz
-	$isim-$surum-gcc4.diff)
+kaynak=(https://github.com/tgraf/bmon/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-
-	cd $isim-$surum
-
-	patch -p1 -i $SRC/$isim-$surum-gcc4.diff
-	./configure --prefix=/usr
-
+	cd $isim-$surum	
+	./autogen.sh
+	./configure --prefix=/usr --sysconfdir=/etc --disable-asound
 	make
 	make DESTDIR=$PKG install
 }

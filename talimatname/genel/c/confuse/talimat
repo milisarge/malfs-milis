@@ -1,0 +1,18 @@
+# Tanım: Ayar dosyalarını ayrıştıran C kütüphanesi
+# URL: https://github.com/martinh/libconfuse
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: kütüphane
+
+isim=confuse
+surum=3.2.1
+devir=1
+kaynak=(https://github.com/martinh/libconfuse/releases/download/v3.2.1/confuse-$surum.tar.gz)
+
+derle() {
+  cd "${SRC}/${isim}-${surum}"
+  ./configure --prefix=/usr --enable-shared
+  make
+  make check
+  make DESTDIR="${PKG}" install
+}
