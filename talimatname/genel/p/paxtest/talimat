@@ -5,20 +5,13 @@
 # Grup: güvenlik 
 
 isim=paxtest
-surum=0.9.11
+surum=0.9.15
 devir=1
-kaynak=(https://github.com/j-0-t/staekka/raw/master/external/source/paxtest/paxtest-0.9.11.tar.gz
-	    paxtest.sh)
+kaynak=(https://grsecurity.net/~spender/${isim}-${surum}.tar.gz)
 
 derle() {
 	cd $isim-$surum
-	make linux64
-	mkdir -p $PKG/usr/share/paxtest
-	for i in anonmap execbss execdata execheap execstack shlibbss shlibdata mprotanon mprotbss mprotdata mprotheap mprotstack mprotshbss mprotshdata writetext randamap randheap1 randheap2 randmain1 randmain2 randshlib randstack1 randstack2 randarg1 randarg2 randexhaust1 randexhaust2 rettofunc1 rettofunc2 rettofunc1x rettofunc2x
-	do
-		cp $i $PKG/usr/share/paxtest/
-	done
-	mkdir -p $PKG/usr/bin
-    install -m755 $SRC/paxtest.sh $PKG/usr/bin/paxtest
+	_make="make -f Makefile.psm BINDIR=/usr/bin RUNDIR=/usr/lib/$isim"
+	$_make
+	$_make DESTDIR="$PKG" install
 }
-
