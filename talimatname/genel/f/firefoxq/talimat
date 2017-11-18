@@ -7,13 +7,13 @@ isim=firefoxq
 surum=57.0
 devir=1
 
-kaynak=(https://ftp.mozilla.org/pub/mozilla.org/$firefox/releases/$surum/source/firefox-$surum.source.tar.xz
-        http://download.cdn.mozilla.net/pub/$firefox/releases/$surum/linux-x86_64/xpi/tr.xpi::tr-$surum.xpi
+kaynak=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$surum/source/firefox-$surum.source.tar.xz
+        http://download.cdn.mozilla.net/pub/firefox/releases/$surum/linux-x86_64/xpi/tr.xpi::tr-$surum.xpi
         https://github.com/oltulu/milis/raw/master/firefox/mozilla.tar.xz::mozilla-milis.tar.xz)
 
 derle() {
 
-cd $firefox-$surum
+cd firefox-$surum
 # Locale autodetect
 sed -i '/intl.locale.matchOS/s/false/true/' modules/libpref/init/all.js
 
@@ -166,7 +166,7 @@ about=Milis Linux için Mozilla Firefox
 
 [Preferences]
 app.distributor=milis
-app.distributor.channel=$firefox
+app.distributor.channel=firefox
 app.partner.archlinux=milis
 END
 
