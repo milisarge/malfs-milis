@@ -1,7 +1,7 @@
 # Tanım: Mozilla.org'dan Bağımsız Web Tarayıcısı
 # URL: http://www.mozilla.com/firefox/
 # Paketçi: milisarge
-# Gerekler: libvpx libevent rust cargo autoconf2 pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
+# Gerekler: libvpx libevent clang rust cargo autoconf2 pulseaudio gconf yasm sqlite libvpx libevent alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
 
 isim=firefoxq
 surum=57.0
@@ -50,8 +50,8 @@ ac_add_options --disable-gconf
 ac_add_options --enable-system-sqlite
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
+#ac_add_options --with-system-nspr
+#ac_add_options --with-system-nss
 #ac_add_options --with-system-icu
 
 # If you are going to apply the patch for system graphite
@@ -86,7 +86,7 @@ ac_add_options --with-pthreads
 
 ac_add_options --with-system-bz2
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-png
+#ac_add_options --with-system-png
 ac_add_options --with-system-zlib
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
@@ -97,7 +97,7 @@ test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozcon
 sed -e 's/256/224/'                           \
     -i netwerk/protocol/http/Http2Session.cpp
     
-SHELL=/bin/sh make -f client.mk
+SHELL=/bin/sh make -f client.mk || SHELL=/bin/sh make -f client.mk
 
 mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
 
