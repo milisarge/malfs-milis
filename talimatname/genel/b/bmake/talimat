@@ -1,28 +1,28 @@
-# Tanım: NetBSD 'make' inşa aracının taşınabilir bir sürümü.
+# Tanım: NetBSD make inşa aracının taşınabilir bir sürümü.
 # URL: http://www.crufty.net/help/sjg/bmake.html
 # Paketçi: milisarge
 # Gerekler:
 
 isim=bmake
-surum=20150910
+surum=20171028
 devir=1
-kaynak=(http://www.crufty.net/ftp/pub/sjg/bmake-$surum.tar.gz)
+kaynak=(http://www.crufty.net/ftp/pub/sjg/bmake-$surum.tar.gz
+)
 
-derle(){
-    cd $isim
-    # Add missing bsd.*.mk symlinks (thanks to Arch)
+derle() {
+    cd "$SRC/$isim"
+    # Add missing bsd.*.mk symlinks
     _links_orig="dep doc init lib links man nls obj own prog subdir"
     _links_new="dep doc inc init lib links man nls obj own prog subdir"
     sed -i -e "s/$_links_orig/$_links_new/" mk/install-mk
-
-    cd $SRC
+    cd "$SRC"
     mkdir -p bmake-build
     cd bmake-build
     sh ../bmake/boot-strap --prefix=/usr
-
-    cd $SRC/bmake-build
-    # Fix directory permissions on install
-    install -dm0755 $PKG/usr/bin
-    install -dm0755 $PKG/usr/share/man/cat1
-    sh ../bmake/boot-strap --prefix=/usr --install-destdir=$PKG op=install
+    install -dm0755 "$PKG/usr/bin"
+    install -dm0755 "$PKG/usr/share/man/cat1"
+    install -dm0755 "$PKG/usr/share/licenses/$isim"
+    sh ../bmake/boot-strap --prefix=/usr --install-destdir="$PKG" op=install
+    head -n70 ../bmake/main.c >"$PKG"/usr/share/licenses/$isim/LICENSE
 }
+
