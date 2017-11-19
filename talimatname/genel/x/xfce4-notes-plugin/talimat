@@ -1,0 +1,22 @@
+# Tanım: Xfce4 panel için not eklentisi
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-notes-plugin
+# Paketçi: milisarge
+# Gerekler: intltool xfce4-panel libunique1 hicolor-icon-theme 
+
+isim=xfce4-notes-plugin
+surum=1.8.1
+devir=1
+kaynak=(http://archive.xfce.org/src/panel-plugins/xfce4-notes-plugin/${surum%.*}/xfce4-notes-plugin-$surum.tar.bz2)
+
+derle() {
+	cd "$SRC/$isim-$surum"
+	./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib \
+	--localstatedir=/var \
+	--disable-static \
+	--disable-debug
+	make
+	make DESTDIR="$PKG" install
+}
