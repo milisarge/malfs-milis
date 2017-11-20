@@ -5,7 +5,7 @@
 
 isim=bluez
 surum=5.47
-devir=2
+devir=3
 
 kaynak=(http://www.kernel.org/pub/linux/bluetooth/$isim-$surum.tar.xz
 	    http://www.linuxfromscratch.org/patches/blfs/svn/bluez-$surum-obexd_without_systemd-1.patch
@@ -64,7 +64,9 @@ derle() {
 		filename=$(basename $files)
 		install -Dm755 ${SRC}/${isim}-${surum}/tools/$filename ${PKG}/usr/bin/$filename
 	done
-
+    mkdir -p "$PKG/usr/sbin"
+    ln -sf /usr/lib/bluetooth/bluetoothd "$PKG/usr/sbin/bluetoothd"
+    ln -sf /usr/lib/bluetooth/obexd "$PKG/usr/sbin/obexd"
 	rm -rf ${PKG}/lib/udev/hid2hci
 	cd /sources/milis.git/ayarlar/servisler
 	make DESTDIR=$PKG kur-bluetooth    
