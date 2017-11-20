@@ -1,11 +1,11 @@
 # Tanım: milislinux saat ayarlama uygulaması
-# URL: http://milis.gungre.ch/
+# URL: http://milislinux.org
 # Paketçi: milisarge
 # Gerekler: xdialog
 
 isim=milislinux-saat
 surum=1.0
-devir=1
+devir=2
 kaynak=(kk_milislinux-saat
 		milislinux-saat.xpm
 		milislinux-saat.desktop)

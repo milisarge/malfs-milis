@@ -50,3 +50,4 @@ $HWCLOCK --set --date="$NEWDATE $NEWTIME"&&$HWCLOCK --hctosys
 THEDATE=`date`
 Xdialog --title "bilgi" --msgbox "Zaman ayarlama yapıldı. $THEDATE" 0 0
 
+pgrep xfce4-panel && xfce4-panel -r
