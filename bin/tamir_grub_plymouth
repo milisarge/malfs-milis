@@ -1,1 +1,1 @@
-sed -i 's#^\(GRUB_CMDLINE_LINUX_DEFAULT="quiet\)"$#\1 rhgb"#' /etc/default/grub/grub.default
+sudo sed -i 's#^\(GRUB_CMDLINE_LINUX_DEFAULT="quiet\)"$#\1 rhgb"#' /etc/default/grub/grub.default
