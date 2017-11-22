@@ -1,0 +1,16 @@
+# Tanım: Python game-oyun kütüphanesi
+# URL: http://www.pygame.org
+# Paketçi: milisarge
+# Gerekler: python-setuptools python sdl-mixer sdl-ttf sdl-image
+
+isim=python-pygame
+_isim=pygame
+surum=1.9.3
+devir=1
+kaynak=(https://files.pythonhosted.org/packages/source/${_isim::1}/pygame/pygame-$surum.tar.gz)
+
+derle() {
+  cd ${_isim}-${surum}
+  python2 config.py -auto
+  python2 setup.py install --root="${PKG}" --prefix=/usr
+}
