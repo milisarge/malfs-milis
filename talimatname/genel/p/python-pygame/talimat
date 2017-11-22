@@ -1,7 +1,7 @@
 # Tanım: Python game-oyun kütüphanesi
 # URL: http://www.pygame.org
 # Paketçi: milisarge
-# Gerekler: python-setuptools python sdl-mixer sdl-ttf sdl-image
+# Gerekler: python-setuptools python sdl-mixer sdl-ttf sdl-image portmidi
 
 isim=python-pygame
 _isim=pygame
