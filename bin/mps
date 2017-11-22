@@ -1212,6 +1212,17 @@ silme_etkilenen_kontrol(){
 	done
 }
 
+# bir paket ile kurulacak yeni paketlerin listesini verir.
+
+yeni_kurulacak_paketler(){
+	[ -f /tmp/mevcut_kurulu.liste ] && rm -rf /tmp/mevcut_kurulu.liste
+	ls $VT > /tmp/mevcut_kurulu.liste
+	derleme_listyap $1 &> /dev/null
+	comm -13 <(sort /tmp/mevcut_kurulu.liste) <(sort tumgerekler.liste)
+	[ -f tumgerekler.liste ] && rm -rf  tumgerekler.liste
+	[ -f gerek.liste ] && rm -rf  gerek.liste
+}
+
 # iki dosyanın içerik karşılaştırması yapar.
 dosya_karsilastir(){
 	if cmp -s "$1" "$2"
@@ -2398,16 +2409,16 @@ ayarlar() {
 			-kl|liste)
 				ls $VT ;;	
 			### mps -dly paketismi = ilgili paketin genel ve tüm bağımlılık listesini verir,oluşturur.
-			-dly|--drly)
+			-dly|dliste)
 				derleme_listyap "$2" 
 				exit 0 ;;	
-			-dly_eski|--drly)
-				derleme_listyap_eski "$2" ;;	
 			### mps -kly paketismi = ilgili paketin ve kurulması gereken altgereklerini verir,oluştur.
 			-kly)
 				kurulum_listyap "$2" ;;	
-			-dlb|--drlb)
-				derleme_listbilgi "$2";;	
+			### mps -ykp paketismi = ilgili paketin kurulmak istenirse,kurulacak yeni paketleri listeler.
+			-ykp)
+				yeni_kurulacak_paketler "$2" 
+				exit 0 ;;	
 			#sunucu bilgisi alma
 			-sun2|sunucu)
 				ryaz 32 $sunucu ;;
