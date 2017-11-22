@@ -7,28 +7,33 @@ isim=portmidi
 surum=217
 devir=1
 
-kaynak=(http://downloads.sourceforge.net/project/portmedia/$isim/$surum/$isim-src-$surum.zip \
+kaynak=(http://downloads.sourceforge.net/project/portmedia/$isim/$surum/$isim-src-$surum.zip
         portmidi-217-build-fix.patch)
 
 derle() {
 
-unset MAKEFLAGS
-
-cd $isim
-sed -i "s#/usr/local#/usr#" */CMakeLists.txt pm_python/setup.py
-
-mkdir -p pm_java/Release
-patch -p1 -i $SRC/portmidi-217-build-fix.patch
-
-cmake . -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=Release \
+	cd $isim
+	sed -i "s#/usr/local#/usr#" */CMakeLists.txt pm_python/setup.py
+    mkdir -p pm_java/Release
+    JAVA_HOME="/opt/jdk"
+	export PATH=$PATH:$JAVA_HOME/bin
+	patch -p1 -i $SRC/portmidi-217-build-fix.patch
+	
+	cmake . \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_CXX_FLAGS="-O2 -fPIC" \
+	-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=$PKG/usr/bin \
+	-DJAVA_AWT_INCLUDE_PATH="$JAVA_HOME/include" \
+	-DJAVA_INCLUDE_PATH="$JAVA_HOME/include" \
+	-DJAVA_INCLUDE_PATH2="$JAVA_HOME/include/linux" \
+	-DJAVA_JVM_LIBRARY="$JAVA_HOME/jre/lib/amd64/server/libjvm.so" \
+	-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=Release \
     -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=Release \
     -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=Release
+	make -j1
+	make DESTDIR=$PKG install
 
-make
-make DESTDIR=$PKG install
-
-# Fix missing symlink for libporttime.so (FS#21528)
-ln -s libportmidi.so $PKG/usr/lib/libporttime.so
+	# Fix missing symlink for libporttime.so (FS#21528)
+	ln -s libportmidi.so $PKG/usr/lib/libporttime.so
 }
 
