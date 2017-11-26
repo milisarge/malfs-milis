@@ -1,0 +1,67 @@
+#!/bin/sh
+#
+# /etc/init.d/dropbear: start/stop dropbear ssh daemon
+#
+
+SSD=/sbin/start-stop-daemon
+PROG=/usr/sbin/dropbear
+PID=/var/run/dropbear.pid
+
+CONV=/usr/bin/dropbearconvert
+KEYG=/usr/bin/dropbearkey
+
+RSA=/etc/dropbear/dropbear_rsa_host_key
+DSS=/etc/dropbear/dropbear_dss_host_key
+ECDSA=/etc/dropbear/dropbear_ecdsa_host_key
+
+create_keys() {
+	if [ ! -f $RSA ]; then
+	   if [ -f /etc/ssh/ssh_host_rsa_key ]; then
+	      $CONV openssh dropbear /etc/ssh/ssh_host_rsa_key $RSA
+	   else
+	      $KEYG -t rsa -s 4096 -f $RSA
+	   fi
+	fi
+	if [ ! -f $DSS ]; then
+	   if [ -f /etc/ssh/ssh_host_dsa_key ]; then
+	      $CONV openssh dropbear /etc/ssh/ssh_host_dsa_key $DSS
+	   else
+	      $KEYG -t dss -f $DSS
+	   fi
+	fi
+	if [ ! -f $ECDSA ]; then
+	   if [ -f /etc/ssh/ssh_host_ecdsa_key ]; then
+	      $CONV openssh dropbear /etc/ssh/ssh_host_ecdsa_key $ECDSA
+	   else
+	      $KEYG -t ecdsa -s 521 -f $ECDSA
+	   fi
+	fi
+}
+
+case $1 in
+start)
+	create_keys
+	$SSD --start --pidfile $PID --exec $PROG
+	;;
+stop)
+	$SSD --stop --retry 10 --pidfile $PID
+	;;
+restart)
+	$0 stop
+	$0 start
+	;;
+status)
+	$SSD --status --pidfile $PID
+	case $? in
+	0) echo "$PROG is running with pid $(cat $PID)" ;;
+	1) echo "$PROG is not running but the pid file $PID exists" ;;
+	3) echo "$PROG is not running" ;;
+	4) echo "Unable to determine the program status" ;;
+	esac
+	;;
+*)
+	echo "usage: $0 [start|stop|restart|status]"
+	;;
+esac
+
+# End of file

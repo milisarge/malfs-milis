@@ -1,0 +1,23 @@
+# Tanım: Küçük ve güvenli SSH2 sunucu ve istemci uygulaması
+# URL: http://matt.ucc.asn.au/dropbear/dropbear.html
+# Paketçi: milisarge
+# Gerekler: 
+
+isim=dropbear
+surum=2017.75
+devir=1
+kaynak=(http://matt.ucc.asn.au/$isim/releases/$isim-$surum.tar.bz2 
+        servis)
+
+derle() {
+    cd $isim-$surum
+
+    sed -i 's|libexec|lib/ssh|; s|bin/X11|bin|' options.h
+
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+
+    install -d $PKG/etc/{rc.d/init.d,dropbear}/
+    install -D -m 755 $SRC/servis $PKG/etc/rc.d/init.d/dropbear
+}
