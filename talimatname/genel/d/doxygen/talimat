@@ -4,7 +4,7 @@
 # Gerekler: python cmake
 
 isim=doxygen
-surum=1.8.11
+surum=1.8.13
 devir=1
 kaynak=(http://ftp.stack.nl/pub/$isim/$isim-$surum.src.tar.gz)
 
@@ -15,7 +15,7 @@ cd build
 cmake -G "Unix Makefiles" \
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_INSTALL_PREFIX=/usr \
-..
+-Wno-dev ..
 make
 
 make DESTDIR=$PKG install

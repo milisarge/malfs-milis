@@ -1,43 +1,28 @@
 # Tanım: Sonraki nesil python üst düzey betik dili
 # URL: URL: http://www.python.org
 # Paketçi: milisarge
-# Gerekler: libffi sqlite 
+# Gerekler: bluez valgrind
 
 _pybasever=2.7
 
 isim=python
-surum=2.7.11
+surum=2.7.14
 devir=1
 
 kaynak=(
-http://www.python.org/ftp/python/$surum/Python-$surum.tar.xz
-python.png)
+http://www.python.org/ftp/python/$surum/Python-$surum.tar.xz)
 
 
 derle() {
     cd Python-$surum
-    ./configure --prefix=/usr \
-                --with-system-expat \
-                --with-system-ffi \
-                --enable-shared \
-                --enable-unicode=ucs4
+    ./configure --prefix=/usr       \
+            --enable-shared     \
+            --with-system-expat \
+            --with-system-ffi   \
+            --with-ensurepip=yes \
+            --enable-unicode=ucs4
     make
     make DESTDIR=$PKG install
     chmod -v 755 $PKG/usr/lib/libpython2.7.so.1.0
-
-    # Part of python3
-    rm -f $PKG/usr/bin/2to3
-
-    mkdir -p $PKG/usr/share/applications
-    echo "[Desktop Entry]
-Categories=Development;Documentation
-Exec=xdg-open file:///usr/share/doc/python-$surum/index.html
-Icon=python
-StartupNotify=false
-Terminal=false
-Type=Application
-Name=Python Documentation
-Name[tr]=Dokumentasyon Python" > $PKG/usr/share/applications/python.desktop
-    install -Dm644 $SRC/$isim.png \
-        $PKG/usr/share/icons/hicolor/48x48/apps/$isim.png
+    install -v -dm755 $PKG/usr/share/doc/$isim-$surum   
 }

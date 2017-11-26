@@ -4,14 +4,17 @@
 # Gerekler: adwaita-icon-theme avahi libwnck3 avahi gcr gnome-desktop iso-codes libgnome-keyring libnotify webkit2gtk3 gobject-introspection nss xorg-libxkbfile gnome-desktop gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
 
 isim=epiphany
-surum=3.22.4
+surum=3.26.1
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/epiphany/{$surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $isim-$surum
- ./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	mkdir build
+	cd build
+	meson --prefix=/usr
+	ninja
+	DESTIR="$PKG" ninja install
+
 }

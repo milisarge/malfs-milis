@@ -4,20 +4,17 @@
 # Gerekler:
 
 isim=icu
-surum=59.1
+surum=60.1
 devir=1
-kaynak=(http://download.icu-project.org/files/icu4c/$surum/icu4c-${version//./_}-src.tgz)
+kaynak=(http://download.icu-project.org/files/icu4c/$surum/icu4c-${surum//./_}-src.tgz)
 
 derle() {
+	
 	cd icu/source
 
-	sed -i 's/xlocale/locale/' i18n/digitlst.cpp
-	./configure --prefix=/usr \
-	--sysconfdir=/etc \
-	--mandir=/usr/share/man \
-	--sbindir=/usr/bin
+	
+	./configure \
+	--prefix=/usr
 	make
-    make -k check
-	make -j1 DESTDIR=$PKG install
-	install -Dm644 ${SRC}/icu/LICENSE ${PKG}/usr/share/licenses/icu/LICENSE
+    	make -j1 DESTDIR=$PKG install
 }
