@@ -1,35 +1,42 @@
 # Tanım: Özellikli, genel amaçlı bir ses sunucusu
 # URL: http://www.pulseaudio.org
 # Paketçi: milisarge
-# Gerekler: fftw intltool json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate 
+# Gerekler: fftw intltool sbc json-c bluez attr libasyncns tdb jack avahi soxr libsndfile alsa-lib dbus glib libcap openssl speex
 
 isim=pulseaudio
-surum=10.99.1
+surum=11.1
 devir=1
 
 kaynak=(http://freedesktop.org/software/pulseaudio/releases/pulseaudio-$surum.tar.xz
 		pulseaudio.desktop)
 
 derle() {
-unset MAKEFLAGS
-cd pulseaudio-$surum
 
-sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
+	cd pulseaudio-$surum
 
-./configure --prefix=/usr         \
-            --sysconfdir=/etc     \
-            --localstatedir=/var  \
-            --disable-bluez4      \
-            --disable-rpath       \
-            --with-module-dir=/usr/lib/pulse/modules
-make
-make DESTDIR=$PKG install
-mkdir -p $PKG/usr/share/icons/hicolor/scalable/devices
-for size in 16 22 32 48 64 128; do
-    mkdir -p $PKG/usr/share/icons/hicolor/${size}x${size}/{apps,devices}
-    ln -s ../apps/pulseaudio.png $PKG/usr/share/icons/hicolor/${size}x${size}/devices/audio-backend-pulseaudio.png
-done
-mkdir -p $PKG/etc/xdg/autostart
-cp -f $SRC/pulseaudio.desktop $PKG/etc/xdg/autostart/
-rm -f $PKG/etc/dbus-1/system.d/pulseaudio-system.conf
+	#NOCONFIGURE=1 ./bootstrap.sh
+
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib \
+	--localstatedir=/var \
+	--with-udev-rules-dir=/usr/lib/udev/rules.d \
+	--with-pulsedsp-location='/usr/lib/pulseaudio' \
+	--with-database=tdb \
+	--disable-tcpwrap \
+	--disable-rpath \
+	--disable-bluez4 \
+	--disable-samplerate \
+	--disable-default-build-tests
+
+	make
+	make DESTDIR=$PKG install
+	mkdir -p $PKG/usr/share/icons/hicolor/scalable/devices
+	for size in 16 22 32 48 64 128; do
+		mkdir -p $PKG/usr/share/icons/hicolor/${size}x${size}/{apps,devices}
+		ln -s ../apps/pulseaudio.png $PKG/usr/share/icons/hicolor/${size}x${size}/devices/audio-backend-pulseaudio.png
+	done
+	mkdir -p $PKG/etc/xdg/autostart
+	cp -f $SRC/pulseaudio.desktop $PKG/etc/xdg/autostart/
+	rm -f $PKG/etc/dbus-1/system.d/pulseaudio-system.conf
 }

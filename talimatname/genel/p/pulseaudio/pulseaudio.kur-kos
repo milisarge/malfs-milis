@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -f /sources/milis.git/talimatname/genel/pulseaudio/pulseaudio.desktop /etc/xdg/autostart/pulseaudio.desktop
+cp -f /sources/milis.git/talimatname/genel/p/pulseaudio/pulseaudio.desktop /etc/xdg/autostart/pulseaudio.desktop
