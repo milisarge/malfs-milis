@@ -1,12 +1,13 @@
 # Tanım: Esnek,güçlü sunucu bazlı müzik çalıcısı
 # URL: https://www.musicpd.org/
 # Paketçi: milisarge
-# Gerekler: libmad libvorbis libid3tag glib faad2 flac libshout fluidsynth
+# Gerekler: libmad libvorbis libid3tag glib faad2 flac libshout fluidsynth boost ffmpeg
 
 isim=mpd
 surum=0.20.12
 devir=1
-kaynak=(http://www.musicpd.org/download/$isim/0.20/$isim-$surum.tar.xz mpd)
+kaynak=(http://www.musicpd.org/download/$isim/0.20/$isim-$surum.tar.xz 
+		servis)
 
 derle() {
 	cd $isim-$surum
@@ -25,6 +26,7 @@ derle() {
 	make DESTDIR=$PKG install
 	mkdir -p $PKG/etc
 	install -m 0644 doc/mpdconf.example $PKG/etc/mpd.conf
-	install -D $SRC/mpd $PKG/etc/rc.d/mpd
+	mkdir -p $PKG/etc/rc.d/init.d
+	install -D $SRC/servis $PKG/etc/rc.d/init.d/mpd
 	rm -r $PKG/usr/share/doc
 }

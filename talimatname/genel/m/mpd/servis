@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# /etc/init.d/mpd: start/stop mpd daemon
+#
+
+case $1 in
+start)
+	/usr/bin/mpd
+	;;
+stop)
+  if [ -f /var/run/mpd.pid ]; then
+    kill $(< /var/run/mpd.pid)
+    rm -f /var/run/mpd.pid
+  else
+    pkill /usr/bin/mpd
+  fi
+;;
+restart)
+	$0 stop
+  sleep 2
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart|status]"
+	;;
+esac
+
+# End of file
