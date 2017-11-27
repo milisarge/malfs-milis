@@ -1,0 +1,16 @@
+# Tanım: Linux/Unix isim servis sorgularını asenkron çalıştıran C kütüphanesi
+# URL: http://0pointer.de/lennart/projects/libasyncns
+# Paketçi: milisarge
+# Gerekler: 
+
+isim=libasyncns
+surum=0.8
+devir=1
+kaynak=(http://0pointer.de/lennart/projects/libasyncns/libasyncns-$surum.tar.gz)
+
+derle() {
+  cd $isim-${surum}
+  ./configure --prefix=/usr --disable-lynx
+  make
+  make DESTDIR=${PKG} install
+}
