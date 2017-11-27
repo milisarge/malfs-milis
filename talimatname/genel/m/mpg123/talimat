@@ -4,13 +4,13 @@
 # Gerekler: alsa-lib pulseaudio
 
 isim=mpg123
-surum=1.25.0
+surum=1.25.6
 devir=1
 
 kaynak=( http://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2)
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr --with-module-suffix=.so
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure --prefix=/usr --with-module-suffix=.so
+	make
+	make DESTDIR=$PKG install
 }
