@@ -1,10 +1,10 @@
 # Tanım: Xfce4 paneli için pulseaudio eklentisi
 # URL: http://xfce.org/
-# Paketçi: yasarciv67@gmail.com
+# Paketçi: milisarge
 # Gerekler: xfce4-panel pulseaudio gtk-update-icon-cache libnotify intltool dbus-glib pavucontrol xfce4-dev-tools
 
 isim=xfce4-pulseaudio-plugin
-surum=0.3.0
+surum=0.3.3
 devir=1
 kaynak=(https://git.xfce.org/panel-plugins/$isim/snapshot/$isim-$surum.tar.bz2)
 
