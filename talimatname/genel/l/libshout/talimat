@@ -4,14 +4,14 @@
 # Gerekler: libvorbis libtheora speex 
 
 isim=libshout
-surum=2.3.1
+surum=2.4.1
 devir=1
 
 kaynak=(http://downloads.xiph.org/releases/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	make
+	make DESTDIR=$PKG install
 }

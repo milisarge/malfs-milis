@@ -1,0 +1,30 @@
+# Tanım: Esnek,güçlü sunucu bazlı müzik çalıcısı
+# URL: https://www.musicpd.org/
+# Paketçi: milisarge
+# Gerekler: libmad libvorbis libid3tag glib faad2 flac libshout fluidsynth
+
+isim=mpd
+surum=0.20.12
+devir=1
+kaynak=(http://www.musicpd.org/download/$isim/0.20/$isim-$surum.tar.xz mpd)
+
+derle() {
+	cd $isim-$surum
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--mandir=/usr/share/man \
+	--enable-ffmpeg \
+	--enable-flac \
+	--enable-fluidsynth \
+	--enable-pipe-output \
+	--enable-shout \
+	--enable-vorbis \
+	--enable-vorbis-encoder \
+	--enable-wave-encoder
+	make
+	make DESTDIR=$PKG install
+	mkdir -p $PKG/etc
+	install -m 0644 doc/mpdconf.example $PKG/etc/mpd.conf
+	install -D $SRC/mpd $PKG/etc/rc.d/mpd
+	rm -r $PKG/usr/share/doc
+}
