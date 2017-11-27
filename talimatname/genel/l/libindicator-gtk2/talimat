@@ -4,7 +4,7 @@
 # Gerekler: gtk2
 
 isim=libindicator-gtk2
-surum=12.10.1
+surum=0.4.93
 devir=1
 
 kaynak=(http://launchpad.net/libindicator/0.5/$surum/+download/libindicator-$surum.tar.gz)
