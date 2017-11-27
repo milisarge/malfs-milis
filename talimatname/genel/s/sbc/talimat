@@ -1,19 +1,19 @@
 # Tanım: Verileri Bluetooth ses çıkış cihazlarına aktarmak için kullanılan dijital ses kodlayıcı ve kod çözücü.
 # URL: https://fr.wikipedia.org/wiki/SBC_%28codec%29
 # Paketçi: milisarge
-# Gerekler: libsndfile 
+# Gerekler:
 
 isim=sbc
-surum=1.2
+surum=1.3
 devir=1
 
 kaynak=(http://www.kernel.org/pub/linux/bluetooth/$isim-$surum.tar.xz)
 
-derle()
-{
-cd $isim-$surum
-./configure --prefix=/usr \
---disable-static
-make
-make DESTDIR=$PKG install
+derle() {
+	cd $isim-$surum
+	./configure --prefix=/usr \
+	--disable-static \
+	--disable-tester
+	make
+	make DESTDIR=$PKG install
 }
