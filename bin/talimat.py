@@ -46,6 +46,7 @@ class Talimat():
 		self.url=""
 		self.paketci=""
 		self.gerekler=[]
+		self.gruplar=[]
 		self.isim=""
 		self._isim=""
 		self.surum=""
@@ -74,6 +75,10 @@ class Talimat():
 				for gerek in pkgbuild.depends:
 					if gerek not in self.gerekler:
 						self.gerekler.append(gerek)
+			if hasattr(pkgbuild, 'groups'):
+				for grup in pkgbuild.groups:
+					if grup not in self.gruplar:
+						self.gruplar.append(grup)
 			if isinstance(pkgbuild.name, list):
 				self.isim=d_isim
 			else:
@@ -94,6 +99,12 @@ class Talimat():
 				if os.path.exists(self.talimatname+"genel/"+gerek[0:1]+"/"+gerek) is False:
 					print renk.uyari+gerek+" talimatı yapılmalı!"+renk.son
 		return gerekstr
+	
+	def _gruplar(self):
+		grupstr=""
+		for grup in self.gruplar:
+			grupstr+=grup+" "
+		return grupstr
 		
 	def _kaynaklar(self):
 		kaynakstr=""
@@ -110,7 +121,7 @@ class Talimat():
 			blok=False
 			onblok=False
 			for satir in satirlar:
-				if "md5sums=(" in satir  or "sha256sums=('" in satir:
+				if "md5sums=(" in satir  or "sha256sums=('" in satir  or "sha1sums=('" in satir:
 					onblok=True
 				if onblok is True and "')" in satir:
 					blok=True
@@ -137,7 +148,8 @@ class Talimat():
 		icerikstr+="# Tanım: "+self.tanim+"\n"
 		icerikstr+="# URL: "+self.url+"\n"
 		icerikstr+="# Paketçi: "+self.paketci+"\n"
-		icerikstr+="# Gerekler: "+self._gerekler()
+		icerikstr+="# Gerekler: "+self._gerekler()+"\n"
+		icerikstr+="# Grup: "+self._gruplar()
 		icerikstr+="\n"+"\n"
 		icerikstr+="isim="+self.isim+"\n"
 		if self._isim !="":
@@ -375,12 +387,71 @@ class Arge:
 					return None
 		return None
 		
+	# kaosx github linki indirme
+	def indir_kaos(self,paket,tip="isim"):
+		if tip=="isim":
+			repolar=["main","apps","core"]
+			for repo in repolar:
+				link="https://raw.githubusercontent.com/KaOSx/"+repo+"/master/"+paket+"/PKGBUILD"
+				try:
+					veri = urllib2.urlopen(link)
+					print renk.tamamb+repo+" reposunda bulundu"+renk.son
+					open(paket+"_pkgbuild","w").write(veri.read())
+					return paket+"_pkgbuild"
+				except urllib2.HTTPError, e:
+					if e.code == 404:
+						print renk.hata+link+" bulunamadı!"+renk.son
+		elif tip=="link":
+			paket=link.split("/")[-2]
+			print renk.tamamb+paket+" indiriliyor..."+renk.son
+			try:
+				veri = urllib2.urlopen(link)
+				open(paket+"_pkgbuild","w").write(veri.read())
+				return paket+"_pkgbuild"
+			except urllib2.HTTPError, e:
+				if e.code == 404:
+					print renk.hata+link+" bulunamadı!"+renk.son
+					return None
+		return None
+		
+	# blackarch github linki indirme
+	def indir_blackarch(self,paket,tip="isim"):
+		if tip=="isim":
+			repolar=["packages"]
+			for repo in repolar:
+				link="https://raw.githubusercontent.com/BlackArch/blackarch/master/"+repo+"/"+paket+"/PKGBUILD"
+				try:
+					veri = urllib2.urlopen(link)
+					print renk.tamamb+repo+" reposunda bulundu"+renk.son
+					open(paket+"_pkgbuild","w").write(veri.read())
+					return paket+"_pkgbuild"
+				except urllib2.HTTPError, e:
+					if e.code == 404:
+						print renk.hata+link+" bulunamadı!"+renk.son
+		elif tip=="link":
+			paket=link.split("/")[-2]
+			print renk.tamamb+paket+" indiriliyor..."+renk.son
+			try:
+				veri = urllib2.urlopen(link)
+				open(paket+"_pkgbuild","w").write(veri.read())
+				return paket+"_pkgbuild"
+			except urllib2.HTTPError, e:
+				if e.code == 404:
+					print renk.hata+link+" bulunamadı!"+renk.son
+					return None
+		return None
+	
+	def yardim(self):
+		print renk.tamamb+"talimat.py -a (archlinux) paket_ismi | url "+renk.son	
+		print renk.tamamb+"talimat.py -k (kaosx)     paket_ismi | url "+renk.son	
+		print renk.tamamb+"talimat.py -b (blackarch) paket_ismi | url "+renk.son	
+			
 if __name__ == '__main__':
 	
+	arge=Arge()
 	if len(sys.argv) > 1:
 		dosya=sys.argv[1]
 		talimat=Talimat()
-		arge=Arge()
 		if os.path.exists(dosya):
 			talimat.cevir(dosya)
 		elif len(sys.argv) > 2:
@@ -402,6 +473,32 @@ if __name__ == '__main__':
 							dosya=arge.indir(link)
 					if link and dosya:
 						talimat.cevir(dosya)	
+			elif dosya == "-k":
+				link=sys.argv[2]
+				if "https" in link or "http" in link:
+					Pdosya=arge.indir_kaos(link,"link")
+					talimat.cevir(Pdosya)
+				else :
+					paket=sys.argv[2]
+					paket=str(paket)
+					dosya=arge.indir_kaos(paket,"isim")
+					if dosya:
+						talimat.cevir(dosya)
+					else:
+						renk.hata+str(dosya)+" repolarda bulunamadı!"+renk.son	
+			elif dosya == "-b":
+				link=sys.argv[2]
+				if "https" in link or "http" in link:
+					Pdosya=arge.indir_blackarch(link,"link")
+					talimat.cevir(Pdosya)
+				else :
+					paket=sys.argv[2]
+					paket=str(paket)
+					dosya=arge.indir_blackarch(paket,"isim")
+					if dosya:
+						talimat.cevir(dosya)
+					else:
+						renk.hata+str(dosya)+" repolarda bulunamadı!"+renk.son	
 			elif dosya == "-al":
 				link=sys.argv[2]
 				if "https" in link or "http" in link:
@@ -419,3 +516,5 @@ if __name__ == '__main__':
 						renk.hata+str(dosya)+" repolarda bulunamadı!"+renk.son	
 		else:
 			print renk.hata+dosya+" paremetre bulunamadı!"+renk.son
+	else:
+		arge.yardim()
