@@ -1,0 +1,25 @@
+# Tanım: Lua5.1 kütüphane yöneticisi
+# URL: http://luarocks.org
+# Paketçi: milisarge
+# Gerekler: lua51 unzip
+
+isim=luarocks-51
+surum=2.4.3
+devir=1
+kaynak=(http://luarocks.org/releases/luarocks-$surum.tar.gz)
+
+derle() {
+	cd luarocks-$surum
+
+	./configure --prefix=/usr \
+	--sysconfdir=/etc/luarocks \
+	--with-lua-include=/usr/include/lua5.1 \
+	--lua-version=5.1 \
+	--lua-suffix=5.1 \
+	--versioned-rocks-dir
+	make build
+	make DESTDIR=$PKG install
+    sed -i '/^LUAROCKS_UNAME_M/d' "$PKG"/usr/share/lua/5.1/luarocks/site_config.lua
+    unlink $PKG/usr/bin/luarocks
+	unlink $PKG/usr/bin/luarocks-admin
+}
