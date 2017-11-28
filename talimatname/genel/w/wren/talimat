@@ -1,0 +1,31 @@
+# Tanım: Küçük,hızlı ve sınıf bazlı script dili
+# URL: http://wren.io/
+# Paketçi: milisarge
+# Gerekler: python
+# Grup: geliştirme
+
+isim=wren
+surum=0.1.0
+devir=1
+kaynak=()
+
+derle() {
+  
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/munificent/wren $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+	make
+	install -d "$PKG/usr/bin"
+	install -d "$PKG/usr/lib"
+	install -d "$PKG/usr/include"
+	install -Dm755 "$SRC/$isim/bin/wren" "$PKG/usr/bin/wren"
+	install -Dm755 "$SRC/$isim/lib/libwren.a" "$PKG/usr/lib/libwren.a"
+	#install -Dm755 "$SRC/$isim/lib/libwren.so" "$PKG/usr/lib/libwren.so"
+	install -Dm755 "$SRC/$isim/src/include/wren.h" "$PKG/usr/include/wren.h"
+}
