@@ -1,0 +1,25 @@
+# Tanım: Gömülü Javascript makinası
+# URL: http://duktape.org/
+# Paketçi: milisarge
+# Gerekler: setconf 
+
+isim=duktape
+surum=2.2.0
+devir=1
+kaynak=(http://duktape.org/duktape-$surum.tar.xz
+		duktape.pc)
+
+derle() {
+	cd "$isim-$surum"
+	mv Makefile.sharedlibrary Makefile
+	sed 's/-Wall -Wextra/$(CFLAGS)/g' -i Makefile
+	setconf Makefile INSTALL_PREFIX="$PKG/usr"
+	setconf "$SRC/duktape.pc" Version="$surum"
+	CFLAGS="$CFLAGS -D DUK_USE_FASTINT -w" make -C "$SRC/$isim-$surum"
+	make -f Makefile.cmdline
+	install -d "$PKG/usr/lib" "$PKG/usr/include" "$PKG/usr/bin"
+	make install
+	cp duk $PKG/usr/bin/
+	install -Dm644 "$SRC/duktape.pc" "$PKG/usr/lib/pkgconfig/duktape.pc"
+	install -Dm644 LICENSE.txt "$PKG/usr/share/licenses/$isim/LICENSE"
+}
