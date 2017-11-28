@@ -360,6 +360,7 @@ hash_kontrol() {
 	fi
 	[ -f $DERLEME_KAYNAKDIZIN/$isim.hash ] && rm $DERLEME_KAYNAKDIZIN/$isim.hash
 	#[ -f /tmp/$isim.hash.kontrol ] && rm /tmp/$isim.hash.kontrol
+	cd -
 }
 
 strip_files() {
