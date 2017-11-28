@@ -1,35 +1,43 @@
 # Tanım: Özellik açısından zengin cron uygulaması
 # URL: http://fcron.free.fr
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: vim fetchmail
 
 isim=fcron
-surum=3.2.0
+surum=3.3.0
 devir=1
-kaynak=(http://fcron.free.fr/archives/$isim-$surum.src.tar.gz )
+kaynak=(http://fcron.free.fr/archives/$isim-$surum.src.tar.gz
+		servis
+        systab.orig)
 
 derle() {
-unset MAKEFLAGS
-source /etc/blfs-bootscripts
-wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-tar xf $scripts-$scriptsversion.tar.bz2
-# build package
-cd $isim-$surum
-./configure --prefix=/usr --sysconfdir=/etc \
---without-sendmail --localstatedir=/var \
---with-boot-install=no --mandir=/usr/share/man \
---infodir=/usr/share/info \
---with-systemdsystemunitdir=no
-make
-make DESTDIR=$PKG install
-rm $PKG/etc/pam.conf
-mkdir -p $PKG/etc/pam.d
-for i in fcron fcrontab
 
-	do install -D -m644 files/fcron.pam $PKG/etc/pam.d/$i
-done
-# Install the script
-cd ../$scripts-$scriptsversion
-make DESTDIR=$PKG install-fcron
-rm -rf $PKG/usr/share/doc
+	getent group fcron || /sbin/groupadd -g 22 fcron
+	getent passwd fcron || /sbin/useradd -g fcron -u 22 -d /var/spool/fcron -s /bin/false fcron
+	/usr/bin/passwd -l fcron
+
+    cd $isim-$surum
+	
+    ./configure --prefix=/usr \
+	--sysconfdir=/etc/fcron \
+	--localstatedir=/var \
+	--mandir=/usr/share/man \
+	--with-spooldir=/var/spool/fcron \
+	--with-boot-install=no \
+	--with-answer-all=no \
+	--with-username=fcron \
+	--with-groupname=fcron \
+	--with-db2man=no \
+	--with-dsssl-dir=no \
+	--with-pam=no \
+	--with-sendmail="/usr/bin/fetchmail" \
+	--with-editor="/usr/bin/vi"
+
+    make
+    make DESTDIR=$PKG install
+
+    rm -r $PKG/{usr/share/{doc,man/{fr,man3}},var/run}
+
+    install -D -m 755 $SRC/servis $PKG/etc/rc.d/init.d/fcron
+    install -m 600 -o root -g fcron $SRC/systab.orig $PKG/var/spool/fcron
 }

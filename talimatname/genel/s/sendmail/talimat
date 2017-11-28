@@ -1,13 +1,14 @@
 # Tanım: 	The sendmail package contains a Mail Transport Agent (MTA).
-# URL: 			ftp://ftp.sendmail.org/pub/sendmail/
-# Paketçi: 	berlius at nutyx dot com
-# Gerekler: 	ghostscript cyrus-sasl openssl procmail openldap 
+# URL: 		ftp://ftp.sendmail.org/pub/sendmail/
+# Paketçi: 	milisarge
+# Gerekler: ghostscript cyrus-sasl openssl procmail openldap 
 
 isim=sendmail
 surum=8.15.2
 devir=1
 
-kaynak=(ftp://ftp.sendmail.org/pub/$isim/$isim.$surum.tar.gz site.config.m4)
+kaynak=(ftp://ftp.sendmail.org/pub/$isim/$isim.$surum.tar.gz 
+		site.config.m4)
 
 derle() {
 

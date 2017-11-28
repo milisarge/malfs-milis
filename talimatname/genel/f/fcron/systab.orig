@@ -1,0 +1,13 @@
+#
+# /var/spool/fcron/systab.org: fcron(8) configuration
+#
+
+!mailto(root)
+!noticenotrun(yes)
+
+%hourly    *           /usr/sbin/runjobs /etc/cron/hourly
+%daily     *   *       /usr/sbin/runjobs /etc/cron/daily
+%weekly    *   *       /usr/sbin/runjobs /etc/cron/weekly
+%monthly   *   *   *   /usr/sbin/runjobs /etc/cron/monthly
+
+# End of file

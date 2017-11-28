@@ -1,27 +1,21 @@
 # Tanım: Uzak posta sunucularından posta alır ve yerel makinelere iletir
 # URL: http://www.fetchmail.info
 # Paketçi: milisarge
-# Gerekler: openssl procmail python tk
+# Gerekler: openssl procmail
 
 isim=fetchmail
 surum=6.3.26
 devir=1
 kaynak=(http://downloads.sourceforge.net/fetchmail/$isim-$surum.tar.xz
-		.fetchmailrc)
+		fetchmailrc)
 
 derle() {
 
 	cd $isim-$surum
-
 	./configure --prefix=/usr --with-ssl --enable-fallback=procmail
-
 	make
-
 	make DESTDIR=$PKG install
-
-	install -v -m755 -d $PKG/root
-
-	cp -v $SRC/.fetchmailrc $PKG/root/.fetchmailrc
-	chmod -v 0600 $PKG/root/.fetchmailrc
-
+	install -v -m755 -d $PKG/usr/share/fetchmail
+	cp -v $SRC/fetchmailrc $PKG/usr/share/fetchmail/.fetchmailrc
+	chmod -v 0600 $PKG/usr/share/fetchmail/.fetchmailrc
 }

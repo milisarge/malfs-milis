@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# /etc/init.d/fcron: start/stop fcron daemon
+#
+
+SSD=/sbin/start-stop-daemon
+PROG=/usr/sbin/fcron
+PID=/var/run/fcron.pid
+OPTS="--background"
+
+case $1 in
+start)
+	$SSD --start --pidfile $PID --exec $PROG -- $OPTS
+	RETVAL=$?
+	if [ $RETVAL -eq 0 -a ! -f /var/spool/fcron/systab ]; then
+		/usr/bin/fcrontab -u systab -z
+	fi
+	;;
+stop)
+	$SSD --stop --retry 10 --pidfile $PID
+	RETVAL=$?
+	;;
+restart)
+	$0 stop
+	$0 start
+	;;
+reload)
+	$SSD --stop --signal USR1 --pidfile $PID
+	RETVAL=$?
+	;;
+status)
+	$SSD --status --pidfile $PID
+	case $? in
+	0) echo "$PROG is running with pid $(cat $PID)" ;;
+	1) echo "$PROG is not running but the pid file $PID exists" ;;
+	3) echo "$PROG is not running" ;;
+	4) echo "Unable to determine the program status" ;;
+	esac
+	;;
+*)
+	echo "usage: $0 [start|stop|restart|reload|status]"
+	;;
+esac
+
+exit $RETVAL
+
+# End of file
