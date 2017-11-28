@@ -14,7 +14,7 @@ derle() {
 
 	getent group fcron || /sbin/groupadd -g 22 fcron
 	getent passwd fcron || /sbin/useradd -g fcron -u 22 -d /var/spool/fcron -s /bin/false fcron
-	/usr/bin/passwd -l fcron
+	/bin/passwd -l fcron
 
     cd $isim-$surum
 	
