@@ -1,24 +1,37 @@
 # Tanım: image dosyalari icin hafif bir goruntuleyici
 # URL: http://www.geeqie.org/
 # Paketçi: milisarge
-# Gerekler: exiv2 gtk2 lcms desktop-file-utils intltool librsvg fbida
+# Gerekler: exiv2 gtk3 lcms desktop-file-utils intltool librsvg shared-mime-info
 
 isim=geeqie
 surum=1.3
-devir=1
+devir=2
 kaynak=(http://www.geeqie.org/${isim}-${surum}.tar.xz )
 
 derle() {
-	cd $isim-$surum
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/BestImageViewer/geeqie $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+	chmod +x *.sh
 	./autogen.sh
-	tamir_gtk2
+	#export CFLAGS="$CFLAGS $(pkg-config --cflags gtk+-2.0)"
+    #export LDFLAGS="$LDFLAGS $(pkg-config --libs gtk+-2.0)"
+    #export CXXFLAGS="$CXXFLAGS $CFLAGS"
 	./configure --prefix=/usr \
 	--disable-lirc \
-	--disable-gtk3 \
 	--disable-doxygen-doc \
     --disable-doxygen-dot \
     --disable-lua
-
-	make
+    gdk-pixbuf-query-loaders > /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+    update-mime-database /usr/share/mime
+	make 
 	make DESTDIR=$PKG install
+	sed -ri '/\[.+\]=/d' $PKG/usr/share/{geeqie/,}applications/*.desktop
+    rm -r $PKG/usr/share/doc
 }
