@@ -6,7 +6,7 @@
 isim=geeqie
 surum=1.3
 devir=2
-kaynak=(http://www.geeqie.org/${isim}-${surum}.tar.xz )
+kaynak=(https://github.com/BestImageViewer/geeqie/releases/download/v${surum}/geeqie-$surum.tar.xz::${isim}-${surum}.tar.xz)
 
 derle() {
 	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
@@ -24,6 +24,9 @@ derle() {
     #export LDFLAGS="$LDFLAGS $(pkg-config --libs gtk+-2.0)"
     #export CXXFLAGS="$CXXFLAGS $CFLAGS"
 	./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --disable-maintainer-mode \
+    --disable-debug-log \
 	--disable-lirc \
 	--disable-doxygen-doc \
     --disable-doxygen-dot \
