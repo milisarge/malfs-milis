@@ -528,6 +528,7 @@ oto_derle_kur_paketle(){
 	else
 		paket_derle_kur $1
 	fi 
+	rm -rf {gerek.eski,gerek,kurulanlar,silinenler,tumgerekler.eski,tumgerekler}.liste
 }
 
 paket_kur_oto(){
