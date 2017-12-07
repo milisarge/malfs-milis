@@ -2517,6 +2517,7 @@ ayarlar() {
 				paket_sil "$2" "evet" &&  mps -ik $2 ;;
 			### mps -g paketismi = ilgili paketi tekil günceller.
 			-g|--pkgu)
+				git_guncelle  && paketvt_guncelle
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
 					hataloglama "paket ismi eksik"
