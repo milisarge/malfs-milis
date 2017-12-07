@@ -1,21 +1,16 @@
 # Tanım: Farklılıkları tespit etme ve birleştirme aracı.
 # URL: http://meldmerge.org/
-# Paketçi: yakar (aydin@komutan.org)
-# Gerekler: python-gobject python-cairo gtksourceview3 gsettings-desktop-schemas dconf
+# Paketçi: milisarge
+# Gerekler: python3-gobject python3-cairo gtksourceview3 gsettings-desktop-schemas dconf
 
 isim=meld
-surum=3.16.4
+surum=3.18.0
 devir=1
 kaynak=(https://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-	mkdir -p $PKG/opt/ $PKG/usr/bin/ $PKG/usr/share/applications/
-	cp -r $SRC/$isim-$surum $PKG/opt/
-	cd $PKG/opt/$isim-$surum
-
-  	python setup.py build
-
-	cp $PKG/opt/$isim-$surum/build/share/applications/meld.desktop $PKG/usr/share/applications/
-  	ln -s /opt/$isim-$surum/bin/$isim $PKG/usr/bin/meld
-	#chmod +x "$PKG/usr/bin/$isim"
+	cd $isim-$surum
+	python3 setup.py build
+	python3 setup.py --no-update-icon-cache --no-compile-schemas \
+    install --prefix=/usr --root="$PKG" --optimize=1
 }
