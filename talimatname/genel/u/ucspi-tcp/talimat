@@ -1,0 +1,26 @@
+# Tanım: Tcp istemci-sunucu uygulamalar üretmek için konsol uygulaması
+# URL: http://cr.yp.to/ucspi-tcp.html
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: 
+
+isim=ucspi-tcp
+surum=0.88
+devir=1
+kaynak=(http://cr.yp.to/ucspi-tcp/ucspi-tcp-0.88.tar.gz
+		ucspi-tcp-0.88-ipv6.patch
+		head-1.patch)
+
+derle() {
+    cd "$SRC/$isim-$surum"
+    patch -p0 < "$SRC/head-1.patch"
+    patch -p1 < "$SRC/ucspi-tcp-$surum-ipv6.patch"
+    echo "gcc ${CFLAGS}" > conf-cc
+    echo "/usr" > conf-home
+    make
+    for bin in tcpserver tcprules tcprulescheck argv0 recordio \
+               tcpclient *\@ tcpcat mconnect mconnect-io addcr \
+               delcr fixcrio rblsmtpd; do
+        install -m 755 -D $bin "$PKG/usr/bin/$bin"
+    done
+}
