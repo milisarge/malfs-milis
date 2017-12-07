@@ -121,7 +121,7 @@ class Talimat():
 			blok=False
 			onblok=False
 			for satir in satirlar:
-				if "md5sums=(" in satir  or "sha256sums=('" in satir  or "sha1sums=('" in satir:
+				if "md5sums=(" in satir  or "sha256sums=('" in satir  or "sha1sums=('" in satir or "sha512sums=('" in satir:
 					onblok=True
 				if onblok is True and "')" in satir:
 					blok=True
