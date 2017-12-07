@@ -1,0 +1,16 @@
+# Tanım: loadkeys veya kbdcontrol ile uyumlu XKB klavye tanım derleme aracı
+# URL: http://anonscm.debian.org/cgit/d-i/console-setup.git/
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: 
+
+isim=ckbcomp
+surum=1.172
+devir=1
+kaynak=(http://ftp.de.debian.org/debian/pool/main/c/console-setup/console-setup_${surum}.tar.xz)
+
+derle() {
+	cd console-setup
+	install -d ${PKG}/usr/bin/
+	install -m755 Keyboard/ckbcomp ${PKG}/usr/bin/
+}
