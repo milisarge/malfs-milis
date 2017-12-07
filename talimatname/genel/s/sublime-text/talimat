@@ -1,12 +1,12 @@
 # Tanım: Geliştiriciler için sofistike text editörü
 # URL: https://www.sublimetext.com
-# Paketçi: yakar (aydin@komutan.org)
+# Paketçi: milisarge
 # Gerekler: desktop-file-utils libpng gtk2
 
 isim=sublime-text
 surum=3
-devir=1
-kaynak=(https://download.sublimetext.com/sublime_text_3_build_3126_x64.tar.bz2)
+devir=2
+kaynak=(https://download.sublimetext.com/sublime_text_3_build_3143_x64.tar.bz2)
 
 derle() {
 	cd $SRC/sublime_text_3
