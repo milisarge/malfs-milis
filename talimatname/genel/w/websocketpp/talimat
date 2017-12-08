@@ -6,7 +6,7 @@
 isim=websocketpp
 surum=0.7.0
 devir=1
-kaynak=(https://github.com/zaphoyd/${isim}/archive/${surum}.tar.gz)
+kaynak=(https://github.com/zaphoyd/${isim}/archive/${surum}.tar.gz::${isim}-${surum}.tar.gz)
 
 derle() {
 	cd ${isim}-${surum}
