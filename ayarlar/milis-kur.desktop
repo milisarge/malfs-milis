@@ -1,5 +1,5 @@
 [Desktop Entry]
-Path=/usr/bin
+Path=/opt/Milis-Yukleyici
 Name=Milis Linux Kurulumu
 Comment=Milis Linux Kurulumu
 Exec=sudo /opt/Milis-Yukleyici/milis-kur
