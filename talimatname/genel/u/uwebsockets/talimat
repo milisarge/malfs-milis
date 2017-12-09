@@ -1,0 +1,18 @@
+# Tanım: uWS etkin,hafif websocket kütüphanesi
+# URL: https://github.com/uWebSockets/uWebSockets
+# Paketçi: milisarge
+# Gerekler:
+
+isim=uwebsockets
+surum=0.14.4
+devir=1
+kaynak=(https://github.com/uNetworking/uWebSockets/archive/v${surum}.tar.gz::uWebSockets-${surum}.tar.gz)
+
+derle() {
+	cd uWebSockets-${surum}
+	make
+	mkdir -p "${PKG}/usr/lib"
+	mv "${SRC}/uWebSockets-${surum}/libuWS.so" "${PKG}/usr/lib"
+	mkdir -p "${PKG}/usr/include/uWS"
+	mv "${SRC}/uWebSockets-${surum}/src/"*.h "${PKG}/usr/include/uWS"
+}
