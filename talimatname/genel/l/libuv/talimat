@@ -1,0 +1,19 @@
+# Tanım: Multi-platform support library with a focus on asynchronous I/O
+# URL: https://github.com/libuv/libuv
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: kütüphane
+
+isim=libuv
+surum=1.18.0
+devir=1
+kaynak=(https://github.com/libuv/libuv/archive/v1.18.0/libuv-$surum.tar.gz::libuv-$surum.tar.gz)
+
+derle() {
+	cd "$SRC"/$isim-$surum
+	./autogen.sh
+	./configure --prefix=/usr
+	make
+	make check
+	make DESTDIR="$PKG" install
+}
