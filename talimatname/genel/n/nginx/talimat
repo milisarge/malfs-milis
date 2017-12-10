@@ -4,7 +4,7 @@
 # Gerekler: libxml2 libxslt pcre
 
 isim=nginx
-surum=1.13.2
+surum=1.13.7
 devir=1
 
 kaynak=(http://nginx.org//download/$isim-$surum.tar.gz
