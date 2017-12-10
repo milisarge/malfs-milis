@@ -1,0 +1,23 @@
+# Tanım: nchan nginx module
+# URL: https://nchan.io/
+# Paketçi: milisarge
+# Gerekler: nginx 
+# Grup: 
+
+isim=nginx-mod-nchan
+surum=1.1.13
+devir=1
+ngsurum=1.13.7
+kaynak=(http://nginx.org/download/nginx-$ngsurum.tar.gz
+		https://github.com/slact/nchan/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+    cd "$SRC"/nginx-$ngsurum
+    _module_dir="$SRC"/nchan-$surum
+    ./configure --with-compat --add-dynamic-module=${_module_dir}
+    make modules
+    cd "$SRC"/nginx-$ngsurum/objs
+    for _mod in ngx_nchan_module.so; do
+        install -Dm755 $_mod "$PKG"/usr/lib/nginx/modules/$_mod
+    done
+}
