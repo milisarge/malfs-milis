@@ -14,7 +14,7 @@ kaynak=(http://nginx.org//download/$isim-$surum.tar.gz
 # change those if you prefer another setup
 NGINXUSER=www
 NGINXGROUP=www
-HTMLDIR=/srv/http/html
+HTMLDIR=/srv/http
 
 # change those if you need those experimental modules
 # (idea from slackbuilds.org)
