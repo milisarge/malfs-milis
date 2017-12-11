@@ -1419,6 +1419,8 @@ tarihce_yukle(){
 		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
 		hataloglama "ilgili tarihce dosyası bulunamadı!"
 	fi
+	[ -f $PWD/hedef.pkvt ] && rm $PWD/hedef.pkvt
+	[ -f $PWD/simdiki.pkvt ] && rm $PWD/simdiki.pkvt
 }
 
 tarihce_sil(){
