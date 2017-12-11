@@ -14,7 +14,7 @@ kaynak=(http://nginx.org//download/$isim-$surum.tar.gz
 # change those if you prefer another setup
 NGINXUSER=www
 NGINXGROUP=www
-HTMLDIR=/srv/http/nginx
+HTMLDIR=/srv/http/html
 
 # change those if you need those experimental modules
 # (idea from slackbuilds.org)
@@ -34,6 +34,25 @@ fi
 #
 derle() {
     cd $isim-$surum
+   ./configure \
+    --prefix=/etc/nginx \
+    --conf-path=/etc/nginx/nginx.conf \
+    --sbin-path=/usr/bin/nginx \
+    --pid-path=/run/nginx.pid \
+    --lock-path=/run/lock/nginx.lock \
+    --user=http \
+    --group=http \
+    --http-log-path=/var/log/nginx/access.log \
+    --error-log-path=stderr \
+    --http-client-body-temp-path=/var/lib/nginx/client-body \
+    --http-proxy-temp-path=/var/lib/nginx/proxy \
+    --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
+    --http-scgi-temp-path=/var/lib/nginx/scgi \
+    --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+    --with-cc-opt="$CFLAGS $CPPFLAGS" \
+    --with-ld-opt="$LDFLAGS" \
+   
+   
     ./configure --prefix=/usr \
                 --sbin-path=/usr/sbin/nginx \
                 --conf-path=/etc/nginx/nginx.conf \
@@ -48,8 +67,15 @@ derle() {
                 --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
                 --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
                 --http-scgi-temp-path=/var/lib/nginx/scgi \
-                --with-file-aio \
+                --with-compat \
+				--with-debug \
+				--with-file-aio \
                 --with-ipv6 \
+                --with-pcre-jit \
+                --with-stream \
+                --with-stream_ssl_module \
+				--with-stream_ssl_preread_module \
+                --with-threads \
                 --with-select_module \
                 --with-poll_module \
                 --with-http_ssl_module \
@@ -66,10 +92,14 @@ derle() {
                 --with-http_secure_link_module \
                 --with-http_degradation_module \
                 --with-http_stub_status_module \
+                --with-http_sub_module \
+				--with-http_v2_module \
                 --with-http_perl_module \
                 --with-http_auth_request_module \
                 --with-mail \
                 --with-mail_ssl_module \
+                --with-cc-opt="$CFLAGS $CPPFLAGS" \
+				--with-ld-opt="$LDFLAGS" \
                 $SPDY_MOD \
                 $GEOIP_MOD
 
