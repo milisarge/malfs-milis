@@ -1396,8 +1396,7 @@ tarihce_yukle(){
 		fi
 		if [ ! -s sil.liste ] && [ ! -s kur.liste ];then
 			ryaz 32 "sistem zaten hedef durumda!"
-			[ -f hedef.pkvt ]   && rm -rf hedef.pkvt
-			[ -f simdiki.pkvt ] && rm -rf simdiki.pkvt
+			pkvt_dosyalar_kaldir
 			exit 1
 		fi
 		while true; do
@@ -1413,17 +1412,22 @@ tarihce_yukle(){
 			mps kurul kur.liste
 			mv sil.liste silinenler.liste
 			mv kur.liste kurulanlar.liste
+			pkvt_dosyalar_kaldir
 			exit 1
 		fi
 		mv sil.liste sil_iptal.liste	
 		mv kur.liste kur_iptal.liste	
-		[ -f hedef.pkvt ]   && rm -rf hedef.pkvt
-		[ -f simdiki.pkvt ] && rm -rf simdiki.pkvt
+		pkvt_dosyalar_kaldir
 	else
 		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
 		hataloglama "ilgili tarihce dosyası bulunamadı!"
 	fi
 	
+}
+
+pkvt_dosyalar_kaldir(){
+	[ -f hedef.pkvt ]   && rm -rf hedef.pkvt
+	[ -f simdiki.pkvt ] && rm -rf simdiki.pkvt
 }
 
 tarihce_sil(){
