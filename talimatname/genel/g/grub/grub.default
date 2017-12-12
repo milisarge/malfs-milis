@@ -1,6 +1,6 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=10
-GRUB_DISTRIBUTOR="Milis"
+GRUB_DISTRIBUTOR="`lsb_release -i -s 2> /dev/null || echo Milis`"
 GRUB_CMDLINE_LINUX_DEFAULT="quiet"
 GRUB_CMDLINE_LINUX=""
 
