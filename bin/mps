@@ -252,11 +252,11 @@ paket_grup_liste(){
 	if [ "$1" ]; then
 		cikti="$1"
 	fi
-	_gruplar=`grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed -e 's/^[[:space:]]*//'  | sed '/^\s*$/d' | sort -u`
+	_gruplar=`grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//'  | sed '/^\s*$/d' | LC_ALL=C sort -u`
 	if [ $cikti == "--json" ];then
 		[ -f $mps_paket_grup_listesi ] && rm -rf $mps_paket_grup_listesi
 		#printf "[" >> $mps_paket_grup_listesi
-		for grp in $(grep -ri "Grup:" /root/talimatname/* | cut -d':' -f3 | sed -e 's/^[[:space:]]*//'  | sed '/^\s*$/d' | sort -u); do
+		for grp in $(grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//'  | sed '/^\s*$/d' | sort -u); do
 			printf "$grp," >> $mps_paket_grup_listesi
 		done
 		sed -i s'/.$//' $mps_paket_grup_listesi
@@ -304,6 +304,7 @@ paket_bilgi(){
 	fi
 	
 	kkont=`kurulu_kontrol "$1"`
+
 	if [ "$kkont" = "kurulu" ];then
 		paket="$1"
 		satir=`sed -n '1p' <  $VT/"$paket"/META`
@@ -336,6 +337,21 @@ paket_bilgi(){
 		satir=`sed -n '11p' <  $VT/"$paket"/META`
 		$_yaz "GRUP       :" ${satir:1:${#satir}-1} #$_yaz_son
 	elif [ "$kkont" = "degil" ];then
+		_konum=$(talimat_bul $1)
+		_ad=$(grep -ri "isim=" $_konum/talimat | head -1 | cut -d '=' -f2)
+		_tanim=$(grep -ri "# Tanım:" $_konum/talimat | cut -d ':' -f2-)
+		_url=$(grep -ri "# Url:" $_konum/talimat | cut -d ':' -f2-)
+		_paketci=$(grep -ri "# Paketçi:" $_konum/talimat | cut -d ':' -f2-)
+		_surum=$(grep -ri "surum=" $_konum/talimat | head -1 | cut -d '=' -f2)
+		_devir=$(grep -ri "devir=" $_konum/talimat | head -1 | cut -d '=' -f2)
+		_grup=$(grep -ri "# Grup:" $_konum/talimat | head -1 | cut -d '=' -f2)
+		$_yaz "ADI        :" ${_ad} #$_yaz_son
+		$_yaz "TANIM      :" ${_tanim} #$_yaz_son
+		$_yaz "URL        :" ${_url} #$_yaz_son
+		$_yaz "PAKETÇİ    :" ${_paketci} #$_yaz_son
+		$_yaz "SÜRÜM      :" ${_surum} #$_yaz_son
+		$_yaz "DEVİR      :" ${_devir} #$_yaz_son
+		$_yaz "GRUP       :" ${_grup} #$_yaz_son
 		$_yaz_uyari "$1 $_paket_kurulu_degil"
 	else
 		$_yaz_uyari "$1 $_paket_tanimsiz"
@@ -349,13 +365,18 @@ paket_bilgi_html(){
 		icerik+="<tr>"
 		_sutun_baslik="$(echo $satir | cut -d':' -f1)"
 		_sutun_deger="$(echo $satir | cut -d':' -f2-)"
-		icerik+="<td>$_sutun_baslik</td>"
+		
 		#icerik+="<td>$_sutun_deger</td>"
 		if [ "${_sutun_baslik}" != "${_sutun_deger}" ];then 
+			icerik+="<td>$_sutun_baslik</td>"
 			icerik+="<td>$_sutun_deger</td>"
 		fi
 		icerik+="</tr>"
 	done < "$_dosya"
+	
+	if [[ "${_sutun_baslik}" == *"${_paket_kurulu_degil}"* ]] || [[ "${_sutun_baslik}" == *"${_paket_tanimsiz}"* ]];then 
+		icerik+="<tr><td>DURUM</td><td>${_sutun_baslik}</td></tr>"
+	fi
 	icerik+="</table>"
 	echo "$icerik" > $_dosya.html
 }
