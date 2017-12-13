@@ -245,6 +245,27 @@ paket_liste(){
 	fi
 }
 
+paket_grup_liste(){
+	mps_paket_grup_listesi="/tmp/mps_paket_grup_listesi"
+	local cikti
+	cikti="normal"
+	if [ "$1" ]; then
+		cikti="$1"
+	fi
+	_gruplar=`grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed -e 's/^[[:space:]]*//'  | sed '/^\s*$/d' | sort -u`
+	if [ $cikti == "--json" ];then
+		[ -f $mps_paket_grup_listesi ] && rm -rf $mps_paket_grup_listesi
+		#printf "[" >> $mps_paket_grup_listesi
+		for grp in $(grep -ri "Grup:" /root/talimatname/* | cut -d':' -f3 | sed -e 's/^[[:space:]]*//'  | sed '/^\s*$/d' | sort -u); do
+			printf "$grp," >> $mps_paket_grup_listesi
+		done
+		sed -i s'/.$//' $mps_paket_grup_listesi
+		#printf "]" >> $mps_paket_grup_listesi
+	else
+		echo $_gruplar
+	fi
+}
+
 kelime_bul(){
 	grep --color -H -ri "$1" $talimatname
 	grep --color -H -ri "$1" $ektalimatname
@@ -2465,6 +2486,10 @@ ayarlar() {
 			### mps paketler . = paket deposundaki paket listesini verir.
 			-ptl|paketler)
 				 paket_liste "$2" 
+				 exit 0 ;;	
+			### mps gruplar . = paket deposundaki paket grup listesini verir.
+			-pgl|gruplar)
+				 paket_grup_liste "$2" 
 				 exit 0 ;;	
 			### mps -dly paketismi = ilgili paketin genel ve tüm bağımlılık listesini verir,oluşturur.
 			-dly|dliste)
