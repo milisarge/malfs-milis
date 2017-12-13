@@ -265,14 +265,16 @@ paket_bilgi2(){
 }
 
 paket_bilgi(){
-	local paket kkont cikti _yaz _yaz_uyari
+	local paket kkont cikti _yaz _yaz_uyari _yaz_son
 	cikti="--renkli"
+	_yaz_son=""
 	if [ "$2" ]; then
 		cikti="$2"
 	fi
 	if [ $cikti == "--json" ];then
 		_yaz="echo"
 		_yaz_uyari="echo"
+		_yaz_son="<br>"
 	elif [ $cikti == "--renkli" ];then
 		_yaz="ryaz 32"
 		_yaz_uyari="ryaz 31"
@@ -284,13 +286,13 @@ paket_bilgi(){
 	if [ "$kkont" = "kurulu" ];then
 		paket="$1"
 		satir=`sed -n '1p' <  $VT/"$paket"/META`
-		$_yaz "ADI        :" ${satir:1:${#satir}-1} 
+		$_yaz "ADI        :" ${satir:1:${#satir}-1} $_yaz_son
 		satir=`sed -n '2p' <  $VT/"$paket"/META`
-		$_yaz "TANIM      :" ${satir:1:${#satir}-1} 
+		$_yaz "TANIM      :" ${satir:1:${#satir}-1} $_yaz_son
 		satir=`sed -n '3p' <  $VT/"$paket"/META`
-		$_yaz "URL        :" ${satir:1:${#satir}-1} 
+		$_yaz "URL        :" ${satir:1:${#satir}-1} $_yaz_son
 		satir=`sed -n '5p' <  $VT/"$paket"/META`
-		$_yaz "PAKETÇİ    :" ${satir:1:${#satir}-1} 
+		$_yaz "PAKETÇİ    :" ${satir:1:${#satir}-1} $_yaz_son
 		satir=`sed -n '6p' <  $VT/"$paket"/META`
 		satir=${satir:1:${#satir}-1} 
 		printf -v boyut '%d\n' "$satir" 2>/dev/null
@@ -301,17 +303,17 @@ paket_bilgi(){
 			boyut=$(($boyut/1024/1024))
 			_ek="mb"
 		fi
-		$_yaz "KUR BOYUT  :" "$boyut $_ek (tahmini)"
+		$_yaz "KUR BOYUT  :" "$boyut $_ek (tahmini)" $_yaz_son
 		satir=`sed -n '7p' <  $VT/"$paket"/META`
-		$_yaz "SÜRÜM      :" ${satir:1:${#satir}-1}
+		$_yaz "SÜRÜM      :" ${satir:1:${#satir}-1} $_yaz_son
 		satir=`sed -n '8p' <  $VT/"$paket"/META`
-		$_yaz "DEVİR      :" ${satir:1:${#satir}-1}
+		$_yaz "DEVİR      :" ${satir:1:${#satir}-1} $_yaz_son
 		satir=`sed -n '9p' <  $VT/"$paket"/META`
-		$_yaz "PAKETLENME :" `date -d @${satir:1:${#satir}-1}`
+		$_yaz "PAKETLENME :" `date -d @${satir:1:${#satir}-1}` $_yaz_son
 		satir=`sed -n '10p' <  $VT/"$paket"/META`
-		$_yaz "MİMARİ     :" ${satir:1:${#satir}-1}
+		$_yaz "MİMARİ     :" ${satir:1:${#satir}-1} $_yaz_son
 		satir=`sed -n '11p' <  $VT/"$paket"/META`
-		$_yaz "GRUP       :" ${satir:1:${#satir}-1}
+		$_yaz "GRUP       :" ${satir:1:${#satir}-1} $_yaz_son
 	elif [ "$kkont" = "degil" ];then
 		$_yaz_uyari "$1 $_paket_kurulu_degil"
 	else
