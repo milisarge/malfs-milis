@@ -327,10 +327,12 @@ paket_bilgi_html(){
 	while IFS='' read -r satir || [[ -n "$line" ]]; do
 		icerik+="<tr>"
 		_sutun_baslik="$(echo $satir | cut -d':' -f1)"
-		_sutun_deger="$(echo $satir | cut -d':' -f2)"
+		_sutun_deger="$(echo $satir | cut -d':' -f2-)"
 		icerik+="<td>$_sutun_baslik</td>"
-		icerik+="<td>$_sutun_deger</td>"
-		#[ '${_sutun_baslik}' <> '${_sutun_deger}' ] && icerik+="<td>$_sutun_deger</td>"
+		#icerik+="<td>$_sutun_deger</td>"
+		if [ "${_sutun_baslik}" != "${_sutun_deger}" ];then 
+			icerik+="<td>$_sutun_deger</td>"
+		fi
 		icerik+="</tr>"
 	done < "$_dosya"
 	icerik+="</table>"
@@ -900,7 +902,7 @@ surum_kontrol(){
 				durum="dusur"
 			fi
 			gun_onay="h"
-			if [ "$durum" <> "guncel" ];then
+			if [ "$durum" != "guncel" ];then
 				while true; do
 					printf "\n"
 					ryaz 34 "$_paket sürüm $durum""me işlemi uygulanacak. $ksurum <> $surum ";read -p "e veya h-> " eh
@@ -973,7 +975,7 @@ devir_kontrol(){
 				durum="dusur"
 			fi
 			gun_onay="h"
-			if [ "$durum" <> "guncel" ];then
+			if [ "$durum" != "guncel" ];then
 				while true; do
 					printf "\n"
 					ryaz 34 "$_paket devir $durum""me işlemi uygulanacak. $kdevir <> $devir ";read -p "e veya h-> " eh
