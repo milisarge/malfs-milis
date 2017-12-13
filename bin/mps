@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 . /root/bin/fonks.sh
-versiyon="1.1.6 Milis Paket Sistemi"
+versiyon="1.1.7 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -227,6 +227,24 @@ paket_ara(){
 	done
 }
 
+paket_liste(){
+	mps_paketler_listesi="/tmp/mps_paketler_listesi"
+	local cikti
+	cikti="normal"
+	if [ "$1" ]; then
+		cikti="$1"
+	fi
+	if [ $cikti == "--json" ];then
+		[ -f $mps_paketler_listesi ] && rm -rf $mps_paketler_listesi
+		for pkt in $(cat /depo/paketler/paket*.vt  | awk '{print $1}'); do
+			printf "$pkt," >> $mps_paketler_listesi
+		done
+		sed -i s'/.$//' $mps_paketler_listesi
+	else
+		cat /depo/paketler/paket*.vt  | awk '{print $1}'
+	fi
+}
+
 kelime_bul(){
 	grep --color -H -ri "$1" $talimatname
 	grep --color -H -ri "$1" $ektalimatname
@@ -247,18 +265,32 @@ paket_bilgi2(){
 }
 
 paket_bilgi(){
-	local paket kkont
+	local paket kkont cikti _yaz _yaz_uyari
+	cikti="--renkli"
+	if [ "$2" ]; then
+		cikti="$2"
+	fi
+	if [ $cikti == "--json" ];then
+		_yaz="echo"
+		_yaz_uyari="echo"
+	elif [ $cikti == "--renkli" ];then
+		_yaz="ryaz 32"
+		_yaz_uyari="ryaz 31"
+	else
+		cikti="normal"
+	fi
+	
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" = "kurulu" ];then
 		paket="$1"
 		satir=`sed -n '1p' <  $VT/"$paket"/META`
-		ryaz 32 "ADI        :" ${satir:1:${#satir}-1} 
+		$_yaz "ADI        :" ${satir:1:${#satir}-1} 
 		satir=`sed -n '2p' <  $VT/"$paket"/META`
-		ryaz 32 "TANIM      :" ${satir:1:${#satir}-1} 
+		$_yaz "TANIM      :" ${satir:1:${#satir}-1} 
 		satir=`sed -n '3p' <  $VT/"$paket"/META`
-		ryaz 32 "URL        :" ${satir:1:${#satir}-1} 
+		$_yaz "URL        :" ${satir:1:${#satir}-1} 
 		satir=`sed -n '5p' <  $VT/"$paket"/META`
-		ryaz 32 "PAKETÇİ    :" ${satir:1:${#satir}-1} 
+		$_yaz "PAKETÇİ    :" ${satir:1:${#satir}-1} 
 		satir=`sed -n '6p' <  $VT/"$paket"/META`
 		satir=${satir:1:${#satir}-1} 
 		printf -v boyut '%d\n' "$satir" 2>/dev/null
@@ -269,23 +301,22 @@ paket_bilgi(){
 			boyut=$(($boyut/1024/1024))
 			_ek="mb"
 		fi
-		ryaz 32 "KUR BOYUT  :" "$boyut $_ek (tahmini)"
+		$_yaz "KUR BOYUT  :" "$boyut $_ek (tahmini)"
 		satir=`sed -n '7p' <  $VT/"$paket"/META`
-		ryaz 32 "SÜRÜM      :" ${satir:1:${#satir}-1}
+		$_yaz "SÜRÜM      :" ${satir:1:${#satir}-1}
 		satir=`sed -n '8p' <  $VT/"$paket"/META`
-		ryaz 32 "DEVİR      :" ${satir:1:${#satir}-1}
+		$_yaz "DEVİR      :" ${satir:1:${#satir}-1}
 		satir=`sed -n '9p' <  $VT/"$paket"/META`
-		ryaz 32 "PAKETLENME :" `date -d @${satir:1:${#satir}-1}`
+		$_yaz "PAKETLENME :" `date -d @${satir:1:${#satir}-1}`
 		satir=`sed -n '10p' <  $VT/"$paket"/META`
-		ryaz 32 "MİMARİ     :" ${satir:1:${#satir}-1}
+		$_yaz "MİMARİ     :" ${satir:1:${#satir}-1}
 		satir=`sed -n '11p' <  $VT/"$paket"/META`
-		ryaz 32 "GRUP       :" ${satir:1:${#satir}-1}
+		$_yaz "GRUP       :" ${satir:1:${#satir}-1}
 	elif [ "$kkont" = "degil" ];then
-		ryaz 31 "$1 $_paket_kurulu_degil"
+		$_yaz_uyari "$1 $_paket_kurulu_degil"
 	else
-		ryaz 31 "$1 $_paket_tanimsiz"
+		$_yaz_uyari "$1 $_paket_tanimsiz"
 	fi
-
 }
 
 yeniden_paketle(){
@@ -1396,7 +1427,6 @@ tarihce_yukle(){
 		fi
 		if [ ! -s sil.liste ] && [ ! -s kur.liste ];then
 			ryaz 32 "sistem zaten hedef durumda!"
-			pkvt_dosyalar_kaldir
 			exit 1
 		fi
 		while true; do
@@ -1412,22 +1442,16 @@ tarihce_yukle(){
 			mps kurul kur.liste
 			mv sil.liste silinenler.liste
 			mv kur.liste kurulanlar.liste
-			pkvt_dosyalar_kaldir
 			exit 1
 		fi
 		mv sil.liste sil_iptal.liste	
 		mv kur.liste kur_iptal.liste	
-		pkvt_dosyalar_kaldir
 	else
 		ryaz 31 "ilgili tarihce dosyası bulunamadı!"
 		hataloglama "ilgili tarihce dosyası bulunamadı!"
 	fi
-	
-}
-
-pkvt_dosyalar_kaldir(){
-	[ -f hedef.pkvt ]   && rm -rf hedef.pkvt
-	[ -f simdiki.pkvt ] && rm -rf simdiki.pkvt
+	[ -f $PWD/hedef.pkvt ] && rm $PWD/hedef.pkvt
+	[ -f $PWD/simdiki.pkvt ] && rm $PWD/simdiki.pkvt
 }
 
 tarihce_sil(){
@@ -2417,7 +2441,11 @@ ayarlar() {
 				paket_sil_oto "$2" ;;	
 			### mps liste . = sistemde kurulu olan paket listesini verir.
 			-kl|liste)
-				ls $VT ;;	
+				ls $VT ;;
+			### mps paketler . = paket deposundaki paket listesini verir.
+			-ptl|paketler)
+				 paket_liste "$2" 
+				 exit 0 ;;	
 			### mps -dly paketismi = ilgili paketin genel ve tüm bağımlılık listesini verir,oluşturur.
 			-dly|dliste)
 				derleme_listyap "$2" 
@@ -2468,7 +2496,13 @@ ayarlar() {
 				exit 0 ;;
 			### mps -b paketismi = ilgili paketin kurulum bilgilerini verir.
 			-b)
-				paket_bilgi "$2" 
+				if [ $2 ];then
+					touch "/tmp/mps_paket_bilgi_$2"
+					paket_bilgi "$2" "$3"  | tee "/tmp/mps_paket_bilgi_$2"
+				else
+					ryaz 31 "paket ismi eksik"
+					exit 1
+				fi
 				exit 0 ;;
 			### mps bilgi paketismi = ilgili paketin talimat ve kurulum bilgilerini verir.
 			bilgi)
@@ -2641,7 +2675,7 @@ ayarlar() {
 					exit 1
 				fi
 					tarihce_yukle "$2"
-					exit 0 ;;
+					shift ;;
 			-trl)
 				tarihce_liste ;;
 			### mps tdc talimat_dosyası = ilgili talimat dosyasının Türkçe değişken çevrimii yapar.
