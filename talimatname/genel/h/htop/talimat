@@ -1,16 +1,16 @@
 # Tanım: interaktif bir süreç görüntüleyici/düzenleyici
 # URL: http://htop.sourceforge.net/
 # Paketçi: milisarge
-# Gerekler: ncurses
+# Gerekler:
 
 isim=htop
-surum=1.0.3
+surum=2.0.2
 devir=1
-kaynak=(http://hisham.hm/$isim/releases/$surum/$isim-$surum.tar.gz)
+kaynak=(http://hisham.hm/htop/releases/2.0.2/$isim-$surum.tar.gz)
 
 derle() {
     cd $isim-$surum
-    ./configure --prefix=/usr --disable-nls
+    ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
 }
