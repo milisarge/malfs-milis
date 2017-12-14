@@ -229,19 +229,38 @@ paket_ara(){
 
 paket_liste(){
 	mps_paketler_listesi="/tmp/mps_paketler_listesi"
-	local cikti
-	cikti="normal"
+	local cikti _grup
+	_grup="yok"
+	cikti="--normal"
 	if [ "$1" ]; then
-		cikti="$1"
+		if [ "$1" == "--json" ];then
+			cikti="--json"
+		else
+			_grup="$1"
+		fi
 	fi
-	if [ $cikti == "--json" ];then
-		[ -f $mps_paketler_listesi ] && rm -rf $mps_paketler_listesi
-		for pkt in $(cat /depo/paketler/paket*.vt  | awk '{print $1}'); do
-			printf "$pkt," >> $mps_paketler_listesi
-		done
-		sed -i s'/.$//' $mps_paketler_listesi
+	if [ "$2" ]; then
+		cikti="$2"
+	fi
+	#echo "cikti:$cikti"
+	#echo "grup:$_grup"
+	#exit 1
+	if [ $_grup == "yok" ];then
+		if [ $cikti == "--json" ];then
+			[ -f $mps_paketler_listesi ] && rm -rf $mps_paketler_listesi
+			for pkt in $(cat /depo/paketler/paket*.vt  | awk '{print $1}'); do
+				printf "$pkt," >> $mps_paketler_listesi
+			done
+			sed -i s'/.$//' $mps_paketler_listesi
+		else
+			cat /depo/paketler/paket*.vt  | awk '{print $1}'
+		fi
 	else
-		cat /depo/paketler/paket*.vt  | awk '{print $1}'
+		if [ $cikti == "--json" ];then
+			grup_paketler_liste $_grup $cikti
+		else
+			grup_paketler_liste $_grup
+		fi
 	fi
 }
 
@@ -252,17 +271,39 @@ paket_grup_liste(){
 	if [ "$1" ]; then
 		cikti="$1"
 	fi
-	_gruplar=`grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//'  | sed '/^\s*$/d' | LC_ALL=C sort -u`
+	_gruplar=`grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | sort -u`
 	if [ $cikti == "--json" ];then
 		[ -f $mps_paket_grup_listesi ] && rm -rf $mps_paket_grup_listesi
 		#printf "[" >> $mps_paket_grup_listesi
-		for grp in $(grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//'  | sed '/^\s*$/d' | sort -u); do
+		for grp in $(grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | sort -u); do
 			printf "$grp," >> $mps_paket_grup_listesi
 		done
 		sed -i s'/.$//' $mps_paket_grup_listesi
 		#printf "]" >> $mps_paket_grup_listesi
 	else
 		echo $_gruplar
+	fi
+}
+
+grup_paketler_liste(){
+	mps_grup_paketler_listesi="/tmp/mps_grup_paketler_listesi"
+	local cikti _grup _paketler
+	_grup="$1"
+	cikti="normal"
+	if [ "$2" ]; then
+		cikti="$2"
+	fi
+	_paketler=`grep -rli "Grup: $_grup" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort -u`
+	if [ $cikti == "--json" ];then
+		[ -f $mps_grup_paketler_listesi ] && rm -rf $mps_grup_paketler_listesi
+		#printf "[" >> $mps_paket_grup_listesi
+		for pkt in $(grep -rli "Grup: $_grup" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort -u); do
+			printf "$pkt," >> $mps_grup_paketler_listesi
+		done
+		sed -i s'/.$//' $mps_grup_paketler_listesi
+		#printf "]" >> $mps_paket_grup_listesi
+	else
+		echo $_paketler
 	fi
 }
 
@@ -2504,9 +2545,9 @@ ayarlar() {
 			### mps liste . = sistemde kurulu olan paket listesini verir.
 			-kl|liste)
 				ls $VT ;;
-			### mps paketler . = paket deposundaki paket listesini verir.
+			### mps paketler grup_ismi = paket deposundaki paket listesini verir.(grup_ismi verilmezse tüm paketler)
 			-ptl|paketler)
-				 paket_liste "$2" 
+				 paket_liste "$2" "$3"
 				 exit 0 ;;	
 			### mps gruplar . = paket deposundaki paket grup listesini verir.
 			-pgl|gruplar)
