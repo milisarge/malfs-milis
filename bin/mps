@@ -82,9 +82,24 @@ _zaten="zaten"
 
 icerik_ekle(){
 	if [ -f "$1" ];then
+		local cikti _yaz _yaz_tm _yaz_uyari
+		if [ "$2" ]; then
+			cikti="$2"
+		fi
+		#echo "cikti: $cikti"
+		if [ "$cikti" == "--renkli" ];then
+			_yaz="ryaz 32"
+			_yaz_tm="ryaz 34"
+			_yaz_uyari="ryaz 31"
+		else
+			cikti="--normal"
+			_yaz="echo"
+			_yaz_tm="echo"
+			_yaz_uyari="echo"
+		fi
 		paketad=`echo "$1" | cut -d'#' -f1`	
 		paketad=`basename $paketad`
-		ryaz 34 $paketad" paketi kuruluyor-> $kokdizin" 
+		$_yaz_tm "$paketad paketi kuruluyor-> $kokdizin" 
 		if [ -f /usr/bin/bsdtar ];then
 			bsdtar -C /tmp --extract --file=$1 .PRE 1 2> /tmp/$paketad_pre.log
 		else
@@ -135,55 +150,77 @@ icerik_ekle(){
 		if [ -f $kokdizin/etc/ld.so.conf ];then
 			ldconfig -r $kokdizin
 		fi
-		ryaz 34 $paketad" $_paket_kuruldu"
+		$_yaz_tm "$paketad $_paket_kuruldu"
 		loglama "$paketad $_paket_kuruldu"
 	else
-		ryaz 31 "icerik_ekle:paket konum parametresi boş!!!"
+		$_yaz_uyari "icerik_ekle:paket konum parametresi boş!!!"
 		exit 1
 	fi
 	
 }
 
 paket_sil(){
-	local paket kkont sil_onay oto_silme 
+	local paket kkont sil_onay oto_silme cikti _yaz _yaz_uyari _yaz_tm
 	local _etkilenen=()
 	paket="$1"
 	tersbag_goster="hayir"
+	
+	cikti="--renkli"
 	if [ "$2" ]; then
-		oto_silme="$2"
+		if [ "$2" == "--normal" ];then
+			cikti="--normal"
+		else
+			oto_silme="$2"
+		fi
 	fi
+	
 	if [ "$3" ]; then
-		tersbag_goster="evet"
+		if [ "$3" == "--normal" ];then
+			cikti="--normal"
+		else
+			tersbag_goster="evet"
+		fi
 	fi
+	
+	if [ $cikti == "--renkli" ];then
+		_yaz="ryaz 32"
+		_yaz_tm="ryaz 34"
+		_yaz_uyari="ryaz 31"
+	else
+		_yaz="echo"
+		_yaz_tm="echo"
+		_yaz_uyari="echo"
+	fi
+	
 	if [ "$tpk" = "evet" ] && [ -d "$talimatname/temel/$1" ];then
-		ryaz 31 "$1 temel sistem paketidir.Silinemez!!!"
+		$_yaz_uyari "$1 temel sistem paketidir.Silinemez!!!"
 		hataloglama "$1 temel sistem paketidir.Silinemez!!!"
 	else
 		kkont=`kurulu_kontrol "$1"`
 		if [ "$kkont" = "kurulu" ];then
 			if [ -f "$VT/$paket/kurulan" ];then
                 #dizin koruma
-                etkilenen_kurtar $1
+                etkilenen_kurtar $1 $cikti
 				cat $VT/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
 				if [ "$tersbag_goster" = "evet" ];then
-					ryaz 31 "ters bagimliliklar"
-					ryaz 31 "------------------"
+					$_yaz_uyari "ters bagimliliklar"
+					$_yaz_uyari "------------------"
 					ters_bagimli_bilgi "$paket"
-					ryaz 31 "------------------"
+					$_yaz_uyari "------------------"
 				fi
 				#_etkilenen=$(silme_etkilenen_kontrol /tmp/$paket.sil $paket)
 				
 				#if [ -f "${_etkilenen[0]}" ];then
-				ryaz 31 "etkilenen dosyalar"
-				ryaz 31 "------------------"
+				$_yaz_uyari "etkilenen dosyalar"
+				$_yaz_uyari "------------------"
 				silme_etkilenen_kontrol /tmp/$paket.sil $paket
-				ryaz 31 "------------------"
+				$_yaz_uyari "------------------"
 				#fi
 				if [ "$oto_silme" = "evet" ];then
 					sil_onay="e"
 				else
 					while true; do
-						ryaz 34 $paket" $_paket_silinsinmi";read -p "e veya h-> " eh
+						$_yaz_tm $paket" $_paket_silinsinmi";read -p "e veya h-> " eh
 						case $eh in
 							[Ee]* ) sil_onay="e"; break;;
 							[Hh]* ) break;;
@@ -197,7 +234,7 @@ paket_sil(){
 					xargs rm -r -f < /tmp/$paket.sil &&
 					rm -r -f "$VT/$paket" &&
 					[ -f "$_konum/$paket.sil-kos" ] && bash "$_konum/$paket.sil-kos"
-					ryaz 34 $paket" $_paket_silindi"
+					$_yaz_tm $paket" $_paket_silindi"
 					loglama "$paket $_paket_silindi"
 					rm -f /tmp/$paket.sil
 				else
@@ -205,14 +242,14 @@ paket_sil(){
 				fi
 				
 			else
-				ryaz 31 "kritik mesaj:kurulanlar dosyası yok." 
+				$_yaz_uyari "kritik mesaj:kurulanlar dosyası yok." 
 				hataloglama "kritik mesaj:kurulanlar dosyası yok." 
 			fi
 		elif [ "$kkont" = "degil" ];then
-			ryaz 32 "$_zaten $_paket_kurulu_degil"
+			$_yaz "$_zaten $_paket_kurulu_degil"
 			hataloglama "$_zaten $_paket_kurulu_degil"
 		else
-			ryaz 32 "$_paket_tanimsiz"
+			$_yaz "$_paket_tanimsiz"
 			hataloglama "$_paket_tanimsiz"
 		fi
 	fi
@@ -746,6 +783,19 @@ paket_inkur_liste(){
 # otomatik kontrollu kur
 # -kur
 paket_inkur_oto(){
+	local cikti _yaz _yaz_uyari
+	cikti="--renkli"
+	if [ "$2" ]; then
+		cikti="$2"
+	fi
+	if [ $cikti == "--renkli" ];then
+		_yaz="ryaz 32"
+		_yaz_uyari="ryaz 31"
+	else
+		cikti="--normal"
+		_yaz="echo"
+		_yaz_uyari="echo"
+	fi
 	local konum anakonum kurdurum
 	derleme_listyap_kontrol
 	#derleme_listyap "$1" | grep "bulunamadı"
@@ -759,21 +809,21 @@ paket_inkur_oto(){
 		ekkonum="`find "$ektalimatname" -name $kpkt`"
 		if [ -f  "$anakonum/talimat" ];then
 			if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "evet" ];then
-				agdan_kur "$kpkt"
+				agdan_kur "$kpkt" "$cikti"
 			else
-				ryaz 31 "$kpkt talimat eşitsizliğinden atlandı." 
+				$_yaz_uyari "$kpkt talimat eşitsizliğinden atlandı." 
 			fi
 		elif [ -f  "$ekkonum/talimat" ];then
-			agdan_kur "$kpkt"
+			agdan_kur "$kpkt" "$cikti"
 		else
-			ryaz 31 "$kpkt talimatı bulunamadı!"
+			$_yaz_uyari "$kpkt talimatı bulunamadı!"
 		fi
 	done
 	if [ $(kurulu_kontrol $1) = "degil" ];then
 		kurdurum="kurulu değil"
 	elif [ $(kurulu_kontrol $1) = "kurulu" ];then
 		kurdurum="kurulu"
-		ryaz 32 "\n$1 $kurdurum "
+		$_yaz "$1 $kurdurum"
 	else
 		kurdurum="$_paket_tanimsiz"
 	fi
@@ -1383,7 +1433,23 @@ log_analiz(){
 }
 
 etkilenen_kurtar(){
-	local dizin paket
+	local dizin paket cikti _yaz _yaz_uyari _yaz_tm
+	cikti="--renkli"
+	if [ "$2" ]; then
+		if [ "$2" == "--normal" ];then
+			cikti="--normal"
+		fi
+	fi
+
+	if [ $cikti == "--renkli" ];then
+		_yaz="ryaz 32"
+		_yaz_tm="ryaz 34"
+		_yaz_uyari="ryaz 31"
+	else
+		_yaz="echo"
+		_yaz_tm="echo"
+		_yaz_uyari="echo"
+	fi
 	paket=$1
 	if [ -f $VT/$paket/kurulan ];then
 		cat $VT/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
@@ -1405,13 +1471,13 @@ etkilenen_kurtar(){
 		if [ -f /tmp/$paket.kurtar ];then
 			mv $VT/$paket/kurulan $VT/$paket/ilk.kurulan
 			grep -v -F -x -f "/tmp/$paket.kurtar" "/tmp/$paket.sil" > $VT/$paket/kurulan
-			ryaz 32 "$paket etkilenen dosyaları kurtarıldı."
+			$_yaz "$paket etkilenen dosyaları kurtarıldı."
 		else
-			ryaz 32 "$paket etkilenen dosyası yok."
+			$_yaz "$paket etkilenen dosyası yok."
 		fi
 		rm -f /tmp/$paket.sil
 	else
-		ryaz 31 "kurulan paket yok!"
+		$_yaz_uyari "kurulan paket yok!"
 		hataloglama "kurulan paket yok!"
 	fi
 }
@@ -2226,7 +2292,18 @@ yerelden_kur(){
 }
 
 agdan_kur(){
-	local kontroldeg
+	local kontroldeg cikti _yaz _yaz_tm _yaz_uyari
+	if [ "$2" ]; then
+		cikti="$2"
+	fi
+	if [ $cikti == "--renkli" ];then
+		_yaz="ryaz 32"
+		_yaz_uyari="ryaz 31"
+	else
+		cikti="--normal"
+		_yaz="echo"
+		_yaz_uyari="echo"
+	fi
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
 		paket_indir "$1"
@@ -2239,23 +2316,23 @@ agdan_kur(){
 					#depo/paketler altında birden fazla sürüm kontrolü yapılır,güncel olan seçilir.
 					surumler=$(ls "$paketdepo$1#"* | wc -l)
 					if [ $surumler = 1 ];then
-						icerik_ekle $(ls "$paketdepo$1#"*)
+						icerik_ekle $(ls "$paketdepo$1#"*) $cikti
 					elif [ $surumler -gt 1 ];then
-						ryaz 31 "$1 paketinin birden fazla sürümü var!"
+						$_yaz_uyari "$1 paketinin birden fazla sürümü var!"
 						kurulacak_guncel_paket=$(ls -1t "$paketdepo$1#"* | head -1)
-						ryaz 32 "$kurulacak_guncel_paket sürümü kuruluyor"
-						icerik_ekle $kurulacak_guncel_paket
+						$_yaz "$kurulacak_guncel_paket sürümü kuruluyor"
+						icerik_ekle $kurulacak_guncel_paket $cikti
 					fi
 				fi
 			else
-				ryaz 31 "$1 indirme hatası"		
+				$_yaz_uyari "$1 indirme hatası"		
 			fi
 		fi
 	elif [ "$kkont" = "kurulu" ];then
 		#ryaz 32 "$1 paketi zaten kurulu!"
 		printf "."
 	else
-		ryaz 31 "tanımsız paket veya tekrar kurulum iptali var!"
+		$_yaz_uyari "tanımsız paket veya tekrar kurulum iptali var!"
 	fi
 }
 
@@ -2301,7 +2378,7 @@ ayarlar() {
 					pip3 uninstall $pypaket
 					exit 1
 				fi
-				paket_sil "$2" 
+				paket_sil "$2" "$3" "$4"
 				exit 0 ;;
 			### mps zorsil|-sz paketismi = ilgili paketi onaysız kaldırır.
 			-sz|zorsil)
@@ -2404,9 +2481,9 @@ ayarlar() {
 						kokdizin="$4"
 						tekrarkur="evet"
 					fi
-					yerelden_kur "$2"
+					yerelden_kur "$2" "$3"
 				else
-					paket_inkur_oto "$2" 
+					paket_inkur_oto "$2" "$3"
 				fi 
 				exit 0 ;;
 			### mps kaynak paketismi = ilgili paketin kaynak kodunu indirir.
