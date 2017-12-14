@@ -385,7 +385,7 @@ paket_bilgi(){
 		_paketci=$(grep -ri "# Paketçi:" $_konum/talimat | cut -d ':' -f2-)
 		_surum=$(grep -ri "surum=" $_konum/talimat | head -1 | cut -d '=' -f2)
 		_devir=$(grep -ri "devir=" $_konum/talimat | head -1 | cut -d '=' -f2)
-		_grup=$(grep -ri "# Grup:" $_konum/talimat | head -1 | cut -d '=' -f2)
+		_grup=$(grep -ri "# Grup:" $_konum/talimat | head -1 | cut -d ':' -f2)
 		$_yaz "ADI        :" ${_ad} #$_yaz_son
 		$_yaz "TANIM      :" ${_tanim} #$_yaz_son
 		$_yaz "URL        :" ${_url} #$_yaz_son
@@ -416,7 +416,9 @@ paket_bilgi_html(){
 	done < "$_dosya"
 	
 	if [[ "${_sutun_baslik}" == *"${_paket_kurulu_degil}"* ]] || [[ "${_sutun_baslik}" == *"${_paket_tanimsiz}"* ]];then 
-		icerik+="<tr><td>DURUM</td><td>${_sutun_baslik}</td></tr>"
+		icerik+="<tr bgcolor='red'><td>DURUM</td><td>${_sutun_baslik}</td></tr>"
+	else
+		icerik+="<tr bgcolor='green'><td>DURUM</td><td>kurulu</td></tr>"
 	fi
 	icerik+="</table>"
 	echo "$icerik" > $_dosya.html
