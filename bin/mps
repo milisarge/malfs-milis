@@ -80,6 +80,7 @@ _yerel_esitleniyor="yerele eşitleniyor."
 _devir_kontrol_iptal="devir kontrolü iptal edildi!"
 _surum_kontrol_iptal="sürüm kontrolü iptal edildi!"
 _zaten="zaten"
+_indiriliyor="indiriliyor"
 
 icerik_ekle(){
 	if [ -f "$1" ];then
@@ -2199,6 +2200,29 @@ paketvt_guncelle(){
 	
 }
 
+yuzdelik_filtre ()
+{
+    local flag=false c count cr=$'\r' nl=$'\n'
+    while IFS='' read -d '' -rn 1 c
+    do
+        if $flag
+        then
+            printf '%c' "$c"
+        else
+            if [[ $c != $cr && $c != $nl ]]
+            then
+                count=0
+            else
+                ((count++))
+                if ((count > 1))
+                then
+                    flag=true
+                fi
+            fi
+        fi
+    done
+}
+
 paket_indir(){
 	if [ -f "$paketdepo""paket.vt" ];then
 		local pkt
@@ -2221,7 +2245,13 @@ paket_indir(){
 				#paketin sunucuda varlık kontrolu
 				wget -q --spider "$pktsunucu$cpaket"
 				if [ $? -eq 0 ]; then	
-					wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket"
+					echo "$1 $_indiriliyor"
+					#kısmi
+					#wget  --no-check-certificate -nc  --progress=bar:force -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | yuzdelik_filtre | grep "==" 
+					#kısmen tm
+					#wget  --no-check-certificate -nc --progress=dot:force -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | grep "% " | tee /dev/null
+					#org
+					wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/$1_indirme.log
 					if [[ "$?" != 0 ]]; then
 						ryaz 31 "indirme hatalı"
 						hataloglama "indirme hatalı"
