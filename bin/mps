@@ -62,7 +62,7 @@ _dosya_yolu_bulunamadi="dosya yolu bulunamadı!"
 _shasum_uyumsuzluk="shasum uyumsuzluğu tespit edildi!"
 _gerekler_belirleniyor="bağımlılıkları belirleniyor."
 _paket_kuruldu="paketi kuruldu."
-_paket_kurulu="paketi kurulu."
+_paket_kurulu="kurulu"
 _paket_kurulu_degil="paketi kurulu değil!"
 _paket_silindi="paketi silindi."
 _paket_silinsinmi="paketi kaldırılsın mı?"
@@ -1228,7 +1228,7 @@ paket_derle(){
 			fi
 			mv *.mps.lz ../
 		else
-			ryaz 32 "$_zaten $_paket_kurulu,yine de derlemek için:
+			ryaz 32 "$derpaket $_zaten $_paket_kurulu,yine de derlemek için:
 			mps -zd $derpaket"
 		fi 
 		cd ..
