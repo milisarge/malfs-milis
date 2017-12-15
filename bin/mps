@@ -441,6 +441,8 @@ paket_bilgi(){
 paket_bilgi_html(){
 	_dosya=$1
 	icerik="<table border=1>"
+	# ikon arşive baktırılacak varsa programın kendi ikonu yoksa öntanımlı ikon kullanılacak
+	icerik+="<tr><td align=center><img src='/static/package.png' alt='' weight=40 height=40></img><td></tr>"
 	while IFS='' read -r satir || [[ -n "$line" ]]; do
 		icerik+="<tr>"
 		_sutun_baslik="$(echo $satir | cut -d':' -f1)"
