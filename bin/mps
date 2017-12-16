@@ -2253,7 +2253,7 @@ paket_indir(){
 					#kısmen tm
 					#wget  --no-check-certificate -nc --progress=dot:force -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | grep "% " | tee /dev/null
 					#org
-					wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | tee /tmp/$1_indirme.log
+					wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/$1_indirme.log
 					if [[ "$?" != 0 ]]; then
 						ryaz 31 "indirme hatalı"
 						hataloglama "indirme hatalı"
