@@ -440,9 +440,13 @@ paket_bilgi(){
 
 paket_bilgi_html(){
 	_dosya=$1
+	_paket=`echo "${_dosya}" | cut -d'_' -f4-5`
 	icerik="<table border=1>"
 	# ikon arşive baktırılacak varsa programın kendi ikonu yoksa öntanımlı ikon kullanılacak
-	icerik+="<tr><td align=center><img src='/static/package.png' alt='' weight=40 height=40></img><td></tr>"
+	_simge_dosya="/static/package.png"
+	echo "dosya: /srv/http/komser/static/simgeler/${_paket}.png"
+	[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simge_dosya="/static/simgeler/$_paket.png"
+	icerik+="<tr><td align=center><img src='${_simge_dosya}' alt='' weight=40 height=40></img><td></tr>"
 	while IFS='' read -r satir || [[ -n "$line" ]]; do
 		icerik+="<tr>"
 		_sutun_baslik="$(echo $satir | cut -d':' -f1)"
@@ -2227,7 +2231,19 @@ yuzdelik_filtre ()
 
 paket_indir(){
 	if [ -f "$paketdepo""paket.vt" ];then
-		local pkt
+		local pkt cikti _yaz _yaz_uyari
+		cikti="--renkli"
+		if [ "$2" ]; then
+			cikti="$2"
+		fi
+		if [ $cikti == "--renkli" ];then
+			_yaz="ryaz 32"
+			_yaz_uyari="ryaz 31"
+		else
+			cikti="--normal"
+			_yaz="echo"
+			_yaz_uyari="echo"
+		fi
 		uzunluk=${#sunucular[@]}
 		#paketin paketin sunucularında aranaması,buldugu sunucudan indirmesi
 		for ((i=1;i<=$uzunluk;i++)); do
@@ -2247,32 +2263,31 @@ paket_indir(){
 				#paketin sunucuda varlık kontrolu
 				wget -q --spider "$pktsunucu$cpaket"
 				if [ $? -eq 0 ]; then	
-					echo "$1 $_indiriliyor"
-					#kısmi
-					#wget  --no-check-certificate -nc  --progress=bar:force -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | yuzdelik_filtre | grep "==" 
-					#kısmen tm
-					#wget  --no-check-certificate -nc --progress=dot:force -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | grep "% " | tee /dev/null
-					#org
-					wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/$1_indirme.log
+					$_yaz "$1 $_indiriliyor"
+					if [ "$cikti" == "--normal" ];then
+						wget --limit-rate=10k --progress=dot:force -nc --no-check-certificate  -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | tee /tmp/$1_indirme.log | sed -u -n 's/[0-9]*%/&/p'
+					else
+						wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/$1_indirme.log
+					fi
 					if [[ "$?" != 0 ]]; then
-						ryaz 31 "indirme hatalı"
+						$_yaz_uyari "indirme hatalı"
 						hataloglama "indirme hatalı"
 					else
 						mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
 						if [ "$ekontdeg" != "$mkontdeg" ];then
-							ryaz 31 "$_shasum_uyumsuzluk,paket tekrar indiriliyor."
+							$_yaz_uyari "$_shasum_uyumsuzluk,paket tekrar indiriliyor."
 							hataloglama "sha1sum uyusmaslik tespit edildi,paket tekrar indiriliyor."
 							rm -f "$paketdepo$pkt" 
-							paket_indir "$1" 
+							paket_indir "$1" "$cikti"
 						#else
 							#ryaz 32 "$_zaten $1 $_paket_onbellek_depoda_var"
 						fi
 					fi
 				else
-					ryaz 31 "$1 paketi bulunamadı $pktsunucu dan silinmiş olmalı!"
+					$_yaz_uyari "$1 paketi bulunamadı $pktsunucu dan silinmiş olmalı!"
 				fi
 			else
-				ryaz 31 "$pktsunucu $1 paketi bulunmuyor!"
+				$_yaz_uyari "$pktsunucu $1 paketi bulunmuyor!"
 			fi
 		done	
 	else
@@ -2339,7 +2354,7 @@ agdan_kur(){
 	fi
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
-		paket_indir "$1"
+		paket_indir "$1" "$2"
 		if [ $(find $paketdepo -name $1#* | head -1) ];then
 			if [ -f $(ls -1t "$paketdepo$1#"* | head -1)  ];then
 				if [ "$kurulum_onay" = "evet" ];then
@@ -2378,7 +2393,7 @@ ayarlar() {
 			### mps -i paketismi = sadece paketi indirir,paket kurulmaz.
 			-i|--indir)
 				kurulum_onay="olumsuz"
-				paket_indir "$2" 
+				paket_indir "$2" "$3"
 				exit 0 ;;
 			### mps -ik paketismi = ilgili paketi indirirve kurar.
 			-ik|--inku)
