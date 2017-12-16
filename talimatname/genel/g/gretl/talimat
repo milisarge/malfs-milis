@@ -1,0 +1,18 @@
+# Tanım: Ekonomik analiz uygulaması
+# URL: http://gretl.sourceforge.net/
+# Paketçi: milisarge
+# Gerekler: gtksourceview3 lapack fftw gnuplot json-glib
+# Grup: akademik
+
+isim=gretl
+surum=2017d
+devir=1
+kaynak=(https://downloads.sourceforge.net/project/gretl/$isim/$surum/$isim-$surum.tar.xz)
+
+derle() {
+	cd $isim-$surum
+	./configure --prefix=/usr \
+	--disable-xdg-utils
+	make
+	make -j1 install DESTDIR=$PKG
+}
