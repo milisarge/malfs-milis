@@ -32,6 +32,6 @@ derle() {
   SHELL=/bin/sh make || SHELL=/bin/sh make
   SHELL=/bin/sh make DESTDIR="$PKG" install
   rm -f "$PKG"/usr/lib/*.ajs
-  rm -f "$PKG"/usr/bin/js38
   find "$PKG"/usr/{lib/pkgconfig,include} -type f -exec chmod -x {} +
+  mv $PKG/usr/lib/pkgconfig/js.pc $PKG/usr/lib/pkgconfig/mozjs-38.pc
 }
