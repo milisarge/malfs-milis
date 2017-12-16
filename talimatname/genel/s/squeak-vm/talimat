@@ -1,0 +1,23 @@
+# Tanım: Smalltalk programlama dili ve ortamının tam özellikli uygulanması
+# URL: http://squeakvm.org
+# Paketçi: Cihan Alkan
+# Gerekler: 
+# Grup: geliştirme
+
+isim=squeak-vm
+surum=4.10.2.2614
+devir=1
+kaynak=(http://squeakvm.org/unix/release/Squeak-$surum-src.tar.gz)
+
+derle() {
+  cd "$SRC"/Squeak-$surum-src  
+
+  ./unix/cmake/configure --prefix=/usr --without-quartz --with-x \
+    --enable-mpg-mmx
+
+  make
+  make DESTDIR="$PKG"/ install
+
+  install -Dm644 "$SRC"/Squeak-$surum-src/unix/doc/LICENSE \
+    "$PKG"/usr/share/licenses/$isim/LICENSE
+}

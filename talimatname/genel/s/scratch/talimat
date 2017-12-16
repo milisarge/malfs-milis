@@ -1,0 +1,35 @@
+# Tanım: Kendi etkileşimli hikayelerinizi, oyunlarınızı, müzik ve sanatınızı oluşturun ve paylaşın
+# URL: http://scratch.mit.edu
+# Paketçi: Cihan Alkan
+# Gerekler: squeak-vm shared-mime-info desktop-file-utils pango gtk-update-icon-cache
+# Grup: geliştirme
+
+isim=scratch
+surum=1.4.0.7
+devir=1
+kaynak=(http://download.scratch.mit.edu/$isim-$surum.src.tar.gz
+        $isim.desktop)
+
+derle() {
+  cd $isim-$surum.src  
+  sed -i 's/-xshm //' src/$isim
+  make build
+
+  install -Dm755 src/$isim "$PKG"/usr/bin/$isim
+  install -Dm644 Scratch.image "$PKG"/usr/lib/$isim/Scratch.image
+  install -m644 Scratch.ini "$PKG"/usr/lib/$isim/Scratch.ini
+  install -Dm644 src/$isim.desktop "$PKG"/usr/share/applications/$isim.desktop
+  install -Dm644 src/man/$isim.1.gz "$PKG"/usr/share/man/man1/$isim.1.gz
+  install -Dm644 src/$isim.xml "$PKG"/usr/share/mime/packages/$isim.xml
+  install -dm755 "$PKG"/usr/share/{$isim,icons/hicolor}
+
+  cp -rp Help locale Media Projects README "$PKG"/usr/share/$isim/
+  cp -rp Plugins "$PKG"/usr/lib/$isim/
+  chmod 755 "$PKG"/usr/share/scratch/locale
+  cp -r $SRC/$isim.desktop "$PKG"/usr/share/applications/$isim.desktop
+
+  for res in 32 48 128; do
+    install -D -m644 src/icons/${res}x${res}/$isim.png \
+      "$PKG"/usr/share/icons/hicolor/${res}x${res}/apps/$isim.png
+  done
+}
