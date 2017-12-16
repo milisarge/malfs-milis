@@ -446,6 +446,7 @@ paket_bilgi_html(){
 	_simge_dosya="/static/package.png"
 	echo "dosya: /srv/http/komser/static/simgeler/${_paket}.png"
 	[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simge_dosya="/static/simgeler/$_paket.png"
+	[ $(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1) ] && _simge_dosya="/static/simgeler/$(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1 | xargs -I {}  basename {})"
 	icerik+="<tr><td align=center><img src='${_simge_dosya}' alt='' weight=40 height=40></img><td></tr>"
 	while IFS='' read -r satir || [[ -n "$line" ]]; do
 		icerik+="<tr>"
