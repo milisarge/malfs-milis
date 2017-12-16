@@ -2265,7 +2265,7 @@ paket_indir(){
 				if [ $? -eq 0 ]; then	
 					$_yaz "$1 $_indiriliyor"
 					if [ "$cikti" == "--normal" ];then
-						wget --limit-rate=10k --progress=dot:force -nc --no-check-certificate  -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | tee /tmp/$1_indirme.log | sed -u -n 's/[0-9]*%/&/p'
+						wget --progress=dot:force -nc --no-check-certificate  -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | tee /tmp/$1_indirme.log | sed -u -n 's/[0-9]*%/&/p'
 					else
 						wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/$1_indirme.log
 					fi
