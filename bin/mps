@@ -1420,7 +1420,7 @@ silme_etkilenen_kontrol(){
 }
 
 # bir paket ile kurulacak yeni paketlerin listesini verir.
-
+# comm yerine diff li çözüm olacak
 yeni_kurulacak_paketler(){
 	[ -f /tmp/mevcut_kurulu.liste ] && rm -rf /tmp/mevcut_kurulu.liste
 	ls $VT > /tmp/mevcut_kurulu.liste
@@ -1428,6 +1428,12 @@ yeni_kurulacak_paketler(){
 	comm -13 <(sort /tmp/mevcut_kurulu.liste) <(sort tumgerekler.liste)
 	[ -f tumgerekler.liste ] && rm -rf  tumgerekler.liste
 	[ -f gerek.liste ] && rm -rf  gerek.liste
+}
+
+# güncellemelerin alınması paket.vt üzerinden
+guncellemeler(){
+	diff --changed-group-format='***%>' --unchanged-group-format='' --new-group-format='+++%>'  \
+	$paketdepo/paket.vt.eski $paketdepo/paket.vt | cut -d' ' -f1 | sort --version-sort
 }
 
 # iki dosyanın içerik karşılaştırması yapar.
@@ -2799,6 +2805,10 @@ ayarlar() {
 			### mps tespit . = tüm sistemin güncellemesi için güncellenecek paket listesini gösterir.
 			tespit)
 				guncelleme_tespit
+				exit 0 ;;
+			### mps gun . = güncellenmesi gereken ve depoya yeni eklenen paketleri gösterir.
+			gun)
+				guncellemeler
 				exit 0 ;;
 			### mps yukselt . = tüm sistemin güncellemesini gerçekleştirir.
 			-GS|yukselt)
