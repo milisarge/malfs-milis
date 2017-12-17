@@ -4,24 +4,22 @@
 # Gerekler: qt5
 
 isim=eta-pen
-surum=0.1.2
+surum=0.2.2
 devir=1
 
-kaynak=(https://github.com/E-Tahta/eta-pen/archive/master.tar.gz::$isim-$surum.tar.gz
-		tahtakalemi.png
+kaynak=(https://github.com/E-Tahta/eta-pen/archive/debian/0.2.2.tar.gz::$isim-$surum.tar.gz
+        tahtakalemi.png
         eta-pen.desktop)
 
 derle() {
-	
-	cd $SRC/$isim-master
+	cd $SRC/$isim-debian-$surum
 	qmake-qt5 eta-pen.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug 
-	make
-	mkdir -p $PKG/usr/bin
-	mkdir -p $PKG/usr/share/applications
-	mkdir -p $PKG/usr/share/icons
+    make
+    mkdir -p $PKG/usr/bin
+    mkdir -p $PKG/usr/share/applications
+    mkdir -p $PKG/usr/share/icons
 
-	mv $isim $PKG/usr/bin/
-	mv $SRC/$isim.desktop $PKG/usr/share/applications/
-	mv $SRC/tahtakalemi.png $PKG/usr/share/icons/
-
+    mv $isim $PKG/usr/bin/
+    mv $SRC/$isim.desktop $PKG/usr/share/applications/
+    mv $SRC/tahtakalemi.png $PKG/usr/share/icons/
 }
