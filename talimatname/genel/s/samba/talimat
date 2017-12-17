@@ -2,6 +2,7 @@
 # URL: http://www.samba.org
 # Paketçi: milisarge
 # Gerekler: talloc tevent avahi gnutls libgpg-error popt python cups kerberos libcap tdb openldap libxslt
+# Grup: ağ
 
 isim=samba
 surum=4.6.7

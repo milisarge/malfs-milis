@@ -2,6 +2,7 @@
 # URL: http://www.libsdl.org
 # Paketçi: milisarge
 # Gerekler: alsa-lib nasm libusb pulseaudio xorg-libx11 xorg-libxext 
+# Grup: grafik_tasarım
 
 isim=sdl
 surum=1.2.15
