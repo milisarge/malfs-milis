@@ -2,6 +2,7 @@
 # URL: http://www.yate.ro/
 # Paketçi: milisarge CihanAlkan
 # Gerekler: speex gsm postgresql mariadb alsa-lib openssl sqlite qt4
+# Grup: ağ
 
 isim=yate
 surum=6.0.0
