@@ -1,0 +1,20 @@
+# Tanım: Basit ve sade dock uygulaması
+# URL: https://launchpad.net/plank
+# Paketçi: Cihan Alkan
+# Gerekler: intltool cairo gnome-common vala gtk3 glibc atk libwnck3 libgee bamf
+
+isim=plank
+surum=0.11.4
+devir=1
+kaynak=(https://launchpad.net/plank/1.0/$surum/+download/plank-$surum.tar.xz)
+
+derle() {
+  cd $isim-$surum
+  ./configure \
+    --prefix='/usr' \
+    --sysconfdir='/etc' \
+    --disable-apport
+ 
+  make
+  make DESTDIR=$PKG install
+}

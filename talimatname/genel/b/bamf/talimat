@@ -1,0 +1,27 @@
+# Tanım: Uygulama eşleme çerçevesi
+# URL: https://launchpad.net/bamf
+# Paketçi: Cihan Alkan
+# Gerekler: libgtop libwnck3 gobject-introspection python-lxml vala
+
+isim=bamf
+surum=0.5.3
+devir=1
+kaynak=(https://launchpad.net/bamf/${surum%.*}/$surum/+download/bamf-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+
+  export PYTHON='/usr/bin/python2'
+  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+
+  ./configure \
+    --prefix='/usr' \
+    --libexecdir='/usr/lib' \
+    --localstatedir='/var' \
+    --sysconfdir='/etc' \
+    --disable-static \
+    --disable-webapps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR=$PKG install
+}
