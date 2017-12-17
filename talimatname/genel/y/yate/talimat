@@ -9,7 +9,7 @@ devir=1
 kaynak=(http://yate.null.ro/tarballs/yate6/yate-$surum-1.tar.gz)
 
 derle() {
-  cd $SRC/$isim-$surum
+  cd $SRC/$isim-$surum || cd $SRC/$isim
   ./autogen.sh
   export LDFLAGS="${LDFLAGS//-Wl,--as-needed}"
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
