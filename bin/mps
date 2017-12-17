@@ -351,18 +351,29 @@ kelime_bul(){
 	grep --color -H -ri "$1" $ektalimatname
 }
 
-paket_bilgi2(){
-	local paket kkont
-	kkont=`kurulu_kontrol "$1"`
-	if [ "$kkont" = "kurulu" ];then
-		paket="$1"
-		cat "$VT/$paket"/META
-	elif [ "$kkont" = "degil" ];then
-		echo "$_paket_kurulu_degil"
-	else
-		echo "$_paket_tanimsiz"
+kurulu_kontrol_test(){
+	local _paket kkont cikti _yaz _yaz_uyari
+	_paket=$1
+	cikti="--renkli"
+	_yaz_son=""
+	if [ "$2" ]; then
+		cikti="$2"
 	fi
-
+	if [ $cikti == "--normal" ];then
+		_yaz="echo"
+		_yaz_uyari="echo"
+	elif [ $cikti == "--renkli" ];then
+		_yaz="ryaz 32"
+		_yaz_uyari="ryaz 31"
+	fi
+	kkont=`kurulu_kontrol "$1"`
+	if [ "$kkont" == "degil" ];then
+		$_yaz_uyari "$_paket $_paket_kurulu_degil"
+		exit 1
+	elif [ "$kkont" == "tanimsiz" ];then
+		$_yaz_uyari "$_paket $_paket_tanimsiz"
+		exit 1
+	fi
 }
 
 paket_bilgi(){
@@ -2617,7 +2628,8 @@ ayarlar() {
 					hataloglama "(-kdl) paket ismi eksik"
 					exit 1
 				fi
-				kurulum_dosya_listele "$2" 
+				kurulu_kontrol_test   "$2" "$3"
+				kurulum_dosya_listele "$2" "$3"
 				exit 0 ;;	
 			### mps -kkp paketismi = ilgili paketin çalışması için eksik olan dosyaları tespit eder.
 			-kkp)
