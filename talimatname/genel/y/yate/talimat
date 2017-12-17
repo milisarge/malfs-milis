@@ -1,0 +1,23 @@
+# Tanım: Yeni nesil telefon motoru
+# URL: http://www.yate.ro/
+# Paketçi: milisarge CihanAlkan
+# Gerekler: speex gsm postgresql mariadb alsa-lib openssl sqlite qt4
+
+isim=yate
+surum=6.0.0
+devir=1
+kaynak=(http://yate.null.ro/tarballs/yate6/yate-$surum-1.tar.gz)
+
+derle() {
+  cd $SRC/$isim-$surum
+  ./autogen.sh
+  export LDFLAGS="${LDFLAGS//-Wl,--as-needed}"
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --with-libpq \
+              --with-mysql \
+              --without-openh323
+  make -j1
+  make DESTDIR=$PKG install
+}
