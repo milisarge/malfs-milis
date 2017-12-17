@@ -1714,6 +1714,7 @@ indir_talimat_paketle(){
 	local _isim
 	_isim=()
 	_isim=`grep 'name=' $dosya | cut -d'=' -f 2`
+	[ ! -n "${_isim[0]}" ] && _isim=`grep 'isim=' $dosya | cut -d'=' -f 2`
 	paketisim="${_isim[0]}"
 	if [ ! -n "$paketisim" ]; then
 		ryaz 31 "paket ismi degiskeni bulunamadı!"
