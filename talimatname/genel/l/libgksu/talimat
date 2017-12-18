@@ -13,7 +13,8 @@ kaynak=(http://people.debian.org/~kov/gksu/$isim-$surum.tar.gz
 	    libgksu-2.0.12-notests.patch
         libgksu-2.0.12-revert-forkpty.patch
         libgksu-2.0.7-libs.patch
-        libgksu-2.0.7-polinguas.patch)
+        libgksu-2.0.7-polinguas.patch
+        libgksu-tr.po)
 
 derle() {
   cd $isim-$surum
