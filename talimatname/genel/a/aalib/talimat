@@ -1,7 +1,8 @@
-# Tanım: AAlib taşınabilir bir ascii art kütüphanesidir.
+# Tanım:  AAlib taşınabilir bir ascii art kütüphanesidir.
 # URL: http://aa-project.sourceforge.net/aalib
 # Paketçi: milisarge
-# Gerekler: xorg-libx11 
+# Gerekler: xorg-libx11
+# Grup: kütüphane
 
 isim=aalib
 surum=1.4rc5
