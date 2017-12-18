@@ -391,7 +391,10 @@ paket_bilgi(){
 		_yaz="ryaz 32"
 		_yaz_uyari="ryaz 31"
 	else
-		cikti="normal"
+		echo "tanımsız çıktı seçeneği,normal çıktı verilecek."
+		_yaz="echo"
+		_yaz_uyari="echo"
+		_yaz_son="<br>"
 	fi
 	
 	kkont=`kurulu_kontrol "$1"`
@@ -450,15 +453,19 @@ paket_bilgi(){
 }
 
 paket_bilgi_html(){
+	_simgedosya=""
 	_dosya=$1
 	_paket=`echo "${_dosya}" | cut -d'_' -f4-5`
 	icerik="<table border=1>"
 	# ikon arşive baktırılacak varsa programın kendi ikonu yoksa öntanımlı ikon kullanılacak
-	_simge_dosya="/static/package.png"
-	echo "dosya: /srv/http/komser/static/simgeler/${_paket}.png"
-	[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simge_dosya="/static/simgeler/$_paket.png"
-	[ $(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1) ] && _simge_dosya="/static/simgeler/$(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1 | xargs -I {}  basename {})"
-	icerik+="<tr><td align=center><img src='${_simge_dosya}' alt='' weight=40 height=40></img><td></tr>"
+	_simgedosya=`ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1 2>/dev/null`
+	[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simgedosya="/static/simgeler/$_paket.png"
+	if [ "x$_simgedosya" != "x" ];then
+		[ -f $_simgedosya ] && _simgedosya="/static/simgeler/$(ls $_simgedosya | xargs -I {}  basename {})"
+	else
+		_simgedosya="/static/simgeler/package.png"
+	fi
+	icerik+="<tr><td align=center><img src='${_simgedosya}' alt='' weight=40 height=40></img><td></tr>"
 	while IFS='' read -r satir || [[ -n "$line" ]]; do
 		icerik+="<tr>"
 		_sutun_baslik="$(echo $satir | cut -d':' -f1)"
@@ -486,11 +493,11 @@ paketler_depo_html(){
 	icerik="<table border=1>"
 	for _paket in $(ls $VT);do
 		# ikon arşive baktırılacak varsa programın kendi ikonu yoksa öntanımlı ikon kullanılacak
-		_simge_dosya="/static/package.png"
+		_simgedosya="/static/package.png"
 		#echo "dosya: /srv/http/komser/static/simgeler/${_paket}.png"
-		[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simge_dosya="/static/simgeler/$_paket.png"
-		[ $(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1) ] && _simge_dosya="/static/simgeler/$(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1 | xargs -I {}  basename {})"
-		icerik+="<tr><td align=center><img src='${_simge_dosya}' alt='' weight=40 height=40></img><td><td>$_paket</td></tr>"
+		[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simgedosya="/static/simgeler/$_paket.png"
+		[ $(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1) ] && _simgedosya="/static/simgeler/$(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1 | xargs -I {}  basename {})"
+		icerik+="<tr><td align=center><img src='${_simgedosya}' alt='' weight=40 height=40></img><td><td>$_paket</td></tr>"
 	done
 	icerik+="</table>"
 	echo "$icerik" > /tmp/test.html
@@ -2768,7 +2775,9 @@ ayarlar() {
 				if [ $2 ];then
 					touch "/tmp/mps_paket_bilgi_$2"
 					paket_bilgi "$2" "$3"  | tee "/tmp/mps_paket_bilgi_$2"
-					[ $2 = "--html" ]; paket_bilgi_html "/tmp/mps_paket_bilgi_$2"
+					if [ $3 ];then
+						[ $3 = "--html" ] && paket_bilgi_html "/tmp/mps_paket_bilgi_$2"
+					fi
 				else
 					ryaz 31 "paket ismi eksik"
 					exit 1
