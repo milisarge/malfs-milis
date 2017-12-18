@@ -4,9 +4,9 @@
 # Gerekler:
 
 isim=jre
-surum=1.8.0_131
+surum=1.8.0_152
 devir=1
-kaynak=(http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/jre-8u131-linux-x64.tar.gz)
+kaynak=(http://ftp.osuosl.org/pub/funtoo/distfiles/oracle-java/jre-8u152-linux-x64.tar.gz)
 
 derle(){
     cd $isim$surum
