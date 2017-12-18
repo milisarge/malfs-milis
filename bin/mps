@@ -453,18 +453,26 @@ paket_bilgi(){
 }
 
 paket_bilgi_html(){
+	_simgedepo="/srv/http/komser/static/simgeler"
+	_simgehtmldepo="/static/simgeler"
 	_simgedosya=""
 	_dosya=$1
 	_paket=`echo "${_dosya}" | cut -d'_' -f4-5`
 	icerik="<table border=1>"
 	# ikon arşive baktırılacak varsa programın kendi ikonu yoksa öntanımlı ikon kullanılacak
-	_simgedosya=`ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1 2>/dev/null`
-	[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simgedosya="/static/simgeler/$_paket.png"
-	if [ "x$_simgedosya" != "x" ];then
-		[ -f $_simgedosya ] && _simgedosya="/static/simgeler/$(ls $_simgedosya | xargs -I {}  basename {})"
+	
+	if [ -f $_simgedepo/${_paket}.png ];then 
+		_simgedosya="$_simgehtmldepo/$_paket.png"
+	elif [ -f /usr/share/icons/hicolor/32x32/apps/${_paket}.png ];then 
+		cp /usr/share/icons/hicolor/32x32/apps/${_paket}.png $_simgedepo/${_paket}.png
+		_simgedosya="$_simgehtmldepo/$_paket.png"
+	elif [ `ls $_simgedepo/${_paket}_* 2>/dev/null | head -n1` ];then
+		_gecicidosya=`ls $_simgedepo/${_paket}_* 2>/dev/null | head -n1`
+		_simgedosya="$_simgehtmldepo/$(ls $_gecicidosya | xargs -I {}  basename {})"
 	else
-		_simgedosya="/static/simgeler/package.png"
+		_simgedosya="$_simgehtmldepo/package.png"
 	fi
+
 	icerik+="<tr><td align=center><img src='${_simgedosya}' alt='' weight=40 height=40></img><td></tr>"
 	while IFS='' read -r satir || [[ -n "$line" ]]; do
 		icerik+="<tr>"
@@ -494,9 +502,9 @@ paketler_depo_html(){
 	for _paket in $(ls $VT);do
 		# ikon arşive baktırılacak varsa programın kendi ikonu yoksa öntanımlı ikon kullanılacak
 		_simgedosya="/static/package.png"
-		#echo "dosya: /srv/http/komser/static/simgeler/${_paket}.png"
-		[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simgedosya="/static/simgeler/$_paket.png"
-		[ $(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1) ] && _simgedosya="/static/simgeler/$(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1 | xargs -I {}  basename {})"
+		#echo "dosya: $_simgedepo/${_paket}.png"
+		[ -f $_simgedepo/${_paket}.png ] && _simgedosya="$_simgehtmldepo/$_paket.png"
+		[ $(ls $_simgedepo/${_paket}_* | head -n1) ] && _simgedosya="$_simgehtmldepo/$(ls $_simgedepo/${_paket}_* | head -n1 | xargs -I {}  basename {})"
 		icerik+="<tr><td align=center><img src='${_simgedosya}' alt='' weight=40 height=40></img><td><td>$_paket</td></tr>"
 	done
 	icerik+="</table>"
