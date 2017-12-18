@@ -44,4 +44,6 @@ derle() {
   gconf-merge-schema "${PKG}/usr/share/gconf/schemas/$isim.schemas" --domain libgksu ${PKG}/etc/gconf/schemas/*.schemas
   rm -rf ${PKG}/etc/gconf
   rm -rf ${PKG}/usr/share/gtk-doc
+  mkdir -p $PKG/usr/share/locale/tr/LC_MESSAGES
+  msgfmt ../tr.po -o $PKG/usr/share/locale/tr/LC_MESSAGES/libgksu.mo
 }
