@@ -2,6 +2,7 @@
 # URL: http://www.abisource.com/
 # Paketçi: milisarge
 # Gerekler: boost cairo aspell fribidi enchant wv librsvg gtk2 redland rasqal desktop-file-utils gtk3
+# Grup: ofis_düzenleme
 
 isim=abiword
 surum=3.0.1

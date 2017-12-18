@@ -1,7 +1,8 @@
 # Tanım: Kaynak kod içerisinde arama yapmayı sağlayan grep benzeri bir araç.
-# URL:         http://beyondgrep.com/
-# Paketçi:    milisarge
-# Gerekler:
+# URL: http://beyondgrep.com/
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: sistem
 
 isim=ack
 surum=2.14
