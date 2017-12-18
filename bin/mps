@@ -248,8 +248,8 @@ paket_sil(){
 				hataloglama "kritik mesaj:kurulanlar dosyası yok." 
 			fi
 		elif [ "$kkont" = "degil" ];then
-			$_yaz "$_zaten $_paket_kurulu_degil"
-			hataloglama "$_zaten $_paket_kurulu_degil"
+			$_yaz "$_zaten $paket $_paket_kurulu_degil"
+			hataloglama "$_zaten $paket $_paket_kurulu_degil"
 		else
 			$_yaz "$_paket_tanimsiz"
 			hataloglama "$_paket_tanimsiz"
@@ -479,6 +479,21 @@ paket_bilgi_html(){
 	fi
 	icerik+="</table>"
 	echo "$icerik" > $_dosya.html
+}
+
+# paketlerin toplu tablo gösterimi
+paketler_depo_html(){
+	icerik="<table border=1>"
+	for _paket in $(ls $VT);do
+		# ikon arşive baktırılacak varsa programın kendi ikonu yoksa öntanımlı ikon kullanılacak
+		_simge_dosya="/static/package.png"
+		#echo "dosya: /srv/http/komser/static/simgeler/${_paket}.png"
+		[ -f /srv/http/komser/static/simgeler/${_paket}.png ] && _simge_dosya="/static/simgeler/$_paket.png"
+		[ $(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1) ] && _simge_dosya="/static/simgeler/$(ls /srv/http/komser/static/simgeler/${_paket}_* | head -n1 | xargs -I {}  basename {})"
+		icerik+="<tr><td align=center><img src='${_simge_dosya}' alt='' weight=40 height=40></img><td><td>$_paket</td></tr>"
+	done
+	icerik+="</table>"
+	echo "$icerik" > /tmp/test.html
 }
 
 yeniden_paketle(){
@@ -2758,6 +2773,9 @@ ayarlar() {
 					ryaz 31 "paket ismi eksik"
 					exit 1
 				fi
+				exit 0 ;;
+			phtml)
+				paketler_depo_html
 				exit 0 ;;
 			### mps bilgi paketismi = ilgili paketin talimat ve kurulum bilgilerini verir.
 			bilgi)
