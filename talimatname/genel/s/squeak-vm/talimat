@@ -1,7 +1,7 @@
 # Tanım: Smalltalk programlama dili ve ortamının tam özellikli uygulanması
 # URL: http://squeakvm.org
 # Paketçi: Cihan Alkan
-# Gerekler: 
+# Gerekler: cmake xorg-libxrender pulseaudio
 # Grup: geliştirme
 
 isim=squeak-vm
