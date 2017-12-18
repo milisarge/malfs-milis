@@ -5,7 +5,7 @@
 
 isim=libgksu
 surum=2.0.12
-devir=1
+devir=2
 kaynak=(http://people.debian.org/~kov/gksu/$isim-$surum.tar.gz
         libgksu-2.0.0-fbsd.patch
         libgksu-2.0.12-automake-1.11.2.patch
@@ -45,5 +45,5 @@ derle() {
   rm -rf ${PKG}/etc/gconf
   rm -rf ${PKG}/usr/share/gtk-doc
   mkdir -p $PKG/usr/share/locale/tr/LC_MESSAGES
-  msgfmt ../tr.po -o $PKG/usr/share/locale/tr/LC_MESSAGES/libgksu.mo
+  msgfmt $SRC/libgksu-tr.po -o $PKG/usr/share/locale/tr/LC_MESSAGES/libgksu.mo
 }
