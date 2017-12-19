@@ -453,7 +453,7 @@ paket_bilgi(){
 }
 
 paket_bilgi_html(){
-	_simgedepo="/srv/http/komser/static/simgeler"
+	_simgedepo="/srv/http/mpsweb/static/simgeler"
 	_simgehtmldepo="/static/simgeler"
 	_simgedosya=""
 	_dosya=$1
