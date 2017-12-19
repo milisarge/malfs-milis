@@ -1992,9 +1992,21 @@ talimat_bilgi(){
 		ryaz 31 "$_apaket $_paket_tanimsiz"
 		exit 1
 	else
-		grep "build()" -B 12 $_konum/talimat |sed '$ d'
+		grep "derle()" -B 12 $_konum/talimat |sed '$ d'
 		ryaz 32 "file://$_konum/talimat"
 		ryaz 32 "https://raw.githubusercontent.com/milisarge/malfs-milis/master/$(echo $_konum | cut -d'/' -f3-6)/talimat"
+	fi
+}
+
+talimat_yazdir(){
+	local _konum _apaket
+	_apaket=$1
+	_konum=$(talimat_bul $_apaket)
+	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+		ryaz 31 "$_apaket $_paket_tanimsiz"
+		exit 1
+	else
+		cat $_konum/talimat
 	fi
 }
 
@@ -2777,6 +2789,10 @@ ayarlar() {
 			### mps tbilgi paketismi = ilgili paketin talimat bilgilerini verir.
 			tbilgi)
 				talimat_bilgi "$2"
+				exit 0 ;;
+			### mps talimat paketismi = ilgili paketin talimatını yazdırır.
+			talimat)
+				talimat_yazdir "$2"
 				exit 0 ;;
 			### mps -b paketismi = ilgili paketin kurulum bilgilerini verir.
 			-b)
