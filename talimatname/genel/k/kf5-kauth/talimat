@@ -4,15 +4,15 @@
 # Gerekler: kf5-kcoreaddons  polkit-qt5
 
 isim=kf5-kauth
-surum=5.27.0
+surum=5.41.0
 devir=1
 _isim=kauth
-_surum=5.27
+_surum=5.41
 
-kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_surum}/${_isim}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$surum
+cd ${_isim}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \
