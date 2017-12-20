@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include/pcap
+
+Name: libcap
+Description: Library to deal with kernel modules
+Version: 22
+Libs: -L${libdir} -lcap
+Cflags: -I${includedir}

@@ -1,0 +1,19 @@
+# Tanım: ELF 32/64 ikililer için araçlar
+# URL: https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities
+# Paketçi: milisarge
+# Gerekler:
+# Grup: araçlar
+
+isim=pax-utils
+surum=1.2.2
+devir=1
+kaynak=(http://distfiles.gentoo.org/distfiles/$isim-$surum.tar.xz
+		libcap.pc)
+
+derle(){
+    cd "$isim-$surum"
+    [ ! -f /usr/lib/pkgconfig/libcap.pc ] && cp $SRC/libcap.pc /usr/lib/pkgconfig/
+    make USE_CAP=yes
+    make DESTDIR="$PKG/" install;
+    rm -f "$PKG"/usr/bin/lddtree
+}
