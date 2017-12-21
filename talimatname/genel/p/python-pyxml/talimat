@@ -1,0 +1,17 @@
+# Tanım: Python XML, selinux-refpolicy için gereklilik
+# URL: https://github.com/actmd/PyXML
+# Paketçi: Oltulu
+# Gerekler: python python-setuptools
+# Grup: kütüphane
+
+isim=python-pyxml
+surum=0.8.4
+devir=1
+kaynak=(https://github.com/actmd/PyXML/archive/${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd $SRC/PyXML-$surum/
+	python2 setup.py build
+	python2 setup.py install --root="$PKG/" --optimize=1
+}
+  
