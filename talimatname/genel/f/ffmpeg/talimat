@@ -1,10 +1,10 @@
 # Tanım: Ses ve videoyu kaydetmek, dönüştürmek ve akışlamak için eksiksiz, çapraz platformlu bir çözüm.
 # URL: http://ffmpeg.org/
 # Paketçi: milisarge
-# Gerekler: yasm opus fdk-aac x264 x265 liba52 libass libva libwebp libvdpau freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
+# Gerekler: yasm opus fdk-aac x264 x265 liba52 libass libva libwebp pulseaudio libvdpau freetype lame sdl libvorbis libogg xvid faac faad2 libtheora alsa-lib openjpeg libvpx xorg-libxext xorg-libxfixes jack
 
 isim=ffmpeg
-surum=3.3.2
+surum=3.4
 devir=1
 kaynak=(http://ffmpeg.org/releases/ffmpeg-$surum.tar.xz
 		ffmpeg-x264-10bit.sh)
@@ -39,13 +39,14 @@ cd $isim-$surum
 		--enable-version3 \
 		--enable-shared \
 		--enable-pic \
+		--enable-libpulse \
 		--enable-avfilter \
 		--enable-avresample \
 		--enable-postproc \
 		--enable-pthreads \
 		--enable-swresample
 
-	make
+	make || make
 	make DESTDIR=$PKG install install-man
 
 	rm -r $PKG/usr/share/ffmpeg/examples
