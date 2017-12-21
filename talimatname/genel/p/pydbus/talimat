@@ -1,0 +1,22 @@
+# Tanım: Pythonic DBus kitaplığı
+# URL: https://github.com/LEW21/pydbus
+# Paketçi: Oltulu
+# Gerekler: python python3 python-setuptools python3-setuptools
+
+isim=pydbus
+surum=0.6.0
+devir=1
+kaynak=(https://github.com/LEW21/pydbus/archive/v$surum.tar.gz::${isim}-${surum}.tar.gz)
+
+derle() {
+  cd $SRC/pydbus-$surum
+    python3 setup.py \
+        install \
+            --root="${PKG}" \
+            --optimize=1
+
+    python2 setup.py \
+        install \
+            --root="${PKG}" \
+            --optimize=1
+}
