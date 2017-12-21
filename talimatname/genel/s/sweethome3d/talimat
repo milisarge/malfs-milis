@@ -2,6 +2,7 @@
 # URL: http://www.sweethome3d.com/
 # Paketçi: Oltulu
 # Gerekler: shared-mime-info desktop-file-utils xorg-libxext xorg-libxrender openjdk
+# Grup: grafik_tasarım
 
 isim=sweethome3d
 surum=5.6
