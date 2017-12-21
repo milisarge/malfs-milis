@@ -1,0 +1,25 @@
+# Tanım: Libcurl için bir Python arabirimi
+# URL: http://pycurl.sourceforge.net/
+# Paketçi: Oltulu
+# Gerekler: python python-setuptools python3 python3-setuptools
+# Grup: kütüphane
+
+isim=pycurl
+surum=7.43.0.1
+devir=1
+kaynak=(https://github.com/pycurl/pycurl/archive/REL_${surum//./_}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+  cd $isim-REL_7_43_0_1
+  make
+  python3 setup.py build --with-ssl
+  python3 setup.py install -O1 --root="$PKG"
+  install -D -m644 COPYING-MIT "$PKG"/usr/share/licenses/$isim/LICENSE
+
+  make
+  python2 setup.py build --with-ssl
+  python2 setup.py install -O1 --root="$PKG"
+  install -D -m644 COPYING-MIT "$PKG"/usr/share/licenses/$isim/LICENSE
+
+}
