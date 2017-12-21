@@ -1,0 +1,20 @@
+#!/bin/bash
+# kullanıcı silme
+kullanici_sil(){
+	if [ $1 ];then
+		_isim=$1
+		if [ "$_isim" == "`cat /etc/passwd | grep $_isim | cut -d':' -f1`" ];then
+			userdel -f $_isim
+			echo "kullanıcı dizini silinecek"
+			[ -d /home/$_isim ] && rm -rf /home/$_isim || echo "kullanıcı dizini bulunamadı"
+		else
+			echo "$_isim kullanıcısı bulunamadı"
+		fi
+	else
+		echo "kullanıcı parametresi eksik"
+	fi
+}
+
+kullanici_sil $1
+
+exit 0

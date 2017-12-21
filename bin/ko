@@ -50,9 +50,20 @@ usage()
   exit 1
 }
 
-######################################
-#### Scripting time ##################
-######################################
+# kullanıcıya Milis Xfce4 öntanımlı masaüstü ayarlarının kopyalanması
+xfce4_ayarla(){
+	if [ $1 ];then
+		_isim=$1
+		mkdir -p /home/${_isim}/.config
+		if [ -d /etc/skel/xfce4 ];then
+			cp -rf /etc/skel/xfce4 /home/${_isim}/.config/
+		else
+			cp -rf /root/.config/xfce4 /home/${_isim}/.config/
+		fi
+	else
+		echo "kullanıcı parametresi eksik"
+	fi
+}
 
 if [ $# -eq 1 -o $# -gt 2 ]; then
     usage
@@ -64,7 +75,7 @@ if [ $UID -ne 0 ]; then
 fi
 
 if [ $# -lt 2 ]; then
-    echo -n "Kullancı: "
+    echo -n "Kullanıcı: "
     read name
     echo -n "Uzun ismi: "
     read description
@@ -94,18 +105,11 @@ done
 i=0
 while [ -n "${default_groups[i]}" ]; do
     if grep "${default_groups[i]}" /etc/group > /dev/null ; then
-	if [ -z "$user_groups" ]; then
-	    user_groups="${default_groups[i]}"
-	else
-	    user_groups="$user_groups,${default_groups[i]}"
-	fi
-#	echo "groupes : $user_groups"
-#    else
-#	echo 1>&2 '  Veuillez installez un gestionnaire de fenetre,
-# redemarrer la machine dans ce gestionnaire,
-# et relancer cette commande.
-#'
-#	exit 1
+		if [ -z "$user_groups" ]; then
+			user_groups="${default_groups[i]}"
+		else
+			user_groups="$user_groups,${default_groups[i]}"
+		fi
     fi
     i=$((i+1))
 done
@@ -113,9 +117,33 @@ done
 echo 1>&2 "
 $name kullanıcısının oluşturulması.
 "
-if [ -f /root/.xinitrc ]; then
-	cp /root/.xinitrc /home/${name}/
+
+
+
+if [ -z "$user_groups" ]; then
+    /sbin/useradd -c "${description}" -m "${name}" || exit 1
+else
+    /sbin/useradd -c "${description}" -G "$user_groups" -m "${name}" || exit 1
 fi
+if [ -f /root/.xinitrc ]; then
+	cp /root/.xinitrc /home/${name}
+fi
+
+
+passwd "$name"
+
+while true; do
+	if [ `pgrep xfce4-session` ];then
+		echo "${name} için Milis Xfce4 öntanımlı masaüstü ayarlarsın mı?";read -p "e veya h-> " eh
+		case $eh in
+			[Ee]* ) xfce4_ayarla ${name}; break;;
+			[Hh]* ) break;;
+			* ) echo "e veya h";;
+		esac
+	fi
+	exit 0
+done
+
 # kullanıcı izinlerin ayarlanması
 if [ -d /home/${name} ]; then
 	#evdizini
@@ -123,15 +151,5 @@ if [ -d /home/${name} ]; then
 	#ses aygıtları
 	setfacl -m u:${name}:rw /dev/snd/* 
 fi
-
-if [ -z "$user_groups" ]; then
-    /sbin/useradd -c "${description}" -m "${name}" || exit 1
-else
-    /sbin/useradd -c "${description}" -G "$user_groups" -m "${name}" || exit 1
-fi
-
-
-
-passwd "$name"
 
 exit 0
