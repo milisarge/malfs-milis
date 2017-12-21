@@ -1,0 +1,19 @@
+# Tanım: MacOS Simge Teması
+# URL: https://www.opendesktop.org/p/1102582
+# Paketçi: Oltulu
+# Gerekler: 
+# Grup: grafik_tasarım
+
+isim=macos-simge-tema
+surum=4.1.5
+devir=1
+
+kaynak=(https://dl.opendesktop.org/api/files/downloadfile/id/1510321229/s/00c9ad9e9855d82ebdb05440ebc08aac/t/1513692922/macOS.tar.xz)
+
+derle() {
+    find -name '* *' -delete
+    cp macOS/status/symbolic/*.svg macOS/devices/symbolic
+    mv macOS/apps/128/accessories_calculator.png macOS/apps/128/accessories-calculator.png
+
+    find */ -type f -exec install -Dm644 '{}' $PKG/usr/share/icons/'{}' \;
+}
