@@ -4,14 +4,12 @@
 # Gerekler: gtk3 libpcap pcre
 
 isim=wireshark
-surum=2.0.1
+surum=2.4.3
 devir=1
-kaynak=(http://www.$isim.org/download/src/all-versions/$isim-$surum.tar.bz2
- wireshark-2.0.1-lua_5_3_1-1.patch)
+kaynak=(http://www.$isim.org/download/src/$isim-$surum.tar.xz)
 
 derle() {
   cd $isim-$surum
-  patch -Np1 -i ../wireshark-2.0.1-lua_5_3_1-1.patch
   ./configure --prefix=/usr \
               --mandir=/usr/man \
               --with-plugins=/usr/lib/$isim/plugins \
@@ -28,6 +26,6 @@ derle() {
   chown -v root:wireshark $PKG/usr/bin/{tshark,dumpcap} &&
   chmod -v 6550 $PKG/usr/bin/{tshark,dumpcap} 
 
-  install -Dm755 .libs/wireshark-gtk ${PKG}/usr/bin/wireshark-gtk
+  install -Dm755 .libs/wireshark ${PKG}/usr/bin/wireshark-gtk
   install -Dm644 wireshark-gtk.desktop ${PKG}/usr/share/applications/wireshark-gtk.desktop
 }
