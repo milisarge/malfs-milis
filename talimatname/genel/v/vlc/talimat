@@ -38,7 +38,7 @@ derle() {
 		--enable-bluray \
 		--enable-opus \
 		--enable-sftp
-
+	sed -i '/354/s/.*/#define QT_XMAS_JOKE_DAY 666/' $SRC/$isim-$surum/modules/gui/qt4/qt4.hpp
 	make
 	make DESTDIR=$PKG install
 	for res in 16 32 48 128; do
