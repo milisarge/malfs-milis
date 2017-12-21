@@ -1,0 +1,119 @@
+# Tanım: Evinizin planını 3D ortamda çizmek için bir iç mekan tasarımı uygulaması
+# URL: http://www.sweethome3d.com/
+# Paketçi: Oltulu
+# Gerekler: shared-mime-info desktop-file-utils xorg-libxext xorg-libxrender openjdk
+
+isim=sweethome3d
+surum=5.6
+devir=1
+kaynak=(http://downloads.sourceforge.net/${isim}/SweetHome3D-${surum}-linux-x64.tgz::SweetHome3D-${surum}-linux-x64.tgz)
+
+derle() {
+  cd $SRC
+
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sweet Home 3D
+Comment=Bir iç tasarım uygulaması
+TryExec=sweethome3d
+Exec=sweethome3d %f
+Icon=sweethome3d
+Categories=Graphics;Office;Java;
+StartupWMClass=com-eteks-sweethome3d-SweetHome3D
+MimeType=application/x-sweethome3d
+
+EOF
+
+# SH 
+mkdir -pv $PKG/usr/bin &&
+cat > $PKG/usr/bin/$isim << "EOF" &&
+#!/bin/sh
+
+APP_CLASSPATH=""
+JAVA_EXEC=""
+JAVA_OPTS="${JAVA_OPTS} -Xmx1024m"
+
+if [ -n "${JAVA_HOME}" ]
+then
+  if [ -x "${JAVA_HOME}/bin/java" ]
+  then
+    JAVA_EXEC="${JAVA_HOME}/bin/java"
+  fi
+else
+  JAVA_EXEC="$(which java)"
+fi
+
+if [ -z "${JAVA_EXEC}" ]
+then
+  echo "No 'java' executable can be found, please set JAVA_HOME variable or"
+  echo "use the 'archlinux-java' script to set the Java version."
+  exit 1
+fi
+
+# Build classpath
+APP_CLASSPATH="SweetHome3D.jar:Furniture.jar:Textures.jar:Help.jar:iText-2.1.7.jar:freehep-vectorgraphics-svg-2.1.1b.jar:sunflow-0.07.3i.jar:jmf.jar:batik-svgpathparser-1.7.jar"
+if [ "${SWEETHOME3D_JAVA3D}" = "1.5" ]
+then
+  JAVA_OPTS="${JAVA_OPTS} -Djava.library.path=/usr/lib/sweethome3d/java3d-1.5"
+  APP_CLASSPATH="${APP_CLASSPATH}:/usr/lib/sweethome3d/java3d-1.5/j3dcore.jar:/usr/lib/sweethome3d/java3d-1.5/j3dutils.jar:/usr/lib/sweethome3d/java3d-1.5/vecmath.jar"
+else
+  JAVA_OPTS="${JAVA_OPTS} -Djava.library.path=/usr/lib/sweethome3d/java3d-1.6 -Djogamp.gluegen.UseTempJarCache=false"
+  APP_CLASSPATH="${APP_CLASSPATH}:/usr/lib/sweethome3d/java3d-1.6/j3dcore.jar:/usr/lib/sweethome3d/java3d-1.6/j3dutils.jar:/usr/lib/sweethome3d/java3d-1.6/vecmath.jar:/usr/lib/sweethome3d/java3d-1.6/gluegen-rt.jar:/usr/lib/sweethome3d/java3d-1.6/jogl-java3d.jar"
+fi
+APP_CLASSPATH="${APP_CLASSPATH}:javaws.jar"
+
+cd "/usr/share/java/sweethome3d"
+
+exec "${JAVA_EXEC}" \
+     -classpath "${APP_CLASSPATH}" \
+     ${JAVA_OPTS} \
+     -Dcom.eteks.sweethome3d.applicationId=SweetHome3D#Installer \
+     com.eteks.sweethome3d.SweetHome3D \
+     -open "$1"
+
+EOF
+
+# Xml 
+mkdir -pv $PKG/usr/share/mime/packages &&
+cat > $PKG/usr/share/mime/packages/$isim.xml << "EOF" &&
+<?xml surum="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-sweethome3d">
+    <comment>Sweet Home 3D project</comment>
+    <glob pattern="*.sh3d"/>
+  </mime-type>
+</mime-info>
+
+EOF
+
+  # Lisansları kur
+  cd "SweetHome3D-${surum}"
+  install -m 755 -d "${PKG}/usr/share/licenses/${isim}"
+  install -m 755 -t "${PKG}/usr/share/licenses/${isim}" THIRDPARTY-LICENSE-*
+  # Install icon
+  install -m 644 -D "SweetHome3DIcon.png" "${PKG}/usr/share/pixmaps/${isim}.png"
+  # Install javaws.jar from jre8
+  install -m 755 -d "${PKG}/usr/share/java/${isim}"
+  install -m 644 -t "${PKG}/usr/share/java/${isim}" jre8/lib/javaws.jar
+  # Install main program and libraries
+  cd "lib"
+  install -m 644 -t "${PKG}/usr/share/java/${isim}" *.jar
+  # Java3D 1.5 kütüphanesi
+  install -m 755 -d "${PKG}/usr/lib/${isim}/java3d-1.5"
+  mv -t "${PKG}/usr/lib/${isim}/java3d-1.5" \
+    "${PKG}"/usr/share/java/${isim}/{j3dcore.jar,j3dutils.jar,vecmath.jar}
+  install -m 755 -t "${PKG}/usr/lib/${isim}/java3d-1.5" libj3dcore-ogl.so
+  # Java3D 1.6 kütüphanesi
+  install -m 755 -d "${PKG}/usr/lib/${isim}/java3d-1.6"
+  install -m 644 -t "${PKG}/usr/lib/${isim}/java3d-1.6" java3d-1.6/*.jar
+  install -m 755 -t "${PKG}/usr/lib/${isim}/java3d-1.6" java3d-1.6/*.so
+
+chmod 755 $PKG/usr/share/applications/$isim.desktop
+chmod 644 ${PKG}/usr/share/mime/packages/${isim}.xml
+chmod 755 ${PKG}/usr/bin/$isim
+chmod +x ${PKG}/usr/bin/$isim
+}
