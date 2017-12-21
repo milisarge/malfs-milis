@@ -8,7 +8,7 @@ isim=macos-simge-tema
 surum=4.1.5
 devir=1
 
-kaynak=(https://dl.opendesktop.org/api/files/downloadfile/id/1510321229/s/00c9ad9e9855d82ebdb05440ebc08aac/t/1513692922/macOS.tar.xz)
+kaynak=(https://dl.opendesktop.org/api/files/downloadfile/id/1510321229/s/4b235bb70e9c6341be771802bc542e92/t/1513887320/macOS.tar.xz)
 
 derle() {
     find -name '* *' -delete
