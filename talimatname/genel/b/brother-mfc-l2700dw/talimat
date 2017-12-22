@@ -1,13 +1,14 @@
 # Tanım: Brother MFC-L2700DW için LPR ve CUPS sürücüsü
 # URL: http://support.brother.com/g/b/countrytop.aspx?c=tr&lang=tr
-# Paketçi: Cihan Alkan
+# Paketçi: CihanAlkan
 # Gerekler: cups
+# Grup: sürücüler
 
 isim=brother-mfc-l2700dw
 surum=3.2.0
 devir=1
 kaynak=(http://download.brother.com/welcome/dlf101789/mfcl2700dwlpr-$surum-1.i386.rpm
-	    http://download.brother.com/welcome/dlf101790/mfcl2700dwcupswrapper-$surum-1.i386.rpm)
+        http://download.brother.com/welcome/dlf101790/mfcl2700dwcupswrapper-$surum-1.i386.rpm)
 
 derle() {
 #  '/usr/local' klasörüne kurma
@@ -17,7 +18,6 @@ derle() {
 		rm -rf "$SRC/usr/local"
 	        sed -i 's|/usr/local/Brother|/usr/share/brother|g' `grep -lr '/usr/local/Brother' ./`
         fi
-
  # setup cups-directories
 	install -dm755 "$SRC/usr/share/cups/model"
 	install -dm755 "$SRC/usr/lib/cups/filter"
@@ -25,7 +25,6 @@ derle() {
         cd `find . -type d -name 'cupswrapper'`
         cp *lpdwrapper* "$SRC/usr/lib/cups/filter/"
         cp *.ppd "$SRC/usr/share/cups/model/"
-
         cd "$SRC"
 # get absolute printer path
         _baseDir="\"/$(find opt -maxdepth 3 -depth -print -quit -type d)\""

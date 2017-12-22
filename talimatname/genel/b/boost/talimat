@@ -2,23 +2,20 @@
 # URL: http://boost.sourceforge.net/
 # Paketçi: milisarge
 # Gerekler: icu python python3
+# Grup: kütüphane
 
 isim=boost
 surum=1.65.1
 devir=1
-_boostver=${version//./_}
 kaynak=(https://downloads.sourceforge.net/project/${isim}/${isim}/${surum}/${isim}_${_boostver}.tar.bz2)
 
+_boostver=${version//./_}
 derle() {
    export _stagedir="${SRC}/stagedir"
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
-
    cd ${isim}_${_boostver}
-
    ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
-
    install -Dm755 ./b2 "${_stagedir}"/bin/b2
-
    # default "minimal" install: "release link=shared,static
    # runtime-link=shared threading=single,multi"
    # --layout=tagged will add the "-mt" suffix for multithreaded libraries
@@ -40,12 +37,10 @@ derle() {
       \
       --prefix="${_stagedir}" \
       install
-
    # because b2 in boost 1.62.0 doesn't seem to respect python parameter, we
    # need another run for liboost_python3.so
    sed -e '/using python/ s@;@: /usr/include/python${PYTHON_VERSION/3*/${PYTHON_VERSION}m} ;@' \
       -i bootstrap.sh
-
    ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3 \
       --with-libraries=python
       
@@ -65,18 +60,13 @@ derle() {
       --prefix="${_stagedir}/python3" \
       --with-python \
       install
-
    install -dm755 "${PKG}"/usr
    cp -a "${_stagedir}"/{bin,include} "${PKG}"/usr
-
    install -d "${PKG}"/usr/lib
    cp -a "${_stagedir}"/lib/*.a "${PKG}"/usr/lib/
-
    install -Dm644 "${_stagedir}"/python3/lib/libboost_python3.a \
       "${PKG}"/usr/lib/libboost_python3.a
-
    install -dm755 "${PKG}"/usr
    cp -a "${_stagedir}"/lib "${PKG}"/usr
    cp -a "${_stagedir}"/python3/lib/libboost_python3* "${PKG}"/usr/lib
-
 }

@@ -2,29 +2,25 @@
 # URL: http://www.broadcom.com/support/802.11/linux_sta.php
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: sürücüler
 
 isim=broadcom-wl
 surum=6.30.223.248
 devir=6
-[[ "`uname -m`" == "x86_64" ]] && _arch=_64 || _arch=
 kaynak=("http://www.broadcom.com/docs/linux_sta/hybrid-v35${_arch}-nodebug-pcoem-${version//./_}.tar.gz"
-        broadcom-wl.modprobe.d broadcom-wl.license.patch broadcom-wl.linux-recent.patch broadcom-wl.gcc.patch)
+        broadcom-wl.modprobe.dbroadcom-wl.license.patchbroadcom-wl.linux-recent.patchbroadcom-wl.gcc.patch)
+
+[[ "`uname -m`" == "x86_64" ]] && _arch=_64 || _arch=
 derle() {
-
 KERNELRELEASE=`uname -r`
-
   patch -p1 -i broadcom-wl.linux-recent.patch
   patch -p1 -i broadcom-wl.license.patch
   patch -p1 -i broadcom-wl.gcc.patch
-
   sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" \
       -i src/wl/sys/wl_linux.c
-
   make
-
   install -Dm644 wl.ko $PKG/lib/modules/$KERNELRELEASE/kernel/drivers/net/wireless/wl.ko
   gzip $PKG/lib/modules/$KERNELRELEASE/kernel/drivers/net/wireless/wl.ko
-
   install -Dm644 lib/LICENSE.txt $PKG/usr/share/licenses/$isim/LICENSE
   install -Dm644 broadcom-wl.modprobe.d $PKG/etc/modprobe.d/broadcom-wl.conf
   # post-install autogen

@@ -2,6 +2,7 @@
 # URL: http://busybox.net/
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: sistem
 
 isim=busybox
 surum=1.27.2
@@ -10,20 +11,15 @@ kaynak=(http://busybox.net/downloads/$isim-$surum.tar.bz2)
 
 derle() {
 	cd $isim-$surum
-
 	# https://bugs.gentoo.org/show_bug.cgi?id=310413
 	export CFLAGS+=' -fno-strict-aliasing'
-
 	[ "$CC" ] || CC=gcc
-
 	#for i in $SRC/*.patch; do
 	#	patch -p1 -i $i
 	#done
-
 	make defconfig
 	make CC="$CC"
 	install -m 0755 -D busybox $PKG/sbin/busybox
-
 	make clean
 	export LDFLAGS+=' -static'
 	make defconfig

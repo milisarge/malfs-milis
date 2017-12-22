@@ -1,7 +1,8 @@
 # Tanım: RIP, OSPFv2 and BGP uygulaması
 # URL: http://bird.network.cz/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: ağ
 
 isim=bird
 surum=1.6.3

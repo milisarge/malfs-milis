@@ -2,6 +2,7 @@
 # URL: http://freshmeat.net/projects/bmon
 # Paketçi: milisarge
 # Gerekler: confuse libnl
+# Grup: ağ sistem
 
 isim=bmon
 surum=4.0

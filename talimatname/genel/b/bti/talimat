@@ -2,6 +2,7 @@
 # URL: http://gregkh.github.com/bti/
 # Paketçi: milisarge
 # Gerekler: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre
+# Grup: ağ
 
 isim=bti
 surum=034
@@ -13,7 +14,6 @@ derle(){
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
-
     install -Dm644 bti-bashcompletion \
         $PKG/etc/bash_completion.d/bti
     install -Dm644 README \

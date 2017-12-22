@@ -1,7 +1,8 @@
 # Tanım: C ve C++ için garbage collection ve bellek taşması (memory leak) dedektörü.
 # URL: http://www.hboehm.info/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: geliştirme
 
 isim=boehm-gc
 surum=7.4.2
@@ -10,20 +11,14 @@ kaynak=(http://www.hboehm.info/gc/gc_source/gc-${surum}.tar.gz
         https://github.com/ivmai/libatomic_ops/archive/libatomic_ops-${version//\./_}.tar.gz)
 
 derle() {
-
     cd gc-$surum
-
     ln -s $SRC/libatomic_ops-libatomic_ops-${version//\./_} libatomic_ops
-
     ./configure \
         --prefix=/usr \
         --enable-threads=pthreads \
         --enable-static \
         --enable-shared
-
     make
     make DESTDIR=$PKG install
-
     install -D -m 644 doc/gc.man $PKG/usr/man/man3/gc.3
-
 }

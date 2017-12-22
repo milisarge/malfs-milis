@@ -1,15 +1,16 @@
 # Tanım: Hızlı tempolu ekip tabanlı dış alan çok oyunculu muharebe oyunu
-# URL:         http://bitfighter.org/
-# Paketçi:    milisarge
-# Gerekler:  cmake xorg-glu sdl2 libpng libvorbis libmodplug openal speex 
+# URL: http://bitfighter.org/
+# Paketçi: milisarge
+# Gerekler: cmake xorg-glu sdl2 libpng libvorbis libmodplug openal speex
+# Grup: oyunlar
 
 isim=bitfighter
 surum=0.19f
 devir=1
 kaynak=(http://bitfighter.org/files/bitfighter-${version/./}.tar.gz
-		https://bitfighter.org/files/classic_level_pack.zip
-		bitfighter.png
-		bitfighter.desktop)
+        https://bitfighter.org/files/classic_level_pack.zip
+        bitfighter.png
+        bitfighter.desktop)
 
 derle() {
   cd ${isim}-${version/./}
@@ -21,7 +22,6 @@ derle() {
     -DUSE_GLES:BOOL=YES \
     -DCMAKE_BUILD_TYPE=Release \
     ..
-
   make VERBOSE=1
   # install game ressources and executable
   install -d "$PKG"/usr/share/$isim "$PKG"/usr/bin

@@ -2,6 +2,7 @@
 # URL: http://www.isc.org/software/bind
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: sistem ağ
 
 isim=bindutils
 surum=9.11.0
@@ -10,7 +11,6 @@ kaynak=(ftp://ftp.isc.org/isc/bind9/$surum/bind-$surum.tar.gz)
 
 derle() {
     cd bind-$surum
-
     ./configure --prefix=/usr \
                 --disable-linux-caps \
                 --with-libxml2=no

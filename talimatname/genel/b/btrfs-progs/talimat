@@ -1,14 +1,14 @@
 # Tanım: Btrfs filesystem utilities
 # URL: http://btrfs.wiki.kernel.org/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: sistem
 
 isim=btrfs-progs
 surum=4.1
 devir=1
-
 kaynak=(https://www.kernel.org/pub/linux/kernel/people/kdave/$isim/$isim-v$surum.tar.xz
-	http://downloads.nutyx.org/files/$isim-man-v$surum.tar.xz)
+        http://downloads.nutyx.org/files/$isim-man-v$surum.tar.xz)
 
 derle(){
 cd $isim-v$surum

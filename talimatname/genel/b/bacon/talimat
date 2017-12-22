@@ -2,11 +2,11 @@
 # URL: http://www.basic-converter.org
 # Paketçi: milisarge
 # Gerekler: gtksourceview2
+# Grup: geliştirme
 
 isim=bacon
 surum=3.5.4
 devir=1
-
 kaynak=(http://www.basic-converter.org/stable/$isim-$surum.tar.gz)
 
 derle(){

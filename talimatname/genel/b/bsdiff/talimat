@@ -2,6 +2,7 @@
 # URL: https://github.com/mendsley/bsdiff
 # Paketçi: milisarge
 # Gerekler: valgrind
+# Grup: sistem
 
 isim=bsdiff
 surum=4.3

@@ -2,6 +2,7 @@
 # URL: http://bogofilter.sourceforge.net/
 # Paketçi: milisarge
 # Gerekler: db
+# Grup: ağ
 
 isim=bogofilter
 surum=1.2.4

@@ -2,6 +2,7 @@
 # URL: http://bash-completion.alioth.debian.org/
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: sistem
 
 isim=bash-completion
 surum=2.1
@@ -9,25 +10,18 @@ devir=1
 kaynak=(https://launchpad.net/$isim/master/$surum/+download/$isim-$surum.tar.gz)
 
 derle() {
-
     cd $isim-$surum
-
     sed -i Makefile.* \
 	-e 's|pkgconfigdir = .*|pkgconfigdir = /usr/lib/pkgconfig|g' \
 	-e 's|profiledir = .*|profiledir = /etc|g'
-
     ./configure --prefix=/usr --sysconfdir=/etc
-
     make
     make DESTDIR=$PKG install
-
     mv $PKG/etc/bash_completion{.sh,}
     chmod 0755 $PKG/usr/share/$isim/bash_completion
-
     # files allready installed
     for FILE in cal dmesg eject hexdump hwclock ionice look renice rtcwake
     do
       rm $PKG/usr/share/bash-completion/completions/$FILE
     done
-
 }

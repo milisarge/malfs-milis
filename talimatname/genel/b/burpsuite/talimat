@@ -1,32 +1,28 @@
 # Tanım: Web uygulama testleri için entegre bir platform (ücretsiz sürüm).
 # URL: http://portswigger.net/burp/
-# Paketçi: yakar (aydin@komutan.org)
+# Paketçi: aydinyakar
 # Gerekler: giflib
+# Grup: güvenlik
 
 isim=burpsuite
 surum=1.7.23
 devir=1
-kaynak=( https://portswigger.net/burp/releases/download?productid=100\&surum=${surum}\&type=jar $isim.desktop $isim-48.png $isim-32.png $isim-16.png LICENSE )
+kaynak=(https://portswigger.net/burp/releases/download?productid=100\&surum=${surum}\&type=jar$isim.desktop$isim-48.png$isim-32.png$isim-16.pngLICENSE)
 
 derle() {
 	cd "$SRC"
-
   	mkdir -p "$PKG/usr/bin" "$PKG/usr/share/applications/" "$PKG/usr/share/$isim/"
   	mkdir -p "$PKG/usr/share/icons/hicolor/16x16/apps/" "$PKG/usr/share/icons/hicolor/32x32/apps/" "$PKG/usr/share/icons/hicolor/48x48/apps/"
-
   	cp $SRC/$isim-16.png $PKG/usr/share/icons/hicolor/16x16/apps/$isim.png
   	cp $SRC/$isim-32.png $PKG/usr/share/icons/hicolor/32x32/apps/$isim.png
   	cp $SRC/$isim-48.png $PKG/usr/share/icons/hicolor/48x48/apps/$isim.png
   	cp $SRC/$isim.desktop $PKG/usr/share/applications/
   	cp $SRC/download\?productid\=100\&version\=$surum\&type\=jar $PKG/usr/share/$isim/$isim.jar
-
   	#install -Dm644 "$SRC/burpsuite_free_v$surum.jar" "$PKG/usr/share/$isim/$isim.jar"
   	install -Dm644 "$SRC/LICENSE" "$PKG/usr/share/licenses/$isim/LICENSE"
-
   	cat > "$PKG/usr/bin/$isim" << EOF
 #!/bin/sh
 exec java -jar /usr/share/$isim/$isim.jar "\${@}"
 EOF
-
   	chmod +x "$PKG/usr/bin/$isim"
 }

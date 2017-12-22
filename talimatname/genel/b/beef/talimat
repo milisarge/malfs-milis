@@ -1,7 +1,8 @@
 # Tanım: The Browser Exploitation Framework that focuses on the web browser
 # URL: http://beefproject.com/
-# Paketçi: yakar (aydin@komutan.org)
+# Paketçi: yakar(aydin@komutan.org)
 # Gerekler: ruby23 ruby23-bundler sqlite python
+# Grup: güvenlik
 
 isim=beef
 surum=0.4.7.0
@@ -9,7 +10,6 @@ devir=1
 kaynak=(beef_gemkur)
 
 derle() {
-
     if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
 		git clone http://github.com/beefproject/$isim.git $DERLEME_KAYNAKDIZIN/$isim 
 	else
@@ -19,15 +19,11 @@ derle() {
 	fi
 	
 	git clone "$DERLEME_KAYNAKDIZIN/$isim" "$PKG/usr/share/$isim"
-
 	cd "$PKG/usr/share/$isim"
-
 	mkdir -p "$PKG/usr/bin"
-
 	# beef_gemkur
 	cp $SRC/beef_gemkur $PKG/usr/bin
 	chmod +x "$PKG/usr/bin/beef_gemkur"
-
 	# beef
 	cat > "$PKG/usr/bin/$isim" << EOF
 #!/bin/sh
@@ -35,12 +31,10 @@ derle() {
 if ! gem spec nokogiri > /dev/null 2>&1; then
 	/usr/bin/beef_gemkur
 fi
-
 # run beef
 cd /usr/share/$isim
 exec ruby-2.3 $isim "\${@}"
 EOF
-
   chmod +x "$PKG/usr/bin/$isim"
   
   rm "$PKG/usr/share/$isim/install"

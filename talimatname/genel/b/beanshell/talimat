@@ -1,12 +1,12 @@
 # Tanım: Java ile yazılmış nesne tabanlı komut dosyası dili özelliklerine sahip, küçük, ücretsiz, gömülebilir, kaynak seviyesi Java yorumlayıcısı
 # URL: https://github.com/beanshell/beanshell
-# Paketçi: Cihan Alkan
-# Gerekler:
+# Paketçi: CihanAlkan
+# Gerekler: 
+# Grup: geliştirme
 
 isim=beanshell
 surum=2.0b6
 devir=1
-
 kaynak=(https://github.com/beanshell/beanshell/releases/download/$surum/bsh-$surum.jar)
 
 derle() {

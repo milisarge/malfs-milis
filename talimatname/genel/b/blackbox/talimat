@@ -1,7 +1,8 @@
 # Tanım: Hızlı ve  küçük pencere yöneticisi.
-# URL:         http://blackboxwm.sourceforge.net
-# Paketçi:    milisarge
-# Gerekler:  xorg
+# URL: http://blackboxwm.sourceforge.net
+# Paketçi: milisarge
+# Gerekler: xorg
+# Grup: sistem
 
 isim=blackbox
 surum=0.70.1
@@ -10,11 +11,9 @@ kaynak=(http://download.sourceforge.net/blackboxwm/$isim-$surum.tar.bz2
         $isim-$surum-include-fix.diff)
 
 derle() {
-
     cd $isim-$surum
     patch -p1 -i $SRC/$isim-$surum-include-fix.diff
     ./configure --prefix=/usr
-
     make
     make DESTDIR=$PKG install
 }

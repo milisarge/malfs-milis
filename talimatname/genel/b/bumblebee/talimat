@@ -1,46 +1,41 @@
 # Tanım: NVIDIA VirtualGL destek uygulaması
-# URL:         http://www.bumblebee-project.org
-# Paketçi:    milisarge
-# Gerekler:  virtualgl glib
+# URL: http://www.bumblebee-project.org
+# Paketçi: milisarge
+# Gerekler: virtualgl glib
+# Grup: sistem sürücüler
 
 isim=bumblebee
 surum=3.2.1
 devir=1
 kaynak=(
-	http://www.bumblebee-project.org/bumblebee-$surum.tar.gz
-	0001-bb_nvidia_modeset-detection_bug699_01.patch
-	0002-bb_nvidia_modeset-detection_bug699_02.patch
-	0003-bb_nvidia_umv_detection_bug699.patch
-	0004-bb_nvidia_drm_detection_bug699_01.patch
-	0005-bb_nvidia_drm_detection_bug699_02.patch
-	0006-bb_hexadicimal_bug573.patch
-	0007-bb_mutebblogger.patch
-	bumblebee.conf
-	bumblebeed
-)
+        http://www.bumblebee-project.org/bumblebee-$surum.tar.gz
+        0001-bb_nvidia_modeset-detection_bug699_01.patch
+        0002-bb_nvidia_modeset-detection_bug699_02.patch
+        0003-bb_nvidia_umv_detection_bug699.patch
+        0004-bb_nvidia_drm_detection_bug699_01.patch
+        0005-bb_nvidia_drm_detection_bug699_02.patch
+        0006-bb_hexadicimal_bug573.patch
+        0007-bb_mutebblogger.patch
+        bumblebee.conf
+        bumblebeed
+        )
 
 derle() {
 	cd $isim-$surum
-
 	for p in $SRC/*.patch; do
 		patch -p1 < $p
 	done
-
 	./configure \
 		CONF_DRIVER_MODULE_NVIDIA=nvidia \
 		CONF_LDPATH_NVIDIA=/usr/lib/nvidia:/usr/lib32/nvidia \
 		CONF_MODPATH_NVIDIA=/usr/lib/xorg/nvidia/modules/drivers/,/usr/lib/xorg/nvidia/modules,/usr/lib/xorg/modules,/usr/lib/xorg/modules/drivers \
 		--prefix=/usr \
 		--without-pidfile
-
 	make
 	make DESTDIR=$PKG install
-
 	install -Dm755 $SRC/bumblebeed $PKG/etc/rc.d/init.d/bumblebeed
-
 	# Blacklist nvidia and nouveau modules
 	# Reference: https://github.com/Bumblebee-Project/Bumblebee/issues/719
 	install -Dm644 $SRC/bumblebee.conf $PKG/usr/lib/modprobe.d/bumblebee.conf
-
 	rm -r $PKG/usr/share/doc
 }

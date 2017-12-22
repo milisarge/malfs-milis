@@ -1,28 +1,26 @@
 # Tanım: Linux ethernet köprüleme konfigürasyonları için çeşitli araçlar.
 # URL: http://sourceforge.net/projects/bridge/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: sistem
 
 isim=bridge-utils
 surum=1.5
 devir=1
-kaynak=( http://sourceforge.net/projects/bridge/files/bridge/$isim-$surum.tar.gz
-	 http://www.linuxfromscratch.org/patches/blfs/svn/bridge-utils-1.5-linux_3.8_fix-1.patch)
+kaynak=(http://sourceforge.net/projects/bridge/files/bridge/$isim-$surum.tar.gz
+        http://www.linuxfromscratch.org/patches/blfs/svn/bridge-utils-1.5-linux_3.8_fix-1.patch)
 
 derle() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
-
 cd $isim-$surum
 patch -Np1 -i ../bridge-utils-1.5-linux_3.8_fix-1.patch
 autoconf -o configure configure.in
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
-
 # service
-
 cd $SRC/$scripts-$scriptsversion
 make DESTDIR=$PKG install-service-bridge
 }

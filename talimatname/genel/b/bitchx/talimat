@@ -1,7 +1,8 @@
 # Tanım: BitchX is an IRC (Internet Relay Chat) client.
 # URL: http://www.bitchx.com/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: ağ
 
 isim=bitchx
 surum=1.2.1

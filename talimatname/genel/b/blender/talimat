@@ -2,11 +2,11 @@
 # URL: http://www.blender.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: desktop-file-utils cmake python xorg-libx11 openjpeg libpng freetype boost glew llvm opensubdiv opencolorio openimageio hicolor-icon-theme jack libsndfile openal openexr fftw ffmpeg
+# Grup: grafik_tasarım
 
 isim=blender
 surum=2.78a
 devir=1
-
 kaynak=(http://download.blender.org/source/blender-$surum.tar.gz)
 
 derle() {

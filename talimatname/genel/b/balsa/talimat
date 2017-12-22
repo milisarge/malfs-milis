@@ -2,16 +2,16 @@
 # URL: https://pawsa.fedorapeople.org/balsa/
 # Paketçi: milisarge
 # Gerekler: aspell enchant gmime libesmtp rarian pcre gtksourceview2 gtksourceview3 libnotify kerberos sendmail openldap openssl sqlite webkitgtk2 gtkhtml procmail
+# Grup: ağ
 
 isim=balsa
 surum=2.5.2
 devir=1
 kaynak=(http://pawsa.fedorapeople.org/balsa/$isim-$surum.tar.bz2)
+
  
 derle() {
-
 	cd $isim-$surum
-
 	./configure --prefix=/usr            \
 	            --sysconfdir=/etc        \
 	            --localstatedir=/var/lib \
@@ -21,7 +21,5 @@ derle() {
 	            --without-libnotify      \
 	            --without-gtkspell
 	make
-
 	make DESTDIR=$PKG install
-
 }

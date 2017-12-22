@@ -2,12 +2,13 @@
 # URL: https://github.com/ambrop72/badvpn
 # Paketçi: milisarge
 # Gerekler: nss cmake
+# Grup: ağ
 
 isim=badvpn
 surum=1.999.130
 devir=1
 kaynak=(https://github.com/ambrop72/badvpn/archive/$surum.tar.gz
-		badvpn-ncd.conf.d)
+        badvpn-ncd.conf.d)
 
 derle() {
 	cd $isim-$surum

@@ -2,6 +2,7 @@
 # URL: http://bluefish.openoffice.nl/
 # Paketçi: milisarge
 # Gerekler: pcre enchant gtk3 desktop-file-utils
+# Grup: ofis_düzenleme
 
 isim=bluefish
 surum=2.2.9

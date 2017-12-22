@@ -1,17 +1,17 @@
 # Tanım: Baresip taşınabilir,modular ses ve video destekli SIP kullanıcı uygulaması.
-# Url: http://www.creytiv.com/baresip.html
+# URL: http://www.gnome.org
 # Paketçi: milisarge
 # Gerekler: libre librem alsa-lib
-# Grup: medya
+# Grup: medya kütüphane
 
 isim=baresip
 surum=0.5.6
 devir=1
 kaynak=(http://www.creytiv.com/pub/baresip-$surum.tar.gz)
 
+# Url: http://www.creytiv.com/baresip.html
 derle() {
 	cd $isim-$surum
 	make
 	make DESTDIR=$PKG install
 }
-

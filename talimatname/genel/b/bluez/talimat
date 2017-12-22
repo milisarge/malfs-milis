@@ -1,20 +1,19 @@
 # Tanım: Linux için bluetooth istemci ve kütüphaneleri.
 # URL: http://www.bluez.org/
 # Paketçi: milisarge
-# Gerekler: libical libvorbis alsa-lib libusb-compat libsndfile cups glib 
+# Gerekler: libical libvorbis alsa-lib libusb-compat libsndfile cups glib
+# Grup: kütüphane
 
 isim=bluez
 surum=5.47
 devir=3
-
 kaynak=(http://www.kernel.org/pub/linux/bluetooth/$isim-$surum.tar.xz
-	    http://www.linuxfromscratch.org/patches/blfs/svn/bluez-$surum-obexd_without_systemd-1.patch
-	    bluetooth.modprobe)
+        http://www.linuxfromscratch.org/patches/blfs/svn/bluez-$surum-obexd_without_systemd-1.patch
+        bluetooth.modprobe)
 
 derle() {
 	cd $isim-$surum
 	patch -Np1 -i ../$isim-$surum-obexd_without_systemd-1.patch
-
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
 		--localstatedir=/var \
@@ -53,10 +52,8 @@ derle() {
        
     make DESTDIR=${PKG} \
        install-pluginLTLIBRARIES
-
 	install -dm755 ${PKG}/etc/bluetooth
 	install -Dm644 ${SRC}/${isim}-${surum}/src/main.conf ${PKG}/etc/bluetooth/main.conf
-
 	install -dm755 ${PKG}/etc/modprobe.d
 	install -Dm644 ${SRC}/bluetooth.modprobe ${PKG}/etc/modprobe.d/bluetooth-usb.conf
 	

@@ -1,8 +1,8 @@
 # Tanım: Lua ile yazılmış hızlı ve esnek derleme sistemi
 # URL: http://github.com/matricks/bam
 # Paketçi: milisarge
-# Gerekler:
-# Grup: sistem
+# Gerekler: 
+# Grup: sistem geliştirme
 
 isim=bam
 surum=0.5.0

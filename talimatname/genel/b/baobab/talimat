@@ -1,12 +1,12 @@
 # Tanım: Bir grafik dizin ağacı çözümleyicisi
 # URL: http://www.gnome.org
 # Paketçi: yasarciv67@gmail.com
-# Gerekler: adwaita-icon-theme gtk3 itstool vala desktop-file-utils gsettings-desktop-schemas librsvg gobject-introspection desktop-file-utils gtk-update-icon-cache
+# Gerekler: adwaita-icon-theme gtk3 itstool vala desktop-file-utils gsettings-desktop-schemas librsvg gobject-introspection gtk-update-icon-cache
+# Grup: sistem
 
 isim=baobab
 surum=3.22.1
 devir=1
-
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {

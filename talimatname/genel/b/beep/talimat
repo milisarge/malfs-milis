@@ -1,7 +1,8 @@
-# Tanım:  Beep ses çalmak için konsol uygulaması
-# URL:  http://www.johnath.com/beep/
+# Tanım: Beep ses çalmak için konsol uygulaması
+# URL: http://www.johnath.com/beep/
 # Paketçi: milisarge
-# Gerekler:   
+# Gerekler: 
+# Grup: sistem
 
 isim=beep
 surum=1.3

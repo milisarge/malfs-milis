@@ -1,7 +1,8 @@
 # Tanım: Gömülü (embedded) dosyalarda binary görüntüyü aramak için kullanılan bir araç.
 # URL: http://binwalk.org
-# Paketçi: yakar (aydin@komutan.org)
+# Paketçi: yakar(aydin@komutan.org)
 # Gerekler: python-magic python-opengl python-pip python python-setuptools
+# Grup: sistem
 
 isim=binwalk
 surum=2.1.1
@@ -10,15 +11,10 @@ kaynak=(https://github.com/devttys0/$isim/archive/v${surum}.tar.gz)
 
 derle() {
   cd "$SRC/$isim-$surum"
-
   python2 setup.py build
-
   mkdir -p "$PKG/opt"
-
   python2 setup.py install --root="$PKG" --optimize=1
-
   install -Dm644 -t "$PKG/usr/share/doc/$isim" README.md INSTALL.md API.md
   #install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
-
   #ln -sf /usr/share/firmware-mod-kit "$PKG/opt/firmware-mod-kit"
 }

@@ -2,22 +2,20 @@
 # URL: https://www.bleachbit.org/
 # Paketçi: halityilmaz1982
 # Gerekler: python-gtk desktop-file-utils gtk-update-icon-cache hicolor-icon-theme
+# Grup: sistem
 
 isim=bleachbit
 surum=1.12
 devir=1
-
 kaynak=(https://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2)
+
 	
 derle() {
 cd $isim-$surum
-
 for file in $(find . -name '*.py' -print); do
         sed -i -e 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' \
                -e 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "$file"
     done
     sed -i 's/python/python2/g' Makefile
-
 make prefix=/usr DESTDIR="$PKG" PYTHON=python2 install
-
 }  
