@@ -2,6 +2,7 @@
 # URL: http://www.aircrack-ng.org/
 # Paketçi: milisarge
 # Gerekler: libnl
+# Grup: güvenlik
 
 isim=aircrack-ng
 surum=1.2

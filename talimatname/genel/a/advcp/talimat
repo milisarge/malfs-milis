@@ -1,21 +1,20 @@
-# Tanım:  cp ve mv komutlarının ilerleme çubuğu (progressbar) için yamalanmış versiyonu.
+# Tanım: cp ve mv komutlarının ilerleme çubuğu (progressbar) için yamalanmış versiyonu.
 # URL: https://www.gnu.org/software/coreutils/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: sistem
 
 isim=advcp
-_isim=coreutils
 surum=8.24
 devir=1
 kaynak=(ftp://ftp.gnu.org/gnu/$_name/$_name-$surum.tar.xz
-		advcpmv-${surum}.patch)
+        advcpmv-${surum}.patch)
 
+_isim=coreutils
 derle() {
   export FORCE_UNSAFE_CONFIGURE=1
   cd ${SRC}/${_name}-${surum}
-
   patch -p1 -i ${SRC}/advcpmv-${surum}.patch
-
   ./configure --prefix=/usr \
               --libexecdir=/usr/lib \
               --enable-no-install-program=groups,hostname,kill,uptime
@@ -23,5 +22,4 @@ derle() {
   cd ${SRC}/${_name}-${surum}
   install -D src/cp ${PKG}/usr/bin/acp
   install -D src/mv ${PKG}/usr/bin/amv
-
 }

@@ -2,6 +2,7 @@
 # URL: http://www.gnome.org/
 # Paketçi: milisarge
 # Gerekler: intltool gtk-update-icon-cache hicolor-icon-theme icon-naming-utils librsvg
+# Grup: grafik_tasarım
 
 isim=adwaita-icon-theme
 surum=3.24.0

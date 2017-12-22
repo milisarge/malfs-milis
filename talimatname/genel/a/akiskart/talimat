@@ -1,13 +1,14 @@
 # Tanım: AKIS kart sürücü ve dosyaları
 # URL: http://www.akiskart.com.tr
 # Paketçi: milisarge
-# Gerekler: pcsc-lite ccid openjdk 
+# Gerekler: pcsc-lite ccid openjdk
+# Grup: sürücüler
 
 isim=akiskart
 surum=1.6
 devir=1
 kaynak=(http://www.akiskart.com.tr/dosyalar/akis_${surum}_amd64.deb
-		akia)
+        akia)
 
 derle() {
   ar x ${SRC}/akis_${surum}_amd64.deb

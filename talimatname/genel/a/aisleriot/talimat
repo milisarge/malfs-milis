@@ -2,6 +2,7 @@
 # URL: https://wiki.gnome.org/Apps/Aisleriot
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool itstool docbook-xsl yelp-tools appstream-glib gnome-common gtk3 librsvg libcanberra gconf dconf tdb desktop-file-utils guile
+# Grup: oyunlar
 
 isim=aisleriot
 surum=3.22.2
@@ -18,5 +19,4 @@ derle() {
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
   make DESTDIR=$PKG install 
-
 }
