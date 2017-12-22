@@ -310,11 +310,11 @@ paket_grup_liste(){
 	if [ "$1" ]; then
 		cikti="$1"
 	fi
-	_gruplar=`grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | sort -u`
+	_gruplar=`grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | cut -d' ' -f2 | sed 's/^ *//;s/ *$//' | sort -u`
 	if [ $cikti == "--json" ];then
 		[ -f $mps_paket_grup_listesi ] && rm -rf $mps_paket_grup_listesi
 		#printf "[" >> $mps_paket_grup_listesi
-		for grp in $(grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | sort -u); do
+		for grp in $(grep -ri "Grup:" $talimatname/* $ektalimatname/* | cut -d':' -f3 | cut -d' ' -f2 | sed 's/^ *//;s/ *$//' | sort -u); do
 			printf "$grp," >> $mps_paket_grup_listesi
 		done
 		sed -i s'/.$//' $mps_paket_grup_listesi
