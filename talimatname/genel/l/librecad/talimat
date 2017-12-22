@@ -1,0 +1,54 @@
+# Tanım: QCad topluluk baskısına dayalı 2D bir CAD çizim aracı
+# URL: http://www.librecad.org/
+# Paketçi: Oltulu
+# Gerekler: qt5 boost librsvg imagemagick
+# Grup: grafik_tasarım
+
+isim=librecad
+surum=2.1.3
+devir=1
+
+kaynak=(https://github.com/LibreCAD/LibreCAD/archive/${surum}.tar.gz::$isim.$surum.tar.gz)
+
+derle() {
+ cd "${SRC}/LibreCAD-${surum}"
+
+	# fix version string
+	sed -i "/^SCMREVISION/c SCMREVISION=\"${surum}\"" librecad/src/src.pro
+
+	qmake-qt5 librecad.pro
+
+	# fix include path... this is an issue with gcc 6.1.1 and qmake-qt5...
+	make qmake_all
+	sed -i '/INCPATH/s|-isystem /usr/include ||' librecad/src/Makefile
+
+	make
+
+	# executables
+	install -D -m0755 unix/librecad "${PKG}/usr/bin/librecad"
+	install -D -m0755 unix/ttf2lff "${PKG}/usr/bin/ttf2lff"
+
+	# desktop dosyası ve man sayfası
+	install -D -m0644 desktop/librecad.desktop "${PKG}/usr/share/applications/librecad.desktop"
+	install -D -m0644 desktop/librecad.1 "${PKG}/usr/share/man/man1/librecad.1"
+
+	# belgeler
+	install -D -m0644 librecad/support/doc/README "${PKG}/usr/share/doc/librecad/index.README"
+	install -D -m0644 librecad/support/doc/index.html "${PKG}/usr/share/doc/librecad/index.html"
+	install -D -m0644 librecad/support/doc/style.css "${PKG}/usr/share/doc/librecad/style.css"
+	install -D -m0644 librecad/support/doc/img/librecadlogo.png "${PKG}/usr/share/doc/librecad/img/librecadlogo.png"
+
+	# simgeler
+	for SIZE in 16 24 32 48 64 96 128; do
+		convert -scale ${SIZE} \
+			desktop/graphics_icons_and_splash/Icon\ LibreCAD/Icon_Librecad.svg \
+			${SRC}/librecad.png
+		install -D -m0644 ${SRC}/librecad.png "${PKG}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/librecad.png"
+	done
+	install -D -m0644 desktop/graphics_icons_and_splash/Icon\ LibreCAD/Icon_Librecad.svg "${PKG}/usr/share/icons/hicolor/scalable/apps/librecad.svg"
+
+	# kaynaklar
+	mkdir -p "${PKG}/usr/share/librecad/"
+	cp -r unix/resources/{library,patterns,fonts,qm} "${PKG}/usr/share/librecad/"
+         /usr/lib/qt5/bin/lrelease ${SRC}/LibreCAD-${surum}/librecad/ts/librecad_tr.ts -qm $PKG/usr/share/librecad/qm/librecad_tr.qm
+}
