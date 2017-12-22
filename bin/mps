@@ -332,11 +332,11 @@ grup_paketler_liste(){
 	if [ "$2" ]; then
 		cikti="$2"
 	fi
-	_paketler=`grep -rli "Grup: $_grup" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort -u`
+	_paketler=`grep -rli "Grup: .*$_grup" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort -u`
 	if [ $cikti == "--json" ];then
 		[ -f $mps_grup_paketler_listesi ] && rm -rf $mps_grup_paketler_listesi
 		#printf "[" >> $mps_paket_grup_listesi
-		for pkt in $(grep -rli "Grup: $_grup" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort -u); do
+		for pkt in $(grep -rli "Grup: .*$_grup" $talimatname/* $ektalimatname/* | cut -d':' -f3 | sed 's/^ *//;s/ *$//' | xargs -I {}  dirname {} | xargs -I {}  basename {} | sort -u); do
 			printf "$pkt," >> $mps_grup_paketler_listesi
 		done
 		sed -i s'/.$//' $mps_grup_paketler_listesi
