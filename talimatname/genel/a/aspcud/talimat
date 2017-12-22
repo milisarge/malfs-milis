@@ -7,8 +7,7 @@
 isim=aspcud
 surum=1.9.1
 devir=1
-kaynak=(
-        http://downloads.sourceforge.net/project/potassco/aspcud/1.9.1/$isim-$surum-source.tar.gz)
+kaynak=(http://downloads.sourceforge.net/project/potassco/aspcud/1.9.1/$isim-$surum-source.tar.gz)
 
 derle() {
 	mkdir -p build

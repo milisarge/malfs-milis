@@ -2,7 +2,7 @@
 # URL: http://alleg.sourceforge.net/
 # Paketçi: milisarge
 # Gerekler: flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga
-# Grup: 
+# Grup: kütüphane
 
 isim=allegro
 surum=5.1.12

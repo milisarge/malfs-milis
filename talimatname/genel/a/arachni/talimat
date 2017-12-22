@@ -1,6 +1,6 @@
 # Tanım: Web uygulama güvenliği için modüler pentest aracı.
 # URL: https://www.arachni-scanner.com
-# Paketçi: yakar(aydin@komutan.org)
+# Paketçi: aydinyakar
 # Gerekler: ruby23 ruby23-bundler
 # Grup: güvenlik
 

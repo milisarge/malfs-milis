@@ -2,7 +2,7 @@
 # URL: http://www.nongnu.org/atool/
 # Paketçi: milisarge
 # Gerekler: 
-# Grup: araçlar sistem
+# Grup: sistem
 
 isim=atool
 surum=0.39.0
