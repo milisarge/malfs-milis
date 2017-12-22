@@ -1,7 +1,8 @@
-# Tanım:	Asterisk temel sesleri.
-# URL:		    http://www.asterisk.org
-# Paketçi:     milisarge
-# Gerekler:   asterisk
+# Tanım:Asterisk temel sesleri.
+# URL: http://www.asterisk.org
+# Paketçi: milisarge
+# Gerekler: asterisk
+# Grup: ağ
 
 isim=asterisk-core-sounds-fr-alaw
 surum=1.4.27
@@ -9,8 +10,6 @@ devir=1
 kaynak=(http://downloads.digium.com/pub/telephony/sounds/releases/$isim-$surum.tar.gz)
 
 derle() {
-
     install -d -m 750 $PKG/var/lib/asterisk/sounds
     mv $SRC/* $PKG/var/lib/asterisk/sounds
-
 }

@@ -1,7 +1,8 @@
 # Tanım: Metasploit için grafiksel yönetim aracı.
 # URL: http://www.fastandeasyhacking.com/
-# Paketçi: yakar (aydin@komutan.org)
+# Paketçi: yakar(aydin@komutan.org)
 # Gerekler: metasploit nmap postgresql
+# Grup: güvenlik
 
 isim=armitage
 surum=150813
@@ -10,29 +11,21 @@ kaynak=(http://www.fastandeasyhacking.com/download/armitage${surum}.tgz)
 
 derle() {
   cd "$SRC/armitage"
-
   mkdir -p "$PKG/usr/bin"
   mkdir -p "$PKG/usr/share/armitage"
-
   install -Dm644 -t "$PKG/usr/share/doc/armitage" readme.txt whatsnew.txt
-
   rm readme.txt whatsnew.txt
-
   cp -a * "$PKG/usr/share/armitage"
-
   cat > "$PKG/usr/bin/armitage" << EOF
 #!/bin/sh
 cd /usr/share/armitage
 exec ./armitage "\$@"
 EOF
-
   chmod +x "$PKG/usr/bin/armitage"
-
   cat > "$PKG/usr/bin/teamserver" << EOF
 #!/bin/sh
 cd /usr/share/armitage
 exec ./teamserver "\$@"
 EOF
-
   chmod +x "$PKG/usr/bin/teamserver"
 }

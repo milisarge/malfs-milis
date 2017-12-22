@@ -1,15 +1,16 @@
 # Tanım: Google Android SDK için araçlar oluşturun (aapt, aidl, dexdump, dx, llvm-rs-cc)
 # URL: http://developer.android.com/sdk/index.html
-# Paketçi: Cihan Alkan
-# Gerekler:  
+# Paketçi: CihanAlkan
+# Gerekler: 
+# Grup: geliştirme
 
 isim=android-sdk-build-tools
 surum=r26
 devir=1
-_android=android-8.0.0
-_sdk=android-sdk
 kaynak=(https://dl-ssl.google.com/android/repository/build-tools_$surum-linux.zip)
 
+_android=android-8.0.0
+_sdk=android-sdk
 derle() {
   cd $PKG
   install -Dm644 $SRC/$_android/NOTICE.txt usr/share/licenses/$isim/NOTICE.txt
@@ -17,7 +18,6 @@ derle() {
   mkdir -p opt/$_sdk/build-tools/$ver
   cp -r $SRC/$_android/* $PKG/opt/$_sdk/build-tools/$ver
   chmod +Xr -R $PKG/opt/$_sdk/build-tools/$ver
-
 mkdir $PKG/usr/bin
   ln -s /opt/android-sdk/build-tools/26.0.0/aapt $PKG/usr/bin/
   ln -s /opt/android-sdk/build-tools/26.0.0/aapt2 $PKG/usr/bin/

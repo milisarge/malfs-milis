@@ -2,14 +2,15 @@
 # URL: http://www.habets.pp.se/synscan/programs.php
 # Paketçi: milisarge
 # Gerekler: libnet libcap-ng libpcap
+# Grup: ağ
 
 isim=arping-th
-_projisim=arping
-_suffix=-th
 surum=2.19
 devir=1
 kaynak=(https://github.com/ThomasHabets/${_projname}/archive/${_projname}-${surum}.tar.gz::$isim-$surum.tar.gz)
 
+_projisim=arping
+_suffix=-th
 derle() {
 	cd "${_projname}-${_projname}-$surum"
 	autoreconf -i

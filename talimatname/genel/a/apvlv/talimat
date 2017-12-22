@@ -2,13 +2,14 @@
 # URL: http://github.com/naihe2010/apvlv
 # Paketçi: milisarge
 # Gerekler: cmake webkitgtk2 djvulibre poppler-glib gtk2
+# Grup: ofis_düzenleme
 
 isim=apvlv
 surum=0.1.f7f7b9c
 devir=2
 kaynak=(
-https://github.com/downloads/naihe2010/apvlv/$isim-$surum-Source.tar.gz
-$isim.desktop)
+        https://github.com/downloads/naihe2010/apvlv/$isim-$surum-Source.tar.gz
+        $isim.desktop)
 
 derle(){
     cd $isim-$surum-Source
@@ -19,7 +20,6 @@ derle(){
           -DAPVLV_WITH_UMD=no  ..
     make
     make DESTDIR=$PKG install
-
     # desktop integration
     install -Dm644 $SRC/$isim.desktop \
         $PKG/usr/share/applications/$isim.desktop

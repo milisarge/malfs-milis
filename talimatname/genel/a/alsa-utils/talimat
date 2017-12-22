@@ -2,6 +2,7 @@
 # URL: http://www.alsa-project.org
 # Paketçi: milisarge
 # Gerekler: alsa-lib xmlto libsamplerate gawk
+# Grup: sistem
 
 isim=alsa-utils
 surum=1.1.0
@@ -12,7 +13,6 @@ derle() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
-
 cd $isim-$surum
 ./configure --prefix=/usr \
 --disable-alsaconf \
@@ -21,7 +21,6 @@ cd $isim-$surum
 --with-curses=ncursesw
 make
 make DESTDIR=$PKG install
-
 cd ../$scripts-$scriptsversion
 make DESTDIR=$PKG install-alsa
 }

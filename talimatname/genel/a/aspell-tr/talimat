@@ -2,13 +2,14 @@
 # URL: http://aspell.net
 # Paketçi: milisarge
 # Gerekler: aspell
+# Grup: kütüphane
 
-_surum=0.50-0
 isim=aspell-tr
 surum=0.50.0
 devir=1
 kaynak=(ftp://ftp.gnu.org/gnu/aspell/dict/tr/$isim-$_version.tar.bz2)
 
+_surum=0.50-0
 derle() {
   cd aspell-tr*
   ./configure

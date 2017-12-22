@@ -2,6 +2,7 @@
 # URL: http://ftp.de.debian.org/debian/pool/main/a/at
 # Paketçi: milisarge
 # Gerekler: sendmail pam
+# Grup: sistem
 
 isim=at
 surum=3.1.16
@@ -9,31 +10,22 @@ devir=1
 kaynak=(http://ftp.de.debian.org/debian/pool/main/a/at/at_$surum.orig.tar.gz)
 
 derle() {
-
 cd $isim-$surum
-
 source  /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 tar xvf $scripts-$scriptsversion.tar.bz2
-
 install -v -m755 -d $PKG/root/at/atspool
 install -v -m755 -d $PKG/root/at/atjobs
-
 sed -i '/docdir/s/=.*/= @docdir@/' Makefile.in
-
 ./configure --with-daemon_userisim=atd        \
             --with-daemon_groupisim=atd       \
             --with-jobdir=/root/at/atjobs \
             --with-atspool=/root/at/atspool \
             SENDMAIL=/usr/sbin/sendmail
 make -j1
-
 make DESTDIR=$PKG install \
         docdir=$PKG/usr/share/doc/at-3.1.16 \
       atdocdir=$PKG/usr/share/doc/at-3.1.16
-
-
 cd $scripts-$scriptsversion
 make DESTDIR=$PKG install-atd
-
 }

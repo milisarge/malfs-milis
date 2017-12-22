@@ -1,21 +1,19 @@
-# Tanım:  Açık kaynak web sunucusu.
+# Tanım: Açık kaynak web sunucusu.
 # URL: http://httpd.apache.org/ABOUT_APACHE.html
 # Paketçi: milisarge
 # Gerekler: pcre apr-util sqlite expat
+# Grup: ağ
 
 isim=apache
 surum=2.4.18
 devir=1
 kaynak=(http://archive.apache.org/dist/httpd/httpd-$surum.tar.bz2
-	 http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$surum-blfs_layout-1.patch)
+        http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$surum-blfs_layout-1.patch)
 
 derle(){
-
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
-
 cd httpd-$surum
-
 patch -Np1 -i ../httpd-$surum-blfs_layout-1.patch
 sed '/dir.*CFG_PREFIX/s@^@#@' -i support/apxs.in
 ./configure --enable-authnz-fcgi                            \
@@ -33,11 +31,9 @@ sed '/dir.*CFG_PREFIX/s@^@#@' -i support/apxs.in
             --with-suexec-userdir=public_html
 make
 make DESTDIR=$PKG install
-
 mv -v $PKG/usr/sbin/suexec $PKG/usr/lib/httpd/suexec
 chgrp apache $PKG/usr/lib/httpd/suexec
 chmod 4754 $PKG/usr/lib/httpd/suexec
-
 chown -v -R apache:apache $PKG/srv/www
 rm -f $PKG/srv/www/htdocs/index.html
 cd $SRC

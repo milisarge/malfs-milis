@@ -2,6 +2,7 @@
 # URL: http://www.nongnu.org/avrdude/
 # Paketçi: milisarge
 # Gerekler: libftdi libusb-compat hidapi
+# Grup: geliştirme
 
 isim=avrdude
 surum=6.3

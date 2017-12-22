@@ -2,6 +2,7 @@
 # URL: http://www.amule.org/
 # Paketçi: milisarge
 # Gerekler: crypto++ libupnp wxgtk libnotify
+# Grup: ağ
 
 isim=amule
 surum=f77eef219cdb0caf31b094a9db4668e936abda8c
@@ -10,11 +11,9 @@ kaynak=(http://repo.or.cz/amule.git/snapshot/$surum.tar.gz)
 
 derle() {
 	cd $isim-f77eef2
-
 	./configure \
 		--prefix=/usr \
 		--mandir=/usr/man
-
 	make
 	make install DESTDIR=$PKG
 	rm -r $PKG/usr/share/doc

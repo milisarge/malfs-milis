@@ -1,7 +1,8 @@
 # Tanım: C/C++ için çoklu platform oyun geliştirme kütüphanesi.
-# URL:         http://alleg.sourceforge.net/
-# Paketçi:    milisarge
-# Gerekler:  flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga
+# URL: http://alleg.sourceforge.net/
+# Paketçi: milisarge
+# Gerekler: flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga
+# Grup: 
 
 isim=allegro
 surum=5.1.12
@@ -9,14 +10,10 @@ devir=1
 kaynak=(http://download.gna.org/allegro/allegro-unstable/$surum/$isim-$surum.tar.gz)
 
 derle() {
-
     cd $isim-$surum.0
-
     cmake \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_BUILD_TYPE=Release .
-
     make
     make DESTDIR=$PKG install
-
 }

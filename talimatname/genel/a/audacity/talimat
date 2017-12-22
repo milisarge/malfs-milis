@@ -2,20 +2,19 @@
 # URL: http://web.audacityteam.org/
 # Paketçi: milisarge
 # Gerekler: libvorbis libmad libid3tag wxgtk28 lame hicolor-icon-theme ffmpeg shared-mime-info desktop-file-utils redland jack soundtouch cmake zip python
+# Grup: medya
 
 isim=audacity
 surum=2.1.1
 devir=1
 kaynak=("https://github.com/audacity/audacity/archive/Audacity-${surum}.tar.gz"
         'ffmpeg.patch')
-derle() {
 
+derle() {
   cd "${SRC}/${isim}-Audacity-${surum}"
   patch -p1 -i "${SRC}/ffmpeg.patch"
-
   WX_CONFIG=/usr/bin/wx-config-2.8 \
   ./configure --prefix=/usr --enable-unicode --with-wx-config=$WX_CONFIG
-
   make
  
   make DESTDIR="${PKG}" install

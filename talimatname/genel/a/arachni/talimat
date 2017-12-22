@@ -1,7 +1,8 @@
 # Tanım: Web uygulama güvenliği için modüler pentest aracı.
 # URL: https://www.arachni-scanner.com
-# Paketçi: yakar (aydin@komutan.org)
+# Paketçi: yakar(aydin@komutan.org)
 # Gerekler: ruby23 ruby23-bundler
+# Grup: güvenlik
 
 isim=arachni
 surum=1.5.1
@@ -18,19 +19,14 @@ derle() {
 	fi
 	
 	git clone "$DERLEME_KAYNAKDIZIN/$isim" "$PKG/usr/share/$isim"
-
 	cd "$PKG/usr/share/$isim"
-
   	progs="arachni arachni_console arachni_multi arachni_reporter arachni_restore"
   	progs="${progs} arachni_rest_server arachni_rpc arachni_rpcd"
   	progs="$progs arachni_rpcd_monitor arachni_script"
-
   	mkdir -p "$PKG/usr/bin"
   	mkdir -p "$PKG/usr/share/$isim"
-
   	install -Dm644 -t "$PKG/usr/share/doc/$isim" *.md
   	install -Dm644 LICENSE.md "$PKG/usr/share/licenses/$isim/LICENSE.md"
-
   	for prog in ${progs}
   	do
     	cat > "$PKG/usr/bin/${prog//_/-}" << EOF
@@ -38,6 +34,5 @@ derle() {
 exec ruby-2.3 /usr/share/$isim/bin/$prog "\$@"
 EOF
   	done
-
   	chmod +x "$PKG"/usr/bin/*
 }

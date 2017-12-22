@@ -1,14 +1,15 @@
 # Tanım: Google Android SDK için platform-araçları (adb ve fastboot)
 # URL: http://developer.android.com/sdk/index.html
-# Paketçi: Cihan Alkan
+# Paketçi: CihanAlkan
 # Gerekler: ncurses zlib
+# Grup: geliştirme
 
 isim=android-sdk-platform-tools
 surum=r26.0.0
 devir=1
 kaynak=(https://dl-ssl.google.com/android/repository/platform-tools_$surum-linux.zip
-         license.html
-         source.properties)
+        license.html
+        source.properties)
 
 derle() {
   install -Dm644 $SRC/license.html usr/share/licenses/$isim/license.html

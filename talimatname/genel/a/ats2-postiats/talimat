@@ -2,13 +2,14 @@
 # URL: http://www.ats-lang.org/
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: geliştirme
 
 isim=ats2-postiats
-_isim=ATS2-Postiats
 surum=0.3.6
 devir=1
 kaynak=(https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-$surum/ATS2-Postiats-$surum.tgz)
 
+_isim=ATS2-Postiats
 derle() {
   cd "${SRC}/${_name}-${surum}"
   ./autogen.sh
@@ -16,7 +17,6 @@ derle() {
   mkdir -p $PKG/usr/lib/ats2-postiats-0.3.6/bin/
   make -j1 all
   make DESTDIR="${PKG}" install
-
   local profiled="${PKG}/etc/profile.d"
   local patshome="/usr/lib/${isim}-${surum}"
   mkdir -p "${profiled}"

@@ -2,6 +2,7 @@
 # URL: http://mate-desktop.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: caja caja-extensions gobject-introspection intltool itstool djvulibre libspectre poppler-glib webkitgtk2
+# Grup: ofis_düzenleme
 
 isim=atril
 surum=1.18.0
@@ -25,7 +26,6 @@ cd $isim-$surum
         
  #https://bugzilla.gnome.org/show_bug.cgi?id=656231
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
 make
 make DESTDIR=$PKG install
    

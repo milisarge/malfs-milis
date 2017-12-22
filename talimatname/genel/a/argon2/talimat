@@ -1,7 +1,8 @@
 # Tanım: The password hash Argon2, winner of PHC
-# URL: https://github.com/P-H-C/phc-winner-argon2  
+# URL: https://github.com/P-H-C/phc-winner-argon2
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: kütüphane
 
 isim=argon2
 surum=20161029

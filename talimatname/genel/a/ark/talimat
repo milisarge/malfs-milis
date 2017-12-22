@@ -2,6 +2,7 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-karchive kf5-kconfig kf5-kcrash kf5-kdbusaddons kf5-kdoctools kf5-ki18n kf5-kiconthemes kf5-kio kf5-kservice kf5-kparts kf5-kpty kf5-kwidgetsaddons qjson p7zip zip unzip unrar
+# Grup: sistem
 
 isim=ark
 surum=16.08.2
@@ -15,7 +16,6 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_INSTALL_DIR=lib       \
       -DBUILD_TESTING=OFF         \
       -Wno-dev
-
 make
 make DESTDIR=$PKG install
 }

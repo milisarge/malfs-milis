@@ -1,23 +1,21 @@
 # Tanım: Kaynak kodu otomatik konfigüre etmek için bir GNU aracı. (Legacy 2.1x version)
 # URL: http://www.gnu.org/software/autoconf/
 # Paketçi: alihan-ozturk28@hotmail.com
-# Gerekler:
+# Gerekler: 
+# Grup: kütüphane
 
 isim=autoconf2
-_isim=autoconf
 surum=2.13
 devir=1
-kaynak=( http://mirror.rackdc.com/gnu/${_name}/${_name}-$surum.tar.gz)
+kaynak=(http://mirror.rackdc.com/gnu/${_name}/${_name}-$surum.tar.gz)
 
+_isim=autoconf
 derle() {
 cd ${_name}-$surum
 ./configure --prefix=/usr \
             --infodir=/usr/share/info \
             --program-suffix=-2.13
-
-
 make
 make prefix="$PKG/usr" infodir="$PKG/usr/share/info" install
 rm -rf $PKG/usr/share/info/dir
-
 }

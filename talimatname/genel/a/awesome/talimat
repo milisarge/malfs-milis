@@ -1,7 +1,8 @@
 # Tanım: yüksek derece ayarlanabilir pencere yöneticisi altyapısı
 # URL: https://awesomewm.org/
 # Paketçi: milisarge
-# Gerekler: asciidoc cmake docbook-xsl doxygen imagemagick xmlto cairo dbus gdk-pixbuf imlib2 libxdg-basedir lua lua-lgi pango startup-notification xcb-util-cursor xcb-util-keysyms xcb-util-wm libxkbcommon xcb-util-xrm 
+# Gerekler: asciidoc cmake docbook-xsl doxygen imagemagick xmlto cairo dbus gdk-pixbuf imlib2 libxdg-basedir lua lua-lgi pango startup-notification xcb-util-cursor xcb-util-keysyms xcb-util-wm libxkbcommon xcb-util-xrm
+# Grup: sistem
 
 isim=awesome
 surum=4.2

@@ -2,6 +2,7 @@
 # URL: http://audacious-media-player.org
 # Paketçi: milisarge
 # Gerekler: gtk3 audacious alsa-utils flac lame libcdio libsamplerate libsndfile libvorbis mpg123 neon pulseaudio faad2 ffmpeg
+# Grup: medya
 
 isim=audacious-plugins
 surum=3.7.2

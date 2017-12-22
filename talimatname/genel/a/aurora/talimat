@@ -2,13 +2,13 @@
 # URL: https://www.gnome-look.org/content/show.php/Aurora+Gtk+Engine?content=56438
 # Paketçi: milisarge
 # Gerekler: gtk2
-
+# Grup: sistem
 
 isim=aurora
 surum=1.5.1
 devir=2
-kaynak=(https://dl.opendesktop.org/api/files/download/id/1460970469/56438-$isim-$surum.tar.bz2 \
-    https://dl.opendesktop.org/api/files/download/id/1460970232/80431-aurorasmooth.tar.bz2)
+kaynak=(https://dl.opendesktop.org/api/files/download/id/1460970469/56438-$isim-$surum.tar.bz2\
+        https://dl.opendesktop.org/api/files/download/id/1460970232/80431-aurorasmooth.tar.bz2)
 
 derle() {
 unset MAKEFLAGS

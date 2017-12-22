@@ -2,6 +2,7 @@
 # URL: http://amsn.sourceforge.net
 # Paketçi: milisarge
 # Gerekler: tk libjpeg-turbo libpng
+# Grup: ağ
 
 isim=amsn
 surum=0.98.9

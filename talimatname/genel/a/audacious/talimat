@@ -2,6 +2,7 @@
 # URL: http://audacious-media-player.org
 # Paketçi: milisarge
 # Gerekler: glib gtk2 python xorg-libsm gnome-icon-theme hicolor-icon-theme desktop-file-utils
+# Grup: medya
 
 isim=audacious
 surum=3.7.2

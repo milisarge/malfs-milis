@@ -2,6 +2,7 @@
 # URL: http://apr.apache.org/
 # Paketçi: milisarge
 # Gerekler: apr expat unixodbc postgresql
+# Grup: kütüphane
 
 isim=apr-util
 surum=1.5.4

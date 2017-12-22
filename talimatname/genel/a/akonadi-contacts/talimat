@@ -1,7 +1,8 @@
 # Tanım: Akonadi kişiler eklentisi
 # URL: https://projects.kde.org/kdepimlibs
 # Paketçi: alihan-ozturk28@hotmail.com
-# Gerekler: kf5-extra-cmake-modules boost kf5-kcodecs akonadi kf5-kdelibs4support kf5-kio kf5-kcompletion kf5-kcodecs phonon-qt5 kcontacts kcalcore kmime kf5-ki18n kf5-kitemviews kf5-kconfig kf5-solid qt5 kldap kmbox grantlee-qt5 akonadi-mime
+# Gerekler: kf5-extra-cmake-modules boost kf5-kcodecs akonadi kf5-kdelibs4support kf5-kio kf5-kcompletion phonon-qt5 kcontacts kcalcore kmime kf5-ki18n kf5-kitemviews kf5-kconfig kf5-solid qt5 kldap kmbox grantlee-qt5 akonadi-mime
+# Grup: sistem
 
 isim=akonadi-contacts
 surum=16.08.2

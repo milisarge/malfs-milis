@@ -2,11 +2,12 @@
 # URL: http://gtkmm.sourceforge.net/
 # Paketçi: milisarge
 # Gerekler: atk glibmm libsigc++
+# Grup: kütüphane
 
 isim=atkmm
 surum=2.24.1
 devir=1
-kaynak=( http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
 
 derle(){
 cd $isim-$surum

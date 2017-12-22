@@ -2,11 +2,12 @@
 # URL: http://www.gtk.org/
 # Paketçi: milisarge
 # Gerekler: glib pcre gobject-introspection
+# Grup: kütüphane
 
 isim=atk
 surum=2.18.0
 devir=1
-kaynak=( http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
 cd $isim-$surum

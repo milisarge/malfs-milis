@@ -2,6 +2,7 @@
 # URL: http://www.alsa-project.org
 # Paketçi: milisarge
 # Gerekler: doxygen
+# Grup: kütüphane
 
 isim=alsa-lib
 surum=1.1.0

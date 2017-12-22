@@ -2,21 +2,19 @@
 # URL: http://www.alsa-project.org
 # Paketçi: milisarge
 # Gerekler: alsa-lib ffmpeg pulseaudio libsamplerate speex
+# Grup: kütüphane
 
 isim=alsa-plugins
 surum=1.1.0
 devir=1
 kaynak=(ftp://ftp.alsa-project.org/pub/plugins/$isim-$surum.tar.bz2
-	$isim.conf)
+        $isim.conf)
 
 derle() {
 cd $isim-$surum
-
 sed -i "/speex_preprocess.h/i#include <stdint.h>" speex/pcm_speex.c
-
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
-
 install -Dm644 $SRC/$isim.conf $PKG/etc/asound.conf
 }

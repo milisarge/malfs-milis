@@ -2,6 +2,7 @@
 # URL: http://www.gtk.org/
 # Paketçi: milisarge
 # Gerekler: intltool glib dbus gobject-introspection xorg-libx11 xorg-libxtst
+# Grup: kütüphane
 
 isim=at-spi2-core
 surum=2.18.3

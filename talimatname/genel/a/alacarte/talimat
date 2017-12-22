@@ -2,11 +2,11 @@
 # URL: http://www.gnome.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gnome-menus python-gobject gtk-update-icon-cache
+# Grup: sistem
 
 isim=alacarte
 surum=3.11.91
 devir=1
-
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {

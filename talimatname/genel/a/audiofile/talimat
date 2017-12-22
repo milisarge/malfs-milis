@@ -2,6 +2,7 @@
 # URL: http://www.68k.org/~michael/audiofile/
 # Paketçi: milisarge
 # Gerekler: alsa-lib
+# Grup: kütüphane
 
 isim=audiofile
 surum=0.3.6

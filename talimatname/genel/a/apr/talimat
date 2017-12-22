@@ -1,7 +1,8 @@
 # Tanım: Apache Taşınabilir Çalışma Zamanı (APR)
 # URL: http://apr.apache.org/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: kütüphane
 
 isim=apr
 surum=1.5.2

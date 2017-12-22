@@ -1,12 +1,13 @@
 # Tanım: İnteraktif yazım denetimi programı ve kütüphaneleri.
 # URL: http://aspell.net
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: kütüphane
 
 isim=aspell
 surum=0.60.6.1
 devir=1
-kaynak=( http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
+kaynak=(http://ftp.gnu.org/gnu/$isim/$isim-$surum.tar.gz)
 
 derle() {
 cd $isim-$surum

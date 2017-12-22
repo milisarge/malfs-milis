@@ -2,12 +2,13 @@
 # URL: http://potassco.sourceforge.net/
 # Paketçi: milisarge
 # Gerekler: boost cmake re2c clingo
+# Grup: kütüphane
 
 isim=aspcud
 surum=1.9.1
 devir=1
 kaynak=(
-http://downloads.sourceforge.net/project/potassco/aspcud/1.9.1/$isim-$surum-source.tar.gz)
+        http://downloads.sourceforge.net/project/potassco/aspcud/1.9.1/$isim-$surum-source.tar.gz)
 
 derle() {
 	mkdir -p build
@@ -20,6 +21,5 @@ derle() {
 	-DCMAKE_BUILD_TYPE=Release \
 	-GNinja
 	ninja
-
 	DESTDIR="$PKG" ninja -C $SRC/build install
 }

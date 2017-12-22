@@ -2,6 +2,7 @@
 # URL: http://www.gtk.org/
 # Paketçi: milisarge
 # Gerekler: intltool at-spi2-core atk
+# Grup: kütüphane
 
 isim=at-spi2-atk
 surum=2.18.1

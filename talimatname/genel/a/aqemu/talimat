@@ -1,14 +1,15 @@
 # Tanım: Qt5 ile yazılmış bir QEMU arayüzü
 # URL: https://github.com/tobimensch/aqemu
 # Paketçi: yasarciv67@gmail.com
-# Gerekler: cmake qt5 qemu-all libvncserver 
+# Gerekler: cmake qt5 qemu-all libvncserver
+# Grup: sistem
 
 isim=aqemu
 surum=0.9.2
 devir=3
 kaynak=(https://github.com/tobimensch/$isim/archive/v$surum.tar.gz::$isim-$surum.tar.gz
-	https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/translations/Turkish.ts::$isim-Turkish.ts
-	https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/menu_data/aqemu.desktop::$isim-aqemu.desktop)
+        https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/translations/Turkish.ts::$isim-Turkish.ts
+        https://raw.githubusercontent.com/yasarciv/aqemu/master/resources/menu_data/aqemu.desktop::$isim-aqemu.desktop)
 
 derle() {
   cd $isim-$surum

@@ -2,13 +2,14 @@
 # URL: http://people.freedesktop.org/~hughsient/appstream-glib/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gdk-pixbuf json-glib libarchive libsoup pango gcab gobject-introspection gtk3 yaml
- 
+# Grup: kütüphane
+
 isim=appstream-glib
 surum=0.5.17
 devir=1
-
 kaynak=(http://people.freedesktop.org/~hughsient/$isim/releases/$isim-$surum.tar.xz)
 
+ 
 derle() {
 cd $isim-$surum
 ./configure --prefix=/usr --disable-static

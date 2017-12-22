@@ -2,32 +2,29 @@
 # URL: http://ant.apache.org/
 # Paketçi: milisarge
 # Gerekler: glib openjdk
+# Grup: geliştirme
 
 isim=apache-ant
 surum=1.9.6
 devir=1
 kaynak=(http://archive.apache.org/dist/ant/source/$isim-$surum-src.tar.bz2
-	http://hamcrest.googlecode.com/files/hamcrest-1.3.tgz
-	http://anduin.linuxfromscratch.org/sources/other/junit-4.11.jar)
+        http://hamcrest.googlecode.com/files/hamcrest-1.3.tgz
+        http://anduin.linuxfromscratch.org/sources/other/junit-4.11.jar)
 
 derle() {
 cd $isim-$surum
-
 mv ../hamcrest-1.3 .
 cp -v ../junit-4.11.jar \
 hamcrest-1.3/hamcrest-core-1.3.jar lib/optional
-
 mkdir -p $PKG/opt/ant-$surum
 ./build.sh -Ddist.dir=$PKG/opt/ant-$surum dist
 mkdir -p $PKG/etc/profile.d
 ln -v -sf ant-$surum $PKG/opt/ant
 cat >  $PKG/etc/profile.d/ant.sh << "EOF"
 #  Beginof /etc/profile.d/ant.sh
-
 # Adjust the path
 pathappend /opt/ant/bin
 export ANT_HOME=/opt/ant
-
 # End of /etc/profile.d/ant.sh
 EOF
 }

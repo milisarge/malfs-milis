@@ -1,8 +1,8 @@
 # Tanım: GTK 3, GTK 2 ve Gnome-Shell için şeffaf öğeler içeren düz bir tema. 
 # URL: https://github.com/horst3180/arc-theme
-# Paketçi: yasarciv milisarge
+# Paketçi: yasarcivmilisarge
 # Gerekler: gtk3 gtk-engine-murrine arc-icon-theme
-
+# Grup: grafik_tasarım
 
 isim=arc-theme
 surum=20170302
