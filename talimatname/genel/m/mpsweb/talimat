@@ -1,0 +1,25 @@
+# Tanım: Milis Paket Yöneticisi Web Arayüzü
+# URL: milislinux.org
+# Paketçi: milisarge
+# Gerekler: nginx nginx-mod-nchan
+# Grup: sistem
+
+isim=mpsweb
+hesap=milisarge
+surum=1.0
+devir=1
+kaynak=()
+
+derle() {
+    
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/$hesap/$isim $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+	./kur.sh $PKG
+}
