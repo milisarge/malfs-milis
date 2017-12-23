@@ -1,4 +1,4 @@
-# Tanım:mantık programları için temel bilgi veren ayrıştırıcı uygulama
+# Tanım: mantık programları için temel bilgi veren ayrıştırıcı uygulama
 # URL: https://potassco.org
 # Paketçi: milisarge
 # Gerekler: re2c cmake ninja python lua clang

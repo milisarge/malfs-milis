@@ -1,6 +1,6 @@
 # Tanım: Çok yönlü dosya arama aracı
 # URL: https://launchpad.net/catfish-search
-# Paketçi: milisargeyasarciv
+# Paketçi: yasarciv
 # Gerekler: intltool python-distutils-extra python-gobject python-xdg python-pexpect python-cairo python-ptyprocess gtk3 xdg-utils mlocate
 # Grup: sistem
 

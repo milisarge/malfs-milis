@@ -1,6 +1,6 @@
 # Tanım: Renkli aygıtları yönetmek için sistem arka plan programı
 # URL: http://www.freedesktop.org/software/colord/
-# Paketçi: milisargeyasarciv67@gmail.com
+# Paketçi: milisarge,yasarciv
 # Gerekler: libgudev sqlite polkit lcms2 gobject-introspection libusb dbus vala libgusb
 # Grup: sistem
 
@@ -10,17 +10,17 @@ devir=1
 kaynak=(http://www.freedesktop.org/software/$isim/releases/$isim-$surum.tar.xz)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr \
---sysconfdir=/etc \
---localstatedir=/var \
---with-daemon-user=colord \
---enable-vala \
---enable-systemd-login=no \
---disable-argyllcms-sensor \
---disable-static \
---with-systemdsystemunitdir=no \
---disable-bash-completion
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--with-daemon-user=colord \
+	--enable-vala \
+	--enable-systemd-login=no \
+	--disable-argyllcms-sensor \
+	--disable-static \
+	--with-systemdsystemunitdir=no \
+	--disable-bash-completion
+	make
+	make DESTDIR=$PKG install
 }
