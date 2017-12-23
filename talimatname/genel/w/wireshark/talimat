@@ -18,7 +18,7 @@ derle() {
               --disable-gcry \
               --without-krb5 \
               --with-qt4=no \
-              --with-gtk3=yes
+              --with-gtk=3 
 
    make
    make DESTDIR=$PKG install
