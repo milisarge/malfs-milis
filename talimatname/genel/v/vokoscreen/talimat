@@ -14,7 +14,6 @@ derle() {
 
 # fix_lrelease.patch 
 cat > $SRC/fix_lrelease.patch << "EOF" &&
-[Desktop Entry]
 diff -uprNEBZ --suppress-blank-empty a/vokoscreen.pro b/vokoscreen.pro
 --- a/vokoscreen.pro	2016-04-19 04:48:55.000000000 -0500
 +++ b/vokoscreen.pro	2016-04-21 15:56:08.404677703 -0500
