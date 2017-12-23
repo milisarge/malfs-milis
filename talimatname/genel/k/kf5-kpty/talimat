@@ -1,13 +1,13 @@
 # Tanım: Pty soyutlama
 # URL: https://www.kde.org/
-# Paketçi: alihan-ozturk28@hotmail.com
+# Paketçi: alihan-ozturk28
 # Gerekler: kf5-kcoreaddons kf5-ki18n
 
 isim=kf5-kpty
-surum=5.27.0
+surum=5.41.0
 devir=1
 _isim=kpty
-_surum=5.27
+_surum=5.41
 
 kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
 
