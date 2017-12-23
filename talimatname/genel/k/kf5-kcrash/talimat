@@ -9,17 +9,17 @@ devir=1
 _isim=kcrash
 _surum=5.41
 
-kaynak=( http://download.kde.org/stable/frameworks/${_surum/${_isim}-$surum.tar.xz)
+kaynak=(http://download.kde.org/stable/frameworks/${_surum/${_isim}-$surum.tar.xz)
 
 derle() {
-cd ${_isim}-$surum
-cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release  \
-      -DLIB_INSTALL_DIR=lib       \
-      -DBUILD_TESTING=OFF         \
-      -Wno-dev
-      
-make
-make DESTDIR=$PKG install
+	cd ${_isim}-$surum
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=Release  \
+	-DLIB_INSTALL_DIR=lib       \
+	-DBUILD_TESTING=OFF         \
+	-Wno-dev
+
+	make
+	make DESTDIR=$PKG install
 }
 
