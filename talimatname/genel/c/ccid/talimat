@@ -2,6 +2,7 @@
 # URL: http://pcsclite.alioth.debian.org/ccid.html
 # Paketçi: milisarge
 # Gerekler: pcsc-lite libusb
+# Grup: sürücüler
 
 isim=ccid
 surum=1.4.27

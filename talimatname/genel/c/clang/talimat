@@ -1,43 +1,36 @@
 # Tanım: LLVM + clang derleyicisi
-# URL:         http://llvm.org/
+# URL: http://llvm.org/
 # Paketçi: milisarge
 # Gerekler: python llvm cmake
+# Grup: geliştirme
 
 isim=clang
 surum=4.0.0
 devir=1
-kaynak=(http://llvm.org/releases/$surum/{llvm,cfe}-$surum.src.tar.xz \
-  llvm-config.h)
+kaynak=(http://llvm.org/releases/$surum/{llvm,cfe}-$surum.src.tar.xz\
+        llvm-config.h)
 
 derle() {
   mv cfe-$surum.src llvm-$surum.src/tools/clang
-
   cd llvm-$surum.src
   mkdir build
   cd build
-
   cmake -DLLVM_ENABLE_CXX1Y=1 \
     -DLLVM_INCLUDE_EXAMPLES=0 \
     -DLLVM_INCLUDE_TESTS=0 \
     -DLLVM_TARGETS_TO_BUILD='X86;AMDGPU;BPF' \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr ..
-
   MAKEFLAGS="$MAKEFLAGS" make
   make DESTDIR=$PKG install
-
-
   # multilib stub
   mv $PKG/usr/include/llvm/Config/llvm-config{,-64}.h
   install -m 0644 $SRC/llvm-config.h $PKG/usr/include/llvm/Config/
-
   # only clang may be left, remove llvm
   rm -r $PKG/usr/include/llvm{,-c}
   rm -r $PKG/usr/lib/cmake/llvm
   rm $PKG/usr/bin/{bugpoint,ll*,opt,obj2yaml,sancov,sanstats,verify-uselistorder,yaml2obj}
   rm $PKG/usr/lib/{LLVMHello.so,BugpointPasses.so,libLTO.*,libLLVM*}
-
   mv $PKG/usr/libexec/{c++-analyzer,ccc-analyzer} $PKG/usr/lib/clang
   rm -r $PKG/usr/libexec
-
 }

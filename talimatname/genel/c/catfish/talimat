@@ -1,13 +1,13 @@
 # Tanım: Çok yönlü dosya arama aracı
 # URL: https://launchpad.net/catfish-search
-# Paketçi: milisarge yasarciv
+# Paketçi: milisargeyasarciv
 # Gerekler: intltool python-distutils-extra python-gobject python-xdg python-pexpect python-cairo python-ptyprocess gtk3 xdg-utils mlocate
+# Grup: sistem
 
 isim=catfish
 surum=1.4.2
 devir=1
-
-kaynak=( https://launchpad.net/catfish-search/${surum%.*}/$surum/+download/$isim-$surum.tar.bz2)
+kaynak=(https://launchpad.net/catfish-search/${surum%.*}/$surum/+download/$isim-$surum.tar.bz2)
 
 derle() {
 	cd ${isim}-$surum

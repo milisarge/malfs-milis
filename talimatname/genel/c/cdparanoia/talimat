@@ -1,13 +1,14 @@
 # Tanım: Kompakt Disk dijital ses çıkarma aracı
 # URL: http://xiph.org/paranoia/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: sistem
 
 isim=cdparanoia
 surum=10.2
 devir=1
-kaynak=(http://downloads.xiph.org/releases/cdparanoia/$isim-III-$surum.src.tgz \
-	 http://www.linuxfromscratch.org/patches/blfs/svn/cdparanoia-III-10.2-gcc_fixes-1.patch)
+kaynak=(http://downloads.xiph.org/releases/cdparanoia/$isim-III-$surum.src.tgz\
+        http://www.linuxfromscratch.org/patches/blfs/svn/cdparanoia-III-10.2-gcc_fixes-1.patch)
 
 derle() {
 cd $isim-III-$surum

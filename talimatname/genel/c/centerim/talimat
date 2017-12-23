@@ -2,12 +2,13 @@
 # URL: http://www.centerim.org/
 # Paketçi: milisarge
 # Gerekler: curl
+# Grup: ağ
 
 isim=centerim
 surum=4.22.10
 devir=1
 kaynak=(http://www.centerim.org/download/releases/$isim-$surum.tar.gz
-	   http://downloads.nutyx.org/files/patchs/centerim/$isim-$surum-gcc-1.patch)
+        http://downloads.nutyx.org/files/patchs/centerim/$isim-$surum-gcc-1.patch)
 
 derle() {
 	cd $isim-$surum

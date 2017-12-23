@@ -2,6 +2,7 @@
 # URL: http://www.mate-desktop.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: exempi gvfs libexif xorg-libsm mate-desktop libnotify gstreamer1 gobject-introspection intltool
+# Grup: mate sistem
 
 isim=caja
 surum=1.18.3
@@ -16,7 +17,6 @@ derle() {
         --with-gtk=2.0 \
         --enable-introspection \
         --disable-update-mimedb
-
     #https://bugzilla.gnome.org/show_bug.cgi?id=656231
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make

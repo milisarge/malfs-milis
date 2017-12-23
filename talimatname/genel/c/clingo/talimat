@@ -1,7 +1,8 @@
-# Tanım: mantık programları için temel bilgi veren ayrıştırıcı uygulama
+# Tanım:mantık programları için temel bilgi veren ayrıştırıcı uygulama
 # URL: https://potassco.org
 # Paketçi: milisarge
 # Gerekler: re2c cmake ninja python lua clang
+# Grup: sistem
 
 isim=clingo
 surum=5.2.0
@@ -11,7 +12,6 @@ kaynak=(https://github.com/potassco/clingo/archive/v$surum.tar.gz::$isim-$ersion
 derle() {
 	mkdir -p build
 	cd build
-
 	cmake "../$isim-$surum" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCLINGO_REQUIRE_PYTHON=ON \

@@ -2,6 +2,7 @@
 # URL: http://ccache.samba.org/
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: sistem
 
 isim=ccache
 surum=3.3.4

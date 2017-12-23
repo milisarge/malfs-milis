@@ -2,12 +2,13 @@
 # URL: http://clucene.sourceforge.net
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: cmake
+# Grup: kütüphane
 
 isim=clucene
 surum=2.3.3.4
 devir=1
 kaynak=(http://downloads.sourceforge.net/clucene/$isim/$isim-core-$surum.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/svn/$isim-$surum-contribs_lib-1.patch)
+        http://www.linuxfromscratch.org/patches/blfs/svn/$isim-$surum-contribs_lib-1.patch)
 
 derle() {
         cd $isim-core-$surum

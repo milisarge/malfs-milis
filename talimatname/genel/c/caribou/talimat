@@ -2,11 +2,11 @@
 # URL: http://live.gnome.org/Caribou
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: at-spi2-atk python-atspi python-gobject gtk2 gtk3 xorg-libxklavier libgee clutter dconf libxkbcommon
+# Grup: sistem
 
 isim=caribou
 surum=0.4.21
 devir=1
-
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {

@@ -2,6 +2,7 @@
 # URL: http://www.celt-codec.org/
 # Paketçi: milisarge
 # Gerekler: libogg
+# Grup: kütüphane
 
 isim=celt
 surum=0.11.3
@@ -13,6 +14,5 @@ cd celt-$surum
 ./configure --prefix=/usr --enable-custom-modes --disable-static
 make
 make DESTDIR=$PKG install
-
 install -Dm644 COPYING $PKG/usr/share/licenses/celt/LICENSE
 }

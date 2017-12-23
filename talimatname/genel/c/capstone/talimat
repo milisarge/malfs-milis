@@ -2,6 +2,7 @@
 # URL: http://www.capstone-engine.org/
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: kütüphane
 
 isim=capstone
 surum=4.0-alpha5

@@ -2,13 +2,15 @@
 # URL: https://github.com/cjdelisle/cjdns
 # Paketçi: milisarge
 # Gerekler: node python
+# Grup: ağ
 
 isim=cjdns
-hesap=cjdelisle
 surum=19.1
 devir=1
 kaynak=(https://github.com/$hesap/$isim/archive/$isim-v$surum.tar.gz
-		cjdns.servis cjdns.rc.d cjdns.sh)
+        cjdns.serviscjdns.rc.dcjdns.sh)
+
+hesap=cjdelisle
  
 derle() {
 	

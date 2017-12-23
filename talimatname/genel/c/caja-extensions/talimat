@@ -2,6 +2,7 @@
 # URL: http://www.mate-desktop.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: caja gupnp
+# Grup: sistem mate
 
 isim=caja-extensions
 surum=1.18.1

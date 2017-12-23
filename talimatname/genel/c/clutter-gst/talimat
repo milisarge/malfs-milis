@@ -2,11 +2,11 @@
 # URL: http://www.gnome.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk3 clutter gstreamer1-plugins-base gobject-introspection
+# Grup: kütüphane
 
 isim=clutter-gst
 surum=3.0.20
 devir=1
-
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {

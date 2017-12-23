@@ -2,15 +2,15 @@
 # URL: http://www.clamav.net/
 # Paketçi: milisarge
 # Gerekler: zlib bzip2 gmp curl
+# Grup: güvenlik
 
 isim=clamav
 surum=0.99.0
 devir=1
-kaynak=(http://www.clamav.net/downloads/production/$isim-${surum%.*}.tar.gz \
-	clamd.conf freshclam.conf clamd freshclam)
+kaynak=(http://www.clamav.net/downloads/production/$isim-${surum%.*}.tar.gz\
+        clamd.conffreshclam.confclamdfreshclam)
 
 derle() {
-
 	cd $isim-${surum%.*}
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
@@ -25,5 +25,4 @@ derle() {
 	install -d $PKG/etc/rc.d
 	install -o root -g root -m 0755 $SRC/{clamd,freshclam} \
 		$PKG/etc/rc.d/
-
 }

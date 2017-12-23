@@ -1,7 +1,8 @@
 # Tanım: Google Chrome'un arkasındaki açık kaynaklı proje, daha güvenli, daha hızlı ve daha kararlı bir tarayıcı
 # URL: http://www.chromium.org/Home
 # Paketçi: milisarge
-# Gerekler: atk nss ninja pciutils gperf yasm xorg-mesa libgnome-keyring elfutils subversion gtk2 dbus-glib nss alsa-lib xdg-utils bzip2 libevent libgcrypt dejavu-ttf opus snappy dbus desktop-file-utils hicolor-icon-theme flac libxml2 pulseaudio xorg-libxscrnsaver xorg-libxtst libexif
+# Gerekler: atk nss ninja pciutils gperf yasm xorg-mesa libgnome-keyring elfutils subversion gtk2 dbus-glib alsa-lib xdg-utils bzip2 libevent libgcrypt dejavu-ttf opus snappy dbus desktop-file-utils hicolor-icon-theme flac libxml2 pulseaudio xorg-libxscrnsaver xorg-libxtst libexif
+# Grup: ağ
 
 isim=chromium
 surum=53.0.2785.143
@@ -16,18 +17,15 @@ kaynak=(http://commondatastorage.googleapis.com/chromium-browser-official/$isim-
 GOOGLE_API_KEY=AIzaSyBhWJ-j5RXyt5911BMuVen-WuS10mvOnrY
 GOOGLE_DEFAULT_CLIENT_ID=952820686433-mbp5sv9scfj78siq96jlvrem47qgvbi3.apps.googleusercontent.com
 GOOGLE_DEFAULT_CLIENT_SECRET=XU4b-j0Ssy-XkTvSVmiFMvNY
-
 derle() {
 	cd $isim-$surum
 	SLKCFLAGS="-O2 -fPIC"
 	LIBDIRSUFFIX=""
 	TARGETARCH="x64"
 	patch -p1 -i $SRC/chromium-52.0.2743.116-unset-madv_free.patch
-
 	if [ "$USE_CLANG" = "YES" ]; then
 		CLANG_OPT="-Dclang=1 -Dclang_use_chrome_plugins=0"
 		sed -e '/-Wno-absolute-value/d' -i build/common.gypi
-
 		export CC="clang"
 		export CXX="clang++"
 		SLKCFLAGS="${SLKCFLAGS} -Wno-unknown-warning-option"
@@ -36,7 +34,6 @@ derle() {
 		SLKCFLAGS="${SLKCFLAGS} -Wno-unused-local-typedefs"
 	fi
 	export -n CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCFLAGS"
-
 _conf=(
   $CLANG_OPT
   -Ddisable_glibc=1
@@ -83,39 +80,31 @@ _conf=(
   -Ddisable_nacl=1
   -Ddisable_sse2=1
 )
-
 	cp $SRC/gzip_string.py  $SRC/$isim-$surum/tools/grit/grit/format/
 	third_party/libaddressinput/chromium/tools/update-strings.py
 	touch chrome/test/data/webui/i18n_process_css_test.html
 	build/linux/unbundle/replace_gyp_files.py "${_conf[@]}"
 	build/gyp_chromium --depth=. "${_conf[@]}"
 	ninja -C out/Release chrome chrome_sandbox chromedriver
-
 	install -D out/Release/chrome $PKG/usr/lib/chromium/chromium
 	install -D -m4755 -o root -g root out/Release/chrome_sandbox $PKG/usr/lib/chromium/chrome-sandbox
 	install -D out/Release/chromedriver $PKG/usr/lib/chromium/chromedriver
-
 	cp out/Release/*.pak $PKG/usr/lib/chromium
 	cp -a out/Release/locales $PKG/usr/lib/chromium
 	cp -a out/Release/pseudo_locales $PKG/usr/lib/chromium
 	ln -s locales $PKG/usr/lib/chromium/remoting_locales
 	cp -a out/Release/resources $PKG/usr/lib/chromium
-
 	mkdir -p $PKG/usr/lib/chromium/lib
 	cp out/Release/lib/libffmpeg.so $PKG/usr/lib/chromium/lib
-
 	cp out/Release/natives_blob.bin $PKG/usr/lib/chromium
 	cp out/Release/snapshot_blob.bin $PKG/usr/lib/chromium
 	cp -a out/Release/icudtl.dat $PKG/usr/lib/chromium
-
 	mkdir -p $PKG/usr/man/man1
 	install -m 0644 -D out/Release/chrome.1 $PKG/usr/man/man1/chromium.1
-
 	mkdir -p $PKG/usr/bin
 	cat $SRC/chromium.sh | sed s/@LIBDIRSUFFIX@/$LIBDIRSUFFIX/ > $PKG/usr/bin/chromium
 	chmod 0755 $PKG/usr/bin/chromium
 	ln -s ../lib/chromium/chromedriver $PKG/usr/bin/chromedriver
-
 	for size in 16 32; do
 	  install -D -m0644 \
 		chrome/app/theme/default_100_percent/chromium/product_logo_$size.png \
@@ -126,7 +115,6 @@ _conf=(
 		chrome/app/theme/chromium/product_logo_$size.png \
 		$PKG/usr/share/icons/hicolor/${size}x${size}/apps/${isim}.png
 	done
-
 	install -D -m 0644 $SRC/chromium.desktop $PKG/usr/share/applications/chromium.desktop
 	mkdir -p $PKG/etc/chromium
 	cat $SRC/chromium.default > $PKG/etc/chromium/00-default.conf.new

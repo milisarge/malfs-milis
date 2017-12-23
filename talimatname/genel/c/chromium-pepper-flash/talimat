@@ -1,18 +1,18 @@
 # Tanım: Chromium için Google Chrome'un Pepper Flash eklentisi
-# URL : http://www.google.com/chrome
+# URL: https://www.chromium.org/Home
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: medya
 
 isim=chromium-pepper-flash
 surum=20.0.0.228
 devir=2
+kaynak=(http://docs.volcanis.me/.pepper-flash/`uname-m`/libpepflashplayer.so\
+        http://docs.volcanis.me/.pepper-flash/`uname-m`/manifest.json)
 
+# URL : http://www.google.com/chrome
 [ "`uname -m`" == "i686"   ] && _ARCH=i386
 [ "`uname -m`" == "x86_64"   ] && _ARCH=x86_64
-
-kaynak=(http://docs.volcanis.me/.pepper-flash/`uname -m`/libpepflashplayer.so \
-	http://docs.volcanis.me/.pepper-flash/`uname -m`/manifest.json)
-
 derle() {
  install -d $PKG/{usr/lib/PepperFlash,opt/chromium/lib}
  install -m644 $SRC/{libpepflashplayer.so,manifest.json} $PKG/usr/lib/PepperFlash

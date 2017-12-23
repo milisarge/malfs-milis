@@ -2,11 +2,12 @@
 # URL: http://www.samba.org
 # Paketçi: milisarge
 # Gerekler: samba
+# Grup: sistem
 
 isim=cifs-utils
 surum=6.5
 devir=1
-kaynak=( http://ftp.samba.org/pub/linux-cifs/$isim/$isim-$surum.tar.bz2)
+kaynak=(http://ftp.samba.org/pub/linux-cifs/$isim/$isim-$surum.tar.bz2)
 
 derle() {
 cd $isim-$surum

@@ -1,12 +1,12 @@
 # Tanım: rust paket yöneticisi
 # URL: https://github.com/rust-lang/cargo/
 # Paketçi: milisarge
-# Gerekler: rust cmake 
+# Gerekler: rust cmake
+# Grup: geliştirme
 
 isim=cargo
 surum=0.21.1
 devir=1
-
 kaynak=(https://github.com/rust-lang/cargo/archive/$surum.tar.gz
         https://static.rust-lang.org/dist/cargo-nightly-x86_64-unknown-linux-gnu.tar.gz)
 

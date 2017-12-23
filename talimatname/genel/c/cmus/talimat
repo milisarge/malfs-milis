@@ -2,6 +2,7 @@
 # URL: http://cmus.sf.net/
 # Paketçi: milisarge
 # Gerekler: alsa-lib alsa-plugins flac libid3tag libmad libogg libmpcdec libvorbis
+# Grup: medya
 
 isim=cmus
 surum=2.7.1
@@ -10,7 +11,6 @@ kaynak=(https://github.com/cmus/cmus/archive/v${surum}.tar.gz::$isim-$surum.tar.
 
 derle() {
     cd $isim-$surum
-
     ./configure prefix=/usr mandir=/usr/man CONFIG_ARTS=n
     make
     make DESTDIR=$PKG install

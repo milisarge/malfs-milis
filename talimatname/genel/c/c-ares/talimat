@@ -1,7 +1,8 @@
 # Tanım: Asenkron C DNS kütüphanesi
 # URL: https://c-ares.haxx.se/
-# Paketçi:	milisarge
-# Gerekler:
+# Paketçi: 	milisarge
+# Gerekler: 
+# Grup: kütüphane
 
 isim=c-ares
 surum=1.12.0

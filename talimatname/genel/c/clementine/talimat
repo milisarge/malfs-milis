@@ -2,23 +2,21 @@
 # URL: http://www.clementine-player.org/
 # Paketçi: milisarge
 # Gerekler: cmake boost qt4 qjson sparsehash xorg-mesa libcdio libmtp protobuf qca taglib chromaprint glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad gvfs
+# Grup: medya
 
 isim=clementine
 surum=1.2.3
 devir=5
 kaynak=(https://github.com/clementine-player/Clementine/archive/$surum.tar.gz
-	clementine-1.2.3-gcc5.1-1.patch
+        clementine-1.2.3-gcc5.1-1.patch
         clementine-1.2.3-udisks-namespace.patch)
 
 derle() {
 cd Clementine-$surum
-
 patch -Np1 -i $SRC/clementine-1.2.3-udisks-namespace.patch
 patch -Np1 -i $SRC/clementine-1.2.3-gcc5.1-1.patch
-
 mkdir build
 cd    build
-
 cmake .. \
    -DCMAKE_INSTALL_PREFIX=/usr \
    -DCMAKE_BUILD_TYPE='Release'

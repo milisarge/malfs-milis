@@ -2,7 +2,7 @@
 # URL: http://www.freedesktop.org/software/colord/
 # Paketçi: milisarge
 # Gerekler: colord gtk3 gobject-introspection vala
-
+# Grup: sistem
 
 isim=colord-gtk
 surum=0.1.26

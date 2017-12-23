@@ -2,6 +2,7 @@
 # URL: http://cdrkit.org/
 # Paketçi: milisarge
 # Gerekler: libcap cmake
+# Grup: sistem
 
 isim=cdrkit
 surum=1.1.11

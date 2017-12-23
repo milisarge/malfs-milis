@@ -2,11 +2,11 @@
 # URL: http://www.clutter-project.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: clutter gtk3 gobject-introspection
+# Grup: kütüphane
 
 isim=clutter-gtk
 surum=1.8.2
 devir=1
-
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {

@@ -2,6 +2,7 @@
 # URL: http://acoustid.org/chromaprint/
 # Paketçi: milisarge
 # Gerekler: ffmpeg cmake
+# Grup: kütüphane
 
 isim=chromaprint
 surum=1.4.2
@@ -12,7 +13,6 @@ derle() {
 cd $isim-$surum
 cmake \
 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=ON .
-
 make
 make DESTDIR=$PKG install
 }

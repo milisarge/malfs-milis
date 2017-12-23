@@ -2,7 +2,7 @@
 # URL: http://anonscm.debian.org/cgit/d-i/console-setup.git/
 # Paketçi: milisarge
 # Gerekler: 
-# Grup: 
+# Grup: sistem
 
 isim=ckbcomp
 surum=1.172

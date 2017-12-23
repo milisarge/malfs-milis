@@ -2,6 +2,7 @@
 # URL: http://www.codeblocks.org/
 # Paketçi: milisarge
 # Gerekler: zip boost desktop-file-utils gamin gtk-update-icon-cache hicolor-icon-theme hunspell shared-mime-info wxgtk28
+# Grup: geliştirme
 
 isim=codeblocks
 surum=16.01

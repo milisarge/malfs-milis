@@ -1,13 +1,15 @@
 # Tanım: Camlp4 tool  
 # URL: https://github.com/ocaml/camlp4
-# Packeger: milisarge
+# Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: ocaml ocamlbuild
+# Grup: geliştirme
 
 isim=camlp4
 surum=git
 devir=1
 kaynak=()
 
+# Packeger: milisarge
 derle() {
 	cd $DERLEME_KAYNAKDIZIN
 	if [ ! -d $isim ]; then
@@ -16,9 +18,7 @@ derle() {
 		cd $isim && git pull && make clean
 	fi
 	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC
-
 	cd $SRC/$isim
-
 	./configure --bindir=/usr/bin --libdir=/usr/lib/ocaml
 	make -j1
 	make DESTDIR=$PKG install

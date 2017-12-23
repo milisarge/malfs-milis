@@ -2,11 +2,11 @@
 # URL: https://blogs.gnome.org/clutter
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: atk cogl json-glib gobject-introspection gtk3 xorg-libxi
+# Grup: kütüphane
 
 isim=clutter
 surum=1.26.2
 devir=1
-
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {

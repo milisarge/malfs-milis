@@ -1,7 +1,8 @@
 # Tanım: hafif bir dosya yonetici
 # URL: http://www.clex.sk/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: sistem
 
 isim=clex
 surum=4.6

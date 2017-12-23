@@ -1,7 +1,8 @@
 # Tanım: GTK+ temelli bir elektronik posta istemcisi
 # URL: http://www.claws-mail.org
 # Paketçi: milisarge
-# Gerekler: bogofilter enchant aspell libetpan gnupg gpgme gnutls dbus gtk2 libtasn1 enchant
+# Gerekler: bogofilter enchant aspell libetpan gnupg gpgme gnutls dbus gtk2 libtasn1
+# Grup: ağ
 
 isim=claws-mail
 surum=3.15.1

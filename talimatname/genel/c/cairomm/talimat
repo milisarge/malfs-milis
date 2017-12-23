@@ -1,14 +1,15 @@
 # Tanım: Cairo vektör grafik kütüphanesine C ++ bağları
 # URL: http://cairographics.org/
-# Maintainer: Murray Cumming <murrayc@murrayc.com>
 # Paketçi: milisarge
 # Gerekler: cairo,libsigc++
+# Grup: kütüphane
 
 isim=cairomm
 surum=1.12.0
 devir=1
 kaynak=(http://cairographics.org/releases/$isim-$surum.tar.gz)
 
+# Maintainer: Murray Cumming <murrayc@murrayc.com>
 derle() {
 cd $isim-$surum
 ./configure --prefix=/usr
