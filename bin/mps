@@ -391,7 +391,7 @@ paket_bilgi(){
 		_yaz="ryaz 32"
 		_yaz_uyari="ryaz 31"
 	else
-		echo "tanımsız çıktı seçeneği,normal çıktı verilecek."
+		#echo "tanımsız çıktı seçeneği,normal çıktı verilecek."
 		_yaz="echo"
 		_yaz_uyari="echo"
 		_yaz_son="<br>"
