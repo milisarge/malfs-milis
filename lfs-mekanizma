@@ -979,14 +979,16 @@ mount_islemi(){
 	cp -v /etc/resolv.conf $LFS/etc
 	mount -v -B /dev $LFS/dev
 	#mount -vt devpts devpts $LFS/dev/pts -o gid=5,mode=620
-	mount -vt devpts devpts $LFS/dev/pts
+	#mount -vt devpts devpts $LFS/dev/pts
+	# make hatası düzeliyor-segm fault
+	mount --bind /dev/pts $LFS/dev/pts
 	mount -vt proc proc $LFS/proc
 	#bazı durumlarda bu kullanılacak tty değilde pty i kullanan derlemelerde
 	#mount --bind /dev/pts $LFS/dev/pts
 	mount -vt sysfs sysfs $LFS/sys
-	if [ -h /dev/shm ]; then rm -f $LFS/dev/shm;mkdir $LFS/dev/shm;fi
-	mount -vt tmpfs shm $LFS/dev/shm
-	chmod 1777 /dev/shm
+	#if [ -h /dev/shm ]; then rm -f $LFS/dev/shm;mkdir $LFS/dev/shm;fi
+	#mount -vt tmpfs shm $LFS/dev/shm
+	#chmod 1777 /dev/shm
 }
 
 chroot_gir(){
