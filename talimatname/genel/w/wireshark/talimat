@@ -26,6 +26,6 @@ derle() {
   chown -v root:wireshark $PKG/usr/bin/{tshark,dumpcap} &&
   chmod -v 6550 $PKG/usr/bin/{tshark,dumpcap} 
 
-  install -Dm755 .libs/wireshark ${PKG}/usr/bin/wireshark-gtk
+  install -Dm755 $SRC/$isim-$surum/.libs/wireshark-gtk ${PKG}/usr/bin/wireshark-gtk
   install -Dm644 wireshark-gtk.desktop ${PKG}/usr/share/applications/wireshark-gtk.desktop
 }
