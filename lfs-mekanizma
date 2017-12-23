@@ -978,6 +978,7 @@ EOF
 mount_islemi(){
 	cp -v /etc/resolv.conf $LFS/etc
 	mount -v -B /dev $LFS/dev
+	#mount -vt devpts devpts $LFS/dev/pts -o gid=5,mode=620
 	mount -vt devpts devpts $LFS/dev/pts
 	mount -vt proc proc $LFS/proc
 	#bazı durumlarda bu kullanılacak tty değilde pty i kullanan derlemelerde
