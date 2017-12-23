@@ -4,15 +4,15 @@
 # Gerekler: kf5-karchive kf5-kconfig kf5-kcoreaddons kf5-kservice
 
 isim=kf5-kemoticons
-surum=5.27.0
+surum=5.41.0
 devir=1
 _isim=kemoticons
-_surum=5.27
+_surum=5.41
 
-kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_surum}/${_isim}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$surum
+cd ${_isim}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \
