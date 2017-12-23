@@ -2,17 +2,17 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kded kf5-kauth kf5-kcodecs kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kdesignerplugin kf5-kglobalaccel kf5-kguiaddons kf5-ki18n kf5-kiconthemes kf5-kio kf5-kitemviews kf5-kjobwidgets kf5-knotifications kf5-kparts kf5-kservice kf5-ktextwidgets kf5-kunitconversion kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui kf5-solid kf5-kdoctools kf5-kemoticons kf5-kinit kf5-kitemmodels kf5-kdoctools openssl perl-uri
+# Grup: kde
 
 isim=kf5-kdelibs4support
-surum=5.27.0
+surum=5.41.0
 devir=1
 _isim=kdelibs4support
-_surum=5.27
-
-kaynak=( http://download.kde.org/stable/frameworks/${_version}/portingAids/${_name}-$surum.tar.xz)
+_surum=5.41
+kaynak=( http://download.kde.org/stable/frameworks/${_surum}/portingAids/${_isim}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$surum
+cd ${_isim}-$surum
 
 sed -i "s:4.2:4.5:g" cmake/FindDocBookXML4.cmake
 
