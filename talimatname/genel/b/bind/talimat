@@ -2,7 +2,7 @@
 # URL: http://www.isc.org/downloads/bind/
 # Paketçi: milisarge
 # Gerekler: kerberos libxml2
-# Grup: bilim_mühendislik
+# Grup: ağ
 
 isim=bind
 surum=9.10.3.p2
