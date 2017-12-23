@@ -2,6 +2,7 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kio kf5-kservice kf5-plasma-framework kf5-solid kf5-threadweaver
+# Grup: kde
 
 isim=kf5-krunner
 surum=5.41.0
