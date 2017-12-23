@@ -2,17 +2,18 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kauth kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-kguiaddons kf5-ki18n kf5-kwidgetsaddons kf5-kdoctools
+# Grup: kde
 
 isim=kf5-kconfigwidgets
-surum=5.27.0
+surum=5.41.0
 devir=1
 _isim=kconfigwidgets
-_surum=5.27
+_surum=5.41
 
-kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_surum}/${_isim}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$surum
+cd ${_isim}-$surum
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -DLIB_INSTALL_DIR=lib       \
