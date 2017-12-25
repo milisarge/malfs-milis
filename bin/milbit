@@ -303,6 +303,10 @@ Paketler )
 insert_header "YÜKLÜ PAKETLER:"
 ls -1 /var/lib/pkg/DB/ >> $info
 ;;
+Servisler )
+insert_header "SERVİSLER:"
+ls /etc/init.d/ >> $info
+;;
 lspci )
 insert_header "lspci çıktı:"
 lspci -knn >> $info
@@ -454,6 +458,7 @@ export MILIS_BILGI='
 			<item>Kullanıcılar</item>
 			<item>Sürüm</item>
 			<item>Paketler</item>
+			<item>Servisler</item>
 			'`craction '\$milis' machinfo6`'
 		</tree>
 		<edit editable="false" wrap-mode="0" left-margin="10">
