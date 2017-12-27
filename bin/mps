@@ -1188,11 +1188,15 @@ surum_devir_kontrol(){
 	_paket=$1
 	local kdevir devir ksurum surum pkt dusuk yuksek durum
 	durum="belirsiz"
-	satir=`sed -n '7p' <  $VT/$_paket/META`
-	ksurum=${satir:1:${#satir}-1} 
-	satir=`sed -n '8p' <  $VT/$_paket/META`
-	kdevir=${satir:1:${#satir}-1} 
-	
+	if [ -d "$VT/$_paket" ];then
+		satir=`sed -n '7p' <  $VT/$_paket/META`
+		ksurum=${satir:1:${#satir}-1} 
+		satir=`sed -n '8p' <  $VT/$_paket/META`
+		kdevir=${satir:1:${#satir}-1} 
+	else
+		ksurum="0"
+		kdevir="0"
+	fi
 	_konum=$(talimat_bul $_paket)
 	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
 		echo "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
