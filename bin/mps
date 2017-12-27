@@ -1183,6 +1183,47 @@ devir_kontrol(){
 	fi
 }
 
+surum_devir_kontrol(){
+	local _konum pk_sil _paket
+	_paket=$1
+	local kdevir devir ksurum surum pkt dusuk yuksek durum
+	durum="belirsiz"
+	satir=`sed -n '7p' <  $VT/$_paket/META`
+	ksurum=${satir:1:${#satir}-1} 
+	satir=`sed -n '8p' <  $VT/$_paket/META`
+	kdevir=${satir:1:${#satir}-1} 
+	
+	_konum=$(talimat_bul $_paket)
+	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+		echo "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
+	else
+	
+		source $_konum/talimat
+		echo "$_paket:"
+		echo "kurulu sürüm :$ksurum-$kdevir"
+		echo "depo sürüm   :$surum-$devir"
+	fi
+}
+
+_devir_kontrol_durum(){
+	local _konum pk_sil _paket
+	_paket="$1"
+	local kdevir devir pkt dusuk yuksek durum gun_onay
+	durum="belirsiz"
+	satir=`sed -n '8p' <  $VT/$_paket/META`
+	kdevir=${satir:1:${#satir}-1} 
+	
+	_konum=$(talimat_bul $_paket)
+	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+		echo "$_paket $_talimat_bulunamadi $_devir_kontrol_iptal"
+	else
+	
+		source $_konum/talimat
+		echo "kurulu devir :$kdevir"
+		echo "depo devir   :$devir"
+	fi
+}
+
 talimat_surum_takip(){
 	local konum _takip_uzanti
 	_takip_uzanti=".takip"
@@ -2697,9 +2738,28 @@ ayarlar() {
 				fi
 				kirik_ters_bagimli_bilgi "$2" 
 				exit 0 ;;
+				
 			### mps -kks . = sistemde kurulu tüm paketlerin kırık kontrolünü yapar.Eksik dosyaları tespit eder.
 			-kks)
 				kirik_kontrol_sistem 
+				exit 0 ;;
+			### mps -sk paketismi = bir paketin güncel sürüm numarasını denetler.
+			-sdk)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					hataloglama "(kirma) paket ismi eksik"
+					exit 1
+				fi
+				surum_devir_kontrol "$2" "$3"
+				exit 0 ;;
+			### mps -dk paketismi = bir paketin güncel devir numarasını denetler.
+			-devk)
+				if [ ! "$2" ]; then
+					ryaz 31 "paket ismi eksik"
+					hataloglama "(kirma) paket ismi eksik"
+					exit 1
+				fi
+				devir_kontrol_durum "$2" 
 				exit 0 ;;
 			-pak|--paketle)
 				if [ ! "$2" ]; then
