@@ -2,17 +2,18 @@
 # URL: https://community.kde.org/Frameworks
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules boost kf5-kactivities
+# Grup: kde
 
 isim=kf5-kactivities-stats
-surum=5.27.0
+surum=5.41.0
 devir=1
 _isim=kactivities-stats
-_surum=5.27
+_surum=5.41
 
-kaynak=( http://download.kde.org/stable/frameworks/${_version}/${_name}-$surum.tar.xz)
+kaynak=( http://download.kde.org/stable/frameworks/${_surum}/${_isim}-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$surum
+cd ${_isim}-$surum
 mkdir build
 cd    build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
