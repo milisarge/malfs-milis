@@ -237,7 +237,7 @@ unpack_source() {
 	for FILE in ${kaynak[@]}; do
 		LOCAL_FILENAME=`get_filename $FILE`
 		case $LOCAL_FILENAME in
-			*.tar|*.tar.gz|*.tar.Z|*.tgz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.zip|*.rpm)
+			*.tar|*.tar.gz|*.tar.Z|*.tgz|*.lz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.zip|*.rpm)
 				if [ "$PKGMK_IGNORE_UNPACK" != "evet" ];then
 					COMMAND="bsdtar -p -o -C $SRC -xf $LOCAL_FILENAME"
 				else
