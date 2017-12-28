@@ -5,16 +5,14 @@
 # Grup: ağ
 
 isim=amule
-surum=f77eef219cdb0caf31b094a9db4668e936abda8c
+surum=2.3.2
 devir=1
-kaynak=(http://repo.or.cz/amule.git/snapshot/$surum.tar.gz)
+kaynak=(https://downloads.sourceforge.net/project/amule/aMule/$surum/aMule-$surum.tar.bz2)
 
 derle() {
-	cd $isim-f77eef2
+	cd aMule-$surum
 	./configure \
-		--prefix=/usr \
-		--mandir=/usr/man
+	--prefix=/usr
 	make
 	make install DESTDIR=$PKG
-	rm -r $PKG/usr/share/doc
 }
