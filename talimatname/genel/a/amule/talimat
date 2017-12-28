@@ -5,12 +5,12 @@
 # Grup: ağ
 
 isim=amule
-surum=f77eef219cdb0caf31b094a9db4668e936abda8c
+surum=r10990
 devir=1
-kaynak=(http://repo.or.cz/amule.git/snapshot/$surum.tar.gz)
+kaynak=(http://amule.sourceforge.net/tarballs/aMule-SVN-$surum.tar.bz2)
 
 derle() {
-	cd $isim-f77eef2
+	cd aMule-SVN-$surum
 	./configure \
 		--prefix=/usr \
 		--mandir=/usr/man
