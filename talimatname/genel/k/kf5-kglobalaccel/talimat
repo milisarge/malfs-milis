@@ -2,6 +2,7 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-kconfig kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kwindowsystem libxcb xcb-util-keysyms
+# Grup: kde
 
 isim=kf5-kglobalaccel
 surum=5.41.0
