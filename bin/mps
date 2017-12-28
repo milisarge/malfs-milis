@@ -1190,12 +1190,12 @@ surum_devir_kontrol(){
 	durum="belirsiz"
 	if [ -d "$VT/$_paket" ];then
 		satir=`sed -n '7p' <  $VT/$_paket/META`
-		ksurum=${satir:1:${#satir}-1} 
+		ksurum="${satir:1:${#satir}-1}-" 
 		satir=`sed -n '8p' <  $VT/$_paket/META`
-		kdevir=${satir:1:${#satir}-1} 
+		kdevir=${satir:1:${#satir}-1}
 	else
-		ksurum="0"
-		kdevir="0"
+		ksurum="(none)"
+		kdevir=""
 	fi
 	_konum=$(talimat_bul $_paket)
 	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
@@ -1204,8 +1204,9 @@ surum_devir_kontrol(){
 	
 		source $_konum/talimat
 		echo "$_paket:"
-		echo "kurulu sürüm :$ksurum-$kdevir"
+		echo "kurulu sürüm :$ksurum$kdevir"
 		echo "depo sürüm   :$surum-$devir"
+		echo "--"
 	fi
 }
 
