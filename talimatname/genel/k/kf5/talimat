@@ -2,9 +2,10 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-attica kf5-baloo kf5-bluez-qt kf5-breeze-icons kf5-frameworkintegration kf5-kactivities kf5-kactivities-stats kf5-kapidox kf5-karchive kf5-kauth kf5-kbookmarks kf5-kcmutils kf5-kcodecs kf5-kcompletion kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kcrash kf5-kdbusaddons kf5-kdeclarative kf5-kded kf5-kdelibs4support kf5-kdesignerplugin kf5-kdesu kf5-kdewebkit kf5-kdnssd kf5-kdoctools kf5-kemoticons kf5-kfilemetadata kf5-kglobalaccel kf5-kguiaddons kf5-khtml kf5-ki18n kf5-kiconthemes kf5-kidletime kf5-kimageformats kf5-kinit kf5-kio kf5-kitemmodels kf5-kitemviews kf5-kjobwidgets kf5-kjs kf5-kjsembed kf5-kmediaplayer kf5-knewstuff kf5-knotifications kf5-knotifyconfig kf5-kpackage kf5-kparts kf5-kpeople kf5-kplotting kf5-kpty kf5-kross kf5-krunner kf5-kservice kf5-ktexteditor kf5-ktextwidgets kf5-kunitconversion kf5-kwallet kf5-kwayland kf5-kwidgetsaddons kf5-kwindowsystem kf5-kxmlgui kf5-kxmlrpcclient kf5-modemmanager-qt kf5-networkmanager-qt kf5-oxygen-icons5 kf5-plasma-framework kf5-solid kf5-sonnet kf5-threadweaver
+# Grup: kde
 
 isim=kf5
-surum=5.27.0
+surum=5.41.0
 devir=1
 
 kaynak=(talimat)
