@@ -4,7 +4,7 @@
 # Gerekler: opus libssh2 qt5 x264 flac libmad glib dbus libupnp libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg28 faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 isim=vlc
-surum=2.2.6
+surum=2.2.8
 devir=1
 
 kaynak=(https://download.videolan.org/${isim}/${surum}/${isim}-${surum}.tar.xz
@@ -16,7 +16,12 @@ derle() {
 	sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
 	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
 	patch -p1 < "${SRC}/lua53_compat.patch"
-
+	
+	sed -i 's/^Exec=/Name[tr]=VLC Medya Oynatıcı \
+GenericName[tr]=Medya Oynatıcı \
+Comment[tr]=Multimedya akışlarınızı okur,yakalar,yayınlar \
+&/' $SRC/$isim-$surum/share/vlc.desktop.in
+	
 	sed -i '/seems to be moved/s/^/#/' autotools/ltmain.sh
     export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
 	export CXXFLAGS+=" -std=c++11"
@@ -39,6 +44,8 @@ derle() {
 		--enable-opus \
 		--enable-sftp
 	sed -i '/354/s/.*/#define QT_XMAS_JOKE_DAY 666/' $SRC/$isim-$surum/modules/gui/qt4/qt4.hpp
+	sed -i -e 's/\'--owner=root'\>//g'  share/Makefile
+	sed -i -e 's/\'--group=root'\>//g'  share/Makefile
 	make
 	make DESTDIR=$PKG install
 	for res in 16 32 48 128; do
