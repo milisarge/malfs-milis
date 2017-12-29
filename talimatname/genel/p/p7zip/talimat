@@ -1,20 +1,31 @@
-# Tanım: 7zip sıkıştırılmış dosya arşivinin komut satırı sürümü
+# Tanım: 7zip sıkıştırılmış dosya arşivinin konsol uygulaması
 # URL: http://p7zip.sourceforge.net
 # Paketçi: milisarge
-# Gerekler: nasm yasm 
+# Gerekler: yasm 
+# Grup: ağ
 
 isim=p7zip
-surum=9.38.1
+surum=16.02
 devir=1
 
-kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/${isim}_${surum}_src_all.tar.bz2)
+kaynak=(https://downloads.sourceforge.net/project/$isim/$isim/$surum/${isim}_${surum}_src_all.tar.bz2
+		CVE-2016-9296.patch)
 
 derle() {
 	cd ${isim}_$surum
-	[[ `uname -m` = x86_64 ]] \
-	&& cp makefile.linux_amd64_asm makefile.machine \
-	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine
-	make -j1 all3 OPTFLAGS="${CXXFLAGS}"
-	make install DEST_DIR=$PKG DEST_HOME=/usr DEST_MAN=/usr/share/man
+	# https://sourceforge.net/p/p7zip/bugs/185/
+	patch -Np1 -i $SRC/CVE-2016-9296.patch
 
+	cp makefile.linux_amd64_asm makefile.machine
+
+	make all3
+
+	make install \
+	DEST_DIR="$PKG" \
+	DEST_HOME=/usr 
+
+	# Remove documentation for the GUI file manager
+	rm -r "$PKG/usr/share/doc/"
+
+	install -d "${PKG}"/usr/share/licenses/p7zip
 }
