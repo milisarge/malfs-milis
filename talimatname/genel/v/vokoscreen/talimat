@@ -22,7 +22,7 @@ derle() {
 	sed -i 's/^Exec=/Name[tr]=Vokoscreen \
 GenericName[tr]=Ekran Kaydedici \
 Comment[tr]=Kullanımı kolay bir ekran kaydedici \
-&/' $SRC/$isim-$surum/applications/$isim.desktop.in
+&/' $SRC/$isim-$surum/applications/$isim.desktop
 	
 	mkdir -p "${SRC}"/build
 	cd "${SRC}"/build
