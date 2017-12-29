@@ -6,7 +6,7 @@
 +Comment=An easy to use screencast creator
  Exec=vokoscreen
  Icon=vokoscreen
- Name=vokoscreen
+ Name=Vokoscreen
  StartupNotify=false
  Terminal=false
  Type=Application
