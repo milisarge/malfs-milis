@@ -2677,6 +2677,7 @@ ayarlar() {
 				pkt=$(talimat_bul $2)
 				if [ -f  $pkt/$2.kur-kos ];then
 					bash $pkt/$2.kur-kos
+					exit 0
 				else
 					ryaz 31 "$2 kur-kos yok!"
 					hataloglama "$2 kur-kos yok!"
@@ -2688,6 +2689,7 @@ ayarlar() {
 				pkt=$(talimat_bul $2)
 				if [ -f  $pkt/$2.kos-kur ];then
 					bash $pkt/$2.kos-kur
+					exit 0
 				else
 					ryaz 31 "$2 kos-kur yok!"
 					hataloglama "$2 kos-kur yok!"
@@ -2699,6 +2701,7 @@ ayarlar() {
 				pkt=$(talimat_bul $2)
 				if [ -f  $pkt/$2.sil-kos ];then
 					bash $pkt/$2.sil-kos
+					exit 0
 				else
 					ryaz 31 "$2 sil-kos yok!"
 					hataloglama "$2 sil-kos yok!"
@@ -2710,6 +2713,7 @@ ayarlar() {
 				pkt=$(talimat_bul $2)
 				if [ -f  $pkt/$2.kos-sil ];then
 					bash $pkt/$2.kos-sil
+					exit 0
 				else
 					ryaz 31 "$2 kos-sil yok!"
 					hataloglama "$2 kos-sil yok!"
