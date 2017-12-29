@@ -1,24 +1,29 @@
 # Tanım: Kolay ekran çekim uygulaması
 # URL: http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler: xorg-libxrandr v4l-utils qt5 ffmpeg lame lsof pulseaudio xdg-utils
 
 isim=vokoscreen
-_surum=2.5.4-beta
+_surum=2.5.7-beta
 surum=${_surum/-/.}
 devir=1
 
-kaynak=(https://github.com/vkohaupt/${isim}/archive/${_surum}.tar.gz
+kaynak=(https://github.com/vkohaupt/${isim}/archive/${_surum}.tar.gz::$isim-$surum.tar.gz
 		desktop_file.patch
 		fix_lrelease.patch)
 	
 derle() {
 
 	cd "${SRC}"/${isim}-${_surum}
-	# sürüm yama
+	
 	patch -Np1 < ../fix_lrelease.patch
-	# masaustu yama
 	patch -Np1 < ../desktop_file.patch
+	
+	sed -i 's/^Exec=/Name[tr]=Vokoscreen \
+GenericName[tr]=Ekran Kaydedici \
+Comment[tr]=Kullanımı kolay bir ekran kaydedici \
+&/' $SRC/$isim-$surum/applications/$isim.desktop.in
+	
 	mkdir -p "${SRC}"/build
 	cd "${SRC}"/build
 	qmake-qt5 ../${isim}-${_surum} \
@@ -28,5 +33,4 @@ derle() {
 		CONFIG+=c++14
 	make
 	make INSTALL_ROOT="${PKG}" install
-
 }
