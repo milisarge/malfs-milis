@@ -2,6 +2,7 @@
 # URL: http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
 # Paketçi: milisarge
 # Gerekler: xorg-libxrandr v4l-utils qt5 ffmpeg lame lsof pulseaudio xdg-utils
+# Grup: medya
 
 isim=vokoscreen
 _surum=2.5.7-beta
