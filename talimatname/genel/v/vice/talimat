@@ -1,7 +1,7 @@
 # Tanım: VICE Commodore emülatörü
 # URL: http://www.viceteam.org/
 # Paketçi: milisarge
-# Gerekler: gtk2 giflib lame libpng libjpeg-turbo xorg-libxdamage xorg-libsm vte xorg-libxxf86vm xorg-fontconfig xorg-font-util libpcap libnet sdl dialog xmlto texi2html zlib
+# Gerekler: gtk2 giflib lame libpng libjpeg-turbo xorg-libxdamage xorg-libsm vte xorg-libxxf86vm xorg-fontconfig xorg-font-util libpcap libnet sdl xmlto texi2html zlib
 
 isim=vice
 surum=2.4
