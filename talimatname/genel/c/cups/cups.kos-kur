@@ -1,0 +1,8 @@
+mkdir -p /usr/share/icons/hicolor/16x16
+mkdir -p /usr/share/icons/hicolor/16x16/apps
+mkdir -p /usr/share/icons/hicolor/32x32
+mkdir -p /usr/share/icons/hicolor/32x32/apps
+mkdir -p /usr/share/icons/hicolor/128x128
+mkdir -p /usr/share/icons/hicolor/128x128/apps
+mkdir -p /usr/share/icons/hicolor/64x64/apps
+mkdir -p /usr/share/icons/hicolor/64x64

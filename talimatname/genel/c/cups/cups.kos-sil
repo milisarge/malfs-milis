@@ -1,0 +1,17 @@
+#!/bin/sh
+for _kurtar in  \
+'/etc/cups' \
+'/etc/cups/ppd' \
+'/usr/share/icons/hicolor/16x16' \
+'/usr/share/icons/hicolor/16x16/apps' \
+'/usr/share/icons/hicolor/32x32' \
+'/usr/share/icons/hicolor/32x32/apps' \
+'/usr/share/icons/hicolor/128x128' \
+'/usr/share/icons/hicolor/128x128/apps' \
+'/usr/share/icons/hicolor/64x64/apps' \
+'/usr/share/icons/hicolor/64x64' ; \
+do 
+
+sed -i '\|'\'$_kurtar\''|d' /var/lib/pkg/DB/cups/kurulan
+
+done
