@@ -11,6 +11,15 @@ E_FOOTPRINT=7  # footprint check failure
 E_BUILD=8      # error while running 'derle()'
 E_INSTALL=9    # paket kurulum hatası (mps -k)
 
+_gnuwget= `wget | head -n1 | grep "Busybox"`
+if [ "${_gnuwget}x" == "x" ];then
+	wget_sertifika_ayar="--no-check-certificate"
+	wget_retry="--waitretry=3"
+else
+	wget_sertifika_ayar=""
+	wget_retry=""
+fi
+
 info() {
 	echo "=======> $1"
 }
@@ -158,9 +167,9 @@ download_file() {
 		downloads_file_with_curl $LOCAL_FILENAME $1
 	else
 		LOCAL_FILENAME_PARTIAL="$LOCAL_FILENAME.partial"
-		DOWNLOAD_OPTS="--passive-ftp --no-directories --tries=3 --waitretry=3 \
+		DOWNLOAD_OPTS="--passive-ftp --no-directories --tries=3 $wget_retry \
 		-O  $LOCAL_FILENAME \
-		--output-document=$LOCAL_FILENAME_PARTIAL --no-check-certificate"
+		--output-document=$LOCAL_FILENAME_PARTIAL $wget_sertifika_ayar"
 
 		if [ -f "$LOCAL_FILENAME_PARTIAL" ]; then
 			info "Kısmi indirme var,tamamlanmaya çalışılacak"
