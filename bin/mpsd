@@ -11,7 +11,7 @@ E_FOOTPRINT=7  # footprint check failure
 E_BUILD=8      # error while running 'derle()'
 E_INSTALL=9    # paket kurulum hatası (mps -k)
 
-_gnuwget= `wget | head -n1 | grep "Busybox"`
+_gnuwget=$(readlink -f `which wget` | grep "busybox")
 if [ "${_gnuwget}x" == "x" ];then
 	wget_sertifika_ayar="--no-check-certificate"
 	wget_retry="--waitretry=3"
