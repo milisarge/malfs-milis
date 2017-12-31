@@ -4,14 +4,16 @@
 # Gerekler: intltool libxslt docbook-xsl glib gobject-introspection libgcrypt vala 
 
 isim=libsecret
-surum=0.18.3
+surum=0.18.5
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
+kaynak=(https://git.gnome.org/browse/libsecret/snapshot/$isim-$surum.tar.xz)
 
 derle() {
 cd $isim-$surum
-./configure --prefix=/usr --disable-static
-make
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --disable-static --enable-gtk-doc
+  make
 make DESTDIR=$PKG install
 }
