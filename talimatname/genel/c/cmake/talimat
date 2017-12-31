@@ -1,11 +1,11 @@
 # Tanım: Makefile üretmek için kullanılır ve platformdan ve derleyiciden bağımsız olmayı amaçlar.
 # URL: http://www.cmake.org
 # Paketçi: milisarge
-# Gerekler: 
+# Gerekler: rhash libuv
 # Grup: geliştirme
 
 isim=cmake
-surum=3.4.3
+surum=3.10.1
 devir=1
 kaynak=(http://www.cmake.org/files/v${surum%.*}/$isim-$surum.tar.gz)
 
