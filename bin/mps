@@ -2583,7 +2583,8 @@ ayarlar() {
 				paket_derle "$2" ;;	
 			### mps -derlist liste = verilen liste dosyasındaki paketleri derler.Alt alta yazılı olmalıdır.
 			-derlist)
-				paket_derle_liste "$2" ;;	
+				paket_derle_liste "$2" 
+				exit 0;;	
 			### mps derle paketismi = paketismi için bağımlılık zinciri çıkarıp gerekli tüm paketleri derler,paketler ve kurar.
 			derle)
 				paket_derle_kur "$2"
