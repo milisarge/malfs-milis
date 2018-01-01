@@ -3,7 +3,7 @@
 if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
-. /root/bin/fonks.sh
+
 versiyon="1.1.7 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
@@ -1520,6 +1520,18 @@ dosya_karsilastir(){
 	else
 	   echo "degil"
 	fi
+}
+
+# renkli mesaj
+ryaz() {
+	[ -z "$1" ] && return
+	: ${color=$1}
+	shift
+	case $color in
+		0*) echo -e "\\033[${color:-38}m$@\\033[39m";;
+		*)  echo -e "\\033[1;${color:-38}m$@\\033[0;39m";;
+	esac
+	unset color
 }
 
 log_analiz(){
