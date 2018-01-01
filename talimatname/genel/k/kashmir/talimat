@@ -1,4 +1,4 @@
-# Tanım: A header-only library intended to provide functionality needed in many software projects, but not present in the C++ standard library
+# Tanım: Birçok yazılım projesinde gerekli olan, ancak C ++ standart kitaplığında bulunmayan işlevsellik sağlamayı amaçlayan salt başlık kütüphanesi
 # URL: https://github.com/Corvusoft/kashmir-dependency
 # Paketçi: milisarge
 # Gerekler:
