@@ -2,9 +2,10 @@
 # URL: https://www.kde.org/applications/internet
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-kdoctools kf5-kcmutils kf5-kio kf5-ki18n kf5-kwidgetsaddons kf5-kcoreaddons kf5-kcoreaddons kf5-kconfig kf5-kwallet kf5-kdbusaddons akonadi signon-kwallet-extension signon-plugin-oauth2 signon-ui kde5-l10n
+# Grup: kde
 
 isim=kaccounts-integration
-surum=16.08.2
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
