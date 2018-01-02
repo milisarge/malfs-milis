@@ -1,0 +1,17 @@
+# Tanım: Kullanılabilir bir konfigürasyon yönetim sistemi
+# URL: https://github.com/ungleich/cdist
+# Paketçi: Cihan Alkan
+# Gerekler: python3 python3-setuptools
+
+isim=cdist
+surum=4.7.1
+devir=1
+kaynak=(https://github.com/ungleich/cdist/releases/download/${surum}/${isim}-${surum}.tar.gz)
+
+
+derle() {
+	echo "VERSION = \"${surum}\"" > ${isim}-${surum}/cdist/version.py
+	cd ${isim}-${surum}
+	python3 setup.py build
+	python3 setup.py install --root="${PKG}"
+}
