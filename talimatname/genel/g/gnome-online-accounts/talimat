@@ -1,21 +1,29 @@
-# Tanım: GNOME service to access online accounts.
+# Tanım: GNOME için tek oturum açma çerçevesi
 # URL: http://www.gnome.org/
-# Paketçi: yasarciv67@gmail.com
-# Gerekler: gcr kerberos libgnome-keyring libnotify librest libsecret json-glib docbook-xsl gobject-introspection webkit2gtk3 telepathy-glib gtk-update-icon-cache
+# Paketçi: yasarciv67@gmail.com Cihan_Alkan
+# Gerekler: webkit2gtk json-glib libnotify rest libsecret telepathy-glib krb5 gcr intltool gobject-introspection gtk-doc vala gnome-common
+# Grup: gnome
 
 isim=gnome-online-accounts
-surum=3.22.2
+surum=3.26.2
 devir=1
-
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/${isim}/${surum%.*}-$surum.tar.xz) 
+kaynak=(https://git.gnome.org/browse/$isim/snapshot/$isim-$surum.tar.xz
+        https://github.com/GNOME/telepathy-account-widgets/archive/independent-tpaw.tar.gz)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr \
---enable-media-server \
---enable-kerberos \
---enable-lastfm \
---disable-static 
-make
-make -j1 DESTDIR=$PKG install
+  cd $isim-$surum    
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --disable-static \
+    --enable-inspector \
+    --enable-media-server \
+    --enable-kerberos \
+    --enable-lastfm \
+    --enable-todoist \
+    --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR="$PKG" install
 }
