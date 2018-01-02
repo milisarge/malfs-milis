@@ -4,14 +4,22 @@
 # Gerekler: xorg xorg-libdrm xorg-libxvmc
 
 isim=xf86-video-openchrome
-surum=0.6.0
+surum=0.6.164
 devir=1
 
-kaynak=(http://xorg.freedesktop.org/archive/individual/driver/${isim}-${surum}.tar.bz2)
+kaynak=()
 
 derle() {
-	cd $isim-$surum
-	./configure --prefix=/usr
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone  https://anongit.freedesktop.org/git/openchrome/xf86-video-openchrome.git $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+	./autogen.sh --prefix=/usr --enable-debug --enable-xv-debug
     make
 	make DESTDIR=$PKG install
 }
