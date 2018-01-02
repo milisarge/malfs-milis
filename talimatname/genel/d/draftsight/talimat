@@ -1,0 +1,57 @@
+# Tanım: DWG/DXF dosyaları için ücretsiz CAD yazılımı.
+# URL: http://www.3ds.com/products/draftsight/
+# Paketçi: Cihan Alkan
+# Gerekler: alsa-lib desktop-file-utils glib gtk2 cups mariadb xorg-libsm xorg-libx11 xorg-libxext xorg-libxrender postgresql qt5 zlib
+
+isim=draftsight
+surum=2018SP0
+devir=1
+
+kaynak=(http://dl-ak.solidworks.com/nonsecure/$isim/$surum/draftSight.deb)
+
+derle() {
+
+_pkgprefix='opt/dassault-systemes/DraftSight'
+
+  ar x ${SRC}/draftSight.deb
+  tar -xf data.tar.gz -C "${SRC}"
+
+  mkdir -p $PKG/usr/bin
+  echo "#!/bin/sh" > $PKG/usr/bin/$isim
+  echo "env vblank_mode=0 /$_pkgprefix/Linux/DraftSight" >> $PKG/usr/bin/$isim
+  chmod 755 $PKG/usr/bin/$isim
+
+  mkdir -p $PKG/$_pkgprefix
+  cd $SRC/$_pkgprefix
+  install -Dm644 Eula/english/eula.htm $PKG/usr/share/licenses/$isim/LICENSE
+
+  for size in "16x16" "32x32" "48x48" "64x64" "128x128"
+  do
+    install -Dm644 Resources/pixmaps/$size/program.png $PKG/usr/share/icons/hicolor/$size/apps/$isim.png
+    install -Dm644 Resources/pixmaps/$size/file-dwg.png $PKG/usr/share/icons/hicolor/$size/mimetypes/file-dwg.png
+    install -Dm644 Resources/pixmaps/$size/file-dxf.png $PKG/usr/share/icons/hicolor/$size/mimetypes/file-dxf.png
+    install -Dm644 Resources/pixmaps/$size/file-dwt.png $PKG/usr/share/icons/hicolor/$size/mimetypes/file-dwt.png
+  done
+
+  install -Dm644 Resources/dassault-systemes_$isim-dwg.xml $PKG/usr/share/mime/application/dassault-systemes_$isim-dwg.xml
+  install -Dm644 Resources/dassault-systemes_$isim-dxf.xml $PKG/usr/share/mime/application/dassault-systemes_$isim-dxf.xml
+  install -Dm644 Resources/dassault-systemes_$isim-dwt.xml $PKG/usr/share/mime/application/dassault-systemes_$isim-dwt.xml
+
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
+[Desktop Entry]
+Type=Application
+Name=DraftSight
+Comment=DWG/DXF dosyaları için ücretsiz CAD yazılımı.
+Exec=env vblank_mode=0 /opt/dassault-systemes/DraftSight/Linux/DraftSight %U
+Icon=draftsight
+Terminal=false
+Categories=Graphics;2DGraphics;
+
+EOF
+
+  # Install Draftsight's program files
+  cp -pr $SRC/$_pkgprefix/* $PKG/$_pkgprefix/
+
+}
