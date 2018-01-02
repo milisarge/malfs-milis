@@ -1,10 +1,11 @@
-# Tanım: Çerçeve parçaları 5
+# Tanım: Yazıcı ayarlama aracı
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules qt5 cups kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kiconthemes kf5-ki18n kf5-kcmutils kf5-kio kf5-knotifications kf5-plasma-framework kf5-kwidgetsaddons kf5-kwindowsystem
+# Grup: kde
 
 isim=print-manager
-surum=16.08.2
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
