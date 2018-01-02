@@ -3,16 +3,16 @@
 # Paketçi: Cihan Alkan
 # Gerekler: deepin-qt-dbus-factory dtkcore startup-notification qt5 librsvg
 
-
 isim=dtkwidget
 surum=2.0.5.3
 devir=1
 kaynak=(https://github.com/linuxdeepin/dtkwidget/archive/$surum.tar.gz::dtkwidget-$surum.tar.gz)
 
 derle() {
-
+  [ ! -f /usr/bin/lrelease ] && ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
   cd dtkwidget-$surum
   qmake-qt5 PREFIX=/usr DBUS_VERSION_0_4_2=YES
   make
   make INSTALL_ROOT="$PKG" install
+  [ -f /usr/bin/lrelease ] && rm /usr/bin/lrelease
 }
