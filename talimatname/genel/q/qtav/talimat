@@ -1,0 +1,17 @@
+# Tanım: Qt ve FFmpeg'e dayalı çapraz platformlu çoklu oynatma çerçevesi
+# URL: http://www.qtav.org/
+# Paketçi: Oltulu
+# Gerekler: qt5 taglib ffmpeg desktop-file-utils xorg-libxv openal uchardet
+# Grup: multimedya
+
+isim=qtav
+surum=1.12.0
+devir=1
+kaynak=(https://github.com/wang-bin/QtAV/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd QtAV-$surum
+  qmake-qt5 "CONFIG+=no_rpath recheck"
+  make
+  make INSTALL_ROOT="$PKG" install
+}
