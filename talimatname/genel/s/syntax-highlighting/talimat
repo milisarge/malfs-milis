@@ -1,0 +1,23 @@
+# Tanım: Yapılandırılmış metin ve kod için sözdizimi vurgulama motoru
+# URL: https://community.kde.org/Frameworks
+# Paketçi: CihanAlkan
+# Gerekler: kf5-extra-cmake-modules qt5 doxygen
+# Grup: kde
+
+isim=syntax-highlighting
+surum=5.41.0
+devir=1
+kaynak=(https://download.kde.org/stable/frameworks/${surum%.*}/$isim-$surum.tar.xz)
+
+derle() {
+cd $isim-$surum
+ mkdir -p build
+  cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev ..
+  make
+  make DESTDIR="${PKG}" install
+}
