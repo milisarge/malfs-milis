@@ -1,0 +1,17 @@
+# Tanım: Jabber istemci / bileşen / sunucu geliştirme için C + + kütüphaneleri
+# URL: http://camaya.net/gloox
+# Paketçi: Cihan_Alkan
+# Gerekler: gnutls libidn
+# Grup: kütüphane
+
+isim=gloox
+surum=1.0.20
+devir=1
+kaynak=(http://www6.frugalware.org/mirrors/linux/frugalware/frugalware-current/source/lib-extra/gloox/gloox-$surum.tar.bz2)
+
+derle() {
+  cd "$SRC"/gloox-$surum
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+}
