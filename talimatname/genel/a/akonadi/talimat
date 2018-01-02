@@ -1,11 +1,11 @@
 # Tanım: Kişisel bilgi yönetimi için (PIM - Personel Information Management) bir depolama servisidir.
 # URL: https://projects.kde.org/akonadi
-# Paketçi: alihan-ozturk28@hotmail.com
+# Paketçi: alihan-ozturk28@hotmail.com Cihan_Alkan
 # Gerekler: kf5-extra-cmake-modules postgresql kf5-kdesignerplugin qt5 boost kf5-kio kf5-kitemmodels mariadb
 # Grup: sistem
 
 isim=akonadi
-surum=16.08.2
+surum=17.12.0
 devir=1
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
