@@ -1,0 +1,30 @@
+# Tanım: Hafif, çapraz platformlu entegre geliştirme ortamı
+# URL: http://qt-project.org
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5 clang qbs
+
+isim=qtcreator
+surum=4.5.0
+devir=1
+
+kaynak=(http://download.qt.io/official_releases/qtcreator/${surum%.*}/${surum}/qt-creator-opensource-src-${surum}.tar.xz)
+
+derle() {
+  [[ -d build ]] && rm -r build
+  mkdir build
+
+  # fix hardcoded libexec path
+  sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qt-creator-opensource-src-${surum}/qtcreator.pri
+  # use system qbs
+  rm -r qt-creator-opensource-src-${surum}/src/shared/qbs
+
+  cd build
+
+  qmake-qt5 LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr CONFIG-=journald QMAKE_CFLAGS_ISYSTEM=-I \
+    DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES "$SRC"/qt-creator-opensource-src-${surum}/qtcreator.pro
+  make
+
+  make INSTALL_ROOT="${PKG}/usr/" install
+
+  install -Dm644 ${SRC}/qt-creator-opensource-src-${surum}/LICENSE.GPL3-EXCEPT ${PKG}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+}
