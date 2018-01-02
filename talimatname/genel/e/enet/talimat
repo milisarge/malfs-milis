@@ -1,0 +1,19 @@
+# Tanım: UDP'nin üstünde nispeten ince, basit ve sağlam bir ağ iletişimi katmanı
+# URL: hhttp://enet.bespin.org/
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: kütüphane
+
+isim=enet
+surum=1.3.13
+devir=1
+kaynak=(http://enet.bespin.org/download/${isim}-${surum}.tar.gz)
+
+derle() {
+ cd "${isim}-${surum}"
+  ./configure --prefix=/usr
+  make
+
+  make DESTDIR="${PKG}" install
+  install -Dm644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
+}
