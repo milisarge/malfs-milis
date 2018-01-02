@@ -1,0 +1,17 @@
+# Tanım: GSettings için Qml bağları
+# URL: https://launchpad.net/gsettings-qt
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5
+
+isim=gsettings-qt
+surum=0.1.20170824
+devir=1
+kaynak=(https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-qt_0.1+17.10.20170824.orig.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+  qmake-qt5 PREFIX=/usr
+  make -j1
+  make INSTALL_ROOT="$PKG" install
+  rm -rf "${PKG}"/usr/tests
+}

@@ -1,0 +1,17 @@
+# Tanım: Sıradan kullanıcılar için kullanımı kolay bir hesap makinesi
+# URL: https://github.com/linuxdeepin/deepin-calculator
+# Paketçi: Cihan Alkan
+# Gerekler: python qt5 dtkwidget
+# Grup: deepin
+
+isim=deepin-calculator
+surum=1.0.1
+devir=1
+kaynak=(https://github.com/linuxdeepin/deepin-calculator/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  qmake-qt5 PREFIX=/usr
+  make
+  make INSTALL_ROOT="${PKG}" install
+}

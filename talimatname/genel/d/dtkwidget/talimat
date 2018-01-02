@@ -1,0 +1,18 @@
+# Tanım: Deepin grafiksel kullanıcı arabirimi kütüphanesi
+# URL: https://github.com/linuxdeepin/dtkwidget
+# Paketçi: Cihan Alkan
+# Gerekler: deepin-qt-dbus-factory dtkcore startup-notification qt5 librsvg
+
+
+isim=dtkwidget
+surum=2.0.5.3
+devir=1
+kaynak=(https://github.com/linuxdeepin/dtkwidget/archive/$surum.tar.gz::dtkwidget-$surum.tar.gz)
+
+derle() {
+
+  cd dtkwidget-$surum
+  qmake-qt5 PREFIX=/usr DBUS_VERSION_0_4_2=YES
+  make
+  make INSTALL_ROOT="$PKG" install
+}

@@ -1,0 +1,17 @@
+# Tanım: Deepin Tool Kit Wm
+# URL: https://github.com/linuxdeepin/dtkwm
+# Paketçi: Cihan Alkan
+# Gerekler: qt5 dtkcore
+# Grup: deepin
+
+isim=dtkwm
+surum=2.0.5
+devir=1
+kaynak=(https://github.com/linuxdeepin/dtkwm/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd dtkwm-$surum
+  qmake-qt5 PREFIX=/usr
+  make
+  make INSTALL_ROOT="$PKG" install
+}

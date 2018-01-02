@@ -1,0 +1,16 @@
+# Tanım: DTK Çekirdek modülleri
+# URL: https://github.com/linuxdeepin/dtkcore
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5 gsettings-qt
+
+isim=dtkcore
+surum=2.0.5.3
+devir=1
+kaynak=(https://github.com/linuxdeepin/dtkcore/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  qmake-qt5 PREFIX=/usr
+  make
+  make INSTALL_ROOT="$PKG" install
+}
