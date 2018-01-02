@@ -1,10 +1,10 @@
 # Tanım: KDE takvim erişim kitaplığı
 # URL : https://projects.kde.org/kcalcore
-# Paketçi: alihan.ozturk28@hotmail.com
+# Paketçi: cihanAlkan
 # Gerekler: kf5-extra-cmake-modules python kf5-kdoctools libical kf5-kdelibs4support
 
 isim=kcalcore
-surum=16.08.2
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
