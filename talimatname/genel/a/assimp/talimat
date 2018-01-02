@@ -1,0 +1,22 @@
+# Tanım: Portatif Açık Kaynak kütüphanesi, çeşitli tanınmış 3D model formatlarını tek tip bir şekilde içe aktarır
+# URL: http://assimp.sourceforge.net/index.html
+# Paketçi: Cihan_Alkan
+# Gerekler: cmake boost
+# Grup: kütüphane
+
+isim=assimp
+surum=4.0.1
+devir=1
+
+kaynak=(https://github.com/assimp/assimp/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  mkdir build && cd build
+  cmake .. \
+     -DCMAKE_INSTALL_PREFIX=/usr \
+     -DCMAKE_BUILD_TYPE=Release \
+     -DASSIMP_BUILD_SAMPLES=OFF
+  make
+  make DESTDIR=$PKG install
+}
