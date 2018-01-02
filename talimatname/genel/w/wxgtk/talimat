@@ -4,10 +4,10 @@
 # Gerekler: gtk2 gstreamer-plugins-base xorg-mesa xorg-libsm xorg-libxxf86vm sdl
 
 isim=wxgtk
-surum=3.0.2
+surum=3.0.3.1
 devir=2
 
-kaynak=(http://downloads.sourceforge.net/wxwindows/wxWidgets-$surum.tar.bz2
+kaynak=(https://github.com/wxWidgets/wxWidgets/releases/download/v$surum/wxWidgets-$surum.tar.bz2
 	make-abicheck-non-fatal.patch)
 derle() {
 cd wxWidgets-$surum
