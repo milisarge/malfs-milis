@@ -2,9 +2,10 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 kf5-karchive kf5-kbookmarks kf5-kcodecs kf5-kconfig kf5-kconfigwidgets kf5-kcoreaddons kf5-kdbusaddons kf5-kdelibs4support kf5-kdnssd kf5-kguiaddons kf5-khtml kf5-ki18n kf5-kiconthemes kf5-kio kf5-kparts kf5-kpty kf5-kservice kf5-kxmlgui kf5-solid libjpeg-turbo exiv2 libmtp phonon-qt5 samba shared-mime-info kf5-kactivities openexr
+# Grup: kde
 
 isim=kio-extras
-surum=16.08.2
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/kio-extras-$surum.tar.xz)
