@@ -2,9 +2,10 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-kxmlgui kf5-ki18n kf5-kio kf5-kdelibs4support kf5-ktexteditor kf5-kparts dolphin
+# Grup: kde
 
 isim=dolphin-plugins
-surum=16.08.2
+surum=17.12.0
 devir=1
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
