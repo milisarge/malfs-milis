@@ -1,0 +1,23 @@
+# Tanım: Çapraz platform oluşturma aracı
+# URL: https://wiki.qt.io/Qbs
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5
+# Grup: geliştirme
+
+isim=qbs
+surum=1.10.0
+devir=1
+
+kaynak=(https://github.com/qbs/qbs/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd qbs-$surum
+  qmake-qt5 QBS_INSTALL_PREFIX=/usr \
+    QBS_LIBEXEC_INSTALL_DIR=/usr/lib/qbs \
+    QBS_RELATIVE_LIBEXEC_PATH=../lib/qbs \
+    CONFIG+=qbs_enable_project_file_updates \
+    qbs.pro
+  make
+
+  INSTALL_ROOT="$PKG" make install
+}
