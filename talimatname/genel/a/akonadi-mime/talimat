@@ -1,11 +1,11 @@
 # Tanım: Akonadi mime eklentisi
 # URL: https://projects.kde.org/kdepimlibs
-# Paketçi: alihan-ozturk8@hotmail.com
+# Paketçi: alihan-ozturk8@hotmail.com Cihan_Alkan
 # Gerekler: kf5-extra-cmake-modules boost kf5-kcodecs akonadi kf5-kdelibs4support kf5-kio kf5-kcompletion phonon-qt5 kcontacts kcalcore kmime kf5-ki18n kf5-kitemviews kf5-kconfig kf5-solid qt5 kldap kmbox grantlee-qt5
 # Grup: sistem
 
 isim=akonadi-mime
-surum=16.08.2
+surum=17.12.0
 devir=1
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
