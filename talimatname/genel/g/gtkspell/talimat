@@ -1,19 +1,25 @@
 # Tanım: GtkTextView widget'inde kelime işlemci tarzı vurgulama ve yanlış yazılmış kelimelerin değiştirilmesini sağlar. GtkTextView widget.
 # URL: http://gtkspell.sourceforge.net/
-# Paketçi: yasarciv67@gmail.com
+# Paketçi: yasarciv67@gmail.com Cihan_Alkan
 # Gerekler: gtk3 enchant
 
 isim=gtkspell
-_isim=gtkspell3
-surum=3.0.8
+surum=3.0.9
 devir=1
 
-kaynak=(http://gtkspell.sourceforge.net/download/${_name}-$surum.tar.gz)
+kaynak=(https://sourceforge.net/projects/gtkspell/files/$surum/gtkspell3-$surum.tar.xz
+        https://downloads.sourceforge.net/sourceforge/gtkspell/${isim}-2.0.16.tar.gz)
 
 derle() {
-	cd ${_name}-$surum
+	cd gtkspell3-$surum
 	./configure --prefix=/usr --disable-static
 	make
 	make DESTDIR=$PKG install
+
+  cd $isim-2.0.16
+  ./configure --prefix=/usr --disable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR=$PKG install
 }
  
