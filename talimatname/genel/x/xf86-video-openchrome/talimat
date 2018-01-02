@@ -2,16 +2,18 @@
 # URL: http://xorg.freedesktop.org
 # Paketçi: milisarge
 # Gerekler: xorg xorg-libdrm xorg-libxvmc
+# Grup: sürücü
 
 isim=xf86-video-openchrome
-surum=0.6.0
+surum=0.6.164
 devir=1
 
-kaynak=(http://xorg.freedesktop.org/archive/individual/driver/${isim}-${surum}.tar.bz2)
+kaynak=()
 
 derle() {
-	cd $isim-$surum
-	./configure --prefix=/usr
+	git clone https://anongit.freedesktop.org/git/openchrome/xf86-video-openchrome.git/
+    cd xf86-video-openchrome
+    ./autogen.sh --prefix=/usr --enable-debug --enable-xv-debug
     make
-	make DESTDIR=$PKG install
+    make DESTDIR="$PKG/" install
 }
