@@ -1,0 +1,53 @@
+# Tanım: USB / seri GPS cihazlarını desteklemek için GPS daemon ve kütüphane
+# URL: http://catb.org/gpsd/
+# Paketçi: Cihan_Alkan
+# Gerekler: python libusb bluez desktop-file-utils scons docbook-xsl
+# Grup: kütüphane
+
+isim=gpsd
+surum=3.17
+devir=1
+kaynak=(https://download.savannah.gnu.org/releases/$isim/$isim-$surum.tar.gz
+        gpsd.conf)
+
+derle() {
+
+  cd $isim-$surum
+
+  # fix python 2.7 path
+  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+    -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+    $(find . -name '*.py')
+
+  export LINKFLAGS="${LDFLAGS}"
+  scons prefix=/usr \
+        systemd=no \
+        libQgpsmm=no \
+        gpsd_group=uucp \
+        PYTHONPATH=/usr/bin/python2 \
+        sbindir=/usr/bin
+  scons build
+
+
+  # Fix man pages path (FS#21715)
+  sed -i 's|.so gps.1|.so man1/gps.1|' cgps.1 lcdgps.1 xgps.1 xgpsspeed.1
+
+  export DESTDIR="$PKG"
+  scons install
+  install -D -m755 gpsinit -t "$PKG/usr/bin"
+  chmod 755 "$PKG"/usr/bin/*
+
+  install -D -m644 "$SRC/gpsd.conf" "$PKG/etc/gpsd"
+
+  install -D -m644 "gpsd.rules" "$PKG/usr/lib/udev/rules.d/25-gpsd-usb.rules"
+
+  install -D -m644 packaging/X11/xgps.desktop \
+    "${PKG}/usr/share/applications/xgps.desktop"
+  install -D -m644 packaging/X11/xgpsspeed.desktop \
+    "${PKG}/usr/share/applications/xgpsspeed.desktop"
+  install -D -m644 packaging/X11/gpsd-logo.png \
+    "${PKG}/usr/share/gpsd/gpsd-logo.png"
+
+  install -D -m644 COPYING "$PKG/usr/share/licenses/$isim/LICENSE"
+
+}
