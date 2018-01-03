@@ -1,0 +1,16 @@
+create_user() {
+  getent group inspircd &>/dev/null || groupadd -r -g 141 inspircd >/dev/null
+  getent passwd inspircd &>/dev/null || useradd -r -u 141 -g inspircd -d /var/lib/inspircd -s /bin/false inspircd >/dev/null
+}
+
+kurkos() {
+  create_user
+  echo '==> Inspircd için bir yapılandırma dosyası oluşturmanız gerekecek'
+  echo '==>   cp /usr/share/inspircd/examples/inspircd.conf.example /etc/inspircd/inspircd.conf'
+  echo '==> Pidfile değiştirmeniz gerekecek. Bunu yapmak için aşağıdakilerinizi yapılandırmanıza ekleyebilirsiniz.'
+  echo '==>   <pid file="/var/lib/inspircd/inspircd.pid">'
+  echo '==> Mutlak yolları config dizininizde kullanmayı unutmayın; kullanıcı tabanlı bir inspircd yüklemesiyle yapacağınız göreceli yolları değil.'
+}
+
+
+kurkos

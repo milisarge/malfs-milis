@@ -1,0 +1,1 @@
+getent passwd inspircd &>/dev/null && userdel inspircd
