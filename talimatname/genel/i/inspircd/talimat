@@ -1,0 +1,47 @@
+# Tanım: Kararlı, modern ve hafif IRC arka plan
+# URL: http://www.inspircd.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: mariadb sqlite geoip gnutls libgcrypt
+# Grup: ağ
+
+isim=inspircd
+surum=2.0.24
+devir=1
+kaynak=(https://github.com/inspircd/inspircd/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd "${SRC}/inspircd-${surum}"
+
+  ./configure \
+    --enable-extras=m_geoip.cpp \
+    --enable-extras=m_ldapauth.cpp \
+    --enable-extras=m_ldapoper.cpp \
+    --enable-extras=m_mysql.cpp \
+    --enable-extras=m_regex_pcre.cpp \
+    --enable-extras=m_regex_posix.cpp \
+    --enable-extras=m_sqlite3.cpp
+
+  ./configure \
+    --uid \
+    --prefix=/usr/lib/inspircd \
+    --binary-dir=/usr/bin \
+    --module-dir=/usr/lib/inspircd/modules \
+    --config-dir=/etc/inspircd \
+    --data-dir=/var/lib/inspircd \
+    --log-dir=/var/log/inspircd \
+    --enable-gnutls \
+    --enable-openssl \
+    --enable-epoll
+
+  make
+
+  install -o141 -g141 -dm750 "${PKG}/var/log/inspircd" "${PKG}/var/lib/inspircd"
+
+  make DESTDIR="$PKG" install
+
+  mkdir -p "${PKG}"/usr/share/inspircd
+  mv "${PKG}"/etc/inspircd/examples "${PKG}"/usr/share/inspircd/examples
+
+  rm -rf "${PKG}"/usr/lib/inspircd/logs
+  rm -rf "${PKG}"/usr/lib/inspircd/data
+}
