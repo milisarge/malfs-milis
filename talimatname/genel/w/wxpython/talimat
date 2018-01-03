@@ -1,0 +1,34 @@
+# Tanım: Python için bir wxWidgets GUI araç seti
+# URL: https://www.wxpython.org
+# Paketçi: Cihan_Alkan
+# Gerekler: wxgtk28 python xorg-mesa xorg-glu
+# Gruplar: kütüphane
+
+isim=wxpython
+surum=3.0.2.0
+devir=1
+
+kaynak=(https://downloads.sourceforge.net/wxpython/wxPython-src-${surum}.tar.bz2)
+
+derle() {
+   cd wxPython-src-${surum}
+    CFLAGS="$CFLAGS -I/usr/include/wxg-2.8" ./configure \
+        --prefix=/usr \
+        --libdir=/usr/lib \
+        --includedir=/usr/include \
+        --with-gtk=2 \
+        --with-opengl \
+        --enable-unicode \
+        --enable-graphics_ctx \
+        --disable-precomp-headers \
+        --with-regex=sys \
+        --with-libpng=sys \
+        --with-libxpm=sys \
+        --with-libjpeg=sys \
+        --with-libtiff=sys
+    cd wxPython
+    python setup.py WXPORT=gtk2 UNICODE=1 build
+
+    python setup.py WXPORT=gtk2 UNICODE=1 install --root="${PKG}"
+    install -Dm644 ../docs/licence.txt "${PKG}"/usr/share/licenses/${isim}/LICENSE
+}
