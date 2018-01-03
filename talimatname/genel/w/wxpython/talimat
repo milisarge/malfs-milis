@@ -12,7 +12,7 @@ kaynak=(https://downloads.sourceforge.net/wxpython/wxPython-src-${surum}.tar.bz2
 
 derle() {
    cd wxPython-src-${surum}
-    CFLAGS="$CFLAGS -I/usr/include/wxg-2.8" ./configure \
+    CFLAGS="$CFLAGS -I/usr/include/wx-2.8" ./configure \
         --prefix=/usr \
         --libdir=/usr/lib \
         --includedir=/usr/include \
