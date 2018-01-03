@@ -1,0 +1,17 @@
+# Tanım: GNOME masaüstünüzden basit ses kaydı yapmak için kullanılan bir yardımcı program
+# URL: https://wiki.gnome.org/Apps/SoundRecorder
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk3 gjs gstreamer-plugins-good gstreamer-plugins-base intltool gobject-introspection gnome-common
+
+isim=gnome-sound-recorder
+surum=3.24.0.1
+devir=1
+kaynak=(https://git.gnome.org/browse/$isim/snapshot/$isim-$surum.tar.xz)
+
+derle() {
+  cd $isim-$surum
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+  make DESTDIR="$PKG" install
+}
