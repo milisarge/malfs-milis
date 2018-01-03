@@ -1,0 +1,46 @@
+# Tanım: Kapsamlı bir 3B katı modelleme sistemi.
+# URL: https://brlcad.org
+# Paketçi: Cihan_Alkan
+# Gerekler: xorg-libxft xorg-libxi cmake xorg-mesa
+# Grup: grafik_tasarım
+
+isim=brlcad
+surum=7.26.4
+devir=1
+kaynak=(http://downloads.sourceforge.net/sourceforge/${isim}/${isim}-${surum}.tar.bz2
+        build.patch)
+
+derle() {
+	
+    patch --quiet --strip=0 "--directory=${SRC}/${isim}-${surum}" "--input=${SRC}/build.patch"
+
+    local _pkgprefix="/opt/${isim}"
+
+    mkdir "${SRC}/build"
+    cd "${SRC}/build"
+    cmake -Wno-dev "${SRC}/${isim}-${surum}" "-DCMAKE_INSTALL_PREFIX=${_pkgprefix}" \
+        -DBRLCAD_ENABLE_COMPILER_WARNINGS=OFF -DBRLCAD_ENABLE_STRICT=OFF \
+        -DCMAKE_BUILD_TYPE=Release -DBRLCAD_FLAGS_DEBUG=OFF -DBRLCAD_BUILD_STATIC_LIBS=OFF \
+        -DBRLCAD_ENABLE_OPENGL=ON -DBRLCAD_BUNDLED_LIBS=BUNDLED -DBRLCAD_FREETYPE=OFF \
+        -DBRLCAD_PNG=OFF -DBRLCAD_REGEX=OFF -DBRLCAD_ZLIB=OFF -DBRLCAD_ENABLE_QT=OFF
+    make -j3
+    echo "export PATH=\"\$PATH:${_pkgprefix}/bin\"" >"${isim}.sh"
+    cd "${SRC}/build"
+    make "DESTDIR=${PKG}" install
+
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon=/opt/brlcad/share/doc/html/lessons/es/images/mged07_goblet_mater_complete.png
+Exec=/opt/brlcad/bin/archer
+Categories=Graphics;
+Name=BrlCAD
+Comment=Kapsamlı bir 3B katı modelleme sistemi.
+EOF
+    install -D --mode=u=rw,go=r "--target-directory=${PKG}/usr/share/licenses/${isim}" share/doc/legal/{bdl,bsd}.txt
+    install -D --mode=u=rwx,go=rx "--target-directory=${PKG}/etc/profile.d" "${isim}.sh"
+}
