@@ -18,7 +18,10 @@ betikad=${0##*/}
 kurulum_onay="evet"
 talimatname="/root/talimatname"
 anatalimatname="/sources/milis.git/talimatname"
-kokdizin="/"
+#kokdizin="/"
+if [ -z ${kokdizin+:} ]; then
+	kokdizin="/"
+fi
 VT="/var/lib/pkg/DB"
 TARIHCE_DIZIN="/var/lib/pkg/tarihce"
 LOGDIZIN="/var/log/mps"
@@ -26,7 +29,7 @@ tekrarkur="hayir"
 logdosya=/var/log/mps/mps.log
 #temel paket koruma
 if [ -z ${tpk+:} ]; then
-	lokal="evet"
+	tpk="evet"
 fi
 if [ -z ${lokal+:} ]; then
 	lokal="tr"
@@ -1818,8 +1821,8 @@ indir_talimat_paketle(){
 	
 	local _isim
 	_isim=()
-	_isim=`grep 'name=' $dosya | cut -d'=' -f 2`
-	[ ! -n "${_isim[0]}" ] && _isim=`grep 'isim=' $dosya | cut -d'=' -f 2`
+	_isim=`grep "^name=" $dosya | cut -d'=' -f 2`
+	[ ! -n "${_isim[0]}" ] && _isim=`grep "^isim=" $dosya | cut -d'=' -f 2`
 	paketisim="${_isim[0]}"
 	if [ ! -n "$paketisim" ]; then
 		ryaz 31 "paket ismi degiskeni bulunamadı!"
@@ -2815,7 +2818,8 @@ ayarlar() {
 				paket_sil_oto "$2" ;;	
 			### mps liste . = sistemde kurulu olan paket listesini verir.
 			-kl|liste)
-				ls $VT ;;
+				ls ${kokdizin}${VT} 
+				exit 0 ;;
 			### mps paketler grup_ismi = paket deposundaki paket listesini verir.(grup_ismi verilmezse tüm paketler)
 			-ptl|paketler)
 				 paket_liste "$2" "$3"
@@ -3089,6 +3093,7 @@ ayarlar() {
 					shift ;;
 			### mps -v . = mps sürüm bilgilerini gösterir.
 			-v)
+				echo $deneme
 				ryaz 33 "$betikad $versiyon  $iletisim" 
 				exit 0 ;;
 			
