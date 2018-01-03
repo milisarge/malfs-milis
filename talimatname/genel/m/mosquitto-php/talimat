@@ -1,0 +1,28 @@
+# Tanım: Açık Kaynaklı MQTT v3.1 Broker Php kütüphanesi
+# URL: https://github.com/mgdm/Mosquitto-PHP
+# Paketçi: Cihan_Alkan
+# Gerekler: mosquitto php
+# Grup: kütüphane
+
+isim=mosquitto-php
+surum=0.2
+devir=1
+
+kaynak=()
+
+derle() {
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/mgdm/Mosquitto-PHP $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+phpize
+./configure --with-mosquitto=/usr/lib/libmosquitto
+make
+make INSTALL_ROOT=$PKG install
+
+}
