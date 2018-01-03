@@ -1,0 +1,22 @@
+# Tanım: Geliştirilmiş GNU Make - tracing, hata raporlama, hata ayıklama, profil oluşturma ve daha fazlası
+# URL: https://github.com/richfitz/remake
+# Paketçi: Cihan_Alkan
+# Gerekler: guile
+# Grup: geliştirme
+
+isim=remake
+surum=4.2.1
+devir=1
+kaynak=(https://sourceforge.net/projects/bashdb/files/remake/4.2%2Bdbg-1.1/remake-4.2.1%2Bdbg1.1.tar.bz2::$isim-$surum.tar.bz2)
+
+
+derle() {
+cd $isim-4.2.1+dbg1.1
+  autoreconf -fi
+
+  ./configure --prefix=/usr
+  make
+
+  make DESTDIR=${PKG} install
+  mv "$PKG/usr/include/gnumake.h" "$PKG/usr/include/remake.h"
+}
