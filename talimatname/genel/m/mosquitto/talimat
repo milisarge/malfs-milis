@@ -1,0 +1,25 @@
+# Tanım: Açık Kaynaklı  MQTT v3.1 Broker'ı
+# URL: http://mosquitto.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: mercurial python docbook-xsl c-ares libwebsockets
+
+isim=mosquitto
+surum=1.4.14
+devir=1
+
+kaynak=(https://mosquitto.org/files/source/$isim-$surum.tar.gz)
+
+derle() {
+	cd $isim-$surum
+
+	# FIX upstream by making SBINDIR=foo or use CMAKE
+	sed -i 's|/sbin|/bin|g' src/Makefile
+	make WITH_WEBSOCKETS=yes
+
+	make prefix=/usr DESTDIR="$PKG" install
+
+	# Shipped in git.
+	install -Dm644 LICENSE.txt "$PKG/usr/share/licenses/$isim/LICENSE"
+
+	mv "$PKG/etc/$isim/$isim.conf.example" "$PKG/etc/$isim/$isim.conf"
+}
