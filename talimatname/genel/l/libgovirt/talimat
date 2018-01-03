@@ -1,7 +1,7 @@
 # Tanım: OVirt REST API'sına erişmek için GObject tabanlı kitaplık
 # URL: https://github.com/MBach/Miam-Player
 # Paketçi: Cihan Alkan
-# Gerekler: librest
+# Gerekler: librest gnome-common
 # Grup: kütüphane
 
 isim=libgovirt
