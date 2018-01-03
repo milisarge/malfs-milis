@@ -1,0 +1,23 @@
+# Tanım: Xfce4 paneli için bir hesap makinesi eklentisidir.
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-calculator-plugin
+# Paketçi: Cihan_Alkan
+# Gerekler: xfce4-panel
+# Grup: xfce4
+
+isim=xfce4-calculator-plugin
+surum=0.6.0
+devir=1
+kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/0.6/$isim-$surum.tar.bz2)
+
+derle() {
+cd $isim-$surum
+    ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
+make
+make DESTDIR=$PKG install
+}
