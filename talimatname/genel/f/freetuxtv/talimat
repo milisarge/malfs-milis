@@ -1,0 +1,17 @@
+# Tanım: WebTV vlc player to watch tv/radio playlists on the internet
+# URL: https://github.com/freetuxtv/freetuxtv
+# Paketçi: Cihan Alkan
+# Gerekler: vlc gtk3 sqlite curl libnotify intltool
+
+isim=freetuxtv
+surum=0.6.8
+devir=1
+kaynak=(https://github.com/$isim/$isim/releases/download/$isim-$surum/$isim-$surum.tar.gz)
+
+
+derle() {
+  cd $isim-$surum
+  ./configure --prefix=/usr --with-gtk=3.0
+  make
+  make DESTDIR="$PKG" install
+}
