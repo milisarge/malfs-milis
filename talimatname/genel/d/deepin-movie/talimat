@@ -1,0 +1,20 @@
+# Tanım: QtAV temelli film oynatıcı
+# URL: https://github.com/linuxdeepin/deepin-movie-reborn
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5 cmake mpv ffmpegthumbnailer dtkwidget dtkcore
+# Grup: deepin
+
+isim=deepin-movie
+surum=3.2.0
+devir=1
+
+kaynak=(https://github.com/linuxdeepin/deepin-movie-reborn/archive/$surum.tar.gz::$isim-$surum.tar.gz
+		FindPkgConfig.cmake)
+
+derle() {
+	[ `find /usr/share -name FindPkgConfig.cmake` ] && cp $SRC/FindPkgConfig.cmake $(find /usr/share -name FindPkgConfig.cmake) 
+	cd deepin-movie-reborn-$surum
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_DXCB=on -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release .
+	make 
+	make DESTDIR="$PKG" install
+}
