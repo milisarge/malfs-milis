@@ -1,7 +1,7 @@
 # Tanım: Python için bir wxWidgets GUI araç seti
 # URL: https://www.wxpython.org
 # Paketçi: Cihan_Alkan
-# Gerekler: wxgtk28 python xorg-mesa xorg-glu
+# Gerekler: wxgtk libnotify python xorg-mesa xorg-glu
 # Gruplar: kütüphane
 
 isim=wxpython
@@ -11,24 +11,44 @@ devir=1
 kaynak=(https://downloads.sourceforge.net/wxpython/wxPython-src-${surum}.tar.bz2)
 
 derle() {
-   cd wxPython-src-${surum}
-    CFLAGS="$CFLAGS -I/usr/include/wx-2.8" ./configure \
-        --prefix=/usr \
-        --libdir=/usr/lib \
-        --includedir=/usr/include \
-        --with-gtk=2 \
-        --with-opengl \
-        --enable-unicode \
-        --enable-graphics_ctx \
-        --disable-precomp-headers \
-        --with-regex=sys \
-        --with-libpng=sys \
-        --with-libxpm=sys \
-        --with-libjpeg=sys \
-        --with-libtiff=sys
-    cd wxPython
-    python setup.py WXPORT=gtk2 UNICODE=1 build
+	cd wxPython-src-${surum}
+	CFLAGS="$CFLAGS `wx-config --cflags --libs`" \
+	LDFLAGS="`wx-config --libs` $LDFLAGS" \
+	./configure \
+	--prefix=/usr \
+	--libdir=/usr/lib \
+	--includedir=/usr/include \
+	--with-gtk=2 \
+	--with-opengl \
+	--enable-unicode \
+	--enable-graphics_ctx \
+	--disable-precomp-headers \
+	--with-regex=sys \
+	--with-libpng=sys \
+	--with-libxpm=sys \
+	--with-libjpeg=sys \
+	--with-libtiff=sys
 
-    python setup.py WXPORT=gtk2 UNICODE=1 install --root="${PKG}"
-    install -Dm644 ../docs/licence.txt "${PKG}"/usr/share/licenses/${isim}/LICENSE
+	cd wxPython
+	python setup.py \
+	WXPORT=gtk2 \
+	UNICODE=1 \
+	EP_ADD_OPTS=1 \
+	EP_FULL_VER=0 \
+	NO_SCRIPTS=1 \
+	WX_CONFIG="wx-config  --no_rpath" \
+	build_ext --rpath=/usr/lib \
+	build
+
+	python setup.py \
+	WXPORT=gtk2 \
+	UNICODE=1 \
+	EP_ADD_OPTS=1 \
+	EP_FULL_VER=0 \
+	NO_SCRIPTS=1 \
+	WX_CONFIG="wx-config  --no_rpath --prefix=$PKG/usr/bin/" \
+	SYS_WX_CONFIG="wx-config --enable-unicode" \
+	build_ext --rpath=/usr/lib \
+	install --root=$PKG
+	install -Dm644 ../docs/licence.txt "${PKG}"/usr/share/licenses/${isim}/LICENSE
 }
