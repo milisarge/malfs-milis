@@ -1,22 +1,20 @@
 # Tanım: YouTube.com'dan ve birkaç başka siteden videolar indirmek için küçük bir program
 # URL: http://rg3.github.io/youtube-dl/
 # Paketçi: Cihan_Alkan
-# Gerekler: python3 python3-setuptools
+# Gerekler: python python-setuptools
 # Grup: medya
 
 isim=youtube-dl
 surum=2017.12.31
 devir=1
-kaynak=(http://youtube-dl.org/downloads/${surum}/${isim}-${surum}.tar.gz
+kaynak=(https://github.com/rg3/youtube-dl/archive/$surum.tar.gz::${isim}-${surum}.tar.gz
         https://github.com/rst0git/youtube-dl-mp3/raw/master/youtube-dl-mp3)
 
 derle() {
-cd youtube-dl
-  sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
- python3 setup.py install --root="${PKG}/" --optimize=1
-  mv "${PKG}/usr/share/bash-completion/completions/youtube-dl.bash-completion" \
-     "${PKG}/usr/share/bash-completion/completions/youtube-dl"
-  install -Dm644 youtube-dl.zsh "${PKG}/usr/share/zsh/site-functions/_youtube-dl"
-  install -Dm644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
+	cd youtube-dl-$surum
+	sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
+	sed -i 's|etc/fish/completions|share/fish/completions|' setup.py
+	python setup.py install --root="${PKG}/" --optimize=1
 	install -Dm755 ../youtube-dl-mp3 "${PKG}/usr/bin/youtube-dl-mp3"
+	rm -rf $PKG/usr/share
 }
