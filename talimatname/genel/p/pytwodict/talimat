@@ -1,0 +1,18 @@
+# Tanım: Python için basit iki yönlü sıralı sözlük
+# URL: https://github.com/MrS0m30n3/twodict
+# Paketçi: Cihan_Alkan
+# Gerekler: python python3 python-setuptools python3-setuptools
+# Gruplar: kütüphane
+
+isim=pytwodict
+surum=1.2
+devir=1
+
+kaynak=(https://github.com/MrS0m30n3/twodict/archive/1.2.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+cd twodict-$surum
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
+  python setup.py install --root="$PKG" --optimize=1
+  python3 setup.py install --root="$PKG" --optimize=1
+}
