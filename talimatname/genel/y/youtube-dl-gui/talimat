@@ -8,10 +8,12 @@ isim=youtube-dl-gui
 surum=0.4
 devir=1
 kaynak=(https://github.com/MrS0m30n3/youtube-dl-gui/archive/0.4.tar.gz::$isim-$surum.tar.gz
-        youtube-dl-gui.desktop)
+        youtube-dl-gui.desktop
+        youtube_dl_gui.po)
 
 derle() {
 	cd $isim-$surum
+	install -Dm644 ../youtube_dl_gui.po $SRC/$isim-$surum/youtube_dl_gui/locale/tr_TR/LC_MESSAGES/youtube_dl_gui.po
 	install -Dm644 ../youtube-dl-gui.desktop "$PKG/usr/share/applications/youtube-dl-gui.desktop"
 	install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
 	python setup.py install --root="$PKG" --optimize=1
