@@ -1,0 +1,47 @@
+# Tanım: MP3'ler, OGG vorbis dosyaları, filmler ve diğer medya formatları için bir akış sunucusu.
+# URL: http://www.gnu.org/software/gnump3d/
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: medya
+
+isim=gnump3d
+surum=3.0
+devir=1
+kaynak=(https://savannah.gnu.org/download/$isim/$isim-$surum.tar.bz2
+        gnump3d-proxy.patch)
+
+derle() {
+    cd "$SRC"/$isim-$surum
+
+    patch -p1 <"$SRC"/gnump3d-proxy.patch
+
+    install -d "$PKG"/var/log/gnump3d
+    install -d "$PKG"/var/cache/gnump3d/serving
+
+    install -d "$PKG"/usr/share/perl5/vendor_perl/gnump3d/plugins
+    install -d "$PKG"/usr/share/perl5/vendor_perl/gnump3d/lang
+    install -m 644 lib/gnump3d/*.pm         "$PKG"/usr/share/perl5/vendor_perl/gnump3d
+    install -m 644 lib/gnump3d/plugins/*.pm "$PKG"/usr/share/perl5/vendor_perl/gnump3d/plugins
+    install -m 644 lib/gnump3d/lang/*.pm    "$PKG"/usr/share/perl5/vendor_perl/gnump3d/lang
+
+    install -d "$PKG"/usr/bin
+    install -m 755 bin/gnump3d2 "$PKG"/usr/bin/gnump3d
+    install -m 755 bin/gnump3d-top bin/gnump3d-index "$PKG"/usr/bin
+
+    install -d "$PKG"/usr/share/man/man1
+    install -m 644 man/gnump3d-top.1 man/gnump3d-index.1 man/gnump3d.1 man/gnump3d.conf.1 "$PKG"/usr/share/man/man1
+
+    install -d "$PKG"/usr/share/gnump3d
+    cp -R templates/* "$PKG"/usr/share/gnump3d
+    chmod -R a+r "$PKG"/usr/share/gnump3d
+    chmod +rx "$PKG"/usr/share/gnump3d/*/
+
+    sed -i "s|PLUGINDIR|/usr/share/perl5/vendor_perl|g" etc/gnump3d.conf
+    install -d "$PKG"/etc/gnump3d
+    install -m 644 etc/gnump3d.conf etc/mime.types "$PKG"/etc/gnump3d
+    install -m 644 etc/gnump3d.conf etc/file.types "$PKG"/etc/gnump3d
+
+    mkdir -p "$PKG"/srv/mp3
+    sed -i "s|/home/mp3|/srv/mp3|" "$PKG"/etc/gnump3d/gnump3d.conf
+
+}
