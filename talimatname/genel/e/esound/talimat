@@ -1,0 +1,28 @@
+# Tanım: Aydınlanmış Ses Daemonu
+# URL: http://www.tux.org/~ricdude/EsounD.html
+# Paketçi: Cihan_Alkan
+# Gerekler: audiofile
+
+isim=esound
+surum=0.2.41
+devir=1
+kaynak=(http://ftp.gnome.org/pub/GNOME/sources/$isim/${surum%.*}/$isim-$surum.tar.bz2)
+
+derle() {
+  cd "$SRC/$isim-$surum"
+
+  # alsa drain fix
+  sed -i 's/drain/drop/' audio_alsa09.c
+
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --disable-static \
+              --with-audiofile \
+              --without-libwrap \
+              --enable-alsa \
+              --disable-artstest
+  make CFLAGS="$CFLAGS -lm"
+
+  make DESTDIR="$PKG/" install
+}
