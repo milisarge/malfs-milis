@@ -1,7 +1,7 @@
 # Tanım: Kararlı, modern ve hafif IRC arka plan
 # URL: http://www.inspircd.org/
 # Paketçi: Cihan_Alkan
-# Gerekler: mariadb sqlite geoip gnutls libgcrypt
+# Gerekler: mariadb sqlite geoip gnutls libgcrypt openldap
 # Grup: ağ
 
 isim=inspircd
