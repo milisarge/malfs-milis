@@ -1,0 +1,18 @@
+# Tanım: Ücretsiz OMR Yazılımı
+# URL: https://sourceforge.net/projects/formscanner
+# Paketçi: Cihan_Alkan
+# Gerekler: openjdk
+
+isim=formscanner
+surum=1.1.4
+devir=1
+
+kaynak=(https://sourceforge.net/projects/formscanner/files/1.1.4/formscanner-1.1.4.deb)
+
+derle() {
+  ar x ${SRC}/formscanner-${surum}.deb
+  tar -xf data.tar.xz -C "${SRC}"
+  install -dm755 "${PKG}"/usr
+  mv "${SRC}"/usr/* "${PKG}"/usr
+
+}
