@@ -1,0 +1,21 @@
+# Tanım: Websocket istemcileri ve sunucuları için C kütüphanesi
+# URL: https://libwebsockets.org
+# Paketçi: Cihan Alkan
+# Gerekler: cmake
+# Grup: kütüphane
+
+isim=libwebsockets
+surum=2.4.1
+devir=1
+kaynak=(https://github.com/warmcat/libwebsockets/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd "$isim-$surum"
+  mkdir build && cd build
+  # http2 support -DLWS_WITH_HTTP2=1
+  cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+  make
+  make DESTDIR="${PKG}" install
+  cd ..
+  install -Dm644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
+}
