@@ -1,0 +1,20 @@
+# Tanım: Minimalist UI ile Android MTP istemcisi
+# URL: https://github.com/whoozle/android-file-transfer-linux
+# Peketçi: Cihan_Alkan
+# Gerekler: cmake qt5 fuse libxkbcommon hicolor-icon-theme
+
+isim=android-file-transfer
+surum=3.2
+devir=1
+kaynak=(https://github.com/whoozle/android-file-transfer-linux/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+  cd android-file-transfer-linux-$surum
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+
+  make
+
+  make DESTDIR="${PKG}" install
+
+}
