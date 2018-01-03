@@ -15,7 +15,7 @@ derle() {
 	cd $isim-$surum
 	# ed ile
 	#printf '%s\n' '/LOCAL_NAMES/a' "        ('tr_TR', 'Turkish')," . w | ed -s optionsframe.py
-	sed -e '/LOCALE_NAMES/a \' -e "        ('tr_TR', 'Turkish')," youtube_dl_gui//optionsframe.py
+	sed -i -e '/LOCALE_NAMES/a \' -e "        ('tr_TR', 'Turkish')," youtube_dl_gui//optionsframe.py
 	install -Dm644 ../youtube_dl_gui.po $SRC/$isim-$surum/youtube_dl_gui/locale/tr_TR/LC_MESSAGES/youtube_dl_gui.po
 	install -Dm644 ../youtube-dl-gui.desktop "$PKG/usr/share/applications/youtube-dl-gui.desktop"
 	install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
