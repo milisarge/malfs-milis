@@ -1,11 +1,11 @@
-# Tanım: Opera'nın en iyi özelliklerini taşıyan Linux'a özel tarayıcı
+# Tanım: Fltk tabanlı web tarayıcısı
 # URL: http://fifth-browser.sourceforge.net/
 # Paketçi: milisarge
 # Gerekler: webkitfltk urlmatch physfs desktop-file-utils
 
 isim=fifth
 surum=git
-devir=1
+devir=2
 kaynak=()
 
 derle() {
