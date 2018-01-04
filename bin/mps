@@ -1937,8 +1937,8 @@ git_guncelle() {
 	#ikili dosyaların /usr/bin altına kısayol atılması
 	for i in /root/bin/*; do
 		j=`basename $i`
-		if [ ! -f /usr/bin/$j ];then
-			ln -s /root/bin/$j /usr/bin/$j
+		if [ ! -L /usr/bin/$j ];then
+			ln -sf /root/bin/$j /usr/bin/$j
 		fi
 	done
 	ryaz 32 "$_yerel_esitlendi"
