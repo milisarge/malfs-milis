@@ -13,8 +13,8 @@ kaynak=(https://sourceforge.net/projects/fifth-browser/files/v0.5/${isim}-${suru
 
 derle() {
 	cd "${isim}-${surum}"
-	#patch -p1 -i $SRC/6db7be57eb6f633d63fb90397adb21c6247ab410.patch
-    #patch -p1 -i $SRC/83626b77fc7d8fae005fd4575dd85dbb0f243081.patch
+	patch -p1 -i $SRC/6db7be57eb6f633d63fb90397adb21c6247ab410.patch
+    patch -p1 -i $SRC/83626b77fc7d8fae005fd4575dd85dbb0f243081.patch
 	make -j1 -C Source/bmalloc/bmalloc
 	make -j1 -C Source/WTF/wtf
 	make -j1 -C Source/JavaScriptCore gen
