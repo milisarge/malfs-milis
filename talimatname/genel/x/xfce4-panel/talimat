@@ -1,27 +1,27 @@
-# Tanım: Bu paket Xfce4 Paneli'ni içerir.
-# URL: http://www.xfce.org/projects/xfce4-panel/
-# Paketçi: milisarge
-# Gerekler: exo xfce4-garcon libwnck xfce4-libui gtk3 hicolor-icon-theme vim
+# Tanım: Xfconf, Xfce için yapılandırma depolama sistemidir.
+# URL: http://wiki.xfce.org/releng/4.6/general-info
+# Paketçi: milisarge@gmail.com
+# Gerekler: xfce4-libutil dbus-glib perl-glib 
+# Grup: xfce4
 
-isim=xfce4-panel
-surum=4.12.1
+_isim=xfconf
+
+isim=xfce4-conf
+surum=4.13.4
 devir=1
 
-kaynak=(http://archive.xfce.org/src/xfce/$isim/${surum%.*}/$isim-$surum.tar.bz2)
+kaynak=(https://git.xfce.org/xfce/xfconf/snapshot/xfconf-4.13.4.tar.gz)
 
 derle() {
-cd $isim-$surum
-./configure \
-    --prefix=/usr \
+cd ${_isim}-$surum
+./autogen.sh \
+	--prefix=/usr \
     --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
+    --libexecdir=/usr/lib/xfce4 \
     --localstatedir=/var \
     --disable-static \
-    --enable-gio-unix \
-    --enable-gtk-doc \
-    --enable-gtk3 \
     --disable-debug
-make
-make DESTDIR=$PKG install
-rm -r $PKG/usr/share/gtk-doc
+	make
+	make DESTDIR=$PKG install
+find $PKG  -name perllocal.pod -exec rm {} \;
 }
