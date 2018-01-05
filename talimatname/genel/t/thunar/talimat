@@ -2,17 +2,18 @@
 # URL: http://thunar.xfce.org
 # Paketçi: milisarge
 # Gerekler: libnotify libexif exo xfce4-libui xfce4-panel desktop-file-utils
+# Grup: xfce4
 
 isim=thunar
-surum=1.6.12
+surum=1.7.0
 devir=1
 
-kaynak=(http://archive.xfce.org/src/xfce/thunar/${surum%.*}/Thunar-$surum.tar.bz2
+kaynak=(https://git.xfce.org/xfce/thunar/snapshot/thunar-1.7.0.tar.gz
 		no-root-warning.patch)
 derle() {
-	cd Thunar-$surum
-	patch $SRC/Thunar-$surum/thunar/thunar-window.c $SRC/no-root-warning.patch
-	./configure \
+	cd $isim-$surum
+	patch $SRC/$isim-$surum/thunar/thunar-window.c $SRC/no-root-warning.patch
+	./autogen.sh \
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--libexecdir=/usr/lib \
