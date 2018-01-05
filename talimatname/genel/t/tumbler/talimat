@@ -2,18 +2,18 @@
 # URL: http://www.ohloh.net/p/tumbler-xfce
 # Paketçi: milisarge
 # Gerekler: libjpeg-turbo libpng freetype gdk-pixbuf dbus-glib intltool gstreamer 
+# Grup: xfce4
 
 isim=tumbler
-surum=0.1.31
-devir=2
+surum=0.2.0
+devir=1
 
-kaynak=(http://archive.xfce.org/src/xfce/$isim/${surum%.*}/$isim-$surum.tar.bz2)
+kaynak=(https://git.xfce.org/xfce/tumbler/snapshot/tumbler-0.2.0.tar.gz)
 
 derle() {
 cd $isim-$surum
-./configure --prefix=/usr \
+./autogen.sh --prefix=/usr \
 --sysconfdir=/etc
 make
 make DESTDIR=$PKG install
-rm -r $PKG/usr/share/gtk-doc
 }
