@@ -2,18 +2,19 @@
 # URL: http://www.xfce.org/projects/libraries/
 # Paketçi: milisarge
 # Gerekler: gtk2 gtk3 startup-notification xfce4-conf
+# Grup: xfce4
 
 _isim=libxfce4ui
 
 isim=xfce4-libui
-surum=4.12.1
-devir=2
+surum=4.13.4
+devir=1
 
-kaynak=(http://archive.xfce.org/src/xfce/${_name}/${surum%.*}-$surum.tar.bz2)
+kaynak=(https://git.xfce.org/xfce/$_isim/snapshot/$_isim-4.13.4.tar.gz)
 
 derle() {
-cd ${_name}-$surum
-	 ./configure \
+cd ${_isim}-$surum
+	 ./autogen.sh \
 	 --prefix=/usr \
 	 --sysconfdir=/etc \
 	 --libexecdir=/usr/lib \
@@ -22,7 +23,6 @@ cd ${_name}-$surum
      --disable-debug
 	make
 	make DESTDIR=$PKG install
-	rm -r $PKG/usr/share/gtk-doc
 for i in usr/bin/xfce4-about usr/share/applications/xfce4-about.desktop usr/share/icons/hicolor/48x48/apps/xfce4-logo.png
 do rm $PKG/$i
 done
