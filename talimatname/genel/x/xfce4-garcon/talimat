@@ -2,18 +2,19 @@
 # URL: http://wiki.xfce.org/releng/4.6/general-info
 # Paketçi: milisarge
 # Gerekler: gtk3 xfce4-libui xfce4-libutil 
+# Grup: xfce4
 
 _isim=garcon
 
 isim=xfce4-garcon
-surum=0.5.0
+surum=0.6.1
 devir=2
 
-kaynak=(http://archive.xfce.org/src/xfce/garcon/0.5/${_name}-$surum.tar.bz2)
+kaynak=(https://git.xfce.org/xfce/garcon/snapshot/garcon-0.6.1.tar.gz)
 		
 derle() {
-cd ${_name}-$surum
-./configure \
+cd ${_isim}-$surum
+./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
@@ -21,5 +22,4 @@ cd ${_name}-$surum
     --disable-debug
 make
 make DESTDIR=$PKG install
-rm -r $PKG/usr/share/gtk-doc
 }
