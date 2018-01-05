@@ -2,18 +2,19 @@
 # URL: http://wiki.xfce.org/releng/4.10/
 # Paketçi: milisarge
 # Gerekler: exo xfce4-libui xfce4-garcon xorg-libxklavier xorg-libxkbfile libcanberra gnome-icon-theme
+# Grup: xfce4
 
 isim=xfce4-settings
-surum=4.12.0
-devir=3
+surum=4.13.1
+devir=1
 
-kaynak=(http://archive.xfce.org/src/xfce/${isim}/${surum%.*}/$isim-$surum.tar.bz2 
+kaynak=(https://git.xfce.org/xfce/xfce4-settings/snapshot/xfce4-settings-4.13.1.tar.gz 
 default-xsettings-xml.patch)
 
 derle() {
 cd $isim-$surum
-patch -Np1 -i $SRC/default-xsettings-xml.patch
-./configure \
+# patch -Np1 -i $SRC/default-xsettings-xml.patch
+./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
