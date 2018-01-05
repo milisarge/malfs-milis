@@ -4,7 +4,7 @@
 # Gerekler:
 
 isim=fakeroot
-surum=1.20.2
+surum=1.22
 devir=1
 kaynak=(http://ftp.debian.org/debian/pool/main/f/$isim/${isim}_${surum}.orig.tar.bz2)
 
