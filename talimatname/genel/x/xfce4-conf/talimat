@@ -2,18 +2,19 @@
 # URL: http://wiki.xfce.org/releng/4.6/general-info
 # Paketçi: milisarge@gmail.com
 # Gerekler: xfce4-libutil dbus-glib perl-glib 
+# Grup: xfce4
 
 _isim=xfconf
 
 isim=xfce4-conf
-surum=4.12.0
+surum=4.13.4
 devir=1
 
-kaynak=(http://archive.xfce.org/xfce/${surum%.*}-$surum.tar.bz2)
+kaynak=(https://git.xfce.org/xfce/xfconf/snapshot/xfconf-4.13.4.tar.gz)
 
 derle() {
-cd ${_name}-$surum
-./configure \
+cd ${_isim}-$surum
+./autogen.sh \
 	--prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib/xfce4 \
@@ -22,6 +23,5 @@ cd ${_name}-$surum
     --disable-debug
 	make
 	make DESTDIR=$PKG install
-	rm -r $PKG/usr/share/gtk-doc
 find $PKG  -name perllocal.pod -exec rm {} \;
 }
