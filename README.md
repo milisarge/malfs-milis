@@ -8,7 +8,7 @@ Mps paket yöneticisi performansı ve sorunsuz paket derleme-kurup-kaldırma-gü
 Bash betik dilinde yazılmıştır,bu sayede direk linux komutlarıyla paket sistemi daha etkileşimli bir şekilde yönetilmektedir.
 Milis işletim sisteminin paketleri bir lzma algoritması olan lzip yöntemiyle sıkıştırılmaktadır.Uzantı olarak mps.lz şeklindedirler.
 Milis sisteminde ayrıca talimatnameye dayalı derleme sistemi kullanılmaktadır.
-Her paket için bir talimat dosyası vardır,bu talimat dosyası bir paketin nasıl derlenip nasıl paket haline getireleciğini yazar.
+Her paket için bir talimat dosyası vardır,bu talimat dosyası bir paketin nasıl derlenip nasıl paket haline getirileceğini yazar.
 Talimat dosyaları da bash betik dilindedir.Talimatlar mps tarafından kullanılarak paket üretimi sağlanmaktadır.
 Milis işletim sistemi son güncel sürümleri dikkate alarak paket üretmektedir,yalnız sürekli güncellikten ziyade kararlı güncellik benimsenmektedir.
 Milis başta ülkemizin işletim sistemi ihtiyaçlarını dikkate almayı hedeflemektedir.
