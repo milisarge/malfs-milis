@@ -1,0 +1,16 @@
+# Tanım: Wget python bağlayıcı kütüphane
+# URL: http://bitbucket.org/techtonik/e19779610914
+# Paketçi: Cihan_Alkan
+# Gerekler: python python-setuptools python3 python3-setuptools
+# Grup: kütüphane
+
+isim=pywget
+surum=3.2
+devir=1
+kaynak=(https://bitbucket.org/techtonik/python-wget/get/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd techtonik-python-wget-e19779610914
+  python setup.py install --root="$PKG/" --optimize=1
+  python3 setup.py install --root="$PKG/" --optimize=1
+}
