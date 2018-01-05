@@ -1,0 +1,21 @@
+# Tanım: Peony dosya yöneticisi
+# URL: https://github.com/ukui/peony
+# Paketçi: Cihan_Alkan
+# Gerekler: mate-desktop pango mate-common libnotify shared-mime-info
+# Grup: ukui
+
+isim=peony
+surum=1.0.4
+devir=1
+
+kaynak=(https://github.com/ukui/peony/archive/v1.0.4.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+        cd $isim-$surum
+    ./autogen.sh
+    ./configure \
+    --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --libexecdir=/usr/lib/$isim
+    make
+    make DESTDIR=$PKG install
+}
