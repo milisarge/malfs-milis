@@ -1,0 +1,179 @@
+From 82cde54d45da469cc8aa762193318919d88a7eef Mon Sep 17 00:00:00 2001
+From: Szabolcs Nagy <nsz@port70.net>
+Date: Sat, 20 Aug 2016 17:02:31 +0000
+Subject: [PATCH 5/8] libatomic-test-fix
+
+---
+ libatomic/configure                               |  5 +++-
+ libatomic/configure.ac                            |  1 +
+ libatomic/testsuite/Makefile.am                   |  2 ++
+ libatomic/testsuite/Makefile.in                   | 33 +++++++++++++----------
+ libatomic/testsuite/lib/libatomic.exp             |  5 ++++
+ libatomic/testsuite/libatomic-test-support.exp.in |  1 +
+ 6 files changed, 32 insertions(+), 15 deletions(-)
+ create mode 100644 libatomic/testsuite/libatomic-test-support.exp.in
+
+diff --git a/libatomic/configure b/libatomic/configure
+index 8526abf..d185e9d 100755
+--- a/libatomic/configure
++++ b/libatomic/configure
+@@ -9083,7 +9083,7 @@ _LT_EOF
+ 	if $NM -V 2>&1 | $GREP 'GNU' > /dev/null; then
+ 	  export_symbols_cmds='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
+ 	else
+-	  export_symbols_cmds='$NM -BCpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
++	  export_symbols_cmds='$NM -BCpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "L")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
+ 	fi
+ 	aix_use_runtimelinking=no
+ 
+@@ -15264,6 +15264,8 @@ fi
+ 
+ ac_config_files="$ac_config_files Makefile testsuite/Makefile"
+ 
++ac_config_files="$ac_config_files testsuite/libatomic-test-support.exp"
++
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure
+ # tests run on this system so they can be shared between configure
+@@ -16312,6 +16314,7 @@ do
+     "gstdint.h") CONFIG_COMMANDS="$CONFIG_COMMANDS gstdint.h" ;;
+     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+     "testsuite/Makefile") CONFIG_FILES="$CONFIG_FILES testsuite/Makefile" ;;
++    "testsuite/libatomic-test-support.exp") CONFIG_FILES="$CONFIG_FILES testsuite/libatomic-test-support.exp" ;;
+ 
+   *) as_fn_error "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
+   esac
+diff --git a/libatomic/configure.ac b/libatomic/configure.ac
+index cf40ea1..7ed2bcc 100644
+--- a/libatomic/configure.ac
++++ b/libatomic/configure.ac
+@@ -261,4 +261,5 @@ else
+ fi
+ 
+ AC_CONFIG_FILES(Makefile testsuite/Makefile)
++AC_CONFIG_FILES(testsuite/libatomic-test-support.exp)
+ AC_OUTPUT
+diff --git a/libatomic/testsuite/Makefile.am b/libatomic/testsuite/Makefile.am
+index 561b7e2..6c5e5fc 100644
+--- a/libatomic/testsuite/Makefile.am
++++ b/libatomic/testsuite/Makefile.am
+@@ -11,3 +11,5 @@ EXPECT = $(shell if test -f $(top_builddir)/../expect/expect; then \
+ _RUNTEST = $(shell if test -f $(top_srcdir)/../dejagnu/runtest; then \
+ 	     echo $(top_srcdir)/../dejagnu/runtest; else echo runtest; fi)
+ RUNTEST = "$(_RUNTEST) $(AM_RUNTESTFLAGS)"
++
++all-local: libatomic-test-support.exp
+diff --git a/libatomic/testsuite/Makefile.in b/libatomic/testsuite/Makefile.in
+index 34f83e0..16f28fa 100644
+--- a/libatomic/testsuite/Makefile.in
++++ b/libatomic/testsuite/Makefile.in
+@@ -52,7 +52,8 @@ build_triplet = @build@
+ host_triplet = @host@
+ target_triplet = @target@
+ subdir = testsuite
+-DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am
++DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
++	$(srcdir)/libatomic-test-support.exp.in
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/../config/acx.m4 \
+ 	$(top_srcdir)/../config/depstand.m4 \
+@@ -69,7 +70,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
+ 	$(ACLOCAL_M4)
+ mkinstalldirs = $(SHELL) $(top_srcdir)/../mkinstalldirs
+ CONFIG_HEADER = $(top_builddir)/auto-config.h
+-CONFIG_CLEAN_FILES =
++CONFIG_CLEAN_FILES = libatomic-test-support.exp
+ CONFIG_CLEAN_VPATH_FILES =
+ SOURCES =
+ am__can_run_installinfo = \
+@@ -255,6 +256,8 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+ 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
+ $(am__aclocal_m4_deps):
++libatomic-test-support.exp: $(top_builddir)/config.status $(srcdir)/libatomic-test-support.exp.in
++	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
+ 
+ mostlyclean-libtool:
+ 	-rm -f *.lo
+@@ -315,7 +318,7 @@ distclean-DEJAGNU:
+ check-am: all-am
+ 	$(MAKE) $(AM_MAKEFLAGS) check-DEJAGNU
+ check: check-am
+-all-am: Makefile
++all-am: Makefile all-local
+ installdirs:
+ install: install-am
+ install-exec: install-exec-am
+@@ -415,19 +418,21 @@ uninstall-am:
+ 
+ .MAKE: check-am install-am install-strip
+ 
+-.PHONY: all all-am check check-DEJAGNU check-am clean clean-generic \
+-	clean-libtool distclean distclean-DEJAGNU distclean-generic \
+-	distclean-libtool dvi dvi-am html html-am info info-am install \
+-	install-am install-data install-data-am install-dvi \
+-	install-dvi-am install-exec install-exec-am install-html \
+-	install-html-am install-info install-info-am install-man \
+-	install-pdf install-pdf-am install-ps install-ps-am \
+-	install-strip installcheck installcheck-am installdirs \
+-	maintainer-clean maintainer-clean-generic mostlyclean \
+-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+-	uninstall uninstall-am
++.PHONY: all all-am all-local check check-DEJAGNU check-am clean \
++	clean-generic clean-libtool distclean distclean-DEJAGNU \
++	distclean-generic distclean-libtool dvi dvi-am html html-am \
++	info info-am install install-am install-data install-data-am \
++	install-dvi install-dvi-am install-exec install-exec-am \
++	install-html install-html-am install-info install-info-am \
++	install-man install-pdf install-pdf-am install-ps \
++	install-ps-am install-strip installcheck installcheck-am \
++	installdirs maintainer-clean maintainer-clean-generic \
++	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
++	ps ps-am uninstall uninstall-am
+ 
+ 
++all-local: libatomic-test-support.exp
++
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+diff --git a/libatomic/testsuite/lib/libatomic.exp b/libatomic/testsuite/lib/libatomic.exp
+index cafab54..e374c64 100644
+--- a/libatomic/testsuite/lib/libatomic.exp
++++ b/libatomic/testsuite/lib/libatomic.exp
+@@ -47,6 +47,8 @@ load_gcc_lib timeout.exp
+ load_gcc_lib timeout-dg.exp
+ load_gcc_lib fortran-modules.exp
+ 
++load_file libatomic-test-support.exp
++
+ set dg-do-what-default run
+ 
+ #
+@@ -74,6 +76,7 @@ proc libatomic_init { args } {
+     global ALWAYS_CFLAGS
+     global CFLAGS
+     global TOOL_EXECUTABLE TOOL_OPTIONS
++    global BUILD_CC
+     global GCC_UNDER_TEST
+     global TESTING_IN_BUILD_TREE
+     global target_triplet
+@@ -89,6 +92,8 @@ proc libatomic_init { args } {
+     if ![info exists GCC_UNDER_TEST] then {
+ 	if [info exists TOOL_EXECUTABLE] {
+ 	    set GCC_UNDER_TEST $TOOL_EXECUTABLE
++	} elseif [info exists BUILD_CC] {
++	    set GCC_UNDER_TEST $BUILD_CC
+ 	} else {
+ 	    set GCC_UNDER_TEST "[find_gcc]"
+ 	}
+diff --git a/libatomic/testsuite/libatomic-test-support.exp.in b/libatomic/testsuite/libatomic-test-support.exp.in
+new file mode 100644
+index 0000000..972f8d5
+--- /dev/null
++++ b/libatomic/testsuite/libatomic-test-support.exp.in
+@@ -0,0 +1 @@
++set BUILD_CC "@CC@"
+-- 
+2.8.1
+

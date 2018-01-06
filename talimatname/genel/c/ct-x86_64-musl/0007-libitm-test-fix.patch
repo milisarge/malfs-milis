@@ -1,0 +1,188 @@
+From 37a62bfb856637c5e869ab8e74695ffbb6e668a4 Mon Sep 17 00:00:00 2001
+From: Szabolcs Nagy <nsz@port70.net>
+Date: Sat, 20 Aug 2016 19:16:39 +0000
+Subject: [PATCH 7/8] libitm-test-fix
+
+---
+ libitm/configure                            |  7 ++++--
+ libitm/configure.ac                         |  1 +
+ libitm/testsuite/Makefile.am                |  2 ++
+ libitm/testsuite/Makefile.in                | 33 +++++++++++++++++------------
+ libitm/testsuite/lib/libitm.exp             |  5 +++++
+ libitm/testsuite/libitm-test-support.exp.in |  1 +
+ 6 files changed, 33 insertions(+), 16 deletions(-)
+ create mode 100644 libitm/testsuite/libitm-test-support.exp.in
+
+diff --git a/libitm/configure b/libitm/configure
+index 55332bb..09fd041 100644
+--- a/libitm/configure
++++ b/libitm/configure
+@@ -9762,7 +9762,7 @@ _LT_EOF
+ 	if $NM -V 2>&1 | $GREP 'GNU' > /dev/null; then
+ 	  export_symbols_cmds='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
+ 	else
+-	  export_symbols_cmds='$NM -BCpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
++	  export_symbols_cmds='$NM -BCpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "L")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
+ 	fi
+ 	aix_use_runtimelinking=no
+ 
+@@ -14248,7 +14248,7 @@ $as_echo_n "checking whether the $compiler linker ($LD) supports shared librarie
+     if $NM -V 2>&1 | $GREP 'GNU' > /dev/null; then
+       export_symbols_cmds_CXX='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
+     else
+-      export_symbols_cmds_CXX='$NM -BCpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
++      export_symbols_cmds_CXX='$NM -BCpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "L")) && (substr(\$ 3,1,1) != ".")) { print \$ 3 } }'\'' | sort -u > $export_symbols'
+     fi
+     ;;
+   pw32*)
+@@ -17638,6 +17638,8 @@ fi
+ 
+ ac_config_files="$ac_config_files Makefile testsuite/Makefile libitm.spec"
+ 
++ac_config_files="$ac_config_files testsuite/libitm-test-support.exp"
++
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure
+ # tests run on this system so they can be shared between configure
+@@ -18799,6 +18801,7 @@ do
+     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+     "testsuite/Makefile") CONFIG_FILES="$CONFIG_FILES testsuite/Makefile" ;;
+     "libitm.spec") CONFIG_FILES="$CONFIG_FILES libitm.spec" ;;
++    "testsuite/libitm-test-support.exp") CONFIG_FILES="$CONFIG_FILES testsuite/libitm-test-support.exp" ;;
+ 
+   *) as_fn_error "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
+   esac
+diff --git a/libitm/configure.ac b/libitm/configure.ac
+index 3875aa0..70ce8dc 100644
+--- a/libitm/configure.ac
++++ b/libitm/configure.ac
+@@ -287,4 +287,5 @@ AM_CONDITIONAL([ARCH_X86_AVX], [test "$libitm_cv_as_avx" = yes])
+ AM_CONDITIONAL([ARCH_FUTEX], [test $enable_linux_futex = yes])
+ 
+ AC_CONFIG_FILES(Makefile testsuite/Makefile libitm.spec)
++AC_CONFIG_FILES(testsuite/libitm-test-support.exp)
+ AC_OUTPUT
+diff --git a/libitm/testsuite/Makefile.am b/libitm/testsuite/Makefile.am
+index 561b7e2..688d48f 100644
+--- a/libitm/testsuite/Makefile.am
++++ b/libitm/testsuite/Makefile.am
+@@ -11,3 +11,5 @@ EXPECT = $(shell if test -f $(top_builddir)/../expect/expect; then \
+ _RUNTEST = $(shell if test -f $(top_srcdir)/../dejagnu/runtest; then \
+ 	     echo $(top_srcdir)/../dejagnu/runtest; else echo runtest; fi)
+ RUNTEST = "$(_RUNTEST) $(AM_RUNTESTFLAGS)"
++
++all-local: libitm-test-support.exp
+diff --git a/libitm/testsuite/Makefile.in b/libitm/testsuite/Makefile.in
+index 4d79781..8b7bc8e 100644
+--- a/libitm/testsuite/Makefile.in
++++ b/libitm/testsuite/Makefile.in
+@@ -52,7 +52,8 @@ build_triplet = @build@
+ host_triplet = @host@
+ target_triplet = @target@
+ subdir = testsuite
+-DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am
++DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
++	$(srcdir)/libitm-test-support.exp.in
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/../config/acx.m4 \
+ 	$(top_srcdir)/../config/asmcfi.m4 \
+@@ -74,7 +75,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
+ 	$(ACLOCAL_M4)
+ mkinstalldirs = $(SHELL) $(top_srcdir)/../mkinstalldirs
+ CONFIG_HEADER = $(top_builddir)/config.h
+-CONFIG_CLEAN_FILES =
++CONFIG_CLEAN_FILES = libitm-test-support.exp
+ CONFIG_CLEAN_VPATH_FILES =
+ SOURCES =
+ am__can_run_installinfo = \
+@@ -265,6 +266,8 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+ 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
+ $(am__aclocal_m4_deps):
++libitm-test-support.exp: $(top_builddir)/config.status $(srcdir)/libitm-test-support.exp.in
++	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
+ 
+ mostlyclean-libtool:
+ 	-rm -f *.lo
+@@ -325,7 +328,7 @@ distclean-DEJAGNU:
+ check-am: all-am
+ 	$(MAKE) $(AM_MAKEFLAGS) check-DEJAGNU
+ check: check-am
+-all-am: Makefile
++all-am: Makefile all-local
+ installdirs:
+ install: install-am
+ install-exec: install-exec-am
+@@ -425,19 +428,21 @@ uninstall-am:
+ 
+ .MAKE: check-am install-am install-strip
+ 
+-.PHONY: all all-am check check-DEJAGNU check-am clean clean-generic \
+-	clean-libtool distclean distclean-DEJAGNU distclean-generic \
+-	distclean-libtool dvi dvi-am html html-am info info-am install \
+-	install-am install-data install-data-am install-dvi \
+-	install-dvi-am install-exec install-exec-am install-html \
+-	install-html-am install-info install-info-am install-man \
+-	install-pdf install-pdf-am install-ps install-ps-am \
+-	install-strip installcheck installcheck-am installdirs \
+-	maintainer-clean maintainer-clean-generic mostlyclean \
+-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+-	uninstall uninstall-am
++.PHONY: all all-am all-local check check-DEJAGNU check-am clean \
++	clean-generic clean-libtool distclean distclean-DEJAGNU \
++	distclean-generic distclean-libtool dvi dvi-am html html-am \
++	info info-am install install-am install-data install-data-am \
++	install-dvi install-dvi-am install-exec install-exec-am \
++	install-html install-html-am install-info install-info-am \
++	install-man install-pdf install-pdf-am install-ps \
++	install-ps-am install-strip installcheck installcheck-am \
++	installdirs maintainer-clean maintainer-clean-generic \
++	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
++	ps ps-am uninstall uninstall-am
+ 
+ 
++all-local: libitm-test-support.exp
++
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+diff --git a/libitm/testsuite/lib/libitm.exp b/libitm/testsuite/lib/libitm.exp
+index 0416296..a896e02 100644
+--- a/libitm/testsuite/lib/libitm.exp
++++ b/libitm/testsuite/lib/libitm.exp
+@@ -47,6 +47,8 @@ load_gcc_lib timeout-dg.exp
+ load_gcc_lib torture-options.exp
+ load_gcc_lib fortran-modules.exp
+ 
++load_file libitm-test-support.exp
++
+ set dg-do-what-default run
+ 
+ #
+@@ -74,6 +76,7 @@ proc libitm_init { args } {
+     global ALWAYS_CFLAGS
+     global CFLAGS
+     global TOOL_EXECUTABLE TOOL_OPTIONS
++    global BUILD_CC
+     global GCC_UNDER_TEST
+     global TESTING_IN_BUILD_TREE
+     global target_triplet
+@@ -89,6 +92,8 @@ proc libitm_init { args } {
+     if ![info exists GCC_UNDER_TEST] then {
+ 	if [info exists TOOL_EXECUTABLE] {
+ 	    set GCC_UNDER_TEST $TOOL_EXECUTABLE
++	} elseif [info exists BUILD_CC] {
++	    set GCC_UNDER_TEST $BUILD_CC
+ 	} else {
+ 	    set GCC_UNDER_TEST "[find_gcc]"
+ 	}
+diff --git a/libitm/testsuite/libitm-test-support.exp.in b/libitm/testsuite/libitm-test-support.exp.in
+new file mode 100644
+index 0000000..972f8d5
+--- /dev/null
++++ b/libitm/testsuite/libitm-test-support.exp.in
+@@ -0,0 +1 @@
++set BUILD_CC "@CC@"
+-- 
+2.8.1
+
