@@ -23,7 +23,7 @@ kaynak=(http://ftp.gnu.org/gnu/gcc/gcc-$gcc_surum/gcc-${gcc_surum}.tar.xz
 		http://ftp.gnu.org/gnu/gmp/gmp-${gmp_surum}.tar.xz
 		http://ftp.gnu.org/gnu/mpfr/mpfr-${mpfr_surum}.tar.xz
 		http://ftp.gnu.org/gnu/mpc/mpc-${mpc_surum}.tar.gz
-		http://ftp.gnu.org/gnu/isl/isl-${isl_surum}.tar.bz2
+		http://isl.gforge.inria.fr/isl-${isl_surum}.tar.bz2
 		https://www.musl-libc.org/releases/musl-${musl_surum}.tar.gz
 		mpfr-patch01
 		0001-libgcc_s.patch
