@@ -20,10 +20,10 @@ isl_surum=0.18
 kaynak=(http://ftp.gnu.org/gnu/gcc/gcc-$gcc_surum/gcc-${gcc_surum}.tar.xz
 		http://ftp.gnu.org/gnu/binutils/binutils-${binutils_surum}.tar.xz
 		http://www.kernel.org/pub/linux/kernel/v4.x/linux-${linux_surum}.tar.xz
-		http://ftp.gnu.org/gmp/gmp-${gmp_surum}.tar.xz
-		http://ftp.gnu.org/mpfr/mpfr-${mpfr_surum}.tar.xz
-		http://ftp.gnu.org/mps/mpc-${mpc_surum}.tar.gz
-		http://ftp.gnu.org/isl/isl-${isl_surum}.tar.bz2
+		http://ftp.gnu.org/gnu/gmp/gmp-${gmp_surum}.tar.xz
+		http://ftp.gnu.org/gnu/mpfr/mpfr-${mpfr_surum}.tar.xz
+		http://ftp.gnu.org/gnu/mps/mpc-${mpc_surum}.tar.gz
+		http://ftp.gnu.org/gnu/isl/isl-${isl_surum}.tar.bz2
 		https://www.musl-libc.org/releases/musl-${musl_surum}.tar.gz
 		mpfr-patch01
 		0001-libgcc_s.patch
