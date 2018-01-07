@@ -993,9 +993,9 @@ guncelleme_tespit(){
 	touch $guncelleme_dosya
 	for kpaket in $(ls $VT/);do
 		satir=$(sed -n '7p' <  $VT/$kpaket/META)
-		surum=${satir:1:${#satir}-1}
+		ksurum=${satir:1:${#satir}-1}
 		satir2=$(sed -n '8p' <  $VT/$kpaket/META)
-		devir=${satir2:1:${#satir2}-1}
+		kdevir=${satir2:1:${#satir2}-1}
 		#deposurum=$(grep " $kpaket#" /depo/paketler/paket.vt | cut -d' ' -f3 | cut -d'#' -f 2 | cut -d'-' -f1)
 		_konum=$(talimat_bul $kpaket)
 		if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
@@ -1006,13 +1006,13 @@ guncelleme_tespit(){
 		source $_konum/talimat
 		deposurum=`echo -e "$surum" | sort -V | head -n1`
 		depodevir=`echo -e "$devir" | sort -V | head -n1`
-		#echo $kpaket "  :  $surum --->  $deposurum" "$devir --->  $depodevir"
+		#echo $kpaket "  :  $ksurum --->  $deposurum" "$kdevir --->  $depodevir"
 		#sleep 3
-		if [ "$surum" != "$deposurum" ];then
-			printf "$kpaket -surum: ";echo "$surum --->  $deposurum"
+		if [ "$ksurum" != "$deposurum" ];then
+			printf "$kpaket -surum: ";echo "$ksurum --->  $deposurum"
 			echo $kpaket >> $guncelleme_dosya
-		elif [ "$devir" != "$depodevir" ];then
-			printf "$kpaket -devir: ";echo "$devir --->  $depodevir"
+		elif [ "$kdevir" != "$depodevir" ];then
+			printf "$kpaket -devir: ";echo "$kdevir --->  $depodevir"
 			echo $kpaket >> $guncelleme_dosya
 		fi
 	done																																																									
