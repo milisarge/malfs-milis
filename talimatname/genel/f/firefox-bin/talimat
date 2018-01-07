@@ -2,12 +2,13 @@
 # URL: http://www.mozilla.com/firefox/
 # Paketçi: Cihan Alkan
 # Gerekler: libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
+# Grup: ağ
 
 isim=firefox-bin
 _isim=firefox
-surum=54.0
+surum=57.0.4
 devir=1
-kaynak=(https://ftp.mozilla.org/pub/firefox/releases/$surum/linux-x86_64/tr/firefox-$surum.tar.bz2
+kaynak=(https://ftp.mozilla.org/pub/firefox/releases/57.0.4/linux-x86_64/tr/firefox-57.0.4.tar.bz2
 		firefox.desktop)
  
 derle() {
@@ -15,23 +16,22 @@ derle() {
   mkdir -p $PKG/usr/bin
   mkdir -p $PKG/usr/share/applications
   mkdir -p $PKG/usr/share/icons/hicolor/128x128/apps
-  mkdir -p $PKG//opt
-
+  mkdir -p $PKG/opt
 
   # Kurulum
-  cp -r firefox/ $PKG//opt/$_name
+  cp -r firefox/ $PKG/opt/$_isim
 
   # /usr/bin symlinks
-  ln -s /opt/$_name/firefox $PKG/usr/bin/$_name 
+  ln -s /opt/$_isim/firefox $PKG/usr/bin/$_isim 
 
   # Masaüstü
-  install -m644 $_name.desktop $PKG/usr/share/applications/
+  install -m644 $_isim.desktop $PKG/usr/share/applications/
 
   # Simgeler
   for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
     install -d $PKG/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$_name/browser/chrome/icons/default/default${i/x*}.png \
-          $PKG/usr/share/icons/hicolor/$i/apps/$_name.png
+    ln -s /opt/$_isim/browser/chrome/icons/default/default${i/x*}.png \
+          $PKG/usr/share/icons/hicolor/$i/apps/$_isim.png
   done
  _distini="$PKG/opt/firefox/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
@@ -42,10 +42,10 @@ about=Milis Lİnux 1.0 için Mozilla Firefox
 
 [Preferences]
 app.distributor=milis
-app.distributor.channel=$_name
-app.partner.archlinux=milis
+app.distributor.channel=$_isim
+app.partner.milis=milis
 END
   # 128x128
-  ln -s /opt/$_name/browser/icons/mozicon128.png \
-        $PKG/usr/share/icons/hicolor/128x128/apps/$_name.png
+  ln -s /opt/$_isim/browser/icons/mozicon128.png \
+        $PKG/usr/share/icons/hicolor/128x128/apps/$_isim.png
 }
