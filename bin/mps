@@ -1187,8 +1187,10 @@ devir_kontrol(){
 }
 
 surum_devir_kontrol(){
-	local _konum pk_sil _paket
+	local _konum pk_sil _paket _durum
 	_paket=$1
+	_durum="yaz"
+	[ $2 ] && _durum="$2"
 	local kdevir devir ksurum surum pkt dusuk yuksek durum
 	durum="belirsiz"
 	if [ -d "$VT/$_paket" ];then
@@ -1204,12 +1206,19 @@ surum_devir_kontrol(){
 	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
 		echo "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
 	else
-	
 		source $_konum/talimat
-		echo "$_paket:"
-		echo "kurulu sürüm :$ksurum$kdevir"
-		echo "depo sürüm   :$surum-$devir"
-		echo "--"
+		if [ "${_durum}" == "yaz" ];then
+			echo "$_paket:"
+			echo "kurulu sürüm :$ksurum$kdevir"
+			echo "depo sürüm   :$surum-$devir"
+			echo "--"
+		else
+			if [ "$ksurum$kdevir" == "$surum-$devir" ];then
+				echo "yok"
+			else
+				echo "var"
+			fi
+		fi
 	fi
 }
 
@@ -1288,7 +1297,7 @@ paket_derle(){
 	#eski derleme kalıntılarını temizle
 	rm -rf tmp.*
 	kaynakdizin_kontrol
-	local konum derleme_onay eh bagimd derpaket
+	local konum derleme_onay eh bagimd derpaket _gncdurum
 	derleme_onay="h"
 	if [ -d "$1" ];then
 		konum="$1"
@@ -1305,6 +1314,13 @@ paket_derle(){
 		mkdir -p tmp."$derpaket" 
 		cp -a $konum/* tmp."$derpaket"/
 		cd tmp."$derpaket"
+		#paket güncelleme kurulu olsa da kontrol edilir.
+		_gncdurum=$(surum_devir_kontrol ${derpaket} --durum)
+		if [ "${_gncdurum}" == "var" ];then
+			echo "paketin güncellenmesi gerek."
+			surum_devir_kontrol ${derpaket}
+			paket_sil ${derpaket}
+		fi 
 		
 		if [ "`kurulu_kontrol "$derpaket"`" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
 			derleme_onay="h"
