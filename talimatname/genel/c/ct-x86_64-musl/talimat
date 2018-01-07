@@ -54,8 +54,6 @@ derle() {
 	# vendor-üretici varsa sonek tire konulacak
 	test -n "$VENDOR" && VENDOR="${VENDOR}-"
 	
-	unset CC CXX CFLAGS CXXFLAGS LDFLAGS
-	
 	#
 	# x86_64: x86_64 (generic).
 	#
