@@ -8,8 +8,8 @@ static const char appfinder_preferences_ui[] __attribute__ ((__aligned__ (4))) =
 static const char appfinder_preferences_ui[] =
 #endif
 {
-  "<?xml surum=\"1.0\" encoding=\"UTF-8\"?><interface><requires lib=\"gt"
-  "k+\" surum=\"2.20\"/><object class=\"GtkListStore\" id=\"action-types"
+  "<?xml version=\"1.0\" encoding=\"UTF-8\"?><interface><requires lib=\"gt"
+  "k+\" version=\"2.20\"/><object class=\"GtkListStore\" id=\"action-types"
   "\"><columns><column type=\"gchararray\"/></columns><data><row><col id=\""
   "0\" translatable=\"yes\">Prefix</col></row><row><col id=\"0\" translata"
   "ble=\"yes\">Regular Expression</col></row></data></object><object class"
