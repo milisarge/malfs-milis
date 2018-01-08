@@ -10,33 +10,37 @@ kaynak=(https://bitbucket.org/pypy/pypy/downloads/pypy2-v$surum-src.tar.bz2)
 
 derle() {
 
-  cd pypy2-v${surum}-src/pypy/goal
+	cd pypy2-v${surum}-src/pypy/goal
 
-  python2 ../../rpython/bin/rpython -Ojit --shared targetpypystandalone
+	python2 ../../rpython/bin/rpython -Ojit --shared targetpypystandalone || cd /tmp/usession-release-pypy2.7-v${surum}-0/testing_1/ && make -j2
+	cd pypy2-v${surum}-src/pypy/goal
+	cp /tmp/usession-release-pypy2.7-v${surum}-0/testing_1/pypy-c  .
+	cp /tmp/usession-release-pypy2.7-v${surum}-0/testing_1/libpypy-c.so  .
+	# Compile binary modules
+	PYTHONPATH=../.. ./pypy-c ../tool/build_cffi_imports.py
 
-  # Compile binary modules
-  PYTHONPATH=../.. ./pypy-c ../tool/build_cffi_imports.py
+	cd $SRC/pypy2-v${surum}-src
 
-  cd pypy2-v${surum}-src
+	# Prepare installation
+	sed -i -e 's/\'--owner=root'\>//g'  pypy/tool/release/package.py
+	sed -i -e 's/\'--group=root'\>//g'  pypy/tool/release/package.py
+	python2 pypy/tool/release/package.py --archive-name pypy --targetdir .
+	mkdir unpacked
+	tar xf pypy.tar.bz2 -C unpacked
 
-  # Prepare installation
-  python2 pypy/tool/release/package.py --archive-name pypy --targetdir .
-  mkdir unpacked
-  tar xf pypy.tar.bz2 -C unpacked
+	# Install pypy
+	cd unpacked
+	install -Dm755 pypy/bin/pypy "${PKG}"/opt/pypy/bin/pypy
+	install -Dm755 pypy/bin/libpypy-c.so "${PKG}"/usr/lib/libpypy-c.so
+	cp -r pypy/include pypy/lib_pypy pypy/lib-python pypy/site-packages "${PKG}"/opt/pypy/
+	cd ..
 
-  # Install pypy
-  cd unpacked
-  install -Dm755 pypy/bin/pypy "${PKG}"/opt/pypy/bin/pypy
-  install -Dm755 pypy/bin/libpypy-c.so "${PKG}"/usr/lib/libpypy-c.so
-  cp -r pypy/include pypy/lib_pypy pypy/lib-python pypy/site-packages "${PKG}"/opt/pypy/
-  cd ..
+	# Install symlink
+	mkdir -p "${PKG}"/usr/bin
+	ln -s /opt/pypy/bin/pypy "${PKG}"/usr/bin/pypy
 
-  # Install symlink
-  mkdir -p "${PKG}"/usr/bin
-  ln -s /opt/pypy/bin/pypy "${PKG}"/usr/bin/pypy
-
-  # Install misc stuff
-  install -Dm644 README.rst "${PKG}"/opt/pypy/README.rst
-  install -Dm644 LICENSE "${PKG}"/opt/pypy/LICENSE
-  install -Dm644 LICENSE "${PKG}"/usr/share/licenses/pypy/LICENSE
+	# Install misc stuff
+	install -Dm644 README.rst "${PKG}"/opt/pypy/README.rst
+	install -Dm644 LICENSE "${PKG}"/opt/pypy/LICENSE
+	install -Dm644 LICENSE "${PKG}"/usr/share/licenses/pypy/LICENSE
 }
