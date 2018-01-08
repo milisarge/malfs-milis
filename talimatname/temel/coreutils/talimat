@@ -1,7 +1,8 @@
-# Tanım: Utilities for showing and setting the basic system characteristics
+# Tanım: Temel sistem özelliklerini göstermek ve ayarlamak için kullanılan yardımcı programlar
 # URL: http://www.gnu.org/software/coreutils/
 # Paketçi: milisarge@gmail.com
 # Gerekler:
+# Grup: temel
 
 isim=coreutils
 surum=8.25
