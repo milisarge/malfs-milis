@@ -1,4 +1,4 @@
-# Tanım: Utilities to administer the extended attributes on filesystem objects
+# Tanım: Genişletilmiş öznitelikleri dosya sistemi nesneleri üzerinde yönetmek için kullanılan yardımcı programlar
 # URL: http://savannah.nongnu.org/projects/attr
 # Paketçi: milisarge@gmail.com
 # Gerekler:
