@@ -1,4 +1,4 @@
-# Tanım: Contains programs for generating Makefiles for use with Autoconf.
+# Tanım: Autoconf ile kullanılacak Makefile'leri üretmek için programlar içerir.
 # URL: http://www.gnu.org/software/automake/
 # Paketçi: milisarge
 # Gerekler:
