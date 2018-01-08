@@ -1,4 +1,4 @@
-# Tanım: For producing shell scripts that can automatically configure source code.
+# Tanım: Kaynak kodunu otomatik olarak yapılandırabilen kabuk komut dizileri üretmek için.
 # URL: http://www.gnu.org/software/autoconf/
 # Paketçi: milisarge
 # Gerekler:
