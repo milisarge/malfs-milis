@@ -2,6 +2,7 @@
 # URL: http://savannah.nongnu.org/projects/attr
 # Paketçi: milisarge@gmail.com
 # Gerekler:
+# Grup: temel
 
 isim=attr
 surum=2.4.47

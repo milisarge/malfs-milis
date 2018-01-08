@@ -1,7 +1,8 @@
 # Tanım: For producing shell scripts that can automatically configure source code.
 # URL: http://www.gnu.org/software/autoconf/
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler:
+# Grup: temel
 
 isim=autoconf
 surum=2.69

@@ -2,6 +2,7 @@
 # URL: http://savannah.nongnu.org/projects/acl
 # Paketçi: milisarge@gmail.com
 # Gerekler:
+# Grup: temel
 
 isim=acl
 surum=2.2.52

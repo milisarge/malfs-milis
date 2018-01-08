@@ -1,7 +1,8 @@
 # Tanım: Linker, assembler, and other tools for handling object files.
 # URL: http://sources.redhat.com/binutils/
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler:
+# Grup: temel
 
 isim=binutils
 surum=2.26

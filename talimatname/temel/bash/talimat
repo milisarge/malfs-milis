@@ -1,7 +1,8 @@
 # Tanım: The Bash package contains the Bourne-Again SHell.
 # Url: http://ftp.gnu.org/gnu/bash/
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler:
+# Grup: temel
 
 isim=bash
 surum=4.3.30

@@ -1,7 +1,8 @@
 # Tanım: The Bc package contains an arbitrary precision numeric processing language.
 # URL: http://ftp.gnu.org/gnu/bc/
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler:
+# Grup: temel
 
 isim=bc
 surum=1.06.95

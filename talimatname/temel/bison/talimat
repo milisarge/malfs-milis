@@ -1,7 +1,8 @@
 # Tanım: The Bison package contains a parser generator
 # URL: http://www.gnu.org/software/bison/
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler:
+# Grup: temel
 
 isim=bison
 surum=3.0.4

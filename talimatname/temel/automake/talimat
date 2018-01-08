@@ -1,7 +1,8 @@
 # Tanım: Contains programs for generating Makefiles for use with Autoconf.
 # URL: http://www.gnu.org/software/automake/
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler:
+# Grup: temel
 
 isim=automake
 surum=1.15
