@@ -55,6 +55,11 @@ if [ -z ${silme_esgec+:} ]; then
 	declare -a silme_esgec=()
 fi
 
+if [ -z ${esgec+:} ]; then
+	declare -a esgec=()
+fi
+
+esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src)
 
 # Türkçe Mesajlar
 _paket_adi_gerekli="paket ismi eksik!"
@@ -1020,7 +1025,6 @@ guncelleme_tespit(){
 
 sistem_guncelle(){
 	count=0
-	esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src)
 	local kpkt
 	local pk_guncelle
 	total=`ls $VT | wc -l`
@@ -1187,9 +1191,10 @@ devir_kontrol(){
 }
 
 surum_devir_kontrol(){
-	local _konum pk_sil _paket _durum
+	local _konum pk_sil _paket _durum pk_guncelle
 	_paket=$1
 	_durum="yaz"
+	pk_guncelle="e"
 	[ $2 ] && _durum="$2"
 	local kdevir devir ksurum surum pkt dusuk yuksek durum
 	durum="belirsiz"
@@ -1206,18 +1211,25 @@ surum_devir_kontrol(){
 	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
 		echo "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
 	else
-		source $_konum/talimat
-		if [ "${_durum}" == "yaz" ];then
-			echo "$_paket:"
-			echo "kurulu sürüm :$ksurum$kdevir"
-			echo "depo sürüm   :$surum-$devir"
-			echo "--"
-		else
-			if [ "$ksurum$kdevir" == "$surum-$devir" ];then
-				echo "yok"
+		if [[ "${esgec[*]}" =~ "${_paket}" ]];then 
+			pk_guncelle="h"
+		fi
+		if [ $pk_guncelle == "e" ];then
+			source $_konum/talimat
+			if [ "${_durum}" == "yaz" ];then
+				echo "$_paket:"
+				echo "kurulu sürüm :$ksurum$kdevir"
+				echo "depo sürüm   :$surum-$devir"
+				echo "--"
 			else
-				echo "var"
+				if [ "$ksurum$kdevir" == "$surum-$devir" ];then
+					echo "yok"
+				else
+					echo "var"
+				fi
 			fi
+		else
+			echo "$_paket için sürüm-devir kontrolü es geçildi."
 		fi
 	fi
 }
