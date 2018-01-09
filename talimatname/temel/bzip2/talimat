@@ -1,7 +1,8 @@
-# Tanım: Programs for compressing and decompressing files.
+# Tanım: Dosyaları sıkıştırma ve açma programları.
 # URL: http://www.bzip.org/
 # Paketçi: milisarge@gmail.com
 # Gerekler:
+# Grup: temel
 
 isim=bzip2
 surum=1.0.6
