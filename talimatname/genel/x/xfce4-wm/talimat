@@ -2,17 +2,18 @@
 # URL: http://www.xfce.org/projects/xfwm4/
 # Paketçi: milisarge
 # Gerekler: xorg-libxres libwnck xfce4-libui xfce4-libutil startup-notification 
+# Grup: xfce4
 
 _isim=xfwm4
 isim=xfce4-wm
-surum=4.12.3
+surum=4.13.0
 devir=1
 
-kaynak=(http://archive.xfce.org/src/xfce/${_name}/${surum%.*}-$surum.tar.bz2)
+kaynak=(https://git.xfce.org/xfce/xfwm4/snapshot/xfwm4-4.13.0.tar.gz)
 
 derle() {
-cd ${_name}-$surum
-./configure \
+cd ${_isim}-$surum
+./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
