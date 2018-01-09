@@ -8,15 +8,10 @@ isim=binutils-gold
 surum=2.26
 devir=1
 
-kaynak=(http://ftp.gnu.org/gnu/binutils/binutils-$surum.tar.bz2
-	http://www.linuxfromscratch.org/patches/downloads/binutils//binutils-$surum-upstream_fix-1.patch
-	http://www.linuxfromscratch.org/patches/downloads/binutils//binutils-$surum-upstream_fix-2.patch)
+kaynak=(http://ftp.gnu.org/gnu/binutils/binutils-$surum.tar.bz2)
 	
 derle() {
 	cd binutils-$surum
-
-	patch -Np1 -i ../binutils-$surum-upstream_fix-1.patch
-	patch -Np1 -i ../binutils-$surum-upstream_fix-2.patch
 
 	mkdir -v build
 	cd build
