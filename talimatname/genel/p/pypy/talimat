@@ -43,4 +43,5 @@ derle() {
 	install -Dm644 README.rst "${PKG}"/opt/pypy/README.rst
 	install -Dm644 LICENSE "${PKG}"/opt/pypy/LICENSE
 	install -Dm644 LICENSE "${PKG}"/usr/share/licenses/pypy/LICENSE
+	rm -rf /tmp/usession-release-pypy2.7-v${surum}*
 }
