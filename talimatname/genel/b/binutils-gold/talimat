@@ -1,0 +1,41 @@
+# Tanım: Linker, assembler, and other tools for handling object files. 
+# URL: http://sources.redhat.com/binutils/
+# Paketçi: milisarge
+# Gerekler:
+# Grup: geliştirme
+
+isim=binutils-gold
+surum=2.26
+devir=1
+
+kaynak=(http://ftp.gnu.org/gnu/binutils/binutils-$surum.tar.bz2
+	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$surum-upstream_fix-1.patch
+	http://www.linuxfromscratch.org/patches/lfs/development/binutils-$surum-upstream_fix-2.patch)
+	
+derle() {
+	cd binutils-$surum
+
+	patch -Np1 -i ../binutils-$surum-upstream_fix-1.patch
+	patch -Np1 -i ../binutils-$surum-upstream_fix-2.patch
+
+	mkdir -v build
+	cd build
+
+	../configure \
+	--prefix=/usr --includedir=/usr/include \
+	--bindir=/bin --sbindir=/sbin \
+	--datarootdir=/usr/share \
+	--enable-gold \
+	--enable-plugins \
+	--enable-shared --disable-werror
+
+	make tooldir=/ || make tooldir=/ 
+
+	
+	make tooldir=/usr DESTDIR=$PKG install
+
+	mv $PKG/usr/bin/ld.gold .
+	rm -rf $PKG/*
+	mkdir -p $PKG/usr/bin
+	mv ld.gold $PKG/usr/bin/
+}
