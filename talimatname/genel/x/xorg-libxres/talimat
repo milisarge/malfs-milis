@@ -2,9 +2,10 @@
 # URL: http://xorg.freedesktop.org
 # Paketçi: milisarge
 # Gerekler: xorg-proto xorg-libx11 xorg-libxext 
+# Grup: xorg
 
 isim=xorg-libxres
-surum=1.0.7
+surum=1.2.0
 devir=1
 kaynak=(http://mirror.switch.ch/ftp/mirror/X11/pub/individual/lib/libXres-$surum.tar.bz2)
 
@@ -13,4 +14,6 @@ derle() {
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
+	rmdir "${PKG}/usr/share" || true
 }
