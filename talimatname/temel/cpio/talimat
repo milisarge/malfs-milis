@@ -1,7 +1,8 @@
-# Tanım: Copies files into or out of a cpio or tar archive.
+# Tanım: Dosyaları bir cpio veya tar arşivinin içine veya dışına kopyalar.
 # URL: http://www.gnu.org/software/cpio/
 # Paketçi: milisarge@gmail.com
 # Gerekler:
+# Grup: temel
 
 isim=cpio
 surum=2.11
