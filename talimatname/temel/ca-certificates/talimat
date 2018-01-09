@@ -1,7 +1,8 @@
-# Tanım: Certificate Authority certificates, the Public Key Infrastructure.
+# Tanım: Sertifika Yetki belgeleri, Ortak Anahtar Altyapısı.
 # URL: http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
 # Paketçi: milisarge@gmail.com
 # Gerekler:
+# Grup: temel
 
 isim=ca-certificates
 surum=20160110
