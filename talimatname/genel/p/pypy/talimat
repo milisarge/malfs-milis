@@ -11,8 +11,8 @@ kaynak=(https://bitbucket.org/pypy/pypy/downloads/pypy2-v$surum-src.tar.bz2)
 derle() {
 
 	cd pypy2-v${surum}-src/pypy/goal
-
-	python2 ../../rpython/bin/rpython -Ojit --shared targetpypystandalone || cd /tmp/usession-release-pypy2.7-v${surum}-0/testing_1/ && make -j2
+	rm -rf /tmp/usession-release-pypy2.7-v${surum}*
+	python2 ../../rpython/bin/rpython -Ojit --shared targetpypystandalone || cd /tmp/usession-release-pypy2.7-v${surum}-0/testing_1/ && make -j3
 	cd $SRC/pypy2-v${surum}-src/pypy/goal
 	cp /tmp/usession-release-pypy2.7-v${surum}-0/testing_1/pypy-c  .
 	cp /tmp/usession-release-pypy2.7-v${surum}-0/testing_1/libpypy-c.so  .
