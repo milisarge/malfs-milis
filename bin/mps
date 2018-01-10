@@ -440,12 +440,13 @@ paket_bilgi(){
 		$_yaz "GRUP       :" ${satir:1:${#satir}-1} #$_yaz_son
 	elif [ "$kkont" = "degil" ];then
 		_konum=$(talimat_bul $1)
-		_ad=$(grep -ri "isim=" $_konum/talimat | head -1 | cut -d '=' -f2)
+		source ${_konum}/talimat
+		_ad=$(basename ${_konum})
 		_tanim=$(grep -ri "# Tanım:" $_konum/talimat | cut -d ':' -f2-)
 		_url=$(grep -ri "# Url:" $_konum/talimat | cut -d ':' -f2-)
 		_paketci=$(grep -ri "# Paketçi:" $_konum/talimat | cut -d ':' -f2-)
-		_surum=$(grep -ri "surum=" $_konum/talimat | head -1 | cut -d '=' -f2)
-		_devir=$(grep -ri "devir=" $_konum/talimat | head -1 | cut -d '=' -f2)
+		_surum=${surum}
+		_devir=${devir}
 		_grup=$(grep -ri "# Grup:" $_konum/talimat | head -1 | cut -d ':' -f2)
 		$_yaz "ADI        :" ${_ad} #$_yaz_son
 		$_yaz "TANIM      :" ${_tanim} #$_yaz_son
