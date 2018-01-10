@@ -2,12 +2,15 @@
 # URL: http://git.xfce.org/kelnos/xfce4-notifyd/
 # Paketçi: milisarge
 # Gerekler: xfce4-libui libnotify 
+# Grup: xfce4
 
 isim=xfce4-notifyd
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_notifyd_surum}";[ -z ${xfce4_notifyd_surum} ] && \
 surum=0.3.6
 devir=4
 
-kaynak=(http://archive.xfce.org/src/apps/$isim/0.3/$isim-$surum.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 derle() {
 	cd $isim-$surum
 	 ./configure \
@@ -19,4 +22,6 @@ derle() {
 		--disable-debug
 	make
 	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/lib/systemd
+	rm -rf $PKG/usr/share/man
 }
