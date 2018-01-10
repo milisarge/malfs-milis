@@ -1,13 +1,16 @@
-# Tanım: Bu, çeşitli seçeneklerle ekran görüntüleri almak için bir eklentidir. Ayrıca, klavyenizin PrintScreen tuşuyla birlikte kullanılabilen bağımsız bir uygulama içerir.
+# Tanım: Bu, çeşitli seçeneklerle ekran görüntüleri almak için bir eklentidir.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-screenshooter-plugin
 # Paketçi: milisarge
-# Gerekler: xfce4-panel libsoup p11-kit 
+# Gerekler: xfce4-panel libsoup p11-kit
+# Grup: xfce4
 
 isim=xfce4-screenshooter
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_screenshooter_surum}";[ -z ${xfce4_screenshooter_surum} ] && \
 surum=1.8.2
 devir=1
 
-kaynak=(http://archive.xfce.org/src/apps/$isim/1.8/$isim-$surum.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
 cd $isim-$surum
@@ -20,5 +23,6 @@ cd $isim-$surum
     	--disable-debug
 	make
 	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
 }
 

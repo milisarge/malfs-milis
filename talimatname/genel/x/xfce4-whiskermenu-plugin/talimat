@@ -2,17 +2,22 @@
 # URL: http://gottcode.org/xfce4-whiskermenu-plugin/
 # Paketçi: milisarge
 # Gerekler: cmake xfce4-panel exo
+# Grup: xfce4
 
 isim=xfce4-whiskermenu-plugin
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_whiskermenu_plugin_surum}";[ -z ${xfce4_whiskermenu_plugin_surum} ] && \
 surum=2.1.3
 devir=1
+
 kaynak=(https://github.com/gottcode/xfce4-whiskermenu-plugin/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 derle() {
 
 cd $isim-$surum
-cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-make
-make DESTDIR=$PKG install
+	cmake \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+	make
+	make DESTDIR=$PKG install
 }
