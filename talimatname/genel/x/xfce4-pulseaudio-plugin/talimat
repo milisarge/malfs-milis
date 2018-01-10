@@ -13,8 +13,7 @@ kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/${surum%.*}/$isim-$surum
 
 derle() {
 	cd $isim-$surum
-  NOCONFIGURE=1 ./autogen.sh
-./configure \
+	./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
@@ -24,4 +23,5 @@ derle() {
     --enable-maintainer-mode
 	make
 	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
 }
