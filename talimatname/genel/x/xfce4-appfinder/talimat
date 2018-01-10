@@ -2,30 +2,33 @@
 # URL: http://http://www.xfce.org/projects/xfce4-appfinder/
 # Paketçi: milisarge
 # Gerekler: xfce4-libui xfce4-garcon xfce4-dev-tools
+# Grup: xfce4
 
 isim=xfce4-appfinder
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_appfinder_surum}";[ -z ${xfce4_appfinder_surum} ] && \
 surum=4.12.0
 devir=3
 
-kaynak=(https://github.com/xfce-mirror/xfce4-appfinder/archive/master.tar.gz::$isim-$surum.tar.gz
+kaynak=(http://archive.xfce.org/src/xfce/$isim/${surum%.*}/$isim-$surum.tar.bz2
 		appfinder-preferences-ui.h)
 
 derle() {
-cd $isim-master
-./autogen.sh
-cp $SRC/appfinder-preferences-ui.h src/
-./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --disable-gtk-doc-html \
-    --disable-debug
-make
-make DESTDIR=$PKG install
-	
-for i in /usr/bin/xfrun4
-do rm $PKG/$i
-done
+	cd $isim-master
+	cp $SRC/appfinder-preferences-ui.h src/
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib \
+		--localstatedir=/var \
+		--disable-static \
+		--disable-gtk-doc-html \
+		--disable-debug
+	make
+	make DESTDIR=$PKG install
+		
+	for i in /usr/bin/xfrun4
+	do rm $PKG/$i
+	done
+	rm -rf $PKG/usr/share/man
 }
