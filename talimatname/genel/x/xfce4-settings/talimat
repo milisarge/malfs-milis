@@ -1,31 +1,32 @@
-# Tanım: xfce4 ayar uygulamaları.
-# URL: http://wiki.xfce.org/releng/4.10/
+# Tanım: Xfce4 ayar uygulamaları.
+# URL: http://wiki.xfce.org/releng
 # Paketçi: milisarge
 # Gerekler: exo xfce4-libui xfce4-garcon xorg-libxklavier xorg-libxkbfile libcanberra gnome-icon-theme
+# Grup: xfce4
 
 isim=xfce4-settings
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_settings_surum}";[ -z ${xfce4_settings_surum} ] && \
 surum=4.12.0
-devir=3
+devir=1
 
-kaynak=(http://archive.xfce.org/src/xfce/${isim}/${surum%.*}/$isim-$surum.tar.bz2 
-default-xsettings-xml.patch)
+kaynak=(http://archive.xfce.org/src/xfce/${isim}/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-cd $isim-$surum
-patch -Np1 -i $SRC/default-xsettings-xml.patch
-./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-static \
-    --enable-xrandr \
-    --enable-xcursor \
-    --enable-libnotify \
-    --enable-libxklavier \
-    --enable-pluggable-dialogs \
-    --enable-sound-settings \
-    --disable-upower-glib \
-    --disable-debug
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--disable-static \
+		--enable-xrandr \
+		--enable-xcursor \
+		--enable-libnotify \
+		--enable-libxklavier \
+		--enable-pluggable-dialogs \
+		--enable-sound-settings \
+		--disable-upower-glib \
+		--disable-debug
+	make
+	make DESTDIR=$PKG install
 }

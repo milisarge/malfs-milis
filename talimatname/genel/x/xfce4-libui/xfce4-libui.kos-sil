@@ -1,0 +1,11 @@
+#!/bin/sh
+_paket=xfce4-libui
+for _kurtar in  \
+'/etc/xdg/xfce4' \
+'/etc/xdg/xfce4/xfconf'; \
+do 
+
+# -sz ve -g den sonra /tmp/$paket.sil dikkate alınır
+sed -i '\|'\'$_kurtar\''|d' /tmp/$_paket.sil
+
+done

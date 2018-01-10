@@ -1,0 +1,12 @@
+#!/bin/sh
+_paket=xfce4-panel
+for _kurtar in  \
+'/etc/xdg/xfce4' \
+'/usr/lib/xfce4/panel' \
+'/usr/lib/xfce4/panel/plugins'; \
+do 
+
+# -sz ve -g den sonra /tmp/$paket.sil dikkate alınır
+sed -i '\|'\'$_kurtar\''|d' /tmp/$_paket.sil
+
+done

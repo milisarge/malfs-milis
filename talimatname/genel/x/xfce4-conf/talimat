@@ -1,27 +1,30 @@
 # Tanım: Xfconf, Xfce için yapılandırma depolama sistemidir.
 # URL: http://wiki.xfce.org/releng/4.6/general-info
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler: xfce4-libutil dbus-glib perl-glib 
+# Grup: xfce4
 
 _isim=xfconf
-
 isim=xfce4-conf
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_conf_surum}";[ -z ${xfce4_conf_surum} ] && \
 surum=4.12.0
 devir=1
 
-kaynak=(http://archive.xfce.org/xfce/${surum%.*}-$surum.tar.bz2)
+kaynak=(http://archive.xfce.org/xfce/${surum%.*}/$_isim-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$surum
-./configure \
+	cd ${_isim}-$surum
+	./configure \
 	--prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib/xfce4 \
-    --localstatedir=/var \
-    --disable-static \
-    --disable-debug
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib/xfce4 \
+	--localstatedir=/var \
+	--disable-static \
+	--disable-debug
 	make
 	make DESTDIR=$PKG install
 	rm -r $PKG/usr/share/gtk-doc
-find $PKG  -name perllocal.pod -exec rm {} \;
+	rm -r $PKG/usr/share/man
+	find $PKG  -name perllocal.pod -exec rm {} \;
 }
