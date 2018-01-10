@@ -11,7 +11,7 @@ surum="${xfce4_conf_surum}";[ -z ${xfce4_conf_surum} ] && \
 surum=4.12.0
 devir=1
 
-kaynak=(http://archive.xfce.org/xfce/${surum%.*}/$_isim-$surum.tar.bz2)
+kaynak=(http://archive.xfce.org/src/xfce/${_isim}/${surum%.*}/$_isim-$surum.tar.bz2)
 
 derle() {
 	cd ${_isim}-$surum
