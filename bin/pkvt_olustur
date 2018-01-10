@@ -1,5 +1,44 @@
 #!/bin/bash
+
+tekrarlar(){
+	#ls  *.mps.lz | cut -d'#' -f1 | sort | uniq -c | grep -v "1 " | sed -e 's/^[ \t]*//' | cut -d' ' -f2 | xargs -I {} find . -name {}* -printf "%T+\t%p\n" | sort |  awk '{print $2}'
+	#ls *.mps.lz | awk -F# '{ if (c[$1]) print $1 ; c[$1]=$0}' | cut -d' ' -f2 | xargs -I {} find . -name {}* -printf '%T+\t%p\n' | sort |  awk '{print $2}'
+	#ls *.mps.lz | awk -F# '{ if (c[$1]) print $1 ; c[$1]=$0}' | xargs -I {} find . -name {}* | sort
+	ls *.mps.lz | awk -F# '{ if (c[$1]) print $1 ; c[$1]=$0}'
+	#surum=$(mps -b $paket --normal | sed -n '6p' | cut -d':' -f2 | sed -e 's/^[ \t]*//')
+}
+
+eski_paket_tespit(){
+	[ -f /tmp/paketdepo_silinecekler ] && rm -rf /tmp/paketdepo_silinecekler
+	for paket in $(tekrarlar);do
+		paket1=`ls $paket* | sed -n 1p`
+		paket2=`ls $paket* | sed -n 2p`
+		#echo "$paket1 : $paket2"
+		if [ $paket1 -nt  $paket2 ];then
+			echo "$paket2" >> /tmp/paketdepo_silinecekler
+		else
+			echo "$paket1" >> /tmp/paketdepo_silinecekler
+		fi
+	done
+	if [ -f /tmp/paketdepo_silinecekler ];then
+		cat /tmp/paketdepo_silinecekler
+		mkdir -p /tmp/eskipaketler
+		while true; do
+			printf "\n"
+			echo "eski paketler listesi./tmp/eskipaketler altına taşınacak?";read -p "e veya h-> " eh
+			case $eh in
+				[Ee]* ) cat /tmp/paketdepo_silinecekler | xargs -I {} mv {} /tmp/eskipaketler/ ; break;;
+				[Hh]* ) break;;
+				* ) echo "e veya h";;
+			esac
+		done
+	else
+		echo "tekrarlayan paket yok."
+	fi		
+}
+
 pvt_olustur(){
+	echo "paket.vt oluşturuluyor."
 	if [ ! -f paket.vt ];then
 		touch paket.vt
 	fi
@@ -13,6 +52,9 @@ pvt_olustur(){
 		
 		echo $paketad $shaek  >> paket.vt  
 	done
+	echo "paket.vt oluşturuldu."
 }
+
+eski_paket_tespit
 
 pvt_olustur
