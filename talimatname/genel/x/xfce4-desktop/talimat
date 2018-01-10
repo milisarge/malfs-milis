@@ -1,34 +1,36 @@
 # Tanım: Xfdesktop masa yoneticisi xfce4 için.
 # URL: http://www.xfce.org
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler: exo libwnck xfce4-libui thunar xfce4-garcon
+# Grup: xfce4
 
 _isim=xfdesktop
-run=(gtk-update-icon-cache)
-
 isim=xfce4-desktop
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_desktop_surum}";[ -z ${xfce4_desktop_surum} ] && \
 surum=4.12.3
 devir=1
 
-kaynak=(http://archive.xfce.org/src/xfce/${_name}/4.12/${_name}-$surum.tar.bz2)
+kaynak=(http://archive.xfce.org/src/xfce/${_isim}/${surum%.*}/${_isim}-$surum.tar.bz2)
 
 derle() {
-cd ${_name}-$surum
-#duvar kagidi yuklemek icin
-#sed -i "s/xfce-blue.jpg/milis.jpg/" common/xfdesktop-common.h
-./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --enable-gio-unix \
-    --enable-thunarx \
-    --enable-notifications \
-    --disable-debug
-make
-make DESTDIR=$PKG install
-#duvar kagidi yuklemek icin
-#install -D -m644 ../milis.jpg \
-#$PKG/usr/share/backgrounds/xfce/milis.jpg
+	cd ${_isim}-$surum
+	#duvar kagidi yuklemek icin
+	#sed -i "s/xfce-blue.jpg/milis.jpg/" common/xfdesktop-common.h
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib \
+		--localstatedir=/var \
+		--disable-static \
+		--enable-gio-unix \
+		--enable-thunarx \
+		--enable-notifications \
+		--disable-debug
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
+	#duvar kagidi yuklemek icin
+	#install -D -m644 ../milis.jpg \
+	#$PKG/usr/share/backgrounds/xfce/milis.jpg
 }
