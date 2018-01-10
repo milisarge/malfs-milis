@@ -2,16 +2,20 @@
 # URL: http://xfce.org/
 # Paketçi: milisarge
 # Gerekler: gstreamer-plugins-base keybinder xfce4-conf glib
+# Grup: xfce4
 
 isim=xfce4-volumed
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_volumed_surum}";[ -z ${xfce4_volumed_surum} ] && \
 surum=0.1.13
 devir=1
+
 kaynak=(http://archive.xfce.org/src/apps/$isim/${version::3}/$isim-$surum.tar.bz2)
 
 derle() {
 	cd $isim-$surum
-
 	./configure --prefix=/usr --libexecdir=/usr/lib/$isim
 	make
 	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
 }
