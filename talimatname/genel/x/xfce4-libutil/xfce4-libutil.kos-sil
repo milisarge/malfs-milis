@@ -1,0 +1,12 @@
+#!/bin/sh
+_paket=xfce4-libutil
+for _kurtar in  \
+'/usr/share/locale/ur_PK/LC_MESSAGES' \
+'/usr/share/gir-1.0' \
+'/usr/share/locale/ur_PK'; \
+do 
+
+# -sz ve -g den sonra /tmp/$paket.sil dikkate alınır
+sed -i '\|'\'$_kurtar\''|d' /tmp/$_paket.sil
+
+done

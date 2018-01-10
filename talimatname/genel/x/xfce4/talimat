@@ -1,13 +1,40 @@
 # Tanım: sistem
 # URL:  sistem
 # Paketçi: milisarge
-# Gerekler: xorg xfce4-desktop xfce4-session xfce4-settings xfce4-notifyd xfce4-panel xfce4-wm xfce4-power-manager xfce4-xkb-plugin xfce4-terminal xfce4-libui xfce4-libutil xfce4-garcon xfce4-clipman-plugin xfce4-volumed xfce4-gtk-engine xfce4-appfinder xfce4-battery-plugin xfce4-conf xfce4-datetime-plugin xfce4-elementary-icon-theme tumbler xfce4-screenshooter xfce4-whiskermenu-plugin dejavu-ttf
+# Gerekler: xorg xfce4-desktop xfce4-session xfce4-settings xfce4-notifyd xfce4-panel xfce4-wm xfce4-power-manager xfce4-xkb-plugin xfce4-terminal xfce4-libui xfce4-libutil xfce4-garcon xfce4-clipman-plugin xfce4-volumed xfce4-gtk-engine xfce4-appfinder xfce4-battery-plugin xfce4-conf xfce4-datetime-plugin xfce4-elementary-icon-theme tumbler xfce4-screenshooter xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin dejavu-ttf
 
 isim=xfce4-sistem
 surum=1
 devir=1
 
-kaynak=(talimat)
+# xfce4 grubu sürüm takibi
+
+xfce4-libutil-surum="4.12.1"
+xfce4-conf-surum="4.12.1" 
+xfce4-libui-surum="4.12.1"
+xfce4-settings-surum="4.12.1"
+xfce4-desktop-surum="4.12.4"
+xfce4-panel-surum="4.12.2"
+xfce4-wm-surum="4.12.4"
+xfce4-appfinder-surum="4.12.0" 
+
+xfce4-notifyd-surum="0.4.1"
+xfce4-power-manager-surum="1.6.1"
+xfce4-xkb-plugin-surum="0.8.1"
+xfce4-terminal-surum="0.8.6"
+xfce4-garcon-surum="0.6.1"
+xfce4-clipman-plugin-surum="1.4.2"
+xfce4-volumed-surum="0.1.13"
+xfce4-gtk-engine-surum="3.2.0" 
+xfce4-battery-plugin-surum="1.1.0" 
+xfce4-datetime-plugin-surum="0.7.0" 
+xfce4-elementary-icon-theme-surum="0.9" 
+tumbler-surum="0.2.0" 
+xfce4-screenshooter-surum="1.9.1"
+xfce4-whiskermenu-plugin-surum="2.1.5"
+xfce4-pulseaudio-plugin-surum="0.3.4"
+
+kaynak=()
 
 derle() {
 echo "xfce4 sistem"
