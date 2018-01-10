@@ -2,17 +2,17 @@
 # URL:  http://freedesktop.org/software/desktop-file-utils
 # Paketçi: milisarge
 # Gerekler: glib
+# Grup: sistem
 
 isim=desktop-file-utils
-surum=0.22
+surum=0.23
 devir=1
-kaynak=(  http://freedesktop.org/software/$isim/releases/$isim-$surum.tar.xz)
+kaynak=(http://freedesktop.org/software/$isim/releases/$isim-$surum.tar.xz)
 
 derle() {
 	cd $isim-$surum
-	./configure --prefix=/usr \
-		--mandir=/usr/share/man \
-		--infodir=/usr/share/info
+	./configure --prefix=/usr 
 	make
 	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share
 }
