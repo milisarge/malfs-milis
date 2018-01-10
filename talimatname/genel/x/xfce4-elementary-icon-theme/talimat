@@ -2,13 +2,17 @@
 # URL: https://github.com/shimmerproject/elementary-xfce
 # Paketçi: milisarge
 # Gerekler:
+# Grup: xfce4
 
 isim=xfce4-elementary-icon-theme
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_elementary_icon_theme_surum}";[ -z ${xfce4_elementary_icon_theme_surum} ] && \
 surum=0.8
 devir=1
 
 kaynak=(https://github.com/shimmerproject/elementary-xfce/archive/v$surum.tar.gz)
+
 derle() {
-install -d -m 0755 $PKG//usr/share/icons
-mv elementary-xfce-$surum/elementary-xfce{,-dark,-darker} $PKG//usr/share/icons
+	install -d -m 0755 $PKG//usr/share/icons
+	mv elementary-xfce-$surum/elementary-xfce{,-dark,-darker} $PKG//usr/share/icons
 }
