@@ -1,18 +1,22 @@
-# Tanım: Bu eklenti, birden fazla (şu an 4'e kadar X11 protokolü sınırlaması nedeniyle) klavye düzenlerini kurmanıza ve kullanmanıza olanak tanır.
+# Tanım: Bu eklenti,birden fazla klavye düzenlerini kurmanıza ve kullanmanıza olanak tanır.
 # URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin
 # Paketçi: milisarge
-# Gerekler: librsvg xorg-libxklavier xfce4-panel
+# Gerekler: librsvg xorg-libxklavier xfce4-panel libwnck3
+# Grup: xfce4
 
 isim=xfce4-xkb-plugin
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_xkb_plugin_surum}";[ -z ${xfce4_xkb_plugin_surum} ] && \
 surum=0.7.1
 devir=1
 
 kaynak=(http://archive.xfce.org/src/panel-plugins/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr \
---disable-debug
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure --prefix=/usr \
+	--disable-debug
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
 }
