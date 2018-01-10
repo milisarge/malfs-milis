@@ -4,7 +4,7 @@ if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 fi
 
-versiyon="1.1.7 Milis Paket Sistemi"
+versiyon="1.1.8 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 paketdepo="/depo/paketler/"
 if [ -z ${sunucu+:} ]; then
@@ -866,7 +866,11 @@ paket_inkur_oto(){
 		anakonum="`find "$anatalimatname" -name $kpkt`"
 		ekkonum="`find "$ektalimatname" -name $kpkt`"
 		if [ -f  "$anakonum/talimat" ];then
-			if [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "evet" ];then
+			# depo ve talimatname sürüm kontrolü
+			_gncdurum=$(surum_karsilastir ${kpkt})
+			if [ "${_gncdurum}" == "esit" ];then
+				agdan_kur "$kpkt" "$cikti"
+			elif [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "evet" ];then
 				agdan_kur "$kpkt" "$cikti"
 			else
 				$_yaz_uyari "$kpkt talimat eşitsizliğinden atlandı." 
@@ -1190,6 +1194,25 @@ devir_kontrol(){
 	fi
 }
 
+surum_karsilastir(){
+	local kpaket _konum
+	[ "$1" ] && kpaket="$1" || exit 1
+	deposurum=$(grep " $kpaket#" /depo/paketler/paket.vt | cut -d' ' -f3 | cut -d'#' -f 2 | cut -d'-' -f1)
+	_konum=$(talimat_bul $kpaket)
+	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+		ryaz 31 "$kpaket $_talimat_bulunamadi $_surum_kontrol_iptal"
+		exit 1
+	fi
+	
+	source $_konum/talimat
+	tsurum=`echo -e "$surum" | sort -V | head -n1`
+	if [ "$tsurum" == "$deposurum" ];then
+		echo "esit"
+	else
+		echo "degil"
+	fi
+}
+
 surum_devir_kontrol(){
 	local _konum pk_sil _paket _durum pk_guncelle
 	_paket=$1
@@ -1326,15 +1349,18 @@ paket_derle(){
 		mkdir -p tmp."$derpaket" 
 		cp -a $konum/* tmp."$derpaket"/
 		cd tmp."$derpaket"
-		#paket güncelleme kurulu olsa da kontrol edilir.
-		_gncdurum=$(surum_devir_kontrol ${derpaket} --durum)
-		if [ "${_gncdurum}" == "var" ];then
-			echo "paketin güncellenmesi gerek."
-			surum_devir_kontrol ${derpaket}
-			paket_sil ${derpaket}
-		fi 
+		_kurulu=$(kurulu_kontrol "$derpaket")
+		# paket kurulu ise kurulu sürüm-devir depoyla kontrol edilir,gerekirse silinip yenisi derlenir.
+		if [ "$_kurulu" = "kurulu" ];then
+			_gncdurum=$(surum_devir_kontrol ${derpaket} --durum)
+			if [ "${_gncdurum}" == "var" ];then
+				echo "paketin güncellenmesi gerek."
+				surum_devir_kontrol ${derpaket}
+				paket_sil ${derpaket}
+			fi 
+		fi
 		
-		if [ "`kurulu_kontrol "$derpaket"`" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
+		if [ "$_kurulu" = "kurulu" ] && [ "$zorla_derle" = "yok" ];then
 			derleme_onay="h"
 		else
 			derleme_onay="e"
@@ -3051,14 +3077,16 @@ ayarlar() {
 			-dpl|deplist)
 				depo_paketler_liste 
 				exit 0 ;;
+			### mps depsil . = depo/paketler altındaki paket önbelleğini temizler.
 			-dps|depsil)
 				depo_paketler_sil 
 				exit 0 ;;
-			### mps link url_adres = verilen url adresindeki talimatı ektalimatname/topluluk altına inidirir.
+			### mps link url_adres = verilen url adresindeki talimatı ektalimatname/topluluk altına indirir.
 			link)
 				mkdir -p $ektalimatname/topluluk
 				indir_talimat_paketle $2 "-4" "$ektalimatname/topluluk"
 				exit 0 ;;
+			### mps ti url_adres = verilen url adresindeki talimatı talimatname/genel altına indirir.
 			ti)
 				indir_talimat_paketle $2 "-4" "$talimatname/genel"
 				exit 0 ;;
@@ -3100,14 +3128,16 @@ ayarlar() {
 				fi
 					tarihce_yukle "$2"
 					shift ;;
+			### mps -trl . = tarihçe noktalarını listeler.
 			-trl)
 				tarihce_liste ;;
-			### mps tdc talimat_dosyası = ilgili talimat dosyasının Türkçe değişken çevrimii yapar.
+			### mps tdc talimat_dosyası = ilgili talimat dosyasının Türkçe değişken çevrimini yapar.
 			tdc)
 				talimat_degisken_cevrim $2
 				exit 0 ;;
 			-tamir-tk)
 				tamir_temel_kurulan ;;
+			### mps dos . = derleme ortamını sıfırlar.temel tarihçeye geri döner.
 			dos)
 				tarihce_yukle "temel" 
 				exit 0 ;;
@@ -3119,7 +3149,21 @@ ayarlar() {
 				fi
 					tarihce_sil "$2"
 					shift ;;
-			### mps -v . = mps sürüm bilgilerini gösterir.
+			### mps itest islev_ismi = mps içindeki işlevlerin testi için kullanılmaktadır.
+			itest)
+				if [ $2 ];then
+					_islev="$2"
+					if [ "`type -t $_islev`" == "function" ];then
+						shift;shift
+						$_islev $@
+					else
+						echo "$_islev işlevi bulunamadı"
+					fi
+				else
+					echo "test edilecek işlev parametresi eksik"
+				fi
+				exit 0 ;;
+			### mps -v . = mps sürüm bilgisini gösterir.
 			-v)
 				echo $deneme
 				ryaz 33 "$betikad $versiyon  $iletisim" 
