@@ -854,7 +854,7 @@ paket_inkur_oto(){
 		_yaz="echo"
 		_yaz_uyari="echo"
 	fi
-	local konum anakonum kurdurum
+		local konum anakonum kurdurum _agdan_kur_onay
 	derleme_listyap_kontrol
 	#derleme_listyap "$1" | grep "bulunamadı"
 	kurulum_listyap "$1" | grep "bulunamadı"
@@ -868,13 +868,17 @@ paket_inkur_oto(){
 		if [ -f  "$anakonum/talimat" ];then
 			# depo ve talimatname sürüm kontrolü
 			_gncdurum=$(surum_karsilastir ${kpkt})
-			if [ "${_gncdurum}" == "esit" ];then
-				agdan_kur "$kpkt" "$cikti"
+			_agdan_kur_onay="x"
+			if [ "${_gncdurum}" == "degil" ];then
+				_agdan_kur_onay="h"
 			elif [ "`dosya_karsilastir $konum/talimat $anakonum/talimat`" = "evet" ];then
-				agdan_kur "$kpkt" "$cikti"
+				_agdan_kur_onay="e"	
 			else
+				_agdan_kur_onay="h"
 				$_yaz_uyari "$kpkt talimat eşitsizliğinden atlandı." 
 			fi
+			[ $_agdan_kur_onay == "x" ] && exit 1
+			[ $_agdan_kur_onay == "e" ] && agdan_kur "$kpkt" "$cikti"
 		elif [ -f  "$ekkonum/talimat" ];then
 			agdan_kur "$kpkt" "$cikti"
 		else
