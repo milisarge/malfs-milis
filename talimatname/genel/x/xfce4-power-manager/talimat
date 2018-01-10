@@ -2,17 +2,21 @@
 # URL: http://goodies.xfce.org/projects/applications/xfce4-power-manager
 # Paketçi: milisarge
 # Gerekler: dbus-glib xorg-app libnotify xfce4-panel upower udisks 
+# Grup: xfce4
 
 isim=xfce4-power-manager
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_power_manager_surum}";[ -z ${xfce4_power_manager_surum} ] && \
 surum=1.4.4
 devir=2
 
 kaynak=(http://archive.xfce.org/src/xfce/$isim/${surum%.*}/$isim-$surum.tar.bz2)
 derle() {
-cd $isim-$surum
-./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/man
 }

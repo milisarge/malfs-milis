@@ -1,0 +1,13 @@
+#!/bin/sh
+_paket=xfce4-power-manager
+for _kurtar in  \
+'/usr/share/xfce4/panel/plugins' \
+'/usr/share/xfce4/panel' \
+'/usr/share/xfce4/panel' \
+'/usr/lib/xfce4/panel'; \
+do 
+
+# -sz ve -g den sonra /tmp/$paket.sil dikkate alınır
+sed -i '\|'\'$_kurtar\''|d' /tmp/$_paket.sil
+
+done
