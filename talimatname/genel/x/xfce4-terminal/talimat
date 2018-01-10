@@ -1,23 +1,26 @@
-# Tanım: Xfce4 Terminal, bir GTK + 2 terminal emülatörüdür. Bu, bir Xorg penceresinin konforunda komutları veya programları çalıştırmak için kullanışlıdır; Dosyaları Xfce4 Terminaline sürükleyip bırakabilir veya farenizle metni kopyalayıp yapıştırabilirsiniz.
-# URL: http://www.os-cillation.com/index.php?id=42&L=5
+# Tanım: Xfce4 Terminal, bir GTK + 2 terminal emülatörüdür.
+# URL: http://wiki.xfce.org
 # Paketçi: milisarge
 # Gerekler: exo vte vte3
+# Grup: xfce4
 
 isim=xfce4-terminal
+source /root/talimatname/genel/x/xfce4/surumler
+surum="${xfce4_terminal_surum}";[ -z ${xfce4_terminal_surum} ] && \
 surum=0.8.6
 devir=1
 
 kaynak=(http://archive.xfce.org/src/apps/${isim}/${surum%.*}/$isim-$surum.tar.bz2 )
 
 derle() {
-cd $isim-$surum
-./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --disable-debug
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib \
+		--localstatedir=/var \
+		--disable-static \
+		--disable-debug
+	make
+	make DESTDIR=$PKG install
 }
