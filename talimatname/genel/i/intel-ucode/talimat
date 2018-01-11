@@ -2,16 +2,17 @@
 # URL:		http://downloadcenter.intel.com/
 # Paketçi:	milisarge
 # Gerekler: 
+# Grup: firmware
 
 isim=intel-ucode
-surum=2.1.13
+surum=2.1.15
 devir=1
-dlVersion=${surum%.*}
+
 kaynak=(
-http://pkgs.fedoraproject.org/repo/pkgs/microcode_ctl/microcode_ctl-2.1-13.tar.xz/sha512/f715b866198fb2cb468ac561e9f83ac9e1751e428529417bcd702485d0a51b72836d130ed5fbe28bac9dddf9aaecce778acfaad4110662b850e38c168dffe3d5/microcode_ctl-2.1-13.tar.xz)
+http://pkgs.fedoraproject.org/repo/pkgs/microcode_ctl/microcode_ctl-2.1-15.tar.xz/sha512/2c1c65b62de80ca958068f18b54c3c635415c45f83095d5dbf07c5c94776b0297c8ae8cf82271cc96d6ded9bf6e22c511f6a50523b307fd9e995d723621d63e7/microcode_ctl-2.1-15.tar.xz)
 
 derle() {
-	cd microcode_ctl-2.1-13
+	cd microcode_ctl-2.1-15
 	make all
 	install -Dt $PKG/lib/firmware/intel-ucode/ intel-ucode/*
 }
