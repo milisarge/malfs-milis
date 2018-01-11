@@ -1,0 +1,17 @@
+# Tanım: Intel® IA-32/X86-64 microcode larını yönetmek için araç
+# URL: https://gitlab.com/iucode-tool/iucode-tool/wikis/home
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: sistem 
+
+isim=iucode-tool
+surum=2.2
+devir=1
+kaynak=(https://gitlab.com/iucode-tool/releases/raw/master/iucode-tool_$surum.tar.xz)
+
+derle() {
+	cd "$SRC/${isim}-$surum"
+	./configure --prefix=/usr --sbindir=/usr/bin
+	make
+	make DESTDIR="$PKG/" install
+}
