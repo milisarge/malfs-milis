@@ -2945,10 +2945,24 @@ ayarlar() {
 					touch "/tmp/mps_paket_bilgi_$2"
 					paket_bilgi "$2" "$3"  | tee "/tmp/mps_paket_bilgi_$2"
 					if [ $3 ];then
-						[ $3 = "--html" ] && paket_bilgi_html "/tmp/mps_paket_bilgi_$2"
+						[ $3 == "--html" ] && paket_bilgi_html "/tmp/mps_paket_bilgi_$2"
 					fi
 				else
 					ryaz 31 "paket ismi eksik"
+					exit 1
+				fi
+				exit 0 ;;
+			bil)
+				if [ $2 ];then
+					if [ $3 ];then
+						[ $2 == "surum" ] && paket_bilgi "$3" "--normal"  | sed -n 6p | cut -d':' -f2 | sed 's/^ *//;s/ *$//'
+						[ $2 == "devir" ] && paket_bilgi "$3" "--normal"  | sed -n 7p | cut -d':' -f2 | sed 's/^ *//;s/ *$//'
+					else
+						ryaz 31 "paket ismi eksik"
+						exit 1
+					fi	
+				else
+					ryaz 31 "islev ismi eksik"
 					exit 1
 				fi
 				exit 0 ;;
