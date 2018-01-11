@@ -2482,8 +2482,8 @@ yerelden_kur(){
 	pkontrol=`basename $1 | grep -w "mps.lz"`
 	if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
 		paketad=`echo "$1" | cut -d'#' -f1`	
-		kkont=`kurulu_kontrol "$paketad"`
-		
+		paketad=`basename $paketad`
+		kkont=`kurulu_kontrol "$paketad"`		
 		if [ "$kkont" = "degil" ];then
 			icerik_ekle "$1"
 		elif [ "$kkont" = "kurulu" ];then
