@@ -1,0 +1,19 @@
+# Tanım: Linux için Qt çerçevesinde desteklenen, C ++ ile yazılmış küçük, net ve hızlı bir ses çalar
+# URL: http://sayonara-player.com
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5 taglib gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-bad libmtp zlib cmake
+# Grup: medya
+
+isim=sayonara-player
+surum=20171231
+devir=1
+kaynak=(http://sayonara-player.com/sw/sayonara-player-1.0.0-git1-$surum.tar.gz)
+
+derle() {
+  cd $SRC/$isim
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE="Release"
+    make
+    make DESTDIR="$PKG/" install
+}
