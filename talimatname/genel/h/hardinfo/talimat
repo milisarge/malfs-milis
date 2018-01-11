@@ -1,0 +1,31 @@
+# Tanım: Bir sistem bilgisi ve performans aracı.
+# URL: http://sourceforge.net/projects/hardinfo.berlios/
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk2 libsoup glib
+# Grup: sistem
+
+isim=hardinfo
+surum=0.6
+devir=1
+kaynak=(hardinfo-tr.po)
+
+derle() {
+
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/lpereira/hardinfo $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+	cp ../hardinfo-tr.po po/tr.po
+	mkdir build  
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=lib 
+	make
+
+	make DESTDIR="${PKG}" install
+}
