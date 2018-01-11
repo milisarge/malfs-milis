@@ -1,2 +1,5 @@
 #! /bin/sh
+if [ -f /boot/grub/grub.cfg ];then
+	mv /boot/grub/grub.cfg /boot/grub/grub.cfg.eski
+fi
 grub-mkconfig -o /boot/grub/grub.cfg
