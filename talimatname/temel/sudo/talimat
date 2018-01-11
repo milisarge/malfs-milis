@@ -1,4 +1,4 @@
-# Tanım: Give certain users (or groups) the ability to run some commands as root.
+# Tanım: Belirli kullanıcılara (veya gruplara) bazı komutları root olarak çalıştırma olanağını verir.
 # URL: http://www.sudo.ws
 # Paketçi: milisarge
 # Gerekler:
@@ -17,7 +17,7 @@ cd $isim-$surum
 --with-all-insults \
 --with-env-editor \
 --without-sendmail \
---with-passprompt="[sudo] password for %p: "
+--with-passprompt="[sudo] %p için parola: "
 
 make
 make DESTDIR=$PKG install
