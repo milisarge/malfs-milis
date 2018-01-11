@@ -1,0 +1,2 @@
+#!/bin/sh
+cat /proc/cpuinfo | grep microcode | sed -n 1p | cut -d':' -f2 | sed 's/^ *//;s/ *$//'
