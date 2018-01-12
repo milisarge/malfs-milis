@@ -8,7 +8,7 @@ isim=wxgtk
 surum=3.0.3.1
 devir=1
 
-kaynak=(http://downloads.sourceforge.net/wxwindows/wxWidgets-$surum.tar.bz2
+kaynak=(https://github.com/wxWidgets/wxWidgets/archive/v$surum.tar.gz::wxWidgets-$surum.tar.bz2
 		make-abicheck-non-fatal.patch)
 		
 derle() {
