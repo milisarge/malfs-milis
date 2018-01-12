@@ -11,11 +11,13 @@ kaynak=(https://github.com/vslavik/poedit/releases/download/v$surum-oss/poedit-$
 
 derle() {
   #if komutuyla eğer yoksa demek lazım
-  [ ! -L /usr/bin/wx-config-gtk3 ] && ln -s /usr/bin/wx-config /usr/bin/wx-config-gtk3
+  #[ ! -L /usr/include/wx ] && ln -s /usr/include/wx-3.0/wx /usr/include/wx
   cd "${SRC}"/${isim}-${surum}
-  GTKSPELL_LIBS="`pkg-config --libs gtkspell3-3.0`" GTKSPELL_CFLAGS="`pkg-config --cflags gtkspell3-3.0`" ./configure \
-  --prefix=/usr --libexecdir=/usr/lib/poedit --with-wx-config=/usr/bin/wx-config-gtk3 
+  GTKSPELL_LIBS="`pkg-config --libs gtkspell3-3.0`" GTKSPELL_CFLAGS="`pkg-config --cflags gtkspell3-3.0`" \
+  ./configure --with-gtk=gtk3 \
+  --prefix=/usr --libexecdir=/usr/lib/poedit --with-wx-config=/usr/bin/wx-config  
   make CPPFLAGS+=' -DUCHAR_TYPE=uint16_t'
   make DESTDIR="${PKG}" install
   install -Dm644 COPYING "${PKG}"/usr/share/licenses/${isim}/LICENSE
+  #[ -L /usr/include/wx ] && rm /usr/include/wx
 }

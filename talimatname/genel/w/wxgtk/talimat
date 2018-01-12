@@ -9,26 +9,34 @@ surum=3.0.3.1
 devir=1
 
 kaynak=(https://github.com/wxWidgets/wxWidgets/archive/v$surum.tar.gz::wxWidgets-$surum.tar.bz2
-		make-abicheck-non-fatal.patch)
+		https://github.com/wxWidgets/wxWidgets/commit/ec6e54bc.patch::wxgtk-webkit2gtk.patch
+		https://github.com/wxWidgets/wxWidgets/commit/fd247cca.patch::wxgtk2-fix-webview.patch
+		https://github.com/wxWidgets/wxWidgets/commit/ce1dce11.patch::wxgtk-filezilla-assert.patch
+		make-abicheck-non-fatal.patch
+		wxgtk-webkit-infinite-loop.patch)
 		
 derle() {
 	cd wxWidgets-$surum
+	# C++ ABI check is too strict and breaks with GCC 5.1
+	# https://bugzilla.redhat.com/show_bug.cgi?id=1200611
 	patch -Np1 -i ../make-abicheck-non-fatal.patch
-	./configure --prefix=/usr \
-	--libdir=/usr/lib \
-	--with-gtk=2 \
-	--with-opengl \
-	--enable-unicode \
-	--enable-graphics_ctx  \
-	--enable-mediactrl \
-	--enable-webview \
-	--with-regex=builtin \
-	--with-libpng=sys \
-	--with-libxpm=sys \
-	--with-libjpeg=sys \
-	--with-libtiff=sys \
+
+	# Support webkit2gtk
+	sed -e 's|setup0.h|setup.h|g' -i ../wxgtk-webkit2gtk.patch
+	patch -p1 -i ../wxgtk-webkit2gtk.patch
+	# fix webview after webkit2gtk port
+	patch -p1 -i ../wxgtk2-fix-webview.patch
+	# fix assert in FileZilla
+	patch -p1 -i ../wxgtk-filezilla-assert.patch
+	# fix infinite loop in webkit
+	patch -p1 -i ../wxgtk-webkit-infinite-loop.patch
+
+	./autogen.sh
+	./configure --prefix=/usr --libdir=/usr/lib --with-gtk=2 --with-gtk=3 --with-opengl --enable-unicode \
+	--enable-graphics_ctx --enable-mediactrl --enable-webview --with-regex=builtin \
+	--with-libpng=sys --with-libxpm=sys --with-libjpeg=sys --with-libtiff=sys \
 	--disable-precomp-headers
 	make
 	make -C locale allmo
-	make DESTDIR=$PKG install
+	make DESTDIR="${PKG}" install
 }
