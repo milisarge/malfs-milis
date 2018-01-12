@@ -1,7 +1,7 @@
 # Tanım: Java Lucene kütüphanesinin c++ sürümü
 # URL: https://github.com/luceneplusplus/LucenePlusPlus
 # Paketçi: milisarge
-# Gerekler: boost cmake subversion boost-libs 
+# Gerekler: boost cmake subversion
 # Grup: kütüphane
 
 isim=lucenepp

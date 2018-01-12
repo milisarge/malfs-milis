@@ -1,7 +1,7 @@
 # Tanım: Çapraz platform gettext katalogları (.po dosyaları) editörü
 # URL: http://www.poedit.net/
 # Paketçi: Cihan_Alkan
-# Gerekler: boost gtkspell wxgtk clucene
+# Gerekler: boost gtkspell wxgtk lucenepp
 # Grup:
 
 isim=poedit
@@ -13,9 +13,9 @@ derle() {
   #if komutuyla eğer yoksa demek lazım
   [ ! -L /usr/bin/wx-config-gtk3 ] && ln -s /usr/bin/wx-config /usr/bin/wx-config-gtk3
   cd "${SRC}"/${isim}-${surum}
-  ./configure --prefix=/usr --libexecdir=/usr/lib/poedit --with-wx-config=/usr/bin/wx-config-gtk3
+  GTKSPELL_LIBS="`pkg-config --libss gtkspell3-3.0`" GTKSPELL_CFLAGS="`pkg-config --cflags gtkspell3-3.0`" ./configure \
+  --prefix=/usr --libexecdir=/usr/lib/poedit --with-wx-config=/usr/bin/wx-config-gtk3 
   make CPPFLAGS+=' -DUCHAR_TYPE=uint16_t'
   make DESTDIR="${PKG}" install
   install -Dm644 COPYING "${PKG}"/usr/share/licenses/${isim}/LICENSE
-  [ -L /usr/bin/wx-config-gtk3 ] && rm /usr/bin/wx-config-gtk3
 }
