@@ -1,0 +1,21 @@
+# Tanım: Çapraz platform gettext katalogları (.po dosyaları) editörü
+# URL: http://www.poedit.net/
+# Paketçi: Cihan_Alkan
+# Gerekler: boost gtkspell wxgtk clucene
+# Grup:
+
+isim=poedit
+surum=2.0.5
+devir=1
+kaynak=(https://github.com/vslavik/poedit/releases/download/v$surum-oss/poedit-${surum}.tar.gz)
+
+derle() {
+  #if komutuyla eğer yoksa demek lazım
+  [ ! -L /usr/bin/wx-config-gtk3 ] && ln -s /usr/bin/wx-config /usr/bin/wx-config-gtk3
+  cd "${SRC}"/${isim}-${surum}
+  ./configure --prefix=/usr --libexecdir=/usr/lib/poedit --with-wx-config=/usr/bin/wx-config-gtk3
+  make CPPFLAGS+=' -DUCHAR_TYPE=uint16_t'
+  make DESTDIR="${PKG}" install
+  install -Dm644 COPYING "${PKG}"/usr/share/licenses/${isim}/LICENSE
+  [ -L /usr/bin/wx-config-gtk3 ] && rm /usr/bin/wx-config-gtk3
+}
