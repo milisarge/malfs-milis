@@ -1,0 +1,28 @@
+# Tanım: Java Lucene kütüphanesinin c++ sürümü
+# URL: https://github.com/luceneplusplus/LucenePlusPlus
+# Paketçi: milisarge
+# Gerekler: boost cmake subversion boost-libs 
+# Grup: kütüphane
+
+isim=lucenepp
+surum=3.0.7
+devir=1
+kaynak=(https://github.com/luceneplusplus/LucenePlusPlus/archive/master.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  mkdir build
+  sed -i \
+    -e 's#SET(LUCENE++_VERSION_REVISION.*#SET(LUCENE++_VERSION_REVISION "5")#' \
+    -e 's#SET(LUCENE++_VERSION_PATCH.*#SET(LUCENE++_VERSION_PATCH "0")#' \
+    "$SRC"/LucenePlusPlus-master/CMakeLists.txt
+  cd build
+  cmake ../LucenePlusPlus-master \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_DESTINATION=/usr/lib \
+    -DBoost_LIBRARY_DIR=/usr/lib \
+    -DENABLE_CUSTOM_ALLOCATOR='FALSE' \
+    -DCMAKE_CXX_FLAGS='-DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT'
+    # RELAXED for boost 1.58 breakage, remove when lucene++ updates
+  make
+  make DESTDIR="$PKG" install
+}
