@@ -16,6 +16,7 @@ kaynak=(https://github.com/wxWidgets/wxWidgets/archive/v$surum.tar.gz::wxWidgets
 		wxgtk-webkit-infinite-loop.patch)
 		
 derle() {
+	sleep 3
 	cd wxWidgets-$surum
 	# C++ ABI check is too strict and breaks with GCC 5.1
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1200611
