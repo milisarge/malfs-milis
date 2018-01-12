@@ -1,0 +1,33 @@
+# Tanım: Güçlü ve kullanımı kolay ekran görüntüsü yazılımı
+# URL: https://github.com/lupoDharkael/flameshot
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5
+# Grup: grafik_tasarım
+
+isim=flameshot
+surum=0.5.0
+devir=1
+
+kaynak=(https://github.com/lupoDharkael/flameshot/archive/v$surum.tar.gz::$isim-$surum.tar.gz
+        flame-Internationalization_tr.ts
+        flameshot-init.desktop
+        flameshot.desktop)
+
+derle() {
+ cd $isim-$surum
+ cp ../*.desktop ./docs/desktopEntry/package/
+
+  qmake
+  make
+
+  install -Dm755 "./flameshot" "${PKG}/usr/bin/flameshot"
+  #install -Dm644 "./dbus/package/org.dharkael.Flameshot.service" "${PKG}/usr/share/dbus-1/services/org.dharkael.Flameshot.service"
+  install -Dm644 "./dbus/org.dharkael.Flameshot.xml" "${PKG}/usr/share/dbus-1/interfaces/org.dharkael.Flameshot.xml"
+  install -Dm644 "./docs/desktopEntry/package/flameshot.desktop" "${PKG}/usr/share/applications/flameshot.desktop"
+  install -Dm644 "./docs/desktopEntry/package/flameshot-init.desktop" "${PKG}/usr/share/applications/flameshot-init.desktop"
+  install -Dm644 "./img/flameshot.png" "${PKG}/usr/share/icons/flameshot.png"
+  mkdir -p ${PKG}/usr/share/flameshot/translations
+  install -Dm644 ./translation/*.qm ${PKG}/usr/share/flameshot/translations/
+  /usr/lib/qt5/bin/lrelease $SRC/flame-Internationalization_tr.ts -qm ${PKG}/usr/share/flameshot/translations/Internationalization_tr.qm
+}
+

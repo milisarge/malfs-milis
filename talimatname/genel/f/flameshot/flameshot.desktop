@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Flameshot
+Name=Take graphical screenshot
+Name[es]=Tomar captura gráfica
+Name[tr]=Grafiksel ekran görüntüsü al
+GenericName[es]=Herramienta de captura de pantalla
+Comment=Powerfull yet simple to use screenshot software.
+Comment[es]=Potente pero simple de usar software de capturas.
+Comment[tr]=Güçlü ve kullanımı kolay ekran görüntüsü yazılımı.
+Exec=/usr/bin/flameshot gui
+TryExec=/usr/bin/flameshot
+Icon=/usr/share/icons/flameshot.png
+Terminal=false
+Type=Application
+Categories=Graphics
+StartupNotify=false
