@@ -21,9 +21,9 @@ derle() {
 	# C++ ABI check is too strict and breaks with GCC 5.1
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1200611
 	patch -Np1 -i ../make-abicheck-non-fatal.patch
-	sleep 3
+	
 	# Support webkit2gtk
-	sed -e 's|setup0.h|setup.h|g' -i ../wxgtk-webkit2gtk.patch
+	#sed -e 's|setup0.h|setup.h|g' -i ../wxgtk-webkit2gtk.patch
 	patch -p1 -i ../wxgtk-webkit2gtk.patch
 	# fix webview after webkit2gtk port
 	patch -p1 -i ../wxgtk2-fix-webview.patch
