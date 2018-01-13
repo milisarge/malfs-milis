@@ -1,7 +1,7 @@
 # Tanım: Secret Service API'sına erişmek için GObject tabanlı kütüphane.
 # URL: http://www.gnome.org/
 # Paketçi: milisarge
-# Gerekler: intltool libxslt docbook-xsl glib gobject-introspection libgcrypt vala
+# Gerekler: intltool libxslt docbook-xsl glib gobject-introspection libgcrypt vala gtk-doc
 
 isim=libsecret
 surum=0.18.5
@@ -10,10 +10,11 @@ devir=1
 kaynak=(https://git.gnome.org/browse/libsecret/snapshot/$isim-$surum.tar.xz)
 
 derle() {
-cd $isim-$surum
-  NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --disable-static --disable-gtk-doc
-  make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	NOCONFIGURE=1 ./autogen.sh
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	--disable-static --enable-gtk-doc
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
 }
