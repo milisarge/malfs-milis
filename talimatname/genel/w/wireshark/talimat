@@ -2,6 +2,7 @@
 # URL: http://www.wireshark.org
 # Paketçi: milisarge
 # Gerekler: gtk3 libpcap pcre
+# Grup : güvenlik
 
 isim=wireshark
 surum=2.4.3
