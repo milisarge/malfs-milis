@@ -1,10 +1,10 @@
 # Tanım: Resim metaverilerini değiştirmek için bir kütüphane
 # URL: http://www.kde.org
-# Paketçi: alihan-ozturk28@hotmail.com
+# Paketçi: alihan-ozturk28
 # Gerekler: exiv2 qt5 kf5-extra-cmake-modules
 
 isim=libkexiv2
-surum=16.08.2
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
