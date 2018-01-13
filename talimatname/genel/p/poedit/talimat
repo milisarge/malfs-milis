@@ -2,7 +2,7 @@
 # URL: http://www.poedit.net/
 # Paketçi: Cihan_Alkan
 # Gerekler: boost gtkspell wxgtk lucenepp
-# Grup:
+# Grup: geliştirme
 
 isim=poedit
 surum=2.0.5
@@ -10,14 +10,10 @@ devir=1
 kaynak=(https://github.com/vslavik/poedit/releases/download/v$surum-oss/poedit-${surum}.tar.gz)
 
 derle() {
-  #if komutuyla eğer yoksa demek lazım
-  #[ ! -L /usr/include/wx ] && ln -s /usr/include/wx-3.0/wx /usr/include/wx
   cd "${SRC}"/${isim}-${surum}
-  GTKSPELL_LIBS="`pkg-config --libs gtkspell3-3.0`" GTKSPELL_CFLAGS="`pkg-config --cflags gtkspell3-3.0`" \
   ./configure --with-gtk=gtk3 \
   --prefix=/usr --libexecdir=/usr/lib/poedit --with-wx-config=/usr/bin/wx-config  
   make CPPFLAGS+=' -DUCHAR_TYPE=uint16_t'
   make DESTDIR="${PKG}" install
   install -Dm644 COPYING "${PKG}"/usr/share/licenses/${isim}/LICENSE
-  #[ -L /usr/include/wx ] && rm /usr/include/wx
 }
