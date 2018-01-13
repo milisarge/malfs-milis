@@ -2,7 +2,7 @@
 # URL : https://projects.kde.org/kblog
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules boost kf5-kdoctools kf5-kxmlrpcclient syndication kcalcore
-# Gerekler: kde
+# Grup: kde
 
 isim=kblog
 surum=17.12.0
