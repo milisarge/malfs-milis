@@ -2,9 +2,10 @@
 # URL: https://projects.kde.org/kmbox
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules python boost kf5-kdoctools kf5-kdelibs4support kmime
+# Grup: kde
 
 isim=kmbox
-surum=16.08.2
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
