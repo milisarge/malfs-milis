@@ -60,8 +60,8 @@ check_pkgfile() {
 		error " 'isim' tanımlı değil veya değişkeni geçersiz karakter barındırıyor: $ISIM_TEST"
 		exit $E_TALIMAT
 	fi
-	if [ ${#isim} -gt 30 ];then
-		error " 'isim' değişkeni 30 karakterden büyük olamaz."
+	if [ ${#isim} -gt 35 ];then
+		error " 'isim' değişkeni 35 karakterden büyük olamaz."
 		exit $E_TALIMAT
 	fi
 	if [ "${surum}" == "" ]; then
