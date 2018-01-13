@@ -2890,6 +2890,14 @@ ayarlar() {
 			-kl|liste)
 				ls ${kokdizin}${VT} 
 				exit 0 ;;
+			### mps dliste . = sistemde kurulu olan ama talimatnamede yer almayan paket listesini verir.
+			-dkl|dliste)
+				ls ${kokdizin}${VT} | sort > /tmp/mps_krl_pkt.txt
+				paket_liste | sort > /tmp/mps_tum_pkt.txt
+				comm -23 "/tmp/mps_krl_pkt.txt" "/tmp/mps_tum_pkt.txt"
+				rm -rf /tmp/mps_krl_pkt.txt
+				rm -rf /tmp/mps_tum_pkt.txt
+				exit 0 ;;
 			### mps paketler grup_ismi = paket deposundaki paket listesini verir.(grup_ismi verilmezse tüm paketler)
 			-ptl|paketler)
 				 paket_liste "$2" "$3"
