@@ -4,7 +4,7 @@
 # Gerekler: kf5-extra-cmake-modules telepathy-qt5 kaccounts-providers intltool telepathy-gabble 
 
 isim=telepathy-kde-accounts-kcm
-surum=16.08.2
+surum=17.12.1
 devir=1
 _isim=ktp-accounts-kcm
 
