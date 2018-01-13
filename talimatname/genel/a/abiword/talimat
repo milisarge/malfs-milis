@@ -5,7 +5,7 @@
 # Grup: ofis_düzenleme
 
 isim=abiword
-surum=3.0.2
+surum=3.0.1
 devir=3
 kaynak=(http://www.abisource.com/downloads/$isim/$surum/source/$isim-$surum.tar.gz)
 
