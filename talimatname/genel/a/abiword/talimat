@@ -5,7 +5,7 @@
 # Grup: ofis_düzenleme
 
 isim=abiword
-surum=3.0.1
+surum=3.0.2
 devir=3
 kaynak=(http://www.abisource.com/downloads/$isim/$surum/source/$isim-$surum.tar.gz)
 
@@ -14,4 +14,10 @@ cd $isim-$surum
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
+
+    # Başlatıcı
+    sed -i 's/^Exec=/Name[tr]=AbiWord \
+    GenericName[tr]=Kelime İşlemci \
+    Comment[tr]=Microsoft® Word benzeri basit bir kelime işlemci yazılımı.\
+    &/' $PKG/usr/share/applications/$isim.desktop
 }
