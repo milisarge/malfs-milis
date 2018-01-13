@@ -2,9 +2,10 @@
 # URL: https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 kf5-extra-cmake-modules phonon-qt5 kf5-kio kf5-kactivities kf5-kdelibs4support libjpeg-turbo libpng exiv2 lcms2 kf5-baloo hicolor-icon-theme libkdcraw libkipi
+# Grup: kde
 
 isim=gwenview
-surum=16.08.2
+surum=17.12.0
 devir=1
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
