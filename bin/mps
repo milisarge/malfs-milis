@@ -2325,6 +2325,17 @@ depo_paketler_sil(){
 	done	
 }
 
+etkilenenler_sil(){
+	while true; do
+		ryaz 34 "etkilenen önbellek silinecek?";read -p "e veya h-> " eh
+		case $eh in
+			[Ee]* ) rm -rf /var/lib/pkg/etkilenen;ryaz 32 "etkilenen önbellek temizlendi."; break;;
+			[Hh]* ) break;;
+			* ) echo "e veya h";;
+		esac
+	done	
+}
+
 kurulum_dosya_listele(){
 	cat "$VT/$1/kurulan"
 }
@@ -3099,6 +3110,10 @@ ayarlar() {
 			### mps depsil . = depo/paketler altındaki paket önbelleğini temizler.
 			-dps|depsil)
 				depo_paketler_sil 
+				exit 0 ;;
+			### mps etksil . = /var/lib/pkg/etkilenen altındaki kurtarılmış paket önbelleğini temizler.
+			-etks|etksil)
+				etkilenenler_sil 
 				exit 0 ;;
 			### mps link url_adres = verilen url adresindeki talimatı ektalimatname/topluluk altına indirir.
 			link)
