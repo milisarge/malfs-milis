@@ -1,0 +1,19 @@
+# Tanım: Data Matrix 2D barkodları okumak ve yazmak için bir yazılım
+# URL: https://libdmtx.sourceforge.net/
+# Paketçi: Cihan_Alkan
+# Gerekler: glibc
+# Grup: 
+
+isim=libdmtx
+surum=0.7.4
+devir=1
+kaynak=(https://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2)
+
+derle() {
+
+  cd $isim-$surum
+  ./configure --prefix=/usr
+  make
+
+  make DESTDIR="$PKG" install
+}
