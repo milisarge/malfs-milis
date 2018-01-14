@@ -4,7 +4,7 @@
 # Gerekler: libpng sdl 
 
 isim=qrencode
-surum=3.4.4
+surum=4.0.0
 devir=1
 
 kaynak=(http://megaui.net/fukuchi/works/${isim}/${isim}-${surum}.tar.bz2)
