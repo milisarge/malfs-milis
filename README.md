@@ -41,7 +41,7 @@ Mps ile talimatnamedeki talimatları kullanarak paket üretebilir,paket kurabili
 Milis_Paket_Sistemi_Yardim                                                                           
 --------------------------                                                                           
 mps    -i            paketismi           sadece paketi indirir,paket kurulmaz.   
-mps    -ik           paketismi           ilgili paketi indirirve kurar.          
+mps    -ik           paketismi           ilgili paketi indirir ve kurar.          
 mps    -ikz|yekur    paketismi           ilgili indirip tekrardan kurar,kurulu olmasına bakılmaz. 
 mps    -k            paketismi..mps.lz   yerel dizindeki paketi kurar.           
 mps    sil|-s        paketismi           ilgili paketi onaylı kaldırır.          

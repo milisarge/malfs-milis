@@ -2587,7 +2587,7 @@ ayarlar() {
 				kurulum_onay="olumsuz"
 				paket_indir "$2" "$3"
 				exit 0 ;;
-			### mps -ik paketismi = ilgili paketi indirirve kurar.
+			### mps -ik paketismi = ilgili paketi indirir ve kurar.
 			-ik|--inku)
 				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 					kokdizin="$4"
