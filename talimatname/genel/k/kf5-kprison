@@ -1,0 +1,24 @@
+# Tanım: QRCode barkodları ve DataMatrix barkodları üretmek için bir barkod API sı
+# URL: https://www.kde.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: libdmtx qrencode kf5-extra-cmake-modules doxygen qt5
+# Grup: kde
+
+isim=kf5-kprison
+surum=5.41.0
+devir=1
+_surum=5.41
+
+kaynak=( http://download.kde.org/stable/frameworks/${_surum}/prison-$surum.tar.xz)
+
+derle() {
+cd prison-$surum
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
