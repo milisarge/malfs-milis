@@ -5,7 +5,7 @@
 # Grup: kde
 
 isim=baloo-widgets
-surum=17.12.0
+surum=17.12.1
 devir=1
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
