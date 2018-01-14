@@ -2,9 +2,10 @@
 # URL : https://www.kde.org/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-kcoreaddons kf5-kwidgetsaddons kf5-kdbusaddons kf5-knotifications kf5-kconfig kf5-ki18n kf5-kio kf5-kxmlgui kf5-kwindowsystem xcb-proto xcb-util-cursor xcb-util-renderutil plasma-libkscreen libkipi kf5-kdeclarative
+# Grup: kde
 
 isim=spectacle
-surum=16.08.2
+surum=17.12.1
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz )
