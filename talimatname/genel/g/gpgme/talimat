@@ -1,10 +1,11 @@
-# Tanım: GnuPG için bir C sarıcı kütüphanesi
+# Tanım: GnuPG için bir C, Qt ve Python sarıcı kütüphanesi
 # URL: http://www.gnupg.org/related_software/gpgme/
 # Paketçi: milisarge
-# Gerekler: libassuan
+# Gerekler: libassuan python qt5 libgpg-error
+# Grup: kütüphane
 
 isim=gpgme
-surum=1.9.0
+surum=1.10.0
 devir=1
 kaynak=(ftp://ftp.gnupg.org/gcrypt/$isim/$isim-$surum.tar.bz2)
 
@@ -17,4 +18,11 @@ derle() {
 	make
 	make DESTDIR=$PKG install
 	rm -rf $PKG/usr/share/info
+
+  cd lang/qt
+  make DESTDIR="${PKG}" install
+
+
+  cd $SRC/$isim-$surum/lang/python
+  make DESTDIR="${PKG}" install
 }
