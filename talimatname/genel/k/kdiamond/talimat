@@ -2,9 +2,10 @@
 # URL: http://kde.org/applications/games/kpatience/
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-kdoctools libkdegames kf5-knotifyconfig hicolor-icon-theme xdg-utils
+# Grup: kde
 
 isim=kdiamond
-surum=16.08.2
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/${surum}/src/${isim}-${surum}.tar.xz)
