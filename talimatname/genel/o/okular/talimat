@@ -1,16 +1,16 @@
-# Tanım: Belge görüntüleyici
+# Tanım: PDF Belge görüntüleyici
 # URL: http://www.kde.org
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: git  kf5-extra-cmake-modules kf5-khtml kf5-threadweaver kf5-kactivities kf5-kdelibs4support kf5-kpty plasma-libkscreen freetype poppler-qt5 libspectre djvulibre qca-qt5 libkexiv2 chmlib zlib ebook-tools kf5-kdoctools phonon-qt5
+# Grup: kde
    
 isim=okular
-surum=15.12.1+df0c412
-devir=2
+surum=17.12.0
+devir=1
 
-kaynak=(http://anduin.linuxfromscratch.org/BLFS/okular/okular-15.12.1+df0c412.tar.xz )
+kaynak=(https://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
 
 derle() {
-#  git clone -b frameworks git://anongit.kde.org/okular.git
   cd $isim-$surum
   cmake -DCMAKE_BUILD_TYPE=Release   \
         -DCMAKE_INSTALL_PREFIX=/usr  \
