@@ -2,9 +2,10 @@
 # URL: https://community.kde.org/KDE_PIM
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules kf5-kconfig kf5-kwidgetsaddons pimcommon kf5-kdoctools boost
+# grup: kde
 
 isim=libgravatar
-surum=16.08.2
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
@@ -19,4 +20,3 @@ cd $isim-$surum
   make 
   make DESTDIR=$PKG install
 }
-
