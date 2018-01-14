@@ -4,7 +4,7 @@
 # Gerekler: kf5-knewstuff kf5-kplotting kf5-knotifyconfig kf5-kded kf5-kfilemetadata qt5-webkit mlt xorg-glu sdl-image hicolor-icon-theme qt5 kf5-extra-cmake-modules kf5-kdoctools v4l-utils ffmpeg cdrkit libdv recordmydesktop xine-ui dvdauthor plasma-desktop
 
 isim=kdenlive
-surum=16.08.1
+surum=17.12.0
 devir=1
 
 kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
