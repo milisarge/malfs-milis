@@ -1,0 +1,22 @@
+# Tanım: C kütüphanesi, bir QR Code simgesindeki verileri şifrelemek için kullanılır.
+# URL: http://megaui.net/fukuchi/works/qrencode/
+# Paketçi: Cihan_Alkan
+# Gerekler: libpng sdl
+# Grup: kütüphane
+
+isim=qrencode
+surum=4.0.0
+devir=1
+kaynak=(http://megaui.net/fukuchi/works/$isim/$isim-$surum.tar.bz2)
+
+derle() {
+
+  cd $isim-$surum
+
+  ./configure --prefix=/usr
+
+  make
+
+  make prefix="$PKG/usr" install
+
+}
