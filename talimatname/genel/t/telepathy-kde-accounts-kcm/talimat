@@ -1,17 +1,18 @@
-# Tanım: KCM Module for configuring Telepathy Instant Messaging Accounts 
+# Tanım: Telepati Anında Mesajlaşma Hesaplarını yapılandırmak için KCM Modülü
 # URL: http://community.kde.org/Real-Time_Communication_and_Collaboration
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: kf5-extra-cmake-modules telepathy-qt5 kaccounts-providers intltool telepathy-gabble 
+# Grup: kde
 
 isim=telepathy-kde-accounts-kcm
-surum=16.08.2
+surum=17.12.1
 devir=1
 _isim=ktp-accounts-kcm
 
-kaynak=(http://download.kde.org/stable/applications/$surum/src/${_name}-$surum.tar.xz)
+kaynak=(http://download.kde.org/stable/applications/$surum/src/${_isim}-$surum.tar.xz)
 
 derle() {
-  cd ${_name}-$surum
+  cd ${_isim}-$surum
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release  \
         -DBUILD_TESTING=OFF
