@@ -1,0 +1,23 @@
+# Tanım: Resim düzenleme ve boyama programı
+# URL: https://krita.org
+# Paketçi: Cihan_Alkan
+# Gerekler: kf5-kio kf5-kitemmodels gsl libraw exiv2 openexr fftw curl boost hicolor-icon-theme kf5-extra-cmake-modules kf5-kdoctools python eigen3 poppler-qt5 opencolorio
+# Grup: kde
+
+isim=krita
+surum=3.3.3
+devir=1
+kaynak=(https://download.kde.org/stable/krita/$surum/$isim-$surum.tar.gz)
+
+derle() {
+
+  mkdir -p build
+  cd build
+  cmake ../$isim-$surum \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+  make DESTDIR="$PKG" install
+}
