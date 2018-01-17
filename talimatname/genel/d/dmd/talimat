@@ -4,49 +4,45 @@
 # Gerekler: unzip
 
 isim=dmd
-surum=2.072.2
+surum=2.078.0
 devir=1
-kaynak=(http://crux.ster.zone/downloads/$isim/$isim-$surum.tar.gz
-	http://crux.ster.zone/downloads/$isim/druntime-$surum.tar.gz
-	http://crux.ster.zone/downloads/$isim/phobos-$surum.tar.gz)
+#kaynak=(http://crux.ster.zone/downloads/$isim/$isim-$surum.tar.gz
+#	http://crux.ster.zone/downloads/$isim/druntime-$surum.tar.gz
+#	http://crux.ster.zone/downloads/$isim/phobos-$surum.tar.gz)
 
-#kaynak=(https://github.com/dlang/dmd/archive/v$surum.tar.gz
-#	https://github.com/dlang/druntime/archive/v$surum.tar.gz
-#	https://github.com/dlang/phobos/archive/v$surum.tar.gz)
+kaynak=(https://github.com/dlang/dmd/archive/v$surum.tar.gz::$isim-$surum.tar.gz
+	https://github.com/dlang/druntime/archive/v$surum.tar.gz::druntime-$surum.tar.gz
+	https://github.com/dlang/phobos/archive/v$surum.tar.gz::phobos-$surum.tar.gz)
 
 derle() {
-	ln -s druntime-$surum druntime
-	cd dmd-$surum/src
+   mv dmd-$surum dmd
+   mv druntime-$surum druntime
+   mv phobos-$surum phobos
+    cd "$SRC"/dmd
+    make -f posix.mak BUILD=release RELEASE=1 PIC=1
 
-	echo $surum > ../VERSION
-	make -f posix.mak MODEL=64 RELEASE=1 AUTO_BOOTSTRAP=1
+	cd $SRC/druntime
+    make -f posix.mak DMD="$SRC"/dmd/generated/linux/release/*/dmd BUILD=release RELEASE=1 PIC=1
 
-	cd $SRC/druntime-$surum
-	make -f posix.mak MODEL=64 DMD=$SRC/dmd-$surum/src/dmd RELEASE=1
+	cd $SRC/phobos
+    make -f posix.mak DMD="$SRC"/dmd/generated/linux/release/*/dmd BUILD=release RELEASE=1 PIC=1
 
-	cd $SRC/phobos-$surum
-	make -f posix.mak MODEL=64 DMD=$SRC/dmd-$surum/src/dmd RELEASE=1
-
-	install -m 0755 -D $SRC/dmd-$surum/src/dmd $PKG/usr/bin/dmd
+	install -m 0755 -D $SRC/dmd/generated/linux/release/64/dmd $PKG/usr/bin/dmd
 
 	install -d $PKG/etc
 	echo -e "[Environment]\nDFLAGS=-I/usr/include/dlang/dmd -L-L/usr/lib -L-L/usr/lib32 -L--export-dynamic" > $PKG/etc/dmd.conf
 
-	install -d %PKG/usr/share/man/man{1,5}
-	cp -r $SRC/dmd-$surum/docs/man/man1/* $pkgdir/usr/share/man/man1/
-	cp -r $SRC/dmd-$surum/docs/man/man5/* $pkgdir/usr/share/man/man5/
-
 	install -d $PKG/usr/share/d/samples/
-	cp -r $SRC/dmd-$surum/samples/* $PKG/usr/share/d/samples/
+	cp -r $SRC/dmd/samples/* $PKG/usr/share/d/samples/
 
 	# Phobos standard library
-	install -m 0644 -D $SRC/phobos-$surum/generated/linux/release/64/libphobos2.a \
+	install -m 0644 -D $SRC/phobos/generated/linux/release/64/libphobos2.a \
 		$PKG/usr/lib/libphobos2.a
 
 	install -d $PKG/usr/include/dlang/dmd
-	cp -r $SRC/phobos-$surum/{*.d,etc,std} $PKG/usr/include/dlang/dmd
-	cp -r $SRC/druntime-$surum/import/* $PKG/usr/include/dlang/dmd/
+	cp -r $SRC/phobos/{*.d,etc,std} $PKG/usr/include/dlang/dmd
+	cp -r $SRC/druntime/import/* $PKG/usr/include/dlang/dmd/
 
-	install -m 0644 -D $SRC/phobos-$surum/generated/linux/release/64/libphobos2.so \
+	install -m 0644 -D $SRC/phobos/generated/linux/release/64/libphobos2.so \
 		$PKG/usr/lib/libphobos2.so
 }
