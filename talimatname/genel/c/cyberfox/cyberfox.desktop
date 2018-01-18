@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.2
+Type=Application
+Name=Cyberfox
+Exec=/opt/cyberfox/cyberfox
+Icon=cyberfox-icon
+Categories=Network;WebBrowser;
+Comment=Cyberfox: Firefoxtan çatallanmış hızlı ve gizlilik odaklı web tarayıcı
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+Actions=NewTab;NewWindow;NewPrivateWindow;
+StartupNotify=true
+Terminal=false

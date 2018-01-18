@@ -1,0 +1,22 @@
+# Tanım: Firefoxtan çatallanmış hızlı ve gizlilik odaklı web tarayıcı
+# URL: https://8pecxstudios.com/
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk2 xorg-libxt dbus-glib alsa-lib hicolor-icon-theme nss
+# Grup: internet
+
+isim=cyberfox
+surum=52.5.2
+devir=1
+
+kaynak=(https://sourceforge.net/projects/cyberfox/files/Zipped%20Format/Cyberfox-52.5.2.en-US.linux-x86_64.tar.bz2
+        $isim.desktop)
+
+derle() {
+
+	install -d "$PKG"/{usr/bin,opt}
+	mv "${isim}" "${PKG}/opt/${isim}"
+	ln -s "/opt/${pn}/${pn}" "${PKG}/usr/bin/${pn}"
+	install -Dm644 "${isim}.desktop" "${PKG}/usr/share/applications/${isim}.desktop"
+	install -Dm644 "${PKG}/opt/${isim}/browser/icons/mozicon128.png" \
+	"${PKG}/usr/share/pixmaps/${isim}-icon.png"
+}
