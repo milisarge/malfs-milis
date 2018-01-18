@@ -1,0 +1,19 @@
+# Tanım: ANS Forth dilinin hızlı ve taşınabilir uygulaması
+# URL: http://www.gnu.org/software/gforth/
+# Paketçi: Cihan_Alkan
+# Gerekler: libtool
+# Grup: geliştirme
+
+isim=gforth
+surum=0.7.3
+devir=1
+kaynak=(http://www.complang.tuwien.ac.at/forth/$isim/$isim-$surum.tar.gz)
+
+derle() {
+    cd "$SRC/$isim-$surum"
+    CFLAGS='-std=gnu99' ./configure --prefix=/usr 
+    make PREFIX=/usr -j1
+    make PREFIX=/usr DESTDIR="$PKG" install
+    rm -rf $PKG/usr/share/info
+    rm -rf $PKG/usr/share/man
+}
