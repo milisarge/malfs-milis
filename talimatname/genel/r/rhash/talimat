@@ -1,0 +1,27 @@
+# Tanım: Dosya karma değerlerini doğrulamak için yardımcı program
+# URL: http://rhash.anz.ru/?l=en
+# Paketçi: Cihan Alkan
+# Gerekler: 
+# Grup: sistem
+
+isim=rhash
+surum=1.3.5
+devir=1
+kaynak=(https://downloads.sourceforge.net/rhash/rhash-$surum-src.tar.gz)
+
+derle() {
+  cd RHash-$surum
+  export ADDCFLAGS="$CFLAGS"
+  export ADDLDFLAGS="$LDFLAGS"
+  make build-shared
+  make -C librhash
+
+  # program
+  make PREFIX=/usr DESTDIR="$PKG" install-shared
+
+  # library
+  make -C librhash PREFIX=/usr DESTDIR="$PKG" install-headers install-lib-shared install-so-link
+
+  # license
+  install -Dm644 COPYING "$PKG"/usr/share/licenses/rhash/LICENSE
+}
