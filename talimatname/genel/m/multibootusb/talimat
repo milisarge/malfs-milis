@@ -1,25 +1,19 @@
 # Tanım: Birden fazla iso dosyasini usb bellege yazdirma programı
 # URL: https://multibootusb.org
 # Paketçi: Cihan Alkan
-# Gerekler: mtools parted python3-qt5 dbus-python python3-pip python3-six
+# Gerekler: mtools parted python3-qt5 dbus-python python3-pip python3-six mtools util-linux p7zip
+# Grup: sistem
 
 isim=multibootusb
-hesap=oltulu
-surum=8.8.0
+surum=9.1.0
 devir=1
 
-kaynak=()
+kaynak=(https://github.com/mbusb/multibootusb/archive/v9.1.0.tar.gz::$isim-$surum.tar.gz
+		$isim.desktop)
 
 derle() {
-	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
-		git clone https://github.com/$hesap/$isim $DERLEME_KAYNAKDIZIN/$isim 
-	else
-		cd $DERLEME_KAYNAKDIZIN/$isim 
-		git pull
-		cd -
-	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
-	cd $SRC/$isim
-	chmod 755 "$SRC/$isim/data/multibootusb.desktop"
+	cd $SRC/$isim-$surum
+    cp ../$isim.desktop $SRC/$isim-$surum/data/
+    chmod 755 "$SRC/$isim-$surum/data/$isim.desktop"
     python3 setup.py install --root="$PKG/" --optimize=1
 }
