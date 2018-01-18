@@ -1,0 +1,19 @@
+# Tanım: SFML için gayriresmi Python bağlaması
+# URL: http://python-sfml.org
+# Paketçi: Cihan_Alkan
+# Gerekler: cython sfml python python3
+# Grup: kütüphane
+
+isim=sfml-python
+surum=git
+devir=1
+
+kaynak=(https://github.com/Sonkun/python-sfml/archive/master.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd $SRC/python-sfml-master
+	python2 setup.py build_ext
+	python2 setup.py install --root="${PKG}" --prefix=/usr
+	python3 setup.py build_ext
+	python3 setup.py install --root="${PKG}" --prefix=/usr
+}
