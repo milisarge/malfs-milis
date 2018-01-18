@@ -1,0 +1,24 @@
+# Tanım: Nodejs için hızlı, güvenilir ve güvenli bağımlılık yönetimi
+# URL: http://yarnpkg.com
+# Paketçi: Cihan_Alkan
+# Gerekler: node
+# Grup: geliştirme
+
+isim=yarn
+surum=1.3.2
+devir=1
+kaynak=(https://github.com/yarnpkg/yarn/releases/download/v$surum/yarn-v$surum.tar.gz)
+
+derle() {
+
+  cd yarn-v${surum}
+  install -dm755  "$PKG"/usr/lib/node_modules/yarn
+  cp -R * "$PKG"/usr/lib/node_modules/yarn
+
+  install -dm755 "$PKG"/usr/bin
+  ln -s /usr/lib/node_modules/yarn/bin/yarn.js "$PKG"/usr/bin/yarn
+  ln -s /usr/lib/node_modules/yarn/bin/yarn.js "$PKG"/usr/bin/yarnpkg
+
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
+  install -Dm644 README.md "$PKG/usr/share/doc/$isim/README.md"
+}
