@@ -1,0 +1,16 @@
+# Tanım: PDF araç seti olarak inşa edilmiş bir Saf Python kütüphanesi
+# URL: http://pybrary.net/pyPdf
+# Paketçi: Cihan_Alkan 
+# Gerekler: python-setuptools python3-setuptools python python3
+# Grup: kütüphane
+
+isim=pypdf
+surum=1.13
+devir=1
+kaynak=(https://pypi.io/packages/source/p/pyPdf/pyPdf-$surum.tar.gz)
+
+derle() {
+    cd pyPdf-$surum
+    python setup.py install --root="$PKG"
+    python3 setup.py install --root="$PKG"
+}
