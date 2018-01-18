@@ -1,0 +1,17 @@
+# Tanım: XNeur için GTK arayüz
+# URL: http://www.xneur.ru
+# Paketçi: Cihan_Alkan
+# Gerekler: libglade xneur gconf xorg-app xorg-proto
+# Grup: geliştirme
+
+isim=gxneur
+surum=0.20.0
+devir=1
+kaynak=(https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/dists/$surum/gxneur_$surum.orig.tar.gz)
+
+derle() {
+   cd $SRC/$isim-$surum
+   ./configure --prefix=/usr
+   make
+   make DESTDIR=$PKG install
+}
