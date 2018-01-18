@@ -17,4 +17,5 @@ derle() {
 	--sbindir=/usr/bin
 	make
 	make PREFIX=/usr DESTDIR="$PKG" install
+	rm -rf $PKG/usr/share/man
 }

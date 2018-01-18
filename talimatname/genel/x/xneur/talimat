@@ -1,0 +1,19 @@
+# Tanım: X Neural Değiştirici girdi dilini algılar ve gerekirse klavye düzenini düzeltir
+# URL: http://www.xneur.ru
+# Paketçi: Cihan Alkan
+# Gerekler: gstreamer enchant libnotify gtk2 xorg-proto
+
+isim=xneur
+surum=0.20.0
+devir=1
+kaynak=(https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/dists/$surum/xneur_$surum.orig.tar.gz)
+
+derle() {
+
+    cd $SRC/$isim-$surum
+    ./configure --prefix=/usr --sysconfdir=/etc \
+	--without-xosd \
+	--with-gtk=gtk2 # Because gxneur still doesn't supports gtk3
+    make
+    make DESTDIR=$PKG install
+}
