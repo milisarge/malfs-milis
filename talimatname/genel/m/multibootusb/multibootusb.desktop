@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=multibootusb
+Comment=Install multiple Linux Operating System on USB
+Icon=multibootusb
+Name[tr]=Birden fazla Linux'u USB'e kurma
+Comment[tr]=Birden fazla Linux'u USB'e kurma
+Exec=multibootusb-pkexec
+Categories=System;
+StartupNotify=true
