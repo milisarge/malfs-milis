@@ -2,6 +2,7 @@
 # URL: http://www.rust-lang.org/
 # Paketçi: milisarge
 # Gerekler: libffi python jemalloc cmake ccache
+# Grup: geliştirme
  
 isim=rust
 surum=1.20.0
