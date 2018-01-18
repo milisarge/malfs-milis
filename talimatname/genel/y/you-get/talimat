@@ -1,0 +1,16 @@
+# Tanım: Python3 ile yazılmış bir YouTube,Youku,Sohu,Tudou,QQ,Sina,PPTV,Xiami,Vimeo,ifeng,AcFun,bilibili,CNTV video indiricisi.
+# URL: http://www.soimort.org/you-get/
+# Paketçi: Cihan Alkan
+# Gerekler: python3 python3-setuptools
+# Grup: ağ 
+
+isim=you-get
+surum=0.4.1011
+devir=1
+kaynak=(https://github.com/soimort/you-get/archive/v$surum.tar.gz::you-get-$surum.tar.gz)
+
+derle() {
+  cd ${isim}-${surum}
+  python3 setup.py build
+  python3 setup.py install --root="$PKG/" --optimize=1
+}

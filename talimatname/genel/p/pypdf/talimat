@@ -11,6 +11,8 @@ kaynak=(https://pypi.io/packages/source/p/pyPdf/pyPdf-$surum.tar.gz)
 
 derle() {
     cd pyPdf-$surum
+    python setup.py build
+    python3 setup.py build
     python setup.py install --root="$PKG"
     python3 setup.py install --root="$PKG"
 }
