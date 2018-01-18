@@ -1,20 +1,24 @@
 # Tanım: GnuTLS, SSL, TLS ve DTLS protokollerini ve teknolojilerini uygulayan güvenli bir iletişim kitaplığıdır.
 # URL: http://www.gnu.org/software/gnutls/
 # Paketçi: milisarge
-# Gerekler: libtasn1 nettle libidn p11-kit
+# Gerekler: libtasn1 nettle libidn p11-kit libunistring
+# Grup: kütüphane
 
 isim=gnutls
-surum=3.4.9
+surum=3.5.17
 devir=1
-kaynak=(ftp://ftp.gnutls.org/gcrypt/$isim/v${version:0:3}/$isim-$surum.tar.xz)
+kaynak=(ftp://ftp.gnutls.org/gcrypt/$isim/v${surum:0:3}/$isim-$surum.tar.xz)
 
 derle() {
 cd $isim-$surum
-./configure --prefix=/usr \
---with-zlib \
---with-default-trust-store-file=/etc/ssl/ca-bundle.crt \
---disable-guile
-make
-make DESTDIR=$PKG install
-rm -f $PKG/usr/share/info/dir
+	./configure --prefix=/usr \
+	--with-zlib \
+	--disable-static \
+	--without-idn \
+	--enable-guile --with-guile-site-dir=no \
+	--with-default-trust-store-pkcs11="pkcs11:model=p11-kit-trust;manufacturer=PKCS%2311%20Kit"
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/info
+	rm -rf $PKG/usr/share/man
 }

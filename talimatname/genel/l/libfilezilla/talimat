@@ -1,0 +1,18 @@
+# Tanım: Temel işlevler sunup platform bağımsız uygulamalar yapmak için C++ kütüphanesi
+# URL: https://lib.filezilla-project.org
+# Paketçi: milisarge
+# Gerekler:
+# Grup: kütüphane
+
+isim=libfilezilla
+surum=0.11.2
+devir=1
+kaynak=(http://download.filezilla-project.org/libfilezilla/libfilezilla-$surum.tar.bz2)
+
+derle() {
+    cd $isim-$surum
+    ./configure --prefix=/usr \
+    --disable-static
+    make
+    make DESTDIR=$PKG install
+}
