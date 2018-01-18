@@ -1,0 +1,23 @@
+# Tanım: Sistem Temizleyici
+# URL: https://kde.org/applications/utilities/sweeper
+# Paketçi: Cihan Alkan
+# Gerekler: kf5-kio kf5-kactivities-stats
+# Grup: sistem
+
+isim=sweeper
+surum=17.12.0
+devir=1
+kaynak=(https://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
+
+derle() {
+
+  mkdir -p build
+  cd build
+  cmake ../sweeper-$surum \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF
+  make
+
+  make DESTDIR="$PKG" install
+}
