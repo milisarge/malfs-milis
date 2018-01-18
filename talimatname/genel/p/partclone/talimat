@@ -1,0 +1,20 @@
+# Tanım: Bir bölümde kullanılan blokları kaydetmek ve geri yüklemek için kullanılan yardımcı programlar
+# URL: http://partclone.org
+# Paketçi: Cihan_Alkan
+# Gerekler: reiserfsprogs ntfs-3g
+# Grup: 
+
+isim=partclone
+surum=0.2.89
+devir=1
+kaynak=(http://partclone.nchc.org.tw/download/stable/$surum/${isim}_$surum.orig.tar.gz)
+
+derle() {
+	cd $isim-$surum
+	./configure --prefix=/usr --enable-extfs --enable-fat \
+	--enable-hfsp --enable-btrfs --enable-ncursesw --enable-ntfs \
+	--enable-exfat --enable-f2fs --enable-minix --enable-xfs \
+	--sbindir=/usr/bin
+	make
+	make PREFIX=/usr DESTDIR="$PKG" install
+}
