@@ -1,0 +1,21 @@
+# Tanım: Bir python işleminin işlem başlığını değiştirmesine izin verir
+# URL: https://github.com/dvarrazzo/py-setproctitle
+# Paketçi: Cihan Alkan
+# Gerekler: python
+
+isim=python-setproctitle
+surum=1.1.10
+devir=1
+
+kaynak=(https://files.pythonhosted.org/packages/source/s/setproctitle/setproctitle-$surum.tar.gz)
+
+
+derle() {
+	cd setproctitle-$surum
+    rm -rf ../buildpy2; mkdir ../buildpy2
+    python2 setup.py build -b ../buildpy2
+    find ../buildpy2 -name \*.py -exec sed -r '1 s|^#!(.*)python$|#!\1python2|' -i {} +
+    python2 setup.py install --skip-build -O1 --root="$PKG"
+	install -m0644 -D COPYRIGHT "$PKG/usr/share/licenses/$isim/COPYRIGHT"
+    python2 setup.py install --prefix=/usr --root=$PKG
+}
