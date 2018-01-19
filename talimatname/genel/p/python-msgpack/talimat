@@ -1,0 +1,22 @@
+# Tanım: Python için MessagePack seri hale getirici uygulaması
+# URL: https://github.com/msgpack/msgpack-python
+# Paketçi: Oltulu
+# Gerekler: cython python-setuptools
+# Grup: kütüphane
+
+isim=python-msgpack
+surum=0.4.8
+devir=1
+kaynak=(https://pypi.io/packages/source/m/msgpack-python/msgpack-python-$surum.tar.gz)
+
+derle() {
+
+  cd msgpack-python-$surum
+  python2 setup.py build --build-lib=build/python
+  find build/python -type f -exec \
+    sed -i '1s,^#! \?/usr/bin/\(env \|\)python$,#!/usr/bin/python,' {} \;
+
+  python2 setup.py build --build-lib=build/python \
+                  install --root="$PKG" --optimize=1
+
+}
