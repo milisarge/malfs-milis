@@ -15,4 +15,5 @@ derle() {
 	mkdir -p $_npmdir
 	cd $_npmdir
 	npm install -g --prefix "$PKG/usr" $isim@$surum
+	rm -rf $PKG/usr/etc
 }
