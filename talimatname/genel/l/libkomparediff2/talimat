@@ -1,0 +1,24 @@
+# Tanım: Dosyaları ve dizeleri karşılaştırmak için kitaplık
+# URL: http://www.kde.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: kf5-extra-cmake-modules kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-ki18n kf5-kio kf5-kxmlgui qt5
+# Grup: kde kütüphane
+
+
+isim=libkomparediff2
+surum=17.12.0
+devir=1
+kaynak=(https://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
+
+derle() {
+
+	mkdir build
+	cd build
+	cmake ../$isim-$surum \
+		-DCMAKE_BUILD_TYPE=RELEASE \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_TESTING=OFF \
+		-Wno-dev
+	make
+	make DESTDIR=$PKG install
+}
