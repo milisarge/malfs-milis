@@ -14,7 +14,6 @@ derle() {
   ./configure --prefix=/usr
   make
   make DESTDIR="$PKG" install
-  install -Dm 644 examples/*.{cpp,c} ${PKG}/usr/share/${isim}/examples
   rm -rf $PKG/usr/share/doc
   rm -rf $PKG/usr/share/man
 }

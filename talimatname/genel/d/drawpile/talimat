@@ -1,0 +1,36 @@
+# Tanım: Kalem tabletleri ile özel olarak üretilen ortak çalışma çizimi programı
+# URL: http://drawpile.net/
+# Paketçi: Cihan_Alkan
+# Gerekler: kf5-karchive qt5 ninja cmake
+# Grup:
+
+
+isim=drawpile
+surum=2.0.5.1
+devir=1
+kaynak=(http://drawpile.net/files/src/${isim}-${surum}.tar.gz)
+
+derle() {
+
+_cmakeargs+=('-Wno-dev')
+
+	cd "${isim}-${surum}"
+
+	# Ensure build is an empty directory
+	rm -rf 'build'
+	mkdir -p 'build'
+	cd 'build'
+
+	cmake .. -DCMAKE_INSTALL_PREFIX='/usr' -G Ninja "${_cmakeargs[@]}"
+	ninja
+    cd ../
+
+	DESTDIR="${PKG}" ninja -C 'build' install
+	install -Dvm644 "desktop/${isim}.svg" \
+		"${PKG}/usr/share/pixmaps/${isim}.svg"
+	install -Dvm644 "desktop/${isim}.desktop" \
+		"${PKG}/usr/share/applications/${isim}.desktop"
+
+	#Türkçe çeviri yapılacak
+	#cp -r drawpile_tr.ts /pkg/usr/share/drawpile/drawpile/i18n/drawpile_fi.qm
+}
