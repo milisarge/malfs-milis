@@ -1,0 +1,20 @@
+# Tanım: The Emscripten SDK
+# URL: https://kripken.github.io/emscripten-site/
+# Paketçi: milisarge
+# Gerekler: python cmake 
+# Grup: geliştirme
+
+isim=emsdk
+surum=1.35
+devir=1
+kaynak=(https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
+		emsdk.sh)
+
+derle() {
+    install --mode 755 --directory "$PKG/usr/bin"
+    install --mode 755 emsdk.sh "$PKG/usr/bin/emsdk"
+    cd "$SRC/${isim}-portable"
+    install --mode 755 --directory "$PKG/usr/lib/$isim"
+    install --mode 755 emsdk "$PKG/usr/lib/$isim"
+    install --mode 755 emsdk_manifest.json "$PKG/usr/lib/$isim"
+}
