@@ -2,17 +2,19 @@
 # URL: https://github.com/satya164/gtk-theme-config
 # Paketçi: Cihan_Alkan
 # Gerekler: gconf gsettings-desktop-schemas hicolor-icon-theme gtk3 vala
-# Grup: grafik_tasarım
+# Grup: 
 
 isim=gtk-theme-config
 surum=1.0
 devir=1
 kaynak=(https://github.com/satya164/gtk-theme-config/archive/v1.0.tar.gz::$isim-$surum.tar.gz
-        gtk-theme-conf-tr.po)
+        gtk-theme-config-tr.desktop
+        gtk-theme-config-tr.vala)
 
 derle() {
   cd gtk-theme-config-1.0
-  cp ../gtk-theme-conf-tr.po po/tr.po
+  cp ../gtk-theme-config-tr.vala ./gtk-theme-config.vala
+  cp ../gtk-theme-config-tr.desktop ./gtk-theme-config.desktop
   make
   make DESTDIR="$PKG/" install
 }

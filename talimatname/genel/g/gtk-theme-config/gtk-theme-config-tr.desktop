@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Tema Ayarları
+GenericName=Tema Ayarları
+Comment=GTK tema renklerini yapılandırma
+Exec=gtk-theme-config
+Terminal=false
+Type=Application
+Icon=gtk-theme-config
+Categories=GNOME;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
+Keywords=color;gtk;highlight;theme;widget;
