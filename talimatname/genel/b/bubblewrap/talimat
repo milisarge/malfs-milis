@@ -1,0 +1,18 @@
+# Tanım: Ayrıcalıksız sandboxing aracı
+# URL: https://github.com/projectatomic/bubblewrap
+# Paketçi: Cihan_Alkan
+# Gerekler: libxslt docbook-xsl libcap
+# Grup: sistem
+
+isim=bubblewrap
+surum=0.2.0
+devir=1
+kaynak=(https://github.com/projectatomic/bubblewrap/releases/download/v$surum/bubblewrap-$surum.tar.xz)
+
+derle() {
+  cd "$SRC/$isim-$surum"
+  ./configure --prefix=/usr \
+    --with-priv-mode=setuid
+  make
+  make DESTDIR="$PKG" install
+}
