@@ -1,0 +1,23 @@
+# Tanım: Kullanılabilirliğe odaklanmış bir video oynatıcı
+# URL: https://kde.org/applications/multimedia/dragon
+# Paketçi: Cihan_Alkan
+# Gerekler: kf5-extra-cmake-modules kf5-kparts kf5-kdoctools python hicolor-icon-theme
+# Grup: kde
+
+isim=dragon
+surum=17.12.0
+devir=1
+
+kaynak=(http://download.kde.org/stable/applications/$surum/src/$isim-$surum.tar.xz)
+
+derle() {
+cd $isim-$surum
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DLIB_INSTALL_DIR=lib       \
+      -DBUILD_TESTING=OFF         \
+      -Wno-dev
+      
+make
+make DESTDIR=$PKG install
+}
