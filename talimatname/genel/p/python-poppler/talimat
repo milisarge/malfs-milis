@@ -1,0 +1,36 @@
+# Tanım: Poppler için Python 2.x bağları
+# URL: https://launchpad.net/poppler-python
+# Paketçi: Cihan_Alkan
+# Gerekler: python-gtk poppler-glib python-cairo
+# Grup: kütüphane
+
+isim=python-poppler
+surum=0.12.1
+devir=1
+kaynak=(https://launchpad.net/poppler-python/trunk/development/+download/pypoppler-$surum.tar.gz
+        pypoppler-0.12.1-poppler-0.16.0.patch
+        python-poppler-0.12.1-poppler-0.39.0-changes.patch)
+
+derle() {
+
+  cd $SRC/pypoppler-$surum
+
+  # poppler 0.16 compat
+  patch -Np0 -i \
+	  "$SRC/pypoppler-0.12.1-poppler-0.16.0.patch"
+
+  # poppler 0.18 compat
+  sed -i "/pixbuf/,/^)/d" poppler.defs
+
+  # poppler 0.39 compat
+  patch -Np0 -i $SRC/python-poppler-0.12.1-poppler-0.39.0-changes.patch
+
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
+              PYTHON=python
+  make
+
+  make DESTDIR="$PKG" install
+
+}
