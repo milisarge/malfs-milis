@@ -21,7 +21,7 @@ derle() {
   mono "$msbuild" Mono.Addins.GuiGtk3/Mono.Addins.GuiGtk3.csproj /p:WarningLevel=0;Configuration=Release
   mono "$msbuild" Mono.Addins.MSBuild/Mono.Addins.MSBuild.csproj /p:WarningLevel=0;Configuration=Release
   mono "$msbuild" Mono.Addins.Setup/Mono.Addins.Setup.csproj /p:WarningLevel=0;Configuration=Release
-  cd ${isim}-${isim}-${surum}
+  cd $SRC/${isim}-${isim}-${surum}
   make DESTDIR=$PKG install
   install -Dm644 COPYING ${PKG}/usr/share/licenses/${isim}/COPYING
 }
