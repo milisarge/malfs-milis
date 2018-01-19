@@ -1,0 +1,37 @@
+# Tanım: GNU Prolog
+# URL: http://www.gprolog.org/
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: geliştirme
+
+isim=gprolog
+surum=1.4.4
+devir=1
+kaynak=(ftp://ftp.gnu.org/gnu/gprolog/gprolog-1.4.4.tar.gz
+		gprolog-pic.patch)
+
+derle() {
+   cd $isim-$surum
+   patch -p1 -i  ../gprolog-pic.patch # compile with PIC
+   cd "$SRC/gprolog-$surum/src"
+   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-c-flags="$CFLAGS"
+   make
+   cd "$SRC/gprolog-$surum/src"
+   make install \
+	INSTALL_DIR="$PKG"/usr/share/gprolog \
+	LINKS_DIR="$PKG"/usr/bin \
+	DOC_DIR="$PKG"/usr/share/gprolog/doc \
+	HTML_DIR="$PKG"/usr/share/gprolog/doc/Html \
+	EXAMPLES_DIR="$PKG"/usr/share/gprolog \
+	sysconfdir="$PKG"/etc \
+	localstatedir="$PKG"/var
+   cd "$PKG"/usr/bin
+   rm *
+   ln -s /usr/share/gprolog/bin/fd2c
+   ln -s /usr/share/gprolog/bin/gplc
+   ln -s /usr/share/gprolog/bin/gprolog
+   ln -s /usr/share/gprolog/bin/hexgplc
+   ln -s /usr/share/gprolog/bin/ma2asm
+   ln -s /usr/share/gprolog/bin/pl2wam
+   ln -s /usr/share/gprolog/bin/wam2ma
+}
