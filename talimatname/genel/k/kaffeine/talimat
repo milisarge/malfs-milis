@@ -1,0 +1,24 @@
+# Tanım: KDE media player
+# URL: https://kaffeine.kde.org
+# Paketçi: Cihan_Alkan
+# Gerekler: kf5-extra-cmake-modules kf5-kparts kf5-kdoctools kf5-kio kf5-kidletime vlc 
+# Grup: kde
+
+isim=kaffeine
+surum=2.0.14
+devir=1
+
+kaynak=(https://download.kde.org/stable/$isim/$isim-$surum.tar.xz)
+
+derle() {
+  mkdir -p build
+  rm -r $isim-$surum/po/pt_BR/docs # derlenmiyor
+
+  cd build
+  cmake ../$isim-$surum \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF
+  make
+  make DESTDIR=$PKG install
+}
