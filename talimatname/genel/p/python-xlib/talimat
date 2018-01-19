@@ -1,7 +1,7 @@
 # Tanım: Python için tamamen işlevsel bir X istemci kitaplığı programları
 # URL: https://github.com/python-xlib/python-xlib
 # Paketçi: Cihan Alkan
-# Gerekler: python python-six
+# Gerekler: python python-six python-setuptools
 # Grup: kütüphane
 
 isim=python-xlib
