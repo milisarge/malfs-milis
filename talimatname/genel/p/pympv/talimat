@@ -1,0 +1,16 @@
+# Tanım: Mpv media player'a Python arabirimi
+# URL: https://github.com/jaseg/python-mpv
+# Paketçi: Cihan_Alkan
+# Gerekler: mpv python python-setuptools python3 python3-setuptools
+# Grup: kütüphane 
+
+isim=pympv
+surum=0.3.8
+devir=1
+kaynak=(https://github.com/jaseg/python-mpv/archive/v0.3.8.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+cd python-mpv-${surum}
+    python2 setup.py install --root="$PKG/" --optimize=1
+    python3 setup.py install --root="$PKG/" --optimize=1
+}
