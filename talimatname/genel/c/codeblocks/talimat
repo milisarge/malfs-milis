@@ -1,20 +1,30 @@
-# Tanım: Bir çapraz platform Bütünleşik Geliştirme Ortamı (IDE).
-# URL: http://www.codeblocks.org/
-# Paketçi: milisarge
-# Gerekler: zip boost desktop-file-utils gamin gtk-update-icon-cache hicolor-icon-theme hunspell shared-mime-info wxgtk28
+# Tanım: Çapraz platformlu C/C++ IDE
+# URL: http://codeblocks.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: boost gamin hunspell wxgtk28
 # Grup: geliştirme
 
 isim=codeblocks
 surum=16.01
 devir=1
-kaynak=(http://sourceforge.net/projects/$isim/files/Sources/16.01/codeblocks_${surum}.tar.gz)
+kaynak=(https://sourceforge.net/projects/$isim/files/Sources/$surum/${isim}_$surum.tar.gz)
 
 derle() {
-cd $isim-*
-export CPPFLAGS+=" -DBOOST_ERROR_CODE_HEADER_ONLY"
-export WX_CONFIG_PATH=/usr/bin/wx-config-2.8
-./bootstrap
-./configure --prefix=/usr --with-contrib-plugins=all
-make
-make DESTDIR=$PKG install
+
+  cd "$isim-$surum.release"
+
+  # Fix build with boost 1.59
+  export CPPFLAGS+=" -DBOOST_ERROR_CODE_HEADER_ONLY"
+  export WX_CONFIG_PATH=/usr/bin/wx-config
+  [ ! -L /usr/bin/wx-config ] && ln -s /usr/bin/wx-config-2.8 /usr/bin/wx-config
+  # FS#49799
+  export CPPFLAGS+=" -fno-delete-null-pointer-checks"
+
+  CXXFLAGS+=' -std=c++11 -fpermissive'
+  ./bootstrap
+  ./configure --prefix=/usr --with-contrib-plugins=all
+  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make -C "$isim-$surum.release" DESTDIR="$PKG" install
+  [ -L /usr/bin/wx-config ] && rm -f /usr/bin/wx-config
 }

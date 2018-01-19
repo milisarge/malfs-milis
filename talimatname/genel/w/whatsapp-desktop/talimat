@@ -1,0 +1,25 @@
+# Tanım: Resmi olmayan whatsapp web masaüstü istemcisi. Elektron ile inşa edildi.
+# URL: https://github.com/Enrico204/Whatsapp-Desktop
+# Paketçi: Cihan Alkan
+# Gerekler: libnotify gconf gtk2
+# Grup: ağ
+
+
+isim=whatsapp-desktop
+surum=0.4.0
+devir=1
+kaynak=(https://github.com/Enrico204/Whatsapp-Desktop/releases/download/v0.4.0/WhatsApp-linux-x64.tar.gz
+        whatsapp-desktop.desktop
+        whatsapp-desktop.png)
+
+derle() {
+  install -d "$PKG"/opt
+  cp -R "$SRC"/WhatsApp-linux-x64 "$PKG"/opt/Whatsapp
+
+  install -d "$PKG"/usr/bin
+  ln -sf ../../opt/Whatsapp/WhatsApp "$PKG"/usr/bin/Whatsapp
+
+  install -D -m644 "./whatsapp-desktop.desktop" "${PKG}/usr/share/applications/whatsapp-desktop.desktop"
+  install -D -m644 "./whatsapp-desktop.png" "${PKG}/usr/share/pixmaps/whatsapp-desktop.png"
+}
+

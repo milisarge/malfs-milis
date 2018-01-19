@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=WhatsApp Desktop
+Icon=whatsapp-desktop
+Exec=Whatsapp
+Comment=WhatsApp for Desktop
+Name[tr]=WhatsApp Masaüstü Uygulaması
+Comment[tr]=Bilgisayarlar için WhatsApp
+Categories=Network;Chat;
+Terminal=false
+StartupNotify=true
