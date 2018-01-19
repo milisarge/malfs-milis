@@ -1,0 +1,17 @@
+# Tanım: Python modülleri
+# URL: http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
+# Paketçi: Cihan Alkan
+# Gerekler: python python-setuptools
+# Grup: kütüphane
+
+isim=python-pyrex
+surum=0.9.9
+devir=1
+kaynak=(http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/Pyrex-${surum}.tar.gz)
+
+derle() {
+  cd Pyrex-${surum}
+  python2 setup.py build
+
+  python2 setup.py install -O1 --root="${PKG}" --prefix=/usr
+}
