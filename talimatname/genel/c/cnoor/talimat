@@ -1,0 +1,23 @@
+# Tanım: Basit bir framebuffer Kuran'ı Kerim görüntüleyici.
+# URL: http://litcave.rudi.ir/
+# Paketçi: Cihan_Alkan
+# Gerekler: openjdk
+# Grup: 
+
+isim=cnoor
+surum=2.2.3
+devir=1
+kaynak=(http://repo.or.cz/cnoor.git/snapshot/2b58c5a8ecb4dfcc7952479782d06bd49d6566be.tar.gz::$isim-$surum.tar.gz
+        http://tanzil.net/trans/en.ahmedali
+        cnoor.1
+        config.h)
+
+derle() {
+  cd $SRC/$isim-2b58c5a
+  cp $SRC/config.h config.h
+  sed -i "10s|user|$HOME/.quran/quran-simple.txt|" config.h
+  make all
+  install -Dm755 cnoor $PKG/usr/bin/cnoor
+  install -Dm644 ../cnoor.1 $PKG/usr/share/man/man1/cnoor.1
+  install -Dm644 ../en.ahmedali $PKG/usr/share/doc/cnoor/en.ahmedali
+}
