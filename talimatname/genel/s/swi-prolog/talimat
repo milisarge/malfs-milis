@@ -15,8 +15,8 @@ derle() {
   ./configure --with-world --prefix=/usr
   (cd src; ./configure --enable-readline --prefix=/usr)
   make
-  make -C "swipl-${surum/_/-}" check || true
-  make -C "swipl-${surum/_/-}" DESTDIR="$PKG" install
+  make -C "$SRC/swipl-${surum/_/-}" check || true
+  make -C "$SRC/swipl-${surum/_/-}" DESTDIR="$PKG" install
   # Fix for FS#20873
   chmod +x "$PKG/usr/lib/swipl-${surum/_/-}/library/dialect/sicstus/swipl-lfr.pl"
 }
