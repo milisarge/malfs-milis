@@ -1,7 +1,7 @@
 # Tanım: mono eklentileri
 # URL: http://www.mono-project.com/Mono.Addins
 # Paketçi: milisarge
-# Gerekler: gtk-sharp2 gtk-sharp mono 
+# Gerekler: gtk-sharp2 gtk-sharp3 mono 
 # Grup: geliştirme
 
 isim=mono-addins

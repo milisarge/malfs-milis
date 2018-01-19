@@ -1,0 +1,21 @@
+# Tanım: C# bindings for GTK+ 3
+# URL: http://mono-project.com/GtkSharp
+# Paketçi: milisarge
+# Gerekler: mono gtk3 
+# Grup: kütüphane
+
+isim=gtk-sharp3
+_isim=gtk-sharp
+surum=2.99.3
+devir=1
+kaynak=(https://download.gnome.org/sources/gtk-sharp/${surum%.*}/gtk-sharp-$surum.tar.xz)
+
+derle() {
+  cd gtk-sharp-$surum
+  sed -i 's/gmcs/mcs/' configure{,.ac}
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+  rm -rf $PKG/usr/share/doc
+  rm -rf $PKG/usr/share/gtk-doc
+}
