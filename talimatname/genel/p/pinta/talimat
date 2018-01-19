@@ -1,0 +1,25 @@
+# Tanım: Paint benzeri resim düzenleme programı
+# URL: http://pinta-project.com/
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk-sharp2 mono-addins
+# Grup:
+
+isim=pinta
+surum=1.6
+devir=1
+kaynak=(https://github.com/PintaProject/Pinta/releases/download/$surum/$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  # update the project and solution files for mono4 (taken from Fedora)
+  find . -name "*.sln" -print -exec sed -i 's/Format Version 10.00/Format Version 11.00/g' {} \;
+  find . \( -name "*.csproj" -o -name "*.proj" \) -print -exec sed -i 's#ToolsVersion="3.5"#ToolsVersion="4.0"#g; s#<TargetFrameworkVersion>.*</TargetFrameworkVersion>##g; s#<PropertyGroup>#<PropertyGroup><TargetFrameworkVersion>v4.5</TargetFrameworkVersion>#g; s#Mono.Posix, Version.*"#Mono.Posix"#g' {} \;
+
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  make
+
+  make DESTDIR=$PKG install
+  install -dm755 "$PKG"/usr/share/licenses/$isim
+  install -m644 license-*.txt readme.md "$PKG"/usr/share/licenses/$isim/
+
+}
