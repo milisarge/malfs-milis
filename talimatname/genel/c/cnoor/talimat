@@ -1,7 +1,7 @@
 # Tanım: Basit bir framebuffer Kuran'ı Kerim görüntüleyici.
 # URL: http://litcave.rudi.ir/
 # Paketçi: Cihan_Alkan
-# Gerekler: openjdk
+# Gerekler:
 # Grup: 
 
 isim=cnoor
