@@ -1,0 +1,21 @@
+# Tanım: HTTP İstek/Yanıt için ayrıştırıcı
+# URL: https://github.com/nodejs/http-parser
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: geliştirme
+
+isim=http-parser
+surum=2.7.1
+devir=1
+
+kaynak=(https://github.com/nodejs/http-parser/archive/v2.7.1.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd $isim-$surum
+	sed -i 's|-Werror||' ./Makefile
+	make library
+	make PREFIX="$PKG/usr" install
+	install -Dm644 LICENSE-MIT \
+		"${PKG}/usr/share/licenses/${isim}/LICENSE-MIT"
+	ln -sf libhttp_parser.so.$surum "${PKG}/usr/lib/libhttp_parser.so"
+}
