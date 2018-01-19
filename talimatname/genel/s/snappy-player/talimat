@@ -1,0 +1,27 @@
+# Tanım: Minimalist bir arayüzü olan güçlü medya oynatıcı
+# URL: https://wiki.gnome.org/Apps/Snappy
+# Paketçi: Cihan_Alkan
+# Gerekler: gstreamer-plugins-base clutter-gst clutter-gtk
+# Grup: medya
+
+isim=snappy-player
+surum=1.0
+devir=1
+
+kaynak=(https://download.gnome.org/sources/snappy/$surum/snappy-$surum.tar.xz
+        0001-Set-windowing-backend-to-X11.patch
+        clutter-gst3.patch)
+
+derle() {
+  cd snappy-$surum
+  # Fix compatibility with Clutter 1.22
+  patch -Np1 -i ../0001-Set-windowing-backend-to-X11.patch
+
+  # Port to clutter-gst 3.0
+  patch -Np1 -i ../clutter-gst3.patch
+  autoreconf -fi
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+}
+
