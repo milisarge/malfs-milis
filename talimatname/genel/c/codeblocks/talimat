@@ -1,7 +1,7 @@
 # Tanım: Çapraz platformlu C/C++ IDE
 # URL: http://codeblocks.org/
 # Paketçi: Cihan_Alkan
-# Gerekler: boost gamin hunspell wxgtk28
+# Gerekler: boost gamin hunspell wxgtk28 zip
 # Grup: geliştirme
 
 isim=codeblocks
