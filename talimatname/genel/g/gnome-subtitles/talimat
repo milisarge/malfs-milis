@@ -1,0 +1,28 @@
+# Tanım: GNOME için video altyazı editörü
+# URL: http://www.gnomesubtitles.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: gstreamer-plugins-base gtkspell intltool gnome-doc-utils mono gtk-sharp2 gconf-sharp
+# Grup: medya
+
+isim=gnome-subtitles
+surum=1.3
+devir=1
+kaynak=(https://downloads.sourceforge.net/$isim/$isim-$surum.tar.gz)
+
+derle() {
+	cd $isim-$surum
+
+	sed -i 's/libenchant.so.1/libenchant.so.2/' src/GnomeSubtitles/Execution/gnome-subtitles.exe.config
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+			  --disable-schemas-install \
+			  --with-gconf-schema-file-dir=/usr/share/gconf/schemas
+	make -j1
+
+	make DESTDIR="$PKG" install
+
+	# Başlatıcı
+	sed -i 's/^Exec=/Name[tr]=Gnome-Altyazılar \
+	GenericName[tr]=Altyazı Düzenleyici \
+	Comment[tr]=GNOME için video altyazı editörü \
+	&/' $PKG/usr/share/applications/$isim.desktop
+}
