@@ -1,0 +1,48 @@
+# Tanım: Görsel Kavram Ortamı
+# URL: https://github.com/VUE/VUE
+# Paketçi: Cihan Alkan
+# Gerekler: desktop-file-utils openjdk
+# Grup: bilimsel
+
+isim=vue
+surum=3.3.0
+devir=1
+
+kaynak=(https://github.com/VUE/VUE/releases/download/$surum/VUE.jar
+https://aur.archlinux.org/cgit/aur.git/plain/vue.png?h=vue)
+
+derle() {
+install -Dm755 VUE.jar $PKG/opt/$isim/VUE.jar
+
+# Bin Dosyası 
+mkdir -pv $PKG/usr/bin &&
+cat > $PKG/usr/bin/vue << "EOF" &&
+#!/bin/sh
+
+exec java -jar /opt/vue/VUE.jar
+EOF
+
+chmod 755 $PKG/usr/bin/vue
+chmod +x $PKG/usr/bin/vue
+
+# desktop Dosyası 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/vue.desktop << "EOF" &&
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=VUE
+Comment=Görsel Kavram Ortamı
+Exec=vue
+Icon=/opt/vue/vue.png
+Categories=Office;
+Terminal=false
+
+EOF
+
+
+	install -Dm644 vue.png?h=vue $PKG/opt/$isim/vue.png
+
+	update-desktop-database -q
+
+}
