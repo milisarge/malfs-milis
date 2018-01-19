@@ -1,17 +1,18 @@
-# Tanım: Gtk tema renklerini yapılandırmak için bir araç
+# Tanım: GTK tema renklerini yapılandırmak için kullanılan bir araç.
 # URL: https://github.com/satya164/gtk-theme-config
-# Paketçi: yasarciv67@gmail.com
-# Gerekler: vala gconf gsettings-desktop-schemas hicolor-icon-theme gtk3 
+# Paketçi: Cihan_Alkan
+# Gerekler: gconf gsettings-desktop-schemas hicolor-icon-theme gtk3 vala
+# Grup: grafik_tasarım
 
 isim=gtk-theme-config
-surum=1.1
+surum=1.0
 devir=1
-kaynak=(https://github.com/yasarciv/$isim/archive/v$surum.tar.gz)
+kaynak=(https://github.com/satya164/gtk-theme-config/archive/v1.0.tar.gz::$isim-$surum.tar.gz
+        gtk-theme-conf-tr.po)
 
 derle() {
-  cd $isim-$surum
+  cd gtk-theme-config-1.1
+  cp ../gtk-theme-conf-tr.po po/tr.po
+  make
   make DESTDIR="$PKG/" install
-
-# vim:set ts=2 sw=2 et:
-
 }

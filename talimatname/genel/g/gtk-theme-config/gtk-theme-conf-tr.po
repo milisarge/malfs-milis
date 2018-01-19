@@ -1,0 +1,70 @@
+# German translations for gtk-theme-config package.
+# Copyright (C) 2014 THE gtk-theme-config'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gtk-theme-config package.
+# Tom Beckmann <tomjonabc@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gtk-theme-config 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-11 20:39+0100\n"
+"PO-Revision-Date: 2014-03-11 20:40+0100\n"
+"Last-Translator: Cihan Alkan <cihanalk@gmail.com>\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gtk-theme-config.vala:6
+msgid "Configure GTK theme colors"
+msgstr "GTK tema renklerini yapılandırma"
+
+#: gtk-theme-config.vala:48
+msgid "Theme Configuration"
+msgstr "Tema Yapılandırması"
+
+#: gtk-theme-config.vala:201
+msgid "Custom highlight colors"
+msgstr "Özel vurgu renkleri"
+
+#: gtk-theme-config.vala:204
+msgid "Custom panel colors"
+msgstr "Özel panel renkleri"
+
+#: gtk-theme-config.vala:207
+msgid "Custom menu colors"
+msgstr "Özel menü renkleri"
+
+#: gtk-theme-config.vala:211
+msgid "Highlight background"
+msgstr "Arka planı vurgulayın"
+
+#: gtk-theme-config.vala:213
+msgid "Highlight text"
+msgstr "Metni vurgulamak"
+
+#: gtk-theme-config.vala:215
+msgid "Panel background"
+msgstr "Panel arka planı"
+
+#: gtk-theme-config.vala:217
+msgid "Panel text"
+msgstr "Panel metni"
+
+#: gtk-theme-config.vala:219
+msgid "Menu background"
+msgstr "Menü arkaplanı"
+
+#: gtk-theme-config.vala:221
+msgid "Menu text"
+msgstr "Menü Metni"
+
+#: gtk-theme-config.vala:238
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: gtk-theme-config.vala:239
+msgid "Apply"
+msgstr "Uygula"
