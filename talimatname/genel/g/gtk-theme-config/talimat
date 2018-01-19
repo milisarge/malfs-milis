@@ -11,7 +11,7 @@ kaynak=(https://github.com/satya164/gtk-theme-config/archive/v1.0.tar.gz::$isim-
         gtk-theme-conf-tr.po)
 
 derle() {
-  cd gtk-theme-config-1.1
+  cd gtk-theme-config-1.0
   cp ../gtk-theme-conf-tr.po po/tr.po
   make
   make DESTDIR="$PKG/" install
