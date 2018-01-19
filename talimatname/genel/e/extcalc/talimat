@@ -1,0 +1,22 @@
+# Tanım: Çok işlevli bir bilimsel grafik hesap makinesi
+# URL: http://extcalc-linux.sourceforge.net
+# Paketçi: Cihan Alkan
+# Gerekler: qt4 cmake
+# Grup: eğitim
+
+isim=extcalc
+surum=0.9.3
+devir=1
+kaynak=(http://downloads.sourceforge.net/$isim-linux/$isim-$surum-1.tar.gz)
+
+
+derle() {
+cd $SRC/$isim-$surum-1
+	CXXFLAGS="$CXXFLAGS -Wno-write-strings -Wno-unused-result"
+	sed -i 's|${QT_LIBRARIES}|${QT_LIBRARIES} ${OPENGL_LIBRARIES}|' CMakeLists.txt
+	sed -i "s|FIND_PACKAGE|FIND_PACKAGE(OpenGL REQUIRED)\nFIND_PACKAGE|" CMakeLists.txt
+	sed -i 's|/usr/local|/usr|' CMakeLists.txt
+	cmake -DCMAKE_INSTALL_PREFIX="/usr"
+	make -Wno-write-strings
+	make DESTDIR="$PKG" install
+}
