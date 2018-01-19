@@ -1,0 +1,24 @@
+# Tanım: Python (ic) linux prctl syscall arayüzü
+# URL: https://github.com/seveas/python-prctl
+# Paketçi: Cihan_Alkan
+# Gerekler: python python-setuptools python3 python3-setuptools libcap
+# Grup: kütüphane
+
+isim=pyprctl
+surum=1.6.1
+devir=1
+kaynak=(https://github.com/seveas/python-prctl/archive/v1.6.1.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+  cp -a python-prctl-1.6.1{,-py3}
+
+  cd "$SRC"/python-prctl-1.6.1
+  python2 setup.py build
+  python2 setup.py install --root="$PKG" --optimize=1
+
+  cd "$SRC"/python-prctl-1.6.1-py3
+  python3 setup.py build
+  python3 setup.py install --root="$PKG" --optimize=1
+
+}
