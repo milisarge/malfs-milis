@@ -1,7 +1,7 @@
 # Tanım: KDE Matematiksel Yazılım Arayüzü
 # URL: http://www.kde.org/
 # Paketçi: Cihan_Alkan
-# Gerekler: kf5-extra-cmake-modules kf5-kcodecs kf5-kconfig kf5-kcoreaddons knewstuff kf5-kdoctools kf5-kiconthemes kf5-ktexteditor kf5-kwidgetsaddons python hicolor-icon-theme luajit
+# Gerekler: kf5-extra-cmake-modules kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-knewstuff kf5-kdoctools kf5-kiconthemes kf5-ktexteditor kf5-kwidgetsaddons python hicolor-icon-theme luajit
 # Grup: kde
 
 
