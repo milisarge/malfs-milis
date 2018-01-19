@@ -1,0 +1,18 @@
+# Tanım: JavaScript Görev Koşucusu
+# URL: http://gruntjs.com/
+# Paketçi: Cihan_Alkan
+# Gerekler: node
+# Grup: geliştirme
+
+isim=grunt
+surum=1.0.1
+devir=1
+kaynak=(http://registry.npmjs.org/$isim/-/$isim-$surum.tgz)
+
+derle() {
+	cd $SRC
+	local _npmdir="$PKG/usr/lib/node_modules/"
+	mkdir -p $_npmdir
+	cd $_npmdir
+	npm install -g --prefix "$PKG/usr" $isim@$surum
+}
