@@ -1,7 +1,7 @@
 # Tanım: Grafiksel dosya farklılıkları aracı
 # URL: http://www.kde.org/
 # Paketçi: Cihan_Alkan
-# Gerekler: kf5-extra-cmake-modules kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-kdoctools kf5-kiconthemes kf5-kjobwidgets kf5-kparts kf5-ktexteditor kf5-kwidgetsaddons libkomparediff2 qt5
+# Gerekler: kf5-extra-cmake-modules kf5-kcodecs kf5-kconfig kf5-kcoreaddons kf5-kdoctools kf5-kiconthemes kf5-kjobwidgets kf5-kparts kf5-ktexteditor kf5-kwidgetsaddons libkomparediff2 qt5 syntax-highlighting
 # Grup: kde
 
 
