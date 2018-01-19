@@ -1,0 +1,22 @@
+# Tanım: Prolog environment
+# URL: http://www.swi-prolog.org/
+# Paketçi: milisarge
+# Gerekler: libjpeg-turbo xorg-libxft xorg-libxinerama xorg-libxpm unixodbc 
+# Grup: geliştirme
+
+isim=swi-prolog
+surum=7.6.4
+devir=1
+kaynak=(http://www.swi-prolog.org/download/stable/src/swipl-${surum/_/-}.tar.gz
+)
+
+derle() {
+  cd "swipl-${surum/_/-}"
+  ./configure --with-world --prefix=/usr
+  (cd src; ./configure --enable-readline --prefix=/usr)
+  make
+  make -C "swipl-${surum/_/-}" check || true
+  make -C "swipl-${surum/_/-}" DESTDIR="$PKG" install
+  # Fix for FS#20873
+  chmod +x "$PKG/usr/lib/swipl-${surum/_/-}/library/dialect/sicstus/swipl-lfr.pl"
+}
