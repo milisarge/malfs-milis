@@ -25,6 +25,6 @@ derle() {
   ./configure --prefix=/usr --with-contrib-plugins=all
   sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
-  make -C "$isim-$surum.release" DESTDIR="$PKG" install
+  make -C "$SRC/$isim-$surum.release" DESTDIR="$PKG" install
   [ -L /usr/bin/wx-config ] && rm -f /usr/bin/wx-config
 }
