@@ -1,0 +1,16 @@
+# Tanım: Python için tamamen işlevsel bir X istemci kitaplığı programları
+# URL: https://github.com/python-xlib/python-xlib
+# Paketçi: Cihan Alkan
+# Gerekler: python python-six
+# Grup: kütüphane
+
+isim=python-xlib
+surum=0.20
+devir=1
+
+kaynak=(https://github.com/python-xlib/python-xlib/releases/download/$surum/$isim-$surum.tar.bz2)
+
+derle() {
+  cd $isim-$surum
+  python2 setup.py install --root="$PKG"
+}
