@@ -1,0 +1,62 @@
+# Tanım: Şifreli mesajları başka bir kişiye veya birçok aboneye göndermek için merkezi olmayan ve güvenilir P2P iletişim protokolü
+# URL: https://github.com/Bitmessage/PyBitmessage
+# Paketçi: Oltulu
+# Gerekler: python sqlite python-msgpack qt4 python-qt4
+# Grup: ağ güvenlik
+
+isim=pybitmessage
+surum=0.6.2
+devir=1
+kaynak=(https://github.com/Bitmessage/PyBitmessage/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+# Başlatıcı 
+cat > $SRC/pybitmessage.sh << "EOF" &&
+#!/bin/sh
+cd /usr/share/pybitmessage
+exec python2 bitmessagemain.py
+EOF
+
+  cd "$SRC/PyBitmessage-$surum"
+
+  echo 'Fixing Python version...'
+  find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
+  find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
+
+  cd src/bitmsghash
+  make
+
+  cd "$SRC/PyBitmessage-$surum"
+
+  echo 'Paylaşılan dosyaları yükleniyor...'
+  mkdir -p "$PKG"/usr/share/$isim
+  cp -R src/* "$PKG"/usr/share/$isim
+
+  echo 'Masaüstü simgelerini yükleniyor...'
+  install -D -m644 src/images/can-icon-24px.png "$PKG/usr/share/icons/hicolor/24x24/apps/$isim.png"
+  install -D -m644 desktop/can-icon.svg "$PKG/usr/share/icons/hicolor/scalable/apps/$isim.svg"
+  install -D -m644 desktop/can-icon.svg "$PKG/usr/share/pixmaps/$isim.svg"
+
+  echo 'Çalıştırılabilir dosya yükleniyor...'
+  install -D -m755 $SRC/pybitmessage.sh "$PKG/usr/bin/$isim"
+
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
+[Desktop Entry]
+Type=Application
+Name=PyBitmessage
+GenericName=Bitmesaj İstemcisi
+Comment=Şifreli mesaj gönder
+Exec=pybitmessage %F
+Icon=pybitmessage
+Terminal=false
+Categories=Office;Email;
+EOF
+
+  echo 'Man sayfası yükleniyor...'
+  mkdir -p "$PKG/usr/share/man/man1"
+  install -m644 man/pybitmessage.1.gz "$PKG/usr/share/man/man1"
+
+}
