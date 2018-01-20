@@ -1,5 +1,5 @@
 #!/bin/bash
-surum=4.13.12
+surum=4.14.14
 sonek=milis
 depmod ${surum}-$sonek
 cd /boot
@@ -13,6 +13,7 @@ fi
 [ -f /usr/bin/os-prober ] && os-prober
 if [ -f /usr/bin/grub-mkconfig ];then
 	[ -f /boot/grub/grub.cfg ] && mv /boot/grub/grub.cfg /boot/grub/grub.cfg.eski
+	[ ! -f /boot/grub/grub.cfg.new ] && cp /etc/default/grub/grub.cfg /boot/grub/grub.cfg.new
 	grub-mkconfig -o /boot/grub/grub.cfg
 fi
 cd -

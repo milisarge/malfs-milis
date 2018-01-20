@@ -4,13 +4,12 @@
 # Gerekler: linux-firmware intel-ucode
 
 isim=kernel
-_basekernel=4.13
-surum=4.13.12
+_basekernel=4.14
+surum=4.14.14
 devir=1
 
 kaynak=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$_basekernel.tar.xz
         http://www.kernel.org/pub/linux/kernel/v4.x/patch-${surum}.xz
-        https://github.com/copperhead/linux-hardened/releases/download/4.13.12.a/linux-hardened-${surum}.a.patch
         config
         aufs4-loopback.patch
         aufs4-base.patch
@@ -19,11 +18,8 @@ kaynak=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$_basekernel.tar.xz
         aufs4-kbuild.patch
         aufs4.patch
         config.aufs
-        lockdep-debug.patch
         tmpfs-idr.patch
-        vfs-ino.patch
-        change-default-console-loglevel.patch
-        i8042-fix-aliases.patch)
+        vfs-ino.patch)
 
 
 derle() {
@@ -35,9 +31,7 @@ derle() {
   patch -p1 -i "patch-${surum}"
   
   # güvenli kernel yaması
-  patch -p1 -i "${SRC}/linux-hardened-${surum}.a.patch"
-  
-  patch -p1 -i "${SRC}/i8042-fix-aliases.patch"
+  #patch -p1 -i "${SRC}/linux-hardened-${surum}.a.patch"
   
   #çalışan sistem aufs yamaları
   patch -p1 -i "${SRC}/aufs4.patch"
@@ -46,11 +40,8 @@ derle() {
   patch -p1 -i "${SRC}/aufs4-loopback.patch"
   patch -p1 -i "${SRC}/aufs4-mmap.patch"
   patch -p1 -i "${SRC}/aufs4-standalone.patch"
-  #patch -p1 -i "${SRC}/lockdep-debug.patch"
   patch -p1 -i "${SRC}/tmpfs-idr.patch"
   patch -p1 -i "${SRC}/vfs-ino.patch"
-  #fix error: too few arguments to function 'loop_switch' error with RC aufs patches
-  sed -i "s|return loop_switch(lo, NULL);|return loop_switch(lo, NULL, NULL);|g" drivers/block/loop.c
   
   cat "${SRC}/config" > ./.config
 
@@ -69,7 +60,7 @@ derle() {
   yes "" | make oldconfig >/dev/null
 
   # derleme
-  make ${MAKEFLAGS} bzImage modules
+  make ${MAKEFLAGS} bzImage modules || make ${MAKEFLAGS} bzImage modules
 
   KARCH=x86
 
@@ -106,10 +97,11 @@ derle() {
   install -D -m644 .config \
     "${PKG}/usr/src/linux-${_kernver}/.config"
 
+  ######################
   mkdir -p "${PKG}/usr/src/linux-${_kernver}/include"
 
   for i in acpi asm-generic config crypto drm generated linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi rdma soc sound trace uapi video xen; do
     cp -a include/${i} "${PKG}/usr/src/linux-${_kernver}/include/"
   done
 
@@ -149,7 +141,11 @@ derle() {
     mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c/${i}"
     cp -a drivers/media/i2c/${i}/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/media/i2c/${i}"
   done
-  
+
+  # add docbook makefile
+  #install -D -m644 Documentation/DocBook/Makefile \
+  #  "${PKG}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
+
   # add dm headers
   mkdir -p "${PKG}/usr/src/linux-${_kernver}/drivers/md"
   cp drivers/md/*.h "${PKG}/usr/src/linux-${_kernver}/drivers/md"
@@ -213,5 +209,4 @@ derle() {
 
   # remove unneeded architectures
   rm -rf "${PKG}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
-
 }

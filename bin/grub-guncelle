@@ -2,5 +2,5 @@
 if [ -f /boot/grub/grub.cfg ];then
 	mv /boot/grub/grub.cfg /boot/grub/grub.cfg.eski
 fi
-[ ! -f /boot/grub/grub.cfg.new ] && mv /etc/default/grub/grub.cfg /boot/grub/grub.cfg.new
+[ ! -f /boot/grub/grub.cfg.new ] && cp /etc/default/grub/grub.cfg /boot/grub/grub.cfg.new
 grub-mkconfig -o /boot/grub/grub.cfg
