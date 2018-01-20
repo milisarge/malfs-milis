@@ -1,36 +1,35 @@
-# Tanım: Özgür pascal derleyicisi
+# Tanım: The Free Pascal Compiler is a Turbo Pascal 7.0 and Delphi compatible 32bit Pascal Compiler. It comes with fully TP 7.0 compatible run-time library.
 # URL: http://www.freepascal.org/
 # Paketçi: milisarge
-# Gerekler: fpc gdb
+# Gerekler: fpc 
+# Grup: geliştirme
 
 isim=fpc3
-surum=3.0.2
+surum=3.0.4
 devir=1
-kaynak=(ftp://ftp.freepascal.org/pub/fpc/dist/$surum/source/fpcbuild-$surum.tar.gz)
+_gdbsurum=7.10
+kaynak=(ftp://ftp.freepascal.org/pub/fpc/dist/3.0.4/source/fpcbuild-3.0.4.tar.gz
+		https://ftp.gnu.org/gnu/gdb/gdb-${_gdbsurum}.tar.xz)
+
 derle() {
-	cd "$SRC"/fpcbuild-$surum
-	pushd fpcsrc/compiler
-	fpcmake -Tall
-	popd
-	make build NOGDB=1
-	
-	export HOME="$SRC"
-
-	make -j1 PREFIX="$PKG"/usr install
-
-	export PATH="$PKG"/usr/bin:$PATH
-
-	install -Dm0644 fpcsrc/rtl/COPYING.FPC "$PKG"/usr/share/licenses/${isim}/COPYING.FPC
-
-	ln -s /usr/lib/fpc/${surum}/ppcx64 "$PKG"/usr/bin/
-
-	mkdir -p "$PKG"/etc
-	"$PKG"/usr/lib/fpc/${surum}/samplecfg "$PKG"/usr/lib/fpc/${surum} "$PKG"/etc
-
-	# use -fPIC by default
-	echo -e "#ifdef cpux86_64\n# for x86_64 use -fPIC by default\n-Cg\n#endif" >> "$PKG/etc/fpc.cfg"
-
-	mv "$PKG"/usr/man "$PKG"/usr/share/
-
-	find "$PKG"/etc/ -type f -exec sed -i "s|"$PKG"||g" {} \;
+  cd "$SRC"/fpcbuild-$surum
+  export GDBLIBDIR="$SRC"/gdb-${_gdbver}/gdb
+  export LIBGDBFILE=$GDBLIBDIR/libgdb.a
+  pushd fpcsrc/compiler
+  fpcmake -Tall
+  popd
+  make build NOGDB=1
+  cd "$SRC"/fpcbuild-$surum
+  export HOME="$SRC"
+  make -j1 PREFIX="$PKG"/usr install
+  export PATH="$PKG"/usr/bin:$PATH
+  install -Dm0644 fpcsrc/rtl/COPYING.FPC "$PKG"/usr/share/licenses/${isim}/COPYING.FPC
+  [ "$CARCH" = "i686" ] && ln -s /usr/lib/fpc/${surum}/ppc386 "$PKG"/usr/bin/
+  [ "$CARCH" = "x86_64" ] && ln -s /usr/lib/fpc/${surum}/ppcx64 "$PKG"/usr/bin/
+  mkdir -p "$PKG"/etc
+  "$PKG"/usr/lib/fpc/${surum}/samplecfg "$PKG"/usr/lib/fpc/${surum} "$PKG"/etc
+  # use -fPIC by default
+  echo -e "#ifdef cpux86_64\n# for x86_64 use -fPIC by default\n-Cg\n#endif" >> "$PKG/etc/fpc.cfg"
+  mv "$PKG"/usr/man "$PKG"/usr/share/
+  find "$PKG"/etc/ -type f -exec sed -i "s|"$PKG"||g" {} \;
 }
