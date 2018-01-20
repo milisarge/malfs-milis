@@ -1,19 +1,46 @@
 # Tanım: Kernel için firmware ikilileri
-# URL:         https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
-# Paketçi:    milisarge
-# Gerekler:
+# URL: https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
+# Paketçi: milisarge
+# Gerekler: b43-fwcutter git
+# Grup: sürücüler
 
 isim=linux-firmware
-surum=20161122
+surum=20180119
+_b43=5.100.138
+_legacy=3.130.20.0
 devir=1
-kaynak=(http://distfiles.serverop.de/$isim-$surum.tar.xz)
+kaynak=(http://mirror2.openwrt.org/sources/broadcom-wl-${_b43}.tar.bz2
+        http://downloads.openwrt.org/sources/wl_apsta-${_legacy}.o
+		microcode_amd_fam17h.bin.xz)
 
 derle() {
-    cd $isim-$surum
-
+    if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+	unxz $SRC/microcode_amd_fam17h.bin.xz
     # Build/Package
     make DESTDIR=$PKG FIRMWAREDIR=/lib/firmware install
 
     # Cleanup
     rm $PKG/lib/firmware/{Makefile,README,configure,GPL-{2,3}}
+
+	install -d ${PKG}/usr/share/licenses/${isim}
+	install -Dm644 LICEN* WHENCE ${PKG}/usr/share/licenses/linux-firmware/
+
+	# install b43-firmware
+	b43-fwcutter -w ${PKG}/lib/firmware/ ${SRC}/broadcom-wl-${_b43}/linux/wl_apsta.o
+
+	# install b43-legacy-firmware
+	b43-fwcutter -w ${PKG}/lib/firmware/ ${SRC}/wl_apsta-${_legacy}.o
+
+	# temporary manually add latest amd firmware
+	cd ..
+	install -Dm644 microcode_amd_fam17h.bin ${PKG}/lib/firmware/amd-ucode/
+    
 }
