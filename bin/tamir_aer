@@ -1,2 +1,4 @@
-echo "pci=noaer parametresi ekleyin grub'a"
+#!/bin/sh
+#echo "pci=noaer parametresi ekleyin grub'a"
+[ -f /etc/default/grub/grub.default ] && sed -i 's#^\(GRUB_CMDLINE_LINUX_DEFAULT="quiet\)"$#\1 pci=noaer"#' /etc/default/grub/grub.default
 
