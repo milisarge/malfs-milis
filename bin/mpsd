@@ -230,6 +230,29 @@ kaynak_indir() {
 		fi
 	done
 }
+
+git_indir(){
+	local _isim _gitadres
+	if [ $1 ];then
+		_gitadres="$1"
+	else
+		echo "git adresi tanımlı değil"
+	fi
+	if [ $2 ];then
+		_isim="$2"
+	else
+		echo "git repo ismi tanımlı değil"
+	fi
+	if [ ! -d $DERLEME_KAYNAKDIZIN/${_isim}  ];then
+		git clone ${_gitadres} $DERLEME_KAYNAKDIZIN/${_isim}
+	else
+		cd $DERLEME_KAYNAKDIZIN/${_isim} 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/${_isim} $SRC/
+}
+
 remove_source() {
 	local FILE LOCAL_FILENAME
 	for FILE in ${kaynak[@]}; do
