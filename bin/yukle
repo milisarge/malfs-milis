@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#
+# https://github.com/lachs0r/0x0
 # 0x0.st
 # milisarge-milislinux
 [ $1 ] && dosya="$1" || exit 1
