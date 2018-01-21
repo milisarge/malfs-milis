@@ -7,7 +7,7 @@ ortam_adres="http://kaynaklar.milislinux.org/iso/reposuz-milis-bootstrap-enson.s
 ortam=/mnt/reposuz-milis-bootstrap-enson.sfs
 
 shasum_kontrol(){
-	inen_sha=$(sha256sum $ortam)
+	inen_sha=$(sha256sum $ortam | cut -d' ' -f1)
 	if [ "$ortam_sha" = "$inen_sha" ];then
 		echo "ortam shasum doğrulandı."
 	else
