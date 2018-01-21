@@ -1,0 +1,23 @@
+# Tanım: Hızlı ve dosya bazlı derleme sistemi uygulaması
+# URL: http://gittup.org/tup/index.html
+# Paketçi: milisarge
+# Gerekler: git fuse 
+# Grup: geliştirme
+
+isim=tup
+surum=git
+devir=1
+kaynak=()
+
+derle() {
+	adres="https://github.com/gittup/tup"
+	git_indir ${adres} ${isim}
+	cd $SRC/${isim}
+	
+	sh bootstrap.sh
+	install -d "$PKG"/usr/bin "$PKG"/usr/share/man/man1 "$PKG"/usr/share/vim/vimfiles/{syntax,ftdetect}
+	install -m755 -t "$PKG"/usr/bin tup
+	install -m644 -t "$PKG"/usr/share/man/man1 tup.1
+	install -m644 -t "$PKG"/usr/share/vim/vimfiles/syntax contrib/syntax/tup.vim
+	echo 'au BufNewFile,BufRead Tupfile,*.tup setf tup' > "$PKG"/usr/share/vim/vimfiles/ftdetect/tup.vim
+}
