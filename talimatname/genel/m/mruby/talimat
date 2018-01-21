@@ -1,0 +1,21 @@
+# Tanım: Hafif Ruby yorumlayıcısı
+# URL: https://github.com/mruby/mruby
+# Paketçi: milisarge
+# Gerekler: git ruby 
+# Grup: geliştirme
+
+isim=mruby
+surum=1.3.0
+devir=1
+kaynak=(https://github.com/mruby/mruby/archive/$surum.zip::mruby-$surum.zip)
+
+derle() {
+  cd mruby-$surum
+  make
+  make test
+  install -d "$PKG/usr/bin" "$PKG/usr/lib" "$PKG/usr/share/licenses/mruby"
+  cp build/host/bin/* "$PKG/usr/bin"
+  cp build/host/lib/*.a "$PKG/usr/lib"
+  cp -r include "$PKG/usr"
+  cp MITL "$PKG/usr/share/licenses/mruby/LICENSE"
+}
