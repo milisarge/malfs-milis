@@ -2,9 +2,10 @@
 # URL: http://mpv.io/
 # Paketçi: milisarge
 # Gerekler: sdl2 sndio rsound openal uchardet v4l-utils libcdio-paranoia ffmpeg lcms2 samba ladspa xorg-libxscrnsaver libbluray libvdpau libquvi xorg-libxinerama xorg-libxv libxkbcommon desktop-file-utils hicolor-icon-theme xdg-utils lua lua52 libdvdnav xorg-libxrandr jack 
+# Grup: medya
 
 isim=mpv
-surum=0.26.0
+surum=0.27.0
 devir=1
 kaynak=(https://github.com/$isim-player/$isim/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
@@ -35,8 +36,6 @@ derle() {
         \
         --disable-win32-internal-pthreads \
         --enable-iconv \
-        --enable-termios \
-        --enable-shm \
         --enable-libsmbclient \
         --enable-libass \
         --enable-libass-osd \
@@ -70,14 +69,14 @@ derle() {
         --disable-cocoa \
         --enable-drm \
         --enable-gbm \
-        --enable-wayland \
+        --disable-wayland \
         --enable-x11 \
         --enable-xv \
         --disable-gl-cocoa \
         --enable-gl-x11 \
         --enable-egl-x11 \
         --enable-egl-drm \
-        --enable-gl-wayland \
+        --disable-gl-wayland \
         --disable-gl-win32 \
         --disable-gl-dxinterop \
         --disable-egl-angle \
@@ -100,13 +99,7 @@ derle() {
         --disable-mali-fbdev \
         --enable-gl \
         \
-        --enable-vaapi-hwaccel \
-        --disable-videotoolbox-hwaccel-new \
-        --disable-videotoolbox-hwaccel-old \
         --disable-videotoolbox-gl \
-        --enable-vdpau-hwaccel \
-        --disable-d3d-hwaccel \
-        --disable-d3d-hwaccel-new \
         --enable-cuda-hwaccel \
         \
         --enable-tv \
