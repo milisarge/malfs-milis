@@ -6,7 +6,7 @@
 
 isim=baka-mplayer
 surum=2.0.4
-devir=1
+devir=2
 kaynak=(https://github.com/u8sand/Baka-MPlayer/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
 
 	
