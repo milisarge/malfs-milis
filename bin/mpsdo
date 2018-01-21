@@ -1,12 +1,30 @@
 #!/bin/bash
 
+# derleme ortamının indirilmesi
+
+ortam_sha="ca45a2000951cfb3eef6c5ca517848dbb6d4b7e2f2db055fffe67822bc666b15" 
+ortam_adres="http://kaynaklar.milislinux.org/iso/reposuz-milis-bootstrap-enson.sfs"
+ortam=/mnt/reposuz-milis-bootstrap-enson.sfs
+
+if [ ! -f $ortam ];then
+	wget $ortam_adres -O $ortam
+
+	inen_sha=$(sha256sum $ortam)
+
+	if [ "$ortam_sha" = "$inen_sha" ];then
+		echo "shasum doğrulandı."
+	else
+		echo "indirilen ortamda shasum uyşmazlığı var.silip tekrar deneyiniz.";exit 1
+	fi
+fi
+
 # değişkenler - yolların iyi ayarlandığından emin olunuz.
  
 lfs=/mnt/lfs
 rootfs=/mnt/rootfs
 ikincil=/mnt/ikincil
 kaynaklar=/mnt/sources
-ortam=/mnt/reposuz-milis-bootstrap-enson.sfs
+
 
 [ ! -f $ortam ] && exit 1
 
