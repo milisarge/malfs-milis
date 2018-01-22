@@ -1,11 +1,12 @@
-# Tanım: Video Decode and Presentation API for Unix provides a complete solution for decoding, post-processing, compositing, and displaying compressed or uncompressed video streams.
+# Tanım: video çözücü apisi
 # URL: http://cgit.freedesktop.org/vdpau/libvdpau
 # Paketçi: milisarge
 # Gerekler: xorg-libxext xorg-dri2proto
+# Grup: kütüphane
 
 isim=libvdpau
 surum=1.1.1
-devir=1
+devir=2
 kaynak=(http://people.freedesktop.org/~aplattner/vdpau/$isim-$surum.tar.bz2)
 
 derle() {
@@ -13,10 +14,9 @@ derle() {
 
 	./configure \
 		--prefix=/usr \
-		--mandir=/usr/man \
+		--sysconfdir=/etc \
 		--disable-dependency-tracking \
 		--disable-documentation
-
 	make
 	make DESTDIR=$PKG install
 }
