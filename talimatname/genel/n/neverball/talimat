@@ -7,9 +7,11 @@
 isim=neverball
 surum=1.6.0
 devir=1
-kaynak=(http://neverball.org/${isim}-${surum}.tar.gz)
+kaynak=(http://neverball.org/${isim}-${surum}.tar.gz
+        neverball.po)
 
 derle() {
+  msgfmt neverball.po -o neverball.mo
   cd ${isim}-${surum}
   make DATADIR=/usr/share/neverball LOCALEDIR=/usr/share/locale \
     CPPFLAGS="$CPPFLAGS -DNDEBUG" CFLAGS="$CFLAGS"
@@ -32,4 +34,6 @@ derle() {
   done
 
   chmod -R u=rwX,go=rX "${PKG}/usr/share/neverball"
+  mkdir -p $PKG/usr/share/locale/tr/LC_MESSAGES
+  cp $SRC/neverball.mo $PKG/usr/share/locale/tr/LC_MESSAGES/
 }
