@@ -3,6 +3,14 @@
 versiyon="1.1.8 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 
+betikad=${0##*/}
+betikyol="$0"
+shelltip=$(cat $betikyol | head -n1 | cut -d'!' -f2)
+
+# sistem araçlarının tespiti ve atanması
+
+#alias sed="sed"
+
 if [ -f /etc/mpsd.conf ];then
 . /etc/mpsd.conf
 else
@@ -72,9 +80,6 @@ if [ -z ${esgec+:} ]; then
 fi
 esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src)
 
-ikaynak=""
-betikad=${0##*/}
-betikyol="$0"
 kurulum_onay="evet"
 
 VT="/var/lib/pkg/DB"
@@ -3246,7 +3251,8 @@ ayarlar() {
 				exit 0 ;;
 			### mps -v . = mps sürüm bilgisini gösterir.
 			-v)
-				ryaz 33 "$betikad $versiyon  $iletisim" 
+				ryaz 33 "$betikad $versiyon  $iletisim $shelltip" 
+				#echo  "$betikad $versiyon  $iletisim $shelltip" | bilgi_kutusu
 				exit 0 ;;
 			
 			-y|-h|yardim)
@@ -3261,6 +3267,16 @@ ayarlar() {
 }
 yardim_icerik(){
 	cat $betikyol | sed -e 's/^[ \t]*//' | sed -n '/^###/p'  | sed  '/ /s/^###//g' | awk '{split($0,a,"=");  printf "%-6s %-13s %-18s %-40s \n",$1,$2,$3,a[2]}'
+}
+
+bilgi_kutusu() {
+	: ${title='Bilgi'}
+	: ${icon=dialog-information}
+
+	yad --title="$title" --window-icon="$icon" \
+		--geometry='600x220+0-24' --fore='#ffffff' --back='#000033' \
+		--text-info --fontname=monospace --wrap $opts \
+		--button='gtk-close:1'
 }
 
 ana(){
