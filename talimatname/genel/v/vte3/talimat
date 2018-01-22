@@ -1,21 +1,24 @@
-# Tanım: Vte GTK+ 3 için bir terminal emülatörü widget'ı uygulayan bir kitaplıktır (libvte)
+# Tanım: Vte GTK+3 için bir terminal emülatörü widget'ı uygulayan bir kitaplıktır
 # URL: http://developer.gnome.org/arch/gnome/widgets/vte.html
 # Paketçi: milisarge
 # Gerekler: gtk3 perl-xml-parser python-gtk gobject-introspection pcre2
+# GRup: kütüphane
 
 isim=vte3
-surum=0.49.1
+surum=0.51.3
 devir=1
 _isim=vte
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/${_name}/${surum%.*}-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/${_isim}/${surum%.*}-$surum.tar.xz)
 
 derle() {
 	cd ${_name}-$surum
 	./configure --prefix=/usr\
-		--libexecdir=/usr/lib/$isim \
-		--enable-introspection \
-		--with-xft2 \
-		--with-pangox
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib/$isim \
+	--enable-introspection \
+	--with-xft2 \
+	--with-pangox
 	make
 	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
 }
