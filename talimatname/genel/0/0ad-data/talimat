@@ -1,0 +1,15 @@
+# Tanım: Çapraz platform, üç boyutlu ve tarihsel temelli gerçek zamanlı strateji oyunu (veri dosyaları)
+# URL: http://play0ad.com/
+# Paketçi: Cihan_Alkan
+# Gerekler: 
+# Grup: oyunlar
+
+isim=0ad-data
+surum=a22
+devir=1
+kaynak=(https://sourceforge.net/projects/zero-ad/files/releases/0ad-0.0.22-alpha-unix-data.tar.xz)
+
+derle() {
+  install -d ${PKG}/usr/share/0ad/data
+  cp -r ${SRC}/0ad-0.0.22-alpha/binaries/data ${PKG}/usr/share/0ad
+}

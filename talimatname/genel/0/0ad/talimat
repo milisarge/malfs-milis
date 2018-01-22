@@ -1,0 +1,50 @@
+# Tanım: Çapraz platform, üç boyutlu ve tarihsel temelli gerçek zamanlı strateji oyunu
+# URL: http://play0ad.com/
+# Paketçi: Cihan_Alkan
+# Gerekler: binutils boost curl 0ad-data libogg libpng libvorbis libxml2 openal sdl2 wxgtk zlib xorg-glu miniupnpc icu nspr cmake xorg-mesa python xorg-libsm gloox enet
+# Grup: oyun
+
+isim=0ad
+surum=a22
+devir=1
+kaynak=(https://sourceforge.net/projects/zero-ad/files/releases/0ad-0.0.22-alpha-unix-build.tar.xz
+        update-workspaces.sh)
+
+derle() {
+
+cp update-workspaces.sh $SRC/$isim-0.0.22-alpha/build/workspaces/
+
+  cd "$SRC/$isim-0.0.22-alpha/"
+  sed -i "s/env python/env python2/g" libraries/source/cxxtest-4.4/bin/cxxtestgen
+ 
+  cd  build/workspaces
+
+  unset CPPFLAGS # for le spidermonkey
+
+ # sed "/^2/,/13$/d" update-workspaces.sh 
+
+  ./update-workspaces.sh \
+      --bindir=/usr/bin \
+      --libdir=/usr/lib/0ad \
+      --datadir=/usr/share/${isim}/data
+
+  cd gcc
+
+  make
+
+  cd $SRC
+
+  install -d "${PKG}"/usr/{bin,lib/0ad,share/"${isim}"/data}
+  cd "$SRC/$isim-0.0.22-alpha"
+
+  install -Dm755 binaries/system/pyrogenesis "${PKG}/usr/bin"
+  install -Dm755 binaries/system/*.so "${PKG}/usr/lib/0ad"
+
+  cp -r binaries/data/l10n/ ${PKG}/usr/share/${isim}/data/
+
+  install -Dm755 build/resources/${isim}.sh "${PKG}/usr/bin/${isim}"
+  install -Dm644 build/resources/${isim}.desktop \
+    "${PKG}/usr/share/applications/${isim}.desktop"
+  install -Dm644 build/resources/${isim}.png \
+    "${PKG}/usr/share/pixmaps/${isim}.png"
+}
