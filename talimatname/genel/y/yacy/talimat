@@ -4,20 +4,18 @@
 # Gerekler: openjdk apache-ant
 
 isim=yacy
-surum=1.82
-_pkgextraver=20150121_9000
+surum=1.92
+_surum=20161226_9000
 devir=1
 
-kaynak=("http://www.yacy.net/release/yacy_v${surum}_${_pkgextraver}.tar.gz"
+kaynak=("http://www.yacy.net/release/yacy_v${surum}_${_surum}.tar.gz"
         yacy.rc)
 
 derle() {
-	. /etc/profile.d/ant.sh
-
+    export JAVA_HOME=/opt/jdk
 	cd "$SRC/$isim"
-	ant all
-	cd "$SRC/$isim"
-	ant installonlinux -DDESTDIR="$PKG/"
+	/opt/ant/bin/ant all
+	/opt/ant/bin/ant installonlinux -DDESTDIR="$PKG/"
 	install -d "$PKG"/usr/share/java/yacy
 	install -t "$PKG"/usr/share/java/yacy/ lib/*.jar
 
