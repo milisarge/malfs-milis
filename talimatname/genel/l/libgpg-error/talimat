@@ -2,9 +2,10 @@
 # URL: http://www.gnupg.org
 # Paketçi: milisarge
 # Gerekler:
+# Grup: kütüphane
 
 isim=libgpg-error
-surum=1.21
+surum=1.27
 devir=1
 
 kaynak=(ftp://ftp.gnupg.org/gcrypt/$isim/$isim-$surum.tar.bz2)
