@@ -1,0 +1,21 @@
+# Tanım: SDL2 uygulamalarınızda TrueType fontları kullanmanıza izin veren bir kütüphane
+# URL: http://www.libsdl.org/projects/SDL_ttf
+# Paketçi: Cihan_Alkan
+# Gerekler: sdl2 freetype cmake
+# Grup: kütüphane
+
+isim=sdl2-ttf
+surum=2.0.14
+devir=1
+kaynak=(https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-${surum}.tar.gz)
+
+derle() {
+
+  cd "${SRC}/SDL2_ttf-${surum}/"
+
+  ./configure --disable-static --prefix=/usr
+  make
+
+  make DESTDIR="${PKG}/" install
+  install -Dm644 COPYING.txt "${PKG}/usr/share/licenses/${isim}/LICENSE"
+}
