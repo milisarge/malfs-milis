@@ -1,7 +1,7 @@
 # Tanım: sistem
 # URL:  sistem
 # Paketçi: milisarge
-# Gerekler: xorg xfce4-desktop xfce4-session xfce4-settings xfce4-notifyd xfce4-panel xfce4-wm xfce4-power-manager xfce4-xkb-plugin xfce4-terminal xfce4-libui xfce4-libutil xfce4-garcon xfce4-clipman-plugin xfce4-volumed xfce4-gtk-engine xfce4-appfinder xfce4-battery-plugin xfce4-conf xfce4-datetime-plugin xfce4-elementary-icon-theme tumbler xfce4-screenshooter xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin dejavu-ttf
+# Gerekler: xorg xfce4-desktop xfce4-session xfce4-settings xfce4-notifyd xfce4-panel xfce4-wm xfce4-power-manager xfce4-xkb-plugin xfce4-terminal xfce4-libui xfce4-libutil xfce4-garcon xfce4-clipman-plugin xfce4-gtk-engine xfce4-appfinder xfce4-battery-plugin xfce4-conf xfce4-datetime-plugin xfce4-elementary-icon-theme tumbler xfce4-screenshooter xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin dejavu-ttf
 
 isim=xfce4-sistem
 surum=1
