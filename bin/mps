@@ -1,32 +1,44 @@
 #!/bin/bash
-. /etc/mpsd.conf
-if [ -f /etc/mps.conf ];then
-. /etc/mps.conf
-fi
 
 versiyon="1.1.8 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
-paketdepo="/depo/paketler/"
+
+if [ -f /etc/mpsd.conf ];then
+. /etc/mpsd.conf
+else
+	echo "/etc/mpsd.conf ayar dosyası bulunamadı!"
+fi
+
+if [ -f /etc/mps.conf ];then
+. /etc/mps.conf
+else
+	echo "/etc/mps.conf ayar dosyası bulunamadı!"
+fi
+
+if [ -z ${paketdepo+:} ]; then
+	paketdepo="/depo/paketler/"
+fi
+
 if [ -z ${sunucu+:} ]; then
 	sunucu="127.0.0.1:8000/"
 fi
+
 if [ -z ${git_sunucu+:} ]; then
 	git_sunucu="https://github.com/milisarge/malfs-milis"
 fi
-ikaynak=""
-betikad=${0##*/}
-kurulum_onay="evet"
-talimatname="/root/talimatname"
-anatalimatname="/sources/milis.git/talimatname"
-#kokdizin="/"
+
+if [ -z ${anatalimatname+:} ]; then
+	anatalimatname="/sources/milis.git/talimatname"
+fi
+
+if [ -z ${talimatname+:} ]; then
+	talimatname="/root/talimatname"
+fi
+
 if [ -z ${kokdizin+:} ]; then
 	kokdizin="/"
 fi
-VT="/var/lib/pkg/DB"
-TARIHCE_DIZIN="/var/lib/pkg/tarihce"
-LOGDIZIN="/var/log/mps"
-tekrarkur="hayir"
-logdosya=/var/log/mps/mps.log
+
 #temel paket koruma
 if [ -z ${tpk+:} ]; then
 	tpk="evet"
@@ -58,8 +70,18 @@ fi
 if [ -z ${esgec+:} ]; then
 	declare -a esgec=()
 fi
-
 esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src)
+
+ikaynak=""
+betikad=${0##*/}
+betikyol="$0"
+kurulum_onay="evet"
+
+VT="/var/lib/pkg/DB"
+TARIHCE_DIZIN="/var/lib/pkg/tarihce"
+LOGDIZIN="/var/log/mps"
+tekrarkur="hayir"
+logdosya="/var/log/mps/mps.log"
 
 # Türkçe Mesajlar
 _paket_adi_gerekli="paket ismi eksik!"
@@ -2883,15 +2905,19 @@ ayarlar() {
 				fi
 				sistem_kur "$2" "$3" 
 				exit 0 ;;
+			## mps -po . = mps paketlerinin olduğu dizinde paket.vt oluşturur.
 			-po)
-				pvt_olustur ;;
-			-os|--pkos)
+				pvt_olustur 
+				exit 0 ;;
+			## mps -os dosya = ilgili dosyadaki altalta sıralı paketleri onaysız siler.
+			-os)
 				if [ ! "$2" ]; then
 					ryaz 31 "silme listesi yok"
 					hataloglama "silme listesi yok"
 					exit 1
 				fi
-				paket_sil_oto "$2" ;;	
+				paket_sil_oto "$2" 
+				exit 0 ;;	
 			### mps liste . = sistemde kurulu olan paket listesini verir.
 			-kl|liste)
 				ls ${kokdizin}${VT} 
@@ -2936,8 +2962,10 @@ ayarlar() {
 					exit 1
 				fi
 				sunucu_ayarla  "$2" ;;
+			### mps -bb paketismi = ilgili paketin gereklerinin durumunu listeler.
 			-bb|bagbil)
-				bagimli_bilgi "$2" | column -t;;
+				bagimli_bilgi "$2" | column -t
+				exit 0;;
 			-bbdog|bdogrula)
 				bagimli_bilgi "$2" "dogrula";;
 			-bbd)
@@ -2999,6 +3027,7 @@ ayarlar() {
 				paket_bilgi "$2" 
 				talimat_bilgi "$2"
 				exit 0 ;;
+			### mps -to talimat_ismi = ilgili talimat ismine göre talimat şablonu oluşturur.
 			-to)
 				if [ ! "$2" ]; then
 					ryaz 31 "talimat ismi eksik"
@@ -3112,6 +3141,7 @@ ayarlar() {
 				exit 0 ;;
 			-kdk)
 				etkilenen_kurtar $2 ;;
+			### mps -suko . = sunucuların erişim kontrolünü yapar.
 			-suko)
 				sunucu_kontrol ;;
 			### mps -pot . = talimatı olup ta paketi henüz depoda yer almayan talimatları listeler.
@@ -3161,13 +3191,16 @@ ayarlar() {
 				fi
 				talimat_surum_takip "$2"
 				exit 0 ;;
+			### mps -tro . = tarihçe noktası oluşturur.
 			-tro)
 				tarihce_yap 
 				exit 0 ;;
+			### mps -trot . = temel tarihçe noktası oluşturur.
 			-trot)
 				temel_tarihce="evet"
 				tarihce_yap 
 				exit 0 ;;
+			### mps -try tarihce_nokta = tarihçe noktasına göre paketleri yükler-siler.
 			-try)
 				if [ ! "$2" ]; then
 					ryaz 31 "tarihce dosyasi eksik $1"
@@ -3213,7 +3246,6 @@ ayarlar() {
 				exit 0 ;;
 			### mps -v . = mps sürüm bilgisini gösterir.
 			-v)
-				echo $deneme
 				ryaz 33 "$betikad $versiyon  $iletisim" 
 				exit 0 ;;
 			
@@ -3228,7 +3260,7 @@ ayarlar() {
 	done
 }
 yardim_icerik(){
-	cat /root/bin/mps | sed -e 's/^[ \t]*//' | sed -n '/^###/p'  | sed  '/ /s/^###//g' | awk '{split($0,a,"=");  printf "%-6s %-13s %-18s %-40s \n",$1,$2,$3,a[2]}'
+	cat $betikyol | sed -e 's/^[ \t]*//' | sed -n '/^###/p'  | sed  '/ /s/^###//g' | awk '{split($0,a,"=");  printf "%-6s %-13s %-18s %-40s \n",$1,$2,$3,a[2]}'
 }
 
 ana(){
