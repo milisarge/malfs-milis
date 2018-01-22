@@ -1,0 +1,57 @@
+# Tanım: Linux Sistem Doktoru ve İzleme
+# URL: https://github.com/oguzhaninan/Stacer
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5
+# Grup: sistem
+
+isim=stacer
+surum=1.0.8
+devir=1
+
+kaynak=(https://github.com/oguzhaninan/Stacer/archive/v1.0.8.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	export QT_PLUGIN_PATH=$QTDIR/plugins
+	export LD_LIBRARY_PATH=$QTDIR/lib
+	cd "Stacer-$surum"
+	P_DIR=$(pwd)
+	DIST_DIR=dist
+	BUILD_DIR=build
+	#clean
+	rm -rf dist
+
+	mkdir -p $DIST_DIR/$BUILD_DIR
+	cd $DIST_DIR/$BUILD_DIR
+
+	#build
+	$QTDIR/usr/bin/qmake-qt5 -spec linux-g++ "CONFIG += release" $SRC/Stacer-$surum/Stacer.pro && make
+
+	cd $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer-core && make
+	cd $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer && make
+
+	mkdir $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer/lib
+
+	cp $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer-core/libstacer-core.so.1.0.0 $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer/lib/libstacer-core.so.1
+
+	cd $SRC/Stacer-$surum
+	lrelease stacer/stacer.pro
+
+	mkdir $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer/translations
+	mv $SRC/Stacer-$surum/translations/*.qm $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer/translations
+	rm -rf $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer-core
+	find $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer \( -name "moc_*" -or -name "*.o" -or -name "qrc_*" -or -name "Makefile*" -or -name "*.a" -or -name "*.h" \) -exec rm {} \;
+
+	mkdir -p $PKG/usr/bin
+	mkdir -p $PKG/usr/share/pixmaps
+	mkdir -p $PKG/usr/share/applications
+	mkdir -p $PKG/usr/share/stacer
+	mkdir -p $PKG/usr/lib
+	mkdir -p $PKG/usr/share/icons
+
+	cp -R $SRC/Stacer-$surum/icons/hicolor/128x128/apps $PKG/usr/share/pixmaps/stacer.png
+	cp -R $SRC/Stacer-$surum/stacer.desktop $PKG/usr/share/applications/stacer.desktop
+	cp -R $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer/lib/* $PKG/usr/lib/
+	cp -R $SRC/Stacer-$surum/icons/* $PKG/usr/share/icons/
+	cp -R $SRC/Stacer-$surum/$DIST_DIR/$BUILD_DIR/stacer/* $PKG/usr/share/stacer/
+	ln -s /usr/share/stacer/stacer "$PKG/usr/bin/stacer"
+}
