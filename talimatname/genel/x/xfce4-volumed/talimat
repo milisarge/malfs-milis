@@ -8,7 +8,7 @@ isim=xfce4-volumed
 source /root/talimatname/genel/x/xfce4/surumler
 surum="${xfce4_volumed_surum}";[ -z ${xfce4_volumed_surum} ] && \
 surum=0.1.13
-devir=1
+devir=2
 
 kaynak=(http://archive.xfce.org/src/apps/$isim/${version::3}/$isim-$surum.tar.bz2)
 
