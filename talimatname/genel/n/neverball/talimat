@@ -1,0 +1,35 @@
+# Tanım: Süper Monkey Ball veya Marble Madness benzeri 3D oyun
+# URL: http://neverball.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: sdl2-ttf libpng libjpeg-turbo libvorbis physfs hicolor-icon-theme xdg-utils xorg-mesa
+# Grup: oyun
+
+isim=neverball
+surum=1.6.0
+devir=1
+kaynak=(http://neverball.org/${isim}-${surum}.tar.gz)
+
+derle() {
+  cd ${isim}-${surum}
+  make DATADIR=/usr/share/neverball LOCALEDIR=/usr/share/locale \
+    CPPFLAGS="$CPPFLAGS -DNDEBUG" CFLAGS="$CFLAGS"
+
+  install -d "${PKG}/usr/bin"
+  install -d "${PKG}"/usr/share/{neverball,locale,applications,doc/neverball}
+  install -d "${PKG}"/usr/share/man/man{1,6}
+
+  install -m755 neverball neverputt mapc "${PKG}/usr/bin"
+  cp -r locale/* "${PKG}/usr/share/locale/"
+  cp -r data/* "${PKG}/usr/share/neverball/"
+  cp -r doc/* "${PKG}/usr/share/doc/neverball/"
+  install -m644 dist/*.desktop "${PKG}/usr/share/applications/"
+  install -m644 dist/mapc.1 "${PKG}/usr/share/man/man1"
+  install -m644 dist/{neverball.6,neverputt.6} "${PKG}/usr/share/man/man6"
+
+  for i in 16 24 32 48 64 128 256 512; do
+    install -D -m644 dist/neverball_$i.png "${PKG}/usr/share/icons/hicolor/${i}x$i/apps/neverball.png"
+    install -D -m644 dist/neverputt_$i.png "${PKG}/usr/share/icons/hicolor/${i}x$i/apps/neverputt.png"
+  done
+
+  chmod -R u=rwX,go=rX "${PKG}/usr/share/neverball"
+}
