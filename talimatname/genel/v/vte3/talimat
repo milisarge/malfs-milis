@@ -8,7 +8,7 @@ isim=vte3
 surum=0.51.3
 devir=1
 _isim=vte
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/${_isim}/${surum%.*}-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/${_isim}/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
 	cd ${_name}-$surum
