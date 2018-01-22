@@ -14,7 +14,9 @@ kaynak=(http://archive.xfce.org/src/apps/$isim/${version::3}/$isim-$surum.tar.bz
 
 derle() {
 	cd $isim-$surum
-	./configure --prefix=/usr --libexecdir=/usr/lib/$isim
+	./configure --prefix=/usr \
+	--libexecdir=/usr/lib/$isim \
+	--sysconfdir=/etc 
 	make
 	make DESTDIR=$PKG install
 	rm -rf $PKG/usr/share/man
