@@ -1,0 +1,19 @@
+# Tanım: Common Lisp için kütüphane yöneticisi
+# URL: https://www.quicklisp.org
+# Paketçi: milisarge
+# Gerekler: sbcl 
+# Grup: geliştirme
+
+isim=quicklisp
+surum=20150128
+devir=1
+kaynak=(https://beta.quicklisp.org/quicklisp.lisp)
+
+derle() {
+  echo $(awk '/qlqs-info/ {print $3}' $isim.lisp |tr -d - |tr -d \))
+  echo -ne "(quicklisp-quickstart:install :path \"$PKG/usr/lib/$isim\")\n(quit)\n" | sbcl --no-userinit --load $isim.lisp
+  chmod 777 -R "$PKG"/usr/lib/$isim/dists
+  chmod 777 -R "$PKG"/usr/lib/$isim/local-projects
+  install -d "$PKG"/etc/default
+  echo -ne "(load \"/usr/lib/$isim/setup\")\n" > "$PKG"/etc/default/$isim
+}
