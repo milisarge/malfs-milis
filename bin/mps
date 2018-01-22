@@ -2694,7 +2694,6 @@ ayarlar() {
 			### mps god paketismi = mps guncelle && mps odkp paketismi.
 			god)
 				git_guncelle
-				paketvt_guncelle
 				oto_derle_kur_paketle "$2" 
 				exit 0 ;;
 			-dk|--pkdk)
