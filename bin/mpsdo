@@ -30,6 +30,9 @@ kaynaklar=/mnt/sources
 
 [ ! -f $ortam ] && exit 1
 
+# kaynaklar dizinin var olduğu kontrol edilir.
+[ ! -d $kaynaklar ] && exit 1
+
 # herhangi bir hatada çıkış yap
 set -e
 
