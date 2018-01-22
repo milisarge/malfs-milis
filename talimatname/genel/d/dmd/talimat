@@ -19,7 +19,7 @@ derle() {
    mv druntime-$surum druntime
    mv phobos-$surum phobos
     cd "$SRC"/dmd
-    make -f posix.mak BUILD=release RELEASE=1 PIC=1
+    make -f posix.mak MODEL=64 RELEASE=1 AUTO_BOOTSTRAP=1
 
 	cd $SRC/druntime
     make -f posix.mak DMD="$SRC"/dmd/generated/linux/release/*/dmd BUILD=release RELEASE=1 PIC=1
@@ -30,7 +30,7 @@ derle() {
 	install -m 0755 -D $SRC/dmd/generated/linux/release/64/dmd $PKG/usr/bin/dmd
 
 	install -d $PKG/etc
-	echo -e "[Environment]\nDFLAGS=-I/usr/include/dlang/dmd -L-L/usr/lib -L-L/usr/lib32 -L--export-dynamic" > $PKG/etc/dmd.conf
+	echo -e "[Environment]\nDFLAGS=-I/usr/include/dlang/dmd -L-L/usr/lib -L-L/usr/lib64 -L--export-dynamic" > $PKG/etc/dmd.conf
 
 	install -d $PKG/usr/share/d/samples/
 	cp -r $SRC/dmd/samples/* $PKG/usr/share/d/samples/
