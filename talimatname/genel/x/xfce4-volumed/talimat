@@ -10,7 +10,7 @@ surum="${xfce4_volumed_surum}";[ -z ${xfce4_volumed_surum} ] && \
 surum=0.1.13
 devir=2
 
-kaynak=(http://archive.xfce.org/src/apps/$isim/${version::3}/$isim-$surum.tar.bz2)
+kaynak=(http://archive.xfce.org/src/apps/$isim/${surum::3}/$isim-$surum.tar.bz2)
 
 derle() {
 	cd $isim-$surum
