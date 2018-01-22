@@ -1,0 +1,13 @@
+#!/bin/sh
+if [ $2 ];then
+	_profil="~/.mozilla/firefox/$2"
+else
+	_profil=$(cat ~/.mozilla/firefox/profiles.ini | grep 'Path=' | sed s/^Path=//)	
+fi
+if [ $_profil ];then
+	for fk in `echo "select fk from moz_bookmarks" | sqlite3 ~/.mozilla/firefox/${_profil}/places.sqlite`;do 
+		echo "select * from moz_places where id=$fk" | sqlite3 ~/.mozilla/firefox/${_profil}/places.sqlite | cut -d'|' -f2-3; 
+	done
+else
+	echo "bir profil belirtin";exit 1
+fi
