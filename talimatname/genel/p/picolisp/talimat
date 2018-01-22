@@ -1,0 +1,43 @@
+# Tanım: Hızlı ve hafif bir 64-bit Lisp yorumlayıcısı
+# URL: http://www.picolisp.com
+# Paketçi: milisarge
+# Gerekler:
+# Grup: geliştirme
+
+isim=picolisp
+surum=18.1.18
+devir=1
+kaynak=(https://github.com/taij33n/picolisp/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd "${SRC}/${isim}-$surum/src"
+	make all
+	make clean
+	# 64bit sürüm derlemesi
+	cd "${SRC}/${isim}-$surum/src64"
+	# real 64-bit env
+	make 
+	make clean
+
+	install -d -m755 "${PKG}/usr/lib/picolisp"
+	cp -a ${SRC}/${isim}/* ${PKG}/usr/lib/picolisp/
+
+	# kısayolar
+	install -d -m755 "$PKG/usr/bin/"
+	ln -s "/usr/lib/picolisp/bin/picolisp" "$PKG/usr/bin/"
+	ln -s "/usr/lib/picolisp/bin/pil" "$PKG/usr/bin/"
+
+	ln -s "/usr/lib/picolisp/bin/ssl" "$PKG/usr/bin/"
+	ln -s "/usr/lib/picolisp/bin/httpGate" "$PKG/usr/bin/"
+	ln -s "/usr/lib/picolisp/bin/psh" "$PKG/usr/bin/"
+
+	# belge
+	install -d -m755 "$PKG/usr/share/man/man1/"
+	ln -s "/usr/lib/picolisp/man/man1/picolisp.1" "$PKG/usr/share/man/man1/" 
+	ln -s "/usr/lib/picolisp/man/man1/pil.1" "$PKG/usr/share/man/man1/" 
+
+	ln -s "/usr/lib/picolisp" "$PKG/usr/share/"
+
+	# lisans
+	install -Dm755 $PKG/usr/lib/picolisp/COPYING $PKG/usr/share/licenses/picolisp/LICENSE
+}
