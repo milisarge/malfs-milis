@@ -1,0 +1,25 @@
+# Tanım: Python için bir XML/HTML/XHTML İşaretleme güvenli dize uygular
+# URL: http://pypi.python.org/pypi/MarkupSafe
+# Paketçi: Cihan_Alkan
+# Gerekler: python python3 python-setuptools python3-setuptools
+# Grup: kütüphane
+
+isim=pymarkupsafe
+surum=1.0
+devir=1
+kaynak=(https://pypi.io/packages/source/M/MarkupSafe/MarkupSafe-${surum}.tar.gz)
+
+derle() {
+
+  cp -a MarkupSafe-$surum{,-py3}
+
+  cd "$SRC"/MarkupSafe-$surum
+  python2 setup.py build
+  python2 setup.py install --root="$PKG" --optimize=1 --skip-build
+ 
+  cd "$SRC"/MarkupSafe-$surum-py3
+  python3 setup.py build
+
+  python3 setup.py install --root="$PKG" --optimize=1 --skip-build
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
+}

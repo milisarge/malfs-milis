@@ -1,0 +1,29 @@
+# Tanım: Kiosk sistemleri için bir web tarayıcısı.
+# URL: http://www.alandmoore.com/wcgbrowser/wcgbrowser.html
+# Paketçi: Cihan_Alkan
+# Gerekler: python3-yaml python3-qt5 qt5-webkit
+# Grup: ağ
+
+isim=wcgbrowser
+surum=0.2
+devir=1
+kaynak=()
+
+derle() {
+	adres="https://github.com/alandmoore/wcgbrowser"
+	git_indir ${adres} ${isim}
+	cd $SRC/${isim}
+
+	# Wcgbrowser başlatma komut dosyasındaki yolu düzeltin
+	sed -i 's|/usr/local|/usr|' wcgbrowser
+
+	# Dizinleri oluştur
+	install -dm755 "${PKG}"/usr/share/doc/"${isim}"/examples
+
+	# Dosyaları kopyala
+	install -D -m644 browser.py "${PKG}"/usr/share/"${isim}"/browser.py
+	install -D -m755 wcgbrowser "${PKG}"/usr/bin/wcgbrowser
+	install -D -m644 wcgbrowser.yaml "${PKG}"/etc/wcgbrowser.yaml
+	install -D -m644 README.rst "${PKG}"/usr/share/doc/"${isim}"/README.rst
+	install -m644 examples/* "${PKG}"/usr/share/doc/"${isim}"/examples/
+}
