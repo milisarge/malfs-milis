@@ -1,0 +1,49 @@
+# Tanım: JVM için güçlü yapı sistemi
+# URL: https://gradle.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: openjdk
+# Grup: geliştirme
+
+isim=gradle
+surum=4.4
+devir=1
+kaynak=(https://services.gradle.org/distributions/${isim}-${surum}-all.zip
+        $isim.sh)
+derle() {
+
+  cd ${isim}-${surum}
+
+  # install profile.d script
+  install -Dm 755 "${SRC}/${isim}.sh" "${PKG}/etc/profile.d/${isim}.sh"
+
+  # create the necessary directory structure
+  install -d "${PKG}/usr/share/java/${isim}/bin"
+  install -d "${PKG}/usr/share/java/${isim}/lib/plugins"
+  install -d "${PKG}/usr/share/java/${isim}/init.d"
+  install -d "${PKG}/usr/bin"
+
+  # copy across jar files
+  install -Dm 644 lib/*.jar "${PKG}/usr/share/java/${isim}/lib"
+  install -Dm 644 lib/plugins/*.jar "${PKG}/usr/share/java/${isim}/lib/plugins"
+
+  # copy across supporting text documentation and scripts
+  install -m 644 NOTICE "${PKG}/usr/share/java/${isim}"
+  install -m 644 LICENSE "${PKG}/usr/share/java/${isim}"
+  install -m 644 *.html "${PKG}/usr/share/java/${isim}"
+  install -m 755 bin/gradle "${PKG}/usr/share/java/${isim}/bin"
+  install -m 644 init.d/*.* "${PKG}/usr/share/java/${isim}/init.d"
+
+  # link gradle script to /usr/bin
+  ln -s /usr/share/java/${isim}/bin/${isim} "${PKG}/usr/bin"
+
+  # create the necessary directory structure
+  install -d "${PKG}/usr/share/java/gradle/docs"
+  install -d "${PKG}/usr/share/java/gradle/samples"
+
+  # copy across documentation and samples
+  cp -r docs/* "${PKG}/usr/share/java/gradle/docs"
+  cp -r samples/* "${PKG}/usr/share/java/gradle/samples"
+
+  install -d "${PKG}/usr/share/java/gradle/src"
+  cp -r src/* "${PKG}/usr/share/java/gradle/src"
+}
