@@ -1,0 +1,19 @@
+# Tanım: Bir medya oynatıcı ve BMP halefi
+# URL: http://www.beep-media-player.org
+# Paketçi: Cihan_Alkan
+# Gerekler: taglib gtk2 gtkmm cairo cairomm libglade librsvg sqlite libxml2 gettext dbus boost alsa-lib libcdio libsexymm libcdio-paranoia libsoup-22 gstreamer gstreamer-plugins-bad gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly startup-notification libglademm libofa
+# Grup: medya
+
+isim=bmpx
+surum=0.40.14
+devir=1
+kaynak=(http://slackware.uk/slacky/slackware-12.1/multimedia/${isim}/${surum}/src/${isim}-${surum}.tar.bz2 
+        update.patch)
+
+derle() {
+  cd ${isim}-${surum}
+  patch -p1 -i ../update.patch
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+}
