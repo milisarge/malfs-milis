@@ -1,7 +1,7 @@
 # Tanım: PyQt5 tabanlı klavyeye dayalı, vim benzeri bir tarayıcı
 # URL: http://www.qutebrowser.org/
 # Paketçi: Cihan_Alkan
-# Gerekler: pyattrs pyjinja pygments pypeg2 python3-qt5 python3-yaml qt5
+# Gerekler: pyattrs pyjinja pygments pypeg2 python3-qt5 python3-yaml qt5 asciidoc
 # Grup: ağ
 
 isim=qutebrowser
@@ -11,7 +11,7 @@ kaynak=(https://github.com/qutebrowser/qutebrowser/releases/download/v$surum/qut
 
 derle() {
 	cd $isim-$surum
-	#a2x -f manpage doc/qutebrowser.1.asciidoc
+	a2x -f manpage doc/qutebrowser.1.asciidoc
 	python3 setup.py build
 	make -f misc/Makefile DESTDIR="$PKG" install
 }
