@@ -7,7 +7,7 @@
 isim=pyenchant
 surum=2.0.0
 devir=1
-kaynak=(https://github.com/rfk/pyenchant/archive/v${surum}.tar.gz)
+kaynak=(https://github.com/rfk/pyenchant/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
 
