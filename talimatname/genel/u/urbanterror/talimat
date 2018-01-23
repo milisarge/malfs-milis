@@ -1,0 +1,41 @@
+# Tanım: Quake 3 Motoruna dayalı bir takım tabanlı taktik atıcı
+# URL: http://www.urbanterror.info
+# Paketçi: Cihan_Alkan
+# Gerekler: sdl openal xorg-mesa
+# Grup: oyun
+
+isim=urbanterror
+surum=4.3.2
+devir=1
+kaynak=(http://www.happyurtday.com/releases/4x/UrbanTerror${surum//.}_full.zip
+        https://github.com/Barbatos/ioq3-for-UrbanTerror-4/releases/download/release-4.3.2-hotfix/Quake3-UrT-Ded.x86_64
+        https://github.com/Barbatos/ioq3-for-UrbanTerror-4/releases/download/release-4.3.2-hotfix/Quake3-UrT.x86_64
+        urbanterror.sh
+        urbanterror-server.sh
+        urbanterror.desktop
+        urbanterror.png)
+
+derle() {
+
+  install -d "${PKG}/opt/urbanterror"
+
+  cd "${PKG}/opt/urbanterror"
+
+  # Copy patched binaries.
+  install -m755 "${SRC}/Quake3-UrT.x86_64" urbanterror
+  install -m755 "${SRC}/Quake3-UrT-Ded.x86_64" urbanterror-ded
+
+  # Copy data
+  cp -r "${SRC}/UrbanTerror43/q3ut4" "${PKG}/opt/urbanterror/q3ut4"  
+  install -Dm644 "${SRC}/UrbanTerror43/q3ut4/readme43.txt" "${PKG}/usr/share/licenses/${isim}/LICENSE"
+  echo -e "\nseta cl_cURLLib \"/usr/lib/libcurl.so.4\"" >> "${PKG}/opt/urbanterror/q3ut4/autoexec.cfg"
+
+  # Copy desktop launcher.
+  install -Dm644 "${SRC}/urbanterror.desktop" "${PKG}/usr/share/applications/urbanterror.desktop"
+  install -Dm644 "${SRC}/urbanterror.png" "${PKG}/usr/share/pixmaps/urbanterror.png"
+
+  # Copy launch scripts.
+  install -Dm755 "${SRC}/urbanterror.sh" "${PKG}/usr/bin/urbanterror"
+  install -Dm755 "${SRC}/urbanterror-server.sh" "${PKG}/usr/bin/urbanterror-server"
+  
+}
