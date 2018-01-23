@@ -1,0 +1,17 @@
+# Tanım: Vim benzeri tarayıcı
+# URL: http://fanglingsu.github.io/vimb
+# Paketçi: Cihan_Alkan
+# Gerekler: webkit2gtk3
+# Grup: ağ
+
+isim=vimb
+surum=3.1.0
+devir=1
+kaynak=(https://github.com/fanglingsu/vimb/archive/3.1.0.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  make DEXTENSIONDIR=/usr/lib/vimb V=1 DESTDIR="$PKG" PREFIX="/usr"
+  make DEXTENSIONDIR=/usr/lib/vimb V=1 DESTDIR="$PKG" PREFIX="/usr" install
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
+}
