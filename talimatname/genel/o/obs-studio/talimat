@@ -1,0 +1,25 @@
+# Tanım: Canlı akış ve kayıt için ücretsiz, açık kaynaklı yazılım
+# URL: https://obsproject.com
+# Paketçi: Cihan_Alkan
+# Gerekler: ffmpeg jansson xorg-libxinerama libxkbcommon qt5 curl jack gtk-update-icon-cache cmake fdk-aac xorg-libxcomposite x264 vlc
+# Grup: medya
+
+
+isim=obs-studio
+surum=20.1.3
+devir=1
+kaynak=(https://github.com/jp9000/obs-studio/archive/$surum.tar.gz::$isim-$surum.tar.gz
+        obs.desktop)
+
+derle() {
+cd $isim-$surum
+  mkdir -p build; cd build
+
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DOBS_VERSION_OVERRIDE="$surum-$devir" ..
+
+  make
+  make install DESTDIR="$PKG"
+  mkdir -p $PKG/usr/share/applications
+  mv $SRC/obs.desktop $PKG/usr/share/applications/
+}
