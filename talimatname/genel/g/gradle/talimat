@@ -5,7 +5,7 @@
 # Grup: geliştirme
 
 isim=gradle
-surum=4.4
+surum=4.4.1
 devir=1
 kaynak=(https://services.gradle.org/distributions/${isim}-${surum}-all.zip
         $isim.sh)
