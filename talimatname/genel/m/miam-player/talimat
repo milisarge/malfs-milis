@@ -1,0 +1,29 @@
+# Tanım: Çapraz platform açık kaynaklı müzik çalar
+# URL: https://github.com/MBach/Miam-Player
+# Paketçi: Cihan Alkan
+# Gerekler: qt5 taglib qtav
+# Grup: medya
+
+isim=miam-player
+surum=0.8.0
+devir=1
+kaynak=(https://github.com/MBach/Miam-Player/archive/v$surum.tar.gz::$isim-$surum.tar.gz
+        miam-data.tar.gz)
+
+derle() {
+  cd Miam-Player-$surum
+  cp -p ../player_tr.ts src/Player/translations/player_en.ts
+  cp -p ../core_tr.ts src/Core/translations/core_en.ts
+  cp -p ../uniqueLibrary_tr.ts src/Player/translations/player_en.ts
+  cp -p ../tabPlaylists_tr.ts src/Core/translations/core_en.ts
+  cp -p ../library_tr.ts src/Core/translations/core_en.ts
+  cp -p ../tr.png src/Player/language/en.png
+
+  /usr/lib/qt5/bin/lrelease ../player_tr.ts -qm src/Player/translations/player_en.qm
+  /usr/lib/qt5/bin/lrelease ../core_tr.ts -qm src/Core/translations/core_en.qm
+  /usr/lib/qt5/bin/lrelease ../uniqueLibrary_tr.ts -qm src/UniqueLibrary/translations/uniqueLibrary_en.qm
+  /usr/lib/qt5/bin/lrelease ../tabPlaylists_tr.ts -qm src/TabPlaylists/translations/tabPlaylists_en.qm
+  qmake-qt5
+  make
+  make INSTALL_ROOT="$PKG" install
+}
