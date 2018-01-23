@@ -1,0 +1,17 @@
+# Tanım: Ücretsiz Pascal Qt5 bağlayıcı kütüphanesi lazarus tarafından güncellendi
+# URL: https://svn.freepascal.org/svn/lazarus/trunk/lcl/interfaces/qt5/cbindings
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5
+# Grup: geliştirme
+
+isim=qt5-pas
+surum=2.6
+devir=1
+kaynak=(http://http.debian.net/debian/pool/main/libq/libqtpas/libqtpas_2.6~beta.orig.tar.xz)
+
+derle() {
+	cd cbindings
+	qmake-qt5 "QT += x11extras"
+	make
+	make INSTALL_ROOT="$PKG" install
+}
