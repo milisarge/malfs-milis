@@ -41,7 +41,7 @@ Mps ile talimatnamedeki talimatları kullanarak paket üretebilir,paket kurabili
 Milis_Paket_Sistemi_Yardim                                                                           
 --------------------------                                                                           
 mps    -i            paketismi           sadece paketi indirir,paket kurulmaz.   
-mps    -ik           paketismi           ilgili paketi indirir ve kurar.          
+mps    -ik           paketismi           ilgili paketi indirir ve kurar.         
 mps    -ikz|yekur    paketismi           ilgili indirip tekrardan kurar,kurulu olmasına bakılmaz. 
 mps    -k            paketismi..mps.lz   yerel dizindeki paketi kurar.           
 mps    sil|-s        paketismi           ilgili paketi onaylı kaldırır.          
@@ -54,6 +54,7 @@ mps    bul           aranan              talimat dosyaları içinde anahtar keli
 mps    -d            paketisimi          sadece paketi bağımlıksız derler.Genelde bağımlılığı olmayan paketler için kullanılır. 
 mps    -zd           paketismi           Pake kurulu olsa bile derleme yapılır.Bağımlıksız derleme için kullanılır. 
 mps    odkp          paketismi           bir paketi bağımlılık zinciri çıkarıp gereklileri önce kurar gerekli olanları derler,paketler ve kurar. 
+mps    god           paketismi           mps guncelle && mps odkp paketismi.     
 mps    -derlist      liste               verilen liste dosyasındaki paketleri derler.Alt alta yazılı olmalıdır. 
 mps    derle         paketismi           paketismi için bağımlılık zinciri çıkarıp gerekli tüm paketleri derler,paketler ve kurar. 
 mps    kurul         liste               verilen liste dosyasındaki paketleri kurar.Alt alta yazılı olmalıdır. 
@@ -81,6 +82,7 @@ mps    -dly          paketismi           ilgili paketin genel ve tüm bağımlı
 mps    -kly          paketismi           ilgili paketin ve kurulması gereken altgereklerini verir,oluştur. 
 mps    -ykp          paketismi           ilgili paketin kurulmak istenirse,kurulacak yeni paketleri listeler. 
 mps    sunucular     .                   paket sunucularını verir.               
+mps    -bb           paketismi           ilgili paketin gereklerinin durumunu listeler. 
 mps    -tb           talimatismi         ilgili talimata gerek duyan(ters-gerekler) talimatları listeler. 
 mps    pka           paketismi           ilgili paketin depo-gitdepo uyumluluğunu kontrol eder. 
 mps    pda           paketdepo           paketlerin olduğu dizindeki paketlerin depo-gitdepo uyumluluğunu kontrol eder. 
@@ -88,6 +90,7 @@ mps    tbilgi        paketismi           ilgili paketin talimat bilgilerini veri
 mps    talimat       paketismi           ilgili paketin talimatını yazdırır.     
 mps    -b            paketismi           ilgili paketin kurulum bilgilerini verir. 
 mps    bilgi         paketismi           ilgili paketin talimat ve kurulum bilgilerini verir. 
+mps    -to           talimat_ismi        ilgili talimat ismine göre talimat şablonu oluşturur. 
 mps    log           yyyy-aa-gg          mps.log verisi çekmek için (ör: mps log 2017-01-01 silindi) 
 mps    guncelle      .                   paket veritabanı ve git güncellemesi-talimatname bilgilerini günceller. 
 mps    -GG           .                   git güncellemelerini ve talimatname bilgilerini günceller. 
@@ -97,6 +100,7 @@ mps    gun           .                   güncellenmesi gereken ve depoya yeni e
 mps    yukselt       .                   tüm sistemin güncellemesini gerçekleştirir. 
 mps    -g            paketismi           ilgili paketi tekil günceller.          
 mps    -kk           paketismi           ilgili paketin kurulu olma durumunu gösterir. 
+mps    -suko         .                   sunucuların erişim kontrolünü yapar.    
 mps    -pot          .                   talimatı olup ta paketi henüz depoda yer almayan talimatları listeler. 
 mps    depsil        .                   depo/paketler altındaki paket önbelleğini temizler. 
 mps    etksil        .                   /var/lib/pkg/etkilenen altındaki kurtarılmış paket önbelleğini temizler. 
@@ -104,10 +108,13 @@ mps    link          url_adres           verilen url adresindeki talimatı ektal
 mps    ti            url_adres           verilen url adresindeki talimatı talimatname/genel altına indirir. 
 mps    -hp           aranan              ilgili aranan ifadenin hangi paketlerde olabileceğini listeler. 
 mps    tgs           talimat             ilgili talimatın kaynak kodunun yeni sürümü olup olmadığını kontrol eder. 
+mps    -tro          .                   tarihçe noktası oluşturur.              
+mps    -trot         .                   temel tarihçe noktası oluşturur.        
+mps    -try          tarihce_nokta       tarihçe noktasına göre paketleri yükler-siler. 
 mps    -trl          .                   tarihçe noktalarını listeler.           
 mps    tdc           talimat_dosyası     ilgili talimat dosyasının Türkçe değişken çevrimini yapar. 
 mps    dos           .                   derleme ortamını sıfırlar.temel tarihçeye geri döner. 
 mps    itest         islev_ismi          mps içindeki işlevlerin testi için kullanılmaktadır. 
-mps    -v            .                   mps sürüm bilgisini gösterir. 
+mps    -v            .                   mps sürüm bilgisini gösterir.
 ```
 
