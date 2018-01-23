@@ -1,0 +1,21 @@
+# Tanım: Kanıtlanmış bir endüstri gücü PDF oluşturma çözümü
+# URL: http://www.reportlab.org/rl_toolkit.html
+# Paketçi: Cihan_Alkan 
+# Gerekler: python3-pip python python3 freetype python-pillow python3-pillow python-pip
+# Grup: kütüphane
+
+isim=pyreportlab
+surum=3.4.0
+devir=1
+kaynak=(https://pypi.python.org/packages/87/f9/53b34c58d3735a6df7d5c542bf4de60d699cfa6035e113ca08b3ecdcca3f/reportlab-3.4.0.tar.gz)
+
+derle() {
+    cp -rf reportlab-$surum "python3-reportlab-$surum"
+    
+    cd "$SRC/reportlab-$surum"
+    python2 setup.py install --root=$PKG --optimize=1
+    install -D -m644 LICENSE.txt $PKG/usr/share/licenses/$isim/license.txt
+
+    cd "$SRC/python3-reportlab-$surum"
+    python3 setup.py install --root=$PKG --optimize=1
+}

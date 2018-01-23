@@ -1,0 +1,26 @@
+# Tanım: PyEnchant, Enchant kitaplığına dayanan Python için bir yazım denetimi kitaplığıdır
+# URL: https://pypi.python.org/pypi/pyenchant
+# Paketçi: Cihan_Alkan 
+# Gerekler: python-setuptools python3-setuptools python python3 enchant
+# Grup:kütüphane
+
+isim=pyenchant
+surum=2.0.0
+devir=1
+kaynak=(https://github.com/rfk/pyenchant/archive/v${surum}.tar.gz)
+
+derle() {
+
+  cp -r pyenchant-${surum} pyenchant3-${surum}
+
+  cd ${SRC}/pyenchant-${surum}
+
+  python setup.py build
+  python setup.py install --root=${PKG} --optimize=1
+
+  cd ${SRC}/pyenchant3-${surum}
+
+  python3 setup.py build
+  python3 setup.py install --root=${PKG} --optimize=1
+
+}
