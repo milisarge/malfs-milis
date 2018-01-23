@@ -1,26 +1,17 @@
-# Tanım: Graphviz açık kaynak grafik görselleştirme yazılımıdır
-# URL: http://www.graphviz.org
+# Tanım: Graph visualization software.
+# URL: https://www.graphviz.org/
 # Paketçi: milisarge
-# Gerekler: gtk2 freetype xorg-fontconfig freeglut gdk-pixbuf libjpeg-turbo libpng pango xorg libglade ghostscript qt4 swig guile openjdk lua php python ruby tcl tk
+# Gerekler: pango
+# Grup: grafik_tasarım
 
 isim=graphviz
-surum=2.38.0
+surum=2.40.1
 devir=1
-kaynak=(http://www.graphviz.org/pub/graphviz/stable/SOURCES/$isim-$surum.tar.gz)
+kaynak=(https://$isim.gitlab.io/pub/$isim/stable/SOURCES/$isim.tar.gz)
 
 derle() {
-
 	cd $isim-$surum
-
-	sed -e "s:ruby-1.9:ruby-2.2:g" \
-		-i configure
-
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install
-
-	install -v -m755 -d $PKG/usr/share/doc/graphviz-2.38.0
-	ln -v -s $PKG/usr/share/graphviz/doc \
-         $PKG/usr/share/doc/graphviz-2.38.0
-
 }
