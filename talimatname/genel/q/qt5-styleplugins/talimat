@@ -1,0 +1,20 @@
+# Tanım: Qt5 için ek stil eklentileri
+# URL: https://code.qt.io/cgit/qt/qtstyleplugins
+# Paketçi: Cihan Alkan
+# Gerekler: gtk2 qt5
+# Grup: deepin
+
+isim=qt5-styleplugins
+surum=5.0.0
+devir=1
+kaynak=(https://github.com/qt/qtstyleplugins/archive/v5.0.0.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd qtstyleplugins-$surum
+  qmake-qt5 PREFIX='/usr' \
+        LIBDIR='/usr/lib' \
+        QMAKE_CFLAGS_RELEASE="$CFLAGS" \
+        QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS"
+  make
+  make INSTALL_ROOT="${PKG}" install
+}

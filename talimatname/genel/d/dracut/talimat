@@ -8,11 +8,14 @@ isim=dracut
 surum=046
 devir=1
 kaynak=(http://kernel.org/pub/linux/utils/boot/dracut/$isim-$surum.tar.xz)
+
 derle() {
+	git_indir https://github.com/milisarge/dracut-milis dracut-milis
 	cd $isim-$surum
 	./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--loginstalldir=/var/log/dracut
 	make -j1 sysconfdir=/etc prefix=/usr
 	make sysconfdir=/etc prefix=/usr DESTDIR=$PKG install
+	cp -rf  $SRC/dracut-milis/moduller/* $PKG/usr/lib/dracut/modules.d/
 }
