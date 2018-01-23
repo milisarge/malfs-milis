@@ -1,15 +1,18 @@
 # Tanım: önyükleme için gereken her şeyi içeren özel bir initramfs görüntüsü oluşturma aracı
 # URL: https://dracut.wiki.kernel.org/
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: cryptsetup
+# Grup: sistem
 
 isim=dracut
-surum=045
+surum=046
 devir=1
 kaynak=(http://kernel.org/pub/linux/utils/boot/dracut/$isim-$surum.tar.xz)
 derle() {
 	cd $isim-$surum
-	./configure --prefix=/usr
-	make -j1
-	make DESTDIR=$PKG install
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--loginstalldir=/var/log/dracut
+	make -j1 sysconfdir=/etc prefix=/usr
+	make sysconfdir=/etc prefix=/usr DESTDIR=$PKG install
 }
