@@ -1,0 +1,16 @@
+# Tanım: Gri Xfce teması,
+# URL: http://shimmerproject.org/projects/graybird/
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk-engine-murrine
+# Grup: xfce4
+
+isim=xfce-theme-graybird
+surum=3.22.5
+devir=1
+kaynak=(https://github.com/shimmerproject/Greybird/archive/v$surum.tar.gz::Greybird-$surum.tar.gz)
+
+derle() {
+    install -d "$PKG"/usr/share/themes/
+    cp -rf Greybird-$surum/ "$PKG"/usr/share/themes/Greybird/
+    rm "$PKG"/usr/share/themes/Greybird/.gitignore
+}

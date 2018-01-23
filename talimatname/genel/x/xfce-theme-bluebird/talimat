@@ -1,0 +1,16 @@
+# Tanım: Açık mavi Xfce teması,
+# URL: http://shimmerproject.org/projects/bluebird/
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk-engine-murrine
+# Grup: xfce4
+
+isim=xfce-theme-bluebird
+surum=1.2
+devir=1
+kaynak=(https://github.com/shimmerproject/Bluebird/archive/v$surum.tar.gz::Bluebird-$surum.tar.gz)
+
+derle() {
+    install -d "$PKG"/usr/share/themes/
+    cp -rf Bluebird-$surum/ "$PKG"/usr/share/themes/Bluebird/
+    rm "$PKG"/usr/share/themes/Bluebird/.gitignore
+}

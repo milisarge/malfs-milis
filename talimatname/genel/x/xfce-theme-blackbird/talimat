@@ -1,0 +1,16 @@
+# Tanım: Siyah Xfce teması,
+# URL: http://shimmerproject.org/projects/blackbird/
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk-engine-murrine
+# Grup: xfce4
+
+isim=xfce-theme-blackbird
+surum=0.4
+devir=1
+kaynak=(https://github.com/shimmerproject/Blackbird/archive/v$surum.tar.gz::Blackbird-$surum.tar.gz)
+
+derle() {
+    install -d "$PKG"/usr/share/themes/
+    cp -rf Blackbird-$surum/ "$PKG"/usr/share/themes/Blackbird/
+    rm "$PKG"/usr/share/themes/Blackbird/.gitignore
+}
