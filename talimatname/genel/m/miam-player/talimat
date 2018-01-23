@@ -8,7 +8,7 @@ isim=miam-player
 surum=0.8.0
 devir=1
 kaynak=(https://github.com/MBach/Miam-Player/archive/v$surum.tar.gz::$isim-$surum.tar.gz
-        miam-data.tar.gz)
+        miam-data.tar.xz)
 
 derle() {
   cd Miam-Player-$surum
