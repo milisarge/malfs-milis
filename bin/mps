@@ -2563,14 +2563,14 @@ yerelden_kur(){
 
 agdan_kur(){
 	local kontroldeg cikti _yaz _yaz_tm _yaz_uyari
+	cikti="--normal"
 	if [ "$2" ]; then
 		cikti="$2"
 	fi
-	if [ $cikti == "--renkli" ];then
+	if [ $cikti = "--renkli" ];then
 		_yaz="ryaz 32"
 		_yaz_uyari="ryaz 31"
 	else
-		cikti="--normal"
 		_yaz="echo"
 		_yaz_uyari="echo"
 	fi
