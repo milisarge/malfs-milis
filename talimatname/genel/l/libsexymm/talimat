@@ -1,0 +1,19 @@
+# Tanım: Libsexy için C ++ bağları
+# URL: http://osiris.chipx86.com/projects/libsexy
+# Paketçi: Cihan_Alkan
+# Gerekler: libsexy gtkmm
+# Grup: kütüphane
+
+isim=libsexymm
+surum=0.1.9
+devir=1
+
+kaynak=(http://releases.chipx86.com/libsexy/libsexymm/${isim}-${surum}.tar.gz)
+
+derle() {
+
+  cd ${isim}-${surum}
+  ./configure --prefix=/usr || return 1
+  make || return 1
+  make DESTDIR="${PKG}" install || return 1
+}

@@ -1,0 +1,31 @@
+# Tanım: MusicIP tarafından açık kaynaklı bir ses parmak izi
+# URL: https://github.com/tanob/libofa
+# Paketçi: Cihan_Alkan
+# Gerekler: fftw
+# Grup: kütüphane
+
+isim=libofa
+surum=0.9.3
+devir=1
+
+kaynak=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/musicip-libofa/libofa-$surum.tar.gz
+        libofa-gcc4.patch
+        libofa-gcc4.3.patch
+        libofa-gcc4.5.patch
+        libofa-0.9.3-curl-7.21.patch
+	    libofa-0.9.3-gcc-4.7.patch)
+
+derle() {
+
+  cd ${isim}-${surum}
+  patch -p0 -i "${SRC}/libofa-gcc4.patch"
+  patch -p1 -i "${SRC}/libofa-gcc4.3.patch"
+  patch -p1 -i "${SRC}/libofa-gcc4.5.patch"
+  patch -p1 -i "${SRC}/libofa-0.9.3-gcc-4.7.patch"
+  patch -p1 -i "${SRC}/libofa-0.9.3-curl-7.21.patch"
+
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+  install -D -m644 COPYING "${PKG}/usr/share/licenses/${isim}/LICENSE"
+}

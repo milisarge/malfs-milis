@@ -1,0 +1,20 @@
+# Tanım: GNOME için HTTP istemci/sunucu kitaplığı
+# URL: https://wiki.gnome.org/LibSoup
+# Paketçi: Cihan_Alkan
+# Gerekler: 
+# Grup: kütüphane
+
+isim=libsoup-22
+surum=2.2.105
+devir=1
+
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/libsoup/2.2/libsoup-${surum}.tar.bz2
+        update.patch)
+
+derle() {
+  cd libsoup-${surum}
+  patch -p1 -i ../update.patch
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install 
+}

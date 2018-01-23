@@ -1,0 +1,45 @@
+# Tanım: Kalıp dosyalarunu USB belleğe yaz
+# URL: https://github.com/KaOSx/isowriter
+# Paketçi: Cihan Alkan
+# Gerekler: qt5
+# Grup: sistem
+
+isim=isowriter
+surum=1.1.3
+devir=1
+
+kaynak=()
+
+derle() {
+
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone https://github.com/KaOSx/isowriter $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+		cd -
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+	qmake-qt5 ImageWriter.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug 
+    make
+    make DESTDIR="${PKG}" install
+
+mkdir -p $PKG/usr/share/applications
+# Başlatıcı 
+cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
+[Desktop Entry]
+Type=Application
+Categories=System;Utility;Archiving;
+X-KDE-RootOnly=true
+Exec=IsoWriter %F
+Icon=icon-iw
+Name=ISO Writer
+Comment=Tool for creating bootable installation USB flash drives
+Comment[tr]=Kalıp dosyalarunu USB belleğe yaz
+GenericName=USB key writer 
+Version=1.0 
+EOF
+
+   mkdir -p $PKG/usr/bin
+}

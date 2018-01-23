@@ -1,0 +1,21 @@
+# Tanım: İyi widget'lara yaramaz şeyler yapıyor.
+# URL: http://chipx86.com/wiki/Libsexy
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk2 libxml2 iso-codes
+# Grup: kütüphane
+
+isim=libsexy
+surum=0.1.11
+devir=1
+
+kaynak=(http://releases.chipx86.com/libsexy/libsexy/${isim}-${surum}.tar.gz)
+
+derle() {
+
+  cd ${isim}-${surum}
+  ./configure --prefix=/usr --disable-static
+  make
+  make DESTDIR=${PKG} install
+
+  rm -f ${PKG}/usr/lib/libsexy.a
+}

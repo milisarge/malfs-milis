@@ -1,0 +1,20 @@
+# Tanım: Gigasampler ve DLS dosyalarını yüklemek için C ++ kütüphanesi
+# URL: https://www.linuxsampler.org/libgig/
+# Paketçi: Cihan_Alkan
+# Gerekler: libsndfile
+# Grup: kütüphane
+
+isim=libgig
+surum=4.1.0
+devir=1
+kaynak=(https://download.linuxsampler.org/packages/$isim-$surum.tar.bz2)
+
+derle() {
+  cd "${isim}-${surum}"
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+  # add libgig library path to ld.so.conf.d (thanks to libgig-svn for the heads-up)
+  install -d "${PKG}/etc/ld.so.conf.d"
+  echo "/usr/lib/${isim}" > "${PKG}/etc/ld.so.conf.d/${isim}.conf"
+}
