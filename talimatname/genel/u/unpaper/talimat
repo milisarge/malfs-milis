@@ -1,0 +1,20 @@
+# Tanım: Taranmış sayfalar için post-processing aracı
+# URL: https://github.com/Flameeyes/unpaper
+# Paketçi: Cihan_Alkan 
+# Gerekler: ffmpeg libxslt
+# Grup: ofis_duzenleyici
+
+isim=unpaper
+surum=6.1
+devir=1
+kaynak=(https://github.com/Flameeyes/unpaper/archive/unpaper-$surum.tar.gz)
+
+derle() {
+  cd unpaper-unpaper-$surum
+  aclocal
+  automake --add-missing
+  autoconf
+  ./configure --prefix=/usr
+  make
+  make install DESTDIR="$PKG"
+}
