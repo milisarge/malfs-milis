@@ -2027,6 +2027,9 @@ git_guncelle() {
 			ln -sf /root/bin/$j /usr/bin/$j
 		fi
 	done
+	#kırık linklerin temizlenmesi
+	find -L /usr/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
+	find -L /root/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
 	ryaz 32 "$_yerel_esitlendi"
 }
 
