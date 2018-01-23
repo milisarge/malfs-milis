@@ -1,0 +1,23 @@
+# Tanım: Torrent istemci tarayıcısı
+# URL: https://webtorrent.io/desktop
+# Paketçi: Cihan_Alkan
+# Gerekler: gconf
+# Grup: ağ
+
+isim=webtorrent-desktop
+surum=0.18.0
+devir=1
+kaynak=(https://github.com/feross/${isim}/releases/download/v${surum}/WebTorrent-v${surum}-linux.zip
+        ${isim}.desktop)
+
+derle() {
+  install -dm755 "${PKG}/usr/share"
+  install -dm755 "${PKG}/usr/bin"
+
+  cp -a "WebTorrent-linux-x64" "${PKG}/usr/share/${isim}"
+  ln -s "/usr/share/${isim}/WebTorrent" "${PKG}/usr/bin/${isim}"
+
+  install -Dm644 "${isim}.desktop" "${PKG}/usr/share/applications/${isim}.desktop"
+  install -Dm644 "WebTorrent-linux-x64/resources/app.asar.unpacked/static/WebTorrent.png" "${PKG}/usr/share/icons/hicolor/256x256/apps/${isim}.png"
+  install -Dm644 "WebTorrent-linux-x64/LICENSE" "${PKG}/usr/share/licenses/${isim}/LICENSE"
+}
