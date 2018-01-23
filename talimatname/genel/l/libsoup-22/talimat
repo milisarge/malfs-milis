@@ -1,7 +1,7 @@
 # Tanım: GNOME için HTTP istemci/sunucu kitaplığı
 # URL: https://wiki.gnome.org/LibSoup
 # Paketçi: Cihan_Alkan
-# Gerekler: 
+# Gerekler: libxml2 glib
 # Grup: kütüphane
 
 isim=libsoup-22
