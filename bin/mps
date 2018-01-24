@@ -2408,6 +2408,8 @@ pvt_olustur(){
 }
 
 paketvt_guncelle(){
+	local _bakim
+	_bakim="yok"
 	uzunluk=${#sunucular[@]}
 	#for snc in "${sunucular[@]}"
 	for ((i=1;i<=$uzunluk;i++)); do
@@ -2418,18 +2420,27 @@ paketvt_guncelle(){
 	   else
 			pktvt="paket${i-1}.vt"
 	   fi
-	   wget --no-check-certificate -q --spider "$pktsunucu""paket.vt"
-	   if [ $? -eq 0 ]; then	
-			ryaz 32 $pktsunucu
-			ryaz 32 "$_paketvt_guncelleniyor" "$paketdepo""$pktvt"
-			if [ -f "$paketdepo""$pktvt" ];then
-				mv "$paketdepo""$pktvt" "$paketdepo""$pktvt.eski"
+	   # sunucu bakım kontrolü
+	   wget --no-check-certificate -q --spider "$pktsunucu""paket.vt.yeni"
+	   [ $? -eq 0 ] && _bakim="var"
+	   
+	   if [ $_bakim = "yok" ];then
+		   wget --no-check-certificate -q --spider "$pktsunucu""paket.vt"
+		   if [ $? -eq 0 ]; then	
+				ryaz 32 $pktsunucu
+				ryaz 32 "$_paketvt_guncelleniyor" "$paketdepo""$pktvt"
+				if [ -f "$paketdepo""$pktvt" ];then
+					mv "$paketdepo""$pktvt" "$paketdepo""$pktvt.eski"
+				fi
+				wget --no-check-certificate -q --show-progress -P "$paketdepo" "$pktsunucu""paket.vt" -O "$paketdepo""$pktvt"
+				#rm /tmp/paket.vt*
+			else
+				ryaz 31 "$pktsunucu paket veritabanı erişim olumsuz."
+				hataloglama "paket veritabanı güncelleme olumsuz."
 			fi
-			wget --no-check-certificate -q --show-progress -P "$paketdepo" "$pktsunucu""paket.vt" -O "$paketdepo""$pktvt"
-			#rm /tmp/paket.vt*
 		else
-			ryaz 31 "$pktsunucu paket veritabanı güncelleme olumsuz."
-			hataloglama "paket veritabanı güncelleme olumsuz."
+			ryaz 33 "$pktsunucu paket veritabanı bakımı yapılıyor." 
+			ryaz 33 "Lütfen birazdan tekrar deneyiniz."
 		fi
 	done
 	
