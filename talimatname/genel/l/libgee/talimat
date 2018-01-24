@@ -4,14 +4,15 @@
 # Gerekler: glib gobject-introspection vala 
 
 isim=libgee
-surum=0.18.0
+surum=0.20.0
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
+kaynak=(https://git.gnome.org/browse/libgee/snapshot/libgee-0.20.0.tar.xz)
 
 derle() {
 cd $isim-$surum
-./configure --prefix=/usr
+  NOCONFIGURE=1 ./autogen.sh
+./configure --prefix=/usr --disable-static
 make 
 make DESTDIR=$PKG install
 }
