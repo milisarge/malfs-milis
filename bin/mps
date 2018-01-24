@@ -2873,11 +2873,10 @@ ayarlar() {
 			-kks)
 				kirik_kontrol_sistem 
 				exit 0 ;;
-			### mps -sk paketismi = bir paketin güncel sürüm numarasını denetler.
+			### mps -sdk paketismi = bir paketin güncel sürüm numarasını denetler.
 			-sdk)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
-					hataloglama "(kirma) paket ismi eksik"
 					exit 1
 				fi
 				surum_devir_kontrol "$2" "$3"

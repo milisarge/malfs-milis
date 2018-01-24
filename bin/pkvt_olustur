@@ -42,16 +42,17 @@ pvt_olustur(){
 	if [ ! -f paket.vt ];then
 		touch paket.vt
 	fi
-	if [ -f "paket.vt" ];then
-			mv "paket.vt" "paket.vt.eski"
-		fi
 	for paket in `ls *.mps.lz`
 	do
 		paketad="`echo $paket|cut -d "#" -f1`"
 		shaek=`sha1sum $paket`
 		
-		echo $paketad $shaek  >> paket.vt  
+		echo $paketad $shaek  >> paket.vt.yeni  
 	done
+	if [ -f "paket.vt.yeni" ];then
+		mv paket.vt paket.vt.eski
+		mv paket.vt.yeni paket.vt
+	fi
 	echo "paket.vt oluşturuldu."
 }
 
