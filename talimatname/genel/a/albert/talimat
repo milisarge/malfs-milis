@@ -1,0 +1,26 @@
+# Tanım: Tam özellikli klavye koşucusu
+# URL: https://github.com/albertlauncher
+# Paketçi: milisarge
+# Gerekler: cmake git muparser python3 qt5 xorg-libx11 
+# Grup: sistem
+
+isim=albert
+surum=git
+devir=1
+kaynak=()
+
+derle() {
+	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
+		git clone --recursive https://github.com/albertlauncher/albert $DERLEME_KAYNAKDIZIN/$isim 
+	else
+		cd $DERLEME_KAYNAKDIZIN/$isim 
+		git pull
+	fi
+	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	cd $SRC/$isim
+    mkdir -p build
+    cd build
+	cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DBUILD_VIRTUALBOX=OFF
+	make
+	make DESTDIR="$PKG/" install
+}
