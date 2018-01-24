@@ -2440,7 +2440,7 @@ paketvt_guncelle(){
 			fi
 		else
 			ryaz 33 "$pktsunucu paket veritabanı bakımı yapılıyor." 
-			ryaz 33 "Lütfen birazdan tekrar deneyiniz."
+			ryaz 33 "5dk içinde lütfen birazdan tekrar deneyiniz."
 		fi
 	done
 	
