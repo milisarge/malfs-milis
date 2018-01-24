@@ -93,6 +93,7 @@ _paket_adi_gerekli="paket ismi eksik!"
 _dizin_bulunamadi="dizin bulunamadı!"
 _talimat_sayisi_fazla="talimatnameler altında birden fazla talimat mevcut!"
 _talimat_bulunamadi="ilgili talimat bulunamadı!"
+_talimatsiz_dizin="ilgili dizinde talimat bulunamadı!"
 _dosya_yolu_bulunamadi="dosya yolu bulunamadı!"
 _shasum_uyumsuzluk="shasum uyumsuzluğu tespit edildi!"
 _gerekler_belirleniyor="bağımlılıkları belirleniyor."
@@ -116,6 +117,48 @@ _devir_kontrol_iptal="devir kontrolü iptal edildi!"
 _surum_kontrol_iptal="sürüm kontrolü iptal edildi!"
 _zaten="zaten"
 _indiriliyor="indiriliyor"
+
+hata_olustu(){
+	local _hata _mesaj
+	[ -z $1 ] && exit 1
+	_hata=$1
+	case $_hata in
+	"_paket_adi_gerekli")
+		_mesaj="$_paket_adi_gerekli"
+		;;
+	"_talimatsiz_dizin")
+		_mesaj="$_talimatsiz_dizin"	
+		;;
+	"_paket_adi_gerekli")
+		_mesaj="$_paket_adi_gerekli"	
+		;;
+	*)
+		_mesaj="böyle bir hata yok"
+		;;
+	esac
+	echo ${_mesaj}
+	exit 1
+}
+
+cikti_renk_ayarla(){
+	local cikti
+	cikti="--renkli"
+	if [ "$1" ]; then
+		if [ "$1" = "--normal" ];then
+			cikti="--normal"
+		fi
+	fi
+
+	if [ $cikti = "--renkli" ];then
+		_yaz="ryaz 32"
+		_yaz_tm="ryaz 34"
+		_yaz_uyari="ryaz 31"
+	else
+		_yaz="echo"
+		_yaz_tm="echo"
+		_yaz_uyari="echo"
+	fi
+}
 
 icerik_ekle(){
 	if [ -f "$1" ];then
@@ -555,7 +598,7 @@ yeniden_paketle(){
 		lzip -9 "$1".mps
 }
 
-talimat_bul(){
+talimat_bul_eski(){
 	if [ -z "$1" ];then echo "$_paket_adi_gerekli";exit 1;fi
 	local _apaket="$1"
 	_bulunan=()
@@ -576,6 +619,21 @@ talimat_bul(){
 	fi  
 }
 
+talimat_bul(){
+	local _apaket _bulunan _sonuc _donus _konum
+	[ -z $1 ] && hata_olustu "_paket_adi_gerekli"
+	_konum="$talimatname $ektalimatname"
+	[ ! -z $2 ] && _konum="$2"
+	_donus="-1"
+	_apaket="$1"
+	_sonuc=$(find $_konum -name ${_apaket} | wc -l)
+	if [ ${_sonuc} -eq 0 ];then echo $_donus;return; fi
+	_bulunan=$(find $_konum -name ${_apaket} | head -n1)
+	if [ ! -f "${_bulunan}/talimat" ];then hata_olustu "_talimatsiz_dizin";return; fi
+	[ ${_sonuc} -gt 1 ] && echo "$(date +'%F %T') ${_apaket} $_talimat_sayisi_fazla" >> $LOGDIZIN/mps-hata.log
+	echo ${_bulunan}
+}
+
 paket_analiz(){
 	_gcc_uyumsuz_paketler="/tmp/gcc_uyumsuz_paketler"
 	_pkvt="paket.vt"
@@ -584,7 +642,7 @@ paket_analiz(){
 	pkt=$1
 	if [ -f $pkt ];then
 		_apaket=$(basename $pkt |cut -d'#' -f 1)
-		_konum=$(anatalimat_bul $_apaket)
+		_konum=$(talimat_bul $_apaket $anatalimatname)
 		_depo_sha=$(cat "$paketdepo$_pkvt"  | grep " $_apaket#" | cut -d' ' -f2)
 		_paket_sha=$(sha1sum $pkt | cut -d ' ' -f1)
 		if [[ $_konum != "-1" && $_konum != "0" ]];then
@@ -649,26 +707,6 @@ paketdepo_analiz(){
 		ryaz 31 "$1 $_dizin_bulunamadi"
 		exit 1
 	fi
-}
-
-anatalimat_bul(){
-	if [ -z "$1" ];then echo "$_paket_adi_gerekli";exit 1;fi
-	local _apaket="$1"
-	_bulunan=()
-	_bulunan=()
-	while IFS=  read -r -d $'\0'; do
-		_bulunan+=("$REPLY")
-	done < <(find $anatalimatname -name ${_apaket} -print0)
-	if [ ${#_bulunan[@]} -gt 1  ];then echo "$(date +'%F %T') ${_apaket} $_talimat_sayisi_fazla" >> $LOGDIZIN/mps-hata.log;fi
-	if [ ${_bulunan[0]} ] ; then
-		if [ -f "${_bulunan[0]}/talimat" ];then
-			echo "${_bulunan[0]}"
-		else
-			echo "0"
-		fi
-	else
-		echo "-1"
-	fi  
 }
 
 derleme_listyap_kontrol(){
@@ -869,20 +907,12 @@ paket_inkur_liste(){
 # otomatik kontrollu kur
 # -kur
 paket_inkur_oto(){
-	local cikti _yaz _yaz_uyari
-	cikti="--renkli"
-	if [ "$2" ]; then
-		cikti="$2"
-	fi
-	if [ $cikti == "--renkli" ];then
-		_yaz="ryaz 32"
-		_yaz_uyari="ryaz 31"
-	else
-		cikti="--normal"
-		_yaz="echo"
-		_yaz_uyari="echo"
-	fi
-		local konum anakonum kurdurum _agdan_kur_onay
+	local _cikti _yaz _yaz_uyari
+	_cikti="--renkli"
+	[ $2 ] && _cikti="$2"
+	cikti_renk_ayarla $_cikti
+	
+	local konum anakonum kurdurum _agdan_kur_onay
 	derleme_listyap_kontrol
 	#derleme_listyap "$1" | grep "bulunamadı"
 	kurulum_listyap "$1" | grep "bulunamadı"
@@ -1039,7 +1069,7 @@ guncelleme_tespit(){
 		kdevir=${satir2:1:${#satir2}-1}
 		#deposurum=$(grep " $kpaket#" /depo/paketler/paket.vt | cut -d' ' -f3 | cut -d'#' -f 2 | cut -d'-' -f1)
 		_konum=$(talimat_bul $kpaket)
-		if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+		if [ "$_konum" = "-1" ];then
 			ryaz 31 "$kpaket $_talimat_bulunamadi $_surum_kontrol_iptal"
 			exit 1
 		fi
@@ -1102,7 +1132,7 @@ surum_kontrol(){
 	
 	
 	_konum=$(talimat_bul $_paket)
-	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+	if [ "$_konum" = "-1" ];then
 		ryaz 31 "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
 		pk_sil="e"
 		case "${silme_esgec[@]}" in  *"$_paket"*) pk_sil="h" ;; esac
@@ -1176,7 +1206,7 @@ devir_kontrol(){
 	kdevir=${satir:1:${#satir}-1} 
 	
 	_konum=$(talimat_bul $_paket)
-	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+	if [ "$_konum" = "-1" ];then
 		ryaz 31 "$_paket $_talimat_bulunamadi $_devir_kontrol_iptal"
 		pk_sil="e"
 		case "${silme_esgec[@]}" in  *"$_paket"*) pk_sil="h" ;; esac
@@ -1231,7 +1261,7 @@ surum_karsilastir(){
 	[ "$1" ] && kpaket="$1" || exit 1
 	deposurum=$(grep " $kpaket#" /depo/paketler/paket.vt | cut -d' ' -f3 | cut -d'#' -f 2 | cut -d'-' -f1)
 	_konum=$(talimat_bul $kpaket)
-	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+	if [ "$_konum" = "-1" ];then
 		ryaz 31 "$kpaket $_talimat_bulunamadi $_surum_kontrol_iptal"
 		exit 1
 	fi
@@ -1263,7 +1293,7 @@ surum_devir_kontrol(){
 		kdevir=""
 	fi
 	_konum=$(talimat_bul $_paket)
-	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+	if [ "$_konum" = "-1" ];then
 		echo "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
 	else
 		if [[ "${esgec[*]}" =~ "${_paket}" ]];then 
@@ -1298,7 +1328,7 @@ _devir_kontrol_durum(){
 	kdevir=${satir:1:${#satir}-1} 
 	
 	_konum=$(talimat_bul $_paket)
-	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
+	if [ "$_konum" = "-1" ];then
 		echo "$_paket $_talimat_bulunamadi $_devir_kontrol_iptal"
 	else
 	
@@ -1695,17 +1725,20 @@ ters_bagimli_kontrol(){
 
 kurulu_kontrol(){
 	local _konum _apaket
+	[ -z $1 ] && hata_olustu "_paket_adi_gerekli"
 	_apaket=$1
+	cikti_renk_ayarla "--normal"
+	[ $2 ] && cikti_renk_ayarla "$2"
 	if [ -d "$kokdizin$VT/$_apaket" ];then
-		echo "kurulu"
+		$_yaz "kurulu"
 		exit 0
 	fi
 	_konum=$(talimat_bul $_apaket)
 
-	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
-		echo "tanimsiz"
+	if [ "$_konum" = "-1" ];then
+		$_yaz_uyari "tanimsiz"
 	else
-		echo "degil"
+		$_yaz_uyari "degil"
 	fi
 	exit 1
 }
@@ -2138,8 +2171,8 @@ talimat_bilgi(){
 	local _konum _apaket
 	_apaket=$1
 	_konum=$(talimat_bul $_apaket)
-	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
-		ryaz 31 "$_apaket $_paket_tanimsiz"
+	if [ "$_konum" = "-1" ];then
+		ryaz 31 "$_apaket $_paket_bulunamadi"
 		exit 1
 	else
 		grep "derle()" -B 12 $_konum/talimat |sed '$ d'
@@ -2152,8 +2185,8 @@ talimat_yazdir(){
 	local _konum _apaket
 	_apaket=$1
 	_konum=$(talimat_bul $_apaket)
-	if [[ "$_konum" = "0" || "$_konum" = "-1" ]];then
-		ryaz 31 "$_apaket $_paket_tanimsiz"
+	if [ "$_konum" = "-1" ];then
+		ryaz 31 "$_apaket $_paket_bulunamadi"
 		exit 1
 	else
 		cat $_konum/talimat
@@ -2562,19 +2595,12 @@ yerelden_kur(){
 }
 
 agdan_kur(){
-	local kontroldeg cikti _yaz _yaz_tm _yaz_uyari
-	cikti="--normal"
-	if [ "$2" ]; then
-		cikti="$2"
-	fi
-	if [ $cikti = "--renkli" ];then
-		_yaz="ryaz 32"
-		_yaz_uyari="ryaz 31"
-	else
-		_yaz="echo"
-		_yaz_uyari="echo"
-	fi
-	kkont=`kurulu_kontrol "$1"`
+	local kontroldeg _cikti _yaz _yaz_tm _yaz_uyari
+	_cikti="--normal"
+	[ $2 ] && _cikti="$2"
+	cikti_renk_ayarla $_cikti
+	
+	kkont=$(kurulu_kontrol "$1")
 	if [ "$kkont" = "degil" ] || [ "$tekrarkur" = "evet" ];then
 		paket_indir "$1" "$2"
 		if [ $(find $paketdepo -name $1#* | head -1) ];then
@@ -2602,7 +2628,7 @@ agdan_kur(){
 		#ryaz 32 "$1 paketi zaten kurulu!"
 		printf "."
 	else
-		$_yaz_uyari "tanımsız paket veya tekrar kurulum iptali var!"
+		$_yaz_uyari "$1 tanımsız paket veya tekrar kurulum iptali var!"
 	fi
 }
 
@@ -3116,12 +3142,9 @@ ayarlar() {
 				fi
 				paket_guncelle_oto "$2";;
 			### mps -kk paketismi = ilgili paketin kurulu olma durumunu gösterir.
-			-kk|--kurulu-kontrol)
-				if [ ! "$2" ]; then
-					ryaz 31 "$_paket_adi_gerekli"
-					exit 1
-				fi
-				ryaz 31 `kurulu_kontrol "$2"`
+			-kk)
+				shift
+				kurulu_kontrol "$@"
 				exit 0 ;;
 			-kudo)
 				kurulum_dogrulama 
