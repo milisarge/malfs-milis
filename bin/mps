@@ -1454,32 +1454,6 @@ paket_derle(){
 
 }
 
-bagimlilar_eski(){
-	local bagimd konum
-	konum="`find "$talimatname" -name $1`"
-	konumek="`find "$ektalimatname" -name $1`"
-	if [ -f "$konum/talimat" ];then
-		bagimd=`cat $konum/talimat | grep "Gerekler" | cut -d':' -f2`
-											   
-		if [ -n "$bagimd" ]; then
-			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-			#sıralı gösterme
-			echo `echo "$bagimd" | sed 's/,/ /g'`
-		fi
-	elif [ -f "$konumek/talimat" ];then
-		bagimd=`cat $konumek/talimat | grep "Gerekler" | cut -d':' -f2`
-											   
-		if [ -n "$bagimd" ]; then
-			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-			#sıralı gösterme
-			echo `echo "$bagimd" | sed 's/,/ /g'`
-		fi
-	else
-		echo "talimatyok"
-		exit 1
-	fi
-}
-
 ##_ bagimlilar() : talimatta yer alan gereklerin listesinin alınması.
 bagimlilar(){
 	local bagimd konum
