@@ -1599,10 +1599,22 @@ yeni_kurulacak_paketler(){
 	[ -f gerek.liste ] && rm -rf  gerek.liste
 }
 
-# güncellemelerin alınması paket.vt üzerinden
+# güncellemelerin alınması talimatname üzerinden
 guncellemeler(){
-	diff --changed-group-format='***%>' --unchanged-group-format='' --new-group-format='+++%>'  \
-	$paketdepo/paket.vt.eski $paketdepo/paket.vt | cut -d' ' -f1 | sort --version-sort
+	#diff --changed-group-format='***%>' --unchanged-group-format='' --new-group-format='+++%>'  \
+	#$paketdepo/paket.vt.eski $paketdepo/paket.vt | cut -d' ' -f1 | sort --version-sort
+	_mps_guncellenecekler="/tmp/mps.guncellenecekler.liste"
+	[ -f $_mps_guncellenecekler ] && rm $_mps_guncellenecekler
+	for _paket in $(ls $VT);do
+		if [ "$(surum_devir_kontrol ${_paket} x)" = "var" ];then
+			echo ${_paket} >> $_mps_guncellenecekler
+		fi
+	done 
+	if [ -f $_mps_guncellenecekler ];then
+		echo "guncellenecek liste"
+		echo "-------------------"
+		cat $_mps_guncellenecekler
+	fi
 }
 
 # iki dosyanın içerik karşılaştırması yapar.
