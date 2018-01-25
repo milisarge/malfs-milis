@@ -241,7 +241,6 @@ icerik_ekle(){
 
 paket_sil(){
 	local paket kkont sil_onay oto_silme cikti _yaz _yaz_uyari _yaz_tm
-	local _etkilenen=()
 	paket="$1"
 	tersbag_goster="hayir"
 	
@@ -288,9 +287,7 @@ paket_sil(){
 					ters_bagimli_bilgi "$paket"
 					$_yaz_uyari "------------------"
 				fi
-				#_etkilenen=$(silme_etkilenen_kontrol /tmp/$paket.sil $paket)
 				
-				#if [ -f "${_etkilenen[0]}" ];then
 				$_yaz_uyari "etkilenen dosyalar"
 				$_yaz_uyari "------------------"
 				silme_etkilenen_kontrol /tmp/$paket.sil $paket
