@@ -1,7 +1,7 @@
 # Tanım: Freedesktop.org ileti taşıma sistemi
 # URL: http://www.freedesktop.org/wiki/Software/dbus/
 # Paketçi: milisarge
-# Gerekler: expat xorg-libx11 xorg-libsm xorg-libice
+# Gerekler: xorg-libx11 xorg-libsm xorg-libice
 
 isim=dbus
 surum=1.10.6

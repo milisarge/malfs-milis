@@ -1,7 +1,7 @@
 # Tanım: Açık kaynak web sunucusu.
 # URL: http://httpd.apache.org/ABOUT_APACHE.html
 # Paketçi: milisarge
-# Gerekler: pcre apr-util sqlite expat
+# Gerekler: pcre apr-util sqlite
 # Grup: ağ
 
 isim=apache

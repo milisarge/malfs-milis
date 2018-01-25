@@ -1,7 +1,7 @@
 # Tanım: Acik kaynak kodlu OpenGL uyumlu grafik kutuphanesi
 # URL: http://www.xorg-mesa3d.org
 # Paketçi: milisarge
-# Gerekler: pkg-config libtool wayland xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage expat llvm elfutils xorg-libxshmfence wayland libvdpau
+# Gerekler: pkg-config libtool wayland xorg-libx11 xorg-libdrm xorg-libxext xorg-libxdamage llvm elfutils xorg-libxshmfence wayland libvdpau
 
 isim=xorg-mesa
 surum=17.1.8

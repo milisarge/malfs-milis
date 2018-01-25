@@ -1,7 +1,7 @@
 # Tanım: Sonraki nesil python üst düzey betik dili
 # URL: http://www.python.org
 # Paketçi: milisarge
-# Gerekler: sqlite expat 
+# Gerekler: sqlite
 
 isim=python3
 surum=3.5.1

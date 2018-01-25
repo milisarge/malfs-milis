@@ -1,7 +1,7 @@
 # Tanım: Uluslararasılaştırma aracı koleksiyonu
 # URL: http://freedesktop.org/wiki/Software/intltool
 # Paketçi: milisarge
-# Gerekler: perl-xml-parser,expat
+# Gerekler: perl-xml-parser
 
 isim=intltool
 surum=0.51.0

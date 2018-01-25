@@ -1,7 +1,7 @@
 # Tanım: Apache taşınabilir çalışma zamanı yardımcı program kütüphanesi
 # URL: http://apr.apache.org/
 # Paketçi: milisarge
-# Gerekler: apr expat unixodbc postgresql
+# Gerekler: apr unixodbc postgresql
 # Grup: kütüphane
 
 isim=apr-util

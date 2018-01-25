@@ -708,14 +708,14 @@ paketdepo_analiz(){
 
 derleme_listyap_kontrol(){
 	
-	if [ -f tumgerekler.liste ];then
-		mv tumgerekler.liste tumgerekler.eski.liste
-	fi
 	if [ -f gerek.liste ];then
 		mv gerek.liste gerek.eski.liste
 	fi
-	touch tumgerekler.liste 
+	if [ -f gerek.konum.liste ];then
+		mv gerek.konum.liste gerek.konum.eski.liste
+	fi
 	touch gerek.liste 
+	touch gerek.konum.liste 
 }
 
 gerekleri_dosyala(){
@@ -724,67 +724,123 @@ gerekleri_dosyala(){
 	_konum=$(talimat_bul $_altgerek)
 	if [[ $konum != "-1" && $konum != "0" ]];then
 		printf "."
-		echo "$_altgerek" >> tumgerekler.liste 
+		echo "$_altgerek" >> gerek.liste 
 		if [ ! -d "$talimatname/temel/$_altgerek" ];then
-			echo "$_konum" >> gerek.liste 
+			echo "$_konum" >> gerek.konum.liste 
 		fi
 	else
 		ryaz 31 "$1 $_talimat_bulunamadi"
 	fi
 }
 
+gerekleri_listele(){
+	derleme_listyap_kontrol
+	local _paket _konum
+	_konum="$talimatname $ektalimatname"
+	[ $1 ] && _paket=$1 || hata_olustu "_talimat_bulunamadi"	
+	echo $_paket | awk -v arama_konum="$_konum" '''
+	function gerekbul(paket,gerekler) { 
+		if (ISLENDI[paket]) {
+			return
+		}
+		while((getline satir<paket) >0) {  
+			if (satir ~ "# Gerekler:" ){         
+				split(satir,gerekb,":");
+				split(gerekb[2], gerekler, /[ ,]+/);
+				if ( length(gerekler) > 0 ){
+					for (i in gerekler){
+						if ( i > 1 && length(gerekler[i]) > 0 ){
+							ara=gerekler[i]
+							konum=talimat_bul(ara);
+							if (konum != ""){
+								gerekbul(konum);
+							}
+						}
+					}
+				}
+			}
+		}
+		ISLENDI[paket]=1 ; 
+		printf "."
+		system("echo $(dirname " paket ") >> gerek.konum.liste")
+		system("echo $(basename $(dirname " paket ")) >> gerek.liste")
+		close(paket)	
+	}
+
+	function talimat_bul(ara){
+		cmd= "find " arama_konum " -name " ara " | head -n1 "
+		#print cmd
+		while ( ( cmd | getline talimatyol ) > 0 ) {
+			return talimatyol "/talimat"
+			break
+		} 
+		close(cmd)
+	}
+
+
+	{
+		#print FILENAME
+		_talimat=$1
+		_paket=talimat_bul(_talimat)
+		if ( length(_paket) > 0 ){gerekbul(_paket);}
+		else {print "_paket talimat bulunumadı!"}
+		exit 1
+	}
+	'''
+	[ -f gerek.liste ] && cat gerek.liste | tr "\n" " ";echo
+}
+
+
 dly_yeni(){
-	dlymap["$1"]=1
-	altgerekler=($(bagimlilar $1))
+	local _paket="$1"
+	dlymap+=";${_paket};"
+	altgerekler="$(bagimlilar $_paket)"
 	if [[ "$altgerekler" != "0" && "$altgerekler" != "-1" ]];then
-		for altgerek in ${altgerekler[@]};do
-			if [[ ! ${dlymap["$altgerek"]} ]] ; then
+		for altgerek in ${altgerekler};do
+			if [[ "$dlymap" != *";${altgerek};"* ]]; then
 				dly_yeni $altgerek
 			fi
 		done
-		dlyD+=("$1")
-		gerekleri_dosyala "$1"	
+		dlyD+="$_paket "
+		gerekleri_dosyala "$_paket"	
 	else
-		ryaz 31 "$1 talimatı bulunamadı."
+		ryaz 31 "$_paket talimatı bulunamadı."
 		exit 1 
 	fi
 }
 
 kly_yeni(){
-	#[ ! ${klyD[0]} ] && klyD+=("$1")
-	[ ! -d "$VT/$1" ] && klymap["$1"]=1
-	altgerekler=($(bagimlilar $1))
+	local _paket="$1"
+	[ ! -d "$VT/$1" ] && klymap+=";${_paket};"
+	altgerekler="$(bagimlilar $_paket)"
 	if [[ "$altgerekler" != "0" && "$altgerekler" != "-1" ]];then
-		for altgerek in ${altgerekler[@]};do
+		for altgerek in ${altgerekler};do
 			if [ ! -d "$VT/$altgerek" ] ;then
-				if [[ ! ${klymap["$altgerek"]} ]] ; then
-					#klyD+=("$altgerek")
-					#echo ${klyD[-1]}
+				if [[ "$klymap" != *";${altgerek};"* ]]; then
 					kly_yeni $altgerek
 				fi
 			fi
 		done
-		klyD+=("$1")
-		gerekleri_dosyala ${klyD[-1]}
+		klyD+="$_paket "
+		gerekleri_dosyala "$_paket"	
 	else
-		ryaz 31 "$1 talimatı bulunamadı."
+		ryaz 31 "$_paket talimatı bulunamadı."
 		exit 1 
 	fi
 }
 
 derleme_listyap(){
 	ryaz 32 "$1 $_gerekler_belirleniyor"
-	local pkt dlyp
-	dlyD=()
-	declare -A dlymap
+	dlyD=""
+	dlymap=""
 	derleme_listyap_kontrol
 	dly_yeni $1
-	echo "${dlyD[@]}"
+	echo "${dlyD}"
 }
 
 kurulum_listyap(){
-	klyD=()
-	declare -A klymap
+	klyD=""
+	klymap=""
 	kly_yeni "$1"
 }
 
@@ -807,7 +863,7 @@ paket_derle_liste(){
 paket_derle_kur(){
 	tekrarkur="hayir"
 	derleme_listyap_kontrol
-	derleme_listyap "$1"  && paket_derle_liste gerek.liste
+	derleme_listyap "$1"  && paket_derle_liste gerek.konum.liste
 }
 
 # odkp
@@ -822,7 +878,7 @@ oto_derle_kur_paketle(){
 	else
 		paket_derle_kur $1
 	fi 
-	rm -rf {gerek.eski,gerek,kurulanlar,silinenler,tumgerekler.eski,tumgerekler}.liste
+	rm -rf {gerek.konum.eski,gerek,kurulanlar,silinenler,gerek.eski}.liste
 }
 
 paket_kur_oto(){
@@ -884,7 +940,7 @@ paket_kur_liste_zorla(){
 #otomatik kontrollu kur
 paket_kur_oto2(){
 	derleme_listyap_kontrol
-	derleme_listyap "$1" > /dev/null && mps -ok gerek.liste
+	derleme_listyap "$1" > /dev/null && mps -ok gerek.konum.liste
 }
 
 paket_inkur_liste_direk(){
@@ -911,10 +967,9 @@ paket_inkur_oto(){
 	
 	local konum anakonum kurdurum _agdan_kur_onay
 	derleme_listyap_kontrol
-	#derleme_listyap "$1" | grep "bulunamadı"
 	kurulum_listyap "$1" | grep "bulunamadı"
 	local kpkt
-	for paketkonum in `cat gerek.liste`;do	
+	for paketkonum in `cat gerek.konum.liste`;do	
 		# önce talimat-anatalimat karşılaştırması yapılır.
 		kpkt=`basename $paketkonum`
 		konum="`find "$talimatname" -name $kpkt`"
@@ -968,16 +1023,23 @@ paket_sil_oto_onayli(){
 }
 
 paket_sil_gerekli(){
-	local _onay
+	local _onay _tbs
 	if [ -d $VT/$1 ];then
 		bagimli_bilgi_dosyala "$1"
 		rm -f /tmp/$1.silinecekler
 		touch /tmp/$1.silinecekler
-		for pkaltb in $(cat /tmp/$1.gerekler.liste);do
+		_tbsnc=$(ters_bagimli_bilgi $1 "kurulu")
+		_tbs=$(echo $_tbsnc | wc -l)
+		if [ $_tbs -gt 0 ];then
+			ryaz 31 "$1 silinemez."
+			echo "ters gerekleri: $_tbsnc"
+			exit 1
+		fi
+		for pkaltb in $(tac /tmp/$1.gerekler.liste);do
 			if [ -d $VT/$pkaltb ];then
-				tbsonuc=()
+				tbsonuc=""
 				tbsonuc=$(ters_bagimli_bilgi $pkaltb "kurulu")
-				if [ ${#tbsonuc[0]} = 0 ];then
+				if [ $(echo $tbsonuc | wc -l) -eq 0 ];then
 					ryaz 32 "$pkaltb silinebilir."
 					echo "$pkaltb" >> /tmp/$1.silinecekler
 				elif [ "$tbsonuc" = "$1" ];then
@@ -1033,13 +1095,13 @@ paket_guncelle(){
 paket_guncelle_oto(){
 	derleme_listyap "$1" > /dev/null &&
 	local kpkt
-	for kpkt in `cat gerek.liste`;do
+	for kpkt in `cat gerek.konum.liste`;do
 		durum=`kurulu_kontrol "$kpkt"`
 		if [ "$durum" = "kurulu" ]; then
 			paket_guncelle "$kpkt"
 		fi
 	done
-	rm gerek.liste tumgerekler.liste
+	rm gerek.konum.liste gerek.liste
 }
 
 dongu_gosterge(){
@@ -1591,9 +1653,11 @@ yeni_kurulacak_paketler(){
 	[ -f /tmp/mevcut_kurulu.liste ] && rm -rf /tmp/mevcut_kurulu.liste
 	ls $VT > /tmp/mevcut_kurulu.liste
 	derleme_listyap $1 &> /dev/null
-	comm -13 <(sort /tmp/mevcut_kurulu.liste) <(sort tumgerekler.liste)
-	[ -f tumgerekler.liste ] && rm -rf  tumgerekler.liste
+	comm -13 <(sort /tmp/mevcut_kurulu.liste) <(sort gerek.liste)
+	#diff --changed-group-format='***%>' --unchanged-group-format='' --new-group-format='+++%>' \
+	#/tmp/mevcut_kurulu.liste gerek.liste | cut -d' ' -f1 | sort -d
 	[ -f gerek.liste ] && rm -rf  gerek.liste
+	[ -f gerek.konum.liste ] && rm -rf  gerek.konum.liste
 }
 
 # güncellemelerin alınması talimatname üzerinden
@@ -2967,6 +3031,9 @@ ayarlar() {
 			### mps -dly paketismi = ilgili paketin genel ve tüm bağımlılık listesini verir,oluşturur.
 			-dly|dliste)
 				derleme_listyap "$2" 
+				exit 0 ;;	
+			glist)
+				gerekleri_listele "$2" 
 				exit 0 ;;	
 			### mps -kly paketismi = ilgili paketin ve kurulması gereken altgereklerini verir,oluştur.
 			-kly)
