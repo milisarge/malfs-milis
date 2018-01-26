@@ -1,0 +1,20 @@
+# Tanım: JSON (JavaScript Object Notation) kodlayıcı/kod çözücü
+# URL: http://search.cpan.org/dist/JSON
+# Paketçi: Cihan_Alkan
+# Gerekler: perl
+# Grup: kütüphane
+
+isim=perl-json
+surum=2.97000
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/JSON-$surum.tar.gz)
+
+derle() {
+
+  cd JSON-$surum
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make install DESTDIR="$PKG"
+  find "$PKG" -name '.packlist' -delete
+  find "$PKG" -name '*.pod' -delete
+}
