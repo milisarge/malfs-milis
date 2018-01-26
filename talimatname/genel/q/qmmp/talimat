@@ -1,28 +1,21 @@
-# Tanım: Qt tabanlı bir ses çalar.
-# URL: http://qmmp.ylsoftware.com
-# Paketçi: milisarge@gmail.com
-# Gerekler: subversion libbluray opus qt5 x264 flac libmad glib librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+# Tanım: Qt5 tabanlı ses oynatıcı
+# URL: http://qmmp.ylsoftware.com/
+# Paketçi: Cihan_Alkan
+# Gerekler: alsa-lib curl desktop-file-utils hicolor-icon-theme libmad libvorbis libogg libxkbcommon taglib xdg-utils qt5 cmake flac jack libmpcdec pulseaudio ffmpeg libcdio-paranoia libcddb libmms libsamplerate libmodplug libsndfile wavpack xorg-mesa faad2 libgme opusfile wildmidi
+# Grup: medya
+
 
 isim=qmmp
-surum=svn
+surum=1.2.0
 devir=1
+kaynak=(http://qmmp.ylsoftware.com/files/$isim-$surum.tar.bz2)
 
-kaynak=()
-	
 derle() {
-	
-	#bagımlılıklar kontrol edilecek.
-	
-	svn co http://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-1.2 qmmp
-	cd qmmp
-	echo "$(cat qmmp.pri | grep QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion)"
-	
-	mkdir -p build
-	cd build
-	cmake ../ \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DLIB_DIR=lib
-	make
-	make -C ../build DESTDIR=$PKG install
+
+  cd $isim-$surum
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+          -DUSE_HAL:BOOL=FALSE
+  make
+  make DESTDIR="${PKG}" install
 }
