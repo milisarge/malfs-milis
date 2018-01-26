@@ -1,0 +1,29 @@
+# Tanım: Gthumb temelli resim görüntüleyici ve tarayıcı.
+# URL: https://github.com/linuxmint/pix
+# Paketçi: Cihan_Alkan
+# Gerekler: desktop-file-utils gconf librsvg clutter-gtk gsettings-desktop-schemas libwebp webkitgtk2
+# Grup: medya
+
+isim=pix
+surum=1.6.2
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+    gnome-autogen.sh --prefix="/usr" \
+        --localstatedir="/var" \
+        --libexecdir="/usr/lib/$isim" \
+        -disable-static
+
+    if [ -d 'tests/$(top_srcdir)/' ]
+    then
+        cp 'tests/$(top_srcdir)/pix/.deps/dom_test-dom.Po' "pix/.deps/"
+        cp 'tests/$(top_srcdir)/pix/.deps/glib_utils_test-glib-utils.Po' "pix/.deps/"
+        cp 'tests/$(top_srcdir)/pix/.deps/gsignature_test-gsignature.Po' "pix/.deps/"
+        cp 'tests/$(top_srcdir)/pix/.deps/oauth_test-gsignature.Po' "pix/.deps/"
+    fi
+
+	make
+	make DESTDIR=$PKG install
+}
