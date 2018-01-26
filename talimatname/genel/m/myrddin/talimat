@@ -7,7 +7,7 @@
 isim=myrddin
 surum=git
 devir=1
-kaynak=(https://myrlang.org//releases/$isim-$surum.tar.xz)
+kaynak=()
 
 derle() {
 	adres="git://git.eigenstate.org/ori/mc.git"
