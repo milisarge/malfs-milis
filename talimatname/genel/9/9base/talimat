@@ -1,0 +1,33 @@
+# Tanım: Plan9 araçlarının unix uyarlaması
+# URL: http://tools.suckless.org/9base
+# Paketçi: Cihan_Alkan
+# Gerekler: python
+# Grup: sistem
+
+
+isim=9base
+surum=6
+devir=1
+kaynak=(http://dl.suckless.org/tools/$isim-$surum.tar.gz 
+        9 
+        plan9.sh)
+
+derle() {
+
+  cd $isim-$surum
+  sed -i 's#^OBJTYPE\s.*$#OBJTYPE = x86_64#' config.mk
+
+  sed -i 's#^PREFIX\s.*$#PREFIX = /opt/plan9#' config.mk
+  sed -i 's#^CFLAGS\s*+=#CFLAGS += -DPLAN9PORT #' config.mk
+
+  # Force dynamic linking.  Several of the programs in 9base won't work
+  # when statically linked against the latest glibc.
+  sed -i '/-static/d' config.mk
+
+  make
+
+  make DESTDIR="$PKG" install
+  install -m755 ../9 "$PKG/opt/plan9/bin/"
+  install -D -m755 ../plan9.sh "$PKG/etc/profile.d/plan9.sh"
+  install -D -m644 LICENSE "$PKG/usr/share/licenses/9base/LICENSE"
+}
