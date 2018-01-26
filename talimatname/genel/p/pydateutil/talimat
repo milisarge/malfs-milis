@@ -1,0 +1,25 @@
+# Tanım: Standart datetime modülüne güçlü eklentiler sağlar
+# URL: https://github.com/dateutil/dateutil
+# Paketçi: Cihan_Alkan
+# Gerekler: python python3 python-setuptools python3-setuptools python-six python3-six
+# Grup: kütüphane
+
+isim=pydateutil
+surum=2.6.1
+devir=1
+kaynak=(https://github.com/dateutil/dateutil/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+  cp -a dateutil-$surum{,-py3}
+
+  cd "$SRC"/dateutil-$surum
+  python2 setup.py build
+  python2 setup.py install --root="$PKG" --optimize=1 --skip-build
+ 
+  cd "$SRC"/dateutil-$surum-py3
+  python3 setup.py build
+
+  python3 setup.py install --root="$PKG" --optimize=1 --skip-build
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
+}
