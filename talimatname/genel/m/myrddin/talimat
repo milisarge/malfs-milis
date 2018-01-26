@@ -10,7 +10,9 @@ devir=1
 kaynak=(https://myrlang.org//releases/$isim-$surum.tar.xz)
 
 derle() {
-	cd mc
+	adres="git://git.eigenstate.org/ori/mc.git"
+	git_indir ${adres} ${isim}
+	cd $SRC/${isim}
 	./configure --prefix="/usr"
 	make bootstrap
 	make
