@@ -1,0 +1,27 @@
+# Tanım: Hafif resim görüntüleyici
+# URL: https://lxde.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk3 intltool
+# Grup: medya
+
+isim=gpicview
+surum=0.2.5
+devir=1
+kaynak=(https://downloads.sourceforge.net/lxde/$isim-$surum.tar.xz
+        0001-Fix-displaying-images-with-GTK3.patch)
+
+derle() {
+
+  cd $isim-$surum
+
+  # Fix displaying images with GTK3
+  # https://sourceforge.net/p/lxde/patches/542/
+  patch -Np1 -i ../0001-Fix-displaying-images-with-GTK3.patch
+
+  # Apply only one main category
+  sed -i '/^Categories=/ s/Utility;//' gpicview.desktop.in
+
+  ./configure --sysconfdir=/etc --prefix=/usr --enable-gtk3
+  make
+  make DESTDIR="$PKG" install
+}
