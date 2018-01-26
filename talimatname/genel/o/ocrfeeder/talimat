@@ -1,0 +1,26 @@
+# Tanım: GTK + belge yerleşimi analizi ve optik karakter tanıma uygulaması
+# URL: https://wiki.gnome.org/Apps/OCRFeeder
+# Paketçi: Cihan_Alkan
+# Gerekler: pyenchant python-gobject python-lxml python-pillow pyreportlab gtk3 goocanvas gtkspell ghostscript unpaper sane iso-codes intltool gnome-doc-utils python-gobject2
+# Grup: ofis_düzenleyici
+
+isim=ocrfeeder
+surum=0.8.1
+devir=1
+kaynak=(https://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
+
+derle() {
+
+  cd $isim-$surum
+
+  # Python2 fix
+  sed -i 's@^#!.*python$@#!/usr/bin/python@' bin/ocrfeeder*.in src/ocrfeeder/odf/*.py
+
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+              PYTHON=python
+  make
+
+  make DESTDIR="$PKG" install
+  mkdir -p "$PKG/usr/share/pixmaps"
+  ln -s ../ocrfeeder/icons/ocrfeeder.svg "$PKG/usr/share/pixmaps/ocrfeeder.svg"
+}
