@@ -1,21 +1,22 @@
-# Tanım: Compiler and tools for the Myrddin programming language.
+# Tanım: Myrddin programlama dili için derleyici ve araçlar
 # URL: https://myrlang.org/
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: geliştirme
 
 isim=myrddin
-surum=0.2.0
+surum=git
 devir=1
 kaynak=(https://myrlang.org//releases/$isim-$surum.tar.xz)
 
 derle() {
 	cd mc
 	./configure --prefix="/usr"
+	make bootstrap
 	make
 	make DESTDIR="$PKG" install
 
 	install -Dm644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
-	install -Dm644 README.md "${PKG}/usr/share/doc/${isim}/README.md"
 
 	cd support/vim/
 	for dir in *; do
