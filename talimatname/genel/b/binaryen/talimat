@@ -1,0 +1,29 @@
+# Tanım: WebAssembly için derleyici altyapısı ve araç kitaplığı kütüphanesi, C ++'da
+# URL: https://github.com/WebAssembly/binaryen
+# Paketçi: Cihan_Alkan
+# Gerekler: emscripten cmake
+# Grup: geliştirme
+
+
+isim=binaryen
+surum=42
+devir=1
+kaynak=(https://github.com/WebAssembly/binaryen/archive/version_${surum}.tar.gz
+        binaryen.sh)
+
+derle() {
+    cd binaryen-version_${surum}
+    rm -rf build
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    make
+
+    install -Dm755 $SRC/binaryen.sh $PKG/etc/profile.d/binaryen.sh
+    cd $SRC/binaryen-version_${surum}/build
+    make DESTDIR=${PKG} install
+    install -Dm644 ../LICENSE ${PKG}/usr/share/licenses/${isim}/LICENSE
+    if [[ -d "${PKG}/usr/lib64" ]]; then
+        mv ${PKG}/usr/lib64 ${PKG}/usr/lib
+    fi
+}

@@ -1,0 +1,71 @@
+# Tanım: Web için son derece optimize JavaScript içine C ve C++ derleyen LLVM tabanlı proje
+# URL: http://emscripten.org
+# Paketçi: Cihan_Alkan
+# Gerekler: node python cmake libxml2
+# Grup: geliştirme
+
+isim=emscripten
+surum=1.37.29
+devir=1
+kaynak=(https://github.com/kripken/emscripten/archive/$surum.tar.gz::$isim-$surum.tar.gz
+        https://github.com/kripken/emscripten-fastcomp/archive/$surum.tar.gz::$isim-fastcomp-$surum.tar.gz
+        https://github.com/kripken/emscripten-fastcomp-clang/archive/$surum.tar.gz::emscripten-fastcomp-clang-$surum.tar.gz
+        emscripten.sh)
+
+derle() {
+
+  cd emscripten-fastcomp-$surum
+
+  # reset folder for out-of-source build
+  rm -rf build
+  mkdir build
+
+  # put clang source into the right place (http://git.io/i1GBkg)
+  rm -rf tools/clang
+  ln -s "$SRC"/emscripten-fastcomp-clang-$surum tools/clang
+
+  # python2 shebang fixes
+  cd ../emscripten-$surum
+  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun
+
+  # adapt config file template to use our custom environment variable and path
+  sed -e "s|getenv('LLVM')|getenv('EMSCRIPTEN_FASTCOMP')|" \
+    -e 's|{{{ LLVM_ROOT }}}|/usr/lib/emscripten-fastcomp|' \
+    -i tools/settings_template_readonly.py
+
+  cd $SRC/emscripten-fastcomp-$surum/build
+
+  CC=gcc CXX=g++ cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_SKIP_RPATH=YES \
+    -DLLVM_TARGETS_TO_BUILD="X86;JSBackend" \
+    -DLLVM_BUILD_RUNTIME=OFF \
+    -DLLVM_INCLUDE_EXAMPLES=OFF \
+    -DLLVM_INCLUDE_TESTS=OFF \
+    -DCLANG_INCLUDE_TESTS=OFF
+  make
+
+  # exported variables
+  install -Dm755 "$SRC"/emscripten.sh "$SRC"/etc/profile.d/emscripten.sh
+
+  # LLVM-backend, TODO: include only needed tools
+  cd "$SRC"/emscripten-fastcomp-$surum
+  install -Dm644 emscripten-version.txt "$PKG"/usr/lib/emscripten-fastcomp/emscripten-version.txt
+  install -m755 build/bin/* "$PKG"/usr/lib/emscripten-fastcomp
+
+  # copy structure
+  cd "$SRC"/emscripten-$surum
+  install -d "$PKG"/usr/lib/emscripten
+  cp -rup em* cmake site src system third_party tools "$PKG"/usr/lib/emscripten
+
+  # remove clutter
+  rm "$PKG"/usr/lib/emscripten-fastcomp/{*-test,llvm-lit}
+  rm "$PKG"/usr/lib/emscripten/*.bat
+
+  # docs
+  install -d "$PKG"/usr/share/doc
+  ln -s /usr/lib/emscripten/site/source/docs "$PKG"/usr/share/doc/$isim
+
+  # license
+  install -Dm644 LICENSE "$PKG"/usr/share/licenses/$isim/LICENSE
+}
