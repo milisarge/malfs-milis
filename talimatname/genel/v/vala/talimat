@@ -1,10 +1,11 @@
 # Tanım: GObject türü sistem için derleyici
 # URL: http://live.gnome.org/Vala
 # Paketçi: milisarge
-# Gerekler: glib 
+# Gerekler: glib graphviz
+# Grup: geliştirme
 
 isim=vala
-surum=0.28.1
+surum=0.38.5
 devir=1
 
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/vala/${surum%.*}/$isim-$surum.tar.xz )
