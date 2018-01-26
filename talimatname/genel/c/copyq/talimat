@@ -1,0 +1,25 @@
+# Tanım: Aranabilir ve düzenlenebilir geçmişi olan pano yöneticisi.
+# URL: https://github.com/hluk/CopyQ
+# Paketçi: Cihan_Alkan
+# Gerekler: cmake qt5 hicolor-icon-theme xorg-libxtst
+# Grup: sistem
+
+isim=copyq
+surum=3.1.2
+devir=1
+kaynak=(https://github.com/hluk/CopyQ/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+    mkdir build
+    cd build
+    cmake \
+        -DWITH_WEBKIT=0 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DWITH_QT5=TRUE \
+        "${SRC}/CopyQ-${surum}"
+    make
+
+    cd "${SRC}/build"
+    make DESTDIR="${PKG}" install
+}
