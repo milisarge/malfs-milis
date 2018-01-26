@@ -1,7 +1,7 @@
 # Tanım: Gthumb temelli resim görüntüleyici ve tarayıcı.
 # URL: https://github.com/linuxmint/pix
 # Paketçi: Cihan_Alkan
-# Gerekler: desktop-file-utils gconf librsvg clutter-gtk gsettings-desktop-schemas libwebp webkitgtk2
+# Gerekler: desktop-file-utils gconf librsvg clutter-gtk gsettings-desktop-schemas libwebp webkitgtk2 gnome-common
 # Grup: medya
 
 isim=pix
