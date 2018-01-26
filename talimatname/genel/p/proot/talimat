@@ -1,0 +1,23 @@
+# Tanım: chroot,mount --bind ve binfmt_misc ayrıcalık/kurulum olmaksızın
+# URL: http://proot.me
+# Paketçi: Cihan_Alkan
+# Gerekler: talloc python-docutils libxslt
+# Grup: sistem
+
+isim=proot
+surum=git
+devir=1
+kaynak=()
+
+derle() {
+	adres="https://github.com/proot-me/PRoot"
+	git_indir ${adres} ${isim}
+	cd $SRC/${isim}/src
+
+	make -f GNUmakefile
+	cd ../
+	install -m755 -d "${PKG}"/usr/bin
+	install -m755 $SRC/${isim}/src/${isim} "${PKG}"/usr/bin
+	install -m755 -d "${PKG}"/usr/share/man/man1/
+	install -m644 -T $SRC/${isim}/doc/proot/man.1 "${PKG}"/usr/share/man/man1/${isim}.1
+}
