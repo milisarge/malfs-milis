@@ -2,15 +2,17 @@
 # URL: http://www.gnome.org/
 # Paketçi: milisarge
 # Gerekler: glib gobject-introspection vala 
+# Grup: kütüphane
 
 isim=libgee
-surum=0.18.0
+surum=0.20.0
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
+kaynak=(https://git.gnome.org/browse/libgee/snapshot/libgee-0.20.0.tar.xz)
 
 derle() {
 cd $isim-$surum
+  NOCONFIGURE=1 ./autogen.sh
 ./configure --prefix=/usr
 make 
 make DESTDIR=$PKG install
