@@ -1,0 +1,25 @@
+# Tanım: BlankOn Projelerinden HTML5 masaüstü kabuğu
+# URL: https://manokwari.blankonlinux.or.id
+# Paketçi: Cihan_Alkan
+# Gerekler: gnome-common vala mutter libunique3 gnome-session glib2 gtk3 libwnck3 libgee webkitgtk3 gnome-menus libnotify
+# Grup: manokwari
+
+isim=manokwari
+surum=1.0.13
+devir=1
+kaynak=(https://github.com/BlankOn/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+ cd ${isim}-${surum}
+  # Use gee-0.8 rather than gee-0.6
+  sed -i 's/gee-1.0/gee-0.8/g' configure.ac
+  # Fix documentations install dir
+  sed -i 's:\(manokwaridocdir =\).*:\1 ${prefix}/share/doc/manokwari:' Makefile.am
+
+  ./autogen.sh
+  make
+
+  make DESTDIR="$PKG/" install
+  cp -R system/{css/,fonts/,img/,js/,widget/,texture.jpg,texture.xcf} --target-directory=$PKG/usr/lib/manokwari/system/
+  chmod +x $PKG/usr/bin/blankon-session
+}
