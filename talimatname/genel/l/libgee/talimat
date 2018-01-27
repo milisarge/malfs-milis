@@ -1,17 +1,18 @@
 # Tanım: GObject koleksiyon kütüphanesi (eski)
 # URL: http://www.gnome.org/
 # Paketçi: milisarge
-# Gerekler: glib gobject-introspection vala 
+# Gerekler: glib gobject-introspection vala
+# Grup: kütüphane
 
 isim=libgee
-surum=0.18.0
+surum=0.20.0
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr
-make 
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure --prefix=/usr
+	make 
+	make DESTDIR=$PKG install
 }
