@@ -56,6 +56,11 @@ pvt_olustur(){
 	echo "paket.vt oluşturuldu."
 }
 
+# dizinin senkron edilmesi
+sync
+
+# eski paketlerin tespiti ve aktarılması
 eski_paket_tespit
 
+# paket.vt nin oluşturulması.
 pvt_olustur
