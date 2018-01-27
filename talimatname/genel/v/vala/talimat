@@ -1,7 +1,7 @@
 # Tanım: GObject türü sistem için derleyici
 # URL: http://live.gnome.org/Vala
 # Paketçi: milisarge
-# Gerekler: glib 
+# Gerekler: glib graphviz
 
 isim=vala
 surum=0.38.5
