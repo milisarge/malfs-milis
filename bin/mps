@@ -1022,12 +1022,12 @@ paket_inkur_oto(){
 		kurdurum="kurulu değil"
 	elif [ $(kurulu_kontrol ${_pkt}) = "kurulu" ];then
 		kurdurum="kurulu"
-		_gnc_kntrl=$(surum_devir_kontrol "${_pkt}" "--normal")
-		if [ ${_gnc_kntrl} = "var" ];then
-			paket_guncelle ${_pkt}
-		else
+		#_gnc_kntrl=$(surum_devir_kontrol "${_pkt}" "--normal")
+		#if [ ${_gnc_kntrl} = "var" ];then
+		#	paket_guncelle ${_pkt}
+		#else
 			$_yaz "${_pkt} $kurdurum"
-		fi
+		#fi
 	else
 		kurdurum="$_paket_tanimsiz"
 	fi
