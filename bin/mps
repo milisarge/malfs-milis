@@ -798,7 +798,7 @@ gerekleri_listele(){
 		_talimat=$1
 		_paket=talimat_bul(_talimat)
 		if ( length(_paket) > 0 ){gerekbul(_paket);}
-		else {print "_paket talimat bulunumadı!"}
+		else {print _talimat " talimatı bulunumadı!"}
 		exit 1
 	}
 	'''
@@ -980,15 +980,16 @@ paket_inkur_liste(){
 # otomatik kontrollu kur
 # -kur
 paket_inkur_oto(){
-	local _cikti _yaz _yaz_uyari
+	local _cikti _yaz _yaz_uyari _pkt
 	_cikti="--renkli"
+	[ $1 ] && _pkt="$1" || hata_olustu "_paket_adi_gerekli"
 	[ $2 ] && _cikti="$2"
 	cikti_renk_ayarla $_cikti
 	
 	local konum anakonum kurdurum _agdan_kur_onay
 	derleme_listyap_kontrol
-	#kurulum_listyap "$1" | grep "bulunamadı"
-	derleme_listyap $1 "--kurulu_atla"
+	#kurulum_listyap "${_pkt}" | grep "bulunamadı"
+	derleme_listyap ${_pkt} "--kurulu_atla"
 	
 	for kpkt in `cat gerek.liste`;do	
 		# önce talimat-anatalimat karşılaştırması yapılır.
@@ -1017,11 +1018,16 @@ paket_inkur_oto(){
 			$_yaz_uyari "$kpkt talimatı bulunamadı!"
 		fi
 	done
-	if [ $(kurulu_kontrol $1) = "degil" ];then
+	if [ $(kurulu_kontrol ${_pkt}) = "degil" ];then
 		kurdurum="kurulu değil"
-	elif [ $(kurulu_kontrol $1) = "kurulu" ];then
+	elif [ $(kurulu_kontrol ${_pkt}) = "kurulu" ];then
 		kurdurum="kurulu"
-		$_yaz "$1 $kurdurum"
+		_gnc_kntrl=$(surum_devir_kontrol "${_pkt}" "--normal")
+		if [ ${_gnc_kntrl} = "var" ];then
+			paket_guncelle ${_pkt}
+		else
+			$_yaz "${_pkt} $kurdurum"
+		fi
 	else
 		kurdurum="$_paket_tanimsiz"
 	fi
