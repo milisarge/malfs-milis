@@ -1,0 +1,28 @@
+# Tanım: GTK3 için tekli örnek uygulamaları yazan kütüphane
+# URL: http://live.gnome.org/LibUnique
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk3 gobject-introspection
+# Grup: kütüphane
+
+isim=libunique3
+surum=3.0.2
+devir=1
+kaynak=(https://archive.archlinux.org/repos/2014/07/01/extra/os/x86_64/libunique3-3.0.2-3-x86_64.pkg.tar.xz)
+
+derle() {
+
+    cd "$SRC/"
+    install -Dm644 "usr/include/unique-3.0/unique/unique.h" "$PKG/usr/include/unique-3.0/unique/unique.h"
+    install -Dm644 "usr/include/unique-3.0/unique/uniqueapp.h" "$PKG/usr/include/unique-3.0/unique/uniqueapp.h"
+    install -Dm644 "usr/include/unique-3.0/unique/uniquebackend.h" "$PKG/usr/include/unique-3.0/unique/uniquebackend.h"
+    install -Dm644 "usr/include/unique-3.0/unique/uniqueenumtypes.h" "$PKG/usr/include/unique-3.0/unique/uniqueenumtypes.h"
+    install -Dm644 "usr/include/unique-3.0/unique/uniquemessage.h" "$PKG/usr/include/unique-3.0/unique/uniquemessage.h"
+    install -Dm644 "usr/include/unique-3.0/unique/uniqueversion.h" "$PKG/usr/include/unique-3.0/unique/uniqueversion.h"
+    install -Dm644 "usr/lib/girepository-1.0/Unique-3.0.typelib" "$PKG/usr/lib/girepository-1.0/Unique-3.0.typelib"
+    install -Dm644 "usr/lib/pkgconfig/unique-3.0.pc" "$PKG/usr/lib/pkgconfig/unique-3.0.pc"
+    install -Dm644 "usr/share/gir-1.0/Unique-3.0.gir" "$PKG/usr/share/gir-1.0/Unique-3.0.gir"
+    install -Dm755 "usr/lib/libunique-3.0.so.0.0.2" "$PKG/usr/lib/libunique-3.0.so.0.0.2"
+    cd "$PKG/usr/lib/"
+    ln -s "libunique-3.0.so.0.0.2" "libunique-3.0.so.0"
+    ln -s "libunique-3.0.so.0.0.2" "libunique-3.0.so"
+}
