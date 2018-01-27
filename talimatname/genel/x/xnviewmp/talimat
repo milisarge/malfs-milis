@@ -1,0 +1,28 @@
+# Tanım: Etkili bir multimedya görüntüleyici,tarayıcı ve dönüştürücü.
+# URL: http://www.xnview.com/en/xnviewmp/
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5 desktop-file-utils
+# Grup: medya
+
+isim=xnviewmp
+surum=0.89
+devir=1
+kaynak=(http://download.xnview.com/XnViewMP-linux-x64.tgz
+        xnviewmp.desktop)
+
+derle() {
+  install -d -m755 "${PKG}/opt/${isim}"
+  install -d -m755 "${PKG}/usr/bin"
+  install -d -m755 "${PKG}/usr/share/applications"
+
+  cp -a "${SRC}/XnView"/* "${PKG}/opt/${isim}"
+  ln -s "/opt/${isim}/xnview.sh" "${PKG}/usr/bin/${isim}"
+
+  install -m644 "${SRC}/${isim}.desktop" "${PKG}/usr/share/applications/${isim}.desktop"
+  install -D -m644 "${SRC}/XnView/license.txt" "${PKG}/usr/share/licenses/${isim}/LICENSE"
+
+  # Clean up
+  rm "${PKG}/opt/${isim}/XnView.desktop"{,~}
+  chmod -x "${PKG}/opt/${isim}/xnview.png"
+}
+
