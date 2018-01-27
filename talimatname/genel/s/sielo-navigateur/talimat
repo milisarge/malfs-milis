@@ -1,0 +1,28 @@
+# Tanım: C++14 ve Qt5 ile yapılan hızlı bir web tarayıcısı
+# URL: https://feldrise.com/Sielo
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5
+# Grup: ağ
+
+isim=sielo-navigateur
+surum=0.4.0
+devir=1
+kaynak=(http://feldrise.com/Sielo/Linux/$isim-v$surum.tar.gz)
+
+derle() {
+	cd $SRC/$isim-v$surum/build/release
+	qmake-qt5 -spec linux-g++ -o Makefile ../../SieloNavigateur.pro || return 1
+	cd $SRC/$isim-v$surum
+	mkdir -p $PKG/usr/bin/
+	mkdir -p $PKG/usr/share/applications/
+	mkdir -p $PKG/usr/share/pixmaps/
+	cp build/release/SieloDataSoftware/SieloDataSoftware $PKG/usr/bin/
+	cp build/release/SNThemeEditor/SNThemeEditor $PKG/usr/bin/
+	cp build/release/SieloNavigateur/SieloNavigateur $PKG/usr/bin/
+	cp share/applications/Sielo.desktop $PKG/usr/share/applications/
+	cp share/pixmaps/SNIcon.png $PKG/usr/share/pixmaps
+	chmod +x $PKG/usr/bin/SieloDataSoftware
+	chmod +x $PKG/usr/bin/SNThemeEditor
+	chmod +x $PKG/usr/bin/SieloNavigateur
+}
+
