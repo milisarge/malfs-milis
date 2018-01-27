@@ -1,0 +1,24 @@
+# Tanım: GNOME Masaüstü için resim tarayıcı ve görüntüleyici
+# URL: https://wiki.gnome.org/Apps/gthumb
+# Paketçi: Cihan_Alkan
+# Gerekler: dconf librsvg clutter-gtk gstreamer-plugins-base gsettings-desktop-schemas libwebp libsecret libsoup webkit2gtk3 json-glib intltool libchamplain exiv2 itstool brasero libraw liboauth docbook-xsl yelp flex gnome-common
+# Grup: 
+
+isim=gthumb
+surum=3.6.0
+devir=1
+kaynak=(https://git.gnome.org/browse/gthumb/snapshot/gthumb-3.6.0.tar.xz)
+
+derle() {
+
+  cd $isim-$surum
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var --disable-static \
+      --enable-libchamplain
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+
+  make DESTDIR="$PKG" install
+}
+
