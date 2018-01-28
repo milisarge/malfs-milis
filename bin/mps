@@ -2987,7 +2987,8 @@ ayarlar() {
 				
 			### mps -kks . = sistemde kurulu tüm paketlerin kırık kontrolünü yapar.Eksik dosyaları tespit eder.
 			-kks)
-				kirik_kontrol_sistem 
+				revdep-rebuild
+				#kirik_kontrol_sistem
 				exit 0 ;;
 			### mps -sdk paketismi = bir paketin güncel sürüm numarasını denetler.
 			-sdk)
