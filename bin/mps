@@ -3002,7 +3002,6 @@ ayarlar() {
 			-devk)
 				if [ ! "$2" ]; then
 					ryaz 31 "paket ismi eksik"
-					hataloglama "(kirma) paket ismi eksik"
 					exit 1
 				fi
 				devir_kontrol_durum "$2" 
