@@ -1,17 +1,17 @@
 # Tanım: Gnome icin yardim dosyalari
 # URL: http://www.gnome.org/
 # Paketçi: milisarge
-# Gerekler: itstool intltool gtk-doc libxslt hicolor-icon-theme webkitgtk3 yelp-xsl desktop-file-utils
-
+# Gerekler: itstool intltool gtk-doc libxslt hicolor-icon-theme webkit2gtk3 webkitgtk3 yelp-xsl desktop-file-utils
+# Grup: kütüphane
 
 isim=yelp
-surum=3.16.1
+surum=3.27.1
 devir=1
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr --disable-static
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure --prefix=/usr --disable-static
+	make
+	make DESTDIR=$PKG install
 }
