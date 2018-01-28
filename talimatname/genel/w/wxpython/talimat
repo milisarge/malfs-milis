@@ -6,7 +6,7 @@
 
 isim=wxpython
 surum=3.0.2.0
-devir=1
+devir=2
 
 kaynak=(https://downloads.sourceforge.net/wxpython/wxPython-src-${surum}.tar.bz2)
 
