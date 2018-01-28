@@ -1,0 +1,211 @@
+#!/bin/bash
+
+# revdep-rebuild: Reverse dependency rebuilder.
+# Author: Stanislav Brabec <utx@gentoo.org>
+
+# Milis e uyarlanması
+# Author: milisarge <milisarge@gmail.com>
+
+# Mask of specially evaluated libraries (exactly one space separated).
+LD_LIBRARY_MASK="libodbcinst.so libodbc.so libjava.so libjvm.so"
+
+# List of directories to be searched (feel free to edit it)
+# Note /usr/libexec and /usr/local/subprefix contradicts FHS, but are present
+SEARCH_DIRS="/lib /bin /sbin /usr/lib /usr/bin /usr/sbin /usr/libexec /usr/local /usr/qt* /usr/kde/*/bin /usr/lib/MozillaFirefox /usr/kde/*/lib /usr/*-*-linux-gnu"
+EXCLUDE_DIRS="/opt/ptsp /usr/lib/xorg/nvidia* /usr/lib/debug"
+
+# Base of temporary files names.
+LIST=~/.revdep-rebuild
+
+VT="/var/lib/pkg/DB"
+
+shopt -s nullglob
+shopt -s expand_aliases
+unalias -a
+
+NO="\x1b[0;0m"
+BR="\x1b[0;01m"
+CY="\x1b[36;01m"
+GR="\x1b[32;01m"
+RD="\x1b[31;01m"
+YL="\x1b[33;01m"
+BL="\x1b[34;01m"
+
+alias echo_v=echo
+
+SONAME="not found"
+SONAME_GREP=fgrep
+SEARCH_BROKEN=true
+
+while : ; do
+        case "$1" in
+        -h | --help )
+                echo "Usage: $0 [OPTIONS] [--]"
+                echo
+                echo "Broken reverse dependency checker."
+                echo
+                echo
+        echo "      --force          remove old revdep-rebuild files"
+                echo
+                echo "      --soname SONAME  recompile packages using library with SONAME instead"
+                echo "                       of broken library (SONAME providing library must be"
+                echo "                       present in the system)"
+                echo "      --soname-regexp SONAME"
+                echo "                       the same as --soname, but accepts grep-style regexp"
+                echo "  -q, --quiet          be less verbose"
+                echo
+                exit 0
+                ;;
+        -q | --quiet )
+                alias echo_v=:
+                shift
+                ;;
+        --soname=* )
+                SONAME="${1#*=}"
+                SEARCH_BROKEN=false
+                shift
+                ;;
+        --soname )
+                SONAME="$2"
+                SEARCH_BROKEN=false
+                shift 2
+                ;;
+        --soname-regexp=* )
+                SONAME="${1#*=}"
+                SONAME_GREP=grep
+                SEARCH_BROKEN=false
+                shift
+                ;;
+        --soname-regexp )
+                SONAME="$2"
+                SONAME_GREP=grep
+                SEARCH_BROKEN=false
+                shift 2
+                ;;
+        --force )
+                FORCE=true
+                shift
+                ;;
+        -- )
+                shift
+                break
+                ;;
+        * )
+                break
+                ;;
+        esac
+done
+
+function set_trap () {
+        trap "rm_temp $1" SIGHUP SIGINT SIGQUIT SIGABRT SIGTERM
+}
+
+function rm_temp () {
+        echo " terminated."
+        echo "Removing incomplete $1."
+        rm $1
+        echo
+        exit 1
+}
+
+if $FORCE ; then
+        rm -f /root/.revdep-rebuild*
+fi
+
+if $SEARCH_BROKEN ; then
+        SONAME_SEARCH="$SONAME"
+        LLIST=$LIST
+        HEAD_TEXT="broken by any package update"
+        OK_TEXT="Dynamic linking on your system is consistent"
+        WORKING_TEXT=" consistency"
+else
+        SONAME_SEARCH=" $SONAME "
+        LLIST=${LIST}_$(echo "$SONAME_SEARCH$SONAME" | md5sum | head -c 8)
+        HEAD_TEXT="using given shared object name"
+        OK_TEXT="There are no dynamic links to $SONAME"
+        WORKING_TEXT=""
+fi
+
+echo
+echo "Checking reverse dependencies..."
+
+echo
+echo -n -e "${GR}Collecting system binaries and libraries...${NO}"
+if [ -f $LIST.1_files ] ; then
+        echo " using existing $LIST.1_files."
+else
+        set_trap "$LIST.1_files"
+    EXCLUDED_DIRS=
+    for d in $EXCLUDE_DIRS; do
+        EXCLUDED_DIRS+="-path $d -prune -o "
+    done
+        find $SEARCH_DIRS $EXCLUDED_DIRS -type f \( -perm /+u+x -o -name '*.so' -o -name '*.so.*' \) 2>/dev/null >$LIST.1_files
+        echo -e " done.\n  ($LIST.1_files)"
+fi
+
+if $SEARCH_BROKEN ; then
+        echo
+        echo -n -e "${GR}Collecting complete LD_LIBRARY_PATH...${NO}"
+        if [ -f $LIST.2_ldpath ] ; then
+        echo " using existing $LIST.2_ldpath."
+        else
+        set_trap "$LIST.2_ldpath"
+        (
+                grep '.*\.so\(\|\..*\)$' <$LIST.1_files | sed 's:/[^/]*$::'
+                sed '/^#/d;s/#.*$//' </etc/ld.so.conf
+        ) | sort -u |
+        tr '\n' : | tr -d '\r' | sed 's/:$//' >$LIST.2_ldpath
+        echo -e " done.\n  ($LIST.2_ldpath)"
+        fi
+        export COMPLETE_LD_LIBRARY_PATH="$(cat $LIST.2_ldpath)"
+fi
+
+echo
+echo -n -e "${GR}Checking dynamic linking$WORKING_TEXT...${NO}"
+if [ -f $LLIST.3_rebuild ] ; then
+        echo " using existing $LLIST.3_rebuild."
+else
+        echo_v
+        set_trap "$LLIST.3_rebuild"
+        LD_MASK="\\(    $(echo "$LD_LIBRARY_MASK" | sed 's/\./\\./g;s/ / \\|    /g') \\)"
+        echo -n >$LLIST.3_rebuild
+        cat $LIST.1_files | while read FILE ; do
+        # Note: double checking seems to be faster than single
+        # with complete path (special add ons are rare).
+        if ldd "$FILE" 2>/dev/null | grep -v "$LD_MASK" |
+                $SONAME_GREP -q "$SONAME_SEARCH" ; then
+                if $SEARCH_BROKEN ; then
+                if LD_LIBRARY_PATH="$COMPLETE_LD_LIBRARY_PATH" \
+                ldd "$FILE" 2>/dev/null | grep -v "$LD_MASK" |
+                        $SONAME_GREP -q "$SONAME_SEARCH" ; then
+                        echo "$FILE" >>$LLIST.3_rebuild
+                        echo_v "  broken $FILE (requires $(ldd "$FILE" | sed -n 's/     \(.*\) => not found$/\1/p' | tr '\n' ' ' | sed 's/ $//' ))"
+                fi
+                else
+                echo "$FILE" >>$LLIST.3_rebuild
+                echo_v "  found $FILE"
+                fi
+        fi
+        done
+        echo -e " done.\n  ($LLIST.3_rebuild)"
+fi
+
+echo
+echo -n -e "${GR}Determining package names$WORKING_TEXT...${NO}"
+if [ -f $LLIST.4_names ] ; then
+        echo " using existing $LLIST.4_names."
+else
+    echo_v
+    set_trap "$LLIST.4_names"
+    for i in `cat $LLIST.3_rebuild`
+    do
+        basename $(dirname $(grep -rli "$i" $VT)) >> $LLIST.tmp
+    done
+    cat $LLIST.tmp | sort -d | uniq > $LLIST.4_names
+    rm -f $LLIST.tmp
+    echo -e " done.\n  ($LIST.4_names)"
+fi
+
+echo "Yeniden derlenmesi gerekenler"
+echo "-----------------------------"
+cat $LLIST.4_names
