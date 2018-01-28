@@ -2,19 +2,19 @@
 # URL: http://gegl.org/
 # Paketçi: milisarge
 # Gerekler: babl gtk2 librsvg libpng ruby lua ffmpeg librsvg openexr exiv2 json-glib
+# Grup: kütüphane
 
 isim=gegl
-surum=0.3.8
+surum=0.3.28
 devir=1
 kaynak=(https://download.gimp.org/pub/gegl/0.3/$isim-$surum.tar.bz2)
 
 derle() {
 cd $isim-$surum
-./configure --prefix=/usr --disable-docs
-LC_ALL=tr_TR.UTF-8
-make
-make DESTDIR=$PKG install
-install -d -v -m755 $PKG/usr/share/gtk-doc/html/gegl/images
-install -v -m644 docs/images/* \
-$PKG/usr/share/gtk-doc/html/gegl/images
+	./configure --prefix=/usr --disable-docs
+	LC_ALL=tr_TR.UTF-8
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
+	rm -rf $PKG/usr/share/doc
 }
