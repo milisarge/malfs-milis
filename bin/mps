@@ -1197,29 +1197,25 @@ guncelleme_tespit(){
 
 sistem_guncelle(){
 	count=0
-	local kpkt
-	local pk_guncelle
+	local kpkt _pkliste
 	total=`ls $VT | wc -l`
 	pstr="[=======================================================================]"
 	git_guncelle
 	paketvt_guncelle
 	GS_CIKTI="H"
+	_pkliste=$(mktemp)
+	ls -rct $VT > ${_pkliste}
+	for _esgec in `echo ${esgec} | tr " " "\n"`;do
+		_satirno=$(grep -wxnr "${_esgec}" ${_pkliste} | cut -d':' -f1)
+		[ ! -z ${_satirno} ] && sed  -i "${_satirno}d" ${_pkliste}
+	done
+	
 	while [ $count -lt $total ]; do
 		count=$(( $count + 1 ))
 		pd=$(( $count * 73 / $total ))
 		printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
-		kpkt=$(ls -rct $VT | tr " " "\n" | sed -n ${count}'p')
-		pk_guncelle="e"
-		if [[ "${esgec[*]}" =~ "${kpkt}" ]];then 
-			pk_guncelle="h"
-		fi
-		if [ "$pk_guncelle" = "e" ];then
-			paket_guncelle "$kpkt" $GS_CIKTI
-			#printf "."
-		else
-			[ $GS_CIKTI = "E" ] && ryaz 31 $kpkt "güncellemesi atlandı"
-			#ryaz 31  "$kpkt atlandı"
-		fi
+		kpkt=$(sed -n ${count}'p' ${_pkliste})
+		paket_guncelle "$kpkt" $GS_CIKTI
 	done
 	ryaz 32 "\nSistem Güncellemesi Tamamlandı."
 }
@@ -1402,9 +1398,12 @@ surum_devir_kontrol(){
 	if [ "$_konum" = "-1" ];then
 		echo "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
 	else
-		if [[ "${esgec[*]}" =~ "${_paket}" ]];then 
-			pk_guncelle="h"
-		fi
+		for _esgec in `echo ${esgec} | tr " " "\n"`;do
+			if [ "${_esgec}" = ${_paket} ];then
+				pk_guncelle="h"
+				break
+			fi
+		done
 		if [ $pk_guncelle == "e" ];then
 			source $_konum/talimat
 			if [ "${_durum}" == "yaz" ];then
