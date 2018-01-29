@@ -5,10 +5,16 @@ iletisim="milisarge@gmail.com"
 
 betikad=${0##*/}
 betikyol="$0"
-shelltip=$(cat $betikyol | head -n1 | cut -d'!' -f2)
+shelltip=$(basename `cat $betikyol | head -n1 | cut -d'!' -f2 | cut -d' ' -f1`)
 
 # sistem araçlarının tespiti ve atanması
-
+if [ ${shelltip} = "busybox" ] || [ ${shelltip} = "ash" ];then
+	alias sed="busybox sed"
+	alias wget="busybox wget"
+	wget_progress=""
+else
+	wget_progress="--show-progress"
+fi
 #alias sed="sed"
 
 if [ -f /etc/mpsd.conf ];then
@@ -1460,7 +1466,7 @@ talimat_surum_takip(){
 
 kaynak_kod_indir(){
 	local konum adres adres2
-	_kk_indir="wget --no-check-certificate -q --show-progress"
+	_kk_indir="wget --no-check-certificate -q ${wget_progress}"
 	konum=$(talimat_bul $1)
 	if [[ $konum == "-1" || $konum == "0" ]];then
 		ryaz 31 "$1 $_talimat_bulunamadi"
@@ -2512,7 +2518,7 @@ paketvt_guncelle(){
 				if [ -f "$paketdepo""$pktvt" ];then
 					mv "$paketdepo""$pktvt" "$paketdepo""$pktvt.eski"
 				fi
-				wget --no-check-certificate -q --show-progress -P "$paketdepo" "$pktsunucu""paket.vt" -O "$paketdepo""$pktvt"
+				wget --no-check-certificate -q ${wget_progress} -P "$paketdepo" "$pktsunucu""paket.vt" -O "$paketdepo""$pktvt"
 				#rm /tmp/paket.vt*
 			else
 				ryaz 31 "$pktsunucu paket veritabanı erişim olumsuz."
@@ -2595,7 +2601,7 @@ paket_indir(){
 						if [ "$cikti" == "--normal" ];then
 							wget --progress=dot:force -nc --no-check-certificate  -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | tee /tmp/${_ipaket}_indirme.log | sed -u -n 's/[0-9]*%/&/p'
 						else
-							wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/${_ipaket}_indirme.log
+							wget  --no-check-certificate -nc -q ${wget_progress} -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/${_ipaket}_indirme.log
 						fi
 						
 						if [[ "$?" != 0 ]]; then
