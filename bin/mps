@@ -66,19 +66,27 @@ if [ -z ${ektalimatname+:} ]; then
 fi
 
 if [ -z ${sunucular+:} ]; then
-	declare -a sunucular=("paketler.milislinux.org")
-	awk ' {print;} NR == 1 { print "sunucular=(paketler.milislinux.org/)"; }' /etc/mps.conf > /etc/mps2.conf
+	sunucular="paketler.milislinux.org"
+	awk ' {print;} NR == 1 { print "sunucular=\"paketler.milislinux.org/\""; }' /etc/mps.conf > /etc/mps2.conf
 	mv /etc/mps2.conf /etc/mps.conf
+else
+	_satirno=$(grep -nr "sunucular=(" /etc/mps.conf | cut -d':' -f1)
+	if [ ! -z ${_satirno} ];then
+		echo "mps.conf düzeltildi.kontrol ediniz."
+		sed "${_satirno}s/(/"\""/;${_satirno}s/)/"\""/" /etc/mps.conf > /etc/mps.conf.yeni
+		mv /etc/mps.conf.yeni /etc/mps.conf
+	fi
 fi
 
 if [ -z ${silme_esgec+:} ]; then
-	declare -a silme_esgec=()
+	silme_esgec=""
 fi
 
 if [ -z ${esgec+:} ]; then
-	declare -a esgec=()
+	esgec=""
 fi
-esgec=(xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src)
+
+esgec="xorg xorg-app xorg-font xorg-proto kernel-lts kernel-lts-src"
 
 kurulum_onay="evet"
 
@@ -1957,22 +1965,6 @@ sunucu_ayarla(){
 	fi
 }
 
-sunucu_ayarla_y(){
-	wget -q --spider "$1/paket.vt"
-	yenisun="$1"
-	if [ $? -eq 0 ]; then
-		source /etc/mps.conf
-		ydizi=("${sunucular[@]}")
-		ydizi[0]="$1"
-		echo ${ydizi[@]}
-		esnc=${sunucular[0]}
-		ysnc=${ydizi[0]}
-		sed  -i "/^sunucular/s/"${esnc}"\'"$ysnc"'/g" /etc/mps.conf
-	else
-		ryaz 31 "Tanımsız paket sunucusu!"
-	fi
-}
-
 loglama(){
 	logdizin_kontrol
 	echo "$(date +'%F %T') $1" >> "$kokdizin/$LOGDIZIN/mps.log"
@@ -2272,14 +2264,13 @@ sistem_kontrol(){
 }
 
 sunucu_kontrol(){
-	uzunluk=${#sunucular[@]}
-	for ((i=1;i<=$uzunluk;i++)); do
-		pktsunucu=${sunucular[$i-1]} 
-		wget --no-check-certificate -q --spider "$pktsunucu/paket.vt"
+	local _sunucular=$(echo ${sunucular} | tr " " "\n") 
+	for _sunucu in ${_sunucular}; do
+		wget --no-check-certificate -q --spider "${_sunucu}/paket.vt"
 		if [ $? -eq 0 ]; then
-			ryaz 32 "$pktsunucu paket sunucu aktif"
+			ryaz 32 "${_sunucu} paket sunucu aktif"
 		else
-			ryaz 31 "$pktsunucu sunucu erişim dışı" 
+			ryaz 31 "${_sunucu} sunucu erişim dışı" 
 		fi
 	done
 }	
@@ -2507,17 +2498,17 @@ pvt_olustur(){
 }
 
 paketvt_guncelle(){
-	local _bakim
+	local _bakim _sunucular _bakim _sira
+	_sunucular=$(echo ${sunucular} | tr " " "\n") 
 	_bakim="yok"
-	uzunluk=${#sunucular[@]}
-	#for snc in "${sunucular[@]}"
-	for ((i=1;i<=$uzunluk;i++)); do
-	   pktsunucu=${sunucular[$i-1]} 
+	_sira=0
+	for pktsunucu in ${_sunucular}; do
 	   pkvt=""
-	   if [ $i = 1 ];then
+	   let _sira=_sira+1
+	   if [ ${_sira} = 1 ];then
 			pktvt="paket.vt"
 	   else
-			pktvt="paket${i-1}.vt"
+			pktvt="paket${_sira}.vt"
 	   fi
 	   # sunucu bakım kontrolü
 	   wget --no-check-certificate -q --spider "$pktsunucu""paket.vt.yeni"
@@ -2589,50 +2580,56 @@ paket_indir(){
 			_yaz="echo"
 			_yaz_uyari="echo"
 		fi
-		uzunluk=${#sunucular[@]}
-		#paketin paketin sunucularında aranaması,buldugu sunucudan indirmesi
-		for ((i=1;i<=$uzunluk;i++)); do
-			pktsunucu=${sunucular[$i-1]}
+		local _sunucular _sira
+		_sunucular=$(echo ${sunucular} | tr " " "\n") 
+		_sira=0
+		for pktsunucu in ${_sunucular}; do
 			pkvt=""
-			if [ $i = 1 ];then
+			let _sira=_sira+1
+			if [ ${_sira} = 1 ];then
 				pktvt="paket.vt"
 			else
-				pktvt="paket${i-1}.vt"
+				pktvt="paket${_sira}.vt"
 			fi
-			pkt=`cat "$paketdepo$pktvt" | grep "^${_ipaket} " | cut -d' ' -f3`
-			#ryaz 32 "${_ipaket} paketi $pktsunucu altında aranıyor"
-			if [ $pkt ];then
-				#ryaz 32 "${_ipaket} paketi $pktsunucu altında bulundu"
-				ekontdeg=`cat "$paketdepo$pktvt" | grep "^${_ipaket} " | cut -d' ' -f2`
-				cpaket="${pkt/'#'/'%23'}"
-				#paketin sunucuda varlık kontrolu
-				wget -q --spider "$pktsunucu$cpaket"
-				if [ $? -eq 0 ]; then	
-					$_yaz "${_ipaket} $_indiriliyor"
-					if [ "$cikti" == "--normal" ];then
-						wget --progress=dot:force -nc --no-check-certificate  -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | tee /tmp/${_ipaket}_indirme.log | sed -u -n 's/[0-9]*%/&/p'
-					else
-						wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/${_ipaket}_indirme.log
-					fi
-					if [[ "$?" != 0 ]]; then
-						$_yaz_uyari "indirme hatalı"
-						hataloglama "indirme hatalı"
-					else
-						mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
-						if [ "$ekontdeg" != "$mkontdeg" ];then
-							$_yaz_uyari "$_shasum_uyumsuzluk,paket tekrar indiriliyor."
-							hataloglama "sha1sum uyusmaslik tespit edildi,paket tekrar indiriliyor."
-							rm -f "$paketdepo$pkt" 
-							paket_indir "${_ipaket}" "$cikti"
-						#else
-							#ryaz 32 "$_zaten ${_ipaket} $_paket_onbellek_depoda_var"
+			if [ -f $paketdepo$pktvt ];then
+				pkt=`cat "$paketdepo$pktvt" | grep "^${_ipaket} " | cut -d' ' -f3`
+				#ryaz 32 "${_ipaket} paketi $pktsunucu altında aranıyor"
+				if [ $pkt ];then
+					#ryaz 32 "${_ipaket} paketi $pktsunucu altında bulundu"
+					ekontdeg=`cat "$paketdepo$pktvt" | grep "^${_ipaket} " | cut -d' ' -f2`
+					cpaket="${pkt/'#'/'%23'}"
+					#paketin sunucuda varlık kontrolu
+					wget -q --spider "$pktsunucu$cpaket"
+					if [ $? -eq 0 ]; then	
+						$_yaz "${_ipaket} $_indiriliyor"
+						if [ "$cikti" == "--normal" ];then
+							wget --progress=dot:force -nc --no-check-certificate  -P "$paketdepo" "$pktsunucu$cpaket" 2>&1 | tee /tmp/${_ipaket}_indirme.log | sed -u -n 's/[0-9]*%/&/p'
+						else
+							wget  --no-check-certificate -nc -q --show-progress -P "$paketdepo" "$pktsunucu$cpaket" #2>&1 | tee /tmp/${_ipaket}_indirme.log
 						fi
+						
+						if [[ "$?" != 0 ]]; then
+							$_yaz_uyari "indirme hatalı"
+							hataloglama "indirme hatalı"
+						else
+							mkontdeg=`sha1sum "$paketdepo$pkt" | cut -d' ' -f1`
+							if [ "$ekontdeg" != "$mkontdeg" ];then
+								$_yaz_uyari "$_shasum_uyumsuzluk,paket tekrar indiriliyor."
+								hataloglama "sha1sum uyusmaslik tespit edildi,paket tekrar indiriliyor."
+								rm -f "$paketdepo$pkt" 
+								paket_indir "${_ipaket}" "$cikti"
+							else
+								$_yaz "$_zaten ${_ipaket} $_paket_onbellek_depoda_var"
+							fi
+						fi
+					else
+						$_yaz_uyari "${_ipaket} paketi bulunamadı $pktsunucu dan silinmiş olmalı!"
 					fi
 				else
-					$_yaz_uyari "${_ipaket} paketi bulunamadı $pktsunucu dan silinmiş olmalı!"
+					$_yaz_uyari "$pktsunucu ${_ipaket} paketi bulunmuyor!"
 				fi
 			else
-				$_yaz_uyari "$pktsunucu ${_ipaket} paketi bulunmuyor!"
+				ryaz 31 "$paketdepo altında $pktvt dosyanız yok.Güncelleme yapınız!"
 			fi
 		done	
 	else
@@ -3080,7 +3077,9 @@ ayarlar() {
 				ryaz 32 $sunucu ;;
 			### mps sunucular . = paket sunucularını verir.
 			-sun|sunucular)
-				ryaz 32 ${sunucular[@]} ;;
+				#ryaz 32 ${sunucular} ;;
+				echo ${sunucular} | tr " " "\n" 
+				exit 0 ;;
 			sun)
 				if [ ! "$2" ]; then
 					ryaz 31 "sunucu bilgi eksik"
@@ -3266,7 +3265,8 @@ ayarlar() {
 				etkilenen_kurtar $2 ;;
 			### mps -suko . = sunucuların erişim kontrolünü yapar.
 			-suko)
-				sunucu_kontrol ;;
+				sunucu_kontrol 
+				exit 0 ;;
 			### mps -pot . = talimatı olup ta paketi henüz depoda yer almayan talimatları listeler.
 			-pot)
 				paketsiz_talimatlar 
