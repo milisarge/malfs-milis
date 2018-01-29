@@ -1996,21 +1996,19 @@ indir_talimat_paketle(){
 	fi
 	
 	local _isim
-	_isim=()
-	_isim=`grep "^name=" $dosya | cut -d'=' -f 2`
-	[ ! -n "${_isim[0]}" ] && _isim=`grep "^isim=" $dosya | cut -d'=' -f 2`
-	paketisim="${_isim[0]}"
-	if [ ! -n "$paketisim" ]; then
+	_isim=`grep "^name=" $dosya | head -n1 | cut -d'=' -f 2`
+	[ -z "${_isim}" ] && _isim=`grep "^isim=" $dosya | head -n1 | cut -d'=' -f 2`
+	if [ ! -n "${_isim}" ]; then
 		ryaz 31 "paket ismi degiskeni bulunamadı!"
 		exit 1
 	fi
-	if [ ! -d $_talkonum/${paketisim:0:1}/$paketisim ];then
-		mkdir -p $_talkonum/${paketisim:0:1}/$paketisim
-		cp -f $dosya $_talkonum/${paketisim:0:1}/$paketisim/talimat
-		talimat_degisken_cevrim $_talkonum/${paketisim:0:1}/$paketisim/talimat
-		ryaz 32 "$paketisim talimatı hazırlandı."
+	if [ ! -d $_talkonum/${_isim:0:1}/${_isim} ];then
+		mkdir -p $_talkonum/${_isim:0:1}/${_isim}
+		cp -f $dosya $_talkonum/${_isim:0:1}/${_isim}/talimat
+		talimat_degisken_cevrim $_talkonum/${_isim:0:1}/${_isim}/talimat
+		ryaz 32 "${_isim} talimatı hazırlandı."
 	else
-		ryaz 31 "$paketisim talimatı zaten talimatnamede var!"
+		ryaz 31 "${_isim} talimatı zaten talimatnamede var!"
 	fi
 }
 
