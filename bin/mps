@@ -1215,7 +1215,7 @@ sistem_guncelle(){
 		pd=$(( $count * 73 / $total ))
 		printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
 		kpkt=$(sed -n ${count}'p' ${_pkliste})
-		paket_guncelle "$kpkt" $GS_CIKTI
+		[ ! -z $kpkt ] && paket_guncelle "$kpkt" $GS_CIKTI
 	done
 	ryaz 32 "\nSistem Güncellemesi Tamamlandı."
 }
@@ -2617,8 +2617,8 @@ paket_indir(){
 								hataloglama "sha1sum uyusmaslik tespit edildi,paket tekrar indiriliyor."
 								rm -f "$paketdepo$pkt" 
 								paket_indir "${_ipaket}" "$cikti"
-							else
-								$_yaz "$_zaten ${_ipaket} $_paket_onbellek_depoda_var"
+							#else
+								#$_yaz "$_zaten ${_ipaket} $_paket_onbellek_depoda_var"
 							fi
 						fi
 					else
