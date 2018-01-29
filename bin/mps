@@ -603,27 +603,6 @@ yeniden_paketle(){
 		lzip -9 "$1".mps
 }
 
-talimat_bul_eski(){
-	if [ -z "$1" ];then echo "$_paket_adi_gerekli";exit 1;fi
-	local _apaket="$1"
-	_bulunan=()
-	#_bulunan=$(find $talimatname $ektalimatname -name $_apaket)
-	_bulunan=()
-	while IFS=  read -r -d $'\0'; do
-		_bulunan+=("$REPLY")
-	done < <(find $talimatname $ektalimatname -name ${_apaket} -print0)
-	if [ ${#_bulunan[@]} -gt 1  ];then echo "$(date +'%F %T') ${_apaket} $_talimat_sayisi_fazla" >> $LOGDIZIN/mps-hata.log;fi
-	if [ ${_bulunan[0]} ] ; then
-		if [ -f "${_bulunan[0]}/talimat" ];then
-			echo "${_bulunan[0]}"
-		else
-			echo "0"
-		fi
-	else
-		echo "-1"
-	fi  
-}
-
 talimat_bul(){
 	local _apaket _bulunan _sonuc _donus _konum
 	[ -z $1 ] && hata_olustu "_paket_adi_gerekli"

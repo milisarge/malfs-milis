@@ -748,7 +748,7 @@ build_package() {
 		cd $PKG
 		i=0
 		j=0
-		for group in ${PAKET_GRUPLAR[@]}; do
+		for group in `echo ${PAKET_GRUPLAR} | tr " " "\n"`;do
 			BUILD_SUCCESSFUL="evet"
 			if [ "`type -t ${group}`" == "function" ]; then
 				(set -e -x ;${group})
@@ -1420,7 +1420,7 @@ PKGMK_KEEP_SOURCES="yok"
 PKGMK_CLEAN="evet"
 PAKET_KURMA="evet"
 
-PAKET_GRUPLAR=()
+PAKET_GRUPLAR=""
 PAKET_LOKAL="tr"
 
 PKGMK_SOURCE_MIRRORS=()
