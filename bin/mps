@@ -1237,7 +1237,14 @@ surum_kontrol(){
 	if [ "$_konum" = "-1" ];then
 		ryaz 31 "$_paket $_talimat_bulunamadi $_surum_kontrol_iptal"
 		pk_sil="e"
-		case "${silme_esgec[@]}" in  *"$_paket"*) pk_sil="h" ;; esac
+		
+		for _esgec in `echo ${silme_esgec} | tr " " "\n"`;do
+			if [ "${_esgec}" = "${_paket}" ];then
+				pk_sil="h"
+				break
+			fi
+		done
+		
 		if [ "$pk_sil" = "e" ];then
 			ryaz 32 "$_paket $_paket_depoda_yok $_siliniyor"
 			mps -sz $_paket
@@ -1311,7 +1318,14 @@ devir_kontrol(){
 	if [ "$_konum" = "-1" ];then
 		ryaz 31 "$_paket $_talimat_bulunamadi $_devir_kontrol_iptal"
 		pk_sil="e"
-		case "${silme_esgec[@]}" in  *"$_paket"*) pk_sil="h" ;; esac
+		
+		for _esgec in `echo ${silme_esgec} | tr " " "\n"`;do
+			if [ "${_esgec}" = "${_paket}" ];then
+				pk_sil="h"
+				break
+			fi
+		done
+		
 		if [ "$pk_sil" = "e" ];then
 			ryaz 32 "$_paket $_paket_depoda_yok $_siliniyor"
 			mps -sz $_paket
