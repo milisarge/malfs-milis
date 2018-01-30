@@ -1,0 +1,30 @@
+# Tanım: GTK + için bir cairo canvas widget'ı
+# URL: https://wiki.gnome.org/Projects/GooCanvas
+# Paketçi: Cihan_Alkan 
+# Gerekler: gobject-introspection python-gobject python3-gobject
+# Grup: kütüphane
+
+isim=goocanvas
+surum=2.0.4
+devir=1
+kaynak=(https://download.gnome.org/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
+
+derle() {
+
+  cp -r $isim-$surum python2
+
+  cd $isim-$surum
+  ./configure --prefix=/usr PYTHON=python3
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+
+  cd "$SRC/python2"
+  ./configure --prefix=/usr PYTHON=python
+
+  cd $SRC/$isim-$surum
+  make DESTDIR="$PKG" install
+
+  cd "$SRC/python2"
+  make -C bindings/python DESTDIR="$PKG" install
+
+}
