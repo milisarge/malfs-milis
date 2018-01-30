@@ -17,12 +17,6 @@ else
 fi
 #alias sed="sed"
 
-if [ -f /etc/mpsd.conf ];then
-. /etc/mpsd.conf
-else
-	echo "/etc/mpsd.conf ayar dosyası bulunamadı!"
-fi
-
 if [ -f /etc/mps.conf ];then
 . /etc/mps.conf
 else
@@ -41,8 +35,12 @@ if [ -z ${git_sunucu+:} ]; then
 	git_sunucu="https://github.com/milisarge/malfs-milis"
 fi
 
+if [ -z ${git_depo+:} ]; then
+	git_depo="/sources/milis.git"
+fi
+
 if [ -z ${anatalimatname+:} ]; then
-	anatalimatname="/sources/milis.git/talimatname"
+	anatalimatname="${git_depo}/talimatname"
 fi
 
 if [ -z ${talimatname+:} ]; then
@@ -2087,33 +2085,40 @@ fi
 git_guncelle() {
 	kaynakdizin_kontrol
 	gitayar_kontrol
-	cd $DERLEME_KAYNAKDIZIN
-	#git sunucudan guncelleme
+	#cd $DERLEME_KAYNAKDIZIN
+	#git deponun sunucudan güncellenmesi
 	ryaz 33 "$_git_guncelleniyor"
-	if [ ! -d milis.git ];then
-		git clone $git_sunucu milis.git
-		rsync -av /sources/milis.git/rootfs/* /
-	else
-		cd milis.git
-		git pull  >& $LOGDIZIN/mps-git.log
-		if grep -q "Already\ up-to-date" $LOGDIZIN/mps-git.log; then
-			ryaz 32 "$_git_guncel"
+	if [ $(sunucu_erisim ${git_sunucu}) = "aktif" ];then
+		if [ ! -d ${git_depo} ];then
+			git clone ${git_sunucu} ${git_depo}
+			#rsync -av ${git_depo}/rootfs/* /
 		else
-			#ryaz 32 `cat $LOGDIZIN/mps-git.log`
-			ryaz 32 "$_git_guncellendi"
+			cd ${git_depo}
+			git pull  >& $LOGDIZIN/mps-git.log
+			if grep -q "Already\ up-to-date" $LOGDIZIN/mps-git.log; then
+				ryaz 32 "$_git_guncel"
+			else
+				#ryaz 32 `cat $LOGDIZIN/mps-git.log`
+				ryaz 32 "$_git_guncellendi"
+			fi
+			
 		fi
-		#baslangic betiklerinin guncellenmesi
-		rsync -aviz -q --delete /sources/milis.git/rootfs/lib/services/* /lib/services/
+	else
+		ryaz 31 "${git_sunucu} erişim olumsuz.Uzaktan güncelleme alınamadı."
 	fi
+	# git depodan yerel güncellemelerin yapılması
+	#baslangic betiklerinin guncellenmesi
+	#rsync -aviz -q --delete ${git_depo}/rootfs/lib/services/* /lib/services/
+	cp --remove-destination -rf ${git_depo}/rootfs/lib/services/* /lib/services/
+	# talimatname ve betiklerin güncellenmesi
 	cd `dirname $talimatname`
-	ryaz 33 "$_yerel_esitleniyor"
 	rm -r $talimatname
 	mkdir -p $talimatname
-	rsync -aviz -q --delete $DERLEME_KAYNAKDIZIN/milis.git/talimatname/ $talimatname
+	rsync -aviz -q --delete ${git_depo}/talimatname/ $talimatname
 	rm -r `dirname $talimatname`/bin/*
-	rsync -aviz -q --delete $DERLEME_KAYNAKDIZIN/milis.git/bin/ `dirname $talimatname`/bin
+	rsync -aviz -q --delete ${git_depo}/bin/ `dirname $talimatname`/bin
 	rm -r `dirname $talimatname`/ayarlar/*
-	rsync -aviz -q --delete $DERLEME_KAYNAKDIZIN/milis.git/ayarlar/ `dirname $talimatname`/ayarlar
+	rsync -aviz -q --delete ${git_depo}/ayarlar/ `dirname $talimatname`/ayarlar
 	#ikili dosyaların /usr/bin altına kısayol atılması
 	for i in /root/bin/*; do
 		j=`basename $i`
@@ -2188,7 +2193,7 @@ op_sil(){
 }
 
 servis_kur(){
-	cd /sources/milis.git/ayarlar/servisler
+	cd ${git_depo}/ayarlar/servisler
 	if make kur-$1
 	then
 		 ryaz 32 "$1 servisi kuruldu"
@@ -2200,7 +2205,7 @@ servis_kur(){
 }
 
 servis_sil(){
-	cd /sources/milis.git/ayarlar/servisler
+	cd ${git_depo}/ayarlar/servisler
 	if make sil-$1
 	then
 		 ryaz 32 "$1 servisi silindi"
@@ -2212,12 +2217,12 @@ servis_sil(){
 }
 
 servisler_kontrol(){
-	servisler=`ls /sources/milis.git/ayarlar/servisler/mbd/init.d`
+	servisler=`ls ${git_depo}/ayarlar/servisler/mbd/init.d`
 	for ser in $(ls /etc/init.d/) ; do 
-		if [ ! -f /sources/milis.git/ayarlar/servisler/mbd/init.d/$ser ];then
+		if [ ! -f ${git_depo}/ayarlar/servisler/mbd/init.d/$ser ];then
 			printf "%12s %s\n" "$ser mbd kaydı bulunamadı!"
 		else
-			if cmp -s "/sources/milis.git/ayarlar/servisler/mbd/init.d/$ser" "$ser"
+			if cmp -s "${git_depo}/ayarlar/servisler/mbd/init.d/$ser" "$ser"
 			then
 			   printf "%12s %s\n" "$ser" "mbd uyumsuz"
 			else
@@ -2259,15 +2264,23 @@ sistem_kontrol(){
 	sunucu_kontrol
 }
 
+
+sunucu_erisim(){
+	local _sunucu
+	[ $1 ] && _sunucu="$1"
+	wget --no-check-certificate -q --spider "${_sunucu}"
+	if [ $? -eq 0 ]; then
+		echo "aktif"
+	else
+		echo "pasif"
+	fi
+}
+
 sunucu_kontrol(){
 	local _sunucular=$(echo ${sunucular} | tr " " "\n") 
 	for _sunucu in ${_sunucular}; do
-		wget --no-check-certificate -q --spider "${_sunucu}/paket.vt"
-		if [ $? -eq 0 ]; then
-			ryaz 32 "${_sunucu} paket sunucu aktif"
-		else
-			ryaz 31 "${_sunucu} sunucu erişim dışı" 
-		fi
+		[ $(sunucu_erisim ${_sunucu}/paket.vt) = "aktif" ] && ryaz 32 "${_sunucu} paket sunucu aktif" \
+		|| ryaz 31 "${_sunucu} sunucu erişim dışı" 
 	done
 }	
 
