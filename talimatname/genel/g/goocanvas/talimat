@@ -1,7 +1,7 @@
 # Tanım: GTK + için bir cairo canvas widget'ı
 # URL: https://wiki.gnome.org/Projects/GooCanvas
 # Paketçi: Cihan_Alkan 
-# Gerekler: gobject-introspection python-gobject python3-gobject
+# Gerekler: gobject-introspection python-gobject python3-gobject cairo glib2 gtk3
 # Grup: kütüphane
 
 isim=goocanvas
