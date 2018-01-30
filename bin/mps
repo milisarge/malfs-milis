@@ -2063,6 +2063,7 @@ else
 # Url: paketin ilgili web sayfası
 # Paketçi: paketçi
 # Gerekler: 
+# Grup:
 
 isim=$isim
 surum=1
@@ -2520,12 +2521,10 @@ paketvt_guncelle(){
 			pktvt="paket${_sira}.vt"
 	   fi
 	   # sunucu bakım kontrolü
-	   wget --no-check-certificate -q --spider "$pktsunucu""paket.vt.yeni"
-	   [ $? -eq 0 ] && _bakim="var"
+	   [ $(sunucu_erisim "$pktsunucu""paket.vt.yeni") = "aktif" ] &&  _bakim="var"
 	   
 	   if [ $_bakim = "yok" ];then
-		   wget --no-check-certificate -q --spider "$pktsunucu""paket.vt"
-		   if [ $? -eq 0 ]; then	
+		   if [ $(sunucu_erisim "$pktsunucu""paket.vt") = "aktif" ]; then	
 				ryaz 32 $pktsunucu
 				ryaz 32 "$_paketvt_guncelleniyor" "$paketdepo""$pktvt"
 				if [ -f "$paketdepo""$pktvt" ];then
