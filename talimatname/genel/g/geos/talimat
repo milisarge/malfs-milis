@@ -1,0 +1,20 @@
+# Tanım: Java Topology Suite'in C++ portu
+# URL: http://trac.osgeo.org/geos/
+# Paketçi: Cihan_Alkan
+# Gerekler: 
+# Grup: geliştirme
+
+isim=geos
+surum=3.6.2
+devir=1
+
+kaynak=(http://download.osgeo.org/$isim/$isim-$surum.tar.bz2)
+
+derle() {
+
+  cd $isim-$surum
+
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+}
