@@ -1,18 +1,24 @@
 # Tanım: Adobe Flash Player
 # URL: http://www.macromedia.com
-# Paketçi: milisarge
-# Gerekler: nss
+# Paketçi: milisarge Cihan_Alkan
+# Gerekler: libxt gtk2 nss curl hicolor-icon-theme
+# Grup:
 
 isim=flashplayer
-surum=27.0.0.170
+surum=28.0.0.137
 devir=1
-kaynak=(https://fpdownload.adobe.com/get/flashplayer/pdc/$surum/flash_player_ppapi_linux.x86_64.tar.gz::$isim-$surum.tar.gz
-		flashplayer.mms.cfg)
+kaynak=(https://fpdownload.adobe.com/get/flashplayer/pdc/$surum/flash_player_ppapi_linux.x86_64.tar.gz
+        https://fpdownload.adobe.com/get/flashplayer/pdc/$surum/flash_player_npapi_linux.x86_64.tar.gz)
       
 
 derle() {
-	cd $SRC
-	install -Dm644 libpepflashplayer.so "$PKG/usr/lib/mozilla/plugins/libflashplayer.so"
-	install -Dm644 -t "$PKG/usr/share/licenses/$isim" license.pdf LGPL/notice.txt
-	install -D -m644 flashplayer.mms.cfg $PKG/etc/adobe/mms.cfg
+
+  install -Dm644 libflashplayer.so "$PKG/usr/lib/mozilla/plugins/libflashplayer.so"
+  install -Dm644 -t "$PKG/usr/share/licenses/$isim" license.pdf LGPL/notice.txt
+
+  install -D -t "$PKG/usr/bin" usr/bin/flash-player-properties
+  cp -a usr/share/{applications,icons} "$PKG/usr/share/"
+
+  install -Dm644 -t "$PKG/usr/lib/PepperFlash" manifest.json libpepflashplayer.so
+  install -Dm644 -t "$PKG/usr/share/licenses/$isim" license.pdf LGPL/notice.txt
 }
