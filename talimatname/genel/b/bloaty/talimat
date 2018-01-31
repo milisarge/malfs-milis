@@ -1,0 +1,27 @@
+# Tanım: İkili dosyalar için bir boyut profilci
+# URL: https://github.com/google/bloaty
+# Paketçi: Cihan_Alkan
+# Gerekler: cmake
+# Grup: sistem
+
+isim=bloaty
+surum=git
+devir=1
+
+kaynak=()
+
+derle() {
+
+	adres="https://github.com/google/bloaty"
+	git_indir ${adres} ${isim}
+	cd $SRC/${isim}
+	
+    rm -rf "${SRC}/build"
+    mkdir "${SRC}/build"
+    cd "${SRC}/build"
+    cmake -G 'Unix Makefiles' \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        "${SRC}/bloaty"
+    make
+    install -Dm755 "${SRC}/build/bloaty" "${PKG}/usr/bin/bloaty"
+}
