@@ -2086,6 +2086,7 @@ fi
 git_guncelle() {
 	kaynakdizin_kontrol
 	gitayar_kontrol
+	local _yerel
 	#cd $DERLEME_KAYNAKDIZIN
 	#git deponun sunucudan güncellenmesi
 	ryaz 33 "$_git_guncelleniyor"
@@ -2112,23 +2113,23 @@ git_guncelle() {
 	#rsync -aviz -q --delete ${git_depo}/rootfs/lib/services/* /lib/services/
 	cp --remove-destination -rf ${git_depo}/rootfs/lib/services/* /lib/services/
 	# talimatname ve betiklerin güncellenmesi
-	cd `dirname $talimatname`
-	rm -r $talimatname
-	mkdir -p $talimatname
-	rsync -aviz -q --delete ${git_depo}/talimatname/ $talimatname
-	rm -r `dirname $talimatname`/bin/*
-	rsync -aviz -q --delete ${git_depo}/bin/ `dirname $talimatname`/bin
-	rm -r `dirname $talimatname`/ayarlar/*
-	rsync -aviz -q --delete ${git_depo}/ayarlar/ `dirname $talimatname`/ayarlar
+	_yerel=$(dirname $talimatname)
+	cd ${_yerel}
+	rm -rf $talimatname ${_yerel}/bin ${_yerel}/ayarlar
+	cp -rf ${git_depo}/talimatname/ ${_yerel}/
+	cp -rf ${git_depo}/bin ${_yerel}/
+	cp -rf ${git_depo}/ayarlar ${_yerel}/
+	
 	#ikili dosyaların /usr/bin altına kısayol atılması
-	for i in /root/bin/*; do
+	for i in ${_yerel}/bin/*; do
 		j=`basename $i`
 		if [ ! -L /usr/bin/$j ];then
-			ln -sf /root/bin/$j /usr/bin/$j
+			ln -sf ${_yerel}/bin/$j /usr/bin/$j
 		fi
 	done
 	#kırık linklerin temizlenmesi
 	find -L /usr/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
+	find -L ${_yerel}/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
 	find -L /root/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
 	ryaz 32 "$_yerel_esitlendi"
 }
