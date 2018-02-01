@@ -39,6 +39,10 @@ if [ -z ${git_depo+:} ]; then
 	git_depo="/sources/milis.git"
 fi
 
+if [ -z ${kaynak_dizin+:} ]; then
+	kaynak_dizin="/sources"
+fi
+
 if [ -z ${anatalimatname+:} ]; then
 	anatalimatname="${git_depo}/talimatname"
 fi
@@ -124,6 +128,7 @@ _git_guncelleniyor="git sunucudan güncelleme çekiliyor."
 _git_guncel="git deposu güncel"
 _git_guncellendi="git deposu güncellendi."
 _yerel_esitlendi="yerele eşitleme tamam."
+_yerel_esitlendi_olumsuz="yerele eşitleme olumsuz."
 _yerel_esitleniyor="yerele eşitleniyor."
 _devir_kontrol_iptal="devir kontrolü iptal edildi!"
 _surum_kontrol_iptal="sürüm kontrolü iptal edildi!"
@@ -1718,6 +1723,16 @@ dosya_karsilastir(){
 	fi
 }
 
+# ip bulma
+ip_bul(){
+	url='[a www.google.com]'
+	domain=`echo $url | sed 's-^[^/]*/*\([^/]*\)/\?.*$-\1-'`
+	echo "< $domain"
+	ipaddr=`ping -c 1 $domain | sed -n 's@^.*(\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*$@\1@p' | head -1`
+	req_url=`echo $url | sed "s-/[^/]\+-/$ipaddr-"`
+	echo req_url
+}
+
 # renkli mesaj
 ryaz() {
 	[ -z "$1" ] && return
@@ -1828,8 +1843,8 @@ sistem_kur(){
 }
 
 kaynakdizin_kontrol(){
-	if [ ! -d $DERLEME_KAYNAKDIZIN ];then
-		mkdir $DERLEME_KAYNAKDIZIN
+	if [ ! -d $kaynak_dizin ];then
+		mkdir $kaynak_dizin
 	fi
 }
 
@@ -2087,7 +2102,7 @@ git_guncelle() {
 	kaynakdizin_kontrol
 	gitayar_kontrol
 	local _yerel
-	#cd $DERLEME_KAYNAKDIZIN
+	
 	#git deponun sunucudan güncellenmesi
 	ryaz 33 "$_git_guncelleniyor"
 	if [ $(sunucu_erisim ${git_sunucu}) = "aktif" ];then
@@ -2108,30 +2123,34 @@ git_guncelle() {
 	else
 		ryaz 31 "${git_sunucu} erişim olumsuz.Uzaktan güncelleme alınamadı."
 	fi
-	# git depodan yerel güncellemelerin yapılması
-	#baslangic betiklerinin guncellenmesi
-	#rsync -aviz -q --delete ${git_depo}/rootfs/lib/services/* /lib/services/
-	cp --remove-destination -rf ${git_depo}/rootfs/lib/services/* /lib/services/
-	# talimatname ve betiklerin güncellenmesi
-	_yerel=$(dirname $talimatname)
-	cd ${_yerel}
-	rm -rf $talimatname ${_yerel}/bin ${_yerel}/ayarlar
-	cp -rf ${git_depo}/talimatname/ ${_yerel}/
-	cp -rf ${git_depo}/bin ${_yerel}/
-	cp -rf ${git_depo}/ayarlar ${_yerel}/
-	
-	#ikili dosyaların /usr/bin altına kısayol atılması
-	for i in ${_yerel}/bin/*; do
-		j=`basename $i`
-		if [ ! -L /usr/bin/$j ];then
-			ln -sf ${_yerel}/bin/$j /usr/bin/$j
-		fi
-	done
-	#kırık linklerin temizlenmesi
-	find -L /usr/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
-	find -L ${_yerel}/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
-	find -L /root/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
-	ryaz 32 "$_yerel_esitlendi"
+	if [ -d ${git_depo} ];then
+		# git depodan yerel güncellemelerin yapılması
+		#baslangic betiklerinin guncellenmesi
+		#rsync -aviz -q --delete ${git_depo}/rootfs/lib/services/* /lib/services/
+		cp --remove-destination -rf ${git_depo}/rootfs/lib/services/* /lib/services/
+		# talimatname ve betiklerin güncellenmesi
+		_yerel=$(dirname $talimatname)
+		cd ${_yerel}
+		rm -rf $talimatname ${_yerel}/bin ${_yerel}/ayarlar
+		cp -rf ${git_depo}/talimatname/ ${_yerel}/
+		cp -rf ${git_depo}/bin ${_yerel}/
+		cp -rf ${git_depo}/ayarlar ${_yerel}/
+		
+		#ikili dosyaların /usr/bin altına kısayol atılması
+		for i in ${_yerel}/bin/*; do
+			j=`basename $i`
+			if [ ! -L /usr/bin/$j ];then
+				ln -sf ${_yerel}/bin/$j /usr/bin/$j
+			fi
+		done
+		#kırık linklerin temizlenmesi
+		find -L /usr/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
+		find -L ${_yerel}/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
+		[ -d /root/bin ] && find -L /root/bin/* -name . -o -type d -prune -o -type l -exec rm {} +
+		ryaz 32 "$_yerel_esitlendi"
+	else
+		ryaz 32 "$_yerel_esitlendi_olumsuz"
+	fi
 }
 
 git_proje_kur(){
@@ -2288,8 +2307,8 @@ sunucu_kontrol(){
 
 gitayar_kontrol(){
 	if [ ! -f /root/.gitconfig ];then
-		git_ssl_iptal
-		git_otokimlik
+		[ `which git_ssl_iptal` ] && git_ssl_iptal
+		[ `which git_otokimlik` ] && git_otokimlik
 	fi
 }
 
