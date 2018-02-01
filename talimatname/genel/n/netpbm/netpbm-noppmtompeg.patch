@@ -1,0 +1,25 @@
+diff --git a/buildtools/manpage.mk b/buildtools/manpage.mk
+index 47d890c..62e613f 100644
+--- a/buildtools/manpage.mk
++++ b/buildtools/manpage.mk
+@@ -251,7 +251,6 @@ MAN1 = \
+ 	ppmtolj.1 \
+ 	ppmtomap.1 \
+ 	ppmtomitsu.1 \
+-	ppmtompeg.1 \
+ 	ppmtoneo.1 \
+ 	ppmtopcx.1 \
+ 	ppmtopgm.1 \
+diff --git a/converter/ppm/Makefile b/converter/ppm/Makefile
+index 003ef8d..09f05cd 100644
+--- a/converter/ppm/Makefile
++++ b/converter/ppm/Makefile
+@@ -7,7 +7,7 @@ VPATH=.:$(SRCDIR)/$(SUBDIR)
+ 
+ include $(BUILDDIR)/config.mk
+ 
+-SUBDIRS = hpcdtoppm ppmtompeg
++SUBDIRS = hpcdtoppm
+ 
+ PORTBINARIES =	411toppm eyuvtoppm gouldtoppm ilbmtoppm imgtoppm \
+ 		leaftoppm mtvtoppm neotoppm \

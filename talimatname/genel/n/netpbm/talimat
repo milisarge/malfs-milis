@@ -1,0 +1,126 @@
+# Tanım: Grafik resimlerin manipüle edilmesi için bir araç seti
+# URL: http://netpbm.sourceforge.net/
+# Paketçi: Cihan_Alkan
+# Gerekler: perl libpng libtiff libxml2 python jbigkit xorg-libx11 jasper
+# Grup: kütüphane
+
+isim=netpbm
+surum=10.71.02
+devir=1
+
+kaynak=(http://pkgs.fedoraproject.org/repo/pkgs/netpbm/netpbm-10.71.02.tar.xz/24df6a5baf36fa8943f046568726fd57/netpbm-10.71.02.tar.xz
+        netpbm-noppmtompeg.patch)
+
+derle() {
+	cd $isim-$surum
+	touch converter/ppm/hpcdtoppm/depend.mk
+	patch -p1 -E --backup --verbose -i ${SRC}/netpbm-noppmtompeg.patch
+	 # use the interactive way
+	CFLAGS="${CFLAGS} -fPIC"
+	LDSHLIB="${LDSHLIB} -fPIC"
+	chmod 755 configure buildtools/stamp-date buildtools/install.sh buildtools/mkinstalldirs 
+
+sed -i -e "s|\$(LDSHLIB)|\$(LDSHLIB) ${LDFLAGS}|g" lib/Makefile || exit 1
+
+mv buildtools/pkgconfig_template buildtools/pkgconfig_template.orig
+
+cat > buildtools/pkgconfig_template <<EOF
+prefix=/usr
+exec_prefix=\${prefix}
+libdir=/usr/lib
+includedir=\${prefix}/include
+EOF
+
+sed \
+  -e "s|@VERSION@|${VERSION}|g" \
+  -e 's|@LINKDIR@|${libdir}|g' \
+  -e 's|@INCLUDEDIR@|${includedir}|g' \
+  buildtools/pkgconfig_template.orig \
+  >> buildtools/pkgconfig_template || exit 1
+
+SOVER="$(grep '^MAJ =' lib/Makefile |  awk '{print $3}')"
+
+#sed -i -e '/config_mk/d' buildtools/configure.pl
+./configure <<EOF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EOF
+
+TOP=$(pwd)
+make -j1 -e \
+  CC=/usr/bin/gcc \
+  LDFLAGS="-L${TOP}/pbm -L${TOP}/pgm -L${TOP}/pnm -L${TOP}/ppm ${LDFLAGS}" \
+  CFLAGS="${SLKCFLAGS} -fPIC -ffast-math -pedantic -fno-common -Wall -Wno-uninitialized -Wmissing-declarations -Wimplicit -Wwrite-strings -Wmissing-prototypes -Wundef -I/usr/include/jbigkit" \
+  LADD="-lm" \
+  DEFAULT_TARGET=nonmerge \
+  NETPBMLIBTYPE=unixshared \
+  NETPBMLIBSUFFIX=so \
+  STATICLIB_TOO=n \
+  JPEGINC_DIR=/usr/include \
+  PNGINC_DIR=/usr/include \
+  TIFFINC_DIR=/usr/include \
+  JPEGLIB_DIR=/usr/lib \
+  PNGLIB_DIR=/usr/lib \
+  TIFFLIB_DIR=/usr/lib \
+  LINUXSVGALIB="NONE" \
+  X11LIB=/usr/lib/libX11.so \
+  XML2LIBS="NONE" \
+  JASPERLIB="" \
+  JASPERDEPLIBS="-ljasper" \
+  JBIGLIB='-ljbig' \
+  NETPBM_DOCURL="http://netpbm.sourceforge.net/doc/" || exit 1
+
+	# prepare man files
+	( cd userguide
+	  for i in *.html ; do
+		../buildtools/makeman ${i}
+	  done
+	  for i in 1 3 5 ; do
+		mkdir -p man/man${i}
+		mv *.${i} man/man${i}
+	  done
+	) || exit 1
+
+	mkdir -p ${PKG} || exit 1
+	make package pkgdir=${PKG}/usr LINUXSVGALIB="NONE" XML2LIBS="NONE" STATICLIB_TOO=n || exit 1
+
+	mkdir -p ${PKG}/usr/lib${LIBDIRSUFFIX}
+	if [ "/usr/lib${LIBDIRSUFFIX}" != "/usr/lib" ]; then
+	  mv ${PKG}/usr/lib/lib* ${PKG}/usr/lib${LIBDIRSUFFIX}/ || exit 1
+	  rmdir ${PKG}/usr/lib
+	fi
+
+	ln -sf libnetpbm.so.${SOVER} ${PKG}/usr/lib${LIBDIRSUFFIX}/libnetpbm.so || exit 1
+
+	find ${PKG} | xargs file | grep -e "executable" -e "shared object" | grep ELF \
+	  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
+
+	mkdir -p ${PKG}/usr/lib${LIBDIRSUFFIX}/pkgconfig
+	mv ${PKG}/usr/pkgconfig_template \
+	  ${PKG}/usr/lib${LIBDIRSUFFIX}/pkgconfig/netpbm.pc || exit 1
+
+	rm -rf ${PKG}/usr/man
+	mkdir -p $PKG/usr/share
+	mv $PKG/usr/misc $PKG/usr/share/netpbm
+	rm -f ${PKG}/usr/config_template
+	rm -f ${PKG}/usr/pkginfo
+	rm -f ${PKG}/usr/README
+	rm -f ${PKG}/usr/VERSION
+	rm -fr ${PKG}/usr/link
+}

@@ -1,0 +1,26 @@
+# Tanım: Açık kaynaklı karakter tanıma (OCR)
+# URL: http://jocr.sourceforge.net/index.html
+# Paketçi: Cihan_Alkan
+# Gerekler: netpbm
+# Grup: ofis_düzenleyici
+
+isim=gocr
+surum=0.51
+devir=1
+kaynak=(https://www-e.uni-magdeburg.de/jschulen/ocr/gocr-${surum}.tar.gz)
+
+derle() {
+
+  cd "$SRC"/$isim-$surum
+  export CFLAGS=-fPIC
+  ./configure --prefix=/usr --mandir=/usr/share/man --libdir=/usr/lib
+  make -j1 all libs
+
+  mkdir -p "$PKG"/usr/lib
+  make DESTDIR="$PKG" libdir=/usr/lib/ bindir=/usr/bin install
+  (cd "$PKG"/usr/lib/ && rm -f libPgm2asc.so && ln -s `echo libPgm2asc*.so` libPgm2asc.so)
+  install -D -m644 doc/gocr.html "$PKG"/usr/share/doc/gocr/gocr.html
+  for i in pgm2asc.h gocr.h; do
+    install -D -m644 src/$i "$PKG"/usr/include/gocr/$i
+  done
+}
