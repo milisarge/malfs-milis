@@ -1,7 +1,7 @@
 # Tanım: Genel klavye kısayollarını kaydetmek için bir kütüphane
 # URL: https://github.com/engla/keybinder/tree/keybinder-3.0
 # Paketçi: Cihan_Alkan
-# Gerekler: gobject-introspection
+# Gerekler: gobject-introspection gtk3
 # Grup: kütüphane
 
 isim=keybinder3
