@@ -649,8 +649,8 @@ paket_analiz(){
 					psurum=${satir:1:${#satir}-1}
 					satir2=$(sed -n '8p' <  /tmp/$_apaket.META)
 					pdevir=${satir2:1:${#satir2}-1}
-					deposurum=`echo -e "$surum" | sort -V | head -n1`
-					depodevir=`echo -e "$devir" | sort -V | head -n1`
+					deposurum=`echo -e "$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
+					depodevir=`echo -e "$devir" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
 					_surumbilgi="gereken_sürüm:$deposurum ! paket_sürüm:$psurum"
 					_devirbilgi="gereken_devir:$depodevir ! paket_devir:$pdevir"
 					ryaz 33 "$pkt"
@@ -1170,8 +1170,8 @@ guncelleme_tespit(){
 		fi
 		
 		source $_konum/talimat
-		deposurum=`echo -e "$surum" | sort -V | head -n1`
-		depodevir=`echo -e "$devir" | sort -V | head -n1`
+		deposurum=`echo -e "$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
+		depodevir=`echo -e "$devir" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
 		#echo $kpaket "  :  $ksurum --->  $deposurum" "$kdevir --->  $depodevir"
 		#sleep 3
 		if [ "$ksurum" != "$deposurum" ];then
@@ -1245,7 +1245,7 @@ surum_kontrol(){
 	
 		source $_konum/talimat
 
-		dusuk=`echo -e "$ksurum\n$surum" | sort -V | head -n1`
+		dusuk=`echo -e "$ksurum\n$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
 		
 		if [ "$ksurum" = "$surum" ];then
 			durum="guncel"
@@ -1325,7 +1325,7 @@ devir_kontrol(){
 	else
 	
 		source $_konum/talimat
-		dusuk=`echo -e "$kdevir\n$devir" | sort -V | head -n1`
+		dusuk=`echo -e "$kdevir\n$devir" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
 		
 		if [ "$kdevir" = "$devir" ];then
 			durum="guncel"
@@ -1372,7 +1372,7 @@ surum_karsilastir(){
 	fi
 	
 	source $_konum/talimat
-	tsurum=`echo -e "$surum" | sort -V | head -n1`
+	tsurum=`echo -e "$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
 	if [ "$tsurum" == "$deposurum" ];then
 		echo "esit"
 	else
