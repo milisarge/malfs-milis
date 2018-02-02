@@ -6,14 +6,16 @@
 
 isim=busybox
 surum=1.27.2
-devir=1
-kaynak=(http://busybox.net/downloads/$isim-$surum.tar.bz2)
+devir=2
+kaynak=(http://busybox.net/downloads/$isim-$surum.tar.bz2
+		busybox-1.27.0_lzip-0.patch)
 
 derle() {
 	cd $isim-$surum
 	# https://bugs.gentoo.org/show_bug.cgi?id=310413
 	export CFLAGS+=' -fno-strict-aliasing'
 	[ "$CC" ] || CC=gcc
+	patch -Np1 -i "${SRC}/busybox-1.27.0_lzip-0.patch"
 	#for i in $SRC/*.patch; do
 	#	patch -p1 -i $i
 	#done
