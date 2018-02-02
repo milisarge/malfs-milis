@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 versiyon="1.1.9 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"

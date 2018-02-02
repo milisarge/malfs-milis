@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # error codes
 E_GENERAL=1
