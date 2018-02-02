@@ -2127,7 +2127,7 @@ git_guncelle() {
 		# git depodan yerel güncellemelerin yapılması
 		#baslangic betiklerinin guncellenmesi
 		#rsync -aviz -q --delete ${git_depo}/rootfs/lib/services/* /lib/services/
-		cp --remove-destination -rf ${git_depo}/rootfs/lib/services/* /lib/services/
+		[ -d /lib/services/ ] && cp --remove-destination -rf ${git_depo}/rootfs/lib/services/* /lib/services/
 		# talimatname ve betiklerin güncellenmesi
 		_yerel=$(dirname $talimatname)
 		cd ${_yerel}
