@@ -8,12 +8,13 @@ betikyol="$0"
 shelltip=$(basename `cat $betikyol | head -n1 | cut -d'!' -f2 | cut -d' ' -f1`)
 
 # sistem araçlarının tespiti ve atanması
-if [ ${shelltip} = "busybox" ] || [ ${shelltip} = "ash" ];then
+#if [ ${shelltip} = "busybox" ] || [ ${shelltip} = "ash" ];then
+if [ ${BASH_VERSION} ];then
+	wget_progress="--show-progress"
+else
 	alias sed="busybox sed"
 	alias wget="busybox wget"
 	wget_progress=""
-else
-	wget_progress="--show-progress"
 fi
 #alias sed="sed"
 
