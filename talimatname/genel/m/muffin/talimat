@@ -11,6 +11,7 @@ kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.t
 
 derle() {
 cd $isim-$surum
+  tamir_masaustu
   PYTHON=python ./autogen.sh \
       --prefix=/usr \
       --sysconfdir=/etc \
