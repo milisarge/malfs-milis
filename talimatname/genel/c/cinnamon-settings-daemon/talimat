@@ -1,0 +1,24 @@
+# Tanım: Cinnamon ayarları programı
+# URL: https://github.com/linuxmint/cinnamon-settings-daemon
+# Paketçi: Cihan_Alkan
+# Gerekler: glib intltool gtk3 cinnamon-desktop libnotify libgnomekbd libcanberra upower colord libgudev nss dbus-glib docbook-xsl librsvg pulseaudio polkit libwacom tdb
+# Grup: cinnamon
+
+isim=cinnamon-settings-daemon
+surum=3.6.2
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  ./autogen.sh \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --libexecdir="/usr/lib/$isim" \
+        --disable-systemd \
+        --enable-polkit
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    make
+    make DESTDIR=$PKG install
+}

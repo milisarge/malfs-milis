@@ -1,0 +1,32 @@
+# Tanım: Cinnamon Pencere Yöneticisi
+# URL: https://github.com/linuxmint/muffin
+# Paketçi: Cihan_Alkan
+# Gerekler: clutter gobject-introspection cinnamon-desktop libcanberra xorg-libsm zenity dconf intltool gnome-doc-utils gnome-common gtk-doc
+# Grup: cinnamon
+
+isim=muffin
+surum=3.6.0
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+cd $isim-$surum
+  PYTHON=python ./autogen.sh \
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --libexecdir=/usr/lib/muffin \
+      --localstatedir=/var \
+      --disable-static \
+      --disable-schemas-compile \
+      --enable-compile-warnings=minimum
+
+  #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+  make
+  make DESTDIR=$PKG install
+  make -C src DESTDIR="$PKG" uninstall-binPROGRAMS uninstall-desktopfilesDATA
+  make -C src/tools DESTDIR="$PKG" uninstall
+  make -C src/compositor/plugins DESTDIR="$PKG" uninstall
+  make -C doc/man DESTDIR="$PKG" uninstall
+}

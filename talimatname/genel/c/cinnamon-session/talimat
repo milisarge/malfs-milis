@@ -1,0 +1,25 @@
+# Tanım: Cinnamon Oturumu
+# URL: https://github.com/linuxmint/cinnamon-session
+# Paketçi: Cihan_Alkan
+# Gerekler: intltool dbus-glib cinnamon-desktop xorg-libsm libcanberra gtk3 tdb
+# Grup: cinnamon
+
+isim=cinnamon-session
+surum=3.6.1
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  CFLAGS="${CFLAGS} -Wno-error=format-nonliteral" ./autogen.sh \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib/cinnamon-session \
+    --disable-schemas-compile \
+    --disable-gconf \
+    --enable-qt57-theme-support
+    
+  make
+  make DESTDIR=$PKG install
+}

@@ -1,0 +1,35 @@
+# Tanım: Cinnamon Dosya Yöneticisi
+# URL: https://github.com/linuxmint/nemo
+# Paketçi: Cihan_Alkan
+# Gerekler: glib gtk-doc intltool xapps python-polib python-gobject gtk3 cinnamon-desktop libnotify cinnamon-translations gobject-introspection gnome-common libexif gvfs dconf desktop-file-utils exempi python libxml2
+# Grup: cinnamon
+
+isim=nemo
+surum=3.6.5
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz
+libnemo-fileroller.so)
+
+derle() {
+  cd $isim-$surum
+  ./autogen.sh \
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
+      --disable-static \
+      --libexecdir=/usr/lib/nemo \
+      --disable-update-mimedb \
+      --disable-tracker \
+      --disable-gtk-doc-html \
+      --disable-schemas-compile \
+      --disable-selinux
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    
+  make
+  make DESTDIR=$PKG install
+  mkdir -p $PKG/usr/lib/nemo/extensions-3.0
+  mv $SRC/libnemo-fileroller.so $PKG/usr/lib/nemo/extensions-3.0/
+  sed -i 's/Run Nemo with elevated privileges/Nemoyu yükseltilmiş ayrıcalıklarla çalıştır/g' $PKG/usr/share/polkit-1/actions/org.nemo.root.policy
+  sed -i 's/Please enter your password to run Nemo as root/Nemoyu kök olarak çalıştırmak için lütfen şifrenizi girin/g' $PKG/usr/share/polkit-1/actions/org.nemo.root.policy
+}

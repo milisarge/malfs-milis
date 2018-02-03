@@ -1,0 +1,21 @@
+# Tanımlar: X-Apps projesi için ortak kütüphane
+# URL: https://github.com/linuxmint/xapps
+# Paketçi: Cihan_Alkan
+# Gerekler: libgnomekbd python gnome-common gobject-introspection gtk-doc gtk3
+# Grup: cinnamon
+
+isim=xapps
+surum=1.0.4
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+   ./autogen.sh \
+   --prefix=/usr \
+   --localstatedir=/var \
+   --libexecdir=/usr/lib/$isim
+ 
+  make
+  make DESTDIR=$PKG install
+}

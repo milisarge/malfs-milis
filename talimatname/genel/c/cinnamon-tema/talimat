@@ -1,0 +1,14 @@
+# Tanım: Milis Cinnamon Sürümü için tema paketi
+# URL: https://github.com/oltulu
+# Paketçi: Cihan Alkan
+# Gerekler: 
+
+isim=cinnamon-tema
+surum=1.0
+devir=1
+
+kaynak=(https://downloads.sourceforge.net/project/aylinux/Milis-Programlar/cinnamon-milis-tema.tar.xz)
+
+derle() {
+		cp -r $SRC/* $PKG/
+}

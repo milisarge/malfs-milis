@@ -1,0 +1,17 @@
+# Tanım: Cinnamon ve Nemo için Çeviriler
+# URL: https://github.com/linuxmint/cinnamon-translations
+# Paketçi: Cihan_Alkan
+# Gerekler: 
+# Grup: cinnamon
+
+isim=cinnamon-translations
+surum=3.6.4
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum    
+  make
+  install -m 0755 -d $PKG/usr/share/locale/ 
+  cp -Rp usr/share/locale/* $PKG/usr/share/locale/
+}

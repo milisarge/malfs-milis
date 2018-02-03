@@ -1,0 +1,30 @@
+# Tanım: Cinnamon Denetim Merkezi
+# URL: https://github.com/linuxmint/cinnamon-control-center
+# Paketçi: Cihan_Alkan
+# Gerekler: glib intltool python-gobject python-pillow python-pam docbook-xsl libgnomekbd colord glibmm network-manager-applet cinnamon-settings-daemon cinnamon-translations cinnamon-menus gnome-online-accounts
+# Grup: cinnamon
+
+isim=cinnamon-control-center
+surum=3.6.5
+devir=1
+kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum    
+    ./autogen.sh \
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var  \
+      --disable-systemd
+
+  #https://bugzilla.gnome.org/show_bug.cgi?id=656229
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+  make
+make DESTDIR=$PKG install
+  # Remove unused stuff
+  make -C shell DESTDIR=$PKG uninstall-binPROGRAMS uninstall-directoryDATA uninstall-uiDATA
+  rm $PKG/usr/share/applications/cinnamon-{control-center,region-panel}.desktop
+  rm -R $PKG/etc
+
+  install -d -o root -g 102 -m 750 $PKG/usr/share/polkit-1/rules.d
+}
