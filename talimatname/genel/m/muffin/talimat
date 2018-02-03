@@ -11,7 +11,8 @@ kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.t
 
 derle() {
 cd $isim-$surum
-  
+  gio-querymodules /usr/lib/gio/modules
+  glib-compile-schemas /usr/share/glib-2.0/schemas/
   PYTHON=python ./autogen.sh \
       --prefix=/usr \
       --sysconfdir=/etc \
@@ -23,7 +24,7 @@ cd $isim-$surum
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=656231
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  tamir_masaustu
+  
   make
   make DESTDIR=$PKG install
   make -C src DESTDIR="$PKG" uninstall-binPROGRAMS uninstall-desktopfilesDATA
