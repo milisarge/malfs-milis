@@ -1,0 +1,66 @@
+# Tanım: Okullar ve üniversiteler için interaktif beyaz tahta yazılımı
+# URL: http://openboard.ch/index.en.html
+# Paketçi: Cihan Alkan
+# Gerekler: qt5 libpaper openssl
+# Grup: eğitim
+
+isim=openboard
+surum=1.3.6
+devir=1
+
+kaynak=(https://github.com/OpenBoard-org/OpenBoard/archive/v$surum.tar.gz::$isim-$surum.tar.gz
+        https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.tar.gz::OpenBoard-ThirdParty-master.tar.gz
+        ssl10.patch
+        qchar.patch
+        qtmultimediadefs.patch
+        openboard.desktop)
+
+
+derle() {
+
+  rm -rf $SRC/OpenBoard-ThirdParty
+  mv $SRC/OpenBoard-ThirdParty-master $SRC/OpenBoard-ThirdParty
+
+  cd $SRC/OpenBoard-$surum
+  patch -p1 < $SRC/ssl10.patch
+  patch -p1 < $SRC/qchar.patch
+  patch -p1 < $SRC/qtmultimediadefs.patch
+  cd $SRC/OpenBoard-ThirdParty
+  
+  cd freetype
+  qmake-qt5 freetype.pro -spec linux-g++
+  make
+  cd ..
+
+  cd quazip
+  qmake-qt5 quazip.pro -spec linux-g++
+  make
+  cd ..
+
+  cd xpdf/xpdf-3.04
+  ./configure --with-freetype2-library="../../freetype/lib/linux" --with-freetype2-includes="../../freetype/freetype-2.6.1/include"
+  cd ..
+  qmake-qt5 xpdf.pro -spec linux-g++
+  make
+  cd ..
+
+  cd "$SRC/OpenBoard-$surum"
+  qmake-qt5 OpenBoard.pro -spec linux-g++
+  make
+
+  mkdir -p $PKG/opt/openboard
+
+  for i in customizations etc i18n library; do
+    cp -rp $SRC/OpenBoard-$surum/resources/$i $PKG/opt/openboard;
+  done
+
+  cp -rp $SRC/OpenBoard-$surum/resources/images/OpenBoard.png $PKG/opt/openboard/
+  cp -rp build/linux/release/product/OpenBoard $PKG/opt/openboard/
+
+  mkdir -p $PKG/usr/share/applications
+  cp -rp $SRC/openboard.desktop $PKG/usr/share/applications
+
+  mkdir -p $PKG/usr/bin
+  ln -s /opt/openboard/OpenBoard $PKG/usr/bin/openboard
+}
+
