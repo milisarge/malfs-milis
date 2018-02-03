@@ -114,6 +114,7 @@ _talimatsiz_dizin="ilgili dizinde talimat bulunamadı!"
 _dosya_yolu_bulunamadi="dosya yolu bulunamadı!"
 _shasum_uyumsuzluk="shasum uyumsuzluğu tespit edildi!"
 _gerekler_belirleniyor="bağımlılıkları belirleniyor."
+_yerel_paket_yok="mevcut dizinde mps.lz paketi yok!"
 _paket_kuruldu="paketi kuruldu."
 _paket_kurulu="kurulu"
 _paket_kurulu_degil="paketi kurulu değil!"
@@ -149,6 +150,9 @@ hata_olustu(){
 		;;
 	"_talimat_bulunamadi")
 		_mesaj="$_talimat_bulunamadi"	
+		;;
+	"_yerel_paket_yok")
+		_mesaj="$_yerel_paket_yok"	
 		;;
 	*)
 		_mesaj="böyle bir hata yok"
@@ -909,7 +913,7 @@ paket_kur_oto(){
 	for kpkt in `cat $kliste`;do
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
-			mps -k "$pak" && paket_inkur_oto "$pkt"
+			yerelden_kur "$pak" && paket_inkur_oto "$pkt"
 		done
 	done
 	rm -rf otokur.list
@@ -927,7 +931,7 @@ paket_kur_oto_zorla(){
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
 			paket_sil "$pkt" "evet"
-			mps -k "$pak" && paket_inkur_oto "$pkt"
+			yerelden_kur "$pak" && paket_inkur_oto "$pkt"
 		done
 	done
 	rm -rf otokur.list
@@ -938,7 +942,7 @@ paket_kur_liste(){
 	for kpkt in `cat $1`;do
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
-			mps -k "$pak"
+			yerelden_kur "$pak"
 		done
 	done
 }
@@ -949,7 +953,7 @@ paket_kur_liste_zorla(){
 		for pkt in `ls $kpkt* | cut -d'#' -f1`;do
 			pak=`ls "$pkt#"*`
 			paket_sil "$kpkt" "evet"
-			mps -k "$pak"
+			yerelden_kur "$pak"
 		done
 	done
 }
@@ -1545,7 +1549,7 @@ paket_derle(){
 			fi
 			if [ "$kurulum_onay" = "evet" ];then
 				for kpkt in `ls $derpaket* | cut -d'#' -f1`;do
-					mps -k "$kpkt#"*
+					yerelden_kur "$kpkt#"*
 				done	
 			fi
 			mv *.mps.lz ../
@@ -2349,7 +2353,7 @@ kurulum_dogrulama(){
 			ryaz 32 "$kuruland hasarlı kurulum tesbiti!"
 			rm -r $VT/$kuruland
 			paket_indir $kuruland
-			mps -k "$paketdepo/$kuruland"*.mps.lz
+			yerelden_kur "$paketdepo/$kuruland"*.mps.lz
 			ryaz 32  "$kuruland hasarlı kurulum onarıldı."
 		fi
 	done
@@ -2448,7 +2452,7 @@ kurulum_dogrulama_icerik(){
 		#onarma
 		rm -r $VT/$paketadi
 		paket_indir $paketadi
-		mps -k "$paketdepo/$paketadi#"*.mps.lz
+		yerelden_kur "$paketdepo/$paketadi#"*.mps.lz
 		ryaz 32  "$paketadi hasarlı kurulum onarıldı."
 	else
 		ryaz 31 "$paketadi $_paket_kurulu_degil"
@@ -2668,18 +2672,25 @@ paket_indir(){
 
 
 yerelden_kur(){
-	local silme
-	pkontrol=`basename $1 | grep -w "mps.lz"`
+	local silme _ypaket
+	[ $1 ] && _ypaket=$1 || hata_olustu "_yerel_paket_yok"
+	if [ $2 ];then
+		if [ "$2" == "-kok" ] && [ -d "$3" ]; then
+			kokdizin="$3"
+			tekrarkur="evet"
+		fi
+	fi
+	pkontrol=`basename ${_ypaket} | grep -w "mps.lz"`
 	if [ ! -z "$pkontrol" -a "$pkontrol" != "" ]; then
-		paketad=`echo "$1" | cut -d'#' -f1`	
+		paketad=`echo "${_ypaket}" | cut -d'#' -f1`	
 		paketad=`basename $paketad`
 		kkont=`kurulu_kontrol "$paketad"`		
 		if [ "$kkont" = "degil" ];then
-			icerik_ekle "$1"
+			icerik_ekle "${_ypaket}"
 		elif [ "$kkont" = "kurulu" ];then
 			if [ "$tekrarkur" = "hayir" ];then
 				while true; do
-					ryaz 31 "$1 paketi zaten kurulu silinip kurulsun mu?"
+					ryaz 31 "${_ypaket} paketi zaten kurulu silinip kurulsun mu?"
 					read -p "e veya h -> " eh
 					case $eh in
 						[Ee]* ) silme="e"; break;;
@@ -2691,15 +2702,15 @@ yerelden_kur(){
 			if [ "$silme" = "e" ];then
 				ryaz 33 "silinecekelerin kontrolu için"
 				paket_sil "$paketad"
-				icerik_ekle "$1"
+				icerik_ekle "${_ypaket}"
 			fi
 		else
-			icerik_ekle "$1"
+			icerik_ekle "${_ypaket}"
 			#while true; do
-				#ryaz 31 "$1 paketi talimatname dışı.Yine de kurulsun mu? (kokdizin=$kokdizin) "
+				#ryaz 31 "${_ypaket} paketi talimatname dışı.Yine de kurulsun mu? (kokdizin=$kokdizin) "
 				#read -p "e veya h -> " eh
 				#case $eh in
-				#	[Ee]* ) icerik_ekle "$1"; break;;
+				#	[Ee]* ) icerik_ekle "${_ypaket}"; break;;
 				#	[Hh]* ) break;;
 				#	* ) echo "e veya h";;
 				#esac
@@ -2771,11 +2782,9 @@ ayarlar() {
 				agdan_kur "$2" ;;
 			### mps -k paketismi..mps.lz = yerel dizindeki paketi kurar.
 			-k)
-				if [ "$3" == "-kok" ] && [ -d "$4" ]; then
-					kokdizin="$4"
-					tekrarkur="evet"
-				fi
-				yerelden_kur "$2" ;;
+				shift
+				yerelden_kur "$@" 
+				exit 0 ;;
 			### mps sil|-s paketismi = ilgili paketi onaylı kaldırır.
 			-s|sil)
 				if [[ "$2" == "py-"* ]]; then
