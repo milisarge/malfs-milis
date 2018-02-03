@@ -26,6 +26,7 @@ lfs=/mnt/lfs
 rootfs=/mnt/rootfs
 ikincil=/mnt/ikincil
 kaynaklar=/mnt/sources
+paketdepo=/depo/paketler
 
 
 [ ! -f $ortam ] && exit 1
@@ -47,6 +48,7 @@ ortam_bagla(){
 	mount -t aufs -o br=$ikincil=rw:$rootfs=ro none $lfs/ 
 	mkdir -p $lfs/sources
 	mount -t aufs -o br=$kaynaklar=rw none $lfs/sources/
+	mount -t aufs -o br=$paketdepo=rw none $lfs/depo/paketler
 }
 
 ortam_coz()
