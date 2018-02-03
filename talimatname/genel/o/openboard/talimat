@@ -1,6 +1,6 @@
 # Tanım: Okullar ve üniversiteler için interaktif beyaz tahta yazılımı
 # URL: http://openboard.ch/index.en.html
-# Paketçi: Cihan Alkan
+# Paketçi: Cihan_Alkan
 # Gerekler: qt5 libpaper openssl
 # Grup: eğitim
 
@@ -62,5 +62,6 @@ derle() {
 
   mkdir -p $PKG/usr/bin
   ln -s /opt/openboard/OpenBoard $PKG/usr/bin/openboard
+  /usr/lib/qt5/bin/lrelease $PKG/opt/openboard/i18n/OpenBoard_tr.ts -qm $PKG/opt/openboard/i18n/OpenBoard_tr.qm
 }
 
