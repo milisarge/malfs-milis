@@ -1,0 +1,18 @@
+# Tanım: Başka bir JSON Kütüphanesi
+# URL: http://lloyd.github.com/yajl
+# Paketçi: Cihan_Alkan
+# Gerekler: cmake
+# Grup: kütüphane
+
+isim=yajl
+surum=2.1.0
+devir=1
+kaynak=(https://github.com/lloyd/yajl/archive/$surum.tar.gz::yajl-$surum.tar.gz)
+
+derle() {
+  cd yajl-$surum
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  make
+  make DESTDIR="$PKG" install
+  install -Dm644 COPYING "$PKG/usr/share/licenses/yajl/LICENSE"
+}
