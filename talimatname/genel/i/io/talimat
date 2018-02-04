@@ -1,7 +1,7 @@
 # Tanım: Io Smalltalk benzer programlama dili
 # URL: http://www.iolanguage.com/
 # Paketçi: milisarge
-# Gerekler: git cmake pcre libsndfile xorg-libxmu freetype libedit libxml2 libtiff libevent yajl mariadb libpng python freeglut libjpeg-turbo libtheora 
+# Gerekler: git cmake pcre libsndfile xorg-libxmu freetype libedit libxml2 libtiff libevent yajl mariadb libpng python3 freeglut libjpeg-turbo libtheora 
 # Grup: geliştirme
 
 isim=io
