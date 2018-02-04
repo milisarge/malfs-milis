@@ -18,5 +18,5 @@ derle() {
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make -j1
 	make -C $SRC/io/build DESTDIR="$PKG" install
-	install -Dm644 license/bsd_license.txt "$PKG/usr/share/licenses/$isim/bsd_license.txt"
+	install -Dm644 $SRC/io/license/bsd_license.txt "$PKG/usr/share/licenses/$isim/bsd_license.txt"
 }
