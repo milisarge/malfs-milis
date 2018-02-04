@@ -1,0 +1,22 @@
+# Tanım: Io Smalltalk benzer programlama dili
+# URL: http://www.iolanguage.com/
+# Paketçi: milisarge
+# Gerekler: git cmake pcre libsndfile xorg-libxmu freetype libedit libxml2 libtiff libevent yajl mariadb libpng python freeglut libjpeg-turbo libtheora 
+# Grup: geliştirme
+
+isim=io
+surum=git
+devir=1
+kaynak=()
+
+derle() {
+	git_indir https://github.com/stevedekorte/io.git $isim
+	cd $SRC/io
+	sed -ri "s|20[0-9]+|$surum|" libs/iovm/source/IoVersion.h
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make -j1
+	make -C build DESTDIR="$PKG" install
+	install -Dm644 license/bsd_license.txt "$PKG/usr/share/licenses/$isim/bsd_license.txt"
+}
