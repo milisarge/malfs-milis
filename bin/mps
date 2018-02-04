@@ -2888,7 +2888,8 @@ ayarlar() {
 				paket_inkur_oto "$2" ;;	
 			### mps gkur paketismi = git-paketvt günceller ve yerelde mps.lz varsa yereldekini yoksa sunucudan paketi indirip kurar.
 			gkur)
-				git_guncelle && paketvt_guncelle && paket_inkur_oto "$2" ;;		
+				git_guncelle && paketvt_guncelle && paket_inkur_oto "$2" 
+				exit 0 ;;		
 			### mps kur paketismi = yerelde mps.lz varsa yereldekini yoksa sunucudan paketi indirip kurar.
 			kur)
 				if [[ "$2" == "py-"* ]]; then
