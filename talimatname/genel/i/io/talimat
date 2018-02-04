@@ -7,16 +7,17 @@
 isim=io
 surum=git
 devir=1
-kaynak=()
+kaynak=(https://github.com/stevedekorte/io/archive/master.tar.gz::$isim-master.tar.gz)
 
 derle() {
-	git_indir https://github.com/stevedekorte/io.git $isim
-	cd $SRC/io
+	#git_indir https://github.com/stevedekorte/io.git $isim
+	#cd $SRC/io
+	cd $SRC/$isim-master
 	sed -ri "s|20[0-9]+|$surum|" libs/iovm/source/IoVersion.h
 	mkdir -p build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make -j1
-	make -C $SRC/io/build DESTDIR="$PKG" install
-	install -Dm644 $SRC/io/license/bsd_license.txt "$PKG/usr/share/licenses/$isim/bsd_license.txt"
+	make -C../build DESTDIR="$PKG" install
+	install -Dm644 ../license/bsd_license.txt "$PKG/usr/share/licenses/$isim/bsd_license.txt"
 }
