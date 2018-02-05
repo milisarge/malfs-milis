@@ -1,0 +1,37 @@
+# Tanım: Açık kaynak kodlu ön muhasebe programı
+# URL: http://www.seyhanproject.com
+# Paketçi: Cihan_Alkan
+# Gerekler: openjdk
+# Grup: ofis_düzenleyici
+
+isim=seyhan
+surum=1.0.19
+devir=1
+
+kaynak=(http://www.seyhanproject.com/downloads/seyhan-1.0.19.zip
+        http://www.seyhanproject.com/docs/img/logo.png)
+
+derle() {
+
+mkdir -pv $PKG/opt/seyhan
+mv $SRC/$isim-$surum/* $PKG/opt/seyhan/
+
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/seyhan.desktop << "EOF" &&
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Seyhan Ön Muhasebe
+Comment=Açık kaynak kodlu ön muhasebe programı
+Icon=seyhan
+Exec=firefox http://localhost:9000
+Categories=Network;GTK;Application;Browser;WebBrowser;
+StartupNotify=true
+Terminal=false
+EOF
+
+mkdir -pv $PKG/usr/share/pixmaps
+cp -r $SRC/logo.png $PKG/usr/share/pixmaps/seyhan.png
+echo "Kullanıcı Adı: super , Şifre: 1234"
+}
