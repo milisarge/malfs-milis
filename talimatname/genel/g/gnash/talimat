@@ -1,7 +1,7 @@
 # Tanım: GameSWF temmelli GNU SWF Player
 # URL: http://www.gnu.org/software/gnash/
 # Paketçi: Cihan_Alkan
-# Gerekler: giflib sdl libjpeg libpng glu fontconfig cairo ffmpeg jemalloc boost gtk2 libldap hicolor-icon-theme desktop-file-utils gconf gtkglext agg gdk-pixbuf2 xorg-mesa xulrunner boost
+# Gerekler: giflib sdl libjpeg libpng glu fontconfig agg cairo ffmpeg jemalloc boost gtk2 libldap hicolor-icon-theme desktop-file-utils gconf gtkglext agg gdk-pixbuf2 xorg-mesa xulrunner boost
 # Grup: medya
 
 isim=gnash
