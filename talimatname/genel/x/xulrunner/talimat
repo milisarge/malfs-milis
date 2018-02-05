@@ -15,7 +15,7 @@ derle() {
 
   mkdir ${PKG}/usr/bin/
 
-  cp -R "${SRC}/${isim}" "${PKG}/opt/${isim}"
+  cp -R "${SRC}/mozilla-release/${isim}" "${PKG}/opt/${isim}"
 
   ln -s "/opt/${isim}/${isim}" "${PKG}/usr/bin/${isim}"
 }
