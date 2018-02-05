@@ -1,0 +1,44 @@
+# Tanım: GameSWF temmelli GNU SWF Player
+# URL: http://www.gnu.org/software/gnash/
+# Paketçi: Cihan_Alkan
+# Gerekler: giflib sdl libjpeg libpng glu fontconfig cairo ffmpeg jemalloc boost gtk2 libldap hicolor-icon-theme desktop-file-utils gconf gtkglext agg gdk-pixbuf2 xorg-mesa xulrunner boost
+# Grup: medya
+
+isim=gnash
+surum=0.8.11
+devir=1
+kaynak=(http://git.savannah.gnu.org/cgit/gnash.git/snapshot/gnash-8a11e60585db4ed6bc4eafadfbd9b3123ced45d9.tar.gz
+        jemalloc_gnash.patch)
+
+derle() {
+  mv gnash-8a* gnash
+  cd $isim 
+
+  chmod +x autogen.sh
+  ./autogen.sh
+  patch -Np1 -i "${SRC}/jemalloc_gnash.patch"
+  sed -i 's#${JEMALLOC_CONFIG} --cxxflags#${JEMALLOC_CONFIG} --cflags#g' configure
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-plugins-install=system \
+    --enable-gui=sdl,gtk \
+    --disable-npapi \
+    --enable-media=ffmpeg \
+    --enable-renderer=all \
+    --enable-device=x11
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+
+  make
+
+  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$PKG" install install-plugin
+
+  install -m755 -d "$PKG/usr/share/gconf/schemas"
+
+  gconf-merge-schema "$PKG/usr/share/gconf/schemas/gnash.schemas" --domain gnash \
+    "$PKG"/usr/share/applications/*.schemas
+
+  rm -f "$PKG"/usr/share/applications/*.schemas
+}
