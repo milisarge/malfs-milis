@@ -1,0 +1,35 @@
+# Tanım: LISP benzeri sağlam plt şema programlama dili
+# Url: http://racket-lang.org
+# Paketçi: milisarge
+# Gerekler: gsfonts sqlite gtk3
+# Grup: geliştirme
+
+isim=racket
+surum=6.12
+devir=1
+kaynak=(http://download.racket-lang.org/installers/${surum}/${isim}-${surum}-src.tgz)
+
+derle() {
+	cd "${isim}-${surum}"
+	echo "Icon=drracket" >> share/pkgs/drracket/drracket/drracket.desktop
+	cd src
+	[[ -d build ]] || mkdir build
+	cd build
+	export CFLAGS+=" -fPIC"
+	../configure --prefix=/usr --sysconfdir=/etc --enable-shared --disable-strip
+	make
+	make DESTDIR="${PKG}" install
+	cd ..
+	install -Dm644 COPYING-libscheme.txt "${PKG}/usr/share/licenses/${isim}/LICENSE"
+
+	install -Dm644 ../share/pkgs/drracket/drracket/drracket.desktop "${PKG}/usr/share/applications/drracket.desktop"
+	install -d "${PKG}"/usr/share/icons/hicolor/{16x16,32x32,48x48,256x256}/apps
+	ln -s /usr/share/racket/pkgs/icons/plt-16x16.png "${PKG}/usr/share/icons/hicolor/16x16/apps/drracket.png"
+	ln -s /usr/share/racket/pkgs/icons/plt-32x32.png "${PKG}/usr/share/icons/hicolor/32x32/apps/drracket.png"
+	ln -s /usr/share/racket/pkgs/icons/plt-48x48.png "${PKG}/usr/share/icons/hicolor/48x48/apps/drracket.png"
+	ln -s /usr/share/racket/pkgs/icons/plt-logo-red-diffuse.png "${PKG}/usr/share/icons/hicolor/256x256/apps/drracket.png"
+
+	# sloppy
+	find "${PKG}/usr/share/doc/" -delete
+}
+
