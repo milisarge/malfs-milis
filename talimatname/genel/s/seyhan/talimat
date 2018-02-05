@@ -2,7 +2,7 @@
 # URL: http://www.seyhanproject.com
 # Paketçi: Cihan_Alkan
 # Gerekler: openjdk
-# Grup: ofis_düzenleyici
+# Grup: ofis_düzenleyici unzip
 
 isim=seyhan
 surum=1.0.19
