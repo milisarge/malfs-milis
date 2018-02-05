@@ -1,8 +1,8 @@
 # Tanım: Açık kaynak kodlu ön muhasebe programı
 # URL: http://www.seyhanproject.com
 # Paketçi: Cihan_Alkan
-# Gerekler: openjdk
-# Grup: ofis_düzenleyici unzip
+# Gerekler: openjdk unzip
+# Grup: ofis_düzenleyici
 
 isim=seyhan
 surum=1.0.19
@@ -11,7 +11,7 @@ devir=1
 kaynak=(seyhan-logo.png)
 
 derle() {
-wget http://www.seyhanproject.com/downloads/seyhan-$surum.zip \
+wget -nc http://www.seyhanproject.com/downloads/seyhan-$surum.zip \
 --user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 \
 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36" \
 -O $DERLEME_KAYNAKDIZIN/seyhan-$surum.zip
