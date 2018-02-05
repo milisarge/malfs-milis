@@ -1,0 +1,20 @@
+# Tanım: EWMH uyumlu pencere yöneticisi yönetimi
+# URL: http://tripie.sweb.cz/utils/wmctrl/
+# Paketçi: milisarge
+# Gerekler: glib xorg-libxmu 
+# Grup: sistem
+
+isim=wmctrl
+surum=1.07
+devir=1
+kaynak=(http://tripie.sweb.cz/utils/wmctrl/dist/wmctrl-1.07.tar.gz
+		http://archive.debian.org/debian/pool/main/w/wmctrl/wmctrl_1.07-6.diff.gz)
+
+derle() {
+  cd $isim-$surum
+  gunzip $SRC/wmctrl_$surum-6.diff.gz
+  patch -p1 -i "$SRC/wmctrl_$surum-6.diff"
+  ./configure --bindir="$PKG/usr/bin" --mandir="$PKG/usr/share/man"
+  make
+  make install
+}
