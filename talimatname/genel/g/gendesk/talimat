@@ -1,0 +1,22 @@
+# Tanım: Masaüstü dosyaları oluşturmak için yardımcı program
+# URL: http://gendesk.roboticoverlords.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: go18 mercurial
+# Grup: sistem
+
+isim=gendesk
+surum=0.7
+devir=1
+kaynak=(http://roboticoverlords.org/$isim/$isim-$surum.tar.xz
+        http://roboticoverlords.org/images/default.png)
+
+derle() {
+  cd "$isim-$surum"
+
+  GOPATH=`pwd` /usr/bin/go get -d -v
+  GOPATH=`pwd` /usr/bin/go build
+  install -Dm755 "$isim-$surum" "$PKG/usr/bin/$isim"
+  install -Dm644 "$SRC/default.png" "$PKG/usr/share/pixmaps/default.png"
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
+}
+
