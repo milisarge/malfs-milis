@@ -1,12 +1,13 @@
 # Tanım: video linklerini ayrıştıran kütüphane
-# URL:         http://quvi.sourceforge.net/
-# Paketçi:    milisarge
-# Gerekler:  libquvi-scripts lua51
+# URL: http://quvi.sourceforge.net/
+# Paketçi: milisarge
+# Gerekler: libquvi-scripts lua51
+# Grup: kütüphane
 
 isim=libquvi
-surum=0.4.1
+surum=0.9.4
 devir=1
-kaynak=(http://downloads.sourceforge.net/sourceforge/quvi/$isim-$surum.tar.xz)
+kaynak=(https://downloads.sourceforge.net/sourceforge/quvi/${isim}-${surum}.tar.xz)
 
 derle() {
     cd "$isim-$surum"
