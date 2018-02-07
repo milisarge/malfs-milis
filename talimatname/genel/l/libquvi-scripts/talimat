@@ -4,9 +4,9 @@
 # Gerekler:  lua
 
 isim=libquvi-scripts
-surum=0.4.21
+surum=0.9.20131130
 devir=1
-kaynak=(http://downloads.sourceforge.net/sourceforge/quvi/$isim-$surum.tar.xz)
+kaynak=(https://downloads.sourceforge.net/sourceforge/quvi/$isim-$surum.tar.xz)
 
 derle() {
     cd "$isim-$surum"
