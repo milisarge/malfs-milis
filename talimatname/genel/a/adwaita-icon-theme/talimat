@@ -1,16 +1,17 @@
 # Tanım: Adwaita ikon teması.
 # URL: http://www.gnome.org/
 # Paketçi: milisarge
-# Gerekler: intltool gtk-update-icon-cache hicolor-icon-theme icon-naming-utils librsvg
+# Gerekler: intltool gtk-update-icon-cache hicolor-icon-theme icon-naming-utils librsvg intltool gtk3 gnome-common
 # Grup: grafik_tasarım
 
 isim=adwaita-icon-theme
-surum=3.24.0
+surum=3.26.1
 devir=1
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum:0:4}/$isim-$surum.tar.xz)
 
 derle() {
 cd $isim-$surum
+autoreconf -fvi
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
