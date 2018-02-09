@@ -1,0 +1,28 @@
+# Tanım: Maksimum TCP bant genişliğini ölçmek için bir araç
+# URL: https://sourceforge.net/projects/iperf2/
+# Paketçi: Cihan_Alkan
+# Gerekler: 
+# Grup: ağ
+
+isim=iperf
+surum=2.0.10
+devir=1
+kaynak=(http://downloads.sourceforge.net/iperf2/iperf-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  # kaynak diziden yama uygulayın 
+  local filename
+  for filename in "${source[@]}"; do
+    if [[ "$filename" =~ \.patch$ ]]; then
+      patch -p1 -N -i "$SRC/${filename##*/}"
+    fi
+  done
+  :
+  ./configure --prefix=/usr \
+              --enable-ipv6 \
+              --enable-multicast \
+              --enable-threads
+  make
+  make DESTDIR="$PKG" install
+}

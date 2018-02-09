@@ -10,9 +10,11 @@ devir=1
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum:0:4}/$isim-$surum.tar.xz)
 
 derle() {
-cd $isim-$surum
-autoreconf -fvi
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	gio-querymodules /usr/lib/gio/modules
+	glib-compile-schemas /usr/share/glib-2.0/schemas/
+	autoreconf -fvi
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }
