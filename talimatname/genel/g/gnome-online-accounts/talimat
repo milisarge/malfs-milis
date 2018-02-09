@@ -1,17 +1,18 @@
-# Tanım: GNOME service to access online accounts.
+# Tanım: Çevrimiçi hesaplara erişmek için GNOME hizmeti.
 # URL: http://www.gnome.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gcr kerberos libgnome-keyring libnotify librest libsecret json-glib docbook-xsl gobject-introspection webkit2gtk3 telepathy-glib gtk-update-icon-cache
+# Grup: ağ
 
 isim=gnome-online-accounts
-surum=3.22.2
+surum=3.26.2
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/${isim}/${surum%.*}-$surum.tar.xz) 
+kaynak=(https://git.gnome.org/browse/$isim/snapshot/$isim-$surum.tar.xz) 
 
 derle() {
 cd $isim-$surum
-./configure --prefix=/usr \
+./autogen.sh --prefix=/usr \
 --enable-media-server \
 --enable-kerberos \
 --enable-lastfm \
