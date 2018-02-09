@@ -1,0 +1,48 @@
+# Tanım: Sahne tabanlı, esnek 3D motor C ++ ile yazılmıştır
+# URL: http://www.ogre3d.org
+# Paketçi: Cihan_Alkan
+# Gerekler: boost cmake doxygen graphviz ttf-dejavu xorg-mesa mercurial python swig tinyxml sdl2
+# Grup: geliştirme
+
+
+isim=ogre
+surum=1.10.11
+devir=1
+kaynak=(https://github.com/OGRECave/ogre/archive/v${surum}.tar.gz)
+
+derle() {
+
+  cd ogre-${surum}
+
+  [[ -d build ]] && rm -rf build
+  mkdir build && cd build
+
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DOGRE_INSTALL_SAMPLES=TRUE \
+    -DOGRE_INSTALL_DOCS=TRUE \
+    -DOGRE_INSTALL_SAMPLES_SOURCE=TRUE \
+    -DOGRE_BUILD_DEPENDENCIES=FALSE \
+    -DOGRE_BUILD_COMPONENT_PYTHON=TRUE \
+    -DCMAKE_BUILD_TYPE=Release
+
+  make
+  make OgreDoc
+
+  make DESTDIR=${PKG} install
+
+  mv ${PKG}/usr/bin/SampleBrowser ${PKG}/usr/bin/OgreSampleBrowser
+  install -Dm644 ../LICENSE ${PKG}/usr/share/licenses/${isim}/LICENSE
+
+  # move docs out of this package
+  mv ${PKG}/usr/share/OGRE/docs ${SRC}/docs
+
+  # move docs into this package
+  install -dm755 ${PKG}/usr/share/doc
+  mv ${SRC}/docs ${PKG}/usr/share/doc/OGRE/
+
+  # symlink for docs
+  install -dm755 ${PKG}/usr/share/OGRE/
+  cd ${PKG}/usr/share
+  ln -s /usr/share/doc/OGRE/ OGRE/docs
+}
