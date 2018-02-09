@@ -1,19 +1,23 @@
 # Tanım: C/C++ için çoklu platform oyun geliştirme kütüphanesi.
 # URL: http://alleg.sourceforge.net/
 # Paketçi: milisarge
-# Gerekler: flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga
+# Gerekler: flac gtk3 libidn libvorbis xorg-glu openal physfs xorg-libxpm xorg-libxxf86dga ninja
 # Grup: kütüphane
 
 isim=allegro
-surum=5.1.12
+surum=5.2.3.0
 devir=1
-kaynak=(http://download.gna.org/allegro/allegro-unstable/$surum/$isim-$surum.tar.gz)
+
+kaynak=(https://github.com/liballeg/allegro5/releases/download/5.2.3.0/allegro-5.2.3.0.tar.gz)
 
 derle() {
-    cd $isim-$surum.0
-    cmake \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_BUILD_TYPE=Release .
-    make
-    make DESTDIR=$PKG install
+  mkdir -p build && cd build
+  cmake "../allegro-$surum" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DWANT_DOCS=OFF \
+    -GNinja
+  ninja
+  cd ../
+  DESTDIR="$PKG" ninja -C build install
 }
