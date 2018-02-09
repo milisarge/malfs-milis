@@ -1,19 +1,20 @@
 # Tanım: Güvenli gerçek zamanlı taşıyıcı protokolü
 # URL: https://github.com/cisco/libsrtp
-# Paketçi:	milisarge
-# Gerekler:	
+# Paketçi: milisarge
+# Gerekler: openssl
+# Grup: kütüphane
 
 isim=libsrtp
-surum=1.5.4
+surum=2.1.0
 devir=1
 kaynak=(https://github.com/cisco/libsrtp/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
 	cd $isim-$surum
 	autoreconf -fvi
-	./configure --prefix=/usr
-	#./configure --prefix=/usr
-    make libsrtp.a shared_library
+  ./configure --prefix=/usr --enable-openssl
+  make all
+  make shared_library
 	make DESTDIR="$PKG" install
-	install -Dm0644 LICENSE "${PKG}"/usr/share/licenses/${isim}/LICENSE
+    install -Dt "$PKG/usr/share/licenses/$isim" -m644 LICENSE
 }
