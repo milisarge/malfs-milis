@@ -1,0 +1,24 @@
+# Tanım: İş parçacıklı bağlantı havuzu ve dosya postası desteğiyle HTTP kitaplığı
+# URL: https://github.com/shazow/urllib3
+# Paketçi: Cihan_Alkan
+# Gerekler: python python3 python-setuptools python3-setuptools
+# Grup: kütüphane
+
+isim=pyurllibs
+surum=1.22
+devir=1
+
+kaynak=(https://github.com/shazow/urllib3/archive/$surum.tar.gz::urllib3-$surum.tar.gz)
+
+derle() {
+  cp -a urllib3-$surum{,-py3}
+
+  cd "$SRC"/urllib3-$surum
+  python setup.py build
+  python setup.py install --root="$PKG" --optimize=1 --skip-build
+ 
+  cd "$SRC"/urllib3-$surum-py3
+  python3 setup.py build
+
+  python3 setup.py install --root="$PKG" --optimize=1 --skip-build
+}

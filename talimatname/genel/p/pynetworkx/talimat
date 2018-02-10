@@ -1,0 +1,23 @@
+# Tanım: Karmaşık ağların yapısı, dinamikleri ve işlevlerinin oluşturulması, manipülasyonu ve çalışılması için Python paketi.
+# URL: http://networkx.github.io
+# Paketçi: Cihan_Alkan
+# Gerekler: python python3 python-setuptools python3-setuptools pydecorator
+# Grup: kütüphane
+
+isim=pynetworkx
+surum=2.1
+devir=1
+
+kaynak=(https://github.com/networkx/networkx/archive/networkx-$surum.tar.gz::networkx-$surum.tar.gz)
+
+derle() {
+  cp -a networkx-networkx-$surum{,-py3} 
+  cd "$SRC"/networkx-networkx-$surum
+  python setup.py build
+  python setup.py install --root="$PKG" --optimize=1
+ 
+  cd "$SRC"/networkx-networkx-$surum-py3
+  python3 setup.py build
+
+  python3 setup.py install --root="$PKG" --optimize=1
+}
