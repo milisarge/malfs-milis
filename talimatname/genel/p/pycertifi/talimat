@@ -1,0 +1,24 @@
+# Tanım: Mozilla'nın CA Paketini sağlamak için Python paketi
+# URL: http://pypi.python.org/pypi/certifi
+# Paketçi: Cihan_Alkan
+# Gerekler: python python3 python-setuptools python3-setuptools
+# Grup: kütüphane
+
+isim=pycertifi
+surum=2018.1.18
+devir=1
+
+kaynak=(https://pypi.python.org/packages/15/d4/2f888fc463d516ff7bf2379a4e9a552fef7f22a94147655d9b1097108248/certifi-2018.1.18.tar.gz)
+
+derle() {
+  cp -a certifi-$surum{,-py3}
+
+  cd "$SRC"/certifi-$surum
+  python setup.py build
+  python setup.py install --root="$PKG" --optimize=1 --skip-build
+ 
+  cd "$SRC"/certifi-$surum-py3
+  python3 setup.py build
+
+  python3 setup.py install --root="$PKG" --optimize=1 --skip-build
+}

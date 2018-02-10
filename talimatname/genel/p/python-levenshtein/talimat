@@ -1,0 +1,15 @@
+# Tanım: Dize düzenleme uzaklıkları ve benzerlikleri hesaplamak için Python uzantısı
+# URL: http://pypi.python.org/pypi/python-Levenshtein/
+# Paketçi: Cihan Alkan
+# Gerekler: python python-setuptools
+# Grup: kütüphane
+
+isim=python-levenshtein
+surum=0.12.0
+devir=1
+kaynak=(https://files.pythonhosted.org/packages/source/p/python-Levenshtein/python-Levenshtein-$surum.tar.gz)
+
+derle() {
+  cd python-Levenshtein-$surum
+  pytho2 setup.py build install -O1 --prefix=/usr --root="$PKG"
+}
