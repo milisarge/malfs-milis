@@ -1,22 +1,17 @@
-# Tanım: C uygulaması geliştirme için küçük kütüphane
+# Tanım: C uygulaması geliştirme için küçük kütüphane.
 # URL: https://launchpad.net/libnih
-# Paketçi: milisarge
+# Paketçi: Cihan_Alkan
 # Gerekler: dbus
+# Grup: kütüphane
 
 isim=libnih
 surum=1.0.3
 devir=1
+kaynak=(https://launchpad.net/libnih/1.0/${surum}/+download/$isim-$surum.tar.gz)
 
-kaynak=(
-http://launchpad.net/libnih/1.0/$surum/+download/$isim-$surum.tar.gz)
-
-derle(){
-    cd $isim-$surum
-    ./configure --prefix=/usr
-    make
-    make DESTDIR=$PKG install    
+derle() {
+  cd $isim-$surum
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG"/ install
 }
-
-
-
-# NuTyX Pkgfile (http://nutyx.org)
