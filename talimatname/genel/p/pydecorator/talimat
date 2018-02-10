@@ -1,0 +1,23 @@
+# Tanım: Python Decorator modulü
+# URL: http://pypi.python.org/pypi/decorator
+# Paketçi: Cihan_Alkan
+# Gerekler: python python3 python-setuptools python3-setuptools
+# Grup: kütüphane
+
+isim=pydecorator
+surum=4.2.1
+devir=1
+
+kaynak=(https://pypi.python.org/packages/70/f1/cb9373195639db13063f55eb06116310ad691e1fd125e6af057734dc44ea/decorator-4.2.1.tar.gz)
+
+derle() {
+  cp -a decorator-$surum{,-py3} 
+  cd "$SRC"/decorator-$surum
+  python setup.py build
+  python setup.py install --root="$PKG" --optimize=1
+ 
+  cd "$SRC"/decorator-$surum-py3
+  python3 setup.py build
+
+  python3 setup.py install --root="$PKG" --optimize=1
+}
