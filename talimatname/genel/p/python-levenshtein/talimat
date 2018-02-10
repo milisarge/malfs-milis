@@ -11,5 +11,5 @@ kaynak=(https://files.pythonhosted.org/packages/source/p/python-Levenshtein/pyth
 
 derle() {
   cd python-Levenshtein-$surum
-  pytho2 setup.py build install -O1 --prefix=/usr --root="$PKG"
+  python2 setup.py build install -O1 --prefix=/usr --root="$PKG"
 }
