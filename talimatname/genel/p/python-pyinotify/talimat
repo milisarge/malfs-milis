@@ -1,0 +1,25 @@
+# Tanım: Python modülü, inotify ile Linux platformlarındaki dosya sistemleri olaylarını izlemek için kullanılır.
+# URL: http://github.com/seb-m/pyinotify
+# Paketçi: Cihan_Alkan
+# Gerekler: python
+# Grup: kütüphane
+
+isim=python-pyinotify
+surum=0.9.6
+devir=1
+kaynak=(https://github.com/seb-m/pyinotify/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $SRC/pyinotify-$surum
+
+  python setup.py build
+  sed \
+    -e 's_#!/usr/bin/env python_&2_' \
+  -i python2/pyinotify.py
+
+  python setup.py install --root=$PKG -O1
+
+  install -d $PKG/usr/share/licenses/python2-pyinotify
+  install -m644 COPYING \
+    $PKG/usr/share/licenses/python2-pyinotify
+}
