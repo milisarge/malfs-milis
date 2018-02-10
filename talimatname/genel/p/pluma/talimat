@@ -2,9 +2,10 @@
 # URL: http://www.mate-desktop.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool itstool gobject-introspection iso-codes gtksourceview3 libpeas 
+# Grup: mate
 
 isim=pluma
-surum=1.18.2
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
