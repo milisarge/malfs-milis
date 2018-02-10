@@ -4,7 +4,7 @@
 # Gerekler: dbus-glib libwnck3 libcanberra libmateweather xorg-libsm mate-menus mate-desktop intltool itstool gobject-introspection
 
 isim=mate-panel
-surum=1.18.3
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
