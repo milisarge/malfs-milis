@@ -1,35 +1,56 @@
-# Tanım: Tripwire paketi, belirli bir sistemdeki dosyaların bütünlüğünü doğrulamak için kullanılan programları içerir.
-# URL: http://downloads.sourceforge.net/tripwire
-# Paketçi: milisarge
-# Gerekler:  	
+# Tanım: Bir saldırı tespit sistemi
+# URL: http://sourceforge.net/projects/tripwire/
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: güvenlik
 
 isim=tripwire
-surum=2.4.2.2
+surum=2.4.3.6
 devir=1
-kaynak=(http://downloads.sourceforge.net/tripwire/$isim-$surum-src.tar.bz2)
+kaynak=(https://github.com/Tripwire/tripwire-open-source/archive/2.4.3.6.tar.gz::$isim-$surum.tar.gz
+        twpol.txt 
+        twcfg.txt)
 
 derle() {
+  cd tripwire-open-source-$surum
 
-    cd $isim-$surum-src
-    
-	sed -i -e 's@TWBIN="${prefix}@TWBIN="$PKG/usr@' install/install.cfg            
-	sed -i -e 's@TWPOLICY="${sysconfdir}@TWPOLICY="$PKG/etc@' install/install.cfg            
-	sed -i -e 's@TWDB="${prefix}@TWDB="$PKG/var@' install/install.cfg            
-	sed -i -e 's/!Equal/!this->Equal/' src/cryptlib/algebra.h                
-	sed -i -e '/stdtwadmin.h/i#include <unistd.h>' src/twadmin/twadmincl.cpp 
-	sed -i -e '/TWMAN/ s|${prefix}|$PKG/usr/share|' \
-       -e '/TWDOCS/s|${prefix}/doc/tripwire|$PKG/usr/share/doc/tripwire-2.4.2.2|' \
-       install/install.cfg                                               
-	sed -i -e 's/eArchiveOpen e\([^)]*)\)/throw ( eArchiveOpen\1 )/' \
-       -e '/throw e;/d' src/core/archive.cpp                             
+#build package
+#  CFLAGS="$CFLAGS -fno-strict-aliasing" CXXFLAGS="$CXXFLAGS -fno-strict-aliasing" \
+    autoreconf --force --install
+    ./autogen.sh
+    ./configure --sysconfdir=/etc/tripwire
+  make -j4
 
-	./configure --prefix=/usr --sysconfdir=/etc/tripwire 
-                    
-	make
-	
-	install -v -m750 -d $PKG/usr/share/doc/tripwire-2.4.2.2
-	cp -v policy/*.txt $PKG/usr/share/doc/tripwire-2.4.2.2
-	
-    make DESTDIR=$PKG install
+  # This package doesn't have a typical make install, so we do it by hand.
+ 
+#create var/lib directories
+  install -d ${PKG}/var/lib
+  install -d -m700 ${PKG}/var/lib/tripwire
+  install -d -m700 ${PKG}/var/lib/tripwire/report
 
+#install binaries
+  install -d ${PKG}/usr/bin
+  install -m755 bin/siggen ${PKG}/usr/bin/
+  install -m755 bin/tripwire ${PKG}/usr/bin/
+  install -m755 bin/twadmin ${PKG}/usr/bin/
+  install -m755 bin/twprint ${PKG}/usr/bin/
+
+#copy install files for use by user after install, and fix a path
+  install -d ${PKG}/usr/share/$isim
+  install -m755 installer/install.sh ${PKG}/usr/share/$isim/
+  install -m644 installer/install.cfg ${PKG}/usr/share/$isim/
+  sed -i 's#./install/install.cfg#./install.cfg#' ${PKG}/usr/share/$isim/install.sh
+
+#install man pages - FS#13766 fixed
+  install -d ${PKG}/usr/share/man/{man4,man5,man8}
+  install -m644 man/man4/*.4 ${PKG}/usr/share/man/man4/
+  install -m644 man/man5/*.5 ${PKG}/usr/share/man/man5/
+  install -m644 man/man8/*.8 ${PKG}/usr/share/man/man8/
+
+#install configuration files
+  mkdir ${PKG}/etc
+  mkdir ${PKG}/etc/tripwire
+  install -d ${PKG}/etc/$isim
+  install -m644 ${SRC}/twpol.txt ${PKG}/etc/tripwire/twpol.txt
+  install -m644 ${SRC}/twcfg.txt ${PKG}/etc/tripwire/twcfg.txt
 }
