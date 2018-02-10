@@ -1,0 +1,44 @@
+# Tanım: C + + 11'i hedef alan C ++ standart kütüphanesinin yeni bir uygulaması.
+# URL: http://libcxx.llvm.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: clang cmake python3 libunwind
+# Grup: kütüphane
+
+isim=libcxx
+surum=5.0.1
+devir=1
+
+kaynak=(https://releases.llvm.org/$surum/llvm-$surum.src.tar.xz
+        https://releases.llvm.org/$surum/libcxx-$surum.src.tar.xz
+        https://releases.llvm.org/$surum/libcxxabi-$surum.src.tar.xz)
+
+derle() {
+   mv llvm* llvm
+   mv libcxxabi* llvm/projects/libcxxabi
+   mv libcxx-* llvm/projects/libcxx
+  sed -i 's/CREDITS.TXT/CREDITS/' llvm/projects/libcxx/LICENSE.TXT
+  sed -i 's/CREDITS.TXT/CREDITS/' llvm/projects/libcxxabi/LICENSE.TXT
+  [[ -d build ]] || mkdir build
+
+  cd build
+  CC=clang CXX=clang++ cmake \
+    -G "Unix Makefiles" \
+    -DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=On \
+    -DLIBCXX_INSTALL_EXPERIMENTAL_LIBRARY=Off \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    ${SRC}/llvm
+  make cxx cxx_experimental
+
+  make DESTDIR="${PKG}" install-libcxx
+  install -Dm644 ${SRC}/llvm/projects/libcxx/CREDITS.TXT "${PKG}/usr/share/licenses/${isim}/CREDITS"
+  install -Dm644 ${SRC}/llvm/projects/libcxx/LICENSE.TXT "${PKG}/usr/share/licenses/${isim}/LICENSE"
+  make DESTDIR="${PKG}" install-libcxxabi
+  install -Dm644 ${SRC}/build/include/c++/v1/cxxabi.h "${PKG}/usr/include/c++/v1/cxxabi.h"
+  install -Dm644 ${SRC}/build/include/c++/v1/__cxxabi_config.h "${PKG}/usr/include/c++/v1/__cxxabi_config.h"
+  install -Dm644 ${SRC}/llvm/projects/libcxxabi/CREDITS.TXT "${PKG}/usr/share/licenses/${isim}/CREDITS"
+  install -Dm644 ${SRC}/llvm/projects/libcxxabi/LICENSE.TXT "${PKG}/usr/share/licenses/${isim}/LICENSE"
+  install -Dm644 ${SRC}/build/lib/libc++experimental.a ${PKG}/usr/lib/libc++experimental.a
+  install -Dm644 ${SRC}/llvm/projects/libcxx/CREDITS.TXT "${PKG}/usr/share/licenses/${isim}/CREDITS"
+  install -Dm644 ${SRC}/llvm/projects/libcxx/LICENSE.TXT "${PKG}/usr/share/licenses/${isim}/LICENSE"
+}
