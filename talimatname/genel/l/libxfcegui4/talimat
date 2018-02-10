@@ -1,0 +1,26 @@
+# Tanım: Xfce4 için çeşitli Gtk widget'ları (Kullanımdan kaldırılmış kitaplık)
+# URL: http://www.xfce.org/
+# Paketçi: Cihan Alkan
+# Gerekler: startup-notification xfce4-conf libglade xorg-libsm hicolor-icon-theme
+# Grup: xfce
+
+isim=libxfcegui4
+surum=4.10.0
+devir=1
+kaynak=(http://archive.xfce.org/src/xfce/$isim/${surum%.*}/$isim-$surum.tar.bz2
+        libxfcegui4-4.10.0-no-xfce_setenv.patch)
+
+
+derle() {
+cd $isim-$surum
+    patch -Np0 -i $SRC/libxfcegui4-4.10.0-no-xfce_setenv.patch
+	./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
+	make
+	make DESTDIR=$PKG install
+}
