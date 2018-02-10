@@ -1,0 +1,18 @@
+# Tanım: Video indirme bağlantılarını ayrıştırmak için komut satırı aracı.
+# URL: http://quvi.sourceforge.net/
+# Paketçi: Cihan_Alkan
+# Gerekler: libquvi libxml2 json-glib
+# Grup: medya
+
+isim=quvi
+surum=0.9.5
+devir=1
+
+kaynak=(http://downloads.sourceforge.net/sourceforge/${isim}/${isim}-${surum}.tar.xz)
+
+derle() {
+  cd "${isim}-${surum}"
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+}
