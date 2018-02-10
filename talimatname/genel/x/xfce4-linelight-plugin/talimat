@@ -1,0 +1,20 @@
+# Tanım: linelight, arama için basit bir ön uçtur.
+# URL: http://goodies.xfce.org/projects/panel-plugins/xfce4-linelight-plugin
+# Paketçi: Cihan_Alkan
+# Gerekler: xfce4-panel libxfcegui4
+# Grup: xfce4
+
+isim=xfce4-linelight-plugin
+surum=0.1.7
+devir=1
+kaynak=(http://ftp.de.debian.org/debian/pool/main/x/${isim}/${isim}_${surum}.orig.tar.bz2
+	    http://lionel.lefolgoc.net/misc/01_port-to-xfcerc.patch)
+
+derle() {
+	patch -p0 -i 01_port-to-xfcerc.patch
+    cd $isim-$surum
+	./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/ \
+	--localstatedir=/var --disable-static
+	make
+	make DESTDIR=$PKG install
+}
