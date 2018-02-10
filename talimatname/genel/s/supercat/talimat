@@ -1,0 +1,17 @@
+# Tanım: Supercat, düzenli ifadeleri/dizeleri/karakterleri eşleştirerek metni renklendiren bir programdır.
+# URL: http://supercat.nosredna.net
+# Paketçi: Cihan_Alkan
+# Gerekler: 
+# Grup: sistem
+
+isim=supercat
+surum=0.5.6
+devir=1
+kaynak=(http://supercat.nosredna.net/supercat-$surum.tar.gz)
+
+derle() {
+  cd supercat-${surum}
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+}
