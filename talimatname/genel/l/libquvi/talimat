@@ -1,7 +1,7 @@
 # Tanım: video linklerini ayrıştıran kütüphane
 # URL: http://quvi.sourceforge.net/
 # Paketçi: milisarge
-# Gerekler: libquvi-scripts lua51
+# Gerekler: libquvi-scripts lua51 libproxy
 # Grup: kütüphane
 
 isim=libquvi
