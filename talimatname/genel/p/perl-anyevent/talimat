@@ -1,0 +1,18 @@
+# Tanım: Olay döngü programlamanın DBI
+# URL: https://metacpan.org/release/AnyEvent
+# Paketçi: Cihan_Alkan
+# Gerekler: glib-perl perl-json
+# Grup: kütüphane
+
+isim=perl-anyevent
+surum=7.14
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/AnyEvent-$surum.tar.gz)
+
+derle() {
+  cd AnyEvent-$surum
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+  PERL_ANYEVENT_LOOP_TESTS=true make test
+  make DESTDIR="$PKG" install
+}
