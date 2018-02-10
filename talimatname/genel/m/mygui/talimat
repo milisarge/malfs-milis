@@ -1,0 +1,46 @@
+# Tanım: OGRE için çok katmanlı ve üst üste bindirilebilir bir GUI Sistemi
+# URL: http://mygui.info/
+# Paketçi: Cihan_Alkan
+# Gerekler: boost cmake doxygen graphviz ttf-dejavu ogre ois
+# Grup: geliştirme
+
+
+isim=mygui
+surum=3.2.2
+devir=1
+kaynak=(https://github.com/MyGUI/mygui/archive/MyGUI$surum.tar.gz)
+
+derle() {
+cd $SRC/mygui-MyGUI$surum
+  sed -i 's:"bin:"../opt/MYGUI:' CMake/Utils/MyGUIConfigTargets.cmake
+  sed -i -e 's:../share:/usr/share:' \
+         -e 's:"bin":"../opt/MYGUI":' \
+         CMake/InstallResources.cmake
+  sed -i '71 i set(MYGUI_GCC_VISIBILITY_FLAGS "")' CMakeLists.txt
+  sed -i 's/\${OIS_LIBRARIES}/${OIS_LIBRARIES} boost_system/g' Common/CMakeLists.txt
+
+  mkdir -p build
+  cd build
+
+  export PKG_CONFIG_PATH="/usr/share/OGRE/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DMYGUI_INSTALL_SAMPLES=TRUE \
+    -DMYGUI_INSTALL_TOOLS=TRUE \
+    -DMYGUI_INSTALL_DOCS=TRUE \
+    -DMYGUI_INSTALL_MEDIA=TRUE \
+    -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2/ \
+    -DMYGUI_BUILD_DEMOS=FALSE \
+    -DMYGUI_BUILD_TOOLS=FALSE \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DMYGUI_RENDERSYSTEM=7 \
+    -DBUILD_SHARED_LIBS=TRUE
+
+  make
+  make api-docs
+
+  make DESTDIR="$PKG" install
+  install -d $PKG/usr/share/doc/
+  cp -r Docs/html $PKG/usr/share/doc/MYGUI
+}
