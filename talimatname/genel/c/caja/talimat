@@ -5,7 +5,7 @@
 # Grup: mate sistem
 
 isim=caja
-surum=1.18.3
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
