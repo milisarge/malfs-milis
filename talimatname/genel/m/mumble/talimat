@@ -1,0 +1,38 @@
+# Tanım: TeamSpeak'a benzer bir sesli sohbet uygulaması
+# URL: http://mumble.sourceforge.net/
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5 speex avahi protobuf pulseaudio opus xdg-utils libpng freetype xorg-fontconfig xorg-libxrender boost xorg-mesa
+# Grup: ağ
+
+isim=mumble
+surum=1.3.0
+devir=1
+kaynak=(http://mumble.info/snapshot/${isim}-1.3.0~2586~g894ade2~snapshot.tar.gz)
+
+derle() {
+	cd $SRC/$isim-1.3.0~2586~g894ade2~snapshot
+
+	# mumble derleniyor
+	qmake-qt5 main.pro \
+	CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-speechd no-g15 no-xevie no-server \
+	no-embed-qt-translations no-update packaged" \
+	DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
+	make release
+
+	# bin stuff
+	install -m755 -D ./release/mumble $PKG/usr/bin/mumble
+	install -m755 -D ./scripts/mumble-overlay $PKG/usr/bin/mumble-overlay
+
+	# lib stuff
+	install -m755 -D ./release/libmumble.so.$surum $PKG/usr/lib/mumble/libmumble.so.$surum
+	ln -s libmumble.so.$surum $PKG/usr/lib/mumble/libmumble.so
+	ln -s libmumble.so.$surum $PKG/usr/lib/mumble/libmumble.so.1
+	ln -s libmumble.so.$surum $PKG/usr/lib/mumble/libmumble.so.1.3
+	install -m755 -D ./release/plugins/liblink.so $PKG/usr/lib/mumble/liblink.so
+	install -m755 -D ./release/libcelt* $PKG/usr/lib/mumble/
+
+	# other stuff
+	install -m644 -D ./scripts/mumble.desktop $PKG/usr/share/applications/mumble.desktop
+	install -m644 -D ./icons/mumble.svg $PKG/usr/share/icons/hicolor/scalable/apps/mumble.svg
+	install -m644 -D ./LICENSE $PKG/usr/share/licenses/$isim/LICENSE
+}
