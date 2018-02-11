@@ -24,6 +24,7 @@ derle() {
     mkdir -p $PKG/usr/share/RosaImageWriter/lang
     cp -r $SRC/${isim}-version-${surum}/RosaImageWriter $PKG/usr/share/RosaImageWriter/
     cp -r $SRC/${isim}-version-${surum}/res/icon-rosa.svg $PKG/usr/share/icons/
+    ln -s /usr/share/RosaImageWriter/RosaImageWriter $PKG/usr/bin/RosaImageWriter
 # Başlatıcı 
 mkdir -pv $PKG/usr/share/applications &&
 cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
