@@ -1,0 +1,16 @@
+# Tanım: Ncurses arayüzü ile hızlı tempolu RTS / Aksiyon oyunu
+# URL: https://github.com/a-nikolaev/curseofwar/wiki
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: oyun
+
+
+isim=curseofwar
+surum=1.2.0
+devir=1
+kaynak=(https://github.com/a-nikolaev/curseofwar/archive/v$surum.tar.gz::$isim-1.2.0.tar.bz2)
+
+derle() {
+  make -C "$isim-$surum"
+  make -C "$isim-$surum" DESTDIR="$PKG" install
+}
