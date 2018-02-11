@@ -1,0 +1,46 @@
+# Tanım: Sürükleyici yarış ile akıllıca yapılan açık kaynak sürüş simülasyonu
+# URL: http://vdrift.net/
+# Paketçi: Cihan Alkan
+# Gerekler: bullet curl sdl2-image glew libvorbis hicolor-icon-theme libarchive scons xorg-mesa
+
+isim=vdrift
+surum=2014.10.20
+devir=1
+
+kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-${surum//./-}.tar.bz2
+        vdrift-gcc6.patch
+        vdrift-sconstruct.patch
+        vdrift-sconscript.patch)
+
+derle() {
+  cd vdrift
+
+  # Fix build with GCC 6 (Fedora)
+  patch -p1 -i ../vdrift-gcc6.patch
+
+  # Patch SConstruct and SConscript for SCons 3.0 compatibility
+  patch -p1 -i ../vdrift-sconstruct.patch
+  patch -p1 -i ../vdrift-sconscript.patch
+
+  # build and install
+  scons $MAKEFLAGS \
+    "destdir"="$PKG" \
+    "release"=1 \
+    "force_feedback"=1 \
+    "prefix"=/usr \
+    "datadir"=share/$isim/ \
+    "extbullet"=1
+
+  scons install
+
+  # .desktop dosyası kur
+  install -Dm644 $isim.desktop "$PKG"/usr/share/applications/$isim.desktop
+  sed -i '1 s/^\xef\xbb\xbf//' "$PKG"/usr/share/applications/$isim.desktop # remove BOM (WHY IS THERE?)
+
+  # simgeleri kur
+  install -Dm644 data/textures/icons/vdrift-16x16.png "$PKG"/usr/share/icons/hicolor/16x16/apps/vdrift.png
+  install -Dm644 data/textures/icons/vdrift-32x32.png "$PKG"/usr/share/icons/hicolor/32x32/apps/vdrift.png
+  install -Dm644 data/textures/icons/vdrift-64x64.png "$PKG"/usr/share/icons/hicolor/64x64/apps/vdrift.png
+  install -Dm644 data/textures/icons/vdrift-64x64.png "$PKG/usr/share/pixmaps/$isim.png"
+}
+
