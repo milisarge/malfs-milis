@@ -1,0 +1,20 @@
+# Tanım: Rtmp akışlarını indirmek için kullanılan araç
+# URL: https://rtmpdump.mplayerhq.hu/
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: medya
+
+isim=rtmpdump
+surum=2.4
+devir=1
+kaynak=(https://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/fa8646daeb19dfd12c181f7d19de708d623704c0.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd rtmpdump-fa8646d
+	sed -e 's/^CRYPTO=OPENSSL/#CRYPTO=OPENSSL/' -e 's/#CRYPTO=GNUTLS/CRYPTO=GNUTLS/' -i Makefile -i librtmp/Makefile
+	make \
+	OPT="$CFLAGS" \
+	XLDFLAGS="$LDFLAGS"
+	mkdir -p $PKG/usr/lib
+	make prefix=/usr sbindir=/usr/bin mandir=/usr/share/man DESTDIR="${PKG}" install
+}
