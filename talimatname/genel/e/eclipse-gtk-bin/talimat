@@ -1,0 +1,23 @@
+# Tanım: Son derece genişletilebilir IDE
+# URL: https://eclipse.org
+# Paketçi: Cihan_Alkan
+# Gerekler: openjdk gtk2 unzip xorg-libxtst
+# Grup: geliştirme
+
+isim=eclipse-gtk-bin
+surum=4.7.2
+devir=1
+kaynak=(http://ftp.osuosl.org/pub/eclipse/eclipse/downloads/drops4/R-4.7.2-201711300510/eclipse-SDK-4.7.2-linux-gtk-x86_64.tar.gz
+        eclipse.sh
+        eclipse.desktop
+        eclipse.svg)
+
+derle() {
+  install -m755 -d ${PKG}/usr/share/licenses/eclipse/
+  mv eclipse ${PKG}/usr/share/
+
+  install -d ${PKG}/usr/bin ${PKG}/usr/share/applications ${PKG}/usr/share/icons/hicolor/apps
+  install -m755 eclipse.sh ${PKG}/usr/bin/eclipse
+  install -m644 eclipse.desktop ${PKG}/usr/share/applications/
+  install -Dm644 ${SRC}/eclipse.svg ${PKG}/usr/share/icons/hicolor/scalable/apps/eclipse.svg
+}
