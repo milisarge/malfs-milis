@@ -1,0 +1,23 @@
+# Tanım: Terminal için sistem izleme kontrol paneli
+# URL: https://github.com/aksakalli/gtop
+# Paketçi: Cihan_Alkan
+# Gerekler: node
+# Grup: sistem
+
+
+isim=gtop
+surum=0.1.4
+devir=1
+kaynak=(https://github.com/aksakalli/gtop/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  npm install --production
+  cd $SRC
+  local _npmdir="$PKG/usr/lib/node_modules"
+  mkdir -p "$_npmdir"
+  cp -R "$SRC/$isim-$surum" "$_npmdir/gtop"
+  local _bindir="$PKG/usr/bin"
+  mkdir -p "$_bindir"
+  ln -s /usr/lib/node_modules/gtop/bin/gtop "$_bindir/gtop"
+}
