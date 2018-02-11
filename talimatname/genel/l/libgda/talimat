@@ -1,0 +1,44 @@
+# Tanım: Veritabanı erişim kitaplığı
+# URL: https://git.gnome.org/browse/libgda
+# Paketçi: Cihan_Alkan
+# Gerekler: gnome-common json-glib gtksourceview3 libxslt python libsecret graphviz goocanvas iso-codes openjdk
+# Grup: kütüphane
+
+isim=libgda
+surum=5.2.4
+devir=1
+_apiver=5.0
+
+kaynak=(https://git.gnome.org/browse/libgda/snapshot/LIBGDA_5_2_4.tar.xz
+        fix-crash.diff
+        java.patch
+        0001-Convert-files-to-Unicode.patch
+        glib-2.54-ftbfs.patch
+        glib-2.54-ftbfs-2.patch)
+
+derle() {
+  mkdir providers
+  cd LIBGDA_5_2_4
+
+  patch -Np1 -i ../java.patch
+  patch -Np1 -i ../0001-Convert-files-to-Unicode.patch
+  patch -Np1 -i ../glib-2.54-ftbfs.patch
+  patch -Np1 -i ../glib-2.54-ftbfs-2.patch
+  patch -Np1 -i ../fix-crash.diff
+  /opt/jdk/bin/javac getsp.java
+    
+  find -name '*.py' -exec sed -i '1s/python$/&2/' {} +
+
+  NOCONFIGURE=1 ./autogen.sh
+
+  ./configure --prefix=/usr --sysconfdir=/etc --disable-static \
+      --with-bdb=/usr --with-bdb-libdir-name=lib \
+      --enable-json --enable-system-sqlite --enable-binreloc \
+      --enable-gda-gi --enable-gdaui-gi \
+      --enable-vala --enable-gdaui-vala VALA_API_VERSION=0.38 \
+      --disable-crypto
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR="$PKG" install
+
+}
