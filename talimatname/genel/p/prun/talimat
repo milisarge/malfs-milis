@@ -1,0 +1,21 @@
+# Tanım: Dağıtılmış cron ve iş zamanlayıcı
+# URL: https://github.com/abudnik/prun
+# Paketçi: Cihan_Alkan
+# Gerekler: cmake boost python3
+# Grup: sistem
+
+isim=prun
+surum=git
+devir=1
+kaynak=()
+
+derle() {
+	adres1="https://github.com/abudnik/prun.git"
+	git_indir ${adres1} ${isim}
+    cd ${isim}
+
+ cmake -DCMAKE_INSTALL_PREFIX=/usr -DRelease=true .  
+ make -j8
+ make DESTDIR="$PKG" install
+}
+
