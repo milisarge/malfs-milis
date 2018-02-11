@@ -1,7 +1,7 @@
 # Tanım: Rtmp akışlarını indirmek için kullanılan araç
 # URL: https://rtmpdump.mplayerhq.hu/
 # Paketçi: Cihan_Alkan
-# Gerekler:
+# Gerekler: gnutls
 # Grup: medya
 
 isim=rtmpdump
