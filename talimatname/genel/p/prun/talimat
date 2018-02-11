@@ -15,7 +15,7 @@ derle() {
     cd ${isim}
 
  cmake -DCMAKE_INSTALL_PREFIX=/usr -DRelease=true .  
- make -j8
+ make
  make DESTDIR="$PKG" install
  mkdir -p $PKG/etc/rc.d
  mv $PKG/etc/init.d $PKG/etc/rc.d/
