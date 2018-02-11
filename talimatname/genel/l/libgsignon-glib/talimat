@@ -1,0 +1,22 @@
+# Tanım: Hesap kimlik doğrulamasını yürüten uygulamalar için GLib tabanlı istemci kitaplığı
+# URL: https://gitlab.com/accounts-sso/libgsignon-glib 
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk-doc vala gobject-introspection glib2
+# Grup: kütüphane
+
+isim=libgsignon-glib
+surum=2.4.1
+devir=1
+
+kaynak=(https://gitlab.com/accounts-sso/libgsignon-glib/repository/master/archive.tar.gz)
+
+derle() {
+cd libgsignon-glib*
+  ./autogen.sh
+  ./configure --prefix=/usr        \
+              --localstatedir=/var \
+              --sysconfdir=/etc
+  make -j1
+  make DESTDIR=$PKG install
+  rm -rf $PKG/usr/share/gtk-doc
+}
