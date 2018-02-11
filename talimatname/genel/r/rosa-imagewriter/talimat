@@ -1,0 +1,44 @@
+# Tanım: USB kurulum Belleği Hazırlama
+# URL: http://wiki.rosalab.ru
+# Paketçi: Cihan_Alkan
+# Gerekler: qt5
+# Grup: sistem
+
+isim=rosa-imagewriter
+surum=2.6.2.0
+devir=1
+
+kaynak=(https://abf.io/soft/rosa-imagewriter/archive/${isim}-version-${surum}.tar.gz
+        logo-rosa.png
+        imagewriter-tr_TR.ts)
+
+derle() {
+
+    cp -r $SRC/logo-rosa.png $SRC/${isim}-version-${surum}/res/
+	cd $SRC/${isim}-version-${surum}
+	qmake-qt5 RosaImageWriter.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug 
+    make
+	
+    mkdir -p $PKG/usr/bin
+    mkdir -p $PKG/usr/share/icons
+    mkdir -p $PKG/usr/share/RosaImageWriter/lang
+    cp -r $SRC/${isim}-version-${surum}/RosaImageWriter $PKG/usr/share/RosaImageWriter/
+    cp -r $SRC/${isim}-version-${surum}/res/icon-rosa.svg $PKG/usr/share/icons/
+# Başlatıcı 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon=/usr/share/icons/icon-rosa.svg
+Exec=/usr/share/RosaImageWriter/RosaImageWriter
+Categories=GNOME;GTK;Utility;
+Name=USB Kalıp Yazıcı
+Comment=Boot edebilir USB bellek hazırla
+EOF
+
+/usr/lib/qt5/bin/lrelease ../imagewriter-tr_TR.ts -qm $PKG/usr/share/RosaImageWriter/lang/tr_TR.qm
+
+}
+
