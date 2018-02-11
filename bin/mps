@@ -2779,7 +2779,8 @@ ayarlar() {
 			### mps -ikz|yekur paketismi = ilgili indirip tekrardan kurar,kurulu olmasına bakılmaz.
 			-ikz|yekur)
 				tekrarkur="evet"  
-				agdan_kur "$2" ;;
+				agdan_kur "$2" 
+				exit 0 ;;
 			### mps -k paketismi..mps.lz = yerel dizindeki paketi kurar.
 			-k)
 				shift
