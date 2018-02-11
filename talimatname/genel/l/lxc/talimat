@@ -1,7 +1,7 @@
 # Tanım: Linux Konteynerleri
 # URL: http://linuxcontainers.org
 # Paketçi: Cihan_Alkan
-# Gerekler: docbook2x lua53 python3-setuptools perl libseccomp libcap python3 cgmanager rsync
+# Gerekler: docbook2x lua python3-setuptools perl libseccomp libcap python3 cgmanager rsync
 # Grup: sistem
 
 isim=lxc
