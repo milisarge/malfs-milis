@@ -5,9 +5,9 @@
 # Grup: sistem
 
 isim=check
-surum=0.10.0
+surum=0.12.0
 devir=1
-kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz)
+kaynak=(https://github.com/libcheck/check/releases/download/0.12.0/check-0.12.0.tar.gz)
 
 derle() {
 cd $isim-$surum
