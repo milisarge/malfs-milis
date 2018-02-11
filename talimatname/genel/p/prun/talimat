@@ -17,7 +17,7 @@ derle() {
  cmake -DCMAKE_INSTALL_PREFIX=/usr -DRelease=true .  
  make -j8
  make DESTDIR="$PKG" install
- mkdir $PKG/usr/rc.d/init.d
- mv $PKG/usr/init.d/* $PKG/usr/rc.d/init.d/
+ mkdir $PKG/etc/rc.d/init.d
+ mv $PKG/etc/init.d/* $PKG/etc/rc.d/init.d/
 }
 
