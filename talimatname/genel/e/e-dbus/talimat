@@ -1,0 +1,40 @@
+# Tanım: Ecore ile D-Bus entegrasyonu
+# URL: http://www.enlightenment.org
+# Paketçi: Cihan_Alkan
+# Gerekler: dbus efl
+# Grup: kütüphane
+
+isim=e-dbus
+surum=1.7.10
+devir=1
+kaynak=(http://openbsd.mirror.ac.za/distfiles/e17/e_dbus-$surum.tar.gz)
+
+derle() {
+  cd e_dbus-${surum}
+
+  export CFLAGS="${CFLAGS} -fvisibility=hidden"
+
+  ./configure \
+    --prefix=/usr \
+    --disable-static \
+    --disable-ebluez \
+    --disable-econnman0_7x \
+    --disable-ehal \
+    --enable-enotify \
+    --disable-eofono \
+    --enable-eukit \
+    --disable-edbus-test \
+    --disable-edbus-test-client \
+    --disable-edbus-bluez-test \
+    --disable-edbus-connman0_7x-test \
+    --disable-edbus-ofono-test \
+    --disable-edbus-async-test \
+    --disable-edbus-performance-test \
+    --disable-doc
+  make
+  make DESTDIR="${PKG}" install
+
+  # install license files
+  install -Dm644 "${SRC}/e_dbus-${surum}/COPYING" \
+        "${PKG}/usr/share/licenses/${isim}/COPYING"
+}
