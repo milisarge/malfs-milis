@@ -1,20 +1,19 @@
 # Tanım: Blu-Ray erişim kitaplığı.
 # URL: http://www.videolan.org/developers/libbluray.html
 # Paketçi: milisarge
-# Gerekler: libxml2 freetype
+# Gerekler: libxml2 freetype apache-ant
+# Grup: kütüphane
 
 isim=libbluray
-surum=0.6.2
+surum=1.0.1
 devir=1
 kaynak=(https://get.videolan.org/$isim/$surum/$isim-$surum.tar.bz2)
 
 derle() {
 	cd $isim-$surum
-
 	./configure \
 		--prefix=/usr \
 		--mandir=/usr/man
-
 	make
 	make DESTDIR=$PKG install
 }
