@@ -1,0 +1,27 @@
+# Tanım: Curses tabanlı bir istemci, AOL Instant Messenger, MIT Zephyr, Jabber, IRC ve Twitter'ı destekliyor.
+# URL: http://barnowl.mit.edu/
+# Paketçi: Cihan_Alkan
+# Gerekler: glib perl-glib perl-digest-sha1 perl-json perl-class-accessor perl-anyevent zip
+# Grup: ağ
+
+isim=barnowl
+surum=1.9
+devir=1
+kaynak=(https://launchpad.net/ubuntu/+archive/primary/+files/barnowl_1.9.orig.tar.gz)
+
+derle() {
+  cd $isim-$surum-src
+  sed -i "s/ncursesw\///" owl.h
+  sed -i "s/ncursesw\///" tester.c
+
+  ./configure --prefix=/usr   \
+    --includedir=/usr/include \
+    --mandir=/usr/share/man   \
+    --docdir=/usr/share/doc/$isim
+  make
+  make DESTDIR=$PKG install
+  mkdir -p $PKG/usr/share/$isim/examples
+  install -Dm644 COPYING $PKG/usr/share/licenses/$isim/COPYING
+  install -m644 doc/*.txt $PKG/usr/share/doc/$isim/
+  install -m644 examples/* $PKG/usr/share/$isim/examples/
+}
