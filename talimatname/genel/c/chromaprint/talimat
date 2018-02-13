@@ -5,14 +5,14 @@
 # Grup: kütüphane
 
 isim=chromaprint
-surum=1.4.2
+surum=1.4.3
 devir=1
 kaynak=(https://github.com/acoustid/$isim/releases/download/v$surum/$isim-$surum.tar.gz)
 
 derle() {
-cd $isim-$surum
+cd $isim-v$surum
 cmake \
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=ON .
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=ON .
 make
 make DESTDIR=$PKG install
 }
