@@ -1,0 +1,25 @@
+# Tanım: 21.Yüzyıl için metin editörü
+# URL: https://github.com/atom/atom
+# Paketçi: Cihan_Alkan
+# Gerekler: alsa-lib gconf gtk2 libnotify libxtst nss python libxkbfile
+# Grup: ofis_düzenleyici
+
+isim=atom-bin
+surum=1.23.3
+devir=1
+kaynak=(https://github.com/atom/atom/releases/download/v${surum}/atom-amd64.tar.gz
+        atom.desktop)
+
+derle() {
+ cd atom-${surum}-amd64
+  
+  install -dm755 ${PKG}/usr/bin
+  install -dm755 ${PKG}/usr/share/atom
+  
+  mv resources/app/atom.sh ${PKG}/usr/bin/atom
+  cp -r * ${PKG}/usr/share/atom/
+
+  install -Dm644 ${SRC}/atom.desktop ${PKG}/usr/share/applications/atom.desktop
+  install -Dm644 atom.png ${PKG}/usr/share/pixmaps/atom.png
+install -Dm644 LICENSE ${PKG}/usr/share/licenses/atom/LICENSE
+}

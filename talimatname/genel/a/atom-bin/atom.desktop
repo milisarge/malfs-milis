@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Atom
+Comment=21. Yüzyıl için metin editörü
+GenericName=Text Editor
+Exec=/usr/bin/atom %F
+Icon=atom
+Type=Application
+StartupNotify=true
+Categories=Utility;TextEditor;Development;
+MimeType=text/plain;
