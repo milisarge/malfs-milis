@@ -1,7 +1,7 @@
 # Tanım: Olay döngü programlamanın DBI
 # URL: https://metacpan.org/release/AnyEvent
 # Paketçi: Cihan_Alkan
-# Gerekler: glib-perl perl-json
+# Gerekler: perl-glib perl-json
 # Grup: kütüphane
 
 isim=perl-anyevent
