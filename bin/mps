@@ -785,7 +785,6 @@ gerekleri_listele(){
 	
 	function talimat_bul(ara){
 		cmd= "find " arama_konum " -name " ara " | head -n1 "
-		#print cmd
 		while ( ( cmd | getline talimatyol ) > 0 ) {
 			return talimatyol "/talimat"
 			break
@@ -857,12 +856,6 @@ derleme_listyap_eski(){
 derleme_listyap(){
 	ryaz 32 "$1 $_gerekler_belirleniyor"
 	gerekleri_listele $@
-}
-
-kurulum_listyap(){
-	klyD=""
-	klymap=""
-	kly_yeni "$1"
 }
 
 derleme_listbilgi(){
@@ -989,7 +982,6 @@ paket_inkur_oto(){
 	
 	local konum anakonum kurdurum _agdan_kur_onay
 	derleme_listyap_kontrol
-	#kurulum_listyap "${_pkt}" | grep "bulunamadı"
 	derleme_listyap ${_pkt} "--kurulu_atla"
 	
 	for kpkt in `cat gerek.liste`;do	
@@ -3101,10 +3093,6 @@ ayarlar() {
 			-dly|dliste)
 				shift
 				derleme_listyap "$@" 
-				exit 0 ;;	
-			### mps -kly paketismi = ilgili paketin ve kurulması gereken altgereklerini verir,oluştur.
-			-kly)
-				kurulum_listyap "$2" 
 				exit 0 ;;	
 			### mps -ykp paketismi = ilgili paketin kurulmak istenirse,kurulacak yeni paketleri listeler.
 			-ykp)
