@@ -1,0 +1,18 @@
+# Tanım: Change or delete the rpath or runpath in ELF files
+# URL: http://directory.fsf.org/project/chrpath/
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: sistem
+
+isim=chrpath
+surum=0.16
+devir=1
+kaynak=(https://alioth.debian.org/frs/download.php/latestfile/813/chrpath-0.16.tar.gz)
+
+derle() {
+  cd "${SRC}"/$isim-$surum
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
+  make DESTDIR="${PKG}" install
+  rm -rf $PKG/usr/{share,doc}
+}
