@@ -1,41 +1,32 @@
-# Tanım:	VMWare Araçları
-# URL:		    http://open-vm-tools.sf.net/
-# Paketçi:     milisarge
-# Gerekler:	    libdnet glib libmspack
+# Tanım: VMWare Araçları
+# URL: http://open-vm-tools.sf.net/
+# Paketçi: milisarge
+# Gerekler: chrpath libdnet glib libmspack cunit xorg-libx11 xorg-libxext xorg-libxinerama xorg-libxi xorg-libxrender xorg-libxrandr xorg-libxtst gdk-pixbuf gtk3 gtkmm3
 
 isim=open-vm-tools
-surum=10.1.5
+surum=10.2.0
 devir=1
-kaynak=(https://github.com/vmware/open-vm-tools/archive/stable-${version/_/-}.tar.gz
-		vmtools.rc
-		tools.conf)
+kaynak=(https://github.com/vmware/open-vm-tools/archive/stable-${surum/_/-}.tar.gz::open-vm-tools-$surum.tar.gz
+		0001-Set-X11-as-the-backend-for-gtk3-of-open-vm-tools.patch)
 
 derle(){
-	cd $isim-stable-$surum
-	cd $isim
-	sed -ie 's|-Werror||g' configure.ac
-	autoreconf -iv
-	CXXFLAGS+=' -std=gnu++11 -fpermissive '
-    CFLAGS+=' -fpermissive '
-	CUSTOM_PROCPS_NAME=procps \
-	./configure \
-		--prefix=/usr \
-		--disable-static \
-		--without-root-privileges \
-		--without-x \
-		--without-gtk2 \
-		--without-xmlsecurity \
-		--without-gtkmm \
-		--without-icu \
-		--without-pam \
-		--without-kernel-modules
+	cd "$SRC/$isim-"*"/open-vm-tools"
+	patch -Np2 < "${SRC}"/0001-Set-X11-as-the-backend-for-gtk3-of-open-vm-tools.patch
+	cd "$SRC/$isim-"*"/open-vm-tools"
+	autoreconf -vi
+	sh ./configure --prefix=/usr \
+	--sbindir=/usr/bin \
+	--sysconfdir=/etc \
+	--with-udev-rules-dir=/usr/lib/udev/rules.d \
+	--without-xmlsecurity \
+	--without-kernel-modules
 	make
-	make DESTDIR=$PKG install
-	mv $PKG/usr/sbin/mount.vmhgfs $PKG/sbin/mount.vmhgfs
-	install -D $SRC/vmtools.rc $PKG/etc/rc.d/init.d/vmtools
-
-	rm -rf $PKG/usr/{etc,sbin,share} $PKG/etc/vmware-tools/scripts/vmware/network
-	rm -f $PKG/usr/lib/open-vm-tools/plugins/common/*.la
-
-	install -m644 $SRC/tools.conf $PKG/etc/vmware-tools/tools.conf
+	cd "$SRC/$isim-"*"/open-vm-tools"
+	make install DESTDIR="$PKG"
+	chmod 7755 "$PKG"/usr/bin/vmware-user-suid-wrapper
+	# install vmware-xdg-detect-de
+	install -D -m 0755 scripts/common/vmware-xdg-detect-de "$PKG"/usr/bin/vmware-xdg-detect-de
+	# We don't want a symlink in /sbin
+	rm "$PKG"/sbin/mount.vmhgfs
+	rmdir "$PKG"/sbin
 }
