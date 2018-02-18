@@ -1,0 +1,20 @@
+# Tanım: Dist başına ve modül başına paylaşılan dosyaları bulun
+# URL: http://search.cpan.org/dist/File-ShareDir
+# Paketçi: Cihan_Alkan
+# Gerekler: perl-class-inspector
+# Grup: 
+
+isim=perl-file-sharedir
+_isim=File-ShareDir
+_yazar=REHSACK
+surum=1.102
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/${_yazar::1}/${_yazar::2}/${_yazar}/$_isim-$surum.tar.gz)
+
+derle() {
+
+  cd "$SRC/$_isim-$surum"
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make DESTDIR="$PKG" install
+}

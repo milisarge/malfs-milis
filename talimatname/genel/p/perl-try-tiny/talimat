@@ -1,21 +1,19 @@
-# Tanım: $@ Öğesinin uygun yerelleştirilmesiyle minimum deneme/yakalama
-# URL: http://search.cpan.org/
-# Paketçi: milisarge
-# Gerekler: 
+# Tanım: \$@ Öğesinin uygun yerelleştirilmesiyle minimum deneme/yakalama
+# URL: http://search.cpan.org/dist/Try-Tiny
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: 
 
 isim=perl-try-tiny
-surum=0.22
+surum=0.30
 devir=1
-
-kaynak=(http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Try-Tiny-$surum.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Try-Tiny-$surum.tar.gz)
 
 derle() {
-cd Try-Tiny-$surum
-perl Makefile.PL INSTALLDIRS=vendor
-make
-make DESTDIR=$PKG install
-find $PKG \
-        -name '*.bs' -or \
-        -name .packlist -or \
-        -name perllocal.pod | xargs rm
+  cd Try-Tiny-${surum}
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make DESTDIR="$PKG" install
+  # upstream typo :/
+  install -D -m644 LICENCE "${PKG}/usr/share/licenses/${isim}/LICENSE"
 }

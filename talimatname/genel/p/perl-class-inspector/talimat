@@ -1,0 +1,17 @@
+# Tanım: Bir sınıf ve yapısı hakkında bilgi edinin
+# URL: http://search.cpan.org/dist/Class-Inspector
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: 
+
+isim=perl-class-inspector
+surum=1.32
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Class-Inspector-$surum.tar.gz)
+
+derle() {
+  cd Class-Inspector-${surum}
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make DESTDIR="$PKG" install
+}

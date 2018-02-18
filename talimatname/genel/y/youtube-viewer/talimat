@@ -1,0 +1,20 @@
+# Tanım: YouTube videolarını izlemek için komut satırı yardımcı programı
+# URL: https://github.com/trizen/youtube-viewer
+# Paketçi: Cihan_Alkan
+# Gerekler: perl perl-data-dump perl-json perl-lwp-protocol-https perl-libwww perl-module-build gtk2-perl perl-try-tiny perl-class-inspector
+# Grup: medya
+
+isim=youtube-viewer
+surum=3.3.3
+devir=1
+kaynak=(https://github.com/trizen/youtube-viewer/archive/3.3.3.tar.gz::$isim-$surum.tar.gz
+		gtk-youtube-viewer.desktop)
+
+derle() {
+
+    cd "$isim-$surum"
+    perl Build.PL --destdir "$PKG" --installdirs vendor --gtk
+    ./Build install --install_path script=/usr/bin
+    install -Dm 644 "$SRC/gtk-youtube-viewer.desktop" "$PKG/usr/share/applications/gtk-youtube-viewer.desktop"
+    install -Dm 644 "share/icons/gtk-youtube-viewer.png" "$PKG/usr/share/pixmaps/gtk-youtube-viewer.png"
+}

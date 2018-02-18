@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GTK Youtube Viewer
+Version=1.0
+Comment=MPlayer ile YouTube videolarını arayın ve oynatın.
+Exec=gtk-youtube-viewer
+Icon=gtk-youtube-viewer
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=AudioVideo;
