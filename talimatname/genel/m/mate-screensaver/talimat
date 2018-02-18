@@ -2,9 +2,10 @@
 # URL: http://www.mate-desktop.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool libmatekbd libnotify xorg-libxscrnsaver mate-desktop mate-menus mate-session-manager
+# Grup: mate
 
 isim=mate-screensaver
-surum=1.18.1
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
