@@ -15,8 +15,8 @@ derle() {
 	cd "$SRC/${isim}-${surum}/src"
 	export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fPIC  -Wall -pthread"
 	export "LDFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -pthread"
-	./configure --prefix=/usr --sysconfdir=/etc --enable-shared --disable-strip
-	make -j2
+	./configure --prefix=/usr --sysconfdir=/etc  --disable-strip
+	make
 	cd "$SRC/${isim}-${surum}/src"
 	make DESTDIR=${PKG} install
 	install -Dm644 COPYING-libscheme.txt "${PKG}/usr/share/licenses/${isim}/LICENSE"
