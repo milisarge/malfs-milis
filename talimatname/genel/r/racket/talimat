@@ -10,16 +10,15 @@ devir=1
 kaynak=(http://download.racket-lang.org/installers/${surum}/${isim}-${surum}-src.tgz)
 
 derle() {
-	cd "${isim}-${surum}"
+	cd "$SRC/${isim}-${surum}"
 	echo "Icon=drracket" >> share/pkgs/drracket/drracket/drracket.desktop
-	cd src
-	[[ -d build ]] || mkdir build
-	cd build
-	export CFLAGS+=" -fPIC"
-	../configure --prefix=/usr --sysconfdir=/etc --enable-shared --disable-strip
-	make
-	make DESTDIR="${PKG}" install
-	cd ..
+	cd "$SRC/${isim}-${surum}/src"
+	export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fPIC  -Wall -pthread"
+	export "LDFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -pthread"
+	./configure --prefix=/usr --sysconfdir=/etc --enable-shared --disable-strip
+	make -j2
+	cd "$SRC/${isim}-${surum}/src"
+	make DESTDIR=${PKG} install
 	install -Dm644 COPYING-libscheme.txt "${PKG}/usr/share/licenses/${isim}/LICENSE"
 
 	install -Dm644 ../share/pkgs/drracket/drracket/drracket.desktop "${PKG}/usr/share/applications/drracket.desktop"
