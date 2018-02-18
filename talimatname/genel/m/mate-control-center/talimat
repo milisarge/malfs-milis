@@ -4,7 +4,7 @@
 # Gerekler: intltool itstool mate-desktop mate-menus mate-settings-daemon marco xorg-libxscrnsaver 
 
 isim=mate-control-center
-surum=1.18.1
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
