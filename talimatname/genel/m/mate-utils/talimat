@@ -2,9 +2,10 @@
 # URL: http://www.mate-desktop.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: intltool itstool mate-panel mate-desktop libcanberra libgtop xorg-libsm
+# Grup: mate
 
 isim=mate-utils
-surum=1.18.2
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
