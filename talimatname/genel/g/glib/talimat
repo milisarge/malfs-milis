@@ -2,16 +2,16 @@
 # URL: http://www.gtk.org/
 # Paketçi: milisarge
 # Gerekler: libffi pcre python elfutils
+# Grup: kütüphane
 
 isim=glib
-surum=2.53.1
+surum=2.55.2
 devir=1
-kaynak=( http://ftp.gnome.org/pub/gnome/sources/glib/${surum%.*}/$isim-$surum.tar.xz
-	revert-warn-glib-compile-schemas.patch)
+kaynak=( http://ftp.gnome.org/pub/gnome/sources/glib/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
 	cd $isim-$surum
-	patch -Rp1 -i ../revert-warn-glib-compile-schemas.patch
+        NOCONFIGURE=1 ./autogen.sh
 	./configure --prefix=/usr \
 	--with-pcre=system \
 	--disable-fam
