@@ -1,16 +1,17 @@
 # Tanım: Bölüm tablası kurtarma / tahmin aracı.
 # URL: https://github.com/baruch/gpart
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: sistem
 
 isim=gpart
-surum=0.2.2
+surum=0.3
 devir=1
-kaynak=(https://github.com/baruch/${isim}/archive/v${surum}.tar.gz)
+kaynak=(https://github.com/baruch/gpart/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-cd $isim-$surum
-./autogen.sh
-make
-make prefix=$PKG/usr sbindir=${PKG}/usr/bin install
+  cd "${SRC}/${isim}-${surum}"
+  ./autogen.sh
+  make
+  make prefix=${PKG}/usr sbindir=${PKG}/usr/bin install
 }
