@@ -1,0 +1,23 @@
+# Tanım: dd komutunun veri kurtarma amaçlı kullanılan sürümü
+# URL: http://www.garloff.de/kurt/linux/ddrescue/
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: sistem
+
+isim=ddrescue
+surum=1.99.8
+devir=1
+kaynak=(http://www.garloff.de/kurt/linux/ddrescue/dd_rescue-$surum.tar.bz2{,.asc}
+		dd_rescue-1.99-disable-openssl.patch)
+
+derle() {
+  cd dd_rescue-$surum
+  autoreconf -fi
+  # Don't install to /usr/lib64
+  sed -i '/LIB = lib64/d' Makefile
+  # Disable OpenSSL support
+  patch -p1 -i ../dd_rescue-1.99-disable-openssl.patch
+  ./configure
+  make
+  make DESTDIR="$PKG" INSTALLDIR="$PKG/usr/bin" install
+}
