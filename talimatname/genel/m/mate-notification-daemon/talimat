@@ -2,9 +2,10 @@
 # URL: http://www.mate-desktop.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: dbus-glib libcanberra libwnck3 libnotify intltool
+# Grup: mate
 
 isim=mate-notification-daemon
-surum=1.18.0
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
