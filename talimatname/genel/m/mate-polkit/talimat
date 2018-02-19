@@ -2,9 +2,10 @@
 # URL: http://www.mate-desktop.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: gtk3 polkit accountsservice gobject-introspection intltool
+# Grup: mate
 
 isim=mate-polkit
-surum=1.18.1
+surum=1.20.1
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
