@@ -4,13 +4,12 @@
 # Gerekler: intltool itstool gtksourceview3 libgtop libnotify mate-panel polkit dbus-python python-gobject upower wireless-tools
 
 isim=mate-applets
-surum=1.18.1
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
 cd $isim-$surum
-sed -i 's/env python/env python2/' invest-applet/invest/{chart.py,invest-applet.py,mate-invest-chart}
     PYTHON=/usr/bin/python2 ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
