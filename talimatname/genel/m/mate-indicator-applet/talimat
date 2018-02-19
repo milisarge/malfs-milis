@@ -2,9 +2,10 @@
 # URL: http://www.mate-desktop.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: libindicator mate-panel
+# Grup: mate
 
 isim=mate-indicator-applet
-surum=1.18.0
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
@@ -16,4 +17,3 @@ cd $isim-$surum
   make
   make DESTDIR=$PKG install
 }
-
