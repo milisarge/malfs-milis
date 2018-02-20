@@ -1,0 +1,319 @@
+# Tanım: armv7hl 32bit mimari için musl C kütüphaneli çapraz derleme araçları
+# URL: http://gcc.gnu.org
+# Paketçi: milisarge
+# Gerekler:
+# Grup: geliştirme
+
+isim=ct-armv7hl-musl
+surum=1.0
+devir=1
+
+gcc_surum=6.4.0
+musl_surum=1.1.18
+binutils_surum=2.29.1
+linux_surum=4.13.13
+gmp_surum=6.1.2
+mpfr_surum=3.1.6
+mpc_surum=1.0.3
+isl_surum=0.18
+
+kaynak=(http://ftp.gnu.org/gnu/gcc/gcc-$gcc_surum/gcc-${gcc_surum}.tar.xz
+		http://ftp.gnu.org/gnu/binutils/binutils-${binutils_surum}.tar.xz
+		http://www.kernel.org/pub/linux/kernel/v4.x/linux-${linux_surum}.tar.xz
+		http://ftp.gnu.org/gnu/gmp/gmp-${gmp_surum}.tar.xz
+		http://ftp.gnu.org/gnu/mpfr/mpfr-${mpfr_surum}.tar.xz
+		http://ftp.gnu.org/gnu/mpc/mpc-${mpc_surum}.tar.gz
+		http://isl.gforge.inria.fr/isl-${isl_surum}.tar.bz2
+		https://www.musl-libc.org/releases/musl-${musl_surum}.tar.gz
+		mpfr-patch01
+		0001-libgcc_s.patch
+		0005-libatomic-test-fix.patch
+		0006-libgomp-test-fix.patch
+		0007-libitm-test-fix.patch
+		0008-libvtv-test-fix.patch)
+
+derle() {
+	
+	# http://clfs.org/view/clfs-embedded/arm/cross-tools/cflags.html
+	# bayrakların sıfırlanması 
+	
+	unset CC CXX CFLAGS CXXFLAGS LDFLAGS
+	
+	LC_ALL=C
+	LANGUAGE=C
+	export LC_ALL LANGUAGE
+	
+	CTCC="${CTCC:=cc}"
+	CTCXX="${CTCXX:=c++}"
+	CTCFLAGS="${CTCFLAGS:=-g0 -Os}"
+	CTCXXFLAGS="${CTCXXFLAGS:=$CTCFLAGS}"
+	CTLDFLAGS="${CTLDFLAGS:=-s}"
+	arch="$(uname -m)"
+	jobs=1
+	
+	# vendor-üretici varsa sonek tire konulacak
+	test -n "$VENDOR" && VENDOR="${VENDOR}-"
+	
+	#
+	# arm 32bit.
+	#
+	
+	CLFS_ARCH=arm
+	libc_arch=arm
+
+	libSuffix=""
+
+	multilib_options="--disable-multilib --with-multilib-list="
+	gcc_options="--with-arch=armv7-a --with-float=hard --with-fpu=neon"
+
+	CLFS_TARGET=arm-${VENDOR}linux-musleabihf
+	
+	CLFS_HOST="$(${CTCC} -dumpmachine)"
+	
+	crossdir=${PKG}/cross-tools/${CLFS_TARGET}
+	
+	echo "değişken kontrolü"
+	printf "%s\n" \
+	"CTCC: $CTCC"                  \
+	"CTCXX: $CTCXX"                \
+	"CTCFLAGS: $CTCFLAGS"          \
+	"CTCXXFLAGS: $CTCXXFLAGS"      \
+	"CTLDFLAGS: $CTLDFLAGS"        \
+	"Host: ${CLFS_HOST}"                  \
+	"Target: ${CLFS_TARGET}"              \
+	"Cross  directory: $crossdir"  
+	
+	# http://clfs.org/view/clfs-embedded/arm/cross-tools/sysroot.html
+	mkdir -p ${PKG}/cross-tools/${CLFS_TARGET}
+
+	# izinleri ayarla
+	umask 022
+
+	PATH="${crossdir}/bin:${PATH}"
+	export PATH VENDOR
+	
+	mkdir -p -- "${crossdir}/${CLFS_TARGET}" 
+	
+	if test ! -e "${crossdir}/${CLFS_TARGET}/usr"
+	then
+		ln -sf . "${crossdir}/${CLFS_TARGET}/usr"
+	fi
+	
+	# multilib için lib ekinin ayarlanması
+	case $arch in
+	i586 | *x32 | x86_64 )
+		if test ! -e "${crossdir}/lib" -a -n "$libSuffix"
+		then
+			ln -sf lib${libSuffix} "${crossdir}/lib"
+		fi
+		;;
+	esac
+	
+	
+	###############################################################
+	# https://notabug.org/dragora/dragora/src/master/stages/0/01-binutils#L30
+	# binutils derlenmesi
+	
+	mkdir $SRC/binutils-build
+	cd $SRC/binutils-build
+
+	$SRC/binutils-${binutils_surum}/configure \
+	AR="ar" AS="as" CC="$CTCC" CXX="$CTCXX" \
+    CFLAGS="$CTCFLAGS" CXXFLAGS="$CTCXXFLAGS" LDFLAGS="$CTLDFLAGS" \
+	--prefix="${crossdir}" \
+	--host=${CLFS_HOST} \
+	--target=${CLFS_TARGET} \
+	--enable-deterministic-archives \
+	--disable-compressed-debug-sections \
+	--disable-werror \
+	--disable-nls \
+	--disable-ppl-version-check \
+	--disable-cloog-version-check \
+	--with-sysroot="${crossdir}/${CLFS_TARGET}" \
+	$multilib_options
+
+	# https://sourceware.org/bugzilla/show_bug.cgi?id=15345
+	# texinfolara gerek yok MAKEINFO=true . hata olursa tekrarlayınca çözülüyor.
+	make -j${jobs} MAKEINFO=true || make -j${jobs} MAKEINFO="true"
+	make -j${jobs} MAKEINFO=true install
+	
+	cd $SRC
+	rm -rf $SRC/binutils-build
+	
+	###############################################################
+	# linux-header 
+	
+	cd -- "${SRC}/linux-${linux_surum}"
+
+	make mrproper
+	make headers_check ARCH="${CLFS_ARCH}"
+	make headers_install ARCH="${CLFS_ARCH}" INSTALL_HDR_PATH=dest
+
+	# linux header kopyalanması
+	mkdir -p -- "${crossdir}/${CLFS_TARGET}/include"
+	cp -r dest/include/* "${crossdir}/${CLFS_TARGET}/include"
+
+	# gereksizleri sil
+	find "${crossdir}/${CLFS_TARGET}/include" -type f \( -name .install -o -name ..install.cmd \) -exec rm -f {} +
+	
+	###############################################################
+	# http://clfs.org/view/clfs-embedded/arm/cross-tools/gcc-static.html
+	# https://notabug.org/dragora/dragora/src/master/stages/0/03-gcc-static#L75
+	# gcc-static -0
+	cd $SRC
+	
+	cp -rf -- "${SRC}/gcc-${gcc_surum}" "${SRC}/0gcc-${gcc_surum}"
+	cp -rf -- "${SRC}/gmp-${gmp_surum}" "${SRC}/0gcc-${gcc_surum}/gmp"
+	cp -rf -- "${SRC}/mpfr-${mpfr_surum}" "${SRC}/0gcc-${gcc_surum}/mpfr"
+	cp -rf -- "${SRC}/mpc-${mpc_surum}" "${SRC}/0gcc-${gcc_surum}/mpc"
+	cp -rf -- "${SRC}/isl-${isl_surum}" "${SRC}/0gcc-${gcc_surum}/isl"
+	
+	cd -- "${SRC}/0gcc-${gcc_surum}"
+
+	cd mpfr
+	rm -f PATCHES
+	patch -p1 < "$SRC/mpfr-patch01"
+	cd ..
+
+	# Apply specific patches for the support in musl.
+	#
+	# http://port70.net/~nsz/musl/gcc-trunk/
+	#
+	patch -Np1 -i "${SRC}/0001-libgcc_s.patch"
+	patch -Np1 -i "${SRC}/0005-libatomic-test-fix.patch"
+	patch -Np1 -i "${SRC}/0006-libgomp-test-fix.patch"
+	patch -Np1 -i "${SRC}/0007-libitm-test-fix.patch"
+	patch -Np1 -i "${SRC}/0008-libvtv-test-fix.patch"
+
+	# Build dizininde ayrı derlenir
+	rm -rf ../gcc-build
+	mkdir ../gcc-build
+	cd ../gcc-build
+
+	../0gcc-${gcc_surum}/configure \
+	AR="ar" CC="$CTCC" CXX="$CTCXX" \
+	CFLAGS="$CTCFLAGS" CXXFLAGS="$CTCXXFLAGS" LDFLAGS="$CTLDFLAGS" \
+	 --prefix="$crossdir" \
+	 --libdir="${crossdir}/lib${libSuffix}" \
+	 --build=${CLFS_HOST} \
+	 --host=${CLFS_HOST} \
+	 --target=${CLFS_TARGET} \
+	 --enable-languages=c \
+	 --enable-clocale=generic \
+	 --disable-shared \
+	 --disable-threads \
+	 --disable-decimal-float \
+	 --disable-libgomp \
+	 --disable-libssp \
+	 --disable-libatomic \
+	 --disable-libitm \
+	 --disable-libquadmath \
+	 --disable-libvtv \
+	 --disable-libcilkrts \
+	 --disable-libstdcxx \
+	 --disable-gnu-indirect-function \
+	 --disable-libmudflap \
+	 --disable-libsanitizer \
+	 --disable-libmpx \
+	 --disable-nls \
+	 --with-sysroot="${crossdir}/${CLFS_TARGET}" \
+	 --with-newlib \
+	 --without-headers \
+	 --without-ppl \
+	 --without-cloog \
+	 $multilib_options \
+	 $gcc_options
+	
+	# tekrar make yapılınca derleme başarılı oluyor.
+	make -j${jobs} all-gcc || (make -j${jobs} all-mpfr;make -j${jobs} all-gcc || (make -j${jobs} all-isl;make -j${jobs} all-gcc))
+	make -j${jobs} all-target-libgcc
+	make install-gcc
+	make install-target-libgcc
+
+	cd $SRC
+	rm -rf $SRC/gcc-build
+	rm -rf ${SRC}/0gcc-${gcc_surum}
+	
+	###############################################################
+	# http://clfs.org/view/clfs-embedded/arm/cross-tools/libc.html
+	# https://notabug.org/dragora/dragora/src/master/stages/0/04-musl#L25
+	# musl
+	
+	cd -- "${SRC}/musl-${musl_surum}"
+
+	./configure CC="${CLFS_TARGET}-gcc" CROSS_COMPILE="${CLFS_TARGET}-" \
+	 --prefix= \
+	 --syslibdir=/lib \
+	 --enable-debug \
+	 --enable-optimize
+
+	make -j${jobs}
+	make DESTDIR="${crossdir}/${CLFS_TARGET}" install
+	
+	###############################################################
+	# http://clfs.org/view/clfs-embedded/arm/cross-tools/gcc-final.html
+	# gcc-son
+	
+	cd -- "${SRC}/gcc-${gcc_surum}"
+
+	# son adımda linkleyerek yapabiliriz
+	ln -s ../gmp-${gmp_surum} gmp
+	ln -s ../mpfr-${mpfr_surum} mpfr
+	ln -s ../mpc-${mpc_surum} mpc
+	ln -s ../isl-${isl_surum} isl
+
+	# Apply patches for MPFR
+	cd mpfr
+	rm -f PATCHES
+	patch -p1 < "$SRC/mpfr-patch01" 
+	cd ..
+	# Apply specific patches for the support in musl.
+	#
+	# http://port70.net/~nsz/musl/gcc-trunk/
+	#
+	patch -Np1 -i "${SRC}/0001-libgcc_s.patch"
+	patch -Np1 -i "${SRC}/0005-libatomic-test-fix.patch"
+	patch -Np1 -i "${SRC}/0006-libgomp-test-fix.patch"
+	patch -Np1 -i "${SRC}/0007-libitm-test-fix.patch"
+	patch -Np1 -i "${SRC}/0008-libvtv-test-fix.patch"
+
+	rm -rf $SRC/gcc-build
+	mkdir $SRC/gcc-build
+	cd $SRC/gcc-build
+
+	option_list="
+	--prefix="$crossdir" \
+	--libdir="${crossdir}/lib${libSuffix}" \
+	--build=${CLFS_HOST} \
+	--host=${CLFS_HOST} \
+	--target=${CLFS_TARGET} \
+	--enable-languages=c,c++ \
+	--enable-clocale=generic \
+	--enable-tls \
+	--enable-libstdcxx-time \
+	--enable-checking=release \
+	--enable-fully-dynamic-string \
+	--disable-symvers \
+	--disable-gnu-indirect-function \
+	--disable-libmudflap \
+	--disable-libsanitizer \
+	--disable-libmpx \
+	--disable-nls \
+	--disable-lto-plugin \
+	--with-sysroot="${crossdir}/${CLFS_TARGET}" \
+	$multilib_options \
+	$gcc_options
+	"
+
+	$SRC/gcc-${gcc_surum}/configure AR="ar" \
+    CFLAGS="$CTCFLAGS" CXXFLAGS="$CTCXXFLAGS" LDFLAGS="$CTLDFLAGS" \
+	$option_list
+
+	unset option_list
+
+	make -j${jobs} all \
+	AS_FOR_TARGET="${CLFS_TARGET}-as" \
+	LD_FOR_TARGET="${CLFS_TARGET}-ld"
+
+	make install
+}

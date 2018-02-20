@@ -1,0 +1,44 @@
+From c2afcdde5fa51b938fb824549f65ec170b5bc96a Mon Sep 17 00:00:00 2001
+From: Szabolcs Nagy <nsz@port70.net>
+Date: Sat, 20 Aug 2016 19:11:37 +0000
+Subject: [PATCH 6/8] libgomp-test-fix
+
+---
+ libgomp/testsuite/lib/libgomp.exp             | 3 +++
+ libgomp/testsuite/libgomp-test-support.exp.in | 2 ++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/libgomp/testsuite/lib/libgomp.exp b/libgomp/testsuite/lib/libgomp.exp
+index 1cb4991..398ba1f 100644
+--- a/libgomp/testsuite/lib/libgomp.exp
++++ b/libgomp/testsuite/lib/libgomp.exp
+@@ -85,6 +85,7 @@ proc libgomp_init { args } {
+     global ALWAYS_CFLAGS
+     global CFLAGS
+     global TOOL_EXECUTABLE TOOL_OPTIONS
++    global BUILD_CC
+     global GCC_UNDER_TEST
+     global TESTING_IN_BUILD_TREE
+     global target_triplet
+@@ -107,6 +108,8 @@ proc libgomp_init { args } {
+     if ![info exists GCC_UNDER_TEST] then {
+ 	if [info exists TOOL_EXECUTABLE] {
+ 	    set GCC_UNDER_TEST $TOOL_EXECUTABLE
++	} elseif [info exists BUILD_CC] {
++	    set GCC_UNDER_TEST $BUILD_CC
+ 	} else {
+ 	    set GCC_UNDER_TEST "[find_gcc]"
+ 	}
+diff --git a/libgomp/testsuite/libgomp-test-support.exp.in b/libgomp/testsuite/libgomp-test-support.exp.in
+index 5a724fb..b3cb4c7 100644
+--- a/libgomp/testsuite/libgomp-test-support.exp.in
++++ b/libgomp/testsuite/libgomp-test-support.exp.in
+@@ -1,3 +1,5 @@
++set BUILD_CC "@CC@"
++
+ set cuda_driver_include "@CUDA_DRIVER_INCLUDE@"
+ set cuda_driver_lib "@CUDA_DRIVER_LIB@"
+ set hsa_runtime_lib "@HSA_RUNTIME_LIB@"
+-- 
+2.8.1
+

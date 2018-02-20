@@ -1,0 +1,172 @@
+From 51e98cbe7c3b71e2b351254b6f82eb6b7bdfb7d1 Mon Sep 17 00:00:00 2001
+From: Szabolcs Nagy <nsz@port70.net>
+Date: Sat, 20 Aug 2016 21:20:29 +0000
+Subject: [PATCH 8/8] libvtv-test-fix
+
+---
+ libvtv/configure                            |  3 +++
+ libvtv/configure.ac                         |  1 +
+ libvtv/testsuite/Makefile.am                |  2 ++
+ libvtv/testsuite/Makefile.in                | 33 +++++++++++++++++------------
+ libvtv/testsuite/lib/libvtv.exp             |  5 +++++
+ libvtv/testsuite/libvtv-test-support.exp.in |  1 +
+ 6 files changed, 31 insertions(+), 14 deletions(-)
+ create mode 100644 libvtv/testsuite/libvtv-test-support.exp.in
+
+diff --git a/libvtv/configure b/libvtv/configure
+index ea1a17f..93e4d8e 100755
+--- a/libvtv/configure
++++ b/libvtv/configure
+@@ -15465,6 +15465,8 @@ ac_config_files="$ac_config_files Makefile"
+ if test "x$VTV_SUPPORTED" = "xyes"; then
+   ac_config_files="$ac_config_files testsuite/Makefile"
+ 
++  ac_config_files="$ac_config_files testsuite/libvtv-test-support.exp"
++
+ fi
+ 
+ case "$target_os" in
+@@ -16628,6 +16630,7 @@ do
+     "libtool") CONFIG_COMMANDS="$CONFIG_COMMANDS libtool" ;;
+     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+     "testsuite/Makefile") CONFIG_FILES="$CONFIG_FILES testsuite/Makefile" ;;
++    "testsuite/libvtv-test-support.exp") CONFIG_FILES="$CONFIG_FILES testsuite/libvtv-test-support.exp" ;;
+ 
+   *) as_fn_error "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
+   esac
+diff --git a/libvtv/configure.ac b/libvtv/configure.ac
+index 19c6508..31ce1ba 100644
+--- a/libvtv/configure.ac
++++ b/libvtv/configure.ac
+@@ -174,6 +174,7 @@ _EOF
+     . ${multi_basedir}/config-ml.in
+     AS_UNSET([ml_norecursion])
+ ])
++  AC_CONFIG_FILES(testsuite/libvtv-test-support.exp)
+ fi
+ 
+ case "$target_os" in
+diff --git a/libvtv/testsuite/Makefile.am b/libvtv/testsuite/Makefile.am
+index 561b7e2..6c5e5fc 100644
+--- a/libvtv/testsuite/Makefile.am
++++ b/libvtv/testsuite/Makefile.am
+@@ -11,3 +11,5 @@ EXPECT = $(shell if test -f $(top_builddir)/../expect/expect; then \
+ _RUNTEST = $(shell if test -f $(top_srcdir)/../dejagnu/runtest; then \
+ 	     echo $(top_srcdir)/../dejagnu/runtest; else echo runtest; fi)
+ RUNTEST = "$(_RUNTEST) $(AM_RUNTESTFLAGS)"
++
++all-local: libatomic-test-support.exp
+diff --git a/libvtv/testsuite/Makefile.in b/libvtv/testsuite/Makefile.in
+index e19e13e..60754ce 100644
+--- a/libvtv/testsuite/Makefile.in
++++ b/libvtv/testsuite/Makefile.in
+@@ -52,7 +52,8 @@ build_triplet = @build@
+ host_triplet = @host@
+ target_triplet = @target@
+ subdir = testsuite
+-DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am
++DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
++	$(srcdir)/libvtv-test-support.exp.in
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/../config/acx.m4 \
+ 	$(top_srcdir)/../config/depstand.m4 \
+@@ -68,7 +69,7 @@ am__aclocal_m4_deps = $(top_srcdir)/../config/acx.m4 \
+ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
+ 	$(ACLOCAL_M4)
+ mkinstalldirs = $(SHELL) $(top_srcdir)/../mkinstalldirs
+-CONFIG_CLEAN_FILES =
++CONFIG_CLEAN_FILES = libvtv-test-support.exp
+ CONFIG_CLEAN_VPATH_FILES =
+ SOURCES =
+ am__can_run_installinfo = \
+@@ -260,6 +261,8 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+ 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
+ $(am__aclocal_m4_deps):
++libvtv-test-support.exp: $(top_builddir)/config.status $(srcdir)/libvtv-test-support.exp.in
++	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
+ 
+ mostlyclean-libtool:
+ 	-rm -f *.lo
+@@ -320,7 +323,7 @@ distclean-DEJAGNU:
+ check-am: all-am
+ 	$(MAKE) $(AM_MAKEFLAGS) check-DEJAGNU
+ check: check-am
+-all-am: Makefile
++all-am: Makefile all-local
+ installdirs:
+ install: install-am
+ install-exec: install-exec-am
+@@ -420,19 +423,21 @@ uninstall-am:
+ 
+ .MAKE: check-am install-am install-strip
+ 
+-.PHONY: all all-am check check-DEJAGNU check-am clean clean-generic \
+-	clean-libtool distclean distclean-DEJAGNU distclean-generic \
+-	distclean-libtool dvi dvi-am html html-am info info-am install \
+-	install-am install-data install-data-am install-dvi \
+-	install-dvi-am install-exec install-exec-am install-html \
+-	install-html-am install-info install-info-am install-man \
+-	install-pdf install-pdf-am install-ps install-ps-am \
+-	install-strip installcheck installcheck-am installdirs \
+-	maintainer-clean maintainer-clean-generic mostlyclean \
+-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+-	uninstall uninstall-am
++.PHONY: all all-am all-local check check-DEJAGNU check-am clean \
++	clean-generic clean-libtool distclean distclean-DEJAGNU \
++	distclean-generic distclean-libtool dvi dvi-am html html-am \
++	info info-am install install-am install-data install-data-am \
++	install-dvi install-dvi-am install-exec install-exec-am \
++	install-html install-html-am install-info install-info-am \
++	install-man install-pdf install-pdf-am install-ps \
++	install-ps-am install-strip installcheck installcheck-am \
++	installdirs maintainer-clean maintainer-clean-generic \
++	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
++	ps ps-am uninstall uninstall-am
+ 
+ 
++all-local: libatomic-test-support.exp
++
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+diff --git a/libvtv/testsuite/lib/libvtv.exp b/libvtv/testsuite/lib/libvtv.exp
+index edf5fdd..70e2d0e 100644
+--- a/libvtv/testsuite/lib/libvtv.exp
++++ b/libvtv/testsuite/lib/libvtv.exp
+@@ -47,6 +47,8 @@ load_gcc_lib timeout-dg.exp
+ load_gcc_lib torture-options.exp
+ load_gcc_lib fortran-modules.exp
+ 
++load_file libvtv-test-support.exp
++
+ set dg-do-what-default run
+ 
+ #
+@@ -74,6 +76,7 @@ proc libvtv_init { args } {
+     global ALWAYS_CFLAGS
+     global CFLAGS
+     global TOOL_EXECUTABLE TOOL_OPTIONS
++    global BUILD_CC
+     global GCC_UNDER_TEST
+     global TESTING_IN_BUILD_TREE
+     global target_triplet
+@@ -89,6 +92,8 @@ proc libvtv_init { args } {
+     if ![info exists GCC_UNDER_TEST] then {
+ 	if [info exists TOOL_EXECUTABLE] {
+ 	    set GCC_UNDER_TEST $TOOL_EXECUTABLE
++	} elseif [info exists BUILD_CC] {
++	    set GCC_UNDER_TEST $BUILD_CC
+ 	} else {
+ 	    set GCC_UNDER_TEST "[find_gcc]"
+ 	}
+diff --git a/libvtv/testsuite/libvtv-test-support.exp.in b/libvtv/testsuite/libvtv-test-support.exp.in
+new file mode 100644
+index 0000000..972f8d5
+--- /dev/null
++++ b/libvtv/testsuite/libvtv-test-support.exp.in
+@@ -0,0 +1 @@
++set BUILD_CC "@CC@"
+-- 
+2.8.1
+
