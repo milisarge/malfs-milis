@@ -1,0 +1,20 @@
+# Tanım: Görüntü işleme ve görüntü analizi uygulamaları için geniş ölçüde yararlı olan yazılım
+# URL: http://www.leptonica.com/
+# Paketçi: Cihan Alkan
+# Gerekler: giflib libjpeg-turbo libpng libtiff libwebp
+# Grup: medya
+
+isim=leptonica
+surum=1.74.4
+devir=1
+
+kaynak=(https://github.com/DanBloomberg/leptonica/archive/$surum.tar.gz::${isim}-${surum}.tar.gz)
+
+derle() {
+  cd "$SRC"/leptonica-${surum}
+  ./autobuild
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+  install -D leptonica-license.txt "$PKG"/usr/share/licenses/leptonica/leptonica-license.txt
+}
