@@ -2,9 +2,10 @@
 # URL: http://www.mate-desktop.org/
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: yelp itstool intltool
+# Grup: mate
 
 isim=mate-user-guide
-surum=1.18.0
+surum=1.20.0
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
