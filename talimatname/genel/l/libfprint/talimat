@@ -1,0 +1,20 @@
+# Tanım: Parmak izi okuyucuları için kütüphane
+# URL: https://www.freedesktop.org/wiki/Software/fprint/libfprint
+# Paketçi: Cihan_Alkan
+# Gerekler: libusb nss pixman glib xorg-pixman
+# Grup: kütüphane
+
+isim=libfprint
+surum=0.7.0
+devir=1
+kaynak=()
+
+derle() {
+	git_indir https://anongit.freedesktop.org/git/libfprint/libfprint.git libfprint
+	cd $SRC/$isim
+	NOCONFIGURE=1 ./autogen.sh
+	./configure --prefix=/usr --sysconfdir=/etc --disable-static
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+	make
+	make DESTDIR="$PKG" install
+}
