@@ -27,4 +27,5 @@ pathappend /opt/ant/bin
 export ANT_HOME=/opt/ant
 # End of /etc/profile.d/ant.sh
 EOF
+ln -s /opt/ant/bin/ant $PKG/usr/bin/ant
 }
