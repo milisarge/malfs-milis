@@ -2,6 +2,7 @@
 # URL: http://roy.marples.name/projects/dhcpcd
 # Paketçi: milisarge@gmail.com
 # Gerekler:
+# Grup: temel
 
 isim=dhcpcd
 surum=6.10.1

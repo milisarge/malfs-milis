@@ -2,6 +2,7 @@
 # URL: http://curl.haxx.se/
 # Paketçi: milisarge@gmail.com
 # Gerekler:
+# Grup: temel
 
 isim=curl
 surum=7.47.1
