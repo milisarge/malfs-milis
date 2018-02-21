@@ -741,6 +741,7 @@ gerekleri_listele(){
 	[ $1 ] && _paket=$1 || hata_olustu "_talimat_bulunamadi"	
 	_pkvt=""
 	[ "$2" = "--kurulu_atla" ] && _pkvt="$VT"
+	#echo "arama konum: $_konum"
 	echo $_paket | awk -v arama_konum="$_konum" -v PKVT="$_pkvt" \
 	'''
 	function gerekbul(paket,gerekler) { 
@@ -785,11 +786,17 @@ gerekleri_listele(){
 	
 	function talimat_bul(ara){
 		cmd= "find " arama_konum " -name " ara " | head -n1 "
+		_bulundu=0
 		while ( ( cmd | getline talimatyol ) > 0 ) {
-			return talimatyol "/talimat"
+			_bulundu=1
 			break
 		} 
 		close(cmd)
+		if ( _bulundu == 0 ) {
+			print ara " talimatı bulunamadı";
+			exit 1
+		}
+		return talimatyol "/talimat"
 	}
 
 
