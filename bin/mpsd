@@ -96,7 +96,7 @@ get_package_builddate() {
 		EXT=$PKT_UZANTISI.$PKT_SIKISTIRMA_MODU
 	fi
 	NAME="`get_package_name $1`"
-	BUILD_DATE=`echo $1|sed "s/i686.$EXT//"|sed "s/x86_64.$EXT//"|sed "s/any.$EXT//"`
+	BUILD_DATE=`echo $1|sed "s/i686.$EXT//"|sed "s/x86_64.$EXT//"|sed "s/armv7l.$EXT//"|sed "s/any.$EXT//"`
 	echo "${BUILD_DATE:$((${#NAME}))}"
 }
 get_package_extension() {
@@ -295,7 +295,7 @@ unpack_source() {
 get_package_list() {
 	local ARCH FILE i
 	i=0
-	for ARCH in x86_64 i686 any; do
+	for ARCH in x86_64 i686 armv7l any; do
 		for FILE in `find $PAKETLEME_DIZIN -name "${isim}*$ARCH.$PKT_UZANTISI*"`; do
 			TARGETS[i]=`basename $FILE`
 			i=$((i+1))
