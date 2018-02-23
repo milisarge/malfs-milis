@@ -1,0 +1,16 @@
+#!/bin/bash
+
+hata(){
+	echo "bilgi alınacak komut paremetresi eksik";
+	exit 1
+}
+
+[ $1 ] && _komut=$1 || hata 
+for sayfa in 1 2 3 4 5 6 7 8 l n;do	
+	yanit=$(curl -s --head https://linux.die.net/man/$sayfa/${_komut} | head -n 1 | cut -d' ' -f2)
+	if [ $yanit == "200" ];then
+		curl -s https://linux.die.net/man/$sayfa/${_komut} > /tmp/${_komut}.html;
+		[ $(type -p lynx) ] && lynx /tmp/${_komut}.html ||echo "file:///tmp/${_komut}.html"
+		exit 1
+	fi
+done
