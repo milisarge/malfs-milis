@@ -1,0 +1,30 @@
+# Tanım: Linux Kızılötesi Uzaktan Kumanda programları
+# URL: http://www.lirc.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: alsa-lib xorg-libx11 libftdi libusb-compat help2man libxslt python3 python3-setuptools
+# Grup: sistem
+
+isim=lirc
+surum=0.10.1
+devir=1
+
+kaynak=(https://sourceforge.net/projects/lirc/files/LIRC/0.10.1/lirc-$surum.tar.gz
+        lirc.logrotate
+        lirc.tmpfiles)
+
+derle() {
+
+  cd "${SRC}/lirc-$surum"
+
+  HAVE_UINPUT=1 ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR="${PKG}" -j1 install
+
+  install -Dm644 "${SRC}"/lirc.tmpfiles "${PKG}"/usr/lib/tmpfiles.d/lirc.conf
+  install -Dm644 "${SRC}"/lirc.logrotate "${PKG}"/etc/logrotate.d/lirc
+
+  rmdir "${PKG}"/var/{run/lirc/,run/}
+  rm -rf ${PKG}/usr/share/doc
+  rm -rf ${PKG}/usr/share/man
+}
