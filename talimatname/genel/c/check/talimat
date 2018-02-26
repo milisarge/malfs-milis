@@ -7,10 +7,11 @@
 isim=check
 surum=0.12.0
 devir=1
-kaynak=(https://github.com/libcheck/check/releases/download/0.12.0/check-0.12.0.tar.gz)
+kaynak=(https://github.com/libcheck/check/releases/download/$surum/check-$surum.tar.gz)
 
 derle() {
 	cd $isim-$surum
+	autoreconf -fi
 	./configure --prefix=/usr --disable-static
 	make
 	make DESTDIR=$PKG install
