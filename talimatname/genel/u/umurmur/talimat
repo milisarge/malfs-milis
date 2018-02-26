@@ -1,0 +1,28 @@
+# Tanım: Minimalist Mumble sunucusu
+# URL: https://github.com/umurmur/umurmur
+# Paketçi: Cihan_Alkan
+# Gerekler: mbedtls libconfig protobuf-c cmake
+# Grup: ağ
+
+isim=umurmur
+surum=0.2.17
+devir=1
+
+kaynak=(https://github.com/umurmur/umurmur/archive/${surum}.tar.gz::$isim-$surum.tar.gz
+        umurmur.sysusers)
+
+derle() {
+  cd $isim-$surum
+  mkdir build
+  cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSSL=mbedtls
+  make
+  cd $SRC/${isim}-${surum}
+  make -C build DESTDIR="${PKG}" install
+  install -Dm 644 "${PKG}/usr/etc/umurmur.conf" -t "${PKG}/etc/umurmur"
+  rm -r "${PKG}/usr/etc"
+  install -Dm 644 LICENSE -t "${PKG}/usr/share/licenses/${isim}"
+  install -Dm 644 "${SRC}/umurmur.sysusers" "${PKG}/usr/lib/sysusers.d/umurmur.conf"
+}
