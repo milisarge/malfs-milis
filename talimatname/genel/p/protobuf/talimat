@@ -1,7 +1,7 @@
 # Tanım: Google veri değişim biçim aracı
 # URL: http://code.google.com/p/protobuf/
 # Paketçi: milisarge
-# Gerekler: python-setuptools 
+# Gerekler: python-setuptools clang unzip
 # Grup:
 
 isim=protobuf
