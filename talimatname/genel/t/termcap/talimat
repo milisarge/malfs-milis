@@ -1,0 +1,24 @@
+# Tanım: Programların ekran bilgisayar terminallerini cihazdan bağımsız biçimde kullanmasını sağlar
+# URL: http://www.catb.org/~esr/terminfo/
+# Paketçi: Cihan_Alkan
+# Gerekler: 
+# Grup: sistem 
+
+isim=termcap
+surum=1.3.1
+devir=1
+kaynak=(http://ftp.gnu.org/gnu/${isim}/${isim}-${surum}.tar.gz)
+
+derle() {
+	gcc -fPIC -c "${SRC}/${isim}-${surum}/${isim}.c" \
+	-o "${SRC}"/"${isim}.o" \
+	-DHAVE_STRING_H=1 -DHAVE_UNISTD_H=1 -DSTDC_HEADERS=1 || return 1
+	gcc -shared -Wl,-soname,"lib${isim}.so" \
+	-o "${SRC}/lib${isim}.so.${surum}" "${SRC}/${isim}.o" || return 1
+	install -D -m755 "${SRC}/lib${isim}.so.${surum}" "${PKG}/usr/lib/lib${isim}.so.${surum}"
+	cd "${SRC}/${isim}-${surum}"
+	for infofile in termcap.info*
+	do install -D -m644 "${SRC}/${isim}-${surum}/${infofile}" "${PKG}/usr/share/info/${infofile}"
+	done
+	rm -rf $PKG/usr/share
+}
