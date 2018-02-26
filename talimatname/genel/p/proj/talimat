@@ -1,0 +1,24 @@
+# Tanım: Kartografik Projeksiyonlar kütüphanesi
+# URL: http://trac.osgeo.org/proj/
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: kütüphane
+
+isim=proj
+surum=4.9.3
+devir=1
+kaynak=(https://github.com/OSGeo/proj.4/archive/$surum.tar.gz::$isim-$surum.tar.gz
+        http://download.osgeo.org/proj/proj-datumgrid-1.6.zip)
+
+derle() {
+  bsdtar -p -o -C "${SRC}"/proj.4-$surum/nad -xf "${DERLEME_KAYNAKDIZIN}"/proj-datumgrid-1.6.zip
+  cd "${SRC}"/$isim.4-$surum
+
+  autoreconf -if
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+  rm -rf "${PKG}"/usr/share/man
+  install -Dm644 COPYING "${PKG}"/usr/share/licenses/$isim/LICENSE
+}
+
