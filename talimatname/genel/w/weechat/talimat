@@ -1,0 +1,23 @@
+# Tanım: Hızlı, hafif ve genişletilebilir IRC istemcisi (curses UI)
+# URL: http://www.weechat.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: gnutls libgcrypt asciidoc highlight cmake python lua tcl ruby aspell
+# Grup: ağ
+
+isim=weechat
+surum=2.0.1
+devir=1
+kaynak=(https://www.weechat.org/files/src/$isim-$surum.tar.xz)
+
+derle() {
+  mkdir build
+  cd build
+  cmake -Wno-dev "${SRC}/$isim-$surum" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DENABLE_MAN=ON \
+        -DENABLE_DOC=ON
+  make
+  make DESTDIR="${PKG}" install
+}
