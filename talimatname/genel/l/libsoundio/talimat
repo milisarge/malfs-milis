@@ -1,0 +1,29 @@
+# Tanım: Çapraz platform ses girişi ve çıkışı sağlayan bir C99 kütüphanesi
+# URL: http://www.github.com/andrewrk/libsoundio
+# Paketçi: Cihan_Alkan
+# Gerekler: cmake jack
+# Grup: kütüphane
+
+isim=libsoundio
+surum=1.1.0
+devir=1
+kaynak=(https://github.com/andrewrk/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+    mkdir -p "$isim-$surum.build"
+    cd "$isim-$surum.build"
+    cmake \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D BUILD_EXAMPLE_PROGRAMS=OFF \
+        -D BUILD_TESTS=OFF \
+        -D BUILD_STATIC_LIBS=OFF \
+        -D ENABLE_JACK=ON \
+        "$SRC/$isim-$surum"
+    make
+    cd $SRC
+    make \
+        -C "$isim-$surum.build" \
+        install DESTDIR="$PKG"
+}
