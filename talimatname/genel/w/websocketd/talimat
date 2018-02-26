@@ -1,0 +1,16 @@
+# Tanım: Inetd gibi ama WebSockets için. STDIO / STDOUT kullanan herhangi bir uygulamayı bir WebSocket sunucusuna çevirin.
+# URL: https://github.com/joewalnes/websocketd
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: 
+
+
+isim=websocketd
+surum=0.2.12
+devir=1
+kaynak=(https://github.com/joewalnes/websocketd/releases/download/v${surum}/websocketd-${surum}-linux_amd64.zip)
+
+derle() {
+    install -Dm755 "${isim}" "${PKG}/usr/bin/${isim}"
+    install -Dm644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
+}
