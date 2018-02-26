@@ -1,15 +1,15 @@
 # Tanım: Google veri değişim biçim aracı
 # URL: http://code.google.com/p/protobuf/
 # Paketçi: milisarge
-# Gerekler: python-setuptools 
+# Gerekler: python-setuptools clang unzip
+# Grup:
 
 isim=protobuf
-surum=2.6.1
+surum=3.5.1
 devir=1
 
-kaynak=(https://github.com/google/protobuf/releases/download/v$surum/protobuf-$surum.tar.bz2)
-derle() 
-{ 
+kaynak=(https://github.com/google/protobuf/archive/v3.5.1.tar.gz::protobuf-$surum.tar.gz)
+derle() { 
 cd ${isim}-$surum
 ./autogen.sh
 ./configure --prefix=/usr --disable-static
