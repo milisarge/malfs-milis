@@ -1,0 +1,45 @@
+# Tanım: İşletim sistemi ve konteyner ikili dağıtımı ve yükseltmeleri
+# URL: https://github.com/ostreedev/ostree
+# Paketçi: Cihan_Alkan
+# Gerekler: glib libsoup gpgme fuse gobject-introspection libxslt python syslinux gjs elfutils
+# Grup: sistem
+
+isim=ostree
+surum=2018.1
+devir=1
+kaynak=()
+
+derle() {
+	adres="https://github.com/ostreedev/ostree"
+	git_indir ${adres} ${isim}
+	adres1="https://github.com/mendsley/bsdiff"
+	git_indir ${adres1} $SRC/bsdiff
+	adres2="https://git.gnome.org/browse/libglnx"
+	git_indir ${adres2} $SRC/libglnx
+
+  cd ${isim}
+  git submodule init
+  git config --local submodule.bsdiff.url "$SRC/bsdiff"
+  git config --local submodule.libglnx.url "$SRC/libglnx"
+  git submodule update
+
+  find . -name '*.py' -exec sed -i '1s/python$/&2/' {} +
+
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib \
+    --without-mkinitcpio \
+    --with-openssl \
+    --with-builtin-grub2-mkconfig \
+    --enable-experimental-api \
+    --disable-static \
+    --disable-gtk-doc
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR="$PKG" install
+}
