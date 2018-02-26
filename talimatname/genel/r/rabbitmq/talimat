@@ -1,0 +1,40 @@
+# Tanım: Erlang/OTP'de yazılmış AMQP'nin güvenilir ve kurumsal kurumsal mesajlaşma uygulaması
+# URL: https://rabbitmq.com
+# Paketçi: Cihan_Alkan
+# Gerekler: erlang python libxslt xmlto zip
+# Grup: kütüphane
+
+isim=rabbitmq
+surum=3.6.15
+devir=1
+
+kaynak=(https://www.rabbitmq.com/releases/rabbitmq-server/v$surum/rabbitmq-server_$surum.orig.tar.xz
+        rabbitmq-env.conf
+        rabbitmq.sysusers
+        rabbitmq.tmpfiles
+        rabbitmq-script-wrapper
+        rabbitmq.logrotate)
+
+derle() {
+
+  cd ${isim}-server-${surum}
+  sed -r 's|^(SYS_PREFIX=).*$|\1""|' -i deps/rabbit/scripts/rabbitmq-defaults
+  make
+  make DESTDIR="${PKG}" PREFIX=/usr RMQ_ROOTDIR=/usr/lib/rabbitmq \
+    install install-man install-bin
+
+  # using script wrapper for better bin handling
+  local libdir="${PKG}/usr/lib/rabbitmq/lib/rabbitmq_server-${surum}"
+  install -d "${PKG}/usr/bin"
+  install -Dm 755 scripts/rabbitmq-script-wrapper -t "${PKG}/usr/lib/rabbitmq/bin"
+  for script in "${libdir}"/sbin/rabbit*; do
+    ln -s /usr/lib/rabbitmq/bin/rabbitmq-script-wrapper "${PKG}/usr/bin/${script#${libdir}/sbin/}"
+  done
+
+  install -Dm 644 "${SRC}/rabbitmq-env.conf" "${PKG}/etc/rabbitmq/rabbitmq-env.conf"
+  install -Dm 644 "${SRC}/rabbitmq.sysusers" "${PKG}/usr/lib/sysusers.d/rabbitmq.conf"
+  install -Dm 644 "${SRC}/rabbitmq.tmpfiles" "${PKG}/usr/lib/tmpfiles.d/rabbitmq.conf"
+  install -Dm 644 "${SRC}/rabbitmq.logrotate" "${PKG}/etc/logrotate.d/rabbitmq"
+
+  chown -R 197:0 "${PKG}/etc/rabbitmq"
+}
