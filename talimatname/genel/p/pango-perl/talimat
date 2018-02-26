@@ -1,7 +1,7 @@
 # Tanım: Pango için Perl bağları
 # URL: http://gtk2-perl.sourceforge.net/
 # Paketçi: Cihan_Alkan
-# Gerekler: perl-extutils-pkgconfig perl-extutils-depends pango cairo-perl
+# Gerekler: perl-extutils-pkgconfig perl-extutils-depends pango cairo-perl perl-glib
 # Grup: kütüphane 
 
 isim=pango-perl
