@@ -10,8 +10,8 @@ devir=1
 kaynak=(http://downloads.sourceforge.net/sourceforge/$isim/$isim-$surum.tar.gz)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr --disable-static
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure --prefix=/usr --disable-static
+	make
+	make DESTDIR=$PKG install
 }

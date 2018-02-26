@@ -1,0 +1,41 @@
+# Tanım: Bir pencere değiştirici, uygulama başlatıcısı ve dmenu değiştirme
+# URL: https://github.com/DaveDavenport/rofi/
+# Paketçi: Cihan_Alkan
+# Gerekler: xorg-libx11 xorg-libxft freetype libxdg-basedir pango startup-notification libxcb libxkbcommon check xcb-util xcb-util-wm xcb-util-xrm librsvg meson
+# Grup: 
+
+isim=rofi
+surum=1.5.0
+devir=1
+
+kaynak=()
+
+derle() {
+	adres="https://github.com/DaveDavenport/rofi"
+	git_indir ${adres} ${isim}
+	adres1="https://github.com/sardemff7/libgwater"
+	git_indir ${adres1} ${isim}
+	adres2="https://github.com/sardemff7/libnkutils"
+	git_indir ${adres2} ${isim}
+
+  cd rofi
+  for module in libgwater libnkutils; do
+    local submodule="subprojects/${module}"
+    git submodule init "${submodule}"
+    git config "submodule.${submodule}.url" "${SRC}/${module}"
+    git submodule update "${submodule}"
+  done
+
+  autoreconf -i
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+
+  LC_ALL=C make
+  make install install-man DESTDIR="$PKG"
+
+  install -Dm644 COPYING "$PKG/usr/share/licenses/rofi/COPYING"
+  install -dm755 "$PKG/usr/share/doc/rofi/examples"
+  install -Dm755 Examples/*.sh "$PKG/usr/share/doc/rofi/examples"
+  rm -rf ${PKG}/usr/share/doc
+  rm -rf ${PKG}/usr/share/man
+}
