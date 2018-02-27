@@ -1,0 +1,28 @@
+# Tanım: Parmak izi okuyucularına erişmek için D-Bus hizmeti
+# URL: https://www.freedesktop.org/wiki/Software/fprint/fprintd
+# Paketçi: Cihan_Alkan
+# Gerekler: libfprint dbus-glib polkit gnome-common
+# Grup: kütüphane
+
+isim=fprintd
+surum=0.8.0
+devir=1
+kaynak=()
+
+derle() {
+git_indir https://anongit.freedesktop.org/git/libfprint/fprintd.git fprintd
+  cd $isim
+  git describe --tags | sed 's/^V_//;s/_/./g;s/-/+/g'
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR="$PKG" install
+  install -d -m 700 "$PKG/var/lib/fprint"
+}

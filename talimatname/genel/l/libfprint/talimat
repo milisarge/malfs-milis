@@ -1,7 +1,7 @@
 # Tanım: Parmak izi okuyucuları için kütüphane
 # URL: https://www.freedesktop.org/wiki/Software/fprint/libfprint
 # Paketçi: Cihan_Alkan
-# Gerekler: libusb nss pixman glib xorg-pixman
+# Gerekler: libusb nss xorg-pixman glib xorg-pixman
 # Grup: kütüphane
 
 isim=libfprint
