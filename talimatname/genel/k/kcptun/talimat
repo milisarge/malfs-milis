@@ -1,0 +1,27 @@
+# Tanım: KCP'ye dayanan son derece basit bir udp tüneli
+# URL: https://github.com/xtaci/kcptun
+# Paketçi: Cihan_Alkan
+# Gerekler: go18
+# Grup: ağ
+
+isim=kcptun
+surum=20171201
+devir=1
+kaynak=(https://github.com/xtaci/kcptun/archive/v20171201.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+    mv kcptun-20171201 kcptun
+	mkdir -p "$SRC/${isim}/go_path"
+	cd "$SRC/${isim}/server"
+	GOPATH="$SRC/go_path" go get -d -v
+	GOPATH="$SRC/go_path" go build -v
+
+	cd "$SRC/${isim}/client"
+	GOPATH="$SRC/go_path" go get -d -v
+	GOPATH="$SRC/go_path" go build -v
+
+	install -Dm755 "$SRC/${isim}/client/client" \
+		"$PKG/usr/bin/kcptun-client"
+	install -Dm755 "$SRC/${isim}/server/server" \
+		"$PKG/usr/bin/kcptun-server"
+}
