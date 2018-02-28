@@ -1,7 +1,7 @@
 # Tanım: Parmak izi okuyucularına erişmek için D-Bus hizmeti
 # URL: https://www.freedesktop.org/wiki/Software/fprint/fprintd
 # Paketçi: Cihan_Alkan
-# Gerekler: libfprint dbus-glib polkit gnome-common
+# Gerekler: libfprint dbus-glib polkit gnome-common gtk-doc
 # Grup: kütüphane
 
 isim=fprintd
