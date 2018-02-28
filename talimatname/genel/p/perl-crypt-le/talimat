@@ -1,0 +1,17 @@
+# Tanım: Let's Encrypt API interfacing module
+# URL: http://search.cpan.org/dist/Crypt-LE/
+# Paketçi: milisarge
+# Gerekler: perl-convert-asn1 perl-crypt-openssl-rsa perl-io-socket-ssl perl-json-maybexs perl-log-log4perl perl-mozilla-ca
+# Grup: kütüphane
+
+isim=perl-crypt-le
+surum=0.29
+devir=1
+kaynak=(https://github.com/do-know/Crypt-LE/archive/$surum.tar.gz::Crypt-LE-$surum.tar.gz)
+
+derle() {
+  cd Crypt-LE-$surum
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make install DESTDIR="$PKG"
+}
