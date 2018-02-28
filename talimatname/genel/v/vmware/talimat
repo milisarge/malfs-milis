@@ -1,0 +1,234 @@
+# Tanım: Vmware sanal makine uygulaması
+# URL: https://www.vmware.com/products/workstation-for-linux.html
+# Paketçi: milisarge
+# Gerekler: sqlite3 xorg-app
+# Grup: sistem
+
+isim=vmware
+surum=14.1.1
+devir=1
+_derlemeno=7528167
+_surum=${surum}_${_derlemeno}
+kaynak=(https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_surum/_/-}.x86_64.bundle
+		vmware-vix-bootstrap
+		config
+		bootstrap
+		pam.d-vmware-authd
+		vmware-environment.sh
+		config.xml
+		datastores.xml
+		environments.xml
+		proxy.xml
+		Makefile
+		vmmon.patch
+		vmnet.patch)
+
+derle() {	
+	extracted_dir="$SRC/extracted"
+
+	[[ -d "$extracted_dir" ]] && rm -r "$extracted_dir"
+	
+	bash $(readlink -f "$SRC/VMware-Workstation-Full-${_surum/_/-}.x86_64.bundle") --extract "$extracted_dir"
+	local vmware_installer_version=$(cat "$SRC/extracted/vmware-installer/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
+	
+	mkdir -p \
+	"$PKG/etc"/{cups,pam.d,modprobe.d,profile.d,thnuclnt,vmware} \
+	"$PKG/usr"/{share,bin} \
+	"$PKG/usr/include/vmware-vix" \
+	"$PKG/usr/lib"/{vmware/{setup,lib/libvmware-vim-cmd.so},vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
+	"$PKG/usr/share"/{doc/vmware-vix,licenses/"$isim"} \
+	"$PKG/var/lib/vmware/Shared VMs"
+
+	cd "$SRC/extracted"
+
+	cp -r \
+	vmware-workstation/share/* \
+	vmware-workstation/man \
+	vmware-network-editor-ui/share/* \
+	vmware-player-app/share/* \
+	"$PKG/usr/share"
+
+	cp -r \
+	vmware-workstation/bin/* \
+	vmware-vmx/{,s}bin/* \
+	vmware-vix-core/bin/* \
+	vmware-vprobe/bin/* \
+	vmware-workstation-server/{vmware-hostd,vmware-vim-cmd,vmware-wssc-adminTool} \
+	vmware-network-editor-ui/bin/* \
+	vmware-player-app/bin/* \
+	"$PKG/usr/bin"
+
+	cp -r \
+	vmware-workstation/lib/* \
+	vmware-player-app/lib/* \
+	vmware-vmx/{lib/*,roms} \
+	vmware-vprobe/lib/* \
+	vmware-workstation-server/{bin,lib,hostd} \
+	vmware-usbarbitrator/bin \
+	vmware-network-editor/lib \
+	"$PKG/usr/lib/vmware"
+
+	cp -r \
+	vmware-player-setup/vmware-config \
+	"$PKG/usr/lib/vmware/setup"
+
+	cp -rL \
+	vmware-workstation-server/config/etc/vmware/* \
+	vmware-workstation-server/etc/vmware/* \
+	"$SRC"/{bootstrap,config} \
+	"$PKG/etc/vmware"
+
+	cp -r \
+	vmware-vix-lib-Workstation1400/lib/Workstation-14.0.0 \
+	vmware-vix-core/{lib/*,vixwrapper-config.txt} \
+	"$PKG/usr/lib/vmware-vix"
+	cp vmware-vix-core/vix-perl.tar.nogz "$PKG/usr/lib/vmware-vix/vix-perl.tar.gz"
+
+	cp -r \
+	vmware-vix-core/doc/* \
+	"$PKG/usr/share/doc/vmware-vix"
+
+	cp -r \
+	vmware-ovftool/* \
+	"$PKG/usr/lib/vmware-ovftool"
+
+	cp -r \
+	vmware-installer/{python,sopython,vmis,vmis-launcher,vmware-installer,vmware-installer.py} \
+	"$PKG/usr/lib/vmware-installer/$vmware_installer_version"
+
+	cp -r \
+	vmware-player-app/etc/cups/* \
+	"$PKG/etc/cups"
+	cp -r \
+	vmware-player-app/extras/.thnumod \
+	"$PKG/etc/thnuclnt"
+	cp -r \
+	vmware-player-app/extras/thnucups \
+	"$PKG/usr/lib/cups/filter"
+
+	cp -r \
+	vmware-vix-core/include/* \
+	"$PKG/usr/include/vmware-vix"
+	
+	install -Dm 644 "vmware-workstation/doc/EULA" "$PKG/usr/share/licenses/$isim/VMware Workstation - EULA.txt"
+	install -Dm 644 "vmware-workstation/doc"/*open_source_licenses.txt "$PKG/usr/share/licenses/$isim"
+	mv "$PKG/usr/lib/vmware-ovftool/vmware.eula" "$PKG/usr/share/licenses/$isim/VMware OVF Tool component for Linux - EULA.txt"
+	rm "$PKG/usr/lib/vmware-ovftool"/{vmware-eula.rtf,open_source_licenses.txt,manifest.xml}
+
+	install -Dm 644 "vmware-vmx/etc/modprobe.d/modprobe-vmware-fuse.conf" "$PKG/etc/modprobe.d/vmware-fuse.conf"
+
+	install -Dm 644 vmware-player-app/lib/isoimages/tools-key.pub "$PKG/usr/lib/vmware/isoimages/tools-key.pub"
+
+	install -Dm 644 vmware-vmx/extra/modules.xml "$PKG/usr/lib/vmware/modules/modules.xml"
+	install -Dm 644 vmware-installer/bootstrap "$PKG/etc/vmware-installer/bootstrap"
+	install -Dm 644 "$SRC/vmware-vix-bootstrap" "$PKG/etc/vmware-vix/bootstrap"
+
+	for hostd_file in config datastores environments proxy; do
+	install -Dm 644 "$SRC/$hostd_file.xml" "$PKG/etc/vmware/hostd/$hostd_file.xml"
+	done
+
+	install -Dm 644 "$SRC/pam.d-vmware-authd" "$PKG/etc/pam.d/vmware-authd"
+
+	echo -e "vmw_vmci\nvmmon" > "$PKG/usr/lib/modules-load.d/vmware.conf"
+
+	chmod +x \
+	"$PKG/usr/bin"/* \
+	"$PKG/usr/lib/vmware/bin"/* \
+	"$PKG/usr/lib/vmware/setup"/* \
+	"$PKG/usr/lib/vmware/lib"/libvmware-gksu.so/gksu-run-helper \
+	"$PKG/usr/lib/vmware-ovftool"/{ovftool,ovftool.bin} \
+	"$PKG/usr/lib/vmware-installer/$vmware_installer_version"/{vmware-installer,vmis-launcher} \
+	"$PKG/usr/lib/cups/filter"/* \
+	"$PKG/usr/lib/vmware-vix/setup"/* \
+	"$PKG/etc/thnuclnt/.thnumod"
+
+	chmod -R 600 "$PKG/etc/vmware/ssl"
+	chmod +s \
+	"$PKG/usr/bin"/vmware-authd \
+	"$PKG/usr/lib/vmware/bin"/{vmware-vmx,vmware-vmx-debug,vmware-vmx-stats}
+	
+	# Add symlinks the installer would create.
+
+	for link in \
+		licenseTool \
+		vmplayer \
+		vmware \
+		vmware-app-control \
+		vmware-enter-serial \
+		vmware-fuseUI \
+		vmware-gksu \
+		vmware-hostd \
+		vmware-modconfig \
+		vmware-modconfig-console \
+		vmware-mount \
+		vmware-netcfg \
+		vmware-tray \
+		vmware-vim-cmd \
+		vmware-vmblock-fuse \
+		vmware-vprobe \
+		vmware-wssc-adminTool \
+		vmware-zenity 
+	do
+		ln -s /usr/lib/vmware/bin/appLoader "$PKG/usr/lib/vmware/bin/$link"
+	done
+
+	for link in \
+		vmware-mount \
+		vmware-usbarbitrator
+	do
+		ln -s /usr/lib/vmware/bin/$link "$PKG/usr/bin/$link"
+	done
+		
+	ln -s /usr/lib/vmware/icu "$PKG/etc/vmware/icu"
+	ln -s /usr/lib/vmware/lib/diskLibWrapper.so/diskLibWrapper.so "$PKG/usr/lib/diskLibWrapper.so"
+	ln -s /usr/lib/vmware/lib/libvmware-hostd.so/libvmware-hostd.so "$PKG/usr/lib/vmware/lib/libvmware-vim-cmd.so/libvmware-vim-cmd.so"
+	ln -s /usr/lib/vmware-ovftool/ovftool "$PKG/usr/bin/ovftool"
+	ln -s /usr/lib/vmware-vix/libvixAllProducts.so "$PKG/usr/lib/libvixAllProducts.so"
+
+	# Replace placeholder "variables" with real paths.
+
+	for file in \
+		gtk-3.0/gdk-pixbuf.loaders
+	do
+		sed -i 's,@@LIBCONF_DIR@@,/usr/lib/vmware/libconf,g' "$PKG/usr/lib/vmware/libconf/etc/$file"
+	done
+
+	sed -i 's,@@BINARY@@,/usr/bin/vmware,' "$PKG/usr/share/applications/vmware-workstation.desktop"
+	sed -i 's,@@BINARY@@,/usr/bin/vmplayer,' "$PKG/usr/share/applications/vmware-player.desktop"
+	sed -i 's,@@BINARY@@,/usr/bin/vmware-netcfg,' "$PKG/usr/share/applications/vmware-netcfg.desktop"
+
+	sed -i 's,@@AUTHD_PORT@@,902,' "$PKG/usr/lib/vmware/hostd/docroot/client/clients.xml"
+
+	sed \
+	-e "s/@@VERSION@@/$vmware_installer_version/" \
+	-e "s,@@VMWARE_INSTALLER@@,/usr/lib/vmware-installer/$vmware_installer_version," \
+	-i "$PKG/etc/vmware-installer/bootstrap"
+
+	# Patch up the VMware kernel sources
+
+	dkms_dir="$PKG/usr/src/$isim-$_surum"
+
+	install -Dm 644 "$SRC/Makefile" "$dkms_dir/Makefile"
+
+	for module in vmmon vmnet; do # vmblock vmci vsock
+		tar -xf "vmware-vmx/lib/modules/source/$module.tar" -C "$dkms_dir"
+		patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$SRC/$module.patch"
+	done
+
+	rm -r "$PKG/usr/lib/vmware/modules/source"
+  
+	local database_filename="$PKG/etc/vmware-installer/database"
+	echo -n "" > "$database_filename"
+
+	sqlite3 "$database_filename" "CREATE TABLE settings(key VARCHAR PRIMARY KEY, value VARCHAR NOT NULL, component_name VARCHAR NOT NULL);"
+	sqlite3 "$database_filename" "INSERT INTO settings(key,value,component_name) VALUES('db.schemaVersion','2','vmware-installer');"
+	sqlite3 "$database_filename" "CREATE TABLE components(id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, version VARCHAR NOT NULL, buildNumber INTEGER NOT NULL, component_core_id INTEGER NOT NULL, longName VARCHAR NOT NULL, description VARCHAR, type INTEGER NOT NULL);"
+
+	# Define some environment variables for VMware and remove the tests about kernel modules
+	install -Dm 644 "$SRC/vmware-environment.sh" "$PKG/etc/conf.d/vmware"
+	for program in vmware vmplayer vmware-netcfg vmware-tray; do
+	sed -e '/export PRODUCT_NAME/asource /etc/conf.d/vmware' \
+		-e 's/if "$BINDIR"\/vmware-modconfig --appname=.*/if true ||/' \
+		-i "$PKG/usr/bin/$program"
+	done
+}
