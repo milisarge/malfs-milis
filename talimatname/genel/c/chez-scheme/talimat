@@ -1,0 +1,23 @@
+# Tanım: Chez Scheme R6RS(Scheme) dili için bir derleyici ve çalışma zamanı ortamıdır.
+# URL: https://github.com/cisco/ChezScheme
+# Paketçi: milisarge
+# Gerekler: xorg-libx11 xorg-proto 
+# Grup: geliştirme
+
+isim=chez-scheme
+surum=9.5
+devir=1
+kaynak=(https://github.com/cisco/ChezScheme/releases/download/v${surum}/csv${surum}.tar.gz
+		Mf-a6le)
+
+derle() {
+	_archivename=csv${surum}
+	cd "$SRC/${_archivename}" || exit
+	unset CHEZSCHEMELIBDIRS
+	./configure --installprefix=/usr --temproot=$PKG
+	cp $SRC/Mf-a6le c/
+	make
+	make install DESTDIR="$PKG"
+	rm $PKG/usr/lib/csv${surum}/a6le/scheme-script.boot
+	ln -s /usr/lib/csv${surum}/a6le/scheme.boot $PKG/usr/lib/csv${surum}/a6le/scheme-script.boot
+}
