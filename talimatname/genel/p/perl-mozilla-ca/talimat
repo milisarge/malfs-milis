@@ -1,24 +1,17 @@
-# Tanım: PEM formatında Mozilla CA sertifika paketi
-# URL: http://search.cpan.org/
+# Tanım: Mozilla's CA cert bundle in PEM format
+# URL: https://metacpan.org/release/Mozilla-CA
 # Paketçi: milisarge
 # Gerekler:
+# Grup: kütüphane
 
 isim=perl-mozilla-ca
-surum=20130114
+surum=20160104
 devir=1
-
 kaynak=(http://search.cpan.org/CPAN/authors/id/A/AB/ABH/Mozilla-CA-$surum.tar.gz)
 
 derle() {
-export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-unset PERL5LIB PERL_MM_OPT
-
-cd Mozilla-CA-$surum
-perl Makefile.PL
-make
-make install INSTALLDIRS=vendor DESTDIR=$PKG
-find $PKG \
-         -name '*.bs' -or \
-         -name '.packlist' -or \
-         -name 'perllocal.pod' | xargs rm
+  cd Mozilla-CA-$surum
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make install DESTDIR="$PKG"
 }

@@ -1,0 +1,18 @@
+# Tanım: Log4j implementation for Perl
+# URL: https://metacpan.org/release/Log-Log4perl
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: kütüphane
+
+isim=perl-log-log4perl
+surum=1.49
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/Log-Log4perl-$surum.tar.gz)
+
+derle() {
+  cd Log-Log4perl-$surum
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make test
+  make DESTDIR="$PKG" install
+}

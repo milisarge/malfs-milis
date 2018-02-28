@@ -1,20 +1,23 @@
-# Tanım: OpenSSL'nin çok düzeltmeli tam sayı aritmetiği
-# URL: http://search.cpan.org/
+# Tanım: OpenSSL's multiprecision integer arithmetic
+# URL: https://metacpan.org/release/Crypt-OpenSSL-Bignum
 # Paketçi: milisarge
-# Gerekler: 
+# Gerekler:
+# Grup: kütüphane
 
 isim=perl-crypt-openssl-bignum
-surum=0.04
+surum=0.08
 devir=1
-
-kaynak=(http://www.cpan.org/authors/id/I/IR/IROBERTS/Crypt-OpenSSL-Bignum-$surum.tar.gz)
+kaynak=(http://search.cpan.org/CPAN/authors/id/K/KM/KMX/Crypt-OpenSSL-Bignum-$surum.tar.gz)
 
 derle() {
-cd Crypt-OpenSSL-Bignum-$surum
-PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-make
-make pure_install doc_install DESTDIR=$PKG
-
-find $PKG -name '.packlist' -delete
-find $PKG -name '*.pod' -delete
+  _ddir="Crypt-OpenSSL-Bignum-$surum"
+  cd "$SRC/$_ddir"
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  unset PERL5LIB PERL_MM_OPT
+  /usr/bin/perl Makefile.PL
+  make
+  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB
+  make test
+  make install INSTALLDIRS=vendor DESTDIR="$PKG"
 }

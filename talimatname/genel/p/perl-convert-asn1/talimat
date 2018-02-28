@@ -1,0 +1,20 @@
+# Tanım: Perl/CPAN Module Convert::ASN1 : Standard endecode of ASN1 structures
+# URL: http://search.cpan.org/dist/Convert-ASN1
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: kütüphane
+
+isim=perl-convert-asn1
+surum=0.27
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/Convert-ASN1-$surum.tar.gz)
+
+derle() {
+  cd "$SRC"/Convert-ASN1-$surum
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+  cd "$SRC"/Convert-ASN1-$surum
+  make pure_install doc_install DESTDIR="$PKG"
+  find "$PKG" -name '.packlist' -delete
+  find "$PKG" -name '*.pod' -delete
+}

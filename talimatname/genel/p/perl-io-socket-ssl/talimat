@@ -1,22 +1,18 @@
-# Tanım: "IO::Socket::INET" için neredeyse şeffaf SSL kapsülleme
+# Tanım: Nearly transparent SSL encapsulation for IO::Socket::INET
 # URL: http://search.cpan.org/dist/IO-Socket-SSL/
 # Paketçi: milisarge
 # Gerekler: perl-net-ssleay perl-uri 
+# Grup: 
 
 isim=perl-io-socket-ssl
-surum=1.988
+surum=2.055
 devir=1
-
 kaynak=(http://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-$surum.tar.gz)
 
 derle() {
-cd IO-Socket-SSL-$surum
-yes | perl Makefile.PL INSTALLDIRS=vendor
-make
-make DESTDIR=$PKG install
-
-find $PKG \
-        -name '*.bs' -or \
-        -name .packlist -or \
-        -name perllocal.pod | xargs rm
+  cd IO-Socket-SSL-${surum}
+  yes | perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make test
+  make DESTDIR="${PKG}" install
 }

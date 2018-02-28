@@ -1,20 +1,25 @@
-# Tanım: OpenSSL PRNG yöntemlerine Arayüz
-# URL: http://search.cpan.org/
+# Tanım: Routines for accessing the OpenSSL pseudo-random number generator
+# URL: https://metacpan.org/release/Crypt-OpenSSL-Random
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: 
+# Grup: kütüphane
 
 isim=perl-crypt-openssl-random
-surum=0.06
+surum=0.11
 devir=1
-
 kaynak=(http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/Crypt-OpenSSL-Random-$surum.tar.gz)
 
 derle() {
-cd Crypt-OpenSSL-Random-$surum
-PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-make
-make pure_install doc_install DESTDIR=$PKG
-
-find $PKG -name '.packlist' -delete
-find $PKG -name '*.pod' -delete
+  _ddir="Crypt-OpenSSL-Random-$surum"
+  cd "$SRC/$_ddir"
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  unset PERL5LIB PERL_MM_OPT
+  /usr/bin/perl Makefile.PL
+  make
+  cd "$SRC/$_ddir"
+  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB
+  make test
+  cd "$SRC/$_ddir"
+  make install INSTALLDIRS=vendor DESTDIR="$PKG"
 }

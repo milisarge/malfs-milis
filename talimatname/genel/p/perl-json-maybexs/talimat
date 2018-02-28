@@ -1,0 +1,29 @@
+# Tanım: Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
+# URL: https://metacpan.org/release/JSON-MaybeXS
+# Paketçi: milisarge
+# Gerekler:
+# Grup: 
+
+isim=perl-json-maybexs
+surum=1.003008
+devir=1
+kaynak=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/JSON-MaybeXS-$surum.tar.gz)
+
+derle() {
+	_distdir="JSON-MaybeXS-$surum"
+	( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+	  PERL_AUTOINSTALL=--skipdeps                            \
+	  PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$PKG'"     \
+	  PERL_MB_OPT="--installdirs vendor --destdir '$PKG'" \
+	  MODULEBUILDRC=/dev/null
+	cd "$SRC/$_distdir"
+	/usr/bin/perl Makefile.PL
+	make
+	)
+	cd "$SRC/$_distdir"
+	( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+	make test
+	cd "$SRC/$_distdir"
+	make install
+	find "$PKG" -name .packlist -o -name perllocal.pod -delete
+}
