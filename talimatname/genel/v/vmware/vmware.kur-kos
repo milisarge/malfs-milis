@@ -4,13 +4,13 @@ mkdir -p /lib/modules/$(uname -r)/extra
 cd /usr/src/vmware-14*
 [ -f /usr/src/linux-$(uname -r)/vmlinux ] && mv /usr/src/linux-$(uname -r)/vmlinux /opt 
 make KVERSION=$(uname -r) VM_KBUILD=yes -C  vmmon-only
-cp vmmon-only/vmmon.ko lib/modules/$(uname -r)/extra/
+cp vmmon-only/vmmon.ko /lib/modules/$(uname -r)/extra/
 
 make KVERSION=$(uname -r) VM_KBUILD=yes -C  vmnet-only
-cp vmnet-only/vmnet.ko lib/modules/$(uname -r)/extra/
+cp vmnet-only/vmnet.ko /lib/modules/$(uname -r)/extra/
 
 [ -f /opt/vmlinux ] && mv /opt/vmlinux  /usr/src/linux-$(uname -r)/
 depmod
 modprobe vmmon
 modprobe vmnet
-[ -f lib/modules/$(uname -r)/extra/vmci.ko ] && modprobe vmci
+[ -f /lib/modules/$(uname -r)/extra/vmci.ko ] && modprobe vmci
