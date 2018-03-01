@@ -27,7 +27,7 @@ derle() {
   [ -f /usr/src/linux-$(uname -r)/vmlinux ] && rm /usr/src/linux-$(uname -r)/vmlinux
   sed -i "s/${_dkms_surum}/${surum}/g" ./modules/linux/dkms.sh
   sh ./modules/linux/dkms.sh ./ "${PKG}/usr/src"
-  #for _module in {"vmblock","vmci","vmsync","vsock"}; do
- #  rm -rf "${PKG}/usr/src/${_isim}-${surum}/${_module}"
-  #done
+  for _module in {"vmblock","vmci","vmsync","vsock"}; do
+   rm -rf "${PKG}/usr/src/${_isim}-${surum}/${_module}"
+  done
 }
