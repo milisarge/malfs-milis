@@ -11,3 +11,4 @@ mv /opt/vmlinux  /usr/src/linux-$(uname -r)/
 depmod
 modprobe vmmon
 modprobe vmnet
+[ -f lib/modules/$(uname -r)/extra/vmci.ko ] && modprobe vmci
