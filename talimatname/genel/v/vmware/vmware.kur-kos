@@ -1,4 +1,5 @@
 #!/bin/sh
+mkdir -p /lib/modules/$(uname -r)/extra
 [ -f /sources/milis.git/ayarlar/moduller/vmci.ko ] && cp /sources/milis.git/ayarlar/moduller/vmci.ko /lib/modules/$(uname -r)/extra/
 cd /usr/src/vmware-14*
 [ -f /usr/src/linux-$(uname -r)/vmlinux ] && mv /usr/src/linux-$(uname -r)/vmlinux /opt 
