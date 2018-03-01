@@ -1,0 +1,36 @@
+# Tanım: Bir Java proje yönetimi ve proje anlama aracı
+# URL: http://maven.apache.org
+# Paketçi: milisarge
+# Gerekler: openjdk
+# Grup: geliştirme
+
+isim=maven
+surum=3.5.2
+devir=1
+kaynak=(http://apache-mirror.rbc.ru/pub/apache/maven/maven-3/$surum/source/apache-maven-$surum-src.tar.gz
+	    maven.sh)
+
+
+derle() {
+
+	mkdir $SRC/maven-bin
+	if [ ! -f $DERLEME_KAYNAKDIZIN/apache-maven-$surum-bin.tar.gz ];then
+		wget http://apache-mirror.rbc.ru/pub/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz \
+		-P $DERLEME_KAYNAKDIZIN/
+	fi
+	[ -f $DERLEME_KAYNAKDIZIN/apache-maven-$surum-bin.tar.gz ] && tar xf $DERLEME_KAYNAKDIZIN/apache-maven-$surum-bin.tar.gz \
+	-C $SRC/maven-bin
+	cd "$SRC"/apache-maven-$surum
+	
+	export PATH=${PATH}:/opt/jdk/bin
+
+	mkdir -p "$SRC"/repo
+	mkdir -p "$PKG"/opt/maven
+	mkdir -p "$PKG"/usr/bin
+
+	$SRC/maven-bin/apache-maven-3.5.2/bin/mvn package -Dmaven.repo.local="$SRC"/repo -DdistributionTargetDir="$PKG"/opt/maven
+
+	install -D -m 755 "$SRC"/maven.sh "$PKG"/etc/profile.d/maven.sh
+	ln -s /opt/maven/bin/mvn "$PKG"/usr/bin/mvn
+	ln -s /opt/maven/bin/mvnDebug "$PKG"/usr/bin/mvnDebug
+}
