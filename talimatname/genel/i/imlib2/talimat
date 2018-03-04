@@ -4,21 +4,17 @@
 # Gerekler: aalib giflib xorg-libxext libtiff freetype xorg-libsm libpng libjpeg-turbo libid3tag
 
 isim=imlib2
-surum=1.4.7
+surum=1.4.10
 devir=1
 kaynak=(http://downloads.sourceforge.net/enlightenment/$isim-$surum.tar.gz)
 
 derle() {
 cd $isim-$surum
-case $(uname -m) in
-	i686)
-		EXTRAOPTS="--disable-mmx";;
-	x86_64)
-		EXTRAOPTS="--disable-amd64";;
-esac
-./configure --prefix=/usr \
---disable-static \
-$EXTRAOPTS
-make
+     sed -i 's/@my_libs@//' imlib2-config.in
+     EXTRAOPTS="--enable-amd64"
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc/imlib2 \
+              --x-libraries=/usr/lib $EXTRAOPTS
+  make
 make DESTDIR=$PKG install
 }
