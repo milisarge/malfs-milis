@@ -1,10 +1,10 @@
 # Tanım: X11 resim görüntüleyici çoğunlukla konsol kullanıcılarına yöneliktir. Komut satırı argümanları üzerinden kontrol edilir
 # Url: http://linuxbrit.co.uk/feh/
 # Paketçi: milisarge
-# Gerekler: libpng giblib libexif xorg-libxt xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama curl
+# Gerekler: libpng giblib libexif xorg-libxt xorg-libxcursor xorg-libxdamage xorg-libxrandr xorg-libxinerama curl imlib2
 
 isim=feh
-surum=2.14
+surum=2.25
 devir=1
 kaynak=(http://feh.finalrewind.org/$isim-$surum.tar.bz2)
 
