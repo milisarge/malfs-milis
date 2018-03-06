@@ -1,10 +1,11 @@
-# Tanım: Scaling, colorspace conversion, and dithering library
+# Tanım: Ölçeklendirme, renk aralığı dönüşümleri ve renk tezgahı kütüphanesi
 # URL: http://forum.doom9.org/showthread.php?t=171334
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: kütüphane
 
 isim=zimg
-surum=2.5.1
+surum=2.7.3
 devir=1
 kaynak=(https://github.com/sekrit-twc/zimg/archive/release-$surum.tar.gz)
 
