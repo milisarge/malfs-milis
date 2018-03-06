@@ -1,7 +1,7 @@
 # Tanım: OGRE için çok katmanlı ve üst üste bindirilebilir bir GUI Sistemi
 # URL: http://mygui.info/
 # Paketçi: Cihan_Alkan
-# Gerekler: boost cmake doxygen graphviz ttf-dejavu ogre ois
+# Gerekler: boost cmake doxygen graphviz dejavu-ttf ogre ois
 # Grup: geliştirme
 
 
