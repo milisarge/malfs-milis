@@ -4,32 +4,22 @@
 # Gerekler: qt5 libxkbcommon hicolor-icon-theme icu ffmpeg desktop-file-utils
 
 isim=makemkv
-surum=1.9.9
+surum=1.12.0
 devir=3
 
 kaynak=(http://www.makemkv.com/download/${isim}-bin-${surum}.tar.gz
-        http://www.makemkv.com/download/${isim}-oss-${surum}.tar.gz
-        makemkv.1
-        makemkvcon.1
-        mmdtsdec.1)
+        http://www.makemkv.com/download/${isim}-oss-${surum}.tar.gz)
 
 
 derle() {
   cd "${SRC}/${isim}-oss-${surum}"
-  ./configure --prefix=/usr
+  CC=gcc CXX=g++ ./configure --prefix=/usr
   make
-
-  make DESTDIR="${PKG}" install
+  make DESTDIR=\""${PKG}"\" install
 
   cd "${SRC}/${isim}-bin-${surum}"
-  install -d "${PKG}/usr/bin/"
-  install -t "${pkgdir}/usr/bin/" bin/amd64/makemkvcon
-  install -d "${PKG}/usr/share/MakeMKV"
-  install -m 644 -t "${PKG}/usr/share/MakeMKV" src/share/makemkv_*.mo.gz src/share/*.mmcp.xml
-  
+  install -d tmp
+  echo accepted > tmp/eula_accepted
+  make DESTDIR=\""${PKG}"\" install
   install -Dm 644 src/eula_en_linux.txt "${PKG}/usr/share/licenses/${isim}/eula_en_linux.txt"
-
-  cd "${SRC}/"
-  install -d "${PKG}/usr/share/man/man1/"
-  install -m 644 -t "${PKG}/usr/share/man/man1/" makemkv.1 makemkvcon.1 mmdtsdec.1
 }
