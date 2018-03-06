@@ -1,0 +1,11 @@
+#!/bin/sh
+for _kurtar in  \
+'/usr/lib/gio/modules' \
+'/usr/share/glib-2.0/schemas' \
+'/usr/share/gettext/its' \
+'/usr/share/locale' ; \
+do 
+
+sed -i '\|'\'$_kurtar\''|d' /tmp/glib.sil
+
+done
