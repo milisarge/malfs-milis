@@ -1,0 +1,21 @@
+# Tanım: Bir karakter kümesi dönüştürme kitaplığı.
+# URL: http://os.ghalkes.nl/libtranscript.html
+# Paketçi: Cihan Alkan
+# Gerekler: gettext
+# Grup: kütüphane
+
+isim=libtranscript
+surum=0.3.2
+devir=1
+
+kaynak=(http://os.ghalkes.nl/dist/$isim-$surum.tar.bz2)
+
+derle() {
+
+  cd "${SRC}/${isim}-${surum}"
+  ./configure --prefix=/usr --with-ucm2ltc CFLAGS="-O2 -D_POSIX_C_SOURCE=200809L"
+  make
+  make DESTDIR="${PKG}" install
+  rm -rf "${PKG}/usr/share/doc/$isim/API"
+
+}

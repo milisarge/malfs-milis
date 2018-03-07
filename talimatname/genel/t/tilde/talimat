@@ -1,0 +1,17 @@
+# Tanım: Terminal için sezgisel bir metin editörü.
+# URL: http://os.ghalkes.nl/tilde.html
+# Paketçi: Cihan_Alkan
+# Gerekler: libtranscript libt3widget libt3highlight
+# Grup: ofis_duzenleyici
+
+isim=tilde
+surum=0.3.7
+devir=1
+kaynak=(http://os.ghalkes.nl/dist/$isim-$surum.tar.bz2)
+
+derle() {
+  cd "${SRC}/${isim}-${surum}"
+  CXXFLAGS="-O2 -std=c++11" ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+}

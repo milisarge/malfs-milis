@@ -1,0 +1,18 @@
+# Tanım: C ++ terminal iletişim araç kiti.
+# URL: http://os.ghalkes.nl/t3/libt3widget.html
+# Paketçi: Cihan_Alkan
+# Gerekler: libsigc++ libxcb libt3window libt3key
+# Grup: kütüphane
+
+isim=libt3widget
+surum=0.5.2
+devir=1
+kaynak=(http://os.ghalkes.nl/dist/$isim-$surum.tar.bz2)
+
+derle() {
+  cd "${SRC}/${isim}-${surum}"
+  CXXFLAGS="-O2 -std=c++11" ./configure --prefix=/usr
+  make
+  make DESTDIR="${PKG}" install
+  rm -rf "${PKG}/usr/share/doc/$isim/API"
+}

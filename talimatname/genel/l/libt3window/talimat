@@ -1,0 +1,18 @@
+# Tanım: pencere tabanlı konsol uygulamalrı oluşturmak için kütüphane
+# URL: http://os.ghalkes.nl/t3/libt3window.html
+# Paketçi: milisarge
+# Gerekler: libtranscript libunistring 
+# Grup: kütüphane
+
+isim=libt3window
+surum=0.2.3
+devir=1
+kaynak=(http://os.ghalkes.nl/dist/libt3window-$surum.tar.bz2)
+
+derle() {
+  cd "${SRC}/${isim}-${surum}"
+  ./configure --prefix=/usr CFLAGS="-O2 -D_POSIX_C_SOURCE=200809L"
+  make
+  make DESTDIR="${PKG}" install
+  rm -rf "${PKG}/usr/share/doc/$isim/API"
+}

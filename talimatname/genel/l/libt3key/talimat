@@ -1,0 +1,18 @@
+# Tanım: Terminal anahtar dizisi veritabanı kitaplığı.
+# URL: http://os.ghalkes.nl/t3/libt3key.html
+# Paketçi: Cihan_Alkan
+# Gerekler: libt3config libxcb
+# Grup: kütüphane
+
+isim=libt3key
+surum=0.2.6
+devir=1
+kaynak=(http://os.ghalkes.nl/dist/$isim-$surum.tar.bz2)
+
+derle() {
+  cd "${SRC}/${isim}-${surum}"
+  ./configure --prefix=/usr CFLAGS="-O2 -D_POSIX_C_SOURCE=200809L"
+  make
+  make DESTDIR="${PKG}" install
+  rm -rf "${PKG}/usr/share/doc/$isim/API"
+}
