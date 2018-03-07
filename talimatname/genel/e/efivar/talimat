@@ -1,12 +1,13 @@
 # Tanım: EFI değişkenlerini işlemek için araçlar ve kütüphane.
-# URL: https://github.com/rhinstaller/efivar
-# Paketçi: alihan-ozturk28@hotmail.com
+# URL: https://github.com/rhboot/efivar
+# Paketçi: Cihan_Alkan
 # Gerekler: popt
+# Grup:
 
 isim=efivar
-surum=0.24
+surum=31
 devir=1
-kaynak=( https://github.com/rhinstaller/$isim/releases/download/$surum/$isim-$surum.tar.bz2)
+kaynak=(https://github.com/rhboot/efivar/releases/download/$surum/$isim-$surum.tar.bz2)
 
 derle() {
 cd $isim-$surum
