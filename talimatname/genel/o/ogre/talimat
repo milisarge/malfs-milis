@@ -1,7 +1,7 @@
 # Tanım: Sahne tabanlı, esnek 3D motor C ++ ile yazılmıştır
 # URL: http://www.ogre3d.org
 # Paketçi: Cihan_Alkan
-# Gerekler: boost cmake doxygen graphviz ttf-dejavu xorg-mesa mercurial python swig tinyxml sdl2
+# Gerekler: boost cmake doxygen graphviz dejavu-ttf xorg-mesa mercurial python swig tinyxml sdl2
 # Grup: geliştirme
 
 

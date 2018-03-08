@@ -1,0 +1,24 @@
+# Tanım: Açık Kaynaklı, yüksek performanslı gerçek zamanlı grafik araç seti
+# URL: http://www.openscenegraph.org
+# Paketçi: Cihan_Alkan
+# Gerekler: giflib jasper librsvg xine-lib pth cmake libvncserver qt5 ffmpeg xorg-mesa
+# Grup: kütüphane
+
+
+isim=openscenegraph
+surum=3.4.1
+devir=1
+kaynak=(https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-$surum.tar.gz)
+
+derle() {
+
+  cd OpenSceneGraph-OpenSceneGraph-$surum
+
+  [ $NOEXTRACT -eq 1 ] || cmake . \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+  make
+  make DESTDIR="$PKG" install
+  install -D -m644 LICENSE.txt "$PKG/usr/share/licenses/$isim/LICENSE"
+  [ -d "$PKG/usr/lib64" ] && mv "$PKG/usr/lib64" "$PKG/usr/lib" || true
+}
