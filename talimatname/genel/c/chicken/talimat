@@ -1,0 +1,17 @@
+# Tanım: R5RS Scheme derleyeci ve yorumlayıcısı
+# URL: http://call-cc.org/
+# Paketçi: milisarge
+# Gerekler:
+# Grup: geliştirme 
+
+isim=chicken
+surum=4.13.0
+devir=1
+kaynak=(https://code.call-cc.org/releases/$surum/chicken-$surum.tar.gz)
+
+derle() {
+  make -C "$isim-$surum" PLATFORM=linux PREFIX=/usr -j1
+  cd "$isim-$surum"
+  make PLATFORM=linux PREFIX=/usr DESTDIR="$PKG" -j1 install
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
+}
