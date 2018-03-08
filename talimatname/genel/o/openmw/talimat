@@ -1,0 +1,19 @@
+# Tanım: Morrowind rol yapma oyunu için açık kaynak motoru
+# URL: http://www.openmw.org
+# Paketçi: Cihan_Alkan
+# Gerekler: openal openscenegraph mygui bullet qt5 ffmpeg sdl2 unshield libxkbcommon cmake boost
+# Grup: oyun
+
+isim=openmw
+surum=0.43.0
+devir=1
+kaynak=(https://github.com/OpenMW/openmw/archive/openmw-$surum.tar.gz::openmw-$surum.tar.gz)
+
+derle() {
+  cd ${SRC}/openmw-openmw-0.43.0
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DDESIRED_QT_VERSION=5
+  make
+  make DESTDIR="$PKG" install
+}
