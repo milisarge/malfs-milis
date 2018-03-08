@@ -1,0 +1,19 @@
+# Tanım: Genişletilmiş Wayland protokollerinin özellikleri
+# URL: https://wayland.freedesktop.org/
+# Paketçi: Cihan Alkan
+# Gerekler: wayland
+# Grup: kütüphane
+
+isim=wayland-protocols
+surum=1.12
+devir=1
+kaynak=(https://wayland.freedesktop.org/releases/$isim-$surum.tar.xz)
+
+derle() {
+  cd $isim-$surum
+
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+  install -Dm 644 COPYING "$PKG/usr/share/licenses/$isim/COPYING"
+}
