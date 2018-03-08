@@ -1,0 +1,29 @@
+# Tanım: OCR programı
+# URL: https://github.com/tesseract-ocr/tesseract
+# Paketçi: Cihan_Alkan
+# Gerekler: libpng libtiff libjpeg-turbo zlib giflib leptonica icu cairo pango
+# Grup: medya
+
+isim=tesseract
+surum=3.05.01
+devir=1
+
+kaynak=(https://github.com/tesseract-ocr/tesseract/archive/$surum.tar.gz::${isim}-${surum}.tar.gz
+		https://github.com/tesseract-ocr/tessdata/raw/master/osd.traineddata)
+		https://github.com/tesseract-ocr/tessdata/raw/master/tur.traineddata)
+
+derle() {
+	cd "$SRC"/$isim-${surum}
+	[ -x configure ] || ./autogen.sh
+	[ -f Makefile ] || ./configure --prefix=/usr
+	make
+	make training
+	make DESTDIR="$PKG" install
+	make DESTDIR="$PKG" training-install
+	mkdir -p "$PKG"/usr/share/tessdata
+	install -Dm0644 "$SRC"/osd.traineddata "$PKG"/usr/share/tessdata/osd.traineddata
+	 
+	mkdir -p \$PKG/usr/share/tessdata
+	cp \$SRC/tur.traineddata \$PKG/usr/share/tessdata/
+	find \$PKG/usr/share/tessdata -type f -exec chmod 0644 {} \;
+}
