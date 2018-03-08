@@ -9,7 +9,7 @@ surum=3.05.01
 devir=1
 
 kaynak=(https://github.com/tesseract-ocr/tesseract/archive/$surum.tar.gz::${isim}-${surum}.tar.gz
-		https://github.com/tesseract-ocr/tessdata/raw/master/osd.traineddata)
+		https://github.com/tesseract-ocr/tessdata/raw/master/osd.traineddata
 		https://github.com/tesseract-ocr/tessdata/raw/master/tur.traineddata)
 
 derle() {
@@ -22,8 +22,7 @@ derle() {
 	make DESTDIR="$PKG" training-install
 	mkdir -p "$PKG"/usr/share/tessdata
 	install -Dm0644 "$SRC"/osd.traineddata "$PKG"/usr/share/tessdata/osd.traineddata
-	 
-	mkdir -p \$PKG/usr/share/tessdata
-	cp \$SRC/tur.traineddata \$PKG/usr/share/tessdata/
-	find \$PKG/usr/share/tessdata -type f -exec chmod 0644 {} \;
+
+	cp $SRC/tur.traineddata $PKG/usr/share/tessdata/
+	find $PKG/usr/share/tessdata -type f -exec chmod 0644 {};
 }
