@@ -1,0 +1,24 @@
+# Tanım: Lemmings'den esinlenen bir eylem-bulmaca oyunu
+# URL: http://pingus.seul.org
+# Paketçi: Cihan_Alkan
+# Gerekler: sdl-image sdl-mixer xorg-mesa boost scons xorg-glu
+# Grup: oyun
+
+isim=pingus
+surum=0.7.6
+devir=1
+kaynak=(https://github.com/Pingus/pingus/archive/v$surum.tar.gz::$isim-$surum.tar.gz
+        ${isim}.desktop
+        pingus-0.7.6-gcc470-udl.patch
+        missing-header.patch)
+
+derle() {
+  cd $isim-$surum
+  patch -Np0 -i ${SRC}/pingus-0.7.6-gcc470-udl.patch
+  sed -i "s#/man1/#/man6/#g" Makefile
+  # missing header
+  patch -Np1 -i ../missing-header.patch
+  scons prefix=/usr
+  make install DESTDIR="${PKG}" PREFIX="/usr"
+  install -D -m644 "${SRC}/pingus.desktop" "${PKG}/usr/share/applications/pingus.desktop"
+}
