@@ -16,4 +16,6 @@ derle() {
 	debug=no make
 	debug=no make install-strip DESTDIR="${PKG}" PREFIX=/usr
 	install -D ../UNLICENSE "${PKG}"/usr/share/licenses/${isim}/LICENSE
+	rm -rf $PKG/usr/share/doc
+	rm -rf $PKG/usr/share/man
 }

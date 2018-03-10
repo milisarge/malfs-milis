@@ -1,0 +1,15 @@
+# Tanım: X için eksik terminal dosya tarayıcısı.
+# URL: https://github.com/jarun/nnn
+# Paketçi: Cihan_Alkan
+# Gerekler:
+# Grup: sistem
+
+isim=nnn
+surum=1.6
+devir=1
+kaynak=(https://github.com/jarun/nnn/archive/v${surum//_/-}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  make -C "${isim}-$surum" DESTDIR="${PKG}" PREFIX="/usr" install
+  rm -rf $PKG/usr/share/man
+}
