@@ -2,8 +2,6 @@
 for _kurtar in  \
 '/boot/grub' ; \
 do 
-
-#sed -i '\|'\'$_kurtar\''|d' /var/lib/pkg/DB/cups/kurulan
 # -sz ve -g den sonra /tmp/$paket.sil dikkate alınır
 sed -i '\|'\'$_kurtar\''|d' /tmp/kernel.sil
 
