@@ -2,11 +2,11 @@
 # URL: https://community.kde.org/Frameworks
 # Paketçi: alihan-ozturk28@hotmail.com
 # Gerekler: qt5 kf5-extra-cmake-modules kf5-plasma-framework
+# Grup:
 
 isim=kirigami
-surum=1.0.2
+surum=1.1.0
 devir=1
-
 kaynak=(http://download.kde.org/stable/$isim/$isim-$surum.tar.xz)
 
 derle() {
@@ -20,4 +20,3 @@ derle() {
   make
   make DESTDIR=$PKG install
 }
-
