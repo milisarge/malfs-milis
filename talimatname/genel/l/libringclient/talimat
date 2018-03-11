@@ -4,9 +4,9 @@
 # Gerekler: cmake qt5 ring-daemon
 
 isim=libringclient
-surum=1.0.0
+surum=git
 devir=1
-kaynak=(https://github.com/savoirfairelinux/ring-lrc/archive/master.tar.gz::$isim-$surum-master.tar.gz)
+kaynak=(https://github.com/savoirfairelinux/ring-lrc/archive/master.tar.gz::$isim-git-$devir.tar.gz)
 
 derle() {
   cd "ring-lrc-master"
