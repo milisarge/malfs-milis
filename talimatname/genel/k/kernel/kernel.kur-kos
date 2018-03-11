@@ -1,5 +1,5 @@
 #!/bin/bash
-surum=4.14.14
+surum=4.15.7
 sonek=milis
 depmod ${surum}-$sonek
 cd /boot
