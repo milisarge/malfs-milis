@@ -11,9 +11,14 @@ fi
 
 [ -f /usr/bin/dracut ] && dracut -N --force --xz --omit systemd --add-drivers "ahci" -f /boot/initramfs $surum-$sonek
 [ -f /usr/bin/os-prober ] && os-prober
-if [ -f /usr/bin/grub-mkconfig ];then
-	[ -f /boot/grub/grub.cfg ] && mv /boot/grub/grub.cfg /boot/grub/grub.cfg.eski
-	[ ! -f /boot/grub/grub.cfg.new ] && cp /etc/default/grub/grub.cfg /boot/grub/grub.cfg.new
-	grub-mkconfig -o /boot/grub/grub.cfg
+
+mkdir -p /boot/grub
+if [ -f /boot/grub/grub.cfg ];then
+	mv /boot/grub/grub.cfg /boot/grub/grub.cfg.eski
 fi
+[ ! -f /boot/grub/grub.cfg.new ] && cp /etc/default/grub/grub.cfg /boot/grub/grub.cfg.new
+[ ! -d /boot/grub/i386-pc ] && cp -r /usr/lib/grub/i386-pc /boot/grub/
+[ ! -f /boot/grub/unicode.pf2 ] && cp  /usr/share/grub/unicode.pf2 /boot/grub/
+grub-mkconfig -o /boot/grub/grub.cfg
+
 cd -
