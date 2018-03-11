@@ -1,24 +1,39 @@
-# Tanım: ring.cx is free software for universal communication which respects freedoms and privacy of its users (formerly known as SFLphone)
+# Tanım: ring.cx sflphone olarak ta bilinen ücretsiz iletişim yazılımıdır.
 # URL: https://ring.cx
 # Paketçi: milisarge
-# Gerekler: boost msgpack-c autoconf-archive opendht yaml-cpp alsa-lib pulseaudio jack jsoncpp libsamplerate libsndfile dbus-c++ ffmpeg xorg-libxtst gnutls gsm libupnp libnatpmp crypto++ libva boost libvdpau pjproject-ring restbed 
+# Gerekler: boost libsecp256k1 msgpack-c autoconf-archive opendht yaml-cpp alsa-lib pulseaudio jack jsoncpp libsamplerate libsndfile dbus-c++ ffmpeg xorg-libxtst gnutls gsm libupnp libnatpmp crypto++ libva boost libvdpau restbed 
+# Grup: ağ
 
 isim=ring-daemon
-surum=4.0.0
+surum=git
 devir=1
-kaynak=(https://github.com/savoirfairelinux/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+kaynak=(https://github.com/savoirfairelinux/ring-daemon/archive/master.tar.gz::$isim-git-$devir.tar.gz)
 
 derle() {
-  cd "${isim}-$surum"
-  autoreconf --force --install --verbose
+  cd "$SRC/$isim-master"
+  _pjprojectver=2.6
+  wget -nc http://www.pjsip.org/release/${_pjprojectver}/pjproject-${_pjprojectver}.tar.bz2 -P $DERLEME_KAYNAKDIZIN
+  [ -f $DERLEME_KAYNAKDIZIN/pjproject-${_pjprojectver}.tar.bz2 ] && \
+  cp $DERLEME_KAYNAKDIZIN/pjproject-${_pjprojectver}.tar.bz2 contrib/tarballs \
+  || exit 1
+  
+  mkdir contrib/native
+  autoreconf -fvi
+  cd "$SRC/$isim-master/contrib/native"
+  ../bootstrap \
+      --disable-downloads \
+      --disable-all \
+      --enable-pjproject
+  make DEPS_pjproject=
+
+  cd ../..
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
-    --libexecdir=/usr/bin \
+    --libexecdir=/usr/lib \
     --sysconfdir=/etc \
-    --with-contrib="no" \
     --enable-ipv6
-
-  DISABLE_CONTRIB_DOWNLOADS="TRUE" make -j1
-  DISABLE_CONTRIB_DOWNLOADS="TRUE" make DESTDIR="$PKG" install
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR="$PKG" install
 }
