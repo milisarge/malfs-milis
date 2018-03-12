@@ -1,0 +1,23 @@
+# Tanım: opmsg mesaj şifreleme
+# URL: https://github.com/stealth/opmsg
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: ağ
+
+isim=opmsg
+surum=git
+devir=1
+kaynak=(https://github.com/stealth/opmsg/archive/master.tar.gz::$isim-$surum-$devir.tar.gz)
+
+derle() {
+	cd "$isim-master/src"
+	make
+	make contrib
+	cd "${SRC}/$isim-master"
+	mkdir -p "$PKG/usr/share/opmsg"
+	install -D -m644 sample.config "$PKG/usr/share/opmsg"
+	cd "${SRC}/$isim-master/src"
+	install -D -m755 opmsg "$PKG/usr/bin/opmsg"
+	install -D -m755 opmux "$PKG/usr/bin/opmux"
+	install -D -m755 opcoin "$PKG/usr/bin/opcoin"
+}
