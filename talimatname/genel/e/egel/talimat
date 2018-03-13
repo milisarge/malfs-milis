@@ -1,0 +1,29 @@
+# Tanım: Egel fonksiyonel dili
+# Url: https://egel-lang.github.io/
+# Paketçi: milisarge
+# Gerekler: icu
+# Grup: geliştirme
+
+isim=egel
+surum=git
+devir=1
+kaynak=()
+
+derle() {
+	git_indir https://github.com/egel-lang/egel/ egel
+	cd $SRC/egel
+	sed -i s/gmake/make/ build.sh
+	./build.sh
+	mkdir -p $PKG/usr
+	mkdir -p $PKG/usr/{bin,lib,include}
+	mkdir -p $PKG/usr/lib/egel
+	mkdir -p $PKG/usr/include/egel/builtin
+	cp src/egel $PKG/usr/bin/
+	cp -rf lib/*.ego $PKG/usr/lib/egel/
+	cp -rf include/*.eg $PKG/usr/lib/egel/
+	cp -rf src/libegel.so $PKG/usr/lib/
+	cp -rf src/builtin/*.hpp $PKG/usr/include/egel/builtin/
+	cp -rf src/*.hpp $PKG/usr/include/egel/
+	cp -rf contrib/ffi/src/ffi.hpp $PKG/usr/include/egel/
+}
+
