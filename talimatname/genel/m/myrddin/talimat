@@ -6,7 +6,7 @@
 
 isim=myrddin
 surum=git
-devir=1
+devir=2
 kaynak=()
 
 derle() {
