@@ -5,9 +5,9 @@
 # Grup: ağ
 
 isim=chromium-bin
-surum=65.0.3325.146
+surum=65.0.3325.162
 devir=1
-kaynak=(http://www.ftp.uni-erlangen.de/archlinux/extra/os/x86_64/chromium-65.0.3325.146-1-x86_64.pkg.tar.xz)
+kaynak=(http://www.ftp.uni-erlangen.de/archlinux/extra/os/x86_64/chromium-65.0.3325.162-1-x86_64.pkg.tar.xz)
 
 derle() {
   cp -ar "$SRC/usr" "$PKG/usr"
