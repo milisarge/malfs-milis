@@ -1,13 +1,13 @@
 # Tanım: Google'nin açık kaynak kodlu web tarayıcısı
 # URL: https://www.chromium.org/Home
-# Paketçi: CihanAlkan
+# Paketçi: Cihan_Alkan
 # Gerekler: libwebp minizip libjpeg-turbo
 # Grup: ağ
 
 isim=chromium-bin
-surum=62.0.3202.62
+surum=65.0.3325.146
 devir=1
-kaynak=(http://www.ftp.uni-erlangen.de/archlinux/extra/os/x86_64/chromium-62.0.3202.62-1-x86_64.pkg.tar.xz)
+kaynak=(http://www.ftp.uni-erlangen.de/archlinux/extra/os/x86_64/chromium-65.0.3325.146-1-x86_64.pkg.tar.xz)
 
 derle() {
   cp -ar "$SRC/usr" "$PKG/usr"
