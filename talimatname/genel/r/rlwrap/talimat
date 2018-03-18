@@ -1,0 +1,18 @@
+# Tanım: Programlara readline tarzı düzenleme ve tarih ekler.
+# URL: https://github.com/hanslub42/rlwrap
+# Paketçi: Cihan_Alkan
+# Gerekler: perl python
+# Grup: sistem
+
+isim=rlwrap
+surum=0.43
+devir=1
+kaynak=(https://github.com/hanslub42/rlwrap/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd $isim-$surum
+  autoreconf -vi
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+}
