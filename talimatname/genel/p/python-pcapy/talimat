@@ -1,0 +1,17 @@
+# Tanım: A simplified object-oriented Python wrapper for libpcap
+# URL: https://github.com/CoreSecurity/pcapy
+# Paketçi: milisarge
+# Gerekler: git python-setuptools python libpcap
+# Grup: kütüphane
+
+isim=python-pcapy
+surum=git
+devir=1
+kaynak=()
+
+derle() {
+	git_indir https://github.com/CoreSecurity/pcapy $isim
+	cd "${SRC}/${isim}"
+	python2 setup.py install --root="$PKG/" --optimize=1
+	install -D -m644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
+}

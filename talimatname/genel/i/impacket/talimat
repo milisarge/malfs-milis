@@ -1,0 +1,19 @@
+# Tanım: Ağ protokolleriyle çalışmak için sınıfların toplanması
+# URL: Ağ protokolleriyle çalışmak için sınıfların toplanması
+# Paketçi: Cihan_Alkan
+# Gerekler: python-crypto python-pyasn1 python-pcapy python-openssl
+# Grup: ağ
+
+isim=impacket
+surum=0.9.15
+devir=1
+kaynak=(https://github.com/CoreSecurity/impacket/releases/download/impacket_0_9_15/impacket-0.9.15.tar.gz)
+
+derle() {
+  cd impacket-0.9.15
+  find . -type f -exec sed -r 's|(#!/usr/bin/(env )?python)$|\12|' -i '{}' \;
+  python setup.py install -O1 --root="${PKG}"
+  install -Dm 644 ChangeLog -t "${PKG}/usr/share/doc/${isim}"
+  local PYTHONVERSION="$(python -c 'import sys; print("{}.{}".format(sys.version_info.major, sys.version_info.minor))')"
+  ln -s "/usr/lib/python${PYTHONVERSION}/site-packages/impacket/examples" "${PKG}/usr/share/doc/${isim}/examples"
+}
