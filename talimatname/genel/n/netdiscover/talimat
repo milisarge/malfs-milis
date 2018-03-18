@@ -1,0 +1,21 @@
+# Tanım: DHCP sunucuları olmayan kablosuz ağlar için de geliştirilen arp protokolüne dayalı ağ adresi bulma aracıdır.
+# URL: http://nixgeneration.com/~jaime/netdiscover/
+# Paketçi: Cihan_Alkan
+# Gerekler: libpcap libnet
+# Grup:  ağ güvenlik
+
+isim=netdiscover
+surum=0.3
+devir=1
+kaynak=(https://sourceforge.net/projects/${isim}/files/${isim}/0.3-pre-beta7-LINUXONLY/${isim}-0.3-pre-beta7-LINUXONLY.tar.gz
+	   http://kaynaklar.milislinux.org/oui.tar.xz)
+
+
+derle() {
+	cd "$SRC"/netdiscover-0.3-pre-beta7
+	patch -p1 -i ../oui.patch
+	./configure --sbindir=/usr/bin --prefix=/usr --sysconfdir=/etc/
+	make || return 1
+	make DESTDIR="$PKG" install || return 1
+	rm -rf "$PKG"/usr/share/doc
+}
