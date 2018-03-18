@@ -1,24 +1,17 @@
-# Tanım: Farklı açık kaynaklarından (arama motorları, pgp anahtar sunucuları) e-posta hesapları ve alt alan adı toplamak için kullanılan araç.
+# Tanım: Farklı açık kaynaklarından e-posta hesapları ve alt alan adı toplamak için kullanılan araç.
 # URL: http://www.edge-security.com/theHarvester.php
-# Paketçi: yakar (aydin@komutan.org)
-# Gerekler: python-pip
+# Paketçi: ayakar
+# Gerekler: python-pip python python-setuptools pyrequests
 
 isim=theharvester
-surum=56.eb08d32
+surum=git
 devir=1
 kaynak=()
 
 derle() {
-    if [ ! -d $DERLEME_KAYNAKDIZIN/theHarvester ];then
-		git clone https://github.com/laramies/theHarvester.git $DERLEME_KAYNAKDIZIN/theHarvester
-	else
-		cd $DERLEME_KAYNAKDIZIN/theHarvester
-		git pull
-		cd -
-	fi
+  git_indir https://github.com/laramies/theHarvester.git $isim
 
-  cp -r $DERLEME_KAYNAKDIZIN/theHarvester $SRC
-  cd "$SRC/theHarvester"
+  cd $SRC/$isim
 
   sed -i 's|env python$|env python2|' theHarvester.py
 
@@ -33,4 +26,5 @@ derle() {
     "$PKG/usr/share/theharvester"
 
   ln -s "/usr/share/theharvester/theHarvester.py" "$PKG/usr/bin/theharvester"
+  rm -rf "$PKG"/usr/share/doc
 }
