@@ -1,0 +1,32 @@
+# Tanım: X11 için genel amaçlı mesajlaşma, bildirim ve menüleme programı
+# URL: https://github.com/robm/dzen
+# Paketçi: Cihan_Alkan
+# Gerekler: xorg-libx11 xorg-libxpm xorg-libxinerama xorg-libxft
+# Grup: sistem
+
+isim=dzen2
+surum=0.9.5.14
+devir=1
+kaynak=()
+
+derle() {
+	adres="https://github.com/robm/dzen.git"
+	git_indir ${adres} ${isim}
+
+	cd ${isim}
+	sed -i 's|DZEN_XMP|DZEN_XPM|g' main.c
+
+	CFLAGS="${CFLAGS} -Wall -Os \${INCS} -DVERSION=\\\"\${VERSION}\\\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT `pkg-config --cflags xft`"
+	LIBS=" -L/usr/lib -lc -lXft -lXpm -lXinerama -lX11"
+
+	echo "CFLAGS=${CFLAGS}" >> config.mk
+	echo "LIBS=${LIBS}" >> config.mk
+	echo "LDFLAGS=${LDFLAGS} ${LIBS}" >> config.mk
+	make X11INC=/usr/include X11LIB=/usr/lib
+	make -C gadgets X11INC=/usr/include X11LIB=/usr/lib
+
+	make PREFIX=/usr MANPREFIX=/usr/man DESTDIR="${PKG}" install
+	make -C gadgets PREFIX=/usr MANPREFIX=/usr/man DESTDIR="${PKG}" install
+	install -Dm 644 LICENSE -t "${PKG}/usr/share/licenses/${isim}"
+	install -Dm 644 README* -t "${PKG}/usr/share/doc/${isim}"
+}
