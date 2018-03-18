@@ -1,0 +1,25 @@
+# Tanım: İnce bir Bullet-Ogre bağlantısı.
+# URL: http://www.ogre3d.org/forums/viewtopic.php?f=5&t=46856
+# Paketçi: Cihan_Alkan
+# Gerekler: cmake boost bullet ogre
+# Grup: geliştirme
+
+isim=btogre
+surum=6266297
+devir=1
+kaynak=(cmake-targets.patch 
+		BtOgre.cpp.patch)
+
+derle() {
+	git_indir https://github.com/nikki93/btogre $isim
+
+	cd "${SRC}/${isim}"
+
+	patch -Np1 -i "${SRC}/cmake-targets.patch"
+	patch "${SRC}/${isim}/BtOgre.cpp" "${SRC}/BtOgre.cpp.patch"
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-DOGRE_BUILD=/opt/OGRE-1.9 \
+	-DOGRE_LIB_DIR=/opt/OGRE-1.9/lib 
+	make
+	make DESTDIR="${PKG}" install
+}
