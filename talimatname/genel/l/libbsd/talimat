@@ -2,15 +2,16 @@
 # URL: http://libbsd.freedesktop.org
 # Paketçi: milisarge
 # Gerekler: 
+# Grup: sistem
 
 isim=libbsd
-surum=0.7.0
+surum=0.8.7
 devir=1
 
 kaynak=(http://libbsd.freedesktop.org/releases/$isim-$surum.tar.xz)
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }

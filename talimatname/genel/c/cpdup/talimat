@@ -1,0 +1,19 @@
+# Tanım: Dosya sistemlerini izinleri, bayrakları, sahiplik ve araçları saklamak için DragonFly BSD aracı
+# URL: http://apollo.backplane.com/FreeBSDPorts/
+# Paketçi: Cihan_Alkan
+# Gerekler: libbsd pkg-config
+# Grup: sistem
+
+isim=cpdup
+surum=1.18
+devir=1
+kaynak=(http://apollo.backplane.com/FreeBSDPorts/cpdup-$surum.tar.gz
+        GNUmakefile)
+
+derle() {
+  cd "$isim"
+  sed -i 's/__unused/__attribute__((__unused__))/' *.c
+  make -f "$SRC"/GNUmakefile
+  install -Dm 755  cpdup "$PKG"/usr/bin/cpdup
+  install -Dm 644 cpdup.1  "$PKG"/usr/share/man/man1
+}
