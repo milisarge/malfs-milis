@@ -1,0 +1,19 @@
+# Tanım: I3bar, dzen2 veya xmobar ile kullanılacak durum çubuğu üretir
+# URL: https://i3wm.org/i3status/
+# Paketçi: Cihan_Alkan
+# Gerekler: wireless-tools confuse yajl pulseaudio libnl asciidoc
+# Grup: i3
+
+
+isim=i3-status
+surum=2.11
+devir=1
+kaynak=(https://i3wm.org/i3status/i3status-$surum.tar.bz2)
+
+derle() {
+  cd i3status-$surum
+  make
+  make DESTDIR="$PKG" install
+  install -Dm644 LICENSE ${PKG}/usr/share/licenses/i3status/LICENSE
+  make clean
+}
