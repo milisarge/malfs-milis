@@ -1,7 +1,7 @@
 # Tanım: Küçük resim yönetimi D-Bus teknik özelliklerine dayanan bir D-Bus minik resim oluşturma hizmeti.
 # URL: http://www.ohloh.net/p/tumbler-xfce
 # Paketçi: milisarge
-# Gerekler: libjpeg-turbo libpng freetype gdk-pixbuf dbus-glib intltool gstreamer 
+# Gerekler: libjpeg-turbo libpng freetype gdk-pixbuf dbus-glib intltool gstreamer libgsf
 # Grup: xfce4
 
 isim=tumbler

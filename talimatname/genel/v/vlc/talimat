@@ -1,7 +1,7 @@
 # Tanım: VLC, özgür ve açık kaynak kodlu, platformlar arası, bir ortam oynatıcı ve çatıdır.
 # URL: http://www.videolan.org/vlc/
 # Paketçi: milisarge
-# Gerekler: opus libssh2 qt5 x264 flac libmad glib dbus libupnp libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg28 faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
+# Gerekler: opus libssh2 qt5 x264 flac libmad glib dbus libupnp libvlc libidn librsvg alsa-lib xorg-libxinerama xorg-libxpm libvpx libcdio vcdimager live libdvdcss libdvdread libdvdnav libogg libtheora lame faac libvorbis ffmpeg28 faad2 liba52 libmpeg2 libmpcdec fribidi lua libdv speex
 
 isim=vlc
 surum=2.2.8
