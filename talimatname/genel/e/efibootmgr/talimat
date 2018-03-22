@@ -1,16 +1,16 @@
 # Tanım: UEFI üretici yazılımı önyükleme yöneticisi değişkenlerini değiştirmek için kullanılan araç
 # URL: https://github.com/rhinstaller/efibootmgr
-# Paketçi: alihan-ozturk28@hotmail.com
+# Paketçi: milisarge
 # Gerekler: efivar
 
 isim=efibootmgr
-surum=0.12.1
+surum=0.15
 devir=1
-kaynak=(https://crux.nu/~tek/${isim}-${surum}.tar.xz)
+kaynak=(https://github.com/rhboot/efibootmgr/archive/15.tar.gz::${isim}-${surum}.tar.gz)
 
 derle() {
-  cd $isim-$surum
-  make EXTRA_CFLAGS="-Os"
-  install -D src/efibootmgr $PKG/usr/sbin/efibootmgr
+  cd $isim-15
+  make EXTRA_CFLAGS="-Os" EFIDIR="/boot/EFI"
+  install -D src/efibootmgr $PKG/usr/bin/efibootmgr
   install -D src/efibootmgr.8 $PKG/usr/man/man8/efibootmgr.8
 }
