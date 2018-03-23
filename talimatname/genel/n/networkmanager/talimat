@@ -1,20 +1,20 @@
 # Tanım: Ağın daha doğrudan yönetilebilir olmasını sağlayan basitleştiren ve geliştiren araçlar
 # URL: http://projects.gnome.org/NetworkManager/
 # Paketçi: milisarge
-# Gerekler: libndp libsoup libgudev modemmanager dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt
+# Gerekler: libndp libsoup libgudev modemmanager dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt jansson
 # Grup: ağ
 
 _isim=NetworkManager
 
 isim=networkmanager
-surum=1.4.2
+surum=1.10.6
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$_name/${surum%.*}/$_name-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$_isim/${surum%.*}/$_isim-$surum.tar.xz)
 
 derle() {
-
-	cd ${_name}-$surum
+	_pppver=2.4.7
+	cd ${_isim}-$surum
 	./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--localstatedir=/var \
@@ -23,9 +23,22 @@ derle() {
 	--with-session-tracking=consolekit \
 	--with-suspend-resume=upower \
 	--with-dbus-sys-dir=/etc/dbus-1/system.d \
-	--docdir=/usr/share/doc/networkmanager-$surum \
+	--disable-introspection \
+	--with-crypto=nss \
+	--enable-wifi \
+	--with-iptables=/usr/sbin/iptables \
+    --with-kernel-firmware-dir=/lib/firmware \
+    --with-dist-version="$surum-$devir, Milis Linux" \
 	--with-systemdsystemunitdir=no \
-	--disable-ppp
+	--with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
+    --with-pppd=/usr/sbin/pppd \
+    --with-wext \
+    --without-consolekit \
+    --without-libaudit \
+    --without-more-asserts \
+    --without-netconfig \
+    --without-ofono \
+    --without-selinux
 
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    \
 	if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      \
