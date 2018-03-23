@@ -2,13 +2,14 @@
 # URL: http://samba.org/ppp
 # Paketçi: milisarge
 # Gerekler: libpcap 
+# Grup: ağ
 
 isim=ppp
-surum=2.4.5
+surum=2.4.7
 devir=1
 
 kaynak=(http://samba.org/ftp/$isim/$isim-$surum.tar.gz 
-		pppd)
+		pppd.servis)
 
 derle() {
 	unset MAKEFLAGS
@@ -19,6 +20,5 @@ derle() {
 	make INSTROOT=$PKG install-etcppp
 	make INSTROOT=$PKG install
 	mkdir -p $PKG/etc/rc.d/init.d/
-	install -m755 ../pppd $PKG/etc/rc.d/init.d/
-
+	install -m755 ../pppd.servis $PKG/etc/rc.d/init.d/pppd
 }

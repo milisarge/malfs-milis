@@ -2,6 +2,7 @@
 # URL: http://projects.gnome.org/NetworkManager/
 # Paketçi: milisarge
 # Gerekler: libndp libsoup libgudev modemmanager dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt
+# Grup: ağ
 
 _isim=NetworkManager
 
@@ -13,22 +14,27 @@ kaynak=(http://ftp.gnome.org/pub/gnome/sources/$_name/${surum%.*}/$_name-$surum.
 
 derle() {
 
-cd ${_name}-$surum
-./configure --prefix=/usr \
---sysconfdir=/etc \
---localstatedir=/var \
---with-nmtui \
---with-modem-manager-1 \
---with-session-tracking=consolekit \
---with-suspend-resume=upower \
---with-dbus-sys-dir=/etc/dbus-1/system.d \
---docdir=/usr/share/doc/networkmanager-$surum \
---with-systemdsystemunitdir=no \
---disable-ppp
+	cd ${_name}-$surum
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--with-nmtui \
+	--with-modem-manager-1 \
+	--with-session-tracking=consolekit \
+	--with-suspend-resume=upower \
+	--with-dbus-sys-dir=/etc/dbus-1/system.d \
+	--docdir=/usr/share/doc/networkmanager-$surum \
+	--with-systemdsystemunitdir=no \
+	--disable-ppp
 
-sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
-make
-make DESTDIR=$PKG install
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    \
+	if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      \
+	func_append compile_command " -Wl,-O1,--as-needed"\n      \
+	func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+	make
+	make DESTDIR=$PKG install
+	
+	rm -rf $PKG/usr/share/gtk-doc
 
 cat > $PKG/etc/NetworkManager/NetworkManager.conf << EOF
 [main]

@@ -1,0 +1,10 @@
+#!/bin/sh
+for _kurtar in  \
+'/etc/NetworkManager/system-connections' ; \
+do 
+
+#sed -i '\|'\'$_kurtar\''|d' /var/lib/pkg/DB/cups/kurulan
+# -sz ve -g den sonra /tmp/$paket.sil dikkate alınır
+sed -i '\|'\'$_kurtar\''|d' /tmp/networkmanager.sil
+
+done
