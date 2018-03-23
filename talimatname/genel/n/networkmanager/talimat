@@ -1,7 +1,7 @@
 # Tanım: Ağın daha doğrudan yönetilebilir olmasını sağlayan basitleştiren ve geliştiren araçlar
 # URL: http://projects.gnome.org/NetworkManager/
 # Paketçi: milisarge
-# Gerekler: libndp libsoup libgudev modemmanager dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt jansson
+# Gerekler: libndp libsoup libgudev modemmanager dbus-glib iptables libnl nss wireless-tools polkit upower vala wpa-supplicant gobject-introspection newt jansson ppp
 # Grup: ağ
 
 _isim=NetworkManager
