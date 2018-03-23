@@ -2,19 +2,26 @@
 # URL: http://projects.gnome.org/NetworkManager/
 # Paketçi: milisarge
 # Gerekler: gtk3 gconf iso-codes gobject-introspection libgnome-keyring gnome-keyring libsecret libnotify networkmanager polkit-gnome modemmanager gtk-update-icon-cache
+# Grup: ağ
 
 isim=network-manager-applet
-surum=1.4.6
+surum=1.8.10
 devir=1
 
-kaynak=( http://ftp.gnome.org/pub/gnome/sources/$isim/1.4/$isim-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/1.8/$isim-$surum.tar.xz)
  
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr \
-            --sysconfdir=/etc \
-            --disable-static \
-            --without-team 
-make
-make DESTDIR=$PKG install
+	cd $isim-$surum
+	sed -i '/#, fuzzy/d' po/tr.po
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--disable-static \
+	--without-team \
+	--without-selinux \
+	--disable-introspection 
+
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gir-1.0
+	rm -rf $PKG/usr/share/gtk-doc
 }
