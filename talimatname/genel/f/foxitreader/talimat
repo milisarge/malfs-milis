@@ -1,0 +1,15 @@
+# Tanım: Hızlı, güvenli ve eksiksiz bir PDF görüntüleyici
+# URL: https://www.foxitsoftware.com/products/pdf-reader/
+# Paketçi: Cihan_Alkan 
+# Gerekler: qt5 p7zip libsecret
+# Grup: ofis_düzenleyici
+
+isim=foxitreader
+surum=2.4.1.0609
+devir=1
+kaynak=(https://sourceforge.net/projects/ay-linux/files/Aylinux_Depo/foxitreader-tr-2.4.1.0609-4-x86_64.pkg.tar.xz)
+
+derle() {
+	mkdir $PKG/usr
+	cp -R $SRC/usr/* $PKG/usr/
+}
