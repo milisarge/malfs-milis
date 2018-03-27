@@ -2,12 +2,13 @@
 # URL: http://www.nvidia.com/
 # Paketçi: milisarge
 # Gerekler: gtk2 gl-select kernel
+# Grup: sürücü
 
 isim=nvidia
-surum=381.22
+surum=390.42
 devir=1
 kaynak=(http://us.download.nvidia.com/XFree86/Linux-x86_64/$surum/NVIDIA-Linux-x86_64-$surum-no-compat32.run \
-    90-nvidia-uvm.rules)
+		90-nvidia-uvm.rules)
 
 derle() {
     sh NVIDIA-Linux-x86_64-$surum-no-compat32.run --extract-only
