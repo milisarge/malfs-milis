@@ -1,22 +1,20 @@
 # Tanım: Linux ad alanları sandbox programı
 # URL: https://l3net.wordpress.com/projects/firejail/
 # Paketçi: Cihan Alkan
-# Gerekler: 
+# Gerekler:
+# Grup: güvenlik 
 
 isim=firejail
-surum=0.9.48
+surum=0.9.52
 devir=1
 
 kaynak=(https://sourceforge.net/projects/firejail/files/firejail/firejail-$surum.tar.xz)
 
-
 derle() {
-
 	cd $isim-$surum
-
-export CFLAGS="${CFLAGS/-fsanitize=undefined/}"
+	export CFLAGS="${CFLAGS/-fsanitize=undefined/}"
 	./configure --prefix=/usr
 	make
-
 	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share
 }
