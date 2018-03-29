@@ -5,7 +5,7 @@
 # Grup : güvenlik
 
 isim=wireshark
-surum=2.4.3
+surum=2.5.1
 devir=1
 kaynak=(http://www.$isim.org/download/src/$isim-$surum.tar.xz)
 
@@ -14,7 +14,6 @@ derle() {
   ./configure --prefix=/usr \
               --mandir=/usr/man \
               --with-plugins=/usr/lib/$isim/plugins \
-              --disable-nls \
               --enable-snmp \
               --disable-gcry \
               --without-krb5 \
