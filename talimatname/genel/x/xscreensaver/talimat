@@ -2,9 +2,10 @@
 # URL: http://www.jwz.org/xscreensaver/
 # Paketçi: milisarge
 # Gerekler: bc libglade xorg-libxmu xorg-libxt xorg-libxpm 
+# Grup: sistem
 
 isim=xscreensaver
-surum=5.34
+surum=5.38
 devir=1
 kaynak=(http://www.jwz.org/xscreensaver/$isim-$surum.tar.gz)
 
