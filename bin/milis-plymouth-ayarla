@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo plymouth-set-default-theme milis-plymouth -R
+sudo dracut -N --force --xz --add 'dmsquash-live pollcdrom crypt' --omit systemd /boot/initramfs `ls /lib/modules`
