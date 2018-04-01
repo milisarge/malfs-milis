@@ -1215,8 +1215,8 @@ sistem_guncelle_eski(){
 
 sistem_guncelle_uygula(){
 	local _gdosya
-	if [ "$2" ]; then
-		_gdosya="$2"
+	if [ "$1" ]; then
+		_gdosya="$1"
 	fi
 	[ ! -f ${_gdosya} ] && exit 1
 	for gpkt in `cat ${_gdosya}`;do
