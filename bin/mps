@@ -1228,66 +1228,76 @@ sistem_guncelle_uygula(){
 }
 
 sistem_guncelle(){
-	count=0
-	local kpaket _pkliste _konum
-	guncelleme_dosya="/tmp/mps.guncellenecekler"
-	rm -f $guncelleme_dosya
-	touch $guncelleme_dosya
-	total=`ls $VT | wc -l`
-	pstr="[=======================================================================]"
-	#git_guncelle
-	#paketvt_guncelle
-	GS_CIKTI="H"
-	_pkliste=$(mktemp)
-	ls -rct $VT > ${_pkliste}
-	for _esgec in `echo ${esgec} | tr " " "\n"`;do
-		_satirno=$(grep -wxnr "${_esgec}" ${_pkliste} | cut -d':' -f1)
-		[ ! -z ${_satirno} ] && sed  -i "${_satirno}d" ${_pkliste}
-	done
-	
-	while [ $count -lt $total ]; do
-		count=$(( $count + 1 ))
-		pd=$(( $count * 73 / $total ))
-		printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
-		kpaket=$(sed -n ${count}'p' ${_pkliste})
-		if [ ! -z $kpaket ];then
-			satir=$(sed -n '7p' <  $VT/$kpaket/META)
-			ksurum=${satir:1:${#satir}-1}
-			satir2=$(sed -n '8p' <  $VT/$kpaket/META)
-			kdevir=${satir2:1:${#satir2}-1}
-			#deposurum=$(grep " $kpaket#" /depo/paketler/paket.vt | cut -d' ' -f3 | cut -d'#' -f 2 | cut -d'-' -f1)
-			_konum=$(talimat_bul $kpaket)
-			if [ "$_konum" = "-1" ];then
-				ryaz 31 "$kpaket $_talimat_bulunamadi $_surum_kontrol_iptal"
-				exit 1
+	local guncelleme_dosya
+	if [ "$1" ] && [ -f "$1" ];then
+		guncelleme_dosya="$1"
+	else
+		count=0
+		local kpaket _pkliste _konum
+		guncelleme_dosya="/tmp/mps.guncellenecekler"
+		rm -f $guncelleme_dosya
+		touch $guncelleme_dosya
+		total=`ls $VT | wc -l`
+		pstr="[=======================================================================]"
+		#git_guncelle
+		#paketvt_guncelle
+		GS_CIKTI="H"
+		_pkliste=$(mktemp)
+		ls -rct $VT > ${_pkliste}
+		for _esgec in `echo ${esgec} | tr " " "\n"`;do
+			_satirno=$(grep -wxnr "${_esgec}" ${_pkliste} | cut -d':' -f1)
+			[ ! -z ${_satirno} ] && sed  -i "${_satirno}d" ${_pkliste}
+		done
+		
+		while [ $count -lt $total ]; do
+			count=$(( $count + 1 ))
+			pd=$(( $count * 73 / $total ))
+			printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
+			kpaket=$(sed -n ${count}'p' ${_pkliste})
+			if [ ! -z $kpaket ];then
+				satir=$(sed -n '7p' <  $VT/$kpaket/META)
+				ksurum=${satir:1:${#satir}-1}
+				satir2=$(sed -n '8p' <  $VT/$kpaket/META)
+				kdevir=${satir2:1:${#satir2}-1}
+				#deposurum=$(grep " $kpaket#" /depo/paketler/paket.vt | cut -d' ' -f3 | cut -d'#' -f 2 | cut -d'-' -f1)
+				_konum=$(talimat_bul $kpaket)
+				if [ "$_konum" = "-1" ];then
+					ryaz 31 "$kpaket $_talimat_bulunamadi $_surum_kontrol_iptal"
+					exit 1
+				fi
+				
+				source $_konum/talimat
+				deposurum=`echo -e "$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
+				depodevir=`echo -e "$devir" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
+				#echo $kpaket "  :  $ksurum --->  $deposurum" "$kdevir --->  $depodevir"
+				#sleep 3
+				if [ "$ksurum" != "$deposurum" ];then
+					#printf "$kpaket -surum: ";echo "$ksurum --->  $deposurum"
+					echo $kpaket >> $guncelleme_dosya
+				elif [ "$kdevir" != "$depodevir" ];then
+					#printf "$kpaket -devir: ";echo "$kdevir --->  $depodevir"
+					echo $kpaket >> $guncelleme_dosya
+				fi
 			fi
-			
-			source $_konum/talimat
-			deposurum=`echo -e "$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
-			depodevir=`echo -e "$devir" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
-			#echo $kpaket "  :  $ksurum --->  $deposurum" "$kdevir --->  $depodevir"
-			#sleep 3
-			if [ "$ksurum" != "$deposurum" ];then
-				#printf "$kpaket -surum: ";echo "$ksurum --->  $deposurum"
-				echo $kpaket >> $guncelleme_dosya
-			elif [ "$kdevir" != "$depodevir" ];then
-				#printf "$kpaket -devir: ";echo "$kdevir --->  $depodevir"
-				echo $kpaket >> $guncelleme_dosya
-			fi
-		fi
-	done
-	ryaz 32 "\nSistem Güncelleme Taraması Tamamlandı."
-	ryaz 33 "aşağıdaki paketler güncellenecektir:"
-	cat $guncelleme_dosya
-	ryaz 31 "Güncellemesini istemediğiniz paketleri /tmp/mps.guncellenecekler dosyasından sildikten sonra onay veriniz!"
-	while true; do
-		ryaz 33 "listedeki paketler güncellensin mi?";read -p "e veya h-> " eh
-		case $eh in
-			[Ee]* ) sistem_guncelle_uygula $guncelleme_dosya; break;;
-			[Hh]* ) break;;
-			* ) echo "e veya h";;
-		esac
-	done
+		done
+		ryaz 32 "\nSistem Güncelleme Taraması Tamamlandı."
+		
+	fi
+	if [ -s "$guncelleme_dosya" ];then
+		ryaz 33 "aşağıdaki paketler güncellenecektir:"
+		cat $guncelleme_dosya
+		ryaz 31 "Güncellemesini istemediğiniz paketleri $guncelleme_dosya dosyasından sildikten sonra onay veriniz!"
+		while true; do
+			ryaz 33 "listedeki paketler güncellensin mi?";read -p "e veya h-> " eh
+			case $eh in
+				[Ee]* ) sistem_guncelle_uygula $guncelleme_dosya; break;;
+				[Hh]* ) break;;
+				* ) echo "e veya h";;
+			esac
+		done
+	else
+		ryaz 31 "Güncellenecek paket bulunamadı!"
+	fi
 }
 
 surum_kontrol(){
@@ -3330,7 +3340,8 @@ ayarlar() {
 				exit 0 ;;
 			### mps yukselt . = tüm sistemin güncellemesini gerçekleştirir.
 			-GS|yukselt)
-				sistem_guncelle 
+				shift
+				sistem_guncelle "$@"
 				exit 0 ;;
 			### mps yukselt2 . = tüm sistemin güncellemesini gerçekleştirir.
 			-GS2|yukselt2)
