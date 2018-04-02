@@ -1239,8 +1239,8 @@ sistem_guncelle(){
 		touch $guncelleme_dosya
 		total=`ls $VT | wc -l`
 		pstr="[=======================================================================]"
-		#git_guncelle
-		#paketvt_guncelle
+		git_guncelle
+		paketvt_guncelle
 		GS_CIKTI="H"
 		_pkliste=$(mktemp)
 		ls -rct $VT > ${_pkliste}
