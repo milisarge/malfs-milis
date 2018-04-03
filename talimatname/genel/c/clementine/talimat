@@ -1,31 +1,25 @@
-# Tanım: Bir müzik çalar ve kütüphane organizatörü.
+# Tanım: Bir müzik çalar ve kütüphane organizatörü. (qt5 ile derlendi)
 # URL: http://www.clementine-player.org/
-# Paketçi: milisarge
-# Gerekler: cmake boost qt5 qjson libspotify sparsehash xorg-mesa libcdio libmtp protobuf qca-qt5 taglib chromaprint glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad gvfs
+# Paketçi: milisarge cihan_alkan
+# Gerekler: cmake boost qt5 xorg-mesa libcdio protobuf taglib chromaprint glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad sqlite
 # Grup: medya
 
 isim=clementine
-surum=git
+surum=1.3.1
 devir=1
-kaynak=(clementine-1.2.3-gcc5.1-1.patch
-        clementine-1.2.3-udisks-namespace.patch
-        clementine-cryptopp6.patch
-        clementine-1.3.1-chromaprint-1.4.0.patch
-        add-missing-functional-includes-5630.patch)
+kaynak=(spotify_blob.patch
+        spotify_install.patch)
 
 derle() {
-	git_indir https://github.com/clementine-player/Clementine.git#branch=qt5 clementine-qt5
-	cd $SRC/clementine-qt5
-	#patch -Np1 -i $SRC/clementine-1.2.3-udisks-namespace.patch
-	#patch -Np1 -i $SRC/clementine-1.2.3-gcc5.1-1.patch
-	#patch -p1 -i ../add-missing-functional-includes-5630.patch
-	patch -p1 -i ../clementine-1.3.1-chromaprint-1.4.0.patch
-	patch -p1 -i ../clementine-cryptopp6.patch
-	mkdir build
-	cd    build
-	cmake .. \
-	   -DCMAKE_INSTALL_PREFIX=/usr \
-	   -DCMAKE_BUILD_TYPE='Release'
-	make
-	make DESTDIR=$PKG install
+git_indir https://github.com/clementine-player/Clementine.git#branch=qt5 Clementine-$surum
+cd Clementine-$surum
+  patch -Np1 -i ../spotify_blob.patch
+  patch -Np0 -i ../spotify_install.patch
+  cd $SRC
+  mkdir -p build
+  cd build
+  cmake "../Clementine-$surum" \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
+  make DESTDIR=${PKG} install
 }
