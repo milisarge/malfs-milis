@@ -245,7 +245,7 @@ git_indir(){
 		echo "git repo ismi tanımlı değil"
 	fi
 	#branch kontrolü
-	_branch=echo "${_gitadres}" |sed 's/#branch=/\n/g' | sed -n 2p
+	_branch=`echo "${_gitadres}" |sed 's/#branch=/\n/g' | sed -n 2p`
 	[ ! -z ${_branch} ] && _branch="-b ${_branch}"
 	if [ ! -d $DERLEME_KAYNAKDIZIN/${_isim}  ];then
 		git clone ${_branch} ${_gitadres} $DERLEME_KAYNAKDIZIN/${_isim}
