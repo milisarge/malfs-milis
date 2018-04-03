@@ -1,0 +1,25 @@
+# Tanım: C API spotify için.
+# URL: https://developer.spotify.com/technologies/libspotify/
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: kütüphane
+
+isim=libspotify
+surum=12.1.51
+devir=1
+kaynak=(http://developer.spotify.com/download/libspotify/libspotify-${surum}-Linux-x86_64-release.tar.gz)
+
+derle() {
+    cd "$SRC/$isim-$surum-Linux-x86_64-release"
+    sed -i 's/ldconfig//' Makefile
+    make prefix="$PKG/usr" install
+    cp -R share "$PKG"/usr/share
+    mkdir -p "$PKG"/usr/share/man
+    mv "$PKG"/usr/share/man3 "$PKG"/usr/share/man/man3
+    sed -e s:PKG_PREFIX:/usr:g \
+          < lib/pkgconfig/libspotify.pc \
+          > "$PKG"/usr/lib/pkgconfig/libspotify.pc
+    install -Dm644 LICENSE licenses.xhtml "$PKG"/usr/share/doc/libspotify
+    mkdir -p "$PKG"/usr/share/licenses/libspotify
+    ln -s ../../doc/libspotify/LICENSE "$PKG"/usr/share/licenses/libspotify/LICENSE
+}
