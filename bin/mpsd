@@ -246,7 +246,10 @@ git_indir(){
 	fi
 	#branch kontrolü
 	_branch=`echo "${_gitadres}" |sed 's/#branch=/\n/g' | sed -n 2p`
-	[ ! -z ${_branch} ] && _branch="-b ${_branch}"
+	if [ ! -z ${_branch} ];then
+	 _gitadres=`echo "${_gitadres}" |sed 's/#branch=/\n/g' | sed -n 1p`
+	 _branch="-b ${_branch}"
+	fi
 	if [ ! -d $DERLEME_KAYNAKDIZIN/${_isim}  ];then
 		git clone ${_branch} ${_gitadres} $DERLEME_KAYNAKDIZIN/${_isim}
 	else
