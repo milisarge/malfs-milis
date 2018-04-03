@@ -1,21 +1,21 @@
 # Tanım: Bir müzik çalar ve kütüphane organizatörü.
 # URL: http://www.clementine-player.org/
 # Paketçi: milisarge
-# Gerekler: cmake boost qt4 qjson libspotify sparsehash xorg-mesa libcdio libmtp protobuf qca-qt5 taglib chromaprint glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad gvfs
+# Gerekler: cmake boost qt5 qjson libspotify sparsehash xorg-mesa libcdio libmtp protobuf qca-qt5 taglib chromaprint glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad gvfs
 # Grup: medya
 
 isim=clementine
-surum=1.3.1
+surum=git
 devir=1
-kaynak=(https://github.com/clementine-player/Clementine/archive/$surum.tar.gz
-        clementine-1.2.3-gcc5.1-1.patch
+kaynak=(clementine-1.2.3-gcc5.1-1.patch
         clementine-1.2.3-udisks-namespace.patch
         clementine-cryptopp6.patch
         clementine-1.3.1-chromaprint-1.4.0.patch
         add-missing-functional-includes-5630.patch)
 
 derle() {
-	cd Clementine-$surum
+	git_indir https://github.com/clementine-player/Clementine.git#branch=qt5 clementine-qt5
+	cd $SRC/clementine-qt5
 	#patch -Np1 -i $SRC/clementine-1.2.3-udisks-namespace.patch
 	#patch -Np1 -i $SRC/clementine-1.2.3-gcc5.1-1.patch
 	patch -p1 -i ../add-missing-functional-includes-5630.patch
