@@ -2,16 +2,17 @@
 # URL: http://code.google.com/p/sparsehash
 # Paketçi: milisarge
 # Gerekler:
+# Grup: kütüphane
 
 isim=sparsehash
-surum=2.0.2
+surum=2.0.3
 devir=1
 
-kaynak=(http://sparsehash.googlecode.com/files/$isim-$surum.tar.gz)
+kaynak=(https://github.com/sparsehash/sparsehash/archive/sparsehash-$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
+	cd $isim-$isim-$surum
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }
