@@ -1,7 +1,7 @@
 # Tanım: Anahat ve bitmap yazı tipi düzenleyicisi
 # URL: http://fontforge.sourceforge.net
 # Paketçi: milisarge
-# Gerekler: xorg-libxi libxml2 pango giflib libtiff
+# Gerekler: xorg-libxi libxml2 pango giflib libtiff python
 
 isim=fontforge
 surum=20170731
@@ -25,4 +25,5 @@ derle() {
 
 	install -Dm644 LICENSE "${PKG}/usr/share/licenses/${isim}/LICENSE"
 	install -Dm644 desktop/fontforge.desktop "${PKG}/usr/share/applications/fontforge.desktop"
+	rm -rf $PKG/usr/share/doc
 }
