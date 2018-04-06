@@ -1,0 +1,32 @@
+# Tanım: Üretim Kalitesi, Çok Katmanlı Açık Sanal Anahtar
+# URL: http://openvswitch.org
+# Paketçi: Cihan_Alkan
+# Gerekler: libcap-ng python-six
+# Grup: ağ
+
+isim=openvswitch
+surum=2.8.1
+devir=1
+kaynak=(http://openvswitch.org/releases/openvswitch-$surum.tar.gz
+	openvswitch.tmpfiles)
+
+derle() {
+  cd "$SRC/$isim-$surum"
+  sed -i \
+    -e 's|$(sysconfdir)/bash_completion.d|/usr/share/bash-completion/completions|g' \
+    Makefile.am
+  ./boot.sh
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --with-rundir=/run/openvswitch \
+    --sbindir=/usr/bin \
+    PYTHON=/usr/bin/python
+  make
+
+  make DESTDIR="$PKG" install
+  install -Dm0644 "$SRC"/openvswitch.tmpfiles "$PKG/usr/lib/tmpfiles.d/openvswitch.conf"
+  install -dm0755 "$PKG/etc/openvswitch"
+  rm -rf "$PKG"/run
+}

@@ -1,0 +1,24 @@
+# Tanım: İşlem tabanlı ağ emülatörü
+# URL: https://github.com/mininet/mininet/
+# Paketçi: Cihan_Alkan
+# Gerekler: help2man python-setuptools python pynetworkx net-tools iputils iperf openvswitch
+# Grup: ağ
+
+isim=mininet
+surum=2.2.1
+devir=1
+kaynak=(https://github.com/mininet/mininet/archive/$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+	cd $isim-$surum
+	grep python Makefile
+	grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:g'
+	grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/python:#!/usr/bin/python2:g'
+	sed 's:BINDIR = /usr/bin:BINDIR = $(DESTDIR)/usr/bin:g' -i Makefile
+	sed 's:MANDIR = /usr/share/man/man1:MANDIR = $(DESTDIR)/usr/share/man/man1:g' -i Makefile
+	sed 's:install $(MNEXEC) $(BINDIR):mkdir -p $(BINDIR); install $(MNEXEC) $(BINDIR):g' -i Makefile
+	sed 's:install $(MANPAGES) $(MANDIR):mkdir -p $(MANDIR);install $(MANPAGES) $(MANDIR):g' -i Makefile
+	sed 's:python setup.py:python setup.py install --prefix=/usr --root="$(DESTDIR)" --optimize=1:g' -i Makefile
+	make DESTDIR="${PKG}" install
+}
