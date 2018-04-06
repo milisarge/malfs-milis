@@ -1,7 +1,7 @@
 # Tanım: CPU frekans limitlerini ayarlamak için bir GUI yardımcı programı
 # URL: https://gitlab.com/vagnum08/cpupower-gui
 # Paketçi: Cihan_Alkan
-# Gerekler: python gtk3 hicolor-icon-theme polkit pydbus autoconf-archive
+# Gerekler: python3 gtk3 hicolor-icon-theme polkit pydbus autoconf-archive
 # Grup: sistem
 
 isim=cpupower-gui
@@ -14,4 +14,5 @@ derle() {
 	./configure --prefix=/usr
 	make
 	make DESTDIR="$PKG/" install
+	rm -rf $PKG/usr/lib/systemd
 }
