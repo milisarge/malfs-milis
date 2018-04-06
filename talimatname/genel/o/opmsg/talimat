@@ -6,7 +6,7 @@
 
 isim=opmsg
 surum=git
-devir=1
+devir=2
 kaynak=(https://github.com/stealth/opmsg/archive/master.tar.gz::$isim-$surum-$devir.tar.gz)
 
 derle() {
