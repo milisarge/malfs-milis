@@ -1,7 +1,7 @@
 # Tanım: YouTube videolarını izlemek için komut satırı yardımcı programı
 # URL: https://github.com/trizen/youtube-viewer
 # Paketçi: Cihan_Alkan
-# Gerekler: perl-data-dump perl-json perl-lwp-protocol-https perl-libwww perl-module-build gtk2-perl perl-try-tiny perl-class-inspector
+# Gerekler: perl-data-dump perl-json perl-lwp-protocol-https perl-libwww perl-module-build gtk2-perl perl-try-tiny perl-class-inspector perl-file-sharedir
 # Grup: medya
 
 isim=youtube-viewer
