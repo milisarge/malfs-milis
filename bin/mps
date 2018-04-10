@@ -1131,6 +1131,9 @@ paket_guncelle(){
 	if [ -d "$VT/$1" ];then
 		if [ ${_paketguncel} -eq 0 ];then
 			devir_kontrol $1 $2 $3
+		else
+			ryaz 32 "$1 paketi yeni güncellendi."
+			ryaz 32 "devir güncellemesi yapılmayacak."
 		fi
 	fi
 	export _paketguncel=0
