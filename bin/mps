@@ -137,6 +137,8 @@ _surum_kontrol_iptal="sürüm kontrolü iptal edildi!"
 _zaten="zaten"
 _indiriliyor="indiriliyor"
 
+export _paketguncel=0
+
 hata_olustu(){
 	local _hata _mesaj
 	[ -z $1 ] && exit 1
@@ -1127,8 +1129,11 @@ paketsiz_talimatlar(){
 paket_guncelle(){
 	surum_kontrol $1 $2 $3
 	if [ -d "$VT/$1" ];then
-		devir_kontrol $1 $2 $3
+		if [ ${_paketguncel} -eq 0 ];then
+			devir_kontrol $1 $2 $3
+		fi
 	fi
+	export _paketguncel=0
 }
 
 paket_guncelle_oto(){
@@ -1380,6 +1385,7 @@ surum_kontrol(){
 						paket_inkur_oto $_paket
 					fi
 					ryaz 33 "$_paket sürüm güncellemesi yapıldı"
+					export _paketguncel=1
 				else
 					ryaz 31 "$_paket sürüm güncellemesi yapılmadı"
 					hataloglama "$_paket sürüm güncellemesi yapılmadı"
