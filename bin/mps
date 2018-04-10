@@ -1236,9 +1236,14 @@ sistem_guncelle_uygula(){
 }
 
 sistem_guncelle(){
-	local guncelleme_dosya
+	local guncelleme_dosya _onay
+	_onay=0
+	if [ "$1" = "evet" ];then
+		_onay=1
+	fi
 	if [ "$1" ] && [ -f "$1" ];then
 		guncelleme_dosya="$1"
+		[ "$2" = "evet" ] && _onay=1
 	else
 		count=0
 		local kpaket _pkliste _konum
@@ -1295,14 +1300,18 @@ sistem_guncelle(){
 		ryaz 33 "aşağıdaki paketler güncellenecektir:"
 		cat $guncelleme_dosya
 		ryaz 31 "Güncellemesini istemediğiniz paketleri $guncelleme_dosya dosyasından sildikten sonra onay veriniz!"
-		while true; do
-			ryaz 33 "listedeki paketler güncellensin mi?";read -p "e veya h-> " eh
-			case $eh in
-				[Ee]* ) sistem_guncelle_uygula $guncelleme_dosya; break;;
-				[Hh]* ) break;;
-				* ) echo "e veya h";;
-			esac
-		done
+		if [ ${_onay} -eq 0 ];then
+			while true; do
+				ryaz 33 "listedeki paketler güncellensin mi?";read -p "e veya h-> " eh
+				case $eh in
+					[Ee]* ) sistem_guncelle_uygula $guncelleme_dosya; break;;
+					[Hh]* ) break;;
+					* ) echo "e veya h";;
+				esac
+			done
+		else
+			sistem_guncelle_uygula $guncelleme_dosya
+		fi
 	else
 		ryaz 31 "Güncellenecek paket bulunamadı!"
 	fi
