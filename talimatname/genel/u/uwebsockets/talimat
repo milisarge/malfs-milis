@@ -4,7 +4,7 @@
 # Gerekler:
 
 isim=uwebsockets
-surum=0.14.4
+surum=0.14.6
 devir=1
 kaynak=(https://github.com/uNetworking/uWebSockets/archive/v${surum}.tar.gz::uWebSockets-${surum}.tar.gz)
 
