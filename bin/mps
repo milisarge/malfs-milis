@@ -476,7 +476,8 @@ kurulu_kontrol_test(){
 }
 
 paket_bilgi(){
-	local paket kkont cikti _yaz _yaz_uyari _yaz_son
+	local _paket kkont cikti _yaz _yaz_uyari _yaz_son
+	_paket="$1"
 	cikti="--renkli"
 	_yaz_son=""
 	if [ "$2" ]; then
@@ -499,16 +500,15 @@ paket_bilgi(){
 	kkont=`kurulu_kontrol "$1"`
 
 	if [ "$kkont" = "kurulu" ];then
-		paket="$1"
-		satir=`sed -n '1p' <  $VT/"$paket"/META`
+		satir=`sed -n '1p' <  $VT/"${_paket}"/META`
 		$_yaz "ADI        :" ${satir:1:${#satir}-1} #$_yaz_son
-		satir=`sed -n '2p' <  $VT/"$paket"/META`
+		satir=`sed -n '2p' <  $VT/"${_paket}"/META`
 		$_yaz "TANIM      :" ${satir:1:${#satir}-1} #$_yaz_son
-		satir=`sed -n '3p' <  $VT/"$paket"/META`
+		satir=`sed -n '3p' <  $VT/"${_paket}"/META`
 		$_yaz "URL        :" ${satir:1:${#satir}-1} #$_yaz_son
-		satir=`sed -n '5p' <  $VT/"$paket"/META`
+		satir=`sed -n '5p' <  $VT/"${_paket}"/META`
 		$_yaz "PAKETÇİ    :" ${satir:1:${#satir}-1} #$_yaz_son
-		satir=`sed -n '6p' <  $VT/"$paket"/META`
+		satir=`sed -n '6p' <  $VT/"${_paket}"/META`
 		satir=${satir:1:${#satir}-1} 
 		printf -v boyut '%d\n' "$satir" 2>/dev/null
 		if [ $boyut -lt 1048576 ];then
@@ -519,15 +519,15 @@ paket_bilgi(){
 			_ek="mb"
 		fi
 		$_yaz "KUR BOYUT  :" "$boyut $_ek (tahmini)" #$_yaz_son
-		satir=`sed -n '7p' <  $VT/"$paket"/META`
+		satir=`sed -n '7p' <  $VT/"${_paket}"/META`
 		$_yaz "SÜRÜM      :" ${satir:1:${#satir}-1} #$_yaz_son
-		satir=`sed -n '8p' <  $VT/"$paket"/META`
+		satir=`sed -n '8p' <  $VT/"${_paket}"/META`
 		$_yaz "DEVİR      :" ${satir:1:${#satir}-1} #$_yaz_son
-		satir=`sed -n '9p' <  $VT/"$paket"/META`
+		satir=`sed -n '9p' <  $VT/"${_paket}"/META`
 		$_yaz "PAKETLENME :" `date -d @${satir:1:${#satir}-1}` #$_yaz_son
-		satir=`sed -n '10p' <  $VT/"$paket"/META`
+		satir=`sed -n '10p' <  $VT/"${_paket}"/META`
 		$_yaz "MİMARİ     :" ${satir:1:${#satir}-1} #$_yaz_son
-		satir=`sed -n '11p' <  $VT/"$paket"/META`
+		satir=`sed -n '11p' <  $VT/"${_paket}"/META`
 		$_yaz "GRUP       :" ${satir:1:${#satir}-1} #$_yaz_son
 	elif [ "$kkont" = "degil" ];then
 		_konum=$(talimat_bul $1)
@@ -546,9 +546,9 @@ paket_bilgi(){
 		$_yaz "SÜRÜM      :" ${_surum} #$_yaz_son
 		$_yaz "DEVİR      :" ${_devir} #$_yaz_son
 		$_yaz "GRUP       :" ${_grup} #$_yaz_son
-		$_yaz_uyari "$1 $_paket_kurulu_degil"
+		$_yaz_uyari "${_paket} $_paket_kurulu_degil"
 	else
-		$_yaz_uyari "$1 $_paket_tanimsiz"
+		$_yaz_uyari "${_paket} $_paket_tanimsiz"
 	fi
 }
 
@@ -629,7 +629,8 @@ talimat_bul(){
 	_sonuc=$(find $_konum -name ${_apaket} | wc -l)
 	if [ ${_sonuc} -eq 0 ];then echo $_donus;return; fi
 	_bulunan=$(find $_konum -name ${_apaket} | head -n1)
-	if [ ! -f "${_bulunan}/talimat" ];then hata_olustu "_talimatsiz_dizin";return; fi
+	#if [ ! -f "${_bulunan}/talimat" ];then hata_olustu "_talimatsiz_dizin";return; fi
+	if [ ! -f "${_bulunan}/talimat" ];then echo ${_donus};return; fi
 	[ ${_sonuc} -gt 1 ] && echo "$(date +'%F %T') ${_apaket} $_talimat_sayisi_fazla" >> $LOGDIZIN/mps-hata.log
 	echo ${_bulunan}
 }
@@ -1952,7 +1953,7 @@ kurulu_kontrol(){
 		exit 0
 	fi
 	_konum=$(talimat_bul $_apaket)
-
+	
 	if [ "$_konum" = "-1" ];then
 		$_yaz_uyari "tanimsiz"
 	else
