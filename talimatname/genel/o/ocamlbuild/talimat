@@ -2,15 +2,16 @@
 # URL: https://github.com/ocaml/ocamlbuild/
 # Paketçi: milisarge
 # Gerekler: ocaml
+# Grup: programlama
 
 isim=ocamlbuild
-surum=0.11.0
+surum=0.12.0
 devir=1
 kaynak=(https://github.com/ocaml/${isim}/archive/$surum.tar.gz)
 
 derle() {
 	cd $isim-$surum
-	make configure OCAMLBUILD_PREFIX=/usr
+	make configure
 	make
 	make install DESTDIR=$PKG
 }
