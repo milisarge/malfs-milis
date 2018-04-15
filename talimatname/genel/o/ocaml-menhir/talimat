@@ -1,0 +1,18 @@
+# Tanım: Menhir, OCaml için bir LR (1) ayrıştırıcı üreticisidir.
+# URL: http://cristal.inria.fr/~fpottier/menhir/
+# Paketçi: Cihan_Alkan
+# Gerekler: ocaml ocaml-findlib ocamlbuild
+# Grup: programlama
+
+isim=ocaml-menhir
+surum=20171222
+devir=1
+kaynak=(http://cristal.inria.fr/~fpottier/menhir/menhir-$surum.tar.gz)
+
+derle() {
+  cd "$SRC/${isim/ocaml-/}-$surum"
+  make PREFIX="/usr" all
+  export OCAMLFIND_DESTDIR="$PKG$(ocamlfind printconf destdir)"
+  install -dm 755 "$OCAMLFIND_DESTDIR"
+  make PREFIX="$PKG/usr" install
+}

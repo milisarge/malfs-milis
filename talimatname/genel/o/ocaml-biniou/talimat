@@ -1,0 +1,27 @@
+# Tanım: JSON için optimize edilmiş bir ayrıştırma ve baskı kitaplığı
+# URL: https://github.com/mjambon/biniou
+# Paketçi: Cihan_Alkan
+# Gerekler: ocaml-findlib dune opam ocaml-easy-format
+# Grup: kütüphane
+
+_pkgname=biniou
+isim=ocaml-biniou
+surum=1.2.0
+devir=1
+kaynak=(https://github.com/mjambon/biniou/archive/v$surum.tar.gz::${isim}-${surum}.tar.gz)
+
+derle() {
+
+    cd biniou-${surum}
+    make all
+
+    # Initialize OPAM
+    export OPAMROOT="${SRC}"/opam
+    opam init -n
+
+    # Work around missing install command
+    OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)" jbuilder install
+
+    # Install LICENSE
+    install -Dm644 "${SRC}"/opam/system/doc/${_pkgname}/LICENSE -t "${PKG}"/usr/share/licenses/${isim}/
+}

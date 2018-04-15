@@ -1,0 +1,26 @@
+# Tanım: JSON için optimize edilmiş bir ayrıştırma ve baskı kitaplığı
+# URL: https://github.com/mjambon/easy-format
+# Paketçi: Cihan_Alkan
+# Gerekler: glibc dune ocaml-findlib opam
+# Grup: kütüphane
+
+isim=ocaml-easy-format
+surum=1.3.1
+devir=1
+kaynak=(https://github.com/mjambon/easy-format/archive/v$surum.tar.gz::${isim}-${surum}.tar.gz)
+
+derle() {
+
+    cd easy-format-${surum}
+    make all
+
+    # Initialize OPAM
+    export OPAMROOT="${SRC}"/opam
+    opam init -n
+
+    # Work around missing install command
+    OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)" jbuilder install
+
+    # Install LICENSE
+    install -Dm644 "${SRC}"/opam/system/doc/easy-format/LICENSE -t "${PKG}"/usr/share/licenses/${isim}/
+}
