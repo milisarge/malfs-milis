@@ -5,13 +5,12 @@
 # Grup: kütüphane
 
 isim=ocaml-stdint
-surum=git
+surum=0.5.1
 devir=1
-kaynak=()
+kaynak=(https://github.com/andrenth/ocaml-stdint/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-  git_indir https://github.com/andrenth/ocaml-stdint.git $isim
-  cd "$SRC/$isim"
+  cd "$isim-$surum"
   export OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)"
   ocaml setup.ml -configure --destdir "${PKG}"
   make all
