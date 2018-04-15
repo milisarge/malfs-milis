@@ -5,7 +5,7 @@
 # Grup: kütüphane
 
 isim=ocaml-stdint
-surum=0.5.1
+surum=0.5.0
 devir=1
 kaynak=(https://github.com/andrenth/ocaml-stdint/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
