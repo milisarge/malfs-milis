@@ -1,0 +1,21 @@
+# Tanım: Program Doğrulama için Tasarlanmış Verimli Bir Dil
+# URL: https://fstar-lang.org/
+# Paketçi: Cihan_Alkan
+# Gerekler: ocaml ocaml-findlib ocaml-menhir ocaml-pprint ocaml-yojson ocaml-batteries zarith
+# Grup: programlama
+
+isim=fstar
+surum=0.9.5.0
+devir=1
+kaynak=(https://github.com/FStarLang/FStar/archive/v$surum.zip::$isim-$surum.tar.gz)
+
+derle() {
+  cd "FStar-$surum"
+
+  # Step 3. Building F* from the OCaml snapshot
+  make -C src/ocaml-output -j 3
+
+  install -d -m755 $PKG/opt/fstar $PKG/usr/bin
+  cp -r * $PKG/opt/fstar
+  ln -s /opt/fstar/bin/fstar.exe $PKG/usr/bin/fstar
+}
