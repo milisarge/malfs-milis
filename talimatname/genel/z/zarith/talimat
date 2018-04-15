@@ -17,5 +17,5 @@ derle() {
   make
 
   mkdir -p "${PKG}/usr/lib/ocaml"
-  OCAMLFIND_LDCONF=ignore make install
+  make OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)" install
 }
