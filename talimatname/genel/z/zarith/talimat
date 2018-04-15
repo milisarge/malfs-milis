@@ -1,0 +1,21 @@
+# Tanım: Rasgele kesinlikli tamsayılar ve rasyonel sayılar üzerinde aritmetik ve mantıksal işlemleri uygular
+# URL: https://github.com/ocaml/Zarith
+# Paketçi: Cihan_Alkan
+# Gerekler: ocaml-findlib ocaml
+# Grup: kütüphane
+
+isim=zarith
+surum=1.7
+devir=1
+kaynak=(https://github.com/ocaml/Zarith/archive/release-${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+
+  cd Zarith-release-${surum}
+
+  ./configure -installdir "${PKG}/usr/lib/ocaml" # install ignores DESTDIR
+  make
+
+  mkdir -p "${PKG}/usr/lib/ocaml"
+  OCAMLFIND_LDCONF=ignore make install
+}
