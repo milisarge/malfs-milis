@@ -22,5 +22,5 @@ derle() {
     make OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)" install
 
     # Install LICENSE
-    install -Dm644 "${SRC}"/opam/system/doc/${_pkgname}/LICENSE -t "${PKG}"/usr/share/licenses/${isim}/
+    install -Dm644 "${SRC}"/opam/system/doc/${_isim}/LICENSE -t "${PKG}"/usr/share/licenses/${isim}/
 }
