@@ -1,0 +1,18 @@
+# Tanım: Resim düzenleme uygulaması
+# URL: http://pencilsheep.com
+# Paketçi: Cihan_Alkan
+# Gerekler: sdl2-ttf
+# Grup: grafik
+
+isim=pencilsheep
+surum=0.100.04
+devir=1
+kaynak=(http://pencilsheep.com/dl/pencilsheep.deb
+        pencilsheep.sh)
+
+derle() {
+  ar x pencilsheep.deb
+  tar -xf data.tar.?z -C "$PKG" ./usr
+  mkdir $PKG/usr/bin
+  cp -r $SRC/pencilsheep.sh $PKG/usr/bin/pencilsheep  
+}
