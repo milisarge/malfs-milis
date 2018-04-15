@@ -1,0 +1,24 @@
+# Tanım: OCaml için C stili önişlemci
+# URL: https://github.com/mjambon/cppo
+# Paketçi: Cihan_Alkan
+# Gerekler: ocaml ocamlbuild opam dune
+# Grup: kütüphane
+
+isim=cppo
+surum=1.6.4
+devir=1
+kaynak=(https://github.com/mjambon/cppo/archive/v$surum.tar.gz::${isim}-${surum}.tar.gz)
+
+derle() {
+
+    cd ${isim}-${surum}
+    make
+    # Initialize OPAM
+    export OPAMROOT="${SRC}"/opam
+    opam init -n
+
+    # Work around the install command
+    make OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)" install
+    install -Dm755 "${SRC}"/opam/system/bin/cppo -t "${PKG}"/usr/bin
+    install -Dm644 "${SRC}"/opam/system/doc/${isim}/LICENSE.md -t "${PKG}"/usr/share/licenses/${isim}/
+}
