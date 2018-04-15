@@ -1,0 +1,30 @@
+# Tanım: OCaml için bir yapı sistemi
+# URL: https://github.com/ocaml/dune
+# Paketçi: Cihan_Alkan
+# Gerekler: ocaml ocaml-findlib opam
+# Grup: kütüphane
+
+isim=dune
+surum=1.0b19.1
+devir=1
+kaynak=(https://github.com/ocaml/dune/archive/${surum/b/+beta}.tar.gz::${isim}-${surum}.tar.gz)
+
+derle() {
+
+    cd ${isim}-${surum/b/-beta}
+    make release
+
+    # Initialize OPAM
+    export OPAMROOT="${SRC}"/opam
+    opam init -n
+
+    # Work around the install command
+    export OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)"
+    install -dm755 ${OCAMLFIND_DESTDIR}
+    make INSTALL_ARGS="--prefix='${PKG}'/usr --libdir='${OCAMLFIND_DESTDIR}'" install
+
+    # Fix doc and man install
+    install -dm755 "${PKG}"/usr/share
+    mv "${PKG}"/usr/{doc,share/}
+    mv "${PKG}"/usr/{man,share/}
+}
