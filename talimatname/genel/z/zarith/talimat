@@ -13,9 +13,10 @@ derle() {
 
   cd Zarith-release-${surum}
 
-  ./configure -installdir "${PKG}/usr/lib/ocaml" # install ignores DESTDIR
+  ./configure -installdir "${PKG}/usr/lib/ocaml/site-lib/" # install ignores DESTDIR
   make
 
-  mkdir -p "${PKG}/usr/lib/ocaml"
+  mkdir -p "${PKG}/usr/lib/ocaml/site-lib"
   make OCAMLFIND_DESTDIR="${PKG}$(ocamlfind printconf destdir)" install
+
 }
