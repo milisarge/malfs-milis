@@ -7,7 +7,7 @@
 isim=fstar
 surum=0.9.5.0
 devir=1
-kaynak=(https://github.com/FStarLang/FStar/archive/v$surum.zip::$isim-$surum.tar.gz)
+kaynak=(https://github.com/FStarLang/FStar/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
   cd "FStar-$surum"
