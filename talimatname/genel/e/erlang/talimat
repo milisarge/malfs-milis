@@ -4,7 +4,7 @@
 # Gerekler:
 
 isim=erlang
-surum=20.0
+surum=20.3
 devir=1
 kaynak=(http://erlang.org/download/otp_src_$surum.tar.gz)
 
