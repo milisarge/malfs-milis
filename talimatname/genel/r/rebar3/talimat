@@ -1,12 +1,12 @@
-# Tanım: otp esaslarına göre erlang derleme aracı
+# Tanım: Otp esaslarına göre erlang derleme aracı
 # URL: https://github.com/rebar/rebar3
 # Paketçi: milisarge
 # Gerekler: erlang
 
 isim=rebar3
-surum=3.3.4
+surum=3.5.0
 devir=1
-kaynak=(https://github.com/rebar/rebar3/archive/${surum}.tar.gz)
+kaynak=(https://github.com/rebar/rebar3/archive/${surum}.tar.gz::$isim-$surum.tar.gz)
 
 derle(){
 	cd "$SRC/$isim-$surum"
