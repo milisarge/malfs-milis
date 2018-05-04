@@ -4,14 +4,12 @@
 # Gerekler: libffi pcre python elfutils
 
 isim=glib
-surum=2.53.1
+surum=2.56.1
 devir=1
-kaynak=( http://ftp.gnome.org/pub/gnome/sources/glib/${surum%.*}/$isim-$surum.tar.xz
-	revert-warn-glib-compile-schemas.patch)
+kaynak=( http://ftp.gnome.org/pub/gnome/sources/glib/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
 	cd $isim-$surum
-	patch -Rp1 -i ../revert-warn-glib-compile-schemas.patch
 	./configure --prefix=/usr \
 	--with-pcre=system \
 	--disable-fam
