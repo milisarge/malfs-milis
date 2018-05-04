@@ -1,0 +1,24 @@
+# Tanım: MyPaint ve diğer yazılımlar tarafından libmypaint kullanılarak kullanılan fırçalar.
+# URL: https://github.com/Jehan/mypaint-brushes
+# Paketçi: Cihan_Alkan
+# Gerekler: libmypaint
+# Grup: 
+
+isim=mypaint-brushes
+surum=1.3.0
+devir=1
+
+kaynak=(https://github.com/Jehan/mypaint-brushes/archive/v${surum}.tar.gz)
+
+derle() {
+
+  cd "$isim-$surum"
+
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+
+  make DESTDIR="$PKG" install
+  install -D -m644 COPYING "$PKG/usr/share/licenses/$isim/LICENSE"
+
+}
