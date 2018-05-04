@@ -2,10 +2,10 @@
 # URL: http://www.littlecms.com/
 # Paketçi: milisarge
 # Gerekler: libjpeg-turbo libtiff 
-
+# Grup: kütüphane
 
 isim=lcms2
-surum=2.7
+surum=2.9
 devir=1
 
 kaynak=(http://downloads.sourceforge.net/lcms/$isim-$surum.tar.gz)
