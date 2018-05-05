@@ -5,7 +5,7 @@
 # Grup: deepin
 
 isim=deepin-calculator
-surum=1.0.1
+surum=1.0.2
 devir=1
 kaynak=(https://github.com/linuxdeepin/deepin-calculator/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
