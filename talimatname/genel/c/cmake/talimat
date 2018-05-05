@@ -5,7 +5,7 @@
 # Grup: geliştirme
 
 isim=cmake
-surum=3.4.3
+surum=3.11.1
 devir=1
 kaynak=(http://www.cmake.org/files/v${surum%.*}/$isim-$surum.tar.gz)
 
