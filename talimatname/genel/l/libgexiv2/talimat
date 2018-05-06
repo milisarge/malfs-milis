@@ -1,13 +1,14 @@
 # Tanım: Exiv2 kitaplığının çevresindeki GObject tabanlı sarmalayıcı.
 # URL: https://wiki.gnome.org/Projects/gexiv2
-# Paketçi: yasarciv67@gmail.com
+# Paketçi: milisarge
 # Gerekler: glib exiv2 gobject-introspection python-gobject
+# Grup: kütüphane
 
 isim=libgexiv2
-surum=0.10.4
+surum=0.10.8
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/${isim/lib/}/${surum%.*}-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/gexiv2/0.10/gexiv2-${surum}.tar.xz)
 
 derle() {
 cd ${isim/lib/}-$surum
