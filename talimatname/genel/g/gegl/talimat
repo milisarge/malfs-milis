@@ -5,9 +5,9 @@
 # Grup: kütüphane
 
 isim=gegl
-surum=0.3.28
+surum=0.4.0
 devir=1
-kaynak=(https://download.gimp.org/pub/gegl/0.3/$isim-$surum.tar.bz2)
+kaynak=(https://download.gimp.org/pub/gegl/0.4/$isim-$surum.tar.bz2)
 
 derle() {
 cd $isim-$surum
