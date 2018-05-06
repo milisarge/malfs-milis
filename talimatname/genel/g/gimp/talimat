@@ -1,7 +1,7 @@
 # Tanım: Fotoğraf rötuşlama, görüntü kompozisyonu ve görüntü yazarlığı gibi görevler için serbestçe dağıtılan bir programdır.
 # URL: http://www.gimp.org/
 # Paketçi: milisarge
-# Gerekler: shared-mime-info gtk2 python-gtk curl libexif xorg-libxmu xorg-libxpm openexr gegl2 poppler libmng alsa-lib babl libgudev libwmf libmypaint mypaint-brushes
+# Gerekler: shared-mime-info gtk2 python-gtk curl libexif xorg-libxmu xorg-libxpm openexr gegl2 libgexiv2 poppler-glib glib-networking poppler libmng alsa-lib babl libgudev libwmf libmypaint mypaint-brushes
 # Grup: Grafik
 
 isim=gimp
