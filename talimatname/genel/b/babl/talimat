@@ -5,7 +5,7 @@
 # Grup: kütüphane
 
 isim=babl
-surum=0.1.42
+surum=0.1.46
 devir=1
 kaynak=(http://download.gimp.org/pub/$isim/0.1/$isim-$surum.tar.bz2)
 
