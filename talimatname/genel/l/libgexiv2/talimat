@@ -7,10 +7,10 @@ isim=libgexiv2
 surum=0.10.4
 devir=1
 
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/${name/lib/}/${surum%.*}-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/${isim/lib/}/${surum%.*}-$surum.tar.xz)
 
 derle() {
-cd ${name/lib/}-$surum
+cd ${isim/lib/}-$surum
 	./configure --prefix=/usr \
 		 --enable-introspection
 	make
