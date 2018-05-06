@@ -1,19 +1,18 @@
 # Tanım: lxde terminal uygulaması
 # URL: http://lxde.org/
-# Maintainer: NuTyX core team
-# Paketçi: milisarge@gmail.com
+# Paketçi: milisarge
 # Gerekler: intltool vte
 
 isim=lxde-terminal
 _isim=lxterminal
-surum=0.2.0
+surum=0.3.1
 devir=1
 
-kaynak=(http://downloads.sourceforge.net/lxde/lxterminal-$surum.tar.gz)
+kaynak=(http://downloads.sourceforge.net/lxde/lxterminal-$surum.tar.xz)
 
 derle() {
-cd ${_name}-$surum
-./configure --prefix=/usr \
+cd ${_isim}-$surum
+./configure --sysconfdir=/etc --prefix=/usr --enable-gtk3
 make
 make DESTDIR=$PKG install
 }
