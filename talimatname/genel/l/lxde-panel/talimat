@@ -1,19 +1,30 @@
 # Tanım: Hafif bir X11 masaüstü paneli içerir
 # URL: http://lxde.org/
-# Paketçi: milisarge@gmail.com
+# Paketçi: cihan_alkan
 # Gerekler: gtk2 menu-cache alsa-lib libwnck wireless-tools keybinder2 libfm
+# Grup: lxde
 
 isim=lxde-panel
 _isim=lxpanel
-surum=0.8.2
+surum=0.9.3
 devir=1
-
-kaynak=(http://downloads.sourceforge.net/lxde/files/${_name}-$surum.tar.xz)
+kaynak=(https://downloads.sourceforge.net/lxde/${_isim}-$surum.tar.xz
+        fix-crash.patch)
 
 derle() {
-cd ${_name}-$surum
-./configure --prefix=/usr
-make
-make DESTDIR=$PKG install
-sed -i "s/gnome-terminal/lxterminal/" $PKG/etc/xdg/lxpanel/default/panels/panel
+
+  cd ${_isim}-$surum
+  # Fix crash
+  patch -Np1 -i ../fix-crash.patch
+
+  ./configure \
+    --sysconfdir=/etc \
+    --prefix=/usr
+
+  #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+  make
+  make DESTDIR="$PKG" install
 }
+

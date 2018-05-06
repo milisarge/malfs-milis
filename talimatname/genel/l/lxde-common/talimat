@@ -10,7 +10,6 @@ devir=1
 kaynak=(http://downloads.sourceforge.net/lxde/$isim-$surum.tar.xz
 	http://nutyx.meticul.eu/files/patchs/oxygen-icons/icon-sekong.png
 	http://nutyx.meticul.eu/files/patchs/lxde-common/chrystal_red_root.png
-	http://downloads.nutyx.org/files/patchs/xfce/wall-sekong.jpg 
 	lxde.desktop)
 
 derle() {
@@ -23,8 +22,6 @@ make DESTDIR=$PKG install
 #	$PKG/usr/share/lxde/config
 install -D -m644 ../chrystal_red_root.png \
 	$PKG/usr/share/lxpanel/images/chrystal_red_root.png
-install -D -m644 ../wall-sekong.jpg \
-	$PKG/usr/share/lxde/wallpapers/wall-sekong.jpg
 cp ../icon-sekong.png \
 $PKG/usr/share/lxde/images/lxde-icon.png
 cp ../icon-sekong.png \
