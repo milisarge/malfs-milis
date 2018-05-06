@@ -1,0 +1,11 @@
+#!/bin/sh
+for _kurtar in  \
+'/etc/conf.d' \
+'/etc/conf.avail' ;\
+do 
+
+#sed -i '\|'\'$_kurtar\''|d' /var/lib/pkg/DB/cups/kurulan
+# -sz ve -g den sonra /tmp/$paket.sil dikkate alınır
+sed -i '\|'\'$_kurtar\''|d' /tmp/xorg-fontconfig.sil
+
+done
