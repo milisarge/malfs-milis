@@ -1,0 +1,24 @@
+# Tanım: Çeşitli ses çalarlar için arayüz
+# URL: http://mask.tf.hut.fi/~flu/cplay/
+# Paketçi: Cihan_Alkan
+# Gerekler: ncurses python2
+# Grup: medya
+
+isim=cplay
+surum=1.49
+devir=1
+kaynak=(http://ftp.de.debian.org/debian/pool/main/c/$isim/${isim}_${surum}.orig.tar.gz)
+
+derle() {
+
+  cd "$SRC/$isim-$surum"
+  sed -i '1s,env python,&2,' cplay
+  sed -i 's|PREFIX = /usr/local|PREFIX = /usr|' Makefile
+  sed -i 's|$(PREFIX)/man/man1|$(PREFIX)/share/man/man1|' Makefile
+
+  make
+  make cplayrc
+  mkdir -p $PKG/usr/{bin,share/man/man1}
+  install -D -m644 cplayrc $PKG/etc/cplayrc
+  make PREFIX=$PKG/usr install
+}
