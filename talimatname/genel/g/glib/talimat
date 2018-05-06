@@ -2,11 +2,12 @@
 # URL: http://www.gtk.org/
 # Paketçi: milisarge
 # Gerekler: libffi pcre python elfutils
+# Grup: kütüphane
 
 isim=glib
 surum=2.56.1
 devir=1
-kaynak=( http://ftp.gnome.org/pub/gnome/sources/glib/${surum%.*}/$isim-$surum.tar.xz)
+kaynak=(http://ftp.gnome.org/pub/gnome/sources/glib/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
 	cd $isim-$surum
@@ -15,4 +16,5 @@ derle() {
 	--disable-fam
 	make
 	make DESTDIR=$PKG install
+	rm -rf ${PKG}/usr/share/gtk-doc
 }
