@@ -2,15 +2,16 @@
 # URL: http://xorg-fontconfig.org/wiki/
 # Paketçi: milisarge
 # Gerekler: freetype expat libpng 
+# Grup:
 
 _isim=fontconfig
 isim=xorg-fontconfig
-surum=2.11.1
+surum=2.13.0
 devir=1
-kaynak=( http://fontconfig.org/release/${_name}-$surum.tar.gz)
+kaynak=( http://fontconfig.org/release/${_isim}-$surum.tar.gz)
 
 derle() {
-cd ${_name}-$surum
+cd ${_isim}-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --localstatedir=/var \
@@ -24,7 +25,7 @@ install -v -m644 fc-*/*.1 $PKG/usr/share/man/man1
 install -v -m644 doc/*.3 $PKG/usr/share/man/man3
 install -v -m644 doc/*.5 $PKG/usr/share/man/man5
 install -v -m644 doc/fontconfig-devel/* \
- $PKG/usr/share/doc/${_name}-$surum/fontconfig-devel
+ $PKG/usr/share/doc/${_isim}-$surum/fontconfig-devel
 install -v -m644 doc/*.{pdf,sgml,txt,html} \
- $PKG/usr/share/doc/${_name}-$surum
+ $PKG/usr/share/doc/${_isim}-$surum
 }
