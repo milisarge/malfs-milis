@@ -19,4 +19,5 @@ derle() {
 	make -j1
 	make DESTDIR=$PKG install
 	sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "${PKG}"/usr/lib/gimp/2.0/plug-ins/*.py
+	rm -rf ${PKG}/usr/share/gtk-doc
 }
