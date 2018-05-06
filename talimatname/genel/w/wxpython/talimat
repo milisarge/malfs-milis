@@ -1,7 +1,7 @@
 # Tanım: Python için bir wxWidgets GUI araç seti
 # URL: https://www.wxpython.org
 # Paketçi: Cihan_Alkan
-# Gerekler: wxgtk libnotify python xorg-mesa xorg-glu
+# Gerekler: wxgtk libnotify python xorg-mesa xorg-glu gtk3
 # Gruplar: kütüphane
 
 isim=wxpython
@@ -12,13 +12,14 @@ kaynak=(https://downloads.sourceforge.net/wxpython/wxPython-src-${surum}.tar.bz2
 
 derle() {
 	cd wxPython-src-${surum}
+	#patch -Np1 -i ../fix-plot.patch
 	CFLAGS="$CFLAGS `wx-config --cflags --libs`" \
 	LDFLAGS="`wx-config --libs` $LDFLAGS" \
 	./configure \
-	--prefix=/usr \
+     --prefix=/usr \
 	--libdir=/usr/lib \
 	--includedir=/usr/include \
-	--with-gtk=2 \
+	--with-gtk=3 \
 	--with-opengl \
 	--enable-unicode \
 	--enable-graphics_ctx \
@@ -27,28 +28,11 @@ derle() {
 	--with-libpng=sys \
 	--with-libxpm=sys \
 	--with-libjpeg=sys \
-	--with-libtiff=sys
-
-	cd wxPython
-	python setup.py \
-	WXPORT=gtk2 \
-	UNICODE=1 \
-	EP_ADD_OPTS=1 \
-	EP_FULL_VER=0 \
-	NO_SCRIPTS=1 \
-	WX_CONFIG="wx-config  --no_rpath" \
-	build_ext --rpath=/usr/lib \
-	build
-
-	python setup.py \
-	WXPORT=gtk2 \
-	UNICODE=1 \
-	EP_ADD_OPTS=1 \
-	EP_FULL_VER=0 \
-	NO_SCRIPTS=1 \
-	WX_CONFIG="wx-config  --no_rpath --prefix=$PKG/usr/bin/" \
-	SYS_WX_CONFIG="wx-config --enable-unicode" \
-	build_ext --rpath=/usr/lib \
-	install --root=$PKG
-	install -Dm644 ../docs/licence.txt "${PKG}"/usr/share/licenses/${isim}/LICENSE
+	--with-libtiff=sys \
+	--with-wx-config=/usr/bin/wx-config
+    cd wxPython
+    python2 setup.py WX_CONFIG=/usr/bin/wx-config WXPORT=gtk3 UNICODE=1 build
+	python2 setup.py WX_CONFIG=/usr/bin/wx-config WXPORT=gtk3 UNICODE=1 install --root="${PKG}" --optimize=1
+    for file in "${PKG}"/usr/bin/*; do mv "${file}" "${file}2"; done
+    install -Dm644 ../docs/licence.txt "${PKG}"/usr/share/licenses/${isim}/LICENSE
 }
