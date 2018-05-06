@@ -5,15 +5,24 @@
 
 _isim=Linux-DesktopFiles
 isim=perl-linux-desktopfiles
-surum=0.09
+surum=0.25
 devir=1
 
-kaynak=(http://search.cpan.org/CPAN/authors/id/T/TR/TRIZEN/$_name-$surum.tar.gz)
+kaynak=(https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Linux-DesktopFiles-$surum.tar.gz)
 
 derle() {
-	cd $_name-$surum
-	perl Build.PL --destdir "$PKG" --installdirs vendor
-	./Build
-	./Build test
-	./Build install
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$PKG'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$PKG'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$SRC/$_isim-$surum"
+    /usr/bin/perl Makefile.PL
+    make
+  make install
+
+  find "$PKG" -name .packlist -o -name perllocal.pod -delete
+  )
+
 }
