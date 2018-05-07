@@ -5,15 +5,13 @@
 # Gerekler:   perl-module-build perl-data-dump perl-linux-desktopfiles 
 
 isim=obmenu-generator
-surum=0.66
+surum=0.84
 devir=1
-kaynak=(obmenu-generator-src schema.pl)
+kaynak=(https://github.com/trizen/${isim}/archive/${surum}.tar.gz)
 
 derle() {
-	
-	install -d $PKG/etc/xdg/$isim
-	install -D -m644 schema.pl $PKG/etc/xdg/$isim
-	install -d $PKG/usr/bin
-	install -D -m755 -m755 $isim-src $PKG/usr/bin/$isim
+	cd "$isim-$surum"
+    install -Dm755 "$isim" "$PKG/usr/bin/$isim"
+    install -Dm644 "schema.pl" "$PKG/etc/xdg/$isim/schema.pl"
 		
 }
