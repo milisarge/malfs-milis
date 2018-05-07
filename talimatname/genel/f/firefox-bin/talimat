@@ -6,9 +6,9 @@
 
 isim=firefox-bin
 _isim=firefox
-surum=58.0
+surum=59.0.3
 devir=1
-kaynak=(https://ftp.mozilla.org/pub/firefox/releases/58.0/linux-x86_64/tr/firefox-58.0.tar.bz2
+kaynak=(https://ftp.mozilla.org/pub/firefox/releases/$surum/linux-x86_64/tr/firefox-$surum.tar.bz2
 		firefox.desktop)
  
 derle() {
