@@ -1,7 +1,7 @@
 # Tanım: Son derece hızlı, hafif, sekmeli tarama özellikli zengin dosya yöneticisi
 # URL: http://pcmanfm.sourceforge.net/
 # Paketçi: milisarge
-# Gerekler: libfm lxde-menu-data
+# Gerekler: libfm lxde-menu-data libexif
 # Grup:
 
 isim=pcmanfm
