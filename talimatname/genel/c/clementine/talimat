@@ -1,7 +1,7 @@
 # Tanım: Bir müzik çalar ve kütüphane organizatörü. (qt5 ile derlendi)
 # URL: http://www.clementine-player.org/
 # Paketçi: milisarge cihan_alkan
-# Gerekler: cmake boost qt5 xorg-mesa libcdio protobuf taglib chromaprint glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad sqlite
+# Gerekler: cmake boost qt5 xorg-mesa libcdio protobuf taglib chromaprint crypto++ glew gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-plugins-ffmpeg gstreamer-plugins-bad sqlite
 # Grup: medya
 
 isim=clementine
