@@ -1,7 +1,8 @@
 # Tanım: lxde terminal uygulaması
 # URL: http://lxde.org/
 # Paketçi: milisarge
-# Gerekler: intltool vte
+# Gerekler: intltool vte gtk3
+# Grup: lxde
 
 isim=lxde-terminal
 _isim=lxterminal
