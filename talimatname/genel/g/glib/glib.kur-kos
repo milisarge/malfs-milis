@@ -3,6 +3,7 @@ if [ -f /var/lib/pkg/etkilenen/glib/giomodule.cache ];then
 	for dosya in $(cat /var/lib/pkg/etkilenen/glib/giomodule.cache | cut -d':' -f1);do
 		[ -f /var/lib/pkg/etkilenen/glib/${dosya} ] && \
 		cp -rf /var/lib/pkg/etkilenen/glib/${dosya} /usr/lib/gio/modules/
+		cp -rf /var/lib/pkg/etkilenen/glib/giomodule.cache /usr/lib/gio/modules/
 	done
 fi
 
