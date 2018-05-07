@@ -1,11 +1,11 @@
 # Tanım: Çeşitli Cinnamon modülleri için ortak API'li kütüphane
 # URL: https://github.com/linuxmint/cinnamon-desktop
 # Paketçi: Cihan_Alkan
-# Gerekler: xorg-xkeyboard-config accountsservice pulseaudio python intltool
+# Gerekler: xorg-xkeyboard-config accountsservice pulseaudio python intltool meson gobject-introspection
 # Grup: cinnamon
 
 isim=cinnamon-desktop
-surum=3.6.2
+surum=3.8.0
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz
 config.patch)
@@ -14,16 +14,13 @@ derle() {
  
   cd $isim-$surum
   patch -Np1 -i $SRC/config.patch
-  ./autogen.sh \
-  --prefix=/usr   \
-  --sysconfdir=/etc   \
-  --localstatedir=/var \
-  --libexecdir=/usr/lib/$isim \
-  --disable-static
+    mkdir -p "${SRC}"/${isim}-${surum}/build
+    cd "${SRC}"/${isim}-${surum}/build
 
-  #https://bugzilla.gnome.org/show_bug.cgi?id=656231
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    
-  make
-  make DESTDIR=$PKG install
+    meson --prefix=/usr --buildtype=plain ..
+    ninja
+
+    DESTDIR="${PKG}" ninja install
+    # rm legacy migration script (cinnamon 2.4) and its package dependency on python
+    rm -rf "${PKG}"/usr/bin
 }
