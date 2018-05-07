@@ -4,7 +4,7 @@
 # Gerekler: qt5 gsettings-qt
 
 isim=dtkcore
-surum=2.0.5.3
+surum=2.0.8
 devir=1
 kaynak=(https://github.com/linuxdeepin/dtkcore/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
