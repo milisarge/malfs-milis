@@ -4,12 +4,13 @@
 # Gerekler: itstool gtk3 libnotify yelp-tools
 
 isim=zenity
-surum=3.16.3
+surum=3.28.1
 devir=1
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${version:0:4}/$isim-$surum.tar.xz)
+kaynak=(https://git.gnome.org/browse/zenity/snapshot/zenity-3.28.1.tar.xz)
 
 derle() {
 cd $isim-$surum
+  NOCONFIGURE=1 ./autogen.sh
 ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var
 make
