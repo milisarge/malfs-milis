@@ -4,7 +4,7 @@
 # Gerekler: libnotify dbus-glib xfce4-libui gstreamer1-plugins-base gstreamer1-plugins-good libdvdcss libdvdnav libdvdread startup-notification
 
 isim=parole
-surum=0.9.1
+surum=1.0.1
 devir=1
 
 kaynak=(http://archive.xfce.org/src/apps/parole/${surum%.*}/parole-$surum.tar.bz2)
