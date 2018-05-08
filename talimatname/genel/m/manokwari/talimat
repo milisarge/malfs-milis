@@ -5,7 +5,7 @@
 # Grup: manokwari
 
 isim=manokwari
-surum=1.0.18
+surum=1.0.20
 devir=1
 kaynak=(https://github.com/BlankOn/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
