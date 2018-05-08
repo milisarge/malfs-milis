@@ -1,0 +1,13 @@
+prefix=/usr
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+exec_prefix=${prefix}
+
+Name: cinnamon-desktop
+Description: Utility library for loading.desktop files
+Version: 4.0.0
+Requires: gtk+-3.0
+Requires.private: xkbfile
+Libs: -L${libdir} -lcinnamon-desktop
+Cflags: -I${includedir}/cinnamon-desktop
