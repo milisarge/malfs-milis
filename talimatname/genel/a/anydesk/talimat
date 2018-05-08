@@ -1,18 +1,18 @@
 # Tanım: Uzaktan Destek için Bir Hepsi Bir Arada Yazılım.
 # URL: http://anydesk.de/
-# Paketçi: CihanAlkan
-# Gerekler: gtkglext
+# Paketçi: Cihan_Alkan
+# Gerekler: gtkglext cairo pango
 # Grup: ağ
 
 isim=anydesk
-surum=2.9.3
+surum=2.9.5
 devir=1
-kaynak=(https://download.anydesk.com/linux/anydesk_2.9.3-1_amd64.deb?_ga=2.95152536.542585341.1498502992-1480999265.1498502992
+kaynak=(http://download.anydesk.com/linux/${isim}_${surum}-1_amd64.deb
         user.conf)
 
 derle() {
 cd $SRC
-bsdtar -xf anydesk_2.9.3-1_amd64.deb?_ga=2.95152536.542585341.1498502992-1480999265.1498502992
+bsdtar -xf ${isim}_${surum}-1_amd64.deb
     cd $PKG
     tar xf $SRC/data.tar.gz
     # Programın otomatik başlamasını istiyorsanız alt satırın başına diyez işerati koyun.
