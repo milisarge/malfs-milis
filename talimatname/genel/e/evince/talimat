@@ -4,7 +4,7 @@
 # Gerekler: adwaita-icon-theme gtk3 gnome-icon-theme itstool yelp-xsl gobject-introspection libgnome-keyring nautilus poppler-glib gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache
 
 isim=evince
-surum=3.22.1
+surum=3.28.2
 devir=1
 
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
