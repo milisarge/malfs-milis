@@ -5,13 +5,14 @@
 # Grup: cinnamon
 
 isim=cinnamon-desktop
-surum=3.8.0
+surum=3.8.1
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz
-config.patch)
+        config.patch
+        cinnamon-desktop.pc)
 
 derle() {
- 
+
   cd $isim-$surum
   patch -Np1 -i $SRC/config.patch
     mkdir -p "${SRC}"/${isim}-${surum}/build
@@ -21,6 +22,7 @@ derle() {
     ninja
 
     DESTDIR="${PKG}" ninja install
-    # rm legacy migration script (cinnamon 2.4) and its package dependency on python
-    rm -rf "${PKG}"/usr/bin
+    mkdir -p $PKG/usr/lib/pkgconfig
+    cp $SRC/$isim.pc $PKG/usr/lib/pkgconfig/
+
 }
