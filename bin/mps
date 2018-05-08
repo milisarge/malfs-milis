@@ -1650,7 +1650,7 @@ paket_derle(){
 		if [ "$_kurulu" = "kurulu" ];then
 			_gncdurum=$(surum_devir_kontrol ${derpaket} --durum)
 			if [ "${_gncdurum}" == "var" ];then
-				echo "paketin güncellenmesi gerek."
+				echo "Kurulu sürüm depodaki sürümden farklı görünüyor depodaki sürüm ile eşitlemek ister misiniz? "
 				surum_devir_kontrol ${derpaket}
 				paket_sil ${derpaket}
 			fi 
