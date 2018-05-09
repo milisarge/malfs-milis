@@ -5,7 +5,7 @@
 # Grup: programlama
 
 isim=elixir
-surum=1.6.4
+surum=1.6.5
 devir=1
 kaynak=(https://github.com/elixir-lang/elixir/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
 
