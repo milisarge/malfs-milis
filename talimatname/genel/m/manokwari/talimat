@@ -1,7 +1,7 @@
 # Tanım: BlankOn Projelerinden HTML5 masaüstü kabuğu
 # URL: https://manokwari.blankonlinux.or.id
 # Paketçi: Cihan_Alkan
-# Gerekler: gnome-common vala mutter libunique3 gnome-session glib2 gtk3 libwnck3 libgee webkitgtk3 gnome-menus libnotify
+# Gerekler: gnome-common vala mutter libunique3 gnome-session glib gtk3 libwnck3 libgee webkitgtk3 gnome-menus libnotify
 # Grup: manokwari
 
 isim=manokwari
