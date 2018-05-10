@@ -1,7 +1,7 @@
 # Tanım: Ofis Programı
 # URL: http://www.libreoffice.org/
 # Paketçi: Cihan Alkan
-# Gerekler:hunspell python3 libwpd neon pango nspr clucene openjdk xmlsec libodfgen libwps libvisio libcdr libmspub libmwaw libe-book libabw libzmf libpagemaker libcmis cppunit libtommath  graphite2 harfbuzz redland raptor hyphen mythes lpsolve libexttextcat liborcus gpgmepp beanshell libpng cairo apache-ant junit libetonyek openldap sane bluez poppler   cups,curl,libatomic-ops,gperf,gtk2,gtk3,perl-archive-zip,perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt nss postgresql icu gsfonts dejavu-ttf npapi-sdk serf unixodbc xdg-utils desktop-file-utils
+# Gerekler: hunspell python3 libwpd neon pango nspr clucene openjdk xmlsec libodfgen libwps libvisio libcdr libmspub libmwaw libe-book libabw libzmf libpagemaker libcmis cppunit libtommath  graphite2 harfbuzz redland raptor hyphen mythes lpsolve libexttextcat liborcus gpgmepp beanshell libpng cairo apache-ant junit libetonyek openldap sane bluez poppler cups libatomic-ops gperf gtk2 gtk3 perl-archive-zip perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt nss postgresql icu gsfonts dejavu-ttf npapi-sdk serf unixodbc xdg-utils desktop-file-utils
 
 isim=libreoffice
 surum=5.4.1.2
