@@ -12,7 +12,7 @@ kaynak=(http://www.uyap.gov.tr/destek/uyap.zip::${isim}-${surum}.zip
 
 derle() {
 
-innoextract $SRC/UKI_V4.1.10.exe
+innoextract $SRC/UKI_V4.1.10/UKI_V4.1.10.exe
 
     mkdir -p $PKG/opt/uki
     cp -r app/*.jar /$PKG/opt/uki/
