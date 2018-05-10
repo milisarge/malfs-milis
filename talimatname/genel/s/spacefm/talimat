@@ -1,23 +1,18 @@
 # Tanım: Çok panelli sekmeli dosya yöneticisi
 # URL: http://ignorantguru.github.com/spacefm/
-# Paketçi: Maximilian Dietrich, dxm at openmailbox dot org
+# Paketçi: Cihan_Alkan
 # Gerekler: gtk2 eudev shared-mime-info desktop-file-utils xorg-libxdamage
 
 isim=spacefm
-surum=1.0.5
+surum=1.0.6
 devir=1
-kaynak=(https://github.com/IgnorantGuru/$isim/archive/$surum.tar.gz 
-https://github.com/BwackNinja/spacefm/commit/f167b2831bc2556fc383cf30ae6ce4d117b67c04.patch)
+kaynak=(https://github.com/IgnorantGuru/$isim/archive/$surum.tar.gz)
 
 derle() {
     cd $isim-$surum
-    patch -p1 < $SRC/f167b2831bc2556fc383cf30ae6ce4d117b67c04.patch
-    ./configure --prefix=/usr \
-	    --mandir=/usr/man \
-	    --disable-nls \
-	    --disable-startup-notifications \
-	    --with-gtk2
-    make
-    make DESTDIR=$PKG \
-        install
+	./configure --prefix=/usr \
+		--disable-pixmaps \
+		--with-gtk3
+	make
+    make DESTDIR=$PKG install
 }
