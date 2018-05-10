@@ -28,10 +28,10 @@ derle() {
      --enable-readline $DBG_OPTIONS
 
   SHELL=/bin/sh make -j1
-  cd "$SRC/firefox-$surum/js/src/tests"
-  python2 jstests.py ../js/src/js
-  cd "$SRC/firefox-$surum/js/src/jit-test"
-  python2 jit_test.py ../js/src/js
+  #cd "$SRC/firefox-$surum/js/src/tests"
+  #python2 jstests.py ../js/src/js
+  #cd "$SRC/firefox-$surum/js/src/jit-test"
+  #python2 jit_test.py ../js/src/js
   SHELL=/bin/sh make -j1 DESTDIR="$PKG" install
   install -Dm644 mozglue/build/libmozglue.a "$PKG"/usr/lib/libmozglue.a
 }
