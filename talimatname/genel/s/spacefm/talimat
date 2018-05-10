@@ -1,7 +1,7 @@
 # Tanım: Çok panelli sekmeli dosya yöneticisi
 # URL: http://ignorantguru.github.com/spacefm/
 # Paketçi: Cihan_Alkan
-# Gerekler: gtk2 eudev shared-mime-info desktop-file-utils xorg-libxdamage
+# Gerekler: gtk2 eudev shared-mime-info desktop-file-utils xorg-libxdamage ffmpegthumbnailer
 
 isim=spacefm
 surum=1.0.6
