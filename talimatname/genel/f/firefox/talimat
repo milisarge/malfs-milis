@@ -9,7 +9,7 @@ surum=60.0
 devir=1
 
 kaynak=(https://ftp.mozilla.org/pub/firefox/releases/60.0/source/firefox-60.0.source.tar.xz
-        http://download.cdn.mozilla.net/pub/$isim/releases/$surum/linux-x86_64/xpi/tr.xpi
+        http://download.cdn.mozilla.net/pub/$isim/releases/$surum/linux-x86_64/xpi/tr.xpi::tr-${surum}.xpi
 		google-api-key
 		mozilla-api-key)
 
@@ -101,7 +101,7 @@ done
 
 for lang in tr
 do 
-install -Dm644 $SRC/tr.xpi \
+install -Dm644 $SRC/tr-${surum}.xpi \
     $PKG/usr/lib/firefox/browser/extensions/langpack-tr@firefox.mozilla.org.xpi
 done
 install -Dm644 /dev/stdin $PKG/usr/lib/firefox/browser/defaults/preferences/vendor.js <<END
