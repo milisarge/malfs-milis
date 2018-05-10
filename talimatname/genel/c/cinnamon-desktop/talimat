@@ -11,6 +11,7 @@ kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.t
         config.patch
         cinnamon-desktop.pc
         cvc.pc)
+        cinnamon-desktop.pc)
 
 derle() {
 

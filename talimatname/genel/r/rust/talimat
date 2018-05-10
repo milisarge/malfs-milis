@@ -5,7 +5,7 @@
 # Grup: geliştirme
  
 isim=rust
-surum=1.23.0
+surum=1.25.0
 devir=1
 kaynak=(http://static.rust-lang.org/dist/rustc-$surum-src.tar.gz
 		0001-librustc_llvm-build-Force-link-against-libffi.patch

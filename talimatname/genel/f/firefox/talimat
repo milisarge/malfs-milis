@@ -1,15 +1,17 @@
 # Tanım: Mozilla.org'dan Bağımsız Web Tarayıcısı
 # URL: http://www.mozilla.com/firefox/
-# Paketçi: Cihan Alkan
-# Gerekler: libvpx libevent rust cargo autoconf2 pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
+# Paketçi: Cihan_Alkan
+# Gerekler: libvpx rust cargo binutils-gold autoconf2 pulseaudio gconf yasm sqlite nss alsa-lib gtk2 gtk3 xorg-app zip unzip startup-notification gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
+# Grup: tarayıcı
 
 isim=firefox
-surum=55.0.3
-devir=3
+surum=60.0
+devir=1
 
-kaynak=(https://ftp.mozilla.org/pub/mozilla.org/$isim/releases/$surum/source/firefox-$surum.source.tar.xz
-        http://download.cdn.mozilla.net/pub/$isim/releases/$surum/linux-x86_64/xpi/tr.xpi
-        https://github.com/oltulu/milis/raw/master/firefox/mozilla.tar.xz::mozilla-milis.tar.xz)
+kaynak=(https://ftp.mozilla.org/pub/firefox/releases/60.0/source/firefox-60.0.source.tar.xz
+        http://download.cdn.mozilla.net/pub/$isim/releases/$surum/linux-x86_64/xpi/tr.xpi::tr-${surum}.xpi
+		google-api-key
+		mozilla-api-key)
 
 derle() {
 
@@ -18,117 +20,77 @@ cd $isim-$surum
 sed -i '/intl.locale.matchOS/s/false/true/' modules/libpref/init/all.js
 
 cat > mozconfig << "EOF"
-# Çok çekirdekli bir işlemciniz varsa, tüm çekirdekler varsayılan olarak kullanılacaktır. 
-# İsterseniz, kullanılan çekirdek sayısını azaltabilirsiniz. Bunun için bir sonraki satır 
-#başındaki # işaretini kaldırın ve geçerli CPU çekirdeği sayısını 1'e ayarlayın.
-
-#mk_add_options MOZ_MAKE_FLAGS="-j1"
-
-# If you have installed dbus-glib, comment out this line:
-ac_add_options --disable-dbus
-
-# Dbus-glib'yi kurduysanız ve kablosuz araçları yüklediyseniz 
-# ve coğrafi konum web servislerini kullanmak istiyorsanız, 
-#bir alt satırıdaki # işaretini kaldırın.
-
-ac_add_options --disable-necko-wifi
-
-# Gtk +-2 ile oluşturmak istiyorsanız bir alt satırıdaki # işaretini kaldırın.
-#ac_add_options --enable-default-toolkit=cairo-gtk2
-
-# İsteğe bağlı bağımlılıkları yüklediyseniz bu satırların işaretini kaldırın::
-#ac_add_options --enable-system-hunspell
-#ac_add_options --enable-startup-notification
-
-# PulseAudio kurulu ise aşağıdaki seçeneği açın
-#ac_add_options --disable-pulseaudio
-
-# GConf yüklediyseniz, bu satırı açın
-ac_add_options --disable-gconf
-
-# Önerilen bağımlılıkları yüklemediyseniz # işaretini kaldırın:
-ac_add_options --enable-system-sqlite
-ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-#ac_add_options --with-system-icu
-
-# If you are going to apply the patch for system graphite
-# and system harfbuzz, uncomment these lines:
-#ac_add_options --with-system-graphite2
-#ac_add_options --with-system-harfbuzz
-
-# Stripping is now enabled by default.
-# Uncomment these lines if you need to run a debugger:
-#ac_add_options --disable-strip
-#ac_add_options --disable-install-strip
-
-# Bu satırın altındaki herhangi bir şeyi değiştirmemenizi öneriyoruz:
-ac_add_options --prefix=/usr
 ac_add_options --enable-application=browser
 
-ac_add_options --disable-crashreporter
-ac_add_options --disable-updater
-ac_add_options --disable-tests
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-rust-simd
 
-
-# ac_add_options --enable-gio
+# Branding
 ac_add_options --enable-official-branding
-ac_add_options --enable-safe-browsing
-ac_add_options --enable-url-classifier
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.milislinux
+export MOZILLA_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=1
+export MOZ_ADDON_SIGNING=1
+export MOZ_REQUIRE_SIGNING=1
 
-# From firefox-40, using system cairo causes firefox to crash
-# frequently when it is doing background rendering in a tab.
-#ac_add_options --enable-system-cairo
-ac_add_options --enable-system-ffi
-ac_add_options --enable-system-pixman
+# Keys
+ac_add_options --with-google-api-keyfile=/${SRC}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=/${SRC}/mozilla-api-key
 
-ac_add_options --with-pthreads
-
+# System libraries
 ac_add_options --with-system-bz2
+#ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-png
-ac_add_options --with-system-zlib
+ac_add_options --with-system-libvpx
+#ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-ffi
 
-mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
+# Features
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
+ac_add_options --enable-startup-notification
+ac_add_options --enable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-stylo
 EOF
 
-test $(uname -m) = "i686" && sed -i 's/enable-optimize/disable-optimize/' mozconfig || true
-
-sed -e 's/256/224/'                           \
-    -i netwerk/protocol/http/Http2Session.cpp
-    
-SHELL=/bin/sh make -f client.mk
+SHELL=/bin/sh ./mach build
+SHELL=/bin/sh ./mach buildsymbols
 
 mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
 
-SHELL=/bin/sh make -f client.mk DESTDIR=$PKG install INSTALL_SDK=
+SHELL=/bin/sh DESTDIR=$PKG ./mach install
 
-chown -R 0:0 $PKG/usr/lib/firefox-$surum
-ln -sf ../lib/firefox-$surum/firefox $PKG/usr/bin
-ln -sf ../mozilla/plugins $PKG/usr/lib/firefox-$surum
+ln -svf ../mozilla/plugins $PKG/usr/lib/firefox/browser/
 
-# Gnash için gerekli
+# Need for gnash
 mkdir -p $PKG/usr/include/npapi
 cp -v dom/plugins/base/*.h $PKG/usr/include/npapi
 
-# Başlatıcı 
+# Launcher 
 mkdir -pv $PKG/usr/share/applications &&
 cat > $PKG/usr/share/applications/firefox.desktop << "EOF" &&
 [Desktop Entry]
 Encoding=UTF-8
-Type=Application
-Name=Firefox
+Name=Firefox Web Browser
 Comment=İnternette gezinin
-Icon=firefox
-Exec=firefox
-Categories=Network;GTK;Application;Browser;WebBrowser;
-StartupNotify=true
+GenericName=Web Tarayıcı
+Exec=firefox %u
 Terminal=false
+Type=Application
+Icon=firefox
+Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
 EOF
+mkdir -pv $PKG/usr/share/applications
 mkdir -pv $PKG/usr/share/pixmaps
-ln -sf /usr/lib/firefox-$surum/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
+ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
 
 for i in 16 22 24 32 48 256
 do
@@ -139,13 +101,12 @@ done
 
 for lang in tr
 do 
-install -Dm644 $SRC/$lang.xpi \
-    $PKG/usr/lib/firefox-$surum/browser/extensions/langpack-$lang@firefox.mozilla.org.xpi
+install -Dm644 $SRC/tr-${surum}.xpi \
+    $PKG/usr/lib/firefox/browser/extensions/langpack-tr@firefox.mozilla.org.xpi
 done
-
-cat > $PKG/usr/lib/firefox-$surum/defaults/pref/vendor.js << "EOF"
+install -Dm644 /dev/stdin $PKG/usr/lib/firefox/browser/defaults/preferences/vendor.js <<END
 // Use LANG environment variable to choose locale
-pref("intl.locale.matchOS", true);
+pref("intl.locale.requested", "");
 
 // Disable default browser checking.
 pref("browser.shell.checkDefaultBrowser", false);
@@ -153,24 +114,6 @@ pref("browser.shell.checkDefaultBrowser", false);
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
-EOF
-
-# Firefox hakkında kısmı
- _distini="$PKG/usr/lib/firefox-$surum/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
-
-[Global]
-id=Milis Linux
-surum=1.0 Atilla
-about=Milis Linux için Mozilla Firefox
-
-[Preferences]
-app.distributor=milis
-app.distributor.channel=$isim
-app.partner.archlinux=milis
 END
 
-mkdir -p $PKG/tmp
-mv $SRC/.mozilla $PKG/tmp/
 }
-

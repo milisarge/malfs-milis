@@ -32,8 +32,9 @@ paketdepo=/depo/paketler
 [ ! -f $ortam ] && exit 1
 
 # kaynaklar dizinin var olduğu kontrol edilir.
-[ ! -d $kaynaklar ] && exit 1
-
+if [ ! -d $kaynaklar ];then 
+	ln -s /sources /mnt/
+fi
 # herhangi bir hatada çıkış yap
 set -e
 
