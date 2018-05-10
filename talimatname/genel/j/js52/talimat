@@ -1,0 +1,36 @@
+# Tanım: JavaScript interpreter and libraries
+# URL: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
+# Paketçi: milisarge
+# Gerekler: python zip autoconf2 nspr
+# Grup: 
+
+isim=js52
+surum=52.3.0esr
+devir=1
+kaynak=(https://ftp.mozilla.org/pub/firefox/releases/52.3.0esr/source/firefox-52.3.0esr.source.tar.xz
+		mozjs52-disable-mozglue.patch)
+
+derle() {
+  cd firefox-$surum
+  # Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1236085
+  patch -p1 -i ../mozjs52-disable-mozglue.patch
+  cd js/src
+  rm configure
+  autoconf-2.13
+  rm -r editline
+  rm -r ctypes/libffi
+  [[ -z "$MOZJS_DEBUG" ]] || DBG_OPTIONS='--enable-debug --disable-optimize'
+  cd firefox-$surum/js/src
+  # spidermonkey is broken with ICU 59 and it won't be fix on FF52
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1353650
+  ./configure --prefix=/usr --with-system-nspr \
+     --enable-readline $DBG_OPTIONS
+  make
+  cd "$SRC/firefox-$surum/js/src/tests"
+  python2 jstests.py ../js/src/js
+  cd "$SRC/firefox-$surum/js/src/jit-test"
+  python2 jit_test.py ../js/src/js
+  cd firefox-$surum/js/src
+  make DESTDIR="$PKG" install
+  install -Dm644 mozglue/build/libmozglue.a "$PKG"/usr/lib/libmozglue.a
+}
