@@ -15,22 +15,23 @@ derle() {
   # Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1236085
   patch -p1 -i ../mozjs52-disable-mozglue.patch
   cd js/src
+  export SHELL=/bin/sh
   rm configure
   autoconf-2.13
   rm -r editline
   rm -r ctypes/libffi
   [[ -z "$MOZJS_DEBUG" ]] || DBG_OPTIONS='--enable-debug --disable-optimize'
-  cd firefox-$surum/js/src
+  cd ${SRC}/firefox-$surum/js/src
   # spidermonkey is broken with ICU 59 and it won't be fix on FF52
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1353650
   ./configure --prefix=/usr --with-system-nspr \
      --enable-readline $DBG_OPTIONS
-  make
+
+  SHELL=/bin/sh make -j1
   cd "$SRC/firefox-$surum/js/src/tests"
   python2 jstests.py ../js/src/js
   cd "$SRC/firefox-$surum/js/src/jit-test"
   python2 jit_test.py ../js/src/js
-  cd firefox-$surum/js/src
-  make DESTDIR="$PKG" install
+  SHELL=/bin/sh make -j1 DESTDIR="$PKG" install
   install -Dm644 mozglue/build/libmozglue.a "$PKG"/usr/lib/libmozglue.a
 }
