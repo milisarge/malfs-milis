@@ -1179,20 +1179,20 @@ guncelleme_tespit(){
 		_konum=$(talimat_bul $kpaket)
 		if [ "$_konum" = "-1" ];then
 			ryaz 31 "$kpaket $_talimat_bulunamadi $_surum_kontrol_iptal"
-			exit 1
-		fi
-		
-		source $_konum/talimat
-		deposurum=`echo -e "$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
-		depodevir=`echo -e "$devir" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
-		#echo $kpaket "  :  $ksurum --->  $deposurum" "$kdevir --->  $depodevir"
-		#sleep 3
-		if [ "$ksurum" != "$deposurum" ];then
-			printf "$kpaket -surum: ";echo "$ksurum --->  $deposurum"
-			echo $kpaket >> $guncelleme_dosya
-		elif [ "$kdevir" != "$depodevir" ];then
-			printf "$kpaket -devir: ";echo "$kdevir --->  $depodevir"
-			echo $kpaket >> $guncelleme_dosya
+			#exit 1
+		else
+			source $_konum/talimat
+			deposurum=`echo -e "$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
+			depodevir=`echo -e "$devir" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
+			#echo $kpaket "  :  $ksurum --->  $deposurum" "$kdevir --->  $depodevir"
+			#sleep 3
+			if [ "$ksurum" != "$deposurum" ];then
+				printf "$kpaket -surum: ";echo "$ksurum --->  $deposurum"
+				echo $kpaket >> $guncelleme_dosya
+			elif [ "$kdevir" != "$depodevir" ];then
+				printf "$kpaket -devir: ";echo "$kdevir --->  $depodevir"
+				echo $kpaket >> $guncelleme_dosya
+			fi
 		fi
 	done																																																									
 }		
