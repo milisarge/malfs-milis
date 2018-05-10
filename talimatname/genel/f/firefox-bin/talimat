@@ -1,51 +1,119 @@
 # Tanım: Mozilla.org'dan Bağımsız Web Tarayıcısı
 # URL: http://www.mozilla.com/firefox/
-# Paketçi: Cihan Alkan
-# Gerekler: libbluray pulseaudio gconf yasm sqlite libvpx libevent nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-libav
-# Grup: ağ
+# Paketçi: Cihan_Alkan
+# Gerekler: libvpx rust autoconf2 pulseaudio gconf yasm sqlite nss alsa-lib gtk2 gtk3 xorg-app zip unzip gstreamer gstreamer-plugins-base gstreamer-plugins-good gstreamer1-plugins-libav
 
-isim=firefox-bin
-_isim=firefox
-surum=59.0.3
+isim=firefox
+surum=60.0
 devir=1
-kaynak=(https://ftp.mozilla.org/pub/firefox/releases/$surum/linux-x86_64/tr/firefox-$surum.tar.bz2
-		firefox.desktop)
- 
+
+kaynak=(https://ftp.mozilla.org/pub/firefox/releases/60.0/source/firefox-60.0.source.tar.xz
+        http://download.cdn.mozilla.net/pub/$isim/releases/$surum/linux-x86_64/xpi/tr.xpi)
+
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
 derle() {
 
-  mkdir -p $PKG/usr/bin
-  mkdir -p $PKG/usr/share/applications
-  mkdir -p $PKG/usr/share/icons/hicolor/128x128/apps
-  mkdir -p $PKG/opt
+cd $isim-$surum
+# Locale autodetect
+sed -i '/intl.locale.matchOS/s/false/true/' modules/libpref/init/all.js
 
-  # Kurulum
-  cp -r firefox/ $PKG/opt/$_isim
+cat > mozconfig << "EOF"
+ac_add_options --enable-application=browser
 
-  # /usr/bin symlinks
-  ln -s /opt/$_isim/firefox $PKG/usr/bin/$_isim 
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-rust-simd
 
-  # Masaüstü
-  install -m644 $_isim.desktop $PKG/usr/share/applications/
+# Branding
+ac_add_options --enable-official-branding
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.milislinux
+export MOZILLA_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=1
+export MOZ_ADDON_SIGNING=1
+export MOZ_REQUIRE_SIGNING=1
 
-  # Simgeler
-  for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
-    install -d $PKG/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$_isim/browser/chrome/icons/default/default${i/x*}.png \
-          $PKG/usr/share/icons/hicolor/$i/apps/$_isim.png
-  done
- _distini="$PKG/opt/firefox/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
-[Global]
-id=Milis
-surum=1.0 Atilla
-about=Milis Lİnux 1.0 için Mozilla Firefox
+# Keys
+ac_add_options --with-google-api-keyfile=/tmp/mozilla-release-6b51784853e47e091d213d421a19cb623af718f0/google-api-key
+ac_add_options --with-mozilla-api-keyfile=/tmp/mozilla-release-6b51784853e47e091d213d421a19cb623af718f0/mozilla-api-key
 
-[Preferences]
-app.distributor=milis
-app.distributor.channel=$_isim
-app.partner.milis=milis
+# System libraries
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libvpx
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-ffi
+
+# Features
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
+ac_add_options --enable-startup-notification
+ac_add_options --enable-crashreporter
+ac_add_options --disable-updater
+EOF
+
+SHELL=/bin/sh ./mach build
+SHELL=/bin/sh ./mach buildsymbols
+
+mkdir -pv $PKG/usr/{bin,lib{,/mozilla/plugins}}
+
+SHELL=/bin/sh DESTDIR=$PKG ./mach install
+
+ln -svf ../mozilla/plugins $PKG/usr/lib/firefox/browser/
+
+# Need for gnash
+mkdir -p $PKG/usr/include/npapi
+cp -v dom/plugins/base/*.h $PKG/usr/include/npapi
+
+# Launcher 
+mkdir -pv $PKG/usr/share/applications &&
+cat > $PKG/usr/share/applications/firefox.desktop << "EOF" &&
+[Desktop Entry]
+Encoding=UTF-8
+Name=Firefox Web Browser
+Comment=İnternette gezinin
+GenericName=Web Tarayıcı
+Exec=firefox %u
+Terminal=false
+Type=Application
+Icon=firefox
+Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+EOF
+mkdir -pv $PKG/usr/share/applications
+mkdir -pv $PKG/usr/share/pixmaps
+ln -sf /usr/lib/firefox-$version/browser/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
+
+for i in 16 22 24 32 48 256
+do
+   mkdir -p $PKG/usr/share/icons/hicolor/${i}x${i}/apps
+   cp browser/branding/official/default${i}.png \
+      $PKG/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png
+done
+
+for lang in tr
+do 
+install -Dm644 $SRC/tr.xpi \
+    $PKG/usr/lib/firefox/browser/extensions/langpack-tr@firefox.mozilla.org.xpi
+done
+install -Dm644 /dev/stdin $PKG/usr/lib/firefox/browser/defaults/preferences/vendor.js <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.requested", "");
+
+// Disable default browser checking.
+pref("browser.shell.checkDefaultBrowser", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
 END
-  # 128x128
-  ln -s /opt/$_isim/browser/icons/mozicon128.png \
-        $PKG/usr/share/icons/hicolor/128x128/apps/$_isim.png
+
 }
