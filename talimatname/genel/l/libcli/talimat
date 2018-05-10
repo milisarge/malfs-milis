@@ -1,0 +1,17 @@
+# Tanım: A shared library for including a Cisco-like command-line interface into other software.
+# URL: https://github.com/dparrish/libcli
+# Paketçi: milisarge
+# Gerekler: 
+# Grup: kütüphane
+
+isim=libcli
+surum=1.9.7
+devir=1
+kaynak=(https://github.com/dparrish/libcli/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  sed -i 's/-Werror//' "$SRC/$isim-$surum"/Makefile
+  cd "$SRC/$isim-$surum"
+  make
+  make DESTDIR="$PKG/" PREFIX='/usr' install
+}

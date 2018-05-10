@@ -1,0 +1,17 @@
+# Tanım: Library providing an API to the in-kernel connection tracking state table
+# URL: https://www.netfilter.org/projects/libnetfilter_conntrack/
+# Paketçi: milisarge
+# Gerekler: libnfnetlink libmnl 
+# Grup: kütüphane
+
+isim=libnetfilter_conntrack
+surum=1.0.6
+devir=1
+kaynak=(http://www.netfilter.org/projects/libnetfilter_conntrack/files/libnetfilter_conntrack-1.0.6.tar.bz2)
+
+derle() {
+  cd $isim-$surum
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="$PKG" install
+}

@@ -1,0 +1,17 @@
+# Tanım: Yüksek performanslı ağ paketi dinleme/inceleme uygulaması
+# URL: http://netsniff-ng.org/
+# Paketçi: milisarge
+# Gerekler: cmake geoip libpcap libnl libnet libsodium libcli liburcu libnetfilter_conntrack
+# Grup: güvenlik
+
+isim=netsniff-ng
+surum=0.6.4
+devir=1
+kaynak=(http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-$surum.tar.gz)
+
+derle() {
+  cd "${SRC}"/${isim}-${surum}
+  NACL_INC_DIR=/usr/include/sodium NACL_LIB=sodium ./configure --prefix=/usr
+  make DISTRO=1 all
+  make PREFIX="/usr" DESTDIR="${PKG}" SBINDIR="/usr/bin" install_all
+}
