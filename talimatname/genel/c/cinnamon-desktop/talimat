@@ -9,6 +9,8 @@ surum=3.8.1
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz
         config.patch
+        cinnamon-desktop.pc
+        cvc.pc)
         cinnamon-desktop.pc)
 
 derle() {
@@ -24,5 +26,6 @@ derle() {
     DESTDIR="${PKG}" ninja install
     mkdir -p $PKG/usr/lib/pkgconfig
     cp $SRC/$isim.pc $PKG/usr/lib/pkgconfig/
+    cp $SRC/cvc.pc $PKG/usr/lib/pkgconfig/
 
 }
