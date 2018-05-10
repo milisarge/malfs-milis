@@ -5,7 +5,7 @@
 # Grup: sistem
 
 isim=bleachbit
-surum=1.12
+surum=2.0
 devir=1
 kaynak=(https://downloads.sourceforge.net/$isim/$isim-$surum.tar.bz2)
 
