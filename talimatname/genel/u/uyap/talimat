@@ -6,13 +6,13 @@
 isim=uyap
 surum=4.1.10
 devir=1
-kaynak=(http://www.uyap.gov.tr/destek/uyap.zip
+kaynak=(http://www.uyap.gov.tr/destek/uyap.zip::${isim}-${surum}.zip
         uyap-editor.png
         product_logo_32.xpm)
 
 derle() {
 
-innoextract ./UKI_V4.1.10.exe
+innoextract $SRC/UKI_V4.1.10.exe
 
     mkdir -p $PKG/opt/uki
     cp -r app/*.jar /$PKG/opt/uki/
