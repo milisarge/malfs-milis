@@ -4,7 +4,7 @@
 # Gerekler: openjdk akiskart opensc innoextract
 
 isim=uyap
-surum=4.1.4
+surum=4.1.10
 devir=1
 kaynak=(http://www.uyap.gov.tr/destek/uyap.zip
         uyap-editor.png
@@ -12,7 +12,7 @@ kaynak=(http://www.uyap.gov.tr/destek/uyap.zip
 
 derle() {
 
-innoextract ./UKI_V4.1.4.exe
+innoextract ./UKI_V4.1.10.exe
 
     mkdir -p $PKG/opt/uki
     cp -r app/*.jar /$PKG/opt/uki/
