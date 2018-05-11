@@ -5,29 +5,25 @@
 # Grup: cinnamon
 
 isim=nemo
-surum=3.6.5
+surum=3.8.2
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz
 libnemo-fileroller.so)
 
 derle() {
   cd $isim-$surum
-  ./autogen.sh \
-      --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --disable-static \
-      --libexecdir=/usr/lib/nemo \
-      --disable-update-mimedb \
-      --disable-tracker \
-      --disable-gtk-doc-html \
-      --disable-schemas-compile \
-      --disable-selinux
+    sed -i '/^\[Desktop Entry/,/^\[Desktop Action/ s/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in
+    mkdir -p build
+    cd build
 
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    
-  make
-  make DESTDIR=$PKG install
+    meson --prefix=/usr \
+          --libexecdir=lib/${pkgname} \
+          --buildtype=plain \
+          ..
+    ninja
+
+    DESTDIR="${PKG}" ninja install
+
   mkdir -p $PKG/usr/lib/nemo/extensions-3.0
   mv $SRC/libnemo-fileroller.so $PKG/usr/lib/nemo/extensions-3.0/
   sed -i 's/Run Nemo with elevated privileges/Nemoyu yükseltilmiş ayrıcalıklarla çalıştır/g' $PKG/usr/share/polkit-1/actions/org.nemo.root.policy
