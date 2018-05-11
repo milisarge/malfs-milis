@@ -1,7 +1,8 @@
 # Tanım: Ericsson Computer Science Laboratory tarafindan gelistirilen bir proglamlama dili
 # URL: http://erlang.org
 # Paketçi: milisarge
-# Gerekler:
+# Gerekler: wxgtk unixodbc
+# Grup: geliştirme
 
 isim=erlang
 surum=20.3
