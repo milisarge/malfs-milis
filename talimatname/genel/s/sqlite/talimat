@@ -4,12 +4,12 @@
 # Gerekler:
 
 isim=sqlite
-surum=3.20.1
-_srcver=3200100
+surum=3.23.1
+_srcver=3230100
 devir=1
-_surum=$(printf "%i%.2i%.2i%.2i" ${version//./ })
+_surum=$(printf "%i%.2i%.2i%.2i" ${surum//./ })
 
-kaynak=(http://www.sqlite.org/2017/sqlite-autoconf-${_version}.tar.gz)
+kaynak=(http://www.sqlite.org/2018/sqlite-autoconf-${_surum}.tar.gz)
 
 derle() {
   cd sqlite-autoconf-$_srcver
