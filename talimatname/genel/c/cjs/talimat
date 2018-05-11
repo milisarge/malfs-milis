@@ -1,11 +1,11 @@
 # Tanım: Cinnamon için Javascript Bağları
 # URL: https://github.com/linuxmint/cjs
 # Paketçi: CihanAlkan
-# Gerekler: gtk3 gobject-introspection js38 dbus-glib python autoconf-archive gnome-common
+# Gerekler: gtk3 gobject-introspection js52 dbus-glib python autoconf-archive gnome-common
 # Grup: kütüphane
 
 isim=cjs
-surum=3.6.1
+surum=3.8.0
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
