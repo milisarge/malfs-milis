@@ -7,7 +7,7 @@
 _isim=NetworkManager
 
 isim=networkmanager
-surum=1.10.6
+surum=1.10.8
 devir=1
 
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$_isim/${surum%.*}/$_isim-$surum.tar.xz)
@@ -23,7 +23,7 @@ derle() {
 	--with-session-tracking=consolekit \
 	--with-suspend-resume=upower \
 	--with-dbus-sys-dir=/etc/dbus-1/system.d \
-	--disable-introspection \
+	--enable-introspection \
 	--with-crypto=nss \
 	--enable-wifi \
 	--with-iptables=/usr/sbin/iptables \
