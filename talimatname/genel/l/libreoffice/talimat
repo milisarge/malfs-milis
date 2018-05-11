@@ -2,16 +2,18 @@
 # URL: http://www.libreoffice.org/
 # Paketçi: Cihan Alkan
 # Gerekler: hunspell python3 libwpd neon pango nspr clucene openjdk xmlsec libodfgen libwps libvisio libcdr libmspub libmwaw libe-book libabw libzmf libpagemaker libcmis cppunit libtommath  graphite2 harfbuzz redland raptor hyphen mythes lpsolve libexttextcat liborcus gpgmepp beanshell libpng cairo apache-ant junit libetonyek openldap sane bluez poppler cups libatomic-ops gperf gtk2 gtk3 perl-archive-zip perl-xml-parser boost expat gstreamer-plugins-base gstreamer1-plugins-base libgsf librsvg libxml2 libxslt nss postgresql icu gsfonts dejavu-ttf npapi-sdk serf unixodbc xdg-utils desktop-file-utils
+# Grup: ofis_düzenleyici
 
 isim=libreoffice
-surum=5.4.1.2
+surum=6.0.4.2
+_surum=6.0.4
 devir=1
 
-kaynak=(http://download.documentfoundation.org/libreoffice/src/5.4.1/$isim-$surum.tar.xz
-	http://download.documentfoundation.org/libreoffice/src/5.4.1/$isim-dictionaries-$surum.tar.xz
-	http://download.documentfoundation.org/libreoffice/src/5.4.1/$isim-help-$surum.tar.xz
-	http://download.documentfoundation.org/libreoffice/src/5.4.1/$isim-translations-$surum.tar.xz
-    http://kaynaklar.milislinux.org/libreofis-milis-ekler.tar.xz)
+kaynak=(https://download.documentfoundation.org/libreoffice/src/${_surum}/$isim-$surum.tar.xz
+		https://download.documentfoundation.org/libreoffice/src/${_surum}/$isim-dictionaries-$surum.tar.xz
+		https://download.documentfoundation.org/libreoffice/src/${_surum}/$isim-help-$surum.tar.xz
+		https://download.documentfoundation.org/libreoffice/src/${_surum}/$isim-translations-$surum.tar.xz
+		https://kaynaklar.milislinux.org/libreofis-milis-ekler.tar.xz)
 
 derle() {
         unset ACLOCAL

@@ -4,7 +4,7 @@
 # Gerekler: boost mdds python3
 
 isim=libixion
-surum=0.12.2
+surum=0.13.0
 devir=1
 
 kaynak=(http://kohei.us/files/ixion/src/libixion-$surum.tar.xz)
