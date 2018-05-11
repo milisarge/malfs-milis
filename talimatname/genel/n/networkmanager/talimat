@@ -1,3 +1,4 @@
+
 # Tanım: Ağın daha doğrudan yönetilebilir olmasını sağlayan basitleştiren ve geliştiren araçlar
 # URL: http://projects.gnome.org/NetworkManager/
 # Paketçi: milisarge
@@ -33,6 +34,8 @@ derle() {
 	--with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
     --with-pppd=/usr/sbin/pppd \
     --with-wext \
+    --without-systemd-journal \
+    --without-systemd-logind \
     --without-consolekit \
     --without-libaudit \
     --without-more-asserts \
