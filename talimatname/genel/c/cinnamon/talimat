@@ -5,50 +5,35 @@
 # Grup: cinnamon
 
 isim=cinnamon
-surum=3.6.7
+surum=3.8.2
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz
+        0001-cinanmon-settings-don-t-rely-on-the-presence-of-cinn.patch
         set_wheel.patch
         default-theme.patch)
 
 derle() {
   cd Cinnamon-$surum
-  patch -Np1 -i $SRC/set_wheel.patch
-  patch -Np1 -i $SRC/default-theme.patch
+    patch -p1 -i ../0001-cinanmon-settings-don-t-rely-on-the-presence-of-cinn.patch
+    patch -Np1 -i ../set_wheel.patch
+    patch -Np1 -i ../default-theme.patch
+    sed -i 's/mintinstall.desktop/org.gnome.Software.desktop/' data/org.cinnamon.gschema.xml.in
+    sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' \
+        files/usr/share/cinnamon-session/sessions/cinnamon*.session
+    sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
+        files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
 
-  sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' \
-    files/usr/share/cinnamon-session/sessions/cinnamon*.session
+    NOCONFIGURE=1 ./autogen.sh
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --libexecdir=/usr/lib/cinnamon \
+                --localstatedir=/var \
+                --disable-static \
+                --disable-gtk-doc \
+                --disable-schemas-compile \
+                --enable-compile-warnings=yes
 
-  sed -i 's|/usr/bin/cinnamon-control-center|/usr/lib/cinnamon-control-center-1/panels|' \
-    files/usr/bin/cinnamon-settings
-
-  sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
-    files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
-
- # Adwaita teması için Cinnamon Ayarlarında seçilen arka plan rengini düzelt
-  sed -i 's/@selected_bg_color;/@theme_selected_bg_color;/' \
-    files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
-
-  # GNOME Terminal masaüstü dosyası GNOME 3.20'de yeniden adlandırıldı
-  sed -i 's/gnome-terminal.desktop/org.gnome.Terminal.desktop/' data/org.cinnamon.gschema.xml.in \
-    files/usr/share/cinnamon/applets/panel-launchers@cinnamon.org/settings-schema.json
-
-  # MintInstall'ı GNOME Yazılımı ile Değiştirin
-  sed -i 's/mintinstall.desktop/org.gnome.Software.desktop/' data/org.cinnamon.gschema.xml.in
-
-  # Kırık sembolik bağlantıyı kaldır
-  rm files/etc/xdg/menus/cinnamon-applications-merged
-
-
- ./autogen.sh --prefix=/usr \
-               --sysconfdir=/etc \
-               --libexecdir=/usr/lib/cinnamon \
-               --localstatedir=/var \
-               --disable-static \
-               --enable-schemas-compile \
-               --enable-compile-warnings=yes \
-               --without-ca-certificates
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
-  make DESTDIR=$PKG install
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    make
+    make DESTDIR="${PKG}" install
 }
