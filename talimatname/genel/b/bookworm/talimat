@@ -1,0 +1,19 @@
+# Tanım: A simple user centric eBook reader which displays multiple eBooks formats uniformly
+# URL: https://babluboy.github.io/bookworm
+# Paketçi: milisarge
+# Gerekler: cmake git vala granite poppler-glib python unrar unzip webkitgtk2 
+# Grup: ofis_düzenleyici
+
+isim=bookworm
+surum=0.9.0
+devir=1
+kaynak=(https://github.com/babluboy/bookworm/archive/${surum}.tar.gz::${isim}-${surum}.tar.gz)
+
+derle() {
+    cd "${isim}-${surum}"
+    cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    make
+    make -C "${isim}-${surum}" DESTDIR="${PKG}" install
+    install -d ${PKG}/usr/share/licenses/${isim}
+    install -m 644 LICENSE ${PKG}/usr/share/licenses/${isim}/LICENSE
+}
