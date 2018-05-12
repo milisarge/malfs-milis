@@ -2,22 +2,23 @@
 # URL: http://www.abisource.com/enchant/
 # Paketçi: milisarge
 # Gerekler: aspell dbus-glib
+# Grup: kütüphane
 
 isim=enchant
-surum=1.6.0
+surum=2.2.3
 devir=1
-kaynak=(http://www.abisource.com/downloads/$isim/$surum/$isim-$surum.tar.gz)
+kaynak=(https://github.com/AbiWord/enchant/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
 	cd $isim-$surum
-
+        ./bootstrap
 	./configure \
 		--prefix=/usr \
 		--mandir=/usr/share/man \
 		--disable-static \
 		--disable-dependency-tracking
 
-	make
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 	make DESTDIR=$PKG install
-	chmod a-x $PKG/usr/lib/*.so
 }
