@@ -1,0 +1,20 @@
+# Tanım: Bir GTK + uygulamasında yazım denetimini uygulamak için esnek bir API
+# URL: https://wiki.gnome.org/Projects/gspell
+# Paketçi: Cihan_Alkan
+# Gerekler: gtk3 enchant libxml2 iso-codes intltool gobject-introspection vala gtk-doc autoconf-archive
+# Grup: 
+
+isim=gspell
+surum=1.8.0
+devir=1
+kaynak=(https://git.gnome.org/browse/gspell/snapshot/gspell-1.8.0.tar.xz)
+
+derle() {
+
+  cd $isim-$surum
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure  --prefix=/usr --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR="$PKG" install
+}
