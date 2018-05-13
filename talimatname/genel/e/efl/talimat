@@ -2,9 +2,10 @@
 # URL: http://www.enlightenment.org/
 # Paketçi: milisarge
 # Gerekler: lua dbus libsndfile xorg-libxp xorg-libxscrnsaver gstreamer-plugins-base giflib libtiff gstreamer gstreamer1 poppler libspectre libraw librsvg gstreamer1-plugins-base
+# Grup:
 
 isim=efl
-surum=1.20.2
+surum=1.20.7
 devir=1
 kaynak=(http://download.enlightenment.org/rel/libs/$isim/$isim-$surum.tar.xz)
 
