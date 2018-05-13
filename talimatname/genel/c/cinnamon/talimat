@@ -31,7 +31,8 @@ derle() {
                 --disable-static \
                 --disable-gtk-doc \
                 --disable-schemas-compile \
-                --enable-compile-warnings=yes
+                --enable-compile-warnings=yes \
+                --without-ca-certificates
 
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
