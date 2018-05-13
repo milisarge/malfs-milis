@@ -1,7 +1,7 @@
 # Tanım: Genel yazım denetimi kitaplığı.
 # URL: http://www.abisource.com/enchant/
 # Paketçi: cihan_Alkan
-# Gerekler: aspell dbus-glib
+# Gerekler: aspell dbus-glib gnupg
 # Grup: kütüphane
 
 isim=enchant2
