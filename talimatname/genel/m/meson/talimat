@@ -4,12 +4,23 @@
 # Gerekler: python git ninja
 
 isim=meson
-surum=0.40.0
+surum=0.46.0
 devir=1
 
-kaynak=(https://github.com/mesonbuild/meson/releases/download/$surum/$isim-$surum.tar.gz)
+kaynak=(https://github.com/mesonbuild/meson/releases/download/$surum/$isim-$surum.tar.gz
+       milis-meson)
  
 derle() {
   cd $isim-$surum
-  python3 setup.py install --root="$PKG" --optimize=1
+  python3 setup.py build 
+  python3 setup.py install --root="${PKG}" --optimize=1 --skip-build
+
+  install -d "${PKG}/usr/share/vim/vimfiles"
+  cp -rt "${PKG}/usr/share/vim/vimfiles" data/syntax-highlighting/vim/*
+
+  install -Dt "${PKG}/usr/share/emacs/site-lisp" -m644 data/syntax-highlighting/emacs/*
+  install -Dt "${PKG}/usr/share/zsh/site-functions" -m644 data/shell-completions/zsh/*
+
+  # Milis paket yardımcı
+  install -D ../milis-meson -t "${PKG}/usr/bin"
 }
