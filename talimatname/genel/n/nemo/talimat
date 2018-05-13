@@ -17,7 +17,8 @@ derle() {
     cd build
 
     meson --prefix=/usr \
-          --libexecdir=lib/${pkgname} \
+          --libdir=/usr/lib \
+          --libexecdir=lib/${isim} \
           --buildtype=plain \
           ..
     ninja
