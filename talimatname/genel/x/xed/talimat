@@ -1,18 +1,19 @@
 # Tanım: Küçük ve hafif metin düzenleyici
 # URL: https://github.com/linuxmint/xed
 # Paketçi: Cihan Alkan
-# Gerekler: libpeas gtksourceview3 gobject-introspection desktop-file-utils xorg-libsm enchant gnome-common yelp-tools iso-codes
+# Gerekler: gspell libpeas gtksourceview3 gobject-introspection desktop-file-utils xorg-libsm enchant2 gnome-common yelp-tools iso-codes
 
 isim=xed
-surum=1.6.3
+surum=1.8.0
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz)
 
 derle() {
 	cd $isim-$surum
+        sed -i 's/, enchant/, enchant-2/' configure.ac
 	./autogen.sh --with-gtk=3.0 --prefix="/usr" \
-         --localstatedir="/var" \
-         --libexecdir="/usr/lib/xed"
-    make CFLAGS='-w -O2'
+        --localstatedir="/var" \
+        --libexecdir="/usr/lib/xed"
+        make CFLAGS='-w -O2'
 	make DESTDIR=$PKG install
 }
