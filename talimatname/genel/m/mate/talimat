@@ -1,6 +1,6 @@
 # Tanım: mate sistem
 # URL: sistem
-# Paketçi: yasarciv67@gmail.com
+# Paketçi: yasarciv67
 # Gerekler: atril caja caja-extensions engrampa eom libmatekbd libmatemixer libmateweather libpeas marco mate-applets mate-backgrounds mate-calc mate-common mate-control-center mate-desktop mate-icon-theme mate-icon-theme-faenza mate-indicator-applet mate-media mate-menus mate-netbook mate-notification-daemon mate-panel mate-polkit mate-power-manager mate-screensaver mate-sensors-applet mate-session-manager mate-settings-daemon mate-system-monitor mate-terminal mate-themes mate-user-guide mate-user-share mate-utils mozo pluma python-caja
 
 isim=mate
@@ -10,5 +10,6 @@ devir=1
 kaynak=(talimat)
 
 derle() {
-echo "mate sistem"
+mkdir $pkg/tmp
+echo "mate sistem" > $PKG/tmp/masa
 }
