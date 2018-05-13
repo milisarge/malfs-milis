@@ -1,0 +1,24 @@
+# Tanım: Genel yazım denetimi kitaplığı.
+# URL: http://www.abisource.com/enchant/
+# Paketçi: cihan_Alkan
+# Gerekler: aspell dbus-glib
+# Grup: kütüphane
+
+isim=enchant2
+surum=2.2.3
+devir=1
+kaynak=(https://github.com/AbiWord/enchant/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd enchant-$surum
+        ./bootstrap
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/share/man \
+		--disable-static \
+		--disable-dependency-tracking
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+	make DESTDIR=$PKG install
+}
