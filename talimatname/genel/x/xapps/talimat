@@ -5,17 +5,18 @@
 # Grup: cinnamon
 
 isim=xapps
-surum=1.0.4
+surum=1.2.1
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-  cd $isim-$surum
-   ./autogen.sh \
-   --prefix=/usr \
-   --localstatedir=/var \
-   --libexecdir=/usr/lib/$isim
- 
-  make
-  make DESTDIR=$PKG install
+  cd 
+   mkdir -p "${SRC}"/$isim-$surum/build
+    cd "${SRC}"/${isim}-${surum}/build
+
+    meson --prefix=/usr --libdir=/usr/lib --buildtype=plain ..
+    ninja
+    DESTDIR="${PKG}" ninja install
+    # rm useless scripts
+    rm -r "${PKG}"/usr/bin
 }
