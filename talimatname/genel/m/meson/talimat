@@ -1,7 +1,7 @@
 # Tanım: Meson hem son derece hızlı, hem de daha da önemlisi, mümkün olduğunca kullanıcı dostu olmak için tasarlanmış bir açık kaynak kodlu yapı sistemidir.
 # URL: http://mesonbuild.com/
 # Paketçi: milisarge
-# Gerekler: python git ninja
+# Gerekler: python3 git ninja
 
 isim=meson
 surum=0.46.0
