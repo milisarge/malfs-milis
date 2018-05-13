@@ -10,6 +10,6 @@ devir=1
 kaynak=(talimat)
 
 derle() {
-mkdir $pkg/tmp
+mkdir $PKG/tmp
 echo "mate sistem" > $PKG/tmp/masa
 }
