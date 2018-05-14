@@ -19,5 +19,4 @@ derle() {
     cd "$SRC/$isim"
     install -Dm644 tg-server.pub ${PKG}/etc/telegram-cli/server.pub
     install -Dm755 bin/telegram-cli ${PKG}/usr/bin/telegram-cli
-    install -Dm755 bin/telegram-cli ${PKG}/usr/bin/telegram-cli
 }
