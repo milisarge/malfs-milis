@@ -1,0 +1,23 @@
+# Tanım: Telegram mesajlaşma konsol uygulaması
+# URL: https://github.com/vysheng/tg
+# Paketçi: milisarge
+# Gerekler: git libconfig libevent lua jansson 
+# Grup: ağ
+
+isim=telegram-cli
+surum=git
+devir=1
+kaynak=(telegram-cli.patch)
+
+derle() {
+    git_indir https://github.com/vysheng/tg $isim
+    cd "$SRC/$isim"
+    git submodule update --init --recursive --force
+    patch -p1 < "$SRC/$isim.patch"
+    ./configure
+    make
+    cd "$SRC/$isim"
+    install -Dm644 tg-server.pub ${PKG}/etc/telegram-cli/server.pub
+    install -Dm755 bin/telegram-cli ${PKG}/usr/bin/telegram-cli
+    install -Dm755 bin/telegram-cli ${PKG}/usr/bin/telegram-cli
+}
