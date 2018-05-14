@@ -27,7 +27,7 @@ rootfs=/mnt/rootfs
 ikincil=/mnt/ikincil
 kaynaklar=/mnt/sources
 paketdepo=/depo/paketler
-
+paketler=/mnt/paketler
 
 [ ! -f $ortam ] && exit 1
 
@@ -44,12 +44,14 @@ ortam_bagla(){
 	mkdir -p $rootfs
 	mkdir -p $lfs
 	mkdir -p $ikincil
+	mkdir -p $paketler
 	mount -t squashfs -o loop $ortam $rootfs/
 	mount -t tmpfs -o size=3072M,mode=0744 tmpfs $ikincil/
 	mount -t aufs -o br=$ikincil=rw:$rootfs=ro none $lfs/ 
 	mkdir -p $lfs/sources
 	mount -t aufs -o br=$kaynaklar=rw none $lfs/sources/
 	mount -t aufs -o br=$paketdepo=rw none $lfs/depo/paketler
+	mount -t aufs -o br=$paketler=rw none $lfs/opt
 }
 
 ortam_coz()
