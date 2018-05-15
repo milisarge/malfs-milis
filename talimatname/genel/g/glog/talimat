@@ -1,0 +1,21 @@
+# Tanım: C++ implementation of the Google logging module
+# URL: https://github.com/google/glog
+# Paketçi: milisarge
+# Gerekler: git
+# Grup: kütüphane
+
+isim=glog
+surum=0.3.4
+devir=1
+kaynak=(https://github.com/google/glog/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd "$SRC/$isim-$surum"
+  aclocal
+  autoconf
+  automake -a
+  ./configure
+  make
+  make prefix="/usr" DESTDIR="$PKG" install
+  install -Dm644 "COPYING" "$PKG/usr/share/licenses/$isim/COPYING"
+}
