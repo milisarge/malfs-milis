@@ -1,0 +1,25 @@
+# Tanım: C++ Library for commandline flag processing
+# URL: https://github.com/schuhschuh/gflags
+# Paketçi: milisarge
+# Gerekler: cmake
+# Grup: kütüphane
+
+isim=gflags
+surum=2.2.1
+devir=1
+kaynak=(https://github.com/schuhschuh/gflags/archive/v${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+  cd "gflags-${surum}"
+  cmake . \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DREGISTER_INSTALL_PREFIX=OFF \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_STATIC_LIBS=ON \
+    -DBUILD_TESTING=ON
+  make
+  make test
+  make DESTDIR="${PKG}" install
+  install -D -m644 COPYING.txt "${PKG}"/usr/share/licenses/${isim}/COPYING.txt
+}
