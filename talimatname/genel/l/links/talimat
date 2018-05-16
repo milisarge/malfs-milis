@@ -2,9 +2,10 @@
 # URL: http://links.twibright.com/
 # Paketçi: milisarge
 # Gerekler: gpm libpng libtiff libjpeg-turbo
+# Grup: ağ
 
 isim=links
-surum=2.12
+surum=2.16
 devir=1
 
 kaynak=(http://links.twibright.com/download/links-$surum.tar.bz2)
