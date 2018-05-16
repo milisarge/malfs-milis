@@ -5,7 +5,7 @@
 
 isim=opera-web-browser
 _isim=opera
-surum=50.0.2762.45
+surum=53.0.2907.57
 devir=1
 kaynak=(http://get.geo.opera.com/pub/$_isim/desktop/$surum/linux/$_isim-stable_${surum}_amd64.deb
 		opera
