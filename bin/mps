@@ -139,6 +139,11 @@ _indiriliyor="indiriliyor"
 
 export _paketguncel=0
 
+# renkli yazma öntanımlı atamaları
+_yaz="ryaz 32"
+_yaz_tm="ryaz 34"
+_yaz_uyari="ryaz 31"
+
 hata_olustu(){
 	local _hata _mesaj
 	[ -z $1 ] && exit 1
@@ -186,21 +191,6 @@ cikti_renk_ayarla(){
 
 icerik_ekle(){
 	if [ -f "$1" ];then
-		local cikti _yaz _yaz_tm _yaz_uyari
-		if [ "$2" ]; then
-			cikti="$2"
-		fi
-		#echo "cikti: $cikti"
-		if [ "$cikti" == "--renkli" ];then
-			_yaz="ryaz 32"
-			_yaz_tm="ryaz 34"
-			_yaz_uyari="ryaz 31"
-		else
-			cikti="--normal"
-			_yaz="echo"
-			_yaz_tm="echo"
-			_yaz_uyari="echo"
-		fi
 		paketad=`echo "$1" | cut -d'#' -f1`	
 		paketad=`basename $paketad`
 		$_yaz_tm "$paketad paketi kuruluyor-> $kokdizin" 
@@ -264,14 +254,14 @@ icerik_ekle(){
 }
 
 paket_sil(){
-	local paket kkont sil_onay oto_silme cikti _yaz _yaz_uyari _yaz_tm
+	local paket kkont sil_onay oto_silme
 	paket="$1"
 	tersbag_goster="hayir"
 	
 	cikti="--renkli"
 	if [ "$2" ]; then
 		if [ "$2" == "--normal" ];then
-			cikti="--normal"
+			cikti_renk_ayarla "--normal"
 		else
 			oto_silme="$2"
 		fi
@@ -279,20 +269,10 @@ paket_sil(){
 	
 	if [ "$3" ]; then
 		if [ "$3" == "--normal" ];then
-			cikti="--normal"
+			cikti_renk_ayarla "--normal"
 		else
 			tersbag_goster="evet"
 		fi
-	fi
-	
-	if [ $cikti == "--renkli" ];then
-		_yaz="ryaz 32"
-		_yaz_tm="ryaz 34"
-		_yaz_uyari="ryaz 31"
-	else
-		_yaz="echo"
-		_yaz_tm="echo"
-		_yaz_uyari="echo"
 	fi
 	
 	if [ "$tpk" = "evet" ] && [ -d "$talimatname/temel/$1" ];then
@@ -451,20 +431,11 @@ kelime_bul(){
 }
 
 kurulu_kontrol_test(){
-	local _paket kkont cikti _yaz _yaz_uyari
+	local _paket kkont _cikti _yaz _yaz_uyari
 	_paket=$1
-	cikti="--renkli"
-	_yaz_son=""
-	if [ "$2" ]; then
-		cikti="$2"
-	fi
-	if [ $cikti == "--normal" ];then
-		_yaz="echo"
-		_yaz_uyari="echo"
-	elif [ $cikti == "--renkli" ];then
-		_yaz="ryaz 32"
-		_yaz_uyari="ryaz 31"
-	fi
+	_cikti="--renkli"
+	[ "$2" ] && _cikti="$2"
+	cikti_renk_ayarla ${_cikti}
 	kkont=`kurulu_kontrol "$1"`
 	if [ "$kkont" == "degil" ];then
 		$_yaz_uyari "$_paket $_paket_kurulu_degil"
@@ -476,26 +447,11 @@ kurulu_kontrol_test(){
 }
 
 paket_bilgi(){
-	local _paket kkont cikti _yaz _yaz_uyari _yaz_son
+	local _paket kkont _cikti
 	_paket="$1"
-	cikti="--renkli"
-	_yaz_son=""
-	if [ "$2" ]; then
-		cikti="$2"
-	fi
-	if [ $cikti == "--html" ];then
-		_yaz="echo"
-		_yaz_uyari="echo"
-		_yaz_son="<br>"
-	elif [ $cikti == "--renkli" ];then
-		_yaz="ryaz 32"
-		_yaz_uyari="ryaz 31"
-	else
-		#echo "tanımsız çıktı seçeneği,normal çıktı verilecek."
-		_yaz="echo"
-		_yaz_uyari="echo"
-		_yaz_son="<br>"
-	fi
+	_cikti="--renkli"
+	[ "$2" ] && _cikti="$2"
+	cikti_renk_ayarla ${_cikti}
 	
 	kkont=`kurulu_kontrol "$1"`
 
@@ -864,7 +820,7 @@ derleme_listyap_eski(){
 }
 
 derleme_listyap(){
-	echo "$1 $_gerekler_belirleniyor"
+	$_yaz "$1 $_gerekler_belirleniyor"
 	gerekleri_listele $@
 }
 
@@ -984,7 +940,7 @@ paket_inkur_liste(){
 # otomatik kontrollu kur
 # -kur
 paket_inkur_oto(){
-	local _cikti _yaz _yaz_uyari _pkt
+	local _cikti
 	_cikti="--renkli"
 	[ $1 ] && _pkt="$1" || hata_olustu "_paket_adi_gerekli"
 	[ $2 ] && _cikti="$2"
@@ -1349,7 +1305,7 @@ surum_kontrol(){
 		
 		if [ "$pk_sil" = "e" ];then
 			ryaz 32 "$_paket $_paket_depoda_yok $_siliniyor"
-			mps -sz $_paket
+			paket_sil "$_paket" "evet"
 		else
 			ryaz 32 "$_paket silinmesi es geçildi"
 		fi
@@ -1439,7 +1395,7 @@ devir_kontrol(){
 		
 		if [ "$pk_sil" = "e" ];then
 			ryaz 32 "$_paket $_paket_depoda_yok $_siliniyor"
-			mps -sz $_paket
+			paket_sil "$_paket" "evet" 
 		else
 			ryaz 32 "$_paket silinmesi es geçildi"
 		fi
@@ -1476,7 +1432,7 @@ devir_kontrol(){
 				fi		
 				if [ "$gun_onay" = "e" ];then
 					paket_sil "$_paket" "evet"
-					paket_inkur_oto $_paket
+					paket_inkur_oto "$_paket"
 					ryaz 33 "$_paket devir güncellemesi yapıldı"
 				else
 					ryaz 31 "$_paket devir güncellemesi yapılmadı"
@@ -1885,23 +1841,7 @@ log_analiz(){
 }
 
 etkilenen_kurtar(){
-	local dizin paket cikti _yaz _yaz_uyari _yaz_tm
-	cikti="--renkli"
-	if [ "$2" ]; then
-		if [ "$2" == "--normal" ];then
-			cikti="--normal"
-		fi
-	fi
-
-	if [ $cikti == "--renkli" ];then
-		_yaz="ryaz 32"
-		_yaz_tm="ryaz 34"
-		_yaz_uyari="ryaz 31"
-	else
-		_yaz="echo"
-		_yaz_tm="echo"
-		_yaz_uyari="echo"
-	fi
+	local dizin paket
 	paket=$1
 	if [ -f $VT/$paket/kurulan ];then
 		cat $VT/$paket/kurulan | cut -d '>' -f2 > /tmp/$paket.sil
@@ -2721,20 +2661,9 @@ listeleri_temizle(){
 
 paket_indir(){
 	if [ -f "$paketdepo""paket.vt" ];then
-		local _ipaket pkt cikti _yaz _yaz_uyari
+		local _ipaket pkt
 		[ $1 ] && _ipaket="$1" || hata_olustu "_paket_adi_gerekli"
-		cikti="--renkli"
-		if [ "$2" ]; then
-			cikti="$2"
-		fi
-		if [ $cikti == "--renkli" ];then
-			_yaz="ryaz 32"
-			_yaz_uyari="ryaz 31"
-		else
-			cikti="--normal"
-			_yaz="echo"
-			_yaz_uyari="echo"
-		fi
+		[ "$2" ] && cikti_renk_ayarla "$2"
 		local _sunucular _sira
 		_sunucular=$(echo ${sunucular} | tr " " "\n") 
 		_sira=0
@@ -2890,7 +2819,8 @@ ayarlar() {
 			### mps -i paketismi = sadece paketi indirir,paket kurulmaz.
 			-i|--indir)
 				kurulum_onay="olumsuz"
-				paket_indir "$2" "$3"
+				shift
+				paket_indir "$@"
 				exit 0 ;;
 			### mps -ik paketismi = ilgili paketi indirir ve kurar.
 			-ik|--inku)
@@ -2910,23 +2840,12 @@ ayarlar() {
 				exit 0 ;;
 			### mps sil|-s paketismi = ilgili paketi onaylı kaldırır.
 			-s|sil)
-				if [[ "$2" == "py-"* ]]; then
-					pypaket=`echo "$2" | cut -d'-' -f 2`
-					echo $pypaket "pip2 ile silinecek"
-					pip uninstall $pypaket
-					exit 1
-				fi
-				if [[ "$2" == "py3-"* ]]; then
-					pypaket=`echo "$2" | cut -d'-' -f 2`
-					echo $pypaket "pip3 ile silinecek"
-					pip3 uninstall $pypaket
-					exit 1
-				fi
-				paket_sil "$2" "$3" "$4"
+				shift
+				paket_sil "$@"
 				exit 0 ;;
 			### mps zorsil|-sz paketismi = ilgili paketi onaysız kaldırır.
 			-sz|zorsil)
-				paket_sil "$2" "evet"
+				paket_sil "$2" "evet" "$3"
 				exit 0 ;;	
 			### mps gsil paketismi = ilgili paketi güvenli(ters bağımlılıklarına da bakarak) kaldırır.
 			gsil)
@@ -3015,18 +2934,6 @@ ayarlar() {
 				exit 0 ;;		
 			### mps kur paketismi = yerelde mps.lz varsa yereldekini yoksa sunucudan paketi indirip kurar.
 			kur)
-				if [[ "$2" == "py-"* ]]; then
-					pypaket=`echo "$2" | cut -d'-' -f 2`
-					echo $pypaket "pip2 ile kurulacak"
-					pip install $pypaket
-					exit 0
-				fi
-				if [[ "$2" == "py3-"* ]]; then
-					pypaket=`echo "$2" | cut -d'-' -f 2`
-					echo $pypaket "pip3 ile kurulacak"
-					pip3 install $pypaket
-					exit 0
-				fi
 				if [[ "$2" == *"mps.lz"* ]]; then
 					if [ "$3" == "-kok" ] && [ -d "$4" ]; then
 						kokdizin="$4"
