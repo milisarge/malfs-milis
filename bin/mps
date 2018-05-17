@@ -864,7 +864,7 @@ derleme_listyap_eski(){
 }
 
 derleme_listyap(){
-	ryaz 32 "$1 $_gerekler_belirleniyor"
+	echo "$1 $_gerekler_belirleniyor"
 	gerekleri_listele $@
 }
 
