@@ -187,6 +187,7 @@ cikti_renk_ayarla(){
 		_yaz="echo"
 		_yaz_tm="echo"
 		_yaz_uyari="echo"
+		_yaz_bilgi="echo"
 	fi
 }
 
