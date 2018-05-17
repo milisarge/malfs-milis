@@ -810,16 +810,9 @@ kly_yeni(){
 	fi
 }
 
-derleme_listyap_eski(){
-	ryaz 32 "$1 $_gerekler_belirleniyor"
-	dlyD=""
-	dlymap=""
-	derleme_listyap_kontrol
-	dly_yeni $1
-	echo "${dlyD}"
-}
-
 derleme_listyap(){
+	[ "$2" = "--normal" ] && cikti_renk_ayarla "$2"
+	[ "$3" = "--normal" ] && cikti_renk_ayarla "$3"
 	$_yaz "$1 $_gerekler_belirleniyor"
 	gerekleri_listele $@
 }
