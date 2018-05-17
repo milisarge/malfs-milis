@@ -143,7 +143,7 @@ export _paketguncel=0
 _yaz="ryaz 32"
 _yaz_tm="ryaz 34"
 _yaz_uyari="ryaz 31"
-_yaz_bilgi="$_yaz_uyari"
+_yaz_bilgi="ryaz 33"
 
 hata_olustu(){
 	local _hata _mesaj
