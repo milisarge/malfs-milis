@@ -5,7 +5,7 @@
 # GRup: kütüphane
 
 isim=vte3
-surum=0.51.3
+surum=0.52.2
 devir=1
 _isim=vte
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/${_isim}/${surum%.*}/${_isim}-$surum.tar.xz)
