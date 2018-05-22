@@ -4,7 +4,7 @@
 # Gerekler: gsettings-desktop-schemas desktop-file-utils gtk-update-icon-cache dconf gconf gtk2 gnome-doc-utils gsettings-desktop-schemas vte3 nautilus 
 
 isim=gnome-terminal
-surum=3.22.1
+surum=3.28.2
 devir=1
 
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
