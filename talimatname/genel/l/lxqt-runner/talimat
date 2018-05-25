@@ -2,12 +2,12 @@
 # URL: http://lxqt.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: lxqt-globalkeys menu-cache
+# Grup: lxqt
 
 isim=lxqt-runner
-surum=0.11.1
+surum=0.13.0
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
-
 
 derle() {
 	mkdir -v build
@@ -17,5 +17,6 @@ cmake $SRC/$isim-$surum            \
       -DRUNNER_MATH=OFF                 \
       -DCMAKE_INSTALL_PREFIX=/usr 
       make
-	  make DESTDIR=$PKG install
+      make DESTDIR=$PKG install
 }
+
