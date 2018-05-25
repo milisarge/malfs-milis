@@ -2,9 +2,10 @@
 # URL: http://lxqt.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: cmake gtk2
+# Grup: lxqt
 
 isim=libqtxdg
-surum=2.0.0
+surum=3.2.0
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
