@@ -1,7 +1,7 @@
 # Tanım: A collection of machine learning algorithms for data mining tasks
 # URL: http://www.cs.waikato.ac.nz/ml/weka/
 # Paketçi: milisarge
-# Gerekler: openjdk 
+# Gerekler: openjdk unzip
 # Grup: geliştirme 
 
 isim=weka
@@ -13,13 +13,14 @@ kaynak=(http://downloads.sourceforge.net/sourceforge/weka/weka-${surum//./-}.zip
 
 derle() {
   cd $SRC/$isim-${surum//./-}
+  unzip weka.jar -d $SRC/$isim-${surum//./-} 
   # install jar file
   mkdir -p $PKG/usr/share/java/$isim
   install -m644 weka.jar $PKG/usr/share/java/$isim/weka.jar
   # setup for freedesktop icons and shell script
   mkdir -p $PKG/usr/share/{applications,pixmaps}
   mkdir -p $PKG/usr/bin
-  install -m644 weka.ico $PKG/usr/share/pixmaps/weka.ico
+  install -m644 weka/gui/weka_icon_new_48.png $PKG/usr/share/pixmaps/weka.png
   install -m644 $SRC/weka.desktop $PKG/usr/share/applications/weka.desktop
   install -m755 $SRC/weka.sh $PKG/usr/bin/weka
 }
