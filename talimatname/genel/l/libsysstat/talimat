@@ -2,18 +2,17 @@
 # URL: http://lxqt.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: cmake qt5 lxqt-build-tools
+# Grup: lxqt
 
 isim=libsysstat
-surum=0.3.3
+surum=0.4.1
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
-cd $SRC/$isim-$surum
 derle() {
-	mkdir -v build
+	mkdir -p build
 	cd build
 	cmake $SRC/$isim-$surum \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib
 	make
