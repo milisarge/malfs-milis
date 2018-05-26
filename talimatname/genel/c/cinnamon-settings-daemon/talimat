@@ -1,7 +1,7 @@
 # Tanım: Cinnamon ayarları programı
 # URL: https://github.com/linuxmint/cinnamon-settings-daemon
 # Paketçi: Cihan_Alkan
-# Gerekler: glib intltool gtk3 cinnamon-desktop libnotify libgnomekbd libcanberra upower colord libgudev nss dbus-glib docbook-xsl librsvg pulseaudio polkit libwacom tdb
+# Gerekler: glib intltool gtk3 python3-pillow pypam cinnamon-desktop libnotify libgnomekbd libcanberra upower colord libgudev nss dbus-glib docbook-xsl librsvg pulseaudio polkit libwacom tdb
 # Grup: cinnamon
 
 isim=cinnamon-settings-daemon
