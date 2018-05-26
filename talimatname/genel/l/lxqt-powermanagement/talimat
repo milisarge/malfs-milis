@@ -4,7 +4,7 @@
 # Gerekler: liblxqt hicolor-icon-theme kf5-kidletime kf5-solid upower xscreensaver
 
 isim=lxqt-powermanagement
-surum=0.11.1
+surum=0.13.0
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
