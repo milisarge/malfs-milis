@@ -1,7 +1,7 @@
 # Tanım: Gelişmiş yenilikçi özellikler ve geleneksel kullanıcı deneyimi sağlayan Linux masaüstü
 # URL: https://github.com/linuxmint/cinnamon
 # Paketçi: Cihan_Alkan
-# Gerekler: python-setproctitle caribou muffin cinnamon-settings-daemon cinnamon-session cinnamon-translations clutter-gtk libgnome-keyring cinnamon-control-center cinnamon-screensaver cinnamon-menus startup-notification libgnomekbd network-manager-applet nemo polkit-gnome xapps cjs
+# Gerekler: python-setproctitle python3-gobject caribou muffin cinnamon-settings-daemon cinnamon-session cinnamon-translations clutter-gtk libgnome-keyring cinnamon-control-center cinnamon-screensaver cinnamon-menus startup-notification libgnomekbd network-manager-applet nemo polkit-gnome xapps cjs
 # Grup: cinnamon
 
 isim=cinnamon
