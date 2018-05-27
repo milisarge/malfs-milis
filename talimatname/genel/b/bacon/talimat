@@ -5,7 +5,7 @@
 # Grup: geliştirme
 
 isim=bacon
-surum=3.5.4
+surum=3.7.2
 devir=1
 kaynak=(http://www.basic-converter.org/stable/$isim-$surum.tar.gz)
 
