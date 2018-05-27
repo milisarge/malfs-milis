@@ -1,6 +1,6 @@
 # Tanım: Kalıp dosyalarunu USB belleğe yaz
 # URL: https://github.com/KaOSx/isowriter
-# Paketçi: Cihan Alkan
+# Paketçi: Cihan_Alkan
 # Gerekler: qt5
 # Grup: sistem
 
@@ -12,19 +12,10 @@ kaynak=()
 
 derle() {
 
-	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
-		git clone https://github.com/KaOSx/isowriter $DERLEME_KAYNAKDIZIN/$isim 
-	else
-		cd $DERLEME_KAYNAKDIZIN/$isim 
-		git pull
-		cd -
-	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
+	git_indir https://github.com/KaOSx/isowriter $isim 
 	cd $SRC/$isim
 	qmake-qt5 ImageWriter.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug 
-    make
-    make DESTDIR="${PKG}" install
-
+        make
 mkdir -p $PKG/usr/share/applications
 # Başlatıcı 
 cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
@@ -32,8 +23,8 @@ cat > $PKG/usr/share/applications/$isim.desktop << "EOF" &&
 Type=Application
 Categories=System;Utility;Archiving;
 X-KDE-RootOnly=true
-Exec=IsoWriter %F
-Icon=icon-iw
+Exec=sudo IsoWriter
+Icon=/usr/share/icons/usb_blue.png
 Name=ISO Writer
 Comment=Tool for creating bootable installation USB flash drives
 Comment[tr]=Kalıp dosyalarunu USB belleğe yaz
@@ -42,4 +33,8 @@ Version=1.0
 EOF
 
    mkdir -p $PKG/usr/bin
+   cp IsoWriter $PKG/usr/bin/
+   mkdir -p $PKG/usr/share/icons
+   cp res/usb_blue.png $PKG/usr/share/icons/
 }
+
