@@ -2319,6 +2319,7 @@ servisler_kontrol(){
 talimat_bilgi(){
 	local _konum _apaket
 	_apaket=$1
+	[ "$2" ] && cikti_renk_ayarla "$2"
 	_konum=$(talimat_bul $_apaket)
 	if [ "$_konum" = "-1" ];then
 		$_yaz_uyari "$_apaket $_paket_bulunamadi"
@@ -3171,7 +3172,8 @@ ayarlar() {
 				exit 0 ;;
 			### mps tbilgi paketismi = ilgili paketin talimat bilgilerini verir.
 			tbilgi)
-				talimat_bilgi "$2"
+				shift
+				talimat_bilgi "$@"
 				exit 0 ;;
 			### mps talimat paketismi = ilgili paketin talimatını yazdırır.
 			talimat)
