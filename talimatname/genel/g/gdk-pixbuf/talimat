@@ -2,9 +2,10 @@
 # URL: http://www.gtk.org/
 # Paketçi: milisarge
 # Gerekler: gobject-introspection jasper xorg-libxcomposite libtiff libpng libjpeg-turbo
+# Grup:
 
 isim=gdk-pixbuf
-surum=2.32.3
+surum=2.36.12
 devir=1
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz
 		gdk-pixbuf.loaders
