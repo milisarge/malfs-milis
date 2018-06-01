@@ -5,14 +5,12 @@
 # Grup: grafik_tasarım
 
 isim=adwaita-icon-theme
-surum=3.26.1
+surum=3.28.0
 devir=1
-kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum:0:4}/$isim-$surum.tar.xz)
+kaynak=(https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/archive/master/adwaita-icon-theme-master.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
-	cd $isim-$surum
-	gio-querymodules /usr/lib/gio/modules
-	glib-compile-schemas /usr/share/glib-2.0/schemas/
+	cd $isim-master
 	autoreconf -fvi
 	./configure --prefix=/usr
 	make
