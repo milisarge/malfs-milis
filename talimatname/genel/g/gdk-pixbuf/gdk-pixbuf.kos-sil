@@ -1,0 +1,13 @@
+#!/bin/sh
+for _kurtar in  \
+'/etc/gtk-2.0' \
+'/usr/lib/gdk-pixbuf-2.0/' \
+'/usr/lib/gdk-pixbuf-2.0/2.10.0' \
+'/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders'; \
+do 
+
+#sed -i '\|'\'$_kurtar\''|d' /var/lib/pkg/DB/gdk-pixbuf/kurulan
+# -sz ve -g den sonra /tmp/$paket.sil dikkate alınır
+sed -i '\|'\'$_kurtar\''|d' /tmp/gdk-pixbuf.sil
+
+done
