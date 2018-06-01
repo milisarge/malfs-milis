@@ -4,7 +4,7 @@
 # Gerekler: libxml2 freetype
 
 isim=libbluray
-surum=0.6.2
+surum=1.0.2
 devir=1
 kaynak=(https://get.videolan.org/$isim/$surum/$isim-$surum.tar.bz2)
 
