@@ -5,7 +5,7 @@
 # Grup: güvenlik
 
 isim=wireguard-tools
-surum=0.0.20180514
+surum=0.0.20180531
 devir=1
 kaynak=(https://git.zx2c4.com/WireGuard/snapshot/WireGuard-$surum.tar.xz::WireGuard-$surum.tar.xz)
 
