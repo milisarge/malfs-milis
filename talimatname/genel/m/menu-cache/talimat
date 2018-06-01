@@ -5,7 +5,7 @@
 
 
 isim=menu-cache
-surum=1.0.1
+surum=1.1.0
 devir=1
 
 kaynak=(http://downloads.sourceforge.net/lxde/$isim-$surum.tar.xz)

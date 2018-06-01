@@ -4,14 +4,15 @@
 # Gerekler: intltool
 
 isim=lxde-menu-data
-surum=0.1.4
+surum=0.1.5
 devir=2
 _isim=lxmenu-data
 
-kaynak=(http://downloads.sourceforge.net/lxde/${_name}-$surum.tar.xz)
+kaynak=(http://downloads.sourceforge.net/lxde/${_isim}-$surum.tar.xz)
 derle() {
-cd $_name-$surum
+cd $_isim-$surum
 ./configure --prefix=/usr --sysconfdir=/etc
 make
 make DESTDIR=$PKG install
 }
+
