@@ -10,13 +10,13 @@ devir=1
 kaynak=(http://www.freedesktop.org/software/$isim/$isim-$surum.tar.xz)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr \
---sysconfdir=/etc \
---libexecdir=/usr/lib/accountsservice \
---disable-systemd \
---disable-static
-make
-make DESTDIR=$PKG install
-
+	cd $isim-$surum
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib/accountsservice \
+	--disable-systemd \
+	--disable-static
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/gtk-doc
 }
