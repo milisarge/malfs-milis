@@ -4,18 +4,18 @@
 # Gerekler: nasm 
 
 isim=libjpeg-turbo
-surum=1.4.2
+surum=1.5.3
 devir=1
 
 kaynak=(http://sourceforge.net/projects/libjpeg-turbo/files/$surum/libjpeg-turbo-$surum.tar.gz)
 
 derle() {
 cd $isim-$surum
-sed -i -e '/^docdir/ s:$:/libjpeg-turbo-1.4.2:' Makefile.in
+	sed -i -e '/^docdir/ s:$:/libjpeg-turbo-1.5.3:' Makefile.in
 
-./configure --prefix=/usr \
---mandir=/usr/share/man \
---with-jpeg8 --disable-static
-make
-make DESTDIR=$PKG install
+	./configure --prefix=/usr \
+	--mandir=/usr/share/man \
+	--with-jpeg8 --disable-static
+	make
+	make DESTDIR=$PKG install
 }
