@@ -1,20 +1,28 @@
-# Tanım: Lxqt masaüstü paneli
+# Tanım: Lxqt-panel paketi hafif bir X11 masaüstü paneli içeriyor.
 # URL: http://lxqt.org
-# Paketçi: Cihan_Alkan
+# Paketçi: yasarciv67@gmail.com
 # Gerekler: kf5-solid kf5-kguiaddons lxqt-globalkeys libdbusmenu-qt5 liblxqt lxde-menu-data menu-cache libsysstat libstatgrab pulseaudio libxkbcommon lm-sensors
-# Grup: lxqt
 
 isim=lxqt-panel
-surum=0.13.0
+surum=0.11.1
 devir=1
-kaynak=()
+kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
+
 
 derle() {
-    git_indir https://github.com/lxqt/lxqt-panel $isim
-	mkdir -p build
+cd $isim-$surum
+
+sed -e 's:<KF5/KWindowSystem/:<:'               \
+    -i plugin-taskbar/lxqttaskgroup.{h,cpp}     
+
+sed -e '/kbdinfo.h/i #undef explicit'           \
+    -i plugin-kbindicator/src/x11/kbdlayout.cpp
+    
+	mkdir -v build
 	cd build
-	cmake $SRC/$isim \
+	cmake $SRC/$isim-$surum \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib
 	make
 	make DESTDIR=$PKG install
