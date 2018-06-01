@@ -1,11 +1,11 @@
 # Tanım: Kullanici hesaplari ve hesaplarla iliskili ayarlar
 # URL: http://www.freedesktop.org/wiki/Software/AccountsService/
-# Paketçi: alihan-ozturk28@hotmail.com
+# Paketçi: Cihan_Alkan
 # Gerekler: xmlto libxslt polkit gobject-introspection vala
 # Grup: sistem
 
 isim=accountsservice
-surum=0.6.43
+surum=0.6.49
 devir=1
 kaynak=(http://www.freedesktop.org/software/$isim/$isim-$surum.tar.xz)
 
@@ -14,8 +14,9 @@ cd $isim-$surum
 ./configure --prefix=/usr \
 --sysconfdir=/etc \
 --libexecdir=/usr/lib/accountsservice \
+--disable-systemd \
 --disable-static
 make
 make DESTDIR=$PKG install
-mkdir -p $PKG/var/{lib,run}/polkit-1
+
 }
