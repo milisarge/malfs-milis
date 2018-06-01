@@ -1,11 +1,11 @@
 # Tanım: Serbestçe yeniden kullanılabilir Autoconf makroları topluluğu
 # URL: http://www.gnu.org/software/autoconf-archive/
-# Paketçi: CihanAlkan
+# Paketçi: Cihan_Alkan
 # Gerekler: 
 # Grup: sistem
 
 isim=autoconf-archive
-surum=2017.03.21
+surum=2018.03.13
 devir=1
 kaynak=(http://ftpmirror.gnu.org/$isim/$isim-$surum.tar.xz)
 
