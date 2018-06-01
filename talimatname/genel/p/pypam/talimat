@@ -1,0 +1,19 @@
+# Tanım: linux pam python modülü
+# URL: https://pypi.python.org/pypi/python-pam/
+# Paketçi: Cihan Alkan
+# Gerekler: python python-setuptools
+# Grup: kütüphane
+
+isim=pypam
+surum=1.8.3
+devir=1
+
+kaynak=(https://github.com/FirefighterBlu3/python-pam/archive/v1.8.3.tar.gz::python-pam-$surum.tar.gz)
+
+derle() {
+    cp -a python-pam-$surum{,-py3}
+    cd python-pam-$surum
+    python2 setup.py install --prefix=/usr --root=$PKG
+    cd $SRC/python-pam-$surum-py3
+    python3 setup.py install --prefix=/usr --root=$PKG
+}
