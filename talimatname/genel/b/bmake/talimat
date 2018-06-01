@@ -5,7 +5,7 @@
 # Grup: geliştirme
 
 isim=bmake
-surum=20171028
+surum=20180222
 devir=1
 kaynak=(http://www.crufty.net/ftp/pub/sjg/bmake-$surum.tar.gz
         )
