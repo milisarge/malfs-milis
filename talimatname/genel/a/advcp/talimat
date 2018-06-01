@@ -5,21 +5,21 @@
 # Grup: sistem
 
 isim=advcp
-surum=8.24
+surum=8.29
 devir=1
-kaynak=(ftp://ftp.gnu.org/gnu/$_name/$_name-$surum.tar.xz
+_isim=coreutils
+kaynak=(ftp://ftp.gnu.org/gnu/$_isim/$_isim-$surum.tar.xz
         advcpmv-${surum}.patch)
 
-_isim=coreutils
 derle() {
   export FORCE_UNSAFE_CONFIGURE=1
-  cd ${SRC}/${_name}-${surum}
-  patch -p1 -i ${SRC}/advcpmv-${surum}.patch
+  cd ${SRC}/${_isim}-${surum}
+#  patch -p1 -i ${SRC}/advcpmv-${surum}.patch
   ./configure --prefix=/usr \
               --libexecdir=/usr/lib \
               --enable-no-install-program=groups,hostname,kill,uptime
   make $MAKEFLAGS -j1
-  cd ${SRC}/${_name}-${surum}
+  cd ${SRC}/${_isim}-${surum}
   install -D src/cp ${PKG}/usr/bin/acp
   install -D src/mv ${PKG}/usr/bin/amv
 }
