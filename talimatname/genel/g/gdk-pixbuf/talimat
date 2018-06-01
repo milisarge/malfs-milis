@@ -1,26 +1,26 @@
 # Tanım: Gdk Pixbuf, görüntü yükleme ve piksel tampon manipülasyonu için bir araç takımıdır.
 # URL: http://www.gtk.org/
 # Paketçi: milisarge
-# Gerekler: gobject-introspection jasper xorg-libxcomposite libtiff libpng libjpeg-turbo
+# Gerekler: gobject-introspection jasper xorg-libxcomposite libtiff libpng libjpeg-turbo shared-mime-info
 
 isim=gdk-pixbuf
-surum=2.32.3
+surum=2.36.12
 devir=1
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz
 		gdk-pixbuf.loaders
 		gdk-pixbuf-register.sh)
 
 derle() {
-cd $isim-$surum
-./configure --prefix=/usr \
---mandir=/usr/share/man \
---infodir=/usr/share/info \
---sysconfdir=/etc \
--with-x11 --with-libjasper
-make
-make DESTDIR=$PKG install
-mkdir -p $PKG/etc/gtk-2.0
-install -m 644 $SRC/gdk-pixbuf.loaders $PKG/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
-install -m 755 $SRC/gdk-pixbuf-register.sh $PKG/usr/bin/gdk-pixbuf-register
-rm -r $PKG/usr/share/gtk-doc
+	cd $isim-$surum
+	./configure --prefix=/usr \
+	--mandir=/usr/share/man \
+	--infodir=/usr/share/info \
+	--sysconfdir=/etc \
+	-with-x11 --with-libjasper
+	make
+	make DESTDIR=$PKG install
+	mkdir -p $PKG/etc/gtk-2.0
+	install -m 644 $SRC/gdk-pixbuf.loaders $PKG/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+	install -m 755 $SRC/gdk-pixbuf-register.sh $PKG/usr/bin/gdk-pixbuf-register
+	rm -r $PKG/usr/share/gtk-doc
 }
