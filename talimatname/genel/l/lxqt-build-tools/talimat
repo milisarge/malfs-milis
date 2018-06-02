@@ -4,7 +4,7 @@
 # Gerekler: cmake
 
 isim=lxqt-build-tools
-surum=0.3.2
+surum=0.5.0
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
