@@ -33,11 +33,19 @@ if [ -z ${sunucu+:} ]; then
 fi
 
 if [ -z ${git_sunucu+:} ]; then
-	git_sunucu="https://github.com/milisarge/malfs-milis"
+	git_sunucu="https://github.com"
 fi
 
-if [ -z ${git_depo+:} ]; then
-	git_depo="/sources/milis.git"
+if [ -z ${hesap_repo+:} ]; then
+	hesap_repo="milisarge/malfs-milis"
+fi
+
+if [ -z ${git_repo+:} ]; then
+	git_repo="${git_sunucu}/${hesap_repo}"
+fi
+
+if [ -z ${git_yereldepo+:} ]; then
+	git_yereldepo="/sources/milis.git"
 fi
 
 if [ -z ${kaynak_dizin+:} ]; then
@@ -45,7 +53,7 @@ if [ -z ${kaynak_dizin+:} ]; then
 fi
 
 if [ -z ${anatalimatname+:} ]; then
-	anatalimatname="${git_depo}/talimatname"
+	anatalimatname="${git_yereldepo}/talimatname"
 fi
 
 if [ -z ${talimatname+:} ]; then
@@ -2163,12 +2171,12 @@ git_guncelle() {
 	
 	#git deponun sunucudan güncellenmesi
 	$_yaz_bilgi "$_git_guncelleniyor"
-	if [ $(sunucu_erisim ${git_sunucu}) = "aktif" ];then
-		if [ ! -d ${git_depo} ];then
-			git clone ${git_sunucu} ${git_depo}
-			#rsync -av ${git_depo}/rootfs/* /
+	if [ $(sunucu_erisim ${git_repo}) = "aktif" ];then
+		if [ ! -d ${git_yereldepo} ];then
+			git clone ${git_repo} ${git_yereldepo}
+			#rsync -av ${git_yereldepo}/rootfs/* /
 		else
-			cd ${git_depo}
+			cd ${git_yereldepo}
 			git pull  >& $LOGDIZIN/mps-git.log
 			if grep -q "Already\ up-to-date" $LOGDIZIN/mps-git.log; then
 				$_yaz "$_git_guncel"
@@ -2179,20 +2187,20 @@ git_guncelle() {
 			
 		fi
 	else
-		$_yaz_uyari "${git_sunucu} erişim olumsuz.Uzaktan güncelleme alınamadı."
+		$_yaz_uyari "${git_repo} erişim olumsuz.Uzaktan güncelleme alınamadı."
 	fi
-	if [ -d ${git_depo} ];then
+	if [ -d ${git_yereldepo} ];then
 		# git depodan yerel güncellemelerin yapılması
 		#baslangic betiklerinin guncellenmesi
-		#rsync -aviz -q --delete ${git_depo}/rootfs/lib/services/* /lib/services/
-		[ -d /lib/services/ ] && cp --remove-destination -rf ${git_depo}/rootfs/lib/services/* /lib/services/
+		#rsync -aviz -q --delete ${git_yereldepo}/rootfs/lib/services/* /lib/services/
+		[ -d /lib/services/ ] && cp --remove-destination -rf ${git_yereldepo}/rootfs/lib/services/* /lib/services/
 		# talimatname ve betiklerin güncellenmesi
 		_yerel=$(dirname $talimatname)
 		cd ${_yerel}
 		rm -rf $talimatname ${_yerel}/bin ${_yerel}/ayarlar
-		cp -rf ${git_depo}/talimatname/ ${_yerel}/
-		cp -rf ${git_depo}/bin ${_yerel}/
-		cp -rf ${git_depo}/ayarlar ${_yerel}/
+		cp -rf ${git_yereldepo}/talimatname/ ${_yerel}/
+		cp -rf ${git_yereldepo}/bin ${_yerel}/
+		cp -rf ${git_yereldepo}/ayarlar ${_yerel}/
 		
 		#ikili dosyaların /usr/bin altına kısayol atılması
 		for i in ${_yerel}/bin/*; do
@@ -2272,7 +2280,7 @@ op_sil(){
 }
 
 servis_kur(){
-	cd ${git_depo}/ayarlar/servisler
+	cd ${git_yereldepo}/ayarlar/servisler
 	if make kur-$1
 	then
 		 $_yaz "$1 servisi kuruldu"
@@ -2284,7 +2292,7 @@ servis_kur(){
 }
 
 servis_sil(){
-	cd ${git_depo}/ayarlar/servisler
+	cd ${git_yereldepo}/ayarlar/servisler
 	if make sil-$1
 	then
 		 $_yaz "$1 servisi silindi"
@@ -2296,12 +2304,12 @@ servis_sil(){
 }
 
 servisler_kontrol(){
-	servisler=`ls ${git_depo}/ayarlar/servisler/mbd/init.d`
+	servisler=`ls ${git_yereldepo}/ayarlar/servisler/mbd/init.d`
 	for ser in $(ls /etc/init.d/) ; do 
-		if [ ! -f ${git_depo}/ayarlar/servisler/mbd/init.d/$ser ];then
+		if [ ! -f ${git_yereldepo}/ayarlar/servisler/mbd/init.d/$ser ];then
 			printf "%12s %s\n" "$ser mbd kaydı bulunamadı!"
 		else
-			if cmp -s "${git_depo}/ayarlar/servisler/mbd/init.d/$ser" "$ser"
+			if cmp -s "${git_yereldepo}/ayarlar/servisler/mbd/init.d/$ser" "$ser"
 			then
 			   printf "%12s %s\n" "$ser" "mbd uyumsuz"
 			else
