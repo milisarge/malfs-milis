@@ -1,7 +1,7 @@
 # Tanım: Çapraz platform QtWebKit tarayıcı.
 # URL: https://www.falkon.org/
 # Paketçi: Cihan_Alkan
-# Gerekler: qt5 desktop-file-utils hunspell qt5-webkit qt5-webengine kf5-extra-cmake-modules libgnome-keyring
+# Gerekler: qt5 desktop-file-utils hunspell qt5-webkit qt5-webengine kf5-extra-cmake-modules kf5-ki18n libgnome-keyring
 # Grup: ağ
 
 isim=falkon
