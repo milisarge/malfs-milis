@@ -1,0 +1,41 @@
+# Tanım: Beyanname Düzenleme Uygulaması
+# URL: https://ebeyanname.gib.gov.tr/
+# Paketçi: Cihan_Alkan
+# Gerekler: openjdk
+# Grup: ofis
+
+isim=e-beyanname
+surum=20171101
+devir=1
+kaynak=(https://ebeyanname.gib.gov.tr/ebyn_pardus.tar.gz
+	https://ebeyanname.gib.gov.tr/ebyn_yardim_pardus.tar.gz)
+
+derle() {
+     
+     mkdir -p ${PKG}/opt/ebyn
+     cd ${PKG}/opt/ebyn
+     mv ${SRC}/* ./ 
+#Başlatıcı
+mkdir -pv ${PKG}/usr/share/applications &&
+cat > ${PKG}/usr/share/applications/e-beyanname.desktop << "EOF" &&
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment=Gelir İdaresi Başkanlığı E-Beyanname
+Terminal=false
+Name=E-Beyanname
+Exec=e-beyanname
+Type=Application
+Icon=/opt/ebyn/bdp_bg.jpg
+Categories=Office;
+EOF
+
+#Çalıştırıcı
+mkdir -pv ${PKG}/usr/bin &&
+cat > ${PKG}/usr/bin/e-beyanname << "EOF" &&
+java -Xmx256m -Dcom.cs.uid.renderer.java.runtime.UIBeanClassCache.packageName= -Dcom.cs.uid.renderer.java.runtime.UIBeanClassCache.checkForModification=false -classpath /opt/ebyn/beydef.jar:/opt/ebyn/bdp.jar:/opt/ebyn/csfc.jar:/opt/ebyn/debugger.jar:/opt/ebyn/cs_mdi.jar:/opt/ebyn/lf.jar:/opt/ebyn/JavaRenderer.jar:/opt/ebyn/ice-5_06_3.jar bdp_mf
+EOF
+chmod 744 ${PKG}/opt/ebyn/*
+chmod +x ${PKG}/usr/bin/e-beyanname
+rm ${PKG}/opt/ebyn/ebyn_pardus.tar.gz
+rm ${PKG}/opt/ebyn/ebyn_yardim_pardus.tar.gz
+}
