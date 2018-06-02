@@ -5,10 +5,10 @@
 # Grup: medya
 
 isim=shotcut
-surum=17.12
+surum=18.05
 devir=1
 
-kaynak=(https://github.com/mltframework/shotcut/archive/v17.12.tar.gz::$isim-$surum.tar.gz)
+kaynak=(https://github.com/mltframework/shotcut/archive/v$surum.tar.gz::$isim-$surum.tar.gz)
 
 derle() {
 
