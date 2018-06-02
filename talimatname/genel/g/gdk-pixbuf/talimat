@@ -5,7 +5,7 @@
 
 isim=gdk-pixbuf
 surum=2.36.12
-devir=1
+devir=2
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz
 		gdk-pixbuf.loaders
 		gdk-pixbuf-register.sh)
