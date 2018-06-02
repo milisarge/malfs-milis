@@ -1,0 +1,69 @@
+# Tanım: Samsung yazıcılar ve tarayıcılar için Birleşik Linux Sürücüsü
+# URL: http://www.samsung.com
+# Paketçi: Cihan_Alkan
+# Gerekler: libxml2 libusb-compat cups sane ghostscript
+# Grup: sürücü
+
+isim=samsung-printer
+surum=1.00.39
+devir=1
+
+kaynak=(http://downloadcenter.samsung.com/content/DR/201704/20170407143829533/uld_V${surum}_01.17.tar.gz
+        xerox_mfp-smfp.conf)
+
+derle() {
+    mkdir -p "$PKG"/usr/share/licenses/samsung-unified-driver
+    cp "$SRC"/uld/noarch/license/eula.txt "$PKG"/usr/share/licenses/samsung-unified-driver/LICENSE
+    cp "$SRC"/uld/noarch/license/eula-fr.txt "$PKG"/usr/share/licenses/samsung-unified-driver
+
+    mkdir -p "$PKG"/usr/lib
+    cp "$SRC"/uld/x86_64/libscmssc.so "$PKG"/usr/lib
+
+    mkdir -p "$PKG"/usr/lib/cups/backend
+    cp "$SRC"/uld/x86_64/smfpnetdiscovery "$PKG"/usr/lib/cups/backend
+
+    mkdir -p "$PKG"/usr/lib/cups/filter
+    cp "$SRC"/uld/x86_64/pstosecps "$PKG"/usr/lib/cups/filter
+    cp "$SRC"/uld/x86_64/rastertospl "$PKG"/usr/lib/cups/filter
+
+    mkdir -p "$PKG"/usr/share/ppd/suld
+    for ppd in "$SRC"/uld/noarch/share/ppd/*.ppd; do
+        gzip < "$ppd" > "$PKG"/usr/share/ppd/suld/"${ppd##*/}".gz
+    done
+
+    mkdir -p "$PKG"/usr/share/ppd/suld/cms
+    for cts in "$SRC"/uld/noarch/share/ppd/cms/*.cts; do
+        cp "$cts" "$PKG"/usr/share/ppd/suld/cms
+    done
+
+    mkdir -p "$PKG"/usr/share
+    cp -r "$SRC"/uld/noarch/share/locale "$PKG"/usr/share
+    rm -f "$PKG"/usr/share/locale/fr/LC_MESSAGES/install.mo
+
+    mkdir -p "$PKG"/etc/sane.d
+    cp "$SRC"/uld/noarch/etc/smfp.conf "$PKG"/etc/sane.d
+    cp "$SRC"/xerox_mfp-smfp.conf "$PKG"/etc/sane.d
+
+    mkdir -p "$PKG"/etc/sane.d/dll.d
+    echo smfp > "$PKG"/etc/sane.d/dll.d/smfp-scanner
+    echo xerox_mfp-smfp > "$PKG"/etc/sane.d/dll.d/smfp-scanner-fix
+
+    mkdir -p "$PKG"/usr/lib/sane
+    cp "$SRC"/uld/x86_64/libsane-smfp.so.1.0.1 "$PKG"/usr/lib/sane
+    ln -s libsane-smfp.so.1.0.1 "$PKG"/usr/lib/sane/libsane-smfp.so.1
+    ln -s libsane-smfp.so.1 "$PKG"/usr/lib/sane/libsane-smfp.so
+
+    mkdir -p "$PKG"/usr/lib/udev/rules.d
+    (
+        OEM_FILE="$SRC"/uld/noarch/oem.conf
+        INSTALL_LOG_FILE=/dev/null
+        source "$SRC"/uld/noarch/scripting_utils
+        source "$SRC"/uld/noarch/package_utils
+        source "$SRC"/uld/noarch/scanner-script.pkg
+        fill_full_template "$SRC"/uld/noarch/etc/smfp.rules.in "$PKG"/usr/lib/udev/rules.d/60_smfp_samsung.rules
+
+        mkdir -p "$PKG"/opt/samsung/scanner/share
+        cp "$OEM_FILE" "$PKG"/opt/samsung/scanner/share
+    )
+}
+
