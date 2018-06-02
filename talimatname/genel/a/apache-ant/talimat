@@ -5,13 +5,14 @@
 # Grup: geliştirme
 
 isim=apache-ant
-surum=1.9.6
+surum=1.9.7
 devir=1
 kaynak=(http://archive.apache.org/dist/ant/source/$isim-$surum-src.tar.bz2
-        http://hamcrest.googlecode.com/files/hamcrest-1.3.tgz
+        https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/hamcrest/hamcrest-1.3.tgz
         http://anduin.linuxfromscratch.org/sources/other/junit-4.11.jar)
 
 derle() {
+export JAVA_HOME=/opt/jdk
 cd $isim-$surum
 mv ../hamcrest-1.3 .
 cp -v ../junit-4.11.jar \
@@ -27,5 +28,7 @@ pathappend /opt/ant/bin
 export ANT_HOME=/opt/ant
 # End of /etc/profile.d/ant.sh
 EOF
+mkdir -p $PKG/usr/bin
 ln -s /opt/ant/bin/ant $PKG/usr/bin/ant
+rm -rf $PKG/opt/ant-${surum}/manual
 }
