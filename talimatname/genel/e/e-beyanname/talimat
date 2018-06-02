@@ -36,6 +36,4 @@ java -Xmx256m -Dcom.cs.uid.renderer.java.runtime.UIBeanClassCache.packageName= -
 EOF
 chmod 744 ${PKG}/opt/ebyn/*
 chmod +x ${PKG}/usr/bin/e-beyanname
-rm ${PKG}/opt/ebyn/ebyn_pardus.tar.gz
-rm ${PKG}/opt/ebyn/ebyn_yardim_pardus.tar.gz
 }
