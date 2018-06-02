@@ -1,7 +1,7 @@
 # Tanım: LXQt uygulamaları için çeşitli paketleme araçları ve komut dosyaları
 # URL: http://lxqt.org
-# Paketçi: yasarciv67@gmail.com
-# Gerekler: cmake
+# Paketçi: milisarge
+# Gerekler: cmake qt5
 
 isim=lxqt-build-tools
 surum=0.5.0
