@@ -819,10 +819,6 @@ derleme_listyap(){
 	gerekleri_listele $@
 }
 
-derleme_listbilgi(){
-	$_yaz_tm "yapim asamasında"
-}
-
 # -derlist
 paket_derle_liste(){
 	for dpktyer in `cat $1`;do
@@ -2808,6 +2804,8 @@ agdan_kur(){
 
 ayarlar() {
 	
+	args="${@:2}"
+	
 	while [ "$1" ]; do
 		case $1 in
 			### Milis_Paket_Sistemi_Yardim
@@ -2815,8 +2813,7 @@ ayarlar() {
 			### mps -i paketismi = sadece paketi indirir,paket kurulmaz.
 			-i|--indir)
 				kurulum_onay="olumsuz"
-				shift
-				paket_indir "$@"
+				paket_indir $args
 				exit 0 ;;
 			### mps -ik paketismi = ilgili paketi indirir ve kurar.
 			-ik|--inku)
@@ -2831,13 +2828,11 @@ ayarlar() {
 				exit 0 ;;
 			### mps -k paketismi..mps.lz = yerel dizindeki paketi kurar.
 			-k)
-				shift
-				yerelden_kur "$@" 
+				yerelden_kur $args
 				exit 0 ;;
 			### mps sil|-s paketismi = ilgili paketi onaylı kaldırır.
 			-s|sil)
-				shift
-				paket_sil "$@"
+				paket_sil $args
 				exit 0 ;;
 			### mps zorsil|-sz paketismi = ilgili paketi onaysız kaldırır.
 			-sz|zorsil)
@@ -3124,8 +3119,7 @@ ayarlar() {
 				 exit 0 ;;	
 			### mps -dly paketismi = ilgili paketin genel ve tüm bağımlılık listesini verir,oluşturur.
 			-dly|dliste)
-				shift
-				derleme_listyap "$@" 
+				derleme_listyap $args
 				exit 0 ;;	
 			### mps -ykp paketismi = ilgili paketin kurulmak istenirse,kurulacak yeni paketleri listeler.
 			-ykp)
@@ -3172,8 +3166,7 @@ ayarlar() {
 				exit 0 ;;
 			### mps tbilgi paketismi = ilgili paketin talimat bilgilerini verir.
 			tbilgi)
-				shift
-				talimat_bilgi "$@"
+				talimat_bilgi $args
 				exit 0 ;;
 			### mps talimat paketismi = ilgili paketin talimatını yazdırır.
 			talimat)
@@ -3267,8 +3260,7 @@ ayarlar() {
 				exit 0 ;;
 			### mps yukselt . = tüm sistemin güncellemesini gerçekleştirir.
 			-GS|yukselt)
-				shift
-				sistem_guncelle "$@"
+				sistem_guncelle $args
 				exit 0 ;;
 			### mps yukselt2 . = tüm sistemin güncellemesini gerçekleştirir.
 			-GS2|yukselt2)
@@ -3306,8 +3298,7 @@ ayarlar() {
 				paket_guncelle_oto "$2";;
 			### mps -kk paketismi = ilgili paketin kurulu olma durumunu gösterir.
 			-kk)
-				shift
-				kurulu_kontrol "$@"
+				kurulu_kontrol $args
 				exit 0 ;;
 			-kudo)
 				kurulum_dogrulama 
@@ -3401,8 +3392,8 @@ ayarlar() {
 					hataloglama "tarihce dosyasi eksik $1"
 					exit 1
 				fi
-					tarihce_yukle "$2"
-					shift ;;
+				tarihce_yukle "$2"
+				exit 1 ;;
 			### mps -trl . = tarihçe noktalarını listeler.
 			-trl)
 				tarihce_liste ;;
@@ -3422,8 +3413,8 @@ ayarlar() {
 					hataloglama "parametre eksik $1"
 					exit 1
 				fi
-					tarihce_sil "$2"
-					shift ;;
+				tarihce_sil "$2"
+				exit 1 ;;
 			### mps itest islev_ismi = mps içindeki işlevlerin testi için kullanılmaktadır.
 			itest)
 				if [ $2 ];then
@@ -3451,7 +3442,6 @@ ayarlar() {
 				$_yaz_uyari "Geçersiz Parametre!  --> mps yardim "
 				exit 0 ;;
 		esac
-		shift
 	done
 }
 yardim_icerik(){
