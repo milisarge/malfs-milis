@@ -1,2 +1,3 @@
 #!/bin/sh
 [ `mps -kk librsvg` = "kurulu" ] && mps yekur librsvg
+[ `mps -kk libopenraw` = "kurulu" ] && mps yekur libopenraw
