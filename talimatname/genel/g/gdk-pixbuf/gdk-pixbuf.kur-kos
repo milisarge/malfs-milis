@@ -1,2 +1,2 @@
 #!/bin/sh
-mps yekur librsvg
+[ `mps -kk librsvg` = "kurulu" ] && mps yekur librsvg
