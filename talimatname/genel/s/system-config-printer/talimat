@@ -1,0 +1,23 @@
+# Tanım: Bir CUPS yazıcı yapılandırma aracı ve durum uygulaması
+# URL: https://github.com/zdohnal/system-config-printer
+# Packager: Cihan_Alkan
+# Gerekler: intltool xmlto docbook-xsl desktop-file-utils libsecret pycups pydbus pycurl libnotify pyrequests python3-gobject gtk3 python3-cairo
+# Grup: sistem
+
+isim=system-config-printer
+surum=1.5.11
+devir=1
+kaynak=(https://github.com/zdohnal/system-config-printer/releases/download/$surum/system-config-printer-${surum}.tar.xz
+        0001-Fix-constructing-the-auth-dialog.patch)
+
+derle() {
+	cd ${isim}-${surum}
+	patch -Np1 -i ../0001-Fix-constructing-the-auth-dialog.patch
+
+	./configure --prefix=/usr \
+	--sbindir=/usr/bin \
+	--sysconfdir=/etc \
+	--with-udevdir=/usr/lib/udev --with-udev-rules 
+	make
+	make DESTDIR="${PKG}" install
+}
