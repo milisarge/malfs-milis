@@ -1,0 +1,21 @@
+# Tanım: Bir döşeme pencere yöneticisi
+# URL: https://i3wm.org/
+# Paketçi: Yaşar Çiv
+# Gerekler: yajl xmlto libev startup-notification pango libxkbcommon xcb-util-cursor xcb-util-wm xcb-util-keysyms xorg-libx11 xcb-util-xrm i3-status
+# Grup: i3
+
+
+isim=i3wm
+surum=4.14.1
+devir=1
+kaynak=(https://i3wm.org/downloads/i3-$surum.tar.bz2)
+
+derle() {
+  cd i3-$surum
+autoreconf -fi
+mkdir build
+cd build
+../configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}
