@@ -5,7 +5,7 @@
 
 isim=slim
 surum=2.0
-devir=2
+devir=3
 kaynak=(http://kaynaklar.milislinux.org/slim-$surum.tar.gz
         panel.png
 		https://raw.githubusercontent.com/yakar/milis-linux-wallpapers/master/milis-linux-tree.png
