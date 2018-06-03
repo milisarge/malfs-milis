@@ -32,7 +32,7 @@ if [ -z ${sunucu+:} ]; then
 	sunucu="127.0.0.1:8000/"
 fi
 
-git_sunucu="https://github.com"y
+git_sunucu="https://github.com"
 
 if [ -z ${hesap_repo+:} ]; then
 	hesap_repo="milisarge/malfs-milis"
