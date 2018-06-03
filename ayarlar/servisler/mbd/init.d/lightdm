@@ -16,7 +16,7 @@
 
 . /lib/lsb/init-functions
 
-BIN_FILE="/usr/sbin/lightdm"
+BIN_FILE="/usr/bin/lightdm"
 
 #$LastChangedBy: ken $
 #$Date: 2014-09-11 17:27:58 -0500 (Thu, 11 Sep 2014) $
