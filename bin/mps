@@ -32,9 +32,7 @@ if [ -z ${sunucu+:} ]; then
 	sunucu="127.0.0.1:8000/"
 fi
 
-if [ -z ${git_sunucu+:} ]; then
-	git_sunucu="https://github.com"
-fi
+git_sunucu="https://github.com"y
 
 if [ -z ${hesap_repo+:} ]; then
 	hesap_repo="milisarge/malfs-milis"
@@ -1223,17 +1221,18 @@ sistem_guncelle(){
 			pd=$(( $count * 73 / $total ))
 			printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
 			kpaket=$(sed -n ${count}'p' ${_pkliste})
+			_konum=$(talimat_bul $kpaket)
+			if [ "$_konum" = "-1" ];then
+				$_yaz_uyari "$kpaket $_talimat_bulunamadi $_surum_kontrol_iptal"
+				# talimatnamede yer almadığından paketin güncellenmesi es geçilecek.
+				kpaket=""
+			fi
 			if [ ! -z $kpaket ];then
 				satir=$(sed -n '7p' <  $VT/$kpaket/META)
 				ksurum=${satir:1:${#satir}-1}
 				satir2=$(sed -n '8p' <  $VT/$kpaket/META)
 				kdevir=${satir2:1:${#satir2}-1}
 				#deposurum=$(grep " $kpaket#" /depo/paketler/paket.vt | cut -d' ' -f3 | cut -d'#' -f 2 | cut -d'-' -f1)
-				_konum=$(talimat_bul $kpaket)
-				if [ "$_konum" = "-1" ];then
-					$_yaz_uyari "$kpaket $_talimat_bulunamadi $_surum_kontrol_iptal"
-					exit 1
-				fi
 				
 				source $_konum/talimat
 				deposurum=`echo -e "$surum" | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | head -n1`
