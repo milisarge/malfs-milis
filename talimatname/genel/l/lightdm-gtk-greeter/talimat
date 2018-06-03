@@ -5,7 +5,7 @@
 # Grup: sistem
 
 isim=lightdm-gtk-greeter
-surum=2.0.3
+surum=2.0.5
 devir=1
 
 kaynak=(https://launchpad.net/lightdm-gtk-greeter/${surum%.*}/$surum/+download/lightdm-gtk-greeter-$surum.tar.gz

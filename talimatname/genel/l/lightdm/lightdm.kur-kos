@@ -1,10 +1,6 @@
-grub_ekle() {
-	groupadd -g 800 lightdm"
-	useradd -d /var/lib/lightdm -s /bin/false -u 800 -g 800 lightdm"
-}
-
-if ! getent group lightdm 1>/dev/null 2>/dev/null ; then
-  grub_ekle
-elif ! getent passwd lightdm 1>/dev/null 2>/dev/null ; then
-  grub_ekle
-fi
+userdel lightdm
+groupdel lightdm
+groupadd -g 800 lightdm
+useradd -d /var/lib/lightdm -s /bin/false -u 800 -g 800 lightdm
+[ -d /var/lib/lightdm ] && chown lightdm:lightdm /var/lib/lightdm
+[ -d /var/lib/lightdm-data ] &&  chown lightdm:lightdm /var/lib/lightdm-data

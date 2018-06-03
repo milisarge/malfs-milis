@@ -2,13 +2,13 @@
 # URL: https://launchpad.net/lightdm
 # Paketçi: milisarge
 # Gerekler: glib gobject-introspection intltool itstool libgcrypt xorg-libxi xorg-libx11 libxcb xorg-libxdmcp xorg-libxklavier pam polkit vala
-# GRup: sistem
+# Grup: sistem
 
 isim=lightdm
-surum=1.24.0
+surum=1.26.0
 devir=1
 
-kaynak=(https://launchpad.net/lightdm/1.24/1.24.0/+download/lightdm-1.24.0.tar.xz
+kaynak=(https://github.com/CanonicalLtd/lightdm/releases/download/${surum}/lightdm-${surum}.tar.xz
         Xsession)
 
 derle() {
@@ -41,26 +41,25 @@ derle() {
 	rm -rf $PKG/etc/apparmor.d
 	rm -rf $PKG/etc/init
 
-	mv $PKG/etc/lightdm/lightdm.conf $PKG/etc/lightdm/lightdm.conf.new
-	mv $PKG/etc/lightdm/users.conf $PKG/etc/lightdm/users.conf.new
-	mv $PKG/etc/lightdm/keys.conf $PKG/etc/lightdm/keys.conf.new
+	#mv $PKG/etc/lightdm/lightdm.conf $PKG/etc/lightdm/lightdm.conf.new
+	#mv $PKG/etc/lightdm/users.conf $PKG/etc/lightdm/users.conf.new
+	#mv $PKG/etc/lightdm/keys.conf $PKG/etc/lightdm/keys.conf.new
 
-	mv $PKG/etc/pam.d/lightdm $PKG/etc/pam.d/lightdm.new
-	mv $PKG/etc/pam.d/lightdm-autologin $PKG/etc/pam.d/lightdm-autologin.new
-	mv $PKG/etc/pam.d/lightdm-greeter $PKG/etc/pam.d/lightdm-greeter.new
+	#mv $PKG/etc/pam.d/lightdm $PKG/etc/pam.d/lightdm.new
+	#mv $PKG/etc/pam.d/lightdm-autologin $PKG/etc/pam.d/lightdm-autologin.new
+	#mv $PKG/etc/pam.d/lightdm-greeter $PKG/etc/pam.d/lightdm-greeter.new
 
 	# Remove systemd entries from pam files
-	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm.new
-	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm-autologin.new
-	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm-greeter.new
+	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm
+	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm-autologin
+	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm-greeter
 
 	# Fix session-wrapper in config
-	sed -i 's@^.*session-wrapper.*$@session-wrapper=/etc/lightdm/Xsession@' $PKG/etc/lightdm/lightdm.conf.new
+	sed -i 's@^.*session-wrapper.*$@session-wrapper=/etc/lightdm/Xsession@' $PKG/etc/lightdm/lightdm.conf
 
 	mkdir -p $PKG/var/lib/lightdm
-	chown lightdm:lightdm $PKG/var/lib/lightdm
+	
 	mkdir -p $PKG/var/lib/lightdm-data
-	chown lightdm:lightdm $PKG/var/lib/lightdm-data
 	
 	# servis kurulması
 	cd /sources/milis.git/ayarlar/servisler
