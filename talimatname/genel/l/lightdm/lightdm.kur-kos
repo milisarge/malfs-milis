@@ -4,3 +4,4 @@ groupadd -g 800 lightdm
 useradd -d /var/lib/lightdm -s /bin/false -u 800 -g 800 lightdm
 [ -d /var/lib/lightdm ] && chown lightdm:lightdm /var/lib/lightdm
 [ -d /var/lib/lightdm-data ] &&  chown lightdm:lightdm /var/lib/lightdm-data
+[ `mps -kk slim` = "kurulu" ] && mps sil slim
