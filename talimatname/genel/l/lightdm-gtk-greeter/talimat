@@ -1,0 +1,45 @@
+# Tanım: Lightdm için GTK karşılayıcı
+# URL: https://launchpad.net/lightdm-gtk-greeter
+# Paketçi: milisarge
+# Gerekler: gtk3 lightdm exo gobject-introspection intltool
+# Grup: sistem
+
+isim=lightdm-gtk-greeter
+surum=2.0.3
+devir=1
+
+kaynak=(https://launchpad.net/lightdm-gtk-greeter/${surum%.*}/$surum/+download/lightdm-gtk-greeter-$surum.tar.gz
+		cinnamon_badge_symbolic.svg)
+
+derle() {
+	cd $isim-$surum
+	
+	CFLAGS="-Wno-declaration-after-statement" \
+	./configure \
+	--prefix=/usr \
+	--libdir=/usr/lib \
+	--libexecdir=/usr/lib/lightdm \
+	--sbindir=/usr/bin \
+	--sysconfdir=/etc \
+	--with-libxklavier \
+	--disable-libido \
+	--disable-libindicator \
+	--disable-at-spi-command \
+	--disable-indicator-services-command \
+	--disable-static
+
+	make
+	make install DESTDIR=$PKG
+
+	mv $PKG/etc/lightdm/lightdm-gtk-greeter.conf $PKG/etc/lightdm/lightdm-gtk-greeter.conf.new
+
+	# If user has no avatar, use slackware logo
+	mkdir -p $PKG/usr/share/lightdm-gtk-greeter
+	cp /sources/milis.git/ayarlar/milislogo.png $PKG/usr/share/lightdm-gtk-greeter
+	echo "default-user-image = /usr/share/lightdm-gtk-greeter/milislogo.png" >> $PKG/etc/lightdm/lightdm-gtk-greeter.conf.new
+
+	# Add Cinnamon logo
+	cp $SRC/cinnamon_badge_symbolic.svg $PKG/usr/share/icons/hicolor/scalable/places/cinnamon_badge-symbolic.svg
+	cp $SRC/cinnamon_badge_symbolic.svg $PKG/usr/share/icons/hicolor/scalable/places/cinnamon2d_badge-symbolic.svg
+
+}

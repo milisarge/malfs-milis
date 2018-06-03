@@ -1,0 +1,68 @@
+# Tanım: Hafif bir giriş yönetici
+# URL: https://launchpad.net/lightdm
+# Paketçi: milisarge
+# Gerekler: glib gobject-introspection intltool itstool libgcrypt xorg-libxi xorg-libx11 libxcb xorg-libxdmcp xorg-libxklavier pam polkit vala
+# GRup: sistem
+
+isim=lightdm
+surum=1.24.0
+devir=1
+
+kaynak=(https://launchpad.net/lightdm/1.24/1.24.0/+download/lightdm-1.24.0.tar.xz
+        Xsession)
+
+derle() {
+	cd $isim-$surum
+	./configure \
+	--prefix=/usr \
+	--libdir=/usr/lib \
+	--libexecdir=/usr/lib/lightdm \
+	--localstatedir=/var \
+	--sbindir=/usr/bin \
+	--sysconfdir=/etc \
+	--mandir=/usr/man \
+	--with-greeter-session=lightdm-gtk-greeter \
+	--with-greeter-user=lightdm \
+	--disable-static \
+	--disable-tests \
+	--disable-liblightdm-qt \
+	--disable-liblightdm-qt5 
+
+	make
+	make DESTDIR=$PKG install
+	
+	rm -rf $PKG/usr/man
+	rm -rf $PKG/usr/share/gtk-doc
+	rm -rf $PKG/usr/share/help
+	
+	cat $SRC/Xsession > $PKG/etc/lightdm/Xsession
+	chmod 755 $PKG/etc/lightdm/Xsession
+
+	rm -rf $PKG/etc/apparmor.d
+	rm -rf $PKG/etc/init
+
+	mv $PKG/etc/lightdm/lightdm.conf $PKG/etc/lightdm/lightdm.conf.new
+	mv $PKG/etc/lightdm/users.conf $PKG/etc/lightdm/users.conf.new
+	mv $PKG/etc/lightdm/keys.conf $PKG/etc/lightdm/keys.conf.new
+
+	mv $PKG/etc/pam.d/lightdm $PKG/etc/pam.d/lightdm.new
+	mv $PKG/etc/pam.d/lightdm-autologin $PKG/etc/pam.d/lightdm-autologin.new
+	mv $PKG/etc/pam.d/lightdm-greeter $PKG/etc/pam.d/lightdm-greeter.new
+
+	# Remove systemd entries from pam files
+	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm.new
+	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm-autologin.new
+	sed -i 's@^.*pam_systemd.so.*$@@' $PKG/etc/pam.d/lightdm-greeter.new
+
+	# Fix session-wrapper in config
+	sed -i 's@^.*session-wrapper.*$@session-wrapper=/etc/lightdm/Xsession@' $PKG/etc/lightdm/lightdm.conf.new
+
+	mkdir -p $PKG/var/lib/lightdm
+	chown lightdm:lightdm $PKG/var/lib/lightdm
+	mkdir -p $PKG/var/lib/lightdm-data
+	chown lightdm:lightdm $PKG/var/lib/lightdm-data
+	
+	# servis kurulması
+	cd /sources/milis.git/ayarlar/servisler
+	make DESTDIR=$PKG kur-lightdm 
+}

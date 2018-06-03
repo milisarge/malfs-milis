@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# LightDM wrapper to run around X sessions.
+
+echo "Running X session wrapper"
+
+# Load profile
+for file in "/etc/profile" "$HOME/.profile" "/etc/xprofile" "$HOME/.xprofile"; do
+    if [ -f "$file" ]; then
+        echo "Loading profile from $file";
+        . "$file"
+    fi
+done
+
+# Run user xsession shell script
+script="$HOME/.xsession"
+if [ -x "$script" -a ! -d "$script" ]; then
+    echo "Loading xsession script $script"
+    . "$script"
+fi
+
+echo "X session wrapper complete, running session $@"
+
+exec $@
+
