@@ -2,14 +2,16 @@
 # URL: http://joewing.net/programs/jwm/
 # Paketçi: milisarge
 # Gerekler: xorg xorg-libxt xorg-libxft xorg-libxmu xorg-mesa libpng libjpeg-turbo
+# Gruplar:
 
 isim=jwm
-surum=2.3.5
+surum=2.3.7
 devir=1
-kaynak=(http://joewing.net/projects/jwm/releases/$isim-$surum.tar.xz $isim.desktop $isim.readme)
+kaynak=(http://joewing.net/projects/jwm/releases/$isim-$surum.tar.xz $isim.desktop $isim.readme jwm-tr.po)
 
 derle() {
 cd $isim-$surum
+mv $SRC/$isim-tr.po po/tr.po
 ./configure --prefix=/usr \
 --disable-confirm \
 --disable-fribidi \
