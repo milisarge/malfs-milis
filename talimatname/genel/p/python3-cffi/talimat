@@ -1,0 +1,16 @@
+# Tanım: Python çağıran C kodu için Yabancı Fonksiyon Arayüzü.
+# URL: http://cffi.readthedocs.org/
+# Paketçi: milisarge
+# Gerekler: libffi python3-cparser
+# Grup: kütüphane
+
+isim=python3-cffi
+_isim=cffi
+surum=1.11.5
+devir=1
+kaynak=(http://pypi.python.org/packages/source/c/$_isim/$_isim-$surum.tar.gz)
+
+derle() {
+	cd $_isim-$surum
+	/usr/bin/python3 setup.py install --root=$PKG --optimize=1
+}

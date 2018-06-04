@@ -1,0 +1,15 @@
+# Tanım: OpenSSL kütüphanesine Python arabirimi.
+# URL: http://pypi.python.org/pypi/pyOpenSSL
+# Paketçi: Cihan_Alkan
+# Gerekler: python3-cryptography
+
+isim=python3-openssl
+surum=18.0.0
+devir=1
+kaynak=(https://github.com/pyca/pyopenssl/archive/${surum}.tar.gz::$isim-$surum.tar.gz)
+
+derle() {
+	cd pyopenssl-$surum
+	/usr/bin/python3 setup.py build
+	/usr/bin/python3 setup.py install --root=$PKG --optimize=1 --skip-build
+}

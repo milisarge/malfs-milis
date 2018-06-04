@@ -1,0 +1,22 @@
+# Tanım: C ayrıştırıcı ve AST jeneratörü Python ile yazılmış.
+# URL: https://github.com/eliben/pycparser
+# Paketçi: Cihan_Alkan
+# Gerekler: python3-setuptools
+# Grup: kütüphane
+
+isim=python3-cparser
+_isim=pycparser
+surum=2.18
+devir=1
+kaynak=(https://github.com/eliben/$_isim/archive/release_v$surum.zip)
+
+derle() {
+	cd $_isim-release_v$surum
+	/usr/bin/python3 setup.py build
+
+	cd pycparser
+	/usr/bin/python3 _build_tables.py
+	cd -
+
+	/usr/bin/python3 setup.py install --root=$PKG --optimize=1
+}
