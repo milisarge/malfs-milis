@@ -1,0 +1,17 @@
+# Tanım: Python 3.4 Enum backported
+# URL: https://pypi.python.org/pypi/enum34
+# Paketçi: milisarge
+# Gerekler: python3 python3-setuptools
+# Grup: kütüphane
+
+isim=python3-enum34
+_isim=enum34
+surum=1.1.6
+devir=1
+kaynak=(https://pypi.python.org/packages/bf/3e/31d502c25302814a7c2f1d3959d2a3b3f78e509002ba91aea64993936876/enum34-1.1.6.tar.gz)
+
+derle() {
+	cd "$SRC/$_name-$surum"
+	python3 setup.py install --root="$PKG" --optimize=1
+	install -Dm644 enum/LICENSE "$PKG/usr/share/licenses/$isim/LICENSE"
+}
