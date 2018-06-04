@@ -1,3 +1,4 @@
+sed -i "s/^id:[3-5]/id:5/" /etc/inittab
 userdel lightdm
 groupdel lightdm
 groupadd -g 800 lightdm
