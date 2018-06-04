@@ -1,55 +1,54 @@
 #!/bin/sh
-# Begin /etc/rc.d/init.d/lxdm
+# Begin /etc/rc.d/init.d/lightdm
 
 ### BEGIN INIT INFO
-# Provides:            lxdm
+# Provides:            lightdm
 # Required-Start:      $local_fs
 # Should-Start:        $remote_fs $syslog
 # Required-Stop:       $local_fs
 # Should-Stop:         $remote_fs $syslog
 # Default-Start:       5
 # Default-Stop:        0 1 2 3 4 6
-# Short-Description:   Starts lxdm.
-# Description:         Starts lxdm daemon.
+# Short-Description:   Starts lightdm.
+# Description:         Starts lightdm daemon.
 # X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions
+#[ -e /opt/xorg/bin/X ] && . /etc/profile 
 
 BIN_FILE="/usr/bin/lightdm"
 
-#$LastChangedBy: ken $
-#$Date: 2014-09-11 17:27:58 -0500 (Thu, 11 Sep 2014) $
+#$LastChangedBy: bdubbs $
+#$Date: 2018-01-05 12:17:22 -0600 (Fri, 05 Jan 2018) $
 
 case $1 in
    start)
-	log_info_msg "Yerel ayarlar eklendi..."
-    yerel_ayar
-    log_info_msg "Starting lightdm..."
-	start_daemon $BIN_FILE -d
-	evaluate_retval
-	;;
+        log_info_msg "Starting lightdm..."
+        start_daemon $BIN_FILE &
+        evaluate_retval
+        ;;
 
    stop)
-	log_info_msg "Stopping lightdm..."
- 	killproc $BIN_FILE
-	evaluate_retval
-	;;
+        log_info_msg "Stopping lightdm..."
+        killproc $BIN_FILE
+        evaluate_retval
+        ;;
 
    restart)
-	$0 stop
-	sleep 2
-	$0 start
-	;;
+        $0 stop
+        sleep 2
+        $0 start
+        ;;
 
    status)
         statusproc ${BIN_FILE}
         ;;
 
    *)
-	echo "usage: $0 [start|stop|restart|status]"
+        echo "usage: $0 [start|stop|restart|status]"
         exit 1
-	;;
+        ;;
 esac
 
 # End /etc/rc.d/init.d/lightdm
