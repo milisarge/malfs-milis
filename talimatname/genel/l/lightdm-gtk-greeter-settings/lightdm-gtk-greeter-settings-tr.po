@@ -1,7 +1,7 @@
-# Greek translation for lightdm-gtk-greeter-settings
+# Turkish translation for lightdm-gtk-greeter-settings
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# Cihan Alkan <cihanalk@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
