@@ -31,12 +31,10 @@ derle() {
 	make
 	make install DESTDIR=$PKG
 
-	mv $PKG/etc/lightdm/lightdm-gtk-greeter.conf $PKG/etc/lightdm/lightdm-gtk-greeter.conf.new
-
-	# If user has no avatar, use slackware logo
+	# If user has no avatar, use milis logo
 	mkdir -p $PKG/usr/share/lightdm-gtk-greeter
 	cp /sources/milis.git/ayarlar/milislogo.png $PKG/usr/share/lightdm-gtk-greeter
-	echo "default-user-image = /usr/share/lightdm-gtk-greeter/milislogo.png" >> $PKG/etc/lightdm/lightdm-gtk-greeter.conf.new
+	echo "default-user-image = /usr/share/lightdm-gtk-greeter/milislogo.png" >> $PKG/etc/lightdm/lightdm-gtk-greeter.conf
 
 	# Add Cinnamon logo
 	cp $SRC/cinnamon_badge_symbolic.svg $PKG/usr/share/icons/hicolor/scalable/places/cinnamon_badge-symbolic.svg
