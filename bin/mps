@@ -1742,6 +1742,10 @@ bagimli_bilgi_dosyala(){
 			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
 			for bag in $bagimd;do
 				echo "$bag" >> "/tmp/$1.gerekler.liste"
+				#echo "$bag"
+				#for _tb in $(ters_bagimli_bilgi $bag);do
+				#	echo '|____' $_tb
+				#done
 			done
 		fi
 	fi
