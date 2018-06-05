@@ -1699,63 +1699,52 @@ kirik_ters_bagimli_bilgi(){
 }
 
 bagimli_bilgi(){
-	local bagimd konum bag
-	bkonum="`find "$talimatname" -name $1`"
-	bekkonum="`find "$ektalimatname" -name $1`"
-	if [ $bkonum ];then
-		konum=$bkonum
-	elif [ $bekkonum ];then
-		konum=$bekkonum
+	local _konum bagimd _dosya _paket
+	[ $1 ] && _paket="$1" || hata_olustu "_paket_adi_gerekli"
+	_konum=$(talimat_bul $_paket)
+	
+	if [ "$_konum" = "-1" ];then
+		$_yaz_uyari "$_paket tanimsiz"
+		exit 0
 	else
-		$_yaz_uyari "$1 talimatı bulunamadı!"
-		exit 1
-	fi
-	bagimd=`cat $konum/talimat | grep "Gerekler" | cut -d':' -f2`
-	if [ -n "$bagimd" ]; then
-		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-		#sıralı gösterme
-		#echo `echo "$bagimd" | sed 's/,/ /g'`
-		#kurulu kontrollu gosterim
-		for bag in $bagimd;do
-			if [ "$2" = "dogrula" ];then
-				kurulum_dogrulama_icerik "$bag"
-			else
-				echo "$bag" "`kurulu_kontrol $bag`"
-			fi
-		done
-	fi
-	if [ "$2" = "dogrula" ];then
-		kurulum_dogrulama_icerik "$1"
-	else
-		echo "$1" "`kurulu_kontrol $1`"
+		bagimd=`cat $_konum/talimat | grep "Gerekler" | cut -d':' -f2`
+		if [ -n "$bagimd" ]; then
+			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+			for bag in $bagimd;do
+				if [ "$2" = "dogrula" ];then
+					kurulum_dogrulama_icerik "$bag"
+				else
+					echo "$bag" "`kurulu_kontrol $bag`"
+				fi
+			done
+		fi
+		if [ "$2" = "dogrula" ];then
+			kurulum_dogrulama_icerik "$1"
+		else
+			echo "$1" "`kurulu_kontrol $1`"
+		fi
 	fi
 }
 
 bagimli_bilgi_dosyala(){
-	rm -f "/tmp/$1.gerekler.liste"
-	local bagimd konum bag
-	bkonum="`find "$talimatname" -name $1`"
-	bekkonum="`find "$ektalimatname" -name $1`"
-	if [ $bkonum ];then
-		konum=$bkonum
-	elif [ $bekkonum ];then
-		konum=$bekkonum
-	else
-		$_yaz_uyari "$1 talimatı bulunamadı!"
-		exit 1
-	fi
-	bagimd=`cat $konum/talimat | grep "Gerekler" | cut -d':' -f2`
-	if [ -n "$bagimd" ]; then
-		bagimd=`echo "$bagimd" | sed 's/,/ /g'`
-		#sıralı gösterme
-		#echo `echo "$bagimd" | sed 's/,/ /g'`
-		#kurulu kontrollu gosterim
-		for bag in $bagimd;do
-			echo $bag >> "/tmp/$1.gerekler.liste"
-		done
-	fi
-	echo "$1" >> "/tmp/$1.gerekler.liste"
+	local _konum bagimd _dosya _paket
+	[ $1 ] && _paket="$1" || hata_olustu "_paket_adi_gerekli"
+	_konum=$(talimat_bul $_paket)
 	
+	if [ "$_konum" = "-1" ];then
+		$_yaz_uyari "$_paket tanimsiz"
+		exit 0
+	else
+		_dosya="/tmp/${_paket}.gerekler.liste"
+		rm -f ${_dosya}
+		bagimd=`cat $_konum/talimat | grep "Gerekler" | cut -d':' -f2`
+		if [ -n "$bagimd" ]; then
+			bagimd=`echo "$bagimd" | sed 's/,/ /g'`
+			for bag in $bagimd;do
+				echo "$bag" >> "/tmp/$1.gerekler.liste"
+			done
+		fi
+	fi
 }
 
 silme_etkilenen_kontrol(){
@@ -3155,7 +3144,8 @@ ayarlar() {
 			-bbdog|bdogrula)
 				bagimli_bilgi "$2" "dogrula";;
 			-bbd)
-				bagimli_bilgi_dosyala "$2" ;;
+				bagimli_bilgi_dosyala $args 
+				exit 0 ;;
 			### mps -tb talimatismi = ilgili talimata gerek duyan(ters-gerekler) talimatları listeler.
 			-tb|tersbag)
 				ters_bagimli_bilgi "$2"
