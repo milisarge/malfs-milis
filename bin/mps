@@ -1009,6 +1009,10 @@ paket_sil_oto_onayli(){
 paket_sil_gereklerle(){
 	local _onay _tbs _tbsnc _paket _ustgerek
 	[ $1 ] && _paket="$1" || hata_olustu "_paket_adi_gerekli"
+	# otomatik onay verme durum kontrolü
+	[ $2 ] && _onay="$2";
+	_onay="onay"
+	
 	if [ -d $VT/${_paket} ];then
 		bagimli_bilgi_dosyala "${_paket}"
 		rm -f /tmp/${_paket}.silinecekler
@@ -1048,9 +1052,7 @@ paket_sil_gereklerle(){
 				$_yaz "$_zaten $pkaltb $_paket_kurulu_degil"
 			fi
 		done
-		_onay="onay"
-		# otomatik onay verme durum kontrolü
-		if [ ! -z "$2" ];then _onay="$2";fi
+		
 		#cat /tmp/${_paket}.silinecekler
 		if [ $_onay = "oto" ];then
 			paket_sil_oto "/tmp/${_paket}.silinecekler"
@@ -2850,12 +2852,9 @@ ayarlar() {
 				paket_sil "$2" "hayir" "evet"
 				exit 0 ;;	
 			### mps -S paketismi = ilgili paketi altbağımlılıklarını da sorarak kaldırır.
+			### mps -S paketismi = ve oto eklenirse ilgili paketi altbağımlılıklarını da sormadan sırayla kaldırır.
 			-S)
-				paket_sil_gereklerle "$2" 
-				exit 0 ;;
-			### mps -Sz paketismi = ilgili paketi altbağımlılıklarını da sormadan sırayla kaldırır.
-			-Sz)
-				paket_sil_gereklerle "$2" "oto" 
+				paket_sil_gereklerle $args
 				exit 0 ;;
 			### mps ara aranan = paket isimleri ve açıklamalarında anahtar kelime arar.
 			-pa|ara)
