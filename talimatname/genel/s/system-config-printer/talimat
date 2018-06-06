@@ -1,7 +1,7 @@
 # Tanım: Bir CUPS yazıcı yapılandırma aracı ve durum uygulaması
 # URL: https://github.com/zdohnal/system-config-printer
 # Packager: Cihan_Alkan
-# Gerekler: intltool xmlto docbook-xsl desktop-file-utils libsecret pycups pydbus pycurl libnotify pyrequests python3-gobject gtk3 python3-cairo
+# Gerekler: intltool xmlto docbook-xsl desktop-file-utils pychardet pycertifi pyidna libsecret pycups pydbus pycurl libnotify pyrequests python3-gobject gtk3 python3-cairo
 # Grup: sistem
 
 isim=system-config-printer
