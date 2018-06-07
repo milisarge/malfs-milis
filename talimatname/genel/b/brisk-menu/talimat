@@ -1,17 +1,20 @@
 # Tanım: MATE Masaüstü Ortamı için modern ve etkili bir menü.
 # URL: https://github.com/solus-project/brisk-menu
-# Paketçi: yasarciv67@gmail.com
+# Paketçi: Cihan_Alkan
 # Gerekler: gnome-common mate-panel
-# Grup: grafik_tasarım
+# Grup: mate
 
 isim=brisk-menu
-surum=0.4.5
-devir=1.0
-kaynak=(https://github.com/solus-project/$isim/releases/download/v$surum/$isim-$surum.tar.xz)
+surum=0.5.0
+devir=1
+kaynak=()
 
 derle() {
-	cd $isim-$surum
-	./autogen.sh --prefix=/usr
-	make -j$(($(getconf _NPROCESSORS_ONLN)+1))
-	make DESTDIR="${PKG}" install
+git_indir https://github.com/solus-project/brisk-menu.git brisk-menu-v0.5.0
+	cd brisk-menu-v0.5.0
+	mkdir build
+	cd    build
+	meson --prefix=/usr
+	ninja
+	DESTDIR=$PKG ninja install
 }
