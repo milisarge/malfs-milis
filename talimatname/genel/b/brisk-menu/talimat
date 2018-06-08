@@ -10,8 +10,8 @@ devir=1
 kaynak=()
 
 derle() {
-git_indir https://github.com/solus-project/brisk-menu.git brisk-menu-v0.5.0
-	cd brisk-menu-v0.5.0
+	git_indir https://github.com/solus-project/brisk-menu.git $isim-$surum
+	cd $isim-$surum
 	mkdir build
 	cd    build
 	meson --prefix=/usr
