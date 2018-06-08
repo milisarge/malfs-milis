@@ -3,46 +3,45 @@
 # Paketçi: yasarciv67 Cihan_Alkan
 # Gerekler: gtk2 desktop-file-utils shared-mime-info xorg-libxtst gconf xorg-libxscrnsaver alsa-lib nss freefont-ttf libnotify hicolor-icon-theme 
 
-isim=opera-web-browser
-_isim=opera
-surum=53.0.2907.57
+isim=opera
+surum=53.0.2907.88
 devir=1
-kaynak=(http://get.geo.opera.com/pub/$_isim/desktop/$surum/linux/$_isim-stable_${surum}_amd64.deb
+kaynak=(http://get.geo.opera.com/pub/${isim}/desktop/$surum/linux/${isim}-stable_${surum}_amd64.deb
 		opera
 		default)
 
 derle() {
-    sed -e "s/%_isim%/$_isim/g" -i "$SRC/opera"
-    sed -e "s/%operabin%/$_isim\/$_isim/g" \
+    sed -e "s/%{isim}%/${isim}/g" -i "$SRC/opera"
+    sed -e "s/%operabin%/${isim}\/${isim}/g" \
         -i "$SRC/opera"
-    bsdtar -xf $_isim-stable_${surum}_amd64.deb    
+    bsdtar -xf ${isim}-stable_${surum}_amd64.deb    
     bsdtar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$PKG/"
     # get rid of the extra subfolder {i386,x86_64}-linux-gnu
     (
         cd "$PKG/usr/lib/"*-linux-gnu/
-        mv "$_isim" ../
+        mv "${isim}" ../
     )
     rm -rf "$PKG/usr/lib/"*-linux-gnu
 
     # suid opera_sandbox
-    chmod 4755 "$PKG/usr/lib/$_isim/opera_sandbox"
+    chmod 4755 "$PKG/usr/lib/${isim}/opera_sandbox"
 
     # Varsayılan seçenekleri yükle
-    install -Dm644 "$SRC/default" "$PKG/etc/$_isim/default"
+    install -Dm644 "$SRC/default" "$PKG/etc/${isim}/default"
 
     # Opera sarmalayıcı yükle
-    rm "$PKG/usr/bin/$_isim"
-    install -Dm755 "$SRC/opera" "$PKG/usr/bin/$_isim"
+    rm "$PKG/usr/bin/${isim}"
+    install -Dm755 "$SRC/opera" "$PKG/usr/bin/${isim}"
 
     # lisans
 
     install -Dm644 \
-        "$PKG/usr/share/doc/${_isim}-stable/copyright" \
-        "$PKG/usr/share/licenses/$_isim/copyright"
+        "$PKG/usr/share/doc/${isim}-stable/copyright" \
+        "$PKG/usr/share/licenses/${isim}/copyright"
 
     # Başlatıcı
     sed -i 's/^Exec=/Name[tr]=Opera \
     GenericName[tr]=Web Tarayıcı \
     Comment[tr]=Hızlı ve güvenli bir web tarayıcısı \
-    &/' $PKG/usr/share/applications/$_isim.desktop
+    &/' $PKG/usr/share/applications/${isim}.desktop
 }
