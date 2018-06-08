@@ -2164,7 +2164,7 @@ git_guncelle() {
 	local _yerel
 	
 	#git deponun sunucudan güncellenmesi
-	$_yaz_bilgi "$_git_guncelleniyor"
+	$_yaz_bilgi "$_git_guncelleniyor : $git_sunucu"
 	if [ $(sunucu_erisim ${git_repo}) = "aktif" ];then
 		if [ ! -d ${git_yereldepo} ];then
 			git clone ${git_repo} ${git_yereldepo}
