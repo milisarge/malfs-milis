@@ -4,7 +4,7 @@
 # Gerekler: gtk2 desktop-file-utils shared-mime-info xorg-libxtst gconf xorg-libxscrnsaver alsa-lib nss freefont-ttf libnotify hicolor-icon-theme 
 
 isim=opera
-surum=53.0.2907.88
+surum=53.0.2907.68
 devir=1
 kaynak=(http://get.geo.opera.com/pub/${isim}/desktop/$surum/linux/${isim}-stable_${surum}_amd64.deb
 		opera
