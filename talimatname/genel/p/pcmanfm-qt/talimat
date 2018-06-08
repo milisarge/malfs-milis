@@ -4,7 +4,7 @@
 # Gerekler: libfm-qt lxde-menu-data
 
 isim=pcmanfm-qt
-surum=0.11.3
+surum=0.13.0
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
