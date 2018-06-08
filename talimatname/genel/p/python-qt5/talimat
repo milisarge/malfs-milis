@@ -1,10 +1,10 @@
 # Tanım: Qt5 için bağlayıcı pythonu
 # URL: http://www.riverbankcomputing.co.uk/software/pyqt/intro
 # Paketçi: alihan-ozturk28@hotmail.com
-# Gerekler: dbus-python python-sip qt5 qt5-webkit python-opengl python
+# Gerekler: dbus-python pysip qt5 qt5-webkit python-opengl python
 
 isim=python-qt5
-surum=5.7
+surum=5.9
 devir=1
 
 kaynak=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$surum/PyQt5_gpl-$surum.tar.gz)
