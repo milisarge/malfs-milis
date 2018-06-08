@@ -4,7 +4,7 @@
 # Gerekler: gsettings-desktop-schemas desktop-file-utils shared-mime-info gtk-update-icon-cache enchant gtk3 gtksourceview3 gvfs libpeas yelp-xsl enchant iso-codes libsoup libzeitgeist python-gobject python 
 
 isim=gedit
-surum=3.22.1
+surum=3.28.1
 devir=1
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/$isim/${surum%.*}/$isim-$surum.tar.xz)
 
