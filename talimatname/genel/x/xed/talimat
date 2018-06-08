@@ -1,10 +1,10 @@
 # Tanım: Küçük ve hafif metin düzenleyici
 # URL: https://github.com/linuxmint/xed
 # Paketçi: Cihan Alkan
-# Gerekler: gspell libpeas gtksourceview3 gobject-introspection desktop-file-utils xorg-libsm enchant2 gnome-common yelp-tools iso-codes
+# Gerekler: gspell libpeas xapps gtksourceview3 gobject-introspection desktop-file-utils xorg-libsm enchant2 gnome-common yelp-tools iso-codes
 
 isim=xed
-surum=1.8.0
+surum=1.8.1
 devir=1
 kaynak=(https://github.com/linuxmint/$isim/archive/$surum.tar.gz)
 
