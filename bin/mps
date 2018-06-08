@@ -1,6 +1,6 @@
 #!/bin/bash
 
-versiyon="1.1.9 Milis Paket Sistemi"
+versiyon="1.2.0 Milis Paket Sistemi"
 iletisim="milisarge@gmail.com"
 
 betikad=${0##*/}
@@ -32,10 +32,10 @@ if [ -z ${sunucu+:} ]; then
 	sunucu="127.0.0.1:8000/"
 fi
 
-git_sunucu="https://github.com"
+git_sunucu="https://notabug.org"
 
 if [ -z ${hesap_repo+:} ]; then
-	hesap_repo="milisarge/malfs-milis"
+	hesap_repo="milislinux/milis"
 fi
 
 if [ -z ${git_repo+:} ]; then
@@ -2215,7 +2215,7 @@ git_guncelle() {
 
 git_proje_kur(){
 	local proje proj_dizin git_link
-	git_link="https://github.com/milisarge"
+	git_link="https://notabug.org/milisarge"
 	proje="$1"
 	proj_dizin="/opt"
 	mkdir -p $proj_dizin
@@ -2325,7 +2325,8 @@ talimat_bilgi(){
 	else
 		grep "derle()" -B 12 $_konum/talimat |sed '$ d'
 		$_yaz "file://$_konum/talimat"
-		$_yaz "https://raw.githubusercontent.com/milisarge/malfs-milis/master/$(echo $_konum | cut -d'/' -f3-6)/talimat"
+		#$_yaz "https://raw.githubusercontent.com/milisarge/malfs-milis/master/$(echo $_konum | cut -d'/' -f3-6)/talimat"
+		$_yaz "https://notabug.org/milislinux/milis/raw/master/$(echo $_konum | cut -d'/' -f3-6)/talimat"
 	fi
 }
 
