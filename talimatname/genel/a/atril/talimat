@@ -1,11 +1,11 @@
 # Tanım: MATE belge görüntüleyici
 # URL: http://mate-desktop.org
 # Paketçi: yasarciv67@gmail.com
-# Gerekler: caja caja-extensions gobject-introspection intltool itstool djvulibre libspectre poppler-glib webkitgtk2
+# Gerekler: caja caja-extensions gobject-introspection intltool itstool djvulibre libspectre poppler-glib webkitgtk2 libunwind
 # Grup: ofis_düzenleme
 
 isim=atril
-surum=1.20.0
+surum=1.20.1
 devir=1
 kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 
