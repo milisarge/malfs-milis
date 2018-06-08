@@ -1,10 +1,11 @@
 # Tanım: Qt için LXQt platform entegrasyonu
 # URL: http://lxqt.org
 # Paketçi: yasarciv67@gmail.com
-# Gerekler: liblxqt libdbusmenu-qt5
+# Gerekler: liblxqt libdbusmenu-qt5 lxqt-build-tools libqtxdg libfm-qt
+# Grup: lxqt
 
 isim=lxqt-qtplugin
-surum=0.11.1
+surum=0.13.0
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
