@@ -1,0 +1,910 @@
+# Turkish translation for lightdm-gtk-greeter-settings
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
+# Cihan Alkan <cihanalk@gmail.com>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lightdm-gtk-greeter-settings\n"
+"Report-Msgid-Bugs-To: Cihan Alkan <cihanalk@gmail.com>\n"
+"POT-Creation-Date: 2015-05-20 21:22-0400\n"
+"PO-Revision-Date: 2016-02-09 23:31+0000\n"
+"Last-Translator: Cihan Alkan <cihanalk@gmail.com>\n"
+"Language-Team: Turkish <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-09-20 09:52+0000\n"
+"X-Generator: Launchpad (build 18449)\n"
+
+#: ../lightdm-gtk-greeter-settings.desktop.in.h:1
+msgid "LightDM GTK+ Greeter settings"
+msgstr "LightDM GTK+ Karşılama Ayarları"
+
+#: ../lightdm-gtk-greeter-settings.desktop.in.h:2
+msgid "Configure LightDM GTK+ Greeter"
+msgstr "LightDM GTK+ Karşılama Ayarları"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:1
+msgid "LightDM GTK+ Greeter: settings"
+msgstr "LightDM GTK+ Karşılama: ayarları"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:2
+msgctxt "option|greeter|xft-rgba"
+msgid "None"
+msgstr "Hiçbiri"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:3
+msgctxt "option|greeter|xft-rgba"
+msgid "RGB"
+msgstr "RGB"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:4
+msgctxt "option|greeter|xft-rgba"
+msgid "BGR"
+msgstr "BGR"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:5
+msgctxt "option|greeter|xft-rgba"
+msgid "Vertical RGB"
+msgstr "Dikey RGB"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:6
+msgctxt "option|greeter|xft-rgba"
+msgid "Vertical BGR"
+msgstr "Dikey BGR"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:7
+msgctxt "option|greeter|xft-hintstyle"
+msgid "None"
+msgstr "Hiçbiri"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:8
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Slight"
+msgstr "Ελαφρύ"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:9
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Medium"
+msgstr "Ortala"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:10
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Full"
+msgstr "Tam"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:11
+msgctxt "option|greeter|xft-antialias"
+msgid "Antialias"
+msgstr "Yumuşat"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:12
+msgid "Enable this option to override system defaults"
+msgstr "Sistem varsayılanlarını geçersiz kılmak için bu seçeneği etkinleştirin"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:13
+msgctxt "option|greeter|xft-dpi"
+msgid "DPI"
+msgstr "DPI"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:14
+msgctxt "option|greeter|xft-rgba"
+msgid "Subpixel rendering"
+msgstr "Altpixel oluşturma"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:15
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Hinting"
+msgstr "İmalı"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:16
+msgid "Additional font options"
+msgstr "Ek yazı tipi seçenekleri"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:17
+msgctxt "option|greeter|background"
+msgid "Background"
+msgstr "Arkaplan"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:18
+msgctxt "option|multihead"
+msgid ""
+" <i>(veya <a href=\"\">bireysel monitörler için</a> çoklu ayar kurulumunu kullanın)</i>"
+msgstr ""
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
+msgctxt "option|greeter|background"
+msgid "Color"
+msgstr "Renk"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
+msgctxt "option|greeter|background"
+msgid "Image"
+msgstr "Resim"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:21
+msgctxt "option|greeter|theme-name"
+msgid "Theme"
+msgstr "Tema"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:22
+msgctxt "option|greeter|icon-theme-name"
+msgid "Icons"
+msgstr "Simgeler"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:23
+msgctxt "option|greeter|font-name"
+msgid "Font"
+msgstr "Yaz Tipi"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:24
+msgctxt "option|greeter|hide-user-image"
+msgid "User image"
+msgstr "Kullanıcı Resmi"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:25
+msgctxt "option|greeter|default-user-image"
+msgid "Default user image"
+msgstr "Varsayılan kullanıcı resmi"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:26
+#: ../data/MultiheadSetupDialog.ui.h:11
+msgctxt "option|greeter|user-background"
+msgid "Use user wallpaper if available"
+msgstr "Varsa kullanıcı duvar kağıdını kullan"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:27
+msgctxt "tabs"
+msgid "Appearance"
+msgstr "Görünüm"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:29
+#, no-c-format
+msgctxt "option|greeter|clock-format"
+msgid ""
+"%H %I - hours, %M - minutes, %S - seconds\n"
+"%d - day, %m - month, %y %Y - year\n"
+"%a %A - day of the week, %b %B - month name"
+msgstr ""
+"%H %I - saat, %M - dakika, %S - saniye\n"
+"%d - gün, %m - ay, %y %Y - yıl\n"
+"%a %A - haftanın günü, %b %B - ay adı"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:32
+msgctxt "option|greeter|indicators"
+msgid "Add indicator to list"
+msgstr "Listeye gösterge ekle"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:33
+msgctxt "option|greeter|indicators"
+msgid "Add"
+msgstr "Ekle"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:34
+msgctxt "option|greeter|indicators"
+msgid "Remove indicator from list"
+msgstr "Listeden gösterge sil"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:35
+msgctxt "option|greeter|indicators"
+msgid "Remove"
+msgstr "Sil"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:36
+msgctxt "option|greeter|indicators"
+msgid "Move up"
+msgstr "Yukarı al"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:37
+msgctxt "option|greeter|indicators"
+msgid "Up"
+msgstr "Yukarı"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:38
+msgctxt "option|greeter|indicators"
+msgid "Move down"
+msgstr "Aşağı Al"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:39
+msgctxt "option|greeter|indicators"
+msgid "Down"
+msgstr "Aşağı"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:40
+msgctxt "option|greeter|indicators"
+msgid "Templates"
+msgstr "Şablonlar"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:41
+msgctxt "option|greeter|clock-format"
+msgid "Clock format:"
+msgstr "Saat biçimi"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:42
+msgctxt "option|greeter|indicators"
+msgid "Redefine indicators"
+msgstr "Göstergeleri yeniden tanımla"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:43
+msgctxt "tabs"
+msgid "Panel"
+msgstr "Panel"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:44
+msgctxt "option|greeter|position"
+msgid "Horizontal"
+msgstr "Yatay"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:45
+msgctxt "option|greeter|position"
+msgid "Vertical"
+msgstr "Dikey"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:47
+#, no-c-format
+msgctxt "option|greeter|position"
+msgid "in %"
+msgstr "içerde %"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:48
+msgctxt "option|greeter|position"
+msgid "from right"
+msgstr "Sağdan"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:49
+msgctxt "option|greeter|position"
+msgid "from bottom"
+msgstr "Alttan"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:50
+msgctxt "option|greeter|position"
+msgid "Select base point and its position."
+msgstr "Taban noktasını ve konumunu seçin."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:51
+msgctxt "tabs"
+msgid "Window position"
+msgstr "Pencere pozisyonu"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:52
+msgctxt "option|greeter|screensaver-timeout"
+msgid "Never"
+msgstr "Asla"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:53
+msgid "Accessibility"
+msgstr "Ulaşılabilirlik"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:54
+msgctxt "option|greeter|reader"
+msgid "Select path to reader..."
+msgstr "Okuyucunun yolunu seç..."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:55
+msgctxt "option|greeter|reader"
+msgid "Command to launch screen reader"
+msgstr "Ekran okuyucuyu başlatmak için komut"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:56
+msgctxt "option|greeter|keyboard"
+msgid "Select path to keyboard..."
+msgstr "Klavyeden yolu seç..."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:57
+msgctxt "option|greeter|keyboard"
+msgid "Command to launch on-screen keyboard"
+msgstr "Ekran klavyesi başlatmak için komut"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:58
+msgctxt "option|greeter|a11y-states"
+msgid "Disabled at start"
+msgstr "Başlangıçta devre dışı bırakıldı"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:59
+msgctxt "option|greeter|a11y-states"
+msgid "Enabled at start"
+msgstr "ΕBaşlangıçta etkinleştirildi"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:60
+msgctxt "option|greeter|a11y-states"
+msgid "Save state between launches"
+msgstr "Başlangıçta ki yere kaydedin"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:61
+msgctxt "option|greeter|a11y-theme"
+msgid "Contrast theme"
+msgstr "Kontrast teması"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:62
+msgctxt "option|greeter|a11y-font"
+msgid "Large font"
+msgstr "Büyük font"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:63
+msgctxt "greeter|option|reader"
+msgid "Reader"
+msgstr "Okuyucu"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:64
+msgctxt "greeter|option|keyboard"
+msgid "Keyboard"
+msgstr "Klavya"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:65
+msgctxt "option|greeter|screensaver-timeout"
+msgid "Timeout until the screen blanks "
+msgstr "Ekran boşluklarına kadar zaman aşımı "
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:66
+msgctxt "greeter|option|allow-debugging"
+msgid "Debugging mode"
+msgstr "Hata ayıklama modu"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:67
+msgctxt "greeter|option|allow-debugging"
+msgid ""
+"Enable keys to launch GtkInspector\n"
+"More informative log"
+msgstr ""
+"GtkInspector'ı başlatmak için tuşları etkinleştir\n"
+"Daha bilgilendirici günlüğü"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:69
+msgctxt "tabs"
+msgid "Misc."
+msgstr "Çeşitli"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:70
+#: ../data/IndicatorPropertiesDialog.ui.h:3
+msgctxt "button"
+msgid "_Close"
+msgstr "_Kapat"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:71
+msgctxt "button"
+msgid "_Save"
+msgstr "_Kaydet"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:72
+msgctxt "button"
+msgid "_Reload"
+msgstr "_Yeniden Yükla"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:73
+msgid "Read configuration file"
+msgstr "Yapılandırma dosyasını oku"
+
+#: ../data/IconChooserDialog.ui.h:1
+msgctxt "icon-dialog"
+msgid "Select icon"
+msgstr "Simge seç"
+
+#: ../data/IconChooserDialog.ui.h:2
+msgctxt "button"
+msgid "_Cancel"
+msgstr "_İptal"
+
+#: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
+#: ../data/MultiheadSetupDialog.ui.h:14
+msgctxt "button"
+msgid "_OK"
+msgstr "_Tamam"
+
+#: ../data/IconChooserDialog.ui.h:4
+msgid "Add selected indicator to the list and close this window"
+msgstr "Seçilen göstergeyi listeye ekle ve bu pencereyi kapat"
+
+#: ../data/IconChooserDialog.ui.h:5
+msgctxt "icon-dialog"
+msgid "Icon _name:"
+msgstr "Simge adı:"
+
+#: ../data/IconChooserDialog.ui.h:6
+msgctxt "icon-dialog"
+msgid "_Contexts:"
+msgstr "İçerik"
+
+#: ../data/IconChooserDialog.ui.h:7
+msgctxt "icon-dialog"
+msgid "_Icon names:"
+msgstr "Simge adı:"
+
+#: ../data/IconChooserDialog.ui.h:8
+msgctxt "icon-dialog"
+msgid "List _standard icons only"
+msgstr "Yalnızca standart simgeleri listele"
+
+#: ../data/ImageChooserDialog.ui.h:1
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
+msgid "_Cancel"
+msgstr "_İptal"
+
+#: ../data/ImageChooserDialog.ui.h:2
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:263
+msgid "_OK"
+msgstr "_Tamam"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:1
+msgctxt "option-entry|indicators"
+msgid "Select file..."
+msgstr "Dosya seç..."
+
+#: ../data/IndicatorPropertiesDialog.ui.h:2
+msgctxt "option-entry|indicators"
+msgid "Indicator properties"
+msgstr "Ιδιότητες δείκτη"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:5
+msgctxt "button"
+msgid "_Add"
+msgstr "_Ekle"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:6
+msgctxt "option-entry|indicators"
+msgid "Indicator"
+msgstr "Δείκτης"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:7
+msgctxt "option-entry|indicators"
+msgid "Display label"
+msgstr "Ekran etiketi"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:8
+msgctxt "option-entry|indicators"
+msgid "Leave empty to use default value"
+msgstr ""
+
+#: ../data/IndicatorPropertiesDialog.ui.h:9
+msgctxt "option-entry|indicators"
+msgid "Display image"
+msgstr "Resmi görüntüle"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:10
+msgctxt "option-entry|indicators"
+msgid "Indicator library/service:"
+msgstr "Gösterge kütüphane/servis"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:11
+msgctxt "option-entry|indicators"
+msgid "Hide disabled power actions"
+msgstr "Devre dışı bırakılan güç eylemlerini gizle"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:12
+msgctxt "option-entry|indicators"
+msgid "Text to display:"
+msgstr "Görüntülenecek metin:"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:13
+msgctxt "option-entry|indicators"
+msgid "Spacer - fills the maximum available space"
+msgstr "Spacer - maksimum kullanılabilir alanı doldurur"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:14
+msgctxt "option-entry|indicators"
+msgid "Separator - draw a separator"
+msgstr "Ayırıcı - bir ayırıcı çizin"
+
+#: ../data/MultiheadSetupDialog.ui.h:1
+msgctxt "option|multihead"
+msgid "Multihead setup"
+msgstr "çoklubaşlık kurulumu"
+
+#: ../data/MultiheadSetupDialog.ui.h:2
+msgctxt "option|multihead"
+msgid "Add configuration"
+msgstr "Yapılandırma ekle"
+
+#: ../data/MultiheadSetupDialog.ui.h:3
+msgctxt "option|multihead"
+msgid "No configured monitors found"
+msgstr "Yapılandırılmış monitör bulunamadı"
+
+#: ../data/MultiheadSetupDialog.ui.h:4
+msgctxt "option|multihead"
+msgid "Monitor name:"
+msgstr "Ekran adı:"
+
+#: ../data/MultiheadSetupDialog.ui.h:5
+msgid "Don't leave empty"
+msgstr "Boş bırakmayın"
+
+#: ../data/MultiheadSetupDialog.ui.h:6
+msgctxt "option|multihead"
+msgid "Add new monitor configuration"
+msgstr "Yeni monitör yapılandırması ekle"
+
+#: ../data/MultiheadSetupDialog.ui.h:7
+msgctxt "option|multihead"
+msgid "Overwrite default \"background\" option"
+msgstr "Varsayılan \"arka plan \" seçeneğinin üzerine yaz"
+
+#: ../data/MultiheadSetupDialog.ui.h:10
+msgctxt "option|multihead"
+msgid "Overwrite default \"user-background\" option"
+msgstr "Varsayılan \"kullanıcı arka planı \" seçeneğinin üzerine yaz"
+
+#: ../data/MultiheadSetupDialog.ui.h:12
+msgctxt "option|multihead"
+msgid "Overwrite default \"laptop\" option"
+msgstr "Varsayılan \"dizüstü \" seçeneğinin üzerine yaz"
+
+#: ../data/MultiheadSetupDialog.ui.h:13
+msgctxt "option|greeter|laptop"
+msgid "This monitor is laptop display (detect lid closing)"
+msgstr "Bu monitör dizüstü bilgisayar ekranıdır (kapağın kapanmasını algılar)"
+
+#: ../data/MultiheadSetupDialog.ui.h:15
+msgctxt "option|multihead"
+msgid ""
+"<i>Note: greeter does not set monitor geometry.\n"
+"You need to configure it manually.</i>"
+msgstr ""
+"<i>Not: Greeter, monitör geometrisini ayarlamaz.\n"
+"Manuel olarak yapılandırmanız gerekiyor.</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:179
+msgid "You don't have permissions to change greeter configuration"
+msgstr "Selamlayıcı yapılandırmayı değiştirmek için izinleriniz yok"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:183
+msgid "No permissions to save configuration"
+msgstr "Yapılandırmayı kaydetmek için izin yok"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:185
+#, python-brace-format
+msgid ""
+"It seems that you don't have permissions to write to file:\n"
+"{path}\n"
+"\n"
+"Try to run this program using \"sudo\" or \"pkexec\""
+msgstr ""
+"Dosyaya yazma izniniz yok gibi görünüyor:\n"
+"{path}\n"
+"\n"
+"\"sudo\" veya \"pkexec\" kullanarak bu programı çalıştırmayı deneyin"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:373
+msgid "<i>disabled</i>"
+msgstr "<i>pasif edildi</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:375
+msgid "<i>empty string</i>"
+msgstr "<i>boş dize</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:377
+msgid "<i>None</i>"
+msgstr "<i>Hiçbiri</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:401
+#, python-brace-format
+msgid "Value defined in file: {path}"
+msgstr "Dosyada tanımlanmış değer: {path}"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:438
+#, python-brace-format
+msgid "Reset to initial value: <b>{value}</b>"
+msgstr "İlk değere sıfırla: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:450
+#, python-brace-format
+msgid "Reset to default value: <b>{value}</b>"
+msgstr "ΕVarsayılan değere sıfırla: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:471
+#, python-brace-format
+msgid "Reset to value: <b>{value}</b>"
+msgstr "Değere sıfırla: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:493
+#, python-brace-format
+msgctxt "option|greeter|screensaver-timeout"
+msgid "{count} min"
+msgstr "{count} min"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:556
+#, python-brace-format
+msgctxt "option|greeter|allow-debugging"
+msgid ""
+"GtkInspector is not available on your system\n"
+"Gtk version: {current} < {minimal}"
+msgstr ""
+"GtkInspector sisteminizde mevcut değildir\n"
+"Gtk sürümü : {current} < {minimal}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:175
+#, python-brace-format
+msgid "File not found: {path}"
+msgstr "Dosya bulunamadı: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:199
+#, python-brace-format
+msgid "Failed to check permissions: {error}"
+msgstr "İzinler kontrol edilemedi: {error}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:202
+#, python-brace-format
+msgid "Directory is not readable: {path}"
+msgstr "ΟDizin okunamıyor: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:205
+#: ../lightdm_gtk_greeter_settings/helpers.py:208
+#: ../lightdm_gtk_greeter_settings/helpers.py:210
+#, python-brace-format
+msgid "LightDM does not have permissions to read path: {path}"
+msgstr "LightDM yolunu okumak için izinlere sahip değil: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:216
+#, python-brace-format
+msgid "Path is not a regular file: {path}"
+msgstr "Yol normal bir dosya değil: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:222
+#: ../lightdm_gtk_greeter_settings/helpers.py:226
+#: ../lightdm_gtk_greeter_settings/helpers.py:229
+#, python-brace-format
+msgid "LightDM does not have permissions to execute file: {path}"
+msgstr "LightDM dosyasının yürütülmesi için izinlere sahip değil: {path}"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
+msgctxt "icon-dialog"
+msgid "All contexts"
+msgstr "Tüm İçerik"
+
+#. separator
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:202
+msgctxt "icon-dialog"
+msgid "Actions"
+msgstr "Eylemler"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:203
+msgctxt "icon-dialog"
+msgid "Applications"
+msgstr "Uygulamalar"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:204
+msgctxt "icon-dialog"
+msgid "Categories"
+msgstr "Kategoriler"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:205
+msgctxt "icon-dialog"
+msgid "Devices"
+msgstr "Aygıtlar"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:206
+msgctxt "icon-dialog"
+msgid "Emblems"
+msgstr "Εμβλήματα"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:207
+msgctxt "icon-dialog"
+msgid "Emoticons"
+msgstr "Εικονίδια διάθεσης"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:208
+msgctxt "icon-dialog"
+msgid "International"
+msgstr "Uluslararası"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:209
+msgctxt "icon-dialog"
+msgid "MIME Types"
+msgstr "MIME Türü"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:210
+msgctxt "icon-dialog"
+msgid "Places"
+msgstr "Yerler"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:211
+msgctxt "icon-dialog"
+msgid "Status"
+msgstr "Durum"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:85
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "Unrecognized value: {value}"
+msgstr "Tanınmayan değer: {value}"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:104
+msgctxt "option-entry|icon"
+msgid "Select icon name..."
+msgstr "Simge adı seç..."
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:106
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>Icon: {icon}</b>"
+msgstr "<b>Simge: {icon}</b>"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:126
+msgctxt "option-entry|icon"
+msgid "Select file..."
+msgstr "Dosya seç..."
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:129
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>File: {path}</b>"
+msgstr "<b>Dosya: {path}</b>"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:131
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>File: {path}</b> (failed to load)"
+msgstr "<b>Αρχείο {path}</b> (αδυναμία φόρτωσης)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
+msgctxt "option-entry|indicators"
+msgid "Use default value..."
+msgstr "Varsayılan değeri kullan..."
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
+msgctxt "option-entry|indicators"
+msgid "<b>Using default value</b>"
+msgstr "<b>Varsayılan değeri kullanma</b>"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
+msgctxt "option-entry|indicators"
+msgid "Path/Service field is not filled"
+msgstr "Yol/Servis alanı doldurulmadı"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
+#, python-brace-format
+msgctxt "option-entry|indicators"
+msgid ""
+"Indicator \"{name}\" is already in the list.\n"
+"It will be overwritten."
+msgstr ""
+"Gösterge \"{name}\" zaten listede.\n"
+"ΘÜzerine yazılacak."
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
+msgctxt "option-entry|indicators|name"
+msgid "External library/service"
+msgstr "Harici kütüphane/servis"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
+msgctxt "option-entry|indicators|name"
+msgid "Spacer"
+msgstr "Spacer"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
+msgctxt "option-entry|indicators|name"
+msgid "Separator"
+msgstr "Ayırıcı"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:134
+msgctxt "option-entry|indicators|name"
+msgid "Text"
+msgstr "Metin"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:135
+msgctxt "option-entry|indicators|name"
+msgid "Clock"
+msgstr "Saat"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:136
+msgctxt "option-entry|indicators|name"
+msgid "Host name"
+msgstr "Bilgisayar adı"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
+msgctxt "option-entry|indicators|name"
+msgid "Keyboard layout"
+msgstr "Klavye modeli"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:138
+msgctxt "option-entry|indicators|name"
+msgid "Sessions menu"
+msgstr "Oturum menüsü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
+msgctxt "option-entry|indicators|name"
+msgid "Languages menu"
+msgstr "Dil menüsü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:140
+msgctxt "option-entry|indicators|name"
+msgid "Accessibility menu"
+msgstr "Erişilebilirlik menüsü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:141
+msgctxt "option-entry|indicators|name"
+msgid "Power menu"
+msgstr "Güç menüsü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:148
+msgctxt "option-entry|indicators|tooltip"
+msgid "Spacer"
+msgstr "Spacer"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:149
+msgctxt "option-entry|indicators|tooltip"
+msgid "Separator"
+msgstr "Ayırıcı"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:150
+msgctxt "option-entry|indicators|tooltip"
+msgid "Custom text or/and image"
+msgstr "Özel metin veya/ve görüntü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
+msgctxt "option-entry|indicators|tooltip"
+msgid "Host name"
+msgstr "Bilgisayar adı"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:152
+msgctxt "option-entry|indicators|tooltip"
+msgid "Clock"
+msgstr "Saat"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
+msgctxt "option-entry|indicators|tooltip"
+msgid "Layout indicator"
+msgstr "Yer göstergesi"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
+msgctxt "option-entry|indicators|tooltip"
+msgid "Sessions menu (xfce, unity, gnome etc.)"
+msgstr "Oturum menüsü (xfce, cinnamon, gnome vb.)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
+msgctxt "option-entry|indicators|tooltip"
+msgid "Languages menu"
+msgstr "Dil menüsü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:157
+msgctxt "option-entry|indicators|tooltip"
+msgid "Accessibility menu"
+msgstr "Erişilebilirlik menüsü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:158
+msgctxt "option-entry|indicators|tooltip"
+msgid "Power menu"
+msgstr "Güç menüsü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
+msgctxt "option-entry|indicators"
+msgid "Reset to _defaults"
+msgstr "Varsayılanlara dön"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
+msgctxt "option-entry|indicators"
+msgid "Display _label"
+msgstr "Ekran etiketi"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
+msgctxt "option-entry|indicators"
+msgid "Display _image"
+msgstr "Resmi görüntüle"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
+msgctxt "option-entry|indicators"
+msgid "_Remove"
+msgstr "_Çıkar"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
+msgctxt "option-entry|indicators"
+msgid "Show unused items"
+msgstr "Kullanılmayan öğeleri göster"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
+msgctxt "option-entry|indicators"
+msgid "Predefined templates:"
+msgstr "Öntanımlı şablonlar:"
+
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
+msgctxt "option|StringPathEntry"
+msgid "Select path"
+msgstr "Yol seç"
+
+#: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
+msgid ""
+"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+msgstr ""
+"LightDM GTK + Greeter için Ayarlar düzenleyicisini çalıştırmak için kimlik doğrulaması gerekiyor"
