@@ -2,9 +2,10 @@
 # URL: http://live.gnome.org/GObjectIntrospection
 # Paketçi: milisarge yasarciv67@gmail.com
 # Gerekler: glib
+# Grup:
 
 isim=gobject-introspection
-surum=1.53.1
+surum=1.56.1
 devir=1
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/${surum%.*}/$isim-$surum.tar.xz)
 
