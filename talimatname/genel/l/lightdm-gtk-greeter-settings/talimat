@@ -8,7 +8,7 @@ isim=lightdm-gtk-greeter-settings
 surum=1.2.2
 devir=1
 kaynak=(https://launchpad.net/lightdm-gtk-greeter-settings/${surum%.*}/$surum/+download/$isim-$surum.tar.gz
-        lightdm-gtk-greeter-settings-tr.po)
+        http://kaynaklar.milislinux.org/lightdm-gtk-greeter-settings-tr.po)
 
 derle() {
   cd "$SRC/$isim-$surum"
