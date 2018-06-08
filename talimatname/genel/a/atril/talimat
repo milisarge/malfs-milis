@@ -1,7 +1,7 @@
 # Tanım: MATE belge görüntüleyici
 # URL: http://mate-desktop.org
 # Paketçi: yasarciv67
-# Gerekler: caja caja-extensions gobject-introspection intltool itstool djvulibre libspectre poppler-glib webkitgtk2 libunwind
+# Gerekler: caja caja-extensions gobject-introspection intltool itstool djvulibre libspectre poppler-glib webkit2gtk3 libunwind
 # Grup: ofis_düzenleme
 
 isim=atril
@@ -12,20 +12,19 @@ kaynak=(http://pub.mate-desktop.org/releases/${surum%.*}/$isim-$surum.tar.xz)
 derle() {
 	cd $isim-$surum
 	./configure \
-	--prefix=/usr \
-	--libexecdir=/usr/lib/${isim} \
-	--with-gtk=2.0 \
-	--enable-djvu \
-	--enable-dvi \
-	--enable-epub \
-	--enable-t1lib \
-	--enable-pixbuf \
-	--enable-comics \
-	--enable-xps \
-	--enable-introspection
-
-	#https://bugzilla.gnome.org/show_bug.cgi?id=656231
+        --prefix=/usr \
+        --libexecdir=/usr/lib/${isim} \
+        --with-gtk=2.0 \
+        --enable-djvu \
+        --enable-dvi \
+        --enable-epub \
+        --enable-t1lib \
+        --enable-pixbuf \
+        --enable-comics \
+        --enable-xps \
+        --enable-introspection
+        
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
-	make DESTDIR=$PKG install 
+	make DESTDIR=$PKG install
 }
