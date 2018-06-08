@@ -5,34 +5,18 @@
 # Grup: ağ
 
 isim=cjdns
-surum=19.1
+surum=20.1
 devir=1
-kaynak=(https://github.com/$hesap/$isim/archive/$isim-v$surum.tar.gz
-        cjdns.serviscjdns.rc.dcjdns.sh)
+kaynak=(https://github.com/cjdelisle/$isim/archive/$isim-v$surum.tar.gz
+        cjdns.servis cjdns.rc.d cjdns.sh)
 
-hesap=cjdelisle
- 
-derle() {
-	
-	#if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
-	#	git clone https://github.com/$hesap/$isim $DERLEME_KAYNAKDIZIN/$isim 
-	#else
-	#	cd $DERLEME_KAYNAKDIZIN/$isim 
-	#	git pull
-	#	cd -
-	#fi
-	
-	#cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
-	#cd $SRC/$isim
-	
-	cd $isim-$isim-v$surum
-	
+derle() {	
+	cd $isim-$isim-v$surum	
 	bash 'do'
 	install -Dm755 cjdroute "$PKG/usr/bin/cjdroute"
 	install -Dm755 contrib/sh/run-cjdroute.sh "$PKG/usr/bin/run-cjdroute"
 	
 	install -Dm644 $SRC/cjdns.servis $PKG/etc/default/cjdns
     install -Dm755 $SRC/cjdns.sh $PKG/usr/bin/cjdns.sh
-    install -Dm755 $SRC/cjdns.rc.d $PKG/etc/rc.d/init.d/cjdns
-	
+    install -Dm755 $SRC/cjdns.rc.d $PKG/etc/rc.d/init.d/cjdns	
 }
