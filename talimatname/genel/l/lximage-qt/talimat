@@ -2,9 +2,10 @@
 # URL: http://lxqt.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: libfm-qt libexif
+# Grup: lxqt
 
 isim=lximage-qt
-surum=0.5.1
+surum=0.7.0
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
