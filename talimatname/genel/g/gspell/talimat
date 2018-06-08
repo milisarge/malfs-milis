@@ -5,13 +5,13 @@
 # Grup: 
 
 isim=gspell
-surum=1.8.0
+surum=1.8.1
 devir=1
-kaynak=(https://git.gnome.org/browse/gspell/snapshot/gspell-1.8.0.tar.xz)
+kaynak=(https://gitlab.gnome.org/GNOME/gspell/-/archive/master/gspell-master.tar.gz)
 
 derle() {
 
-  cd $isim-$surum
+  cd $isim-master
   NOCONFIGURE=1 ./autogen.sh
   ./configure  --prefix=/usr --enable-gtk-doc
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
