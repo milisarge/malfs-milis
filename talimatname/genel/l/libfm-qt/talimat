@@ -2,9 +2,10 @@
 # URL: http://lxqt.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: cmake libfm qt5
+# Grup: lxqt
 
 isim=libfm-qt
-surum=0.11.2
+surum=0.13.0
 devir=1
 kaynak=(https://github.com/lxde/$isim/releases/download/$surum/$isim-$surum.tar.xz)
 
