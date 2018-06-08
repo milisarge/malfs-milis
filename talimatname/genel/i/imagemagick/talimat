@@ -2,18 +2,15 @@
 # URL: URL: http://www.imagemagick.org/
 # Paketçi: milisarge
 # Gerekler: freetype ghostscript lcms libgsf giflib libxml2 openexr libwmf libpng librsvg libwebp djvulibre
+# Grup:
 
 isim=imagemagick
-surum=6.9.3-6
+surum=7.0.7-22
 devir=1
-_surum=6.9.3-6
-kaynak=(https://launchpad.net/imagemagick/main/6.9.3-6/+download/ImageMagick-$surum.tar.gz)
+kaynak=(https://www.imagemagick.org/download/ImageMagick-7.0.7-22.tar.xz)
 
 derle() {
     cd ImageMagick-*
-
-    [ "`uname -m`" == "i686"   ] && EXTRAOPTS="--with-gcc-arch=i686"
-    [ "`uname -m`" == "x86_64"   ] && EXTRAOPTS="--with-gcc-arch=x86-64"
 
     sed '/AC_PATH_XTRA/d' -i configure.ac
 
