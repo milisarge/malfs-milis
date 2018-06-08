@@ -1,16 +1,21 @@
 # Tanım: Program API'larını tanımlamak ve onları üniform, makine tarafından okunabilir bir biçimde toplamak için kullanılır.
 # URL: http://live.gnome.org/GObjectIntrospection
 # Paketçi: milisarge yasarciv67@gmail.com
-# Gerekler: glib
+# Gerekler: glib cairo gtk-doc python-mako
+# Grup: 
 
 isim=gobject-introspection
-surum=1.53.1
+surum=1.56.1
 devir=1
 kaynak=(http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/${surum%.*}/$isim-$surum.tar.xz)
 
 derle() {
 cd $isim-$surum
-./configure --prefix=/usr --disable-static
-make
-make DESTDIR=$PKG install
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr --disable-static --enable-doctool --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR=$PKG install-libLTLIBRARIES install-typelibsDATA
+  make DESTDIR="$PKG" install
+  make DESTDIR="$PKG" uninstall-libLTLIBRARIES uninstall-typelibsDATA
 }
