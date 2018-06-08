@@ -28,5 +28,5 @@ derle() {
   make DESTDIR="${PKG}" install
   install -m755 -d "${PKG}/usr/share/licenses/openjpeg2"
   mv ${PKG}/usr/share/doc/openjpeg-*/LICENSE ${PKG}/usr/share/licenses/openjpeg2
-  rmdir ${PKG}/usr/share/doc/openjpeg-*
+  rm -rf ${PKG}/usr/share/doc
 }

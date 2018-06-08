@@ -1,32 +1,20 @@
-# Tanım: Açık kaynaklı bir JPEG 2000 codec bileşeni
-# URL: https://github.com/uclouvain/openjpeg
-# Paketçi: Cihan_Alkan
-# Gerekler: zlib libpng libtiff lcms2 cmake doxygen
+# Tanım: OpenJPEG, JPEG-2000 standardının açık kaynaklı bir uygulamasıdır.
+# URL: http://www.ijg.org/
+# Paketçi: milisarge
+# Gerekler: lcms2 libpng libtiff 
 # Grup:
-
-isim=openjpeg2
-surum=2.3.0
+ 
+isim=openjpeg
+surum=1.5.2
 devir=1
-
-kaynak=(https://github.com/uclouvain/openjpeg/archive/v2.3.0.tar.gz::openjpeg-${surum}.tar.gz)
-
+  
+kaynak=(http://downloads.sourceforge.net/openjpeg.mirror/$isim-$surum.tar.gz )
+ 
 derle() {
-
-  mkdir build
-  # remove thirdparty libs
-  sed -i '/add_subdirectory(thirdparty)/d' openjpeg-${surum}/CMakeLists.txt
-  # Install doxygen docs to the right directory
-  sed -i -e "s:DESTINATION\ share/doc:DESTINATION\ share/doc/${isim}:" openjpeg-${surum}/doc/CMakeLists.txt
-  cd build
-
-  cmake "../openjpeg-${surum}" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_DOC=on
-
-  make
-  make DESTDIR="${PKG}" install
-  install -m755 -d "${PKG}/usr/share/licenses/openjpeg2"
-  mv ${PKG}/usr/share/doc/openjpeg-*/LICENSE ${PKG}/usr/share/licenses/openjpeg2
-  rm -rf ${PKG}/usr/share/doc
+	cd openjpeg-$surum
+	autoreconf -f -i
+	./configure --prefix=/usr --disable-static
+	make
+	make DESTDIR=$PKG install
+	ln -s openjpeg-1.5/openjpeg.h $PKG/usr/include
 }
