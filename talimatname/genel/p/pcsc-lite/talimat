@@ -4,9 +4,9 @@
 # Gerekler: python
 
 isim=pcsc-lite
-surum=1.8.21
+surum=1.8.23
 devir=1
-kaynak=(https://alioth.debian.org/frs/download.php/file/4216/$isim-$surum.tar.bz2)
+kaynak=(https://pcsclite.apdu.fr/files/pcsc-lite-${surum}.tar.bz2)
 
 derle() {
 	cd $isim-$surum
@@ -15,6 +15,7 @@ derle() {
 	  --sbindir=/usr/bin \
 	  --enable-libudev \
 	  --sysconfdir=/etc \
+          --disable-libsystemd \
 	  --enable-ipcdir=/run/pcscd \
 	  --enable-usbdropdir=/usr/lib/pcsc/drivers
 	make
