@@ -1,28 +1,24 @@
 # Tanım: Windows DVD'sinden veya bir iso dosyasından Windows USB bellek kurulum aracı oluşturma programı
 # URL: https://github.com/slacka/WoeUSB
-# Paketçi: Cihan Alkan
+# Paketçi: Cihan_Alkan
 # Gerekler: wxgtk grub libnotify parted ntfs-3g p7zip
+# Grup:
 
 isim=woeusb
-surum=2.0.3
+surum=3.2.1
 devir=1
 
 kaynak=(trad.mo)
 
 
 derle() {
-	if [ ! -d $DERLEME_KAYNAKDIZIN/$isim  ];then
-		git clone https://github.com/slacka/WoeUSB.git $DERLEME_KAYNAKDIZIN/$isim 
-	else
-		cd $DERLEME_KAYNAKDIZIN/$isim 
-		git pull
-		cd -
-	fi
-	cp -r $DERLEME_KAYNAKDIZIN/$isim $SRC/
-	cd $SRC/$isim
+		git_indir https://github.com/slacka/WoeUSB.git $isim 
+cd $isim 
+	autoreconf --force --install
+	autoconf
 	./configure
 	make
-	make DESTDIR=$PKG prefix=/usr/ install
+	make DESTDIR="$PKG/" prefix="/usr/" install
 mkdir $PKG/usr/share/woeusb/locale/tr
 mkdir $PKG/usr/share/woeusb/locale/tr/LC_MESSAGES
 
