@@ -2,10 +2,10 @@
 # URL:  https://lxqt.org
 # Paketçi: yasarciv67@gmail.com
 # Gerekler: compton-conf libqtxdg lxqt-build-tools libsysstat liblxqt libfm-qt lxqt-common lxqt-l10n lxqt-qtplugin obconf-qt pavucontrol-qt qtermwidget lximage-qt pcmanfm-qt qterminal lxqt-about lxqt-admin lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-policykit lxqt-powermanagement lxqt-session lxqt-sudo lxqt-panel lxqt-runner qps
-
+# Grup:lxqt
  
 isim=lxqt
-surum=0.11.1
+surum=0.13.0
 devir=1
 
 kaynak=()
