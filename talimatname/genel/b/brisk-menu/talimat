@@ -1,7 +1,7 @@
 # Tanım: MATE Masaüstü Ortamı için modern ve etkili bir menü.
 # URL: https://github.com/solus-project/brisk-menu
 # Paketçi: Cihan_Alkan
-# Gerekler: gnome-common mate-panel
+# Gerekler: gnome-common mate-panel libnotify
 # Grup: mate
 
 isim=brisk-menu
