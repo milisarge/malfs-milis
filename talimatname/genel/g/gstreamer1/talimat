@@ -1,20 +1,28 @@
 # Tanım: GStreamer ana kütüphanedir. Başlıkları, temel kitaplık dosyalarını ve temel öğeleri içerir.
-# URL: http://gstreamer.freedesktop.org/
-# Paketçi: alihan-ozturk8@hotmail.com
+# URL: https://gstreamer.freedesktop.org/modules/gstreamer.html
+# Paketçi: Cihan_Alkan
 # Gerekler: glib libxml2 gsl gobject-introspection
 
 isim=gstreamer1
-surum=1.6.3
+surum=1.14.1
 devir=1
 _isim=gstreamer
-kaynak=(http://gstreamer.freedesktop.org/src/${_name}/${_name}-$surum.tar.xz)
+kaynak=(https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.14.1.tar.xz)
 
 derle() {
 cd ${_name}-$surum
-./configure --prefix=/usr \
---with-package-isim="GStreamer for Milis" \
---with-package-origin="https://milis.gungre.ch/"
-
-make
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib \
+    --with-package-name="GStreamer (Milis Linux)" \
+    --with-package-origin="https://www.milislinux.org/" \
+    --enable-gtk-doc \
+    --disable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 make DESTDIR=$PKG install
+rm -rf $PKG/usr/share/gtk-doc
 }
