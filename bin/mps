@@ -39,7 +39,7 @@ cat /sources/milis.git/.git/config | grep "url =" | grep "${git_sunucu_eski}" &>
 
 if [ $? -eq 0 ];then
 	echo "eski git sunucusundan göç ediliyor."
-	mv /sources/milis.git /sources/milis.git.eski
+	sudo mv /sources/milis.git /sources/milis.git.eski
 fi
 
 if [ -z ${hesap_repo+:} ]; then
