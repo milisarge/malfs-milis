@@ -39,7 +39,11 @@ git_sunucu_eski="https://github.com"
 
 if [ $? -eq 0 ];then
 	echo "eski git sunucusundan göç ediliyor."
-	sudo mv /sources/milis.git /sources/milis.git.eski
+	if [ -f /usr/bin/sudo ];then
+		sudo mv /sources/milis.git /sources/milis.git.eski
+	else
+		mv /sources/milis.git /sources/milis.git.eski
+	fi
 fi
 
 if [ -z ${hesap_repo+:} ]; then
