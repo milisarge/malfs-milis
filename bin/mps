@@ -35,7 +35,7 @@ fi
 git_sunucu="https://notabug.org"
 git_sunucu_eski="https://github.com"
 
-cat /sources/milis.git/.git/config | grep "url =" | grep "${git_sunucu_eski}"
+cat /sources/milis.git/.git/config | grep "url =" | grep "${git_sunucu_eski}" &> /dev/null
 
 if [ $? -eq 0 ];then
 	echo "eski git sunucusundan göç ediliyor."
