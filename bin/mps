@@ -39,10 +39,11 @@ git_sunucu_eski="https://github.com"
 
 if [ $? -eq 0 ];then
 	echo "eski git sunucusundan göç ediliyor."
-	if [ -f /usr/bin/sudo ];then
-		sudo mv /sources/milis.git /sources/milis.git.eski
+	local _gockom="mv /sources/milis.git /sources/milis.git.eski"
+	[ $(whoami) == "root" ] && echo "ttt"
+		$_gockom
 	else
-		mv /sources/milis.git /sources/milis.git.eski
+		sudo $_gockom
 	fi
 fi
 
