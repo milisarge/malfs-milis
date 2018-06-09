@@ -33,6 +33,11 @@ if [ -z ${sunucu+:} ]; then
 fi
 
 git_sunucu="https://notabug.org"
+git_sunucu_eski="https://github.com"
+
+if [ $(cat /sources/milis.git/.git/config | grep "url =" | grep "${git_sunucu_eski}") ];then
+	mv /sources/milis.git /sources/milis.git.eski
+fi
 
 if [ -z ${hesap_repo+:} ]; then
 	hesap_repo="milislinux/milis"
